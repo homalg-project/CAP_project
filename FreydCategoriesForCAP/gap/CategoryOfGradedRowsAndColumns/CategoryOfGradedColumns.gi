@@ -62,9 +62,11 @@ end );
 
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
   function( category, checks )
-
-
-
+    local underlying_graded_ring;
+    
+    underlying_graded_ring := category!.homalg_graded_ring_for_category_of_graded_columns;
+    
+    
     ######################################################################
     #
     # @Section Methods to check if objects and morphisms are well-defined
@@ -249,7 +251,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     ######################################################################
 
     # @Description
-    # This method checks if two projective modules are equal. We consider them equal if they are isomorphic.
+    # This method checks if two rows are equal. We consider them equal if they have equal degree lists.
     # @Returns true or false
     # @Arguments object1, object2
     AddIsEqualForObjects( category,
@@ -286,10 +288,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
         composition := UnderlyingHomalgMatrix( morphism_2 ) * UnderlyingHomalgMatrix( morphism_1 );
 
         return GradedRowOrColumnMorphism( Source( morphism_1 ),
-                                                                        composition,
-                                                                        Range( morphism_2 ),
-                                                                        checks
-                                                                       );
+                                          composition,
+                                          Range( morphism_2 ),
+                                          checks
+                                          );
 
     end );
 
@@ -300,15 +302,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     AddIdentityMorphism( category,
       
       function( object )
-        local homalg_graded_ring;
-        
-        homalg_graded_ring := UnderlyingHomalgGradedRing( object );
         
         return GradedRowOrColumnMorphism( object,
-                                                          HomalgIdentityMatrix( Rank( object ), homalg_graded_ring ),
-                                                          object,
-                                                          checks
-                                                         );
+                                          HomalgIdentityMatrix( Rank( object ), underlying_graded_ring ),
+                                          object,
+                                          checks
+                                          );
         
     end );
     
@@ -329,10 +328,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
       function( morphism_1, morphism_2 )
         
         return GradedRowOrColumnMorphism( Source( morphism_1 ),
-                                                    UnderlyingHomalgMatrix( morphism_1 ) + UnderlyingHomalgMatrix( morphism_2 ),
-                                                    Range( morphism_2 ),
-                                                    checks
-                                                   );
+                                          UnderlyingHomalgMatrix( morphism_1 ) + UnderlyingHomalgMatrix( morphism_2 ),
+                                          Range( morphism_2 ),
+                                          checks
+                                          );
     end );
 
     # @Description
@@ -344,10 +343,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
       function( morphism )
         
         return GradedRowOrColumnMorphism( Source( morphism ),
-                                                                        (-1) * UnderlyingHomalgMatrix( morphism ),
-                                                                        Range( morphism ),
-                                                                        checks
-                                                                       );
+                                          MinusOne( UnderlyingHomalgGradedRing( morphism ) ) * UnderlyingHomalgMatrix( morphism ),
+                                          Range( morphism ),
+                                          checks
+                                          );
     end );
 
     # @Description
@@ -380,15 +379,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Arguments source, range
     AddZeroMorphism( category,
       function( source, range )
-        local homalg_graded_ring;
-        
-        homalg_graded_ring := UnderlyingHomalgGradedRing( source );
         
         return GradedRowOrColumnMorphism( source,
-                                                          HomalgZeroMatrix( Rank( range ), Rank( source ), homalg_graded_ring ),
-                                                          range,
-                                                          checks
-                                                         );
+                                          HomalgZeroMatrix( Rank( range ), Rank( source ), underlying_graded_ring ),
+                                          range,
+                                          checks
+                                          );
     end );
 
     # @Description
@@ -399,11 +395,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     AddZeroObject( category,
       function( )
         
-        return GradedColumn( 
-                                                  [ ], 
-                                                  category!.homalg_graded_ring_for_category_of_graded_columns,
-                                                  checks
-                                                 );
+        return GradedColumn( [ ],
+                             underlying_graded_ring,
+                             checks
+                              );
     end );
     
     # @Description
@@ -413,15 +408,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Arguments object, zero_object
     AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
       function( object, zero_object )
-        local homalg_graded_ring, morphism;
-        
-        homalg_graded_ring := UnderlyingHomalgGradedRing( zero_object );
+        local morphism;
         
         morphism := GradedRowOrColumnMorphism( object,
-                                                                    HomalgZeroMatrix( 0, Rank( object ), homalg_graded_ring ),
-                                                                    zero_object,
-                                                                    checks
-                                                                   );
+                                               HomalgZeroMatrix( 0, Rank( object ), underlying_graded_ring ),
+                                               zero_object,
+                                               checks
+                                              );
         return morphism;
         
     end );
@@ -433,15 +426,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Arguments zero_object, object
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
       function( zero_object, object )
-        local homalg_graded_ring, morphism;
-        
-        homalg_graded_ring := UnderlyingHomalgGradedRing( zero_object );
+        local morphism;
         
         morphism := GradedRowOrColumnMorphism( zero_object,
-                                                                      HomalgZeroMatrix( Rank( object ), 0, homalg_graded_ring ),
-                                                                      object,
-                                                                      checks
-                                                                     );
+                                               HomalgZeroMatrix( Rank( object ), 0, underlying_graded_ring ),
+                                               object,
+                                               checks
+                                              );
         return morphism;
         
     end );
@@ -453,20 +444,17 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Arguments object_list
     AddDirectSum( category,
       function( object_list )
-      local homalg_graded_ring, degree_list_list, degree_list_of_direct_sum_object;
+      local degree_list_list, degree_list_of_direct_sum_object;
       
-      # first extract the underlying graded ring
-      homalg_graded_ring := UnderlyingHomalgGradedRing( object_list[ 1 ] );
-
       # then the degree_list of the direct sum object
       degree_list_list := List( object_list, x -> DegreeList( x ) );
       degree_list_of_direct_sum_object := Concatenation( degree_list_list );
       
       # and then return the corresponding object
       return GradedColumn( degree_list_of_direct_sum_object,
-                                                              homalg_graded_ring,
-                                                              checks
-                                                             );
+                           underlying_graded_ring,
+                           checks
+                          );
       
     end );
     
@@ -477,10 +465,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Arguments object_list, projection_number, direct_sum_object
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
       function( object_list, projection_number, direct_sum_object )
-        local homalg_graded_ring, rank_pre, rank_post, rank_factor, number_of_objects, projection_in_factor;
-        
-        # extract the underlying graded ring
-        homalg_graded_ring := UnderlyingHomalgGradedRing( direct_sum_object );
+        local rank_pre, rank_post, rank_factor, number_of_objects, projection_in_factor;
         
         # and the number of objects that were 'added'
         number_of_objects := Length( object_list );
@@ -491,20 +476,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
         rank_factor := Rank( object_list[ projection_number ] );
         
         # construct the mapping as homalg matrix
-        projection_in_factor := HomalgZeroMatrix( rank_factor, rank_pre, homalg_graded_ring );
-        projection_in_factor := Iterated( [ projection_in_factor, 
-                                            HomalgIdentityMatrix( rank_factor, homalg_graded_ring ) ],
+        projection_in_factor := HomalgZeroMatrix( rank_factor, rank_pre, underlying_graded_ring );
+        projection_in_factor := Iterated( [ projection_in_factor,
+                                            HomalgIdentityMatrix( rank_factor, underlying_graded_ring ) ],
                                            UnionOfColumns );
-        projection_in_factor := Iterated( [ projection_in_factor, 
-                                            HomalgZeroMatrix( rank_factor, rank_post, homalg_graded_ring ) ],
+        projection_in_factor := Iterated( [ projection_in_factor,
+                                            HomalgZeroMatrix( rank_factor, rank_post, underlying_graded_ring ) ],
                                            UnionOfColumns );
         
         # and return the corresonding morphism
         return GradedRowOrColumnMorphism( direct_sum_object,
-                                                                        projection_in_factor,
-                                                                        object_list[ projection_number ],
-                                                                        checks 
-                                                                       );
+                                          projection_in_factor,
+                                          object_list[ projection_number ],
+                                          checks 
+                                          );
         
     end );
 
@@ -543,10 +528,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Arguments object_list, injection_number, coproduct_object
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
       function( object_list, injection_number, coproduct )
-        local homalg_graded_ring, rank_pre, rank_post, rank_cofactor, number_of_objects, injection_of_cofactor;
-        
-        # extract the underlying graded ring
-        homalg_graded_ring := UnderlyingHomalgGradedRing( coproduct );
+        local rank_pre, rank_post, rank_cofactor, number_of_objects, injection_of_cofactor;
         
         # and the number of objects
         number_of_objects := Length( object_list );
@@ -557,20 +539,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
         rank_cofactor := Rank( object_list[ injection_number ] );
         
         # now construct the mapping matrix
-        injection_of_cofactor := HomalgZeroMatrix( rank_pre, rank_cofactor, homalg_graded_ring );
+        injection_of_cofactor := HomalgZeroMatrix( rank_pre, rank_cofactor, underlying_graded_ring );
         injection_of_cofactor := Iterated( [ injection_of_cofactor, 
-                                             HomalgIdentityMatrix( rank_cofactor, homalg_graded_ring ) ],
+                                             HomalgIdentityMatrix( rank_cofactor, underlying_graded_ring ) ],
                                             UnionOfRows );
         injection_of_cofactor := Iterated( [ injection_of_cofactor,
-                                             HomalgZeroMatrix( rank_post, rank_cofactor, homalg_graded_ring ) ],
+                                             HomalgZeroMatrix( rank_post, rank_cofactor, underlying_graded_ring ) ],
                                             UnionOfRows );
         
         # and construct the associated morphism
         return GradedRowOrColumnMorphism( object_list[ injection_number ],
-                                                                        injection_of_cofactor,
-                                                                        coproduct,
-                                                                        checks
-                                                                       );
+                                          injection_of_cofactor,
+                                          coproduct,
+                                          checks
+                                          );
         
     end );
 
@@ -594,10 +576,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
         od;
         
         return GradedRowOrColumnMorphism( coproduct,
-                                                                        underlying_matrix_of_universal_morphism,
-                                                                        Range( sink[ 1 ] ),
-                                                                        checks
-                                                                       );
+                                          underlying_matrix_of_universal_morphism,
+                                          Range( sink[ 1 ] ),
+                                          checks
+                                        );
         
     end );
 
@@ -605,13 +587,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     
     ######################################################################
     #
-    # @Section Add weak lift and colift
+    # @Section Add lift and colift
     #
     ######################################################################
 
     # @Description
     # This method requires a morphism <A>morphism1</A> $a \to c$ and a morphism <A>morphism2</A> $b \to c$. The result of 
-    # Lift( morphism1, morphism2 ) is then the weak lift morphism $a \to b$.
+    # Lift( morphism1, morphism2 ) is then the lift morphism $a \to b$.
     # @Returns a morphism
     # @Arguments morphism1, morphism2
     AddLift( category,
@@ -644,7 +626,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
 
     # @Description
     # This method requires a morphism <A>morphism1</A> $a \to c$ and a morphism <A>morphism2</A> $a \to b$. The result of 
-    # Colift( morphism1, morphism2 ) is then the weak colift morphism $c \to b$.
+    # Colift( morphism1, morphism2 ) is then the colift morphism $c \to b$.
     # @Returns a morphism
     # @Arguments morphism1, morphism2
     AddColift( category,
@@ -678,7 +660,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
 
     ######################################################################
     #
-    # @Section Add Abelian structure
+    # @Section Add weak kernels and cokernels
     #
     ######################################################################
 
@@ -883,8 +865,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     end );
 
 
-    # Monoidal structure can be defined if the underlying ring of graded rows is commutative
-    # We are aware of the fact that this condition is in general not necessary.
+    # Monoidal structure can be defined if the underlying ring of graded columns is commutative
+    # In the non-commutative case, such a monoidal structure cannot be expected in general.
     if HasIsCommutative( UnderlyingNonGradedRing( category!.homalg_graded_ring_for_category_of_graded_columns ) )
        and IsCommutative( UnderlyingNonGradedRing( category!.homalg_graded_ring_for_category_of_graded_columns ) ) then
 
@@ -895,7 +877,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     ######################################################################
 
     # @Description
-    # This method computes the tensor product of the two projective modules <A>object1</A> and <A>object2</A>
+    # This method computes the tensor product of the two columns <A>object1</A> and <A>object2</A>
     # @Returns an object
     # @Arguments object1, object2
     AddTensorProductOnObjects( category,
@@ -915,18 +897,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
         if Rank( object1 ) = 1 then
           degree_list_tensor_object := List( degree_list2, x -> [ x[ 1 ] + degree_list1[ 1 ][ 1 ], x[ 2 ] ] );
           return GradedColumn( degree_list_tensor_object,
-                                                                 UnderlyingHomalgGradedRing( object1 ),
-                                                                 checks
-                                                                );
+                               UnderlyingHomalgGradedRing( object1 ),
+                               checks
+                             );
         fi;
 
         # check if object2 is of rank 1 (this includes the tensor unit)
         if Rank( object2 ) = 1 then
           degree_list_tensor_object := List( degree_list1, x -> [ x[ 1 ] + degree_list2[ 1 ][ 1 ], x[ 2 ] ] );
           return GradedColumn( degree_list_tensor_object,
-                                                                 UnderlyingHomalgGradedRing( object1 ),
-                                                                 checks
-                                                                ); 
+                               UnderlyingHomalgGradedRing( object1 ),
+                               checks
+                             );
         fi;
 
         # now compute the degree_list of the tensor product of object1 and object2
@@ -942,9 +924,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
 
         # now construct a new object in this category
         return GradedColumn( degree_list_tensor_object,
-                                                               UnderlyingHomalgGradedRing( object1 ),
-                                                               checks
-                                                              );
+                             UnderlyingHomalgGradedRing( object1 ),
+                             checks
+                           );
 
     end );
 
@@ -971,13 +953,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Arguments     
     AddTensorUnit( category,
       function( )
-        local homalg_ring;
         
-        homalg_ring := category!.homalg_graded_ring_for_category_of_graded_columns;
-        return GradedColumn( [ [ TheZeroElement( DegreeGroup( homalg_ring ) ) , 1 ] ],
-                                                                homalg_ring,
-                                                                checks
-                                                               );
+        return GradedColumn( [ [ TheZeroElement( DegreeGroup( underlying_graded_ring ) ) , 1 ] ],
+                             underlying_graded_ring,
+                             checks
+                           );
         
     end );
 
@@ -996,10 +976,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Arguments object1_tensored_object2, object1, object2, object2_tensored_object1
     AddBraidingWithGivenTensorProducts( category,
       function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
-        local homalg_ring, rank_1, rank_2, rank, permutation_matrix;
+        local rank_1, rank_2, rank, permutation_matrix;
         
-        # gather necessary information
-        homalg_ring := UnderlyingHomalgGradedRing( object_1 );
         rank_1 := Rank( object_1 );
         rank_2 := Rank( object_2 );
         rank := Rank( object_1_tensored_object_2 );
@@ -1009,7 +987,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
                          PermList( List( [ 1 .. rank ], i -> ( RemInt( i - 1, rank_2 ) * rank_1 + QuoInt( i - 1, rank_2 ) + 1 ) ) ),
                                 rank 
                               );
-        permutation_matrix := Involution( HomalgMatrix( permutation_matrix, rank, rank, homalg_ring ) );
+        permutation_matrix := Involution( HomalgMatrix( permutation_matrix, rank, rank, underlying_graded_ring ) );
         
         # and return the corresponding morphism
         return GradedRowOrColumnMorphism( object_1_tensored_object_2,
@@ -1039,14 +1017,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
         local degree_list_dual_object;
                 
         # the dual is given by taking the inverse of all degrees but leaving the multiplicities unchanged
-        degree_list_dual_object := List( DegreeList( object ), 
-                                                          k -> [ MinusOne( HomalgRing( SuperObject( k[ 1 ] ) ) ) * k[ 1 ], k[ 2 ] ] );
+        degree_list_dual_object := List( DegreeList( object ),
+                                         k -> [ MinusOne( HomalgRing( SuperObject( k[ 1 ] ) ) ) * k[ 1 ], k[ 2 ] ] );
         
         # and return the corresponding object
         return GradedColumn( degree_list_dual_object,
-                                                                UnderlyingHomalgGradedRing( object ),
-                                                                checks
-                                                               );
+                             UnderlyingHomalgGradedRing( object ),
+                             checks
+                            );
         
     end );
 
@@ -1059,10 +1037,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     
       # simply transpose the mapping matrix and return the result
       return GradedRowOrColumnMorphism( source,
-                                                                      Involution( UnderlyingHomalgMatrix( morphism ) ),
-                                                                      range,
-                                                                      checks
-                                                                     );
+                                        Involution( UnderlyingHomalgMatrix( morphism ) ),
+                                        range,
+                                        checks
+                                        );
     end );
 
     # @Description
@@ -1072,11 +1050,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Arguments tensor_object = Dual( object) \otimes object, object, unit
     AddEvaluationForDualWithGivenTensorProduct( category,
       function( tensor_object, object, unit )
-        local rank, column, zero_column, i, homalg_ring;
+        local rank, column, zero_column, i;
         
         # collect and initialise the necessary information
         rank := Rank( object );
-        homalg_ring := UnderlyingHomalgGradedRing( object );
         column := [ ];        
         zero_column := List( [ 1 .. rank ], i -> 0 );
 
@@ -1096,10 +1073,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
         
         # return the evaluation morphism
         return GradedRowOrColumnMorphism( tensor_object,
-                                                                        HomalgMatrix( column, homalg_ring ),
-                                                                        unit,
-                                                                        checks
-                                                                       );
+                                          HomalgMatrix( column, underlying_graded_ring ),
+                                          unit,
+                                          checks
+                                          );
         
     end );
 
@@ -1110,11 +1087,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Arguments unit, object, tensor_object = Object \otimes Dual( object )
     AddCoevaluationForDualWithGivenTensorProduct( category,
       function( unit, object, tensor_object )
-        local rank, column, zero_column, i, homalg_ring;
+        local rank, column, zero_column, i;
         
         # collect and initialise the necessary information
         rank := Rank( object );
-        homalg_ring := UnderlyingHomalgGradedRing( object );
         column := [ ];        
         zero_column := List( [ 1 .. rank ], i -> 0 );
 
@@ -1134,10 +1110,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
         
         # return the evaluation morphism
         return GradedRowOrColumnMorphism( tensor_object,
-                                                                        HomalgMatrix( column, homalg_ring ),
-                                                                        unit,
-                                                                        checks 
-                                                                       );
+                                          HomalgMatrix( column, underlying_graded_ring ),
+                                          unit,
+                                          checks 
+                                          );
 
     end );
 
@@ -1149,12 +1125,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     AddMorphismToBidualWithGivenBidual( category,
       function( object, bidual_object )
       
-        return GradedRowOrColumnMorphism(
-                                                 object,
-                                                 HomalgIdentityMatrix( Rank( object ), UnderlyingHomalgGradedRing( object ) ),
-                                                 bidual_object,
-                                                 checks
-                                                );
+        return GradedRowOrColumnMorphism( object,
+                                          HomalgIdentityMatrix( Rank( object ), underlying_graded_ring ),
+                                          bidual_object,
+                                          checks
+                                        );
 
     end );
 
