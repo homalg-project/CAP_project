@@ -330,7 +330,7 @@ Display( DualOnMorphisms( m1L ) );
 #! x_1,x_2
 #! (over a graded ring)
 Display( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( 
-         DualOnObjects( ObjectL ), ObjectL ), ObjectL, TensorUnit( categoryL ) ) );
+DualOnObjects( ObjectL ), ObjectL ), ObjectL, TensorUnit( categoryL ) ) );
 #! A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ]) 
 #! with matrix: 
@@ -527,7 +527,7 @@ Display( DualOnMorphisms( m1R ) );
 #! x_2 
 #! (over a graded ring)
 Display( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( 
-         DualOnObjects( ObjectR ), ObjectR ), ObjectR, TensorUnit( categoryR ) ) );
+DualOnObjects( ObjectR ), ObjectR ), ObjectR, TensorUnit( categoryR ) ) );
 #! A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ]) 
 #! with matrix: 
@@ -549,16 +549,16 @@ Display( InternalHomOnObjects( ObjectR, ObjectR ) );
 
 #! @Section FreydCategory for graded rows
 
-#! @Subsection Setting up a category of graded rows
-
 #! @Example
 cat := CategoryOfRows( S );
-#! Rows( Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+#! Rows( Q[x_1,x_2,x_3,x_4] (with weights 
+#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
 obj1 := GradedRow( [ [[1,1],1] ], S );
 #! <A graded row of rank 1>
 obj2 := GradedRow( [ [[1,1],2] ], S );
 #! <A graded row of rank 2>
-gamma := GradedRowOrColumnMorphism( obj2, HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, S ), obj2 );
+gamma := GradedRowOrColumnMorphism( obj2, 
+                       HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, S ), obj2 );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 freyd := FreydCategory( cat );
@@ -581,7 +581,8 @@ Display( witness );
 #! 2,0,
 #! 2,0 
 #! (over a graded ring)
-g := FreydCategoryMorphism( obj_gamma, ZeroMorphism( obj2, obj2 ), obj_gamma );
+g := FreydCategoryMorphism( obj_gamma, 
+                                   ZeroMorphism( obj2, obj2 ), obj_gamma );
 #! <A morphism in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 IsCongruentForMorphisms( f, g );
@@ -606,7 +607,8 @@ Display( s );
 #! 0,0,
 #! 0,0 
 #! (over a graded ring)
-a := GradedRowOrColumnMorphism( obj1, HomalgMatrix( [ [ 2 ] ], 1, 1, S ), obj1 );
+a := GradedRowOrColumnMorphism( obj1, 
+                                 HomalgMatrix( [ [ 2 ] ], 1, 1, S ), obj1 );
 #! <A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 Display( a );
