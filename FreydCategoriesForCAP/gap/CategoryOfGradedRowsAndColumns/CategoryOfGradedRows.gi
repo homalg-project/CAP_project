@@ -172,7 +172,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         fi;
 
         # if the matrix does not have homogeneous degrees, the morphism is not well-defined
-        if not IsMatrixOverGradedRingWithHomogeneousEntries( morphism_matrix )
+        if not IsMatrixOverGradedRingWithHomogeneousEntries( morphism_matrix ) then
 
           return false;
 
