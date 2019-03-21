@@ -1,7 +1,5 @@
 TODO:
 
 (*) Implement InjectionOfBiasedWeakPushout and thereby also BiasedWeakPushout
-(*) Remove "left" and "right" remnants in Tools.gd and Tools.gi
-(*) Apply FreydCategory to GradedRows and GradedColumns as test
 (*) Create interface for general weak fiber products/ weak pushouts
 (*) Add correct homogeneity test in IsWellDefinedForMorphisms (depends on homalg-project/homalg_project/pull/240/commits)
