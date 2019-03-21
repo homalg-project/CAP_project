@@ -169,12 +169,16 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
         
         fi;
         
-        # extract the degrees of the entries of the morphism_matrix
+        # if the matrix does not have homogeneous degrees, the morphism is not well-defined
+        if not IsMatrixOverGradedRingWithHomogeneousEntries( morphism_matrix )
 
-        # I use the DegreeOfEntries of the underlying graded ring
-        # in particular I hope that this function raises and error if one of the entries is not homogeneous
+          return false;
+
+        fi;
+
+        # now extract the degrees of the entries of the morphism_matrix
         degrees_of_entries_matrix := DegreesOfEntries( morphism_matrix );
-        
+
         # turn the degrees of the source into a column vector (that is how I think about right-modules)
         source_degrees := [];
         for i in [ 1 .. Length( DegreeList( source ) ) ] do
