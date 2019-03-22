@@ -5,7 +5,7 @@ LoadPackage( "AutoDoc" );
 
 AutoDoc( "FreydCategoriesForCAP" : scaffold := true, autodoc :=
          rec( files := [ "doc/Intros.autodoc" ],
-         scan_dirs := [ "gap", "examples", "doc" ] ),
+         scan_dirs := [ "gap", "gap/CategoryOfGradedRowsAndColumns", "examples", "doc" ] ),
          maketest := rec( commands :=
                             [ "LoadPackage( \"CAP\" );",
                               "LoadPackage( \"IO_ForHomalg\" );",
