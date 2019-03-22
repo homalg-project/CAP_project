@@ -13,7 +13,7 @@ Subtitle := "Elementary toposes",
 Version := Maximum( [
                    "2019.01.20", ## Mohamed's version
                    ## this line prevents merge conflicts
-                   "2019.03.15", ## Tom's version
+                   "2019.03.16", ## Tom's version
                    ## this line prevents merge conflicts
                    "2019.01.29", ## Mario's version
                    ## this line prevents merge conflicts
@@ -66,6 +66,20 @@ Persons := [
     Place := "Oxford",
     Institution := "University of Oxford",
   ),
+  rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Tom",
+    LastName := "Kuhmichel",
+    WWWHome := "https://github.com/TKuh",
+    Email := "tom.kuhmichel@student.uni-siegen.de",
+    PostalAddress := Concatenation(
+               "Walter-Flex-Str. 3\n",
+               "57068 Siegen\n",
+               "Germany" ),
+    Place := "Siegen",
+    Institution := "University of Siegen",
+  ),
 ],
 
 SourceRepository := rec(
@@ -111,7 +125,7 @@ Dependencies := rec(
                    [ "CAP", ">= 2019.03.02" ],
                    ],
   SuggestedOtherPackages := [
-                   [ "MonoidalCategories", ">= 2019.03.15" ],
+                   [ "MonoidalCategories", ">= 2019.03.16" ],
                    ],
   ExternalConditions := [ ],
 ),
