@@ -39,8 +39,8 @@ DeclareCategory( "IsVectorSpaceMorphism",
 DeclareOperation( "VectorSpaceMorphism",
                   [ IsVectorSpaceObject, IsHomalgMatrix, IsVectorSpaceObject ] );
 
-DeclareOperationWithCache( "VectorSpaceMorphism",
-                           [ IsVectorSpaceObject, IsList, IsVectorSpaceObject ] );
+DeclareOperation( "VectorSpaceMorphism",
+                  [ IsVectorSpaceObject, IsList, IsVectorSpaceObject ] );
 
 ####################################
 ##
