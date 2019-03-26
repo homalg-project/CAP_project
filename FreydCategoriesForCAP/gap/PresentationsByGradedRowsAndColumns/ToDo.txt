@@ -1,0 +1,28 @@
+@Martin:
+
+(*) Brutally, make PresentationsByProjectiveGradedModules work
+-> Tests work and we can use these to test the implementation
+-> Implement the necessary methods into FreydCategory and send Sepp pull requests for each of these
+
+(*) Alternatively:
+Compare the installed methods in PresentationCategory( GradedRows ) and FreydCategory( GradedRows )
+
+(*) Perform basic integration of PresentationByGradedRows into Freyd
+
+@Sepp:
+
+(*) Have a look at 
+     https://github.com/HereAround/TruncationsOfPresentationsByProjectiveGradedModules
+    and
+     https://github.com/HereAround/SheafCohomologyOnToricVarieties/blob/master/gap/DegreeXLayer.gd
+=> Develop idea on how to implement Homomorphism-Structure provided the truncations (of the involved graded rows/columns) are finite dimensional vector spaces
+
+(*) Implement InternalHom and Tensorproduct for category of rows
+
+(*) Review Category of columns and implement InternalHom and Tensorproduct also there
+
+
+@Both:
+
+(*) Think of a NICE name for Freyd( GradedRow ) since GradedModulesForCAP is already taken.
+    Also "PresentationByProjectiveGradedModules" is fairly long... I am not too much in favour of it...
