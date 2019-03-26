@@ -550,9 +550,9 @@ Display( InternalHomOnObjects( ObjectR, ObjectR ) );
 #! @Section FreydCategory for graded rows
 
 #! @Example
-cat := CategoryOfRows( S );
-#! Rows( Q[x_1,x_2,x_3,x_4] (with weights 
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+cat := CAPCategoryOfGradedRows( S );
+#! CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 obj1 := GradedRow( [ [[1,1],1] ], S );
 #! <A graded row of rank 1>
 obj2 := GradedRow( [ [[1,1],2] ], S );
@@ -562,8 +562,8 @@ gamma := GradedRowOrColumnMorphism( obj2,
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 freyd := FreydCategory( cat );
-#! Freyd( Rows( Q[x_1,x_2,x_3,x_4] (with weights 
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) ) )
+#! Freyd( CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
 IsAbelianCategory( freyd );
 #! true
 obj_gamma := FreydCategoryObject( gamma );
