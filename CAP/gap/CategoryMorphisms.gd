@@ -814,8 +814,21 @@ DeclareOperation( "AddIsEqualAsFactorobjects",
 
 
 #! @Description
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{2};
+#! \def\h{1};
+#! \node (a) at (0,\h) {$a$};
+#! \node (b) at (0,-\h) {$b$};
+#! \node (c) at (\w,0) {$c$};
+#! \draw[right hook-latex] (a) to node[pos=0.45, above] {$\alpha$} (c);
+#! \draw[right hook-latex] (b) to node[pos=0.45, below] {$\beta$} (c);
+#! \draw[-latex, dashed] (a) to node[pos=0.45, left] {$\exists \iota$} (b);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 #! In short: Returns <C>true</C> iff $\alpha$ is smaller than $\beta$.
-#! $\\ $
 #! Full description: The arguments are two subobjects $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$.
 #! The output is <C>true</C> if there exists a morphism $\iota: a \rightarrow b$
 #! such that $\beta \circ \iota \sim_{a,c} \alpha$,
@@ -846,8 +859,21 @@ DeclareOperation( "AddIsDominating",
 
 
 #! @Description
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{2};
+#! \def\h{1};
+#! \node (c) at (0,0) {$c$};
+#! \node (a) at (\w,\h) {$a$};
+#! \node (b) at (\w,-\h) {$b$};
+#! \draw[-latex, postaction={draw, shorten >=3pt, -latex}] (c) to node[pos=0.45, above] {$\alpha$} (a);
+#! \draw[-latex, postaction={draw, shorten >=3pt, -latex}] (c) to node[pos=0.45, below] {$\beta$} (b);
+#! \draw[-latex, dashed] (b) to node[pos=0.45, right] {$\exists \iota$} (a);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 #! In short: Returns <C>true</C> iff $\alpha$ is smaller than $\beta$.
-#! $\\ $
 #! Full description: 
 #! The arguments are two factorobjects $\alpha: c \rightarrow a$, $\beta: c \rightarrow b$.
 #! The output is <C>true</C> if there exists a morphism $\iota: b \rightarrow a$
