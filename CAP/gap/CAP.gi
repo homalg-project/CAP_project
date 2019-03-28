@@ -231,7 +231,8 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
                             IsEqualForCacheForObjects := "never",
                             IsEqualForCacheForMorphisms := "never",
                             IsWellDefinedForObjects := "never",
-                            IsWellDefinedForMorphisms := "never" );
+                            IsWellDefinedForMorphisms := "never",
+                            IsWellDefinedForTwoCells := "never" );
     
     obj_rec!.redirects := rec( );
     
