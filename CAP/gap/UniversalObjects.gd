@@ -3026,6 +3026,26 @@ DeclareOperation( "AddCoequalizerFunctorialWithGivenCoequalizers",
 #! such that $\beta_i' \circ \mu_i \sim_{P_i,B'} \beta \circ \beta_i$ for $i = 1, \dots, n$)
 #! we obtain a morphism $\mathrm{FiberProduct}( D ) \rightarrow \mathrm{FiberProduct}( D' )$.
 
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (T) at (-\w,2*\w) {$T$};
+#! \node (P) at (0,\w) {$P$};
+#! \node (P1) at (0,0) {$P1$};
+#! \node (B) at (\w,0) {$B$};
+#! \node (P2) at (\w,\w) {$P_2$};
+#! \draw[-latex] (P) to node[pos=0.45, left] {$\pi_1$} (P1);
+#! \draw[-latex] (P) to node[pos=0.45, above] {$\pi_2$} (P2);
+#! \draw[-latex] (P1) to node[pos=0.45, below] {$\beta_1$} (B);
+#! \draw[-latex] (P2) to node[pos=0.45, right] {$\beta_2$} (B);
+#! \draw[-latex] (T) to [out = -90, in = 180] node[pos=0.45, left] {$\tau_1$} (P1);
+#! \draw[-latex] (T) to [out = 0, in = 90] node[pos=0.45, above] {$\tau_2$} (P2);
+#! \draw[-latex, dashed] (T) to node[pos=0.45, below left] {$\exists u ( \tau )$} (P);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
 ## Main Operations and Attributes
 
 
