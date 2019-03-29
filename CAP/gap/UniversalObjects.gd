@@ -291,6 +291,24 @@ DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
 #! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha \sim_{A,B'} \alpha' \circ \mu$,
 #! we obtain a morphism $\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )$.
 
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{2};
+#! \def\h{1};
+#! \node (A) at (0,0) {$A$};
+#! \node (B) at (\w,0) {$B$};
+#! \node (K) at (2*\w,0) {$K$};
+#! \node (T) at (2*\w,\w) {$T$};
+#! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
+#! \draw[-latex] (B) to node[pos=0.45, above] {$\epsilon$} (K);
+#! \draw[-latex] (B) to node[pos=0.45, above right] {$\tau$} (T);
+#! \draw[dashed, -latex] (K) to node[pos=0.45, left] {$\exists ! u( \tau )$} (T);
+#! \draw[-latex] (A) to [out = 90, in = 180] node[pos=0.45, above] {$0$} (T);
+#! \draw[-latex] (A) to [out = -45, in = -135] node[pos=0.45, below] {$0$} (K);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 
 
 ## Main Operations and Attributes
