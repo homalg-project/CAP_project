@@ -85,12 +85,12 @@ IsEqualForObjects( Object2R, Object2RShuffle );
 #####################################
 
 #! @Example
-Q1L := GradedRow( [ [[0,0],1] ], S );
-#! <A graded row of rank 1>
+Q1L := GradedRow( [ [[0,0],2] ], S );
+#! <A graded row of rank 2>
 IsWellDefined( Q1L );
 #! true
-Q2L := GradedRow( [ [[1,0],2] ], S );
-#! <A graded row of rank 2>
+Q2L := GradedRow( [ [[1,0],1] ], S );
+#! <A graded row of rank 1>
 m1L := GradedRowOrColumnMorphism( 
       Q1L, HomalgMatrix( [["x_1","x_2"]], S ) ,Q2L );
 #! <A morphism in the category of graded rows over 
@@ -100,11 +100,11 @@ IsWellDefined( m1L );
 Display( Source( m1L ) );
 #! A graded row over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees: 
-#! [ [ 0, 1 ] ]
+#! [ [ 0, 2 ] ]
 Display( Range( m1L ) );
 #! A graded row over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees: 
-#! [ [ ( 1, 0 ), 2 ] ]
+#! [ [ ( 1, 0 ), 1 ] ]
 Display( UnderlyingHomalgMatrix( m1L ) );
 #! x_1,x_2
 #! (over a graded ring)
@@ -177,6 +177,8 @@ Display( IdentityMorphism( O2L ) );
 #! with matrix: 
 #! 1
 #! (over a graded ring)
+IsWellDefined( IdentityMorphism( Q2L ) );
+#! true
 directSumL := DirectSum( [ O1L, O2L ] );
 #! <A graded row of rank 3>
 Display( directSumL );
@@ -186,6 +188,8 @@ Display( directSumL );
 i1L := InjectionOfCofactorOfDirectSum( [ O1L, O2L ], 1 );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( i1L );
+#! true
 Display( UnderlyingHomalgMatrix( i1L ) );
 #! 1,0,0,
 #! 0,1,0 
@@ -193,12 +197,16 @@ Display( UnderlyingHomalgMatrix( i1L ) );
 i2L := InjectionOfCofactorOfDirectSum( [ O1L, O2L ], 2 );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ],[ 0, 1 ] ])>
+IsWellDefined( i2L );
+#! true
 Display( UnderlyingHomalgMatrix( i2L ) );
 #! 0,0,1
 #! (over a graded ring)
 proj1L := ProjectionInFactorOfDirectSum( [ O1L, O2L ], 1 );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( proj1L );
+#! true
 Display( UnderlyingHomalgMatrix( proj1L ) );
 #! 1,0,
 #! 0,1,
@@ -207,6 +215,8 @@ Display( UnderlyingHomalgMatrix( proj1L ) );
 proj2L := ProjectionInFactorOfDirectSum( [ O1L, O2L ], 2 );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( proj2L );
+#! true
 Display( UnderlyingHomalgMatrix( proj2L ) );
 #! 0,
 #! 0,
@@ -215,12 +225,16 @@ Display( UnderlyingHomalgMatrix( proj2L ) );
 kL := WeakKernelEmbedding( proj1L );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( kL );
+#! true
 Display( UnderlyingHomalgMatrix( kL ) );
 #! 0,0,1
 #! (over a graded ring)
 ckL := WeakCokernelProjection( kL );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( ckL );
+#! true
 Display( UnderlyingHomalgMatrix( ckL ) );
 #! 1,0,
 #! 0,1,
@@ -238,12 +252,18 @@ m1L := GradedRowOrColumnMorphism( O1L,
       HomalgMatrix( [[ "x_1" ], [ "x_2" ]], S ), O2L );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( m1L );
+#! true
 m2L := IdentityMorphism( O2L );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( m2L );
+#! true
 liftL := Lift( m1L, m2L );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( liftL );
+#! true
 Display( UnderlyingHomalgMatrix( liftL ) );
 #! x_1,
 #! x_2 
@@ -254,9 +274,13 @@ morL := GradedRowOrColumnMorphism(
        O2L, HomalgMatrix( [[ "x_1, x_2" ]], S ), O3L );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( morL );
+#! true
 coliftL := Colift( m2L, morL );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( coliftL );
+#! true
 Display( UnderlyingHomalgMatrix( coliftL ) );
 #! x_1,x_2
 #! (over a graded ring)
@@ -265,6 +289,8 @@ fpL := WeakBiFiberProduct( m1L, m2L );
 fp_proj1L := ProjectionInFirstFactorOfWeakBiFiberProduct( m1L, m2L );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( fp_proj1L );
+#! true
 Display( UnderlyingHomalgMatrix( fp_proj1L ) );
 #! 1,0,
 #! 0,1 
@@ -272,6 +298,8 @@ Display( UnderlyingHomalgMatrix( fp_proj1L ) );
 fp_proj2L := ProjectionInSecondFactorOfWeakBiFiberProduct( m1L, m2L );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( fp_proj2L );
+#! true
 Display( UnderlyingHomalgMatrix( fp_proj2L ) );
 #! x_1,
 #! x_2 
@@ -281,6 +309,8 @@ BiasedWeakFiberProduct( m1L, m2L );
 pbwfprow := ProjectionOfBiasedWeakFiberProduct( m1L, m2L );
 #! <A morphism in the category of graded rows over
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( pbwfprow );
+#! true
 Display( pbwfprow );
 #! A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
@@ -293,6 +323,8 @@ poL := WeakBiPushout( morL, m2L );
 inj1L := InjectionOfFirstCofactorOfWeakBiPushout( morL, m2L );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( inj1L );
+#! true
 Display( UnderlyingHomalgMatrix( inj1L ) );
 #! 1,0,
 #! 0,1 
@@ -300,6 +332,8 @@ Display( UnderlyingHomalgMatrix( inj1L ) );
 inj2L := InjectionOfSecondCofactorOfWeakBiPushout( morL, m2L );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( inj2L );
+#! true
 Display( UnderlyingHomalgMatrix( inj2L ) );
 #! x_1,x_2
 #! (over a graded ring)
@@ -312,6 +346,8 @@ Display( tensorProductL );
 tensorProductMorphismL := TensorProductOnMorphisms( m2L, morL );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( tensorProductMorphismL );
+#! true
 Display( tensorProductMorphismL );
 #! A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ]) 
@@ -323,12 +359,17 @@ Display( DualOnObjects( TensorProductOnObjects( ObjectL, Object2L ) ) );
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 16 and degrees: 
 #! [ [ ( -2, 0 ), 5 ], [ ( -1, -1 ), 2 ], [ ( -2, 0 ), 6 ], [ ( -1, -1 ), 2 ], 
 #! [ ( -2, 0 ), 1 ] ]
+IsWellDefined( DualOnMorphisms( m1L ) );
+#! true
 Display( DualOnMorphisms( m1L ) );
 #! A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ]) 
 #! with matrix: 
 #! x_1,x_2
 #! (over a graded ring)
+IsWellDefined( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( 
+DualOnObjects( ObjectL ), ObjectL ), ObjectL, TensorUnit( categoryL ) ) );
+#! true
 Display( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( 
 DualOnObjects( ObjectL ), ObjectL ), ObjectL, TensorUnit( categoryL ) ) );
 #! A morphism in the category of graded rows over 
@@ -371,6 +412,8 @@ Display( IdentityMorphism( O2R ) );
 #! with matrix: 
 #! 1
 #! (over a graded ring)
+IsWellDefined( IdentityMorphism( Q2R ) );
+#! true
 directSumR := DirectSum( [ O1R, O2R ] );
 #! <A graded column of rank 3>
 Display( directSumR );
@@ -380,6 +423,8 @@ Display( directSumR );
 i1R := InjectionOfCofactorOfDirectSum( [ O1R, O2R ], 1 );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( i1R );
+#! true
 Display( UnderlyingHomalgMatrix( i1R ) );
 #! 1,0,
 #! 0,1,
@@ -388,6 +433,8 @@ Display( UnderlyingHomalgMatrix( i1R ) );
 i2R := InjectionOfCofactorOfDirectSum( [ O1R, O2R ], 2 );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ],[ 0, 1 ] ])>
+IsWellDefined( i2R );
+#! true
 Display( UnderlyingHomalgMatrix( i2R ) );
 #! 0,
 #! 0,
@@ -396,6 +443,8 @@ Display( UnderlyingHomalgMatrix( i2R ) );
 proj1R := ProjectionInFactorOfDirectSum( [ O1R, O2R ], 1 );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( proj1R );
+#! true
 Display( UnderlyingHomalgMatrix( proj1R ) );
 #! 1,0,0,
 #! 0,1,0
@@ -403,12 +452,16 @@ Display( UnderlyingHomalgMatrix( proj1R ) );
 proj2R := ProjectionInFactorOfDirectSum( [ O1R, O2R ], 2 );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( proj2R );
+#! true
 Display( UnderlyingHomalgMatrix( proj2R ) );
 #! 0,0,1
 #! (over a graded ring)
 kR := WeakKernelEmbedding( proj1R );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( kR );
+#! true
 Display( UnderlyingHomalgMatrix( kR ) );
 #! 0,
 #! 0,
@@ -417,6 +470,8 @@ Display( UnderlyingHomalgMatrix( kR ) );
 ckR := WeakCokernelProjection( kR );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( ckR );
+#! true
 Display( UnderlyingHomalgMatrix( ckR ) );
 #! 1,0,0,
 #! 0,1,0
@@ -433,12 +488,18 @@ m1R := GradedRowOrColumnMorphism( O1R,
       HomalgMatrix( [[ "x_1", "x_2" ]], S ), O2R );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( m1R );
+#! true
 m2R := IdentityMorphism( O2R );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( m2R );
+#! true
 liftR := Lift( m1R, m2R );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( liftR );
+#! true
 Display( UnderlyingHomalgMatrix( liftR ) );
 #! x_1,x_2
 #! (over a graded ring)
@@ -448,9 +509,13 @@ morR := GradedRowOrColumnMorphism(
        O2R, HomalgMatrix( [[ "x_1" ], [ "x_2" ]], S ), O3R );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( morR );
+#! true
 coliftR := Colift( m2R, morR );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( coliftR );
+#! true
 Display( UnderlyingHomalgMatrix( coliftR ) );
 #! x_1,
 #! x_2
@@ -460,6 +525,8 @@ fpR := WeakBiFiberProduct( m1R, m2R );
 fp_proj1R := ProjectionInFirstFactorOfWeakBiFiberProduct( m1R, m2R );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( fp_proj1R );
+#! true
 Display( UnderlyingHomalgMatrix( fp_proj1R ) );
 #! 1,0,
 #! 0,1 
@@ -467,6 +534,8 @@ Display( UnderlyingHomalgMatrix( fp_proj1R ) );
 fp_proj2R := ProjectionInSecondFactorOfWeakBiFiberProduct( m1R, m2R );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( pf_proj2R );
+#! true
 Display( UnderlyingHomalgMatrix( fp_proj2R ) );
 #! x_1, x_2
 #! (over a graded ring)
@@ -475,6 +544,8 @@ BiasedWeakFiberProduct( m1R, m2R );
 pbwfpcol := ProjectionOfBiasedWeakFiberProduct( m1R, m2R );
 #! <A morphism in the category of graded columns over
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( pbwfpcol );
+#! true
 Display( pbwfpcol );
 #! A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
@@ -487,6 +558,8 @@ poR := WeakBiPushout( morR, m2R );
 inj1R := InjectionOfFirstCofactorOfWeakBiPushout( morR, m2R );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( inj1R );
+#! true
 Display( UnderlyingHomalgMatrix( inj1R ) );
 #! 1,0,
 #! 0,1 
@@ -494,6 +567,8 @@ Display( UnderlyingHomalgMatrix( inj1R ) );
 inj2R := InjectionOfSecondCofactorOfWeakBiPushout( morR, m2R );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( inj2R );
+#! true
 Display( UnderlyingHomalgMatrix( inj2R ) );
 #! x_1,
 #! x_2
@@ -507,6 +582,8 @@ Display( tensorProductR );
 tensorProductMorphismR := TensorProductOnMorphisms( m2R, morR );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( tensorProductMorphismR );
+#! true
 Display( tensorProductMorphismR );
 #! A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ]) 
@@ -519,6 +596,8 @@ Display( DualOnObjects( TensorProductOnObjects( ObjectR, Object2R ) ) );
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 16 and degrees: 
 #! [ [ ( -2, 0 ), 5 ], [ ( -1, -1 ), 2 ], [ ( -2, 0 ), 6 ], [ ( -1, -1 ), 2 ], 
 #! [ ( -2, 0 ), 1 ] ]
+IsWellDefined( DualOnMorphisms( m1R ) );
+#! true
 Display( DualOnMorphisms( m1R ) );
 #! A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
@@ -526,6 +605,9 @@ Display( DualOnMorphisms( m1R ) );
 #! x_1,
 #! x_2 
 #! (over a graded ring)
+IsWellDefined( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( 
+DualOnObjects( ObjectR ), ObjectR ), ObjectR, TensorUnit( categoryR ) ) );
+#! true
 Display( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( 
 DualOnObjects( ObjectR ), ObjectR ), ObjectR, TensorUnit( categoryR ) ) );
 #! A morphism in the category of graded columns over 
