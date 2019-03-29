@@ -85,11 +85,11 @@ IsEqualForObjects( Object2R, Object2RShuffle );
 #####################################
 
 #! @Example
-Q1L := GradedRow( [ [[1,0],1] ], S );
+Q1L := GradedRow( [ [[0,0],1] ], S );
 #! <A graded row of rank 1>
 IsWellDefined( Q1L );
 #! true
-Q2L := GradedRow( [ [[0,0],2] ], S );
+Q2L := GradedRow( [ [[1,0],2] ], S );
 #! <A graded row of rank 2>
 m1L := GradedRowOrColumnMorphism( 
       Q1L, HomalgMatrix( [["x_1","x_2"]], S ) ,Q2L );
@@ -100,19 +100,19 @@ IsWellDefined( m1L );
 Display( Source( m1L ) );
 #! A graded row over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees: 
-#! [ [ ( 1, 0 ), 1 ] ]
+#! [ [ 0, 1 ] ]
 Display( Range( m1L ) );
 #! A graded row over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees: 
-#! [ [ 0, 2 ] ]
+#! [ [ ( 1, 0 ), 2 ] ]
 Display( UnderlyingHomalgMatrix( m1L ) );
 #! x_1,x_2
 #! (over a graded ring)
-Q1R := GradedColumn( [ [[1,0],1] ], S );
+Q1R := GradedColumn( [ [[0,0],1] ], S );
 #! <A graded column of rank 1>
 IsWellDefined( Q1R );
 #! true
-Q2R := GradedColumn( [ [[0,0],2] ], S );
+Q2R := GradedColumn( [ [[1,0],2] ], S );
 #! <A graded column of rank 2>
 m1R := GradedRowOrColumnMorphism( 
       Q1R, HomalgMatrix( [["x_1"],["x_2"]], S ) ,Q2R );
@@ -123,11 +123,11 @@ IsWellDefined( m1R );
 Display( Source( m1R ) );
 #! A graded column over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees: 
-#! [ [ ( 1, 0 ), 1 ] ]
+#! [ [ 0, 1 ] ]
 Display( Range( m1R ) );
 #! A graded column over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees: 
-#! [ [ 0, 2 ] ]
+#! [ [ ( 1, 0 ), 2 ] ]
 Display( UnderlyingHomalgMatrix( m1R ) );
 #! x_1,
 #! x_2
