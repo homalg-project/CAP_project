@@ -30,6 +30,25 @@
 #! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha \sim_{A,B'} \alpha' \circ \mu$,
 #! we obtain a morphism $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$.
 
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{2};
+#! \def\h{1};
+#! \node (K) at (-\w,0) {$K$};
+#! \node (T) at (-\w,\w) {$T$};
+#! \node (A) at (0,0) {$A$};
+#! \node (B) at (\w,0) {$B$};
+#! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
+#! \draw[-latex] (K) to node[pos=0.45, above] {$\iota$} (A);
+#! \draw[-latex] (T) to node[pos=0.45, above right] {$\tau$} (A);
+#! \draw[dashed, -latex] (T) to node[pos=0.45, left] {$\exists ! u( \tau )$} (K);
+#! \draw[-latex] (T) to [out = 0, in = 135] node[pos=0.45, above] {$0$} (B);
+#! \draw[-latex] (K) to [out = -45, in = -135] node[pos=0.45, below] {$0$} (B);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
 
 ## Main Operations and Attributes
 #! @Description
