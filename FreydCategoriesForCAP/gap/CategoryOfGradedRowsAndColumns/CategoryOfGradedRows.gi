@@ -219,7 +219,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
 
             else
 
-              buffer_col[ j ] := source_degrees[ j ] - degrees_of_entries_matrix[ j ][ i ];
+              buffer_col[ j ] := source_degrees[ j ] + degrees_of_entries_matrix[ j ][ i ];
 
             fi;
 
