@@ -1896,6 +1896,22 @@ DeclareProperty( "IS_IMPLIED_DIRECT_SUM",
 #! For $(\mu_i: I_i \rightarrow I'_i)_{i=1\dots n}$,
 #! we obtain a morphism $\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i'$.
 
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (I) at (0,0) {$I$};
+#! \node (I1) at (-\w,0) {$I_1$};
+#! \node (I2) at (\w,0) {$I_2$};
+#! \node (T) at (0,\w) {$T$};
+#! \draw[-latex] (S1) to node[pos=0.45, below] {$\iota_1$} (S);
+#! \draw[-latex] (S2) to node[pos=0.45, below] {$\iota_2$} (S);
+#! \draw[-latex] (S1) to [out = 90, in = -180] node[pos=0.45, above left] {$\tau_1$} (T);
+#! \draw[-latex] (S2) to [out = 90, in = 0] node[pos=0.45, above right] {$\tau_2$} (T);
+#! \draw[dashed, -latex] (S) to node[pos=0.45, left] {$\exists u ( \tau )$} (T);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 
 
 ## Main Operations and Attributes
