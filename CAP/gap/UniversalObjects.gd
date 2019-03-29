@@ -33,8 +33,7 @@
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{2};
-#! \def\h{1};
+#! \def\w{4};
 #! \node (K) at (-\w,0) {$K$};
 #! \node (T) at (-\w,\w) {$T$};
 #! \node (A) at (0,0) {$A$};
@@ -43,8 +42,8 @@
 #! \draw[-latex] (K) to node[pos=0.45, above] {$\iota$} (A);
 #! \draw[-latex] (T) to node[pos=0.45, above right] {$\tau$} (A);
 #! \draw[dashed, -latex] (T) to node[pos=0.45, left] {$\exists ! u( \tau )$} (K);
-#! \draw[-latex] (T) to [out = 0, in = 135] node[pos=0.45, above] {$0$} (B);
-#! \draw[-latex] (K) to [out = -45, in = -135] node[pos=0.45, below] {$0$} (B);
+#! \draw[-latex, dotted] (T) to [out = 0, in = 90] node[pos=0.45, above right] {$\alpha \circ \tau \sim_{T,B} 0$} (B);
+#! \draw[-latex, dotted] (K) to [out = -45, in = -135] node[pos=0.45, below] {$\alpha \circ \iota \sim_{K,B} 0$} (B);
 #! \end{tikzpicture}
 #! \end{center}
 #! @EndLatexOnly
@@ -2459,8 +2458,7 @@ DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{2};
-#! \def\h{1};
+#! \def\w{4};
 #! \node (E) at (-\w,0) {$E$};
 #! \node (T) at (-\w,\w) {$T$};
 #! \node (A) at (0,0) {$A$};
@@ -2470,8 +2468,8 @@ DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
 #! \draw[-latex] (E) to node[pos=0.45, above] {$\iota$} (A);
 #! \draw[-latex] (T) to node[pos=0.45, above right] {$\tau$} (A);
 #! \draw[dashed, -latex] (T) to node[pos=0.45, left] {$\exists ! u( \tau )$} (E);
-#! \draw[-latex] (T) to [out = 0, in = 135] node[pos=0.45, above] {$\beta_2 \circ \tau \sim_{T,B} \beta_1 \circ \tau$} (B);
-#! \draw[-latex] (K) to [out = -45, in = -135] node[pos=0.45, below] {$\beta_2 \circ \iota \sim_{E,B} \beta_1 \circ \iota$} (B);
+#! \draw[-latex, dotted] (T) to [out = 0, in = 90] node[pos=0.45, above right] {$\beta_2 \circ \tau \sim_{T,B} \beta_1 \circ \tau$} (B);
+#! \draw[-latex, dotted] (E) to [out = -45, in = -135] node[pos=0.45, below] {$\beta_2 \circ \iota \sim_{E,B} \beta_1 \circ \iota$} (B);
 #! \end{tikzpicture}
 #! \end{center}
 #! @EndLatexOnly
