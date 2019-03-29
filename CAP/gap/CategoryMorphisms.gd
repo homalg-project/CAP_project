@@ -1365,6 +1365,21 @@ DeclareOperation( "AddIsColiftable",
 #! $\alpha \circ \alpha^{-1} \sim_{b,b} \mathrm{id}_b$
 #! and $\alpha^{-1} \circ \alpha \sim_{a,a} \mathrm{id}_a$.
 
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{2};
+#! \def\h{1};
+#! \node (a) at (0,0) {$a$};
+#! \node (b) at (\w,0) {$b$};
+#! \draw[-latex] (a) to node[pos=0.45, above] {$\alpha$} (b);
+#! \draw[-latex] (b) to [out = -135, in = -45] node[pos=0.45, below] {$\alpha^{-1}$} (a);
+#! \draw [-latex] (a.135) arc (45:45+280:4mm) node[pos=0.5,left] {$\mathrm{id}_a$} (a);
+#! \draw [-latex] (b.45) arc (-240:-240-280:4mm) node[pos=0.5,right] {$\mathrm{id}_b$} (b);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operations adds the given function $F$
