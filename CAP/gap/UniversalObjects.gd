@@ -3582,6 +3582,26 @@ DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
 #! such that $\beta_i' \circ \beta \sim_{B, I_i'} \mu_i \circ \beta_i$ for $i = 1, \dots n$)
 #! we obtain a morphism $\mathrm{Pushout}( D ) \rightarrow \mathrm{Pushout}( D' )$.
 
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (B) at (0,0) {$B$};
+#! \node (I1) at (\w,0) {$I_1$};
+#! \node (I2) at (0,\w) {$I_2$};
+#! \node (I) at (\w,\w) {$I$};
+#! \node (T) at (\w,2*\w) {$T$};
+#! \draw[-latex] (B) to node[pos=0.45, below] {$\beta_1$} (I1);
+#! \draw[-latex] (B) to node[pos=0.45, left] {$\beta_2$} (I2);
+#! \draw[-latex] (I1) to node[pos=0.45, left] {$\iota_1$} (I);
+#! \draw[-latex] (I2) to node[pos=0.45, above] {$\iota_2$} (I);
+#! \draw[-latex] (I1) to [out = 0, in = -90] node[pos=0.45, right] {$\tau_1$} (I);
+#! \draw[-latex] (I2) to [out = 90, in = 180] node[pos=0.45, above] {$\tau_2$} (I);
+#! \draw[-latex, dashed] (I) to node[pos=0.45, below right] {$\exists u ( \tau )$} (T);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
 #! @Description
 #! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
 #! The output is a morphism
