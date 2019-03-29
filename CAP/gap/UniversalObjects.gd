@@ -4439,6 +4439,23 @@ DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
 #! We say that the morphism $u( \tau )$ is induced by the
 #! <Emph>universal property of the coimage</Emph>.
 
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (C) at (-\w,\w) {$C$};
+#! \node (T) at (-\w,-\w) {$T$};
+#! \node (A) at (0,0) {$A$};
+#! \node (B) at (\w,0) {$B$};
+#! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
+#! \draw[-latex, postaction={draw, shorten >=3pt, -latex}] (A) to node[pos=0.45, left] {$\pi$} (C);
+#! \draw[-latex, postaction={draw, shorten >=3pt, -latex}] (A) to node[pos=0.45, left] {$\tau_1$} (T);
+#! \draw[-latex] (T) to [out = 0, in = -90] node[pos=0.45, below right] {$\tau_2$} (B);
+#! \draw[-latex] (C) to [out = 0, in = 90] node[pos=0.45, above right] {$a$} (B);
+#! \draw[-latex] (T) to node[pos=0.45, right] {$u( \tau )$} (C);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
