@@ -303,6 +303,18 @@ inj2L := InjectionOfSecondCofactorOfWeakBiPushout( morL, m2L );
 Display( UnderlyingHomalgMatrix( inj2L ) );
 #! x_1,x_2
 #! (over a graded ring)
+injectionL := InjectionOfBiasedWeakPushout( morL, m2L );
+#! <A morphism in the category of graded rows over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( injectionL );
+#! true
+Display( injectionL );
+#! A morphism in the category of graded rows over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! with matrix:
+#! 1,0,
+#! 0,1
+#! (over a graded ring)
 tensorProductL := TensorProductOnObjects( O1L, O2L );
 #! <A graded row of rank 2>
 Display( tensorProductL );
@@ -497,6 +509,18 @@ inj2R := InjectionOfSecondCofactorOfWeakBiPushout( morR, m2R );
 Display( UnderlyingHomalgMatrix( inj2R ) );
 #! x_1,
 #! x_2
+#! (over a graded ring)
+injectionR := InjectionOfBiasedWeakPushout( morR, m2R );
+#! <A morphism in the category of graded columns over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( injectionR );
+#! true
+Display( injectionR );
+#! A morphism in the category of graded columns over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! with matrix:
+#! 1,0,
+#! 0,1
 #! (over a graded ring)
 tensorProductR := TensorProductOnObjects( O1R, O2R );
 #! <A graded column of rank 2>
