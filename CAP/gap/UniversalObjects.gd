@@ -3590,13 +3590,13 @@ DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
 #! \node (I1) at (\w,0) {$I_1$};
 #! \node (I2) at (0,\w) {$I_2$};
 #! \node (I) at (\w,\w) {$I$};
-#! \node (T) at (\w,2*\w) {$T$};
+#! \node (T) at (2*\w,2*\w) {$T$};
 #! \draw[-latex] (B) to node[pos=0.45, below] {$\beta_1$} (I1);
 #! \draw[-latex] (B) to node[pos=0.45, left] {$\beta_2$} (I2);
 #! \draw[-latex] (I1) to node[pos=0.45, left] {$\iota_1$} (I);
 #! \draw[-latex] (I2) to node[pos=0.45, above] {$\iota_2$} (I);
-#! \draw[-latex] (I1) to [out = 0, in = -90] node[pos=0.45, right] {$\tau_1$} (I);
-#! \draw[-latex] (I2) to [out = 90, in = 180] node[pos=0.45, above] {$\tau_2$} (I);
+#! \draw[-latex] (I1) to [out = 0, in = -90] node[pos=0.45, right] {$\tau_1$} (T);
+#! \draw[-latex] (I2) to [out = 90, in = 180] node[pos=0.45, above] {$\tau_2$} (T);
 #! \draw[-latex, dashed] (I) to node[pos=0.45, below right] {$\exists u ( \tau )$} (T);
 #! \end{tikzpicture}
 #! \end{center}
@@ -4129,6 +4129,24 @@ DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",
 #! We say that the morphism $u( \tau )$ is induced by the
 #! <Emph>universal property of the image</Emph>.
 ## Main Operations and Attributes
+
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (A) at (-\w,0) {$A$};
+#! \node (B) at (0,0) {$B$};
+#! \node (I) at (\w,\w) {$I$};
+#! \node (T) at (\w,-\w) {$T$};
+#! \draw[-latex] (A) to node[pos=0.45, below] {$\alpha$} (B);
+#! \draw[-latex] (A) to [out = 90, in = 180] node[pos=0.45, above left] {$c$} (I);
+#! \draw[-latex] (A) to [out = -90, in = 180] node[pos=0.45, below left] {$\tau_1$} (T);
+#! \draw[right hook-latex] (I) to node[pos=0.45, left] {$\iota$} (B);
+#! \draw[right hook-latex] (T) to node[pos=0.45, left] {$\tau_2$} (B);
+#! \draw[-latex] (I) to node[pos=0.45, right] {$u( \tau )$} (T);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 
 #! @Description
 #! The argument is a morphism $\alpha$.
