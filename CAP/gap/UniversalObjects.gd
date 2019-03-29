@@ -293,8 +293,7 @@ DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{2};
-#! \def\h{1};
+#! \def\w{4};
 #! \node (A) at (0,0) {$A$};
 #! \node (B) at (\w,0) {$B$};
 #! \node (K) at (2*\w,0) {$K$};
@@ -303,8 +302,8 @@ DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
 #! \draw[-latex] (B) to node[pos=0.45, above] {$\epsilon$} (K);
 #! \draw[-latex] (B) to node[pos=0.45, above left] {$\tau$} (T);
 #! \draw[dashed, -latex] (K) to node[pos=0.45, right] {$\exists ! u( \tau )$} (T);
-#! \draw[-latex] (A) to [out = 90, in = 180] node[pos=0.45, above] {$0$} (T);
-#! \draw[-latex] (A) to [out = -45, in = -135] node[pos=0.45, below] {$0$} (K);
+#! \draw[-latex, dotted] (A) to [out = 90, in = 180] node[pos=0.45, above left] {$\tau \circ \alpha \sim_{A, T} 0$} (T);
+#! \draw[-latex, dotted] (A) to [out = -45, in = -135] node[pos=0.45, below] {$\epsilon \circ \alpha \sim_{A,K} 0$} (K);
 #! \end{tikzpicture}
 #! \end{center}
 #! @EndLatexOnly
