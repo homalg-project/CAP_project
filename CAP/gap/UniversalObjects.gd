@@ -1199,7 +1199,7 @@ DeclareOperation( "AddInitialObjectFunctorial",
 #! \def\a{20};
 #! \node (S) at (0,0) {$S$};
 #! \node (S1) at (-\w,0) {$S_1$};
-#! \node (S2) at (\w,0) {S_2$};
+#! \node (S2) at (\w,0) {$S_2$};
 #! \node (T) at (0,\w) {$T$};
 #! \draw[-latex] (S) to [out = 180-\a, in = \a] node[pos=0.45, above] {$\pi_1$} (S1);
 #! \draw[-latex] (S) to [out = \a, in = 180-\a] node[pos=0.45, above] {$\pi_2$} (S2);
@@ -1219,7 +1219,7 @@ DeclareOperation( "AddInitialObjectFunctorial",
 #! \def\a{20};
 #! \node (S) at (0,0) {$S$};
 #! \node (S1) at (-\w,0) {$S_1$};
-#! \node (S2) at (\w,0) {S_2$};
+#! \node (S2) at (\w,0) {$S_2$};
 #! \node (T) at (0,\w) {$T$};
 #! \draw[-latex] (S) to [out = 180-\a, in = \a] node[pos=0.45, above] {$\pi_1$} (S1);
 #! \draw[-latex] (S) to [out = \a, in = 180-\a] node[pos=0.45, above] {$\pi_2$} (S2);
@@ -1231,6 +1231,7 @@ DeclareOperation( "AddInitialObjectFunctorial",
 #! \end{tikzpicture}
 #! \end{center}
 #! @EndLatexOnly
+
 
 
 ## Main Operations and Attributes
