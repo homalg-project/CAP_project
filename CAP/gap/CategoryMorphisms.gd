@@ -1069,9 +1069,38 @@ DeclareOperation( "AddIsWellDefinedForMorphisms",
 #! * For any pair of morphisms $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$,
 #!  we call each morphism $\alpha / \beta: a \rightarrow b$ such that
 #!  $\beta \circ (\alpha / \beta) \sim_{a,c} \alpha$ a <Emph>lift of $\alpha$ along $\beta$</Emph>.
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{2};
+#! \def\h{1};
+#! \node (a) at (0,\h) {$a$};
+#! \node (b) at (0,-\h) {$b$};
+#! \node (c) at (\w,0) {$c$};
+#! \draw[-latex] (a) to node[pos=0.45, above] {$\alpha$} (c);
+#! \draw[-latex] (b) to node[pos=0.45, below] {$\beta$} (c);
+#! \draw[-latex, dashed] (a) to node[pos=0.45, left] {$\alpha/\beta$} (b);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 #! * For any pair of morphisms $\alpha: a \rightarrow c$, $\beta: a \rightarrow b$,
 #!  we call each morphism $\alpha \backslash \beta: c \rightarrow b$ such that
 #!  $(\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta$ a <Emph> colift of $\beta$ along $\alpha$</Emph>.
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{2};
+#! \def\h{1};
+#! \node (a) at (0,0) {$a$};
+#! \node (c) at (\w,\h) {$c$};
+#! \node (b) at (\w,-\h) {$b$};
+#! \draw[-latex] (a) to node[pos=0.45, above] {$\alpha$} (c);
+#! \draw[-latex] (a) to node[pos=0.45, below] {$\beta$} (b);
+#! \draw[-latex, dashed] (c) to node[pos=0.45, right] {$\alpha \backslash \beta$} (b);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
 #! Note that such lifts (or colifts) do not have to be unique. So in general,
 #! we do not expect that algorithms computing lifts (or colifts) do this in a functorial way.
 #! Thus the operations $\mathtt{Lift}$ and $\mathtt{Colift}$ are not regarded as 
