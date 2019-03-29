@@ -2739,6 +2739,25 @@ DeclareOperation( "AddEqualizerFunctorialWithGivenEqualizers",
 #! such that $\beta_i' \circ \beta \sim_{B, A'} \mu \circ \beta_i$ for $i = 1, \dots n$)
 #! we obtain a morphism $\mathrm{Coequalizer}( D ) \rightarrow \mathrm{Coequalizer}( D' )$.
 
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (B) at (0,0) {$B$};
+#! \node (A) at (\w,0) {$A$};
+#! \node (C) at (2*\w,0) {$C$};
+#! \node (T) at (2*\w,\w) {$T$};
+#! \draw[-latex] (B) to [out = 20, in = 180-20] node[pos=0.45, above] {$\beta_1$} (A);
+#! \draw[-latex] (B) to [out = -20, in = -180+20] node[pos=0.45, below] {$\beta_2$} (A);
+#! \draw[-latex] (A) to node[pos=0.45, above] {$\pi$} (C);
+#! \draw[-latex] (A) to node[pos=0.45, above left] {$\tau$} (T);
+#! \draw[dashed, -latex] (C) to node[pos=0.45, right] {$\exists ! u( \tau )$} (T);
+#! \draw[-latex, dotted] (B) to [out = 90, in = 180] node[pos=0.45, above left] {$\tau \circ \beta_1 \sim_{B,T} \tau \circ \beta_2$} (T);
+#! \draw[-latex, dotted] (B) to [out = -45, in = -135] node[pos=0.45, below] {$\pi \circ \beta_1 \sim_{B,C} \pi \circ \beta_2$} (C);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
 ## Main Operations and Attributes
 
 
