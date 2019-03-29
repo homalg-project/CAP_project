@@ -302,8 +302,8 @@ DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
 #! \node (T) at (2*\w,\w) {$T$};
 #! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
 #! \draw[-latex] (B) to node[pos=0.45, above] {$\epsilon$} (K);
-#! \draw[-latex] (B) to node[pos=0.45, above right] {$\tau$} (T);
-#! \draw[dashed, -latex] (K) to node[pos=0.45, left] {$\exists ! u( \tau )$} (T);
+#! \draw[-latex] (B) to node[pos=0.45, above left] {$\tau$} (T);
+#! \draw[dashed, -latex] (K) to node[pos=0.45, right] {$\exists ! u( \tau )$} (T);
 #! \draw[-latex] (A) to [out = 90, in = 180] node[pos=0.45, above] {$0$} (T);
 #! \draw[-latex] (A) to [out = -45, in = -135] node[pos=0.45, below] {$0$} (K);
 #! \end{tikzpicture}
@@ -1191,6 +1191,46 @@ DeclareOperation( "AddInitialObjectFunctorial",
 #! $\mathrm{DirectSum}$ is a functorial operation. This means:
 #! For $(\mu_i: S_i \rightarrow S'_i)_{i=1\dots n}$,
 #! we obtain a morphism $\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i'$.
+
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \def\a{20};
+#! \node (S) at (0,0) {$S$};
+#! \node (S1) at (-\w,0) {$S_1$};
+#! \node (S2) at (\w,0) {S_2$};
+#! \node (T) at (0,\w) {$T$};
+#! \draw[-latex] (S) to [out = 180-\a, in = \a] node[pos=0.45, above] {$\pi_1$} (S1);
+#! \draw[-latex] (S) to [out = \a, in = 180-\a] node[pos=0.45, above] {$\pi_2$} (S2);
+#! \draw[-latex] (S1) to [out = -\a, in = -180+\a] node[pos=0.45, below] {$\iota_1$} (S);
+#! \draw[-latex] (S2) to [out = -180+\a, in = -\a] node[pos=0.45, below] {$\iota_2$} (S);
+#! \draw[-latex] (T) to [out = -180, in = 90] node[pos=0.45, above left] {$\tau_1$} (S1);
+#! \draw[-latex] (T) to [out = 0, in = 90] node[pos=0.45, above right] {$\tau_2$} (S2);
+#! \draw[dashed, -latex] (T) to node[pos=0.45, left] {$\exists u_{in} ( \tau )$} (S);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \def\a{20};
+#! \node (S) at (0,0) {$S$};
+#! \node (S1) at (-\w,0) {$S_1$};
+#! \node (S2) at (\w,0) {S_2$};
+#! \node (T) at (0,\w) {$T$};
+#! \draw[-latex] (S) to [out = 180-\a, in = \a] node[pos=0.45, above] {$\pi_1$} (S1);
+#! \draw[-latex] (S) to [out = \a, in = 180-\a] node[pos=0.45, above] {$\pi_2$} (S2);
+#! \draw[-latex] (S1) to [out = -\a, in = -180+\a] node[pos=0.45, below] {$\iota_1$} (S);
+#! \draw[-latex] (S2) to [out = -180+\a, in = -\a] node[pos=0.45, below] {$\iota_2$} (S);
+#! \draw[-latex] (S1) to [out = 90, in = -180] node[pos=0.45, above left] {$\tau_1$} (T);
+#! \draw[-latex] (S2) to [out = 90, in = 0] node[pos=0.45, above right] {$\tau_2$} (T);
+#! \draw[dashed, -latex] (S) to node[pos=0.45, left] {$\exists u_{out} ( \tau )$} (T);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 
 
 ## Main Operations and Attributes
