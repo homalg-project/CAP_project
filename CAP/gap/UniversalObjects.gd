@@ -2188,6 +2188,23 @@ DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
 #! For $(\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$,
 #! we obtain a morphism $\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'$.
 
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (P) at (0,0) {$P$};
+#! \node (P1) at (-\w,0) {$P_1$};
+#! \node (P2) at (\w,0) {$P_2$};
+#! \node (T) at (0,\w) {$T$};
+#! \draw[-latex] (P) to node[pos=0.45, above] {$\pi_1$} (P1);
+#! \draw[-latex] (P) to node[pos=0.45, above] {$\pi_2$} (P2);
+#! \draw[-latex] (T) to [out = -180, in = 90] node[pos=0.45, above left] {$\tau_1$} (P1);
+#! \draw[-latex] (T) to [out = 0, in = 90] node[pos=0.45, above right] {$\tau_2$} (P2);
+#! \draw[dashed, -latex] (T) to node[pos=0.45, left] {$\exists u ( \tau )$} (P);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
 
 ## Main Operations and Attributes
 #! @Description
