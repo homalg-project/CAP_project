@@ -85,12 +85,12 @@ IsEqualForObjects( Object2R, Object2RShuffle );
 #####################################
 
 #! @Example
-Q1L := GradedRow( [ [[0,0],2] ], S );
-#! <A graded row of rank 2>
+Q1L := GradedRow( [ [[0,0],1] ], S );
+#! <A graded row of rank 1>
 IsWellDefined( Q1L );
 #! true
-Q2L := GradedRow( [ [[1,0],1] ], S );
-#! <A graded row of rank 1>
+Q2L := GradedRow( [ [[1,0],2] ], S );
+#! <A graded row of rank 2>
 m1L := GradedRowOrColumnMorphism( 
       Q1L, HomalgMatrix( [["x_1","x_2"]], S ) ,Q2L );
 #! <A morphism in the category of graded rows over 
@@ -100,11 +100,11 @@ IsWellDefined( m1L );
 Display( Source( m1L ) );
 #! A graded row over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees: 
-#! [ [ 0, 2 ] ]
+#! [ [ 0, 1 ] ]
 Display( Range( m1L ) );
 #! A graded row over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees: 
-#! [ [ ( 1, 0 ), 1 ] ]
+#! [ [ ( 1, 0 ), 2 ] ]
 Display( UnderlyingHomalgMatrix( m1L ) );
 #! x_1,x_2
 #! (over a graded ring)
@@ -162,7 +162,7 @@ categoryR := CapCategory( Q1R );
 
 ZeroObject( categoryL );
 #! <A graded row of rank 0>
-O1L := GradedRow( [ [[1,0],2] ], S );
+O1L := GradedRow( [ [[-1,0],2] ], S );
 #! <A graded row of rank 2>
 Display( ZeroMorphism( ZeroObject( categoryL ), O1L ) );
 #! A morphism in the category of graded rows over 
@@ -170,6 +170,8 @@ Display( ZeroMorphism( ZeroObject( categoryL ), O1L ) );
 #! with matrix: 
 #! (an empty 0 x 2 matrix)
 O2L := GradedRow( [ [[0,0],1] ], S );
+#! <A graded row of rank 1>
+obj3L := GradedRow( [ [[-1,0],1] ], S );
 #! <A graded row of rank 1>
 Display( IdentityMorphism( O2L ) );
 #! A morphism in the category of graded rows over 
@@ -184,7 +186,7 @@ directSumL := DirectSum( [ O1L, O2L ] );
 Display( directSumL );
 #! A graded row over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 3 and degrees:
-#! [ [ ( 1, 0 ), 2 ], [ 0, 1 ] ]
+#! [ [ ( -1, 0 ), 2 ], [ 0, 1 ] ]
 i1L := InjectionOfCofactorOfDirectSum( [ O1L, O2L ], 1 );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
@@ -259,16 +261,21 @@ m2L := IdentityMorphism( O2L );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( m2L );
 #! true
-liftL := Lift( m1L, m2L );
+m3L := GradedRowOrColumnMorphism( obj3L, 
+      HomalgMatrix( [[ "x_1" ]], S ), O2L );
+#! <A morphism in the category of graded rows over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( m3L );
+#! true
+liftL := Lift( m3L, m1L );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( liftL );
 #! true
 Display( UnderlyingHomalgMatrix( liftL ) );
-#! x_1,
-#! x_2 
+#! 1, 0
 #! (over a graded ring)
-O3L := GradedRow( [ [[-1,0],2] ], S );
+O3L := GradedRow( [ [[1,0],2] ], S );
 #! <A graded row of rank 2>
 morL := GradedRowOrColumnMorphism( 
        O2L, HomalgMatrix( [[ "x_1, x_2" ]], S ), O3L );
@@ -342,7 +349,7 @@ tensorProductL := TensorProductOnObjects( O1L, O2L );
 Display( tensorProductL );
 #! A graded row over Q[x_1,x_2,x_3,x_4] (with weights 
 #! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees: 
-#! [ [ ( 1, 0 ), 2 ] ]
+#! [ [ ( -1, 0 ), 2 ] ]
 tensorProductMorphismL := TensorProductOnMorphisms( m2L, morL );
 #! <A morphism in the category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
@@ -397,7 +404,7 @@ Display( InternalHomOnObjects( ObjectL, ObjectL ) );
 #! @Example
 ZeroObject( categoryR );
 #! <A graded column of rank 0>
-O1R := GradedColumn( [ [[1,0],2] ], S );
+O1R := GradedColumn( [ [[-1,0],2] ], S );
 #! <A graded column of rank 2>
 Display( ZeroMorphism( ZeroObject( categoryR ), O1R ) );
 #! A morphism in the category of graded columns over 
@@ -405,6 +412,8 @@ Display( ZeroMorphism( ZeroObject( categoryR ), O1R ) );
 #! with matrix: 
 #! (an empty 2 x 0 matrix)
 O2R := GradedColumn( [ [[0,0],1] ], S );
+#! <A graded column of rank 1>
+obj3R := GradedColumn( [ [[-1,0],1] ], S );
 #! <A graded column of rank 1>
 Display( IdentityMorphism( O2R ) );
 #! A morphism in the category of graded columns over 
@@ -419,7 +428,7 @@ directSumR := DirectSum( [ O1R, O2R ] );
 Display( directSumR );
 #! A graded column over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 3 and degrees:
-#! [ [ ( 1, 0 ), 2 ], [ 0, 1 ] ]
+#! [ [ ( -1, 0 ), 2 ], [ 0, 1 ] ]
 i1R := InjectionOfCofactorOfDirectSum( [ O1R, O2R ], 1 );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
@@ -495,15 +504,22 @@ m2R := IdentityMorphism( O2R );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( m2R );
 #! true
-liftR := Lift( m1R, m2R );
+m3R := GradedRowOrColumnMorphism( obj3R, 
+      HomalgMatrix( [[ "x_1" ]], S ), O2R );
+#! <A morphism in the category of graded columns over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
+IsWellDefined( m3R );
+#! true
+liftR := Lift( m3R, m1R );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( liftR );
 #! true
 Display( UnderlyingHomalgMatrix( liftR ) );
-#! x_1,x_2
+#! 1,
+#! 0
 #! (over a graded ring)
-O3R := GradedColumn( [ [[-1,0],2] ], S );
+O3R := GradedColumn( [ [[1,0],2] ], S );
 #! <A graded column of rank 2>
 morR := GradedRowOrColumnMorphism( 
        O2R, HomalgMatrix( [[ "x_1" ], [ "x_2" ]], S ), O3R );
@@ -578,7 +594,7 @@ tensorProductR := TensorProductOnObjects( O1R, O2R );
 Display( tensorProductR );
 #! A graded column over Q[x_1,x_2,x_3,x_4] (with weights 
 #! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees: 
-#! [ [ ( 1, 0 ), 2 ] ]
+#! [ [ ( -1, 0 ), 2 ] ]
 tensorProductMorphismR := TensorProductOnMorphisms( m2R, morR );
 #! <A morphism in the category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
