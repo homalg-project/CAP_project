@@ -761,6 +761,38 @@ DeclareOperation( "AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiased
 ##
 ####################################
 
+#! For a given pair of morphisms $(\alpha: A \rightarrow B, \beta \colon A \rightarrow C)$, a weak bi-pushout of $(\alpha, \beta)$ consists of three parts:
+#! * an object $P$,
+#! * morphisms $\iota_1: B \rightarrow P$, $\iota_2: C \rightarrow P$ such that $\iota_1 \circ \alpha \sim_{P,A} \iota_2 \circ \beta$,
+#! * a dependent function $u$ mapping each pair $\tau = (\tau_1, \tau_2)$ of morphisms $\tau_1: B \rightarrow T$, $\tau_2: C \rightarrow T$ with the property $\tau_1 \circ \alpha \sim_{T,A} \tau_2 \circ \beta$ to a morphism $u(\tau): P \rightarrow T$ such that $u( \tau ) \circ \iota_1 \sim_{B,T} \tau_1$ and $u( \tau ) \circ \iota_2 \sim_{C,T} \tau_2$.
+#! The quadrupel $( P, \iota_1, \iota_2, u )$ is called a <Emph>weak bi-pushout</Emph> of $(\alpha,\beta)$.
+#! We denote the object $P$ of such a quadrupel by $\mathrm{WeakBiPushout}(\alpha,\beta)$.
+#! We say that the morphism $u(\tau)$ is induced by the
+#! <Emph>universal property of the weak bi-pushout</Emph>.
+#! $\\ $
+
+## FIXME functoriality of $\mathrm{WeakBiPushout}$
+
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (A) at (0,0) {$A$};
+#! \node (B) at (\w,0) {$B$};
+#! \node (C) at (0,\w) {$C$};
+#! \node (P) at (\w,\w) {$P$};
+#! \node (T) at (2*\w,2*\w) {$T$};
+#! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
+#! \draw[-latex] (A) to node[pos=0.45, left] {$\beta$} (C);
+#! \draw[-latex] (B) to node[pos=0.45, right] {$\iota_1$} (P);
+#! \draw[-latex] (B) to [out = 0, in = -90] node[pos=0.45, right] {$\tau_1$} (T);
+#! \draw[-latex] (P) to node[pos=0.45, above left] {$u( \tau )$} (T);
+#! \draw[-latex] (C) to node[pos=0.45, above] {$\iota_2$} (P);
+#! \draw[-latex] (C) to [out = 90, in = 180] node[pos=0.45, above] {$\tau_2$} (T);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
 
 DeclareOperation( "WeakBiPushout",
                    [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
