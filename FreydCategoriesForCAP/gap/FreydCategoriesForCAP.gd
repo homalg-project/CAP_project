@@ -405,6 +405,37 @@ DeclareOperation( "AddWeakCokernelColiftWithGivenWeakCokernelObject",
 ##
 ####################################
 
+#! For a given pair of morphisms $(\alpha: A \rightarrow B, \beta \colon C \rightarrow B)$, a weak bi-fiber product of $(\alpha, \beta)$ consists of three parts:
+#! * an object $P$,
+#! * morphisms $\pi_1: P \rightarrow A$, $\pi_2: P \rightarrow B$ such that $\alpha \circ \pi_1 \sim_{P,B} \beta \circ \pi_2$,
+#! * a dependent function $u$ mapping each tripel consisting of an object $T$, a morphism $\tau_1: T \rightarrow A$ and a morphism $\tau: T \to C$ such that $\alpha \circ \tau_1 \sim_{T,B} \beta \circ \tau_2$ to a morphism $u(\tau):T \rightarrow P$ such that $\pi_1 \circ u( \tau ) \sim_{A,T} \tau_1$ and $\pi_2 \circ u( \tau ) \sim_{C,T} \tau_2$.
+#! The quadrupel $( P, \pi_1, \pi_2, u )$ is called a <Emph>weak bi-fiber product</Emph> of $(\alpha,\beta)$.
+#! We denote the object $P$ of such a quadrupel by $\mathrm{WeakBiFiberProduct}(\alpha,\beta)$.
+#! We say that the morphism $u(\tau)$ is induced by the
+#! <Emph>universal property of the weak bi-fiber product</Emph>.
+#! $\\ $
+
+## FIXME functoriality of $\mathrm{WeakBiFiberProduct}$
+
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (A) at (0,0) {$A$};
+#! \node (B) at (\w,0) {$B$};
+#! \node (C) at (\w,\w) {$C$};
+#! \node (P) at (0,\w) {$P$};
+#! \node (T) at (-\w,2*\w) {$T$};
+#! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
+#! \draw[-latex] (C) to node[pos=0.45, right] {$\beta$} (B);
+#! \draw[-latex] (P) to node[pos=0.45, left] {$\pi_1$} (A);
+#! \draw[-latex] (P) to node[pos=0.45, above] {$\pi_2$} (C);
+#! \draw[-latex] (T) to [out = -90, in = 180] node[pos=0.45, left] {$\tau_1$} (A);
+#! \draw[-latex] (T) to [out = 0, in = 90] node[pos=0.45, above] {$\tau_2$} (C);
+#! \draw[-latex] (T) to node[pos=0.45, above right] {$u( \tau )$} (P);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 
 ## Main Operations and Attributes
 
