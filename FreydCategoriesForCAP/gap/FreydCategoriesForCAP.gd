@@ -31,20 +31,19 @@ DeclareGlobalFunction( "UNIVERSAL_MORPHISM_FROM_BIASED_WEAK_PUSHOUT_PREFUNCTION"
 ##
 ####################################
 
-#! For a given morphism $\alpha: A \rightarrow B$, a kernel of $\alpha$ consists of three parts:
+#! For a given morphism $\alpha: A \rightarrow B$, a weak kernel of $\alpha$ consists of three parts:
 #! * an object $K$, 
 #! * a morphism $\iota: K \rightarrow A$ such that $\alpha \circ \iota \sim_{K,B} 0$,
 #! * a dependent function $u$ mapping each morphism $\tau: T \rightarrow A$ satisfying $\alpha \circ \tau \sim_{T,B} 0$ to a morphism $u(\tau): T \rightarrow K$ such that $\iota \circ u( \tau ) \sim_{T,A} \tau$. 
-#! The triple $( K, \iota, u )$ is called a <Emph>kernel</Emph> of $\alpha$ if the morphisms $u( \tau )$ are uniquely determined up to
-#! congruence of morphisms.
-#! We denote the object $K$ of such a triple by $\mathrm{KernelObject}(\alpha)$.
+#! The triple $( K, \iota, u )$ is called a <Emph>weak kernel</Emph> of $\alpha$.
+#! We denote the object $K$ of such a triple by $\mathrm{WeakKernelObject}(\alpha)$.
 #! We say that the morphism $u(\tau)$ is induced by the
-#! <Emph>universal property of the kernel</Emph>.
+#! <Emph>universal property of the weak kernel</Emph>.
 #! $\\ $
-#! $\mathrm{KernelObject}$ is a functorial operation. This means:
+#! $\mathrm{WeakKernelObject}$ is a functorial operation. This means:
 #! for $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$,
 #! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha \sim_{A,B'} \alpha' \circ \mu$,
-#! we obtain a morphism $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$.
+#! we obtain a morphism $\mathrm{WeakKernelObject}( \alpha ) \rightarrow \mathrm{WeakKernelObject}( \alpha' )$.
 
 #! @BeginLatexOnly
 #! \begin{center}
