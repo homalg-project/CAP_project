@@ -896,6 +896,37 @@ DeclareOperation( "AddDirectSumMorphismToWeakBiPushout",
 ##
 ####################################
 
+#! For a given pair of morphisms $(\alpha: A \rightarrow B, \beta: A \rightarrow C)$, a biased weak pushout  of $(\alpha, \beta)$ consists of three parts:
+#! * an object $P$,
+#! * a morphism $\iota: B \rightarrow P$ such that there exists a morphism $\delta: C \rightarrow P$ such that $\delta \circ \beta \sim_{P,A} \iota \circ \alpha$,
+#! * a dependent function $u$ mapping each $\tau: B \rightarrow T$, which admits a morphism $\mu \colon C \rightarrow T$ with $\mu \circ \beta \sim_{T,B} \tau \circ \alpha$, to a morphism $u(\tau):P \rightarrow T$ such that $u(\tau) \circ \iota \sim_{T,A} \tau$.
+#! The triple $( P, \iota, u )$ is called a <Emph>biased weak pushout</Emph> of $(\alpha,\beta)$.
+#! We denote the object $P$ of such a triple by $\mathrm{BiasedWeakPushout}(\alpha,\beta)$.
+#! We say that the morphism $u(\tau)$ is induced by the
+#! <Emph>universal property of the biased weak pushout</Emph>.
+#! $\\ $
+
+## FIXME functoriality of $\mathrm{BiasedWeakPushout}$
+
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (A) at (0,0) {$A$};
+#! \node (B) at (\w,0) {$B$};
+#! \node (C) at (0,\w) {$C$};
+#! \node (P) at (\w,\w) {$P$};
+#! \node (T) at (2*\w,2*\w) {$T$};
+#! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
+#! \draw[-latex] (A) to node[pos=0.45, left] {$\beta$} (C);
+#! \draw[-latex] (B) to node[pos=0.45, right] {$\iota$} (P);
+#! \draw[-latex] (B) to [out = 0, in = -90] node[pos=0.45, right] {$\tau$} (T);
+#! \draw[-latex] (P) to node[pos=0.45, above left] {$u( \tau )$} (T);
+#! \draw[-latex, dotted] (C) to node[pos=0.45, above] {$\delta$} (P);
+#! \draw[-latex, dotted] (C) to [out = 90, in = 180] node[pos=0.45, above] {$\mu$} (T);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 
 DeclareOperation( "BiasedWeakPushout",
                    [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
