@@ -219,20 +219,19 @@ DeclareOperation( "AddWeakKernelLiftWithGivenWeakKernelObject",
 ##
 ####################################
 
-#! For a given morphism $\alpha: A \rightarrow B$, a cokernel of $\alpha$ consists of three parts:
+#! For a given morphism $\alpha: A \rightarrow B$, a weak cokernel of $\alpha$ consists of three parts:
 #! * an object $K$,
 #! * a morphism $\epsilon: B \rightarrow K$ such that $\epsilon \circ \alpha \sim_{A,K} 0$,
 #! * a dependent function $u$ mapping each $\tau: B \rightarrow T$ satisfying $\tau \circ \alpha \sim_{A, T} 0$ to a morphism $u(\tau):K \rightarrow T$ such that $u(\tau) \circ \epsilon \sim_{B,T} \tau$.
-#! The triple $( K, \epsilon, u )$ is called a <Emph>cokernel</Emph> of $\alpha$ if the morphisms $u( \tau )$ are uniquely determined up to
-#! congruence of morphisms.
-#! We denote the object $K$ of such a triple by $\mathrm{CokernelObject}(\alpha)$.
+#! The triple $( K, \epsilon, u )$ is called a <Emph>weak cokernel</Emph> of $\alpha$.
+#! We denote the object $K$ of such a triple by $\mathrm{WeakCokernelObject}(\alpha)$.
 #! We say that the morphism $u(\tau)$ is induced by the
-#! <Emph>universal property of the cokernel</Emph>.
+#! <Emph>universal property of the weak cokernel</Emph>.
 #! $\\ $
-#! $\mathrm{CokernelObject}$ is a functorial operation. This means:
+#! $\mathrm{WeakCokernelObject}$ is a functorial operation. This means:
 #! for $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$,
 #! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha \sim_{A,B'} \alpha' \circ \mu$,
-#! we obtain a morphism $\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )$.
+#! we obtain a morphism $\mathrm{WeakCokernelObject}( \alpha ) \rightarrow \mathrm{WeakCokernelObject}( \alpha' )$.
 
 #! @BeginLatexOnly
 #! \begin{center}
