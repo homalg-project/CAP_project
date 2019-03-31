@@ -408,7 +408,7 @@ DeclareOperation( "AddWeakCokernelColiftWithGivenWeakCokernelObject",
 #! For a given pair of morphisms $(\alpha: A \rightarrow B, \beta \colon C \rightarrow B)$, a weak bi-fiber product of $(\alpha, \beta)$ consists of three parts:
 #! * an object $P$,
 #! * morphisms $\pi_1: P \rightarrow A$, $\pi_2: P \rightarrow B$ such that $\alpha \circ \pi_1 \sim_{P,B} \beta \circ \pi_2$,
-#! * a dependent function $u$ mapping each tripel consisting of an object $T$, a morphism $\tau_1: T \rightarrow A$ and a morphism $\tau: T \to C$ such that $\alpha \circ \tau_1 \sim_{T,B} \beta \circ \tau_2$ to a morphism $u(\tau):T \rightarrow P$ such that $\pi_1 \circ u( \tau ) \sim_{A,T} \tau_1$ and $\pi_2 \circ u( \tau ) \sim_{C,T} \tau_2$.
+#! * a dependent function $u$ mapping each pair $\tau = ( \tau_1, \tau_2 )$ of morphisms $\tau_1: T \rightarrow A$, $\tau_2: T \rightarrow C$ with the property $\alpha \circ \tau_1 \sim_{T,B} \beta \circ \tau_2$ to a morphism $u(\tau):T \rightarrow P$ such that $\pi_1 \circ u( \tau ) \sim_{A,T} \tau_1$ and $\pi_2 \circ u( \tau ) \sim_{C,T} \tau_2$.
 #! The quadrupel $( P, \pi_1, \pi_2, u )$ is called a <Emph>weak bi-fiber product</Emph> of $(\alpha,\beta)$.
 #! We denote the object $P$ of such a quadrupel by $\mathrm{WeakBiFiberProduct}(\alpha,\beta)$.
 #! We say that the morphism $u(\tau)$ is induced by the
