@@ -46,6 +46,23 @@ DeclareGlobalFunction( "UNIVERSAL_MORPHISM_FROM_BIASED_WEAK_PUSHOUT_PREFUNCTION"
 #! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha \sim_{A,B'} \alpha' \circ \mu$,
 #! we obtain a morphism $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$.
 
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (T) at (-\w,\w) {$T$};
+#! \node (K) at (-\w,0) {$K$};
+#! \node (A) at (0,0) {$A$};
+#! \node (B) at (\w,0) {$B$};
+#! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
+#! \draw[-latex] (K) to node[pos=0.45, above] {$\iota$} (A);
+#! \draw[-latex] (T) to node[pos=0.45, above right] {$\tau$} (A);
+#! \draw[-latex] (T) to node[pos=0.45, left] {$u( \tau )$} (K);
+#! \draw[-latex, dotted] (T) to [out = 0, in = 90] node[pos=0.45, above right] {$\alpha \circ \tau \sim_{T,B} 0$} (B);
+#! \draw[-latex, dotted] (K) to [out = -45, in = -135] node[pos=0.45, below] {$\alpha \circ \iota \sim_{K,B} 0$} (B);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 
 ## Main Operations and Attributes
 #! @Description
