@@ -574,6 +574,38 @@ DeclareOperation( "AddWeakBiFiberProductMorphismToDirectSum",
 ##
 ####################################
 
+#! For a given pair of morphisms $(\alpha: A \rightarrow B, \beta \colon C \rightarrow B)$, a biased weak fiber product of $(\alpha, \beta)$ consists of three parts:
+#! * an object $P$,
+#! * a morphism $\pi: P \rightarrow A$ such that there exists a morphism $\delta: P \rightarrow C$ such that $\beta \circ \delta \sim_{P,B} \alpha \circ \pi$,
+#! * a dependent function $u$ mapping each $\tau: T \rightarrow A$, which admits a morphism $\mu \colon T \rightarrow C$ with $\mu \circ \beta \sim_{T,B} \alpha \circ \tau$, to a morphism $u(\tau):T \rightarrow P$ such that $\pi \circ u(\tau) \sim_{T,A} \tau$.
+#! The triple $( P, \pi, u )$ is called a <Emph>biased weak fiber product</Emph> of $(\alpha,\beta)$.
+#! We denote the object $P$ of such a triple by $\mathrm{BiasedWeakFiberProduct}(\alpha,\beta)$.
+#! We say that the morphism $u(\tau)$ is induced by the
+#! <Emph>universal property of the biased weak fiber product</Emph>.
+#! $\\ $
+
+## FIXME functoriality of $\mathrm{BiasedWeakFiberProduct}$
+
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (A) at (0,0) {$A$};
+#! \node (B) at (\w,0) {$B$};
+#! \node (C) at (\w,\w) {$C$};
+#! \node (P) at (0,\w) {$P$};
+#! \node (T) at (-\w,2*\w) {$T$};
+#! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
+#! \draw[-latex] (C) to node[pos=0.45, right] {$\beta$} (B);
+#! \draw[-latex] (P) to node[pos=0.45, left] {$\pi$} (A);
+#! \draw[-latex] (T) to [out = -90, in = 180] node[pos=0.45, left] {$\tau$} (A);
+#! \draw[-latex] (T) to node[pos=0.45, above right] {$u( \tau )$} (P);
+#! \draw[-latex, dotted] (P) to node[pos=0.45, above] {$\delta$} (C);
+#! \draw[-latex, dotted] (T) to [out = 0, in = 90] node[pos=0.45, above] {$\mu$} (C);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
 
 ## Main Operations and Attributes
 
