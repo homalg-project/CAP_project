@@ -30,6 +30,24 @@
 #! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha \sim_{A,B'} \alpha' \circ \mu$,
 #! we obtain a morphism $\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' )$.
 
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (K) at (-\w,0) {$K$};
+#! \node (T) at (-\w,\w) {$T$};
+#! \node (A) at (0,0) {$A$};
+#! \node (B) at (\w,0) {$B$};
+#! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
+#! \draw[-latex] (K) to node[pos=0.45, above] {$\iota$} (A);
+#! \draw[-latex] (T) to node[pos=0.45, above right] {$\tau$} (A);
+#! \draw[dashed, -latex] (T) to node[pos=0.45, left] {$\exists ! u( \tau )$} (K);
+#! \draw[-latex, dotted] (T) to [out = 0, in = 90] node[pos=0.45, above right] {$\alpha \circ \tau \sim_{T,B} 0$} (B);
+#! \draw[-latex, dotted] (K) to [out = -45, in = -135] node[pos=0.45, below] {$\alpha \circ \iota \sim_{K,B} 0$} (B);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
 
 ## Main Operations and Attributes
 #! @Description
@@ -272,6 +290,23 @@ DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
 #! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha \sim_{A,B'} \alpha' \circ \mu$,
 #! we obtain a morphism $\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' )$.
 
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (A) at (0,0) {$A$};
+#! \node (B) at (\w,0) {$B$};
+#! \node (K) at (2*\w,0) {$K$};
+#! \node (T) at (2*\w,\w) {$T$};
+#! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
+#! \draw[-latex] (B) to node[pos=0.45, above] {$\epsilon$} (K);
+#! \draw[-latex] (B) to node[pos=0.45, above left] {$\tau$} (T);
+#! \draw[dashed, -latex] (K) to node[pos=0.45, right] {$\exists ! u( \tau )$} (T);
+#! \draw[-latex, dotted] (A) to [out = 90, in = 180] node[pos=0.45, above left] {$\tau \circ \alpha \sim_{A, T} 0$} (T);
+#! \draw[-latex, dotted] (A) to [out = -45, in = -135] node[pos=0.45, below] {$\epsilon \circ \alpha \sim_{A,K} 0$} (K);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 
 
 ## Main Operations and Attributes
@@ -1155,6 +1190,47 @@ DeclareOperation( "AddInitialObjectFunctorial",
 #! For $(\mu_i: S_i \rightarrow S'_i)_{i=1\dots n}$,
 #! we obtain a morphism $\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i'$.
 
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \def\a{20};
+#! \node (S) at (0,0) {$S$};
+#! \node (S1) at (-\w,0) {$S_1$};
+#! \node (S2) at (\w,0) {$S_2$};
+#! \node (T) at (0,\w) {$T$};
+#! \draw[-latex] (S) to [out = 180-\a, in = \a] node[pos=0.45, above] {$\pi_1$} (S1);
+#! \draw[-latex] (S) to [out = \a, in = 180-\a] node[pos=0.45, above] {$\pi_2$} (S2);
+#! \draw[-latex] (S1) to [out = -\a, in = -180+\a] node[pos=0.45, below] {$\iota_1$} (S);
+#! \draw[-latex] (S2) to [out = -180+\a, in = -\a] node[pos=0.45, below] {$\iota_2$} (S);
+#! \draw[-latex] (T) to [out = -180, in = 90] node[pos=0.45, above left] {$\tau_1$} (S1);
+#! \draw[-latex] (T) to [out = 0, in = 90] node[pos=0.45, above right] {$\tau_2$} (S2);
+#! \draw[dashed, -latex] (T) to node[pos=0.45, left] {$\exists u_{in} ( \tau )$} (S);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \def\a{20};
+#! \node (S) at (0,0) {$S$};
+#! \node (S1) at (-\w,0) {$S_1$};
+#! \node (S2) at (\w,0) {$S_2$};
+#! \node (T) at (0,\w) {$T$};
+#! \draw[-latex] (S) to [out = 180-\a, in = \a] node[pos=0.45, above] {$\pi_1$} (S1);
+#! \draw[-latex] (S) to [out = \a, in = 180-\a] node[pos=0.45, above] {$\pi_2$} (S2);
+#! \draw[-latex] (S1) to [out = -\a, in = -180+\a] node[pos=0.45, below] {$\iota_1$} (S);
+#! \draw[-latex] (S2) to [out = -180+\a, in = -\a] node[pos=0.45, below] {$\iota_2$} (S);
+#! \draw[-latex] (S1) to [out = 90, in = -180] node[pos=0.45, above left] {$\tau_1$} (T);
+#! \draw[-latex] (S2) to [out = 90, in = 0] node[pos=0.45, above right] {$\tau_2$} (T);
+#! \draw[dashed, -latex] (S) to node[pos=0.45, left] {$\exists u_{out} ( \tau )$} (T);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
+
 
 ## Main Operations and Attributes
 
@@ -1819,6 +1895,22 @@ DeclareProperty( "IS_IMPLIED_DIRECT_SUM",
 #! For $(\mu_i: I_i \rightarrow I'_i)_{i=1\dots n}$,
 #! we obtain a morphism $\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i'$.
 
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (I) at (0,0) {$I$};
+#! \node (I1) at (-\w,0) {$I_1$};
+#! \node (I2) at (\w,0) {$I_2$};
+#! \node (T) at (0,\w) {$T$};
+#! \draw[-latex] (S1) to node[pos=0.45, below] {$\iota_1$} (S);
+#! \draw[-latex] (S2) to node[pos=0.45, below] {$\iota_2$} (S);
+#! \draw[-latex] (S1) to [out = 90, in = -180] node[pos=0.45, above left] {$\tau_1$} (T);
+#! \draw[-latex] (S2) to [out = 90, in = 0] node[pos=0.45, above right] {$\tau_2$} (T);
+#! \draw[dashed, -latex] (S) to node[pos=0.45, left] {$\exists u ( \tau )$} (T);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 
 
 ## Main Operations and Attributes
@@ -2094,6 +2186,23 @@ DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
 #! For $(\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$,
 #! we obtain a morphism $\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'$.
 
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (P) at (0,0) {$P$};
+#! \node (P1) at (-\w,0) {$P_1$};
+#! \node (P2) at (\w,0) {$P_2$};
+#! \node (T) at (0,\w) {$T$};
+#! \draw[-latex] (P) to node[pos=0.45, above] {$\pi_1$} (P1);
+#! \draw[-latex] (P) to node[pos=0.45, above] {$\pi_2$} (P2);
+#! \draw[-latex] (T) to [out = -180, in = 90] node[pos=0.45, above left] {$\tau_1$} (P1);
+#! \draw[-latex] (T) to [out = 0, in = 90] node[pos=0.45, above right] {$\tau_2$} (P2);
+#! \draw[dashed, -latex] (T) to node[pos=0.45, left] {$\exists u ( \tau )$} (P);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
 
 ## Main Operations and Attributes
 #! @Description
@@ -2344,6 +2453,26 @@ DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
 #! $\mu: A \rightarrow A'$ and $\beta: B \rightarrow B'$
 #! such that $\beta_i' \circ \mu \sim_{A,B'} \beta \circ \beta_i$ for $i = 1, \dots, n$)
 #! we obtain a morphism $\mathrm{Equalizer}( D ) \rightarrow \mathrm{Equalizer}( D' )$.
+
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (E) at (-\w,0) {$E$};
+#! \node (T) at (-\w,\w) {$T$};
+#! \node (A) at (0,0) {$A$};
+#! \node (B) at (\w,0) {$B$};
+#! \draw[-latex] (A) to [out = 20, in = 180-20] node[pos=0.45, above] {$\beta_1$} (B);
+#! \draw[-latex] (A) to [out = -20, in = -180+20] node[pos=0.45, below] {$\beta_2$} (B);
+#! \draw[-latex] (E) to node[pos=0.45, above] {$\iota$} (A);
+#! \draw[-latex] (T) to node[pos=0.45, above right] {$\tau$} (A);
+#! \draw[dashed, -latex] (T) to node[pos=0.45, left] {$\exists ! u( \tau )$} (E);
+#! \draw[-latex, dotted] (T) to [out = 0, in = 90] node[pos=0.45, above right] {$\beta_2 \circ \tau \sim_{T,B} \beta_1 \circ \tau$} (B);
+#! \draw[-latex, dotted] (E) to [out = -45, in = -135] node[pos=0.45, below] {$\beta_2 \circ \iota \sim_{E,B} \beta_1 \circ \iota$} (B);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
 
 ## Main Operations and Attributes
 
@@ -2609,6 +2738,25 @@ DeclareOperation( "AddEqualizerFunctorialWithGivenEqualizers",
 #! $\mu: A \rightarrow A'$ and $\beta: B \rightarrow B'$
 #! such that $\beta_i' \circ \beta \sim_{B, A'} \mu \circ \beta_i$ for $i = 1, \dots n$)
 #! we obtain a morphism $\mathrm{Coequalizer}( D ) \rightarrow \mathrm{Coequalizer}( D' )$.
+
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (B) at (0,0) {$B$};
+#! \node (A) at (\w,0) {$A$};
+#! \node (C) at (2*\w,0) {$C$};
+#! \node (T) at (2*\w,\w) {$T$};
+#! \draw[-latex] (B) to [out = 20, in = 180-20] node[pos=0.45, above] {$\beta_1$} (A);
+#! \draw[-latex] (B) to [out = -20, in = -180+20] node[pos=0.45, below] {$\beta_2$} (A);
+#! \draw[-latex] (A) to node[pos=0.45, above] {$\pi$} (C);
+#! \draw[-latex] (A) to node[pos=0.45, above left] {$\tau$} (T);
+#! \draw[dashed, -latex] (C) to node[pos=0.45, right] {$\exists ! u( \tau )$} (T);
+#! \draw[-latex, dotted] (B) to [out = 90, in = 180] node[pos=0.45, above left] {$\tau \circ \beta_1 \sim_{B,T} \tau \circ \beta_2$} (T);
+#! \draw[-latex, dotted] (B) to [out = -45, in = -135] node[pos=0.45, below] {$\pi \circ \beta_1 \sim_{B,C} \pi \circ \beta_2$} (C);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 
 ## Main Operations and Attributes
 
@@ -2877,6 +3025,26 @@ DeclareOperation( "AddCoequalizerFunctorialWithGivenCoequalizers",
 #! $(\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$ and $\beta: B \rightarrow B'$
 #! such that $\beta_i' \circ \mu_i \sim_{P_i,B'} \beta \circ \beta_i$ for $i = 1, \dots, n$)
 #! we obtain a morphism $\mathrm{FiberProduct}( D ) \rightarrow \mathrm{FiberProduct}( D' )$.
+
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (T) at (-\w,2*\w) {$T$};
+#! \node (P) at (0,\w) {$P$};
+#! \node (P1) at (0,0) {$P1$};
+#! \node (B) at (\w,0) {$B$};
+#! \node (P2) at (\w,\w) {$P_2$};
+#! \draw[-latex] (P) to node[pos=0.45, left] {$\pi_1$} (P1);
+#! \draw[-latex] (P) to node[pos=0.45, above] {$\pi_2$} (P2);
+#! \draw[-latex] (P1) to node[pos=0.45, below] {$\beta_1$} (B);
+#! \draw[-latex] (P2) to node[pos=0.45, right] {$\beta_2$} (B);
+#! \draw[-latex] (T) to [out = -90, in = 180] node[pos=0.45, left] {$\tau_1$} (P1);
+#! \draw[-latex] (T) to [out = 0, in = 90] node[pos=0.45, above] {$\tau_2$} (P2);
+#! \draw[-latex, dashed] (T) to node[pos=0.45, below left] {$\exists u ( \tau )$} (P);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 
 ## Main Operations and Attributes
 
@@ -3414,6 +3582,26 @@ DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
 #! such that $\beta_i' \circ \beta \sim_{B, I_i'} \mu_i \circ \beta_i$ for $i = 1, \dots n$)
 #! we obtain a morphism $\mathrm{Pushout}( D ) \rightarrow \mathrm{Pushout}( D' )$.
 
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (B) at (0,0) {$B$};
+#! \node (I1) at (\w,0) {$I_1$};
+#! \node (I2) at (0,\w) {$I_2$};
+#! \node (I) at (\w,\w) {$I$};
+#! \node (T) at (2*\w,2*\w) {$T$};
+#! \draw[-latex] (B) to node[pos=0.45, below] {$\beta_1$} (I1);
+#! \draw[-latex] (B) to node[pos=0.45, left] {$\beta_2$} (I2);
+#! \draw[-latex] (I1) to node[pos=0.45, left] {$\iota_1$} (I);
+#! \draw[-latex] (I2) to node[pos=0.45, above] {$\iota_2$} (I);
+#! \draw[-latex] (I1) to [out = 0, in = -90] node[pos=0.45, right] {$\tau_1$} (T);
+#! \draw[-latex] (I2) to [out = 90, in = 180] node[pos=0.45, above] {$\tau_2$} (T);
+#! \draw[-latex, dashed] (I) to node[pos=0.45, below right] {$\exists u ( \tau )$} (T);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
 #! @Description
 #! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
 #! The output is a morphism
@@ -3942,6 +4130,24 @@ DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",
 #! <Emph>universal property of the image</Emph>.
 ## Main Operations and Attributes
 
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (A) at (-\w,0) {$A$};
+#! \node (B) at (\w,0) {$B$};
+#! \node (I) at (0,-\w) {$I$};
+#! \node (T) at (0,-2*\w) {$T$};
+#! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
+#! \draw[-latex] (A) to node[pos=0.45, above right] {$c$} (I);
+#! \draw[right hook-latex] (I) to node[pos=0.45, above left] {$\iota$} (B);
+#! \draw[-latex] (A) to [out = -90, in = 180] node[pos=0.45, below left] {$\tau_1$} (T);
+#! \draw[right hook-latex] (T) to [out = 0, in = -90] node[pos=0.45, right] {$\tau_2$} (B);
+#! \draw[-latex] (I) to node[pos=0.45, right] {$u( \tau )$} (T);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
 #! @Description
 #! The argument is a morphism $\alpha$.
 #! The output is the canonical morphism
@@ -4233,6 +4439,23 @@ DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
 #! We say that the morphism $u( \tau )$ is induced by the
 #! <Emph>universal property of the coimage</Emph>.
 
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \node (A) at (-\w,0) {$A$};
+#! \node (B) at (\w,0) {$B$};
+#! \node (C) at (0,-\w) {$C$};
+#! \node (T) at (0,-2*\w) {$T$};
+#! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
+#! \draw[-latex, postaction={draw, shorten >=3pt, -latex}] (A) to node[pos=0.45, above right] {$\pi$} (C);
+#! \draw[-latex] (C) to node[pos=0.45, above left] {$a$} (B);
+#! \draw[-latex, postaction={draw, shorten >=3pt, -latex}] (A) to [out = -90, in = 180] node[pos=0.45, below left] {$\tau_1$} (T);
+#! \draw[-latex] (T) to [out = 0, in = -90] node[pos=0.45, right] {$\tau_2$} (B);
+#! \draw[-latex] (T) to node[pos=0.45, right] {$u( \tau )$} (C);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.

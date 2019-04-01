@@ -1059,9 +1059,38 @@ DeclareOperation( "AddIsWellDefinedForMorphisms",
 #! * For any pair of morphisms $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$,
 #!  we call each morphism $\alpha / \beta: a \rightarrow b$ such that
 #!  $\beta \circ (\alpha / \beta) \sim_{a,c} \alpha$ a <Emph>lift of $\alpha$ along $\beta$</Emph>.
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{2};
+#! \def\h{1};
+#! \node (a) at (0,\h) {$a$};
+#! \node (b) at (0,-\h) {$b$};
+#! \node (c) at (\w,0) {$c$};
+#! \draw[-latex] (a) to node[pos=0.45, above] {$\alpha$} (c);
+#! \draw[-latex] (b) to node[pos=0.45, below] {$\beta$} (c);
+#! \draw[-latex, dashed] (a) to node[pos=0.45, left] {$\alpha/\beta$} (b);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 #! * For any pair of morphisms $\alpha: a \rightarrow c$, $\beta: a \rightarrow b$,
 #!  we call each morphism $\alpha \backslash \beta: c \rightarrow b$ such that
 #!  $(\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta$ a <Emph> colift of $\beta$ along $\alpha$</Emph>.
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{2};
+#! \def\h{1};
+#! \node (a) at (0,0) {$a$};
+#! \node (c) at (\w,\h) {$c$};
+#! \node (b) at (\w,-\h) {$b$};
+#! \draw[-latex] (a) to node[pos=0.45, above] {$\alpha$} (c);
+#! \draw[-latex] (a) to node[pos=0.45, below] {$\beta$} (b);
+#! \draw[-latex, dashed] (c) to node[pos=0.45, right] {$\alpha \backslash \beta$} (b);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
 #! Note that such lifts (or colifts) do not have to be unique. So in general,
 #! we do not expect that algorithms computing lifts (or colifts) do this in a functorial way.
 #! Thus the operations $\mathtt{Lift}$ and $\mathtt{Colift}$ are not regarded as 
@@ -1325,6 +1354,21 @@ DeclareOperation( "AddIsColiftable",
 #! is a morphism $\alpha^{-1}: b \rightarrow a$ such that
 #! $\alpha \circ \alpha^{-1} \sim_{b,b} \mathrm{id}_b$
 #! and $\alpha^{-1} \circ \alpha \sim_{a,a} \mathrm{id}_a$.
+
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{2};
+#! \def\h{1};
+#! \node (a) at (0,0) {$a$};
+#! \node (b) at (\w,0) {$b$};
+#! \draw[-latex] (a) to node[pos=0.45, above] {$\alpha$} (b);
+#! \draw[-latex] (b) to [out = -135, in = -45] node[pos=0.45, below] {$\alpha^{-1}$} (a);
+#! \draw [-latex] (a.135) arc (45:45+280:4mm) node[pos=0.5,left] {$\mathrm{id}_a$} (a);
+#! \draw [-latex] (b.45) arc (-240:-240-280:4mm) node[pos=0.5,right] {$\mathrm{id}_b$} (b);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
