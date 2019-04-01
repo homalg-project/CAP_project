@@ -1098,24 +1098,24 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
         column := [ ];        
         zero_column := List( [ 1 .. rank ], i -> 0 );
 
-        # produce the mapping column (only necessary if rank > 0, otherwise column := [] will do)
-        if rank > 0 then
-        
-          for i in [ 1 .. rank - 1 ] do
+        # produce the mapping column
+        for i in [ 1 .. rank - 1 ] do
           
-            Add( column, 1 );
-            Append( column, zero_column );
-          
-          od;        
           Add( column, 1 );
-          column := TransposedMat( [ column ] );
+          Append( column, zero_column );
+          
+        od;
+
+        if rank > 0 then
+
+          Add( column, 1 );
           
         fi;
         
         # return the evaluation morphism
-        return GradedRowOrColumnMorphism( tensor_object,
-                                          HomalgMatrix( column, underlying_graded_ring ),
-                                          unit,
+        return GradedRowOrColumnMorphism( unit,
+                                          HomalgMatrix( column, rank, 1, underlying_graded_ring ),
+                                          tensor_object,
                                           checks 
                                           );
 
