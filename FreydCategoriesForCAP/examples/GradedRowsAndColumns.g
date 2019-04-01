@@ -660,37 +660,32 @@ Display( InternalHomOnObjects( ObjectR, ObjectR ) );
 #####################################################################
 
 #! @Example
-S := GradedRing( HomalgRingOfIntegersInSingular()*"x,y,z" );
-#! Z[x,y,z]
-#! (weights: yet unset)
-SetWeightsOfIndeterminates(S, [1,1,1]);
-#! 
-aR := GradedRow( [ [ [0], 1 ] ], S );
+aR := GradedRow( [ [ [1,0], 1 ] ], S );
 #! <A graded row of rank 1>
 bR := ZeroObject( aR );
 #! <A graded row of rank 0>
 coevR := CoevaluationForDual( bR );
-#! <A morphism in the category of graded rows over
-#! Z[x,y,z] (with weights [ 1, 1, 1 ])>
+#! <A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( coevR );
 #! true
 evalR := EvaluationForDual( bR );
-#! <A morphism in the category of graded rows over
-#! Z[x,y,z] (with weights [ 1, 1, 1 ])>
+#! <A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( evalR );
 #! true
-cR := GradedRow( [ [ [2], 1 ] ], S );
+cR := GradedRow( [ [ [2,0], 1 ] ], S );
 #! <A graded row of rank 1>
 aR_o_bR := TensorProductOnObjects( aR, bR );
 #! <A graded row of rank 0>
 phiR := ZeroMorphism( aR_o_bR, cR );
-#! <A morphism in the category of graded rows over
-#! Z[x,y,z] (with weights [ 1, 1, 1 ])>
+#! <A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( phiR );
 #! true
 tens_mor := TensorProductToInternalHomAdjunctionMap(aR,bR,phiR);
-#! <A morphism in the category of graded rows over
-#! Z[x,y,z] (with weights [ 1, 1, 1 ])>
+#! <A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( tens_mor );
 #! true
 #! @EndExample
@@ -701,37 +696,32 @@ IsWellDefined( tens_mor );
 ########################################################################
 
 #! @Example
-S := GradedRing( HomalgRingOfIntegersInSingular()*"x,y,z" );
-#! Z[x,y,z]
-#! (weights: yet unset)
-SetWeightsOfIndeterminates(S, [1,1,1]);
-#! 
-aC := GradedColumn( [ [ [0], 1 ] ], S );
+aC := GradedColumn( [ [ [1,0], 1 ] ], S );
 #! <A graded column of rank 1>
 bC := ZeroObject( aC );
 #! <A graded column of rank 0>
 coevC := CoevaluationForDual( bC );
-#! <A morphism in the category of graded columns over
-#! Z[x,y,z] (with weights [ 1, 1, 1 ])>
+#! <A morphism in the category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( coevC );
 #! true
 evalC := EvaluationForDual( bC );
-#! <A morphism in the category of graded columns over
-#! Z[x,y,z] (with weights [ 1, 1, 1 ])>
+#! <A morphism in the category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( evalC );
 #! true
-cC := GradedColumn( [ [ [2], 1 ] ], S );
+cC := GradedColumn( [ [ [2,0], 1 ] ], S );
 #! <A graded column of rank 1>
 aC_o_bC := TensorProductOnObjects( aC, bC );
 #! <A graded column of rank 0>
 phiC := ZeroMorphism( aC_o_bC, cC );
-#! <A morphism in the category of graded columns over
-#! Z[x,y,z] (with weights [ 1, 1, 1 ])>
+#! <A morphism in the category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( phiC );
 #! true
 tens_mor := TensorProductToInternalHomAdjunctionMap(aC,bC,phiC);
-#! <A morphism in the category of graded columns over
-#! Z[x,y,z] (with weights [ 1, 1, 1 ])>
+#! <A morphism in the category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( tens_mor );
 #! true
 #! @EndExample
