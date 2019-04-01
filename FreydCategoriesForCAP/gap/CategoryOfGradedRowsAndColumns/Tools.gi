@@ -340,10 +340,10 @@ end );
 
 InstallMethod( UnzipDegreeList,
                [ IsGradedRowOrColumn ],
-  function( projective_module )
+  function( rowOrCol )
     local old_degree_list, i, j, new_degree_list;
 
-    old_degree_list := DegreeList( projective_module );
+    old_degree_list := DegreeList( rowOrCol );
     new_degree_list := [];
 
     for i in [ 1 .. Length( old_degree_list ) ] do

@@ -56,7 +56,7 @@ end );
 
 ####################################################################
 ##
-## Basic operations for category of projective, graded, right modules
+## Basic operations for category of graded columns
 ##
 ####################################################################
 
@@ -935,7 +935,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     end );
 
     # @Description
-    # This method computes the tensor product of the two maps of projective modules <A>morphism1</A> and <A>morphism2</A>.
+    # This method computes the tensor product of the two maps of graded columns <A>morphism1</A> and <A>morphism2</A>.
     # @Returns a morphism
     # @Arguments source = Source( morphism1 ) \otimes Source( morphism2 ), morphism1, morphism2, 
     #            range = Range( morphism1 ) \otimes Range( morphism2 )
@@ -951,7 +951,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     end );
 
     # @Description
-    # This method computes the tensor unit in the category of projective graded left modules. This is the module
+    # This method computes the tensor unit in the category of graded columns. This is the module
     # of degree 0 and rank 1.
     # @Returns an object
     # @Arguments     
@@ -1011,7 +1011,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     ######################################################################
     
     # @Description
-    # This method computes the dual of a projective, graded left-module <A>object</A> (c.f. dual of vector spaces).
+    # This method computes the dual of a graded column <A>object</A> (c.f. dual of vector spaces).
     # Note that this dualisation is used to compute the internal homs via 
     # Hom( object1, object2 ) = Dual( object1 ) \otimes object2.
     # @Returns an object
@@ -1033,7 +1033,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     end );
 
     # @Description
-    # This method computes the dual of a morphism of projective, graded left-modules (c.f. dual of vector space morphism).
+    # This method computes the dual of a morphism of graded columns (c.f. dual of vector space morphism).
     # @Returns a morphism
     # @Arguments source, morphism, range
     AddDualOnMorphismsWithGivenDuals( category,
@@ -1048,7 +1048,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     end );
 
     # @Description
-    # This method computes the evaluation morphism for a projective graded left-module <A>object</A>. This is it computes a
+    # This method computes the evaluation morphism for a graded column <A>object</A>. This is it computes a
     # morphism <A>Dual(object)</A> \otimes <A>object</A> to the tensor unit.
     # @Returns a morphism
     # @Arguments tensor_object = Dual( object) \otimes object, object, unit
@@ -1085,7 +1085,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     end );
 
     # @Description
-    # This method computes the coevaluation morphism for a projective graded left-module <A>object</A>. This is it computes a
+    # This method computes the coevaluation morphism for a graded column <A>object</A>. This is it computes a
     # morphism tensor unit to <A>Dual(object)</A> \otimes <A>object</A>.
     # @Returns a morphism
     # @Arguments unit, object, tensor_object = Object \otimes Dual( object )
