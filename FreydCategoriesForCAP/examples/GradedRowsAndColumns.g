@@ -42,6 +42,12 @@ DegreeList( Object2R );
 #! [ [ ( 1, 0 ), 5 ], [ ( 0, 1 ), 2 ], [ ( 1, 0 ), 1 ] ]
 UnzipDegreeList( Object2R );
 #! [ ( 1, 0 ), ( 1, 0 ), ( 1, 0 ), ( 1, 0 ), ( 1, 0 ), ( 0, 1 ), ( 0, 1 ), ( 1, 0 ) ]
+S2 := GradedRing( Q * "x" );;
+SetWeightsOfIndeterminates( S2, [ 1 ] );;
+IsWellDefined( GradedRow( [ [ [ 1 ], 1 ] ], S2 ) );
+#! true
+IsWellDefined( GradedColumn( [ [ [ 1 ], 1 ] ], S2 ) );
+#! true
 #! @EndExample
 
 

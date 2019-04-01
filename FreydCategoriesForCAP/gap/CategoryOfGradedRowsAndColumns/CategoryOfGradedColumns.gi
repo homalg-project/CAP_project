@@ -708,37 +708,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     #
     ################################################################################################################
     
-    InstallGlobalFunction( CAP_INTERNAL_WEAK_FIBER_PRODUCT_GRADED_COLUMNS,
-      function( morphism_list, projection_number )
-        local mapping_matrix, matrix_list, projection_matrix, j;
-        
-        if Length( morphism_list ) = 1 then
-          
-          return KernelEmbedding( morphism_list[ 1 ] );
-          
-        fi;
-        
-        # extract the mapping matrix of the morphism[ projection_number ]
-        mapping_matrix := UnderlyingHomalgMatrix( morphism_list[ projection_number ] );
-        
-        # construct list of mapping matrices of all maps in morphism_list but the one that we wish to compute the
-        # projection morphism of
-        matrix_list := List( morphism_list, x -> UnderlyingHomalgMatrix( x ) );
-        Remove( matrix_list, projection_number );
-        
-        # now iterate the syzygies computation
-        projection_matrix := SyzygiesOfColumns( mapping_matrix, matrix_list[ 1 ] );
-        for j in [ 2 .. Length( matrix_list ) ] do
-          
-          projection_matrix := projection_matrix * SyzygiesOfColumns( mapping_matrix * 
-                                                                            projection_matrix, matrix_list[ j ] );
-          
-        od;
-        
-        return projection_matrix;
-        
-    end );
-    
     ##
     AddProjectionInFirstFactorOfWeakBiFiberProduct( category,
       function( alpha, beta )
@@ -776,36 +745,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Section Add (Weak) Pushout
     #
     ################################################################################################################
-    
-    InstallGlobalFunction( CAP_INTERNAL_WEAK_PUSHOUT_GRADED_COLUMNS,
-      function( morphism_list, injection_number )
-        local mapping_matrix, matrix_list, embedding_matrix, j;
-        
-        if Length( morphism_list ) = 1 then
-          
-          return KernelEmbedding( morphism_list[ 1 ] );
-          
-        fi;
-        
-        # extract the mapping matrix of the morphism[ injection_number ]
-        mapping_matrix := UnderlyingHomalgMatrix( morphism_list[ injection_number ] );
-        
-        # construct list of mapping matrices of all maps in morphism_list but the one that we wish to compute the
-        # projection morphism of
-        matrix_list := List( morphism_list, x -> UnderlyingHomalgMatrix( x ) );
-        Remove( matrix_list, injection_number );
-        
-        # now iterate the syzygies computation
-        embedding_matrix := SyzygiesOfRows( mapping_matrix, matrix_list[ 1 ] );
-        for j in [ 2 .. Length( matrix_list ) ] do
-          
-          embedding_matrix := SyzygiesOfRows( embedding_matrix * mapping_matrix, matrix_list[ j ] ) * embedding_matrix;
-          
-        od;
-        
-        return embedding_matrix;
-        
-    end );
     
     ##
     AddInjectionOfFirstCofactorOfWeakBiPushout( category,
@@ -1139,4 +1078,67 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
 
     fi;
 
+end );
+
+##
+InstallGlobalFunction( CAP_INTERNAL_WEAK_FIBER_PRODUCT_GRADED_COLUMNS,
+  function( morphism_list, projection_number )
+    local mapping_matrix, matrix_list, projection_matrix, j;
+    
+    if Length( morphism_list ) = 1 then
+      
+      return KernelEmbedding( morphism_list[ 1 ] );
+      
+    fi;
+    
+    # extract the mapping matrix of the morphism[ projection_number ]
+    mapping_matrix := UnderlyingHomalgMatrix( morphism_list[ projection_number ] );
+    
+    # construct list of mapping matrices of all maps in morphism_list but the one that we wish to compute the
+    # projection morphism of
+    matrix_list := List( morphism_list, x -> UnderlyingHomalgMatrix( x ) );
+    Remove( matrix_list, projection_number );
+    
+    # now iterate the syzygies computation
+    projection_matrix := SyzygiesOfColumns( mapping_matrix, matrix_list[ 1 ] );
+    for j in [ 2 .. Length( matrix_list ) ] do
+      
+      projection_matrix := projection_matrix * SyzygiesOfColumns( mapping_matrix *
+                                                                        projection_matrix, matrix_list[ j ] );
+      
+    od;
+    
+    return projection_matrix;
+    
+end );
+
+##
+InstallGlobalFunction( CAP_INTERNAL_WEAK_PUSHOUT_GRADED_COLUMNS,
+  function( morphism_list, injection_number )
+    local mapping_matrix, matrix_list, embedding_matrix, j;
+    
+    if Length( morphism_list ) = 1 then
+      
+      return KernelEmbedding( morphism_list[ 1 ] );
+      
+    fi;
+    
+    # extract the mapping matrix of the morphism[ injection_number ]
+    mapping_matrix := UnderlyingHomalgMatrix( morphism_list[ injection_number ] );
+    
+    # construct list of mapping matrices of all maps in morphism_list but the one that we wish to compute the
+    # projection morphism of
+    matrix_list := List( morphism_list, x -> UnderlyingHomalgMatrix( x ) );
+    Remove( matrix_list, injection_number );
+    
+    # now iterate the syzygies computation
+    embedding_matrix := SyzygiesOfRows( mapping_matrix, matrix_list[ 1 ] );
+    for j in [ 2 .. Length( matrix_list ) ] do
+      
+      embedding_matrix := SyzygiesOfRows( embedding_matrix * mapping_matrix, matrix_list[ j ] ) * embedding_matrix;
+      
+    od;
+    
+    return embedding_matrix;
+    
 end );
