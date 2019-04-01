@@ -4138,7 +4138,7 @@ DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",
 #! \node (B) at (\w,0) {$B$};
 #! \node (I) at (0,-\w) {$I$};
 #! \node (T) at (0,-2*\w) {$T$};
-#! \draw[-latex] (A) to node[pos=0.45, below] {$\alpha$} (B);
+#! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
 #! \draw[-latex] (A) to node[pos=0.45, above right] {$c$} (I);
 #! \draw[right hook-latex] (I) to node[pos=0.45, above left] {$\iota$} (B);
 #! \draw[-latex] (A) to [out = -90, in = 180] node[pos=0.45, below left] {$\tau_1$} (T);
