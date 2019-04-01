@@ -4135,14 +4135,14 @@ DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",
 #! \begin{tikzpicture}
 #! \def\w{4};
 #! \node (A) at (-\w,0) {$A$};
-#! \node (B) at (0,0) {$B$};
-#! \node (I) at (\w,\w) {$I$};
-#! \node (T) at (\w,-\w) {$T$};
+#! \node (B) at (\w,0) {$B$};
+#! \node (I) at (0,-\w) {$I$};
+#! \node (T) at (0,-2*\w) {$T$};
 #! \draw[-latex] (A) to node[pos=0.45, below] {$\alpha$} (B);
-#! \draw[-latex] (A) to [out = 90, in = 180] node[pos=0.45, above left] {$c$} (I);
+#! \draw[-latex] (A) to node[pos=0.45, above right] {$c$} (I);
+#! \draw[right hook-latex] (I) to node[pos=0.45, above left] {$\iota$} (B);
 #! \draw[-latex] (A) to [out = -90, in = 180] node[pos=0.45, below left] {$\tau_1$} (T);
-#! \draw[right hook-latex] (I) to node[pos=0.45, left] {$\iota$} (B);
-#! \draw[right hook-latex] (T) to node[pos=0.45, left] {$\tau_2$} (B);
+#! \draw[right hook-latex] (T) to [out = 0, in = -90] node[pos=0.45, right] {$\tau_2$} (B);
 #! \draw[-latex] (I) to node[pos=0.45, right] {$u( \tau )$} (T);
 #! \end{tikzpicture}
 #! \end{center}
