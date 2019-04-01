@@ -79,7 +79,7 @@ InstallMethod( DeduceMapFromMatrixAndRangeForGradedRows,
         for j in [ 1 .. Length( degrees_of_matrix_rows ) ] do
 
           degrees_of_source_object[ j ] := [ expanded_degree_list[ non_zero_entries_index[ j ] ]
-                                                                                 + degrees_of_matrix_rows[ j ], 1 ];
+                                                                                 - degrees_of_matrix_rows[ j ], 1 ];
 
         od;
 
@@ -160,7 +160,7 @@ InstallMethod( DeduceMapFromMatrixAndSourceForGradedRows,
         for j in [ 1 .. Length( degrees_of_matrix_columns ) ] do
 
           degrees_of_range_object[ j ] := [ expanded_degree_list[ non_zero_entries_index[ j ] ]
-                                                                                 - degrees_of_matrix_columns[ j ], 1 ];
+                                                                                 + degrees_of_matrix_columns[ j ], 1 ];
 
         od;
 
@@ -241,7 +241,7 @@ InstallMethod( DeduceMapFromMatrixAndRangeForGradedCols,
         for j in [ 1 .. Length( degrees_of_matrix_columns ) ] do
 
           degrees_of_source_object[ j ] := [ expanded_degree_list[ non_zero_entries_index[ j ] ]
-                                                                                 + degrees_of_matrix_columns[ j ], 1 ];
+                                                                                 - degrees_of_matrix_columns[ j ], 1 ];
 
         od;
 
@@ -322,7 +322,7 @@ InstallMethod( DeduceMapFromMatrixAndSourceForGradedCols,
         for j in [ 1 .. Length( degrees_of_matrix_rows ) ] do
 
           degrees_of_range_object[ j ] := [ expanded_degree_list[ non_zero_entries_index[ j ] ]
-                                                                                 - degrees_of_matrix_rows[ j ], 1 ];
+                                                                                 + degrees_of_matrix_rows[ j ], 1 ];
 
         od;
 

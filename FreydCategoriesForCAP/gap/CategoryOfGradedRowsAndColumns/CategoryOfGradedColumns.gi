@@ -216,7 +216,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
 
             else
         
-              buffer_row[ j ] := source_degrees[ j ] - degrees_of_entries_matrix[ i ][ j ];
+              buffer_row[ j ] := source_degrees[ j ] + degrees_of_entries_matrix[ i ][ j ];
         
             fi;
         
@@ -616,7 +616,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
 
         # identify the homogeneous part of this matrix
         required_degrees := List( UnzipDegreeList( Source( morphism2 ) ),
-                                i -> List( UnzipDegreeList( Source( morphism1 ) ), j -> j - i ) );
+                                i -> List( UnzipDegreeList( Source( morphism1 ) ), j -> i - j ) );
         lift := HomogeneousPartOfMatrix( left_divide, required_degrees );
         
         # and construct the lift
@@ -648,7 +648,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
         fi;
         
         required_degrees := List( UnzipDegreeList( Range( morphism2 ) ),
-                                i -> List( UnzipDegreeList( Range( morphism1 ) ), j -> j - i ) );
+                                i -> List( UnzipDegreeList( Range( morphism1 ) ), j -> i - j ) );
         colift := HomogeneousPartOfMatrix( right_divide, required_degrees );
                                 
         # if it did work, return the corresponding morphism
