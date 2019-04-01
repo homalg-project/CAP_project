@@ -1066,14 +1066,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         # produce the mapping row
         for i in [ 1 .. rank - 1 ] do
           
-          Add( column, 1 );
-          Append( column, zero_column );
+          Add( row, 1 );
+          Append( row, zero_row );
           
         od;
 
         if rank > 0 then
 
-          Add( column, 1 );
+          Add( row, 1 );
 
         fi;
         
