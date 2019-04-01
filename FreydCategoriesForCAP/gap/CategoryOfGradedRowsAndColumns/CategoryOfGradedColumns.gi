@@ -786,10 +786,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # This method implements the projection of the biased weak fiber product onto the source of the 
     # first morphism. By this we mean the following:
     # Given morphisms m1: A to B and m2: C to B, we consider the diagram:
-    # P ------> C
+    # P ---d--> C
     # |         |
     # g        m2
     # |         |
+    # v         v
     # A --m1--> B
     # We are interested in constructing a morphism g such that there exists a morphism d: P to C such that
     # the above diagram commutes. However, we do not provide an algorithm to compute d.
@@ -807,6 +808,32 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
         
     end );
 
+    # @Description
+    # This method implements the injection from the range of the first morphism into the biased weak pushout.
+    # By this we mean the following:
+    # Given morphisms m1: C to A and m2: C to B, we consider the diagram:
+    # B ---d--> P
+    # ^         ^
+    # |         |
+    # m2        g
+    # |         |
+    # C --m1--> A
+    # We are interested in constructing a morphism g such that there exists a morphism d: B to P such that
+    # the above diagram commutes. However, we do not provide an algorithm to compute d.
+    # This morphism g must be universal in the sense that given another morphism tau: A -> T such that there
+    # exists a morphism B -> T which makes the corresponding square commute, there exists a morphism
+    # u: P -> T such that u \circ g = tau. Note that u is not unique in this setup!
+    ##
+    AddInjectionOfBiasedWeakPushout( category,
+        function( morphism_1, morphism_2 )
+        local homalg_matrix, weak_cokernel_object;
+
+        homalg_matrix := ReducedSyzygiesOfRows( UnderlyingHomalgMatrix( morphism_1 ),
+                                                UnderlyingHomalgMatrix( morphism_2 ) );
+
+        return DeduceMapFromMatrixAndSourceForGradedCols( homalg_matrix, Range( morphism_1 ) );
+
+    end );
 
     # Monoidal structure can be defined if the underlying ring of graded columns is commutative
     # In the non-commutative case, such a monoidal structure cannot be expected in general.
