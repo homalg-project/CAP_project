@@ -996,30 +996,30 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     # @Arguments tensor_object = Dual( object) \otimes object, object, unit
     AddEvaluationForDualWithGivenTensorProduct( category,
       function( tensor_object, object, unit )
-        local rank, column, zero_column, i;
+        local rank, row, zero_row, i;
         
         # collect and initialise the necessary information
         rank := Rank( object );
-        column := [ ];        
-        zero_column := List( [ 1 .. rank ], i -> 0 );
+        row := [ ];
+        zero_row := List( [ 1 .. rank ], i -> 0 );
         
-        # produce the mapping column (only necessary if rank > 0, otherwise column := [] will do)
+        # produce the mapping row
+        for i in [ 1 .. rank - 1 ] do
+          
+          Add( row, 1 );
+          Append( row, zero_row );
+          
+        od;
+
         if rank > 0 then
-        
-          for i in [ 1 .. rank - 1 ] do
-          
-            Add( column, 1 );
-            Append( column, zero_column );
-          
-          od;        
-          Add( column, 1 );
-          column := TransposedMat( [ column ] );
-          
+
+          Add( row, 1 );
+
         fi;
         
         # return the evaluation morphism
         return GradedRowOrColumnMorphism( tensor_object,
-                                          HomalgMatrix( column, underlying_graded_ring ),
+                                          HomalgMatrix( row, Rank( tensor_object ), 1, underlying_graded_ring ),
                                           unit,
                                           checks
                                           );
@@ -1033,30 +1033,29 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     # @Arguments unit, object, tensor_object = Object \otimes Dual( object )
     AddCoevaluationForDualWithGivenTensorProduct( category,
       function( unit, object, tensor_object )
-        local rank, column, zero_column, i;
+        local rank, row, zero_row, i;
 
         # collect and initialise the necessary information
         rank := Rank( object );
-        column := [ ];        
-        zero_column := List( [ 1 .. rank ], i -> 0 );
+        row := [ ];
+        zero_row := List( [ 1 .. rank ], i -> 0 );
         
-        # produce the mapping column (only necessary if rank > 0, otherwise column := [] will do)
+        # produce the mapping row
+        for i in [ 1 .. rank - 1 ] do
+          
+          Add( row, 1 );
+          Append( row, zero_row );
+          
+        od;
         if rank > 0 then
-        
-          for i in [ 1 .. rank - 1 ] do
-          
-            Add( column, 1 );
-            Append( column, zero_column );
-          
-          od;        
-          Add( column, 1 );
-          column := [ column ];
+
+          Add( row, 1 );
           
         fi;
-        
+
         # return the evaluation morphism
         return GradedRowOrColumnMorphism( unit,
-                                          HomalgMatrix( column, underlying_graded_ring ),
+                                          HomalgMatrix( row, 1, Rank( tensor_object ), underlying_graded_ring ),
                                           tensor_object,
                                           checks
                                           );

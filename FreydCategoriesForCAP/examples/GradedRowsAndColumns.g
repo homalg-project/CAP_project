@@ -410,7 +410,6 @@ Display( InternalHomOnObjects( ObjectL, ObjectL ) );
 #! @EndExample
 
 
-
 ########################################################################
 #! @Section A few categorical constructions for graded columns
 ########################################################################
@@ -662,12 +661,81 @@ Display( InternalHomOnObjects( ObjectR, ObjectR ) );
 #! @EndExample
 
 
+#####################################################################
+#! @Section Additional examples on monoidal structure for graded rows
+#####################################################################
+
+#! @Example
+aR := GradedRow( [ [ [1,0], 1 ] ], S );
+#! <A graded row of rank 1>
+bR := ZeroObject( aR );
+#! <A graded row of rank 0>
+coevR := CoevaluationForDual( bR );
+#! <A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( coevR );
+#! true
+evalR := EvaluationForDual( bR );
+#! <A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( evalR );
+#! true
+cR := GradedRow( [ [ [2,0], 1 ] ], S );
+#! <A graded row of rank 1>
+aR_o_bR := TensorProductOnObjects( aR, bR );
+#! <A graded row of rank 0>
+phiR := ZeroMorphism( aR_o_bR, cR );
+#! <A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( phiR );
+#! true
+tens_mor := TensorProductToInternalHomAdjunctionMap(aR,bR,phiR);
+#! <A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( tens_mor );
+#! true
+#! @EndExample
 
 
+########################################################################
+#! @Section Additional examples on monoidal structure for graded columns
+########################################################################
+
+#! @Example
+aC := GradedColumn( [ [ [1,0], 1 ] ], S );
+#! <A graded column of rank 1>
+bC := ZeroObject( aC );
+#! <A graded column of rank 0>
+coevC := CoevaluationForDual( bC );
+#! <A morphism in the category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( coevC );
+#! true
+evalC := EvaluationForDual( bC );
+#! <A morphism in the category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( evalC );
+#! true
+cC := GradedColumn( [ [ [2,0], 1 ] ], S );
+#! <A graded column of rank 1>
+aC_o_bC := TensorProductOnObjects( aC, bC );
+#! <A graded column of rank 0>
+phiC := ZeroMorphism( aC_o_bC, cC );
+#! <A morphism in the category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( phiC );
+#! true
+tens_mor := TensorProductToInternalHomAdjunctionMap(aC,bC,phiC);
+#! <A morphism in the category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( tens_mor );
+#! true
+#! @EndExample
 
 
-
+#####################################################################
 #! @Section FreydCategory for graded rows
+#####################################################################
 
 #! @Example
 cat := CAPCategoryOfGradedRows( S );
