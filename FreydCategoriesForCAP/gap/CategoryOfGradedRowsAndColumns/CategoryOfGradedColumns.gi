@@ -1077,7 +1077,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
         
         # return the evaluation morphism
         return GradedRowOrColumnMorphism( tensor_object,
-                                          HomalgMatrix( column, 1, rank, underlying_graded_ring ),
+                                          HomalgMatrix( column, 1, Rank( tensor_object), underlying_graded_ring ),
                                           unit,
                                           checks
                                           );
@@ -1114,7 +1114,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
         
         # return the evaluation morphism
         return GradedRowOrColumnMorphism( unit,
-                                          HomalgMatrix( column, rank, 1, underlying_graded_ring ),
+                                          HomalgMatrix( column, Rank( tensor_object), 1, underlying_graded_ring ),
                                           tensor_object,
                                           checks 
                                           );
