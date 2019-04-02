@@ -284,6 +284,274 @@ DeclareOperation( "AddIsIdempotent",
 
 ###################################
 ##
+#! @Section Random Morphisms
+##
+###################################
+
+#! CAP provides two principal methods to generate random morphisms with or without fixed source and range:
+#!  * <E>By integers</E>: The integer is simply a parameter that can be used to create a random morphism.
+#!  * <E>By lists</E>: The list is used when creating a random morphism would need more than one parameter. Lists offer more
+#!    flexibility at the expense of the genericity of the methods. This happens because lists that are valid as input in
+#!    some category may be not valid for other categories. Hence, these operations are not thought to be used in
+#!    generic categorical algorithms.
+
+#! @Description
+#! The arguments are an object $a$ in a category $C$ and an integer $n$.
+#! The output is a random morphism $\alpha: a \rightarrow b$ for some object
+#! $b$ in $C$ or <C>fail</C>.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$ or <C>fail</C>
+#! @Arguments a, n
+DeclareOperation( "RandomMorphismWithFixedSourceByInteger",
+                  [ IsCapCategoryObject, IsInt ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>RandomMorphismWithFixedSourceByInteger</C>.
+#! The function $F$ maps $(a,n)$ to <C>fail</C> or to a random morphism in
+#! $C$ whose source is $a$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRandomMorphismWithFixedSourceByInteger",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRandomMorphismWithFixedSourceByInteger",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRandomMorphismWithFixedSourceByInteger",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRandomMorphismWithFixedSourceByInteger",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are an object $a$ in a category $C$ and a list $L$.
+#! The output is a random morphism $\alpha: a \rightarrow b$ for some object
+#! $b$ in $C$ or <C>fail</C>.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$ or <C>fail</C>
+#! @Arguments a, L
+DeclareOperation( "RandomMorphismWithFixedSourceByList",
+                  [ IsCapCategoryObject, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>RandomMorphismWithFixedSourceByList</C>.
+#! The function $F$ maps $(a,L)$ to <C>fail</C> or to a random morphism in
+#! $C$ whose source is $a$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRandomMorphismWithFixedSourceByList",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRandomMorphismWithFixedSourceByList",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRandomMorphismWithFixedSourceByList",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRandomMorphismWithFixedSourceByList",
+                  [ IsCapCategory, IsList ] );
+
+
+#! @Description
+#! The arguments are an object $b$ in a category $C$ and an integer $n$.
+#! The output is a random morphism $\alpha: a \rightarrow b$ for some object
+#! $a$ in $C$ or <C>fail</C>.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$ or <C>fail</C>
+#! @Arguments b, n
+DeclareOperation( "RandomMorphismWithFixedRangeByInteger",
+                  [ IsCapCategoryObject, IsInt ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>RandomMorphismWithFixedRangeByInteger</C>.
+#! The function $F$ maps $(b,n)$ to <C>fail</C> or to a random morphism in
+#! $C$ whose range is $b$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRandomMorphismWithFixedRangeByInteger",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRandomMorphismWithFixedRangeByInteger",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRandomMorphismWithFixedRangeByInteger",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRandomMorphismWithFixedRangeByInteger",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are an object $b$ in a category $C$ and a list $L$.
+#! The output is a random morphism $\alpha: a \rightarrow b$ for some object
+#! $a$ in $C$ or <C>fail</C>.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$ or <C>fail</C>
+#! @Arguments b, L
+DeclareOperation( "RandomMorphismWithFixedRangeByList",
+                  [ IsCapCategoryObject, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>RandomMorphismWithFixedRangeByList</C>.
+#! The function $F$ maps $(b,L)$ to <C>fail</C> or to a random morphism in
+#! $C$ whose range is $b$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRandomMorphismWithFixedRangeByList",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRandomMorphismWithFixedRangeByList",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRandomMorphismWithFixedRangeByList",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRandomMorphismWithFixedRangeByList",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are two objects $a$ and $b$ in a category $C$ and an integer $n$.
+#! The output is a random morphism $\alpha: a \rightarrow b$ in $C$ or <C>fail</C>.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$ or <C>fail</C>
+#! @Arguments a, b, n
+DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByInteger",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsInt ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>RandomMorphismWithFixedSourceAndRangeByInteger</C>.
+#! The function $F$ maps $(a,b,n)$ to <C>fail</C> or to a random morphism in $C$
+#! from $a$ to $b$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRandomMorphismWithFixedSourceAndRangeByInteger",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRandomMorphismWithFixedSourceAndRangeByInteger",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRandomMorphismWithFixedSourceAndRangeByInteger",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRandomMorphismWithFixedSourceAndRangeByInteger",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! This operation is not a CAP basic operation
+#! The arguments are two objects $a$ and $b$ in a category $C$ and a list $L$.
+#! The output is a random morphism $\alpha: a \rightarrow b$ in $C$ or <C>fail</C>.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$ or <C>fail</C>
+#! @Arguments a, b, L
+DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByList",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>RandomMorphismWithFixedSourceAndRangeByList</C>.
+#! The function $F$ maps $(a,b,L)$ to <C>fail</C> or to a random morphism in $C$
+#! from $a$ to $b$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRandomMorphismWithFixedSourceAndRangeByList",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRandomMorphismWithFixedSourceAndRangeByList",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRandomMorphismWithFixedSourceAndRangeByList",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRandomMorphismWithFixedSourceAndRangeByList",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and an integer $n$.
+#! The output is a random morphism in $C$ or <C>fail</C>.
+#! If the methods <C>RandomObjectByInteger</C> and
+#! <C>RandomMorphismWithFixedSourceByInteger</C>(<C>RandomMorphismWithFixedRangeByInteger</C>)
+#! are added to the category $C$, then <C>RandomMorphismByInteger</C> can be
+#! derived to return a random morphism of complexity $n$ with random
+#! source(range) of complexity $n$.
+#! @Returns a morphism or <C>fail</C>
+#! @Arguments C, n
+DeclareOperation( "RandomMorphismByInteger",
+                  [ IsCapCategory, IsInt ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>RandomMorphismByInteger</C>.
+#! The function $F$ maps $(C,n)$ to <C>fail</C> or to a random morphism in $C$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRandomMorphismByInteger",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRandomMorphismByInteger",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRandomMorphismByInteger",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRandomMorphismByInteger",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a list $L$.
+#! The output is a random morphism in $C$ or <C>fail</C>.
+#! @Returns a morphism or <C>fail</C>
+#! @Arguments C, L
+DeclareOperation( "RandomMorphismByList",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>RandomMorphismByList</C>.
+#! The function $F$ maps $(C,L)$ to <C>fail</C> or to a random morphism in $C$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRandomMorphismByList",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRandomMorphismByList",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRandomMorphismByList",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRandomMorphismByList",
+                  [ IsCapCategory, IsList ] );
+
+#! @BeginGroup
+#! @Description
+#! These are convenient methods and they, depending on the input, delegate to one of the above methods.
+# @Returns an object, morphism or fail
+#! @Arguments a, n
+DeclareOperation( "RandomMorphismWithFixedSource", [ IsCapCategoryObject, IsInt ] );
+#! @Arguments a, L
+DeclareOperation( "RandomMorphismWithFixedSource", [ IsCapCategoryObject, IsList ] );
+#! @Arguments b, n
+DeclareOperation( "RandomMorphismWithFixedRange", [ IsCapCategoryObject, IsInt ] );
+#! @Arguments b, L
+DeclareOperation( "RandomMorphismWithFixedRange", [ IsCapCategoryObject, IsList ] );
+#! @Arguments a, b, n
+DeclareOperation( "RandomMorphismWithFixedSourceAndRange", [ IsCapCategoryObject, IsCapCategoryObject, IsInt ] );
+#! @Arguments a, b, L
+DeclareOperation( "RandomMorphismWithFixedSourceAndRange", [ IsCapCategoryObject, IsCapCategoryObject, IsList ] );
+#! @Arguments C, n
+DeclareOperation( "RandomMorphism", [ IsCapCategory, IsInt ] );
+#! @Arguments C, L
+DeclareOperation( "RandomMorphism", [ IsCapCategory, IsList ] );
+#! @EndGroup
+
+###################################
+##
 #! @Section Non-Categorical Properties of Morphisms
 ##
 ###################################
