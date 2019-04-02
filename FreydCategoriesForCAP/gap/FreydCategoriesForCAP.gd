@@ -48,7 +48,7 @@ DeclareGlobalFunction( "UNIVERSAL_MORPHISM_FROM_BIASED_WEAK_PUSHOUT_PREFUNCTION"
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{4};
+#! \def\w{2};
 #! \node (T) at (-\w,\w) {$T$};
 #! \node (K) at (-\w,0) {$K$};
 #! \node (A) at (0,0) {$A$};
@@ -236,7 +236,7 @@ DeclareOperation( "AddWeakKernelLiftWithGivenWeakKernelObject",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{4};
+#! \def\w{2};
 #! \node (A) at (0,0) {$A$};
 #! \node (B) at (\w,0) {$B$};
 #! \node (K) at (2*\w,0) {$K$};
@@ -420,7 +420,7 @@ DeclareOperation( "AddWeakCokernelColiftWithGivenWeakCokernelObject",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{4};
+#! \def\w{2};
 #! \node (A) at (0,0) {$A$};
 #! \node (B) at (\w,0) {$B$};
 #! \node (C) at (\w,\w) {$C$};
@@ -620,7 +620,7 @@ DeclareOperation( "AddWeakBiFiberProductMorphismToDirectSum",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{4};
+#! \def\w{2};
 #! \node (A) at (0,0) {$A$};
 #! \node (B) at (\w,0) {$B$};
 #! \node (C) at (\w,\w) {$C$};
@@ -776,7 +776,7 @@ DeclareOperation( "AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiased
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{4};
+#! \def\w{2};
 #! \node (A) at (0,0) {$A$};
 #! \node (B) at (\w,0) {$B$};
 #! \node (C) at (0,\w) {$C$};
@@ -974,7 +974,7 @@ DeclareOperation( "AddDirectSumMorphismToWeakBiPushout",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{4};
+#! \def\w{2};
 #! \node (A) at (0,0) {$A$};
 #! \node (B) at (\w,0) {$B$};
 #! \node (C) at (0,\w) {$C$};
