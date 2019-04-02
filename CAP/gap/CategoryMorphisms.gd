@@ -867,8 +867,8 @@ DeclareOperation( "AddIsDominating",
 #! \node (c) at (0,0) {$c$};
 #! \node (a) at (\w,\h) {$a$};
 #! \node (b) at (\w,-\h) {$b$};
-#! \draw[-latex, postaction={draw, shorten >=3pt, -latex}] (c) to node[pos=0.45, above] {$\alpha$} (a);
-#! \draw[-latex, postaction={draw, shorten >=3pt, -latex}] (c) to node[pos=0.45, below] {$\beta$} (b);
+#! \draw[-twohead] (c) to node[pos=0.45, above] {$\alpha$} (a);
+#! \draw[-twohead] (c) to node[pos=0.45, below] {$\beta$} (b);
 #! \draw[-latex, dashed] (b) to node[pos=0.45, right] {$\exists \iota$} (a);
 #! \end{tikzpicture}
 #! \end{center}
