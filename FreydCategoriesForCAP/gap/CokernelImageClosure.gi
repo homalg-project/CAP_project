@@ -94,8 +94,6 @@ InstallMethod( CokernelImageClosureObject,
                                          GeneratorMorphism, generator_morphism,
                                          RelationMorphism, relation_morphism );
     
-    Add( category, cokernel_image_object );
-    
     return cokernel_image_object;
     
 end );
@@ -160,8 +158,6 @@ InstallMethod( CokernelImageClosureMorphism,
                              Range, range,
                              MorphismDatum, morphism_datum
     );
-
-    Add( category, cokernel_image_closure_morphism );
     
     return cokernel_image_closure_morphism;
     

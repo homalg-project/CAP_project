@@ -70,8 +70,6 @@ InstallMethodWithCache( AdditiveClosureObject,
                              additive_closure_object, category,
                              ObjectList, list_of_objects
     );
-
-    Add( category, additive_closure_object );
     
     return additive_closure_object;
     
@@ -108,8 +106,6 @@ InstallMethod( AdditiveClosureMorphism,
                              Range, range,
                              MorphismMatrix, matrix
     );
-
-    Add( category, additive_closure_morphism );
     
     return additive_closure_morphism;
     

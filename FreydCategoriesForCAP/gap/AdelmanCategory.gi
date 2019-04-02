@@ -80,8 +80,6 @@ InstallMethod( AdelmanCategoryObject,
                                          RelationMorphism, relation_morphism,
                                          CorelationMorphism, corelation_morphism );
     
-    Add( category, adelman_category_object );
-    
     return adelman_category_object;
     
 end );
