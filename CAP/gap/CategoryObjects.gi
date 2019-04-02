@@ -222,6 +222,13 @@ InstallMethod( AddObjectRepresentation,
     
 end );
 
+##
+InstallMethod( RandomObject, [ IsCapCategory, IsInt ], RandomObjectByInteger );
+
+##
+InstallMethod( RandomObject, [ IsCapCategory, IsList ], RandomObjectByList );
+
+
 InstallGlobalFunction( ObjectifyObjectForCAPWithAttributes,
                        
   function( arg_list... )

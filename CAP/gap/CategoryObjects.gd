@@ -82,7 +82,6 @@ DeclareOperation( "AddIsEqualForObjects",
 DeclareOperation( "AddPropertyToMatchAtIsEqualForObjects",
                   [ IsCapCategory, IsString ] );
 
-
 ###################################
 ##
 #! @Section Categorical Properties of Objects
@@ -242,6 +241,82 @@ DeclareOperation( "AddIsZeroForObjects",
 
 DeclareOperation( "AddIsZeroForObjects",
                   [ IsCapCategory, IsList ] );
+
+###################################
+##
+#! @Section Random Objects
+##
+###################################
+
+#! CAP provides two principal methods to generate random objects:
+#!  * <E>By integers</E>: The integer is simply a parameter that can be used to create a random object.
+#!  * <E>By lists</E>: The list is used when creating a random object would need more than one parameter. Lists offer more
+#!    flexibility at the expense of the genericity of the methods. This happens because lists that are valid as input in
+#!    some category may be not valid for other categories. Hence, these operations are not thought to be used in
+#!    generic categorical algorithms.
+
+
+#! @Description
+#! The arguments are a category $C$ and an integer $n$.
+#! The output is a random object in $C$ or <C>fail</C>.
+#! @Returns an object or <C>fail</C>
+#! @Arguments C, n
+DeclareOperation( "RandomObjectByInteger",
+                  [ IsCapCategory, IsInt ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>RandomObjectByInteger</C>.
+#! The function $F$ maps $(C,n)$ to <C>fail</C> or to a random object in $C$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRandomObjectByInteger",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRandomObjectByInteger",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRandomObjectByInteger",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRandomObjectByInteger",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a list $L$.
+#! The output is a random object in $C$ or <C>fail</C>.
+#! @Returns an object or <C>fail</C>
+#! @Arguments C, L
+DeclareOperation( "RandomObjectByList",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>RandomObjectByList</C>.
+#! The function $F$ maps $(C,L)$ to <C>fail</C> or to a random object in $C$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRandomObjectByList",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRandomObjectByList",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRandomObjectByList",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRandomObjectByList",
+                  [ IsCapCategory, IsList ] );
+#! @BeginGroup
+#! @Description
+#! These are convenient methods and they, depending on the input, delegate to one of the above methods.
+#! @Arguments C, n
+DeclareOperation( "RandomObject", [ IsCapCategory, IsInt ] );
+#! @Arguments C, L
+DeclareOperation( "RandomObject", [ IsCapCategory, IsList ] );
+#! @EndGroup
 
 ###################################
 ##
