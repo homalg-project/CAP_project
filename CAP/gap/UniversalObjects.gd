@@ -3041,7 +3041,7 @@ DeclareOperation( "AddCoequalizerFunctorialWithGivenCoequalizers",
 #! \draw[-latex] (P2) to node[pos=0.45, right] {$\beta_2$} (B);
 #! \draw[-latex] (T) to [out = -90, in = 180] node[pos=0.45, left] {$\tau_1$} (P1);
 #! \draw[-latex] (T) to [out = 0, in = 90] node[pos=0.45, above] {$\tau_2$} (P2);
-#! \draw[-latex, dashed] (T) to node[pos=0.45, below left] {$\exists u ( \tau )$} (P);
+#! \draw[-latex, dashed] (T) to node[pos=0.45, above right] {$\exists ! u ( \tau )$} (P);
 #! \end{tikzpicture}
 #! \end{center}
 #! @EndLatexOnly
@@ -3597,7 +3597,7 @@ DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
 #! \draw[-latex] (I2) to node[pos=0.45, above] {$\iota_2$} (I);
 #! \draw[-latex] (I1) to [out = 0, in = -90] node[pos=0.45, right] {$\tau_1$} (T);
 #! \draw[-latex] (I2) to [out = 90, in = 180] node[pos=0.45, above] {$\tau_2$} (T);
-#! \draw[-latex, dashed] (I) to node[pos=0.45, below right] {$\exists u ( \tau )$} (T);
+#! \draw[-latex, dashed] (I) to node[pos=0.45, above left] {$\exists ! u ( \tau )$} (T);
 #! \end{tikzpicture}
 #! \end{center}
 #! @EndLatexOnly
