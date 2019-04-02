@@ -4,7 +4,8 @@ AutoDoc( "CAP" :
          scaffold :=
           rec(
             gapdoc_latex_options := rec(
-            LateExtraPreamble := "\\usepackage{tikz}\n\\usetikzlibrary{arrows}" )
+            LateExtraPreamble := Concatenation( "\\usepackage{tikz}\n\\usetikzlibrary{arrows}",
+                                  "\\pgfarrowsdeclarecombine{twohead}{twohead}{latex}{latex}{latex}{latex}" ) )
           ),
          autodoc :=
          rec( files := [ "doc/Intros.autodoc" ],

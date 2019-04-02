@@ -4447,12 +4447,12 @@ DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
 #! \node (B) at (\w,0) {$B$};
 #! \node (C) at (0,-\w) {$C$};
 #! \node (T) at (0,-2*\w) {$T$};
-#! \draw[->] (A) to node[pos=0.45, above] {$\alpha$} (B);
-#! \draw[->>] (A) to node[pos=0.45, above right] {$\pi$} (C);
-#! \draw[->] (C) to node[pos=0.45, above left] {$a$} (B);
-#! \draw[->>] (A) to [out = -90, in = 180] node[pos=0.45, below left] {$\tau_1$} (T);
-#! \draw[->] (T) to [out = 0, in = -90] node[pos=0.45, right] {$\tau_2$} (B);
-#! \draw[->] (T) to node[pos=0.45, right] {$u( \tau )$} (C);
+#! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
+#! \draw[-twohead] (A) to node[pos=0.45, above right] {$\pi$} (C);
+#! \draw[-latex] (C) to node[pos=0.45, above left] {$a$} (B);
+#! \draw[-twohead] (A) to [out = -90, in = 180] node[pos=0.45, below left] {$\tau_1$} (T);
+#! \draw[-latex] (T) to [out = 0, in = -90] node[pos=0.45, right] {$\tau_2$} (B);
+#! \draw[-latex] (T) to node[pos=0.45, right] {$u( \tau )$} (C);
 #! \end{tikzpicture}
 #! \end{center}
 #! @EndLatexOnly
