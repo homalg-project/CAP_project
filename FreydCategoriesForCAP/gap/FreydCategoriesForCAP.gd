@@ -56,7 +56,7 @@ DeclareGlobalFunction( "UNIVERSAL_MORPHISM_FROM_BIASED_WEAK_PUSHOUT_PREFUNCTION"
 #! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
 #! \draw[-latex] (K) to node[pos=0.45, above] {$\iota$} (A);
 #! \draw[-latex] (T) to node[pos=0.45, above right] {$\tau$} (A);
-#! \draw[-latex] (T) to node[pos=0.45, left] {$u( \tau )$} (K);
+#! \draw[-latex] (T) to node[pos=0.45, left] {$\exists u( \tau )$} (K);
 #! \draw[-latex, dotted] (T) to [out = 0, in = 90] node[pos=0.45, above right] {$\alpha \circ \tau \sim_{T,B} 0$} (B);
 #! \draw[-latex, dotted] (K) to [out = -45, in = -135] node[pos=0.45, below] {$\alpha \circ \iota \sim_{K,B} 0$} (B);
 #! \end{tikzpicture}
@@ -244,7 +244,7 @@ DeclareOperation( "AddWeakKernelLiftWithGivenWeakKernelObject",
 #! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
 #! \draw[-latex] (B) to node[pos=0.45, above] {$\epsilon$} (K);
 #! \draw[-latex] (B) to node[pos=0.45, above left] {$\tau$} (T);
-#! \draw[-latex] (K) to node[pos=0.45, left] {$u( \tau )$} (T);
+#! \draw[-latex] (K) to node[pos=0.45, left] {$\exists u( \tau )$} (T);
 #! \draw[-latex, dotted] (A) to [out = 90, in = 180] node[pos=0.45, above left] {$\tau \circ \alpha \sim_{A,T} 0$} (T);
 #! \draw[-latex, dotted] (A) to [out = -45, in = -135] node[pos=0.45, below] {$\epsilon \circ \alpha \sim_{A,K} 0$} (K);
 #! \end{tikzpicture}
@@ -432,7 +432,7 @@ DeclareOperation( "AddWeakCokernelColiftWithGivenWeakCokernelObject",
 #! \draw[-latex] (P) to node[pos=0.45, above] {$\pi_2$} (C);
 #! \draw[-latex] (T) to [out = -90, in = 180] node[pos=0.45, left] {$\tau_1$} (A);
 #! \draw[-latex] (T) to [out = 0, in = 90] node[pos=0.45, above] {$\tau_2$} (C);
-#! \draw[-latex] (T) to node[pos=0.45, above right] {$u( \tau )$} (P);
+#! \draw[-latex] (T) to node[pos=0.45, above right] {$\exists u( \tau )$} (P);
 #! \end{tikzpicture}
 #! \end{center}
 #! @EndLatexOnly
@@ -630,7 +630,7 @@ DeclareOperation( "AddWeakBiFiberProductMorphismToDirectSum",
 #! \draw[-latex] (C) to node[pos=0.45, right] {$\beta$} (B);
 #! \draw[-latex] (P) to node[pos=0.45, left] {$\pi$} (A);
 #! \draw[-latex] (T) to [out = -90, in = 180] node[pos=0.45, left] {$\tau$} (A);
-#! \draw[-latex] (T) to node[pos=0.45, above right] {$u( \tau )$} (P);
+#! \draw[-latex] (T) to node[pos=0.45, above right] {$\exists u( \tau )$} (P);
 #! \draw[-latex, dotted] (P) to node[pos=0.45, above] {$\delta$} (C);
 #! \draw[-latex, dotted] (T) to [out = 0, in = 90] node[pos=0.45, above] {$\mu$} (C);
 #! \end{tikzpicture}
@@ -786,7 +786,7 @@ DeclareOperation( "AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiased
 #! \draw[-latex] (A) to node[pos=0.45, left] {$\beta$} (C);
 #! \draw[-latex] (B) to node[pos=0.45, right] {$\iota_1$} (P);
 #! \draw[-latex] (B) to [out = 0, in = -90] node[pos=0.45, right] {$\tau_1$} (T);
-#! \draw[-latex] (P) to node[pos=0.45, above left] {$u( \tau )$} (T);
+#! \draw[-latex] (P) to node[pos=0.45, above left] {$\exists u( \tau )$} (T);
 #! \draw[-latex] (C) to node[pos=0.45, above] {$\iota_2$} (P);
 #! \draw[-latex] (C) to [out = 90, in = 180] node[pos=0.45, above] {$\tau_2$} (T);
 #! \end{tikzpicture}
@@ -984,7 +984,7 @@ DeclareOperation( "AddDirectSumMorphismToWeakBiPushout",
 #! \draw[-latex] (A) to node[pos=0.45, left] {$\beta$} (C);
 #! \draw[-latex] (B) to node[pos=0.45, right] {$\iota$} (P);
 #! \draw[-latex] (B) to [out = 0, in = -90] node[pos=0.45, right] {$\tau$} (T);
-#! \draw[-latex] (P) to node[pos=0.45, above left] {$u( \tau )$} (T);
+#! \draw[-latex] (P) to node[pos=0.45, above left] {$\exists u( \tau )$} (T);
 #! \draw[-latex, dotted] (C) to node[pos=0.45, above] {$\delta$} (P);
 #! \draw[-latex, dotted] (C) to [out = 90, in = 180] node[pos=0.45, above] {$\mu$} (T);
 #! \end{tikzpicture}
