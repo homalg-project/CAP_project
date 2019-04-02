@@ -61,8 +61,6 @@ InstallMethodWithCache( CategoryOfRowsObject,
                                          RankOfObject, rank
     );
 
-    Add( category, category_of_rows_object );
-    
     return category_of_rows_object;
     
 end );
@@ -126,8 +124,6 @@ InstallMethod( CategoryOfRowsMorphism,
                                            Range, range,
                                            UnderlyingMatrix, homalg_matrix
     );
-
-    Add( category, category_of_rows_morphism );
     
     return category_of_rows_morphism;
     

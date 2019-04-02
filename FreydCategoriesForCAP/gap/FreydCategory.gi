@@ -102,8 +102,6 @@ InstallMethod( FreydCategoryObject,
     ObjectifyObjectForCAPWithAttributes( freyd_category_object, category,
                                          RelationMorphism, relation_morphism );
     
-    Add( category, freyd_category_object );
-    
     return freyd_category_object;
     
 end );
@@ -157,8 +155,6 @@ InstallMethod( FreydCategoryMorphism,
                              Range, range,
                              MorphismDatum, morphism_datum
     );
-
-    Add( category, freyd_category_morphism );
     
     return freyd_category_morphism;
     
