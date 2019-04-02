@@ -1907,7 +1907,7 @@ DeclareProperty( "IS_IMPLIED_DIRECT_SUM",
 #! \draw[-latex] (S2) to node[pos=0.45, below] {$\iota_2$} (S);
 #! \draw[-latex] (S1) to [out = 90, in = -180] node[pos=0.45, above left] {$\tau_1$} (T);
 #! \draw[-latex] (S2) to [out = 90, in = 0] node[pos=0.45, above right] {$\tau_2$} (T);
-#! \draw[dashed, -latex] (S) to node[pos=0.45, left] {$\exists u ( \tau )$} (T);
+#! \draw[dashed, -latex] (S) to node[pos=0.45, left] {$\exists ! u ( \tau )$} (T);
 #! \end{tikzpicture}
 #! \end{center}
 #! @EndLatexOnly
@@ -2198,7 +2198,7 @@ DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
 #! \draw[-latex] (P) to node[pos=0.45, above] {$\pi_2$} (P2);
 #! \draw[-latex] (T) to [out = -180, in = 90] node[pos=0.45, above left] {$\tau_1$} (P1);
 #! \draw[-latex] (T) to [out = 0, in = 90] node[pos=0.45, above right] {$\tau_2$} (P2);
-#! \draw[dashed, -latex] (T) to node[pos=0.45, left] {$\exists u ( \tau )$} (P);
+#! \draw[dashed, -latex] (T) to node[pos=0.45, left] {$\exists ! u ( \tau )$} (P);
 #! \end{tikzpicture}
 #! \end{center}
 #! @EndLatexOnly
