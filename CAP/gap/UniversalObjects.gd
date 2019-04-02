@@ -33,7 +33,7 @@
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{4};
+#! \def\w{2};
 #! \node (K) at (-\w,0) {$K$};
 #! \node (T) at (-\w,\w) {$T$};
 #! \node (A) at (0,0) {$A$};
@@ -293,7 +293,7 @@ DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{4};
+#! \def\w{2};
 #! \node (A) at (0,0) {$A$};
 #! \node (B) at (\w,0) {$B$};
 #! \node (K) at (2*\w,0) {$K$};
@@ -1193,7 +1193,7 @@ DeclareOperation( "AddInitialObjectFunctorial",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{4};
+#! \def\w{2};
 #! \def\a{20};
 #! \node (S) at (0,0) {$S$};
 #! \node (S1) at (-\w,0) {$S_1$};
@@ -1213,7 +1213,7 @@ DeclareOperation( "AddInitialObjectFunctorial",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{4};
+#! \def\w{2};
 #! \def\a{20};
 #! \node (S) at (0,0) {$S$};
 #! \node (S1) at (-\w,0) {$S_1$};
@@ -1898,7 +1898,7 @@ DeclareProperty( "IS_IMPLIED_DIRECT_SUM",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{4};
+#! \def\w{2};
 #! \node (I) at (0,0) {$I$};
 #! \node (I1) at (-\w,0) {$I_1$};
 #! \node (I2) at (\w,0) {$I_2$};
@@ -2189,7 +2189,7 @@ DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{4};
+#! \def\w{2};
 #! \node (P) at (0,0) {$P$};
 #! \node (P1) at (-\w,0) {$P_1$};
 #! \node (P2) at (\w,0) {$P_2$};
@@ -2457,7 +2457,7 @@ DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{4};
+#! \def\w{2};
 #! \node (E) at (-\w,0) {$E$};
 #! \node (T) at (-\w,\w) {$T$};
 #! \node (A) at (0,0) {$A$};
@@ -2742,7 +2742,7 @@ DeclareOperation( "AddEqualizerFunctorialWithGivenEqualizers",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{4};
+#! \def\w{2};
 #! \node (B) at (0,0) {$B$};
 #! \node (A) at (\w,0) {$A$};
 #! \node (C) at (2*\w,0) {$C$};
@@ -3029,7 +3029,7 @@ DeclareOperation( "AddCoequalizerFunctorialWithGivenCoequalizers",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{4};
+#! \def\w{2};
 #! \node (T) at (-\w,2*\w) {$T$};
 #! \node (P) at (0,\w) {$P$};
 #! \node (P1) at (0,0) {$P1$};
@@ -3585,7 +3585,7 @@ DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{4};
+#! \def\w{2};
 #! \node (B) at (0,0) {$B$};
 #! \node (I1) at (\w,0) {$I_1$};
 #! \node (I2) at (0,\w) {$I_2$};
@@ -4133,7 +4133,7 @@ DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",
 #! @BeginLatexOnly
 #! \begin{center}
 #! \begin{tikzpicture}
-#! \def\w{4};
+#! \def\w{2};
 #! \node (A) at (-\w,0) {$A$};
 #! \node (B) at (\w,0) {$B$};
 #! \node (I) at (0,-\w) {$I$};
