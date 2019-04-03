@@ -244,7 +244,7 @@ DeclareOperation( "AddWeakKernelLiftWithGivenWeakKernelObject",
 #! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
 #! \draw[-latex] (B) to node[pos=0.45, above] {$\epsilon$} (K);
 #! \draw[-latex] (B) to node[pos=0.45, above left] {$\tau$} (T);
-#! \draw[-latex] (K) to node[pos=0.45, left] {$\exists u( \tau )$} (T);
+#! \draw[-latex] (K) to node[pos=0.45, right] {$\exists u( \tau )$} (T);
 #! \draw[-latex, dotted] (A) to [out = 90, in = 180] node[pos=0.45, above left] {$\tau \circ \alpha \sim_{A,T} 0$} (T);
 #! \draw[-latex, dotted] (A) to [out = -45, in = -135] node[pos=0.45, below] {$\epsilon \circ \alpha \sim_{A,K} 0$} (K);
 #! \end{tikzpicture}
