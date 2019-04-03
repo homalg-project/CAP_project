@@ -3032,7 +3032,7 @@ DeclareOperation( "AddCoequalizerFunctorialWithGivenCoequalizers",
 #! \def\w{2};
 #! \node (T) at (-\w,2*\w) {$T$};
 #! \node (P) at (0,\w) {$P$};
-#! \node (P1) at (0,0) {$P1$};
+#! \node (P1) at (0,0) {$P_1$};
 #! \node (B) at (\w,0) {$B$};
 #! \node (P2) at (\w,\w) {$P_2$};
 #! \draw[-latex] (P) to node[pos=0.45, left] {$\pi_1$} (P1);
