@@ -4143,7 +4143,7 @@ DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",
 #! \draw[right hook-latex] (I) to node[pos=0.45, above left] {$\iota$} (B);
 #! \draw[-latex] (A) to [out = -90, in = 180] node[pos=0.45, below left] {$\tau_1$} (T);
 #! \draw[right hook-latex] (T) to [out = 0, in = -90] node[pos=0.45, right] {$\tau_2$} (B);
-#! \draw[-latex] (I) to node[pos=0.45, right] {$u( \tau )$} (T);
+#! \draw[-latex, dashed] (I) to node[pos=0.45, right] {$u( \tau )$} (T);
 #! \end{tikzpicture}
 #! \end{center}
 #! @EndLatexOnly
