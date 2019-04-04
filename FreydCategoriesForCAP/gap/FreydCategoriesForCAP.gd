@@ -39,11 +39,6 @@ DeclareGlobalFunction( "UNIVERSAL_MORPHISM_FROM_BIASED_WEAK_PUSHOUT_PREFUNCTION"
 #! We denote the object $K$ of such a triple by $\mathrm{WeakKernelObject}(\alpha)$.
 #! We say that the morphism $u(\tau)$ is induced by the
 #! <Emph>universal property of the weak kernel</Emph>.
-#! $\\ $
-#! $\mathrm{WeakKernelObject}$ is a functorial operation. This means:
-#! for $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$,
-#! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha \sim_{A,B'} \alpha' \circ \mu$,
-#! we obtain a morphism $\mathrm{WeakKernelObject}( \alpha ) \rightarrow \mathrm{WeakKernelObject}( \alpha' )$.
 
 #! @BeginLatexOnly
 #! \begin{center}
@@ -227,11 +222,6 @@ DeclareOperation( "AddWeakKernelLiftWithGivenWeakKernelObject",
 #! We denote the object $K$ of such a triple by $\mathrm{WeakCokernelObject}(\alpha)$.
 #! We say that the morphism $u(\tau)$ is induced by the
 #! <Emph>universal property of the weak cokernel</Emph>.
-#! $\\ $
-#! $\mathrm{WeakCokernelObject}$ is a functorial operation. This means:
-#! for $\mu: A \rightarrow A'$, $\nu: B \rightarrow B'$,
-#! $\alpha: A \rightarrow B$, $\alpha': A' \rightarrow B'$ such that $\nu \circ \alpha \sim_{A,B'} \alpha' \circ \mu$,
-#! we obtain a morphism $\mathrm{WeakCokernelObject}( \alpha ) \rightarrow \mathrm{WeakCokernelObject}( \alpha' )$.
 
 #! @BeginLatexOnly
 #! \begin{center}
@@ -413,9 +403,6 @@ DeclareOperation( "AddWeakCokernelColiftWithGivenWeakCokernelObject",
 #! We denote the object $P$ of such a quadrupel by $\mathrm{WeakBiFiberProduct}(\alpha,\beta)$.
 #! We say that the morphism $u(\tau)$ is induced by the
 #! <Emph>universal property of the weak bi-fiber product</Emph>.
-#! $\\ $
-
-## FIXME functoriality of $\mathrm{WeakBiFiberProduct}$
 
 #! @BeginLatexOnly
 #! \begin{center}
@@ -613,9 +600,6 @@ DeclareOperation( "AddWeakBiFiberProductMorphismToDirectSum",
 #! We denote the object $P$ of such a triple by $\mathrm{BiasedWeakFiberProduct}(\alpha,\beta)$.
 #! We say that the morphism $u(\tau)$ is induced by the
 #! <Emph>universal property of the biased weak fiber product</Emph>.
-#! $\\ $
-
-## FIXME functoriality of $\mathrm{BiasedWeakFiberProduct}$
 
 #! @BeginLatexOnly
 #! \begin{center}
@@ -769,9 +753,6 @@ DeclareOperation( "AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiased
 #! We denote the object $P$ of such a quadrupel by $\mathrm{WeakBiPushout}(\alpha,\beta)$.
 #! We say that the morphism $u(\tau)$ is induced by the
 #! <Emph>universal property of the weak bi-pushout</Emph>.
-#! $\\ $
-
-## FIXME functoriality of $\mathrm{WeakBiPushout}$
 
 #! @BeginLatexOnly
 #! \begin{center}
@@ -967,9 +948,6 @@ DeclareOperation( "AddDirectSumMorphismToWeakBiPushout",
 #! We denote the object $P$ of such a triple by $\mathrm{BiasedWeakPushout}(\alpha,\beta)$.
 #! We say that the morphism $u(\tau)$ is induced by the
 #! <Emph>universal property of the biased weak pushout</Emph>.
-#! $\\ $
-
-## FIXME functoriality of $\mathrm{BiasedWeakPushout}$
 
 #! @BeginLatexOnly
 #! \begin{center}
