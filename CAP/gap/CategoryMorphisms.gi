@@ -568,7 +568,7 @@ InstallMethod( String,
 end );
 
 InstallMethod( Display,
-               [ IsCapCategoryMorphism and HasCapCategory ],
+               [ IsCapCategoryMorphism ],
   function( morphism )
 
     Print( Concatenation( "A morphism in ", Name( CapCategory( morphism ) ) ) );
