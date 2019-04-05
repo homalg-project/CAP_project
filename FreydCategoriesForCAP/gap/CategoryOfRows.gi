@@ -17,7 +17,7 @@ InstallMethod( CategoryOfRows,
                [ IsHomalgRing ],
                
   function( homalg_ring )
-    local category;
+    local category, to_be_finalized;
     
     category := CreateCapCategory( Concatenation( "Rows( ", RingName( homalg_ring )," )"  ) );
     
@@ -30,10 +30,18 @@ InstallMethod( CategoryOfRows,
     AddObjectRepresentation( category, IsCategoryOfRowsObject );
     
     AddMorphismRepresentation( category, IsCategoryOfRowsMorphism );
-
+    
     DisableAddForCategoricalOperations( category );
     
     INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS( category );
+    
+    to_be_finalized := ValueOption( "FinalizeCategory" );
+      
+    if to_be_finalized = false then
+      
+      return category;
+    
+    fi;
     
     Finalize( category );
     

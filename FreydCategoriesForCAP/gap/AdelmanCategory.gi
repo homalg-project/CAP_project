@@ -17,7 +17,7 @@ InstallMethod( AdelmanCategory,
                [ IsCapCategory ],
 
   function( underlying_category )
-    local adelman_category, func;
+    local adelman_category, func, to_be_finalized;
     
     if not HasIsAdditiveCategory( underlying_category ) then
         
@@ -51,6 +51,14 @@ InstallMethod( AdelmanCategory,
     AddMorphismRepresentation( adelman_category, IsAdelmanCategoryMorphism );
     
     INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY( adelman_category );
+    
+    to_be_finalized := ValueOption( "FinalizeCategory" );
+      
+    if to_be_finalized = false then
+      
+      return adelman_category;
+    
+    fi;
     
     Finalize( adelman_category );
     

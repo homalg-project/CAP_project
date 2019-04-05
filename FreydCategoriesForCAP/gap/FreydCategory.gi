@@ -17,7 +17,7 @@ InstallMethod( FreydCategory,
                [ IsCapCategory ],
                
   function( underlying_category )
-    local freyd_category;
+    local freyd_category, to_be_finalized;
     
     if not HasIsAdditiveCategory( underlying_category ) then
         
@@ -60,12 +60,20 @@ InstallMethod( FreydCategory,
     fi;
     
     DisableAddForCategoricalOperations( freyd_category );
-
+    
     AddObjectRepresentation( freyd_category, IsFreydCategoryObject );
     
     AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism );
     
     INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY( freyd_category );
+    
+    to_be_finalized := ValueOption( "FinalizeCategory" );
+      
+    if to_be_finalized = false then
+      
+      return freyd_category;
+    
+    fi;
     
     Finalize( freyd_category );
     

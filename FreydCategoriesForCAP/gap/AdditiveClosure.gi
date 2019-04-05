@@ -17,7 +17,7 @@ InstallMethod( AdditiveClosure,
                [ IsCapCategory ],
                
   function( underlying_category )
-    local category;
+    local category, to_be_finalized;
     
     if not ( HasIsAbCategory( underlying_category ) and IsAbCategory( underlying_category ) ) then
         
@@ -40,6 +40,14 @@ InstallMethod( AdditiveClosure,
     DisableAddForCategoricalOperations( category );
     
     INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE( category );
+    
+    to_be_finalized := ValueOption( "FinalizeCategory" );
+      
+    if to_be_finalized = false then
+      
+      return category;
+    
+    fi;
     
     Finalize( category );
     
