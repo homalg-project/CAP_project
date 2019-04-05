@@ -59,8 +59,6 @@ InstallMethod( CokernelImageClosure,
         
     fi;
     
-    DisableAddForCategoricalOperations( cokernel_image_closure );
-
     AddObjectRepresentation( cokernel_image_closure, IsCokernelImageClosureObject );
     
     AddMorphismRepresentation( cokernel_image_closure, IsCokernelImageClosureMorphism );

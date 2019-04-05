@@ -378,19 +378,23 @@ DeclareGlobalFunction( "EnableBasicOperationTypeCheck" );
 
 #############################################
 ##
-#! @Section Disable add in functions
+#! @Section Enable automatic calls of <C>Add</C>
 ##
 #############################################
 
 #! @BeginGroup
 #! @Description
-#!  Enables/disables the call of add for the output
+#!  Enables/disables the automatic call of <C>Add</C> for the output
 #!  of primitively added functions for the category <A>C</A>.
-#!  This can be savely done if the all objects and morphisms
-#!  are added to the category by their constructors.
-#! @Arguments C
-DeclareGlobalFunction( "DisableAddForCategoricalOperations" );
+#!  If the automatic call of <C>Add</C> is disabled (default),
+#!  the output of primitively added functions must belong to the correct category.
+#!  If the automatic call of <C>Add</C> is enabled,
+#!  the output of primitively added functions only has to be a GAP object
+#!  lying in <C>IsAttributeStoringRep</C> (with suitable attributes <C>Source</C> and <C>Range</C>
+#!  if the output should be a morphism or a twocell).
 #! @Arguments C
 DeclareGlobalFunction( "EnableAddForCategoricalOperations" );
+#! @Arguments C
+DeclareGlobalFunction( "DisableAddForCategoricalOperations" );
 #! @EndGroup
 

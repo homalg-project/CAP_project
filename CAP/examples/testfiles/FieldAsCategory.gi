@@ -52,8 +52,6 @@ InstallMethod( FieldAsCategory,
     
     AddMorphismRepresentation( category, IsFieldAsCategoryMorphism );
 
-    DisableAddForCategoricalOperations( category );
-    
     INSTALL_FUNCTIONS_FOR_FIELD_AS_CATEGORY( category );
     
     Finalize( category );

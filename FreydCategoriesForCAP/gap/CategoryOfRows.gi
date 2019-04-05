@@ -31,8 +31,6 @@ InstallMethod( CategoryOfRows,
     
     AddMorphismRepresentation( category, IsCategoryOfRowsMorphism );
     
-    DisableAddForCategoricalOperations( category );
-    
     INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS( category );
     
     to_be_finalized := ValueOption( "FinalizeCategory" );

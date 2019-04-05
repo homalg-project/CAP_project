@@ -431,8 +431,6 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryBySpans,
     
     AddMorphismRepresentation( serre_category, IsSerreQuotientCategoryBySpansMorphism );
     
-    DisableAddForCategoricalOperations( serre_category );
-    
     serre_category!.predicate_logic := category!.predicate_logic;
     
     SetFilterObj( serre_category, WasCreatedAsSerreQuotientCategoryBySpans );
