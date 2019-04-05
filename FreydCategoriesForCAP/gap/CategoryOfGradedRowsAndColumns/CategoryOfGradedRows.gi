@@ -18,7 +18,7 @@
 InstallMethod( CAPCategoryOfGradedRows,
                [ IsHomalgGradedRing ],
   function( homalg_graded_ring )
-    local category;
+    local category, to_be_finalized;
 
       # construct the category
       category := CreateCapCategory( Concatenation( "CAP category of graded rows over ", RingName( homalg_graded_ring ) ) );
@@ -45,12 +45,20 @@ InstallMethod( CAPCategoryOfGradedRows,
       
       CapCategorySwitchLogicOff( category );
       
+      to_be_finalized := ValueOption( "FinalizeCategory" );
+      
+      if to_be_finalized = false then
+        
+        return category;
+      
+      fi;
+      
       # finalise the category
       Finalize( category );
-    
+      
       # and return it
       return category;
-
+    
 end );
 
 
