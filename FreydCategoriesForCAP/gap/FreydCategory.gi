@@ -59,8 +59,6 @@ InstallMethod( FreydCategory,
         
     fi;
     
-    DisableAddForCategoricalOperations( freyd_category );
-    
     AddObjectRepresentation( freyd_category, IsFreydCategoryObject );
     
     AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism );

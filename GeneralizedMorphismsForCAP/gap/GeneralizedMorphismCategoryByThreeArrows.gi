@@ -293,8 +293,6 @@ InstallMethod( GeneralizedMorphismCategoryByThreeArrows,
     
     AddMorphismRepresentation( generalized_morphism_category, IsGeneralizedMorphismByThreeArrows );
     
-    DisableAddForCategoricalOperations( generalized_morphism_category );
-    
     generalized_morphism_category!.predicate_logic := category!.predicate_logic;
     
     SetUnderlyingHonestCategory( generalized_morphism_category, category );
