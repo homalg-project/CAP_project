@@ -65,6 +65,8 @@ InstallMethod( FreydCategory,
     
     INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY( freyd_category );
     
+    ADD_MONOIDAL_STRUCTURE_TO_FREYD_CATEGORY( freyd_category );
+
     to_be_finalized := ValueOption( "FinalizeCategory" );
       
     if to_be_finalized = false then
@@ -1024,6 +1026,102 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     
     
 end );
+
+
+###########################################
+##
+## Add monoidal structure of Freyd category
+##
+###########################################
+
+InstallGlobalFunction( ADD_MONOIDAL_STRUCTURE_TO_FREYD_CATEGORY,
+
+  function( category )
+    local underlying_category;
+
+    underlying_category := UnderlyingCategory( category );
+
+
+    ######################################################################
+    #
+    # Tensor product
+    #
+    ######################################################################
+
+    # This method requires two objects obj1, obj2 in the Freyd category.
+    # It then computes the tensor product of these objects. Our strategy is as follows:
+    #
+    # The objects are given by the relation morphisms
+    #
+    # R_A --- \alpha ---> A,    R_B --- \beta ---> B
+    #
+    # Then we consider the following diagram
+    #
+    # R_A \otimes B <<----- ( R_A \otimes B ) \oplus ( A \otimes R_B ) -------> A \otimes R_B
+    #       |                                                                           |
+    #       |                                                                           |
+    #       |---- \alpha \otimes 1_B -----> A \otimes B <------- 1_A \otimes \beta -----|
+    #
+    # This induces a universal morphism ( R_A \otimes B ) \oplus ( A \otimes R_B ) ---> A \otimes B.
+    # We interpret this universal morphism as object in the Freyd category. This object is the
+    # tensor product of obj1 and obj2. The method below returns this tensor product.
+    # Note that A \otimes B,\alpha \otimes 1_B etc. are performed in the underlying category.
+    AddTensorProductOnObjects( category,
+      function( object1, object2 )
+        local factor1, factor2, range, diagram, mor1, mor2, sink, uni;
+
+        # construct the objects needed in the computation of the tensor product
+        factor1 := TensorProductOnObjects( Source( RelationMorphism( object1 ) ), Range( RelationMorphism( object2 ) ) );
+        factor2 := TensorProductOnObjects( Range( RelationMorphism( object1 ) ), Source( RelationMorphism( object2 ) ) );
+        range := TensorProductOnObjects( Range( RelationMorphism( object1 ) ), Range( RelationMorphism( object2 ) ) );
+
+        # construct the diagram
+        diagram := [ factor1, factor2 ];
+
+        # construct the sink
+        mor1 := TensorProductOnMorphisms( RelationMorphism( object1 ), IdentityMorphism( Range( RelationMorphism( object2 ) ) ) );
+        mor2 := TensorProductOnMorphisms( IdentityMorphism( Range( RelationMorphism( object1 ) ) ), RelationMorphism( object2 ) );
+        sink := [ mor1, mor2 ];
+
+        # compute the universal morphism
+        uni := UniversalMorphismFromDirectSum( diagram, sink );
+
+        # and return the corresponding object in the Freyd category
+        return FreydCategoryObject( uni );
+
+    end );
+
+    # This method requires two morphisms in the Freyd category. Let us denote them as follows:
+    #
+    # \alpha: S_1 --- x ---> R_1,      \beta: S_2 --- y ---> R_2
+    #
+    # Then we compute
+    # (1) S = S_1 \otimes S_2, (in the Freyd category)
+    # (2) R = R_1 \otimes R_2, (in the Freyd category)
+    # (3) x \otimes y (in the underlying category)
+    # The method now returns the morphism S --- x \otimes y ---> R.
+    AddTensorProductOnMorphismsWithGivenTensorProducts( category,
+      function( source, morphism1, morphism2, range )
+        local mor;
+
+        mor := TensorProductOnMorphisms( MorphismDatum( morphism1 ), MorphismDatum( morphism2 ) );
+
+        return FreydCategoryMorphism( source, mor, range );
+
+    end );
+
+    # The tensor unit is 0 ---> 1 where 0 is the zero object and 1 the tensor unit in the underlying category
+    # and the morphism is the universal morphism from the zero object.
+    AddTensorUnit( category,
+      function( )
+
+        return FreydCategoryObject( UniversalMorphismFromZeroObject( TensorUnit( underlying_category ) ) );
+
+    end );
+
+
+end );
+
 
 ####################################
 ##
