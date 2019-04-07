@@ -293,6 +293,9 @@ DeclareOperation( "Add",
 
 #! @Description
 #!  Adds <A>object</A> as an object to <A>category</A>.
+#!  If <A>object</A> already lies in the filter <C>IsCapCategoryObject</C>,
+#!  the operation <Ref Oper="Add" Label="for IsCapCategory, IsCapCategoryObject" />
+#!  can be used instead.
 #! @Arguments category, object
 DeclareOperation( "AddObject",
                   [ IsCapCategory, IsAttributeStoringRep ] );

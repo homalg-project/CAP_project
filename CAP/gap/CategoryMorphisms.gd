@@ -425,6 +425,9 @@ DeclareOperation( "Add",
 
 #! @Description
 #!  Adds <A>morphism</A> as a morphism to <A>category</A>.
+#!  If <A>morphism</A> already lies in the filter <C>IsCapCategoryMorphism</C>,
+#!  the operation <Ref Oper="Add" Label="for IsCapCategory, IsCapCategoryMorphism" />
+#!  can be used instead.
 #! @Arguments category, morphism
 DeclareOperation( "AddMorphism",
                   [ IsCapCategory, IsAttributeStoringRep ] );
