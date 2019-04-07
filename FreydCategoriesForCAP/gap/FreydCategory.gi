@@ -1119,6 +1119,43 @@ InstallGlobalFunction( ADD_MONOIDAL_STRUCTURE_TO_FREYD_CATEGORY,
 
     end );
 
+    # Given three objects a, b, c in the Freyd category, we consider
+    # (1) source = ( a \otimes b ) \otimes c
+    # (2) range = a \otimes ( b \otimes c ).
+    # We then derive the associator associator source -> range from the associator in the underlying category.
+    # Note that even if the underlying category is a strict monoidal category
+    # (i.e. the associators and unitors are identities), this need not be true in the Freyd category.
+    AddAssociatorLeftToRightWithGivenTensorProducts( category,
+      function( source, a, b, c, range )
+        local mor;
+
+        mor := AssociatorLeftToRight( Range( RelationMorphism( a ) ),
+                                      Range( RelationMorphism( b ) ),
+                                      Range( RelationMorphism( c ) ) );
+
+        return FreydCategoryMorphism( source, mor, range );
+        # always well-defined?
+
+    end );
+
+    # Given three objects a, b, c in the Freyd category, we consider
+    # (1) source = a \otimes ( b \otimes c )
+    # (2) range = ( a \otimes b ) \otimes c.
+    # We then derive the associator associator source -> range from the associator in the underlying category.
+    # Note that even if the underlying category is a strict monoidal category
+    # (i.e. the associators and unitors are identities), this need not be true in the Freyd category.
+    AddAssociatorRightToLeftWithGivenTensorProducts( category,
+      function( source, a, b, c, range )
+        local mor;
+
+        mor := AssociatorRightToLeft( Range( RelationMorphism( a ) ),
+                                      Range( RelationMorphism( b ) ),
+                                      Range( RelationMorphism( c ) ) );
+
+        return FreydCategoryMorphism( source, mor, range );
+        # always well-defined?
+
+    end );
 
 end );
 
