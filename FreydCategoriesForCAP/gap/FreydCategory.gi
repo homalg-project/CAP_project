@@ -19,76 +19,59 @@ InstallMethod( FreydCategory,
   function( underlying_category )
     local freyd_category, to_be_finalized;
     
-    if not HasIsAdditiveCategory( underlying_category ) then
-        
-        Error( "The given category should be additive" );
-        
-    fi;
-    
-    ## for IsCongruentForMorphisms to be correct
-    if not CanCompute( underlying_category, "Lift" ) then
-        
-        Error( "The given category should be able to compute Lift" );
-        
-    fi;
-    
-    if not CanCompute( underlying_category, "SubtractionForMorphisms" ) then
-        
-        Error( "The given category should be able to compute SubtractionForMorphisms" );
-        
-    fi;
-    
-    if not CanCompute( underlying_category, "PreCompose" ) then
-        
-        Error( "The given category should be able to compute PreCompose" );
-        
-    fi;
-    
-    freyd_category := CreateCapCategory( Concatenation( "Freyd( ", Name( underlying_category ), " )" ) );
-    
-    SetFilterObj( freyd_category, IsFreydCategory );
-    
-    SetIsAdditiveCategory( freyd_category, true );
-    
-    SetUnderlyingCategory( freyd_category, underlying_category );
-    
-    ## Freyd's theorem
-    if ForAll( [ "WeakKernelEmbedding", "WeakKernelLift" ], f -> CanCompute( underlying_category, f ) ) then
-        
-        SetIsAbelianCategory( freyd_category, true );
-        
-    fi;
-    
-    AddObjectRepresentation( freyd_category, IsFreydCategoryObject );
-    
-    AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism );
-    
-    INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY( freyd_category );
-    
-    if IsMonoidalStructurePresent( underlying_category ) then
+    if IsValidInput( underlying_category ) then
 
-      # install more functionality
-      ADD_MONOIDAL_STRUCTURE_TO_FREYD_CATEGORY( freyd_category );
-      SetIsSymmetricClosedMonoidalCategory( freyd_category, true );
+        freyd_category := CreateCapCategory( Concatenation( "Freyd( ", Name( underlying_category ), " )" ) );
 
-      # check for strict monoidal structure
-      if IsStrictMonoidalCategory( underlying_category ) then
-        SetIsStrictMonoidalCategory( freyd_category, true );
-      fi;
+        SetFilterObj( freyd_category, IsFreydCategory );
+
+        SetIsAdditiveCategory( freyd_category, true );
+
+        SetUnderlyingCategory( freyd_category, underlying_category );
+
+        ## Freyd's theorem
+        if ForAll( [ "WeakKernelEmbedding", "WeakKernelLift" ], f -> CanCompute( underlying_category, f ) ) then
+
+            SetIsAbelianCategory( freyd_category, true );
+
+        fi;
+
+        AddObjectRepresentation( freyd_category, IsFreydCategoryObject );
+
+        AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism );
+
+        INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY( freyd_category );
+
+        if IsMonoidalStructurePresent( underlying_category ) then
+
+            # install more functionality
+            ADD_MONOIDAL_STRUCTURE_TO_FREYD_CATEGORY( freyd_category );
+            SetIsSymmetricClosedMonoidalCategory( freyd_category, true );
+
+            # check for strict monoidal structure
+            if IsStrictMonoidalCategory( underlying_category ) then
+                SetIsStrictMonoidalCategory( freyd_category, true );
+            fi;
+
+        fi;
+
+        to_be_finalized := ValueOption( "FinalizeCategory" );
+
+        if to_be_finalized = false then
+
+            return freyd_category;
+    
+        fi;
+    
+        Finalize( freyd_category );
+    
+        return freyd_category;
+
+    else
+
+        return false;
 
     fi;
-
-    to_be_finalized := ValueOption( "FinalizeCategory" );
-      
-    if to_be_finalized = false then
-      
-      return freyd_category;
-    
-    fi;
-    
-    Finalize( freyd_category );
-    
-    return freyd_category;
     
 end );
 
@@ -1551,13 +1534,16 @@ end );
 
 InstallGlobalFunction( IsValidInput,
   function( category )
-    local installed_ops, required_ops, i;
+    local result, installed_ops, required_ops, i;
+
+    # set return value
+    result := true;
 
     # first check if the category has been finalized (i.e. no methods are to be added...)
     if not HasIsFinalized( category ) or not IsFinalized( category ) then
 
         Error( "Underlying category must be finalized" );
-        return;
+        result := false;
 
     fi;
 
@@ -1567,6 +1553,7 @@ InstallGlobalFunction( IsValidInput,
                       "PreCompose",
                       "IdentityMorphism",
                       "AdditionForMorphisms",
+                      "SubtractionForMorphisms",
                       "AdditiveInverseForMorphisms",
                       "AdditionForMorphisms",
                       "ZeroMorphism",
@@ -1579,7 +1566,7 @@ InstallGlobalFunction( IsValidInput,
                       "InjectionOfCofactorOfDirectSum",
                       "UniversalMorphismFromDirectSum",
                       "Lift",
-                      "ProjectionInFactorOfFiberProduct" ];
+                      "ProjectionOfBiasedWeakFiberProduct" ];
 
     # whilst the following methods are installed
     installed_ops := ListInstalledOperationsOfCategory( category );
@@ -1590,34 +1577,38 @@ InstallGlobalFunction( IsValidInput,
       if not i in installed_ops then
 
         Error( Concatenation( i, " is not installed, but needed for an underlying category of Freyd category" ) );
-        return false;
+        result := false;
 
       fi;
 
     od;
 
     # if all required methods are installed, check if the category also has the right properties set
-    if not IsAdditiveCategory( category ) then
+    if not HasIsAdditiveCategory( category ) then
 
       Error( "an underlying category of a Freyd category must be additive, but the attribute is not set for the category in question" );
-      return false;
+      result := false;
 
     fi;
 
-    # if all tests have been passed, return true
-    return true;
+    # return result of this operation
+    return result;
 
 end );
 
 InstallGlobalFunction( IsMonoidalStructurePresent,
   function( category )
-    local installed_ops, required_ops, i;
+    local result, s, installed_ops, required_ops, i;
+
+    # install result, s
+    result := true;
+    s := "Monoidal structure could not be installed for Freyd category\nReasons(s):\n";
 
     # first check if the category has been finalized (i.e. no methods are to be added...)
     if not HasIsFinalized( category ) or not IsFinalized( category ) then
 
-        Error( "Monoidal categories must be finalized" );
-        return;
+        s := Concatenation( s, "(*) underlying category must be finalized\n" );
+        result := false;
 
     fi;
 
@@ -1645,8 +1636,8 @@ InstallGlobalFunction( IsMonoidalStructurePresent,
 
       if not i in installed_ops then
 
-        Error( Concatenation( i, " is not installed, but needed for a monoidal category" ) );
-        return false;
+        s := Concatenation( s, "(*) ", i, " is not installed, but needed in underlying category\n" );
+        result := false;
 
       fi;
 
@@ -1655,13 +1646,16 @@ InstallGlobalFunction( IsMonoidalStructurePresent,
     # if all required methods are installed, check if the category also has the right properties set
     if not IsRigidSymmetricClosedMonoidalCategory( category ) then
 
-      Error( Concatenation( "a monoidal category must be a rigid symmetric and closed monoidal category, ",
-                            "but the attribute is not set for the category in question" ) );
-      return false;
+      s := Concatenation( s, "(*) underlying category must be rigid symmetric and closed monoidal category, ",
+                            "yet this attribute is not set for the given category\n" );
+      result := false;
 
     fi;
 
-    # if all tests have been passed, return true
-    return true;
+    # inform user why monoidal structure has not been installed
+    Print( s );
+
+    # return result
+    return result;
 
 end );
