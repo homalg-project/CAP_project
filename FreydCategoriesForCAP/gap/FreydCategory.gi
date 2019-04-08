@@ -198,6 +198,33 @@ InstallMethod( WitnessForBeingCongruentToZero,
     
 end );
 
+InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT,
+                           [ IsFreydCategoryObject, IsFreydCategoryObject ],
+    function( a, b )
+      local mor, source, range, final_mapping;
+
+      # (1) compute source
+      mor := TensorProductOnMorphisms(
+                  IdentityMorphism( DualOnObjects( Range( RelationMorphism( a ) ) ) ), RelationMorphism( b ) );
+      source := FreydCategoryObject( mor );
+
+      # (2) compute range
+      mor := TensorProductOnMorphisms(
+                  IdentityMorphism( DualOnObjects( Source( RelationMorphism( a ) ) ) ), RelationMorphism( b ) );
+      range := FreydCategoryObject( mor );
+
+      # (3) compute map between source and range
+      mor := TensorProductOnMorphisms( DualOnMorphisms( RelationMorphism( a ) ),
+                                       IdentityMorphism( Range( RelationMorphism( b ) ) ) );
+
+      # (4) construct the final mapping, of which we have to compute the kernel embedding
+      final_mapping := FreydCategoryMorphism( source, mor, range );
+
+      # (5) return the kernel embedding
+      return KernelEmbedding( final_mapping );
+
+end );
+
 ####################################
 ##
 ## Basic operations
