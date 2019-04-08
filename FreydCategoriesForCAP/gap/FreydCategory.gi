@@ -1405,9 +1405,7 @@ InstallMethod( Display,
                
   function( freyd_category_morphism )
 
-    Print( Concatenation( "A morphism of the Freyd category over ",
-                           Name( CapCategory( MorphismDatum( freyd_category_morphism ) ) ),
-                           "\n\n" ) );
+    Print( "A morphism of a Freyd category\n\n" );,
 
     Print( "Morphism datum:\n" );
     
@@ -1488,9 +1486,7 @@ InstallMethod( Display,
                
   function( freyd_category_object )
 
-    Print( Concatenation( "An object of the Freyd category over ",
-                           Name( CapCategory( RelationMorphism( freyd_category_object ) ) ),
-                           "\n\n" ) );
+    Print( "An object of a Freyd category\n\n" );
 
     Print( "Relation morphism:\n" );
     
