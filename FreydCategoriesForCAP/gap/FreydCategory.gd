@@ -119,3 +119,25 @@ DeclareOperation( "FullInformation",
 DeclareGlobalFunction( "IsValidInput" );
 
 DeclareGlobalFunction( "IsMonoidalStructurePresent" );
+
+####################################################################################
+##
+#! @Section Convenient methods to compute tensor products of objects and morphisms
+##
+####################################################################################
+
+#!
+DeclareOperation( "\*",
+               [ IsFreydCategoryObject, IsFreydCategoryObject ] );
+
+#!
+DeclareOperation( "\^",
+               [ IsFreydCategoryObject, IsInt ] );
+
+#!
+DeclareOperation( "\*",
+               [ IsFreydCategoryMorphism, IsFreydCategoryMorphism ] );
+
+#!
+DeclareOperation( "\^",
+               [ IsFreydCategoryMorphism, IsInt ] );

@@ -1659,3 +1659,98 @@ InstallGlobalFunction( IsMonoidalStructurePresent,
     return result;
 
 end );
+
+
+####################################################################################
+##
+##  Convenience methods to compute tensor products of objects and morphisms
+##
+####################################################################################
+
+# for convenience allow "*" to indicate the tensor product on objects
+InstallMethod( \*,
+               "powers of presentations",
+               [ IsFreydCategoryObject, IsFreydCategoryObject ],
+  function( obj1, obj2 )
+
+    if not CanCompute( CapCategory( obj1 ), "TensorProductOnObjects" );
+        Error( "Tensor product of objects is not installed in this category" );
+    fi;
+
+    return TensorProductOnObjects( obj1, obj2 );
+
+end );
+
+# allow "^p" to indicate the p-th power, i.e. p-times tensor product of an object with itself
+InstallMethod( \^,
+               "powers of presentations",
+               [ IsFreydCategoryObject, IsInt ],
+  function( obj, power )
+    local res, i;
+
+    # check for valid input
+    if not CanCompute( CapCategory( obj1 ), "TensorProductOnObjects" );
+      Error( "Tensor product of objects is not installed in this category" );
+    fi;
+    if power < 0 then
+      Error( "The power must be non-negative! \n" );
+    fi;
+
+    # compute power
+    if power = 0 then
+      res := ZeroObject( CapCategory( obj ) );
+    else
+      res := obj;
+
+      for i in [ 1 .. power-1 ] do
+        res := res * obj;
+      od;
+    fi;
+
+    return res;
+
+end );
+
+# for convenience allow "*" to indicate the tensor product on morphisms
+InstallMethod( \*,
+               "powers of presentations",
+               [ IsFreydCategoryMorphism, IsFreydCategoryMorphism ],
+  function( mor1, mor2 )
+
+    if not CanCompute( CapCategory( mor1 ), "TensorProductOnMorphisms" );
+        Error( "Tensor product of morphisms is not installed in this category" );
+    fi;
+
+    return TensorProductOnMorphisms( mor1, mor2 );
+
+end );
+
+# allow "^p" to indicate the p-th power, i.e. p-times tensor product of a morphism with itself
+InstallMethod( \^,
+               "powers of presentations",
+               [ IsFreydCategoryMorphism, IsInt ],
+  function( mor, power )
+    local res, i;
+
+    # check for valid input
+    if not CanCompute( CapCategory( mor1 ), "TensorProductOnMorphisms" );
+      Error( "Tensor product of morphisms is not installed in this category" );
+    fi;
+    if power < 0 then
+      Error( "The power must be non-negative! \n" );
+    fi;
+
+    # compute power
+    if power = 0 then
+      res := ZeroObject( CapCategory( obj ) ); # this is wrong!
+    else
+      res := mor;
+
+      for i in [ 1 .. power-1 ] do
+        res := res * mor;
+      od;
+    fi;
+
+    return res;
+
+end );
