@@ -1193,6 +1193,24 @@ InstallGlobalFunction( ADD_MONOIDAL_STRUCTURE_TO_FREYD_CATEGORY,
 
     end );
 
+    ######################################################################
+    #
+    # Symmetric Monoidal Structure
+    # (i.e. braiding and its inverse given by B_a,b^{-1} = B_{b,a}
+    #
+    ######################################################################
+
+    # Given two objects a and b this method derives a braiding morphism a \otimes b -> b \otimes a
+    # from the braiding in the underlying category.
+    AddBraidingWithGivenTensorProducts( category,
+    function( s, a, b, r)
+        local mor;
+
+        mor := Braiding( Range( RelationMorphism( a ) ), Range( RelationMorphism( b ) ) );
+        return FreydCategoryMorphism( s, mor, r );
+
+    end );
+
 end );
 
 
