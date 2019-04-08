@@ -342,7 +342,7 @@ DeclareGlobalFunction( "SetCachingOfCategory" );
 
 #! @BeginGroup
 #! @Description
-#!  Sets the caching of <A>category</A> to <C>weak</C>, <C>crips</C> or <C>none</C>, respectively.
+#!  Sets the caching of <A>category</A> to <C>weak</C>, <C>crisp</C> or <C>none</C>, respectively.
 #! @Arguments category
 DeclareGlobalFunction( "SetCachingOfCategoryWeak" );
 #! @Arguments category
