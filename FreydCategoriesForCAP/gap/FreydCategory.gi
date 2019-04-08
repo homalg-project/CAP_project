@@ -1295,6 +1295,97 @@ InstallGlobalFunction( ADD_MONOIDAL_STRUCTURE_TO_FREYD_CATEGORY,
 
     end );
 
+    ######################################################################
+    #
+    # (Co-)evaluation
+    #
+    ######################################################################
+
+    # Given objects a,b we can construct the evaluation morphism Hom( a, b ) \otimes a -> b.
+    # To end let us assume that a: R_A --alpha--> A and b: R_B --beta--> B. Then consider the following diagram:
+    #                                             b \otimes 1 \equiv b
+    #                                                        ^
+    #                                                        |
+    #                                                   'evaluation'
+    #                                                        |
+    #                                             b \otimes ( A^\vee \otimes a )
+    #                                                        ^
+    #                                                        |
+    #                                                   associator
+    #                                                        |
+    #                                             ( b \otimes A^\vee ) \otimes a
+    #                                                        ^
+    #                                                        |
+    #                                                     braiding
+    #                                                        |
+    # Hom( a, b ) \otimes a --------------------> ( A^\vee \otimes b ) \otimes a
+    # The composition of all these morphisms produces the evaluation morphism.
+    AddEvaluationMorphismWithGivenSource( category,
+      function( a, b, s )
+        local Hom_embedding, Hom_embedding_tensored, mor, Adual, braiding, associator, evaluation;
+
+        # (1) the hom-embedding
+        Hom_embedding := INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT( a, b );
+        Hom_embedding_tensored := TensorProductOnMorphisms( Hom_embedding, IdentityMorphism( a ) );
+
+        # (2) the braiding
+        mor := ZeroMorphism( ZeroObject( underlying_category ), DualOnObjects( Range( RelationMorphism( a ) ) ) );
+        Adual := FreydCategoryObject( mor );
+        braiding := Braiding( Adual, b );
+        braiding := TensorProductOnMorphisms( braiding, IdentityMorphism( a ) );
+
+        # (3) associator_left_to_right
+        associator := AssociatorLeftToRight( b, Adual, a );
+
+        # (4) evaluation
+        mor := EvaluationForDual( Range( RelationMorphism( a ) ) );
+        evaluation := FreydCategoryMorphism( TensorProductOnObjects( Adual, a ), mor, TensorUnit( category ) );
+        evaluation := TensorProductOnMorphisms( IdentityMorphism( b ), evaluation );
+
+        # (5) now compute the evaluation morphism by a lift
+        return PreCompose( [ Hom_embedding_tensored, braiding, associator, evaluation ] );
+
+    end );
+
+    # Given objects a,b we can construct the coevaluation morphism a -> Hom( b, a \otimes b ).
+    # To end let us assume that a: R_A --alpha--> A and b: R_B --beta--> B. Then consider the following diagram:
+    # a \otimes 1 ---- 'coevaluation' ------> a \otimes ( b \otimes B^\vee )
+    #                                                        ^
+    #                                                        |
+    #                                                   associator
+    #                                                        |
+    #                                             ( a \otimes b ) \otimes B^\vee
+    #                                                        ^
+    #                                                        |
+    #                                                     braiding
+    #                                                        |
+    # Hom( b, a \otimes b ) --------------------> B^\vee \otimes ( a \otimes b )
+    # The corresponding lift produces the desired morphism.
+    AddCoevaluationMorphismWithGivenRange( category,
+      function( a, b, r )
+        local Hom_embedding, mor, Bdual, braiding, associator, coevaluation;
+
+        # (1) the hom-embedding
+        Hom_embedding := INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT( b, TensorProductOnObjects( a, b ) );
+
+        # (2) the braiding
+        mor := ZeroMorphism( ZeroObject( underlying_category ), DualOnObjects( Range( RelationMorphism( b ) ) ) );
+        Bdual := FreydCategoryObject( mor );
+        braiding := Braiding( Bdual, TensorProductOnObjects( a,b ) );
+
+        # (3) associator_left_to_right
+        associator := AssociatorLeftToRight( a, b, Bdual );
+
+        # (4) coevaluation
+        mor := CoevaluationForDual( Range( UnderlyingMorphism( b ) ) );
+        coevaluation := FreydCategoryMorphism( TensorUnit( category ), mor, TensorProductOnObjects( b, Bdual ) );
+        coevaluation := TensorProductOnMorphisms( IdentityMorphism( a ), coevaluation );
+
+        # (5) now compute the coevaluation morphism by a lift
+        return Lift( coevaluation, PreCompose( Hom_embedding, braiding, associator ) );
+
+    end );
+
 end );
 
 
