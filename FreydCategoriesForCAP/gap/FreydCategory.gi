@@ -1238,6 +1238,63 @@ InstallGlobalFunction( ADD_MONOIDAL_STRUCTURE_TO_FREYD_CATEGORY,
 
     end );
 
+    ######################################################################
+    #
+    # Symmetric Closed Monoidal Structure
+    #
+    ######################################################################
+
+    # Given two objects a and b this method derives the internal hom, i.e. Hom( a, b).
+    # Let the relation morphism for the object a be given by
+    # a: R_1 --- \alpha ---> A.
+    # Then we first use that the following is an exact sequence:
+    #
+    # 0 -> Hom( a,b ) -> Hom( A, b ) -> Hom( R_1, b )
+    #
+    # Now since A, R_1 are projective objects in the Freyd category, even the following sequence is exact
+    #
+    # 0 -> Hom( a,b ) -> A^\vee \otimes b --- \alpha^\vee \otimes 1_b ---> R_1^\vee \otimes b
+    #
+    # By computing the kernel object of \alpha^\vee \otimes 1_b, we thus succeed in computing Hom( a,b ).
+    AddInternalHomOnObjects( category,
+    function( a, b )
+
+      return Source( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT( a,b ) );
+
+    end );
+
+    # Given two morphisms \alpha and \beta, this method derives the internal hom, i.e. Hom( \alpha, \beta).
+    # Given that \alpha: A^\prime -> A and \beta: B -> B^\prime (A, A^\prime, B, B^\prime objects in the
+    # Freyd category), then the latter is a morphism Hom( A, B ) -> Hom( A^\prime, B^\prime ).
+    # We construct this morphism by repeating the strategy for the computation of the internal hom on objects.
+    # Explicitly, we look at the following diagram
+    #
+    # 0 -> Hom( a', b' ) --kernel2--> A'^\vee \otimes b' --- \alpha'^\vee \otimes 1_b' ---> R_1'^\vee \otimes b'
+    #                                       ^
+    #                                       |
+    #                          \alpha^\vee \otimes \beta (bridge_mapping)
+    #                                       |
+    # 0 -> Hom( a , b  ) --kernel1--> A^\vee  \otimes b  --- \alpha^\vee \otimes 1_b   ---> R_1^\vee \otimes b
+    #
+    # We compute the left square, i.e. the two kernel embeddings and the vertical map. Finally we compute the lift
+    # Hom( a,b ) ---> Hom( a', b' ) and return this morphism.
+    AddInternalHomOnMorphismsWithGivenInternalHoms( category,
+    function( s, alpha, beta, r )
+      local kernel1, kernel2, mor, bridge_mapping;
+
+      # (1) extract the Hom-embeddings
+      kernel1 := INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT( Range( alpha ), Source( beta ) );
+      kernel2 := INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT( Source( alpha ), Range( beta ) );
+
+      # (2) construct the bridge_mapping A^vee \otimes B -> A'^\vee \otimes b'
+      mor := TensorProductOnMorphisms( DualOnMorphisms( MorphismDatum( alpha ) ), MorphismDatum( beta ) );
+      bridge_mapping := FreydCategoryMorphism( Range( kernel1 ), mor, Range( kernel2 ) );
+
+      # (3) finally return the lift of the corresponding diagram
+      return Lift( PreCompose( kernel1, bridge_mapping ), kernel2 );
+
+    end );
+
 end );
 
 
