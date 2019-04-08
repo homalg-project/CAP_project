@@ -85,3 +85,25 @@ DeclareAttribute( "WitnessForBeingCongruentToZero",
 #! @Arguments objects a, b
 DeclareOperationWithCache( "INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT",
                            [ IsFreydCategoryObject, IsFreydCategoryObject ] );
+
+#############################################################
+##
+#! @Section Printing all information about an object/morphism
+##
+#############################################################
+
+#! @Description
+#! The argument is an object $A$ in the Freyd category. For such an object, this method conveniently displays
+#! all defining data, i.e. source, mapping matrix and range.
+#! @Returns detailed information about the object A
+#! @Arguments A
+DeclareOperation( "FullInformation",
+                 [ IsFreydCategoryObject ] );
+
+#! @Description
+#! The argument is a morphism $m$ in the Freyd category. For such a morphism, this method conveniently displays
+#! all defining data, i.e. defining data of its source, the mapping matrix and the defining data of its range.
+#! @Returns detailed information about the morphism
+#! @Arguments m
+DeclareOperation( "FullInformation",
+                 [ IsFreydCategoryMorphism ] );

@@ -1391,31 +1391,143 @@ end );
 
 ####################################
 ##
-## View
+## View morphisms
 ##
 ####################################
+
+##
+InstallMethod( String,
+              [ IsFreydCategoryMorphism ], 999, ### FIX 999
+  function( freyd_category_morphism )
+
+     return Concatenation( "A morphism of the Freyd category over ",
+                           Name( CapCategory( MorphismsDatum( freyd_category_morphism ) ) ) );
+
+end );
 
 ##
 InstallMethod( Display,
                [ IsFreydCategoryMorphism ],
                
   function( freyd_category_morphism )
-    
+
+    Print( Concatenation( "A morphism of the Freyd category over ",
+                           Name( CapCategory( MorphismsDatum( freyd_category_morphism ) ) ),
+                           "\n\n" ) );
+
     Print( "Morphism datum:\n" );
     
     Display( MorphismDatum( freyd_category_morphism ) );
     
 end );
 
+##
+InstallMethod( ViewObj,
+               [ IsFreydCategoryMorphism ], 999, ### FIX 999
+  function( freyd_category_morphism )
+
+    Print( Concatenation( "<", String( freyd_category_morphism ), ">" ) );
+
+end );
+
+##
+InstallMethod( FullInformation,
+               [ IsFreydCategoryMorphism ],
+  function( freyd_category_morphism )
+
+    Print( "\n" );
+    Print( "================================================================================= \n \n" );
+
+    # Display Source
+    Print( "Source: \n" );
+    Print( "------- \n" );
+    Display( Source( RelationMorphism( Source( freyd_category_morphism ) ) ) );
+    Print( "\n" );
+    Display( RelationMorphism( Source( freyd_category_morphism ) ) );
+    Print( "\n" );
+    Display( Range( RelationMorphism( Source( freyd_category_morphism ) ) ) );
+    Print( "\n" );
+    Print( "--------------------------------------------------------------------------------- \n \n" );
+
+    # Display the mapping matrix
+    Print( "Mapping matrix: \n" );
+    Print( "--------------- \n" );
+    Display( MorphismDatum( freyd_category_morphism ) );
+    Print( "\n" );
+
+    Print( "--------------------------------------------------------------------------------- \n \n" );
+
+    # Display the range"
+    Print( "Range: \n" );
+    Print( "------ \n" );
+    Display( Source( RelationMorphism( Range( freyd_category_morphism ) ) ) );
+    Print( "\n" );
+    Display( RelationMorphism( Range( freyd_category_morphism ) ) );
+    Print( "\n" );
+    Display( Range( RelationMorphism( Range( freyd_category_morphism ) ) ) );
+    Print( "\n" );
+    Print( "================================================================================= \n \n" );
+
+end );
+
+
+####################################
+##
+## View objects
+##
+####################################
+
+##
+InstallMethod( String,
+              [ IsFreydCategoryObject ],
+  function( freyd_category_object )
+
+     return Concatenation( "An object of the Freyd category over ",
+                           Name( CapCategory( RelationMorphism( freyd_category_object ) ) )
+                           );
+
+end );
 
 ##
 InstallMethod( Display,
                [ IsFreydCategoryObject ],
                
   function( freyd_category_object )
-    
+
+    Print( Concatenation( "An object of the Freyd category over ",
+                           Name( CapCategory( RelationMorphism( freyd_category_object ) ) ),
+                           "\n\n" ) );
+
     Print( "Relation morphism:\n" );
     
     Display( RelationMorphism( freyd_category_object ) );
     
+end );
+
+##
+InstallMethod( ViewObj,
+               [ IsFreydCategoryObject ],
+  function( freyd_category_object )
+
+    Print( Concatenation( "<", String( freyd_category_object ), ">" ) );
+
+end );
+
+##
+InstallMethod( FullInformation,
+               [ IsFreydCategoryObject ],
+  function( freyd_category_object )
+
+    Print( "\n" );
+    Print( "================================================================================= \n \n" );
+
+    Display( Source( RelationMorphism( freyd_category_object ) ) );
+    Print( "\n" );
+    Display( RelationMorphism( freyd_category_object ) );
+    Print( "\n" );
+    Display( Range( RelationMorphism( freyd_category_object ) ) );
+    Print( "\n" );
+
+    Print( "================================================================================= \n \n" );
+
 end );
