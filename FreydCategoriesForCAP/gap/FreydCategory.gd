@@ -38,6 +38,9 @@ DeclareGlobalFunction( "TODO_LIST_ENTRY_FOR_MORPHISM_WITNESS_FOR_FREYD_CATEGORY"
 DeclareAttribute( "FreydCategory",
                   IsCapCategory );
 
+DeclareOperation( "FreydCategory",
+                  [ IsCapCategory, IsBool ] );
+
 DeclareAttribute( "FreydCategoryObject",
                   IsCapCategoryMorphism );
 
@@ -116,7 +119,7 @@ DeclareOperation( "FullInformation",
 ##
 ####################################################################################
 
-DeclareGlobalFunction( "IsValidInput" );
+DeclareGlobalFunction( "IsValidInputForFreydCategory" );
 
 DeclareGlobalFunction( "IsMonoidalStructurePresent" );
 

@@ -14,12 +14,12 @@
 
 ##
 InstallMethod( FreydCategory,
-               [ IsCapCategory ],
+               [ IsCapCategory, IsBool ],
                
-  function( underlying_category )
+  function( underlying_category, display_messages )
     local freyd_category, to_be_finalized;
     
-    if IsValidInput( underlying_category ) then
+    if IsValidInputForFreydCategory( underlying_category ) then
 
         freyd_category := CreateCapCategory( Concatenation( "Freyd( ", Name( underlying_category ), " )" ) );
 
@@ -42,14 +42,15 @@ InstallMethod( FreydCategory,
 
         INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY( freyd_category );
 
-        if IsMonoidalStructurePresent( underlying_category, false ) then
+        if IsMonoidalStructurePresent( underlying_category, display_messages ) then
 
             # install more functionality
             ADD_MONOIDAL_STRUCTURE_TO_FREYD_CATEGORY( freyd_category );
             SetIsSymmetricClosedMonoidalCategory( freyd_category, true );
 
             # check for strict monoidal structure
-            if IsStrictMonoidalCategory( underlying_category ) then
+            if HasIsStrictMonoidalCategory( underlying_category ) 
+               and IsStrictMonoidalCategory( underlying_category ) then
                 SetIsStrictMonoidalCategory( freyd_category, true );
             fi;
 
@@ -73,6 +74,14 @@ InstallMethod( FreydCategory,
 
     fi;
     
+end );
+
+InstallMethod( FreydCategory,
+               [ IsCapCategory ],
+  function( underlying_category )
+
+    return FreydCategory( underlying_category, false );
+
 end );
 
 ##
@@ -1489,7 +1498,7 @@ end );
 ##
 ####################################################################################
 
-InstallGlobalFunction( IsValidInput,
+InstallGlobalFunction( IsValidInputForFreydCategory,
   function( category )
     local result, installed_ops, required_ops, i;
 
