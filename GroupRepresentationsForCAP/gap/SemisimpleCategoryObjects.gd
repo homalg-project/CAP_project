@@ -154,13 +154,13 @@ DeclareOperation( "Component", [ IsSemisimpleCategoryObject, IsObject ] );
 #! This is a debug operation.
 #! The arguments are 4
 #! objects $v_1, v_2, v_3, v_4$
-#! in a semisimple category $\bigoplus_{i \in I} k\mathrm{-vec}$.
+#! in a category.
 #! The output is true if the pentagon identity holds
 #! for those 4 objects, false otherwise.
 #! @Returns a boolean
 #! @Arguments v_1, v_2, v_3, v_4
 DeclareOperation( "TestPentagonIdentity",
-              [ IsSemisimpleCategoryObject, IsSemisimpleCategoryObject, IsSemisimpleCategoryObject, IsSemisimpleCategoryObject ] );
+              [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! This is a debug operation.
