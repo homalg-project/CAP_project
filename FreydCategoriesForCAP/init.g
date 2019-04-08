@@ -25,4 +25,4 @@ ReadPackage( "FreydCategoriesForCAP", "gap/CokernelImageClosure.gd" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/AdelmanCategory.gd" );
 
-
+ReadPackage( "FreydCategoriesForCAP", "gap/QuiverRows.gd" );
