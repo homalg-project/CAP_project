@@ -1401,7 +1401,7 @@ InstallMethod( String,
   function( freyd_category_morphism )
 
      return Concatenation( "A morphism of the Freyd category over ",
-                           Name( CapCategory( MorphismsDatum( freyd_category_morphism ) ) ) );
+                           Name( CapCategory( MorphismDatum( freyd_category_morphism ) ) ) );
 
 end );
 
@@ -1412,7 +1412,7 @@ InstallMethod( Display,
   function( freyd_category_morphism )
 
     Print( Concatenation( "A morphism of the Freyd category over ",
-                           Name( CapCategory( MorphismsDatum( freyd_category_morphism ) ) ),
+                           Name( CapCategory( MorphismDatum( freyd_category_morphism ) ) ),
                            "\n\n" ) );
 
     Print( "Morphism datum:\n" );

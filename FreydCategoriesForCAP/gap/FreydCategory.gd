@@ -25,6 +25,8 @@ DeclareCategory( "IsFreydCategory",
 
 DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY" );
 
+DeclareGlobalFunction( "ADD_MONOIDAL_STRUCTURE_TO_FREYD_CATEGORY" );
+
 DeclareGlobalFunction( "TODO_LIST_ENTRY_FOR_MORPHISM_WITNESS_FOR_FREYD_CATEGORY" );
 
 ####################################
