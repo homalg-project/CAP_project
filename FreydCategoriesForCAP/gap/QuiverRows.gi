@@ -417,7 +417,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     for path in basis do
         
-        Add( basis_paths_by_vertex_index[ VertexNumber( Source( path ) ) ][ VertexNumber( Target( path ) ) ], path );
+        Add( basis_paths_by_vertex_index[ VertexIndex( Source( path ) ) ][ VertexIndex( Target( path ) ) ], path );
         
     od;
     
@@ -430,7 +430,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
         
         mat := [];
         
-        hom_v_w := basis_paths_by_vertex_index[ VertexNumber( v ) ][ VertexNumber( w ) ];
+        hom_v_w := basis_paths_by_vertex_index[ VertexIndex( v ) ][ VertexIndex( w ) ];
         
         if IsEmpty( hom_v_w ) then
             
@@ -438,7 +438,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
             
         fi;
         
-        hom_vp_wp := basis_paths_by_vertex_index[ VertexNumber( vp ) ][ VertexNumber( wp ) ];
+        hom_vp_wp := basis_paths_by_vertex_index[ VertexIndex( vp ) ][ VertexIndex( wp ) ];
         
         if IsEmpty( hom_vp_wp ) then
             
@@ -481,8 +481,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
             List( vertices, w ->
                 List( vertices, vp ->
                     List( vertices, wp ->
-                        List( basis_paths_by_vertex_index[ VertexNumber( vp ) ][ VertexNumber( v ) ], path_1 ->
-                            List( basis_paths_by_vertex_index[ VertexNumber( w ) ][ VertexNumber( wp ) ], path_2 ->
+                        List( basis_paths_by_vertex_index[ VertexIndex( vp ) ][ VertexIndex( v ) ], path_1 ->
+                            List( basis_paths_by_vertex_index[ VertexIndex( w ) ][ VertexIndex( wp ) ], path_2 ->
                                 MATRIX_FOR_ALGEBROID_HOMSTRUCTURE( v, w, vp, wp, path_1, path_2 )
                             )
                         )
@@ -978,7 +978,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
             
             for b in listB do
                 
-                rank := rank + Size( basis_paths_by_vertex_index[ VertexNumber( a[1] ) ][ VertexNumber( b[1] ) ] ) * a[2] * b[2] ;
+                rank := rank + Size( basis_paths_by_vertex_index[ VertexIndex( a[1] ) ][ VertexIndex( b[1] ) ] ) * a[2] * b[2] ;
                 
             od;
             
@@ -1009,15 +1009,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
         
         wp := listl[1];
         
-        basis_vp_v := basis_paths_by_vertex_index[ VertexNumber(vp) ][ VertexNumber( v )];
+        basis_vp_v := basis_paths_by_vertex_index[ VertexIndex(vp) ][ VertexIndex( v )];
         
-        basis_w_wp := basis_paths_by_vertex_index[ VertexNumber(w) ][ VertexNumber( wp )];
+        basis_w_wp := basis_paths_by_vertex_index[ VertexIndex(w) ][ VertexIndex( wp )];
         
-        basis_v_w := basis_paths_by_vertex_index[ VertexNumber(v) ][ VertexNumber( w )];
+        basis_v_w := basis_paths_by_vertex_index[ VertexIndex(v) ][ VertexIndex( w )];
         
         m := Size( basis_v_w );
         
-        basis_vp_wp := basis_paths_by_vertex_index[ VertexNumber(vp) ][ VertexNumber( wp )];
+        basis_vp_wp := basis_paths_by_vertex_index[ VertexIndex(vp) ][ VertexIndex( wp )];
         
         n := Size( basis_vp_wp );
         
@@ -1054,7 +1054,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
                                         
                                         entry := entry + 
                                             coeffs_alpha[p] * coeffs_beta[q] *
-                                            hom_structure_algebroid[ VertexNumber(v) ][ VertexNumber(w) ][ VertexNumber(vp) ][ VertexNumber(wp) ][ p ][ q ];
+                                            hom_structure_algebroid[ VertexIndex(v) ][ VertexIndex(w) ][ VertexIndex(vp) ][ VertexIndex(wp) ][ p ][ q ];
                                         
                                     od;
                                     
@@ -1104,7 +1104,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
             
             for k in [ 1 .. Size( listk ) ] do
                 
-                Add( row_counts, listj[j][2] * listk[k][2] * Size( basis_paths_by_vertex_index[ VertexNumber( listj[j][1] ) ][ VertexNumber( listk[k][1] ) ] ) );
+                Add( row_counts, listj[j][2] * listk[k][2] * Size( basis_paths_by_vertex_index[ VertexIndex( listj[j][1] ) ][ VertexIndex( listk[k][1] ) ] ) );
                 
             od;
             
@@ -1116,7 +1116,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
             
             for l in [ 1 .. Size( listl ) ] do
                 
-                Add( col_counts, listi[i][2] * listl[l][2] * Size( basis_paths_by_vertex_index[ VertexNumber( listi[i][1] ) ][ VertexNumber( listl[l][1] ) ] ) );
+                Add( col_counts, listi[i][2] * listl[l][2] * Size( basis_paths_by_vertex_index[ VertexIndex( listi[i][1] ) ][ VertexIndex( listl[l][1] ) ] ) );
                 
             od;
             
@@ -1200,7 +1200,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
                 
                 submat := listlist[i][j];
                 
-                basis := basis_paths_by_vertex_index[ VertexNumber( lists[i][1] ) ][ VertexNumber( listr[j][1] ) ];
+                basis := basis_paths_by_vertex_index[ VertexIndex( lists[i][1] ) ][ VertexIndex( listr[j][1] ) ];
                 
                 for c in [ 1 .. lists[i][2] ] do
                     
@@ -1245,7 +1245,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
                 
                 submat := [];
                 
-                basis := basis_paths_by_vertex_index[ VertexNumber( lists[i][1] ) ][ VertexNumber( listr[j][1] ) ];
+                basis := basis_paths_by_vertex_index[ VertexIndex( lists[i][1] ) ][ VertexIndex( listr[j][1] ) ];
                 
                 for c in [ 1 .. lists[i][2] ] do
                     
