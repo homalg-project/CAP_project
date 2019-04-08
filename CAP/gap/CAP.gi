@@ -229,7 +229,10 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
                             IsEqualForMorphisms := "never",
                             IsEqualForMorphismsOnMor := "never",
                             IsEqualForCacheForObjects := "never",
-                            IsEqualForCacheForMorphisms := "never" );
+                            IsEqualForCacheForMorphisms := "never",
+                            IsWellDefinedForObjects := "never",
+                            IsWellDefinedForMorphisms := "never",
+                            IsWellDefinedForTwoCells := "never" );
     
     obj_rec!.redirects := rec( );
     
@@ -242,7 +245,7 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     
     obj_rec!.predicate_logic := true;
     
-    obj_rec!.add_primitive_output := true;
+    obj_rec!.add_primitive_output := false;
     
     return obj_rec;
     

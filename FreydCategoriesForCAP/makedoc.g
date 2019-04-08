@@ -3,9 +3,15 @@
 #
 LoadPackage( "AutoDoc" );
 
-AutoDoc( "FreydCategoriesForCAP" : scaffold := true, autodoc :=
+AutoDoc( "FreydCategoriesForCAP" :
+         scaffold :=
+          rec(
+            gapdoc_latex_options := rec(
+            LateExtraPreamble := "\\usepackage{tikz}\n\\usetikzlibrary{arrows}" )
+          ),
+         autodoc :=
          rec( files := [ "doc/Intros.autodoc" ],
-         scan_dirs := [ "gap", "examples", "doc" ] ),
+         scan_dirs := [ "gap", "gap/CategoryOfGradedRowsAndColumns", "examples", "doc" ] ),
          maketest := rec( commands :=
                             [ "LoadPackage( \"CAP\" );",
                               "LoadPackage( \"IO_ForHomalg\" );",

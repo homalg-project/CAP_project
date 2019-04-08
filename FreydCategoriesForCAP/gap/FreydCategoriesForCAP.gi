@@ -642,26 +642,6 @@ CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( FREYD_CATEGORIES_METHOD_NAME_RECORD );
 
 ####################################
 ##
-## Convenience methods
-##
-####################################
-
-##
-InstallMethod( HomomorphismStructureOnMorphisms,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( alpha, beta )
-    
-    return HomomorphismStructureOnMorphismsWithGivenObjects(
-             HomomorphismStructureOnObjects( Range( alpha ), Source( beta ) ),
-             alpha, beta,
-             HomomorphismStructureOnObjects( Source( alpha ), Range( beta ) )
-           );
-    
-end );
-
-####################################
-##
 ## Free abelian category
 ##
 ####################################

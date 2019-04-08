@@ -281,14 +281,24 @@ DeclareOperation( "AddIsEqualForCacheForObjects",
 ###################################
 ##
 #! @Section Adding Objects to a Category
+#! @SectionLabel Adding_Objects_to_a_Category
 ##
 ###################################
 
+#! @Description
+#!  Adds <A>object</A> as an object to <A>category</A>.
+#! @Arguments category, object
 DeclareOperation( "Add",
                   [ IsCapCategory, IsCapCategoryObject ] );
 
+#! @Description
+#!  Adds <A>object</A> as an object to <A>category</A>.
+#!  If <A>object</A> already lies in the filter <C>IsCapCategoryObject</C>,
+#!  the operation <Ref Oper="Add" Label="for IsCapCategory, IsCapCategoryObject" />
+#!  can be used instead.
+#! @Arguments category, object
 DeclareOperation( "AddObject",
-                  [ IsCapCategory, IsObject ] );
+                  [ IsCapCategory, IsAttributeStoringRep ] );
 
 #! @Arguments category, filter
 #! @Description

@@ -2402,7 +2402,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
   CategoryFilter := function( cat )
     local B, conditions;
     
-    if HasRangeCategoryOfHomomorphismStructure( cat ) then
+    if HasIsAbCategory( cat ) and IsAbCategory( cat ) and HasRangeCategoryOfHomomorphismStructure( cat ) then
         
         B := RangeCategoryOfHomomorphismStructure( cat );
         

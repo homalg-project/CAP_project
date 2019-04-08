@@ -17,7 +17,7 @@ InstallMethod( AdditiveClosure,
                [ IsCapCategory ],
                
   function( underlying_category )
-    local category;
+    local category, to_be_finalized;
     
     if not ( HasIsAbCategory( underlying_category ) and IsAbCategory( underlying_category ) ) then
         
@@ -37,9 +37,15 @@ InstallMethod( AdditiveClosure,
     
     AddMorphismRepresentation( category, IsAdditiveClosureMorphism );
     
-    DisableAddForCategoricalOperations( category );
-    
     INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE( category );
+    
+    to_be_finalized := ValueOption( "FinalizeCategory" );
+      
+    if to_be_finalized = false then
+      
+      return category;
+    
+    fi;
     
     Finalize( category );
     
@@ -70,8 +76,6 @@ InstallMethodWithCache( AdditiveClosureObject,
                              additive_closure_object, category,
                              ObjectList, list_of_objects
     );
-
-    Add( category, additive_closure_object );
     
     return additive_closure_object;
     
@@ -108,8 +112,6 @@ InstallMethod( AdditiveClosureMorphism,
                              Range, range,
                              MorphismMatrix, matrix
     );
-
-    Add( category, additive_closure_morphism );
     
     return additive_closure_morphism;
     

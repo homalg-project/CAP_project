@@ -59,8 +59,6 @@ InstallMethod( CokernelImageClosure,
         
     fi;
     
-    DisableAddForCategoricalOperations( cokernel_image_closure );
-
     AddObjectRepresentation( cokernel_image_closure, IsCokernelImageClosureObject );
     
     AddMorphismRepresentation( cokernel_image_closure, IsCokernelImageClosureMorphism );
@@ -93,8 +91,6 @@ InstallMethod( CokernelImageClosureObject,
     ObjectifyObjectForCAPWithAttributes( cokernel_image_object, category,
                                          GeneratorMorphism, generator_morphism,
                                          RelationMorphism, relation_morphism );
-    
-    Add( category, cokernel_image_object );
     
     return cokernel_image_object;
     
@@ -160,8 +156,6 @@ InstallMethod( CokernelImageClosureMorphism,
                              Range, range,
                              MorphismDatum, morphism_datum
     );
-
-    Add( category, cokernel_image_closure_morphism );
     
     return cokernel_image_closure_morphism;
     
