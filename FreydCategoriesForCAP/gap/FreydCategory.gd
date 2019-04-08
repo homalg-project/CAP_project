@@ -109,3 +109,13 @@ DeclareOperation( "FullInformation",
 #! @Arguments m
 DeclareOperation( "FullInformation",
                  [ IsFreydCategoryMorphism ] );
+
+####################################################################################
+##
+#! @Section Determine properties of input category for Freyd category
+##
+####################################################################################
+
+DeclareGlobalFunction( "IsValidInput" );
+
+DeclareGlobalFunction( "IsMonoidalStructurePresent" );
