@@ -42,7 +42,7 @@ InstallMethod( FreydCategory,
 
         INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY( freyd_category );
 
-        if IsMonoidalStructurePresent( underlying_category ) then
+        if IsMonoidalStructurePresent( underlying_category, false ) then
 
             # install more functionality
             ADD_MONOIDAL_STRUCTURE_TO_FREYD_CATEGORY( freyd_category );
@@ -1390,36 +1390,17 @@ end );
 ####################################
 
 ##
-InstallMethod( String,
-              [ IsFreydCategoryMorphism ], 999, ### FIX 999
-  function( freyd_category_morphism )
-
-     return Concatenation( "A morphism of the Freyd category over ",
-                           Name( CapCategory( MorphismDatum( freyd_category_morphism ) ) ) );
-
-end );
-
-##
 InstallMethod( Display,
                [ IsFreydCategoryMorphism ],
                
   function( freyd_category_morphism )
 
-    Print( "A morphism of a Freyd category\n\n" );,
+    Print( "A morphism of a Freyd category\n\n" );
 
     Print( "Morphism datum:\n" );
     
     Display( MorphismDatum( freyd_category_morphism ) );
     
-end );
-
-##
-InstallMethod( ViewObj,
-               [ IsFreydCategoryMorphism ], 999, ### FIX 999
-  function( freyd_category_morphism )
-
-    Print( Concatenation( "<", String( freyd_category_morphism ), ">" ) );
-
 end );
 
 ##
@@ -1470,17 +1451,6 @@ end );
 ####################################
 
 ##
-InstallMethod( String,
-              [ IsFreydCategoryObject ],
-  function( freyd_category_object )
-
-     return Concatenation( "An object of the Freyd category over ",
-                           Name( CapCategory( RelationMorphism( freyd_category_object ) ) )
-                           );
-
-end );
-
-##
 InstallMethod( Display,
                [ IsFreydCategoryObject ],
                
@@ -1492,15 +1462,6 @@ InstallMethod( Display,
     
     Display( RelationMorphism( freyd_category_object ) );
     
-end );
-
-##
-InstallMethod( ViewObj,
-               [ IsFreydCategoryObject ],
-  function( freyd_category_object )
-
-    Print( Concatenation( "<", String( freyd_category_object ), ">" ) );
-
 end );
 
 ##
@@ -1562,7 +1523,8 @@ InstallGlobalFunction( IsValidInput,
                       "InjectionOfCofactorOfDirectSum",
                       "UniversalMorphismFromDirectSum",
                       "Lift",
-                      "ProjectionOfBiasedWeakFiberProduct" ];
+                      #"ProjectionOfBiasedWeakFiberProduct" # insert again!
+                      ];
 
     # whilst the following methods are installed
     installed_ops := ListInstalledOperationsOfCategory( category );
@@ -1593,7 +1555,7 @@ InstallGlobalFunction( IsValidInput,
 end );
 
 InstallGlobalFunction( IsMonoidalStructurePresent,
-  function( category )
+  function( category, output_expected )
     local result, s, installed_ops, required_ops, i;
 
     # install result, s
@@ -1640,16 +1602,23 @@ InstallGlobalFunction( IsMonoidalStructurePresent,
     od;
 
     # if all required methods are installed, check if the category also has the right properties set
-    if not IsRigidSymmetricClosedMonoidalCategory( category ) then
+    if not HasIsRigidSymmetricClosedMonoidalCategory( category ) then
 
       s := Concatenation( s, "(*) underlying category must be rigid symmetric and closed monoidal category, ",
                             "yet this attribute is not set for the given category\n" );
       result := false;
 
+    elif not IsRigidSymmetricClosedMonoidalCategory( category ) then
+
+      s := Concatenation( s, "(*) underlying category must be rigid symmetric and closed monoidal category\n" );
+      result := false;
+
     fi;
 
     # inform user why monoidal structure has not been installed
-    Print( s );
+    if output_expected then
+        Print( s );
+    fi;
 
     # return result
     return result;
@@ -1669,7 +1638,7 @@ InstallMethod( \*,
                [ IsFreydCategoryObject, IsFreydCategoryObject ],
   function( obj1, obj2 )
 
-    if not CanCompute( CapCategory( obj1 ), "TensorProductOnObjects" );
+    if not CanCompute( CapCategory( obj1 ), "TensorProductOnObjects" ) then
         Error( "Tensor product of objects is not installed in this category" );
     fi;
 
@@ -1685,7 +1654,7 @@ InstallMethod( \^,
     local res, i;
 
     # check for valid input
-    if not CanCompute( CapCategory( obj1 ), "TensorProductOnObjects" );
+    if not CanCompute( CapCategory( obj ), "TensorProductOnObjects" ) then
       Error( "Tensor product of objects is not installed in this category" );
     fi;
     if power < 0 then
@@ -1713,7 +1682,7 @@ InstallMethod( \*,
                [ IsFreydCategoryMorphism, IsFreydCategoryMorphism ],
   function( mor1, mor2 )
 
-    if not CanCompute( CapCategory( mor1 ), "TensorProductOnMorphisms" );
+    if not CanCompute( CapCategory( mor1 ), "TensorProductOnMorphisms" ) then
         Error( "Tensor product of morphisms is not installed in this category" );
     fi;
 
@@ -1729,7 +1698,7 @@ InstallMethod( \^,
     local res, i;
 
     # check for valid input
-    if not CanCompute( CapCategory( mor1 ), "TensorProductOnMorphisms" );
+    if not CanCompute( CapCategory( mor ), "TensorProductOnMorphisms" ) then
       Error( "Tensor product of morphisms is not installed in this category" );
     fi;
     if power < 0 then
@@ -1738,7 +1707,7 @@ InstallMethod( \^,
 
     # compute power
     if power = 0 then
-      res := ZeroObject( CapCategory( obj ) ); # this is wrong!
+      res := ZeroMorphism( ZeroObject( CapCategory( mor ) ), ZeroObject( mor ) );
     else
       res := mor;
 

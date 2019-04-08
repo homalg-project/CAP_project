@@ -435,9 +435,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # @Returns a morphism
     # @Arguments zero_object, object
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
-      function( zero_object, object )
+      function( object, zero_object )
         local morphism;
-        
+
         morphism := GradedRowOrColumnMorphism( zero_object,
                                                HomalgZeroMatrix( Rank( object ), 0, underlying_graded_ring ),
                                                object,
