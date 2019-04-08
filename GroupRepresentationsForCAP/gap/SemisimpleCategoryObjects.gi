@@ -7,6 +7,8 @@
 ##
 #############################################################################
 
+BindGlobal( "InfoGroupRepresentationsForCAP", NewInfoClass("InfoGroupRepresentationsForCAP") );
+
 ####################################
 ##
 ## GAP Category
@@ -232,12 +234,14 @@ InstallMethod( TestPentagonIdentityForAllQuadruplesInList,
                [ IsList ],
                
   function( object_list )
-    local a, b, c, d, size, list, test, string;
+    local a, b, c, d, size, list, test, string, all_okay;
     
     size := Size( object_list );
     
     list := [ 1 .. size ];
     
+    all_okay := true;
+
     for a in list do
         
         for b in list do
@@ -252,11 +256,12 @@ InstallMethod( TestPentagonIdentityForAllQuadruplesInList,
                     
                     if not test then
                         
-                        Print( Concatenation( "The quadruple ", string, " FAILED! \n" ) ); 
+                        Info( InfoGroupRepresentationsForCAP, 2, Concatenation( "The quadruple ", string, " FAILED!" ) );
+                        all_okay := false;
                         
                     else
                         
-                        Print( Concatenation( "The quadruple ", string, " is okay! \n" ) ); 
+                        Info( InfoGroupRepresentationsForCAP, 2, Concatenation( "The quadruple ", string, " is okay!" ) );
                         
                     fi;
                     
@@ -268,6 +273,8 @@ InstallMethod( TestPentagonIdentityForAllQuadruplesInList,
         od;
         
     od;
+    
+    return all_okay;
     
 end );
 
