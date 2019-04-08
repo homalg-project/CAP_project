@@ -674,6 +674,18 @@ end : Description := "IsInitial using IsZeroForObjects",
       CategoryFilter := IsAdditiveCategory ); #Ab-Category?
 
 ##
+AddDerivationToCAP( SubtractionForMorphisms,
+                    [ [ AdditionForMorphisms, 1 ],
+                      [ AdditiveInverseForMorphisms, 1 ] ],
+  function( morphism_1, morphism_2 )
+    
+    return AdditionForMorphisms( morphism_1, AdditiveInverseForMorphisms( morphism_2 ) );
+    
+end : Description := "SubtractionForMorphisms using AdditionForMorphisms and AdditiveInverseForMorphisms",
+      CategoryFilter := IsAbCategory );
+
+
+##
 AddDerivationToCAP( IsInitial,
                   
   function( object )
