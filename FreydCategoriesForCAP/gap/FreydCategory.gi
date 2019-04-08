@@ -1157,6 +1157,42 @@ InstallGlobalFunction( ADD_MONOIDAL_STRUCTURE_TO_FREYD_CATEGORY,
 
     end );
 
+    # Given an object a, this method returns the left unitor 1 \otimes a -> a.
+    # We derive this from the unitors of the underlying category.
+    AddLeftUnitorWithGivenTensorProduct( category,
+      function( a, s )
+
+        return FreydCategoryMorphism( s, LeftUnitor( Range( RelationMorphism( a ) ) ), a );
+
+    end );
+
+    # Given an object a, this method returns the left unitor inverse a -> 1 \otimes a.
+    # We derive from the underlying category.
+    AddLeftUnitorInverseWithGivenTensorProduct( category,
+      function( a, r )
+
+        return FreydCategoryMorphism( a, LeftUnitor( Range( RelationMorphism( a ) ) ), r );
+
+    end );
+
+    # Given an object a, this method returns the right unitor a \otimes 1 -> a.
+    # We derive from the underlying category.
+    AddRightUnitorWithGivenTensorProduct( category,
+      function( a, s )
+
+        return FreydCategoryMorphism( s, RightUnitor( Range( RelationMorphism( a ) ) ), a );
+
+    end );
+
+    # Given an object a, this method returns the right unitor inverse a -> a \otimes 1.
+    # We derive from the underlying proj-category.
+    AddRightUnitorInverseWithGivenTensorProduct( category,
+      function( a, r )
+
+        return FreydCategoryMorphism( a, RightUnitorInverse( Range( RelationMorphism( a ) ) ), r );
+
+    end );
+
 end );
 
 
