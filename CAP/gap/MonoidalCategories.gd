@@ -31,8 +31,38 @@ DeclareGlobalVariable( "MONOIDAL_CATEGORIES_METHOD_NAME_RECORD" );
 #! is called a <Emph>monoidal category</Emph>, if
 #! * for all objects $a,b,c,d$, the pentagon identity holds:
 #!  $(\alpha_{a,b,c} \otimes \mathrm{id}_d) \circ \alpha_{a,b \otimes c, d} \circ ( \mathrm{id}_a \otimes \alpha_{b,c,d} ) = \alpha_{a \otimes b, c, d} \circ \alpha_{a,b,c \otimes d}$,
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{2};
+#! \node (a) at (0,2*\w) {$a \otimes ( b \otimes ( c \otimes d ) )$};
+#! \node (bl) at (1.5*\w,\w) {$(a \otimes b) \otimes (c \otimes d )$};
+#! \node (br) at (-1.5*\w,\w) {$a \otimes ( (b \otimes c ) \otimes d )$};
+#! \node (cl) at (1.5*\w,0) {$( ( a \otimes b ) \otimes c ) \otimes d )$};
+#! \node (cr) at (-1.5*\w,0) {$( a \otimes ( b \otimes c ) ) \otimes d$};
+#! \draw[-latex] (cr) to node[pos=0.45, above] {$\alpha_{a,b,c} \otimes \mathrm{id}_{d}$} (cl);
+#! \draw[-latex] (br) to node[pos=0.45, left] {$\alpha_{a,b\otimes c, d}$} (cr);
+#! \draw[-latex] (bl) to node[pos=0.45, right] {\alpha_{a \otimes b, c, d}$} (cl);
+#! \draw[-latex] (a) to node[pos=0.45, above left] {$\mathrm{id}_a \otimes \alpha_{b,c,d}$} (br);
+#! \draw[-latex] (a) to node[pos=0.45, above right] {$\alpha_{a,b,c \otimes d}$} (bl);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 #! * for all objects $a,c$, the triangle identity holds:
 #!  $( \rho_a \otimes \mathrm{id}_c ) \circ \alpha_{a,1,c} = \mathrm{id}_a \otimes \lambda_c$.
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{2};
+#! \node (a) at (0,0) {$a \otimes c$};
+#! \node (br) at (1.5*\w,\w) {$(a \otimes 1) \otimes c$};
+#! \node (bl) at (-1.5*\w,\w) {$a \otimes ( 1 \otimes c )$};
+#! \draw[-latex] (bl) to node[pos=0.45, above] {$\alpha_{a,1,c}$} (br);
+#! \draw[-latex] (bl) to node[pos=0.45, below left] {$\mathrm{id}_a \otimes \lambda_c$} (a);
+#! \draw[-latex] (br) to node[pos=0.45, below right] {$\rho_a \otimes \mathrm{id}_c$} (a);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 
 #! The corresponding GAP property is given by
 #! <C>IsMonoidalCategory</C>.
