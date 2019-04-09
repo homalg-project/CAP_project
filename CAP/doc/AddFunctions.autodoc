@@ -139,7 +139,7 @@ The record can have the following components, used as described:
                             to explicitly state which argument is the method selection argument.
 
 * return_type (optional): The return type can be one of the following:
-                          * <C>object</C>,
+                          * <C>object</C> or <C>object_or_fail</C>,
                           * <C>morphism</C> or <C>morphism_or_fail</C>,
                           * <C>twocell</C>,
                           * <C>bool</C>,
