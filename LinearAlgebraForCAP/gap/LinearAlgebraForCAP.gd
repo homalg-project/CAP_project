@@ -11,6 +11,17 @@
 
 ####################################
 ##
+#! @Section GAP Categories
+##
+####################################
+
+#! @Description
+#! The GAP category of the CAP categories of matrices of a field $F$.
+#! @Arguments a CAP category
+DeclareCategory( "IsCapMatrixCategory", IsCapCategory );
+
+####################################
+##
 #! @Section Constructors
 ##
 ####################################
