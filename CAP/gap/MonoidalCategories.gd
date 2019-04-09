@@ -42,7 +42,7 @@ DeclareGlobalVariable( "MONOIDAL_CATEGORIES_METHOD_NAME_RECORD" );
 #! \node (cr) at (-1.5*\w,0) {$( a \otimes ( b \otimes c ) ) \otimes d$};
 #! \draw[-latex] (cr) to node[pos=0.45, above] {$\alpha_{a,b,c} \otimes \mathrm{id}_{d}$} (cl);
 #! \draw[-latex] (br) to node[pos=0.45, left] {$\alpha_{a,b\otimes c, d}$} (cr);
-#! \draw[-latex] (bl) to node[pos=0.45, right] {\alpha_{a \otimes b, c, d}$} (cl);
+#! \draw[-latex] (bl) to node[pos=0.45, right] {$\alpha_{a \otimes b, c, d}$} (cl);
 #! \draw[-latex] (a) to node[pos=0.45, above left] {$\mathrm{id}_a \otimes \alpha_{b,c,d}$} (br);
 #! \draw[-latex] (a) to node[pos=0.45, above right] {$\alpha_{a,b,c \otimes d}$} (bl);
 #! \end{tikzpicture}
