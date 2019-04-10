@@ -10,24 +10,6 @@
 InstallValue( CAP_INTERNAL_FINAL_DERIVATION_LIST,
               rec( final_derivation_list := [ ] ) );
 
-InstallMethod( AddFinalDerivation,
-               [ IsFunction, IsDenseList, IsDenseList, IsFunction ],
-               
-  function( name, can, cannot, func )
-    
-    AddFinalDerivation( name, can, cannot, [ [ func, [ ] ] ] );
-    
-end );
-
-InstallMethod( AddFinalDerivation,
-               [ IsFunction, IsDenseList, IsFunction ],
-               
-  function( name, cannot, func )
-    
-    AddFinalDerivation( name, [ ], cannot, [ [ func, [ ] ] ] );
-    
-end );
-
 BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
   
   function( derivation )
@@ -71,22 +53,17 @@ BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
     
 end );
 
-InstallMethod( AddFinalDerivation,
-               [ IsFunction, IsDenseList, IsDenseList ],
-               
-  function( name, cannot, func_list )
-    
-    AddFinalDerivation( name, [ ], cannot, func_list );
-    
-end );
 
-InstallMethod( AddFinalDerivation,
-               [ IsFunction, IsDenseList, IsDenseList, IsDenseList ],
+InstallGlobalFunction( AddFinalDerivation,
                
-  function( name, can, cannot, func_list )
+  function( name, can, cannot, func_list, additional_functions... )
     local final_derivation, loop_multiplier, collected_list, current_implementation, current_list,
-          operations_in_graph, used_ops_with_multiples, preconditions_complete;
-    
+          operations_in_graph, used_ops_with_multiples, preconditions_complete, i;
+
+    if IsFunction( func_list ) then
+        func_list := [ [ func_list, [] ] ];
+    fi;
+
     final_derivation := rec( );
     
     final_derivation.weight := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Weight", 1 );
@@ -96,6 +73,13 @@ InstallMethod( AddFinalDerivation,
     loop_multiplier := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "WeightLoopMultiple", 2 );
     preconditions_complete := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "ConditionsListComplete", false );
     
+    for i in [ 1 .. Length( additional_functions ) ] do
+        if IsFunction( additional_functions[ i ][ 2 ] ) then
+            additional_functions[ i ][ 2 ] := [ [ additional_functions[ i ][ 2 ], [ ] ] ];
+        fi;
+    od;
+    final_derivation.additional_functions := additional_functions;
+
     ## get used ops
     operations_in_graph := Operations( CAP_INTERNAL_DERIVATION_GRAPH );
     
@@ -133,7 +117,7 @@ InstallMethod( IsFinalized,
                [ IsCapCategory ],
                
   function( category )
-    local current_final_derivation, derivation_list, i, n, weight_list, weight, add_name, current_installs, current_tester_func;
+    local current_final_derivation, derivation_list, i, n, weight_list, weight, add_name, current_installs, current_tester_func, current_additional_func;
     
     derivation_list := ShallowCopy( CAP_INTERNAL_FINAL_DERIVATION_LIST.final_derivation_list );
     
@@ -183,8 +167,13 @@ InstallMethod( IsFinalized,
             add_name := ValueGlobal( Concatenation( [ "Add", NameFunction( current_final_derivation.name ) ] ) );
             
             add_name( category, current_final_derivation.function_list, weight : IsFinalDerivation := true );
-            
+
             current_final_derivation.option_function( category );
+
+            for current_additional_func in current_final_derivation.additional_functions do
+                add_name := ValueGlobal( Concatenation( [ "Add", NameFunction( current_additional_func[ 1 ] ) ] ) );
+                add_name( category, current_additional_func[ 2 ], weight : IsFinalDerivation := true );
+            od;
             
         od;
         

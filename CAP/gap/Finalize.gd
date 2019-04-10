@@ -12,17 +12,7 @@
 DeclareGlobalVariable( "CAP_INTERNAL_FINAL_DERIVATION_LIST" );
 
 
-DeclareOperation( "AddFinalDerivation",
-                  [ IsFunction, IsDenseList, IsDenseList, IsDenseList ] );
-
-DeclareOperation( "AddFinalDerivation",
-                  [ IsFunction, IsDenseList, IsDenseList, IsFunction ] );
-
-DeclareOperation( "AddFinalDerivation",
-                  [ IsFunction, IsDenseList, IsDenseList ] );
-
-DeclareOperation( "AddFinalDerivation",
-                  [ IsFunction, IsDenseList, IsFunction ] );
+DeclareGlobalFunction( "AddFinalDerivation" );
 
 
 DeclareProperty( "IsFinalized",
