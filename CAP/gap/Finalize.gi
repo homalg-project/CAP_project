@@ -58,7 +58,7 @@ InstallGlobalFunction( AddFinalDerivation,
                
   function( name, can, cannot, func_list, additional_functions... )
     local final_derivation, loop_multiplier, collected_list, current_implementation, current_list,
-          operations_in_graph, used_ops_with_multiples, preconditions_complete, i;
+          operations_in_graph, used_ops_with_multiples, preconditions_complete, i, current_additional_func;
 
     if IsFunction( func_list ) then
         func_list := [ [ func_list, [] ] ];
@@ -85,6 +85,7 @@ InstallGlobalFunction( AddFinalDerivation,
     
     collected_list := [ ];
     
+    ## Find symbols in main function
     if preconditions_complete = false then
         for current_implementation in func_list do
             
@@ -94,11 +95,21 @@ InstallGlobalFunction( AddFinalDerivation,
             
         od;
     fi;
-    
     used_ops_with_multiples := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, can );
+    final_derivation.can_compute := used_ops_with_multiples;
+
+    ## Find symbols in additional function
+    for current_additional_func in final_derivation.additional_functions do
+        collected_list := [];
+        for current_implementation in current_additional_func do
+            current_list := CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION( current_implementation[ 1 ], operations_in_graph, loop_multiplier, CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS );
+            current_list := List( current_list, i -> [ ValueGlobal( i[ 1 ] ), i[2] ]);
+            collected_list := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, current_list );
+        od;
+        current_additional_func[ 3 ] := collected_list;
+    od;
     
     final_derivation.name := name;
-    final_derivation.can_compute := used_ops_with_multiples;
     final_derivation.cannot_compute := cannot;
     final_derivation.function_list := func_list;
     
@@ -171,6 +182,7 @@ InstallMethod( IsFinalized,
             current_final_derivation.option_function( category );
 
             for current_additional_func in current_final_derivation.additional_functions do
+                weight := current_final_derivation.weight + Sum( List( current_additional_func[ 3 ], j -> CurrentOperationWeight( weight_list, NameFunction( j[ 1 ] ) ) * j[ 2 ] ) );
                 add_name := ValueGlobal( Concatenation( [ "Add", NameFunction( current_additional_func[ 1 ] ) ] ) );
                 add_name( category, current_additional_func[ 2 ], weight : IsFinalDerivation := true );
             od;
