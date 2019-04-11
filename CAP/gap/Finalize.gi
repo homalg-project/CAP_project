@@ -69,7 +69,6 @@ InstallGlobalFunction( AddFinalDerivation,
     final_derivation.weight := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Weight", 1 );
     final_derivation.description := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Description", "" );
     final_derivation.category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
-    final_derivation.option_function := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryOptionFunction", ReturnTrue );
     loop_multiplier := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "WeightLoopMultiple", 2 );
     preconditions_complete := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "ConditionsListComplete", false );
     
@@ -178,8 +177,6 @@ InstallMethod( IsFinalized,
             add_name := ValueGlobal( Concatenation( [ "Add", NameFunction( current_final_derivation.name ) ] ) );
             
             add_name( category, current_final_derivation.function_list, weight : IsFinalDerivation := true );
-
-            current_final_derivation.option_function( category );
 
             for current_additional_func in current_final_derivation.additional_functions do
                 weight := current_final_derivation.weight + Sum( List( current_additional_func[ 3 ], j -> CurrentOperationWeight( weight_list, NameFunction( j[ 1 ] ) ) * j[ 2 ] ) );
