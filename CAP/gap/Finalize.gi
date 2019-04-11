@@ -94,6 +94,7 @@ InstallGlobalFunction( AddFinalDerivation,
             
         od;
     fi;
+    final_derivation.weights := collected_list;
     used_ops_with_multiples := CAP_INTERNAL_MERGE_PRECONDITIONS_LIST( collected_list, can );
     final_derivation.can_compute := used_ops_with_multiples;
 
@@ -164,7 +165,7 @@ InstallMethod( IsFinalized,
             current_final_derivation := derivation_list[ i ];
             
             ## calculate weight
-            weight := current_final_derivation.weight + Sum( List( current_final_derivation.can_compute, j -> CurrentOperationWeight( weight_list, NameFunction( j[ 1 ] ) ) * j[ 2 ] ) );
+            weight := current_final_derivation.weight + Sum( List( current_final_derivation.weights, j -> CurrentOperationWeight( weight_list, NameFunction( j[ 1 ] ) ) * j[ 2 ] ) );
             
             Info( DerivationInfo, 1, Concatenation( "install(",
                                           String( weight ),
