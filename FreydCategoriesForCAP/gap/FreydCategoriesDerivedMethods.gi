@@ -280,7 +280,10 @@ end : Description := "WeakBiPushout as the range of DirectSumMorphismToWeakBiPus
 
 ##
 AddFinalDerivation( WeakKernelObject,
-                    [ [ KernelObject, 1 ] ],
+                    [ [ KernelObject, 1 ],
+                      [ KernelEmbedding, 1 ],
+                      [ KernelLift, 1 ] ],
+                    
                     [ WeakKernelObject,
                       WeakKernelEmbedding,
                       WeakKernelLift ],
@@ -289,33 +292,24 @@ AddFinalDerivation( WeakKernelObject,
     
     return KernelObject( morphism );
     
-end : Description := "WeakKernelObject as KernelObject" );
-
-##
-AddFinalDerivation( WeakKernelEmbedding,
-                    [ [ KernelEmbedding, 1 ] ],
-                    [ WeakKernelObject,
-                      WeakKernelEmbedding,
-                      WeakKernelLift ],
-                    
+  end,
+[
+  WeakKernelEmbedding,
   function( morphism )
     
     return KernelEmbedding( morphism );
     
-end : Description := "WeakKernelEmbedding as KernelEmbedding" );
-
-##
-AddFinalDerivation( WeakKernelLift,
-                    [ [ KernelLift, 1 ] ],
-                    [ WeakKernelObject,
-                      WeakKernelEmbedding,
-                      WeakKernelLift ],
-                    
+  end
+],
+[
+  WeakKernelLift,
   function( morphism, test_mor )
     
     return KernelLift( morphism, test_mor );
     
-end : Description := "WeakKernelLift as KernelLift" );
+  end
+]
+);
 
 ##
 AddFinalDerivation( WeakCokernelObject,
