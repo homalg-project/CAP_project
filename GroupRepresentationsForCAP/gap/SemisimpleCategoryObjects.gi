@@ -204,7 +204,7 @@ end );
 
 ##
 InstallMethod( TestPentagonIdentity,
-               [ IsSemisimpleCategoryObject, IsSemisimpleCategoryObject, IsSemisimpleCategoryObject, IsSemisimpleCategoryObject ],
+               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
                
   function( object_a, object_b, object_c, object_d )
     local morphism_1, morphism_2;
@@ -223,7 +223,7 @@ InstallMethod( TestPentagonIdentity,
     morphism_2 := PreCompose( morphism_2,
       AssociatorLeftToRight( object_a, object_b, TensorProductOnObjects( object_c, object_d ) ) );
     
-    return morphism_1 = morphism_2;
+    return IsCongruentForMorphisms( morphism_1, morphism_2 );
     
 end );
 
