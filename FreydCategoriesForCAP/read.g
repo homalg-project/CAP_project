@@ -7,6 +7,8 @@ ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategoriesForCAP.gi" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfRows.gi" );
 
+ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfColumns.gi" );
+
 # include the packages for graded rows and columns
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/GradedRowOrColumn.gi" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/GradedRowOrColumnMorphism.gi" );
