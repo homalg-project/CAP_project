@@ -225,7 +225,7 @@ UniversalMorphismIntoDirectSum( [ alpha, alpha, alpha ] );;
 InjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;
 gamma := CategoryOfColumnsMorphism( obj2, HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, R ), obj2 );;
 IsColiftable( beta, gamma );
-#! true
+#! false
 IsColiftable( gamma, beta );
 #! false
 ProjectionInFirstFactorOfWeakBiFiberProduct( gamma, gamma );;

@@ -17,7 +17,7 @@ InstallMethod( CategoryOfColumns,
                [ IsHomalgRing ],
                
   function( homalg_ring )
-    local category;
+    local category, to_be_finalized;
     
     category := CreateCapCategory( Concatenation( "Columns( ", RingName( homalg_ring )," )"  ) );
     
@@ -30,10 +30,16 @@ InstallMethod( CategoryOfColumns,
     AddObjectRepresentation( category, IsCategoryOfColumnsObject );
     
     AddMorphismRepresentation( category, IsCategoryOfColumnsMorphism );
-
-    DisableAddForCategoricalOperations( category );
     
     INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS( category );
+    
+    to_be_finalized := ValueOption( "FinalizeCategory" );
+      
+    if to_be_finalized = false then
+      
+      return category;
+    
+    fi;
     
     Finalize( category );
     
@@ -60,8 +66,6 @@ InstallMethodWithCache( CategoryOfColumnsObject,
                                          category,
                                          RankOfObject, rank
     );
-
-    Add( category, category_of_columns_object );
     
     return category_of_columns_object;
     
@@ -126,8 +130,6 @@ InstallMethod( CategoryOfColumnsMorphism,
                                            Range, range,
                                            UnderlyingMatrix, homalg_matrix
     );
-
-    Add( category, category_of_columns_morphism );
     
     return category_of_columns_morphism;
     
@@ -262,7 +264,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         [ function( left_morphism, zero_morphism )
             
             return CategoryOfColumnsMorphism( Source( left_morphism ),
-                                        HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ), 
+                                        HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ),
                                         NrColumns( UnderlyingMatrix( left_morphism ) ), ring ),
                                         Range( zero_morphism ) );
           
@@ -304,7 +306,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
       function( morphism )
         
         return CategoryOfColumnsMorphism( Source( morphism ),
-                                       (-1) * UnderlyingMatrix( morphism ),
+                                       MinusOne( ring ) * UnderlyingMatrix( morphism ),
                                        Range( morphism ) );
         
     end );
@@ -385,13 +387,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         
         projection_in_factor := HomalgZeroMatrix( rank_factor, rank_pre, ring );
 
-        projection_in_factor := Iterated( [ projection_in_factor,
-                                            HomalgIdentityMatrix( rank_factor, ring ) ],
-                                            UnionOfColumns );
+        projection_in_factor := UnionOfColumns( projection_in_factor,
+                                                HomalgIdentityMatrix( rank_factor, ring ) );
 
-        projection_in_factor := Iterated( [ projection_in_factor,
-                                            HomalgZeroMatrix( rank_factor, rank_post, ring ) ],
-                                            UnionOfColumns );
+        projection_in_factor := UnionOfColumns( projection_in_factor,
+                                                HomalgZeroMatrix( rank_factor, rank_post, ring ) );
 
         return CategoryOfColumnsMorphism( direct_sum_object, projection_in_factor, object_list[ projection_number ] );
         
@@ -400,16 +400,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
       function( diagram, sink, direct_sum )
-        local underlying_matrix_of_universal_morphism, morphism;
+        local underlying_matrix_of_universal_morphism;
         
-        underlying_matrix_of_universal_morphism := UnderlyingMatrix( sink[1] );
-        
-        for morphism in sink{ [ 2 .. Length( sink ) ] } do
-          
-          underlying_matrix_of_universal_morphism := 
-            UnionOfRows( underlying_matrix_of_universal_morphism, UnderlyingMatrix( morphism ) );
-          
-        od;
+        underlying_matrix_of_universal_morphism :=
+          UnionOfRows(
+            List( sink, UnderlyingMatrix )
+        );
         
         return CategoryOfColumnsMorphism( Source( sink[1] ), underlying_matrix_of_universal_morphism, direct_sum );
       
@@ -431,30 +427,25 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         # now construct the mapping matrix
         injection_of_cofactor := HomalgZeroMatrix( rank_pre, rank_cofactor, ring );
 
-        injection_of_cofactor := Iterated( [ injection_of_cofactor,
-                                             HomalgIdentityMatrix( rank_cofactor, ring ) ],
-                                            UnionOfRows );
-        injection_of_cofactor := Iterated( [ injection_of_cofactor,
-                                             HomalgZeroMatrix( rank_post, rank_cofactor, ring ) ],
-                                            UnionOfRows );
-
+        injection_of_cofactor := UnionOfRows( injection_of_cofactor,
+                                              HomalgIdentityMatrix( rank_cofactor, ring ) );
+        
+        injection_of_cofactor := UnionOfRows( injection_of_cofactor,
+                                              HomalgZeroMatrix( rank_post, rank_cofactor, ring ) );
+        
         return CategoryOfColumnsMorphism( object_list[ injection_number ], injection_of_cofactor, coproduct );
-
+        
     end );
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
       function( diagram, sink, coproduct )
-        local underlying_matrix_of_universal_morphism, morphism;
+        local underlying_matrix_of_universal_morphism;
         
-        underlying_matrix_of_universal_morphism := UnderlyingMatrix( sink[1] );
-        
-        for morphism in sink{ [ 2 .. Length( sink ) ] } do
-          
-          underlying_matrix_of_universal_morphism := 
-            UnionOfColumns( underlying_matrix_of_universal_morphism, UnderlyingMatrix( morphism ) );
-          
-        od;
+        underlying_matrix_of_universal_morphism :=
+          UnionOfColumns(
+            List( sink, UnderlyingMatrix )
+        );
         
         return CategoryOfColumnsMorphism( coproduct, underlying_matrix_of_universal_morphism, Range( sink[1] ) );
         
@@ -464,7 +455,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     
     AddWeakKernelEmbedding( category,
       function( morphism )
-        local homalg_matrix, weak_kernel_object;
+        local homalg_matrix;
         
         homalg_matrix := ReducedSyzygiesOfColumns( UnderlyingMatrix( morphism ) );
         
@@ -474,7 +465,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     
     AddWeakCokernelProjection( category,
       function( morphism )
-        local homalg_matrix, weak_cokernel_object;
+        local homalg_matrix;
         
         homalg_matrix := ReducedSyzygiesOfRows( UnderlyingMatrix( morphism ) );
         
@@ -485,7 +476,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     ##
     AddProjectionOfBiasedWeakFiberProduct( category,
       function( morphism_1, morphism_2 )
-        local homalg_matrix, weak_cokernel_object;
+        local homalg_matrix;
         
         homalg_matrix := ReducedSyzygiesOfColumns( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) );
         
@@ -521,7 +512,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     ##
     AddInjectionOfBiasedWeakPushout( category,
         function( morphism_1, morphism_2 )
-        local homalg_matrix, weak_cokernel_object;
+        local homalg_matrix;
         
         homalg_matrix := ReducedSyzygiesOfRows( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) );
         
@@ -533,7 +524,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     AddIsColiftable( category,
       function( alpha, beta )
         
-        return IsZero( DecideZeroColumns( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ) ) );
+        return IsZero( DecideZeroRows( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ) ) );
         
     end );
     
