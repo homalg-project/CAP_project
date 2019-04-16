@@ -31,6 +31,18 @@ BindGlobal( "CAP_INTERNAL_CREATE_OTHER_PAIR_FUNC",
     
 end );
 
+BindGlobal( "CAP_INTERNAL_ADD_OBJECT_OR_FAIL",
+  
+  function( category, object_or_fail )
+    
+    if object_or_fail = fail then
+        return;
+    fi;
+    
+    AddObject( category, object_or_fail );
+    
+end );
+
 BindGlobal( "CAP_INTERNAL_ADD_MORPHISM_OR_FAIL",
   
   function( category, morphism_or_fail )
@@ -120,6 +132,8 @@ InstallGlobalFunction( CapInternalInstallAdd,
         add_function := AddMorphism;
     elif record.return_type = "twocell" then
         add_function := AddTwoCell;
+    elif record.return_type = "object_or_fail" then
+        add_function := CAP_INTERNAL_ADD_OBJECT_OR_FAIL;
     elif record.return_type = "morphism_or_fail" then
         add_function := CAP_INTERNAL_ADD_MORPHISM_OR_FAIL;
     else
@@ -291,7 +305,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     if category!.add_primitive_output then
                         add_function( category, result );
                     elif category!.output_sanity_check_level > 0 then
-                        if record.return_type = "object" then
+                        if record.return_type = "object" or ( record.return_type = "object_or_fail" and result <> fail ) then
                             if not IsCapCategoryObject( result ) then
                                 CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in the filter IsCapCategoryObject." );
                             fi;
@@ -304,7 +318,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                             if not ObjectFilter( category )( result ) then
                                 CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in the object filter of this category." );
                             fi;
-                        elif record.return_type = "morphism" then
+                        elif record.return_type = "morphism" or ( record.return_type = "morphism_or_fail" and result <> fail ) then
                             if not IsCapCategoryMorphism( result ) then
                                 CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in the filter IsCapCategoryMorphism." );
                             fi;
@@ -329,21 +343,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
                             fi;
                             if not TwoCellFilter( category )( result ) then
                                 CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in the two cell filter of this category." );
-                            fi;
-                        elif record.return_type = "morphism_or_fail" then
-                            if result <> fail then
-                                if not IsCapCategoryMorphism( result ) then
-                                    CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in the filter IsCapCategoryMorphism." );
-                                fi;
-                                if not HasCapCategory( result ) then
-                                    CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result has no CAP category." );
-                                fi;
-                                if not IsIdenticalObj( CapCategory( result ), category ) then
-                                    CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in this category." );
-                                fi;
-                                if not MorphismFilter( category )( result ) then
-                                    CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in the morphism filter of this category." );
-                                fi;
                             fi;
                         fi;
                     fi;

@@ -8,6 +8,8 @@ ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategoriesForCAP.gd" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfRows.gd" );
 
+ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfColumns.gd" );
+
 # include the packages for graded rows and columns
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/GradedRowOrColumn.gd" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/GradedRowOrColumnMorphism.gd" );
@@ -25,4 +27,4 @@ ReadPackage( "FreydCategoriesForCAP", "gap/CokernelImageClosure.gd" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/AdelmanCategory.gd" );
 
-
+ReadPackage( "FreydCategoriesForCAP", "gap/QuiverRows.gd" );

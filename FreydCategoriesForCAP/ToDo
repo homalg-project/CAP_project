@@ -1,0 +1,3 @@
+For category of columns and rows, we do not have weak fibre product and weak pushouts for multiple morphism (neither the corresponding projections and injections)
+
+Likewise, tensor product and internal hom are not implemented for these categories

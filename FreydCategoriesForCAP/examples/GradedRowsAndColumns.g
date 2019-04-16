@@ -755,3 +755,63 @@ tens_mor := TensorProductToInternalHomAdjunctionMap(aC,bC,phiC);
 IsWellDefined( tens_mor );
 #! true
 #! @EndExample
+
+
+########################################################################
+#! @Section Examples to test Tools methods in graded rows/cols
+########################################################################
+
+#! @Example
+S := GradedRing( Q * "x,y" );
+#! Q[x,y]
+#! (weights: yet unset)
+SetWeightsOfIndeterminates( S, [ 1, 1 ] );
+mat_1 := HomalgMatrix( "[ x, 0, 0, y ]", 2, 2, S );
+#! <A 2 x 2 matrix over a graded ring>
+mat_2 := HomalgMatrix( "[ x, 0, 0, 0 ]", 2, 2, S );
+#! <A 2 x 2 matrix over a graded ring>
+a := GradedRow( [ [ [ 1 ], 1 ], [ [ 2 ], 1 ] ], S );
+#! <A graded row of rank 2>
+b := GradedColumn( [ [ [ 1 ], 1 ], [ [ 2 ], 1 ] ], S );
+#! <A graded column of rank 2>
+map := DeduceMapFromMatrixAndRangeForGradedRows( mat_1, a );
+#! <A morphism in the category of graded rows over Q[x,y] (with weights [ 1, 1 ])>
+some_map := DeduceSomeMapFromMatrixAndRangeForGradedRows( mat_1, a );
+#! <A morphism in the category of graded rows over Q[x,y] (with weights [ 1, 1 ])>
+IsEqualForMorphisms( map, some_map );
+#! true
+map := DeduceMapFromMatrixAndSourceForGradedRows( mat_1, a );
+#! <A morphism in the category of graded rows over Q[x,y] (with weights [ 1, 1 ])>
+some_map := DeduceSomeMapFromMatrixAndSourceForGradedRows( mat_1, a );
+#! <A morphism in the category of graded rows over Q[x,y] (with weights [ 1, 1 ])>
+IsEqualForMorphisms( map, some_map );
+#! true
+some_map := DeduceSomeMapFromMatrixAndRangeForGradedRows( mat_2, a );
+#! <A morphism in the category of graded rows over Q[x,y] (with weights [ 1, 1 ])>
+IsWellDefined( some_map );
+#! true
+some_map := DeduceSomeMapFromMatrixAndSourceForGradedRows( mat_2, a );
+#! <A morphism in the category of graded rows over Q[x,y] (with weights [ 1, 1 ])>
+IsWellDefined( some_map );
+#! true
+map := DeduceMapFromMatrixAndRangeForGradedCols( mat_1, b );
+#! <A morphism in the category of graded columns over Q[x,y] (with weights [ 1, 1 ])>
+some_map := DeduceSomeMapFromMatrixAndRangeForGradedCols( mat_1, b );
+#! <A morphism in the category of graded columns over Q[x,y] (with weights [ 1, 1 ])>
+IsEqualForMorphisms( map, some_map );
+#! true
+map := DeduceMapFromMatrixAndSourceForGradedCols( mat_1, b );
+#! <A morphism in the category of graded columns over Q[x,y] (with weights [ 1, 1 ])>
+some_map := DeduceSomeMapFromMatrixAndSourceForGradedCols( mat_1, b );
+#! <A morphism in the category of graded columns over Q[x,y] (with weights [ 1, 1 ])>
+IsEqualForMorphisms( map, some_map );
+#! true
+some_map := DeduceSomeMapFromMatrixAndRangeForGradedCols( mat_2, b );
+#! <A morphism in the category of graded columns over Q[x,y] (with weights [ 1, 1 ])>
+IsWellDefined( some_map );
+#! true
+some_map := DeduceSomeMapFromMatrixAndSourceForGradedCols( mat_2, b );
+#! <A morphism in the category of graded columns over Q[x,y] (with weights [ 1, 1 ])>
+IsWellDefined( some_map );
+#! true
+#! @EndExample

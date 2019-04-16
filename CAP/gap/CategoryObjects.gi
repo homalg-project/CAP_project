@@ -184,7 +184,7 @@ InstallMethod( AddObject,
 end );
 
 InstallMethod( AddObject,
-               [ IsCapCategory, IsObject ],
+               [ IsCapCategory, IsAttributeStoringRep ],
                
   function( category, object )
     
@@ -221,6 +221,13 @@ InstallMethod( AddObjectRepresentation,
     category!.object_type := NewType( TheFamilyOfCapCategoryObjects, representation and ObjectFilter( category ) and IsCapCategoryObjectRep );
     
 end );
+
+##
+InstallMethod( RandomObject, [ IsCapCategory, IsInt ], RandomObjectByInteger );
+
+##
+InstallMethod( RandomObject, [ IsCapCategory, IsList ], RandomObjectByList );
+
 
 InstallGlobalFunction( ObjectifyObjectForCAPWithAttributes,
                        

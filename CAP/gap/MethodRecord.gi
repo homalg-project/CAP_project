@@ -2996,7 +2996,7 @@ SomeProjectiveObject := rec(
 EpimorphismFromSomeProjectiveObject := rec(
   installation_name := "EpimorphismFromSomeProjectiveObject",
   filter_list := [ "object" ],
-  io_type := [ [ "A" ], [ "epsilon" ] ],
+  io_type := [ [ "A" ], [ "P", "A" ] ],
   universal_object_position := "Source",
   universal_type := "Limit", #FIXME: this is not a limit, but on a technical level, it behaves as if it was
   return_type := "morphism",
@@ -3006,7 +3006,7 @@ EpimorphismFromSomeProjectiveObject := rec(
 EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject := rec(
   installation_name := "EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
   filter_list := [ "object", "object" ],
-  io_type := [ [ "A", "P" ], [ "epsilon" ] ],
+  io_type := [ [ "A", "P" ], [ "P", "A" ] ],
   universal_type := "Limit", #FIXME: this is not a limit, but on a technical level, it behaves as if it was
   cache_name := "EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
   return_type := "morphism",
@@ -3023,7 +3023,7 @@ SomeInjectiveObject := rec(
 MonomorphismIntoSomeInjectiveObject := rec(
   installation_name := "MonomorphismIntoSomeInjectiveObject",
   filter_list := [ "object" ],
-  io_type := [ [ "A" ], [ "iota" ] ],
+  io_type := [ [ "A" ], [ "A", "I" ] ],
   universal_object_position := "Range",
   universal_type := "Colimit", #FIXME: this is not a colimit, but on a technical level, it behaves as if it was
   return_type := "morphism",
@@ -3033,7 +3033,7 @@ MonomorphismIntoSomeInjectiveObject := rec(
 MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject := rec(
   installation_name := "MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
   filter_list := [ "object", "object" ],
-  io_type := [ [ "A", "I" ], [ "iota" ] ],
+  io_type := [ [ "A", "I" ], [ "A", "I" ] ],
   cache_name := "MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
   universal_type := "Colimit", #FIXME: this is not a colimit, but on a technical level, it behaves as if it was
   return_type := "morphism",
@@ -3131,7 +3131,77 @@ SolveLinearSystemInAbCategory := rec(
   return_type := "morphism_or_fail"
 ),
 
-  ) );
+RandomObjectByInteger := rec(
+  installation_name := "RandomObjectByInteger",
+  filter_list := [ "category", IsInt ],
+  io_type := [ [ "C", "n" ], [ "A" ] ],
+  return_type := "object_or_fail"
+),
+
+RandomMorphismByInteger := rec(
+  installation_name := "RandomMorphismByInteger",
+  filter_list := [ "category", IsInt ],
+  io_type := [ [ "C", "n" ], [ "alpha" ] ],
+  return_type := "morphism_or_fail"
+),
+
+RandomMorphismWithFixedSourceByInteger := rec(
+  installation_name := "RandomMorphismWithFixedSourceByInteger",
+  filter_list := [ "object", IsInt ],
+  io_type := [ [ "A", "n" ], [ "A", "B" ] ],
+  return_type := "morphism_or_fail",
+),
+
+RandomMorphismWithFixedRangeByInteger := rec(
+  installation_name := "RandomMorphismWithFixedRangeByInteger",
+  filter_list := [ "object", IsInt ],
+  io_type := [ [ "B", "n" ], [ "A", "B" ] ],
+  return_type := "morphism_or_fail",
+),
+
+RandomMorphismWithFixedSourceAndRangeByInteger := rec(
+  installation_name := "RandomMorphismWithFixedSourceAndRangeByInteger",
+  filter_list := [ "object", "object", IsInt ],
+  io_type := [ [ "A", "B", "n" ], [ "A", "B" ] ],
+  return_type := "morphism_or_fail",
+),
+
+RandomObjectByList := rec(
+  installation_name := "RandomObjectByList",
+  filter_list := [ "category", IsList ],
+  io_type := [ [ "C", "L" ], [ "A" ] ],
+  return_type := "object_or_fail"
+),
+
+RandomMorphismByList := rec(
+  installation_name := "RandomMorphismByList",
+  filter_list := [ "category", IsList ],
+  io_type := [ [ "C", "L" ], [ "alpha" ] ],
+  return_type := "morphism_or_fail"
+),
+
+RandomMorphismWithFixedSourceByList := rec(
+  installation_name := "RandomMorphismWithFixedSourceByList",
+  filter_list := [ "object", IsList ],
+  io_type := [ [ "A", "L" ], [ "A", "B" ] ],
+  return_type := "morphism_or_fail",
+),
+
+RandomMorphismWithFixedRangeByList := rec(
+  installation_name := "RandomMorphismWithFixedRangeByList",
+  filter_list := [ "object", IsList ],
+  io_type := [ [ "B", "L" ], [ "A", "B" ] ],
+  return_type := "morphism_or_fail"
+),
+
+RandomMorphismWithFixedSourceAndRangeByList := rec(
+  installation_name := "RandomMorphismWithFixedSourceAndRangeByList",
+  filter_list := [ "object", "object", IsList ],
+  io_type := [ [ "A", "B", "L" ], [ "A", "B" ] ],
+  return_type := "morphism_or_fail"
+),
+
+) );
 
 InstallValue( CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, rec() );
 

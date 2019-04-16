@@ -232,7 +232,17 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
                             IsEqualForCacheForMorphisms := "never",
                             IsWellDefinedForObjects := "never",
                             IsWellDefinedForMorphisms := "never",
-                            IsWellDefinedForTwoCells := "never" );
+                            IsWellDefinedForTwoCells := "never",
+                            RandomObjectByInteger := "never",
+                            RandomMorphismByInteger := "never",
+                            RandomMorphismWithFixedSourceByInteger := "never",
+                            RandomMorphismWithFixedRangeByInteger := "never",
+                            RandomMorphismWithFixedSourceAndRangeByInteger := "never",
+                            RandomObjectByList := "never",
+                            RandomMorphismByList := "never",
+                            RandomMorphismWithFixedSourceByList := "never",
+                            RandomMorphismWithFixedRangeByList := "never",
+                            RandomMorphismWithFixedSourceAndRangeByList := "never" );
     
     obj_rec!.redirects := rec( );
     

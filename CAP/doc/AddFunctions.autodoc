@@ -138,8 +138,16 @@ The record can have the following components, used as described:
                             Please note that if you have a method selection argument for your function, you need to give the argument_list
                             to explicitly state which argument is the method selection argument.
 
-* return_type (optional): The return type can be object, morphism, or twocell. If it is one of those, the correct add function (see above) is
-                          used for the result of the computation. Otherwise, no add function is used after all.
+* return_type (optional): The return type can be one of the following:
+                          * <C>object</C> or <C>object_or_fail</C>,
+                          * <C>morphism</C> or <C>morphism_or_fail</C>,
+                          * <C>twocell</C>,
+                          * <C>bool</C>,
+                          * <C>other_object</C>,
+                          * <C>other_morphism</C>.
+                          <P/>
+                          If it is one of the first three options, the correct <C>Add</C> function (see above) is
+                          used for the result of the computation. Otherwise, no <C>Add</C> function is used after all.
 
 * is_with_given: Boolean, marks wether the function which is to be installed a with given function or not.
 
