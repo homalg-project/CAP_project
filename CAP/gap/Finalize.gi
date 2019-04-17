@@ -141,6 +141,8 @@ InstallMethod( IsFinalized,
     
     while true do
         
+        Reevaluate( weight_list );
+        
         current_installs := [ ];
         
         for i in [ 1 .. Length( derivation_list ) ] do
