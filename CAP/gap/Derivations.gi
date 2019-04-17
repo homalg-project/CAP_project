@@ -592,6 +592,7 @@ InstallMethod( AddPrimitiveOperation,
                [ IsOperationWeightListRep, IsString, IsInt ],
 function( owl, op_name, weight )
   owl!.operation_weights.( op_name ) := weight;
+  owl!.operation_derivations.( op_name ) := fail;
   InstallDerivationsUsingOperation( owl, op_name );
 end );
 
