@@ -34,6 +34,15 @@ DeclareCategory( "IsQuiverRowsCategory",
 DeclareAttribute( "QuiverRows",
                   IsQuiverAlgebra );
 
+DeclareAttribute( "QuiverRowsDescentToZDefinedByBasisPaths",
+                  IsQuiverAlgebra );
+
+DeclareAttribute( "QuiverRowsDescentToZDefinedByBasisPaths",
+                  IsQuiverRowsCategory );
+
+DeclareOperation( "QuiverRows",
+                  [ IsQuiverAlgebra, IsBool ] );
+
 DeclareOperation( "QuiverRowsObject",
                   [ IsList, IsQuiverRowsCategory ] );
 
