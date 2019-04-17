@@ -179,26 +179,27 @@ end );
 
 InstallMethod( Display,
                [ IsGradedRowOrColumnMorphism ], 
-               999, # FIX ME FIX ME
   function( graded_row_or_column_morphism )
 
+    # check to which category this morphism belongs
     if IsGradedRowMorphism( graded_row_or_column_morphism ) then
 
       Print( "A morphism in the category of graded rows over ", 
-                                   RingName( UnderlyingHomalgGradedRing( graded_row_or_column_morphism ) ),
-                                   " with matrix: \n" );
-
-      Display( UnderlyingHomalgMatrix( graded_row_or_column_morphism ) );
-
+                                   RingName( UnderlyingHomalgGradedRing( graded_row_or_column_morphism ) ), "\n" );
     else
 
       Print( "A morphism in the category of graded columns over ", 
-                                   RingName( UnderlyingHomalgGradedRing( graded_row_or_column_morphism ) ),
-                                   " with matrix: \n" );
-
-      Display( UnderlyingHomalgMatrix( graded_row_or_column_morphism ) );
+                                   RingName( UnderlyingHomalgGradedRing( graded_row_or_column_morphism ) ), "\n" );
 
     fi;
+
+    # print detailed information
+    Print( Concatenation( "\n", "Source:\n" ) );
+    Display( Source( graded_row_or_column_morphism ) );
+    Print( Concatenation( "\n", "Mapping matrix:\n" ) );
+    Display( UnderlyingHomalgMatrix( graded_row_or_column_morphism ) );
+    Print( Concatenation( "\n", "Range:\n" ) );
+    Display( Range( graded_row_or_column_morphism ) );
 
 end );
 
