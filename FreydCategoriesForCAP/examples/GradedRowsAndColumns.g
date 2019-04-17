@@ -171,20 +171,46 @@ ZeroObject( categoryL );
 O1L := GradedRow( [ [[-1,0],2] ], S );
 #! <A graded row of rank 2>
 Display( ZeroMorphism( ZeroObject( categoryL ), O1L ) );
-#! A morphism in the category of graded rows over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ]) 
-#! with matrix: 
+#! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 0 and degrees: 
+#! [  ]
+#! 
+#! Mapping matrix:
 #! (an empty 0 x 2 matrix)
+#! 
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ ( -1, 0 ), 2 ] ]
 O2L := GradedRow( [ [[0,0],1] ], S );
 #! <A graded row of rank 1>
 obj3L := GradedRow( [ [[-1,0],1] ], S );
 #! <A graded row of rank 1>
 Display( IdentityMorphism( O2L ) );
-#! A morphism in the category of graded rows over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ]) 
-#! with matrix: 
+#! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ 0, 1 ] ]
+#! 
+#! Mapping matrix:
 #! 1
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ 0, 1 ] ]
 IsWellDefined( IdentityMorphism( Q2L ) );
 #! true
 directSumL := DirectSum( [ O1L, O2L ] );
@@ -333,12 +359,25 @@ pbwfprow := ProjectionOfBiasedWeakFiberProduct( m1L, m2L );
 IsWellDefined( pbwfprow );
 #! true
 Display( pbwfprow );
-#! A morphism in the category of graded rows over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
-#! with matrix: 
+#! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights 
+#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ 0, 1 ], [ ( -1, 0 ), 1 ] ]
+#! 
+#! Mapping matrix:
 #! 1,0,
 #! 0,1 
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights 
+#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ 0, 1 ], [ ( -1, 0 ), 1 ] ]
 poL := WeakBiPushout( morL, m2L );
 #! <A graded row of rank 2>
 inj1L := InjectionOfFirstCofactorOfWeakBiPushout( morL, m2L );
@@ -364,12 +403,24 @@ injectionL := InjectionOfBiasedWeakPushout( morL, m2L );
 IsWellDefined( injectionL );
 #! true
 Display( injectionL );
-#! A morphism in the category of graded rows over
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-#! with matrix:
+#! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights 
+#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees: 
+#! [ [ ( 1, 0 ), 2 ] ]
+#! 
+#! Mapping matrix:
 #! 1,0,
-#! 0,1
+#! 0,1 
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ ( 1, 0 ), 2 ] ]
 tensorProductL := TensorProductOnObjects( O1L, O2L );
 #! <A graded row of rank 2>
 Display( tensorProductL );
@@ -382,11 +433,24 @@ tensorProductMorphismL := TensorProductOnMorphisms( m2L, morL );
 IsWellDefined( tensorProductMorphismL );
 #! true
 Display( tensorProductMorphismL );
-#! A morphism in the category of graded rows over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ]) 
-#! with matrix: 
+#! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ 0, 1 ] ]
+#! 
+#! Mapping matrix:
 #! x_1,x_2
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ ( 1, 0 ), 2 ] ]
 Display( DualOnObjects( TensorProductOnObjects( ObjectL, Object2L ) ) );
 #! A graded row over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 16 and degrees: 
@@ -395,24 +459,49 @@ Display( DualOnObjects( TensorProductOnObjects( ObjectL, Object2L ) ) );
 IsWellDefined( DualOnMorphisms( m1L ) );
 #! true
 Display( DualOnMorphisms( m1L ) );
-#! A morphism in the category of graded rows over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ]) 
-#! with matrix: 
+#! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ 0, 1 ] ]
+#! 
+#! Mapping matrix:
 #! 1,x_2
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ 0, 1 ], [ ( 1, 0 ), 1 ] ]
 IsWellDefined( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( 
 DualOnObjects( ObjectL ), ObjectL ), ObjectL, TensorUnit( categoryL ) ) );
 #! true
 Display( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( 
 DualOnObjects( ObjectL ), ObjectL ), ObjectL, TensorUnit( categoryL ) ) );
-#! A morphism in the category of graded rows over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ]) 
-#! with matrix: 
+#! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights 
+#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 4 and degrees: 
+#! [ [ 0, 4 ] ]
+#! 
+#! Mapping matrix:
 #! 1,
 #! 0,
 #! 0,
 #! 1 
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ 0, 1 ] ]
 Display( InternalHomOnObjects( ObjectL, ObjectL ) );
 #! A graded row over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
@@ -432,20 +521,46 @@ ZeroObject( categoryR );
 O1R := GradedColumn( [ [[-1,0],2] ], S );
 #! <A graded column of rank 2>
 Display( ZeroMorphism( ZeroObject( categoryR ), O1R ) );
-#! A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
-#! with matrix: 
+#! A morphism in the category of graded columns over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights 
+#! [ [ 1, 0 ], [ 1,0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 0 and degrees: 
+#! [  ]
+#! 
+#! Mapping matrix:
 #! (an empty 2 x 0 matrix)
+#! 
+#! Range:
+#! A graded column over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1,0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ ( -1, 0 ), 2 ] ]
 O2R := GradedColumn( [ [[0,0],1] ], S );
 #! <A graded column of rank 1>
 obj3R := GradedColumn( [ [[-1,0],1] ], S );
 #! <A graded column of rank 1>
 Display( IdentityMorphism( O2R ) );
-#! A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
-#! with matrix: 
+#! A morphism in the category of graded columns over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded column over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ 0, 1 ] ]
+#! 
+#! Mapping matrix:
 #! 1
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded column over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ 0, 1 ] ]
 IsWellDefined( IdentityMorphism( Q2R ) );
 #! true
 directSumR := DirectSum( [ O1R, O2R ] );
@@ -596,12 +711,25 @@ pbwfpcol := ProjectionOfBiasedWeakFiberProduct( m1R, m2R );
 IsWellDefined( pbwfpcol );
 #! true
 Display( pbwfpcol );
-#! A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
-#! with matrix: 
+#! A morphism in the category of graded columns over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded column over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ 0, 1 ], [ ( -1, 0 ), 1 ] ]
+#! 
+#! Mapping matrix:
 #! 1,0,
 #! 0,1 
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded column over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ 0, 1 ], [ ( -1, 0 ), 1 ] ]
 poR := WeakBiPushout( morR, m2R );
 #! <A graded column of rank 2>
 inj1R := InjectionOfFirstCofactorOfWeakBiPushout( morR, m2R );
@@ -628,12 +756,25 @@ injectionR := InjectionOfBiasedWeakPushout( morR, m2R );
 IsWellDefined( injectionR );
 #! true
 Display( injectionR );
-#! A morphism in the category of graded columns over
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-#! with matrix:
+#! A morphism in the category of graded columns over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded column over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ ( 1, 0 ), 2 ] ]
+#! 
+#! Mapping matrix:
 #! 1,0,
-#! 0,1
+#! 0,1 
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded column over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ ( 1, 0 ), 2 ] ]
 tensorProductR := TensorProductOnObjects( O1R, O2R );
 #! <A graded column of rank 2>
 Display( tensorProductR );
@@ -646,12 +787,25 @@ tensorProductMorphismR := TensorProductOnMorphisms( m2R, morR );
 IsWellDefined( tensorProductMorphismR );
 #! true
 Display( tensorProductMorphismR );
-#! A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ]) 
-#! with matrix: 
+#! A morphism in the category of graded columns over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded column over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ 0, 1 ] ]
+#! 
+#! Mapping matrix:
 #! x_1,
-#! x_2
+#! x_2 
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded column over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ ( 1, 0 ), 2 ] ]
 Display( DualOnObjects( TensorProductOnObjects( ObjectR, Object2R ) ) );
 #! A graded column over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 16 and degrees: 
@@ -660,22 +814,48 @@ Display( DualOnObjects( TensorProductOnObjects( ObjectR, Object2R ) ) );
 IsWellDefined( DualOnMorphisms( m1R ) );
 #! true
 Display( DualOnMorphisms( m1R ) );
-#! A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
-#! with matrix: 
-#! 1,
-#! x_2 
+#! A morphism in the category of graded columns over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded column over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ 0, 1 ] ]
+#! 
+#! Mapping matrix:
+#! 1, 
+#! x_2
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded column over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ 0, 1 ], [ ( 1, 0 ), 1 ] ]
 IsWellDefined( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( 
 DualOnObjects( ObjectR ), ObjectR ), ObjectR, TensorUnit( categoryR ) ) );
 #! true
 Display( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( 
 DualOnObjects( ObjectR ), ObjectR ), ObjectR, TensorUnit( categoryR ) ) );
-#! A morphism in the category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ]) 
-#! with matrix: 
+#! A morphism in the category of graded columns over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded column over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 4 and degrees: 
+#! [ [ 0, 4 ] ]
+#! 
+#! Mapping matrix:
 #! 1,0,0,1
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded column over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ 0, 1 ] ]
 Display( InternalHomOnObjects( ObjectR, ObjectR ) );
 #! A graded column over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
@@ -788,10 +968,24 @@ witness := MorphismWitness( f );
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 Display( witness );
 #! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) with matrix: 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ ( 1, 1 ), 2 ] ]
+#! 
+#! Mapping matrix:
 #! 2,0,
 #! 2,0 
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ ( 1, 1 ), 2 ] ]
 g := FreydCategoryMorphism( obj_gamma, 
                                    ZeroMorphism( obj2, obj2 ), obj_gamma );
 #! <A morphism in Freyd( CAP category of graded rows over 
@@ -804,38 +998,94 @@ c := PreCompose( f, f );
 Display( c );
 #! Morphism datum:
 #! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) with matrix: 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ ( 1, 1 ), 2 ] ]
+#! 
+#! Mapping matrix:
 #! 2,2,
 #! 2,2 
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ ( 1, 1 ), 2 ] ]
 s := g + g;
 #! <A morphism in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 Display( s );
-#! Morphism datum:
+#! Morphism datum: 
 #! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) with matrix: 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ ( 1, 1 ), 2 ] ]
+#! 
+#! Mapping matrix:
 #! 0,0,
 #! 0,0 
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ ( 1, 1 ), 2 ] ]
 a := GradedRowOrColumnMorphism( obj1, 
                                  HomalgMatrix( [ [ 2 ] ], 1, 1, S ), obj1 );
 #! <A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 Display( a );
 #! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) with matrix: 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ ( 1, 1 ), 1 ] ]
+#! 
+#! Mapping matrix:
 #! 2
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ ( 1, 1 ), 1 ] ]
 Z2 := FreydCategoryObject( a );
 #! <An object in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 Display( Z2 );
 #! Relation morphism:
 #! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) with matrix: 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ ( 1, 1 ), 1 ] ]
+#! 
+#! Mapping matrix:
 #! 2
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ ( 1, 1 ), 1 ] ]
 id := IdentityMorphism( Z2 );
 #! <An identity morphism in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
@@ -845,20 +1095,48 @@ z := id + id + id;
 Display( z );
 #! Morphism datum:
 #! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) with matrix: 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ ( 1, 1 ), 1 ] ]
+#! 
+#! Mapping matrix:
 #! 3
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ ( 1, 1 ), 1 ] ]
 d := DirectSumFunctorial( [ z, z, z ] );
 #! <A morphism in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 Display( d );
 #! Morphism datum:
 #! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) with matrix: 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 3 and degrees: 
+#! [ [ ( 1, 1 ), 3 ] ]
+#! 
+#! Mapping matrix:
 #! 3,0,0,
 #! 0,3,0,
 #! 0,0,3 
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 3 and degrees: 
+#! [ [ ( 1, 1 ), 3 ] ]
 pr2 := ProjectionInFactorOfDirectSum( [ Z2, Z2, Z2 ], 2 );
 #! <A morphism in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
@@ -868,11 +1146,25 @@ pr3 := ProjectionInFactorOfDirectSum( [ Z2, Z2, Z2 ], 3 );
 Display( UniversalMorphismIntoDirectSum( [ pr3, pr2 ] ) );
 #! Morphism datum:
 #! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) with matrix: 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights 
+#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 3 and degrees: 
+#! [ [ ( 1, 1 ), 3 ] ]
+#! 
+#! Mapping matrix:
 #! 0,0,
 #! 0,1,
 #! 1,0 
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ ( 1, 1 ), 2 ] ]
 inj1 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 1 );
 #! <A morphism in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
@@ -882,18 +1174,46 @@ inj2 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 2 );
 Display( UniversalMorphismFromDirectSum( [ inj2, inj1 ] ) );
 #! Morphism datum:
 #! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) with matrix: 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 2 and degrees: 
+#! [ [ ( 1, 1 ), 2 ] ]
+#! 
+#! Mapping matrix:
 #! 0,1,0,
 #! 1,0,0 
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 3 and degrees: 
+#! [ [ ( 1, 1 ), 3 ] ]
 ZFree := AsFreydCategoryObject( obj1 );
 #! <A projective object in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 Display( ZFree );
 #! Relation morphism:
 #! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) with matrix: 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 0 and degrees: 
+#! [  ]
+#! 
+#! Mapping matrix:
 #! (an empty 0 x 1 matrix)
+#! 
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ ( 1, 1 ), 1 ] ]
 id := IdentityMorphism( ZFree );
 #! <An identity morphism in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
@@ -901,23 +1221,66 @@ z := id + id;
 #! <A morphism in Freyd( CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 Display( z );
+#! 
 #! Morphism datum:
 #! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) with matrix: 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ ( 1, 1 ), 1 ] ]
+#! 
+#! Mapping matrix:
 #! 2
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ ( 1, 1 ), 1 ] ]
 Display( CokernelProjection( z ) );
 #! Morphism datum:
-#! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4]
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) with matrix: 
+#! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ ( 1, 1 ), 1 ] ]
+#! 
+#! Mapping matrix:
 #! 1
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ ( 1, 1 ), 1 ] ]
 Display( CokernelColift( z, CokernelProjection( z ) ) );
 #! Morphism datum:
-#! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4]
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) with matrix: 
+#! A morphism in the category of graded rows over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! 
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ ( 1, 1 ), 1 ] ]
+#! 
+#! Mapping matrix:
 #! 1
 #! (over a graded ring)
+#! 
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! of rank 1 and degrees: 
+#! [ [ ( 1, 1 ), 1 ] ]
 #! @EndExample
 
 
