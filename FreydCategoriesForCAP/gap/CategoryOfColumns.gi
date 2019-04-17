@@ -651,13 +651,21 @@ InstallMethod( Display,
                [ IsCategoryOfColumnsMorphism ],
                
   function( category_of_columns_morphism )
-    
-    Display( UnderlyingMatrix( category_of_columns_morphism ) );
-    
-    Print( "\n" );
-    
+ 
+    # general information on morphism
     Print( StringMutable( category_of_columns_morphism ) );
     
+    # source
+    Print( Concatenation( "\n\n", "Source: \n" ) );
+    Display( Source( category_of_columns_morphism ) );
+
+    # mapping matrix
+    Print( Concatenation( "\n\n", "Mapping matrix: \n" ) );
+    Display( UnderlyingMatrix( category_of_columns_morphism ) );
+
+    # range
+    Print( Concatenation( "\n", "Range: \n" ) );
+    Display( Range( category_of_columns_morphism ) );
     Print( "\n" );
     
 end );
