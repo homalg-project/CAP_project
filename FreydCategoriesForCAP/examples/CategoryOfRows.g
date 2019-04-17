@@ -56,15 +56,29 @@ ZeroObject( rows );
 obj5 := CategoryOfRowsObject( 2, rows );
 #! <A row module over Z of rank 2>
 Display( ZeroMorphism( ZeroObject( rows ), obj5 ) );
+#! A zero, split monomorphism in Rows( Z )
+#! 
+#! Source: 
+#! A row module over Z of rank 0
+#! 
+#! Mapping matrix: 
 #! (an empty 0 x 2 matrix)
 #! 
-#! A zero, split monomorphism in Rows( Z )
+#! Range: 
+#! A row module over Z of rank 2
 obj6 := CategoryOfRowsObject( 1, rows );
 #! <A row module over Z of rank 1>
 Display( IdentityMorphism( obj6 ) );
+#! An identity morphism in Rows( Z )
+#! 
+#! Source: 
+#! A row module over Z of rank 1
+#! 
+#! Mapping matrix: 
 #! [ [  1 ] ]
 #! 
-#! An identity morphism in Rows( Z )
+#! Range: 
+#! A row module over Z of rank 1
 directSum := DirectSum( [ obj5, obj6 ] );
 #! <A row module over Z of rank 3>
 Display( directSum );
@@ -72,46 +86,88 @@ Display( directSum );
 i1 := InjectionOfCofactorOfDirectSum( [ obj5, obj6 ], 1 );
 #! <A morphism in Rows( Z )>
 Display( i1 );
+#! A morphism in Rows( Z )
+#! 
+#! Source: 
+#! A row module over Z of rank 2
+#! 
+#! Mapping matrix: 
 #! [ [  1,  0,  0 ],
 #!   [  0,  1,  0 ] ]
 #! 
-#! A morphism in Rows( Z )
+#! Range: 
+#! A row module over Z of rank 3
 i2 := InjectionOfCofactorOfDirectSum( [ obj5, obj6 ], 2 );
 #! <A morphism in Rows( Z )>
 Display( i2 );
+#! A morphism in Rows( Z )
+#! 
+#! Source: 
+#! A row module over Z of rank 1
+#! 
+#! Mapping matrix: 
 #! [ [  0,  0,  1 ] ]
 #! 
-#! A morphism in Rows( Z )
+#! Range: 
+#! A row module over Z of rank 3
 proj1 := ProjectionInFactorOfDirectSum( [ obj5, obj6 ], 1 );
 #! <A morphism in Rows( Z )>
 Display( proj1 );
+#! A morphism in Rows( Z )
+#! 
+#! Source: 
+#! A row module over Z of rank 3
+#! 
+#! Mapping matrix: 
 #! [ [  1,  0 ],
 #!   [  0,  1 ],
 #!   [  0,  0 ] ]
 #! 
-#! A morphism in Rows( Z )
+#! Range: 
+#! A row module over Z of rank 2
 proj2 := ProjectionInFactorOfDirectSum( [ obj5, obj6 ], 2 );
 #! <A morphism in Rows( Z )>
 Display( proj2 );
-#! [ [  0  ],
-#!   [  0  ], 
-#!   [  1  ] ]
-#! 
 #! A morphism in Rows( Z )
+#! 
+#! Source: 
+#! A row module over Z of rank 3
+#! 
+#! Mapping matrix: 
+#! [ [  0 ],
+#!   [  0 ],
+#!   [  1 ] ]
+#! 
+#! Range: 
+#! A row module over Z of rank 1
 k := WeakKernelEmbedding( proj1 );
 #! <A morphism in Rows( Z )>
 Display( k );
+#! A morphism in Rows( Z )
+#! 
+#! Source: 
+#! A row module over Z of rank 1
+#! 
+#! Mapping matrix: 
 #! [ [  0,  0,  1 ] ]
 #! 
-#! A morphism in Rows( Z )
+#! Range: 
+#! A row module over Z of rank 3
 ck := WeakCokernelProjection( k );
 #! <A morphism in Rows( Z )>
 Display( ck );
+#! A morphism in Rows( Z )
+#! 
+#! Source: 
+#! A row module over Z of rank 3
+#! 
+#! Mapping matrix: 
 #! [ [   0,  -1 ],
 #!   [   1,   0 ],
 #!   [   0,   0 ] ]
 #! 
-#! A morphism in Rows( Z )
+#! Range: 
+#! A row module over Z of rank 2
 IsMonomorphism( k );
 #! true
 IsEpimorphism( k );
@@ -123,21 +179,44 @@ IsEpimorphism( ck );
 mor1 := CategoryOfRowsMorphism( obj5, HomalgMatrix( [[ 1 ], [ 2 ]], S ), obj6 );
 #! <A morphism in Rows( Z )>
 Display( mor1 );
-#! [ [  1 ], [  2 ] ]
-#! 
 #! A morphism in Rows( Z )
+#! 
+#! Source: 
+#! A row module over Z of rank 2
+#! 
+#! Mapping matrix: 
+#! [ [  1 ],
+#!   [  2 ] ]
+#! 
+#! Range: 
+#! A row module over Z of rank 1
 mor2 := IdentityMorphism( obj6 );
 #! <An identity morphism in Rows( Z )>
 Display( mor2 );
+#! An identity morphism in Rows( Z )
+#! 
+#! Source: 
+#! A row module over Z of rank 1
+#! 
+#! Mapping matrix: 
 #! [ [  1 ] ]
 #! 
-#! An identity morphism in Rows( Z )
+#! Range: 
+#! A row module over Z of rank 1
 lift := Lift( mor1, mor2 );
 #! <A morphism in Rows( Z )>
 Display( lift );
-#! [ [  1 ], [ 2 ] ]
-#! 
 #! A morphism in Rows( Z )
+#! 
+#! Source: 
+#! A row module over Z of rank 2
+#! 
+#! Mapping matrix: 
+#! [ [  1 ],
+#!   [  2 ] ]
+#! 
+#! Range: 
+#! A row module over Z of rank 1
 source := CategoryOfRowsObject( 1, rows );
 #! <A row module over Z of rank 1>
 range := CategoryOfRowsObject( 2, rows );
@@ -147,26 +226,46 @@ mor := CategoryOfRowsMorphism( source, HomalgMatrix( [[ 2, 3 ]], S ), range );
 colift := Colift( mor2, mor );
 #! <A morphism in Rows( Z )>
 Display( colift );
-#! [ [  2, 3 ] ]
-#!
 #! A morphism in Rows( Z )
+#! 
+#! Source: 
+#! A row module over Z of rank 1
+#! 
+#! Mapping matrix: 
+#! [ [  2,  3 ] ]
+#! 
+#! Range: 
+#! A row module over Z of rank 2
 fp := WeakBiFiberProduct( mor1, mor2 );
 #! <A row module over Z of rank 2>
 fp_proj := ProjectionOfBiasedWeakFiberProduct( mor1, mor2 );
 #! <A morphism in Rows( Z )>
 Display( fp_proj );
+#! A morphism in Rows( Z )
+#! 
+#! Source: 
+#! A row module over Z of rank 2
+#! 
+#! Mapping matrix: 
 #! [ [  -2,   1 ],
 #!   [  -1,   0 ] ]
 #! 
-#! A morphism in Rows( Z )
+#! Range: 
+#! A row module over Z of rank 2
 po := WeakBiPushout( mor, mor2 );
 #! <A row module over Z of rank 2>
 inj_push := InjectionOfBiasedWeakPushout( mor, mor2 );
 #! <A morphism in Rows( Z )>
 Display( inj_push );
+#! A morphism in Rows( Z )
+#! 
+#! Source: 
+#! A row module over Z of rank 2
+#! 
+#! Mapping matrix: 
 #! [ [  -3,   1 ],
 #!   [   2,  -1 ] ]
 #! 
-#! A morphism in Rows( Z )
-
+#! Range: 
+#! A row module over Z of rank 2
 #! @EndExample
