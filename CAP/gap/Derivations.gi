@@ -588,6 +588,21 @@ function( owl )
   od;
 end );
 
+InstallMethod( Saturate,
+               [ IsOperationWeightList ],
+  function( owl )
+    local current_weight_list;
+
+    while true do
+        current_weight_list := StructuralCopy( owl!.operation_weights );
+        Reevaluate( owl );
+        if current_weight_list = owl!.operation_weights then
+            break;
+        fi;
+    od;
+
+end );
+
 InstallMethod( AddPrimitiveOperation,
                [ IsOperationWeightListRep, IsString, IsInt ],
 function( owl, op_name, weight )

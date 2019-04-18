@@ -305,6 +305,12 @@ DeclareOperation( "InstallDerivationsUsingOperation",
 DeclareOperation( "Reevaluate", [ IsOperationWeightList ] );
 
 #! @Description
+#!  Saturates the derivation graph, i.e., calls reevaluate until
+#!  no more changes in the derivation graph occur.
+#! @Arguments owl
+DeclareOperation( "Saturate", [ IsOperationWeightList ] );
+
+#! @Description
 #!  Add the operation named <A>op_name</A> to the operation weight list <A>owl</A>
 #!  with weight <A>weight</A>.
 #!  This causes all operations that can be derived, directly or indirectly,
