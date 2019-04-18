@@ -141,7 +141,7 @@ InstallMethod( IsFinalized,
     
     while true do
         
-        Reevaluate( weight_list );
+        Saturate( weight_list );
         
         current_installs := [ ];
         
