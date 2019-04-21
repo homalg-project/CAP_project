@@ -157,12 +157,12 @@ InstallMethod( String,
 
     if IsGradedRowMorphism( graded_row_or_column_morphism ) then
 
-      return Concatenation( "A morphism in the category of graded rows over ",
+      return Concatenation( "A morphism in CAP category of graded rows over ",
                             RingName( UnderlyingHomalgGradedRing( graded_row_or_column_morphism ) ) );
 
     else
 
-      return Concatenation( "A morphism in the category of graded columns over ",
+      return Concatenation( "A morphism in CAP category of graded columns over ",
                             RingName( UnderlyingHomalgGradedRing( graded_row_or_column_morphism ) ) );
 
     fi;
@@ -181,25 +181,21 @@ InstallMethod( Display,
                [ IsGradedRowOrColumnMorphism ], 
   function( graded_row_or_column_morphism )
 
-    # check to which category this morphism belongs
-    if IsGradedRowMorphism( graded_row_or_column_morphism ) then
+    # general information on morphism
+    Print( StringMutable( graded_row_or_column_morphism ) );
 
-      Print( "A morphism in the category of graded rows over ", 
-                                   RingName( UnderlyingHomalgGradedRing( graded_row_or_column_morphism ) ), "\n" );
-    else
-
-      Print( "A morphism in the category of graded columns over ", 
-                                   RingName( UnderlyingHomalgGradedRing( graded_row_or_column_morphism ) ), "\n" );
-
-    fi;
-
-    # print detailed information
-    Print( Concatenation( "\n", "Source:\n" ) );
+    # source
+    Print( Concatenation( "\n\n", "Source: \n" ) );
     Display( Source( graded_row_or_column_morphism ) );
-    Print( Concatenation( "\n", "Matrix:\n" ) );
+
+    # mapping matrix
+    Print( Concatenation( "\n\n", "Matrix: \n" ) );
     Display( UnderlyingHomalgMatrix( graded_row_or_column_morphism ) );
-    Print( Concatenation( "\n", "Range:\n" ) );
+
+    # range
+    Print( Concatenation( "\n", "Range: \n" ) );
     Display( Range( graded_row_or_column_morphism ) );
+    Print( "\n" );
 
 end );
 
