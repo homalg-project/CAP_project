@@ -1037,7 +1037,9 @@ InstallMethod( Display,
                
   function( freyd_category_morphism )
     
-    Print( "Morphism datum:\n" );
+    Print( StringMutable( freyd_category_morphism ) );
+
+    Print( Concatenation( "\n\n", "Morphism datum:\n" ) );
     
     Display( MorphismDatum( freyd_category_morphism ) );
     
@@ -1049,8 +1051,10 @@ InstallMethod( Display,
                [ IsFreydCategoryObject ],
                
   function( freyd_category_object )
-    
-    Print( "Relation morphism:\n" );
+
+    Print( StringMutable( freyd_category_object ) );
+
+    Print( Concatenation( "\n\n", "Relation morphism:\n" ) );
     
     Display( RelationMorphism( freyd_category_object ) );
     

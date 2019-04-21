@@ -996,6 +996,9 @@ c := PreCompose( f, f );
 #! <A morphism in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 Display( c );
+#! A morphism in Freyd( CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+#! 
 #! Morphism datum:
 #! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -1020,6 +1023,9 @@ s := g + g;
 #! <A morphism in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 Display( s );
+#! A morphism in Freyd( CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+#! 
 #! Morphism datum: 
 #! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -1067,6 +1073,9 @@ Z2 := FreydCategoryObject( a );
 #! <An object in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 Display( Z2 );
+#! An object in Freyd( CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+#! 
 #! Relation morphism:
 #! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -1093,6 +1102,9 @@ z := id + id + id;
 #! <A morphism in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 Display( z );
+#! A morphism in Freyd( CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+#! 
 #! Morphism datum:
 #! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -1116,6 +1128,9 @@ d := DirectSumFunctorial( [ z, z, z ] );
 #! <A morphism in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 Display( d );
+#! A morphism in Freyd( CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+#! 
 #! Morphism datum:
 #! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -1144,6 +1159,9 @@ pr3 := ProjectionInFactorOfDirectSum( [ Z2, Z2, Z2 ], 3 );
 #! <A morphism in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 Display( UniversalMorphismIntoDirectSum( [ pr3, pr2 ] ) );
+#! A morphism in Freyd( CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+#! 
 #! Morphism datum:
 #! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -1172,6 +1190,9 @@ inj2 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 2 );
 #! <A morphism in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 Display( UniversalMorphismFromDirectSum( [ inj2, inj1 ] ) );
+#! A morphism in Freyd( CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+#! 
 #! Morphism datum:
 #! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -1196,6 +1217,9 @@ ZFree := AsFreydCategoryObject( obj1 );
 #! <A projective object in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 Display( ZFree );
+#! A projective object in Freyd( CAP category of graded rows over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+#! 
 #! Relation morphism:
 #! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -1221,6 +1245,8 @@ z := id + id;
 #! <A morphism in Freyd( CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 Display( z );
+#! A morphism in Freyd( CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
 #! 
 #! Morphism datum:
 #! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
@@ -1242,6 +1268,9 @@ Display( z );
 #! of rank 1 and degrees: 
 #! [ [ ( 1, 1 ), 1 ] ]
 Display( CokernelProjection( z ) );
+#! An epimorphism in Freyd( CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+#! 
 #! Morphism datum:
 #! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -1262,6 +1291,9 @@ Display( CokernelProjection( z ) );
 #! of rank 1 and degrees: 
 #! [ [ ( 1, 1 ), 1 ] ]
 Display( CokernelColift( z, CokernelProjection( z ) ) );
+#! A morphism in Freyd( CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+#! 
 #! Morphism datum:
 #! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
