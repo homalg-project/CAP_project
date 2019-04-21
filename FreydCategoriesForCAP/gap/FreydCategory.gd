@@ -68,3 +68,11 @@ DeclareAttribute( "MorphismWitness",
 
 DeclareAttribute( "WitnessForBeingCongruentToZero",
                   IsFreydCategoryMorphism );
+
+####################################################################################
+##
+#! @Section Determine properties of input category for Freyd category
+##
+####################################################################################
+
+DeclareGlobalFunction( "IsValidInputForFreydCategory" );

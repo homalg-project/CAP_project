@@ -19,63 +19,46 @@ InstallMethod( FreydCategory,
   function( underlying_category )
     local freyd_category, to_be_finalized;
     
-    if not HasIsAdditiveCategory( underlying_category ) then
-        
-        Error( "The given category should be additive" );
-        
+    if IsValidInputForFreydCategory( underlying_category ) then
+
+        freyd_category := CreateCapCategory( Concatenation( "Freyd( ", Name( underlying_category ), " )" ) );
+
+        SetFilterObj( freyd_category, IsFreydCategory );
+
+        SetIsAdditiveCategory( freyd_category, true );
+
+        SetUnderlyingCategory( freyd_category, underlying_category );
+
+        ## Freyd's theorem
+        if ForAll( [ "WeakKernelEmbedding", "WeakKernelLift" ], f -> CanCompute( underlying_category, f ) ) then
+
+            SetIsAbelianCategory( freyd_category, true );
+
+        fi;
+
+        AddObjectRepresentation( freyd_category, IsFreydCategoryObject );
+
+        AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism );
+
+        INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY( freyd_category );
+
+        to_be_finalized := ValueOption( "FinalizeCategory" );
+
+        if to_be_finalized = false then
+
+            return freyd_category;
+    
+        fi;
+    
+        Finalize( freyd_category );
+    
+        return freyd_category;
+
+    else
+
+        return false;
+
     fi;
-    
-    ## for IsCongruentForMorphisms to be correct
-    if not CanCompute( underlying_category, "Lift" ) then
-        
-        Error( "The given category should be able to compute Lift" );
-        
-    fi;
-    
-    if not CanCompute( underlying_category, "SubtractionForMorphisms" ) then
-        
-        Error( "The given category should be able to compute SubtractionForMorphisms" );
-        
-    fi;
-    
-    if not CanCompute( underlying_category, "PreCompose" ) then
-        
-        Error( "The given category should be able to compute PreCompose" );
-        
-    fi;
-    
-    freyd_category := CreateCapCategory( Concatenation( "Freyd( ", Name( underlying_category ), " )" ) );
-    
-    SetFilterObj( freyd_category, IsFreydCategory );
-    
-    SetIsAdditiveCategory( freyd_category, true );
-    
-    SetUnderlyingCategory( freyd_category, underlying_category );
-    
-    ## Freyd's theorem
-    if ForAll( [ "WeakKernelEmbedding", "WeakKernelLift" ], f -> CanCompute( underlying_category, f ) ) then
-        
-        SetIsAbelianCategory( freyd_category, true );
-        
-    fi;
-    
-    AddObjectRepresentation( freyd_category, IsFreydCategoryObject );
-    
-    AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism );
-    
-    INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY( freyd_category );
-    
-    to_be_finalized := ValueOption( "FinalizeCategory" );
-      
-    if to_be_finalized = false then
-      
-      return freyd_category;
-    
-    fi;
-    
-    Finalize( freyd_category );
-    
-    return freyd_category;
     
 end );
 
@@ -1054,4 +1037,70 @@ InstallMethod( Display,
     
     Display( RelationMorphism( freyd_category_object ) );
     
+end );
+
+####################################################################################
+##
+##  Determine properties of input category for Freyd category
+##
+####################################################################################
+
+InstallGlobalFunction( IsValidInputForFreydCategory,
+  function( category )
+    local result, installed_ops, required_ops, i;
+
+    # set return value
+    result := true;
+
+    # first check if the category has been finalized (i.e. no methods are to be added...)
+    if not HasIsFinalized( category ) or not IsFinalized( category ) then
+
+        Error( "Underlying category must be finalized" );
+        result := false;
+
+    fi;
+
+    # compare required and installed methods
+    required_ops := [ "IsWellDefinedForMorphisms",
+                      "IsEqualForMorphismsOnMor",
+                      "PreCompose",
+                      "IdentityMorphism",
+                      "AdditionForMorphisms",
+                      "SubtractionForMorphisms",
+                      "AdditiveInverseForMorphisms",
+                      "ZeroMorphism",
+                      "ZeroObject",
+                      "UniversalMorphismIntoZeroObject",
+                      "UniversalMorphismFromZeroObject",
+                      "DirectSum",
+                      "ProjectionInFactorOfDirectSum",
+                      "UniversalMorphismIntoDirectSum",
+                      "InjectionOfCofactorOfDirectSum",
+                      "UniversalMorphismFromDirectSum",
+                      "Lift"
+                      ];
+    installed_ops := ListInstalledOperationsOfCategory( category );
+
+    for i in required_ops do
+
+      if not i in installed_ops then
+
+        Error( Concatenation( i, " is not installed, but needed for an underlying category of Freyd category" ) );
+        result := false;
+
+      fi;
+
+    od;
+
+    # if all required methods are installed, check if the category is also additive
+    if not HasIsAdditiveCategory( category ) then
+
+      Error( "an underlying category of a Freyd category must be additive, but the attribute is not set for the category in question" );
+      result := false;
+
+    fi;
+
+    # return result of this operation
+    return result;
+
 end );
