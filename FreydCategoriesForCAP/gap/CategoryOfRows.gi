@@ -660,7 +660,7 @@ InstallMethod( Display,
     Display( Source( category_of_rows_morphism ) );
 
     # mapping matrix
-    Print( Concatenation( "\n\n", "Mapping matrix: \n" ) );
+    Print( Concatenation( "\n\n", "Matrix: \n" ) );
     Display( UnderlyingMatrix( category_of_rows_morphism ) );
 
     # range

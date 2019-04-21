@@ -61,7 +61,7 @@ Display( ZeroMorphism( ZeroObject( rows ), obj5 ) );
 #! Source: 
 #! A row module over Z of rank 0
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! (an empty 0 x 2 matrix)
 #! 
 #! Range: 
@@ -74,7 +74,7 @@ Display( IdentityMorphism( obj6 ) );
 #! Source: 
 #! A row module over Z of rank 1
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  1 ] ]
 #! 
 #! Range: 
@@ -91,7 +91,7 @@ Display( i1 );
 #! Source: 
 #! A row module over Z of rank 2
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  1,  0,  0 ],
 #!   [  0,  1,  0 ] ]
 #! 
@@ -105,7 +105,7 @@ Display( i2 );
 #! Source: 
 #! A row module over Z of rank 1
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  0,  0,  1 ] ]
 #! 
 #! Range: 
@@ -118,7 +118,7 @@ Display( proj1 );
 #! Source: 
 #! A row module over Z of rank 3
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  1,  0 ],
 #!   [  0,  1 ],
 #!   [  0,  0 ] ]
@@ -133,7 +133,7 @@ Display( proj2 );
 #! Source: 
 #! A row module over Z of rank 3
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  0 ],
 #!   [  0 ],
 #!   [  1 ] ]
@@ -148,7 +148,7 @@ Display( k );
 #! Source: 
 #! A row module over Z of rank 1
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  0,  0,  1 ] ]
 #! 
 #! Range: 
@@ -161,7 +161,7 @@ Display( ck );
 #! Source: 
 #! A row module over Z of rank 3
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [   0,  -1 ],
 #!   [   1,   0 ],
 #!   [   0,   0 ] ]
@@ -184,7 +184,7 @@ Display( mor1 );
 #! Source: 
 #! A row module over Z of rank 2
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  1 ],
 #!   [  2 ] ]
 #! 
@@ -198,7 +198,7 @@ Display( mor2 );
 #! Source: 
 #! A row module over Z of rank 1
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  1 ] ]
 #! 
 #! Range: 
@@ -211,7 +211,7 @@ Display( lift );
 #! Source: 
 #! A row module over Z of rank 2
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  1 ],
 #!   [  2 ] ]
 #! 
@@ -231,7 +231,7 @@ Display( colift );
 #! Source: 
 #! A row module over Z of rank 1
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  2,  3 ] ]
 #! 
 #! Range: 
@@ -246,7 +246,7 @@ Display( fp_proj );
 #! Source: 
 #! A row module over Z of rank 2
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  -2,   1 ],
 #!   [  -1,   0 ] ]
 #! 
@@ -262,7 +262,7 @@ Display( inj_push );
 #! Source: 
 #! A row module over Z of rank 2
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  -3,   1 ],
 #!   [   2,  -1 ] ]
 #! 

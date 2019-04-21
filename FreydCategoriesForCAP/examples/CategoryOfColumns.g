@@ -62,7 +62,7 @@ Display( ZeroMorphism( ZeroObject( cols ), obj5 ) );
 #! Source: 
 #! A column module over Z of rank 0
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! (an empty 2 x 0 matrix)
 #! 
 #! Range: 
@@ -75,7 +75,7 @@ Display( IdentityMorphism( obj6 ) );
 #! Source: 
 #! A column module over Z of rank 1
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  1 ] ]
 #! 
 #! Range: 
@@ -92,7 +92,7 @@ Display( i1 );
 #! Source: 
 #! A column module over Z of rank 2
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  1,  0 ],
 #!   [  0,  1 ],
 #!   [  0,  0 ] ]
@@ -107,7 +107,7 @@ Display( i2 );
 #! Source: 
 #! A column module over Z of rank 1
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  0 ],
 #!   [  0 ],
 #!   [  1 ] ]
@@ -122,7 +122,7 @@ Display( proj1 );
 #! Source: 
 #! A column module over Z of rank 3
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  1,  0,  0 ],
 #!   [  0,  1,  0 ] ]
 #! 
@@ -136,7 +136,7 @@ Display( proj2 );
 #! Source: 
 #! A column module over Z of rank 3
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  0,  0,  1 ] ]
 #! 
 #! Range: 
@@ -149,7 +149,7 @@ Display( k );
 #! Source: 
 #! A column module over Z of rank 1
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  0 ],
 #!   [  0 ],
 #!   [  1 ] ]
@@ -164,7 +164,7 @@ Display( ck );
 #! Source: 
 #! A column module over Z of rank 3
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [   0,   1,   0 ],
 #!   [  -1,   0,   0 ] ]
 #! 
@@ -186,7 +186,7 @@ Display( mor1 );
 #! Source: 
 #! A column module over Z of rank 2
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  1,  2 ] ]
 #! 
 #! Range: 
@@ -199,7 +199,7 @@ Display( mor2 );
 #! Source: 
 #! A column module over Z of rank 1
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  1 ] ]
 #! 
 #! Range: 
@@ -212,7 +212,7 @@ Display( lift );
 #! Source: 
 #! A column module over Z of rank 2
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  1,  2 ] ]
 #! 
 #! Range: 
@@ -231,7 +231,7 @@ Display( colift );
 #! Source: 
 #! A column module over Z of rank 1
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  2 ],
 #!   [  3 ] ]
 #! 
@@ -247,7 +247,7 @@ Display( fp_proj );
 #! Source: 
 #! A column module over Z of rank 2
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  -2,  -1 ],
 #!   [   1,   0 ] ]
 #! 
@@ -263,7 +263,7 @@ Display( inj_push );
 #! Source: 
 #! A column module over Z of rank 2
 #! 
-#! Mapping matrix: 
+#! Matrix: 
 #! [ [  -3,   2 ],
 #!   [   1,  -1 ] ]
 #! 

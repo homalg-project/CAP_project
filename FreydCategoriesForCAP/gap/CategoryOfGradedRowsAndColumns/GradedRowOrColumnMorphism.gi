@@ -196,7 +196,7 @@ InstallMethod( Display,
     # print detailed information
     Print( Concatenation( "\n", "Source:\n" ) );
     Display( Source( graded_row_or_column_morphism ) );
-    Print( Concatenation( "\n", "Mapping matrix:\n" ) );
+    Print( Concatenation( "\n", "Matrix:\n" ) );
     Display( UnderlyingHomalgMatrix( graded_row_or_column_morphism ) );
     Print( Concatenation( "\n", "Range:\n" ) );
     Display( Range( graded_row_or_column_morphism ) );
@@ -245,7 +245,7 @@ InstallMethod( FullInformation,
     Print( "--------------------------------------------------------------------------------- \n \n" );
     
     # Display the mapping matrix
-    Print( "Mapping matrix: \n" );
+    Print( "Matrix: \n" );
     Print( "--------------- \n" );
     Display( UnderlyingHomalgMatrix( morphism ) );
     Print( "\n" );

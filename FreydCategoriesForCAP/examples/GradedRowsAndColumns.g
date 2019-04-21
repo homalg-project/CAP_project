@@ -180,7 +180,7 @@ Display( ZeroMorphism( ZeroObject( categoryL ), O1L ) );
 #! of rank 0 and degrees: 
 #! [  ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! (an empty 0 x 2 matrix)
 #! 
 #! Range:
@@ -202,7 +202,7 @@ Display( IdentityMorphism( O2L ) );
 #! of rank 1 and degrees: 
 #! [ [ 0, 1 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 1
 #! (over a graded ring)
 #! 
@@ -368,7 +368,7 @@ Display( pbwfprow );
 #! of rank 2 and degrees: 
 #! [ [ 0, 1 ], [ ( -1, 0 ), 1 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 1,0,
 #! 0,1 
 #! (over a graded ring)
@@ -411,7 +411,7 @@ Display( injectionL );
 #! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees: 
 #! [ [ ( 1, 0 ), 2 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 1,0,
 #! 0,1 
 #! (over a graded ring)
@@ -442,7 +442,7 @@ Display( tensorProductMorphismL );
 #! of rank 1 and degrees: 
 #! [ [ 0, 1 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! x_1,x_2
 #! (over a graded ring)
 #! 
@@ -468,7 +468,7 @@ Display( DualOnMorphisms( m1L ) );
 #! of rank 1 and degrees: 
 #! [ [ 0, 1 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 1,x_2
 #! (over a graded ring)
 #! 
@@ -490,7 +490,7 @@ DualOnObjects( ObjectL ), ObjectL ), ObjectL, TensorUnit( categoryL ) ) );
 #! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 4 and degrees: 
 #! [ [ 0, 4 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 1,
 #! 0,
 #! 0,
@@ -530,7 +530,7 @@ Display( ZeroMorphism( ZeroObject( categoryR ), O1R ) );
 #! of rank 0 and degrees: 
 #! [  ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! (an empty 2 x 0 matrix)
 #! 
 #! Range:
@@ -552,7 +552,7 @@ Display( IdentityMorphism( O2R ) );
 #! of rank 1 and degrees: 
 #! [ [ 0, 1 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 1
 #! (over a graded ring)
 #! 
@@ -720,7 +720,7 @@ Display( pbwfpcol );
 #! of rank 2 and degrees: 
 #! [ [ 0, 1 ], [ ( -1, 0 ), 1 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 1,0,
 #! 0,1 
 #! (over a graded ring)
@@ -765,7 +765,7 @@ Display( injectionR );
 #! of rank 2 and degrees: 
 #! [ [ ( 1, 0 ), 2 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 1,0,
 #! 0,1 
 #! (over a graded ring)
@@ -796,7 +796,7 @@ Display( tensorProductMorphismR );
 #! of rank 1 and degrees: 
 #! [ [ 0, 1 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! x_1,
 #! x_2 
 #! (over a graded ring)
@@ -823,7 +823,7 @@ Display( DualOnMorphisms( m1R ) );
 #! of rank 1 and degrees: 
 #! [ [ 0, 1 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 1, 
 #! x_2
 #! (over a graded ring)
@@ -847,7 +847,7 @@ DualOnObjects( ObjectR ), ObjectR ), ObjectR, TensorUnit( categoryR ) ) );
 #! of rank 4 and degrees: 
 #! [ [ 0, 4 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 1,0,0,1
 #! (over a graded ring)
 #! 
@@ -976,7 +976,7 @@ Display( witness );
 #! of rank 2 and degrees: 
 #! [ [ ( 1, 1 ), 2 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 2,0,
 #! 2,0 
 #! (over a graded ring)
@@ -1006,7 +1006,7 @@ Display( c );
 #! of rank 2 and degrees: 
 #! [ [ ( 1, 1 ), 2 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 2,2,
 #! 2,2 
 #! (over a graded ring)
@@ -1030,7 +1030,7 @@ Display( s );
 #! of rank 2 and degrees: 
 #! [ [ ( 1, 1 ), 2 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 0,0,
 #! 0,0 
 #! (over a graded ring)
@@ -1054,7 +1054,7 @@ Display( a );
 #! of rank 1 and degrees: 
 #! [ [ ( 1, 1 ), 1 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 2
 #! (over a graded ring)
 #! 
@@ -1077,7 +1077,7 @@ Display( Z2 );
 #! of rank 1 and degrees: 
 #! [ [ ( 1, 1 ), 1 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 2
 #! (over a graded ring)
 #! 
@@ -1103,7 +1103,7 @@ Display( z );
 #! of rank 1 and degrees: 
 #! [ [ ( 1, 1 ), 1 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 3
 #! (over a graded ring)
 #! 
@@ -1126,7 +1126,7 @@ Display( d );
 #! of rank 3 and degrees: 
 #! [ [ ( 1, 1 ), 3 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 3,0,0,
 #! 0,3,0,
 #! 0,0,3 
@@ -1154,7 +1154,7 @@ Display( UniversalMorphismIntoDirectSum( [ pr3, pr2 ] ) );
 #! of rank 3 and degrees: 
 #! [ [ ( 1, 1 ), 3 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 0,0,
 #! 0,1,
 #! 1,0 
@@ -1182,7 +1182,7 @@ Display( UniversalMorphismFromDirectSum( [ inj2, inj1 ] ) );
 #! of rank 2 and degrees: 
 #! [ [ ( 1, 1 ), 2 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 0,1,0,
 #! 1,0,0 
 #! (over a graded ring)
@@ -1206,7 +1206,7 @@ Display( ZFree );
 #! of rank 0 and degrees: 
 #! [  ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! (an empty 0 x 1 matrix)
 #! 
 #! Range:
@@ -1232,7 +1232,7 @@ Display( z );
 #! of rank 1 and degrees: 
 #! [ [ ( 1, 1 ), 1 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 2
 #! (over a graded ring)
 #! 
@@ -1252,7 +1252,7 @@ Display( CokernelProjection( z ) );
 #! of rank 1 and degrees: 
 #! [ [ ( 1, 1 ), 1 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 1
 #! (over a graded ring)
 #! 
@@ -1272,7 +1272,7 @@ Display( CokernelColift( z, CokernelProjection( z ) ) );
 #! of rank 1 and degrees: 
 #! [ [ ( 1, 1 ), 1 ] ]
 #! 
-#! Mapping matrix:
+#! Matrix:
 #! 1
 #! (over a graded ring)
 #! 
