@@ -38,6 +38,61 @@ InstallMethod( FreydCategory,
         
     fi;
     
+    if ForAll( [ "TensorProductOnObjects",
+                 "TensorProductOnMorphismsWithGivenTensorProducts",
+                 "TensorUnit",
+                 "AssociatorLeftToRightWithGivenTensorProducts",
+                 "AssociatorRightToLeftWithGivenTensorProducts",
+                 "LeftUnitorWithGivenTensorProduct",
+                 "LeftUnitorInverseWithGivenTensorProduct",
+                 "RightUnitorWithGivenTensorProduct",
+                 "RightUnitorInverseWithGivenTensorProduct" ],
+                                f -> CanCompute( underlying_category, f ) ) then
+
+      SetIsMonoidalCategory( freyd_category, true );
+
+    fi;
+
+    if ForAll( [ "TensorProductOnObjects",
+                 "TensorProductOnMorphismsWithGivenTensorProducts",
+                 "TensorUnit",
+                 "AssociatorLeftToRightWithGivenTensorProducts",
+                 "AssociatorRightToLeftWithGivenTensorProducts",
+                 "LeftUnitorWithGivenTensorProduct",
+                 "LeftUnitorInverseWithGivenTensorProduct",
+                 "RightUnitorWithGivenTensorProduct",
+                 "RightUnitorInverseWithGivenTensorProduct",
+                 "BraidingWithGivenTensorProducts" ],
+                                f -> CanCompute( underlying_category, f ) ) then
+
+      SetIsSymmetricMonoidalCategory( freyd_category, true );
+
+    fi;
+
+    if ForAll( [ "TensorProductOnObjects",
+                 "TensorProductOnMorphismsWithGivenTensorProducts",
+                 "TensorUnit",
+                 "AssociatorLeftToRightWithGivenTensorProducts",
+                 "AssociatorRightToLeftWithGivenTensorProducts",
+                 "LeftUnitorWithGivenTensorProduct",
+                 "LeftUnitorInverseWithGivenTensorProduct",
+                 "RightUnitorWithGivenTensorProduct",
+                 "RightUnitorInverseWithGivenTensorProduct",
+                 "BraidingWithGivenTensorProducts",
+                 "InternalHomOnMorphismsWithGivenInternalHoms", 
+                 "ProjectionOfBiasedWeakFiberProduct", 
+                 "UniversalMorphismIntoBiasedWeakFiberProduct",
+                 "EvaluationMorphismWithGivenSource",
+                 "CoevaluationMorphismWithGivenRange" ],
+                                f -> CanCompute( underlying_category, f ) ) then
+
+      SetIsSymmetricClosedMonoidalCategory( freyd_category, true );
+
+    fi;
+
+    # is a Freyd category always not a strict monoidal category?
+    # SetIsStrictMonoidalCategory( freyd_category, false );
+
     AddObjectRepresentation( freyd_category, IsFreydCategoryObject );
     
     AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism );
@@ -173,6 +228,30 @@ InstallMethod( WitnessForBeingCongruentToZero,
     
     return Lift( MorphismDatum( morphism ), RelationMorphism( Range( morphism ) ) );
     
+end );
+
+InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING,
+                           [ IsFreydCategoryObject, IsFreydCategoryObject ],
+    function( a, b )
+      local source, range, mor;
+
+      # compute source
+      source := InternalHomOnMorphisms( IdentityMorphism( Range( RelationMorphism( a ) ) ), 
+                                        RelationMorphism( b ) );
+      source:= FreydCategoryObject( source );
+      
+      # compute range
+      range := InternalHomOnMorphisms( IdentityMorphism( Source( RelationMorphism( a ) ) ), 
+                                       RelationMorphism( b ) );
+      range := FreydCategoryObject( range );
+      
+      # compute mapping
+      mor := InternalHomOnMorphisms( RelationMorphism( a ), 
+                                     IdentityMorphism( Range( RelationMorphism( b ) ) ) );
+
+      # construct hom embedding
+      return KernelEmbedding( FreydCategoryMorphism( source, mor, range ) );
+
 end );
 
 ####################################
@@ -654,10 +733,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     end );
     
     ##
-    if ForAll( [ "SolveLinearSystemInAbCategory",
-                 "IdentityMorphism",
-                 "ZeroMorphism",
-                 "AdditiveInverseForMorphisms" ], 
+    if ForAll( [ "SolveLinearSystemInAbCategory" ], 
                f -> CanCompute( underlying_category, f ) ) then
         
         AddLift( category,
@@ -692,8 +768,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             ##
             
             left_coefficients := [
-              [ rho_A, -IdentityMorphism( R_A ), ZeroMorphism( R_A, A ) ],
-              [ IdentityMorphism( A ), ZeroMorphism( A, R_A ), -IdentityMorphism( A ) ]
+              [ rho_A, AdditiveInverseForMorphisms( IdentityMorphism( R_A ) ), ZeroMorphism( R_A, A ) ],
+              [ IdentityMorphism( A ), ZeroMorphism( A, R_A ), AdditiveInverseForMorphisms( IdentityMorphism( A ) ) ]
             ];
             
             right_coefficients := [
@@ -747,8 +823,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             ##
             
             left_coefficients := [
-              [ rho_A, -IdentityMorphism( R_A ), ZeroMorphism( R_A, B ) ],
-              [ alpha, ZeroMorphism( B, R_A ), -IdentityMorphism( B ) ]
+              [ rho_A, AdditiveInverseForMorphisms( IdentityMorphism( R_A ) ), ZeroMorphism( R_A, B ) ],
+              [ alpha, ZeroMorphism( B, R_A ), AdditiveInverseForMorphisms( IdentityMorphism( B ) ) ]
             ];
             
             right_coefficients := [
@@ -809,13 +885,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         elif HasIsAdditiveCategory( range_category )
                 and IsAdditiveCategory( range_category )
                 and ForAll(
-                    [ "Lift",
-                      "SubtractionForMorphisms",
-                      "PreCompose",
-                      "Lift",
-                      "ProjectionOfBiasedWeakFiberProduct",
-                      "UniversalMorphismIntoBiasedWeakFiberProduct"
-                      ],
+                    [ "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ],
                     f -> CanCompute( underlying_category, f ) )  then
             
             if IsIdenticalObj( range_category, underlying_category ) then
@@ -1001,8 +1071,394 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
     fi;
 
-        
+    ######################################################################
+    #
+    # Tensor product
+    #
+    ######################################################################
+
+    # This method requires two objects obj1, obj2 in the Freyd category.
+    # It then computes the tensor product of these objects. Our strategy is as follows:
+    #
+    # The objects are given by the relation morphisms
+    #
+    # R_A --- \alpha ---> A,    R_B --- \beta ---> B
+    #
+    # Then we consider the following diagram
+    #
+    # R_A \otimes B <<----- ( R_A \otimes B ) \oplus ( A \otimes R_B ) -------> A \otimes R_B
+    #       |                                                                           |
+    #       |                                                                           |
+    #       |---- \alpha \otimes 1_B -----> A \otimes B <------- 1_A \otimes \beta -----|
+    #
+    # This induces a universal morphism ( R_A \otimes B ) \oplus ( A \otimes R_B ) ---> A \otimes B.
+    # We interpret this universal morphism as object in the Freyd category. This object is the
+    # tensor product of obj1 and obj2. The method below returns this tensor product.
+    # Note that A \otimes B,\alpha \otimes 1_B etc. are performed in the underlying category.
+    if ForAll( [ "TensorProductOnObjects", "TensorProductOnMorphismsWithGivenTensorProducts" ], 
+               f -> CanCompute( underlying_category, f ) ) then
+
+        AddTensorProductOnObjects( category,
+            function( object1, object2 )
+                local factor1, factor2, range, diagram, mor1, mor2, sink, uni;
+
+                # construct the objects needed in the computation of the tensor product
+                factor1 := TensorProductOnObjects( Source( RelationMorphism( object1 ) ), Range( RelationMorphism( object2 ) ) );
+                factor2 := TensorProductOnObjects( Range( RelationMorphism( object1 ) ), Source( RelationMorphism( object2 ) ) );
+                range := TensorProductOnObjects( Range( RelationMorphism( object1 ) ), Range( RelationMorphism( object2 ) ) );
+
+                # construct the diagram
+                diagram := [ factor1, factor2 ];
+
+                # construct the sink
+                mor1 := TensorProductOnMorphisms( RelationMorphism( object1 ), IdentityMorphism( Range( RelationMorphism( object2 ) ) ) );
+                mor2 := TensorProductOnMorphisms( IdentityMorphism( Range( RelationMorphism( object1 ) ) ), RelationMorphism( object2 ) );
+                sink := [ mor1, mor2 ];
+
+                # compute the universal morphism
+                uni := UniversalMorphismFromDirectSum( diagram, sink );
+
+                # and return the corresponding object in the Freyd category
+                return FreydCategoryObject( uni );
+
+        end );
+
+    fi;
     
+    # This method requires two morphisms in the Freyd category. Let us denote them as follows:
+    #
+    # \alpha: S_1 --- x ---> R_1,      \beta: S_2 --- y ---> R_2
+    #
+    # Then we compute
+    # (1) S = S_1 \otimes S_2, (in the Freyd category)
+    # (2) R = R_1 \otimes R_2, (in the Freyd category)
+    # (3) x \otimes y (in the underlying category)
+    # The method now returns the morphism S --- x \otimes y ---> R.
+    
+    if ForAll( [ "TensorProductOnMorphismsWithGivenTensorProducts" ], 
+        f -> CanCompute( underlying_category, f ) ) then
+
+        AddTensorProductOnMorphismsWithGivenTensorProducts( category,
+            function( source, morphism1, morphism2, range )
+                local mor;
+
+                mor := TensorProductOnMorphisms( MorphismDatum( morphism1 ), MorphismDatum( morphism2 ) );
+
+                return FreydCategoryMorphism( source, mor, range );
+
+        end );
+
+    fi;
+    
+    # The tensor unit is 0 ---> 1 where 0 is the zero object and 1 the tensor unit in the underlying category
+    # and the morphism is the universal morphism from the zero object.
+    if ForAll( [ "TensorUnit" ], f -> CanCompute( underlying_category, f ) ) then
+
+        AddTensorUnit( category,
+            function( )
+
+            return FreydCategoryObject( UniversalMorphismFromZeroObject( TensorUnit( underlying_category ) ) );
+
+        end );
+
+    fi;
+    
+    # Given three objects a, b, c in the Freyd category, we consider
+    # (1) source = ( a \otimes b ) \otimes c
+    # (2) range = a \otimes ( b \otimes c ).
+    # We then derive the associator associator source -> range from the associator in the underlying category.
+    # Note that even if the underlying category is a strict monoidal category
+    # (i.e. the associators and unitors are identities), this need not be true in the Freyd category.
+    if ForAll( [ "AssociatorLeftToRightWithGivenTensorProducts" ], 
+        f -> CanCompute( underlying_category, f ) ) then
+
+        AddAssociatorLeftToRightWithGivenTensorProducts( category,
+            function( source, a, b, c, range )
+                local mor;
+
+                mor := AssociatorLeftToRight( Range( RelationMorphism( a ) ),
+                                              Range( RelationMorphism( b ) ),
+                                              Range( RelationMorphism( c ) ) );
+
+                return FreydCategoryMorphism( source, mor, range );
+
+        end );
+
+    fi;
+
+    # Given three objects a, b, c in the Freyd category, we consider
+    # (1) source = a \otimes ( b \otimes c )
+    # (2) range = ( a \otimes b ) \otimes c.
+    # We then derive the associator associator source -> range from the associator in the underlying category.
+    # Note that even if the underlying category is a strict monoidal category
+    # (i.e. the associators and unitors are identities), this need not be true in the Freyd category.
+    if ForAll( [ "AssociatorRightToLeftWithGivenTensorProducts" ], 
+        f -> CanCompute( underlying_category, f ) ) then
+
+        AddAssociatorRightToLeftWithGivenTensorProducts( category,
+            function( source, a, b, c, range )
+                local mor;
+
+                mor := AssociatorRightToLeft( Range( RelationMorphism( a ) ),
+                                              Range( RelationMorphism( b ) ),
+                                              Range( RelationMorphism( c ) ) );
+
+                return FreydCategoryMorphism( source, mor, range );
+
+        end );
+
+    fi;
+    
+    # Given an object a, this method returns the left unitor 1 \otimes a -> a.
+    # We derive this from the unitors of the underlying category.
+    if ForAll( [ "LeftUnitorWithGivenTensorProduct" ], f -> CanCompute( underlying_category, f ) ) then
+
+        AddLeftUnitorWithGivenTensorProduct( category,
+            function( a, s )
+
+            return FreydCategoryMorphism( s, LeftUnitor( Range( RelationMorphism( a ) ) ), a );
+
+        end );
+
+    fi;
+    
+    # Given an object a, this method returns the left unitor inverse a -> 1 \otimes a.
+    # We derive from the underlying category.
+    if ForAll( [ "LeftUnitorInverseWithGivenTensorProduct" ], f -> CanCompute( underlying_category, f ) ) then
+
+        AddLeftUnitorInverseWithGivenTensorProduct( category,
+            function( a, r )
+
+            return FreydCategoryMorphism( a, LeftUnitorInverse( Range( RelationMorphism( a ) ) ), r );
+
+        end );
+
+    fi;
+    
+    # Given an object a, this method returns the right unitor a \otimes 1 -> a.
+    # We derive from the underlying category.
+    if ForAll( [ "RightUnitorWithGivenTensorProduct" ], f -> CanCompute( underlying_category, f ) ) then
+
+        AddRightUnitorWithGivenTensorProduct( category,
+            function( a, s )
+
+            return FreydCategoryMorphism( s, RightUnitor( Range( RelationMorphism( a ) ) ), a );
+
+        end );
+
+    fi;
+    
+    # Given an object a, this method returns the right unitor inverse a -> a \otimes 1.
+    # We derive from the underlying proj-category.
+    if ForAll( [ "RightUnitorInverseWithGivenTensorProduct" ], f -> CanCompute( underlying_category, f ) ) then
+
+        AddRightUnitorInverseWithGivenTensorProduct( category,
+            function( a, r )
+
+            return FreydCategoryMorphism( a, RightUnitorInverse( Range( RelationMorphism( a ) ) ), r );
+
+        end );
+
+    fi;
+    
+    
+    ######################################################################
+    #
+    # Symmetric Monoidal Structure
+    # (i.e. braiding and its inverse given by B_a,b^{-1} = B_{b,a}
+    #
+    ######################################################################
+
+    # Given two objects a and b this method derives a braiding morphism a \otimes b -> b \otimes a
+    # from the braiding in the underlying category.
+    if ForAll( [ "BraidingWithGivenTensorProducts" ], f -> CanCompute( underlying_category, f ) ) then
+
+        AddBraidingWithGivenTensorProducts( category,
+        function( s, a, b, r)
+            local mor;
+
+            mor := Braiding( Range( RelationMorphism( a ) ), Range( RelationMorphism( b ) ) );
+            return FreydCategoryMorphism( s, mor, r );
+
+        end );
+
+    fi;
+    
+    
+    ######################################################################
+    #
+    # Symmetric Closed Monoidal Structure
+    #
+    ######################################################################
+
+    # Given two Freyd objects a = (A <- RA) and b = (B <- RB) we compute Hom( a, b ).
+    # To this end, we first use the following exact sequence:
+    #
+    # 0 -> Hom( a,b ) -> Hom( A, b ) -> Hom( R_1, b )
+    #
+    # Subsequently, we compute Hom( A, b ), Hom( R_1, b ) and their mapping. This we achieve by
+    # noting that:
+    # 
+    # Hom( A, b ) = FreydCategoryObject( Hom( A, B ) <-- Hom( A, RB ) )
+    # Hom( RA, b ) = FreydCategoryObject( Hom( RA, B ) <-- HOm( RA, RB ) )
+    #
+    # and the morphism in question is given by
+    # Hom( A, B ) --> Hom( RA, B )
+    #
+    # Of this morphism we compute the kernel
+    
+    if ForAll( [ "InternalHomOnMorphismsWithGivenInternalHoms", 
+                 "ProjectionOfBiasedWeakFiberProduct", 
+                 "UniversalMorphismIntoBiasedWeakFiberProduct" ], 
+                             f -> CanCompute( underlying_category, f ) ) then
+    
+        AddInternalHomOnObjects( category,
+            function( a, b )
+
+            return Source( INTERNAL_HOM_EMBEDDING( a, b ) );
+
+        end );
+
+    fi;
+                 
+    # Given two morphisms \alpha and \beta, this method derives the internal hom, i.e. Hom( \alpha, \beta).
+    # Assume that \alpha: a -> a' and \beta: b -> b' and the objects 
+    # a,a',b,b' are given by relation morphisms R_X -> X for x \in \{ a, a', b, b')
+    # Then we wish to construct a morphism Hom( a', b ) -> Hom( a, b' ).
+    # We construct this morphism by repeating the strategy for the computation of the internal hom on objects.
+    # Explicitly, we look at the following diagram
+    #
+    # 0 -> Hom( a', b ) --kernel1--> Hom( A', b ) ---> Hom( R_A', b )
+    #                                       |
+    #                                       |
+    #                                      rho
+    #                                       |
+    #                                       v
+    # 0 -> Hom( a, b' ) --kernel2--> Hom( A, b' ) ---> Hom( R_A, b' )
+    #
+    # We compute kernel1 and kernel2 by using the INTERNAL_HOM_EMBEDDING method.
+    #
+    # To compute the map rho, we note that
+    # (i)  Hom( A', b ) = FreydObject( Hom( A', R_B ) -> Hom( A', B ) )
+    # (ii) Hom( A, b' ) = FreydObject( Hom( A, R_B' ) -> Hom( A, B' ) )
+    # Therefore, we just need to construct a mapping in the underlying category
+    # rho : Hom( A', R_B ) -> Hom( A, R_B' )
+    # This we achieve by using the morphism datums of alpha, beta. These are
+    # MorphismDatum( alpha ) = A -> A'
+    # MorphismDatum( beta ) = B -> B'
+    # Consequently InternalHomOnMorphisms( MorphismDatum( alpha ), MorphismDatum( beta ) ) is exactly
+    # the morphism that we are looking for. It gives rise to a morphism rho in FreydCategory.
+    #
+    # Finally, Lift( rho \circ kernel1, kernel2 ) produces the required mapping mu: Hom( a',b) -> Hom( a, b')
+    
+    if ForAll( [ "InternalHomOnMorphismsWithGivenInternalHoms",
+                 "ProjectionOfBiasedWeakFiberProduct", 
+                 "UniversalMorphismIntoBiasedWeakFiberProduct" ], 
+                             f -> CanCompute( underlying_category, f ) ) then
+    
+        AddInternalHomOnMorphismsWithGivenInternalHoms( category,
+            function( s, alpha, beta, r )
+                local kernel1, kernel2, mor, bridge_mapping;
+
+                # (1) extract the Hom-embeddings
+                kernel1 := INTERNAL_HOM_EMBEDDING( Range( alpha ), Source( beta ) );
+                kernel2 := INTERNAL_HOM_EMBEDDING( Source( alpha ), Range( beta ) );
+
+                # (2) construct the bridge_mapping A^vee \otimes B -> A'^\vee \otimes b'
+                mor := InternalHomOnMorphisms( MorphismDatum( alpha ), MorphismDatum( beta ) );
+                bridge_mapping := FreydCategoryMorphism( Range( kernel1 ), mor, Range( kernel2 ) );
+
+                # (3) finally return the lift of the corresponding diagram
+                return LiftAlongMonomorphism( kernel2, PreCompose( kernel1, bridge_mapping ) );
+
+        end );
+
+    fi;
+    
+    ######################################################################
+    #
+    # (Co-)evaluation
+    #
+    ######################################################################
+
+    # Given objects a,b we can construct the evaluation morphism Hom( a, b ) \otimes a -> b.
+    # To end let us assume that a: R_A --alpha--> A and b: R_B --beta--> B. Then consider the following diagram:
+    #
+    # Hom( a, b ) \otimes a ---> Hom( A, b ) \otimes a ---> evaluation in underlying category b
+    #
+    # The composition of these morphisms produces the evaluation morphism in Freyd
+    
+    if ForAll( [ "InternalHomOnMorphismsWithGivenInternalHoms",
+                 "ProjectionOfBiasedWeakFiberProduct", 
+                 "UniversalMorphismIntoBiasedWeakFiberProduct",
+                 "TensorProductOnObjects",
+                 "TensorProductOnMorphismsWithGivenTensorProducts",
+                 "EvaluationMorphismWithGivenSource" ], 
+                             f -> CanCompute( underlying_category, f ) ) then
+    
+        AddEvaluationMorphismWithGivenSource( category,
+            function( a, b, s )
+                local Hom_embedding, Hom_embedding_tensored, mor;
+
+                # (1) the hom-embedding
+                Hom_embedding := INTERNAL_HOM_EMBEDDING( a, b );
+                Hom_embedding_tensored := TensorProductOnMorphisms( Hom_embedding, IdentityMorphism( a ) );
+
+                # (2) evaluation in underlying category
+                mor := EvaluationMorphism( Range( RelationMorphism( a ) ), Range( RelationMorphism( b ) ) );
+                mor := FreydCategoryMorphism( Range( Hom_embedding_tensored ), mor, b );
+                
+                # (3) compose morphisms and return them
+                return PreCompose( Hom_embedding_tensored, mor );
+
+        end );
+
+    fi;
+
+    # Given objects a,b we can construct the coevaluation morphism a -> Hom( b, a \otimes b ).
+    # To end let us assume that a: R_A --alpha--> A and b: R_B --beta--> B. Then consider the following diagram:
+    #                                                        a
+    #                                                        |
+    #                                                coevaluation in underlying category
+    #                                                        |
+    #                                                        v
+    # Hom( b, a \otimes b ) --------------------> Hom( B, a \otimes b )
+    # 
+    # The crucial observation is that Hom( B, a \otimes b ) is presented as
+    # 
+    # Hom( B, ( R_A \otimes B ) \oplus ( A \otimes R_B ) ) -> Hom( B, A \otimes B )
+    # 
+    # Consequently, we can employ the coevaluation in the underlying category to obtain a mapping
+    # A -> Hom( B, A \otimes B ). This one induces a mapping even in the Freyd category.
+    #
+    # The lift of the Hom_embedding and the coevaluation in the underlying category 
+    # gives us a coevaluation in the Freyd category.
+
+    if ForAll( [ "TensorProductOnObjects",
+                 "TensorProductOnMorphismsWithGivenTensorProducts",
+                 "InternalHomOnMorphismsWithGivenInternalHoms",
+                 "ProjectionOfBiasedWeakFiberProduct", 
+                 "UniversalMorphismIntoBiasedWeakFiberProduct",
+                 "CoevaluationMorphismWithGivenRange" ],
+                             f -> CanCompute( underlying_category, f ) ) then
+    
+        AddCoevaluationMorphismWithGivenRange( category,
+            function( a, b, r )
+                local Hom_embedding, mor, Bdual, braiding, associator, coevaluation;
+
+                # (1) the hom-embedding
+                Hom_embedding := INTERNAL_HOM_EMBEDDING( b, TensorProductOnObjects( a, b ) );
+
+                # (2) the coevaluation in the underlying category
+                mor := CoevaluationMorphism( Range( RelationMorphism( a ) ), Range( RelationMorphism( b ) ) );
+                mor := FreydCategoryMorphism( a, mor, Range( Hom_embedding ) );
+                
+                # (3) coevaluation is lift of the above two morphisms
+                return LiftAlongMonomorphism( Hom_embedding, mor );
+
+        end );
+    
+    fi;
     
 end );
 
