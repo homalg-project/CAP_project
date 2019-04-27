@@ -6,6 +6,17 @@
 ##
 #############################################################################
 
+
+####################################
+##
+## Info for Freyd categories
+##
+####################################
+
+BindGlobal( "InfoFreydCategoriesForCAP", NewInfoClass("InfoFreydCategoriesForCAP") );
+
+
+
 ####################################
 ##
 ## Constructors
@@ -286,7 +297,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
           homomorphism_structure_on_morphisms,
           distinguished_object_of_homomorphism_structure,
           interpret_homomorphism_as_morphism_from_dinstinguished_object_to_homomorphism_structure,
-          interpret_morphism_from_dinstinguished_object_to_homomorphism_structure_as_homomorphism;
+          interpret_morphism_from_dinstinguished_object_to_homomorphism_structure_as_homomorphism,
+          to_be_tested, not_supported;
     
     underlying_category := UnderlyingCategory( category );
     
@@ -690,8 +702,23 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                                           Range( test_morphism ) );
             
         end );
-        
+
+    else
+
+      to_be_tested := [ "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ];
+      not_supported := [];
+      Perform( to_be_tested, function(x) if not CanCompute( underlying_category, x ) then 
+                                            Append( not_supported, x ); 
+                                         fi; end);
+
+      Info( InfoFreydCategoriesForCAP, 2,
+            Concatenation( "The operations KernelEmbedding, KernelLiftWithGivenKernelObject, ",   
+                           "LiftAlongMonomorphism, ColiftAlongEpimorphism ",
+                           "could not be installed because the underlying category cannot compute ",
+                           JoinStringsWithSeparator( not_supported, ", " ) ) );
+
     fi;
+
 
     if ForAll( [ "ProjectionOfBiasedWeakFiberProduct" ], f -> CanCompute( underlying_category, f ) ) then
 
@@ -713,6 +740,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             return FreydCategoryMorphism( projective_object, projection_1, Source( morphism ) );
 
         end );
+
+    else
+
+      Info( InfoFreydCategoriesForCAP, 2,
+            Concatenation( "The operation EpimorphismFromSomeProjectiveObjectForKernelObject ",
+                           "could not be installed because the underlying category cannot compute ",
+                           "ProjectionOfBiasedWeakFiberProduct" ) );
 
     fi;
 
@@ -845,7 +879,16 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             return FreydCategoryMorphism( Range( alpha_freyd ), solution[1], Range( gamma_freyd ) );
             
         end );
-    
+
+    else
+      
+      not_supported := [ "SolveLinearSystemInAbCategory" ];
+
+      Info( InfoFreydCategoriesForCAP, 2,
+            Concatenation( "The operations Lift, Colift ",
+                           "could not be installed because the underlying category cannot compute ",
+                           "SolveLinearSystemInAbCategory" ) );
+
     fi;
     
     ## Creation of a homomorphism structure for the Freyd category
@@ -1068,7 +1111,16 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             end );
         
         fi;
-        
+    
+    else
+
+      # name more explicitly which methods were not installed
+      # this depends also on the above case, if derivation is activated etc.
+      Info( InfoFreydCategoriesForCAP, 2,
+            Concatenation( "Homomorphism structure ",
+                           "could not be installed because the underlying category cannot compute ",
+                           "DistinguishedObjectOfHomomorphismStructure" ) );
+
     fi;
 
     ######################################################################
@@ -1123,6 +1175,19 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
 
         end );
 
+    else
+
+      to_be_tested := [ "TensorProductOnObjects", "TensorProductOnMorphismsWithGivenTensorProducts" ];
+      not_supported := [];
+      Perform( to_be_tested, function(x) if not CanCompute( underlying_category, x ) then 
+                                            Append( not_supported, x ); 
+                                         fi; end);
+
+      Info( InfoFreydCategoriesForCAP, 2,
+            Concatenation( "The operation TensorProductOnObjects ",
+                           "could not be installed because the underlying category cannot compute ",
+                           JoinStringsWithSeparator( not_supported, ", " ) ) );
+
     fi;
     
     # This method requires two morphisms in the Freyd category. Let us denote them as follows:
@@ -1148,6 +1213,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
 
         end );
 
+    else
+
+      Info( InfoFreydCategoriesForCAP, 2,
+            Concatenation( "The operation TensorProductOnMorphismsWithGivenTensorProducts ",
+                           "could not be installed because the underlying category cannot compute ",
+                           "TensorProductOnMorphismsWithGivenTensorProducts" ) );
+
     fi;
     
     # The tensor unit is 0 ---> 1 where 0 is the zero object and 1 the tensor unit in the underlying category
@@ -1160,6 +1232,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             return FreydCategoryObject( UniversalMorphismFromZeroObject( TensorUnit( underlying_category ) ) );
 
         end );
+
+    else
+
+      Info( InfoFreydCategoriesForCAP, 2,
+            Concatenation( "The operation TensorUnit ",
+                           "could not be installed because the underlying category cannot compute ",
+                           "TensorUnit" ) );
 
     fi;
     
@@ -1184,6 +1263,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
 
         end );
 
+    else
+
+      Info( InfoFreydCategoriesForCAP, 2,
+            Concatenation( "The operation AssociatorLeftToRightWithGivenTensorProducts ",
+                           "could not be installed because the underlying category cannot compute ",
+                           "AssociatorLeftToRightWithGivenTensorProducts" ) );
+
     fi;
 
     # Given three objects a, b, c in the Freyd category, we consider
@@ -1207,6 +1293,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
 
         end );
 
+    else
+
+      Info( InfoFreydCategoriesForCAP, 2,
+            Concatenation( "The operation AssociatorRightToLeftWithGivenTensorProducts ",
+                           "could not be installed because the underlying category cannot compute ",
+                           "AssociatorRightToLeftWithGivenTensorProducts" ) );
+
     fi;
     
     # Given an object a, this method returns the left unitor 1 \otimes a -> a.
@@ -1219,6 +1312,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             return FreydCategoryMorphism( s, LeftUnitor( Range( RelationMorphism( a ) ) ), a );
 
         end );
+
+    else
+
+      Info( InfoFreydCategoriesForCAP, 2,
+            Concatenation( "The operation LeftUnitorWithGivenTensorProduct ",
+                           "could not be installed because the underlying category cannot compute ",
+                           "LeftUnitorWithGivenTensorProduct" ) );
 
     fi;
     
@@ -1233,6 +1333,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
 
         end );
 
+    else
+
+      Info( InfoFreydCategoriesForCAP, 2,
+            Concatenation( "The operation LeftUnitorInverseWithGivenTensorProduct ",
+                           "could not be installed because the underlying category cannot compute ",
+                           "LeftUnitorInverseWithGivenTensorProduct" ) );
+
     fi;
     
     # Given an object a, this method returns the right unitor a \otimes 1 -> a.
@@ -1246,6 +1353,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
 
         end );
 
+    else
+
+      Info( InfoFreydCategoriesForCAP, 2,
+            Concatenation( "The operation RightUnitorWithGivenTensorProduct ",
+                           "could not be installed because the underlying category cannot compute ",
+                           "RightUnitorWithGivenTensorProduct" ) );
+
     fi;
     
     # Given an object a, this method returns the right unitor inverse a -> a \otimes 1.
@@ -1258,6 +1372,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             return FreydCategoryMorphism( a, RightUnitorInverse( Range( RelationMorphism( a ) ) ), r );
 
         end );
+
+    else
+
+      Info( InfoFreydCategoriesForCAP, 2,
+            Concatenation( "The operation RightUnitorInverseWithGivenTensorProduct ",
+                           "could not be installed because the underlying category cannot compute ",
+                           "RightUnitorInverseWithGivenTensorProduct" ) );
 
     fi;
     
@@ -1281,6 +1402,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             return FreydCategoryMorphism( s, mor, r );
 
         end );
+
+    else
+
+      Info( InfoFreydCategoriesForCAP, 2,
+            Concatenation( "The operation BraidingWithGivenTensorProducts ",
+                           "could not be installed because the underlying category cannot compute ",
+                           "BraidingWithGivenTensorProducts" ) );
 
     fi;
     
@@ -1319,8 +1447,21 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
 
         end );
 
+    else
+
+      to_be_tested := [ "InternalHomOnMorphismsWithGivenInternalHoms", "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ];
+      not_supported := [];
+      Perform( to_be_tested, function(x) if not CanCompute( underlying_category, x ) then 
+                                            Append( not_supported, x ); 
+                                         fi; end);
+
+      Info( InfoFreydCategoriesForCAP, 2,
+            Concatenation( "The operation InternalHomOnObjects ",
+                           "could not be installed because the underlying category cannot compute ",
+                           JoinStringsWithSeparator( not_supported, ", " ) ) );
+
     fi;
-                 
+
     # Given two morphisms \alpha and \beta, this method derives the internal hom, i.e. Hom( \alpha, \beta).
     # Assume that \alpha: a -> a' and \beta: b -> b' and the objects 
     # a,a',b,b' are given by relation morphisms R_X -> X for x \in \{ a, a', b, b')
@@ -1373,6 +1514,21 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
 
         end );
 
+    else
+
+      to_be_tested := [ "InternalHomOnMorphismsWithGivenInternalHoms",
+                        "ProjectionOfBiasedWeakFiberProduct", 
+                        "UniversalMorphismIntoBiasedWeakFiberProduct" ];
+      not_supported := [];
+      Perform( to_be_tested, function(x) if not CanCompute( underlying_category, x ) then 
+                                            Append( not_supported, x ); 
+                                         fi; end);
+
+      Info( InfoFreydCategoriesForCAP, 2,
+            Concatenation( "The operation InternalHomOnMorphismsWithGivenInternalHoms ",
+                           "could not be installed because the underlying category cannot compute ",
+                           JoinStringsWithSeparator( not_supported, ", " ) ) );
+
     fi;
     
     ######################################################################
@@ -1412,6 +1568,24 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 return PreCompose( Hom_embedding_tensored, mor );
 
         end );
+
+    else
+
+      to_be_tested := [ "InternalHomOnMorphismsWithGivenInternalHoms",
+                        "ProjectionOfBiasedWeakFiberProduct", 
+                        "UniversalMorphismIntoBiasedWeakFiberProduct",
+                        "TensorProductOnObjects",
+                        "TensorProductOnMorphismsWithGivenTensorProducts",
+                        "EvaluationMorphismWithGivenSource" ];
+      not_supported := [];
+      Perform( to_be_tested, function(x) if not CanCompute( underlying_category, x ) then 
+                                            Append( not_supported, x ); 
+                                         fi; end);
+
+      Info( InfoFreydCategoriesForCAP, 2,
+            Concatenation( "The operation EvaluationMorphismWithGivenSource ",
+                           "could not be installed because the underlying category cannot compute ",
+                           JoinStringsWithSeparator( not_supported, ", " ) ) );
 
     fi;
 
@@ -1458,6 +1632,24 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
 
         end );
     
+    else
+
+      to_be_tested := [ "TensorProductOnObjects",
+                        "TensorProductOnMorphismsWithGivenTensorProducts",
+                        "InternalHomOnMorphismsWithGivenInternalHoms",
+                        "ProjectionOfBiasedWeakFiberProduct", 
+                        "UniversalMorphismIntoBiasedWeakFiberProduct",
+                        "CoevaluationMorphismWithGivenRange" ];
+      not_supported := [];
+      Perform( to_be_tested, function(x) if not CanCompute( underlying_category, x ) then 
+                                            Append( not_supported, x ); 
+                                         fi; end);
+
+      Info( InfoFreydCategoriesForCAP, 2,
+            Concatenation( "The operation CoevaluationMorphismWithGivenRange ",
+                           "could not be installed because the underlying category cannot compute ",
+                           JoinStringsWithSeparator( not_supported, ", " ) ) );
+
     fi;
     
 end );
