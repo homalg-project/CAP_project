@@ -433,7 +433,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
     # This method installs the (unique) zero morphism to the object <A>object</A> from the zero object. The latter has to be 
     # given to this method for convenience. More convenient methods are derived from the CAP-kernel afterwards.
     # @Returns a morphism
-    # @Arguments zero_object, object
+    # @Arguments object, zero_object
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
       function( object, zero_object )
         local morphism;
