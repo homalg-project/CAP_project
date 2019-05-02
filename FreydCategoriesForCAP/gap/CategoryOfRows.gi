@@ -651,15 +651,23 @@ InstallMethod( Display,
                [ IsCategoryOfRowsMorphism ],
                
   function( category_of_rows_morphism )
-    
-    Display( UnderlyingMatrix( category_of_rows_morphism ) );
-    
-    Print( "\n" );
-    
+
+    # general information on morphism
     Print( StringMutable( category_of_rows_morphism ) );
     
+    # source
+    Print( Concatenation( "\n\n", "Source: \n" ) );
+    Display( Source( category_of_rows_morphism ) );
+
+    # mapping matrix
+    Print( Concatenation( "\n\n", "Matrix: \n" ) );
+    Display( UnderlyingMatrix( category_of_rows_morphism ) );
+
+    # range
+    Print( Concatenation( "\n", "Range: \n" ) );
+    Display( Range( category_of_rows_morphism ) );
     Print( "\n" );
-    
+
 end );
 
 ##

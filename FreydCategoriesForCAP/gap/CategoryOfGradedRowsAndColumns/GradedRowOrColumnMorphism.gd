@@ -81,19 +81,3 @@ DeclareAttribute( "UnderlyingHomalgGradedRing",
 #! @Arguments alpha
 DeclareAttribute( "UnderlyingHomalgMatrix",
                   IsGradedRowOrColumnMorphism );
-
-
-
-#####################################################
-##
-#! @Section Printing all information about a morphism
-##
-#####################################################
-
-#! @Description
-#! The argument is a morphism $m$ in the category of graded rows or columns. For such a morphism, 
-#! this methods  will print its source, range and mapping matrix.
-#! @Returns detailed information about the morphism
-#! @Arguments m
-DeclareOperation( "FullInformation",
-                 [ IsGradedRowOrColumnMorphism ] );
