@@ -19,46 +19,42 @@ InstallMethod( FreydCategory,
   function( underlying_category )
     local freyd_category, to_be_finalized;
     
-    if IsValidInputForFreydCategory( underlying_category ) then
-
-        freyd_category := CreateCapCategory( Concatenation( "Freyd( ", Name( underlying_category ), " )" ) );
-
-        SetFilterObj( freyd_category, IsFreydCategory );
-
-        SetIsAdditiveCategory( freyd_category, true );
-
-        SetUnderlyingCategory( freyd_category, underlying_category );
-
-        ## Freyd's theorem
-        if ForAll( [ "WeakKernelEmbedding", "WeakKernelLift" ], f -> CanCompute( underlying_category, f ) ) then
-
-            SetIsAbelianCategory( freyd_category, true );
-
-        fi;
-
-        AddObjectRepresentation( freyd_category, IsFreydCategoryObject );
-
-        AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism );
-
-        INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY( freyd_category );
-
-        to_be_finalized := ValueOption( "FinalizeCategory" );
-
-        if to_be_finalized = false then
-
-            return freyd_category;
-    
-        fi;
-    
-        Finalize( freyd_category );
-    
-        return freyd_category;
-
-    else
-
+    if not IsValidInputForFreydCategory( underlying_category ) then
         return false;
-
     fi;
+    
+    freyd_category := CreateCapCategory( Concatenation( "Freyd( ", Name( underlying_category ), " )" ) );
+    
+    SetFilterObj( freyd_category, IsFreydCategory );
+    
+    SetIsAdditiveCategory( freyd_category, true );
+    
+    SetUnderlyingCategory( freyd_category, underlying_category );
+    
+    ## Freyd's theorem
+    if ForAll( [ "WeakKernelEmbedding", "WeakKernelLift" ], f -> CanCompute( underlying_category, f ) ) then
+        
+        SetIsAbelianCategory( freyd_category, true );
+        
+    fi;
+    
+    AddObjectRepresentation( freyd_category, IsFreydCategoryObject );
+    
+    AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism );
+    
+    INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY( freyd_category );
+    
+    to_be_finalized := ValueOption( "FinalizeCategory" );
+      
+    if to_be_finalized = false then
+      
+      return freyd_category;
+    
+    fi;
+    
+    Finalize( freyd_category );
+    
+    return freyd_category;
     
 end );
 
@@ -1061,7 +1057,9 @@ InstallGlobalFunction( IsValidInputForFreydCategory,
     fi;
 
     # compare required and installed methods
-    required_ops := [ "IsWellDefinedForMorphisms",
+    required_ops := [ "IsCongruentForMorphisms",
+                      "IsEqualForMorphisms",
+                      "IsWellDefinedForMorphisms",
                       "IsEqualForMorphismsOnMor",
                       "PreCompose",
                       "IdentityMorphism",
@@ -1072,7 +1070,9 @@ InstallGlobalFunction( IsValidInputForFreydCategory,
                       "ZeroObject",
                       "UniversalMorphismIntoZeroObject",
                       "UniversalMorphismFromZeroObject",
+                      "ZeroObjectFunctorial",
                       "DirectSum",
+                      "DirectSumFunctorialWithGivenDirectSums",
                       "ProjectionInFactorOfDirectSum",
                       "UniversalMorphismIntoDirectSum",
                       "InjectionOfCofactorOfDirectSum",
@@ -1083,9 +1083,9 @@ InstallGlobalFunction( IsValidInputForFreydCategory,
 
     for i in required_ops do
 
-      if not i in installed_ops then
+      if not CanCompute( category, i ) then
 
-        Error( Concatenation( i, " is not installed, but needed for an underlying category of Freyd category" ) );
+        Error( Concatenation( i, " cannot be computed but is needed for an underlying category of Freyd category" ) );
         result := false;
 
       fi;
