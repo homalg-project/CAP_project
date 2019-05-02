@@ -634,28 +634,30 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         end );
         
     fi;
-    
-    ##
-    AddEpimorphismFromSomeProjectiveObjectForKernelObject( category,
-                            
-      function( morphism )
-        local alpha, rho_B, projection_1, projective_object;
-        
-        alpha := MorphismDatum( morphism );
-        
-        rho_B := RelationMorphism( Range( morphism ) );
-        
-        ## We use the bias in the first projection of weak fiber products
-        projection_1 := ProjectionOfBiasedWeakFiberProduct( alpha, rho_B );
-        
-        projective_object := AsFreydCategoryObject( Source( projection_1 ) );
-        
-        return FreydCategoryMorphism( projective_object,
-                                      projection_1,
-                                      Source( morphism ) );
-        
-    end );
-    
+
+    if ForAll( [ "ProjectionOfBiasedWeakFiberProduct" ], f -> CanCompute( underlying_category, f ) ) then
+
+        ##
+        AddEpimorphismFromSomeProjectiveObjectForKernelObject( category,
+
+        function( morphism )
+            local alpha, rho_B, projection_1, projective_object;
+
+            alpha := MorphismDatum( morphism );
+
+            rho_B := RelationMorphism( Range( morphism ) );
+
+            ## We use the bias in the first projection of weak fiber products
+            projection_1 := ProjectionOfBiasedWeakFiberProduct( alpha, rho_B );
+
+            projective_object := AsFreydCategoryObject( Source( projection_1 ) );
+
+            return FreydCategoryMorphism( projective_object, projection_1, Source( morphism ) );
+
+        end );
+
+    fi;
+
     ##
     AddEpimorphismFromSomeProjectiveObject( category,
                           
