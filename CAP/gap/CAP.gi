@@ -727,6 +727,10 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_PRINT_FUNCTION,
     
 end );
 
+InstallMethod( String,
+               [ IsCapCategory ],
+    Name );
+
 CAP_INTERNAL_INSTALL_PRINT_FUNCTION( );
 
 InstallGlobalFunction( DisableAddForCategoricalOperations,
