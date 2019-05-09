@@ -31,8 +31,38 @@ DeclareGlobalVariable( "MONOIDAL_CATEGORIES_METHOD_NAME_RECORD" );
 #! is called a <Emph>monoidal category</Emph>, if
 #! * for all objects $a,b,c,d$, the pentagon identity holds:
 #!  $(\alpha_{a,b,c} \otimes \mathrm{id}_d) \circ \alpha_{a,b \otimes c, d} \circ ( \mathrm{id}_a \otimes \alpha_{b,c,d} ) = \alpha_{a \otimes b, c, d} \circ \alpha_{a,b,c \otimes d}$,
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{2};
+#! \node (a) at (0,2*\w) {$a \otimes ( b \otimes ( c \otimes d ) )$};
+#! \node (bl) at (1.5*\w,\w) {$(a \otimes b) \otimes (c \otimes d )$};
+#! \node (br) at (-1.5*\w,\w) {$a \otimes ( (b \otimes c ) \otimes d )$};
+#! \node (cl) at (1.5*\w,0) {$( ( a \otimes b ) \otimes c ) \otimes d )$};
+#! \node (cr) at (-1.5*\w,0) {$( a \otimes ( b \otimes c ) ) \otimes d$};
+#! \draw[-latex] (cr) to node[pos=0.45, above] {$\alpha_{a,b,c} \otimes \mathrm{id}_{d}$} (cl);
+#! \draw[-latex] (br) to node[pos=0.45, left] {$\alpha_{a,b\otimes c, d}$} (cr);
+#! \draw[-latex] (bl) to node[pos=0.45, right] {$\alpha_{a \otimes b, c, d}$} (cl);
+#! \draw[-latex] (a) to node[pos=0.45, above left] {$\mathrm{id}_a \otimes \alpha_{b,c,d}$} (br);
+#! \draw[-latex] (a) to node[pos=0.45, above right] {$\alpha_{a,b,c \otimes d}$} (bl);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 #! * for all objects $a,c$, the triangle identity holds:
 #!  $( \rho_a \otimes \mathrm{id}_c ) \circ \alpha_{a,1,c} = \mathrm{id}_a \otimes \lambda_c$.
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{2};
+#! \node (a) at (0,0) {$a \otimes c$};
+#! \node (br) at (1.5*\w,\w) {$(a \otimes 1) \otimes c$};
+#! \node (bl) at (-1.5*\w,\w) {$a \otimes ( 1 \otimes c )$};
+#! \draw[-latex] (bl) to node[pos=0.45, above] {$\alpha_{a,1,c}$} (br);
+#! \draw[-latex] (bl) to node[pos=0.45, below left] {$\mathrm{id}_a \otimes \lambda_c$} (a);
+#! \draw[-latex] (br) to node[pos=0.45, below right] {$\rho_a \otimes \mathrm{id}_c$} (a);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 
 #! The corresponding GAP property is given by
 #! <C>IsMonoidalCategory</C>.
@@ -550,8 +580,61 @@ DeclareOperation( "AddRightDistributivityFactoringWithGivenObjects",
 #! is called a <Emph>braided monoidal category</Emph>
 #! if
 #! * $\lambda_a \circ B_{a,1} = \rho_a$,
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{2};
+#! \node (at1) at (0,\w) {$a \otimes 1$};
+#! \node (1ta) at (\w,\w) {$1 \otimes a$};
+#! \node (a) at (\w,0) {$a$};
+#! \draw[-latex] (at1) to node[pos=0.45, above] {$B_{a,1}$} (1ta);
+#! \draw[-latex] (1ta) to node[pos=0.45, right] {$\lambda_a$} (a);
+#! \draw[-latex] (at1) to node[pos=0.45, below left] {$\rho_a$} (a);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 #! * $(B_{c,a} \otimes \mathrm{id}_b) \circ \alpha_{c,a,b} \circ B_{a \otimes b,c} = \alpha_{a,c,b} \circ ( \mathrm{id}_a \otimes B_{b,c}) \circ \alpha^{-1}_{a,b,c}$,
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{3};
+#! \def\h{2};
+#! \node (p1) at (0,2*\h) {$(a \otimes b ) \otimes c$};
+#! \node (p2) at (\w,2*\h) {$c \otimes (a \otimes b)$};
+#! \node (p3) at (-\w,\h) {$a \otimes (b \otimes c)$};
+#! \node (p4) at (2*\w,\h) {$(c \otimes a) \otimes b$};
+#! \node (p5) at (0,0) {$a \otimes (c \otimes b)$};
+#! \node (p6) at (\w,0) {$(a \otimes c) \otimes b$};
+#! \draw[-latex] (p1) to node[pos=0.45, above] {$B_{a \otimes b, c}$} (p2);
+#! \draw[-latex] (p2) to node[pos=0.45, above right] {$\alpha_{c,a,b}$} (p4);
+#! \draw[-latex] (p4) to node[pos=0.45, below right] {$B_{c,a} \otimes \mathrm{id}_{b}$} (p6);
+#! \draw[-latex] (p1) to node[pos=0.45, above left] {$\alpha^{-1}_{a,b,c}$} (p3);
+#! \draw[-latex] (p3) to node[pos=0.45, below left] {$\mathrm{id}_{a} \otimes B_{b,c}$} (p5);
+#! \draw[-latex] (p5) to node[pos=0.45, above] {$\alpha_{a,c,b}$} (p6);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 #! * $( \mathrm{id}_b \otimes B_{c,a} ) \circ \alpha^{-1}_{b,c,a} \circ B_{a,b \otimes c} = \alpha^{-1}_{b,a,c} \circ (B_{a,b} \otimes \mathrm{id}_c) \circ \alpha_{a,b,c}$.
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{3};
+#! \def\h{2};
+#! \node (p1) at (0,2*\h) {$a \otimes ( b \otimes c )$};
+#! \node (p2) at (\w,2*\h) {$( b \otimes c ) \otimes a$};
+#! \node (p3) at (-\w,\h) {$(a \otimes b) \otimes c$};
+#! \node (p4) at (2*\w,\h) {$b \otimes ( c \otimes a)$};
+#! \node (p5) at (0,0) {$(b \otimes a) \otimes c)$};
+#! \node (p6) at (\w,0) {$b \otimes (a \otimes c)$};
+#! \draw[-latex] (p1) to node[pos=0.45, above] {$B_{a, b \otimes c}$} (p2);
+#! \draw[-latex] (p2) to node[pos=0.45, above right] {$\alpha^{-1}_{b,c,a}$} (p4);
+#! \draw[-latex] (p4) to node[pos=0.45, below right] {$\mathrm{id}_{b} \otimes B_{c,a}$} (p6);
+#! \draw[-latex] (p1) to node[pos=0.45, above left] {$\alpha_{a,b,c}$} (p3);
+#! \draw[-latex] (p3) to node[pos=0.45, below left] {$B_{a,b} \otimes \mathrm{id}_{c}$} (p5);
+#! \draw[-latex] (p5) to node[pos=0.45, above] {$\alpha^{-1}_{b,a,c}$} (p6);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
 
 #! The corresponding GAP property is given by
 #! <C>IsBraidedMonoidalCategory</C>.
