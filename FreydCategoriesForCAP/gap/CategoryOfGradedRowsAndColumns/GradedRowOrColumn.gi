@@ -270,7 +270,6 @@ end );
 
 InstallMethod( Display,
                [ IsGradedRowOrColumn ], 
-               999, # FIX ME FIX ME FIX ME
   function( graded_row_or_column )
 
     if IsGradedRow( graded_row_or_column ) then
