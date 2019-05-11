@@ -28,13 +28,26 @@ InstallMethod( FreydCategory,
                [ IsCapCategory ],
                
   function( underlying_category )
-    local freyd_category, to_be_finalized, conditions;
+    local freyd_category, to_be_finalized, conditions, ring_name;
     
     if not IsValidInputForFreydCategory( underlying_category ) then
         return false;
     fi;
-    
-    freyd_category := CreateCapCategory( Concatenation( "Freyd( ", Name( underlying_category ), " )" ) );
+
+    # check if we are dealing with a special input category and set category name accordingly
+    if IsBound( underlying_category!.homalg_graded_ring_for_category_of_graded_rows ) then
+        ring_name := RingName( underlying_category!.homalg_graded_ring_for_category_of_graded_rows );
+        if Name( underlying_category ) = Concatenation( "CAP category of graded rows over ", ring_name ) then
+          freyd_category := CreateCapCategory( Concatenation( "Category of graded left module presentations over ", ring_name ) );
+        fi;
+    elif IsBound( underlying_category!.homalg_graded_ring_for_category_of_graded_columns ) then
+        ring_name := RingName( underlying_category!.homalg_graded_ring_for_category_of_graded_columns );
+        if Name( underlying_category ) = Concatenation( "CAP category of graded columns over ", ring_name ) then
+          freyd_category := CreateCapCategory( Concatenation( "Category of graded right module presentations over ", ring_name ) );
+        fi;
+    else
+      freyd_category := CreateCapCategory( Concatenation( "Freyd( ", Name( underlying_category ), " )" ) );
+    fi;
     
     SetFilterObj( freyd_category, IsFreydCategory );
     
