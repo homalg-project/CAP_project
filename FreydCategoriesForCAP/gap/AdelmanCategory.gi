@@ -824,9 +824,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
                   
                   coker := CokernelProjection( rel );
                   
-                  im := ImageEmbedding( PreCompose( ker, coker ) );
+                  im := CoastrictionToImage( PreCompose( ker, coker ) );
                   
-                  return GeneralizedMorphismByCospan( im, coker );
+                  return GeneralizedMorphismBySpan( im, ker );
                   
             end );
             
@@ -852,7 +852,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
                 composition :=
                     PreCompose( [ 
                         HomomorphismStructureOnObjectsForAdelmanCategoryGeneralizedEmbedding( Range( mor_alpha ), Source( mor_beta ) ),
-                        AsGeneralizedMorphismByCospan( H_alpha_beta ),
+                        AsGeneralizedMorphismBySpan( H_alpha_beta ),
                         PseudoInverse( HomomorphismStructureOnObjectsForAdelmanCategoryGeneralizedEmbedding( Source( mor_alpha ), Range( mor_beta ) ) )
                     ] );
                 
@@ -891,10 +891,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
                 
                 interpret := interpret_homomorphism_as_morphism_from_distinguished_object_to_homomorphism_structure( alpha );
                 
-                return LiftAlongMonomorphism( 
-                    arrow,
-                    PreCompose( interpret, reversed )
-                );
+                return PreCompose( LiftAlongMonomorphism( arrow, interpret ), reversed );
                 
             end );
             
@@ -909,10 +906,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
                 
                 reversed := ReversedArrow( gen );
                 
-                lift := Lift( 
-                    PreCompose( morphism, arrow ),
-                    reversed
-                );
+                lift := PreCompose( Lift( morphism, reversed ), arrow );
                 
                 A := Range( RelationMorphism( object_A ) );
                 
