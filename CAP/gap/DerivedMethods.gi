@@ -809,6 +809,28 @@ AddDerivationToCAP( IsIsomorphism,
 end : Description := "IsIsomorphism by deciding if it is a split mono and a split epi" );
 
 ##
+AddDerivationToCAP( IsSplitEpimorphism,
+                    [ [ IsLiftable, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+  
+  function( morphism )
+    
+    return IsLiftable( IdentityMorphism( Range( morphism ) ), morphism );
+  
+end : Description := "IsSplitEpimorphism by using IsLiftable" );
+
+##
+AddDerivationToCAP( IsSplitMonomorphism,
+                    [ [ IsColiftable, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+  
+  function( morphism )
+    
+    return IsColiftable( morphism, IdentityMorphism( Source( morphism ) ) );
+  
+end : Description := "IsSplitMonomorphism by using IsColiftable" );
+
+##
 AddDerivationToCAP( IsEqualAsSubobjects,
                     [ [ IsDominating, 2 ] ],
                
