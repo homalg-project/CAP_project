@@ -27,7 +27,7 @@
 #! to the irreducible character of degree 2,
 #! and perform some computations.
 
-#! @InsertSystem Quickstart_RepD8
+#! @InsertChunk Quickstart_RepD8
 
 DeclareCategory( "IsRepresentationCategory",
                  IsCapCategory );

@@ -27,7 +27,7 @@
 #! and write all data necessary for the reproducibility
 #! of the computation to files with the prefix "D8".
 
-#! @InsertSystem Quickstart_Associator_D8
+#! @InsertChunk Quickstart_Associator_D8
 
 DeclareGlobalVariable( "ASSOCIATORS_Setup" );
 
