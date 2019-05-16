@@ -1,4 +1,4 @@
-#! @System Quickstart_RepD8
+#! @Chunk Quickstart_RepD8
 
 LoadPackage( "GroupRepresentationsForCAP" );
 

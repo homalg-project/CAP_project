@@ -1,4 +1,4 @@
-#! @System Quickstart_Associator_D8
+#! @Chunk Quickstart_Associator_D8
 
 LoadPackage( "GroupRepresentationsForCAP" );
 
