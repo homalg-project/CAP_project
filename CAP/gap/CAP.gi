@@ -157,6 +157,8 @@ InstallGlobalFunction( CREATE_CAP_CATEGORY_FILTERS,
   function( category )
     local name, cell_filter, filter_name, filter;
     
+    SuspendMethodReordering();
+
     name := Name( category );
     
     filter_name := NewFilter( Concatenation( name, "InternalCategoryFilter" ) );
@@ -188,6 +190,8 @@ InstallGlobalFunction( CREATE_CAP_CATEGORY_FILTERS,
     InstallTrueMethod( cell_filter, filter_name );
     
     SetTwoCellFilter( category, filter_name );
+    
+    ResetMethodReordering();
     
 end );
 
