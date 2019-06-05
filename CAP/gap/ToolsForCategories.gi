@@ -808,6 +808,6 @@ if not IsBound( SuspendMethodReordering ) then
    BindGlobal( "SuspendMethodReordering", function() end );
 fi;
 
-if not IsBound( ResetMethodReordering ) then
-   BindGlobal( "ResetMethodReordering", function() end );
+if not IsBound( ResumeMethodReordering ) then
+   BindGlobal( "ResumeMethodReordering", function() end );
 fi;

@@ -496,7 +496,7 @@ InstallGlobalFunction( INSTALL_LOGICAL_IMPLICATIONS_HELPER,
         
     od;
 
-    ResetMethodReordering();
+    ResumeMethodReordering();
     
 end );
 
