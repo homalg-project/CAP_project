@@ -20,6 +20,8 @@ AutoDoc(
             maketest := rec( folder := ".",
                              commands :=
                              [ "LoadPackage( \"MonoidalCategories\" );",
+                               "LoadPackage( \"MatricesForHomalg\" );",
+                               "LoadPackage( \"GaussForHomalg\" );",
                              ],
                            ),
             )
