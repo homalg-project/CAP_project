@@ -40,7 +40,8 @@ InstallTrueMethod( IsSymmetricClosedMonoidalCategory, IsRigidSymmetricClosedMono
 ##
 InstallValue( CAP_INTERNAL,
               rec(
-                   name_counter := 0
+                   name_counter := 0,
+                   default_cache_type := "weak",
               )
 );
 
@@ -248,7 +249,7 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     
     obj_rec!.primitive_operations := rec( );
     
-    obj_rec!.default_cache_type := "weak";
+    obj_rec!.default_cache_type := CAP_INTERNAL.default_cache_type;
     
     obj_rec!.input_sanity_check_level := 1;
     obj_rec!.output_sanity_check_level := 1;
@@ -455,6 +456,34 @@ InstallGlobalFunction( DeactivateCachingOfCategory,
     
 end );
 
+
+InstallGlobalFunction( SetDefaultCaching,
+
+  function( type )
+    local current_name;
+
+    if not type in [ "weak", "crisp", "none" ] then
+        Error( "wrong type for caching" );
+    fi;
+
+    CAP_INTERNAL.default_cache_type := type;
+
+end );
+
+InstallGlobalFunction( SetDefaultCachingWeak,
+  function( )
+    SetDefaultCaching( "weak" );
+end );
+
+InstallGlobalFunction( SetDefaultCachingCrisp,
+  function( )
+    SetDefaultCaching( "crisp" );
+end );
+
+InstallGlobalFunction( DeactivateDefaultCaching,
+  function( )
+    SetDefaultCaching( "none" );
+end );
 
 #######################################
 ##

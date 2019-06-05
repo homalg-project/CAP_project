@@ -351,6 +351,20 @@ DeclareGlobalFunction( "SetCachingOfCategoryCrisp" );
 DeclareGlobalFunction( "DeactivateCachingOfCategory" );
 #! @EndGroup
 
+#! @BeginGroup
+#! @Description
+#!  Sets the default caching behaviour, all new categories will have their caching set to either
+#!  <C>weak</C>, <C>crisp</C>, or <C>none</C>. The default at startup is <C>weak</C>.
+#! @Arguments type
+DeclareGlobalFunction( "SetDefaultCaching" );
+#! @Arguments
+DeclareGlobalFunction( "SetDefaultCachingWeak" );
+#! @Arguments
+DeclareGlobalFunction( "SetDefaultCachingCrisp" );
+#! @Arguments
+DeclareGlobalFunction( "DeactivateDefaultCaching" );
+#! @EndGroup
+
 ####################################
 ##
 #! @Section Sanity checks
