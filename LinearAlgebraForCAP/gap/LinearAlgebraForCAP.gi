@@ -48,9 +48,11 @@ InstallMethod( MatrixCategory,
         DirectoriesPackageLibrary( "LinearAlgebraForCAP", "LogicForMatrixCategory" ),
         "PredicateImplicationsForMatrixCategory.tex" )
     );
-     
+    
+    SetFilterObj( category, IsCapMatrixCategory );
+    
     to_be_finalized := ValueOption( "FinalizeCategory" );
-   
+    
     if to_be_finalized = false then
       
        return category;
@@ -853,8 +855,269 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
     end );
     
+    ## Random methods
+    
+    ## dimension of the output is in L
+    ##
+    AddRandomObjectByList( category,
+      function( category, L )
+        local n;
+        
+        if Length( L ) = 0 then
+          
+          Error( "The list should not be empty" );
+        
+        fi;
+        
+        if not ForAll( L, IsInt ) then
+          
+          Error( "All entries in the list should be integers" );
+        
+        fi;
+        
+        n := Random( L );
+        
+        if n < 0 then
+          
+          return fail;
+        
+        fi;
+        
+        return VectorSpaceObject( n, homalg_field );
+        
+    end );
+    
+    ##
+    ## entries of the matrix are linear combinations of elements in L
+    ##
+    AddRandomMorphismWithFixedSourceAndRangeByList( category,
+      function( a, b, L )
+        local category, entries, matrix;
+        
+        category := CapCategory( a );
+        
+        if Length( L ) = 0 then
+          
+          Error( "The list should not be empty" );
+        
+        fi;
+        
+        if not ForAll( L, l -> l = l/homalg_field ) then
+          
+          Error( Concatenation( "All elements in the list should belong to ", String( homalg_field ) ) );
+        
+        fi;
+        
+        entries := List( [ 1 .. Dimension( a ) ], i -> List( [ 1 .. Dimension( b ) ],
+                     j -> RandomMat( 1, Length( L ) )[ 1 ] * L ) );
+        
+        matrix := HomalgMatrix( entries, Dimension( a ), Dimension( b ), homalg_field );
+        
+        return VectorSpaceMorphism( a, matrix, b );
+        
+  end );
+    
+    ##
+    ## alpha: a --> b, dim(b) = L[1] and entries of matrix are linear combinations of elements in L[2]
+    ##
+    AddRandomMorphismWithFixedSourceByList( category,
+      function( a, L )
+        local category, b, entries, matrix;
+        
+        category := CapCategory( a );
+        
+        if not ( IsInt( L[ 1 ] ) and L[ 1 ] >= 0 ) then
+          
+          Error( "The first entry should be an integer greater or equal to 0" );
+        
+        fi;
+        
+        if not IsList( L[ 2 ] ) then
+          
+          Error( "The second entry should be a list" );
+        
+        fi;
+        
+        if Length( L[ 2 ] ) = 0 then
+          
+          Error( "The second entry should not be an empty list" );
+        
+        fi;
+        
+        if not ForAll( L[ 2 ], l -> l = l/homalg_field ) then
+          
+          Error( Concatenation( "All elements in the second entry list should belong to ", String( homalg_field ) ) );
+        
+        fi;
+        
+        b := VectorSpaceObject( L[ 1 ], homalg_field );
+        
+        entries := List( [ 1 .. Dimension( a ) ], i -> List( [ 1 .. Dimension( b ) ],
+                     j -> RandomMat( 1, Length( L[ 2 ] ) )[ 1 ] * L[ 2 ] ) );
+        
+        matrix := HomalgMatrix( entries, Dimension( a ), Dimension( b ), homalg_field );
+        
+        return VectorSpaceMorphism( a, matrix, b );
+    
+    end );
+    
+    ##
+    ## alpha: a --> b, dim(a) = L[1] and entries of matrix are linear combinations of elements in L[2]
+    ##
+    AddRandomMorphismWithFixedRangeByList( category,
+      function( b, L )
+        local category, a, entries, matrix;
+        
+        category := CapCategory( b );
+        
+        
+        if not ( IsInt( L[ 1 ] ) and L[ 1 ] >= 0 ) then
+          
+          Error( "The first entry should be an integer greater or equal to 0" );
+        
+        fi;
+        
+        if not IsList( L[ 2 ] ) then
+          
+          Error( "The second entry should be a list" );
+        
+        fi;
+        
+        if Length( L[ 2 ] ) = 0 then
+          
+          Error( "The second entry should not be an empty list" );
+        
+        fi;
+        
+        if not ForAll( L[ 2 ], l -> l = l/homalg_field ) then
+          
+          Error( Concatenation( "All elements in the second entry list should belong to ", String( homalg_field ) ) );
+        
+        fi;
+        
+        a := VectorSpaceObject( L[ 1 ], homalg_field );
+        
+        entries := List( [ 1 .. Dimension( a ) ], i -> List( [ 1 .. Dimension( b ) ],
+                     j -> RandomMat( 1, Length( L[ 2 ] ) )[ 1 ] * L[ 2 ] ) );
+        
+        matrix := HomalgMatrix( entries, Dimension( a ), Dimension( b ), homalg_field );
+        
+        return VectorSpaceMorphism( a, matrix, b );
+        
+    end );
+    
+    ##
+    ## alpha: a --> b, dim(a) = L[1], dim(b) = L[2] and entries of matrix are linear combinations of elements in L[3]
+    ##
+    AddRandomMorphismByList( category,
+      function( category, L )
+        local a, b, entries, matrix;
+        
+        
+        if not ( IsInt( L[ 1 ] ) and L[ 1 ] >= 0 ) then
+          
+          Error( "The first entry should be an integer greater or equal to 0" );
+        
+        fi;
+        
+        if not ( IsInt( L[ 2 ] ) and L[ 2 ] >= 0 ) then
+          
+          Error( "The second entry should be an integer greater or equal to 0" );
+        
+        fi;
+        
+        if not IsList( L[ 3 ] ) then
+          
+          Error( "The third entry should be a list" );
+        
+        fi;
+        
+        if Length( L[ 3 ] ) = 0 then
+          
+          Error( "The third entry should not be an empty list" );
+        
+        fi;
+        
+        if not ForAll( L[ 3 ], l -> l = l/homalg_field  ) then
+          
+          Error( Concatenation( "All elements in the third entry list should belong to ", String( homalg_field ) ) );
+        
+        fi;
+        
+        a := VectorSpaceObject( L[ 1 ], homalg_field );
+        
+        b := VectorSpaceObject( L[ 2 ], homalg_field );
+        
+        entries := List( [ 1 .. Dimension( a ) ], i -> List( [ 1 .. Dimension( b ) ],
+                   j -> RandomMat( 1, Length( L[ 3 ] ) )[ 1 ] * L[ 3 ] ) );
+        
+        matrix := HomalgMatrix( entries, Dimension( a ), Dimension( b ), homalg_field );
+        
+        return VectorSpaceMorphism( a, matrix, b );
+        
+    end );
+    
+    ##
+    ## Interpretation: the output has dimension at most n.
+    ##
+    AddRandomObjectByInteger( category,
+        function( category, n )
+          
+          if n < 0 then
+            
+            return fail;
+          
+          fi;
+          
+          return RandomObjectByList( category, [ 0 .. n ] );
+      
+    end );
+    
+    ##
+    ## Interpretation: the range of the output has dimension n.
+    ##
+    AddRandomMorphismWithFixedSourceByInteger( category,
+      
+      function( a, n )
+        
+        if n < 0 then
+          
+          return fail;
+        
+        fi;
+        
+        return RandomMorphismWithFixedSourceByList( a, [ n, [ -50 .. 50 ] * One( homalg_field ) ] );
+    
+    end );
+    
+    ##
+    ## Interpretation: the source of the output has dimension n.
+    ##
+    AddRandomMorphismWithFixedRangeByInteger( category,
+      
+      function( b, n )
+        
+        if n < 0 then
+          
+          return fail;
+        
+        fi;
+        
+        return RandomMorphismWithFixedRangeByList( b, [ n, [ -50 .. 50 ] * One( homalg_field ) ] );
+    
+    end );
+    
+    ##
+    ## Interpretation: The entries of the matrix elements are
+    ## linear combinations of elements in [ -|n| .. |n| ] * One( homalg_field )
+    ##
+    AddRandomMorphismWithFixedSourceAndRangeByInteger( category,
+      
+      function( a, b, n )
+        
+        return RandomMorphismWithFixedSourceAndRangeByList( a, b, [ -AbsInt( n ) .. AbsInt( n ) ] * One( homalg_field ) );
+    
+    end );
+  
 end );
-
-
-
 

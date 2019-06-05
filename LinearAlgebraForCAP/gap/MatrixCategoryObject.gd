@@ -38,6 +38,25 @@ DeclareCategory( "IsVectorSpaceObject",
 DeclareOperationWithCache( "VectorSpaceObject",
                            [ IsInt, IsFieldForHomalg ] );
 
+if false then
+
+  #! @Description
+  #! The arguments are a category <A>C</A> and an integer <A>n</A>. The output is a vector space of dimension at most <A>n</A>
+  #! if <A>n</A> is non-negative and <C>fail</C> otherwise.
+  #! @Returns a vector space
+  #! @Arguments C, n
+  DeclareOperation( RandomObjectByInteger, [ IsCapMatrixCategory, IsInt ] );
+  
+  #! @Description
+  #! The arguments are a category <A>C</A> and a nonempty list <A>L</A> of integers. The output is a vector space whose
+  #! dimension is a random element in <A>L</A>. Hence the output may be <C>fail</C> if <A>L</A> contains negative integers.
+  #! @Returns a vector space
+  #! @Arguments C, L
+  DeclareOperation( RandomObjectByList, [ IsCapMatrixCategory, IsList ] );
+
+fi;
+
+
 ####################################
 ##
 #! @Section Attributes
