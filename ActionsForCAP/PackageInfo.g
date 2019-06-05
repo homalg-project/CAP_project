@@ -12,6 +12,8 @@ PackageName := "ActionsForCAP",
 Subtitle := "Actions and Coactions for CAP",
 
 Version := Maximum( [
+  "2019.01.16", ## Mohamed's version
+  ## this line prevents merge conflicts
   "2015.08.19", ## Sebas' version
   ## this line prevents merge conflicts
   "2017.01.11", ## Sepp's version
@@ -82,7 +84,8 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">= 2015.08.17" ],
+                           [ "CAP", ">= 2019.01.16" ],
+                           [ "MonoidalCategories", ">= 2019.01.16" ],
                            [ "AttributeCategoryForCAP", ">=2016.09.14" ]
                          ],
   SuggestedOtherPackages := [ ],
