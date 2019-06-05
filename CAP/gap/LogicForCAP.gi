@@ -469,7 +469,9 @@ InstallGlobalFunction( INSTALL_LOGICAL_IMPLICATIONS_HELPER,
                        
   function( category, current_filter )
     local i, theorem_list, current_theorem;
-    
+
+    SuspendMethodReordering();
+
     for i in category!.logical_implication_files.Propositions.( current_filter ) do
         
         theorem_list := READ_THEOREM_FILE( i );
@@ -493,6 +495,8 @@ InstallGlobalFunction( INSTALL_LOGICAL_IMPLICATIONS_HELPER,
         od;
         
     od;
+
+    ResetMethodReordering();
     
 end );
 
