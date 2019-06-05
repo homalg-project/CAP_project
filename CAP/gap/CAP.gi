@@ -156,16 +156,14 @@ InstallGlobalFunction( CREATE_CAP_CATEGORY_FILTERS,
                        
   function( category )
     local name, cell_filter, filter_name, filter;
-    
-    SuspendMethodReordering();
 
     name := Name( category );
     
-    filter_name := NewFilter( Concatenation( name, "InternalCategoryFilter" ) );
+    filter := NewFilter( Concatenation( name, "InternalCategoryFilter" ) );
     
-    SetCategoryFilter( category, filter_name );
+    SetCategoryFilter( category, filter );
     
-    SetFilterObj( category, filter_name );
+    SetFilterObj( category, filter );
     
     filter_name := Concatenation( name, "CellFilter" );
     
@@ -173,25 +171,17 @@ InstallGlobalFunction( CREATE_CAP_CATEGORY_FILTERS,
     
     SetCellFilter( category, cell_filter );
     
-    filter_name := NewFilter( Concatenation( name, "ObjectFilter" ) );
+    filter := NewCategory( Concatenation( name, "ObjectFilter" ), cell_filter );
     
-    InstallTrueMethod( cell_filter, filter_name );
+    SetObjectFilter( category, filter );
     
-    SetObjectFilter( category, filter_name );
+    filter := NewCategory( Concatenation( name, "MorphismFilter" ), cell_filter );
     
-    filter_name := NewFilter( Concatenation( name, "MorphismFilter" ) );
+    SetMorphismFilter( category, filter );
     
-    InstallTrueMethod( cell_filter, filter_name );
+    filter := NewCategory( Concatenation( name, "TwoCellFilter" ), cell_filter );
     
-    SetMorphismFilter( category, filter_name );
-    
-    filter_name := NewFilter( Concatenation( name, "TwoCellFilter" ) );
-    
-    InstallTrueMethod( cell_filter, filter_name );
-    
-    SetTwoCellFilter( category, filter_name );
-    
-    ResetMethodReordering();
+    SetTwoCellFilter( category, filter );
     
 end );
 
