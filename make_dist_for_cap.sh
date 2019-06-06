@@ -1,6 +1,6 @@
 #/bin/bash
 
-packages="CAP GeneralizedMorphismsForCAP LinearAlgebraForCAP ModulePresentationsForCAP"
+packages="CAP GeneralizedMorphismsForCAP LinearAlgebraForCAP ModulePresentationsForCAP MonoidalCategories"
 
 base_dir="$PWD"
 
