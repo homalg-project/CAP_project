@@ -280,7 +280,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
           distinguished_object_of_homomorphism_structure,
           interpret_homomorphism_as_morphism_from_dinstinguished_object_to_homomorphism_structure,
           interpret_morphism_from_dinstinguished_object_to_homomorphism_structure_as_homomorphism,
-          to_be_tested, not_supported;
+          is_possible_to_install,
+          not_supported, to_be_tested;
     
     underlying_category := UnderlyingCategory( category );
     
@@ -597,8 +598,35 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
     end );
     
-    if ForAll( [ "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ], f -> CanCompute( underlying_category, f ) ) then
+    
+    is_possible_to_install := function( to_be_installed, to_be_tested )
+        local not_supported;
         
+        # test which methods are supported by the underlying category
+        not_supported := [];
+        Perform( to_be_tested, function(x) if not CanCompute( underlying_category, x ) then 
+                                            Append( not_supported, x ); 
+                                         fi; end);
+        
+        # methods cannot be installed, so inform the user
+        if not IsEmpty( not_supported ) then
+            Info( InfoFreydCategoriesForCAP, 2,
+                    Concatenation( "The operation(s) ",
+                                   to_be_installed,
+                                    " could not be installed because the underlying category cannot compute ",
+                                    JoinStringsWithSeparator( not_supported, ", " ) ) );
+            return false;
+        fi;
+        
+        # other methods can be installed
+        return true;
+        
+    end;
+    
+    
+    if is_possible_to_install( "KernelEmbedding, KernelLiftWithGivenKernelObject, LiftAlongMonomorphism, ColiftAlongEpimorphism",
+                               [ "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ] ) then
+    
         ## Kernels: kernels in Freyd categories are based on weak fiber products in the underlying category and thus more expensive
         AddKernelEmbedding( category,
           
@@ -685,25 +713,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
         end );
 
-    else
-
-      to_be_tested := [ "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ];
-      not_supported := [];
-      Perform( to_be_tested, function(x) if not CanCompute( underlying_category, x ) then 
-                                            Append( not_supported, x ); 
-                                         fi; end);
-
-      Info( InfoFreydCategoriesForCAP, 2,
-            Concatenation( "The operations KernelEmbedding, KernelLiftWithGivenKernelObject, ",   
-                           "LiftAlongMonomorphism, ColiftAlongEpimorphism ",
-                           "could not be installed because the underlying category cannot compute ",
-                           JoinStringsWithSeparator( not_supported, ", " ) ) );
-
     fi;
-
-
-    if ForAll( [ "ProjectionOfBiasedWeakFiberProduct" ], f -> CanCompute( underlying_category, f ) ) then
-
+    
+    
+    if is_possible_to_install( "EpimorphismFromSomeProjectiveObjectForKernelObject",
+                               [ "ProjectionOfBiasedWeakFiberProduct" ] ) then
+    
         ##
         AddEpimorphismFromSomeProjectiveObjectForKernelObject( category,
 
@@ -722,13 +737,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             return FreydCategoryMorphism( projective_object, projection_1, Source( morphism ) );
 
         end );
-
-    else
-
-      Info( InfoFreydCategoriesForCAP, 2,
-            Concatenation( "The operation EpimorphismFromSomeProjectiveObjectForKernelObject ",
-                           "could not be installed because the underlying category cannot compute ",
-                           "ProjectionOfBiasedWeakFiberProduct" ) );
 
     fi;
 
@@ -749,8 +757,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     end );
     
     ##
-    if ForAll( [ "SolveLinearSystemInAbCategory" ], 
-               f -> CanCompute( underlying_category, f ) ) then
+    if is_possible_to_install( "Lift, Colift",
+                               [ "SolveLinearSystemInAbCategory" ] ) then
         
         AddLift( category,
                  
@@ -862,24 +870,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
         end );
 
-    else
-      
-      not_supported := [ "SolveLinearSystemInAbCategory" ];
-
-      Info( InfoFreydCategoriesForCAP, 2,
-            Concatenation( "The operations Lift, Colift ",
-                           "could not be installed because the underlying category cannot compute ",
-                           "SolveLinearSystemInAbCategory" ) );
-
     fi;
     
     ## Creation of a homomorphism structure for the Freyd category
-    
-    if ForAll( [ "DistinguishedObjectOfHomomorphismStructure" ], 
-               f -> CanCompute( underlying_category, f ) ) then
+    if is_possible_to_install( "Homomorphism structure",
+                               [ "DistinguishedObjectOfHomomorphismStructure" ] ) then
         
         distinguished_object := DistinguishedObjectOfHomomorphismStructure( underlying_category );
-            
+        
         range_category := CapCategory( distinguished_object );
         
         ## 3 possible cases:
@@ -1094,17 +1092,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
         fi;
     
-    else
-
-      # name more explicitly which methods were not installed
-      # this depends also on the above case, if derivation is activated etc.
-      Info( InfoFreydCategoriesForCAP, 2,
-            Concatenation( "Homomorphism structure ",
-                           "could not be installed because the underlying category cannot compute ",
-                           "DistinguishedObjectOfHomomorphismStructure" ) );
-
     fi;
-
+    
     ######################################################################
     #
     # Tensor product
@@ -1129,47 +1118,34 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     # We interpret this universal morphism as object in the Freyd category. This object is the
     # tensor product of obj1 and obj2. The method below returns this tensor product.
     # Note that A \otimes B,\alpha \otimes 1_B etc. are performed in the underlying category.
-    if ForAll( [ "TensorProductOnObjects", "TensorProductOnMorphismsWithGivenTensorProducts" ], 
-               f -> CanCompute( underlying_category, f ) ) then
-
+    if is_possible_to_install( "TensorProductOnObjects",
+                               [ "TensorProductOnObjects", "TensorProductOnMorphismsWithGivenTensorProducts" ] ) then
+        
         AddTensorProductOnObjects( category,
             function( object1, object2 )
                 local factor1, factor2, range, diagram, mor1, mor2, sink, uni;
-
+                
                 # construct the objects needed in the computation of the tensor product
                 factor1 := TensorProductOnObjects( Source( RelationMorphism( object1 ) ), Range( RelationMorphism( object2 ) ) );
                 factor2 := TensorProductOnObjects( Range( RelationMorphism( object1 ) ), Source( RelationMorphism( object2 ) ) );
                 range := TensorProductOnObjects( Range( RelationMorphism( object1 ) ), Range( RelationMorphism( object2 ) ) );
-
+                
                 # construct the diagram
                 diagram := [ factor1, factor2 ];
-
+                
                 # construct the sink
                 mor1 := TensorProductOnMorphisms( RelationMorphism( object1 ), IdentityMorphism( Range( RelationMorphism( object2 ) ) ) );
                 mor2 := TensorProductOnMorphisms( IdentityMorphism( Range( RelationMorphism( object1 ) ) ), RelationMorphism( object2 ) );
                 sink := [ mor1, mor2 ];
-
+                
                 # compute the universal morphism
                 uni := UniversalMorphismFromDirectSum( diagram, sink );
-
+                
                 # and return the corresponding object in the Freyd category
                 return FreydCategoryObject( uni );
-
+                
         end );
-
-    else
-
-      to_be_tested := [ "TensorProductOnObjects", "TensorProductOnMorphismsWithGivenTensorProducts" ];
-      not_supported := [];
-      Perform( to_be_tested, function(x) if not CanCompute( underlying_category, x ) then 
-                                            Append( not_supported, x ); 
-                                         fi; end);
-
-      Info( InfoFreydCategoriesForCAP, 2,
-            Concatenation( "The operation TensorProductOnObjects ",
-                           "could not be installed because the underlying category cannot compute ",
-                           JoinStringsWithSeparator( not_supported, ", " ) ) );
-
+        
     fi;
     
     # This method requires two morphisms in the Freyd category. Let us denote them as follows:
@@ -1182,46 +1158,33 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     # (3) x \otimes y (in the underlying category)
     # The method now returns the morphism S --- x \otimes y ---> R.
     
-    if ForAll( [ "TensorProductOnMorphismsWithGivenTensorProducts" ], 
-        f -> CanCompute( underlying_category, f ) ) then
-
+    
+    if is_possible_to_install( "TensorProductOnMorphismsWithGivenTensorProducts",
+                               [ "TensorProductOnMorphismsWithGivenTensorProducts" ] ) then
+        
         AddTensorProductOnMorphismsWithGivenTensorProducts( category,
             function( source, morphism1, morphism2, range )
                 local mor;
-
+                
                 mor := TensorProductOnMorphisms( MorphismDatum( morphism1 ), MorphismDatum( morphism2 ) );
-
+                
                 return FreydCategoryMorphism( source, mor, range );
-
+                
         end );
-
-    else
-
-      Info( InfoFreydCategoriesForCAP, 2,
-            Concatenation( "The operation TensorProductOnMorphismsWithGivenTensorProducts ",
-                           "could not be installed because the underlying category cannot compute ",
-                           "TensorProductOnMorphismsWithGivenTensorProducts" ) );
-
+        
     fi;
     
     # The tensor unit is 0 ---> 1 where 0 is the zero object and 1 the tensor unit in the underlying category
     # and the morphism is the universal morphism from the zero object.
-    if ForAll( [ "TensorUnit" ], f -> CanCompute( underlying_category, f ) ) then
-
+    if is_possible_to_install( "TensorUnit", [ "TensorUnit" ] ) then
+        
         AddTensorUnit( category,
             function( )
-
+            
             return FreydCategoryObject( UniversalMorphismFromZeroObject( TensorUnit( underlying_category ) ) );
-
+            
         end );
-
-    else
-
-      Info( InfoFreydCategoriesForCAP, 2,
-            Concatenation( "The operation TensorUnit ",
-                           "could not be installed because the underlying category cannot compute ",
-                           "TensorUnit" ) );
-
+        
     fi;
     
     # Given three objects a, b, c in the Freyd category, we consider
@@ -1230,28 +1193,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     # We then derive the associator associator source -> range from the associator in the underlying category.
     # Note that even if the underlying category is a strict monoidal category
     # (i.e. the associators and unitors are identities), this need not be true in the Freyd category.
-    if ForAll( [ "AssociatorLeftToRightWithGivenTensorProducts" ], 
-        f -> CanCompute( underlying_category, f ) ) then
-
+    if is_possible_to_install( "AssociatorLeftToRightWithGivenTensorProducts", [ "AssociatorLeftToRightWithGivenTensorProducts" ] ) then
+        
         AddAssociatorLeftToRightWithGivenTensorProducts( category,
             function( source, a, b, c, range )
                 local mor;
-
+                
                 mor := AssociatorLeftToRight( Range( RelationMorphism( a ) ),
                                               Range( RelationMorphism( b ) ),
                                               Range( RelationMorphism( c ) ) );
-
+                
                 return FreydCategoryMorphism( source, mor, range );
-
+                
         end );
-
-    else
-
-      Info( InfoFreydCategoriesForCAP, 2,
-            Concatenation( "The operation AssociatorLeftToRightWithGivenTensorProducts ",
-                           "could not be installed because the underlying category cannot compute ",
-                           "AssociatorLeftToRightWithGivenTensorProducts" ) );
-
+        
     fi;
 
     # Given three objects a, b, c in the Freyd category, we consider
@@ -1260,108 +1215,72 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     # We then derive the associator associator source -> range from the associator in the underlying category.
     # Note that even if the underlying category is a strict monoidal category
     # (i.e. the associators and unitors are identities), this need not be true in the Freyd category.
-    if ForAll( [ "AssociatorRightToLeftWithGivenTensorProducts" ], 
-        f -> CanCompute( underlying_category, f ) ) then
-
+    if is_possible_to_install( "AssociatorRightToLeftWithGivenTensorProducts", [ "AssociatorRightToLeftWithGivenTensorProducts" ] ) then
+        
         AddAssociatorRightToLeftWithGivenTensorProducts( category,
             function( source, a, b, c, range )
                 local mor;
-
+                
                 mor := AssociatorRightToLeft( Range( RelationMorphism( a ) ),
                                               Range( RelationMorphism( b ) ),
                                               Range( RelationMorphism( c ) ) );
-
+                
                 return FreydCategoryMorphism( source, mor, range );
-
+                
         end );
-
-    else
-
-      Info( InfoFreydCategoriesForCAP, 2,
-            Concatenation( "The operation AssociatorRightToLeftWithGivenTensorProducts ",
-                           "could not be installed because the underlying category cannot compute ",
-                           "AssociatorRightToLeftWithGivenTensorProducts" ) );
-
+        
     fi;
     
     # Given an object a, this method returns the left unitor 1 \otimes a -> a.
     # We derive this from the unitors of the underlying category.
-    if ForAll( [ "LeftUnitorWithGivenTensorProduct" ], f -> CanCompute( underlying_category, f ) ) then
-
+    if is_possible_to_install( "LeftUnitorWithGivenTensorProduct", [ "LeftUnitorWithGivenTensorProduct" ] ) then
+        
         AddLeftUnitorWithGivenTensorProduct( category,
             function( a, s )
-
+            
             return FreydCategoryMorphism( s, LeftUnitor( Range( RelationMorphism( a ) ) ), a );
-
+            
         end );
-
-    else
-
-      Info( InfoFreydCategoriesForCAP, 2,
-            Concatenation( "The operation LeftUnitorWithGivenTensorProduct ",
-                           "could not be installed because the underlying category cannot compute ",
-                           "LeftUnitorWithGivenTensorProduct" ) );
-
+        
     fi;
     
     # Given an object a, this method returns the left unitor inverse a -> 1 \otimes a.
     # We derive from the underlying category.
-    if ForAll( [ "LeftUnitorInverseWithGivenTensorProduct" ], f -> CanCompute( underlying_category, f ) ) then
-
+    if is_possible_to_install( "LeftUnitorInverseWithGivenTensorProduct", [ "LeftUnitorInverseWithGivenTensorProduct" ] ) then
+        
         AddLeftUnitorInverseWithGivenTensorProduct( category,
             function( a, r )
-
+            
             return FreydCategoryMorphism( a, LeftUnitorInverse( Range( RelationMorphism( a ) ) ), r );
-
+            
         end );
-
-    else
-
-      Info( InfoFreydCategoriesForCAP, 2,
-            Concatenation( "The operation LeftUnitorInverseWithGivenTensorProduct ",
-                           "could not be installed because the underlying category cannot compute ",
-                           "LeftUnitorInverseWithGivenTensorProduct" ) );
-
+        
     fi;
     
     # Given an object a, this method returns the right unitor a \otimes 1 -> a.
     # We derive from the underlying category.
-    if ForAll( [ "RightUnitorWithGivenTensorProduct" ], f -> CanCompute( underlying_category, f ) ) then
-
+    if is_possible_to_install( "RightUnitorWithGivenTensorProduct", [ "RightUnitorWithGivenTensorProduct" ] ) then
+        
         AddRightUnitorWithGivenTensorProduct( category,
             function( a, s )
-
+            
             return FreydCategoryMorphism( s, RightUnitor( Range( RelationMorphism( a ) ) ), a );
-
+            
         end );
-
-    else
-
-      Info( InfoFreydCategoriesForCAP, 2,
-            Concatenation( "The operation RightUnitorWithGivenTensorProduct ",
-                           "could not be installed because the underlying category cannot compute ",
-                           "RightUnitorWithGivenTensorProduct" ) );
-
+        
     fi;
     
     # Given an object a, this method returns the right unitor inverse a -> a \otimes 1.
     # We derive from the underlying proj-category.
-    if ForAll( [ "RightUnitorInverseWithGivenTensorProduct" ], f -> CanCompute( underlying_category, f ) ) then
-
+    if is_possible_to_install( "RightUnitorInverseWithGivenTensorProduct", [ "RightUnitorInverseWithGivenTensorProduct" ] ) then
+        
         AddRightUnitorInverseWithGivenTensorProduct( category,
             function( a, r )
-
+            
             return FreydCategoryMorphism( a, RightUnitorInverse( Range( RelationMorphism( a ) ) ), r );
-
+            
         end );
-
-    else
-
-      Info( InfoFreydCategoriesForCAP, 2,
-            Concatenation( "The operation RightUnitorInverseWithGivenTensorProduct ",
-                           "could not be installed because the underlying category cannot compute ",
-                           "RightUnitorInverseWithGivenTensorProduct" ) );
-
+        
     fi;
     
     
@@ -1374,24 +1293,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
 
     # Given two objects a and b this method derives a braiding morphism a \otimes b -> b \otimes a
     # from the braiding in the underlying category.
-    if ForAll( [ "BraidingWithGivenTensorProducts" ], f -> CanCompute( underlying_category, f ) ) then
-
+    
+    if is_possible_to_install( "BraidingWithGivenTensorProducts", [ "BraidingWithGivenTensorProducts" ] ) then
+        
         AddBraidingWithGivenTensorProducts( category,
         function( s, a, b, r)
             local mor;
-
+            
             mor := Braiding( Range( RelationMorphism( a ) ), Range( RelationMorphism( b ) ) );
             return FreydCategoryMorphism( s, mor, r );
-
+            
         end );
-
-    else
-
-      Info( InfoFreydCategoriesForCAP, 2,
-            Concatenation( "The operation BraidingWithGivenTensorProducts ",
-                           "could not be installed because the underlying category cannot compute ",
-                           "BraidingWithGivenTensorProducts" ) );
-
+        
     fi;
     
     
@@ -1417,33 +1330,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     #
     # Of this morphism we compute the kernel
     
-    if ForAll( [ "InternalHomOnMorphismsWithGivenInternalHoms", 
-                 "ProjectionOfBiasedWeakFiberProduct", 
-                 "UniversalMorphismIntoBiasedWeakFiberProduct" ], 
-                             f -> CanCompute( underlying_category, f ) ) then
-    
+    if is_possible_to_install( "InternalHomOnObjects", 
+                               [ "InternalHomOnMorphismsWithGivenInternalHoms", "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ] ) then
+        
         AddInternalHomOnObjects( category,
             function( a, b )
-
+            
             return Source( INTERNAL_HOM_EMBEDDING( a, b ) );
-
+            
         end );
-
-    else
-
-      to_be_tested := [ "InternalHomOnMorphismsWithGivenInternalHoms", "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ];
-      not_supported := [];
-      Perform( to_be_tested, function(x) if not CanCompute( underlying_category, x ) then 
-                                            Append( not_supported, x ); 
-                                         fi; end);
-
-      Info( InfoFreydCategoriesForCAP, 2,
-            Concatenation( "The operation InternalHomOnObjects ",
-                           "could not be installed because the underlying category cannot compute ",
-                           JoinStringsWithSeparator( not_supported, ", " ) ) );
-
+        
     fi;
-
+    
     # Given two morphisms \alpha and \beta, this method derives the internal hom, i.e. Hom( \alpha, \beta).
     # Assume that \alpha: a -> a' and \beta: b -> b' and the objects 
     # a,a',b,b' are given by relation morphisms R_X -> X for x \in \{ a, a', b, b')
@@ -1474,43 +1372,26 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     #
     # Finally, Lift( rho \circ kernel1, kernel2 ) produces the required mapping mu: Hom( a',b) -> Hom( a, b')
     
-    if ForAll( [ "InternalHomOnMorphismsWithGivenInternalHoms",
-                 "ProjectionOfBiasedWeakFiberProduct", 
-                 "UniversalMorphismIntoBiasedWeakFiberProduct" ], 
-                             f -> CanCompute( underlying_category, f ) ) then
-    
+    if is_possible_to_install( "InternalHomOnMorphismsWithGivenInternalHoms", 
+                               [ "InternalHomOnMorphismsWithGivenInternalHoms", "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ] ) then
+                               
         AddInternalHomOnMorphismsWithGivenInternalHoms( category,
             function( s, alpha, beta, r )
                 local kernel1, kernel2, mor, bridge_mapping;
-
+                
                 # (1) extract the Hom-embeddings
                 kernel1 := INTERNAL_HOM_EMBEDDING( Range( alpha ), Source( beta ) );
                 kernel2 := INTERNAL_HOM_EMBEDDING( Source( alpha ), Range( beta ) );
-
+                
                 # (2) construct the bridge_mapping A^vee \otimes B -> A'^\vee \otimes b'
                 mor := InternalHomOnMorphisms( MorphismDatum( alpha ), MorphismDatum( beta ) );
                 bridge_mapping := FreydCategoryMorphism( Range( kernel1 ), mor, Range( kernel2 ) );
-
+                
                 # (3) finally return the lift of the corresponding diagram
                 return LiftAlongMonomorphism( kernel2, PreCompose( kernel1, bridge_mapping ) );
-
+                
         end );
-
-    else
-
-      to_be_tested := [ "InternalHomOnMorphismsWithGivenInternalHoms",
-                        "ProjectionOfBiasedWeakFiberProduct", 
-                        "UniversalMorphismIntoBiasedWeakFiberProduct" ];
-      not_supported := [];
-      Perform( to_be_tested, function(x) if not CanCompute( underlying_category, x ) then 
-                                            Append( not_supported, x ); 
-                                         fi; end);
-
-      Info( InfoFreydCategoriesForCAP, 2,
-            Concatenation( "The operation InternalHomOnMorphismsWithGivenInternalHoms ",
-                           "could not be installed because the underlying category cannot compute ",
-                           JoinStringsWithSeparator( not_supported, ", " ) ) );
-
+        
     fi;
     
     ######################################################################
@@ -1526,49 +1407,28 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     #
     # The composition of these morphisms produces the evaluation morphism in Freyd
     
-    if ForAll( [ "InternalHomOnMorphismsWithGivenInternalHoms",
-                 "ProjectionOfBiasedWeakFiberProduct", 
-                 "UniversalMorphismIntoBiasedWeakFiberProduct",
-                 "TensorProductOnObjects",
-                 "TensorProductOnMorphismsWithGivenTensorProducts",
-                 "EvaluationMorphismWithGivenSource" ], 
-                             f -> CanCompute( underlying_category, f ) ) then
-    
+    if is_possible_to_install( "EvaluationMorphismWithGivenSource",
+                                [ "InternalHomOnMorphismsWithGivenInternalHoms", "ProjectionOfBiasedWeakFiberProduct", 
+                                  "UniversalMorphismIntoBiasedWeakFiberProduct", "TensorProductOnObjects",
+                                  "TensorProductOnMorphismsWithGivenTensorProducts", "EvaluationMorphismWithGivenSource" ] ) then
+        
         AddEvaluationMorphismWithGivenSource( category,
             function( a, b, s )
                 local Hom_embedding, Hom_embedding_tensored, mor;
-
+                
                 # (1) the hom-embedding
                 Hom_embedding := INTERNAL_HOM_EMBEDDING( a, b );
                 Hom_embedding_tensored := TensorProductOnMorphisms( Hom_embedding, IdentityMorphism( a ) );
-
+                
                 # (2) evaluation in underlying category
                 mor := EvaluationMorphism( Range( RelationMorphism( a ) ), Range( RelationMorphism( b ) ) );
                 mor := FreydCategoryMorphism( Range( Hom_embedding_tensored ), mor, b );
                 
                 # (3) compose morphisms and return them
                 return PreCompose( Hom_embedding_tensored, mor );
-
+                
         end );
-
-    else
-
-      to_be_tested := [ "InternalHomOnMorphismsWithGivenInternalHoms",
-                        "ProjectionOfBiasedWeakFiberProduct", 
-                        "UniversalMorphismIntoBiasedWeakFiberProduct",
-                        "TensorProductOnObjects",
-                        "TensorProductOnMorphismsWithGivenTensorProducts",
-                        "EvaluationMorphismWithGivenSource" ];
-      not_supported := [];
-      Perform( to_be_tested, function(x) if not CanCompute( underlying_category, x ) then 
-                                            Append( not_supported, x ); 
-                                         fi; end);
-
-      Info( InfoFreydCategoriesForCAP, 2,
-            Concatenation( "The operation EvaluationMorphismWithGivenSource ",
-                           "could not be installed because the underlying category cannot compute ",
-                           JoinStringsWithSeparator( not_supported, ", " ) ) );
-
+        
     fi;
 
     # Given objects a,b we can construct the coevaluation morphism a -> Hom( b, a \otimes b ).
@@ -1589,49 +1449,28 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     #
     # The lift of the Hom_embedding and the coevaluation in the underlying category 
     # gives us a coevaluation in the Freyd category.
-
-    if ForAll( [ "TensorProductOnObjects",
-                 "TensorProductOnMorphismsWithGivenTensorProducts",
-                 "InternalHomOnMorphismsWithGivenInternalHoms",
-                 "ProjectionOfBiasedWeakFiberProduct", 
-                 "UniversalMorphismIntoBiasedWeakFiberProduct",
-                 "CoevaluationMorphismWithGivenRange" ],
-                             f -> CanCompute( underlying_category, f ) ) then
     
+    if is_possible_to_install( "CoevaluationMorphismWithGivenRange",
+                                [ "InternalHomOnMorphismsWithGivenInternalHoms", "ProjectionOfBiasedWeakFiberProduct", 
+                                  "UniversalMorphismIntoBiasedWeakFiberProduct", "TensorProductOnObjects",
+                                  "TensorProductOnMorphismsWithGivenTensorProducts", "CoevaluationMorphismWithGivenRange" ] ) then
+        
         AddCoevaluationMorphismWithGivenRange( category,
             function( a, b, r )
                 local Hom_embedding, mor, Bdual, braiding, associator, coevaluation;
-
+                
                 # (1) the hom-embedding
                 Hom_embedding := INTERNAL_HOM_EMBEDDING( b, TensorProductOnObjects( a, b ) );
-
+                
                 # (2) the coevaluation in the underlying category
                 mor := CoevaluationMorphism( Range( RelationMorphism( a ) ), Range( RelationMorphism( b ) ) );
                 mor := FreydCategoryMorphism( a, mor, Range( Hom_embedding ) );
                 
                 # (3) coevaluation is lift of the above two morphisms
                 return LiftAlongMonomorphism( Hom_embedding, mor );
-
+                
         end );
     
-    else
-
-      to_be_tested := [ "TensorProductOnObjects",
-                        "TensorProductOnMorphismsWithGivenTensorProducts",
-                        "InternalHomOnMorphismsWithGivenInternalHoms",
-                        "ProjectionOfBiasedWeakFiberProduct", 
-                        "UniversalMorphismIntoBiasedWeakFiberProduct",
-                        "CoevaluationMorphismWithGivenRange" ];
-      not_supported := [];
-      Perform( to_be_tested, function(x) if not CanCompute( underlying_category, x ) then 
-                                            Append( not_supported, x ); 
-                                         fi; end);
-
-      Info( InfoFreydCategoriesForCAP, 2,
-            Concatenation( "The operation CoevaluationMorphismWithGivenRange ",
-                           "could not be installed because the underlying category cannot compute ",
-                           JoinStringsWithSeparator( not_supported, ", " ) ) );
-
     fi;
     
 end );
