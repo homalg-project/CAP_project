@@ -1017,13 +1017,22 @@ InstallMethod( Display,
                [ IsFreydCategoryMorphism ],
                
   function( freyd_category_morphism )
-    
-    Print( StringMutable( freyd_category_morphism ) );
 
+    Print( Concatenation( StringMutable( freyd_category_morphism ), "\n\n" ) );
+    Print( "--------------------------------" );
+
+    Print( Concatenation( "\n\n", "Source:\n" ) );
+    Display( RelationMorphism( Source( freyd_category_morphism ) ) );
+    Print( "--------------------------------" );
+    
     Print( Concatenation( "\n\n", "Morphism datum:\n" ) );
-    
     Display( MorphismDatum( freyd_category_morphism ) );
+    Print( "--------------------------------" );
     
+    Print( Concatenation( "\n\n", "Range:\n" ) );
+    Display( RelationMorphism( Range( freyd_category_morphism ) ) );
+    Print( "--------------------------------" );
+
 end );
 
 

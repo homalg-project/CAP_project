@@ -82,16 +82,39 @@ c := PreCompose( f, f );
 
 #! @Log
 Display( c );
-#! A morphism in Freyd( CAP category of graded rows over
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+#! A morphism in Freyd( CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+#!
+#! --------------------------------
+#!
+#! Source:
+#! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#!
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! of rank 2 and degrees:
+#! [ [ ( 1, 1 ), 2 ] ]
+#!
+#! Matrix:
+#! 1,1,
+#! 1,1
+#! (over a graded ring)
+#!
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! of rank 2 and degrees:
+#! [ [ ( 1, 1 ), 2 ] ]
+#!
+#! --------------------------------
 #!
 #! Morphism datum:
 #! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 #!
 #! Source:
-#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees:
+#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! of rank 2 and degrees:
 #! [ [ ( 1, 1 ), 2 ] ]
 #!
 #! Matrix:
@@ -100,43 +123,38 @@ Display( c );
 #! (over a graded ring)
 #!
 #! Range:
-#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees:
+#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! of rank 2 and degrees:
 #! [ [ ( 1, 1 ), 2 ] ]
+#!
+#! --------------------------------
+#!
+#! Range:
+#! A morphism in CAP category of graded row over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#!
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! of rank 2 and degrees:
+#! [ [ ( 1, 1 ), 2 ] ]
+#!
+#! Matrix:
+#! 1,1,
+#! 1,1
+#! (over a graded ring)
+#!
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! of rank 2 and degrees:
+#! [ [ ( 1, 1 ), 2 ] ]
+#!
+#! --------------------------------
 #! @EndLog
 
 #! @Example
 s := g + g;
-#! <A morphism in Freyd( CAP category of graded rows over 
+#! <A morphism in Freyd( CAP category of graded rows over
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
-#! @EndExample
-
-#! @Log
-Display( s );
-#! A morphism in Freyd( CAP category of graded rows over
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
-#!
-#! Morphism datum:
-#! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-#!
-#! Source:
-#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees:
-#! [ [ ( 1, 1 ), 2 ] ]
-#!
-#! Matrix:
-#! 0,0,
-#! 0,0 
-#! (over a graded ring)
-#!
-#! Range:
-#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees:
-#! [ [ ( 1, 1 ), 2 ] ]
-#! @EndLog
-
-#! @Example
 a := GradedRowOrColumnMorphism( obj1, 
                                  HomalgMatrix( [ [ 2 ] ], 1, 1, S ), obj1 );
 #! <A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
@@ -200,134 +218,27 @@ id := IdentityMorphism( Z2 );
 z := id + id + id;
 #! <A morphism in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
-#! @EndExample
-
-#! @Log
-Display( z );
-#! A morphism in Freyd( CAP category of graded rows over
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
-#!
-#! Morphism datum:
-#! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-#!
-#! Source:
-#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
-#! [ [ ( 1, 1 ), 1 ] ]
-#!
-#! Matrix:
-#! 3
-#! (over a graded ring)
-#!
-#! Range:
-#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
-#! [ [ ( 1, 1 ), 1 ] ]
-#! @EndLog
-
-#! @Example
 d := DirectSumFunctorial( [ z, z, z ] );
 #! <A morphism in Freyd( CAP category of graded rows over
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
-#! @EndExample
-
-#! @Log
-Display( d );
-#! A morphism in Freyd( CAP category of graded rows over
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
-#!
-#! Morphism datum:
-#! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-#!
-#! Source:
-#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 3 and degrees:
-#! [ [ ( 1, 1 ), 3 ] ]
-#!
-#! Matrix:
-#! 3,0,0,
-#! 0,3,0,
-#! 0,0,3 
-#! (over a graded ring)
-#!
-#! Range:
-#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 3 and degrees:
-#! [ [ ( 1, 1 ), 3 ] ]
-#! @EndLog
-
-#! @Example
 pr2 := ProjectionInFactorOfDirectSum( [ Z2, Z2, Z2 ], 2 );
 #! <A morphism in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 pr3 := ProjectionInFactorOfDirectSum( [ Z2, Z2, Z2 ], 3 );
 #! <A morphism in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
-#! @EndExample
-
-#! @Log
-Display( UniversalMorphismIntoDirectSum( [ pr3, pr2 ] ) );
-#! A morphism in Freyd( CAP category of graded rows over
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
-#!
-#! Morphism datum:
-#! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-#!
-#! Source:
-#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 3 and degrees:
-#! [ [ ( 1, 1 ), 3 ] ]
-#!
-#! Matrix:
-#! 0,0,
-#! 0,1,
-#! 1,0 
-#! (over a graded ring)
-#!
-#! Range:
-#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees:
-#! [ [ ( 1, 1 ), 2 ] ]
-#! @EndLog
-
-#! @Example
+uni := UniversalMorphismIntoDirectSum( [ pr3, pr2 ] );
+#! <A morphism in Freyd( CAP category of graded rows over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 inj1 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 1 );
 #! <A morphism in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 inj2 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 2 );
 #! <A morphism in Freyd( CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
-#! @EndExample
-
-#! @Log
-Display( UniversalMorphismFromDirectSum( [ inj2, inj1 ] ) );
-#! A morphism in Freyd( CAP category of graded rows over
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
-#!
-#! Morphism datum:
-#! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-#!
-#! Source:
-#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees:
-#! [ [ ( 1, 1 ), 2 ] ]
-#!
-#! Matrix:
-#! 0,1,0,
-#! 1,0,0 
-#! (over a graded ring)
-#!
-#! Range:
-#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 3 and degrees:
-#! [ [ ( 1, 1 ), 3 ] ]
-#! @EndLog
-
-#! @Example
+uni2 := UniversalMorphismFromDirectSum( [ inj2, inj1 ] );
+#! <A morphism in Freyd( CAP category of graded rows over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 ZFree := AsFreydCategoryObject( obj1 );
 #! <A projective object in Freyd( CAP category of graded rows over
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
@@ -363,73 +274,13 @@ id := IdentityMorphism( ZFree );
 z := id + id;
 #! <A morphism in Freyd( CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
+coker_proj := CokernelProjection( z );
+#! <An epimorphism in Freyd( CAP category of graded rows over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
+cokernel_colift := CokernelColift( z, CokernelProjection( z ) );
+#! <A morphism in Freyd( CAP category of graded rows over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 #! @EndExample
-
-#! @Log
-Display( z );
-#! A morphism in Freyd( CAP category of graded rows over
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
-#!
-#! Morphism datum:
-#! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-#!
-#! Source:
-#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
-#! [ [ ( 1, 1 ), 1 ] ]
-#!
-#! Matrix:
-#! 2
-#! (over a graded ring)
-#!
-#! Range:
-#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
-#! [ [ ( 1, 1 ), 1 ] ]
-Display( CokernelProjection( z ) );
-#! An epimorphism in Freyd( CAP category of graded rows over
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
-#!
-#! Morphism datum:
-#! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-#!
-#! Source:
-#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
-#! [ [ ( 1, 1 ), 1 ] ]
-#!
-#! Matrix:
-#! 1
-#! (over a graded ring)
-#!
-#! Range:
-#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
-#! [ [ ( 1, 1 ), 1 ] ]
-Display( CokernelColift( z, CokernelProjection( z ) ) );
-#! A morphism in Freyd( CAP category of graded rows over
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
-#!
-#! Morphism datum:
-#! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-#!
-#! Source:
-#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
-#! [ [ ( 1, 1 ), 1 ] ]
-#!
-#! Matrix:
-#! 1
-#! (over a graded ring)
-#!
-#! Range:
-#! A graded row over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
-#! [ [ ( 1, 1 ), 1 ] ]
-#! @EndLog
 
 
 
@@ -507,61 +358,79 @@ c := PreCompose( f, f );
 
 #! @Log
 Display( c );
-#! A morphism in Freyd( CAP category of graded columns over
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+#! A morphism in Freyd( CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
+#!
+#! --------------------------------
+#!
+#! Source:
+#! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#!
+#! Source:
+#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! of rank 2 and degrees:
+#! [ [ ( 1, 1 ), 2 ] ]
+#!
+#! Matrix:
+#! 1,1,
+#! 1,1
+#! (over a graded ring)
+#!
+#! Range:
+#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! of rank 2 and degrees:
+#! [ [ ( 1, 1 ), 2 ] ]
+#!
+#! --------------------------------
 #!
 #! Morphism datum:
 #! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 #!
 #! Source:
-#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees:
+#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! of rank 2 and degrees:
 #! [ [ ( 1, 1 ), 2 ] ]
 #!
 #! Matrix:
 #! 2,2,
-#! 2,2 
+#! 2,2
 #! (over a graded ring)
 #!
 #! Range:
-#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees:
+#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! of rank 2 and degrees:
 #! [ [ ( 1, 1 ), 2 ] ]
-#! @EndLog
-
-#! @Example
-s := g + g;
-#! <A morphism in Freyd( CAP category of graded columns over 
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
-#! @EndExample
-
-#! @Log
-Display( s );
-#! A morphism in Freyd( CAP category of graded columns over
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
 #!
-#! Morphism datum:
+#! --------------------------------
+#!
+#! Range:
 #! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 #!
 #! Source:
-#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees:
+#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! of rank 2 and degrees:
 #! [ [ ( 1, 1 ), 2 ] ]
 #!
 #! Matrix:
-#! 0,0,
-#! 0,0 
+#! 1,1,
+#! 1,1
 #! (over a graded ring)
 #!
 #! Range:
-#! A graded column over Q[x_1,x_2,x_3,x_4]
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees:
+#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! of rank 2 and degrees:
 #! [ [ ( 1, 1 ), 2 ] ]
+#!
+#! --------------------------------
 #! @EndLog
 
 #! @Example
+s := g + g;
+#! <A morphism in Freyd( CAP category of graded columns over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 a := GradedRowOrColumnMorphism( obj1, 
                                  HomalgMatrix( [ [ 2 ] ], 1, 1, S ), obj1 );
 #! <A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
@@ -625,134 +494,27 @@ id := IdentityMorphism( Z2 );
 z := id + id + id;
 #! <A morphism in Freyd( CAP category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
-#! @EndExample
-
-#! @Log
-Display( z );
-#! A morphism in Freyd( CAP category of graded columns over
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
-#!
-#! Morphism datum:
-#! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-#!
-#! Source:
-#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
-#! [ [ ( 1, 1 ), 1 ] ]
-#!
-#! Matrix:
-#! 3
-#! (over a graded ring)
-#!
-#! Range:
-#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
-#! [ [ ( 1, 1 ), 1 ] ]
-#! @EndLog
-
-#! @Example
 d := DirectSumFunctorial( [ z, z, z ] );
 #! <A morphism in Freyd( CAP category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
-#! @EndExample
-
-#! @Log
-Display( d );
-#! A morphism in Freyd( CAP category of graded columns over
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
-#!
-#! Morphism datum:
-#! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-#!
-#! Source:
-#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 3 and degrees:
-#! [ [ ( 1, 1 ), 3 ] ]
-#!
-#! Matrix:
-#! 3,0,0,
-#! 0,3,0,
-#! 0,0,3 
-#! (over a graded ring)
-#!
-#! Range:
-#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 3 and degrees:
-#! [ [ ( 1, 1 ), 3 ] ]
-#! @EndLog
-
-#! @Example
 pr2 := ProjectionInFactorOfDirectSum( [ Z2, Z2, Z2 ], 2 );
 #! <A morphism in Freyd( CAP category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 pr3 := ProjectionInFactorOfDirectSum( [ Z2, Z2, Z2 ], 3 );
 #! <A morphism in Freyd( CAP category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
-#! @EndExample
-
-#! @Log
-Display( UniversalMorphismIntoDirectSum( [ pr3, pr2 ] ) );
-#! A morphism in Freyd( CAP category of graded columns over
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
-#!
-#! Morphism datum:
-#! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-#!
-#! Source:
-#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 3 and degrees:
-#! [ [ ( 1, 1 ), 3 ] ]
-#!
-#! Matrix:
-#! 0,0,1,
-#! 0,1,0 
-#! (over a graded ring)
-#!
-#! Range:
-#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees:
-#! [ [ ( 1, 1 ), 2 ] ]
-#! @EndLog
-
-#! @Example
+uni := UniversalMorphismIntoDirectSum( [ pr3, pr2 ] );
+#! <A morphism in Freyd( CAP category of graded columns over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 inj1 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 1 );
 #! <A morphism in Freyd( CAP category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 inj2 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 2 );
 #! <A morphism in Freyd( CAP category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
-#! @EndExample
-
-#! @Log
-Display( UniversalMorphismFromDirectSum( [ inj2, inj1 ] ) );
-#! A morphism in Freyd( CAP category of graded columns over
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
-#!
-#! Morphism datum:
-#! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-#!
-#! Source:
-#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees:
-#! [ [ ( 1, 1 ), 2 ] ]
-#!
-#! Matrix:
-#! 0,1,
-#! 1,0,
-#! 0,0 
-#! (over a graded ring)
-#!
-#! Range:
-#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 3 and degrees:
-#! [ [ ( 1, 1 ), 3 ] ]
-#! @EndLog
-
-#! @Example
+uni2 := UniversalMorphismFromDirectSum( [ inj2, inj1 ] );
+#! <A morphism in Freyd( CAP category of graded columns over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 ZFree := AsFreydCategoryObject( obj1 );
 #! <A projective object in Freyd( CAP category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
@@ -788,70 +550,10 @@ id := IdentityMorphism( ZFree );
 z := id + id;
 #! <A morphism in Freyd( CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
+coker_proj := CokernelProjection( z );
+#! <An epimorphism in Freyd( CAP category of graded columns over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
+cokernel_colift := CokernelColift( z, CokernelProjection( z ) );
+#! <A morphism in Freyd( CAP category of graded columns over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )>
 #! @EndExample
-
-#! @Log
-Display( z );
-#! A morphism in Freyd( CAP category of graded columns over
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
-#!
-#! Morphism datum:
-#! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-#!
-#! Source:
-#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
-#! [ [ ( 1, 1 ), 1 ] ]
-#!
-#! Matrix:
-#! 2
-#! (over a graded ring)
-#!
-#! Range:
-#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
-#! [ [ ( 1, 1 ), 1 ] ]
-Display( CokernelProjection( z ) );
-#! An epimorphism in Freyd( CAP category of graded columns over
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
-#!
-#! Morphism datum:
-#! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-#!
-#! Source:
-#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
-#! [ [ ( 1, 1 ), 1 ] ]
-#!
-#! Matrix:
-#! 1
-#! (over a graded ring)
-#!
-#! Range:
-#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
-#! [ [ ( 1, 1 ), 1 ] ]
-Display( CokernelColift( z, CokernelProjection( z ) ) );
-#! A morphism in Freyd( CAP category of graded columns over
-#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
-#!
-#! Morphism datum:
-#! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
-#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
-#!
-#! Source:
-#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
-#! [ [ ( 1, 1 ), 1 ] ]
-#!
-#! Matrix:
-#! 1
-#! (over a graded ring)
-#!
-#! Range:
-#! A graded column over Q[x_1,x_2,x_3,x_4] (with weights
-#! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees:
-#! [ [ ( 1, 1 ), 1 ] ]
-#! @EndLog
