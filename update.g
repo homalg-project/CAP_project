@@ -106,7 +106,7 @@ SetPackageInfo:=function(pkg)
         AppendTo(stream, "\n");
     fi;
 
-    AppendTo(stream, "abstract: ", pkg.AbstractHTML, "\n\n");
+    AppendTo(stream, "abstract: '", pkg.AbstractHTML, "'\n\n");
 
     AppendTo(stream, "status: ", pkg.Status, "\n");
     AppendTo(stream, "doc-html: ", pkg.PackageDoc.HTMLStart, "\n");
