@@ -6,13 +6,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <script type="text/javascript"
-  src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 <title>GAP (LinearAlgebraForCAP) - Chapter 2: Examples and Tests</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script><script type="text/javascript" src="https://unpkg.com/thebelab@0.0.3"></script><script src="manual.js" type="text/javascript"></script>
+<script src="manual.js" type="text/javascript"></script>
 <script type="text/javascript">overwriteStyle();</script>
 </head>
 <body class="chap2"  onload="jscontent()">
@@ -23,8 +23,7 @@
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap2.html">[MathJax off]</a></p>
-
-<div style="text-align: center;"><input type="button" onclick="convert_examples();start_kernel()" value="Make this live!"></div><p><a id="X7967FE8E7BBDF485" name="X7967FE8E7BBDF485"></a></p>
+<p><a id="X7967FE8E7BBDF485" name="X7967FE8E7BBDF485"></a></p>
 <div class="ChapSects"><a href="chap2_mj.html#X7967FE8E7BBDF485">2 <span class="Heading">Examples and Tests</span></a>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X8104A77D7B5CCD4F">2.1 <span class="Heading">Basic Commands</span></a>
 </span>
@@ -121,9 +120,43 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoproductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( FiberProductFunctorial( [ [ u, IdentityMorphism( Source( u ) ), u ], [ u, IdentityMorphism( Source( u ) ) , u ] ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( FiberProductFunctorial( [ u, u ], [ IdentityMorphism( Source( u ) ), IdentityMorphism( Source( u ) ) ], [ u, u ] ) );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PushoutFunctorial( [ [ u, IdentityMorphism( Range( u ) ), u ], [ u, IdentityMorphism( Range( u ) ) , u ] ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PushoutFunctorial( [ u, u ], [ IdentityMorphism( Range( u ) ), IdentityMorphism( Range( u ) ) ], [ u, u ] ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( (1/2) * alpha, alpha * (1/2) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( HomomorphismStructureOnObjects( a, b ) ) = Dimension( a ) * Dimension( b );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    PreCompose( [ u, DualOnMorphisms( i1 ), DualOnMorphisms( alpha ) ] ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( Source( u ), Source( alpha ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">         PreCompose(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">             InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( DualOnMorphisms( i1 ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">             HomomorphismStructureOnMorphisms( u, DualOnMorphisms( alpha ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">         )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := CapCategory( alpha );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := TensorUnit( vec );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := ZeroObject( vec );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ZeroObjectFunctorial( vec ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( z, z, ZeroMorphism( t, z ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ZeroObjectFunctorial( vec ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        z, z,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( ZeroObjectFunctorial( vec ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">right_side := PreCompose( [ i1, DualOnMorphisms( u ), u ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := SolveLinearSystemInAbCategory( [ [ i1 ] ], [ [ u ] ], [ right_side ] )[1];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( PreCompose( [ i1, x, u ] ), right_side );</span>
 true
 </pre></div>
 
