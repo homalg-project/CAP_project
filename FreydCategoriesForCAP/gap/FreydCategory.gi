@@ -28,7 +28,7 @@ InstallMethod( FreydCategory,
                [ IsCapCategory ],
                
   function( underlying_category )
-    local freyd_category, to_be_finalized;
+    local freyd_category, to_be_finalized, conditions;
     
     if not IsValidInputForFreydCategory( underlying_category ) then
         return false;
@@ -49,53 +49,35 @@ InstallMethod( FreydCategory,
         
     fi;
     
-    if ForAll( [ "TensorProductOnObjects",
-                 "TensorProductOnMorphismsWithGivenTensorProducts",
-                 "TensorUnit",
-                 "AssociatorLeftToRightWithGivenTensorProducts",
-                 "AssociatorRightToLeftWithGivenTensorProducts",
-                 "LeftUnitorWithGivenTensorProduct",
-                 "LeftUnitorInverseWithGivenTensorProduct",
-                 "RightUnitorWithGivenTensorProduct",
-                 "RightUnitorInverseWithGivenTensorProduct" ],
-                                f -> CanCompute( underlying_category, f ) ) then
+    conditions := [ "TensorProductOnObjects",
+                    "TensorProductOnMorphismsWithGivenTensorProducts",
+                    "TensorUnit",
+                    "AssociatorLeftToRightWithGivenTensorProducts",
+                    "AssociatorRightToLeftWithGivenTensorProducts",
+                    "LeftUnitorWithGivenTensorProduct",
+                    "LeftUnitorInverseWithGivenTensorProduct",
+                    "RightUnitorWithGivenTensorProduct",
+                    "RightUnitorInverseWithGivenTensorProduct" ];
+    
+    if ForAll( conditions, f -> CanCompute( underlying_category, f ) ) then
 
       SetIsMonoidalCategory( freyd_category, true );
 
     fi;
 
-    if ForAll( [ "TensorProductOnObjects",
-                 "TensorProductOnMorphismsWithGivenTensorProducts",
-                 "TensorUnit",
-                 "AssociatorLeftToRightWithGivenTensorProducts",
-                 "AssociatorRightToLeftWithGivenTensorProducts",
-                 "LeftUnitorWithGivenTensorProduct",
-                 "LeftUnitorInverseWithGivenTensorProduct",
-                 "RightUnitorWithGivenTensorProduct",
-                 "RightUnitorInverseWithGivenTensorProduct",
-                 "BraidingWithGivenTensorProducts" ],
-                                f -> CanCompute( underlying_category, f ) ) then
+    conditions := Concatenation( conditions, [ "BraidingWithGivenTensorProducts" ] );
+    if ForAll( conditions, f -> CanCompute( underlying_category, f ) ) then
 
       SetIsSymmetricMonoidalCategory( freyd_category, true );
 
     fi;
 
-    if ForAll( [ "TensorProductOnObjects",
-                 "TensorProductOnMorphismsWithGivenTensorProducts",
-                 "TensorUnit",
-                 "AssociatorLeftToRightWithGivenTensorProducts",
-                 "AssociatorRightToLeftWithGivenTensorProducts",
-                 "LeftUnitorWithGivenTensorProduct",
-                 "LeftUnitorInverseWithGivenTensorProduct",
-                 "RightUnitorWithGivenTensorProduct",
-                 "RightUnitorInverseWithGivenTensorProduct",
-                 "BraidingWithGivenTensorProducts",
-                 "InternalHomOnMorphismsWithGivenInternalHoms", 
-                 "ProjectionOfBiasedWeakFiberProduct", 
-                 "UniversalMorphismIntoBiasedWeakFiberProduct",
-                 "EvaluationMorphismWithGivenSource",
-                 "CoevaluationMorphismWithGivenRange" ],
-                                f -> CanCompute( underlying_category, f ) ) then
+    conditions := Concatenation( conditions, [ "InternalHomOnMorphismsWithGivenInternalHoms",
+                                                "ProjectionOfBiasedWeakFiberProduct",
+                                                "UniversalMorphismIntoBiasedWeakFiberProduct",
+                                                "EvaluationMorphismWithGivenSource",
+                                                "CoevaluationMorphismWithGivenRange" ] );
+    if ForAll( conditions, f -> CanCompute( underlying_category, f ) ) then
 
       SetIsSymmetricClosedMonoidalCategory( freyd_category, true );
 
