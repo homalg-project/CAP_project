@@ -1,0 +1,355 @@
+  
+  [1X7 [33X[0;0YAdd Functions[133X[101X
+  
+  [33X[0;0YThis  section  describes  the  overall  structure  of  Add-functions and the
+  functions installed by them.[133X
+  
+  
+  [1X7.1 [33X[0;0YFunctions Installed by Add[133X[101X
+  
+  [33X[0;0YAdd functions (up to some exceptions) have the following syntax[133X
+  
+  [33X[0;0YDeclareOperation( "AddSomeFunc", [ IsCapCategory, IsList, IsInt ] );[133X
+  
+  [33X[0;0YThe   first   argument   is  the  category  to  which  some  function  (e.g.
+  KernelObject)  is  added, the second is a list containing pairs of functions
+  and  additional  filters  for  the  arguments,  (e.g.  if  one argument is a
+  morphism,  an  additional  filter  could  be IsMomomorphism). The third is a
+  weight  which will then be the weight for SomeFunc. This is described later.
+  If  only  one  function  is to be installed, the list can be replaced by the
+  function.  Via  InstallMethod, CAP installs the given function(s) as methods
+  for  the  install  name  of  SomeFunc,  as listed in the MethodRecord. If no
+  install name is given, the name SomeFunc is used.[133X
+  
+  [33X[0;0YAll installed methods follow the following steps, described below:[133X
+  
+  [30X    [33X[0;6YRedirect function[133X
+  
+  [30X    [33X[0;6YPrefunction[133X
+  
+  [30X    [33X[0;6YFunction[133X
+  
+  [30X    [33X[0;6YLogic[133X
+  
+  [30X    [33X[0;6YPostfunction[133X
+  
+  [30X    [33X[0;6YAddfunction[133X
+  
+  [33X[0;0YEvery  other  part,  except  from  function,  does  only  depend on the name
+  SomeFunc. We now explain the steps in detail.[133X
+  
+  [30X    [33X[0;6YRedirect  function:  The  redirect is used to redirect the computation
+        from the given functions to some other symbol. If there is for example
+        a  with  given  method  for some universal property, and the universal
+        object  is already computed, the redirect function might detect such a
+        thing,  calls  the  with  given operation with the universal object as
+        additional  argument  and  then  returns  the  value.  In general, the
+        redirect  can  be  an  arbitrary  function. It is called with the same
+        arguments  as  the  operation  SomeFunc itself and can return an array
+        containing  [ true, something ], which will cause the installed method
+        to  simply return the object something, or [ false ]. If the output is
+        false,  the  computation  will  continue  with  the  step Prefunction.
+        Additionally,  for  every category and every name like SomeFunc, there
+        is  a  boolean,  stored in the categorys redirects component under the
+        name  of  SomeFunc, which, when it is false, will prevent the redirect
+        function from being executed.[133X
+  
+  [30X    [33X[0;6YPrefunction:  The  prefunction  should  be used for error handling and
+        soft  checks  of  the  sanity  of  the  input  to  SomeFunc  (e.g. for
+        KernelLift  it  should  check  wether range and source of the morphims
+        coincide).  Generally, the prefunction is defined in the method record
+        and only depend on the name SomeFunc. It is called with the same input
+        as  the  function  itself,  and  should  return either [ true ], which
+        continues  the  computation, or [ false, "message" ], which will cause
+        an error with message "message" and some additional information.[133X
+  
+  [30X    [33X[0;6YFull  prefunction:  The  full prefuction has the same semantics as the
+        prefunction,  but can perform additional, very costly checks. They are
+        disabled by default.[133X
+  
+  [30X    [33X[0;6YFunction:  This  will  launch  the function(s) given as arguments. The
+        result  should  be as specified in the type of SomeFunc. The resulting
+        object is now named the result.[133X
+  
+  [30X    [33X[0;6YLogic:  For every function, some logical todos can be implemented in a
+        logic texfile for the category. If there is some logic written down in
+        a  file  belonging  to  the  category,  or  belonging  to some type of
+        category.  Please  see  the  description of logic for more details. If
+        there  is  some  logic  and  some predicate relations for the function
+        SomeFunc, it is installed in this step for the result.[133X
+  
+  [30X    [33X[0;6YPostfunction:  The  postfunction  called  with  the  arguments  of the
+        function  and  the  result. It can be an arbitrary function doing some
+        cosmetics.  If  for example SomeFunc is KernelEmbeddingedding, it will
+        set the KernelObject of the input morphism to result. The postfunction
+        is  also taken from the method record and does only depend on the name
+        SomeFunc.[133X
+  
+  [30X    [33X[0;6YAddfunction:  If  the  result  is  a category cell, it is added to the
+        category for which the function was installed.[133X
+  
+  
+  [1X7.2 [33X[0;0YAdd Method[133X[101X
+  
+  [33X[0;0YExcept  from  installing  a  new method for the name SomeFunc, an Add method
+  does  slightly  more.  Every Add method has the same structure. The steps in
+  the Add method are as follows:[133X
+  
+  [30X    [33X[0;6YWeight check: If the current weight of the operation is lower than the
+        given  weight  of the new functions, then the add function returns and
+        installs nothing.[133X
+  
+  [30X    [33X[0;6YOption  check:  There  are  two possible options for every add method:
+        SetPrimitive and IsDerivation.[133X
+  
+        [30X    [33X[0;12YSetPrimitive  should  be  a  boolean,  the  default  is true. If
+              SetPrimitive  is  false,  then the current call of this add will
+              not set the installed function to be primitive. This is used for
+              derivations.[133X
+  
+        [30X    [33X[0;12YIsDerivation  should  be  a  boolean, default is false. If it is
+              true,  the  add  method  assumes  that  the  given function is a
+              derivation and does not try to install a corresponding pair (See
+              below).[133X
+  
+  [30X    [33X[0;6YStandard weight: If the weight parameter is -1, the Standard weight is
+        assumed, which is 100.[133X
+  
+  [30X    [33X[0;6YChecking for pairs: If the function is not a with given operation, has
+        a corresponding with given or is a with given, and is newly installed,
+        i.e.  the  current  installation  weight  which  is  given  to the add
+        function  is  less than the current weight, the add method is going to
+        install  a  corresponding  pair  function,  i.e.  a  function  for the
+        corresponding  with  or  without  given method, which redirects to the
+        currently  installed  functions.  It also deactivates the redirect for
+        this  function.  Note that the pair install is only done for primitive
+        functions, and if the current weight is higher than the given weight.[133X
+  
+  [30X    [33X[0;6YCan compute: Set the corresponding can compute of the category to true[133X
+  
+  [30X    [33X[0;6YInstall  methods:  Decide on the methods used to install the function.
+        Check                  wether                  InstallMethodWithCache,
+        InstallMethodWithToDoForIsWellDefined,  both,  or simply InstallMethod
+        is used. This is decided by the ToDo and the caching flags.[133X
+  
+  [30X    [33X[0;6YInstallation: Next, the method to install the functions is created. It
+        creates  the  correct filter list, by merging the standard filters for
+        the  operation  with  the  particular filters for the given functions,
+        then installs the method as described above.[133X
+  
+  [30X    [33X[0;6YSetPrimitive:  If  the  set  primitive  flag  is  true,  it  is set as
+        primitive in the weight list of the category.[133X
+  
+  [30X    [33X[0;6YPair  install:  If there is a function pair, as described above, it is
+        installed.[133X
+  
+  [33X[0;0YAfter calling an add method, the corresponding Operation is available in the
+  category.  Also, some derivations, which are triggered by the setting of the
+  primitive value, might be available.[133X
+  
+  
+  [1X7.3 [33X[0;0YInstallAdd Function[133X[101X
+  
+  [33X[0;0YAlmost   all   Add   methods   in  the  CAP  kernel  are  installed  by  the
+  CapInternalInstallAdd  operation.  The  definition  of  this  function is as
+  follows:[133X
+  
+  [33X[0;0YDeclareOperation( "CapInternalInstallAdd", [ IsRecord ] );[133X
+  
+  [33X[0;0YThe record can have the following components, used as described:[133X
+  
+  [30X    [33X[0;6Yfunction_name:  The  name  of  the  function.  This  does  not have to
+        coincide  with  the  installation  name. It is used for the derivation
+        weight.[133X
+  
+  [30X    [33X[0;6Yinstallation_name  (optional):  A  string  which  is  the  name of the
+        operation  for  which  the  functions  given  to  the  Add  method are
+        installed as methods.[133X
+  
+  [30X    [33X[0;6Ypre_function  (optional):  A function which is used as the prefunction
+        of the installed methods, as described above.[133X
+  
+  [30X    [33X[0;6Yredirect_function (optional): A function which is used as the redirect
+        function of the installed methods, as described above.[133X
+  
+  [30X    [33X[0;6Ypost_function (optional): A function which is used as the postfunction
+        of the installed methods, as described above.[133X
+  
+  [30X    [33X[0;6Yfilter_list:  A  list  containing  the  basic  filters for the methods
+        installed  by  the  add  methods. Possible are filters, or the strings
+        category, object, morphism, or twocell, which will then be replaced at
+        the  time  the  add method is called with the corresponding filters of
+        the category.[133X
+  
+  [30X    [33X[0;6Ywell_defined_todo  (optional): A boolean, default value is true, which
+        states  wether there should be to do list entries which propagate well
+        definedness  from  the input of the installed methods to their output.
+        Please  note  that  true only makes sense if at least one argument and
+        the output of the installed method is a cell.[133X
+  
+  [30X    [33X[0;6Ycache_name  (optional):  The  name  of the cache which is used for the
+        installed  methods.  If  no  cache  name is given, the caching for the
+        operation is deactivated completely.[133X
+  
+  [30X    [33X[0;6Yargument_list  (optional):  A  list containing integers, which defines
+        which  arguments  should  be  used  for the additional functions, (e.g
+        redirect, pre, ...). This is important for the Op method contructions.
+        If no argument list is given, all arguments are used. Please note that
+        if you have a method selection argument for your function, you need to
+        give  the  argument_list  to  explicitly  state  which argument is the
+        method selection argument.[133X
+  
+  [30X    [33X[0;6Yreturn_type (optional): The return type can be one of the following:[133X
+  
+        [30X    [33X[0;12Y[10Xobject[110X or [10Xobject_or_fail[110X,[133X
+  
+        [30X    [33X[0;12Y[10Xmorphism[110X or [10Xmorphism_or_fail[110X,[133X
+  
+        [30X    [33X[0;12Y[10Xtwocell[110X,[133X
+  
+        [30X    [33X[0;12Y[10Xbool[110X,[133X
+  
+        [30X    [33X[0;12Y[10Xother_object[110X,[133X
+  
+        [30X    [33X[0;12Y[10Xother_morphism[110X.[133X
+  
+              [33X[0;12YIf  it  is  one  of  the  first  three  options, the correct [10XAdd[110X
+              function  (see above) is used for the result of the computation.
+              Otherwise, no [10XAdd[110X function is used after all.[133X
+  
+  [30X    [33X[0;6Yis_with_given:  Boolean,  marks  wether  the  function  which is to be
+        installed a with given function or not.[133X
+  
+  [30X    [33X[0;6Ywith_given_without_given_name_pair   (optional):   If   the  currently
+        installed operation has a corresponding with given operation or is the
+        with  given  of another operation, the names of both should be in this
+        list.[133X
+  
+  [30X    [33X[0;6Yfunctorial  (optional):  If  an  object has a corresponding functorial
+        function,  e.g.,  KernelObject and KernelObjectFunctorial, the name of
+        the functorial is stored as a string.[133X
+  
+  [30X    [33X[0;6Ynumber_of_diagram_arguments:  Specifies  how  many  of  the  arguments
+        (counting from the first argument) of the function specify the diagram
+        of the universal object. Default value is 1.[133X
+  
+  [30X    [33X[0;6Ydual_arguments_reversed:  Boolean,  marks  whether for the call of the
+        dual operation all arguments have to be given in reversed order.[133X
+  
+  [30X    [33X[0;6Ydual_preprocessor_func:  let  f be an operation with dual operation g.
+        For  the  automatic installation of g from f, the arguments given to g
+        are preprocessed by this given function.[133X
+  
+  [30X    [33X[0;6Ydual_postprocessor_func:  let f be an operation with dual operation g.
+        For the automatic installation of g from f, the computed value of f is
+        postprocessed by the given function.[133X
+  
+  [30X    [33X[0;6Yzero_arguments_for_add_method: the add method of this operation should
+        get a function without arguments[133X
+  
+  [33X[0;0YUsing  all  those  entries, the operation CapInternalInstallAdd installs add
+  methods  as  described  above.  It first provides a sanity check for all the
+  entries  described,  then  installs  the  Add method in 4 ways, with list or
+  functions  as  second argument, and with an optional third parameter for the
+  weight.[133X
+  
+  
+  [1X7.4 [33X[0;0YInstall All Adds[133X[101X
+  
+  [33X[0;0YThe  function  CAP_INTERNAL_INSTALL_ALL_ADDS does not take any arguments, it
+  is     an     auxiliary     function     which     iterates     over     the
+  CAP_INTERNAL_METHOD_NAME_RECORD   and   calls,  after  some  cosmetics,  the
+  CapInternalInstallAdd  with the corresponding method record entry. The steps
+  below are performed for every entry of the method record:[133X
+  
+  [30X    [33X[0;6YNo  install check: If the no_install component in the record is set to
+        true,  the  loop  continues  with  the  next  entry,  since  this flag
+        indicates that there should be no add function for this operation.[133X
+  
+  [30X    [33X[0;6YCache  check:  If  there  is  no cache_name, set it to the name of the
+        method record entry.[133X
+  
+  [30X    [33X[0;6YFunction name: Set the component function_name to the entry name.[133X
+  
+  [30X    [33X[0;6YRedirect:  Since  the  redirect  function  needs  the category to work
+        correctly,  the given redirects in the method records are packed up to
+        discard the last argument, which is the category.[133X
+  
+  [30X    [33X[0;6Yarg_list:  Next,  an  argument  list for redirect and post function is
+        created, by looking at the filter list in the record. If the first one
+        is a list, the first and the last (method selection argument) is used,
+        otherwise only the first.[133X
+  
+  [30X    [33X[0;6YWithGiven  special  case:  If the current entry belongs to a WithGiven
+        operation,  the  with_given_without_given_name_pair  is  set, the with
+        given  flag  is  set  to true, and the CapInternalInstallAdd is called
+        with the record. The loop then continues.[133X
+  
+  [30X    [33X[0;6YNon  universal  object  special case: If the Operation does not have a
+        universal  type,  i.e.  does  not  belong to a universal construction,
+        CapInternalInstallAdd  is  called  with  the  record.  The  loop  then
+        continues.[133X
+  
+  [33X[0;0YPlease  note  that  we  are now in the case where the operation belongs to a
+  universal  construction,  (e.g.  KernelLift)  and is not a WithGiven type of
+  operation.[133X
+  
+  [30X    [33X[0;6Yargument_list:  If the method is an Op construction, i.e. has a method
+        selection  object, the argument list is set to all but the last object
+        and  then  used  as  above. Otherwise, the argument_list is set to all
+        arguments.[133X
+  
+  [30X    [33X[0;6YIf  the  Operation  constructs a universal object, the postfunction is
+        created and then CapInternalInstallAdd is called.[133X
+  
+  [30X    [33X[0;6YIf  the  Operation  constructs  a  universal morphism, the redirect is
+        created  and  stored in the record. Also, the postfunction is created.
+        Then CapInternalInstallAdd is called.[133X
+  
+  [33X[0;0YAfter  one call of this function, all add methods are installed correctly. A
+  second call should not do anything.[133X
+  
+  
+  [1X7.5 [33X[0;0YPrepare functions[133X[101X
+  
+  [1X7.5-1 CAPOperationPrepareFunction[101X
+  
+  [33X[1;0Y[29X[2XCAPOperationPrepareFunction[102X( [3Xprepare_function[103X, [3Xcategory[103X, [3Xfunc[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya function[133X
+  
+  [33X[0;0YGiven  a  non-CAP-conform  function  for  any of the categorical operations,
+  i.e.,  a  function  that computes the direct sum of two objects instead of a
+  list of objects, this function wraps the function with a wrapper function to
+  fit  in  the  CAP  context. For the mentioned binary direct sum one can call
+  this  function  with  [10X"BinaryDirectSumToDirectSum"[110X  as [3Xprepare_function[103X, the
+  category,  and  the  binary direct sum function. The function then returns a
+  function that can be used for the direct sum categorical operation.[133X
+  
+  [33X[0;0YNote  that [3Xfunc[103X is not handled by the CAP caching mechanism and that the use
+  of  prepare  functions  is incompatible with [10XWithGiven[110X operations. Thus, one
+  has  to  ensure  manually  that  the  equality and typing specifications are
+  fulfilled.[133X
+  
+  [1X7.5-2 CAPAddPrepareFunction[101X
+  
+  [33X[1;0Y[29X[2XCAPAddPrepareFunction[102X( [3Xprepare_function[103X, [3Xname[103X, [3Xdoc_string[103X[, [3Xprecondition_list[103X] ) [32X function[133X
+  
+  [33X[0;0YAdds  a  prepare  function to the list of CAP's prepare functions. The first
+  argument is the prepare function itself. It should always be a function that
+  takes a category and a function and returns a function. The argument [3Xname[103X is
+  the    name    of    the    prepare    function,    which    is    used   in
+  [10XCAPOperationPrepareFunction[110X.  The  argument  [3Xdoc_string[103X  should  be  a short
+  string describing the functions. The optional argument [3Xprecondition_list[103X can
+  describe  preconditions  for  the  prepare  function  to  work, i.e., if the
+  category  does  need to have PreCompose computable. This information is also
+  recovered   automatically   from   the   prepare  function  itself,  so  the
+  [3Xprecondition_list[103X is only necessary if the function needed is not explicitly
+  used   in   the   prepare   function,   e.g.,   if  you  use  [10X+[110X  instead  of
+  [10XAdditionForMorphisms[110X.[133X
+  
+  [1X7.5-3 ListCAPPrepareFunctions[101X
+  
+  [33X[1;0Y[29X[2XListCAPPrepareFunctions[102X( [3Xarg[103X ) [32X function[133X
+  
+  [33X[0;0YLists all prepare functions.[133X
+  

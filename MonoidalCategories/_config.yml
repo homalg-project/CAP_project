@@ -1,0 +1,2 @@
+highlighter: pygments
+include: ['CAP', 'GeneralizedMorphismsForCAP', 'LinearAlgebraForCAP', 'ModulePresentationsForCAP' ]

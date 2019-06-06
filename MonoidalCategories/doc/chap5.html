@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (CAP) - Chapter 5: Category of Categories</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap5"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap4.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap6.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap5_mj.html">[MathJax on]</a></p>
+<p><a id="X87C0818C7EFB273D" name="X87C0818C7EFB273D"></a></p>
+<div class="ChapSects"><a href="chap5.html#X87C0818C7EFB273D">5 <span class="Heading">Category of Categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X7A8C280B85B50DE0">5.1 <span class="Heading">The Category Cat</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X810DBB407D117E6B">5.1-1 CapCat</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X7CC6903E78F24167">5.2 <span class="Heading">Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X814369D484E429EF">5.2-1 IsCapCategoryAsCatObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7CBE360B8629DC79">5.2-2 IsCapFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7D2DD1297D6E57D0">5.2-3 IsCapNaturalTransformation</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X86EC0F0A78ECBC10">5.3 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7F7E47537FD1EDC3">5.3-1 AsCatObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7E3142BA84C1EC72">5.3-2 AsCapCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X78D1062D78BE08C1">5.4 <span class="Heading">Functors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7814A6FC86238C93">5.4-1 CapFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7E4F877C7C91B7CA">5.4-2 CapFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7A75B6A77C9F6836">5.4-3 AddObjectFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X78CD5D1E811A85CF">5.4-4 FunctorObjectOperation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X85EFB9BE8145B737">5.4-5 AddMorphismFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7D3BAF84793D9576">5.4-6 FunctorMorphismOperation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X850397447A1A766E">5.4-7 ApplyFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X8562CA1F795C5154">5.4-8 InputSignature</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X781664C7876ED8A0">5.4-9 InstallFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X833F9B6D85713A4F">5.4-10 IdentityFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X83FFF5538147E243">5.4-11 FunctorCanonicalizeZeroObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X815AF4E57928A453">5.4-12 NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7AA6B22B7BF73AAE">5.4-13 FunctorCanonicalizeZeroMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X813A90D28415D9A3">5.4-14 NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X836749D8814FEEE6">5.5 <span class="Heading">Natural transformations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7F32E8C985178781">5.5-1 Name</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7C9810B8858249A0">5.5-2 NaturalTransformation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7DFC4C9183446E95">5.5-3 AddNaturalTransformationFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X867F8B6A78462396">5.5-4 ApplyNaturalTransformation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X79E6BE7E83687767">5.5-5 InstallNaturalTransformation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7EAB133B81CDB5E5">5.5-6 HorizontalPreComposeNaturalTransformationWithFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7B8AC0BB8370031D">5.5-7 HorizontalPreComposeFunctorWithNaturalTransformation</a></span>
+</div></div>
+</div>
+
+<h3>5 <span class="Heading">Category of Categories</span></h3>
+
+<p>Categories itself with functors as morphisms form a category Cat. So the data structure of <code class="code">CapCategory</code>s is designed to be objects in a category. This category is implemented in <code class="code">CapCat</code>. For every category, the corresponding object in Cat can be obtained via <code class="code">AsCatObject</code>. The implemetation of the category of categories offers a data structure for functors. Those are implemented as morphisms in this category, so functors can be handled like morphisms in a category. Also convenience functions to install functors as methods are implemented (in order to avoid <code class="code">ApplyFunctor</code>).</p>
+
+<p><a id="X7A8C280B85B50DE0" name="X7A8C280B85B50DE0"></a></p>
+
+<h4>5.1 <span class="Heading">The Category Cat</span></h4>
+
+<p><a id="X810DBB407D117E6B" name="X810DBB407D117E6B"></a></p>
+
+<h5>5.1-1 CapCat</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapCat</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
+<p>This variable stores the category of categories. Every category object is constructed as an object in this category, so Cat is constructed when loading the package.</p>
+
+<p><a id="X7CC6903E78F24167" name="X7CC6903E78F24167"></a></p>
+
+<h4>5.2 <span class="Heading">Categories</span></h4>
+
+<p><a id="X814369D484E429EF" name="X814369D484E429EF"></a></p>
+
+<h5>5.2-1 IsCapCategoryAsCatObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryAsCatObject</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The GAP category of CAP categories seen as object in Cat.</p>
+
+<p><a id="X7CBE360B8629DC79" name="X7CBE360B8629DC79"></a></p>
+
+<h5>5.2-2 IsCapFunctor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapFunctor</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The GAP category of functors.</p>
+
+<p><a id="X7D2DD1297D6E57D0" name="X7D2DD1297D6E57D0"></a></p>
+
+<h5>5.2-3 IsCapNaturalTransformation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapNaturalTransformation</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The GAP category of natural transformations.</p>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>5.3 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X7F7E47537FD1EDC3" name="X7F7E47537FD1EDC3"></a></p>
+
+<h5>5.3-1 AsCatObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsCatObject</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Given a CAP category <span class="Math">C</span>, this method returns the corresponding object in Cat. For technical reasons, the filter <code class="code">IsCapCategory</code> must not imply the filter <code class="code">IsCapCategoryObject</code>. For example, if <code class="code">InitialObject</code> is applied to an object, it returns the initial object of its category. If it is applied to a category, it returns the initial object of the category. If a CAP category would be a category object itself, this would be ambiguous. So categories must be wrapped in a CatObject to be an object in Cat. This method returns the wrapper object. The category can be reobtained by <code class="code">AsCapCategory</code>.</p>
+
+<p><a id="X7E3142BA84C1EC72" name="X7E3142BA84C1EC72"></a></p>
+
+<h5>5.3-2 AsCapCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsCapCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>For an object <span class="Math">C</span> in Cat, this method returns the underlying CAP category. This method is inverse to <code class="code">AsCatObject</code>, i.e. AsCapCategory( AsCatObject( A ) ) = A.</p>
+
+<p><a id="X78D1062D78BE08C1" name="X78D1062D78BE08C1"></a></p>
+
+<h4>5.4 <span class="Heading">Functors</span></h4>
+
+<p>Functors are morphisms in Cat, thus they have source and target which are categories. A multivariate functor can be constructed via a product category as source, a presheaf is constructed via the opposite category as source. However, the user can explicitly decide the arity of a functor (which will only have technical implications). Thus, it is for example possible to consider a functor <span class="Math">A \times B \rightarrow C</span> either as a unary functor with source category <span class="Math">A \times B</span> or as a binary functor. Moreover, an object and a morphism function can be added to a functor, to apply it to objects or morphisms in the source category.</p>
+
+<p><a id="X7814A6FC86238C93" name="X7814A6FC86238C93"></a></p>
+
+<h5>5.4-1 CapFunctor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapFunctor</code>( <var class="Arg">name</var>, <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapFunctor</code>( <var class="Arg">name</var>, <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapFunctor</code>( <var class="Arg">name</var>, <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapFunctor</code>( <var class="Arg">name</var>, <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>These methods construct a unary CAP functor. The first argument is a string for the functor's name. <var class="Arg">A</var> and <var class="Arg">B</var> are the source and target of the functor, and they can be given as objects in <code class="code">CapCat</code> or as a CAP-category.</p>
+
+<p><a id="X7E4F877C7C91B7CA" name="X7E4F877C7C91B7CA"></a></p>
+
+<h5>5.4-2 CapFunctor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapFunctor</code>( <var class="Arg">name</var>, <var class="Arg">list</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapFunctor</code>( <var class="Arg">name</var>, <var class="Arg">list</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>These methods construct a possible multivariate CAP functor. The first argument is a string for the functor's name. The second argument is a list encoding the input signature of the functor. It can be given as a list of pairs <span class="Math">[ [ A_1, b_1 ], \dots, [ A_n, b_n ] ]</span> where a pair consists of a category <span class="Math">A_i</span> (given as an object in <code class="code">CapCat</code> or as a CAP-category) and a boolean <span class="Math">b_i</span> for <span class="Math">i = 1, \dots, n</span>. Instead of a pair <span class="Math">[ A_i, b_i ]</span>, you can also give simply <span class="Math">A_i</span>, which will be interpreted as the pair <span class="Math">[ A_i, \mathtt{false} ]</span>. The third argument is the target <var class="Arg">B</var> of the functor, and it can be given as an object in <code class="code">CapCat</code> or as a CAP-category. The output is a functor with source given by the product category <span class="Math">D_1 \times ... \times D_n</span>, where <span class="Math">D_i = A_i</span> if <span class="Math">b_i = \mathtt{false}</span>, and <span class="Math">D_i = A_i^{\mathrm{op}}</span> otherwise.</p>
+
+<p><a id="X7A75B6A77C9F6836" name="X7A75B6A77C9F6836"></a></p>
+
+<h5>5.4-3 AddObjectFunction</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddObjectFunction</code>( <var class="Arg">F</var>, <var class="Arg">f</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>This operation adds a function <span class="Math">f</span> to the functor <span class="Math">F</span> which can then be applied to objects in the source. The given function <span class="Math">f</span> has to take arguments according to the <code class="code">InputSignature</code> of <span class="Math">F</span>, i.e., if the input signature is given by <span class="Math">[ [A_1, b_1], \dots, [A_n,b_n] ]</span>, then <span class="Math">f</span> must take <span class="Math">n</span> arguments, where the <span class="Math">i</span>-th argument is an object in the category <span class="Math">A_i</span> (the boolean <span class="Math">b_i</span> is ignored). The function should return an object in the range of the functor, except when the automatic call of <code class="code">AddObject</code> was enabled via <code class="code">EnableAddForCategoricalOperations</code>. In this case the output only has to be a GAP object in <code class="code">IsAttributeStoringRep</code>, which will be automatically added as an object to the range of the functor.</p>
+
+<p><a id="X78CD5D1E811A85CF" name="X78CD5D1E811A85CF"></a></p>
+
+<h5>5.4-4 FunctorObjectOperation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FunctorObjectOperation</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a GAP operation</p>
+
+<p>The argument is a functor <span class="Math">F</span>. The output is the GAP operation realizing the action of <span class="Math">F</span> on objects.</p>
+
+<p><a id="X85EFB9BE8145B737" name="X85EFB9BE8145B737"></a></p>
+
+<h5>5.4-5 AddMorphismFunction</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFunction</code>( <var class="Arg">F</var>, <var class="Arg">f</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>This operation adds a function <span class="Math">f</span> to the functor <span class="Math">F</span> which can then be applied to morphisms in the source. The given function <span class="Math">f</span> has to take as its first argument an object <span class="Math">s</span> that is equal (via <code class="code">IsEqualForObjects</code>) to the source of the result of applying <span class="Math">F</span> to the input morphisms. The next arguments of <span class="Math">f</span> have to morphisms according to the <code class="code">InputSignature</code> of <span class="Math">F</span>, i.e., if the input signature is given by <span class="Math">[ [A_1, b_1], \dots, [A_n,b_n] ]</span>, then <span class="Math">f</span> must take <span class="Math">n</span> arguments, where the <span class="Math">i</span>-th argument is a morphism in the category <span class="Math">A_i</span> (the boolean <span class="Math">b_i</span> is ignored). The last argument of <span class="Math">f</span> must be an object <span class="Math">r</span> that is equal (via <code class="code">IsEqualForObjects</code>) to the range of the result of applying <span class="Math">F</span> to the input morphisms. The function should return a morphism in the range of the functor, except when the automatic call of <code class="code">AddMorphism</code> was enabled via <code class="code">EnableAddForCategoricalOperations</code>. In this case the output only has to be a GAP object in <code class="code">IsAttributeStoringRep</code> (with attributes <code class="code">Source</code> and <code class="code">Range</code> containing also GAP objects in <code class="code">IsAttributeStoringRep</code>), which will be automatically added as a morphism to the range of the functor.</p>
+
+<p><a id="X7D3BAF84793D9576" name="X7D3BAF84793D9576"></a></p>
+
+<h5>5.4-6 FunctorMorphismOperation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FunctorMorphismOperation</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a GAP operation</p>
+
+<p>The argument is a functor <span class="Math">F</span>. The output is the GAP operation realizing the action of <span class="Math">F</span> on morphisms.</p>
+
+<p><a id="X850397447A1A766E" name="X850397447A1A766E"></a></p>
+
+<h5>5.4-7 ApplyFunctor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyFunctor</code>( <var class="Arg">func</var>, <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: IsCapCategoryCell</p>
+
+<p>Applies the functor <var class="Arg">func</var> to the object or morphism <var class="Arg">A</var>.</p>
+
+<p><a id="X8562CA1F795C5154" name="X8562CA1F795C5154"></a></p>
+
+<h5>5.4-8 InputSignature</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InputSignature</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: IsList</p>
+
+<p>The argument is a functor <span class="Math">F</span>. The output is a list of pairs <span class="Math">[ [ A_1, b_1 ], \dots, [ A_n, b_n ] ]</span> where a pair consists of a CAP-category <span class="Math">A_i</span> and a boolean <span class="Math">b_i</span> for <span class="Math">i = 1, \dots, n</span>. The source of <span class="Math">F</span> is given by the product category <span class="Math">D_1 \times ... \times D_n</span>, where <span class="Math">D_i = A_i</span> if <span class="Math">b_i = \mathtt{false}</span>, and <span class="Math">D_i = A_i^{\mathrm{op}}</span> otherwise.</p>
+
+<p><a id="X781664C7876ED8A0" name="X781664C7876ED8A0"></a></p>
+
+<h5>5.4-9 InstallFunctor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InstallFunctor</code>( <var class="Arg">F</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a functor <span class="Math">F</span> and a string <span class="Math">s</span>. To simplify the description of this operation, we let <span class="Math">[ [ A_1, b_1 ], \dots, [ A_n, b_n ] ]</span> denote the input signature of <span class="Math">F</span>. This method tries to install <span class="Math">3</span> operations: an operation <span class="Math">\omega_1</span> with the name <span class="Math">s</span>, an operation <span class="Math">\omega_2</span> with the name <span class="Math">s\mathtt{OnObjects}</span>, and an operation <span class="Math">\omega_3</span> with the name <span class="Math">s\mathtt{OnMorphisms}</span>. The operation <span class="Math">\omega_1</span> takes as input either <span class="Math">n</span>- objects/morphisms in <span class="Math">A_i</span> or a single object/morphism in the source of <span class="Math">F</span>, and outputs the result of applying <span class="Math">F</span> to this input. <span class="Math">\omega_2</span> and <span class="Math">\omega_3</span> are the corresponding variants for objects or morphisms only. This function can only be called once for each functor, every further call will be ignored.</p>
+
+<p><a id="X833F9B6D85713A4F" name="X833F9B6D85713A4F"></a></p>
+
+<h5>5.4-10 IdentityFunctor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IdentityFunctor</code>( <var class="Arg">cat</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a functor</p>
+
+<p>Returns the identity functor of the category <var class="Arg">cat</var> viewed as an object in the category of categories.</p>
+
+<p><a id="X83FFF5538147E243" name="X83FFF5538147E243"></a></p>
+
+<h5>5.4-11 FunctorCanonicalizeZeroObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FunctorCanonicalizeZeroObjects</code>( <var class="Arg">cat</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a functor</p>
+
+<p>Returns the endofunctor of the category <var class="Arg">cat</var> with zero which maps each (object isomorphic to the) zero object to <code class="code">ZeroObject</code>(<var class="Arg">cat</var>) and to itself otherwise. This functor is equivalent to the identity functor.</p>
+
+<p><a id="X815AF4E57928A453" name="X815AF4E57928A453"></a></p>
+
+<h5>5.4-12 NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects</code>( <var class="Arg">cat</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a natural transformation</p>
+
+<p>Returns the natural isomorphism from the identity functor to <code class="code">FunctorCanonicalizeZeroObjects</code>(<var class="Arg">cat</var>).</p>
+
+<p><a id="X7AA6B22B7BF73AAE" name="X7AA6B22B7BF73AAE"></a></p>
+
+<h5>5.4-13 FunctorCanonicalizeZeroMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FunctorCanonicalizeZeroMorphisms</code>( <var class="Arg">cat</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a functor</p>
+
+<p>Returns the endofunctor of the category <var class="Arg">cat</var> with zero which maps each object to itself, each morphism <span class="SimpleMath">ϕ</span> to itself, unless it is congruent to the zero morphism; in this case it is mapped to <code class="code">ZeroMorphism</code>(<code class="code">Source</code>(<span class="SimpleMath">ϕ</span>), <code class="code">Range</code>(<span class="SimpleMath">ϕ</span>)). This functor is equivalent to the identity functor.</p>
+
+<p><a id="X813A90D28415D9A3" name="X813A90D28415D9A3"></a></p>
+
+<h5>5.4-14 NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms</code>( <var class="Arg">cat</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a natural transformation</p>
+
+<p>Returns the natural isomorphism from the identity functor to <code class="code">FunctorCanonicalizeZeroMorphisms</code>(<var class="Arg">cat</var>).</p>
+
+<p><a id="X836749D8814FEEE6" name="X836749D8814FEEE6"></a></p>
+
+<h4>5.5 <span class="Heading">Natural transformations</span></h4>
+
+<p>Natural transformations form the <span class="Math">2</span>-cells of Cat. As such, it is possible to compose them vertically and horizontally, see Section <a href="chap4.html#X7B780EDB7E466121"><span class="RefLink">4.2</span></a>.</p>
+
+<p><a id="X7F32E8C985178781" name="X7F32E8C985178781"></a></p>
+
+<h5>5.5-1 Name</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Name</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a string</p>
+
+<p>As every functor, every natural transformation has a name attribute. It has to be a string and will be set by the Constructor.</p>
+
+<p><a id="X7C9810B8858249A0" name="X7C9810B8858249A0"></a></p>
+
+<h5>5.5-2 NaturalTransformation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NaturalTransformation</code>( [<var class="Arg">name</var>, ]<var class="Arg">F</var>, <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a natural transformation</p>
+
+<p>Constructs a natural transformation between the functors <var class="Arg">F</var><span class="Math">:A \rightarrow B</span> and <var class="Arg">G</var><span class="Math">:A \rightarrow B</span>. The string <var class="Arg">name</var> is optional, and, if not given, set automatically from the names of the functors</p>
+
+<p><a id="X7DFC4C9183446E95" name="X7DFC4C9183446E95"></a></p>
+
+<h5>5.5-3 AddNaturalTransformationFunction</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddNaturalTransformationFunction</code>( <var class="Arg">N</var>, <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Adds the function (or list of functions) <var class="Arg">func</var> to the natural transformation <var class="Arg">N</var>. The function or each function in the list should take three arguments. If <span class="Math">N: F \rightarrow G</span>, the arguments should be <span class="Math">F(A), A, G(A)</span>. The ouptput should be a morphism, <span class="Math">F(A) \rightarrow G(A)</span>.</p>
+
+<p><a id="X867F8B6A78462396" name="X867F8B6A78462396"></a></p>
+
+<h5>5.5-4 ApplyNaturalTransformation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyNaturalTransformation</code>( <var class="Arg">N</var>, <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>Given a natural transformation <var class="Arg">N</var><span class="Math">:F \rightarrow G</span> and an object <var class="Arg">A</var>, this function should return the morphism <span class="Math">F(A) \rightarrow G(A)</span>, corresponding to <var class="Arg">N</var>.</p>
+
+<p><a id="X79E6BE7E83687767" name="X79E6BE7E83687767"></a></p>
+
+<h5>5.5-5 InstallNaturalTransformation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InstallNaturalTransformation</code>( <var class="Arg">N</var>, <var class="Arg">name</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Installs the natural transformation <var class="Arg">N</var> as operation with the name <var class="Arg">name</var>. Argument for this operation is an object, output is a morphism.</p>
+
+<p><a id="X7EAB133B81CDB5E5" name="X7EAB133B81CDB5E5"></a></p>
+
+<h5>5.5-6 HorizontalPreComposeNaturalTransformationWithFunctor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HorizontalPreComposeNaturalTransformationWithFunctor</code>( <var class="Arg">N</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a natural transformation</p>
+
+<p>Computes the horizontal composition of the natural transformation <var class="Arg">N</var> and the functor <var class="Arg">F</var>.</p>
+
+<p><a id="X7B8AC0BB8370031D" name="X7B8AC0BB8370031D"></a></p>
+
+<h5>5.5-7 HorizontalPreComposeFunctorWithNaturalTransformation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HorizontalPreComposeFunctorWithNaturalTransformation</code>( <var class="Arg">F</var>, <var class="Arg">N</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a natural transformation</p>
+
+<p>Computes the horizontal composition of the functor <var class="Arg">F</var> and the natural transformation <var class="Arg">N</var>.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap4.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap6.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

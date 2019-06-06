@@ -1,0 +1,983 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (CAP) - Contents</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap0"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap0_mj.html">[MathJax on]</a></p>
+<p><a id="X7D2C85EC87DD46E5" name="X7D2C85EC87DD46E5"></a></p>
+<div class="pcenter">
+
+<h1>CAP</h1>
+
+
+<h2>Categories, Algorithms, Programming</h2>
+
+<p>
+    2019.06.07</p>
+
+<p>
+    7 June 2019
+  </p>
+
+</div>
+<p><b>
+    Sebastian Gutsche
+
+
+
+
+  </b>
+<br />Email: <span class="URL"><a href="mailto:gutsche@mathematik.uni-siegen.de">gutsche@mathematik.uni-siegen.de</a></span>
+<br />Homepage: <span class="URL"><a href="http://www.uni-siegen.de/fb6/rmi/">http://www.uni-siegen.de/fb6/rmi/</a></span>
+<br />Address: <br />Department Mathematik<br /> Universität Siegen<br /> Walter-Flex-Straße 3<br /> 57068 Siegen<br /> Germany<br />
+</p><p><b>
+    Sebastian Posur
+
+
+
+
+  </b>
+<br />Email: <span class="URL"><a href="mailto:sebastian.posur@uni-siegen.de">sebastian.posur@uni-siegen.de</a></span>
+<br />Homepage: <span class="URL"><a href="https://sebastianpos.github.io">https://sebastianpos.github.io</a></span>
+<br />Address: <br />Department Mathematik<br /> Universität Siegen<br /> Walter-Flex-Straße 3<br /> 57068 Siegen<br /> Germany<br />
+</p><p><b>
+    Øystein Skartsæterhagen
+
+
+
+
+  </b>
+<br />Email: <span class="URL"><a href="mailto:oysteini@math.ntnu.no">oysteini@math.ntnu.no</a></span>
+<br />Homepage: <span class="URL"><a href="http://www.math.ntnu.no/~oysteini/">http://www.math.ntnu.no/~oysteini/</a></span>
+<br />Address: <br />NTNU<br /> Institutt for matematiske fag<br /> 7491 Trondheim<br /> Norway<br />
+</p>
+
+<p><a id="X8537FEB07AF2BEC8" name="X8537FEB07AF2BEC8"></a></p>
+
+<div class="contents">
+<h3>Contents<a id="contents" name="contents"></a></h3>
+
+<div class="ContChap"><a href="chap1.html#X7C99ABCB7DEEDE2A">1 <span class="Heading">CAP Categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7CC6903E78F24167">1.1 <span class="Heading">Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X852A10417EEF5D0E">1.1-1 IsCapCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7E2CFDC482566454">1.1-2 IsCapCategoryCell</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7DAEF54180094D1E">1.1-3 IsCapCategoryObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X84413C4978765A3F">1.1-4 IsCapCategoryMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F3B964286D98710">1.1-5 IsCapCategoryTwoCell</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D6EA1307DFCCE46">1.1-6 AddCategoricalProperty</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7ABF649E831D4D8E">1.2 <span class="Heading">Constructor</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X86EDB84D7E3F0194">1.2-1 CreateCapCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X854CC42E828C120D">1.2-2 CreateCapCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X79CE135F7E6EBFEE">1.3 <span class="Heading">Internal Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7C7B1EAF7D786508">1.3-1 CategoryFilter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7E88D5D3860AF854">1.3-2 CellFilter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7BD6E2B887F86E9C">1.3-3 ObjectFilter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F62E0C47C778CBB">1.3-4 MorphismFilter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X850D0E978090D0C0">1.3-5 TwoCellFilter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X78D0C0057817DBC3">1.3-6 CommutativeRingOfLinearCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X8305A19E86EC7B67">1.4 <span class="Heading">Logic switcher</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X84824AC3793D872B">1.4-1 CapCategorySwitchLogicOn</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X84A995A687D031B7">1.4-2 CapCategorySwitchLogicOff</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7A15CCB67FBCF3E3">1.5 <span class="Heading">Tool functions</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X851D0435816DDB40">1.5-1 CanCompute</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7ACB9FFA84476BA0">1.5-2 CheckConstructivenessOfCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7DB3D2BD8792ABBC">1.6 <span class="Heading">Well-Definedness of Cells</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X839EA4D7805D4F97">1.6-1 IsWellDefined</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X79DB9EE785F723D1">1.7 <span class="Heading">Caching</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7DB820A686B4059F">1.7-1 SetCachingOfCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87AA14F27892F14F">1.7-2 SetCachingOfCategoryWeak</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X844903657E52E6D1">1.7-3 SetDefaultCaching</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7EC631BC7CFCF5DB">1.8 <span class="Heading">Sanity checks</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7BB84C7B83FE3D80">1.8-1 DisableInputSanityChecks</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X81A1CDD77D375231">1.9 <span class="Heading">Enable automatic calls of <code class="code">Add</code></span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7C01E3727D08D219">1.9-1 EnableAddForCategoricalOperations</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7876FF1F831F58B0">1.10 <span class="Heading">Performance tweaks</span></a>
+</span>
+</div>
+</div>
+<div class="ContChap"><a href="chap2.html#X78497E777FB3E402">2 <span class="Heading">Objects</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7ABD8E5A8408A301">2.1 <span class="Heading">Attributes for the Type of Objects</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C3B8C3D865002C8">2.1-1 CapCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7B4B807A848111AA">2.2 <span class="Heading">Equality for Objects</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8337569D81C0BBEC">2.2-1 IsEqualForObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X787F654B82150781">2.2-2 AddIsEqualForObjects</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X86CCD70884952468">2.3 <span class="Heading">Categorical Properties of Objects</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X865C78CF789DA86D">2.3-1 AddIsProjective</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F7F309F7C67D6CE">2.3-2 AddIsInjective</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7EDB2D5B7F234ADA">2.3-3 AddIsTerminal</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E6EDA9484F3E6F6">2.3-4 AddIsInitial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X856FA5E084753312">2.3-5 IsZeroForObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78C3E7BF78A9A7D5">2.3-6 AddIsZeroForObjects</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8332653E7EA2EB72">2.4 <span class="Heading">Random Objects</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X85A6C3687C46085F">2.4-1 RandomObjectByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8537D28D7C878EB2">2.4-2 AddRandomObjectByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7EEC27307C4B06E8">2.4-3 RandomObjectByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X86F6CF9382A4906A">2.4-4 AddRandomObjectByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E0974E58188E6FB">2.4-5 RandomObject</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DD668627932185C">2.5 <span class="Heading">Tool functions for caches</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BAE9BBC874635CB">2.5-1 IsEqualForCacheForObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7887D32C7973F4A0">2.5-2 AddIsEqualForCacheForObjects</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X81817A2C84F03D1D">2.6 <span class="Heading">Adding Objects to a Category</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X824AE09A81D2B184">2.6-1 Add</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X855C644A812F32B7">2.6-2 AddObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A68365C82BDA4E7">2.6-3 AddObjectRepresentation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78095CF37B92F0D9">2.6-4 ObjectifyObjectForCAPWithAttributes</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7820B09C781A90A8">2.7 <span class="Heading">Well-Definedness of Objects</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F9A38A187D9ABFA">2.7-1 IsWellDefinedForObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X859219147B3058B8">2.7-2 AddIsWellDefinedForObjects</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7EFAF5CD83C3298F">2.8 <span class="Heading">Projectives</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7FED5E898784C314">2.8-1 SomeProjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D5951AA7EBD7750">2.8-2 EpimorphismFromSomeProjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X81F04D8186B94570">2.8-3 EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BFFD7FE82DCB5F6">2.8-4 ProjectiveLift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C3AF36D86F11429">2.8-5 AddSomeProjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X85B76EA67A35B7B2">2.8-6 AddEpimorphismFromSomeProjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7B7B27468506DA04">2.8-7 AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7AEE24E581A44083">2.8-8 AddProjectiveLift</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X87100AFB7A202D2F">2.9 <span class="Heading">Injectives</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C06E1807D8775AD">2.9-1 SomeInjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8502893C82A38864">2.9-2 MonomorphismIntoSomeInjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A7C030382397A2B">2.9-3 MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CCBB0A384F37EC6">2.9-4 InjectiveColift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7DFC9A568472688B">2.9-5 AddSomeInjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X81C9788D7DD27D18">2.9-6 AddMonomorphismIntoSomeInjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CCBF6577ADC62D9">2.9-7 AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CE0C54080533C0E">2.9-8 AddInjectiveColift</a></span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chap3.html#X7BEB6C617FED52DA">3 <span class="Heading">Morphisms</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X8642E3327E96BBDD">3.1 <span class="Heading">Attributes for the Type of Morphisms</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7E923036810C606E">3.1-1 CapCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7E1373E385E7315A">3.1-2 Source</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X817496B987A1ADFC">3.1-3 Range</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7A00D0C181471D06">3.2 <span class="Heading">Categorical Properties of Morphisms</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X87DEC4BD7C48E679">3.2-1 AddIsMonomorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8523850C827FE182">3.2-2 AddIsEpimorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7B0818ED7A7BBCB4">3.2-3 AddIsIsomorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C5D46B77A65ACF2">3.2-4 AddIsSplitMonomorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D7BDF8F7EED3A72">3.2-5 AddIsSplitEpimorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7FCC38DC7843D455">3.2-6 AddIsOne</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X85701DBE7A5F90A1">3.2-7 AddIsIdempotent</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7B655F2678F605D3">3.3 <span class="Heading">Random Morphisms</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X79EBA1717D89B0A4">3.3-1 RandomMorphismWithFixedSourceByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X80E69DF27EA33C03">3.3-2 AddRandomMorphismWithFixedSourceByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X84FDBEED7844CDB6">3.3-3 RandomMorphismWithFixedSourceByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C5DEDED7A7D5F7A">3.3-4 AddRandomMorphismWithFixedSourceByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X844B1DDC8488B7CA">3.3-5 RandomMorphismWithFixedRangeByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D58154C7B6478A8">3.3-6 AddRandomMorphismWithFixedRangeByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8568D71882C30501">3.3-7 RandomMorphismWithFixedRangeByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7B2266E07E2114FE">3.3-8 AddRandomMorphismWithFixedRangeByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X80F66E9D809EA6A7">3.3-9 RandomMorphismWithFixedSourceAndRangeByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X78E443767AA69703">3.3-10 AddRandomMorphismWithFixedSourceAndRangeByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7BF231C57B40B1A1">3.3-11 RandomMorphismWithFixedSourceAndRangeByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7A395AEB813562EA">3.3-12 AddRandomMorphismWithFixedSourceAndRangeByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X81DB09BA7CBD3DB4">3.3-13 RandomMorphismByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7BC5AC807FF84905">3.3-14 AddRandomMorphismByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7E79F7A9802F622D">3.3-15 RandomMorphismByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X84BEF31F81ABC74E">3.3-16 AddRandomMorphismByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83D121E787FDC6E8">3.3-17 RandomMorphismWithFixedSource</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7EA50D6587A93936">3.4 <span class="Heading">Non-Categorical Properties of Morphisms</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7E01690B7D763504">3.4-1 IsIdenticalToIdentityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8507561F7E66719B">3.4-2 AddIsIdenticalToIdentityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X82ED159481E8A2CF">3.4-3 IsIdenticalToZeroMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8219E5A47E352C66">3.4-4 AddIsIdenticalToZeroMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X87B1905481F6AF28">3.4-5 AddIsEndomorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7FA3BD6D79D99498">3.4-6 AddIsAutomorphism</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X867B9398854FEFFD">3.5 <span class="Heading">Adding Morphisms to a Category</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7BDADB628232C280">3.5-1 Add</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X82453E55857562AB">3.5-2 AddMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X812F94E5790616EC">3.5-3 AddMorphismRepresentation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X787A52CF8218A1C9">3.5-4 ObjectifyMorphismForCAPWithAttributes</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X850CFDD48773998E">3.6 <span class="Heading">Equality and Congruence for Morphisms</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7FABCFBF865F4179">3.6-1 IsCongruentForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X861A83B3802D0FBD">3.6-2 AddIsCongruentForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8004F1DA7D9BFA8B">3.6-3 IsEqualForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83F60F5F7E57F3C8">3.6-4 AddIsEqualForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8589E5A4814C3DA5">3.6-5 IsEqualForMorphismsOnMor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X84AB81547A770D36">3.6-6 AddIsEqualForMorphismsOnMor</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X8312421679CAAE35">3.7 <span class="Heading">Basic Operations for Morphisms in Ab-Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X844684AD86DCC2DC">3.7-1 IsZeroForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X87DD3BD27C49450A">3.7-2 AddIsZeroForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83B77FBB85927F14">3.7-3 AdditionForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X811BB502781CFBB9">3.7-4 AddAdditionForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7B6461F5873F3F9D">3.7-5 SubtractionForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7ECA7B0182144B81">3.7-6 AddSubtractionForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83177713785DCFFC">3.7-7 AdditiveInverseForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7AB78A707BF08401">3.7-8 AddAdditiveInverseForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8187CAF17EB5D6D0">3.7-9 MultiplyWithElementOfCommutativeRingForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7AE8C7897CB6FDF8">3.7-10 AddMultiplyWithElementOfCommutativeRingForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X873412DB7BD0FBD3">3.7-11 ZeroMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X824C08CE7D7FB387">3.7-12 AddZeroMorphism</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7C81E153817F489F">3.8 <span class="Heading">Subobject and Factorobject Operations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7E99DAA884674DE2">3.8-1 IsEqualAsSubobjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7A97D3C3869323D1">3.8-2 AddIsEqualAsSubobjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X79389FBF86CF87A4">3.8-3 IsEqualAsFactorobjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X82DE9AE387425307">3.8-4 AddIsEqualAsFactorobjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C21531C7EE65C72">3.8-5 IsDominating</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X834AC612831DDD11">3.8-6 AddIsDominating</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C77E9D479C8D502">3.8-7 IsCodominating</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X78E046E387674019">3.8-8 AddIsCodominating</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X82ADC0BF82DA2122">3.9 <span class="Heading">Identity Morphism and Composition of Morphisms</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7C9F3D8086238443">3.9-1 IdentityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X878F4D2481E94EB6">3.9-2 AddIdentityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8244F7A0868BE27D">3.9-3 PreCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83CB57FB81931CFE">3.9-4 PreCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X868C87097D322509">3.9-5 AddPreCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X84293B8381256A08">3.9-6 PostCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X81222A1084A4F637">3.9-7 PostCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X853E87F47F9FC287">3.9-8 AddPostCompose</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7D5182B48598FBC5">3.10 <span class="Heading">Well-Definedness of Morphisms</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7968A871832877B8">3.10-1 IsWellDefinedForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7A4BE39A83D2A730">3.10-2 AddIsWellDefinedForMorphisms</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X83339BB37B01DB19">3.11 <span class="Heading">Lift/Colift</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83CDF65582CD9921">3.11-1 LiftAlongMonomorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X869A19337CB3059E">3.11-2 AddLiftAlongMonomorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X79AA9F638487EE32">3.11-3 ColiftAlongEpimorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7BBEF7C479E612ED">3.11-4 AddColiftAlongEpimorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D9BA8D67892BD48">3.11-5 IsLiftableAlongMonomorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7BD695308127A877">3.11-6 AddIsLiftableAlongMonomorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7DCDD2B2859EFD2D">3.11-7 IsColiftableAlongEpimorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X86BF34667D329168">3.11-8 AddIsColiftableAlongEpimorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X87C471D583C1CD9E">3.11-9 Lift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7DA9346A8517648D">3.11-10 AddLift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7BA38B0F797AFE20">3.11-11 Colift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X84A7986F82ED769E">3.11-12 AddColift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7F895375875BE5B9">3.11-13 IsLiftable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X79AC542F8227455E">3.11-14 AddIsLiftable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8685B04087B1E52A">3.11-15 IsColiftable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7A41C14B8169E993">3.11-16 AddIsColiftable</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X864F84C47DC1A620">3.12 <span class="Heading">Inverses</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7A6B4970823DDAE6">3.12-1 AddInverse</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7DD668627932185C">3.13 <span class="Heading">Tool functions for caches</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X83F87AE07ED534ED">3.13-1 IsEqualForCacheForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X833165B27AA74580">3.13-2 AddIsEqualForCacheForMorphisms</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7F065B9A78922547">3.14 <span class="Heading">Homomorphism structures</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X81BC29A679416C45">3.14-1 HomomorphismStructureOnObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7833851F7DD2D0F1">3.14-2 AddHomomorphismStructureOnObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8257E3787865C5E0">3.14-3 HomomorphismStructureOnMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7FBC94B983CBA64F">3.14-4 HomomorphismStructureOnMorphismsWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7F6B67487C55B055">3.14-5 AddHomomorphismStructureOnMorphismsWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7999CCFF82DA16D7">3.14-6 DistinguishedObjectOfHomomorphismStructure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D7A07CC7C9541DB">3.14-7 AddDistinguishedObjectOfHomomorphismStructure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8296788986E7857F">3.14-8 InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X866BC47C7D031883">3.14-9 AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X8083130D82B510BA">3.14-10 InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7E4E4CDF849ECCF7">3.14-11 AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7BE5E2687FC110AC">3.14-12 SolveLinearSystemInAbCategory</a></span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chap4.html#X7B2650D983390045">4 <span class="Heading">Category 2-Cells</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X793836877FCD5EC6">4.1 <span class="Heading">Attributes for the Type of 2-Cells</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8061EB36809022A4">4.1-1 Source</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7C16D44B8639016B">4.1-2 Range</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X7B780EDB7E466121">4.2 <span class="Heading">Identity 2-Cell and Composition of 2-Cells</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X78ED1F327D902924">4.2-1 IdentityTwoCell</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X85B4A2607CDFC0D2">4.2-2 AddIdentityTwoCell</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7DD9EB1F80921939">4.2-3 HorizontalPreCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7C759D3A7CB3FA3A">4.2-4 AddHorizontalPreCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X87C942B87C6A161D">4.2-5 HorizontalPostCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X80B2FA2F7C2E2BDA">4.2-6 AddHorizontalPostCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7D89385B7834B086">4.2-7 VerticalPreCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X85F4507081F229DD">4.2-8 AddVerticalPreCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X79D9FBEA851C4F00">4.2-9 VerticalPostCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7AA662D58265F658">4.2-10 AddVerticalPostCompose</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X84A60F017943A943">4.3 <span class="Heading">Well-Definedness for 2-Cells</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8240AF367C87663F">4.3-1 IsWellDefinedForTwoCells</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7EE52A1587E15D94">4.3-2 AddIsWellDefinedForTwoCells</a></span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chap5.html#X87C0818C7EFB273D">5 <span class="Heading">Category of Categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X7A8C280B85B50DE0">5.1 <span class="Heading">The Category Cat</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X810DBB407D117E6B">5.1-1 CapCat</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X7CC6903E78F24167">5.2 <span class="Heading">Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X814369D484E429EF">5.2-1 IsCapCategoryAsCatObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7CBE360B8629DC79">5.2-2 IsCapFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7D2DD1297D6E57D0">5.2-3 IsCapNaturalTransformation</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X86EC0F0A78ECBC10">5.3 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7F7E47537FD1EDC3">5.3-1 AsCatObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7E3142BA84C1EC72">5.3-2 AsCapCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X78D1062D78BE08C1">5.4 <span class="Heading">Functors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7814A6FC86238C93">5.4-1 CapFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7E4F877C7C91B7CA">5.4-2 CapFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7A75B6A77C9F6836">5.4-3 AddObjectFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X78CD5D1E811A85CF">5.4-4 FunctorObjectOperation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X85EFB9BE8145B737">5.4-5 AddMorphismFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7D3BAF84793D9576">5.4-6 FunctorMorphismOperation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X850397447A1A766E">5.4-7 ApplyFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X8562CA1F795C5154">5.4-8 InputSignature</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X781664C7876ED8A0">5.4-9 InstallFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X833F9B6D85713A4F">5.4-10 IdentityFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X83FFF5538147E243">5.4-11 FunctorCanonicalizeZeroObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X815AF4E57928A453">5.4-12 NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7AA6B22B7BF73AAE">5.4-13 FunctorCanonicalizeZeroMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X813A90D28415D9A3">5.4-14 NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X836749D8814FEEE6">5.5 <span class="Heading">Natural transformations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7F32E8C985178781">5.5-1 Name</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7C9810B8858249A0">5.5-2 NaturalTransformation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7DFC4C9183446E95">5.5-3 AddNaturalTransformationFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X867F8B6A78462396">5.5-4 ApplyNaturalTransformation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X79E6BE7E83687767">5.5-5 InstallNaturalTransformation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7EAB133B81CDB5E5">5.5-6 HorizontalPreComposeNaturalTransformationWithFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7B8AC0BB8370031D">5.5-7 HorizontalPreComposeFunctorWithNaturalTransformation</a></span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chap6.html#X7994CC1487D7617C">6 <span class="Heading">Universal Objects</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7DCD99628504B810">6.1 <span class="Heading">Kernel</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82EAD3357C9FE4C8">6.1-1 KernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8430666980D732FB">6.1-2 KernelEmbedding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CBE1D0C84F5A47E">6.1-3 KernelEmbeddingWithGivenKernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X851623317C59DDE5">6.1-4 KernelLift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X80B3CF1A7E2C6783">6.1-5 KernelLiftWithGivenKernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8681E565875A8C03">6.1-6 AddKernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X788D35FA8050DA84">6.1-7 AddKernelEmbedding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X87668C2183C9E8A1">6.1-8 AddKernelEmbeddingWithGivenKernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7A3F184085748DE6">6.1-9 AddKernelLift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D6119357E10B4DA">6.1-10 AddKernelLiftWithGivenKernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78D5B94A7EF4D4F0">6.1-11 KernelObjectFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X787AE8F07F7A062C">6.1-12 KernelObjectFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7F61FE0B82AF4CDB">6.1-13 KernelObjectFunctorialWithGivenKernelObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7A17922D869CCEB5">6.1-14 KernelObjectFunctorialWithGivenKernelObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BE607577847C4DC">6.1-15 AddKernelObjectFunctorialWithGivenKernelObjects</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X875F177A82BF9B8B">6.2 <span class="Heading">Cokernel</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82803DBC80F40EFC">6.2-1 CokernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78948D7A7B52AB31">6.2-2 CokernelProjection</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X845DC9377A05BE7B">6.2-3 CokernelProjectionWithGivenCokernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7EA0944B81F119C8">6.2-4 CokernelColift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B3F7C3A7B6CEEE1">6.2-5 CokernelColiftWithGivenCokernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7827637D7B8E7E60">6.2-6 AddCokernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D9723AA7E4EAC2A">6.2-7 AddCokernelProjection</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X793803DC816CBA27">6.2-8 AddCokernelProjectionWithGivenCokernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7988858A83DAFF4B">6.2-9 AddCokernelColift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7991C43079F444CC">6.2-10 AddCokernelColiftWithGivenCokernelObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78E421227FB90A70">6.2-11 CokernelObjectFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X837889ED7BD6CBED">6.2-12 CokernelObjectFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BA172F07A431626">6.2-13 CokernelObjectFunctorialWithGivenCokernelObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7F59A455873709D3">6.2-14 CokernelObjectFunctorialWithGivenCokernelObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B162B6E7D60FFE7">6.2-15 AddCokernelObjectFunctorialWithGivenCokernelObjects</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X797A74DE8267C974">6.3 <span class="Heading">Zero Object</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X790C4FA87CADB93E">6.3-1 ZeroObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X87D87A177FE0542F">6.3-2 ZeroObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7F701A11812C74C5">6.3-3 MorphismFromZeroObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X837BD808791003FF">6.3-4 MorphismIntoZeroObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7A0BF1118777C8A3">6.3-5 UniversalMorphismFromZeroObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X80327B2387F38FE8">6.3-6 UniversalMorphismFromZeroObjectWithGivenZeroObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86003308844F8341">6.3-7 UniversalMorphismIntoZeroObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X866104CA84CBC40A">6.3-8 UniversalMorphismIntoZeroObjectWithGivenZeroObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8711ABE9811C7CCF">6.3-9 IsomorphismFromZeroObjectToInitialObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86FF82B284B8E2EB">6.3-10 IsomorphismFromInitialObjectToZeroObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78C501A179BB6CBB">6.3-11 IsomorphismFromZeroObjectToTerminalObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X83E84FC187EE2445">6.3-12 IsomorphismFromTerminalObjectToZeroObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7F0111277DF3FB7E">6.3-13 AddZeroObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CAC035583A3BD60">6.3-14 AddUniversalMorphismIntoZeroObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8550CFE1804A9965">6.3-15 AddUniversalMorphismIntoZeroObjectWithGivenZeroObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X873263B37942E963">6.3-16 AddUniversalMorphismFromZeroObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8396EFB87AABCD66">6.3-17 AddUniversalMorphismFromZeroObjectWithGivenZeroObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8084DA9E870DF7DB">6.3-18 AddIsomorphismFromZeroObjectToInitialObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X876F82038640430A">6.3-19 AddIsomorphismFromInitialObjectToZeroObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BDED1CE7F0FADE9">6.3-20 AddIsomorphismFromZeroObjectToTerminalObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X85A29A037839B32B">6.3-21 AddIsomorphismFromTerminalObjectToZeroObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X79CEAF827DDED44B">6.3-22 ZeroObjectFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7C6A709286103BAE">6.3-23 AddZeroObjectFunctorial</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X827CD17C7EBFD58F">6.4 <span class="Heading">Terminal Object</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DC837217946D22D">6.4-1 TerminalObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D86D2EA7845AEEB">6.4-2 TerminalObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BEA5AF67D63F4A5">6.4-3 UniversalMorphismIntoTerminalObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8707AD1784DCBBFF">6.4-4 UniversalMorphismIntoTerminalObjectWithGivenTerminalObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7C4B4B7F8009501B">6.4-5 AddTerminalObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84D7DDAF835BDFA3">6.4-6 AddUniversalMorphismIntoTerminalObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8230986A7821D9B4">6.4-7 AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7C616CD287760D2F">6.4-8 TerminalObjectFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82ED99F9845D2DA7">6.4-9 AddTerminalObjectFunctorial</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X78B0ED8B80BF5254">6.5 <span class="Heading">Initial Object</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7A70384E7F182B00">6.5-1 InitialObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E17CDF481C348B9">6.5-2 InitialObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X873FC2B087004DC3">6.5-3 UniversalMorphismFromInitialObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7F7177F585576F6B">6.5-4 UniversalMorphismFromInitialObjectWithGivenInitialObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78D5E19E781D696A">6.5-5 AddInitialObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X808255727E365DA5">6.5-6 AddUniversalMorphismFromInitialObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7F7D9168870D7AC6">6.5-7 AddUniversalMorphismFromInitialObjectWithGivenInitialObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X87B1C71179F798C8">6.5-8 InitialObjectFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X80950253819512A8">6.5-9 AddInitialObjectFunctorial</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X81FDB99378D1307A">6.6 <span class="Heading">Direct Sum</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X814FEC4B80B0FBFB">6.6-1 DirectSumOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78E4506F7BBA7A9A">6.6-2 ProjectionInFactorOfDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8769332783722A0E">6.6-3 ProjectionInFactorOfDirectSumOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X832F2E577B7B70BB">6.6-4 ProjectionInFactorOfDirectSumWithGivenDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X842743E97E2F28CD">6.6-5 InjectionOfCofactorOfDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X780F3EC487AAC296">6.6-6 InjectionOfCofactorOfDirectSumOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X876493497F824480">6.6-7 InjectionOfCofactorOfDirectSumWithGivenDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84F1F06186C6A191">6.6-8 UniversalMorphismIntoDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D20E7E88116A73D">6.6-9 UniversalMorphismIntoDirectSumOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7EB551D47C4FE210">6.6-10 UniversalMorphismIntoDirectSumWithGivenDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E85FE0E85FEEA73">6.6-11 UniversalMorphismFromDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X83B7987F822EECDF">6.6-12 UniversalMorphismFromDirectSumOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X851CD8777F77A9F2">6.6-13 UniversalMorphismFromDirectSumWithGivenDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7AB9D34882B5EDDF">6.6-14 IsomorphismFromDirectSumToDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7828CC27825168CA">6.6-15 IsomorphismFromDirectSumToDirectProductOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E87C9257A1BFFEE">6.6-16 IsomorphismFromDirectProductToDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78B119077AFF7AFB">6.6-17 IsomorphismFromDirectProductToDirectSumOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X85599FEC812FD591">6.6-18 IsomorphismFromDirectSumToCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7AB73A50828A1E7C">6.6-19 IsomorphismFromDirectSumToCoproductOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CACFBCA7B9A4E19">6.6-20 IsomorphismFromCoproductToDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86256BBF783F85F4">6.6-21 IsomorphismFromCoproductToDirectSumOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7FDE63F78410A822">6.6-22 MorphismBetweenDirectSums</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X873C908279759A45">6.6-23 AddMorphismBetweenDirectSums</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DCF225F79D1757C">6.6-24 MorphismBetweenDirectSumsOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7A3400D485D0C438">6.6-25 ComponentOfMorphismIntoDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B71C4F4799263E6">6.6-26 ComponentOfMorphismFromDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82B3F4A87CDF6F87">6.6-27 AddComponentOfMorphismIntoDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7ABE523F82B2DB7C">6.6-28 AddComponentOfMorphismFromDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B87E0308677AB17">6.6-29 AddProjectionInFactorOfDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X81ACCDB081967CD3">6.6-30 AddProjectionInFactorOfDirectSumWithGivenDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X845EB2F47C8FE49C">6.6-31 AddInjectionOfCofactorOfDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86A78CC2859E4382">6.6-32 AddInjectionOfCofactorOfDirectSumWithGivenDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7AA30E857A11AA2A">6.6-33 AddUniversalMorphismIntoDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E666F5683000D34">6.6-34 AddUniversalMorphismIntoDirectSumWithGivenDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82AEA81280F0FE29">6.6-35 AddUniversalMorphismFromDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X81DB161779E15937">6.6-36 AddUniversalMorphismFromDirectSumWithGivenDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X79DA06C087D4BDF3">6.6-37 AddIsomorphismFromDirectSumToDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X793FDA608055E5C9">6.6-38 AddIsomorphismFromDirectProductToDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D710CA282194DC7">6.6-39 AddIsomorphismFromDirectSumToCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X87C04FAA7F49427B">6.6-40 AddIsomorphismFromCoproductToDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CE460A37D8D468F">6.6-41 AddDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D1ADFE478EF9354">6.6-42 DirectSumFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B45854C80D79805">6.6-43 DirectSumFunctorialWithGivenDirectSums</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X829D88B6845FA373">6.6-44 AddDirectSumFunctorialWithGivenDirectSums</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7E8036DF7AC65994">6.7 <span class="Heading">Coproduct</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X872D3F297979C7B8">6.7-1 Coproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E3C6A0482E8CAB5">6.7-2 Coproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82FCE4657D132584">6.7-3 Coproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86685D3B8123A20F">6.7-4 CoproductOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82D87B52862BB55C">6.7-5 InjectionOfCofactorOfCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X818E31F17FAE5F07">6.7-6 InjectionOfCofactorOfCoproductOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X83687CD9789CAB9C">6.7-7 InjectionOfCofactorOfCoproductWithGivenCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82A8A7C97DFA77E2">6.7-8 UniversalMorphismFromCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CEEE5357A2A714E">6.7-9 UniversalMorphismFromCoproductOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7C132541786946EE">6.7-10 UniversalMorphismFromCoproductWithGivenCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X790C5EE180471583">6.7-11 AddCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X81B68CB6783FAFE0">6.7-12 AddInjectionOfCofactorOfCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DC2E9CD78A8622C">6.7-13 AddInjectionOfCofactorOfCoproductWithGivenCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X874696508440B555">6.7-14 AddUniversalMorphismFromCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7ABE731884D77899">6.7-15 AddUniversalMorphismFromCoproductWithGivenCoproduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X80697A2E797CCAA0">6.7-16 CoproductFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84F4AEB479FCE23F">6.7-17 CoproductFunctorialWithGivenCoproducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B23923D84D6FC9F">6.7-18 AddCoproductFunctorialWithGivenCoproducts</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X844C65417FBEA3C7">6.8 <span class="Heading">Direct Product</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82267DF8861F3EB6">6.8-1 DirectProductOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7FFBE9EC7BEE7673">6.8-2 ProjectionInFactorOfDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X857EAF38822D16F0">6.8-3 ProjectionInFactorOfDirectProductOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8288ABA984EF9DED">6.8-4 ProjectionInFactorOfDirectProductWithGivenDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D6464757E9A87A9">6.8-5 UniversalMorphismIntoDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84F7DE5679BAC378">6.8-6 UniversalMorphismIntoDirectProductOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78930E5581F14F14">6.8-7 UniversalMorphismIntoDirectProductWithGivenDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7FE84F89844B8352">6.8-8 AddDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84F5824779267907">6.8-9 AddProjectionInFactorOfDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B83D0627A2DCF93">6.8-10 AddProjectionInFactorOfDirectProductWithGivenDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E4C217083150A21">6.8-11 AddUniversalMorphismIntoDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84C986C67D703457">6.8-12 AddUniversalMorphismIntoDirectProductWithGivenDirectProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X814F469F80302D50">6.8-13 DirectProductFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BFF346E827DF0E3">6.8-14 DirectProductFunctorialWithGivenDirectProducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X789E69C583A0E118">6.8-15 AddDirectProductFunctorialWithGivenDirectProducts</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X824FD8F786D2350D">6.9 <span class="Heading">Equalizer</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X824FD8F786D2350D">6.9-1 Equalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X789153A87A59EAFC">6.9-2 EqualizerOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X80F6FFA483B8379B">6.9-3 EmbeddingOfEqualizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7EC748A686F5BE47">6.9-4 EmbeddingOfEqualizerOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X810AA9C5787FC775">6.9-5 EmbeddingOfEqualizerWithGivenEqualizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X85A615A183271DEF">6.9-6 UniversalMorphismIntoEqualizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8174F411785A78AF">6.9-7 UniversalMorphismIntoEqualizerWithGivenEqualizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8708C28287172ED7">6.9-8 AddEqualizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86275A2F7EF2A472">6.9-9 AddEmbeddingOfEqualizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8346BE927EB0C95B">6.9-10 AddEmbeddingOfEqualizerWithGivenEqualizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X814FACA47A759C7A">6.9-11 AddUniversalMorphismIntoEqualizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X872A26F678D6989B">6.9-12 AddUniversalMorphismIntoEqualizerWithGivenEqualizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82400CA57F0E5585">6.9-13 EqualizerFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7804D05C7EFDC5CE">6.9-14 EqualizerFunctorialWithGivenEqualizers</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X819700097DE622A4">6.9-15 AddEqualizerFunctorialWithGivenEqualizers</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7BA8F7BD793CC288">6.10 <span class="Heading">Coequalizer</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BA8F7BD793CC288">6.10-1 Coequalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X802E1E397897BE9A">6.10-2 CoequalizerOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7EF42FC481100977">6.10-3 ProjectionOntoCoequalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8484120781FF21CC">6.10-4 ProjectionOntoCoequalizerOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DA261DF7D3D1961">6.10-5 ProjectionOntoCoequalizerWithGivenCoequalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7EB9639F78149BF3">6.10-6 UniversalMorphismFromCoequalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84AD305E7AB82B76">6.10-7 UniversalMorphismFromCoequalizerWithGivenCoequalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X854D668E7F7AE192">6.10-8 AddCoequalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7C76BED4827D9C28">6.10-9 AddProjectionOntoCoequalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8691E0FA7BF900F5">6.10-10 AddProjectionOntoCoequalizerWithGivenCoequalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82B3F52779407E2F">6.10-11 AddUniversalMorphismFromCoequalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7F27613984BEA3BB">6.10-12 AddUniversalMorphismFromCoequalizerWithGivenCoequalizer</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X818C5AD2794A2C7B">6.10-13 CoequalizerFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CB3323C7B44B75F">6.10-14 CoequalizerFunctorialWithGivenCoequalizers</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X784EE97C7CBD86AE">6.10-15 AddCoequalizerFunctorialWithGivenCoequalizers</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7C5C7D847A89D79C">6.11 <span class="Heading">Fiber Product</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X79C946837899FDBF">6.11-1 IsomorphismFromFiberProductToKernelOfDiagonalDifference</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B0F26DF868F8B2D">6.11-2 IsomorphismFromFiberProductToKernelOfDiagonalDifferenceOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82A6A64979DFFE43">6.11-3 AddIsomorphismFromFiberProductToKernelOfDiagonalDifference</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X848F0B52844D782B">6.11-4 IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E0329477A5B0EB9">6.11-5 IsomorphismFromKernelOfDiagonalDifferenceToFiberProductOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B255D3F7F8D0846">6.11-6 AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DAB395584678429">6.11-7 IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8730D4A87B1AA997">6.11-8 IsomorphismFromFiberProductToEqualizerOfDirectProductDiagramOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7FF20AFE7CE85AF5">6.11-9 AddIsomorphismFromFiberProductToEqualizerOfDirectProductDiagram</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8190FBB47DB6307D">6.11-10 IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86ED0D4682CB1DC3">6.11-11 IsomorphismFromEqualizerOfDirectProductDiagramToFiberProductOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X83D3BDAF7BFBF924">6.11-12 AddIsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E17BF518268C33A">6.11-13 DirectSumDiagonalDifference</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X866CDC8A842CC21C">6.11-14 DirectSumDiagonalDifferenceOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X842E4433870BE980">6.11-15 AddDirectSumDiagonalDifference</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7919AF7486FA42C5">6.11-16 FiberProductEmbeddingInDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X803207BC84DFDACA">6.11-17 FiberProductEmbeddingInDirectSumOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8718265481B0270E">6.11-18 AddFiberProductEmbeddingInDirectSum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DE20941803BFBD9">6.11-19 FiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X81E871B983FA6EE8">6.11-20 FiberProductOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8104B3717D3B646F">6.11-21 ProjectionInFactorOfFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X809C05D883C1E31D">6.11-22 ProjectionInFactorOfFiberProductOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8085606A7B09071F">6.11-23 ProjectionInFactorOfFiberProductWithGivenFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X79F3937679B61538">6.11-24 UniversalMorphismIntoFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X83A406227DE6BC4D">6.11-25 UniversalMorphismIntoFiberProductOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X835D5D3578A3226D">6.11-26 UniversalMorphismIntoFiberProductWithGivenFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86B7F8B983B9B184">6.11-27 AddFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BC4A40A8587EB82">6.11-28 AddProjectionInFactorOfFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X822C988083A72B14">6.11-29 AddProjectionInFactorOfFiberProductWithGivenFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7F7446F882DF6DA5">6.11-30 AddUniversalMorphismIntoFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84C5017486990FB2">6.11-31 AddUniversalMorphismIntoFiberProductWithGivenFiberProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X791F33AB7EAF6A2A">6.11-32 FiberProductFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X83A9F01A82894F65">6.11-33 FiberProductFunctorialWithGivenFiberProducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X85CCD05C7D3D6B7C">6.11-34 AddFiberProductFunctorialWithGivenFiberProducts</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X81A2D49D85923894">6.12 <span class="Heading">Pushout</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DB5F4937D3FFB15">6.12-1 IsomorphismFromPushoutToCokernelOfDiagonalDifference</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B1FAA958491D7FC">6.12-2 IsomorphismFromPushoutToCokernelOfDiagonalDifferenceOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8639C412856D8860">6.12-3 AddIsomorphismFromPushoutToCokernelOfDiagonalDifference</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D9E5AEA7E6F0092">6.12-4 IsomorphismFromCokernelOfDiagonalDifferenceToPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BC6642F87C12C7B">6.12-5 IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X811F965D7B9837F9">6.12-6 AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X87C495A782BE3433">6.12-7 IsomorphismFromPushoutToCoequalizerOfCoproductDiagram</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CD0505B7DC1BF6A">6.12-8 IsomorphismFromPushoutToCoequalizerOfCoproductDiagramOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7C757EA67A35147A">6.12-9 AddIsomorphismFromPushoutToCoequalizerOfCoproductDiagram</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7EAFDD727D94E932">6.12-10 IsomorphismFromCoequalizerOfCoproductDiagramToPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B2C8CA482EB626B">6.12-11 IsomorphismFromCoequalizerOfCoproductDiagramToPushoutOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B80534F79D74B95">6.12-12 AddIsomorphismFromCoequalizerOfCoproductDiagramToPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X81DC4C1778CF1FD3">6.12-13 DirectSumCodiagonalDifference</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CA4577F7D26C099">6.12-14 DirectSumCodiagonalDifferenceOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84CF535682E444B6">6.12-15 AddDirectSumCodiagonalDifference</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78450AD684E5746A">6.12-16 DirectSumProjectionInPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8702BC0180D5AEFD">6.12-17 DirectSumProjectionInPushoutOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84852B0980DF02AE">6.12-18 AddDirectSumProjectionInPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78E10D9E849FE214">6.12-19 Pushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78D93A2883C83CAC">6.12-20 Pushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78BE08E284796495">6.12-21 PushoutOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CF12E527805752F">6.12-22 InjectionOfCofactorOfPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BF8D08E8253D61C">6.12-23 InjectionOfCofactorOfPushoutOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E54DB957B5F9157">6.12-24 InjectionOfCofactorOfPushoutWithGivenPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82A1EFBA7E16FA63">6.12-25 UniversalMorphismFromPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DB773A47D22963E">6.12-26 UniversalMorphismFromPushoutOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7A3830637BB1E7C6">6.12-27 UniversalMorphismFromPushoutWithGivenPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78FDEE468742E573">6.12-28 AddPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X87ED0E87850C6D96">6.12-29 AddInjectionOfCofactorOfPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8352461A796F9214">6.12-30 AddInjectionOfCofactorOfPushoutWithGivenPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7ACB31A479737723">6.12-31 AddUniversalMorphismFromPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X847BA99A851088A1">6.12-32 AddUniversalMorphismFromPushoutWithGivenPushout</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X80494AF087F5DE4B">6.12-33 PushoutFunctorial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7DAF60808113D76B">6.12-34 PushoutFunctorialWithGivenPushouts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X810036A887D287AC">6.12-35 AddPushoutFunctorialWithGivenPushouts</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X87F4D35A826599C6">6.13 <span class="Heading">Image</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X80490BD785CA695A">6.13-1 IsomorphismFromImageObjectToKernelOfCokernel</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7B09757B8411AD52">6.13-2 AddIsomorphismFromImageObjectToKernelOfCokernel</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CAA3342865B456B">6.13-3 IsomorphismFromKernelOfCokernelToImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78A3EEFB843C5067">6.13-4 AddIsomorphismFromKernelOfCokernelToImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X83B457FF79AC5AC6">6.13-5 ImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86CEE2D1876EC2B9">6.13-6 ImageEmbedding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82991FA17B460744">6.13-7 ImageEmbeddingWithGivenImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8144201987A27661">6.13-8 CoastrictionToImage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78BE36EA83BEF493">6.13-9 CoastrictionToImageWithGivenImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7989B1FB811D2033">6.13-10 UniversalMorphismFromImage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X86E557097CFB4430">6.13-11 UniversalMorphismFromImageWithGivenImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CA61123868B51B2">6.13-12 AddImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X796EDCCD7A729E12">6.13-13 AddImageEmbedding</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X785393EB7C27451E">6.13-14 AddImageEmbeddingWithGivenImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78C7D6E582FD41E9">6.13-15 AddCoastrictionToImage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8077FB7485FCD5E6">6.13-16 AddCoastrictionToImageWithGivenImageObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BE632048014DB7F">6.13-17 AddUniversalMorphismFromImage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X79813E327CAD3D99">6.13-18 AddUniversalMorphismFromImageWithGivenImageObject</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7EB02EC487B586E5">6.14 <span class="Heading">Coimage</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7F7BD6A18581671E">6.14-1 MorphismFromCoimageToImage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8025749B78E12A2B">6.14-2 MorphismFromCoimageToImageWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7FCCF6EA7BD56684">6.14-3 AddMorphismFromCoimageToImageWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D0C9B067F3E15B4">6.14-4 InverseMorphismFromCoimageToImage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X83C4E6FF7D1F1A9C">6.14-5 InverseMorphismFromCoimageToImageWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7E25930683F94127">6.14-6 AddInverseMorphismFromCoimageToImageWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7C594E227D8DB0ED">6.14-7 IsomorphismFromCoimageToCokernelOfKernel</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X80B45F4D7A7B96A4">6.14-8 AddIsomorphismFromCoimageToCokernelOfKernel</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CF7E7E47A460E56">6.14-9 IsomorphismFromCokernelOfKernelToCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D9B059578AC42D6">6.14-10 AddIsomorphismFromCokernelOfKernelToCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X866FB09E857D1846">6.14-11 Coimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X822D25177F2C1541">6.14-12 CoimageProjection</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X788E717C7CCC6645">6.14-13 CoimageProjection</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X845344847E9C3AD9">6.14-14 CoimageProjectionWithGivenCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BC763EA7D2D3164">6.14-15 AstrictionToCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X805108BF8047357E">6.14-16 AstrictionToCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BEDEDCC7818490B">6.14-17 AstrictionToCoimageWithGivenCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D051DDF7A68BFFB">6.14-18 UniversalMorphismIntoCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D9C6F3C7B929E5F">6.14-19 UniversalMorphismIntoCoimageWithGivenCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7A0027687B377BC2">6.14-20 AddCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X85B54DD47C3E9682">6.14-21 AddCoimageProjection</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X800CCC74801CFF29">6.14-22 AddCoimageProjectionWithGivenCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X786682798320D413">6.14-23 AddAstrictionToCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X820E0A8786AA718F">6.14-24 AddAstrictionToCoimageWithGivenCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X85DB30B982F6C564">6.14-25 AddUniversalMorphismIntoCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8617139A8651C194">6.14-26 AddUniversalMorphismIntoCoimageWithGivenCoimage</a></span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chap7.html#X87A9DB228112DF45">7 <span class="Heading">Add Functions</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X85EC14607B6F66FE">7.1 <span class="Heading">Functions Installed by Add</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X85E3D9E07B8BC960">7.2 <span class="Heading">Add Method</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X7D83FC527EA66166">7.3 <span class="Heading">InstallAdd Function</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X78B69C307CF0DE53">7.4 <span class="Heading">Install All Adds</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X7AFA0108870EE97C">7.5 <span class="Heading">Prepare functions</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X84409FF87D35BE99">7.5-1 CAPOperationPrepareFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7843089F86F47D3B">7.5-2 CAPAddPrepareFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X82AEE9507F0B48BC">7.5-3 ListCAPPrepareFunctions</a></span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chap8.html#X8397FA067BFF4850">8 <span class="Heading">Managing Derived Methods</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X7EBFC26F83EB9F72">8.1 <span class="Heading">Info Class</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X847BF8788620ADEC">8.1-1 DerivationInfo</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X82EB820C81919BD5">8.1-2 ActivateDerivationInfo</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7853FBCF7DAA6AD1">8.1-3 DeactivateDerivationInfo</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X85225AB582EE9B06">8.2 <span class="Heading">Derivation Objects</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7E30DF4F8029D24F">8.2-1 IsDerivedMethod</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7A9081ED8334054B">8.2-2 MakeDerivation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X85FA69CA831B3D68">8.2-3 DerivationName</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8039396185E25B0C">8.2-4 DerivationWeight</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8509D9897EC94507">8.2-5 DerivationFunctionsWithExtraFilters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7F2B7310826D555B">8.2-6 CategoryFilter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7CA199A3868E0222">8.2-7 IsApplicableToCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X82E56CD47C15FE34">8.2-8 TargetOperation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7A407F3F7F264A77">8.2-9 UsedOperations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X78FAD4788098483B">8.2-10 UsedOperationMultiples</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X80FA45B68744108E">8.2-11 UsedOperationsWithMultiples</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7DCED23B84345454">8.2-12 InstallDerivationForCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X82546C667C204B78">8.2-13 DerivationResultWeight</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X87186DAD7DF242ED">8.3 <span class="Heading">Derivation Graphs</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7BFD964E8739600C">8.3-1 IsDerivedMethodGraph</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7E19A0AD8661EF00">8.3-2 MakeDerivationGraph</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7B801088854A0127">8.3-3 AddOperationsToDerivationGraph</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7DEBC71E8450F86A">8.3-4 AddDerivation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X85CADCFF85BBF867">8.3-5 AddDerivation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8669A64F7BB2C4FB">8.3-6 AddDerivation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8027604D8282F123">8.3-7 AddDerivation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X80E6AA06854AAF28">8.3-8 AddDerivationPair</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X85F0182679C6E863">8.3-9 AddDerivationPair</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X801E2F4E86008850">8.3-10 AddDerivationPair</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7F31CF457FF00EF5">8.3-11 AddDerivationPair</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7BC80B4F7A067D91">8.3-12 AddDerivationToCAP</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X81358A4C862A8BC1">8.3-13 AddDerivationPairToCAP</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8263F4547BBF28C7">8.3-14 AddWithGivenDerivationPairToCAP</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8669CCC78175B23B">8.3-15 Operations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7D8B5FE482B39913">8.3-16 DerivationsUsingOperation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7A4C262581C53309">8.3-17 DerivationsOfOperation</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X86F129738355A31B">8.4 <span class="Heading">Managing Derivations in a Category</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X832B6935788EA870">8.4-1 IsOperationWeightList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7CFC7F17786B1B6E">8.4-2 MakeOperationWeightList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7E6F8469808FE57E">8.4-3 DerivationGraph</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X80E9071D87ABCA57">8.4-4 CategoryOfOperationWeightList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7BE16AB2849D0107">8.4-5 CurrentOperationWeight</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7A67FC1B80BF67AD">8.4-6 OperationWeightUsingDerivation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X79490A257E67804E">8.4-7 DerivationOfOperation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8411326D85222A6C">8.4-8 InstallDerivationsUsingOperation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7E2279C47AFE3FAD">8.4-9 Reevaluate</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8748C9C27F6B47A3">8.4-10 Saturate</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X835210E67EF93118">8.4-11 AddPrimitiveOperation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8145094E862826BE">8.4-12 PrintDerivationTree</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7E59037F7B4E42D0">8.4-13 PrintTree</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X8293EF6286A82480">8.4-14 PrintTreeRec</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X85B1CCCC81C1A631">8.5 <span class="Heading">Min Heaps for Strings</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X86D1D85F828978AE">8.5-1 IsStringMinHeap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X812EDE3F8737AB9D">8.5-2 StringMinHeap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X80604054823A6F01">8.5-3 Add</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7E136159853A3BAC">8.5-4 ExtractMin</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X79B2FB2178CC6A34">8.5-5 DecreaseKey</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7CEECD45781A49A3">8.5-6 IsEmptyHeap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7E1CEFDB7824EE94">8.5-7 HeapSize</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X82F874FB7954D662">8.5-8 Contains</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7AE2A000800CD0A2">8.5-9 Swap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X78B8D0BD7A2FE83A">8.5-10 Heapify</a></span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chap9.html#X87A9EC0A7DF04931">9 <span class="Heading">Technical Details</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9.html#X7A8C280B85B50DE0">9.1 <span class="Heading">The Category Cat</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7B3D8EB378625F73">9.1-1 ObjectCache</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X84472BD57E11264C">9.1-2 MorphismCache</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9.html#X84802DD67AA9E628">9.2 <span class="Heading">Install Functions for IsWellDefined</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7B516ECB84EE7FFF">9.2-1 InstallMethodWithToDoForIsWellDefined</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7C486C0F7D6161A0">9.2-2 InstallSetWithToDoForIsWellDefined</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7801E9D185E5C130">9.2-3 DeclareAttributeWithToDoForIsWellDefined</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X87364D2E830F7FAE">9.2-4 DeclareFamilyProperty</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X840466B67CFF9CEA">9.2-5 CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7F2869657DDE9AC9">9.2-6 CAP_INTERNAL_MERGE_FILTER_LISTS</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X849B851C80D47B4F">9.2-7 CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7C7A71C97DC2FABF">9.2-8 CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X78A121F97CF81A43">9.2-9 CAP_INTERNAL_MERGE_PRECONDITIONS_LIST</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X82FC76688082956A">9.2-10 CachingStatistic</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7E4CA53E7C03600F">9.2-11 BrowseCachingStatistic</a></span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chap10.html#X857CF4D487158F26">10 <span class="Heading">Limits and Colimits</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10.html#X8588E7B080530988">10.1 <span class="Heading">Specification of Limits and Colimits</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10.html#X82DEA53C869D2324">10.2 <span class="Heading">Enhancing Limit Specifications</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap10.html#X822CB82B7F6E73AA">10.3 <span class="Heading">Validating entries of a method name record which are part of a limit or colimit</span></a>
+</span>
+</div>
+</div>
+<div class="ContChap"><a href="chap11.html#X7967FE8E7BBDF485">11 <span class="Heading">Examples and Tests</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11.html#X78D1062D78BE08C1">11.1 <span class="Heading">Functors</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11.html#X86A2AE6E7C297595">11.2 <span class="Heading">Homomorphism structure</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11.html#X87330D8C82E71B50">11.3 <span class="Heading">Spectral Sequences</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11.html#X7CDB7FF27D734D2D">11.4 <span class="Heading">Liftable</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11.html#X808DC49C7ED99B52">11.5 <span class="Heading">Monoidal Categories</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11.html#X84410C637B3C1D0E">11.6 <span class="Heading">Opposite category</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11.html#X86FB477C7908A3A6">11.7 <span class="Heading">Generalized Morphisms Category</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11.html#X7E8AFE5085FF7E15">11.8 <span class="Heading">IsWellDefined</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11.html#X7DCD99628504B810">11.9 <span class="Heading">Kernel</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap11.html#X7DE20941803BFBD9">11.10 <span class="Heading">FiberProduct</span></a>
+</span>
+</div>
+</div>
+<div class="ContChap"><a href="chapInd.html"><span class="Heading">Index</span></a></div>
+<br />
+</div>
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

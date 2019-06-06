@@ -1,0 +1,1236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (CAP) - Chapter 3: Morphisms</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap3"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap3.html">[MathJax off]</a></p>
+<p><a id="X7BEB6C617FED52DA" name="X7BEB6C617FED52DA"></a></p>
+<div class="ChapSects"><a href="chap3_mj.html#X7BEB6C617FED52DA">3 <span class="Heading">Morphisms</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X8642E3327E96BBDD">3.1 <span class="Heading">Attributes for the Type of Morphisms</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E923036810C606E">3.1-1 CapCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E1373E385E7315A">3.1-2 Source</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X817496B987A1ADFC">3.1-3 Range</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7A00D0C181471D06">3.2 <span class="Heading">Categorical Properties of Morphisms</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87DEC4BD7C48E679">3.2-1 AddIsMonomorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8523850C827FE182">3.2-2 AddIsEpimorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B0818ED7A7BBCB4">3.2-3 AddIsIsomorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C5D46B77A65ACF2">3.2-4 AddIsSplitMonomorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7D7BDF8F7EED3A72">3.2-5 AddIsSplitEpimorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7FCC38DC7843D455">3.2-6 AddIsOne</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X85701DBE7A5F90A1">3.2-7 AddIsIdempotent</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7B655F2678F605D3">3.3 <span class="Heading">Random Morphisms</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79EBA1717D89B0A4">3.3-1 RandomMorphismWithFixedSourceByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X80E69DF27EA33C03">3.3-2 AddRandomMorphismWithFixedSourceByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X84FDBEED7844CDB6">3.3-3 RandomMorphismWithFixedSourceByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C5DEDED7A7D5F7A">3.3-4 AddRandomMorphismWithFixedSourceByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X844B1DDC8488B7CA">3.3-5 RandomMorphismWithFixedRangeByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7D58154C7B6478A8">3.3-6 AddRandomMorphismWithFixedRangeByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8568D71882C30501">3.3-7 RandomMorphismWithFixedRangeByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B2266E07E2114FE">3.3-8 AddRandomMorphismWithFixedRangeByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X80F66E9D809EA6A7">3.3-9 RandomMorphismWithFixedSourceAndRangeByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X78E443767AA69703">3.3-10 AddRandomMorphismWithFixedSourceAndRangeByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7BF231C57B40B1A1">3.3-11 RandomMorphismWithFixedSourceAndRangeByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A395AEB813562EA">3.3-12 AddRandomMorphismWithFixedSourceAndRangeByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81DB09BA7CBD3DB4">3.3-13 RandomMorphismByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7BC5AC807FF84905">3.3-14 AddRandomMorphismByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E79F7A9802F622D">3.3-15 RandomMorphismByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X84BEF31F81ABC74E">3.3-16 AddRandomMorphismByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83D121E787FDC6E8">3.3-17 RandomMorphismWithFixedSource</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7EA50D6587A93936">3.4 <span class="Heading">Non-Categorical Properties of Morphisms</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E01690B7D763504">3.4-1 IsIdenticalToIdentityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8507561F7E66719B">3.4-2 AddIsIdenticalToIdentityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X82ED159481E8A2CF">3.4-3 IsIdenticalToZeroMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8219E5A47E352C66">3.4-4 AddIsIdenticalToZeroMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87B1905481F6AF28">3.4-5 AddIsEndomorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7FA3BD6D79D99498">3.4-6 AddIsAutomorphism</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X867B9398854FEFFD">3.5 <span class="Heading">Adding Morphisms to a Category</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7BDADB628232C280">3.5-1 Add</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X82453E55857562AB">3.5-2 AddMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X812F94E5790616EC">3.5-3 AddMorphismRepresentation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X787A52CF8218A1C9">3.5-4 ObjectifyMorphismForCAPWithAttributes</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X850CFDD48773998E">3.6 <span class="Heading">Equality and Congruence for Morphisms</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7FABCFBF865F4179">3.6-1 IsCongruentForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X861A83B3802D0FBD">3.6-2 AddIsCongruentForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8004F1DA7D9BFA8B">3.6-3 IsEqualForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83F60F5F7E57F3C8">3.6-4 AddIsEqualForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8589E5A4814C3DA5">3.6-5 IsEqualForMorphismsOnMor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X84AB81547A770D36">3.6-6 AddIsEqualForMorphismsOnMor</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X8312421679CAAE35">3.7 <span class="Heading">Basic Operations for Morphisms in Ab-Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X844684AD86DCC2DC">3.7-1 IsZeroForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87DD3BD27C49450A">3.7-2 AddIsZeroForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83B77FBB85927F14">3.7-3 AdditionForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X811BB502781CFBB9">3.7-4 AddAdditionForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B6461F5873F3F9D">3.7-5 SubtractionForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7ECA7B0182144B81">3.7-6 AddSubtractionForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83177713785DCFFC">3.7-7 AdditiveInverseForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7AB78A707BF08401">3.7-8 AddAdditiveInverseForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8187CAF17EB5D6D0">3.7-9 MultiplyWithElementOfCommutativeRingForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7AE8C7897CB6FDF8">3.7-10 AddMultiplyWithElementOfCommutativeRingForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X873412DB7BD0FBD3">3.7-11 ZeroMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X824C08CE7D7FB387">3.7-12 AddZeroMorphism</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7C81E153817F489F">3.8 <span class="Heading">Subobject and Factorobject Operations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E99DAA884674DE2">3.8-1 IsEqualAsSubobjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A97D3C3869323D1">3.8-2 AddIsEqualAsSubobjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79389FBF86CF87A4">3.8-3 IsEqualAsFactorobjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X82DE9AE387425307">3.8-4 AddIsEqualAsFactorobjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C21531C7EE65C72">3.8-5 IsDominating</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X834AC612831DDD11">3.8-6 AddIsDominating</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C77E9D479C8D502">3.8-7 IsCodominating</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X78E046E387674019">3.8-8 AddIsCodominating</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X82ADC0BF82DA2122">3.9 <span class="Heading">Identity Morphism and Composition of Morphisms</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C9F3D8086238443">3.9-1 IdentityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X878F4D2481E94EB6">3.9-2 AddIdentityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8244F7A0868BE27D">3.9-3 PreCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83CB57FB81931CFE">3.9-4 PreCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X868C87097D322509">3.9-5 AddPreCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X84293B8381256A08">3.9-6 PostCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81222A1084A4F637">3.9-7 PostCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X853E87F47F9FC287">3.9-8 AddPostCompose</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7D5182B48598FBC5">3.10 <span class="Heading">Well-Definedness of Morphisms</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7968A871832877B8">3.10-1 IsWellDefinedForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A4BE39A83D2A730">3.10-2 AddIsWellDefinedForMorphisms</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X83339BB37B01DB19">3.11 <span class="Heading">Lift/Colift</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83CDF65582CD9921">3.11-1 LiftAlongMonomorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X869A19337CB3059E">3.11-2 AddLiftAlongMonomorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79AA9F638487EE32">3.11-3 ColiftAlongEpimorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7BBEF7C479E612ED">3.11-4 AddColiftAlongEpimorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7D9BA8D67892BD48">3.11-5 IsLiftableAlongMonomorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7BD695308127A877">3.11-6 AddIsLiftableAlongMonomorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7DCDD2B2859EFD2D">3.11-7 IsColiftableAlongEpimorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86BF34667D329168">3.11-8 AddIsColiftableAlongEpimorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X87C471D583C1CD9E">3.11-9 Lift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7DA9346A8517648D">3.11-10 AddLift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7BA38B0F797AFE20">3.11-11 Colift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X84A7986F82ED769E">3.11-12 AddColift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F895375875BE5B9">3.11-13 IsLiftable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X79AC542F8227455E">3.11-14 AddIsLiftable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8685B04087B1E52A">3.11-15 IsColiftable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A41C14B8169E993">3.11-16 AddIsColiftable</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X864F84C47DC1A620">3.12 <span class="Heading">Inverses</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A6B4970823DDAE6">3.12-1 AddInverse</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7DD668627932185C">3.13 <span class="Heading">Tool functions for caches</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X83F87AE07ED534ED">3.13-1 IsEqualForCacheForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X833165B27AA74580">3.13-2 AddIsEqualForCacheForMorphisms</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7F065B9A78922547">3.14 <span class="Heading">Homomorphism structures</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81BC29A679416C45">3.14-1 HomomorphismStructureOnObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7833851F7DD2D0F1">3.14-2 AddHomomorphismStructureOnObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8257E3787865C5E0">3.14-3 HomomorphismStructureOnMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7FBC94B983CBA64F">3.14-4 HomomorphismStructureOnMorphismsWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7F6B67487C55B055">3.14-5 AddHomomorphismStructureOnMorphismsWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7999CCFF82DA16D7">3.14-6 DistinguishedObjectOfHomomorphismStructure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7D7A07CC7C9541DB">3.14-7 AddDistinguishedObjectOfHomomorphismStructure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8296788986E7857F">3.14-8 InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X866BC47C7D031883">3.14-9 AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8083130D82B510BA">3.14-10 InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E4E4CDF849ECCF7">3.14-11 AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7BE5E2687FC110AC">3.14-12 SolveLinearSystemInAbCategory</a></span>
+</div></div>
+</div>
+
+<h3>3 <span class="Heading">Morphisms</span></h3>
+
+<p>Any GAP object satisfying <code class="code">IsCapCategoryMorphism</code> can be added to a category and then becomes a morphism in this category. Any morphism can belong to one or no category. After a GAP object is added to the category, it knows which things can be computed in its category and to which category it belongs. It knows categorical properties and attributes, and the functions for existential quantifiers can be applied to the morphism.</p>
+
+<p><a id="X8642E3327E96BBDD" name="X8642E3327E96BBDD"></a></p>
+
+<h4>3.1 <span class="Heading">Attributes for the Type of Morphisms</span></h4>
+
+<p><a id="X7E923036810C606E" name="X7E923036810C606E"></a></p>
+
+<h5>3.1-1 CapCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapCategory</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha\)</span>. The output is the category <span class="SimpleMath">\(\mathbf{C}\)</span> to which <span class="SimpleMath">\(\alpha\)</span> was added.</p>
+
+<p><a id="X7E1373E385E7315A" name="X7E1373E385E7315A"></a></p>
+
+<h5>3.1-2 Source</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Source</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is its source <span class="SimpleMath">\(a\)</span>.</p>
+
+<p><a id="X817496B987A1ADFC" name="X817496B987A1ADFC"></a></p>
+
+<h5>3.1-3 Range</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Range</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is its range <span class="SimpleMath">\(b\)</span>.</p>
+
+<p><a id="X7A00D0C181471D06" name="X7A00D0C181471D06"></a></p>
+
+<h4>3.2 <span class="Heading">Categorical Properties of Morphisms</span></h4>
+
+<p><a id="X87DEC4BD7C48E679" name="X87DEC4BD7C48E679"></a></p>
+
+<h5>3.2-1 AddIsMonomorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsMonomorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsMonomorphism</code>. <span class="SimpleMath">\(F: \alpha \mapsto \mathtt{IsMonomorphism}(\alpha)\)</span>.</p>
+
+<p><a id="X8523850C827FE182" name="X8523850C827FE182"></a></p>
+
+<h5>3.2-2 AddIsEpimorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEpimorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsEpimorphism</code>. <span class="SimpleMath">\(F: \alpha \mapsto \mathtt{IsEpimorphism}(\alpha)\)</span>.</p>
+
+<p><a id="X7B0818ED7A7BBCB4" name="X7B0818ED7A7BBCB4"></a></p>
+
+<h5>3.2-3 AddIsIsomorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsIsomorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsIsomorphism</code>. <span class="SimpleMath">\(F: \alpha \mapsto \mathtt{IsIsomorphism}(\alpha)\)</span>.</p>
+
+<p><a id="X7C5D46B77A65ACF2" name="X7C5D46B77A65ACF2"></a></p>
+
+<h5>3.2-4 AddIsSplitMonomorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsSplitMonomorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsSplitMonomorphism</code>. <span class="SimpleMath">\(F: \alpha \mapsto \mathtt{IsSplitMonomorphism}(\alpha)\)</span>.</p>
+
+<p><a id="X7D7BDF8F7EED3A72" name="X7D7BDF8F7EED3A72"></a></p>
+
+<h5>3.2-5 AddIsSplitEpimorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsSplitEpimorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsSplitEpimorphism</code>. <span class="SimpleMath">\(F: \alpha \mapsto \mathtt{IsSplitEpimorphism}(\alpha)\)</span>.</p>
+
+<p><a id="X7FCC38DC7843D455" name="X7FCC38DC7843D455"></a></p>
+
+<h5>3.2-6 AddIsOne</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsOne</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsOne</code>. <span class="SimpleMath">\(F: \alpha \mapsto \mathtt{IsOne}(\alpha)\)</span>.</p>
+
+<p><a id="X85701DBE7A5F90A1" name="X85701DBE7A5F90A1"></a></p>
+
+<h5>3.2-7 AddIsIdempotent</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsIdempotent</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsIdempotent</code>. <span class="SimpleMath">\(F: \alpha \mapsto \mathtt{IsIdempotent}(\alpha)\)</span>.</p>
+
+<p><a id="X7B655F2678F605D3" name="X7B655F2678F605D3"></a></p>
+
+<h4>3.3 <span class="Heading">Random Morphisms</span></h4>
+
+<p>CAP provides two principal methods to generate random morphisms with or without fixed source and range:</p>
+
+
+<ul>
+<li><p><em>By integers</em>: The integer is simply a parameter that can be used to create a random morphism.</p>
+
+</li>
+<li><p><em>By lists</em>: The list is used when creating a random morphism would need more than one parameter. Lists offer more flexibility at the expense of the genericity of the methods. This happens because lists that are valid as input in some category may be not valid for other categories. Hence, these operations are not thought to be used in generic categorical algorithms.</p>
+
+</li>
+</ul>
+<p><a id="X79EBA1717D89B0A4" name="X79EBA1717D89B0A4"></a></p>
+
+<h5>3.3-1 RandomMorphismWithFixedSourceByInteger</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedSourceByInteger</code>( <var class="Arg">a</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b)\)</span> or <code class="code">fail</code></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(a\)</span> in a category <span class="SimpleMath">\(C\)</span> and an integer <span class="SimpleMath">\(n\)</span>. The output is a random morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span> for some object <span class="SimpleMath">\(b\)</span> in <span class="SimpleMath">\(C\)</span> or <code class="code">fail</code>.</p>
+
+<p><a id="X80E69DF27EA33C03" name="X80E69DF27EA33C03"></a></p>
+
+<h5>3.3-2 AddRandomMorphismWithFixedSourceByInteger</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRandomMorphismWithFixedSourceByInteger</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RandomMorphismWithFixedSourceByInteger</code>. The function <span class="SimpleMath">\(F\)</span> maps <span class="SimpleMath">\((a,n)\)</span> to <code class="code">fail</code> or to a random morphism in <span class="SimpleMath">\(C\)</span> whose source is <span class="SimpleMath">\(a\)</span>.</p>
+
+<p><a id="X84FDBEED7844CDB6" name="X84FDBEED7844CDB6"></a></p>
+
+<h5>3.3-3 RandomMorphismWithFixedSourceByList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedSourceByList</code>( <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b)\)</span> or <code class="code">fail</code></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(a\)</span> in a category <span class="SimpleMath">\(C\)</span> and a list <span class="SimpleMath">\(L\)</span>. The output is a random morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span> for some object <span class="SimpleMath">\(b\)</span> in <span class="SimpleMath">\(C\)</span> or <code class="code">fail</code>.</p>
+
+<p><a id="X7C5DEDED7A7D5F7A" name="X7C5DEDED7A7D5F7A"></a></p>
+
+<h5>3.3-4 AddRandomMorphismWithFixedSourceByList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRandomMorphismWithFixedSourceByList</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RandomMorphismWithFixedSourceByList</code>. The function <span class="SimpleMath">\(F\)</span> maps <span class="SimpleMath">\((a,L)\)</span> to <code class="code">fail</code> or to a random morphism in <span class="SimpleMath">\(C\)</span> whose source is <span class="SimpleMath">\(a\)</span>.</p>
+
+<p><a id="X844B1DDC8488B7CA" name="X844B1DDC8488B7CA"></a></p>
+
+<h5>3.3-5 RandomMorphismWithFixedRangeByInteger</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedRangeByInteger</code>( <var class="Arg">b</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b)\)</span> or <code class="code">fail</code></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(b\)</span> in a category <span class="SimpleMath">\(C\)</span> and an integer <span class="SimpleMath">\(n\)</span>. The output is a random morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span> for some object <span class="SimpleMath">\(a\)</span> in <span class="SimpleMath">\(C\)</span> or <code class="code">fail</code>.</p>
+
+<p><a id="X7D58154C7B6478A8" name="X7D58154C7B6478A8"></a></p>
+
+<h5>3.3-6 AddRandomMorphismWithFixedRangeByInteger</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRandomMorphismWithFixedRangeByInteger</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RandomMorphismWithFixedRangeByInteger</code>. The function <span class="SimpleMath">\(F\)</span> maps <span class="SimpleMath">\((b,n)\)</span> to <code class="code">fail</code> or to a random morphism in <span class="SimpleMath">\(C\)</span> whose range is <span class="SimpleMath">\(b\)</span>.</p>
+
+<p><a id="X8568D71882C30501" name="X8568D71882C30501"></a></p>
+
+<h5>3.3-7 RandomMorphismWithFixedRangeByList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedRangeByList</code>( <var class="Arg">b</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b)\)</span> or <code class="code">fail</code></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(b\)</span> in a category <span class="SimpleMath">\(C\)</span> and a list <span class="SimpleMath">\(L\)</span>. The output is a random morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span> for some object <span class="SimpleMath">\(a\)</span> in <span class="SimpleMath">\(C\)</span> or <code class="code">fail</code>.</p>
+
+<p><a id="X7B2266E07E2114FE" name="X7B2266E07E2114FE"></a></p>
+
+<h5>3.3-8 AddRandomMorphismWithFixedRangeByList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRandomMorphismWithFixedRangeByList</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RandomMorphismWithFixedRangeByList</code>. The function <span class="SimpleMath">\(F\)</span> maps <span class="SimpleMath">\((b,L)\)</span> to <code class="code">fail</code> or to a random morphism in <span class="SimpleMath">\(C\)</span> whose range is <span class="SimpleMath">\(b\)</span>.</p>
+
+<p><a id="X80F66E9D809EA6A7" name="X80F66E9D809EA6A7"></a></p>
+
+<h5>3.3-9 RandomMorphismWithFixedSourceAndRangeByInteger</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedSourceAndRangeByInteger</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b)\)</span> or <code class="code">fail</code></p>
+
+<p>The arguments are two objects <span class="SimpleMath">\(a\)</span> and <span class="SimpleMath">\(b\)</span> in a category <span class="SimpleMath">\(C\)</span> and an integer <span class="SimpleMath">\(n\)</span>. The output is a random morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span> in <span class="SimpleMath">\(C\)</span> or <code class="code">fail</code>.</p>
+
+<p><a id="X78E443767AA69703" name="X78E443767AA69703"></a></p>
+
+<h5>3.3-10 AddRandomMorphismWithFixedSourceAndRangeByInteger</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRandomMorphismWithFixedSourceAndRangeByInteger</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RandomMorphismWithFixedSourceAndRangeByInteger</code>. The function <span class="SimpleMath">\(F\)</span> maps <span class="SimpleMath">\((a,b,n)\)</span> to <code class="code">fail</code> or to a random morphism in <span class="SimpleMath">\(C\)</span> from <span class="SimpleMath">\(a\)</span> to <span class="SimpleMath">\(b\)</span>.</p>
+
+<p><a id="X7BF231C57B40B1A1" name="X7BF231C57B40B1A1"></a></p>
+
+<h5>3.3-11 RandomMorphismWithFixedSourceAndRangeByList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedSourceAndRangeByList</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b)\)</span> or <code class="code">fail</code></p>
+
+<p>This operation is not a CAP basic operation The arguments are two objects <span class="SimpleMath">\(a\)</span> and <span class="SimpleMath">\(b\)</span> in a category <span class="SimpleMath">\(C\)</span> and a list <span class="SimpleMath">\(L\)</span>. The output is a random morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span> in <span class="SimpleMath">\(C\)</span> or <code class="code">fail</code>.</p>
+
+<p><a id="X7A395AEB813562EA" name="X7A395AEB813562EA"></a></p>
+
+<h5>3.3-12 AddRandomMorphismWithFixedSourceAndRangeByList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRandomMorphismWithFixedSourceAndRangeByList</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RandomMorphismWithFixedSourceAndRangeByList</code>. The function <span class="SimpleMath">\(F\)</span> maps <span class="SimpleMath">\((a,b,L)\)</span> to <code class="code">fail</code> or to a random morphism in <span class="SimpleMath">\(C\)</span> from <span class="SimpleMath">\(a\)</span> to <span class="SimpleMath">\(b\)</span>.</p>
+
+<p><a id="X81DB09BA7CBD3DB4" name="X81DB09BA7CBD3DB4"></a></p>
+
+<h5>3.3-13 RandomMorphismByInteger</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismByInteger</code>( <var class="Arg">C</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism or <code class="code">fail</code></p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and an integer <span class="SimpleMath">\(n\)</span>. The output is a random morphism in <span class="SimpleMath">\(C\)</span> or <code class="code">fail</code>. If the methods <code class="code">RandomObjectByInteger</code> and <code class="code">RandomMorphismWithFixedSourceByInteger</code>(<code class="code">RandomMorphismWithFixedRangeByInteger</code>) are added to the category <span class="SimpleMath">\(C\)</span>, then <code class="code">RandomMorphismByInteger</code> can be derived to return a random morphism of complexity <span class="SimpleMath">\(n\)</span> with random source(range) of complexity <span class="SimpleMath">\(n\)</span>.</p>
+
+<p><a id="X7BC5AC807FF84905" name="X7BC5AC807FF84905"></a></p>
+
+<h5>3.3-14 AddRandomMorphismByInteger</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRandomMorphismByInteger</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RandomMorphismByInteger</code>. The function <span class="SimpleMath">\(F\)</span> maps <span class="SimpleMath">\((C,n)\)</span> to <code class="code">fail</code> or to a random morphism in <span class="SimpleMath">\(C\)</span>.</p>
+
+<p><a id="X7E79F7A9802F622D" name="X7E79F7A9802F622D"></a></p>
+
+<h5>3.3-15 RandomMorphismByList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismByList</code>( <var class="Arg">C</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism or <code class="code">fail</code></p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a list <span class="SimpleMath">\(L\)</span>. The output is a random morphism in <span class="SimpleMath">\(C\)</span> or <code class="code">fail</code>.</p>
+
+<p><a id="X84BEF31F81ABC74E" name="X84BEF31F81ABC74E"></a></p>
+
+<h5>3.3-16 AddRandomMorphismByList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRandomMorphismByList</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">RandomMorphismByList</code>. The function <span class="SimpleMath">\(F\)</span> maps <span class="SimpleMath">\((C,L)\)</span> to <code class="code">fail</code> or to a random morphism in <span class="SimpleMath">\(C\)</span>.</p>
+
+<p><a id="X83D121E787FDC6E8" name="X83D121E787FDC6E8"></a></p>
+
+<h5>3.3-17 RandomMorphismWithFixedSource</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedSource</code>( <var class="Arg">a</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedSource</code>( <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedRange</code>( <var class="Arg">b</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedRange</code>( <var class="Arg">b</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedSourceAndRange</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphismWithFixedSourceAndRange</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphism</code>( <var class="Arg">C</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomMorphism</code>( <var class="Arg">C</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>These are convenient methods and they, depending on the input, delegate to one of the above methods.</p>
+
+<p><a id="X7EA50D6587A93936" name="X7EA50D6587A93936"></a></p>
+
+<h4>3.4 <span class="Heading">Non-Categorical Properties of Morphisms</span></h4>
+
+<p>Non-categorical properties are not stable under equivalences of categories.</p>
+
+<p><a id="X7E01690B7D763504" name="X7E01690B7D763504"></a></p>
+
+<h5>3.4-1 IsIdenticalToIdentityMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsIdenticalToIdentityMorphism</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is <code class="code">true</code> if <span class="SimpleMath">\(\alpha = \mathrm{id}_a\)</span>, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X8507561F7E66719B" name="X8507561F7E66719B"></a></p>
+
+<h5>3.4-2 AddIsIdenticalToIdentityMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsIdenticalToIdentityMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsIdenticalToIdentityMorphism</code>. <span class="SimpleMath">\(F: \alpha \mapsto \mathtt{IsIdenticalToIdentityMorphism}(\alpha)\)</span>.</p>
+
+<p><a id="X82ED159481E8A2CF" name="X82ED159481E8A2CF"></a></p>
+
+<h5>3.4-3 IsIdenticalToZeroMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsIdenticalToZeroMorphism</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is <code class="code">true</code> if <span class="SimpleMath">\(\alpha = 0\)</span>, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X8219E5A47E352C66" name="X8219E5A47E352C66"></a></p>
+
+<h5>3.4-4 AddIsIdenticalToZeroMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsIdenticalToZeroMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsIdenticalToZeroMorphism</code>. <span class="SimpleMath">\(F: \alpha \mapsto \mathtt{IsIdenticalToZeroMorphism }(\alpha)\)</span>.</p>
+
+<p><a id="X87B1905481F6AF28" name="X87B1905481F6AF28"></a></p>
+
+<h5>3.4-5 AddIsEndomorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEndomorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsEndomorphism</code>. <span class="SimpleMath">\(F: \alpha \mapsto \mathtt{IsEndomorphism}(\alpha)\)</span>.</p>
+
+<p><a id="X7FA3BD6D79D99498" name="X7FA3BD6D79D99498"></a></p>
+
+<h5>3.4-6 AddIsAutomorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsAutomorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsAutomorphism</code>. <span class="SimpleMath">\(F: \alpha \mapsto \mathtt{IsAutomorphism}(\alpha)\)</span>.</p>
+
+<p><a id="X867B9398854FEFFD" name="X867B9398854FEFFD"></a></p>
+
+<h4>3.5 <span class="Heading">Adding Morphisms to a Category</span></h4>
+
+<p><a id="X7BDADB628232C280" name="X7BDADB628232C280"></a></p>
+
+<h5>3.5-1 Add</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Add</code>( <var class="Arg">category</var>, <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Adds <var class="Arg">morphism</var> as a morphism to <var class="Arg">category</var>.</p>
+
+<p><a id="X82453E55857562AB" name="X82453E55857562AB"></a></p>
+
+<h5>3.5-2 AddMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphism</code>( <var class="Arg">category</var>, <var class="Arg">morphism</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Adds <var class="Arg">morphism</var> as a morphism to <var class="Arg">category</var>. If <var class="Arg">morphism</var> already lies in the filter <code class="code">IsCapCategoryMorphism</code>, the operation <code class="func">Add</code> (<a href="chap3_mj.html#X7BDADB628232C280"><span class="RefLink">3.5-1</span></a>) can be used instead.</p>
+
+<p><a id="X812F94E5790616EC" name="X812F94E5790616EC"></a></p>
+
+<h5>3.5-3 AddMorphismRepresentation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismRepresentation</code>( <var class="Arg">category</var>, <var class="Arg">filter</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>The argument <var class="Arg">filter</var> is used to create a morphism type for the category <var class="Arg">category</var>, which is then used in <code class="code">ObjectifyMorphismForCAPWithAttributes</code> to objectify morphisms for this category.</p>
+
+<p><a id="X787A52CF8218A1C9" name="X787A52CF8218A1C9"></a></p>
+
+<h5>3.5-4 ObjectifyMorphismForCAPWithAttributes</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectifyMorphismForCAPWithAttributes</code>( <var class="Arg">morphism</var>, <var class="Arg">category</var>[, <var class="Arg">attribute1</var>, <var class="Arg">value1</var>, <var class="Arg">...</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Objectifies the morphism <var class="Arg">morphism</var> with the type created for morphisms in the category <var class="Arg">category</var>. The type is created by passing a representation to <code class="code">AddMorphismRepresentation</code>. Morphisms which are objectified using this method do not have to be passed to the <code class="code">AddMorphism</code> function.</p>
+
+<p>Please note that the <code class="code">Source</code> and <code class="code">Range</code> attribute need to be passed to this function. The values belonging to these attrbutes will not be objectified.</p>
+
+<p><a id="X850CFDD48773998E" name="X850CFDD48773998E"></a></p>
+
+<h4>3.6 <span class="Heading">Equality and Congruence for Morphisms</span></h4>
+
+<p><a id="X7FABCFBF865F4179" name="X7FABCFBF865F4179"></a></p>
+
+<h5>3.6-1 IsCongruentForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCongruentForMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha, \beta: a \rightarrow b\)</span>. The output is <code class="code">true</code> if <span class="SimpleMath">\(\alpha \sim_{a,b} \beta\)</span>, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X861A83B3802D0FBD" name="X861A83B3802D0FBD"></a></p>
+
+<h5>3.6-2 AddIsCongruentForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsCongruentForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsCongruentForMorphisms</code>. <span class="SimpleMath">\(F: (\alpha, \beta) \mapsto \mathtt{IsCongruentForMorphisms}(\alpha, \beta)\)</span>.</p>
+
+<p><a id="X8004F1DA7D9BFA8B" name="X8004F1DA7D9BFA8B"></a></p>
+
+<h5>3.6-3 IsEqualForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsEqualForMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha, \beta: a \rightarrow b\)</span>. The output is <code class="code">true</code> if <span class="SimpleMath">\(\alpha = \beta\)</span>, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X83F60F5F7E57F3C8" name="X83F60F5F7E57F3C8"></a></p>
+
+<h5>3.6-4 AddIsEqualForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsEqualForMorphisms</code>. <span class="SimpleMath">\(F: (\alpha, \beta) \mapsto \mathtt{IsEqualForMorphisms}(\alpha, \beta)\)</span>.</p>
+
+<p><a id="X8589E5A4814C3DA5" name="X8589E5A4814C3DA5"></a></p>
+
+<h5>3.6-5 IsEqualForMorphismsOnMor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsEqualForMorphismsOnMor</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow b, \beta: c \rightarrow d\)</span>. The output is <code class="code">true</code> if <span class="SimpleMath">\(\alpha = \beta\)</span>, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X84AB81547A770D36" name="X84AB81547A770D36"></a></p>
+
+<h5>3.6-6 AddIsEqualForMorphismsOnMor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualForMorphismsOnMor</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsEqualForMorphismsOnMor</code>. <span class="SimpleMath">\(F: (\alpha, \beta) \mapsto \mathtt{IsEqualForMorphismsOnMor}(\alpha, \beta)\)</span>.</p>
+
+<p><a id="X8312421679CAAE35" name="X8312421679CAAE35"></a></p>
+
+<h4>3.7 <span class="Heading">Basic Operations for Morphisms in Ab-Categories</span></h4>
+
+<p><a id="X844684AD86DCC2DC" name="X844684AD86DCC2DC"></a></p>
+
+<h5>3.7-1 IsZeroForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsZeroForMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is <code class="code">true</code> if <span class="SimpleMath">\(\alpha \sim_{a,b} 0\)</span>, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X87DD3BD27C49450A" name="X87DD3BD27C49450A"></a></p>
+
+<h5>3.7-2 AddIsZeroForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsZeroForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsZeroForMorphisms</code>. <span class="SimpleMath">\(F: \alpha \mapsto \mathtt{IsZeroForMorphisms}(\alpha)\)</span>.</p>
+
+<p><a id="X83B77FBB85927F14" name="X83B77FBB85927F14"></a></p>
+
+<h5>3.7-3 AdditionForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditionForMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b)\)</span></p>
+
+<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha, \beta: a \rightarrow b\)</span>. The output is the addition <span class="SimpleMath">\(\alpha + \beta\)</span>.</p>
+
+<p><a id="X811BB502781CFBB9" name="X811BB502781CFBB9"></a></p>
+
+<h5>3.7-4 AddAdditionForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddAdditionForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">AdditionForMorphisms</code>. <span class="SimpleMath">\(F: (\alpha, \beta) \mapsto \alpha + \beta\)</span>.</p>
+
+<p><a id="X7B6461F5873F3F9D" name="X7B6461F5873F3F9D"></a></p>
+
+<h5>3.7-5 SubtractionForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SubtractionForMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b)\)</span></p>
+
+<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha, \beta: a \rightarrow b\)</span>. The output is the addition <span class="SimpleMath">\(\alpha - \beta\)</span>.</p>
+
+<p><a id="X7ECA7B0182144B81" name="X7ECA7B0182144B81"></a></p>
+
+<h5>3.7-6 AddSubtractionForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSubtractionForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">SubtractionForMorphisms</code>. <span class="SimpleMath">\(F: (\alpha, \beta) \mapsto \alpha - \beta\)</span>.</p>
+
+<p><a id="X83177713785DCFFC" name="X83177713785DCFFC"></a></p>
+
+<h5>3.7-7 AdditiveInverseForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditiveInverseForMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b)\)</span></p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is its additive inverse <span class="SimpleMath">\(-\alpha\)</span>.</p>
+
+<p><a id="X7AB78A707BF08401" name="X7AB78A707BF08401"></a></p>
+
+<h5>3.7-8 AddAdditiveInverseForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddAdditiveInverseForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">AdditiveInverseForMorphisms</code>. <span class="SimpleMath">\(F: \alpha \mapsto -\alpha\)</span>.</p>
+
+<p><a id="X8187CAF17EB5D6D0" name="X8187CAF17EB5D6D0"></a></p>
+
+<h5>3.7-9 MultiplyWithElementOfCommutativeRingForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MultiplyWithElementOfCommutativeRingForMorphisms</code>( <var class="Arg">r</var>, <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b)\)</span></p>
+
+<p>The arguments are an element <span class="SimpleMath">\(r\)</span> of a commutative ring and a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is the multiplication with the ring element <span class="SimpleMath">\(r \cdot \alpha\)</span>.</p>
+
+<p><a id="X7AE8C7897CB6FDF8" name="X7AE8C7897CB6FDF8"></a></p>
+
+<h5>3.7-10 AddMultiplyWithElementOfCommutativeRingForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMultiplyWithElementOfCommutativeRingForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">MultiplyWithElementOfCommutativeRingForMorphisms</code>. <span class="SimpleMath">\(F: (r, \alpha) \mapsto r \cdot \alpha\)</span>.</p>
+
+<p><a id="X873412DB7BD0FBD3" name="X873412DB7BD0FBD3"></a></p>
+
+<h5>3.7-11 ZeroMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ZeroMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b)\)</span></p>
+
+<p>The arguments are two objects <span class="SimpleMath">\(a\)</span> and <span class="SimpleMath">\(b\)</span>. The output is the zero morphism <span class="SimpleMath">\(0: a \rightarrow b\)</span>.</p>
+
+<p><a id="X824C08CE7D7FB387" name="X824C08CE7D7FB387"></a></p>
+
+<h5>3.7-12 AddZeroMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddZeroMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ZeroMorphism</code>. <span class="SimpleMath">\(F: (a,b) \mapsto (0: a \rightarrow b)\)</span>.</p>
+
+<p><a id="X7C81E153817F489F" name="X7C81E153817F489F"></a></p>
+
+<h4>3.8 <span class="Heading">Subobject and Factorobject Operations</span></h4>
+
+<p>Subobjects of an object <span class="SimpleMath">\(c\)</span> are monomorphisms with range <span class="SimpleMath">\(c\)</span> and a special function for comparision. Similarly, factorobjects of an object <span class="SimpleMath">\(c\)</span> are epimorphisms with source <span class="SimpleMath">\(c\)</span> and a special function for comparision.</p>
+
+<p><a id="X7E99DAA884674DE2" name="X7E99DAA884674DE2"></a></p>
+
+<h5>3.8-1 IsEqualAsSubobjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsEqualAsSubobjects</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The arguments are two subobjects <span class="SimpleMath">\(\alpha: a \rightarrow c\)</span>, <span class="SimpleMath">\(\beta: b \rightarrow c\)</span>. The output is <code class="code">true</code> if there exists an isomorphism <span class="SimpleMath">\(\iota: a \rightarrow b\)</span> such that <span class="SimpleMath">\(\beta \circ \iota \sim_{a,c} \alpha\)</span>, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X7A97D3C3869323D1" name="X7A97D3C3869323D1"></a></p>
+
+<h5>3.8-2 AddIsEqualAsSubobjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualAsSubobjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsEqualAsSubobjects</code>. <span class="SimpleMath">\(F: (\alpha, \beta) \mapsto \mathtt{IsEqualAsSubobjects}(\alpha,\beta)\)</span>.</p>
+
+<p><a id="X79389FBF86CF87A4" name="X79389FBF86CF87A4"></a></p>
+
+<h5>3.8-3 IsEqualAsFactorobjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsEqualAsFactorobjects</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The arguments are two factorobjects <span class="SimpleMath">\(\alpha: c \rightarrow a\)</span>, <span class="SimpleMath">\(\beta: c \rightarrow b\)</span>. The output is <code class="code">true</code> if there exists an isomorphism <span class="SimpleMath">\(\iota: b \rightarrow a\)</span> such that <span class="SimpleMath">\(\iota \circ \beta \sim_{c,a} \alpha\)</span>, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X82DE9AE387425307" name="X82DE9AE387425307"></a></p>
+
+<h5>3.8-4 AddIsEqualAsFactorobjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualAsFactorobjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsEqualAsFactorobjects</code>. <span class="SimpleMath">\(F: (\alpha, \beta) \mapsto \mathtt{IsEqualAsFactorobjects}(\alpha,\beta)\)</span>.</p>
+
+<p><a id="X7C21531C7EE65C72" name="X7C21531C7EE65C72"></a></p>
+
+<h5>3.8-5 IsDominating</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDominating</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>In short: Returns <code class="code">true</code> iff <span class="SimpleMath">\(\alpha\)</span> is smaller than <span class="SimpleMath">\(\beta\)</span>. Full description: The arguments are two subobjects <span class="SimpleMath">\(\alpha: a \rightarrow c\)</span>, <span class="SimpleMath">\(\beta: b \rightarrow c\)</span>. The output is <code class="code">true</code> if there exists a morphism <span class="SimpleMath">\(\iota: a \rightarrow b\)</span> such that <span class="SimpleMath">\(\beta \circ \iota \sim_{a,c} \alpha\)</span>, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X834AC612831DDD11" name="X834AC612831DDD11"></a></p>
+
+<h5>3.8-6 AddIsDominating</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsDominating</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsDominating</code>. <span class="SimpleMath">\(F: (\alpha, \beta) \mapsto \mathtt{IsDominating}(\alpha,\beta)\)</span>.</p>
+
+<p><a id="X7C77E9D479C8D502" name="X7C77E9D479C8D502"></a></p>
+
+<h5>3.8-7 IsCodominating</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCodominating</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>In short: Returns <code class="code">true</code> iff <span class="SimpleMath">\(\alpha\)</span> is smaller than <span class="SimpleMath">\(\beta\)</span>. Full description: The arguments are two factorobjects <span class="SimpleMath">\(\alpha: c \rightarrow a\)</span>, <span class="SimpleMath">\(\beta: c \rightarrow b\)</span>. The output is <code class="code">true</code> if there exists a morphism <span class="SimpleMath">\(\iota: b \rightarrow a\)</span> such that <span class="SimpleMath">\(\iota \circ \beta \sim_{c,a} \alpha\)</span>, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X78E046E387674019" name="X78E046E387674019"></a></p>
+
+<h5>3.8-8 AddIsCodominating</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsCodominating</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsCodominating</code>. <span class="SimpleMath">\(F: (\alpha, \beta) \mapsto \mathtt{IsCodominating}(\alpha,\beta)\)</span>.</p>
+
+<p><a id="X82ADC0BF82DA2122" name="X82ADC0BF82DA2122"></a></p>
+
+<h4>3.9 <span class="Heading">Identity Morphism and Composition of Morphisms</span></h4>
+
+<p><a id="X7C9F3D8086238443" name="X7C9F3D8086238443"></a></p>
+
+<h5>3.9-1 IdentityMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IdentityMorphism</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,a)\)</span></p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span>. The output is its identity morphism <span class="SimpleMath">\(\mathrm{id}_a\)</span>.</p>
+
+<p><a id="X878F4D2481E94EB6" name="X878F4D2481E94EB6"></a></p>
+
+<h5>3.9-2 AddIdentityMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIdentityMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IdentityMorphism</code>. <span class="SimpleMath">\(F: a \mapsto \mathrm{id}_a\)</span>.</p>
+
+<p><a id="X8244F7A0868BE27D" name="X8244F7A0868BE27D"></a></p>
+
+<h5>3.9-3 PreCompose</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PreCompose</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a, c )\)</span></p>
+
+<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>, <span class="SimpleMath">\(\beta: b \rightarrow c\)</span>. The output is the composition <span class="SimpleMath">\(\beta \circ \alpha: a \rightarrow c\)</span>.</p>
+
+<p><a id="X83CB57FB81931CFE" name="X83CB57FB81931CFE"></a></p>
+
+<h5>3.9-4 PreCompose</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PreCompose</code>( <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a_1, a_{n+1})\)</span></p>
+
+<p>This is a convenience method. The argument is a list of morphisms <span class="SimpleMath">\(L = ( \alpha_1: a_1 \rightarrow a_2, \alpha_2: a_2 \rightarrow a_3, \dots, \alpha_n: a_n \rightarrow a_{n+1} )\)</span>. The output is the composition <span class="SimpleMath">\(\alpha_{n} \circ ( \alpha_{n-1} \circ ( \dots ( \alpha_2 \circ \alpha_1 ) ) )\)</span>.</p>
+
+<p><a id="X868C87097D322509" name="X868C87097D322509"></a></p>
+
+<h5>3.9-5 AddPreCompose</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPreCompose</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PreCompose</code>. <span class="SimpleMath">\(F: (\alpha, \beta) \mapsto \beta \circ \alpha\)</span>.</p>
+
+<p><a id="X84293B8381256A08" name="X84293B8381256A08"></a></p>
+
+<h5>3.9-6 PostCompose</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PostCompose</code>( <var class="Arg">beta</var>, <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a, c )\)</span></p>
+
+<p>The arguments are two morphisms <span class="SimpleMath">\(\beta: b \rightarrow c\)</span>, <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is the composition <span class="SimpleMath">\(\beta \circ \alpha: a \rightarrow c\)</span>.</p>
+
+<p><a id="X81222A1084A4F637" name="X81222A1084A4F637"></a></p>
+
+<h5>3.9-7 PostCompose</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PostCompose</code>( <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a_1, a_{n+1})\)</span></p>
+
+<p>This is a convenience method. The argument is a list of morphisms <span class="SimpleMath">\(L = ( \alpha_n: a_n \rightarrow a_{n+1}, \alpha_{n-1}: a_{n-1} \rightarrow a_n, \dots, \alpha_1: a_1 \rightarrow a_2 )\)</span>. The output is the composition <span class="SimpleMath">\(((\alpha_{n} \circ \alpha_{n-1}) \circ \dots \alpha_2) \circ \alpha_1\)</span>.</p>
+
+<p><a id="X853E87F47F9FC287" name="X853E87F47F9FC287"></a></p>
+
+<h5>3.9-8 AddPostCompose</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddPostCompose</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">PostCompose</code>. <span class="SimpleMath">\(F: (\alpha, \beta) \mapsto \alpha \circ \beta\)</span>.</p>
+
+<p><a id="X7D5182B48598FBC5" name="X7D5182B48598FBC5"></a></p>
+
+<h4>3.10 <span class="Heading">Well-Definedness of Morphisms</span></h4>
+
+<p><a id="X7968A871832877B8" name="X7968A871832877B8"></a></p>
+
+<h5>3.10-1 IsWellDefinedForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsWellDefinedForMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha\)</span>. The output is <code class="code">true</code> if <span class="SimpleMath">\(\alpha\)</span> is well-defined, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X7A4BE39A83D2A730" name="X7A4BE39A83D2A730"></a></p>
+
+<h5>3.10-2 AddIsWellDefinedForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsWellDefinedForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsWellDefinedForMorphisms</code>. <span class="SimpleMath">\(F: \alpha \mapsto \mathtt{IsWellDefinedForMorphisms}( \alpha )\)</span>.</p>
+
+<p><a id="X83339BB37B01DB19" name="X83339BB37B01DB19"></a></p>
+
+<h4>3.11 <span class="Heading">Lift/Colift</span></h4>
+
+
+<ul>
+<li><p>For any pair of morphisms <span class="SimpleMath">\(\alpha: a \rightarrow c\)</span>, <span class="SimpleMath">\(\beta: b \rightarrow c\)</span>, we call each morphism <span class="SimpleMath">\(\alpha / \beta: a \rightarrow b\)</span> such that <span class="SimpleMath">\(\beta \circ (\alpha / \beta) \sim_{a,c} \alpha\)</span> a <em>lift of <span class="SimpleMath">\(\alpha\)</span> along <span class="SimpleMath">\(\beta\)</span></em>.</p>
+
+</li>
+<li><p>For any pair of morphisms <span class="SimpleMath">\(\alpha: a \rightarrow c\)</span>, <span class="SimpleMath">\(\beta: a \rightarrow b\)</span>, we call each morphism <span class="SimpleMath">\(\alpha \backslash \beta: c \rightarrow b\)</span> such that <span class="SimpleMath">\((\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta\)</span> a <em> colift of <span class="SimpleMath">\(\beta\)</span> along <span class="SimpleMath">\(\alpha\)</span></em>.</p>
+
+</li>
+</ul>
+<p>Note that such lifts (or colifts) do not have to be unique. So in general, we do not expect that algorithms computing lifts (or colifts) do this in a functorial way. Thus the operations <span class="SimpleMath">\(\mathtt{Lift}\)</span> and <span class="SimpleMath">\(\mathtt{Colift}\)</span> are not regarded as categorical operations, but only as set-theoretic operations.</p>
+
+<p><a id="X83CDF65582CD9921" name="X83CDF65582CD9921"></a></p>
+
+<h5>3.11-1 LiftAlongMonomorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LiftAlongMonomorphism</code>( <var class="Arg">iota</var>, <var class="Arg">tau</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(t,k)\)</span></p>
+
+<p>The arguments are a monomorphism <span class="SimpleMath">\(\iota: k \hookrightarrow a\)</span> and a morphism <span class="SimpleMath">\(\tau: t \rightarrow a\)</span> such that there is a morphism <span class="SimpleMath">\(u: t \rightarrow k\)</span> with <span class="SimpleMath">\(\iota \circ u \sim_{t,a} \tau\)</span>. The output is such a <span class="SimpleMath">\(u\)</span>.</p>
+
+<p><a id="X869A19337CB3059E" name="X869A19337CB3059E"></a></p>
+
+<h5>3.11-2 AddLiftAlongMonomorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLiftAlongMonomorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">LiftAlongMonomorphism</code>. The function <span class="SimpleMath">\(F\)</span> maps a pair <span class="SimpleMath">\((\iota, \tau)\)</span> to a lift <span class="SimpleMath">\(u\)</span>.</p>
+
+<p><a id="X79AA9F638487EE32" name="X79AA9F638487EE32"></a></p>
+
+<h5>3.11-3 ColiftAlongEpimorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ColiftAlongEpimorphism</code>( <var class="Arg">epsilon</var>, <var class="Arg">tau</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(c,t)\)</span></p>
+
+<p>The arguments are an epimorphism <span class="SimpleMath">\(\epsilon: a \rightarrow c\)</span> and a morphism <span class="SimpleMath">\(\tau: a \rightarrow t\)</span> such that there is a morphism <span class="SimpleMath">\(u: c \rightarrow t\)</span> with <span class="SimpleMath">\(u \circ \epsilon \sim_{a,t} \tau\)</span>. The output is such a <span class="SimpleMath">\(u\)</span>.</p>
+
+<p><a id="X7BBEF7C479E612ED" name="X7BBEF7C479E612ED"></a></p>
+
+<h5>3.11-4 AddColiftAlongEpimorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddColiftAlongEpimorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">ColiftAlongEpimorphism</code>. The function <span class="SimpleMath">\(F\)</span> maps a pair <span class="SimpleMath">\((\epsilon, \tau)\)</span> to a lift <span class="SimpleMath">\(u\)</span>.</p>
+
+<p><a id="X7D9BA8D67892BD48" name="X7D9BA8D67892BD48"></a></p>
+
+<h5>3.11-5 IsLiftableAlongMonomorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsLiftableAlongMonomorphism</code>( <var class="Arg">iota</var>, <var class="Arg">tau</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The arguments are a monomorphism <span class="SimpleMath">\(\iota: k \hookrightarrow a\)</span> and a morphism <span class="SimpleMath">\(\tau: t \rightarrow a\)</span>. The output is <code class="code">true</code> if there exists a morphism <span class="SimpleMath">\(u: t \rightarrow k\)</span> with <span class="SimpleMath">\(\iota \circ u \sim_{t,a} \tau\)</span>. Otherwise, the output is <code class="code">false</code>.</p>
+
+<p><a id="X7BD695308127A877" name="X7BD695308127A877"></a></p>
+
+<h5>3.11-6 AddIsLiftableAlongMonomorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsLiftableAlongMonomorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsLiftableAlongMonomorphism</code>. <span class="SimpleMath">\(F: (\iota, \tau) \mapsto \texttt{IsLiftableAlongMonomorphism}( \iota, \tau )\)</span>.</p>
+
+<p><a id="X7DCDD2B2859EFD2D" name="X7DCDD2B2859EFD2D"></a></p>
+
+<h5>3.11-7 IsColiftableAlongEpimorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsColiftableAlongEpimorphism</code>( <var class="Arg">epsilon</var>, <var class="Arg">tau</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The arguments are an epimorphism <span class="SimpleMath">\(\epsilon: a \rightarrow c\)</span> and a morphism <span class="SimpleMath">\(\tau: a \rightarrow t\)</span>. The output is <code class="code">true</code> if there exists a morphism <span class="SimpleMath">\(u: c \rightarrow t\)</span> with <span class="SimpleMath">\(u \circ \epsilon \sim_{a,t} \tau\)</span>. Otherwise, the output is <code class="code">false</code>.</p>
+
+<p><a id="X86BF34667D329168" name="X86BF34667D329168"></a></p>
+
+<h5>3.11-8 AddIsColiftableAlongEpimorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsColiftableAlongEpimorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsColiftableAlongEpimorphism</code>. <span class="SimpleMath">\(F: (\epsilon, \tau) \mapsto \texttt{IsColiftableAlongEpimorphism}( \epsilon, \tau )\)</span>.</p>
+
+<p><a id="X87C471D583C1CD9E" name="X87C471D583C1CD9E"></a></p>
+
+<h5>3.11-9 Lift</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Lift</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(a,b) + \{ \mathtt{fail} \}\)</span></p>
+
+<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow c\)</span>, <span class="SimpleMath">\(\beta: b \rightarrow c\)</span>. The output is a lift <span class="SimpleMath">\(\alpha / \beta: a \rightarrow b\)</span> of <span class="SimpleMath">\(\alpha\)</span> along <span class="SimpleMath">\(\beta\)</span> if such a lift exists or <span class="SimpleMath">\(\mathtt{fail}\)</span> if it doesn't. Recall that a lift <span class="SimpleMath">\(\alpha / \beta: a \rightarrow b\)</span> of <span class="SimpleMath">\(\alpha\)</span> along <span class="SimpleMath">\(\beta\)</span> is a morphism such that <span class="SimpleMath">\(\beta \circ (\alpha / \beta) \sim_{a,c} \alpha\)</span>.</p>
+
+<p><a id="X7DA9346A8517648D" name="X7DA9346A8517648D"></a></p>
+
+<h5>3.11-10 AddLift</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLift</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">Lift</code>. The function <span class="SimpleMath">\(F\)</span> maps a pair <span class="SimpleMath">\((\alpha, \beta)\)</span> to a lift <span class="SimpleMath">\(\alpha / \beta\)</span> if it exists, and to <code class="code">fail</code> otherwise.</p>
+
+<p><a id="X7BA38B0F797AFE20" name="X7BA38B0F797AFE20"></a></p>
+
+<h5>3.11-11 Colift</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Colift</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(c,b) + \{ \mathtt{fail} \}\)</span></p>
+
+<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow c\)</span>, <span class="SimpleMath">\(\beta: a \rightarrow b\)</span>. The output is a colift <span class="SimpleMath">\(\alpha \backslash \beta: c \rightarrow b\)</span> of <span class="SimpleMath">\(\beta\)</span> along <span class="SimpleMath">\(\alpha\)</span> if such a colift exists or <span class="SimpleMath">\(\mathtt{fail}\)</span> if it doesn't. Recall that a colift <span class="SimpleMath">\(\alpha \backslash \beta: c \rightarrow b\)</span> of <span class="SimpleMath">\(\beta\)</span> along <span class="SimpleMath">\(\alpha\)</span> is a morphism such that <span class="SimpleMath">\((\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta\)</span>.</p>
+
+<p><a id="X84A7986F82ED769E" name="X84A7986F82ED769E"></a></p>
+
+<h5>3.11-12 AddColift</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddColift</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">Colift</code>. The function <span class="SimpleMath">\(F\)</span> maps a pair <span class="SimpleMath">\((\alpha, \beta)\)</span> to a colift <span class="SimpleMath">\(\alpha \backslash \beta\)</span> if it exists, and to <code class="code">fail</code> otherwise.</p>
+
+<p><a id="X7F895375875BE5B9" name="X7F895375875BE5B9"></a></p>
+
+<h5>3.11-13 IsLiftable</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsLiftable</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow c\)</span>, <span class="SimpleMath">\(\beta: b \rightarrow c\)</span>. The output is <code class="code">true</code> if there exists a lift <span class="SimpleMath">\(\alpha / \beta: a \rightarrow b\)</span> of <span class="SimpleMath">\(\alpha\)</span> along <span class="SimpleMath">\(\beta\)</span>, i.e., a morphism such that <span class="SimpleMath">\(\beta \circ (\alpha / \beta) \sim_{a,c} \alpha\)</span>. Otherwise, the output is <code class="code">false</code>.</p>
+
+<p><a id="X79AC542F8227455E" name="X79AC542F8227455E"></a></p>
+
+<h5>3.11-14 AddIsLiftable</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsLiftable</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsLiftable</code>. <span class="SimpleMath">\(F: ( \alpha, \beta ) \mapsto \mathtt{IsLiftable}( \alpha, \beta )\)</span>.</p>
+
+<p><a id="X8685B04087B1E52A" name="X8685B04087B1E52A"></a></p>
+
+<h5>3.11-15 IsColiftable</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsColiftable</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow c\)</span>, <span class="SimpleMath">\(\beta: a \rightarrow b\)</span>. The output is <code class="code">true</code> if there exists a colift <span class="SimpleMath">\(\alpha \backslash \beta: c \rightarrow b\)</span> of <span class="SimpleMath">\(\beta\)</span> along <span class="SimpleMath">\(\alpha\)</span>., i.e., a morphism such that <span class="SimpleMath">\((\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta\)</span>. Otherwise, the output is <code class="code">false</code>.</p>
+
+<p><a id="X7A41C14B8169E993" name="X7A41C14B8169E993"></a></p>
+
+<h5>3.11-16 AddIsColiftable</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsColiftable</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">IsColiftable</code>. <span class="SimpleMath">\(F: ( \alpha, \beta ) \mapsto \mathtt{IsColiftable}( \alpha, \beta )\)</span>.</p>
+
+<p><a id="X864F84C47DC1A620" name="X864F84C47DC1A620"></a></p>
+
+<h4>3.12 <span class="Heading">Inverses</span></h4>
+
+<p>Let <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span> be a morphism. An inverse of <span class="SimpleMath">\(\alpha\)</span> is a morphism <span class="SimpleMath">\(\alpha^{-1}: b \rightarrow a\)</span> such that <span class="SimpleMath">\(\alpha \circ \alpha^{-1} \sim_{b,b} \mathrm{id}_b\)</span> and <span class="SimpleMath">\(\alpha^{-1} \circ \alpha \sim_{a,a} \mathrm{id}_a\)</span>.</p>
+
+<p><a id="X7A6B4970823DDAE6" name="X7A6B4970823DDAE6"></a></p>
+
+<h5>3.12-1 AddInverse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInverse</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">Inverse</code>. <span class="SimpleMath">\(F: \alpha \mapsto \alpha^{-1}\)</span>.</p>
+
+<p><a id="X7DD668627932185C" name="X7DD668627932185C"></a></p>
+
+<h4>3.13 <span class="Heading">Tool functions for caches</span></h4>
+
+<p><a id="X83F87AE07ED534ED" name="X83F87AE07ED534ED"></a></p>
+
+<h5>3.13-1 IsEqualForCacheForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsEqualForCacheForMorphisms</code>( <var class="Arg">phi</var>, <var class="Arg">psi</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Compares two objects in the cache</p>
+
+<p><a id="X833165B27AA74580" name="X833165B27AA74580"></a></p>
+
+<h5>3.13-2 AddIsEqualForCacheForMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualForCacheForMorphisms</code>( <var class="Arg">c</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: northing</p>
+
+<p>By default, CAP uses caches to store the values of Categorical operations. To get a value out of the cache, one needs to compare the input of a basic operation with its previous input. To compare morphisms in the category, IsEqualForCacheForMorphism is used. By default this is an alias for IsEqualForMorphismsOnMor, where fail is substituted by false. If you add a function, this function used instead. A function <span class="SimpleMath">\(F: a,b \mapsto bool\)</span> is expected here. The output has to be true or false. Fail is not allowed in this context.</p>
+
+<p><a id="X7F065B9A78922547" name="X7F065B9A78922547"></a></p>
+
+<h4>3.14 <span class="Heading">Homomorphism structures</span></h4>
+
+<p>Homomorphism structures are way to "oversee" the homomorphisms between two given objects. Let <span class="SimpleMath">\(C\)</span>, <span class="SimpleMath">\(D\)</span> be categories. A <span class="SimpleMath">\(D\)</span>-homomorphism structure for <span class="SimpleMath">\(C\)</span> consists of the following data:</p>
+
+
+<ul>
+<li><p>a functor <span class="SimpleMath">\(H: C^{\mathrm{op}} \times C \rightarrow D\)</span> (when <span class="SimpleMath">\(C\)</span> and <span class="SimpleMath">\(D\)</span> are Ab-categories, <span class="SimpleMath">\(H\)</span> is assumed to be bilinear).</p>
+
+</li>
+<li><p>an object <span class="SimpleMath">\(1 \in D\)</span>, called the distinguished object,</p>
+
+</li>
+<li><p>a bijection <span class="SimpleMath">\(\nu: \mathrm{Hom}_{C}(a,b) \simeq \mathrm{Hom}_{D}(1, H(a,b))\)</span> natural in <span class="SimpleMath">\(a,b \in C\)</span>.</p>
+
+</li>
+</ul>
+<p><a id="X81BC29A679416C45" name="X81BC29A679416C45"></a></p>
+
+<h5>3.14-1 HomomorphismStructureOnObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HomomorphismStructureOnObjects</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object in <span class="SimpleMath">\(D\)</span></p>
+
+<p>The arguments are two objects <span class="SimpleMath">\(a, b\)</span> in <span class="SimpleMath">\(C\)</span>. The output is the value of the homomorphism structure on objects <span class="SimpleMath">\(H(a,b)\)</span>.</p>
+
+<p><a id="X7833851F7DD2D0F1" name="X7833851F7DD2D0F1"></a></p>
+
+<h5>3.14-2 AddHomomorphismStructureOnObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddHomomorphismStructureOnObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">HomomorphismStructureOnObjects</code>. <span class="SimpleMath">\(F: (a,b) \mapsto H(a,b)\)</span>.</p>
+
+<p><a id="X8257E3787865C5E0" name="X8257E3787865C5E0"></a></p>
+
+<h5>3.14-3 HomomorphismStructureOnMorphisms</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HomomorphismStructureOnMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}_{D}(H(a',b), H(a,b'))\)</span></p>
+
+<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow a', \beta: b \rightarrow b'\)</span> in <span class="SimpleMath">\(C\)</span>. The output is the value of the homomorphism structure on morphisms <span class="SimpleMath">\(H(\alpha, \beta )\)</span>.</p>
+
+<p><a id="X7FBC94B983CBA64F" name="X7FBC94B983CBA64F"></a></p>
+
+<h5>3.14-4 HomomorphismStructureOnMorphismsWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HomomorphismStructureOnMorphismsWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}_{D}(H(a',b), H(a,b'))\)</span></p>
+
+<p>The arguments are an object <span class="SimpleMath">\(s = H(a',b)\)</span> in <span class="SimpleMath">\(D\)</span>, two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow a', \beta: b \rightarrow b'\)</span> in <span class="SimpleMath">\(C\)</span>, and an object <span class="SimpleMath">\(r = H(a,b')\)</span> in <span class="SimpleMath">\(D\)</span>. The output is the value of the homomorphism structure on morphisms <span class="SimpleMath">\(H(\alpha, \beta )\)</span>.</p>
+
+<p><a id="X7F6B67487C55B055" name="X7F6B67487C55B055"></a></p>
+
+<h5>3.14-5 AddHomomorphismStructureOnMorphismsWithGivenObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddHomomorphismStructureOnMorphismsWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">HomomorphismStructureOnMorphismsWithGivenObjects</code>. <span class="SimpleMath">\(F: ( s, \alpha: a \rightarrow a', \beta: b \rightarrow b', r ) \mapsto H( \alpha, \beta )\)</span>.</p>
+
+<p><a id="X7999CCFF82DA16D7" name="X7999CCFF82DA16D7"></a></p>
+
+<h5>3.14-6 DistinguishedObjectOfHomomorphismStructure</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DistinguishedObjectOfHomomorphismStructure</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an object in <span class="SimpleMath">\(D\)</span></p>
+
+<p>The argument is a category <span class="SimpleMath">\(C\)</span>. The output is the distinguished object <span class="SimpleMath">\(1\)</span> in <span class="SimpleMath">\(D\)</span> of the homomorphism structure.</p>
+
+<p><a id="X7D7A07CC7C9541DB" name="X7D7A07CC7C9541DB"></a></p>
+
+<h5>3.14-7 AddDistinguishedObjectOfHomomorphismStructure</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDistinguishedObjectOfHomomorphismStructure</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">DistinguishedObjectOfHomomorphismStructure</code>. <span class="SimpleMath">\(F: ( ) \mapsto 1\)</span>.</p>
+
+<p><a id="X8296788986E7857F" name="X8296788986E7857F"></a></p>
+
+<h5>3.14-8 InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}_{D}(1, H(a,a'))\)</span></p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha: a \rightarrow a'\)</span> in <span class="SimpleMath">\(C\)</span>. The output is the corresponding morphism <span class="SimpleMath">\(\nu( \alpha ): 1 \rightarrow H(a,a')\)</span> in <span class="SimpleMath">\(D\)</span> of the homomorphism structure.</p>
+
+<p><a id="X866BC47C7D031883" name="X866BC47C7D031883"></a></p>
+
+<h5>3.14-9 AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure</code>. <span class="SimpleMath">\(F: (\alpha: a \rightarrow a') \mapsto (\nu(\alpha):1 \rightarrow H(a,a'))\)</span>.</p>
+
+<p><a id="X8083130D82B510BA" name="X8083130D82B510BA"></a></p>
+
+<h5>3.14-10 InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism</code>( <var class="Arg">a</var>, <var class="Arg">a'</var>, <var class="Arg">iota</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}_{C}(a,a')\)</span></p>
+
+<p>The arguments are objects <span class="SimpleMath">\(a,a'\)</span> in <span class="SimpleMath">\(C\)</span> and a morphism <span class="SimpleMath">\(\iota: 1 \rightarrow H(a,a')\)</span> in <span class="SimpleMath">\(D\)</span>. The output is the corresponding morphism <span class="SimpleMath">\(\nu^{-1}(\iota): a \rightarrow a'\)</span> in <span class="SimpleMath">\(C\)</span> of the homomorphism structure.</p>
+
+<p><a id="X7E4E4CDF849ECCF7" name="X7E4E4CDF849ECCF7"></a></p>
+
+<h5>3.14-11 AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operations adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism</code>. <span class="SimpleMath">\(F: (a,a',\iota: 1 \rightarrow H(a,a')) \mapsto (\nu^{-1}(\iota): a \rightarrow a')\)</span>.</p>
+
+<p><a id="X7BE5E2687FC110AC" name="X7BE5E2687FC110AC"></a></p>
+
+<h5>3.14-12 SolveLinearSystemInAbCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SolveLinearSystemInAbCategory</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">gamma</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list of morphisms <span class="SimpleMath">\([X_1, \dots, X_n]\)</span></p>
+
+<p>The arguments are three lists <span class="SimpleMath">\(\alpha\)</span>, <span class="SimpleMath">\(\beta\)</span>, and <span class="SimpleMath">\(\gamma\)</span>. The first list <span class="SimpleMath">\(\alpha\)</span> (the left coefficients) is a list of list of morphisms <span class="SimpleMath">\(\alpha_{ij}: A_i \rightarrow B_j\)</span>, where <span class="SimpleMath">\(i = 1 \dots m\)</span> and <span class="SimpleMath">\(j = 1 \dots n\)</span> for integers <span class="SimpleMath">\(m,n \geq 1\)</span>. The second list <span class="SimpleMath">\(\beta\)</span> (the right coefficients) is a list of list of morphisms <span class="SimpleMath">\(\beta_{ij}: C_j \rightarrow D_i\)</span>, where <span class="SimpleMath">\(i = 1 \dots m\)</span> and <span class="SimpleMath">\(j = 1 \dots n\)</span>. The third list <span class="SimpleMath">\(\gamma\)</span> (the right side) is a list of morphisms <span class="SimpleMath">\(\gamma_i: A_i \rightarrow D_i\)</span>, where <span class="SimpleMath">\(i = 1, \dots, m\)</span>. The output is either a list of morphisms <span class="SimpleMath">\(X_j: B_j \rightarrow C_j\)</span> for <span class="SimpleMath">\(j=1\dots n\)</span> solving the linear system defined by <span class="SimpleMath">\(\alpha\)</span>, <span class="SimpleMath">\(\beta\)</span>, <span class="SimpleMath">\(\gamma\)</span>, i.e., <span class="SimpleMath">\(\sum_{j = 1}^n \alpha_{ij}\cdot X_j \cdot \beta_{ij} = \gamma_i\)</span> for all <span class="SimpleMath">\(i = 1 \dots m\)</span>, or <span class="SimpleMath">\(\texttt{fail}\)</span> if no such solution exists.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

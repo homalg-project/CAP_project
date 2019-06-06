@@ -3,3 +3,4 @@ package_links:
     - name: GeneralizedMorphismsForCAP
     - name: LinearAlgebraForCAP
     - name: ModulePresentationsForCAP
+    - name: MonoidalCategories

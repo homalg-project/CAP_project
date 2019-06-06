@@ -1,0 +1,49 @@
+name: CAP
+version: 2016.01.07
+date: 07/01/2016
+description: Categories, Algorithms, Programming
+
+authors:
+    - name: Sebastian Gutsche
+      url: http://wwwb.math.rwth-aachen.de/~gutsche
+    - name: Sebastian Posur
+      url: http://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php
+    - name: Øystein Skartsæterhagen
+      url: http://www.math.ntnu.no/~oysteini/
+
+maintainers:
+    - name: Sebastian Gutsche
+      url: http://wwwb.math.rwth-aachen.de/~gutsche
+    - name: Sebastian Posur
+      url: http://wwwb.math.rwth-aachen.de/Mitarbeiter/posur.php
+    - name: Øystein Skartsæterhagen
+      url: http://www.math.ntnu.no/~oysteini/
+
+GAP: ">= 4.6"
+
+needed-pkgs:
+    - name: "AutoDoc"
+      version: ">= 2014.06.26"
+      url: "http://gap-packages.github.io/AutoDoc/"
+    - name: "ToolsForHomalg"
+      version: ">= 2015.12.08"
+      url: "http://homalg-project.github.io/homalg_project/ToolsForHomalg/"
+    - name: "io"
+      version: ">=0"
+      url: "http://gap-system.github.io/io/"
+
+www: http://homalg-project.github.io/CAP_project/CAP/
+readme: http://homalg-project.github.io/CAP_project/CAP/README
+packageinfo: http://homalg-project.github.io/CAP_project/CAP/PackageInfo.g
+
+downloads:
+    - name: .tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2016.01.07/CAP-2016.01.07.tar.gz
+    - name: .zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2016.01.07/CAP-2016.01.07.zip
+
+abstract: 
+
+status: deposited
+doc-html: doc/chap0.html
+doc-pdf: doc/manual.pdf

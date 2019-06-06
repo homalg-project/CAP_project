@@ -1,0 +1,137 @@
+  
+  [1X9 [33X[0;0YTechnical Details[133X[101X
+  
+  
+  [1X9.1 [33X[0;0YThe Category Cat[133X[101X
+  
+  [1X9.1-1 ObjectCache[101X
+  
+  [33X[1;0Y[29X[2XObjectCache[102X( [3Xfunctor[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YIsCachingObject[133X
+  
+  [33X[0;0YRetuns  the  caching  object which stores the results of the functor [3Xfunctor[103X
+  applied to objects.[133X
+  
+  [1X9.1-2 MorphismCache[101X
+  
+  [33X[1;0Y[29X[2XMorphismCache[102X( [3Xfunctor[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10YIsCachingObject[133X
+  
+  [33X[0;0YRetuns  the  caching  object which stores the results of the functor [3Xfunctor[103X
+  applied to morphisms.[133X
+  
+  
+  [1X9.2 [33X[0;0YInstall Functions for IsWellDefined[133X[101X
+  
+  [1X9.2-1 InstallMethodWithToDoForIsWellDefined[101X
+  
+  [33X[1;0Y[29X[2XInstallMethodWithToDoForIsWellDefined[102X( [3Xarg[103X ) [32X function[133X
+  
+  [33X[0;0YThe  IsWellDefined  filter  is a basic function of CAP. For every categorial
+  construction  the  outcome is well defined if and only if every input object
+  or morphism of the construction is well defined. So for every implementation
+  of  a  categorial  construction  a  ToDoListEntry  needs to be defined which
+  propagates  well  definedness  from  the  input cells to the output. For not
+  writing  this  construction  in  every  method, this function can be used to
+  install  a  method  which  then installs the correct ToDoListEntries for the
+  output.  The  input  syntax  works  exactly  like  InstallMethod,  with  one
+  extension:  The  method  creates  an  auxilliary function which computes the
+  output  from  the  function  given to InstallMethodWithToDoForIsWellDefined,
+  then installs the ToDoListEntries, and then installs the auxilliary function
+  instead  of  the  original  one.  This  is normally done with InstallMethod.
+  However,  one can change this via the option InstallMethod, which can be set
+  to  any  other function which is then used instead of InstallMethod. This is
+  used for the caching functions.[133X
+  
+  [1X9.2-2 InstallSetWithToDoForIsWellDefined[101X
+  
+  [33X[1;0Y[29X[2XInstallSetWithToDoForIsWellDefined[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X ) [32X operation[133X
+  
+  [33X[0;0YFor  the  caching one needs the possibility to install setters for functions
+  with  multiple arguments. This is a setter function which automatically adds
+  ToDoListEntries  for  IsWellDefined  like  described  above for the manually
+  setted result of a method.[133X
+  
+  [1X9.2-3 DeclareAttributeWithToDoForIsWellDefined[101X
+  
+  [33X[1;0Y[29X[2XDeclareAttributeWithToDoForIsWellDefined[102X( [3Xarg[103X ) [32X function[133X
+  
+  [33X[0;0YSince  attributes  install  their  setters  themselfes, one needs to declare
+  attributes in another way to ensure ToDoListEntries for IsWellDefined in the
+  setter  of  an  attribute.  This  function  works like DeclareAttribute, but
+  installs  ToDoListEntries  for the setter of the attribute. Please note that
+  implementations       still       need       to       be      done      with
+  InstallMethodWithToDoForIsWellDefined.[133X
+  
+  [1X9.2-4 DeclareFamilyProperty[101X
+  
+  [33X[1;0Y[29X[2XDeclareFamilyProperty[102X( [3Xarg[103X ) [32X function[133X
+  
+  [1X9.2-5 CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS[101X
+  
+  [33X[1;0Y[29X[2XCAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS[102X( [3Xlist[103X, [3Xcategory[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10YReplaced list[133X
+  
+  [33X[0;0YThe  function  takes  a  list  (of  lists)  of filters or strings, where the
+  strings can be category, cell, object, morphism, or twocell. The strings are
+  then  recursively replaced by the corresponding filters of the category. The
+  replaced list is returned.[133X
+  
+  [1X9.2-6 CAP_INTERNAL_MERGE_FILTER_LISTS[101X
+  
+  [33X[1;0Y[29X[2XCAP_INTERNAL_MERGE_FILTER_LISTS[102X( [3Xlist[103X, [3Xadditional[103X, [3Xlist[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ymerged lists[133X
+  
+  [33X[0;0YThe  first argument should be a dense list with filters, the second a sparse
+  list  containing  filters  not longer then the first one. The filters of the
+  second  list are then appended (via and) to the filters in the first list at
+  the corresponding position, and the resulting list is returned.[133X
+  
+  [1X9.2-7 CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT[101X
+  
+  [33X[1;0Y[29X[2XCAP_INTERNAL_RETURN_OPTION_OR_DEFAULT[102X( [3Xstring[103X, [3Xvalue[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Yoption value[133X
+  
+  [33X[0;0YReturns the value of the option with name string, or, if this value is fail,
+  the object value.[133X
+  
+  [1X9.2-8 CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION[101X
+  
+  [33X[1;0Y[29X[2XCAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION[102X( [3Xfunction[103X, [3Xsymbol_list[103X, [3Xloop_multiple[103X, [3Xreplacement_record[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of symbols with multiples[133X
+  
+  [33X[0;0YThe  function  searches  for the appearance of the strings in symbol list on
+  the  function  function  and returns a list of pairs, containing the name of
+  the  symbol  and  the number of appearance. If the symbol appears in a loop,
+  the  number  of  appearance is counted times the loop multiple. Moreover, if
+  appearances  of  found  strings  should  be replaced by collections of other
+  strings, then these can be specified in the replacement record.[133X
+  
+  [1X9.2-9 CAP_INTERNAL_MERGE_PRECONDITIONS_LIST[101X
+  
+  [33X[1;0Y[29X[2XCAP_INTERNAL_MERGE_PRECONDITIONS_LIST[102X( [3Xlist1[103X, [3Xlist2[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ymerge list[133X
+  
+  [33X[0;0YThe  function  takes  two  lists  containing  pairs of symbols (strings) and
+  multiples.  The lists are merged that pairs where the string only appears in
+  one  list  is then added to the return list, if a pair with a string appears
+  in  both  lists,  the resulting lists only contains this pair once, with the
+  higher multiple from both lists.[133X
+  
+  [1X9.2-10 CachingStatistic[101X
+  
+  [33X[1;0Y[29X[2XCachingStatistic[102X( [3Xcategory[103X[, [3Xoperation[103X] ) [32X function[133X
+  
+  [33X[0;0YPrints  statistics  for  all caches in [3Xcategory[103X. If [3Xoperation[103X is given (as a
+  string), only statistics for the given operation cache is stored.[133X
+  
+  [1X9.2-11 BrowseCachingStatistic[101X
+  
+  [33X[1;0Y[29X[2XBrowseCachingStatistic[102X( [3Xcategory[103X ) [32X function[133X
+  
+  [33X[0;0YDisplays  statistics  for  all  caches in [3Xcategory[103X. in a Browse window. Here
+  "status"  indicates if the cache is weak, strong, or inactive, "hits" is the
+  number  of  successful  cache  accesses, "misses" the number of unsuccessful
+  cache  accesses,  and "stored" the number of objects currently stored in the
+  cache.[133X
+  

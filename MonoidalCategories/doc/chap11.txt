@@ -1,0 +1,999 @@
+  
+  [1X11 [33X[0;0YExamples and Tests[133X[101X
+  
+  
+  [1X11.1 [33X[0;0YFunctors[133X[101X
+  
+  [33X[0;0YWe  create  a  binary  functor  [23XF[123X  with  one covariant and one contravariant
+  component in two ways. Here is the first way to model a binary functor:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xfield := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27Xvec := LeftPresentations( field );;[127X[104X
+    [4X[25Xgap>[125X [27XF := CapFunctor( "CohomForVec", [ vec, [ vec, true ] ], vec );;[127X[104X
+    [4X[25Xgap>[125X [27Xobj_func := function( A, B ) return TensorProductOnObjects( A, DualOnObjects( B ) ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xmor_func := function( source, alpha, beta, range ) return TensorProductOnMorphismsWithGivenTensorProducts( source, alpha, DualOnMorphisms( beta ), range ); end;;[127X[104X
+    [4X[25Xgap>[125X [27XAddObjectFunction( F, obj_func );;[127X[104X
+    [4X[25Xgap>[125X [27XAddMorphismFunction( F, mor_func );;[127X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YCAP  regards  [23XF[123X  as  a binary functor on a technical level, as we can see by
+  looking at its input signature:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XInputSignature( F );[127X[104X
+    [4X[28X[ [ Category of left presentations of Q, false ], [ Category of left presentations of Q, true ] ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YWe can see that [10XApplyFunctor[110X works both on two arguments and on one argument
+  (in the product category).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XV1 := TensorUnit( vec );;[127X[104X
+    [4X[25Xgap>[125X [27XV3 := DirectSum( V1, V1, V1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xpi1 := ProjectionInFactorOfDirectSum( [ V1, V1 ], 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xpi2 := ProjectionInFactorOfDirectSum( [ V3, V1 ], 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xvalue1 := ApplyFunctor( F, pi1, pi2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xinput := Product( pi1, Opposite( pi2 ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xvalue2 := ApplyFunctor( F, input );;[127X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( value1, value2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YHere is the second way to model a binary functor:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XF2 := CapFunctor( "CohomForVec2", Product( vec, Opposite( vec ) ), vec );;[127X[104X
+    [4X[25Xgap>[125X [27XAddObjectFunction( F2, a -> obj_func( a[1], Opposite( a[2] ) ) );;[127X[104X
+    [4X[25Xgap>[125X [27XAddMorphismFunction( F2, function( source, datum, range ) return mor_func( source, datum[1], Opposite( datum[2] ), range ); end );;[127X[104X
+    [4X[25Xgap>[125X [27Xvalue3 := ApplyFunctor( F2,input );;[127X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( value1, value3 );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YCAP  regards  [23XF2[123X  as  a unary functor on a technical level, as we can see by
+  looking at its input signature:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XInputSignature( F2 );[127X[104X
+    [4X[28X[ [ Product of: Category of left presentations of Q, Opposite of Category of left presentations of Q, false ] ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YInstallation  of  the first functor as a GAP-operation. It will be installed
+  both as a unary and binary version.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XInstallFunctor( F, "F_installation" );;[127X[104X
+    [4X[25Xgap>[125X [27XF_installation( pi1, pi2 );;[127X[104X
+    [4X[25Xgap>[125X [27XF_installation( input );;[127X[104X
+    [4X[25Xgap>[125X [27XF_installationOnObjects( V1, V1 );;[127X[104X
+    [4X[25Xgap>[125X [27XF_installationOnObjects( Product( V1, Opposite( V1 ) ) );;[127X[104X
+    [4X[25Xgap>[125X [27XF_installationOnMorphisms( pi1, pi2 );;[127X[104X
+    [4X[25Xgap>[125X [27XF_installationOnMorphisms( input );;[127X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YInstallation  of the second functor as a GAP-operation. It will be installed
+  only as a unary version.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XInstallFunctor( F2, "F_installation2" );;[127X[104X
+    [4X[25Xgap>[125X [27XF_installation2( input );;[127X[104X
+    [4X[25Xgap>[125X [27XF_installation2OnObjects( Product( V1, Opposite( V1 ) ) );;[127X[104X
+    [4X[25Xgap>[125X [27XF_installation2OnMorphisms( input );;[127X[104X
+  [4X[32X[104X
+  
+  
+  [1X11.2 [33X[0;0YHomomorphism structure[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/FieldAsCategory.gi" );;[127X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
+    [4X[25Xgap>[125X [27XQoid := FieldAsCategory( Q );;[127X[104X
+    [4X[25Xgap>[125X [27Xa := FieldAsCategoryMorphism( 1/2, Qoid );;[127X[104X
+    [4X[25Xgap>[125X [27Xb := FieldAsCategoryMorphism( -2/3, Qoid );;[127X[104X
+    [4X[25Xgap>[125X [27Xu := FieldAsCategoryUniqueObject( Qoid );;[127X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( a,[127X[104X
+    [4X[25X>[125X [27X    InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism([127X[104X
+    [4X[25X>[125X [27X        u,u,[127X[104X
+    [4X[25X>[125X [27X        InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( [127X[104X
+    [4X[25X>[125X [27X            a[127X[104X
+    [4X[25X>[125X [27X        )[127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xc := FieldAsCategoryMorphism( 3, Qoid );;[127X[104X
+    [4X[25Xgap>[125X [27Xd := FieldAsCategoryMorphism( 0, Qoid );;[127X[104X
+    [4X[25Xgap>[125X [27Xleft_coeffs := [ [ a, b ], [ c, d ] ];;[127X[104X
+    [4X[25Xgap>[125X [27Xright_coeffs := [ [ PreCompose( a, b ), PreCompose( b, c ) ], [ c, PreCompose( a, a ) ] ];;[127X[104X
+    [4X[25Xgap>[125X [27Xright_side := [ a, b ];;[127X[104X
+    [4X[25Xgap>[125X [27Xsolution := [127X[104X
+    [4X[25X>[125X [27X    SolveLinearSystemInAbCategory([127X[104X
+    [4X[25X>[125X [27X    left_coeffs,[127X[104X
+    [4X[25X>[125X [27X    right_coeffs,[127X[104X
+    [4X[25X>[125X [27X    right_side[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XForAll( [ 1, 2 ], i ->[127X[104X
+    [4X[25X>[125X [27X    IsCongruentForMorphisms([127X[104X
+    [4X[25X>[125X [27X        Sum( List( [ 1, 2 ], j -> PreCompose( [ left_coeffs[i][j], solution[j], right_coeffs[i][j] ] ) ) ),[127X[104X
+    [4X[25X>[125X [27X        right_side[i][127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLift( c, d );[127X[104X
+    [4X[28Xfail[128X[104X
+    [4X[25Xgap>[125X [27XLift( d, c );[127X[104X
+    [4X[28X0[128X[104X
+    [4X[25Xgap>[125X [27XColift( c, d );[127X[104X
+    [4X[28X0[128X[104X
+    [4X[25Xgap>[125X [27XColift( d, c );[127X[104X
+    [4X[28Xfail[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X11.3 [33X[0;0YSpectral Sequences[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegersInSingular( );[127X[104X
+    [4X[28XZ[128X[104X
+    [4X[25Xgap>[125X [27XC1 := FreeLeftPresentation( 1, ZZ );[127X[104X
+    [4X[28X<An object in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XC2 := FreeLeftPresentation( 2, ZZ );[127X[104X
+    [4X[28X<An object in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27Xh1 := PresentationMorphism( C2, HomalgMatrix( [ [ 0 ], [ 4 ] ], ZZ ), C1 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27Xh2 := PresentationMorphism( C2, HomalgMatrix( [ [ 0 ], [ 2 ] ], ZZ ), C1 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27Xv1 := PresentationMorphism( C2, HomalgMatrix( [ [ 2, 0 ], [ 1, 2 ] ], ZZ ), C2 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27Xv2 := PresentationMorphism( C1, HomalgMatrix( [ [ 4 ] ], ZZ ), C1 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27Xcocomplex_h1 := CocomplexFromMorphismList( [ h1 ] );[127X[104X
+    [4X[28X<An object in Cocomplex category of Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27Xcocomplex_h2 := CocomplexFromMorphismList( [ h2 ] );[127X[104X
+    [4X[28X<An object in Cocomplex category of Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27Xcocomplex_mor := CochainMap( cocomplex_h2, [ v1, v2 ], cocomplex_h1 );[127X[104X
+    [4X[28X<A morphism in Cocomplex category of Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XZmod := CapCategory( C1 );[127X[104X
+    [4X[28XCategory of left presentations of Z[128X[104X
+    [4X[25Xgap>[125X [27XCH0 := CohomologyFunctor( Zmod, 0 );[127X[104X
+    [4X[28X0-th cohomology functor of Category of left presentations of Z[128X[104X
+    [4X[25Xgap>[125X [27Xcmor0 := ApplyFunctor( CH0, cocomplex_mor );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( cmor0 ) );[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27XCH1 := CohomologyFunctor( Zmod, 1 );[127X[104X
+    [4X[28X1-th cohomology functor of Category of left presentations of Z[128X[104X
+    [4X[25Xgap>[125X [27Xcmor1 := ApplyFunctor( CH1, cocomplex_mor );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( cmor1 ) );[127X[104X
+    [4X[28X4[128X[104X
+    [4X[25Xgap>[125X [27XToComplex := CocomplexToComplexFunctor( Zmod );[127X[104X
+    [4X[28XCocomplex to complex functor of Category of left presentations of Z[128X[104X
+    [4X[25Xgap>[125X [27Xcomplex_mor := ApplyFunctor( ToComplex, cocomplex_mor );[127X[104X
+    [4X[28X<A morphism in Complex category of Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XH0 := HomologyFunctor( Zmod, 0 );[127X[104X
+    [4X[28X0-th homology functor of Category of left presentations of Z[128X[104X
+    [4X[25Xgap>[125X [27Xmor0 := ApplyFunctor( H0, complex_mor );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( mor0 ) );[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27XHm1 := HomologyFunctor( Zmod, -1 );[127X[104X
+    [4X[28X-1-th homology functor of Category of left presentations of Z[128X[104X
+    [4X[25Xgap>[125X [27Xmor1 := ApplyFunctor( Hm1, complex_mor );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( mor1 ) );[127X[104X
+    [4X[28X4[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationalsInSingular( );;[127X[104X
+    [4X[25Xgap>[125X [27XR := QQ * "x,y";[127X[104X
+    [4X[28XQ[x,y][128X[104X
+    [4X[25Xgap>[125X [27XSetRecursionTrapInterval( 10000 );[127X[104X
+    [4X[25Xgap>[125X [27Xcategory := LeftPresentations( R );[127X[104X
+    [4X[28XCategory of left presentations of Q[x,y][128X[104X
+    [4X[25Xgap>[125X [27XS := FreeLeftPresentation( 1, R );[127X[104X
+    [4X[28X<An object in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xobject_func := function( i ) return S; end;[127X[104X
+    [4X[28Xfunction( i ) ... end[128X[104X
+    [4X[25Xgap>[125X [27Xmorphism_func := function( i ) return IdentityMorphism( S ); end;[127X[104X
+    [4X[28Xfunction( i ) ... end[128X[104X
+    [4X[25Xgap>[125X [27XC0 := ZFunctorObjectExtendedByInitialAndIdentity( object_func, morphism_func, category, 0, 4 );[127X[104X
+    [4X[28X<An object in Functors from integers into Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XS2 := FreeLeftPresentation( 2, R );[127X[104X
+    [4X[28X<An object in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XC1 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactorOfDirectSum( [ S2, S ], 1 ) ], 2 );[127X[104X
+    [4X[28X<An object in Functors from integers into Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XC1 := ZFunctorObjectExtendedByInitialAndIdentity( C1, 2, 3 );[127X[104X
+    [4X[28X<An object in Functors from integers into Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XC2 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactorOfDirectSum( [ S, S ], 1 ) ], 3 );[127X[104X
+    [4X[28X<An object in Functors from integers into Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XC2 := ZFunctorObjectExtendedByInitialAndIdentity( C2, 3, 4 );[127X[104X
+    [4X[28X<An object in Functors from integers into Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta_1_3 := PresentationMorphism( C1[3], HomalgMatrix( [ [ "x^2" ], [ "xy" ], [ "y^3"] ], 3, 1, R ), C0[3] );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta_1_2 := PresentationMorphism( C1[2], HomalgMatrix( [ [ "x^2" ], [ "xy" ] ], 2, 1, R ), C0[2] );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta1 := ZFunctorMorphism( C1, [ UniversalMorphismFromInitialObject( C0[1] ), UniversalMorphismFromInitialObject( C0[1] ), delta_1_2, delta_1_3 ], 0, C0 );[127X[104X
+    [4X[28X<A morphism in Functors from integers into Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta1 := ZFunctorMorphismExtendedByInitialAndIdentity( delta1, 0, 3 );[127X[104X
+    [4X[28X<A morphism in Functors from integers into Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta1 := AsAscendingFilteredMorphism( delta1 );[127X[104X
+    [4X[28X<A morphism in Ascending filtered object category of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta_2_3 := PresentationMorphism( C2[3], HomalgMatrix( [ [ "y", "-x", "0" ] ], 1, 3, R ), C1[3] );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta_2_4 := PresentationMorphism( C2[4], HomalgMatrix( [ [ "y", "-x", "0" ], [ "0", "y^2", "-x" ] ], 2, 3, R ), C1[4] );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta2 := ZFunctorMorphism( C2, [  UniversalMorphismFromInitialObject( C1[2] ), delta_2_3, delta_2_4 ], 2, C1 );[127X[104X
+    [4X[28X<A morphism in Functors from integers into Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta2 := ZFunctorMorphismExtendedByInitialAndIdentity( delta2, 2, 4 );[127X[104X
+    [4X[28X<A morphism in Functors from integers into Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta2 := AsAscendingFilteredMorphism( delta2 );[127X[104X
+    [4X[28X<A morphism in Ascending filtered object category of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XSetIsAdditiveCategory( CategoryOfAscendingFilteredObjects( category ), true );[127X[104X
+    [4X[25Xgap>[125X [27Xcomplex := ZFunctorObjectFromMorphismList( [ delta2, delta1 ], -2 );[127X[104X
+    [4X[28X<An object in Functors from integers into Ascending filtered object category of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xcomplex := AsComplex( complex );[127X[104X
+    [4X[28X<An object in Complex category of Ascending filtered object category of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XLessGenFunctor := FunctorLessGeneratorsLeft( R );[127X[104X
+    [4X[28XLess generators for Category of left presentations of Q[x,y][128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 0, 0, 0 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );[127X[104X
+    [4X[28X(an empty 0 x 1 matrix)[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 1, 0, 0 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );[127X[104X
+    [4X[28X(an empty 0 x 1 matrix)[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 2, 0, 0 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );[127X[104X
+    [4X[28X(an empty 0 x 1 matrix)[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 3, 0, 0 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );[127X[104X
+    [4X[28Xx*y,[128X[104X
+    [4X[28Xx^2[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 4, 0, 0 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );[127X[104X
+    [4X[28Xx*y,[128X[104X
+    [4X[28Xx^2,[128X[104X
+    [4X[28Xy^3[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 5, 0, 0 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );[127X[104X
+    [4X[28Xx*y,[128X[104X
+    [4X[28Xx^2,[128X[104X
+    [4X[28Xy^3[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceDifferentialOfAscendingFilteredComplex( complex, 3, 3, -2 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, s ) ) );[127X[104X
+    [4X[28Xy^3[128X[104X
+    [4X[25Xgap>[125X [27XAscToDescFunctor := AscendingToDescendingFilteredObjectFunctor( category );[127X[104X
+    [4X[28XAscending to descending filtered object functor of Category of left presentations of Q[x,y][128X[104X
+    [4X[25Xgap>[125X [27Xcocomplex := ZFunctorObjectFromMorphismList( [ ApplyFunctor( AscToDescFunctor, delta2 ), ApplyFunctor( AscToDescFunctor, delta1 ) ], -2 );[127X[104X
+    [4X[28X<An object in Functors from integers into Descending filtered object category of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XSetIsAdditiveCategory( CategoryOfDescendingFilteredObjects( category ), true );[127X[104X
+    [4X[25Xgap>[125X [27Xcocomplex := AsCocomplex( cocomplex );[127X[104X
+    [4X[28X<An object in Cocomplex category of Descending filtered object category of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfDescendingFilteredCocomplex( cocomplex, 0, -2, 1 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );[127X[104X
+    [4X[28X(an empty 0 x 2 matrix)[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfDescendingFilteredCocomplex( cocomplex, 1, -2, 1 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );[127X[104X
+    [4X[28X(an empty 0 x 2 matrix)[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfDescendingFilteredCocomplex( cocomplex, 2, -2, 1 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );[127X[104X
+    [4X[28X-y,x[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceEntryOfDescendingFilteredCocomplex( cocomplex, 3, -2, 1 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );[127X[104X
+    [4X[28X(an empty 0 x 0 matrix)[128X[104X
+    [4X[25Xgap>[125X [27Xs := SpectralSequenceDifferentialOfDescendingFilteredCocomplex( cocomplex, 2, -2, 1 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, s ) ) );[127X[104X
+    [4X[28Xx^2,[128X[104X
+    [4X[28Xx*y[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X11.4 [33X[0;0YLiftable[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xfield := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27XV := VectorSpaceObject( 1, field );;[127X[104X
+    [4X[25Xgap>[125X [27XW := VectorSpaceObject( 2, field );;[127X[104X
+    [4X[25Xgap>[125X [27Xalpha := VectorSpaceMorphism( V, HomalgMatrix( [ [ 1, -1 ] ], 1, 2, field ), W );;[127X[104X
+    [4X[25Xgap>[125X [27Xbeta := VectorSpaceMorphism( W, HomalgMatrix( [ [ 1, 2 ], [ 3, 4 ] ], 2, 2, field ), W );;[127X[104X
+    [4X[25Xgap>[125X [27XIsLiftable( alpha, beta );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsLiftable( beta, alpha );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsLiftableAlongMonomorphism( beta, alpha );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xgamma := VectorSpaceMorphism( W, HomalgMatrix( [ [ 1 ], [ 1 ] ], 2, 1, field ), V );;[127X[104X
+    [4X[25Xgap>[125X [27XIsColiftable( beta, gamma );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsColiftable( gamma, beta );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsColiftableAlongEpimorphism( beta, gamma );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X11.5 [33X[0;0YMonoidal Categories[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers();;[127X[104X
+    [4X[25Xgap>[125X [27XMl := AsLeftPresentation( HomalgMatrix( [ [ 2 ] ], 1, 1, ZZ ) );[127X[104X
+    [4X[28X<An object in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XNl := AsLeftPresentation( HomalgMatrix( [ [ 3 ] ], 1, 1, ZZ ) );[127X[104X
+    [4X[28X<An object in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XTl := TensorProductOnObjects( Ml, Nl );[127X[104X
+    [4X[28X<An object in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( Tl ) );[127X[104X
+    [4X[28X[ [  3 ],[128X[104X
+    [4X[28X  [  2 ] ][128X[104X
+    [4X[25Xgap>[125X [27XIsZeroForObjects( Tl );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XBl := Braiding( DirectSum( Ml, Nl ), DirectSum( Ml, Ml ) );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( Bl ) );[127X[104X
+    [4X[28X[ [  1,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  1,  0 ],[128X[104X
+    [4X[28X  [  0,  1,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  1 ] ][128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( Bl );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XUl := TensorUnit( CapCategory( Ml ) );[127X[104X
+    [4X[28X<An object in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIntHoml := InternalHomOnObjects( DirectSum( Ml, Ul ), Nl );[127X[104X
+    [4X[28X<An object in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( IntHoml ) );[127X[104X
+    [4X[28X[ [  -2,  -1 ],[128X[104X
+    [4X[28X  [   1,  -1 ] ][128X[104X
+    [4X[25Xgap>[125X [27Xgenerator_l1 := StandardGeneratorMorphism( IntHoml, 1 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27Xmorphism_l1 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_l1 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( morphism_l1 ) );[127X[104X
+    [4X[28X[ [  0 ],[128X[104X
+    [4X[28X  [  2 ] ][128X[104X
+    [4X[25Xgap>[125X [27Xgenerator_l2 := StandardGeneratorMorphism( IntHoml, 2 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27Xmorphism_l2 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_l2 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( morphism_l2 ) );[127X[104X
+    [4X[28X[ [  0 ],[128X[104X
+    [4X[28X  [  2 ] ][128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( LambdaIntroduction( morphism_l1 ), generator_l1 );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( LambdaIntroduction( morphism_l1 ), generator_l1 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( LambdaIntroduction( morphism_l2 ), generator_l2 );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( LambdaIntroduction( morphism_l2 ), generator_l2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XMr := AsRightPresentation( HomalgMatrix( [ [ 2 ] ], 1, 1, ZZ ) );[127X[104X
+    [4X[28X<An object in Category of right presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XNr := AsRightPresentation( HomalgMatrix( [ [ 3 ] ], 1, 1, ZZ ) );[127X[104X
+    [4X[28X<An object in Category of right presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XTr := TensorProductOnObjects( Mr, Nr );[127X[104X
+    [4X[28X<An object in Category of right presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( Tr ) );[127X[104X
+    [4X[28X[ [  3,  2 ] ][128X[104X
+    [4X[25Xgap>[125X [27XIsZeroForObjects( Tr );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XBr := Braiding( DirectSum( Mr, Nr ), DirectSum( Mr, Mr ) );[127X[104X
+    [4X[28X<A morphism in Category of right presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( Br ) );[127X[104X
+    [4X[28X[ [  1,  0,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  1,  0 ],[128X[104X
+    [4X[28X  [  0,  1,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  0,  0,  1 ] ][128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( Br );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XUr := TensorUnit( CapCategory( Mr ) );[127X[104X
+    [4X[28X<An object in Category of right presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XIntHomr := InternalHomOnObjects( DirectSum( Mr, Ur ), Nr );[127X[104X
+    [4X[28X<An object in Category of right presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( IntHomr ) );[127X[104X
+    [4X[28X[ [  -2,   1 ],[128X[104X
+    [4X[28X  [  -1,  -1 ] ][128X[104X
+    [4X[25Xgap>[125X [27Xgenerator_r1 := StandardGeneratorMorphism( IntHomr, 1 );[127X[104X
+    [4X[28X<A morphism in Category of right presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27Xmorphism_r1 := LambdaElimination( DirectSum( Mr, Ur ), Nr, generator_r1 );[127X[104X
+    [4X[28X<A morphism in Category of right presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( morphism_r1 ) );[127X[104X
+    [4X[28X[ [  0,   2 ] ][128X[104X
+    [4X[25Xgap>[125X [27Xgenerator_r2 := StandardGeneratorMorphism( IntHoml, 2 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27Xmorphism_r2 := LambdaElimination( DirectSum( Ml, Ul ), Nl, generator_r2 );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( UnderlyingMatrix( morphism_r2 ) );[127X[104X
+    [4X[28X[ [   0 ],[128X[104X
+    [4X[28X  [   2 ] ][128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( LambdaIntroduction( morphism_r1 ), generator_r1 );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( LambdaIntroduction( morphism_r1 ), generator_r1 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEqualForMorphisms( LambdaIntroduction( morphism_r2 ), generator_r2 );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( LambdaIntroduction( morphism_r2 ), generator_r2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X11.6 [33X[0;0YOpposite category[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals();;[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MatrixCategory( QQ );;[127X[104X
+    [4X[25Xgap>[125X [27XV1 := Opposite( TensorUnit( vec ) );;[127X[104X
+    [4X[25Xgap>[125X [27XV2 := DirectSum( V1, V1 );;[127X[104X
+    [4X[25Xgap>[125X [27XV3 := DirectSum( V1, V2 );;[127X[104X
+    [4X[25Xgap>[125X [27XV4 := DirectSum( V1, V3 );;[127X[104X
+    [4X[25Xgap>[125X [27XV5 := DirectSum( V1, V4 );;[127X[104X
+    [4X[25Xgap>[125X [27Xalpha13 := InjectionOfCofactorOfDirectSum( [ V1, V2 ], 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xalpha14 := InjectionOfCofactorOfDirectSum( [ V1, V2, V1 ], 3 );;[127X[104X
+    [4X[25Xgap>[125X [27Xalpha15 := InjectionOfCofactorOfDirectSum( [ V2, V1, V2 ], 2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xalpha23 := InjectionOfCofactorOfDirectSum( [ V2, V1 ], 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xalpha24 := InjectionOfCofactorOfDirectSum( [ V1, V2, V1 ], 2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xalpha25 := InjectionOfCofactorOfDirectSum( [ V2, V2, V1 ], 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xmat := [[127X[104X
+    [4X[25X>[125X [27X    [ alpha13, alpha14, alpha15 ],[127X[104X
+    [4X[25X>[125X [27X    [ alpha23, alpha24, alpha25 ][127X[104X
+    [4X[25X>[125X [27X];;[127X[104X
+    [4X[25Xgap>[125X [27Xmor := MorphismBetweenDirectSums( mat );;[127X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( mor );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( Opposite( mor ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( UniversalMorphismFromImage( mor, [ CoastrictionToImage( mor ), ImageEmbedding( mor ) ] ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X11.7 [33X[0;0YGeneralized Morphisms Category[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );[127X[104X
+    [4X[28XVectorSpacesForGeneralizedMorphismsTest[128X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "GeneralizedMorphismsForCAP" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XB := QVectorSpace( 2 );[127X[104X
+    [4X[28X<A rational vector space of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27XC := QVectorSpace( 3 );[127X[104X
+    [4X[28X<A rational vector space of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27XB_1 := QVectorSpace( 1 );[127X[104X
+    [4X[28X<A rational vector space of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27XC_1 := QVectorSpace( 2 );[127X[104X
+    [4X[28X<A rational vector space of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27Xc1_source_aid := VectorSpaceMorphism( B_1, [ [ 1, 0 ] ], B );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XSetIsSubobject( c1_source_aid, true );[127X[104X
+    [4X[25Xgap>[125X [27Xc1_range_aid := VectorSpaceMorphism( C, [ [ 1, 0 ], [ 0, 1 ], [ 0, 0 ] ], C_1 );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  0 ],[128X[104X
+    [4X[28X  [  0,  1 ],[128X[104X
+    [4X[28X  [  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XSetIsFactorobject( c1_range_aid, true );[127X[104X
+    [4X[25Xgap>[125X [27Xc1_associated := VectorSpaceMorphism( B_1, [ [ 1, 1 ] ], C_1 );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xc1 := GeneralizedMorphism( c1_source_aid, c1_associated, c1_range_aid );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>[128X[104X
+    [4X[25Xgap>[125X [27XB_2 := QVectorSpace( 1 );[127X[104X
+    [4X[28X<A rational vector space of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27XC_2 := QVectorSpace( 2 );[127X[104X
+    [4X[28X<A rational vector space of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27Xc2_source_aid := VectorSpaceMorphism( B_2, [ [ 2, 0 ] ], B );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  2,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XSetIsSubobject( c2_source_aid, true );[127X[104X
+    [4X[25Xgap>[125X [27Xc2_range_aid := VectorSpaceMorphism( C, [ [ 3, 0 ], [ 0, 3 ], [ 0, 0 ] ], C_2 );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  3,  0 ],[128X[104X
+    [4X[28X  [  0,  3 ],[128X[104X
+    [4X[28X  [  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XSetIsFactorobject( c2_range_aid, true );[127X[104X
+    [4X[25Xgap>[125X [27Xc2_associated := VectorSpaceMorphism( B_2, [ [ 6, 6 ] ], C_2 );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  6,  6 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xc2 := GeneralizedMorphism( c2_source_aid, c2_associated, c2_range_aid );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( c1, c2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( c1, c1 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xc3_associated := VectorSpaceMorphism( B_1, [ [ 2, 2 ] ], C_1 );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  2,  2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xc3 := GeneralizedMorphism( c1_source_aid, c3_associated, c1_range_aid );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( c1, c3 );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( c2, c3 );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xc1 + c2;[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>[128X[104X
+    [4X[25Xgap>[125X [27XArrow( c1 + c2 );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  12,  12 ] ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YFirst composition test:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );[127X[104X
+    [4X[28XVectorSpacesForGeneralizedMorphismsTest[128X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XA := QVectorSpace( 1 );[127X[104X
+    [4X[28X<A rational vector space of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27XB := QVectorSpace( 2 );[127X[104X
+    [4X[28X<A rational vector space of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27XC := QVectorSpace( 3 );[127X[104X
+    [4X[28X<A rational vector space of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27Xphi_tilde_associated := VectorSpaceMorphism( A, [ [ 1, 2, 0 ] ], C );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  2,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xphi_tilde_source_aid := VectorSpaceMorphism( A, [ [ 1, 2 ] ], B );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xphi_tilde := GeneralizedMorphismWithSourceAid( phi_tilde_source_aid, phi_tilde_associated );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>[128X[104X
+    [4X[25Xgap>[125X [27Xpsi_tilde_associated := IdentityMorphism( B );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  0 ],[128X[104X
+    [4X[28X  [  0,  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xpsi_tilde_source_aid := VectorSpaceMorphism( B, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], C );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  1,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xpsi_tilde := GeneralizedMorphismWithSourceAid( psi_tilde_source_aid, psi_tilde_associated );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>[128X[104X
+    [4X[25Xgap>[125X [27Xcomposition := PreCompose( phi_tilde, psi_tilde );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>[128X[104X
+    [4X[25Xgap>[125X [27XArrow( composition );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1/2,    1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XSourceAid( composition );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1/2,    1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XRangeAid( composition );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  0 ],[128X[104X
+    [4X[28X  [  0,  1 ] ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YSecond composition test[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );[127X[104X
+    [4X[28XVectorSpacesForGeneralizedMorphismsTest[128X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XA := QVectorSpace( 1 );[127X[104X
+    [4X[28X<A rational vector space of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27XB := QVectorSpace( 2 );[127X[104X
+    [4X[28X<A rational vector space of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27XC := QVectorSpace( 3 );[127X[104X
+    [4X[28X<A rational vector space of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27Xphi2_tilde_associated := VectorSpaceMorphism( A, [ [ 1, 5 ] ], B );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  5 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xphi2_tilde_range_aid := VectorSpaceMorphism( C, [ [ 1, 0 ], [ 0, 1 ], [ 1, 1 ] ], B );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  0 ],[128X[104X
+    [4X[28X  [  0,  1 ],[128X[104X
+    [4X[28X  [  1,  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xphi2_tilde := GeneralizedMorphismWithRangeAid( phi2_tilde_associated, phi2_tilde_range_aid );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>[128X[104X
+    [4X[25Xgap>[125X [27Xpsi2_tilde_associated := VectorSpaceMorphism( C, [ [ 1 ], [ 3 ], [ 4 ] ], A );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1 ],[128X[104X
+    [4X[28X  [  3 ],[128X[104X
+    [4X[28X  [  4 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xpsi2_tilde_range_aid := VectorSpaceMorphism( B, [ [ 1 ], [ 1 ] ], A );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1 ],[128X[104X
+    [4X[28X  [  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xpsi2_tilde := GeneralizedMorphismWithRangeAid( psi2_tilde_associated, psi2_tilde_range_aid );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>[128X[104X
+    [4X[25Xgap>[125X [27Xcomposition2 := PreCompose( phi2_tilde, psi2_tilde );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>[128X[104X
+    [4X[25Xgap>[125X [27XArrow( composition2 );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  16 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XRangeAid( composition2 );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1 ],[128X[104X
+    [4X[28X  [  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XSourceAid( composition2 );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1 ] ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThird composition test[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );[127X[104X
+    [4X[28XVectorSpacesForGeneralizedMorphismsTest[128X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XA := QVectorSpace( 3 );[127X[104X
+    [4X[28X<A rational vector space of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27XAsub := QVectorSpace( 2 );[127X[104X
+    [4X[28X<A rational vector space of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27XB := QVectorSpace( 3 );[127X[104X
+    [4X[28X<A rational vector space of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27XBfac := QVectorSpace( 1 );[127X[104X
+    [4X[28X<A rational vector space of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27XBsub := QVectorSpace( 2 );[127X[104X
+    [4X[28X<A rational vector space of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27XC := QVectorSpace( 3 );[127X[104X
+    [4X[28X<A rational vector space of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27XCfac := QVectorSpace( 1 );[127X[104X
+    [4X[28X<A rational vector space of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27XAsub_into_A := VectorSpaceMorphism( Asub, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], A );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  1,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XAsub_to_Bfac := VectorSpaceMorphism( Asub, [ [ 1 ], [ 1 ] ], Bfac );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1 ],[128X[104X
+    [4X[28X  [  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XB_onto_Bfac := VectorSpaceMorphism( B, [ [ 1 ], [ 1 ], [ 1 ] ], Bfac );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1 ],[128X[104X
+    [4X[28X  [  1 ],[128X[104X
+    [4X[28X  [  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XBsub_into_B := VectorSpaceMorphism( Bsub, [ [ 2, 2, 0 ], [ 0, 2, 2 ] ], B );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  2,  2,  0 ],[128X[104X
+    [4X[28X  [  0,  2,  2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XBsub_to_Cfac := VectorSpaceMorphism( Bsub, [ [ 3 ], [ 0 ] ], Cfac );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  3 ],[128X[104X
+    [4X[28X  [  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XC_onto_Cfac := VectorSpaceMorphism( C, [ [ 1 ], [ 2 ], [ 3 ] ], Cfac );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1 ],[128X[104X
+    [4X[28X  [  2 ],[128X[104X
+    [4X[28X  [  3 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xgeneralized_morphism1 := GeneralizedMorphism( Asub_into_A, Asub_to_Bfac, B_onto_Bfac );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>[128X[104X
+    [4X[25Xgap>[125X [27Xgeneralized_morphism2 := GeneralizedMorphism( Bsub_into_B, Bsub_to_Cfac, C_onto_Cfac );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( generalized_morphism1 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( generalized_morphism2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xp := PreCompose( generalized_morphism1, generalized_morphism2 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>[128X[104X
+    [4X[25Xgap>[125X [27XSourceAid( p );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  -1,   1,   0 ],[128X[104X
+    [4X[28X  [   1,   0,   0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XArrow( p );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X(an empty 2 x 0 matrix)[128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XRangeAid( p );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X(an empty 3 x 0 matrix)[128X[104X
+    [4X[25Xgap>[125X [27XA := QVectorSpace( 3 );[127X[104X
+    [4X[28X<A rational vector space of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27XAsub := QVectorSpace( 2 );[127X[104X
+    [4X[28X<A rational vector space of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27XB := QVectorSpace( 3 );[127X[104X
+    [4X[28X<A rational vector space of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27XBfac := QVectorSpace( 1 );[127X[104X
+    [4X[28X<A rational vector space of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27XBsub := QVectorSpace( 2 );[127X[104X
+    [4X[28X<A rational vector space of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27XC := QVectorSpace( 3 );[127X[104X
+    [4X[28X<A rational vector space of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27XCfac := QVectorSpace( 2 );[127X[104X
+    [4X[28X<A rational vector space of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27XAsub_into_A := VectorSpaceMorphism( Asub, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], A );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  1,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XAsub_to_Bfac := VectorSpaceMorphism( Asub, [ [ 1 ], [ 1 ] ], Bfac );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1 ],[128X[104X
+    [4X[28X  [  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XB_onto_Bfac := VectorSpaceMorphism( B, [ [ 1 ], [ 1 ], [ 1 ] ], Bfac );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1 ],[128X[104X
+    [4X[28X  [  1 ],[128X[104X
+    [4X[28X  [  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XBsub_into_B := VectorSpaceMorphism( Bsub, [ [ 2, 2, 0 ], [ 0, 2, 2 ] ], B );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  2,  2,  0 ],[128X[104X
+    [4X[28X  [  0,  2,  2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XBsub_to_Cfac := VectorSpaceMorphism( Bsub, [ [ 3, 3 ], [ 0, 0 ] ], Cfac );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  3,  3 ],[128X[104X
+    [4X[28X  [  0,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XC_onto_Cfac := VectorSpaceMorphism( C, [ [ 1, 0 ], [ 0, 2 ], [ 3, 3 ] ], Cfac );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  0 ],[128X[104X
+    [4X[28X  [  0,  2 ],[128X[104X
+    [4X[28X  [  3,  3 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xgeneralized_morphism1 := GeneralizedMorphism( Asub_into_A, Asub_to_Bfac, B_onto_Bfac );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>[128X[104X
+    [4X[25Xgap>[125X [27Xgeneralized_morphism2 := GeneralizedMorphism( Bsub_into_B, Bsub_to_Cfac, C_onto_Cfac );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( generalized_morphism1 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( generalized_morphism2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xp := PreCompose( generalized_morphism1, generalized_morphism2 );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>[128X[104X
+    [4X[25Xgap>[125X [27XSourceAid( p );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  -1,   1,   0 ],[128X[104X
+    [4X[28X  [   1,   0,   0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XArrow( p );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  0 ],[128X[104X
+    [4X[28X  [  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XRangeAid( p );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  -1 ],[128X[104X
+    [4X[28X  [   2 ],[128X[104X
+    [4X[28X  [   0 ] ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YHonest representative test[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );[127X[104X
+    [4X[28XVectorSpacesForGeneralizedMorphismsTest[128X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XA := QVectorSpace( 1 );[127X[104X
+    [4X[28X<A rational vector space of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27XB := QVectorSpace( 2 );[127X[104X
+    [4X[28X<A rational vector space of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27Xphi_tilde_source_aid := VectorSpaceMorphism( A, [ [ 2 ] ], A );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xphi_tilde_associated := VectorSpaceMorphism( A, [ [ 1, 1 ] ], B );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xphi_tilde_range_aid := VectorSpaceMorphism( B, [ [ 1, 2 ], [ 3, 4 ] ], B );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  2 ],[128X[104X
+    [4X[28X  [  3,  4 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xphi_tilde := GeneralizedMorphism( phi_tilde_source_aid, phi_tilde_associated, phi_tilde_range_aid );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of VectorSpacesForGeneralizedMorphismsTest>[128X[104X
+    [4X[25Xgap>[125X [27XHonestRepresentative( phi_tilde );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  -1/4,   1/4 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( phi_tilde );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( psi_tilde );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X11.8 [33X[0;0YIsWellDefined[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpacesForIsWellDefinedTest" );[127X[104X
+    [4X[28XVectorSpacesForIsWellDefinedTest [128X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "GeneralizedMorphismsForCAP" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XA := QVectorSpace( 1 );[127X[104X
+    [4X[28X<A rational vector space of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27XB := QVectorSpace( 2 );[127X[104X
+    [4X[28X<A rational vector space of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := VectorSpaceMorphism( A, [ [ 1, 2 ] ], B );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xg := GeneralizedMorphism( alpha, alpha, alpha );[127X[104X
+    [4X[28X<A morphism in Generalized morphism category of VectorSpacesForIsWellDefinedTest>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( alpha );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( g );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X11.9 [33X[0;0YKernel[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpaces01" );[127X[104X
+    [4X[28XVectorSpaces01[128X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/VectorSpacesAddKernel01.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XV := QVectorSpace( 2 );[127X[104X
+    [4X[28X<A rational vector space of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27XW := QVectorSpace( 3 );[127X[104X
+    [4X[28X<A rational vector space of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [   1,   1,   1 ],[128X[104X
+    [4X[28X  [  -1,  -1,  -1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xk := KernelObject( alpha );[127X[104X
+    [4X[28X<A rational vector space of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27XT := QVectorSpace( 2 );[127X[104X
+    [4X[28X<A rational vector space of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27Xtau := VectorSpaceMorphism( T, [ [ 2, 2 ], [ 2, 2 ] ], V );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  2,  2 ],[128X[104X
+    [4X[28X  [  2,  2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xk_lift := KernelLift( alpha, tau );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  2 ],[128X[104X
+    [4X[28X  [  2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XHasKernelEmbedding( alpha );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XKernelEmbedding( alpha );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  1 ] ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpaces02" );[127X[104X
+    [4X[28XVectorSpaces02[128X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/VectorSpacesAddKernel02.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XV := QVectorSpace( 2 );[127X[104X
+    [4X[28X<A rational vector space of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27XW := QVectorSpace( 3 );[127X[104X
+    [4X[28X<A rational vector space of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [   1,   1,   1 ],[128X[104X
+    [4X[28X  [  -1,  -1,  -1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xk := KernelObject( alpha );[127X[104X
+    [4X[28X<A rational vector space of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27XT := QVectorSpace( 2 );[127X[104X
+    [4X[28X<A rational vector space of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27Xtau := VectorSpaceMorphism( T, [ [ 2, 2 ], [ 2, 2 ] ], V );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  2,  2 ],[128X[104X
+    [4X[28X  [  2,  2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xk_lift := KernelLift( alpha, tau );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  2 ],[128X[104X
+    [4X[28X  [  2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XHasKernelEmbedding( alpha );[127X[104X
+    [4X[28Xfalse[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpaces03" );[127X[104X
+    [4X[28XVectorSpaces03[128X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/VectorSpacesAddKernel03.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XV := QVectorSpace( 2 );[127X[104X
+    [4X[28X<A rational vector space of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27XW := QVectorSpace( 3 );[127X[104X
+    [4X[28X<A rational vector space of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [   1,   1,   1 ],[128X[104X
+    [4X[28X  [  -1,  -1,  -1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xk := KernelObject( alpha );[127X[104X
+    [4X[28X<A rational vector space of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27Xk_emb := KernelEmbedding( alpha );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( Source( k_emb ), k );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XV := QVectorSpace( 2 );[127X[104X
+    [4X[28X<A rational vector space of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27XW := QVectorSpace( 3 );[127X[104X
+    [4X[28X<A rational vector space of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27Xbeta := VectorSpaceMorphism( V, [ [ 1, 1, 1 ], [ -1, -1, -1 ] ], W );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [   1,   1,   1 ],[128X[104X
+    [4X[28X  [  -1,  -1,  -1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xk_emb := KernelEmbedding( beta );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  1 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( Source( k_emb ), KernelObject( beta ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X11.10 [33X[0;0YFiberProduct[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpacesForFiberProductTest" );[127X[104X
+    [4X[28XVectorSpacesForFiberProductTest[128X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XA := QVectorSpace( 1 );[127X[104X
+    [4X[28X<A rational vector space of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27XB := QVectorSpace( 2 );[127X[104X
+    [4X[28X<A rational vector space of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27XC := QVectorSpace( 3 );[127X[104X
+    [4X[28X<A rational vector space of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27XAtoC := VectorSpaceMorphism( A, [ [ 1, 2, 0 ] ], C );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  2,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XBtoC := VectorSpaceMorphism( B, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], C );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  1,  0 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XP := FiberProduct( AtoC, BtoC );[127X[104X
+    [4X[28X<A rational vector space of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27Xp1 := ProjectionInFactorOfFiberProduct( [ AtoC, BtoC ], 1 );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1/2 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xp2 := ProjectionInFactorOfFiberProduct( [ AtoC, BtoC ], 2 );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix: [128X[104X
+    [4X[28X[ [  1/2,    1 ] ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  

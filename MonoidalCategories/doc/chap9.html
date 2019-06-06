@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (CAP) - Chapter 9: Technical Details</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap9"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap8.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap10.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap9_mj.html">[MathJax on]</a></p>
+<p><a id="X87A9EC0A7DF04931" name="X87A9EC0A7DF04931"></a></p>
+<div class="ChapSects"><a href="chap9.html#X87A9EC0A7DF04931">9 <span class="Heading">Technical Details</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9.html#X7A8C280B85B50DE0">9.1 <span class="Heading">The Category Cat</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7B3D8EB378625F73">9.1-1 ObjectCache</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X84472BD57E11264C">9.1-2 MorphismCache</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap9.html#X84802DD67AA9E628">9.2 <span class="Heading">Install Functions for IsWellDefined</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7B516ECB84EE7FFF">9.2-1 InstallMethodWithToDoForIsWellDefined</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7C486C0F7D6161A0">9.2-2 InstallSetWithToDoForIsWellDefined</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7801E9D185E5C130">9.2-3 DeclareAttributeWithToDoForIsWellDefined</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X87364D2E830F7FAE">9.2-4 DeclareFamilyProperty</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X840466B67CFF9CEA">9.2-5 CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7F2869657DDE9AC9">9.2-6 CAP_INTERNAL_MERGE_FILTER_LISTS</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X849B851C80D47B4F">9.2-7 CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7C7A71C97DC2FABF">9.2-8 CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X78A121F97CF81A43">9.2-9 CAP_INTERNAL_MERGE_PRECONDITIONS_LIST</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X82FC76688082956A">9.2-10 CachingStatistic</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9.html#X7E4CA53E7C03600F">9.2-11 BrowseCachingStatistic</a></span>
+</div></div>
+</div>
+
+<h3>9 <span class="Heading">Technical Details</span></h3>
+
+<p><a id="X7A8C280B85B50DE0" name="X7A8C280B85B50DE0"></a></p>
+
+<h4>9.1 <span class="Heading">The Category Cat</span></h4>
+
+<p><a id="X7B3D8EB378625F73" name="X7B3D8EB378625F73"></a></p>
+
+<h5>9.1-1 ObjectCache</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectCache</code>( <var class="Arg">functor</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: IsCachingObject</p>
+
+<p>Retuns the caching object which stores the results of the functor <var class="Arg">functor</var> applied to objects.</p>
+
+<p><a id="X84472BD57E11264C" name="X84472BD57E11264C"></a></p>
+
+<h5>9.1-2 MorphismCache</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismCache</code>( <var class="Arg">functor</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: IsCachingObject</p>
+
+<p>Retuns the caching object which stores the results of the functor <var class="Arg">functor</var> applied to morphisms.</p>
+
+<p><a id="X84802DD67AA9E628" name="X84802DD67AA9E628"></a></p>
+
+<h4>9.2 <span class="Heading">Install Functions for IsWellDefined</span></h4>
+
+<p><a id="X7B516ECB84EE7FFF" name="X7B516ECB84EE7FFF"></a></p>
+
+<h5>9.2-1 InstallMethodWithToDoForIsWellDefined</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InstallMethodWithToDoForIsWellDefined</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>The IsWellDefined filter is a basic function of CAP. For every categorial construction the outcome is well defined if and only if every input object or morphism of the construction is well defined. So for every implementation of a categorial construction a ToDoListEntry needs to be defined which propagates well definedness from the input cells to the output. For not writing this construction in every method, this function can be used to install a method which then installs the correct ToDoListEntries for the output. The input syntax works exactly like InstallMethod, with one extension: The method creates an auxilliary function which computes the output from the function given to InstallMethodWithToDoForIsWellDefined, then installs the ToDoListEntries, and then installs the auxilliary function instead of the original one. This is normally done with InstallMethod. However, one can change this via the option InstallMethod, which can be set to any other function which is then used instead of InstallMethod. This is used for the caching functions.</p>
+
+<p><a id="X7C486C0F7D6161A0" name="X7C486C0F7D6161A0"></a></p>
+
+<h5>9.2-2 InstallSetWithToDoForIsWellDefined</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InstallSetWithToDoForIsWellDefined</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>For the caching one needs the possibility to install setters for functions with multiple arguments. This is a setter function which automatically adds ToDoListEntries for IsWellDefined like described above for the manually setted result of a method.</p>
+
+<p><a id="X7801E9D185E5C130" name="X7801E9D185E5C130"></a></p>
+
+<h5>9.2-3 DeclareAttributeWithToDoForIsWellDefined</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DeclareAttributeWithToDoForIsWellDefined</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Since attributes install their setters themselfes, one needs to declare attributes in another way to ensure ToDoListEntries for IsWellDefined in the setter of an attribute. This function works like DeclareAttribute, but installs ToDoListEntries for the setter of the attribute. Please note that implementations still need to be done with InstallMethodWithToDoForIsWellDefined.</p>
+
+<p><a id="X87364D2E830F7FAE" name="X87364D2E830F7FAE"></a></p>
+
+<h5>9.2-4 DeclareFamilyProperty</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DeclareFamilyProperty</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p><a id="X840466B67CFF9CEA" name="X840466B67CFF9CEA"></a></p>
+
+<h5>9.2-5 CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS</code>( <var class="Arg">list</var>, <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: Replaced list</p>
+
+<p>The function takes a list (of lists) of filters or strings, where the strings can be category, cell, object, morphism, or twocell. The strings are then recursively replaced by the corresponding filters of the category. The replaced list is returned.</p>
+
+<p><a id="X7F2869657DDE9AC9" name="X7F2869657DDE9AC9"></a></p>
+
+<h5>9.2-6 CAP_INTERNAL_MERGE_FILTER_LISTS</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_MERGE_FILTER_LISTS</code>( <var class="Arg">list</var>, <var class="Arg">additional</var>, <var class="Arg">list</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: merged lists</p>
+
+<p>The first argument should be a dense list with filters, the second a sparse list containing filters not longer then the first one. The filters of the second list are then appended (via and) to the filters in the first list at the corresponding position, and the resulting list is returned.</p>
+
+<p><a id="X849B851C80D47B4F" name="X849B851C80D47B4F"></a></p>
+
+<h5>9.2-7 CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT</code>( <var class="Arg">string</var>, <var class="Arg">value</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: option value</p>
+
+<p>Returns the value of the option with name string, or, if this value is fail, the object value.</p>
+
+<p><a id="X7C7A71C97DC2FABF" name="X7C7A71C97DC2FABF"></a></p>
+
+<h5>9.2-8 CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION</code>( <var class="Arg">function</var>, <var class="Arg">symbol_list</var>, <var class="Arg">loop_multiple</var>, <var class="Arg">replacement_record</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list of symbols with multiples</p>
+
+<p>The function searches for the appearance of the strings in symbol list on the function function and returns a list of pairs, containing the name of the symbol and the number of appearance. If the symbol appears in a loop, the number of appearance is counted times the loop multiple. Moreover, if appearances of found strings should be replaced by collections of other strings, then these can be specified in the replacement record.</p>
+
+<p><a id="X78A121F97CF81A43" name="X78A121F97CF81A43"></a></p>
+
+<h5>9.2-9 CAP_INTERNAL_MERGE_PRECONDITIONS_LIST</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAP_INTERNAL_MERGE_PRECONDITIONS_LIST</code>( <var class="Arg">list1</var>, <var class="Arg">list2</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: merge list</p>
+
+<p>The function takes two lists containing pairs of symbols (strings) and multiples. The lists are merged that pairs where the string only appears in one list is then added to the return list, if a pair with a string appears in both lists, the resulting lists only contains this pair once, with the higher multiple from both lists.</p>
+
+<p><a id="X82FC76688082956A" name="X82FC76688082956A"></a></p>
+
+<h5>9.2-10 CachingStatistic</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CachingStatistic</code>( <var class="Arg">category</var>[, <var class="Arg">operation</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Prints statistics for all caches in <var class="Arg">category</var>. If <var class="Arg">operation</var> is given (as a string), only statistics for the given operation cache is stored.</p>
+
+<p><a id="X7E4CA53E7C03600F" name="X7E4CA53E7C03600F"></a></p>
+
+<h5>9.2-11 BrowseCachingStatistic</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BrowseCachingStatistic</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Displays statistics for all caches in <var class="Arg">category</var>. in a Browse window. Here "status" indicates if the cache is weak, strong, or inactive, "hits" is the number of successful cache accesses, "misses" the number of unsuccessful cache accesses, and "stored" the number of objects currently stored in the cache.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap8.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap10.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

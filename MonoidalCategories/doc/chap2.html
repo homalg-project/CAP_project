@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (CAP) - Chapter 2: Objects</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap2"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap2_mj.html">[MathJax on]</a></p>
+<p><a id="X78497E777FB3E402" name="X78497E777FB3E402"></a></p>
+<div class="ChapSects"><a href="chap2.html#X78497E777FB3E402">2 <span class="Heading">Objects</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7ABD8E5A8408A301">2.1 <span class="Heading">Attributes for the Type of Objects</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C3B8C3D865002C8">2.1-1 CapCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7B4B807A848111AA">2.2 <span class="Heading">Equality for Objects</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8337569D81C0BBEC">2.2-1 IsEqualForObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X787F654B82150781">2.2-2 AddIsEqualForObjects</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X86CCD70884952468">2.3 <span class="Heading">Categorical Properties of Objects</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X865C78CF789DA86D">2.3-1 AddIsProjective</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F7F309F7C67D6CE">2.3-2 AddIsInjective</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7EDB2D5B7F234ADA">2.3-3 AddIsTerminal</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E6EDA9484F3E6F6">2.3-4 AddIsInitial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X856FA5E084753312">2.3-5 IsZeroForObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78C3E7BF78A9A7D5">2.3-6 AddIsZeroForObjects</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8332653E7EA2EB72">2.4 <span class="Heading">Random Objects</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X85A6C3687C46085F">2.4-1 RandomObjectByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8537D28D7C878EB2">2.4-2 AddRandomObjectByInteger</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7EEC27307C4B06E8">2.4-3 RandomObjectByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X86F6CF9382A4906A">2.4-4 AddRandomObjectByList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E0974E58188E6FB">2.4-5 RandomObject</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DD668627932185C">2.5 <span class="Heading">Tool functions for caches</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BAE9BBC874635CB">2.5-1 IsEqualForCacheForObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7887D32C7973F4A0">2.5-2 AddIsEqualForCacheForObjects</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X81817A2C84F03D1D">2.6 <span class="Heading">Adding Objects to a Category</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X824AE09A81D2B184">2.6-1 Add</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X855C644A812F32B7">2.6-2 AddObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A68365C82BDA4E7">2.6-3 AddObjectRepresentation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78095CF37B92F0D9">2.6-4 ObjectifyObjectForCAPWithAttributes</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7820B09C781A90A8">2.7 <span class="Heading">Well-Definedness of Objects</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F9A38A187D9ABFA">2.7-1 IsWellDefinedForObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X859219147B3058B8">2.7-2 AddIsWellDefinedForObjects</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7EFAF5CD83C3298F">2.8 <span class="Heading">Projectives</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7FED5E898784C314">2.8-1 SomeProjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D5951AA7EBD7750">2.8-2 EpimorphismFromSomeProjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X81F04D8186B94570">2.8-3 EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BFFD7FE82DCB5F6">2.8-4 ProjectiveLift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C3AF36D86F11429">2.8-5 AddSomeProjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X85B76EA67A35B7B2">2.8-6 AddEpimorphismFromSomeProjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7B7B27468506DA04">2.8-7 AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7AEE24E581A44083">2.8-8 AddProjectiveLift</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X87100AFB7A202D2F">2.9 <span class="Heading">Injectives</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C06E1807D8775AD">2.9-1 SomeInjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8502893C82A38864">2.9-2 MonomorphismIntoSomeInjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A7C030382397A2B">2.9-3 MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CCBB0A384F37EC6">2.9-4 InjectiveColift</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7DFC9A568472688B">2.9-5 AddSomeInjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X81C9788D7DD27D18">2.9-6 AddMonomorphismIntoSomeInjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CCBF6577ADC62D9">2.9-7 AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CE0C54080533C0E">2.9-8 AddInjectiveColift</a></span>
+</div></div>
+</div>
+
+<h3>2 <span class="Heading">Objects</span></h3>
+
+<p>Any GAP object which is IsCapCategoryObject can be added to a category and then becomes an object in this category. Any object can belong to one or no category. After a GAP object is added to the category, it knows which things can be computed in its category and to which category it belongs. It knows categorial properties and attributes, and the functions for existential quantifiers can be applied to the object.</p>
+
+<p><a id="X7ABD8E5A8408A301" name="X7ABD8E5A8408A301"></a></p>
+
+<h4>2.1 <span class="Heading">Attributes for the Type of Objects</span></h4>
+
+<p><a id="X7C3B8C3D865002C8" name="X7C3B8C3D865002C8"></a></p>
+
+<h5>2.1-1 CapCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapCategory</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>The argument is an object <span class="Math">a</span>. The output is the category <span class="Math">\mathbf{C}</span> to which <span class="Math">a</span> was added.</p>
+
+<p><a id="X7B4B807A848111AA" name="X7B4B807A848111AA"></a></p>
+
+<h4>2.2 <span class="Heading">Equality for Objects</span></h4>
+
+<p><a id="X8337569D81C0BBEC" name="X8337569D81C0BBEC"></a></p>
+
+<h5>2.2-1 IsEqualForObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsEqualForObjects</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The arguments are two objects <span class="Math">a</span> and <span class="Math">b</span>. The output is <code class="code">true</code> if <span class="Math">a = b</span>, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X787F654B82150781" name="X787F654B82150781"></a></p>
+
+<h5>2.2-2 AddIsEqualForObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualForObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsEqualForObjects</code>. <span class="Math">F: (a,b) \mapsto \mathtt{IsEqualForObjects}(a,b)</span>.</p>
+
+<p><a id="X86CCD70884952468" name="X86CCD70884952468"></a></p>
+
+<h4>2.3 <span class="Heading">Categorical Properties of Objects</span></h4>
+
+<p><a id="X865C78CF789DA86D" name="X865C78CF789DA86D"></a></p>
+
+<h5>2.3-1 AddIsProjective</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsProjective</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsProjective</code>. <span class="Math">F: a \mapsto \mathtt{IsProjective}(a)</span>.</p>
+
+<p><a id="X7F7F309F7C67D6CE" name="X7F7F309F7C67D6CE"></a></p>
+
+<h5>2.3-2 AddIsInjective</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsInjective</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsInjective</code>. <span class="Math">F: a \mapsto \mathtt{IsInjective}(a)</span>.</p>
+
+<p><a id="X7EDB2D5B7F234ADA" name="X7EDB2D5B7F234ADA"></a></p>
+
+<h5>2.3-3 AddIsTerminal</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsTerminal</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsTerminal</code>. <span class="Math">F: a \mapsto \mathtt{IsTerminal}(a)</span>.</p>
+
+<p><a id="X7E6EDA9484F3E6F6" name="X7E6EDA9484F3E6F6"></a></p>
+
+<h5>2.3-4 AddIsInitial</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsInitial</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsInitial</code>. <span class="Math">F: a \mapsto \mathtt{IsInitial}(a)</span>.</p>
+
+<p><a id="X856FA5E084753312" name="X856FA5E084753312"></a></p>
+
+<h5>2.3-5 IsZeroForObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsZeroForObjects</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is an object <span class="Math">a</span> of a category <span class="Math">\mathbf{C}</span>. The output is <code class="code">true</code> if <span class="Math">a</span> is isomorphic to the zero object of <span class="Math">\mathbf{C}</span>, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X78C3E7BF78A9A7D5" name="X78C3E7BF78A9A7D5"></a></p>
+
+<h5>2.3-6 AddIsZeroForObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsZeroForObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsZeroForObjects</code>. <span class="Math">F: a \mapsto \mathtt{IsZeroForObjects}(a)</span>.</p>
+
+<p><a id="X8332653E7EA2EB72" name="X8332653E7EA2EB72"></a></p>
+
+<h4>2.4 <span class="Heading">Random Objects</span></h4>
+
+<p>CAP provides two principal methods to generate random objects:</p>
+
+
+<ul>
+<li><p><em>By integers</em>: The integer is simply a parameter that can be used to create a random object.</p>
+
+</li>
+<li><p><em>By lists</em>: The list is used when creating a random object would need more than one parameter. Lists offer more flexibility at the expense of the genericity of the methods. This happens because lists that are valid as input in some category may be not valid for other categories. Hence, these operations are not thought to be used in generic categorical algorithms.</p>
+
+</li>
+</ul>
+<p><a id="X85A6C3687C46085F" name="X85A6C3687C46085F"></a></p>
+
+<h5>2.4-1 RandomObjectByInteger</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomObjectByInteger</code>( <var class="Arg">C</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object or <code class="code">fail</code></p>
+
+<p>The arguments are a category <span class="Math">C</span> and an integer <span class="Math">n</span>. The output is a random object in <span class="Math">C</span> or <code class="code">fail</code>.</p>
+
+<p><a id="X8537D28D7C878EB2" name="X8537D28D7C878EB2"></a></p>
+
+<h5>2.4-2 AddRandomObjectByInteger</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRandomObjectByInteger</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">RandomObjectByInteger</code>. The function <span class="Math">F</span> maps <span class="Math">(C,n)</span> to <code class="code">fail</code> or to a random object in <span class="Math">C</span>.</p>
+
+<p><a id="X7EEC27307C4B06E8" name="X7EEC27307C4B06E8"></a></p>
+
+<h5>2.4-3 RandomObjectByList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomObjectByList</code>( <var class="Arg">C</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object or <code class="code">fail</code></p>
+
+<p>The arguments are a category <span class="Math">C</span> and a list <span class="Math">L</span>. The output is a random object in <span class="Math">C</span> or <code class="code">fail</code>.</p>
+
+<p><a id="X86F6CF9382A4906A" name="X86F6CF9382A4906A"></a></p>
+
+<h5>2.4-4 AddRandomObjectByList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRandomObjectByList</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">RandomObjectByList</code>. The function <span class="Math">F</span> maps <span class="Math">(C,L)</span> to <code class="code">fail</code> or to a random object in <span class="Math">C</span>.</p>
+
+<p><a id="X7E0974E58188E6FB" name="X7E0974E58188E6FB"></a></p>
+
+<h5>2.4-5 RandomObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomObject</code>( <var class="Arg">C</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RandomObject</code>( <var class="Arg">C</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>These are convenient methods and they, depending on the input, delegate to one of the above methods.</p>
+
+<p><a id="X7DD668627932185C" name="X7DD668627932185C"></a></p>
+
+<h4>2.5 <span class="Heading">Tool functions for caches</span></h4>
+
+<p><a id="X7BAE9BBC874635CB" name="X7BAE9BBC874635CB"></a></p>
+
+<h5>2.5-1 IsEqualForCacheForObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsEqualForCacheForObjects</code>( <var class="Arg">phi</var>, <var class="Arg">psi</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>Compares two objects in the cache</p>
+
+<p><a id="X7887D32C7973F4A0" name="X7887D32C7973F4A0"></a></p>
+
+<h5>2.5-2 AddIsEqualForCacheForObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualForCacheForObjects</code>( <var class="Arg">c</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: northing</p>
+
+<p>By default, CAP uses caches to store the values of Categorical operations. To get a value out of the cache, one needs to compare the input of a basic operation with its previous input. To compare objects in the category, IsEqualForCacheForObject is used. By default this is an alias for IsEqualForObjects, where fail is substituted by false. If you add a function, this function used instead. A function <span class="Math">F: a,b \mapsto bool</span> is expected here. The output has to be true or false. Fail is not allowed in this context.</p>
+
+<p><a id="X81817A2C84F03D1D" name="X81817A2C84F03D1D"></a></p>
+
+<h4>2.6 <span class="Heading">Adding Objects to a Category</span></h4>
+
+<p><a id="X824AE09A81D2B184" name="X824AE09A81D2B184"></a></p>
+
+<h5>2.6-1 Add</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Add</code>( <var class="Arg">category</var>, <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Adds <var class="Arg">object</var> as an object to <var class="Arg">category</var>.</p>
+
+<p><a id="X855C644A812F32B7" name="X855C644A812F32B7"></a></p>
+
+<h5>2.6-2 AddObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddObject</code>( <var class="Arg">category</var>, <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Adds <var class="Arg">object</var> as an object to <var class="Arg">category</var>. If <var class="Arg">object</var> already lies in the filter <code class="code">IsCapCategoryObject</code>, the operation <code class="func">Add</code> (<a href="chap2.html#X824AE09A81D2B184"><span class="RefLink">2.6-1</span></a>) can be used instead.</p>
+
+<p><a id="X7A68365C82BDA4E7" name="X7A68365C82BDA4E7"></a></p>
+
+<h5>2.6-3 AddObjectRepresentation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddObjectRepresentation</code>( <var class="Arg">category</var>, <var class="Arg">filter</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>The argument <var class="Arg">filter</var> is used to create an object type for the category <var class="Arg">category</var>, which is then used in <code class="code">ObjectifyObjectForCAPWithAttributes</code> to objectify objects for this category.</p>
+
+<p><a id="X78095CF37B92F0D9" name="X78095CF37B92F0D9"></a></p>
+
+<h5>2.6-4 ObjectifyObjectForCAPWithAttributes</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectifyObjectForCAPWithAttributes</code>( <var class="Arg">object</var>, <var class="Arg">category</var>[, <var class="Arg">attribute1</var>, <var class="Arg">value1</var>, <var class="Arg">...</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Objectifies the object <var class="Arg">object</var> with the type created for objects in the category <var class="Arg">category</var>. The type is created by passing a representation to <code class="code">AddObjectRepresentation</code>. Objects which are objectified using this method do not have to be passed to the <code class="code">AddObject</code> function.</p>
+
+<p><a id="X7820B09C781A90A8" name="X7820B09C781A90A8"></a></p>
+
+<h4>2.7 <span class="Heading">Well-Definedness of Objects</span></h4>
+
+<p><a id="X7F9A38A187D9ABFA" name="X7F9A38A187D9ABFA"></a></p>
+
+<h5>2.7-1 IsWellDefinedForObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsWellDefinedForObjects</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is an object <span class="Math">a</span>. The output is <code class="code">true</code> if <span class="Math">a</span> is well-defined, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X859219147B3058B8" name="X859219147B3058B8"></a></p>
+
+<h5>2.7-2 AddIsWellDefinedForObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsWellDefinedForObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsWellDefinedForObjects</code>. <span class="Math">F: a \mapsto \mathtt{IsWellDefinedForObjects}( a )</span>.</p>
+
+<p><a id="X7EFAF5CD83C3298F" name="X7EFAF5CD83C3298F"></a></p>
+
+<h4>2.8 <span class="Heading">Projectives</span></h4>
+
+<p>For a given object <span class="Math">A</span> in an abelian category having enough projectives, the following commands allow us to compute some projective object <span class="Math">P</span> together with an epimorphism <span class="Math">\pi: P \rightarrow A</span>.</p>
+
+<p><a id="X7FED5E898784C314" name="X7FED5E898784C314"></a></p>
+
+<h5>2.8-1 SomeProjectiveObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SomeProjectiveObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The argument is an object <span class="Math">A</span>. The output is some projective object <span class="Math">P</span> for which there exists an epimorphism <span class="Math">\pi: P \rightarrow A</span>.</p>
+
+<p><a id="X7D5951AA7EBD7750" name="X7D5951AA7EBD7750"></a></p>
+
+<h5>2.8-2 EpimorphismFromSomeProjectiveObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EpimorphismFromSomeProjectiveObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(P,A)</span></p>
+
+<p>The argument is an object <span class="Math">A</span>. The output is an epimorphism <span class="Math">\pi: P \rightarrow A</span> with <span class="Math">P</span> a projective object that equals the output of <span class="Math">\mathrm{SomeProjectiveObject}(A)</span>.</p>
+
+<p><a id="X81F04D8186B94570" name="X81F04D8186B94570"></a></p>
+
+<h5>2.8-3 EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</code>( <var class="Arg">A</var>, <var class="Arg">P</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(P,A)</span></p>
+
+<p>The arguments are an object <span class="Math">A</span> and a projective object <span class="Math">P</span> that equals the output of <span class="Math">\mathrm{SomeProjectiveObject}(A)</span>. The output is an epimorphism <span class="Math">\pi: P \rightarrow A</span>.</p>
+
+<p><a id="X7BFFD7FE82DCB5F6" name="X7BFFD7FE82DCB5F6"></a></p>
+
+<h5>2.8-4 ProjectiveLift</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ProjectiveLift</code>( <var class="Arg">pi</var>, <var class="Arg">epsilon</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(P,B)</span></p>
+
+<p>The arguments are a morphism <span class="Math">\pi: P \rightarrow A</span> with <span class="Math">P</span> a projective, and an epimorphism <span class="Math">\epsilon: B \rightarrow A</span>. The output is a morphism <span class="Math">\lambda: P \rightarrow B</span> such that <span class="Math">\epsilon \circ \lambda = \pi</span>.</p>
+
+<p><a id="X7C3AF36D86F11429" name="X7C3AF36D86F11429"></a></p>
+
+<h5>2.8-5 AddSomeProjectiveObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSomeProjectiveObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">SomeProjectiveObject</code>. <span class="Math">F: A \mapsto P</span>.</p>
+
+<p><a id="X85B76EA67A35B7B2" name="X85B76EA67A35B7B2"></a></p>
+
+<h5>2.8-6 AddEpimorphismFromSomeProjectiveObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEpimorphismFromSomeProjectiveObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">EpimorphismFromSomeProjectiveObject</code>. <span class="Math">F: A \mapsto \pi</span>.</p>
+
+<p><a id="X7B7B27468506DA04" name="X7B7B27468506DA04"></a></p>
+
+<h5>2.8-7 AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</code>. <span class="Math">F: (A,P) \mapsto \pi</span>.</p>
+
+<p><a id="X7AEE24E581A44083" name="X7AEE24E581A44083"></a></p>
+
+<h5>2.8-8 AddProjectiveLift</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectiveLift</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">ProjectiveLift</code>. The function <span class="Math">F</span> maps a pair <span class="Math">(\pi, \epsilon)</span> to a projective lift <span class="Math">\lambda</span>.</p>
+
+<p><a id="X87100AFB7A202D2F" name="X87100AFB7A202D2F"></a></p>
+
+<h4>2.9 <span class="Heading">Injectives</span></h4>
+
+<p>For a given object <span class="Math">A</span> in an abelian category having enough injectives, the following commands allow us to compute some injective object <span class="Math">I</span> together with a monomorphism <span class="Math">\iota: A \rightarrow I</span>.</p>
+
+<p><a id="X7C06E1807D8775AD" name="X7C06E1807D8775AD"></a></p>
+
+<h5>2.9-1 SomeInjectiveObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SomeInjectiveObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The argument is an object <span class="Math">A</span>. The output is some injective object <span class="Math">I</span> for which there exists a monomorphism <span class="Math">\iota: A \rightarrow I</span>.</p>
+
+<p><a id="X8502893C82A38864" name="X8502893C82A38864"></a></p>
+
+<h5>2.9-2 MonomorphismIntoSomeInjectiveObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonomorphismIntoSomeInjectiveObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(I,A)</span></p>
+
+<p>The argument is an object <span class="Math">A</span>. The output is a monomorphism <span class="Math">\iota: A \rightarrow I</span> with <span class="Math">I</span> an injective object that equals the output of <span class="Math">\mathrm{SomeInjectiveObject}(A)</span>.</p>
+
+<p><a id="X7A7C030382397A2B" name="X7A7C030382397A2B"></a></p>
+
+<h5>2.9-3 MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</code>( <var class="Arg">A</var>, <var class="Arg">I</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(I,A)</span></p>
+
+<p>The arguments are an object <span class="Math">A</span> and an injective object <span class="Math">I</span> that equals the output of <span class="Math">\mathrm{SomeInjectiveObject}(A)</span>. The output is a monomorphism <span class="Math">\iota: A \rightarrow I</span>.</p>
+
+<p><a id="X7CCBB0A384F37EC6" name="X7CCBB0A384F37EC6"></a></p>
+
+<h5>2.9-4 InjectiveColift</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InjectiveColift</code>( <var class="Arg">\iota</var>, <var class="Arg">\beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(A,I)</span></p>
+
+<p>The arguments are a morphism <span class="Math">\iota: B \rightarrow A</span> and <span class="Math">\beta: B \rightarrow I</span> where <span class="Math">I</span> is an injective object. The output is a morphism <span class="Math">\lambda: A \rightarrow I</span> such that <span class="Math">\lambda \circ \iota = \beta</span>.</p>
+
+<p><a id="X7DFC9A568472688B" name="X7DFC9A568472688B"></a></p>
+
+<h5>2.9-5 AddSomeInjectiveObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSomeInjectiveObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">SomeInjectiveObject</code>. <span class="Math">F: A \mapsto I</span>.</p>
+
+<p><a id="X81C9788D7DD27D18" name="X81C9788D7DD27D18"></a></p>
+
+<h5>2.9-6 AddMonomorphismIntoSomeInjectiveObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMonomorphismIntoSomeInjectiveObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MonomorphismIntoSomeInjectiveObject</code>. <span class="Math">F: A \mapsto \pi</span>.</p>
+
+<p><a id="X7CCBF6577ADC62D9" name="X7CCBF6577ADC62D9"></a></p>
+
+<h5>2.9-7 AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</code>. <span class="Math">F: (A,I) \mapsto \pi</span>.</p>
+
+<p><a id="X7CE0C54080533C0E" name="X7CE0C54080533C0E"></a></p>
+
+<h5>2.9-8 AddInjectiveColift</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectiveColift</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">InjectiveColift</code>. The function <span class="Math">F</span> maps a pair <span class="Math">(\iota, \beta)</span> to an injective colift <span class="Math">\lambda</span> if it exists, and to <code class="code">fail</code> otherwise.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

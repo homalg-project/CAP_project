@@ -1,0 +1,273 @@
+  
+  [1X1 [33X[0;0YCAP Categories[133X[101X
+  
+  [33X[0;0YCategories  are  the main GAP objects in CAP. They are used to associate GAP
+  objects  which  represent  objects  and  morphisms  with  their category. By
+  associating  a  GAP  object to the category, one of two filters belonging to
+  the category (ObjectFilter/MorphismFilter) are set to true. Via Add methods,
+  functions  for  specific  existential  quantifiers  can be associated to the
+  category and after that can be applied to GAP objects in the category. A GAP
+  category  object  also  knows  which constructions are currently possible in
+  this category.[133X
+  
+  
+  [1X1.1 [33X[0;0YCategories[133X[101X
+  
+  [1X1.1-1 IsCapCategory[101X
+  
+  [33X[1;0Y[29X[2XIsCapCategory[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe  GAP  category  of  CAP  categories. Objects of this type handle the CAP
+  category  information,  the  caching,  and  filters  for  objects in the CAP
+  category.  Please note that the object itself is not related to methods, you
+  only need it as a handler and a presentation of the CAP category.[133X
+  
+  [1X1.1-2 IsCapCategoryCell[101X
+  
+  [33X[1;0Y[29X[2XIsCapCategoryCell[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe  GAP  category of CAP category cells. Every object, morphism, and [23X2[123X-cell
+  of a CAP category lies in this GAP category.[133X
+  
+  [1X1.1-3 IsCapCategoryObject[101X
+  
+  [33X[1;0Y[29X[2XIsCapCategoryObject[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe  GAP  category  of  CAP category objects. Every object of a CAP category
+  lies in this GAP category.[133X
+  
+  [1X1.1-4 IsCapCategoryMorphism[101X
+  
+  [33X[1;0Y[29X[2XIsCapCategoryMorphism[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe GAP category of CAP category morphisms. Every morphism of a CAP category
+  lies in this GAP category.[133X
+  
+  [1X1.1-5 IsCapCategoryTwoCell[101X
+  
+  [33X[1;0Y[29X[2XIsCapCategoryTwoCell[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe  GAP  category  of  CAP category [23X2[123X-cells. Every [23X2[123X-cell of a CAP category
+  lies in this GAP category.[133X
+  
+  [1X1.1-6 AddCategoricalProperty[101X
+  
+  [33X[1;0Y[29X[2XAddCategoricalProperty[102X( [3Xlist[103X ) [32X function[133X
+  
+  [33X[0;0YAdds  a categorical property to the list of CAP categorical properties. [3Xlist[103X
+  must  be  a list containing one entry, if the property is self dual, or two,
+  if the dual property has a different name. If the first entry of the list is
+  empty  and the second is a property name, the property is assumed to have no
+  dual.[133X
+  
+  
+  [1X1.2 [33X[0;0YConstructor[133X[101X
+  
+  [1X1.2-1 CreateCapCategory[101X
+  
+  [33X[1;0Y[29X[2XCreateCapCategory[102X(  ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya category[133X
+  
+  [33X[0;0YCreates a new CAP category from scratch. It gets a generic name.[133X
+  
+  [1X1.2-2 CreateCapCategory[101X
+  
+  [33X[1;0Y[29X[2XCreateCapCategory[102X( [3Xs[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya category[133X
+  
+  [33X[0;0YThe  argument  is a string [23Xs[123X. This operation creates a new CAP category from
+  scratch. Its name is set to [23Xs[123X.[133X
+  
+  
+  [1X1.3 [33X[0;0YInternal Attributes[133X[101X
+  
+  [33X[0;0YEach  category  [23XC[123X  stores  various filters. They are used to apply the right
+  functions in the method selection.[133X
+  
+  [1X1.3-1 CategoryFilter[101X
+  
+  [33X[1;0Y[29X[2XCategoryFilter[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya filter[133X
+  
+  [33X[0;0YThe argument is a category [23XC[123X. The output is a filter in which [23XC[123X lies.[133X
+  
+  [1X1.3-2 CellFilter[101X
+  
+  [33X[1;0Y[29X[2XCellFilter[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya filter[133X
+  
+  [33X[0;0YThe argument is a category [23XC[123X. The output is a filter in which all cells of [23XC[123X
+  shall lie.[133X
+  
+  [1X1.3-3 ObjectFilter[101X
+  
+  [33X[1;0Y[29X[2XObjectFilter[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya filter[133X
+  
+  [33X[0;0YThe argument is a category [23XC[123X. The output is a filter in which all objects of
+  [23XC[123X shall lie.[133X
+  
+  [1X1.3-4 MorphismFilter[101X
+  
+  [33X[1;0Y[29X[2XMorphismFilter[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya filter[133X
+  
+  [33X[0;0YThe  argument is a category [23XC[123X. The output is a filter in which all morphisms
+  of [23XC[123X shall lie.[133X
+  
+  [1X1.3-5 TwoCellFilter[101X
+  
+  [33X[1;0Y[29X[2XTwoCellFilter[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya filter[133X
+  
+  [33X[0;0YThe argument is a category [23XC[123X. The output is a filter in which all [23X2[123X-cells of
+  [23XC[123X shall lie.[133X
+  
+  [1X1.3-6 CommutativeRingOfLinearCategory[101X
+  
+  [33X[1;0Y[29X[2XCommutativeRingOfLinearCategory[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya ring[133X
+  
+  [33X[0;0YThe  argument  is  a  category  [23XC[123X  which  is  expected  to lie in the filter
+  [10XIsLinearCategoryOverCommutativeRing[110X.  The  output is a commutative ring over
+  which the category is linear.[133X
+  
+  
+  [1X1.4 [33X[0;0YLogic switcher[133X[101X
+  
+  [1X1.4-1 CapCategorySwitchLogicOn[101X
+  
+  [33X[1;0Y[29X[2XCapCategorySwitchLogicOn[102X( [3XC[103X ) [32X function[133X
+  
+  [33X[0;0YActivates the predicate implication logic for the category [3XC[103X.[133X
+  
+  [1X1.4-2 CapCategorySwitchLogicOff[101X
+  
+  [33X[1;0Y[29X[2XCapCategorySwitchLogicOff[102X( [3XC[103X ) [32X function[133X
+  
+  [33X[0;0YDeactivates the predicate implication logic for the category [3XC[103X.[133X
+  
+  
+  [1X1.5 [33X[0;0YTool functions[133X[101X
+  
+  [1X1.5-1 CanCompute[101X
+  
+  [33X[1;0Y[29X[2XCanCompute[102X( [3XC[103X, [3Xs[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YThe  argument  is a category [23XC[123X and a string [23Xs[123X, which should be the name of a
+  basic operation, e.g., PreCompose. If applying this method is possible in [23XC[123X,
+  the method returns [10Xtrue[110X, [10Xfalse[110X otherwise. If the string is not the name of a
+  basic operation, an error is raised.[133X
+  
+  [1X1.5-2 CheckConstructivenessOfCategory[101X
+  
+  [33X[1;0Y[29X[2XCheckConstructivenessOfCategory[102X( [3XC[103X, [3Xs[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  arguments  are  a  category  [23XC[123X  and  a  string [23Xs[123X. If [23Xs[123X is a categorical
+  property  (e.g.  [10X"IsAbelianCategory"[110X),  the output is a list of strings with
+  basic  operations  which  are  missing in [23XC[123X to have the categorical property
+  constructively. If [23Xs[123X is not a categorical property, an error is raised.[133X
+  
+  
+  [1X1.6 [33X[0;0YWell-Definedness of Cells[133X[101X
+  
+  [1X1.6-1 IsWellDefined[101X
+  
+  [33X[1;0Y[29X[2XIsWellDefined[102X( [3Xc[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe argument is a cell [23Xc[123X. The output is [10Xtrue[110X if [23Xc[123X is well-defined, otherwise
+  the output is [10Xfalse[110X.[133X
+  
+  
+  [1X1.7 [33X[0;0YCaching[133X[101X
+  
+  [1X1.7-1 SetCachingOfCategory[101X
+  
+  [33X[1;0Y[29X[2XSetCachingOfCategory[102X( [3Xcategory[103X, [3Xtype[103X ) [32X function[133X
+  
+  [33X[0;0YSets the caching of [3Xcategory[103X to [3Xtype[103X.[133X
+  
+  [1X1.7-2 SetCachingOfCategoryWeak[101X
+  
+  [33X[1;0Y[29X[2XSetCachingOfCategoryWeak[102X( [3Xcategory[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XSetCachingOfCategoryCrisp[102X( [3Xcategory[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XDeactivateCachingOfCategory[102X( [3Xcategory[103X ) [32X function[133X
+  
+  [33X[0;0YSets the caching of [3Xcategory[103X to [10Xweak[110X, [10Xcrisp[110X or [10Xnone[110X, respectively.[133X
+  
+  [1X1.7-3 SetDefaultCaching[101X
+  
+  [33X[1;0Y[29X[2XSetDefaultCaching[102X( [3Xtype[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XSetDefaultCachingWeak[102X(  ) [32X function[133X
+  [33X[1;0Y[29X[2XSetDefaultCachingCrisp[102X(  ) [32X function[133X
+  [33X[1;0Y[29X[2XDeactivateDefaultCaching[102X(  ) [32X function[133X
+  
+  [33X[0;0YSets  the  default  caching  behaviour,  all  new categories will have their
+  caching set to either [10Xweak[110X, [10Xcrisp[110X, or [10Xnone[110X. The default at startup is [10Xweak[110X.[133X
+  
+  
+  [1X1.8 [33X[0;0YSanity checks[133X[101X
+  
+  [1X1.8-1 DisableInputSanityChecks[101X
+  
+  [33X[1;0Y[29X[2XDisableInputSanityChecks[102X( [3Xcategory[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XDisableOutputSanityChecks[102X( [3Xcategory[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XEnablePartialInputSanityChecks[102X( [3Xcategory[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XEnablePartialOutputSanityChecks[102X( [3Xcategory[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XEnableFullInputSanityChecks[102X( [3Xcategory[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XEnableFullOutputSanityChecks[102X( [3Xcategory[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XDisableSanityChecks[102X( [3Xcategory[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XEnablePartialSanityChecks[102X( [3Xcategory[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XEnableFullSanityChecks[102X( [3Xcategory[103X ) [32X function[133X
+  
+  [33X[0;0YMost  operations  can  perform optional sanity checks on their arguments and
+  results.  The  checks  can  either  be  partial  (set  by default), full, or
+  disabled. With the following commands you can either enable the full checks,
+  the  partial  checks or, for performance, disable the checks altogether. You
+  can do this for input checks, output checks or for both at once.[133X
+  
+  
+  [1X1.9 [33X[0;0YEnable automatic calls of [10XAdd[110X[101X[1X[133X[101X
+  
+  [1X1.9-1 EnableAddForCategoricalOperations[101X
+  
+  [33X[1;0Y[29X[2XEnableAddForCategoricalOperations[102X( [3XC[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XDisableAddForCategoricalOperations[102X( [3XC[103X ) [32X function[133X
+  
+  [33X[0;0YEnables/disables  the  automatic  call  of [10XAdd[110X for the output of primitively
+  added functions for the category [3XC[103X. If the automatic call of [10XAdd[110X is disabled
+  (default),  the  output  of  primitively  added functions must belong to the
+  correct  category.  If  the  automatic call of [10XAdd[110X is enabled, the output of
+  primitively   added  functions  only  has  to  be  a  GAP  object  lying  in
+  [10XIsAttributeStoringRep[110X  (with  suitable  attributes  [10XSource[110X  and [10XRange[110X if the
+  output should be a morphism or a twocell).[133X
+  
+  
+  [1X1.10 [33X[0;0YPerformance tweaks[133X[101X
+  
+  [33X[0;0YCAP has several settings which can improve the performance. In the following
+  some of these are listed.[133X
+  
+  [30X    [33X[0;6Y[10XDeactivateCachingOfCategory[110X:  see  [14X1.7[114X.  This  can  either  improve or
+        degrade the performance depending on the concrete example.[133X
+  
+  [30X    [33X[0;6Y[10XCapCategorySwitchLogicOff[110X: see [14X1.4[114X. This can either improve or degrade
+        the performance depending on the concrete example.[133X
+  
+  [30X    [33X[0;6Y[10XDisableSanityChecks[110X: see [14X1.8[114X.[133X
+  
+  [30X    [33X[0;6Y[10XDisableAddForCategoricalOperations[110X: see [14X1.9[114X.[133X
+  
+  [30X    [33X[0;6Y[10XDeactivateToDoList[110X: see the package [10XToolsForHomalg[110X.[133X
+  
+  [30X    [33X[0;6Yuse [10XObjectifyObjectForCAPWithAttributes[110X ([14X2.6[114X) instead of [10XAddObject[110X and
+        [10XObjectifyMorphismForCAPWithAttributes[110X ([14X3.5[114X) instead of [10XAddMorphism[110X.[133X
+  

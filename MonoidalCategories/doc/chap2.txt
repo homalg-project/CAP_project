@@ -1,0 +1,392 @@
+  
+  [1X2 [33X[0;0YObjects[133X[101X
+  
+  [33X[0;0YAny  GAP  object which is IsCapCategoryObject can be added to a category and
+  then  becomes an object in this category. Any object can belong to one or no
+  category. After a GAP object is added to the category, it knows which things
+  can  be  computed in its category and to which category it belongs. It knows
+  categorial  properties  and  attributes,  and  the functions for existential
+  quantifiers can be applied to the object.[133X
+  
+  
+  [1X2.1 [33X[0;0YAttributes for the Type of Objects[133X[101X
+  
+  [1X2.1-1 CapCategory[101X
+  
+  [33X[1;0Y[29X[2XCapCategory[102X( [3Xa[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya category[133X
+  
+  [33X[0;0YThe  argument is an object [23Xa[123X. The output is the category [23X\mathbf{C}[123X to which
+  [23Xa[123X was added.[133X
+  
+  
+  [1X2.2 [33X[0;0YEquality for Objects[133X[101X
+  
+  [1X2.2-1 IsEqualForObjects[101X
+  
+  [33X[1;0Y[29X[2XIsEqualForObjects[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  arguments  are  two  objects  [23Xa[123X  and  [23Xb[123X.  The  output is [10Xtrue[110X if [23Xa = b[123X,
+  otherwise the output is [10Xfalse[110X.[133X
+  
+  [1X2.2-2 AddIsEqualForObjects[101X
+  
+  [33X[1;0Y[29X[2XAddIsEqualForObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function [23XF[123X to the category for the basic operation [10XIsEqualForObjects[110X.
+  [23XF: (a,b) \mapsto \mathtt{IsEqualForObjects}(a,b)[123X.[133X
+  
+  
+  [1X2.3 [33X[0;0YCategorical Properties of Objects[133X[101X
+  
+  [1X2.3-1 AddIsProjective[101X
+  
+  [33X[1;0Y[29X[2XAddIsProjective[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function [23XF[123X to the category for the basic operation [10XIsProjective[110X. [23XF: a
+  \mapsto \mathtt{IsProjective}(a)[123X.[133X
+  
+  [1X2.3-2 AddIsInjective[101X
+  
+  [33X[1;0Y[29X[2XAddIsInjective[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function  [23XF[123X to the category for the basic operation [10XIsInjective[110X. [23XF: a
+  \mapsto \mathtt{IsInjective}(a)[123X.[133X
+  
+  [1X2.3-3 AddIsTerminal[101X
+  
+  [33X[1;0Y[29X[2XAddIsTerminal[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function  [23XF[123X  to the category for the basic operation [10XIsTerminal[110X. [23XF: a
+  \mapsto \mathtt{IsTerminal}(a)[123X.[133X
+  
+  [1X2.3-4 AddIsInitial[101X
+  
+  [33X[1;0Y[29X[2XAddIsInitial[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function  [23XF[123X  to  the category for the basic operation [10XIsInitial[110X. [23XF: a
+  \mapsto \mathtt{IsInitial}(a)[123X.[133X
+  
+  [1X2.3-5 IsZeroForObjects[101X
+  
+  [33X[1;0Y[29X[2XIsZeroForObjects[102X( [3Xa[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument is an object [23Xa[123X of a category [23X\mathbf{C}[123X. The output is [10Xtrue[110X if
+  [23Xa[123X  is  isomorphic  to the zero object of [23X\mathbf{C}[123X, otherwise the output is
+  [10Xfalse[110X.[133X
+  
+  [1X2.3-6 AddIsZeroForObjects[101X
+  
+  [33X[1;0Y[29X[2XAddIsZeroForObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function  [23XF[123X to the category for the basic operation [10XIsZeroForObjects[110X.
+  [23XF: a \mapsto \mathtt{IsZeroForObjects}(a)[123X.[133X
+  
+  
+  [1X2.4 [33X[0;0YRandom Objects[133X[101X
+  
+  [33X[0;0YCAP provides two principal methods to generate random objects:[133X
+  
+  [30X    [33X[0;6Y[13XBy  integers[113X:  The  integer  is simply a parameter that can be used to
+        create a random object.[133X
+  
+  [30X    [33X[0;6Y[13XBy  lists[113X:  The  list is used when creating a random object would need
+        more  than  one parameter. Lists offer more flexibility at the expense
+        of  the genericity of the methods. This happens because lists that are
+        valid as input in some category may be not valid for other categories.
+        Hence,  these  operations  are  not  thought  to  be  used  in generic
+        categorical algorithms.[133X
+  
+  [1X2.4-1 RandomObjectByInteger[101X
+  
+  [33X[1;0Y[29X[2XRandomObjectByInteger[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object or [10Xfail[110X[133X
+  
+  [33X[0;0YThe  arguments  are  a  category  [23XC[123X and an integer [23Xn[123X. The output is a random
+  object in [23XC[123X or [10Xfail[110X.[133X
+  
+  [1X2.4-2 AddRandomObjectByInteger[101X
+  
+  [33X[1;0Y[29X[2XAddRandomObjectByInteger[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XRandomObjectByInteger[110X.  The  function  [23XF[123X  maps  [23X(C,n)[123X to [10Xfail[110X or to a random
+  object in [23XC[123X.[133X
+  
+  [1X2.4-3 RandomObjectByList[101X
+  
+  [33X[1;0Y[29X[2XRandomObjectByList[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object or [10Xfail[110X[133X
+  
+  [33X[0;0YThe  arguments  are a category [23XC[123X and a list [23XL[123X. The output is a random object
+  in [23XC[123X or [10Xfail[110X.[133X
+  
+  [1X2.4-4 AddRandomObjectByList[101X
+  
+  [33X[1;0Y[29X[2XAddRandomObjectByList[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given function [23XF[123X to the category for the basic operation [10XRandomObjectByList[110X.
+  The function [23XF[123X maps [23X(C,L)[123X to [10Xfail[110X or to a random object in [23XC[123X.[133X
+  
+  [1X2.4-5 RandomObject[101X
+  
+  [33X[1;0Y[29X[2XRandomObject[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XRandomObject[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
+  
+  [33X[0;0YThese  are  convenient methods and they, depending on the input, delegate to
+  one of the above methods.[133X
+  
+  
+  [1X2.5 [33X[0;0YTool functions for caches[133X[101X
+  
+  [1X2.5-1 IsEqualForCacheForObjects[101X
+  
+  [33X[1;0Y[29X[2XIsEqualForCacheForObjects[102X( [3Xphi[103X, [3Xpsi[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ytrue or false[133X
+  
+  [33X[0;0YCompares two objects in the cache[133X
+  
+  [1X2.5-2 AddIsEqualForCacheForObjects[101X
+  
+  [33X[1;0Y[29X[2XAddIsEqualForCacheForObjects[102X( [3Xc[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynorthing[133X
+  
+  [33X[0;0YBy  default,  CAP uses caches to store the values of Categorical operations.
+  To  get  a value out of the cache, one needs to compare the input of a basic
+  operation  with  its  previous  input.  To  compare objects in the category,
+  IsEqualForCacheForObject   is   used.  By  default  this  is  an  alias  for
+  IsEqualForObjects,  where  fail  is  substituted  by  false.  If  you  add a
+  function,  this  function  used  instead.  A function [23XF: a,b \mapsto bool[123X is
+  expected  here.  The  output has to be true or false. Fail is not allowed in
+  this context.[133X
+  
+  
+  [1X2.6 [33X[0;0YAdding Objects to a Category[133X[101X
+  
+  [1X2.6-1 Add[101X
+  
+  [33X[1;0Y[29X[2XAdd[102X( [3Xcategory[103X, [3Xobject[103X ) [32X operation[133X
+  
+  [33X[0;0YAdds [3Xobject[103X as an object to [3Xcategory[103X.[133X
+  
+  [1X2.6-2 AddObject[101X
+  
+  [33X[1;0Y[29X[2XAddObject[102X( [3Xcategory[103X, [3Xobject[103X ) [32X operation[133X
+  
+  [33X[0;0YAdds  [3Xobject[103X  as an object to [3Xcategory[103X. If [3Xobject[103X already lies in the filter
+  [10XIsCapCategoryObject[110X, the operation [2XAdd[102X ([14X2.6-1[114X) can be used instead.[133X
+  
+  [1X2.6-3 AddObjectRepresentation[101X
+  
+  [33X[1;0Y[29X[2XAddObjectRepresentation[102X( [3Xcategory[103X, [3Xfilter[103X ) [32X operation[133X
+  
+  [33X[0;0YThe  argument  [3Xfilter[103X  is  used  to  create  an object type for the category
+  [3Xcategory[103X,  which  is  then  used  in  [10XObjectifyObjectForCAPWithAttributes[110X to
+  objectify objects for this category.[133X
+  
+  [1X2.6-4 ObjectifyObjectForCAPWithAttributes[101X
+  
+  [33X[1;0Y[29X[2XObjectifyObjectForCAPWithAttributes[102X( [3Xobject[103X, [3Xcategory[103X[, [3Xattribute1[103X, [3Xvalue1[103X, [3X...[103X] ) [32X function[133X
+  
+  [33X[0;0YObjectifies  the  object  [3Xobject[103X  with  the  type created for objects in the
+  category  [3Xcategory[103X.  The  type  is  created  by  passing a representation to
+  [10XAddObjectRepresentation[110X.  Objects which are objectified using this method do
+  not have to be passed to the [10XAddObject[110X function.[133X
+  
+  
+  [1X2.7 [33X[0;0YWell-Definedness of Objects[133X[101X
+  
+  [1X2.7-1 IsWellDefinedForObjects[101X
+  
+  [33X[1;0Y[29X[2XIsWellDefinedForObjects[102X( [3Xa[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument  is  an  object  [23Xa[123X.  The  output is [10Xtrue[110X if [23Xa[123X is well-defined,
+  otherwise the output is [10Xfalse[110X.[133X
+  
+  [1X2.7-2 AddIsWellDefinedForObjects[101X
+  
+  [33X[1;0Y[29X[2XAddIsWellDefinedForObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XIsWellDefinedForObjects[110X. [23XF: a \mapsto \mathtt{IsWellDefinedForObjects}( a )[123X.[133X
+  
+  
+  [1X2.8 [33X[0;0YProjectives[133X[101X
+  
+  [33X[0;0YFor  a  given object [23XA[123X in an abelian category having enough projectives, the
+  following  commands  allow  us  to compute some projective object [23XP[123X together
+  with an epimorphism [23X\pi: P \rightarrow A[123X.[133X
+  
+  [1X2.8-1 SomeProjectiveObject[101X
+  
+  [33X[1;0Y[29X[2XSomeProjectiveObject[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  argument  is  an  object  [23XA[123X. The output is some projective object [23XP[123X for
+  which there exists an epimorphism [23X\pi: P \rightarrow A[123X.[133X
+  
+  [1X2.8-2 EpimorphismFromSomeProjectiveObject[101X
+  
+  [33X[1;0Y[29X[2XEpimorphismFromSomeProjectiveObject[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(P,A)[123X[133X
+  
+  [33X[0;0YThe argument is an object [23XA[123X. The output is an epimorphism [23X\pi: P \rightarrow
+  A[123X    with    [23XP[123X   a   projective   object   that   equals   the   output   of
+  [23X\mathrm{SomeProjectiveObject}(A)[123X.[133X
+  
+  [1X2.8-3 EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[101X
+  
+  [33X[1;0Y[29X[2XEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[102X( [3XA[103X, [3XP[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(P,A)[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [23XA[123X and a projective object [23XP[123X that equals the
+  output  of  [23X\mathrm{SomeProjectiveObject}(A)[123X.  The  output is an epimorphism
+  [23X\pi: P \rightarrow A[123X.[133X
+  
+  [1X2.8-4 ProjectiveLift[101X
+  
+  [33X[1;0Y[29X[2XProjectiveLift[102X( [3Xpi[103X, [3Xepsilon[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(P,B)[123X[133X
+  
+  [33X[0;0YThe  arguments  are a morphism [23X\pi: P \rightarrow A[123X with [23XP[123X a projective, and
+  an  epimorphism [23X\epsilon: B \rightarrow A[123X. The output is a morphism [23X\lambda:
+  P \rightarrow B[123X such that [23X\epsilon \circ \lambda = \pi[123X.[133X
+  
+  [1X2.8-5 AddSomeProjectiveObject[101X
+  
+  [33X[1;0Y[29X[2XAddSomeProjectiveObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XSomeProjectiveObject[110X. [23XF: A \mapsto P[123X.[133X
+  
+  [1X2.8-6 AddEpimorphismFromSomeProjectiveObject[101X
+  
+  [33X[1;0Y[29X[2XAddEpimorphismFromSomeProjectiveObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XEpimorphismFromSomeProjectiveObject[110X. [23XF: A \mapsto \pi[123X.[133X
+  
+  [1X2.8-7 AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[101X
+  
+  [33X[1;0Y[29X[2XAddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XAddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[110X.      [23XF:
+  (A,P) \mapsto \pi[123X.[133X
+  
+  [1X2.8-8 AddProjectiveLift[101X
+  
+  [33X[1;0Y[29X[2XAddProjectiveLift[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given function [23XF[123X to the category for the basic operation [10XProjectiveLift[110X. The
+  function [23XF[123X maps a pair [23X(\pi, \epsilon)[123X to a projective lift [23X\lambda[123X.[133X
+  
+  
+  [1X2.9 [33X[0;0YInjectives[133X[101X
+  
+  [33X[0;0YFor  a  given  object [23XA[123X in an abelian category having enough injectives, the
+  following commands allow us to compute some injective object [23XI[123X together with
+  a monomorphism [23X\iota: A \rightarrow I[123X.[133X
+  
+  [1X2.9-1 SomeInjectiveObject[101X
+  
+  [33X[1;0Y[29X[2XSomeInjectiveObject[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe argument is an object [23XA[123X. The output is some injective object [23XI[123X for which
+  there exists a monomorphism [23X\iota: A \rightarrow I[123X.[133X
+  
+  [1X2.9-2 MonomorphismIntoSomeInjectiveObject[101X
+  
+  [33X[1;0Y[29X[2XMonomorphismIntoSomeInjectiveObject[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(I,A)[123X[133X
+  
+  [33X[0;0YThe  argument  is  an  object  [23XA[123X.  The  output  is  a  monomorphism [23X\iota: A
+  \rightarrow  I[123X  with  [23XI[123X  an  injective  object  that  equals  the  output of
+  [23X\mathrm{SomeInjectiveObject}(A)[123X.[133X
+  
+  [1X2.9-3 MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[101X
+  
+  [33X[1;0Y[29X[2XMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[102X( [3XA[103X, [3XI[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(I,A)[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [23XA[123X and an injective object [23XI[123X that equals the
+  output  of  [23X\mathrm{SomeInjectiveObject}(A)[123X.  The  output  is a monomorphism
+  [23X\iota: A \rightarrow I[123X.[133X
+  
+  [1X2.9-4 InjectiveColift[101X
+  
+  [33X[1;0Y[29X[2XInjectiveColift[102X( [3X\iota[103X, [3X\beta[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A,I)[123X[133X
+  
+  [33X[0;0YThe arguments are a morphism [23X\iota: B \rightarrow A[123X and [23X\beta: B \rightarrow
+  I[123X  where  [23XI[123X  is  an  injective  object.  The output is a morphism [23X\lambda: A
+  \rightarrow I[123X such that [23X\lambda \circ \iota = \beta[123X.[133X
+  
+  [1X2.9-5 AddSomeInjectiveObject[101X
+  
+  [33X[1;0Y[29X[2XAddSomeInjectiveObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XSomeInjectiveObject[110X. [23XF: A \mapsto I[123X.[133X
+  
+  [1X2.9-6 AddMonomorphismIntoSomeInjectiveObject[101X
+  
+  [33X[1;0Y[29X[2XAddMonomorphismIntoSomeInjectiveObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XMonomorphismIntoSomeInjectiveObject[110X. [23XF: A \mapsto \pi[123X.[133X
+  
+  [1X2.9-7 AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[101X
+  
+  [33X[1;0Y[29X[2XAddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XAddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[110X. [23XF: (A,I)
+  \mapsto \pi[123X.[133X
+  
+  [1X2.9-8 AddInjectiveColift[101X
+  
+  [33X[1;0Y[29X[2XAddInjectiveColift[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  given  function  [23XF[123X  to the category for the basic operation [10XInjectiveColift[110X.
+  The  function [23XF[123X maps a pair [23X(\iota, \beta)[123X to an injective colift [23X\lambda[123X if
+  it exists, and to [10Xfail[110X otherwise.[133X
+  

@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (CAP) - Chapter 1: CAP Categories</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap1"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap1.html">[MathJax off]</a></p>
+<p><a id="X7C99ABCB7DEEDE2A" name="X7C99ABCB7DEEDE2A"></a></p>
+<div class="ChapSects"><a href="chap1_mj.html#X7C99ABCB7DEEDE2A">1 <span class="Heading">CAP Categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7CC6903E78F24167">1.1 <span class="Heading">Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X852A10417EEF5D0E">1.1-1 IsCapCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7E2CFDC482566454">1.1-2 IsCapCategoryCell</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7DAEF54180094D1E">1.1-3 IsCapCategoryObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X84413C4978765A3F">1.1-4 IsCapCategoryMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F3B964286D98710">1.1-5 IsCapCategoryTwoCell</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7D6EA1307DFCCE46">1.1-6 AddCategoricalProperty</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7ABF649E831D4D8E">1.2 <span class="Heading">Constructor</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86EDB84D7E3F0194">1.2-1 CreateCapCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X854CC42E828C120D">1.2-2 CreateCapCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X79CE135F7E6EBFEE">1.3 <span class="Heading">Internal Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7C7B1EAF7D786508">1.3-1 CategoryFilter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7E88D5D3860AF854">1.3-2 CellFilter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7BD6E2B887F86E9C">1.3-3 ObjectFilter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F62E0C47C778CBB">1.3-4 MorphismFilter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X850D0E978090D0C0">1.3-5 TwoCellFilter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X78D0C0057817DBC3">1.3-6 CommutativeRingOfLinearCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X8305A19E86EC7B67">1.4 <span class="Heading">Logic switcher</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X84824AC3793D872B">1.4-1 CapCategorySwitchLogicOn</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X84A995A687D031B7">1.4-2 CapCategorySwitchLogicOff</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7A15CCB67FBCF3E3">1.5 <span class="Heading">Tool functions</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X851D0435816DDB40">1.5-1 CanCompute</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7ACB9FFA84476BA0">1.5-2 CheckConstructivenessOfCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7DB3D2BD8792ABBC">1.6 <span class="Heading">Well-Definedness of Cells</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X839EA4D7805D4F97">1.6-1 IsWellDefined</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X79DB9EE785F723D1">1.7 <span class="Heading">Caching</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7DB820A686B4059F">1.7-1 SetCachingOfCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87AA14F27892F14F">1.7-2 SetCachingOfCategoryWeak</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X844903657E52E6D1">1.7-3 SetDefaultCaching</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7EC631BC7CFCF5DB">1.8 <span class="Heading">Sanity checks</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7BB84C7B83FE3D80">1.8-1 DisableInputSanityChecks</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X81A1CDD77D375231">1.9 <span class="Heading">Enable automatic calls of <code class="code">Add</code></span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7C01E3727D08D219">1.9-1 EnableAddForCategoricalOperations</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7876FF1F831F58B0">1.10 <span class="Heading">Performance tweaks</span></a>
+</span>
+</div>
+</div>
+
+<h3>1 <span class="Heading">CAP Categories</span></h3>
+
+<p>Categories are the main GAP objects in CAP. They are used to associate GAP objects which represent objects and morphisms with their category. By associating a GAP object to the category, one of two filters belonging to the category (ObjectFilter/MorphismFilter) are set to true. Via Add methods, functions for specific existential quantifiers can be associated to the category and after that can be applied to GAP objects in the category. A GAP category object also knows which constructions are currently possible in this category.</p>
+
+<p><a id="X7CC6903E78F24167" name="X7CC6903E78F24167"></a></p>
+
+<h4>1.1 <span class="Heading">Categories</span></h4>
+
+<p><a id="X852A10417EEF5D0E" name="X852A10417EEF5D0E"></a></p>
+
+<h5>1.1-1 IsCapCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategory</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The GAP category of CAP categories. Objects of this type handle the CAP category information, the caching, and filters for objects in the CAP category. Please note that the object itself is not related to methods, you only need it as a handler and a presentation of the CAP category.</p>
+
+<p><a id="X7E2CFDC482566454" name="X7E2CFDC482566454"></a></p>
+
+<h5>1.1-2 IsCapCategoryCell</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryCell</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The GAP category of CAP category cells. Every object, morphism, and <span class="SimpleMath">\(2\)</span>-cell of a CAP category lies in this GAP category.</p>
+
+<p><a id="X7DAEF54180094D1E" name="X7DAEF54180094D1E"></a></p>
+
+<h5>1.1-3 IsCapCategoryObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryObject</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The GAP category of CAP category objects. Every object of a CAP category lies in this GAP category.</p>
+
+<p><a id="X84413C4978765A3F" name="X84413C4978765A3F"></a></p>
+
+<h5>1.1-4 IsCapCategoryMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryMorphism</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The GAP category of CAP category morphisms. Every morphism of a CAP category lies in this GAP category.</p>
+
+<p><a id="X7F3B964286D98710" name="X7F3B964286D98710"></a></p>
+
+<h5>1.1-5 IsCapCategoryTwoCell</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCapCategoryTwoCell</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The GAP category of CAP category <span class="SimpleMath">\(2\)</span>-cells. Every <span class="SimpleMath">\(2\)</span>-cell of a CAP category lies in this GAP category.</p>
+
+<p><a id="X7D6EA1307DFCCE46" name="X7D6EA1307DFCCE46"></a></p>
+
+<h5>1.1-6 AddCategoricalProperty</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCategoricalProperty</code>( <var class="Arg">list</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Adds a categorical property to the list of CAP categorical properties. <var class="Arg">list</var> must be a list containing one entry, if the property is self dual, or two, if the dual property has a different name. If the first entry of the list is empty and the second is a property name, the property is assumed to have no dual.</p>
+
+<p><a id="X7ABF649E831D4D8E" name="X7ABF649E831D4D8E"></a></p>
+
+<h4>1.2 <span class="Heading">Constructor</span></h4>
+
+<p><a id="X86EDB84D7E3F0194" name="X86EDB84D7E3F0194"></a></p>
+
+<h5>1.2-1 CreateCapCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateCapCategory</code>(  )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>Creates a new CAP category from scratch. It gets a generic name.</p>
+
+<p><a id="X854CC42E828C120D" name="X854CC42E828C120D"></a></p>
+
+<h5>1.2-2 CreateCapCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateCapCategory</code>( <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>The argument is a string <span class="SimpleMath">\(s\)</span>. This operation creates a new CAP category from scratch. Its name is set to <span class="SimpleMath">\(s\)</span>.</p>
+
+<p><a id="X79CE135F7E6EBFEE" name="X79CE135F7E6EBFEE"></a></p>
+
+<h4>1.3 <span class="Heading">Internal Attributes</span></h4>
+
+<p>Each category <span class="SimpleMath">\(C\)</span> stores various filters. They are used to apply the right functions in the method selection.</p>
+
+<p><a id="X7C7B1EAF7D786508" name="X7C7B1EAF7D786508"></a></p>
+
+<h5>1.3-1 CategoryFilter</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CategoryFilter</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a filter</p>
+
+<p>The argument is a category <span class="SimpleMath">\(C\)</span>. The output is a filter in which <span class="SimpleMath">\(C\)</span> lies.</p>
+
+<p><a id="X7E88D5D3860AF854" name="X7E88D5D3860AF854"></a></p>
+
+<h5>1.3-2 CellFilter</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CellFilter</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a filter</p>
+
+<p>The argument is a category <span class="SimpleMath">\(C\)</span>. The output is a filter in which all cells of <span class="SimpleMath">\(C\)</span> shall lie.</p>
+
+<p><a id="X7BD6E2B887F86E9C" name="X7BD6E2B887F86E9C"></a></p>
+
+<h5>1.3-3 ObjectFilter</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectFilter</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a filter</p>
+
+<p>The argument is a category <span class="SimpleMath">\(C\)</span>. The output is a filter in which all objects of <span class="SimpleMath">\(C\)</span> shall lie.</p>
+
+<p><a id="X7F62E0C47C778CBB" name="X7F62E0C47C778CBB"></a></p>
+
+<h5>1.3-4 MorphismFilter</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFilter</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a filter</p>
+
+<p>The argument is a category <span class="SimpleMath">\(C\)</span>. The output is a filter in which all morphisms of <span class="SimpleMath">\(C\)</span> shall lie.</p>
+
+<p><a id="X850D0E978090D0C0" name="X850D0E978090D0C0"></a></p>
+
+<h5>1.3-5 TwoCellFilter</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TwoCellFilter</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a filter</p>
+
+<p>The argument is a category <span class="SimpleMath">\(C\)</span>. The output is a filter in which all <span class="SimpleMath">\(2\)</span>-cells of <span class="SimpleMath">\(C\)</span> shall lie.</p>
+
+<p><a id="X78D0C0057817DBC3" name="X78D0C0057817DBC3"></a></p>
+
+<h5>1.3-6 CommutativeRingOfLinearCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CommutativeRingOfLinearCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a ring</p>
+
+<p>The argument is a category <span class="SimpleMath">\(C\)</span> which is expected to lie in the filter <code class="code">IsLinearCategoryOverCommutativeRing</code>. The output is a commutative ring over which the category is linear.</p>
+
+<p><a id="X8305A19E86EC7B67" name="X8305A19E86EC7B67"></a></p>
+
+<h4>1.4 <span class="Heading">Logic switcher</span></h4>
+
+<p><a id="X84824AC3793D872B" name="X84824AC3793D872B"></a></p>
+
+<h5>1.4-1 CapCategorySwitchLogicOn</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapCategorySwitchLogicOn</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Activates the predicate implication logic for the category <var class="Arg">C</var>.</p>
+
+<p><a id="X84A995A687D031B7" name="X84A995A687D031B7"></a></p>
+
+<h5>1.4-2 CapCategorySwitchLogicOff</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapCategorySwitchLogicOff</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Deactivates the predicate implication logic for the category <var class="Arg">C</var>.</p>
+
+<p><a id="X7A15CCB67FBCF3E3" name="X7A15CCB67FBCF3E3"></a></p>
+
+<h4>1.5 <span class="Heading">Tool functions</span></h4>
+
+<p><a id="X851D0435816DDB40" name="X851D0435816DDB40"></a></p>
+
+<h5>1.5-1 CanCompute</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CanCompute</code>( <var class="Arg">C</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The argument is a category <span class="SimpleMath">\(C\)</span> and a string <span class="SimpleMath">\(s\)</span>, which should be the name of a basic operation, e.g., PreCompose. If applying this method is possible in <span class="SimpleMath">\(C\)</span>, the method returns <code class="code">true</code>, <code class="code">false</code> otherwise. If the string is not the name of a basic operation, an error is raised.</p>
+
+<p><a id="X7ACB9FFA84476BA0" name="X7ACB9FFA84476BA0"></a></p>
+
+<h5>1.5-2 CheckConstructivenessOfCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CheckConstructivenessOfCategory</code>( <var class="Arg">C</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a string <span class="SimpleMath">\(s\)</span>. If <span class="SimpleMath">\(s\)</span> is a categorical property (e.g. <code class="code">"IsAbelianCategory"</code>), the output is a list of strings with basic operations which are missing in <span class="SimpleMath">\(C\)</span> to have the categorical property constructively. If <span class="SimpleMath">\(s\)</span> is not a categorical property, an error is raised.</p>
+
+<p><a id="X7DB3D2BD8792ABBC" name="X7DB3D2BD8792ABBC"></a></p>
+
+<h4>1.6 <span class="Heading">Well-Definedness of Cells</span></h4>
+
+<p><a id="X839EA4D7805D4F97" name="X839EA4D7805D4F97"></a></p>
+
+<h5>1.6-1 IsWellDefined</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsWellDefined</code>( <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is a cell <span class="SimpleMath">\(c\)</span>. The output is <code class="code">true</code> if <span class="SimpleMath">\(c\)</span> is well-defined, otherwise the output is <code class="code">false</code>.</p>
+
+<p><a id="X79DB9EE785F723D1" name="X79DB9EE785F723D1"></a></p>
+
+<h4>1.7 <span class="Heading">Caching</span></h4>
+
+<p><a id="X7DB820A686B4059F" name="X7DB820A686B4059F"></a></p>
+
+<h5>1.7-1 SetCachingOfCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetCachingOfCategory</code>( <var class="Arg">category</var>, <var class="Arg">type</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Sets the caching of <var class="Arg">category</var> to <var class="Arg">type</var>.</p>
+
+<p><a id="X87AA14F27892F14F" name="X87AA14F27892F14F"></a></p>
+
+<h5>1.7-2 SetCachingOfCategoryWeak</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetCachingOfCategoryWeak</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetCachingOfCategoryCrisp</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DeactivateCachingOfCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Sets the caching of <var class="Arg">category</var> to <code class="code">weak</code>, <code class="code">crisp</code> or <code class="code">none</code>, respectively.</p>
+
+<p><a id="X844903657E52E6D1" name="X844903657E52E6D1"></a></p>
+
+<h5>1.7-3 SetDefaultCaching</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetDefaultCaching</code>( <var class="Arg">type</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetDefaultCachingWeak</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetDefaultCachingCrisp</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DeactivateDefaultCaching</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Sets the default caching behaviour, all new categories will have their caching set to either <code class="code">weak</code>, <code class="code">crisp</code>, or <code class="code">none</code>. The default at startup is <code class="code">weak</code>.</p>
+
+<p><a id="X7EC631BC7CFCF5DB" name="X7EC631BC7CFCF5DB"></a></p>
+
+<h4>1.8 <span class="Heading">Sanity checks</span></h4>
+
+<p><a id="X7BB84C7B83FE3D80" name="X7BB84C7B83FE3D80"></a></p>
+
+<h5>1.8-1 DisableInputSanityChecks</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DisableInputSanityChecks</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DisableOutputSanityChecks</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EnablePartialInputSanityChecks</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EnablePartialOutputSanityChecks</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EnableFullInputSanityChecks</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EnableFullOutputSanityChecks</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DisableSanityChecks</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EnablePartialSanityChecks</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EnableFullSanityChecks</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Most operations can perform optional sanity checks on their arguments and results. The checks can either be partial (set by default), full, or disabled. With the following commands you can either enable the full checks, the partial checks or, for performance, disable the checks altogether. You can do this for input checks, output checks or for both at once.</p>
+
+<p><a id="X81A1CDD77D375231" name="X81A1CDD77D375231"></a></p>
+
+<h4>1.9 <span class="Heading">Enable automatic calls of <code class="code">Add</code></span></h4>
+
+<p><a id="X7C01E3727D08D219" name="X7C01E3727D08D219"></a></p>
+
+<h5>1.9-1 EnableAddForCategoricalOperations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EnableAddForCategoricalOperations</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DisableAddForCategoricalOperations</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Enables/disables the automatic call of <code class="code">Add</code> for the output of primitively added functions for the category <var class="Arg">C</var>. If the automatic call of <code class="code">Add</code> is disabled (default), the output of primitively added functions must belong to the correct category. If the automatic call of <code class="code">Add</code> is enabled, the output of primitively added functions only has to be a GAP object lying in <code class="code">IsAttributeStoringRep</code> (with suitable attributes <code class="code">Source</code> and <code class="code">Range</code> if the output should be a morphism or a twocell).</p>
+
+<p><a id="X7876FF1F831F58B0" name="X7876FF1F831F58B0"></a></p>
+
+<h4>1.10 <span class="Heading">Performance tweaks</span></h4>
+
+<p>CAP has several settings which can improve the performance. In the following some of these are listed.</p>
+
+
+<ul>
+<li><p><code class="code">DeactivateCachingOfCategory</code>: see <a href="chap1_mj.html#X79DB9EE785F723D1"><span class="RefLink">1.7</span></a>. This can either improve or degrade the performance depending on the concrete example.</p>
+
+</li>
+<li><p><code class="code">CapCategorySwitchLogicOff</code>: see <a href="chap1_mj.html#X8305A19E86EC7B67"><span class="RefLink">1.4</span></a>. This can either improve or degrade the performance depending on the concrete example.</p>
+
+</li>
+<li><p><code class="code">DisableSanityChecks</code>: see <a href="chap1_mj.html#X7EC631BC7CFCF5DB"><span class="RefLink">1.8</span></a>.</p>
+
+</li>
+<li><p><code class="code">DisableAddForCategoricalOperations</code>: see <a href="chap1_mj.html#X81A1CDD77D375231"><span class="RefLink">1.9</span></a>.</p>
+
+</li>
+<li><p><code class="code">DeactivateToDoList</code>: see the package <code class="code">ToolsForHomalg</code>.</p>
+
+</li>
+<li><p>use <code class="code">ObjectifyObjectForCAPWithAttributes</code> (<a href="chap2_mj.html#X81817A2C84F03D1D"><span class="RefLink">2.6</span></a>) instead of <code class="code">AddObject</code> and <code class="code">ObjectifyMorphismForCAPWithAttributes</code> (<a href="chap3_mj.html#X867B9398854FEFFD"><span class="RefLink">3.5</span></a>) instead of <code class="code">AddMorphism</code>.</p>
+
+</li>
+</ul>
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>
