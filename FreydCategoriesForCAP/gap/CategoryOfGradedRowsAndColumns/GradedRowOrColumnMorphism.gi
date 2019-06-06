@@ -189,7 +189,7 @@ InstallMethod( Display,
     Display( Source( graded_row_or_column_morphism ) );
 
     # mapping matrix
-    Print( Concatenation( "\n\n", "Matrix: \n" ) );
+    Print( Concatenation( "\n", "Matrix: \n" ) );
     Display( UnderlyingHomalgMatrix( graded_row_or_column_morphism ) );
 
     # range
