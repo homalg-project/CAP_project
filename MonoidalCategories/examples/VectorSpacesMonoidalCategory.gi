@@ -1,5 +1,4 @@
-
-LoadPackage( "CAP" );
+LoadPackage( "MonoidalCategories" );
 
 LoadPackage( "MatricesForHomalg" );
 
@@ -329,17 +328,17 @@ AddCokernelProjectionWithGivenCokernelObject( vecspaces,
 
 end );
 
-# ##
-# AddCoproduct( vecspaces,
-# 
-#   function( object_product_list )
-#     local dim;
-#     
-#     dim := Sum( List( object_product_list, c -> Dimension( c ) ) );
-#     
-#     return QVectorSpace( dim );
-#   
-# end );
+##
+AddCoproduct( vecspaces,
+
+  function( object_product_list )
+    local dim;
+    
+    dim := Sum( List( object_product_list, c -> Dimension( c ) ) );
+    
+    return QVectorSpace( dim );
+  
+end );
 
 ##
 ## the user may assume that Length( object_product_list ) > 1
@@ -729,16 +728,16 @@ AddTensorProductOnMorphismsWithGivenTensorProducts( vecspaces,
     
 end );
 
-# ##
-# AddAssociatorRightToLeftWithGivenTensorProducts( vecspaces,
-#   
-#   function( right_associated_object, object_1, object_2, object_3, left_associated_object )
-#     
-#     return VectorSpaceMorphism( right_associated_object, 
-#                                 HomalgIdentityMatrix( Dimension( right_associated_object ), VECTORSPACES_FIELD ), 
-#                                 left_associated_object );
-#     
-# end );
+##
+AddAssociatorRightToLeftWithGivenTensorProducts( vecspaces,
+  
+  function( right_associated_object, object_1, object_2, object_3, left_associated_object )
+    
+    return VectorSpaceMorphism( right_associated_object, 
+                                HomalgIdentityMatrix( Dimension( right_associated_object ), VECTORSPACES_FIELD ), 
+                                left_associated_object );
+    
+end );
 
 ##
 AddTensorUnit( vecspaces,
@@ -749,26 +748,26 @@ AddTensorUnit( vecspaces,
     
 end );
 
-# ##
-# AddLeftUnitorWithGivenTensorProduct( vecspaces,
-#   
-#   function( object, unit_tensored_object )
-#     
-#     return VectorSpaceMorphism( unit_tensored_object, 
-#                                 HomalgIdentityMatrix( Dimension( object ), VECTORSPACES_FIELD ), 
-#                                 object );
-#     
-# end );
-# 
-# ##
-# AddRightUnitorWithGivenTensorProduct( vecspaces,
-#   
-#   function( object, object_tensored_unit )
-#     
-#     return VectorSpaceMorphism( object_tensored_unit, 
-#                                 HomalgIdentityMatrix( Dimension( object ), VECTORSPACES_FIELD ), 
-#                                 object );
-# end );
+##
+AddLeftUnitorWithGivenTensorProduct( vecspaces,
+  
+  function( object, unit_tensored_object )
+    
+    return VectorSpaceMorphism( unit_tensored_object, 
+                                HomalgIdentityMatrix( Dimension( object ), VECTORSPACES_FIELD ), 
+                                object );
+    
+end );
+
+##
+AddRightUnitorWithGivenTensorProduct( vecspaces,
+  
+  function( object, object_tensored_unit )
+    
+    return VectorSpaceMorphism( object_tensored_unit, 
+                                HomalgIdentityMatrix( Dimension( object ), VECTORSPACES_FIELD ), 
+                                object );
+end );
 
 ##
 AddBraidingWithGivenTensorProducts( vecspaces,
@@ -873,30 +872,16 @@ AddCoevaluationForDualWithGivenTensorProduct( vecspaces,
     
 end );
 
-# ##
-# AddMorphismToBidualWithGivenBidual( vecspaces,
-#   
-#   function( object, bidual_of_object )
-#     
-#     return VectorSpaceMorphism( object,
-#                                 HomalgIdentityMatrix( Dimension( object ), VECTORSPACES_FIELD ),
-#                                 bidual_of_object
-#                               );
-#     
-# end );
+##
+AddMorphismToBidualWithGivenBidual( vecspaces,
+  
+  function( object, bidual_of_object )
+    
+    return VectorSpaceMorphism( object,
+                                HomalgIdentityMatrix( Dimension( object ), VECTORSPACES_FIELD ),
+                                bidual_of_object
+                              );
+    
+end );
 
 Finalize( vecspaces );
-
-z := ZeroObject( vecspaces );
-
-a := QVectorSpace( 1 );
-
-b := QVectorSpace( 2 );
-
-c := QVectorSpace( 3 );
-
-alpha := VectorSpaceMorphism( a, [ [ 1, 0 ] ], b );
-
-beta := VectorSpaceMorphism( b, [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], c );
-
-gamma := VectorSpaceMorphism( c, [ [ 0, 1, 1 ], [ 1, 0, 1 ], [ 1, 1, 0 ] ], c );

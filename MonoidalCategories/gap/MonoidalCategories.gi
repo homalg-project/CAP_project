@@ -10,6 +10,48 @@
 ##
 #############################################################################
 
+## for monoidal categories
+InstallTrueMethod( IsMonoidalCategory, IsBraidedMonoidalCategory );
+
+InstallTrueMethod( IsBraidedMonoidalCategory, IsSymmetricMonoidalCategory );
+
+InstallTrueMethod( IsSymmetricMonoidalCategory, IsSymmetricClosedMonoidalCategory );
+
+InstallTrueMethod( IsSymmetricClosedMonoidalCategory, IsRigidSymmetricClosedMonoidalCategory );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory  := Concatenation( [
+"TensorProductOnObjects",
+"TensorProductOnMorphismsWithGivenTensorProducts",
+"TensorUnit",
+"AssociatorLeftToRightWithGivenTensorProducts",
+"AssociatorRightToLeftWithGivenTensorProducts",
+"LeftUnitorWithGivenTensorProduct",
+"LeftUnitorInverseWithGivenTensorProduct",
+"RightUnitorWithGivenTensorProduct",
+"RightUnitorInverseWithGivenTensorProduct"
+], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBraidedMonoidalCategory  := Concatenation( [
+"BraidingWithGivenTensorProducts",
+"BraidingInverseWithGivenTensorProducts"
+], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalCategory  := Concatenation( [
+], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBraidedMonoidalCategory );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricClosedMonoidalCategory  := Concatenation( [ 
+"InternalHomOnObjects",
+"InternalHomOnMorphismsWithGivenInternalHoms",
+"EvaluationMorphismWithGivenSource",
+"CoevaluationMorphismWithGivenRange"
+], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalCategory );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsRigidSymmetricClosedMonoidalCategory  := Concatenation( [ 
+"TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects",
+"MorphismFromBidualWithGivenBidual"
+], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricClosedMonoidalCategory );
+
+##
 InstallValue( CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS, rec( ) );
 
 InstallValue( MONOIDAL_CATEGORIES_METHOD_NAME_RECORD, rec(
