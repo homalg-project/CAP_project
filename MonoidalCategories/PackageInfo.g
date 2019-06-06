@@ -13,7 +13,7 @@ Subtitle := "Monoidal and monoidal (co)closed categories",
 Version := Maximum( [
   "2019.01.16", ## Mohamed's version
   ## this line prevents merge conflicts
-  "2019.06.06", ## Sebas' version
+  "2019.06.07", ## Sebas' version
   ## this line prevents merge conflicts
   "2018.09.19", ## Sepp's version
   ## this line prevents merge conflicts
@@ -22,6 +22,7 @@ Version := Maximum( [
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+License := "GPL-2.0-or-later",
 
 Persons := [
   rec(
@@ -72,20 +73,14 @@ Persons := [
   ),
 ],
 
-SourceRepository := rec(
-    Type := "git",
-    URL := "https://github.com/homalg-project/CAP_project"
-),
-IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-#SupportEmail   := "TODO",
-PackageWWWHome  := Concatenation( "https://homalg-project.github.io/CAP_project/", ~.PackageName ),
-PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
-ArchiveURL      := Concatenation( ~.SourceRepository.URL,
-                                 "/releases/download/v", ~.Version,
-                                 "/", ~.PackageName, "-", ~.Version ),
+PackageWWWHome  := "http://homalg-project.github.io/CAP_project/MonoidalCategories/",
 
-ArchiveFormats := ".tar.gz",
+#SupportEmail   := "TODO",
+ArchiveURL     := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-", ~.Version, "/ModulePresentationsForCAP-", ~.Version ),
+README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
+PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
+
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages
@@ -95,7 +90,7 @@ ArchiveFormats := ".tar.gz",
 ##    "dev"           for development versions of packages
 ##    "other"         for all other packages
 ##
-Status := "dev",
+Status := "deposited",
 
 AbstractHTML   :=  "",
 
