@@ -13,7 +13,7 @@ Subtitle := "Monoidal and monoidal (co)closed categories",
 Version := Maximum( [
   "2019.01.16", ## Mohamed's version
   ## this line prevents merge conflicts
-  "2019.01.15", ## Sebas' version
+  "2019.06.06", ## Sebas' version
   ## this line prevents merge conflicts
   "2018.09.19", ## Sepp's version
   ## this line prevents merge conflicts
@@ -74,7 +74,7 @@ Persons := [
 
 SourceRepository := rec(
     Type := "git",
-    URL := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
+    URL := "https://github.com/homalg-project/CAP_project"
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 #SupportEmail   := "TODO",
