@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2019.06.06
+                                   2019.06.07
   
   
-                                  6 June 2019
+                                  7 June 2019
   
   
                                Sebastian Gutsche
@@ -614,236 +614,110 @@
       6.14-24 AddAstrictionToCoimageWithGivenCoimage
       6.14-25 AddUniversalMorphismIntoCoimage
       6.14-26 AddUniversalMorphismIntoCoimageWithGivenCoimage
-  7 [33X[0;0YTensor Product and Internal Hom[133X
-    7.1 [33X[0;0YMonoidal Categories[133X
-      7.1-1 TensorProductOnObjects
-      7.1-2 AddTensorProductOnObjects
-      7.1-3 TensorProductOnMorphisms
-      7.1-4 TensorProductOnMorphismsWithGivenTensorProducts
-      7.1-5 AddTensorProductOnMorphismsWithGivenTensorProducts
-      7.1-6 AssociatorRightToLeft
-      7.1-7 AssociatorRightToLeftWithGivenTensorProducts
-      7.1-8 AddAssociatorRightToLeftWithGivenTensorProducts
-      7.1-9 AssociatorLeftToRight
-      7.1-10 AssociatorLeftToRightWithGivenTensorProducts
-      7.1-11 AddAssociatorLeftToRightWithGivenTensorProducts
-      7.1-12 TensorUnit
-      7.1-13 AddTensorUnit
-      7.1-14 LeftUnitor
-      7.1-15 LeftUnitorWithGivenTensorProduct
-      7.1-16 AddLeftUnitorWithGivenTensorProduct
-      7.1-17 LeftUnitorInverse
-      7.1-18 LeftUnitorInverseWithGivenTensorProduct
-      7.1-19 AddLeftUnitorInverseWithGivenTensorProduct
-      7.1-20 RightUnitor
-      7.1-21 RightUnitorWithGivenTensorProduct
-      7.1-22 AddRightUnitorWithGivenTensorProduct
-      7.1-23 RightUnitorInverse
-      7.1-24 RightUnitorInverseWithGivenTensorProduct
-      7.1-25 AddRightUnitorInverseWithGivenTensorProduct
-      7.1-26 LeftDistributivityExpanding
-      7.1-27 LeftDistributivityExpandingWithGivenObjects
-      7.1-28 AddLeftDistributivityExpandingWithGivenObjects
-      7.1-29 LeftDistributivityFactoring
-      7.1-30 LeftDistributivityFactoringWithGivenObjects
-      7.1-31 AddLeftDistributivityFactoringWithGivenObjects
-      7.1-32 RightDistributivityExpanding
-      7.1-33 RightDistributivityExpandingWithGivenObjects
-      7.1-34 AddRightDistributivityExpandingWithGivenObjects
-      7.1-35 RightDistributivityFactoring
-      7.1-36 RightDistributivityFactoringWithGivenObjects
-      7.1-37 AddRightDistributivityFactoringWithGivenObjects
-    7.2 [33X[0;0YBraided Monoidal Categories[133X
-      7.2-1 Braiding
-      7.2-2 BraidingWithGivenTensorProducts
-      7.2-3 AddBraidingWithGivenTensorProducts
-      7.2-4 BraidingInverse
-      7.2-5 BraidingInverseWithGivenTensorProducts
-      7.2-6 AddBraidingInverseWithGivenTensorProducts
-    7.3 [33X[0;0YSymmetric Monoidal Categories[133X
-    7.4 [33X[0;0YSymmetric Closed Monoidal Categories[133X
-      7.4-1 InternalHomOnObjects
-      7.4-2 AddInternalHomOnObjects
-      7.4-3 InternalHomOnMorphisms
-      7.4-4 InternalHomOnMorphismsWithGivenInternalHoms
-      7.4-5 AddInternalHomOnMorphismsWithGivenInternalHoms
-      7.4-6 EvaluationMorphism
-      7.4-7 EvaluationMorphismWithGivenSource
-      7.4-8 AddEvaluationMorphismWithGivenSource
-      7.4-9 CoevaluationMorphism
-      7.4-10 CoevaluationMorphismWithGivenRange
-      7.4-11 AddCoevaluationMorphismWithGivenRange
-      7.4-12 TensorProductToInternalHomAdjunctionMap
-      7.4-13 AddTensorProductToInternalHomAdjunctionMap
-      7.4-14 InternalHomToTensorProductAdjunctionMap
-      7.4-15 AddInternalHomToTensorProductAdjunctionMap
-      7.4-16 MonoidalPreComposeMorphism
-      7.4-17 MonoidalPreComposeMorphismWithGivenObjects
-      7.4-18 AddMonoidalPreComposeMorphismWithGivenObjects
-      7.4-19 MonoidalPostComposeMorphism
-      7.4-20 MonoidalPostComposeMorphismWithGivenObjects
-      7.4-21 AddMonoidalPostComposeMorphismWithGivenObjects
-      7.4-22 DualOnObjects
-      7.4-23 AddDualOnObjects
-      7.4-24 DualOnMorphisms
-      7.4-25 DualOnMorphismsWithGivenDuals
-      7.4-26 AddDualOnMorphismsWithGivenDuals
-      7.4-27 EvaluationForDual
-      7.4-28 EvaluationForDualWithGivenTensorProduct
-      7.4-29 AddEvaluationForDualWithGivenTensorProduct
-      7.4-30 CoevaluationForDual
-      7.4-31 CoevaluationForDualWithGivenTensorProduct
-      7.4-32 AddCoevaluationForDualWithGivenTensorProduct
-      7.4-33 MorphismToBidual
-      7.4-34 MorphismToBidualWithGivenBidual
-      7.4-35 AddMorphismToBidualWithGivenBidual
-      7.4-36 TensorProductInternalHomCompatibilityMorphism
-      7.4-37 TensorProductInternalHomCompatibilityMorphismWithGivenObjects
-      7.4-38 AddTensorProductInternalHomCompatibilityMorphismWithGivenObjects
-      7.4-39 TensorProductDualityCompatibilityMorphism
-      7.4-40 TensorProductDualityCompatibilityMorphismWithGivenObjects
-      7.4-41 AddTensorProductDualityCompatibilityMorphismWithGivenObjects
-      7.4-42 MorphismFromTensorProductToInternalHom
-      7.4-43 MorphismFromTensorProductToInternalHomWithGivenObjects
-      7.4-44 AddMorphismFromTensorProductToInternalHomWithGivenObjects
-      7.4-45 IsomorphismFromTensorProductToInternalHom
-      7.4-46 AddIsomorphismFromTensorProductToInternalHom
-      7.4-47 MorphismFromInternalHomToTensorProduct
-      7.4-48 MorphismFromInternalHomToTensorProductWithGivenObjects
-      7.4-49 AddMorphismFromInternalHomToTensorProductWithGivenObjects
-      7.4-50 IsomorphismFromInternalHomToTensorProduct
-      7.4-51 AddIsomorphismFromInternalHomToTensorProduct
-      7.4-52 TraceMap
-      7.4-53 AddTraceMap
-      7.4-54 RankMorphism
-      7.4-55 AddRankMorphism
-      7.4-56 IsomorphismFromDualToInternalHom
-      7.4-57 AddIsomorphismFromDualToInternalHom
-      7.4-58 IsomorphismFromInternalHomToDual
-      7.4-59 AddIsomorphismFromInternalHomToDual
-      7.4-60 UniversalPropertyOfDual
-      7.4-61 AddUniversalPropertyOfDual
-      7.4-62 LambdaIntroduction
-      7.4-63 AddLambdaIntroduction
-      7.4-64 LambdaElimination
-      7.4-65 AddLambdaElimination
-      7.4-66 IsomorphismFromObjectToInternalHom
-      7.4-67 IsomorphismFromObjectToInternalHomWithGivenInternalHom
-      7.4-68 AddIsomorphismFromObjectToInternalHomWithGivenInternalHom
-      7.4-69 IsomorphismFromInternalHomToObject
-      7.4-70 IsomorphismFromInternalHomToObjectWithGivenInternalHom
-      7.4-71 AddIsomorphismFromInternalHomToObjectWithGivenInternalHom
-    7.5 [33X[0;0YRigid Symmetric Closed Monoidal Categories[133X
-      7.5-1 TensorProductInternalHomCompatibilityMorphismInverse
-      7.5-2 TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects
-      7.5-3 AddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects
-      7.5-4 MorphismFromBidual
-      7.5-5 MorphismFromBidualWithGivenBidual
-      7.5-6 AddMorphismFromBidualWithGivenBidual
-  8 [33X[0;0YAdd Functions[133X
-    8.1 [33X[0;0YFunctions Installed by Add[133X
-    8.2 [33X[0;0YAdd Method[133X
-    8.3 [33X[0;0YInstallAdd Function[133X
-    8.4 [33X[0;0YInstall All Adds[133X
-    8.5 [33X[0;0YPrepare functions[133X
-      8.5-1 CAPOperationPrepareFunction
-      8.5-2 CAPAddPrepareFunction
-      8.5-3 ListCAPPrepareFunctions
-  9 [33X[0;0YManaging Derived Methods[133X
-    9.1 [33X[0;0YInfo Class[133X
-      9.1-1 DerivationInfo
-      9.1-2 ActivateDerivationInfo
-      9.1-3 DeactivateDerivationInfo
-    9.2 [33X[0;0YDerivation Objects[133X
-      9.2-1 IsDerivedMethod
-      9.2-2 MakeDerivation
-      9.2-3 DerivationName
-      9.2-4 DerivationWeight
-      9.2-5 DerivationFunctionsWithExtraFilters
-      9.2-6 CategoryFilter
-      9.2-7 IsApplicableToCategory
-      9.2-8 TargetOperation
-      9.2-9 UsedOperations
-      9.2-10 UsedOperationMultiples
-      9.2-11 UsedOperationsWithMultiples
-      9.2-12 InstallDerivationForCategory
-      9.2-13 DerivationResultWeight
-    9.3 [33X[0;0YDerivation Graphs[133X
-      9.3-1 IsDerivedMethodGraph
-      9.3-2 MakeDerivationGraph
-      9.3-3 AddOperationsToDerivationGraph
-      9.3-4 AddDerivation
-      9.3-5 AddDerivation
-      9.3-6 AddDerivation
-      9.3-7 AddDerivation
-      9.3-8 AddDerivationPair
-      9.3-9 AddDerivationPair
-      9.3-10 AddDerivationPair
-      9.3-11 AddDerivationPair
-      9.3-12 AddDerivationToCAP
-      9.3-13 AddDerivationPairToCAP
-      9.3-14 AddWithGivenDerivationPairToCAP
-      9.3-15 Operations
-      9.3-16 DerivationsUsingOperation
-      9.3-17 DerivationsOfOperation
-    9.4 [33X[0;0YManaging Derivations in a Category[133X
-      9.4-1 IsOperationWeightList
-      9.4-2 MakeOperationWeightList
-      9.4-3 DerivationGraph
-      9.4-4 CategoryOfOperationWeightList
-      9.4-5 CurrentOperationWeight
-      9.4-6 OperationWeightUsingDerivation
-      9.4-7 DerivationOfOperation
-      9.4-8 InstallDerivationsUsingOperation
-      9.4-9 Reevaluate
-      9.4-10 Saturate
-      9.4-11 AddPrimitiveOperation
-      9.4-12 PrintDerivationTree
-      9.4-13 PrintTree
-      9.4-14 PrintTreeRec
-    9.5 [33X[0;0YMin Heaps for Strings[133X
-      9.5-1 IsStringMinHeap
-      9.5-2 StringMinHeap
-      9.5-3 Add
-      9.5-4 ExtractMin
-      9.5-5 DecreaseKey
-      9.5-6 IsEmptyHeap
-      9.5-7 HeapSize
-      9.5-8 Contains
-      9.5-9 Swap
-      9.5-10 Heapify
-  10 [33X[0;0YTechnical Details[133X
-    10.1 [33X[0;0YThe Category Cat[133X
-      10.1-1 ObjectCache
-      10.1-2 MorphismCache
-    10.2 [33X[0;0YInstall Functions for IsWellDefined[133X
-      10.2-1 InstallMethodWithToDoForIsWellDefined
-      10.2-2 InstallSetWithToDoForIsWellDefined
-      10.2-3 DeclareAttributeWithToDoForIsWellDefined
-      10.2-4 DeclareFamilyProperty
-      10.2-5 CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS
-      10.2-6 CAP_INTERNAL_MERGE_FILTER_LISTS
-      10.2-7 CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT
-      10.2-8 CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION
-      10.2-9 CAP_INTERNAL_MERGE_PRECONDITIONS_LIST
-      10.2-10 CachingStatistic
-      10.2-11 BrowseCachingStatistic
-  11 [33X[0;0YLimits and Colimits[133X
-    11.1 [33X[0;0YSpecification of Limits and Colimits[133X
-    11.2 [33X[0;0YEnhancing Limit Specifications[133X
-    11.3 [33X[0;0YValidating entries of a method name record which are part of a limit
+  7 [33X[0;0YAdd Functions[133X
+    7.1 [33X[0;0YFunctions Installed by Add[133X
+    7.2 [33X[0;0YAdd Method[133X
+    7.3 [33X[0;0YInstallAdd Function[133X
+    7.4 [33X[0;0YInstall All Adds[133X
+    7.5 [33X[0;0YPrepare functions[133X
+      7.5-1 CAPOperationPrepareFunction
+      7.5-2 CAPAddPrepareFunction
+      7.5-3 ListCAPPrepareFunctions
+  8 [33X[0;0YManaging Derived Methods[133X
+    8.1 [33X[0;0YInfo Class[133X
+      8.1-1 DerivationInfo
+      8.1-2 ActivateDerivationInfo
+      8.1-3 DeactivateDerivationInfo
+    8.2 [33X[0;0YDerivation Objects[133X
+      8.2-1 IsDerivedMethod
+      8.2-2 MakeDerivation
+      8.2-3 DerivationName
+      8.2-4 DerivationWeight
+      8.2-5 DerivationFunctionsWithExtraFilters
+      8.2-6 CategoryFilter
+      8.2-7 IsApplicableToCategory
+      8.2-8 TargetOperation
+      8.2-9 UsedOperations
+      8.2-10 UsedOperationMultiples
+      8.2-11 UsedOperationsWithMultiples
+      8.2-12 InstallDerivationForCategory
+      8.2-13 DerivationResultWeight
+    8.3 [33X[0;0YDerivation Graphs[133X
+      8.3-1 IsDerivedMethodGraph
+      8.3-2 MakeDerivationGraph
+      8.3-3 AddOperationsToDerivationGraph
+      8.3-4 AddDerivation
+      8.3-5 AddDerivation
+      8.3-6 AddDerivation
+      8.3-7 AddDerivation
+      8.3-8 AddDerivationPair
+      8.3-9 AddDerivationPair
+      8.3-10 AddDerivationPair
+      8.3-11 AddDerivationPair
+      8.3-12 AddDerivationToCAP
+      8.3-13 AddDerivationPairToCAP
+      8.3-14 AddWithGivenDerivationPairToCAP
+      8.3-15 Operations
+      8.3-16 DerivationsUsingOperation
+      8.3-17 DerivationsOfOperation
+    8.4 [33X[0;0YManaging Derivations in a Category[133X
+      8.4-1 IsOperationWeightList
+      8.4-2 MakeOperationWeightList
+      8.4-3 DerivationGraph
+      8.4-4 CategoryOfOperationWeightList
+      8.4-5 CurrentOperationWeight
+      8.4-6 OperationWeightUsingDerivation
+      8.4-7 DerivationOfOperation
+      8.4-8 InstallDerivationsUsingOperation
+      8.4-9 Reevaluate
+      8.4-10 Saturate
+      8.4-11 AddPrimitiveOperation
+      8.4-12 PrintDerivationTree
+      8.4-13 PrintTree
+      8.4-14 PrintTreeRec
+    8.5 [33X[0;0YMin Heaps for Strings[133X
+      8.5-1 IsStringMinHeap
+      8.5-2 StringMinHeap
+      8.5-3 Add
+      8.5-4 ExtractMin
+      8.5-5 DecreaseKey
+      8.5-6 IsEmptyHeap
+      8.5-7 HeapSize
+      8.5-8 Contains
+      8.5-9 Swap
+      8.5-10 Heapify
+  9 [33X[0;0YTechnical Details[133X
+    9.1 [33X[0;0YThe Category Cat[133X
+      9.1-1 ObjectCache
+      9.1-2 MorphismCache
+    9.2 [33X[0;0YInstall Functions for IsWellDefined[133X
+      9.2-1 InstallMethodWithToDoForIsWellDefined
+      9.2-2 InstallSetWithToDoForIsWellDefined
+      9.2-3 DeclareAttributeWithToDoForIsWellDefined
+      9.2-4 DeclareFamilyProperty
+      9.2-5 CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS
+      9.2-6 CAP_INTERNAL_MERGE_FILTER_LISTS
+      9.2-7 CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT
+      9.2-8 CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION
+      9.2-9 CAP_INTERNAL_MERGE_PRECONDITIONS_LIST
+      9.2-10 CachingStatistic
+      9.2-11 BrowseCachingStatistic
+  10 [33X[0;0YLimits and Colimits[133X
+    10.1 [33X[0;0YSpecification of Limits and Colimits[133X
+    10.2 [33X[0;0YEnhancing Limit Specifications[133X
+    10.3 [33X[0;0YValidating entries of a method name record which are part of a limit
     or colimit[133X
-  12 [33X[0;0YExamples and Tests[133X
-    12.1 [33X[0;0YFunctors[133X
-    12.2 [33X[0;0YHomomorphism structure[133X
-    12.3 [33X[0;0YSpectral Sequences[133X
-    12.4 [33X[0;0YLiftable[133X
-    12.5 [33X[0;0YMonoidal Categories[133X
-    12.6 [33X[0;0YOpposite category[133X
-    12.7 [33X[0;0YGeneralized Morphisms Category[133X
-    12.8 [33X[0;0YIsWellDefined[133X
-    12.9 [33X[0;0YKernel[133X
-    12.10 [33X[0;0YFiberProduct[133X
+  11 [33X[0;0YExamples and Tests[133X
+    11.1 [33X[0;0YFunctors[133X
+    11.2 [33X[0;0YHomomorphism structure[133X
+    11.3 [33X[0;0YSpectral Sequences[133X
+    11.4 [33X[0;0YLiftable[133X
+    11.5 [33X[0;0YMonoidal Categories[133X
+    11.6 [33X[0;0YOpposite category[133X
+    11.7 [33X[0;0YGeneralized Morphisms Category[133X
+    11.8 [33X[0;0YIsWellDefined[133X
+    11.9 [33X[0;0YKernel[133X
+    11.10 [33X[0;0YFiberProduct[133X
   
   
   [32X
