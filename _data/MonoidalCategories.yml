@@ -1,6 +1,6 @@
 name: MonoidalCategories
-version: 2019.06.06
-date: 06/06/2019
+version: 2019.06.07
+date: 07/06/2019
 description: Monoidal and monoidal (co)closed categories
 
 authors:
@@ -32,16 +32,18 @@ needed-pkgs:
       version: ">= 2019.01.16"
       url: "http://homalg-project.github.io/CAP_project/CAP/"
 
-www: https://homalg-project.github.io/CAP_project/MonoidalCategories
-readme: https://homalg-project.github.io/CAP_project/MonoidalCategoriesREADME.md
-packageinfo: https://homalg-project.github.io/CAP_project/MonoidalCategoriesPackageInfo.g
+www: http://homalg-project.github.io/CAP_project/MonoidalCategories/
+readme: http://homalg-project.github.io/CAP_project/MonoidalCategories/README
+packageinfo: http://homalg-project.github.io/CAP_project/MonoidalCategories/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/v2019.06.06/MonoidalCategories-2019.06.06.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2019.06.07/MonoidalCategories-2019.06.07.tar.gz
+    - name: .zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2019.06.07/MonoidalCategories-2019.06.07.zip
 
 abstract: ''
 
-status: dev
+status: deposited
 doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
