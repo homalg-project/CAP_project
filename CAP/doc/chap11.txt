@@ -81,15 +81,6 @@
   which  have  arbitrary  sources  but  the  same  common  range.  This can be
   expressed as follows:[133X
   
-  [4X[32X  Code  [32X[104X
-    [4Xrec([104X
-    [4X  object_specification := [ "fixedobject", "varobject" ],[104X
-    [4X  morphism_specification := [ [ 2, "varmorphism", 1 ] ],[104X
-    [4X  limit_object_name := "FiberProduct",[104X
-    [4X  colimit_object_name := "Pushout",[104X
-    [4X)[104X
-  [4X[32X[104X
-  
   [33X[0;0YNote  that  not  all  diagrams  which  can  be  expressed with the above are
   actually  supported.  For now, at most one unbound object (see below for the
   definition of "unbound") may be of type "varobject", and if there is such an

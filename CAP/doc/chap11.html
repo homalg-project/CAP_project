@@ -120,16 +120,6 @@
 </ul>
 <p>For example, a FiberProduct diagram consists of arbitrarily many morphisms which have arbitrary sources but the same common range. This can be expressed as follows:</p>
 
-
-<div class="example"><pre>
-rec(
-  object_specification := [ "fixedobject", "varobject" ],
-  morphism_specification := [ [ 2, "varmorphism", 1 ] ],
-  limit_object_name := "FiberProduct",
-  colimit_object_name := "Pushout",
-)
-</pre></div>
-
 <p>Note that not all diagrams which can be expressed with the above are actually supported. For now, at most one unbound object (see below for the definition of "unbound") may be of type "varobject", and if there is such an unbound object it must be the last one among the unbound objects. Similarly, at most one unbound morphism may be of type "varmorphism", and if there is such an unbound morphism it must be the last one among the unbound morphisms.</p>
 
 <p><a id="X82DEA53C869D2324" name="X82DEA53C869D2324"></a></p>
