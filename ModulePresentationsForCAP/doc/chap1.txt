@@ -6,7 +6,7 @@
   
   [1X1.1-1 FunctorStandardModuleLeft[101X
   
-  [29X[2XFunctorStandardModuleLeft[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XFunctorStandardModuleLeft[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
   
   [33X[0;0YThe  argument is a homalg ring [23XR[123X. The output is a functor which takes a left
@@ -14,7 +14,7 @@
   
   [1X1.1-2 FunctorStandardModuleRight[101X
   
-  [29X[2XFunctorStandardModuleRight[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XFunctorStandardModuleRight[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
   
   [33X[0;0YThe argument is a homalg ring [23XR[123X. The output is a functor which takes a right
@@ -22,7 +22,7 @@
   
   [1X1.1-3 FunctorGetRidOfZeroGeneratorsLeft[101X
   
-  [29X[2XFunctorGetRidOfZeroGeneratorsLeft[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XFunctorGetRidOfZeroGeneratorsLeft[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
   
   [33X[0;0YThe  argument is a homalg ring [23XR[123X. The output is a functor which takes a left
@@ -30,7 +30,7 @@
   
   [1X1.1-4 FunctorGetRidOfZeroGeneratorsRight[101X
   
-  [29X[2XFunctorGetRidOfZeroGeneratorsRight[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XFunctorGetRidOfZeroGeneratorsRight[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
   
   [33X[0;0YThe argument is a homalg ring [23XR[123X. The output is a functor which takes a right
@@ -38,7 +38,7 @@
   
   [1X1.1-5 FunctorLessGeneratorsLeft[101X
   
-  [29X[2XFunctorLessGeneratorsLeft[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XFunctorLessGeneratorsLeft[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
   
   [33X[0;0YThe  argument  is  a homalg ring [23XR[123X. The output is functor which takes a left
@@ -46,7 +46,7 @@
   
   [1X1.1-6 FunctorLessGeneratorsRight[101X
   
-  [29X[2XFunctorLessGeneratorsRight[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XFunctorLessGeneratorsRight[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
   
   [33X[0;0YThe  argument  is a homalg ring [23XR[123X. The output is functor which takes a right
@@ -54,7 +54,7 @@
   
   [1X1.1-7 FunctorDualLeft[101X
   
-  [29X[2XFunctorDualLeft[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XFunctorDualLeft[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
   
   [33X[0;0YThe  argument is a homalg ring [23XR[123X that has an involution function. The output
@@ -63,7 +63,7 @@
   
   [1X1.1-8 FunctorDualRight[101X
   
-  [29X[2XFunctorDualRight[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XFunctorDualRight[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
   
   [33X[0;0YThe  argument is a homalg ring [23XR[123X that has an involution function. The output
@@ -72,7 +72,7 @@
   
   [1X1.1-9 FunctorDoubleDualLeft[101X
   
-  [29X[2XFunctorDoubleDualLeft[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XFunctorDoubleDualLeft[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
   
   [33X[0;0YThe  argument is a homalg ring [23XR[123X that has an involution function. The output
@@ -81,7 +81,7 @@
   
   [1X1.1-10 FunctorDoubleDualRight[101X
   
-  [29X[2XFunctorDoubleDualRight[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XFunctorDoubleDualRight[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
   
   [33X[0;0YThe  argument is a homalg ring [23XR[123X that has an involution function. The output
@@ -93,7 +93,7 @@
   
   [1X1.2-1 IsLeftOrRightPresentationMorphism[101X
   
-  [29X[2XIsLeftOrRightPresentationMorphism[102X( [3Xobject[103X ) [32X filter
+  [33X[1;0Y[29X[2XIsLeftOrRightPresentationMorphism[102X( [3Xobject[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
   
   [33X[0;0YThe   GAP   category   of  morphisms  in  the  category  of  left  or  right
@@ -101,21 +101,21 @@
   
   [1X1.2-2 IsLeftPresentationMorphism[101X
   
-  [29X[2XIsLeftPresentationMorphism[102X( [3Xobject[103X ) [32X filter
+  [33X[1;0Y[29X[2XIsLeftPresentationMorphism[102X( [3Xobject[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
   
   [33X[0;0YThe GAP category of morphisms in the category of left presentations.[133X
   
   [1X1.2-3 IsRightPresentationMorphism[101X
   
-  [29X[2XIsRightPresentationMorphism[102X( [3Xobject[103X ) [32X filter
+  [33X[1;0Y[29X[2XIsRightPresentationMorphism[102X( [3Xobject[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
   
   [33X[0;0YThe GAP category of morphisms in the category of right presentations.[133X
   
   [1X1.2-4 IsLeftOrRightPresentation[101X
   
-  [29X[2XIsLeftOrRightPresentation[102X( [3Xobject[103X ) [32X filter
+  [33X[1;0Y[29X[2XIsLeftOrRightPresentation[102X( [3Xobject[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
   
   [33X[0;0YThe  GAP  category of objects in the category of left presentations or right
@@ -123,14 +123,14 @@
   
   [1X1.2-5 IsLeftPresentation[101X
   
-  [29X[2XIsLeftPresentation[102X( [3Xobject[103X ) [32X filter
+  [33X[1;0Y[29X[2XIsLeftPresentation[102X( [3Xobject[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
   
   [33X[0;0YThe GAP category of objects in the category of left presentations.[133X
   
   [1X1.2-6 IsRightPresentation[101X
   
-  [29X[2XIsRightPresentation[102X( [3Xobject[103X ) [32X filter
+  [33X[1;0Y[29X[2XIsRightPresentation[102X( [3Xobject[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
   
   [33X[0;0YThe GAP category of objects in the category of right presentations.[133X
@@ -140,7 +140,7 @@
   
   [1X1.3-1 PresentationMorphism[101X
   
-  [29X[2XPresentationMorphism[102X( [3XA[103X, [3XM[103X, [3XB[103X ) [32X operation
+  [33X[1;0Y[29X[2XPresentationMorphism[102X( [3XA[103X, [3XM[103X, [3XB[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A,B)[123X[133X
   
   [33X[0;0YThe  arguments  are  an object [23XA[123X, a homalg matrix [23XM[123X, and another object [23XB[123X. [23XA[123X
@@ -151,7 +151,7 @@
   
   [1X1.3-2 AsMorphismBetweenFreeLeftPresentations[101X
   
-  [29X[2XAsMorphismBetweenFreeLeftPresentations[102X( [3Xm[103X ) [32X attribute
+  [33X[1;0Y[29X[2XAsMorphismBetweenFreeLeftPresentations[102X( [3Xm[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(F^r,F^c)[123X[133X
   
   [33X[0;0YThe  argument is a homalg matrix [23Xm[123X. The output is a morphism [23XF^r \rightarrow
@@ -161,7 +161,7 @@
   
   [1X1.3-3 AsMorphismBetweenFreeRightPresentations[101X
   
-  [29X[2XAsMorphismBetweenFreeRightPresentations[102X( [3Xm[103X ) [32X attribute
+  [33X[1;0Y[29X[2XAsMorphismBetweenFreeRightPresentations[102X( [3Xm[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(F^c,F^r)[123X[133X
   
   [33X[0;0YThe  argument is a homalg matrix [23Xm[123X. The output is a morphism [23XF^c \rightarrow
@@ -171,7 +171,7 @@
   
   [1X1.3-4 AsLeftPresentation[101X
   
-  [29X[2XAsLeftPresentation[102X( [3XM[103X ) [32X operation
+  [33X[1;0Y[29X[2XAsLeftPresentation[102X( [3XM[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
   [33X[0;0YThe  argument is a homalg matrix [23XM[123X over a ring [23XR[123X. The output is an object in
@@ -180,7 +180,7 @@
   
   [1X1.3-5 AsRightPresentation[101X
   
-  [29X[2XAsRightPresentation[102X( [3XM[103X ) [32X operation
+  [33X[1;0Y[29X[2XAsRightPresentation[102X( [3XM[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
   [33X[0;0YThe  argument is a homalg matrix [23XM[123X over a ring [23XR[123X. The output is an object in
@@ -189,7 +189,7 @@
   
   [1X1.3-6 AsLeftOrRightPresentation[101X
   
-  [29X[2XAsLeftOrRightPresentation[102X( [3XM[103X, [3Xl[103X ) [32X function
+  [33X[1;0Y[29X[2XAsLeftOrRightPresentation[102X( [3XM[103X, [3Xl[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
   [33X[0;0YThe  arguments  are  a  homalg  matrix  [23XM[123X and a boolean [23Xl[123X. If [23Xl[123X is [10Xtrue[110X, the
@@ -199,7 +199,7 @@
   
   [1X1.3-7 FreeLeftPresentation[101X
   
-  [29X[2XFreeLeftPresentation[102X( [3Xr[103X, [3XR[103X ) [32X operation
+  [33X[1;0Y[29X[2XFreeLeftPresentation[102X( [3Xr[103X, [3XR[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
   [33X[0;0YThe  arguments  are a non-negative integer [23Xr[123X and a homalg ring [23XR[123X. The output
@@ -208,7 +208,7 @@
   
   [1X1.3-8 FreeRightPresentation[101X
   
-  [29X[2XFreeRightPresentation[102X( [3Xr[103X, [3XR[103X ) [32X operation
+  [33X[1;0Y[29X[2XFreeRightPresentation[102X( [3Xr[103X, [3XR[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
   [33X[0;0YThe  arguments  are a non-negative integer [23Xr[123X and a homalg ring [23XR[123X. The output
@@ -217,7 +217,7 @@
   
   [1X1.3-9 UnderlyingMatrix[101X
   
-  [29X[2XUnderlyingMatrix[102X( [3XA[103X ) [32X attribute
+  [33X[1;0Y[29X[2XUnderlyingMatrix[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya homalg matrix[133X
   
   [33X[0;0YThe  argument  is an object [23XA[123X in the category of left or right presentations
@@ -225,7 +225,7 @@
   
   [1X1.3-10 UnderlyingHomalgRing[101X
   
-  [29X[2XUnderlyingHomalgRing[102X( [3XA[103X ) [32X attribute
+  [33X[1;0Y[29X[2XUnderlyingHomalgRing[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya homalg ring[133X
   
   [33X[0;0YThe  argument  is an object [23XA[123X in the category of left or right presentations
@@ -233,7 +233,7 @@
   
   [1X1.3-11 Annihilator[101X
   
-  [29X[2XAnnihilator[102X( [3XA[103X ) [32X attribute
+  [33X[1;0Y[29X[2XAnnihilator[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(I, F)[123X[133X
   
   [33X[0;0YThe  argument is an object [23XA[123X in the category of left or right presentations.
@@ -243,7 +243,7 @@
   
   [1X1.3-12 LeftPresentations[101X
   
-  [29X[2XLeftPresentations[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XLeftPresentations[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya category[133X
   
   [33X[0;0YThe  argument  is  a  homalg ring [23XR[123X. The output is the category of free left
@@ -251,7 +251,7 @@
   
   [1X1.3-13 RightPresentations[101X
   
-  [29X[2XRightPresentations[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XRightPresentations[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya category[133X
   
   [33X[0;0YThe  argument  is  a homalg ring [23XR[123X. The output is the category of free right
@@ -262,7 +262,7 @@
   
   [1X1.4-1 UnderlyingHomalgRing[101X
   
-  [29X[2XUnderlyingHomalgRing[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XUnderlyingHomalgRing[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya homalg ring[133X
   
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha[123X  in  the  category  of  left or right
@@ -270,7 +270,7 @@
   
   [1X1.4-2 UnderlyingMatrix[101X
   
-  [29X[2XUnderlyingMatrix[102X( [3Xalpha[103X ) [32X attribute
+  [33X[1;0Y[29X[2XUnderlyingMatrix[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya homalg matrix[133X
   
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha[123X  in  the  category  of  left or right
@@ -281,7 +281,7 @@
   
   [1X1.5-1 StandardGeneratorMorphism[101X
   
-  [29X[2XStandardGeneratorMorphism[102X( [3XA[103X, [3Xi[103X ) [32X operation
+  [33X[1;0Y[29X[2XStandardGeneratorMorphism[102X( [3XA[103X, [3Xi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(F, A)[123X[133X
   
   [33X[0;0YThe  argument  is an object [23XA[123X in the category of left or right presentations
@@ -291,7 +291,7 @@
   
   [1X1.5-2 CoverByFreeModule[101X
   
-  [29X[2XCoverByFreeModule[102X( [3XA[103X ) [32X attribute
+  [33X[1;0Y[29X[2XCoverByFreeModule[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(F,A)[123X[133X
   
   [33X[0;0YThe  argument is an object [23XA[123X in the category of left or right presentations.
@@ -303,7 +303,7 @@
   
   [1X1.6-1 NaturalIsomorphismFromIdentityToStandardModuleLeft[101X
   
-  [29X[2XNaturalIsomorphismFromIdentityToStandardModuleLeft[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XNaturalIsomorphismFromIdentityToStandardModuleLeft[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya      natural      transformation     [23X\mathrm{Id}     \rightarrow
             \mathrm{StandardModuleLeft}[123X[133X
   
@@ -312,7 +312,7 @@
   
   [1X1.6-2 NaturalIsomorphismFromIdentityToStandardModuleRight[101X
   
-  [29X[2XNaturalIsomorphismFromIdentityToStandardModuleRight[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XNaturalIsomorphismFromIdentityToStandardModuleRight[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya      natural      transformation     [23X\mathrm{Id}     \rightarrow
             \mathrm{StandardModuleRight}[123X[133X
   
@@ -321,7 +321,7 @@
   
   [1X1.6-3 NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsLeft[101X
   
-  [29X[2XNaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsLeft[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XNaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsLeft[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya      natural      transformation     [23X\mathrm{Id}     \rightarrow
             \mathrm{GetRidOfZeroGeneratorsLeft}[123X[133X
   
@@ -331,7 +331,7 @@
   
   [1X1.6-4 NaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsRight[101X
   
-  [29X[2XNaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsRight[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XNaturalIsomorphismFromIdentityToGetRidOfZeroGeneratorsRight[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya      natural      transformation     [23X\mathrm{Id}     \rightarrow
             \mathrm{GetRidOfZeroGeneratorsRight}[123X[133X
   
@@ -341,7 +341,7 @@
   
   [1X1.6-5 NaturalIsomorphismFromIdentityToLessGeneratorsLeft[101X
   
-  [29X[2XNaturalIsomorphismFromIdentityToLessGeneratorsLeft[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XNaturalIsomorphismFromIdentityToLessGeneratorsLeft[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya      natural      transformation     [23X\mathrm{Id}     \rightarrow
             \mathrm{LessGeneratorsLeft}[123X[133X
   
@@ -350,7 +350,7 @@
   
   [1X1.6-6 NaturalIsomorphismFromIdentityToLessGeneratorsRight[101X
   
-  [29X[2XNaturalIsomorphismFromIdentityToLessGeneratorsRight[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XNaturalIsomorphismFromIdentityToLessGeneratorsRight[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya      natural      transformation     [23X\mathrm{Id}     \rightarrow
             \mathrm{LessGeneratorsRight}[123X[133X
   
@@ -359,7 +359,7 @@
   
   [1X1.6-7 NaturalTransformationFromIdentityToDoubleDualLeft[101X
   
-  [29X[2XNaturalTransformationFromIdentityToDoubleDualLeft[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XNaturalTransformationFromIdentityToDoubleDualLeft[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya      natural      transformation     [23X\mathrm{Id}     \rightarrow
             \mathrm{FunctorDoubleDualLeft}[123X[133X
   
@@ -368,7 +368,7 @@
   
   [1X1.6-8 NaturalTransformationFromIdentityToDoubleDualRight[101X
   
-  [29X[2XNaturalTransformationFromIdentityToDoubleDualRight[102X( [3XR[103X ) [32X attribute
+  [33X[1;0Y[29X[2XNaturalTransformationFromIdentityToDoubleDualRight[102X( [3XR[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya      natural      transformation     [23X\mathrm{Id}     \rightarrow
             \mathrm{FunctorDoubleDualRight}[123X[133X
   
