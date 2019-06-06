@@ -76,7 +76,7 @@ Persons := [
 PackageWWWHome  := "http://homalg-project.github.io/CAP_project/MonoidalCategories/",
 
 #SupportEmail   := "TODO",
-ArchiveURL     := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-", ~.Version, "/ModulePresentationsForCAP-", ~.Version ),
+ArchiveURL     := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-", ~.Version, "/MonoidalCategories-", ~.Version ),
 README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
 PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 
