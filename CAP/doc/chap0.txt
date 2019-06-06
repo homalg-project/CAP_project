@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2018.08.31
+                                   2019.06.05
   
   
-                                 31 August 2018
+                                  5 June 2019
   
   
                                Sebastian Gutsche
@@ -62,6 +62,7 @@
       1.1-3 IsCapCategoryObject
       1.1-4 IsCapCategoryMorphism
       1.1-5 IsCapCategoryTwoCell
+      1.1-6 AddCategoricalProperty
     1.2 [33X[0;0YConstructor[133X
       1.2-1 CreateCapCategory
       1.2-2 CreateCapCategory
@@ -80,41 +81,63 @@
       1.5-2 CheckConstructivenessOfCategory
     1.6 [33X[0;0YWell-Definedness of Cells[133X
       1.6-1 IsWellDefined
-    1.7 [33X[0;0YType check[133X
-      1.7-1 DisableBasicOperationTypeCheck
-    1.8 [33X[0;0YDisable add in functions[133X
-      1.8-1 DisableAddForCategoricalOperations
-  2 [33X[0;0YCategory of Categories[133X
-    2.1 [33X[0;0YThe Category Cat[133X
-      2.1-1 CapCat
-    2.2 [33X[0;0YCategories[133X
-      2.2-1 IsCapCategoryAsCatObject
-      2.2-2 IsCapFunctor
-      2.2-3 IsCapNaturalTransformation
-    2.3 [33X[0;0YConstructors[133X
-      2.3-1 AsCatObject
-      2.3-2 AsCapCategory
-    2.4 [33X[0;0YFunctors[133X
-      2.4-1 CapFunctor
-      2.4-2 AddObjectFunction
-      2.4-3 FunctorObjectOperation
-      2.4-4 AddMorphismFunction
-      2.4-5 FunctorMorphismOperation
-      2.4-6 ApplyFunctor
-      2.4-7 InstallFunctor
-      2.4-8 IdentityFunctor
-      2.4-9 FunctorCanonicalizeZeroObjects
-      2.4-10 NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects
-      2.4-11 FunctorCanonicalizeZeroMorphisms
-      2.4-12 NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms
-    2.5 [33X[0;0YNatural transformations[133X
-      2.5-1 Name
-      2.5-2 NaturalTransformation
-      2.5-3 AddNaturalTransformationFunction
-      2.5-4 ApplyNaturalTransformation
-      2.5-5 InstallNaturalTransformation
-      2.5-6 HorizontalPreComposeNaturalTransformationWithFunctor
-      2.5-7 HorizontalPreComposeFunctorWithNaturalTransformation
+    1.7 [33X[0;0YCaching[133X
+      1.7-1 SetCachingOfCategory
+      1.7-2 SetCachingOfCategoryWeak
+      1.7-3 SetDefaultCaching
+    1.8 [33X[0;0YSanity checks[133X
+      1.8-1 DisableInputSanityChecks
+    1.9 [33X[0;0YEnable automatic calls of [10XAdd[110X[133X
+      1.9-1 EnableAddForCategoricalOperations
+    1.10 [33X[0;0YPerformance tweaks[133X
+  2 [33X[0;0YObjects[133X
+    2.1 [33X[0;0YAttributes for the Type of Objects[133X
+      2.1-1 CapCategory
+    2.2 [33X[0;0YEquality for Objects[133X
+      2.2-1 IsEqualForObjects
+      2.2-2 AddIsEqualForObjects
+    2.3 [33X[0;0YCategorical Properties of Objects[133X
+      2.3-1 AddIsProjective
+      2.3-2 AddIsInjective
+      2.3-3 AddIsTerminal
+      2.3-4 AddIsInitial
+      2.3-5 IsZeroForObjects
+      2.3-6 AddIsZeroForObjects
+    2.4 [33X[0;0YRandom Objects[133X
+      2.4-1 RandomObjectByInteger
+      2.4-2 AddRandomObjectByInteger
+      2.4-3 RandomObjectByList
+      2.4-4 AddRandomObjectByList
+      2.4-5 RandomObject
+    2.5 [33X[0;0YTool functions for caches[133X
+      2.5-1 IsEqualForCacheForObjects
+      2.5-2 AddIsEqualForCacheForObjects
+    2.6 [33X[0;0YAdding Objects to a Category[133X
+      2.6-1 Add
+      2.6-2 AddObject
+      2.6-3 AddObjectRepresentation
+      2.6-4 ObjectifyObjectForCAPWithAttributes
+    2.7 [33X[0;0YWell-Definedness of Objects[133X
+      2.7-1 IsWellDefinedForObjects
+      2.7-2 AddIsWellDefinedForObjects
+    2.8 [33X[0;0YProjectives[133X
+      2.8-1 SomeProjectiveObject
+      2.8-2 EpimorphismFromSomeProjectiveObject
+      2.8-3 EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject
+      2.8-4 ProjectiveLift
+      2.8-5 AddSomeProjectiveObject
+      2.8-6 AddEpimorphismFromSomeProjectiveObject
+      2.8-7 AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject
+      2.8-8 AddProjectiveLift
+    2.9 [33X[0;0YInjectives[133X
+      2.9-1 SomeInjectiveObject
+      2.9-2 MonomorphismIntoSomeInjectiveObject
+      2.9-3 MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject
+      2.9-4 InjectiveColift
+      2.9-5 AddSomeInjectiveObject
+      2.9-6 AddMonomorphismIntoSomeInjectiveObject
+      2.9-7 AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject
+      2.9-8 AddInjectiveColift
   3 [33X[0;0YMorphisms[133X
     3.1 [33X[0;0YAttributes for the Type of Morphisms[133X
       3.1-1 CapCategory
@@ -128,130 +151,163 @@
       3.2-5 AddIsSplitEpimorphism
       3.2-6 AddIsOne
       3.2-7 AddIsIdempotent
-    3.3 [33X[0;0YNon-Categorical Properties of Morphisms[133X
-      3.3-1 IsIdenticalToIdentityMorphism
-      3.3-2 AddIsIdenticalToIdentityMorphism
-      3.3-3 IsIdenticalToZeroMorphism
-      3.3-4 AddIsIdenticalToZeroMorphism
-      3.3-5 AddIsEndomorphism
-      3.3-6 AddIsAutomorphism
-    3.4 [33X[0;0YAdding Morphisms to a Category[133X
-      3.4-1 AddMorphismRepresentation
-      3.4-2 ObjectifyMorphismForCAPWithAttributes
-    3.5 [33X[0;0YEquality and Congruence for Morphisms[133X
-      3.5-1 IsCongruentForMorphisms
-      3.5-2 AddIsCongruentForMorphisms
-      3.5-3 IsEqualForMorphisms
-      3.5-4 AddIsEqualForMorphisms
-      3.5-5 IsEqualForMorphismsOnMor
-      3.5-6 AddIsEqualForMorphismsOnMor
-    3.6 [33X[0;0YBasic Operations for Morphisms in Ab-Categories[133X
-      3.6-1 IsZeroForMorphisms
-      3.6-2 AddIsZeroForMorphisms
-      3.6-3 AdditionForMorphisms
-      3.6-4 AddAdditionForMorphisms
-      3.6-5 SubtractionForMorphisms
-      3.6-6 AddSubtractionForMorphisms
-      3.6-7 AdditiveInverseForMorphisms
-      3.6-8 AddAdditiveInverseForMorphisms
-      3.6-9 MultiplyWithElementOfCommutativeRingForMorphisms
-      3.6-10 AddMultiplyWithElementOfCommutativeRingForMorphisms
-      3.6-11 ZeroMorphism
-      3.6-12 AddZeroMorphism
-    3.7 [33X[0;0YSubobject and Factorobject Operations[133X
-      3.7-1 IsEqualAsSubobjects
-      3.7-2 AddIsEqualAsSubobjects
-      3.7-3 IsEqualAsFactorobjects
-      3.7-4 AddIsEqualAsFactorobjects
-      3.7-5 IsDominating
-      3.7-6 AddIsDominating
-      3.7-7 IsCodominating
-      3.7-8 AddIsCodominating
-    3.8 [33X[0;0YIdentity Morphism and Composition of Morphisms[133X
-      3.8-1 IdentityMorphism
-      3.8-2 AddIdentityMorphism
-      3.8-3 PreCompose
-      3.8-4 PreCompose
-      3.8-5 AddPreCompose
-      3.8-6 PostCompose
-      3.8-7 PostCompose
-      3.8-8 AddPostCompose
-    3.9 [33X[0;0YWell-Definedness of Morphisms[133X
-      3.9-1 IsWellDefinedForMorphisms
-      3.9-2 AddIsWellDefinedForMorphisms
-    3.10 [33X[0;0YBasic Operations for Morphisms in Abelian Categories[133X
-      3.10-1 LiftAlongMonomorphism
-      3.10-2 AddLiftAlongMonomorphism
-      3.10-3 ColiftAlongEpimorphism
-      3.10-4 AddColiftAlongEpimorphism
-    3.11 [33X[0;0YLift/ Colift[133X
-      3.11-1 Lift
-      3.11-2 AddLift
-      3.11-3 Colift
-      3.11-4 AddColift
+    3.3 [33X[0;0YRandom Morphisms[133X
+      3.3-1 RandomMorphismWithFixedSourceByInteger
+      3.3-2 AddRandomMorphismWithFixedSourceByInteger
+      3.3-3 RandomMorphismWithFixedSourceByList
+      3.3-4 AddRandomMorphismWithFixedSourceByList
+      3.3-5 RandomMorphismWithFixedRangeByInteger
+      3.3-6 AddRandomMorphismWithFixedRangeByInteger
+      3.3-7 RandomMorphismWithFixedRangeByList
+      3.3-8 AddRandomMorphismWithFixedRangeByList
+      3.3-9 RandomMorphismWithFixedSourceAndRangeByInteger
+      3.3-10 AddRandomMorphismWithFixedSourceAndRangeByInteger
+      3.3-11 RandomMorphismWithFixedSourceAndRangeByList
+      3.3-12 AddRandomMorphismWithFixedSourceAndRangeByList
+      3.3-13 RandomMorphismByInteger
+      3.3-14 AddRandomMorphismByInteger
+      3.3-15 RandomMorphismByList
+      3.3-16 AddRandomMorphismByList
+      3.3-17 RandomMorphismWithFixedSource
+    3.4 [33X[0;0YNon-Categorical Properties of Morphisms[133X
+      3.4-1 IsIdenticalToIdentityMorphism
+      3.4-2 AddIsIdenticalToIdentityMorphism
+      3.4-3 IsIdenticalToZeroMorphism
+      3.4-4 AddIsIdenticalToZeroMorphism
+      3.4-5 AddIsEndomorphism
+      3.4-6 AddIsAutomorphism
+    3.5 [33X[0;0YAdding Morphisms to a Category[133X
+      3.5-1 Add
+      3.5-2 AddMorphism
+      3.5-3 AddMorphismRepresentation
+      3.5-4 ObjectifyMorphismForCAPWithAttributes
+    3.6 [33X[0;0YEquality and Congruence for Morphisms[133X
+      3.6-1 IsCongruentForMorphisms
+      3.6-2 AddIsCongruentForMorphisms
+      3.6-3 IsEqualForMorphisms
+      3.6-4 AddIsEqualForMorphisms
+      3.6-5 IsEqualForMorphismsOnMor
+      3.6-6 AddIsEqualForMorphismsOnMor
+    3.7 [33X[0;0YBasic Operations for Morphisms in Ab-Categories[133X
+      3.7-1 IsZeroForMorphisms
+      3.7-2 AddIsZeroForMorphisms
+      3.7-3 AdditionForMorphisms
+      3.7-4 AddAdditionForMorphisms
+      3.7-5 SubtractionForMorphisms
+      3.7-6 AddSubtractionForMorphisms
+      3.7-7 AdditiveInverseForMorphisms
+      3.7-8 AddAdditiveInverseForMorphisms
+      3.7-9 MultiplyWithElementOfCommutativeRingForMorphisms
+      3.7-10 AddMultiplyWithElementOfCommutativeRingForMorphisms
+      3.7-11 ZeroMorphism
+      3.7-12 AddZeroMorphism
+    3.8 [33X[0;0YSubobject and Factorobject Operations[133X
+      3.8-1 IsEqualAsSubobjects
+      3.8-2 AddIsEqualAsSubobjects
+      3.8-3 IsEqualAsFactorobjects
+      3.8-4 AddIsEqualAsFactorobjects
+      3.8-5 IsDominating
+      3.8-6 AddIsDominating
+      3.8-7 IsCodominating
+      3.8-8 AddIsCodominating
+    3.9 [33X[0;0YIdentity Morphism and Composition of Morphisms[133X
+      3.9-1 IdentityMorphism
+      3.9-2 AddIdentityMorphism
+      3.9-3 PreCompose
+      3.9-4 PreCompose
+      3.9-5 AddPreCompose
+      3.9-6 PostCompose
+      3.9-7 PostCompose
+      3.9-8 AddPostCompose
+    3.10 [33X[0;0YWell-Definedness of Morphisms[133X
+      3.10-1 IsWellDefinedForMorphisms
+      3.10-2 AddIsWellDefinedForMorphisms
+    3.11 [33X[0;0YLift/Colift[133X
+      3.11-1 LiftAlongMonomorphism
+      3.11-2 AddLiftAlongMonomorphism
+      3.11-3 ColiftAlongEpimorphism
+      3.11-4 AddColiftAlongEpimorphism
+      3.11-5 IsLiftableAlongMonomorphism
+      3.11-6 AddIsLiftableAlongMonomorphism
+      3.11-7 IsColiftableAlongEpimorphism
+      3.11-8 AddIsColiftableAlongEpimorphism
+      3.11-9 Lift
+      3.11-10 AddLift
+      3.11-11 Colift
+      3.11-12 AddColift
+      3.11-13 IsLiftable
+      3.11-14 AddIsLiftable
+      3.11-15 IsColiftable
+      3.11-16 AddIsColiftable
     3.12 [33X[0;0YInverses[133X
       3.12-1 AddInverse
     3.13 [33X[0;0YTool functions for caches[133X
       3.13-1 IsEqualForCacheForMorphisms
       3.13-2 AddIsEqualForCacheForMorphisms
-  4 [33X[0;0YObjects[133X
-    4.1 [33X[0;0YAttributes for the Type of Objects[133X
-      4.1-1 CapCategory
-    4.2 [33X[0;0YEquality for Objects[133X
-      4.2-1 IsEqualForObjects
-      4.2-2 AddIsEqualForObjects
-    4.3 [33X[0;0YCategorical Properties of Objects[133X
-      4.3-1 AddIsProjective
-      4.3-2 AddIsInjective
-      4.3-3 AddIsTerminal
-      4.3-4 AddIsInitial
-      4.3-5 IsZeroForObjects
-      4.3-6 AddIsZeroForObjects
-    4.4 [33X[0;0YTool functions for caches[133X
-      4.4-1 IsEqualForCacheForObjects
-      4.4-2 AddIsEqualForCacheForObjects
-    4.5 [33X[0;0YAdding Objects to a Category[133X
-      4.5-1 AddObjectRepresentation
-      4.5-2 ObjectifyObjectForCAPWithAttributes
-    4.6 [33X[0;0YWell-Definedness of Objects[133X
-      4.6-1 IsWellDefinedForObjects
-      4.6-2 AddIsWellDefinedForObjects
-    4.7 [33X[0;0YProjectives[133X
-      4.7-1 SomeProjectiveObject
-      4.7-2 EpimorphismFromSomeProjectiveObject
-      4.7-3 EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject
-      4.7-4 ProjectiveLift
-      4.7-5 AddSomeProjectiveObject
-      4.7-6 AddEpimorphismFromSomeProjectiveObject
-      4.7-7 AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject
-      4.7-8 AddProjectiveLift
-    4.8 [33X[0;0YInjectives[133X
-      4.8-1 SomeInjectiveObject
-      4.8-2 MonomorphismIntoSomeInjectiveObject
-      4.8-3 MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject
-      4.8-4 InjectiveColift
-      4.8-5 AddSomeInjectiveObject
-      4.8-6 AddMonomorphismIntoSomeInjectiveObject
-      4.8-7 AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject
-      4.8-8 AddInjectiveColift
-  5 [33X[0;0YCategory 2-Cells[133X
-    5.1 [33X[0;0YAttributes for the Type of 2-Cells[133X
-      5.1-1 Source
-      5.1-2 Range
-    5.2 [33X[0;0YIdentity 2-Cell and Composition of 2-Cells[133X
-      5.2-1 IdentityTwoCell
-      5.2-2 AddIdentityTwoCell
-      5.2-3 HorizontalPreCompose
-      5.2-4 AddHorizontalPreCompose
-      5.2-5 HorizontalPostCompose
-      5.2-6 AddHorizontalPostCompose
-      5.2-7 VerticalPreCompose
-      5.2-8 AddVerticalPreCompose
-      5.2-9 VerticalPostCompose
-      5.2-10 AddVerticalPostCompose
-    5.3 [33X[0;0YWell-Definedness for 2-Cells[133X
-      5.3-1 IsWellDefinedForTwoCells
-      5.3-2 AddIsWellDefinedForTwoCells
+    3.14 [33X[0;0YHomomorphism structures[133X
+      3.14-1 HomomorphismStructureOnObjects
+      3.14-2 AddHomomorphismStructureOnObjects
+      3.14-3 HomomorphismStructureOnMorphisms
+      3.14-4 HomomorphismStructureOnMorphismsWithGivenObjects
+      3.14-5 AddHomomorphismStructureOnMorphismsWithGivenObjects
+      3.14-6 DistinguishedObjectOfHomomorphismStructure
+      3.14-7 AddDistinguishedObjectOfHomomorphismStructure
+      3.14-8 InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure
+      3.14-9 AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure
+      3.14-10 InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism
+      3.14-11 AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism
+      3.14-12 SolveLinearSystemInAbCategory
+  4 [33X[0;0YCategory 2-Cells[133X
+    4.1 [33X[0;0YAttributes for the Type of 2-Cells[133X
+      4.1-1 Source
+      4.1-2 Range
+    4.2 [33X[0;0YIdentity 2-Cell and Composition of 2-Cells[133X
+      4.2-1 IdentityTwoCell
+      4.2-2 AddIdentityTwoCell
+      4.2-3 HorizontalPreCompose
+      4.2-4 AddHorizontalPreCompose
+      4.2-5 HorizontalPostCompose
+      4.2-6 AddHorizontalPostCompose
+      4.2-7 VerticalPreCompose
+      4.2-8 AddVerticalPreCompose
+      4.2-9 VerticalPostCompose
+      4.2-10 AddVerticalPostCompose
+    4.3 [33X[0;0YWell-Definedness for 2-Cells[133X
+      4.3-1 IsWellDefinedForTwoCells
+      4.3-2 AddIsWellDefinedForTwoCells
+  5 [33X[0;0YCategory of Categories[133X
+    5.1 [33X[0;0YThe Category Cat[133X
+      5.1-1 CapCat
+    5.2 [33X[0;0YCategories[133X
+      5.2-1 IsCapCategoryAsCatObject
+      5.2-2 IsCapFunctor
+      5.2-3 IsCapNaturalTransformation
+    5.3 [33X[0;0YConstructors[133X
+      5.3-1 AsCatObject
+      5.3-2 AsCapCategory
+    5.4 [33X[0;0YFunctors[133X
+      5.4-1 CapFunctor
+      5.4-2 CapFunctor
+      5.4-3 AddObjectFunction
+      5.4-4 FunctorObjectOperation
+      5.4-5 AddMorphismFunction
+      5.4-6 FunctorMorphismOperation
+      5.4-7 ApplyFunctor
+      5.4-8 InputSignature
+      5.4-9 InstallFunctor
+      5.4-10 IdentityFunctor
+      5.4-11 FunctorCanonicalizeZeroObjects
+      5.4-12 NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects
+      5.4-13 FunctorCanonicalizeZeroMorphisms
+      5.4-14 NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms
+    5.5 [33X[0;0YNatural transformations[133X
+      5.5-1 Name
+      5.5-2 NaturalTransformation
+      5.5-3 AddNaturalTransformationFunction
+      5.5-4 ApplyNaturalTransformation
+      5.5-5 InstallNaturalTransformation
+      5.5-6 HorizontalPreComposeNaturalTransformationWithFunctor
+      5.5-7 HorizontalPreComposeFunctorWithNaturalTransformation
   6 [33X[0;0YUniversal Objects[133X
     6.1 [33X[0;0YKernel[133X
       6.1-1 KernelObject
@@ -409,10 +465,6 @@
       6.8-13 DirectProductFunctorial
       6.8-14 DirectProductFunctorialWithGivenDirectProducts
       6.8-15 AddDirectProductFunctorialWithGivenDirectProducts
-      6.8-16 AssociatorRightToLeftOfDirectProductsWithGivenDirectProducts
-      6.8-17 AddAssociatorRightToLeftOfDirectProductsWithGivenDirectProducts
-      6.8-18 AssociatorLeftToRightOfDirectProductsWithGivenDirectProducts
-      6.8-19 AddAssociatorLeftToRightOfDirectProductsWithGivenDirectProducts
     6.9 [33X[0;0YEqualizer[133X
       6.9-1 Equalizer
       6.9-2 EqualizerOp
@@ -562,20 +614,6 @@
       6.14-24 AddAstrictionToCoimageWithGivenCoimage
       6.14-25 AddUniversalMorphismIntoCoimage
       6.14-26 AddUniversalMorphismIntoCoimageWithGivenCoimage
-    6.15 [33X[0;0YSubobject Classifier[133X
-      6.15-1 SubobjectClassifier
-      6.15-2 SubobjectClassifier
-      6.15-3 TruthMorphismIntoSubobjectClassifierWithGivenObjects
-      6.15-4 TruthMorphismIntoSubobjectClassifier
-      6.15-5 TruthMorphismIntoSubobjectClassifier
-      6.15-6 ClassifyingMorphismOfSubobject
-      6.15-7 ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier
-      6.15-8 SubobjectOfClassifyingMorphism
-      6.15-9 AddSubobjectClassifier
-      6.15-10 AddClassifyingMorphismOfSubobject
-      6.15-11 AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier
-      6.15-12 AddTruthMorphismIntoSubobjectClassifierWithGivenObjects
-      6.15-13 AddSubobjectOfClassifyingMorphism
   7 [33X[0;0YTensor Product and Internal Hom[133X
     7.1 [33X[0;0YMonoidal Categories[133X
       7.1-1 TensorProductOnObjects
@@ -702,73 +740,78 @@
       7.5-4 MorphismFromBidual
       7.5-5 MorphismFromBidualWithGivenBidual
       7.5-6 AddMorphismFromBidualWithGivenBidual
-  8 [33X[0;0YManaging Derived Methods[133X
-    8.1 [33X[0;0YInfo Class[133X
-      8.1-1 DerivationInfo
-      8.1-2 ActivateDerivationInfo
-      8.1-3 DeactivateDerivationInfo
-    8.2 [33X[0;0YDerivation Objects[133X
-      8.2-1 IsDerivedMethod
-      8.2-2 MakeDerivation
-      8.2-3 DerivationName
-      8.2-4 DerivationWeight
-      8.2-5 DerivationFunctionsWithExtraFilters
-      8.2-6 CategoryFilter
-      8.2-7 IsApplicableToCategory
-      8.2-8 TargetOperation
-      8.2-9 UsedOperations
-      8.2-10 UsedOperationMultiples
-      8.2-11 UsedOperationsWithMultiples
-      8.2-12 InstallDerivationForCategory
-      8.2-13 DerivationResultWeight
-    8.3 [33X[0;0YDerivation Graphs[133X
-      8.3-1 IsDerivedMethodGraph
-      8.3-2 MakeDerivationGraph
-      8.3-3 AddOperationsToDerivationGraph
-      8.3-4 AddDerivation
-      8.3-5 AddDerivation
-      8.3-6 AddDerivation
-      8.3-7 AddDerivation
-      8.3-8 AddDerivationPair
-      8.3-9 AddDerivationPair
-      8.3-10 AddDerivationPair
-      8.3-11 AddDerivationPair
-      8.3-12 AddDerivationToCAP
-      8.3-13 AddDerivationPairToCAP
-      8.3-14 AddWithGivenDerivationPairToCAP
-      8.3-15 Operations
-      8.3-16 DerivationsUsingOperation
-      8.3-17 DerivationsOfOperation
-    8.4 [33X[0;0YManaging Derivations in a Category[133X
-      8.4-1 IsOperationWeightList
-      8.4-2 MakeOperationWeightList
-      8.4-3 DerivationGraph
-      8.4-4 CategoryOfOperationWeightList
-      8.4-5 CurrentOperationWeight
-      8.4-6 OperationWeightUsingDerivation
-      8.4-7 DerivationOfOperation
-      8.4-8 InstallDerivationsUsingOperation
-      8.4-9 Reevaluate
-      8.4-10 AddPrimitiveOperation
-      8.4-11 PrintDerivationTree
-      8.4-12 PrintTree
-      8.4-13 PrintTreeRec
-    8.5 [33X[0;0YMin Heaps for Strings[133X
-      8.5-1 IsStringMinHeap
-      8.5-2 StringMinHeap
-      8.5-3 Add
-      8.5-4 ExtractMin
-      8.5-5 DecreaseKey
-      8.5-6 IsEmptyHeap
-      8.5-7 HeapSize
-      8.5-8 Contains
-      8.5-9 Swap
-      8.5-10 Heapify
-  9 [33X[0;0YAdd Functions[133X
-    9.1 [33X[0;0YFunctions Installed by Add[133X
-    9.2 [33X[0;0YAdd Method[133X
-    9.3 [33X[0;0YInstallAdd Function[133X
-    9.4 [33X[0;0YInstall All Adds[133X
+  8 [33X[0;0YAdd Functions[133X
+    8.1 [33X[0;0YFunctions Installed by Add[133X
+    8.2 [33X[0;0YAdd Method[133X
+    8.3 [33X[0;0YInstallAdd Function[133X
+    8.4 [33X[0;0YInstall All Adds[133X
+    8.5 [33X[0;0YPrepare functions[133X
+      8.5-1 CAPOperationPrepareFunction
+      8.5-2 CAPAddPrepareFunction
+      8.5-3 ListCAPPrepareFunctions
+  9 [33X[0;0YManaging Derived Methods[133X
+    9.1 [33X[0;0YInfo Class[133X
+      9.1-1 DerivationInfo
+      9.1-2 ActivateDerivationInfo
+      9.1-3 DeactivateDerivationInfo
+    9.2 [33X[0;0YDerivation Objects[133X
+      9.2-1 IsDerivedMethod
+      9.2-2 MakeDerivation
+      9.2-3 DerivationName
+      9.2-4 DerivationWeight
+      9.2-5 DerivationFunctionsWithExtraFilters
+      9.2-6 CategoryFilter
+      9.2-7 IsApplicableToCategory
+      9.2-8 TargetOperation
+      9.2-9 UsedOperations
+      9.2-10 UsedOperationMultiples
+      9.2-11 UsedOperationsWithMultiples
+      9.2-12 InstallDerivationForCategory
+      9.2-13 DerivationResultWeight
+    9.3 [33X[0;0YDerivation Graphs[133X
+      9.3-1 IsDerivedMethodGraph
+      9.3-2 MakeDerivationGraph
+      9.3-3 AddOperationsToDerivationGraph
+      9.3-4 AddDerivation
+      9.3-5 AddDerivation
+      9.3-6 AddDerivation
+      9.3-7 AddDerivation
+      9.3-8 AddDerivationPair
+      9.3-9 AddDerivationPair
+      9.3-10 AddDerivationPair
+      9.3-11 AddDerivationPair
+      9.3-12 AddDerivationToCAP
+      9.3-13 AddDerivationPairToCAP
+      9.3-14 AddWithGivenDerivationPairToCAP
+      9.3-15 Operations
+      9.3-16 DerivationsUsingOperation
+      9.3-17 DerivationsOfOperation
+    9.4 [33X[0;0YManaging Derivations in a Category[133X
+      9.4-1 IsOperationWeightList
+      9.4-2 MakeOperationWeightList
+      9.4-3 DerivationGraph
+      9.4-4 CategoryOfOperationWeightList
+      9.4-5 CurrentOperationWeight
+      9.4-6 OperationWeightUsingDerivation
+      9.4-7 DerivationOfOperation
+      9.4-8 InstallDerivationsUsingOperation
+      9.4-9 Reevaluate
+      9.4-10 Saturate
+      9.4-11 AddPrimitiveOperation
+      9.4-12 PrintDerivationTree
+      9.4-13 PrintTree
+      9.4-14 PrintTreeRec
+    9.5 [33X[0;0YMin Heaps for Strings[133X
+      9.5-1 IsStringMinHeap
+      9.5-2 StringMinHeap
+      9.5-3 Add
+      9.5-4 ExtractMin
+      9.5-5 DecreaseKey
+      9.5-6 IsEmptyHeap
+      9.5-7 HeapSize
+      9.5-8 Contains
+      9.5-9 Swap
+      9.5-10 Heapify
   10 [33X[0;0YTechnical Details[133X
     10.1 [33X[0;0YThe Category Cat[133X
       10.1-1 ObjectCache
@@ -785,19 +828,22 @@
       10.2-9 CAP_INTERNAL_MERGE_PRECONDITIONS_LIST
       10.2-10 CachingStatistic
       10.2-11 BrowseCachingStatistic
-  11 [33X[0;0YMonoidal Categories[133X
-  12 [33X[0;0YPrepare functions[133X
-    12.1 [33X[0;0YPrepare functions[133X
-      12.1-1 CAPOperationPrepareFunction
-      12.1-2 CAPAddPrepareFunction
-      12.1-3 ListCAPPrepareFunctions
-  13 [33X[0;0YExamples and Tests[133X
-    13.1 [33X[0;0YSpectral Sequences[133X
-    13.2 [33X[0;0YMonoidal Categories[133X
-    13.3 [33X[0;0YGeneralized Morphisms Category[133X
-    13.4 [33X[0;0YIsWellDefined[133X
-    13.5 [33X[0;0YKernel[133X
-    13.6 [33X[0;0YFiberProduct[133X
+  11 [33X[0;0YLimits and Colimits[133X
+    11.1 [33X[0;0YSpecification of Limits and Colimits[133X
+    11.2 [33X[0;0YEnhancing Limit Specifications[133X
+    11.3 [33X[0;0YValidating entries of a method name record which are part of a limit
+    or colimit[133X
+  12 [33X[0;0YExamples and Tests[133X
+    12.1 [33X[0;0YFunctors[133X
+    12.2 [33X[0;0YHomomorphism structure[133X
+    12.3 [33X[0;0YSpectral Sequences[133X
+    12.4 [33X[0;0YLiftable[133X
+    12.5 [33X[0;0YMonoidal Categories[133X
+    12.6 [33X[0;0YOpposite category[133X
+    12.7 [33X[0;0YGeneralized Morphisms Category[133X
+    12.8 [33X[0;0YIsWellDefined[133X
+    12.9 [33X[0;0YKernel[133X
+    12.10 [33X[0;0YFiberProduct[133X
   
   
   [32X

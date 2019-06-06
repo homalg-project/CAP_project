@@ -5,21 +5,23 @@ PackageName := "CAP",
 Subtitle := "Categories, Algorithms, Programming",
 
 Version := Maximum( [
-  "2018.08.03", ## Mohamed's version
+  "2019.01.29", ## Mohamed's version
   ## this line prevents merge conflicts
   "2015.04.01", ## Oystein's version
   ## this line prevents merge conflicts
-  "2018.08.29", ## Sebas' version
+  "2019.06.05", ## Sebas' version
   ## this line prevents merge conflicts
-  "2018.02.27", ## Sepp's version
+  "2019.02.26", ## Sepp's version
   ## this line prevents merge conflicts
-  "2018.08.15", ## Fabian's version
+  "2019.04.03", ## Fabian's version
   ## this line prevents merge conflicts
-  "2018.08.31", ## Mario's version
+  "2019.04.04", ## Kamal's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+License := "GPL-2.0-or-later",
+
 
 Persons := [
   rec(

@@ -9,19 +9,18 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script><script type="text/javascript" src="https://unpkg.com/thebelab@0.0.3"></script><script src="manual.js" type="text/javascript"></script>
+<script src="manual.js" type="text/javascript"></script>
 <script type="text/javascript">overwriteStyle();</script>
 </head>
 <body class="chap7"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap6.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap8.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap7_mj.html">[MathJax on]</a></p>
-
-<div style="text-align: center;"><input type="button" onclick="convert_examples();start_kernel()" value="Make this live!"></div><p><a id="X7AF6C1DF84986EEA" name="X7AF6C1DF84986EEA"></a></p>
+<p><a id="X7AF6C1DF84986EEA" name="X7AF6C1DF84986EEA"></a></p>
 <div class="ChapSects"><a href="chap7.html#X7AF6C1DF84986EEA">7 <span class="Heading">Tensor Product and Internal Hom</span></a>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X808DC49C7ED99B52">7.1 <span class="Heading">Monoidal Categories</span></a>
 </span>
@@ -210,7 +209,7 @@
 
 <h5>7.1-1 TensorProductOnObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductOnObjects</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductOnObjects</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an object</p>
 
 <p>The arguments are two objects <span class="Math">a, b</span>. The output is the tensor product <span class="Math">a \otimes b</span>.</p>
@@ -219,7 +218,7 @@
 
 <h5>7.1-2 AddTensorProductOnObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTensorProductOnObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTensorProductOnObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TensorProductOnObjects</code>. <span class="Math">F: (a,b) \mapsto a \otimes b</span>.</p>
@@ -228,7 +227,7 @@
 
 <h5>7.1-3 TensorProductOnMorphisms</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductOnMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductOnMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a \otimes b, a' \otimes b')</span></p>
 
 <p>The arguments are two morphisms <span class="Math">\alpha: a \rightarrow a', \beta: b \rightarrow b'</span>. The output is the tensor product <span class="Math">\alpha \otimes \beta</span>.</p>
@@ -237,7 +236,7 @@
 
 <h5>7.1-4 TensorProductOnMorphismsWithGivenTensorProducts</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductOnMorphismsWithGivenTensorProducts</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductOnMorphismsWithGivenTensorProducts</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a \otimes b, a' \otimes b')</span></p>
 
 <p>The arguments are an object <span class="Math">s = a \otimes b</span>, two morphisms <span class="Math">\alpha: a \rightarrow a', \beta: b \rightarrow b'</span>, and an object <span class="Math">r = a' \otimes b'</span>. The output is the tensor product <span class="Math">\alpha \otimes \beta</span>.</p>
@@ -246,7 +245,7 @@
 
 <h5>7.1-5 AddTensorProductOnMorphismsWithGivenTensorProducts</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTensorProductOnMorphismsWithGivenTensorProducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTensorProductOnMorphismsWithGivenTensorProducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TensorProductOnMorphismsWithGivenTensorProducts</code>. <span class="Math">F: ( a \otimes b, \alpha: a \rightarrow a', \beta: b \rightarrow b', a' \otimes b' ) \mapsto \alpha \otimes \beta</span>.</p>
@@ -255,7 +254,7 @@
 
 <h5>7.1-6 AssociatorRightToLeft</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatorRightToLeft</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatorRightToLeft</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a \otimes (b \otimes c), (a \otimes b) \otimes c )</span>.</p>
 
 <p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the associator <span class="Math">\alpha_{a,(b,c)}: a \otimes (b \otimes c) \rightarrow (a \otimes b) \otimes c</span>.</p>
@@ -264,7 +263,7 @@
 
 <h5>7.1-7 AssociatorRightToLeftWithGivenTensorProducts</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatorRightToLeftWithGivenTensorProducts</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatorRightToLeftWithGivenTensorProducts</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a \otimes (b \otimes c), (a \otimes b) \otimes c )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = a \otimes (b \otimes c)</span>, three objects <span class="Math">a,b,c</span>, and an object <span class="Math">r = (a \otimes b) \otimes c</span>. The output is the associator <span class="Math">\alpha_{a,(b,c)}: a \otimes (b \otimes c) \rightarrow (a \otimes b) \otimes c</span>.</p>
@@ -273,7 +272,7 @@
 
 <h5>7.1-8 AddAssociatorRightToLeftWithGivenTensorProducts</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddAssociatorRightToLeftWithGivenTensorProducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddAssociatorRightToLeftWithGivenTensorProducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">AssociatorRightToLeftWithGivenTensorProducts</code>. <span class="Math">F: ( a \otimes (b \otimes c), a, b, c, (a \otimes b) \otimes c ) \mapsto \alpha_{a,(b,c)}</span>.</p>
@@ -282,7 +281,7 @@
 
 <h5>7.1-9 AssociatorLeftToRight</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatorLeftToRight</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatorLeftToRight</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( (a \otimes b) \otimes c \rightarrow a \otimes (b \otimes c) )</span>.</p>
 
 <p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the associator <span class="Math">\alpha_{(a,b),c}: (a \otimes b) \otimes c \rightarrow a \otimes (b \otimes c)</span>.</p>
@@ -291,7 +290,7 @@
 
 <h5>7.1-10 AssociatorLeftToRightWithGivenTensorProducts</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatorLeftToRightWithGivenTensorProducts</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatorLeftToRightWithGivenTensorProducts</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( (a \otimes b) \otimes c \rightarrow a \otimes (b \otimes c) )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = (a \otimes b) \otimes c</span>, three objects <span class="Math">a,b,c</span>, and an object <span class="Math">r = a \otimes (b \otimes c)</span>. The output is the associator <span class="Math">\alpha_{(a,b),c}: (a \otimes b) \otimes c \rightarrow a \otimes (b \otimes c)</span>.</p>
@@ -300,7 +299,7 @@
 
 <h5>7.1-11 AddAssociatorLeftToRightWithGivenTensorProducts</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddAssociatorLeftToRightWithGivenTensorProducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddAssociatorLeftToRightWithGivenTensorProducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">AssociatorLeftToRightWithGivenTensorProducts</code>. <span class="Math">F: (( a \otimes b ) \otimes c, a, b, c, a \otimes (b \otimes c )) \mapsto \alpha_{(a,b),c}</span>.</p>
@@ -309,7 +308,7 @@
 
 <h5>7.1-12 TensorUnit</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorUnit</code>( <var class="Arg">C</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorUnit</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: an object</p>
 
 <p>The argument is a category <span class="Math">\mathbf{C}</span>. The output is the tensor unit <span class="Math">1</span> of <span class="Math">\mathbf{C}</span>.</p>
@@ -318,7 +317,7 @@
 
 <h5>7.1-13 AddTensorUnit</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTensorUnit</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTensorUnit</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TensorUnit</code>. <span class="Math">F: ( ) \mapsto 1</span>.</p>
@@ -327,7 +326,7 @@
 
 <h5>7.1-14 LeftUnitor</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftUnitor</code>( <var class="Arg">a</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftUnitor</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(1 \otimes a, a )</span></p>
 
 <p>The argument is an object <span class="Math">a</span>. The output is the left unitor <span class="Math">\lambda_a: 1 \otimes a \rightarrow a</span>.</p>
@@ -336,7 +335,7 @@
 
 <h5>7.1-15 LeftUnitorWithGivenTensorProduct</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftUnitorWithGivenTensorProduct</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftUnitorWithGivenTensorProduct</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(1 \otimes a, a )</span></p>
 
 <p>The arguments are an object <span class="Math">a</span> and an object <span class="Math">s = 1 \otimes a</span>. The output is the left unitor <span class="Math">\lambda_a: 1 \otimes a \rightarrow a</span>.</p>
@@ -345,7 +344,7 @@
 
 <h5>7.1-16 AddLeftUnitorWithGivenTensorProduct</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftUnitorWithGivenTensorProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftUnitorWithGivenTensorProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">LeftUnitorWithGivenTensorProduct</code>. <span class="Math">F: (a, 1 \otimes a) \mapsto \lambda_a</span>.</p>
@@ -354,7 +353,7 @@
 
 <h5>7.1-17 LeftUnitorInverse</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftUnitorInverse</code>( <var class="Arg">a</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftUnitorInverse</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, 1 \otimes a)</span></p>
 
 <p>The argument is an object <span class="Math">a</span>. The output is the inverse of the left unitor <span class="Math">\lambda_a^{-1}: a \rightarrow 1 \otimes a</span>.</p>
@@ -363,7 +362,7 @@
 
 <h5>7.1-18 LeftUnitorInverseWithGivenTensorProduct</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftUnitorInverseWithGivenTensorProduct</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftUnitorInverseWithGivenTensorProduct</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, 1 \otimes a)</span></p>
 
 <p>The argument is an object <span class="Math">a</span> and an object <span class="Math">r = 1 \otimes a</span>. The output is the inverse of the left unitor <span class="Math">\lambda_a^{-1}: a \rightarrow 1 \otimes a</span>.</p>
@@ -372,7 +371,7 @@
 
 <h5>7.1-19 AddLeftUnitorInverseWithGivenTensorProduct</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftUnitorInverseWithGivenTensorProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftUnitorInverseWithGivenTensorProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">LeftUnitorInverseWithGivenTensorProduct</code>. <span class="Math">F: (a, 1 \otimes a) \mapsto \lambda_a^{-1}</span>.</p>
@@ -381,7 +380,7 @@
 
 <h5>7.1-20 RightUnitor</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightUnitor</code>( <var class="Arg">a</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightUnitor</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a \otimes 1, a )</span></p>
 
 <p>The argument is an object <span class="Math">a</span>. The output is the right unitor <span class="Math">\rho_a: a \otimes 1 \rightarrow a</span>.</p>
@@ -390,7 +389,7 @@
 
 <h5>7.1-21 RightUnitorWithGivenTensorProduct</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightUnitorWithGivenTensorProduct</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightUnitorWithGivenTensorProduct</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a \otimes 1, a )</span></p>
 
 <p>The arguments are an object <span class="Math">a</span> and an object <span class="Math">s = a \otimes 1</span>. The output is the right unitor <span class="Math">\rho_a: a \otimes 1 \rightarrow a</span>.</p>
@@ -399,7 +398,7 @@
 
 <h5>7.1-22 AddRightUnitorWithGivenTensorProduct</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightUnitorWithGivenTensorProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightUnitorWithGivenTensorProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">RightUnitorWithGivenTensorProduct</code>. <span class="Math">F: (a, a \otimes 1) \mapsto \rho_a</span>.</p>
@@ -408,7 +407,7 @@
 
 <h5>7.1-23 RightUnitorInverse</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightUnitorInverse</code>( <var class="Arg">a</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightUnitorInverse</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, a \otimes 1 )</span></p>
 
 <p>The argument is an object <span class="Math">a</span>. The output is the inverse of the right unitor <span class="Math">\rho_a^{-1}: a \rightarrow a \otimes 1</span>.</p>
@@ -417,7 +416,7 @@
 
 <h5>7.1-24 RightUnitorInverseWithGivenTensorProduct</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightUnitorInverseWithGivenTensorProduct</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightUnitorInverseWithGivenTensorProduct</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, a \otimes 1 )</span></p>
 
 <p>The arguments are an object <span class="Math">a</span> and an object <span class="Math">r = a \otimes 1</span>. The output is the inverse of the right unitor <span class="Math">\rho_a^{-1}: a \rightarrow a \otimes 1</span>.</p>
@@ -426,7 +425,7 @@
 
 <h5>7.1-25 AddRightUnitorInverseWithGivenTensorProduct</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightUnitorInverseWithGivenTensorProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightUnitorInverseWithGivenTensorProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">RightUnitorInverseWithGivenTensorProduct</code>. <span class="Math">F: (a, a \otimes 1) \mapsto \rho_a^{-1}</span>.</p>
@@ -435,7 +434,7 @@
 
 <h5>7.1-26 LeftDistributivityExpanding</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftDistributivityExpanding</code>( <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftDistributivityExpanding</code>( <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a \otimes (b_1 \oplus \dots \oplus b_n), (a \otimes b_1) \oplus \dots \oplus (a \otimes b_n) )</span></p>
 
 <p>The arguments are an object <span class="Math">a</span> and a list of objects <span class="Math">L = (b_1, \dots, b_n)</span>. The output is the left distributivity morphism <span class="Math">a \otimes (b_1 \oplus \dots \oplus b_n) \rightarrow (a \otimes b_1) \oplus \dots \oplus (a \otimes b_n)</span>.</p>
@@ -444,7 +443,7 @@
 
 <h5>7.1-27 LeftDistributivityExpandingWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftDistributivityExpandingWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftDistributivityExpandingWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span></p>
 
 <p>The arguments are an object <span class="Math">s = a \otimes (b_1 \oplus \dots \oplus b_n)</span>, an object <span class="Math">a</span>, a list of objects <span class="Math">L = (b_1, \dots, b_n)</span>, and an object <span class="Math">r = (a \otimes b_1) \oplus \dots \oplus (a \otimes b_n)</span>. The output is the left distributivity morphism <span class="Math">s \rightarrow r</span>.</p>
@@ -453,7 +452,7 @@
 
 <h5>7.1-28 AddLeftDistributivityExpandingWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftDistributivityExpandingWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftDistributivityExpandingWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">LeftDistributivityExpandingWithGivenObjects</code>. <span class="Math">F: (a \otimes (b_1 \oplus \dots \oplus b_n), a, L, (a \otimes b_1) \oplus \dots \oplus (a \otimes b_n)) \mapsto \mathrm{LeftDistributivityExpandingWithGivenObjects}(a,L)</span>.</p>
@@ -462,7 +461,7 @@
 
 <h5>7.1-29 LeftDistributivityFactoring</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftDistributivityFactoring</code>( <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftDistributivityFactoring</code>( <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( (a \otimes b_1) \oplus \dots \oplus (a \otimes b_n), a \otimes (b_1 \oplus \dots \oplus b_n) )</span></p>
 
 <p>The arguments are an object <span class="Math">a</span> and a list of objects <span class="Math">L = (b_1, \dots, b_n)</span>. The output is the left distributivity morphism <span class="Math">(a \otimes b_1) \oplus \dots \oplus (a \otimes b_n) \rightarrow a \otimes (b_1 \oplus \dots \oplus b_n)</span>.</p>
@@ -471,7 +470,7 @@
 
 <h5>7.1-30 LeftDistributivityFactoringWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftDistributivityFactoringWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftDistributivityFactoringWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span></p>
 
 <p>The arguments are an object <span class="Math">s = (a \otimes b_1) \oplus \dots \oplus (a \otimes b_n)</span>, an object <span class="Math">a</span>, a list of objects <span class="Math">L = (b_1, \dots, b_n)</span>, and an object <span class="Math">r = a \otimes (b_1 \oplus \dots \oplus b_n)</span>. The output is the left distributivity morphism <span class="Math">s \rightarrow r</span>.</p>
@@ -480,7 +479,7 @@
 
 <h5>7.1-31 AddLeftDistributivityFactoringWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftDistributivityFactoringWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLeftDistributivityFactoringWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">LeftDistributivityFactoringWithGivenObjects</code>. <span class="Math">F: ((a \otimes b_1) \oplus \dots \oplus (a \otimes b_n), a, L, a \otimes (b_1 \oplus \dots \oplus b_n)) \mapsto \mathrm{LeftDistributivityFactoringWithGivenObjects}(a,L)</span>.</p>
@@ -489,7 +488,7 @@
 
 <h5>7.1-32 RightDistributivityExpanding</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightDistributivityExpanding</code>( <var class="Arg">L</var>, <var class="Arg">a</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightDistributivityExpanding</code>( <var class="Arg">L</var>, <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( (b_1 \oplus \dots \oplus b_n) \otimes a, (b_1 \otimes a) \oplus \dots \oplus (b_n \otimes a) )</span></p>
 
 <p>The arguments are a list of objects <span class="Math">L = (b_1, \dots, b_n)</span> and an object <span class="Math">a</span>. The output is the right distributivity morphism <span class="Math">(b_1 \oplus \dots \oplus b_n) \otimes a \rightarrow (b_1 \otimes a) \oplus \dots \oplus (b_n \otimes a)</span>.</p>
@@ -498,7 +497,7 @@
 
 <h5>7.1-33 RightDistributivityExpandingWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightDistributivityExpandingWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightDistributivityExpandingWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span></p>
 
 <p>The arguments are an object <span class="Math">s = (b_1 \oplus \dots \oplus b_n) \otimes a</span>, a list of objects <span class="Math">L = (b_1, \dots, b_n)</span>, an object <span class="Math">a</span>, and an object <span class="Math">r = (b_1 \otimes a) \oplus \dots \oplus (b_n \otimes a)</span>. The output is the right distributivity morphism <span class="Math">s \rightarrow r</span>.</p>
@@ -507,7 +506,7 @@
 
 <h5>7.1-34 AddRightDistributivityExpandingWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightDistributivityExpandingWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightDistributivityExpandingWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">RightDistributivityExpandingWithGivenObjects</code>. <span class="Math">F: ((b_1 \oplus \dots \oplus b_n) \otimes a, L, a, (b_1 \otimes a) \oplus \dots \oplus (b_n \otimes a)) \mapsto \mathrm{RightDistributivityExpandingWithGivenObjects}(L,a)</span>.</p>
@@ -516,7 +515,7 @@
 
 <h5>7.1-35 RightDistributivityFactoring</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightDistributivityFactoring</code>( <var class="Arg">L</var>, <var class="Arg">a</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightDistributivityFactoring</code>( <var class="Arg">L</var>, <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( (b_1 \otimes a) \oplus \dots \oplus (b_n \otimes a), (b_1 \oplus \dots \oplus b_n) \otimes a)</span></p>
 
 <p>The arguments are a list of objects <span class="Math">L = (b_1, \dots, b_n)</span> and an object <span class="Math">a</span>. The output is the right distributivity morphism <span class="Math">(b_1 \otimes a) \oplus \dots \oplus (b_n \otimes a) \rightarrow (b_1 \oplus \dots \oplus b_n) \otimes a </span>.</p>
@@ -525,7 +524,7 @@
 
 <h5>7.1-36 RightDistributivityFactoringWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightDistributivityFactoringWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightDistributivityFactoringWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( s, r )</span></p>
 
 <p>The arguments are an object <span class="Math">s = (b_1 \otimes a) \oplus \dots \oplus (b_n \otimes a)</span>, a list of objects <span class="Math">L = (b_1, \dots, b_n)</span>, an object <span class="Math">a</span>, and an object <span class="Math">r = (b_1 \oplus \dots \oplus b_n) \otimes a</span>. The output is the right distributivity morphism <span class="Math">s \rightarrow r</span>.</p>
@@ -534,7 +533,7 @@
 
 <h5>7.1-37 AddRightDistributivityFactoringWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightDistributivityFactoringWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRightDistributivityFactoringWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">RightDistributivityFactoringWithGivenObjects</code>. <span class="Math">F: ((b_1 \otimes a) \oplus \dots \oplus (b_n \otimes a), L, a, (b_1 \oplus \dots \oplus b_n) \otimes a) \mapsto \mathrm{RightDistributivityFactoringWithGivenObjects}(L,a)</span>.</p>
@@ -563,7 +562,7 @@
 
 <h5>7.2-1 Braiding</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Braiding</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Braiding</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a \otimes b, b \otimes a )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span>. The output is the braiding <span class="Math"> B_{a,b}: a \otimes b \rightarrow b \otimes a</span>.</p>
@@ -572,7 +571,7 @@
 
 <h5>7.2-2 BraidingWithGivenTensorProducts</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BraidingWithGivenTensorProducts</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BraidingWithGivenTensorProducts</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a \otimes b, b \otimes a )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = a \otimes b</span>, two objects <span class="Math">a,b</span>, and an object <span class="Math">r = b \otimes a</span>. The output is the braiding <span class="Math"> B_{a,b}: a \otimes b \rightarrow b \otimes a</span>.</p>
@@ -581,7 +580,7 @@
 
 <h5>7.2-3 AddBraidingWithGivenTensorProducts</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddBraidingWithGivenTensorProducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddBraidingWithGivenTensorProducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">BraidingWithGivenTensorProducts</code>. <span class="Math">F: (a \otimes b, a, b, b \otimes a) \rightarrow B_{a,b}</span>.</p>
@@ -590,7 +589,7 @@
 
 <h5>7.2-4 BraidingInverse</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BraidingInverse</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BraidingInverse</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b \otimes a, a \otimes b )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span>. The output is the inverse of the braiding <span class="Math"> B_{a,b}^{-1}: b \otimes a \rightarrow a \otimes b</span>.</p>
@@ -599,7 +598,7 @@
 
 <h5>7.2-5 BraidingInverseWithGivenTensorProducts</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BraidingInverseWithGivenTensorProducts</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BraidingInverseWithGivenTensorProducts</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b \otimes a, a \otimes b )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = b \otimes a</span>, two objects <span class="Math">a,b</span>, and an object <span class="Math">r = a \otimes b</span>. The output is the braiding <span class="Math"> B_{a,b}^{-1}: b \otimes a \rightarrow a \otimes b</span>.</p>
@@ -608,7 +607,7 @@
 
 <h5>7.2-6 AddBraidingInverseWithGivenTensorProducts</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddBraidingInverseWithGivenTensorProducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddBraidingInverseWithGivenTensorProducts</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">BraidingInverseWithGivenTensorProducts</code>. <span class="Math">F: (b \otimes a, a, b, a \otimes b) \rightarrow B_{a,b}^{-1}</span>.</p>
@@ -629,7 +628,7 @@
 
 <h5>7.4-1 InternalHomOnObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalHomOnObjects</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalHomOnObjects</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an object</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span>. The output is the internal hom object <span class="Math">\mathrm{\underline{Hom}}(a,b)</span>.</p>
@@ -638,7 +637,7 @@
 
 <h5>7.4-2 AddInternalHomOnObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInternalHomOnObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInternalHomOnObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">InternalHomOnObjects</code>. <span class="Math">F: (a,b) \mapsto \mathrm{\underline{Hom}}(a,b)</span>.</p>
@@ -647,7 +646,7 @@
 
 <h5>7.4-3 InternalHomOnMorphisms</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalHomOnMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalHomOnMorphisms</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a',b), \mathrm{\underline{Hom}}(a,b') )</span></p>
 
 <p>The arguments are two morphisms <span class="Math">\alpha: a \rightarrow a', \beta: b \rightarrow b'</span>. The output is the internal hom morphism <span class="Math">\mathrm{\underline{Hom}}(\alpha,\beta): \mathrm{\underline{Hom}}(a',b) \rightarrow \mathrm{\underline{Hom}}(a,b')</span>.</p>
@@ -656,7 +655,7 @@
 
 <h5>7.4-4 InternalHomOnMorphismsWithGivenInternalHoms</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalHomOnMorphismsWithGivenInternalHoms</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalHomOnMorphismsWithGivenInternalHoms</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a',b), \mathrm{\underline{Hom}}(a,b') )</span></p>
 
 <p>The arguments are an object <span class="Math">s = \mathrm{\underline{Hom}}(a',b)</span>, two morphisms <span class="Math">\alpha: a \rightarrow a', \beta: b \rightarrow b'</span>, and an object <span class="Math">r = \mathrm{\underline{Hom}}(a,b')</span>. The output is the internal hom morphism <span class="Math">\mathrm{\underline{Hom}}(\alpha,\beta): \mathrm{\underline{Hom}}(a',b) \rightarrow \mathrm{\underline{Hom}}(a,b')</span>.</p>
@@ -665,7 +664,7 @@
 
 <h5>7.4-5 AddInternalHomOnMorphismsWithGivenInternalHoms</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInternalHomOnMorphismsWithGivenInternalHoms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInternalHomOnMorphismsWithGivenInternalHoms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">InternalHomOnMorphismsWithGivenInternalHoms</code>. <span class="Math">F: (\mathrm{\underline{Hom}}(a',b), \alpha: a \rightarrow a', \beta: b \rightarrow b', \mathrm{\underline{Hom}}(a,b') ) \mapsto \mathrm{\underline{Hom}}(\alpha,\beta)</span>.</p>
@@ -674,7 +673,7 @@
 
 <h5>7.4-6 EvaluationMorphism</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EvaluationMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EvaluationMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b) \otimes a, b )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a, b</span>. The output is the evaluation morphism <span class="Math">\mathrm{ev}_{a,b}: \mathrm{\underline{Hom}}(a,b) \otimes a \rightarrow b</span>, i.e., the counit of the tensor hom adjunction.</p>
@@ -683,7 +682,7 @@
 
 <h5>7.4-7 EvaluationMorphismWithGivenSource</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EvaluationMorphismWithGivenSource</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">s</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EvaluationMorphismWithGivenSource</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b) \otimes a, b )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">s = \mathrm{\underline{Hom}}(a,b) \otimes a</span>. The output is the evaluation morphism <span class="Math">\mathrm{ev}_{a,b}: \mathrm{\underline{Hom}}(a,b) \otimes a \rightarrow b</span>, i.e., the counit of the tensor hom adjunction.</p>
@@ -692,7 +691,7 @@
 
 <h5>7.4-8 AddEvaluationMorphismWithGivenSource</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEvaluationMorphismWithGivenSource</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEvaluationMorphismWithGivenSource</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">EvaluationMorphismWithGivenSource</code>. <span class="Math">F: (a, b, \mathrm{\underline{Hom}}(a,b) \otimes a) \mapsto \mathrm{ev}_{a,b}</span>.</p>
@@ -701,7 +700,7 @@
 
 <h5>7.4-9 CoevaluationMorphism</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoevaluationMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoevaluationMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, \mathrm{\underline{Hom}}(b, a \otimes b) )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span>. The output is the coevaluation morphism <span class="Math">\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}(b, a \otimes b)}</span>, i.e., the unit of the tensor hom adjunction.</p>
@@ -710,7 +709,7 @@
 
 <h5>7.4-10 CoevaluationMorphismWithGivenRange</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoevaluationMorphismWithGivenRange</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoevaluationMorphismWithGivenRange</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, \mathrm{\underline{Hom}}(b, a \otimes b) )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">r = \mathrm{\underline{Hom}(b, a \otimes b)}</span>. The output is the coevaluation morphism <span class="Math">\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}(b, a \otimes b)}</span>, i.e., the unit of the tensor hom adjunction.</p>
@@ -719,7 +718,7 @@
 
 <h5>7.4-11 AddCoevaluationMorphismWithGivenRange</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoevaluationMorphismWithGivenRange</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoevaluationMorphismWithGivenRange</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CoevaluationMorphismWithGivenRange</code>. <span class="Math">F: (a, b, \mathrm{\underline{Hom}}(b, a \otimes b)) \mapsto \mathrm{coev}_{a,b}</span>.</p>
@@ -728,7 +727,7 @@
 
 <h5>7.4-12 TensorProductToInternalHomAdjunctionMap</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductToInternalHomAdjunctionMap</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">f</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductToInternalHomAdjunctionMap</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">f</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, \mathrm{\underline{Hom}}(b,c) )</span>.</p>
 
 <p>The arguments are objects <span class="Math">a,b</span> and a morphism <span class="Math">f: a \otimes b \rightarrow c</span>. The output is a morphism <span class="Math">g: a \rightarrow \mathrm{\underline{Hom}}(b,c)</span> corresponding to <span class="Math">f</span> under the tensor hom adjunction.</p>
@@ -737,7 +736,7 @@
 
 <h5>7.4-13 AddTensorProductToInternalHomAdjunctionMap</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTensorProductToInternalHomAdjunctionMap</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTensorProductToInternalHomAdjunctionMap</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TensorProductToInternalHomAdjunctionMap</code>. <span class="Math">F: (a, b, f: a \otimes b \rightarrow c) \mapsto ( g: a \rightarrow \mathrm{\underline{Hom}}(b,c) )</span>.</p>
@@ -746,7 +745,7 @@
 
 <h5>7.4-14 InternalHomToTensorProductAdjunctionMap</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalHomToTensorProductAdjunctionMap</code>( <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">g</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InternalHomToTensorProductAdjunctionMap</code>( <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">g</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a \otimes b, c)</span>.</p>
 
 <p>The arguments are objects <span class="Math">b,c</span> and a morphism <span class="Math">g: a \rightarrow \mathrm{\underline{Hom}}(b,c)</span>. The output is a morphism <span class="Math">f: a \otimes b \rightarrow c</span> corresponding to <span class="Math">g</span> under the tensor hom adjunction.</p>
@@ -755,7 +754,7 @@
 
 <h5>7.4-15 AddInternalHomToTensorProductAdjunctionMap</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInternalHomToTensorProductAdjunctionMap</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInternalHomToTensorProductAdjunctionMap</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">InternalHomToTensorProductAdjunctionMap</code>. <span class="Math">F: (b, c, g: a \rightarrow \mathrm{\underline{Hom}}(b,c)) \mapsto ( g: a \otimes b \rightarrow c )</span>.</p>
@@ -764,7 +763,7 @@
 
 <h5>7.4-16 MonoidalPreComposeMorphism</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonoidalPreComposeMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonoidalPreComposeMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c), \mathrm{\underline{Hom}}(a,c) )</span>.</p>
 
 <p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the precomposition morphism <span class="Math">\mathrm{MonoidalPreComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c) \rightarrow \mathrm{\underline{Hom}}(a,c)</span>.</p>
@@ -773,7 +772,7 @@
 
 <h5>7.4-17 MonoidalPreComposeMorphismWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonoidalPreComposeMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonoidalPreComposeMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c), \mathrm{\underline{Hom}}(a,c) )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c)</span>, three objects <span class="Math">a,b,c</span>, and an object <span class="Math">r = \mathrm{\underline{Hom}}(a,c)</span>. The output is the precomposition morphism <span class="Math">\mathrm{MonoidalPreComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c) \rightarrow \mathrm{\underline{Hom}}(a,c)</span>.</p>
@@ -782,7 +781,7 @@
 
 <h5>7.4-18 AddMonoidalPreComposeMorphismWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMonoidalPreComposeMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMonoidalPreComposeMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MonoidalPreComposeMorphismWithGivenObjects</code>. <span class="Math">F: (\mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c),a,b,c,\mathrm{\underline{Hom}}(a,c)) \mapsto \mathrm{MonoidalPreComposeMorphismWithGivenObjects}_{a,b,c}</span>.</p>
@@ -791,7 +790,7 @@
 
 <h5>7.4-19 MonoidalPostComposeMorphism</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonoidalPostComposeMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonoidalPostComposeMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b), \mathrm{\underline{Hom}}(a,c) )</span>.</p>
 
 <p>The arguments are three objects <span class="Math">a,b,c</span>. The output is the postcomposition morphism <span class="Math">\mathrm{MonoidalPostComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b) \rightarrow \mathrm{\underline{Hom}}(a,c)</span>.</p>
@@ -800,7 +799,7 @@
 
 <h5>7.4-20 MonoidalPostComposeMorphismWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonoidalPostComposeMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonoidalPostComposeMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b), \mathrm{\underline{Hom}}(a,c) )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b)</span>, three objects <span class="Math">a,b,c</span>, and an object <span class="Math">r = \mathrm{\underline{Hom}}(a,c)</span>. The output is the postcomposition morphism <span class="Math">\mathrm{MonoidalPostComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b) \rightarrow \mathrm{\underline{Hom}}(a,c)</span>.</p>
@@ -809,7 +808,7 @@
 
 <h5>7.4-21 AddMonoidalPostComposeMorphismWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMonoidalPostComposeMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMonoidalPostComposeMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MonoidalPostComposeMorphismWithGivenObjects</code>. <span class="Math">F: (\mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b),a,b,c,\mathrm{\underline{Hom}}(a,c)) \mapsto \mathrm{MonoidalPostComposeMorphismWithGivenObjects}_{a,b,c}</span>.</p>
@@ -818,7 +817,7 @@
 
 <h5>7.4-22 DualOnObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DualOnObjects</code>( <var class="Arg">a</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DualOnObjects</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: an object</p>
 
 <p>The argument is an object <span class="Math">a</span>. The output is its dual object <span class="Math">a^{\vee}</span>.</p>
@@ -827,7 +826,7 @@
 
 <h5>7.4-23 AddDualOnObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDualOnObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDualOnObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">DualOnObjects</code>. <span class="Math">F: a \mapsto a^{\vee}</span>.</p>
@@ -836,7 +835,7 @@
 
 <h5>7.4-24 DualOnMorphisms</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DualOnMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DualOnMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b^{\vee}, a^{\vee} )</span>.</p>
 
 <p>The argument is a morphism <span class="Math">\alpha: a \rightarrow b</span>. The output is its dual morphism <span class="Math">\alpha^{\vee}: b^{\vee} \rightarrow a^{\vee}</span>.</p>
@@ -845,7 +844,7 @@
 
 <h5>7.4-25 DualOnMorphismsWithGivenDuals</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DualOnMorphismsWithGivenDuals</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DualOnMorphismsWithGivenDuals</code>( <var class="Arg">s</var>, <var class="Arg">alpha</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b^{\vee}, a^{\vee} )</span>.</p>
 
 <p>The argument is an object <span class="Math">s = b^{\vee}</span>, a morphism <span class="Math">\alpha: a \rightarrow b</span>, and an object <span class="Math">r = a^{\vee}</span>. The output is the dual morphism <span class="Math">\alpha^{\vee}: b^{\vee} \rightarrow a^{\vee}</span>.</p>
@@ -854,7 +853,7 @@
 
 <h5>7.4-26 AddDualOnMorphismsWithGivenDuals</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDualOnMorphismsWithGivenDuals</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddDualOnMorphismsWithGivenDuals</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">DualOnMorphismsWithGivenDuals</code>. <span class="Math">F: (b^{\vee},\alpha,a^{\vee}) \mapsto \alpha^{\vee}</span>.</p>
@@ -863,7 +862,7 @@
 
 <h5>7.4-27 EvaluationForDual</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EvaluationForDual</code>( <var class="Arg">a</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EvaluationForDual</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a^{\vee} \otimes a, 1 )</span>.</p>
 
 <p>The argument is an object <span class="Math">a</span>. The output is the evaluation morphism <span class="Math">\mathrm{ev}_{a}: a^{\vee} \otimes a \rightarrow 1</span>.</p>
@@ -872,7 +871,7 @@
 
 <h5>7.4-28 EvaluationForDualWithGivenTensorProduct</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EvaluationForDualWithGivenTensorProduct</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EvaluationForDualWithGivenTensorProduct</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a^{\vee} \otimes a, 1 )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = a^{\vee} \otimes a</span>, an object <span class="Math">a</span>, and an object <span class="Math">r = 1</span>. The output is the evaluation morphism <span class="Math">\mathrm{ev}_{a}: a^{\vee} \otimes a \rightarrow 1</span>.</p>
@@ -881,7 +880,7 @@
 
 <h5>7.4-29 AddEvaluationForDualWithGivenTensorProduct</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEvaluationForDualWithGivenTensorProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddEvaluationForDualWithGivenTensorProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">EvaluationForDualWithGivenTensorProduct</code>. <span class="Math">F: (a^{\vee} \otimes a, a, 1) \mapsto \mathrm{ev}_{a}</span>.</p>
@@ -890,7 +889,7 @@
 
 <h5>7.4-30 CoevaluationForDual</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoevaluationForDual</code>( <var class="Arg">a</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoevaluationForDual</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(1,a \otimes a^{\vee})</span>.</p>
 
 <p>The argument is an object <span class="Math">a</span>. The output is the coevaluation morphism <span class="Math">\mathrm{coev}_{a}:1 \rightarrow a \otimes a^{\vee}</span>.</p>
@@ -899,7 +898,7 @@
 
 <h5>7.4-31 CoevaluationForDualWithGivenTensorProduct</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoevaluationForDualWithGivenTensorProduct</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoevaluationForDualWithGivenTensorProduct</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(1,a \otimes a^{\vee})</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = 1</span>, an object <span class="Math">a</span>, and an object <span class="Math">r = a \otimes a^{\vee}</span>. The output is the coevaluation morphism <span class="Math">\mathrm{coev}_{a}:1 \rightarrow a \otimes a^{\vee}</span>.</p>
@@ -908,7 +907,7 @@
 
 <h5>7.4-32 AddCoevaluationForDualWithGivenTensorProduct</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoevaluationForDualWithGivenTensorProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoevaluationForDualWithGivenTensorProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">CoevaluationForDualWithGivenTensorProduct</code>. <span class="Math">F: (1, a, a \otimes a^{\vee}) \mapsto \mathrm{coev}_{a}</span>.</p>
@@ -917,7 +916,7 @@
 
 <h5>7.4-33 MorphismToBidual</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismToBidual</code>( <var class="Arg">a</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismToBidual</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, (a^{\vee})^{\vee})</span>.</p>
 
 <p>The argument is an object <span class="Math">a</span>. The output is the morphism to the bidual <span class="Math">a \rightarrow (a^{\vee})^{\vee}</span>.</p>
@@ -926,7 +925,7 @@
 
 <h5>7.4-34 MorphismToBidualWithGivenBidual</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismToBidualWithGivenBidual</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismToBidualWithGivenBidual</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, (a^{\vee})^{\vee})</span>.</p>
 
 <p>The arguments are an object <span class="Math">a</span>, and an object <span class="Math">r = (a^{\vee})^{\vee}</span>. The output is the morphism to the bidual <span class="Math">a \rightarrow (a^{\vee})^{\vee}</span>.</p>
@@ -935,7 +934,7 @@
 
 <h5>7.4-35 AddMorphismToBidualWithGivenBidual</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismToBidualWithGivenBidual</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismToBidualWithGivenBidual</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MorphismToBidualWithGivenBidual</code>. <span class="Math">F: (a, (a^{\vee})^{\vee}) \mapsto (a \rightarrow (a^{\vee})^{\vee})</span>.</p>
@@ -944,7 +943,7 @@
 
 <h5>7.4-36 TensorProductInternalHomCompatibilityMorphism</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductInternalHomCompatibilityMorphism</code>( <var class="Arg">a</var>, <var class="Arg">a'</var>, <var class="Arg">b</var>, <var class="Arg">b'</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductInternalHomCompatibilityMorphism</code>( <var class="Arg">a</var>, <var class="Arg">a'</var>, <var class="Arg">b</var>, <var class="Arg">b'</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b'))</span>.</p>
 
 <p>The arguments are four objects <span class="Math">a, a', b, b'</span>. The output is the natural morphism <span class="Math">\mathrm{TensorProductInternalHomCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b') \rightarrow \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b')</span>.</p>
@@ -953,7 +952,7 @@
 
 <h5>7.4-37 TensorProductInternalHomCompatibilityMorphismWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductInternalHomCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">a</var>, <var class="Arg">a'</var>, <var class="Arg">b</var>, <var class="Arg">b'</var>, <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductInternalHomCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">a</var>, <var class="Arg">a'</var>, <var class="Arg">b</var>, <var class="Arg">b'</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b'))</span>.</p>
 
 <p>The arguments are four objects <span class="Math">a, a', b, b'</span>, and a list <span class="Math">L = [ \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') ]</span>. The output is the natural morphism <span class="Math">\mathrm{TensorProductInternalHomCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b') \rightarrow \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b')</span>.</p>
@@ -962,7 +961,7 @@
 
 <h5>7.4-38 AddTensorProductInternalHomCompatibilityMorphismWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTensorProductInternalHomCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTensorProductInternalHomCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TensorProductInternalHomCompatibilityMorphismWithGivenObjects</code>. <span class="Math">F: ( a,a',b,b', [ \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') ]) \mapsto \mathrm{TensorProductInternalHomCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}</span>.</p>
@@ -971,7 +970,7 @@
 
 <h5>7.4-39 TensorProductDualityCompatibilityMorphism</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductDualityCompatibilityMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductDualityCompatibilityMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a^{\vee} \otimes b^{\vee}, (a \otimes b)^{\vee} )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{TensorProductDualityCompatibilityMorphismWithGivenObjects}: a^{\vee} \otimes b^{\vee} \rightarrow (a \otimes b)^{\vee}</span>.</p>
@@ -980,7 +979,7 @@
 
 <h5>7.4-40 TensorProductDualityCompatibilityMorphismWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductDualityCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductDualityCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a^{\vee} \otimes b^{\vee}, (a \otimes b)^{\vee} )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = a^{\vee} \otimes b^{\vee}</span>, two objects <span class="Math">a,b</span>, and an object <span class="Math">r = (a \otimes b)^{\vee}</span>. The output is the natural morphism <span class="Math">\mathrm{TensorProductDualityCompatibilityMorphismWithGivenObjects}_{a,b}: a^{\vee} \otimes b^{\vee} \rightarrow (a \otimes b)^{\vee}</span>.</p>
@@ -989,7 +988,7 @@
 
 <h5>7.4-41 AddTensorProductDualityCompatibilityMorphismWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTensorProductDualityCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTensorProductDualityCompatibilityMorphismWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TensorProductDualityCompatibilityMorphismWithGivenObjects</code>. <span class="Math">F: ( a^{\vee} \otimes b^{\vee}, a, b, (a \otimes b)^{\vee} ) \mapsto \mathrm{TensorProductDualityCompatibilityMorphismWithGivenObjects}_{a,b}</span>.</p>
@@ -998,7 +997,7 @@
 
 <h5>7.4-42 MorphismFromTensorProductToInternalHom</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromTensorProductToInternalHom</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromTensorProductToInternalHom</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a^{\vee} \otimes b, \mathrm{\underline{Hom}}(a,b) )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}_{a,b}: a^{\vee} \otimes b \rightarrow \mathrm{\underline{Hom}}(a,b)</span>.</p>
@@ -1007,7 +1006,7 @@
 
 <h5>7.4-43 MorphismFromTensorProductToInternalHomWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromTensorProductToInternalHomWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromTensorProductToInternalHomWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a^{\vee} \otimes b, \mathrm{\underline{Hom}}(a,b) )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = a^{\vee} \otimes b</span>, two objects <span class="Math">a,b</span>, and an object <span class="Math">r = \mathrm{\underline{Hom}}(a,b)</span>. The output is the natural morphism <span class="Math">\mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}_{a,b}: a^{\vee} \otimes b \rightarrow \mathrm{\underline{Hom}}(a,b)</span>.</p>
@@ -1016,7 +1015,7 @@
 
 <h5>7.4-44 AddMorphismFromTensorProductToInternalHomWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromTensorProductToInternalHomWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromTensorProductToInternalHomWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MorphismFromTensorProductToInternalHomWithGivenObjects</code>. <span class="Math">F: ( a^{\vee} \otimes b, a, b, \mathrm{\underline{Hom}}(a,b) ) \mapsto \mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}_{a,b}</span>.</p>
@@ -1025,7 +1024,7 @@
 
 <h5>7.4-45 IsomorphismFromTensorProductToInternalHom</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromTensorProductToInternalHom</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromTensorProductToInternalHom</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a^{\vee} \otimes b, \mathrm{\underline{Hom}}(a,b) )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span>. The output is the natural morphism <span class="Math">\mathrm{IsomorphismFromTensorProductToInternalHom}_{a,b}: a^{\vee} \otimes b \rightarrow \mathrm{\underline{Hom}}(a,b)</span>.</p>
@@ -1034,7 +1033,7 @@
 
 <h5>7.4-46 AddIsomorphismFromTensorProductToInternalHom</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromTensorProductToInternalHom</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromTensorProductToInternalHom</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromTensorProductToInternalHom</code>. <span class="Math">F: ( a, b ) \mapsto \mathrm{IsomorphismFromTensorProductToInternalHom}_{a,b}</span>.</p>
@@ -1043,7 +1042,7 @@
 
 <h5>7.4-47 MorphismFromInternalHomToTensorProduct</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromInternalHomToTensorProduct</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromInternalHomToTensorProduct</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b), a^{\vee} \otimes b )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span>. The output is the inverse of <span class="Math">\mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}</span>, namely <span class="Math">\mathrm{MorphismFromInternalHomToTensorProductWithGivenObjects}_{a,b}: \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b</span>.</p>
@@ -1052,7 +1051,7 @@
 
 <h5>7.4-48 MorphismFromInternalHomToTensorProductWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromInternalHomToTensorProductWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromInternalHomToTensorProductWithGivenObjects</code>( <var class="Arg">s</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b), a^{\vee} \otimes b )</span>.</p>
 
 <p>The arguments are an object <span class="Math">s = \mathrm{\underline{Hom}}(a,b)</span>, two objects <span class="Math">a,b</span>, and an object <span class="Math">r = a^{\vee} \otimes b</span>. The output is the inverse of <span class="Math">\mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}</span>, namely <span class="Math">\mathrm{MorphismFromInternalHomToTensorProductWithGivenObjects}_{a,b}: \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b</span>.</p>
@@ -1061,7 +1060,7 @@
 
 <h5>7.4-49 AddMorphismFromInternalHomToTensorProductWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromInternalHomToTensorProductWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromInternalHomToTensorProductWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MorphismFromInternalHomToTensorProductWithGivenObjects</code>. <span class="Math">F: ( \mathrm{\underline{Hom}}(a,b),a,b,a^{\vee} \otimes b ) \mapsto \mathrm{MorphismFromInternalHomToTensorProductWithGivenObjects}_{a,b}</span>.</p>
@@ -1070,7 +1069,7 @@
 
 <h5>7.4-50 IsomorphismFromInternalHomToTensorProduct</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromInternalHomToTensorProduct</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromInternalHomToTensorProduct</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b), a^{\vee} \otimes b )</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span>. The output is the inverse of <span class="Math">\mathrm{IsomorphismFromTensorProductToInternalHom}</span>, namely <span class="Math">\mathrm{IsomorphismFromInternalHomToTensorProduct}_{a,b}: \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b</span>.</p>
@@ -1079,7 +1078,7 @@
 
 <h5>7.4-51 AddIsomorphismFromInternalHomToTensorProduct</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromInternalHomToTensorProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromInternalHomToTensorProduct</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromInternalHomToTensorProduct</code>. <span class="Math">F: ( a,b ) \mapsto \mathrm{IsomorphismFromInternalHomToTensorProduct}_{a,b}</span>.</p>
@@ -1088,7 +1087,7 @@
 
 <h5>7.4-52 TraceMap</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TraceMap</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TraceMap</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(1,1)</span>.</p>
 
 <p>The argument is a morphism <span class="Math">\alpha</span>. The output is the trace morphism <span class="Math">\mathrm{trace}_{\alpha}: 1 \rightarrow 1</span>.</p>
@@ -1097,7 +1096,7 @@
 
 <h5>7.4-53 AddTraceMap</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTraceMap</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTraceMap</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TraceMap</code>. <span class="Math">F: \alpha \mapsto \mathrm{trace}_{\alpha}</span></p>
@@ -1106,7 +1105,7 @@
 
 <h5>7.4-54 RankMorphism</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RankMorphism</code>( <var class="Arg">a</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RankMorphism</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(1,1)</span>.</p>
 
 <p>The argument is an object <span class="Math">a</span>. The output is the rank morphism <span class="Math">\mathrm{rank}_a: 1 \rightarrow 1</span>.</p>
@@ -1115,7 +1114,7 @@
 
 <h5>7.4-55 AddRankMorphism</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRankMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRankMorphism</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">RankMorphism</code>. <span class="Math">F: a \mapsto \mathrm{rank}_{a}</span></p>
@@ -1124,7 +1123,7 @@
 
 <h5>7.4-56 IsomorphismFromDualToInternalHom</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromDualToInternalHom</code>( <var class="Arg">a</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromDualToInternalHom</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a^{\vee}, \mathrm{\underline{Hom}}(a,1))</span>.</p>
 
 <p>The argument is an object <span class="Math">a</span>. The output is the isomorphism <span class="Math">\mathrm{IsomorphismFromDualToInternalHom}_{a}: a^{\vee} \rightarrow \mathrm{\underline{Hom}}(a,1)</span>.</p>
@@ -1133,7 +1132,7 @@
 
 <h5>7.4-57 AddIsomorphismFromDualToInternalHom</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromDualToInternalHom</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromDualToInternalHom</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromDualToInternalHom</code>. <span class="Math">F: a \mapsto \mathrm{IsomorphismFromDualToInternalHom}_{a}</span></p>
@@ -1142,7 +1141,7 @@
 
 <h5>7.4-58 IsomorphismFromInternalHomToDual</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromInternalHomToDual</code>( <var class="Arg">a</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromInternalHomToDual</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{\underline{Hom}}(a,1), a^{\vee})</span>.</p>
 
 <p>The argument is an object <span class="Math">a</span>. The output is the isomorphism <span class="Math">\mathrm{IsomorphismFromInternalHomToDual}_{a}: \mathrm{\underline{Hom}}(a,1) \rightarrow a^{\vee}</span>.</p>
@@ -1151,7 +1150,7 @@
 
 <h5>7.4-59 AddIsomorphismFromInternalHomToDual</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromInternalHomToDual</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromInternalHomToDual</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromInternalHomToDual</code>. <span class="Math">F: a \mapsto \mathrm{IsomorphismFromInternalHomToDual}_{a}</span></p>
@@ -1160,7 +1159,7 @@
 
 <h5>7.4-60 UniversalPropertyOfDual</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalPropertyOfDual</code>( <var class="Arg">t</var>, <var class="Arg">a</var>, <var class="Arg">alpha</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalPropertyOfDual</code>( <var class="Arg">t</var>, <var class="Arg">a</var>, <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(t, a^{\vee})</span>.</p>
 
 <p>The arguments are two objects <span class="Math">t,a</span>, and a morphism <span class="Math">\alpha: t \otimes a \rightarrow 1</span>. The output is the morphism <span class="Math">t \rightarrow a^{\vee}</span> given by the universal property of <span class="Math">a^{\vee}</span>.</p>
@@ -1169,7 +1168,7 @@
 
 <h5>7.4-61 AddUniversalPropertyOfDual</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalPropertyOfDual</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalPropertyOfDual</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">UniversalPropertyOfDual</code>. <span class="Math">F: ( t,a,\alpha: t \otimes a \rightarrow 1 ) \mapsto ( t \rightarrow a^{\vee} )</span>.</p>
@@ -1178,7 +1177,7 @@
 
 <h5>7.4-62 LambdaIntroduction</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LambdaIntroduction</code>( <var class="Arg">alpha</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LambdaIntroduction</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( 1, \mathrm{\underline{Hom}}(a,b) )</span>.</p>
 
 <p>The argument is a morphism <span class="Math">\alpha: a \rightarrow b</span>. The output is the corresponding morphism <span class="Math">1 \rightarrow \mathrm{\underline{Hom}}(a,b)</span> under the tensor hom adjunction.</p>
@@ -1187,7 +1186,7 @@
 
 <h5>7.4-63 AddLambdaIntroduction</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLambdaIntroduction</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLambdaIntroduction</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">LambdaIntroduction</code>. <span class="Math">F: ( \alpha: a \rightarrow b ) \mapsto ( 1 \rightarrow \mathrm{\underline{Hom}}(a,b) )</span>.</p>
@@ -1196,7 +1195,7 @@
 
 <h5>7.4-64 LambdaElimination</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LambdaElimination</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">alpha</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LambdaElimination</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a,b)</span>.</p>
 
 <p>The arguments are two objects <span class="Math">a,b</span>, and a morphism <span class="Math">\alpha: 1 \rightarrow \mathrm{\underline{Hom}}(a,b)</span>. The output is a morphism <span class="Math">a \rightarrow b</span> corresponding to <span class="Math">\alpha</span> under the tensor hom adjunction.</p>
@@ -1205,7 +1204,7 @@
 
 <h5>7.4-65 AddLambdaElimination</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLambdaElimination</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddLambdaElimination</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">LambdaElimination</code>. <span class="Math">F: ( a,b,\alpha: 1 \rightarrow \mathrm{\underline{Hom}}(a,b) ) \mapsto ( a \rightarrow b )</span>.</p>
@@ -1214,7 +1213,7 @@
 
 <h5>7.4-66 IsomorphismFromObjectToInternalHom</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromObjectToInternalHom</code>( <var class="Arg">a</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromObjectToInternalHom</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, \mathrm{\underline{Hom}}(1,a))</span>.</p>
 
 <p>The argument is an object <span class="Math">a</span>. The output is the natural isomorphism <span class="Math">a \rightarrow \mathrm{\underline{Hom}}(1,a)</span>.</p>
@@ -1223,7 +1222,7 @@
 
 <h5>7.4-67 IsomorphismFromObjectToInternalHomWithGivenInternalHom</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromObjectToInternalHomWithGivenInternalHom</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromObjectToInternalHomWithGivenInternalHom</code>( <var class="Arg">a</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(a, \mathrm{\underline{Hom}}(1,a))</span>.</p>
 
 <p>The argument is an object <span class="Math">a</span>, and an object <span class="Math">r = \mathrm{\underline{Hom}}(1,a)</span>. The output is the natural isomorphism <span class="Math">a \rightarrow \mathrm{\underline{Hom}}(1,a)</span>.</p>
@@ -1232,7 +1231,7 @@
 
 <h5>7.4-68 AddIsomorphismFromObjectToInternalHomWithGivenInternalHom</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromObjectToInternalHomWithGivenInternalHom</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromObjectToInternalHomWithGivenInternalHom</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromObjectToInternalHomWithGivenInternalHom</code>. <span class="Math">F: ( a, \mathrm{\underline{Hom}}(1,a) ) \mapsto ( a \rightarrow \mathrm{\underline{Hom}}(1,a) )</span>.</p>
@@ -1241,7 +1240,7 @@
 
 <h5>7.4-69 IsomorphismFromInternalHomToObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromInternalHomToObject</code>( <var class="Arg">a</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromInternalHomToObject</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{\underline{Hom}}(1,a),a)</span>.</p>
 
 <p>The argument is an object <span class="Math">a</span>. The output is the natural isomorphism <span class="Math">\mathrm{\underline{Hom}}(1,a) \rightarrow a</span>.</p>
@@ -1250,7 +1249,7 @@
 
 <h5>7.4-70 IsomorphismFromInternalHomToObjectWithGivenInternalHom</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromInternalHomToObjectWithGivenInternalHom</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsomorphismFromInternalHomToObjectWithGivenInternalHom</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(\mathrm{\underline{Hom}}(1,a),a)</span>.</p>
 
 <p>The argument is an object <span class="Math">a</span>, and an object <span class="Math">s = \mathrm{\underline{Hom}}(1,a)</span>. The output is the natural isomorphism <span class="Math">\mathrm{\underline{Hom}}(1,a) \rightarrow a</span>.</p>
@@ -1259,7 +1258,7 @@
 
 <h5>7.4-71 AddIsomorphismFromInternalHomToObjectWithGivenInternalHom</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromInternalHomToObjectWithGivenInternalHom</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsomorphismFromInternalHomToObjectWithGivenInternalHom</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsomorphismFromInternalHomToObjectWithGivenInternalHom</code>. <span class="Math">F: ( a, \mathrm{\underline{Hom}}(1,a) ) \mapsto ( \mathrm{\underline{Hom}}(1,a) \rightarrow a )</span>.</p>
@@ -1285,7 +1284,7 @@
 
 <h5>7.5-1 TensorProductInternalHomCompatibilityMorphismInverse</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductInternalHomCompatibilityMorphismInverse</code>( <var class="Arg">a</var>, <var class="Arg">a'</var>, <var class="Arg">b</var>, <var class="Arg">b'</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductInternalHomCompatibilityMorphismInverse</code>( <var class="Arg">a</var>, <var class="Arg">a'</var>, <var class="Arg">b</var>, <var class="Arg">b'</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b'), \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'))</span>.</p>
 
 <p>The arguments are four objects <span class="Math">a, a', b, b'</span>. The output is the natural morphism <span class="Math">\mathrm{TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') \rightarrow \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b')</span>.</p>
@@ -1294,7 +1293,7 @@
 
 <h5>7.5-2 TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects</code>( <var class="Arg">a</var>, <var class="Arg">a'</var>, <var class="Arg">b</var>, <var class="Arg">b'</var>, <var class="Arg">L</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects</code>( <var class="Arg">a</var>, <var class="Arg">a'</var>, <var class="Arg">b</var>, <var class="Arg">b'</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b'), \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'))</span>.</p>
 
 <p>The arguments are four objects <span class="Math">a, a', b, b'</span>, and a list <span class="Math">L = [ \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') ]</span>. The output is the natural morphism <span class="Math">\mathrm{TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') \rightarrow \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b')</span>.</p>
@@ -1303,7 +1302,7 @@
 
 <h5>7.5-3 AddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects</code>. <span class="Math">F: ( a,a',b,b', [ \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') ]) \mapsto \mathrm{TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}</span>.</p>
@@ -1312,7 +1311,7 @@
 
 <h5>7.5-4 MorphismFromBidual</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromBidual</code>( <var class="Arg">a</var> )</td><td class="tdright">( attribute )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromBidual</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}((a^{\vee})^{\vee},a)</span>.</p>
 
 <p>The argument is an object <span class="Math">a</span>. The output is the inverse of the morphism to the bidual <span class="Math">(a^{\vee})^{\vee} \rightarrow a</span>.</p>
@@ -1321,7 +1320,7 @@
 
 <h5>7.5-5 MorphismFromBidualWithGivenBidual</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromBidualWithGivenBidual</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismFromBidualWithGivenBidual</code>( <var class="Arg">a</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}((a^{\vee})^{\vee},a)</span>.</p>
 
 <p>The argument is an object <span class="Math">a</span>, and an object <span class="Math">s = (a^{\vee})^{\vee}</span>. The output is the inverse of the morphism to the bidual <span class="Math">(a^{\vee})^{\vee} \rightarrow a</span>.</p>
@@ -1330,7 +1329,7 @@
 
 <h5>7.5-6 AddMorphismFromBidualWithGivenBidual</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromBidualWithGivenBidual</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFromBidualWithGivenBidual</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
 <p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">MorphismFromBidualWithGivenBidual</code>. <span class="Math">F: (a, (a^{\vee})^{\vee}) \mapsto ((a^{\vee})^{\vee} \rightarrow a)</span>.</p>
@@ -1339,7 +1338,7 @@
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap6.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap8.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
