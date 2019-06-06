@@ -1,6 +1,6 @@
 name: LinearAlgebraForCAP
-version: 2018.02.07
-date: 07/02/2018
+version: 2018.10.11
+date: 11/10/2018
 description: Category of Matrices over a Field for CAP
 
 authors:
@@ -25,7 +25,7 @@ needed-pkgs:
       version: ">= 2018.02.04"
       url: "http://homalg-project.github.io/homalg_project/MatricesForHomalg/"
     - name: "CAP"
-      version: ">= 2018.02.07"
+      version: ">= 2018.09.17"
       url: "http://homalg-project.github.io/CAP_project/CAP/"
     - name: "ToolsForHomalg"
       version: ">=2015.09.18"
@@ -37,9 +37,9 @@ packageinfo: http://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/Pac
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2018.02.07/LinearAlgebraForCAP-2018.02.07.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2018.10.11/LinearAlgebraForCAP-2018.10.11.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2018.02.07/LinearAlgebraForCAP-2018.02.07.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2018.10.11/LinearAlgebraForCAP-2018.10.11.zip
 
 abstract: <span class="pkgname">LinearAlgebraForCAP</span> provides a skeletal model of the category of finite dimensional vector spaces over a computable field.
 
