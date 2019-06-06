@@ -1,6 +1,6 @@
 name: LinearAlgebraForCAP
-version: 2018.10.11
-date: 11/10/2018
+version: 2019.01.16
+date: 16/01/2019
 description: Category of Matrices over a Field for CAP
 
 authors:
@@ -21,15 +21,18 @@ needed-pkgs:
     - name: "GAPDoc"
       version: ">= 1.5"
       url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
+    - name: "ToolsForHomalg"
+      version: ">=2015.09.18"
+      url: "http://homalg-project.github.io/homalg_project/ToolsForHomalg/"
     - name: "MatricesForHomalg"
       version: ">= 2018.02.04"
       url: "http://homalg-project.github.io/homalg_project/MatricesForHomalg/"
     - name: "CAP"
-      version: ">= 2018.09.17"
+      version: ">= 2019.01.16"
       url: "http://homalg-project.github.io/CAP_project/CAP/"
-    - name: "ToolsForHomalg"
-      version: ">=2015.09.18"
-      url: "http://homalg-project.github.io/homalg_project/ToolsForHomalg/"
+    - name: "MonoidalCategories"
+      version: ">= 2019.01.16"
+      url: "https://homalg-project.github.io/CAP_project/MonoidalCategories"
 
 www: http://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/
 readme: http://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/README
@@ -37,11 +40,11 @@ packageinfo: http://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/Pac
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2018.10.11/LinearAlgebraForCAP-2018.10.11.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2019.01.16/LinearAlgebraForCAP-2019.01.16.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2018.10.11/LinearAlgebraForCAP-2018.10.11.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2019.01.16/LinearAlgebraForCAP-2019.01.16.zip
 
-abstract: <span class="pkgname">LinearAlgebraForCAP</span> provides a skeletal model of the category of finite dimensional vector spaces over a computable field.
+abstract: '<span class="pkgname">LinearAlgebraForCAP</span> provides a skeletal model of the category of finite dimensional vector spaces over a computable field.'
 
 status: deposited
 doc-html: doc/chap0.html

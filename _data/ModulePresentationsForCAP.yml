@@ -1,6 +1,6 @@
 name: ModulePresentationsForCAP
-version: 2018.02.02
-date: 02/02/2018
+version: 2019.01.16
+date: 16/01/2019
 description: Category R-pres for CAP
 
 authors:
@@ -25,8 +25,11 @@ needed-pkgs:
       version: ">=2017.03.27"
       url: "http://homalg-project.github.io/homalg_project/MatricesForHomalg/"
     - name: "CAP"
-      version: ">=2018.02.02"
+      version: ">= 2019.01.16"
       url: "http://homalg-project.github.io/CAP_project/CAP/"
+    - name: "MonoidalCategories"
+      version: ">= 2019.01.16"
+      url: "https://homalg-project.github.io/CAP_project/MonoidalCategories"
     - name: "GeneralizedMorphismsForCAP"
       version: ">=0"
       url: "http://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/"
@@ -37,11 +40,11 @@ packageinfo: http://homalg-project.github.io/CAP_project/ModulePresentationsForC
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2018.02.02/ModulePresentationsForCAP-2018.02.02.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2019.01.16/ModulePresentationsForCAP-2019.01.16.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2018.02.02/ModulePresentationsForCAP-2018.02.02.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2019.01.16/ModulePresentationsForCAP-2019.01.16.zip
 
-abstract: <span class="pkgname">ModulePresentationsForCAP</span> provides the category of finitely presented modules over a computable ring.
+abstract: '<span class="pkgname">ModulePresentationsForCAP</span> provides the category of finitely presented modules over a computable ring.'
 
 status: deposited
 doc-html: doc/chap0.html
