@@ -103,6 +103,9 @@ m1L := GradedRowOrColumnMorphism(
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( m1L );
 #! true
+#! @EndExample
+
+#! @Log
 Display( Source( m1L ) );
 #! A graded row over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees: 
@@ -114,6 +117,9 @@ Display( Range( m1L ) );
 Display( UnderlyingHomalgMatrix( m1L ) );
 #! x_1,x_2
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 Q1R := GradedColumn( [ [[0,0],1] ], S );
 #! <A graded column of rank 1>
 IsWellDefined( Q1R );
@@ -126,6 +132,9 @@ m1R := GradedRowOrColumnMorphism(
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( m1R );
 #! true
+#! @EndExample
+
+#! @Log
 Display( Source( m1R ) );
 #! A graded column over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 1 and degrees: 
@@ -138,8 +147,8 @@ Display( UnderlyingHomalgMatrix( m1R ) );
 #! x_1,
 #! x_2
 #! (over a graded ring)
+#! @EndLog
 
-#! @EndExample
 
 
 
@@ -165,11 +174,13 @@ categoryR := CapCategory( Q1R );
 #######################################################################
 
 #! @Example
-
 ZeroObject( categoryL );
 #! <A graded row of rank 0>
 O1L := GradedRow( [ [[-1,0],2] ], S );
 #! <A graded row of rank 2>
+#! @EndExample
+
+#! @Log
 Display( ZeroMorphism( ZeroObject( categoryL ), O1L ) );
 #! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -188,10 +199,16 @@ Display( ZeroMorphism( ZeroObject( categoryL ), O1L ) );
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
 #! of rank 2 and degrees: 
 #! [ [ ( -1, 0 ), 2 ] ]
+#! @EndLog
+
+#! @Example
 O2L := GradedRow( [ [[0,0],1] ], S );
 #! <A graded row of rank 1>
 obj3L := GradedRow( [ [[-1,0],1] ], S );
 #! <A graded row of rank 1>
+#! @EndExample
+
+#! @Log
 Display( IdentityMorphism( O2L ) );
 #! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -211,69 +228,114 @@ Display( IdentityMorphism( O2L ) );
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
 #! of rank 1 and degrees: 
 #! [ [ 0, 1 ] ]
+#! @EndLog
+
+#! @Example
 IsWellDefined( IdentityMorphism( Q2L ) );
 #! true
 directSumL := DirectSum( [ O1L, O2L ] );
 #! <A graded row of rank 3>
+#! @EndExample
+
+#! @Log
 Display( directSumL );
 #! A graded row over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 3 and degrees:
 #! [ [ ( -1, 0 ), 2 ], [ 0, 1 ] ]
+#! @EndLog
+
+#! @Example
 i1L := InjectionOfCofactorOfDirectSum( [ O1L, O2L ], 1 );
 #! <A morphism in CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( i1L );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( i1L ) );
 #! 1,0,0,
 #! 0,1,0 
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 i2L := InjectionOfCofactorOfDirectSum( [ O1L, O2L ], 2 );
 #! <A morphism in CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ],[ 0, 1 ] ])>
 IsWellDefined( i2L );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( i2L ) );
 #! 0,0,1
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 proj1L := ProjectionInFactorOfDirectSum( [ O1L, O2L ], 1 );
 #! <A morphism in CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( proj1L );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( proj1L ) );
 #! 1,0,
 #! 0,1,
 #! 0,0 
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 proj2L := ProjectionInFactorOfDirectSum( [ O1L, O2L ], 2 );
 #! <A morphism in CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( proj2L );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( proj2L ) );
 #! 0,
 #! 0,
 #! 1 
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 kL := WeakKernelEmbedding( proj1L );
 #! <A morphism in CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( kL );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( kL ) );
 #! 0,0,1
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 ckL := WeakCokernelProjection( kL );
 #! <A morphism in CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( ckL );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( ckL ) );
 #! 1,0,
 #! 0,1,
 #! 0,0 
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 IsMonomorphism( kL );
 #! true
 IsEpimorphism( kL );
@@ -312,9 +374,15 @@ liftL := Lift( m3L, m1L );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( liftL );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( liftL ) );
 #! x_1, 0
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 O3L := GradedRow( [ [[1,0],2] ], S );
 #! <A graded row of rank 2>
 morL := GradedRowOrColumnMorphism( 
@@ -328,9 +396,15 @@ coliftL := Colift( m2L, morL );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( coliftL );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( coliftL ) );
 #! x_1,x_2
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 fpL := WeakBiFiberProduct( m1L, m2L );
 #! <A graded row of rank 2>
 fp_proj1L := ProjectionInFirstFactorOfWeakBiFiberProduct( m1L, m2L );
@@ -338,19 +412,31 @@ fp_proj1L := ProjectionInFirstFactorOfWeakBiFiberProduct( m1L, m2L );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( fp_proj1L );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( fp_proj1L ) );
 #! 1,0,
 #! 0,1 
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 fp_proj2L := ProjectionInSecondFactorOfWeakBiFiberProduct( m1L, m2L );
 #! <A morphism in CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( fp_proj2L );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( fp_proj2L ) );
 #! 1,
 #! x_2 
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 BiasedWeakFiberProduct( m1L, m2L );
 #! <A graded row of rank 2>
 pbwfprow := ProjectionOfBiasedWeakFiberProduct( m1L, m2L );
@@ -358,6 +444,9 @@ pbwfprow := ProjectionOfBiasedWeakFiberProduct( m1L, m2L );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( pbwfprow );
 #! true
+#! @EndExample
+
+#! @Log
 Display( pbwfprow );
 #! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -378,6 +467,9 @@ Display( pbwfprow );
 #! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
 #! of rank 2 and degrees: 
 #! [ [ 0, 1 ], [ ( -1, 0 ), 1 ] ]
+#! @EndLog
+
+#! @Example
 poL := WeakBiPushout( morL, m2L );
 #! <A graded row of rank 2>
 inj1L := InjectionOfFirstCofactorOfWeakBiPushout( morL, m2L );
@@ -385,23 +477,38 @@ inj1L := InjectionOfFirstCofactorOfWeakBiPushout( morL, m2L );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( inj1L );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( inj1L ) );
 #! 1,0,
 #! 0,1 
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 inj2L := InjectionOfSecondCofactorOfWeakBiPushout( morL, m2L );
 #! <A morphism in CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( inj2L );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( inj2L ) );
 #! x_1,x_2
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 injectionL := InjectionOfBiasedWeakPushout( morL, m2L );
 #! <A morphism in CAP category of graded rows over
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( injectionL );
 #! true
+#! @EndExample
+
+#! @Log
 Display( injectionL );
 #! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -421,17 +528,29 @@ Display( injectionL );
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
 #! of rank 2 and degrees: 
 #! [ [ ( 1, 0 ), 2 ] ]
+#! @EndLog
+
+#! @Example
 tensorProductL := TensorProductOnObjects( O1L, O2L );
 #! <A graded row of rank 2>
+#! @EndExample
+
+#! @Log
 Display( tensorProductL );
 #! A graded row over Q[x_1,x_2,x_3,x_4] (with weights 
 #! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees: 
 #! [ [ ( -1, 0 ), 2 ] ]
+#! @EndLog
+
+#! @Example
 tensorProductMorphismL := TensorProductOnMorphisms( m2L, morL );
 #! <A morphism in CAP category of graded rows over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( tensorProductMorphismL );
 #! true
+#! @EndExample
+
+#! @Log
 Display( tensorProductMorphismL );
 #! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -456,8 +575,14 @@ Display( DualOnObjects( TensorProductOnObjects( ObjectL, Object2L ) ) );
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 16 and degrees: 
 #! [ [ ( -2, 0 ), 5 ], [ ( -1, -1 ), 2 ], [ ( -2, 0 ), 6 ], [ ( -1, -1 ), 2 ], 
 #! [ ( -2, 0 ), 1 ] ]
+#! @EndLog
+
+#! @Example
 IsWellDefined( DualOnMorphisms( m1L ) );
 #! true
+#! @EndExample
+
+#! @Log
 Display( DualOnMorphisms( m1L ) );
 #! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -477,9 +602,15 @@ Display( DualOnMorphisms( m1L ) );
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
 #! of rank 2 and degrees: 
 #! [ [ 0, 1 ], [ ( 1, 0 ), 1 ] ]
+#! @EndLog
+
+#! @Example
 IsWellDefined( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( 
 DualOnObjects( ObjectL ), ObjectL ), ObjectL, TensorUnit( categoryL ) ) );
 #! true
+#! @EndExample
+
+#! @Log
 Display( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( 
 DualOnObjects( ObjectL ), ObjectL ), ObjectL, TensorUnit( categoryL ) ) );
 #! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
@@ -507,8 +638,7 @@ Display( InternalHomOnObjects( ObjectL, ObjectL ) );
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
 #! of rank 4 and degrees: 
 #! [ [ 0, 4 ] ]
-
-#! @EndExample
+#! @EndLog
 
 
 ########################################################################
@@ -520,6 +650,9 @@ ZeroObject( categoryR );
 #! <A graded column of rank 0>
 O1R := GradedColumn( [ [[-1,0],2] ], S );
 #! <A graded column of rank 2>
+#! @EndExample
+
+#! @Log
 Display( ZeroMorphism( ZeroObject( categoryR ), O1R ) );
 #! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -538,10 +671,16 @@ Display( ZeroMorphism( ZeroObject( categoryR ), O1R ) );
 #! (with weights [ [ 1, 0 ], [ 1,0 ], [ 0, 1 ], [ 0, 1 ] ]) 
 #! of rank 2 and degrees: 
 #! [ [ ( -1, 0 ), 2 ] ]
+#! @EndLog
+
+#! @Example
 O2R := GradedColumn( [ [[0,0],1] ], S );
 #! <A graded column of rank 1>
 obj3R := GradedColumn( [ [[-1,0],1] ], S );
 #! <A graded column of rank 1>
+#! @EndExample
+
+#! @Log
 Display( IdentityMorphism( O2R ) );
 #! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -561,70 +700,115 @@ Display( IdentityMorphism( O2R ) );
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
 #! of rank 1 and degrees: 
 #! [ [ 0, 1 ] ]
+#! @EndLog
+
+#! @Example
 IsWellDefined( IdentityMorphism( Q2R ) );
 #! true
 directSumR := DirectSum( [ O1R, O2R ] );
 #! <A graded column of rank 3>
+#! @EndExample
+
+#! @Log
 Display( directSumR );
 #! A graded column over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 3 and degrees:
 #! [ [ ( -1, 0 ), 2 ], [ 0, 1 ] ]
+#! @EndLog
+
+#! @Example
 i1R := InjectionOfCofactorOfDirectSum( [ O1R, O2R ], 1 );
 #! <A morphism in CAP category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( i1R );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( i1R ) );
 #! 1,0,
 #! 0,1,
 #! 0,0
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 i2R := InjectionOfCofactorOfDirectSum( [ O1R, O2R ], 2 );
 #! <A morphism in CAP category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ],[ 0, 1 ] ])>
 IsWellDefined( i2R );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( i2R ) );
 #! 0,
 #! 0,
 #! 1
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 proj1R := ProjectionInFactorOfDirectSum( [ O1R, O2R ], 1 );
 #! <A morphism in CAP category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( proj1R );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( proj1R ) );
 #! 1,0,0,
 #! 0,1,0
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 proj2R := ProjectionInFactorOfDirectSum( [ O1R, O2R ], 2 );
 #! <A morphism in CAP category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( proj2R );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( proj2R ) );
 #! 0,0,1
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 kR := WeakKernelEmbedding( proj1R );
 #! <A morphism in CAP category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( kR );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( kR ) );
 #! 0,
 #! 0,
 #! 1
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 ckR := WeakCokernelProjection( kR );
 #! <A morphism in CAP category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( ckR );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( ckR ) );
 #! 1,0,0,
 #! 0,1,0
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 IsMonomorphism( kR );
 #! true
 IsEpimorphism( kR );
@@ -663,10 +847,16 @@ liftR := Lift( m3R, m1R );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( liftR );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( liftR ) );
 #! x_1,
 #! 0
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 O3R := GradedColumn( [ [[1,0],2] ], S );
 #! <A graded column of rank 2>
 morR := GradedRowOrColumnMorphism( 
@@ -680,10 +870,16 @@ coliftR := Colift( m2R, morR );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( coliftR );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( coliftR ) );
 #! x_1,
 #! x_2
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 fpR := WeakBiFiberProduct( m1R, m2R );
 #! <A graded column of rank 2>
 fp_proj1R := ProjectionInFirstFactorOfWeakBiFiberProduct( m1R, m2R );
@@ -691,18 +887,30 @@ fp_proj1R := ProjectionInFirstFactorOfWeakBiFiberProduct( m1R, m2R );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( fp_proj1R );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( fp_proj1R ) );
 #! 1,0,
 #! 0,1 
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 fp_proj2R := ProjectionInSecondFactorOfWeakBiFiberProduct( m1R, m2R );
 #! <A morphism in CAP category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( fp_proj2R );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( fp_proj2R ) );
 #! 1, x_2
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 BiasedWeakFiberProduct( m1R, m2R );
 #! <A graded column of rank 2>
 pbwfpcol := ProjectionOfBiasedWeakFiberProduct( m1R, m2R );
@@ -710,6 +918,9 @@ pbwfpcol := ProjectionOfBiasedWeakFiberProduct( m1R, m2R );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsWellDefined( pbwfpcol );
 #! true
+#! @EndExample
+
+#! @Log
 Display( pbwfpcol );
 #! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -730,6 +941,9 @@ Display( pbwfpcol );
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
 #! of rank 2 and degrees: 
 #! [ [ 0, 1 ], [ ( -1, 0 ), 1 ] ]
+#! @EndLog
+
+#! @Example
 poR := WeakBiPushout( morR, m2R );
 #! <A graded column of rank 2>
 inj1R := InjectionOfFirstCofactorOfWeakBiPushout( morR, m2R );
@@ -737,24 +951,39 @@ inj1R := InjectionOfFirstCofactorOfWeakBiPushout( morR, m2R );
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( inj1R );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( inj1R ) );
 #! 1,0,
 #! 0,1 
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 inj2R := InjectionOfSecondCofactorOfWeakBiPushout( morR, m2R );
 #! <A morphism in CAP category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( inj2R );
 #! true
+#! @EndExample
+
+#! @Log
 Display( UnderlyingHomalgMatrix( inj2R ) );
 #! x_1,
 #! x_2
 #! (over a graded ring)
+#! @EndLog
+
+#! @Example
 injectionR := InjectionOfBiasedWeakPushout( morR, m2R );
 #! <A morphism in CAP category of graded columns over
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( injectionR );
 #! true
+#! @EndExample
+
+#! @Log
 Display( injectionR );
 #! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -775,17 +1004,29 @@ Display( injectionR );
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
 #! of rank 2 and degrees: 
 #! [ [ ( 1, 0 ), 2 ] ]
+#! @EndLog
+
+#! @Example
 tensorProductR := TensorProductOnObjects( O1R, O2R );
 #! <A graded column of rank 2>
+#! @EndExample
+
+#! @Log
 Display( tensorProductR );
 #! A graded column over Q[x_1,x_2,x_3,x_4] (with weights 
 #! [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 2 and degrees: 
 #! [ [ ( -1, 0 ), 2 ] ]
+#! @EndLog
+
+#! @Example
 tensorProductMorphismR := TensorProductOnMorphisms( m2R, morR );
 #! <A morphism in CAP category of graded columns over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [0, 1 ] ])>
 IsWellDefined( tensorProductMorphismR );
 #! true
+#! @EndExample
+
+#! @Log
 Display( tensorProductMorphismR );
 #! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -811,8 +1052,14 @@ Display( DualOnObjects( TensorProductOnObjects( ObjectR, Object2R ) ) );
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) of rank 16 and degrees: 
 #! [ [ ( -2, 0 ), 5 ], [ ( -1, -1 ), 2 ], [ ( -2, 0 ), 6 ], [ ( -1, -1 ), 2 ], 
 #! [ ( -2, 0 ), 1 ] ]
+#! @EndLog
+
+#! @Example
 IsWellDefined( DualOnMorphisms( m1R ) );
 #! true
+#! @EndExample
+
+#! @Log
 Display( DualOnMorphisms( m1R ) );
 #! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
@@ -833,9 +1080,15 @@ Display( DualOnMorphisms( m1R ) );
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
 #! of rank 2 and degrees: 
 #! [ [ 0, 1 ], [ ( 1, 0 ), 1 ] ]
+#! @EndLog
+
+#! @Example
 IsWellDefined( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( 
 DualOnObjects( ObjectR ), ObjectR ), ObjectR, TensorUnit( categoryR ) ) );
 #! true
+#! @EndExample
+
+#! @Log
 Display( EvaluationForDualWithGivenTensorProduct( TensorProductOnObjects( 
 DualOnObjects( ObjectR ), ObjectR ), ObjectR, TensorUnit( categoryR ) ) );
 #! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4] 
@@ -861,8 +1114,7 @@ Display( InternalHomOnObjects( ObjectR, ObjectR ) );
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
 #! of rank 4 and degrees: 
 #! [ [ 0, 4 ] ]
-
-#! @EndExample
+#! @EndLog
 
 
 #####################################################################
