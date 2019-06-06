@@ -12,7 +12,7 @@
   
   [1X6.1-1 FullSubcategoryByMembershipFunction[101X
   
-  [29X[2XFullSubcategoryByMembershipFunction[102X( [3XC[103X, [3Xfunc[103X ) [32X operation
+  [33X[1;0Y[29X[2XFullSubcategoryByMembershipFunction[102X( [3XC[103X, [3Xfunc[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya function handler[133X
   
   [33X[0;0YCreates  an  object  which  handles  the function to create a Serre quotient

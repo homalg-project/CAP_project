@@ -12,7 +12,7 @@
   
   [1X8.1-1 SerreQuotientConversionFunctor[101X
   
-  [29X[2XSerreQuotientConversionFunctor[102X( [3XA[103X, [3XB[103X ) [32X operation
+  [33X[1;0Y[29X[2XSerreQuotientConversionFunctor[102X( [3XA[103X, [3XB[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
   
   [33X[0;0YGiven  two  Serre  quotients  [3XA[103X  and  [3XB[103X of the same category [3XC[103X by equivalent

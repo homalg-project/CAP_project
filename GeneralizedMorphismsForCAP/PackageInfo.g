@@ -8,12 +8,14 @@ Version := Maximum( [
 ## this line prevents merge conflicts
   "2018.02.02", ## Sepp's version
 ## this line prevents merge conflicts
-  "2018.06.15", ## Mohamed's version
+  "2019.01.16", ## Mohamed's version
 ## this line prevents merge conflicts
    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+License := "GPL-2.0-or-later",
+
 
 Persons := [
   rec(
@@ -82,7 +84,9 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">=2018.02.02" ] ],
+                           [ "CAP", ">= 2019.01.16" ],
+                           [ "MonoidalCategories", ">= 2019.01.16" ],
+                         ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
 ),

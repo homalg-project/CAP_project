@@ -6,7 +6,7 @@
   
   [1X4.1-1 IsGeneralizedMorphismCategoryByThreeArrowsObject[101X
   
-  [29X[2XIsGeneralizedMorphismCategoryByThreeArrowsObject[102X( [3Xobject[103X ) [32X filter
+  [33X[1;0Y[29X[2XIsGeneralizedMorphismCategoryByThreeArrowsObject[102X( [3Xobject[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
   
   [33X[0;0YThe  GAP  category  of objects in the generalized morphism category by three
@@ -14,7 +14,7 @@
   
   [1X4.1-2 IsGeneralizedMorphismByThreeArrows[101X
   
-  [29X[2XIsGeneralizedMorphismByThreeArrows[102X( [3Xobject[103X ) [32X filter
+  [33X[1;0Y[29X[2XIsGeneralizedMorphismByThreeArrows[102X( [3Xobject[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
   
   [33X[0;0YThe  GAP category of morphisms in the generalized morphism category by three
@@ -25,7 +25,7 @@
   
   [1X4.2-1 HasIdentitiesAsReversedArrows[101X
   
-  [29X[2XHasIdentitiesAsReversedArrows[102X( [3Xalpha[103X ) [32X property
+  [33X[1;0Y[29X[2XHasIdentitiesAsReversedArrows[102X( [3Xalpha[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
   
   [33X[0;0YThe argument is a generalized morphism [23X\alpha[123X by three arrows [23Xa \leftarrow b
@@ -34,7 +34,7 @@
   
   [1X4.2-2 HasIdentityAsSourceAid[101X
   
-  [29X[2XHasIdentityAsSourceAid[102X( [3Xalpha[103X ) [32X property
+  [33X[1;0Y[29X[2XHasIdentityAsSourceAid[102X( [3Xalpha[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
   
   [33X[0;0YThe argument is a generalized morphism [23X\alpha[123X by three arrows [23Xa \leftarrow b
@@ -43,7 +43,7 @@
   
   [1X4.2-3 HasIdentityAsRangeAid[101X
   
-  [29X[2XHasIdentityAsRangeAid[102X( [3Xalpha[103X ) [32X property
+  [33X[1;0Y[29X[2XHasIdentityAsRangeAid[102X( [3Xalpha[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
   
   [33X[0;0YThe argument is a generalized morphism [23X\alpha[123X by three arrows [23Xa \leftarrow b
@@ -55,7 +55,7 @@
   
   [1X4.3-1 UnderlyingHonestObject[101X
   
-  [29X[2XUnderlyingHonestObject[102X( [3Xa[103X ) [32X attribute
+  [33X[1;0Y[29X[2XUnderlyingHonestObject[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object in [23X\mathbf{A}[123X[133X
   
   [33X[0;0YThe  argument  is  an object [23Xa[123X in the generalized morphism category by three
@@ -63,7 +63,7 @@
   
   [1X4.3-2 SourceAid[101X
   
-  [29X[2XSourceAid[102X( [3Xalpha[103X ) [32X attribute
+  [33X[1;0Y[29X[2XSourceAid[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{A}}(b,a)[123X[133X
   
   [33X[0;0YThe argument is a generalized morphism [23X\alpha[123X by three arrows [23Xa \leftarrow b
@@ -71,7 +71,7 @@
   
   [1X4.3-3 RangeAid[101X
   
-  [29X[2XRangeAid[102X( [3Xalpha[103X ) [32X attribute
+  [33X[1;0Y[29X[2XRangeAid[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{A}}(d,c)[123X[133X
   
   [33X[0;0YThe argument is a generalized morphism [23X\alpha[123X by three arrows [23Xa \leftarrow b
@@ -79,7 +79,7 @@
   
   [1X4.3-4 Arrow[101X
   
-  [29X[2XArrow[102X( [3Xalpha[103X ) [32X attribute
+  [33X[1;0Y[29X[2XArrow[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{A}}(b,c)[123X[133X
   
   [33X[0;0YThe argument is a generalized morphism [23X\alpha[123X by three arrows [23Xa \leftarrow b
@@ -87,7 +87,7 @@
   
   [1X4.3-5 PseudoInverse[101X
   
-  [29X[2XPseudoInverse[102X( [3Xalpha[103X ) [32X attribute
+  [33X[1;0Y[29X[2XPseudoInverse[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,a)[123X[133X
   
   [33X[0;0YThe  argument  is  a  generalized  morphism [23X\alpha: a \rightarrow b[123X by three
@@ -95,7 +95,7 @@
   
   [1X4.3-6 GeneralizedInverseByThreeArrows[101X
   
-  [29X[2XGeneralizedInverseByThreeArrows[102X( [3Xalpha[103X ) [32X attribute
+  [33X[1;0Y[29X[2XGeneralizedInverseByThreeArrows[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,a)[123X[133X
   
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  a \rightarrow b \in \mathbf{A}[123X. The
@@ -103,7 +103,7 @@
   
   [1X4.3-7 IdempotentDefinedBySubobjectByThreeArrows[101X
   
-  [29X[2XIdempotentDefinedBySubobjectByThreeArrows[102X( [3Xalpha[103X ) [32X attribute
+  [33X[1;0Y[29X[2XIdempotentDefinedBySubobjectByThreeArrows[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,b)[123X[133X
   
   [33X[0;0YThe  argument is a subobject [23X\alpha: a \hookrightarrow b \in \mathbf{A}[123X. The
@@ -112,7 +112,7 @@
   
   [1X4.3-8 IdempotentDefinedByFactorobjectByThreeArrows[101X
   
-  [29X[2XIdempotentDefinedByFactorobjectByThreeArrows[102X( [3Xalpha[103X ) [32X attribute
+  [33X[1;0Y[29X[2XIdempotentDefinedByFactorobjectByThreeArrows[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,b)[123X[133X
   
   [33X[0;0YThe   argument   is  a  factorobject  [23X\alpha:  b  \twoheadrightarrow  a  \in
@@ -124,7 +124,7 @@
   
   [1X4.4-1 GeneralizedMorphismFromFactorToSubobjectByThreeArrows[101X
   
-  [29X[2XGeneralizedMorphismFromFactorToSubobjectByThreeArrows[102X( [3Xbeta[103X, [3Xalpha[103X ) [32X operation
+  [33X[1;0Y[29X[2XGeneralizedMorphismFromFactorToSubobjectByThreeArrows[102X( [3Xbeta[103X, [3Xalpha[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(c,a)[123X[133X
   
   [33X[0;0YThe  arguments  are  a  a  factorobject [23X\beta: b \twoheadrightarrow c[123X, and a
@@ -133,7 +133,7 @@
   
   [1X4.4-2 CommonCoastriction[101X
   
-  [29X[2XCommonCoastriction[102X( [3XL[103X ) [32X operation
+  [33X[1;0Y[29X[2XCommonCoastriction[102X( [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list of generalized morphisms[133X
   
   [33X[0;0YThe argument is a list [23XL[123X of generalized morphisms by three arrows having the
@@ -145,7 +145,7 @@
   
   [1X4.5-1 GeneralizedMorphismByThreeArrows[101X
   
-  [29X[2XGeneralizedMorphismByThreeArrows[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X ) [32X operation
+  [33X[1;0Y[29X[2XGeneralizedMorphismByThreeArrows[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(a,d)[123X[133X
   
   [33X[0;0YThe  arguments are morphisms [23X\alpha: a \leftarrow b[123X, [23X\beta: b \rightarrow c[123X,
@@ -155,7 +155,7 @@
   
   [1X4.5-2 GeneralizedMorphismByThreeArrowsWithSourceAid[101X
   
-  [29X[2XGeneralizedMorphismByThreeArrowsWithSourceAid[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation
+  [33X[1;0Y[29X[2XGeneralizedMorphismByThreeArrowsWithSourceAid[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(a,c)[123X[133X
   
   [33X[0;0YThe arguments are morphisms [23X\alpha: a \leftarrow b[123X, and [23X\beta: b \rightarrow
@@ -165,7 +165,7 @@
   
   [1X4.5-3 GeneralizedMorphismByThreeArrowsWithRangeAid[101X
   
-  [29X[2XGeneralizedMorphismByThreeArrowsWithRangeAid[102X( [3Xbeta[103X, [3Xgamma[103X ) [32X operation
+  [33X[1;0Y[29X[2XGeneralizedMorphismByThreeArrowsWithRangeAid[102X( [3Xbeta[103X, [3Xgamma[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,d)[123X[133X
   
   [33X[0;0YThe arguments are morphisms [23X\beta: b \rightarrow c[123X, and [23X\gamma: c \leftarrow
@@ -175,7 +175,7 @@
   
   [1X4.5-4 AsGeneralizedMorphismByThreeArrows[101X
   
-  [29X[2XAsGeneralizedMorphismByThreeArrows[102X( [3Xalpha[103X ) [32X attribute
+  [33X[1;0Y[29X[2XAsGeneralizedMorphismByThreeArrows[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(a,b)[123X[133X
   
   [33X[0;0YThe argument is a morphism [23X\alpha: a \rightarrow b[123X in [23X\mathbf{A}[123X. The output
@@ -183,7 +183,7 @@
   
   [1X4.5-5 GeneralizedMorphismCategoryByThreeArrows[101X
   
-  [29X[2XGeneralizedMorphismCategoryByThreeArrows[102X( [3XA[103X ) [32X attribute
+  [33X[1;0Y[29X[2XGeneralizedMorphismCategoryByThreeArrows[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya category[133X
   
   [33X[0;0YThe   argument  is  an  abelian  category  [23X\mathbf{A}[123X.  The  output  is  its
@@ -191,7 +191,7 @@
   
   [1X4.5-6 GeneralizedMorphismByThreeArrowsObject[101X
   
-  [29X[2XGeneralizedMorphismByThreeArrowsObject[102X( [3Xa[103X ) [32X attribute
+  [33X[1;0Y[29X[2XGeneralizedMorphismByThreeArrowsObject[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object in [23X\mathbf{G(A)}[123X[133X
   
   [33X[0;0YThe argument is an object [23Xa[123X in an abelian category [23X\mathbf{A}[123X. The output is

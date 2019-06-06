@@ -6,7 +6,7 @@
   
   [1X5.1-1 FunctorFromCospansToThreeArrows[101X
   
-  [29X[2XFunctorFromCospansToThreeArrows[102X( [3XC[103X ) [32X attribute
+  [33X[1;0Y[29X[2XFunctorFromCospansToThreeArrows[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
   
   [33X[0;0YFor  the  given  category  [3XC[103X,  this attribute is the functor from the cospan
@@ -15,7 +15,7 @@
   
   [1X5.1-2 FunctorFromCospansToSpans[101X
   
-  [29X[2XFunctorFromCospansToSpans[102X( [3XC[103X ) [32X attribute
+  [33X[1;0Y[29X[2XFunctorFromCospansToSpans[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
   
   [33X[0;0YFor  the  given  category  [3XC[103X,  this attribute is the functor from the cospan
@@ -27,7 +27,7 @@
   
   [1X5.2-1 FunctorFromSpansToThreeArrows[101X
   
-  [29X[2XFunctorFromSpansToThreeArrows[102X( [3XC[103X ) [32X attribute
+  [33X[1;0Y[29X[2XFunctorFromSpansToThreeArrows[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
   
   [33X[0;0YFor  the  given  category  [3XC[103X,  this  attribute  is the functor from the span
@@ -36,7 +36,7 @@
   
   [1X5.2-2 FunctorFromSpansToCospans[101X
   
-  [29X[2XFunctorFromSpansToCospans[102X( [3XC[103X ) [32X attribute
+  [33X[1;0Y[29X[2XFunctorFromSpansToCospans[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
   
   [33X[0;0YFor  the  given  category  [3XC[103X,  this  attribute  is the functor from the span
@@ -48,7 +48,7 @@
   
   [1X5.3-1 FunctorFromThreeArrowsToCospans[101X
   
-  [29X[2XFunctorFromThreeArrowsToCospans[102X( [3XC[103X ) [32X attribute
+  [33X[1;0Y[29X[2XFunctorFromThreeArrowsToCospans[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
   
   [33X[0;0YFor the given category [3XC[103X, this attribute is the functor from the three arrow
@@ -57,7 +57,7 @@
   
   [1X5.3-2 FunctorFromThreeArrowsToSpans[101X
   
-  [29X[2XFunctorFromThreeArrowsToSpans[102X( [3XC[103X ) [32X attribute
+  [33X[1;0Y[29X[2XFunctorFromThreeArrowsToSpans[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
   
   [33X[0;0YFor the given category [3XC[103X, this attribute is the functor from the three arrow

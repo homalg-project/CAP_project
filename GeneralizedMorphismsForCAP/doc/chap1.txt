@@ -9,14 +9,14 @@
   
   [1X1.1-1 IsGeneralizedMorphismCategoryObject[101X
   
-  [29X[2XIsGeneralizedMorphismCategoryObject[102X( [3Xobject[103X ) [32X filter
+  [33X[1;0Y[29X[2XIsGeneralizedMorphismCategoryObject[102X( [3Xobject[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
   
   [33X[0;0YThe GAP category of objects in the generalized morphism category.[133X
   
   [1X1.1-2 IsGeneralizedMorphism[101X
   
-  [29X[2XIsGeneralizedMorphism[102X( [3Xobject[103X ) [32X filter
+  [33X[1;0Y[29X[2XIsGeneralizedMorphism[102X( [3Xobject[103X ) [32X filter[133X
   [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
   
   [33X[0;0YThe GAP category of morphisms in the generalized morphism category.[133X
@@ -26,7 +26,7 @@
   
   [1X1.2-1 UnderlyingHonestObject[101X
   
-  [29X[2XUnderlyingHonestObject[102X( [3Xa[103X ) [32X attribute
+  [33X[1;0Y[29X[2XUnderlyingHonestObject[102X( [3Xa[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object in [23X\mathbf{A}[123X[133X
   
   [33X[0;0YThe argument is an object [23Xa[123X in the generalized morphism category. The output
@@ -34,7 +34,7 @@
   
   [1X1.2-2 DomainEmbedding[101X
   
-  [29X[2XDomainEmbedding[102X( [3Xalpha[103X ) [32X attribute
+  [33X[1;0Y[29X[2XDomainEmbedding[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{A}}( d, a )[123X[133X
   
   [33X[0;0YThe  argument  is a generalized morphism [23X\alpha: a \rightarrow b[123X. The output
@@ -42,7 +42,7 @@
   
   [1X1.2-3 GeneralizedImageEmbedding[101X
   
-  [29X[2XGeneralizedImageEmbedding[102X( [3Xalpha[103X ) [32X attribute
+  [33X[1;0Y[29X[2XGeneralizedImageEmbedding[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{A}}( i, b )[123X[133X
   
   [33X[0;0YThe  argument  is a generalized morphism [23X\alpha: a \rightarrow b[123X. The output
@@ -50,7 +50,7 @@
   
   [1X1.2-4 DefectEmbedding[101X
   
-  [29X[2XDefectEmbedding[102X( [3Xalpha[103X ) [32X attribute
+  [33X[1;0Y[29X[2XDefectEmbedding[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{A}}( d, b )[123X[133X
   
   [33X[0;0YThe  argument  is a generalized morphism [23X\alpha: a \rightarrow b[123X. The output
@@ -58,7 +58,7 @@
   
   [1X1.2-5 GeneralizedKernelEmbedding[101X
   
-  [29X[2XGeneralizedKernelEmbedding[102X( [3Xalpha[103X ) [32X attribute
+  [33X[1;0Y[29X[2XGeneralizedKernelEmbedding[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{A}}( k, a )[123X[133X
   
   [33X[0;0YThe  argument  is a generalized morphism [23X\alpha: a \rightarrow b[123X. The output
@@ -66,7 +66,7 @@
   
   [1X1.2-6 CodomainProjection[101X
   
-  [29X[2XCodomainProjection[102X( [3Xalpha[103X ) [32X attribute
+  [33X[1;0Y[29X[2XCodomainProjection[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{A}}( b, c )[123X[133X
   
   [33X[0;0YThe  argument  is a generalized morphism [23X\alpha: a \rightarrow b[123X. The output
@@ -74,7 +74,7 @@
   
   [1X1.2-7 GeneralizedCokernelProjection[101X
   
-  [29X[2XGeneralizedCokernelProjection[102X( [3Xalpha[103X ) [32X attribute
+  [33X[1;0Y[29X[2XGeneralizedCokernelProjection[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{A}}( b, c )[123X[133X
   
   [33X[0;0YThe  argument  is a generalized morphism [23X\alpha: a \rightarrow b[123X. The output
@@ -82,7 +82,7 @@
   
   [1X1.2-8 CodefectProjection[101X
   
-  [29X[2XCodefectProjection[102X( [3Xalpha[103X ) [32X attribute
+  [33X[1;0Y[29X[2XCodefectProjection[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{A}}( a, c )[123X[133X
   
   [33X[0;0YThe  argument  is a generalized morphism [23X\alpha: a \rightarrow b[123X. The output
@@ -90,7 +90,7 @@
   
   [1X1.2-9 GeneralizedCoimageProjection[101X
   
-  [29X[2XGeneralizedCoimageProjection[102X( [3Xalpha[103X ) [32X attribute
+  [33X[1;0Y[29X[2XGeneralizedCoimageProjection[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{A}}( a, c )[123X[133X
   
   [33X[0;0YThe  argument  is a generalized morphism [23X\alpha: a \rightarrow b[123X. The output
@@ -98,7 +98,7 @@
   
   [1X1.2-10 AssociatedMorphism[101X
   
-  [29X[2XAssociatedMorphism[102X( [3Xalpha[103X ) [32X attribute
+  [33X[1;0Y[29X[2XAssociatedMorphism[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{A}}( d, c )[123X[133X
   
   [33X[0;0YThe  argument  is a generalized morphism [23X\alpha: a \rightarrow b[123X. The output
@@ -106,7 +106,7 @@
   
   [1X1.2-11 DomainAssociatedMorphismCodomainTriple[101X
   
-  [29X[2XDomainAssociatedMorphismCodomainTriple[102X( [3Xalpha[103X ) [32X attribute
+  [33X[1;0Y[29X[2XDomainAssociatedMorphismCodomainTriple[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya triple of morphisms in [23X\mathbf{A}[123X[133X
   
   [33X[0;0YThe  argument  is a generalized morphism [23X\alpha: a \rightarrow b[123X. The output
@@ -115,7 +115,7 @@
   
   [1X1.2-12 HonestRepresentative[101X
   
-  [29X[2XHonestRepresentative[102X( [3Xalpha[103X ) [32X attribute
+  [33X[1;0Y[29X[2XHonestRepresentative[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{A}}( a, b )[123X[133X
   
   [33X[0;0YThe  argument  is a generalized morphism [23X\alpha: a \rightarrow b[123X. The output
@@ -124,7 +124,7 @@
   
   [1X1.2-13 GeneralizedInverse[101X
   
-  [29X[2XGeneralizedInverse[102X( [3Xalpha[103X ) [32X operation
+  [33X[1;0Y[29X[2XGeneralizedInverse[102X( [3Xalpha[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,a)[123X[133X
   
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  a \rightarrow b \in \mathbf{A}[123X. The
@@ -132,7 +132,7 @@
   
   [1X1.2-14 IdempotentDefinedBySubobject[101X
   
-  [29X[2XIdempotentDefinedBySubobject[102X( [3Xalpha[103X ) [32X operation
+  [33X[1;0Y[29X[2XIdempotentDefinedBySubobject[102X( [3Xalpha[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,b)[123X[133X
   
   [33X[0;0YThe  argument is a subobject [23X\alpha: a \hookrightarrow b \in \mathbf{A}[123X. The
@@ -141,7 +141,7 @@
   
   [1X1.2-15 IdempotentDefinedByFactorobject[101X
   
-  [29X[2XIdempotentDefinedByFactorobject[102X( [3Xalpha[103X ) [32X operation
+  [33X[1;0Y[29X[2XIdempotentDefinedByFactorobject[102X( [3Xalpha[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(b,b)[123X[133X
   
   [33X[0;0YThe   argument   is  a  factorobject  [23X\alpha:  b  \twoheadrightarrow  a  \in
@@ -150,7 +150,7 @@
   
   [1X1.2-16 UnderlyingHonestCategory[101X
   
-  [29X[2XUnderlyingHonestCategory[102X( [3XC[103X ) [32X attribute
+  [33X[1;0Y[29X[2XUnderlyingHonestCategory[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya category[133X
   
   [33X[0;0YThe  argument  is  a  generalized  morphism  category [23XC = \mathbf{G(A)}[123X. The
@@ -161,7 +161,7 @@
   
   [1X1.3-1 GeneralizedMorphismFromFactorToSubobject[101X
   
-  [29X[2XGeneralizedMorphismFromFactorToSubobject[102X( [3Xbeta[103X, [3Xalpha[103X ) [32X operation
+  [33X[1;0Y[29X[2XGeneralizedMorphismFromFactorToSubobject[102X( [3Xbeta[103X, [3Xalpha[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{\mathbf{G(A)}}(c,a)[123X[133X
   
   [33X[0;0YThe  arguments  are  a  a  factorobject [23X\beta: b \twoheadrightarrow c[123X, and a
@@ -170,7 +170,7 @@
   
   [1X1.3-2 CommonRestriction[101X
   
-  [29X[2XCommonRestriction[102X( [3XL[103X ) [32X operation
+  [33X[1;0Y[29X[2XCommonRestriction[102X( [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list of generalized morphisms[133X
   
   [33X[0;0YThe argument is a list [23XL[123X of generalized morphisms by three arrows having the
@@ -179,7 +179,7 @@
   
   [1X1.3-3 ConcatenationProduct[101X
   
-  [29X[2XConcatenationProduct[102X( [3XL[103X ) [32X operation
+  [33X[1;0Y[29X[2XConcatenationProduct[102X( [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya generalized moprhism[133X
   
   [33X[0;0YThe  argument  is  a  list  [23XL = ( \alpha_1, \dots, \alpha_n )[123X of generalized
@@ -197,7 +197,7 @@
   
   [1X1.4-1 IsHonest[101X
   
-  [29X[2XIsHonest[102X( [3Xalpha[103X ) [32X property
+  [33X[1;0Y[29X[2XIsHonest[102X( [3Xalpha[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
   [33X[0;0YThe  argument is a generalized morphism [23X\alpha[123X. The output is [10Xtrue[110X if [23X\alpha[123X
@@ -205,7 +205,7 @@
   
   [1X1.4-2 HasFullDomain[101X
   
-  [29X[2XHasFullDomain[102X( [3Xalpha[103X ) [32X property
+  [33X[1;0Y[29X[2XHasFullDomain[102X( [3Xalpha[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
   [33X[0;0YThe  argument  is  a  generalized morphism [23X\alpha[123X. The output is [10Xtrue[110X if the
@@ -213,7 +213,7 @@
   
   [1X1.4-3 HasFullCodomain[101X
   
-  [29X[2XHasFullCodomain[102X( [3Xalpha[103X ) [32X property
+  [33X[1;0Y[29X[2XHasFullCodomain[102X( [3Xalpha[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
   [33X[0;0YThe  argument  is  a  generalized morphism [23X\alpha[123X. The output is [10Xtrue[110X if the
@@ -221,7 +221,7 @@
   
   [1X1.4-4 IsSingleValued[101X
   
-  [29X[2XIsSingleValued[102X( [3Xalpha[103X ) [32X property
+  [33X[1;0Y[29X[2XIsSingleValued[102X( [3Xalpha[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
   [33X[0;0YThe  argument  is  a  generalized morphism [23X\alpha[123X. The output is [10Xtrue[110X if the
@@ -229,7 +229,7 @@
   
   [1X1.4-5 IsTotal[101X
   
-  [29X[2XIsTotal[102X( [3Xalpha[103X ) [32X property
+  [33X[1;0Y[29X[2XIsTotal[102X( [3Xalpha[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
   [33X[0;0YThe  argument  is  a  generalized morphism [23X\alpha[123X. The output is [10Xtrue[110X if the
@@ -244,7 +244,7 @@
   
   [1X1.5-1 GeneralizedMorphismCategory[101X
   
-  [29X[2XGeneralizedMorphismCategory[102X( [3XC[103X ) [32X operation
+  [33X[1;0Y[29X[2XGeneralizedMorphismCategory[102X( [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya category[133X
   
   [33X[0;0YCreates   a   new   category   of  generalized  morphisms.  Might  point  to
@@ -253,7 +253,7 @@
   
   [1X1.5-2 GeneralizedMorphismObject[101X
   
-  [29X[2XGeneralizedMorphismObject[102X( [3XA[103X ) [32X operation
+  [33X[1;0Y[29X[2XGeneralizedMorphismObject[102X( [3XA[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object in the generalized morphism category[133X
   
   [33X[0;0YCreates an object in the current generalized morphism category, depending on
@@ -261,7 +261,7 @@
   
   [1X1.5-3 AsGeneralizedMorphism[101X
   
-  [29X[2XAsGeneralizedMorphism[102X( [3Xphi[103X ) [32X operation
+  [33X[1;0Y[29X[2XAsGeneralizedMorphism[102X( [3Xphi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya generalized morphism[133X
   
   [33X[0;0YReturns  the  corresponding  morphism  to  phi  in  the  current generalized
@@ -269,7 +269,7 @@
   
   [1X1.5-4 GeneralizedMorphism[101X
   
-  [29X[2XGeneralizedMorphism[102X( [3Xphi[103X, [3Xpsi[103X ) [32X operation
+  [33X[1;0Y[29X[2XGeneralizedMorphism[102X( [3Xphi[103X, [3Xpsi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya generalized morphism[133X
   
   [33X[0;0YReturns the corresponding morphism to phi and psi in the current generalized
@@ -277,7 +277,7 @@
   
   [1X1.5-5 GeneralizedMorphism[101X
   
-  [29X[2XGeneralizedMorphism[102X( [3Xiota[103X, [3Xphi[103X, [3Xpi[103X ) [32X operation
+  [33X[1;0Y[29X[2XGeneralizedMorphism[102X( [3Xiota[103X, [3Xphi[103X, [3Xpi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya generalized morphism[133X
   
   [33X[0;0YReturns  the  corresponding  morphism  to  iota,  phi and psi in the current
@@ -285,14 +285,14 @@
   
   [1X1.5-6 GeneralizedMorphismWithRangeAid[101X
   
-  [29X[2XGeneralizedMorphismWithRangeAid[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation
+  [33X[1;0Y[29X[2XGeneralizedMorphismWithRangeAid[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   
   [33X[0;0YReturns a generalized morphism with range aid by three arrows or by span, or
   a generalized morphism by cospan, depending on the standard.[133X
   
   [1X1.5-7 GeneralizedMorphismWithSourceAid[101X
   
-  [29X[2XGeneralizedMorphismWithSourceAid[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation
+  [33X[1;0Y[29X[2XGeneralizedMorphismWithSourceAid[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   
   [33X[0;0YReturns a generalized morphism with source aid by three arrows or by cospan,
   or a generalized morphism by span, depending on the standard.[133X
