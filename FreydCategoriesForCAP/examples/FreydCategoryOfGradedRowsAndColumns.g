@@ -280,13 +280,13 @@ coker_proj := CokernelProjection( z );
 cokernel_colift := CokernelColift( z, CokernelProjection( z ) );
 #! <A morphism in Category of graded left module presentations over
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
-a := Source( cokernel_colift );
-#! <An object in Category of graded left module presentations over 
+a := ZFree;
+#! <A projective object in Category of graded left module presentations over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 b := obj_gamma;
 #! <An object in Category of graded left module presentations over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
-c := DirectSum( Source( coker_proj ), Range( coker_proj ) );
+c := TensorProductOnObjects( ZFree, obj_gamma );
 #! <An object in Category of graded left module presentations over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 KaxbKxc := TensorProductOnObjects( TensorProductOnObjects( a, b ), c );
@@ -345,7 +345,7 @@ hom := InternalHomOnObjects( axKbxcK, axKbxcK );
 #! <An object in Category of graded left module presentations over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsZero( hom );
-#! true
+#! false
 free_mod1 := AsFreydCategoryObject( GradedRow( [ [[0,0],1] ], S ) );
 #! <A projective object in Category of graded left module presentations over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
@@ -373,17 +373,15 @@ eval := EvaluationMorphism( a, b );
 #! <A morphism in Category of graded left module presentations over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsEpimorphism( eval );
-#! false
+#! true
 IsMonomorphism( eval );
 #! true
-coeval := EvaluationMorphism( a, b );
-#! <A monomorphism in Category of graded left module presentations over 
+coeval := CoevaluationMorphism( a, b );
+#! <A morphism in Category of graded left module presentations over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsEpimorphism( coeval );
-#! false
-IsMonomorphism( coeval );
 #! true
-IsEqualForMorphisms( coeval, eval );
+IsMonomorphism( coeval );
 #! true
 #! @EndExample
 
@@ -660,13 +658,13 @@ coker_proj := CokernelProjection( z );
 cokernel_colift := CokernelColift( z, CokernelProjection( z ) );
 #! <A morphism in Category of graded right module presentations over
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
-a := Source( cokernel_colift );
-#! <An object in Category of graded right module presentations over 
+a := ZFree;
+#! <A projective object in Category of graded right module presentations over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 b := obj_gamma;
 #! <An object in Category of graded right module presentations over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
-c := DirectSum( Source( coker_proj ), Range( coker_proj ) );
+c := TensorProductOnObjects( a, b );
 #! <An object in Category of graded right module presentations over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 KaxbKxc := TensorProductOnObjects( TensorProductOnObjects( a, b ), c );
@@ -725,7 +723,7 @@ hom := InternalHomOnObjects( axKbxcK, axKbxcK );
 #! <An object in Category of graded right module presentations over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsZero( hom );
-#! true
+#! false
 free_mod1 := AsFreydCategoryObject( GradedColumn( [ [[0,0],1] ], S ) );
 #! <A projective object in Category of graded right module presentations over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
@@ -753,16 +751,14 @@ eval := EvaluationMorphism( a, b );
 #! <A morphism in Category of graded right module presentations over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsEpimorphism( eval );
-#! false
+#! true
 IsMonomorphism( eval );
 #! true
-coeval := EvaluationMorphism( a, b );
-#! <A monomorphism in Category of graded right module presentations over
+coeval := CoevaluationMorphism( a, b );
+#! <A morphism in Category of graded right module presentations over
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 IsEpimorphism( coeval );
-#! false
-IsMonomorphism( coeval );
 #! true
-IsEqualForMorphisms( coeval, eval );
+IsMonomorphism( coeval );
 #! true
 #! @EndExample
