@@ -1417,13 +1417,26 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     # (Co-)evaluation
     #
     ######################################################################
-
-    # Given objects a,b we can construct the evaluation morphism Hom( a, b ) \otimes a -> b.
-    # To end let us assume that a: R_A --alpha--> A and b: R_B --beta--> B. Then consider the following diagram:
+    
+    # Given objects A,B in Freyd, we can construct the evaluation morphism Hom( A, B ) \otimes A -> B.
+    # To this end let us assume that A: R_a --rho_a--> a and B: R_b --rho_b--> b. Then consider the following diagram:
     #
-    # Hom( a, b ) \otimes a ---> Hom( A, b ) \otimes a ---> evaluation in underlying category b
+    # Hom( A, B ) \otimes B               ---> B
+    #           |                       ---    ^
+    #           | Hom_emb          colift c    |
+    #           v              ----            |
+    # Hom( a,B ) \otimes A ----                |
+    #           ^                              |
+    #           | beta                         | delta
+    #           |                              |
+    # Hom( a,B ) \otimes a                     |
+    #           ^                              |
+    #           | alpha                        |
+    #           |               gamma          |
+    # Hom( a,b ) \otimes a ------------------> b
     #
-    # The composition of these morphisms produces the evaluation morphism in Freyd
+    # The composition of the Hom_embedding "Hom_emb" and of the colift "c" is the evaluation morphism.
+    # Below we denote alpha beta as epi_concat and gamma delta as eval_concat.
     
     if is_possible_to_install( "EvaluationMorphismWithGivenSource",
                                 [ "InternalHomOnMorphismsWithGivenInternalHoms", "ProjectionOfBiasedWeakFiberProduct", 
@@ -1464,25 +1477,22 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         end );
         
     fi;
-
-    # Given objects a,b we can construct the coevaluation morphism a -> Hom( b, a \otimes b ).
-    # To end let us assume that a: R_A --alpha--> A and b: R_B --beta--> B. Then consider the following diagram:
-    #                                                        a
-    #                                                        |
-    #                                                coevaluation in underlying category
-    #                                                        |
-    #                                                        v
-    # Hom( b, a \otimes b ) --------------------> Hom( B, a \otimes b )
-    # 
-    # The crucial observation is that Hom( B, a \otimes b ) is presented as
-    # 
-    # Hom( B, ( R_A \otimes B ) \oplus ( A \otimes R_B ) ) -> Hom( B, A \otimes B )
-    # 
-    # Consequently, we can employ the coevaluation in the underlying category to obtain a mapping
-    # A -> Hom( B, A \otimes B ). This one induces a mapping even in the Freyd category.
+    
+    # Given objects A,B we can construct the coevaluation morphism A -> Hom( B, A \otimes B ).
+    # To this end let us assume that A: R_a --rho_a--> a and B: R_b --rho_b--> b. Then consider the following diagram:
     #
-    # The lift of the Hom_embedding and the coevaluation in the underlying category 
-    # gives us a coevaluation in the Freyd category.
+    # Hom( B, A \otimes B )                    A
+    #           |           <-----             ^
+    #           | mono           ---           |
+    #           v                   ---        |
+    # Hom( b, A \otimes B )           lift     |
+    #           ^                       ---    |
+    #           | beta                    ---  |
+    #           |                 coev      ---|
+    # Hom( b, a \otimes b ) <---------------- a
+    #
+    # We compute the Lift and use its morphism datum to construct the co_evaluation morphism.
+    # Below we denote the concatenation of coev and beta by tau.
     
     if is_possible_to_install( "CoevaluationMorphismWithGivenRange",
                                 [ "InternalHomOnMorphismsWithGivenInternalHoms", "ProjectionOfBiasedWeakFiberProduct", 
