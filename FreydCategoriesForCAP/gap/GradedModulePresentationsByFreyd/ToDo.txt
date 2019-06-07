@@ -1,28 +1,34 @@
 @Martin:
 
-(*) Brutally, make PresentationsByProjectiveGradedModules work
--> Tests work and we can use these to test the implementation
--> Implement the necessary methods into FreydCategory and send Sepp pull requests for each of these
-
-(*) Alternatively:
-Compare the installed methods in PresentationCategory( GradedRows ) and FreydCategory( GradedRows )
-
-(*) Perform basic integration of PresentationByGradedRows into Freyd
-
+* Implement the necessary methods for FpGradedModules into FreydCategory and send Sepp pull requests for each of these
+     - Aim: functionality of toric sheaves applicable with FpGradedModules
+     - Functors:
+          - LessGradedGenerators
+          - GradedStandardModule
+          - ByASmallerPresentation
+          - emb: A -> Freyd( A ) (for all Freyd cats)
+          - Twist
+     - Natural transformations:
+          - NaturalIsomorphismFromIdentityToGradedStandardModule
+     - Simplify notation for tensor product, e.g., *, ^ (for all Freyd cats)
+     - MorphismIntoBestProjectiveApproximation (for all Freyd cats)
+     - Ideals:
+          - in particular Frobenius powers
+     - Minimal free resolution + Betti table (think about data type of the output)
 @Sepp:
 
-(*) Have a look at 
-     https://github.com/HereAround/TruncationsOfPresentationsByProjectiveGradedModules
-    and
-     https://github.com/HereAround/SheafCohomologyOnToricVarieties/blob/master/gap/DegreeXLayer.gd
-=> Develop idea on how to implement Homomorphism-Structure provided the truncations (of the involved graded rows/columns) are finite dimensional vector spaces
+* Write down the idea of an implementation for the Homomorphism-Structure in GrRows/GrCols
 
-(*) Implement InternalHom and Tensorproduct for category of rows
+* Implement InternalHom and Tensorproduct for category of rows
 
-(*) Review Category of columns and implement InternalHom and Tensorproduct also there
-
+* Implement InternalHom and Tensorproduct for category of columns
 
 @Both:
 
-(*) Think of a NICE name for Freyd( GradedRow ) since GradedModulesForCAP is already taken.
-    Also "PresentationByProjectiveGradedModules" is fairly long... I am not too much in favour of it...
+* Constructors: FpGradedLeftModules/ FpGradedRightModules
+    Names: Category of f.p. graded left modules over ...
+           Category of f.p. graded right modules over ...
+* Change names: CAP category of ... -> Category of ...
+* Implement a Finalize Break within the constructors of FpGradedModules
+* Introduce attribute UnderlyingGradedRing for CategoryOfGradedRows
+* Take a look at the docu issue
