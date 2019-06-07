@@ -280,8 +280,110 @@ coker_proj := CokernelProjection( z );
 cokernel_colift := CokernelColift( z, CokernelProjection( z ) );
 #! <A morphism in Category of graded left module presentations over
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+a := ZFree;
+#! <A projective object in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+b := obj_gamma;
+#! <An object in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+c := TensorProductOnObjects( ZFree, obj_gamma );
+#! <An object in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+KaxbKxc := TensorProductOnObjects( TensorProductOnObjects( a, b ), c );
+#! <An object in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsEqualForObjects( KaxbKxc, ZeroObject( freyd ) );
+#! false
+tensor_product_morphism := TensorProductOnMorphisms( cokernel_colift, coker_proj );
+#! <A morphism in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsEpimorphism( tensor_product_morphism );
+#! true
+IsEqualForObjects( Source( tensor_product_morphism ), Range( tensor_product_morphism ) );
+#! false
+unit := TensorUnit( freyd );
+#! <An object in Category of graded left module presentations over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsEqualForObjects( TensorProductOnObjects( a, unit ), a );
+#! true
+axKbxcK := TensorProductOnObjects( a, TensorProductOnObjects( b, c ) );
+#! <An object in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+ass_left_to_right := AssociatorLeftToRightWithGivenTensorProducts( KaxbKxc, a, b, c, axKbxcK );
+#! <A morphism in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsIsomorphism( ass_left_to_right );
+#! true
+ass_right_to_left := AssociatorLeftToRightWithGivenTensorProducts( axKbxcK, a, b, c, KaxbKxc );
+#! <A morphism in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsMonomorphism( ass_right_to_left );
+#! true
+IsEpimorphism( ass_right_to_left );
+#! true
+LeftUnitor( a );
+#! <A morphism in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+LeftUnitorInverse( axKbxcK );
+#! <A morphism in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+RightUnitor( b );
+#! <A morphism in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+RightUnitorInverse( TensorProductOnObjects( axKbxcK, axKbxcK ) );
+#! <A morphism in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+Braiding( axKbxcK, KaxbKxc );
+#! <A morphism in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+braiding := Braiding( a, b );
+#! <A morphism in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( braiding );
+#! true
+hom := InternalHomOnObjects( axKbxcK, axKbxcK );
+#! <An object in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsZero( hom );
+#! false
+free_mod1 := AsFreydCategoryObject( GradedRow( [ [[0,0],1] ], S ) );
+#! <A projective object in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+free_mod2 := AsFreydCategoryObject( GradedRow( [ [[1,1],1] ], S ) );
+#! <A projective object in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+hom2 := InternalHomOnObjects( free_mod1, free_mod2 );
+#! <An object in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsZero( hom2 );
+#! false
+IsZero( Source( RelationMorphism( hom2 ) ) );
+#! true
+Rank( Range( RelationMorphism( hom2 ) ) );
+#! 1
+hom3 := InternalHomOnObjects( free_mod2, free_mod1 );
+#! <An object in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsZero( hom3 );
+#! false
+InternalHomOnMorphisms( ass_left_to_right, ass_right_to_left );
+#! <A morphism in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+eval := EvaluationMorphism( a, b );
+#! <A morphism in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsEpimorphism( eval );
+#! true
+IsMonomorphism( eval );
+#! true
+coeval := CoevaluationMorphism( a, b );
+#! <A morphism in Category of graded left module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsEpimorphism( coeval );
+#! true
+IsMonomorphism( coeval );
+#! true
 #! @EndExample
-
 
 
 #################################################################
@@ -556,4 +658,107 @@ coker_proj := CokernelProjection( z );
 cokernel_colift := CokernelColift( z, CokernelProjection( z ) );
 #! <A morphism in Category of graded right module presentations over
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+a := ZFree;
+#! <A projective object in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+b := obj_gamma;
+#! <An object in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+c := TensorProductOnObjects( a, b );
+#! <An object in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+KaxbKxc := TensorProductOnObjects( TensorProductOnObjects( a, b ), c );
+#! <An object in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsEqualForObjects( KaxbKxc, ZeroObject( freyd ) );
+#! false
+tensor_product_morphism := TensorProductOnMorphisms( cokernel_colift, coker_proj );
+#! <A morphism in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsEpimorphism( tensor_product_morphism );
+#! true
+IsEqualForObjects( Source( tensor_product_morphism ), Range( tensor_product_morphism ) );
+#! false
+unit := TensorUnit( freyd );
+#! <An object in Category of graded right module presentations over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsEqualForObjects( TensorProductOnObjects( a, unit ), a );
+#! true
+axKbxcK := TensorProductOnObjects( a, TensorProductOnObjects( b, c ) );
+#! <An object in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+ass_left_to_right := AssociatorLeftToRightWithGivenTensorProducts( KaxbKxc, a, b, c, axKbxcK );
+#! <A morphism in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsIsomorphism( ass_left_to_right );
+#! true
+ass_right_to_left := AssociatorLeftToRightWithGivenTensorProducts( axKbxcK, a, b, c, KaxbKxc );
+#! <A morphism in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsMonomorphism( ass_right_to_left );
+#! true
+IsEpimorphism( ass_right_to_left );
+#! true
+LeftUnitor( a );
+#! <A morphism in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+LeftUnitorInverse( axKbxcK );
+#! <A morphism in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+RightUnitor( b );
+#! <A morphism in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+RightUnitorInverse( TensorProductOnObjects( axKbxcK, axKbxcK ) );
+#! <A morphism in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+Braiding( axKbxcK, KaxbKxc );
+#! <A morphism in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+braiding := Braiding( a, b );
+#! <A morphism in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsWellDefined( braiding );
+#! true
+hom := InternalHomOnObjects( axKbxcK, axKbxcK );
+#! <An object in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsZero( hom );
+#! false
+free_mod1 := AsFreydCategoryObject( GradedColumn( [ [[0,0],1] ], S ) );
+#! <A projective object in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+free_mod2 := AsFreydCategoryObject( GradedColumn( [ [[1,1],1] ], S ) );
+#! <A projective object in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+hom2 := InternalHomOnObjects( free_mod1, free_mod2 );
+#! <An object in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsZero( hom2 );
+#! false
+IsZero( Source( RelationMorphism( hom2 ) ) );
+#! true
+Rank( Range( RelationMorphism( hom2 ) ) );
+#! 1
+hom3 := InternalHomOnObjects( free_mod2, free_mod1 );
+#! <An object in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsZero( hom3 );
+#! false
+InternalHomOnMorphisms( ass_left_to_right, ass_right_to_left );
+#! <A morphism in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+eval := EvaluationMorphism( a, b );
+#! <A morphism in Category of graded right module presentations over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsEpimorphism( eval );
+#! true
+IsMonomorphism( eval );
+#! true
+coeval := CoevaluationMorphism( a, b );
+#! <A morphism in Category of graded right module presentations over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsEpimorphism( coeval );
+#! true
+IsMonomorphism( coeval );
+#! true
 #! @EndExample
