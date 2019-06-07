@@ -23,6 +23,8 @@ InstallMethod( CAPCategoryOfGradedRows,
       # construct the category
       category := CreateCapCategory( Concatenation( "CAP category of graded rows over ", RingName( homalg_graded_ring ) ) );
       
+      SetFilterObj( category, IsCAPCategoryOfGradedRows );
+      
       AddObjectRepresentation( category, IsGradedRowRep );
       
       AddMorphismRepresentation( category, IsGradedRowMorphismRep );

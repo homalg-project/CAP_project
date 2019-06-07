@@ -29,3 +29,5 @@ ReadPackage( "FreydCategoriesForCAP", "gap/CokernelImageClosure.gi" );
 ReadPackage( "FreydCategoriesForCAP", "gap/AdelmanCategory.gi" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/QuiverRows.gi" );
+
+ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/GradedModulePresentationsByFreyd.gi" );

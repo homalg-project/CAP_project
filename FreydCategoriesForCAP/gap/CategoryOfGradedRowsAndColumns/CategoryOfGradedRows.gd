@@ -23,7 +23,8 @@
 DeclareAttribute( "CAPCategoryOfGradedRows",
                   IsHomalgGradedRing );
 
-
+DeclareCategory( "IsCAPCategoryOfGradedRows",
+                 IsCapCategory );
 
 ####################################
 ##
