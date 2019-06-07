@@ -1472,18 +1472,28 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                                   "TensorProductOnMorphismsWithGivenTensorProducts", "CoevaluationMorphismWithGivenRange" ] ) then
         
         AddCoevaluationMorphismWithGivenRange( category,
-            function( a, b, r )
-                local Hom_embedding, mor, Bdual, braiding, associator, coevaluation;
+            function( A, B, R )
+                local a, b, emb_b, proj_B, A_tensor_B, proj_A_tensor_B, mono, tau, lift;
+
+                # (0) define quantities
+                a := Range( RelationMorphism( A ) );
+                b := Range( RelationMorphism( B ) );
+                emb_b := AsFreydCategoryObject( b );
+                proj_B := EpimorphismFromSomeProjectiveObject( B );
+                A_tensor_B := TensorProductOnObjects( A, B );
+                proj_A_tensor_B := EpimorphismFromSomeProjectiveObject( A_tensor_B );
                 
-                # (1) the hom-embedding
-                Hom_embedding := INTERNAL_HOM_EMBEDDING( b, TensorProductOnObjects( a, b ) );
+                # (1) construct monomorphism
+                mono := InternalHomOnMorphisms( proj_B, IdentityMorphism( A_tensor_B ) );
+            
+                # (2) construct morphism from coevaluation in underlying category
+                tau := PreCompose( AsFreydCategoryMorphism( CoevaluationMorphism( a,b ) ), InternalHomOnMorphisms( IdentityMorphism( emb_b ), proj_A_tensor_B ) );
                 
-                # (2) the coevaluation in the underlying category
-                mor := CoevaluationMorphism( Range( RelationMorphism( a ) ), Range( RelationMorphism( b ) ) );
-                mor := FreydCategoryMorphism( a, mor, Range( Hom_embedding ) );
+                # (3) compute lift along mono
+                lift := LiftAlongMonomorphism( mono, tau );
                 
-                # (3) coevaluation is lift of the above two morphisms
-                return LiftAlongMonomorphism( Hom_embedding, mor );
+                # (4) construct the coevaluation morphism
+                return FreydCategoryMorphism( A, MorphismDatum( lift ), Source( mono ) );
                 
         end );
     
