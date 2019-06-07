@@ -1413,19 +1413,35 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                                   "TensorProductOnMorphismsWithGivenTensorProducts", "EvaluationMorphismWithGivenSource" ] ) then
         
         AddEvaluationMorphismWithGivenSource( category,
-            function( a, b, s )
-                local Hom_embedding, Hom_embedding_tensored, mor;
+            function( A, B, S )
+                local a, b, emb_a, emb_b, proj_A, proj_B, id_emb_a, Hom_embedding, Hom_emb_aB, epi_concat, eval_concat, colift_along_epi;
+                
+                # (0) define quantities
+                a := Range( RelationMorphism( A ) );
+                b := Range( RelationMorphism( B ) );
+                emb_a := AsFreydCategoryObject( a );
+                emb_b := AsFreydCategoryObject( b );
+                proj_A := EpimorphismFromSomeProjectiveObject( A );
+                proj_B := EpimorphismFromSomeProjectiveObject( B );
+                id_emb_a := IdentityMorphism( emb_a );
                 
                 # (1) the hom-embedding
-                Hom_embedding := INTERNAL_HOM_EMBEDDING( a, b );
-                Hom_embedding_tensored := TensorProductOnMorphisms( Hom_embedding, IdentityMorphism( a ) );
+                Hom_embedding := InternalHomOnMorphisms( proj_A, IdentityMorphism( B ) );
+                Hom_emb_aB := Range( Hom_embedding );
+                Hom_embedding := TensorProductOnMorphisms( Hom_embedding, IdentityMorphism( A ) );
                 
-                # (2) evaluation in underlying category
-                mor := EvaluationMorphism( Range( RelationMorphism( a ) ), Range( RelationMorphism( b ) ) );
-                mor := FreydCategoryMorphism( Range( Hom_embedding_tensored ), mor, b );
+                # (2) concatenation of epis
+                epi_concat := TensorProductOnMorphisms( InternalHomOnMorphisms( id_emb_a, proj_B ), id_emb_a );
+                epi_concat := PreCompose( epi_concat, TensorProductOnMorphisms( IdentityMorphism( Hom_emb_aB ), proj_A ) );
                 
-                # (3) compose morphisms and return them
-                return PreCompose( Hom_embedding_tensored, mor );
+                # (3) compute "evaluation" fom Hom( emb_a,b ) \otimes emb_a -> b
+                eval_concat := PreCompose( AsFreydCategoryMorphism( EvaluationMorphism( a, b ) ), proj_B );
+                
+                # (4) colift along epi
+                colift_along_epi := ColiftAlongEpimorphism( epi_concat, eval_concat );
+
+                # (5) compose to finally construct the evaluation morphism in the Freyd category
+                return PreCompose( Hom_embedding, colift_along_epi );
                 
         end );
         
