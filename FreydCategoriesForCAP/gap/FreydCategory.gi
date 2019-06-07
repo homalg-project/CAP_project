@@ -1401,7 +1401,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     ######################################################################
     
     # Given objects A,B in Freyd, we can construct the evaluation morphism Hom( A, B ) \otimes A -> B.
-    # To end let us assume that A: R_a --rho_a--> a and B: R_b --rho_b--> b. Then consider the following diagram:
+    # To this end let us assume that A: R_a --rho_a--> a and B: R_b --rho_b--> b. Then consider the following diagram:
     #
     # Hom( A, B ) \otimes B               ---> B
     #           |                       ---    ^
@@ -1461,7 +1461,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     fi;
     
     # Given objects A,B we can construct the coevaluation morphism A -> Hom( B, A \otimes B ).
-    # To end let us assume that A: R_a --rho_a--> a and B: R_b --rho_b--> b. Then consider the following diagram:
+    # To this end let us assume that A: R_a --rho_a--> a and B: R_b --rho_b--> b. Then consider the following diagram:
     #
     # Hom( B, A \otimes B )                    A
     #           |           <-----             ^
@@ -1471,7 +1471,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     #           ^                       ---    |
     #           | beta                    ---  |
     #           |                 coev      ---|
-    # Hom( b, a \otimes b ) <----------------> a
+    # Hom( b, a \otimes b ) <---------------- a
     #
     # We compute the Lift and use its morphism datum to construct the co_evaluation morphism.
     # Below we denote the concatenation of coev and beta by tau.
