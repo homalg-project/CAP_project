@@ -22,7 +22,8 @@
 DeclareAttribute( "CAPCategoryOfGradedColumns",
                   IsHomalgGradedRing );
 
-
+DeclareCategory( "IsCAPCategoryOfGradedColumns",
+                 IsCapCategory );
 
 ####################################
 ##

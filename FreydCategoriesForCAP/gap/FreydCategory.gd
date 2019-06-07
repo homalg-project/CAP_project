@@ -33,6 +33,12 @@ DeclareGlobalFunction( "TODO_LIST_ENTRY_FOR_MORPHISM_WITNESS_FOR_FREYD_CATEGORY"
 ##
 ####################################
 
+DeclareGlobalFunction( "FREYD_CATEGORY" );
+
+DeclareGlobalFunction( "FREYD_CATEGORY_OBJECT" );
+
+DeclareGlobalFunction( "FREYD_CATEGORY_MORPHISM" );
+
 DeclareAttribute( "FreydCategory",
                   IsCapCategory );
 

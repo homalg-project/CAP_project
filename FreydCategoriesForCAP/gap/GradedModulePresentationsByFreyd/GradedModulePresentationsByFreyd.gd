@@ -32,7 +32,9 @@ DeclareAttribute( "SfpgrmodLeft",
 DeclareAttribute( "SfpgrmodRight",
                  IsHomalgGradedRing ); 
 
+DeclareCategory( "IsSfpgrmodLeft", IsCapCategory );
 
+DeclareCategory( "IsSfpgrmodRight", IsCapCategory );
 
 ######################################################################
 ##
@@ -83,14 +85,3 @@ DeclareCategory( "IsGradedLeftModulePresentationMorphismForCAP",
 #! @Arguments object
 DeclareCategory( "IsGradedRightModulePresentationMorphismForCAP",
                  IsGradedLeftOrRightModulePresentationMorphismForCAP );
-
-
-
-##############################################
-##
-## @Section Hom-Embedding
-##
-##############################################
-
-# A method specialised to graded module presentation is installed to compute Hom-embeddings
-DeclareGlobalFunction( "INTERNAL_HOM_FOR_GRADED_MODULE_PRESENTATIONS_VIA_FREYD" );

@@ -24,30 +24,15 @@ BindGlobal( "InfoFreydCategoriesForCAP", NewInfoClass("InfoFreydCategoriesForCAP
 ####################################
 
 ##
-InstallMethod( FreydCategory,
-               [ IsCapCategory ],
-               
+InstallGlobalFunction( FREYD_CATEGORY,
   function( underlying_category )
-    local freyd_category, to_be_finalized, conditions, ring_name;
+    local freyd_category, to_be_finalized, conditions;
     
     if not IsValidInputForFreydCategory( underlying_category ) then
         return false;
     fi;
 
-    # check if we are dealing with a special input category and set category name accordingly
-    if IsBound( underlying_category!.homalg_graded_ring_for_category_of_graded_rows ) then
-        ring_name := RingName( underlying_category!.homalg_graded_ring_for_category_of_graded_rows );
-        if Name( underlying_category ) = Concatenation( "CAP category of graded rows over ", ring_name ) then
-          freyd_category := CreateCapCategory( Concatenation( "Category of graded left module presentations over ", ring_name ) );
-        fi;
-    elif IsBound( underlying_category!.homalg_graded_ring_for_category_of_graded_columns ) then
-        ring_name := RingName( underlying_category!.homalg_graded_ring_for_category_of_graded_columns );
-        if Name( underlying_category ) = Concatenation( "CAP category of graded columns over ", ring_name ) then
-          freyd_category := CreateCapCategory( Concatenation( "Category of graded right module presentations over ", ring_name ) );
-        fi;
-    else
-      freyd_category := CreateCapCategory( Concatenation( "Freyd( ", Name( underlying_category ), " )" ) );
-    fi;
+    freyd_category := CreateCapCategory( Concatenation( "Freyd( ", Name( underlying_category ), " )" ) );
     
     SetFilterObj( freyd_category, IsFreydCategory );
     
@@ -120,6 +105,12 @@ InstallMethod( FreydCategory,
 end );
 
 ##
+InstallMethod( FreydCategory,
+               [ IsCapCategory ],
+    FREYD_CATEGORY
+);
+
+##
 InstallMethod( AsFreydCategoryObject,
                [ IsCapCategoryObject ],
                
@@ -135,10 +126,8 @@ InstallMethod( AsFreydCategoryObject,
 end );
 
 ##
-InstallMethod( FreydCategoryObject,
-               [ IsCapCategoryMorphism ],
-               
-  function( relation_morphism )
+InstallGlobalFunction( FREYD_CATEGORY_OBJECT,
+function( relation_morphism )
     local freyd_category_object, category;
     
     freyd_category_object := rec( );
@@ -151,6 +140,12 @@ InstallMethod( FreydCategoryObject,
     return freyd_category_object;
     
 end );
+
+##
+InstallMethod( FreydCategoryObject,
+               [ IsCapCategoryMorphism ],
+    FREYD_CATEGORY_OBJECT
+);
 
 ##
 InstallMethod( AsFreydCategoryMorphism,
@@ -167,15 +162,19 @@ InstallMethod( AsFreydCategoryMorphism,
 end );
 
 ##
-InstallMethod( FreydCategoryMorphism,
-               [ IsFreydCategoryObject, IsCapCategoryMorphism, IsFreydCategoryObject ],
-               
+InstallGlobalFunction( FREYD_CATEGORY_MORPHISM,
   function( source, morphism_datum, range )
     local freyd_category_morphism, category;
     
     if not IsIdenticalObj( CapCategory( morphism_datum ), UnderlyingCategory( CapCategory( source ) ) ) then
         
         Error( "The underlying category of the given morphism datum is not identical to the underlying category of the given source" );
+        
+    fi;
+    
+    if not IsIdenticalObj( CapCategory( morphism_datum ), UnderlyingCategory( CapCategory( range ) ) ) then
+        
+        Error( "The underlying category of the given morphism datum is not identical to the underlying category of the given range" );
         
     fi;
     
@@ -205,6 +204,12 @@ InstallMethod( FreydCategoryMorphism,
     return freyd_category_morphism;
     
 end );
+
+##
+InstallMethod( FreydCategoryMorphism,
+               [ IsFreydCategoryObject, IsCapCategoryMorphism, IsFreydCategoryObject ],
+               FREYD_CATEGORY_MORPHISM
+);
 
 ####################################
 ##

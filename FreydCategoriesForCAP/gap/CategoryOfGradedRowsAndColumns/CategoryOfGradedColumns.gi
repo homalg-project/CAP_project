@@ -22,6 +22,9 @@ InstallMethod( CAPCategoryOfGradedColumns,
     
       # create category
       category := CreateCapCategory( Concatenation( "CAP category of graded columns over ", RingName( homalg_graded_ring ) ) );
+      
+      SetFilterObj( category, IsCAPCategoryOfGradedColumns );
+      
       AddObjectRepresentation( category, IsGradedColumnRep );
       
       AddMorphismRepresentation( category, IsGradedColumnMorphismRep );
