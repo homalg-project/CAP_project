@@ -15,15 +15,15 @@
 ##
 #############################################################
 
-InstallMethod( CAPCategoryOfGradedColumns,
+InstallMethod( CategoryOfGradedColumns,
                [ IsHomalgGradedRing ],
   function( homalg_graded_ring )
     local category, to_be_finalized;
     
       # create category
-      category := CreateCapCategory( Concatenation( "CAP category of graded columns over ", RingName( homalg_graded_ring ) ) );
+      category := CreateCapCategory( Concatenation( "Category of graded columns over ", RingName( homalg_graded_ring ) ) );
       
-      SetFilterObj( category, IsCAPCategoryOfGradedColumns );
+      SetFilterObj( category, IsCategoryOfGradedColumns );
       
       AddObjectRepresentation( category, IsGradedColumnRep );
       

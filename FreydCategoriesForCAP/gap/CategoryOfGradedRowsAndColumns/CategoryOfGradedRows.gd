@@ -20,10 +20,10 @@
 #! The output is the category of graded rows over $R$.
 #! @Returns a category
 #! @Arguments R
-DeclareAttribute( "CAPCategoryOfGradedRows",
+DeclareAttribute( "CategoryOfGradedRows",
                   IsHomalgGradedRing );
 
-DeclareCategory( "IsCAPCategoryOfGradedRows",
+DeclareCategory( "IsCategoryOfGradedRows",
                  IsCapCategory );
 
 ####################################

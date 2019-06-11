@@ -21,13 +21,13 @@ InstallMethod( SfpgrmodLeft,
                 [ IsHomalgGradedRing ],
   function( graded_ring )
     
-    return FreydCategory( CAPCategoryOfGradedRows( graded_ring ) );
+    return FreydCategory( CategoryOfGradedRows( graded_ring ) );
     
 end );
 
 ##
 InstallMethod( FreydCategory,
-               [ IsCAPCategoryOfGradedRows ],
+               [ IsCategoryOfGradedRows ],
     function( underlying_category )
       local category, graded_ring;
       
@@ -49,13 +49,13 @@ InstallMethod( SfpgrmodRight,
                 [ IsHomalgGradedRing ],
   function( graded_ring )
     
-    return FreydCategory( CAPCategoryOfGradedColumns( graded_ring ) );
+    return FreydCategory( CategoryOfGradedColumns( graded_ring ) );
     
 end );
 
 ##
 InstallMethod( FreydCategory,
-               [ IsCAPCategoryOfGradedColumns ],
+               [ IsCategoryOfGradedColumns ],
     function( underlying_category )
       local category, graded_ring;
       

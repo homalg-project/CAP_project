@@ -19,10 +19,10 @@
 #! The output is the category of graded columns over $R$.
 #! @Returns a category
 #! @Arguments R
-DeclareAttribute( "CAPCategoryOfGradedColumns",
+DeclareAttribute( "CategoryOfGradedColumns",
                   IsHomalgGradedRing );
 
-DeclareCategory( "IsCAPCategoryOfGradedColumns",
+DeclareCategory( "IsCategoryOfGradedColumns",
                  IsCapCategory );
 
 ####################################
