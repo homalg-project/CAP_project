@@ -16,7 +16,7 @@
 ######################################
 
 # compute the category S-fpgrmod for a toric variety
-InstallMethod( SfpgrmodLeft,
+InstallMethod( FpGradedLeftModules,
                 " for graded rings ",
                 [ IsHomalgGradedRing ],
   function( graded_ring )
@@ -37,14 +37,14 @@ InstallMethod( FreydCategory,
       
       category!.Name := Concatenation( "Category of graded left module presentations over ", RingName( graded_ring ) );
       
-      SetFilterObj( category, IsSfpgrmodLeft );
+      SetFilterObj( category, IsFpGradedLeftModules );
       
       return category;
       
 end );
 
 # compute the category S-fpgrmod for a toric variety
-InstallMethod( SfpgrmodRight,
+InstallMethod( FpGradedRightModules,
                 " for graded rings ",
                 [ IsHomalgGradedRing ],
   function( graded_ring )
@@ -65,7 +65,7 @@ InstallMethod( FreydCategory,
       
       category!.Name := Concatenation( "Category of graded right module presentations over ", RingName( graded_ring ) );
       
-      SetFilterObj( category, IsSfpgrmodRight );
+      SetFilterObj( category, IsFpGradedRightModules );
       
       return category;
       
@@ -85,7 +85,7 @@ InstallMethod( FreydCategoryObject,
     
     object := FREYD_CATEGORY_OBJECT( relation_morphism );
     
-    SetFilterObj( object, IsGradedLeftModulePresentationForCAP );
+    SetFilterObj( object, IsFpGradedLeftModulesObject );
     
     return object;    
     
@@ -99,7 +99,7 @@ InstallMethod( FreydCategoryObject,
     
     object := FREYD_CATEGORY_OBJECT( relation_morphism );
     
-    SetFilterObj( object, IsGradedRightModulePresentationForCAP );
+    SetFilterObj( object, IsFpGradedRightModulesObject );
     
     return object;    
     
@@ -107,15 +107,15 @@ end );
 
 ##
 InstallMethod( FreydCategoryMorphism,
-               [ IsGradedLeftModulePresentationForCAP,
+               [ IsFpGradedLeftModulesObject,
                  IsGradedRowMorphism,
-                 IsGradedLeftModulePresentationForCAP ],
+                 IsFpGradedLeftModulesObject ],
   function( source, morphism_datum, range )
     local underlying_category, morphism, category, type;
     
     morphism := FREYD_CATEGORY_MORPHISM( source, morphism_datum, range );
     
-    SetFilterObj( morphism, IsGradedLeftModulePresentationMorphismForCAP );
+    SetFilterObj( morphism, IsFpGradedLeftModulesMorphism );
     
     return morphism;
 
@@ -123,15 +123,15 @@ end );
 
 ##
 InstallMethod( FreydCategoryMorphism,
-               [ IsGradedRightModulePresentationForCAP,
+               [ IsFpGradedRightModulesObject,
                  IsGradedColumnMorphism,
-                 IsGradedRightModulePresentationForCAP ],
+                 IsFpGradedRightModulesObject ],
   function( source, morphism_datum, range )
     local underlying_category, morphism, category, type;
     
     morphism := FREYD_CATEGORY_MORPHISM( source, morphism_datum, range );
     
-    SetFilterObj( morphism, IsGradedRightModulePresentationMorphismForCAP );
+    SetFilterObj( morphism, IsFpGradedRightModulesMorphism );
     
     return morphism;
 
