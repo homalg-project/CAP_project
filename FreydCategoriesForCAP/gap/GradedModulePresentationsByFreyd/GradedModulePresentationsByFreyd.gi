@@ -31,7 +31,11 @@ InstallMethod( FreydCategory,
     function( underlying_category )
       local category, graded_ring;
       
-      category := FREYD_CATEGORY( underlying_category );
+      category := FREYD_CATEGORY( underlying_category: FinalizeCategory := false );
+      
+      ## you may replace generic methods of the category here
+      
+      Finalize( category );
       
       graded_ring := underlying_category!.homalg_graded_ring_for_category_of_graded_rows;
       
@@ -59,7 +63,11 @@ InstallMethod( FreydCategory,
     function( underlying_category )
       local category, graded_ring;
       
-      category := FREYD_CATEGORY( underlying_category );
+      category := FREYD_CATEGORY( underlying_category: FinalizeCategory := false );
+      
+      ## you may replace generic methods of the category here
+      
+      Finalize( category );
       
       graded_ring := underlying_category!.homalg_graded_ring_for_category_of_graded_columns;
       
