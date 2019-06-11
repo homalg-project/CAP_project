@@ -33,7 +33,7 @@ InstallMethod( FreydCategory,
       
       category := FREYD_CATEGORY( underlying_category );
       
-      graded_ring := underlying_category!.homalg_graded_ring_for_category_of_graded_rows;
+      graded_ring := UnderlyingGradedRing( underlying_category );
       
       category!.Name := Concatenation( "Category of graded left module presentations over ", RingName( graded_ring ) );
       
@@ -61,7 +61,7 @@ InstallMethod( FreydCategory,
       
       category := FREYD_CATEGORY( underlying_category );
       
-      graded_ring := underlying_category!.homalg_graded_ring_for_category_of_graded_columns;
+      graded_ring := UnderlyingGradedRing( underlying_category );
       
       category!.Name := Concatenation( "Category of graded right module presentations over ", RingName( graded_ring ) );
       

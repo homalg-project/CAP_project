@@ -37,3 +37,12 @@ DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS" );
 DeclareGlobalFunction( "CAP_INTERNAL_WEAK_FIBER_PRODUCT_GRADED_ROWS" );
 
 DeclareGlobalFunction( "CAP_INTERNAL_WEAK_PUSHOUT_GRADED_ROWS" );
+
+####################################
+##
+#! @Section Attributes
+##
+####################################
+
+DeclareAttribute( "UnderlyingGradedRing",
+                  IsCategoryOfGradedRows );
