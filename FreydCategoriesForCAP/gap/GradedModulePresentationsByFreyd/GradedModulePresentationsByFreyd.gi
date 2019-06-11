@@ -35,7 +35,7 @@ InstallMethod( FreydCategory,
       
       graded_ring := underlying_category!.homalg_graded_ring_for_category_of_graded_rows;
       
-      category!.Name := Concatenation( "Category of graded left module presentations over ", RingName( graded_ring ) );
+      category!.Name := Concatenation( "Category of f.p. graded left modules over ", RingName( graded_ring ) );
       
       SetFilterObj( category, IsFpGradedLeftModules );
       
@@ -63,7 +63,7 @@ InstallMethod( FreydCategory,
       
       graded_ring := underlying_category!.homalg_graded_ring_for_category_of_graded_columns;
       
-      category!.Name := Concatenation( "Category of graded right module presentations over ", RingName( graded_ring ) );
+      category!.Name := Concatenation( "Category of f.p. graded right modules over ", RingName( graded_ring ) );
       
       SetFilterObj( category, IsFpGradedRightModules );
       
