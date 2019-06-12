@@ -21,7 +21,7 @@
 #! captured by this attribute.
 #! @Returns a CapCategory
 #! @Arguments S
-DeclareAttribute( "SfpgrmodLeft",
+DeclareAttribute( "FpGradedLeftModules",
                  IsHomalgGradedRing );
 
 #! @Description
@@ -29,12 +29,12 @@ DeclareAttribute( "SfpgrmodLeft",
 #! captured by this attribute.
 #! @Returns a CapCategory
 #! @Arguments S
-DeclareAttribute( "SfpgrmodRight",
+DeclareAttribute( "FpGradedRightModules",
                  IsHomalgGradedRing ); 
 
-DeclareCategory( "IsSfpgrmodLeft", IsCapCategory );
+DeclareCategory( "IsFpGradedLeftModules", IsCapCategory );
 
-DeclareCategory( "IsSfpgrmodRight", IsCapCategory );
+DeclareCategory( "IsFpGradedRightModules", IsCapCategory );
 
 ######################################################################
 ##
@@ -45,20 +45,20 @@ DeclareCategory( "IsSfpgrmodRight", IsCapCategory );
 #! @Description
 #! The GAP category of graded left and right module presentations.
 #! @Arguments object
-DeclareCategory( "IsGradedLeftOrRightModulePresentationForCAP",
+DeclareCategory( "IsFpGradedLeftOrRightModulesObject",
                  IsFreydCategoryObject );
 
 #! @Description
 #! The GAP category of objects in the presentation category over the category of projective graded left modules.
 #! @Arguments object
-DeclareCategory( "IsGradedLeftModulePresentationForCAP",
-                 IsGradedLeftOrRightModulePresentationForCAP );
+DeclareCategory( "IsFpGradedLeftModulesObject",
+                 IsFpGradedLeftOrRightModulesObject );
 
 #! @Description
 #! The GAP category of objects in the presentation category over the category of projective graded right modules.
 #! @Arguments object
-DeclareCategory( "IsGradedRightModulePresentationForCAP",
-                 IsGradedLeftOrRightModulePresentationForCAP );
+DeclareCategory( "IsFpGradedRightModulesObject",
+                 IsFpGradedLeftOrRightModulesObject );
 
 
 
@@ -71,17 +71,17 @@ DeclareCategory( "IsGradedRightModulePresentationForCAP",
 #! @Description
 #! The GAP category of left or right module presentation morphisms
 #! @Arguments object
-DeclareCategory( "IsGradedLeftOrRightModulePresentationMorphismForCAP",
+DeclareCategory( "IsFpGradedLeftOrRightModulesMorphism",
                  IsFreydCategoryMorphism );
 
 #! @Description
 #! The GAP category of morphisms in the presentation category over the category of projective graded left modules.
 #! @Arguments object
-DeclareCategory( "IsGradedLeftModulePresentationMorphismForCAP",
-                 IsGradedLeftOrRightModulePresentationMorphismForCAP );
+DeclareCategory( "IsFpGradedLeftModulesMorphism",
+                 IsFpGradedLeftOrRightModulesMorphism );
 
 #! @Description
 #! The GAP category of morphisms in the presentation category over the category of projective graded right modules.
 #! @Arguments object
-DeclareCategory( "IsGradedRightModulePresentationMorphismForCAP",
-                 IsGradedLeftOrRightModulePresentationMorphismForCAP );
+DeclareCategory( "IsFpGradedRightModulesMorphism",
+                 IsFpGradedLeftOrRightModulesMorphism );
