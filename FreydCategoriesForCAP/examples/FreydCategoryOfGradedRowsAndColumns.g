@@ -20,8 +20,8 @@ S := GradedRing( Q * "x_1, x_2, x_3, x_4" );
 #! (weights: yet unset)
 SetWeightsOfIndeterminates( S, [[1,0],[1,0],[0,1],[0,1]] );
 #!
-cat := CAPCategoryOfGradedRows( S );
-#! CAP category of graded rows over Q[x_1,x_2,x_3,x_4] 
+cat := CategoryOfGradedRows( S );
+#! Category of graded rows over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 obj1 := GradedRow( [ [[1,1],1] ], S );
 #! <A graded row of rank 1>
@@ -29,7 +29,7 @@ obj2 := GradedRow( [ [[1,1],2] ], S );
 #! <A graded row of rank 2>
 gamma := GradedRowOrColumnMorphism( obj2, 
                        HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, S ), obj2 );
-#! <A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! <A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 freyd := FreydCategory( cat );
 #! Category of f.p. graded left modules over Q[x_1,x_2,x_3,x_4]
@@ -43,13 +43,13 @@ f := FreydCategoryMorphism( obj_gamma, gamma, obj_gamma );
 #! <A morphism in Category of f.p. graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 witness := MorphismWitness( f );
-#! <A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! <A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 #! @EndExample
 
 #! @Log
 Display( witness );
-#! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 #!
 #! Source:
@@ -88,7 +88,7 @@ Display( c );
 #! --------------------------------
 #!
 #! Source:
-#! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 #!
 #! Source:
@@ -109,7 +109,7 @@ Display( c );
 #! --------------------------------
 #!
 #! Morphism datum:
-#! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 #!
 #! Source:
@@ -130,7 +130,7 @@ Display( c );
 #! --------------------------------
 #!
 #! Range:
-#! A morphism in CAP category of graded row over Q[x_1,x_2,x_3,x_4]
+#! A morphism in Category of graded row over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 #!
 #! Source:
@@ -157,13 +157,13 @@ s := g + g;
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 a := GradedRowOrColumnMorphism( obj1, 
                                  HomalgMatrix( [ [ 2 ] ], 1, 1, S ), obj1 );
-#! <A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! <A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 #! @EndExample
 
 #! @Log
 Display( a );
-#! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 #!
 #! Source:
@@ -189,11 +189,11 @@ Z2 := FreydCategoryObject( a );
 
 #! @Log
 Display( Z2 );
-#! An object in Freyd( CAP category of graded rows over
+#! An object in Freyd( Category of graded rows over
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
 #!
 #! Relation morphism:
-#! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 #!
 #! Source:
@@ -246,11 +246,11 @@ ZFree := AsFreydCategoryObject( obj1 );
 
 #! @Log
 Display( ZFree );
-#! A projective object in Freyd( CAP category of graded rows over
+#! A projective object in Freyd( Category of graded rows over
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
 #!
 #! Relation morphism:
-#! A morphism in CAP category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 #!
 #! Source:
@@ -398,8 +398,8 @@ S := GradedRing( Q * "x_1, x_2, x_3, x_4" );
 #! (weights: yet unset)
 SetWeightsOfIndeterminates( S, [[1,0],[1,0],[0,1],[0,1]] );
 #!
-cat := CAPCategoryOfGradedColumns( S );
-#! CAP category of graded columns over Q[x_1,x_2,x_3,x_4] 
+cat := CategoryOfGradedColumns( S );
+#! Category of graded columns over Q[x_1,x_2,x_3,x_4] 
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 obj1 := GradedColumn( [ [[1,1],1] ], S );
 #! <A graded column of rank 1>
@@ -407,7 +407,7 @@ obj2 := GradedColumn( [ [[1,1],2] ], S );
 #! <A graded column of rank 2>
 gamma := GradedRowOrColumnMorphism( obj2, 
                        HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, S ), obj2 );
-#! <A morphism in CAP category of graded columns over
+#! <A morphism in Category of graded columns over
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 freyd := FreydCategory( cat );
 #! Category of f.p. graded right modules over Q[x_1,x_2,x_3,x_4]
@@ -421,13 +421,13 @@ f := FreydCategoryMorphism( obj_gamma, gamma, obj_gamma );
 #! <A morphism in Category of f.p. graded right modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 witness := MorphismWitness( f );
-#! <A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! <A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 #! @EndExample
 
 #! @Log
 Display( witness );
-#! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 #!
 #! Source:
@@ -466,7 +466,7 @@ Display( c );
 #! --------------------------------
 #!
 #! Source:
-#! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 #!
 #! Source:
@@ -487,7 +487,7 @@ Display( c );
 #! --------------------------------
 #!
 #! Morphism datum:
-#! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 #!
 #! Source:
@@ -508,7 +508,7 @@ Display( c );
 #! --------------------------------
 #!
 #! Range:
-#! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 #!
 #! Source:
@@ -535,13 +535,13 @@ s := g + g;
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 a := GradedRowOrColumnMorphism( obj1, 
                                  HomalgMatrix( [ [ 2 ] ], 1, 1, S ), obj1 );
-#! <A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! <A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
 #! @EndExample
 
 #! @Log
 Display( a );
-#! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 #!
 #! Source:
@@ -567,11 +567,11 @@ Z2 := FreydCategoryObject( a );
 
 #! @Log
 Display( Z2 );
-#! An object in Freyd( CAP category of graded columns over
+#! An object in Freyd( Category of graded columns over
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
 #!
 #! Relation morphism:
-#! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 #!
 #! Source:
@@ -628,7 +628,7 @@ Display( ZFree );
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) )
 #!
 #! Relation morphism:
-#! A morphism in CAP category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 #!
 #! Source:

@@ -21,13 +21,13 @@ InstallMethod( FpGradedLeftModules,
                 [ IsHomalgGradedRing ],
   function( graded_ring )
     
-    return FreydCategory( CAPCategoryOfGradedRows( graded_ring ) );
+    return FreydCategory( CategoryOfGradedRows( graded_ring ) );
     
 end );
 
 ##
 InstallMethod( FreydCategory,
-               [ IsCAPCategoryOfGradedRows ],
+               [ IsCategoryOfGradedRows ],
     function( underlying_category )
       local category, graded_ring;
       
@@ -37,7 +37,7 @@ InstallMethod( FreydCategory,
       
       Finalize( category );
       
-      graded_ring := underlying_category!.homalg_graded_ring_for_category_of_graded_rows;
+      graded_ring := UnderlyingGradedRing( underlying_category );
       
       category!.Name := Concatenation( "Category of f.p. graded left modules over ", RingName( graded_ring ) );
       
@@ -53,13 +53,13 @@ InstallMethod( FpGradedRightModules,
                 [ IsHomalgGradedRing ],
   function( graded_ring )
     
-    return FreydCategory( CAPCategoryOfGradedColumns( graded_ring ) );
+    return FreydCategory( CategoryOfGradedColumns( graded_ring ) );
     
 end );
 
 ##
 InstallMethod( FreydCategory,
-               [ IsCAPCategoryOfGradedColumns ],
+               [ IsCategoryOfGradedColumns ],
     function( underlying_category )
       local category, graded_ring;
       
@@ -69,7 +69,7 @@ InstallMethod( FreydCategory,
       
       Finalize( category );
       
-      graded_ring := underlying_category!.homalg_graded_ring_for_category_of_graded_columns;
+      graded_ring := UnderlyingGradedRing( underlying_category );
       
       category!.Name := Concatenation( "Category of f.p. graded right modules over ", RingName( graded_ring ) );
       

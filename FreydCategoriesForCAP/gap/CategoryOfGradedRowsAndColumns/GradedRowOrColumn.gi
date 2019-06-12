@@ -94,11 +94,11 @@ InstallGlobalFunction( GradedRowOrColumn,
     # now construct the correct category
     if left = true then
         
-        category := CAPCategoryOfGradedRows( homalg_graded_ring );
+        category := CategoryOfGradedRows( homalg_graded_ring );
         
     else
         
-        category := CAPCategoryOfGradedColumns( homalg_graded_ring );
+        category := CategoryOfGradedColumns( homalg_graded_ring );
         
     fi;
     
@@ -160,11 +160,11 @@ InstallGlobalFunction( GradedRowOrColumnLazy,
     # set the type
     if left = true then
         
-        category := CAPCategoryOfGradedRows( homalg_graded_ring );
+        category := CategoryOfGradedRows( homalg_graded_ring );
         
     else
         
-        category := CAPCategoryOfGradedColumns( homalg_graded_ring );
+        category := CategoryOfGradedColumns( homalg_graded_ring );
         
     fi;
     

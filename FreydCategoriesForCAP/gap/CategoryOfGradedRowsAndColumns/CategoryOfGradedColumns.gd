@@ -19,10 +19,10 @@
 #! The output is the category of graded columns over $R$.
 #! @Returns a category
 #! @Arguments R
-DeclareAttribute( "CAPCategoryOfGradedColumns",
+DeclareAttribute( "CategoryOfGradedColumns",
                   IsHomalgGradedRing );
 
-DeclareCategory( "IsCAPCategoryOfGradedColumns",
+DeclareCategory( "IsCategoryOfGradedColumns",
                  IsCapCategory );
 
 ####################################
@@ -36,3 +36,12 @@ DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS" );
 DeclareGlobalFunction( "CAP_INTERNAL_WEAK_FIBER_PRODUCT_GRADED_COLUMNS" );
 
 DeclareGlobalFunction( "CAP_INTERNAL_WEAK_PUSHOUT_GRADED_COLUMNS" );
+
+####################################
+##
+#! @Section Attributes
+##
+####################################
+
+DeclareAttribute( "UnderlyingGradedRing",
+                  IsCategoryOfGradedColumns );

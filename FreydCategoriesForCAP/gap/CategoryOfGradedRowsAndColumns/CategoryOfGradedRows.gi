@@ -15,22 +15,22 @@
 ##
 #############################################################
 
-InstallMethod( CAPCategoryOfGradedRows,
+InstallMethod( CategoryOfGradedRows,
                [ IsHomalgGradedRing ],
   function( homalg_graded_ring )
     local category, to_be_finalized;
 
       # construct the category
-      category := CreateCapCategory( Concatenation( "CAP category of graded rows over ", RingName( homalg_graded_ring ) ) );
+      category := CreateCapCategory( Concatenation( "Category of graded rows over ", RingName( homalg_graded_ring ) ) );
       
-      SetFilterObj( category, IsCAPCategoryOfGradedRows );
+      SetFilterObj( category, IsCategoryOfGradedRows );
       
       AddObjectRepresentation( category, IsGradedRowRep );
       
       AddMorphismRepresentation( category, IsGradedRowMorphismRep );
       
-      category!.homalg_graded_ring_for_category_of_graded_rows := homalg_graded_ring;
-
+      SetUnderlyingGradedRing( category, homalg_graded_ring );
+      
       # here we can switch internal checks in constructor on or of - true means they are performed and false means they are not
       category!.constructor_checks_wished := true;
 
@@ -76,7 +76,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
   function( category, checks )
     local underlying_graded_ring;
     
-    underlying_graded_ring := category!.homalg_graded_ring_for_category_of_graded_rows;
+    underlying_graded_ring := UnderlyingGradedRing( category );
     
     
     ######################################################################
@@ -849,8 +849,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
 
     # Monoidal structure can be defined if the underlying ring of graded rows is commutative
     # In the non-commutative case, such a monoidal structure cannot be expected in general.
-    if HasIsCommutative( UnderlyingNonGradedRing( category!.homalg_graded_ring_for_category_of_graded_rows ) )
-       and IsCommutative( UnderlyingNonGradedRing( category!.homalg_graded_ring_for_category_of_graded_rows ) ) then
+    if HasIsCommutative( UnderlyingNonGradedRing( UnderlyingGradedRing( category ) ) )
+       and IsCommutative( UnderlyingNonGradedRing( UnderlyingGradedRing( category ) ) ) then
 
     ######################################################################
     #

@@ -157,12 +157,12 @@ InstallMethod( String,
 
     if IsGradedRowMorphism( graded_row_or_column_morphism ) then
 
-      return Concatenation( "A morphism in CAP category of graded rows over ",
+      return Concatenation( "A morphism in Category of graded rows over ",
                             RingName( UnderlyingHomalgGradedRing( graded_row_or_column_morphism ) ) );
 
     else
 
-      return Concatenation( "A morphism in CAP category of graded columns over ",
+      return Concatenation( "A morphism in Category of graded columns over ",
                             RingName( UnderlyingHomalgGradedRing( graded_row_or_column_morphism ) ) );
 
     fi;

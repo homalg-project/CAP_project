@@ -15,22 +15,22 @@
 ##
 #############################################################
 
-InstallMethod( CAPCategoryOfGradedColumns,
+InstallMethod( CategoryOfGradedColumns,
                [ IsHomalgGradedRing ],
   function( homalg_graded_ring )
     local category, to_be_finalized;
     
       # create category
-      category := CreateCapCategory( Concatenation( "CAP category of graded columns over ", RingName( homalg_graded_ring ) ) );
+      category := CreateCapCategory( Concatenation( "Category of graded columns over ", RingName( homalg_graded_ring ) ) );
       
-      SetFilterObj( category, IsCAPCategoryOfGradedColumns );
+      SetFilterObj( category, IsCategoryOfGradedColumns );
       
       AddObjectRepresentation( category, IsGradedColumnRep );
       
       AddMorphismRepresentation( category, IsGradedColumnMorphismRep );
       
-      category!.homalg_graded_ring_for_category_of_graded_columns := homalg_graded_ring;
-
+      SetUnderlyingGradedRing( category, homalg_graded_ring );
+      
       # here we can switch internal checks in constructor on or of - true means they are performed and false means they are not
       category!.constructor_checks_wished := true;
 
@@ -73,7 +73,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
   function( category, checks )
     local underlying_graded_ring;
     
-    underlying_graded_ring := category!.homalg_graded_ring_for_category_of_graded_columns;
+    underlying_graded_ring := UnderlyingGradedRing( category );
     
     
     ######################################################################
@@ -846,8 +846,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS,
 
     # Monoidal structure can be defined if the underlying ring of graded columns is commutative
     # In the non-commutative case, such a monoidal structure cannot be expected in general.
-    if HasIsCommutative( UnderlyingNonGradedRing( category!.homalg_graded_ring_for_category_of_graded_columns ) )
-       and IsCommutative( UnderlyingNonGradedRing( category!.homalg_graded_ring_for_category_of_graded_columns ) ) then
+    if HasIsCommutative( UnderlyingNonGradedRing( UnderlyingGradedRing( category ) ) )
+       and IsCommutative( UnderlyingNonGradedRing( UnderlyingGradedRing( category ) ) ) then
 
     ######################################################################
     #
