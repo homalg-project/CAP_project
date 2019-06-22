@@ -34,3 +34,5 @@ ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/Grad
 ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/GradedModulePresentationsByFreydFunctors.gd" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/GradedModulePresentationsByFreydNaturalTransformations.gd" );
+
+ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/Tools.gd" );
