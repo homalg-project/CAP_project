@@ -33,3 +33,5 @@ ReadPackage( "FreydCategoriesForCAP", "gap/QuiverRows.gi" );
 ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/GradedModulePresentationsByFreyd.gi" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/GradedModulePresentationsByFreydFunctors.gi" );
+
+ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/GradedModulePresentationsByFreydNaturalTransformations.gi" );
