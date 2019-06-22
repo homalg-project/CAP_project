@@ -180,23 +180,23 @@ end );
 InstallMethod( Display,
                [ IsGradedRowOrColumnMorphism ], 
   function( graded_row_or_column_morphism )
-
-    # general information on morphism
-    Print( StringMutable( graded_row_or_column_morphism ) );
-
+    
     # source
-    Print( Concatenation( "\n\n", "Source: \n" ) );
+    Print( "Source: \n" );
     Display( Source( graded_row_or_column_morphism ) );
-
+    
     # mapping matrix
     Print( Concatenation( "\n", "Matrix: \n" ) );
     Display( UnderlyingHomalgMatrix( graded_row_or_column_morphism ) );
-
+    
     # range
     Print( Concatenation( "\n", "Range: \n" ) );
     Display( Range( graded_row_or_column_morphism ) );
     Print( "\n" );
-
+    
+    # general information on morphism
+    Print( StringMutable( graded_row_or_column_morphism ) );
+    
 end );
 
 
