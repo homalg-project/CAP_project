@@ -1732,4 +1732,192 @@ InstallMethod( \^,
       
       fi;
     
+
+#############################################################################
+##
+## Embedding of additive category into its Freyd category
+##
+#############################################################################
+
+InstallMethod( EmbeddingIntoFreydCategory,
+               [ IsCapCategory ],
+  function( additive_category )
+    local freyd_category, functor;
+        
+        # check for valid input
+        if not IsValidInputForFreydCategory( additive_category ) then
+        
+          Error( "The input category does not admit a Freyd category" );
+          return 0;
+        
+        fi;
+        
+        # define the Freyd category
+        freyd_category := FreydCategory( additive_category );
+        
+        # and set up the basics of this functor
+        functor := CapFunctor( Concatenation( "Embedding functor of ", Name( additive_category ),
+                               " into its Freyd category" ),
+                               additive_category,
+                               freyd_category
+                               );
+        
+        # now define the operation on the objects
+        AddObjectFunction( functor,
+        
+          function( object )
+            
+            return AsFreydCategoryObject( object );
+            
+        end );
+        
+        # and the operation on the morphisms
+        AddMorphismFunction( functor,
+        
+          function( new_source, morphism, new_range )
+            
+            return AsFreydCategoryMorphism( morphism );
+            
+        end );
+        
+        # and return this functor
+        return functor;
+        
+end );
+
+
+####################################################
+##
+## Section Functor BestProjectiveApproximation
+##
+####################################################
+
+## Morhpism into best projective approximation
+InstallMethod( MorphismIntoBestProjectiveApproximation,
+               [ IsFreydCategoryObject ],
+
+  function( freyd_object )
+    local mor;
+    
+    mor := WeakCokernelProjection( RelationMorphism( freyd_object ) );
+    
+    return FreydCategoryMorphism( freyd_object, mor, AsFreydCategoryObject( Range( mor ) ) );
+    
+end );
+
+## Best projective approximation of a Freyd_object
+InstallMethod( BestProjectiveApproximation,
+               [ IsFreydCategoryObject ],
+
+  function( freyd_object )
+    
+    return WeakCokernelObject( RelationMorphism( freyd_object ) );
+    
+end );
+
+## Best projective approximation of a Freyd_morphism
+InstallMethod( BestProjectiveApproximation,
+               [ IsFreydCategoryMorphism ],
+
+  function( freyd_mor )
+    local mor1, mor2, new_mor_datum;
+    
+    mor1 := MorphismIntoBestProjectiveApproximation( Source( freyd_mor ) );
+    mor2 := PreCompose( MorphismDatum( freyd_mor ), MorphismIntoBestProjectiveApproximation( Range( freyd_mor ) ) );
+    
+    return WeakColiftAlongEpimorphism( mor1, mor2 );
+    
+end );
+
+InstallMethod( BestProjectiveApproximationFunctor,
+               [ IsCapCategory ],
+  function( additive_category )
+    local freyd_category, functor;
+        
+        # check for valid input
+        if not IsValidInputForFreydCategory( additive_category ) then
+        
+          Error( "The input category does not admit a Freyd category" );
+          return 0;
+        
+        fi;
+        
+        # define the Freyd category
+        freyd_category := FreydCategory( additive_category );
+        
+        # and set up the basics of this functor
+        functor := CapFunctor( Concatenation( "Best projective approximation functor of the Freyd category of ", 
+                                              Name( additive_category ) ),
+                               freyd_category,
+                               additive_category
+                               );
+        
+        # now define the operation on the objects
+        AddObjectFunction( functor,
+        
+          function( object )
+            
+            return BestProjectiveApproximation( object );
+            
+        end );
+        
+        # and the operation on the morphisms
+        AddMorphismFunction( functor,
+        
+          function( new_source, morphism, new_range )
+            
+            return BestProjectiveApproximation( morphism );
+            
+        end );
+        
+        # and return this functor
+        return functor;
+        
+end );
+
+
+InstallMethod( BestEmbeddedProjectiveApproximationFunctor,
+               [ IsCapCategory ],
+  function( additive_category )
+    local freyd_category, functor;
+        
+        # check for valid input
+        if not IsValidInputForFreydCategory( additive_category ) then
+        
+          Error( "The input category does not admit a Freyd category" );
+          return 0;
+        
+        fi;
+        
+        # define the Freyd category
+        freyd_category := FreydCategory( additive_category );
+        
+        # and set up the basics of this functor
+        functor := CapFunctor( Concatenation( "Best embedded projective approximation functor of the Freyd category of ", 
+                                              Name( additive_category ) ),
+                               freyd_category,
+                               additive_category
+                               );
+        
+        # now define the operation on the objects
+        AddObjectFunction( functor,
+        
+          function( object )
+            
+            return AsFreydCategoryObject( BestProjectiveApproximation( object ) );
+            
+        end );
+        
+        # and the operation on the morphisms
+        AddMorphismFunction( functor,
+        
+          function( new_source, morphism, new_range )
+            
+            return AsFreydCategoryMorphism( BestProjectiveApproximation( morphism ) );
+            
+        end );
+        
+        # and return this functor
+        return functor;
+        
 end );

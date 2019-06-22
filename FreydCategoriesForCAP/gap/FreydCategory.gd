@@ -122,3 +122,71 @@ DeclareOperation( "\*",
 #!
 DeclareOperation( "\^",
                [ IsFreydCategoryMorphism, IsInt ] );
+
+
+####################################################
+##
+#! @Section Embedding functor for additive categories
+##
+####################################################
+
+#! @Description
+#! The argument is a CapCategory $C$. Provided that $C$ admits a Freyd category, this
+#! attribute will be set to be the embedding functor into this Freyd category.
+#! @Returns a functor
+#! @Arguments C
+DeclareAttribute( "EmbeddingIntoFreydCategory",
+                  IsCapCategory );
+
+
+####################################################
+##
+#! @Section Functor BestProjectiveApproximation
+##
+####################################################
+
+#! @Description
+#! The argument is an object $A$ in a Freyd category. The output will be
+#! the object in the underlying additive category, which serves as the best
+#! approximation of the given object $A$.
+#! @Returns an object in the underlying additive category
+#! @Arguments A
+DeclareAttribute( "BestProjectiveApproximation",
+                  IsFreydCategoryObject );
+
+#! @Description
+#! The argument is an object $A$ in a Freyd category. The output will be the
+#! canonical morphism from the object $A$ into this best projective
+#! approximation, the latter canonically understood as object in the Freyd category.
+#! @Returns a morphism in the Freyd category
+#! @Arguments A
+DeclareAttribute( "MorphismIntoBestProjectiveApproximation",
+                  IsCapCategoryObject );
+
+#! @Description
+#! The argument is a morphism $\alpha$ in a Freyd category. The output is the
+#! morphism in the underlying additive category, which best approximates $\alpha$.
+#! @Returns a morphism in the underlying additive category
+#! @Arguments $\alpha$
+DeclareAttribute( "BestProjectiveApproximation",
+                  IsCapCategoryMorphism );
+
+#! @Description
+#! The argument is a CapCategory $C$. Provided that $C$ admits a Freyd category, this
+#! attribute will be set to be the functor that maps objects and morphisms in the Freyd 
+#! category to their best projective approximations in the underlying additive category.
+#! @Returns a functor
+#! @Arguments C
+DeclareAttribute( "BestProjectiveApproximationFunctor",
+                  IsCapCategory );
+
+#! @Description
+#! The argument is a CapCategory $C$. Provided that $C$ admits a Freyd category, this
+#! attribute will be set to be the functor that maps objects and morphisms in the Freyd
+#! category to their best projective approximations in the underlying additive category.
+#! In contrast to BestProjectiveApproximationFunctor, we canonically embed these projective
+#! objects into the Freyd category. So this returns an autofunctor of the Freyd category.
+#! @Returns a functor
+#! @Arguments C
+DeclareAttribute( "BestEmbeddedProjectiveApproximationFunctor",
+                  IsCapCategory );
