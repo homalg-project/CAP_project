@@ -1691,7 +1691,7 @@ InstallMethod( \^,
       
         res := freyd_object;
         
-        for i in [ 1 .. power ] do
+        for i in [ 1 .. power - 1 ] do
           res := res * freyd_object;
         od;
       
@@ -1724,7 +1724,7 @@ InstallMethod( \^,
       
         res := freyd_morphism;
         
-        for i in [ 1 .. power ] do
+        for i in [ 1 .. power - 1 ] do
           res := res * freyd_morphism;
         od;
         
