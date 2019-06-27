@@ -171,6 +171,15 @@ DeclareAttribute( "GeneratorDegrees",
 DeclareAttribute( "UnderlyingMatrix",
                   IsGradedLeftOrRightPresentation );
 
+#! @Description
+#!  Returns the Krull dimension (of the annihilator ideal)
+#!  of the underlying nongraded module <A>A</A>.
+#!  The underlying ring must be commutative.
+#! @Returns an integer
+#! @Arguments A
+DeclareAttribute( "AffineDimension",
+                  IsGradedLeftOrRightPresentation );
+
 ##############################################
 ##
 ## Non-categorical methods

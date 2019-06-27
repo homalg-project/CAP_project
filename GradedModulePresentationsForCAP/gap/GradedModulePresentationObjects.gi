@@ -329,6 +329,38 @@ InstallMethodWithCacheFromObject( INTERNAL_GRADED_HOM_EMBEDDING_IN_TENSOR_PRODUC
 end );
 
 
+InstallMethod( AffineDimension,
+               [ IsGradedLeftPresentation ],
+               
+  function( A )
+    local R;
+    
+    R := UnderlyingHomalgRing( A );
+    
+    if not ( HasIsCommutative( R ) and IsCommutative( R ) ) then
+        Error( "the notion of affine dimension is currently only supported for commutative rings\n" );
+    fi;
+    
+    return AffineDimension( UnderlyingMatrix( A ) );
+    
+end );
+
+InstallMethod( AffineDimension,
+               [ IsGradedRightPresentation ],
+               
+  function( A )
+    local R;
+    
+    R := UnderlyingHomalgRing( A );
+    
+    if not ( HasIsCommutative( R ) and IsCommutative( R ) ) then
+        Error( "the notion of affine dimension is currently only supported for commutative rings\n" );
+    fi;
+    
+    return AffineDimension( Involution( UnderlyingMatrix( A ) ) );
+    
+end );
+
 ####################################
 ##
 ## View
