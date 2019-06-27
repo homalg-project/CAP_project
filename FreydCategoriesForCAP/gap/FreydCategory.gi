@@ -1554,7 +1554,7 @@ InstallMethod( Display,
     Display( RelationMorphism( Range( freyd_category_morphism ) ) );
     Print( Concatenation( "\n\n", "--------------------------------", "\n" ) );
     
-    Print( "General data:\n" );
+    Print( "General description:\n" );
     Print( "--------------------------------\n\n" );
     Print( Concatenation( StringMutable( freyd_category_morphism ), "\n\n" ) );
     
