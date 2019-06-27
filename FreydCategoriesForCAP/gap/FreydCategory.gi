@@ -211,6 +211,7 @@ InstallMethod( FreydCategoryMorphism,
                FREYD_CATEGORY_MORPHISM
 );
 
+
 ####################################
 ##
 ## Attributes
@@ -1647,4 +1648,97 @@ InstallGlobalFunction( IsValidInputForFreydCategory,
     # return result of this operation
     return result;
 
+end );
+
+
+####################################################################################
+##
+##  Section Powers of objects and morphisms
+##
+####################################################################################
+
+# for convenience allow "*" to indicate the tensor product on objects
+InstallMethod( \*,
+               "powers of presentations",
+               [ IsFreydCategoryObject, IsFreydCategoryObject ],
+  function( freyd_object1, freyd_object2 )
+    
+    return TensorProductOnObjects( freyd_object1, freyd_object2 );
+    
+end );
+
+# for convenience allow "*" to indicate the tensor product on morphisms
+InstallMethod( \*,
+               "powers of presentations",
+               [ IsFreydCategoryMorphism, IsFreydCategoryMorphism ],
+  function( freyd_morphism1, freyd_morphism2 )
+    
+    return TensorProductOnMorphisms( freyd_morphism1, freyd_morphism2 );
+    
+end );
+
+# allow "^p" to indicate the p-th power, i.e. p-times tensor product of an object with itself
+InstallMethod( \^,
+               "powers of presentations",
+               [ IsFreydCategoryObject, IsInt ],
+  function( freyd_object, power )
+    local res, i;
+    
+      if power < 0 then
+      
+        return Error( "The power must be non-negative! \n" );
+            
+      elif power = 0 then
+      
+        return TensorUnit( CapCategory( freyd_object ) );
+      
+      elif power = 1 then
+      
+        return freyd_object;
+        
+      else
+      
+        res := freyd_object;
+        
+        for i in [ 1 .. power - 1 ] do
+          res := res * freyd_object;
+        od;
+      
+        return res;
+      
+      fi;
+    
+end );
+
+# allow "^p" to indicate the p-th power, i.e. p-times tensor product of a morphism with itself
+InstallMethod( \^,
+               "powers of presentations",
+               [ IsFreydCategoryMorphism, IsInt ],
+  function( freyd_morphism, power )
+    local res, i;
+    
+      if power < 0 then
+      
+        return Error( "The power must be non-negative! \n" );
+      
+      elif power = 0 then
+      
+        return IdentityMorphism( TensorUnit( CapCategory( freyd_morphism ) ) );
+      
+      elif power = 1 then
+      
+        return freyd_morphism;
+        
+      else
+      
+        res := freyd_morphism;
+        
+        for i in [ 1 .. power - 1 ] do
+          res := res * freyd_morphism;
+        od;
+        
+        return res;
+      
+      fi;
+    
 end );

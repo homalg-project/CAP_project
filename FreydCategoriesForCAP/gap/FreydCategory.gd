@@ -54,6 +54,7 @@ DeclareAttribute( "AsFreydCategoryObject",
 DeclareAttribute( "AsFreydCategoryMorphism",
                   IsCapCategoryMorphism );
 
+
 ####################################
 ##
 #! @Section Attributes
@@ -98,3 +99,26 @@ DeclareGlobalFunction( "IsValidInputForFreydCategory" );
 #! @Arguments objects a, b
 DeclareOperationWithCache( "INTERNAL_HOM_EMBEDDING",
                            [ IsFreydCategoryObject, IsFreydCategoryObject ] );
+
+
+####################################################################################
+##
+#! @Section Convenient methods for tensor products of freyd objects and morphisms
+##
+####################################################################################
+
+#!
+DeclareOperation( "\*",
+               [ IsFreydCategoryObject, IsFreydCategoryObject ] );
+
+#!
+DeclareOperation( "\^",
+               [ IsFreydCategoryObject, IsInt ] );
+
+#!
+DeclareOperation( "\*",
+               [ IsFreydCategoryMorphism, IsFreydCategoryMorphism ] );
+
+#!
+DeclareOperation( "\^",
+               [ IsFreydCategoryMorphism, IsInt ] );
