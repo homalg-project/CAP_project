@@ -1573,7 +1573,7 @@ InstallMethod( Display,
     Display( RelationMorphism( freyd_category_object ) );
     Print( Concatenation( "\n\n", "--------------------------------", "\n" ) );
     
-    Print( "General data:\n" );
+    Print( "General description:\n" );
     Print( "--------------------------------\n\n" );
     Print( Concatenation( StringMutable( freyd_category_object ), "\n\n" ) );
     
