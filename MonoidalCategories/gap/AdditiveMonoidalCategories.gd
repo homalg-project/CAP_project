@@ -2,7 +2,7 @@
 ##
 #! @Chapter Monoidal Categories
 ##
-#! @Section Distributive Monoidal Categories
+#! @Section Additive Monoidal Categories
 ##
 ####################################
 

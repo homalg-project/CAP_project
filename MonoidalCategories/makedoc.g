@@ -18,9 +18,9 @@ AutoDoc(
             autodoc := rec( files := [
                                 "doc/Doc.autodoc",
                                 "gap/MonoidalCategoriesDoc.gd",
-                                "gap/MonoidalCategoriesTensorProductAndUnit.gd",
+                                "gap/MonoidalCategoriesTensorProductOnObjectsAndUnitObject.gd",
                                 "gap/MonoidalCategories.gd",
-                                "gap/DistributiveMonoidalCategories.gd",
+                                "gap/AdditiveMonoidalCategories.gd",
                                 "gap/BraidedMonoidalCategoriesDoc.gd",
                                 "gap/BraidedMonoidalCategories.gd",
                                 "gap/SymmetricMonoidalCategoriesDoc.gd",
