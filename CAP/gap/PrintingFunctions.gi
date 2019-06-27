@@ -100,10 +100,10 @@ end );
 
 CAP_INTERNAL_CATEGORY_PROPERTY_RANK_AND_STRING.sorted_list := __CAP_INTERNAL_RANK_CATEGORY_FROM_METHOD_RECORD();
 
-InstallGlobalFunction( InfoOfInstalledOperationsOfCategory,
+InstallGlobalFunction( InfoStringOfInstalledOperationsOfCategory,
   
   function( category )
-    local prim_operations, derived_operations, adjectives, current_stack, current_property, current_adjective;
+    local prim_operations, derived_operations, adjectives, current_stack, current_property, current_adjective, string;
     
     if not IsCapCategory( category ) then
         Error( "first argument must be a category" );
@@ -118,23 +118,32 @@ InstallGlobalFunction( InfoOfInstalledOperationsOfCategory,
     
     adjectives := [ ];
     
-    for current_stack in CAP_INTERNAL_CATEGORY_PROPERTY_RANK_AND_STRING.sorted_list do
+    for current_stack in __CAP_INTERNAL_RANK_CATEGORY_FROM_METHOD_RECORD() do
         for current_property in current_stack do
             if Length( CheckConstructivenessOfCategory( category, current_property[ 1 ] ) ) = 0 then
-                Add( adjectives, current_property[ 2 ] );
+                Add( adjectives, current_property[ 1 ] );
                 break;
             fi;
         od;
     od;
     
-    Print( String( prim_operations ) );
-    Print( " primitive operations were used to derive " );
-    Print( String( derived_operations ) );
-    Print( " basic ones for this " );
+    string := ShallowCopy( String( prim_operations ) );
+    Append( string, " primitive operations were used to derive " );
+    Append( string, String( derived_operations ) );
+    Append( string, " operations for this category which" );
     for current_adjective in adjectives do
-        Print( current_adjective );
-        Print( " " );
+        Append( string, "\n* " );
+        Append( string, current_adjective );
     od;
-    Print( "category" );
+    
+    return string;
+    
+end );
+
+InstallGlobalFunction( InfoOfInstalledOperationsOfCategory,
+  
+  function( category )
+
+    Display( InfoStringOfInstalledOperationsOfCategory( category ) );
     
 end );
