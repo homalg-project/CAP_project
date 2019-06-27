@@ -242,9 +242,12 @@ DeclareAttribute( "FunctorMorphismOperation",
 #! @BeginGroup
 
 #! @Description
-#!  Applies the functor <A>func</A> to the object or morphism <A>A</A>.
+#!  Applies the functor <A>func</A> either to
+#!   * an object or morphism <A>A</A> in the source of <A>func</A> or
+#!   * to objects or morphisms belonging to the categories
+#!     in the input signature of <A>func</A>.
 #! @Returns IsCapCategoryCell
-#! @Arguments func,A
+#! @Arguments func, A[, B, ...]
 DeclareGlobalFunction( "ApplyFunctor" );
 
 #! @EndGroup
