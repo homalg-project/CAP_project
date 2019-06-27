@@ -1537,22 +1537,27 @@ InstallMethod( Display,
                [ IsFreydCategoryMorphism ],
                
   function( freyd_category_morphism )
-
-    Print( Concatenation( StringMutable( freyd_category_morphism ), "\n\n" ) );
-    Print( "--------------------------------" );
-
-    Print( Concatenation( "\n\n", "Source:\n" ) );
+    
+    Print( Concatenation( "\n", "--------------------------------\n" ) );
+    Print( "Source:\n" );
+    Print( "--------------------------------\n\n" );
     Display( RelationMorphism( Source( freyd_category_morphism ) ) );
-    Print( "--------------------------------" );
+    Print( Concatenation( "\n\n", "--------------------------------", "\n" ) );
     
-    Print( Concatenation( "\n\n", "Morphism datum:\n" ) );
+    Print( "Morphism datum:\n" );
+    Print( "--------------------------------\n\n" );
     Display( MorphismDatum( freyd_category_morphism ) );
-    Print( "--------------------------------" );
+    Print( Concatenation( "\n\n", "--------------------------------", "\n" ) );
     
-    Print( Concatenation( "\n\n", "Range:\n" ) );
+    Print( "Range:\n" );
+    Print( "--------------------------------\n\n" );
     Display( RelationMorphism( Range( freyd_category_morphism ) ) );
-    Print( "--------------------------------" );
-
+    Print( Concatenation( "\n\n", "--------------------------------", "\n" ) );
+    
+    Print( "General description:\n" );
+    Print( "--------------------------------\n\n" );
+    Print( Concatenation( StringMutable( freyd_category_morphism ), "\n\n" ) );
+    
 end );
 
 
@@ -1561,12 +1566,16 @@ InstallMethod( Display,
                [ IsFreydCategoryObject ],
                
   function( freyd_category_object )
-
-    Print( StringMutable( freyd_category_object ) );
-
-    Print( Concatenation( "\n\n", "Relation morphism:\n" ) );
     
+    Print( Concatenation( "\n", "--------------------------------\n" ) );
+    Print( "Relation morphism:\n" );
+    Print( "--------------------------------\n\n" );
     Display( RelationMorphism( freyd_category_object ) );
+    Print( Concatenation( "\n\n", "--------------------------------", "\n" ) );
+    
+    Print( "General description:\n" );
+    Print( "--------------------------------\n\n" );
+    Print( Concatenation( StringMutable( freyd_category_object ), "\n\n" ) );
     
 end );
 
