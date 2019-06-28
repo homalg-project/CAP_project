@@ -10,8 +10,6 @@ SetPackageInfo( rec(
 
 PackageName := "GradedModulePresentationsForCAP",
 Subtitle := "Presentations for graded modules",
-Version := "0.1",
-Subtitle := "Category R-pres for CAP",
 Version := Maximum( [
            ##
            "2017.03.20", # Sebas version
@@ -21,6 +19,7 @@ Version := Maximum( [
            "2019.04.03", # Mohamed's version
            ##
            ] ),
+
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
@@ -31,9 +30,14 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Sebastian",
     LastName := "Gutsche",
-    WWWHome := "TODO",
+    WWWHome := "https://sebasguts.github.io",
     Email := "gutsche@mathematik.uni-siegen.de",
-    PostalAddress := "TODO",
+    PostalAddress := Concatenation(
+               "Department Mathematik\n",
+               "Universität Siegen\n",
+               "Walter-Flex-Straße 3\n",
+               "57068 Siegen\n",
+               "Germany" ),
     Place := "Siegen",
     Institution := "University of Siegen",
   ),
