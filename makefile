@@ -14,6 +14,9 @@ CAP_test:
 Modules_test:
 	cd ModulePresentationsForCAP && make test
 
+GradedModules_test:
+	cd GradedModulePresentationsForCAP && make test
+
 Linear_test:
 	cd LinearAlgebraForCAP && make test
 
@@ -37,5 +40,6 @@ Generalized_doc:
 ci-test: homalg_compatibility doc
 	cd CAP && make ci-test
 	cd ModulePresentationsForCAP && make ci-test
+	cd GradedModulePresentationsForCAP && make ci-test
 	cd LinearAlgebraForCAP && make ci-test
 	cd GeneralizedMorphismsForCAP && make ci-test
