@@ -15,7 +15,23 @@ AutoDoc(
                              entities := [ "GAP4", "CAP", "homalg" ],
                              ),
             
-            autodoc := rec( files := [ "doc/Doc.autodoc" ] ),
+            autodoc := rec( files := [
+                                "doc/Doc.autodoc",
+                                "gap/MonoidalCategoriesDoc.gd",
+                                "gap/MonoidalCategoriesTensorProductOnObjectsAndUnitObject.gd",
+                                "gap/MonoidalCategories.gd",
+                                "gap/AdditiveMonoidalCategories.gd",
+                                "gap/BraidedMonoidalCategoriesDoc.gd",
+                                "gap/BraidedMonoidalCategories.gd",
+                                "gap/SymmetricMonoidalCategoriesDoc.gd",
+                                "gap/ClosedMonoidalCategoriesDoc.gd",
+                                "gap/ClosedMonoidalCategories.gd",
+                                "gap/SymmetricClosedMonoidalCategoriesDoc.gd",
+                                "gap/RigidSymmetricClosedMonoidalCategoriesDoc.gd",
+                                "gap/RigidSymmetricClosedMonoidalCategories.gd",
+                                ],
+                            scan_dirs := [ ],
+                            ),
 
             maketest := rec( folder := ".",
                              commands :=
