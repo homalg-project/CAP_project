@@ -1,12 +1,21 @@
 #
 # GradedModulePresentationsForCAP: Presentations for graded modules
 #
-# This file is a script which compiles the package manual.
-#
-if fail = LoadPackage("AutoDoc", ">= 2014.03.27") then
-    Error("AutoDoc version 2014.03.27 is required.");
-fi;
+LoadPackage( "AutoDoc" );
 
-AutoDoc( "GradedModulePresentationsForCAP" : scaffold := true, autodoc := true );
+AutoDoc( "GradedModulePresentationsForCAP" : scaffold := true, autodoc :=
+         rec( files := [ "doc/Intros.autodoc" ],
+         scan_dirs := [ "gap", "examples", "doc" ] ),
+         maketest := rec( commands :=
+                            [ "LoadPackage( \"IO_ForHomalg\" );",
+                              "LoadPackage( \"GaussForHomalg\" );",
+                              "LoadPackage( \"GradedModulePresentationsForCAP\" );",
+                              "HOMALG_IO.show_banners := false;",
+                              "HOMALG_IO.suppress_PID := true;",
+                              "HOMALG_IO.use_common_stream := true;",
+                             ]
+                           )
+);
+
 
 QUIT;
