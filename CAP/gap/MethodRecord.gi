@@ -1596,6 +1596,64 @@ ProjectionInFactorOfFiberProductWithGivenFiberProduct := rec(
   end,
   return_type := "morphism" ),
 
+MorphismFromFiberProductToSink := rec(
+  installation_name := "MorphismFromFiberProductToSinkOp",
+  argument_list := [ 1 ],
+  filter_list := [ IsList, "morphism" ],
+  io_type := [ [ "D" ], [ "P", "D_1_range" ] ],
+  universal_object_position := "Source",
+  universal_type := "Limit",
+  dual_operation := "MorphismFromSourceToPushout",
+  
+  pre_function := function( diagram, method_selection_morphism )
+    local base, current_morphism, current_value;
+    
+    base := Range( diagram[1] );
+    
+    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+        
+        current_value := IsEqualForObjects( Range( current_morphism ), base );
+        
+        if current_value = fail then
+            return [ false, "cannot decide whether the given morphisms of the fiber product diagram have equal ranges" ];
+        elif current_value = false then
+            return [ false, "the given morphisms of the fiber product diagram must have equal ranges" ];
+        fi;
+        
+    od;
+    
+    return [ true ];
+  end,
+  return_type := "morphism" ),
+
+MorphismFromFiberProductToSinkWithGivenFiberProduct := rec(
+  installation_name := "MorphismFromFiberProductToSinkWithGivenFiberProduct",
+  filter_list := [ IsList, "object" ],
+  io_type := [ [ "D", "P" ], [ "P", "D_1_range" ] ],
+  universal_type := "Limit",
+  dual_operation := "MorphismFromSourceToPushoutWithGivenPushout",
+  
+  pre_function := function( diagram, pullback )
+    local base, current_morphism, current_value;
+    
+    base := Range( diagram[1] );
+    
+    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+        
+        current_value := IsEqualForObjects( Range( current_morphism ), base );
+        
+        if current_value = fail then
+            return [ false, "cannot decide whether the given morphisms of the fiber product diagram have equal ranges" ];
+        elif current_value = false then
+            return [ false, "the given morphisms of the fiber product diagram must have equal ranges" ];
+        fi;
+        
+    od;
+    
+    return [ true ];
+  end,
+  return_type := "morphism" ),
+
 UniversalMorphismIntoFiberProduct := rec(
   installation_name := "UniversalMorphismIntoFiberProductOp",
   argument_list := [ 1, 2 ],
@@ -1920,6 +1978,64 @@ InjectionOfCofactorOfPushoutWithGivenPushout := rec(
     if injection_number < 1 or injection_number > Length( diagram ) then
         return[ false, Concatenation( "there does not exist a ", String( injection_number ), "th injection" ) ];
     fi;
+    
+    cobase := Source( diagram[1] );
+    
+    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+        
+        current_value := IsEqualForObjects( Source( current_morphism ), cobase );
+        
+        if current_value = fail then
+            return [ false, "cannot decide whether the given morphisms of the pushout diagram have equal sources" ];
+        elif current_value = false then
+            return [ false, "the given morphisms of the pushout diagram must have equal sources" ];
+        fi;
+        
+    od;
+    
+    return [ true ];
+  end,
+  return_type := "morphism" ),
+
+MorphismFromSourceToPushout := rec(
+  installation_name := "MorphismFromSourceToPushoutOp",
+  argument_list := [ 1 ],
+  filter_list := [ IsList, "morphism" ],
+  io_type := [ [ "D" ], [ "D_1_source", "I" ] ],
+  universal_object_position := "Range",
+  universal_type := "Colimit",
+  dual_operation := "MorphismFromFiberProductToSink",
+  
+  pre_function := function( diagram, method_selection_morphism )
+    local cobase, current_morphism, current_value;
+    
+    cobase := Source( diagram[1] );
+    
+    for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
+        
+        current_value := IsEqualForObjects( Source( current_morphism ), cobase );
+        
+        if current_value = fail then
+            return [ false, "cannot decide whether the given morphisms of the pushout diagram have equal sources" ];
+        elif current_value = false then
+            return [ false, "the given morphisms of the pushout diagram must have equal sources" ];
+        fi;
+        
+    od;
+    
+    return [ true ];
+  end,
+  return_type := "morphism" ),
+
+MorphismFromSourceToPushoutWithGivenPushout := rec(
+  installation_name := "MorphismFromSourceToPushoutWithGivenPushout",
+  filter_list := [ IsList, "object" ],
+  io_type := [ [ "D", "I" ], [ "D_1_source", "I" ] ],
+  universal_type := "Colimit",
+  dual_operation := "MorphismFromFiberProductToSinkWithGivenFiberProduct",
+  
+  pre_function := function( diagram, injection_number, pushout )
+    local cobase, current_morphism, current_value;
     
     cobase := Source( diagram[1] );
     

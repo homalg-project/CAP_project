@@ -695,6 +695,16 @@ InstallMethod( ProjectionInFactorOfFiberProduct,
 end );
 
 ##
+InstallMethod( MorphismFromFiberProductToSink,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return MorphismFromFiberProductToSinkOp( diagram, diagram[1] );
+    
+end );
+
+##
 InstallGlobalFunction( UniversalMorphismIntoFiberProduct,
 
   function( arg )
@@ -1004,6 +1014,16 @@ InstallMethod( InjectionOfCofactorOfPushout,
   function( diagram, injection_number )
     
     return InjectionOfCofactorOfPushoutOp( diagram, injection_number, diagram[1] );
+    
+end );
+
+##
+InstallMethod( MorphismFromSourceToPushout,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return MorphismFromSourceToPushoutOp( diagram, diagram[1] );
     
 end );
 
