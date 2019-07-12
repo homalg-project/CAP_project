@@ -1472,6 +1472,48 @@ AddDerivationToCAP( MorphismBetweenDirectSums,
     
 end : Description := "MorphismBetweenDirectSums using universal morphisms of direct sums" );
 
+##
+AddDerivationToCAP( HomologyObjectFunctorialWithGivenHomologyObjects,
+                    
+  function( homology_source, mor_list, homology_range )
+    local alpha, beta, epsilon, gamma, delta, image_emb_source, image_emb_range, cok_functorial, functorial_mor;
+    
+    alpha := mor_list[1];
+    
+    beta := mor_list[2];
+    
+    epsilon := mor_list[3];
+    
+    gamma := mor_list[4];
+    
+    delta := mor_list[5];
+    
+    image_emb_source := ImageEmbedding(
+      PreCompose( KernelEmbedding( beta ), CokernelProjection( alpha ) )
+    );
+    
+    image_emb_range := ImageEmbedding(
+      PreCompose( KernelEmbedding( delta ), CokernelProjection( gamma ) )
+    );
+    
+    cok_functorial := CokernelFunctorial( alpha, epsilon, gamma );
+    
+    functorial_mor :=
+      LiftAlongMonomorphism(
+        image_emb_range, PreCompose( image_emb_source, cok_functorial )
+      );
+    
+    return PreCompose( [
+        IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject( alpha, beta ),
+        functorial_mor,
+        IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject( gamma, delta )
+      ]
+    );
+    
+end : CategoryFilter := HasIsAbelianCategory and IsAbelianCategory,
+      Description := "HomologyObjectFunctorialWithGivenHomologyObjects using functoriality of (co)kernels and images in abelian categories" );
+
+
 ###########################
 ##
 ## Methods returning a morphism with source or range constructed within the method!
@@ -2142,6 +2184,15 @@ AddDerivationToCAP( Colift,
     
 end : Description := "Colift by SolveLinearSystemInAbCategory" );
 
+##
+AddDerivationToCAP( IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject,
+  function( alpha, beta )
+    
+    return Inverse( IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject( alpha, beta ) );
+    
+end : Description := "IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject as the inverse of IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject" );
+
+
 ###########################
 ##
 ## Methods returning an object
@@ -2379,6 +2430,15 @@ AddDerivationToCAP( Coequalizer,
     return Range( ProjectionOntoCoequalizer( diagram ) );
     
 end : Description := "Coequalizer as the range of ProjectionOntoCoequalizer" );
+
+##
+AddDerivationToCAP( HomologyObject,
+                    
+  function( alpha, beta )
+    
+    return Source( IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject( alpha, beta ) );
+    
+end : Description := "HomologyObject as the source of IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject" );
 
 ###########################
 ##
@@ -3008,6 +3068,28 @@ AddFinalDerivation( IsomorphismFromDirectSumToCoproduct,
     return IdentityMorphism( DirectSum( diagram ) );
     
 end : Description := "IsomorphismFromDirectSumToCoproduct as the identity of the direct sum" );
+
+## Final methods for homology object
+
+##
+AddFinalDerivation( IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject,
+                    [ [ ImageObject, 1 ],
+                      [ PreCompose, 1 ],
+                      [ KernelEmbedding, 1 ],
+                      [ CokernelProjection, 1 ] ],
+                    [ HomologyObject,
+                      HomologyObjectFunctorialWithGivenHomologyObjects ],
+                      
+  function( alpha, beta )
+    local homology_object;
+    
+    homology_object := ImageObject( PreCompose( KernelEmbedding( beta ), CokernelProjection( alpha ) ) );
+    
+    return IdentityMorphism( homology_object );
+    
+end : CategoryFilter := HasIsAbelianCategory and IsAbelianCategory,
+      Description := "IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject as the identity of the homology object constructed as an image object" );
+
 
 ## Final method for IsEqualForObjects
 ##

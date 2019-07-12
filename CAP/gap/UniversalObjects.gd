@@ -4969,6 +4969,164 @@ DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
 
 ####################################
 ##
+#! @Section Homology objects
+##
+####################################
+
+#! In an abelian category, we can define the operation
+#! that takes as an input a pair of morphisms $\alpha: A \rightarrow B$, $\beta: B \rightarrow C$
+#! and outputs the subquotient of $B$ given by
+#! * $H := \mathrm{KernelObject}( \beta )/ (\mathrm{KernelObject}( \beta ) \cap \mathrm{ImageObject( \alpha )}$).
+#! This object is called a <Emph>homology object</Emph> of the pair $\alpha, \beta$.
+#! Note that we do not need the precomposition of $\alpha$ and $\beta$ to be zero
+#! in order to make sense of this notion.
+
+#! Moreover, given a second pair $\gamma: D \rightarrow E$, $\delta: E \rightarrow F$ of morphisms,
+#! and a morphism $\epsilon: B \rightarrow E$ such that
+#! there exists $\omega_1: A \rightarrow D$, $\omega_2: C \rightarrow F$
+#! with $\epsilon \circ \alpha \sim_{A,E} \gamma \circ \omega_1$
+#! and $\omega_2 \circ \beta \sim_{B,F} \delta \circ \epsilon$
+#! there is a functorial way to obtain from these data a morphism between the two corresponding homology objects.
+
+## Main Operations and Attributes
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B, \beta: B \rightarrow C$.
+#! The output is the homology object $H$ of this pair.
+#! @Returns an object
+#! @Arguments alpha, beta
+DeclareOperation( "HomologyObject",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The argument are five morphisms $\alpha: A \rightarrow B$, $\beta: B \rightarrow C$,
+#! $\epsilon: B \rightarrow E$,
+#! $\gamma: D \rightarrow E, \delta: E \rightarrow F$
+#! such that
+#! there exists $\omega_1: A \rightarrow D$, $\omega_2: C \rightarrow F$
+#! with $\epsilon \circ \alpha \sim_{A,E} \gamma \circ \omega_1$
+#! and $\omega_2 \circ \beta \sim_{B,F} \delta \circ \epsilon$.
+#! The output is the functorial morphism induced by $\epsilon$ between the corresponding homology objects $H_1$ and $H_2$,
+#! where $H_1$ denotes the homology object of the pair $\alpha, \beta$,
+#! and $H_2$ denotes the homology object of the pair $\gamma, \delta$.
+#! @Returns a morphism in $\mathrm{Hom}( H_1, H_2 )$
+#! @Arguments alpha, beta, epsilon, gamma, delta
+DeclareOperation( "HomologyObjectFunctorial",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#! @Description
+#! The arguments are an object $H_1$, a list $L$ consisting of five morphisms $\alpha: A \rightarrow B$, $\beta: B \rightarrow C$,
+#! $\epsilon: B \rightarrow E$,
+#! $\gamma: D \rightarrow E, \delta: E \rightarrow F$,
+#! and an object $H_2$, such that
+#! $H_1 = \mathrm{HomologyObject}( \alpha, \beta )$
+#! and $H_2 = \mathrm{HomologyObject}( \gamma, \delta )$,
+#! and such that there exists $\omega_1: A \rightarrow D$, $\omega_2: C \rightarrow F$
+#! with $\epsilon \circ \alpha \sim_{A,E} \gamma \circ \omega_1$
+#! and $\omega_2 \circ \beta \sim_{B,F} \delta \circ \epsilon$.
+#! The output is the functorial morphism induced by $\epsilon$ between the corresponding homology objects $H_1$ and $H_2$,
+#! where $H_1$ denotes the homology object of the pair $\alpha, \beta$,
+#! and $H_2$ denotes the homology object of the pair $\gamma, \delta$.
+#! @Returns a morphism in $\mathrm{Hom}( H_1, H_2 )$
+#! @Arguments H_1, L, H_2
+DeclareOperation( "HomologyObjectFunctorialWithGivenHomologyObjects",
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B, \beta: B \rightarrow C$.
+#! The output is the natural isomorphism from the homology object $H$ of $\alpha$ and $\beta$
+#! to the construction of the homology object as
+#! $\mathrm{ImageObject}( \mathrm{PreCompose}( \mathrm{KernelEmbedding}( \beta ), \mathrm{CokernelProjection}( \alpha ) ) )$,
+#! denoted by $I$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{HomologyObject}( \alpha, \beta ), I )$
+#! @Arguments alpha, beta
+DeclareOperation( "IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B, \beta: B \rightarrow C$.
+#! The output is the natural isomorphism from the construction of the homology object as
+#! $\mathrm{ImageObject}( \mathrm{PreCompose}( \mathrm{KernelEmbedding}( \beta ), \mathrm{CokernelProjection}( \alpha ) ) )$,
+#! denoted by $I$,
+#! to the homology object $H$ of $\alpha$ and $\beta$.
+#! @Returns a morphism in $\mathrm{Hom}( I, \mathrm{HomologyObject}( \alpha, \beta ) )$
+#! @Arguments alpha, beta
+DeclareOperation( "IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+## Add Operations
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>HomologyObject</C>.
+#! $F: (\alpha, \beta) \mapsto \mathrm{HomologyObject}(\alpha, \beta)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddHomologyObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddHomologyObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddHomologyObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddHomologyObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>AddHomologyObjectFunctorialWithGivenHomologyObjects</C>.
+#! $F: (H_1, \alpha, \beta, \epsilon, \gamma, \delta, H_2) \mapsto (H_1 \rightarrow H_2)$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddHomologyObjectFunctorialWithGivenHomologyObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddHomologyObjectFunctorialWithGivenHomologyObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddHomologyObjectFunctorialWithGivenHomologyObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddHomologyObjectFunctorialWithGivenHomologyObjects",
+                  [ IsCapCategory, IsList ] );
+
+
+DeclareOperation( "AddIsomorphismFromHomologyObjectToItsConstructionAsAnImageObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromHomologyObjectToItsConstructionAsAnImageObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromHomologyObjectToItsConstructionAsAnImageObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromHomologyObjectToItsConstructionAsAnImageObject",
+                  [ IsCapCategory, IsList ] );
+
+
+DeclareOperation( "AddIsomorphismFromItsConstructionAsAnImageObjectToHomologyObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromItsConstructionAsAnImageObjectToHomologyObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromItsConstructionAsAnImageObjectToHomologyObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromItsConstructionAsAnImageObjectToHomologyObject",
+                  [ IsCapCategory, IsList ] );
+
+
+
+
+#! @Chapter Universal Objects
+
+####################################
+##
 #! @Section Convenience Methods
 ##
 ####################################

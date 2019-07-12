@@ -1164,6 +1164,30 @@ end );
 
 ####################################
 ##
+## Homology object
+##
+####################################
+
+####################################
+## Convenience methods
+####################################
+
+##
+InstallMethod( HomologyObjectFunctorial,
+              [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+              
+  function( alpha, beta, epsilon, gamma, delta )
+    
+    return HomologyObjectFunctorialWithGivenHomologyObjects(
+      HomologyObject( alpha, beta ),
+      [ alpha, beta, epsilon, gamma, delta ],
+      HomologyObject( gamma, delta )
+    );
+    
+end );
+
+####################################
+##
 ## Scheme for Universal Object
 ##
 ####################################
