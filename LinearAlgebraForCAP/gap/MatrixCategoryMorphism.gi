@@ -14,8 +14,9 @@
 ##
 ####################################
 
-InstallMethodWithCache( VectorSpaceMorphism,
-                        [ IsVectorSpaceObject, IsList, IsVectorSpaceObject ],
+##
+InstallMethod( VectorSpaceMorphism,
+               [ IsVectorSpaceObject, IsList, IsVectorSpaceObject ],
                         
   function( source, element_list, range )
     local field, homalg_matrix;

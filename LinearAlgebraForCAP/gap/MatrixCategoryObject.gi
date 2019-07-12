@@ -15,10 +15,20 @@
 ####################################
 
 ##
-InstallMethodWithCache( VectorSpaceObject,
-                        [ IsInt, IsFieldForHomalg ],
-               
+InstallMethod( VectorSpaceObject,
+               [ IsInt, IsFieldForHomalg ],
+                
   function( dimension, homalg_field )
+    
+    return MatrixCategoryObject( homalg_field, dimension );
+    
+end );
+
+##
+InstallMethod( MatrixCategoryObjectOp,
+               [ IsFieldForHomalg, IsInt ],
+               
+  function( homalg_field, dimension )
     local category, vector_space_object;
     
     if dimension < 0 then
