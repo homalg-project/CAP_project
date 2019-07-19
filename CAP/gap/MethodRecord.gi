@@ -3186,6 +3186,89 @@ RandomMorphismWithFixedSourceAndRangeByList := rec(
   return_type := "morphism_or_fail"
 ),
 
+HomologyObject := rec(
+  installation_name := "HomologyObject",
+  filter_list := [ "morphism", "morphism" ],
+  io_type := [ [ "alpha", "beta" ], [ "H" ] ],
+  return_type := "object",
+  pre_function := function( alpha, beta )
+      if not IsEqualForObjects( Range( alpha ), Source( beta ) ) then
+            
+            return [ false, "the range of the first morphism has to be equal to the source of the second morphism" ];
+            
+      fi;
+      
+      return [ true ];
+      
+  end,
+  dual_operation := "HomologyObject",
+  dual_arguments_reversed := true
+),
+
+HomologyObjectFunctorialWithGivenHomologyObjects := rec(
+  installation_name := "HomologyObjectFunctorialWithGivenHomologyObjects",
+  filter_list := [ "object", IsList, "object" ],
+  io_type := [ [ "H_1", "L", "H_2" ], [ "H_1", "H_2" ] ],
+  return_type := "morphism",
+  pre_function := function( H_1, L, H2 )
+      local alpha, beta, epsilon, gamma, delta;
+      
+      alpha := L[1];
+      
+      beta := L[2];
+      
+      epsilon := L[3];
+      
+      gamma := L[4];
+      
+      delta := L[5];
+      
+      if not IsEqualForObjects( Range( alpha ), Source( beta ) ) then
+            
+            return [ false, "the range of the first morphism has to be equal to the source of the second morphism" ];
+            
+      fi;
+      
+      if not IsEqualForObjects( Range( gamma ), Source( delta ) ) then
+            
+            return [ false, "the range of the fourth morphism has to be equal to the source of the fifth morphism" ];
+            
+      fi;
+      
+      if not IsEqualForObjects( Source( epsilon ), Source( beta ) ) then
+            
+            return [ false, "the source of the third morphism has to be equal to the source of the second morphism" ];
+            
+      fi;
+      
+      if not IsEqualForObjects( Range( epsilon ), Range( gamma ) ) then
+            
+            return [ false, "the range of the third morphism has to be equal to the range of the fourth morphism" ];
+            
+      fi;
+      
+      return [ true ];
+      
+  end,
+  dual_operation := "HomologyObjectFunctorialWithGivenHomologyObjects",
+  dual_preprocessor_func := function( arg )
+      local list;
+      list := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
+      return [ list[3], Reversed( list[2] ), list[1] ];
+  end
+),
+
+IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject := rec(
+  installation_name := "IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject",
+  filter_list := [ "morphism", "morphism" ],
+  io_type := [ [ "alpha", "beta" ], [ "A", "B" ] ],
+  return_type := "morphism" ),
+
+IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject := rec(
+  installation_name := "IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject",
+  filter_list := [ "morphism", "morphism" ],
+  io_type := [ [ "alpha", "beta" ], [ "A", "B" ] ],
+  return_type := "morphism" ),
 ) );
 
 InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS, [
