@@ -1,8 +1,11 @@
-version: 2
+version: 2.1
 jobs:
   test:
+    parameters:
+      docker_image:
+        type: string
     docker:
-      - image: gapsystem/gap-docker:latest
+      - image: << parameters.docker_image >>:latest
     working_directory: ~/.gap/pkg/CAP_project
     steps:
       - checkout
@@ -20,7 +23,8 @@ workflows:
   version: 2
   commit:
     jobs:
-      - test
+      - test:
+          docker_image: gapsystem/gap-docker
   nightly:
     triggers:
       - schedule:
@@ -31,4 +35,5 @@ workflows:
               only:
                 - master
     jobs:
-      - test
+      - test:
+          docker_image: gapsystem/gap-docker-master
