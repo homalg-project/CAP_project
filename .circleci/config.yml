@@ -14,10 +14,8 @@ jobs:
           git clone --depth 1 https://github.com/homalg-project/homalg_project.git
           git clone --depth 1 https://github.com/homalg-project/CAP_project.git
           cd Toposes
-          echo "SetUserPreference(\"PackagesToLoad\", []);" > ~/.gap/gap.ini
           echo "SetInfoLevel(InfoPackageLoading, 4);" > ~/.gap/gaprc
-          sed 's/  SuggestedOtherPackages := \[ \[ "Browse", ">=0" \] \],/  SuggestedOtherPackages := [ ],/g' -i ~/.gap/pkg/CAP_project/CAP/PackageInfo.g
-          make ci-test
+          TERM=dumb make ci-test
           bash <(curl -s https://codecov.io/bash)
 workflows:
   version: 2
