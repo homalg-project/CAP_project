@@ -1,8 +1,11 @@
-version: 2
+version: 2.1
 jobs:
   test:
+    parameters:
+      docker_image:
+        type: string
     docker:
-      - image: gapsystem/gap-docker:latest
+      - image: << parameters.docker_image >>:latest
     working_directory: ~/.gap/pkg/CAP_project
     steps:
       - checkout
@@ -13,16 +16,15 @@ jobs:
           cd ..
           git clone --depth 1 https://github.com/homalg-project/homalg_project.git
           cd CAP_project
-          echo "SetUserPreference(\"PackagesToLoad\", []);" > ~/.gap/gap.ini
           echo "SetInfoLevel(InfoPackageLoading, 3);" > ~/.gap/gaprc
-          sed 's/  SuggestedOtherPackages := \[ \[ "Browse", ">=0" \] \],/  SuggestedOtherPackages := [ ],/g' -i ~/.gap/pkg/CAP_project/CAP/PackageInfo.g
-          make ci-test
+          TERM=dumb make ci-test
           bash <(curl -s https://codecov.io/bash)
 workflows:
   version: 2
   commit:
     jobs:
-      - test
+      - test:
+          docker_image: gapsystem/gap-docker
   nightly:
     triggers:
       - schedule:
@@ -33,4 +35,5 @@ workflows:
               only:
                 - master
     jobs:
-      - test
+      - test:
+          docker_image: gapsystem/gap-docker-master
