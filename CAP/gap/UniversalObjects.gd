@@ -2524,6 +2524,35 @@ DeclareOperation( "EmbeddingOfEqualizerWithGivenEqualizer",
                   [ IsList, IsCapCategoryObject ] );
 
 #! @Description
+#! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$.
+#! The output is the composition $\mu: \mathrm{Equalizer}(D) \rightarrow B$
+#! of the embedding $\iota: \mathrm{Equalizer}(D) \rightarrow A$ and $\beta_1$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Equalizer}(D), B )$
+#! @Arguments D
+DeclareOperation( "MorphismFromEqualizerToSink",
+                  [ IsList ] );
+
+#! @Description
+#! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$
+#! and a morphism for method selection.
+#! The output is the composition $\mu: \mathrm{Equalizer}(D) \rightarrow B$
+#! of the embedding $\iota: \mathrm{Equalizer}(D) \rightarrow A$ and $\beta_1$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Equalizer}(D), B )$
+#! @Arguments D, method_selection_morphism
+DeclareOperation( "MorphismFromEqualizerToSinkOp",
+                  [ IsList, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$
+#! and an object $E = \mathrm{Equalizer}(D)$.
+#! The output is the composition $\mu: E \rightarrow B$
+#! of the embedding $\iota: E \rightarrow A$ and $\beta_1$.
+#! @Returns a morphism in $\mathrm{Hom}( E, B )$
+#! @Arguments D, E
+DeclareOperation( "MorphismFromEqualizerToSinkWithGivenEqualizer",
+                  [ IsList, IsCapCategoryObject ] );
+
+#! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$
 #! and a morphism $ \tau: T \rightarrow A $
 #! such that $\beta_i \circ \tau  \sim_{T, B} \beta_j \circ \tau$ for all pairs $i,j$.
@@ -2606,6 +2635,45 @@ DeclareOperation( "AddEmbeddingOfEqualizerWithGivenEqualizer",
 
 DeclareOperation( "AddEmbeddingOfEqualizerWithGivenEqualizer",
                   [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>MorphismFromEqualizerToSink</C>.
+#! $F: ( (\beta_i: P \rightarrow B)_{i = 1 \dots n} ) \mapsto \mu$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismFromEqualizerToSink",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismFromEqualizerToSink",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismFromEqualizerToSink",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismFromEqualizerToSink",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>MorphismFromEqualizerToSinkWithGivenEqualizer</C>.
+#! $F: ( (\beta_i: P \rightarrow B)_{i = 1 \dots n}, E ) \mapsto \mu$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismFromEqualizerToSinkWithGivenEqualizer",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismFromEqualizerToSinkWithGivenEqualizer",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismFromEqualizerToSinkWithGivenEqualizer",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismFromEqualizerToSinkWithGivenEqualizer",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -2810,6 +2878,35 @@ DeclareOperation( "ProjectionOntoCoequalizerWithGivenCoequalizer",
                   [ IsList, IsCapCategoryObject ] );
 
 #! @Description
+#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$.
+#! The output is the composition $\mu: B \rightarrow \mathrm{Coequalizer}(D)$
+#! of $\beta_1$ and the projection $\pi: A \rightarrow \mathrm{Coequalizer}( D )$.
+#! @Returns a morphism in $\mathrm{Hom}( B, \mathrm{Coequalizer}( D ) )$.
+#! @Arguments D
+DeclareOperation( "MorphismFromSourceToCoequalizer",
+                  [ IsList ] );
+
+#! @Description
+#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$
+#! and a morphism for method selection.
+#! The output is the composition $\mu: B \rightarrow \mathrm{Coequalizer}(D)$
+#! of $\beta_1$ and the projection $\pi: A \rightarrow \mathrm{Coequalizer}( D )$.
+#! @Returns a morphism in $\mathrm{Hom}( B, \mathrm{Coequalizer}( D ) )$.
+#! @Arguments D, method_selection_morphism
+DeclareOperation( "MorphismFromSourceToCoequalizerOp",
+                  [ IsList, IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$
+#! and an object $C = \mathrm{Coequalizer}(D)$.
+#! The output is the composition $\mu: B \rightarrow C$
+#! of $\beta_1$ and the projection $\pi: A \rightarrow C$.
+#! @Returns a morphism in $\mathrm{Hom}( B, C )$.
+#! @Arguments D, C
+DeclareOperation( "MorphismFromSourceToCoequalizerWithGivenCoequalizer",
+                  [ IsList, IsCapCategoryObject ] );
+
+#! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$
 #! and a morphism $\tau: A \rightarrow T $ such that
 #! $\tau \circ \beta_i \sim_{B,T} \tau \circ \beta_j$ for all pairs $i,j$.
@@ -2891,6 +2988,45 @@ DeclareOperation( "AddProjectionOntoCoequalizerWithGivenCoequalizer",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddProjectionOntoCoequalizerWithGivenCoequalizer",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>MorphismFromSourceToCoequalizer</C>.
+#! $F: ( (\beta_i: B \rightarrow A)_{i = 1 \dots n} ) \mapsto \mu$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismFromSourceToCoequalizer",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismFromSourceToCoequalizer",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismFromSourceToCoequalizer",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismFromSourceToCoequalizer",
+                  [ IsCapCategory, IsList ] );
+
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>MorphismFromSourceToCoequalizerWithGivenCoequalizer</C>.
+#! $F: ( (\beta_i: B \rightarrow A)_{i = 1 \dots n}, C ) \mapsto \mu$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismFromSourceToCoequalizerWithGivenCoequalizer",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismFromSourceToCoequalizerWithGivenCoequalizer",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismFromSourceToCoequalizerWithGivenCoequalizer",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismFromSourceToCoequalizerWithGivenCoequalizer",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

@@ -1435,6 +1435,24 @@ EmbeddingOfEqualizerWithGivenEqualizer := rec(
   
   pre_function := ~.Equalizer.pre_function ),
 
+MorphismFromEqualizerToSink := rec(
+  installation_name := "MorphismFromEqualizerToSinkOp",
+  argument_list := [ 1 ],
+  filter_list := [ "list_of_morphisms", "morphism" ],
+  io_type := [ [ "morphisms" ], [ "P", "morphisms_1_range" ] ],
+  universal_object_position := "Source",
+  universal_type := "Limit",
+  dual_operation := "MorphismFromSourceToCoequalizer",
+  return_type := "morphism" ),
+
+MorphismFromEqualizerToSinkWithGivenEqualizer := rec(
+  installation_name := "MorphismFromEqualizerToSinkWithGivenEqualizer",
+  filter_list := [ "list_of_morphisms", "object" ],
+  io_type := [ [ "morphisms", "P" ], [ "P", "morphisms_1_range" ] ],
+  universal_type := "Limit",
+  dual_operation := "MorphismFromSourceToCoequalizerWithGivenCoequalizer",
+  return_type := "morphism" ),
+
 UniversalMorphismIntoEqualizer := rec(
   installation_name := "UniversalMorphismIntoEqualizer",
   filter_list := [ "list_of_morphisms", "morphism" ],
@@ -1835,6 +1853,24 @@ ProjectionOntoCoequalizerWithGivenCoequalizer := rec(
   dual_operation := "EmbeddingOfEqualizerWithGivenEqualizer",
   
   pre_function := ~.Coequalizer.pre_function ),
+
+MorphismFromSourceToCoequalizer := rec(
+  installation_name := "MorphismFromSourceToCoequalizerOp",
+  argument_list := [ 1 ],
+  filter_list := [ "list_of_morphisms", "morphism" ],
+  io_type := [ [ "morphisms" ], [ "morphisms_1_source", "P" ] ],
+  universal_object_position := "Range",
+  universal_type := "Colimit",
+  dual_operation := "MorphismFromEqualizerToSink",
+  return_type := "morphism" ),
+
+MorphismFromSourceToCoequalizerWithGivenCoequalizer := rec(
+  installation_name := "MorphismFromSourceToCoequalizerWithGivenCoequalizer",
+  filter_list := [ "list_of_morphisms", "object" ],
+  io_type := [ [ "morphisms", "P" ], [ "morphisms_1_source", "P" ] ],
+  universal_type := "Colimit",
+  dual_operation := "MorphismFromEqualizerToSinkWithGivenEqualizer",
+  return_type := "morphism" ),
 
 UniversalMorphismFromCoequalizer := rec(
   installation_name := "UniversalMorphismFromCoequalizer",

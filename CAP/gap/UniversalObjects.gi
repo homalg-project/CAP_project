@@ -605,6 +605,16 @@ InstallMethod( EmbeddingOfEqualizer,
     
 end );
 
+##
+InstallMethod( MorphismFromEqualizerToSink,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return MorphismFromEqualizerToSinkOp( diagram, diagram[1] );
+    
+end );
+
 ####################################
 ## Functorial operations
 ####################################
@@ -922,6 +932,16 @@ InstallMethod( ProjectionOntoCoequalizer,
   function( diagram )
     
     return ProjectionOntoCoequalizerOp( diagram, diagram[1] );
+    
+end );
+
+##
+InstallMethod( MorphismFromSourceToCoequalizer,
+               [ IsList ],
+               
+  function( diagram )
+    
+    return MorphismFromSourceToCoequalizerOp( diagram, diagram[1] );
     
 end );
 
