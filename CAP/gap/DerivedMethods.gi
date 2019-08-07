@@ -4,6 +4,18 @@
 ##
 ###########################
 
+AddWithGivenDerivationPairToCAP( MorphismFromKernelObjectToSink,
+        
+  function( alpha )
+    local K;
+    
+    K := KernelObject( alpha );
+    
+    return ZeroMorphism( K, Range( alpha ) );
+    
+  end : Description := "MorphismFromKernelObjectToSink as zero morphism from kernel object to range" );
+
+##
 AddWithGivenDerivationPairToCAP( KernelLift,
   function( mor, test_morphism )
     
@@ -16,6 +28,18 @@ AddWithGivenDerivationPairToCAP( KernelLift,
     return LiftAlongMonomorphism( KernelEmbeddingWithGivenKernelObject( mor, kernel ), test_morphism );
     
 end : Description := "KernelLift using LiftAlongMonomorphism and KernelEmbedding" );
+
+##
+AddWithGivenDerivationPairToCAP( MorphismFromSourceToCokernelObject,
+        
+  function( alpha )
+    local C;
+    
+    C := CokernelObject( alpha );
+    
+    return ZeroMorphism( Source( alpha ), C );
+    
+  end : Description := "MorphismFromSourceToCokernelObject as zero morphism from source to cokernel object" );
 
 ##
 AddWithGivenDerivationPairToCAP( CokernelColift,

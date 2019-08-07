@@ -290,6 +290,23 @@ KernelEmbeddingWithGivenKernelObject := rec(
   return_type := "morphism",
   dual_operation := "CokernelProjectionWithGivenCokernelObject"),
 
+MorphismFromKernelObjectToSink := rec(
+  installation_name := "MorphismFromKernelObjectToSink",
+  filter_list := [ "morphism" ],
+  io_type := [ [ "alpha" ], [ "P", "alpha_range" ] ],
+  universal_object_position := "Source",
+  universal_type := "Limit",
+  dual_operation := "MorphismFromSourceToCokernelObject",
+  return_type := "morphism" ),
+
+MorphismFromKernelObjectToSinkWithGivenKernelObject := rec(
+  installation_name := "MorphismFromKernelObjectToSinkWithGivenKernelObject",
+  filter_list := [ "morphism", "object" ],
+  io_type := [ [ "alpha", "P" ], [ "P", "alpha_range" ] ],
+  universal_type := "Limit",
+  dual_operation := "MorphismFromSourceToCokernelObjectWithGivenCokernelObject",
+  return_type := "morphism" ),
+
 KernelLift := rec(
   installation_name := "KernelLift",
   filter_list := [ "morphism", "morphism" ],
@@ -330,6 +347,23 @@ CokernelProjectionWithGivenCokernelObject := rec(
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "KernelEmbeddingWithGivenKernelObject" ),
+
+MorphismFromSourceToCokernelObject := rec(
+  installation_name := "MorphismFromSourceToCokernelObject",
+  filter_list := [ "morphism" ],
+  io_type := [ [ "alpha" ], [ "alpha_source", "P" ] ],
+  universal_object_position := "Range",
+  universal_type := "Colimit",
+  dual_operation := "MorphismFromKernelObjectToSink",
+  return_type := "morphism" ),
+
+MorphismFromSourceToCokernelObjectWithGivenCokernelObject := rec(
+  installation_name := "MorphismFromSourceToCokernelObjectWithGivenCokernelObject",
+  filter_list := [ "morphism", "object" ],
+  io_type := [ [ "alpha", "P" ], [ "alpha_source", "P" ] ],
+  universal_type := "Colimit",
+  dual_operation := "MorphismFromKernelObjectToSinkWithGivenKernelObject",
+  return_type := "morphism" ),
 
 CokernelColift := rec(
   installation_name := "CokernelColift",

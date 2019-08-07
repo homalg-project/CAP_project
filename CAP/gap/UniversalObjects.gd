@@ -76,6 +76,23 @@ DeclareOperation( "KernelEmbeddingWithGivenKernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
+#! The argument is a morphism $\alpha: A \rightarrow B$.
+#! The output is the zero morphism $0: \mathrm{KernelObject}(\alpha) \rightarrow B$.
+#! @Returns the zero morphism in $\mathrm{Hom}( \mathrm{KernelObject}(\alpha), B )$
+#! @Arguments alpha
+DeclareOperation( "MorphismFromKernelObjectToSink",
+                  [ IsCapCategoryMorphism ] );
+
+#! @Description
+#! The arguments are a morphism $\alpha: A \rightarrow B$
+#! and an object $K = \mathrm{KernelObject}(\alpha)$.
+#! The output is the zero morphism $0: K \rightarrow B$.
+#! @Returns the zero morphism in $\mathrm{Hom}( K, B )$
+#! @Arguments alpha, K
+DeclareOperation( "MorphismFromKernelObjectToSinkWithGivenKernelObject",
+                  [ IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$
 #! and a test morphism $\tau: T \rightarrow A$ satisfying $\alpha \circ \tau \sim_{T,B} 0$.
 #! The output is the morphism $u(\tau): T \rightarrow \mathrm{KernelObject}(\alpha)$
@@ -156,6 +173,46 @@ DeclareOperation( "AddKernelEmbeddingWithGivenKernelObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddKernelEmbeddingWithGivenKernelObject",
+                  [ IsCapCategory, IsList ] );
+
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>MorphismFromKernelObjectToSink</C>.
+#! $F: \alpha \mapsto \mu$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismFromKernelObjectToSink",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismFromKernelObjectToSink",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismFromKernelObjectToSink",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismFromKernelObjectToSink",
+                  [ IsCapCategory, IsList ] );
+
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>MorphismFromKernelObjectToSinkWithGivenKernelObject</C>.
+#! $F: ( \alpha, K ) \mapsto \mu$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismFromKernelObjectToSinkWithGivenKernelObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismFromKernelObjectToSinkWithGivenKernelObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismFromKernelObjectToSinkWithGivenKernelObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismFromKernelObjectToSinkWithGivenKernelObject",
                   [ IsCapCategory, IsList ] );
 
 
@@ -335,6 +392,22 @@ DeclareAttribute( "CokernelProjection",
 DeclareOperation( "CokernelProjectionWithGivenCokernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+#! @Description
+#! The argument is a morphism $\alpha: A \rightarrow B$.
+#! The output is the zero morphism $0: A \rightarrow \mathrm{CokernelObject}(\alpha)$.
+#! @Returns the zero morphism in $\mathrm{Hom}( A, \mathrm{CokernelObject}( \alpha ) )$.
+#! @Arguments alpha
+DeclareOperation( "MorphismFromSourceToCokernelObject",
+                  [ IsCapCategoryMorphism ] );
+
+#! @Description
+#! The argument is a morphism $\alpha: A \rightarrow B$
+#! and an object $K = \mathrm{CokernelObject}(\alpha)$.
+#! The output is the zero morphism $0: A \rightarrow K$.
+#! @Returns the zero morphism in $\mathrm{Hom}( A, K )$.
+#! @Arguments alpha, K
+DeclareOperation( "MorphismFromSourceToCokernelObjectWithGivenCokernelObject",
+                  [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$
@@ -417,6 +490,47 @@ DeclareOperation( "AddCokernelProjectionWithGivenCokernelObject",
 
 DeclareOperation( "AddCokernelProjectionWithGivenCokernelObject",
                   [ IsCapCategory, IsList ] );
+
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>MorphismFromSourceToCokernelObject</C>.
+#! $F: \alpha \mapsto \mu$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismFromSourceToCokernelObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismFromSourceToCokernelObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismFromSourceToCokernelObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismFromSourceToCokernelObject",
+                  [ IsCapCategory, IsList ] );
+
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>MorphismFromSourceToCokernelObjectWithGivenCokernelObject</C>.
+#! $F: ( \alpha, K ) \mapsto \mu$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismFromSourceToCokernelObjectWithGivenCokernelObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismFromSourceToCokernelObjectWithGivenCokernelObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismFromSourceToCokernelObjectWithGivenCokernelObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismFromSourceToCokernelObjectWithGivenCokernelObject",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
