@@ -3361,7 +3361,7 @@ DeclareOperation( "MorphismFromFiberProductToSink",
 #! The output is the composition $\mu: \mathrm{FiberProduct}(D) \rightarrow B$
 #! of the $1$-st projection $\pi_1: \mathrm{FiberProduct}(D) \rightarrow P_1$ and $\beta_1$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{FiberProduct}(D), B )$
-#! @Arguments D,method_selection_morphism
+#! @Arguments D, method_selection_morphism
 DeclareOperation( "MorphismFromFiberProductToSinkOp",
                   [ IsList, IsCapCategoryMorphism ] );
 
@@ -3371,7 +3371,7 @@ DeclareOperation( "MorphismFromFiberProductToSinkOp",
 #! The output is the composition $\mu: P \rightarrow B$
 #! of the $1$-st projection $\pi_1: P \rightarrow P_1$ and $\beta_1$.
 #! @Returns a morphism in $\mathrm{Hom}( P, B )$
-#! @Arguments D,k,P
+#! @Arguments D, P
 DeclareOperation( "MorphismFromFiberProductToSinkWithGivenFiberProduct",
                   [ IsList, IsCapCategoryObject ] );
 
@@ -4106,7 +4106,7 @@ DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismFromSourceToPushout</C>.
-#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k ) \mapsto \mu$
+#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n} ) \mapsto \mu$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddMorphismFromSourceToPushout",
@@ -4126,7 +4126,7 @@ DeclareOperation( "AddMorphismFromSourceToPushout",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismFromSourceToPushoutWithGivenPushout</C>.
-#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k, I ) \mapsto \mu$
+#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, I ) \mapsto \mu$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddMorphismFromSourceToPushoutWithGivenPushout",
