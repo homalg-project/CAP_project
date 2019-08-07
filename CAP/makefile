@@ -7,7 +7,7 @@ doc/manual.six: makedoc.g \
 		doc/Intros.autodoc \
 		doc/AddFunctions.autodoc \
 		doc/Limits.autodoc \
-		gap/*.gd gap/*.gi examples/*.g*
+		gap/*.gd gap/*.gi examples/*.g* examples/testfiles/*.g*
 	        gap makedoc.g
 
 clean:
