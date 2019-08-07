@@ -31,7 +31,7 @@ DeclareOperation( "CartesianBraidingWithGivenDirectProducts",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>CartesianBraidingWithGivenDirectProducts</C>.
 #! $F: (a \times b, a, b, b \times a) \rightarrow B_{a,b}$.
 #! @Returns nothing
@@ -70,7 +70,7 @@ DeclareOperation( "CartesianBraidingInverseWithGivenDirectProducts",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>CartesianBraidingInverseWithGivenDirectProducts</C>.
 #! $F: (b \times a, a, b, a \times b) \rightarrow B_{a,b}^{-1}$.
 #! @Returns nothing

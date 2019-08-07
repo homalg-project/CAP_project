@@ -52,7 +52,7 @@ DeclareOperation( "DirectProductOnMorphismsWithGivenDirectProducts",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>DirectProductOnMorphismsWithGivenDirectProducts</C>.
 #! $F: ( a \times b, \alpha: a \rightarrow a', \beta: b \rightarrow b', a' \times b' ) \mapsto \alpha \times \beta$.
 #! @Returns nothing
@@ -91,7 +91,7 @@ DeclareOperation( "CartesianAssociatorRightToLeftWithGivenDirectProducts",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>CartesianAssociatorRightToLeftWithGivenDirectProducts</C>.
 #! $F: ( a \times (b \times c), a, b, c, (a \times b) \times c ) \mapsto \alpha_{a,(b,c)}$.
 #! @Returns nothing
@@ -131,7 +131,7 @@ DeclareOperation( "CartesianAssociatorLeftToRightWithGivenDirectProducts",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>CartesianAssociatorLeftToRightWithGivenDirectProducts</C>.
 #! $F: (( a \times b ) \times c, a, b, c, a \times (b \times c )) \mapsto \alpha_{(a,b),c}$.
 #! @Returns nothing
@@ -168,7 +168,7 @@ DeclareOperation( "CartesianLeftUnitorWithGivenDirectProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>CartesianLeftUnitorWithGivenDirectProduct</C>.
 #! $F: (a, 1 \times a) \mapsto \lambda_a$.
 #! @Returns nothing
@@ -206,7 +206,7 @@ DeclareOperation( "CartesianLeftUnitorInverseWithGivenDirectProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>CartesianLeftUnitorInverseWithGivenDirectProduct</C>.
 #! $F: (a, 1 \times a) \mapsto \lambda_a^{-1}$.
 #! @Returns nothing
@@ -243,7 +243,7 @@ DeclareOperation( "CartesianRightUnitorWithGivenDirectProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>CartesianRightUnitorWithGivenDirectProduct</C>.
 #! $F: (a, a \times 1) \mapsto \rho_a$.
 #! @Returns nothing
@@ -281,7 +281,7 @@ DeclareOperation( "CartesianRightUnitorInverseWithGivenDirectProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>CartesianRightUnitorInverseWithGivenDirectProduct</C>.
 #! $F: (a, a \times 1) \mapsto \rho_a^{-1}$.
 #! @Returns nothing

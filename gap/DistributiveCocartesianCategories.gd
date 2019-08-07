@@ -35,7 +35,7 @@ DeclareOperation( "LeftCocartesianDistributivityExpandingWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>LeftCocartesianDistributivityExpandingWithGivenObjects</C>.
 #! $F: (a \sqcup (b_1 \times \dots \times b_n), a, L, (a \sqcup b_1) \times \dots \times (a \sqcup b_n)) \mapsto \mathrm{LeftCocartesianDistributivityExpandingWithGivenObjects}(a,L)$.
 #! @Returns nothing
@@ -78,7 +78,7 @@ DeclareOperation( "LeftCocartesianDistributivityFactoringWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>LeftCocartesianDistributivityFactoringWithGivenObjects</C>.
 #! $F: ((a \sqcup b_1) \times \dots \times (a \sqcup b_n), a, L, a \sqcup (b_1 \times \dots \times b_n)) \mapsto \mathrm{LeftCocartesianDistributivityFactoringWithGivenObjects}(a,L)$.
 #! @Returns nothing
@@ -120,7 +120,7 @@ DeclareOperation( "RightCocartesianDistributivityExpandingWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>RightCocartesianDistributivityExpandingWithGivenObjects</C>.
 #! $F: ((b_1 \times \dots \times b_n) \sqcup a, L, a, (b_1 \sqcup a) \times \dots \times (b_n \sqcup a)) \mapsto \mathrm{RightCocartesianDistributivityExpandingWithGivenObjects}(L,a)$.
 #! @Returns nothing
@@ -162,7 +162,7 @@ DeclareOperation( "RightCocartesianDistributivityFactoringWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>RightCocartesianDistributivityFactoringWithGivenObjects</C>.
 #! $F: ((b_1 \sqcup a) \times \dots \times (b_n \sqcup a), L, a, (b_1 \times \dots \times b_n) \sqcup a) \mapsto \mathrm{RightCocartesianDistributivityFactoringWithGivenObjects}(L,a)$.
 #! @Returns nothing

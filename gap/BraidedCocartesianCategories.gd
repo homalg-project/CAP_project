@@ -31,7 +31,7 @@ DeclareOperation( "CocartesianBraidingWithGivenCoproducts",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>CocartesianBraidingWithGivenCoproducts</C>.
 #! $F: (a \sqcup b, a, b, b \sqcup a) \rightarrow B_{a,b}$.
 #! @Returns nothing
@@ -70,7 +70,7 @@ DeclareOperation( "CocartesianBraidingInverseWithGivenCoproducts",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>CocartesianBraidingInverseWithGivenCoproducts</C>.
 #! $F: (b \sqcup a, a, b, a \sqcup b) \rightarrow B_{a,b}^{-1}$.
 #! @Returns nothing

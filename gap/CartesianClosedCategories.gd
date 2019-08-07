@@ -28,7 +28,7 @@ DeclareOperation( "ExponentialOnObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ExponentialOnObjects</C>.
 #! $F: (a,b) \mapsto \mathrm{Exponential}(a,b)$.
 #! @Returns nothing
@@ -67,7 +67,7 @@ DeclareOperation( "ExponentialOnMorphismsWithGivenExponentials",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ExponentialOnMorphismsWithGivenExponentials</C>.
 #! $F: (\mathrm{Exponential}(a',b), \alpha: a \rightarrow a', \beta: b \rightarrow b', \mathrm{Exponential}(a,b') ) \mapsto \mathrm{Exponential}(\alpha,\beta)$.
 #! @Returns nothing
@@ -106,7 +106,7 @@ DeclareOperation( "CartesianEvaluationMorphismWithGivenSource",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CartesianEvaluationMorphismWithGivenSource</C>.
 #! $F: (a, b, \mathrm{Exponential}(a,b) \times a) \mapsto \mathrm{ev}_{a,b}$.
 #! @Returns nothing
@@ -145,7 +145,7 @@ DeclareOperation( "CartesianCoevaluationMorphismWithGivenRange",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CartesianCoevaluationMorphismWithGivenRange</C>.
 #! $F: (a, b, \mathrm{Exponential}(b, a \times b)) \mapsto \mathrm{coev}_{a,b}$.
 #! @Returns nothing
@@ -174,7 +174,7 @@ DeclareOperation( "DirectProductToExponentialAdjunctionMap",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>DirectProductToExponentialAdjunctionMap</C>.
 #! $F: (a, b, f: a \times b \rightarrow c) \mapsto ( g: a \rightarrow \mathrm{Exponential}(b,c) )$.
 #! @Returns nothing
@@ -202,7 +202,7 @@ DeclareOperation( "ExponentialToDirectProductAdjunctionMap",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ExponentialToDirectProductAdjunctionMap</C>.
 #! $F: (b, c, g: a \rightarrow \mathrm{Exponential}(b,c)) \mapsto ( f: a \times b \rightarrow c )$.
 #! @Returns nothing
@@ -244,7 +244,7 @@ DeclareOperation( "CartesianPreComposeMorphismWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CartesianPreComposeMorphismWithGivenObjects</C>.
 #! $F: (\mathrm{Exponential}(a,b) \times \mathrm{Exponential}(b,c),a,b,c,\mathrm{Exponential}(a,c)) \mapsto \mathrm{CartesianPreComposeMorphismWithGivenObjects}_{a,b,c}$.
 #! @Returns nothing
@@ -285,7 +285,7 @@ DeclareOperation( "CartesianPostComposeMorphismWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CartesianPostComposeMorphismWithGivenObjects</C>.
 #! $F: (\mathrm{Exponential}(b,c) \times \mathrm{Exponential}(a,b),a,b,c,\mathrm{Exponential}(a,c)) \mapsto \mathrm{CartesianPostComposeMorphismWithGivenObjects}_{a,b,c}$.
 #! @Returns nothing
@@ -314,7 +314,7 @@ DeclareAttribute( "CartesianDualOnObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CartesianDualOnObjects</C>.
 #! $F: a \mapsto a^{\vee}$.
 #! @Returns nothing
@@ -352,7 +352,7 @@ DeclareOperation( "CartesianDualOnMorphismsWithGivenCartesianDuals",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CartesianDualOnMorphismsWithGivenCartesianDuals</C>.
 #! $F: (b^{\vee},\alpha,a^{\vee}) \mapsto \alpha^{\vee}$.
 #! @Returns nothing
@@ -391,7 +391,7 @@ DeclareOperation( "CartesianEvaluationForCartesianDualWithGivenDirectProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CartesianEvaluationForCartesianDualWithGivenDirectProduct</C>.
 #! $F: (a^{\vee} \times a, a, 1) \mapsto \mathrm{ev}_{a}$.
 #! @Returns nothing
@@ -428,7 +428,7 @@ DeclareOperation( "MorphismToCartesianBidualWithGivenCartesianBidual",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismToCartesianBidualWithGivenCartesianBidual</C>.
 #! $F: (a, (a^{\vee})^{\vee}) \mapsto (a \rightarrow (a^{\vee})^{\vee})$.
 #! @Returns nothing
@@ -471,7 +471,7 @@ DeclareOperation( "DirectProductExponentialCompatibilityMorphismWithGivenObjects
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>DirectProductExponentialCompatibilityMorphismWithGivenObjects</C>.
 #! $F: ( a,a',b,b', [ \mathrm{Exponential}(a,a') \times \mathrm{Exponential}(b,b'), \mathrm{Exponential}(a \times b,a' \times b') ]) \mapsto \mathrm{DirectProductExponentialCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}$.
 #! @Returns nothing
@@ -511,7 +511,7 @@ DeclareOperation( "DirectProductCartesianDualityCompatibilityMorphismWithGivenOb
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects</C>.
 #! $F: ( a^{\vee} \times b^{\vee}, a, b, (a \times b)^{\vee} ) \mapsto \mathrm{DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects}_{a,b}$.
 #! @Returns nothing
@@ -550,7 +550,7 @@ DeclareOperation( "MorphismFromDirectProductToExponentialWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismFromDirectProductToExponentialWithGivenObjects</C>.
 #! $F: ( a^{\vee} \times b, a, b, \mathrm{Exponential}(a,b) ) \mapsto \mathrm{MorphismFromDirectProductToExponentialWithGivenObjects}_{a,b}$.
 #! @Returns nothing
@@ -579,7 +579,7 @@ DeclareAttribute( "IsomorphismFromCartesianDualToExponential",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromCartesianDualToExponential</C>.
 #! $F: a \mapsto \mathrm{IsomorphismFromCartesianDualToExponential}_{a}$
 #! @Returns nothing
@@ -608,7 +608,7 @@ DeclareAttribute( "IsomorphismFromExponentialToCartesianDual",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromExponentialToCartesianDual</C>.
 #! $F: a \mapsto \mathrm{IsomorphismFromExponentialToCartesianDual}_{a}$
 #! @Returns nothing
@@ -639,7 +639,7 @@ DeclareOperation( "UniversalPropertyOfCartesianDual",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalPropertyOfCartesianDual</C>.
 #! $F: ( t,a,\alpha: t \times a \rightarrow 1 ) \mapsto ( t \rightarrow a^{\vee} )$.
 #! @Returns nothing
@@ -668,7 +668,7 @@ DeclareAttribute( "CartesianLambdaIntroduction",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CartesianLambdaIntroduction</C>.
 #! $F: ( \alpha: a \rightarrow b ) \mapsto ( 1 \rightarrow \mathrm{Exponential}(a,b) )$.
 #! @Returns nothing
@@ -698,7 +698,7 @@ DeclareOperation( "CartesianLambdaElimination",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CartesianLambdaElimination</C>.
 #! $F: ( a,b,\alpha: 1 \rightarrow \mathrm{Exponential}(a,b) ) \mapsto ( a \rightarrow b )$.
 #! @Returns nothing
@@ -735,7 +735,7 @@ DeclareOperation( "IsomorphismFromObjectToExponentialWithGivenExponential",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromObjectToExponentialWithGivenExponential</C>.
 #! $F: ( a, \mathrm{Exponential}(1,a) ) \mapsto ( a \rightarrow \mathrm{Exponential}(1,a) )$.
 #! @Returns nothing
@@ -772,7 +772,7 @@ DeclareOperation( "IsomorphismFromExponentialToObjectWithGivenExponential",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromExponentialToObjectWithGivenExponential</C>.
 #! $F: ( a, \mathrm{Exponential}(1,a) ) \mapsto ( \mathrm{Exponential}(1,a) \rightarrow a )$.
 #! @Returns nothing

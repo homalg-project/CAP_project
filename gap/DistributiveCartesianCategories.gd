@@ -35,7 +35,7 @@ DeclareOperation( "LeftCartesianDistributivityExpandingWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>LeftCartesianDistributivityExpandingWithGivenObjects</C>.
 #! $F: (a \times (b_1 \sqcup \dots \sqcup b_n), a, L, (a \times b_1) \sqcup \dots \sqcup (a \times b_n)) \mapsto \mathrm{LeftCartesianDistributivityExpandingWithGivenObjects}(a,L)$.
 #! @Returns nothing
@@ -78,7 +78,7 @@ DeclareOperation( "LeftCartesianDistributivityFactoringWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>LeftCartesianDistributivityFactoringWithGivenObjects</C>.
 #! $F: ((a \times b_1) \sqcup \dots \sqcup (a \times b_n), a, L, a \times (b_1 \sqcup \dots \sqcup b_n)) \mapsto \mathrm{LeftCartesianDistributivityFactoringWithGivenObjects}(a,L)$.
 #! @Returns nothing
@@ -120,7 +120,7 @@ DeclareOperation( "RightCartesianDistributivityExpandingWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>RightCartesianDistributivityExpandingWithGivenObjects</C>.
 #! $F: ((b_1 \sqcup \dots \sqcup b_n) \times a, L, a, (b_1 \times a) \sqcup \dots \sqcup (b_n \times a)) \mapsto \mathrm{RightCartesianDistributivityExpandingWithGivenObjects}(L,a)$.
 #! @Returns nothing
@@ -162,7 +162,7 @@ DeclareOperation( "RightCartesianDistributivityFactoringWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>RightCartesianDistributivityFactoringWithGivenObjects</C>.
 #! $F: ((b_1 \times a) \sqcup \dots \sqcup (b_n \times a), L, a, (b_1 \sqcup \dots \sqcup b_n) \times a) \mapsto \mathrm{RightCartesianDistributivityFactoringWithGivenObjects}(L,a)$.
 #! @Returns nothing

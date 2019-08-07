@@ -52,7 +52,7 @@ DeclareOperation( "CoproductOnMorphismsWithGivenCoproducts",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>CoproductOnMorphismsWithGivenCoproducts</C>.
 #! $F: ( a \sqcup b, \alpha: a \rightarrow a', \beta: b \rightarrow b', a' \sqcup b' ) \mapsto \alpha \sqcup \beta$.
 #! @Returns nothing
@@ -91,7 +91,7 @@ DeclareOperation( "CocartesianAssociatorRightToLeftWithGivenCoproducts",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>CocartesianAssociatorRightToLeftWithGivenCoproducts</C>.
 #! $F: ( a \sqcup (b \sqcup c), a, b, c, (a \sqcup b) \sqcup c ) \mapsto \alpha_{a,(b,c)}$.
 #! @Returns nothing
@@ -131,7 +131,7 @@ DeclareOperation( "CocartesianAssociatorLeftToRightWithGivenCoproducts",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>CocartesianAssociatorLeftToRightWithGivenCoproducts</C>.
 #! $F: (( a \sqcup b ) \sqcup c, a, b, c, a \sqcup (b \sqcup c )) \mapsto \alpha_{(a,b),c}$.
 #! @Returns nothing
@@ -168,7 +168,7 @@ DeclareOperation( "CocartesianLeftUnitorWithGivenCoproduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>CocartesianLeftUnitorWithGivenCoproduct</C>.
 #! $F: (a, 1 \sqcup a) \mapsto \lambda_a$.
 #! @Returns nothing
@@ -206,7 +206,7 @@ DeclareOperation( "CocartesianLeftUnitorInverseWithGivenCoproduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>CocartesianLeftUnitorInverseWithGivenCoproduct</C>.
 #! $F: (a, 1 \sqcup a) \mapsto \lambda_a^{-1}$.
 #! @Returns nothing
@@ -243,7 +243,7 @@ DeclareOperation( "CocartesianRightUnitorWithGivenCoproduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>CocartesianRightUnitorWithGivenCoproduct</C>.
 #! $F: (a, a \sqcup 1) \mapsto \rho_a$.
 #! @Returns nothing
@@ -281,7 +281,7 @@ DeclareOperation( "CocartesianRightUnitorInverseWithGivenCoproduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>CocartesianRightUnitorInverseWithGivenCoproduct</C>.
 #! $F: (a, a \sqcup 1) \mapsto \rho_a^{-1}$.
 #! @Returns nothing

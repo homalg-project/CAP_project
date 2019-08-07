@@ -28,7 +28,7 @@ DeclareOperation( "CoexponentialOnObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoexponentialOnObjects</C>.
 #! $F: (a,b) \mapsto \mathrm{Coexponential}(a,b)$.
 #! @Returns nothing
@@ -67,7 +67,7 @@ DeclareOperation( "CoexponentialOnMorphismsWithGivenCoexponentials",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoexponentialOnMorphismsWithGivenCoexponentials</C>.
 #! $F: (\mathrm{Coexponential}(a,b'), \alpha: a \rightarrow a', \beta: b \rightarrow b', \mathrm{Coexponential}(a',b) ) \mapsto \mathrm{Coexponential}(\alpha,\beta)$.
 #! @Returns nothing
@@ -106,7 +106,7 @@ DeclareOperation( "CocartesianEvaluationMorphismWithGivenRange",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CocartesianEvaluationMorphismWithGivenRange</C>.
 #! $F: (a, b, b \sqcup \mathrm{Coexponential}(a,b)) \mapsto \mathrm{coev}_{a,b}$.
 #! @Returns nothing
@@ -145,7 +145,7 @@ DeclareOperation( "CocartesianCoevaluationMorphismWithGivenSource",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CocartesianCoevaluationMorphismWithGivenSource</C>.
 #! $F: (a, b, \mathrm{Coexponential}(a \sqcup b, a)) \mapsto \mathrm{dcoev}_{a,b}$.
 #! @Returns nothing
@@ -174,7 +174,7 @@ DeclareOperation( "CoexponentialToCoproductAdjunctionMap",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoexponentialToCoproductAdjunctionMap</C>.
 #! $F: (a, b, f: \mathrm{Coexponential}(a,b) \rightarrow c) \mapsto ( g: a \rightarrow b \sqcup c )$.
 #! @Returns nothing
@@ -202,7 +202,7 @@ DeclareOperation( "CoproductToCoexponentialAdjunctionMap",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoproductToCoexponentialAdjunctionMap</C>.
 #! $F: (a, b, g: a \rightarrow b \sqcup c) \mapsto ( f: \mathrm{Coexponential}(a,b) \rightarrow c)$.
 #! @Returns nothing
@@ -244,7 +244,7 @@ DeclareOperation( "CocartesianPreCoComposeMorphismWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CocartesianPreCoComposeMorphismWithGivenObjects</C>.
 #! $F: (\mathrm{Coexponential}(a,c),a,b,c,\mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(b,c)) \mapsto \mathrm{CocartesianPreCoComposeMorphismWithGivenObjects}_{a,b,c}$.
 #! @Returns nothing
@@ -286,7 +286,7 @@ DeclareOperation( "CocartesianPostCoComposeMorphismWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CocartesianPostCoComposeMorphismWithGivenObjects</C>.
 #! $F: (\mathrm{Coexponential}(a,c),a,b,c,\mathrm{Coexponential}(b,c) \sqcup \mathrm{Coexponential}(a,b)) \mapsto \mathrm{CocartesianPostComposeMorphismWithGivenObjects}_{a,b,c}$.
 #! @Returns nothing
@@ -315,7 +315,7 @@ DeclareAttribute( "CocartesianDualOnObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CocartesianDualOnObjects</C>.
 #! $F: a \mapsto a_{\vee}$.
 #! @Returns nothing
@@ -353,7 +353,7 @@ DeclareOperation( "CocartesianDualOnMorphismsWithGivenCocartesianDuals",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CocartesianDualOnMorphismsWithGivenCocartesianDuals</C>.
 #! $F: (b_{\vee},\alpha,a_{\vee}) \mapsto \alpha_{\vee}$.
 #! @Returns nothing
@@ -392,7 +392,7 @@ DeclareOperation( "CocartesianEvaluationForCocartesianDualWithGivenCoproduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CocartesianEvaluationForCocartesianDualWithGivenCoproduct</C>.
 #! $F: (1, a, a \sqcup a_{vee}) \mapsto \mathrm{coev}_{a}$.
 #! @Returns nothing
@@ -429,7 +429,7 @@ DeclareOperation( "MorphismFromCocartesianBidualWithGivenCocartesianBidual",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismFromCocartesianBidualWithGivenCocartesianBidual</C>.
 #! $F: ((a_{\vee})_{\vee}, a) \mapsto ((a_{\vee})_{\vee} \rightarrow a)$.
 #! @Returns nothing
@@ -472,7 +472,7 @@ DeclareOperation( "CoexponentialCoproductCompatibilityMorphismWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoexponentialCoproductCompatibilityMorphismWithGivenObjects</C>.
 #! $F: ( a,a',b,b', [ \mathrm{Coexponential}(a \sqcup a', b \sqcup b'), \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b') ]) \mapsto \mathrm{CoexponentialCoproductCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}$.
 #! @Returns nothing
@@ -512,7 +512,7 @@ DeclareOperation( "CocartesianDualityCoproductCompatibilityMorphismWithGivenObje
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects</C>.
 #! $F: ( (a \sqcup b)_{\vee}, a, b, a_{\vee} \sqcup b_{\vee} ) \mapsto \mathrm{CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects}_{a,b}$.
 #! @Returns nothing
@@ -551,7 +551,7 @@ DeclareOperation( "MorphismFromCoexponentialToCoproductWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismFromCoexponentialToCoproductWithGivenObjects</C>.
 #! $F: ( \mathrm{Coexponential}(a,b), a, b, a \sqcup b_{\vee} ) \mapsto \mathrm{MorphismFromCoexponentialToCoproductWithGivenObjects}_{a,b}$.
 #! @Returns nothing
@@ -580,7 +580,7 @@ DeclareAttribute( "IsomorphismFromCocartesianDualToCoexponential",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromCocartesianDualToCoexponential</C>.
 #! $F: a \mapsto \mathrm{IsomorphismFromCocartesianDualToCoexponential}_{a}$
 #! @Returns nothing
@@ -609,7 +609,7 @@ DeclareAttribute( "IsomorphismFromCoexponentialToCocartesianDual",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromCoexponentialToCocartesianDual</C>.
 #! $F: a \mapsto \mathrm{IsomorphismFromCoexponentialToCocartesianDual}_{a}$
 #! @Returns nothing
@@ -640,7 +640,7 @@ DeclareOperation( "UniversalPropertyOfCocartesianDual",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalPropertyOfCocartesianDual</C>.
 #! $F: ( a,t,\alpha: 1 \rightarrow a \sqcup t ) \mapsto ( a^{\vee} \rightarrow t )$.
 #! @Returns nothing
@@ -669,7 +669,7 @@ DeclareAttribute( "CocartesianLambdaIntroduction",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CocartesianLambdaIntroduction</C>.
 #! $F: ( \alpha: a \rightarrow b ) \mapsto ( \mathrm{Coexponential}(a,b) \rightarrow 1 )$.
 #! @Returns nothing
@@ -699,7 +699,7 @@ DeclareOperation( "CocartesianLambdaElimination",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CocartesianLambdaElimination</C>.
 #! $F: ( a,b,\alpha: \mathrm{Coexponential}(a,b) \rightarrow 1 ) \mapsto ( a \rightarrow b )$.
 #! @Returns nothing
@@ -736,7 +736,7 @@ DeclareOperation( "IsomorphismFromObjectToCoexponentialWithGivenCoexponential",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromObjectToCoexponentialWithGivenCoexponential</C>.
 #! $F: ( a, \mathrm{Coexponential}(a,1) ) \mapsto ( a \rightarrow \mathrm{Coexponential}(a,1) )$.
 #! @Returns nothing
@@ -773,7 +773,7 @@ DeclareOperation( "IsomorphismFromCoexponentialToObjectWithGivenCoexponential",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromCoexponentialToObjectWithGivenCoexponential</C>.
 #! $F: ( a, \mathrm{Coexponential}(a,1) ) \mapsto ( \mathrm{Coexponential}(a,1) \rightarrow a )$.
 #! @Returns nothing
