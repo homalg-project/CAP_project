@@ -21,7 +21,7 @@ DeclareOperation( "IsomorphismFromInternalCoHomToTensorProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromInternalCoHomToTensorProduct</C>.
 #! $F: ( a, b ) \mapsto \mathrm{IsomorphismFromInternalCoHomToTensorProduct}_{a,b}$.
 #! @Returns nothing
@@ -62,7 +62,7 @@ DeclareOperation( "MorphismFromTensorProductToInternalCoHomWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismFromTensorProductToInternalCoHomWithGivenObjects</C>.
 #! $F: ( a \otimes b_{\vee},a,b,\mathrm{\underline{coHom}}(a,b) ) \mapsto \mathrm{MorphismFromTensorProductToInternalCoHomWithGivenObjects}_{a,b}$.
 #! @Returns nothing
@@ -91,7 +91,7 @@ DeclareOperation( "IsomorphismFromTensorProductToInternalCoHom",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromTensorProductToInternalCoHom</C>.
 #! $F: ( a,b ) \mapsto \mathrm{IsomorphismFromTensorProductToInternalCoHom}_{a,b}$.
 #! @Returns nothing
@@ -134,7 +134,7 @@ DeclareOperation( "InternalCoHomTensorProductCompatibilityMorphismInverseWithGiv
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects</C>.
 #! $F: ( a,a',b,b', [ \mathrm{\underline{coHom}}(a_1 \otimes b_1, a_2 \otimes b_2), \mathrm{\underline{coHom}}(a_1, a_2) \otimes \mathrm{\underline{coHom}}(b_1, b_2) ]) \mapsto \mathrm{InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}$.
 #! @Returns nothing
@@ -173,7 +173,7 @@ DeclareOperation( "CoclosedCoevaluationForCoDualWithGivenTensorProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoclosedCoevaluationForCoDualWithGivenTensorProduct</C>.
 #! $F: (a_{\vee} \otimes a, a,1) \mapsto \mathrm{dcoev}_{a}$.
 #! @Returns nothing
@@ -202,7 +202,7 @@ DeclareAttribute( "CoTraceMap",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoTraceMap</C>.
 #! $F: \alpha \mapsto \mathrm{cotrace}_{\alpha}$
 #! @Returns nothing
@@ -231,7 +231,7 @@ DeclareAttribute( "CoRankMorphism",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoRankMorphism</C>.
 #! $F: a \mapsto \mathrm{corank}_{a}$
 #! @Returns nothing
@@ -269,7 +269,7 @@ DeclareOperation( "MorphismToCoBidualWithGivenCoBidual",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismToCoBidualWithGivenCoBidual</C>.
 #! $F: (a, (a_{\vee})_{\vee}) \mapsto (a \rightarrow (a_{\vee})_{\vee} )$.
 #! @Returns nothing
