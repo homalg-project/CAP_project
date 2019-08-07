@@ -21,7 +21,7 @@ DeclareOperation( "IsomorphismFromTensorProductToInternalHom",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromTensorProductToInternalHom</C>.
 #! $F: ( a, b ) \mapsto \mathrm{IsomorphismFromTensorProductToInternalHom}_{a,b}$.
 #! @Returns nothing
@@ -62,7 +62,7 @@ DeclareOperation( "MorphismFromInternalHomToTensorProductWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismFromInternalHomToTensorProductWithGivenObjects</C>.
 #! $F: ( \mathrm{\underline{Hom}}(a,b),a,b,a^{\vee} \otimes b ) \mapsto \mathrm{MorphismFromInternalHomToTensorProductWithGivenObjects}_{a,b}$.
 #! @Returns nothing
@@ -91,7 +91,7 @@ DeclareOperation( "IsomorphismFromInternalHomToTensorProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromInternalHomToTensorProduct</C>.
 #! $F: ( a,b ) \mapsto \mathrm{IsomorphismFromInternalHomToTensorProduct}_{a,b}$.
 #! @Returns nothing
@@ -134,7 +134,7 @@ DeclareOperation( "TensorProductInternalHomCompatibilityMorphismInverseWithGiven
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects</C>.
 #! $F: ( a,a',b,b', [ \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') ]) \mapsto \mathrm{TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}$.
 #! @Returns nothing
@@ -173,7 +173,7 @@ DeclareOperation( "CoevaluationForDualWithGivenTensorProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoevaluationForDualWithGivenTensorProduct</C>.
 #! $F: (1, a, a \otimes a^{\vee}) \mapsto \mathrm{coev}_{a}$.
 #! @Returns nothing
@@ -202,7 +202,7 @@ DeclareAttribute( "TraceMap",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>TraceMap</C>.
 #! $F: \alpha \mapsto \mathrm{trace}_{\alpha}$
 #! @Returns nothing
@@ -231,7 +231,7 @@ DeclareAttribute( "RankMorphism",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>RankMorphism</C>.
 #! $F: a \mapsto \mathrm{rank}_{a}$
 #! @Returns nothing
@@ -269,7 +269,7 @@ DeclareOperation( "MorphismFromBidualWithGivenBidual",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismFromBidualWithGivenBidual</C>.
 #! $F: (a, (a^{\vee})^{\vee}) \mapsto ((a^{\vee})^{\vee} \rightarrow a)$.
 #! @Returns nothing

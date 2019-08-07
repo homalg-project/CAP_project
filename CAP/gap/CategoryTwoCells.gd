@@ -95,7 +95,7 @@ DeclareAttribute( "IdentityTwoCell",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IdentityTwoCell</C>.
 #! $F: \alpha \mapsto \mathrm{id}_{\alpha}$.
 #! @Returns nothing
@@ -126,7 +126,7 @@ DeclareOperation( "HorizontalPreCompose",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>HorizontalPreCompose</C>.
 #! $F: (c,d) \mapsto d \ast c$.
 #! @Returns nothing
@@ -157,7 +157,7 @@ DeclareOperation( "HorizontalPostCompose",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>HorizontalPostCompose</C>.
 #! $F: (d,c) \mapsto d \ast c$.
 #! @Returns nothing
@@ -189,7 +189,7 @@ DeclareOperation( "VerticalPreCompose",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>VerticalPreCompose</C>.
 #! $F: (c,d) \mapsto d \circ c$.
 #! @Returns nothing
@@ -220,7 +220,7 @@ DeclareOperation( "VerticalPostCompose",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>VerticalPostCompose</C>.
 #! $F: (d,c) \mapsto d \circ c$.
 #! @Returns nothing
@@ -254,7 +254,7 @@ DeclareOperation( "IsWellDefinedForTwoCells",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsWellDefinedForTwoCells</C>.
 #! $F: c \mapsto \mathtt{IsWellDefinedForMorphisms}( c )$.
 #! @Returns nothing

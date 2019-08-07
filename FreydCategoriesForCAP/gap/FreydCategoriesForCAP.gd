@@ -110,7 +110,7 @@ DeclareOperation( "WeakKernelLiftWithGivenWeakKernelObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>KernelObject</C>.
 #! $F: \alpha \mapsto \mathrm{KernelObject}(\alpha)$.
 #! @Returns nothing
@@ -130,7 +130,7 @@ DeclareOperation( "AddWeakKernelObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>KernelEmbedding</C>.
 #! $F: \alpha \mapsto \iota$.
 #! @Returns nothing
@@ -150,7 +150,7 @@ DeclareOperation( "AddWeakKernelEmbedding",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>KernelEmbeddingWithGivenKernelObject</C>.
 #! $F: (\alpha, K) \mapsto \iota$.
 #! @Returns nothing
@@ -170,7 +170,7 @@ DeclareOperation( "AddWeakKernelEmbeddingWithGivenWeakKernelObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>KernelLift</C>.
 #! $F: (\alpha, \tau) \mapsto u(\tau)$.
 #! @Returns nothing
@@ -190,7 +190,7 @@ DeclareOperation( "AddWeakKernelLift",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>KernelLiftWithGivenKernelObject</C>.
 #! $F: (\alpha, \tau, K) \mapsto u$.
 #! @Returns nothing
@@ -295,7 +295,7 @@ DeclareOperation( "WeakCokernelColiftWithGivenWeakCokernelObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CokernelObject</C>.
 #! $F: \alpha \mapsto K$.
 #! @Returns nothing
@@ -314,7 +314,7 @@ DeclareOperation( "AddWeakCokernelObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CokernelProjection</C>.
 #! $F: \alpha \mapsto \epsilon$.
 #! @Returns nothing
@@ -334,7 +334,7 @@ DeclareOperation( "AddWeakCokernelProjection",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CokernelProjection</C>.
 #! $F: (\alpha, K) \mapsto \epsilon$.
 #! @Returns nothing
@@ -353,7 +353,7 @@ DeclareOperation( "AddWeakCokernelProjectionWithGivenWeakCokernelObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CokernelProjection</C>.
 #! $F: (\alpha, \tau) \mapsto u(\tau)$.
 #! @Returns nothing
@@ -372,7 +372,7 @@ DeclareOperation( "AddWeakCokernelColift",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CokernelProjection</C>.
 #! $F: (\alpha, \tau, K) \mapsto u(\tau)$.
 #! @Returns nothing
@@ -455,7 +455,7 @@ DeclareOperation( "WeakBiFiberProductMorphismToDirectSum",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>FiberProduct</C>.
 #! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n} ) \mapsto P$
 #! @Returns nothing
@@ -474,7 +474,7 @@ DeclareOperation( "AddWeakBiFiberProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ProjectionInFactorOfFiberProduct</C>.
 #! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, k ) \mapsto \pi_k$
 #! @Returns nothing
@@ -505,7 +505,7 @@ DeclareOperation( "AddProjectionInSecondFactorOfWeakBiFiberProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ProjectionInFactorOfFiberProductWithGivenFiberProduct</C>.
 #! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, k,P ) \mapsto \pi_k$
 #! @Returns nothing
@@ -536,7 +536,7 @@ DeclareOperation( "AddProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakB
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismIntoFiberProduct</C>.
 #! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, \tau  ) \mapsto u(\tau)$
 #! @Returns nothing
@@ -556,7 +556,7 @@ DeclareOperation( "AddUniversalMorphismIntoWeakBiFiberProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismIntoFiberProductWithGivenFiberProduct</C>.
 #! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, \tau, P  ) \mapsto u(\tau)$
 #! @Returns nothing
@@ -645,7 +645,7 @@ DeclareOperation( "UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWea
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>FiberProduct</C>.
 #! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n} ) \mapsto P$
 #! @Returns nothing
@@ -664,7 +664,7 @@ DeclareOperation( "AddBiasedWeakFiberProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ProjectionInFactorOfFiberProduct</C>.
 #! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, k ) \mapsto \pi_k$
 #! @Returns nothing
@@ -683,7 +683,7 @@ DeclareOperation( "AddProjectionOfBiasedWeakFiberProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ProjectionInFactorOfFiberProductWithGivenFiberProduct</C>.
 #! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, k,P ) \mapsto \pi_k$
 #! @Returns nothing
@@ -702,7 +702,7 @@ DeclareOperation( "AddProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiber
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismIntoFiberProduct</C>.
 #! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, \tau  ) \mapsto u(\tau)$
 #! @Returns nothing
@@ -722,7 +722,7 @@ DeclareOperation( "AddUniversalMorphismIntoBiasedWeakFiberProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismIntoFiberProductWithGivenFiberProduct</C>.
 #! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, \tau, P  ) \mapsto u(\tau)$
 #! @Returns nothing
@@ -803,7 +803,7 @@ DeclareOperation( "DirectSumMorphismToWeakBiPushout",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>Pushout</C>.
 #! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n} ) \mapsto I$
 #! @Returns nothing
@@ -822,7 +822,7 @@ DeclareOperation( "AddWeakBiPushout",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InjectionOfCofactorOfPushout</C>.
 #! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k ) \mapsto \iota_k$
 #! @Returns nothing
@@ -854,7 +854,7 @@ DeclareOperation( "AddInjectionOfSecondCofactorOfWeakBiPushout",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InjectionOfCofactorOfPushoutWithGivenPushout</C>.
 #! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k, I ) \mapsto \iota_k$
 #! @Returns nothing
@@ -885,7 +885,7 @@ DeclareOperation( "AddInjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPus
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismFromPushout</C>.
 #! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, \tau ) \mapsto u(\tau)$
 #! @Returns nothing
@@ -904,7 +904,7 @@ DeclareOperation( "AddUniversalMorphismFromWeakBiPushout",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismFromPushout</C>.
 #! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, \tau, I ) \mapsto u(\tau)$
 #! @Returns nothing
@@ -988,7 +988,7 @@ DeclareOperation( "UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPush
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>Pushout</C>.
 #! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n} ) \mapsto I$
 #! @Returns nothing
@@ -1007,7 +1007,7 @@ DeclareOperation( "AddBiasedWeakPushout",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InjectionOfCofactorOfPushout</C>.
 #! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k ) \mapsto \iota_k$
 #! @Returns nothing
@@ -1026,7 +1026,7 @@ DeclareOperation( "AddInjectionOfBiasedWeakPushout",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InjectionOfCofactorOfPushoutWithGivenPushout</C>.
 #! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k, I ) \mapsto \iota_k$
 #! @Returns nothing
@@ -1045,7 +1045,7 @@ DeclareOperation( "AddInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismFromPushout</C>.
 #! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, \tau ) \mapsto u(\tau)$
 #! @Returns nothing
@@ -1064,7 +1064,7 @@ DeclareOperation( "AddUniversalMorphismFromBiasedWeakPushout",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismFromPushout</C>.
 #! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, \tau, I ) \mapsto u(\tau)$
 #! @Returns nothing

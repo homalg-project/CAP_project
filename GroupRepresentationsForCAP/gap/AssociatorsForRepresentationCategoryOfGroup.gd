@@ -179,7 +179,7 @@ DeclareOperation( "CreateEndomorphismFromString",
 
 #! @Description
 #! The argument is a filename $s$.
-#! This operations writes the database keys computed by the last call of InitializeGroupData
+#! This operation writes the database keys computed by the last call of InitializeGroupData
 #! to the corresponding file.
 #! @Returns nothing
 #! @Arguments s
@@ -187,7 +187,7 @@ DeclareOperation( "WriteDatabaseKeysToFile", [ IsString ] );
 
 #! @Description
 #! The argument is a filename $s$.
-#! This operations writes the representations computed by the last call of InitializeGroupData
+#! This operation writes the representations computed by the last call of InitializeGroupData
 #! to the corresponding file.
 #! @Returns nothing
 #! @Arguments s
@@ -195,7 +195,7 @@ DeclareOperation( "WriteRepresentationsDataToFile", [ IsString ] );
 
 #! @Description
 #! The argument is a filename $s$.
-#! This operations writes the skeletal functor data computed
+#! This operation writes the skeletal functor data computed
 #! by the last call of SkeletalFunctorTensorData to the corresponding file.
 #! @Returns nothing
 #! @Arguments s
@@ -203,7 +203,7 @@ DeclareOperation( "WriteSkeletalFunctorDataToFile", [ IsString ] );
 
 #! @Description
 #! The argument is a filename $s$.
-#! This operations writes the associator data of the initialized group to
+#! This operation writes the associator data of the initialized group to
 #! the corresponding file. You have to call AssociatorForSufficientlyManyTriples first.
 #! @Returns nothing
 #! @Arguments s

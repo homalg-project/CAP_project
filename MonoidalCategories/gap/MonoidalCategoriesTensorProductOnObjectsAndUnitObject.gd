@@ -26,7 +26,7 @@ DeclareOperationWithCache( "TensorProductOnObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>TensorProductOnObjects</C>.
 #! $F: (a,b) \mapsto a \otimes b$.
 #! @Returns nothing
@@ -54,7 +54,7 @@ DeclareAttribute( "TensorUnit",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>TensorUnit</C>.
 #! $F: ( ) \mapsto 1$.
 #! @Returns nothing
