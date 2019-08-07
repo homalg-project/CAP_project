@@ -3417,7 +3417,7 @@ rec(
 
 InstallGlobalFunction( "CAP_INTERNAL_ENHANCE_NAME_RECORD_LIMITS",
   function ( limits )
-    local object_specification, morphism_specification, source_position, type, range_position, unbound_morphism_positions, number_of_unbound_morphisms, unbound_objects, morphism, unbound_object_positions, number_of_unbound_objects, targets, target_positions, number_of_targets, object_universal_type, diagram_filter_list, diagram_input_type, limit, position;
+    local object_specification, morphism_specification, source_position, type, range_position, unbound_morphism_positions, number_of_unbound_morphisms, unbound_objects, morphism, unbound_object_positions, number_of_unbound_objects, targets, target_positions, nontarget_positions, number_of_targets, number_of_nontargets, diagram_filter_list, diagram_input_type, limit, position;
     
     for limit in limits do
         object_specification := limit.object_specification;
@@ -3505,7 +3505,7 @@ InstallGlobalFunction( "CAP_INTERNAL_ENHANCE_NAME_RECORD_LIMITS",
             Error( "diagrams of the given type are not supported" );
         fi;
 
-        # targets
+        # (non-)targets
         targets := StructuralCopy( object_specification );
         for morphism in morphism_specification do
             range_position := morphism[3];
@@ -3513,6 +3513,7 @@ InstallGlobalFunction( "CAP_INTERNAL_ENHANCE_NAME_RECORD_LIMITS",
             targets[range_position] := "";
         od;
         target_positions := PositionsProperty( targets, x -> x <> "" );
+        nontarget_positions := PositionsProperty( targets, x -> x = "" );
         if Length( target_positions ) = 0 then
             number_of_targets := 0;
         elif Length( target_positions ) = 1 and object_specification[target_positions[1]] = "fixedobject" then
@@ -3520,9 +3521,18 @@ InstallGlobalFunction( "CAP_INTERNAL_ENHANCE_NAME_RECORD_LIMITS",
         else
             number_of_targets := 2;
         fi;
+        if Length( nontarget_positions ) = 0 then
+            number_of_nontargets := 0;
+        elif Length( nontarget_positions ) = 1 and object_specification[nontarget_positions[1]] = "fixedobject" then
+            number_of_nontargets := 1;
+        else
+            number_of_nontargets := 2;
+        fi;
 
         limit.target_positions := target_positions;
         limit.number_of_targets := number_of_targets;
+        limit.nontarget_positions := nontarget_positions;
+        limit.number_of_nontargets := number_of_nontargets;
 
         #### get filter list and input type of the diagram
         diagram_filter_list := [ ];
@@ -3599,7 +3609,7 @@ end );
 
 InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
   function ( method_name_record, limits )
-    local make_record_op, make_record_with_given, make_colimit, object_universal_type, object_filter_list, projection_filter_list, projection_io_type, universal_morphism_filter_list, universal_morphism_io_type, object_record, projection_record, universal_morphism_record, functorial_record, limit;
+    local make_record_op, make_record_with_given, make_colimit, object_universal_type, object_filter_list, projection_filter_list, projection_io_type, morphism_to_sink_filter_list, morphism_to_sink_io_type, universal_morphism_filter_list, universal_morphism_io_type, object_record, projection_record, morphism_to_sink_record, filter_list, io_type, universal_object_position, universal_type, return_type, dual_operation, universal_morphism_record, functorial_record, no_with_given, dual_arguments_reversed, limit;
     
     #### helper functions
     make_record_op := function ( record )
@@ -3694,6 +3704,7 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
         #### get filter lists and io types
         object_filter_list := StructuralCopy( limit.diagram_filter_list );
         
+        # only used if limit.number_of_targets > 0
         projection_filter_list := StructuralCopy( limit.diagram_filter_list );
         projection_io_type := [ StructuralCopy( limit.diagram_input_type ), [ ] ];
         if limit.number_of_targets > 1 then
@@ -3727,6 +3738,15 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
             fi;
         else
             Error( "Warning: cannot express io_type" );
+        fi;
+
+        # only used if limit.number_of_nontargets = 1
+        morphism_to_sink_filter_list := StructuralCopy( limit.diagram_filter_list );
+        morphism_to_sink_io_type := [ StructuralCopy( limit.diagram_input_type ), [ ] ];
+        if limit.number_of_unbound_morphisms = 1 then
+            morphism_to_sink_io_type[2] := [ "P", "alpha_range" ];
+        elif limit.number_of_unbound_morphisms > 1 then
+            morphism_to_sink_io_type[2] := [ "P", "morphisms_1_range" ];
         fi;
 
         universal_morphism_filter_list := StructuralCopy( limit.diagram_filter_list );
@@ -3764,6 +3784,18 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
                 universal_type := "Limit",
                 return_type := "morphism",
                 dual_operation := limit.colimit_injection_name,
+            );
+        fi;
+
+        if limit.number_of_nontargets = 1 then
+            morphism_to_sink_record := rec(
+                installation_name := Concatenation( "MorphismFrom", limit.limit_object_name, "ToSink" ),
+                filter_list := morphism_to_sink_filter_list,
+                io_type := morphism_to_sink_io_type,
+                universal_object_position := "Source",
+                universal_type := "Limit",
+                return_type := "morphism",
+                dual_operation := Concatenation( "MorphismFromSourceTo", limit.colimit_object_name ),
             );
         fi;
 
@@ -3820,6 +3852,11 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
             CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( limit.limit_projection_name, "WithGiven", limit.limit_object_name ), make_record_with_given( projection_record, limit.limit_object_name, limit.colimit_object_name ) );
         fi;
         
+        if limit.number_of_nontargets = 1 then
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, morphism_to_sink_record.installation_name, make_record_op( morphism_to_sink_record ) );
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( morphism_to_sink_record.installation_name, "WithGiven", limit.limit_object_name ), make_record_with_given( morphism_to_sink_record, limit.limit_object_name, limit.colimit_object_name ) );
+        fi;
+        
         CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_universal_morphism_name, make_record_op( universal_morphism_record ) );
         CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( limit.limit_universal_morphism_name, "WithGiven", limit.limit_object_name ), make_record_with_given( universal_morphism_record, limit.limit_object_name, limit.colimit_object_name ) );
 
@@ -3831,6 +3868,11 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
         if limit.number_of_targets > 0 then
             CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_injection_name, make_record_op( make_colimit( projection_record ) ) );
             CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( limit.colimit_injection_name, "WithGiven", limit.colimit_object_name ), make_record_with_given( make_colimit( projection_record ), limit.colimit_object_name, limit.limit_object_name ) );
+        fi;
+        
+        if limit.number_of_nontargets = 1 then
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, morphism_to_sink_record.dual_operation, make_record_op( make_colimit( morphism_to_sink_record ) ) );
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( morphism_to_sink_record.dual_operation, "WithGiven", limit.colimit_object_name ), make_record_with_given( make_colimit( morphism_to_sink_record ), limit.colimit_object_name, limit.limit_object_name ) );
         fi;
         
         CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_universal_morphism_name, make_record_op( make_colimit( universal_morphism_record ) ) );
