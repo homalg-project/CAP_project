@@ -10,6 +10,8 @@ Version := Maximum( [
            ##
            "2019.01.16", # Mohamed's version
            ##
+           "2019.08.07", # Fabian's version
+           ##
            ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -84,7 +86,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "MatricesForHomalg", ">=2017.03.27" ],
+                           [ "MatricesForHomalg", ">=2019.02.01" ],
                            [ "CAP", ">= 2019.01.16" ],
                            [ "MonoidalCategories", ">= 2019.01.16" ],
                            [ "GeneralizedMorphismsForCAP", ">=0" ],

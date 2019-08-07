@@ -1019,7 +1019,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     
       # simply transpose the mapping matrix and return the result
       return GradedRowOrColumnMorphism( source,
-                                        Involution( UnderlyingHomalgMatrix( morphism ) ),
+                                        TransposedMatrix( UnderlyingHomalgMatrix( morphism ) ),
                                         range,
                                         checks 
                                         );

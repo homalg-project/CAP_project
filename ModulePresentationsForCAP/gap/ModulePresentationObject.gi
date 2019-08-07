@@ -216,7 +216,7 @@ InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT,
     
     underlying_matrix_1 := UnderlyingMatrix( object_1 );
     
-    transposed_underlying_matrix_1 := Involution( underlying_matrix_1 );
+    transposed_underlying_matrix_1 := TransposedMatrix( underlying_matrix_1 );
     
     identity_matrix_2 := UnderlyingMatrix( IdentityMorphism( object_2 ) );
     
@@ -247,7 +247,7 @@ InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT
     
     underlying_matrix_1 := UnderlyingMatrix( object_1 );
     
-    transposed_underlying_matrix_1 := Involution( underlying_matrix_1 );
+    transposed_underlying_matrix_1 := TransposedMatrix( underlying_matrix_1 );
     
     identity_matrix_2 := UnderlyingMatrix( IdentityMorphism( object_2 ) );
     

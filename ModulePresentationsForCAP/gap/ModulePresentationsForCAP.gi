@@ -1429,7 +1429,7 @@ InstallGlobalFunction( ADD_INTERNAL_HOM_ON_MORPHISMS_LEFT,
         morphism_between_tensor_products := 
           PresentationMorphism(
             Range( internal_hom_embedding_source ),
-            KroneckerMat( Involution( UnderlyingMatrix( morphism_1 ) ), UnderlyingMatrix( morphism_2 ) ),
+            KroneckerMat( TransposedMatrix( UnderlyingMatrix( morphism_1 ) ), UnderlyingMatrix( morphism_2 ) ),
             Range( internal_hom_embedding_range )
           );
         
@@ -1460,7 +1460,7 @@ InstallGlobalFunction( ADD_INTERNAL_HOM_ON_MORPHISMS_RIGHT,
         morphism_between_tensor_products := 
           PresentationMorphism(
             Range( internal_hom_embedding_source ),
-            KroneckerMat( Involution( UnderlyingMatrix( morphism_1 ) ), UnderlyingMatrix( morphism_2 ) ),
+            KroneckerMat( TransposedMatrix( UnderlyingMatrix( morphism_1 ) ), UnderlyingMatrix( morphism_2 ) ),
             Range( internal_hom_embedding_range )
           );
         
@@ -1526,7 +1526,7 @@ InstallGlobalFunction( ADD_BRAIDING_RIGHT,
                               );
         
         return PresentationMorphism( object_1_tensored_object_2,
-                                     Involution( HomalgMatrix( permutation_matrix, rank, rank, homalg_ring ) ), ## transposed of the left case
+                                     TransposedMatrix( HomalgMatrix( permutation_matrix, rank, rank, homalg_ring ) ), ## transposed of the left case
                                      object_2_tensored_object_1 );
         
     end );
@@ -1822,9 +1822,9 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
     B := UnderlyingMatrix( morphism_2 );
     
-    B_tr_I := KroneckerMat( Involution( B ), HomalgIdentityMatrix( NrColumns( P ), homalg_ring ) );
+    B_tr_I := KroneckerMat( TransposedMatrix( B ), HomalgIdentityMatrix( NrColumns( P ), homalg_ring ) );
     
-    N_tr_I := KroneckerMat( Involution( N ), HomalgIdentityMatrix( NrColumns( P ) ,homalg_ring ) );
+    N_tr_I := KroneckerMat( TransposedMatrix( N ), HomalgIdentityMatrix( NrColumns( P ) ,homalg_ring ) );
     
     zero_1  := HomalgZeroMatrix( NrRows( A )*NrColumns( A ), NrRows( P )*NrRows( M ), homalg_ring );
     
@@ -1834,7 +1834,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
     zero_2 := HomalgZeroMatrix( NrRows( P )*NrColumns( M ), NrRows( A )*NrRows( N ), homalg_ring );
     
-    M_tr_I := KroneckerMat( Involution( M ), HomalgIdentityMatrix( NrRows( P ) ,homalg_ring ) );
+    M_tr_I := KroneckerMat( TransposedMatrix( M ), HomalgIdentityMatrix( NrRows( P ) ,homalg_ring ) );
     
     mat2 := UnionOfColumns( UnionOfColumns( I_P, zero_2 ), M_tr_I );
     
@@ -1923,7 +1923,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
     mat1 := KroneckerMat( HomalgIdentityMatrix( NrColumns( I ), homalg_ring ), B_over_M );
     
-    mat2 := KroneckerMat( Involution( I ), HomalgIdentityMatrix( NrRows( B ) + NrRows( M ), homalg_ring ) );
+    mat2 := KroneckerMat( TransposedMatrix( I ), HomalgIdentityMatrix( NrRows( B ) + NrRows( M ), homalg_ring ) );
     
     mat := UnionOfColumns( mat1, mat2 );
     
@@ -1999,14 +1999,14 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     #   which can be solved exactly as Lift in left presentations case.
     #   The function is supposed to return X = XX^t as a ( well defined ) morphism from P to M.
     
-    Pt := Involution( UnderlyingMatrix( Source( morphism_1 ) ) );
-    Mt := Involution( UnderlyingMatrix( Source( morphism_2 ) ) );
+    Pt := TransposedMatrix( UnderlyingMatrix( Source( morphism_1 ) ) );
+    Mt := TransposedMatrix( UnderlyingMatrix( Source( morphism_2 ) ) );
     
     v := NrColumns( Mt );
     
     s := NrColumns( Pt );
     
-    Nt := Involution( UnderlyingMatrix( Range(  morphism_1 ) ) );
+    Nt := TransposedMatrix( UnderlyingMatrix( Range(  morphism_1 ) ) );
     
     if NrRows( Nt ) = 0 or s = 0 then 
         return ZeroMorphism( Source( morphism_1 ), Source( morphism_2 ) ); 
@@ -2016,13 +2016,13 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
         return ZeroMorphism( Source( morphism_1 ), Source( morphism_2 ) );
     fi;
 
-    At := Involution( UnderlyingMatrix( morphism_1 ) );
+    At := TransposedMatrix( UnderlyingMatrix( morphism_1 ) );
     
-    Bt := Involution( UnderlyingMatrix( morphism_2 ) );
+    Bt := TransposedMatrix( UnderlyingMatrix( morphism_2 ) );
     
-    B_tr_I := KroneckerMat( Involution( Bt ), HomalgIdentityMatrix( NrColumns( Pt ), homalg_ring ) );
+    B_tr_I := KroneckerMat( TransposedMatrix( Bt ), HomalgIdentityMatrix( NrColumns( Pt ), homalg_ring ) );
     
-    N_tr_I := KroneckerMat( Involution( Nt ), HomalgIdentityMatrix( NrColumns( Pt ) ,homalg_ring ) );
+    N_tr_I := KroneckerMat( TransposedMatrix( Nt ), HomalgIdentityMatrix( NrColumns( Pt ) ,homalg_ring ) );
     
     zero_1  := HomalgZeroMatrix( NrRows( At )*NrColumns( At ), NrRows( Pt )*NrRows( Mt ), homalg_ring );
     
@@ -2032,7 +2032,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     
     zero_2 := HomalgZeroMatrix( NrRows( Pt )*NrColumns( Mt ), NrRows( At )*NrRows( Nt ), homalg_ring );
     
-    M_tr_I := KroneckerMat( Involution( Mt ), HomalgIdentityMatrix( NrRows( Pt ) ,homalg_ring ) );
+    M_tr_I := KroneckerMat( TransposedMatrix( Mt ), HomalgIdentityMatrix( NrRows( Pt ) ,homalg_ring ) );
     
     mat2 := UnionOfColumns( UnionOfColumns( I_P, zero_2 ), M_tr_I );
     
@@ -2061,9 +2061,9 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     else 
        
        if v <= 1 then
-          XX := Involution( CertainRows( sol, [ 1.. s ] ) );
+          XX := TransposedMatrix( CertainRows( sol, [ 1.. s ] ) );
        else
-          XX := Involution( Iterated( List( [ 1 .. v ], i-> CertainRows( sol, [ (i-1)*s+1.. i*s ] ) ), UnionOfColumns ) );
+          XX := TransposedMatrix( Iterated( List( [ 1 .. v ], i-> CertainRows( sol, [ (i-1)*s+1.. i*s ] ) ), UnionOfColumns ) );
        fi;
        
        return PresentationMorphism( Source( morphism_1 ), XX, Source( morphism_2 ) );
@@ -2077,15 +2077,15 @@ end );
     function( morphism_1, morphism_2 )
     local Nt, Mt, At, Bt, It, B_over_M, mat1, mat2, mat, zero_mat, A_over_zero, vec, sol, v, s, XX;
     
-    It := Involution( UnderlyingMatrix( Range( morphism_2 ) ) );
+    It := TransposedMatrix( UnderlyingMatrix( Range( morphism_2 ) ) );
     
-    Mt := Involution( UnderlyingMatrix( Range( morphism_1 ) ) );
+    Mt := TransposedMatrix( UnderlyingMatrix( Range( morphism_1 ) ) );
     
     v := NrColumns( Mt );
        
     s := NrColumns( It );
         
-    Nt := Involution( UnderlyingMatrix( Source( morphism_1 ) ) );
+    Nt := TransposedMatrix( UnderlyingMatrix( Source( morphism_1 ) ) );
     
     if NrRows( Nt ) = 0 or s = 0 then 
         return ZeroMorphism( Range( morphism_1 ), Range( morphism_2 ) );
@@ -2095,15 +2095,15 @@ end );
         return ZeroMorphism( Range( morphism_1 ), Range( morphism_2 ) );
     fi;
 
-    Bt := Involution( UnderlyingMatrix( morphism_1 ) );
+    Bt := TransposedMatrix( UnderlyingMatrix( morphism_1 ) );
     
-    At := Involution( UnderlyingMatrix( morphism_2 ) );
+    At := TransposedMatrix( UnderlyingMatrix( morphism_2 ) );
     
     B_over_M := UnionOfRows( Bt, Mt );
     
     mat1 := KroneckerMat( HomalgIdentityMatrix( NrColumns( It ), homalg_ring ), B_over_M );
     
-    mat2 := KroneckerMat( Involution( It ), HomalgIdentityMatrix( NrRows( Bt ) + NrRows( Mt ), homalg_ring ) );
+    mat2 := KroneckerMat( TransposedMatrix( It ), HomalgIdentityMatrix( NrRows( Bt ) + NrRows( Mt ), homalg_ring ) );
     
     mat := UnionOfColumns( mat1, mat2 );
     
@@ -2130,9 +2130,9 @@ end );
        s := NrColumns( It );
        
        if s <= 1 then 
-          XX := Involution( CertainRows( sol, [ 1.. v ] ) );
+          XX := TransposedMatrix( CertainRows( sol, [ 1.. v ] ) );
        else
-          XX := Involution( Iterated( List( [ 1 .. s ], i-> CertainRows( sol, [ (i-1)*v+1.. i*v ] ) ), UnionOfColumns ) );
+          XX := TransposedMatrix( Iterated( List( [ 1 .. s ], i-> CertainRows( sol, [ (i-1)*v+1.. i*v ] ) ), UnionOfColumns ) );
        fi;
        
        return PresentationMorphism( Range( morphism_1 ), XX, Range( morphism_2 ) );

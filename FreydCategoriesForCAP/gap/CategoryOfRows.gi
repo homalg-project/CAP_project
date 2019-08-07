@@ -573,7 +573,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
           function( source, alpha, beta, range )
             
             return CategoryOfRowsMorphism( source,
-                                           KroneckerMat( Involution( UnderlyingMatrix( alpha ) ), UnderlyingMatrix( beta ) ),
+                                           KroneckerMat( TransposedMatrix( UnderlyingMatrix( alpha ) ), UnderlyingMatrix( beta ) ),
                                            range );
             
         end );
