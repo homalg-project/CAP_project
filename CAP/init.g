@@ -16,6 +16,8 @@ ReadPackage( "CAP", "gap/CategoryMorphisms.gd");
 
 ReadPackage( "CAP", "gap/CategoryTwoCells.gd");
 
+ReadPackage( "CAP", "gap/LimitConvenience.gd" );
+
 ReadPackage( "CAP", "gap/UniversalObjects.gd" );
 
 ReadPackage( "CAP", "gap/MonoidalCategories.gd" );
