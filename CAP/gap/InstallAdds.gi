@@ -267,7 +267,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                             new_filter_list,
                             
               function( arg )
-                local redirect_return, pre_func_return, result, human_readable_identifier;
+                local redirect_return, filter, human_readable_identifier, pre_func_return, result, i, j;
                 
                 if (redirect_function <> false) and (not IsBound( category!.redirects.( function_name ) ) or category!.redirects.( function_name ) <> false) then
                     redirect_return := CallFuncList( redirect_function, Concatenation( [ category ], arg ) );
@@ -280,6 +280,48 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 fi;
                 
                 if not is_pair_func and category!.input_sanity_check_level > 0 then
+                    
+                    for i in [ 1 .. Length( record.filter_list ) ] do
+                        filter := record.filter_list[ i ];
+                        
+                        if not IsString( filter ) then
+                            continue;
+                        fi;
+                        
+                        filter := LowercaseString( filter );
+                        
+                        human_readable_identifier := Concatenation( "the ", String(i), "-th argument of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
+                        
+                        if filter = "cell" then
+                            CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arg[ i ], category, human_readable_identifier );
+                        elif filter = "object" then
+                            CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg[ i ], category, human_readable_identifier );
+                        elif filter = "morphism" then
+                            CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg[ i ], category, human_readable_identifier );
+                        elif filter = "twocell" then
+                            CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ i ], category, human_readable_identifier );
+                        elif filter = "other_cell" then
+                            CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arg[ i ], "any", human_readable_identifier );
+                        elif filter = "other_object" then
+                            CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg[ i ], "any", human_readable_identifier );
+                        elif filter = "other_morphism" then
+                            CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg[ i ], "any", human_readable_identifier );
+                        elif filter = "other_twocell" then
+                            CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ i ], "any", human_readable_identifier );
+                        elif filter = "list_of_objects" then
+                            for j in [ 1 .. Length( arg[ i ] ) ] do
+                                CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg[ i ][ j ], category, Concatenation( "the ", String(j), "-th entry of the ", human_readable_identifier ) );
+                            od;
+                        elif filter = "list_of_morphisms" then
+                            for j in [ 1 .. Length( arg[ i ] ) ] do
+                                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg[ i ][ j ], category, Concatenation( "the ", String(j), "-th entry of the ", human_readable_identifier ) );
+                            od;
+                        elif filter = "list_of_twocells" then
+                            for j in [ 1 .. Length( arg[ i ] ) ] do
+                                CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ i ][ j ], category, Concatenation( "the ", String(j), "-th entry of the ", human_readable_identifier ) );
+                            od;
+                        fi;
+                    od;
                     
                     pre_func_return := CallFuncList( pre_function, arg );
                     if pre_func_return[ 1 ] = false then
