@@ -267,7 +267,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                             new_filter_list,
                             
               function( arg )
-                local redirect_flag, pre_func_return, redirect_return, result, post_func_arguments;
+                local redirect_return, pre_func_return, result, human_readable_identifier;
                 
                 if (redirect_function <> false) and (not IsBound( category!.redirects.( function_name ) ) or category!.redirects.( function_name ) <> false) then
                     redirect_return := CallFuncList( redirect_function, Concatenation( [ category ], arg ) );
@@ -305,45 +305,14 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     if category!.add_primitive_output then
                         add_function( category, result );
                     elif category!.output_sanity_check_level > 0 then
+                        human_readable_identifier := Concatenation( "the result of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
+                        
                         if record.return_type = "object" or ( record.return_type = "object_or_fail" and result <> fail ) then
-                            if not IsCapCategoryObject( result ) then
-                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in the filter IsCapCategoryObject." );
-                            fi;
-                            if not HasCapCategory( result ) then
-                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result has no CAP category." );
-                            fi;
-                            if not IsIdenticalObj( CapCategory( result ), category ) then
-                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in this category." );
-                            fi;
-                            if not ObjectFilter( category )( result ) then
-                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in the object filter of this category." );
-                            fi;
+                            CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( result, category, human_readable_identifier );
                         elif record.return_type = "morphism" or ( record.return_type = "morphism_or_fail" and result <> fail ) then
-                            if not IsCapCategoryMorphism( result ) then
-                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in the filter IsCapCategoryMorphism." );
-                            fi;
-                            if not HasCapCategory( result ) then
-                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result has no CAP category." );
-                            fi;
-                            if not IsIdenticalObj( CapCategory( result ), category ) then
-                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in this category." );
-                            fi;
-                            if not MorphismFilter( category )( result ) then
-                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in the morphism filter of this category." );
-                            fi;
+                            CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, category, human_readable_identifier );
                         elif record.return_type = "twocell" then
-                            if not IsCapCategoryTwoCell( result ) then
-                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in the filter IsCapCategoryTwoCell." );
-                            fi;
-                            if not HasCapCategory( result ) then
-                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result has no CAP category." );
-                            fi;
-                            if not IsIdenticalObj( CapCategory( result ), category ) then
-                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in this category." );
-                            fi;
-                            if not TwoCellFilter( category )( result ) then
-                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, "the result does not lie in the two cell filter of this category." );
-                            fi;
+                            CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( result, category, human_readable_identifier );
                         fi;
                     fi;
                 fi;

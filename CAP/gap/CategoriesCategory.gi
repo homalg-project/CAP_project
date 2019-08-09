@@ -415,18 +415,7 @@ InstallGlobalFunction( ApplyFunctor,
     if Length( arguments ) = 1 and functor!.number_arguments > 1 then
         
         if source_category!.input_sanity_check_level > 0 then
-            if not ( IsCapCategoryObject( arguments[ 1 ] ) or IsCapCategoryMorphism( arguments[ 1 ] ) ) then
-                Error( Concatenation("the argument passed to the functor \"", Name(functor), "\" does neither lie in the IsCapCategoryObject nor in the IsCapCategoryMorphism filter" ) );
-            fi;
-            if not HasCapCategory( arguments[ 1 ] ) then
-                Error( Concatenation("the argument passed to the functor \"", Name(functor), "\" does not have a CAP category" ) );
-            fi;
-            if not IsIdenticalObj( CapCategory( arguments[ 1 ] ), source_category ) then
-                Error( Concatenation( "the category of the argument passed to the functor \"", Name(functor), "\" does not coincide with the source of this functor" ) );
-            fi;
-            if not ( ObjectFilter( source_category )( arguments[ 1 ] ) or MorphismFilter( source_category )( arguments[ 1 ] ) ) then
-                Error( Concatenation( "the argument passed to the functor \"", Name(functor), "\" does neither lie in the object filter nor the morphism filter of the source of this functor" ) );
-            fi;
+            CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arguments[ 1 ], source_category, Concatenation( "the argument passed to the functor named \033[1m", Name(functor), "\033[0m" ) );
         fi;
 
         arguments := ShallowCopy( Components( arguments[ 1 ] ) );
@@ -439,18 +428,7 @@ InstallGlobalFunction( ApplyFunctor,
         
     elif Length( arguments ) = 1 and input_signature[ 1 ][ 2 ] = true then
         if source_category!.input_sanity_check_level > 0 then
-            if not ( IsCapCategoryObject( arguments[ 1 ] ) or IsCapCategoryMorphism( arguments[ 1 ] ) ) then
-                Error( Concatenation("the argument passed to the functor \"", Name(functor), "\" does neither lie in the IsCapCategoryObject nor in the IsCapCategoryMorphism filter" ) );
-            fi;
-            if not HasCapCategory( arguments[ 1 ] ) then
-                Error( Concatenation("the argument passed to the functor \"", Name(functor), "\" does not have a CAP category" ) );
-            fi;
-            if not ( IsIdenticalObj( CapCategory( arguments[ 1 ] ), source_category ) or IsIdenticalObj( CapCategory( arguments[ 1 ] ), Opposite( source_category ) ) ) then
-                Error( Concatenation( "the category of the argument passed to the functor \"", Name(functor), "\" does neither coincide with the source of this functor nor the opposite of the source of this functor" ) );
-            fi;
-            if not ( ObjectFilter( source_category )( arguments[ 1 ] ) or ObjectFilter( Opposite( source_category ) )( arguments[ 1 ] ) or MorphismFilter( source_category )( arguments[ 1 ] ) or MorphismFilter( Opposite( source_category ) )( arguments[ 1 ] ) ) then
-                Error( Concatenation( "the argument passed to the functor \"", Name(functor), "\" does neither lie in the object filter nor the morphism filter of the source of this functor or of the opposite category of the source of this functor" ) );
-            fi;
+            CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arguments[ 1 ], "any", Concatenation( "the argument passed to the functor named \033[1m", Name(functor), "\033[0m" ) );
         fi;
 
         if IsIdenticalObj( CapCategory( arguments[ 1 ] ), Opposite( input_signature[ 1 ][ 1 ] ) ) then
@@ -458,18 +436,7 @@ InstallGlobalFunction( ApplyFunctor,
         fi;
     elif Length( arguments ) = 1 then
         if source_category!.input_sanity_check_level > 0 then
-            if not ( IsCapCategoryObject( arguments[ 1 ] ) or IsCapCategoryMorphism( arguments[ 1 ] ) ) then
-                Error( Concatenation("the argument passed to the functor \"", Name(functor), "\" does neither lie in the IsCapCategoryObject nor in the IsCapCategoryMorphism filter" ) );
-            fi;
-            if not HasCapCategory( arguments[ 1 ] ) then
-                Error( Concatenation("the argument passed to the functor \"", Name(functor), "\" does not have a CAP category" ) );
-            fi;
-            if not IsIdenticalObj( CapCategory( arguments[ 1 ] ), source_category ) then
-                Error( Concatenation( "the category of the argument passed to the functor \"", Name(functor), "\" does not coincide with the source of this functor" ) );
-            fi;
-            if not ( ObjectFilter( source_category )( arguments[ 1 ] ) or MorphismFilter( source_category )( arguments[ 1 ] ) ) then
-                Error( Concatenation( "the argument passed to the functor \"", Name(functor), "\" does neither lie in the object filter nor the morphism filter of the source of this functor" ) );
-            fi;
+            CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arguments[ 1 ], source_category, Concatenation( "the argument passed to the functor named \033[1m", Name(functor), "\033[0m" ) );
         fi;
     fi;
     
@@ -482,36 +449,14 @@ InstallGlobalFunction( ApplyFunctor,
             fi;
 
             for i in [ 1 .. Length( input_signature ) ] do
-                if not IsCapCategoryObject( arguments[ i ] ) then
-                    Error( Concatenation("the ", String(i), "-th argument passed to the functor \"", Name(functor), "\" does not lie in the IsCapCategoryObject filter" ) );
-                fi;
-                if not HasCapCategory( arguments[ i ] ) then
-                    Error( Concatenation("the ", String(i), "-th argument passed to the functor \"", Name(functor), "\" does not have a CAP category" ) );
-                fi;
-                if not IsIdenticalObj( CapCategory( arguments[ i ] ), input_signature[ i ][ 1 ] ) then
-                    Error( Concatenation( "the category of the ", String(i), "-th argument passed to the functor \"", Name(functor), "\" does not coincide with the ", String(i), "-th component of the source of this functor" ) );
-                fi;
-                if not ObjectFilter( input_signature[ i ][ 1 ] )( arguments[ i ] ) then
-                    Error( Concatenation( "the ", String(i), "-th argument passed to the functor \"", Name(functor), "\" does not lie in the object filter of the ", String(i), "-th component of the source of this functor" ) );
-                fi;
+                CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arguments[ i ], input_signature[ i ][ 1 ], Concatenation( "the ", String(i), "-th argument passed to the functor named \033[1m", Name(functor), "\033[0m" ) );
             od;
         fi;
         
         computed_value := CallFuncList( FunctorObjectOperation( functor ), arguments );
 
         if range_category!.output_sanity_check_level > 0 and not range_category!.add_primitive_output then
-            if not IsCapCategoryObject( computed_value ) then
-                Error( Concatenation("the result of the object function of the functor \"", Name(functor), "\" does not lie in the IsCapCategoryObject filter" ) );
-            fi;
-            if not HasCapCategory( computed_value ) then
-                Error( Concatenation("the result of the object function of the functor \"", Name(functor), "\" does not have a CAP category" ) );
-            fi;
-            if not IsIdenticalObj( CapCategory( computed_value ), range_category ) then
-                Error( Concatenation( "the category of the result of the object function of the functor \"", Name(functor), "\" does not coincide with the range of this functor" ) );
-            fi;
-            if not ObjectFilter( range_category )( computed_value ) then
-                Error( Concatenation( "the result of the object function of the functor \"", Name(functor), "\" does not lie in the object filter of the range of this functor" ) );
-            fi;
+            CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( computed_value, range_category, Concatenation( "the result of the object function of the functor named \033[1m", Name(functor), "\033[0m" ) );
         fi;
         
         if range_category!.add_primitive_output then
@@ -528,18 +473,7 @@ InstallGlobalFunction( ApplyFunctor,
             fi;
 
             for i in [ 1 .. Length( input_signature ) ] do
-                if not IsCapCategoryMorphism( arguments[ i ] ) then
-                    Error( Concatenation("the ", String(i), "-th argument passed to the functor \"", Name(functor), "\" does not lie in the IsCapCategoryMorphism filter" ) );
-                fi;
-                if not HasCapCategory( arguments[ i ] ) then
-                    Error( Concatenation("the ", String(i), "-th argument passed to the functor \"", Name(functor), "\" does not have a CAP category" ) );
-                fi;
-                if not IsIdenticalObj( CapCategory( arguments[ i ] ), input_signature[ i ][ 1 ] ) then
-                    Error( Concatenation( "the category of the ", String(i), "-th argument passed to the functor \"", Name(functor), "\" does not coincide with the ", String(i), "-th component of the source of this functor" ) );
-                fi;
-                if not MorphismFilter( input_signature[ i ][ 1 ] )( arguments[ i ] ) then
-                    Error( Concatenation( "the ", String(i), "-th argument passed to the functor \"", Name(functor), "\" does not lie in the morphism filter of the ", String(i), "-th component of the source of this functor" ) );
-                fi;
+                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arguments[ i ], input_signature[ i ][ 1 ], Concatenation( "the ", String(i), "-th argument passed to the functor named \033[1m", Name(functor), "\033[0m" ) );
             od;
         fi;
         
@@ -562,18 +496,7 @@ InstallGlobalFunction( ApplyFunctor,
         computed_value := CallFuncList( FunctorMorphismOperation( functor ), Concatenation( [ source_value ], arguments, [ range_value ] ) );
 
         if range_category!.output_sanity_check_level > 0 and not range_category!.add_primitive_output then
-            if not IsCapCategoryMorphism( computed_value ) then
-                Error( Concatenation("the result of the morphism function of the functor \"", Name(functor), "\" does not lie in the IsCapCategoryMorphism filter" ) );
-            fi;
-            if not HasCapCategory( computed_value ) then
-                Error( Concatenation("the result of the morphism function of the functor \"", Name(functor), "\" does not have a CAP category" ) );
-            fi;
-            if not IsIdenticalObj( CapCategory( computed_value ), range_category ) then
-                Error( Concatenation( "the category of the result of the morphism function of the functor \"", Name(functor), "\" does not coincide with the range of this functor" ) );
-            fi;
-            if not MorphismFilter( range_category )( computed_value ) then
-                Error( Concatenation( "the result of the morphism function of the functor \"", Name(functor), "\" does not lie in the morphism filter of the range of this functor" ) );
-            fi;
+            CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( computed_value, range_category, Concatenation( "the result of the morphism function of the functor named \033[1m", Name(functor), "\033[0m" ) );
         fi;
         
         if range_category!.add_primitive_output then
