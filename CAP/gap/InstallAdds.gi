@@ -95,7 +95,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
     if IsBound( record.pre_function_full ) then
         pre_function_full := record.pre_function_full;
     else
-        pre_function_full := pre_function;
+        pre_function_full := function( arg ) return [ true ]; end;
     fi;
     
     if IsBound( record.redirect_function ) then
