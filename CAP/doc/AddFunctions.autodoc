@@ -122,8 +122,20 @@ The record can have the following components, used as described:
 * post_function (optional): A function which is used as the postfunction of the installed methods, as described above.
 
 * filter_list: A list containing the basic filters for the methods installed by the add methods. Possible are filters, or
-               the strings category, object, morphism, or twocell, which will then be replaced at the time the add method is
-               called with the corresponding filters of the category.
+               the following strings, which will be replaced by appropriate filters at the time the add method is called:
+               * <C>category</C>,
+               * <C>cell</C>,
+               * <C>object</C>,
+               * <C>morphism</C>,
+               * <C>twocell</C>,
+               * <C>other_category</C>,
+               * <C>other_cell</C>,
+               * <C>other_object</C>,
+               * <C>other_morphism</C>,
+               * <C>other_twocell</C>,
+               * <C>list_of_objects</C>,
+               * <C>list_of_morphisms</C>,
+               * <C>list_of_twocells</C>.
 
 * well_defined_todo (optional): A boolean, default value is true, which states wether there should be to do list entries
                                 which propagate well definedness from the input of the installed methods to their output.

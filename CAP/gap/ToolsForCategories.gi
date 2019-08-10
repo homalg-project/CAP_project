@@ -408,8 +408,14 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
                   list[ i ] := IsCapCategoryMorphism;
               elif current_entry = "other_twocell" then
                   list[ i ] := IsCapCategoryTwoCell;
+              elif current_entry = "list_of_objects" then
+                  list[ i ] := IsList;
+              elif current_entry = "list_of_morphisms" then
+                  list[ i ] := IsList;
+              elif current_entry = "list_of_twocells" then
+                  list[ i ] := IsList;
               else
-                  Error( "filter type is not recognized, must be object, morphism, or twocell" );
+                  Error( "filter type is not recognized, see the documentation for allowed values" );
               fi;
               
           elif IsList( current_entry ) then
