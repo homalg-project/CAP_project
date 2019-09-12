@@ -112,3 +112,36 @@ AddDerivationToCAP( SubobjectOfClassifyingMorphism,
       return ProjectionInFactorOfFiberProduct([ mor , truth ], 1);
 
 end : Description := "SubobjectOfClassifyingMorphism using the fiber product along the true morphism" );
+
+## Final derivations
+
+##
+AddFinalDerivation( CanonicalIdentificationFromImageObjectToCoimage,
+                    [ [ ImageObject, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    [ CanonicalIdentificationFromCoimageToImageObject,
+                      CanonicalIdentificationFromImageObjectToCoimage,
+                      Coimage,
+                      CoimageProjection,
+                      CoimageProjectionWithGivenCoimage,
+                      AstrictionToCoimage,
+                      AstrictionToCoimageWithGivenCoimage,
+                      UniversalMorphismIntoCoimage,
+                      UniversalMorphismIntoCoimageWithGivenCoimage,
+                      IsomorphismFromCoimageToCokernelOfKernel,
+                      IsomorphismFromCokernelOfKernelToCoimage ],
+                    
+  function( mor )
+    
+    return IdentityMorphism( ImageObject( mor ) );
+    
+  end,
+  [
+    CanonicalIdentificationFromCoimageToImageObject,
+    function( mor )
+    
+      return IdentityMorphism( ImageObject( mor ) );
+    
+    end
+  ] : CategoryFilter := HasIsElementaryTopos and IsElementaryTopos );
+

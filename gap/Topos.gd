@@ -8,6 +8,8 @@
 
 DeclareGlobalVariable( "TOPOS_METHOD_NAME_RECORD" );
 
+AddCategoricalProperty( [ "IsElementaryTopos" ] );
+
 #! A subobject classifier object consists of three parts:
 #! * an object $\Omega$,
 #! * a function $\mathrm{true}$ providing a morphism $\mathrm{true}: 1 \rightarrow \Omega$,
