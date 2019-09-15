@@ -7,7 +7,254 @@
 ##
 #############################################################################
 
-InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD, rec(
+InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD, rec( ) );
+
+InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD_IS_WELL_DEFINED, rec(
+
+IsWellDefinedForObjects := rec(
+  installation_name := "IsWellDefined",
+  filter_list := [ "object" ],
+  cache_name := "IsWellDefinedForObjects",
+  well_defined_todo := false,
+  dual_operation := "IsWellDefinedForObjects",
+  return_type := "bool" ),
+
+IsWellDefinedForMorphisms := rec(
+  installation_name := "IsWellDefined",
+  filter_list := [ "morphism" ],
+  cache_name := "IsWellDefinedForMorphisms",
+  well_defined_todo := false,
+  dual_operation := "IsWellDefinedForMorphisms",
+  
+  redirect_function := function( morphism )
+    local category, source, range;
+    
+    source := Source( morphism );
+    
+    range := Range( morphism );
+    
+    category := CapCategory( morphism );
+    
+    if not ( IsWellDefined( source ) and IsWellDefined( range ) )
+       or not ( IsIdenticalObj( CapCategory( source ), category ) and IsIdenticalObj( CapCategory( range ), category ) ) then
+      
+      return [ true, false ];
+      
+      
+    else
+      
+      return [ false ];
+      
+    fi;
+    
+  end,
+  
+  return_type := "bool" ),
+
+) );
+
+InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD_IS_EQUAL, rec(
+
+IsCongruentForMorphisms := rec(
+  installation_name := "IsCongruentForMorphisms",
+  filter_list := [ "morphism", "morphism" ],
+  well_defined_todo := false,
+  dual_operation := "IsCongruentForMorphisms",
+  
+  pre_function := function( morphism_1, morphism_2 )
+    local value_1, value_2;
+    
+    value_1 := IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) );
+    
+    if value_1 = fail then
+      
+      return [ false, "cannot decide whether sources are equal" ];
+      
+    fi;
+    
+    value_2 := IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) );
+    
+    if value_2 = fail then
+      
+      return [ false, "cannot decide whether ranges are equal" ];
+      
+    fi;
+    
+    
+    if value_1 and value_2 then
+        
+        return [ true ];
+        
+    elif value_1 then
+        
+        return [ false, "ranges are not equal" ];
+        
+    else
+        
+        return [ false, "sources are not equal" ];
+        
+    fi;
+    
+  end,
+  
+  redirect_function := function( morphism_1, morphism_2 )
+    
+    if IsIdenticalObj( morphism_1, morphism_2 ) then 
+      
+      return [ true, true ];
+      
+    else
+      
+      return [ false ];
+      
+    fi;
+    
+  end,
+  
+  post_function := function( morphism_1, morphism_2, return_value )
+    
+    if CapCategory( morphism_1 )!.predicate_logic and return_value = true then
+          
+          INSTALL_TODO_LIST_FOR_EQUAL_MORPHISMS( morphism_1, morphism_2 );
+          
+    fi;
+    
+  end,
+  
+  return_type := "bool" ),
+
+IsEqualForMorphisms := rec(
+  installation_name := "IsEqualForMorphisms",
+  filter_list := [ "morphism", "morphism" ],
+  well_defined_todo := false,
+  dual_operation := "IsEqualForMorphisms",
+  
+  pre_function := function( morphism_1, morphism_2 )
+    local value_1, value_2;
+    
+    value_1 := IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) );
+    
+    if value_1 = fail then
+      
+      return [ false, "cannot decide whether sources are equal" ];
+      
+    fi;
+    
+    value_2 := IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) );
+    
+    if value_2 = fail then
+      
+      return [ false, "cannot decide whether ranges are equal" ];
+      
+    fi;
+    
+    
+    if value_1 and value_2 then
+        
+        return [ true ];
+        
+    elif value_1 then
+        
+        return [ false, "ranges are not equal" ];
+        
+    else
+        
+        return [ false, "sources are not equal" ];
+        
+    fi;
+    
+  end,
+  
+  redirect_function := function( morphism_1, morphism_2 )
+    
+    if IsIdenticalObj( morphism_1, morphism_2 ) then 
+      
+      return [ true, true ];
+      
+    else
+      
+      return [ false ];
+      
+    fi;
+    
+  end,
+  
+  return_type := "bool" ),
+
+IsEqualForMorphismsOnMor := rec(
+  installation_name := "IsEqualForMorphismsOnMor",
+  filter_list := [ "morphism", "morphism" ],
+  well_defined_todo := false,
+  dual_operation := "IsEqualForMorphismsOnMor",
+  
+  redirect_function := function( morphism_1, morphism_2 )
+    
+    if IsIdenticalObj( morphism_1, morphism_2 ) then 
+      
+      return [ true, true ];
+      
+    else
+      
+      return [ false ];
+      
+    fi;
+    
+  end,
+  
+  return_type := "bool" ),
+
+IsEqualForObjects := rec(
+  installation_name := "IsEqualForObjects",
+  filter_list := [ "object", "object" ],
+  well_defined_todo := false,
+  dual_operation := "IsEqualForObjects",
+  
+  redirect_function := function( object_1, object_2 )
+    
+    if IsIdenticalObj( object_1, object_2 ) then
+      
+      return [ true, true ];
+      
+    else
+      
+      return [ false ];
+      
+    fi;
+    
+  end,
+  
+  post_function := function( object_1, object_2, return_value )
+    
+    if CapCategory( object_1 )!.predicate_logic and return_value = true and not IsIdenticalObj( object_1, object_2 ) then
+        
+        INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( object_1, object_2 );
+        
+    fi;
+    
+  end,
+  
+  return_type := "bool" ),
+  
+IsEqualForCacheForObjects := rec(
+  installation_name := "IsEqualForCache",
+  filter_list := [ "object", "object" ],
+  cache_name := "IsEqualForCacheForObjects",
+  dual_operation := "IsEqualForCacheForObjects",
+  well_defined_todo := false,
+  return_type := "bool" ),
+
+IsEqualForCacheForMorphisms := rec(
+  installation_name := "IsEqualForCache",
+  filter_list := [ "morphism", "morphism" ],
+  cache_name := "IsEqualForCacheForMorphisms",
+  dual_operation := "IsEqualForCacheForMorphisms",
+  well_defined_todo := false,
+  return_type := "bool" ),
+
+) );
+  
+InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD_BASIC, rec(
+
 LiftAlongMonomorphism := rec(
   installation_name := "LiftAlongMonomorphism",
   filter_list := [ "morphism", "morphism" ],
@@ -202,54 +449,6 @@ IsColiftable := rec(
   dual_operation := "IsLiftable",
   dual_arguments_reversed := true ),
 
-ProjectiveLift := rec(
-  installation_name := "ProjectiveLift",
-  filter_list := [ "morphism", "morphism" ],
-  io_type := [ [ "alpha", "beta" ], [ "alpha_source", "beta_source" ] ],
-  pre_function := function( iota, tau )
-    local value;
-    
-    value := IsEqualForObjects( Range( iota ), Range( tau ) );
-    
-    if value = fail then
-        
-        return [ false, "cannot decide whether the two morphisms have equal ranges" ];
-        
-    elif value = false then
-        
-        return [ false, "the two morphisms must have equal ranges" ];
-        
-    fi;
-    
-    return [ true ];
-  end,
-  return_type := "morphism",
-  dual_operation := "InjectiveColift" ),
-
-InjectiveColift := rec(
-  installation_name := "InjectiveColift",
-  filter_list := [ "morphism", "morphism" ],
-  io_type := [ [ "alpha", "beta" ], [ "alpha_range", "beta_range" ] ],
-  pre_function := function( epsilon, tau )
-    local value;
-    
-    value := IsEqualForObjects( Source( epsilon ), Source( tau ) );
-    
-    if value = fail then
-        
-        return [ false, "cannot decide whether the two morphisms have equal sources" ];
-        
-    elif value = false then
-        
-        return [ false, "the two morphisms must have equal sources" ];
-        
-    fi;
-    
-    return [ true ];
-  end,
-  return_type := "morphism",
-  dual_operation := "ProjectiveLift" ),
-
 IdentityMorphism := rec(
   installation_name := "IdentityMorphism",
   filter_list := [ "object" ],
@@ -265,88 +464,6 @@ InverseImmutable := rec(
   cache_name := "InverseImmutable",
   return_type := "morphism",
   dual_operation := "InverseImmutable" ),
-
-KernelObject := rec(
-  installation_name := "KernelObject",
-  filter_list := [ "morphism" ],
-  universal_type := "Limit",
-  return_type := "object",
-  dual_operation := "CokernelObject" ),
-
-KernelEmbedding := rec(
-  installation_name := "KernelEmbedding",
-  filter_list := [ "morphism" ],
-  io_type := [ [ "alpha" ], [ "P", "alpha_source" ] ],
-  universal_object_position := "Source",
-  universal_type := "Limit",
-  return_type := "morphism",
-  dual_operation := "CokernelProjection" ),
-
-KernelEmbeddingWithGivenKernelObject := rec(
-  installation_name := "KernelEmbeddingWithGivenKernelObject",
-  filter_list := [ "morphism", "object" ],
-  io_type := [ [ "alpha", "P" ], [ "P", "alpha_source" ] ],
-  universal_type := "Limit",
-  return_type := "morphism",
-  dual_operation := "CokernelProjectionWithGivenCokernelObject"),
-
-KernelLift := rec(
-  installation_name := "KernelLift",
-  filter_list := [ "morphism", "morphism" ],
-  io_type := [ [ "alpha", "tau" ], [ "tau_source", "P" ] ],
-  universal_object_position := "Range",
-  universal_type := "Limit",
-  return_type := "morphism",
-  dual_operation := "CokernelColift" ),
-
-KernelLiftWithGivenKernelObject := rec(
-  installation_name := "KernelLiftWithGivenKernelObject",
-  filter_list := [ "morphism", "morphism", "object" ],
-  io_type := [ [ "alpha", "tau", "P" ], [ "tau_source", "P" ] ],
-  universal_type := "Limit",
-  return_type := "morphism",
-  dual_operation := "CokernelColiftWithGivenCokernelObject" ),
-
-CokernelObject := rec(
-  installation_name := "CokernelObject",
-  filter_list := [ "morphism" ],
-  universal_type := "Colimit",
-  return_type := "object",
-  dual_operation := "KernelObject" ),
-
-CokernelProjection := rec(
-  installation_name := "CokernelProjection",
-  filter_list := [ "morphism" ],
-  io_type := [ [ "alpha" ], [ "alpha_range", "P" ] ],
-  universal_object_position := "Range",
-  universal_type := "Colimit",
-  return_type := "morphism",
-  dual_operation := "KernelEmbedding" ),
-
-CokernelProjectionWithGivenCokernelObject := rec(
-  installation_name := "CokernelProjectionWithGivenCokernelObject",
-  filter_list := [ "morphism", "object" ],
-  io_type := [ [ "alpha", "P" ], [ "alpha_range", "P" ] ],
-  universal_type := "Colimit",
-  return_type := "morphism",
-  dual_operation := "KernelEmbeddingWithGivenKernelObject" ),
-
-CokernelColift := rec(
-  installation_name := "CokernelColift",
-  filter_list := [ "morphism", "morphism" ],
-  io_type := [ [ "alpha", "tau" ], [ "P", "tau_range" ] ],
-  universal_object_position := "Source",
-  universal_type := "Colimit",
-  return_type := "morphism",
-  dual_operation := "KernelLift" ),
-
-CokernelColiftWithGivenCokernelObject := rec(
-  installation_name := "CokernelColiftWithGivenCokernelObject",
-  filter_list := [ "morphism", "morphism", "object" ],
-  io_type := [ [ "alpha", "tau", "P" ], [ "P", "tau_range" ] ],
-  universal_type := "Colimit",
-  return_type := "morphism",
-  dual_operation := "KernelLiftWithGivenKernelObject" ),
 
 PreCompose := rec(
   installation_name := "PreCompose",
@@ -398,6 +515,10 @@ PostCompose := rec(
   
   return_type := "morphism",
   dual_operation := "PreCompose" ),
+
+) );
+
+InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD_EXTRA, rec(
 
 ZeroObject := rec(
   installation_name := "ZeroObject",
@@ -898,202 +1019,6 @@ UniversalMorphismIntoDirectProductWithGivenDirectProduct := rec(
   end,
   return_type := "morphism" ),
 
-IsCongruentForMorphisms := rec(
-  installation_name := "IsCongruentForMorphisms",
-  filter_list := [ "morphism", "morphism" ],
-  well_defined_todo := false,
-  dual_operation := "IsCongruentForMorphisms",
-  
-  pre_function := function( morphism_1, morphism_2 )
-    local value_1, value_2;
-    
-    value_1 := IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) );
-    
-    if value_1 = fail then
-      
-      return [ false, "cannot decide whether sources are equal" ];
-      
-    fi;
-    
-    value_2 := IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) );
-    
-    if value_2 = fail then
-      
-      return [ false, "cannot decide whether ranges are equal" ];
-      
-    fi;
-    
-    
-    if value_1 and value_2 then
-        
-        return [ true ];
-        
-    elif value_1 then
-        
-        return [ false, "ranges are not equal" ];
-        
-    else
-        
-        return [ false, "sources are not equal" ];
-        
-    fi;
-    
-  end,
-  
-  redirect_function := function( morphism_1, morphism_2 )
-    
-    if IsIdenticalObj( morphism_1, morphism_2 ) then 
-      
-      return [ true, true ];
-      
-    else
-      
-      return [ false ];
-      
-    fi;
-    
-  end,
-  
-  post_function := function( morphism_1, morphism_2, return_value )
-    
-    if CapCategory( morphism_1 )!.predicate_logic and return_value = true then
-          
-          INSTALL_TODO_LIST_FOR_EQUAL_MORPHISMS( morphism_1, morphism_2 );
-          
-    fi;
-    
-  end,
-  
-  return_type := "bool" ),
-
-IsEqualForMorphisms := rec(
-  installation_name := "IsEqualForMorphisms",
-  filter_list := [ "morphism", "morphism" ],
-  well_defined_todo := false,
-  dual_operation := "IsEqualForMorphisms",
-  
-  pre_function := function( morphism_1, morphism_2 )
-    local value_1, value_2;
-    
-    value_1 := IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) );
-    
-    if value_1 = fail then
-      
-      return [ false, "cannot decide whether sources are equal" ];
-      
-    fi;
-    
-    value_2 := IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) );
-    
-    if value_2 = fail then
-      
-      return [ false, "cannot decide whether ranges are equal" ];
-      
-    fi;
-    
-    
-    if value_1 and value_2 then
-        
-        return [ true ];
-        
-    elif value_1 then
-        
-        return [ false, "ranges are not equal" ];
-        
-    else
-        
-        return [ false, "sources are not equal" ];
-        
-    fi;
-    
-  end,
-  
-  redirect_function := function( morphism_1, morphism_2 )
-    
-    if IsIdenticalObj( morphism_1, morphism_2 ) then 
-      
-      return [ true, true ];
-      
-    else
-      
-      return [ false ];
-      
-    fi;
-    
-  end,
-  
-  return_type := "bool" ),
-
-IsEqualForMorphismsOnMor := rec(
-  installation_name := "IsEqualForMorphismsOnMor",
-  filter_list := [ "morphism", "morphism" ],
-  well_defined_todo := false,
-  dual_operation := "IsEqualForMorphismsOnMor",
-  
-  redirect_function := function( morphism_1, morphism_2 )
-    
-    if IsIdenticalObj( morphism_1, morphism_2 ) then 
-      
-      return [ true, true ];
-      
-    else
-      
-      return [ false ];
-      
-    fi;
-    
-  end,
-  
-  return_type := "bool" ),
-
-IsEqualForObjects := rec(
-  installation_name := "IsEqualForObjects",
-  filter_list := [ "object", "object" ],
-  well_defined_todo := false,
-  dual_operation := "IsEqualForObjects",
-  
-  redirect_function := function( object_1, object_2 )
-    
-    if IsIdenticalObj( object_1, object_2 ) then
-      
-      return [ true, true ];
-      
-    else
-      
-      return [ false ];
-      
-    fi;
-    
-  end,
-  
-  post_function := function( object_1, object_2, return_value )
-    
-    if CapCategory( object_1 )!.predicate_logic and return_value = true and not IsIdenticalObj( object_1, object_2 ) then
-        
-        INSTALL_TODO_LIST_FOR_EQUAL_OBJECTS( object_1, object_2 );
-        
-    fi;
-    
-  end,
-  
-  return_type := "bool" ),
-  
-IsEqualForCacheForObjects := rec(
-  installation_name := "IsEqualForCache",
-  filter_list := [ "object", "object" ],
-  cache_name := "IsEqualForCacheForObjects",
-  dual_operation := "IsEqualForCacheForObjects",
-  well_defined_todo := false,
-  return_type := "bool" ),
-
-IsEqualForCacheForMorphisms := rec(
-  installation_name := "IsEqualForCache",
-  filter_list := [ "morphism", "morphism" ],
-  cache_name := "IsEqualForCacheForMorphisms",
-  dual_operation := "IsEqualForCacheForMorphisms",
-  well_defined_todo := false,
-  return_type := "bool" ),
-  
 IsZeroForMorphisms := rec(
   installation_name := "IsZeroForMorphisms",
   filter_list := [ "morphism" ],
@@ -2173,6 +2098,136 @@ UniversalMorphismFromPushoutWithGivenPushout := rec(
   end,
   return_type := "morphism" ),
 
+ProjectiveLift := rec(
+  installation_name := "ProjectiveLift",
+  filter_list := [ "morphism", "morphism" ],
+  io_type := [ [ "alpha", "beta" ], [ "alpha_source", "beta_source" ] ],
+  pre_function := function( iota, tau )
+    local value;
+    
+    value := IsEqualForObjects( Range( iota ), Range( tau ) );
+    
+    if value = fail then
+        
+        return [ false, "cannot decide whether the two morphisms have equal ranges" ];
+        
+    elif value = false then
+        
+        return [ false, "the two morphisms must have equal ranges" ];
+        
+    fi;
+    
+    return [ true ];
+  end,
+  return_type := "morphism",
+  dual_operation := "InjectiveColift" ),
+
+InjectiveColift := rec(
+  installation_name := "InjectiveColift",
+  filter_list := [ "morphism", "morphism" ],
+  io_type := [ [ "alpha", "beta" ], [ "alpha_range", "beta_range" ] ],
+  pre_function := function( epsilon, tau )
+    local value;
+    
+    value := IsEqualForObjects( Source( epsilon ), Source( tau ) );
+    
+    if value = fail then
+        
+        return [ false, "cannot decide whether the two morphisms have equal sources" ];
+        
+    elif value = false then
+        
+        return [ false, "the two morphisms must have equal sources" ];
+        
+    fi;
+    
+    return [ true ];
+  end,
+  return_type := "morphism",
+  dual_operation := "ProjectiveLift" ),
+
+KernelObject := rec(
+  installation_name := "KernelObject",
+  filter_list := [ "morphism" ],
+  universal_type := "Limit",
+  return_type := "object",
+  dual_operation := "CokernelObject" ),
+
+KernelEmbedding := rec(
+  installation_name := "KernelEmbedding",
+  filter_list := [ "morphism" ],
+  io_type := [ [ "alpha" ], [ "P", "alpha_source" ] ],
+  universal_object_position := "Source",
+  universal_type := "Limit",
+  return_type := "morphism",
+  dual_operation := "CokernelProjection" ),
+
+KernelEmbeddingWithGivenKernelObject := rec(
+  installation_name := "KernelEmbeddingWithGivenKernelObject",
+  filter_list := [ "morphism", "object" ],
+  io_type := [ [ "alpha", "P" ], [ "P", "alpha_source" ] ],
+  universal_type := "Limit",
+  return_type := "morphism",
+  dual_operation := "CokernelProjectionWithGivenCokernelObject"),
+
+KernelLift := rec(
+  installation_name := "KernelLift",
+  filter_list := [ "morphism", "morphism" ],
+  io_type := [ [ "alpha", "tau" ], [ "tau_source", "P" ] ],
+  universal_object_position := "Range",
+  universal_type := "Limit",
+  return_type := "morphism",
+  dual_operation := "CokernelColift" ),
+
+KernelLiftWithGivenKernelObject := rec(
+  installation_name := "KernelLiftWithGivenKernelObject",
+  filter_list := [ "morphism", "morphism", "object" ],
+  io_type := [ [ "alpha", "tau", "P" ], [ "tau_source", "P" ] ],
+  universal_type := "Limit",
+  return_type := "morphism",
+  dual_operation := "CokernelColiftWithGivenCokernelObject" ),
+
+CokernelObject := rec(
+  installation_name := "CokernelObject",
+  filter_list := [ "morphism" ],
+  universal_type := "Colimit",
+  return_type := "object",
+  dual_operation := "KernelObject" ),
+
+CokernelProjection := rec(
+  installation_name := "CokernelProjection",
+  filter_list := [ "morphism" ],
+  io_type := [ [ "alpha" ], [ "alpha_range", "P" ] ],
+  universal_object_position := "Range",
+  universal_type := "Colimit",
+  return_type := "morphism",
+  dual_operation := "KernelEmbedding" ),
+
+CokernelProjectionWithGivenCokernelObject := rec(
+  installation_name := "CokernelProjectionWithGivenCokernelObject",
+  filter_list := [ "morphism", "object" ],
+  io_type := [ [ "alpha", "P" ], [ "alpha_range", "P" ] ],
+  universal_type := "Colimit",
+  return_type := "morphism",
+  dual_operation := "KernelEmbeddingWithGivenKernelObject" ),
+
+CokernelColift := rec(
+  installation_name := "CokernelColift",
+  filter_list := [ "morphism", "morphism" ],
+  io_type := [ [ "alpha", "tau" ], [ "P", "tau_range" ] ],
+  universal_object_position := "Source",
+  universal_type := "Colimit",
+  return_type := "morphism",
+  dual_operation := "KernelLift" ),
+
+CokernelColiftWithGivenCokernelObject := rec(
+  installation_name := "CokernelColiftWithGivenCokernelObject",
+  filter_list := [ "morphism", "morphism", "object" ],
+  io_type := [ [ "alpha", "tau", "P" ], [ "P", "tau_range" ] ],
+  universal_type := "Colimit",
+  return_type := "morphism",
+  dual_operation := "KernelLiftWithGivenKernelObject" ),
+
 ImageObject := rec(
   installation_name := "ImageObject",
   filter_list := [ "morphism" ],
@@ -2324,46 +2379,6 @@ InverseMorphismFromCoimageToImageWithGivenObjects := rec(
   dual_operation := "InverseMorphismFromCoimageToImageWithGivenObjects",
   dual_arguments_reversed := true,
   return_type := "morphism" ),
-
-IsWellDefinedForMorphisms := rec(
-  installation_name := "IsWellDefined",
-  filter_list := [ "morphism" ],
-  cache_name := "IsWellDefinedForMorphisms",
-  well_defined_todo := false,
-  dual_operation := "IsWellDefinedForMorphisms",
-  
-  redirect_function := function( morphism )
-    local category, source, range;
-    
-    source := Source( morphism );
-    
-    range := Range( morphism );
-    
-    category := CapCategory( morphism );
-    
-    if not ( IsWellDefined( source ) and IsWellDefined( range ) )
-       or not ( IsIdenticalObj( CapCategory( source ), category ) and IsIdenticalObj( CapCategory( range ), category ) ) then
-      
-      return [ true, false ];
-      
-      
-    else
-      
-      return [ false ];
-      
-    fi;
-    
-  end,
-  
-  return_type := "bool" ),
-
-IsWellDefinedForObjects := rec(
-  installation_name := "IsWellDefined",
-  filter_list := [ "object" ],
-  cache_name := "IsWellDefinedForObjects",
-  well_defined_todo := false,
-  dual_operation := "IsWellDefinedForObjects",
-  return_type := "bool" ),
 
 IsZeroForObjects := rec(
   installation_name := "IsZeroForObjects",
@@ -3076,141 +3091,6 @@ MorphismBetweenDirectSums := rec(
   end
 ),
 
-HomomorphismStructureOnObjects := rec(
-  installation_name := "HomomorphismStructureOnObjects",
-  filter_list := [ "object", "object" ],
-  return_type := "other_object",
-  dual_operation := "HomomorphismStructureOnObjects",
-  dual_arguments_reversed := true,
-  dual_postprocessor_func := IdFunc
-),
-
-HomomorphismStructureOnMorphismsWithGivenObjects := rec(
-  installation_name := "HomomorphismStructureOnMorphismsWithGivenObjects",
-  filter_list := [ "other_object", "morphism", "morphism", "other_object" ],
-  return_type := "other_morphism",
-  dual_operation := "HomomorphismStructureOnMorphismsWithGivenObjects",
-  dual_preprocessor_func := function( source, alpha, beta, range )
-    return [ source, Opposite( beta ), Opposite( alpha ), range ];
-  end,
-  dual_postprocessor_func := IdFunc
-),
-
-DistinguishedObjectOfHomomorphismStructure := rec(
-  installation_name := "DistinguishedObjectOfHomomorphismStructure",
-  filter_list := [ "category" ],
-  return_type := "other_object",
-  dual_operation := "DistinguishedObjectOfHomomorphismStructure",
-  dual_postprocessor_func := IdFunc,
-  zero_arguments_for_add_method := true
-),
-
-InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure := rec(
-  installation_name := "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
-  filter_list := [ "morphism" ],
-  return_type := "other_morphism",
-  dual_operation := "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
-  dual_postprocessor_func := IdFunc
-),
-
-InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism := rec(
-  installation_name := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
-  filter_list := [ "object", "object", "other_morphism" ],
-  return_type := "morphism",
-  dual_operation := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
-  dual_preprocessor_func := function( A, B, morphism )
-    return [ Opposite( B ), Opposite( A ), morphism ];
-  end
-),
-
-SolveLinearSystemInAbCategory := rec(
-    ## TODO: Type-check of linear system
-  installation_name := "SolveLinearSystemInAbCategoryOp",
-  argument_list := [ 1, 2, 3 ],
-  filter_list := [ IsList, IsList, IsList, "category" ],
-  cache_name := "SolveLinearSystemInAbCategory",
-  return_type := "morphism_or_fail"
-),
-
-MereExistenceOfSolutionOfLinearSystemInAbCategory := rec(
-    ## TODO: Type-check of linear system
-  installation_name := "MereExistenceOfSolutionOfLinearSystemInAbCategoryOp",
-  argument_list := [ 1, 2, 3 ],
-  filter_list := [ IsList, IsList, IsList, "category" ],
-  cache_name := "MereExistenceOfSolutionOfLinearSystemInAbCategory",
-  return_type := "bool"
-),
-
-RandomObjectByInteger := rec(
-  installation_name := "RandomObjectByInteger",
-  filter_list := [ "category", IsInt ],
-  io_type := [ [ "C", "n" ], [ "A" ] ],
-  return_type := "object_or_fail"
-),
-
-RandomMorphismByInteger := rec(
-  installation_name := "RandomMorphismByInteger",
-  filter_list := [ "category", IsInt ],
-  io_type := [ [ "C", "n" ], [ "alpha" ] ],
-  return_type := "morphism_or_fail"
-),
-
-RandomMorphismWithFixedSourceByInteger := rec(
-  installation_name := "RandomMorphismWithFixedSourceByInteger",
-  filter_list := [ "object", IsInt ],
-  io_type := [ [ "A", "n" ], [ "A", "B" ] ],
-  return_type := "morphism_or_fail",
-),
-
-RandomMorphismWithFixedRangeByInteger := rec(
-  installation_name := "RandomMorphismWithFixedRangeByInteger",
-  filter_list := [ "object", IsInt ],
-  io_type := [ [ "B", "n" ], [ "A", "B" ] ],
-  return_type := "morphism_or_fail",
-),
-
-RandomMorphismWithFixedSourceAndRangeByInteger := rec(
-  installation_name := "RandomMorphismWithFixedSourceAndRangeByInteger",
-  filter_list := [ "object", "object", IsInt ],
-  io_type := [ [ "A", "B", "n" ], [ "A", "B" ] ],
-  return_type := "morphism_or_fail",
-),
-
-RandomObjectByList := rec(
-  installation_name := "RandomObjectByList",
-  filter_list := [ "category", IsList ],
-  io_type := [ [ "C", "L" ], [ "A" ] ],
-  return_type := "object_or_fail"
-),
-
-RandomMorphismByList := rec(
-  installation_name := "RandomMorphismByList",
-  filter_list := [ "category", IsList ],
-  io_type := [ [ "C", "L" ], [ "alpha" ] ],
-  return_type := "morphism_or_fail"
-),
-
-RandomMorphismWithFixedSourceByList := rec(
-  installation_name := "RandomMorphismWithFixedSourceByList",
-  filter_list := [ "object", IsList ],
-  io_type := [ [ "A", "L" ], [ "A", "B" ] ],
-  return_type := "morphism_or_fail",
-),
-
-RandomMorphismWithFixedRangeByList := rec(
-  installation_name := "RandomMorphismWithFixedRangeByList",
-  filter_list := [ "object", IsList ],
-  io_type := [ [ "B", "L" ], [ "A", "B" ] ],
-  return_type := "morphism_or_fail"
-),
-
-RandomMorphismWithFixedSourceAndRangeByList := rec(
-  installation_name := "RandomMorphismWithFixedSourceAndRangeByList",
-  filter_list := [ "object", "object", IsList ],
-  io_type := [ [ "A", "B", "L" ], [ "A", "B" ] ],
-  return_type := "morphism_or_fail"
-),
-
 HomologyObject := rec(
   installation_name := "HomologyObject",
   filter_list := [ "morphism", "morphism" ],
@@ -3294,6 +3174,149 @@ IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject := rec(
   filter_list := [ "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "A", "B" ] ],
   return_type := "morphism" ),
+) );
+
+InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD_HOMOMORPHISM_STRUCTURE, rec(
+
+HomomorphismStructureOnObjects := rec(
+  installation_name := "HomomorphismStructureOnObjects",
+  filter_list := [ "object", "object" ],
+  return_type := "other_object",
+  dual_operation := "HomomorphismStructureOnObjects",
+  dual_arguments_reversed := true,
+  dual_postprocessor_func := IdFunc
+),
+
+HomomorphismStructureOnMorphismsWithGivenObjects := rec(
+  installation_name := "HomomorphismStructureOnMorphismsWithGivenObjects",
+  filter_list := [ "other_object", "morphism", "morphism", "other_object" ],
+  return_type := "other_morphism",
+  dual_operation := "HomomorphismStructureOnMorphismsWithGivenObjects",
+  dual_preprocessor_func := function( source, alpha, beta, range )
+    return [ source, Opposite( beta ), Opposite( alpha ), range ];
+  end,
+  dual_postprocessor_func := IdFunc
+),
+
+DistinguishedObjectOfHomomorphismStructure := rec(
+  installation_name := "DistinguishedObjectOfHomomorphismStructure",
+  filter_list := [ "category" ],
+  return_type := "other_object",
+  dual_operation := "DistinguishedObjectOfHomomorphismStructure",
+  dual_postprocessor_func := IdFunc,
+  zero_arguments_for_add_method := true
+),
+
+InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure := rec(
+  installation_name := "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+  filter_list := [ "morphism" ],
+  return_type := "other_morphism",
+  dual_operation := "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+  dual_postprocessor_func := IdFunc
+),
+
+InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism := rec(
+  installation_name := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
+  filter_list := [ "object", "object", "other_morphism" ],
+  return_type := "morphism",
+  dual_operation := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
+  dual_preprocessor_func := function( A, B, morphism )
+    return [ Opposite( B ), Opposite( A ), morphism ];
+  end
+),
+
+SolveLinearSystemInAbCategory := rec(
+    ## TODO: Type-check of linear system
+  installation_name := "SolveLinearSystemInAbCategoryOp",
+  argument_list := [ 1, 2, 3 ],
+  filter_list := [ IsList, IsList, IsList, "category" ],
+  cache_name := "SolveLinearSystemInAbCategory",
+  return_type := "morphism_or_fail"
+),
+
+MereExistenceOfSolutionOfLinearSystemInAbCategory := rec(
+    ## TODO: Type-check of linear system
+  installation_name := "MereExistenceOfSolutionOfLinearSystemInAbCategoryOp",
+  argument_list := [ 1, 2, 3 ],
+  filter_list := [ IsList, IsList, IsList, "category" ],
+  cache_name := "MereExistenceOfSolutionOfLinearSystemInAbCategory",
+  return_type := "bool"
+),
+
+) );
+
+InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD_RANDOM, rec(
+
+RandomObjectByInteger := rec(
+  installation_name := "RandomObjectByInteger",
+  filter_list := [ "category", IsInt ],
+  io_type := [ [ "C", "n" ], [ "A" ] ],
+  return_type := "object_or_fail"
+),
+
+RandomMorphismByInteger := rec(
+  installation_name := "RandomMorphismByInteger",
+  filter_list := [ "category", IsInt ],
+  io_type := [ [ "C", "n" ], [ "alpha" ] ],
+  return_type := "morphism_or_fail"
+),
+
+RandomMorphismWithFixedSourceByInteger := rec(
+  installation_name := "RandomMorphismWithFixedSourceByInteger",
+  filter_list := [ "object", IsInt ],
+  io_type := [ [ "A", "n" ], [ "A", "B" ] ],
+  return_type := "morphism_or_fail",
+),
+
+RandomMorphismWithFixedRangeByInteger := rec(
+  installation_name := "RandomMorphismWithFixedRangeByInteger",
+  filter_list := [ "object", IsInt ],
+  io_type := [ [ "B", "n" ], [ "A", "B" ] ],
+  return_type := "morphism_or_fail",
+),
+
+RandomMorphismWithFixedSourceAndRangeByInteger := rec(
+  installation_name := "RandomMorphismWithFixedSourceAndRangeByInteger",
+  filter_list := [ "object", "object", IsInt ],
+  io_type := [ [ "A", "B", "n" ], [ "A", "B" ] ],
+  return_type := "morphism_or_fail",
+),
+
+RandomObjectByList := rec(
+  installation_name := "RandomObjectByList",
+  filter_list := [ "category", IsList ],
+  io_type := [ [ "C", "L" ], [ "A" ] ],
+  return_type := "object_or_fail"
+),
+
+RandomMorphismByList := rec(
+  installation_name := "RandomMorphismByList",
+  filter_list := [ "category", IsList ],
+  io_type := [ [ "C", "L" ], [ "alpha" ] ],
+  return_type := "morphism_or_fail"
+),
+
+RandomMorphismWithFixedSourceByList := rec(
+  installation_name := "RandomMorphismWithFixedSourceByList",
+  filter_list := [ "object", IsList ],
+  io_type := [ [ "A", "L" ], [ "A", "B" ] ],
+  return_type := "morphism_or_fail",
+),
+
+RandomMorphismWithFixedRangeByList := rec(
+  installation_name := "RandomMorphismWithFixedRangeByList",
+  filter_list := [ "object", IsList ],
+  io_type := [ [ "B", "L" ], [ "A", "B" ] ],
+  return_type := "morphism_or_fail"
+),
+
+RandomMorphismWithFixedSourceAndRangeByList := rec(
+  installation_name := "RandomMorphismWithFixedSourceAndRangeByList",
+  filter_list := [ "object", "object", IsList ],
+  io_type := [ [ "A", "B", "L" ], [ "A", "B" ] ],
+  return_type := "morphism_or_fail"
+),
+
 ) );
 
 InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS, [
@@ -3780,7 +3803,7 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
     
 end );
 
-CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD( CAP_INTERNAL_METHOD_NAME_RECORD, CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS );
+CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD( CAP_INTERNAL_METHOD_NAME_RECORD_EXTRA, CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS );
 
 
 InstallValue( CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS, rec() );
@@ -3892,7 +3915,12 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
     
 end );
 
-CAP_INTERNAL_ENHANCE_NAME_RECORD( CAP_INTERNAL_METHOD_NAME_RECORD );
+CAP_INTERNAL_ENHANCE_NAME_RECORD( CAP_INTERNAL_METHOD_NAME_RECORD_IS_WELL_DEFINED );
+CAP_INTERNAL_ENHANCE_NAME_RECORD( CAP_INTERNAL_METHOD_NAME_RECORD_IS_EQUAL );
+CAP_INTERNAL_ENHANCE_NAME_RECORD( CAP_INTERNAL_METHOD_NAME_RECORD_BASIC );
+CAP_INTERNAL_ENHANCE_NAME_RECORD( CAP_INTERNAL_METHOD_NAME_RECORD_EXTRA );
+CAP_INTERNAL_ENHANCE_NAME_RECORD( CAP_INTERNAL_METHOD_NAME_RECORD_HOMOMORPHISM_STRUCTURE );
+CAP_INTERNAL_ENHANCE_NAME_RECORD( CAP_INTERNAL_METHOD_NAME_RECORD_RANDOM );
 
 ##
 InstallGlobalFunction( CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,

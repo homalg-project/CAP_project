@@ -320,6 +320,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
     
     recnames := ShallowCopy( ListPrimitivelyInstalledOperationsOfCategory( underlying_category ) );
     
+    recnames := Intersection( recnames, Concatenation( RecNames( CAP_INTERNAL_METHOD_NAME_RECORD_BASIC ), RecNames( CAP_INTERNAL_METHOD_NAME_RECORD_EXTRA ) ) );
+    
     no_install_list := [
             "IsEqualForObjects",
             "IsEqualForMorphisms",

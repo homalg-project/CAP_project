@@ -12,7 +12,7 @@ PackageName := "AttributeCategoryForCAP",
 Subtitle := "Automatic enhancement with attributes of a CAP category",
 
 Version := Maximum( [
-  "2019.01.16", ## Mohamed's version
+  "2019.08.12", ## Mohamed's version
   ## this line prevents merge conflicts
   "2016.09.14", ## Sebas' version
   ## this line prevents merge conflicts
@@ -90,7 +90,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">= 2019.01.16" ],
+                           [ "CAP", ">= 2019.08.12" ],
                            [ "MonoidalCategories", ">= 2019.01.16" ],
                    ],
   SuggestedOtherPackages := [ ],
