@@ -303,6 +303,12 @@ InstallMethod( AddInverse,
                [ IsCapCategory, IsList, IsInt ],
                AddInverseImmutable );
 
+CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
+  rec(
+    Inverse := [ [ "InverseImmutable", 1 ] ]
+  )
+ );
+
 #######################################
 ##
 ## Caching
