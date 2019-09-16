@@ -1162,6 +1162,20 @@ InstallMethod( InverseMorphismFromCoimageToImage,
     
 end );
 
+CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
+  rec(
+    MorphismFromCoimageToImage :=
+      [ [ "MorphismFromCoimageToImageWithGivenObjects", 1 ],
+        [ "Coimage", 1 ],
+        [ "ImageObject", 1 ] ],
+    InverseMorphismFromCoimageToImage :=
+      [ [ "InverseMorphismFromCoimageToImageWithGivenObjects", 1 ],
+        [ "Coimage", 1 ],
+        [ "ImageObject", 1 ] ],
+  )
+ );
+
+
 ####################################
 ##
 ## Homology object

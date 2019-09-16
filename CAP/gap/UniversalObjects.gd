@@ -4648,7 +4648,7 @@ DeclareAttribute( "InverseMorphismFromCoimageToImage",
 #! The output is the inverse of the canonical morphism (in an abelian category)
 #! $I \rightarrow C$.
 #! @Returns a morphism in $\mathrm{Hom}(I,C)$
-#! @Arguments alpha
+#! @Arguments C, alpha, I
 DeclareOperation( "InverseMorphismFromCoimageToImageWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
