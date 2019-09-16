@@ -2927,6 +2927,22 @@ IsomorphismFromCokernelOfKernelToCoimage := rec(
   dual_operation := "IsomorphismFromImageObjectToKernelOfCokernel",
   no_with_given := true ),
 
+CanonicalIdentificationFromImageObjectToCoimage := rec(
+  installation_name := "CanonicalIdentificationFromImageObjectToCoimage",
+  filter_list := [ "morphism" ],
+  io_type := [ [ "alpha" ], [ "I", "C" ] ],
+  return_type := "morphism",
+  dual_operation := "CanonicalIdentificationFromCoimageToImageObject",
+  no_with_given := true ),
+
+CanonicalIdentificationFromCoimageToImageObject := rec(
+  installation_name := "CanonicalIdentificationFromCoimageToImageObject",
+  filter_list := [ "morphism" ],
+  io_type := [ [ "alpha" ], [ "C", "I" ] ],
+  return_type := "morphism",
+  dual_operation := "CanonicalIdentificationFromImageObjectToCoimage",
+  no_with_given := true ),
+
 IsomorphismFromDirectSumToDirectProduct := rec(
   installation_name := "IsomorphismFromDirectSumToDirectProductOp",
   filter_list := [ "list_of_objects", "object" ],

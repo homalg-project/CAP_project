@@ -4965,6 +4965,41 @@ DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
                   [ IsCapCategory, IsList ] );
 
 
+##
+DeclareAttribute( "CanonicalIdentificationFromImageObjectToCoimage",
+                  IsCapCategoryMorphism );
+
+##
+DeclareOperation( "AddCanonicalIdentificationFromImageObjectToCoimage",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCanonicalIdentificationFromImageObjectToCoimage",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCanonicalIdentificationFromImageObjectToCoimage",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCanonicalIdentificationFromImageObjectToCoimage",
+                  [ IsCapCategory, IsList ] );
+
+##
+DeclareAttribute( "CanonicalIdentificationFromCoimageToImageObject",
+                  IsCapCategoryMorphism );
+
+##
+DeclareOperation( "AddCanonicalIdentificationFromCoimageToImageObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCanonicalIdentificationFromCoimageToImageObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCanonicalIdentificationFromCoimageToImageObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCanonicalIdentificationFromCoimageToImageObject",
+                  [ IsCapCategory, IsList ] );
+
+
 #! @Chapter Universal Objects
 
 ####################################
