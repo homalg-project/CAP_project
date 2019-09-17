@@ -686,7 +686,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( dual_source, morphism, dual_range )
         
         return VectorSpaceMorphism( dual_source,
-                                    Involution( UnderlyingMatrix( morphism ) ),
+                                    TransposedMatrix( UnderlyingMatrix( morphism ) ),
                                     dual_range );
         
     end );
@@ -781,7 +781,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         return VectorSpaceMorphism( 
           hom_source,
-          KroneckerMat( Involution( UnderlyingMatrix( alpha ) ), UnderlyingMatrix( beta ) ),
+          KroneckerMat( TransposedMatrix( UnderlyingMatrix( alpha ) ), UnderlyingMatrix( beta ) ),
           hom_range
         );
         

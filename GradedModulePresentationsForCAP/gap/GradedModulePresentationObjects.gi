@@ -272,7 +272,7 @@ InstallMethodWithCacheFromObject( INTERNAL_GRADED_HOM_EMBEDDING_IN_TENSOR_PRODUC
     
     underlying_matrix_1 := UnderlyingMatrix( object_1 );
     
-    transposed_underlying_matrix_1 := Involution( underlying_matrix_1 );
+    transposed_underlying_matrix_1 := TransposedMatrix( underlying_matrix_1 );
     
     identity_matrix_2 := UnderlyingMatrix( IdentityMorphism( object_2 ) );
     
@@ -305,7 +305,7 @@ InstallMethodWithCacheFromObject( INTERNAL_GRADED_HOM_EMBEDDING_IN_TENSOR_PRODUC
     
     underlying_matrix_1 := UnderlyingMatrix( object_1 );
     
-    transposed_underlying_matrix_1 := Involution( underlying_matrix_1 );
+    transposed_underlying_matrix_1 := TransposedMatrix( underlying_matrix_1 );
     
     identity_matrix_2 := UnderlyingMatrix( IdentityMorphism( object_2 ) );
     
@@ -357,7 +357,7 @@ InstallMethod( AffineDimension,
         Error( "the notion of affine dimension is currently only supported for commutative rings\n" );
     fi;
     
-    return AffineDimension( Involution( UnderlyingMatrix( A ) ) );
+    return AffineDimension( TransposedMatrix( UnderlyingMatrix( A ) ) );
     
 end );
 

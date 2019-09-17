@@ -1133,7 +1133,7 @@ InstallGlobalFunction( ADD_GRADED_INTERNAL_HOM_ON_MORPHISMS_LEFT,
         morphism_between_tensor_products := 
           GradedPresentationMorphism(
             Range( internal_hom_embedding_source ),
-            KroneckerMat( Involution( UnderlyingMatrix( morphism_1 ) ), UnderlyingMatrix( morphism_2 ) ),
+            KroneckerMat( TransposedMatrix( UnderlyingMatrix( morphism_1 ) ), UnderlyingMatrix( morphism_2 ) ),
             Range( internal_hom_embedding_range )
           );
         
@@ -1164,7 +1164,7 @@ InstallGlobalFunction( ADD_GRADED_INTERNAL_HOM_ON_MORPHISMS_RIGHT,
         morphism_between_tensor_products := 
           GradedPresentationMorphism(
             Range( internal_hom_embedding_source ),
-            KroneckerMat( Involution( UnderlyingMatrix( morphism_1 ) ), UnderlyingMatrix( morphism_2 ) ),
+            KroneckerMat( TransposedMatrix( UnderlyingMatrix( morphism_1 ) ), UnderlyingMatrix( morphism_2 ) ),
             Range( internal_hom_embedding_range )
           );
         
@@ -1302,7 +1302,7 @@ end );
 #                               );
 #         
 #         return PresentationMorphism( object_1_tensored_object_2,
-#                                      Involution( HomalgMatrix( permutation_matrix, rank, rank, homalg_ring ) ), ## transposed of the left case
+#                                      TransposedMatrix( HomalgMatrix( permutation_matrix, rank, rank, homalg_ring ) ), ## transposed of the left case
 #                                      object_2_tensored_object_1 );
 #         
 #     end );

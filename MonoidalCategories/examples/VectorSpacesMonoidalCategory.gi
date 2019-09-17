@@ -1,6 +1,6 @@
 LoadPackage( "MonoidalCategories" );
 
-LoadPackage( "MatricesForHomalg" );
+LoadPackage( "MatricesForHomalg", ">=2019.02.01" );
 
 ###################################
 ##
@@ -802,7 +802,7 @@ AddDualOnMorphismsWithGivenDuals( vecspaces,
   function( dual_source, morphism, dual_range )
     
     return VectorSpaceMorphism( dual_source,
-                                Involution( morphism!.morphism ),
+                                TransposedMatrix( morphism!.morphism ),
                                 dual_range );
     
 end );

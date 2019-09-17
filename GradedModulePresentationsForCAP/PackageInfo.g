@@ -18,6 +18,8 @@ Version := Maximum( [
            ##
            "2019.04.03", # Mohamed's version
            ##
+           "2019.08.07", # Fabian's version
+           ##
            ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
@@ -75,8 +77,8 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "ModulePresentationsForCAP", ">=2017.03.20" ],
-                           [ "GradedRingForHomalg", ">=2019.04.03" ],
+                           [ "ModulePresentationsForCAP", ">=2019.08.07" ],
+                           [ "GradedRingForHomalg", ">=2019.08.07" ],
                            [ "ComplexesAndFilteredObjectsForCAP", ">=2016.09.19" ],
                            [ "HomologicalAlgebraForCAP", ">=2015.05.08" ] ],
   SuggestedOtherPackages := [ ],
