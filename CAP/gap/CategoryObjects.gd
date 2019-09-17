@@ -61,7 +61,7 @@ DeclareOperationWithCache( "IsEqualForObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsEqualForObjects</C>.
 #! $F: (a,b) \mapsto \mathtt{IsEqualForObjects}(a,b)$.
 #! @Returns nothing
@@ -100,7 +100,7 @@ DeclareFamilyProperty( "IsProjective",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsProjective</C>.
 #! $F: a \mapsto \mathtt{IsProjective}(a)$.
 #! @Returns nothing
@@ -129,7 +129,7 @@ DeclareFamilyProperty( "IsInjective",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsInjective</C>.
 #! $F: a \mapsto \mathtt{IsInjective}(a)$.
 #! @Returns nothing
@@ -158,7 +158,7 @@ DeclareFamilyProperty( "IsTerminal",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsTerminal</C>.
 #! $F: a \mapsto \mathtt{IsTerminal}(a)$.
 #! @Returns nothing
@@ -187,7 +187,7 @@ DeclareFamilyProperty( "IsInitial",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsInitial</C>.
 #! $F: a \mapsto \mathtt{IsInitial}(a)$.
 #! @Returns nothing
@@ -225,7 +225,7 @@ DeclareFamilyProperty( "IsZero",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsZeroForObjects</C>.
 #! $F: a \mapsto \mathtt{IsZeroForObjects}(a)$.
 #! @Returns nothing
@@ -266,7 +266,7 @@ DeclareOperation( "RandomObjectByInteger",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>RandomObjectByInteger</C>.
 #! The function $F$ maps $(C,n)$ to <C>fail</C> or to a random object in $C$.
 #! @Returns nothing
@@ -293,7 +293,7 @@ DeclareOperation( "RandomObjectByList",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>RandomObjectByList</C>.
 #! The function $F$ maps $(C,L)$ to <C>fail</C> or to a random object in $C$.
 #! @Returns nothing
@@ -409,7 +409,7 @@ DeclareOperation( "IsWellDefinedForObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsWellDefinedForObjects</C>.
 #! $F: a \mapsto \mathtt{IsWellDefinedForObjects}( a )$.
 #! @Returns nothing
@@ -536,7 +536,7 @@ DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjective
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ProjectiveLift</C>.
 #! The function $F$ maps a pair $(\pi, \epsilon)$ to a projective lift $\lambda$.
 #! @Returns nothing
@@ -663,7 +663,7 @@ DeclareOperation( "AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveO
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InjectiveColift</C>.
 #! The function $F$ maps a pair $(\iota, \beta)$ to an injective colift $\lambda$ if it
 #! exists, and to <C>fail</C> otherwise.

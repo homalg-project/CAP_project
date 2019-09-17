@@ -101,7 +101,7 @@ DeclareOperation( "KernelLiftWithGivenKernelObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>KernelObject</C>.
 #! $F: \alpha \mapsto \mathrm{KernelObject}(\alpha)$.
 #! @Returns nothing
@@ -121,7 +121,7 @@ DeclareOperation( "AddKernelObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>KernelEmbedding</C>.
 #! $F: \alpha \mapsto \iota$.
 #! @Returns nothing
@@ -141,7 +141,7 @@ DeclareOperation( "AddKernelEmbedding",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>KernelEmbeddingWithGivenKernelObject</C>.
 #! $F: (\alpha, K) \mapsto \iota$.
 #! @Returns nothing
@@ -161,7 +161,7 @@ DeclareOperation( "AddKernelEmbeddingWithGivenKernelObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>KernelLift</C>.
 #! $F: (\alpha, \tau) \mapsto u(\tau)$.
 #! @Returns nothing
@@ -181,7 +181,7 @@ DeclareOperation( "AddKernelLift",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>KernelLiftWithGivenKernelObject</C>.
 #! $F: (\alpha, \tau, K) \mapsto u$.
 #! @Returns nothing
@@ -250,7 +250,7 @@ DeclareOperation( "KernelObjectFunctorialWithGivenKernelObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>KernelObjectFunctorialWithGivenKernelObjects</C>.
 #! $F: (\mathrm{KernelObject}( \alpha ), \alpha, \mu, \alpha', \mathrm{KernelObject}( \alpha' )) \mapsto (\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' ))$.
 #! @Returns nothing
@@ -362,7 +362,7 @@ DeclareOperation( "CokernelColiftWithGivenCokernelObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CokernelObject</C>.
 #! $F: \alpha \mapsto K$.
 #! @Returns nothing
@@ -381,7 +381,7 @@ DeclareOperation( "AddCokernelObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CokernelProjection</C>.
 #! $F: \alpha \mapsto \epsilon$.
 #! @Returns nothing
@@ -401,7 +401,7 @@ DeclareOperation( "AddCokernelProjection",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CokernelProjection</C>.
 #! $F: (\alpha, K) \mapsto \epsilon$.
 #! @Returns nothing
@@ -420,7 +420,7 @@ DeclareOperation( "AddCokernelProjectionWithGivenCokernelObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CokernelProjection</C>.
 #! $F: (\alpha, \tau) \mapsto u(\tau)$.
 #! @Returns nothing
@@ -439,7 +439,7 @@ DeclareOperation( "AddCokernelColift",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CokernelProjection</C>.
 #! $F: (\alpha, \tau, K) \mapsto u(\tau)$.
 #! @Returns nothing
@@ -517,7 +517,7 @@ DeclareSynonym( "CokernelFunctorialWithGivenCokernelObjects", CokernelObjectFunc
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CokernelObjectFunctorialWithGivenCokernelObjects</C>.
 #! $F: (\mathrm{CokernelObject}( \alpha ), \alpha, \nu, \alpha', \mathrm{CokernelObject}( \alpha' )) \mapsto (\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' ))$.
 #! @Returns nothing
@@ -664,7 +664,7 @@ DeclareAttribute( "IsomorphismFromTerminalObjectToZeroObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ZeroObject</C>.
 #! $F: () \mapsto \mathrm{ZeroObject}$.
 #! @Returns nothing
@@ -684,7 +684,7 @@ DeclareOperation( "AddZeroObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismIntoZeroObject</C>.
 #! $F: A \mapsto u_{\mathrm{in}}(A)$.
 #! @Returns nothing
@@ -703,7 +703,7 @@ DeclareOperation( "AddUniversalMorphismIntoZeroObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismIntoZeroObjectWithGivenZeroObject</C>.
 #! $F: (A, Z) \mapsto u_{\mathrm{in}}(A)$.
 #! @Returns nothing
@@ -723,7 +723,7 @@ DeclareOperation( "AddUniversalMorphismIntoZeroObjectWithGivenZeroObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismFromZeroObject</C>.
 #! $F: A \mapsto u_{\mathrm{out}}(A)$.
 #! @Returns nothing
@@ -743,7 +743,7 @@ DeclareOperation( "AddUniversalMorphismFromZeroObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismFromZeroObjectWithGivenZeroObject</C>.
 #! $F: (A,Z) \mapsto u_{\mathrm{out}}(A)$.
 #! @Returns nothing
@@ -763,7 +763,7 @@ DeclareOperation( "AddUniversalMorphismFromZeroObjectWithGivenZeroObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromZeroObjectToInitialObject</C>.
 #! $F: () \mapsto (\mathrm{ZeroObject} \rightarrow \mathrm{InitialObject})$.
 #! @Returns nothing
@@ -782,7 +782,7 @@ DeclareOperation( "AddIsomorphismFromZeroObjectToInitialObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromInitialObjectToZeroObject</C>.
 #! $F: () \mapsto ( \mathrm{InitialObject} \rightarrow \mathrm{ZeroObject})$.
 #! @Returns nothing
@@ -802,7 +802,7 @@ DeclareOperation( "AddIsomorphismFromInitialObjectToZeroObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromZeroObjectToTerminalObject</C>.
 #! $F: () \mapsto (\mathrm{ZeroObject} \rightarrow \mathrm{TerminalObject})$.
 #! @Returns nothing
@@ -821,7 +821,7 @@ DeclareOperation( "AddIsomorphismFromZeroObjectToTerminalObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromTerminalObjectToZeroObject</C>.
 #! $F: () \mapsto ( \mathrm{TerminalObject} \rightarrow \mathrm{ZeroObject})$.
 #! @Returns nothing
@@ -848,7 +848,7 @@ DeclareAttribute( "ZeroObjectFunctorial",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ZeroObjectFunctorial</C>.
 #! $F: () \mapsto (T \rightarrow T)$.
 #! @Returns nothing
@@ -928,7 +928,7 @@ DeclareOperation( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>TerminalObject</C>.
 #! $F: () \mapsto T$.
 #! @Returns nothing
@@ -948,7 +948,7 @@ DeclareOperation( "AddTerminalObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismIntoTerminalObject</C>.
 #! $F: A \mapsto u(A)$.
 #! @Returns nothing
@@ -968,7 +968,7 @@ DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismIntoTerminalObjectWithGivenTerminalObject</C>.
 #! $F: (A,T) \mapsto u(A)$.
 #! @Returns nothing
@@ -997,7 +997,7 @@ DeclareAttribute( "TerminalObjectFunctorial",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>TerminalObjectFunctorial</C>.
 #! $F: () \mapsto (T \rightarrow T)$.
 #! @Returns nothing
@@ -1077,7 +1077,7 @@ DeclareOperation( "UniversalMorphismFromInitialObjectWithGivenInitialObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InitialObject</C>.
 #! $F: () \mapsto I$.
 #! @Returns nothing
@@ -1096,7 +1096,7 @@ DeclareOperation( "AddInitialObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismFromInitialObject</C>.
 #! $F: A \mapsto u(A)$.
 #! @Returns nothing
@@ -1115,7 +1115,7 @@ DeclareOperation( "AddUniversalMorphismFromInitialObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismFromInitialObjectWithGivenInitialObject</C>.
 #! $F: (A,I) \mapsto u(A)$.
 #! @Returns nothing
@@ -1142,7 +1142,7 @@ DeclareAttribute( "InitialObjectFunctorial",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InitialObjectFunctorial</C>.
 #! $F: () \rightarrow ( I \rightarrow I )$.
 #! @Returns nothing
@@ -1485,7 +1485,7 @@ DeclareOperation( "MorphismBetweenDirectSums",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismBetweenDirectSums</C>.
 #! $F: (\bigoplus_{i=1}^{m}A_i, M, \bigoplus_{j=1}^n B_j) \mapsto (\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n B_j)$.
 #! @Returns nothing
@@ -1541,7 +1541,7 @@ DeclareOperation( "ComponentOfMorphismFromDirectSum",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ComponentOfMorphismIntoDirectSum</C>.
 #! $F: (\alpha: A \rightarrow S,D,k) \mapsto (A \rightarrow S_k)$.
 #! @Returns nothing
@@ -1560,7 +1560,7 @@ DeclareOperation( "AddComponentOfMorphismIntoDirectSum",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ComponentOfMorphismFromDirectSum</C>.
 #! $F: (\alpha: S \rightarrow A,D,k) \mapsto (S_k \rightarrow A)$.
 #! @Returns nothing
@@ -1579,7 +1579,7 @@ DeclareOperation( "AddComponentOfMorphismFromDirectSum",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ProjectionInFactorOfDirectSum</C>.
 #! $F: (D,k) \mapsto \pi_{k}$.
 #! @Returns nothing
@@ -1598,7 +1598,7 @@ DeclareOperation( "AddProjectionInFactorOfDirectSum",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ProjectionInFactorOfDirectSumWithGivenDirectSum</C>.
 #! $F: (D,k,S) \mapsto \pi_{k}$.
 #! @Returns nothing
@@ -1617,7 +1617,7 @@ DeclareOperation( "AddProjectionInFactorOfDirectSumWithGivenDirectSum",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InjectionOfCofactorOfDirectSum</C>.
 #! $F: (D,k) \mapsto \iota_{k}$.
 #! @Returns nothing
@@ -1636,7 +1636,7 @@ DeclareOperation( "AddInjectionOfCofactorOfDirectSum",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InjectionOfCofactorOfDirectSumWithGivenDirectSum</C>.
 #! $F: (D,k,S) \mapsto \iota_{k}$.
 #! @Returns nothing
@@ -1655,7 +1655,7 @@ DeclareOperation( "AddInjectionOfCofactorOfDirectSumWithGivenDirectSum",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismIntoDirectSum</C>.
 #! $F: (D,\tau) \mapsto u_{\mathrm{in}}(\tau)$.
 #! @Returns nothing
@@ -1674,7 +1674,7 @@ DeclareOperation( "AddUniversalMorphismIntoDirectSum",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismIntoDirectSumWithGivenDirectSum</C>.
 #! $F: (D,\tau,S) \mapsto u_{\mathrm{in}}(\tau)$.
 #! @Returns nothing
@@ -1693,7 +1693,7 @@ DeclareOperation( "AddUniversalMorphismIntoDirectSumWithGivenDirectSum",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismFromDirectSum</C>.
 #! $F: (D,\tau) \mapsto u_{\mathrm{out}}(\tau)$.
 #! @Returns nothing
@@ -1712,7 +1712,7 @@ DeclareOperation( "AddUniversalMorphismFromDirectSum",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismFromDirectSumWithGivenDirectSum</C>.
 #! $F: (D,\tau,S) \mapsto u_{\mathrm{out}}(\tau)$.
 #! @Returns nothing
@@ -1731,7 +1731,7 @@ DeclareOperation( "AddUniversalMorphismFromDirectSumWithGivenDirectSum",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromDirectSumToDirectProduct</C>.
 #! $F: D \mapsto (\bigoplus_{i=1}^n S_i \rightarrow \prod_{i=1}^{n}S_i)$.
 #! @Returns nothing
@@ -1750,7 +1750,7 @@ DeclareOperation( "AddIsomorphismFromDirectSumToDirectProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromDirectProductToDirectSum</C>.
 #! $F: D \mapsto ( \prod_{i=1}^{n}S_i \rightarrow  \bigoplus_{i=1}^n S_i )$.
 #! @Returns nothing
@@ -1769,7 +1769,7 @@ DeclareOperation( "AddIsomorphismFromDirectProductToDirectSum",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromDirectSumToCoproduct</C>.
 #! $F: D \mapsto ( \bigoplus_{i=1}^n S_i \rightarrow \bigsqcup_{i=1}^{n}S_i )$.
 #! @Returns nothing
@@ -1788,7 +1788,7 @@ DeclareOperation( "AddIsomorphismFromDirectSumToCoproduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromCoproductToDirectSum</C>.
 #! $F: D \mapsto ( \bigsqcup_{i=1}^{n}S_i \rightarrow  \bigoplus_{i=1}^n S_i )$.
 #! @Returns nothing
@@ -1807,7 +1807,7 @@ DeclareOperation( "AddIsomorphismFromCoproductToDirectSum",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>DirectSum</C>.
 #! $F: D \mapsto \bigoplus_{i=1}^n S_i$.
 #! @Returns nothing
@@ -1848,7 +1848,7 @@ DeclareOperation( "DirectSumFunctorialWithGivenDirectSums",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>DirectSumFunctorialWithGivenDirectSums</C>.
 #! $F: (\bigoplus_{i=1}^n S_i, ( \mu_1, \dots, \mu_n ), \bigoplus_{i=1}^n S_i') \mapsto (\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i')$.
 #! @Returns nothing
@@ -2025,7 +2025,7 @@ DeclareOperation( "UniversalMorphismFromCoproductWithGivenCoproduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>Coproduct</C>.
 #! $F: ( (I_1, \dots, I_n) ) \mapsto I$.
 #! @Returns nothing
@@ -2045,7 +2045,7 @@ DeclareOperation( "AddCoproduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InjectionOfCofactorOfCoproduct</C>.
 #! $F: ( (I_1, \dots, I_n), i ) \mapsto \iota_i$.
 #! @Returns nothing
@@ -2065,7 +2065,7 @@ DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InjectionOfCofactorOfCoproductWithGivenCoproduct</C>.
 #! $F: ( (I_1, \dots, I_n), i, I ) \mapsto \iota_i$.
 #! @Returns nothing
@@ -2085,7 +2085,7 @@ DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismFromCoproduct</C>.
 #! $F: ( (I_1, \dots, I_n), \tau ) \mapsto u( \tau )$.
 #! @Returns nothing
@@ -2105,7 +2105,7 @@ DeclareOperation( "AddUniversalMorphismFromCoproduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismFromCoproductWithGivenCoproduct</C>.
 #! $F: ( (I_1, \dots, I_n), \tau, I ) \mapsto u( \tau )$.
 #! @Returns nothing
@@ -2146,7 +2146,7 @@ DeclareOperation( "CoproductFunctorialWithGivenCoproducts",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoproductFunctorialWithGivenCoproducts</C>.
 #! $F: (\bigsqcup_{i=1}^n I_i, (\mu_1, \dots, \mu_n), \bigsqcup_{i=1}^n I_i') \rightarrow (\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i')$.
 #! @Returns nothing
@@ -2288,7 +2288,7 @@ DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>DirectProduct</C>.
 #! $F: ( (P_1, \dots, P_n) ) \mapsto P$
 #! @Returns nothing
@@ -2307,7 +2307,7 @@ DeclareOperation( "AddDirectProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ProjectionInFactorOfDirectProduct</C>.
 #! $F: ( (P_1, \dots, P_n),k ) \mapsto \pi_k$
 #! @Returns nothing
@@ -2326,7 +2326,7 @@ DeclareOperation( "AddProjectionInFactorOfDirectProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ProjectionInFactorOfDirectProductWithGivenDirectProduct</C>.
 #! $F: ( (P_1, \dots, P_n),k,P ) \mapsto \pi_k$
 #! @Returns nothing
@@ -2345,7 +2345,7 @@ DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismIntoDirectProduct</C>.
 #! $F: ( (P_1, \dots, P_n), \tau ) \mapsto u( \tau )$
 #! @Returns nothing
@@ -2365,7 +2365,7 @@ DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismIntoDirectProductWithGivenDirectProduct</C>.
 #! $F: ( (P_1, \dots, P_n), \tau, P ) \mapsto u( \tau )$
 #! @Returns nothing
@@ -2406,7 +2406,7 @@ DeclareOperation( "DirectProductFunctorialWithGivenDirectProducts",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>DirectProductFunctorialWithGivenDirectProducts</C>.
 #! $F: ( \prod_{i=1}^n P_i, (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}, \prod_{i=1}^n P_i' ) \mapsto (\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i')$
 #! @Returns nothing
@@ -2552,7 +2552,7 @@ DeclareOperation( "UniversalMorphismIntoEqualizerWithGivenEqualizer",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>Equalizer</C>.
 #! $F: ( (\beta_i: A \rightarrow B)_{i = 1 \dots n} ) \mapsto E$
 #! @Returns nothing
@@ -2571,7 +2571,7 @@ DeclareOperation( "AddEqualizer",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>EmbeddingOfEqualizer</C>.
 #! $F: ( (\beta_i: A \rightarrow B)_{i = 1 \dots n}, k ) \mapsto \iota$
 #! @Returns nothing
@@ -2590,7 +2590,7 @@ DeclareOperation( "AddEmbeddingOfEqualizer",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>EmbeddingOfEqualizerWithGivenEqualizer</C>.
 #! $F: ( (\beta_i: A \rightarrow B)_{i = 1 \dots n},E ) \mapsto \iota$
 #! @Returns nothing
@@ -2609,7 +2609,7 @@ DeclareOperation( "AddEmbeddingOfEqualizerWithGivenEqualizer",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismIntoEqualizer</C>.
 #! $F: ( (\beta_i: A \rightarrow B)_{i = 1 \dots n}, \tau  ) \mapsto u(\tau)$
 #! @Returns nothing
@@ -2628,7 +2628,7 @@ DeclareOperation( "AddUniversalMorphismIntoEqualizer",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismIntoEqualizerWithGivenEqualizer</C>.
 #! $F: ( (\beta_i: A \rightarrow B)_{i = 1 \dots n}, \tau, E  ) \mapsto u(\tau)$
 #! @Returns nothing
@@ -2691,7 +2691,7 @@ DeclareOperation( "EqualizerFunctorialWithGivenEqualizers",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>EqualizerFunctorialWithGivenEqualizers</C>.
 #! $F: ( \mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ), ( \beta_i: A \rightarrow B )_{i = 1 \dots n}, \mu: A \rightarrow A', ( \beta_i': A' \rightarrow B' )_{i = 1 \dots n}, \mathrm{Equalizer}( ( \beta_i' )_{i=1 \dots n} ) ) \mapsto (\mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm {Equalizer}( ( \beta_i' )_{i=1 \dots n} ) )$
 #! @Returns nothing
@@ -2838,7 +2838,7 @@ DeclareOperation( "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>Coequalizer</C>.
 #! $F: ( (\beta_i: B \rightarrow A)_{i = 1 \dots n} ) \mapsto C$
 #! @Returns nothing
@@ -2857,7 +2857,7 @@ DeclareOperation( "AddCoequalizer",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ProjectionOntoCoequalizer</C>.
 #! $F: ( (\beta_i: B \rightarrow A)_{i = 1 \dots n}, k ) \mapsto \pi$
 #! @Returns nothing
@@ -2876,7 +2876,7 @@ DeclareOperation( "AddProjectionOntoCoequalizer",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ProjectionOntoCoequalizerWithGivenCoequalizer</C>.
 #! $F: ( (\beta_i: B \rightarrow A)_{i = 1 \dots n}, C) \mapsto \pi$
 #! @Returns nothing
@@ -2895,7 +2895,7 @@ DeclareOperation( "AddProjectionOntoCoequalizerWithGivenCoequalizer",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismFromCoequalizer</C>.
 #! $F: ( (\beta_i: B \rightarrow A)_{i = 1 \dots n}, \tau ) \mapsto u(\tau)$
 #! @Returns nothing
@@ -2914,7 +2914,7 @@ DeclareOperation( "AddUniversalMorphismFromCoequalizer",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismFromCoequalizerWithGivenCoequalizer</C>.
 #! $F: ( (\beta_i: B \rightarrow A)_{i = 1 \dots n}, \tau, C ) \mapsto u(\tau)$
 #! @Returns nothing
@@ -2978,7 +2978,7 @@ DeclareOperation( "CoequalizerFunctorialWithGivenCoequalizers",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoequalizerFunctorialWithGivenCoequalizers</C>.
 #! $F: ( \mathrm{Coequalizer}( ( \beta_i )_{i=1}^n ), ( \beta_i: B \rightarrow A )_{i = 1 \dots n}, \mu: A \rightarrow A', ( \beta_i': B' \rightarrow A' )_{i = 1 \dots n}, \mathrm{Coequalizer}( ( \beta_i' )_{i=1}^n ) ) \mapsto (\mathrm{Coequalizer}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Coequalizer}( ( \beta_i' )_{i=1}^n ) )$
 #! @Returns nothing
@@ -3071,7 +3071,7 @@ DeclareOperation( "IsomorphismFromFiberProductToKernelOfDiagonalDifferenceOp",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromFiberProductToKernelOfDiagonalDifference</C>.
 #! $F: ( ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n} ) \mapsto \mathrm{FiberProduct}(D) \rightarrow \Delta$
 #! @Returns nothing
@@ -3111,7 +3111,7 @@ DeclareOperation( "IsomorphismFromKernelOfDiagonalDifferenceToFiberProductOp",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct</C>.
 #! $F: ( ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n} ) \mapsto \Delta \rightarrow \mathrm{FiberProduct}(D)$
 #! @Returns nothing
@@ -3153,7 +3153,7 @@ DeclareOperation( "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagramO
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram</C>.
 #! $F: ( ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n} ) \mapsto \mathrm{FiberProduct}(D) \rightarrow \Delta$
 #! @Returns nothing
@@ -3193,7 +3193,7 @@ DeclareOperation( "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProductO
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct</C>.
 #! $F: ( ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n} ) \mapsto \Delta \rightarrow \mathrm{FiberProduct}(D)$
 #! @Returns nothing
@@ -3236,7 +3236,7 @@ DeclareOperationWithCache( "DirectSumDiagonalDifferenceOp",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>DirectSumDiagonalDifference</C>.
 #! $F: ( D ) \mapsto \mathrm{DirectSumDiagonalDifference}(D)$
 #! @Returns nothing
@@ -3277,7 +3277,7 @@ DeclareOperationWithCache( "FiberProductEmbeddingInDirectSumOp",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>FiberProductEmbeddingInDirectSum</C>.
 #! $F: ( ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n} ) \mapsto \mathrm{FiberProduct}(D) \rightarrow \bigoplus_{i=1}^n P_i$
 #! @Returns nothing
@@ -3422,7 +3422,7 @@ DeclareOperation( "UniversalMorphismIntoFiberProductWithGivenFiberProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>FiberProduct</C>.
 #! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n} ) \mapsto P$
 #! @Returns nothing
@@ -3441,7 +3441,7 @@ DeclareOperation( "AddFiberProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ProjectionInFactorOfFiberProduct</C>.
 #! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, k ) \mapsto \pi_k$
 #! @Returns nothing
@@ -3460,7 +3460,7 @@ DeclareOperation( "AddProjectionInFactorOfFiberProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ProjectionInFactorOfFiberProductWithGivenFiberProduct</C>.
 #! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, k,P ) \mapsto \pi_k$
 #! @Returns nothing
@@ -3480,7 +3480,7 @@ DeclareOperation( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismFromFiberProductToSink</C>.
 #! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n} ) \mapsto \mu$
 #! @Returns nothing
@@ -3499,7 +3499,7 @@ DeclareOperation( "AddMorphismFromFiberProductToSink",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismFromFiberProductToSinkWithGivenFiberProduct</C>.
 #! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, P ) \mapsto \mu$
 #! @Returns nothing
@@ -3519,7 +3519,7 @@ DeclareOperation( "AddMorphismFromFiberProductToSinkWithGivenFiberProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismIntoFiberProduct</C>.
 #! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, \tau  ) \mapsto u(\tau)$
 #! @Returns nothing
@@ -3539,7 +3539,7 @@ DeclareOperation( "AddUniversalMorphismIntoFiberProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismIntoFiberProductWithGivenFiberProduct</C>.
 #! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, \tau, P  ) \mapsto u(\tau)$
 #! @Returns nothing
@@ -3602,7 +3602,7 @@ DeclareOperation( "FiberProductFunctorialWithGivenFiberProducts",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>FiberProductFunctorialWithGivenFiberProducts</C>.
 #! $F: ( \mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ), (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, (\mu_i: P_i \rightarrow P_i')_{i = 1 \dots n}, (\beta_i': P_i' \rightarrow B')_{i = 1 \dots n}, \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ) ) ) \mapsto (\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ) )$
 #! @Returns nothing
@@ -3693,7 +3693,7 @@ DeclareOperation( "IsomorphismFromPushoutToCokernelOfDiagonalDifferenceOp",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromPushoutToCokernelOfDiagonalDifference</C>.
 #! $F: ( ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n} ) \mapsto (\mathrm{Pushout}(D) \rightarrow \Delta)$
 #! @Returns nothing
@@ -3733,7 +3733,7 @@ DeclareOperation( "IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromCokernelOfDiagonalDifferenceToPushout</C>.
 #! $F: ( ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n} ) \mapsto (\Delta \rightarrow \mathrm{Pushout}(D))$
 #! @Returns nothing
@@ -3773,7 +3773,7 @@ DeclareOperation( "IsomorphismFromPushoutToCoequalizerOfCoproductDiagramOp",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromPushoutToCoequalizerOfCoproductDiagram</C>.
 #! $F: ( ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n} ) \mapsto (\mathrm{Pushout}(D) \rightarrow \Delta)$
 #! @Returns nothing
@@ -3813,7 +3813,7 @@ DeclareOperation( "IsomorphismFromCoequalizerOfCoproductDiagramToPushoutOp",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromCoequalizerOfCoproductDiagramToPushout</C>.
 #! $F: ( ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n} ) \mapsto (\Delta \rightarrow \mathrm{Pushout}(D))$
 #! @Returns nothing
@@ -3853,7 +3853,7 @@ DeclareOperationWithCache( "DirectSumCodiagonalDifferenceOp",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>DirectSumCodiagonalDifference</C>.
 #! $F: ( D ) \mapsto \mathrm{DirectSumCodiagonalDifference}(D)$
 #! @Returns nothing
@@ -3892,7 +3892,7 @@ DeclareOperationWithCache( "DirectSumProjectionInPushoutOp",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>DirectSumProjectionInPushout</C>.
 #! $F: ( ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n} ) \mapsto (\bigoplus_{i=1}^n I_i \rightarrow \mathrm{Pushout}(D))$
 #! @Returns nothing
@@ -4046,7 +4046,7 @@ DeclareOperation( "UniversalMorphismFromPushoutWithGivenPushout",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>Pushout</C>.
 #! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n} ) \mapsto I$
 #! @Returns nothing
@@ -4065,7 +4065,7 @@ DeclareOperation( "AddPushout",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InjectionOfCofactorOfPushout</C>.
 #! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k ) \mapsto \iota_k$
 #! @Returns nothing
@@ -4085,7 +4085,7 @@ DeclareOperation( "AddInjectionOfCofactorOfPushout",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InjectionOfCofactorOfPushoutWithGivenPushout</C>.
 #! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k, I ) \mapsto \iota_k$
 #! @Returns nothing
@@ -4104,7 +4104,7 @@ DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismFromSourceToPushout</C>.
 #! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k ) \mapsto \mu$
 #! @Returns nothing
@@ -4124,7 +4124,7 @@ DeclareOperation( "AddMorphismFromSourceToPushout",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismFromSourceToPushoutWithGivenPushout</C>.
 #! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k, I ) \mapsto \mu$
 #! @Returns nothing
@@ -4143,7 +4143,7 @@ DeclareOperation( "AddMorphismFromSourceToPushoutWithGivenPushout",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismFromPushout</C>.
 #! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, \tau ) \mapsto u(\tau)$
 #! @Returns nothing
@@ -4162,7 +4162,7 @@ DeclareOperation( "AddUniversalMorphismFromPushout",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismFromPushout</C>.
 #! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, \tau, I ) \mapsto u(\tau)$
 #! @Returns nothing
@@ -4225,7 +4225,7 @@ DeclareOperation( "PushoutFunctorialWithGivenPushouts",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>PushoutFunctorial</C>.
 #! $F: ( \mathrm{Pushout}( ( \beta_i )_{i=1}^n ), ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}, ( \mu_i: I_i \rightarrow I_i' )_{i = 1 \dots n}, ( \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n}, \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ) ) ) \mapsto (\mathrm{Pushout}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ) )$
 #! @Returns nothing
@@ -4295,7 +4295,7 @@ DeclareAttribute( "IsomorphismFromImageObjectToKernelOfCokernel",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromImageObjectToKernelOfCokernel</C>.
 #! $F: \alpha \mapsto ( \mathrm{im}(\alpha) \rightarrow \mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) ) )$
 #! @Returns nothing
@@ -4323,7 +4323,7 @@ DeclareAttribute( "IsomorphismFromKernelOfCokernelToImageObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromKernelOfCokernelToImageObject</C>.
 #! $F: \alpha \mapsto ( \mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) ) \rightarrow \mathrm{im}(\alpha) )$
 #! @Returns nothing
@@ -4420,7 +4420,7 @@ DeclareOperation( "UniversalMorphismFromImageWithGivenImageObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ImageObject</C>.
 #! $F: \alpha \mapsto I$.
 #! @Returns nothing
@@ -4439,7 +4439,7 @@ DeclareOperation( "AddImageObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ImageEmbedding</C>.
 #! $F: \alpha \mapsto \iota$.
 #! @Returns nothing
@@ -4458,7 +4458,7 @@ DeclareOperation( "AddImageEmbedding",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ImageEmbeddingWithGivenImageObject</C>.
 #! $F: (\alpha,I) \mapsto \iota$.
 #! @Returns nothing
@@ -4477,7 +4477,7 @@ DeclareOperation( "AddImageEmbeddingWithGivenImageObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoastrictionToImage</C>.
 #! $F: \alpha \mapsto c$.
 #! @Returns nothing
@@ -4496,7 +4496,7 @@ DeclareOperation( "AddCoastrictionToImage",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoastrictionToImageWithGivenImageObject</C>.
 #! $F: (\alpha,I) \mapsto c$.
 #! @Returns nothing
@@ -4515,7 +4515,7 @@ DeclareOperation( "AddCoastrictionToImageWithGivenImageObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismFromImage</C>.
 #! $F: (\alpha, \tau) \mapsto u(\tau)$.
 #! @Returns nothing
@@ -4535,7 +4535,7 @@ DeclareOperation( "AddUniversalMorphismFromImage",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismFromImageWithGivenImageObject</C>.
 #! $F: (\alpha, \tau, I) \mapsto u(\tau)$.
 #! @Returns nothing
@@ -4615,7 +4615,7 @@ DeclareOperation( "MorphismFromCoimageToImageWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismFromCoimageToImageWithGivenObjects</C>.
 #! $F: (C, \alpha, I) \mapsto ( C \rightarrow I )$.
 #! @Returns nothing
@@ -4654,7 +4654,7 @@ DeclareOperation( "InverseMorphismFromCoimageToImageWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismFromCoimageToImageWithGivenObjects</C>.
 #! $F: (C, \alpha, I) \mapsto ( I \rightarrow C )$.
 #! @Returns nothing
@@ -4684,7 +4684,7 @@ DeclareAttribute( "IsomorphismFromCoimageToCokernelOfKernel",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromCoimageToCokernelOfKernel</C>.
 #! $F: \alpha \mapsto ( \mathrm{coim}( \alpha ) \rightarrow \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) ) )$.
 #! @Returns nothing
@@ -4712,7 +4712,7 @@ DeclareAttribute( "IsomorphismFromCokernelOfKernelToCoimage",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromCokernelOfKernelToCoimage</C>.
 #! $F: \alpha \mapsto ( \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) ) \rightarrow \mathrm{coim}( \alpha ) )$.
 #! @Returns nothing
@@ -4828,7 +4828,7 @@ DeclareOperation( "UniversalMorphismIntoCoimageWithGivenCoimage",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>Coimage</C>.
 #! $F: \alpha \mapsto C$
 #! @Returns nothing
@@ -4848,7 +4848,7 @@ DeclareOperation( "AddCoimage",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoimageProjection</C>.
 #! $F: \alpha \mapsto \pi$
 #! @Returns nothing
@@ -4868,7 +4868,7 @@ DeclareOperation( "AddCoimageProjection",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoimageProjectionWithGivenCoimage</C>.
 #! $F: (\alpha,C) \mapsto \pi$
 #! @Returns nothing
@@ -4888,7 +4888,7 @@ DeclareOperation( "AddCoimageProjectionWithGivenCoimage",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>AstrictionToCoimage</C>.
 #! $F: \alpha \mapsto a$
 #! @Returns nothing
@@ -4908,7 +4908,7 @@ DeclareOperation( "AddAstrictionToCoimage",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>AstrictionToCoimageWithGivenCoimage</C>.
 #! $F: (\alpha,C) \mapsto a$
 #! @Returns nothing
@@ -4928,7 +4928,7 @@ DeclareOperation( "AddAstrictionToCoimageWithGivenCoimage",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismIntoCoimage</C>.
 #! $F: (\alpha, \tau) \mapsto u(\tau)$
 #! @Returns nothing
@@ -4947,7 +4947,7 @@ DeclareOperation( "AddUniversalMorphismIntoCoimage",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalMorphismIntoCoimageWithGivenCoimage</C>.
 #! $F: (\alpha, \tau,C) \mapsto u(\tau)$
 #! @Returns nothing
@@ -5058,7 +5058,7 @@ DeclareOperation( "IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>HomologyObject</C>.
 #! $F: (\alpha, \beta) \mapsto \mathrm{HomologyObject}(\alpha, \beta)$.
 #! @Returns nothing
@@ -5077,7 +5077,7 @@ DeclareOperation( "AddHomologyObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>AddHomologyObjectFunctorialWithGivenHomologyObjects</C>.
 #! $F: (H_1, \alpha, \beta, \epsilon, \gamma, \delta, H_2) \mapsto (H_1 \rightarrow H_2)$
 #! @Returns nothing

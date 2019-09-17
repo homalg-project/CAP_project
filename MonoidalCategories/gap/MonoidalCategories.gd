@@ -52,7 +52,7 @@ DeclareOperation( "TensorProductOnMorphismsWithGivenTensorProducts",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>TensorProductOnMorphismsWithGivenTensorProducts</C>.
 #! $F: ( a \otimes b, \alpha: a \rightarrow a', \beta: b \rightarrow b', a' \otimes b' ) \mapsto \alpha \otimes \beta$.
 #! @Returns nothing
@@ -91,7 +91,7 @@ DeclareOperation( "AssociatorRightToLeftWithGivenTensorProducts",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>AssociatorRightToLeftWithGivenTensorProducts</C>.
 #! $F: ( a \otimes (b \otimes c), a, b, c, (a \otimes b) \otimes c ) \mapsto \alpha_{a,(b,c)}$.
 #! @Returns nothing
@@ -131,7 +131,7 @@ DeclareOperation( "AssociatorLeftToRightWithGivenTensorProducts",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>AssociatorLeftToRightWithGivenTensorProducts</C>.
 #! $F: (( a \otimes b ) \otimes c, a, b, c, a \otimes (b \otimes c )) \mapsto \alpha_{(a,b),c}$.
 #! @Returns nothing
@@ -168,7 +168,7 @@ DeclareOperation( "LeftUnitorWithGivenTensorProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>LeftUnitorWithGivenTensorProduct</C>.
 #! $F: (a, 1 \otimes a) \mapsto \lambda_a$.
 #! @Returns nothing
@@ -206,7 +206,7 @@ DeclareOperation( "LeftUnitorInverseWithGivenTensorProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>LeftUnitorInverseWithGivenTensorProduct</C>.
 #! $F: (a, 1 \otimes a) \mapsto \lambda_a^{-1}$.
 #! @Returns nothing
@@ -243,7 +243,7 @@ DeclareOperation( "RightUnitorWithGivenTensorProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>RightUnitorWithGivenTensorProduct</C>.
 #! $F: (a, a \otimes 1) \mapsto \rho_a$.
 #! @Returns nothing
@@ -281,7 +281,7 @@ DeclareOperation( "RightUnitorInverseWithGivenTensorProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>RightUnitorInverseWithGivenTensorProduct</C>.
 #! $F: (a, a \otimes 1) \mapsto \rho_a^{-1}$.
 #! @Returns nothing

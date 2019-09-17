@@ -35,7 +35,7 @@ DeclareOperation( "LeftDistributivityExpandingWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>LeftDistributivityExpandingWithGivenObjects</C>.
 #! $F: (a \otimes (b_1 \oplus \dots \oplus b_n), a, L, (a \otimes b_1) \oplus \dots \oplus (a \otimes b_n)) \mapsto \mathrm{LeftDistributivityExpandingWithGivenObjects}(a,L)$.
 #! @Returns nothing
@@ -78,7 +78,7 @@ DeclareOperation( "LeftDistributivityFactoringWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>LeftDistributivityFactoringWithGivenObjects</C>.
 #! $F: ((a \otimes b_1) \oplus \dots \oplus (a \otimes b_n), a, L, a \otimes (b_1 \oplus \dots \oplus b_n)) \mapsto \mathrm{LeftDistributivityFactoringWithGivenObjects}(a,L)$.
 #! @Returns nothing
@@ -120,7 +120,7 @@ DeclareOperation( "RightDistributivityExpandingWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>RightDistributivityExpandingWithGivenObjects</C>.
 #! $F: ((b_1 \oplus \dots \oplus b_n) \otimes a, L, a, (b_1 \otimes a) \oplus \dots \oplus (b_n \otimes a)) \mapsto \mathrm{RightDistributivityExpandingWithGivenObjects}(L,a)$.
 #! @Returns nothing
@@ -162,7 +162,7 @@ DeclareOperation( "RightDistributivityFactoringWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>RightDistributivityFactoringWithGivenObjects</C>.
 #! $F: ((b_1 \otimes a) \oplus \dots \oplus (b_n \otimes a), L, a, (b_1 \oplus \dots \oplus b_n) \otimes a) \mapsto \mathrm{RightDistributivityFactoringWithGivenObjects}(L,a)$.
 #! @Returns nothing

@@ -83,7 +83,7 @@ DeclareFamilyProperty( "IsMonomorphism",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsMonomorphism</C>.
 #! $F: \alpha \mapsto \mathtt{IsMonomorphism}(\alpha)$.
 #! @Returns nothing
@@ -116,7 +116,7 @@ DeclareFamilyProperty( "IsEpimorphism",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsEpimorphism</C>.
 #! $F: \alpha \mapsto \mathtt{IsEpimorphism}(\alpha)$.
 #! @Returns nothing
@@ -147,7 +147,7 @@ DeclareFamilyProperty( "IsIsomorphism",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsIsomorphism</C>.
 #! $F: \alpha \mapsto \mathtt{IsIsomorphism}(\alpha)$.
 #! @Returns nothing
@@ -178,7 +178,7 @@ DeclareFamilyProperty( "IsSplitMonomorphism",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsSplitMonomorphism</C>.
 #! $F: \alpha \mapsto \mathtt{IsSplitMonomorphism}(\alpha)$.
 #! @Returns nothing
@@ -207,7 +207,7 @@ DeclareFamilyProperty( "IsSplitEpimorphism",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsSplitEpimorphism</C>.
 #! $F: \alpha \mapsto \mathtt{IsSplitEpimorphism}(\alpha)$.
 #! @Returns nothing
@@ -236,7 +236,7 @@ DeclareFamilyProperty( "IsOne",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsOne</C>.
 #! $F: \alpha \mapsto \mathtt{IsOne}(\alpha)$.
 #! @Returns nothing
@@ -265,7 +265,7 @@ DeclareFamilyProperty( "IsIdempotent",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsIdempotent</C>.
 #! $F: \alpha \mapsto \mathtt{IsIdempotent}(\alpha)$.
 #! @Returns nothing
@@ -422,7 +422,7 @@ DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByInteger",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>RandomMorphismWithFixedSourceAndRangeByInteger</C>.
 #! The function $F$ maps $(a,b,n)$ to <C>fail</C> or to a random morphism in $C$
 #! from $a$ to $b$.
@@ -451,7 +451,7 @@ DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByList",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>RandomMorphismWithFixedSourceAndRangeByList</C>.
 #! The function $F$ maps $(a,b,L)$ to <C>fail</C> or to a random morphism in $C$
 #! from $a$ to $b$.
@@ -569,7 +569,7 @@ DeclareProperty( "IsIdenticalToIdentityMorphism",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsIdenticalToIdentityMorphism</C>.
 #! $F: \alpha \mapsto \mathtt{IsIdenticalToIdentityMorphism}(\alpha)$.
 #! @Returns nothing
@@ -597,7 +597,7 @@ DeclareProperty( "IsIdenticalToZeroMorphism",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsIdenticalToZeroMorphism</C>.
 #! $F: \alpha \mapsto \mathtt{IsIdenticalToZeroMorphism }(\alpha)$.
 #! @Returns nothing
@@ -629,7 +629,7 @@ DeclareFamilyProperty( "IsEndomorphism",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsEndomorphism</C>.
 #! $F: \alpha \mapsto \mathtt{IsEndomorphism}(\alpha)$.
 #! @Returns nothing
@@ -660,7 +660,7 @@ DeclareFamilyProperty( "IsAutomorphism",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsAutomorphism</C>.
 #! $F: \alpha \mapsto \mathtt{IsAutomorphism}(\alpha)$.
 #! @Returns nothing
@@ -738,7 +738,7 @@ DeclareOperation( "IsCongruentForMorphisms",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsCongruentForMorphisms</C>.
 #! $F: (\alpha, \beta) \mapsto \mathtt{IsCongruentForMorphisms}(\alpha, \beta)$.
 #! @Returns nothing
@@ -767,7 +767,7 @@ DeclareOperation( "IsEqualForMorphisms",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsEqualForMorphisms</C>.
 #! $F: (\alpha, \beta) \mapsto \mathtt{IsEqualForMorphisms}(\alpha, \beta)$.
 #! @Returns nothing
@@ -796,7 +796,7 @@ DeclareOperation( "IsEqualForMorphismsOnMor",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsEqualForMorphismsOnMor</C>.
 #! $F: (\alpha, \beta) \mapsto \mathtt{IsEqualForMorphismsOnMor}(\alpha, \beta)$.
 #! @Returns nothing
@@ -835,7 +835,7 @@ DeclareProperty( "IsZeroForMorphisms",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsZeroForMorphisms</C>.
 #! $F: \alpha \mapsto \mathtt{IsZeroForMorphisms}(\alpha)$.
 #! @Returns nothing
@@ -870,7 +870,7 @@ DeclareOperation( "AdditionForMorphisms",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>AdditionForMorphisms</C>.
 #! $F: (\alpha, \beta) \mapsto \alpha + \beta$.
 #! @Returns nothing
@@ -897,7 +897,7 @@ DeclareOperation( "SubtractionForMorphisms",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>SubtractionForMorphisms</C>.
 #! $F: (\alpha, \beta) \mapsto \alpha - \beta$.
 #! @Returns nothing
@@ -924,7 +924,7 @@ DeclareAttribute( "AdditiveInverseForMorphisms",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>AdditiveInverseForMorphisms</C>.
 #! $F: \alpha \mapsto -\alpha$.
 #! @Returns nothing
@@ -958,7 +958,7 @@ DeclareOperation( "\*",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MultiplyWithElementOfCommutativeRingForMorphisms</C>.
 #! $F: (r, \alpha) \mapsto r \cdot \alpha$.
 #! @Returns nothing
@@ -991,7 +991,7 @@ DeclareOperation( "ZeroMorphism",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ZeroMorphism</C>.
 #! $F: (a,b) \mapsto (0: a \rightarrow b)$.
 #! @Returns nothing
@@ -1044,7 +1044,7 @@ DeclareOperation( "IsEqualAsSubobjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsEqualAsSubobjects</C>.
 #! $F: (\alpha, \beta) \mapsto \mathtt{IsEqualAsSubobjects}(\alpha,\beta)$.
 #! @Returns nothing
@@ -1073,7 +1073,7 @@ DeclareOperation( "IsEqualAsFactorobjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsEqualAsFactorobjects</C>.
 #! $F: (\alpha, \beta) \mapsto \mathtt{IsEqualAsFactorobjects}(\alpha,\beta)$.
 #! @Returns nothing
@@ -1118,7 +1118,7 @@ DeclareOperation( "IsDominating",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsDominating</C>.
 #! $F: (\alpha, \beta) \mapsto \mathtt{IsDominating}(\alpha,\beta)$.
 #! @Returns nothing
@@ -1164,7 +1164,7 @@ DeclareOperation( "IsCodominating",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsCodominating</C>.
 #! $F: (\alpha, \beta) \mapsto \mathtt{IsCodominating}(\alpha,\beta)$.
 #! @Returns nothing
@@ -1198,7 +1198,7 @@ DeclareAttribute( "IdentityMorphism",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IdentityMorphism</C>.
 #! $F: a \mapsto \mathrm{id}_a$.
 #! @Returns nothing
@@ -1237,7 +1237,7 @@ DeclareOperation( "PreCompose",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>PreCompose</C>.
 #! $F: (\alpha, \beta) \mapsto \beta \circ \alpha$.
 #! @Returns nothing
@@ -1276,7 +1276,7 @@ DeclareOperation( "PostCompose",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>PostCompose</C>.
 #! $F: (\alpha, \beta) \mapsto \alpha \circ \beta$.
 #! @Returns nothing
@@ -1311,7 +1311,7 @@ DeclareOperation( "IsWellDefinedForMorphisms",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsWellDefinedForMorphisms</C>.
 #! $F: \alpha \mapsto \mathtt{IsWellDefinedForMorphisms}( \alpha )$.
 #! @Returns nothing
@@ -1387,7 +1387,7 @@ DeclareOperation( "LiftAlongMonomorphism",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>LiftAlongMonomorphism</C>.
 #! The function $F$ maps a pair $(\iota, \tau)$ to a lift $u$.
 #! @Returns nothing
@@ -1417,7 +1417,7 @@ DeclareOperation( "ColiftAlongEpimorphism",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>ColiftAlongEpimorphism</C>.
 #! The function $F$ maps a pair $(\epsilon, \tau)$ to a lift $u$.
 #! @Returns nothing
@@ -1448,7 +1448,7 @@ DeclareOperation( "IsLiftableAlongMonomorphism",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsLiftableAlongMonomorphism</C>.
 #! $F: (\iota, \tau) \mapsto \texttt{IsLiftableAlongMonomorphism}( \iota, \tau )$.
 #! @Returns nothing
@@ -1479,7 +1479,7 @@ DeclareOperation( "IsColiftableAlongEpimorphism",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsColiftableAlongEpimorphism</C>.
 #! $F: (\epsilon, \tau) \mapsto \texttt{IsColiftableAlongEpimorphism}( \epsilon, \tau )$.
 #! @Returns nothing
@@ -1509,7 +1509,7 @@ DeclareOperation( "Lift",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>Lift</C>.
 #! The function $F$ maps a pair $(\alpha, \beta)$ to a lift $\alpha / \beta$ if it
 #! exists, and to <C>fail</C> otherwise.
@@ -1542,7 +1542,7 @@ DeclareOperation( "Colift",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>Colift</C>.
 #! The function $F$ maps a pair $(\alpha, \beta)$ to a colift $\alpha \backslash \beta$ if it
 #! exists, and to <C>fail</C> otherwise.
@@ -1573,7 +1573,7 @@ DeclareOperation( "IsLiftable",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsLiftable</C>.
 #! $F: ( \alpha, \beta ) \mapsto \mathtt{IsLiftable}( \alpha, \beta )$.
 #! @Returns nothing
@@ -1605,7 +1605,7 @@ DeclareOperation( "IsColiftable",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsColiftable</C>.
 #! $F: ( \alpha, \beta ) \mapsto \mathtt{IsColiftable}( \alpha, \beta )$.
 #! @Returns nothing
@@ -1650,7 +1650,7 @@ DeclareOperation( "AddIsColiftable",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>Inverse</C>.
 #! $F: \alpha \mapsto \alpha^{-1}$.
 #! @Returns nothing
@@ -1751,7 +1751,7 @@ DeclareOperation( "HomomorphismStructureOnObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>HomomorphismStructureOnObjects</C>.
 #! $F: (a,b) \mapsto H(a,b)$.
 #! @Returns nothing
@@ -1788,7 +1788,7 @@ DeclareOperation( "HomomorphismStructureOnMorphismsWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>HomomorphismStructureOnMorphismsWithGivenObjects</C>.
 #! $F: ( s, \alpha: a \rightarrow a', \beta: b \rightarrow b', r ) \mapsto H( \alpha, \beta )$.
 #! @Returns nothing
@@ -1815,7 +1815,7 @@ DeclareAttribute( "DistinguishedObjectOfHomomorphismStructure",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>DistinguishedObjectOfHomomorphismStructure</C>.
 #! $F: ( ) \mapsto 1$.
 #! @Returns nothing
@@ -1843,7 +1843,7 @@ DeclareAttribute( "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorp
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure</C>.
 #! $F: (\alpha: a \rightarrow a') \mapsto (\nu(\alpha):1 \rightarrow H(a,a'))$.
 #! @Returns nothing
@@ -1873,7 +1873,7 @@ DeclareOperation( "InterpretMorphismFromDinstinguishedObjectToHomomorphismStruct
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism</C>.
 #! $F: (a,a',\iota: 1 \rightarrow H(a,a')) \mapsto (\nu^{-1}(\iota): a \rightarrow a')$.
 #! @Returns nothing

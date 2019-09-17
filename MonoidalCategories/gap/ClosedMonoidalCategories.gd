@@ -28,7 +28,7 @@ DeclareOperation( "InternalHomOnObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>InternalHomOnObjects</C>.
 #! $F: (a,b) \mapsto \mathrm{\underline{Hom}}(a,b)$.
 #! @Returns nothing
@@ -67,7 +67,7 @@ DeclareOperation( "InternalHomOnMorphismsWithGivenInternalHoms",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>InternalHomOnMorphismsWithGivenInternalHoms</C>.
 #! $F: (\mathrm{\underline{Hom}}(a',b), \alpha: a \rightarrow a', \beta: b \rightarrow b', \mathrm{\underline{Hom}}(a,b') ) \mapsto \mathrm{\underline{Hom}}(\alpha,\beta)$.
 #! @Returns nothing
@@ -106,7 +106,7 @@ DeclareOperation( "EvaluationMorphismWithGivenSource",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>EvaluationMorphismWithGivenSource</C>.
 #! $F: (a, b, \mathrm{\underline{Hom}}(a,b) \otimes a) \mapsto \mathrm{ev}_{a,b}$.
 #! @Returns nothing
@@ -145,7 +145,7 @@ DeclareOperation( "CoevaluationMorphismWithGivenRange",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>CoevaluationMorphismWithGivenRange</C>.
 #! $F: (a, b, \mathrm{\underline{Hom}}(b, a \otimes b)) \mapsto \mathrm{coev}_{a,b}$.
 #! @Returns nothing
@@ -174,7 +174,7 @@ DeclareOperation( "TensorProductToInternalHomAdjunctionMap",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>TensorProductToInternalHomAdjunctionMap</C>.
 #! $F: (a, b, f: a \otimes b \rightarrow c) \mapsto ( g: a \rightarrow \mathrm{\underline{Hom}}(b,c) )$.
 #! @Returns nothing
@@ -202,7 +202,7 @@ DeclareOperation( "InternalHomToTensorProductAdjunctionMap",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InternalHomToTensorProductAdjunctionMap</C>.
 #! $F: (b, c, g: a \rightarrow \mathrm{\underline{Hom}}(b,c)) \mapsto ( g: a \otimes b \rightarrow c )$.
 #! @Returns nothing
@@ -244,7 +244,7 @@ DeclareOperation( "MonoidalPreComposeMorphismWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MonoidalPreComposeMorphismWithGivenObjects</C>.
 #! $F: (\mathrm{\underline{Hom}}(a,b) \otimes \mathrm{\underline{Hom}}(b,c),a,b,c,\mathrm{\underline{Hom}}(a,c)) \mapsto \mathrm{MonoidalPreComposeMorphismWithGivenObjects}_{a,b,c}$.
 #! @Returns nothing
@@ -285,7 +285,7 @@ DeclareOperation( "MonoidalPostComposeMorphismWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MonoidalPostComposeMorphismWithGivenObjects</C>.
 #! $F: (\mathrm{\underline{Hom}}(b,c) \otimes \mathrm{\underline{Hom}}(a,b),a,b,c,\mathrm{\underline{Hom}}(a,c)) \mapsto \mathrm{MonoidalPostComposeMorphismWithGivenObjects}_{a,b,c}$.
 #! @Returns nothing
@@ -314,7 +314,7 @@ DeclareAttribute( "DualOnObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>DualOnObjects</C>.
 #! $F: a \mapsto a^{\vee}$.
 #! @Returns nothing
@@ -352,7 +352,7 @@ DeclareOperation( "DualOnMorphismsWithGivenDuals",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>DualOnMorphismsWithGivenDuals</C>.
 #! $F: (b^{\vee},\alpha,a^{\vee}) \mapsto \alpha^{\vee}$.
 #! @Returns nothing
@@ -391,7 +391,7 @@ DeclareOperation( "EvaluationForDualWithGivenTensorProduct",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>EvaluationForDualWithGivenTensorProduct</C>.
 #! $F: (a^{\vee} \otimes a, a, 1) \mapsto \mathrm{ev}_{a}$.
 #! @Returns nothing
@@ -428,7 +428,7 @@ DeclareOperation( "MorphismToBidualWithGivenBidual",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismToBidualWithGivenBidual</C>.
 #! $F: (a, (a^{\vee})^{\vee}) \mapsto (a \rightarrow (a^{\vee})^{\vee})$.
 #! @Returns nothing
@@ -471,7 +471,7 @@ DeclareOperation( "TensorProductInternalHomCompatibilityMorphismWithGivenObjects
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>TensorProductInternalHomCompatibilityMorphismWithGivenObjects</C>.
 #! $F: ( a,a',b,b', [ \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'), \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') ]) \mapsto \mathrm{TensorProductInternalHomCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}$.
 #! @Returns nothing
@@ -511,7 +511,7 @@ DeclareOperation( "TensorProductDualityCompatibilityMorphismWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>TensorProductDualityCompatibilityMorphismWithGivenObjects</C>.
 #! $F: ( a^{\vee} \otimes b^{\vee}, a, b, (a \otimes b)^{\vee} ) \mapsto \mathrm{TensorProductDualityCompatibilityMorphismWithGivenObjects}_{a,b}$.
 #! @Returns nothing
@@ -550,7 +550,7 @@ DeclareOperation( "MorphismFromTensorProductToInternalHomWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismFromTensorProductToInternalHomWithGivenObjects</C>.
 #! $F: ( a^{\vee} \otimes b, a, b, \mathrm{\underline{Hom}}(a,b) ) \mapsto \mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}_{a,b}$.
 #! @Returns nothing
@@ -579,7 +579,7 @@ DeclareAttribute( "IsomorphismFromDualToInternalHom",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromDualToInternalHom</C>.
 #! $F: a \mapsto \mathrm{IsomorphismFromDualToInternalHom}_{a}$
 #! @Returns nothing
@@ -608,7 +608,7 @@ DeclareAttribute( "IsomorphismFromInternalHomToDual",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromInternalHomToDual</C>.
 #! $F: a \mapsto \mathrm{IsomorphismFromInternalHomToDual}_{a}$
 #! @Returns nothing
@@ -639,7 +639,7 @@ DeclareOperation( "UniversalPropertyOfDual",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalPropertyOfDual</C>.
 #! $F: ( t,a,\alpha: t \otimes a \rightarrow 1 ) \mapsto ( t \rightarrow a^{\vee} )$.
 #! @Returns nothing
@@ -668,7 +668,7 @@ DeclareAttribute( "LambdaIntroduction",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>LambdaIntroduction</C>.
 #! $F: ( \alpha: a \rightarrow b ) \mapsto ( 1 \rightarrow \mathrm{\underline{Hom}}(a,b) )$.
 #! @Returns nothing
@@ -698,7 +698,7 @@ DeclareOperation( "LambdaElimination",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>LambdaElimination</C>.
 #! $F: ( a,b,\alpha: 1 \rightarrow \mathrm{\underline{Hom}}(a,b) ) \mapsto ( a \rightarrow b )$.
 #! @Returns nothing
@@ -735,7 +735,7 @@ DeclareOperation( "IsomorphismFromObjectToInternalHomWithGivenInternalHom",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromObjectToInternalHomWithGivenInternalHom</C>.
 #! $F: ( a, \mathrm{\underline{Hom}}(1,a) ) \mapsto ( a \rightarrow \mathrm{\underline{Hom}}(1,a) )$.
 #! @Returns nothing
@@ -772,7 +772,7 @@ DeclareOperation( "IsomorphismFromInternalHomToObjectWithGivenInternalHom",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromInternalHomToObjectWithGivenInternalHom</C>.
 #! $F: ( a, \mathrm{\underline{Hom}}(1,a) ) \mapsto ( \mathrm{\underline{Hom}}(1,a) \rightarrow a )$.
 #! @Returns nothing

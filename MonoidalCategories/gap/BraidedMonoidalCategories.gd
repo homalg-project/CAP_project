@@ -31,7 +31,7 @@ DeclareOperation( "BraidingWithGivenTensorProducts",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>BraidingWithGivenTensorProducts</C>.
 #! $F: (a \otimes b, a, b, b \otimes a) \rightarrow B_{a,b}$.
 #! @Returns nothing
@@ -70,7 +70,7 @@ DeclareOperation( "BraidingInverseWithGivenTensorProducts",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$ 
+#! This operation adds the given function $F$ 
 #! to the category for the basic operation <C>BraidingInverseWithGivenTensorProducts</C>.
 #! $F: (b \otimes a, a, b, a \otimes b) \rightarrow B_{a,b}^{-1}$.
 #! @Returns nothing
