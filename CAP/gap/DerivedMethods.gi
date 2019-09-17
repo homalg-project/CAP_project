@@ -538,7 +538,7 @@ AddWithGivenDerivationPairToCAP( AstrictionToCoimage,
     
     image_emb := ImageEmbedding( morphism );
     
-    return PreCompose( image_emb, CanonicalIdentificationFromCoimageToImageObject( morphism ) );
+    return PreCompose( CanonicalIdentificationFromCoimageToImageObject( morphism ), image_emb );
     
   end,
   
@@ -547,7 +547,7 @@ AddWithGivenDerivationPairToCAP( AstrictionToCoimage,
     
     image_emb := ImageEmbedding( morphism );
     
-    return PreCompose( image_emb, CanonicalIdentificationFromCoimageToImageObject( morphism ) );
+    return PreCompose( CanonicalIdentificationFromCoimageToImageObject( morphism ), image_emb );
     
 end : Description := "AstrictionToCoimage as the image embedding" );
 
