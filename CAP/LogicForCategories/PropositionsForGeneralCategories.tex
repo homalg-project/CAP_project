@@ -120,6 +120,13 @@
 
 \begin{sequent}
 \begin{align*}
+ \alpha:\Mor, \beta:\Mor ~&|~ \IsIsomorphism( \alpha ), \IsIsomorphism( \beta )  \\
+ &\vdash \IsIsomorphism\big( \PreCompose( \alpha, \beta ) \big)
+\end{align*}
+\end{sequent}
+
+\begin{sequent}
+\begin{align*}
  \alpha:\Mor ~&|~ \IsIsomorphism( \alpha ) &\vdash \IsIsomorphism( \InverseImmutable( \alpha ) )
 \end{align*}
 \end{sequent}
