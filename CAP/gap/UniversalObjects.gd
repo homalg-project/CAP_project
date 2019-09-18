@@ -4648,7 +4648,7 @@ DeclareAttribute( "InverseMorphismFromCoimageToImage",
 #! The output is the inverse of the canonical morphism (in an abelian category)
 #! $I \rightarrow C$.
 #! @Returns a morphism in $\mathrm{Hom}(I,C)$
-#! @Arguments alpha
+#! @Arguments C, alpha, I
 DeclareOperation( "InverseMorphismFromCoimageToImageWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
@@ -4962,6 +4962,70 @@ DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
+                  [ IsCapCategory, IsList ] );
+
+
+#! Whenever the <C>CoastrictionToImage</C> is an epi,
+#! or the <C>AstrictionToCoimage</C> is a mono,
+#! there is a canonical morphism from the image to the coimage.
+#! If this canonical morphism is an isomorphism, we call it
+#! the <Emph>canonical identification</Emph> (between image and coimage).
+
+
+#! @Description
+#! The argument is a morphism $\alpha: A \rightarrow B$.
+#! The output is the canonical identification
+#! $c: \mathrm{im}( \alpha ) \rightarrow \mathrm{coim}( \alpha )$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{im}( \alpha ), \mathrm{coim}( \alpha ) )$
+#! @Arguments alpha
+DeclareAttribute( "CanonicalIdentificationFromImageObjectToCoimage",
+                  IsCapCategoryMorphism );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>CanonicalIdentificationFromImageObjectToCoimage</C>.
+#! $F: \alpha \mapsto c$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCanonicalIdentificationFromImageObjectToCoimage",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCanonicalIdentificationFromImageObjectToCoimage",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCanonicalIdentificationFromImageObjectToCoimage",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCanonicalIdentificationFromImageObjectToCoimage",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The argument is a morphism $\alpha: A \rightarrow B$.
+#! The output is the canonical identification
+#! $c: \mathrm{coim}( \alpha ) \rightarrow \mathrm{im}( \alpha )$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{coim}( \alpha ), \mathrm{im}( \alpha ) )$
+#! @Arguments alpha
+DeclareAttribute( "CanonicalIdentificationFromCoimageToImageObject",
+                  IsCapCategoryMorphism );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operations adds the given function $F$
+#! to the category for the basic operation <C>CanonicalIdentificationFromCoimageToImageObject</C>.
+#! $F: \alpha \mapsto c$
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCanonicalIdentificationFromCoimageToImageObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCanonicalIdentificationFromCoimageToImageObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCanonicalIdentificationFromCoimageToImageObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCanonicalIdentificationFromCoimageToImageObject",
                   [ IsCapCategory, IsList ] );
 
 

@@ -477,6 +477,18 @@ end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
       Description := "CoimageProjection as the cokernel projection of the kernel embedding" );
 
 ##
+AddWithGivenDerivationPairToCAP( CoimageProjection,
+  
+  function( mor )
+    local iso;
+    
+    iso := CanonicalIdentificationFromImageObjectToCoimage( mor );
+    
+    return PreCompose( CoastrictionToImage( mor ), iso );
+    
+end : Description := "CoimageProjection as the coastriction to image" );
+
+##
 AddWithGivenDerivationPairToCAP( CoastrictionToImage,
                       
   function( morphism )
@@ -519,6 +531,27 @@ AddWithGivenDerivationPairToCAP( AstrictionToCoimage,
 end : Description := "AstrictionToCoimage using that coimage projection can be seen as a cokernel" );
 
 ##
+AddWithGivenDerivationPairToCAP( AstrictionToCoimage,
+          
+  function( morphism )
+    local image_emb;
+    
+    image_emb := ImageEmbedding( morphism );
+    
+    return PreCompose( CanonicalIdentificationFromCoimageToImageObject( morphism ), image_emb );
+    
+  end,
+  
+  function( morphism, coimage )
+    local image_emb;
+    
+    image_emb := ImageEmbedding( morphism );
+    
+    return PreCompose( CanonicalIdentificationFromCoimageToImageObject( morphism ), image_emb );
+    
+end : Description := "AstrictionToCoimage as the image embedding" );
+
+##
 AddWithGivenDerivationPairToCAP( UniversalMorphismFromImage,
                       
   function( morphism, test_factorization )
@@ -559,6 +592,18 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoCoimage,
     return ColiftAlongEpimorphism( test_factorization[1], coimage_projection );
     
 end : Description := "UniversalMorphismIntoCoimage using CoimageProjection and ColiftAlongEpimorphism" );
+
+##
+AddWithGivenDerivationPairToCAP( UniversalMorphismIntoCoimage,
+  
+  function( morphism, test_factorization )
+    local induced_mor;
+    
+    induced_mor := UniversalMorphismFromImage( morphism, test_factorization );
+    
+    return PreCompose( Inverse( induced_mor ), CanonicalIdentificationFromImageObjectToCoimage( morphism ) );
+    
+  end : Description := "UniversalMorphismIntoCoimage using UniversalMorphismFromImage and CanonicalIdentificationFromImageObjectToCoimage" );
 
 ##
 AddWithGivenDerivationPairToCAP( UniversalMorphismIntoEqualizer,
@@ -2374,6 +2419,24 @@ AddDerivationToCAP( Coimage,
 end : Description := "Coimage as the source of IsomorphismFromCoimageToCokernelOfKernel" );
 
 ##
+AddDerivationToCAP( Coimage,
+        
+  function( morphism )
+    
+    return Range( CanonicalIdentificationFromImageObjectToCoimage( morphism ) );
+    
+end : Description := "Coimage as the range of CanonicalIdentificationFromImageObjectToCoimage" );
+
+##
+AddDerivationToCAP( Coimage,
+        
+  function( morphism )
+    
+    return Source( CanonicalIdentificationFromCoimageToImageObject( morphism ) );
+    
+end : Description := "Coimage as the source of CanonicalIdentificationFromCoimageToImageObject" );
+
+##
 AddDerivationToCAP( FiberProduct,
       
   function( diagram )
@@ -2869,6 +2932,15 @@ AddDerivationToCAP( InverseMorphismFromCoimageToImageWithGivenObjects,
     
 end : CategoryFilter := IsAbelianCategory,
       Description := "InverseMorphismFromCoimageToImageWithGivenObjects as the inverse of MorphismFromCoimageToImage" );
+
+##
+AddDerivationToCAP( CanonicalIdentificationFromCoimageToImageObject,
+                    
+  function( morphism )
+    
+    return Inverse( CanonicalIdentificationFromImageObjectToCoimage( morphism ) );
+    
+end : Description := "CanonicalIdentificationFromCoimageToImageObject as the inverse of CanonicalIdentificationFromImageObjectToCoimage" );
 
 ## Final methods for Coimage
 
