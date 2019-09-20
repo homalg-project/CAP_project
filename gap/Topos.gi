@@ -4,6 +4,8 @@
 # Implementations
 #
 
+InstallTrueMethod( IsClosedMonoidalCategory, IsElementaryTopos );
+
 ##
 InstallMethod( AddSubobjectClassifier,
                [ IsCapCategory, IsFunction, IsInt ],
