@@ -4,7 +4,7 @@
 # Implementations
 #
 
-InstallTrueMethod( IsClosedMonoidalCategory, IsElementaryTopos );
+InstallTrueMethod( IsCartesianClosedCategory, IsElementaryTopos );
 
 ##
 InstallMethod( AddSubobjectClassifier,
