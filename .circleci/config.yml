@@ -18,7 +18,7 @@ jobs:
           cd CAP_project
           echo "SetInfoLevel(InfoPackageLoading, 3);" > ~/.gap/gaprc
           TERM=dumb make ci-test
-          bash <(curl -s https://codecov.io/bash)
+          [ "$GAP_HOME" != "/home/gap/inst/gap-master" ] && bash <(curl -s https://codecov.io/bash) || true
 workflows:
   version: 2
   commit:
