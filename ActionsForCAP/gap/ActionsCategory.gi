@@ -521,6 +521,7 @@ end );
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
   
   function( category )
+    local underlying_category;
     
     ##
     AddIsEqualForCacheForObjects( category,
@@ -529,6 +530,10 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
     ##
     AddIsEqualForCacheForMorphisms( category,
       IsIdenticalObj );
+    
+    underlying_category := UnderlyingCategory( category );
+    
+    if CanCompute( underlying_category, "IsCongruentForMorphisms" ) then
     
     ##
     AddIsEqualForObjects( category,
@@ -540,6 +545,10 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
         
     end );
     
+    fi;
+    
+    if CanCompute( underlying_category, "IsEqualForMorphisms" ) then
+    
     ##
     AddIsEqualForMorphisms( category,
       function( morphism_1, morphism_2 )
@@ -548,6 +557,10 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
         
     end );
     
+    fi;
+    
+    if CanCompute( underlying_category, "IsCongruentForMorphisms" ) then
+
     ##
     AddIsCongruentForMorphisms( category,
       function( morphism_1, morphism_2 )
@@ -555,6 +568,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
         return IsCongruentForMorphisms( UnderlyingCell( morphism_1 ), UnderlyingCell( morphism_2 ) );
         
     end );
+    
+    fi;
     
 end );
 

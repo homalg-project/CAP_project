@@ -84,7 +84,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">= 2019.01.16" ],
+                           [ "CAP", ">= 2019.09.16" ],
                            [ "MonoidalCategories", ">= 2019.01.16" ],
                            [ "AttributeCategoryForCAP", ">=2016.09.14" ]
                          ],
