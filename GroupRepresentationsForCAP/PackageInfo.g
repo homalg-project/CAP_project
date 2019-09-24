@@ -12,6 +12,8 @@ PackageName := "GroupRepresentationsForCAP",
 Subtitle := "Skeletal category of group representations for CAP",
 Version := Maximum( [
   "2017.01.11", ## Sepp's version
+  ## this line prevents merge conflicts
+  "2019.09.01", ## Mohamed's version
 ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
