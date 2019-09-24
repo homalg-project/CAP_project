@@ -558,6 +558,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_LEFT_ACTIONS_CATEGORY,
     
     v := UnderlyingActingObject( left_actions_category );
     
+    if CanCompute( UnderlyingCategory( left_actions_category ), "IsWellDefinedForMorphisms" ) then
+    
     ##
     AddIsWellDefinedForObjects( left_actions_category,
       function( object )
@@ -599,6 +601,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_LEFT_ACTIONS_CATEGORY,
         
     end );
     
+    fi;
+    
 end );
 
 ##
@@ -608,6 +612,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_RIGHT_ACTIONS_CATEGORY,
     local v;
     
     v := UnderlyingActingObject( right_actions_category );
+    
+    if CanCompute( UnderlyingCategory( right_actions_category ), "IsWellDefinedForMorphisms" ) then
     
     ##
     AddIsWellDefinedForObjects( right_actions_category,
@@ -649,5 +655,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_RIGHT_ACTIONS_CATEGORY,
                    );
         
     end );
+    
+    fi;
     
 end );
