@@ -275,24 +275,11 @@ InstallMethod( Component,
     
 end );
 
-##
-InstallMethod( \*,
-               [ IsRingElement, IsSemisimpleCategoryMorphism ],
-               
-  function( r, morphism )
-    
-    return SemisimpleCategoryMorphism( Source( morphism ),
-             List( SemisimpleCategoryMorphismList( morphism ), elem -> [ r * elem[1], elem[2] ] ),
-             Range( morphism ) 
-           );
-    
-end );
-
-##
+## shouldn't this simplify delegate to r * morphism?
 InstallMethod( \*,
                [ IsSemisimpleCategoryMorphism, IsRingElement ],
                
-  function( r, morphism )
+  function( morphism, r )
     
     return SemisimpleCategoryMorphism( Source( morphism ),
              List( SemisimpleCategoryMorphismList( morphism ), elem -> [ elem[1] * r, elem[2] ] ),
