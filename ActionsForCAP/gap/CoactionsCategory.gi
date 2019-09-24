@@ -564,6 +564,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_LEFT_COACTIONS_CATEGORY,
     
     w := UnderlyingCoactingObject( left_coactions_category );
     
+    if CanCompute( UnderlyingCategory( left_coactions_category ), "IsWellDefinedForMorphisms" ) then
+    
     ##
     AddIsWellDefinedForObjects( left_coactions_category,
       function( object )
@@ -605,6 +607,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_LEFT_COACTIONS_CATEGORY,
         
     end );
     
+    fi;
+    
 end );
 
 ##
@@ -614,6 +618,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_RIGHT_COACTIONS_CATEGORY,
     local w;
     
     w := UnderlyingCoactingObject( right_coactions_category );
+    
+    if CanCompute( UnderlyingCategory( right_coactions_category ), "IsWellDefinedForMorphisms" ) then
     
     ##
     AddIsWellDefinedForObjects( right_coactions_category,
@@ -655,5 +661,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_ONLY_RIGHT_COACTIONS_CATEGORY,
                    );
         
     end );
+    
+    fi;
     
 end );
