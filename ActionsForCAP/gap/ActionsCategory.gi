@@ -241,8 +241,10 @@ InstallMethod( LeftActionsCategory,
     ADD_FUNCTIONS_FOR_LEFT_ACTIONS_CATEGORY( left_actions_category );
     
     ## TODO: Logic for left_actions_category
-     
-    Finalize( left_actions_category );
+    
+    if not ValueOption( "FinalizeCategory" ) = false then
+        Finalize( left_actions_category );
+    fi;
     
     return left_actions_category;
     
@@ -474,8 +476,10 @@ InstallMethod( RightActionsCategory,
     ADD_FUNCTIONS_FOR_RIGHT_ACTIONS_CATEGORY( right_actions_category );
     
     ## TODO: Logic for right_actions_category
-     
-    Finalize( right_actions_category );
+    
+    if not ValueOption( "FinalizeCategory" ) = false then
+        Finalize( right_actions_category );
+    fi;
     
     return right_actions_category;
     

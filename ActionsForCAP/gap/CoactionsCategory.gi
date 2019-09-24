@@ -247,7 +247,9 @@ InstallMethod( LeftCoactionsCategory,
     
     ## TODO: Logic for left_coactions_category
      
-    Finalize( left_coactions_category );
+    if not ValueOption( "FinalizeCategory" ) = false then
+        Finalize( left_coactions_category );
+    fi;
     
     return left_coactions_category;
     
@@ -481,7 +483,9 @@ InstallMethod( RightCoactionsCategory,
     
     ## TODO: Logic for right_coactions_category
      
-    Finalize( right_coactions_category );
+    if not ValueOption( "FinalizeCategory" ) = false then
+        Finalize( right_coactions_category );
+    fi;
     
     return right_coactions_category;
     
