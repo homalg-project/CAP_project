@@ -340,7 +340,7 @@ InstallMethod( Display,
     
     if IsEmpty( morphism_list ) then
         
-        Print( "0" );
+        Display( "0" );
         
     else
         
