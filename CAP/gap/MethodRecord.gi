@@ -1160,7 +1160,7 @@ MultiplyWithElementOfCommutativeRingForMorphisms := rec(
   
   pre_function := function( r, morphism )
     
-    if not r in CommutativeRingOfLinearCategory( CapCategory( morphism ) ) then
+    if not IsRat( r ) and not r in CommutativeRingOfLinearCategory( CapCategory( morphism ) ) then
       
       return [ false, "the first argument is not an element of the ring of the category of the morphism" ];
       
