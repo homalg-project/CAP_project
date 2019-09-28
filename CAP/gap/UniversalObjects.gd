@@ -3371,7 +3371,7 @@ DeclareOperation( "MorphismFromFiberProductToSinkOp",
 #! The output is the composition $\mu: P \rightarrow B$
 #! of the $1$-st projection $\pi_1: P \rightarrow P_1$ and $\beta_1$.
 #! @Returns a morphism in $\mathrm{Hom}( P, B )$
-#! @Arguments D,k,P
+#! @Arguments D, P
 DeclareOperation( "MorphismFromFiberProductToSinkWithGivenFiberProduct",
                   [ IsList, IsCapCategoryObject ] );
 
