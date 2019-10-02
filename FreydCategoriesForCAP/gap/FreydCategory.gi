@@ -272,22 +272,6 @@ end );
 ##
 ####################################
 
-##
-InstallGlobalFunction( TODO_LIST_ENTRY_FOR_MORPHISM_WITNESS_FOR_FREYD_CATEGORY,
-  function( f, result, arg... )
-    local entry;
-    
-    entry := ToDoListEntry(
-                   List( arg, mor -> [ mor, "MorphismWitness" ] ),
-                   result,
-                   "MorphismWitness",
-                   f
-    );
-    
-    AddToToDoList( entry );
-    
-end );
-
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
   
   function( category )
@@ -394,8 +378,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
         identity_morphism := FreydCategoryMorphism( object, IdentityMorphism( Range( relation_morphism ) ), object );
         
-#         SetMorphismWitness( identity_morphism, IdentityMorphism( Source( relation_morphism ) ) );
-        
         return identity_morphism;
         
     end );
@@ -409,13 +391,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         composition := PreCompose( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
         
         composition := FreydCategoryMorphism( Source( morphism_1 ), composition, Range( morphism_2 ) );
-        
-#         TODO_LIST_ENTRY_FOR_MORPHISM_WITNESS_FOR_FREYD_CATEGORY(
-#           function( ) return PreCompose( MorphismWitness( morphism_1 ), MorphismWitness( morphism_2 ) ); end,
-#           composition,
-#           morphism_1,
-#           morphism_2
-#         );
         
         return composition;
         
@@ -435,13 +410,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                       Range( morphism_1 )
                     );
         
-#         TODO_LIST_ENTRY_FOR_MORPHISM_WITNESS_FOR_FREYD_CATEGORY(
-#           function( ) return AdditionForMorphisms( MorphismWitness( morphism_1 ), MorphismWitness( morphism_2 ) ); end,
-#           addition,
-#           morphism_1,
-#           morphism_2
-#         );
-        
         return addition;
         
     end );
@@ -457,12 +425,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                               Range( morphism )
                             );
         
-#         TODO_LIST_ENTRY_FOR_MORPHISM_WITNESS_FOR_FREYD_CATEGORY(
-#           function( ) return AdditiveInverseForMorphisms( MorphismWitness( morphism ) ); end,
-#           additive_inverse,
-#           morphism
-#         );
-        
         return additive_inverse;
         
     end );
@@ -477,8 +439,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                            ZeroMorphism( Range( RelationMorphism( source ) ), Range( RelationMorphism( range ) ) ),
                            range
                          );
-        
-#         SetMorphismWitness( zero_morphism, ZeroMorphism( Source( RelationMorphism( source ) ), Source( RelationMorphism( range ) ) ) );
         
         return zero_morphism;
         
