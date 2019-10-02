@@ -297,6 +297,30 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     
     underlying_category := UnderlyingCategory( category );
     
+    is_possible_to_install := function( to_be_installed, to_be_tested )
+        local not_supported;
+        
+        # test which methods are supported by the underlying category
+        not_supported := [];
+        Perform( to_be_tested, function(x) if not CanCompute( underlying_category, x ) then 
+                                            Append( not_supported, x ); 
+                                         fi; end);
+        
+        # methods cannot be installed, so inform the user
+        if not IsEmpty( not_supported ) then
+            Info( InfoFreydCategoriesForCAP, 2,
+                    Concatenation( "The operation(s) ",
+                                   to_be_installed,
+                                    " could not be installed because the underlying category cannot compute ",
+                                    JoinStringsWithSeparator( not_supported, ", " ) ) );
+            return false;
+        fi;
+        
+        # other methods can be installed
+        return true;
+        
+    end;
+    
     ##
     AddIsEqualForCacheForObjects( category,
       IsIdenticalObj );
@@ -577,32 +601,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                                       Range( test_morphism ) );
         
     end );
-    
-    
-    is_possible_to_install := function( to_be_installed, to_be_tested )
-        local not_supported;
-        
-        # test which methods are supported by the underlying category
-        not_supported := [];
-        Perform( to_be_tested, function(x) if not CanCompute( underlying_category, x ) then 
-                                            Append( not_supported, x ); 
-                                         fi; end);
-        
-        # methods cannot be installed, so inform the user
-        if not IsEmpty( not_supported ) then
-            Info( InfoFreydCategoriesForCAP, 2,
-                    Concatenation( "The operation(s) ",
-                                   to_be_installed,
-                                    " could not be installed because the underlying category cannot compute ",
-                                    JoinStringsWithSeparator( not_supported, ", " ) ) );
-            return false;
-        fi;
-        
-        # other methods can be installed
-        return true;
-        
-    end;
-    
     
     if is_possible_to_install( "KernelEmbedding, KernelLiftWithGivenKernelObject",
                                [ "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ] ) then
