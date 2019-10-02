@@ -303,15 +303,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         # test which methods are supported by the underlying category
         not_supported := [];
         Perform( to_be_tested, function(x) if not CanCompute( underlying_category, x ) then 
-                                            Append( not_supported, x ); 
+                                            Add( not_supported, x );
                                          fi; end);
         
         # methods cannot be installed, so inform the user
         if not IsEmpty( not_supported ) then
             Info( InfoFreydCategoriesForCAP, 2,
-                    Concatenation( "The operation(s) ",
+                    Concatenation( "The operation(s)\n",
                                    to_be_installed,
-                                    " could not be installed because the underlying category cannot compute ",
+                                    "\ncould not be installed because the underlying category cannot compute\n",
                                     JoinStringsWithSeparator( not_supported, ", " ) ) );
             return false;
         fi;
