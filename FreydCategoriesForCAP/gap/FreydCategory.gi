@@ -242,6 +242,15 @@ InstallMethod( WitnessForBeingCongruentToZero,
     
 end );
 
+InstallMethod( MereExistenceOfWitnessForBeingCongruentToZero,
+               [ IsFreydCategoryMorphism ],
+               
+  function( morphism )
+    
+    return IsLiftable( MorphismDatum( morphism ), RelationMorphism( Range( morphism ) ) );
+    
+end );
+
 InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING,
                            [ IsFreydCategoryObject, IsFreydCategoryObject ],
     function( a, b )
@@ -355,15 +364,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddIsCongruentForMorphisms( category,
       function( morphism_1, morphism_2 )
         
-        if WitnessForBeingCongruentToZero( SubtractionForMorphisms( morphism_1, morphism_2 ) ) = fail then
-            
-            return false;
-            
-        else
-            
-            return true;
-            
-        fi;
+        return MereExistenceOfWitnessForBeingCongruentToZero( SubtractionForMorphisms( morphism_1, morphism_2 ) );
         
     end );
     

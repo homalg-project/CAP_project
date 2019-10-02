@@ -74,6 +74,9 @@ DeclareAttribute( "MorphismWitness",
 DeclareAttribute( "WitnessForBeingCongruentToZero",
                   IsFreydCategoryMorphism );
 
+DeclareAttribute( "MereExistenceOfWitnessForBeingCongruentToZero",
+                  IsFreydCategoryMorphism );
+
 ####################################################################################
 ##
 #! @Section Determine properties of input category for Freyd category
