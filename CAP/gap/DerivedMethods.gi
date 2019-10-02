@@ -640,6 +640,28 @@ end : Description := "UniversalMorphismFromCoequalizer using ColiftAlongEpimorph
 ###########################
 
 ##
+AddDerivationToCAP( IsProjective,
+  function( object )
+    
+    return IsLiftable(
+      IdentityMorphism( object ),
+      EpimorphismFromSomeProjectiveObject( object )
+    );
+    
+end : Description := "IsProjective by checking if the object is a summand of some projective object" );
+
+##
+AddDerivationToCAP( IsInjective,
+  function( object )
+    
+    return IsColiftable(
+      MonomorphismIntoSomeInjectiveObject( object ),
+      IdentityMorphism( object )
+    );
+    
+end : Description := "IsInjective by checking if the object is a summand of some injective object" );
+
+##
 AddDerivationToCAP( IsOne,
                     
   function( morphism )
