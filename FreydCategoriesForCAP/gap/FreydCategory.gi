@@ -646,43 +646,46 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
 
     fi;
     
-    
-    AddLiftAlongMonomorphism( category,
+    if is_possible_to_install( "LiftAlongMonomorphism, ColiftAlongEpimorphism",
+                               [ "Lift" ] ) then ## Lift is implicit in WitnessForBeingCongruentToZero
         
-        function( alpha, test_morphism )
-        local sigma, R_B, A, tau_A;
+        ##
+        AddLiftAlongMonomorphism( category,
+            
+            function( alpha, test_morphism )
+            local sigma, R_B, A, tau_A;
+            
+            sigma := WitnessForBeingCongruentToZero( PreCompose( test_morphism, CokernelProjection( alpha ) ) );
+            
+            R_B := Source( RelationMorphism( Range( alpha ) ) );
+            
+            A := Range( RelationMorphism( Source( alpha ) ) );
+            
+            tau_A := PreCompose( sigma, ProjectionInFactorOfDirectSum( [ R_B, A ], 2 ) );
+            
+            return FreydCategoryMorphism( Source( test_morphism ), tau_A, Source( alpha ) );
         
-        sigma := WitnessForBeingCongruentToZero( PreCompose( test_morphism, CokernelProjection( alpha ) ) );
+        end );
         
-        R_B := Source( RelationMorphism( Range( alpha ) ) );
+        ##
+        AddColiftAlongEpimorphism( category,
+            
+            function( alpha, test_morphism )
+            local witness, R_B, A, sigma_A;
+            
+            witness := WitnessForBeingCongruentToZero( PreCompose( alpha, CokernelProjection( alpha ) ) );
+            
+            R_B := Source( RelationMorphism( Range( alpha ) ) );
+            
+            A := Range( RelationMorphism( Source( alpha ) ) );
+            
+            sigma_A := PreCompose( witness, ProjectionInFactorOfDirectSum( [ R_B, A ], 2 ) );
+            
+            return FreydCategoryMorphism( Range( alpha ), PreCompose( sigma_A, MorphismDatum( test_morphism ) ), Range( test_morphism ) );
         
-        A := Range( RelationMorphism( Source( alpha ) ) );
+        end );
         
-        tau_A := PreCompose( sigma, ProjectionInFactorOfDirectSum( [ R_B, A ], 2 ) );
-        
-        return FreydCategoryMorphism( Source( test_morphism ), tau_A, Source( alpha ) );
-    
-    end );
-    
-    ##
-    AddColiftAlongEpimorphism( category,
-        
-        function( alpha, test_morphism )
-        local witness, R_B, A, sigma_A;
-        
-        witness := WitnessForBeingCongruentToZero( PreCompose( alpha, CokernelProjection( alpha ) ) );
-        
-        R_B := Source( RelationMorphism( Range( alpha ) ) );
-        
-        A := Range( RelationMorphism( Source( alpha ) ) );
-        
-        sigma_A := PreCompose( witness, ProjectionInFactorOfDirectSum( [ R_B, A ], 2 ) );
-        
-        return FreydCategoryMorphism( Range( alpha ), PreCompose( sigma_A, MorphismDatum( test_morphism ) ), Range( test_morphism ) );
-    
-    end );
-    
-    
+    fi;
     
     if is_possible_to_install( "EpimorphismFromSomeProjectiveObjectForKernelObject",
                                [ "ProjectionOfBiasedWeakFiberProduct" ] ) then
@@ -1574,7 +1577,7 @@ InstallGlobalFunction( IsValidInputForFreydCategory,
                       "UniversalMorphismIntoDirectSum",
                       "InjectionOfCofactorOfDirectSum",
                       "UniversalMorphismFromDirectSum",
-                      "Lift"
+                      "IsLiftable"
                       ];
     installed_ops := ListInstalledOperationsOfCategory( category );
 
