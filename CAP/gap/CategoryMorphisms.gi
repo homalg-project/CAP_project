@@ -459,6 +459,16 @@ InstallMethod( SolveLinearSystemInAbCategory,
     
 end );
 
+##
+InstallMethod( MereExistenceOfSolutionOfLinearSystemInAbCategory,
+               [ IsList, IsList, IsList ],
+               
+  function( left_coeffs, right_coeffs, right_side )
+    
+    return MereExistenceOfSolutionOfLinearSystemInAbCategoryOp( left_coeffs, right_coeffs, right_side, CapCategory( right_side[1] ) );
+    
+end );
+
 ######################################
 ##
 ## Morphism transport
