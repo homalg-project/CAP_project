@@ -349,17 +349,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddIsWellDefinedForMorphisms( category,
       function( morphism )
         
-        if MorphismWitness( morphism ) = fail then
-            
-            return false;
-            
-        fi;
-        
-        if not IsCongruentForMorphisms( PreCompose( MorphismWitness( morphism ), RelationMorphism( Range( morphism ) ) ),
-               PreCompose( RelationMorphism( Source( morphism ) ), MorphismDatum( morphism ) ) ) then
-            
-            return false;
-            
+        if not IsLiftable( PreCompose( RelationMorphism( Source( morphism ) ), MorphismDatum( morphism ) ), RelationMorphism( Range( morphism ) ) ) then
+          
+          return false;
+          
         fi;
         
         # all tests passed, so it is well-defined
