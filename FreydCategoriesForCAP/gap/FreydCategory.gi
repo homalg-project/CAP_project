@@ -595,8 +595,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
     end );
     
-    if is_possible_to_install( "KernelEmbedding, KernelLiftWithGivenKernelObject",
-                               [ "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ] ) then
+    if is_possible_to_install( "KernelEmbedding",
+                               [ "ProjectionOfBiasedWeakFiberProduct" ] ) then
     
         ## Kernels: kernels in Freyd categories are based on weak fiber products in the underlying category and thus more expensive
         AddKernelEmbedding( category,
@@ -622,7 +622,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                                           Source( morphism ) );
             
         end );
-        
+    
+    fi;
+    
+    if is_possible_to_install( "KernelLiftWithGivenKernelObject",
+                               [ "UniversalMorphismIntoBiasedWeakFiberProduct" ] ) then
         ##
         AddKernelLiftWithGivenKernelObject( category,
                                             
