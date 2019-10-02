@@ -847,6 +847,108 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
 
     fi;
     
+    ##
+    if is_possible_to_install( "IsLiftable, IsColiftable",
+                               [ "MereExistenceOfSolutionOfLinearSystemInAbCategory" ] ) then
+        
+        AddIsLiftable( category,
+                 
+          function( alpha_freyd, gamma_freyd )
+            local rho_A, rho_B, rho_C, alpha, gamma, A, B, C, R_A, R_B, R_C, left_coefficients, right_coefficients, right_side, solution;
+            
+            rho_A := RelationMorphism( Source( alpha_freyd ) );
+            
+            rho_B := RelationMorphism( Range( alpha_freyd ) );
+            
+            rho_C := RelationMorphism( Source( gamma_freyd ) );
+            
+            alpha := MorphismDatum( alpha_freyd );
+            
+            gamma := MorphismDatum( gamma_freyd );
+            
+            ##
+            
+            A := Range( rho_A );
+            
+            B := Range( rho_B );
+            
+            C := Range( rho_C );
+            
+            R_A := Source( rho_A );
+            
+            R_B := Source( rho_B );
+            
+            R_C := Source( rho_C );
+            
+            ##
+            
+            left_coefficients := [
+              [ rho_A, AdditiveInverseForMorphisms( IdentityMorphism( R_A ) ), ZeroMorphism( R_A, A ) ],
+              [ IdentityMorphism( A ), ZeroMorphism( A, R_A ), AdditiveInverseForMorphisms( IdentityMorphism( A ) ) ]
+            ];
+            
+            right_coefficients := [
+              [ IdentityMorphism( C ), rho_C, ZeroMorphism( R_B, C ) ],
+              [ gamma, ZeroMorphism( R_C, B ), rho_B ]
+            ];
+            
+            right_side := [ ZeroMorphism( R_A, C ), alpha ];
+            
+            return MereExistenceOfSolutionOfLinearSystemInAbCategory( left_coefficients, right_coefficients, right_side );
+            
+        end );
+        
+        AddIsColiftable( category,
+                 
+          function( alpha_freyd, gamma_freyd )
+            local rho_A, rho_B, rho_C, alpha, gamma, A, B, C, R_A, R_B, R_C, left_coefficients, right_coefficients, right_side, solution;
+            
+            rho_A := RelationMorphism( Range( alpha_freyd ) );
+            
+            rho_B := RelationMorphism( Source( alpha_freyd ) );
+            
+            rho_C := RelationMorphism( Range( gamma_freyd ) );
+            
+            alpha := MorphismDatum( alpha_freyd );
+            
+            gamma := MorphismDatum( gamma_freyd );
+            
+            ##
+            
+            A := Range( rho_A );
+            
+            B := Range( rho_B );
+            
+            C := Range( rho_C );
+            
+            R_A := Source( rho_A );
+            
+            R_B := Source( rho_B );
+            
+            R_C := Source( rho_C );
+            
+            ##
+            
+            left_coefficients := [
+              [ rho_A, AdditiveInverseForMorphisms( IdentityMorphism( R_A ) ), ZeroMorphism( R_A, B ) ],
+              [ alpha, ZeroMorphism( B, R_A ), AdditiveInverseForMorphisms( IdentityMorphism( B ) ) ]
+            ];
+            
+            right_coefficients := [
+              [ IdentityMorphism( C ), rho_C, ZeroMorphism( R_C, C ) ],
+              [ IdentityMorphism( C ), ZeroMorphism( R_C, C ), rho_C ]
+            ];
+            
+            right_side := [ ZeroMorphism( R_A, C ), gamma ];
+            
+            return MereExistenceOfSolutionOfLinearSystemInAbCategory( left_coefficients, right_coefficients, right_side );
+            
+        end );
+
+    fi;
+    
+    
+    
     ## Creation of a homomorphism structure for the Freyd category
     if is_possible_to_install( "Homomorphism structure",
                                [ "DistinguishedObjectOfHomomorphismStructure" ] ) then
