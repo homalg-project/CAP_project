@@ -293,7 +293,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
           interpret_homomorphism_as_morphism_from_dinstinguished_object_to_homomorphism_structure,
           interpret_morphism_from_dinstinguished_object_to_homomorphism_structure_as_homomorphism,
           is_possible_to_install,
-          not_supported, to_be_tested;
+          not_supported, to_be_tested,
+          lift_via_linear_system_func,
+          colift_via_linear_system_func;
     
     underlying_category := UnderlyingCategory( category );
     
@@ -731,14 +733,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
     end );
     
-    ##
-    if is_possible_to_install( "Lift, Colift",
-                               [ "SolveLinearSystemInAbCategory" ] ) then
-        
-        AddLift( category,
-                 
-          function( alpha_freyd, gamma_freyd )
-            local rho_A, rho_B, rho_C, alpha, gamma, A, B, C, R_A, R_B, R_C, left_coefficients, right_coefficients, right_side, solution;
+    lift_via_linear_system_func := function( alpha_freyd, gamma_freyd )
+            local rho_A, rho_B, rho_C, alpha, gamma, A, B, C, R_A, R_B, R_C, left_coefficients, right_coefficients, right_side;
             
             rho_A := RelationMorphism( Source( alpha_freyd ) );
             
@@ -778,22 +774,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             right_side := [ ZeroMorphism( R_A, C ), alpha ];
             
-            solution := SolveLinearSystemInAbCategory( left_coefficients, right_coefficients, right_side );
+            return [ left_coefficients, right_coefficients, right_side ];
             
-            if solution = fail then
-                
-                return fail;
-                
-            fi;
-            
-            return FreydCategoryMorphism( Source( alpha_freyd ), solution[1], Source( gamma_freyd ) );
-            
-        end );
-        
-        AddColift( category,
-                 
-          function( alpha_freyd, gamma_freyd )
-            local rho_A, rho_B, rho_C, alpha, gamma, A, B, C, R_A, R_B, R_C, left_coefficients, right_coefficients, right_side, solution;
+        end;
+    
+    colift_via_linear_system_func := function( alpha_freyd, gamma_freyd )
+            local rho_A, rho_B, rho_C, alpha, gamma, A, B, C, R_A, R_B, R_C, left_coefficients, right_coefficients, right_side;
             
             rho_A := RelationMorphism( Range( alpha_freyd ) );
             
@@ -833,7 +819,41 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             right_side := [ ZeroMorphism( R_A, C ), gamma ];
             
-            solution := SolveLinearSystemInAbCategory( left_coefficients, right_coefficients, right_side );
+            return [ left_coefficients, right_coefficients, right_side ];
+            
+        end;
+    
+    ##
+    if is_possible_to_install( "Lift, Colift",
+                               [ "SolveLinearSystemInAbCategory" ] ) then
+        
+        ##
+        AddLift( category,
+                 
+          function( alpha_freyd, gamma_freyd )
+            local solution;
+            
+            solution := 
+              CallFuncList( SolveLinearSystemInAbCategory, lift_via_linear_system_func( alpha_freyd, gamma_freyd ) );
+            
+            if solution = fail then
+                
+                return fail;
+                
+            fi;
+            
+            return FreydCategoryMorphism( Source( alpha_freyd ), solution[1], Source( gamma_freyd ) );
+            
+        end );
+        
+        ##
+        AddColift( category,
+                 
+          function( alpha_freyd, gamma_freyd )
+            local solution;
+            
+            solution := 
+              CallFuncList( SolveLinearSystemInAbCategory, colift_via_linear_system_func( alpha_freyd, gamma_freyd ) );
             
             if solution = fail then
                 
@@ -850,101 +870,28 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     ##
     if is_possible_to_install( "IsLiftable, IsColiftable",
                                [ "MereExistenceOfSolutionOfLinearSystemInAbCategory" ] ) then
-        
+        ##
         AddIsLiftable( category,
                  
           function( alpha_freyd, gamma_freyd )
-            local rho_A, rho_B, rho_C, alpha, gamma, A, B, C, R_A, R_B, R_C, left_coefficients, right_coefficients, right_side, solution;
+            local solution;
             
-            rho_A := RelationMorphism( Source( alpha_freyd ) );
-            
-            rho_B := RelationMorphism( Range( alpha_freyd ) );
-            
-            rho_C := RelationMorphism( Source( gamma_freyd ) );
-            
-            alpha := MorphismDatum( alpha_freyd );
-            
-            gamma := MorphismDatum( gamma_freyd );
-            
-            ##
-            
-            A := Range( rho_A );
-            
-            B := Range( rho_B );
-            
-            C := Range( rho_C );
-            
-            R_A := Source( rho_A );
-            
-            R_B := Source( rho_B );
-            
-            R_C := Source( rho_C );
-            
-            ##
-            
-            left_coefficients := [
-              [ rho_A, AdditiveInverseForMorphisms( IdentityMorphism( R_A ) ), ZeroMorphism( R_A, A ) ],
-              [ IdentityMorphism( A ), ZeroMorphism( A, R_A ), AdditiveInverseForMorphisms( IdentityMorphism( A ) ) ]
-            ];
-            
-            right_coefficients := [
-              [ IdentityMorphism( C ), rho_C, ZeroMorphism( R_B, C ) ],
-              [ gamma, ZeroMorphism( R_C, B ), rho_B ]
-            ];
-            
-            right_side := [ ZeroMorphism( R_A, C ), alpha ];
-            
-            return MereExistenceOfSolutionOfLinearSystemInAbCategory( left_coefficients, right_coefficients, right_side );
+            return
+              CallFuncList( MereExistenceOfSolutionOfLinearSystemInAbCategory, lift_via_linear_system_func( alpha_freyd, gamma_freyd ) );
             
         end );
         
+        ##
         AddIsColiftable( category,
                  
           function( alpha_freyd, gamma_freyd )
-            local rho_A, rho_B, rho_C, alpha, gamma, A, B, C, R_A, R_B, R_C, left_coefficients, right_coefficients, right_side, solution;
+            local solution;
             
-            rho_A := RelationMorphism( Range( alpha_freyd ) );
-            
-            rho_B := RelationMorphism( Source( alpha_freyd ) );
-            
-            rho_C := RelationMorphism( Range( gamma_freyd ) );
-            
-            alpha := MorphismDatum( alpha_freyd );
-            
-            gamma := MorphismDatum( gamma_freyd );
-            
-            ##
-            
-            A := Range( rho_A );
-            
-            B := Range( rho_B );
-            
-            C := Range( rho_C );
-            
-            R_A := Source( rho_A );
-            
-            R_B := Source( rho_B );
-            
-            R_C := Source( rho_C );
-            
-            ##
-            
-            left_coefficients := [
-              [ rho_A, AdditiveInverseForMorphisms( IdentityMorphism( R_A ) ), ZeroMorphism( R_A, B ) ],
-              [ alpha, ZeroMorphism( B, R_A ), AdditiveInverseForMorphisms( IdentityMorphism( B ) ) ]
-            ];
-            
-            right_coefficients := [
-              [ IdentityMorphism( C ), rho_C, ZeroMorphism( R_C, C ) ],
-              [ IdentityMorphism( C ), ZeroMorphism( R_C, C ), rho_C ]
-            ];
-            
-            right_side := [ ZeroMorphism( R_A, C ), gamma ];
-            
-            return MereExistenceOfSolutionOfLinearSystemInAbCategory( left_coefficients, right_coefficients, right_side );
+            return
+              CallFuncList( MereExistenceOfSolutionOfLinearSystemInAbCategory, colift_via_linear_system_func( alpha_freyd, gamma_freyd ) );
             
         end );
-
+        
     fi;
     
     
