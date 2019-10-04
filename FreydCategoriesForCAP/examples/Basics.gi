@@ -128,11 +128,13 @@ S4_freyd := AsFreydCategoryObject( S4 );;
 lift := FreydCategoryMorphism( S1_freyd, CategoryOfRowsMorphism( S1, HomalgMatrix( "[x]", 1, 1, S ), S1 ), S1_freyd );;
 gamma := FreydCategoryMorphism( S1_freyd, CategoryOfRowsMorphism( S1, HomalgMatrix( "[y]", 1,1, S ), S1 ), S1_freyd );;
 alpha := PreCompose( lift, gamma );;
+IsLiftable( alpha, gamma );
+#! true
 Lift( alpha, gamma );;
-Colift( lift, alpha );;
-IsCongruentForMorphisms( PreCompose( lift, Colift( lift, alpha ) ), alpha );;
-
-
+IsColiftable( lift, alpha );
+#! true
+IsCongruentForMorphisms( PreCompose( lift, Colift( lift, alpha ) ), alpha );
+#! true
 
 lift := FreydCategoryMorphism( S2_freyd, CategoryOfRowsMorphism( S2, HomalgMatrix( "[x,y,z,x^2,1,z+1]", 2, 3, S ), S3 ), S3_freyd );;
 gamma := FreydCategoryMorphism( S3_freyd, CategoryOfRowsMorphism( S3, HomalgMatrix( "[x,y,z,z+1, x^2,y^2,z^2,z^2+1, x^3,y^3,z^3,z^3+1]", 3,4, S ), S4 ), S4_freyd );;
