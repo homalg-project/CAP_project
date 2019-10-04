@@ -1924,3 +1924,28 @@ DeclareOperation( "AddSolveLinearSystemInAbCategory",
 
 DeclareOperation( "AddSolveLinearSystemInAbCategory",
                   [ IsCapCategory, IsList ] );
+
+##
+DeclareOperation( "MereExistenceOfSolutionOfLinearSystemInAbCategoryOp",
+                   [ IsList, IsList, IsList, IsCapCategory ] );
+
+#! @Description
+#! Like <C>SolveLinearSystemInAbCategory</C>,
+#! but the output is simply <C>true</C> if a solution exists,
+#! <C>false</C> otherwise.
+#! @Returns a boolean
+#! @Arguments alpha, beta, gamma
+DeclareOperation( "MereExistenceOfSolutionOfLinearSystemInAbCategory",
+                   [ IsList, IsList, IsList ] );
+
+DeclareOperation( "AddMereExistenceOfSolutionOfLinearSystemInAbCategory",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMereExistenceOfSolutionOfLinearSystemInAbCategory",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMereExistenceOfSolutionOfLinearSystemInAbCategory",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMereExistenceOfSolutionOfLinearSystemInAbCategory",
+                  [ IsCapCategory, IsList ] );

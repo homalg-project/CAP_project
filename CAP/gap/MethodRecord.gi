@@ -3132,6 +3132,15 @@ SolveLinearSystemInAbCategory := rec(
   return_type := "morphism_or_fail"
 ),
 
+MereExistenceOfSolutionOfLinearSystemInAbCategory := rec(
+    ## TODO: Type-check of linear system
+  installation_name := "MereExistenceOfSolutionOfLinearSystemInAbCategoryOp",
+  argument_list := [ 1, 2, 3 ],
+  filter_list := [ IsList, IsList, IsList, "category" ],
+  cache_name := "MereExistenceOfSolutionOfLinearSystemInAbCategory",
+  return_type := "bool"
+),
+
 RandomObjectByInteger := rec(
   installation_name := "RandomObjectByInteger",
   filter_list := [ "category", IsInt ],

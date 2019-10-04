@@ -2665,6 +2665,74 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
   Description := "SolveLinearSystemInAbCategory using the homomorphism structure" 
 );
 
+##
+AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
+                    [ [ SolveLinearSystemInAbCategory, 1 ] ],
+  function( left_coefficients, right_coefficients, right_side )
+    
+    return SolveLinearSystemInAbCategory( left_coefficients, right_coefficients, right_side ) <> fail;
+    
+end : Description := "MereExistenceOfSolutionOfLinearSystemInAbCategory using SolveLinearSystemInAbCategory" );
+
+##
+AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
+                    [ [ InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure, 1 ],
+                      [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ]
+                    ],
+  function( left_coefficients, right_coefficients, right_side )
+    local m, n, nu, H, lift, summands, list;
+    
+    m := Size( left_coefficients );
+    
+    n := Size( left_coefficients[1] );
+    
+    ## create lift diagram
+    
+    nu :=
+      UniversalMorphismIntoDirectSum(
+        List( [ 1 .. m ],
+        i -> InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( right_side[i] ) )
+    );
+    
+    list :=
+      List( [ 1 .. n ],
+      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( left_coefficients[i][j], right_coefficients[i][j] ) )
+    );
+    
+    H := MorphismBetweenDirectSums( list );
+    
+    ## the actual computation of the solution
+    return IsLiftable( nu, H );
+    
+  end :
+  ConditionsListComplete := true,
+  CategoryFilter := function( cat )
+    local B, conditions;
+    
+    if HasIsAbCategory( cat ) and IsAbCategory( cat ) and HasRangeCategoryOfHomomorphismStructure( cat ) then
+        
+        B := RangeCategoryOfHomomorphismStructure( cat );
+        
+        conditions := [
+          "UniversalMorphismIntoDirectSum",
+          "MorphismBetweenDirectSums",
+          "IsLiftable"
+        ];
+        
+        if ForAll( conditions, c -> CanCompute( B, c ) ) then
+            
+            return true;
+            
+        fi;
+        
+    fi;
+    
+    return false;
+    
+  end,
+  Description := "MereExistenceOfSolutionOfLinearSystemInAbCategory using the homomorphism structure"
+);
+
 ## Final methods for FiberProduct
 
 ##

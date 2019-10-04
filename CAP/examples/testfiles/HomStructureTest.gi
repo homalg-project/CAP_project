@@ -23,6 +23,8 @@ d := FieldAsCategoryMorphism( 0, Qoid );;
 left_coeffs := [ [ a, b ], [ c, d ] ];;
 right_coeffs := [ [ PreCompose( a, b ), PreCompose( b, c ) ], [ c, PreCompose( a, a ) ] ];;
 right_side := [ a, b ];;
+MereExistenceOfSolutionOfLinearSystemInAbCategory( left_coeffs, right_coeffs, right_side );
+#! true
 solution := 
     SolveLinearSystemInAbCategory(
     left_coeffs,
