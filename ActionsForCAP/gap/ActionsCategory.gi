@@ -170,11 +170,18 @@ InstallMethod( LeftActionsCategory,
         
         structure_record.Lift :=
           function( mono, range )
-            local action_range, to_be_lifted;
+            local action_range, source, to_be_lifted;
             
             action_range := ObjectAttributesAsList( range )[1];
             
-            to_be_lifted := PreCompose( TensorProductOnMorphisms( identity_of_acting_object, mono ), action_range );
+            source := TensorProduct( acting_object, Source( mono ) );
+            
+            to_be_lifted := PreCompose(
+                                    TensorProductOnMorphismsWithGivenTensorProducts(
+                                            source,
+                                            identity_of_acting_object, mono,
+                                            Source( action_range ) ),
+                                    action_range );
             
             return [ LiftAlongMonomorphism( mono, to_be_lifted ) ];
             
@@ -403,11 +410,18 @@ InstallMethod( RightActionsCategory,
         
         structure_record.Lift :=
           function( mono, range )
-            local action_range, to_be_lifted;
+            local action_range, source, to_be_lifted;
             
             action_range := ObjectAttributesAsList( range )[1];
             
-            to_be_lifted := PreCompose( TensorProductOnMorphisms( mono, identity_of_acting_object ), action_range );
+            source := TensorProduct( Source( mono ), acting_object );
+            
+            to_be_lifted := PreCompose(
+                                    TensorProductOnMorphismsWithGivenTensorProducts(
+                                            source,
+                                            mono, identity_of_acting_object,
+                                            Source( action_range ) ),
+                                    action_range );
             
             return [ LiftAlongMonomorphism( mono, to_be_lifted ) ];
             
