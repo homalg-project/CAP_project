@@ -686,7 +686,7 @@ InstallGlobalFunction( CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS,
             if ForAll( current_output[ 2 ], i -> i in "0123456789" ) then
                 list_position := Int( current_output[ 2 ] );
             else
-                list_position := Position( input_list, current_output[ 2 ] );
+                list_position := function_input[ Position( input_list, current_output[ 2 ] ) ];
             fi;
             
             if list_position = fail then
