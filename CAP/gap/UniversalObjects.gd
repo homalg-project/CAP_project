@@ -4983,7 +4983,7 @@ DeclareAttribute( "CanonicalIdentificationFromImageObjectToCoimage",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CanonicalIdentificationFromImageObjectToCoimage</C>.
 #! $F: \alpha \mapsto c$
 #! @Returns nothing
@@ -5011,7 +5011,7 @@ DeclareAttribute( "CanonicalIdentificationFromCoimageToImageObject",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CanonicalIdentificationFromCoimageToImageObject</C>.
 #! $F: \alpha \mapsto c$
 #! @Returns nothing
