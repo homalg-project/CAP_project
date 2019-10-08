@@ -25,6 +25,10 @@ InstallMethod( CategoryOfColumns,
     
     SetIsAdditiveCategory( category, true );
     
+    SetIsRigidSymmetricClosedMonoidalCategory( category, true );
+    
+    SetIsStrictMonoidalCategory( category, true );
+    
     SetUnderlyingRing( category, homalg_ring );
     
     AddObjectRepresentation( category, IsCategoryOfColumnsObject );
@@ -566,7 +570,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     
     ## Operations related to homomorphism structure
     
-    if IsCommutative( ring ) then
+    if HasIsCommutative( ring ) and IsCommutative( ring ) then
         
         SetRangeCategoryOfHomomorphismStructure( category, category );
         
@@ -645,6 +649,109 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
             return CategoryOfColumnsMorphism( A, underlying_matrix, B );
             
         end );
+        
+    fi;
+    
+    
+    ## Operations related to tensor structure
+    
+    if HasIsCommutative( ring ) and IsCommutative( ring ) then
+        
+        ##
+        AddTensorProductOnObjects( category,
+          function( a, b )
+            
+            return CategoryOfColumnsObject( category, RankOfObject( a ) * RankOfObject( b ) );
+            
+        end );
+        
+        ##
+        AddTensorProductOnMorphismsWithGivenTensorProducts( category,
+          function( s, alpha, beta, r)
+            
+            return CategoryOfColumnsMorphism( s,
+              KroneckerMat( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ),
+            r );
+            
+        end );
+        
+        AddTensorUnit( category,
+          function()
+            
+            return CategoryOfColumnsObject( category, 1 );
+            
+        end );
+        
+        ##
+        AddBraidingWithGivenTensorProducts( category,
+          function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
+          local permutation_matrix, rank, rank_1, rank_2;
+          
+          rank_1 := RankOfObject( object_1 );
+          
+          rank_2 := RankOfObject( object_2 );
+          
+          rank := RankOfObject( object_1_tensored_object_2 );
+          
+          ## mind the inversion of the permutation, since we work with columns
+          permutation_matrix := PermutationMat(
+                                  PermList( List( [ 1 .. rank ], i -> ( RemInt( i - 1, rank_2 ) * rank_1 + QuoInt( i - 1, rank_2 ) + 1 ) ) )^(-1),
+                                  rank
+                                );
+          
+          return CategoryOfColumnsMorphism( object_1_tensored_object_2,
+                                            HomalgMatrix( permutation_matrix, rank, rank, ring ),
+                                            object_2_tensored_object_1
+                                          );
+          
+        end );
+        
+        ##
+        AddDualOnObjects( category, IdFunc );
+        
+        ##
+        AddDualOnMorphismsWithGivenDuals( category,
+          function( dual_source, morphism, dual_range )
+            
+            return CategoryOfColumnsMorphism( dual_source,
+                                              TransposedMatrix( UnderlyingMatrix( morphism ) ),
+                                              dual_range );
+            
+        end );
+        
+        ##
+        AddEvaluationForDualWithGivenTensorProduct( category,
+          function( tensor_object, object, unit )
+            local rank, id;
+            
+            rank := RankOfObject( object );
+            
+            id := HomalgIdentityMatrix( rank, ring );
+            
+            return CategoryOfColumnsMorphism( tensor_object,
+                                              UnionOfColumns( List( [ 1 .. rank ], i -> CertainRows( id, [i] ) ) ),
+                                              unit );
+            
+        end );
+        
+        ##
+        AddCoevaluationForDualWithGivenTensorProduct( category,
+          
+          function( unit, object, tensor_object )
+            local rank, id;
+            
+            rank := RankOfObject( object );
+            
+            id := HomalgIdentityMatrix( rank, ring );
+            
+            return CategoryOfColumnsMorphism( unit,
+                                              UnionOfRows( List( [ 1 .. rank ], i -> CertainColumns( id, [i] ) ) ),
+                                              tensor_object );
+            
+        end );
+       
+        ##
+        AddMorphismToBidualWithGivenBidual( category, {obj, dual} -> IdentityMorphism( obj ) );
         
     fi;
     
