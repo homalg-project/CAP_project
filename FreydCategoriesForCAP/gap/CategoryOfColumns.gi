@@ -566,7 +566,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     
     ## Operations related to homomorphism structure
     
-    if IsCommutative( ring ) then
+    if HasIsCommutative( ring ) and IsCommutative( ring ) then
         
         SetRangeCategoryOfHomomorphismStructure( category, category );
         
