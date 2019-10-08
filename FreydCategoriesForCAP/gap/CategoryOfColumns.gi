@@ -48,10 +48,20 @@ InstallMethod( CategoryOfColumns,
 end );
 
 ##
-InstallMethodWithCache( CategoryOfColumnsObject,
-                        [ IsInt, IsCategoryOfColumns ],
+InstallOtherMethod( CategoryOfColumnsObject,
+                    [ IsInt, IsCategoryOfColumns ],
                
   function( rank, category )
+    
+    return CategoryOfColumnsObject( category, rank );
+    
+end );
+
+##
+InstallMethod( CategoryOfColumnsObjectOp,
+               [ IsCategoryOfColumns, IsInt ],
+               
+  function( category, rank )
     local category_of_columns_object;
     
     if rank < 0 then

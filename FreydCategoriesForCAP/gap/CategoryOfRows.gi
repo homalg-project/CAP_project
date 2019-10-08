@@ -48,10 +48,18 @@ InstallMethod( CategoryOfRows,
 end );
 
 ##
-InstallMethodWithCache( CategoryOfRowsObject,
-                        [ IsInt, IsCategoryOfRows ],
+InstallOtherMethod( CategoryOfRowsObject,
+                    [ IsInt, IsCategoryOfRows ],
                
   function( rank, category )
+    
+    return CategoryOfRowsObject( category, rank );
+    
+end );
+
+InstallMethod( CategoryOfRowsObjectOp,
+               [ IsCategoryOfRows, IsInt ],
+  function( category, rank )
     local category_of_rows_object;
     
     if rank < 0 then

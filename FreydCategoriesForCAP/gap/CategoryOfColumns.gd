@@ -39,8 +39,11 @@ DeclareAttribute( "CategoryOfColumns",
                   IsHomalgRing );
 
 
-DeclareOperationWithCache( "CategoryOfColumnsObject",
-                           [ IsInt, IsCategoryOfColumns ] );
+DeclareOperation( "CategoryOfColumnsObject",
+                  [ IsInt, IsCategoryOfColumns ] );
+
+KeyDependentOperation( "CategoryOfColumnsObject",
+                       IsCategoryOfColumns, IsInt, ReturnTrue );
 
 DeclareAttribute( "AsCategoryOfColumnsMorphism",
                   IsHomalgMatrix );
