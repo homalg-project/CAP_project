@@ -1949,3 +1949,495 @@ DeclareOperation( "AddMereExistenceOfSolutionOfLinearSystemInAbCategory",
 
 DeclareOperation( "AddMereExistenceOfSolutionOfLinearSystemInAbCategory",
                   [ IsCapCategory, IsList ] );
+
+###################################
+##
+#! @Section Simplified Morphisms
+##
+###################################
+
+#! Let $\phi: A \rightarrow B$ be a morphism.
+#! There are several different natural ways to look at $\phi$ as an object in an ambient category:
+
+#! - $\mathrm{Hom}( A, B )$, the set of homomorphisms with the equivalence relation $\mathtt{IsCongruentForMorphisms}$ regarded as a category,
+#! - $\sum_{A}\mathrm{Hom}( A, B )$, the category of morphisms where the range is fixed,
+#! - $\sum_{B}\mathrm{Hom}( A, B )$, the category of morphisms where the source is fixed,
+#! - $\sum_{A,B}\mathrm{Hom}( A, B )$, the category of morphisms where neither source nor range is fixed,
+
+#! and furthermore, if $\phi$ happens to be an endomorphism $A \rightarrow A$,
+#! we also have
+
+#! - $\sum_{A}\mathrm{Hom}(A,A)$, the category of endomorphisms.
+
+#! Let $\mathbf{C}$ be one of the categories above in which $\phi$ may reside as an object,
+#! and let $i$ be a non-negative integer or $\infty$.
+#! CAP provides commands for passing from $\phi$ to $\phi_i$, where $\phi_i$ is isomorphic to $\phi$
+#! in $\mathbf{C}$, but "simpler".
+#! The idea is that the greater the $i$, the "simpler" the $\phi_i$ (but this could mean the harder the computation),
+#! with $\infty$ as a possible value.
+#! The case $i = 0$ defaults to the identity operator for all simplifications.
+#! For the Add-operatations, only the cases $i \geq 1$ have to be given as functions.
+#! 
+#! 
+#! $\ $
+#!
+#!
+#! If we regard $\phi$ as an object in the category $\mathrm{Hom}( A, B )$,
+#! $\phi_i$ is again in $\mathrm{Hom}( A, B )$ such that $\phi \sim_{A,B} \phi_i$.
+#! This case is handled by the following commands:
+
+#! @Description
+#! The arguments are a morphism $\phi: A \rightarrow B$ and a non-negative integer $i$ or <C>infinity</C>.
+#! The output is a simplified morphism $\phi_i$.
+#! @Returns a morphism in $\mathrm{Hom}(A,B)$
+#! @Arguments phi, i
+DeclareOperation( "SimplifyMorphism",
+                  [ IsCapCategoryMorphism, IsObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SimplifyMorphism</C>.
+#! The function $F$ maps $(\phi,i \geq 1)$ to $\phi_i$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSimplifyMorphism",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSimplifyMorphism",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSimplifyMorphism",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSimplifyMorphism",
+                  [ IsCapCategory, IsList ] );
+
+#! $\ $
+#!
+#! If we regard $\phi$ as an object in the category $\sum_{A}\mathrm{Hom}( A, B )$,
+#! then $\phi_i$ is a morphism of type $A_i \rightarrow B$ and there is an isomorphism
+#! $\sigma_i: A \rightarrow A_i$ such that
+#! $\phi_i \circ \sigma_i \sim_{A,B} \phi$.
+#! This case is handled by the following commands:
+
+## SimplifySource
+#! @Description
+#! The arguments are a morphism $\phi: A \rightarrow B$ and a non-negative integer $i$ or <C>infinity</C>.
+#! The output is a simplified morphism with simplified source $\phi_i: A_i \rightarrow B$.
+#! @Returns a morphism in $\mathrm{Hom}(A_i,B)$
+#! @Arguments phi, i
+DeclareOperation( "SimplifySource",
+                  [ IsCapCategoryMorphism, IsObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SimplifySource</C>.
+#! The function $F$ maps $(\phi,i \geq 1)$ to $\phi_i$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSimplifySource",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSimplifySource",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSimplifySource",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSimplifySource",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a morphism $\phi: A \rightarrow B$ and a non-negative integer $i$ or <C>infinity</C>.
+#! The output is the isomorphism $(\sigma_i)^{-1}: A_i \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}(A_i,A)$
+#! @Arguments phi, i
+DeclareOperation( "SimplifySource_IsoToInputObject",
+                  [ IsCapCategoryMorphism, IsObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SimplifySource_IsoToInputObject</C>.
+#! The function $F$ maps $(\phi,i)$ to $(\sigma_i)^{-1}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSimplifySource_IsoToInputObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSimplifySource_IsoToInputObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSimplifySource_IsoToInputObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSimplifySource_IsoToInputObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a morphism $\phi: A \rightarrow B$ and a non-negative integer $i$ or <C>infinity</C>.
+#! The output is the isomorphism $\sigma_i: A \rightarrow A_i$.
+#! @Returns a morphism in $\mathrm{Hom}(A,A_i)$
+#! @Arguments phi, i
+DeclareOperation( "SimplifySource_IsoFromInputObject",
+                  [ IsCapCategoryMorphism, IsObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SimplifySource_IsoFromInputObject</C>.
+#! The function $F$ maps $(\phi,i)$ to $(\sigma_i)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSimplifySource_IsoFromInputObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSimplifySource_IsoFromInputObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSimplifySource_IsoFromInputObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSimplifySource_IsoFromInputObject",
+                  [ IsCapCategory, IsList ] );
+
+## SimplifyRange
+#! $\ $
+#!
+#! If we regard $\phi$ as an object in the category $\sum_{B}\mathrm{Hom}( A, B )$,
+#! then $\phi_i$ is a morphism of type $A \rightarrow B_i$ and there is an isomorphism
+#! $\rho_i: B \rightarrow B_i$ such that
+#! $ \rho_i^{-1} \circ \phi_i\sim_{A,B} \phi$.
+#! This case is handled by the following commands:
+
+#! @Description
+#! The arguments are a morphism $\phi: A \rightarrow B$ and a non-negative integer $i$ or <C>infinity</C>.
+#! The output is a simplified morphism with simplified range $\phi_i: A \rightarrow B_i$.
+#! @Returns a morphism in $\mathrm{Hom}(A,B_i)$
+#! @Arguments phi, i
+DeclareOperation( "SimplifyRange",
+                  [ IsCapCategoryMorphism, IsObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SimplifyRange</C>.
+#! The function $F$ maps $(\phi,i \geq 1)$ to $\phi_i$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSimplifyRange",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSimplifyRange",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSimplifyRange",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSimplifyRange",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a morphism $\phi: A \rightarrow B$ and a non-negative integer $i$ or <C>infinity</C>.
+#! The output is the isomorphism $(\rho_i)^{-1}: B_i \rightarrow B$.
+#! @Returns a morphism in $\mathrm{Hom}(B_i,B)$
+#! @Arguments phi, i
+DeclareOperation( "SimplifyRange_IsoToInputObject",
+                  [ IsCapCategoryMorphism, IsObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SimplifyRange_IsoToInputObject</C>.
+#! The function $F$ maps $(\phi,i)$ to $(\rho_i)^{-1}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSimplifyRange_IsoToInputObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSimplifyRange_IsoToInputObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSimplifyRange_IsoToInputObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSimplifyRange_IsoToInputObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a morphism $\phi: A \rightarrow B$ and a non-negative integer $i$ or <C>infinity</C>.
+#! The output is the isomorphism $\rho_i: B \rightarrow B_i$.
+#! @Returns a morphism in $\mathrm{Hom}(B,B_i)$
+#! @Arguments phi, i
+DeclareOperation( "SimplifyRange_IsoFromInputObject",
+                  [ IsCapCategoryMorphism, IsObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SimplifyRange_IsoFromInputObject</C>.
+#! The function $F$ maps $(\phi,i)$ to $\rho_i$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSimplifyRange_IsoFromInputObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSimplifyRange_IsoFromInputObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSimplifyRange_IsoFromInputObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSimplifyRange_IsoFromInputObject",
+                  [ IsCapCategory, IsList ] );
+
+## SimplifySourceAndRange*
+#! $\ $
+#!
+#! If we regard $\phi$ as an object in the category $\sum_{A, B}\mathrm{Hom}( A, B )$,
+#! then $\phi_i$ is a morphism of type $A_i \rightarrow B_i$ and there is are isomorphisms
+#! $\sigma_i: A \rightarrow A_i$ and
+#! $\rho_i: B \rightarrow B_i$ such that
+#! $ \rho_i^{-1} \circ \phi_i \circ \sigma_i \sim_{A,B} \phi$.
+#! This case is handled by the following commands:
+
+#! @Description
+#! The arguments are a morphism $\phi: A \rightarrow B$ and a non-negative integer $i$ or <C>infinity</C>.
+#! The output is a simplified morphism with simplified source and range $\phi_i: A_i \rightarrow B_i$.
+#! @Returns a morphism in $\mathrm{Hom}(A_i,B_i)$
+#! @Arguments phi, i
+DeclareOperation( "SimplifySourceAndRange",
+                  [ IsCapCategoryMorphism, IsObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SimplifySourceAndRange</C>.
+#! The function $F$ maps $(\phi,i \geq 1)$ to $\phi_i$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSimplifySourceAndRange",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSimplifySourceAndRange",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSimplifySourceAndRange",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSimplifySourceAndRange",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a morphism $\phi: A \rightarrow B$ and a non-negative integer $i$ or <C>infinity</C>.
+#! The output is the isomorphism $(\rho_i)^{-1}: B_i \rightarrow B$.
+#! @Returns a morphism in $\mathrm{Hom}(B_i,B)$
+#! @Arguments phi, i
+DeclareOperation( "SimplifySourceAndRange_IsoToInputRange",
+                  [ IsCapCategoryMorphism, IsObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SimplifySourceAndRange_IsoToInputRange</C>.
+#! The function $F$ maps $(\phi,i)$ to $(\rho_i)^{-1}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSimplifySourceAndRange_IsoToInputRange",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSimplifySourceAndRange_IsoToInputRange",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSimplifySourceAndRange_IsoToInputRange",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSimplifySourceAndRange_IsoToInputRange",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a morphism $\phi: A \rightarrow B$ and a non-negative integer $i$ or <C>infinity</C>.
+#! The output is the isomorphism $\rho_i: B \rightarrow B_i$.
+#! @Returns a morphism in $\mathrm{Hom}(B,B_i)$
+#! @Arguments phi, i
+DeclareOperation( "SimplifySourceAndRange_IsoFromInputRange",
+                  [ IsCapCategoryMorphism, IsObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SimplifySourceAndRange_IsoFromInputRange</C>.
+#! The function $F$ maps $(\phi,i)$ to $\rho_i$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSimplifySourceAndRange_IsoFromInputRange",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSimplifySourceAndRange_IsoFromInputRange",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSimplifySourceAndRange_IsoFromInputRange",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSimplifySourceAndRange_IsoFromInputRange",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a morphism $\phi: A \rightarrow B$ and a non-negative integer $i$ or <C>infinity</C>.
+#! The output is the isomorphism $(\sigma_i)^{-1}: A_i \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}(A_i,A)$
+#! @Arguments phi, i
+DeclareOperation( "SimplifySourceAndRange_IsoToInputSource",
+                  [ IsCapCategoryMorphism, IsObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SimplifySourceAndRange_IsoToInputSource</C>.
+#! The function $F$ maps $(\phi,i)$ to $(\sigma_i)^{-1}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSimplifySourceAndRange_IsoToInputSource",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSimplifySourceAndRange_IsoToInputSource",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSimplifySourceAndRange_IsoToInputSource",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSimplifySourceAndRange_IsoToInputSource",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a morphism $\phi: A \rightarrow B$ and a non-negative integer $i$ or <C>infinity</C>.
+#! The output is the isomorphism $\sigma_i: A \rightarrow A_i$.
+#! @Returns a morphism in $\mathrm{Hom}(A,A_i)$
+#! @Arguments phi, i
+DeclareOperation( "SimplifySourceAndRange_IsoFromInputSource",
+                  [ IsCapCategoryMorphism, IsObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SimplifySourceAndRange_IsoFromInputSource</C>.
+#! The function $F$ maps $(\phi,i)$ to $(\sigma_i)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSimplifySourceAndRange_IsoFromInputSource",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSimplifySourceAndRange_IsoFromInputSource",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSimplifySourceAndRange_IsoFromInputSource",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSimplifySourceAndRange_IsoFromInputSource",
+                  [ IsCapCategory, IsList ] );
+
+## SimplifyEndo*
+#! $\ $
+#!
+#! If $\phi:A \rightarrow A$ is an endomorphism, we may regard it as an object in the category $\sum_{A}\mathrm{Hom}( A, A )$.
+#! In this case
+#! $\phi_i$ is a morphism of type $A_i \rightarrow A_i$ and there is an isomorphism
+#! $\sigma_i: A \rightarrow A_i$ such that
+#! $ \sigma_i^{-1} \circ \phi_i \circ \sigma_i \sim_{A,A} \phi$.
+#! This case is handled by the following commands:
+
+#! @Description
+#! The arguments are an endomorphism $\phi: A \rightarrow A$ and a non-negative integer $i$ or <C>infinity</C>.
+#! The output is a simplified endomorphism $\phi_i: A_i \rightarrow A_i$.
+#! @Returns a morphism in $\mathrm{Hom}(A_i,A_i)$
+#! @Arguments phi, i
+DeclareOperation( "SimplifyEndo",
+                  [ IsCapCategoryMorphism, IsObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SimplifyEndo</C>.
+#! The function $F$ maps $(\phi,i \geq 1)$ to $\phi_i$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSimplifyEndo",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSimplifyEndo",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSimplifyEndo",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSimplifyEndo",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are an endomorphism $\phi: A \rightarrow A$ and a non-negative integer $i$ or <C>infinity</C>.
+#! The output is the isomorphism $(\sigma_i)^{-1}: A_i \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}(A_i,A)$
+#! @Arguments phi, i
+DeclareOperation( "SimplifyEndo_IsoToInputObject",
+                  [ IsCapCategoryMorphism, IsObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SimplifyEndo_IsoToInputObject</C>.
+#! The function $F$ maps $(\phi,i)$ to $(\sigma_i)^{-1}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSimplifyEndo_IsoToInputObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSimplifyEndo_IsoToInputObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSimplifyEndo_IsoToInputObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSimplifyEndo_IsoToInputObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are an endomorphism $\phi: A \rightarrow A$ and a non-negative integer $i$ or <C>infinity</C>.
+#! The output is the isomorphism $\sigma_i: A \rightarrow A_i$.
+#! @Returns a morphism in $\mathrm{Hom}(A,A_i)$
+#! @Arguments phi, i
+DeclareOperation( "SimplifyEndo_IsoFromInputObject",
+                  [ IsCapCategoryMorphism, IsObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SimplifyEndo_IsoFromInputObject</C>.
+#! The function $F$ maps $(\phi,i)$ to $(\sigma_i)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSimplifyEndo_IsoFromInputObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSimplifyEndo_IsoFromInputObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSimplifyEndo_IsoFromInputObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSimplifyEndo_IsoFromInputObject",
+                  [ IsCapCategory, IsList ] );
+
+
+#! @Description
+#! This is a convenient method.
+#! The argument is a morphism $\phi: A \rightarrow B$.
+#! The output is a "simplified" version of $\phi$ that may change the
+#! source and range of $\phi$ (up to isomorphism).
+#! To be precise, the output is an $\infty$-th simplified morphism
+#! of $(\iota_A^{\infty})^{-1}\circ \phi \circ \iota_A^{\infty}$.
+#! @Returns a morphism in $\mathrm{Hom}(A_{\infty},B_{\infty})$
+#! @Arguments phi
+DeclareAttribute( "Simplify",
+                  IsCapCategoryMorphism );
