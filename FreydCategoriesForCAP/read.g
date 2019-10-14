@@ -28,6 +28,8 @@ ReadPackage( "FreydCategoriesForCAP", "gap/CokernelImageClosure.gi" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/AdelmanCategory.gi" );
 
-ReadPackage( "FreydCategoriesForCAP", "gap/QuiverRows.gi" );
+if IsPackageMarkedForLoading( "QPA", ">= 2.0" ) then
+    ReadPackage( "FreydCategoriesForCAP", "gap/QuiverRows.gi" );
+fi;
 
 ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/GradedModulePresentationsByFreyd.gi" );
