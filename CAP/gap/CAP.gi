@@ -500,17 +500,29 @@ InstallMethod( CreateCapCategory,
                [ IsString ],
                
   function( name )
-    local category;
+    local overhead, category;
+    
+    overhead := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "overhead", true );
     
     category := rec( );
     
     category := CREATE_CAP_CATEGORY_OBJECT( category, [ [ "Name", name ] ] );
     
+    category!.overhead := overhead;
+    
     CREATE_CAP_CATEGORY_FILTERS( category );
     
-    AddCategoryToFamily( category, "general" );
+    if overhead then
     
-    INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "General" );
+      AddCategoryToFamily( category, "general" );
+      
+      INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "General" );
+      
+    else
+      
+      category!.predicate_logic := false;
+      
+    fi;
     
     return category;
     

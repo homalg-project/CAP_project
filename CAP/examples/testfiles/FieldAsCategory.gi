@@ -38,7 +38,7 @@ InstallMethod( FieldAsCategory,
   function( field )
     local category;
     
-    category := CreateCapCategory( Concatenation( "Field as category( ", RingName( field )," )"  ) );
+    category := CreateCapCategory( Concatenation( "Field as category( ", RingName( field )," )"  ) : overhead := false );
     
     SetFilterObj( category, IsFieldAsCategory );
     
