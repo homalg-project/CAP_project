@@ -17,7 +17,7 @@
 
 #! @Description
 #! The argument is a homalg ring $R$.
-#! The output is the category of free left presentations
+#! The output is the category of left presentations
 #! over $R$.
 #! @Returns a category
 #! @Arguments R
@@ -26,7 +26,7 @@ DeclareAttribute( "LeftPresentations",
 
 #! @Description
 #! The argument is a homalg ring $R$.
-#! The output is the category of free right presentations
+#! The output is the category of right presentations
 #! over $R$.
 #! @Returns a category
 #! @Arguments R
