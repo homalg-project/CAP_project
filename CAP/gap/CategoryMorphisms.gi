@@ -238,6 +238,21 @@ InstallGlobalFunction( ObjectifyMorphismForCAPWithAttributes,
     
 end );
 
+##
+InstallMethod( Simplify,
+               [ IsCapCategoryMorphism ],
+               
+  function( morphism )
+    local phi;
+    
+    phi := PreCompose( [ SimplifyObject_IsoToInputObject( Source( morphism ), infinity ),
+                         morphism,
+                         SimplifyObject_IsoFromInputObject( Range( morphism ), infinity ) ] );
+    
+    return SimplifyMorphism( phi, infinity );
+    
+end );
+
 ######################################
 ##
 ## Morphism equality functions

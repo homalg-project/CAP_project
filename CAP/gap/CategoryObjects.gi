@@ -239,6 +239,15 @@ InstallGlobalFunction( ObjectifyObjectForCAPWithAttributes,
     
 end );
 
+##
+InstallMethod( Simplify,
+               [ IsCapCategoryObject ],
+  function( object )
+    
+    return SimplifyObject( object, infinity );
+    
+end );
+
 ###########################
 ##
 ## Print
