@@ -195,7 +195,7 @@ InstallMethod( AddMorphismRepresentation,
   function( category, representation )
     
     category!.morphism_representation := representation;
-    category!.morphism_type := NewType( TheFamilyOfCapCategoryMorphisms, representation and MorphismFilter( category ) and IsCapCategoryMorphismRep );
+    category!.morphism_type := NewType( TheFamilyOfCapCategoryMorphisms, representation and MorphismFilter( category ) and IsCapCategoryMorphismRep and HasSource and HasRange and HasCapCategory );
     
 end );
 
