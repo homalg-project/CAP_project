@@ -149,9 +149,13 @@ InstallMethod( IsFinalized,
                 
                 current_tester_func := current_final_derivation.category_filter;
 
-                if IsFilter( current_tester_func ) and Tester( current_tester_func )( category ) and current_tester_func( category ) then
-                    Add( current_installs, i );
-                elif IsFunction( current_tester_func ) and current_tester_func( category ) then
+                if IsFilter( current_tester_func ) then
+                    
+                    if Tester( current_tester_func )( category ) and current_tester_func( category ) then
+                        Add( current_installs, i );
+                    fi;
+                    
+                elif IsFunction( current_tester_func ) and current_tester_func( category ) then ## in particular: not a filter
                     Add( current_installs, i );
                 fi;
             
