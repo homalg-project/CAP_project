@@ -50,6 +50,14 @@ DeclareAttribute( "UnderlyingCategory",
 
 ####################################
 ##
+## Global Variables
+##
+####################################
+
+DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_ATTRIBUTE_CATEGORY" );
+
+####################################
+##
 ## Global Functions
 ##
 ####################################
