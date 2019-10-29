@@ -2002,6 +2002,61 @@ DeclareOperation( "HomStructure",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 
+#! @Description
+#! The arguments are object  $a,b$ in a pre-additive or $k$-linear category $C$.
+#! The output is a list $L$ of morphisms which is a basis of $\mathrm{Hom}_{C}(a,b)$ in the sense
+#! that any given morphism $\alpha: a \to b$ is the linear combination of $L$ with the
+#! coefficients in <C>CoefficientsOfMorphismWRTBasisOfExternalHom</C>($\alpha$).
+#! @Returns a list of morphisms in $\mathrm{Hom}_{C}(a,b)$
+#! @Arguments a, b
+DeclareOperation( "BasisOfExternalHom",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>BasisOfExternalHom</C>.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddBasisOfExternalHom",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddBasisOfExternalHom",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddBasisOfExternalHom",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddBasisOfExternalHom",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The argument is a morhpism  $\alpha: a \to b$ in a pre-additive or $k$-linear category $C$.
+#! The output is a list of coefficients of $\alpha$ with respect to the list
+#! <C>BasisOfExternalHom</C>(<A>a</A>,<A>b</A>).
+#! @Returns a list of ring elements
+#! @Arguments alpha
+DeclareAttribute( "CoefficientsOfMorphismWRTBasisOfExternalHom",
+                  IsCapCategoryMorphism );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>CoefficientsOfMorphismWRTBasisOfExternalHom</C>.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoefficientsOfMorphismWRTBasisOfExternalHom",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoefficientsOfMorphismWRTBasisOfExternalHom",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoefficientsOfMorphismWRTBasisOfExternalHom",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoefficientsOfMorphismWRTBasisOfExternalHom",
+                  [ IsCapCategory, IsList ] );
+
 ###################################
 ##
 #! @Section Simplified Morphisms
