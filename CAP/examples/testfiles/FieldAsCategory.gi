@@ -50,7 +50,7 @@ InstallMethod( FieldAsCategory,
     
     AddObjectRepresentation( category, IsFieldAsCategoryObject );
     
-    AddMorphismRepresentation( category, IsFieldAsCategoryMorphism );
+    AddMorphismRepresentation( category, IsFieldAsCategoryMorphism and HasUnderlyingFieldElement );
 
     INSTALL_FUNCTIONS_FOR_FIELD_AS_CATEGORY( category );
     
@@ -90,9 +90,9 @@ InstallMethod( FieldAsCategoryMorphism,
     
     unique_object := FieldAsCategoryUniqueObject( category );
     
-    ObjectifyMorphismForCAPWithAttributes( morphism, category,
-                                           Source, unique_object,
-                                           Range, unique_object,
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( morphism, category,
+                                           unique_object,
+                                           unique_object,
                                            UnderlyingFieldElement, element
     );
     

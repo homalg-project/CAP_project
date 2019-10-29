@@ -362,7 +362,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByCospans,
     
     AddObjectRepresentation( serre_category, IsSerreQuotientCategoryByCospansObject );
     
-    AddMorphismRepresentation( serre_category, IsSerreQuotientCategoryByCospansMorphism );
+    AddMorphismRepresentation( serre_category, IsSerreQuotientCategoryByCospansMorphism and HasUnderlyingGeneralizedMorphism );
     
     serre_category!.predicate_logic := category!.predicate_logic;
     
@@ -430,9 +430,9 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByCospansMorphism,
     
     serre_morphism := rec( );
     
-    ObjectifyMorphismForCAPWithAttributes( serre_morphism, serre_category,
-                             Source, AsSerreQuotientCategoryByCospansObject( serre_category, UnderlyingHonestObject( Source( gen_morphism ) ) ),
-                             Range, AsSerreQuotientCategoryByCospansObject( serre_category, UnderlyingHonestObject( Range( gen_morphism ) ) ),
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( serre_morphism, serre_category,
+                             AsSerreQuotientCategoryByCospansObject( serre_category, UnderlyingHonestObject( Source( gen_morphism ) ) ),
+                             AsSerreQuotientCategoryByCospansObject( serre_category, UnderlyingHonestObject( Range( gen_morphism ) ) ),
                              UnderlyingGeneralizedMorphism, gen_morphism );
     
     if HasSpecializedMorphismFilterForSerreQuotients( serre_category ) then

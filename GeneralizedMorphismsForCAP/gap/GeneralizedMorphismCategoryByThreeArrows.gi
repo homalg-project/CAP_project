@@ -291,7 +291,7 @@ InstallMethod( GeneralizedMorphismCategoryByThreeArrows,
     
     AddObjectRepresentation( generalized_morphism_category, IsGeneralizedMorphismCategoryByThreeArrowsObject );
     
-    AddMorphismRepresentation( generalized_morphism_category, IsGeneralizedMorphismByThreeArrows );
+    AddMorphismRepresentation( generalized_morphism_category, IsGeneralizedMorphismByThreeArrows and HasSourceAid and HasRangeAid and HasArrow );
     
     generalized_morphism_category!.predicate_logic := category!.predicate_logic;
     
@@ -353,9 +353,9 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismByThreeArrows,
     
     generalized_morphism := rec( );
     
-    ObjectifyMorphismForCAPWithAttributes( generalized_morphism, generalized_category,
-                             Source, GeneralizedMorphismByThreeArrowsObject( Range( source_aid ) ),
-                             Range, GeneralizedMorphismByThreeArrowsObject( Source( range_aid ) ),
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( generalized_morphism, generalized_category,
+                             GeneralizedMorphismByThreeArrowsObject( Range( source_aid ) ),
+                             GeneralizedMorphismByThreeArrowsObject( Source( range_aid ) ),
                              SourceAid, source_aid,
                              RangeAid, range_aid,
                              Arrow, morphism_aid );

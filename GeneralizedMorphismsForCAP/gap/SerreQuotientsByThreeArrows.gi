@@ -383,7 +383,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByThreeArrows,
     
     AddObjectRepresentation( serre_category, IsSerreQuotientCategoryByThreeArrowsObject );
     
-    AddMorphismRepresentation( serre_category, IsSerreQuotientCategoryByThreeArrowsMorphism );
+    AddMorphismRepresentation( serre_category, IsSerreQuotientCategoryByThreeArrowsMorphism and HasUnderlyingGeneralizedMorphism );
     
     serre_category!.predicate_logic := category!.predicate_logic;
     
@@ -451,9 +451,9 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByThreeArrowsMorphism,
     
     serre_morphism := rec( );
     
-    ObjectifyMorphismForCAPWithAttributes( serre_morphism, serre_category,
-                             Source, AsSerreQuotientCategoryByThreeArrowsObject( serre_category, UnderlyingHonestObject( Source( gen_morphism ) ) ),
-                             Range, AsSerreQuotientCategoryByThreeArrowsObject( serre_category, UnderlyingHonestObject( Range( gen_morphism ) ) ),
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( serre_morphism, serre_category,
+                             AsSerreQuotientCategoryByThreeArrowsObject( serre_category, UnderlyingHonestObject( Source( gen_morphism ) ) ),
+                             AsSerreQuotientCategoryByThreeArrowsObject( serre_category, UnderlyingHonestObject( Range( gen_morphism ) ) ),
                              UnderlyingGeneralizedMorphism, gen_morphism );
     
     if HasSpecializedMorphismFilterForSerreQuotients( serre_category ) then

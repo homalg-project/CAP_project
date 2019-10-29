@@ -73,7 +73,7 @@ InstallMethod( StringsAsCategory,
     
     AddObjectRepresentation( category, IsStringsAsCategoryObject );
     
-    AddMorphismRepresentation( category, IsStringsAsCategoryMorphism );
+    AddMorphismRepresentation( category, IsStringsAsCategoryMorphism and HasUnderlyingString );
 
     INSTALL_FUNCTIONS_FOR_STRINGS_AS_CATEGORY( category );
     
@@ -529,9 +529,9 @@ InstallMethod( StringsAsCategoryMorphism,
     
     category := CapCategory( source );
     
-    ObjectifyMorphismForCAPWithAttributes( morphism, category,
-                                           Source, source,
-                                           Range, range,
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( morphism, category,
+                                           source,
+                                           range,
                                            UnderlyingString, string
     );
     

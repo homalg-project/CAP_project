@@ -67,9 +67,9 @@ InstallMethod( VectorSpaceMorphism,
     
     vector_space_morphism := rec( );
     
-    ObjectifyMorphismForCAPWithAttributes( vector_space_morphism, category,
-                                           Source, source,
-                                           Range, range,
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( vector_space_morphism, category,
+                                           source,
+                                           range,
                                            UnderlyingFieldForHomalg, homalg_field,
                                            UnderlyingMatrix, homalg_matrix
     );
