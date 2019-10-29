@@ -27,7 +27,7 @@ InstallMethod( CategoryOfGradedColumns,
       
       AddObjectRepresentation( category, IsGradedColumnRep );
       
-      AddMorphismRepresentation( category, IsGradedColumnMorphismRep );
+      AddMorphismRepresentation( category, IsGradedColumnMorphismRep and HasUnderlyingHomalgGradedRing and HasUnderlyingHomalgMatrix );
       
       SetUnderlyingGradedRing( category, homalg_graded_ring );
       

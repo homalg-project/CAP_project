@@ -225,14 +225,16 @@ InstallGlobalFunction( ObjectifyMorphismForCAPWithAttributes,
   function( arg_list... )
     local category, morphism;
     
+    category := arg_list[ 2 ];
+    
     Print(
       Concatenation(
-      "WARNING: ObjectifyMorphismForCAPWithAttributes is deprecated and will not be supported after 2020.10.29. ",
+      "WARNING (", Name( category ), "): \n",
+      "ObjectifyMorphismForCAPWithAttributes is deprecated and will not be supported after 2020.10.29. \n",
       "Please use ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( morphism, category, source, range[, attr1, val1, attr2, val2, ...] ) instead.\n"
       )
     );
     
-    category := arg_list[ 2 ];
     arg_list[ 2 ] := category!.morphism_type;
     Append( arg_list, [ CapCategory, category ] );
     CallFuncList( ObjectifyWithAttributes, arg_list );

@@ -124,7 +124,7 @@ InstallMethod( QuiverRows,
     
     AddObjectRepresentation( category, IsQuiverRowsObject );
     
-    AddMorphismRepresentation( category, IsQuiverRowsMorphism );
+    AddMorphismRepresentation( category, IsQuiverRowsMorphism and HasMorphismMatrix );
     
     INSTALL_FUNCTIONS_FOR_QUIVER_ROWS( category, over_Z );
     
@@ -209,10 +209,10 @@ InstallMethod( QuiverRowsMorphism,
     
     category := CapCategory( source );
 
-    ObjectifyMorphismForCAPWithAttributes( 
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
                              quiver_rows_morphism, category,
-                             Source, source,
-                             Range, range,
+                             source,
+                             range,
                              MorphismMatrix, matrix
     );
 

@@ -35,7 +35,7 @@ InstallMethod( AdditiveClosure,
     
     AddObjectRepresentation( category, IsAdditiveClosureObject );
     
-    AddMorphismRepresentation( category, IsAdditiveClosureMorphism );
+    AddMorphismRepresentation( category, IsAdditiveClosureMorphism and HasMorphismMatrix );
     
     INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE( category );
     
@@ -106,10 +106,10 @@ InstallMethod( AdditiveClosureMorphism,
     
     category := CapCategory( source );
 
-    ObjectifyMorphismForCAPWithAttributes( 
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
                              additive_closure_morphism, category,
-                             Source, source,
-                             Range, range,
+                             source,
+                             range,
                              MorphismMatrix, matrix
     );
     

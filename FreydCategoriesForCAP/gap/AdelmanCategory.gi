@@ -48,7 +48,7 @@ InstallMethod( AdelmanCategory,
     
     AddObjectRepresentation( adelman_category, IsAdelmanCategoryObject );
     
-    AddMorphismRepresentation( adelman_category, IsAdelmanCategoryMorphism );
+    AddMorphismRepresentation( adelman_category, IsAdelmanCategoryMorphism and HasMorphismDatum );
     
     INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY( adelman_category );
     
@@ -136,10 +136,10 @@ InstallMethod( AdelmanCategoryMorphism,
     
     category :=  CapCategory( source );
     
-    ObjectifyMorphismForCAPWithAttributes( 
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
                              adelman_category_morphism, category,
-                             Source, source,
-                             Range, range,
+                             source,
+                             range,
                              MorphismDatum, morphism_datum
     );
     
