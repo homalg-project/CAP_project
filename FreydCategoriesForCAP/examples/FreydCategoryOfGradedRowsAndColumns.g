@@ -387,6 +387,186 @@ IsMonomorphism( coeval );
 
 
 #################################################################
+#! @Section Tools for Freyd category of graded rows
+#################################################################
+
+#! We have introduced functionality, to easily compute tensor products.
+#! Namely, * surves as tensor product among objects and morphisms in Freyd.
+#! In case the n-th tensor product of an object with itself is desired, we can just use ^n.
+
+#! @Example
+power_obj2 := axKbxcK * axKbxcK;
+#! <An object in Category of f.p. graded left modules over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+power_obj3 := axKbxcK^3;
+#! <An object in Category of f.p. graded left modules over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+power_mor2 := coeval * coeval;
+#! <A morphism in Category of f.p. graded left modules over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+power_mor3 := coeval^3;
+#! <A morphism in Category of f.p. graded left modules over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+#! @EndExample
+
+#! Also, we can compute Frobenius powers of objects.
+
+#! @Example
+frob0 := FrobeniusPowerOfFPGradedModule( axKbxcK, 0 );
+#! <An object in Category of f.p. graded left modules over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+frob1 := FrobeniusPowerOfFPGradedModule( axKbxcK, 1 );
+#! <An object in Category of f.p. graded left modules over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+frob2 := FrobeniusPowerOfFPGradedModule( axKbxcK, 2 );
+#! <An object in Category of f.p. graded left modules over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+#! @EndExample
+
+
+#################################################################
+#! @Section Functors for Freyd category of graded rows
+#################################################################
+
+#! A f.p. graded module admits many presentations. For computational efficiency, those
+#! presentations, which are easiest/quickest to perform computations by, are of particular interest.
+#! For example we have
+
+#! @Log
+Display( power_obj2 );
+#! An object in Category of f.p. graded left modules over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#!
+#! Relation morphism:
+#! A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#!
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! of rank 64 and degrees: [ [ ( 8, 8 ), 64 ] ]
+#!
+#! Matrix:
+#! 1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,1,0,0,
+#!  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#! 0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1,1,0,0,
+#!  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#! 0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,1,
+#!  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#! 0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1,1,
+#!  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#! 0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#!  1,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#! 0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#!  0,1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#! 0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#!  1,0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#! 0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#!  0,1,0,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#! 1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,
+#!  0,0,0,0,0,0,0,0,1,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,
+#! 0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,
+#!  0,0,0,0,0,0,0,0,0,1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,
+#! 0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,
+#!  0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,
+#! 0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,
+#!  0,0,0,0,0,0,0,0,0,1,0,1,0,0,1,1,0,0,0,0,0,0,0,0,
+#! 0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,
+#!  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,1,0,0,
+#! 0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,
+#!  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1,1,0,0,
+#! 0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,
+#!  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,1,
+#! 0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,
+#!  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1,1 
+#! (over a graded ring)
+#!
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! of rank 16 and degrees: [ [ ( 8, 8 ), 16 ] ]
+#! @EndLog
+
+#! But we can find a better presentation. Namely,
+#! @Example
+reduced_power_obj2 := ByASmallerPresentation( power_obj2 );
+#! <An object in Category of f.p. graded left modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+#! @EndExample
+
+#! Namely, this module is now presented as follows:
+
+#! @BeginLog
+Display( reduced_power_obj2 );
+#! An object in Category of f.p. graded left modules over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#!
+#! Relation morphism:
+#! A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#!
+#! Source:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! of rank 0 and degrees: [  ]
+#!
+#! Matrix:
+#! (an empty 1 x 0 matrix)
+#!
+#! Range:
+#! A graded row over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! of rank 1 and degrees: [ [ ( 8, 8 ), 1 ] ]
+#! @EndLog
+
+#! This functionality is available as a functor, along with other functors:
+
+#! @Example
+FunctorLessGradedGeneratorsLeft( S );
+#! Less generators for Category of f.p. graded left modules
+#! over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+FunctorGradedStandardModuleLeft( S );
+#! Graded standard module for Category of f.p. graded left modules
+#! over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+FunctorByASmallerPresentationLeft( S );
+#! ByASmallerPresentation for Category of f.p. graded
+#! left modules over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! @EndExample
+
+#! We also provide the natural isomorphism between
+#! the identity functor and the standard module functor, namely
+
+#! @BeginExample
+NaturalIsomorphismFromIdentityToGradedStandardModuleLeft( S );
+#! Natural isomorphism from Id to Graded standard module for
+#! Category of f.p. graded left modules over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! @EndExample
+
+#! There are also some functors which we provide for all Freyd categories.
+#! Examples include the embedding functor of the additive category in its 
+#! Freyd category and the best projective approximation functor.
+
+#! @BeginExample
+EmbeddingIntoFreydCategory( cat );
+#! Embedding functor of Category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! into its Freyd category
+BestProjectiveApproximationFunctor( cat );
+#! Best projective approximation functor of the Freyd category
+#! of Category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+BestEmbeddedProjectiveApproximationFunctor( cat );
+#! Best embedded projective approximation functor of the Freyd category
+#! of Category of graded rows over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! @EndExample
+
+
+#################################################################
 #! @Section Freyd category of graded columns
 #################################################################
 
@@ -761,4 +941,186 @@ IsEpimorphism( coeval );
 #! true
 IsMonomorphism( coeval );
 #! true
+#! @EndExample
+
+
+#################################################################
+#! @Section Tools for Freyd category of graded columns
+#################################################################
+
+#! Note that we have introduced some neat functionality, to easily compute tensor products.
+#! Namely, * surves as tensor product among objects and morphisms in Freyd.
+#! In case the n-th tensor product of an object with itself is desired, we can just use ^n.
+
+#! @Example
+power_obj2 := axKbxcK * axKbxcK;
+#! <An object in Category of f.p. graded right modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+power_obj3 := axKbxcK^3;
+#! <An object in Category of f.p. graded right modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+power_mor2 := coeval * coeval;
+#! <A morphism in Category of f.p. graded right modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+power_mor3 := coeval^3;
+#! <A morphism in Category of f.p. graded right modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+#! @EndExample
+
+#! Also, we can compute Frobenius powers of objects.
+
+#! @Example
+frob0 := FrobeniusPowerOfFPGradedModule( axKbxcK, 0 );
+#! <An object in Category of f.p. graded right modules over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+frob1 := FrobeniusPowerOfFPGradedModule( axKbxcK, 1 );
+#! <An object in Category of f.p. graded right modules over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+frob2 := FrobeniusPowerOfFPGradedModule( axKbxcK, 2 );
+#! <An object in Category of f.p. graded right modules over
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+#! @EndExample
+
+
+#################################################################
+#! @Section Functors for Freyd category of graded columns
+#################################################################
+
+#! A f.p. graded module admits many presentations. For computational efficiency, those
+#! presentations, which are easiest/quickest to perform computations by, are of particular interest.
+#! For example we have
+
+#! @Log
+Display( power_obj2 );
+#! An object in Category of f.p. graded right modules over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#!
+#! Relation morphism:
+#! A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#!
+#! Source:
+#! A graded column over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! of rank 64 and degrees: [ [ ( 8, 8 ), 64 ] ]
+#!
+#! Matrix:
+#! 1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,1,0,0,
+#!  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#! 0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1,1,0,0,
+#!  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#! 0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,1,
+#!  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#! 0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1,1,
+#!  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#! 0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#!  1,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#! 0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#!  0,1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#! 0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#!  1,0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#! 0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#!  0,1,0,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+#! 1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,
+#!  0,0,0,0,0,0,0,0,1,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,
+#! 0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,
+#!  0,0,0,0,0,0,0,0,0,1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,
+#! 0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,
+#!  0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,
+#! 0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,
+#!  0,0,0,0,0,0,0,0,0,1,0,1,0,0,1,1,0,0,0,0,0,0,0,0,
+#! 0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,
+#!  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,1,0,0,
+#! 0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,
+#!  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1,1,0,0,
+#! 0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,
+#!  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,1,
+#! 0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,
+#!  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1,1 
+#! (over a graded ring)
+#!
+#! Range:
+#! A graded column over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! of rank 16 and degrees: [ [ ( 8, 8 ), 16 ] ]
+#! @EndLog
+
+#! But we can find a better presentation. Namely,
+
+#! @Example
+reduced_power_obj2 := ByASmallerPresentation( power_obj2 );
+#! <An object in Category of f.p. graded right modules over 
+#! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+#! @EndExample
+
+#! Now, this module is presented as follows:
+
+#! @BeginLog
+Display( reduced_power_obj2 );
+#! An object in Category of f.p. graded right modules over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#!
+#! Relation morphism:
+#! A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#!
+#! Source:
+#! A graded column over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! of rank 0 and degrees: [  ]
+#!
+#! Matrix:
+#! (an empty 1 x 0 matrix)
+#!
+#! Range:
+#! A graded column over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! of rank 1 and degrees: [ [ ( 8, 8 ), 1 ] ]
+#! @EndLog
+
+#! This functionality is available as a functor. Of course, more functors are
+#! available:
+
+#! @Example
+FunctorLessGradedGeneratorsRight( S );
+#! Less generators for Category of f.p. graded right modules
+#! over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+FunctorGradedStandardModuleRight( S );
+#! Graded standard module for Category of f.p. graded right modules
+#! over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+FunctorByASmallerPresentationRight( S );
+#! ByASmallerPresentation for Category of f.p. graded
+#! right modules over Q[x_1,x_2,x_3,x_4] 
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! @EndExample
+
+#! We also provide the natural isomorphism between
+#! the identity functor and the standard module functor, namely
+
+#! @BeginExample
+NaturalIsomorphismFromIdentityToGradedStandardModuleRight( S );
+#! Natural isomorphism from Id to Graded standard module for
+#! Category of f.p. graded right modules over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+#! @EndExample
+
+#! There are also some functors which we provide for all Freyd categories.
+#! Examples include the embedding functor of the additive category in its 
+#! Freyd category and the best projective approximation functor.
+
+#! @BeginExample
+EmbeddingIntoFreydCategory( cat );
+#! Embedding functor of Category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ]) 
+#! into its Freyd category
+BestProjectiveApproximationFunctor( cat );
+#! Best projective approximation functor of the Freyd category
+#! of Category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
+BestEmbeddedProjectiveApproximationFunctor( cat );
+#! Best embedded projective approximation functor of the Freyd category
+#! of Category of graded columns over Q[x_1,x_2,x_3,x_4]
+#! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])
 #! @EndExample

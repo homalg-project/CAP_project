@@ -32,3 +32,9 @@ if IsPackageMarkedForLoading( "QPA", ">= 2.0" ) then
 fi;
 
 ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/GradedModulePresentationsByFreyd.gd" );
+
+ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/GradedModulePresentationsByFreydFunctors.gd" );
+
+ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/GradedModulePresentationsByFreydNaturalTransformations.gd" );
+
+ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/Tools.gd" );
