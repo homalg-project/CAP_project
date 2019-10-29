@@ -708,16 +708,18 @@ DeclareOperation( "AddMorphism",
 DeclareOperation( "AddMorphismRepresentation",
                   [ IsCapCategory, IsObject ] );
 
-#! @Arguments morphism, category, [attribute1, value1, ...]
+#! @Arguments morphism, category, source, range[, attr1, val1, attr2, val2, ...]
 #! @Description
 #!  Objectifies the morphism <A>morphism</A> with the type created
 #!  for morphisms in the category <A>category</A>. The type
 #!  is created by passing a representation to <C>AddMorphismRepresentation</C>.
 #!  Morphisms which are objectified using this method do not have to be passed
 #!  to the <C>AddMorphism</C> function.
-#!
-#!  Please note that the <C>Source</C> and <C>Range</C> attribute need to be passed to
-#!  this function. The values belonging to these attrbutes will not be objectified.
+#!  The arguments <C>source</C> and <C>range</C> are assumed to be objectified.
+#! The optional arguments behave like the corresponding arguments in <C>ObjectifyWithAttributes</C>.
+DeclareGlobalFunction( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" );
+
+##
 DeclareGlobalFunction( "ObjectifyMorphismForCAPWithAttributes" );
 
 ###################################
