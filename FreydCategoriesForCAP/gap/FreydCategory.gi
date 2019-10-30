@@ -86,7 +86,7 @@ InstallGlobalFunction( FREYD_CATEGORY,
 
     AddObjectRepresentation( freyd_category, IsFreydCategoryObject );
     
-    AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism );
+    AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism and HasMorphismDatum );
     
     INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY( freyd_category );
     
@@ -194,10 +194,10 @@ InstallGlobalFunction( FREYD_CATEGORY_MORPHISM,
     
     category :=  CapCategory( source );
 
-    ObjectifyMorphismForCAPWithAttributes( 
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
                              freyd_category_morphism, category,
-                             Source, source,
-                             Range, range,
+                             source,
+                             range,
                              MorphismDatum, morphism_datum
     );
     

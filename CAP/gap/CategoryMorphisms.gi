@@ -195,7 +195,7 @@ InstallMethod( AddMorphismRepresentation,
   function( category, representation )
     
     category!.morphism_representation := representation;
-    category!.morphism_type := NewType( TheFamilyOfCapCategoryMorphisms, representation and MorphismFilter( category ) and IsCapCategoryMorphismRep );
+    category!.morphism_type := NewType( TheFamilyOfCapCategoryMorphisms, representation and MorphismFilter( category ) and IsCapCategoryMorphismRep and HasSource and HasRange and HasCapCategory );
     
 end );
 
@@ -219,13 +219,22 @@ InstallMethod( RandomMorphism,
 InstallMethod( RandomMorphism,
     [ IsCapCategory, IsList ], RandomMorphismByList );
 
-
+##
 InstallGlobalFunction( ObjectifyMorphismForCAPWithAttributes,
                        
   function( arg_list... )
     local category, morphism;
     
     category := arg_list[ 2 ];
+    
+    Print(
+      Concatenation(
+      "WARNING (", Name( category ), "): \n",
+      "ObjectifyMorphismForCAPWithAttributes is deprecated and will not be supported after 2020.10.29. \n",
+      "Please use ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( morphism, category, source, range[, attr1, val1, attr2, val2, ...] ) instead.\n"
+      )
+    );
+    
     arg_list[ 2 ] := category!.morphism_type;
     Append( arg_list, [ CapCategory, category ] );
     CallFuncList( ObjectifyWithAttributes, arg_list );
@@ -237,6 +246,26 @@ InstallGlobalFunction( ObjectifyMorphismForCAPWithAttributes,
     fi;
     
 end );
+
+##
+InstallGlobalFunction( ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes,
+                       
+  function( morphism, category, source, range, additional_arguments_list... )
+    local arg_list;
+    
+    arg_list := Concatenation( 
+        [ morphism, category!.morphism_type, CapCategory, category, Source, source, Range, range ], additional_arguments_list
+    );
+    
+    CallFuncList( ObjectifyWithAttributes, arg_list );
+    
+    if category!.predicate_logic then
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ morphism ], source, category );
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ morphism ], range, category );
+    fi;
+    
+end );
+
 
 ##
 InstallMethod( Simplify,

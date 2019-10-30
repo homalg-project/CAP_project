@@ -33,7 +33,7 @@ InstallMethod( CategoryOfColumns,
     
     AddObjectRepresentation( category, IsCategoryOfColumnsObject );
     
-    AddMorphismRepresentation( category, IsCategoryOfColumnsMorphism );
+    AddMorphismRepresentation( category, IsCategoryOfColumnsMorphism and HasUnderlyingMatrix );
     
     INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS( category );
     
@@ -139,9 +139,9 @@ InstallMethod( CategoryOfColumnsMorphism,
     
     category_of_columns_morphism := rec( );
     
-    ObjectifyMorphismForCAPWithAttributes( category_of_columns_morphism, category,
-                                           Source, source,
-                                           Range, range,
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( category_of_columns_morphism, category,
+                                           source,
+                                           range,
                                            UnderlyingMatrix, homalg_matrix
     );
     

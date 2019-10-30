@@ -218,7 +218,7 @@ InstallMethod( AddObjectRepresentation,
   function( category, representation )
     
     category!.object_representation := representation;
-    category!.object_type := NewType( TheFamilyOfCapCategoryObjects, representation and ObjectFilter( category ) and IsCapCategoryObjectRep );
+    category!.object_type := NewType( TheFamilyOfCapCategoryObjects, representation and ObjectFilter( category ) and IsCapCategoryObjectRep and HasCapCategory );
     
 end );
 

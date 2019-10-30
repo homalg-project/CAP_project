@@ -24,7 +24,7 @@ InstallMethod( MatrixCategory,
     
     AddObjectRepresentation( category, IsVectorSpaceObject );
     
-    AddMorphismRepresentation( category, IsVectorSpaceMorphism );
+    AddMorphismRepresentation( category, IsVectorSpaceMorphism and HasUnderlyingFieldForHomalg and HasUnderlyingMatrix );
     
     category!.field_for_matrix_category := homalg_field;
     
