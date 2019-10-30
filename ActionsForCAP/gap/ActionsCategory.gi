@@ -207,7 +207,7 @@ InstallMethod( LeftActionsCategory,
         
     fi;
     
-    structure_record.NoInstallList := [ "Lift", "Colift" ];
+    structure_record.NoInstallList := [ "Lift", "ProjectiveLift", "Colift", "InjectiveColift" ];
     
     structure_record.InstallList := [ "LiftAlongMonomorphism", "ColiftAlongEpimorphism" ];
     
