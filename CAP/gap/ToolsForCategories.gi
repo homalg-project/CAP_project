@@ -687,6 +687,10 @@ InstallGlobalFunction( CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS,
                 list_position := Int( current_output[ 2 ] );
             else
                 list_position := Position( input_list, current_output[ 2 ] );
+                if list_position = fail then
+                    Error( "unable to find ", current_output[ 2 ], " in input_list" );
+                fi;
+                list_position := function_input[ list_position ];
             fi;
             
             if list_position = fail then
