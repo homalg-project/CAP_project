@@ -75,7 +75,7 @@ InstallMethod( CheckBraiding,
                     TensorProductOnMorphisms( IdentityMorphism( A ), Braiding( B, C ) ),
                     AssociatorRightToLeft( A, C, B ) ] );
     
-    if not mor1 = mor2 then
+    if not IsCongruentForMorphisms( mor1, mor2 ) then
        return false;
     fi;
     
@@ -91,6 +91,6 @@ InstallMethod( CheckBraiding,
                     TensorProductOnMorphisms( Braiding( A, B ), IdentityMorphism( C ) ),
                     AssociatorLeftToRight( B, A, C ) ] );
     
-    return mor1 = mor2;
+    return IsCongruentForMorphisms( mor1, mor2 );
     
 end );
