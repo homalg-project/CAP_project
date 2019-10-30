@@ -263,6 +263,8 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
             new_filter_list := CAP_INTERNAL_MERGE_FILTER_LISTS( replaced_filter_list, filter_list );
             
+            if category!.overhead then
+            
             install_method( ValueGlobal( install_name ),
                             new_filter_list,
                             
@@ -370,6 +372,30 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 return result;
                 
             end );
+            
+            else #category!.overhead = false
+                
+                if Size( filter_list ) <> Size( argument_list ) then
+                    
+                    InstallMethod( ValueGlobal( install_name ),
+                                new_filter_list,
+                                    
+                        function( arg )
+                            
+                            return CallFuncList( func_to_install, arg{ argument_list } );
+                            
+                    end );
+                    
+                else
+                    
+                    InstallMethod( ValueGlobal( install_name ),
+                                new_filter_list,
+                                func_to_install
+                    );
+                    
+                fi;
+                
+            fi;
             
         end;
         
