@@ -79,6 +79,37 @@ DeclareOperation( "AdditiveClosureMorphism",
 DeclareAttribute( "AsAdditiveClosureMorphism",
                   IsCapCategoryMorphism );
 
+#! @Description
+#! The input is an Ab-category $C$. The output is the inclusion functor $\iota:C\to C^\oplus$.
+#! @Arguments C
+#! @Returns a CapFunctor
+DeclareAttribute( "InclusionFunctorInAdditiveClosure",
+                  IsCapCategory );
+
+#! @Description
+#! The input is a functor $F:C\to D$, and the output is the extension functor
+#! $F^\oplus:C^\oplus \to D^\oplus$.
+#! @Arguments F
+#! @Returns a CapFunctor
+DeclareAttribute( "ExtendFunctorToAdditiveClosures",
+                  IsCapFunctor );
+
+#! @Description
+#! The input is a functor $F:C\to D$, where $D$ is an additive category. The output is the extension functor
+#! $F^\oplus:C^\oplus \to D$.
+#! @Arguments F
+#! @Returns a CapFunctor
+DeclareAttribute( "ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource",
+                  IsCapFunctor );
+
+#! @Description
+#! The input is a functor $F:C\to D$, where $C$ is an additive category. The output is the extension functor
+#! $F^\oplus:C \to D^\oplus$, which is nothing but the composition of $F:C\to D$ with the inclusion functor $\iota:D\to D^\oplus$.
+#! @Arguments F
+#! @Returns a CapFunctor
+DeclareAttribute( "ExtendFunctorWithAdditiveSourceToFunctorToAdditiveClosureOfRange",
+                  IsCapFunctor );
+
 ####################################
 ##
 #! @Section Attributes
