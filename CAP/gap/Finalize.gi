@@ -132,6 +132,12 @@ InstallMethod( IsFinalized,
     
     derivation_list := ShallowCopy( CAP_INTERNAL_FINAL_DERIVATION_LIST.final_derivation_list );
     
+    if not category!.is_computable then
+        
+        derivation_list := Filtered( derivation_list, der -> not NameFunction( der!.name ) = "IsCongruentForMorphisms" );
+        
+    fi;
+    
     weight_list := category!.derivations_weight_list;
     
     while true do

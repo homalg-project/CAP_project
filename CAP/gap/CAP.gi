@@ -500,15 +500,19 @@ InstallMethod( CreateCapCategory,
                [ IsString ],
                
   function( name )
-    local overhead, category;
+    local overhead, is_computable, category;
     
     overhead := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "overhead", true );
+    
+    is_computable := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_computable", true );
     
     category := rec( );
     
     category := CREATE_CAP_CATEGORY_OBJECT( category, [ [ "Name", name ] ] );
     
     category!.overhead := overhead;
+    
+    category!.is_computable := is_computable;
     
     CREATE_CAP_CATEGORY_FILTERS( category );
     
