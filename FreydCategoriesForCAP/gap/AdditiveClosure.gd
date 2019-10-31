@@ -102,6 +102,15 @@ DeclareAttribute( "ExtendFunctorToAdditiveClosures",
 DeclareAttribute( "ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource",
                   IsCapFunctor );
 
+#! @Description
+#! The input is a functor $F:C\to D$. If $D$ is not known to be an additive category, then return
+#! <C>ExtendFunctorToAdditiveClosures</C>(<A>F</A>), otherwise return
+#! <C>ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource</C>(<A>F</A>).
+#! @Arguments F
+#! @Returns a CapFunctor
+DeclareAttribute( "ExtendFunctorToAdditiveClosureOfSource",
+                  IsCapFunctor );
+
 ####################################
 ##
 #! @Section Attributes

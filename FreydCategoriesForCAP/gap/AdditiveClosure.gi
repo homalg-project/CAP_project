@@ -259,6 +259,24 @@ InstallMethod( ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSourc
     
 end );
 
+##
+InstallMethod( ExtendFunctorToAdditiveClosureOfSource,
+              [ IsCapFunctor ],
+  function( F )
+    local range_cat;
+    
+    range_cat := AsCapCategory( Range( F ) );
+    
+    if not ( HasIsAdditiveCategory( range_cat ) and IsAdditiveCategory( range_cat ) ) then
+      
+      return ExtendFunctorToAdditiveClosures( F );
+      
+    fi;
+    
+    return ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource( F );
+    
+end );
+
 ####################################
 ##
 ## Operations
