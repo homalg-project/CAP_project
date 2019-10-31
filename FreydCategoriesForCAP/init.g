@@ -35,4 +35,6 @@ ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/Grad
 
 if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" ) then
     ReadPackage( "FreydCategoriesForCAP", "gap/GroupsAsCats.gd" );
+    
+    ReadPackage( "FreydCategoriesForCAP", "gap/LinearClosure.gd" );
 fi;

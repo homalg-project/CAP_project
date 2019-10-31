@@ -104,13 +104,43 @@ end );
 ####################################
 
 ##
+InstallMethod( ViewString,
+               [ IsGroupAsCategoryMorphism ],
+    
+    function( alpha )
+        
+        return Concatenation( "<", ViewString( UnderlyingGroupElement( alpha ) ), ">" );
+        
+end );
+
+##
+InstallMethod( ViewString,
+               [ IsGroupAsCategoryObject ],
+
+  function( obj )
+    
+    return "*";
+    
+end );
+
+##
 InstallMethod( ViewObj,
                [ IsGroupAsCategoryMorphism ],
+               
+    function( alpha )
+        
+        Print( ViewString( alpha ) );
+        
+end );
 
-  function( alpha )
-    
-    Print( String( UnderlyingGroupElement( alpha ) ) );
-    
+##
+InstallMethod( ViewObj,
+               [ IsGroupAsCategoryObject ],
+               
+    function( obj )
+        
+        Print( ViewString( obj ) );
+        
 end );
 
 ####################################
@@ -241,7 +271,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
         );
     end );
     
-    ## Warning: the hom structure is costly for big finite groups
+    ## Warning: the hom structure is costly for big finite groups.
+    ## TODO: Only do a preprocessing for small groups
     if is_finite then
         
         sets := RangeCategoryOfHomomorphismStructure( category );
@@ -325,7 +356,10 @@ InstallMethod( \*,
                [ IsGroupAsCategoryMorphism, IsGroupAsCategoryMorphism ],
                PreCompose );
 
-
 InstallMethod( \=,
                [ IsGroupAsCategoryMorphism, IsGroupAsCategoryMorphism ],
                IsCongruentForMorphisms );
+
+InstallMethod( \/,
+               [ IsObject, IsGroupAsCategory ],
+               GroupAsCategoryMorphism );
