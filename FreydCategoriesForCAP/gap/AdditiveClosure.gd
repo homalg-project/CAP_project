@@ -102,14 +102,6 @@ DeclareAttribute( "ExtendFunctorToAdditiveClosures",
 DeclareAttribute( "ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource",
                   IsCapFunctor );
 
-#! @Description
-#! The input is a functor $F:C\to D$, where $C$ is an additive category. The output is the extension functor
-#! $F^\oplus:C \to D^\oplus$, which is nothing but the composition of $F:C\to D$ with the inclusion functor $\iota:D\to D^\oplus$.
-#! @Arguments F
-#! @Returns a CapFunctor
-DeclareAttribute( "ExtendFunctorWithAdditiveSourceToFunctorToAdditiveClosureOfRange",
-                  IsCapFunctor );
-
 ####################################
 ##
 #! @Section Attributes
