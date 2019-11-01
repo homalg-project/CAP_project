@@ -513,6 +513,46 @@ InstallMethod( MereExistenceOfSolutionOfLinearSystemInAbCategory,
     
 end );
 
+##
+InstallMethod( HomStructure,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( alpha, beta )
+    
+    return HomomorphismStructureOnMorphisms( alpha, beta );
+    
+end );
+
+##
+InstallMethod( HomStructure,
+               [ IsCapCategoryObject, IsCapCategoryMorphism ],
+               
+  function( a, beta )
+    
+    return HomomorphismStructureOnMorphisms( IdentityMorphism( a ), beta );
+    
+end );
+
+##
+InstallMethod( HomStructure,
+               [ IsCapCategoryMorphism, IsCapCategoryObject ],
+               
+  function( alpha, b )
+    
+    return HomomorphismStructureOnMorphisms( alpha, IdentityMorphism( b ) );
+    
+end );
+
+##
+InstallMethod( HomStructure,
+               [ IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( a, b )
+    
+    return HomomorphismStructureOnObjects( a, b );
+    
+end );
+
 ######################################
 ##
 ## Morphism transport

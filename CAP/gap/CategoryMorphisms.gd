@@ -1952,6 +1952,43 @@ DeclareOperation( "AddMereExistenceOfSolutionOfLinearSystemInAbCategory",
 DeclareOperation( "AddMereExistenceOfSolutionOfLinearSystemInAbCategory",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! This is a convenience method.
+#! The arguments are two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$ in $C$.
+#! The output is <C>HomomorphismStructureOnMorphisms</C> called on $\alpha$, $\beta$.
+#! @Returns a morphism in $\mathrm{Hom}_{D}(H(a',b), H(a,b'))$
+#! @Arguments alpha, beta
+DeclareOperation( "HomStructure",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism] );
+
+#! @Description
+#! This is a convenience method.
+#! The arguments are a morphism $\alpha: a \rightarrow a'$ and an object $b$ in $C$.
+#! The output is <C>HomomorphismStructureOnMorphisms</C> called on $\alpha$, $\mathrm{id}_b$.
+#! @Returns a morphism in $\mathrm{Hom}_{D}(H(a',b), H(a,b))$
+#! @Arguments alpha, b
+DeclareOperation( "HomStructure",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism] );
+
+#! @Description
+#! This is a convenience method.
+#! The arguments are an object $a$ and a morphism $\beta: b \rightarrow b'$ in $C$.
+#! The output is <C>HomomorphismStructureOnMorphisms</C> called on $\mathrm{id}_a$, $\beta$.
+#! @Returns a morphism in $\mathrm{Hom}_{D}(H(a,b), H(a,b'))$
+#! @Arguments a, beta
+DeclareOperation( "HomStructure",
+                  [ IsCapCategoryMorphism, IsCapCategoryObject] );
+
+#! @Description
+#! This is a convenience method.
+#! The arguments are two objects $a$ and $b$ in $C$.
+#! The output is <C>HomomorphismStructureOnObjects</C> called on $a,b$.
+#! @Returns an object
+#! @Arguments a, b
+DeclareOperation( "HomStructure",
+                  [ IsCapCategoryObject, IsCapCategoryObject] );
+
+
 ###################################
 ##
 #! @Section Simplified Morphisms
