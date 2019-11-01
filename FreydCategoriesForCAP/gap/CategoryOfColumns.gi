@@ -31,6 +31,14 @@ InstallMethod( CategoryOfColumns,
     
     SetUnderlyingRing( category, homalg_ring );
     
+    if HasIsCommutative( homalg_ring ) and IsCommutative( homalg_ring ) then
+      
+      SetIsLinearCategoryOverCommutativeRing( category, true );
+      
+      SetCommutativeRingOfLinearCategory( category, homalg_ring );
+      
+    fi;
+    
     AddObjectRepresentation( category, IsCategoryOfColumnsObject );
     
     AddMorphismRepresentation( category, IsCategoryOfColumnsMorphism and HasUnderlyingMatrix );
@@ -568,9 +576,17 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
       
       end );
     
-    ## Operations related to homomorphism structure
-    
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
+        
+        ##
+        AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+          function( r, alpha )
+            
+            return CategoryOfColumnsMorphism( Source( alpha ), r * UnderlyingMatrix( alpha ), Range( alpha ) );
+            
+        end );
+        
+        ## Operations related to homomorphism structure
         
         SetRangeCategoryOfHomomorphismStructure( category, category );
         
