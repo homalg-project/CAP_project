@@ -78,7 +78,7 @@ IsCongruentForMorphisms(
 R := HomalgFieldOfRationalsInSingular() * "x,y,z";;
 ColsR := CategoryOfColumns( R );;
 m := AsCategoryOfColumnsMorphism( 
-     HomalgMatrix( "[[x],[y],[z]]", 1, 3, R ) 
+     HomalgMatrix( "[[x],[y],[z]]", 1, 3, R ), ColsR
 );;
 mu := AsCokernelImageClosureMorphism( m );;
 
@@ -87,7 +87,7 @@ C2 := AsFinitelyPresentedCokernelImageClosureObject( m );;
 IsEqualForObjects( C, C2 );
 #! true
 n := AsCategoryOfColumnsMorphism( 
-    HomalgMatrix( "[[x,y],[y^2,z]]", 2, 2, R )
+    HomalgMatrix( "[[x,y],[y^2,z]]", 2, 2, R ), ColsR
 );;
 nu := AsCokernelImageClosureMorphism( n );;
 nu2 := PreCompose( nu, nu );;

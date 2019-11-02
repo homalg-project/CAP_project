@@ -35,9 +35,8 @@ DeclareCategory( "IsCategoryOfColumns",
 ##
 ####################################
 
-DeclareAttribute( "CategoryOfColumns",
-                  IsHomalgRing );
-
+DeclareOperation( "CategoryOfColumns",
+                  [ IsHomalgRing ] );
 
 DeclareOperation( "CategoryOfColumnsObject",
                   [ IsInt, IsCategoryOfColumns ] );
@@ -45,8 +44,8 @@ DeclareOperation( "CategoryOfColumnsObject",
 KeyDependentOperation( "CategoryOfColumnsObject",
                        IsCategoryOfColumns, IsInt, ReturnTrue );
 
-DeclareAttribute( "AsCategoryOfColumnsMorphism",
-                  IsHomalgMatrix );
+DeclareOperation( "AsCategoryOfColumnsMorphism",
+                  [ IsHomalgMatrix, IsCategoryOfColumns ] );
 
 DeclareOperation( "CategoryOfColumnsMorphism",
                   [ IsCategoryOfColumnsObject, IsHomalgMatrix, IsCategoryOfColumnsObject ] );

@@ -17,9 +17,11 @@ InstallMethod( CategoryOfColumns,
                [ IsHomalgRing ],
                
   function( homalg_ring )
-    local category, to_be_finalized;
+    local overhead_option, category, to_be_finalized;
     
-    category := CreateCapCategory( Concatenation( "Columns( ", RingName( homalg_ring )," )"  ) );
+    overhead_option := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "overhead", true );
+    
+    category := CreateCapCategory( Concatenation( "Columns( ", RingName( homalg_ring )," )" ) : overhead := overhead_option );
     
     SetFilterObj( category, IsCategoryOfColumns );
     
@@ -95,12 +97,10 @@ end );
 
 ##
 InstallMethod( AsCategoryOfColumnsMorphism,
-               [ IsHomalgMatrix ],
+               [ IsHomalgMatrix, IsCategoryOfColumns ],
                
-  function( homalg_matrix )
-    local category, source, range;
-    
-    category := CategoryOfColumns( HomalgRing( homalg_matrix ) );
+  function( homalg_matrix, category )
+    local source, range;
     
     source := CategoryOfColumnsObject( NrColumns( homalg_matrix ), category );
     
