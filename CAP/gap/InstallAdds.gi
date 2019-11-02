@@ -375,7 +375,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
             else #category!.overhead = false
                 
-                if Size( filter_list ) <> Size( argument_list ) then
+                if Size( new_filter_list ) <> Size( argument_list ) then
                     
                     InstallMethod( ValueGlobal( install_name ),
                                 new_filter_list,
@@ -388,10 +388,20 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     
                 else
                     
-                    InstallMethod( ValueGlobal( install_name ),
-                                new_filter_list,
-                                func_to_install
-                    );
+                    if not ( IsProperty( ValueGlobal( install_name ) ) and IsIdenticalObj( func_to_install, ReturnTrue ) ) then
+                        
+                        InstallMethod( ValueGlobal( install_name ),
+                                    new_filter_list,
+                                    func_to_install
+                        );
+                        
+                    else
+                        
+                        ## the call of InstallMethod triggers an error in GAP:
+                        ## use `InstallTrueMethod' for <opr>
+                        InstallTrueMethod( ValueGlobal( install_name ), new_filter_list[1] );
+                        
+                    fi;
                     
                 fi;
                 
