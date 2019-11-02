@@ -1959,7 +1959,7 @@ DeclareOperation( "AddMereExistenceOfSolutionOfLinearSystemInAbCategory",
 #! @Returns a morphism in $\mathrm{Hom}_{D}(H(a',b), H(a,b'))$
 #! @Arguments alpha, beta
 DeclareOperation( "HomStructure",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism] );
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
 #! This is a convenience method.
@@ -1968,7 +1968,7 @@ DeclareOperation( "HomStructure",
 #! @Returns a morphism in $\mathrm{Hom}_{D}(H(a',b), H(a,b))$
 #! @Arguments alpha, b
 DeclareOperation( "HomStructure",
-                  [ IsCapCategoryObject, IsCapCategoryMorphism] );
+                  [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
 #! This is a convenience method.
@@ -1977,7 +1977,7 @@ DeclareOperation( "HomStructure",
 #! @Returns a morphism in $\mathrm{Hom}_{D}(H(a,b), H(a,b'))$
 #! @Arguments a, beta
 DeclareOperation( "HomStructure",
-                  [ IsCapCategoryMorphism, IsCapCategoryObject] );
+                  [ IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
 #! This is a convenience method.
@@ -1986,7 +1986,7 @@ DeclareOperation( "HomStructure",
 #! @Returns an object
 #! @Arguments a, b
 DeclareOperation( "HomStructure",
-                  [ IsCapCategoryObject, IsCapCategoryObject] );
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 
 ###################################
