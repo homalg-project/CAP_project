@@ -9,7 +9,7 @@ LoadPackage( "RingsForHomalg" );;
 R := HomalgFieldOfRationalsInSingular() * "x,y,z";;
 RowsR := CategoryOfRows( R );;
 m := AsCategoryOfRowsMorphism( 
-    HomalgMatrix( "[[x],[y],[z]]", 3, 1, R )
+    HomalgMatrix( "[[x],[y],[z]]", 3, 1, R ), RowsR
 );;
 mu := AsCokernelImageClosureMorphism( m );;
 
@@ -18,7 +18,7 @@ C2 := AsFinitelyPresentedCokernelImageClosureObject( m );;
 IsEqualForObjects( C, C2 );
 #! true
 n := AsCategoryOfRowsMorphism( 
-    HomalgMatrix( "[[x,y],[y^2,z]]", 2, 2, R )
+    HomalgMatrix( "[[x,y],[y^2,z]]", 2, 2, R ), RowsR
 );;
 nu := AsCokernelImageClosureMorphism( n );;
 nu2 := PreCompose( nu, nu );;
