@@ -13,7 +13,7 @@ Subtitle := "Freyd categories - Formal (co)kernels for additive categories",
 Version := Maximum( [
   "2019.03.04", ## Martin's version
   ## this line prevents merge conflicts
-  "2019.10.09", ## Sepp's version
+  "2019.11.02", ## Sepp's version
   ## this line prevents merge conflicts
   "2018.08.02", ## Mohamed's version
   ## this line prevents merge conflicts
