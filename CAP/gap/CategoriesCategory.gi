@@ -37,7 +37,7 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_Cat,
                
   function(  )
     
-    InstallValue( CapCat, rec( caching_info := rec( ), overhead := true ) );
+    InstallValue( CapCat, rec( caching_info := rec( ), overhead := true, is_computable := true ) );
     
     CREATE_CAP_CATEGORY_OBJECT( CapCat, [ [ "Name", "Cat" ] ] );
     
