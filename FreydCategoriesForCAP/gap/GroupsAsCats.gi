@@ -295,25 +295,49 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
         
         ## Precomputatation of the multiplication maps
         ## [g,h] -> List encoding the multiplication map (x -> G[g] * x * G[h])
-        HOM_PERMUTATION_ARRAY :=
-            List( [ 1 .. size ], g -> 
-                List( [ 1 .. size ], h -> 
-                    List( elements, x -> Position( elements, elements[g] * x * elements[h] ) )
-                )
-            );
         
-        ## Should this function have a cache?
-        ##
-        AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
-          function( source, alpha, beta, range )
+        if size <= 120 then ## take Size( SymmetricGroup( 5 ) ) as a first guess
             
-            return MapOfFinSets( 
-                    RG, 
-                    HOM_PERMUTATION_ARRAY[ PositionWithinElements( alpha ) ][ PositionWithinElements( beta ) ],
-                    RG 
-            );
+            ## heavy precomputation, only do for reasonable sizes
             
-        end );
+            HOM_PERMUTATION_ARRAY :=
+                List( [ 1 .. size ], g ->
+                    List( [ 1 .. size ], h ->
+                        List( elements, x -> Position( elements, elements[g] * x * elements[h] ) )
+                    )
+                );
+            
+            ## Should this function have a cache?
+            ##
+            AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
+            function( source, alpha, beta, range )
+                
+                return MapOfFinSets(
+                        RG,
+                        HOM_PERMUTATION_ARRAY[ PositionWithinElements( alpha ) ][ PositionWithinElements( beta ) ],
+                        RG
+                );
+            
+            end );
+            
+        else
+            
+            ## Should this function have a cache?
+            ##
+            AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
+            function( source, alpha, beta, range )
+                
+                return MapOfFinSets(
+                        RG,
+                        List( elements, x -> Position( elements, elements[PositionWithinElements( alpha )] * x * elements[PositionWithinElements( beta )] ) ),
+                        RG
+                );
+                
+            end );
+            
+        fi;
+        
+        
         
         ##
         AddDistinguishedObjectOfHomomorphismStructure( category,
