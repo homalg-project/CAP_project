@@ -108,8 +108,8 @@ IsCongruentForMorphisms( InterpretMorphismFromDinstinguishedObjectToHomomorphism
 a := ZeroObjectFunctorial( cat );;
 IsCongruentForMorphisms( InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( Source( a ), Range( a ), InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( a ) ), a );;
 
-Z4 := FreydCategoryObject( AsCategoryOfRowsMorphism( HomalgMatrix( "[4]", 1, 1, R ) ) );;
-Z3 := FreydCategoryObject( AsCategoryOfRowsMorphism( HomalgMatrix( "[3]", 1, 1, R ) ) );;
+Z4 := FreydCategoryObject( AsCategoryOfRowsMorphism( HomalgMatrix( "[4]", 1, 1, R ), cat ) );;
+Z3 := FreydCategoryObject( AsCategoryOfRowsMorphism( HomalgMatrix( "[3]", 1, 1, R ), cat ) );;
 HomomorphismStructureOnObjects( Z4, Z2 );;
 HomomorphismStructureOnObjects( Z4, Z4 );;
 HomomorphismStructureOnObjects( Z2, Z4 );;
@@ -313,8 +313,8 @@ IsCongruentForMorphisms( InterpretMorphismFromDinstinguishedObjectToHomomorphism
 a := ZeroObjectFunctorial( cat );;
 IsCongruentForMorphisms( InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( Source( a ), Range( a ), InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( a ) ), a );;
 
-Z4 := FreydCategoryObject( AsCategoryOfColumnsMorphism( HomalgMatrix( "[4]", 1, 1, R ) ) );;
-Z3 := FreydCategoryObject( AsCategoryOfColumnsMorphism( HomalgMatrix( "[3]", 1, 1, R ) ) );;
+Z4 := FreydCategoryObject( AsCategoryOfColumnsMorphism( HomalgMatrix( "[4]", 1, 1, R ), cat ) );;
+Z3 := FreydCategoryObject( AsCategoryOfColumnsMorphism( HomalgMatrix( "[3]", 1, 1, R ), cat ) );;
 HomomorphismStructureOnObjects( Z4, Z2 );;
 HomomorphismStructureOnObjects( Z4, Z4 );;
 HomomorphismStructureOnObjects( Z2, Z4 );;
