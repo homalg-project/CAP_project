@@ -292,7 +292,9 @@ InstallGlobalFunction( CapInternalInstallAdd,
                         
                         filter := LowercaseString( filter );
                         
-                        human_readable_identifier_getter := x -> Concatenation( "the ", String(i), "-th argument of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
+                        human_readable_identifier_getter := function ( )
+                            return Concatenation( "the ", String(i), "-th argument of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
+                        end;
                         
                         if filter = "cell" then
                             CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arg[ i ], category, human_readable_identifier_getter );
@@ -312,15 +314,15 @@ InstallGlobalFunction( CapInternalInstallAdd,
                             CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ i ], false, human_readable_identifier_getter );
                         elif filter = "list_of_objects" then
                             for j in [ 1 .. Length( arg[ i ] ) ] do
-                                CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg[ i ][ j ], category, x -> Concatenation( "the ", String(j), "-th entry of the ", human_readable_identifier_getter() ) );
+                                CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg[ i ][ j ], category, function ( ) return Concatenation( "the ", String(j), "-th entry of the ", human_readable_identifier_getter() ); end );
                             od;
                         elif filter = "list_of_morphisms" then
                             for j in [ 1 .. Length( arg[ i ] ) ] do
-                                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg[ i ][ j ], category, x -> Concatenation( "the ", String(j), "-th entry of the ", human_readable_identifier_getter() ) );
+                                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg[ i ][ j ], category, function ( ) return Concatenation( "the ", String(j), "-th entry of the ", human_readable_identifier_getter() ); end );
                             od;
                         elif filter = "list_of_twocells" then
                             for j in [ 1 .. Length( arg[ i ] ) ] do
-                                CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ i ][ j ], category, x -> Concatenation( "the ", String(j), "-th entry of the ", human_readable_identifier_getter() ) );
+                                CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ i ][ j ], category, function ( ) return Concatenation( "the ", String(j), "-th entry of the ", human_readable_identifier_getter() ); end );
                             od;
                         fi;
                     od;
@@ -349,7 +351,9 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     if category!.add_primitive_output then
                         add_function( category, result );
                     elif category!.output_sanity_check_level > 0 then
-                        human_readable_identifier_getter := x -> Concatenation( "the result of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
+                        human_readable_identifier_getter := function ( )
+                            return Concatenation( "the result of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
+                        end;
                         
                         if record.return_type = "object" or ( record.return_type = "object_or_fail" and result <> fail ) then
                             CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( result, category, human_readable_identifier_getter );
