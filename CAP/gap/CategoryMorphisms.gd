@@ -957,7 +957,7 @@ DeclareOperation( "MultiplyWithElementOfCommutativeRingForMorphisms",
 #! The first argument is either a rational number $q$
 #! or an element $r$ of a commutative ring $R$.
 #! The second argument is a morphism $\alpha: a \rightarrow b$ in a linear category
-#! of the commutative ring $R$.
+#! over the commutative ring $R$.
 #! In the case where the first element is a rational number, this method tries to interpret $q$ as an element $r$ of $R$ via
 #! <C>R!.interpret_rationals_func</C>. If no such interpretation
 #! exists, this method throws an error.
