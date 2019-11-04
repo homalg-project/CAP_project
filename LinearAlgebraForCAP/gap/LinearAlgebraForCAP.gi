@@ -907,6 +907,31 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddIsInjective( category, ReturnTrue );
    
+    ##
+    AddBasisOfExternalHom( category,
+      function( object_1, object_2 )
+        local dim_1, dim_2, identity, matrices;
+        
+        dim_1 := Dimension( object_1 );
+        
+        dim_2 := Dimension( object_2 );
+        
+        identity := IdentityMat( dim_1 * dim_2 );
+        
+        matrices := List( identity, row -> HomalgMatrix( row, dim_1, dim_2, homalg_field ) );
+        
+        return List( matrices, mat -> VectorSpaceMorphism( object_1, mat, object_2 ) );
+        
+    end );
+    
+    ##
+    AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( category,
+      function( morphism, L )
+        
+        return EntriesOfHomalgMatrix( UnderlyingMatrix( morphism ) );
+        
+    end );
+
 end );
 
 
