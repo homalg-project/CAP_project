@@ -430,14 +430,19 @@ DeclareGlobalFunction( "DisableAddForCategoricalOperations" );
 
 #!  CAP has several settings which can improve the performance.
 #!  In the following some of these are listed.
-#!    * <C>DeactivateCachingOfCategory</C>: see <Ref Sect="Section_Caching" />.
+#!    * <C>DeactivateCachingOfCategory</C> or <C>DeactivateDefaultCaching</C>: see <Ref Sect="Section_Caching" />.
 #!        This can either improve or degrade the performance depending on the concrete example.
 #!    * <C>CapCategorySwitchLogicOff</C>: see <Ref Sect="Section_Logic_switcher" />.
 #!        This can either improve or degrade the performance depending on the concrete example.
 #!    * <C>DisableSanityChecks</C>: see <Ref Sect="Section_Sanity_checks" />.
 #!    * <C>DisableAddForCategoricalOperations</C>: see <Ref Sect="Section_Automatic_adds" />.
 #!    * <C>DeactivateToDoList</C>: see the package <C>ToolsForHomalg</C>.
-#!    * use <C>ObjectifyObjectForCAPWithAttributes</C> (<Ref Sect="Section_Adding_Objects_to_a_Category" />)
+#!    * Use <C>ObjectifyObjectForCAPWithAttributes</C> (<Ref Sect="Section_Adding_Objects_to_a_Category" />)
 #!        instead of <C>AddObject</C> and
-#!        <C>ObjectifyMorphismForCAPWithAttributes</C> (<Ref Sect="Section_Adding_Morphisms_to_a_Category" />)
+#!        <C>ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes</C> (<Ref Sect="Section_Adding_Morphisms_to_a_Category" />)
 #!        instead of <C>AddMorphism</C>.
+#!    * Add all attribute testers (<C>Has...</C>) of your objects resp. morphisms to the filters passed to
+#!        <C>AddObjectRepresentation</C> (<Ref Sect="Section_Adding_Objects_to_a_Category" />) resp.
+#!        <C>AddMorphismRepresentation</C> (<Ref Sect="Section_Adding_Morphisms_to_a_Category" />).
+#!    * Pass the option <C>overhead := false</C> to <C>CreateCapCategory</C>.
+#!        Note: this may have unintended effects. Use with care!
