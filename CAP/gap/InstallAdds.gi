@@ -269,7 +269,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                             new_filter_list,
                             
               function( arg )
-                local redirect_return, filter, human_readable_identifier, pre_func_return, result, i, j;
+                local redirect_return, filter, human_readable_identifier_getter, pre_func_return, result, i, j;
                 
                 if (redirect_function <> false) and (not IsBound( category!.redirects.( function_name ) ) or category!.redirects.( function_name ) <> false) then
                     redirect_return := CallFuncList( redirect_function, Concatenation( [ category ], arg ) );
@@ -292,35 +292,35 @@ InstallGlobalFunction( CapInternalInstallAdd,
                         
                         filter := LowercaseString( filter );
                         
-                        human_readable_identifier := Concatenation( "the ", String(i), "-th argument of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
+                        human_readable_identifier_getter := x -> Concatenation( "the ", String(i), "-th argument of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
                         
                         if filter = "cell" then
-                            CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arg[ i ], category, human_readable_identifier );
+                            CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arg[ i ], category, human_readable_identifier_getter );
                         elif filter = "object" then
-                            CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg[ i ], category, human_readable_identifier );
+                            CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg[ i ], category, human_readable_identifier_getter );
                         elif filter = "morphism" then
-                            CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg[ i ], category, human_readable_identifier );
+                            CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg[ i ], category, human_readable_identifier_getter );
                         elif filter = "twocell" then
-                            CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ i ], category, human_readable_identifier );
+                            CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ i ], category, human_readable_identifier_getter );
                         elif filter = "other_cell" then
-                            CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arg[ i ], "any", human_readable_identifier );
+                            CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arg[ i ], false, human_readable_identifier_getter );
                         elif filter = "other_object" then
-                            CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg[ i ], "any", human_readable_identifier );
+                            CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg[ i ], false, human_readable_identifier_getter );
                         elif filter = "other_morphism" then
-                            CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg[ i ], "any", human_readable_identifier );
+                            CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg[ i ], false, human_readable_identifier_getter );
                         elif filter = "other_twocell" then
-                            CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ i ], "any", human_readable_identifier );
+                            CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ i ], false, human_readable_identifier_getter );
                         elif filter = "list_of_objects" then
                             for j in [ 1 .. Length( arg[ i ] ) ] do
-                                CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg[ i ][ j ], category, Concatenation( "the ", String(j), "-th entry of the ", human_readable_identifier ) );
+                                CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg[ i ][ j ], category, x -> Concatenation( "the ", String(j), "-th entry of the ", human_readable_identifier_getter() ) );
                             od;
                         elif filter = "list_of_morphisms" then
                             for j in [ 1 .. Length( arg[ i ] ) ] do
-                                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg[ i ][ j ], category, Concatenation( "the ", String(j), "-th entry of the ", human_readable_identifier ) );
+                                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg[ i ][ j ], category, x -> Concatenation( "the ", String(j), "-th entry of the ", human_readable_identifier_getter() ) );
                             od;
                         elif filter = "list_of_twocells" then
                             for j in [ 1 .. Length( arg[ i ] ) ] do
-                                CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ i ][ j ], category, Concatenation( "the ", String(j), "-th entry of the ", human_readable_identifier ) );
+                                CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ i ][ j ], category, x -> Concatenation( "the ", String(j), "-th entry of the ", human_readable_identifier_getter() ) );
                             od;
                         fi;
                     od;
@@ -349,14 +349,14 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     if category!.add_primitive_output then
                         add_function( category, result );
                     elif category!.output_sanity_check_level > 0 then
-                        human_readable_identifier := Concatenation( "the result of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
+                        human_readable_identifier_getter := x -> Concatenation( "the result of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
                         
                         if record.return_type = "object" or ( record.return_type = "object_or_fail" and result <> fail ) then
-                            CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( result, category, human_readable_identifier );
+                            CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( result, category, human_readable_identifier_getter );
                         elif record.return_type = "morphism" or ( record.return_type = "morphism_or_fail" and result <> fail ) then
-                            CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, category, human_readable_identifier );
+                            CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, category, human_readable_identifier_getter );
                         elif record.return_type = "twocell" then
-                            CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( result, category, human_readable_identifier );
+                            CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( result, category, human_readable_identifier_getter );
                         fi;
                     fi;
                 fi;
