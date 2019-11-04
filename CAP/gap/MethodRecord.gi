@@ -3114,10 +3114,10 @@ BasisOfExternalHom := rec(
   dual_postprocessor_func := IdFunc
 ),
 
-CoefficientsOfMorphismWRTBasisOfExternalHom := rec(
-  installation_name := "CoefficientsOfMorphismWRTBasisOfExternalHom",
-  filter_list := [ "morphism" ],
-  return_type := "morphism",
+CoefficientsOfMorphismWithGivenBasisOfExternalHom := rec(
+  installation_name := "CoefficientsOfMorphismWithGivenBasisOfExternalHom",
+  filter_list := [ "morphism", IsList ],
+  return_type := IsList,
   ## TODO: add support for dual_*
 ),
 
