@@ -471,6 +471,24 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
     end );
     
+    ##
+    AddMorphismBetweenDirectSums( category,
+      function( source, listlist, range )
+        local mat;
+        
+        if IsEmpty( listlist ) or IsEmpty( listlist[1] ) then
+          
+          return ZeroMorphism( source, range );
+          
+        fi;
+        
+        return CategoryOfRowsMorphism(
+          source, 
+          UnionOfRows( List( listlist, row -> UnionOfColumns( List( row, alpha -> UnderlyingMatrix( alpha ) ) ) ) ),
+          range );
+        
+    end );
+    
     ## Operations important for Freyd categories
     
     AddWeakKernelEmbedding( category,
