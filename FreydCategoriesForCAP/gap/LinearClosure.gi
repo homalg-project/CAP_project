@@ -312,6 +312,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     end );
     
     ##
+    AddZeroMorphism( category,
+      function( a, b )
+        
+        return LinearClosureMorphismNC( a, [ ], [ ], b );
+        
+    end );
+    
+    ##
     AddIsZeroForMorphisms( category,
       function( alpha )
         
@@ -377,7 +385,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             
         finsets := RangeCategoryOfHomomorphismStructure( underlying_category );
             
-        rows := CategoryOfRows( ring );
+        rows := CategoryOfRows( ring : overhead := false );
             
         SetRangeCategoryOfHomomorphismStructure( category, rows );
         
@@ -433,6 +441,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             
             size_b := Size( coeffs_b );
             
+            if size_a = 0 or size_b = 0 then
+                
+                return ZeroMorphism( source, range );
+                
+            fi;
+            
             supp_a := SupportMorphisms( alpha );
             
             supp_b := SupportMorphisms( beta );
@@ -450,6 +464,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
                 local coeffs, supp;
                 
                 coeffs := CoefficientsList( alpha );
+                
+                if Size( coeffs ) = 0 then
+                    
+                    return ZeroMorphism( t_obj, HomomorphismStructureOnObjects( Source( alpha ), Range( alpha ) ) );
+                    
+                fi;
                 
                 supp := SupportMorphisms( alpha );
                 

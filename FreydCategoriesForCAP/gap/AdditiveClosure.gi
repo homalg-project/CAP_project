@@ -117,6 +117,31 @@ InstallMethod( AdditiveClosureMorphism,
     
 end );
 
+##
+InstallMethod( \/,
+               [ IsList, IsAdditiveClosureCategory ],
+               
+  function( listlist, category )
+    local source, range;
+    
+    if IsEmpty( listlist ) or IsEmpty( listlist[1] ) then
+      
+      Error( "no empty list or list of empty lists allowed as input" );
+      
+    fi;
+    
+    source := AdditiveClosureObject( List( listlist, row -> Source( row[1] ) ), category );
+    
+    range := AdditiveClosureObject( List( listlist[1], col -> Range( col ) ), category );
+    
+    return AdditiveClosureMorphism(
+      source,
+      listlist,
+      range
+    );
+    
+end );
+
 ####################################
 ##
 ## Attributes
