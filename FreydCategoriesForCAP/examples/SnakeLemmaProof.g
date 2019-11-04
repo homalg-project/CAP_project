@@ -7,6 +7,7 @@ LoadPackage( "GeneralizedMorphismsForCAP" );;
 LoadPackage( "Bialgebroids" );
 
 #! @Example
+DeactivateDefaultCaching();
 SwitchGeneralizedMorphismStandard( "cospan" );;
 snake_quiver := RightQuiver( "Q(6)[a:1->2,b:2->3,c:1->4,d:2->5,e:3->6,f:4->5,g:5->6]" );;
 kQ := PathAlgebra( HomalgFieldOfRationals(), snake_quiver );;
@@ -25,8 +26,11 @@ g := m[7];;
 
 cat := Aoid;;
 CapCategorySwitchLogicOff( cat );;
+DisableInputSanityChecks( cat );;
 cat := AdditiveClosure( cat );;
+DisableInputSanityChecks( cat );;
 cat := Opposite( cat );;
+DisableInputSanityChecks( cat );;
 CapCategorySwitchLogicOff( cat );;
 CapCategorySwitchLogicOff( Opposite( cat ) );;
 cat := FreydCategory( cat );;
