@@ -168,6 +168,140 @@ InstallMethod( NrColumns,
     
 end );
 
+##
+InstallMethod( InclusionFunctorInAdditiveClosure,
+              [ IsCapCategory ],
+  function( C )
+    local additive_closure, name, G;
+    
+    additive_closure := AdditiveClosure( C );
+    
+    name := Concatenation( "Inclusion functor of ", Name( C ), " in its additive closure" );
+    
+    G := CapFunctor( name, C, additive_closure );
+    
+    AddObjectFunction( G, AsAdditiveClosureObject );
+    
+    AddMorphismFunction( G, { s, alpha, r } -> AsAdditiveClosureMorphism( alpha ) );
+    
+    return G;
+    
+end );
+
+##
+InstallMethod( ExtendFunctorToAdditiveClosures,
+              [ IsCapFunctor ],
+  function( F )
+    local source_cat, range_cat, additive_closure_source, additive_closure_range, name, G;
+    
+    source_cat := AsCapCategory( Source( F ) );
+    
+    range_cat := AsCapCategory( Range( F ) );
+    
+    additive_closure_source := AdditiveClosure( source_cat );
+    
+    additive_closure_range := AdditiveClosure( range_cat );
+    
+    name := Concatenation( "Extension of ", Name( F ), " to additive closures" );
+    
+    G := CapFunctor( name, additive_closure_source, additive_closure_range );
+    
+    AddObjectFunction( G,
+      function( a )
+        local objs;
+        
+        objs := ObjectList( a );
+        
+        objs := List( objs, obj -> ApplyFunctor( F, obj ) );
+        
+        return AdditiveClosureObject( objs, additive_closure_range );
+        
+    end );
+    
+    AddMorphismFunction( G,
+      function( source, alpha, range )
+        local mat;
+        
+        mat := MorphismMatrix( alpha );
+        
+        mat := List( mat, row -> List( row, morphism -> ApplyFunctor( F, morphism ) ) );
+        
+        return AdditiveClosureMorphism( source, mat, range );
+        
+    end );
+    
+    return G;
+    
+end );
+
+##
+InstallMethod( ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource,
+              [ IsCapFunctor ],
+  function( F )
+    local source_cat, range_cat, additive_closure_source, name, G;
+    
+    source_cat := AsCapCategory( Source( F ) );
+    
+    range_cat := AsCapCategory( Range( F ) );
+    
+    if not ( HasIsAdditiveCategory( range_cat ) and IsAdditiveCategory( range_cat ) ) then
+      
+      Error( "The range category must be additive!\n" );
+      
+    fi;
+    
+    additive_closure_source := AdditiveClosure( source_cat );
+    
+    name := Concatenation( "Extension of ", Name( F ), " to a functor from the additive closure of the source" );
+    
+    G := CapFunctor( name, additive_closure_source, range_cat );
+    
+    AddObjectFunction( G,
+      function( a )
+        local objs;
+        
+        objs := ObjectList( a );
+        
+        objs := List( objs, obj -> ApplyFunctor( F, obj ) );
+        
+        return DirectSum( objs );
+        
+    end );
+    
+    AddMorphismFunction( G,
+      function( source, alpha, range )
+        local mat;
+        
+        mat := MorphismMatrix( alpha );
+        
+        mat := List( mat, row -> List( row, morphism -> ApplyFunctor( F, morphism ) ) );
+        
+        return MorphismBetweenDirectSums( source, mat, range );
+        
+    end );
+    
+    return G;
+    
+end );
+
+##
+InstallMethod( ExtendFunctorToAdditiveClosureOfSource,
+              [ IsCapFunctor ],
+  function( F )
+    local range_cat;
+    
+    range_cat := AsCapCategory( Range( F ) );
+    
+    if not ( HasIsAdditiveCategory( range_cat ) and IsAdditiveCategory( range_cat ) ) then
+      
+      return ExtendFunctorToAdditiveClosures( F );
+      
+    fi;
+    
+    return ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource( F );
+    
+end );
+
 ####################################
 ##
 ## Operations
