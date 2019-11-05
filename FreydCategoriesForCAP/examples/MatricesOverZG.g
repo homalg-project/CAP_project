@@ -22,8 +22,8 @@ b := (2,3)/CG/ZCG;;
 e := ()/CG/ZCG;;
 omega := [ [ a - e ], [ b - e ] ]/RowsG;;
 u := GroupAsCategoryUniqueObject( CG );;
-u := LinearClosureObject( ZCG, u );;
-u := AsAdditiveClosureObject( u );;
+v := LinearClosureObject( ZCG, u );;
+u := AsAdditiveClosureObject( v );;
 HomStructure( u, omega );;
 #! @EndExample
 
