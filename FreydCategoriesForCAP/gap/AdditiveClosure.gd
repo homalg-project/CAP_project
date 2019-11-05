@@ -171,3 +171,5 @@ DeclareAttribute( "NrColumns",
 DeclareOperation( "\[\]",
                   [ IsAdditiveClosureMorphism, IsInt ] );
 
+DeclareOperation( "\/",
+                  [ IsList, IsAdditiveClosureCategory ] );

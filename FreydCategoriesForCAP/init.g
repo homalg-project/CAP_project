@@ -32,3 +32,9 @@ if IsPackageMarkedForLoading( "QPA", ">= 2.0" ) then
 fi;
 
 ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/GradedModulePresentationsByFreyd.gd" );
+
+if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" ) then
+    ReadPackage( "FreydCategoriesForCAP", "gap/GroupsAsCats.gd" );
+    
+    ReadPackage( "FreydCategoriesForCAP", "gap/LinearClosure.gd" );
+fi;
