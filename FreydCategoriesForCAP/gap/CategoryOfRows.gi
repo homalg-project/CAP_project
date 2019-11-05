@@ -157,6 +157,24 @@ end );
 
 ####################################
 ##
+## Attributes
+##
+####################################
+
+##
+InstallMethod( CATEGORY_OF_ROWS_SimplificationSourceAndRangeTuple,
+               [ IsCategoryOfRowsMorphism ],
+               
+  function( alpha )
+    
+    ## [ S, U, V, UI, VI ];
+    ## U M V = S
+    return SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices( UnderlyingMatrix( alpha ) );
+    
+end );
+
+####################################
+##
 ## Basic operations
 ##
 ####################################
@@ -783,7 +801,74 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         ##
         AddMorphismToBidualWithGivenBidual( category, {obj, dual} -> IdentityMorphism( obj ) );
         
-    fi;
+    fi; ## commutative case
+    
+    ## Simplifications
+    
+    ##
+    AddSimplifySourceAndRange( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfRowsMorphism(
+            Source( alpha ),
+            CATEGORY_OF_ROWS_SimplificationSourceAndRangeTuple( alpha )[1],
+            Range( alpha )
+          );
+        
+    end );
+    
+    ##
+    AddSimplifySourceAndRange_IsoToInputRange( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfRowsMorphism(
+            Range( alpha ),
+            CATEGORY_OF_ROWS_SimplificationSourceAndRangeTuple( alpha )[5],
+            Range( alpha )
+          );
+        
+    end );
+    
+    ##
+    AddSimplifySourceAndRange_IsoFromInputRange( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfRowsMorphism(
+            Range( alpha ),
+            CATEGORY_OF_ROWS_SimplificationSourceAndRangeTuple( alpha )[3],
+            Range( alpha )
+          );
+        
+    end );
+    
+    ##
+    AddSimplifySourceAndRange_IsoToInputSource( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfRowsMorphism(
+            Source( alpha ),
+            CATEGORY_OF_ROWS_SimplificationSourceAndRangeTuple( alpha )[2],
+            Source( alpha )
+          );
+        
+    end );
+    
+    ##
+    AddSimplifySourceAndRange_IsoFromInputSource( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfRowsMorphism(
+            Source( alpha ),
+            CATEGORY_OF_ROWS_SimplificationSourceAndRangeTuple( alpha )[4],
+            Source( alpha )
+          );
+        
+    end );
     
 end );
 
