@@ -3329,3 +3329,97 @@ AddFinalDerivation( IsEqualForCacheForMorphisms,
                     [ IsEqualForMorphisms ],
                     
   IsIdenticalObj : Description := "Use IsIdenticalObj for IsEqualForCacheForMorphisms" );
+
+## Final methods for BasisOfExternalHom & CoefficientsOfMorphism
+
+##
+AddFinalDerivation( BasisOfExternalHom,
+                    [
+                      [ HomomorphismStructureOnObjects ],
+                      [ HomomorphismStructureOnMorphismsWithGivenObjects ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism ],
+                      [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure ],
+                      [ DistinguishedObjectOfHomomorphismStructure ],
+                      [ MultiplyWithElementOfCommutativeRingForMorphisms ]
+                    ],
+                    [
+                      BasisOfExternalHom,
+                      CoefficientsOfMorphismWithGivenBasisOfExternalHom
+                    ],
+  function( a, b )
+    local hom_a_b, D, B;
+    
+    hom_a_b := HomomorphismStructureOnObjects( a, b );
+    
+    D := DistinguishedObjectOfHomomorphismStructure( CapCategory( a ) );
+    
+    B := ValueGlobal( "BasisOfExternalHom" )( D, hom_a_b );
+    
+    return List( B, m -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( a, b, m ) );
+  
+  end,
+[
+  CoefficientsOfMorphismWithGivenBasisOfExternalHom,
+  function( alpha, L )
+    local beta;
+        
+    beta := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( alpha );
+    
+    return CoefficientsOfMorphism( beta );
+    
+  end
+] : ConditionsListComplete := true,
+  CategoryFilter :=
+    function( category )
+      local range_cat, required_methods;
+      
+      if not ( HasIsLinearCategoryOverCommutativeRing( category ) and IsLinearCategoryOverCommutativeRing( category ) ) then
+        
+        return false;
+        
+      fi;
+      
+      if not HasRangeCategoryOfHomomorphismStructure( category ) then
+        
+        return false;
+        
+      fi;
+      
+      range_cat := RangeCategoryOfHomomorphismStructure( category );
+      
+      if IsIdenticalObj( category, range_cat ) then
+        
+        return false;
+        
+      fi;
+      
+      if not ( HasIsLinearCategoryOverCommutativeRing( range_cat ) and IsLinearCategoryOverCommutativeRing( range_cat ) ) then
+        
+        return false;
+        
+      fi;
+      
+      if not IsIdenticalObj( CommutativeRingOfLinearCategory( category ), CommutativeRingOfLinearCategory( range_cat ) ) then
+        
+        return false;
+        
+      fi;
+      
+      required_methods := [
+                            "BasisOfExternalHom",
+                            "CoefficientsOfMorphismWithGivenBasisOfExternalHom",
+                            "MultiplyWithElementOfCommutativeRingForMorphisms"
+                          ];
+      
+      if not ForAll( required_methods, m -> CanCompute( range_cat, m ) ) then
+        
+        return false;
+        
+      fi;
+      
+      return true;
+      
+  end,
+  Description := "Adding BasisOfExternalHom using homomorphism structure"
+);
+
