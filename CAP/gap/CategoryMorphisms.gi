@@ -183,6 +183,41 @@ InstallMethod( \*,
 end );
 
 ##
+InstallMethod( \*,
+               [ IsRingElement and IsRat, IsCapCategoryMorphism ],
+               
+function( q, mor )
+    local cat, ring, r;
+    
+    cat := CapCategory( mor );
+    
+    ring := CommutativeRingOfLinearCategory( cat );
+    
+    if not IsIdenticalObj( ring, Rationals ) then
+        
+        if IsBound( ring!.interpret_rationals_func ) then
+            
+            r := ring!.interpret_rationals_func( q );
+            
+            if r = fail then
+                
+                Error( "cannot interpret ", String( q ), " as an element of the commutative ring of ", Name( cat ) );
+                
+            fi;
+            
+        else
+            
+            Error( "The commutative ring of ", Name( cat ), "doesn't know how to interpret rationals" );
+            
+        fi;
+        
+    fi;
+    
+    return MultiplyWithElementOfCommutativeRingForMorphisms( r, mor );
+    
+end );
+
+##
 InstallMethod( IsEqualForCacheForMorphisms,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                

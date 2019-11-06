@@ -952,11 +952,24 @@ DeclareOperation( "AddAdditiveInverseForMorphisms",
 DeclareOperation( "MultiplyWithElementOfCommutativeRingForMorphisms",
                   [ IsRingElement, IsCapCategoryMorphism ] );
 
+#! @Description
+#! This is a convenience method. It has two arguments.
+#! The first argument is either a rational number $q$
+#! or an element $r$ of a commutative ring $R$.
+#! The second argument is a morphism $\alpha: a \rightarrow b$ in a linear category
+#! over the commutative ring $R$.
+#! In the case where the first element is a rational number, this method tries to interpret $q$ as an element $r$ of $R$ via
+#! <C>R!.interpret_rationals_func</C>. If no such interpretation
+#! exists, this method throws an error.
+#! The output is the multiplication with the ring element $r \cdot \alpha$.
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$
+#! @Arguments r, alpha
 DeclareOperation( "\*",
                   [ IsRingElement, IsCapCategoryMorphism ] );
 
 DeclareOperation( "\*",
                   [ IsCapCategoryMorphism, IsRingElement ] );
+
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
