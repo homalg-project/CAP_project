@@ -173,7 +173,8 @@ InstallGlobalFunction( CapInternalInstallAdd,
       function( category, method_list, weight )
         local install_func, replaced_filter_list, install_method, popper, i, set_primitive, install_remaining_pair, is_derivation,
               install_pair_func, pair_name, pair_func, is_pair_func, pair_func_push, number_of_proposed_arguments, current_function_number,
-              current_function_argument_number;
+              current_function_argument_number, filter, input_human_readable_identifier_getter, input_sanity_check_functions,
+              output_human_readable_identifier_getter, output_sanity_check_function;
         
         if HasIsFinalized( category ) and IsFinalized( category ) then
             Error( "cannot add methods anymore, category is finalized" );
@@ -258,6 +259,123 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
         od;
         
+        # prepare input sanity check
+        input_human_readable_identifier_getter := function( args... )
+            local human_readable_identifier, i, j;
+            
+            if Length( args ) = 0 then
+                Error( "this function has to be called with at least one argument" );
+            fi;
+            
+            i := args[ 1 ];
+
+            human_readable_identifier := Concatenation( "the ", String(i), "-th argument of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
+            
+            if Length( args ) = 1 then
+                return human_readable_identifier;
+            elif Length( args ) = 2 then
+                j := args[ 2 ];
+                return Concatenation( "the ", String(j), "-th entry of ", human_readable_identifier );
+            else
+                Error( "this function has to be called with at most two arguments" );
+            fi;
+        end;
+        
+        input_sanity_check_functions := [];
+        for i in [ 1 .. Length( record.filter_list ) ] do
+            filter := record.filter_list[ i ];
+            
+            if not IsString( filter ) then
+                input_sanity_check_functions[i] := ReturnTrue;
+            elif filter = "cell" then
+                input_sanity_check_functions[i] := function( arg, i )
+                    CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
+                end;
+            elif filter = "object" then
+                input_sanity_check_functions[i] := function( arg, i )
+                    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
+                end;
+            elif filter = "morphism" then
+                input_sanity_check_functions[i] := function( arg, i )
+                    CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
+                end;
+            elif filter = "twocell" then
+                input_sanity_check_functions[i] := function( arg, i )
+                    CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
+                end;
+            elif filter = "other_cell" then
+                input_sanity_check_functions[i] := function( arg, i )
+                    CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arg, false, function( ) return input_human_readable_identifier_getter( i ); end );
+                end;
+            elif filter = "other_object" then
+                input_sanity_check_functions[i] := function( arg, i )
+                    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg, false, function( ) return input_human_readable_identifier_getter( i ); end );
+                end;
+            elif filter = "other_morphism" then
+                input_sanity_check_functions[i] := function( arg, i )
+                    CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg, false, function( ) return input_human_readable_identifier_getter( i ); end );
+                end;
+            elif filter = "other_twocell" then
+                input_sanity_check_functions[i] := function( arg, i )
+                    CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg, false, function( ) return input_human_readable_identifier_getter( i ); end );
+                end;
+            elif filter = "list_of_objects" then
+                input_sanity_check_functions[i] := function( arg, i )
+                    local j;
+                    for j in [ 1 .. Length( arg ) ] do
+                        CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg[ j ], category, function( ) return input_human_readable_identifier_getter( i, j ); end );
+                    od;
+                end;
+            elif filter = "list_of_morphisms" then
+                input_sanity_check_functions[i] := function( arg, i )
+                    local j;
+                    for j in [ 1 .. Length( arg ) ] do
+                        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg[ j ], category, function( ) return input_human_readable_identifier_getter( i, j ); end );
+                    od;
+                end;
+            elif filter = "list_of_twocells" then
+                input_sanity_check_functions[i] := function( arg, i )
+                    local j;
+                    for j in [ 1 .. Length( arg ) ] do
+                        CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ j ], category, function( ) return input_human_readable_identifier_getter( i, j ); end );
+                    od;
+                end;
+            fi;
+        od;
+        
+        # prepare output sanity check
+        output_human_readable_identifier_getter := function( )
+            return Concatenation( "the result of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
+        end;
+        
+        if record.return_type = "object" then
+            output_sanity_check_function := function( result )
+                CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
+            end;
+        elif record.return_type = "morphism" then
+            output_sanity_check_function := function( result )
+                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
+            end;
+        elif record.return_type = "twocell" then
+            output_sanity_check_function := function( result )
+                CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
+            end;
+        elif record.return_type = "object_or_fail" then
+            output_sanity_check_function := function( result )
+                if result <> fail then
+                    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
+                fi;
+            end;
+        elif record.return_type = "morphism_or_fail" then
+            output_sanity_check_function := function( result )
+                if result <> fail then
+                    CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
+                fi;
+            end;
+        else
+            output_sanity_check_function := ReturnTrue;
+        fi;
+        
         install_func := function( func_to_install, filter_list )
           local new_filter_list;
             
@@ -282,49 +400,8 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 fi;
                 
                 if not is_pair_func and category!.input_sanity_check_level > 0 then
-                    
-                    for i in [ 1 .. Length( record.filter_list ) ] do
-                        filter := record.filter_list[ i ];
-                        
-                        if not IsString( filter ) then
-                            continue;
-                        fi;
-                        
-                        filter := LowercaseString( filter );
-                        
-                        human_readable_identifier_getter := function ( )
-                            return Concatenation( "the ", String(i), "-th argument of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
-                        end;
-                        
-                        if filter = "cell" then
-                            CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arg[ i ], category, human_readable_identifier_getter );
-                        elif filter = "object" then
-                            CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg[ i ], category, human_readable_identifier_getter );
-                        elif filter = "morphism" then
-                            CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg[ i ], category, human_readable_identifier_getter );
-                        elif filter = "twocell" then
-                            CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ i ], category, human_readable_identifier_getter );
-                        elif filter = "other_cell" then
-                            CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arg[ i ], false, human_readable_identifier_getter );
-                        elif filter = "other_object" then
-                            CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg[ i ], false, human_readable_identifier_getter );
-                        elif filter = "other_morphism" then
-                            CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg[ i ], false, human_readable_identifier_getter );
-                        elif filter = "other_twocell" then
-                            CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ i ], false, human_readable_identifier_getter );
-                        elif filter = "list_of_objects" then
-                            for j in [ 1 .. Length( arg[ i ] ) ] do
-                                CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg[ i ][ j ], category, function ( ) return Concatenation( "the ", String(j), "-th entry of the ", human_readable_identifier_getter() ); end );
-                            od;
-                        elif filter = "list_of_morphisms" then
-                            for j in [ 1 .. Length( arg[ i ] ) ] do
-                                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg[ i ][ j ], category, function ( ) return Concatenation( "the ", String(j), "-th entry of the ", human_readable_identifier_getter() ); end );
-                            od;
-                        elif filter = "list_of_twocells" then
-                            for j in [ 1 .. Length( arg[ i ] ) ] do
-                                CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ i ][ j ], category, function ( ) return Concatenation( "the ", String(j), "-th entry of the ", human_readable_identifier_getter() ); end );
-                            od;
-                        fi;
+                    for i in [ 1 .. Length( input_sanity_check_functions ) ] do
+                        input_sanity_check_functions[ i ]( arg[ i ], i );
                     od;
                     
                     pre_func_return := CallFuncList( pre_function, arg );
@@ -351,17 +428,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     if category!.add_primitive_output then
                         add_function( category, result );
                     elif category!.output_sanity_check_level > 0 then
-                        human_readable_identifier_getter := function ( )
-                            return Concatenation( "the result of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
-                        end;
-                        
-                        if record.return_type = "object" or ( record.return_type = "object_or_fail" and result <> fail ) then
-                            CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( result, category, human_readable_identifier_getter );
-                        elif record.return_type = "morphism" or ( record.return_type = "morphism_or_fail" and result <> fail ) then
-                            CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, category, human_readable_identifier_getter );
-                        elif record.return_type = "twocell" then
-                            CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( result, category, human_readable_identifier_getter );
-                        fi;
+                        output_sanity_check_function( result );
                     fi;
                 fi;
                 
