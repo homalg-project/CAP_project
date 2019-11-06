@@ -10,7 +10,7 @@ DeclareCategory( "IsFieldAsCategoryMorphism",
 DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_FIELD_AS_CATEGORY" );
 
 DeclareCategory( "IsFieldAsCategory",
-                 IsCapCategory );
+                 IsCapCategory and IsAbCategory );
 
 ## Constructors
 DeclareAttribute( "FieldAsCategory",
@@ -41,8 +41,6 @@ InstallMethod( FieldAsCategory,
     category := CreateCapCategory( Concatenation( "Field as category( ", RingName( field )," )"  ) : overhead := false );
     
     SetFilterObj( category, IsFieldAsCategory );
-    
-    SetIsAbCategory( category, true );
     
     SetUnderlyingFieldForHomalg( category, field );
     

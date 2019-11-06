@@ -12,7 +12,6 @@ SwitchGeneralizedMorphismStandard( "cospan" );;
 snake_quiver := RightQuiver( "Q(6)[a:1->2,b:2->3,c:1->4,d:2->5,e:3->6,f:4->5,g:5->6]" );;
 kQ := PathAlgebra( HomalgFieldOfRationals(), snake_quiver );;
 Aoid := Algebroid( kQ, [ kQ.ad - kQ.cf, kQ.dg - kQ.be, kQ.ab, kQ.fg ] );;
-SetIsAbCategory( Aoid, true );;
 m := SetOfGeneratingMorphisms( Aoid );;
 
 a := m[1];;
