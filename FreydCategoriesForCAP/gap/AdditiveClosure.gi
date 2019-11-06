@@ -756,6 +756,49 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
     end );
     
+    ##
+    AddMorphismBetweenDirectSums( category,
+      function( source, listlist, range )
+        local nr_cols_out, mat, outer_row, nr_inner_rows, i, new_row;
+        
+        if IsEmpty( listlist ) or IsEmpty( listlist[1] ) then
+          
+          return ZeroMorphism( source, range );
+          
+        fi;
+        
+        nr_cols_out := Size( listlist[1] );
+        
+        mat := [];
+        
+        for outer_row in listlist do
+          
+          nr_inner_rows := NrRows( outer_row[1] );
+          
+          if nr_inner_rows > 0 then
+            
+            for i in [ 1 .. nr_inner_rows ] do
+                
+                new_row := Concatenation(
+                  List( [ 1 .. nr_cols_out ], c -> outer_row[c][i] )
+              );
+              
+              Add( mat, new_row );
+              
+            od;
+            
+          fi;
+            
+        od;
+        
+        return AdditiveClosureMorphism(
+          source,
+          mat,
+          range
+        );
+        
+    end );
+    
     if HasRangeCategoryOfHomomorphismStructure( underlying_category ) then
         
         range_category := CapCategory( DistinguishedObjectOfHomomorphismStructure( underlying_category ) );
