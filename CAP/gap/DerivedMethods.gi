@@ -2579,7 +2579,7 @@ AddDerivationToCAP( IsEqualForCacheForObjects,
     
     return IsEqualForObjects( object_1, object_2 ) = true;
     
-end );
+end : Description := "IsEqualForCacheForObjects using IsEqualForObjects" );
 
 ###########################
 ##
@@ -3300,10 +3300,10 @@ AddFinalDerivation( IsEqualForCacheForMorphisms,
     
     return IsEqualForMorphismsOnMor( mor1, mor2 ) = true;
     
-end );
+end : Description := "Use IsEqualForMorphismsOnMor for IsEqualForCacheForMorphisms" );
 
 AddFinalDerivation( IsEqualForCacheForMorphisms,
                     [ [ IsCongruentForMorphisms, 1 ] ],
                     [ IsEqualForMorphisms ],
                     
-  IsIdenticalObj );
+  IsIdenticalObj : Description := "Use IsIdenticalObj for IsEqualForCacheForMorphisms" );
