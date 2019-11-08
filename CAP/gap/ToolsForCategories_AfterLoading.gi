@@ -133,13 +133,13 @@ InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY,
         Error( Concatenation( human_readable_identifier_getter(), " has no source.", generic_help_string ) );
     fi;
     
-    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( Source( morphism ), category, function ( ) return Concatenation( "the source of ", human_readable_identifier_getter() ); end );
+    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( Source( morphism ), category, function( ) return Concatenation( "the source of ", human_readable_identifier_getter() ); end );
     
     if not HasRange( morphism ) then
         Error( Concatenation( human_readable_identifier_getter(), " has no range.", generic_help_string ) );
     fi;
     
-    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( Range( morphism ), category, function ( ) return Concatenation( "the range of ", human_readable_identifier_getter() ); end );
+    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( Range( morphism ), category, function( ) return Concatenation( "the range of ", human_readable_identifier_getter() ); end );
     
 end );
 
@@ -171,12 +171,12 @@ InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY,
         Error( Concatenation( human_readable_identifier_getter(), " has no source.", generic_help_string ) );
     fi;
     
-    CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( Source( two_cell ), category, function ( ) return Concatenation( "the source of ", human_readable_identifier_getter() ); end );
+    CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( Source( two_cell ), category, function( ) return Concatenation( "the source of ", human_readable_identifier_getter() ); end );
     
     if not HasRange( two_cell ) then
         Error( Concatenation( human_readable_identifier_getter(), " has no range.", generic_help_string ) );
     fi;
     
-    CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( Range( two_cell ), category, function ( ) return Concatenation( "the range of ", human_readable_identifier_getter() ); end );
+    CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( Range( two_cell ), category, function( ) return Concatenation( "the range of ", human_readable_identifier_getter() ); end );
     
 end );
