@@ -853,6 +853,36 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
     end );
     
+    ##
+    AddSomeReductionBySplitEpiSummand( category,
+      function( alpha )
+        
+        return MorphismFromZeroObject( CokernelObject( alpha ) );
+        
+    end );
+    
+    ##
+    AddSomeReductionBySplitEpiSummand_MorphismFromInputRange( category,
+      function( alpha )
+        
+        return CokernelProjection( alpha );
+        
+    end );
+    
+    ##
+    AddSomeReductionBySplitEpiSummand_MorphismToInputRange( category,
+      function( alpha )
+        local cok;
+        
+        cok := CokernelProjection( alpha );
+        
+        return Lift(
+                IdentityMorphism( Range( cok ) ),
+                cok
+        );
+        
+    end );
+    
 end );
 
 
