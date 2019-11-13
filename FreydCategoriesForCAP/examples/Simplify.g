@@ -26,6 +26,22 @@ IsOne(
     PreCompose( SimplifySourceAndRange_IsoFromInputRange( alpha, infinity ), SimplifySourceAndRange_IsoToInputRange( alpha, infinity ) )
 );
 #! true
+pi2 := PreCompose(
+    SimplifySource_IsoFromInputObject( alpha, infinity ),
+    SimplifySource( alpha, infinity )
+);;
+IsCongruentForMorphisms( pi2, alpha );
+#! true
+IsOne( PreCompose( SimplifySource_IsoFromInputObject( alpha, infinity ), SimplifySource_IsoToInputObject( alpha, infinity ) ) );
+#! true
+pi3 := PreCompose(
+    SimplifyRange( alpha, infinity ),
+    SimplifyRange_IsoToInputObject( alpha, infinity )
+);;
+IsCongruentForMorphisms( pi3, alpha );
+#! true
+IsOne( PreCompose( SimplifyRange_IsoFromInputObject( alpha, infinity ), SimplifyRange_IsoToInputObject( alpha, infinity ) ) );
+#! true
 #! @EndExample
 
 #! @Example
@@ -39,12 +55,28 @@ pi := PreCompose( [
     SimplifySourceAndRange_IsoToInputRange( alpha, infinity ) ] );;
 IsCongruentForMorphisms( pi, alpha );
 #! true
-IsOne( 
+IsOne(
     PreCompose( SimplifySourceAndRange_IsoFromInputSource( alpha, infinity ), SimplifySourceAndRange_IsoToInputSource( alpha, infinity ) )
 );
 #! true
-IsOne( 
+IsOne(
     PreCompose( SimplifySourceAndRange_IsoFromInputRange( alpha, infinity ), SimplifySourceAndRange_IsoToInputRange( alpha, infinity ) )
 );
+#! true
+pi2 := PreCompose(
+    SimplifySource_IsoFromInputObject( alpha, infinity ),
+    SimplifySource( alpha, infinity )
+);;
+IsCongruentForMorphisms( pi2, alpha );
+#! true
+IsOne( PreCompose( SimplifySource_IsoFromInputObject( alpha, infinity ), SimplifySource_IsoToInputObject( alpha, infinity ) ) );
+#! true
+pi3 := PreCompose(
+    SimplifyRange( alpha, infinity ),
+    SimplifyRange_IsoToInputObject( alpha, infinity )
+);;
+IsCongruentForMorphisms( pi3, alpha );
+#! true
+IsOne( PreCompose( SimplifyRange_IsoFromInputObject( alpha, infinity ), SimplifyRange_IsoToInputObject( alpha, infinity ) ) );
 #! true
 #! @EndExample
