@@ -3497,6 +3497,27 @@ SimplifyEndo_IsoToInputObject := rec(
   pre_function := ~.SimplifyEndo.pre_function
   ),
 
+SomeReductionBySplitEpiSummand := rec(
+  installation_name := "SomeReductionBySplitEpiSummand",
+  filter_list := [ "morphism" ],
+  io_type := [ [ "alpha" ], [ "Ap", "Bp" ] ],
+  return_type := "morphism",
+  ),
+
+SomeReductionBySplitEpiSummand_MorphismToInputRange := rec(
+  installation_name := "SomeReductionBySplitEpiSummand_MorphismToInputRange",
+  filter_list := [ "morphism" ],
+  io_type := [ [ "alpha" ], [ "Bp", "B" ] ],
+  return_type := "morphism",
+  ),
+
+SomeReductionBySplitEpiSummand_MorphismFromInputRange := rec(
+  installation_name := "SomeReductionBySplitEpiSummand_MorphismFromInputRange",
+  filter_list := [ "morphism" ],
+  io_type := [ [ "alpha" ], [ "B", "Bp" ] ],
+  return_type := "morphism",
+  )
+
 ) );
 
 InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS, [

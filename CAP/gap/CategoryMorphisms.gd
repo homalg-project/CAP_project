@@ -2493,3 +2493,158 @@ DeclareOperation( "AddSimplifyEndo_IsoFromInputObject",
 #! @Arguments phi
 DeclareAttribute( "Simplify",
                   IsCapCategoryMorphism );
+
+###################################
+##
+#! @Section Reduction by split epi summands
+##
+###################################
+
+#! Let $\alpha: A \rightarrow B$ be a morphism in an additive category.
+#! Suppose we are given direct sum decompositions
+#! of $A \simeq A' \oplus A''$ and $B \simeq B' \oplus B''$
+#! such that
+
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \def\h{2};
+#! \node (A) at (0,0) {$A$};
+#! \node (B) at (\w,0) {$B$};
+#! \node (Ap) at (0,\h) {$A' \oplus A''$};
+#! \node (Bp) at (\w,\h) {$B' \oplus B''$};
+#! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
+#! \draw[-latex] (Ap) to node[pos=0.45, above] {$\alpha' \oplus \alpha''$} (Bp);
+#! \draw[-latex] (A) to (Ap);
+#! \draw[-latex] (B) to (Bp);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
+#! If $\alpha''$ is a split epimorphism, then we call $\alpha': A' \rightarrow B'$
+#! <Emph>some reduction of $\alpha$ by split epi summands</Emph>.
+
+#! The inclusions/projections of the decompositions into direct sums
+#! induce commutative diagrams
+
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \def\h{2};
+#! \node (A) at (0,0) {$A$};
+#! \node (B) at (\w,0) {$B$};
+#! \node (Ap) at (0,\h) {$A'$};
+#! \node (Bp) at (\w,\h) {$B'$};
+#! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
+#! \draw[-latex] (Ap) to node[pos=0.45, above] {$\alpha'$} (Bp);
+#! \draw[-latex] (A) to (Ap);
+#! \draw[-latex] (B) to node[pos=0.45, right] {$\beta$} (Bp);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
+#! and
+
+#! @BeginLatexOnly
+#! \begin{center}
+#! \begin{tikzpicture}
+#! \def\w{4};
+#! \def\h{2};
+#! \node (A) at (0,0) {$A$};
+#! \node (B) at (\w,0) {$B$};
+#! \node (Ap) at (0,\h) {$A'$};
+#! \node (Bp) at (\w,\h) {$B'$};
+#! \draw[-latex] (A) to node[pos=0.45, above] {$\alpha$} (B);
+#! \draw[-latex] (Ap) to node[pos=0.45, above] {$\alpha'$} (Bp);
+#! \draw[-latex] (Ap) to (A);
+#! \draw[-latex] (Bp) to node[pos=0.45, right] {$\beta'$} (B);
+#! \end{tikzpicture}
+#! \end{center}
+#! @EndLatexOnly
+
+#! @Description
+#! The argument is a morphism $\alpha: A \rightarrow B$.
+#! The output is some reduction of $\alpha$ by split epi summands $\alpha': A' \rightarrow B'$.
+#! @Returns a morphism in $\mathrm{Hom}(A',B')$
+#! @Arguments alpha
+DeclareAttribute( "SomeReductionBySplitEpiSummand",
+                  IsCapCategoryMorphism );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SomeReductionBySplitEpiSummand</C>.
+#! The function $F$ maps $\alpha$ to $\alpha'$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSomeReductionBySplitEpiSummand",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSomeReductionBySplitEpiSummand",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSomeReductionBySplitEpiSummand",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSomeReductionBySplitEpiSummand",
+                  [ IsCapCategory, IsList ] );
+
+
+#! @Description
+#! The argument is a morphism $\alpha: A \rightarrow B$.
+#! The output is the morphism $\beta': B' \rightarrow B$
+#! linking $\alpha$ with some reduction by split epi summands.
+#! @Returns a morphism in $\mathrm{Hom}(B',B)$
+#! @Arguments alpha
+DeclareAttribute( "SomeReductionBySplitEpiSummand_MorphismToInputRange",
+                  IsCapCategoryMorphism );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SomeReductionBySplitEpiSummand_MorphismToInputRange</C>.
+#! The function $F$ maps $\alpha$ to $\beta'$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSomeReductionBySplitEpiSummand_MorphismToInputRange",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSomeReductionBySplitEpiSummand_MorphismToInputRange",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSomeReductionBySplitEpiSummand_MorphismToInputRange",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSomeReductionBySplitEpiSummand_MorphismToInputRange",
+                  [ IsCapCategory, IsList ] );
+
+
+#! @Description
+#! The argument is a morphism $\alpha: A \rightarrow B$.
+#! The output is the morphism $\beta: B \rightarrow B'$
+#! linking $\alpha$ with some reduction by split epi summands.
+#! @Returns a morphism in $\mathrm{Hom}(B,B')$
+#! @Arguments alpha
+DeclareAttribute( "SomeReductionBySplitEpiSummand_MorphismFromInputRange",
+                  IsCapCategoryMorphism );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SomeReductionBySplitEpiSummand_MorphismFromInputRange</C>.
+#! The function $F$ maps $\alpha$ to $\beta$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSomeReductionBySplitEpiSummand_MorphismFromInputRange",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSomeReductionBySplitEpiSummand_MorphismFromInputRange",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSomeReductionBySplitEpiSummand_MorphismFromInputRange",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSomeReductionBySplitEpiSummand_MorphismFromInputRange",
+                  [ IsCapCategory, IsList ] );
