@@ -227,6 +227,46 @@ InstallMethod( MorphismWitness,
     
 end );
 
+##
+InstallMethod( FREYD_CATEGORIES_SimplifyObjectTupleOp,
+               [ IsFreydCategoryObject, IsObject ],
+  function( object, i )
+    local counter, rel, red, red_from_last_step, red_from, red_to;
+    
+    counter := 0;
+    
+    rel := RelationMorphism( object );
+    
+    red_from := IdentityMorphism( Range( rel ) );
+    
+    red_to := IdentityMorphism( Range( rel ) );
+    
+    while true do
+      
+      counter := counter + 1;
+      
+      red := SomeReductionBySplitEpiSummand( rel );
+      
+      red_from_last_step := SomeReductionBySplitEpiSummand_MorphismFromInputRange( rel );
+      
+      red_from := PreCompose( red_from, red_from_last_step );
+      
+      red_to := PreCompose( SomeReductionBySplitEpiSummand_MorphismToInputRange( rel ), red_to );
+      
+      if counter >= i or IsIsomorphism( red_from_last_step ) then
+          
+          break;
+          
+      fi;
+      
+      rel := red;
+      
+    od;
+    
+    return [ red, red_from, red_to ];
+    
+end );
+
 ####################################
 ##
 ## Operations
@@ -1531,6 +1571,45 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 
         end );
     
+    fi;
+    
+    ## Simplification methods
+    
+    if is_possible_to_install( "Simplify object",
+                               [ "SomeReductionBySplitEpiSummand" ] ) then
+      
+      ##
+      AddSimplifyObject( category,
+        function( object, i )
+          
+          return FreydCategoryObject( FREYD_CATEGORIES_SimplifyObjectTuple( object, i )[1] );
+          
+      end );
+      
+      ##
+      AddSimplifyObject_IsoFromInputObject( category,
+        function( object, i )
+          
+          return FreydCategoryMorphism(
+            object,
+            FREYD_CATEGORIES_SimplifyObjectTuple( object, i )[2],
+            FreydCategoryObject( FREYD_CATEGORIES_SimplifyObjectTuple( object, i )[1] )
+          );
+          
+      end );
+      
+      ##
+      AddSimplifyObject_IsoToInputObject( category,
+        function( object, i )
+          
+          return FreydCategoryMorphism(
+            FreydCategoryObject( FREYD_CATEGORIES_SimplifyObjectTuple( object, i )[1] ),
+            FREYD_CATEGORIES_SimplifyObjectTuple( object, i )[3],
+            object
+          );
+          
+      end );
+      
     fi;
     
 end );

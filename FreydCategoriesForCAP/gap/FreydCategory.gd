@@ -77,6 +77,8 @@ DeclareAttribute( "WitnessForBeingCongruentToZero",
 DeclareAttribute( "MereExistenceOfWitnessForBeingCongruentToZero",
                   IsFreydCategoryMorphism );
 
+KeyDependentOperation( "FREYD_CATEGORIES_SimplifyObjectTuple", IsFreydCategoryObject, IsObject, ReturnTrue );
+
 ####################################################################################
 ##
 #! @Section Determine properties of input category for Freyd category
