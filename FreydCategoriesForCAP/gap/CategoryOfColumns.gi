@@ -163,6 +163,55 @@ end );
 ##
 ####################################
 
+## "1 round of ByASmallerPresentation"
+##
+InstallMethod( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple,
+               [ IsCategoryOfColumnsMorphism ],
+               
+  function( alpha )
+    local M, cols, R, T, TI, U, UI, S;
+    
+    M := UnderlyingMatrix( alpha );
+    
+    cols := CapCategory( alpha );
+    
+    R := UnderlyingRing( cols );
+    
+    ## homalg's recipe:
+    ## 1) OnLessGenerators
+    ## 2) if no improvement in terms of number of generators, then:
+    ##  2.1) BasisOfModule
+    ##  2.2) OnLessGenerators
+    
+    T := HomalgVoidMatrix( R );
+    
+    TI := HomalgVoidMatrix( R );
+    
+    S := SimplerEquivalentMatrix( M, T, TI, "", "", "" );
+    
+    if NrRows( S ) = RankOfObject( Range( alpha ) ) then
+      
+      S := BasisOfColumnModule( S );
+      
+      U := HomalgVoidMatrix( R );
+    
+      UI := HomalgVoidMatrix( R );
+      
+      S := SimplerEquivalentMatrix( S, U, UI, "", "", "" );
+      
+      T := U * T;
+      
+      TI := TI * UI;
+      
+    fi;
+    
+    ## add the following line to homalg's recipe in order to minimize the number of relations
+    S := ReducedBasisOfColumnModule( S );
+    
+    return [ S, T, TI ];
+    
+end );
+
 ##
 InstallMethod( CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple,
                [ IsCategoryOfColumnsMorphism ],
@@ -961,6 +1010,30 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
             CATEGORY_OF_COLUMNS_SimplificationRangeTuple( alpha )[2],
             Range( alpha )
           );
+        
+    end );
+    
+    ##
+    AddSomeReductionBySplitEpiSummand( category,
+      function( alpha )
+        
+        return AsCategoryOfColumnsMorphism( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha )[1], category );
+        
+    end );
+    
+    ##
+    AddSomeReductionBySplitEpiSummand_MorphismFromInputRange( category,
+      function( alpha )
+        
+        return AsCategoryOfColumnsMorphism( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha )[2], category );
+        
+    end );
+    
+    ##
+    AddSomeReductionBySplitEpiSummand_MorphismToInputRange( category,
+      function( alpha )
+        
+        return AsCategoryOfColumnsMorphism( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha )[3], category );
         
     end );
     

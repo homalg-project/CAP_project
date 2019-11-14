@@ -65,6 +65,9 @@ DeclareAttribute( "RankOfObject",
 DeclareAttribute( "UnderlyingMatrix",
                   IsCategoryOfColumnsMorphism );
 
+DeclareAttribute( "CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple",
+                  IsCategoryOfColumnsMorphism );
+
 DeclareAttribute( "CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple",
                   IsCategoryOfColumnsMorphism );
 
