@@ -37,10 +37,19 @@ InstallMethod( AdditiveClosure,
     
     AddMorphismRepresentation( category, IsAdditiveClosureMorphism and HasMorphismMatrix );
     
+    if HasIsLinearCategoryOverCommutativeRing( underlying_category ) and
+        HasCommutativeRingOfLinearCategory( underlying_category ) then
+        
+        SetIsLinearCategoryOverCommutativeRing( category, true );
+        
+        SetCommutativeRingOfLinearCategory( category, CommutativeRingOfLinearCategory( underlying_category ) );
+    
+    fi;
+    
     INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE( category );
     
     to_be_finalized := ValueOption( "FinalizeCategory" );
-      
+    
     if to_be_finalized = false then
       
       return category;
@@ -798,6 +807,22 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         );
         
     end );
+    
+    if CanCompute( underlying_category, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
+      
+      AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+        function( r, alpha )
+          local mat;
+          
+          mat := MorphismMatrix( alpha );
+          
+          mat := List( mat, row -> List( row, m -> MultiplyWithElementOfCommutativeRingForMorphisms( r, m ) ) );
+          
+          return AdditiveClosureMorphism( Source( alpha ), mat, Range( alpha ) );
+          
+      end );
+    
+    fi;
     
     if HasRangeCategoryOfHomomorphismStructure( underlying_category ) then
         
