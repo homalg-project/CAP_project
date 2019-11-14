@@ -343,6 +343,8 @@ InstallGlobalFunction( CapInternalInstallAdd,
                         CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ j ], category, function( ) return input_human_readable_identifier_getter( i, j ); end );
                     od;
                 end;
+            else
+                Display( Concatenation( "Warning: You should add an input sanity check for the following filter: ", String( filter ) ) );
             fi;
         od;
         
