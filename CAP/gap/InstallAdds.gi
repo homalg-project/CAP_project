@@ -287,6 +287,9 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
             if not IsString( filter ) then
                 input_sanity_check_functions[i] := ReturnTrue;
+            elif filter = "category" then
+                # the only check would be that the input lies in IsCapCategory, which is already checked by the method selection
+                input_sanity_check_functions[i] := ReturnTrue;
             elif filter = "cell" then
                 input_sanity_check_functions[i] := function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
@@ -340,6 +343,8 @@ InstallGlobalFunction( CapInternalInstallAdd,
                         CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ j ], category, function( ) return input_human_readable_identifier_getter( i, j ); end );
                     od;
                 end;
+            else
+                Display( Concatenation( "Warning: You should add an input sanity check for the following filter: ", String( filter ) ) );
             fi;
         od;
         
