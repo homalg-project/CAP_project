@@ -161,6 +161,55 @@ end );
 ##
 ####################################
 
+## "1 round of ByASmallerPresentation"
+##
+InstallMethod( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple,
+               [ IsCategoryOfRowsMorphism ],
+               
+  function( alpha )
+    local M, rows, R, T, TI, U, UI, S;
+    
+    M := UnderlyingMatrix( alpha );
+    
+    rows := CapCategory( alpha );
+    
+    R := UnderlyingRing( rows );
+    
+    ## homalg's recipe:
+    ## 1) OnLessGenerators
+    ## 2) if no improvement in terms of number of generators, then:
+    ##  2.1) BasisOfModule
+    ##  2.2) OnLessGenerators
+    
+    T := HomalgVoidMatrix( R );
+    
+    TI := HomalgVoidMatrix( R );
+    
+    S := SimplerEquivalentMatrix( M, T, TI, "", "" );
+    
+    if NrColumns( S ) = RankOfObject( Range( alpha ) ) then
+      
+      S := BasisOfRowModule( S );
+      
+      U := HomalgVoidMatrix( R );
+    
+      UI := HomalgVoidMatrix( R );
+      
+      S := SimplerEquivalentMatrix( S, U, UI, "", "" );
+      
+      T := T * U;
+      
+      TI := UI * TI;
+      
+    fi;
+    
+    ## add the following line to homalg's recipe in order to minimize the number of relations
+    S := ReducedBasisOfRowModule( S );
+    
+    return [ S, T, TI ];
+    
+end );
+
 ##
 InstallMethod( CATEGORY_OF_ROWS_SimplificationSourceAndRangeTuple,
                [ IsCategoryOfRowsMorphism ],
@@ -973,6 +1022,30 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             CATEGORY_OF_ROWS_SimplificationRangeTuple( alpha )[2],
             Range( alpha )
           );
+        
+    end );
+    
+    ##
+    AddSomeReductionBySplitEpiSummand( category,
+      function( alpha )
+        
+        return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[1], category );
+        
+    end );
+    
+    ##
+    AddSomeReductionBySplitEpiSummand_MorphismFromInputRange( category,
+      function( alpha )
+        
+        return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[2], category );
+        
+    end );
+    
+    ##
+    AddSomeReductionBySplitEpiSummand_MorphismToInputRange( category,
+      function( alpha )
+        
+        return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[3], category );
         
     end );
     

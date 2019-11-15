@@ -68,6 +68,9 @@ DeclareAttribute( "UnderlyingMatrix",
 DeclareAttribute( "UnderlyingMatrix",
                   IsCategoryOfRowsMorphism );
 
+DeclareAttribute( "CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple",
+                  IsCategoryOfRowsMorphism );
+
 DeclareAttribute( "CATEGORY_OF_ROWS_SimplificationSourceAndRangeTuple",
                   IsCategoryOfRowsMorphism );
 
