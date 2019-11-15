@@ -67,3 +67,10 @@ DeclareAttribute( "UnderlyingMatrix",
 
 DeclareAttribute( "CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple",
                   IsCategoryOfColumnsMorphism );
+
+DeclareAttribute( "CATEGORY_OF_COLUMNS_SimplificationSourceTuple",
+                  IsCategoryOfColumnsMorphism );
+
+DeclareAttribute( "CATEGORY_OF_COLUMNS_SimplificationRangeTuple",
+                  IsCategoryOfColumnsMorphism );
+

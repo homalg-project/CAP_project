@@ -70,3 +70,9 @@ DeclareAttribute( "UnderlyingMatrix",
 
 DeclareAttribute( "CATEGORY_OF_ROWS_SimplificationSourceAndRangeTuple",
                   IsCategoryOfRowsMorphism );
+
+DeclareAttribute( "CATEGORY_OF_ROWS_SimplificationSourceTuple",
+                  IsCategoryOfRowsMorphism );
+
+DeclareAttribute( "CATEGORY_OF_ROWS_SimplificationRangeTuple",
+                  IsCategoryOfRowsMorphism );

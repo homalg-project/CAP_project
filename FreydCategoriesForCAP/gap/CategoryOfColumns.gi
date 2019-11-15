@@ -175,6 +175,31 @@ InstallMethod( CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple,
     
 end );
 
+##
+InstallMethod( CATEGORY_OF_COLUMNS_SimplificationSourceTuple,
+               [ IsCategoryOfColumnsMorphism ],
+               
+  function( alpha )
+    
+    ## [ S, T, TI ];
+    ## M T = S
+    return SimplifyHomalgMatrixByRightMultiplicationWithInvertibleMatrix( UnderlyingMatrix( alpha ) );
+    
+end );
+
+##
+InstallMethod( CATEGORY_OF_COLUMNS_SimplificationRangeTuple,
+               [ IsCategoryOfColumnsMorphism ],
+               
+  function( alpha )
+    
+    ## [ S, T, TI ];
+    ## T M = S
+    return SimplifyHomalgMatrixByLeftMultiplicationWithInvertibleMatrix( UnderlyingMatrix( alpha ) );
+    
+end );
+
+
 
 ####################################
 ##
@@ -793,6 +818,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     
     ## Simplifications
     
+    ## Source and Range
     ##
     AddSimplifySourceAndRange( category,
       function( alpha, i )
@@ -858,6 +884,85 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         
     end );
     
+    ## only Source
+    ##
+    AddSimplifySource( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfColumnsMorphism(
+            Source( alpha ),
+            CATEGORY_OF_COLUMNS_SimplificationSourceTuple( alpha )[1],
+            Range( alpha )
+          );
+        
+    end );
+    
+    ##
+    AddSimplifySource_IsoToInputObject( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfColumnsMorphism(
+            Source( alpha ),
+            CATEGORY_OF_COLUMNS_SimplificationSourceTuple( alpha )[2],
+            Source( alpha )
+          );
+        
+    end );
+    
+    ##
+    AddSimplifySource_IsoFromInputObject( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfColumnsMorphism(
+            Source( alpha ),
+            CATEGORY_OF_COLUMNS_SimplificationSourceTuple( alpha )[3],
+            Source( alpha )
+          );
+        
+    end );
+    
+    ## only Range
+    ##
+    AddSimplifyRange( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfColumnsMorphism(
+            Source( alpha ),
+            CATEGORY_OF_COLUMNS_SimplificationRangeTuple( alpha )[1],
+            Range( alpha )
+          );
+        
+    end );
+    
+    ##
+    AddSimplifyRange_IsoToInputObject( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfColumnsMorphism(
+            Range( alpha ),
+            CATEGORY_OF_COLUMNS_SimplificationRangeTuple( alpha )[3],
+            Range( alpha )
+          );
+        
+    end );
+    
+    ##
+    AddSimplifyRange_IsoFromInputObject( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfColumnsMorphism(
+            Range( alpha ),
+            CATEGORY_OF_COLUMNS_SimplificationRangeTuple( alpha )[2],
+            Range( alpha )
+          );
+        
+    end );
     
 end );
 
