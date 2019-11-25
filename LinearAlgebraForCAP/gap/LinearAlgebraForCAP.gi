@@ -30,6 +30,10 @@ InstallMethod( MatrixCategory,
     
     SetIsAbelianCategory( category, true );
     
+    SetIsAbelianCategoryWithEnoughProjectives( category, true );
+    
+    SetIsAbelianCategoryWithEnoughInjectives( category, true );
+    
     SetIsRigidSymmetricClosedMonoidalCategory( category, true );
     
     SetIsStrictMonoidalCategory( category, true );
@@ -883,6 +887,26 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
     end );
     
+    ## enough projectives & injectives
+    
+    ##
+    AddSomeProjectiveObject( category, IdFunc );
+    
+    ##
+    AddEpimorphismFromSomeProjectiveObject( category, IdentityMorphism );
+    
+    ##
+    AddIsProjective( category, ReturnTrue );
+    
+    ##
+    AddSomeInjectiveObject( category, IdFunc );
+    
+    ##
+    AddMonomorphismIntoSomeInjectiveObject( category, IdentityMorphism );
+    
+    ##
+    AddIsInjective( category, ReturnTrue );
+   
 end );
 
 
