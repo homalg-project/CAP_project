@@ -45,6 +45,8 @@ InstallGlobalFunction( FREYD_CATEGORY,
         
         SetIsAbelianCategory( freyd_category, true );
         
+        SetIsAbelianCategoryWithEnoughProjectives( freyd_category, true );
+    
     fi;
     
     conditions := [ "TensorProductOnObjects",
