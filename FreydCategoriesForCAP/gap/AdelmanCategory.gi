@@ -926,6 +926,122 @@ end );
 
 ####################################
 ##
+## Functors
+##
+####################################
+
+##
+InstallMethod( AdelmanCategoryFunctorInducedByUniversalProperty,
+               [ IsCapFunctor ],
+               
+  function( functor ) 
+    local source, range, induced_functor;
+    
+    range := AsCapCategory( Range( functor ) );
+    
+    if not ( HasIsAbelianCategory( range ) and IsAbelianCategory( range ) ) then
+        
+        Error( "The range of the given category has to be abelian" );
+        
+    fi;
+    
+    if not ForAll( [ "HomologyObject", "HomologyObjectFunctorialWithGivenHomologyObjects" ], f -> CanCompute( range, f ) ) then
+        
+        Error( "The range of the given category has to be able to compute HomologyObject and HomologyObjectFunctorialWithGivenHomologyObjects" );
+        
+    fi;
+    
+    source := AdelmanCategory( AsCapCategory( Source( functor ) ) );
+    
+    induced_functor :=
+        CapFunctor( 
+            Concatenation( "Functor induced by universal property of Adelman category applied to ", Name( functor ) ),
+            source, range
+    );
+    
+    AddObjectFunction( induced_functor,
+      function( adelman_obj )
+        local alpha, beta;
+        
+        alpha := ApplyFunctor( functor, RelationMorphism( adelman_obj ) );
+        
+        beta := ApplyFunctor( functor, CorelationMorphism( adelman_obj ) );
+        
+        return HomologyObject( alpha, beta );
+        
+    end );
+    
+    AddMorphismFunction( induced_functor,
+      function( new_source, mor, new_range )
+        local alpha, beta, epsilon, gamma, delta;
+        
+        alpha := ApplyFunctor( functor, RelationMorphism( Source( mor ) ) );
+        
+        beta := ApplyFunctor( functor, CorelationMorphism( Source( mor ) ) );
+        
+        gamma := ApplyFunctor( functor, RelationMorphism( Range( mor ) ) );
+        
+        delta := ApplyFunctor( functor, CorelationMorphism( Range( mor ) ) );
+        
+        epsilon := ApplyFunctor( functor, MorphismDatum( mor ) );
+        
+        return HomologyObjectFunctorialWithGivenHomologyObjects(
+            new_source,
+            [ alpha, beta, epsilon, gamma, delta ],
+            new_range
+        );
+        
+    end );
+    
+    return induced_functor;
+    
+end );
+
+##
+InstallMethod( EmbeddingFunctorOfFreydCategoryIntoAdelmanCategory,
+               [ IsCapCategory ],
+               
+  function( underlying_category ) 
+    local source, range, emb_functor;
+    
+    source := FreydCategory( underlying_category );
+    
+    range := AdelmanCategory( underlying_category );
+    
+    emb_functor :=
+        CapFunctor( 
+            Concatenation( "Embedding functor of Freyd category of ", Name( underlying_category ), " into its Adelman category" ),
+            source, range
+    );
+    
+    AddObjectFunction( emb_functor,
+      function( freyd_obj )
+        local alpha;
+        
+        alpha := RelationMorphism( freyd_obj );
+        
+        return AdelmanCategoryObject( alpha, MorphismIntoZeroObject( Range( alpha ) ) );
+        
+    end );
+    
+    AddMorphismFunction( emb_functor,
+      function( new_source, mor, new_range )
+        
+        return AdelmanCategoryMorphism(
+            new_source,
+            MorphismDatum( mor ),
+            new_range
+        );
+        
+    end );
+    
+    return emb_functor;
+    
+end );
+
+
+####################################
+##
 ## View
 ##
 ####################################

@@ -46,6 +46,12 @@ DeclareAttribute( "AsAdelmanCategoryObject",
 DeclareAttribute( "AsAdelmanCategoryMorphism",
                   IsCapCategoryMorphism );
 
+DeclareAttribute( "AdelmanCategoryFunctorInducedByUniversalProperty",
+                  IsCapFunctor );
+
+DeclareAttribute( "EmbeddingFunctorOfFreydCategoryIntoAdelmanCategory",
+                  IsCapCategory );
+
 ####################################
 ##
 #! @Section Attributes
