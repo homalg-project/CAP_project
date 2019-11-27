@@ -208,6 +208,16 @@ InstallMethod( WitnessPairForBeingCongruentToZero,
     
 end );
 
+##
+InstallMethod( IsSequenceAsAdelmanCategoryObject,
+               [ IsAdelmanCategoryObject ],
+               
+  function( object )
+    
+    return IsZero( PreCompose( RelationMorphism( object ), CorelationMorphism( object ) ) );
+    
+end );
+
 ####################################
 ##
 ## Basic operations
@@ -926,7 +936,7 @@ end );
 
 ####################################
 ##
-## Functors
+## Functors and natural transformations
 ##
 ####################################
 
@@ -1036,6 +1046,181 @@ InstallMethod( EmbeddingFunctorOfFreydCategoryIntoAdelmanCategory,
     end );
     
     return emb_functor;
+    
+end );
+
+##
+InstallMethod( RightSatelliteAsEndofunctorOfAdelmanCategory,
+               [ IsCapCategory ],
+               
+  function( underlying_category )
+    local adel, right_sat;
+    
+    adel := AdelmanCategory( underlying_category );
+    
+    right_sat := CapFunctor(
+        Concatenation( "Right satellite functor for ", Name( adel ) ),
+        adel, adel
+    );
+    
+    AddObjectFunction( right_sat,
+      function( adel_obj )
+        local alpha;
+        
+        if not IsSequenceAsAdelmanCategoryObject( adel_obj ) then
+            
+            Error( "The case that the input object is not a sequence is not supported yet" );
+            
+        fi;
+        
+        alpha := CorelationMorphism( adel_obj );
+        
+        return AdelmanCategoryObject( alpha, WeakCokernelProjection( alpha ) );
+        
+    end );
+    
+    AddMorphismFunction( right_sat,
+      function( new_source, mor, new_range )
+        
+        return AdelmanCategoryMorphism(
+            new_source,
+            CorelationWitness( mor ),
+            new_range
+        );
+        
+    end );
+    
+    return right_sat;
+    
+end );
+
+##
+InstallMethod( LeftSatelliteAsEndofunctorOfAdelmanCategory,
+               [ IsCapCategory ],
+  function( underlying_category )
+    local adel, left_sat;
+    
+    adel := AdelmanCategory( underlying_category );
+    
+    left_sat := CapFunctor(
+        Concatenation( "Left satellite functor for ", Name( adel ) ),
+        adel, adel
+    );
+    
+    AddObjectFunction( left_sat,
+      function( adel_obj )
+        local beta;
+        
+        if not IsSequenceAsAdelmanCategoryObject( adel_obj ) then
+            
+            Error( "The case that the input object is not a sequence is not supported yet" );
+            
+        fi;
+        
+        beta := RelationMorphism( adel_obj );
+        
+        return AdelmanCategoryObject( WeakKernelEmbedding( beta ), beta );
+        
+    end );
+    
+    AddMorphismFunction( left_sat,
+      function( new_source, mor, new_range )
+        
+        return AdelmanCategoryMorphism(
+            new_source,
+            RelationWitness( mor ),
+            new_range
+        );
+        
+    end );
+    
+    return left_sat;
+    
+end );
+
+##
+InstallMethod( UnitOfSatelliteAdjunctionOfAdelmanCategory,
+               [ IsCapCategory ],
+               
+  function( underlying_category )
+    local adel, id, lsat, rsat, range, unit;
+    
+    adel := AdelmanCategory( underlying_category );
+    
+    id := IdentityMorphism( AsCatObject( adel ) );
+    
+    lsat := LeftSatelliteAsEndofunctorOfAdelmanCategory( underlying_category );;
+    
+    rsat := RightSatelliteAsEndofunctorOfAdelmanCategory( underlying_category );;
+    
+    range := PreCompose( rsat, lsat );
+    
+    unit := NaturalTransformation(
+        Concatenation( "Unit of satellite adjunction for ",  Name( adel ) ),
+        id, range
+    );
+    
+    AddNaturalTransformationFunction( unit,
+      function( id_object, adel_obj, s_object )
+        
+        if not IsSequenceAsAdelmanCategoryObject( adel_obj ) then
+            
+            Error( "The case that the input object is not a sequence is not supported yet" );
+            
+        fi;
+        
+        return AdelmanCategoryMorphism(
+            id_object,
+            IdentityMorphism( Source( CorelationMorphism( adel_obj ) ) ),
+            s_object
+        );
+        
+    end );
+    
+    return unit;
+    
+end );
+
+##
+InstallMethod( CounitOfSatelliteAdjunctionOfAdelmanCategory,
+               [ IsCapCategory ],
+               
+  function( underlying_category )
+    local adel, id, lsat, rsat, source, counit;
+    
+    adel := AdelmanCategory( underlying_category );
+    
+    id := IdentityMorphism( AsCatObject( adel ) );
+    
+    lsat := LeftSatelliteAsEndofunctorOfAdelmanCategory( underlying_category );;
+    
+    rsat := RightSatelliteAsEndofunctorOfAdelmanCategory( underlying_category );;
+    
+    source := PreCompose( lsat, rsat );
+    
+    counit := NaturalTransformation(
+        Concatenation( "Counit of satellite adjunction for ",  Name( adel ) ),
+        source, id
+    );
+    
+    AddNaturalTransformationFunction( counit,
+      function( s_object, adel_obj, id_object )
+        
+        if not IsSequenceAsAdelmanCategoryObject( adel_obj ) then
+            
+            Error( "The case that the input object is not a sequence is not supported yet" );
+            
+        fi;
+        
+        return AdelmanCategoryMorphism(
+            s_object,
+            IdentityMorphism( Source( CorelationMorphism( adel_obj ) ) ),
+            id_object
+        );
+        
+    end );
+    
+    return counit;
     
 end );
 

@@ -19,7 +19,16 @@ emb := EmbeddingFunctorIntoFreydCategory( RowsR );;
 ind := AdelmanCategoryFunctorInducedByUniversalProperty( emb );;
 IsZero( ApplyFunctor( ind, mor ) );
 #! true
-M := FreydCategoryObject( four );;
+M := FreydCategoryObject( AsCategoryOfRowsMorphism( HomalgMatrix( [ [  2, 2, 2 ], [ 4, 4, 6 ] ], 2, 3, R ), RowsR ) );;
 as_tensor := EmbeddingFunctorOfFreydCategoryIntoAdelmanCategory( RowsR );;
-ApplyFunctor( as_tensor, M );;
+Mt := ApplyFunctor( as_tensor, M );;
+lsat := LeftSatelliteAsEndofunctorOfAdelmanCategory( RowsR );;
+rsat := RightSatelliteAsEndofunctorOfAdelmanCategory( RowsR );;
+torsion := ApplyFunctor( ind, ( ApplyFunctor( rsat, ApplyFunctor( lsat, Mt ) ) ) );;
+unit := UnitOfSatelliteAdjunctionOfAdelmanCategory( RowsR );;
+IsZero( ApplyNaturalTransformation( unit, Mt ) );
+#! true
+counit := CounitOfSatelliteAdjunctionOfAdelmanCategory( RowsR );;
+t := ApplyNaturalTransformation( counit, Mt );
+
 #! @EndExample
