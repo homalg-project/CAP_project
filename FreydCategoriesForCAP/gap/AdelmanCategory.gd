@@ -70,6 +70,9 @@ DeclareAttribute( "UnitOfSatelliteAdjunctionOfAdelmanCategory",
 DeclareAttribute( "CounitOfSatelliteAdjunctionOfAdelmanCategory",
                   IsCapCategory );
 
+DeclareAttribute( "ProjectionFunctorAdelmanCategoryToFreydCategory",
+                  IsCapCategory );
+
 ####################################
 ##
 #! @Section Attributes

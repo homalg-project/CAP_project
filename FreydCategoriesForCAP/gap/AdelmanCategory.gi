@@ -25,7 +25,7 @@ InstallMethod( AdelmanCategory,
         
     fi;
     
-    for func in [ "Lift", "Colift", "SubtractionForMorphisms", "AdditionForMorphisms", "PreCompose", "IdentityMorphism", "SolveLinearSystemInAbCategory" ] do
+    for func in [ "Lift", "Colift", "SubtractionForMorphisms", "AdditionForMorphisms", "PreCompose", "IdentityMorphism" ] do
         
         if not CanCompute( underlying_category, func ) then
             
@@ -34,6 +34,12 @@ InstallMethod( AdelmanCategory,
         fi;
         
     od;
+    
+    if not CanCompute( underlying_category, "SolveLinearSystemInAbCategory" ) then
+        
+        Info( InfoFreydCategoriesForCAP, 2, "Warning: the constructed Adelman category cannot decide congruence for morphisms" );
+        
+    fi;
     
     adelman_category := CreateCapCategory( Concatenation( "Adelman category( ", Name( underlying_category ), " )" ) );
     
@@ -1224,6 +1230,15 @@ InstallMethod( CounitOfSatelliteAdjunctionOfAdelmanCategory,
     
 end );
 
+##
+InstallMethod( ProjectionFunctorAdelmanCategoryToFreydCategory,
+               [ IsCapCategory ],
+               
+  function( underlying_category )
+    
+    return AdelmanCategoryFunctorInducedByUniversalProperty( EmbeddingFunctorIntoFreydCategory( underlying_category ) );
+    
+end );
 
 ####################################
 ##

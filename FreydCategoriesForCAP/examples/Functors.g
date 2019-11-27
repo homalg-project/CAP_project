@@ -29,6 +29,5 @@ unit := UnitOfSatelliteAdjunctionOfAdelmanCategory( RowsR );;
 IsZero( ApplyNaturalTransformation( unit, Mt ) );
 #! true
 counit := CounitOfSatelliteAdjunctionOfAdelmanCategory( RowsR );;
-t := ApplyNaturalTransformation( counit, Mt );
-
+t := ApplyNaturalTransformation( counit, Mt );;
 #! @EndExample
