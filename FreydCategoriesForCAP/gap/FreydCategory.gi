@@ -1739,6 +1739,44 @@ InstallGlobalFunction( IsValidInputForFreydCategory,
 
 end );
 
+####################################################################################
+##
+##  Functors
+##
+####################################################################################
+
+##
+InstallMethod( EmbeddingFunctorIntoFreydCategory,
+               [ IsCapCategory ],
+               
+  function( underlying_category )
+    local freyd_category, emb_functor;
+    
+    freyd_category := FreydCategory( underlying_category );
+    
+    emb_functor := CapFunctor(
+      Concatenation( "Embedding functor of ", Name( underlying_category ), " into its Freyd category" ),
+      underlying_category,
+      freyd_category
+    );
+    
+    AddObjectFunction( emb_functor,
+      function( obj )
+        
+        return AsFreydCategoryObject( obj );
+        
+    end );
+    
+    AddMorphismFunction( emb_functor,
+      function( new_source, mor, new_range )
+        
+        return FreydCategoryMorphism( new_source, mor, new_range );
+        
+    end );
+    
+    return emb_functor;
+    
+end );
 
 ####################################################################################
 ##

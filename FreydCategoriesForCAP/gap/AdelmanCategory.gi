@@ -25,7 +25,7 @@ InstallMethod( AdelmanCategory,
         
     fi;
     
-    for func in [ "Lift", "Colift", "SubtractionForMorphisms", "AdditionForMorphisms", "PreCompose", "IdentityMorphism", "SolveLinearSystemInAbCategory" ] do
+    for func in [ "Lift", "Colift", "SubtractionForMorphisms", "AdditionForMorphisms", "PreCompose", "IdentityMorphism" ] do
         
         if not CanCompute( underlying_category, func ) then
             
@@ -34,6 +34,12 @@ InstallMethod( AdelmanCategory,
         fi;
         
     od;
+    
+    if not CanCompute( underlying_category, "SolveLinearSystemInAbCategory" ) then
+        
+        Info( InfoFreydCategoriesForCAP, 2, "Warning: the constructed Adelman category cannot decide congruence for morphisms" );
+        
+    fi;
     
     adelman_category := CreateCapCategory( Concatenation( "Adelman category( ", Name( underlying_category ), " )" ) );
     
@@ -205,6 +211,16 @@ InstallMethod( WitnessPairForBeingCongruentToZero,
         [ [ RelationMorphism( Range( morphism ) ), IdentityMorphism( Range( datum ) ) ] ];
     
     return SolveLinearSystemInAbCategory( left_coeffs, right_coeffs, [ datum ] );
+    
+end );
+
+##
+InstallMethod( IsSequenceAsAdelmanCategoryObject,
+               [ IsAdelmanCategoryObject ],
+               
+  function( object )
+    
+    return IsZero( PreCompose( RelationMorphism( object ), CorelationMorphism( object ) ) );
     
 end );
 
@@ -921,6 +937,306 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         fi;
         
     fi;
+    
+end );
+
+####################################
+##
+## Functors and natural transformations
+##
+####################################
+
+##
+InstallMethod( AdelmanCategoryFunctorInducedByUniversalProperty,
+               [ IsCapFunctor ],
+               
+  function( functor ) 
+    local source, range, induced_functor;
+    
+    range := AsCapCategory( Range( functor ) );
+    
+    if not ( HasIsAbelianCategory( range ) and IsAbelianCategory( range ) ) then
+        
+        Error( "The range of the given category has to be abelian" );
+        
+    fi;
+    
+    if not ForAll( [ "HomologyObject", "HomologyObjectFunctorialWithGivenHomologyObjects" ], f -> CanCompute( range, f ) ) then
+        
+        Error( "The range of the given category has to be able to compute HomologyObject and HomologyObjectFunctorialWithGivenHomologyObjects" );
+        
+    fi;
+    
+    source := AdelmanCategory( AsCapCategory( Source( functor ) ) );
+    
+    induced_functor :=
+        CapFunctor( 
+            Concatenation( "Functor induced by universal property of Adelman category applied to ", Name( functor ) ),
+            source, range
+    );
+    
+    AddObjectFunction( induced_functor,
+      function( adelman_obj )
+        local alpha, beta;
+        
+        alpha := ApplyFunctor( functor, RelationMorphism( adelman_obj ) );
+        
+        beta := ApplyFunctor( functor, CorelationMorphism( adelman_obj ) );
+        
+        return HomologyObject( alpha, beta );
+        
+    end );
+    
+    AddMorphismFunction( induced_functor,
+      function( new_source, mor, new_range )
+        local alpha, beta, epsilon, gamma, delta;
+        
+        alpha := ApplyFunctor( functor, RelationMorphism( Source( mor ) ) );
+        
+        beta := ApplyFunctor( functor, CorelationMorphism( Source( mor ) ) );
+        
+        gamma := ApplyFunctor( functor, RelationMorphism( Range( mor ) ) );
+        
+        delta := ApplyFunctor( functor, CorelationMorphism( Range( mor ) ) );
+        
+        epsilon := ApplyFunctor( functor, MorphismDatum( mor ) );
+        
+        return HomologyObjectFunctorialWithGivenHomologyObjects(
+            new_source,
+            [ alpha, beta, epsilon, gamma, delta ],
+            new_range
+        );
+        
+    end );
+    
+    return induced_functor;
+    
+end );
+
+##
+InstallMethod( EmbeddingFunctorOfFreydCategoryIntoAdelmanCategory,
+               [ IsCapCategory ],
+               
+  function( underlying_category ) 
+    local source, range, emb_functor;
+    
+    source := FreydCategory( underlying_category );
+    
+    range := AdelmanCategory( underlying_category );
+    
+    emb_functor :=
+        CapFunctor( 
+            Concatenation( "Embedding functor of Freyd category of ", Name( underlying_category ), " into its Adelman category" ),
+            source, range
+    );
+    
+    AddObjectFunction( emb_functor,
+      function( freyd_obj )
+        local alpha;
+        
+        alpha := RelationMorphism( freyd_obj );
+        
+        return AdelmanCategoryObject( alpha, MorphismIntoZeroObject( Range( alpha ) ) );
+        
+    end );
+    
+    AddMorphismFunction( emb_functor,
+      function( new_source, mor, new_range )
+        
+        return AdelmanCategoryMorphism(
+            new_source,
+            MorphismDatum( mor ),
+            new_range
+        );
+        
+    end );
+    
+    return emb_functor;
+    
+end );
+
+##
+InstallMethod( RightSatelliteAsEndofunctorOfAdelmanCategory,
+               [ IsCapCategory ],
+               
+  function( underlying_category )
+    local adel, right_sat;
+    
+    adel := AdelmanCategory( underlying_category );
+    
+    right_sat := CapFunctor(
+        Concatenation( "Right satellite functor for ", Name( adel ) ),
+        adel, adel
+    );
+    
+    AddObjectFunction( right_sat,
+      function( adel_obj )
+        local alpha;
+        
+        if not IsSequenceAsAdelmanCategoryObject( adel_obj ) then
+            
+            Error( "The case that the input object is not a sequence is not supported yet" );
+            
+        fi;
+        
+        alpha := CorelationMorphism( adel_obj );
+        
+        return AdelmanCategoryObject( alpha, WeakCokernelProjection( alpha ) );
+        
+    end );
+    
+    AddMorphismFunction( right_sat,
+      function( new_source, mor, new_range )
+        
+        return AdelmanCategoryMorphism(
+            new_source,
+            CorelationWitness( mor ),
+            new_range
+        );
+        
+    end );
+    
+    return right_sat;
+    
+end );
+
+##
+InstallMethod( LeftSatelliteAsEndofunctorOfAdelmanCategory,
+               [ IsCapCategory ],
+  function( underlying_category )
+    local adel, left_sat;
+    
+    adel := AdelmanCategory( underlying_category );
+    
+    left_sat := CapFunctor(
+        Concatenation( "Left satellite functor for ", Name( adel ) ),
+        adel, adel
+    );
+    
+    AddObjectFunction( left_sat,
+      function( adel_obj )
+        local beta;
+        
+        if not IsSequenceAsAdelmanCategoryObject( adel_obj ) then
+            
+            Error( "The case that the input object is not a sequence is not supported yet" );
+            
+        fi;
+        
+        beta := RelationMorphism( adel_obj );
+        
+        return AdelmanCategoryObject( WeakKernelEmbedding( beta ), beta );
+        
+    end );
+    
+    AddMorphismFunction( left_sat,
+      function( new_source, mor, new_range )
+        
+        return AdelmanCategoryMorphism(
+            new_source,
+            RelationWitness( mor ),
+            new_range
+        );
+        
+    end );
+    
+    return left_sat;
+    
+end );
+
+##
+InstallMethod( UnitOfSatelliteAdjunctionOfAdelmanCategory,
+               [ IsCapCategory ],
+               
+  function( underlying_category )
+    local adel, id, lsat, rsat, range, unit;
+    
+    adel := AdelmanCategory( underlying_category );
+    
+    id := IdentityMorphism( AsCatObject( adel ) );
+    
+    lsat := LeftSatelliteAsEndofunctorOfAdelmanCategory( underlying_category );;
+    
+    rsat := RightSatelliteAsEndofunctorOfAdelmanCategory( underlying_category );;
+    
+    range := PreCompose( rsat, lsat );
+    
+    unit := NaturalTransformation(
+        Concatenation( "Unit of satellite adjunction for ",  Name( adel ) ),
+        id, range
+    );
+    
+    AddNaturalTransformationFunction( unit,
+      function( id_object, adel_obj, s_object )
+        
+        if not IsSequenceAsAdelmanCategoryObject( adel_obj ) then
+            
+            Error( "The case that the input object is not a sequence is not supported yet" );
+            
+        fi;
+        
+        return AdelmanCategoryMorphism(
+            id_object,
+            IdentityMorphism( Source( CorelationMorphism( adel_obj ) ) ),
+            s_object
+        );
+        
+    end );
+    
+    return unit;
+    
+end );
+
+##
+InstallMethod( CounitOfSatelliteAdjunctionOfAdelmanCategory,
+               [ IsCapCategory ],
+               
+  function( underlying_category )
+    local adel, id, lsat, rsat, source, counit;
+    
+    adel := AdelmanCategory( underlying_category );
+    
+    id := IdentityMorphism( AsCatObject( adel ) );
+    
+    lsat := LeftSatelliteAsEndofunctorOfAdelmanCategory( underlying_category );;
+    
+    rsat := RightSatelliteAsEndofunctorOfAdelmanCategory( underlying_category );;
+    
+    source := PreCompose( lsat, rsat );
+    
+    counit := NaturalTransformation(
+        Concatenation( "Counit of satellite adjunction for ",  Name( adel ) ),
+        source, id
+    );
+    
+    AddNaturalTransformationFunction( counit,
+      function( s_object, adel_obj, id_object )
+        
+        if not IsSequenceAsAdelmanCategoryObject( adel_obj ) then
+            
+            Error( "The case that the input object is not a sequence is not supported yet" );
+            
+        fi;
+        
+        return AdelmanCategoryMorphism(
+            s_object,
+            IdentityMorphism( Source( CorelationMorphism( adel_obj ) ) ),
+            id_object
+        );
+        
+    end );
+    
+    return counit;
+    
+end );
+
+##
+InstallMethod( ProjectionFunctorAdelmanCategoryToFreydCategory,
+               [ IsCapCategory ],
+               
+  function( underlying_category )
+    
+    return AdelmanCategoryFunctorInducedByUniversalProperty( EmbeddingFunctorIntoFreydCategory( underlying_category ) );
     
 end );
 

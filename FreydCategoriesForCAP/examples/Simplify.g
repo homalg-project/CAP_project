@@ -134,6 +134,28 @@ IsIsomorphism( SimplifyObject_IsoToInputObject( Mrows, infinity ) );
 #! true
 #! @EndExample
 
+#! Computing the grade filtration:
+#! @Example
+mu1 := GradeFiltrationNthMonomorphism( Mrows, 1 );;
+IsZero( mu1 );
+#! false
+IsMonomorphism( mu1 );
+#! true
+mu2 := GradeFiltrationNthMonomorphism( Mrows, 2 );;
+IsZero( mu2 );
+#! false
+IsMonomorphism( mu2 );
+#! true
+mu3 := GradeFiltrationNthMonomorphism( Mrows, 3 );;
+IsZero( mu3 );
+#! false
+IsMonomorphism( mu3 );
+#! true
+mu4 := GradeFiltrationNthMonomorphism( Mrows, 4 );;
+IsZero( mu4 );
+#! true
+#! @EndExample
+
 #! @Example
 cols := CategoryOfColumns( A3 );;
 alpha := AsCategoryOfColumnsMorphism( M, cols );;

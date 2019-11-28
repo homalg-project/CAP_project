@@ -52,6 +52,8 @@ DeclareAttribute( "AsFreydCategoryObject",
 DeclareAttribute( "AsFreydCategoryMorphism",
                   IsCapCategoryMorphism );
 
+DeclareAttribute( "EmbeddingFunctorIntoFreydCategory",
+                  IsCapCategory );
 
 ####################################
 ##
