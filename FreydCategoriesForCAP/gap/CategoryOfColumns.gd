@@ -50,6 +50,13 @@ DeclareOperation( "AsCategoryOfColumnsMorphism",
 DeclareOperation( "CategoryOfColumnsMorphism",
                   [ IsCategoryOfColumnsObject, IsHomalgMatrix, IsCategoryOfColumnsObject ] );
 
+DeclareOperation( "\/",
+                  [ IsHomalgMatrix, IsCategoryOfColumns ] );
+
+DeclareOperation( "\/",
+                  [ IsInt, IsCategoryOfColumns ] );
+
+
 ####################################
 ##
 #! @Section Attributes

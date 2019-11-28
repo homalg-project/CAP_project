@@ -1276,3 +1276,46 @@ InstallMethod( Display,
     Display( CorelationMorphism( object ) );
     
 end );
+
+####################################
+##
+## Convenience
+##
+####################################
+
+##
+InstallMethod( \/,
+              [ IsCapCategoryObject, IsAdelmanCategory ],
+              
+  function( object, adel )
+    local adel_obj;
+    
+    adel_obj := AsAdelmanCategoryObject( object );
+    
+    if not IsIdenticalObj( CapCategory( adel_obj ), adel ) then
+        
+        Error( "The Adelman category of the given object is not identical to the provided Adelman category" );
+        
+    fi;
+    
+    return adel_obj;
+    
+end );
+
+##
+InstallMethod( \/,
+               [ IsFreydCategoryObject, IsAdelmanCategory ],
+  function( freyd_obj, adel )
+    local underlying_category;
+    
+    underlying_category := UnderlyingCategory( CapCategory( freyd_obj ) );
+    
+    if not IsIdenticalObj( underlying_category, UnderlyingCategory( adel ) ) then
+        
+        TryNextMethod();
+        
+    fi;
+    
+    return ApplyFunctor( EmbeddingFunctorOfFreydCategoryIntoAdelmanCategory( underlying_category ), freyd_obj );;
+    
+end );
