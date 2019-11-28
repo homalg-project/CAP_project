@@ -900,6 +900,28 @@ AddDerivationToCAP( IsIsomorphism,
 end : Description := "IsIsomorphism by deciding if it is a split mono and a split epi" );
 
 ##
+AddDerivationToCAP( IsIsomorphism,
+                    [ [ IsSplitMonomorphism, 1 ],
+                      [ IsEpimorphism, 1 ] ],
+                 
+  function( morphism )
+    
+    return IsSplitMonomorphism( morphism ) and IsEpimorphism( morphism );
+    
+end : Description := "IsIsomorphism by deciding if it is a split mono and an epi" );
+
+##
+AddDerivationToCAP( IsIsomorphism,
+                    [ [ IsMonomorphism, 1 ],
+                      [ IsSplitEpimorphism, 1 ] ],
+                 
+  function( morphism )
+    
+    return IsMonomorphism( morphism ) and IsSplitEpimorphism( morphism );
+    
+end : Description := "IsIsomorphism by deciding if it is a mono and a split epi" );
+
+##
 AddDerivationToCAP( IsSplitEpimorphism,
                     [ [ IsLiftable, 1 ],
                       [ IdentityMorphism, 1 ] ],
