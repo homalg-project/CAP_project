@@ -545,6 +545,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     end );
     
     ##
+    AddIsZeroForMorphisms( category,
+      function( mor )
+        
+        return MereExistenceOfWitnessForBeingCongruentToZero( mor );
+        
+    end );
+    
+    ##
     AddDirectSum( category,
       function( object_list )
         
@@ -886,7 +894,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             return FreydCategoryMorphism( Source( alpha_freyd ), solution[1], Source( gamma_freyd ) );
             
-        end );
+        end, 300 );
         
         ##
         AddColift( category,
@@ -905,7 +913,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             return FreydCategoryMorphism( Range( alpha_freyd ), solution[1], Range( gamma_freyd ) );
             
-        end );
+        end, 300 );
 
     fi;
     
@@ -921,7 +929,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             return
               CallFuncList( MereExistenceOfSolutionOfLinearSystemInAbCategory, lift_via_linear_system_func( alpha_freyd, gamma_freyd ) );
             
-        end );
+        end, 200 );
         
         ##
         AddIsColiftable( category,
@@ -932,7 +940,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             return
               CallFuncList( MereExistenceOfSolutionOfLinearSystemInAbCategory, colift_via_linear_system_func( alpha_freyd, gamma_freyd ) );
             
-        end );
+        end, 200 );
         
     fi;
     
