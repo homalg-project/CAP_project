@@ -20,13 +20,15 @@ x^4,  x^3*z,  0,        x^2*z,     -x*z, \
 0,    0,      x^2*y-x^2,-x*y^2+x*y,y^2-y \
 ]", 6, 5, Qxyz );;
 RowsR := CategoryOfRows( Qxyz );;
-M := FreydCategoryObject( AsCategoryOfRowsMorphism( wmat, RowsR ) );;
+Freyd := FreydCategory( RowsR );;
+Adel := AdelmanCategory( RowsR );;
+M := wmat/Freyd;;
 #! @EndExample
 
 #! We compute the grade sequence of functors (it turns out that on the level of functors, we don't get monos)
 
 #! @Example
-M_tor := ApplyFunctor( EmbeddingFunctorOfFreydCategoryIntoAdelmanCategory( RowsR ), M );;
+M_tor := M/Adel;;
 Mu1 := GradeFiltrationNthNaturalTransformationComponent( M_tor, 1 );;
 IsZero( Mu1 );
 #! false

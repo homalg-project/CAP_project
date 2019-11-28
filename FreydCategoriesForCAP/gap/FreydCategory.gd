@@ -55,6 +55,12 @@ DeclareAttribute( "AsFreydCategoryMorphism",
 DeclareAttribute( "EmbeddingFunctorIntoFreydCategory",
                   IsCapCategory );
 
+DeclareOperation( "\/",
+                  [ IsCapCategoryMorphism, IsFreydCategory ] );
+
+DeclareOperation( "\/",
+                  [ IsHomalgMatrix, IsFreydCategory ] );
+
 ####################################
 ##
 #! @Section Attributes

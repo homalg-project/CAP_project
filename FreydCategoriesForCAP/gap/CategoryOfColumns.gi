@@ -1099,3 +1099,20 @@ InstallMethod( Display,
     Print( String( category_of_columns_object ) );
     
 end );
+
+####################################
+##
+## Convenience
+##
+####################################
+
+##
+InstallMethod( \/,
+               [ IsHomalgMatrix, IsCategoryOfColumns ],
+               AsCategoryOfColumnsMorphism
+);
+
+##
+InstallMethod( \/,
+               [ IsInt, IsCategoryOfColumns ],
+               CategoryOfColumnsObject );

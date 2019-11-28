@@ -1111,3 +1111,20 @@ InstallMethod( Display,
     Print( String( category_of_rows_object ) );
     
 end );
+
+####################################
+##
+## Convenience
+##
+####################################
+
+##
+InstallMethod( \/,
+               [ IsHomalgMatrix, IsCategoryOfRows ],
+               AsCategoryOfRowsMorphism
+);
+
+##
+InstallMethod( \/,
+               [ IsInt, IsCategoryOfRows ],
+               CategoryOfRowsObject );
