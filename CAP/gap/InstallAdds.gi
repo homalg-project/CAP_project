@@ -486,6 +486,11 @@ InstallGlobalFunction( CapInternalInstallAdd,
         end;
         
         for i in method_list do
+            
+            if record.installation_name = "IsEqualForObjects" and IsIdenticalObj( i[ 1 ], IsIdenticalObj ) and category!.default_cache_type <> "crisp" and not ValueOption( "SuppressCacheWarning" ) = true then
+                Display( "WARNING: IsIdenticalObj is used for deciding the equality of objects but the caching is not set to crisp. Thus, probably the specification that equal input gives equal output is not fulfilled. You can suppress this warning by passing the option \"SuppressCacheWarning := true\" to AddIsEqualForObjects." );
+            fi;
+            
             install_func( i[ 1 ], i[ 2 ] );
         od;
         
