@@ -29,6 +29,8 @@ DeclareGlobalVariable( "CAP_INTERNAL" );
 
 DeclareGlobalFunction( "CAP_INTERNAL_NAME_COUNTER" );
 
+DeclareGlobalFunction( "CAP_INTERNAL_IDENTIFIER_COUNTER" );
+
 DeclareGlobalFunction( "CATEGORIES_CACHE_GETTER" );
 
 DeclareGlobalFunction( "GET_METHOD_CACHE" );

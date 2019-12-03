@@ -392,7 +392,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                             new_filter_list,
                             
               function( arg )
-                local redirect_return, filter, human_readable_identifier_getter, pre_func_return, result, i, j;
+                local redirect_return, filter, human_readable_identifier_getter, pre_func_return, result, identifiers, i, j;
                 
                 if (redirect_function <> false) and (not IsBound( category!.redirects.( function_name ) ) or category!.redirects.( function_name ) <> false) then
                     redirect_return := CallFuncList( redirect_function, Concatenation( [ category ], arg ) );
@@ -435,6 +435,19 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     elif category!.output_sanity_check_level > 0 then
                         output_sanity_check_function( result );
                     fi;
+                fi;
+
+                if category!.output_sanity_check_level > 0 and IsCapCategoryCell( result ) and not IsBound( result!.identifier ) then
+                    identifiers := [];
+                    for i in [ 1 .. Length( argument_list) ] do
+                        if IsCapCategoryCell( arg[ argument_list[ i ] ] ) and IsBound( arg[ argument_list[ i ] ]!.identifier ) then
+                            identifiers[i] := arg[ argument_list[ i ] ]!.identifier;
+                        else
+                            identifiers[i] := Concatenation( "cell_", String( CAP_INTERNAL_NAME_COUNTER( ) ) );
+                        fi;
+                    od;
+
+                    result!.identifier := Concatenation( install_name, "( ", JoinStringsWithSeparator( identifiers, ", " ), " )" );
                 fi;
                 
                 if post_function <> false then

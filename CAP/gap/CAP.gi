@@ -32,6 +32,7 @@ InstallTrueMethod( IsPreAbelianCategory, IsAbelianCategory );
 InstallValue( CAP_INTERNAL,
               rec(
                    name_counter := 0,
+                   identifier_counter := 0,
                    default_cache_type := "weak",
               )
 );
@@ -45,6 +46,20 @@ InstallGlobalFunction( CAP_INTERNAL_NAME_COUNTER,
     counter := CAP_INTERNAL.name_counter + 1;
     
     CAP_INTERNAL.name_counter := counter;
+    
+    return counter;
+    
+end );
+
+##
+InstallGlobalFunction( CAP_INTERNAL_IDENTIFIER_COUNTER,
+                       
+  function( )
+    local counter;
+    
+    counter := CAP_INTERNAL.identifier_counter + 1;
+    
+    CAP_INTERNAL.identifier_counter := counter;
     
     return counter;
     
