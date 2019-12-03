@@ -12,7 +12,7 @@ PackageName := "ActionsForCAP",
 Subtitle := "Actions and Coactions for CAP",
 
 Version := Maximum( [
-  "2019.09.02", ## Mohamed's version
+  "2019.09.15", ## Mohamed's version
   ## this line prevents merge conflicts
   "2015.08.19", ## Sebas' version
   ## this line prevents merge conflicts

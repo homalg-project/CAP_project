@@ -13,11 +13,6 @@
 ## Constructors
 ##
 ####################################
-####################################
-##
-## Constructors
-##
-####################################
 
 ##
 InstallMethod( LeftCoactionsCategory,
@@ -40,7 +35,7 @@ InstallMethod( LeftCoactionsCategory,
   function( coacting_object, name, context_filter_list )
     local underlying_monoidal_category, preconditions, category_weight_list, i,
           structure_record, object_constructor, morphism_constructor, 
-          left_coactions_category, identity_of_coacting_object;
+          left_coactions_category, identity_of_coacting_object, finalize;
     
     underlying_monoidal_category := CapCategory( coacting_object );
     
@@ -246,8 +241,12 @@ InstallMethod( LeftCoactionsCategory,
     ADD_FUNCTIONS_FOR_LEFT_COACTIONS_CATEGORY( left_coactions_category );
     
     ## TODO: Logic for left_coactions_category
-     
-    Finalize( left_coactions_category );
+    
+    finalize := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "FinalizeCategory", true );
+    
+    if finalize = true then
+        Finalize( left_coactions_category );
+    fi;
     
     return left_coactions_category;
     
@@ -274,7 +273,7 @@ InstallMethod( RightCoactionsCategory,
   function( coacting_object, name, context_filter_list )
     local underlying_monoidal_category, preconditions, category_weight_list, i,
           structure_record, object_constructor, morphism_constructor, 
-          right_coactions_category, identity_of_coacting_object;
+          right_coactions_category, identity_of_coacting_object, finalize;
     
     underlying_monoidal_category := CapCategory( coacting_object );
     
@@ -480,8 +479,12 @@ InstallMethod( RightCoactionsCategory,
     ADD_FUNCTIONS_FOR_RIGHT_COACTIONS_CATEGORY( right_coactions_category );
     
     ## TODO: Logic for right_coactions_category
-     
-    Finalize( right_coactions_category );
+    
+    finalize := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "FinalizeCategory", true );
+    
+    if finalize = true then
+        Finalize( right_coactions_category );
+    fi;
     
     return right_coactions_category;
     
