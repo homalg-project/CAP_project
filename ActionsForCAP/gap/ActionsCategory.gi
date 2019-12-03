@@ -545,10 +545,6 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
         
     end );
     
-    fi;
-    
-    if CanCompute( underlying_category, "IsEqualForMorphisms" ) then
-    
     ##
     AddIsEqualForMorphisms( category,
       function( morphism_1, morphism_2 )
@@ -557,10 +553,6 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
         
     end );
     
-    fi;
-    
-    if CanCompute( underlying_category, "IsCongruentForMorphisms" ) then
-
     ##
     AddIsCongruentForMorphisms( category,
       function( morphism_1, morphism_2 )
@@ -569,6 +561,18 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
         
     end );
     
+    else
+        
+        SetCachingOfCategoryCrisp( category );
+        
+        ##
+        AddIsEqualForObjects( category, IsIdenticalObj );
+        
+        ##
+        AddIsEqualForMorphisms( category, IsIdenticalObj );
+        
+        ## cannot AddIsCongruentForMorphisms
+        
     fi;
     
 end );
