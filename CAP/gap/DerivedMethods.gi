@@ -2611,10 +2611,10 @@ end : Description := "IsEqualForCacheForObjects using IsEqualForObjects" );
 
 ##
 AddDerivationToCAP( SolveLinearSystemInAbCategory,
-                    [ [ InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure, 1 ],
+                    [ [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 1 ],
                       [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ],
                       [ HomomorphismStructureOnObjects, 1 ],
-                      [ InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
   function( left_coefficients, right_coefficients, right_side )
     local m, n, nu, H, lift, summands, list;
     
@@ -2627,7 +2627,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
     nu :=
       UniversalMorphismIntoDirectSum(
         List( [ 1 .. m ],
-        i -> InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( right_side[i] ) )
+        i -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( right_side[i] ) )
     );
     
     list := 
@@ -2651,7 +2651,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
     
     return
       List( [ 1 .. n ], j -> 
-        InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism(
+        InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
           Range( left_coefficients[1][j] ),
           Source( right_coefficients[1][j] ),
           PreCompose( lift, ProjectionInFactorOfDirectSum( summands, j ) )
@@ -2698,7 +2698,7 @@ end : Description := "MereExistenceOfSolutionOfLinearSystemInAbCategory using So
 
 ##
 AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
-                    [ [ InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure, 1 ],
+                    [ [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 1 ],
                       [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ]
                     ],
   function( left_coefficients, right_coefficients, right_side )
@@ -2713,7 +2713,7 @@ AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
     nu :=
       UniversalMorphismIntoDirectSum(
         List( [ 1 .. m ],
-        i -> InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( right_side[i] ) )
+        i -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( right_side[i] ) )
     );
     
     list :=

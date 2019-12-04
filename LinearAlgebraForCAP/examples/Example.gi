@@ -97,9 +97,9 @@ Dimension( HomomorphismStructureOnObjects( a, b ) ) = Dimension( a ) * Dimension
 #! true
 IsCongruentForMorphisms(
     PreCompose( [ u, DualOnMorphisms( i1 ), DualOnMorphisms( alpha ) ] ),
-    InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( Source( u ), Source( alpha ),
+    InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( u ), Source( alpha ),
          PreCompose(
-             InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( DualOnMorphisms( i1 ) ),
+             InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( DualOnMorphisms( i1 ) ),
              HomomorphismStructureOnMorphisms( u, DualOnMorphisms( alpha ) )
          )
     )
@@ -110,14 +110,14 @@ t := TensorUnit( vec );;
 z := ZeroObject( vec );;
 IsCongruentForMorphisms(
     ZeroObjectFunctorial( vec ),
-    InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( z, z, ZeroMorphism( t, z ) )
+    InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( z, z, ZeroMorphism( t, z ) )
 );
 #! true
 IsCongruentForMorphisms(
     ZeroObjectFunctorial( vec ),
-    InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism(
+    InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
         z, z,
-        InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( ZeroObjectFunctorial( vec ) )
+        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( ZeroObjectFunctorial( vec ) )
     )
 );
 #! true

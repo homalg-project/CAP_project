@@ -377,8 +377,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         [ "DistinguishedObjectOfHomomorphismStructure", 
          "HomomorphismStructureOnObjects",
          "HomomorphismStructureOnMorphismsWithGivenObjects",
-         "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
-         "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism" ],
+         "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
+         "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ],
          f -> CanCompute( underlying_category, f ) )
          and 
          IsCategoryOfSkeletalFinSets( RangeCategoryOfHomomorphismStructure( underlying_category ) ) then
@@ -459,7 +459,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         end );
         
         ##
-        AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( category,
+        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
             function( alpha )
                 local coeffs, supp;
                 
@@ -476,12 +476,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
                 return
                     Sum( List( [ 1 .. Size( coeffs ) ], 
                     i -> 
-                    coeffs[i] * FunctorMor( InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( supp[i] ) ) ) );
+                    coeffs[i] * FunctorMor( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( supp[i] ) ) ) );
                 
         end );
         
         ##
-        AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( category,
+        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
           function( a, b, mor )
             local size, a_und, b_und, range_finset;
             
@@ -498,7 +498,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
                     a,
                     EntriesOfHomalgMatrix( UnderlyingMatrix( mor ) ),
                     List( [ 1 .. size ], i -> 
-                        InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism(
+                        InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
                             a_und, b_und, MapOfFinSets( t_finsets, [ i ], range_finset )
                         )
                     ),

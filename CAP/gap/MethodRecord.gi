@@ -3069,19 +3069,19 @@ DistinguishedObjectOfHomomorphismStructure := rec(
   zero_arguments_for_add_method := true
 ),
 
-InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure := rec(
-  installation_name := "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure := rec(
+  installation_name := "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
   filter_list := [ "morphism" ],
   return_type := "other_morphism",
-  dual_operation := "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+  dual_operation := "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
   dual_postprocessor_func := IdFunc
 ),
 
-InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism := rec(
-  installation_name := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
+InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism := rec(
+  installation_name := "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
   filter_list := [ "object", "object", "other_morphism" ],
   return_type := "morphism",
-  dual_operation := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
+  dual_operation := "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
   dual_preprocessor_func := function( A, B, morphism )
     return [ Opposite( B ), Opposite( A ), morphism ];
   end

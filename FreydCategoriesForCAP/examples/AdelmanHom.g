@@ -23,8 +23,8 @@ B := Range( a );;
 C := Range( c );;
 HomomorphismStructureOnObjects( A, C );;
 HomomorphismStructureOnMorphisms( IdentityMorphism( A ), c );;
-mor := InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( a );;
-int := InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( A, B, mor );;
+mor := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( a );;
+int := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( A, B, mor );;
 IsCongruentForMorphisms( int, a );
 #! true
 #! @EndExample

@@ -974,10 +974,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             distinguished_object_of_homomorphism_structure := DistinguishedObjectOfHomomorphismStructure;
             
             interpret_homomorphism_as_morphism_from_dinstinguished_object_to_homomorphism_structure :=
-              InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure;
+              InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure;
             
             interpret_morphism_from_dinstinguished_object_to_homomorphism_structure_as_homomorphism :=
-              InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism;
+              InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism;
             
         elif HasIsAdditiveCategory( range_category )
                 and IsAdditiveCategory( range_category )
@@ -1008,13 +1008,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             interpret_homomorphism_as_morphism_from_dinstinguished_object_to_homomorphism_structure :=
               alpha -> AsFreydCategoryMorphism(
-                        InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( alpha )
+                        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( alpha )
                       );
             
             interpret_morphism_from_dinstinguished_object_to_homomorphism_structure_as_homomorphism :=
               function( A, B, alpha )
                 
-                return InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism(
+                return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
                         A, B, MorphismDatum( alpha ) );
               
               end;
@@ -1128,7 +1128,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 
             end );
             
-            AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( category,
+            AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
               function( alpha )
                 local phi, interpretation, diagram;
                 
@@ -1144,7 +1144,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             end );
         
             ##
-            AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( category,
+            AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
               function( A, B, morphism )
                 local diagram, embedding, epsilon, lift, interpretation;
                 
