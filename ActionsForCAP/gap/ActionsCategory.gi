@@ -572,6 +572,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
         AddIsEqualForMorphisms( category, IsIdenticalObj );
         
         ## cannot AddIsCongruentForMorphisms
+        category!.is_computable := false;
         
     fi;
     
