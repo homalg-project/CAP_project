@@ -49,9 +49,6 @@ DeclareAttribute( "AsAdelmanCategoryMorphism",
 DeclareOperation( "\/",
                   [ IsCapCategoryObject, IsAdelmanCategory ] );
 
-DeclareOperation( "\/",
-                  [ IsFreydCategoryObject, IsAdelmanCategory ] );
-
 ####################################
 ##
 #! @Section Functors and natural transformations
