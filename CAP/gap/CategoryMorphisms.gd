@@ -1853,26 +1853,26 @@ DeclareOperation( "AddDistinguishedObjectOfHomomorphismStructure",
 #! $\nu( \alpha ): 1 \rightarrow H(a,a')$ in $D$ of the homomorphism structure.
 #! @Returns a morphism in $\mathrm{Hom}_{D}(1, H(a,a'))$
 #! @Arguments alpha
-DeclareAttribute( "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+DeclareAttribute( "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
                   IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$ 
-#! to the category for the basic operation <C>InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure</C>.
+#! to the category for the basic operation <C>InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure</C>.
 #! $F: (\alpha: a \rightarrow a') \mapsto (\nu(\alpha):1 \rightarrow H(a,a'))$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+DeclareOperation( "AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+DeclareOperation( "AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+DeclareOperation( "AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+DeclareOperation( "AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -1883,26 +1883,26 @@ DeclareOperation( "AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomom
 #! $\nu^{-1}(\iota): a \rightarrow a'$ in $C$ of the homomorphism structure.
 #! @Returns a morphism in $\mathrm{Hom}_{C}(a,a')$
 #! @Arguments a,a',iota
-DeclareOperation( "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
+DeclareOperation( "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
                    [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$ 
-#! to the category for the basic operation <C>InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism</C>.
+#! to the category for the basic operation <C>InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism</C>.
 #! $F: (a,a',\iota: 1 \rightarrow H(a,a')) \mapsto (\nu^{-1}(\iota): a \rightarrow a')$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
+DeclareOperation( "AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
+DeclareOperation( "AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
+DeclareOperation( "AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
+DeclareOperation( "AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
                   [ IsCapCategory, IsList ] );
 
 ##

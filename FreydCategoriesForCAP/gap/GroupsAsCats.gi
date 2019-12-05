@@ -348,7 +348,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
         end );
         
         ##
-        AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( category,
+        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
           function( alpha )
             return MapOfFinSets(
                 t_obj,
@@ -358,7 +358,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
         end );
         
         ##
-        AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( category,
+        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
           function( a, b, mor )
             return GroupAsCategoryMorphism(
                 category,

@@ -909,11 +909,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                      "UniversalMorphismIntoDirectSum" ], 
                      f -> CanCompute( range_category, f ) )
            and ForAll( [ "DistinguishedObjectOfHomomorphismStructure", 
-                         "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure" ], 
+                         "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ],
                          f -> CanCompute( underlying_category, f ) ) then
             
             ##
-            AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( category,
+            AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
               function( alpha )
                 local size_i, size_j, matrix_alpha;
                 
@@ -933,7 +933,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                         List( [ 1 .. size_i ], i ->
                           UniversalMorphismIntoDirectSum(
                             List( [ 1 .. size_j ], j ->
-                              InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( matrix_alpha[i][j] )
+                              InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( matrix_alpha[i][j] )
                             )
                           )
                         )
@@ -944,14 +944,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         fi;
         
         if ForAll( [ "HomomorphismStructureOnObjects",
-                     "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism" ],
+                     "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ],
                      f -> CanCompute( underlying_category, f ) )
            and ForAll( [ "PreCompose",
                          "ProjectionInFactorOfDirectSum" ],
                          f -> CanCompute( range_category, f ) ) then
             
             ##
-            AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( category,
+            AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
               function( A, B, morphism )
                 local obj_list_A, obj_list_B, size_i, size_j, matrix, summands;
                 
@@ -989,7 +989,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                         A,
                         List( [ 1 .. size_i ], i ->
                           List( [ 1 .. size_j ], j ->
-                            InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism(
+                            InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
                               obj_list_A[i],
                               obj_list_B[j],
                               matrix[i][j]

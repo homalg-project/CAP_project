@@ -742,10 +742,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
             distinguished_object := distinguished_object;
             
             interpret_homomorphism_as_morphism_from_distinguished_object_to_homomorphism_structure :=
-                InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure;
+                InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure;
             
             interpret_morphism_from_distinguished_object_to_homomorphism_structure_as_homomorphism := 
-                InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism;
+                InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism;
             
         elif  HasIsAdditiveCategory( range_category )
                and IsAdditiveCategory( range_category )
@@ -774,12 +774,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
             
             interpret_homomorphism_as_morphism_from_distinguished_object_to_homomorphism_structure :=
               function( alpha )
-                return AsFreydCategoryMorphism( InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( alpha ) );
+                return AsFreydCategoryMorphism( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( alpha ) );
             end;
             
             interpret_morphism_from_distinguished_object_to_homomorphism_structure_as_homomorphism := 
               function( a, b, morphism )
-                return InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( a, b, MorphismDatum( morphism ) );
+                return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( a, b, MorphismDatum( morphism ) );
             end;
             
         else 
@@ -885,7 +885,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
             end );
             
             ##
-            AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( category,
+            AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
               function( mor_alpha )
                 local object_A, object_B, A, B, gen, arrow, reversed, alpha, interpret;
                 
@@ -912,7 +912,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
             end );
             
             ##
-            AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( category,
+            AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
               function( object_A, object_B, morphism )
                 local gen, arrow, reversed, lift, A, B, interpret;
                 

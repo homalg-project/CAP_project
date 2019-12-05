@@ -69,8 +69,8 @@ IsCongruentForMorphisms(
 );
 #! true
 IsCongruentForMorphisms(
-    InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( obj1, obj2, 
-        InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( alpha )
+    InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( obj1, obj2,
+        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( alpha )
     ),
     alpha
 );

@@ -23,10 +23,10 @@ alpha * Colift( alpha, gamma ) = gamma;
 #! true
 Length( HomomorphismStructureOnObjects( u, u ) ) = Size( G );
 #! true
-InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism(
+InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
     u,u,
     PreCompose(
-        InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( alpha ), HomomorphismStructureOnMorphisms( gamma, Inverse( gamma ) )
+        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( alpha ), HomomorphismStructureOnMorphisms( gamma, Inverse( gamma ) )
     )
 )
 =

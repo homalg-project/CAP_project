@@ -725,7 +725,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         end );
         
         ##
-        AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( category,
+        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
           function( alpha )
             local underlying_matrix, nr_rows;
             
@@ -752,7 +752,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         end );
         
         ##
-        AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( category,
+        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
           function( A, B, morphism )
             local nr_rows, nr_columns, underlying_matrix;
             
