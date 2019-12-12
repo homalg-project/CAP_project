@@ -10,7 +10,7 @@ DeclareCategory( "IsFieldAsCategoryMorphism",
 DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_FIELD_AS_CATEGORY" );
 
 DeclareCategory( "IsFieldAsCategory",
-                 IsCapCategory );
+                 IsCapCategory and IsAbCategory );
 
 ## Constructors
 DeclareAttribute( "FieldAsCategory",
@@ -38,11 +38,9 @@ InstallMethod( FieldAsCategory,
   function( field )
     local category;
     
-    category := CreateCapCategory( Concatenation( "Field as category( ", RingName( field )," )"  ) );
+    category := CreateCapCategory( Concatenation( "Field as category( ", RingName( field )," )"  ) : overhead := false );
     
     SetFilterObj( category, IsFieldAsCategory );
-    
-    SetIsAbCategory( category, true );
     
     SetUnderlyingFieldForHomalg( category, field );
     
@@ -50,7 +48,7 @@ InstallMethod( FieldAsCategory,
     
     AddObjectRepresentation( category, IsFieldAsCategoryObject );
     
-    AddMorphismRepresentation( category, IsFieldAsCategoryMorphism );
+    AddMorphismRepresentation( category, IsFieldAsCategoryMorphism and HasUnderlyingFieldElement );
 
     INSTALL_FUNCTIONS_FOR_FIELD_AS_CATEGORY( category );
     
@@ -90,9 +88,9 @@ InstallMethod( FieldAsCategoryMorphism,
     
     unique_object := FieldAsCategoryUniqueObject( category );
     
-    ObjectifyMorphismForCAPWithAttributes( morphism, category,
-                                           Source, unique_object,
-                                           Range, unique_object,
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( morphism, category,
+                                           unique_object,
+                                           unique_object,
                                            UnderlyingFieldElement, element
     );
     
@@ -208,7 +206,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FIELD_AS_CATEGORY,
         
     end );
     
-    AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( category,
+    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
       function( alpha )
         
         return VectorSpaceMorphism(
@@ -219,7 +217,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FIELD_AS_CATEGORY,
         
     end );
     
-    AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( category,
+    AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
       function( a, b, mor )
         
         return FieldAsCategoryMorphism(

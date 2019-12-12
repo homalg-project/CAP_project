@@ -7,6 +7,7 @@ LoadPackage( "GeneralizedMorphismsForCAP" );;
 LoadPackage( "Bialgebroids" );
 
 #! @Example
+DeactivateDefaultCaching();
 SwitchGeneralizedMorphismStandard( "span" );;
 snake_quiver := RightQuiver( "Q(6)[a:1->2,b:2->3,c:3->4]" );;
 kQ := PathAlgebra( HomalgFieldOfRationals(), snake_quiver );;
@@ -17,6 +18,7 @@ a := m[1];;
 b := m[2];;
 c := m[3];;
 add := AdditiveClosure( Aoid );;
+DisableInputSanityChecks( add );;
 adelman := AdelmanCategory( add );;
 a := AsAdditiveClosureMorphism( a );;
 b := AsAdditiveClosureMorphism( b );;

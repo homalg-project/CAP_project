@@ -183,6 +183,41 @@ InstallMethod( \*,
 end );
 
 ##
+InstallMethod( \*,
+               [ IsRingElement and IsRat, IsCapCategoryMorphism ],
+               
+function( q, mor )
+    local cat, ring, r;
+    
+    cat := CapCategory( mor );
+    
+    ring := CommutativeRingOfLinearCategory( cat );
+    
+    if not IsIdenticalObj( ring, Rationals ) then
+        
+        if IsBound( ring!.interpret_rationals_func ) then
+            
+            r := ring!.interpret_rationals_func( q );
+            
+            if r = fail then
+                
+                Error( "cannot interpret ", String( q ), " as an element of the commutative ring of ", Name( cat ) );
+                
+            fi;
+            
+        else
+            
+            Error( "The commutative ring of ", Name( cat ), "doesn't know how to interpret rationals" );
+            
+        fi;
+        
+    fi;
+    
+    return MultiplyWithElementOfCommutativeRingForMorphisms( r, mor );
+    
+end );
+
+##
 InstallMethod( IsEqualForCacheForMorphisms,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
@@ -195,7 +230,7 @@ InstallMethod( AddMorphismRepresentation,
   function( category, representation )
     
     category!.morphism_representation := representation;
-    category!.morphism_type := NewType( TheFamilyOfCapCategoryMorphisms, representation and MorphismFilter( category ) and IsCapCategoryMorphismRep );
+    category!.morphism_type := NewType( TheFamilyOfCapCategoryMorphisms, representation and MorphismFilter( category ) and IsCapCategoryMorphismRep and HasSource and HasRange and HasCapCategory );
     
 end );
 
@@ -219,13 +254,22 @@ InstallMethod( RandomMorphism,
 InstallMethod( RandomMorphism,
     [ IsCapCategory, IsList ], RandomMorphismByList );
 
-
+##
 InstallGlobalFunction( ObjectifyMorphismForCAPWithAttributes,
                        
   function( arg_list... )
     local category, morphism;
     
     category := arg_list[ 2 ];
+    
+    Print(
+      Concatenation(
+      "WARNING (", Name( category ), "): \n",
+      "ObjectifyMorphismForCAPWithAttributes is deprecated and will not be supported after 2020.10.29. \n",
+      "Please use ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( morphism, category, source, range[, attr1, val1, attr2, val2, ...] ) instead.\n"
+      )
+    );
+    
     arg_list[ 2 ] := category!.morphism_type;
     Append( arg_list, [ CapCategory, category ] );
     CallFuncList( ObjectifyWithAttributes, arg_list );
@@ -235,6 +279,41 @@ InstallGlobalFunction( ObjectifyMorphismForCAPWithAttributes,
         INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ morphism ], Source( morphism ), category );
         INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ morphism ], Range( morphism ), category );
     fi;
+    
+end );
+
+##
+InstallGlobalFunction( ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes,
+                       
+  function( morphism, category, source, range, additional_arguments_list... )
+    local arg_list;
+    
+    arg_list := Concatenation( 
+        [ morphism, category!.morphism_type, CapCategory, category, Source, source, Range, range ], additional_arguments_list
+    );
+    
+    CallFuncList( ObjectifyWithAttributes, arg_list );
+    
+    if category!.predicate_logic then
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ morphism ], source, category );
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ morphism ], range, category );
+    fi;
+    
+end );
+
+
+##
+InstallMethod( Simplify,
+               [ IsCapCategoryMorphism ],
+               
+  function( morphism )
+    local phi;
+    
+    phi := PreCompose( [ SimplifyObject_IsoToInputObject( Source( morphism ), infinity ),
+                         morphism,
+                         SimplifyObject_IsoFromInputObject( Range( morphism ), infinity ) ] );
+    
+    return SimplifyMorphism( phi, infinity );
     
 end );
 
@@ -456,6 +535,56 @@ InstallMethod( SolveLinearSystemInAbCategory,
   function( left_coeffs, right_coeffs, right_side )
     
     return SolveLinearSystemInAbCategoryOp( left_coeffs, right_coeffs, right_side, CapCategory( right_side[1] ) );
+    
+end );
+
+##
+InstallMethod( MereExistenceOfSolutionOfLinearSystemInAbCategory,
+               [ IsList, IsList, IsList ],
+               
+  function( left_coeffs, right_coeffs, right_side )
+    
+    return MereExistenceOfSolutionOfLinearSystemInAbCategoryOp( left_coeffs, right_coeffs, right_side, CapCategory( right_side[1] ) );
+    
+end );
+
+##
+InstallMethod( HomStructure,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( alpha, beta )
+    
+    return HomomorphismStructureOnMorphisms( alpha, beta );
+    
+end );
+
+##
+InstallMethod( HomStructure,
+               [ IsCapCategoryObject, IsCapCategoryMorphism ],
+               
+  function( a, beta )
+    
+    return HomomorphismStructureOnMorphisms( IdentityMorphism( a ), beta );
+    
+end );
+
+##
+InstallMethod( HomStructure,
+               [ IsCapCategoryMorphism, IsCapCategoryObject ],
+               
+  function( alpha, b )
+    
+    return HomomorphismStructureOnMorphisms( alpha, IdentityMorphism( b ) );
+    
+end );
+
+##
+InstallMethod( HomStructure,
+               [ IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( a, b )
+    
+    return HomomorphismStructureOnObjects( a, b );
     
 end );
 

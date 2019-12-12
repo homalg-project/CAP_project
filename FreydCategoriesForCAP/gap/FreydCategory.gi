@@ -45,6 +45,8 @@ InstallGlobalFunction( FREYD_CATEGORY,
         
         SetIsAbelianCategory( freyd_category, true );
         
+        SetIsAbelianCategoryWithEnoughProjectives( freyd_category, true );
+    
     fi;
     
     conditions := [ "TensorProductOnObjects",
@@ -86,7 +88,7 @@ InstallGlobalFunction( FREYD_CATEGORY,
 
     AddObjectRepresentation( freyd_category, IsFreydCategoryObject );
     
-    AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism );
+    AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism and HasMorphismDatum );
     
     INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY( freyd_category );
     
@@ -194,10 +196,10 @@ InstallGlobalFunction( FREYD_CATEGORY_MORPHISM,
     
     category :=  CapCategory( source );
 
-    ObjectifyMorphismForCAPWithAttributes( 
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
                              freyd_category_morphism, category,
-                             Source, source,
-                             Range, range,
+                             source,
+                             range,
                              MorphismDatum, morphism_datum
     );
     
@@ -227,6 +229,46 @@ InstallMethod( MorphismWitness,
     
 end );
 
+##
+InstallMethod( FREYD_CATEGORIES_SimplifyObjectTupleOp,
+               [ IsFreydCategoryObject, IsObject ],
+  function( object, i )
+    local counter, rel, red, red_from_last_step, red_from, red_to;
+    
+    counter := 0;
+    
+    rel := RelationMorphism( object );
+    
+    red_from := IdentityMorphism( Range( rel ) );
+    
+    red_to := IdentityMorphism( Range( rel ) );
+    
+    while true do
+      
+      counter := counter + 1;
+      
+      red := SomeReductionBySplitEpiSummand( rel );
+      
+      red_from_last_step := SomeReductionBySplitEpiSummand_MorphismFromInputRange( rel );
+      
+      red_from := PreCompose( red_from, red_from_last_step );
+      
+      red_to := PreCompose( SomeReductionBySplitEpiSummand_MorphismToInputRange( rel ), red_to );
+      
+      if counter >= i or IsIsomorphism( red_from_last_step ) then
+          
+          break;
+          
+      fi;
+      
+      rel := red;
+      
+    od;
+    
+    return [ red, red_from, red_to ];
+    
+end );
+
 ####################################
 ##
 ## Operations
@@ -239,6 +281,15 @@ InstallMethod( WitnessForBeingCongruentToZero,
   function( morphism )
     
     return Lift( MorphismDatum( morphism ), RelationMorphism( Range( morphism ) ) );
+    
+end );
+
+InstallMethod( MereExistenceOfWitnessForBeingCongruentToZero,
+               [ IsFreydCategoryMorphism ],
+               
+  function( morphism )
+    
+    return IsLiftable( MorphismDatum( morphism ), RelationMorphism( Range( morphism ) ) );
     
 end );
 
@@ -272,22 +323,6 @@ end );
 ##
 ####################################
 
-##
-InstallGlobalFunction( TODO_LIST_ENTRY_FOR_MORPHISM_WITNESS_FOR_FREYD_CATEGORY,
-  function( f, result, arg... )
-    local entry;
-    
-    entry := ToDoListEntry(
-                   List( arg, mor -> [ mor, "MorphismWitness" ] ),
-                   result,
-                   "MorphismWitness",
-                   f
-    );
-    
-    AddToToDoList( entry );
-    
-end );
-
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
   
   function( category )
@@ -300,9 +335,35 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
           interpret_homomorphism_as_morphism_from_dinstinguished_object_to_homomorphism_structure,
           interpret_morphism_from_dinstinguished_object_to_homomorphism_structure_as_homomorphism,
           is_possible_to_install,
-          not_supported, to_be_tested;
+          not_supported, to_be_tested,
+          lift_via_linear_system_func,
+          colift_via_linear_system_func;
     
     underlying_category := UnderlyingCategory( category );
+    
+    is_possible_to_install := function( to_be_installed, to_be_tested )
+        local not_supported;
+        
+        # test which methods are supported by the underlying category
+        not_supported := [];
+        Perform( to_be_tested, function(x) if not CanCompute( underlying_category, x ) then 
+                                            Add( not_supported, x );
+                                         fi; end);
+        
+        # methods cannot be installed, so inform the user
+        if not IsEmpty( not_supported ) then
+            Info( InfoFreydCategoriesForCAP, 2,
+                    Concatenation( "The operation(s)\n",
+                                   to_be_installed,
+                                    "\ncould not be installed because the underlying category cannot compute\n",
+                                    JoinStringsWithSeparator( not_supported, ", " ) ) );
+            return false;
+        fi;
+        
+        # other methods can be installed
+        return true;
+        
+    end;
     
     ##
     AddIsEqualForCacheForObjects( category,
@@ -332,17 +393,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddIsWellDefinedForMorphisms( category,
       function( morphism )
         
-        if MorphismWitness( morphism ) = fail then
-            
-            return false;
-            
-        fi;
-        
-        if not IsCongruentForMorphisms( PreCompose( MorphismWitness( morphism ), RelationMorphism( Range( morphism ) ) ),
-               PreCompose( RelationMorphism( Source( morphism ) ), MorphismDatum( morphism ) ) ) then
-            
-            return false;
-            
+        if not IsLiftable( PreCompose( RelationMorphism( Source( morphism ) ), MorphismDatum( morphism ) ), RelationMorphism( Range( morphism ) ) ) then
+          
+          return false;
+          
         fi;
         
         # all tests passed, so it is well-defined
@@ -371,15 +425,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddIsCongruentForMorphisms( category,
       function( morphism_1, morphism_2 )
         
-        if WitnessForBeingCongruentToZero( SubtractionForMorphisms( morphism_1, morphism_2 ) ) = fail then
-            
-            return false;
-            
-        else
-            
-            return true;
-            
-        fi;
+        return MereExistenceOfWitnessForBeingCongruentToZero( SubtractionForMorphisms( morphism_1, morphism_2 ) );
         
     end );
     
@@ -394,8 +440,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
         identity_morphism := FreydCategoryMorphism( object, IdentityMorphism( Range( relation_morphism ) ), object );
         
-#         SetMorphismWitness( identity_morphism, IdentityMorphism( Source( relation_morphism ) ) );
-        
         return identity_morphism;
         
     end );
@@ -409,13 +453,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         composition := PreCompose( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
         
         composition := FreydCategoryMorphism( Source( morphism_1 ), composition, Range( morphism_2 ) );
-        
-#         TODO_LIST_ENTRY_FOR_MORPHISM_WITNESS_FOR_FREYD_CATEGORY(
-#           function( ) return PreCompose( MorphismWitness( morphism_1 ), MorphismWitness( morphism_2 ) ); end,
-#           composition,
-#           morphism_1,
-#           morphism_2
-#         );
         
         return composition;
         
@@ -435,13 +472,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                       Range( morphism_1 )
                     );
         
-#         TODO_LIST_ENTRY_FOR_MORPHISM_WITNESS_FOR_FREYD_CATEGORY(
-#           function( ) return AdditionForMorphisms( MorphismWitness( morphism_1 ), MorphismWitness( morphism_2 ) ); end,
-#           addition,
-#           morphism_1,
-#           morphism_2
-#         );
-        
         return addition;
         
     end );
@@ -457,12 +487,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                               Range( morphism )
                             );
         
-#         TODO_LIST_ENTRY_FOR_MORPHISM_WITNESS_FOR_FREYD_CATEGORY(
-#           function( ) return AdditiveInverseForMorphisms( MorphismWitness( morphism ) ); end,
-#           additive_inverse,
-#           morphism
-#         );
-        
         return additive_inverse;
         
     end );
@@ -477,8 +501,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                            ZeroMorphism( Range( RelationMorphism( source ) ), Range( RelationMorphism( range ) ) ),
                            range
                          );
-        
-#         SetMorphismWitness( zero_morphism, ZeroMorphism( Source( RelationMorphism( source ) ), Source( RelationMorphism( range ) ) ) );
         
         return zero_morphism;
         
@@ -519,6 +541,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                               );
         
         return universal_morphism;
+        
+    end );
+    
+    ##
+    AddIsZeroForMorphisms( category,
+      function( mor )
+        
+        return MereExistenceOfWitnessForBeingCongruentToZero( mor );
         
     end );
     
@@ -617,34 +647,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
     end );
     
-    
-    is_possible_to_install := function( to_be_installed, to_be_tested )
-        local not_supported;
-        
-        # test which methods are supported by the underlying category
-        not_supported := [];
-        Perform( to_be_tested, function(x) if not CanCompute( underlying_category, x ) then 
-                                            Append( not_supported, x ); 
-                                         fi; end);
-        
-        # methods cannot be installed, so inform the user
-        if not IsEmpty( not_supported ) then
-            Info( InfoFreydCategoriesForCAP, 2,
-                    Concatenation( "The operation(s) ",
-                                   to_be_installed,
-                                    " could not be installed because the underlying category cannot compute ",
-                                    JoinStringsWithSeparator( not_supported, ", " ) ) );
-            return false;
-        fi;
-        
-        # other methods can be installed
-        return true;
-        
-    end;
-    
-    
-    if is_possible_to_install( "KernelEmbedding, KernelLiftWithGivenKernelObject",
-                               [ "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ] ) then
+    if is_possible_to_install( "KernelEmbedding",
+                               [ "ProjectionOfBiasedWeakFiberProduct" ] ) then
     
         ## Kernels: kernels in Freyd categories are based on weak fiber products in the underlying category and thus more expensive
         AddKernelEmbedding( category,
@@ -670,7 +674,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                                           Source( morphism ) );
             
         end );
-        
+    
+    fi;
+    
+    if is_possible_to_install( "KernelLiftWithGivenKernelObject",
+                               [ "UniversalMorphismIntoBiasedWeakFiberProduct" ] ) then
         ##
         AddKernelLiftWithGivenKernelObject( category,
                                             
@@ -694,43 +702,46 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
 
     fi;
     
-    
-    AddLiftAlongMonomorphism( category,
+    if is_possible_to_install( "LiftAlongMonomorphism, ColiftAlongEpimorphism",
+                               [ "Lift" ] ) then ## Lift is implicit in WitnessForBeingCongruentToZero
         
-        function( alpha, test_morphism )
-        local sigma, R_B, A, tau_A;
+        ##
+        AddLiftAlongMonomorphism( category,
+            
+            function( alpha, test_morphism )
+            local sigma, R_B, A, tau_A;
+            
+            sigma := WitnessForBeingCongruentToZero( PreCompose( test_morphism, CokernelProjection( alpha ) ) );
+            
+            R_B := Source( RelationMorphism( Range( alpha ) ) );
+            
+            A := Range( RelationMorphism( Source( alpha ) ) );
+            
+            tau_A := PreCompose( sigma, ProjectionInFactorOfDirectSum( [ R_B, A ], 2 ) );
+            
+            return FreydCategoryMorphism( Source( test_morphism ), tau_A, Source( alpha ) );
         
-        sigma := WitnessForBeingCongruentToZero( PreCompose( test_morphism, CokernelProjection( alpha ) ) );
+        end );
         
-        R_B := Source( RelationMorphism( Range( alpha ) ) );
+        ##
+        AddColiftAlongEpimorphism( category,
+            
+            function( alpha, test_morphism )
+            local witness, R_B, A, sigma_A;
+            
+            witness := WitnessForBeingCongruentToZero( PreCompose( alpha, CokernelProjection( alpha ) ) );
+            
+            R_B := Source( RelationMorphism( Range( alpha ) ) );
+            
+            A := Range( RelationMorphism( Source( alpha ) ) );
+            
+            sigma_A := PreCompose( witness, ProjectionInFactorOfDirectSum( [ R_B, A ], 2 ) );
+            
+            return FreydCategoryMorphism( Range( alpha ), PreCompose( sigma_A, MorphismDatum( test_morphism ) ), Range( test_morphism ) );
         
-        A := Range( RelationMorphism( Source( alpha ) ) );
+        end );
         
-        tau_A := PreCompose( sigma, ProjectionInFactorOfDirectSum( [ R_B, A ], 2 ) );
-        
-        return FreydCategoryMorphism( Source( test_morphism ), tau_A, Source( alpha ) );
-    
-    end );
-    
-    ##
-    AddColiftAlongEpimorphism( category,
-        
-        function( alpha, test_morphism )
-        local witness, R_B, A, sigma_A;
-        
-        witness := WitnessForBeingCongruentToZero( PreCompose( alpha, CokernelProjection( alpha ) ) );
-        
-        R_B := Source( RelationMorphism( Range( alpha ) ) );
-        
-        A := Range( RelationMorphism( Source( alpha ) ) );
-        
-        sigma_A := PreCompose( witness, ProjectionInFactorOfDirectSum( [ R_B, A ], 2 ) );
-        
-        return FreydCategoryMorphism( Range( alpha ), PreCompose( sigma_A, MorphismDatum( test_morphism ) ), Range( test_morphism ) );
-    
-    end );
-    
-    
+    fi;
     
     if is_possible_to_install( "EpimorphismFromSomeProjectiveObjectForKernelObject",
                                [ "ProjectionOfBiasedWeakFiberProduct" ] ) then
@@ -772,14 +783,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
     end );
     
-    ##
-    if is_possible_to_install( "Lift, Colift",
-                               [ "SolveLinearSystemInAbCategory" ] ) then
-        
-        AddLift( category,
-                 
-          function( alpha_freyd, gamma_freyd )
-            local rho_A, rho_B, rho_C, alpha, gamma, A, B, C, R_A, R_B, R_C, left_coefficients, right_coefficients, right_side, solution;
+    lift_via_linear_system_func := function( alpha_freyd, gamma_freyd )
+            local rho_A, rho_B, rho_C, alpha, gamma, A, B, C, R_A, R_B, R_C, left_coefficients, right_coefficients, right_side;
             
             rho_A := RelationMorphism( Source( alpha_freyd ) );
             
@@ -819,22 +824,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             right_side := [ ZeroMorphism( R_A, C ), alpha ];
             
-            solution := SolveLinearSystemInAbCategory( left_coefficients, right_coefficients, right_side );
+            return [ left_coefficients, right_coefficients, right_side ];
             
-            if solution = fail then
-                
-                return fail;
-                
-            fi;
-            
-            return FreydCategoryMorphism( Source( alpha_freyd ), solution[1], Source( gamma_freyd ) );
-            
-        end );
-        
-        AddColift( category,
-                 
-          function( alpha_freyd, gamma_freyd )
-            local rho_A, rho_B, rho_C, alpha, gamma, A, B, C, R_A, R_B, R_C, left_coefficients, right_coefficients, right_side, solution;
+        end;
+    
+    colift_via_linear_system_func := function( alpha_freyd, gamma_freyd )
+            local rho_A, rho_B, rho_C, alpha, gamma, A, B, C, R_A, R_B, R_C, left_coefficients, right_coefficients, right_side;
             
             rho_A := RelationMorphism( Range( alpha_freyd ) );
             
@@ -874,7 +869,41 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             right_side := [ ZeroMorphism( R_A, C ), gamma ];
             
-            solution := SolveLinearSystemInAbCategory( left_coefficients, right_coefficients, right_side );
+            return [ left_coefficients, right_coefficients, right_side ];
+            
+        end;
+    
+    ##
+    if is_possible_to_install( "Lift, Colift",
+                               [ "SolveLinearSystemInAbCategory" ] ) then
+        
+        ##
+        AddLift( category,
+                 
+          function( alpha_freyd, gamma_freyd )
+            local solution;
+            
+            solution := 
+              CallFuncList( SolveLinearSystemInAbCategory, lift_via_linear_system_func( alpha_freyd, gamma_freyd ) );
+            
+            if solution = fail then
+                
+                return fail;
+                
+            fi;
+            
+            return FreydCategoryMorphism( Source( alpha_freyd ), solution[1], Source( gamma_freyd ) );
+            
+        end, 300 );
+        
+        ##
+        AddColift( category,
+                 
+          function( alpha_freyd, gamma_freyd )
+            local solution;
+            
+            solution := 
+              CallFuncList( SolveLinearSystemInAbCategory, colift_via_linear_system_func( alpha_freyd, gamma_freyd ) );
             
             if solution = fail then
                 
@@ -884,9 +913,38 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             return FreydCategoryMorphism( Range( alpha_freyd ), solution[1], Range( gamma_freyd ) );
             
-        end );
+        end, 300 );
 
     fi;
+    
+    ##
+    if is_possible_to_install( "IsLiftable, IsColiftable",
+                               [ "MereExistenceOfSolutionOfLinearSystemInAbCategory" ] ) then
+        ##
+        AddIsLiftable( category,
+                 
+          function( alpha_freyd, gamma_freyd )
+            local solution;
+            
+            return
+              CallFuncList( MereExistenceOfSolutionOfLinearSystemInAbCategory, lift_via_linear_system_func( alpha_freyd, gamma_freyd ) );
+            
+        end, 200 );
+        
+        ##
+        AddIsColiftable( category,
+                 
+          function( alpha_freyd, gamma_freyd )
+            local solution;
+            
+            return
+              CallFuncList( MereExistenceOfSolutionOfLinearSystemInAbCategory, colift_via_linear_system_func( alpha_freyd, gamma_freyd ) );
+            
+        end, 200 );
+        
+    fi;
+    
+    
     
     ## Creation of a homomorphism structure for the Freyd category
     if is_possible_to_install( "Homomorphism structure",
@@ -916,10 +974,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             distinguished_object_of_homomorphism_structure := DistinguishedObjectOfHomomorphismStructure;
             
             interpret_homomorphism_as_morphism_from_dinstinguished_object_to_homomorphism_structure :=
-              InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure;
+              InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure;
             
             interpret_morphism_from_dinstinguished_object_to_homomorphism_structure_as_homomorphism :=
-              InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism;
+              InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism;
             
         elif HasIsAdditiveCategory( range_category )
                 and IsAdditiveCategory( range_category )
@@ -950,13 +1008,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             interpret_homomorphism_as_morphism_from_dinstinguished_object_to_homomorphism_structure :=
               alpha -> AsFreydCategoryMorphism(
-                        InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( alpha )
+                        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( alpha )
                       );
             
             interpret_morphism_from_dinstinguished_object_to_homomorphism_structure_as_homomorphism :=
               function( A, B, alpha )
                 
-                return InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism(
+                return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
                         A, B, MorphismDatum( alpha ) );
               
               end;
@@ -1070,7 +1128,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 
             end );
             
-            AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( category,
+            AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
               function( alpha )
                 local phi, interpretation, diagram;
                 
@@ -1086,7 +1144,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             end );
         
             ##
-            AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( category,
+            AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
               function( A, B, morphism )
                 local diagram, embedding, epsilon, lift, interpretation;
                 
@@ -1525,6 +1583,45 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     
     fi;
     
+    ## Simplification methods
+    
+    if is_possible_to_install( "Simplify object",
+                               [ "SomeReductionBySplitEpiSummand" ] ) then
+      
+      ##
+      AddSimplifyObject( category,
+        function( object, i )
+          
+          return FreydCategoryObject( FREYD_CATEGORIES_SimplifyObjectTuple( object, i )[1] );
+          
+      end );
+      
+      ##
+      AddSimplifyObject_IsoFromInputObject( category,
+        function( object, i )
+          
+          return FreydCategoryMorphism(
+            object,
+            FREYD_CATEGORIES_SimplifyObjectTuple( object, i )[2],
+            FreydCategoryObject( FREYD_CATEGORIES_SimplifyObjectTuple( object, i )[1] )
+          );
+          
+      end );
+      
+      ##
+      AddSimplifyObject_IsoToInputObject( category,
+        function( object, i )
+          
+          return FreydCategoryMorphism(
+            FreydCategoryObject( FREYD_CATEGORIES_SimplifyObjectTuple( object, i )[1] ),
+            FREYD_CATEGORIES_SimplifyObjectTuple( object, i )[3],
+            object
+          );
+          
+      end );
+      
+    fi;
+    
 end );
 
 ####################################
@@ -1622,7 +1719,7 @@ InstallGlobalFunction( IsValidInputForFreydCategory,
                       "UniversalMorphismIntoDirectSum",
                       "InjectionOfCofactorOfDirectSum",
                       "UniversalMorphismFromDirectSum",
-                      "Lift"
+                      "IsLiftable"
                       ];
     installed_ops := ListInstalledOperationsOfCategory( category );
 
@@ -1650,6 +1747,44 @@ InstallGlobalFunction( IsValidInputForFreydCategory,
 
 end );
 
+####################################################################################
+##
+##  Functors
+##
+####################################################################################
+
+##
+InstallMethod( EmbeddingFunctorIntoFreydCategory,
+               [ IsCapCategory ],
+               
+  function( underlying_category )
+    local freyd_category, emb_functor;
+    
+    freyd_category := FreydCategory( underlying_category );
+    
+    emb_functor := CapFunctor(
+      Concatenation( "Embedding functor of ", Name( underlying_category ), " into its Freyd category" ),
+      underlying_category,
+      freyd_category
+    );
+    
+    AddObjectFunction( emb_functor,
+      function( obj )
+        
+        return AsFreydCategoryObject( obj );
+        
+    end );
+    
+    AddMorphismFunction( emb_functor,
+      function( new_source, mor, new_range )
+        
+        return FreydCategoryMorphism( new_source, mor, new_range );
+        
+    end );
+    
+    return emb_functor;
+    
+end );
 
 ####################################################################################
 ##
@@ -1740,5 +1875,40 @@ InstallMethod( \^,
         return res;
       
       fi;
+    
+end );
+
+####################################
+##
+## Convenience
+##
+####################################
+
+##
+InstallMethod( \/,
+              [ IsCapCategoryMorphism, IsFreydCategory ],
+              
+  function( mor, category )
+    local freyd_mor;
+    
+    freyd_mor := FreydCategoryObject( mor );
+    
+    if not IsIdenticalObj( CapCategory( freyd_mor ), category ) then
+        
+        Error( "The Freyd category of the given morphism is not identical to the provided Freyd category" );
+        
+    fi;
+    
+    return freyd_mor;
+    
+end );
+
+##
+InstallMethod( \/,
+               [ IsHomalgMatrix, IsFreydCategory ],
+               
+  function( mat, freyd_category )
+    
+    return mat/UnderlyingCategory( freyd_category )/freyd_category;
     
 end );

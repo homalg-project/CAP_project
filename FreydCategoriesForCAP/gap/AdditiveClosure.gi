@@ -35,12 +35,21 @@ InstallMethod( AdditiveClosure,
     
     AddObjectRepresentation( category, IsAdditiveClosureObject );
     
-    AddMorphismRepresentation( category, IsAdditiveClosureMorphism );
+    AddMorphismRepresentation( category, IsAdditiveClosureMorphism and HasMorphismMatrix );
+    
+    if HasIsLinearCategoryOverCommutativeRing( underlying_category ) and
+        HasCommutativeRingOfLinearCategory( underlying_category ) then
+        
+        SetIsLinearCategoryOverCommutativeRing( category, true );
+        
+        SetCommutativeRingOfLinearCategory( category, CommutativeRingOfLinearCategory( underlying_category ) );
+    
+    fi;
     
     INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE( category );
     
     to_be_finalized := ValueOption( "FinalizeCategory" );
-      
+    
     if to_be_finalized = false then
       
       return category;
@@ -106,14 +115,39 @@ InstallMethod( AdditiveClosureMorphism,
     
     category := CapCategory( source );
 
-    ObjectifyMorphismForCAPWithAttributes( 
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
                              additive_closure_morphism, category,
-                             Source, source,
-                             Range, range,
+                             source,
+                             range,
                              MorphismMatrix, matrix
     );
     
     return additive_closure_morphism;
+    
+end );
+
+##
+InstallMethod( \/,
+               [ IsList, IsAdditiveClosureCategory ],
+               
+  function( listlist, category )
+    local source, range;
+    
+    if IsEmpty( listlist ) or IsEmpty( listlist[1] ) then
+      
+      Error( "no empty list or list of empty lists allowed as input" );
+      
+    fi;
+    
+    source := AdditiveClosureObject( List( listlist, row -> Source( row[1] ) ), category );
+    
+    range := AdditiveClosureObject( List( listlist[1], col -> Range( col ) ), category );
+    
+    return AdditiveClosureMorphism(
+      source,
+      listlist,
+      range
+    );
     
 end );
 
@@ -140,6 +174,140 @@ InstallMethod( NrColumns,
   function( morphism )
     
     return Size( ObjectList( Range( morphism ) ) );
+    
+end );
+
+##
+InstallMethod( InclusionFunctorInAdditiveClosure,
+              [ IsCapCategory ],
+  function( C )
+    local additive_closure, name, G;
+    
+    additive_closure := AdditiveClosure( C );
+    
+    name := Concatenation( "Inclusion functor of ", Name( C ), " in its additive closure" );
+    
+    G := CapFunctor( name, C, additive_closure );
+    
+    AddObjectFunction( G, AsAdditiveClosureObject );
+    
+    AddMorphismFunction( G, { s, alpha, r } -> AsAdditiveClosureMorphism( alpha ) );
+    
+    return G;
+    
+end );
+
+##
+InstallMethod( ExtendFunctorToAdditiveClosures,
+              [ IsCapFunctor ],
+  function( F )
+    local source_cat, range_cat, additive_closure_source, additive_closure_range, name, G;
+    
+    source_cat := AsCapCategory( Source( F ) );
+    
+    range_cat := AsCapCategory( Range( F ) );
+    
+    additive_closure_source := AdditiveClosure( source_cat );
+    
+    additive_closure_range := AdditiveClosure( range_cat );
+    
+    name := Concatenation( "Extension of ", Name( F ), " to additive closures" );
+    
+    G := CapFunctor( name, additive_closure_source, additive_closure_range );
+    
+    AddObjectFunction( G,
+      function( a )
+        local objs;
+        
+        objs := ObjectList( a );
+        
+        objs := List( objs, obj -> ApplyFunctor( F, obj ) );
+        
+        return AdditiveClosureObject( objs, additive_closure_range );
+        
+    end );
+    
+    AddMorphismFunction( G,
+      function( source, alpha, range )
+        local mat;
+        
+        mat := MorphismMatrix( alpha );
+        
+        mat := List( mat, row -> List( row, morphism -> ApplyFunctor( F, morphism ) ) );
+        
+        return AdditiveClosureMorphism( source, mat, range );
+        
+    end );
+    
+    return G;
+    
+end );
+
+##
+InstallMethod( ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource,
+              [ IsCapFunctor ],
+  function( F )
+    local source_cat, range_cat, additive_closure_source, name, G;
+    
+    source_cat := AsCapCategory( Source( F ) );
+    
+    range_cat := AsCapCategory( Range( F ) );
+    
+    if not ( HasIsAdditiveCategory( range_cat ) and IsAdditiveCategory( range_cat ) ) then
+      
+      Error( "The range category must be additive!\n" );
+      
+    fi;
+    
+    additive_closure_source := AdditiveClosure( source_cat );
+    
+    name := Concatenation( "Extension of ", Name( F ), " to a functor from the additive closure of the source" );
+    
+    G := CapFunctor( name, additive_closure_source, range_cat );
+    
+    AddObjectFunction( G,
+      function( a )
+        local objs;
+        
+        objs := ObjectList( a );
+        
+        objs := List( objs, obj -> ApplyFunctor( F, obj ) );
+        
+        return DirectSum( objs );
+        
+    end );
+    
+    AddMorphismFunction( G,
+      function( source, alpha, range )
+        local mat;
+        
+        mat := MorphismMatrix( alpha );
+        
+        mat := List( mat, row -> List( row, morphism -> ApplyFunctor( F, morphism ) ) );
+        
+        return MorphismBetweenDirectSums( source, mat, range );
+        
+    end );
+    
+    return G;
+    
+end );
+
+##
+InstallMethod( ExtendFunctorToAdditiveClosureOfSource,
+              [ IsCapFunctor ],
+  function( F )
+    local range_cat;
+    
+    range_cat := AsCapCategory( Range( F ) );
+    
+    if not ( HasIsAdditiveCategory( range_cat ) and IsAdditiveCategory( range_cat ) ) then
+      
+      return ExtendFunctorToAdditiveClosures( F );
+      
+    fi;
+    
+    return ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource( F );
     
 end );
 
@@ -597,6 +765,65 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
     end );
     
+    ##
+    AddMorphismBetweenDirectSums( category,
+      function( source, listlist, range )
+        local nr_cols_out, mat, outer_row, nr_inner_rows, i, new_row;
+        
+        if IsEmpty( listlist ) or IsEmpty( listlist[1] ) then
+          
+          return ZeroMorphism( source, range );
+          
+        fi;
+        
+        nr_cols_out := Size( listlist[1] );
+        
+        mat := [];
+        
+        for outer_row in listlist do
+          
+          nr_inner_rows := NrRows( outer_row[1] );
+          
+          if nr_inner_rows > 0 then
+            
+            for i in [ 1 .. nr_inner_rows ] do
+                
+                new_row := Concatenation(
+                  List( [ 1 .. nr_cols_out ], c -> outer_row[c][i] )
+              );
+              
+              Add( mat, new_row );
+              
+            od;
+            
+          fi;
+            
+        od;
+        
+        return AdditiveClosureMorphism(
+          source,
+          mat,
+          range
+        );
+        
+    end );
+    
+    if CanCompute( underlying_category, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
+      
+      AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+        function( r, alpha )
+          local mat;
+          
+          mat := MorphismMatrix( alpha );
+          
+          mat := List( mat, row -> List( row, m -> MultiplyWithElementOfCommutativeRingForMorphisms( r, m ) ) );
+          
+          return AdditiveClosureMorphism( Source( alpha ), mat, Range( alpha ) );
+          
+      end );
+    
+    fi;
+    
     if HasRangeCategoryOfHomomorphismStructure( underlying_category ) then
         
         range_category := CapCategory( DistinguishedObjectOfHomomorphismStructure( underlying_category ) );
@@ -682,11 +909,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                      "UniversalMorphismIntoDirectSum" ], 
                      f -> CanCompute( range_category, f ) )
            and ForAll( [ "DistinguishedObjectOfHomomorphismStructure", 
-                         "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure" ], 
+                         "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ],
                          f -> CanCompute( underlying_category, f ) ) then
             
             ##
-            AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( category,
+            AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
               function( alpha )
                 local size_i, size_j, matrix_alpha;
                 
@@ -706,7 +933,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                         List( [ 1 .. size_i ], i ->
                           UniversalMorphismIntoDirectSum(
                             List( [ 1 .. size_j ], j ->
-                              InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( matrix_alpha[i][j] )
+                              InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( matrix_alpha[i][j] )
                             )
                           )
                         )
@@ -717,14 +944,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         fi;
         
         if ForAll( [ "HomomorphismStructureOnObjects",
-                     "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism" ],
+                     "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ],
                      f -> CanCompute( underlying_category, f ) )
            and ForAll( [ "PreCompose",
                          "ProjectionInFactorOfDirectSum" ],
                          f -> CanCompute( range_category, f ) ) then
             
             ##
-            AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( category,
+            AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
               function( A, B, morphism )
                 local obj_list_A, obj_list_B, size_i, size_j, matrix, summands;
                 
@@ -762,7 +989,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                         A,
                         List( [ 1 .. size_i ], i ->
                           List( [ 1 .. size_j ], j ->
-                            InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism(
+                            InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
                               obj_list_A[i],
                               obj_list_B[j],
                               matrix[i][j]

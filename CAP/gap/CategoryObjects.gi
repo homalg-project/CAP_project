@@ -218,7 +218,7 @@ InstallMethod( AddObjectRepresentation,
   function( category, representation )
     
     category!.object_representation := representation;
-    category!.object_type := NewType( TheFamilyOfCapCategoryObjects, representation and ObjectFilter( category ) and IsCapCategoryObjectRep );
+    category!.object_type := NewType( TheFamilyOfCapCategoryObjects, representation and ObjectFilter( category ) and IsCapCategoryObjectRep and HasCapCategory );
     
 end );
 
@@ -236,6 +236,15 @@ InstallGlobalFunction( ObjectifyObjectForCAPWithAttributes,
     Append( arg_list, [ CapCategory, arg_list[ 2 ] ] );
     arg_list[ 2 ] := arg_list[ 2 ]!.object_type;
     CallFuncList( ObjectifyWithAttributes, arg_list );
+    
+end );
+
+##
+InstallMethod( Simplify,
+               [ IsCapCategoryObject ],
+  function( object )
+    
+    return SimplifyObject( object, infinity );
     
 end );
 

@@ -61,7 +61,7 @@ InstallMethod( CokernelImageClosure,
     
     AddObjectRepresentation( cokernel_image_closure, IsCokernelImageClosureObject );
     
-    AddMorphismRepresentation( cokernel_image_closure, IsCokernelImageClosureMorphism );
+    AddMorphismRepresentation( cokernel_image_closure, IsCokernelImageClosureMorphism and HasMorphismDatum );
     
     INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE( cokernel_image_closure );
     
@@ -150,10 +150,10 @@ InstallMethod( CokernelImageClosureMorphism,
     
     category :=  CapCategory( source );
 
-    ObjectifyMorphismForCAPWithAttributes( 
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
                              cokernel_image_closure_morphism, category,
-                             Source, source,
-                             Range, range,
+                             source,
+                             range,
                              MorphismDatum, morphism_datum
     );
     

@@ -114,7 +114,7 @@ end );
 InstallMethod( UnderlyingCell, [ IsBool ], IdFunc );
 
 ##
-InstallMethod( UnderlyingCell, [ IsInt ], IdFunc );
+InstallMethod( UnderlyingCell, [ IsRingElement ], IdFunc );
 
 ##
 InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,

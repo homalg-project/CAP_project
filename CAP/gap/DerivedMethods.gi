@@ -688,6 +688,28 @@ AddWithGivenDerivationPairToCAP( MorphismFromSourceToCoequalizer,
 ###########################
 
 ##
+AddDerivationToCAP( IsProjective,
+  function( object )
+    
+    return IsLiftable(
+      IdentityMorphism( object ),
+      EpimorphismFromSomeProjectiveObject( object )
+    );
+    
+end : Description := "IsProjective by checking if the object is a summand of some projective object" );
+
+##
+AddDerivationToCAP( IsInjective,
+  function( object )
+    
+    return IsColiftable(
+      MonomorphismIntoSomeInjectiveObject( object ),
+      IdentityMorphism( object )
+    );
+    
+end : Description := "IsInjective by checking if the object is a summand of some injective object" );
+
+##
 AddDerivationToCAP( IsOne,
                     
   function( morphism )
@@ -924,6 +946,28 @@ AddDerivationToCAP( IsIsomorphism,
     return IsSplitMonomorphism( morphism ) and IsSplitEpimorphism( morphism );
     
 end : Description := "IsIsomorphism by deciding if it is a split mono and a split epi" );
+
+##
+AddDerivationToCAP( IsIsomorphism,
+                    [ [ IsSplitMonomorphism, 1 ],
+                      [ IsEpimorphism, 1 ] ],
+                 
+  function( morphism )
+    
+    return IsSplitMonomorphism( morphism ) and IsEpimorphism( morphism );
+    
+end : Description := "IsIsomorphism by deciding if it is a split mono and an epi" );
+
+##
+AddDerivationToCAP( IsIsomorphism,
+                    [ [ IsMonomorphism, 1 ],
+                      [ IsSplitEpimorphism, 1 ] ],
+                 
+  function( morphism )
+    
+    return IsMonomorphism( morphism ) and IsSplitEpimorphism( morphism );
+    
+end : Description := "IsIsomorphism by deciding if it is a mono and a split epi" );
 
 ##
 AddDerivationToCAP( IsSplitEpimorphism,
@@ -2605,7 +2649,7 @@ AddDerivationToCAP( IsEqualForCacheForObjects,
     
     return IsEqualForObjects( object_1, object_2 ) = true;
     
-end );
+end : Description := "IsEqualForCacheForObjects using IsEqualForObjects" );
 
 ###########################
 ##
@@ -2615,10 +2659,10 @@ end );
 
 ##
 AddDerivationToCAP( SolveLinearSystemInAbCategory,
-                    [ [ InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure, 1 ],
+                    [ [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 1 ],
                       [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ],
                       [ HomomorphismStructureOnObjects, 1 ],
-                      [ InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
   function( left_coefficients, right_coefficients, right_side )
     local m, n, nu, H, lift, summands, list;
     
@@ -2631,7 +2675,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
     nu :=
       UniversalMorphismIntoDirectSum(
         List( [ 1 .. m ],
-        i -> InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( right_side[i] ) )
+        i -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( right_side[i] ) )
     );
     
     list := 
@@ -2655,7 +2699,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
     
     return
       List( [ 1 .. n ], j -> 
-        InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism(
+        InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
           Range( left_coefficients[1][j] ),
           Source( right_coefficients[1][j] ),
           PreCompose( lift, ProjectionInFactorOfDirectSum( summands, j ) )
@@ -2689,6 +2733,74 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
     
   end,
   Description := "SolveLinearSystemInAbCategory using the homomorphism structure" 
+);
+
+##
+AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
+                    [ [ SolveLinearSystemInAbCategory, 1 ] ],
+  function( left_coefficients, right_coefficients, right_side )
+    
+    return SolveLinearSystemInAbCategory( left_coefficients, right_coefficients, right_side ) <> fail;
+    
+end : Description := "MereExistenceOfSolutionOfLinearSystemInAbCategory using SolveLinearSystemInAbCategory" );
+
+##
+AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
+                    [ [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 1 ],
+                      [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ]
+                    ],
+  function( left_coefficients, right_coefficients, right_side )
+    local m, n, nu, H, lift, summands, list;
+    
+    m := Size( left_coefficients );
+    
+    n := Size( left_coefficients[1] );
+    
+    ## create lift diagram
+    
+    nu :=
+      UniversalMorphismIntoDirectSum(
+        List( [ 1 .. m ],
+        i -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( right_side[i] ) )
+    );
+    
+    list :=
+      List( [ 1 .. n ],
+      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( left_coefficients[i][j], right_coefficients[i][j] ) )
+    );
+    
+    H := MorphismBetweenDirectSums( list );
+    
+    ## the actual computation of the solution
+    return IsLiftable( nu, H );
+    
+  end :
+  ConditionsListComplete := true,
+  CategoryFilter := function( cat )
+    local B, conditions;
+    
+    if HasIsAbCategory( cat ) and IsAbCategory( cat ) and HasRangeCategoryOfHomomorphismStructure( cat ) then
+        
+        B := RangeCategoryOfHomomorphismStructure( cat );
+        
+        conditions := [
+          "UniversalMorphismIntoDirectSum",
+          "MorphismBetweenDirectSums",
+          "IsLiftable"
+        ];
+        
+        if ForAll( conditions, c -> CanCompute( B, c ) ) then
+            
+            return true;
+            
+        fi;
+        
+    fi;
+    
+    return false;
+    
+  end,
+  Description := "MereExistenceOfSolutionOfLinearSystemInAbCategory using the homomorphism structure"
 );
 
 ## Final methods for FiberProduct
@@ -3258,10 +3370,10 @@ AddFinalDerivation( IsEqualForCacheForMorphisms,
     
     return IsEqualForMorphismsOnMor( mor1, mor2 ) = true;
     
-end );
+end : Description := "Use IsEqualForMorphismsOnMor for IsEqualForCacheForMorphisms" );
 
 AddFinalDerivation( IsEqualForCacheForMorphisms,
                     [ [ IsCongruentForMorphisms, 1 ] ],
                     [ IsEqualForMorphisms ],
                     
-  IsIdenticalObj );
+  IsIdenticalObj : Description := "Use IsIdenticalObj for IsEqualForCacheForMorphisms" );

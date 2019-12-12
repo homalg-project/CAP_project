@@ -35,18 +35,27 @@ DeclareCategory( "IsCategoryOfColumns",
 ##
 ####################################
 
-DeclareAttribute( "CategoryOfColumns",
-                  IsHomalgRing );
+DeclareOperation( "CategoryOfColumns",
+                  [ IsHomalgRing ] );
 
+DeclareOperation( "CategoryOfColumnsObject",
+                  [ IsInt, IsCategoryOfColumns ] );
 
-DeclareOperationWithCache( "CategoryOfColumnsObject",
-                           [ IsInt, IsCategoryOfColumns ] );
+KeyDependentOperation( "CategoryOfColumnsObject",
+                       IsCategoryOfColumns, IsInt, ReturnTrue );
 
-DeclareAttribute( "AsCategoryOfColumnsMorphism",
-                  IsHomalgMatrix );
+DeclareOperation( "AsCategoryOfColumnsMorphism",
+                  [ IsHomalgMatrix, IsCategoryOfColumns ] );
 
 DeclareOperation( "CategoryOfColumnsMorphism",
                   [ IsCategoryOfColumnsObject, IsHomalgMatrix, IsCategoryOfColumnsObject ] );
+
+DeclareOperation( "\/",
+                  [ IsHomalgMatrix, IsCategoryOfColumns ] );
+
+DeclareOperation( "\/",
+                  [ IsInt, IsCategoryOfColumns ] );
+
 
 ####################################
 ##
@@ -62,3 +71,16 @@ DeclareAttribute( "RankOfObject",
 
 DeclareAttribute( "UnderlyingMatrix",
                   IsCategoryOfColumnsMorphism );
+
+DeclareAttribute( "CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple",
+                  IsCategoryOfColumnsMorphism );
+
+DeclareAttribute( "CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple",
+                  IsCategoryOfColumnsMorphism );
+
+DeclareAttribute( "CATEGORY_OF_COLUMNS_SimplificationSourceTuple",
+                  IsCategoryOfColumnsMorphism );
+
+DeclareAttribute( "CATEGORY_OF_COLUMNS_SimplificationRangeTuple",
+                  IsCategoryOfColumnsMorphism );
+

@@ -555,25 +555,7 @@ DirectSum := rec(
   argument_list := [ 1 ],
   universal_type := "LimitColimit",
   return_type := "object",
-  dual_operation := "DirectSum",
-  pre_function := function( diagram, selection_morphism )
-      local category;
-      
-      category := CapCategory( selection_morphism );
-      
-      if not ForAll( diagram, i -> IsIdenticalObj( category, CapCategory( i ) ) ) then
-          
-          return [ false, "not all given objects lie in the same category" ];
-          
-      elif not ForAll( diagram, IsCapCategoryObject ) then
-          
-          return [ false, "not all elements of diagram are objects" ];
-          
-      fi;
-      
-      return [ true ];
-      
-  end ),
+  dual_operation := "DirectSum" ),
 
 ProjectionInFactorOfDirectSum := rec(
   installation_name := "ProjectionInFactorOfDirectSumOp",
@@ -826,25 +808,7 @@ DirectProduct := rec(
   filter_list := [ "list_of_objects", "object" ],
   universal_type := "Limit",
   return_type := "object",
-  dual_operation := "Coproduct",
-  pre_function := function( diagram, selection_morphism )
-      local category;
-      
-      category := CapCategory( selection_morphism );
-      
-      if not ForAll( diagram, i -> IsIdenticalObj( category, CapCategory( i ) ) ) then
-          
-          return [ false, "not all given objects lie in the same category" ];
-          
-      elif not ForAll( diagram, IsCapCategoryObject ) then
-          
-          return [ false, "not all elements of diagram are objects" ];
-          
-      fi;
-      
-      return [ true ];
-      
-  end ),
+  dual_operation := "Coproduct" ),
 
 ProjectionInFactorOfDirectProduct := rec(
   installation_name := "ProjectionInFactorOfDirectProductOp",
@@ -3175,19 +3139,19 @@ DistinguishedObjectOfHomomorphismStructure := rec(
   zero_arguments_for_add_method := true
 ),
 
-InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure := rec(
-  installation_name := "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure := rec(
+  installation_name := "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
   filter_list := [ "morphism" ],
   return_type := "other_morphism",
-  dual_operation := "InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure",
+  dual_operation := "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
   dual_postprocessor_func := IdFunc
 ),
 
-InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism := rec(
-  installation_name := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
+InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism := rec(
+  installation_name := "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
   filter_list := [ "object", "object", "other_morphism" ],
   return_type := "morphism",
-  dual_operation := "InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism",
+  dual_operation := "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
   dual_preprocessor_func := function( A, B, morphism )
     return [ Opposite( B ), Opposite( A ), morphism ];
   end
@@ -3200,6 +3164,15 @@ SolveLinearSystemInAbCategory := rec(
   filter_list := [ IsList, IsList, IsList, "category" ],
   cache_name := "SolveLinearSystemInAbCategory",
   return_type := "morphism_or_fail"
+),
+
+MereExistenceOfSolutionOfLinearSystemInAbCategory := rec(
+    ## TODO: Type-check of linear system
+  installation_name := "MereExistenceOfSolutionOfLinearSystemInAbCategoryOp",
+  argument_list := [ 1, 2, 3 ],
+  filter_list := [ IsList, IsList, IsList, "category" ],
+  cache_name := "MereExistenceOfSolutionOfLinearSystemInAbCategory",
+  return_type := "bool"
 ),
 
 RandomObjectByInteger := rec(
@@ -3355,6 +3328,266 @@ IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject := rec(
   filter_list := [ "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "A", "B" ] ],
   return_type := "morphism" ),
+  
+## SimplifyObject*
+SimplifyObject := rec(
+  installation_name := "SimplifyObject",
+  filter_list := [ "object", IsObject ],
+  io_type := [ [ "A", "n" ], [ "B" ] ],
+  return_type := "object",
+  dual_operation := "SimplifyObject",
+  redirect_function := function( A, n )
+    
+    if n = 0 then
+        return [ true, A ];
+    fi;
+    
+    return [ false ];
+    
+  end,
+  pre_function := function( A, n )
+    
+    if not ( IsPosInt( n ) or IsInfinity( n ) ) then
+        return [ false, "the second argument must be a non-negative integer or infinity" ];
+    fi;
+    
+    return [ true ];
+    
+  end 
+  ),
+
+SimplifyObject_IsoFromInputObject := rec(
+  installation_name := "SimplifyObject_IsoFromInputObject",
+  filter_list := [ "object", IsObject ],
+  io_type := [ [ "A", "n" ], [ "A", "B" ] ],
+  return_type := "morphism",
+  dual_operation := "SimplifyObject_IsoToInputObject",
+  redirect_function := function( A, n )
+    
+    if n = 0 then
+        return [ true, IdentityMorphism( A ) ];
+    fi;
+    
+    return [ false ];
+    
+  end,
+  pre_function := ~.SimplifyObject.pre_function
+  ),
+
+SimplifyObject_IsoToInputObject := rec(
+  installation_name := "SimplifyObject_IsoToInputObject",
+  filter_list := [ "object", IsObject ],
+  io_type := [ [ "A", "n" ], [ "B", "A" ] ],
+  return_type := "morphism",
+  dual_operation := "SimplifyObject_IsoFromInputObject",
+  redirect_function := ~.SimplifyObject_IsoFromInputObject.redirect_function,
+  pre_function := ~.SimplifyObject.pre_function
+  ),
+
+## SimplifyMorphism
+SimplifyMorphism := rec(
+  installation_name := "SimplifyMorphism",
+  filter_list := [ "morphism", IsObject ],
+  io_type := [  [ [ "A", "B" ], "n" ], [ "A", "B" ] ],
+  return_type := "morphism",
+  dual_operation := "SimplifyMorphism",
+  redirect_function := ~.SimplifyObject.redirect_function,
+  pre_function := ~.SimplifyObject.pre_function
+  ),
+
+## SimplifySource*
+SimplifySource := rec(
+  installation_name := "SimplifySource",
+  filter_list := [ "morphism", IsObject ],
+  io_type := [ [ [ "A", "B" ], "n" ], [ "Ap", "B" ] ],
+  return_type := "morphism",
+  dual_operation := "SimplifyRange",
+  redirect_function := ~.SimplifyObject.redirect_function,
+  pre_function := ~.SimplifyObject.pre_function
+  ),
+
+SimplifySource_IsoToInputObject := rec(
+  installation_name := "SimplifySource_IsoToInputObject",
+  filter_list := [ "morphism", IsObject ],
+  io_type := [ [ [ "A", "B" ], "n" ], [ "Ap", "A" ] ],
+  return_type := "morphism",
+  dual_operation := "SimplifyRange_IsoFromInputObject",
+  redirect_function := function( alpha, n )
+    
+    if n = 0 then
+        return [ true, IdentityMorphism( Source( alpha ) ) ];
+    fi;
+    
+    return [ false ];
+    
+  end,
+  pre_function := ~.SimplifyObject.pre_function
+  ),
+  
+SimplifySource_IsoFromInputObject := rec(
+  installation_name := "SimplifySource_IsoFromInputObject",
+  filter_list := [ "morphism", IsObject ],
+  io_type := [ [ [ "A", "B" ], "n" ], [ "A", "Ap" ] ],
+  return_type := "morphism",
+  dual_operation := "SimplifyRange_IsoToInputObject",
+  redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
+  pre_function := ~.SimplifyObject.pre_function
+  ),
+
+## SimplifyRange*
+SimplifyRange := rec(
+  installation_name := "SimplifyRange",
+  filter_list := [ "morphism", IsObject ],
+  io_type := [ [ [ "A", "B" ], "n" ], [ "A", "Bp" ] ],
+  return_type := "morphism",
+  dual_operation := "SimplifySource",
+  redirect_function := ~.SimplifyObject.redirect_function,
+  pre_function := ~.SimplifyObject.pre_function
+  ),
+
+SimplifyRange_IsoToInputObject := rec(
+  installation_name := "SimplifyRange_IsoToInputObject",
+  filter_list := [ "morphism", IsObject ],
+  io_type := [ [ [ "A", "B" ], "n" ], [ "Bp", "B" ] ],
+  return_type := "morphism",
+  dual_operation := "SimplifySource_IsoFromInputObject",
+  redirect_function := function( alpha, n )
+    
+    if n = 0 then
+        return [ true, IdentityMorphism( Range( alpha ) ) ];
+    fi;
+    
+    return [ false ];
+    
+  end,
+  pre_function := ~.SimplifyObject.pre_function
+  ),
+  
+SimplifyRange_IsoFromInputObject := rec(
+  installation_name := "SimplifyRange_IsoFromInputObject",
+  filter_list := [ "morphism", IsObject ],
+  io_type := [ [ [ "A", "B" ], "n" ], [ "B", "Bp" ] ],
+  return_type := "morphism",
+  dual_operation := "SimplifySource_IsoToInputObject",
+  redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
+  pre_function := ~.SimplifyObject.pre_function
+  ),
+
+## SimplifySourceAndRange*
+SimplifySourceAndRange := rec(
+  installation_name := "SimplifySourceAndRange",
+  filter_list := [ "morphism", IsObject ],
+  io_type := [ [ [ "A", "B" ], "n" ], [ "Ap", "Bp" ] ],
+  return_type := "morphism",
+  dual_operation := "SimplifySourceAndRange",
+  redirect_function := ~.SimplifyObject.redirect_function,
+  pre_function := ~.SimplifyObject.pre_function
+  ),
+
+SimplifySourceAndRange_IsoToInputSource := rec(
+  installation_name := "SimplifySourceAndRange_IsoToInputSource",
+  filter_list := [ "morphism", IsObject ],
+  io_type := [ [ [ "A", "B" ], "n" ], [ "Ap", "A" ] ],
+  return_type := "morphism",
+  dual_operation := "SimplifySourceAndRange_IsoFromInputRange",
+  redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
+  pre_function := ~.SimplifyObject.pre_function
+  ),
+  
+SimplifySourceAndRange_IsoFromInputSource := rec(
+  installation_name := "SimplifySourceAndRange_IsoFromInputSource",
+  filter_list := [ "morphism", IsObject ],
+  io_type := [ [ [ "A", "B" ], "n" ], [ "A", "Ap" ] ],
+  return_type := "morphism",
+  dual_operation := "SimplifySourceAndRange_IsoToInputRange",
+  redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
+  pre_function := ~.SimplifyObject.pre_function
+  ),
+
+SimplifySourceAndRange_IsoToInputRange := rec(
+  installation_name := "SimplifySourceAndRange_IsoToInputRange",
+  filter_list := [ "morphism", IsObject ],
+  io_type := [ [ [ "A", "B" ], "n" ], [ "Bp", "B" ] ],
+  return_type := "morphism",
+  dual_operation := "SimplifySourceAndRange_IsoFromInputSource",
+  redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
+  pre_function := ~.SimplifyObject.pre_function
+  ),
+  
+SimplifySourceAndRange_IsoFromInputRange := rec(
+  installation_name := "SimplifySourceAndRange_IsoFromInputRange",
+  filter_list := [ "morphism", IsObject ],
+  io_type := [ [ [ "A", "B" ], "n" ], [ "B", "Bp" ] ],
+  return_type := "morphism",
+  dual_operation := "SimplifySourceAndRange_IsoToInputSource",
+  redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
+  pre_function := ~.SimplifyObject.pre_function
+  ),
+
+## SimplifyEndo*
+SimplifyEndo := rec(
+  installation_name := "SimplifyEndo",
+  filter_list := [ "morphism", IsObject ],
+  io_type := [ [ [ "A", "A" ], "n" ], [ "Ap", "Ap" ] ],
+  return_type := "morphism",
+  dual_operation := "SimplifyEndo",
+  redirect_function := ~.SimplifyObject.redirect_function,
+  pre_function := function( endo, n )
+    
+    if not ( IsPosInt( n ) or IsInfinity( n ) ) then
+        return [ false, "the second argument must be a non-negative integer or infinity" ];
+    fi;
+    
+    if not IsEndomorphism( endo ) then
+        return [ false, "the first argument must be an endomorphism" ];
+    fi;
+    
+    return [ true ];
+    
+  end 
+  ),
+
+SimplifyEndo_IsoFromInputObject := rec(
+  installation_name := "SimplifyEndo_IsoFromInputObject",
+  filter_list := [ "morphism", IsObject ],
+  io_type := [ [ [ "A", "A" ], "n" ], [ "A", "Ap" ] ],
+  return_type := "morphism",
+  dual_operation := "SimplifyEndo_IsoToInputObject",
+  redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
+  pre_function := ~.SimplifyEndo.pre_function
+  ),
+
+SimplifyEndo_IsoToInputObject := rec(
+  installation_name := "SimplifyEndo_IsoToInputObject",
+  filter_list := [ "morphism", IsObject ],
+  io_type := [ [ [ "A", "A" ], "n" ], [ "Ap", "A" ] ],
+  return_type := "morphism",
+  dual_operation := "SimplifyEndo_IsoFromInputObject",
+  redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
+  pre_function := ~.SimplifyEndo.pre_function
+  ),
+
+SomeReductionBySplitEpiSummand := rec(
+  installation_name := "SomeReductionBySplitEpiSummand",
+  filter_list := [ "morphism" ],
+  io_type := [ [ "alpha" ], [ "Ap", "Bp" ] ],
+  return_type := "morphism",
+  ),
+
+SomeReductionBySplitEpiSummand_MorphismToInputRange := rec(
+  installation_name := "SomeReductionBySplitEpiSummand_MorphismToInputRange",
+  filter_list := [ "morphism" ],
+  io_type := [ [ "alpha" ], [ "Bp", "B" ] ],
+  return_type := "morphism",
+  ),
+
+SomeReductionBySplitEpiSummand_MorphismFromInputRange := rec(
+  installation_name := "SomeReductionBySplitEpiSummand_MorphismFromInputRange",
+  filter_list := [ "morphism" ],
+  io_type := [ [ "alpha" ], [ "B", "Bp" ] ],
+  return_type := "morphism",
+  )
+
 ) );
 
 InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS, [

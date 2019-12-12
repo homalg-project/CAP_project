@@ -500,17 +500,33 @@ InstallMethod( CreateCapCategory,
                [ IsString ],
                
   function( name )
-    local category;
+    local overhead, is_computable, category;
+    
+    overhead := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "overhead", true );
+    
+    is_computable := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_computable", true );
     
     category := rec( );
     
     category := CREATE_CAP_CATEGORY_OBJECT( category, [ [ "Name", name ] ] );
     
+    category!.overhead := overhead;
+    
+    category!.is_computable := is_computable;
+    
     CREATE_CAP_CATEGORY_FILTERS( category );
     
-    AddCategoryToFamily( category, "general" );
+    if overhead then
     
-    INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "General" );
+      AddCategoryToFamily( category, "general" );
+      
+      INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "General" );
+      
+    else
+      
+      category!.predicate_logic := false;
+      
+    fi;
     
     return category;
     

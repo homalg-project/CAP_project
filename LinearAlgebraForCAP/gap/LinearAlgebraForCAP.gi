@@ -24,11 +24,15 @@ InstallMethod( MatrixCategory,
     
     AddObjectRepresentation( category, IsVectorSpaceObject );
     
-    AddMorphismRepresentation( category, IsVectorSpaceMorphism );
+    AddMorphismRepresentation( category, IsVectorSpaceMorphism and HasUnderlyingFieldForHomalg and HasUnderlyingMatrix );
     
     category!.field_for_matrix_category := homalg_field;
     
     SetIsAbelianCategory( category, true );
+    
+    SetIsAbelianCategoryWithEnoughProjectives( category, true );
+    
+    SetIsAbelianCategoryWithEnoughInjectives( category, true );
     
     SetIsRigidSymmetricClosedMonoidalCategory( category, true );
     
@@ -796,7 +800,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( category,
+    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
       function( alpha )
         local matrix, m, new_matrix, c;
         
@@ -823,7 +827,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( category,
+    AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
       function( source, range, alpha )
         local matrix, m, n, new_matrix;
         
@@ -853,6 +857,56 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
     end );
     
+    ##
+    AddSomeReductionBySplitEpiSummand( category,
+      function( alpha )
+        
+        return MorphismFromZeroObject( CokernelObject( alpha ) );
+        
+    end );
+    
+    ##
+    AddSomeReductionBySplitEpiSummand_MorphismFromInputRange( category,
+      function( alpha )
+        
+        return CokernelProjection( alpha );
+        
+    end );
+    
+    ##
+    AddSomeReductionBySplitEpiSummand_MorphismToInputRange( category,
+      function( alpha )
+        local cok;
+        
+        cok := CokernelProjection( alpha );
+        
+        return Lift(
+                IdentityMorphism( Range( cok ) ),
+                cok
+        );
+        
+    end );
+    
+    ## enough projectives & injectives
+    
+    ##
+    AddSomeProjectiveObject( category, IdFunc );
+    
+    ##
+    AddEpimorphismFromSomeProjectiveObject( category, IdentityMorphism );
+    
+    ##
+    AddIsProjective( category, ReturnTrue );
+    
+    ##
+    AddSomeInjectiveObject( category, IdFunc );
+    
+    ##
+    AddMonomorphismIntoSomeInjectiveObject( category, IdentityMorphism );
+    
+    ##
+    AddIsInjective( category, ReturnTrue );
+   
 end );
 
 

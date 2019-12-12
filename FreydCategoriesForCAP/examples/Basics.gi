@@ -103,13 +103,13 @@ ColiftAlongEpimorphism( CokernelProjection( k ), CokernelProjection( k ) );;
 
 
 ## Homomorphism structures
-a := InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( gamma );;
-IsCongruentForMorphisms( InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( Source( a ), Range( a ), InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( a ) ), a );;
+a := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( gamma );;
+IsCongruentForMorphisms( InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( a ), Range( a ), InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( a ) ), a );;
 a := ZeroObjectFunctorial( cat );;
-IsCongruentForMorphisms( InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( Source( a ), Range( a ), InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( a ) ), a );;
+IsCongruentForMorphisms( InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( a ), Range( a ), InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( a ) ), a );;
 
-Z4 := FreydCategoryObject( AsCategoryOfRowsMorphism( HomalgMatrix( "[4]", 1, 1, R ) ) );;
-Z3 := FreydCategoryObject( AsCategoryOfRowsMorphism( HomalgMatrix( "[3]", 1, 1, R ) ) );;
+Z4 := FreydCategoryObject( AsCategoryOfRowsMorphism( HomalgMatrix( "[4]", 1, 1, R ), cat ) );;
+Z3 := FreydCategoryObject( AsCategoryOfRowsMorphism( HomalgMatrix( "[3]", 1, 1, R ), cat ) );;
 HomomorphismStructureOnObjects( Z4, Z2 );;
 HomomorphismStructureOnObjects( Z4, Z4 );;
 HomomorphismStructureOnObjects( Z2, Z4 );;
@@ -128,11 +128,13 @@ S4_freyd := AsFreydCategoryObject( S4 );;
 lift := FreydCategoryMorphism( S1_freyd, CategoryOfRowsMorphism( S1, HomalgMatrix( "[x]", 1, 1, S ), S1 ), S1_freyd );;
 gamma := FreydCategoryMorphism( S1_freyd, CategoryOfRowsMorphism( S1, HomalgMatrix( "[y]", 1,1, S ), S1 ), S1_freyd );;
 alpha := PreCompose( lift, gamma );;
+IsLiftable( alpha, gamma );
+#! true
 Lift( alpha, gamma );;
-Colift( lift, alpha );;
-IsCongruentForMorphisms( PreCompose( lift, Colift( lift, alpha ) ), alpha );;
-
-
+IsColiftable( lift, alpha );
+#! true
+IsCongruentForMorphisms( PreCompose( lift, Colift( lift, alpha ) ), alpha );
+#! true
 
 lift := FreydCategoryMorphism( S2_freyd, CategoryOfRowsMorphism( S2, HomalgMatrix( "[x,y,z,x^2,1,z+1]", 2, 3, S ), S3 ), S3_freyd );;
 gamma := FreydCategoryMorphism( S3_freyd, CategoryOfRowsMorphism( S3, HomalgMatrix( "[x,y,z,z+1, x^2,y^2,z^2,z^2+1, x^3,y^3,z^3,z^3+1]", 3,4, S ), S4 ), S4_freyd );;
@@ -140,16 +142,16 @@ alpha := PreCompose( lift, gamma );;
 Lift( alpha, gamma );;
 Colift( lift, alpha );;
 IsCongruentForMorphisms( PreCompose( lift, Colift( lift, alpha ) ), alpha );;
-interpretation := InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( gamma );;
+interpretation := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( gamma );;
 IsCongruentForMorphisms( gamma,
-InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( Source( gamma ), Range( gamma ), interpretation ) );;
+InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( gamma ), Range( gamma ), interpretation ) );;
 
 ## Opposite
 HomomorphismStructureOnObjects( Opposite( Z4 ), Opposite( Z2 ) );;
 HomomorphismStructureOnObjects( Z2, Z4 );;
-interpretation := InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( Opposite( gamma ) );;
+interpretation := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( Opposite( gamma ) );;
 IsCongruentForMorphisms( Opposite( gamma ),
-InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( Source( Opposite( gamma ) ), Range( Opposite( gamma ) ), interpretation ) );
+InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( Opposite( gamma ) ), Range( Opposite( gamma ) ), interpretation ) );
 #! true
 #! @EndExample
 
@@ -162,11 +164,10 @@ snake_quiver := RightQuiver( "Q(6)[a:1->2,b:2->3,c:1->4,d:2->5,e:3->6,f:4->5,g:5
 kQ := PathAlgebra( HomalgFieldOfRationalsInSingular(), snake_quiver );;
 A := kQ / [ kQ.ad - kQ.cf, kQ.dg - kQ.be, kQ.ab, kQ.fg ];;
 Aoid := Algebroid( kQ, [ kQ.ad - kQ.cf, kQ.dg - kQ.be, kQ.ab, kQ.fg ] );;
-SetIsAbCategory( Aoid, true );;
 s := SetOfObjects( Aoid );;
 m := SetOfGeneratingMorphisms( Aoid );;
-interpretation := InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( -m[3] );;
-InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( Source( m[3] ), Range( m[3] ), interpretation );;
+interpretation := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( -m[3] );;
+InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( m[3] ), Range( m[3] ), interpretation );;
 
 ## additive closure
 add := AdditiveClosure( Aoid );;
@@ -182,9 +183,9 @@ ids1 := IdentityMorphism( objs1 );;
 ids2 := IdentityMorphism( objs2 );;
 HomomorphismStructureOnMorphisms( DirectSumFunctorial( [ ids1, ids2 ] ), ids1 );;
 
-interpretation := InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( mor );;
+interpretation := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( mor );;
 IsCongruentForMorphisms(
-  InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Range( mor ), interpretation ),
+  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Range( mor ), interpretation ),
   mor );;
 
 a := AsAdditiveClosureMorphism( m[1] );;
@@ -306,13 +307,13 @@ ColiftAlongEpimorphism( CokernelProjection( k ), CokernelProjection( k ) );;
 
 
 ## Homomorphism structures
-a := InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( gamma );;
-IsCongruentForMorphisms( InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( Source( a ), Range( a ), InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( a ) ), a );;
+a := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( gamma );;
+IsCongruentForMorphisms( InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( a ), Range( a ), InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( a ) ), a );;
 a := ZeroObjectFunctorial( cat );;
-IsCongruentForMorphisms( InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( Source( a ), Range( a ), InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( a ) ), a );;
+IsCongruentForMorphisms( InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( a ), Range( a ), InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( a ) ), a );;
 
-Z4 := FreydCategoryObject( AsCategoryOfColumnsMorphism( HomalgMatrix( "[4]", 1, 1, R ) ) );;
-Z3 := FreydCategoryObject( AsCategoryOfColumnsMorphism( HomalgMatrix( "[3]", 1, 1, R ) ) );;
+Z4 := FreydCategoryObject( AsCategoryOfColumnsMorphism( HomalgMatrix( "[4]", 1, 1, R ), cat ) );;
+Z3 := FreydCategoryObject( AsCategoryOfColumnsMorphism( HomalgMatrix( "[3]", 1, 1, R ), cat ) );;
 HomomorphismStructureOnObjects( Z4, Z2 );;
 HomomorphismStructureOnObjects( Z4, Z4 );;
 HomomorphismStructureOnObjects( Z2, Z4 );;
@@ -343,15 +344,15 @@ alpha := PreCompose( lift, gamma );;
 Lift( alpha, gamma );;
 Colift( lift, alpha );;
 IsCongruentForMorphisms( PreCompose( lift, Colift( lift, alpha ) ), alpha );;
-interpretation := InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( gamma );;
+interpretation := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( gamma );;
 IsCongruentForMorphisms( gamma,
-InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( Source( gamma ), Range( gamma ), interpretation ) );;
+InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( gamma ), Range( gamma ), interpretation ) );;
 
 ## Opposite
 HomomorphismStructureOnObjects( Opposite( Z4 ), Opposite( Z2 ) );;
 HomomorphismStructureOnObjects( Z2, Z4 );;
-interpretation := InterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( Opposite( gamma ) );;
+interpretation := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( Opposite( gamma ) );;
 IsCongruentForMorphisms( Opposite( gamma ),
-InterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( Source( Opposite( gamma ) ), Range( Opposite( gamma ) ), interpretation ) );
+InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( Opposite( gamma ) ), Range( Opposite( gamma ) ), interpretation ) );
 #! true
 #! @EndExample

@@ -680,3 +680,106 @@ DeclareOperation( "AddInjectiveColift",
 
 DeclareOperation( "AddInjectiveColift",
                   [ IsCapCategory, IsList ] );
+
+###################################
+##
+#! @Section Simplified Objects
+##
+###################################
+
+#! Let $i$ be a positive integer or $\infty$.
+#! For a given object $A$, an $i$-th simplified object of $A$ consists of
+#! * an object $A_i$, 
+#! * an isomorphism $\iota_A^i: A \rightarrow A_i$.
+#! The idea is that the greater the $i$, the "simpler" the $A_i$ (but this could mean the harder the computation)
+#! with $\infty$ as a possible value.
+
+#! @Description
+#! The argument is an object $A$.
+#! The output is a simplified object $A_{\infty}$.
+#! @Returns an object
+#! @Arguments A
+DeclareAttribute( "Simplify",
+                  IsCapCategoryObject );
+
+#! @Description
+#! The arguments are an object $A$ and a positive integer $i$ or <C>infinity</C>.
+#! The output is a simplified object $A_i$.
+#! @Returns an object
+#! @Arguments A, i
+DeclareOperation( "SimplifyObject",
+                  [ IsCapCategoryObject, IsObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SimplifyObject</C>.
+#! The function $F$ maps $(A,i)$ to $A_i$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSimplifyObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSimplifyObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSimplifyObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSimplifyObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are an object $A$ and a positive integer $i$ or <C>infinity</C>.
+#! The output is an isomorphism to a simplified object $\iota_A^i: A \rightarrow A_i$.
+#! @Returns a morphism in $\mathrm{Hom}(A,A_i)$
+#! @Arguments A, i
+DeclareOperation( "SimplifyObject_IsoFromInputObject",
+                  [ IsCapCategoryObject, IsObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SimplifyObject_IsoFromInputObject</C>.
+#! The function $F$ maps $(A,i)$ to $\iota_A^i$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSimplifyObject_IsoFromInputObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSimplifyObject_IsoFromInputObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSimplifyObject_IsoFromInputObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSimplifyObject_IsoFromInputObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are an object $A$ and a positive integer $i$ or <C>infinity</C>.
+#! The output is an isomorphism from a simplified object $(\iota_A^i)^{-1}: A_i \rightarrow A$
+#! which is the inverse of the output of <C>SimplifyObject_IsoFromInputObject</C>.
+#! @Returns a morphism in $\mathrm{Hom}(A_i,A)$
+#! @Arguments A, i
+DeclareOperation( "SimplifyObject_IsoToInputObject",
+                  [ IsCapCategoryObject, IsObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SimplifyObject_IsoToInputObject</C>.
+#! The function $F$ maps $(A,i)$ to $(\iota_A^i)^{-1}$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddSimplifyObject_IsoToInputObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSimplifyObject_IsoToInputObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSimplifyObject_IsoToInputObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSimplifyObject_IsoToInputObject",
+                  [ IsCapCategory, IsList ] );

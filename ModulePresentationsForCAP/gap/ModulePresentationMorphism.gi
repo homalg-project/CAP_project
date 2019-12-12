@@ -68,9 +68,9 @@ InstallMethod( PresentationMorphism,
     
     morphism := rec( );
     
-    ObjectifyMorphismForCAPWithAttributes( morphism, category,
-                             Source, source,
-                             Range, range,
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( morphism, category,
+                             source,
+                             range,
                              UnderlyingHomalgRing, HomalgRing( matrix ),
                              UnderlyingMatrix, matrix );
     

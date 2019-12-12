@@ -46,6 +46,36 @@ DeclareAttribute( "AsAdelmanCategoryObject",
 DeclareAttribute( "AsAdelmanCategoryMorphism",
                   IsCapCategoryMorphism );
 
+DeclareOperation( "\/",
+                  [ IsCapCategoryObject, IsAdelmanCategory ] );
+
+####################################
+##
+#! @Section Functors and natural transformations
+##
+####################################
+
+DeclareAttribute( "AdelmanCategoryFunctorInducedByUniversalProperty",
+                  IsCapFunctor );
+
+DeclareAttribute( "EmbeddingFunctorOfFreydCategoryIntoAdelmanCategory",
+                  IsCapCategory );
+
+DeclareAttribute( "RightSatelliteAsEndofunctorOfAdelmanCategory",
+                  IsCapCategory );
+
+DeclareAttribute( "LeftSatelliteAsEndofunctorOfAdelmanCategory",
+                  IsCapCategory );
+
+DeclareAttribute( "UnitOfSatelliteAdjunctionOfAdelmanCategory",
+                  IsCapCategory );
+
+DeclareAttribute( "CounitOfSatelliteAdjunctionOfAdelmanCategory",
+                  IsCapCategory );
+
+DeclareAttribute( "ProjectionFunctorAdelmanCategoryToFreydCategory",
+                  IsCapCategory );
+
 ####################################
 ##
 #! @Section Attributes
@@ -75,3 +105,6 @@ DeclareAttribute( "WitnessPairForBeingCongruentToZero",
 
 DeclareOperation( "HomomorphismStructureOnObjectsForAdelmanCategoryGeneralizedEmbedding",
                   [ IsAdelmanCategoryObject, IsAdelmanCategoryObject ] );
+
+DeclareAttribute( "IsSequenceAsAdelmanCategoryObject",
+                  IsAdelmanCategoryObject );

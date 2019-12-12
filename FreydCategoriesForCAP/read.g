@@ -28,6 +28,16 @@ ReadPackage( "FreydCategoriesForCAP", "gap/CokernelImageClosure.gi" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/AdelmanCategory.gi" );
 
-ReadPackage( "FreydCategoriesForCAP", "gap/QuiverRows.gi" );
+if IsPackageMarkedForLoading( "QPA", ">= 2.0" ) then
+    ReadPackage( "FreydCategoriesForCAP", "gap/QuiverRows.gi" );
+fi;
 
 ReadPackage( "FreydCategoriesForCAP", "gap/GradedModulePresentationsByFreyd/GradedModulePresentationsByFreyd.gi" );
+
+if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" ) then
+    ReadPackage( "FreydCategoriesForCAP", "gap/GroupsAsCats.gi" );
+    
+    ReadPackage( "FreydCategoriesForCAP", "gap/LinearClosure.gi" );
+fi;
+
+ReadPackage( "FreydCategoriesForCAP", "gap/GradeFiltration.gi" );

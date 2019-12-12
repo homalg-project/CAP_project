@@ -25,8 +25,6 @@ DeclareCategory( "IsFreydCategory",
 
 DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY" );
 
-DeclareGlobalFunction( "TODO_LIST_ENTRY_FOR_MORPHISM_WITNESS_FOR_FREYD_CATEGORY" );
-
 ####################################
 ##
 #! @Section Constructors
@@ -54,6 +52,14 @@ DeclareAttribute( "AsFreydCategoryObject",
 DeclareAttribute( "AsFreydCategoryMorphism",
                   IsCapCategoryMorphism );
 
+DeclareAttribute( "EmbeddingFunctorIntoFreydCategory",
+                  IsCapCategory );
+
+DeclareOperation( "\/",
+                  [ IsCapCategoryMorphism, IsFreydCategory ] );
+
+DeclareOperation( "\/",
+                  [ IsHomalgMatrix, IsFreydCategory ] );
 
 ####################################
 ##
@@ -75,6 +81,11 @@ DeclareAttribute( "MorphismWitness",
 
 DeclareAttribute( "WitnessForBeingCongruentToZero",
                   IsFreydCategoryMorphism );
+
+DeclareAttribute( "MereExistenceOfWitnessForBeingCongruentToZero",
+                  IsFreydCategoryMorphism );
+
+KeyDependentOperation( "FREYD_CATEGORIES_SimplifyObjectTuple", IsFreydCategoryObject, IsObject, ReturnTrue );
 
 ####################################################################################
 ##

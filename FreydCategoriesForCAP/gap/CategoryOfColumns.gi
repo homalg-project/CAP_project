@@ -17,19 +17,33 @@ InstallMethod( CategoryOfColumns,
                [ IsHomalgRing ],
                
   function( homalg_ring )
-    local category, to_be_finalized;
+    local overhead_option, category, to_be_finalized;
     
-    category := CreateCapCategory( Concatenation( "Columns( ", RingName( homalg_ring )," )"  ) );
+    overhead_option := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "overhead", true );
+    
+    category := CreateCapCategory( Concatenation( "Columns( ", RingName( homalg_ring )," )" ) : overhead := overhead_option );
     
     SetFilterObj( category, IsCategoryOfColumns );
     
     SetIsAdditiveCategory( category, true );
     
+    SetIsRigidSymmetricClosedMonoidalCategory( category, true );
+    
+    SetIsStrictMonoidalCategory( category, true );
+    
     SetUnderlyingRing( category, homalg_ring );
+    
+    if HasIsCommutative( homalg_ring ) and IsCommutative( homalg_ring ) then
+      
+      SetIsLinearCategoryOverCommutativeRing( category, true );
+      
+      SetCommutativeRingOfLinearCategory( category, homalg_ring );
+      
+    fi;
     
     AddObjectRepresentation( category, IsCategoryOfColumnsObject );
     
-    AddMorphismRepresentation( category, IsCategoryOfColumnsMorphism );
+    AddMorphismRepresentation( category, IsCategoryOfColumnsMorphism and HasUnderlyingMatrix );
     
     INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS( category );
     
@@ -48,10 +62,20 @@ InstallMethod( CategoryOfColumns,
 end );
 
 ##
-InstallMethodWithCache( CategoryOfColumnsObject,
-                        [ IsInt, IsCategoryOfColumns ],
+InstallOtherMethod( CategoryOfColumnsObject,
+                    [ IsInt, IsCategoryOfColumns ],
                
   function( rank, category )
+    
+    return CategoryOfColumnsObject( category, rank );
+    
+end );
+
+##
+InstallMethod( CategoryOfColumnsObjectOp,
+               [ IsCategoryOfColumns, IsInt ],
+               
+  function( category, rank )
     local category_of_columns_object;
     
     if rank < 0 then
@@ -73,12 +97,10 @@ end );
 
 ##
 InstallMethod( AsCategoryOfColumnsMorphism,
-               [ IsHomalgMatrix ],
+               [ IsHomalgMatrix, IsCategoryOfColumns ],
                
-  function( homalg_matrix )
-    local category, source, range;
-    
-    category := CategoryOfColumns( HomalgRing( homalg_matrix ) );
+  function( homalg_matrix, category )
+    local source, range;
     
     source := CategoryOfColumnsObject( NrColumns( homalg_matrix ), category );
     
@@ -125,15 +147,108 @@ InstallMethod( CategoryOfColumnsMorphism,
     
     category_of_columns_morphism := rec( );
     
-    ObjectifyMorphismForCAPWithAttributes( category_of_columns_morphism, category,
-                                           Source, source,
-                                           Range, range,
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( category_of_columns_morphism, category,
+                                           source,
+                                           range,
                                            UnderlyingMatrix, homalg_matrix
     );
     
     return category_of_columns_morphism;
     
 end );
+
+####################################
+##
+## Attributes
+##
+####################################
+
+## "1 round of ByASmallerPresentation"
+##
+InstallMethod( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple,
+               [ IsCategoryOfColumnsMorphism ],
+               
+  function( alpha )
+    local M, cols, R, T, TI, U, UI, S;
+    
+    M := UnderlyingMatrix( alpha );
+    
+    cols := CapCategory( alpha );
+    
+    R := UnderlyingRing( cols );
+    
+    ## homalg's recipe:
+    ## 1) OnLessGenerators
+    ## 2) if no improvement in terms of number of generators, then:
+    ##  2.1) BasisOfModule
+    ##  2.2) OnLessGenerators
+    
+    T := HomalgVoidMatrix( R );
+    
+    TI := HomalgVoidMatrix( R );
+    
+    S := SimplerEquivalentMatrix( M, T, TI, "", "", "" );
+    
+    if NrRows( S ) = RankOfObject( Range( alpha ) ) then
+      
+      S := BasisOfColumnModule( S );
+      
+      U := HomalgVoidMatrix( R );
+    
+      UI := HomalgVoidMatrix( R );
+      
+      S := SimplerEquivalentMatrix( S, U, UI, "", "", "" );
+      
+      T := U * T;
+      
+      TI := TI * UI;
+      
+    fi;
+    
+    ## add the following line to homalg's recipe in order to minimize the number of relations
+    S := ReducedBasisOfColumnModule( S );
+    
+    return [ S, T, TI ];
+    
+end );
+
+##
+InstallMethod( CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple,
+               [ IsCategoryOfColumnsMorphism ],
+               
+  function( alpha )
+    
+    ## [ S, U, V, UI, VI ];
+    ## U M V = S
+    return SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices( UnderlyingMatrix( alpha ) );
+    
+end );
+
+##
+InstallMethod( CATEGORY_OF_COLUMNS_SimplificationSourceTuple,
+               [ IsCategoryOfColumnsMorphism ],
+               
+  function( alpha )
+    
+    ## [ S, T, TI ];
+    ## M T = S
+    return SimplifyHomalgMatrixByRightMultiplicationWithInvertibleMatrix( UnderlyingMatrix( alpha ) );
+    
+end );
+
+##
+InstallMethod( CATEGORY_OF_COLUMNS_SimplificationRangeTuple,
+               [ IsCategoryOfColumnsMorphism ],
+               
+  function( alpha )
+    
+    ## [ S, T, TI ];
+    ## T M = S
+    return SimplifyHomalgMatrixByLeftMultiplicationWithInvertibleMatrix( UnderlyingMatrix( alpha ) );
+    
+end );
+
+
 
 ####################################
 ##
@@ -554,9 +669,17 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
       
       end );
     
-    ## Operations related to homomorphism structure
-    
-    if IsCommutative( ring ) then
+    if HasIsCommutative( ring ) and IsCommutative( ring ) then
+        
+        ##
+        AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+          function( r, alpha )
+            
+            return CategoryOfColumnsMorphism( Source( alpha ), r * UnderlyingMatrix( alpha ), Range( alpha ) );
+            
+        end );
+        
+        ## Operations related to homomorphism structure
         
         SetRangeCategoryOfHomomorphismStructure( category, category );
         
@@ -587,7 +710,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         end );
         
         ##
-        AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( category,
+        AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
           function( alpha )
             local underlying_matrix, nr_columns;
             
@@ -614,7 +737,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         end );
         
         ##
-        AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( category,
+        AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
           function( A, B, morphism )
             local nr_rows, nr_columns, underlying_matrix;
             
@@ -637,6 +760,282 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         end );
         
     fi;
+    
+    
+    ## Operations related to tensor structure
+    
+    if HasIsCommutative( ring ) and IsCommutative( ring ) then
+        
+        ##
+        AddTensorProductOnObjects( category,
+          function( a, b )
+            
+            return CategoryOfColumnsObject( category, RankOfObject( a ) * RankOfObject( b ) );
+            
+        end );
+        
+        ##
+        AddTensorProductOnMorphismsWithGivenTensorProducts( category,
+          function( s, alpha, beta, r)
+            
+            return CategoryOfColumnsMorphism( s,
+              KroneckerMat( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ),
+            r );
+            
+        end );
+        
+        AddTensorUnit( category,
+          function()
+            
+            return CategoryOfColumnsObject( category, 1 );
+            
+        end );
+        
+        ##
+        AddBraidingWithGivenTensorProducts( category,
+          function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
+          local permutation_matrix, rank, rank_1, rank_2;
+          
+          rank_1 := RankOfObject( object_1 );
+          
+          rank_2 := RankOfObject( object_2 );
+          
+          rank := RankOfObject( object_1_tensored_object_2 );
+          
+          ## mind the inversion of the permutation, since we work with columns
+          permutation_matrix := PermutationMat(
+                                  PermList( List( [ 1 .. rank ], i -> ( RemInt( i - 1, rank_2 ) * rank_1 + QuoInt( i - 1, rank_2 ) + 1 ) ) )^(-1),
+                                  rank
+                                );
+          
+          return CategoryOfColumnsMorphism( object_1_tensored_object_2,
+                                            HomalgMatrix( permutation_matrix, rank, rank, ring ),
+                                            object_2_tensored_object_1
+                                          );
+          
+        end );
+        
+        ##
+        AddDualOnObjects( category, IdFunc );
+        
+        ##
+        AddDualOnMorphismsWithGivenDuals( category,
+          function( dual_source, morphism, dual_range )
+            
+            return CategoryOfColumnsMorphism( dual_source,
+                                              TransposedMatrix( UnderlyingMatrix( morphism ) ),
+                                              dual_range );
+            
+        end );
+        
+        ##
+        AddEvaluationForDualWithGivenTensorProduct( category,
+          function( tensor_object, object, unit )
+            local rank, id;
+            
+            rank := RankOfObject( object );
+            
+            id := HomalgIdentityMatrix( rank, ring );
+            
+            return CategoryOfColumnsMorphism( tensor_object,
+                                              UnionOfColumns( List( [ 1 .. rank ], i -> CertainRows( id, [i] ) ) ),
+                                              unit );
+            
+        end );
+        
+        ##
+        AddCoevaluationForDualWithGivenTensorProduct( category,
+          
+          function( unit, object, tensor_object )
+            local rank, id;
+            
+            rank := RankOfObject( object );
+            
+            id := HomalgIdentityMatrix( rank, ring );
+            
+            return CategoryOfColumnsMorphism( unit,
+                                              UnionOfRows( List( [ 1 .. rank ], i -> CertainColumns( id, [i] ) ) ),
+                                              tensor_object );
+            
+        end );
+       
+        ##
+        AddMorphismToBidualWithGivenBidual( category, {obj, dual} -> IdentityMorphism( obj ) );
+        
+    fi;
+    
+    
+    ## Simplifications
+    
+    ## Source and Range
+    ##
+    AddSimplifySourceAndRange( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfColumnsMorphism(
+            Source( alpha ),
+            CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple( alpha )[1],
+            Range( alpha )
+          );
+        
+    end );
+    
+    ##
+    AddSimplifySourceAndRange_IsoToInputRange( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfColumnsMorphism(
+            Range( alpha ),
+            CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple( alpha )[4],
+            Range( alpha )
+          );
+        
+    end );
+    
+    ##
+    AddSimplifySourceAndRange_IsoFromInputRange( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfColumnsMorphism(
+            Range( alpha ),
+            CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple( alpha )[2],
+            Range( alpha )
+          );
+        
+    end );
+    
+    ##
+    AddSimplifySourceAndRange_IsoToInputSource( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfColumnsMorphism(
+            Source( alpha ),
+            CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple( alpha )[3],
+            Source( alpha )
+          );
+        
+    end );
+    
+    ##
+    AddSimplifySourceAndRange_IsoFromInputSource( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfColumnsMorphism(
+            Source( alpha ),
+            CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple( alpha )[5],
+            Source( alpha )
+          );
+        
+    end );
+    
+    ## only Source
+    ##
+    AddSimplifySource( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfColumnsMorphism(
+            Source( alpha ),
+            CATEGORY_OF_COLUMNS_SimplificationSourceTuple( alpha )[1],
+            Range( alpha )
+          );
+        
+    end );
+    
+    ##
+    AddSimplifySource_IsoToInputObject( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfColumnsMorphism(
+            Source( alpha ),
+            CATEGORY_OF_COLUMNS_SimplificationSourceTuple( alpha )[2],
+            Source( alpha )
+          );
+        
+    end );
+    
+    ##
+    AddSimplifySource_IsoFromInputObject( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfColumnsMorphism(
+            Source( alpha ),
+            CATEGORY_OF_COLUMNS_SimplificationSourceTuple( alpha )[3],
+            Source( alpha )
+          );
+        
+    end );
+    
+    ## only Range
+    ##
+    AddSimplifyRange( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfColumnsMorphism(
+            Source( alpha ),
+            CATEGORY_OF_COLUMNS_SimplificationRangeTuple( alpha )[1],
+            Range( alpha )
+          );
+        
+    end );
+    
+    ##
+    AddSimplifyRange_IsoToInputObject( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfColumnsMorphism(
+            Range( alpha ),
+            CATEGORY_OF_COLUMNS_SimplificationRangeTuple( alpha )[3],
+            Range( alpha )
+          );
+        
+    end );
+    
+    ##
+    AddSimplifyRange_IsoFromInputObject( category,
+      function( alpha, i )
+        
+        return
+          CategoryOfColumnsMorphism(
+            Range( alpha ),
+            CATEGORY_OF_COLUMNS_SimplificationRangeTuple( alpha )[2],
+            Range( alpha )
+          );
+        
+    end );
+    
+    ##
+    AddSomeReductionBySplitEpiSummand( category,
+      function( alpha )
+        
+        return AsCategoryOfColumnsMorphism( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha )[1], category );
+        
+    end );
+    
+    ##
+    AddSomeReductionBySplitEpiSummand_MorphismFromInputRange( category,
+      function( alpha )
+        
+        return AsCategoryOfColumnsMorphism( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha )[2], category );
+        
+    end );
+    
+    ##
+    AddSomeReductionBySplitEpiSummand_MorphismToInputRange( category,
+      function( alpha )
+        
+        return AsCategoryOfColumnsMorphism( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha )[3], category );
+        
+    end );
     
 end );
 
@@ -700,3 +1099,20 @@ InstallMethod( Display,
     Print( String( category_of_columns_object ) );
     
 end );
+
+####################################
+##
+## Convenience
+##
+####################################
+
+##
+InstallMethod( \/,
+               [ IsHomalgMatrix, IsCategoryOfColumns ],
+               AsCategoryOfColumnsMorphism
+);
+
+##
+InstallMethod( \/,
+               [ IsInt, IsCategoryOfColumns ],
+               CategoryOfColumnsObject );

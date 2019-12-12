@@ -36,7 +36,7 @@ InstallMethod( LeftActionsCategory,
   function( acting_object, name, context_filter_list )
     local underlying_monoidal_category, preconditions, category_weight_list, i,
           structure_record, object_constructor, morphism_constructor, 
-          left_actions_category, identity_of_acting_object;
+          left_actions_category, identity_of_acting_object, finalize;
     
     underlying_monoidal_category := CapCategory( acting_object );
     
@@ -207,7 +207,7 @@ InstallMethod( LeftActionsCategory,
         
     fi;
     
-    structure_record.NoInstallList := [ "Lift", "Colift" ];
+    structure_record.NoInstallList := [ "Lift", "ProjectiveLift", "Colift", "InjectiveColift" ];
     
     structure_record.InstallList := [ "LiftAlongMonomorphism", "ColiftAlongEpimorphism" ];
     
@@ -241,8 +241,12 @@ InstallMethod( LeftActionsCategory,
     ADD_FUNCTIONS_FOR_LEFT_ACTIONS_CATEGORY( left_actions_category );
     
     ## TODO: Logic for left_actions_category
-     
-    Finalize( left_actions_category );
+    
+    finalize := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "FinalizeCategory", true );
+    
+    if finalize = true then
+        Finalize( left_actions_category );
+    fi;
     
     return left_actions_category;
     
@@ -269,7 +273,7 @@ InstallMethod( RightActionsCategory,
   function( acting_object, name, context_filter_list )
     local underlying_monoidal_category, preconditions, category_weight_list, i,
           structure_record, object_constructor, morphism_constructor, 
-          right_actions_category, identity_of_acting_object;
+          right_actions_category, identity_of_acting_object, finalize;
     
     underlying_monoidal_category := CapCategory( acting_object );
     
@@ -474,8 +478,12 @@ InstallMethod( RightActionsCategory,
     ADD_FUNCTIONS_FOR_RIGHT_ACTIONS_CATEGORY( right_actions_category );
     
     ## TODO: Logic for right_actions_category
-     
-    Finalize( right_actions_category );
+    
+    finalize := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "FinalizeCategory", true );
+    
+    if finalize = true then
+        Finalize( right_actions_category );
+    fi;
     
     return right_actions_category;
     
@@ -513,6 +521,7 @@ end );
 InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
   
   function( category )
+    local underlying_category;
     
     ##
     AddIsEqualForCacheForObjects( category,
@@ -521,6 +530,10 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
     ##
     AddIsEqualForCacheForMorphisms( category,
       IsIdenticalObj );
+    
+    underlying_category := UnderlyingCategory( category );
+    
+    if CanCompute( underlying_category, "IsCongruentForMorphisms" ) then
     
     ##
     AddIsEqualForObjects( category,
@@ -547,6 +560,21 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
         return IsCongruentForMorphisms( UnderlyingCell( morphism_1 ), UnderlyingCell( morphism_2 ) );
         
     end );
+    
+    else
+        
+        SetCachingOfCategoryCrisp( category );
+        
+        ##
+        AddIsEqualForObjects( category, IsIdenticalObj );
+        
+        ##
+        AddIsEqualForMorphisms( category, IsIdenticalObj );
+        
+        ## cannot AddIsCongruentForMorphisms
+        category!.is_computable := false;
+        
+    fi;
     
 end );
 

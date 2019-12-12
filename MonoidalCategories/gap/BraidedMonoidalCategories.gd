@@ -86,3 +86,6 @@ DeclareOperation( "AddBraidingInverseWithGivenTensorProducts",
 
 DeclareOperation( "AddBraidingInverseWithGivenTensorProducts",
                   [ IsCapCategory, IsList ] );
+
+DeclareOperation( "CheckBraiding",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );

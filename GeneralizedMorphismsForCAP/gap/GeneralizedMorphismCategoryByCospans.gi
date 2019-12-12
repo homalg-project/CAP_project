@@ -273,7 +273,7 @@ InstallMethod( GeneralizedMorphismCategoryByCospans,
     
     AddObjectRepresentation( generalized_morphism_category, IsGeneralizedMorphismCategoryByCospansObject );
     
-    AddMorphismRepresentation( generalized_morphism_category, IsGeneralizedMorphismByCospan );
+    AddMorphismRepresentation( generalized_morphism_category, IsGeneralizedMorphismByCospan and HasArrow and HasReversedArrow );
     
     generalized_morphism_category!.predicate_logic := category!.predicate_logic;
     
@@ -331,9 +331,9 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismByCospan,
     
     generalized_morphism := rec( );
     
-    ObjectifyMorphismForCAPWithAttributes( generalized_morphism, generalized_category,
-                             Source, GeneralizedMorphismByCospansObject( Source( arrow ) ),
-                             Range, GeneralizedMorphismByCospansObject( Source( reversed_arrow ) ),
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( generalized_morphism, generalized_category,
+                             GeneralizedMorphismByCospansObject( Source( arrow ) ),
+                             GeneralizedMorphismByCospansObject( Source( reversed_arrow ) ),
                              Arrow, arrow,
                              ReversedArrow, reversed_arrow );
     

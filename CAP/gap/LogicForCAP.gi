@@ -506,9 +506,15 @@ InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
                         
   function( category )
     
-    INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "IsEnrichedOverCommutativeRegularSemigroup" );
+    if category!.overhead then
+        
+        INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "IsEnrichedOverCommutativeRegularSemigroup" );
+        
+        TryNextMethod( );
+        
+    fi;
     
-    TryNextMethod( );
+    return false;
     
 end );
 
@@ -518,9 +524,15 @@ InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
                         
   function( category )
     
-    INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "IsAdditiveCategory" );
+    if category!.overhead then
+        
+        INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "IsAdditiveCategory" );
+        
+        TryNextMethod( );
+        
+    fi;
     
-    TryNextMethod( );
+    return false;
     
 end );
 
@@ -530,9 +542,15 @@ InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
                         
   function( category )
     
-    INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "IsPreAbelianCategory" );
+    if category!.overhead then
+        
+        INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "IsPreAbelianCategory" );
+        
+        TryNextMethod( );
+        
+    fi;
     
-    TryNextMethod( );
+    return false;
     
 end );
 
@@ -542,9 +560,15 @@ InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
                         
   function( category )
     
-    INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "IsAbelianCategory" );
+    if category!.overhead then
+        
+        INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "IsAbelianCategory" );
+        
+        TryNextMethod( );
+        
+    fi;
     
-    TryNextMethod( );
+    return false;
     
 end );
 
@@ -554,9 +578,15 @@ InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
                         
   function( category )
     
-    INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "IsAbCategory" );
+    if category!.overhead then
+        
+        INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "IsAbCategory" );
+        
+        TryNextMethod( );
+        
+    fi;
     
-    TryNextMethod( );
+    return false;
     
 end );
 

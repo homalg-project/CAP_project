@@ -269,7 +269,7 @@ InstallMethod( GeneralizedMorphismCategoryBySpans,
     
     AddObjectRepresentation( generalized_morphism_category, IsGeneralizedMorphismCategoryBySpansObject );
     
-    AddMorphismRepresentation( generalized_morphism_category, IsGeneralizedMorphismBySpan );
+    AddMorphismRepresentation( generalized_morphism_category, IsGeneralizedMorphismBySpan and HasArrow and HasReversedArrow );
     
     generalized_morphism_category!.predicate_logic := category!.predicate_logic;
     
@@ -327,9 +327,9 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismBySpan,
     
     generalized_morphism := rec( );
     
-    ObjectifyMorphismForCAPWithAttributes( generalized_morphism, generalized_category,
-                             Source, GeneralizedMorphismBySpansObject( Range( reversed_arrow ) ),
-                             Range, GeneralizedMorphismBySpansObject( Range( arrow ) ),
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( generalized_morphism, generalized_category,
+                             GeneralizedMorphismBySpansObject( Range( reversed_arrow ) ),
+                             GeneralizedMorphismBySpansObject( Range( arrow ) ),
                              Arrow, arrow,
                              ReversedArrow, reversed_arrow );
     

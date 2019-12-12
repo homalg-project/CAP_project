@@ -124,7 +124,7 @@ InstallMethod( QuiverRows,
     
     AddObjectRepresentation( category, IsQuiverRowsObject );
     
-    AddMorphismRepresentation( category, IsQuiverRowsMorphism );
+    AddMorphismRepresentation( category, IsQuiverRowsMorphism and HasMorphismMatrix );
     
     INSTALL_FUNCTIONS_FOR_QUIVER_ROWS( category, over_Z );
     
@@ -209,10 +209,10 @@ InstallMethod( QuiverRowsMorphism,
     
     category := CapCategory( source );
 
-    ObjectifyMorphismForCAPWithAttributes( 
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
                              quiver_rows_morphism, category,
-                             Source, source,
-                             Range, range,
+                             source,
+                             range,
                              MorphismMatrix, matrix
     );
 
@@ -1311,7 +1311,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     end );
     
     ##
-    AddInterpretMorphismAsMorphismFromDinstinguishedObjectToHomomorphismStructure( category,
+    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
       function( alpha )
         local listlist, lists, listr, row, i, j, submat, basis, c, a;
         
@@ -1350,7 +1350,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     end );
     
     ##
-    AddInterpretMorphismFromDinstinguishedObjectToHomomorphismStructureAsMorphism( category,
+    AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
       function( A, B, morphism )
         local coeffs, lists, listr, mat, pos, i, row, j, submat, basis, c, submatrow, a,
               entry, row_counts, col_counts;
