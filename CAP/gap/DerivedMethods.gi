@@ -4,6 +4,18 @@
 ##
 ###########################
 
+AddWithGivenDerivationPairToCAP( MorphismFromKernelObjectToSink,
+        
+  function( alpha )
+    local K;
+    
+    K := KernelObject( alpha );
+    
+    return ZeroMorphism( K, Range( alpha ) );
+    
+  end : Description := "MorphismFromKernelObjectToSink as zero morphism from kernel object to range" );
+
+##
 AddWithGivenDerivationPairToCAP( KernelLift,
   function( mor, test_morphism )
     
@@ -16,6 +28,18 @@ AddWithGivenDerivationPairToCAP( KernelLift,
     return LiftAlongMonomorphism( KernelEmbeddingWithGivenKernelObject( mor, kernel ), test_morphism );
     
 end : Description := "KernelLift using LiftAlongMonomorphism and KernelEmbedding" );
+
+##
+AddWithGivenDerivationPairToCAP( MorphismFromSourceToCokernelObject,
+        
+  function( alpha )
+    local C;
+    
+    C := CokernelObject( alpha );
+    
+    return ZeroMorphism( Source( alpha ), C );
+    
+  end : Description := "MorphismFromSourceToCokernelObject as zero morphism from source to cokernel object" );
 
 ##
 AddWithGivenDerivationPairToCAP( CokernelColift,
@@ -620,6 +644,18 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoEqualizer,
 end : Description := "UniversalMorphismIntoEqualizer using LiftAlongMonomorphism and EmbeddingOfEqualizer" );
 
 ##
+AddWithGivenDerivationPairToCAP( MorphismFromEqualizerToSink,
+        
+  function( diagram )
+    local iota;
+    
+    iota := EmbeddingOfEqualizer( diagram );
+    
+    return PreCompose( iota, diagram[1] );
+    
+  end : Description := "MorphismFromEqualizerToSink by composing the embedding with the first morphism in the diagram" );
+
+##
 AddWithGivenDerivationPairToCAP( UniversalMorphismFromCoequalizer,
   function( diagram, test_morphism )
     
@@ -632,6 +668,18 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromCoequalizer,
       return ColiftAlongEpimorphism( ProjectionOntoCoequalizerWithGivenCoequalizer( diagram, coequalizer ), test_morphism );
       
 end : Description := "UniversalMorphismFromCoequalizer using ColiftAlongEpimorphism and ProjectionOntoCoequalizer" );
+
+##
+AddWithGivenDerivationPairToCAP( MorphismFromSourceToCoequalizer,
+  
+  function( diagram )
+    local pi;
+    
+    pi := ProjectionOntoCoequalizer( diagram );
+    
+    return PreCompose( diagram[1], pi );
+    
+  end : Description := "MorphismFromSourceToCoequalizer by composing the first morphism in the diagram with the projection" );
 
 ###########################
 ##
