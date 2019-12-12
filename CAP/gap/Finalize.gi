@@ -128,7 +128,33 @@ InstallMethod( IsFinalized,
                [ IsCapCategory ],
                
   function( category )
-    local current_final_derivation, derivation_list, i, n, weight_list, weight, add_name, current_installs, current_tester_func, current_additional_func;
+    local list_of_primitively_installed_operations, record, universal_object_name, without_given_name, derivation_list, weight_list, current_installs, current_final_derivation, current_tester_func, weight, add_name, IsFinalDerivation, name, i, current_additional_func;
+    
+    # check for WithGiven installations where no object can be computed
+    if not ValueOption( "SuppressWithGivenWarning" ) = true then
+        
+        list_of_primitively_installed_operations := ListPrimitivelyInstalledOperationsOfCategory( category );
+        
+        for name in list_of_primitively_installed_operations do
+            
+            record := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
+            
+            if IsBound( record.is_with_given ) and record.is_with_given then
+                
+                universal_object_name := record.universal_object;
+                without_given_name := record.with_given_without_given_name_pair[1];
+                
+                if not (universal_object_name in list_of_primitively_installed_operations or without_given_name in list_of_primitively_installed_operations) then
+                    
+                    Display( Concatenation( "WARNING: You have installed a method for ", name, " but neither for ", universal_object_name, " nor for ", without_given_name, ". If this is intended, you can suppress this warning by passing the option \"SuppressWithGivenWarning := true\" to Finalize/IsFinalized." ) );
+                    
+                fi;
+                
+            fi;
+            
+        od;
+        
+    fi;
     
     derivation_list := ShallowCopy( CAP_INTERNAL_FINAL_DERIVATION_LIST.final_derivation_list );
     
