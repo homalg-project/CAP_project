@@ -2,12 +2,50 @@
 ##
 #! @Chapter Toposes
 ##
-#! @Section Subobject Classifier
-##
 ####################################
+
+#! @Section IsHomSetInhabited
 
 DeclareGlobalVariable( "TOPOS_METHOD_NAME_RECORD" );
 
+#! @Description
+#!  The property of <A>C</A> being a skeletal &CAP; category.
+#! @Arguments C
+AddCategoricalProperty( [ "IsSkeletalCategory" ] );
+
+## Main Operations and Attributes
+
+#! @Description
+#!  Check if <A>B</A> is bigger than <A>A</A> w.r.t. the preorder.
+#! @Arguments A, B
+#! @Returns <C>true</C> or <C>false</C>
+DeclareOperation( "IsHomSetInhabited",
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>IsHomSetInhabited</C>.
+#! $F: A, B \mapsto \mathrm{IsHomSetInhabited}(A, B)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsHomSetInhabited",
+        [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsHomSetInhabited",
+        [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsHomSetInhabited",
+        [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsHomSetInhabited",
+        [ IsCapCategory, IsList ] );
+
+#! @Section Subobject Classifier
+
+#! @Description
+#!  The property of <A>C</A> being an elementary topos.
+#! @Arguments C
 AddCategoricalProperty( [ "IsElementaryTopos" ] );
 
 #! A subobject classifier object consists of three parts:
@@ -17,7 +55,6 @@ AddCategoricalProperty( [ "IsElementaryTopos" ] );
 #! The triple $(\Omega,\mathrm{true},\chi)$ is called a <Emph>subobject classifier</Emph> if
 #! for each monomorphism $i : A \to S$, the morphism $\chi_i : S \to \Omega$ is the unique
 #! morphism such that $\chi_i \circ i = \mathrm{true} \circ \ast$ determine a pullback diagram.
-## Main Operations and Attributes
 
 #! @Description
 #! The argument is a category $C$.
