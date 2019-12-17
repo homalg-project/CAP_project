@@ -273,7 +273,15 @@ InstallMethod( ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSourc
         
         objs := List( objs, obj -> ApplyFunctor( F, obj ) );
         
-        return DirectSum( objs );
+        if IsEmpty( objs ) then
+          
+          return ZeroObject( range_cat );
+        
+        else
+          
+          return DirectSum( objs );
+        
+        fi;
         
     end );
     
