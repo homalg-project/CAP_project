@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "Toposes",
 Subtitle := "Elementary toposes",
 Version := Maximum( [
-                   "2019.11.06", ## Mohamed's version
+                   "2019.11.15", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2019.03.16", ## Tom's version
                    ## this line prevents merge conflicts
