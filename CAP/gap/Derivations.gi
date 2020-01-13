@@ -98,7 +98,8 @@ InstallMethod( InstallDerivationForCategory,
                [ IsDerivedMethod, IsPosInt, IsCapCategory ],
 function( d, weight, C )
   local method_name, implementation_list, add_method, add_name, general_filter_list,
-        installation_name, nr_arguments, cache_name, current_filters, current_implementation;
+        installation_name, nr_arguments, cache_name, current_filters, current_implementation,
+        function_called_before_installation;
   
   Info( DerivationInfo, 1, Concatenation( "install(",
                                           String( weight ),
@@ -140,6 +141,11 @@ function( d, weight, C )
 #       fi;
 #       
 #   else
+      if HasFunctionCalledBeforeInstallation( d ) then
+          
+          FunctionCalledBeforeInstallation( d )( C );
+          
+      fi;
       
       add_method := ValueGlobal( add_name );
       add_method( C, implementation_list, 1 : SetPrimitive := false, IsDerivation := true ); ##The third argument is ignored
@@ -268,13 +274,14 @@ InstallMethod( AddDerivation,
             implementations_with_extra_filters )
     local weight, category_filter, description, derivation, collected_list,
           operations_in_graph, current_list, current_implementation, loop_multiplier,
-          preconditions_complete;
+          preconditions_complete, function_called_before_installation;
     
     weight := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Weight", 1 );
     category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
     description := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Description", "" );
     loop_multiplier := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "WeightLoopMultiple", 2 );
     preconditions_complete := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "ConditionsListComplete", false );
+    function_called_before_installation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "FunctionCalledBeforeInstallation", false );
     
     ## get used ops
     ## Is this the right place? Or should this only be done when no ops are given?
@@ -300,6 +307,12 @@ InstallMethod( AddDerivation,
                                   weight,
                                   implementations_with_extra_filters,
                                   category_filter );
+    
+    if function_called_before_installation <> false then
+        
+        SetFunctionCalledBeforeInstallation( derivation, function_called_before_installation );
+        
+    fi;
     
     ## This sanity check should be obsolete
     # CAP_INTERNAL_DERIVATION_SANITY_CHECK( graph, derivation );

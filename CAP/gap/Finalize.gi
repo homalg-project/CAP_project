@@ -58,7 +58,7 @@ InstallGlobalFunction( AddFinalDerivation,
                
   function( name, can, cannot, func_list, additional_functions... )
     local final_derivation, loop_multiplier, collected_list, current_implementation, current_list,
-          operations_in_graph, used_ops_with_multiples, preconditions_complete, i, current_additional_func;
+          operations_in_graph, used_ops_with_multiples, preconditions_complete, i, current_additional_func, function_called_before_installation;
 
     if IsFunction( func_list ) then
         func_list := [ [ func_list, [] ] ];
@@ -71,6 +71,7 @@ InstallGlobalFunction( AddFinalDerivation,
     final_derivation.category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
     loop_multiplier := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "WeightLoopMultiple", 2 );
     preconditions_complete := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "ConditionsListComplete", false );
+    function_called_before_installation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "FunctionCalledBeforeInstallation", false );
     
     for i in [ 1 .. Length( additional_functions ) ] do
         if IsFunction( additional_functions[ i ][ 2 ] ) then
@@ -112,6 +113,7 @@ InstallGlobalFunction( AddFinalDerivation,
     final_derivation.name := name;
     final_derivation.cannot_compute := cannot;
     final_derivation.function_list := func_list;
+    final_derivation.function_called_before_installation := function_called_before_installation;
     
     CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK( final_derivation );
     
@@ -185,6 +187,14 @@ InstallMethod( IsFinalized,
                                           NameFunction( current_final_derivation.name ),
                                           ": ",
                                           current_final_derivation.description, "\n" ) );
+            
+            ## call function before adding the method
+            
+            if current_final_derivation.function_called_before_installation <> false then
+                
+                current_final_derivation.function_called_before_installation( category );
+                
+            fi;
             
             ## Add method
             add_name := ValueGlobal( Concatenation( [ "Add", NameFunction( current_final_derivation.name ) ] ) );

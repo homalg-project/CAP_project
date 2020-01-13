@@ -156,6 +156,12 @@ DeclareOperation( "InstallDerivationForCategory",
 DeclareOperation( "DerivationResultWeight",
                   [ IsDerivedMethod, IsDenseList ] );
 
+#! @Description
+#! Input is a derived method. Output is a unary function that takes as an input
+#! a category and does not output anything. This function is always called before
+#! the installation of the derived method for a concrete instance of a category.
+#! @Arguments d
+DeclareAttribute( "FunctionCalledBeforeInstallation", IsDerivedMethod );
 
 ####################################
 ##
