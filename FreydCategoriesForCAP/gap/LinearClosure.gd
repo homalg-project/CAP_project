@@ -33,6 +33,9 @@ DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE" );
 ####################################
 
 DeclareOperation( "LinearClosure",
+                  [ IsHomalgRing, IsGroupAsCategory ] );
+
+DeclareOperation( "LinearClosure",
                   [ IsHomalgRing, IsCapCategory, IsFunction ] );
 
 DeclareOperation( "LinearClosureObject",

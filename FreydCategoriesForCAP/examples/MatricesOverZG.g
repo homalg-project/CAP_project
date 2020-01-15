@@ -9,9 +9,8 @@ LoadPackage( "FreydCategoriesForCAP" );;
 #! @Example
 G := SymmetricGroup( 3 );;
 CG := GroupAsCategory( G );;
-compare_func := function( g, h ) return UnderlyingGroupElement( g ) < UnderlyingGroupElement( h ); end;;
 ZZ := HomalgRingOfIntegers( );;
-ZCG := LinearClosure( ZZ, CG, compare_func );;
+ZCG := LinearClosure( ZZ, CG );;
 RowsG := AdditiveClosure( ZCG );;
 #! @EndExample
 

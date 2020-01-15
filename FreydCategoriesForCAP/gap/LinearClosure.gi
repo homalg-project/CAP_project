@@ -12,6 +12,18 @@
 ##
 ####################################
 
+##
+InstallMethod( LinearClosure,
+               [ IsHomalgRing, IsGroupAsCategory ],
+  function( ring, group_as_category )
+    local compare_func;
+    
+    compare_func := function( g, h ) return UnderlyingGroupElement( g ) < UnderlyingGroupElement( h ); end;;
+    
+    return LinearClosure( ring, group_as_category, compare_func );
+    
+end );
+
 ## sorting_function:
 ## compares two morphisms alpha: a -> b, beta: a -> b
 ## such that, if we take the quotient by IsCongruentForMorphisms, we get a total ordering on morphisms
