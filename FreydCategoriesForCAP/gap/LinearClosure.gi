@@ -520,6 +520,82 @@ end );
 
 ####################################
 ##
+## Functors
+##
+####################################
+
+##
+InstallMethodWithCache( ExtendFunctorToLinearClosureOfSource,
+              [ IsCapFunctor, IsLinearClosure, IsFunction ],
+  function( F, linear_closure_source, ring_map )
+    local source_cat, range_cat, name, G;
+    
+    source_cat := AsCapCategory( Source( F ) );
+    
+    range_cat := AsCapCategory( Range( F ) );
+    
+    if not IsIdenticalObj( source_cat, UnderlyingCategory( linear_closure_source ) ) then
+      
+      Error( "The arguments are not compatible!\n" );
+      
+    fi;
+    
+    if not HasIsLinearCategoryOverCommutativeRing( range_cat ) and IsLinearCategoryOverCommutativeRing( range_cat ) then
+      
+      Error( "The range category named ", Name( range_cat ), " should be linear over some commutative ring!\n" );
+      
+    fi;
+     
+    name := Concatenation( "Extension of ", Name( F ), " to a functor from ", Name( linear_closure_source ) );
+    
+    G := CapFunctor( name, linear_closure_source, range_cat );
+    
+    AddObjectFunction( G,
+      function( a )
+        local o;
+        
+        o := UnderlyingOriginalObject( a );
+        
+        return ApplyFunctor( F, o );
+        
+    end );
+    
+    AddMorphismFunction( G,
+      function( s, alpha, r )
+        local coeffs, non_zeros, supp;
+        
+        coeffs := CoefficientsList( alpha );
+        
+        non_zeros := PositionsProperty( coeffs, c -> not IsZero( c ) );
+        
+        if IsEmpty( non_zeros ) then
+          
+          return ZeroMorphism( s, r );
+          
+        fi;
+        
+        coeffs := List( coeffs{ non_zeros }, ring_map );
+        
+        supp := SupportMorphisms( alpha ){ non_zeros };
+        
+        supp := List( supp, m -> ApplyFunctor( F, m ) );
+        
+        return Sum( ListN( coeffs, supp, MultiplyWithElementOfCommutativeRingForMorphisms ) );
+        
+    end );
+    
+    return G;
+    
+end );
+
+##
+InstallMethodWithCache( ExtendFunctorToLinearClosureOfSource,
+              [ IsCapFunctor, IsLinearClosure ],
+    { F, linear_closure_source } -> ExtendFunctorToLinearClosureOfSource( F, linear_closure_source, IdFunc )
+);
+
+####################################
+##
 ## View
 ##
 ####################################
