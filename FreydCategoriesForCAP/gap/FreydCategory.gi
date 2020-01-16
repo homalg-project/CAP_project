@@ -729,7 +729,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             function( alpha, test_morphism )
             local witness, R_B, A, sigma_A;
             
-            witness := WitnessForBeingCongruentToZero( PreCompose( alpha, CokernelProjection( alpha ) ) );
+            witness := WitnessForBeingCongruentToZero( CokernelProjection( alpha ) );
             
             R_B := Source( RelationMorphism( Range( alpha ) ) );
             
