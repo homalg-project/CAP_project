@@ -19,7 +19,7 @@ InstallMethod( LinearClosure,
                [ IsHomalgRing, IsCapCategory, IsFunction ],
                
   function( ring, underlying_category, sorting_function )
-    local category, is_finite;
+    local category, is_finite, to_be_finalized;
     
     if not ( HasIsCommutative( ring ) and IsCommutative( ring ) ) then
         
@@ -48,6 +48,14 @@ InstallMethod( LinearClosure,
     AddMorphismRepresentation( category, IsLinearClosureMorphism and HasCoefficientsList and HasSupportMorphisms );
     
     INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE( category );
+    
+    to_be_finalized := ValueOption( "FinalizeCategory" );
+    
+    if to_be_finalized = false then
+      
+      return category;
+      
+    fi;
     
     Finalize( category );
     
