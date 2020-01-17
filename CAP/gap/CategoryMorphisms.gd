@@ -71,15 +71,14 @@ DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_MORPHISMS" );
 ##
 ###################################
 
-## TODO
-# @Description
-# The argument is a morphism $\alpha$.
-# The output is <C>true</C> if $\alpha$ is a monomorphism,
-# otherwise the output is <C>false</C>.
-# @Returns a boolean
-# @Arguments alpha
-DeclareFamilyProperty( "IsMonomorphism",
-                       IsCapCategoryMorphism, "morphism" : reinstall := false );
+#! @Description
+#! The argument is a morphism $\alpha$.
+#! The output is <C>true</C> if $\alpha$ is a monomorphism,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha
+DeclareProperty( "IsMonomorphism",
+                 IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -104,15 +103,14 @@ DeclareOperation( "AddIsMonomorphism",
 
 
 
-## TODO
-# @Description
-# The argument is a morphism $\alpha$.
-# The output is <C>true</C> if $\alpha$ is an epimorphism,
-# otherwise the output is <C>false</C>.
-# @Returns a boolean
-# @Arguments alpha
-DeclareFamilyProperty( "IsEpimorphism",
-                       IsCapCategoryMorphism, "morphism" : reinstall := false );
+#! @Description
+#! The argument is a morphism $\alpha$.
+#! The output is <C>true</C> if $\alpha$ is an epimorphism,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha
+DeclareProperty( "IsEpimorphism",
+                 IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -135,15 +133,14 @@ DeclareOperation( "AddIsEpimorphism",
 
 
 
-## TODO
-# @Description
-# The argument is a morphism $\alpha$.
-# The output is <C>true</C> if $\alpha$ is an isomorphism,
-# otherwise the output is <C>false</C>.
-# @Returns a boolean
-# @Arguments alpha
-DeclareFamilyProperty( "IsIsomorphism",
-                       IsCapCategoryMorphism, "morphism" : reinstall := false );
+#! @Description
+#! The argument is a morphism $\alpha$.
+#! The output is <C>true</C> if $\alpha$ is an isomorphism,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha
+DeclareProperty( "IsIsomorphism",
+                 IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -166,15 +163,14 @@ DeclareOperation( "AddIsIsomorphism",
 
 
 
-## TODO
-# @Description
-# The argument is a morphism $\alpha$.
-# The output is <C>true</C> if $\alpha$ is a split monomorphism,
-# otherwise the output is <C>false</C>.
-# @Returns a boolean
-# @Arguments alpha
-DeclareFamilyProperty( "IsSplitMonomorphism",
-                       IsCapCategoryMorphism, "morphism" : reinstall := false );
+#! @Description
+#! The argument is a morphism $\alpha$.
+#! The output is <C>true</C> if $\alpha$ is a split monomorphism,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha
+DeclareProperty( "IsSplitMonomorphism",
+                 IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -195,15 +191,14 @@ DeclareOperation( "AddIsSplitMonomorphism",
 DeclareOperation( "AddIsSplitMonomorphism",
                   [ IsCapCategory, IsList ] );
 
-## TODO
-# @Description
-# The argument is a morphism $\alpha$.
-# The output is <C>true</C> if $\alpha$ is a split epimorphism,
-# otherwise the output is <C>false</C>.
-# @Returns a boolean
-# @Arguments alpha
-DeclareFamilyProperty( "IsSplitEpimorphism",
-                       IsCapCategoryMorphism, "morphism" : reinstall := false );
+#! @Description
+#! The argument is a morphism $\alpha$.
+#! The output is <C>true</C> if $\alpha$ is a split epimorphism,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha
+DeclareProperty( "IsSplitEpimorphism",
+                 IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -224,15 +219,14 @@ DeclareOperation( "AddIsSplitEpimorphism",
 DeclareOperation( "AddIsSplitEpimorphism",
                   [ IsCapCategory, IsList ] );
 
-## TODO
-# @Description
-# The argument is a morphism $\alpha: a \rightarrow a$.
-# The output is <C>true</C> if $\alpha$ is congruent to the identity of $a$,
-# otherwise the output is <C>false</C>.
-# @Returns a boolean
-# @Arguments alpha
-DeclareFamilyProperty( "IsOne",
-                       IsCapCategoryMorphism, "morphism" : reinstall := false );
+#! @Description
+#! The argument is a morphism $\alpha: a \rightarrow a$.
+#! The output is <C>true</C> if $\alpha$ is congruent to the identity of $a$,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha
+DeclareProperty( "IsOne",
+                 IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -253,15 +247,14 @@ DeclareOperation( "AddIsOne",
 DeclareOperation( "AddIsOne",
                   [ IsCapCategory, IsList ] );
 
-## TODO
-# @Description
-# The argument is a morphism $\alpha: a \rightarrow a$.
-# The output is <C>true</C> if $\alpha^2 \sim_{a,a} \alpha$,
-# otherwise the output is <C>false</C>.
-# @Returns a boolean
-# @Arguments alpha
-DeclareFamilyProperty( "IsIdempotent",
-                       IsCapCategoryMorphism, "morphism" : reinstall := false );
+#! @Description
+#! The argument is a morphism $\alpha: a \rightarrow a$.
+#! The output is <C>true</C> if $\alpha^2 \sim_{a,a} \alpha$,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha
+DeclareProperty( "IsIdempotent",
+                 IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -615,17 +608,16 @@ DeclareOperation( "AddIsIdenticalToZeroMorphism",
                   [ IsCapCategory, IsList ] );
 
 
-## TODO
 ## This is not a categorical property because non-endomorphisms 
 ## can be mapped to endomorphisms under equivalences of categories.
-# @Description
-# The argument is a morphism $\alpha$.
-# The output is <C>true</C> if $\alpha$ is an endomorphism,
-# otherwise the output is <C>false</C>.
-# @Returns a boolean
-# @Arguments alpha
-DeclareFamilyProperty( "IsEndomorphism",
-                       IsCapCategoryMorphism, "morphism" : reinstall := false );
+#! @Description
+#! The argument is a morphism $\alpha$.
+#! The output is <C>true</C> if $\alpha$ is an endomorphism,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha
+DeclareProperty( "IsEndomorphism",
+                 IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -646,17 +638,16 @@ DeclareOperation( "AddIsEndomorphism",
 DeclareOperation( "AddIsEndomorphism",
                   [ IsCapCategory, IsList ] );
 
-## TODO
 ## This is not a categorical property because non-endomorphisms 
 ## can be mapped to endomorphisms under equivalences of categories.
-# @Description
-# The argument is a morphism $\alpha$.
-# The output is <C>true</C> if $\alpha$ is an automorphism,
-# otherwise the output is <C>false</C>.
-# @Returns a boolean
-# @Arguments alpha
-DeclareFamilyProperty( "IsAutomorphism",
-                       IsCapCategoryMorphism, "morphism" : reinstall := false );
+#! @Description
+#! The argument is a morphism $\alpha$.
+#! The output is <C>true</C> if $\alpha$ is an automorphism,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments alpha
+DeclareProperty( "IsAutomorphism",
+                 IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.

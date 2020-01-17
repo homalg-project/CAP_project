@@ -88,15 +88,14 @@ DeclareOperation( "AddPropertyToMatchAtIsEqualForObjects",
 ##
 ###################################
 
-## TODO
-# @Description
-# The argument is an object $a$.
-# The output is <C>true</C> if $a$ is a projective object,
-# otherwise the output is <C>false</C>.
-# @Returns a boolean
-# @Arguments a
-DeclareFamilyProperty( "IsProjective",
-                       IsCapCategoryObject, "object" : reinstall := false );
+#! @Description
+#! The argument is an object $a$.
+#! The output is <C>true</C> if $a$ is a projective object,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments a
+DeclareProperty( "IsProjective",
+                 IsCapCategoryObject );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -117,15 +116,14 @@ DeclareOperation( "AddIsProjective",
 DeclareOperation( "AddIsProjective",
                   [ IsCapCategory, IsList ] );
 
-## TODO
-# @Description
-# The argument is an object $a$.
-# The output is <C>true</C> if $a$ is an injective object,
-# otherwise the output is <C>false</C>.
-# @Returns a boolean
-# @Arguments a
-DeclareFamilyProperty( "IsInjective",
-                       IsCapCategoryObject, "object" : reinstall := false );
+#! @Description
+#! The argument is an object $a$.
+#! The output is <C>true</C> if $a$ is an injective object,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments a
+DeclareProperty( "IsInjective",
+                 IsCapCategoryObject );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -146,15 +144,14 @@ DeclareOperation( "AddIsInjective",
 DeclareOperation( "AddIsInjective",
                   [ IsCapCategory, IsList ] );
 
-## TODO
-# @Description
-# The argument is an object $a$ of a category $\mathbf{C}$.
-# The output is <C>true</C> if $a$ is isomorphic to the terminal object of $\mathbf{C}$, 
-# otherwise the output is <C>false</C>.
-# @Returns a boolean
-# @Arguments a
-DeclareFamilyProperty( "IsTerminal",
-                       IsCapCategoryObject, "object" : reinstall := false );
+#! @Description
+#! The argument is an object $a$ of a category $\mathbf{C}$.
+#! The output is <C>true</C> if $a$ is isomorphic to the terminal object of $\mathbf{C}$, 
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments a
+DeclareProperty( "IsTerminal",
+                 IsCapCategoryObject );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -175,15 +172,14 @@ DeclareOperation( "AddIsTerminal",
 DeclareOperation( "AddIsTerminal",
                   [ IsCapCategory, IsList ] );
 
-## TODO
-# @Description
-# The argument is an object $a$ of a category $\mathbf{C}$.
-# The output is <C>true</C> if $a$ is isomorphic to the initial object of $\mathbf{C}$, 
-# otherwise the output is <C>false</C>.
-# @Returns a boolean
-# @Arguments a
-DeclareFamilyProperty( "IsInitial",
-                       IsCapCategoryObject, "object" : reinstall := false );
+#! @Description
+#! The argument is an object $a$ of a category $\mathbf{C}$.
+#! The output is <C>true</C> if $a$ is isomorphic to the initial object of $\mathbf{C}$, 
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments a
+DeclareProperty( "IsInitial",
+                 IsCapCategoryObject );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -204,7 +200,6 @@ DeclareOperation( "AddIsInitial",
 DeclareOperation( "AddIsInitial",
                   [ IsCapCategory, IsList ] );
 
-## TODO
 #! @Description
 #! The argument is an object $a$ of a category $\mathbf{C}$.
 #! The output is <C>true</C> if $a$ is isomorphic to the zero object of $\mathbf{C}$, 
@@ -214,14 +209,14 @@ DeclareOperation( "AddIsInitial",
 DeclareProperty( "IsZeroForObjects",
                  IsCapCategoryObject );
 
-# @Description
-# The argument is an object $a$ of a category $\mathbf{C}$.
-# The output is <C>true</C> if $a$ is isomorphic to the zero object of $\mathbf{C}$, 
-# otherwise the output is <C>false</C>.
-# @Returns a boolean
-# @Arguments a
-DeclareFamilyProperty( "IsZero",
-                       IsCapCategoryObject, "object" : reinstall := false );
+#! @Description
+#! The argument is an object $a$ of a category $\mathbf{C}$.
+#! The output is <C>true</C> if $a$ is isomorphic to the zero object of $\mathbf{C}$, 
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments a
+DeclareProperty( "IsZero",
+                 IsCapCategoryObject );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.

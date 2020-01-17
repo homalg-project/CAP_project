@@ -130,10 +130,8 @@ DeclareOperation( "GradedFreeRightPresentation",
 #############################
 
 ## TODO
-DeclareFamilyProperty( "IsFree",
-                       IsCapCategoryMorphism,
-                       "ModuleCategory",
-                       "object" );
+DeclareProperty( "IsFree",
+                 IsCapCategoryMorphism );
 
 #############################
 ##
