@@ -8,3 +8,5 @@ ReadPackage( "LinearAlgebraForCAP", "gap/LinearAlgebraForCAP.gi" );
 ReadPackage( "LinearAlgebraForCAP", "gap/MatrixCategoryObject.gi" );
 
 ReadPackage( "LinearAlgebraForCAP", "gap/MatrixCategoryMorphism.gi" );
+
+ReadPackage( "LinearAlgebraForCAP", "gap/DerivedMethodsForMatrixCategories.gi" );

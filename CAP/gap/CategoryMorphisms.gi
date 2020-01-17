@@ -317,6 +317,17 @@ InstallMethod( Simplify,
     
 end );
 
+
+##
+InstallMethod( CoefficientsOfMorphism,
+              [ IsCapCategoryMorphism ],
+  function( alpha )
+    
+    return CoefficientsOfMorphismWithGivenBasisOfExternalHom( alpha, BasisOfExternalHom( Source( alpha ), Range( alpha ) ) );
+    
+end );
+
+
 ######################################
 ##
 ## Morphism equality functions

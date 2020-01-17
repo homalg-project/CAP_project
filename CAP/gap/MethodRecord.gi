@@ -3175,6 +3175,22 @@ MereExistenceOfSolutionOfLinearSystemInAbCategory := rec(
   return_type := "bool"
 ),
 
+BasisOfExternalHom := rec(
+  installation_name := "BasisOfExternalHom",
+  filter_list := [ "object", "object" ],
+  return_type := IsList,
+  dual_operation := "BasisOfExternalHom",
+  dual_arguments_reversed := true,
+  dual_postprocessor_func := IdFunc
+),
+
+CoefficientsOfMorphismWithGivenBasisOfExternalHom := rec(
+  installation_name := "CoefficientsOfMorphismWithGivenBasisOfExternalHom",
+  filter_list := [ "morphism", IsList ],
+  return_type := IsList,
+  ## TODO: add support for dual_*
+),
+
 RandomObjectByInteger := rec(
   installation_name := "RandomObjectByInteger",
   filter_list := [ "category", IsInt ],

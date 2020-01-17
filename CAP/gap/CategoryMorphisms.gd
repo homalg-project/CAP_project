@@ -1993,6 +1993,73 @@ DeclareOperation( "HomStructure",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 
+#! @Description
+#! The arguments are objects $a,b$ in a $k$-linear category $C$.
+#! The output is a list $L$ of morphisms which is a basis of $\mathrm{Hom}_{C}(a,b)$ in
+#! the sense that any given morphism $\alpha: a \to b$ can uniquely be written as a
+#! linear combination of $L$ with the coefficients in
+#! <C>CoefficientsOfMorphismWithGivenBasisOfExternalHom</C>($\alpha,L$).
+#! @Returns a list of morphisms in $\mathrm{Hom}_{C}(a,b)$
+#! @Arguments a, b
+DeclareOperation( "BasisOfExternalHom",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>BasisOfExternalHom</C>.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddBasisOfExternalHom",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddBasisOfExternalHom",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddBasisOfExternalHom",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddBasisOfExternalHom",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a morphism  $\alpha: a \to b$ in a $k$-linear category $C$ and
+#! a list <A>L</A><C>=BasisOfExternalHom</C>($a,b$).
+#! The output is a list of coefficients of $\alpha$ with respect to $L$.
+#! @Returns a list of elements in $k$
+#! @Arguments alpha, L
+DeclareOperation( "CoefficientsOfMorphismWithGivenBasisOfExternalHom",
+                  [ IsCapCategoryMorphism, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>CoefficientsOfMorphismWithGivenBasisOfExternalHom</C>.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoefficientsOfMorphismWithGivenBasisOfExternalHom",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoefficientsOfMorphismWithGivenBasisOfExternalHom",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoefficientsOfMorphismWithGivenBasisOfExternalHom",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoefficientsOfMorphismWithGivenBasisOfExternalHom",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! This is a convenience method.
+#! The argument is a morphism  $\alpha: a \to b$ in a $k$-linear category $C$.
+#! The output is a list of coefficients of $\alpha$ with respect to the list
+#! <C>BasisOfExternalHom</C>(<A>a</A>,<A>b</A>).
+#! @Returns a list of elements in $k$
+#! @Arguments alpha
+DeclareAttribute( "CoefficientsOfMorphism",
+                  IsCapCategoryMorphism );
+
+
 ###################################
 ##
 #! @Section Simplified Morphisms
