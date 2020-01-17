@@ -84,3 +84,18 @@ InstallMethod( Display,
     Print( String( vector_space_object ) );
     
 end );
+
+####################################
+##
+## Convenience
+##
+####################################
+
+##
+InstallMethod( \/,
+               [ IsInt, IsMatrixCategory ],
+  function( dim, category )
+    
+    return VectorSpaceObject( dim, UnderlyingRing( category ) );
+    
+end );
