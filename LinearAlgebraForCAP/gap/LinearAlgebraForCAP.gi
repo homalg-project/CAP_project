@@ -22,11 +22,15 @@ InstallMethod( MatrixCategory,
     
     category := CreateCapCategory( Concatenation( "Category of matrices over ", RingName( homalg_field ) ) );
     
+    SetFilterObj( category, IsMatrixCategory );
+    
     AddObjectRepresentation( category, IsVectorSpaceObject );
     
     AddMorphismRepresentation( category, IsVectorSpaceMorphism and HasUnderlyingFieldForHomalg and HasUnderlyingMatrix );
     
     category!.field_for_matrix_category := homalg_field;
+    
+    SetUnderlyingRing( category, homalg_field );
     
     SetIsAbelianCategory( category, true );
     

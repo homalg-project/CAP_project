@@ -8,6 +8,10 @@ LoadPackage( "LinearAlgebraForCAP" );;
 Q := HomalgFieldOfRationals();;
 a := VectorSpaceObject( 3, Q );
 #! <A vector space object over Q of dimension 3>
+vec := MatrixCategory( Q );;
+ap := 3/vec;;
+IsEqualForObjects( a, ap );
+#! true
 b := VectorSpaceObject( 4, Q );
 #! <A vector space object over Q of dimension 4>
 homalg_matrix := HomalgMatrix( [ [ 1, 0, 0, 0 ],
@@ -22,6 +26,9 @@ Display( alpha );
 #!   [  -1,   0,   2,   1 ] ]
 #! 
 #! A morphism in Category of matrices over Q
+alphap := homalg_matrix/vec;;
+IsCongruentForMorphisms( alpha, alphap );
+#! true
 homalg_matrix := HomalgMatrix( [ [ 1, 1, 0, 0 ],
                                   [ 0, 1, 0, -1 ],
                                   [ -1, 0, 2, 1 ] ], 3, 4, Q );

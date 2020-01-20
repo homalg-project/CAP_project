@@ -9,6 +9,9 @@
 ##
 #############################################################################
 
+DeclareCategory( "IsMatrixCategory",
+                 IsCapCategory );
+
 ####################################
 ##
 #! @Section Constructors
@@ -27,3 +30,12 @@ DeclareAttribute( "MatrixCategory",
                   IsFieldForHomalg );
 
 DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY" );
+
+####################################
+##
+#! @Section Attributes
+##
+####################################
+
+DeclareAttribute( "UnderlyingRing",
+                  IsMatrixCategory );
