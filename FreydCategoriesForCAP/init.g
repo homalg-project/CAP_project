@@ -40,3 +40,5 @@ if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" ) then
 fi;
 
 ReadPackage( "FreydCategoriesForCAP", "gap/GradeFiltration.gd" );
+
+ReadPackage( "FreydCategoriesForCAP", "gap/SerreSubcategoryFunctions.gd" );
