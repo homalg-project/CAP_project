@@ -1506,3 +1506,21 @@ InstallMethod( Display,
     Display( Range( morphism ) );
     
 end );
+
+####################################
+##
+## Convenience
+##
+####################################
+
+##
+InstallMethod( \/,
+               [ IsQuiverVertex, IsQuiverRowsCategory ],
+               AsQuiverRowsObject
+);
+
+##
+InstallMethod( \/,
+               [ IsQuiverAlgebraElement, IsQuiverRowsCategory ],
+               AsQuiverRowsMorphism );
+
