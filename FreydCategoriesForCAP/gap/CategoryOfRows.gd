@@ -56,6 +56,9 @@ DeclareOperation( "\/",
 DeclareOperation( "\/",
                   [ IsInt, IsCategoryOfRows ] );
 
+KeyDependentOperation( "StandardRowMorphism",
+                       IsCategoryOfRowsObject, IsInt, ReturnTrue );
+
 ####################################
 ##
 #! @Section Attributes

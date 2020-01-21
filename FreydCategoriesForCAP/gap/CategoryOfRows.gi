@@ -161,6 +161,31 @@ InstallMethod( CategoryOfRowsMorphism,
     
 end );
 
+##
+InstallMethod( StandardRowMorphismOp,
+               [ IsCategoryOfRowsObject, IsInt ],
+               
+  function( object, n )
+    local category, rank;
+    
+    rank := RankOfObject( object );
+    
+    if not n in [ 1 .. rank ] then
+      
+      return fail;
+      
+    fi;
+    
+    category := CapCategory( object );
+    
+    return CategoryOfRowsMorphism(
+      CategoryOfRowsObject( 1, category ),
+      CertainRows( HomalgIdentityMatrix( rank, UnderlyingRing( category ) ), [ n ] ),
+      object
+    );
+    
+end );
+
 ####################################
 ##
 ## Attributes
