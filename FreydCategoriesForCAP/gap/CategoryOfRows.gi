@@ -41,7 +41,7 @@ InstallMethod( CategoryOfRows,
       
     fi;
     
-    if IsFieldForHomalg( homalg_ring )  then
+    if HasIsFieldForHomalg( homalg_ring ) and IsFieldForHomalg( homalg_ring )  then
       
       SetIsAbelianCategory( category, true );
       
@@ -267,7 +267,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ring := UnderlyingRing( category );
     
-    is_defined_over_field := IsFieldForHomalg( ring );
+    is_defined_over_field := HasIsFieldForHomalg( ring ) and IsFieldForHomalg( ring );
     
     ##
     AddIsEqualForCacheForObjects( category,
