@@ -360,6 +360,8 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByCospans,
     
     serre_category := CreateCapCategory( name );
     
+    SetFilterObj( serre_category, IsSerreQuotientCategory );
+    
     AddObjectRepresentation( serre_category, IsSerreQuotientCategoryByCospansObject );
     
     AddMorphismRepresentation( serre_category, IsSerreQuotientCategoryByCospansMorphism and HasUnderlyingGeneralizedMorphism );

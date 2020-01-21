@@ -93,3 +93,19 @@ InstallGlobalFunction( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT",
     end );
     
 end );
+
+####################################
+##
+## Convenience
+##
+####################################
+
+##
+InstallMethod( \/,
+               [ IsCapCategoryObject, IsSerreQuotientCategory ],
+               
+  function( obj, serre_category )
+    
+    return AsSerreQuotientCategoryObject( serre_category, obj );
+    
+end );

@@ -427,6 +427,8 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryBySpans,
     
     serre_category := CreateCapCategory( name );
     
+    SetFilterObj( serre_category, IsSerreQuotientCategory );
+    
     AddObjectRepresentation( serre_category, IsSerreQuotientCategoryBySpansObject );
     
     AddMorphismRepresentation( serre_category, IsSerreQuotientCategoryBySpansMorphism and HasUnderlyingGeneralizedMorphism );

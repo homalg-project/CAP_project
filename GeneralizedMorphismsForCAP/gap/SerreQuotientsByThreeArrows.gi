@@ -381,6 +381,8 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByThreeArrows,
     
     serre_category := CreateCapCategory( name );
     
+    SetFilterObj( serre_category, IsSerreQuotientCategory );
+    
     AddObjectRepresentation( serre_category, IsSerreQuotientCategoryByThreeArrowsObject );
     
     AddMorphismRepresentation( serre_category, IsSerreQuotientCategoryByThreeArrowsMorphism and HasUnderlyingGeneralizedMorphism );
