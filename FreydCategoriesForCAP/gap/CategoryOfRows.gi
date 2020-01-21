@@ -41,6 +41,12 @@ InstallMethod( CategoryOfRows,
       
     fi;
     
+    if HasIsFieldForHomalg( homalg_ring ) and IsFieldForHomalg( homalg_ring )  then
+      
+      SetIsAbelianCategory( category, true );
+      
+    fi;
+    
     AddObjectRepresentation( category, IsCategoryOfRowsObject );
     
     AddMorphismRepresentation( category, IsCategoryOfRowsMorphism and HasUnderlyingMatrix );
@@ -257,9 +263,11 @@ end );
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
   
   function( category )
-    local ring;
+    local ring, is_defined_over_field;
     
     ring := UnderlyingRing( category );
+    
+    is_defined_over_field := HasIsFieldForHomalg( ring ) and IsFieldForHomalg( ring );
     
     ##
     AddIsEqualForCacheForObjects( category,
@@ -674,6 +682,82 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         return CategoryOfRowsMorphism( Range( alpha ), left_divide, Range( beta ) );
         
     end );
+    
+    ## Abelian case
+    
+    if is_defined_over_field then
+      
+      ##
+      AddKernelObject( category,
+        function( morphism )
+          local homalg_matrix;
+          
+          homalg_matrix := UnderlyingMatrix( morphism );
+          
+          return CategoryOfRowsObject( category, NrRows( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ) );
+          
+      end );
+      
+      ##
+      AddKernelEmbedding( category,
+        function( morphism )
+          local kernel_emb, kernel_object;
+          
+          kernel_emb := SyzygiesOfRows( UnderlyingMatrix( morphism ) );
+          
+          kernel_object := CategoryOfRowsObject( category, NrRows( kernel_emb ) );
+          
+          return CategoryOfRowsMorphism( kernel_object, kernel_emb, Source( morphism ) );
+          
+      end );
+        
+      ##
+      AddKernelEmbeddingWithGivenKernelObject( category,
+        function( morphism, kernel )
+          local kernel_emb;
+          
+          kernel_emb := SyzygiesOfRows( UnderlyingMatrix( morphism ) );
+          
+          return CategoryOfRowsMorphism( kernel, kernel_emb, Source( morphism ) );
+          
+      end );
+      
+      ##
+      AddCokernelObject( category,
+        function( morphism )
+          local homalg_matrix;
+          
+          homalg_matrix := UnderlyingMatrix( morphism );
+          
+          return CategoryOfRowsObject( category, NrColumns( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ) );
+          
+      end );
+      
+      ##
+      AddCokernelProjection( category,
+        function( morphism )
+          local cokernel_proj, cokernel_obj;
+          
+          cokernel_proj := SyzygiesOfColumns( UnderlyingMatrix( morphism ) );
+          
+          cokernel_obj := CategoryOfRowsObject( category, NrColumns( cokernel_proj ) );
+          
+          return CategoryOfRowsMorphism( Range( morphism ), cokernel_proj, cokernel_obj );
+          
+      end );
+      
+      ##
+      AddCokernelProjectionWithGivenCokernelObject( category,
+        function( morphism, cokernel )
+          local cokernel_proj;
+          
+          cokernel_proj := SyzygiesOfColumns( UnderlyingMatrix( morphism ) );
+          
+          return CategoryOfRowsMorphism( Range( morphism ), cokernel_proj, cokernel );
+          
+      end );
+      
+    fi;
     
     ## Basic Operation Properties
     ##
