@@ -599,6 +599,24 @@ InstallMethod( HomStructure,
     
 end );
 
+##
+InstallMethod( HomStructure,
+               [ IsCapCategoryMorphism ],
+    InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure
+);
+
+##
+InstallMethod( HomStructure,
+               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ],
+    InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
+);
+
+##
+InstallMethod( HomStructure,
+               [ IsCapCategory ],
+    DistinguishedObjectOfHomomorphismStructure
+);
+
 ######################################
 ##
 ## Morphism transport
