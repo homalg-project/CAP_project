@@ -1288,17 +1288,14 @@ InstallMethod( \/,
               [ IsCapCategoryObject, IsAdelmanCategory ],
               
   function( object, adel )
-    local adel_obj;
     
-    adel_obj := AsAdelmanCategoryObject( object );
-    
-    if not IsIdenticalObj( CapCategory( adel_obj ), adel ) then
+    if not IsIdenticalObj( CapCategory( object ), UnderlyingCategory( adel ) ) then
         
-        Error( "The Adelman category of the given object is not identical to the provided Adelman category" );
+        Error( "The category of the given object is not identical to the underlying category of the given Adelman category" );
         
     fi;
     
-    return adel_obj;
+    return AsAdelmanCategoryObject( object );
     
 end );
 
@@ -1317,5 +1314,20 @@ InstallMethod( \/,
     fi;
     
     return ApplyFunctor( EmbeddingFunctorOfFreydCategoryIntoAdelmanCategory( underlying_category ), freyd_obj );;
+    
+end );
+
+##
+InstallMethod( \/,
+              [ IsCapCategoryMorphism, IsAdelmanCategory ],
+  function( morphism, adel )
+    
+    if not IsIdenticalObj( CapCategory( morphism ), UnderlyingCategory( adel ) ) then
+        
+        Error( "The category of the given morphism is not identical to the underlying category of the given Adelman category" );
+        
+    fi;
+    
+    return AsAdelmanCategoryMorphism( morphism );
     
 end );

@@ -55,6 +55,12 @@ DeclareOperation( "QuiverRowsMorphism",
 DeclareOperation( "AsQuiverRowsMorphism",
                   [ IsQuiverAlgebraElement, IsQuiverRowsCategory ] );
 
+DeclareOperation( "\/",
+                  [ IsQuiverVertex, IsQuiverRowsCategory ] );
+
+DeclareOperation( "\/",
+                  [ IsQuiverAlgebraElement, IsQuiverRowsCategory ] );
+
 ####################################
 ##
 #! @Section Attributes

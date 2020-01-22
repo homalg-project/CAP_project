@@ -21,6 +21,10 @@
 #! generalized morphism standard. Please note that for implementations the specialized
 #! constructors should be used.
 
+##
+DeclareCategory( "IsSerreQuotientCategory",
+                 IsCapCategory );
+
 #! @Description
 #!  The category of objects in the category of Serre quotients.
 #!  For actual objects this needs to be specialized.
@@ -58,6 +62,9 @@ DeclareOperation( "\/",
 #! @Returns an object
 DeclareOperation( "AsSerreQuotientCategoryObject",
                   [ IsCapCategory, IsCapCategoryObject ] );
+
+DeclareOperation( "\/",
+                  [ IsCapCategoryObject, IsSerreQuotientCategory ] );
 
 #! @Description
 #!  Given a Serre quotient category <A>A/C</A> and a generalized morphism <A>phi</A> in
