@@ -41,8 +41,8 @@ DeclareOperation( "LinearClosure",
 DeclareOperation( "LinearClosureObject",
                   [ IsCapCategory, IsLinearClosure ] );
 
-KeyDependentOperation( "LinearClosureObject",
-                       IsLinearClosure, IsCapCategoryObject, ReturnTrue );
+DeclareOperation( "LinearClosureObject",
+                  [ IsLinearClosure, IsCapCategoryObject ] );
 
 DeclareOperation( "LinearClosureMorphism",
                   [ IsLinearClosureObject, IsList, IsList, IsLinearClosureObject ] );

@@ -68,7 +68,7 @@ InstallMethod( LinearClosure,
 end );
 
 ##
-InstallMethod( LinearClosureObjectOp,
+InstallMethod( LinearClosureObject,
                [ IsLinearClosure, IsCapCategoryObject ],
                
   function( category, object )
