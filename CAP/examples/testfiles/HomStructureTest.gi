@@ -18,6 +18,10 @@ IsCongruentForMorphisms( a,
     )
 );
 #! true
+a = HomStructure( u, u, HomStructure( a ) );
+#! true
+IsEqualForObjects( HomStructure( Qoid ), DistinguishedObjectOfHomomorphismStructure( Qoid ) );
+#! true
 c := FieldAsCategoryMorphism( 3, Qoid );;
 d := FieldAsCategoryMorphism( 0, Qoid );;
 left_coeffs := [ [ a, b ], [ c, d ] ];;

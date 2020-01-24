@@ -1992,6 +1992,24 @@ DeclareOperation( "HomStructure",
 DeclareOperation( "HomStructure",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+#! @Description
+#! This is a convenience method for
+#! <C>InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure</C>.
+DeclareOperation( "HomStructure",
+                  [ IsCapCategoryMorphism ] );
+
+#! @Description
+#! This is a convenience method for
+#! <C>InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism</C>.
+DeclareOperation( "HomStructure",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
+
+#! @Description
+#! This is a convenience method for
+#! <C>DistinguishedObjectOfHomomorphismStructure</C>.
+DeclareOperation( "HomStructure",
+                  [ IsCapCategory ] );
+
 
 #! @Description
 #! The arguments are objects $a,b$ in a $k$-linear category $C$.
