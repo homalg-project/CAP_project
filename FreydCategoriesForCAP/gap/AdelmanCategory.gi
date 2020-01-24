@@ -878,7 +878,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
             
              ##
             AddDistinguishedObjectOfHomomorphismStructure( category,
-              function( cat )
+              function( )
                 
                 return distinguished_object;
                 
