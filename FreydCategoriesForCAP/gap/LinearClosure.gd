@@ -74,6 +74,32 @@ DeclareAttribute( "SupportMorphisms",
 
 ####################################
 ##
+#! @Section Functors
+##
+####################################
+
+#! @Description
+#!  The arguments are a functor <A>F</A>$:C\to D$, some linear closure <A>linear_closure</A> of $C$ over some
+#!  commutative ring $S$ and a function <A>ring_map</A>; where $D$ is a linear category over some commutative ring $R$.
+#!  The <A>ring_map</A> is a function that converts an element $s$ in $S$ to an element in $R$,
+#!  such that <A>ring_map</A> defines a ring homomorphism.
+#!  The output is the linear extension functor of <A>F</A> from <A>linear_closure</A> to $D$.
+#! @Arguments F, linear_closure, ring_map
+#! @Returns
+DeclareOperation( "ExtendFunctorToLinearClosureOfSource",
+      [ IsCapFunctor, IsLinearClosure, IsFunction ] );
+
+#! @Description
+#!  The arguments are a functor <A>F</A>$:C\to D$, some linear closure <A>linear_closure</A> of $C$ over some
+#!  commutative ring $S$; where $D$ is a linear category over $S$.
+#!  The output is the linear extension functor of <A>F</A> from <A>linear_closure</A> to $D$.
+#! @Arguments F, linear_closure
+#! @Returns
+DeclareOperation( "ExtendFunctorToLinearClosureOfSource",
+      [ IsCapFunctor, IsLinearClosure ] );
+
+####################################
+##
 #! @Section Operations
 ##
 ####################################
