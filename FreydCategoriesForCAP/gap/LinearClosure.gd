@@ -87,7 +87,7 @@ DeclareOperation( "ExtendFunctorToLinearClosureOfSource",
       [ IsCapFunctor, IsLinearClosure, IsFunction ] );
 
 #! @Description
-#!  The arguments are functor <A>F</A>$:C\to D$, some linear closure <A>linear_closure</A> of $C$ over some
+#!  The arguments are a functor <A>F</A>$:C\to D$, some linear closure <A>linear_closure</A> of $C$ over some
 #!  commutative ring $S$; where $D$ is a linear category over $S$.
 #!  The output is the linear extension functor of <A>F</A> from <A>linear_closure</A> to $D$.
 #! @Arguments F, linear_closure
