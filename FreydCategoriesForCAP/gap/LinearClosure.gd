@@ -76,7 +76,7 @@ DeclareAttribute( "SupportMorphisms",
 ####################################
 
 #! @Description
-#!  The arguments are functor <A>F</A>$:C\to D$, some linear closure <A>linear_closure</A> of $C$ over some
+#!  The arguments are a functor <A>F</A>$:C\to D$, some linear closure <A>linear_closure</A> of $C$ over some
 #!  commutative ring $S$ and a function <A>ring_map</A>; where $D$ is a linear category over some commutative ring $R$.
 #!  The <A>ring_map</A> is a function that converts an element $s$ in $S$ to an element in $R$,
 #!  such that $s$ and <A>ring_map</A>($s$) are mathematically equal but may live in different Gap rings.
