@@ -552,7 +552,7 @@ InstallMethodWithCache( ExtendFunctorToLinearClosureOfSource,
       
     fi;
     
-    if not HasIsLinearCategoryOverCommutativeRing( range_cat ) and IsLinearCategoryOverCommutativeRing( range_cat ) then
+    if not ( HasIsLinearCategoryOverCommutativeRing( range_cat ) and IsLinearCategoryOverCommutativeRing( range_cat ) ) then
       
       Error( "The range category named ", Name( range_cat ), " should be linear over some commutative ring!\n" );
       
