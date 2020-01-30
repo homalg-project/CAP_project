@@ -176,3 +176,9 @@ DeclareOperation( "\[\]",
 #! either <C>AdditiveClosureObject</C> or <C>AdditiveClosureMorphism</C>.
 DeclareOperation( "\/",
                   [ IsList, IsAdditiveClosureCategory ] );
+
+#! @Description
+#! This is a convenience method for
+#! <C>AsAdditiveClosureObject</C> and <C>AsAdditiveClosureMorphism</C>.
+DeclareOperation( "\/",
+                  [ IsCapCategoryCell, IsAdditiveClosureCategory ] );

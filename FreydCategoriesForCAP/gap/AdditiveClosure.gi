@@ -185,6 +185,37 @@ InstallMethod( \/,
     
 end );
 
+##
+InstallMethod( \/,
+          [ IsCapCategoryObject, IsAdditiveClosureCategory ],
+  function( o, C )
+    
+    if not IsIdenticalObj( C, AdditiveClosure( CapCategory( o ) ) ) then
+      
+      Error( "Wrong input!\n" );
+      
+    fi;
+    
+    return AsAdditiveClosureObject( o );
+    
+end );
+
+##
+InstallMethod( \/,
+          [ IsCapCategoryMorphism, IsAdditiveClosureCategory ],
+  function( alpha, C )
+    
+    if not IsIdenticalObj( C, AdditiveClosure( CapCategory( alpha ) ) ) then
+      
+      Error( "Wrong input!\n" );
+      
+    fi;
+    
+    return AsAdditiveClosureMorphism( alpha );
+    
+end );
+
+
 ####################################
 ##
 ## Attributes
