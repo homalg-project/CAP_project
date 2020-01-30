@@ -319,6 +319,54 @@ InstallMethod( ExtendFunctorToAdditiveClosureOfSource,
     
 end );
 
+##
+InstallMethod( ExtendNaturalTransformationToAdditiveClosureOfSource,
+          [ IsCapNaturalTransformation ],
+  function( eta )
+    local F, G, range, lambda, name;
+    
+    F := Source( eta );
+    
+    G := Range( eta );
+    
+    range := AsCapCategory( Range( F ) ); # = Range( G )
+    
+    if not ( HasIsAdditiveCategory( range ) and IsAdditiveCategory( range ) ) then
+        
+      Error( "The range category for source and range functors should be additive!\n" );
+      
+    fi;
+    
+    F := ExtendFunctorToAdditiveClosureOfSource( F );
+    
+    G := ExtendFunctorToAdditiveClosureOfSource( G );
+    
+    name := "Extension of a natural transformation to additive closure";
+    
+    lambda := NaturalTransformation( name, F, G );
+    
+    AddNaturalTransformationFunction( lambda,
+      function( F_a, a, G_a )
+        local objs;
+        
+        objs := ObjectList( a );
+        
+        if IsEmpty( objs ) then
+          
+          return ZeroMorphism( F_a, G_a );
+          
+        fi;
+        
+        objs := List( objs, obj -> ApplyNaturalTransformation( eta, obj ) );
+        
+        return DirectSumFunctorial( objs );
+        
+    end );
+    
+    return lambda;
+    
+end );
+
 ####################################
 ##
 ## Operations
