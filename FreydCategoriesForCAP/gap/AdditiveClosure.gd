@@ -171,5 +171,8 @@ DeclareAttribute( "NrColumns",
 DeclareOperation( "\[\]",
                   [ IsAdditiveClosureMorphism, IsInt ] );
 
+#! @Description
+#! The input is either a list of objects or list of lists of morphisms. The method delegates to
+#! either <C>AdditiveClosureObject</C> or <C>AdditiveClosureMorphism</C>.
 DeclareOperation( "\/",
                   [ IsList, IsAdditiveClosureCategory ] );

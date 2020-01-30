@@ -130,12 +130,46 @@ end );
 InstallMethod( \/,
                [ IsList, IsAdditiveClosureCategory ],
                
+  function( list, category )
+    
+    if IsEmpty( list ) then
+      
+      Error( "The first argument should be a list of objects or listlist of morphisms!\n" );
+      
+    fi;
+    
+    if not IsCapCategoryObject( list[ 1 ] ) then
+      
+      TryNextMethod( );
+      
+    fi;
+    
+    return AdditiveClosureObject( list, category );
+    
+end );
+
+##
+InstallMethod( \/,
+               [ IsList, IsAdditiveClosureCategory ],
+               
   function( listlist, category )
     local source, range;
     
-    if IsEmpty( listlist ) or IsEmpty( listlist[1] ) then
+    if IsEmpty( listlist ) then
       
-      Error( "no empty list or list of empty lists allowed as input" );
+      Error( "The first argument should be a list of objects or listlist of morphisms!\n" );
+      
+    fi;
+    
+    if IsCapCategoryObject( listlist[ 1 ] ) then
+      
+      TryNextMethod( );
+      
+    fi;
+    
+    if IsEmpty( listlist[1] ) then
+      
+      Error( "The first argument should not contain empty lists!\n" );
       
     fi;
     
