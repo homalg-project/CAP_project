@@ -9,10 +9,6 @@ AddDerivationToCAP( CoproductToCoexponentialAdjunctionMap,
     coclosed_coevaluation := CocartesianCoevaluationMorphism( object_1, object_2 );
     
     return PreCompose( internal_cohom_on_morphisms, coclosed_coevaluation );
-    
-    return PreCompose( 
-             CoexponentialOnMorphisms( morphism, IdentityMorphism( object_1 ) ),
-             CocartesianCoevaluationMorphism( object_1, object_2 ) );
              
 end : CategoryFilter := IsCocartesianCoclosedCategory,
       Description := "CoproductToCoexponentialAdjunctionMap using CocartesianCoevaluationMorphism and Coexponential" );
@@ -110,8 +106,6 @@ AddDerivationToCAP( CocartesianDualOnMorphismsWithGivenCocartesianDuals,
     local category, result_morphism;
     
     category := CapCategory( morphism );
-    
-    result_morphism := CoexponentialOnMorphisms( IdentityMorphism( InitialObject( category ) ), morphism );
     
     result_morphism := PreCompose( [
                          IsomorphismFromCocartesianDualToCoexponential( Range( morphism ) ),
@@ -593,4 +587,4 @@ AddDerivationToCAP( CocartesianPostCoComposeMorphismWithGivenObjects,
              morphism );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory and IsStrictCocartesianCategory,
-      Description := "CocartesianPostCoComposeMorphismWithGivenObjects using coclosed evluation, and cohom tensor adjunction" );
+      Description := "CocartesianPostCoComposeMorphismWithGivenObjects using coclosed evaluation, and cohom tensor adjunction" );

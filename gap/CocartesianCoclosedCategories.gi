@@ -188,9 +188,9 @@ end );
 ##
 CAP_INTERNAL_COCARTESIAN_COCLOSED_CATEGORIES_BASIC_OPERATIONS.MorphismFromCoexponentialToCoproduct :=
   [ [ "MorphismFromCoexponentialToCoproductWithGivenObjects", 1 ],
-    [ "DualOnObjects", 1 ],
+    [ "CocartesianDualOnObjects", 1 ],
     [ "Coproduct", 1 ],
-    [ "InternalHomOnObjects", 1 ] ];
+    [ "CoexponentialOnObjects", 1 ] ];
 ##
 InstallMethod( MorphismFromCoexponentialToCoproduct,
                [ IsCapCategoryObject, IsCapCategoryObject ],
