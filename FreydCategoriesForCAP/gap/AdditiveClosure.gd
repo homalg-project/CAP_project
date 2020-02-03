@@ -172,6 +172,14 @@ DeclareOperation( "\[\]",
                   [ IsAdditiveClosureMorphism, IsInt ] );
 
 #! @Description
+#! The arguments are morphism $\alpha:A\to B$ between formal direct sums in some additive category $C^\oplus$ and two integers $i,j$.
+#! The output is the $(i,j)$'th entry in <C>MorphismMatrix</C>($\alpha$).
+#! @Arguments alpha, i, j
+#! @Returns a morphism $C$
+DeclareOperation( "\[\]",
+                  [ IsAdditiveClosureMorphism, IsInt, IsInt ] );
+
+#! @Description
 #! The input is either a list of objects or list of lists of morphisms. The method delegates to
 #! either <C>AdditiveClosureObject</C> or <C>AdditiveClosureMorphism</C>.
 DeclareOperation( "\/",

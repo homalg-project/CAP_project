@@ -390,7 +390,7 @@ end );
 ##
 ####################################
 
-
+##
 InstallMethod( \[\],
                [ IsAdditiveClosureMorphism, IsInt ],
                
@@ -409,6 +409,23 @@ InstallMethod( \[\],
     fi;
     
     return MorphismMatrix( morphism )[i];
+    
+end );
+
+##
+InstallMethod( \[\],
+               [ IsAdditiveClosureMorphism, IsInt, IsInt ],
+               
+  function( morphism, i, j )
+    
+    if not ( i in [ 1 .. NrRows( morphism ) ]
+        and j in [ 1 .. NrColumns( morphism ) ] ) then
+        
+        Error( "bad index!\n" );
+        
+    fi;
+    
+    return MorphismMatrix( morphism )[ i, j ];
     
 end );
 
