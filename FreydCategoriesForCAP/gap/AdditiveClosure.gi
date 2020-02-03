@@ -429,6 +429,23 @@ InstallMethod( \[\],
     
 end );
 
+##
+InstallMethod( \[\],
+               [ IsAdditiveClosureObject, IsInt ],
+               
+  function( object, i )
+    local obj_list;
+    
+    obj_list := ObjectList( object );
+    
+    if i < 1 or i > Size( obj_list ) then
+        Error( "bad index!\n" );
+    fi;
+    
+    return obj_list[ i ];
+    
+end );
+
 ####################################
 ##
 ## Basic operations

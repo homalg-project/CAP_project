@@ -164,6 +164,15 @@ DeclareAttribute( "NrColumns",
 ####################################
 
 #! @Description
+#! The arguments are a formal direct sum $A$ in some additive category $C^\oplus$ and an integers $i$.
+#! The output is the $i$'th entry in <C>ObjectList</C>($A$).
+#! @Arguments A, i
+#! @Returns an object in $C$
+DeclareOperation( "\[\]",
+                  [ IsAdditiveClosureObject, IsInt ] );
+
+
+#! @Description
 #! The arguments are morphism $\alpha:A\to B$ between formal direct sums in some additive category $C^\oplus$ and an integer $i$.
 #! The output is the $i$'th entry in <C>MorphismMatrix</C>($\alpha$).
 #! @Arguments alpha, i
