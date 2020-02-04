@@ -1176,6 +1176,24 @@ end );
 ####################################
 
 ##
+InstallMethod( ViewObj,
+          [ IsAdditiveClosureMorphism ],
+  function( morphism )
+    Print( "<A morphism in ", Name( CapCategory( morphism ) ),
+            " defined by a ", NrRows( morphism ), " x ", NrColumns( morphism ), " matrix of underlying morphisms>"
+            );
+end );
+
+##
+InstallMethod( ViewObj,
+          [ IsAdditiveClosureObject ],
+  function( object )
+    Print( "<An object in ", Name( CapCategory( object ) ),
+            " defined by ", Size( ObjectList( object ) ), " underlying objects>"
+            );
+end );
+
+##
 InstallMethod( Display,
                [ IsAdditiveClosureMorphism ],
                
