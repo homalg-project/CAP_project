@@ -168,7 +168,7 @@ InstallMethod( \/,
           [ IsCapCategoryObject, IsAdditiveClosureCategory ],
   function( o, C )
     
-    if not IsIdenticalObj( C, AdditiveClosure( CapCategory( o ) ) ) then
+    if not IsIdenticalObj( UnderlyingCategory( C ), CapCategory( o ) ) then
       
       Error( "Wrong input!\n" );
       
@@ -183,7 +183,7 @@ InstallMethod( \/,
           [ IsCapCategoryMorphism, IsAdditiveClosureCategory ],
   function( alpha, C )
     
-    if not IsIdenticalObj( C, AdditiveClosure( CapCategory( alpha ) ) ) then
+    if not IsIdenticalObj( UnderlyingCategory( C ), CapCategory( alpha ) ) then
       
       Error( "Wrong input!\n" );
       
