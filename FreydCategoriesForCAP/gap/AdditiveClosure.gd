@@ -116,7 +116,7 @@ DeclareAttribute( "ExtendFunctorToAdditiveClosureOfSource",
 
 #! @Description
 #! The argument is a natural transformation $\eta:(F:C\to D)\Rightarrow (G:C\to D)$ where $D$
-#! is additive category.
+#! is an additive category.
 #! The ouput is the extension natural transformation
 #! $\eta^\oplus:(F^\oplus:C^\oplus\to D)\to(G^\oplus:C^\oplus\to D)$.
 #! @Arguments eta
