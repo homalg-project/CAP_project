@@ -133,9 +133,21 @@ InstallMethod( \/,
   function( listlist, category )
     local source, range;
     
-    if IsEmpty( listlist ) or IsEmpty( listlist[1] ) then
+    if IsEmpty( listlist ) then
       
-      Error( "no empty list or list of empty lists allowed as input" );
+      Error( "The first argument should be a list of objects or listlist of morphisms!\n" );
+      
+    fi;
+    
+    if IsCapCategoryObject( listlist[ 1 ] ) then
+      
+      return AdditiveClosureObject( listlist, category );
+      
+    fi;
+    
+    if IsEmpty( listlist[1] ) then
+      
+      Error( "The first argument should not contain empty lists!\n" );
       
     fi;
     
@@ -150,6 +162,37 @@ InstallMethod( \/,
     );
     
 end );
+
+##
+InstallMethod( \/,
+          [ IsCapCategoryObject, IsAdditiveClosureCategory ],
+  function( o, C )
+    
+    if not IsIdenticalObj( UnderlyingCategory( C ), CapCategory( o ) ) then
+      
+      Error( "Wrong input!\n" );
+      
+    fi;
+    
+    return AsAdditiveClosureObject( o );
+    
+end );
+
+##
+InstallMethod( \/,
+          [ IsCapCategoryMorphism, IsAdditiveClosureCategory ],
+  function( alpha, C )
+    
+    if not IsIdenticalObj( UnderlyingCategory( C ), CapCategory( alpha ) ) then
+      
+      Error( "Wrong input!\n" );
+      
+    fi;
+    
+    return AsAdditiveClosureMorphism( alpha );
+    
+end );
+
 
 ####################################
 ##
@@ -325,7 +368,7 @@ end );
 ##
 ####################################
 
-
+##
 InstallMethod( \[\],
                [ IsAdditiveClosureMorphism, IsInt ],
                
@@ -344,6 +387,40 @@ InstallMethod( \[\],
     fi;
     
     return MorphismMatrix( morphism )[i];
+    
+end );
+
+##
+InstallMethod( \[\],
+               [ IsAdditiveClosureMorphism, IsInt, IsInt ],
+               
+  function( morphism, i, j )
+    
+    if not ( i in [ 1 .. NrRows( morphism ) ]
+        and j in [ 1 .. NrColumns( morphism ) ] ) then
+        
+        Error( "bad index!\n" );
+        
+    fi;
+    
+    return MorphismMatrix( morphism )[ i, j ];
+    
+end );
+
+##
+InstallMethod( \[\],
+               [ IsAdditiveClosureObject, IsInt ],
+               
+  function( object, i )
+    local obj_list;
+    
+    obj_list := ObjectList( object );
+    
+    if i < 1 or i > Size( obj_list ) then
+        Error( "bad index!\n" );
+    fi;
+    
+    return obj_list[ i ];
     
 end );
 
@@ -1075,6 +1152,24 @@ end );
 ## View
 ##
 ####################################
+
+##
+InstallMethod( ViewObj,
+          [ IsAdditiveClosureMorphism ],
+  function( morphism )
+    Print( "<A morphism in ", Name( CapCategory( morphism ) ),
+            " defined by a ", NrRows( morphism ), " x ", NrColumns( morphism ), " matrix of underlying morphisms>"
+            );
+end );
+
+##
+InstallMethod( ViewObj,
+          [ IsAdditiveClosureObject ],
+  function( object )
+    Print( "<An object in ", Name( CapCategory( object ) ),
+            " defined by ", Size( ObjectList( object ) ), " underlying objects>"
+            );
+end );
 
 ##
 InstallMethod( Display,

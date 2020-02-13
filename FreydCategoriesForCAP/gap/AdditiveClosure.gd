@@ -164,6 +164,15 @@ DeclareAttribute( "NrColumns",
 ####################################
 
 #! @Description
+#! The arguments are a formal direct sum $A$ in some additive category $C^\oplus$ and an integers $i$.
+#! The output is the $i$'th entry in <C>ObjectList</C>($A$).
+#! @Arguments A, i
+#! @Returns an object in $C$
+DeclareOperation( "\[\]",
+                  [ IsAdditiveClosureObject, IsInt ] );
+
+
+#! @Description
 #! The arguments are morphism $\alpha:A\to B$ between formal direct sums in some additive category $C^\oplus$ and an integer $i$.
 #! The output is the $i$'th entry in <C>MorphismMatrix</C>($\alpha$).
 #! @Arguments alpha, i
@@ -171,5 +180,22 @@ DeclareAttribute( "NrColumns",
 DeclareOperation( "\[\]",
                   [ IsAdditiveClosureMorphism, IsInt ] );
 
+#! @Description
+#! The arguments are a morphism $\alpha:A\to B$ between formal direct sums in some additive category $C^\oplus$ and two integers $i,j$.
+#! The output is the $(i,j)$'th entry in <C>MorphismMatrix</C>($\alpha$).
+#! @Arguments alpha, i, j
+#! @Returns a morphism $C$
+DeclareOperation( "\[\]",
+                  [ IsAdditiveClosureMorphism, IsInt, IsInt ] );
+
+#! @Description
+#! The input is either a list of objects or list of lists of morphisms. The method delegates to
+#! either <C>AdditiveClosureObject</C> or <C>AdditiveClosureMorphism</C>.
 DeclareOperation( "\/",
                   [ IsList, IsAdditiveClosureCategory ] );
+
+#! @Description
+#! This is a convenience method for
+#! <C>AsAdditiveClosureObject</C> and <C>AsAdditiveClosureMorphism</C>.
+DeclareOperation( "\/",
+                  [ IsCapCategoryCell, IsAdditiveClosureCategory ] );
