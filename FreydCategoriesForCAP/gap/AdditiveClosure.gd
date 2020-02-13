@@ -114,6 +114,16 @@ DeclareAttribute( "ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfS
 DeclareAttribute( "ExtendFunctorToAdditiveClosureOfSource",
                   IsCapFunctor );
 
+#! @Description
+#! The argument is a natural transformation $\eta:(F:C\to D)\Rightarrow (G:C\to D)$ where $D$
+#! is an additive category.
+#! The ouput is the extension natural transformation
+#! $\eta^\oplus:(F^\oplus:C^\oplus\to D)\to(G^\oplus:C^\oplus\to D)$.
+#! @Arguments eta
+#! @Returns a natural transformation from $F^\oplus$ to $G^\oplus$
+DeclareAttribute( "ExtendNaturalTransformationToAdditiveClosureOfSource",
+                  IsCapNaturalTransformation );
+
 ####################################
 ##
 #! @Section Attributes
