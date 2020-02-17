@@ -6,6 +6,12 @@
 ##
 #############################################################################
 
+## Specification of data structure of morphisms:
+## there are two valid lists that can represent a morphism:
+## 1) an m x n matrix of morphisms with m,n >=1
+## 2) the empty list [], which represents the zero morphism
+## In particular, [ [ ] ] or [ [], [] ] is not allowed
+
 ####################################
 ##
 ## Constructors
@@ -532,7 +538,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                  ForAll( [ 1 .. nr_cols ], j ->
                    IsCapCategoryMorphism( matrix[i][j] ) )
                  ) then
-            Error( "1" );
+            
             return false;
             
         fi;
@@ -542,7 +548,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                    IsIdenticalObj( underlying_category, CapCategory( matrix[i][j] ) )
                  ) 
                ) then
-            Error( "2" );
+            
             return false;
             
         fi;
@@ -556,7 +562,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                    IsEqualForObjects( Source( matrix[i][j] ), source_list[i] ) and IsEqualForObjects( Range( matrix[i][j] ), range_list[j] )
                  )
                ) then
-            Error( "3" );
+            
             return false;
             
         fi;
@@ -875,12 +881,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
       function( diagram, source, direct_sum )
-        local test_object;
+        local test_object, list;
         
         test_object := Source( source[1] );
         
+        list := List( [ 1 .. Size( ObjectList( test_object ) ) ], i -> Concatenation( List( source, tau -> tau[i] ) ) );
+        
+        if not IsEmpty( list ) and IsEmpty( list[1] ) then
+          
+          list := [];
+          
+        fi;
+        
         return AdditiveClosureMorphism( test_object,
-                                        List( [ 1 .. Size( ObjectList( test_object ) ) ], i -> Concatenation( List( source, tau -> tau[i] ) ) ),
+                                        list,
                                         direct_sum );
         
     end );
