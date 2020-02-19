@@ -40,6 +40,8 @@ if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" ) then
     ReadPackage( "FreydCategoriesForCAP", "gap/LinearClosure.gi" );
 fi;
 
+ReadPackage( "FreydCategoriesForCAP", "gap/RingsAsAbCats.gi" );
+
 ReadPackage( "FreydCategoriesForCAP", "gap/GradeFiltration.gi" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/SerreSubcategoryFunctions.gi" );
