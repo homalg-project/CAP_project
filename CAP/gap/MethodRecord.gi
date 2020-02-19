@@ -3102,6 +3102,53 @@ MorphismBetweenDirectSums := rec(
   filter_list := [ "object", IsList, "object" ],
   io_type := [ [ "S", "mat", "T" ], [ "S", "T" ] ],
   return_type := "morphism",
+  pre_function := function( source, listlist, range )
+    local sources, ranges, result, i, j;
+      
+      sources := List( listlist, l -> Source( l[1] ) );
+      ranges := List( listlist[1], l -> Range( l ) );
+      
+      for i in [ 2 .. Length( listlist ) ] do
+          
+          if Length( listlist[i] ) <> Length( ranges ) then
+              
+              return [ false, Concatenation( "the ", String(i), "-th row has not the same length as the first row" ) ];
+              
+          fi;
+          
+          for j in [ 2 .. Length( ranges ) ] do
+              
+              result := IsEqualForObjects( sources[i], Source( listlist[i][j] ) );
+              
+              if result = fail then
+                  
+                  return [ false, Concatenation( "cannot decide whether the sources of the morphisms in the ", String(i), "-th row are equal" ) ];
+                  
+              elif result = false then
+                  
+                  return [ false, Concatenation( "the sources of the morphisms in the ", String(i), "-th row must be equal" ) ];
+                  
+              fi;
+              
+              result := IsEqualForObjects( ranges[j], Range( listlist[i][j] ) );
+              
+              if result = fail then
+                  
+                  return [ false, Concatenation( "cannot decide whether the ranges of the morphisms in the ", String(j), "-th column are equal" ) ];
+                  
+              elif result = false then
+                  
+                  return [ false, Concatenation( "the ranges of the morphisms in the ", String(j), "-th column must be equal" ) ];
+                  
+              fi;
+              
+          od;
+          
+      od;
+      
+      return [ true ];
+      
+  end,
   dual_operation := "MorphismBetweenDirectSums",
   dual_preprocessor_func := function( arg )
       local list;
