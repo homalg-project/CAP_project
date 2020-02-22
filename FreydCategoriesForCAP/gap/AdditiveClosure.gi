@@ -1207,6 +1207,102 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     fi;
     
+    INSTALL_FUNCTIONS_OF_RANDOM_METHODS_FOR_ADDITIVE_CLOSURE( category );
+    
+end );
+
+##
+InstallGlobalFunction( INSTALL_FUNCTIONS_OF_RANDOM_METHODS_FOR_ADDITIVE_CLOSURE,
+  function( category )
+    local underlying_category;
+    
+    underlying_category := UnderlyingCategory( category );
+     
+    if CanCompute( underlying_category, "RandomObjectByInteger" ) then
+      
+      AddRandomObjectByInteger( category,
+        function( category, n )
+          
+          if n = 0 then
+            
+            return ZeroObject( category );
+            
+          else
+            
+            return List( [ 1 .. AbsInt( n ) ],
+                  i -> RandomObjectByInteger( underlying_category, n )
+                    ) / category;
+                    
+          fi;
+          
+      end );
+      
+    fi;
+    
+    if CanCompute( underlying_category, "RandomMorphismWithFixedSourceAndRangeByInteger" ) then
+      
+      AddRandomMorphismWithFixedSourceAndRangeByInteger( category,
+        function( source, range, n )
+          local source_objects, range_objects, morphisms, current_row, s, r;
+          
+          source_objects := ObjectList( source );
+          
+          range_objects := ObjectList( range );
+          
+          if IsEmpty( source_objects ) or IsEmpty( range_objects ) then
+            
+            return ZeroMorphism( source, range );
+            
+          else
+            
+            morphisms := [ ];
+            
+            for s in source_objects do
+              
+              current_row := [ ];
+              
+              for r in range_objects do
+                
+                Add( current_row, RandomMorphismWithFixedSourceAndRange( s, r, n ) );
+                
+              od;
+              
+              Add( morphisms, current_row );
+              
+            od;
+            
+            return morphisms / category;
+            
+          fi;
+           
+      end );
+      
+      if CanCompute( underlying_category, "RandomObjectByInteger" ) then
+          
+        AddRandomMorphismWithFixedSourceByInteger( category,
+          function( source, n )
+            local range;
+            
+            range := RandomObjectByInteger( category, n );
+            
+            return RandomMorphismWithFixedSourceAndRangeByInteger( source, range, n );
+            
+        end );
+        
+        AddRandomMorphismWithFixedRangeByInteger( category,
+          function( range, n )
+            local source;
+            
+            source := RandomObjectByInteger( category, n );
+            
+            return RandomMorphismWithFixedSourceAndRangeByInteger( source, range, n );
+            
+        end );
+        
+      fi;
+      
+    fi;
+       
 end );
 
 ####################################

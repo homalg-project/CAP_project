@@ -37,6 +37,8 @@ DeclareCategory( "IsAdditiveClosureMorphism",
 
 DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE" );
 
+DeclareGlobalFunction( "INSTALL_FUNCTIONS_OF_RANDOM_METHODS_FOR_ADDITIVE_CLOSURE" );
+
 ####################################
 ##
 #! @Section Constructors
