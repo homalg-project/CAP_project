@@ -37,8 +37,13 @@ if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" ) then
     ReadPackage( "FreydCategoriesForCAP", "gap/GroupsAsCats.gd" );
     
     ReadPackage( "FreydCategoriesForCAP", "gap/LinearClosure.gd" );
+    
+    ReadPackage( "FreydCategoriesForCAP", "gap/ProSetsAsCats.gd" );
+    
 fi;
 
 ReadPackage( "FreydCategoriesForCAP", "gap/GradeFiltration.gd" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/SerreSubcategoryFunctions.gd" );
+
+
