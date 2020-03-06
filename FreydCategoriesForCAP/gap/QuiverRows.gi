@@ -1479,6 +1479,25 @@ end );
 ####################################
 
 ##
+InstallMethod( ViewObj,
+          [ IsQuiverRowsMorphism ],
+  function( morphism )
+    
+    Print( "<A morphism in ", Name( CapCategory( morphism ) ),
+            " defined by a ", NrRows( morphism ), " x ", NrColumns( morphism ), " matrix of quiver algebra elements>"
+            );
+end );
+
+##
+InstallMethod( ViewObj,
+          [ IsQuiverRowsObject ],
+  function( object )
+    Print( "<An object in ", Name( CapCategory( object ) ),
+            " defined by ", NrSummands( object ), " quiver vertices>"
+            );
+end );
+
+##
 InstallMethod( Display,
                [ IsQuiverRowsObject ],
                
