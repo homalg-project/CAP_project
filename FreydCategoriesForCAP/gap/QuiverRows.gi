@@ -881,7 +881,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
         
         if NrSummands( A ) = 0 or NrSummands( B ) = 0 or NrSummands( C ) = 0 then
             
-            return QuiverRowsMorphism( A, [], C );
+            return ZeroMorphism( A, C );
             
         fi;
         
