@@ -7,12 +7,6 @@
 ##
 InstallValue( TOPOS_METHOD_NAME_RECORD, rec(
 
-IsHomSetInhabited := rec(
-  installation_name := "IsHomSetInhabited",
-  filter_list := [ "object", "object" ],
-  return_type := "bool",
-  is_merely_set_theoretic := true ),
-
 SubobjectClassifier := rec(
   installation_name := "SubobjectClassifier",
   filter_list := [ "category" ],
