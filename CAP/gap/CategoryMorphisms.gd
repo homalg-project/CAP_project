@@ -1736,6 +1736,40 @@ DeclareOperation( "TransportHom",
 
 ###################################
 ##
+#! @Section IsHomSetInhabited
+##
+###################################
+
+#! @Description
+#!  The argument are two objects <A>A</A> and <A>B</A>.
+#!  The output is <C>true</C> if there exists a morphism from <A>A</A> to <A>B</A>,
+#!  otherwise the output is <C>false</C>.
+#! @Arguments A, B
+#! @Returns a boolean
+DeclareOperation( "IsHomSetInhabited",
+        [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#!  The arguments are a category $C$ and a function $F$.
+#!  This operation adds the given function $F$
+#!  to the category for the basic operation <C>IsHomSetInhabited</C>.
+#!  $F: A, B \mapsto \mathrm{IsHomSetInhabited}(A, B)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsHomSetInhabited",
+        [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsHomSetInhabited",
+        [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsHomSetInhabited",
+        [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsHomSetInhabited",
+        [ IsCapCategory, IsList ] );
+
+###################################
+##
 #! @Section Homomorphism structures
 ##
 ###################################
