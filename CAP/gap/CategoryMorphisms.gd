@@ -1741,7 +1741,7 @@ DeclareOperation( "TransportHom",
 ###################################
 
 #! @Description
-#!  The argument are two objects <A>A</A> and <A>B</A>.
+#!  The arguments are two objects <A>A</A> and <A>B</A>.
 #!  The output is <C>true</C> if there exists a morphism from <A>A</A> to <A>B</A>,
 #!  otherwise the output is <C>false</C>.
 #! @Arguments A, B
