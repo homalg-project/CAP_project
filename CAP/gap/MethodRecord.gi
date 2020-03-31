@@ -3157,6 +3157,11 @@ MorphismBetweenDirectSums := rec(
   end
 ),
 
+IsHomSetInhabited := rec(
+  installation_name := "IsHomSetInhabited",
+  filter_list := [ "object", "object" ],
+  return_type := "bool" ),
+
 HomomorphismStructureOnObjects := rec(
   installation_name := "HomomorphismStructureOnObjects",
   filter_list := [ "object", "object" ],
