@@ -13,8 +13,8 @@ DeclareGlobalVariable( "COCARTESIAN_COCLOSED_CATEGORIES_METHOD_NAME_RECORD" );
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCoclosedCategory  := Concatenation( [
 "CoexponentialOnObjects",
 "CoexponentialOnMorphismsWithGivenCoexponentials",
-"CocartesianEvaluationMorphism",
-"CocartesianCoevaluationMorphism"
+"CocartesianEvaluationMorphismWithGivenRange",
+"CocartesianCoevaluationMorphismWithGivenSource"
 ], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory );
 
 ##
