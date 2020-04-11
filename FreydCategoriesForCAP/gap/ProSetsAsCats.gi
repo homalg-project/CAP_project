@@ -14,275 +14,332 @@
 
 ## TODO: create a meaningful sanity check
 InstallGlobalFunction( PRO_SET_AS_CATEGORY_SANITY_CHECK,
-  function( incidence_matrix ) 
-    
-    return true;
-    
+  function( incidence_matrix )
+    local l, i, sqr;
+
+    l := Length(incidence_matrix);
+
+#    if not IsRectangularTable(incidence_matrix) then
+#       Error('Input must be a square matrix');
+#    elif not l = Length(incidence_matrix[1]) then
+#      Error("Input must be a square matrix");
+#    fi;
+
+    #the following checks if the trace is l. If the list given as incidence_matrix
+    #is not a square matrix then TraceMat will yeld an error
+    if not TraceMat(incidence_matrix) = l then
+      return [ false, "the trace is not what it should be" ];
+    fi;
+
+    sqr := incidence_matrix^2;
+
+    for i in [1..l] do
+      if not IsSubset([0, 1], Set(incidence_matrix[i])) then
+        return [ false, "Incidence matrix must have entries in {0, 1}" ];
+      fi;
+
+      if not IsSubset(Set(Positions(sqr[i], 0)), Set(Positions(incidence_matrix[i], 0))) then
+        return [  false, "Incidence matrix must define transitive relation"];
+      fi;
+    od;
+    return  [ true ];
+
 end );
 
 ##
 InstallMethod( ProSetAsCategory,
                [ IsList ],
-               
+
   function( incidence_matrix )
-    local category;
-    
-    if not PRO_SET_AS_CATEGORY_SANITY_CHECK( incidence_matrix ) then
-        
-        Error( "the input is not a valid incidence matrix" );
-        
+    local category, check;
+
+    check := PRO_SET_AS_CATEGORY_SANITY_CHECK( incidence_matrix );
+
+    if not check[1] then
+
+        Error( check[2] );
+
     fi;
-    
+
     category := CreateCapCategory( "ProSet" : overhead := false );
-    
+
     SetFilterObj( category, IsProSetAsCategory );
-    
+
     SetIncidenceMatrix( category, incidence_matrix );
-    
+
     AddObjectRepresentation( category, IsProSetAsCategoryObject );
-    
+
     AddMorphismRepresentation( category, IsProSetAsCategoryMorphism );
-    
+
     SetRangeCategoryOfHomomorphismStructure( category, FREYD_CATEGORIES_SkeletalFinSets );
-    
+
     INSTALL_FUNCTIONS_FOR_PROSET_AS_CATEGORY( category );
-    
+
     Finalize( category );
-    
+
     return category;
-    
+
 end );
 
 ##
 InstallMethod( Size,
                [ IsProSetAsCategory ],
-               
+
   function( category )
-    
+
     return Size( IncidenceMatrix( category ) );
-    
+
 end );
 
 ##
 InstallMethod( ProSetAsCategoryObject,
                [ IsInt, IsProSetAsCategory ],
-               
-  function( number_object, category ) 
+
+  function( number_object, category )
     local object;
     ## TODO: sanity check: is number_object in the range [ 1 .. n ]?
-    
-    if not number_object in [ 1 .. Size( category ) ] then
-        
-        Error( Concatenation( String( number_object ), " must lie between 1 and ", String( Size( category ) ) ) );
-        
-    fi;
-    
+
+
     object := rec( );
-    
+
     ObjectifyObjectForCAPWithAttributes( object, category,
                                          UnderlyingInteger, number_object
     );
-    
+
     return object;
-    
+
 end );
 
 InstallMethod( ProSetAsCategoryMorphism,
                [ IsProSetAsCategoryObject, IsProSetAsCategoryObject ],
-               
-  function( source, range ) 
+
+  function( source, range )
     local category, morphism;
-    
+
     category := CapCategory( source );
-    
-    ## Santiy check
-    
-    if not IsIdenticalObj( CapCategory( range ), category ) then
-        
-        Error( "the two given objects have to lie in the same category" );
-        
-    fi;
-    
-    if not IncidenceMatrix( category )[ UnderlyingInteger( source ) ][ UnderlyingInteger( range ) ] = 1 then
-        
-        Error( "there is no morphism between the two given objects" );
-        
-    fi;
-    
+
+
+
     morphism := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
+
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
                              morphism, category,
                              source,
                              range
     );
-    
+
     return morphism;
-    
+
 end );
 
 ##
 InstallMethod( ProSetAsCategoryMorphism,
                [ IsInt, IsInt, IsProSetAsCategory ],
-               
-  function( int_source, int_range, category ) 
-    
-    return ProSetAsCategoryMorphism( 
+
+  function( int_source, int_range, category )
+
+    return ProSetAsCategoryMorphism(
         ProSetAsCategoryObject( int_source, category ),
         ProSetAsCategoryObject( int_range, category )
     );
-    
+
 end );
 
 ##
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_PROSET_AS_CATEGORY,
+
+
+
   function( category )
-    
+    local emptySet, OneElementSet;
+
+    #Short uts for the hom structure. I'm pretty sure there should already be such
+    #such short cuts. these seem pretty basic.
+    emptySet := InitialObject( FREYD_CATEGORIES_SkeletalFinSets );
+    OneElementSet := TerminalObject( FREYD_CATEGORIES_SkeletalFinSets );
     ##
     AddIsEqualForObjects( category,
-        function( a, b ) 
-            
+        function( a, b )
+
             return UnderlyingInteger( a ) = UnderlyingInteger( b );
-            
+
     end );
-    
+
     ##
     AddIsEqualForMorphisms( category, ReturnTrue );
-    
+
     ##
     AddIsCongruentForMorphisms( category, ReturnTrue );
-    
+
     ##
     AddIsWellDefinedForObjects( category,
-      function( obj ) 
-        
-        ## tests if the object satisfies our specification
-        
+      function( obj )
+
+        return UnderlyingInteger( obj ) in [1 .. Size( category )];
     end );
-    
+
     ##
-    AddIsWellDefinedForMorphisms( category, 
-      function( alpha ) 
-        
+    AddIsWellDefinedForMorphisms( category,
+      function( alpha )
+
         ## tests if the morphism satisfies our specification
-        
+        ##DONE
+        local m;
+        m := IncidenceMatrix( category );
+
+        #should I also check if source and range of alpha are integers? IDK mate
+        #I don't think so... it will be checked by the AddIsWellDefinedForMorphisms
+        #thingy. like source and range should be objects in the category.
+
+        return m[UnderlyingInteger(Source(alpha))][UnderlyingInteger(Range(alpha))] = 1;
+
     end );
-    
+
     ##
     AddPreCompose( category,
       function( alpha, beta )
-        
+
         ## a -- alpha --> b -- beta --> c
-        
+        return ProSetAsCategoryMorphism( Source( alpha ), Range( beta ) );
+
     end );
-    
+
     ##
     AddIdentityMorphism( category,
       function( obj )
-        
+
         ## Id( obj )
-        
+        return ProSetAsCategoryMorphism( obj , obj );
+
     end );
-    
+
     ##
     AddInverse( category,
       function( alpha )
-        
-        ## check if inverse exists,
-        ##  if not -> return fail
-        ##  if yes -> return inverse
-        
-    end );
-    
+
+         return ProSetAsCategoryMorphism(Range(alpha), Source(alpha));
+
+
+  end );
+
     ##
-    AddIsIsomorphism( category, 
-      function( alpha ) 
-        
-        
-        
+    AddIsIsomorphism( category,
+      function( alpha )
+        local m, s, r;
+          ## check if inverse exists
+          m := IncidenceMatrix(category);
+          s := UnderlyingInteger(Source(alpha));
+          r := UnderlyingInteger(Range(alpha));
+
+          if m[r][s] = 1 then
+            return true;
+          else return false;
+          fi;
+
+
     end );
-    
+
     ##
-    AddIsEpimorphism( category, 
-      function( alpha ) 
-        
-        
-        
-    end );
-    
+    AddIsEpimorphism( category, ReturnTrue );
+
     ##
-    AddIsMonomorphism( category, 
-      function( alpha ) 
-        
-        
-        
-    end );
-    
+    AddIsMonomorphism( category,ReturnTrue);
+
     ##
-    AddIsLiftable( category, 
+    AddIsLiftable( category,
       function( alpha, beta )
-      
+
       ## decision: if the lift exists
-      
+      local s_alpha, s_beta;
+      s_alpha := UnderlyingInteger( Source( alpha ) );
+      s_beta := UnderlyingInteger( Source( beta ) );
+      return IncidenceMatrix( category )[ s_alpha ][s_beta] = 1;
+
     end );
-    
+
     ##
     AddIsColiftable( category, function( alpha, beta )
-      
+
       ## decision: if the colift exists
-      
+      local r_alpha, r_beta;
+      r_alpha := UnderlyingInteger( Range( alpha ) );
+      r_beta := UnderlyingInteger( Range( beta ) );
+      return IncidenceMatrix( category )[ r_alpha ][r_beta] = 1;
+
     end );
-    
+
     ##
-    AddLift( category, 
+    AddLift( category,
         function( alpha, beta )
-      
+
       ## decision: if the lift exists
-      ## if it does not exist -> fail
+
       ##  if it exists -> output the lift
-      
-    end );
-    
-    ##
-    AddColift( category, 
-        function( alpha, beta )
-      
-      ## decision: if the colift exists
+      if IsLiftable(alpha, beta) then #Am I allowed to use these???
+        return ProSetAsCategoryMorphism( Source( alpha ) , Source( beta ) );
       ## if it does not exist -> fail
-      ##  if it exists -> output the colift
-      
+      else return fail;
+      fi;
+
     end );
-        
+
+    ##
+    AddColift( category,
+        function( alpha, beta )
+
+      ## decision: if the colift exists
+
+      ##  if it exists -> output the colift
+      if IsColiftable(alpha, beta) then #Am I allowed to use these???
+        return ProSetAsCategoryMorphism( Range( alpha ) , Range( beta ) );
+      ## if it does not exist -> fail
+      else return fail;
+      fi;
+
+    end );
+
     ## Homomorphism structure
     AddHomomorphismStructureOnObjects( category,
       function( a, b )
-        
+        local m;
+
+        m := IncidenceMatrix(category);
+        if m[ UnderlyingInteger( a ) ][ UnderlyingInteger( b ) ] = 1 then
+          return OneElementSet;
+        else return emptySet;
+        fi;
+
     end );
-    
+
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
       function( source, alpha, beta, range )
-        
+        if IsEqualForObjects(source, OneElementSet )then
+          return IdentityMorphism( source );
+
+        else return UniversalMorphismFromInitialObject( range );
+        fi;
     end );
-    
+
     ##
     AddDistinguishedObjectOfHomomorphismStructure( category,
       function()
-        
+        return OneElementSet;
     end );
-        
+
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
       function( alpha )
-        
+        return IdentityMorphism( OneElementSet );
+
     end );
-        
+
     ##
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
       function( a, b, mor )
-        
+          return ProSetAsCategoryMorphism( a, b );
     end );
-    
+
 end );
 
 
@@ -296,11 +353,11 @@ end );
 # ##
 # InstallMethod( ViewString,
 #                [ IsProSetAsCategoryMorphism ],
-    
+
 #     function( alpha )
-        
+
 #         return Concatenation( "<", ViewString( UnderlyingProSetElement( alpha ) ), ">" );
-        
+
 # end );
 
 ##
@@ -308,28 +365,27 @@ InstallMethod( ViewString,
                [ IsProSetAsCategoryObject ],
 
   function( obj )
-    
+
     return String( UnderlyingInteger( obj ) );
-    
+
 end );
 
 ##
 # InstallMethod( ViewObj,
 #                [ IsProSetAsCategoryMorphism ],
-               
+
 #     function( alpha )
-        
+
 #         Print( ViewString( alpha ) );
-        
+
 # end );
 
 ##
 InstallMethod( ViewObj,
                [ IsProSetAsCategoryObject ],
-               
-    function( obj )
-        
-        Print( ViewString( obj ) );
-        
-end );
 
+    function( obj )
+
+        Print( ViewString( obj ) );
+
+end );
