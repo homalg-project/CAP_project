@@ -53,3 +53,27 @@ InstallMethod( TruthMorphismIntoSubobjectClassifier,
     return TruthMorphismIntoSubobjectClassifier( CapCategory( cell ) );
     
 end );
+
+####################################
+## Stable internal Hom
+####################################
+
+##
+InstallMethod( StableInternalHom,
+        "for two CAP objects",
+        [ IsCapCategoryObject, IsCapCategoryObject ],
+        
+  function( A, B )
+    local idA, iota;
+    
+    idA := IdentityMorphism( A );
+    
+    iota := InternalHomOnMorphisms( idA, UniversalMorphismIntoTerminalObject( B ) );
+    
+    while not IsIsomorphism( iota ) do
+        iota := InternalHomOnMorphisms( idA, iota );
+    od;
+    
+    return Range( iota );
+    
+end );
