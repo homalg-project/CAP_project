@@ -797,6 +797,7 @@ DeclareOperation( "AddIsomorphismFromInternalHomToObjectWithGivenInternalHom",
 
 ##
 #! @Description
+#! This is a convenience method.
 #! The arguments are two cells $a,b$.
 #! The output is the internal hom cell .
 #! If $a,b$ are two CAP objects the output is the internal Hom object
