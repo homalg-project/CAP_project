@@ -286,6 +286,31 @@ InstallMethod( ProductOp,
 end );
 
 ##
+InstallMethod( \/,
+          [ IsList, IsCapProductCategory ],
+  function( list, category )
+
+    if IsCapCategoryObject( list[ 1 ] ) then
+
+      return ProductOp_OnObjects( list, category );
+
+    elif IsCapCategoryMorphism( list[ 1 ] ) then
+
+      return ProductOp_OnMorphisms( list, category );
+
+    elif IsCapCategoryTwoCell( list[ 1 ] ) then
+
+      return ProductOp_OnTwoCells( list, category );
+
+    else
+
+      Error( "Wrong input!\n" );
+
+    fi;
+
+end );
+
+##
 InstallMethod( ProductOp,
                [ IsList, IsCapCategoryMorphism ],
                
