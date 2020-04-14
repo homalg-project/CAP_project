@@ -175,7 +175,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_PRODUCT_ADDS_FROM_CATEGORY",
 end );
 
 ##
-InstallMethodWithCacheFromObject( ProductOp,
+InstallMethodWithCrispCache( ProductOp,
                                   [ IsList, IsCapCategory ],
                         
   function( category_list, selector )
