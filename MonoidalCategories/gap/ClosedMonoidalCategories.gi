@@ -262,3 +262,39 @@ InstallMethod( IsomorphismFromObjectToInternalHom,
 end );
 
 CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD( CAP_INTERNAL_CLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS );
+
+####################################
+# Convenience Methods
+####################################
+
+##
+InstallMethod( InternalHom,
+        [ IsCapCategoryObject, IsCapCategoryObject ],
+        
+  InternalHomOnObjects );
+
+##
+InstallMethod( InternalHom,
+        [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+        
+  InternalHomOnMorphisms );
+
+##
+InstallMethod( InternalHom,
+        [ IsCapCategoryObject, IsCapCategoryMorphism ],
+        
+  function( a, beta )
+    
+    return InternalHomOnMorphisms( IdentityMorphism( a ), beta );
+    
+end );
+
+##
+InstallMethod( InternalHom,
+        [ IsCapCategoryMorphism, IsCapCategoryObject ],
+        
+  function( alpha, b )
+    
+    return InternalHomOnMorphisms( alpha, IdentityMorphism( b ) );
+    
+end );
