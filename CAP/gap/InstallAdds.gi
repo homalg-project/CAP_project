@@ -7,30 +7,6 @@
 ##
 #############################################################################
 
-BindGlobal( "CAP_INTERNAL_CREATE_OTHER_PAIR_FUNC",
-  
-  function( record )
-    local object_name, op_name, with_given_name;
-    
-    op_name := record.with_given_without_given_name_pair[ 1 ];
-    with_given_name := record.with_given_without_given_name_pair[ 2 ];
-    
-    if record.is_with_given = false then
-        
-        return function( arg ) return CallFuncList( ValueGlobal( op_name ), arg{[ 1 .. Length( arg ) - 1 ]} ); end;
-        
-    else
-        
-        object_name := with_given_name{[ PositionSublist( with_given_name, "WithGiven" ) + 9 .. Length( with_given_name ) ]};
-        
-        return function( arg )
-                    return CallFuncList( ValueGlobal( with_given_name ),
-                                         Concatenation( arg, [ CallFuncList( ValueGlobal( object_name ), [ arg[ 1 ] ] ) ] ) ); end;
-        
-    fi;
-    
-end );
-
 BindGlobal( "CAP_INTERNAL_ADD_OBJECT_OR_FAIL",
   
   function( category, object_or_fail )
@@ -171,8 +147,8 @@ InstallGlobalFunction( CapInternalInstallAdd,
                    [ IsCapCategory, IsList, IsInt ],
       
       function( category, method_list, weight )
-        local install_func, replaced_filter_list, install_method, popper, i, set_primitive, install_remaining_pair, is_derivation,
-              install_pair_func, pair_name, pair_func, is_pair_func, pair_func_push, number_of_proposed_arguments, current_function_number,
+        local install_func, replaced_filter_list, install_method, popper, i, set_primitive, is_derivation, without_given_name, with_given_name,
+              without_given_weight, with_given_weight, number_of_proposed_arguments, current_function_number,
               current_function_argument_number, filter, input_human_readable_identifier_getter, input_sanity_check_functions,
               output_human_readable_identifier_getter, output_sanity_check_function;
         
@@ -195,36 +171,42 @@ InstallGlobalFunction( CapInternalInstallAdd,
             is_derivation := false;
         fi;
         
-        is_pair_func := ValueOption( "IsPairFunc" );
-        if is_pair_func <> true then
-            is_pair_func := false;
-        fi;
-        
-        pair_func_push := false;
-        if is_pair_func then
-            PushOptions( rec( IsPairFunc := false ) );
-            pair_func_push := true;
-        fi;
-        
         if weight = -1 then
             weight := 100;
         fi;
         
-        install_pair_func := false;
-        
         if not is_derivation and record.with_given_without_given_name_pair <> fail then
-            if record.is_with_given = false then
-                pair_name := record.with_given_without_given_name_pair[ 2 ];
-            else
-                pair_name := record.with_given_without_given_name_pair[ 1 ];
-            fi;
             
-            if CurrentOperationWeight( category!.derivations_weight_list, pair_name ) > weight then
-                install_pair_func := true;
-                pair_func := CAP_INTERNAL_CREATE_OTHER_PAIR_FUNC( record );
-                category!.redirects.( record.with_given_without_given_name_pair[ 1 ] ) := false;
-            elif not is_pair_func then
-                category!.redirects.( record.with_given_without_given_name_pair[ 1 ] ) := true;
+            without_given_name := record.with_given_without_given_name_pair[ 1 ];
+            with_given_name := record.with_given_without_given_name_pair[ 2 ];
+            
+            without_given_weight := CurrentOperationWeight( category!.derivations_weight_list, without_given_name );
+            with_given_weight := CurrentOperationWeight( category!.derivations_weight_list, with_given_name );
+            
+            if record.is_with_given = false then
+                
+                if with_given_weight <= weight then
+                    
+                    category!.redirects.( without_given_name ) := true;
+                    
+                else
+                    
+                    category!.redirects.( without_given_name ) := false;
+                    
+                fi;
+                
+            else
+                
+                if weight <= without_given_weight then
+                    
+                    category!.redirects.( without_given_name ) := true;
+                    
+                else
+                    
+                    category!.redirects.( without_given_name ) := false;
+                    
+                fi;
+                
             fi;
             
         fi;
@@ -404,7 +386,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     fi;
                 fi;
                 
-                if not is_pair_func and category!.input_sanity_check_level > 0 then
+                if category!.input_sanity_check_level > 0 then
                     for i in [ 1 .. Length( input_sanity_check_functions ) ] do
                         input_sanity_check_functions[ i ]( arg[ i ], i );
                     od;
@@ -494,26 +476,15 @@ InstallGlobalFunction( CapInternalInstallAdd,
             install_func( i[ 1 ], i[ 2 ] );
         od;
         
-        ## The following commands do NOT commute.
         if popper then
-            PopOptions();
-        fi;
-        
-        if pair_func_push then
             PopOptions();
         fi;
         
         if set_primitive then
             AddPrimitiveOperation( category!.derivations_weight_list, function_name, weight );
             
-            if not is_pair_func and not ValueOption( "IsFinalDerivation" ) = true then
+            if not ValueOption( "IsFinalDerivation" ) = true then
                 category!.primitive_operations.( function_name ) := true;
-            fi;
-            
-            if install_pair_func = true then
-                PushOptions( rec( IsPairFunc := true ) );
-                CallFuncList( ValueGlobal( Concatenation( "Add", pair_name ) ),[ category, [ [ pair_func, [ ] ] ], weight ] );
-                PopOptions();
             fi;
             
         fi;
