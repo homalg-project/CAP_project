@@ -34,6 +34,9 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X828DF9B1782D1AF6">2.4 <span class="Heading">Closed Monoidal Structure</span></a>
 </span>
 </div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7C3B1694803034A2">2.5 <span class="Heading">Projectivity test</span></a>
+</span>
+</div>
 </div>
 
 <h3>2 <span class="Heading">Examples and Tests</span></h3>
@@ -244,6 +247,22 @@ false
   [  0,  0 ] ]
 
 A morphism in Category of left presentations of Z
+</pre></div>
+
+<p><a id="X7C3B1694803034A2" name="X7C3B1694803034A2"></a></p>
+
+<h4>2.5 <span class="Heading">Projectivity test</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := Q * "x";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := AsLeftPresentation( HomalgMatrix( "[ x, x ]", 1, 2, R ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsProjective( M );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := AsLeftPresentation( HomalgMatrix( "[ 1, x ]", 1, 2, R ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsProjective( N );</span>
+true
 </pre></div>
 
 
