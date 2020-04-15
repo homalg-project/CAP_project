@@ -1,3 +1,30 @@
+InstallGlobalFunction( "PrintAutomaticallyGeneratedInstallationsForLimits",
+  function ( arg )
+    
+    if Length( arg ) = 0 then
+        
+        CAP_INTERNAL_INSTALL_CONVENIENCE_METHODS_FOR_LIMITS( CAP_INTERNAL_METHOD_NAME_RECORD, CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS : PrintOnly := true );
+        
+    elif Length( arg ) = 1 then
+        
+        if IsString( arg[1] ) then
+            
+            CAP_INTERNAL_INSTALL_CONVENIENCE_METHODS_FOR_LIMITS( CAP_INTERNAL_METHOD_NAME_RECORD, CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS : PrintOnly := arg[1] );
+            
+        else
+            
+            Error( "the first argument of PrintAutomaticallyGeneratedInstallationsForLimits must be a string" );
+            
+        fi;
+        
+    else
+        
+        Error( "PrintAutomaticallyGeneratedInstallationsForLimits must be called with at most one argument" );
+        
+    fi;
+    
+end );
+
 InstallGlobalFunction( "CAP_INTERNAL_INSTALL_CONVENIENCE_METHODS_FOR_LIMITS",
   function ( method_name_record, limits )
     local install_functorial_convenience_method, number_of_diagram_arguments, functorial_record, filter_list, input_type, replaced_filter_list, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, source_diagram_input_type, range_diagram_input_type, limit;
@@ -5,6 +32,7 @@ InstallGlobalFunction( "CAP_INTERNAL_INSTALL_CONVENIENCE_METHODS_FOR_LIMITS",
     #### helper functions
     install_functorial_convenience_method := function( object_name, functorial_name, functorial_with_given_name, filter_list, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string )
       local method;
+        
         method := EvalString( Concatenation(
             "function( ", arguments_string, " ) \
                    \
@@ -17,7 +45,20 @@ InstallGlobalFunction( "CAP_INTERNAL_INSTALL_CONVENIENCE_METHODS_FOR_LIMITS",
             end"
         ) );
 
-        InstallMethod( ValueGlobal( functorial_name ), filter_list, method );
+        if ValueOption( "PrintOnly" ) = true or ValueOption( "PrintOnly" ) = functorial_name then
+            
+            Print( Concatenation( "Automatic installation for method \"", functorial_name, "\":\n" ) );
+            Print( "Filter list: " ); Display( filter_list );
+            Print( "Installed function:\n" );
+            Display( method );
+            Print( "\n" );
+            
+        else
+            
+            InstallMethod( ValueGlobal( functorial_name ), filter_list, method );
+            
+        fi;
+        
     end;
 
     for limit in limits do
