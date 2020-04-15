@@ -1177,16 +1177,16 @@ InstallMethod( Display,
     Display( Source( category_of_rows_morphism ) );
     
     # mapping matrix
-    Print( Concatenation( "\n\n", "Matrix: \n" ) );
+    Print( Concatenation( "\n", "Matrix: \n" ) );
     Display( UnderlyingMatrix( category_of_rows_morphism ) );
     
     # range
     Print( Concatenation( "\n", "Range: \n" ) );
     Display( Range( category_of_rows_morphism ) );
-    Print( "\n\n" );
+    Print( "\n" );
     
     # general information on morphism
-    Print( StringMutable( category_of_rows_morphism ) );
+    Display( StringMutable( category_of_rows_morphism ) );
     
 end );
 
@@ -1217,7 +1217,7 @@ InstallMethod( Display,
                
   function( category_of_rows_object )
     
-    Print( String( category_of_rows_object ) );
+    Display( String( category_of_rows_object ) );
     
 end );
 

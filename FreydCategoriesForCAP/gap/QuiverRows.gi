@@ -881,7 +881,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
         
         if NrSummands( A ) = 0 or NrSummands( B ) = 0 or NrSummands( C ) = 0 then
             
-            return QuiverRowsMorphism( A, [], C );
+            return ZeroMorphism( A, C );
             
         fi;
         
@@ -1477,6 +1477,25 @@ end );
 ## View
 ##
 ####################################
+
+##
+InstallMethod( ViewObj,
+          [ IsQuiverRowsMorphism ],
+  function( morphism )
+    
+    Print( "<A morphism in ", Name( CapCategory( morphism ) ),
+            " defined by a ", NrRows( morphism ), " x ", NrColumns( morphism ), " matrix of quiver algebra elements>"
+            );
+end );
+
+##
+InstallMethod( ViewObj,
+          [ IsQuiverRowsObject ],
+  function( object )
+    Print( "<An object in ", Name( CapCategory( object ) ),
+            " defined by ", NrSummands( object ), " quiver vertices>"
+            );
+end );
 
 ##
 InstallMethod( Display,

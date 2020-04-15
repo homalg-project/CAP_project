@@ -78,6 +78,14 @@ if ! command -v curl >/dev/null 2>&1 ; then
     error "the 'curl' command was not found, please install it"
 fi
 
+# helper function for parsing GitHub's JSON output. Right now,
+# we only extract the value of a single key at a time. This means
+# we may end up parsing the same JSON data two times, but that
+# doesn't really matter as it is tiny.
+json_get_key() {
+    echo "$response" | python -c 'import json,sys;obj=json.load(sys.stdin);print(obj.get("'"$1"'",""))'
+}
+
 ######################################################################
 #
 # Command line processing
@@ -322,7 +330,7 @@ function jsonval {
 }
 
 # check if release already exists
-response=$(curl -s -S -X GET $API_URL/tags/$TAG?access_token=$TOKEN)
+response=$(curl -s -S -X GET "$API_URL/tags/$TAG" -H "Authorization: token $TOKEN")
 echo ${response}
 if echo "${response}" | fgrep -q "Not Found" ; then
     notice "Release does not exist"
@@ -330,7 +338,7 @@ else
     if [ x$FORCE = xyes ] ; then
         notice "Deleting existing release $TAG from GitHub"
         RELEASE_ID=$(jsonval | sed "s/id:/\n/g" | sed -n 2p | sed "s| ||g")
-        response=$(curl -s -S -X DELETE $API_URL/$RELEASE_ID?access_token=$TOKEN)
+        response=$(curl -s -S -X DELETE "$API_URL/$RELEASE_ID" -H "Authorization: token $TOKEN")
     else
         error "release $TAG already exists on GitHub, aborting (use --force to override this)"
     fi
@@ -347,9 +355,16 @@ define DATA <<EOF
 }
 EOF
 response=$(curl -s -S -H "Content-Type: application/json" \
-    -X POST --data "$DATA" $API_URL?access_token=$TOKEN)
+    -X POST --data "$DATA" "$API_URL" -H "Authorization: token $TOKEN")
 
-RELEASE_ID=$(jsonval | sed "s/id:/\n/g" | sed -n 2p | sed "s| ||g")
+MESSAGE=$(json_get_key message)
+if [ x"$MESSAGE" != x ] ; then
+    error "creating release on GitHub failed: $MESSAGE"
+fi
+RELEASE_ID=$(json_get_key id)
+if [ x"$RELEASE_ID" = x ] ; then
+    error "creating release on GitHub failed: no release id"
+fi
 
 # TODO: error handling?
 
@@ -386,7 +401,8 @@ for EXT in $ARCHIVE_FORMATS ; do
         error "failed creating $FULLNAME"
     fi
     notice "Uploading $ARCHIVENAME with mime type $MIMETYPE"
-    response=$(curl --fail -s -S -X POST $UPLOAD_URL/$RELEASE_ID/assets?name=$ARCHIVENAME \
+    response=$(curl --fail --progress-bar -o "$TMP_DIR/upload.log" \
+        -X POST "$UPLOAD_URL/$RELEASE_ID/assets?name=$ARCHIVENAME" \
         -H "Accept: application/vnd.github.v3+json" \
         -H "Authorization: token $TOKEN" \
         -H "Content-Type: $MIMETYPE" \
