@@ -1,6 +1,6 @@
 name: GeneralizedMorphismsForCAP
-version: 2019.01.16
-date: 16/01/2019
+version: 2020.04.15
+date: 15/04/2020
 description: Implementations of generalized morphisms for the CAP project
 
 authors:
@@ -26,7 +26,7 @@ needed-pkgs:
       url: "http://homalg-project.github.io/CAP_project/CAP/"
     - name: "MonoidalCategories"
       version: ">= 2019.01.16"
-      url: "https://homalg-project.github.io/CAP_project/MonoidalCategories"
+      url: "http://homalg-project.github.io/CAP_project/MonoidalCategories/"
 
 www: http://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/
 readme: http://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/README
@@ -34,9 +34,9 @@ packageinfo: http://homalg-project.github.io/CAP_project/GeneralizedMorphismsFor
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2019.01.16/GeneralizedMorphismsForCAP-2019.01.16.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2020.04.15/GeneralizedMorphismsForCAP-2020.04.15.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2019.01.16/GeneralizedMorphismsForCAP-2019.01.16.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2020.04.15/GeneralizedMorphismsForCAP-2020.04.15.zip
 
 abstract: '<span class="pkgname">GeneralizedMorphismsForCAP</span> provides the category of generalized morphisms associated to an abelian category.'
 
