@@ -164,10 +164,15 @@
   
   [1X5.4-7 ApplyFunctor[101X
   
-  [33X[1;0Y[29X[2XApplyFunctor[102X( [3Xfunc[103X, [3XA[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XApplyFunctor[102X( [3Xfunc[103X, [3XA[103X[, [3XB[103X, [3X...[103X] ) [32X function[133X
   [6XReturns:[106X  [33X[0;10YIsCapCategoryCell[133X
   
-  [33X[0;0YApplies the functor [3Xfunc[103X to the object or morphism [3XA[103X.[133X
+  [33X[0;0YApplies the functor [3Xfunc[103X either to[133X
+  
+  [30X    [33X[0;6Yan object or morphism [3XA[103X in the source of [3Xfunc[103X or[133X
+  
+  [30X    [33X[0;6Yto  objects  or  morphisms  belonging  to  the categories in the input
+        signature of [3Xfunc[103X.[133X
   
   [1X5.4-8 InputSignature[101X
   

@@ -195,11 +195,20 @@
 
 <h5>5.4-7 ApplyFunctor</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyFunctor</code>( <var class="Arg">func</var>, <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyFunctor</code>( <var class="Arg">func</var>, <var class="Arg">A</var>[, <var class="Arg">B</var>, <var class="Arg">...</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: IsCapCategoryCell</p>
 
-<p>Applies the functor <var class="Arg">func</var> to the object or morphism <var class="Arg">A</var>.</p>
+<p>Applies the functor <var class="Arg">func</var> either to</p>
 
+
+<ul>
+<li><p>an object or morphism <var class="Arg">A</var> in the source of <var class="Arg">func</var> or</p>
+
+</li>
+<li><p>to objects or morphisms belonging to the categories in the input signature of <var class="Arg">func</var>.</p>
+
+</li>
+</ul>
 <p><a id="X8562CA1F795C5154" name="X8562CA1F795C5154"></a></p>
 
 <h5>5.4-8 InputSignature</h5>

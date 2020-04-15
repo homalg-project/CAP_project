@@ -36,12 +36,17 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X86CCD70884952468">2.3 <span class="Heading">Categorical Properties of Objects</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X865C78CF789DA86D">2.3-1 AddIsProjective</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F7F309F7C67D6CE">2.3-2 AddIsInjective</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7EDB2D5B7F234ADA">2.3-3 AddIsTerminal</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E6EDA9484F3E6F6">2.3-4 AddIsInitial</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X856FA5E084753312">2.3-5 IsZeroForObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78C3E7BF78A9A7D5">2.3-6 AddIsZeroForObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X849A94147D3446BE">2.3-1 IsProjective</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X865C78CF789DA86D">2.3-2 AddIsProjective</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8788D5A27EC1F994">2.3-3 IsInjective</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F7F309F7C67D6CE">2.3-4 AddIsInjective</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D3542EE7A8448A7">2.3-5 IsTerminal</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7EDB2D5B7F234ADA">2.3-6 AddIsTerminal</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X83F6095A80DCCDC3">2.3-7 IsInitial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E6EDA9484F3E6F6">2.3-8 AddIsInitial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X856FA5E084753312">2.3-9 IsZeroForObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X824765AD78E027CC">2.3-10 IsZero</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78C3E7BF78A9A7D5">2.3-11 AddIsZeroForObjects</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8332653E7EA2EB72">2.4 <span class="Heading">Random Objects</span></a>
 </span>
@@ -96,6 +101,17 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CCBF6577ADC62D9">2.9-7 AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CE0C54080533C0E">2.9-8 AddInjectiveColift</a></span>
 </div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DEC418578FAA1C0">2.10 <span class="Heading">Simplified Objects</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BA160B382F8D742">2.10-1 Simplify</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X85B54852792DEDD7">2.10-2 SimplifyObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X798AA0B57BDC7891">2.10-3 AddSimplifyObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78C0D2CB867C5C90">2.10-4 SimplifyObject_IsoFromInputObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X839A072483DA4590">2.10-5 AddSimplifyObject_IsoFromInputObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X835832A685F651C8">2.10-6 SimplifyObject_IsoToInputObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CFDA57581061E05">2.10-7 AddSimplifyObject_IsoToInputObject</a></span>
+</div></div>
 </div>
 
 <h3>2 <span class="Heading">Objects</span></h3>
@@ -135,65 +151,110 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualForObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsEqualForObjects</code>. <span class="Math">F: (a,b) \mapsto \mathtt{IsEqualForObjects}(a,b)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsEqualForObjects</code>. <span class="Math">F: (a,b) \mapsto \mathtt{IsEqualForObjects}(a,b)</span>.</p>
 
 <p><a id="X86CCD70884952468" name="X86CCD70884952468"></a></p>
 
 <h4>2.3 <span class="Heading">Categorical Properties of Objects</span></h4>
 
+<p><a id="X849A94147D3446BE" name="X849A94147D3446BE"></a></p>
+
+<h5>2.3-1 IsProjective</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsProjective</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is an object <span class="Math">a</span>. The output is <code class="code">true</code> if <span class="Math">a</span> is a projective object, otherwise the output is <code class="code">false</code>.</p>
+
 <p><a id="X865C78CF789DA86D" name="X865C78CF789DA86D"></a></p>
 
-<h5>2.3-1 AddIsProjective</h5>
+<h5>2.3-2 AddIsProjective</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsProjective</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsProjective</code>. <span class="Math">F: a \mapsto \mathtt{IsProjective}(a)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsProjective</code>. <span class="Math">F: a \mapsto \mathtt{IsProjective}(a)</span>.</p>
+
+<p><a id="X8788D5A27EC1F994" name="X8788D5A27EC1F994"></a></p>
+
+<h5>2.3-3 IsInjective</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsInjective</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is an object <span class="Math">a</span>. The output is <code class="code">true</code> if <span class="Math">a</span> is an injective object, otherwise the output is <code class="code">false</code>.</p>
 
 <p><a id="X7F7F309F7C67D6CE" name="X7F7F309F7C67D6CE"></a></p>
 
-<h5>2.3-2 AddIsInjective</h5>
+<h5>2.3-4 AddIsInjective</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsInjective</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsInjective</code>. <span class="Math">F: a \mapsto \mathtt{IsInjective}(a)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsInjective</code>. <span class="Math">F: a \mapsto \mathtt{IsInjective}(a)</span>.</p>
+
+<p><a id="X7D3542EE7A8448A7" name="X7D3542EE7A8448A7"></a></p>
+
+<h5>2.3-5 IsTerminal</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsTerminal</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is an object <span class="Math">a</span> of a category <span class="Math">\mathbf{C}</span>. The output is <code class="code">true</code> if <span class="Math">a</span> is isomorphic to the terminal object of <span class="Math">\mathbf{C}</span>, otherwise the output is <code class="code">false</code>.</p>
 
 <p><a id="X7EDB2D5B7F234ADA" name="X7EDB2D5B7F234ADA"></a></p>
 
-<h5>2.3-3 AddIsTerminal</h5>
+<h5>2.3-6 AddIsTerminal</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsTerminal</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsTerminal</code>. <span class="Math">F: a \mapsto \mathtt{IsTerminal}(a)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsTerminal</code>. <span class="Math">F: a \mapsto \mathtt{IsTerminal}(a)</span>.</p>
+
+<p><a id="X83F6095A80DCCDC3" name="X83F6095A80DCCDC3"></a></p>
+
+<h5>2.3-7 IsInitial</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsInitial</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is an object <span class="Math">a</span> of a category <span class="Math">\mathbf{C}</span>. The output is <code class="code">true</code> if <span class="Math">a</span> is isomorphic to the initial object of <span class="Math">\mathbf{C}</span>, otherwise the output is <code class="code">false</code>.</p>
 
 <p><a id="X7E6EDA9484F3E6F6" name="X7E6EDA9484F3E6F6"></a></p>
 
-<h5>2.3-4 AddIsInitial</h5>
+<h5>2.3-8 AddIsInitial</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsInitial</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsInitial</code>. <span class="Math">F: a \mapsto \mathtt{IsInitial}(a)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsInitial</code>. <span class="Math">F: a \mapsto \mathtt{IsInitial}(a)</span>.</p>
 
 <p><a id="X856FA5E084753312" name="X856FA5E084753312"></a></p>
 
-<h5>2.3-5 IsZeroForObjects</h5>
+<h5>2.3-9 IsZeroForObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsZeroForObjects</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
 
 <p>The argument is an object <span class="Math">a</span> of a category <span class="Math">\mathbf{C}</span>. The output is <code class="code">true</code> if <span class="Math">a</span> is isomorphic to the zero object of <span class="Math">\mathbf{C}</span>, otherwise the output is <code class="code">false</code>.</p>
 
+<p><a id="X824765AD78E027CC" name="X824765AD78E027CC"></a></p>
+
+<h5>2.3-10 IsZero</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsZero</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is an object <span class="Math">a</span> of a category <span class="Math">\mathbf{C}</span>. The output is <code class="code">true</code> if <span class="Math">a</span> is isomorphic to the zero object of <span class="Math">\mathbf{C}</span>, otherwise the output is <code class="code">false</code>.</p>
+
 <p><a id="X78C3E7BF78A9A7D5" name="X78C3E7BF78A9A7D5"></a></p>
 
-<h5>2.3-6 AddIsZeroForObjects</h5>
+<h5>2.3-11 AddIsZeroForObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsZeroForObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsZeroForObjects</code>. <span class="Math">F: a \mapsto \mathtt{IsZeroForObjects}(a)</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsZeroForObjects</code>. <span class="Math">F: a \mapsto \mathtt{IsZeroForObjects}(a)</span>.</p>
 
 <p><a id="X8332653E7EA2EB72" name="X8332653E7EA2EB72"></a></p>
 
@@ -226,7 +287,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRandomObjectByInteger</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">RandomObjectByInteger</code>. The function <span class="Math">F</span> maps <span class="Math">(C,n)</span> to <code class="code">fail</code> or to a random object in <span class="Math">C</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">RandomObjectByInteger</code>. The function <span class="Math">F</span> maps <span class="Math">(C,n)</span> to <code class="code">fail</code> or to a random object in <span class="Math">C</span>.</p>
 
 <p><a id="X7EEC27307C4B06E8" name="X7EEC27307C4B06E8"></a></p>
 
@@ -244,7 +305,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddRandomObjectByList</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">RandomObjectByList</code>. The function <span class="Math">F</span> maps <span class="Math">(C,L)</span> to <code class="code">fail</code> or to a random object in <span class="Math">C</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">RandomObjectByList</code>. The function <span class="Math">F</span> maps <span class="Math">(C,L)</span> to <code class="code">fail</code> or to a random object in <span class="Math">C</span>.</p>
 
 <p><a id="X7E0974E58188E6FB" name="X7E0974E58188E6FB"></a></p>
 
@@ -328,7 +389,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsWellDefinedForObjects</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsWellDefinedForObjects</code>. <span class="Math">F: a \mapsto \mathtt{IsWellDefinedForObjects}( a )</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsWellDefinedForObjects</code>. <span class="Math">F: a \mapsto \mathtt{IsWellDefinedForObjects}( a )</span>.</p>
 
 <p><a id="X7EFAF5CD83C3298F" name="X7EFAF5CD83C3298F"></a></p>
 
@@ -406,7 +467,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddProjectiveLift</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">ProjectiveLift</code>. The function <span class="Math">F</span> maps a pair <span class="Math">(\pi, \epsilon)</span> to a projective lift <span class="Math">\lambda</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">ProjectiveLift</code>. The function <span class="Math">F</span> maps a pair <span class="Math">(\pi, \epsilon)</span> to a projective lift <span class="Math">\lambda</span>.</p>
 
 <p><a id="X87100AFB7A202D2F" name="X87100AFB7A202D2F"></a></p>
 
@@ -484,7 +545,87 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInjectiveColift</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operations adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">InjectiveColift</code>. The function <span class="Math">F</span> maps a pair <span class="Math">(\iota, \beta)</span> to an injective colift <span class="Math">\lambda</span> if it exists, and to <code class="code">fail</code> otherwise.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">InjectiveColift</code>. The function <span class="Math">F</span> maps a pair <span class="Math">(\iota, \beta)</span> to an injective colift <span class="Math">\lambda</span> if it exists, and to <code class="code">fail</code> otherwise.</p>
+
+<p><a id="X7DEC418578FAA1C0" name="X7DEC418578FAA1C0"></a></p>
+
+<h4>2.10 <span class="Heading">Simplified Objects</span></h4>
+
+<p>Let <span class="Math">i</span> be a positive integer or <span class="Math">\infty</span>. For a given object <span class="Math">A</span>, an <span class="Math">i</span>-th simplified object of <span class="Math">A</span> consists of</p>
+
+
+<ul>
+<li><p>an object <span class="Math">A_i</span>,</p>
+
+</li>
+<li><p>an isomorphism <span class="Math">\iota_A^i: A \rightarrow A_i</span>.</p>
+
+</li>
+</ul>
+<p>The idea is that the greater the <span class="Math">i</span>, the "simpler" the <span class="Math">A_i</span> (but this could mean the harder the computation) with <span class="Math">\infty</span> as a possible value.</p>
+
+<p><a id="X7BA160B382F8D742" name="X7BA160B382F8D742"></a></p>
+
+<h5>2.10-1 Simplify</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Simplify</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The argument is an object <span class="Math">A</span>. The output is a simplified object <span class="Math">A_{\infty}</span>.</p>
+
+<p><a id="X85B54852792DEDD7" name="X85B54852792DEDD7"></a></p>
+
+<h5>2.10-2 SimplifyObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SimplifyObject</code>( <var class="Arg">A</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The arguments are an object <span class="Math">A</span> and a positive integer <span class="Math">i</span> or <code class="code">infinity</code>. The output is a simplified object <span class="Math">A_i</span>.</p>
+
+<p><a id="X798AA0B57BDC7891" name="X798AA0B57BDC7891"></a></p>
+
+<h5>2.10-3 AddSimplifyObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSimplifyObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">SimplifyObject</code>. The function <span class="Math">F</span> maps <span class="Math">(A,i)</span> to <span class="Math">A_i</span>.</p>
+
+<p><a id="X78C0D2CB867C5C90" name="X78C0D2CB867C5C90"></a></p>
+
+<h5>2.10-4 SimplifyObject_IsoFromInputObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SimplifyObject_IsoFromInputObject</code>( <var class="Arg">A</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(A,A_i)</span></p>
+
+<p>The arguments are an object <span class="Math">A</span> and a positive integer <span class="Math">i</span> or <code class="code">infinity</code>. The output is an isomorphism to a simplified object <span class="Math">\iota_A^i: A \rightarrow A_i</span>.</p>
+
+<p><a id="X839A072483DA4590" name="X839A072483DA4590"></a></p>
+
+<h5>2.10-5 AddSimplifyObject_IsoFromInputObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSimplifyObject_IsoFromInputObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">SimplifyObject_IsoFromInputObject</code>. The function <span class="Math">F</span> maps <span class="Math">(A,i)</span> to <span class="Math">\iota_A^i</span>.</p>
+
+<p><a id="X835832A685F651C8" name="X835832A685F651C8"></a></p>
+
+<h5>2.10-6 SimplifyObject_IsoToInputObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SimplifyObject_IsoToInputObject</code>( <var class="Arg">A</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(A_i,A)</span></p>
+
+<p>The arguments are an object <span class="Math">A</span> and a positive integer <span class="Math">i</span> or <code class="code">infinity</code>. The output is an isomorphism from a simplified object <span class="Math">(\iota_A^i)^{-1}: A_i \rightarrow A</span> which is the inverse of the output of <code class="code">SimplifyObject_IsoFromInputObject</code>.</p>
+
+<p><a id="X7CFDA57581061E05" name="X7CFDA57581061E05"></a></p>
+
+<h5>2.10-7 AddSimplifyObject_IsoToInputObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddSimplifyObject_IsoToInputObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">SimplifyObject_IsoToInputObject</code>. The function <span class="Math">F</span> maps <span class="Math">(A,i)</span> to <span class="Math">(\iota_A^i)^{-1}</span>.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>

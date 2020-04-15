@@ -36,7 +36,7 @@
   [33X[1;0Y[29X[2XAddIdentityTwoCell[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
-  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given function [23XF[123X to the category for the basic operation [10XIdentityTwoCell[110X. [23XF:
   \alpha \mapsto \mathrm{id}_{\alpha}[123X.[133X
   
@@ -55,7 +55,7 @@
   [33X[1;0Y[29X[2XAddHorizontalPreCompose[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
-  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XHorizontalPreCompose[110X. [23XF: (c,d) \mapsto d \ast c[123X.[133X
   
@@ -74,7 +74,7 @@
   [33X[1;0Y[29X[2XAddHorizontalPostCompose[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
-  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XHorizontalPostCompose[110X. [23XF: (d,c) \mapsto d \ast c[123X.[133X
   
@@ -93,7 +93,7 @@
   [33X[1;0Y[29X[2XAddVerticalPreCompose[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
-  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given function [23XF[123X to the category for the basic operation [10XVerticalPreCompose[110X.
   [23XF: (c,d) \mapsto d \circ c[123X.[133X
   
@@ -112,7 +112,7 @@
   [33X[1;0Y[29X[2XAddVerticalPostCompose[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
-  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XVerticalPostCompose[110X. [23XF: (d,c) \mapsto d \circ c[123X.[133X
   
@@ -132,7 +132,7 @@
   [33X[1;0Y[29X[2XAddIsWellDefinedForTwoCells[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
-  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XIsWellDefinedForTwoCells[110X. [23XF: c \mapsto \mathtt{IsWellDefinedForMorphisms}( c
   )[123X.[133X

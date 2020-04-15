@@ -176,10 +176,35 @@
         of the installed methods, as described above.[133X
   
   [30X    [33X[0;6Yfilter_list:  A  list  containing  the  basic  filters for the methods
-        installed  by  the  add  methods. Possible are filters, or the strings
-        category, object, morphism, or twocell, which will then be replaced at
-        the  time  the  add method is called with the corresponding filters of
-        the category.[133X
+        installed  by  the add methods. Possible are filters, or the following
+        strings, which will be replaced by appropriate filters at the time the
+        add method is called:[133X
+  
+        [30X    [33X[0;12Y[10Xcategory[110X,[133X
+  
+        [30X    [33X[0;12Y[10Xcell[110X,[133X
+  
+        [30X    [33X[0;12Y[10Xobject[110X,[133X
+  
+        [30X    [33X[0;12Y[10Xmorphism[110X,[133X
+  
+        [30X    [33X[0;12Y[10Xtwocell[110X,[133X
+  
+        [30X    [33X[0;12Y[10Xother_category[110X,[133X
+  
+        [30X    [33X[0;12Y[10Xother_cell[110X,[133X
+  
+        [30X    [33X[0;12Y[10Xother_object[110X,[133X
+  
+        [30X    [33X[0;12Y[10Xother_morphism[110X,[133X
+  
+        [30X    [33X[0;12Y[10Xother_twocell[110X,[133X
+  
+        [30X    [33X[0;12Y[10Xlist_of_objects[110X,[133X
+  
+        [30X    [33X[0;12Y[10Xlist_of_morphisms[110X,[133X
+  
+        [30X    [33X[0;12Y[10Xlist_of_twocells[110X.[133X
   
   [30X    [33X[0;6Ywell_defined_todo  (optional): A boolean, default value is true, which
         states  wether there should be to do list entries which propagate well

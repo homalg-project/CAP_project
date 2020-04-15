@@ -104,9 +104,9 @@
   [33X[0;0YThe  function CAP_INTERNAL_ENHANCE_NAME_RECORD_LIMITS takes a list of limits
   (given  by  records  as  explained  above),  and  computes  some  additional
   properties.  For  example,  the number of so-called unbound objects, unbound
-  morphisms  and  targets  is  computed. The term "unbound" signifies that for
-  creating a concrete diagram, these objects or morphisms have to be specified
-  by the user because they cannot be derived by CAP:[133X
+  morphisms  and  (non-)targets is computed. The term "unbound" signifies that
+  for  creating  a  concrete  diagram,  these  objects or morphisms have to be
+  specified by the user because they cannot be derived by CAP:[133X
   
   [30X    [33X[0;6YUnbound morphisms are the triples which are of type "fixedmorphism" or
         "varmorphism".[133X
@@ -120,8 +120,8 @@
   simply be computed by composition. Similarly, one only has to give morphisms
   into these targets to compute a universal morphism.[133X
   
-  [33X[0;0YThe number of unbound objects, unbound morphisms and targets is expressed by
-  the integers 0, 1 and 2:[133X
+  [33X[0;0YThe  number  of  unbound  objects,  unbound  morphisms  and (non-)targets is
+  expressed by the integers 0, 1 and 2:[133X
   
   [30X    [33X[0;6Y0: no such object/morphism/target exists[133X
   

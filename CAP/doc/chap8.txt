@@ -136,6 +136,15 @@
   should  be a list of integers specifying weights for the operations given by
   [10XUsedOperations( d )[110X, in the same order.[133X
   
+  [1X8.2-14 FunctionCalledBeforeInstallation[101X
+  
+  [33X[1;0Y[29X[2XFunctionCalledBeforeInstallation[102X( [3Xd[103X ) [32X attribute[133X
+  
+  [33X[0;0YInput is a derived method. Output is a unary function that takes as an input
+  a  category  and  does  not  output anything. This function is always called
+  before  the  installation of the derived method for a concrete instance of a
+  category.[133X
+  
   
   [1X8.3 [33X[0;0YDerivation Graphs[133X[101X
   

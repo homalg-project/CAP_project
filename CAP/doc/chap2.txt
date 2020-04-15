@@ -35,50 +35,84 @@
   [33X[1;0Y[29X[2XAddIsEqualForObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
-  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given  function [23XF[123X to the category for the basic operation [10XIsEqualForObjects[110X.
   [23XF: (a,b) \mapsto \mathtt{IsEqualForObjects}(a,b)[123X.[133X
   
   
   [1X2.3 [33X[0;0YCategorical Properties of Objects[133X[101X
   
-  [1X2.3-1 AddIsProjective[101X
+  [1X2.3-1 IsProjective[101X
+  
+  [33X[1;0Y[29X[2XIsProjective[102X( [3Xa[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe argument is an object [23Xa[123X. The output is [10Xtrue[110X if [23Xa[123X is a projective object,
+  otherwise the output is [10Xfalse[110X.[133X
+  
+  [1X2.3-2 AddIsProjective[101X
   
   [33X[1;0Y[29X[2XAddIsProjective[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
-  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given  function [23XF[123X to the category for the basic operation [10XIsProjective[110X. [23XF: a
   \mapsto \mathtt{IsProjective}(a)[123X.[133X
   
-  [1X2.3-2 AddIsInjective[101X
+  [1X2.3-3 IsInjective[101X
+  
+  [33X[1;0Y[29X[2XIsInjective[102X( [3Xa[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe argument is an object [23Xa[123X. The output is [10Xtrue[110X if [23Xa[123X is an injective object,
+  otherwise the output is [10Xfalse[110X.[133X
+  
+  [1X2.3-4 AddIsInjective[101X
   
   [33X[1;0Y[29X[2XAddIsInjective[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
-  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given  function  [23XF[123X to the category for the basic operation [10XIsInjective[110X. [23XF: a
   \mapsto \mathtt{IsInjective}(a)[123X.[133X
   
-  [1X2.3-3 AddIsTerminal[101X
+  [1X2.3-5 IsTerminal[101X
+  
+  [33X[1;0Y[29X[2XIsTerminal[102X( [3Xa[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument is an object [23Xa[123X of a category [23X\mathbf{C}[123X. The output is [10Xtrue[110X if
+  [23Xa[123X  is  isomorphic to the terminal object of [23X\mathbf{C}[123X, otherwise the output
+  is [10Xfalse[110X.[133X
+  
+  [1X2.3-6 AddIsTerminal[101X
   
   [33X[1;0Y[29X[2XAddIsTerminal[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
-  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given  function  [23XF[123X  to the category for the basic operation [10XIsTerminal[110X. [23XF: a
   \mapsto \mathtt{IsTerminal}(a)[123X.[133X
   
-  [1X2.3-4 AddIsInitial[101X
+  [1X2.3-7 IsInitial[101X
+  
+  [33X[1;0Y[29X[2XIsInitial[102X( [3Xa[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument is an object [23Xa[123X of a category [23X\mathbf{C}[123X. The output is [10Xtrue[110X if
+  [23Xa[123X is isomorphic to the initial object of [23X\mathbf{C}[123X, otherwise the output is
+  [10Xfalse[110X.[133X
+  
+  [1X2.3-8 AddIsInitial[101X
   
   [33X[1;0Y[29X[2XAddIsInitial[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
-  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given  function  [23XF[123X  to  the category for the basic operation [10XIsInitial[110X. [23XF: a
   \mapsto \mathtt{IsInitial}(a)[123X.[133X
   
-  [1X2.3-5 IsZeroForObjects[101X
+  [1X2.3-9 IsZeroForObjects[101X
   
   [33X[1;0Y[29X[2XIsZeroForObjects[102X( [3Xa[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -87,12 +121,21 @@
   [23Xa[123X  is  isomorphic  to the zero object of [23X\mathbf{C}[123X, otherwise the output is
   [10Xfalse[110X.[133X
   
-  [1X2.3-6 AddIsZeroForObjects[101X
+  [1X2.3-10 IsZero[101X
+  
+  [33X[1;0Y[29X[2XIsZero[102X( [3Xa[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument is an object [23Xa[123X of a category [23X\mathbf{C}[123X. The output is [10Xtrue[110X if
+  [23Xa[123X  is  isomorphic  to the zero object of [23X\mathbf{C}[123X, otherwise the output is
+  [10Xfalse[110X.[133X
+  
+  [1X2.3-11 AddIsZeroForObjects[101X
   
   [33X[1;0Y[29X[2XAddIsZeroForObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
-  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given  function  [23XF[123X to the category for the basic operation [10XIsZeroForObjects[110X.
   [23XF: a \mapsto \mathtt{IsZeroForObjects}(a)[123X.[133X
   
@@ -124,7 +167,7 @@
   [33X[1;0Y[29X[2XAddRandomObjectByInteger[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
-  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XRandomObjectByInteger[110X.  The  function  [23XF[123X  maps  [23X(C,n)[123X to [10Xfail[110X or to a random
   object in [23XC[123X.[133X
@@ -142,7 +185,7 @@
   [33X[1;0Y[29X[2XAddRandomObjectByList[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
-  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given function [23XF[123X to the category for the basic operation [10XRandomObjectByList[110X.
   The function [23XF[123X maps [23X(C,L)[123X to [10Xfail[110X or to a random object in [23XC[123X.[133X
   
@@ -227,7 +270,7 @@
   [33X[1;0Y[29X[2XAddIsWellDefinedForObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
-  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XIsWellDefinedForObjects[110X. [23XF: a \mapsto \mathtt{IsWellDefinedForObjects}( a )[123X.[133X
   
@@ -306,7 +349,7 @@
   [33X[1;0Y[29X[2XAddProjectiveLift[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
-  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given function [23XF[123X to the category for the basic operation [10XProjectiveLift[110X. The
   function [23XF[123X maps a pair [23X(\pi, \epsilon)[123X to a projective lift [23X\lambda[123X.[133X
   
@@ -385,8 +428,83 @@
   [33X[1;0Y[29X[2XAddInjectiveColift[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
-  [33X[0;0YThe  arguments  are  a category [23XC[123X and a function [23XF[123X. This operations adds the
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given  function  [23XF[123X  to the category for the basic operation [10XInjectiveColift[110X.
   The  function [23XF[123X maps a pair [23X(\iota, \beta)[123X to an injective colift [23X\lambda[123X if
   it exists, and to [10Xfail[110X otherwise.[133X
+  
+  
+  [1X2.10 [33X[0;0YSimplified Objects[133X[101X
+  
+  [33X[0;0YLet  [23Xi[123X  be  a  positive  integer  or  [23X\infty[123X.  For a given object [23XA[123X, an [23Xi[123X-th
+  simplified object of [23XA[123X consists of[133X
+  
+  [30X    [33X[0;6Yan object [23XA_i[123X,[133X
+  
+  [30X    [33X[0;6Yan isomorphism [23X\iota_A^i: A \rightarrow A_i[123X.[133X
+  
+  [33X[0;0YThe  idea  is  that the greater the [23Xi[123X, the "simpler" the [23XA_i[123X (but this could
+  mean the harder the computation) with [23X\infty[123X as a possible value.[133X
+  
+  [1X2.10-1 Simplify[101X
+  
+  [33X[1;0Y[29X[2XSimplify[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe argument is an object [23XA[123X. The output is a simplified object [23XA_{\infty}[123X.[133X
+  
+  [1X2.10-2 SimplifyObject[101X
+  
+  [33X[1;0Y[29X[2XSimplifyObject[102X( [3XA[103X, [3Xi[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [23XA[123X and a positive integer [23Xi[123X or [10Xinfinity[110X. The
+  output is a simplified object [23XA_i[123X.[133X
+  
+  [1X2.10-3 AddSimplifyObject[101X
+  
+  [33X[1;0Y[29X[2XAddSimplifyObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given function [23XF[123X to the category for the basic operation [10XSimplifyObject[110X. The
+  function [23XF[123X maps [23X(A,i)[123X to [23XA_i[123X.[133X
+  
+  [1X2.10-4 SimplifyObject_IsoFromInputObject[101X
+  
+  [33X[1;0Y[29X[2XSimplifyObject_IsoFromInputObject[102X( [3XA[103X, [3Xi[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A,A_i)[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [23XA[123X and a positive integer [23Xi[123X or [10Xinfinity[110X. The
+  output  is  an  isomorphism  to a simplified object [23X\iota_A^i: A \rightarrow
+  A_i[123X.[133X
+  
+  [1X2.10-5 AddSimplifyObject_IsoFromInputObject[101X
+  
+  [33X[1;0Y[29X[2XAddSimplifyObject_IsoFromInputObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XSimplifyObject_IsoFromInputObject[110X. The function [23XF[123X maps [23X(A,i)[123X to [23X\iota_A^i[123X.[133X
+  
+  [1X2.10-6 SimplifyObject_IsoToInputObject[101X
+  
+  [33X[1;0Y[29X[2XSimplifyObject_IsoToInputObject[102X( [3XA[103X, [3Xi[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A_i,A)[123X[133X
+  
+  [33X[0;0YThe  arguments  are  an  object  [23XA[123X and a positive integer [23Xi[123X or [10Xinfinity[110X. The
+  output  is  an  isomorphism  from  a simplified object [23X(\iota_A^i)^{-1}: A_i
+  \rightarrow    A[123X    which    is    the    inverse    of    the   output   of
+  [10XSimplifyObject_IsoFromInputObject[110X.[133X
+  
+  [1X2.10-7 AddSimplifyObject_IsoToInputObject[101X
+  
+  [33X[1;0Y[29X[2XAddSimplifyObject_IsoToInputObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XSimplifyObject_IsoToInputObject[110X.    The    function    [23XF[123X   maps   [23X(A,i)[123X   to
+  [23X(\iota_A^i)^{-1}[123X.[133X
   

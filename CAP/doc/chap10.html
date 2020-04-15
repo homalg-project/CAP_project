@@ -136,7 +136,7 @@ rec(
 
 <h4>10.2 <span class="Heading">Enhancing Limit Specifications</span></h4>
 
-<p>The function CAP_INTERNAL_ENHANCE_NAME_RECORD_LIMITS takes a list of limits (given by records as explained above), and computes some additional properties. For example, the number of so-called unbound objects, unbound morphisms and targets is computed. The term "unbound" signifies that for creating a concrete diagram, these objects or morphisms have to be specified by the user because they cannot be derived by CAP:</p>
+<p>The function CAP_INTERNAL_ENHANCE_NAME_RECORD_LIMITS takes a list of limits (given by records as explained above), and computes some additional properties. For example, the number of so-called unbound objects, unbound morphisms and (non-)targets is computed. The term "unbound" signifies that for creating a concrete diagram, these objects or morphisms have to be specified by the user because they cannot be derived by CAP:</p>
 
 
 <ul>
@@ -149,7 +149,7 @@ rec(
 </ul>
 <p>Finally, targets are the objects which are not the range of a morphism. These are of interest for the following reason: for limits, only projections into targets are relevant because the projections into other objects can simply be computed by composition. Similarly, one only has to give morphisms into these targets to compute a universal morphism.</p>
 
-<p>The number of unbound objects, unbound morphisms and targets is expressed by the integers 0, 1 and 2:</p>
+<p>The number of unbound objects, unbound morphisms and (non-)targets is expressed by the integers 0, 1 and 2:</p>
 
 
 <ul>

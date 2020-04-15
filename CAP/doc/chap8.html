@@ -45,6 +45,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X80FA45B68744108E">8.2-11 UsedOperationsWithMultiples</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7DCED23B84345454">8.2-12 InstallDerivationForCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X82546C667C204B78">8.2-13 DerivationResultWeight</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X87B8757F7AAEE7DE">8.2-14 FunctionCalledBeforeInstallation</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X87186DAD7DF242ED">8.3 <span class="Heading">Derivation Graphs</span></a>
 </span>
@@ -222,6 +223,13 @@
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DerivationResultWeight</code>( <var class="Arg">d</var>, <var class="Arg">op_weights</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Computes the resulting weight of the target operation of this derivation given a list of weights for the operations it uses. The argument <var class="Arg">op_weights</var> should be a list of integers specifying weights for the operations given by <code class="code">UsedOperations( d )</code>, in the same order.</p>
+
+<p><a id="X87B8757F7AAEE7DE" name="X87B8757F7AAEE7DE"></a></p>
+
+<h5>8.2-14 FunctionCalledBeforeInstallation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FunctionCalledBeforeInstallation</code>( <var class="Arg">d</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Input is a derived method. Output is a unary function that takes as an input a category and does not output anything. This function is always called before the installation of the derived method for a concrete instance of a category.</p>
 
 <p><a id="X87186DAD7DF242ED" name="X87186DAD7DF242ED"></a></p>
 
