@@ -376,8 +376,17 @@ end );
 
 InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
   
-  function( list, category )
-      local i, current_entry,  current_filter, j;
+  function( list, args... )
+      local category, i, current_entry, current_filter, j;
+      
+      if Length( args ) > 1 then
+          Error( "CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS must be called with at most two arguments" );
+      elif Length( args ) = 1 then
+          category := args[1];
+      else
+          category := false;
+      fi;
+      
       list := ShallowCopy( list );
       
       for i in [ 1 .. Length( list ) ] do
@@ -389,15 +398,35 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
           elif IsString( current_entry ) then
               current_entry := LowercaseString( current_entry );
               if current_entry = "category" then
-                  list[ i ] := CategoryFilter( category ) and IsCapCategory;
+                  if category <> false then
+                      list[ i ] := CategoryFilter( category ) and IsCapCategory;
+                  else
+                      list[ i ] := IsCapCategory;
+                  fi;
               elif current_entry = "cell" then
-                  list[ i ] := CellFilter( category ) and IsCapCategoryCell;
+                  if category <> false then
+                      list[ i ] := CellFilter( category ) and IsCapCategoryCell;
+                  else
+                      list[ i ] := IsCapCategoryCell;
+                  fi;
               elif current_entry = "object" then
-                  list[ i ] := ObjectFilter( category ) and IsCapCategoryObject;
+                  if category <> false then
+                      list[ i ] := ObjectFilter( category ) and IsCapCategoryObject;
+                  else
+                      list[ i ] := IsCapCategoryObject;
+                  fi;
               elif current_entry = "morphism" then
-                  list[ i ] := MorphismFilter( category ) and IsCapCategoryMorphism;
+                  if category <> false then
+                      list[ i ] := MorphismFilter( category ) and IsCapCategoryMorphism;
+                  else
+                      list[ i ] := IsCapCategoryMorphism;
+                  fi;
               elif current_entry = "twocell" then
-                  list[ i ] := TwoCellFilter( category ) and IsCapCategoryTwoCell;
+                  if category <> false then
+                      list[ i ] := TwoCellFilter( category ) and IsCapCategoryTwoCell;
+                  else
+                      list[ i ] := IsCapCategoryTwoCell;
+                  fi;
               elif current_entry = "other_category" then
                   list[ i ] := IsCapCategory;
               elif current_entry = "other_cell" then

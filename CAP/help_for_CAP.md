@@ -24,3 +24,7 @@
 
 * ListCAPPrepareFunctions( )
   Lists all prepare functions currently available.
+
+* PrintAutomaticallyGeneratedInstallationsForLimits( string )
+  Prints all installations of the method with name <string> which are automatically generated
+  by the (co)limit mechanism. If no method name is given, all such installations are printed.

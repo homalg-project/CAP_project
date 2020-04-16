@@ -3870,6 +3870,12 @@ InstallGlobalFunction( "CAP_INTERNAL_ENHANCE_NAME_RECORD_LIMITS",
         if not IsBound( limit.colimit_universal_morphism_name ) then
             limit.colimit_universal_morphism_name := Concatenation( "UniversalMorphismFrom", limit.colimit_object_name );
         fi;
+
+        limit.limit_functorial_name := Concatenation( limit.limit_object_name, "Functorial" );
+        limit.colimit_functorial_name := Concatenation( limit.colimit_object_name, "Functorial" );
+
+        limit.limit_functorial_with_given_name := Concatenation( limit.limit_functorial_name, "WithGiven", limit.limit_object_name, "s" );
+        limit.colimit_functorial_with_given_name := Concatenation( limit.colimit_functorial_name, "WithGiven", limit.colimit_object_name, "s" );
     od;
 end );
 
@@ -4112,17 +4118,17 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
 
         if IsEmpty( limit.diagram_filter_list ) then
             functorial_record := rec(
-                installation_name := Concatenation( limit.limit_object_name, "Functorial" ),
+                installation_name := limit.limit_functorial_name,
                 filter_list := [ "category" ],
                 return_type := "morphism",
-                dual_operation := Concatenation( limit.colimit_object_name, "Functorial" ),
+                dual_operation := limit.colimit_functorial_name,
                 no_with_given := true,
             );
         else
             functorial_record := rec(
-                installation_name := Concatenation( limit.limit_object_name, "FunctorialWithGiven", limit.limit_object_name, "s" ),
+                installation_name := limit.limit_functorial_with_given_name,
                 return_type := "morphism",
-                dual_operation := Concatenation( limit.colimit_object_name, "FunctorialWithGiven", limit.colimit_object_name, "s" ),
+                dual_operation := limit.colimit_functorial_with_given_name,
                 dual_arguments_reversed := true,
             );
             

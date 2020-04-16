@@ -34,16 +34,6 @@ InstallMethod( KernelObjectFunctorial,
 end );
 
 ##
-InstallMethod( KernelObjectFunctorial,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-                                  
-  function( alpha, mu, alpha_prime )
-    
-    return KernelObjectFunctorialWithGivenKernelObjects( KernelObject( alpha ), alpha, mu, alpha_prime, KernelObject( alpha_prime ) );
-    
-end );
-
-##
 InstallMethod( KernelObjectFunctorialWithGivenKernelObjects,
                [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,
                  IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
@@ -75,16 +65,6 @@ InstallMethod( CokernelObjectFunctorial,
            CokernelObject( morphism_of_morphisms[1] ),
            morphism_of_morphisms[1], morphism_of_morphisms[2][2], morphism_of_morphisms[3],
            CokernelObject( morphism_of_morphisms[3] ) );
-    
-end );
-
-##
-InstallMethod( CokernelObjectFunctorial,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( alpha, nu, alpha_prime )
-    
-    return CokernelObjectFunctorialWithGivenCokernelObjects( CokernelObject( alpha ), alpha, nu, alpha_prime, CokernelObject( alpha_prime ) );
     
 end );
 
@@ -184,24 +164,6 @@ InstallMethod( InjectionOfCofactorOfCoproduct,
 end );
 
 ####################################
-## Functorial operations
-####################################
-
-##
-InstallMethod( CoproductFunctorial,
-               [ IsList ],
-               
-  function( morphism_list )
-    
-    return CoproductFunctorialWithGivenCoproducts(
-             Coproduct( List( morphism_list, Source ) ),
-             morphism_list,
-             Coproduct( List( morphism_list, Range ) )
-           );
-    
-end );
-
-####################################
 ##
 ## Direct Product and FiberProduct
 ##
@@ -256,23 +218,6 @@ InstallMethod( ProjectionInFactorOfDirectProduct,
   function( object_product_list, projection_number )
     
     return ProjectionInFactorOfDirectProductOp( object_product_list, projection_number, object_product_list[1] );
-    
-end );
-
-####################################
-## Functorial operations
-####################################
-
-##
-InstallMethod( DirectProductFunctorial,
-               [ IsList ],
-                         
-  function( morphism_list )
-    
-    return DirectProductFunctorialWithGivenDirectProducts(
-             DirectProduct( List( morphism_list, Source ) ),
-             morphism_list,
-             DirectProduct( List( morphism_list, Range ) ) );
     
 end );
 
@@ -409,22 +354,6 @@ InstallMethod( DirectSumOp,
     fi;
     
     return DirectSumOp( diagram, diagram[1] );
-    
-end );
-
-####################################
-## Functorial operations
-####################################
-
-##
-InstallMethod( DirectSumFunctorial,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return DirectSumFunctorialWithGivenDirectSums(
-             DirectSum( List( diagram, Source ) ), diagram, DirectSum( List( diagram, Range ) )
-           );
     
 end );
 
@@ -613,24 +542,6 @@ InstallMethod( MorphismFromEqualizerToSink,
     
     return MorphismFromEqualizerToSinkOp( diagram, diagram[1] );
     
-end );
-
-####################################
-## Functorial operations
-####################################
-
-##
-InstallMethod( EqualizerFunctorial,
-               [ IsList, IsCapCategoryMorphism, IsList ],
-               
-  function( source_diagram, morphism_diagram, range_diagram )
-      
-      return EqualizerFunctorialWithGivenEqualizers(
-               Equalizer( source_diagram ),
-               source_diagram, morphism_diagram, range_diagram,
-               Equalizer( range_diagram )
-             );
-      
 end );
 
 ##
@@ -842,20 +753,6 @@ end );
 
 ##
 InstallMethod( FiberProductFunctorial,
-               [ IsList, IsList, IsList ],
-               
-  function( source_diagram, morphism_diagram, range_diagram )
-      
-      return FiberProductFunctorialWithGivenFiberProducts(
-               FiberProduct( source_diagram ),
-               source_diagram, morphism_diagram, range_diagram,
-               FiberProduct( range_diagram )
-             );
-      
-end );
-
-##
-InstallMethod( FiberProductFunctorial,
                [ IsList ],
                
   function( list_of_triples )
@@ -948,20 +845,6 @@ end );
 ####################################
 ## Functorial operations
 ####################################
-
-##
-InstallMethod( CoequalizerFunctorial,
-               [ IsList, IsCapCategoryMorphism, IsList ],
-               
-  function( source_diagram, morphism_diagram, range_diagram )
-      
-      return CoequalizerFunctorialWithGivenCoequalizers(
-               Coequalizer( source_diagram ),
-               source_diagram, morphism_diagram, range_diagram,
-               Coequalizer( range_diagram )
-             );
-      
-end );
 
 ##
 InstallMethod( CoequalizerFunctorial,
@@ -1093,20 +976,6 @@ end );
 ####################################
 ## Functorial operations
 ####################################
-
-##
-InstallMethod( PushoutFunctorial,
-               [ IsList, IsList, IsList ],
-               
-  function( source_diagram, morphism_diagram, range_diagram )
-      
-      return PushoutFunctorialWithGivenPushouts(
-               Pushout( source_diagram ),
-               source_diagram, morphism_diagram, range_diagram,
-               Pushout( range_diagram )
-             );
-      
-end );
 
 ##
 InstallMethod( PushoutFunctorial,
