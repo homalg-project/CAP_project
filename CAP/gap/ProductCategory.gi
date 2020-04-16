@@ -210,7 +210,7 @@ InstallMethodWithCrispCache( ProductOp,
     
     return product_category;
     
-end : ArgumentNumber := 2 );
+end );
 
 ##
 InstallMethodWithCacheFromObject( ProductOp_OnObjects,
