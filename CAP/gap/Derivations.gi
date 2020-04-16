@@ -452,7 +452,7 @@ InstallGlobalFunction( AddWithGivenDerivationPairToCAP,
     
     op_with_given := CAP_INTERNAL_METHOD_NAME_RECORD.(op_without_given).with_given_without_given_name_pair[ 2 ];
     
-    ## Check wether arguments need to be filled
+    ## Check whether arguments need to be filled
     
     test_arg := arg[ Length( arg ) - 1 ];
     
