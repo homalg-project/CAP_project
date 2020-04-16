@@ -4216,27 +4216,207 @@ BindGlobal( "CAP_INTERNAL_PREPARE_INHERITED_PRE_FUNCTION",
     end;
 end );
 
+BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
+  
+  function( with_given_name, object_name, has_arguments, with_given_arguments, cache_name )
+    local return_func, has_name, has_function, object_function, with_given_name_function, is_attribute, attribute_tester;
+    
+    object_function := ValueGlobal( object_name );
+    
+    with_given_name_function := ValueGlobal( with_given_name );
+    
+    is_attribute := Tester( object_function ) <> false;
+    
+    if not is_attribute then
+        
+        return function( arg )
+            local has_arg_list, has_return, category, cache;
+            
+            category := arg[ 1 ];
+            
+            arg := arg{[ 2 .. Length( arg ) ]};
+            
+            has_arg_list := arg{ has_arguments };
+            
+            cache := GET_METHOD_CACHE( category, cache_name, Length( has_arguments ) );
+            
+            has_return := CallFuncList( CacheValue,  [ cache, has_arg_list ] );
+            
+            if has_return = [ ] then
+                
+                return [ false ];
+                
+            fi;
+            
+            return [ true, CallFuncList( with_given_name_function, Concatenation( arg{ with_given_arguments }, [ has_return[ 1 ] ] ) ) ];
+            
+        end;
+        
+    else
+        
+        attribute_tester := Tester( object_function );
+        
+        return function( arg )
+            local has_arg_list, has_return, category, cache;
+            
+            category := arg[ 1 ];
+            
+            arg := arg{[ 2 .. Length( arg ) ]};
+            
+            has_arg_list := arg{ has_arguments };
+            
+            if not attribute_tester( has_arg_list ) then
+                
+                cache := GET_METHOD_CACHE( category, cache_name, Length( has_arguments ) );
+                
+                has_return := CallFuncList( CacheValue,  [ cache, has_arg_list ] );
+                
+                if has_return = [ ] then
+                    
+                    return [ false ];
+                    
+                fi;
+                
+            else
+                
+                has_return := CallFuncList( object_function, has_arg_list );
+                
+            fi;
+            
+            return [ true, CallFuncList( with_given_name_function, Concatenation( arg{ with_given_arguments }, [ has_return[ 1 ] ] ) ) ];
+            
+        end;
+        
+    fi;
+    
+end );
+
+BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
+  
+  function( source_range_object, object_function_name, object_function_argument_list, object_call_name, object_cache_name )
+    local object_getter, set_object, diagram_name, setter_function, is_attribute, cache_key_length;
+    
+    if source_range_object = "Source" then
+        object_getter := Source;
+        set_object := true;
+    elif source_range_object = "Range" then
+        object_getter := Range;
+        set_object := true;
+    else
+        object_getter := IdFunc;
+        set_object := false;
+    fi;
+    
+    diagram_name := Concatenation( object_call_name, "Diagram" );
+    setter_function := Setter( ValueGlobal( object_function_name ) );
+    is_attribute := setter_function <> false;
+    cache_key_length := Length( object_function_argument_list );
+    
+    if not is_attribute then
+    
+        return function( arg )
+            local result, object, category;
+            
+            category := arg[ 1 ];
+            
+            arg := arg{[ 2 .. Length( arg ) ]};
+            
+            result := arg[ Length( arg ) ];
+            Remove( arg );
+            object := object_getter( result );
+            
+            if set_object then
+                  SET_VALUE_OF_CATEGORY_CACHE( category, object_cache_name, cache_key_length, arg{ object_function_argument_list }, object );
+            fi;
+            
+        end;
+        
+    else
+        
+        return function( arg )
+            local result, object, category;
+            
+            category := arg[ 1 ];
+            
+            arg := arg{[ 2 .. Length( arg ) ]};
+            
+            result := arg[ Length( arg ) ];
+            Remove( arg );
+            object := object_getter( result );
+            
+            if set_object then
+                SET_VALUE_OF_CATEGORY_CACHE( category, object_cache_name, cache_key_length, arg{ object_function_argument_list }, object );
+                CallFuncList( setter_function, Concatenation( arg{ object_function_argument_list }, [ object ] ) );
+            fi;
+            
+        end;
+        
+    fi;
+    
+end );
+
+BindGlobal( "CAP_INTERNAL_CREATE_NEW_FUNC_WITH_ONE_MORE_ARGUMENT_WITH_RETURN",
+  
+  function( func )
+    
+    return function( arg ) return CallFuncList( func, arg{[ 2 .. Length( arg ) ]} ); end;
+    
+end );
+
+BindGlobal( "CAP_INTERNAL_CREATE_NEW_FUNC_WITH_ONE_MORE_ARGUMENT_WITHOUT_RETURN",
+  
+  function( func )
+    
+    return function( arg ) CallFuncList( func, arg{[ 2 .. Length( arg ) ]} ); end;
+    
+end );
+
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
-    local recnames, current_recname, current_rec, position, without_given_name, functorial, diagram_arguments;
+    local recnames, current_recname, current_rec, number_of_arguments, position, without_given_name, object_name, functorial, diagram_arguments,
+          arg_list, with_given_name, with_given_name_length, i, object_func;
     
     recnames := RecNames( record );
     
     for current_recname in recnames do
         
         current_rec := record.(current_recname);
-            
+        
+        current_rec.function_name := current_recname;
+
+        if IsBound( current_rec.argument_list ) then
+            number_of_arguments := Length( current_rec.argument_list );
+        else
+            number_of_arguments := Length( current_rec.filter_list );
+        fi;
+        
+        # the redirect function is called with the category as an additional argument -> install wrapper dropping the category if necessary
+        if IsBound( current_rec.redirect_function ) and NumberArgumentsFunction( current_rec.redirect_function ) = number_of_arguments then
+            current_rec.redirect_function := CAP_INTERNAL_CREATE_NEW_FUNC_WITH_ONE_MORE_ARGUMENT_WITH_RETURN( current_rec.redirect_function );
+        fi;
+        
+        # the post function is called with the result and the category as additional arguments -> install wrapper dropping the category if necessary
+        if IsBound( current_rec.post_function ) and NumberArgumentsFunction( current_rec.post_function ) = number_of_arguments + 1 then
+            current_rec.post_function := CAP_INTERNAL_CREATE_NEW_FUNC_WITH_ONE_MORE_ARGUMENT_WITHOUT_RETURN( current_rec.post_function );
+        fi;
+        
         position := PositionSublist( current_recname, "WithGiven" );
         
         current_rec.is_with_given := false;
+        current_rec.with_given_without_given_name_pair := fail;
         
         if position <> fail then
             
             without_given_name := current_recname{[ 1 .. position - 1 ]};
+            object_name := current_recname{[ position + 9 .. Length( current_recname ) ]};
             
             if without_given_name in recnames then
                 
                 current_rec.is_with_given := true;
+                
+                current_rec.with_given_without_given_name_pair := [ without_given_name, current_recname ];
+                
+                current_rec.universal_object := object_name;
                 
                 if IsBound( record.(without_given_name).pre_function ) and not IsBound( current_rec.pre_function ) then
                     current_rec.pre_function := CAP_INTERNAL_PREPARE_INHERITED_PRE_FUNCTION( record.(without_given_name).pre_function );
@@ -4298,6 +4478,73 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
+        if not current_rec.is_with_given and IsBound( current_rec.universal_type ) then
+#           if not IsBound( current_rec.argument_list ) then
+#               if Length( current_rec.filter_list ) > 1 and
+#                 ForAll( [ 1 .. Length( current_rec.filter_list ) - 1 ], i -> current_rec.filter_list[ i ] = IsInt or current_rec.filter_list[ i ] = IsList ) then
+#                   current_rec.argument_list := [ 1 .. Length( current_rec.filter_list ) - 1 ];
+#               else
+#                   current_rec.argument_list := [ 1 .. Length( current_rec.filter_list ) ];
+#               fi;
+#           fi;
+            if not IsBound( current_rec.argument_list ) then
+                current_rec.argument_list := [ 1 .. Length( current_rec.filter_list ) ];
+            fi;
+            
+            arg_list := current_rec.universal_object_arg_list;
+            
+            if not IsBound( current_rec.universal_object_position ) then
+                
+                if not IsBound( current_rec.post_function ) then
+                    current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( "id", current_rec.installation_name, arg_list, current_recname, "irrelevant" ); ##Please note that the third argument is not used
+                fi;
+                
+            else
+                
+                ## find with given name
+                
+                ## FIXME: If the redirect function is already bound, then this part is superfluous
+                
+                with_given_name := Concatenation( current_recname, "WithGiven" );
+                
+                with_given_name_length := Length( with_given_name );
+                
+                for i in recnames do
+                    
+                    if PositionSublist( i, with_given_name ) <> fail then
+                        
+                        with_given_name := i;
+                        
+                        break;
+                        
+                    fi;
+                    
+                od;
+                
+                if Length( with_given_name ) = with_given_name_length then
+                    
+                    Error( Concatenation( "Name not found: ", with_given_name ) );
+                    
+                fi;
+                
+                current_rec.with_given_without_given_name_pair := [ current_recname, with_given_name ];
+                
+                object_name := with_given_name{[ with_given_name_length + 1 .. Length( with_given_name ) ]};
+                
+                object_func := record.( object_name ).installation_name;
+                
+                if not IsBound( current_rec.redirect_function ) then
+                    current_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_func, arg_list, current_rec.argument_list, object_func );
+                fi;
+                
+                if not IsBound( current_rec.post_function ) then
+                    current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.universal_object_position, object_func, arg_list, object_name, object_func );
+                fi;
+                
+            fi;
+            
+        fi;
+
     od;
     
 end );
