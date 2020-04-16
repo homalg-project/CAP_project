@@ -170,7 +170,6 @@ The record can have the following components, used as described:
                          the name of the functorial is stored as a string.
 
 * number_of_diagram_arguments: Specifies how many of the arguments (counting from the first argument) of the function specify the diagram of the universal object.
-                               Default value is 1.
 
 * dual_arguments_reversed: Boolean, marks whether for the call of the dual operation all arguments have to be given in reversed order.
 
@@ -197,7 +196,9 @@ The function CAP_INTERNAL_ENHANCE_NAME_RECORD can be applied to a method name re
             packed up to discard the first argument (which is the category) if necessary.
 
 * universal_object_arg_list: An argument list for redirect and post functions is created, by looking at the filter list in the record.
-            If the first one is a list, the first and the last (method selection argument) is used, otherwise only the first.
+            If the number of diagram arguments is zero, the first argument is used.
+            If all diagram arguments are lists, the diagram arguments and additionally the last argument (method selection argument) are used.
+            Otherwise, the diagram arguments are used.
 
 * WithGiven special case: If the current entry belongs to a WithGiven operation or its without given pair, the with_given_without_given_name_pair is set.
                           Additionally, the with given flag of the WithGiven operation is set to true.
