@@ -175,7 +175,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_PRODUCT_ADDS_FROM_CATEGORY",
 end );
 
 ##
-InstallMethodWithCacheFromObject( ProductOp,
+InstallMethodWithCrispCache( ProductOp,
                                   [ IsList, IsCapCategory ],
                         
   function( category_list, selector )
@@ -210,7 +210,7 @@ InstallMethodWithCacheFromObject( ProductOp,
     
     return product_category;
     
-end : ArgumentNumber := 2 );
+end );
 
 ##
 InstallMethodWithCacheFromObject( ProductOp_OnObjects,
@@ -283,6 +283,31 @@ InstallMethod( ProductOp,
     
     return ProductOp_OnObjects( object_list, ProductOp( category_list, category_list[ 1 ] ) );
     
+end );
+
+##
+InstallMethod( \/,
+          [ IsList, IsCapProductCategory ],
+  function( list, category )
+
+    if IsCapCategoryObject( list[ 1 ] ) then
+
+      return ProductOp_OnObjects( list, category );
+
+    elif IsCapCategoryMorphism( list[ 1 ] ) then
+
+      return ProductOp_OnMorphisms( list, category );
+
+    elif IsCapCategoryTwoCell( list[ 1 ] ) then
+
+      return ProductOp_OnTwoCells( list, category );
+
+    else
+
+      Error( "Wrong input!\n" );
+
+    fi;
+
 end );
 
 ##
