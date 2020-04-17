@@ -4,7 +4,7 @@
 
 LoadPackage( "ModulePresentationsForCAP" );
 
-LoadPackage( "RingsForHomalg" );
+LoadPackage( "RingsForHomalg", ">= 2020.04.17" );
 
 #! @Example
 Q := HomalgFieldOfRationalsInSingular();;
@@ -21,8 +21,8 @@ Display( iota1 );
 #! A monomorphism in Category of left presentations of Q[x,y,z]
 Display( Source( iota1 ) );
 #! 0, -z,y,
-#! -y,x, 0,
-#! -z,0, x 
+#! -z,0, x,
+#! -y,x, 0 
 #! 
 #! An object in Category of left presentations of Q[x,y,z]
 pi1 := CoverByFreeModule( Source( iota1 ) );;
@@ -36,25 +36,25 @@ Display( d1 );
 iota2 := KernelEmbedding( d1 );;
 Display( iota2 );
 #! 0, -z,y,
-#! -y,x, 0,
-#! -z,0, x 
+#! -z,0, x,
+#! -y,x, 0 
 #! 
 #! A monomorphism in Category of left presentations of Q[x,y,z]
 Display( Source( iota2 ) );;
-#! x,z,-y
+#! x,-y,z
 #! 
 #! An object in Category of left presentations of Q[x,y,z]
 pi2 := CoverByFreeModule( Source( iota2 ) );;
 d2 := PreCompose( pi2, iota2 );;
 Display( d2 );
 #! 0, -z,y,
-#! -y,x, 0,
-#! -z,0, x 
+#! -z,0, x,
+#! -y,x, 0 
 #! 
 #! A morphism in Category of left presentations of Q[x,y,z]
 iota3 := KernelEmbedding( d2 );;
 Display( iota3 );
-#! x,z,-y
+#! x,-y,z
 #! 
 #! A monomorphism in Category of left presentations of Q[x,y,z]
 Display( Source( iota3 ) );
@@ -64,7 +64,7 @@ Display( Source( iota3 ) );
 pi3 := CoverByFreeModule( Source( iota3 ) );;
 d3 := PreCompose( pi3, iota3 );;
 Display( d3 );
-#! x,z,-y
+#! x,-y,z
 #! 
 #! A morphism in Category of left presentations of Q[x,y,z]
 N := HomalgMatrix( [ [ "x" ] ], 1, 1, R );;
