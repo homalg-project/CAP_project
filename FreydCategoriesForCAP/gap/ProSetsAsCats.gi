@@ -19,12 +19,6 @@ InstallGlobalFunction( PRO_SET_AS_CATEGORY_SANITY_CHECK,
 
     l := Length(incidence_matrix);
 
-#    if not IsRectangularTable(incidence_matrix) then
-#       Error('Input must be a square matrix');
-#    elif not l = Length(incidence_matrix[1]) then
-#      Error("Input must be a square matrix");
-#    fi;
-
     #the following checks if the trace is l. If the list given as incidence_matrix
     #is not a square matrix then TraceMat will yeld an error
     if not TraceMat(incidence_matrix) = l then
@@ -99,7 +93,6 @@ InstallMethod( ProSetAsCategoryObject,
     local object;
     ## TODO: sanity check: is number_object in the range [ 1 .. n ]?
 
-
     object := rec( );
 
     ObjectifyObjectForCAPWithAttributes( object, category,
@@ -153,8 +146,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_PROSET_AS_CATEGORY,
   function( category )
     local emptySet, OneElementSet;
 
-    #Short uts for the hom structure. I'm pretty sure there should already be such
-    #such short cuts. these seem pretty basic.
     emptySet := InitialObject( FREYD_CATEGORIES_SkeletalFinSets );
     OneElementSet := TerminalObject( FREYD_CATEGORIES_SkeletalFinSets );
     ##
@@ -183,13 +174,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_PROSET_AS_CATEGORY,
       function( alpha )
 
         ## tests if the morphism satisfies our specification
-        ##DONE
         local m;
         m := IncidenceMatrix( category );
 
-        #should I also check if source and range of alpha are integers? IDK mate
-        #I don't think so... it will be checked by the AddIsWellDefinedForMorphisms
-        #thingy. like source and range should be objects in the category.
+
 
         return m[UnderlyingInteger(Source(alpha))][UnderlyingInteger(Range(alpha))] = 1;
 
@@ -275,7 +263,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_PROSET_AS_CATEGORY,
       ## decision: if the lift exists
 
       ##  if it exists -> output the lift
-      if IsLiftable(alpha, beta) then #Am I allowed to use these???
+      if IsLiftable(alpha, beta) then
         return ProSetAsCategoryMorphism( Source( alpha ) , Source( beta ) );
       ## if it does not exist -> fail
       else return fail;
@@ -290,7 +278,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_PROSET_AS_CATEGORY,
       ## decision: if the colift exists
 
       ##  if it exists -> output the colift
-      if IsColiftable(alpha, beta) then #Am I allowed to use these???
+      if IsColiftable(alpha, beta) then 
         return ProSetAsCategoryMorphism( Range( alpha ) , Range( beta ) );
       ## if it does not exist -> fail
       else return fail;

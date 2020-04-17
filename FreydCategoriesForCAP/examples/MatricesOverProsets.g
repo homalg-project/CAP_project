@@ -6,6 +6,7 @@ LoadPackage( "FreydCategoriesForCAP" );;
 
 #!Incidence matrix of our proset
 K := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;
+#! @Example
 
 #! Construction of a tower of categories
 CP_K := ProSetAsCategory( K );;
@@ -50,4 +51,6 @@ beta := MB_C/RowsP_K;;
 
 gamma := PreCompose( alpha, beta );;
 lift := Lift( gamma, beta );;
-PreCompose(lift, beta) = gamma;;
+PreCompose(lift, beta) = gamma;
+#! true
+#! @EndExample
