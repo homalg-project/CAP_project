@@ -48,4 +48,4 @@ ReadPackage( "FreydCategoriesForCAP", "gap/GradeFiltration.gd" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/SerreSubcategoryFunctions.gd" );
 
-
+ReadPackage( "FreydCategoriesForCAP", "gap/Relations.gd" );
