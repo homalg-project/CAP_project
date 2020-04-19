@@ -4,7 +4,6 @@
 
 LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "GeneralizedMorphismsForCAP" );;
-LoadPackage( "Bialgebroids" );
 
 #! @Example
 SwitchGeneralizedMorphismStandard( "cospan" );;
