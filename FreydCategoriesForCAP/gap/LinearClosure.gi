@@ -13,25 +13,9 @@
 ####################################
 
 ##
-InstallMethod( LinearClosure,
-               [ IsHomalgRing, IsGroupAsCategory ],
-  function( ring, group_as_category )
-    local compare_func;
-    
-    compare_func := function( g, h ) return UnderlyingGroupElement( g ) < UnderlyingGroupElement( h ); end;;
-    
-    return LinearClosure( ring, group_as_category, compare_func );
-    
-end );
-
-## sorting_function:
-## compares two morphisms alpha: a -> b, beta: a -> b
-## such that, if we take the quotient by IsCongruentForMorphisms, we get a total ordering on morphisms
-InstallMethod( LinearClosure,
-               [ IsHomalgRing, IsCapCategory, IsFunction ],
-               
-  function( ring, underlying_category, sorting_function )
-    local category, is_finite, to_be_finalized;
+InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR,
+    function( ring, underlying_category, arg... )
+    local category, is_finite, to_be_finalized, sorting_function, with_nf, cocycle;
     
     if not ( HasIsCommutative( ring ) and IsCommutative( ring ) ) then
         
@@ -39,9 +23,53 @@ InstallMethod( LinearClosure,
         
     fi;
     
-    category := CreateCapCategory( Concatenation( "LinearClosure( ", Name( underlying_category )," )" ) : overhead := false );
+    if Length( arg ) = 0 then
+        
+        with_nf := false;
+        
+    elif Length( arg ) = 1 then
+        
+        sorting_function := arg[1];
+        
+        with_nf := true;
+        
+    else
+        
+        cocycle := arg[1];
+        
+        with_nf := arg[2];
+        
+        if IsBound( arg[3] ) then
+            
+            sorting_function := arg[3];
+            
+        fi;
+        
+    fi;
     
-    category!.sorting_function := sorting_function;
+    if IsBound( cocycle ) then
+        
+        category := CreateCapCategory( Concatenation( "TwistedLinearClosure( ", Name( underlying_category )," )" ) : overhead := false );
+        
+    else
+        
+        category := CreateCapCategory( Concatenation( "LinearClosure( ", Name( underlying_category )," )" ) : overhead := false );
+        
+    fi;
+    
+    category!.with_nf := with_nf;
+    
+    if IsBound( sorting_function ) then
+        
+        category!.sorting_function := sorting_function;
+        
+    fi;
+    
+    if IsBound( cocycle ) then
+        
+        category!.cocycle := cocycle;
+        
+    fi;
     
     SetIsLinearCategoryOverCommutativeRing( category, true );
     
@@ -75,6 +103,61 @@ InstallMethod( LinearClosure,
     
 end );
 
+## sorting_function:
+## compares two morphisms alpha: a -> b, beta: a -> b
+## such that, if we take the quotient by IsCongruentForMorphisms, we get a total ordering on morphisms
+InstallMethod( LinearClosure,
+               [ IsHomalgRing, IsCapCategory, IsFunction ],
+               LINEAR_CLOSURE_CONSTRUCTOR );
+
+##
+InstallMethod( LinearClosure,
+               [ IsHomalgRing, IsCapCategory ],
+               LINEAR_CLOSURE_CONSTRUCTOR );
+
+##
+InstallMethod( TwistedLinearClosure,
+               [ IsHomalgRing, IsCapCategory, IsFunction ],
+  function( ring, category, cocycle )
+    
+    return LINEAR_CLOSURE_CONSTRUCTOR( ring, category, cocycle, false );
+    
+end );
+
+##
+InstallMethod( TwistedLinearClosure,
+               [ IsHomalgRing, IsCapCategory, IsFunction, IsFunction ],
+  function( ring, category, cocycle, sorting_function )
+    
+    return LINEAR_CLOSURE_CONSTRUCTOR( ring, category, cocycle, true, sorting_function );
+    
+end );
+
+## Special cases for groups
+##
+InstallMethod( LinearClosure,
+               [ IsHomalgRing, IsGroupAsCategory ],
+  function( ring, group_as_category )
+    local compare_func;
+    
+    compare_func := function( g, h ) return UnderlyingGroupElement( g ) < UnderlyingGroupElement( h ); end;;
+    
+    return LinearClosure( ring, group_as_category, compare_func );
+    
+end );
+
+##
+InstallMethod( TwistedLinearClosure,
+               [ IsHomalgRing, IsGroupAsCategory, IsFunction ],
+  function( ring, category, cocycle )
+    local compare_func;
+    
+    compare_func := function( g, h ) return UnderlyingGroupElement( g ) < UnderlyingGroupElement( h ); end;;
+    
+    return LINEAR_CLOSURE_CONSTRUCTOR( ring, category, cocycle, true, compare_func );
+    
+end );
+
 ##
 InstallMethod( LinearClosureObject,
                [ IsLinearClosure, IsCapCategoryObject ],
@@ -104,6 +187,8 @@ InstallOtherMethod( LinearClosureObject,
 end );
 
 ## Data structure for morphisms:
+##
+## 1.case: there is a sorting function
 ## list of morphisms in underlying category: [ alpha_1, alpha_2, ..., alpha_n ],
 ## pairwise not congruent, and sorted w.r.t. sorting_function in increasing order.
 ##
@@ -115,20 +200,27 @@ end );
 ## Reason for sorting:
 ## this gives a normal form, which makes the congruence decision possible
 ##
+## 2.case: there is no sorting function
+## list of morphisms in underlying category: [ alpha_1, alpha_2, ..., alpha_n ]
+## list of coefficients, same length as list of morphisms: [ c_1, ..., c_n ]
+## no further restrictions
+##
 InstallMethod( LinearClosureMorphism,
                [ IsLinearClosureObject, IsList, IsList, IsLinearClosureObject ],
   function( source, coefficients, support_morphisms, range )
-    local sorting_function, coefficients_copy, support_morphisms_copy, 
+    local category, sorting_function, coefficients_copy, support_morphisms_copy, 
           coefficients_NF, support_morphisms_NF, m, c, i, m_compare;
     
-    if IsEmpty( coefficients ) then
+    category := CapCategory( source );
+    
+    if IsEmpty( coefficients ) or ( not category!.with_nf ) then
         
         return LinearClosureMorphismNC( source, coefficients, support_morphisms, range );
         
     fi;
     
     ## create normal form (NF)
-    sorting_function := CapCategory( source )!.sorting_function;
+    sorting_function := category!.sorting_function;
     
     coefficients_copy := ShallowCopy( coefficients );
     
@@ -204,6 +296,78 @@ InstallMethod( LinearClosureMorphismNC,
     
 end );
 
+##
+InstallGlobalFunction( LINEAR_CLOSURE_MORPHISM_SIMPLIFY,
+    function( alpha, arg... )
+        local abort, coeffs, supp, diff, s, test_func, pos, c, new_supp, new_coeffs;
+        
+        if Length( arg ) = 1 then
+            
+            abort := arg[1];
+            
+        else
+            
+            abort := false;
+            
+        fi;
+        
+        coeffs := ShallowCopy( CoefficientsList( alpha ) );
+        
+        supp := ShallowCopy( SupportMorphisms( alpha ) );
+        
+        new_supp := [];
+        
+        new_coeffs := [];
+        
+        while not IsEmpty( supp ) do
+            
+            s := supp[1];
+            
+            test_func := x -> IsCongruentForMorphisms( s, x );
+            
+            diff := [ 2 .. Length( supp ) ];
+            
+            pos := Concatenation( [1], PositionsProperty( supp{ diff }, test_func ) + 1 );
+            
+            c := Sum( coeffs{ pos } );
+            
+            if not IsZero( c ) then
+                
+                if abort then
+                    
+                    return false;
+                    
+                fi;
+                
+                Add( new_supp, s );
+                
+                Add( new_coeffs, c );
+                
+            fi;
+            
+            diff := Difference( [ 1 .. Length( supp ) ], pos ) ;
+            
+            supp := supp{ diff };
+            
+            coeffs := coeffs{ diff };
+            
+        od;
+        
+        if abort and IsEmpty( new_supp ) then
+            
+            return true;
+            
+        fi;
+        
+        return LinearClosureMorphismNC(
+            Source( alpha ),
+            new_coeffs,
+            new_supp,
+            Range( alpha )
+        );
+        
+end );
+
 ####################################
 ##
 ## Basic operations
@@ -213,21 +377,27 @@ end );
 
 InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     function( category )
-        local ring, underlying_category, sorting_function, mul_coeffs, mul_supp, one, zero, minus_one,
-              equality_func, finsets, rows, t_obj, t_finsets, FunctorMor, FunctorObj;
-        
-        ring := UnderlyingRing( category );
-        
-        underlying_category := UnderlyingCategory( category );
+        local ring, underlying_category, sorting_function, mul_coeffs, mul_supp, one, zero, minus_one, with_nf,
+              equality_func, finsets, rows, t_obj, t_finsets, FunctorMor, FunctorObj, cocycle;
+    
+    ring := UnderlyingRing( category );
+    
+    underlying_category := UnderlyingCategory( category );
+    
+    with_nf := category!.with_nf;
+    
+    if with_nf then
         
         sorting_function := category!.sorting_function;
         
-        one := One( ring );
-        
-        zero := Zero( ring );
-        
-        minus_one := MinusOne( ring );
-        
+    fi;
+    
+    one := One( ring );
+    
+    zero := Zero( ring );
+    
+    minus_one := MinusOne( ring );
+    
     ##
     AddIsEqualForObjects( category, {a, b} -> IsEqualForObjects( UnderlyingOriginalObject( a ), UnderlyingOriginalObject( b ) ) );
     
@@ -253,15 +423,29 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     ##
     AddIsEqualForMorphisms( category, {alpha, beta} -> equality_func( alpha, beta, IsEqualForMorphisms ) );
     
-    ##
-    AddIsCongruentForMorphisms( category, {alpha, beta} -> equality_func( alpha, beta, IsCongruentForMorphisms ) );
+    if with_nf then
+        
+        ##
+        AddIsCongruentForMorphisms( category, {alpha, beta} -> equality_func( alpha, beta, IsCongruentForMorphisms ) );
+        
+    else
+        
+        ##
+        AddIsCongruentForMorphisms( category, 
+            function( alpha, beta )
+                
+                return IsZeroForMorphisms( SubtractionForMorphisms( alpha, beta ) );
+                
+        end );
+        
+    fi;
     
     ##
     AddIsWellDefinedForObjects( category, x -> IsIdenticalObj( underlying_category, CapCategory( UnderlyingOriginalObject( x ) ) ) );
-    
+
     ##
     AddIsWellDefinedForMorphisms( category, 
-      function( alpha ) 
+    function( alpha ) 
         local coeffs, supp, size, s, i;
         
         coeffs := CoefficientsList( alpha );
@@ -286,6 +470,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             return false;
         fi;
         
+        if not with_nf then
+            
+            return true;
+            
+        fi;
+        
         if ForAny( coeffs, c -> IsZero( c ) ) then
             return false;
         fi;
@@ -306,22 +496,68 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         
     end );
     
-    mul_coeffs := {a,b} -> a * b;
-    
+    ##
     mul_supp := {alpha, beta} -> PreCompose( alpha, beta );
     
-    ##
-    AddPreCompose( category,
-      function( alpha, beta )
-        local coeffs, supp;
+    mul_coeffs := {a,b} -> a * b;
+    
+    if not IsBound( category!.cocycle ) then
         
-        coeffs := ListX( CoefficientsList( alpha ), CoefficientsList( beta ), mul_coeffs );
+        ##
+        AddPreCompose( category,
+        function( alpha, beta )
+            local coeffs, supp;
+            
+            coeffs := ListX( CoefficientsList( alpha ), CoefficientsList( beta ), mul_coeffs );
+            
+            supp := ListX( SupportMorphisms( alpha ), SupportMorphisms( beta ), mul_supp );
+            
+            return LinearClosureMorphism( Source( alpha ), coeffs, supp, Range( beta ) );
+            
+        end );
         
-        supp := ListX( SupportMorphisms( alpha ), SupportMorphisms( beta ), mul_supp );
+    else
         
-        return LinearClosureMorphism( Source( alpha ), coeffs, supp, Range( beta ) );
+        cocycle := category!.cocycle;
         
-    end );
+        ##
+        AddPreCompose( category,
+        function( alpha, beta )
+            local coeffs_alpha, coeffs_beta, supp_alpha, supp_beta, coeffs, supp, a, b, gamma, coeff;
+            
+            coeffs_alpha := CoefficientsList( alpha );
+            
+            coeffs_beta := CoefficientsList( beta );
+            
+            supp_alpha := SupportMorphisms( alpha );
+            
+            supp_beta := SupportMorphisms( beta );
+            
+            coeffs := [];
+            
+            supp := [];
+            
+            for a in [ 1 .. Size( coeffs_alpha ) ] do
+                
+                for b in [ 1 .. Size( coeffs_beta ) ] do
+                    
+                    gamma := mul_supp( supp_alpha[a], supp_beta[b] );
+                    
+                    coeff := mul_coeffs( coeffs_alpha[a], coeffs_beta[b] ) * cocycle( supp_alpha[a], supp_beta[b], gamma );
+                    
+                    Add( supp, gamma );
+                    
+                    Add( coeffs, coeff );
+                    
+                od;
+                
+            od;
+            
+            return LinearClosureMorphism( Source( alpha ), coeffs, supp, Range( beta ) );
+            
+        end );
+        
+    fi;
     
     ##
     AddIdentityMorphism( category,
@@ -339,13 +575,28 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         
     end );
     
-    ##
-    AddIsZeroForMorphisms( category,
-      function( alpha )
+    
+    if with_nf then
         
-        return IsEmpty( CoefficientsList( alpha ) );
+        ##
+        AddIsZeroForMorphisms( category,
+        function( alpha )
+            
+            return IsEmpty( CoefficientsList( alpha ) );
+            
+        end );
         
-    end );
+    else
+        
+        ##
+        AddIsZeroForMorphisms( category,
+        function( alpha )
+            
+            return LINEAR_CLOSURE_MORPHISM_SIMPLIFY( alpha, true );
+            
+        end );
+        
+    fi;
     
     ##
     AddAdditionForMorphisms( category,
@@ -391,6 +642,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         );
     end );
     
+    if not with_nf then
+        
+        ##
+        AddSimplifyMorphism( category,
+            function( alpha, i )
+                
+                return LINEAR_CLOSURE_MORPHISM_SIMPLIFY( alpha );
+                
+        end );
+        
+    fi;
+    
     ## Homomorphism structure
     
     if ForAll( 
@@ -401,7 +664,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
          "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ],
          f -> CanCompute( underlying_category, f ) )
          and 
-         IsCategoryOfSkeletalFinSets( RangeCategoryOfHomomorphismStructure( underlying_category ) ) then
+         IsCategoryOfSkeletalFinSets( RangeCategoryOfHomomorphismStructure( underlying_category ) )
+         and 
+         with_nf
+         then
             
         finsets := RangeCategoryOfHomomorphismStructure( underlying_category );
             
