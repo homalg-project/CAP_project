@@ -3086,14 +3086,14 @@ MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject := rec(
 ComponentOfMorphismIntoDirectSum := rec(
   installation_name := "ComponentOfMorphismIntoDirectSum",
   filter_list := [ "morphism", "list_of_objects", IsInt ],
-  io_type := [ [ "alpha", "S", "i" ], [ "alpha_source", "T" ] ],
+  io_type := [ [ "alpha", "S", "i" ], [ "alpha_source", "S_i" ] ],
   return_type := "morphism",
   dual_operation := "ComponentOfMorphismFromDirectSum" ),
 
 ComponentOfMorphismFromDirectSum := rec(
   installation_name := "ComponentOfMorphismFromDirectSum",
   filter_list := [ "morphism", "list_of_objects", IsInt ],
-  io_type := [ [ "alpha", "S", "i" ], [ "T", "alpha_range" ] ],
+  io_type := [ [ "alpha", "S", "i" ], [ "S_i", "alpha_range" ] ],
   return_type := "morphism",
   dual_operation := "ComponentOfMorphismIntoDirectSum" ),
 
