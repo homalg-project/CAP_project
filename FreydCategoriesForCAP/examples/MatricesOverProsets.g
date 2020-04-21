@@ -4,11 +4,10 @@
 
 LoadPackage( "FreydCategoriesForCAP" );;
 
-#!Incidence matrix of our proset
-K := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;
 #! @Example
-
-#! Construction of a tower of categories
+#Incidence matrix of our proset
+K := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;
+#Construction of a tower of categories
 CP_K := ProSetAsCategory( K );;
 ZZ := HomalgRingOfIntegers( );;
 ZP_K := LinearClosure( ZZ, CP_K, ReturnTrue );;
