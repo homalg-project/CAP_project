@@ -192,6 +192,20 @@ InstallMethod( CapFunctor,
     
 end );
 
+##
+InstallMethod( SourceOfFunctor,
+          [ IsCapFunctor ],
+  
+  F -> AsCapCategory( Source( F ) )
+);
+
+##
+InstallMethod( RangeOfFunctor,
+          [ IsCapFunctor ],
+  
+  F -> AsCapCategory( Range( F ) )
+);
+
 BindGlobal( "CAP_INTERNAL_SANITIZE_FUNC_LIST_FOR_FUNCTORS",
   
   function( list )

@@ -160,6 +160,16 @@ DeclareOperation( "CapFunctor",
                   [ IsString, IsList, IsCapCategoryAsCatObject ] );
 #! @EndGroup
 
+#! @Description
+#! The argument is a functor $F$. The output is its source as CAP category.
+#! @Arguments F
+DeclareAttribute( "SourceOfFunctor", IsCapFunctor );
+
+#! @Description
+#! The argument is a functor $F$. The output is its range as CAP category.
+#! @Arguments F
+DeclareAttribute( "RangeOfFunctor", IsCapFunctor );
+
 ####################################
 ##
 ## Add functions
