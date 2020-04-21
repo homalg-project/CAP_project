@@ -208,7 +208,8 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
   function( opposite_category, category )
     local recnames, current_recname, category_weight_list, dual_name, current_entry, func,
           current_add, create_func, create_func_with_category_input, morphism_between_direct_sums_func,
-          dual_preprocessor_func, dual_postprocessor_func;
+          dual_preprocessor_func, dual_postprocessor_func,
+          list_of_attributes, attr, tester, setter, getter;
     
     recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
     
@@ -311,6 +312,26 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
         current_add := ValueGlobal( Concatenation( "Add", current_recname ) );
         
         current_add( opposite_category, func );
+        
+    od;
+    
+    ## Take care of attributes
+    ## TODO: if there are more instances, set markers in the MethodRecord
+    list_of_attributes := [ "RangeCategoryOfHomomorphismStructure" ];
+    
+    for attr in list_of_attributes do
+        
+        tester := ValueGlobal( Concatenation( "Has", attr ) );
+        
+        if not tester( opposite_category ) and tester( category ) then
+            
+            setter := ValueGlobal( Concatenation( "Set", attr ) );
+            
+            getter := ValueGlobal( attr );
+            
+            setter( opposite_category, getter( category ) );
+            
+        fi;
         
     od;
     
