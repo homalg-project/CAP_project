@@ -317,7 +317,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
     
     ## Take care of attributes
     ## TODO: if there are more instances, set markers in the MethodRecord
-    list_of_attributes := [ "RangeCategoryOfHomomorphismStructure" ];
+    list_of_attributes := [ "RangeCategoryOfHomomorphismStructure", "CommutativeRingOfLinearCategory" ];
     
     for attr in list_of_attributes do
         
