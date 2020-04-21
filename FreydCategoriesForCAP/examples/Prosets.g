@@ -1,4 +1,8 @@
-LoadPackage("Freyd");
+#! @Chapter Examples and Tests
+
+#! @Section Prosets
+
+LoadPackage( "FreydCategoriesForCAP" );;
 
 #! @Example
 K := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;
@@ -43,5 +47,5 @@ fail = Lift(beta, gamma);
 Colift(alpha, gamma) = beta;
 #! true
 alpha = HomStructure(a, b, HomStructure(alpha));
-#!true
+#! true
 #! @EndExample
