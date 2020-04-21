@@ -31,7 +31,7 @@ InstallGlobalFunction( FREYD_CATEGORY,
     if not IsValidInputForFreydCategory( underlying_category ) then
         return false;
     fi;
-
+    
     freyd_category := CreateCapCategory( Concatenation( "Freyd( ", Name( underlying_category ), " )" ) );
     
     SetFilterObj( freyd_category, IsFreydCategory );
@@ -39,6 +39,16 @@ InstallGlobalFunction( FREYD_CATEGORY,
     SetIsAdditiveCategory( freyd_category, true );
     
     SetUnderlyingCategory( freyd_category, underlying_category );
+    
+    if HasIsLinearCategoryOverCommutativeRing( underlying_category )
+        and IsLinearCategoryOverCommutativeRing( underlying_category )
+          and HasCommutativeRingOfLinearCategory( underlying_category ) then
+      
+      SetIsLinearCategoryOverCommutativeRing( freyd_category, true );
+      
+      SetCommutativeRingOfLinearCategory( freyd_category, CommutativeRingOfLinearCategory( underlying_category ) );
+       
+    fi;
     
     ## Freyd's theorem
     if ForAll( [ "WeakKernelEmbedding", "WeakKernelLift" ], f -> CanCompute( underlying_category, f ) ) then
@@ -60,32 +70,32 @@ InstallGlobalFunction( FREYD_CATEGORY,
                     "RightUnitorInverseWithGivenTensorProduct" ];
     
     if ForAll( conditions, f -> CanCompute( underlying_category, f ) ) then
-
+      
       SetIsMonoidalCategory( freyd_category, true );
-
+    
     fi;
-
+    
     conditions := Concatenation( conditions, [ "BraidingWithGivenTensorProducts" ] );
     if ForAll( conditions, f -> CanCompute( underlying_category, f ) ) then
-
+      
       SetIsSymmetricMonoidalCategory( freyd_category, true );
-
+    
     fi;
-
+    
     conditions := Concatenation( conditions, [ "InternalHomOnMorphismsWithGivenInternalHoms",
                                                 "ProjectionOfBiasedWeakFiberProduct",
                                                 "UniversalMorphismIntoBiasedWeakFiberProduct",
                                                 "EvaluationMorphismWithGivenSource",
                                                 "CoevaluationMorphismWithGivenRange" ] );
     if ForAll( conditions, f -> CanCompute( underlying_category, f ) ) then
-
+      
       SetIsSymmetricClosedMonoidalCategory( freyd_category, true );
-
+    
     fi;
-
+    
     # is a Freyd category always not a strict monoidal category?
     # SetIsStrictMonoidalCategory( freyd_category, false );
-
+    
     AddObjectRepresentation( freyd_category, IsFreydCategoryObject );
     
     AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism and HasMorphismDatum );
@@ -93,7 +103,7 @@ InstallGlobalFunction( FREYD_CATEGORY,
     INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY( freyd_category );
     
     to_be_finalized := ValueOption( "FinalizeCategory" );
-      
+    
     if to_be_finalized = false then
       
       return freyd_category;
@@ -646,6 +656,19 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                                       Range( test_morphism ) );
         
     end );
+    
+    if is_possible_to_install( "MultiplyWithElementOfCommutativeRingForMorphisms",
+                               [ "MultiplyWithElementOfCommutativeRingForMorphisms" ] ) then
+        
+        AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+          { r, alpha } -> FreydCategoryMorphism(
+                              Source( alpha ),
+                              MultiplyWithElementOfCommutativeRingForMorphisms( r, MorphismDatum( alpha ) ),
+                              Range( alpha )
+                            )
+        );
+    
+    fi;
     
     if is_possible_to_install( "KernelEmbedding",
                                [ "ProjectionOfBiasedWeakFiberProduct" ] ) then
