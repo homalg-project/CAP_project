@@ -1271,13 +1271,13 @@ InstallMethod( Display,
     
     object_list := ObjectList( object );
     
-    Print( Concatenation( "A formal direct sum consisting of ", String( Size( object_list ) ), " objects." ) );
+    Print( Concatenation( "A formal direct sum consisting of ", String( Size( object_list ) ), " objects.\n" ) );
     
     for obj in object_list do
         
-        Print( "\n" );
-        
         ViewObj( obj );
+        
+        Print( "\n" );
         
     od;
     
