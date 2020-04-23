@@ -29,7 +29,7 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Sebastian",
     LastName := "Gutsche",
-    WWWHome := "http://www.uni-siegen.de/fb6/rmi/",
+    WWWHome := "https://sebasguts.github.io/",
     Email := "gutsche@mathematik.uni-siegen.de",
     PostalAddress := Concatenation(
                "Department Mathematik\n",
