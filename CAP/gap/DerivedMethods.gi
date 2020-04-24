@@ -3479,7 +3479,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without
         
         return CallFuncList( ValueGlobal( without_given_name ), arg{[ 1 .. Length( arg ) - 1 ]} );
         
-    end : Description := Concatenation( with_given_name, "by calling ", without_given_name, " with the last argument dropped" ) );
+    end : Description := Concatenation( with_given_name, " by calling ", without_given_name, " with the last argument dropped" ) );
     
     AddDerivationToCAP( ValueGlobal( without_given_name ),
                         [ [ ValueGlobal( with_given_name ), 1 ],
@@ -3489,7 +3489,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without
         return CallFuncList( ValueGlobal( with_given_name ),
                                     Concatenation( arg, [ CallFuncList( ValueGlobal( object_name ), arg{object_arguments} ) ] ) );
         
-    end : Description := Concatenation( without_given_name, "by calling ", with_given_name, " with ", object_name, " as last argument" ) );
+    end : Description := Concatenation( without_given_name, " by calling ", with_given_name, " with ", object_name, " as last argument" ) );
     
 end );
 
