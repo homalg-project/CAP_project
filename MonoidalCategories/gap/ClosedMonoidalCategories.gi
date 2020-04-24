@@ -178,9 +178,9 @@ InstallMethod( TensorProductDualityCompatibilityMorphism,
   function( object_1, object_2 )
     
     return TensorProductDualityCompatibilityMorphismWithGivenObjects(
-             DualOnObjects( TensorProductOnObjects( object_1, object_2 ) ),
+             TensorProductOnObjects( DualOnObjects( object_1 ), DualOnObjects( object_2 ) ),
              object_1, object_2,
-             TensorProductOnObjects( DualOnObjects( object_1 ), DualOnObjects( object_2 ) )
+             DualOnObjects( TensorProductOnObjects( object_1, object_2 ) )
            );
     
 end );

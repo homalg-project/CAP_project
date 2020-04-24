@@ -10,7 +10,7 @@ DeclareGlobalVariable( "CAP_INTERNAL_CLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS
 
 DeclareGlobalVariable( "CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD" );
 
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsClosedMonoidalCategory  := Concatenation( [ 
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsClosedMonoidalCategory  := Concatenation( [
 "InternalHomOnObjects",
 "InternalHomOnMorphismsWithGivenInternalHoms",
 "EvaluationMorphismWithGivenSource",
@@ -28,7 +28,7 @@ DeclareOperation( "InternalHomOnObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$ 
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InternalHomOnObjects</C>.
 #! $F: (a,b) \mapsto \mathrm{\underline{Hom}}(a,b)$.
 #! @Returns nothing
@@ -58,7 +58,7 @@ DeclareOperation( "InternalHomOnMorphisms",
 #! The arguments are an object $s = \mathrm{\underline{Hom}}(a',b)$,
 #! two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$,
 #! and an object $r = \mathrm{\underline{Hom}}(a,b')$.
-#! The output is the internal hom morphism 
+#! The output is the internal hom morphism
 #! $\mathrm{\underline{Hom}}(\alpha,\beta): \mathrm{\underline{Hom}}(a',b) \rightarrow \mathrm{\underline{Hom}}(a,b')$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a',b), \mathrm{\underline{Hom}}(a,b') )$
 #! @Arguments s, alpha, beta, r
@@ -67,7 +67,7 @@ DeclareOperation( "InternalHomOnMorphismsWithGivenInternalHoms",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$ 
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InternalHomOnMorphismsWithGivenInternalHoms</C>.
 #! $F: (\mathrm{\underline{Hom}}(a',b), \alpha: a \rightarrow a', \beta: b \rightarrow b', \mathrm{\underline{Hom}}(a,b') ) \mapsto \mathrm{\underline{Hom}}(\alpha,\beta)$.
 #! @Returns nothing
@@ -106,7 +106,7 @@ DeclareOperation( "EvaluationMorphismWithGivenSource",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$ 
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>EvaluationMorphismWithGivenSource</C>.
 #! $F: (a, b, \mathrm{\underline{Hom}}(a,b) \otimes a) \mapsto \mathrm{ev}_{a,b}$.
 #! @Returns nothing
@@ -126,7 +126,7 @@ DeclareOperation( "AddEvaluationMorphismWithGivenSource",
 ##
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}(b, a \otimes b)}$, i.e.,
+#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}}(b, a \otimes b)$, i.e.,
 #! the unit of the tensor hom adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{\underline{Hom}}(b, a \otimes b) )$.
 #! @Arguments a,b
@@ -135,8 +135,8 @@ DeclareOperation( "CoevaluationMorphism",
 
 ## the last argument is $\mathrm{\underline{Hom}}(b, a \otimes b)$
 #! @Description
-#! The arguments are two objects $a,b$ and an object $r = \mathrm{\underline{Hom}(b, a \otimes b)}$.
-#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}(b, a \otimes b)}$, i.e.,
+#! The arguments are two objects $a,b$ and an object $r = \mathrm{\underline{Hom}}(b, a \otimes b)$.
+#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}}(b, a \otimes b)$, i.e.,
 #! the unit of the tensor hom adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{\underline{Hom}}(b, a \otimes b) )$.
 #! @Arguments a,b,r
@@ -145,7 +145,7 @@ DeclareOperation( "CoevaluationMorphismWithGivenRange",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$ 
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoevaluationMorphismWithGivenRange</C>.
 #! $F: (a, b, \mathrm{\underline{Hom}}(b, a \otimes b)) \mapsto \mathrm{coev}_{a,b}$.
 #! @Returns nothing
@@ -204,7 +204,7 @@ DeclareOperation( "InternalHomToTensorProductAdjunctionMap",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>InternalHomToTensorProductAdjunctionMap</C>.
-#! $F: (b, c, g: a \rightarrow \mathrm{\underline{Hom}}(b,c)) \mapsto ( g: a \otimes b \rightarrow c )$.
+#! $F: (b, c, g: a \rightarrow \mathrm{\underline{Hom}}(b,c)) \mapsto ( f: a \otimes b \rightarrow c )$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddInternalHomToTensorProductAdjunctionMap",
