@@ -193,7 +193,7 @@ DeclareOperation( "AddCoevaluationForDualWithGivenTensorProduct",
 
 ##
 #! @Description
-#! The argument is a morphism $\alpha$.
+#! The argument is an endomorphism $\alpha: A \rightarrow A$.
 #! The output is the trace morphism $\mathrm{trace}_{\alpha}: 1 \rightarrow 1$.
 #! @Returns a morphism in $\mathrm{Hom}(1,1)$.
 #! @Arguments alpha
