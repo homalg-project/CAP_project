@@ -450,20 +450,9 @@ InstallGlobalFunction( AddWithGivenDerivationPairToCAP,
     
     op_without_given := NameFunction( arg[ 1 ] );
     
-    op_with_given := Concatenation( op_without_given, "WithGiven" );
+    op_with_given := CAP_INTERNAL_METHOD_NAME_RECORD.(op_without_given).with_given_without_given_name_pair[ 2 ];
     
-    recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
-    
-    for i in recnames do
-        
-        if PositionSublist( i, op_with_given ) <> fail then
-            op_with_given := i;
-            break;
-        fi;
-        
-    od;
-    
-    ## Check wether arguments need to be filled
+    ## Check whether arguments need to be filled
     
     test_arg := arg[ Length( arg ) - 1 ];
     
