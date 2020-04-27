@@ -24,12 +24,14 @@ ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier := rec(
   installation_name := "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
   filter_list := [ "morphism" , "object" ],
   io_type := [ [ "alpha", "S" ] , [ "alpha_range" , "S" ] ],
+  number_of_diagram_arguments := 1,
   return_type := "morphism" ),
 
 ClassifyingMorphismOfSubobject := rec(
   installation_name := "ClassifyingMorphismOfSubobject",
   filter_list := [ "morphism" ],
   io_type := [ [ "alpha" ] , [ "alpha_range" , "S" ] ],
+  number_of_diagram_arguments := 1,
   return_type := "morphism" ),
 
 SubobjectOfClassifyingMorphism := rec(
