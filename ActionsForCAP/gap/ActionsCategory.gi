@@ -36,7 +36,7 @@ InstallMethod( LeftActionsCategory,
   function( acting_object, name, context_filter_list )
     local underlying_monoidal_category, preconditions, category_weight_list, i,
           structure_record, object_constructor, morphism_constructor, 
-          left_actions_category, identity_of_acting_object, finalize;
+          left_actions_category, identity_of_acting_object, tensor_preserves_epis, finalize;
     
     underlying_monoidal_category := CapCategory( acting_object );
     
@@ -187,23 +187,45 @@ InstallMethod( LeftActionsCategory,
                        "PreCompose",
                        "TensorProductOnMorphismsWithGivenTensorProducts",
                        "TensorProductOnObjects", #belongs to TensorProductOnMorphisms
-                       "Colift" ]; #note that we cannot use ColiftAlongEpimorphism since we don't know whether the tensor preserves epis.
+                     ];
+    
+    tensor_preserves_epis := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "TensorPreservesEpis", false );
+    if tensor_preserves_epis then
+        Add( preconditions, "ColiftAlongEpimorphism" );
+    else
+        # we cannot use ColiftAlongEpimorphism if the tensor does not preserve epis
+        Add( preconditions, "Colift" );
+    fi;
     
     if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
         
         identity_of_acting_object := IdentityMorphism( acting_object );
         
-        structure_record.Colift :=
-          function( epi, source )
-            local action_source, to_be_colifted;
-            
-            action_source := ObjectAttributesAsList( source )[1];
-            
-            to_be_colifted := PreCompose( action_source, epi );
-            
-            return [ Colift( TensorProductOnMorphisms( identity_of_acting_object, epi ), to_be_colifted ) ];
-            
-          end;
+        if tensor_preserves_epis then
+            structure_record.Colift :=
+              function( epi, source )
+                local action_source, to_be_colifted;
+                
+                action_source := ObjectAttributesAsList( source )[1];
+                
+                to_be_colifted := PreCompose( action_source, epi );
+                
+                return [ ColiftAlongEpimorphism( TensorProductOnMorphisms( identity_of_acting_object, epi ), to_be_colifted ) ];
+                
+              end;
+        else
+            structure_record.Colift :=
+              function( epi, source )
+                local action_source, to_be_colifted;
+                
+                action_source := ObjectAttributesAsList( source )[1];
+                
+                to_be_colifted := PreCompose( action_source, epi );
+                
+                return [ Colift( TensorProductOnMorphisms( identity_of_acting_object, epi ), to_be_colifted ) ];
+                
+              end;
+        fi;
         
     fi;
     
@@ -273,7 +295,7 @@ InstallMethod( RightActionsCategory,
   function( acting_object, name, context_filter_list )
     local underlying_monoidal_category, preconditions, category_weight_list, i,
           structure_record, object_constructor, morphism_constructor, 
-          right_actions_category, identity_of_acting_object, finalize;
+          right_actions_category, identity_of_acting_object, tensor_preserves_epis, finalize;
     
     underlying_monoidal_category := CapCategory( acting_object );
     
@@ -424,23 +446,45 @@ InstallMethod( RightActionsCategory,
                        "PreCompose",
                        "TensorProductOnMorphismsWithGivenTensorProducts",
                        "TensorProductOnObjects", #belongs to TensorProductOnMorphisms
-                       "Colift" ]; #note that we cannot use ColiftAlongEpimorphism since we don't know whether the tensor preserves epis.
+                     ];
+    
+    tensor_preserves_epis := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "TensorPreservesEpis", false );
+    if tensor_preserves_epis then
+        Add( preconditions, "ColiftAlongEpimorphism" );
+    else
+        # we cannot use ColiftAlongEpimorphism if the tensor does not preserve epis
+        Add( preconditions, "Colift" );
+    fi;
     
     if ForAll( preconditions, c -> CurrentOperationWeight( category_weight_list, c ) < infinity ) then
         
         identity_of_acting_object := IdentityMorphism( acting_object );
         
-        structure_record.Colift :=
-          function( epi, source )
-            local action_source, to_be_colifted;
-            
-            action_source := ObjectAttributesAsList( source )[1];
-            
-            to_be_colifted := PreCompose( action_source, epi );
-            
-            return [ Colift( TensorProductOnMorphisms( epi, identity_of_acting_object ), to_be_colifted ) ];
-            
-          end;
+        if tensor_preserves_epis then
+            structure_record.Colift :=
+              function( epi, source )
+                local action_source, to_be_colifted;
+                
+                action_source := ObjectAttributesAsList( source )[1];
+                
+                to_be_colifted := PreCompose( action_source, epi );
+                
+                return [ ColiftAlongEpimorphism( TensorProductOnMorphisms( epi, identity_of_acting_object ), to_be_colifted ) ];
+                
+              end;
+        else
+            structure_record.Colift :=
+              function( epi, source )
+                local action_source, to_be_colifted;
+                
+                action_source := ObjectAttributesAsList( source )[1];
+                
+                to_be_colifted := PreCompose( action_source, epi );
+                
+                return [ Colift( TensorProductOnMorphisms( epi, identity_of_acting_object ), to_be_colifted ) ];
+                
+              end;
+        fi;
         
     fi;
     
