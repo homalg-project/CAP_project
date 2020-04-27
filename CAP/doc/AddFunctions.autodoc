@@ -161,7 +161,7 @@ The record can have the following components, used as described:
                           If it is one of the first three options, the correct <C>Add</C> function (see above) is
                           used for the result of the computation. Otherwise, no <C>Add</C> function is used after all.
 
-* is_with_given: Boolean, marks wether the function which is to be installed a with given function or not.
+* is_with_given: Boolean, marks whether the function which is to be installed is a with given function or not.
 
 * with_given_without_given_name_pair (optional): If the currently installed operation has a corresponding with given operation or
                                                  is the with given of another operation, the names of both should be in this list.
