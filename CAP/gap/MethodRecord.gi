@@ -3207,6 +3207,12 @@ MorphismBetweenDirectSums := rec(
   pre_function := function( source, listlist, range )
     local sources, ranges, result, i, j;
       
+      if IsEmpty( listlist ) or ForAll( listlist, IsEmpty ) then
+          
+          return [ true ];
+          
+      fi;
+      
       sources := List( listlist, l -> Source( l[1] ) );
       ranges := List( listlist[1], l -> Range( l ) );
       
