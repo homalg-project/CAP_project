@@ -495,6 +495,55 @@ InstallGlobalFunction( CapInternalInstallAdd,
     
 end );
 
+BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without_given_name, with_given_name, object_name, object_arguments )
+    
+    AddDerivationToCAP( ValueGlobal( with_given_name ),
+                        [ [ ValueGlobal( without_given_name ), 1 ] ],
+      function( arg )
+        
+        return CallFuncList( ValueGlobal( without_given_name ), arg{[ 1 .. Length( arg ) - 1 ]} );
+        
+    end : Description := Concatenation( with_given_name, " by calling ", without_given_name, " with the last argument dropped" ) );
+    
+    AddDerivationToCAP( ValueGlobal( without_given_name ),
+                        [ [ ValueGlobal( with_given_name ), 1 ],
+                          [ ValueGlobal( object_name ), 1 ] ],
+      function( arg )
+        
+        return CallFuncList( ValueGlobal( with_given_name ),
+                                    Concatenation( arg, [ CallFuncList( ValueGlobal( object_name ), arg{object_arguments} ) ] ) );
+        
+    end : Description := Concatenation( without_given_name, " by calling ", with_given_name, " with ", object_name, " as last argument" ) );
+    
+end );
+
+BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATIONS", function( record )
+  local recnames, current_recname, current_rec, without_given_name, with_given_name, object_name, object_arguments;
+    
+    recnames := RecNames( record );
+    
+    for current_recname in recnames do
+        
+        current_rec := record.(current_recname);
+
+        if current_rec.is_with_given then
+            
+            without_given_name := current_rec.with_given_without_given_name_pair[1];
+            with_given_name := current_recname;
+            object_name := current_rec.universal_object;
+            if current_rec.number_of_diagram_arguments > 0 then
+                object_arguments := [ 1 .. current_rec.number_of_diagram_arguments ];
+            else
+                object_arguments := [ 1 ];
+            fi;
+            
+            CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR( without_given_name, with_given_name, object_name, object_arguments );
+            
+        fi;
+        
+    od;
+end );
+
 InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
     
   function( record )
@@ -505,6 +554,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
     recnames := RecNames( record );
     
     AddOperationsToDerivationGraph( CAP_INTERNAL_DERIVATION_GRAPH, recnames );
+    
+    CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATIONS( record );
     
     for current_recname in recnames do
         
