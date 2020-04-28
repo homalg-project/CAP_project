@@ -508,13 +508,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         
         rank_factor := RankOfObject( object_list[ projection_number ] );
         
-        projection_in_factor := HomalgZeroMatrix( rank_factor, rank_pre, ring );
-
-        projection_in_factor := UnionOfColumns( projection_in_factor,
-                                                HomalgIdentityMatrix( rank_factor, ring ) );
-
-        projection_in_factor := UnionOfColumns( projection_in_factor,
-                                                HomalgZeroMatrix( rank_factor, rank_post, ring ) );
+        projection_in_factor := UnionOfColumns( HomalgZeroMatrix( rank_factor, rank_pre, ring ),
+                                                HomalgIdentityMatrix( rank_factor, ring ),
+                                                HomalgZeroMatrix( rank_factor, rank_post, ring )
+                                              );
 
         return CategoryOfColumnsMorphism( direct_sum_object, projection_in_factor, object_list[ projection_number ] );
         
@@ -548,14 +545,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         rank_cofactor := RankOfObject( object_list[ injection_number ] );
 
         # now construct the mapping matrix
-        injection_of_cofactor := HomalgZeroMatrix( rank_pre, rank_cofactor, ring );
+        injection_of_cofactor := UnionOfRows( HomalgZeroMatrix( rank_pre, rank_cofactor, ring ),
+                                              HomalgIdentityMatrix( rank_cofactor, ring ),
+                                              HomalgZeroMatrix( rank_post, rank_cofactor, ring )
+                                            );
 
-        injection_of_cofactor := UnionOfRows( injection_of_cofactor,
-                                              HomalgIdentityMatrix( rank_cofactor, ring ) );
-        
-        injection_of_cofactor := UnionOfRows( injection_of_cofactor,
-                                              HomalgZeroMatrix( rank_post, rank_cofactor, ring ) );
-        
         return CategoryOfColumnsMorphism( object_list[ injection_number ], injection_of_cofactor, coproduct );
         
     end );
@@ -808,7 +802,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
                 
             elif nr_columns > 1 then
                 
-                underlying_matrix := Iterated( List( [ 1 .. nr_columns ], i -> CertainColumns( underlying_matrix, [ i ] ) ), UnionOfRows );
+                underlying_matrix := UnionOfRows( List( [ 1 .. nr_columns ], i -> CertainColumns( underlying_matrix, [ i ] ) ) );
                 
             fi;
             
@@ -837,7 +831,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
             
             underlying_matrix := UnderlyingMatrix( morphism );
 
-            underlying_matrix := Iterated( List( [ 1 .. nr_columns ], i -> CertainRows( underlying_matrix, [ ((i - 1) * nr_rows + 1) .. i * nr_rows ] ) ), UnionOfColumns );
+            underlying_matrix := UnionOfColumns( List( [ 1 .. nr_columns ], i -> CertainRows( underlying_matrix, [ ((i - 1) * nr_rows + 1) .. i * nr_rows ] ) ) );
             
             return CategoryOfColumnsMorphism( A, underlying_matrix, B );
             

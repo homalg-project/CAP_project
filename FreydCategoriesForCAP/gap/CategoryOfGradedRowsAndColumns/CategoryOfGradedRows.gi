@@ -493,13 +493,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         rank_factor := Rank( object_list[ projection_number ] );
         
         # construct the mapping as homalg matrix
-        projection_in_factor := HomalgZeroMatrix( rank_pre, rank_factor, underlying_graded_ring );
-        projection_in_factor := Iterated( [ projection_in_factor,
-                                            HomalgIdentityMatrix( rank_factor, underlying_graded_ring ) ],
-                                            UnionOfRows );
-        projection_in_factor := Iterated( [ projection_in_factor,
-                                            HomalgZeroMatrix( rank_post, rank_factor, underlying_graded_ring ) ],
-                                            UnionOfRows );
+        projection_in_factor := UnionOfRows( HomalgZeroMatrix( rank_pre, rank_factor, underlying_graded_ring ),
+                                             HomalgIdentityMatrix( rank_factor, underlying_graded_ring ),
+                                             HomalgZeroMatrix( rank_post, rank_factor, underlying_graded_ring )
+                                           );
         
         # and return the corresonding morphism
         return GradedRowOrColumnMorphism( direct_sum_object,
@@ -517,18 +514,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     # @Arguments diagram, sink, direct_sum
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
       function( diagram, sink, direct_sum )
-        local underlying_matrix_of_universal_morphism, morphism;
+        local underlying_matrix_of_universal_morphism;
         
         # construct the homalg matrix to represent the universal morphism
-        underlying_matrix_of_universal_morphism := UnderlyingHomalgMatrix( sink[ 1 ] );
-        
-        for morphism in sink{ [ 2 .. Length( sink ) ] } do
-        
-          underlying_matrix_of_universal_morphism := 
-            Iterated( [ underlying_matrix_of_universal_morphism, UnderlyingHomalgMatrix( morphism ) ],
-                      UnionOfColumns );
-        
-        od;
+        underlying_matrix_of_universal_morphism := UnionOfColumns( List( sink, s -> UnderlyingHomalgMatrix( s ) ) );
         
         # and then construct from it the corresponding morphism
         return GradedRowOrColumnMorphism( Source( sink[ 1 ] ),
@@ -556,13 +545,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
         rank_cofactor := Rank( object_list[ injection_number ] );
         
         # now construct the mapping matrix
-        injection_of_cofactor := HomalgZeroMatrix( rank_cofactor, rank_pre ,underlying_graded_ring );
-        injection_of_cofactor := Iterated( [ injection_of_cofactor,
-                                             HomalgIdentityMatrix( rank_cofactor, underlying_graded_ring ) ],
-                                            UnionOfColumns );
-        injection_of_cofactor := Iterated( [ injection_of_cofactor,
-                                             HomalgZeroMatrix( rank_cofactor, rank_post, underlying_graded_ring ) ],
-                                            UnionOfColumns );
+        injection_of_cofactor := UnionOfColumns( HomalgZeroMatrix( rank_cofactor, rank_pre ,underlying_graded_ring ),
+                                                 HomalgIdentityMatrix( rank_cofactor, underlying_graded_ring ),
+                                                 HomalgZeroMatrix( rank_cofactor, rank_post, underlying_graded_ring )
+                                               );
         
         # and construct the associated morphism
         return GradedRowOrColumnMorphism( object_list[ injection_number ],
@@ -580,16 +566,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     # @Arguments diagram, sink, coproduct
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
       function( diagram, sink, coproduct )
-        local underlying_matrix_of_universal_morphism, morphism;
+        local underlying_matrix_of_universal_morphism;
         
         underlying_matrix_of_universal_morphism := UnderlyingHomalgMatrix( sink[1] );
         
-        for morphism in sink{ [ 2 .. Length( sink ) ] } do
-        
-          underlying_matrix_of_universal_morphism := 
-            Iterated( [ underlying_matrix_of_universal_morphism, UnderlyingHomalgMatrix( morphism ) ], UnionOfRows );
-        
-        od;
+        underlying_matrix_of_universal_morphism := UnionOfRows( List( sink, s -> UnderlyingHomalgMatrix( s ) ) );
         
         return GradedRowOrColumnMorphism( coproduct,
                                           underlying_matrix_of_universal_morphism,

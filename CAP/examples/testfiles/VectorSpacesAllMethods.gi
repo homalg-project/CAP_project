@@ -218,13 +218,10 @@ AddInjectionOfCofactorOfDirectSum( vecspaces,
     
     coproduct := QVectorSpace( dim );
     
-    injection_of_cofactor := HomalgZeroMatrix( dim_cofactor, dim_pre ,VECTORSPACES_FIELD );
-    
-    injection_of_cofactor := UnionOfColumns( injection_of_cofactor, 
-                                         HomalgIdentityMatrix( dim_cofactor, VECTORSPACES_FIELD ) );
-    
-    injection_of_cofactor := UnionOfColumns( injection_of_cofactor, 
-                                         HomalgZeroMatrix( dim_cofactor, dim_post, VECTORSPACES_FIELD ) );
+    injection_of_cofactor := UnionOfColumns( HomalgZeroMatrix( dim_cofactor, dim_pre ,VECTORSPACES_FIELD ),
+                                             HomalgIdentityMatrix( dim_cofactor, VECTORSPACES_FIELD ),
+                                             HomalgZeroMatrix( dim_cofactor, dim_post, VECTORSPACES_FIELD )
+                                           );
     
     return VectorSpaceMorphism( object_product_list[ injection_number ], injection_of_cofactor, coproduct );
 
@@ -247,13 +244,10 @@ AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( vecspaces,
     
     dim_cofactor := Dimension( object_product_list[ injection_number ] );
     
-    injection_of_cofactor := HomalgZeroMatrix( dim_cofactor, dim_pre ,VECTORSPACES_FIELD );
-    
-    injection_of_cofactor := UnionOfColumns( injection_of_cofactor, 
-                                         HomalgIdentityMatrix( dim_cofactor, VECTORSPACES_FIELD ) );
-    
-    injection_of_cofactor := UnionOfColumns( injection_of_cofactor, 
-                                         HomalgZeroMatrix( dim_cofactor, dim_post, VECTORSPACES_FIELD ) );
+    injection_of_cofactor := UnionOfColumns( HomalgZeroMatrix( dim_cofactor, dim_pre ,VECTORSPACES_FIELD ),
+                                             HomalgIdentityMatrix( dim_cofactor, VECTORSPACES_FIELD ),
+                                             HomalgZeroMatrix( dim_cofactor, dim_post, VECTORSPACES_FIELD )
+                                           );
     
     return VectorSpaceMorphism( object_product_list[ injection_number ], injection_of_cofactor, coproduct );
 
@@ -263,7 +257,7 @@ end );
 AddUniversalMorphismFromDirectSum( vecspaces,
 
   function( diagram, sink )
-    local dim, coproduct, components, universal_morphism, morphism;
+    local dim, coproduct, components, universal_morphism;
     
     components := sink;
     
@@ -271,14 +265,8 @@ AddUniversalMorphismFromDirectSum( vecspaces,
     
     coproduct := QVectorSpace( dim );
     
-    universal_morphism := sink[1]!.morphism;
+    universal_morphism := UnionOfRows( List( components, c -> c!.morphism ) );
     
-    for morphism in components{ [ 2 .. Length( components ) ] } do
-    
-      universal_morphism := UnionOfRows( universal_morphism, morphism!.morphism );
-  
-    od;
-  
     return VectorSpaceMorphism( coproduct, universal_morphism, Range( sink[1] ) );
   
 end );
@@ -287,18 +275,12 @@ end );
 AddUniversalMorphismFromDirectSumWithGivenDirectSum( vecspaces,
 
   function( diagram, sink, coproduct )
-    local components, universal_morphism, morphism;
+    local components, universal_morphism;
     
     components := sink;
     
-    universal_morphism := sink[1]!.morphism;
-    
-    for morphism in components{ [ 2 .. Length( components ) ] } do
-    
-      universal_morphism := UnionOfRows( universal_morphism, morphism!.morphism );
-  
-    od;
-  
+    universal_morphism := UnionOfRows( List( components, c -> c!.morphism ) );
+
     return VectorSpaceMorphism( coproduct, universal_morphism, Range( sink[1] ) );
   
 end );
@@ -336,13 +318,10 @@ AddProjectionInFactorOfDirectSum( vecspaces,
     
     direct_product := QVectorSpace( dim );
     
-    projection_in_factor := HomalgZeroMatrix( dim_pre, dim_factor, VECTORSPACES_FIELD );
-    
-    projection_in_factor := UnionOfRows( projection_in_factor, 
-                                         HomalgIdentityMatrix( dim_factor, VECTORSPACES_FIELD ) );
-    
-    projection_in_factor := UnionOfRows( projection_in_factor, 
-                                         HomalgZeroMatrix( dim_post, dim_factor, VECTORSPACES_FIELD ) );
+    projection_in_factor := UnionOfRows( HomalgZeroMatrix( dim_pre, dim_factor, VECTORSPACES_FIELD ),
+                                         HomalgIdentityMatrix( dim_factor, VECTORSPACES_FIELD ),
+                                         HomalgZeroMatrix( dim_post, dim_factor, VECTORSPACES_FIELD )
+                                       );
     
     return VectorSpaceMorphism( direct_product, projection_in_factor, object_product_list[ projection_number ] );
 
@@ -365,13 +344,10 @@ AddProjectionInFactorOfDirectSumWithGivenDirectSum( vecspaces,
     
     dim_factor := Dimension( object_product_list[ projection_number ] );
     
-    projection_in_factor := HomalgZeroMatrix( dim_pre, dim_factor, VECTORSPACES_FIELD );
-    
-    projection_in_factor := UnionOfRows( projection_in_factor, 
-                                         HomalgIdentityMatrix( dim_factor, VECTORSPACES_FIELD ) );
-    
-    projection_in_factor := UnionOfRows( projection_in_factor, 
-                                         HomalgZeroMatrix( dim_post, dim_factor, VECTORSPACES_FIELD ) );
+    projection_in_factor := UnionOfRows( HomalgZeroMatrix( dim_pre, dim_factor, VECTORSPACES_FIELD ),
+                                         HomalgIdentityMatrix( dim_factor, VECTORSPACES_FIELD ),
+                                         HomalgZeroMatrix( dim_post, dim_factor, VECTORSPACES_FIELD )
+                                       );
     
     return VectorSpaceMorphism( direct_product, projection_in_factor, object_product_list[ projection_number ] );
 
@@ -380,7 +356,7 @@ end );
 AddUniversalMorphismIntoDirectSum( vecspaces,
 
   function( diagram, sink )
-    local dim, direct_product, components, universal_morphism, morphism;
+    local dim, direct_product, components, universal_morphism;
     
     components := sink;
     
@@ -388,14 +364,8 @@ AddUniversalMorphismIntoDirectSum( vecspaces,
     
     direct_product := QVectorSpace( dim );
     
-    universal_morphism := sink[1]!.morphism;
+    universal_morphism := UnionOfColumns( List( components, c -> c!.morphism ) );
     
-    for morphism in components{ [ 2 .. Length( components ) ] } do
-    
-      universal_morphism := UnionOfColumns( universal_morphism, morphism!.morphism );
-  
-    od;
-  
     return VectorSpaceMorphism( Source( sink[1] ), universal_morphism, direct_product );
   
 end );
@@ -403,17 +373,11 @@ end );
 AddUniversalMorphismIntoDirectSumWithGivenDirectSum( vecspaces,
 
   function( diagram, sink, direct_product )
-    local components, universal_morphism, morphism;
+    local components, universal_morphism;
     
     components := sink;
     
-    universal_morphism := sink[1]!.morphism;
-    
-    for morphism in components{ [ 2 .. Length( components ) ] } do
-    
-      universal_morphism := UnionOfColumns( universal_morphism, morphism!.morphism );
-  
-    od;
+    universal_morphism := UnionOfColumns( List( components, c -> c!.morphism ) );
   
     return VectorSpaceMorphism( Source( sink[1] ), universal_morphism, direct_product );
   
