@@ -46,6 +46,11 @@ IsWellDefined( gamma );
 #! true
 MorphismMatrix( gamma ) = P;
 #! true
+delta := Lift( gamma, beta );;
+IsWellDefined( delta );
+#! true
+IsCongruentForMorphisms( gamma, PreCompose( delta, beta ) );
+#! true
 
 
 # E and EE are both occupied by GAP
@@ -87,6 +92,11 @@ gamma := PreCompose( alpha, beta );;
 IsWellDefined( gamma );
 #! true
 MorphismMatrix( gamma ) = P;
+#! true
+delta := Lift( gamma, beta );;
+IsWellDefined( delta );
+#! true
+IsCongruentForMorphisms( gamma, PreCompose( delta, beta ) );
 #! true
 
 #! @EndExample
