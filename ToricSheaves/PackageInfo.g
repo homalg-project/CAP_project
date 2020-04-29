@@ -63,7 +63,7 @@ Dependencies := rec(
                            [ "GradedModulePresentationsForCAP", ">=0" ],
                            [ "GeneralizedMorphismsForCAP", ">=0" ],
                            [ "PolymakeInterface", ">=0" ],
-                           [ "4ti2Interface", ">=0" ] ],
+                           [ "4ti2Interface", ">=2020.04.01" ] ],
   SuggestedOtherPackages := [ [ "ToricVarieties", ">=0" ] ],
   ExternalConditions := [ ],
 ),

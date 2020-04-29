@@ -55,7 +55,7 @@ BindGlobal( "CAP_INTERNAL_construct_quotient_ring",
     monomials := generating_monomials;
     
     if monomials <> [ ] then
-        relations := 4ti2Interface_groebner_matrix( monomials );
+        relations := 4ti2Interface_groebner_matrix( monomials : precision := "gmp" );
     else
         relations := [ ];
     fi;
@@ -182,13 +182,13 @@ BindGlobal( "CAP_INTERNAL_degree_part_relations",
                 
                 monomial_solution := 4ti2Interface_zsolve_equalities_and_inequalities(
                                         transposed_degree_zero_generating_set, current_intersected_point - degree_basis_elements[ j ],
-                                        positive_orthant_inequalities, positive_orthant_inequalities_rhs );
+                                        positive_orthant_inequalities, positive_orthant_inequalities_rhs : precision := "gmp" );
                 
                 current_vector[ i ] := monomial_solution[ 1 ][ 1 ];
                 
                 monomial_solution := 4ti2Interface_zsolve_equalities_and_inequalities( 
                                         transposed_degree_zero_generating_set, current_intersected_point - degree_basis_elements[ i ], 
-                                        positive_orthant_inequalities, positive_orthant_inequalities_rhs );
+                                        positive_orthant_inequalities, positive_orthant_inequalities_rhs : precision := "gmp" );
                 
                 current_vector[ j ] := monomial_solution[ 1 ][ 1 ];
                 
@@ -278,7 +278,7 @@ BindGlobal( "CAP_INTERNAL_result_of_generator",
                 
                 current_solution := 4ti2Interface_zsolve_equalities_and_inequalities(
                                         base_ring_generators_transposed, current_monomial - new_generators[ i ],
-                                        inequality_matrix_list, inequality_matrix_list_rhs );
+                                        inequality_matrix_list, inequality_matrix_list_rhs : precision := "gmp" );
                 
                 if current_solution <> [ ] and current_solution[ 1 ] <> [ ] then
                     Add( collected_vectors, [ i, current_solution[ 1 ][ 1 ] ] );
