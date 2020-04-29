@@ -6,14 +6,15 @@ CohH7 := CategoryOfToricSheaves( H7 );
 
 S := CoxRing( H7 );
 
-Mirr := HomalgMatrix( "[x_3*x_4,x_1*x_4,x_1*x_2,x_2*x_3]",4,1,S );
-
 gen_degs := DegreesOfGenerators( IrrelevantIdeal( H7 ) );
 
-Irrel := AsGradedLeftPresentation( Mirr );
+## A module supported on the irrelevant locus
+Mirr := AsGradedLeftPresentation( HomalgMatrix( "[x_1*x_2, x_1*x_3, x_2*x_4, x_3*x_4]", 4, 1, S ) );
 
-SheafIrrel := AsSerreQuotientCategoryObject( CohH7, Irrel );
+SheafMirr := AsSerreQuotientCategoryObject( CohH7, Mirr );
 
-MS := AsGradedLeftPresentation( FreeLeftPresentation( 1, S ) );
+Assert( 0, IsZero( SheafMirr ) );
+
+MS := GradedFreeLeftPresentation( 1, S );
 
 SheafS := AsSerreQuotientCategoryObject( CohH7, MS );

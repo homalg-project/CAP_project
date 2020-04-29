@@ -36,7 +36,7 @@ InstallMethod( CategoryOfToricSheaves,
     
     presentation_category := GradedLeftPresentations( graded_ring );
     
-    if IsFree( DegreeGroup( graded_ring ) ) and ForAll( degree_matrix_as_list_list, i -> ForAll( i, j -> j >= 0 ) ) and comes_from_smooth_variety then
+    if IsFree( DegreeGroup( graded_ring ) ) and Rank( DegreeGroup( graded_ring ) ) = 1 and ForAll( degree_matrix_as_list_list, i -> ForAll( i, j -> j >= 0 ) ) and comes_from_smooth_variety then
         
         test_function := module -> IsZero( HilbertPolynomial( UnderlyingMatrixOverNonGradedRing( UnderlyingMatrix( module ) ) ) );
         
