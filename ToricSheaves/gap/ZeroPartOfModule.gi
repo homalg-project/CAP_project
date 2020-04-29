@@ -49,7 +49,7 @@ BindGlobal( "CAP_INTERNAL_degree_zero_monomials",
 end );
 
 BindGlobal( "CAP_INTERNAL_construct_quotient_ring",
-  function( generating_monomials )
+  function( generating_monomials, k )
     local monomials, relations, indet_string, ring, indeterminates, i, j, left_side, right_side;
     
     monomials := generating_monomials;
@@ -64,7 +64,7 @@ BindGlobal( "CAP_INTERNAL_construct_quotient_ring",
     
     indet_string := JoinStringsWithSeparator( indet_string, "," );
     
-    ring := HomalgFieldOfRationalsInSingular()*indet_string;
+    ring := k * indet_string;
     
     if relations <> [ ] then
         
@@ -355,12 +355,12 @@ BindGlobal( "CAP_INTERNAL_block_matrix_to_matrix",
 end );
 
 BindGlobal( "CAP_INTERNAL_degree_zero_ring_and_generators",
-  function( ring_degrees, kernel_of_ring_degrees, localized_variables )
+  function( ring_degrees, kernel_of_ring_degrees, localized_variables, k )
     local ring_generators, ring_as_quotient;
     
     ring_generators := CAP_INTERNAL_degree_zero_monomials( ring_degrees, kernel_of_ring_degrees, localized_variables );
     
-    ring_as_quotient := CAP_INTERNAL_construct_quotient_ring( ring_generators );
+    ring_as_quotient := CAP_INTERNAL_construct_quotient_ring( ring_generators, k );
     
     return [ ring_generators, ring_as_quotient ];
     

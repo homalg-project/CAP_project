@@ -11,10 +11,12 @@ InstallMethod( DegreeZeroPartFunctor,
                [ IsCapCategory, IsList ],
                
   function( graded_module_category, localized_vars )
-    local ring, degree_matrix_list, degree_matrix, degree_matrix_as_list_list, module_map, kernel_of_degree_map, localized_degree_zero_ring,
-          range_category, functor, object_function, morphism_function;
+    local ring, k, degree_matrix_list, degree_matrix, degree_matrix_as_list_list, module_map, kernel_of_degree_map, localized_degree_zero_ring,
+          range_category, functor, object_function, morphism_function, i;
     
     ring := graded_module_category!.ring_for_representation_category;
+    
+    k := UnderlyingNonGradedRing( CoefficientsRing( ring ) );
     
     #Make the degrees fixed once and for all
     ByASmallerPresentation( DegreeGroup( ring ) );
@@ -34,8 +36,8 @@ InstallMethod( DegreeZeroPartFunctor,
     module_map := HomalgMap( degree_matrix, "free", DegreeGroup( ring ) );
     
     kernel_of_degree_map := MatrixOfMap( KernelEmb( module_map ) );
-    
-    localized_degree_zero_ring := CAP_INTERNAL_degree_zero_ring_and_generators( degree_matrix, kernel_of_degree_map, localized_vars );
+
+    localized_degree_zero_ring := CAP_INTERNAL_degree_zero_ring_and_generators( degree_matrix, kernel_of_degree_map, localized_vars, k );
     
     range_category := LeftPresentations( localized_degree_zero_ring[ 2 ] );
     
