@@ -610,7 +610,7 @@ InstallMethod( CanonicalProjection,
     
     underlying_honest := UnderlyingHonestCategory( category );
     
-    functor := CapFunctor( Concatenation( "Embedding in ", Name( category ) ), underlying_honest, category );
+    functor := CapFunctor( Concatenation( "Localization functor of ", Name( category ) ), underlying_honest, category );
     
     AddObjectFunction( functor,
         
