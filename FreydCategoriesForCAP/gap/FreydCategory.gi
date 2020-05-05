@@ -1006,7 +1006,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 and IsAdditiveCategory( range_category )
                 and ForAll(
                     [ "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ],
-                    f -> CanCompute( underlying_category, f ) )  then
+                    f -> CanCompute( range_category, f ) )  then
             
             if IsIdenticalObj( range_category, underlying_category ) then
                 
