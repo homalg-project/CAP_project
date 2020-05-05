@@ -12,7 +12,7 @@ InstallMethod( DegreeZeroPartFunctor,
                
   function( graded_module_category, localized_vars )
     local ring, degree_matrix_list, degree_matrix, degree_matrix_as_list_list, module_map, kernel_of_degree_map, localized_degree_zero_ring,
-          range_category, functor, object_function, morphism_function, i;
+          range_category, functor, object_function, morphism_function;
     
     ring := graded_module_category!.ring_for_representation_category;
     
@@ -27,11 +27,7 @@ InstallMethod( DegreeZeroPartFunctor,
         Error( "ring has no indeterminates" );
     fi;
     
-    degree_matrix := degree_matrix_list[ 1 ];
-    
-    for i in [ 2 .. Length( degree_matrix_list ) ] do
-        degree_matrix := UnionOfRows( degree_matrix, degree_matrix_list[ i ] );
-    od;
+    degree_matrix := UnionOfRows( degree_matrix_list );
     
     degree_matrix_as_list_list := EntriesOfHomalgMatrixAsListList( degree_matrix );
     
@@ -46,7 +42,7 @@ InstallMethod( DegreeZeroPartFunctor,
     functor := CapFunctor( Concatenation( "Degree zero functor localized by ", String( localized_vars ) ), graded_module_category, range_category );
     
     object_function := function( module )
-        local range_degrees, module_matrix, non_trivial_degrees, degree_positions, source_degrees, new_module;
+        local range_degrees, module_matrix, non_trivial_degrees, degree_positions, source_degrees, new_module, i;
         
         range_degrees := GeneratorDegrees( module );
         

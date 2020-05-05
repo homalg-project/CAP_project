@@ -20,7 +20,7 @@ InstallMethod( CategoryOfToricSheaves,
                [ IsHomalgGradedRing, IsList, IsBool ],
                
   function( graded_ring, irrelevant_ideal_generators, comes_from_smooth_variety )
-    local degree_matrix_list, i, degree_matrix, degree_matrix_as_list_list, test_function, functor_list, presentation_category, serre_quotient_category;
+    local degree_matrix_list, degree_matrix, degree_matrix_as_list_list, test_function, functor_list, presentation_category, serre_quotient_category;
     
     degree_matrix_list := WeightsOfIndeterminates( graded_ring );
     
@@ -30,11 +30,7 @@ InstallMethod( CategoryOfToricSheaves,
         Error( "ring has no indeterminates" );
     fi;
     
-    degree_matrix := degree_matrix_list[ 1 ];
-    
-    for i in [ 2 .. Length( degree_matrix_list ) ] do
-        degree_matrix := UnionOfRows( degree_matrix, degree_matrix_list[ i ] );
-    od;
+    degree_matrix := UnionOfRows( degree_matrix_list );
     
     degree_matrix_as_list_list := EntriesOfHomalgMatrixAsListList( degree_matrix );
     

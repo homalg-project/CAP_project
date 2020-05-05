@@ -831,7 +831,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
                                                  
       function( product_object, component_number, direct_sum_object )
-        local objects, object_column_dimension, dimension_of_factor, projection, projection_matrix, i;
+        local objects, object_column_dimension, dimension_of_factor, projection, projection_matrix;
         
         objects := product_object;
         
@@ -844,13 +844,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
         
         projection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], homalg_ring );
         
-        projection_matrix := projection[ 1 ];
-        
-        for i in [ 2 .. Length( objects ) ] do
-            
-            projection_matrix := UnionOfRows( projection_matrix, projection[ i ] );
-            
-        od;
+        projection_matrix := UnionOfRows( projection );
         
         return PresentationMorphism( direct_sum_object, projection_matrix, objects[ component_number ] );
         
@@ -859,19 +853,13 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
                                                                  
       function( diagram, product_morphism, direct_sum )
-        local components, number_of_components, map_into_product, i;
+        local components, number_of_components, map_into_product;
         
         components := product_morphism;
         
         number_of_components := Length( components );
         
-        map_into_product := UnderlyingMatrix( components[ 1 ] );
-        
-        for i in [ 2 .. number_of_components ] do
-            
-            map_into_product := UnionOfColumns( map_into_product, UnderlyingMatrix( components[ i ] ) );
-            
-        od;
+        map_into_product := UnionOfColumns( List( components, c -> UnderlyingMatrix( c ) ) );
         
         return PresentationMorphism( Source( components[ 1 ] ), map_into_product, direct_sum );
         
@@ -880,7 +868,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
                                               
       function( product_object, component_number, direct_sum_object )
-        local objects, object_column_dimension, dimension_of_cofactor, injection, injection_matrix, i;
+        local objects, object_column_dimension, dimension_of_cofactor, injection, injection_matrix;
         
         objects := product_object;
         
@@ -892,13 +880,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
         
         injection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], homalg_ring );
         
-        injection_matrix := injection[ 1 ];
-        
-        for i in [ 2 .. Length( objects ) ] do
-            
-            injection_matrix := UnionOfColumns( injection_matrix, injection[ i ] );
-            
-        od;
+        injection_matrix := UnionOfColumns( injection );
         
         return PresentationMorphism( objects[ component_number ], injection_matrix, direct_sum_object );
         
@@ -907,19 +889,13 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
                                                          
       function( diagram, product_morphism, direct_sum )
-        local components, number_of_components, map_into_product, i;
+        local components, number_of_components, map_into_product;
         
         components := product_morphism;
         
         number_of_components := Length( components );
         
-        map_into_product := UnderlyingMatrix( components[ 1 ] );
-        
-        for i in [ 2 .. number_of_components ] do
-            
-            map_into_product := UnionOfRows( map_into_product, UnderlyingMatrix( components[ i ] ) );
-            
-        od;
+        map_into_product := UnionOfRows( List( components, c -> UnderlyingMatrix( c ) ) );
         
         return PresentationMorphism( direct_sum, map_into_product, Range( components[ 1 ] ) );
         
@@ -953,7 +929,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
                                                  
       function( product_object, component_number, direct_sum_object )
-        local objects, object_column_dimension, dimension_of_factor, projection, projection_matrix, i;
+        local objects, object_column_dimension, dimension_of_factor, projection, projection_matrix;
         
         objects := product_object;
         
@@ -965,13 +941,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
         
         projection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], homalg_ring );
         
-        projection_matrix := projection[ 1 ];
-        
-        for i in [ 2 .. Length( objects ) ] do
-            
-            projection_matrix := UnionOfColumns( projection_matrix, projection[ i ] );
-            
-        od;
+        projection_matrix := UnionOfColumns( projection );
         
         return PresentationMorphism( direct_sum_object, projection_matrix, objects[ component_number ] );
         
@@ -980,19 +950,13 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
                                                                  
       function( diagram, product_morphism, direct_sum )
-        local components, number_of_components, map_into_product, i;
+        local components, number_of_components, map_into_product;
         
         components := product_morphism;
         
         number_of_components := Length( components );
         
-        map_into_product := UnderlyingMatrix( components[ 1 ] );
-        
-        for i in [ 2 .. number_of_components ] do
-            
-            map_into_product := UnionOfRows( map_into_product, UnderlyingMatrix( components[ i ] ) );
-            
-        od;
+        map_into_product := UnionOfRows( List( components, c -> UnderlyingMatrix( c ) ) );
         
         return PresentationMorphism( Source( components[ 1 ] ), map_into_product, direct_sum );
         
@@ -1001,7 +965,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
                                               
       function( product_object, component_number, direct_sum_object )
-        local objects, object_column_dimension, dimension_of_cofactor, injection, injection_matrix, i;
+        local objects, object_column_dimension, dimension_of_cofactor, injection, injection_matrix;
         
         objects := product_object;
         
@@ -1013,13 +977,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
         
         injection[ component_number ] := HomalgIdentityMatrix( object_column_dimension[ component_number ], homalg_ring );
         
-        injection_matrix := injection[ 1 ];
-        
-        for i in [ 2 .. Length( objects ) ] do
-            
-            injection_matrix := UnionOfRows( injection_matrix, injection[ i ] );
-            
-        od;
+        injection_matrix := UnionOfRows( injection );
         
         return PresentationMorphism( objects[ component_number ], injection_matrix, direct_sum_object );
         
@@ -1028,19 +986,13 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
                                                          
       function( diagram, product_morphism, direct_sum )
-        local components, number_of_components, map_into_product, i;
+        local components, number_of_components, map_into_product;
         
         components := product_morphism;
         
         number_of_components := Length( components );
         
-        map_into_product := UnderlyingMatrix( components[ 1 ] );
-        
-        for i in [ 2 .. number_of_components ] do
-            
-            map_into_product := UnionOfColumns( map_into_product, UnderlyingMatrix( components[ i ] ) );
-            
-        od;
+        map_into_product := UnionOfColumns( List( components, c -> UnderlyingMatrix( c ) ) );
         
         return PresentationMorphism( direct_sum, map_into_product, Range( components[ 1 ] ) );
         
@@ -1828,7 +1780,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
     zero_1  := HomalgZeroMatrix( NrRows( A )*NrColumns( A ), NrRows( P )*NrRows( M ), homalg_ring );
     
-    mat1 := UnionOfColumns( UnionOfColumns( B_tr_I, N_tr_I ), zero_1 );
+    mat1 := UnionOfColumns( B_tr_I, N_tr_I, zero_1 );
     
     I_P := KroneckerMat( HomalgIdentityMatrix( NrColumns( M ) ,homalg_ring ), P );
     
@@ -1836,7 +1788,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
     M_tr_I := KroneckerMat( TransposedMatrix( M ), HomalgIdentityMatrix( NrRows( P ) ,homalg_ring ) );
     
-    mat2 := UnionOfColumns( UnionOfColumns( I_P, zero_2 ), M_tr_I );
+    mat2 := UnionOfColumns( I_P, zero_2, M_tr_I );
     
     mat := UnionOfRows( mat1, mat2 );
     
@@ -1846,7 +1798,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
        
     else
        
-       vec_A := Iterated( List( [ 1 .. NrColumns( A ) ], i-> CertainColumns( A, [ i ] ) ), UnionOfRows ); 
+       vec_A := UnionOfRows( List( [ 1 .. NrColumns( A ) ], i-> CertainColumns( A, [ i ] ) ) );
        
     fi;
     
@@ -1865,7 +1817,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
        if v <= 1 then
           XX := CertainRows( sol, [ 1.. s ] );
        else
-          XX := Iterated( List( [ 1 .. v ], i-> CertainRows( sol, [ (i-1)*s+1.. i*s ] ) ), UnionOfColumns );
+          XX := UnionOfColumns( List( [ 1 .. v ], i-> CertainRows( sol, [ (i-1)*s+1.. i*s ] ) ) );
        fi;
        
        return PresentationMorphism( Source( morphism_1 ), XX, Source( morphism_2 ) );
@@ -1934,7 +1886,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     if NrColumns( A ) <= 1 then 
         vec := A_over_zero;
     else
-        vec := Iterated( List( [ 1 .. NrColumns( A ) ], i-> CertainColumns( A_over_zero, [ i ] ) ), UnionOfRows );
+        vec := UnionOfRows( List( [ 1 .. NrColumns( A ) ], i-> CertainColumns( A_over_zero, [ i ] ) ) );
     fi;
 
     sol := LeftDivide( mat, vec );
@@ -1952,7 +1904,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
        if s <= 1 then 
           XX := CertainRows( sol, [ 1.. v ] );
        else
-          XX := Iterated( List( [ 1 .. s ], i-> CertainRows( sol, [ (i-1)*v+1.. i*v ] ) ), UnionOfColumns );
+          XX := UnionOfColumns( List( [ 1 .. s ], i-> CertainRows( sol, [ (i-1)*v+1.. i*v ] ) ) );
        fi;
        
        return PresentationMorphism( Range( morphism_1 ), XX, Range( morphism_2 ) );
@@ -2026,7 +1978,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     
     zero_1  := HomalgZeroMatrix( NrRows( At )*NrColumns( At ), NrRows( Pt )*NrRows( Mt ), homalg_ring );
     
-    mat1 := UnionOfColumns( UnionOfColumns( B_tr_I, N_tr_I ), zero_1 );
+    mat1 := UnionOfColumns( B_tr_I, N_tr_I, zero_1 );
     
     I_P := KroneckerMat( HomalgIdentityMatrix( NrColumns( Mt ) ,homalg_ring ), Pt );
     
@@ -2034,7 +1986,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     
     M_tr_I := KroneckerMat( TransposedMatrix( Mt ), HomalgIdentityMatrix( NrRows( Pt ) ,homalg_ring ) );
     
-    mat2 := UnionOfColumns( UnionOfColumns( I_P, zero_2 ), M_tr_I );
+    mat2 := UnionOfColumns( I_P, zero_2, M_tr_I );
     
     mat := UnionOfRows( mat1, mat2 );
     
@@ -2044,7 +1996,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
        
     else
        
-       vec_A := Iterated( List( [ 1 .. NrColumns( At ) ], i-> CertainColumns( At, [ i ] ) ), UnionOfRows ); 
+       vec_A := UnionOfRows( List( [ 1 .. NrColumns( At ) ], i-> CertainColumns( At, [ i ] ) ) );
        
     fi;
     
@@ -2063,7 +2015,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
        if v <= 1 then
           XX := TransposedMatrix( CertainRows( sol, [ 1.. s ] ) );
        else
-          XX := TransposedMatrix( Iterated( List( [ 1 .. v ], i-> CertainRows( sol, [ (i-1)*s+1.. i*s ] ) ), UnionOfColumns ) );
+          XX := TransposedMatrix( UnionOfColumns( List( [ 1 .. v ], i-> CertainRows( sol, [ (i-1)*s+1.. i*s ] ) ) ) );
        fi;
        
        return PresentationMorphism( Source( morphism_1 ), XX, Source( morphism_2 ) );
@@ -2114,7 +2066,7 @@ end );
     if NrColumns( At ) <= 1 then 
         vec := A_over_zero;
     else
-        vec := Iterated( List( [ 1 .. NrColumns( At ) ], i-> CertainColumns( A_over_zero, [ i ] ) ), UnionOfRows );
+        vec := UnionOfRows( List( [ 1 .. NrColumns( At ) ], i-> CertainColumns( A_over_zero, [ i ] ) ) );
     fi;
 
     sol := LeftDivide( mat, vec );
@@ -2132,7 +2084,7 @@ end );
        if s <= 1 then 
           XX := TransposedMatrix( CertainRows( sol, [ 1.. v ] ) );
        else
-          XX := TransposedMatrix( Iterated( List( [ 1 .. s ], i-> CertainRows( sol, [ (i-1)*v+1.. i*v ] ) ), UnionOfColumns ) );
+          XX := TransposedMatrix( UnionOfColumns( List( [ 1 .. s ], i-> CertainRows( sol, [ (i-1)*v+1.. i*v ] ) ) ) );
        fi;
        
        return PresentationMorphism( Range( morphism_1 ), XX, Range( morphism_2 ) );

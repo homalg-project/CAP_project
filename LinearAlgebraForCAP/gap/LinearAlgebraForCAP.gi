@@ -339,13 +339,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         dim_factor := Dimension( object_list[ projection_number ] );
         
-        projection_in_factor := HomalgZeroMatrix( dim_pre, dim_factor, homalg_field );
-        
-        projection_in_factor := UnionOfRows( projection_in_factor, 
-                                             HomalgIdentityMatrix( dim_factor, homalg_field ) );
-        
-        projection_in_factor := UnionOfRows( projection_in_factor, 
-                                             HomalgZeroMatrix( dim_post, dim_factor, homalg_field ) );
+        projection_in_factor := UnionOfRows( HomalgZeroMatrix( dim_pre, dim_factor, homalg_field ),
+                                             HomalgIdentityMatrix( dim_factor, homalg_field ),
+                                             HomalgZeroMatrix( dim_post, dim_factor, homalg_field )
+                                           );
         
         return VectorSpaceMorphism( direct_sum_object, projection_in_factor, object_list[ projection_number ] );
         
@@ -354,17 +351,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
       function( diagram, sink, direct_sum )
-        local underlying_matrix_of_universal_morphism, morphism;
+        local underlying_matrix_of_universal_morphism;
         
-        underlying_matrix_of_universal_morphism := UnderlyingMatrix( sink[1] );
-        
-        for morphism in sink{ [ 2 .. Length( sink ) ] } do
-          
-          underlying_matrix_of_universal_morphism := 
-            UnionOfColumns( underlying_matrix_of_universal_morphism, UnderlyingMatrix( morphism ) );
-          
-        od;
-        
+        underlying_matrix_of_universal_morphism := UnionOfColumns( List( sink, s -> UnderlyingMatrix( s ) ) );
+
         return VectorSpaceMorphism( Source( sink[1] ), underlying_matrix_of_universal_morphism, direct_sum );
       
     end );
@@ -382,13 +372,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         dim_cofactor := Dimension( object_list[ injection_number ] );
         
-        injection_of_cofactor := HomalgZeroMatrix( dim_cofactor, dim_pre ,homalg_field );
-        
-        injection_of_cofactor := UnionOfColumns( injection_of_cofactor, 
-                                             HomalgIdentityMatrix( dim_cofactor, homalg_field ) );
-        
-        injection_of_cofactor := UnionOfColumns( injection_of_cofactor, 
-                                             HomalgZeroMatrix( dim_cofactor, dim_post, homalg_field ) );
+        injection_of_cofactor := UnionOfColumns( HomalgZeroMatrix( dim_cofactor, dim_pre ,homalg_field ),
+                                                 HomalgIdentityMatrix( dim_cofactor, homalg_field ),
+                                                 HomalgZeroMatrix( dim_cofactor, dim_post, homalg_field )
+                                               );
         
         return VectorSpaceMorphism( object_list[ injection_number ], injection_of_cofactor, coproduct );
 
@@ -397,16 +384,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
       function( diagram, sink, coproduct )
-        local underlying_matrix_of_universal_morphism, morphism;
+        local underlying_matrix_of_universal_morphism;
         
-        underlying_matrix_of_universal_morphism := UnderlyingMatrix( sink[1] );
-        
-        for morphism in sink{ [ 2 .. Length( sink ) ] } do
-          
-          underlying_matrix_of_universal_morphism := 
-            UnionOfRows( underlying_matrix_of_universal_morphism, UnderlyingMatrix( morphism ) );
-          
-        od;
+        underlying_matrix_of_universal_morphism := UnionOfRows( List( sink, s -> UnderlyingMatrix( s ) ) );
         
         return VectorSpaceMorphism( coproduct, underlying_matrix_of_universal_morphism, Range( sink[1] ) );
         
