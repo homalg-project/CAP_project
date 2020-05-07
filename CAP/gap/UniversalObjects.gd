@@ -4988,17 +4988,6 @@ DeclareAttribute( "Coimage",
                   IsCapCategoryMorphism );
 
 #! @Description
-#! This is a convenience method.
-#! The argument is an object $C$ which was created as a coimage
-#! of a morphism $\alpha: A \rightarrow B$.
-#! The output is the coimage projection
-#! $\pi: A \twoheadrightarrow C$.
-#! @Returns a morphism in $\mathrm{Hom}(A, C)$
-#! @Arguments C
-DeclareAttribute( "CoimageProjection",
-                  IsCapCategoryObject );
-
-#! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
 #! The output is the coimage projection
 #! $\pi: A \twoheadrightarrow \mathrm{coim}( \alpha )$.
@@ -5016,17 +5005,6 @@ DeclareAttribute( "CoimageProjection",
 #! @Arguments alpha, C
 DeclareOperation( "CoimageProjectionWithGivenCoimage",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
-
-#! @Description
-#! This is a convenience method.
-#! The argument is an object $C$ which was created as a coimage
-#! of a morphism $\alpha: A \rightarrow B$.
-#! The output is the astriction to coimage
-#! $a: C \rightarrow B$.
-#! @Returns a morphism in $\mathrm{Hom}(C,B)$
-#! @Arguments C
-DeclareAttribute( "AstrictionToCoimage",
-                  IsCapCategoryObject );
 
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
