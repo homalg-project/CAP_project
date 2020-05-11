@@ -1,0 +1,21 @@
+\documentclass[12pt]{amsart}
+\usepackage{graphicx}
+\usepackage{a4wide}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+
+\title{GAP Code}
+\author{}
+
+\begin{document}
+\maketitle
+
+\begin{Verbatim}[commandchars=!@\%,frame=single]
+!color@blue%@gap>%!color@red%@ S3_S4 := GroupHomomorphismByImages( S3, S4, GeneratorsOfGroup(S3) );%
+[ (1,2,3), (1,2) ] -> [ (1,2,3), (1,2) ]
+!color@blue%@gap>%!color@red%@ AddMorphism( grps, S3_S4 );%
+!color@blue%@gap>%!color@red%@ PreCompose( id_S3, S3_S4 );%
+[ (1,2,3), (1,2) ] -> [ (1,2,3), (1,2) ]
+\end{Verbatim}
+\end{document}

@@ -1,0 +1,74 @@
+\documentclass[12pt]{amsbook}
+
+\usepackage[pdfauthor   = {Sebastian\ Gutsche\ and\ Sebastian\ Posur},
+            pdftitle    = {Cap\ Manual},
+            pdfsubject  = {},
+            pdfkeywords = {Constructive\ homological\ algebra; logic;},
+            %breaklinks=true, % still buggy under Linux with \stackrel
+            bookmarks=true,
+            bookmarksopen=true,
+            %bookmarksnumbered=true, % produces errors on arXiv.org
+            pagebackref=true,
+            hyperindex=true,
+            colorlinks=true,
+            %linkcolor=red,
+            linkcolor=blue,
+            %citecolor=green,
+            citecolor=blue,
+            %filecolor=magenta,
+            filecolor=blue,
+            %urlcolor=cyan,
+            urlcolor=blue,
+            %pdftex=true
+            %ps2pdf=true
+            %hypertex=true
+            ]{hyperref}
+%\usepackage[all]{hypcap}
+
+\input{header}
+
+\author{Sebastian Gutsche}
+\address{Fachbereich Mathematik, University of Kaiserslautern, Kaiserslautern, Germany}
+\email{\href{mailto:Sebastian Gutsche <gutsche@mathematik.uni-kl.de>}{gutsche@mathematik.uni-kl.de}}
+
+\author{Sebastian Posur}
+\address{Lehrstuhl B f\"ur Mathematik, RWTH Aachen University, 52062 Aachen, Germany}
+\email{\href{mailto:Sebastian Posur <sebastian.posur@rwth-aachen.de>}{sebastian.posur@rwth-aachen.de}}
+
+\begin{document}
+
+\title[Cap Manual]{\CapPkg Manual}
+
+\maketitle
+
+\chapter{Introduction}
+  \input{Introduction}
+  
+\chapter{Tutorial and Quickstart}
+  \input{Tutorial}
+
+\chapter{Specifications}\label{chapter:specifications}
+  \input{Specifications}
+
+\chapter{Constructive Category Theory}
+  \input{ConstructiveCategoryTheory}
+
+\chapter{Categorical Constructions}\label{chapter:constructions}
+  \input{Constructions}
+
+\chapter{Logic}
+  \input{Logic}
+
+\chapter{Caching}\label{chapter:caching}
+  \input{Caching}
+
+\chapter{Index and Notation}
+  \input{Index}
+
+
+
+\bibliographystyle{myalpha}
+\bibliography{Bibliography}
+
+
+\end{document}

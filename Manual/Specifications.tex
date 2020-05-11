@@ -1,0 +1,478 @@
+In \CapPkg, we want to model categories.
+In order to do this correctly, we have to implement the basic operations
+of a category with respect to specifications dictated by \CapPkg.
+In this chapter, we will see in detail what these specifications are.
+
+This chapter is organized as follows:
+
+In the first section, we define the notion of a category, so that it becomes
+clear what kind of mathematical object we want to model.
+
+In the second section, we define \GAP sets and \GAP maps, in order to have semantics
+for the basic operation symbols.
+
+Afterwards, we begin with the enumeration of all specifications, which are
+the equality specifications, typing specifications, and mathematical specifications.
+
+We conclude with a statement about the importance of specifications.
+
+\section{Categories}\label{section:categories}
+
+Classically, a category consists of a class of objects, a set of morphisms, identity morphisms, and a composition function
+satisfying some simple axioms. In $\CapPkg$, we use a slightly different notion of a category.
+
+\begin{definition}\label{definition:CapCategory}
+ A \CapPkg category $\mathbf{C}$ consists of the following data:
+ \begin{enumerate}
+  \item A set $\Obj_{\mathbf{C}}$ of \textbf{objects}.
+  \item For every pair $a,b \in \Obj_{\mathbf{C}}$, a set $\Hom_{\mathbf{C}}( a, b )$ of \textbf{morphisms}.
+  \item For every pair $a,b \in \Obj_{\mathbf{C}}$, an equivalence relation $\sim_{a,b}$ on $\Hom_{\mathbf{C}}( a, b )$
+  called \textbf{congruence for morphisms}.
+  \item For every $a \in \Obj_{\mathbf{C}}$, an \textbf{identity morphism} $\id_a \in \Hom_{\mathbf{C}}( a, a )$.
+  \item For every triple $a, b, c \in \Obj_{\mathbf{C}}$, a \textbf{composition function}
+  \[
+   \circ: \Hom_{\mathbf{C}}( b, c ) \times \Hom_{\mathbf{C}}( a, b ) \rightarrow \Hom_{\mathbf{C}}( a, c )
+  \]
+  compatible with the congruence, i.e., 
+  if $\alpha, \alpha' \in \Hom_{C}( a, b )$, 
+  $\beta, \beta' \in \Hom_{C}( b, c )$,
+  $\alpha \sim_{a,b} \alpha'$ 
+  and $\beta \sim_{b,c} \beta'$, 
+  then $\beta \circ \alpha \sim_{a,c} \beta' \circ \alpha'$.
+  \item For all $a, b \in \Obj_{\mathbf{C}}$, 
+        $\alpha \in \Hom_{\mathbf{C}}( a, b )$, 
+        we have 
+        \[
+        \left( \id_{b} \circ \alpha \right) \sim_{a,b} \alpha
+        \]
+        and
+        \[
+        \alpha \sim_{a,b} \left( \alpha \circ \id_{a} \right).
+        \]
+  \item For all $a,b,c,d \in \Obj_{\mathbf{C}}$, 
+        $\alpha \in \Hom_{\mathbf{C}}( a, b )$, 
+        $\beta \in \Hom_{\mathbf{C}}( b, c )$, 
+        $\gamma \in \Hom_{\mathbf{C}}( c, d )$,
+        we have
+        \[
+        \left(( \gamma \circ \beta ) \circ \alpha \right) \sim_{a,d} \left( \gamma \circ ( \beta \circ \alpha ) \right)
+        \]
+ \end{enumerate}
+\end{definition}
+
+So the main differences between a $\CapPkg$ category and a classical category are:
+\begin{enumerate}
+ \item A $\CapPkg$ category has a set of objects, not a class.
+ \item A $\CapPkg$ category has as an additional part of its datum a congruence for morphisms, and the
+ axioms are stated with respect to this congruence, and not with respect to equality.
+\end{enumerate}
+
+We will see that the congruence for morphisms actually makes the implementation of some categories easier (for example
+the category of presentations).
+
+\begin{remark}
+ Passing to the quotient sets $\Hom_{C}( a, b )/\sim_{a,b}$ gives rise to a classical category $\mathbf{D}$, because
+ all constructions and axioms respect the congruence.
+ It is usually the case that we actually want to study $\mathbf{D}$, but that it is easier to implement a $\CapPkg$ category $\mathbf{C}$
+ giving rise to $\mathbf{D}$.
+\end{remark}
+
+\begin{remark}
+ In terms of higher category theory, a $\CapPkg$ category is a $2$-category such that the $2$-morphism sets are either empty or a singleton.
+\end{remark}
+
+\begin{convention}
+ Throughout this manual we will use \textit{category} as a short term for a \CapPkg category. 
+ If we want to refer to the classical notion of a category (i.e. the one used in \cite{MLCWM}) we will use the term \textit{classical category}.
+\end{convention}
+
+\section{\GAP Sets and \GAP Maps}\label{section:gap_sets}
+
+In this section, we will first define \GAP sets and \GAP maps and
+then associate to such objects actual sets and maps. 
+Such a translation between objects on the computer and mathematical objects
+is necessary for modeling mathematics on the computer.
+
+\begin{remark}
+ For our definitions to be consistent, we have to fix
+ a set $\mathcal{U}$ containing all \GAP objects up to \texttt{IsIdenticalObj}
+ which are relevant for the discussion (e.g. within a current session). 
+ We call such a $\mathcal{U}$ a \textbf{\GAP universe}.
+ We further define the set $\Bool := \{ \texttt{true}, \texttt{false} \}$.
+\end{remark}
+
+
+\begin{definition}
+ A \textbf{\GAP set} is a pair $(P, =_P)$ consisting of
+ \begin{itemize}
+  \item a \GAP function $P$
+  \item a binary \GAP operation $=_P$
+ \end{itemize}
+both having values in $\Bool$, such that
+\begin{enumerate}
+ \item $P$ defines a map $\mathcal{U} \rightarrow \Bool$,
+ \item $=_P$ defines a map $\{ ( a,b ) \in \mathcal{U} \times \mathcal{U} ~|~ P(a) = P(b) = \texttt{true} \} \rightarrow \Bool$,
+ \item $=_P$ defines an equivalence relation $\sim_{=_P}$ on $\{ a \in \mathcal{U} ~|~ P(a) = \texttt{true} \}$.
+\end{enumerate}
+\end{definition}
+
+\begin{notation}
+ For a \GAP object $x$ such that $P(x) = \texttt{true}$, we simply write $x \in P$.
+\end{notation}
+
+\begin{definition}
+ A \textbf{\GAP map} between \GAP sets $(P, =_P)$, $(Q, =_Q)$ is a \GAP operation $\Omega$, such that
+ \begin{enumerate}
+  \item for $p \in P$, we have $\Omega( p ) \in Q$,
+  \item for $p =_P p'$, we have $\Omega( p ) =_Q \Omega( p')$,
+  \item for $y \not\in P$, $\Omega( y )$ throws an error.
+ \end{enumerate}
+ For a natural number $n \in \N$, we define $n$-ary \GAP maps analogously, i.e., 
+ they respect equality component-wise.
+\end{definition}
+
+\begin{remark}\label{remark:implementation_of_gap_maps}[Implementation of a \GAP map]
+ Let $\Omega$ be a \GAP operation installed via the \GAP methods $\mu_1, \dots, \mu_n$.
+ Then $\Omega$ defines a \GAP map $(P,=_P) \rightarrow (Q, =_Q)$ if and only if the following three conditions are satisfied:
+ \begin{enumerate}
+  \item $\mu_k( p ) =_Q \mu_l( p )$ for $p \in P$ and applicable methods $\mu_k, \mu_l$, where $k,l \in \{ 1 \dots n \}$.
+  \item For every $p \in P$ there exists an $i \in \{ 1 \dots n \}$ such that $p$ lies in the filter of $\mu_i$ (i.e., 
+  the filters of the methods cover $P$).
+  \item $\Omega(y)$ throws an error for $y \not \in P$.
+ \end{enumerate}
+ The first item can always be technically realized by caching, but note that this is in general not the best strategy.
+ The second item is satisfied in particular if there is a ``fallback method'' which is applicable for all $p \in P$.
+ The third item will usually be automatically realized by $\CapPkg$ for all basic operations.
+\end{remark}
+
+In order to model concatenations of maps, we have to define a notion of concatenation of \GAP maps.
+
+\begin{definition}
+ A sequence of \GAP maps of length greater then one
+ \[
+ \Omega_1: (P_1, =_{\mathrm{P_1}}) \rightarrow (P_2, =_{\mathrm{P_2}}), ~\Omega_2: (P_2, =_{\mathrm{P_2}}) \rightarrow (P_3, =_{\mathrm{P_3}}), \dots,
+ \]
+ is called a \textbf{concatenation of \GAP maps}.
+\end{definition}
+
+\begin{example}
+ If we would rely on weak caching in order to satisfy the first item in remark \ref{remark:implementation_of_gap_maps},
+ a concatenation of \GAP maps would not necessarily yield equal output for equal input.
+ Here is an example of what can go wrong:
+ 
+ Let $R$ be a ring. We take matrices $M \in R^{n \times m}$ for integers $n,m$ as a data structure of
+ modules over $R$, where the matrix $M$ shall represent the quotient module $R^{ 1 \times m }/ M$.
+ Two modules are considered equal (\texttt{IsEqualForObjects}) if their representing matrices are equal.
+ 
+ So for example, if we take $A = ( 0 )$ and $B = ( 1 )$, then $A$ represents a module isomorphic to $R$, 
+ $B$ represents a module isomorphic to the zero module.
+ A canonical way to implement the direct sum of two modules would be to construct a diagonal block matrix,
+ so that applying $A \oplus -$ twice to $B$ yields
+ \[
+  \mathtt{result_1 := }
+  A \oplus( A \oplus B ) =
+  A \oplus
+  \begin{pmatrix}
+   0 & 0 \\
+   0 & 1
+  \end{pmatrix} =
+  \begin{pmatrix}
+   0 & 0 & 0 \\
+   0 & 0 & 0 \\
+   0 & 0 & 1
+  \end{pmatrix}.
+ \]
+ If $A \oplus - $ works with a weak cache, the result of $A \oplus B$ might get lost, even though we still can access $\mathtt{result_1}$.
+ Now assume that the attribute $\texttt{IsZero}$ becomes known for $B$, and assume furthermore that there is a special implementation
+ for $A \oplus -$ which just returns $A$ in that case, we suddenly have
+ \[
+  \mathtt{result_2 := }
+  A \oplus( A \oplus B ) =
+  A \oplus A =
+  \begin{pmatrix}
+   0 & 0 \\
+   0 & 0 
+  \end{pmatrix},
+ \]
+leaving us with two saved results from syntactically identical expressions
+having non equal evaluations.
+\end{example}
+
+We now associate to every \GAP set and every \GAP map a corresponding object in set theory.
+
+\begin{definition}
+ Let $(P, =_P)$ be a \GAP set. We define the \textbf{associated set} by
+ \[
+  \overline{P} := \{ x \in \mathcal{U} ~|~ x \in P \} / \sim_{ =_P }.
+ \]
+ The equivalence class of an object $x \in P$ is denoted by $\overline{x}$.
+\end{definition}
+
+\begin{definition}
+ Let $\alpha: (P, =_P) \rightarrow (Q, =_Q)$ be a \GAP map. We define the \textbf{associated map} by
+ \[
+  \overline{\alpha} := \{ (\overline{p}, \overline{q}) ~|~ p \in P, q \in Q, \alpha( p ) =_{Q} q \} \subseteq \overline{P} \times \overline{Q}.
+ \]
+\end{definition}
+
+The definitions of the associated $n$-ary maps for $n \in \N$ and for the associated concatenation map are similar.
+
+\section{Equality Specifications}
+\label{section:equality_specifications}
+
+\begin{specification}
+ Every basic operation has to yield equal output for given equal input.
+ \end{specification}
+
+Stated in the terminology of section \ref{section:gap_sets}: Every basic operation has to be a \GAP map.
+\\ \\
+Realizing a basic operation as a \GAP map means that we first have to understand its domain and codomain,
+which are \GAP sets.
+So let $\mathbf{C}$ be a category object, i.e., a category realized as a \GAP object in $\CapPkg$.
+Every basic operation of $\mathbf{C}$ takes finitely many arguments as an input and computes one single output.
+Each input argument has one of the following types:
+\begin{enumerate}
+ \item $\Int$, an integer.
+ \item $\Bool$, a Boolean.
+ \item $\Obj_{\mathbf{C}}$, an object of $\mathbf{C}$.
+ \item $\Hom_{\mathbf{C}}( a, b )$, a morphism with source and range given by objects $a$ and $b$ in $\mathbf{C}$, respectively (this is a dependent type).
+       We write $\Mor_{\mathbf{C}} := \sum_{a,b: \Obj_{\mathbf{C}}} \Hom_{\mathbf{C}}( a, b )$ for the type of all morphisms.
+ \item $\ListObj_{\mathbf{C}}$, a finite list of objects.
+ \item $\ListMor_{\mathbf{C}}$, a finite list of morphisms which possibly have different sources or ranges.
+\end{enumerate}
+These are also the possible output types except that an output never is a list. \\
+We now specify what it means for two terms of the same type to be equal.
+\begin{enumerate}
+ \item For $\Int$ and $\Bool$, equality is given by the equality operations in $\GAP$.
+ \item For $\ListObj_{\mathbf{C}}$ and $\ListMor_{\mathbf{C}}$, equality is given by entry-wise equality.
+ \item For $\Obj_{\mathbf{C}}$, equality is given by the basic operation \texttt{IsEqualForObjects}.
+ \item For $\Hom_{\mathbf{C}}( a, b )$, equality is given by the basic operation \texttt{IsEqualForMorphisms}.
+\end{enumerate}
+
+Like every basic operation, \texttt{IsEqualForObjects} and \texttt{IsEqualForMorphisms} can be added to 
+a category object using the corresponding add functions \texttt{AddIsEqualForObjects} and \texttt{AddIsEqualForMorphisms}.
+
+\begin{remark}
+ The basic operations \texttt{IsEqualForObjects} and \texttt{IsEqualForMorphisms} play the role
+ of the equality functions of the sets $\Obj_{\mathbf{C}}$ and $\Hom_{\mathbf{C}}(a,b)$ in definition
+ \ref{definition:CapCategory}. In particular, \texttt{IsEqualForMorphisms} shall not be confused
+ with congruence for morphisms.
+\end{remark}
+
+\begin{remark}\label{remark:realization_of_types}
+ The above listed types are differently realized in \CapPkg.
+ \begin{itemize}
+  \item For $\Int$, we use the realization of \GAP.
+  \item For $\Bool$, we use the realization of \GAP, but only the values \texttt{true} and \texttt{false}
+  are allowed (exception: equality functions, see \ref{subsection:specifications_is_equal_for_objects} and \ref{subsection:specifications_is_equal_for_morphisms}).
+  \item For $\Obj_{\mathbf{C}}$, there is a \GAP filter \texttt{ObjectFilter}($\mathbf{C}$).
+  \item The type $\Mor$ is realized by \GAP objects within the filter \texttt{MorphismFilter}($\mathbf{C}$). 
+  The dependent type $\Hom_{\mathbf{C}}( a, b )$ is realized by objects of type $\Mor$ having the objects $a$, $b$ set
+ for their attributes \texttt{Source} and \texttt{Range}. 
+  \item There are no special \GAP filters for $\ListObj_{\mathbf{C}}$ and $\ListMor_{\mathbf{C}}$, simply the \GAP filter \texttt{IsList}
+  is used.
+\end{itemize}
+\end{remark}
+
+\subsection{Specifications for \texttt{IsEqualForObjects}}\label{subsection:specifications_is_equal_for_objects}
+The basic operation \texttt{IsEqualForObjects} has a special specification.
+
+\begin{specification}[\texttt{IsEqualForObjects}]
+~
+ \begin{enumerate}
+  \item Input: two objects ($\Obj$).
+  \item Output: a Boolean ($\Bool$).
+  \item \texttt{IsEqualForObjects} has to respect the \GAP function \texttt{IsIdenticalObj}, i.e., 
+  for objects $a, a', b, b'$ such that \texttt{IsIdenticalObj}($a$, $a'$) and \texttt{IsIdenticalObj}($b$, $b'$) holds,
+  \texttt{IsEqualForObjects}($a$, $b$) and \texttt{IsEqualForObjects}($a'$, $b'$) yield equal Booleans.
+  \item \texttt{IsEqualForObjects} has to give rise to an equivalence relation on the set of all objects together
+  with \texttt{IsEqualForObjects} as an equality function.
+ \end{enumerate}
+ In short: The pair $( \Obj, \texttt{IsEqualForObjects} )$ has to become a \GAP set, see section \ref{section:gap_sets}.
+\end{specification}
+
+\begin{remark}
+ It is allowed for \texttt{IsEqualForObjects} to return \texttt{fail}. This is interpreted by \CapPkg as
+ \textit{``I don't know if the two objects are equal''}.
+\end{remark}
+
+\subsection{Specifications for \texttt{IsEqualForMorphisms}}\label{subsection:specifications_is_equal_for_morphisms}
+The basic operation \texttt{IsEqualForMorphisms} has a special specification.
+
+\begin{specification}[$\mathtt{IsEqualForMorphisms}$]
+Let $a, b: \Obj$. 
+ \begin{enumerate}
+  \item Input: two morphisms ($\Hom(a,b)$) (having equal sources and ranges).
+  \item Output: a Boolean ($\Bool$).
+  \item \texttt{IsEqualForMorphisms} has to respect the \GAP function \texttt{IsIdenticalObj}, i.e., 
+  for morphisms $\alpha, \alpha', \beta, \beta'$ such that \texttt{IsIdenticalObj}($\alpha$, $\alpha'$) and \texttt{IsIdenticalObj}($\beta$, $\beta'$) holds,
+  \texttt{IsEqualForMorphisms}($\alpha$, $\beta$) and \texttt{IsEqualForMorphisms}($\alpha'$, $\beta'$) yield equal Booleans.
+  \item \texttt{IsEqualForMorphisms} has to give rise to an equivalence relation on the set of all morphisms with prescribed source and range together
+  with \texttt{IsEqualForObjects} as an equality function.
+ \end{enumerate}
+ The pair $( \Hom(a,b), \texttt{IsEqualForMorphisms} )$ has to become a \GAP set
+ (assuming we restrict \texttt{IsEqualForMorphisms} to $\Hom(a,b)$), see section \ref{section:gap_sets}.
+\end{specification}
+
+\begin{remark}
+ It is allowed for \texttt{IsEqualForMorphisms} to return \texttt{fail}. This is interpreted by \CapPkg as
+ \textit{``I don't know if the two morphisms are equal''}.
+\end{remark}
+
+
+\section{Typing Specifications}
+
+\begin{specification}
+ Every basic operation has to match its type.
+\end{specification}
+
+Every basic operation symbol has a type. To be more precise, it has a (dependent) function type.
+We refer to the first chapter of \cite{hottbook} for a good summary of dependent type theory.
+
+\begin{example}\label{example:simple_typing}
+ The type of $\IsZeroForObjects$ is
+ \[
+  \Obj \rightarrow \Bool.
+ \]
+ Given a term of type $\Obj$, the basic operation symbol $\IsZeroForObjects$ returns a term of type $\Bool$.
+\end{example}
+
+\begin{example}\label{example:simple_typing_with_morphism_input}
+ For $a,b: \Obj$, the type of $\KernelObject$ is
+ \[
+  \Hom(a,b) \rightarrow \Obj.
+ \]
+ Given a term of type $\Hom(a,b)$, the basic operation symbol $\KernelObject$ returns a term of type $\Obj$.
+\end{example}
+
+\begin{example}\label{example:dependent_typing}
+ For $a,b: \Obj$, the type of $\KernelEmbedding$ is
+ \[
+  \prod_{\phi: \Hom(a,b)} \Hom( \KernelObject(\phi), a ).
+ \]
+ Given a term of type $\Hom(a,b)$, the basic operation symbol $\KernelEmbedding$ returns a term of type $\Hom( \KernelObject(\phi), a )$.
+ Thus $\KernelEmbedding$ has a dependent function type, because the type of its output depends on the input term.
+\end{example}
+
+For a basic operation to match its typing specification, it has to
+\begin{enumerate}
+ \item accept only input specified by its type, and throw an error otherwise,
+ \item compute only output specified by its type.
+\end{enumerate}
+
+%\todo{specify when not, for example for performance}
+%There should be different modi in \CapPkg:
+% 1) no type checking
+% 2) medium type checking (default)
+% 3) full type checking
+The first item is (almost) always handled by \CapPkg.
+If we add a basic operation to \CapPkg via an add function, \CapPkg ensures that every call of that
+basic operation first triggers a type checking for the input.
+\\
+The meaning and implications of the second item have to be analyzed carefully.
+\begin{example}[\ref{example:simple_typing} continued]
+ The output has to be a Boolean (c.f. remark \ref{remark:realization_of_types}).
+\end{example}
+
+\begin{example}[\ref{example:simple_typing_with_morphism_input} continued]
+ The output has to be an object (c.f. remark \ref{remark:realization_of_types}).
+\end{example}
+
+\begin{example}[\ref{example:dependent_typing}]
+ The output type depends on the given input. Let $a$ denote the source, $b$ denote the range of the input morphism $\phi$.
+ Then the range of the output morphism has to be equal (\texttt{IsEqualForObjects}) to $a$.
+ The source of the output morphism has to be equal (\texttt{IsEqualForObjects}) to the output of $\KernelObject(\phi)$.
+\end{example}
+
+As seen in example \ref{example:dependent_typing}, basic operation symbols (like $\KernelObject$) can be part of
+the type of other basic operations (like $\prod_{\phi: \Hom(a,b)} \Hom( \KernelObject(\phi), a )$).
+To implement a coherent model of all basic operations, we have to take care that such dependencies are fulfilled.
+Fortunately, \CapPkg provides tools to help us with this task.
+
+\begin{example}
+ Strategies of an implementation of $\KernelObject$ and $\KernelEmbedding$ with the correct types:
+ \begin{enumerate}
+  \item Only implement $\KernelEmbedding$. \CapPkg will automatically derive (c.f. section \ref{section:derivations}) the basic operation
+        $\KernelObject$ coherently for you (as the source of $\KernelEmbedding$).
+  \item Implement $\KernelObject$ and the helper basic operation $\KernelEmbeddingWithGivenKernelObject$.
+        This is an operation getting as an input a morphism $\phi$ and the result of $\KernelObject( \phi )$,
+        which we can then use to construct a morphism with $\KernelObject( \phi )$ as its source (c.f. \ref{in_text:with_given}).
+        \CapPkg will automatically derive (c.f. section \ref{section:derivations}) the basic operation
+        $\KernelEmbedding$ coherently for you (by calling $\KernelEmbeddingWithGivenKernelObject$ with the output of $\KernelObject$ as an input).
+  \item Implement $\KernelObject$, $\KernelEmbedding$, and $\KernelEmbeddingWithGivenKernelObject$, and enable caching for these functions (c.f. chapter \ref{chapter:caching}).
+        There is a redirection mechanism (see \ref{in_text:redirect}) of \CapPkg that guarantees a correct typing.
+ \end{enumerate}
+ Of course, you always can only implement $\KernelObject$ and $\KernelEmbedding$, and prove the correct typing manually.
+\end{example}
+
+
+
+\section{Mathematical Specifications}
+
+\begin{specification}
+ Every basic operation has to compute what it is mathematically supposed to compute.
+\end{specification} 
+
+In order to implement a coherent model of a category, the basic operations that we provide have to match all mathematical
+specifications. We give an example to illustrate what this means.
+
+\begin{example}
+ We want to implement $\KernelObject$, $\KernelEmbedding$, and $\KernelLift$.
+ Let us take a look at the definition of a kernel in a category $\mathbf{C}$. \\
+ For a given morphism $\alpha: A \rightarrow B$ in $\mathbf{C}$, a kernel of $\alpha$ consists of three parts:
+ \begin{enumerate}
+  \item an object $K \in \mathbf{C}$,
+  \item a morphism $\iota: K \rightarrow A$ such that $\alpha \circ \iota \sim_{K,B} 0$,
+  \item a dependent function $u$ mapping each morphism $\tau: T \rightarrow A$ satisfying $\alpha \circ \tau \sim_{T,B} 0$ to
+  a morphism $u(\tau): T \rightarrow K$ such that $\iota \circ u( \tau ) \sim_{T,A} \tau$. 
+ \end{enumerate}
+ The triple $( K, \iota, u )$ is called a \textbf{kernel of $\alpha$} if the morphisms $u( \tau )$ are uniquely determined up to
+ congruence of morphisms. The situation can be depicted as follows:
+ 
+ \begin{center}
+\begin{tikzpicture}[label/.style={postaction={
+      decorate,
+      decoration={markings, mark=at position .5 with \node #1;}}}]
+      \coordinate (r) at (1.5,0);
+      \coordinate (u) at (0,0.75);
+      
+      \node (M) {$A$};
+      \node (N) at ($(M)+(r)$) {$B$};
+      \node (K) at ($(M)-(r)+(u)$) {$K$};
+      \node (L) at ($(K)-2*(u)$) {$T$};
+      \draw[->,thick] (M) -- node[above]{$\alpha$} (N);
+      \draw[->, thick] (K) to [bend left] node[above] {$0$}(N);
+      \draw[right hook->,thick] (K) -- node[above]{$\iota$} (M);
+      \draw[->,thick] (L) -- node[above]{$\tau$} (M);
+      \draw[->, thick] (L) to [bend right] node[below] {$0$}(N);
+      \draw[->,dotted,thick] (L) -- node[left]{$u( \tau )$} (K);
+\end{tikzpicture}
+\end{center}
+ 
+ We call $K, \iota, u( \tau ) $ a $\KernelObject$, $\KernelEmbedding$, $\KernelLift$, respectively.
+ Thus for implementing these basic operations properly, they have to yield outputs which together form a kernel of $\phi$.
+\end{example}
+
+\begin{remark}
+ We note that the universal property of the kernel is formulated with the notion of congruence for morphisms,
+ not with equality of morphisms. This is again due to our notion of a category, see section \ref{section:categories}.
+\end{remark}
+
+
+\section{The Importance of Specifications}
+
+Once we have implemented a category matching all specifications, we can benefit
+from all the constructions $\CapPkg$ automatically performs for us. 
+$\CapPkg$ is able to use categories in order to construct new ones. It is also
+able to derive algorithms using the basic operations as building blocks.
+The correctness of all these automatic constructions heavily depends on 
+the correctness of its building blocks.
+\begin{enumerate}
+ \item Equality specifications: necessary to interpret basic operations in set theory.
+ Not matching these specifications means dealing with randomness. 
+ \item Typing specifications: necessary to safely concatenate basic operations.
+ \item Mathematical specifications: necessary because we want to model our mathematical
+ notions correctly.
+\end{enumerate}
+
+

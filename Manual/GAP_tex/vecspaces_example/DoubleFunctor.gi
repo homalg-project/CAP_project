@@ -1,0 +1,26 @@
+double_functor := CapFunctor( "DoubleOfVecspaces", 
+                              vecspaces, vecspaces );
+
+AddObjectFunction( double_functor,
+                   
+  function( obj )
+    
+    return QVectorSpace( 2 * Dimension( obj ) );
+    
+end );
+
+AddMorphismFunction( double_functor,
+                     
+  function( new_source, mor, new_range )
+    local matr, matr1;
+    
+    matr := EntriesOfHomalgMatrixAsListList( mor!.morphism );
+    
+    matr := Concatenation( List( matr,
+                           i -> Concatenation( i, ListWithIdenticalEntries( Length( i ), 0 ) ) ),
+                           List( matr,
+                           i -> Concatenation( ListWithIdenticalEntries( Length( i ), 0 ), i ) ) );
+    
+    return VectorSpaceMorphism( new_source, matr, new_range );
+    
+end );
