@@ -1,0 +1,114 @@
+\CapPkg provides two types of logic applied to objects and morphisms of a category.
+In this chapter, the two layers are described together with some features of the logic.
+We start by giving some general remarks, then describing the logic and the syntax explicitly.
+After that, we give a description how to create your own logic files to the category.
+
+\section{General remarks to logic in \CapPkg}
+
+There are currently two types of logical propagation between \GAP objects implemented.
+The first is a relation between different filters.
+
+\begin{example}
+ Every isomorphism is a monomorphism. So there is an implication between the properties
+ \texttt{IsIsomorphism} and \texttt{IsMonomorphism}. Every time the property \texttt{IsIsomorphism}
+ is set to true, the property \texttt{IsMonomorphism} is also true.
+\end{example}
+
+In \CapPkg, such a propagation is handled by \texttt{TrueMethods}. That means those relations
+are static and cannot been turn off, but also \GAP knows about them. We will call this type of
+implication the \textbf{first type}.
+
+The second propagation is the propagation of predicates between input and output objects
+of a certain method.
+
+\begin{example}
+  The composition of two monomorphisms is again a monomorphism. So, if for both input morphisms
+  of the method \texttt{PreCompose} the property \texttt{IsMonomorphism} becomes set to \texttt{true},
+  in the resulting morphism of \texttt{PreCompose}, \texttt{IsMonomorphism} is also set to \texttt{true}.
+\end{example}
+
+Internally, such propagations are carried out via \texttt{ToDoLists}. This means that the properties
+do not need to be known when the mentioned operation is executed, but can be propagated later. As a drawback,
+\GAP itself does not know about the relation before it is propagated, so it cannot take use of it. We will
+call this type of implication the \textbf{second type}.
+
+\subsection{Switchability of Logic}
+
+Since the first type of relations are hard wired via \texttt{TrueMethods}, there are not
+meant to be switched on or off depending on the category. Contrary to this, the logic defined
+by the relations from operations can be turned off or on for a specific \CapPkg category.
+This can be achieved by using the commands \texttt{CapCategorySwitchLogicOn} and \texttt{CapCategorySwitchLogicOff}.
+Generally it is not a good idea to use these switches mid-computation, since the \texttt{ToDoListEntries} for the
+already computed objects remain and might still be executed. If one wants no logic for a specific category,
+it is always best to switch off logic at creation time of the category.
+
+\subsection{Adding own logic files}
+
+For a specific category, additional logic files can be added via the \CapPkg logic API. Those files are
+plain TeX files, so it is easy to include them into some manual. For the syntax please see \ref{Section:LogicOne} and \ref{Section:LogicTwo}.
+Once a category is created, a logic file can be added to the category.
+For the first type of implications, this is done via the command
+\texttt{AddTheoremFileToCategory}. The command takes the category as first argument, and the path to the file as
+second. For the second type of implications, this is done via the command \texttt{AddPredicateImplicationFileToCategory}.
+Again, this command takes the category as first argument and the path to the file as second.
+
+\section{Logic by theorems} \label{Section:LogicOne}
+
+A logical implication by theorem is simply an implication between \GAP filters. In the logic file, the implication looks like this:
+\begin{Verbatim}[frame=single]
+\begin{sequent}
+\begin{align*}
+  A:\Obj ~|~ \IsZero( A ) \vdash \IsTerminal( A )
+\end{align*}
+\end{sequent}
+\end{Verbatim}
+To clarify the syntax here, please note the following. Each logical part needs to be in a sequent environment, i.e., begin\{sequent\}
+is important. Next, it needs to be in an align\* environment, as seen above. The first part is the declaration of the type of the \GAP object,
+possible choices here are \texttt{\textbackslash Obj} or \texttt{\textbackslash Mor}. After that, a \texttt{|}, separating the declaration of the objects from the
+theorem. After that, the implying filter should be separated by \texttt{\textbackslash vdash} from the implied filter. Note that the filters
+need to be installed as commands or math operators, since it must match the name of the \GAP filter after the backslash.
+
+\section{Logic by Predicate Implication} \label{Section:LogicTwo}
+
+Syntax for predicate implications along methods is a bit more complex, since \CapPkg has categorical operations
+having lists and integers as arguments. Those are reflected in the syntax of of the theorems which can be entered. We are
+not going to discuss the whole syntax here, but refer to the files in the \texttt{LogicForCAP} directory in \CapPkg to have
+a closer look at the possibilities. Instead, we just look at a few examples.
+
+\begin{example}
+We start with a simple example.
+\begin{Verbatim}[frame=single]
+\begin{sequent}
+\begin{align*}
+  \alpha:\Mor ~&|~ () \\
+  &\vdash \IsMonomorphism\big( \KernelEmbedding( \alpha ) \big)
+\end{align*}
+\end{sequent}
+\end{Verbatim}
+
+This is one of the easiest declaration possible. There is only one variable defined, namely \texttt{\textbackslash alpha}, and without any conditions,
+the result of the method \texttt{KernelEmbedding} is a monomorphism. No conditions are always marked by \texttt{()}. 
+\end{example}
+
+\begin{example}
+We continue with something more serious.
+\begin{small}
+\begin{Verbatim}[frame=single]
+\begin{sequent}
+\begin{align*}
+  L: \ListObj ~|~ \big(\forall x \in L: \IsTerminal(x)\big)
+     \vdash \IsTerminal\big( \DirectProduct( L ) \big)
+\end{align*}
+\end{sequent}
+\end{Verbatim}
+\end{small}
+Here we see a more advanced type of implication. There is only a list of objects defined, and the precondition needs to hold
+for all objects in the list. This can be achieved using the syntax above.
+\end{example}
+
+Some general remarks on this propositions at the end: It is generally not possible nor necessary to use more then one
+categorical operation in a theorem. Also, there is also the possibility to define an integer variable at the beginning, and
+so accessing a particular entry in an input or output list.
+
+
+

@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=!@\%,frame=single]
+!color@blue%@gap>%!color@red%@ alpha := VectorSpaceMorphism( V, [ [ 1, 0, 0 ], [ 0, 1, 1 ] ], W );%
+A rational vector space homomorphism with matrix: 
+[ [  1,  0,  0 ],
+  [  0,  1,  1 ] ]
+!color@blue%@gap>%!color@red%@ beta := VectorSpaceMorphism( V, [ [ 1, 1, 0 ], [ 0, 0, 1 ] ], W );%
+A rational vector space homomorphism with matrix: 
+[ [  1,  1,  0 ],
+  [  0,  0,  1 ] ]
+!color@blue%@gap>%!color@red%@ fiberproduct := FiberProduct( alpha, beta );%
+<A rational vector space of dimension 1>
+!color@blue%@gap>%!color@red%@ projection := ProjectionInFactor( fiberproduct, 1 );%
+A rational vector space homomorphism with matrix: 
+[ [  1,  1 ] ]
+!color@blue%@gap>%!color@red%@ intersection := PreCompose( projection, alpha );%
+A rational vector space homomorphism with matrix: 
+[ [  1,  1,  1 ] ]
+\end{Verbatim}

@@ -1,0 +1,20 @@
+\documentclass[12pt]{amsart}
+\usepackage{graphicx}
+\usepackage{a4wide}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+
+\title{GAP Code}
+\author{}
+
+\begin{document}
+\maketitle
+
+\begin{Verbatim}[commandchars=!@\%,frame=single]
+!color@blue%@gap>%!color@red%@ identity_func := grp -> GroupHomomorphismByImages( grp, grp );%
+function( grp ) ... end
+!color@blue%@gap>%!color@red%@ AddIdentityMorphism( grps, identity_func );%
+\end{Verbatim}
+
+\end{document}
