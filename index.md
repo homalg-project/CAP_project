@@ -6,7 +6,7 @@ layout: default
 
 This is the home of the CAP project. It consists of several GAP packages
 build on top of its main package, CAP. A good way to start is having a look
-at the [manual](https://github.com/homalg-project/CAP_Manual/raw/master/CAPManual.pdf), which offers extensive tutorials and a
+at the [manual](https://github.com/homalg-project/CAP_project/raw/master/Manual/CAPManual.pdf), which offers extensive tutorials and a
 good description of CAP. Also, you can look at the packages' references for detailed command descriptions.
 
 ## Packages in the CAP project
