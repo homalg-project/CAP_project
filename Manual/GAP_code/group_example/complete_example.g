@@ -4,6 +4,7 @@ grps := CreateCapCategory( "groups" );
 AddPreCompose( grps, \* );
 identity_func := grp -> GroupHomomorphismByImages( grp, grp );
 AddIdentityMorphism( grps, identity_func );
+EnableAddForCategoricalOperations( grps );
 Finalize( grps );
 S3 := SymmetricGroup( 3 );
 AddObject( grps, S3 );
