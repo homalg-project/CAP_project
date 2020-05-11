@@ -239,6 +239,8 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     obj_rec!.input_sanity_check_level := 1;
     obj_rec!.output_sanity_check_level := 1;
     
+    obj_rec!.predicate_logic_propagation := false;
+    
     obj_rec!.predicate_logic := true;
     
     obj_rec!.add_primitive_output := false;
@@ -702,6 +704,22 @@ end );
 ## Logic
 ##
 #######################################
+
+InstallGlobalFunction( CapCategorySwitchLogicPropagationOn,
+  
+  function( category )
+    
+    category!.predicate_logic_propagation := true;
+    
+end );
+
+InstallGlobalFunction( CapCategorySwitchLogicPropagationOff,
+  
+  function( category )
+    
+    category!.predicate_logic_propagation := false;
+    
+end );
 
 InstallGlobalFunction( CapCategorySwitchLogicOn,
   
