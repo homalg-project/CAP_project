@@ -384,7 +384,6 @@ InstallMethod( CachingObject,
                [ IsCapCategoryCell, IsString, IsInt ],
                
   function( cell, name, number )
-    local category, cache;
     
     return GET_METHOD_CACHE( CapCategory( cell ), name, number );
     
@@ -394,11 +393,7 @@ end );
 InstallMethod( CachingObject,
                [ IsCapCategory, IsString, IsInt ],
                
-  function( category, name, number )
-    
-    return GET_METHOD_CACHE( category, name, number );
-    
-end );
+  GET_METHOD_CACHE );
 
 InstallGlobalFunction( SetCachingOfCategory,
   
