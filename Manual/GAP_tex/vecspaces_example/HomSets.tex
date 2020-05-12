@@ -1,34 +1,37 @@
 \begin{small}
 \begin{Verbatim}[frame=single]
-AddAdditionForMorphisms( vecspaces,
+##
+AddAdditionForMorphisms( SQVec,
                          
-  function( a, b )
+  function( alpha, beta )
     
-    return VectorSpaceMorphism( Source( a ),
-              a!.morphism + b!.morphism,
-              Range( a ) );
+    return SQVecMor( Source( alpha ),
+              UnderlyingMatrix( alpha ) + UnderlyingMatrix( beta ),
+              Range( alpha ) );
     
 end );
 
-AddAdditiveInverseForMorphisms( vecspaces,
+##
+AddAdditiveInverseForMorphisms( SQVec,
                                 
-  function( a )
+  function( alpha )
     
-    return VectorSpaceMorphism( Source( a ),
-              - a!.morphism,
-              Range( a ) );
+    return SQVecMor( Source( alpha ),
+              - UnderlyingMatrix( alpha ),
+              Range( alpha ) );
     
 end );
 
-AddZeroMorphism( vecspaces,
+##
+AddZeroMorphism( SQVec,
                      
-  function( a, b )
+  function( alpha, beta )
     
-    return VectorSpaceMorphism( a,
-              HomalgZeroMatrix( Dimension( a ),
-                                Dimension( b ),
-                                VECTORSPACES_FIELD ),
-              b );
+    return SQVecMor( alpha,
+              HomalgZeroMatrix( Dimension( alpha ),
+                                Dimension( beta ),
+                                QQ ),
+              beta );
     
 end );
 \end{Verbatim}

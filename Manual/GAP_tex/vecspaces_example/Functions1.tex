@@ -1,23 +1,25 @@
 \begin{small}
 \begin{Verbatim}[frame=single]
-AddIdentityMorphism( vecspaces,
+AddIdentityMorphism( SQVec,
                      
-  function( obj )
-
-    return VectorSpaceMorphism( obj,
-          HomalgIdentityMatrix( Dimension( obj ), VECTORSPACES_FIELD ), obj );
+  function( a )
+    
+    return SQVecMor(
+            a,
+            HomalgIdentityMatrix( Dimension( a ), QQ ),
+            a
+    );
     
 end );
 
-AddPreCompose( vecspaces,
+AddPreCompose( SQVec,
 
-  function( mor_left, mor_right )
+  function( alpha, beta )
     local composition;
 
-    composition := mor_left!.morphism * mor_right!.morphism;
+    composition := UnderlyingMatrix( alpha ) * UnderlyingMatrix( beta );
 
-    return VectorSpaceMorphism( Source( mor_left ),
-                  composition, Range( mor_right ) );
+    return SQVecMor( Source( alpha ), composition, Range( beta ) );
 
 end );
 \end{Verbatim}

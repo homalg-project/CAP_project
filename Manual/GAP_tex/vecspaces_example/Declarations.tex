@@ -2,39 +2,35 @@
 \begin{Verbatim}[frame=single]
 LoadPackage( "CAP" );
 
-LoadPackage( "MatricesForHomalg" );
+LoadPackage( "RingsForHomalg" );
 
-DeclareRepresentation( "IsHomalgRationalVectorSpaceRep",
-                       IsCapCategoryObjectRep,
-                       [ ] );
+DeclareCategory( "IsSQVecObj",
+                 IsCapCategoryObject );
 
-BindGlobal( "TheTypeOfHomalgRationalVectorSpaces",
-        NewType( TheFamilyOfCapCategoryObjects,
-                IsHomalgRationalVectorSpaceRep ) );
-
-DeclareRepresentation( "IsHomalgRationalVectorSpaceMorphismRep",
-                       IsCapCategoryMorphismRep,
-                       [ ] );
-
-BindGlobal( "TheTypeOfHomalgRationalVectorSpaceMorphism",
-        NewType( TheFamilyOfCapCategoryMorphisms,
-                IsHomalgRationalVectorSpaceMorphismRep ) );
+DeclareCategory( "IsSQVecMor",
+                 IsCapCategoryMorphism );
 
 DeclareAttribute( "Dimension",
-                  IsHomalgRationalVectorSpaceRep );
+                  IsSQVecObj );
 
-DeclareOperation( "QVectorSpace",
+DeclareAttribute( "UnderlyingMatrix", 
+                  IsSQVecMor );
+
+DeclareOperation( "SQVecObj",
                   [ IsInt ] );
 
-DeclareOperation( "VectorSpaceMorphism",
-                  [ IsHomalgRationalVectorSpaceRep, IsObject,
-                    IsHomalgRationalVectorSpaceRep ] );
+DeclareOperation( "SQVecMor",
+                  [ IsSQVecObj, IsObject, IsSQVecObj ] );
 
-BindGlobal( "vecspaces", CreateCapCategory( "VectorSpaces" ) );
+BindGlobal( "SQVec", 
+    CreateCapCategory( "Skeletal category of rational vector spaces" ) );
 
-SetIsAbelianCategory( vecspaces, true );
+SetIsAbelianCategory( SQVec, true );
 
-BindGlobal( "VECTORSPACES_FIELD", HomalgFieldOfRationals( ) );
+AddObjectRepresentation( SQVec, IsSQVecObj );
 
+AddMorphismRepresentation( SQVec, IsSQVecMor );
+
+BindGlobal( "QQ", HomalgFieldOfRationals( ) );
 \end{Verbatim}
 \end{small}
