@@ -156,6 +156,10 @@ InstallGlobalFunction( CapInternalInstallAdd,
             Error( "cannot add methods anymore, category is finalized" );
         fi;
         
+        if Length( method_list ) = 0 then
+            Error( "you must pass at least one function to the add method" );
+        fi;
+        
         ## If there already is a faster method, do nothing!
         if weight > CurrentOperationWeight( category!.derivations_weight_list, function_name ) then
             return;
@@ -364,13 +368,62 @@ InstallGlobalFunction( CapInternalInstallAdd,
         fi;
         
         install_func := function( func_to_install, filter_list )
-          local new_filter_list;
+          local new_filter_list, index;
             
             Add( category!.added_functions.( function_name ), [ func_to_install, filter_list ] );
             
             new_filter_list := CAP_INTERNAL_MERGE_FILTER_LISTS( replaced_filter_list, filter_list );
             
-            if category!.overhead then
+            if category!.enable_compilation = true or ( IsList( category!.enable_compilation ) and function_name in category!.enable_compilation ) then
+                
+                index := Length( category!.added_functions.( function_name ) );
+                
+                if Size( new_filter_list ) <> Size( argument_list ) then
+                    
+                    InstallMethod( ValueGlobal( install_name ),
+                                new_filter_list,
+                        
+                        function( arg )
+                            
+                            if not IsBound( category!.compiled_functions.( function_name )[ index ] ) then
+                                
+                                category!.compiled_functions.( function_name )[ index ] := CapJitCompiledFunction( func_to_install, arg{ argument_list } );
+                                
+                            fi;
+                            
+                            return CallFuncList( category!.compiled_functions.( function_name )[ index ], arg{ argument_list } );
+                            
+                    end );
+                    
+                else
+                    
+                    if not ( IsProperty( ValueGlobal( install_name ) ) and IsIdenticalObj( func_to_install, ReturnTrue ) ) then
+                        
+                        InstallMethod( ValueGlobal( install_name ),
+                                    new_filter_list,
+                            function( arg )
+                                
+                                if not IsBound( category!.compiled_functions.( function_name )[ index ] ) then
+                                    
+                                    category!.compiled_functions.( function_name )[ index ] := CapJitCompiledFunction( func_to_install, arg );
+                                    
+                                fi;
+                                
+                                return CallFuncList( category!.compiled_functions.( function_name )[ index ], arg );
+                                
+                        end );
+                        
+                    else
+                        
+                        ## the call of InstallMethod triggers an error in GAP:
+                        ## use `InstallTrueMethod' for <opr>
+                        InstallTrueMethod( ValueGlobal( install_name ), new_filter_list[1] );
+                        
+                    fi;
+                    
+                fi;
+                
+            elif category!.overhead then
             
                 install_method( ValueGlobal( install_name ),
                                 new_filter_list,
@@ -472,6 +525,12 @@ InstallGlobalFunction( CapInternalInstallAdd,
         if not IsBound( category!.added_functions.( function_name ) ) then
             
             category!.added_functions.( function_name ) := [ ];
+            
+        fi;
+        
+        if not IsBound( category!.compiled_functions.( function_name ) ) then
+            
+            category!.compiled_functions.( function_name ) := [ ];
             
         fi;
         

@@ -231,10 +231,14 @@ InstallMethod( RandomObject, [ IsCapCategory, IsList ], RandomObjectByList );
 
 InstallGlobalFunction( ObjectifyObjectForCAPWithAttributes,
                        
-  function( arg_list... )
+  function( object, category, additional_arguments_list... )
+    local arg_list;
+    #% CAP_JIT_RESOLVE_FUNCTION
     
-    Append( arg_list, [ CapCategory, arg_list[ 2 ] ] );
-    arg_list[ 2 ] := arg_list[ 2 ]!.object_type;
+    arg_list := Concatenation(
+        [ object, category!.object_type, CapCategory, category ], additional_arguments_list
+    );
+    
     return CallFuncList( ObjectifyWithAttributes, arg_list );
     
 end );

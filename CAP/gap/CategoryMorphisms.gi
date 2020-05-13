@@ -288,6 +288,7 @@ InstallGlobalFunction( ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes,
                        
   function( morphism, category, source, range, additional_arguments_list... )
     local arg_list, objectified_morphism;
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     arg_list := Concatenation( 
         [ morphism, category!.morphism_type, CapCategory, category, Source, source, Range, range ], additional_arguments_list
@@ -533,6 +534,7 @@ InstallMethod( HomomorphismStructureOnMorphisms,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
   function( alpha, beta )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     return HomomorphismStructureOnMorphismsWithGivenObjects(
              HomomorphismStructureOnObjects( Range( alpha ), Source( beta ) ),

@@ -13,7 +13,7 @@ Version := Maximum( [
   ## this line prevents merge conflicts
   "2020.04.16", ## Sepp's version
   ## this line prevents merge conflicts
-  "2020.04.27", ## Fabian's version
+  "2020.06.17", ## Fabian's version
   ## this line prevents merge conflicts
   "2020.01.10", ## Kamal's version
 ] ),
@@ -105,7 +105,9 @@ Dependencies := rec(
                            [ "ToolsForHomalg", ">= 2018.05.22" ],
                            [ "io", ">=0" ],
   ],
-  SuggestedOtherPackages := [ [ "Browse", ">=0" ] ],
+  SuggestedOtherPackages := [ [ "Browse", ">=0" ],
+                              [ "CompilerForCAP", ">= 2020.06.17" ],
+  ],
   ExternalConditions := []
 
 ),

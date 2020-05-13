@@ -6,7 +6,7 @@ homalg_compatibility:
 	gap load_cap_sheaves.g
 	gap load_sheaves_cap.g
 
-test: CAP_test Modules_test GradedModules_test Linear_test Generalized_test GroupRepresentations_test InternalExteriorAlgebra_test
+test: CAP_test Modules_test GradedModules_test Linear_test Generalized_test GroupRepresentations_test InternalExteriorAlgebra_test CompilerForCAP_test
 
 CAP_test:
 	cd CAP && make test
@@ -29,7 +29,10 @@ GroupRepresentations_test:
 InternalExteriorAlgebra_test:
 	cd InternalExteriorAlgebraForCAP && make test
 
-doc: CAP_doc Modules_doc GradedModules_doc Linear_doc Generalized_doc GroupRepresentations_doc InternalExteriorAlgebra_doc
+CompilerForCAP_test:
+	cd CompilerForCAP && make test
+
+doc: CAP_doc Modules_doc GradedModules_doc Linear_doc Generalized_doc GroupRepresentations_doc InternalExteriorAlgebra_doc CompilerForCAP_doc
 
 CAP_doc:
 	cd CAP && make doc
@@ -52,6 +55,9 @@ GroupRepresentations_doc:
 InternalExteriorAlgebra_doc:
 	cd InternalExteriorAlgebraForCAP && make doc
 
+CompilerForCAP_doc:
+	cd CompilerForCAP && make doc
+
 ci-test: homalg_compatibility doc
 	cd CAP && make ci-test
 	cd ModulePresentationsForCAP && make ci-test
@@ -60,3 +66,4 @@ ci-test: homalg_compatibility doc
 	cd GeneralizedMorphismsForCAP && make ci-test
 	cd GroupRepresentationsForCAP && make ci-test
 	cd InternalExteriorAlgebraForCAP && make ci-test
+	cd CompilerForCAP && make ci-test

@@ -372,6 +372,7 @@ InstallMethod( MorphismBetweenDirectSums,
                
   function( morphism_matrix )
     local nr_rows, nr_cols;
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     nr_rows := Size( morphism_matrix );
     
