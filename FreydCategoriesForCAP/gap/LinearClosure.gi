@@ -958,3 +958,27 @@ InstallMethod( \/,
         );
         
 end );
+
+####################################
+##
+## Down
+##
+####################################
+
+##
+InstallMethod( Down,
+               [ IsLinearClosureObject ],
+  function( obj )
+    
+    return UnderlyingOriginalObject( obj );
+    
+end );
+
+##
+InstallMethod( DownOnlyMorphismData,
+               [ IsLinearClosureMorphism ],
+  function( mor )
+    
+    return [ CoefficientsList( mor ), SupportMorphisms( mor ) ];
+    
+end );

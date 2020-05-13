@@ -1194,3 +1194,27 @@ InstallMethod( \/,
 InstallMethod( \/,
                [ IsInt, IsCategoryOfColumns ],
                CategoryOfColumnsObject );
+
+####################################
+##
+## Down
+##
+####################################
+
+##
+InstallMethod( Down,
+               [ IsCategoryOfColumnsObject ],
+  function( obj )
+    
+    return RankOfObject( obj );
+    
+end );
+
+##
+InstallMethod( DownOnlyMorphismData,
+               [ IsCategoryOfColumnsMorphism ],
+  function( mor )
+    
+    return UnderlyingMatrix( mor );
+    
+end );

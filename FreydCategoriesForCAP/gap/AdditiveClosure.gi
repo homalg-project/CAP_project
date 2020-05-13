@@ -1282,3 +1282,19 @@ InstallMethod( Display,
     od;
     
 end );
+
+####################################
+##
+## Down
+##
+####################################
+
+##
+InstallMethod( Down,
+               [ IsAdditiveClosureObject ],
+               ObjectList );
+
+##
+InstallMethod( DownOnlyMorphismData,
+               [ IsAdditiveClosureMorphism ],
+               MorphismMatrix );

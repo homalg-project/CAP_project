@@ -1231,3 +1231,27 @@ InstallMethod( \/,
 InstallMethod( \/,
                [ IsInt, IsCategoryOfRows ],
                CategoryOfRowsObject );
+
+####################################
+##
+## Down
+##
+####################################
+
+##
+InstallMethod( Down,
+               [ IsCategoryOfRowsObject ],
+  function( obj )
+    
+    return RankOfObject( obj );
+    
+end );
+
+##
+InstallMethod( DownOnlyMorphismData,
+               [ IsCategoryOfRowsMorphism ],
+  function( mor )
+    
+    return UnderlyingMatrix( mor );
+    
+end );

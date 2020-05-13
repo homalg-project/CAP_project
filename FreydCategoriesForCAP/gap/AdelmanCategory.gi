@@ -1331,3 +1331,27 @@ InstallMethod( \/,
     return AsAdelmanCategoryMorphism( morphism );
     
 end );
+
+####################################
+##
+## Down
+##
+####################################
+
+##
+InstallMethod( Down,
+               [ IsAdelmanCategoryObject ],
+  function( obj )
+    
+    return [ RelationMorphism( obj ), CorelationMorphism( obj ) ];
+    
+end );
+
+##
+InstallMethod( DownOnlyMorphismData,
+               [ IsAdelmanCategoryMorphism ],
+  function( mor )
+    
+    return MorphismDatum( mor );
+    
+end );

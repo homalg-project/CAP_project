@@ -310,6 +310,49 @@ DeclareOperation( "CheckConstructivenessOfCategory",
 DeclareProperty( "IsWellDefined",
                  IsCapCategoryCell );
 
+#############################################
+##
+#! @Section Unpacking data structures
+##
+#############################################
+
+
+#! @Description
+#! The argument is a GAP object $x$.
+#! If $x$ is an object in a CAP category, the output consists of data which are needed to reconstruct $x$
+#! (e.g., by passing them to an appropriate constructor).
+#! If $x$ is a morphism in a CAP category, the output consists of a triple whose first entry is the source of $x$,
+#! the third entry is the range of $x$, and the second entry consists of data which are needed to reconstruct $x$
+#! (e.g., by passing them to an appropriate constructor, possibly together with the source and range of $x$).
+#! @Returns a GAP object
+#! @Arguments x
+DeclareAttribute( "Down",
+                  IsObject );
+
+#! @Description
+#! The argument is a morphism in a CAP category, the output consists of data which are needed to reconstruct $x$
+#! (e.g., by passing it to an appropriate constructor, possibly together with its source and range).
+#! @Returns a GAP object
+#! @Arguments x
+DeclareAttribute( "DownOnlyMorphismData",
+                  IsCapCategoryMorphism );
+
+##
+DeclareAttribute( "Down2",
+                  IsObject );
+
+##
+DeclareAttribute( "Down3",
+                  IsObject );
+
+#! @Description
+#! The argument is a GAP object $x$.
+#! This function iteratively calls <C>Down</C> until it becomes stable.
+#! @Returns a GAP object
+#! @Arguments x
+DeclareAttribute( "DownToBottom",
+                  IsObject );
+
 ####################################
 ##
 #! @Section Caching
