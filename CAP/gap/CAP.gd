@@ -257,6 +257,26 @@ DeclareAttribute( "RangeCategoryOfHomomorphismStructure",
 #############################################
 
 #! @Description
+#!  Activates the predicate logic propagation between equal objects for the category <A>C</A>.
+#! @Arguments C
+DeclareGlobalFunction( "CapCategorySwitchLogicPropagationForObjectsOn" );
+
+#! @Description
+#!  Deactivates the predicate logic propagation between equal objects for the category <A>C</A>.
+#! @Arguments C
+DeclareGlobalFunction( "CapCategorySwitchLogicPropagationForObjectsOff" );
+
+#! @Description
+#!  Activates the predicate logic propagation between equal morphisms for the category <A>C</A>.
+#! @Arguments C
+DeclareGlobalFunction( "CapCategorySwitchLogicPropagationForMorphismsOn" );
+
+#! @Description
+#!  Deactivates the predicate logic propagation between equal morphisms for the category <A>C</A>.
+#! @Arguments C
+DeclareGlobalFunction( "CapCategorySwitchLogicPropagationForMorphismsOff" );
+
+#! @Description
 #!  Activates the predicate logic propagation between equal cells for the category <A>C</A>.
 #! @Arguments C
 DeclareGlobalFunction( "CapCategorySwitchLogicPropagationOn" );
