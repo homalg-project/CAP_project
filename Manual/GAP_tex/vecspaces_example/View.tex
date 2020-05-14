@@ -1,0 +1,26 @@
+\begin{small}
+\begin{Verbatim}[frame=single]
+##
+InstallMethod( ViewObj,
+               [ IsSQVecObj ],
+
+  function( a )
+
+    Print( "<An object in SQVec of dimension ",
+           String( Dimension( a ) ), ">" );
+
+end );
+
+##
+InstallMethod( ViewObj,
+               [ IsSQVecMor ],
+
+  function( morphism )
+
+    Print( "A morphism in SQVec with underlying matrix:\n" );
+  
+    Display( UnderlyingMatrix( morphism ) );
+
+end );
+\end{Verbatim}
+\end{small}

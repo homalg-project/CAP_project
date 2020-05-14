@@ -13,19 +13,21 @@
 
 \begin{Verbatim}[commandchars=!@\%,frame=single]
 !color@blue%@gap>%!color@red%@ ApplyNaturalTransformation( double_swap_components, V2 );%
-A rational vector space homomorphism with matrix: 
+A morphism in SQVec with underlying matrix:
 [ [  0,  0,  1,  0 ],
   [  0,  0,  0,  1 ],
   [  1,  0,  0,  0 ],
   [  0,  1,  0,  0 ] ]
-!color@blue%@gap>%!color@red%@ h_composition := HorizontalPreCompose( double_swap_components,%
-                                            double_swap_components );
-Vertical composition of Horizontal composition of natural
-transformation double swap components and functor DoubleOfVecspaces
-and Horizontal composition of functor DoubleOfVecspaces
-and natural transformation double swap components
+
+!color@blue%@gap>%!color@red%@ h_composition :=%
+!color@blue%@>%!color@red%@   HorizontalPreCompose( double_swap_components, double_swap_components );%
+Vertical composition of Horizontal composition of natural tra
+ nsformation double swap components and functor DoubleOfVecsp
+ aces and Horizontal compositio\
+n of functor DoubleOfVecspaces and natural transformation dou
+ ble swap components
 !color@blue%@gap>%!color@red%@ ApplyNaturalTransformation( h_composition, V2 );%
-A rational vector space homomorphism with matrix: 
+A morphism in SQVec with underlying matrix:
 [ [  0,  0,  0,  0,  0,  0,  1,  0 ],
   [  0,  0,  0,  0,  0,  0,  0,  1 ],
   [  0,  0,  0,  0,  1,  0,  0,  0 ],
@@ -34,15 +36,17 @@ A rational vector space homomorphism with matrix:
   [  0,  0,  0,  1,  0,  0,  0,  0 ],
   [  1,  0,  0,  0,  0,  0,  0,  0 ],
   [  0,  1,  0,  0,  0,  0,  0,  0 ] ]
-!color@blue%@gap>%!color@red%@ v_composition := VerticalPreCompose( double_swap_components,%
-                                          double_swap_components );
+
+!color@blue%@gap>%!color@red%@ v_composition :=%
+!color@blue%@>%!color@red%@   VerticalPreCompose( double_swap_components, double_swap_components );%
 Vertical composition of double swap components and double swa
  p components
 !color@blue%@gap>%!color@red%@ ApplyNaturalTransformation( v_composition, V2 );%
-A rational vector space homomorphism with matrix: 
+A morphism in SQVec with underlying matrix:
 [ [  1,  0,  0,  0 ],
   [  0,  1,  0,  0 ],
   [  0,  0,  1,  0 ],
   [  0,  0,  0,  1 ] ]
+
 \end{Verbatim}
 \end{document}

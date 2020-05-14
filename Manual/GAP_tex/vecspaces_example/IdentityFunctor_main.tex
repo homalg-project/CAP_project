@@ -1,7 +1,7 @@
 \begin{Verbatim}[commandchars=!@\%,frame=single]
-!color@blue%@gap>%!color@red%@ id_functor := CapFunctor( "Identity of vecspaces", vecspaces, vecspaces );%
-Identity of vecspaces
+!color@blue%@gap>%!color@red%@ id_functor := CapFunctor( "Identity of SQVec", SQVec, SQVec );%
+Identity of SQVec
 !color@blue%@gap>%!color@red%@ AddObjectFunction( id_functor, IdFunc );%
-!color@blue%@gap>%!color@red%@ AddMorphismFunction( id_functor, function( obj1, mor, obj2 )%
-!color@blue%@>%!color@red%@ return mor; end );%
+!color@blue%@gap>%!color@red%@ AddMorphismFunction( id_functor,%
+!color@blue%@>%!color@red%@   function( obj1, mor, obj2 ) return mor; end );%
 \end{Verbatim}

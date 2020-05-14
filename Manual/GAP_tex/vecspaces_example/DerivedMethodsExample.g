@@ -3,7 +3,8 @@ gap> IsMonomorphism( alpha );
 false
 gap> IsEpimorphism( alpha );
 false
-gap> alpha_image := ImageEmbedding( alpha );
-A rational vector space homomorphism with matrix: 
+gap> ImageEmbedding( alpha );
+A morphism in SQVec with underlying matrix:
 [ [  1,  1,  1 ] ]
+
 ## endgapcolor ##

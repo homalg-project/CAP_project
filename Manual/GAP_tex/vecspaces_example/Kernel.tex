@@ -1,28 +1,30 @@
 \begin{small}
 \begin{Verbatim}[frame=single]
-AddKernelEmbedding( vecspaces,
+##
+AddKernelEmbedding( SQVec,
 
-  function( morphism )
+  function( alpha )
     local kernel_emb, kernel_obj;
     
-    kernel_emb := SyzygiesOfRows( morphism!.morphism );
+    kernel_emb := SyzygiesOfRows( UnderlyingMatrix( alpha ) );
     
-    kernel_obj := QVectorSpace( NrRows( kernel_emb ) );
+    kernel_obj := SQVecObj( NrRows( kernel_emb ) );
     
-    return VectorSpaceMorphism( kernel_obj, kernel_emb, Source( morphism ) );
+    return SQVecMor( kernel_obj, kernel_emb, Source( alpha ) );
     
 end );
 
-AddKernelLift( vecspaces,
+##
+AddKernelLift( SQVec,
 
-  function( morphism, test_morphism )
+  function( alpha, tau )
     local kernel_matrix;
     
-    kernel_matrix := SyzygiesOfRows( morphism!.morphism );
+    kernel_matrix := SyzygiesOfRows( UnderlyingMatrix( alpha ) );
 
-    return VectorSpaceMorphism( Source( test_morphism ),
-                    RightDivide( test_morphism!.morphism, kernel_matrix ),
-                    QVectorSpace( NrRows( kernel_matrix ) ) );
+    return SQVecMor( Source( tau ),
+                     RightDivide( UnderlyingMatrix( tau ), kernel_matrix ),
+                     SQVecObj( NrRows( kernel_matrix ) ) );
     
 end );
 \end{Verbatim}

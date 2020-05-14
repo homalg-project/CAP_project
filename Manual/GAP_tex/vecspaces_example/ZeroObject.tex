@@ -1,49 +1,54 @@
 \begin{small}
 \begin{Verbatim}[frame=single]
-AddZeroObject( vecspaces,
+##
+AddZeroObject( SQVec,
 
   function( )
 
-    return QVectorSpace( 0 );
+    return SQVecObj( 0 );
 
 end );
 
-AddUniversalMorphismIntoZeroObject( vecspaces,
+##
+AddUniversalMorphismIntoZeroObject( SQVec,
 
   function( source )
 
-    return VectorSpaceMorphism( source,
-              HomalgZeroMatrix( Dimension( source ), 0, VECTORSPACES_FIELD ),
-              QVectorSpace( 0 ) );
+    return SQVecMor( source,
+              HomalgZeroMatrix( Dimension( source ), 0, QQ ),
+              SQVecObj( 0 ) );
     
 end );
 
-AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( vecspaces,
+##
+AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( SQVec,
 
   function( source, terminal_object )
 
-    return VectorSpaceMorphism( source,
-              HomalgZeroMatrix( Dimension( source ), 0, VECTORSPACES_FIELD ),
+    return SQVecMor( source,
+              HomalgZeroMatrix( Dimension( source ), 0, QQ ),
               terminal_object );
     
 end );
 
-AddUniversalMorphismFromZeroObject( vecspaces,
+##
+AddUniversalMorphismFromZeroObject( SQVec,
 
   function( sink )
     
-    return VectorSpaceMorphism( QVectorSpace( 0 ),
-              HomalgZeroMatrix( 0, Dimension( sink ), VECTORSPACES_FIELD ),
+    return SQVecMor( SQVecObj( 0 ),
+              HomalgZeroMatrix( 0, Dimension( sink ), QQ ),
               sink );
     
 end );
 
-AddUniversalMorphismFromZeroObjectWithGivenZeroObject( vecspaces,
+##
+AddUniversalMorphismFromZeroObjectWithGivenZeroObject( SQVec,
 
   function( sink, initial_object )
     
-    return VectorSpaceMorphism( initial_object,
-                   HomalgZeroMatrix( 0, Dimension( sink ), VECTORSPACES_FIELD ),
+    return SQVecMor( initial_object,
+                   HomalgZeroMatrix( 0, Dimension( sink ), QQ ),
                    sink );
     
 end );

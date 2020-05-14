@@ -1,31 +1,25 @@
 \begin{small}
 \begin{Verbatim}[frame=single]
-double_functor := CapFunctor( "DoubleOfVecspaces", 
-                              vecspaces, vecspaces );
+double_functor :=
+  CapFunctor( "DoubleOfVecspaces", SQVec, SQVec );
 
 AddObjectFunction( double_functor,
                    
   function( obj )
     
-    return QVectorSpace( 2 * Dimension( obj ) );
+    return SQVecObj( 2 * Dimension( obj ) );
     
 end );
 
 AddMorphismFunction( double_functor,
                      
   function( new_source, mor, new_range )
-    local matr, matr1;
+    local matr;
     
-    matr := EntriesOfHomalgMatrixAsListList( mor!.morphism );
+    matr := UnderlyingMatrix( mor );
     
-    matr := Concatenation( List( matr,
-            i -> Concatenation( i,
-                 ListWithIdenticalEntries( Length( i ), 0 ) ) ),
-                           List( matr,
-            i -> Concatenation(
-                 ListWithIdenticalEntries( Length( i ), 0 ), i ) ) );
-    
-    return VectorSpaceMorphism( new_source, matr, new_range );
+    return
+      SQVecMor( new_source, DiagMat( [ matr, matr ] ), new_range );
     
 end );
 \end{Verbatim}

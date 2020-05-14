@@ -1,0 +1,23 @@
+\begin{small}
+\begin{Verbatim}[frame=single]
+snake_lemma_morphism := function( delta, beta, lambda )
+    local gamma, iota, epsilon, mu, alpha, pi, p1, p2, q1, q2, u;
+    
+    gamma := CokernelColift( delta, PreCompose( beta, lambda ) );
+    iota := KernelEmbedding( gamma );
+    epsilon := CokernelProjection( delta );
+    mu := KernelEmbedding( lambda );
+    alpha := KernelLift( lambda, PreCompose( delta, beta ) );
+    pi := CokernelProjection( alpha );
+    
+    p1 := ProjectionInFactorOfFiberProduct( [ iota, epsilon ], 1 );
+    p2 := ProjectionInFactorOfFiberProduct( [ iota, epsilon ], 2 );
+    q1 := InjectionOfCofactorOfPushout( [ mu, pi ], 1 );
+    q2 := InjectionOfCofactorOfPushout( [ mu, pi ], 2 );
+    u := ColiftAlongEpimorphism( p1, PreCompose( [ p2, beta, q1 ] ) );
+
+    return LiftAlongMonomorphism( q2, u );
+    
+end;
+\end{Verbatim}
+\end{small}

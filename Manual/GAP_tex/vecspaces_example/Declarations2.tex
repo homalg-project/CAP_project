@@ -1,52 +1,56 @@
 \begin{small}
 \begin{Verbatim}[frame=single]
 ##
-InstallMethod( QVectorSpace,
+InstallMethod( SQVecObj,
                [ IsInt ],
                
   function( dim )
-    local space;
-    
-    space := rec( );
-    
-    ObjectifyWithAttributes( space, TheTypeOfHomalgRationalVectorSpaces,
-                             Dimension, dim 
-    );
-    
-    Add( vecspaces, space );
-    
-    return space;
-    
+        local space;
+        
+        if dim < 0 then
+            Error( "the given integer must be non-negative");
+        fi;
+        
+        space := rec();
+        
+        ObjectifyObjectForCAPWithAttributes(
+            space, SQVec,
+            Dimension, dim
+        );
+        
+        return space;
+        
 end );
 
 ##
-InstallMethod( VectorSpaceMorphism,
-                  [ IsHomalgRationalVectorSpaceRep, IsObject,
-                    IsHomalgRationalVectorSpaceRep ],
+InstallMethod( SQVecMor,
+               [ IsSQVecObj, IsObject, IsSQVecObj ],
                   
   function( source, matrix, range )
-    local morphism;
+    local morphism, underlying_matrix;
 
     if not IsHomalgMatrix( matrix ) then
     
-      morphism := HomalgMatrix( matrix, Dimension( source ), Dimension( range ),
-                                VECTORSPACES_FIELD );
+      underlying_matrix := 
+        HomalgMatrix( matrix,
+                      Dimension( source ),
+                      Dimension( range ),
+                      QQ );
 
     else
 
-      morphism := matrix;
+      underlying_matrix := matrix;
 
     fi;
-
-    morphism := rec( morphism := morphism );
     
-    ObjectifyWithAttributes( morphism,
-                             TheTypeOfHomalgRationalVectorSpaceMorphism,
-                             Source, source,
-                             Range, range 
+    morphism := rec();
+    
+    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
+      morphism, SQVec,
+      source,
+      range,
+      UnderlyingMatrix, underlying_matrix
     );
-
-    Add( vecspaces, morphism );
     
     return morphism;
     

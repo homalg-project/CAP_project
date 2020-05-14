@@ -1,4 +1,4 @@
 ## gapcolor ##
-gap> id_functor := IdentityMorphism( AsCatObject( vecspaces ) );
-Identity functor of VectorSpaces
+gap> id_functor := IdentityMorphism( AsCatObject( SQVec ) );
+Identity functor of Skeletal category of rational vector spaces
 ## endgapcolor ##

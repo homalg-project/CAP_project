@@ -1,26 +1,30 @@
 \begin{small}
 \begin{Verbatim}[frame=single]
-AddCokernelProjection( vecspaces,
+##
+AddCokernelProjection( SQVec,
 
-  function( morphism )
+  function( alpha )
     local cokernel_proj, cokernel_obj;
 
-    cokernel_proj := SyzygiesOfColumns( morphism!.morphism );
+    cokernel_proj := SyzygiesOfColumns( UnderlyingMatrix( alpha ) );
 
-    cokernel_obj := QVectorSpace( NrColumns( cokernel_proj ) );
+    cokernel_obj := SQVecObj( NrColumns( cokernel_proj ) );
 
-    return VectorSpaceMorphism( Range( morphism ), 
+    return SQVecMor( Range( alpha ), 
               cokernel_proj, cokernel_obj );
 
 end );
 
-AddColiftAlongEpimorphism( vecspaces,
+##
+AddColiftAlongEpimorphism( SQVec,
   
-  function( epimorphism, test_morphism )
+  function( epsilon, tau )
     
-    return VectorSpaceMorphism( Range( epimorphism ),
-              LeftDivide( epimorphism!.morphism, test_morphism!.morphism ),
-              Range( test_morphism ) );
+    return SQVecMor( Range( epsilon ),
+            LeftDivide(
+              UnderlyingMatrix( epsilon ),
+              UnderlyingMatrix( tau ) ),
+            Range( tau ) );
     
 end );
 \end{Verbatim}
