@@ -193,8 +193,8 @@ This can be done to ensure better compatibility if the given equality function f
 Please have a look at \ref{in_text:with_given} for more details about the \texttt{WithGiven} functions.
 
 Also, the function given for \texttt{KernelLift} does at the beginning the same as the function given for \texttt{KernelEmbedding}. This might lead to
-a unnecessary computation. So, in this context, it would be better to provide a more general function for \texttt{LiftAlongMonomorphism}.
-The input for this function would be a mono, and some morphism, would then provide a lift. The function for \texttt{KernelLift} would then be derived
+an unnecessary computation. So, in this context, it would be better to provide a more general function for \texttt{LiftAlongMonomorphism}.
+The input for this function would be a mono, and some morphism, and it would then provide a lift. The function for \texttt{KernelLift} would then be derived
 from this operation and \texttt{KernelEmbedding}, by computing
 \[
  \mathrm{LiftAlongMonomorphism} \left( \mathrm{KernelEmbedding} \left( \alpha \right), \tau \right).
