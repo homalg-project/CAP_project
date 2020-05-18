@@ -172,8 +172,8 @@ The diagram of the kernel looks like this:
     T & & \\ };
   \path[->] (m-1-1) edge node[auto]{$\mathrm{KernelEmbedding} \left( \alpha \right)$} (m-2-2);
   \path[->] (m-2-2) edge node[auto]{$\alpha$} (m-2-3);
-  \path[->] (m-3-1) edge node[auto]{$\beta$} (m-2-2);
-  \path[->, dashed] (m-3-1) edge node[auto]{$\mathrm{KernelLift} \left( \alpha, \beta \right)$} (m-1-1);
+  \path[->] (m-3-1) edge node[auto]{$\tau$} (m-2-2);
+  \path[->, dashed] (m-3-1) edge node[auto]{$\mathrm{KernelLift} \left( \alpha, \tau \right)$} (m-1-1);
   \path[->] (m-3-1) edge[bend right] node[auto]{$0$} (m-2-3);
 \end{tikzpicture}
 \end{center}
@@ -187,7 +187,7 @@ In our case this simply means they need to have the same dimension.
 There are two things to mention here.
 First thing, instead of \texttt{KernelLift} we could also have installed another method,
 called \texttt{KernelLiftWithGivenKernelObject}. The result would again be an implementation of \texttt{KernelLift}, but those
-\texttt{WithGiven} operations offer an advantage. Instead of calling a function with only $\alpha$ and $\beta$, there
+\texttt{WithGiven} operations offer an advantage. Instead of calling a function with only $\alpha$ and $\tau$, there
 would be a third argument, which should be equal to the output of \texttt{KernelObject} and then serves as the range of the output morphism.
 This can be done to ensure better compatibility if the given equality function for objects might not be complete, or to save computation time.
 Please have a look at \ref{in_text:with_given} for more details about the \texttt{WithGiven} functions.
@@ -197,7 +197,7 @@ a unnecessary computation. So, in this context, it would be better to provide a 
 The input for this function would be a mono, and some morphism, would then provide a lift. The function for \texttt{KernelLift} would then be derived
 from this operation and \texttt{KernelEmbedding}, by computing
 \[
- \mathrm{LiftAlongMonomorphism} \left( \mathrm{KernelEmbedding} \left( \alpha \right), \beta \right).
+ \mathrm{LiftAlongMonomorphism} \left( \mathrm{KernelEmbedding} \left( \alpha \right), \tau \right).
 \]
 For more information about this system, please refer to the derivations section \ref{section:derivations}.
 An implementation of the kernel would then instead look like this.
