@@ -266,3 +266,19 @@ InstallMethod( \=,
 InstallMethod( \/,
                [ IsObject, IsRingAsCategory ],
                RingAsCategoryMorphism );
+
+####################################
+##
+## Down
+##
+####################################
+
+##
+InstallMethod( Down,
+               [ IsRingAsCategoryObject ],
+               UnderlyingRing );
+
+##
+InstallMethod( DownOnlyMorphismData,
+               [ IsRingAsCategoryMorphism ],
+               UnderlyingRingElement );

@@ -724,6 +724,9 @@ end );
 InstallMethod( Down, [ IsObject ], IdFunc );
 
 ##
+InstallMethod( Down, [ IsCapCategoryObject ], x -> "unknown object data" );
+
+##
 InstallMethod( Down2, [ IsObject ], x -> Down( Down( x ) ) );
 
 ##

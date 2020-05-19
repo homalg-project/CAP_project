@@ -1543,3 +1543,18 @@ InstallMethod( \/,
                [ IsQuiverAlgebraElement, IsQuiverRowsCategory ],
                AsQuiverRowsMorphism );
 
+####################################
+##
+## Down
+##
+####################################
+
+##
+InstallMethod( Down,
+               [ IsQuiverRowsObject ],
+               ListOfQuiverVertices );
+
+##
+InstallMethod( DownOnlyMorphismData,
+               [ IsQuiverRowsMorphism ],
+               MorphismMatrix );

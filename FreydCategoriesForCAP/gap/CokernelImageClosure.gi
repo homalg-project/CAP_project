@@ -917,3 +917,28 @@ InstallMethod( NaturalIsomorphismFromFinitePresentationOfCokernelImageClosureObj
     return natural_isomorphism;
     
 end );
+
+####################################
+##
+## Down
+##
+####################################
+
+##
+InstallMethod( Down,
+               [ IsCokernelImageClosureObject ],
+  function( obj )
+    
+    return [ GeneratorMorphism( obj ), RelationMorphism( obj ) ];
+    
+end );
+
+##
+InstallMethod( DownOnlyMorphismData,
+               [ IsCokernelImageClosureMorphism ],
+  function( mor )
+    
+    return MorphismDatum( mor );
+    
+end );
+
