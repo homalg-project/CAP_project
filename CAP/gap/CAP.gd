@@ -257,6 +257,36 @@ DeclareAttribute( "RangeCategoryOfHomomorphismStructure",
 #############################################
 
 #! @Description
+#!  Activates the predicate logic propagation between equal objects for the category <A>C</A>.
+#! @Arguments C
+DeclareGlobalFunction( "CapCategorySwitchLogicPropagationForObjectsOn" );
+
+#! @Description
+#!  Deactivates the predicate logic propagation between equal objects for the category <A>C</A>.
+#! @Arguments C
+DeclareGlobalFunction( "CapCategorySwitchLogicPropagationForObjectsOff" );
+
+#! @Description
+#!  Activates the predicate logic propagation between equal morphisms for the category <A>C</A>.
+#! @Arguments C
+DeclareGlobalFunction( "CapCategorySwitchLogicPropagationForMorphismsOn" );
+
+#! @Description
+#!  Deactivates the predicate logic propagation between equal morphisms for the category <A>C</A>.
+#! @Arguments C
+DeclareGlobalFunction( "CapCategorySwitchLogicPropagationForMorphismsOff" );
+
+#! @Description
+#!  Activates the predicate logic propagation between equal cells for the category <A>C</A>.
+#! @Arguments C
+DeclareGlobalFunction( "CapCategorySwitchLogicPropagationOn" );
+
+#! @Description
+#!  Deactivates the predicate logic propagation between equal cells for the category <A>C</A>.
+#! @Arguments C
+DeclareGlobalFunction( "CapCategorySwitchLogicPropagationOff" );
+
+#! @Description
 #!  Activates the predicate implication logic for the category <A>C</A>.
 #! @Arguments C
 DeclareGlobalFunction( "CapCategorySwitchLogicOn" );
@@ -432,7 +462,7 @@ DeclareGlobalFunction( "DisableAddForCategoricalOperations" );
 #!  In the following some of these are listed.
 #!    * <C>DeactivateCachingOfCategory</C> or <C>DeactivateDefaultCaching</C>: see <Ref Sect="Section_Caching" />.
 #!        This can either improve or degrade the performance depending on the concrete example.
-#!    * <C>CapCategorySwitchLogicOff</C>: see <Ref Sect="Section_Logic_switcher" />.
+#!    * <C>CapCategorySwitchLogicOff</C> (on by default) or <C>CapCategorySwitchLogicPropagationOff</C> (off by default): see <Ref Sect="Section_Logic_switcher" />.
 #!        This can either improve or degrade the performance depending on the concrete example.
 #!    * <C>DisableSanityChecks</C>: see <Ref Sect="Section_Sanity_checks" />.
 #!    * <C>DisableAddForCategoricalOperations</C>: see <Ref Sect="Section_Automatic_adds" />.

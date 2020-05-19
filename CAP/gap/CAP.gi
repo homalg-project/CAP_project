@@ -239,6 +239,9 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     obj_rec!.input_sanity_check_level := 1;
     obj_rec!.output_sanity_check_level := 1;
     
+    obj_rec!.predicate_logic_propagation_for_objects := false;
+    obj_rec!.predicate_logic_propagation_for_morphisms := false;
+    
     obj_rec!.predicate_logic := true;
     
     obj_rec!.add_primitive_output := false;
@@ -697,6 +700,56 @@ end );
 ## Logic
 ##
 #######################################
+
+InstallGlobalFunction( CapCategorySwitchLogicPropagationForObjectsOn,
+  
+  function( category )
+    
+    category!.predicate_logic_propagation_for_objects := true;
+    
+end );
+
+InstallGlobalFunction( CapCategorySwitchLogicPropagationForObjectsOff,
+  
+  function( category )
+    
+    category!.predicate_logic_propagation_for_objects := false;
+    
+end );
+
+InstallGlobalFunction( CapCategorySwitchLogicPropagationForMorphismsOn,
+  
+  function( category )
+    
+    category!.predicate_logic_propagation_for_morphisms := true;
+    
+end );
+
+InstallGlobalFunction( CapCategorySwitchLogicPropagationForMorphismsOff,
+  
+  function( category )
+    
+    category!.predicate_logic_propagation_for_morphisms := false;
+    
+end );
+
+InstallGlobalFunction( CapCategorySwitchLogicPropagationOn,
+  
+  function( category )
+    
+    CapCategorySwitchLogicPropagationForObjectsOn( category );
+    CapCategorySwitchLogicPropagationForMorphismsOn( category );
+    
+end );
+
+InstallGlobalFunction( CapCategorySwitchLogicPropagationOff,
+  
+  function( category )
+    
+    CapCategorySwitchLogicPropagationForObjectsOff( category );
+    CapCategorySwitchLogicPropagationForMorphismsOff( category );
+    
+end );
 
 InstallGlobalFunction( CapCategorySwitchLogicOn,
   
