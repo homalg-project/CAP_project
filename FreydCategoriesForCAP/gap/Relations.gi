@@ -308,3 +308,23 @@ InstallMethod( \/,
     return PseudoInverse( mor/rel );
     
 end );
+
+####################################
+##
+## Down
+##
+####################################
+
+##
+InstallMethod( Down,
+               [ IsRelCategoryObject ],
+               UnderlyingOriginalObject );
+
+##
+InstallMethod( DownOnlyMorphismData,
+               [ IsRelCategoryMorphism ],
+  function( mor )
+    
+    return [ ReversedArrow( mor ), Arrow( mor ) ];
+    
+end );

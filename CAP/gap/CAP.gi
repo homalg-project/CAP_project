@@ -769,6 +769,79 @@ end );
 
 #######################################
 ##
+## Unpacking data structures
+##
+#######################################
+
+##
+InstallMethod( Down, [ IsObject ], IdFunc );
+
+##
+InstallMethod( Down, [ IsCapCategoryObject ], x -> "unknown object data" );
+
+##
+InstallMethod( Down2, [ IsObject ], x -> Down( Down( x ) ) );
+
+##
+InstallMethod( Down3, [ IsObject ], x -> Down( Down( Down( x ) ) ) );
+
+##
+InstallMethod( DownOnlyMorphismData, [ IsCapCategoryMorphism ], x -> "unknown morphism data" );
+
+##
+InstallMethod( Down,
+               [ IsCapCategoryMorphism ],
+  function( mor )
+    
+    return [ Source( mor ), DownOnlyMorphismData( mor ), Range( mor ) ];
+    
+end );
+
+##
+InstallMethod( Down,
+               [ IsList ],
+               
+  function( obj )
+    
+    return List( obj, Down );
+    
+end );
+
+##
+InstallMethod( DownToBottom,
+               [ IsObject ],
+               
+  function( obj )
+    local objp, equality_func;
+    
+    objp := obj;
+    
+    equality_func := function( a, b )
+      
+      if IsList( a ) and IsList( b ) and Size( a ) = Size( b ) then
+        
+        return ForAll( [ 1 .. Size( a ) ], i -> equality_func(a[i], b[i]) );
+        
+      else
+        
+        return IsIdenticalObj( a, b );
+        
+      fi;
+      
+    end;
+    
+    while not equality_func( objp, Down( objp ) ) do
+      
+      objp := Down( objp );
+      
+    od;
+    
+    return objp;
+    
+end );
+
+#######################################
+##
 ## ViewObj
 ##
 #######################################

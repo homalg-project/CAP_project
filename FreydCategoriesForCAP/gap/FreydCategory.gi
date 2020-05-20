@@ -1935,3 +1935,28 @@ InstallMethod( \/,
     return mat/UnderlyingCategory( freyd_category )/freyd_category;
     
 end );
+
+####################################
+##
+## Down
+##
+####################################
+
+##
+InstallMethod( Down,
+               [ IsFreydCategoryObject ],
+  function( obj )
+    
+    return RelationMorphism( obj );
+    
+end );
+
+##
+InstallMethod( DownOnlyMorphismData,
+               [ IsFreydCategoryMorphism ],
+  function( mor )
+    
+    return MorphismDatum( mor );
+    
+end );
+

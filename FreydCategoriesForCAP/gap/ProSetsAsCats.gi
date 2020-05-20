@@ -377,3 +377,23 @@ InstallMethod( ViewObj,
         Print( ViewString( obj ) );
 
 end );
+
+####################################
+##
+## Down
+##
+####################################
+
+##
+InstallMethod( Down,
+               [ IsProSetAsCategoryObject ],
+               UnderlyingInteger );
+
+##
+InstallMethod( DownOnlyMorphismData,
+               [ IsProSetAsCategoryMorphism ],
+  function( mor )
+    
+    return "->";
+    
+end );

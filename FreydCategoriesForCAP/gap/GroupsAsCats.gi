@@ -387,3 +387,27 @@ InstallMethod( \=,
 InstallMethod( \/,
                [ IsObject, IsGroupAsCategory ],
                GroupAsCategoryMorphism );
+
+####################################
+##
+## Down
+##
+####################################
+
+##
+InstallMethod( Down,
+               [ IsGroupAsCategoryObject ],
+  function( obj )
+    
+    return "*";
+    
+end );
+
+##
+InstallMethod( DownOnlyMorphismData,
+               [ IsGroupAsCategoryMorphism ],
+  function( mor )
+    
+    return UnderlyingGroupElement( mor );
+    
+end );
