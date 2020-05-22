@@ -7,7 +7,7 @@ AutoDoc( "FreydCategoriesForCAP" :
          scaffold :=
           rec(
             gapdoc_latex_options := rec(
-            LateExtraPreamble := "\\usepackage{tikz}\n\\usetikzlibrary{arrows}" )
+            LateExtraPreamble := "\\usepackage{tikz}\n\\usetikzlibrary{arrows}\n\\usetikzlibrary{calc}" )
           ),
          autodoc :=
          rec( files := [ "doc/Intros.autodoc" ],
