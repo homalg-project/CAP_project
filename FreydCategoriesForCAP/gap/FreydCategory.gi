@@ -1936,6 +1936,22 @@ InstallMethod( \/,
     
 end );
 
+##
+InstallMethod( \/,
+               [ IsCapCategoryObject, IsFreydCategory ],
+               
+  function( obj, freyd_category )
+    
+    if not IsIdenticalObj( UnderlyingCategory( freyd_category ), CapCategory( obj ) ) then
+      
+      Error( "The underlying category of the given Freyd category has to be equal to the category of the given object" );
+      
+    fi;
+    
+    return AsFreydCategoryObject( obj );
+    
+end );
+
 ####################################
 ##
 ## Down
