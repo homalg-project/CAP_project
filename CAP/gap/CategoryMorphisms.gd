@@ -50,9 +50,6 @@ DeclareAttribute( "Range",
 
 # this attribute is also an implied operation
 
-DeclareOperation( "InverseOp",
-                  [ IsCapCategoryMorphism ] );
-
 ###################################
 ##
 #! @Section Technical stuff
@@ -1653,6 +1650,17 @@ DeclareOperation( "AddIsColiftable",
 #! \end{tikzpicture}
 #! \end{center}
 #! @EndLatexOnly
+
+DeclareOperation( "InverseOp",
+                  [ IsCapCategoryMorphism ] );
+
+#! @Description
+#! The argument is an isomorphism $\alpha: a \rightarrow b$.
+#! The output is its inverse $\alpha^{-1}: b \rightarrow a$.
+#! @Returns a morphism in $\mathrm{Hom}(b,a)$
+#! @Arguments alpha
+# DeclareOperation( "Inverse",
+#         [ IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
