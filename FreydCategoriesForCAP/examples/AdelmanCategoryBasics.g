@@ -4,7 +4,7 @@
 
 LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "RingsForHomalg" );
-LoadPackage( "Bialgebroids" );
+LoadPackage( "Algebroids" );
 
 #! @Example
 R := HomalgRingOfIntegers();;
