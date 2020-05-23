@@ -842,7 +842,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
                 
             elif nr_rows > 1 then
                 
-                underlying_matrix := UnionOfColumns( List( [ 1 .. nr_rows ], i -> CertainRows( underlying_matrix, [ i ] ) ) );
+                underlying_matrix := ConvertMatrixToRow( underlying_matrix );
                 
             fi;
             
@@ -871,7 +871,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             
             underlying_matrix := UnderlyingMatrix( morphism );
             
-            underlying_matrix := UnionOfRows( List( [ 1 .. nr_rows ], i -> CertainColumns( underlying_matrix, [ ((i - 1) * nr_columns + 1) .. i * nr_columns ] ) ) );
+            underlying_matrix := ConvertRowToMatrix( underlying_matrix, nr_rows, nr_columns );
             
             return CategoryOfRowsMorphism( A, underlying_matrix, B );
             

@@ -786,22 +786,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
       function( alpha )
-        local matrix, m, new_matrix, c;
+        local matrix, new_matrix;
         
         matrix := UnderlyingMatrix( alpha );
         
-        m := NrRows( matrix );
+        new_matrix := ConvertMatrixToRow( matrix );
         
-        if m > 0 then
-            
-            new_matrix := UnionOfColumns( List( [ 1 .. NrRows( matrix ) ], n -> CertainRows( matrix, [ n ] ) ) );
-            
-        else
-            
-            new_matrix := HomalgZeroMatrix( 1, 0, homalg_field );
-            
-        fi;
-            
         return VectorSpaceMorphism(
           VectorSpaceObject( 1, homalg_field ),
           new_matrix,
@@ -821,17 +811,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         n := Dimension( range );
         
-        if m > 0 then
-            
-            new_matrix := UnionOfRows(
-              List( [ 0 .. m - 1 ], i -> CertainColumns( matrix, [ 1 + i*n .. n + i*n ] ) )
-            );
-        
-        else
-            
-            new_matrix := HomalgZeroMatrix( m, n, homalg_field );
-            
-        fi;
+        new_matrix := ConvertRowToMatrix( matrix, m, n );
         
         return VectorSpaceMorphism(
           source,
