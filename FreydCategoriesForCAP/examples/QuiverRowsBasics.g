@@ -4,7 +4,6 @@
 
 LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "RingsForHomalg" );
-LoadPackage( "Bialgebroids" );
 
 #! @Example
 
