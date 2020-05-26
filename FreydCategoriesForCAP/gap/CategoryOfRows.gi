@@ -700,6 +700,31 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     if is_defined_over_field then
       
       ##
+      AddBasisOfExternalHom( category,
+        function( S, T )
+          local s, t, identity, matrices;
+          
+          s := RankOfObject( S );
+          
+          t := RankOfObject( T );
+          
+          identity := HomalgIdentityMatrix( s * t, UnderlyingRing( CapCategory( S ) ) );
+          
+          matrices := List( [ 1 .. s * t ], i -> ConvertRowToMatrix( CertainRows( identity, [ i ] ), s, t ) );
+          
+          return List( matrices, mat -> CategoryOfRowsMorphism( S, mat, T ) );
+          
+      end );
+      
+      ##
+      AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( category,
+        function( morphism, L )
+          
+          return EntriesOfHomalgMatrix( UnderlyingMatrix( morphism ) );
+          
+      end );
+      
+      ##
       AddKernelObject( category,
         function( morphism )
           local homalg_matrix;
