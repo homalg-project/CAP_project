@@ -25,6 +25,8 @@ InstallMethod( CategoryOfRows,
     
     SetFilterObj( category, IsCategoryOfRows );
     
+    SetIsSkeletalCategory( category, true );
+    
     SetIsAdditiveCategory( category, true );
     
     SetIsRigidSymmetricClosedMonoidalCategory( category, true );
