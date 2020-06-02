@@ -55,7 +55,7 @@ Every other part, except from function, does only depend on the name SomeFunc. W
   it is installed in this step for the result.
 
 * Postfunction: The postfunction called with the arguments of the function and the result. It can be an arbitrary function doing
-  some cosmetics. If for example SomeFunc is KernelEmbeddingedding, it will set the KernelObject of the input morphism to result.
+  some cosmetics. If for example SomeFunc is KernelEmbedding, it will set the KernelObject of the input morphism to result.
   The postfunction is also taken from the method record and does only depend on the name SomeFunc.
 
 * Addfunction: If the result is a category cell, it is added to the category for which the function was installed.
