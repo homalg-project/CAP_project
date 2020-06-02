@@ -366,6 +366,8 @@ InstallGlobalFunction( CapInternalInstallAdd,
         install_func := function( func_to_install, filter_list )
           local new_filter_list;
             
+            Add( category!.added_functions.( function_name ), [ func_to_install, filter_list ] );
+            
             new_filter_list := CAP_INTERNAL_MERGE_FILTER_LISTS( replaced_filter_list, filter_list );
             
             if category!.overhead then
@@ -466,6 +468,12 @@ InstallGlobalFunction( CapInternalInstallAdd,
             fi;
             
         end;
+        
+        if not IsBound( category!.added_functions.( function_name ) ) then
+            
+            category!.added_functions.( function_name ) := [ ];
+            
+        fi;
         
         for i in method_list do
             
