@@ -58,7 +58,7 @@ InstallMethod( VectorSpaceMorphism,
     
     if not IsIdenticalObj( category, CapCategory( range ) ) then
       
-      return Error( "source and range are not defined over identical categories" );
+      Error( "source and range are not defined over identical categories" );
       
     fi;
     
@@ -66,19 +66,19 @@ InstallMethod( VectorSpaceMorphism,
     
     if not IsIdenticalObj( homalg_field, UnderlyingFieldForHomalg( source ) ) then
       
-      return Error( "the matrix is defined over a different ring than the objects" );
+      Error( "the matrix is defined over a different ring than the objects" );
       
     fi;
     
     if NrRows( homalg_matrix ) <> Dimension( source ) then
       
-      return Error( "the number of rows has to be equal to the dimension of the source" );
+      Error( "the number of rows has to be equal to the dimension of the source" );
       
     fi;
     
     if NrColumns( homalg_matrix ) <> Dimension( range ) then
       
-      return Error( "the number of columns has to be equal to the dimension of the range" );
+      Error( "the number of columns has to be equal to the dimension of the range" );
       
     fi;
     

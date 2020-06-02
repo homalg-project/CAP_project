@@ -33,7 +33,7 @@ InstallMethod( MatrixCategoryObjectOp,
     
     if dimension < 0 then
       
-      return Error( "first argument must be a non-negative integer" );
+      Error( "first argument must be a non-negative integer" );
       
     fi;
     

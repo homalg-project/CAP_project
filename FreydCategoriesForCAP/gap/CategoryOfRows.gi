@@ -84,7 +84,7 @@ InstallMethod( CategoryOfRowsObjectOp,
     
     if rank < 0 then
       
-      return Error( "first argument must be a non-negative integer" );
+      Error( "first argument must be a non-negative integer" );
       
     fi;
     
@@ -125,7 +125,7 @@ InstallMethod( CategoryOfRowsMorphism,
     
     if not IsIdenticalObj( category, CapCategory( range ) ) then
       
-      return Error( "source and range are not defined over identical categories" );
+      Error( "source and range are not defined over identical categories" );
       
     fi;
     
@@ -133,19 +133,19 @@ InstallMethod( CategoryOfRowsMorphism,
     
     if not IsIdenticalObj( homalg_ring, UnderlyingRing( category ) ) then
       
-      return Error( "the matrix is defined over a different ring than the objects" );
+      Error( "the matrix is defined over a different ring than the objects" );
       
     fi;
     
     if NrRows( homalg_matrix ) <> RankOfObject( source ) then
       
-      return Error( "the number of rows has to be equal to the rank of the source" );
+      Error( "the number of rows has to be equal to the rank of the source" );
       
     fi;
     
     if NrColumns( homalg_matrix ) <> RankOfObject( range ) then
       
-      return Error( "the number of columns has to be equal to the rank of the range" );
+      Error( "the number of columns has to be equal to the rank of the range" );
       
     fi;
     

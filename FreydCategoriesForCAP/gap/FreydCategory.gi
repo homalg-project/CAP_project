@@ -1844,7 +1844,7 @@ InstallMethod( \^,
     
       if power < 0 then
       
-        return Error( "The power must be non-negative! \n" );
+        Error( "The power must be non-negative! \n" );
             
       elif power = 0 then
       
@@ -1877,7 +1877,7 @@ InstallMethod( \^,
     
       if power < 0 then
       
-        return Error( "The power must be non-negative! \n" );
+        Error( "The power must be non-negative! \n" );
       
       elif power = 0 then
       
