@@ -372,66 +372,66 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
             if category!.overhead then
             
-            install_method( ValueGlobal( install_name ),
-                            new_filter_list,
-                            
-              function( arg )
-                local redirect_return, filter, human_readable_identifier_getter, pre_func_return, result, i, j;
-                
-                if (redirect_function <> false) and (not IsBound( category!.redirects.( function_name ) ) or category!.redirects.( function_name ) <> false) then
-                    redirect_return := CallFuncList( redirect_function, Concatenation( [ category ], arg ) );
-                    if redirect_return[ 1 ] = true then
-                        if category!.predicate_logic then
-                            INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, redirect_return[ 2 ], category );
+                install_method( ValueGlobal( install_name ),
+                                new_filter_list,
+                                
+                  function( arg )
+                    local redirect_return, filter, human_readable_identifier_getter, pre_func_return, result, i, j;
+                    
+                    if (redirect_function <> false) and (not IsBound( category!.redirects.( function_name ) ) or category!.redirects.( function_name ) <> false) then
+                        redirect_return := CallFuncList( redirect_function, Concatenation( [ category ], arg ) );
+                        if redirect_return[ 1 ] = true then
+                            if category!.predicate_logic then
+                                INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, redirect_return[ 2 ], category );
+                            fi;
+                            return redirect_return[ 2 ];
                         fi;
-                        return redirect_return[ 2 ];
-                    fi;
-                fi;
-                
-                if category!.input_sanity_check_level > 0 then
-                    for i in [ 1 .. Length( input_sanity_check_functions ) ] do
-                        input_sanity_check_functions[ i ]( arg[ i ], i );
-                    od;
-                    
-                    pre_func_return := CallFuncList( pre_function, arg );
-                    if pre_func_return[ 1 ] = false then
-                        CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, pre_func_return[ 2 ] );
                     fi;
                     
-                    if category!.input_sanity_check_level > 1 then
-                        pre_func_return := CallFuncList( pre_function_full, arg );
+                    if category!.input_sanity_check_level > 0 then
+                        for i in [ 1 .. Length( input_sanity_check_functions ) ] do
+                            input_sanity_check_functions[ i ]( arg[ i ], i );
+                        od;
+                        
+                        pre_func_return := CallFuncList( pre_function, arg );
                         if pre_func_return[ 1 ] = false then
                             CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, pre_func_return[ 2 ] );
                         fi;
+                        
+                        if category!.input_sanity_check_level > 1 then
+                            pre_func_return := CallFuncList( pre_function_full, arg );
+                            if pre_func_return[ 1 ] = false then
+                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, pre_func_return[ 2 ] );
+                            fi;
+                        fi;
+                        
                     fi;
                     
-                fi;
-                
-                result := CallFuncList( func_to_install, arg{ argument_list } );
-                
-                if category!.predicate_logic then
-                    INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, result, category );
-                fi;
-                
-                if (not is_derivation) then
-                    if category!.add_primitive_output then
-                        add_function( category, result );
-                    elif category!.output_sanity_check_level > 0 then
-                        output_sanity_check_function( result );
+                    result := CallFuncList( func_to_install, arg{ argument_list } );
+                    
+                    if category!.predicate_logic then
+                        INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, result, category );
                     fi;
-                fi;
-                
-                if post_function <> false then
                     
-                    Add( arg, result );
+                    if (not is_derivation) then
+                        if category!.add_primitive_output then
+                            add_function( category, result );
+                        elif category!.output_sanity_check_level > 0 then
+                            output_sanity_check_function( result );
+                        fi;
+                    fi;
                     
-                    CallFuncList( post_function, Concatenation( [ category ], arg ) );
+                    if post_function <> false then
+                        
+                        Add( arg, result );
+                        
+                        CallFuncList( post_function, Concatenation( [ category ], arg ) );
+                        
+                    fi;
                     
-                fi;
-                
-                return result;
-                
-            end );
+                    return result;
+                    
+                end );
             
             else #category!.overhead = false
                 
