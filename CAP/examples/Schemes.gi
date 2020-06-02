@@ -410,9 +410,7 @@ InstallMethod( Scheme,
   function( )
     local scheme;
     
-    scheme := rec( );
-    
-    ObjectifyWithAttributes( scheme, TheTypeOfSchemes );
+    scheme := ObjectifyWithAttributes( rec( ), TheTypeOfSchemes );
     
     Add( Schemes, scheme );
     
@@ -428,11 +426,9 @@ InstallMethod( SchemeMorphism,
   function( source, range )
     local scheme_morphism, entry, entry2;
     
-    scheme_morphism := rec( );
-    
-    ObjectifyWithAttributes( scheme_morphism, TheTypeOfSchemeMorphisms,
-                             Source, source,
-                             Range, range );
+    scheme_morphism := ObjectifyWithAttributes( rec( ), TheTypeOfSchemeMorphisms,
+                                                Source, source,
+                                                Range, range );
     
     Add( Schemes, scheme_morphism );
     
@@ -453,4 +449,3 @@ A := Scheme( );
 B := Scheme( );
 
 alpha := SchemeMorphism( A, B );
-    

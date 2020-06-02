@@ -65,10 +65,8 @@ InstallMethod( FieldAsCategoryUniqueObject,
   function( category )
     local unique_object;
     
-    unique_object := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( unique_object, 
-                                         category
+    unique_object := ObjectifyObjectForCAPWithAttributes( rec( ),
+                                                          category
     );
     
     Add( category, unique_object );
@@ -84,11 +82,9 @@ InstallMethod( FieldAsCategoryMorphism,
   function( element, category )
     local morphism, unique_object;
     
-    morphism := rec( );
-    
     unique_object := FieldAsCategoryUniqueObject( category );
     
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( morphism, category,
+    morphism := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category,
                                            unique_object,
                                            unique_object,
                                            UnderlyingFieldElement, element

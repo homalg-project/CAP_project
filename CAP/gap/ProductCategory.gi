@@ -219,12 +219,10 @@ InstallMethodWithCacheFromObject( ProductOp_OnObjects,
   function( object_list, category )
     local product_object, entry, i;
     
-    product_object := rec( );
-    
-    ObjectifyWithAttributes( product_object, TheTypeOfCapCategoryProductObjects,
-                             Components, object_list,
-                             Length, Length( object_list )
-                           );
+    product_object := ObjectifyWithAttributes( rec( ), TheTypeOfCapCategoryProductObjects,
+                                               Components, object_list,
+                                               Length, Length( object_list )
+                                             );
     
     Add( category, product_object );
     
@@ -239,12 +237,10 @@ InstallMethodWithCacheFromObject( ProductOp_OnMorphisms,
   function( morphism_list, category )
     local product_morphism, entry, i;
     
-    product_morphism := rec( );
-    
-    ObjectifyWithAttributes( product_morphism, TheTypeOfCapCategoryProductMorphisms,
-                             Components, morphism_list,
-                             Length, Length( morphism_list )
-                           );
+    product_morphism := ObjectifyWithAttributes( rec( ), TheTypeOfCapCategoryProductMorphisms,
+                                                 Components, morphism_list,
+                                                 Length, Length( morphism_list )
+                                               );
     
     Add( category, product_morphism );
     
@@ -259,12 +255,10 @@ InstallMethodWithCacheFromObject( ProductOp_OnTwoCells,
   function( twocell_list, category )
     local product_twocell;
     
-    product_twocell := rec( );
-    
-    ObjectifyWithAttributes( product_twocell, TheTypeOfCapCategoryProductTwoCells,
-                             Components, twocell_list,
-                             Length, Length( twocell_list )
-                           );
+    product_twocell := ObjectifyWithAttributes( rec( ), TheTypeOfCapCategoryProductTwoCells,
+                                                Components, twocell_list,
+                                                Length, Length( twocell_list )
+                                              );
     
     Add( category, product_twocell );
     

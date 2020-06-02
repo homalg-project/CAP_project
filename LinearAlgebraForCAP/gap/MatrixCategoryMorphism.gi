@@ -52,7 +52,7 @@ InstallMethod( VectorSpaceMorphism,
                [ IsVectorSpaceObject, IsHomalgMatrix, IsVectorSpaceObject ],
                
   function( source, homalg_matrix, range )
-    local vector_space_morphism, homalg_field, category;
+    local homalg_field, category;
     
     category := CapCategory( source );
     
@@ -82,16 +82,12 @@ InstallMethod( VectorSpaceMorphism,
       
     fi;
     
-    vector_space_morphism := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( vector_space_morphism, category,
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category,
                                            source,
                                            range,
                                            UnderlyingFieldForHomalg, homalg_field,
                                            UnderlyingMatrix, homalg_matrix
     );
-    
-    return vector_space_morphism;
     
 end );
 

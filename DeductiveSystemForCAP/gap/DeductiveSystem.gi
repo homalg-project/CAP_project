@@ -711,9 +711,7 @@ InstallMethod( InDeductiveSystem,
   function( object )
     local deductive_object, deductive_system, property, entry;
     
-    deductive_object := rec( );
-    
-    ObjectifyWithAttributes( deductive_object, TheTypeOfDeductiveSystemObject );
+    deductive_object := ObjectifyWithAttributes( rec( ), TheTypeOfDeductiveSystemObject );
     
     SetEvaluation( deductive_object, object );
     
@@ -740,12 +738,10 @@ InstallMethod( DeductiveSystemObject,
   function( func, argument_list )
     local deductive_object, resolved_history;
     
-    deductive_object := rec( );
-    
 #     resolved_history := RESOLVE_HISTORY( argument_list );
     
-    ObjectifyWithAttributes( deductive_object, TheTypeOfDeductiveSystemObject,
-                             History, rec( command := func, arguments := argument_list ) );
+    deductive_object := ObjectifyWithAttributes( rec( ), TheTypeOfDeductiveSystemObject,
+                                                 History, rec( command := func, arguments := argument_list ) );
     
     INSTALL_TODO_FOR_LOGICAL_THEOREMS( func, argument_list, deductive_object );
     
@@ -762,9 +758,7 @@ InstallMethod( DeductiveSystemObject,
     
     deductive_system := DeductiveSystem( category );
     
-    deductive_object := rec( );
-    
-    ObjectifyWithAttributes( deductive_object, TheTypeOfDeductiveSystemObject );
+    deductive_object := ObjectifyWithAttributes( rec( ), TheTypeOfDeductiveSystemObject );
     
     SetHistory( deductive_object, deductive_object );
     
@@ -786,11 +780,9 @@ InstallMethod( InDeductiveSystem,
     
     range := InDeductiveSystem( Range( morphism ) );
     
-    deductive_morphism := rec( );
-    
-    ObjectifyWithAttributes( deductive_morphism, TheTypeOfDeductiveSystemMorphism,
-                             Source, source,
-                             Range, range );
+    deductive_morphism := ObjectifyWithAttributes( rec( ), TheTypeOfDeductiveSystemMorphism,
+                                                   Source, source,
+                                                   Range, range );
     
     SetEvaluation( deductive_morphism, morphism );
     
@@ -821,14 +813,12 @@ InstallMethod( DeductiveSystemMorphism,
   function( source, func, argument_list, range )
     local deductive_morphism, resolved_history;
     
-    deductive_morphism := rec( );
-    
 #     resolved_history := RESOLVE_HISTORY( argument_list );
     
-    ObjectifyWithAttributes( deductive_morphism, TheTypeOfDeductiveSystemMorphism,
-                             History, rec( command := func, arguments := argument_list ),
-                             Source, source,
-                             Range, range );
+    deductive_morphism := ObjectifyWithAttributes( rec( ), TheTypeOfDeductiveSystemMorphism,
+                                                   History, rec( command := func, arguments := argument_list ),
+                                                   Source, source,
+                                                   Range, range );
     
     INSTALL_TODO_FOR_LOGICAL_THEOREMS( func, argument_list, deductive_morphism );
     
@@ -848,11 +838,9 @@ InstallMethod( DeductiveSystemMorphism,
   function( source, range )
     local deductive_system, deductive_morphism;
     
-    deductive_morphism := rec( );
-    
-    ObjectifyWithAttributes( deductive_morphism, TheTypeOfDeductiveSystemMorphism,
-                             Source, source,
-                             Range, range );
+    deductive_morphism := ObjectifyWithAttributes( rec( ), TheTypeOfDeductiveSystemMorphism,
+                                                   Source, source,
+                                                   Range, range );
     
     SetHistory( deductive_morphism, deductive_morphism );
     

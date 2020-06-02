@@ -52,15 +52,10 @@ InstallMethod( GroupAsCategoryUniqueObject,
                [ IsGroupAsCategory ],
                
   function( category )
-    local unique_object;
     
-    unique_object := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( unique_object, 
-                                         category
+    return ObjectifyObjectForCAPWithAttributes( rec( ),
+                                                category
     );
-    
-    return unique_object;
     
 end );
 
@@ -69,21 +64,17 @@ InstallMethod( GroupAsCategoryMorphismOp,
                [ IsGroupAsCategory, IsObject ],
                
   function( category, element )
-    local morphism, unique_object;
-    
-    morphism := rec( );
+    local unique_object;
     
     unique_object := GroupAsCategoryUniqueObject( category );
     
     ## this is a "compiled" version of ObjectifyMorphismForCAPWithAttributes
-    ObjectifyWithAttributes( morphism, category!.morphism_type,
-                             Source, unique_object,
-                             Range, unique_object,
-                             UnderlyingGroupElement, element,
-                             CapCategory, category 
+    return ObjectifyWithAttributes( rec( ), category!.morphism_type,
+                                    Source, unique_object,
+                                    Range, unique_object,
+                                    UnderlyingGroupElement, element,
+                                    CapCategory, category
     );
-    
-    return morphism;
     
 end );
 

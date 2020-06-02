@@ -48,13 +48,11 @@ InstallMethod( SemisimpleCategoryMorphism,
     
     field := UnderlyingFieldForHomalg( source );
     
-    semisimple_category_morphism := rec( );
-    
-    ObjectifyWithAttributes( semisimple_category_morphism, TheTypeOfSemisimpleCategoryMorphisms,
-                             Source, source,
-                             Range, range,
-                             SemisimpleCategoryMorphismList, morphism_list,
-                             UnderlyingFieldForHomalg, field
+    semisimple_category_morphism := ObjectifyWithAttributes( rec( ), TheTypeOfSemisimpleCategoryMorphisms,
+                                                             Source, source,
+                                                             Range, range,
+                                                             SemisimpleCategoryMorphismList, morphism_list,
+                                                             UnderlyingFieldForHomalg, field
     );
     
     SetFilterObj( semisimple_category_morphism, GivenMorphismFilterForSemisimpleCategory( category ) );

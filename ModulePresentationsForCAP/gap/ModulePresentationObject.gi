@@ -44,17 +44,15 @@ InstallGlobalFunction( AsLeftOrRightPresentation,
     
     if lazy then
         module.LazyUnderlyingMatrix := matrix;
-        ObjectifyObjectForCAPWithAttributes( module, presentation_category,
+        return ObjectifyObjectForCAPWithAttributes( module, presentation_category,
                 UnderlyingHomalgRing, ring
                 );
     else
-        ObjectifyObjectForCAPWithAttributes( module, presentation_category,
+        return ObjectifyObjectForCAPWithAttributes( module, presentation_category,
                 UnderlyingMatrix, matrix,
                 UnderlyingHomalgRing, ring
                 );
     fi;
-    
-    return module;
     
 end );
 

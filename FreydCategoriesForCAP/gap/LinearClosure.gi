@@ -163,16 +163,11 @@ InstallMethod( LinearClosureObject,
                [ IsLinearClosure, IsCapCategoryObject ],
                
   function( category, object )
-    local linear_closure_object;
     
-    linear_closure_object := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( linear_closure_object, 
-                                         category,
-                                         UnderlyingOriginalObject, object
+    return ObjectifyObjectForCAPWithAttributes( rec( ),
+                                                category,
+                                                UnderlyingOriginalObject, object
     );
-    
-    return linear_closure_object;
     
 end );
 
@@ -278,21 +273,17 @@ end );
 InstallMethod( LinearClosureMorphismNC,
                [ IsLinearClosureObject, IsList, IsList, IsLinearClosureObject ],
   function( source, coefficients, support_morphisms, range )
-    local morphism, category;
-    
-    morphism := rec();
+    local category;
     
     category := CapCategory( source );
     
     ## this is a "compiled" version of ObjectifyMorphismForCAPWithAttributes
-    ObjectifyWithAttributes( morphism, category!.morphism_type,
+    return ObjectifyWithAttributes( rec( ), category!.morphism_type,
         Source, source,
         Range, range,
         CoefficientsList, coefficients,
         SupportMorphisms, support_morphisms,
         CapCategory, category );
-    
-    return morphism;
     
 end );
 

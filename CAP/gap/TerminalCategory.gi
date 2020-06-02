@@ -52,10 +52,8 @@ InstallMethod( UniqueObject,
   function( category )
     local object;
     
-    object := rec( );
-    
-    ObjectifyWithAttributes( object, TheTypeOfCapTerminalCategoryObject,
-                             IsZeroForObjects, true );
+    object := ObjectifyWithAttributes( rec( ), TheTypeOfCapTerminalCategoryObject,
+                                       IsZeroForObjects, true );
     
     Add( CAP_INTERNAL_TERMINAL_CATEGORY, object );
     
@@ -72,14 +70,12 @@ InstallMethod( UniqueMorphism,
   function( category )
     local morphism, object;
     
-    morphism := rec( );
-    
     object := UniqueObject( CAP_INTERNAL_TERMINAL_CATEGORY );
     
-    ObjectifyWithAttributes( morphism, TheTypeOfCapTerminalCategoryMorphism,
-                             Source, object,
-                             Range, object,
-                             IsOne, true );
+    morphism := ObjectifyWithAttributes( rec( ), TheTypeOfCapTerminalCategoryMorphism,
+                                         Source, object,
+                                         Range, object,
+                                         IsOne, true );
     
     Add( CAP_INTERNAL_TERMINAL_CATEGORY, morphism );
     

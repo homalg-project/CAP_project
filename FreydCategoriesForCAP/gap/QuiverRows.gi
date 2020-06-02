@@ -141,8 +141,6 @@ InstallMethod( QuiverRowsObject,
   function( list_of_vertices, category )
     local quiver_rows_object, s, L, v, vertex, current;
     
-    quiver_rows_object := rec( );
-    
     ## create normal form of list_of_vertices
     ## every object will be constructed via this constructor, thus,
     ## every object can be assumed to be in normal form
@@ -187,8 +185,8 @@ InstallMethod( QuiverRowsObject,
         
     fi;
     
-    ObjectifyObjectForCAPWithAttributes(
-        quiver_rows_object, category,
+    quiver_rows_object := ObjectifyObjectForCAPWithAttributes(
+        rec( ), category,
         ListOfQuiverVertices, L
     );
 
@@ -205,12 +203,10 @@ InstallMethod( QuiverRowsMorphism,
   function( source, matrix, range )
     local quiver_rows_morphism, category;
     
-    quiver_rows_morphism := rec( );
-    
     category := CapCategory( source );
 
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
-                             quiver_rows_morphism, category,
+    quiver_rows_morphism := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
+                             rec( ), category,
                              source,
                              range,
                              MorphismMatrix, matrix

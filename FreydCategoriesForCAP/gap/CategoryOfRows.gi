@@ -80,7 +80,6 @@ end );
 InstallMethod( CategoryOfRowsObjectOp,
                [ IsCategoryOfRows, IsInt ],
   function( category, rank )
-    local category_of_rows_object;
     
     if rank < 0 then
       
@@ -88,14 +87,10 @@ InstallMethod( CategoryOfRowsObjectOp,
       
     fi;
     
-    category_of_rows_object := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( category_of_rows_object, 
-                                         category,
-                                         RankOfObject, rank
+    return ObjectifyObjectForCAPWithAttributes( rec( ),
+                                                category,
+                                                RankOfObject, rank
     );
-    
-    return category_of_rows_object;
     
 end );
 
@@ -119,7 +114,7 @@ InstallMethod( CategoryOfRowsMorphism,
                [ IsCategoryOfRowsObject, IsHomalgMatrix, IsCategoryOfRowsObject ],
                
   function( source, homalg_matrix, range )
-    local category_of_rows_morphism, homalg_ring, category;
+    local homalg_ring, category;
     
     category := CapCategory( source );
     
@@ -149,15 +144,11 @@ InstallMethod( CategoryOfRowsMorphism,
       
     fi;
     
-    category_of_rows_morphism := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( category_of_rows_morphism, category,
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category,
                                            source,
                                            range,
                                            UnderlyingMatrix, homalg_matrix
     );
-    
-    return category_of_rows_morphism;
     
 end );
 

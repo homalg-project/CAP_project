@@ -36,9 +36,7 @@ InstallMethod( GIrreducibleObject,
                [ IsCharacter ],
                
   function( character )
-    local irreducible_object, number, underlying_character_table, underlying_irreducible_characters;
-    
-    irreducible_object := rec( );
+    local number, underlying_character_table, underlying_irreducible_characters;
     
     underlying_character_table := UnderlyingCharacterTable( character );
     
@@ -46,15 +44,13 @@ InstallMethod( GIrreducibleObject,
     
     number := PositionProperty( underlying_irreducible_characters, chi -> chi = character );
     
-    ObjectifyWithAttributes( irreducible_object, TheTypeOfGIrreducibleObjects,
-                             UnderlyingCharacter, character,
-                             UnderlyingCharacterNumber, number,
-                             UnderlyingGroup, UnderlyingGroup( character ),
-                             UnderlyingCharacterTable, underlying_character_table,
-                             UnderlyingIrreducibleCharacters, underlying_irreducible_characters
+    return ObjectifyWithAttributes( rec( ), TheTypeOfGIrreducibleObjects,
+                                    UnderlyingCharacter, character,
+                                    UnderlyingCharacterNumber, number,
+                                    UnderlyingGroup, UnderlyingGroup( character ),
+                                    UnderlyingCharacterTable, underlying_character_table,
+                                    UnderlyingIrreducibleCharacters, underlying_irreducible_characters
     );
-    
-    return irreducible_object;
     
 end );
 

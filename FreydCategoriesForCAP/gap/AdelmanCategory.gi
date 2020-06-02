@@ -78,7 +78,7 @@ InstallMethod( AdelmanCategoryObject,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
 
   function( relation_morphism, corelation_morphism )
-    local adelman_category_object, category;
+    local category;
     
     if not IsEqualForObjects( Range( relation_morphism ), Source( corelation_morphism ) ) then
     
@@ -86,15 +86,11 @@ InstallMethod( AdelmanCategoryObject,
     
     fi;
     
-    adelman_category_object := rec( );
-    
     category := AdelmanCategory( CapCategory( relation_morphism ) );
     
-    ObjectifyObjectForCAPWithAttributes( adelman_category_object, category,
-                                         RelationMorphism, relation_morphism,
-                                         CorelationMorphism, corelation_morphism );
-    
-    return adelman_category_object;
+    return ObjectifyObjectForCAPWithAttributes( rec( ), category,
+                                                RelationMorphism, relation_morphism,
+                                                CorelationMorphism, corelation_morphism );
     
 end );
 
@@ -138,12 +134,10 @@ InstallMethod( AdelmanCategoryMorphism,
         
     fi;
     
-    adelman_category_morphism := rec( );
-    
     category :=  CapCategory( source );
     
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
-                             adelman_category_morphism, category,
+    adelman_category_morphism := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
+                             rec( ), category,
                              source,
                              range,
                              MorphismDatum, morphism_datum

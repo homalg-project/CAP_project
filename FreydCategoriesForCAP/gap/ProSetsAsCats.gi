@@ -90,16 +90,11 @@ InstallMethod( ProSetAsCategoryObject,
                [ IsInt, IsProSetAsCategory ],
 
   function( number_object, category )
-    local object;
     ## TODO: sanity check: is number_object in the range [ 1 .. n ]?
 
-    object := rec( );
-
-    ObjectifyObjectForCAPWithAttributes( object, category,
-                                         UnderlyingInteger, number_object
+    return ObjectifyObjectForCAPWithAttributes( rec( ), category,
+                                                UnderlyingInteger, number_object
     );
-
-    return object;
 
 end );
 
@@ -107,21 +102,15 @@ InstallMethod( ProSetAsCategoryMorphism,
                [ IsProSetAsCategoryObject, IsProSetAsCategoryObject ],
 
   function( source, range )
-    local category, morphism;
+    local category;
 
     category := CapCategory( source );
 
-
-
-    morphism := rec( );
-
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-                             morphism, category,
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
+                             rec( ), category,
                              source,
                              range
     );
-
-    return morphism;
 
 end );
 

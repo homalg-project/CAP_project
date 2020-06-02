@@ -35,20 +35,15 @@ InstallMethod( SQVecObj,
                [ IsInt ],
                
   function( dim )
-        local space;
         
         if dim < 0 then
             Error( "the given integer must be non-negative");
         fi;
         
-        space := rec();
-        
-        ObjectifyObjectForCAPWithAttributes(
-            space, SQVec,
+        return ObjectifyObjectForCAPWithAttributes(
+            rec( ), SQVec,
             Dimension, dim
         );
-        
-        return space;
         
 end );
 
@@ -57,7 +52,7 @@ InstallMethod( SQVecMor,
                [ IsSQVecObj, IsObject, IsSQVecObj ],
                   
   function( source, matrix, range )
-    local morphism, underlying_matrix;
+    local underlying_matrix;
 
     if not IsHomalgMatrix( matrix ) then
     
@@ -73,16 +68,12 @@ InstallMethod( SQVecMor,
 
     fi;
     
-    morphism := rec();
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
-      morphism, SQVec,
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
+      rec( ), SQVec,
       source,
       range,
       UnderlyingMatrix, underlying_matrix
     );
-    
-    return morphism;
     
 end );
 

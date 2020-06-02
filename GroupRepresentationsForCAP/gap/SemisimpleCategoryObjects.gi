@@ -60,15 +60,13 @@ InstallMethodWithCache( SemisimpleCategoryObjectConstructorWithFlatList,
     semisimple_object_list := List( [ 1 .. size/2 ], i ->
       [ semisimple_object_flat_list[ 2*i - 1 ], semisimple_object_flat_list[ 2*i ] ] );
     
-    semisimple_category_object := rec( );
-    
     normalized_semisimple_object_list := NormalizeSemisimpleCategoryObjectList( semisimple_object_list );
     
     field := UnderlyingCategoryForSemisimpleCategory( category )!.field_for_matrix_category;
     
-    ObjectifyWithAttributes( semisimple_category_object, TheTypeOfSemisimpleCategoryObjects,
-                             SemisimpleCategoryObjectList, normalized_semisimple_object_list,
-                             UnderlyingFieldForHomalg, field
+    semisimple_category_object := ObjectifyWithAttributes( rec( ), TheTypeOfSemisimpleCategoryObjects,
+                                                           SemisimpleCategoryObjectList, normalized_semisimple_object_list,
+                                                           UnderlyingFieldForHomalg, field
     );
     
     SetFilterObj( semisimple_category_object, GivenObjectFilterForSemisimpleCategory( category ) );

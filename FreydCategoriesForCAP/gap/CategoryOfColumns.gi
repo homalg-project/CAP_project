@@ -82,7 +82,6 @@ InstallMethod( CategoryOfColumnsObjectOp,
                [ IsCategoryOfColumns, IsInt ],
                
   function( category, rank )
-    local category_of_columns_object;
     
     if rank < 0 then
       
@@ -90,14 +89,10 @@ InstallMethod( CategoryOfColumnsObjectOp,
       
     fi;
     
-    category_of_columns_object := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( category_of_columns_object, 
-                                         category,
-                                         RankOfObject, rank
+    return ObjectifyObjectForCAPWithAttributes( rec( ),
+                                                category,
+                                                RankOfObject, rank
     );
-    
-    return category_of_columns_object;
     
 end );
 
@@ -121,7 +116,7 @@ InstallMethod( CategoryOfColumnsMorphism,
                [ IsCategoryOfColumnsObject, IsHomalgMatrix, IsCategoryOfColumnsObject ],
                
   function( source, homalg_matrix, range )
-    local category_of_columns_morphism, homalg_ring, category;
+    local homalg_ring, category;
     
     category := CapCategory( source );
     
@@ -151,15 +146,11 @@ InstallMethod( CategoryOfColumnsMorphism,
       
     fi;
     
-    category_of_columns_morphism := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( category_of_columns_morphism, category,
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category,
                                            source,
                                            range,
                                            UnderlyingMatrix, homalg_matrix
     );
-    
-    return category_of_columns_morphism;
     
 end );
 

@@ -18,7 +18,7 @@ InstallMethod( PresentationMorphism,
                [ IsLeftOrRightPresentation, IsHomalgMatrix, IsLeftOrRightPresentation ],
                
   function( source, matrix, range )
-    local category, left, morphism;
+    local category, left;
     
     category := CapCategory( source );
     
@@ -66,15 +66,11 @@ InstallMethod( PresentationMorphism,
       
     fi;
     
-    morphism := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( morphism, category,
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category,
                              source,
                              range,
                              UnderlyingHomalgRing, HomalgRing( matrix ),
                              UnderlyingMatrix, matrix );
-    
-    return morphism;
     
 end );
 

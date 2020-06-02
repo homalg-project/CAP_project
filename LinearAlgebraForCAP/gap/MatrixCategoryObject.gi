@@ -29,7 +29,7 @@ InstallMethod( MatrixCategoryObjectOp,
                [ IsFieldForHomalg, IsInt ],
                
   function( homalg_field, dimension )
-    local category, vector_space_object;
+    local category;
     
     if dimension < 0 then
       
@@ -39,13 +39,9 @@ InstallMethod( MatrixCategoryObjectOp,
     
     category := MatrixCategory( homalg_field );
     
-    vector_space_object := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( vector_space_object, category,
-                                         Dimension, dimension,
-                                         UnderlyingFieldForHomalg, homalg_field );
-    
-    return vector_space_object;
+    return ObjectifyObjectForCAPWithAttributes( rec( ), category,
+                                                Dimension, dimension,
+                                                UnderlyingFieldForHomalg, homalg_field );
     
 end );
 

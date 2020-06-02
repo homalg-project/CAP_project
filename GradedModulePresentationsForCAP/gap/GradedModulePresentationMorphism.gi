@@ -68,14 +68,12 @@ InstallMethod( GradedPresentationMorphism,
         type := TheTypeOfGradedRightPresentationMorphisms;
     fi;
     
-    graded_morphism := rec();
-    
-    ObjectifyWithAttributes( graded_morphism, type,
-                             Source, source,
-                             Range, range,
-                             UnderlyingPresentationMorphism, morphism,
-                             UnderlyingHomalgRing, UnderlyingHomalgRing( morphism ),
-                             UnderlyingMatrix, UnderlyingMatrix( morphism ) );
+    graded_morphism := ObjectifyWithAttributes( rec( ), type,
+                                                Source, source,
+                                                Range, range,
+                                                UnderlyingPresentationMorphism, morphism,
+                                                UnderlyingHomalgRing, UnderlyingHomalgRing( morphism ),
+                                                UnderlyingMatrix, UnderlyingMatrix( morphism ) );
     
     Add( CapCategory( source ), graded_morphism );
     
@@ -110,20 +108,18 @@ InstallMethod( GradedPresentationMorphism,
                                                  matrix,
                                                  UnderlyingPresentationObject( range ) );
     
-    morphism := rec( );
-    
     if left then
         type := TheTypeOfGradedLeftPresentationMorphisms;
     else
         type := TheTypeOfGradedRightPresentationMorphisms;
     fi;
     
-    ObjectifyWithAttributes( morphism, type,
-                             Source, source,
-                             Range, range,
-                             UnderlyingPresentationMorphism, underlying_morphism,
-                             UnderlyingHomalgRing, HomalgRing( matrix ),
-                             UnderlyingMatrix, matrix );
+    morphism := ObjectifyWithAttributes( rec( ), type,
+                                         Source, source,
+                                         Range, range,
+                                         UnderlyingPresentationMorphism, underlying_morphism,
+                                         UnderlyingHomalgRing, HomalgRing( matrix ),
+                                         UnderlyingMatrix, matrix );
     
     Add( category, morphism );
     
@@ -140,14 +136,12 @@ InstallMethod( AsGradedPresentationMorphism,
     
     category := GradedLeftPresentations( CapCategory( morphism ) );
     
-    new_morphism := rec( );
-    
-    ObjectifyWithAttributes( new_morphism, TheTypeOfGradedLeftPresentationMorphisms,
-                             Source, AsGradedLeftPresentation( Source( morphism ) ),
-                             Range, AsGradedLeftPresentation( Range( morphism ) ),
-                             UnderlyingPresentationMorphism, morphism,
-                             UnderlyingHomalgRing, UnderlyingHomalgRing( morphism ),
-                             UnderlyingMatrix, UnderlyingMatrix( morphism ) );
+    new_morphism := ObjectifyWithAttributes( rec( ), TheTypeOfGradedLeftPresentationMorphisms,
+                                             Source, AsGradedLeftPresentation( Source( morphism ) ),
+                                             Range, AsGradedLeftPresentation( Range( morphism ) ),
+                                             UnderlyingPresentationMorphism, morphism,
+                                             UnderlyingHomalgRing, UnderlyingHomalgRing( morphism ),
+                                             UnderlyingMatrix, UnderlyingMatrix( morphism ) );
     
     Add( category, new_morphism );
     
@@ -164,14 +158,12 @@ InstallMethod( AsGradedPresentationMorphism,
     
     category := GradedRightPresentations( CapCategory( morphism ) );
     
-    new_morphism := rec( );
-    
-    ObjectifyWithAttributes( new_morphism, TheTypeOfGradedRightPresentationMorphisms,
-                             Source, AsGradedLeftPresentation( Source( morphism ) ),
-                             Range, AsGradedLeftPresentation( Range( morphism ) ),
-                             UnderlyingPresentationMorphism, morphism,
-                             UnderlyingHomalgRing, UnderlyingHomalgRing( morphism ),
-                             UnderlyingMatrix, UnderlyingMatrix( morphism ) );
+    new_morphism := ObjectifyWithAttributes( rec( ), TheTypeOfGradedRightPresentationMorphisms,
+                                             Source, AsGradedLeftPresentation( Source( morphism ) ),
+                                             Range, AsGradedLeftPresentation( Range( morphism ) ),
+                                             UnderlyingPresentationMorphism, morphism,
+                                             UnderlyingHomalgRing, UnderlyingHomalgRing( morphism ),
+                                             UnderlyingMatrix, UnderlyingMatrix( morphism ) );
     
     Add( category, new_morphism );
     
