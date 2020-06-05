@@ -280,7 +280,7 @@ InstallMethod( NrRows,
 end );
 
 ##
-InstallMethod( NrColumns,
+InstallMethod( NrCols,
                [ IsQuiverRowsMorphism ],
                
   function( morphism )
@@ -302,7 +302,7 @@ InstallMethod( \[\],
         
     fi;
     
-    nr_cols := NrColumns( morphism );
+    nr_cols := NrCols( morphism );
     
     if nr_cols = 0 then
         
@@ -749,7 +749,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
         
         nr_rows := NrRows( morphism );
         
-        nr_cols := NrColumns( morphism );
+        nr_cols := NrCols( morphism );
         
         if nr_rows = 0 or nr_cols = 0 then
             
@@ -1484,7 +1484,7 @@ InstallMethod( ViewObj,
   function( morphism )
     
     Print( "<A morphism in ", Name( CapCategory( morphism ) ),
-            " defined by a ", NrRows( morphism ), " x ", NrColumns( morphism ), " matrix of quiver algebra elements>"
+            " defined by a ", NrRows( morphism ), " x ", NrCols( morphism ), " matrix of quiver algebra elements>"
             );
 end );
 

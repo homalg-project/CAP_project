@@ -164,7 +164,7 @@ DeclareAttribute( "NrRows",
 #! The argument is a morphism $\alpha:A\to B$ between formal direct sums. The output is the number of summands of the the range.
 #! @Arguments alpha
 #! @Returns a non-negative integer
-DeclareAttribute( "NrColumns",
+DeclareAttribute( "NrCols",
                   IsAdditiveClosureMorphism );
 
 ####################################

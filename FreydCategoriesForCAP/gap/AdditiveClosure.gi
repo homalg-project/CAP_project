@@ -217,7 +217,7 @@ InstallMethod( NrRows,
 end );
 
 ##
-InstallMethod( NrColumns,
+InstallMethod( NrCols,
                [ IsAdditiveClosureMorphism ],
                
   function( morphism )
@@ -434,7 +434,7 @@ InstallMethod( \[\],
         
     fi;
     
-    if NrColumns( morphism ) = 0 then
+    if NrCols( morphism ) = 0 then
         
         return [ ];
         
@@ -451,7 +451,7 @@ InstallMethod( \[\],
   function( morphism, i, j )
     
     if not ( i in [ 1 .. NrRows( morphism ) ]
-        and j in [ 1 .. NrColumns( morphism ) ] ) then
+        and j in [ 1 .. NrCols( morphism ) ] ) then
         
         Error( "bad index!\n" );
         
@@ -526,7 +526,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
         nr_rows := NrRows( morphism );
         
-        nr_cols := NrColumns( morphism );
+        nr_cols := NrCols( morphism );
         
         if nr_rows = 0 or nr_cols = 0  then
             
@@ -609,9 +609,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             
         fi;
         
-        nr_cols_1 := NrColumns( morphism_1 );
+        nr_cols_1 := NrCols( morphism_1 );
         
-        nr_cols_2 := NrColumns( morphism_2 );
+        nr_cols_2 := NrCols( morphism_2 );
         
         if nr_cols_1 <> nr_cols_2 then
             
@@ -724,11 +724,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
         nr_rows_1 := NrRows( morphism_1 );
         
-        nr_cols_1 := NrColumns( morphism_1 );
+        nr_cols_1 := NrCols( morphism_1 );
         
         nr_rows_2 := NrRows( morphism_2 );
         
-        nr_cols_2 := NrColumns( morphism_2 );
+        nr_cols_2 := NrCols( morphism_2 );
         
         if ForAny( [ nr_rows_1, nr_cols_2 ], IsZero ) then
             
@@ -1008,13 +1008,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                 
                 matrix_beta := MorphismMatrix( beta );
                 
-                size_i := NrColumns( alpha );
+                size_i := NrCols( alpha );
                 
                 size_k := NrRows( alpha );
                 
                 size_j := NrRows( beta );
                 
-                size_l := NrColumns( beta );
+                size_l := NrCols( beta );
                 
                 if ForAny( [ size_i, size_k, size_j, size_l ], IsZero ) then
                     
@@ -1066,7 +1066,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                 
                 size_i := NrRows( alpha );
                 
-                size_j := NrColumns( alpha );
+                size_j := NrCols( alpha );
                 
                 matrix_alpha := MorphismMatrix( alpha );
                 
@@ -1220,7 +1220,7 @@ InstallMethod( ViewObj,
           [ IsAdditiveClosureMorphism ],
   function( morphism )
     Print( "<A morphism in ", Name( CapCategory( morphism ) ),
-            " defined by a ", NrRows( morphism ), " x ", NrColumns( morphism ), " matrix of underlying morphisms>"
+            " defined by a ", NrRows( morphism ), " x ", NrCols( morphism ), " matrix of underlying morphisms>"
             );
 end );
 
@@ -1242,7 +1242,7 @@ InstallMethod( Display,
     
     nr_rows := NrRows( morphism );
     
-    nr_cols := NrColumns( morphism );
+    nr_cols := NrCols( morphism );
     
     Print( Concatenation( "A ", String( nr_rows ), " x ", String( nr_cols ), " matrix with entries in ", Name( UnderlyingCategory( CapCategory( morphism ) ) ), "\n" ) );
     

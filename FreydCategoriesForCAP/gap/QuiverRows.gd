@@ -85,7 +85,7 @@ DeclareAttribute( "MorphismMatrix",
 DeclareAttribute( "NrRows",
                   IsQuiverRowsMorphism );
 
-DeclareAttribute( "NrColumns",
+DeclareAttribute( "NrCols",
                   IsQuiverRowsMorphism );
 
 DeclareAttribute( "AsListListOfMatrices",
