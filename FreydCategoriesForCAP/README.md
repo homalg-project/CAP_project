@@ -6,6 +6,7 @@ This package includes implementations (amongst others) of:
 - [Freyd categories](#freyd-categories)
 - [Cokernel image closures](#cokernel-image-closures)
 - [Adelman categories](#adelman-categories)
+- [Additive closures](#additive-closures)
 
 ## Freyd categories
 
@@ -28,3 +29,11 @@ Sebastian Posur, [*Closing the category of finitely presented functors under ima
 ## Adelman categories
 
 Adelman categories provide a universal way of turning an additive category into an abelian category.
+
+## Additive closures
+
+Additive closures provide a universal way of equipping a given Ab-category with finite direct sums.
+
+#### Paper (describing the underlying algorithms)
+
+Sebastian Posur, [*Methods of constructive category theory*](https://arxiv.org/abs/1908.04132).
