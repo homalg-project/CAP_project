@@ -24,8 +24,10 @@ InstallMethod( CategoryOfRows,
     category := CreateCapCategory( Concatenation( "Rows( ", RingName( homalg_ring )," )" ) : overhead := overhead_option );
     
     SetFilterObj( category, IsCategoryOfRows );
-    
-    SetIsSkeletalCategory( category, true );
+
+    if HasHasInvariantBasisProperty( homalg_ring ) and HasInvariantBasisProperty( homalg_ring ) then
+        SetIsSkeletalCategory( category, true );
+    fi;
     
     SetIsAdditiveCategory( category, true );
     

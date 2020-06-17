@@ -25,7 +25,9 @@ InstallMethod( CategoryOfColumns,
     
     SetFilterObj( category, IsCategoryOfColumns );
     
-    SetIsSkeletalCategory( category, true );
+    if HasHasInvariantBasisProperty( homalg_ring ) and HasInvariantBasisProperty( homalg_ring ) then
+        SetIsSkeletalCategory( category, true );
+    fi;
     
     SetIsAdditiveCategory( category, true );
     
