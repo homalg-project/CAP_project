@@ -31,7 +31,7 @@ DeclareRepresentation( "IsGradedColumnRep",
 ##
 InstallGlobalFunction( GradedRowOrColumn,
   function( degree_list, homalg_graded_ring, left )
-    local A, nrGenerators, i, buffer, buffer_homalg_module_element, category, gradedRowOrColumn, rank, type;
+    local A, nrGenerators, i, buffer, buffer_homalg_module_element, category, rank, type;
 
     # extract the degree group of the ring and its number of generators
     A := DegreeGroup( homalg_graded_ring );
@@ -103,7 +103,6 @@ InstallGlobalFunction( GradedRowOrColumn,
     fi;
     
     # now construct the object
-    gradedRowOrColumn := rec( );
     rank := Sum( List( degree_list, x -> x[ 2 ] ) );
     
     # check if the object is the zero object, and if so objectify it with the empty degree_list
@@ -113,22 +112,19 @@ InstallGlobalFunction( GradedRowOrColumn,
         
     fi;
     
-    ObjectifyObjectForCAPWithAttributes( 
-      gradedRowOrColumn, category,
+    return ObjectifyObjectForCAPWithAttributes(
+      rec( ), category,
       DegreeList, degree_list,
       RankOfObject, rank,
       UnderlyingHomalgGradedRing, homalg_graded_ring
     );
     
-    # and return it
-    return gradedRowOrColumn;
-
 end );
 
 ##
 InstallGlobalFunction( GradedRowOrColumnLazy,
   function( degree_list, homalg_graded_ring, left )
-    local A, nrGenerators, i, buffer, buffer_homalg_module_element, category, gradedRowOrColumn, rank, type;
+    local A, nrGenerators, i, buffer, buffer_homalg_module_element, category, rank, type;
     
     # extract the degree group of the ring and its number of generators
     A := DegreeGroup( homalg_graded_ring );
@@ -175,16 +171,13 @@ InstallGlobalFunction( GradedRowOrColumnLazy,
         
     fi;
     
-    ObjectifyObjectForCAPWithAttributes( 
-      gradedRowOrColumn, category,
+    return ObjectifyObjectForCAPWithAttributes(
+      rec( ), category,
       DegreeList, degree_list,
       RankOfObject, rank,
       UnderlyingHomalgGradedRing, homalg_graded_ring
     );
     
-    # and return it
-    return gradedRowOrColumn;
-
 end );
 
 ##

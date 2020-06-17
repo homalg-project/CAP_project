@@ -57,8 +57,6 @@ InstallMethod( CoactionMorphism,
         
       fi;
       
-      coaction_morphism := rec( );
-      
       if left = true then
         
         type := TheTypeOfLeftCoactionMorphisms;
@@ -69,12 +67,12 @@ InstallMethod( CoactionMorphism,
         
       fi;
       
-      ObjectifyWithAttributes( coaction_morphism, type,
-                               UnderlyingMorphism, underlying_morphism,
-                               Source, source,
-                               Range, range,
-                               UnderlyingActingObject, UnderlyingActingObject( source )
-                             );
+      coaction_morphism := ObjectifyWithAttributes( rec( ), type,
+                                                    UnderlyingMorphism, underlying_morphism,
+                                                    Source, source,
+                                                    Range, range,
+                                                    UnderlyingActingObject, UnderlyingActingObject( source )
+                                                  );
       
       Add( CapCategory( source ), coaction_morphism );
       

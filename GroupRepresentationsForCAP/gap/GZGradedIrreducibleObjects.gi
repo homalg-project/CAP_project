@@ -36,9 +36,7 @@ InstallMethodWithCache( GZGradedIrreducibleObject,
                         [ IsInt, IsCharacter ],
                
   function( degree, character )
-    local irreducible_object, number, underlying_character_table, underlying_irreducible_characters;
-    
-    irreducible_object := rec( );
+    local number, underlying_character_table, underlying_irreducible_characters;
     
     underlying_character_table := UnderlyingCharacterTable( character );
     
@@ -46,16 +44,14 @@ InstallMethodWithCache( GZGradedIrreducibleObject,
     
     number := PositionProperty( underlying_irreducible_characters, chi -> chi = character );
     
-    ObjectifyWithAttributes( irreducible_object, TheTypeOfGZGradedIrreducibleObjects,
-                             UnderlyingCharacter, character,
-                             UnderlyingCharacterNumber, number,
-                             UnderlyingGroup, UnderlyingGroup( character ),
-                             UnderlyingCharacterTable, underlying_character_table,
-                             UnderlyingIrreducibleCharacters, underlying_irreducible_characters,
-                             UnderlyingDegree, degree
+    return ObjectifyWithAttributes( rec( ), TheTypeOfGZGradedIrreducibleObjects,
+                                    UnderlyingCharacter, character,
+                                    UnderlyingCharacterNumber, number,
+                                    UnderlyingGroup, UnderlyingGroup( character ),
+                                    UnderlyingCharacterTable, underlying_character_table,
+                                    UnderlyingIrreducibleCharacters, underlying_irreducible_characters,
+                                    UnderlyingDegree, degree
     );
-    
-    return irreducible_object;
     
 end );
 

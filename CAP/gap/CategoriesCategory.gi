@@ -56,10 +56,8 @@ InstallMethod( AsCatObject,
   function( category )
     local cat_obj;
     
-    cat_obj := rec( );
-    
-    ObjectifyWithAttributes( cat_obj, TheTypeOfCapCategoriesAsCatObjects,
-                             AsCapCategory, category );
+    cat_obj := ObjectifyWithAttributes( rec( ), TheTypeOfCapCategoriesAsCatObjects,
+                                        AsCapCategory, category );
     
     Add( CapCat, cat_obj );
     
@@ -118,7 +116,7 @@ InstallMethod( CapFunctor,
                [ IsString, IsList, IsCapCategory ],
                
   function( name, source_list, range )
-    local source, functor;
+    local source, functor, objectified_functor;
     
     functor := rec( );
     
@@ -130,15 +128,15 @@ InstallMethod( CapFunctor,
     
     source := CAP_INTERNAL_CREATE_FUNCTOR_SOURCE( source_list );
     
-    ObjectifyWithAttributes( functor, TheTypeOfCapFunctors,
-                             Name, name,
-                             Source, AsCatObject( source ),
-                             Range, AsCatObject( range ),
-                             InputSignature, source_list );
+    objectified_functor := ObjectifyWithAttributes( functor, TheTypeOfCapFunctors,
+                                                    Name, name,
+                                                    Source, AsCatObject( source ),
+                                                    Range, AsCatObject( range ),
+                                                    InputSignature, source_list );
     
-    Add( CapCat, functor );
+    Add( CapCat, objectified_functor );
     
-    return functor;
+    return objectified_functor;
     
 end );
 
@@ -988,12 +986,10 @@ InstallMethod( NaturalTransformation,
         
     fi;
     
-    natural_transformation := rec( );
-    
-    ObjectifyWithAttributes( natural_transformation, TheTypeOfCapNaturalTransformations,
-                             Name, name,
-                             Source, source,
-                             Range, range );
+    natural_transformation := ObjectifyWithAttributes( rec( ), TheTypeOfCapNaturalTransformations,
+                                                       Name, name,
+                                                       Source, source,
+                                                       Range, range );
     
     Add( CapCategory( source ), natural_transformation );
     

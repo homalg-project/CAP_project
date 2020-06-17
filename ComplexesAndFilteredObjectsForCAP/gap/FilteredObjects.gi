@@ -642,10 +642,8 @@ BindGlobal( "AS_ASCENDING_OR_DESCENDING_FILTERED_OBJECT",
     
     category := UnderlyingCategory( CapCategory( z_functor_object ) );
     
-    object := rec( );
-    
-    ObjectifyWithAttributes( object, type,
-                             UnderlyingZFunctorCell, z_functor_object );
+    object := ObjectifyWithAttributes( rec( ), type,
+                                       UnderlyingZFunctorCell, z_functor_object );
     
     Add( category_getter( category ), object );
     
@@ -684,12 +682,10 @@ BindGlobal( "AS_FILTERED_MORPHISM",
     
     range := object_constructor( Range( z_functor_morphism ) );
     
-    morphism := rec( );
-    
-    ObjectifyWithAttributes( morphism, type,
-                             UnderlyingZFunctorCell, z_functor_morphism,
-                             Source, source,
-                             Range, range );
+    morphism := ObjectifyWithAttributes( rec( ), type,
+                                         UnderlyingZFunctorCell, z_functor_morphism,
+                                         Source, source,
+                                         Range, range );
     
     Add( category_getter( category ), morphism );
     
@@ -724,12 +720,10 @@ BindGlobal( "FILTERED_MORPHISM",
     
     category := UnderlyingCategory( CapCategory( z_functor_morphism ) );
     
-    morphism := rec( );
-    
-    ObjectifyWithAttributes( morphism, type,
-                             UnderlyingZFunctorCell, z_functor_morphism,
-                             Source, source,
-                             Range, range );
+    morphism := ObjectifyWithAttributes( rec( ), type,
+                                         UnderlyingZFunctorCell, z_functor_morphism,
+                                         Source, source,
+                                         Range, range );
     
     Add( category_getter( category ), morphism );
     

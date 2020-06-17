@@ -385,6 +385,9 @@ DeclareOperation( "AddObjectRepresentation",
 #!  is created by passing a representation to <C>AddObjectRepresentation</C>.
 #!  Objects which are objectified using this method do not have to be passed
 #!  to the <C>AddObject</C> function.
+#!  The optional arguments behave like the corresponding arguments in <C>ObjectifyWithAttributes</C>.
+#!  Also returns the objectified object.
+#! @Returns an object
 DeclareGlobalFunction( "ObjectifyObjectForCAPWithAttributes" );
 
 ###################################

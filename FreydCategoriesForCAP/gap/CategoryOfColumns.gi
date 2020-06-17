@@ -84,22 +84,17 @@ InstallMethod( CategoryOfColumnsObjectOp,
                [ IsCategoryOfColumns, IsInt ],
                
   function( category, rank )
-    local category_of_columns_object;
     
     if rank < 0 then
       
-      return Error( "first argument must be a non-negative integer" );
+      Error( "first argument must be a non-negative integer" );
       
     fi;
     
-    category_of_columns_object := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( category_of_columns_object, 
-                                         category,
-                                         RankOfObject, rank
+    return ObjectifyObjectForCAPWithAttributes( rec( ),
+                                                category,
+                                                RankOfObject, rank
     );
-    
-    return category_of_columns_object;
     
 end );
 
@@ -123,13 +118,13 @@ InstallMethod( CategoryOfColumnsMorphism,
                [ IsCategoryOfColumnsObject, IsHomalgMatrix, IsCategoryOfColumnsObject ],
                
   function( source, homalg_matrix, range )
-    local category_of_columns_morphism, homalg_ring, category;
+    local homalg_ring, category;
     
     category := CapCategory( source );
     
     if not IsIdenticalObj( category, CapCategory( range ) ) then
       
-      return Error( "source and range are not defined over identical categories" );
+      Error( "source and range are not defined over identical categories" );
       
     fi;
     
@@ -137,31 +132,27 @@ InstallMethod( CategoryOfColumnsMorphism,
     
     if not IsIdenticalObj( homalg_ring, UnderlyingRing( category ) ) then
       
-      return Error( "the matrix is defined over a different ring than the objects" );
+      Error( "the matrix is defined over a different ring than the objects" );
       
     fi;
     
     if NrColumns( homalg_matrix ) <> RankOfObject( source ) then
       
-      return Error( "the number of columns has to be equal to the rank of the source" );
+      Error( "the number of columns has to be equal to the rank of the source" );
       
     fi;
     
     if NrRows( homalg_matrix ) <> RankOfObject( range ) then
       
-      return Error( "the number of rows has to be equal to the rank of the range" );
+      Error( "the number of rows has to be equal to the rank of the range" );
       
     fi;
     
-    category_of_columns_morphism := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( category_of_columns_morphism, category,
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category,
                                            source,
                                            range,
                                            UnderlyingMatrix, homalg_matrix
     );
-    
-    return category_of_columns_morphism;
     
 end );
 

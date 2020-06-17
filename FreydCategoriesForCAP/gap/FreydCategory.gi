@@ -140,16 +140,12 @@ end );
 ##
 InstallGlobalFunction( FREYD_CATEGORY_OBJECT,
 function( relation_morphism )
-    local freyd_category_object, category;
-    
-    freyd_category_object := rec( );
+    local category;
     
     category := FreydCategory( CapCategory( relation_morphism ) );
 
-    ObjectifyObjectForCAPWithAttributes( freyd_category_object, category,
-                                         RelationMorphism, relation_morphism );
-    
-    return freyd_category_object;
+    return ObjectifyObjectForCAPWithAttributes( rec( ), category,
+                                                RelationMorphism, relation_morphism );
     
 end );
 
@@ -176,7 +172,7 @@ end );
 ##
 InstallGlobalFunction( FREYD_CATEGORY_MORPHISM,
   function( source, morphism_datum, range )
-    local freyd_category_morphism, category;
+    local category;
     
     if not IsIdenticalObj( CapCategory( morphism_datum ), UnderlyingCategory( CapCategory( source ) ) ) then
         
@@ -202,18 +198,14 @@ InstallGlobalFunction( FREYD_CATEGORY_MORPHISM,
         
     fi;
     
-    freyd_category_morphism := rec( );
-    
-    category :=  CapCategory( source );
+    category := CapCategory( source );
 
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
-                             freyd_category_morphism, category,
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
+                             rec( ), category,
                              source,
                              range,
                              MorphismDatum, morphism_datum
     );
-    
-    return freyd_category_morphism;
     
 end );
 
@@ -1844,7 +1836,7 @@ InstallMethod( \^,
     
       if power < 0 then
       
-        return Error( "The power must be non-negative! \n" );
+        Error( "The power must be non-negative! \n" );
             
       elif power = 0 then
       
@@ -1877,7 +1869,7 @@ InstallMethod( \^,
     
       if power < 0 then
       
-        return Error( "The power must be non-negative! \n" );
+        Error( "The power must be non-negative! \n" );
       
       elif power = 0 then
       

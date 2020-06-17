@@ -24,15 +24,10 @@ InstallMethod( FullSubcategoryByMembershipFunction,
                [ IsCapCategory, IsFunction ],
                
   function( category, func )
-    local handler;
     
-    handler := rec( );
-    
-    ObjectifyWithAttributes( handler, TheTypeOfSerreQuotientSubcategoryFunctionHandler,
-                             MembershipFunction, func,
-                             ContainingCategory, category );
-    
-    return handler;
+    return ObjectifyWithAttributes( rec( ), TheTypeOfSerreQuotientSubcategoryFunctionHandler,
+                                    MembershipFunction, func,
+                                    ContainingCategory, category );
     
 end );
 

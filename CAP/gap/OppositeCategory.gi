@@ -148,10 +148,8 @@ InstallMethod( Opposite,
   function( object )
     local opposite_object;
     
-    opposite_object := rec( );
-    
-    ObjectifyWithAttributes( opposite_object, TheTypeOfCapCategoryOppositeObjects,
-                             Opposite, object );
+    opposite_object := ObjectifyWithAttributes( rec( ), TheTypeOfCapCategoryOppositeObjects,
+                                                Opposite, object );
     
     Add( Opposite( CapCategory( object ) ), opposite_object );
     
@@ -172,10 +170,8 @@ InstallMethod( Opposite,
   function( morphism )
     local opposite_morphism;
     
-    opposite_morphism := rec( );
-    
-    ObjectifyWithAttributes( opposite_morphism, TheTypeOfCapCategoryOppositeMorphisms,
-                             Opposite, morphism );
+    opposite_morphism := ObjectifyWithAttributes( rec( ), TheTypeOfCapCategoryOppositeMorphisms,
+                                                  Opposite, morphism );
     
     Add( Opposite( CapCategory( morphism ) ), opposite_morphism );
     

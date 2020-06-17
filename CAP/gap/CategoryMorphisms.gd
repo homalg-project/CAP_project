@@ -704,7 +704,9 @@ DeclareOperation( "AddMorphismRepresentation",
 #!  Morphisms which are objectified using this method do not have to be passed
 #!  to the <C>AddMorphism</C> function.
 #!  The arguments <C>source</C> and <C>range</C> are assumed to be objectified.
-#! The optional arguments behave like the corresponding arguments in <C>ObjectifyWithAttributes</C>.
+#!  The optional arguments behave like the corresponding arguments in <C>ObjectifyWithAttributes</C>.
+#!  Also returns the objectified morphism.
+#! @Returns a morphism
 DeclareGlobalFunction( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" );
 
 ##

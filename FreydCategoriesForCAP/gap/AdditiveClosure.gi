@@ -83,16 +83,11 @@ InstallMethodWithCache( AdditiveClosureObject,
                         [ IsList, IsAdditiveClosureCategory ],
                
   function( list_of_objects, category )
-    local additive_closure_object;
     
-    additive_closure_object := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( 
-                             additive_closure_object, category,
+    return ObjectifyObjectForCAPWithAttributes(
+                             rec( ), category,
                              ObjectList, list_of_objects
     );
-    
-    return additive_closure_object;
     
 end );
 
@@ -115,20 +110,16 @@ InstallMethod( AdditiveClosureMorphism,
                [ IsAdditiveClosureObject, IsList, IsAdditiveClosureObject ],
                
   function( source, matrix, range )
-    local additive_closure_morphism, category;
-    
-    additive_closure_morphism := rec( );
+    local category;
     
     category := CapCategory( source );
 
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
-                             additive_closure_morphism, category,
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
+                             rec( ), category,
                              source,
                              range,
                              MorphismMatrix, matrix
     );
-    
-    return additive_closure_morphism;
     
 end );
 

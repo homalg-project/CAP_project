@@ -235,7 +235,7 @@ InstallGlobalFunction( ObjectifyObjectForCAPWithAttributes,
     
     Append( arg_list, [ CapCategory, arg_list[ 2 ] ] );
     arg_list[ 2 ] := arg_list[ 2 ]!.object_type;
-    CallFuncList( ObjectifyWithAttributes, arg_list );
+    return CallFuncList( ObjectifyWithAttributes, arg_list );
     
 end );
 

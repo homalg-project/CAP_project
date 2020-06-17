@@ -1089,7 +1089,7 @@ InstallMethod( ZFunctorObject,
                [ IsFunction, IsFunction, IsCapCategory ],
                
   function( object_func, differential_func, category )
-    local object;
+    local object, objectified_object;
     
     object := rec( objects_positive := WeakPointerObj( [ ] ),
                    objects_nonpositive := WeakPointerObj( [ ] ),
@@ -1098,11 +1098,11 @@ InstallMethod( ZFunctorObject,
                    object_func := object_func,
                    differential_func := differential_func );
     
-    ObjectifyWithAttributes( object, TheTypeOfZFunctorObject );
+    objectified_object := ObjectifyWithAttributes( object, TheTypeOfZFunctorObject );
     
-    Add( ZFunctorCategory( category ), object );
+    Add( ZFunctorCategory( category ), objectified_object );
     
-    return object;
+    return objectified_object;
     
 end );
 
@@ -1302,19 +1302,19 @@ InstallMethod( ZFunctorMorphism,
                [ IsZFunctorObject, IsFunction, IsZFunctorObject ],
                
   function( source, func, range )
-    local morphism;
+    local morphism, objectified_morphism;
     
     morphism := rec( morphisms_positive := WeakPointerObj( [ ] ),
                      morphisms_nonpositive := WeakPointerObj( [ ] ),
                      morphism_func := func );
     
-    ObjectifyWithAttributes( morphism, TheTypeOfZFunctorMorphism,
-                             Source, source,
-                             Range, range );
+    objectified_morphism := ObjectifyWithAttributes( morphism, TheTypeOfZFunctorMorphism,
+                                                     Source, source,
+                                                     Range, range );
     
-    Add( CapCategory( source ), morphism );
+    Add( CapCategory( source ), objectified_morphism );
     
-    return morphism;
+    return objectified_morphism;
     
 end );
 

@@ -319,16 +319,12 @@ InstallMethod( GeneralizedMorphismByThreeArrowsObject,
                [ IsCapCategoryObject ],
                                        
   function( object )
-    local gen_object, generalized_category;
+    local generalized_category;
     
     generalized_category := GeneralizedMorphismCategoryByThreeArrows( CapCategory( object ) );
     
-    gen_object := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( gen_object, generalized_category,
-                             UnderlyingHonestObject, object );
-    
-    return gen_object;
+    return ObjectifyObjectForCAPWithAttributes( rec( ), generalized_category,
+                                                UnderlyingHonestObject, object );
     
 end );
 
@@ -337,7 +333,7 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismByThreeArrows,
                                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
                                   
   function( source_aid, morphism_aid, range_aid )
-    local generalized_morphism, generalized_category;
+    local generalized_category;
     
     if not IsEqualForObjects( Source( source_aid ), Source( morphism_aid ) ) then
         
@@ -351,16 +347,12 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismByThreeArrows,
     
     generalized_category := GeneralizedMorphismCategoryByThreeArrows( CapCategory( morphism_aid ) );
     
-    generalized_morphism := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( generalized_morphism, generalized_category,
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), generalized_category,
                              GeneralizedMorphismByThreeArrowsObject( Range( source_aid ) ),
                              GeneralizedMorphismByThreeArrowsObject( Source( range_aid ) ),
                              SourceAid, source_aid,
                              RangeAid, range_aid,
                              Arrow, morphism_aid );
-    
-    return generalized_morphism;
     
 end );
 

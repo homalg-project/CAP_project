@@ -104,8 +104,6 @@ InstallGlobalFunction( AsGradedLeftOrRightPresentationWithDegrees,
     
     left := IsLeftPresentation( presentation );
     
-    module := rec();
-    
     ring := UnderlyingHomalgRing( presentation );
     
     if left then
@@ -124,11 +122,11 @@ InstallGlobalFunction( AsGradedLeftOrRightPresentationWithDegrees,
     
     degrees := CAP_INTERNAL_SANITIZE_DEGREE_LIST( degrees, ring );
     
-    ObjectifyWithAttributes( module, type,
-                             UnderlyingPresentationObject, presentation,
-                             UnderlyingHomalgRing, ring,
-                             GeneratorDegrees, degrees,
-                             UnderlyingMatrix, UnderlyingMatrix( presentation ) );
+    module := ObjectifyWithAttributes( rec( ), type,
+                                       UnderlyingPresentationObject, presentation,
+                                       UnderlyingHomalgRing, ring,
+                                       GeneratorDegrees, degrees,
+                                       UnderlyingMatrix, UnderlyingMatrix( presentation ) );
     
     Add( graded_category, module );
     

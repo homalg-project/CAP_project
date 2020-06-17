@@ -569,14 +569,12 @@ InstallGlobalFunction( CreateMorphismConstructorForCategoryWithAttributes,
       function( source, morphism, range )
         local attribute_morphism;
         
-        attribute_morphism := rec( );
-        
-        ObjectifyWithAttributes( attribute_morphism, morphism_type,
-                                 UnderlyingCell, morphism,
-                                 Source, source,
-                                 Range, range,
-                                 UnderlyingCategory, underlying_category
-                               );
+        attribute_morphism := ObjectifyWithAttributes( rec( ), morphism_type,
+                                                       UnderlyingCell, morphism,
+                                                       Source, source,
+                                                       Range, range,
+                                                       UnderlyingCategory, underlying_category
+                                                     );
         
         Add( category_with_attributes, attribute_morphism );
         
@@ -594,13 +592,11 @@ InstallGlobalFunction( CreateObjectConstructorForCategoryWithAttributes,
       function( object, attributes )
         local attribute_object;
         
-        attribute_object := rec( );
-        
-        ObjectifyWithAttributes( attribute_object, object_type,
-                                 UnderlyingCell, object,
-                                 ObjectAttributesAsList, attributes,
-                                 UnderlyingCategory, underlying_category
-                               );
+        attribute_object := ObjectifyWithAttributes( rec( ), object_type,
+                                                     UnderlyingCell, object,
+                                                     ObjectAttributesAsList, attributes,
+                                                     UnderlyingCategory, underlying_category
+                                                   );
         
         Add( category_with_attributes, attribute_object );
         

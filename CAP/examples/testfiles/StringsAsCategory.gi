@@ -506,10 +506,8 @@ InstallMethod( StringsAsCategoryObject,
   function( string, category )
     local object;
     
-    object := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( object, category,
-                                         UnderlyingString, string
+    object := ObjectifyObjectForCAPWithAttributes( rec( ), category,
+                                                   UnderlyingString, string
     );
     
     Add( category, object );
@@ -525,11 +523,9 @@ InstallMethod( StringsAsCategoryMorphism,
   function( source, string, range )
     local morphism, category;
     
-    morphism := rec( );
-    
     category := CapCategory( source );
     
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( morphism, category,
+    morphism := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category,
                                            source,
                                            range,
                                            UnderlyingString, string

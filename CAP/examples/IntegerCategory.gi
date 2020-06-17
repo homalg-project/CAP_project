@@ -50,10 +50,8 @@ InstallMethodWithCache( HomalgInteger,
   function( integer )
     local homalg_integer;
     
-    homalg_integer := rec( );
-    
-    ObjectifyWithAttributes( homalg_integer, TheTypeOfHomalgIntegers,
-                             AsInteger, integer );
+    homalg_integer := ObjectifyWithAttributes( rec( ), TheTypeOfHomalgIntegers,
+                                               AsInteger, integer );
     
     Add( integer_category, homalg_integer );
     
@@ -96,11 +94,9 @@ InstallMethodWithCache( HomalgIntegerMorphism,
         
     fi;
     
-    morphism := rec( );
-    
-    ObjectifyWithAttributes( morphism, TheTypeOfHomalgIntegerMorphism,
-                             Source, source,
-                             Range, range );
+    morphism := ObjectifyWithAttributes( rec( ), TheTypeOfHomalgIntegerMorphism,
+                                         Source, source,
+                                         Range, range );
     
     Add( integer_category, morphism );
     

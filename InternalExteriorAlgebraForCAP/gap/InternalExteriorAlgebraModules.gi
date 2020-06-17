@@ -154,8 +154,6 @@ InstallMethodWithCache( TateFiltrationObjectUsingActions,
   function( heads, v )
     local tate_filtration_object, category, ext, filtration_list, size, top, bottom, zfunctor, n;
     
-    tate_filtration_object := rec( );
-    
     category := EModuleActionCategory( v );
     
     ext := ExteriorAlgebraUnderlyingObject( category );
@@ -192,12 +190,12 @@ InstallMethodWithCache( TateFiltrationObjectUsingActions,
         
     fi;
     
-    ObjectifyWithAttributes( tate_filtration_object, TheTypeOfTateFiltrationObjectsUsingActions,
-                             DefiningGradedObject, heads,
-                             ActingObject, ext,
-                             TopStationaryDegree, top,
-                             BottomStationaryDegree, bottom,
-                             DescendingFilteredObject, AsDescendingFilteredObject( zfunctor )
+    tate_filtration_object := ObjectifyWithAttributes( rec( ), TheTypeOfTateFiltrationObjectsUsingActions,
+                                                       DefiningGradedObject, heads,
+                                                       ActingObject, ext,
+                                                       TopStationaryDegree, top,
+                                                       BottomStationaryDegree, bottom,
+                                                       DescendingFilteredObject, AsDescendingFilteredObject( zfunctor )
     );
     
     tate_filtration_object!.shift_to_socle := n;
@@ -211,9 +209,7 @@ InstallMethodWithCache( TateFiltrationObjectUsingCoactions,
                         [ IsRepresentationCategoryZGradedObject, IsRepresentationCategoryZGradedObject ],
               
   function( socles, v )
-    local tate_filtration_object, ext_dual, filtration_list, size, top, bottom, zfunctor;
-    
-    tate_filtration_object := rec( );
+    local ext_dual, filtration_list, size, top, bottom, zfunctor;
     
     ext_dual := ExteriorAlgebraDualUnderlyingObject( EModuleCoactionCategory( v ) );
     
@@ -247,15 +243,13 @@ InstallMethodWithCache( TateFiltrationObjectUsingCoactions,
         
     fi;
     
-    ObjectifyWithAttributes( tate_filtration_object, TheTypeOfTateFiltrationObjectsUsingCoactions,
-                             DefiningGradedObject, socles,
-                             ActingObject, ext_dual,
-                             TopStationaryDegree, top,
-                             BottomStationaryDegree, bottom,
-                             DescendingFilteredObject, AsDescendingFilteredObject( zfunctor )
+    return ObjectifyWithAttributes( rec( ), TheTypeOfTateFiltrationObjectsUsingCoactions,
+                                    DefiningGradedObject, socles,
+                                    ActingObject, ext_dual,
+                                    TopStationaryDegree, top,
+                                    BottomStationaryDegree, bottom,
+                                    DescendingFilteredObject, AsDescendingFilteredObject( zfunctor )
     );
-    
-    return tate_filtration_object;
     
 end );
 

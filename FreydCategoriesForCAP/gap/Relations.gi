@@ -44,15 +44,10 @@ InstallMethod( RelCategoryObject,
                [ IsCapCategoryObject, IsRelCategory ],
                
   function( original_object, rel )
-    local object;
     
-    object := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( object, rel,
-                                         UnderlyingOriginalObject, original_object
+    return ObjectifyObjectForCAPWithAttributes( rec( ), rel,
+                                                UnderlyingOriginalObject, original_object
     );
-    
-    return object;
     
 end );
 
@@ -61,21 +56,17 @@ InstallMethod( RelCategoryMorphism,
                [ IsRelCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsRelCategoryObject ],
                
   function( source, reversed_arrow, arrow, range ) 
-    local morphism, rel;
+    local rel;
     
     rel := CapCategory( source );
     
-    morphism := rec();
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
-                             morphism, rel,
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
+                             rec( ), rel,
                              source,
                              range,
                              Arrow, arrow,
                              ReversedArrow, reversed_arrow
     );
-    
-    return morphism;
     
 end );
 
