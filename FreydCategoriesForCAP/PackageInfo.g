@@ -15,7 +15,7 @@ Version := Maximum( [
   ## this line prevents merge conflicts
   "2019.11.02", ## Sepp's version
   ## this line prevents merge conflicts
-  "2020.05.12", ## Mohamed's version
+  "2020.05.16", ## Mohamed's version
   ## this line prevents merge conflicts
   "2019.08.07", ## Fabian's version
   ## this line prevents merge conflicts
@@ -99,10 +99,10 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">= 2019.10.04" ],
+                           [ "CAP", ">= 2020.05.16" ],
                            [ "MatricesForHomalg", ">= 2020.05.12" ],
                            [ "GradedRingForHomalg", ">=2019.08.07" ],
-                           [ "LinearAlgebraForCAP", ">= 2017.12.30" ],
+                           [ "LinearAlgebraForCAP", ">= 2020.05.16" ],
                            [ "GeneralizedMorphismsForCAP", ">= 2018.06.15" ]
                          ],
   SuggestedOtherPackages := [

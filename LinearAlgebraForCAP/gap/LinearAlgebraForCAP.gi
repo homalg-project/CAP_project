@@ -32,6 +32,8 @@ InstallMethod( MatrixCategory,
     
     SetUnderlyingRing( category, homalg_field );
     
+    SetIsSkeletalCategory( category, true );
+    
     SetIsAbelianCategory( category, true );
     
     SetIsAbelianCategoryWithEnoughProjectives( category, true );
