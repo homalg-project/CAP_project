@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "Toposes",
 Subtitle := "Elementary toposes",
 Version := Maximum( [
-                   "2020.04.07", ## Mohamed's version
+                   "2020.05.16", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2019.03.16", ## Tom's version
                    ## this line prevents merge conflicts
@@ -124,7 +124,7 @@ Dependencies := rec(
   GAP := ">= 4.9.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
-                   [ "CAP", ">= 2020.04.27" ],
+                   [ "CAP", ">= 2020.05.16" ],
                    ],
   SuggestedOtherPackages := [
                    [ "MonoidalCategories", ">= 2019.03.16" ],

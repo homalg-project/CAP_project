@@ -9,11 +9,6 @@ DeclareGlobalVariable( "TOPOS_METHOD_NAME_RECORD" );
 #! @Section Subobject Classifier
 
 #! @Description
-#!  The property of <A>C</A> being a skeletal &CAP; category.
-#! @Arguments C
-AddCategoricalProperty( [ "IsSkeletalCategory" ] );
-
-#! @Description
 #!  The property of <A>C</A> being an elementary topos.
 #! @Arguments C
 AddCategoricalProperty( [ "IsElementaryTopos" ] );
