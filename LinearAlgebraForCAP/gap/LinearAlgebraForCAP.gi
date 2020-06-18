@@ -875,18 +875,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
    
     ##
     AddBasisOfExternalHom( category,
-      function( object_1, object_2 )
-        local dim_1, dim_2, identity, matrices;
+      function( S, T )
+        local s, t, identity, matrices;
         
-        dim_1 := Dimension( object_1 );
+        s := Dimension( S );
         
-        dim_2 := Dimension( object_2 );
+        t := Dimension( T );
         
-        identity := IdentityMat( dim_1 * dim_2 );
+        identity := HomalgIdentityMatrix( s * t, UnderlyingFieldForHomalg( S ) );
         
-        matrices := List( identity, row -> HomalgMatrix( row, dim_1, dim_2, homalg_field ) );
+        matrices := List( [ 1 .. s * t ], i -> ConvertRowToMatrix( CertainRows( identity, [ i ] ), s, t ) );
         
-        return List( matrices, mat -> VectorSpaceMorphism( object_1, mat, object_2 ) );
+        return List( matrices, mat -> VectorSpaceMorphism( S, mat, T ) );
         
     end );
     
