@@ -18,7 +18,6 @@
 ##
 #############################################################################
 
-
 ###################################
 ##
 #! @Section Internal stuff
@@ -520,3 +519,23 @@ DeclareGlobalFunction( "DisableAddForCategoricalOperations" );
 #!        <C>AddMorphismRepresentation</C> (<Ref Sect="Section_Adding_Morphisms_to_a_Category" />).
 #!    * Pass the option <C>overhead := false</C> to <C>CreateCapCategory</C>.
 #!        Note: this may have unintended effects. Use with care!
+
+#############################################
+##
+#! @Section LaTeX
+##
+#############################################
+
+#! @Description
+#! The argument is a cell $c$.
+#! The output is a LaTeX string $s$ (without enclosing dollar signs) that may be used to print out $c$ nicely.
+#! @Returns a string
+#! @Arguments c
+DeclareOperation( "LaTeXOutput", [ IsCapCategoryCell ] );
+
+#! @Description
+#! The argument is a category $C$.
+#! The output is a LaTeX string $s$ (without enclosing dollar signs) that may be used to print out $C$ nicely.
+#! @Returns a string
+#! @Arguments C
+DeclareOperation( "LaTeXOutput", [ IsCapCategory ] );
