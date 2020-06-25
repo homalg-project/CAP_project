@@ -53,6 +53,7 @@ InstallMethod( VectorSpaceMorphism,
                
   function( source, homalg_matrix, range )
     local homalg_field, category;
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     category := CapCategory( source );
     
@@ -85,7 +86,7 @@ InstallMethod( VectorSpaceMorphism,
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category,
                                            source,
                                            range,
-                                           UnderlyingFieldForHomalg, homalg_field,
+                                           UnderlyingFieldForHomalg, category!.field_for_matrix_category,
                                            UnderlyingMatrix, homalg_matrix
     );
     

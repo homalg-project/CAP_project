@@ -1597,13 +1597,9 @@ AddDerivationToCAP( MorphismBetweenDirectSums,
     
     diagram_direct_sum_range := List( morphism_matrix[1], entry -> Range( entry ) );
     
-    test_diagram_coproduct := [ ];
-    
-    for test_diagram_product in morphism_matrix do
-      
-      Add( test_diagram_coproduct, UniversalMorphismIntoDirectSumWithGivenDirectSum( diagram_direct_sum_range, test_diagram_product, T ) );
-      
-    od;
+    test_diagram_coproduct := List( morphism_matrix,
+        test_diagram_product -> UniversalMorphismIntoDirectSumWithGivenDirectSum( diagram_direct_sum_range, test_diagram_product, T )
+    );
     
     return UniversalMorphismFromDirectSumWithGivenDirectSum( diagram_direct_sum_source, test_diagram_coproduct, S );
     
