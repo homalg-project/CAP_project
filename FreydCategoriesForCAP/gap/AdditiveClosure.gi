@@ -797,73 +797,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     end );
     
     ##
-    AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
-      function( sink, zero_object )
-        
-        return AdditiveClosureMorphism( sink, [ ], zero_object );
-        
-    end );
-    
-    ##
-    AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
-      function( source, zero_object )
-        
-        return AdditiveClosureMorphism( zero_object, [ ], source );
-        
-    end );
-    
-    ##
     AddDirectSum( category,
       function( list )
         
         return AdditiveClosureObject( Concatenation( List( list, ObjectList ) ), category );
-        
-    end );
-    
-    ##
-    AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
-      function( list, projection_number, direct_sum_object )
-        local pre_object, range, post_object, pre_zero, id, post_zero;
-        
-        pre_object := DirectSum( category, list{[1 .. projection_number - 1]} );
-        
-        range := list[projection_number];
-        
-        post_object := DirectSum( category, list{[projection_number + 1 .. Size( list )]} );
-        
-        pre_zero := ZeroMorphism( pre_object, range );
-        
-        id := IdentityMorphism( range );
-        
-        post_zero := ZeroMorphism( post_object, range );
-        
-        return AdditiveClosureMorphism( direct_sum_object,
-                                        Concatenation( MorphismMatrix( pre_zero ), MorphismMatrix( id ), MorphismMatrix( post_zero ) ),
-                                        range );
-        
-    end );
-    
-    
-    ##
-    AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
-      function( list, injection_number, direct_sum_object )
-        local pre_object, source, post_object, pre_zero, id, post_zero;
-        
-        pre_object := DirectSum( category, list{[1 .. injection_number - 1]} );
-        
-        source := list[injection_number];
-        
-        post_object := DirectSum( category, list{[injection_number + 1 .. Size( list )]} );
-        
-        pre_zero := ZeroMorphism( source, pre_object );
-        
-        id := IdentityMorphism( source );
-        
-        post_zero := ZeroMorphism( source, post_object );
-        
-        return AdditiveClosureMorphism( source,
-                                        List( [ 1 .. NrRows( id ) ], i -> Concatenation( pre_zero[i], id[i], post_zero[i] ) ),
-                                        direct_sum_object );
         
     end );
     
@@ -898,49 +835,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         return AdditiveClosureMorphism( direct_sum,
                                         Concatenation( List( sink, MorphismMatrix ) ),
                                         test_object );
-        
-    end );
-    
-    ##
-    AddMorphismBetweenDirectSums( category,
-      function( source, listlist, range )
-        local nr_cols_out, mat, outer_row, nr_inner_rows, i, new_row;
-        
-        if IsEmpty( listlist ) or IsEmpty( listlist[1] ) then
-          
-          return ZeroMorphism( source, range );
-          
-        fi;
-        
-        nr_cols_out := Size( listlist[1] );
-        
-        mat := [];
-        
-        for outer_row in listlist do
-          
-          nr_inner_rows := NrRows( outer_row[1] );
-          
-          if nr_inner_rows > 0 then
-            
-            for i in [ 1 .. nr_inner_rows ] do
-                
-                new_row := Concatenation(
-                  List( [ 1 .. nr_cols_out ], c -> outer_row[c][i] )
-              );
-              
-              Add( mat, new_row );
-              
-            od;
-            
-          fi;
-            
-        od;
-        
-        return AdditiveClosureMorphism(
-          source,
-          mat,
-          range
-        );
         
     end );
     

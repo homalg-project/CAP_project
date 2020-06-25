@@ -99,7 +99,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">= 2020.05.16" ],
+                           [ "CAP", ">= 2020.09.01" ],
                            [ "MatricesForHomalg", ">= 2020.09.06" ],
                            [ "GradedRingForHomalg", ">=2019.08.07" ],
                            [ "LinearAlgebraForCAP", ">= 2020.05.16" ],
