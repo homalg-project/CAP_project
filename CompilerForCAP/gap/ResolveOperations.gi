@@ -24,17 +24,29 @@ InstallGlobalFunction( CapJitGetCapCategoryFromArguments, function( arguments )
 end );
 
 InstallGlobalFunction( CapJitResolvedOperations, function( tree, jit_args )
-  local condition_func, path, record, operation, operation_name, arguments, result, new_tree, category, global_variable_name, operation_name_record_entry, installation_name, filter_list, replaced_filter_list, positions, index, func_to_resolve, applicable_methods, resolved_tree, parent, method;
+  local condition_func, path, record, operation, funccall_args, result, operation_name, arguments, new_tree, category, global_variable_name, operation_name_record_entry, installation_name, filter_list, replaced_filter_list, positions, index, func_to_resolve, applicable_methods, resolved_tree, parent, method;
     
     tree := StructuralCopy( tree );
   
     # find resolvable operation
     condition_func := function( tree, path )
         
-        if tree.type = "EXPR_FUNCCALL" and tree.funcref.type = "EXPR_REF_GVAR" and not (IsBound(tree.CAP_JIT_IGNORE_OPERATION) and tree.CAP_JIT_IGNORE_OPERATION) then
+        if IsBound( tree.CAP_JIT_IGNORE_OPERATION ) and tree.CAP_JIT_IGNORE_OPERATION then
+            
+            return false;
+            
+        fi;
+        
+        if tree.type = "EXPR_FUNCCALL" and tree.funcref.type = "EXPR_REF_GVAR" then
             
             # not all CAP operations are operations in the GAP sense
             return tree.funcref.gvar in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) or IsOperation( ValueGlobal( tree.funcref.gvar ) );
+            
+        fi;
+
+        if tree.type = "EXPR_ELM_MAT" then
+            
+            return true;
             
         fi;
         
@@ -49,15 +61,63 @@ InstallGlobalFunction( CapJitResolvedOperations, function( tree, jit_args )
         return tree;
         
     fi;
-
+    
     record := CapJitGetNodeByPath( tree, path );
-    operation := ValueGlobal( record.funcref.gvar );
-    operation_name := NameFunction( operation );
+    
+    if record.type = "EXPR_FUNCCALL" then
+        
+        operation := ValueGlobal( record.funcref.gvar );
 
+        funccall_args := record.args;
+        
+        result := CapJitGetFunctionCallArgumentsFromJitArgs( tree, path, jit_args );
+        
+    elif record.type = "EXPR_ELM_MAT" then
+        
+        operation := \[\,\];
+
+        funccall_args := [ record.list, record.row, record.col ];
+        
+        # get values of "list", "row" and "col"
+        
+        arguments := [];
+        
+        result := CapJitGetExpressionValueFromJitArgs( tree, Concatenation( path, [ "list" ] ), jit_args );
+        
+        if result[1] <> false then
+            
+            arguments[1] := result[2];
+            
+            result := CapJitGetExpressionValueFromJitArgs( tree, Concatenation( path, [ "row" ] ), jit_args );
+            
+            if result[1] <> false then
+                
+                arguments[2] := result[2];
+                
+                result := CapJitGetExpressionValueFromJitArgs( tree, Concatenation( path, [ "col" ] ), jit_args );
+                
+                if result[1] <> false then
+                    
+                    arguments[3] := result[2];
+                    
+                    result := [ true, arguments ];
+                    
+                fi;
+                
+            fi;
+            
+        fi;
+        
+    else
+        
+        Error( "this should never happen" );
+        
+    fi;
+        
+    operation_name := NameFunction( operation );
+    
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, Concatenation( "Try to resolve ", operation_name, "." ) );
-    
-    result := CapJitGetFunctionCallArgumentsFromJitArgs( tree, path, jit_args );
     
     if result[1] = false then
         
@@ -151,20 +211,29 @@ InstallGlobalFunction( CapJitResolvedOperations, function( tree, jit_args )
                     
                     if IsOperation( func_to_resolve ) or IsKernelFunction( func_to_resolve ) then
                         
-                        # will be handled in the next iteration
-                        global_variable_name := CapJitGetOrCreateGlobalVariable( func_to_resolve );
-                        
-                        new_tree := rec(
-                            type := "EXPR_REF_GVAR",
-                            gvar := global_variable_name,
-                        );
+                        # cannot resolve recursive calls
+                        if not IsIdenticalObj( func_to_resolve, operation ) then
+                            
+                            # will be handled in the next iteration
+                            global_variable_name := CapJitGetOrCreateGlobalVariable( func_to_resolve );
+                            
+                            new_tree := rec(
+                                type := "EXPR_FUNCCALL",
+                                funcref := rec(
+                                    type := "EXPR_REF_GVAR",
+                                    gvar := global_variable_name,
+                                ),
+                                args := funccall_args,
+                            );
+                            
+                        fi;
                         
                     else
                     
                         new_tree := rec(
                             type := "EXPR_FUNCCALL",
                             funcref := ENHANCED_SYNTAX_TREE( func_to_resolve, true ),
-                            args := record.args,
+                            args := funccall_args,
                         );
 
                     fi;
@@ -197,7 +266,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function( tree, jit_args )
                         new_tree := rec(
                             type := "EXPR_FUNCCALL",
                             funcref := resolved_tree,
-                            args := record.args,
+                            args := funccall_args,
                         );
 
                         break;
