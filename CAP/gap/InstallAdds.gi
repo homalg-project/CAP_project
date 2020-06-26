@@ -150,7 +150,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
         local install_func, replaced_filter_list, install_method, popper, i, set_primitive, is_derivation, without_given_name, with_given_name,
               without_given_weight, with_given_weight, number_of_proposed_arguments, current_function_number,
               current_function_argument_number, filter, input_human_readable_identifier_getter, input_sanity_check_functions,
-              output_human_readable_identifier_getter, output_sanity_check_function;
+              output_human_readable_identifier_getter, output_sanity_check_function, cap_jit_compiled_function;
         
         if HasIsFinalized( category ) and IsFinalized( category ) then
             Error( "cannot add methods anymore, category is finalized" );
@@ -366,6 +366,20 @@ InstallGlobalFunction( CapInternalInstallAdd,
         else
             output_sanity_check_function := ReturnTrue;
         fi;
+
+        if IsPackageMarkedForLoading( "CompilerForCAP", ">= 2020.06.17" ) then
+            
+            cap_jit_compiled_function := ValueGlobal( "CapJitCompiledFunction" );
+            
+        else
+            
+            cap_jit_compiled_function := function( args... )
+                
+                Error( "package CompilerForCAP is not loaded, so please disable compilation" );
+                
+            end;
+            
+        fi;
         
         install_func := function( func_to_install, filter_list )
           local new_filter_list, index;
@@ -387,7 +401,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                             
                             if not IsBound( category!.compiled_functions.( function_name )[ index ] ) then
                                 
-                                category!.compiled_functions.( function_name )[ index ] := CapJitCompiledFunction( func_to_install, arg{ argument_list } );
+                                category!.compiled_functions.( function_name )[ index ] := cap_jit_compiled_function( func_to_install, arg{ argument_list } );
                                 
                             fi;
                             
@@ -405,7 +419,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                                 
                                 if not IsBound( category!.compiled_functions.( function_name )[ index ] ) then
                                     
-                                    category!.compiled_functions.( function_name )[ index ] := CapJitCompiledFunction( func_to_install, arg );
+                                    category!.compiled_functions.( function_name )[ index ] := cap_jit_compiled_function( func_to_install, arg );
                                     
                                 fi;
                                 
