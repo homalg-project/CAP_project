@@ -63,17 +63,16 @@ InstallMethod( StableInternalHom,
         "for two CAP objects",
         [ IsCapCategoryObject, IsCapCategoryObject ],
         
-  function( A, B )
-    local idA, iota;
+  function( J, I )
+    local HomJI;
     
-    idA := IdentityMorphism( A );
+    HomJI := InternalHom( J, I );
     
-    iota := InternalHomOnMorphisms( idA, UniversalMorphismIntoTerminalObject( B ) );
-    
-    while not IsIsomorphism( iota ) do
-        iota := InternalHomOnMorphisms( idA, iota );
+    while not IsHomSetInhabited( HomJI, I ) do
+        I := HomJI;
+        HomJI := InternalHom( J, I );
     od;
-    
-    return Range( iota );
+
+    return HomJI;
     
 end );
