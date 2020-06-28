@@ -134,3 +134,5 @@ DeclareGlobalFunction( "ADD_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT" );
 DeclareGlobalFunction( "ADD_LIFT_AND_COLIFT_LEFT" );
 
 DeclareGlobalFunction( "ADD_LIFT_AND_COLIFT_RIGHT" );
+
+DeclareGlobalFunction( "TRY_TO_ADD_HOMOMORPHISM_STRUCTURE_LEFT" );
