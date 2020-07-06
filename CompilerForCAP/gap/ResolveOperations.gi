@@ -111,7 +111,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function( tree, jit_args )
             if Length( filter_list ) = Length( arguments ) and ForAll( [ 1 .. Length( filter_list ) ], i -> replaced_filter_list[i](arguments[i]) ) then
                 
                 # do not infer category from other_object et al.
-                positions := PositionsProperty( filter_list, x -> x in [ "object", "morphism", "twocell", "list_of_objects", "list_of_morphisms" ] );
+                positions := PositionsProperty( filter_list, x -> x in [ "category", "object", "morphism", "twocell", "list_of_objects", "list_of_morphisms" ] );
                 category := CapJitGetCapCategoryFromArguments( arguments{ positions } );
                 
                 if category = fail then
@@ -185,7 +185,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function( tree, jit_args )
                 
                 if not IsKernelFunction( method ) then
                 
-                    resolved_tree := ENHANCED_SYNTAX_TREE( method );
+                    resolved_tree := ENHANCED_SYNTAX_TREE( method, true );
                     
                     if Length( resolved_tree.stats.statements ) >= 1 and resolved_tree.stats.statements[1].type = "STAT_PRAGMA" and resolved_tree.stats.statements[1].value = "% CAP_JIT_RESOLVE_FUNCTION" then
                         
