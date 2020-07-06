@@ -258,7 +258,7 @@ InstallMethod( RandomMorphism,
 InstallGlobalFunction( ObjectifyMorphismForCAPWithAttributes,
                        
   function( arg_list... )
-    local category, morphism, objectified_morphism;
+    local category, objectified_morphism;
     
     category := arg_list[ 2 ];
     
@@ -275,8 +275,8 @@ InstallGlobalFunction( ObjectifyMorphismForCAPWithAttributes,
     objectified_morphism := CallFuncList( ObjectifyWithAttributes, arg_list );
     
     if category!.predicate_logic then
-        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ objectified_morphism ], Source( morphism ), category );
-        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ objectified_morphism ], Range( morphism ), category );
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ objectified_morphism ], Source( objectified_morphism ), category );
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ objectified_morphism ], Range( objectified_morphism ), category );
     fi;
     
     return objectified_morphism;
