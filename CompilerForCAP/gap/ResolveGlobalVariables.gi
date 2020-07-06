@@ -9,15 +9,16 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function( tree )
         
         if IsRecord( tree ) and not ( IsBound( tree.CAP_JIT_NOT_RESOLVABLE ) and tree.CAP_JIT_NOT_RESOLVABLE ) then
             
-            if tree.type = "EXPR_REF_GVAR" then
+            # do not resolve the global variable "Julia" since we otherwise lose information about the Julia module and operation
+            if tree.type = "EXPR_REF_GVAR" and tree.gvar <> "Julia" then
                 
                 value := ValueGlobal( tree.gvar );
 
-            elif tree.type = "EXPR_ELM_COMOBJ_NAME" and tree.comobj.type = "EXPR_REF_GVAR" then
+            elif tree.type = "EXPR_ELM_COMOBJ_NAME" and tree.comobj.type = "EXPR_REF_GVAR" and tree.comobj.gvar <> "Julia" then
                 
                 value := ValueGlobal( tree.comobj.gvar )!.(tree.name);
                 
-            elif tree.type = "EXPR_ELM_REC_NAME" and tree.record.type = "EXPR_REF_GVAR" then
+            elif tree.type = "EXPR_ELM_REC_NAME" and tree.record.type = "EXPR_REF_GVAR" and tree.record.gvar <> "Julia" then
                 
                 value := ValueGlobal( tree.record.gvar ).(tree.name);
                 
