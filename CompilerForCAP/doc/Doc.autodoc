@@ -66,6 +66,8 @@ There is an additional weak requirement: The compiler mainly optimizes the code 
 JIT arguments. Thus, the JIT arguments should represent a "generic" call, i.e., they should not run into edge cases which do not happen
 with a "generic" call. Still, the execution using JIT arguments should be fast to improve compilation times.
 
+Additionally, there is not detection for recursive function calls currently, so resolving such a function call leads to an infinite loop.
+
 @Section Activating the compiler
 
 You can activate the compiler by passing the option `enable_compilation` to any category constructor.

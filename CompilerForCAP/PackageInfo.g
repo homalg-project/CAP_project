@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "CompilerForCAP",
 Subtitle := "This package allows to \"compile\" the code of CAP categories.",
 Version := Maximum( [
-  "2020.07.06", ## Fabian's version
+  "2020.07.09", ## Fabian's version
   ## this line prevents merge conflicts
 ] ),
 Date := ~.Version{[ 1 .. 10 ]},
