@@ -1522,6 +1522,75 @@ InstallMethod( Display,
     
 end );
 
+
+##
+InstallMethod( LaTeXOutput,
+               [ IsQuiverRowsObject ],
+               
+  function( obj )
+    local l, exp_func;
+    
+    l := ListOfQuiverVertices( obj );
+    
+    if IsEmpty( l ) then
+        
+        return "0";
+        
+    fi;
+    
+    exp_func := function( i )
+        if i = 1 then
+            return "";
+        else
+            return Concatenation( "\\oplus", String( i ) );
+        fi;
+    end;
+    
+    l := List( l, pair -> Concatenation( "v_{", LabelAsString( pair[1] ), "}^{", exp_func( pair[2] ), "}" ) );
+    
+    return JoinStringsWithSeparator( l, " \\oplus " );
+    
+end );
+
+##
+InstallMethod( LaTeXOutput,
+               [ IsQuiverRowsMorphism ],
+               
+  function( morphism )
+    local matrix, source, range;
+    
+    matrix := MorphismMatrix( morphism );
+    
+    if IsEmpty( matrix ) then
+        matrix := "0";
+    else
+        
+        matrix := JoinStringsWithSeparator(
+            List( matrix, row -> JoinStringsWithSeparator( List( row, el -> String( el ) ), "\&" ) ),
+            """\\"""
+        );
+        
+        matrix := ReplacedString( matrix, "*", " \\cdot " );
+        
+        matrix :=  Concatenation( "\\begin{pmatrix}", matrix, "\\end{pmatrix}" );
+    
+    fi;
+    
+    if ValueOption( "OnlyDatum" ) = true then
+        
+        return matrix;
+        
+    fi;
+    
+    source := LaTeXOutput( Source( morphism ) );
+    
+    range := LaTeXOutput( Range( morphism ) );
+    
+    return Concatenation( source, "\\xrightarrow{", matrix, "}", range );
+    
+end );
+
+
 ####################################
 ##
 ## Convenience

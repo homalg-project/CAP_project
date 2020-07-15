@@ -1271,6 +1271,73 @@ InstallMethod( Display,
     
 end );
 
+##
+InstallMethod( LaTeXOutput,
+               [ IsAdelmanCategoryObject ],
+  function( object )
+    local rel, corel, r, m, c, rel_dat, corel_dat;
+    
+    rel := RelationMorphism( object );
+    
+    corel := CorelationMorphism( object );
+    
+    r := LaTeXOutput( Source( rel ) );
+    
+    m := LaTeXOutput( Range( rel ) );
+    
+    c := LaTeXOutput( Range( corel ) );
+    
+    rel_dat := LaTeXOutput( rel : OnlyDatum := true );
+    
+    corel_dat := LaTeXOutput( corel : OnlyDatum := true );
+    
+    if ValueOption( "HighlightMiddle" ) = true then
+        
+        m := Concatenation( """{ \small \color{blue}{""", m, "} }" );
+        
+    fi;
+    
+    return Concatenation(
+      r,
+      "\\xrightarrow{",
+      rel_dat,
+      "}",
+      m,
+      "\\xrightarrow{",
+      corel_dat,
+      "}",
+      c
+    );
+    
+end );
+
+##
+InstallMethod( LaTeXOutput,
+               [ IsAdelmanCategoryMorphism ],
+  function( mor )
+    local datum;
+    
+    datum := LaTeXOutput( MorphismDatum( mor ) : OnlyDatum := true );
+    
+    return Concatenation(
+      """{\tiny \left(""",
+      LaTeXOutput( Source( mor ) : HighlightMiddle := true ),
+      """\right)}""",
+      """\color{blue}{\xrightarrow{""",
+      datum,
+      """}}""",
+      """{\tiny \left(""",
+      LaTeXOutput( Range( mor ) : HighlightMiddle := true ),
+      """\right)}"""
+    );
+    
+end );
+
+
+
+
+
+
 ####################################
 ##
 ## Convenience
