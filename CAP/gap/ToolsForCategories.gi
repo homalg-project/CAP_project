@@ -583,6 +583,8 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
     
     func_stream := OutputTextString( func_as_string, false );
     
+    SetPrintFormattingStatus( func_stream, false );
+    
     PrintTo( func_stream, func );
     
     CloseStream( func_stream );
