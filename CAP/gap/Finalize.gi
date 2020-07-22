@@ -31,6 +31,8 @@ BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
         
         string_stream := OutputTextString( function_string, false );
         
+        SetPrintFormattingStatus( string_stream, false );
+        
         PrintTo( string_stream, function_object );
         
         CloseStream( string_stream );
