@@ -99,6 +99,7 @@ Dependencies := rec(
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "ToolsForHomalg", ">=2015.09.18" ],
                            [ "MatricesForHomalg", ">= 2020.05.12" ],
+                           [ "GaussForHomalg", ">= 2019.09.02" ],
                            [ "CAP", ">= 2020.05.16" ],
                            [ "MonoidalCategories", ">= 2019.01.16" ],
                            ],
