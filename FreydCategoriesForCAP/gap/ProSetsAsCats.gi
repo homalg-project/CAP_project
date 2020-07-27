@@ -267,7 +267,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_PROSET_AS_CATEGORY,
       ## decision: if the colift exists
 
       ##  if it exists -> output the colift
-      if IsColiftable(alpha, beta) then 
+      if IsColiftable(alpha, beta) then
         return ProSetAsCategoryMorphism( Range( alpha ) , Range( beta ) );
       ## if it does not exist -> fail
       else return fail;
@@ -382,7 +382,24 @@ InstallMethod( Down,
 InstallMethod( DownOnlyMorphismData,
                [ IsProSetAsCategoryMorphism ],
   function( mor )
-    
+
     return "->";
-    
+
+end );
+
+
+InstallMethod(\*,
+              [ IsProSetAsCategoryMorphism, IsProSetAsCategoryMorphism ],
+  function( alpha , beta )
+
+    return PreCompose( alpha , beta ) ;
+
+end );
+
+InstallMethod(\/,
+              [ IsInt, IsProSetAsCategory ],
+  function( n, C )
+
+    return ProSetAsCategoryObject( n , C ) ;
+
 end );
