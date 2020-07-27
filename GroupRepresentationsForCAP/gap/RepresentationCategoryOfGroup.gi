@@ -139,6 +139,8 @@ InstallMethod( RepresentationCategory,
     
     SetUnderlyingGroupForRepresentationCategory( category, group );
     
+    SetIsSkeletalCategory( category, true );
+    
     DeactivateCachingOfCategory( category );
     
     CapCategorySwitchLogicOff( category );
@@ -319,6 +321,8 @@ InstallMethod( RepresentationCategoryZGraded,
                     IsRepresentationCategoryZGradedMorphism, name ] );
     
     SetUnderlyingGroupForRepresentationCategory( category, group );
+    
+    SetIsSkeletalCategory( category, true );
     
     ## side effect: this computes the multiplicity array of group which can thus be accessed without the getter
     MultiplicityArray( group );
