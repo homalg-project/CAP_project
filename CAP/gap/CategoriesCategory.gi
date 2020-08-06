@@ -864,7 +864,7 @@ InstallMethod( FunctorCanonicalizeZeroObjects,
 end );
 
 ##
-InstallMethod( NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects,
+InstallMethod( NaturalIsomorphismFromIdentityToCanonicalizeZeroObjects,
                [ IsCapCategory ],
                
   function( category )
@@ -927,7 +927,7 @@ InstallMethod( FunctorCanonicalizeZeroMorphisms,
 end );
 
 ##
-InstallMethod( NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms,
+InstallMethod( NaturalIsomorphismFromIdentityToCanonicalizeZeroMorphisms,
                [ IsCapCategory ],
                
   function( category )

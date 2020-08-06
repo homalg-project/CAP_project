@@ -346,7 +346,7 @@ DeclareAttribute( "FunctorCanonicalizeZeroObjects",
 #!  to <C>FunctorCanonicalizeZeroObjects</C>(<A>cat</A>).
 #! @Arguments cat
 #! @Returns a natural transformation
-DeclareAttribute( "NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects",
+DeclareAttribute( "NaturalIsomorphismFromIdentityToCanonicalizeZeroObjects",
                   IsCapCategory );
 
 #! @Description
@@ -366,7 +366,7 @@ DeclareAttribute( "FunctorCanonicalizeZeroMorphisms",
 #!  to <C>FunctorCanonicalizeZeroMorphisms</C>(<A>cat</A>).
 #! @Arguments cat
 #! @Returns a natural transformation
-DeclareAttribute( "NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms",
+DeclareAttribute( "NaturalIsomorphismFromIdentityToCanonicalizeZeroMorphisms",
                   IsCapCategory );
 
 
