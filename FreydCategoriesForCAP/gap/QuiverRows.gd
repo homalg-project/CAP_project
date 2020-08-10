@@ -61,6 +61,9 @@ DeclareOperation( "\/",
 DeclareOperation( "\/",
                   [ IsQuiverAlgebraElement, IsQuiverRowsCategory ] );
 
+DeclareOperation( "\/",
+                  [ IsPath, IsQuiverRowsCategory ] );
+
 ####################################
 ##
 #! @Section Attributes
@@ -114,6 +117,9 @@ DeclareOperation( "\[\]",
 
 DeclareOperation( "\[\]",
                   [ IsQuiverRowsObject, IsInt ] );
+
+DeclareOperation( "\*",
+                  [ IsQuiverRowsMorphism, IsQuiverRowsMorphism ] );
 
 DeclareGlobalFunction( "CAP_INTERNAL_MORPHISM_BETWEEN_DIRECT_SUMS_LIST_LIST" );
 

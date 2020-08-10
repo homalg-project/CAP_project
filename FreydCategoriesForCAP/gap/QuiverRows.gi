@@ -1539,6 +1539,18 @@ InstallMethod( \/,
                [ IsQuiverAlgebraElement, IsQuiverRowsCategory ],
                AsQuiverRowsMorphism );
 
+##
+InstallMethod( \/,
+               [ IsPath, IsQuiverRowsCategory ],
+               {p, QRows} -> PathAsAlgebraElement( UnderlyingQuiverAlgebra( QRows ), p )/QRows
+);
+
+##
+InstallMethod( \*,
+               [ IsQuiverRowsMorphism, IsQuiverRowsMorphism ],
+               PreCompose
+);
+
 ####################################
 ##
 ## Down
