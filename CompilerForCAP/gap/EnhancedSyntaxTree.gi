@@ -1,3 +1,8 @@
+#
+# CompilerForCAP: Speed up computations in CAP categories
+#
+# Implementations
+#
 BindGlobal( "CAP_JIT_INTERNAL_FUNCTION_ID", 1 );
 MakeReadWriteGlobal( "CAP_JIT_INTERNAL_FUNCTION_ID" );
 InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function( func, args... )

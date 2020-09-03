@@ -1,3 +1,8 @@
+#
+# CompilerForCAP: Speed up computations in CAP categories
+#
+# Implementations
+#
 InstallGlobalFunction( CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION, function( cond1, cond2 )
     
     # check if cond1 implies cond2, i.e. if ( cond1 = true => cond2 = true )

@@ -1,3 +1,8 @@
+#
+# CompilerForCAP: Speed up computations in CAP categories
+#
+# Implementations
+#
 InstallGlobalFunction( CapJitInlinedVariableAssignments, function( tree, args... )
   local inline_gvars_only, condition_func, path, lvar_path, lvar_assignment, parent_path, parent, inline_tree, subsequent_child, inline_tree_path, inline_tree_parent, func_path, func, func_id, number_of_assignments, pre_func, rhs, number_of_uses, modified_inline_tree;
     

@@ -1,3 +1,8 @@
+#
+# CompilerForCAP: Speed up computations in CAP categories
+#
+# Implementations
+#
 BindGlobal( "CAP_JIT_LOGIC_TEMPLATES", [
     # if ... then Error( ... ); fi;
     rec(

@@ -1,3 +1,8 @@
+#
+# CompilerForCAP: Speed up computations in CAP categories
+#
+# Implementations
+#
 InstallGlobalFunction( CapJitGetCapCategoryFromArguments, function( arguments )
   local result;
     

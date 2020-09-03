@@ -1,3 +1,8 @@
+#
+# CompilerForCAP: Speed up computations in CAP categories
+#
+# Implementations
+#
 InstallGlobalFunction( CapJitIsCallToGlobalFunction, function( tree, condition )
   local condition_func;
     

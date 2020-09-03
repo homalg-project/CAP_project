@@ -1,3 +1,8 @@
+#
+# CompilerForCAP: Speed up computations in CAP categories
+#
+# Implementations
+#
 InstallGlobalFunction( "CapJitResolvedGlobalVariables", function( tree )
   local pre_func;    
     

@@ -1,5 +1,5 @@
 #
-# CompilerForCAP: This package allows to "compile" the code of CAP categories.
+# CompilerForCAP: Speed up computations in CAP categories
 #
 # Reading the declaration part of the package.
 #

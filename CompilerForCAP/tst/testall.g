@@ -1,14 +1,13 @@
 #
-# CompilerForCAP: This package allows to "compile" the code of CAP categories.
+# CompilerForCAP: Speed up computations in CAP categories
 #
 # This file runs package tests. It is also referenced in the package
 # metadata in PackageInfo.g.
 #
-
 options := rec(
     exitGAP := true,
     testOptions := rec(
-        compareFunction := "uptowhitespace"
+        compareFunction := "uptowhitespace",
     ),
 );
 

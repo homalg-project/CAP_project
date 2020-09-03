@@ -1,3 +1,8 @@
+#
+# CompilerForCAP: Speed up computations in CAP categories
+#
+# Implementations
+#
 InstallGlobalFunction( CAP_JIT_INTERNAL_FUNCTION_CAN_BE_INLINED, function( tree )
   local statements, statements_to_check, branch_statements, branch, result_func;
     

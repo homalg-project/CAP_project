@@ -1,7 +1,8 @@
 #
-# CompilerForCAP: This package allows to "compile" the code of CAP categories.
+# CompilerForCAP: Speed up computations in CAP categories
 #
-
+# Declarations
+#
 #! @Chapter Using the compiler
 
 #! @Section Stopping the compiler at a certain level

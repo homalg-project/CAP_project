@@ -1,3 +1,8 @@
+#
+# CompilerForCAP: Speed up computations in CAP categories
+#
+# Implementations
+#
 InstallGlobalFunction( CapJitDroppedUnusedVariables, function( tree, args... )
   local single_pass, func_path, condition_func, path, pre_func, func, used_nams, used_positions, unused_positions, pos;
     

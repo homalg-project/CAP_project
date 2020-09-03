@@ -1,3 +1,8 @@
+#
+# CompilerForCAP: Speed up computations in CAP categories
+#
+# Declarations
+#
 #! @Chapter Improving and extending the compiler
 
 #! @Section Compilation steps

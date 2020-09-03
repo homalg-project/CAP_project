@@ -1,3 +1,8 @@
+#
+# CompilerForCAP: Speed up computations in CAP categories
+#
+# Implementations
+#
 BindGlobal( "CAP_JIT_INTERNAL_STORED_VALUES", [] );
 BindGlobal( "CAP_JIT_INTERNAL_STORED_VALUES_COUNTER", 1 );
 MakeReadWriteGlobal( "CAP_JIT_INTERNAL_STORED_VALUES_COUNTER" );

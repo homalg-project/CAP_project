@@ -1,3 +1,8 @@
+#
+# CompilerForCAP: Speed up computations in CAP categories
+#
+# Implementations
+#
 InstallGlobalFunction( CapJitInlinedArguments, function( tree )
   local pre_func, additional_arguments_func;
     

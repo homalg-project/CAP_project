@@ -1,3 +1,8 @@
+#
+# CompilerForCAP: Speed up computations in CAP categories
+#
+# Implementations
+#
 BindGlobal( "CAP_JIT_INTERNAL_ITERATION_KEYS", rec(
     EXPR_FUNC := "stats",
     STAT_SEQ_STAT := "statements",
