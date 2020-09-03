@@ -1,0 +1,33 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - "*"
+  pull_request:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        image: [gapsystem/gap-docker, gapsystem/gap-docker-master]
+    runs-on: ubuntu-latest
+    container:
+      image: ${{ matrix.image }}
+    steps:
+      - uses: actions/checkout@v1
+      - run: mkdir -p /home/gap/.gap/pkg/
+      - run: sudo cp -a $GITHUB_WORKSPACE /home/gap/.gap/pkg/
+      - run: sudo chown -R gap:gap /home/gap/.gap/pkg/
+      - run: |
+          export HOME="/home/gap"
+          cd /home/gap/.gap/pkg/
+          sudo apt update
+          sudo apt dist-upgrade -y
+          sudo apt install -y texlive-latex-extra texlive-science
+          git clone --depth 1 https://github.com/gap-packages/AutoDoc.git
+          git clone --depth 1 https://github.com/homalg-project/homalg_project.git
+          TERM=dumb make -C CAP_project -j $(nproc) --output-sync ci-test
+          curl -s https://codecov.io/bash | bash
