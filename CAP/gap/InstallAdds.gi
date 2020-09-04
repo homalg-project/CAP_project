@@ -1,12 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-#############################################################################
-
+#
+# CAP: Categories, Algorithms, Programming
+#
+# Implementations
+#
 BindGlobal( "CAP_INTERNAL_ADD_OBJECT_OR_FAIL",
   
   function( category, object_or_fail )

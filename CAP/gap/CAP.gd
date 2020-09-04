@@ -1,10 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
+#
+# CAP: Categories, Algorithms, Programming
+#
+# Declarations
+#
 #! @Chapter CAP Categories
 #!  Categories are the main GAP objects in CAP.
 #!  They are used to associate GAP objects which represent objects and
@@ -15,8 +13,6 @@
 #!  associated to the category and after that can be applied to GAP objects in the category.
 #!  A GAP category object also knows which constructions
 #!  are currently possible in this category.
-##
-#############################################################################
 
 ###################################
 ##

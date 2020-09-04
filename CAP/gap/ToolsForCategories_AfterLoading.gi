@@ -1,12 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2018, Sebastian Gutsche, University of Siegen
-##                  Sebastian Posur,   University of Siegen
-##
-##
-#############################################################################
+#
+# CAP: Categories, Algorithms, Programming
+#
+# Implementations
+#
 
 ## This file contains installations for ToolsForCategories functions
 ## that can only be installed after all dependencies have been loaded.

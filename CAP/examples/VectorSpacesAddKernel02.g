@@ -7,7 +7,7 @@
 
 if not IsBound( VectorSpacesConstructorsLoaded ) then
   
-  ReadPackage( "CAP", "examples/testfiles/VectorSpacesConstructors.gi" );
+  ReadPackage( "CAP", "examples/VectorSpacesConstructors.g" );
   
 fi;
 

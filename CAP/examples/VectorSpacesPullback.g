@@ -4,14 +4,14 @@
 
 if not IsBound( VectorSpacesConstructorsLoaded ) then
 
-  ReadPackage( "CAP", "examples/testfiles/VectorSpacesConstructors.gi" );;
+  ReadPackage( "CAP", "examples/VectorSpacesConstructors.g" );;
 
 fi;
 
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpacesForFiberProductTest" );
 #! VectorSpacesForFiberProductTest
-ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );
+ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );
 #! true
 A := QVectorSpace( 1 );
 #! <A rational vector space of dimension 1>

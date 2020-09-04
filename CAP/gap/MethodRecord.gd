@@ -1,12 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-#############################################################################
-
+#
+# CAP: Categories, Algorithms, Programming
+#
+# Declarations
+#
 DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_RECORD" );
 
 DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS" );

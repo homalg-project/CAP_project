@@ -1,13 +1,9 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
+#
+# CAP: Categories, Algorithms, Programming
+#
+# Implementations
+#
 #! @Chapter Opposite category
-##
-#############################################################################
 
 ###################################
 ##

@@ -1,10 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
+#
+# CAP: Categories, Algorithms, Programming
+#
+# Declarations
+#
 #! @Chapter Objects
 #!  Any GAP object which is IsCapCategoryObject can be added to a category
 #!  and then becomes an object in this category.

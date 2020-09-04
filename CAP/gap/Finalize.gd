@@ -1,13 +1,9 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
+#
+# CAP: Categories, Algorithms, Programming
+#
+# Declarations
+#
 #! @Chapter Finalize
-##
-#############################################################################
 
 DeclareGlobalVariable( "CAP_INTERNAL_FINAL_DERIVATION_LIST" );
 

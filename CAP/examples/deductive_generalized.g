@@ -1,11 +1,11 @@
 if not IsBound( VectorSpacesConstructorsLoaded ) then
 
-  ReadPackage( "CAP", "examples/testfiles/VectorSpacesConstructors.gi" );;
+  ReadPackage( "CAP", "examples/VectorSpacesConstructors.g" );;
 
 fi;
 vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
-ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );
+ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );
 #! true
 A := QVectorSpace( 3 );
 #! <A rational vector space of dimension 3>
