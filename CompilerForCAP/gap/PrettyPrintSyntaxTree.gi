@@ -3,7 +3,7 @@
 #
 # Implementations
 #
-InstallGlobalFunction( CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT, function( tree, func_stack )
+InstallGlobalFunction( CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT, function ( tree, func_stack )
   local type, statements, lvars, level, hvars, func;
 
     if IsList( tree ) then
@@ -183,7 +183,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT, fu
         
     elif type = "EXPR_REF_HVAR" then
         
-        level := Int(tree.hvar / 2^16);
+        level := Int( tree.hvar / 2 ^ 16 );
         
         if not Length( func_stack ) - level > 0 then
             
@@ -193,11 +193,11 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT, fu
         
         hvars := func_stack[Length( func_stack ) - level];
         
-        Assert( 0, tree.hvar mod 2^16 <= Length( hvars ) );
+        Assert( 0, tree.hvar mod 2 ^ 16 <= Length( hvars ) );
         
         return rec( 0_type := tree.type,
                     1_hvar := tree.hvar,
-                    2_nvar := hvars[tree.hvar mod 2^16],
+                    2_nvar := hvars[tree.hvar mod 2 ^ 16],
                   );
         
     elif type = "EXPR_ELM_LIST" then
@@ -225,8 +225,8 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT, fu
     
 end );
 
-InstallGlobalFunction( CapJitPrettyPrintSyntaxTree, function( tree )
+InstallGlobalFunction( CapJitPrettyPrintSyntaxTree, function ( tree )
     
-    Display( CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT( tree, [] ) );
+    Display( CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT( tree, [ ] ) );
     
 end );

@@ -3,7 +3,7 @@
 #
 # Implementations
 #
-InstallGlobalFunction( CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION, function( cond1, cond2 )
+InstallGlobalFunction( CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION, function ( cond1, cond2 )
     
     # check if cond1 implies cond2, i.e. if ( cond1 = true => cond2 = true )
     if cond1 = cond2 then
@@ -38,15 +38,15 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION, function( c
     
 end );
 
-InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function( tree )
+InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function ( tree )
   local handled_edge_cases, pre_func, result_func, additional_arguments_func;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Drop handled edge cases." );
     
-    handled_edge_cases := [];
+    handled_edge_cases := [ ];
 
-    pre_func := function( tree, path )
+    pre_func := function ( tree, path )
       local statements, statement, branches, branch, if_path, i, j;
         
         if IsRecord( tree ) and tree.type = "EXPR_FUNC" then
@@ -87,7 +87,7 @@ InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function( tree )
         
     end;
     
-    result_func := function( tree, result, path )
+    result_func := function ( tree, result, path )
       local statements, i, statement, positions, key;
         
         if IsList( result ) then
@@ -118,7 +118,7 @@ InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function( tree )
                     
                     if statement.type = "STAT_SEQ_STAT" then
                         
-                        statements := Concatenation( statements{[ 1 .. i-1 ]}, statement.statements, statements{[ i+1 .. Length( statements ) ]} );
+                        statements := Concatenation( statements{[ 1 .. i - 1 ]}, statement.statements, statements{[ i + 1 .. Length( statements ) ]} );
                         
                     else
                         
@@ -132,7 +132,7 @@ InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function( tree )
             
             elif StartsWith( tree.type, "STAT_IF" ) then
                 
-                positions := Filtered( [ 1 .. Length( tree.branches ) ], function( j )
+                positions := Filtered( [ 1 .. Length( tree.branches ) ], function ( j )
                   local branch, key, handled_edge_case;
                     
                     branch := tree.branches[j];
@@ -144,7 +144,7 @@ InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function( tree )
                             if Length( path ) > Length( handled_edge_case.if_path ) then
                                 
                                 # next entry of path is "branches", then the key
-                                key := path[ Length( handled_edge_case.if_path ) + 2];
+                                key := path[Length( handled_edge_case.if_path ) + 2];
 
                             else
                                 
@@ -199,12 +199,12 @@ InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function( tree )
         
     end;
 
-    additional_arguments_func := function( tree, key, path )
+    additional_arguments_func := function ( tree, key, path )
         
         return Concatenation( path, [ key ] );
         
     end;
   
-    return CapJitIterateOverTree( tree, pre_func, result_func, additional_arguments_func, [] );
+    return CapJitIterateOverTree( tree, pre_func, result_func, additional_arguments_func, [ ] );
 
 end );

@@ -3,7 +3,7 @@
 #
 # Implementations
 #
-InstallGlobalFunction( CapJitGetCapCategoryFromArguments, function( arguments )
+InstallGlobalFunction( CapJitGetCapCategoryFromArguments, function ( arguments )
   local result;
     
     if IsList( arguments ) then
@@ -28,13 +28,13 @@ InstallGlobalFunction( CapJitGetCapCategoryFromArguments, function( arguments )
     
 end );
 
-InstallGlobalFunction( CapJitResolvedOperations, function( tree, jit_args )
+InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
   local condition_func, path, record, operation, funccall_args, result, operation_name, arguments, new_tree, category, global_variable_name, operation_name_record_entry, installation_name, filter_list, replaced_filter_list, positions, index, func_to_resolve, applicable_methods, resolved_tree, parent, method;
     
     tree := StructuralCopy( tree );
   
     # find resolvable operation
-    condition_func := function( tree, path )
+    condition_func := function ( tree, path )
         
         if IsBound( tree.CAP_JIT_IGNORE_OPERATION ) and tree.CAP_JIT_IGNORE_OPERATION then
             
@@ -85,7 +85,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function( tree, jit_args )
         
         # get values of "list", "row" and "col"
         
-        arguments := [];
+        arguments := [ ];
         
         result := CapJitGetExpressionValueFromJitArgs( tree, Concatenation( path, [ "list" ] ), jit_args );
         
@@ -166,18 +166,18 @@ InstallGlobalFunction( CapJitResolvedOperations, function( tree, jit_args )
             # prepare Op
             if Concatenation( operation_name, "Op" ) = installation_name then
                 
-                filter_list := filter_list{ [ 1 .. Length( filter_list ) - 1 ] };
+                filter_list := filter_list{[ 1 .. Length( filter_list ) - 1 ]};
                 
             fi;
 
-            Assert( 0, not IsBound(operation_name_record_entry.argument_list) or operation_name_record_entry.argument_list = [ 1 .. Length( filter_list ) ] );
+            Assert( 0, not IsBound( operation_name_record_entry.argument_list ) or operation_name_record_entry.argument_list = [ 1 .. Length( filter_list ) ] );
             
             # check that arguments lie in filter
             if Length( filter_list ) = Length( arguments ) and ForAll( [ 1 .. Length( filter_list ) ], i -> replaced_filter_list[i](arguments[i]) ) then
                 
                 # do not infer category from other_object et al.
                 positions := PositionsProperty( filter_list, x -> x in [ "category", "object", "morphism", "twocell", "list_of_objects", "list_of_morphisms" ] );
-                category := CapJitGetCapCategoryFromArguments( arguments{ positions } );
+                category := CapJitGetCapCategoryFromArguments( arguments{positions} );
                 
                 if category = fail then
                     

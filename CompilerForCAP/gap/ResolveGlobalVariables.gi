@@ -3,16 +3,16 @@
 #
 # Implementations
 #
-InstallGlobalFunction( "CapJitResolvedGlobalVariables", function( tree )
-  local pre_func;    
+InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
+  local pre_func;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Resolving global variables." );
     
-    pre_func := function( tree, additional_arguments )
+    pre_func := function ( tree, additional_arguments )
       local value, inline_tree, name, global_variable_name;
         
-        if IsRecord( tree ) and not ( IsBound( tree.CAP_JIT_NOT_RESOLVABLE ) and tree.CAP_JIT_NOT_RESOLVABLE ) then
+        if IsRecord( tree ) and not (IsBound( tree.CAP_JIT_NOT_RESOLVABLE ) and tree.CAP_JIT_NOT_RESOLVABLE) then
             
             # do not resolve the global variable "Julia" since we otherwise lose information about the Julia module and operation
             if tree.type = "EXPR_REF_GVAR" and tree.gvar <> "Julia" then
@@ -29,7 +29,7 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function( tree )
                 
             elif tree.type = "EXPR_FUNCCALL" and tree.funcref.type = "EXPR_REF_GVAR" and ForAll( tree.args, a -> a.type in [ "EXPR_REF_GVAR", "EXPR_INT", "EXPR_STRING", "EXPR_TRUE", "EXPR_FALSE" ] ) then
                 
-                value := CallFuncList( ValueGlobal( tree.funcref.gvar ), List( tree.args, function( a )
+                value := CallFuncList( ValueGlobal( tree.funcref.gvar ), List( tree.args, function ( a )
                     
                     if a.type = "EXPR_REF_GVAR" then
                         
@@ -103,7 +103,7 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function( tree )
         
                     name := NameFunction( value );
                     
-                    if name in NamesGVars() and IsIdenticalObj( value, ValueGlobal( name ) ) then
+                    if name in NamesGVars( ) and IsIdenticalObj( value, ValueGlobal( name ) ) then
                         
                         tree := rec(
                             type := "EXPR_REF_GVAR",

@@ -3,7 +3,7 @@
 #
 # Implementations
 #
-InstallGlobalFunction( CapJitIsCallToGlobalFunction, function( tree, condition )
+InstallGlobalFunction( CapJitIsCallToGlobalFunction, function ( tree, condition )
   local condition_func;
     
     if IsString( condition ) then
@@ -24,7 +24,7 @@ InstallGlobalFunction( CapJitIsCallToGlobalFunction, function( tree, condition )
     
 end );
 
-InstallGlobalFunction( CapJitResultFuncCombineChildren, function( tree, result, additional_arguments )
+InstallGlobalFunction( CapJitResultFuncCombineChildren, function ( tree, result, additional_arguments )
   local key;
     
     if IsList( result ) then
@@ -51,10 +51,10 @@ InstallGlobalFunction( CapJitResultFuncCombineChildren, function( tree, result, 
     
 end );
 
-InstallGlobalFunction( CapJitContainsRefToFVAROutsideOfFuncStack, function( tree )
+InstallGlobalFunction( CapJitContainsRefToFVAROutsideOfFuncStack, function ( tree )
   local result_func, additional_arguments_func;
   
-    result_func := function( tree, result, func_id_stack )
+    result_func := function ( tree, result, func_id_stack )
       local type, level;
         
         if IsList( result ) then
@@ -83,7 +83,7 @@ InstallGlobalFunction( CapJitContainsRefToFVAROutsideOfFuncStack, function( tree
         
     end;
 
-    additional_arguments_func := function( tree, key, func_id_stack )
+    additional_arguments_func := function ( tree, key, func_id_stack )
         
         if IsRecord( tree ) and tree.type = "EXPR_FUNC" then
             
@@ -99,13 +99,13 @@ InstallGlobalFunction( CapJitContainsRefToFVAROutsideOfFuncStack, function( tree
         
     end;
     
-    return CapJitIterateOverTree( tree, ReturnFirst, result_func, additional_arguments_func, [] );
+    return CapJitIterateOverTree( tree, ReturnFirst, result_func, additional_arguments_func, [ ] );
     
 end );
 
 BindGlobal( "CAP_JIT_INTERNAL_GLOBAL_VARIABLE_COUNTER", 1 );
 MakeReadWriteGlobal( "CAP_JIT_INTERNAL_GLOBAL_VARIABLE_COUNTER" );
-InstallGlobalFunction( CapJitGetOrCreateGlobalVariable, function( value )
+InstallGlobalFunction( CapJitGetOrCreateGlobalVariable, function ( value )
   local gvar, i;
     
     # check if value is already bound to a global variable
@@ -132,14 +132,14 @@ InstallGlobalFunction( CapJitGetOrCreateGlobalVariable, function( value )
     
 end );
 
-InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function( tree )
+InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function ( tree )
   local number_of_assignments, nams, pre_func, additional_arguments_func, i, j;
     
     # modified inplace
-    number_of_assignments := [];
-    nams := [];
+    number_of_assignments := [ ];
+    nams := [ ];
     
-    pre_func := function( tree, func_id_stack )
+    pre_func := function ( tree, func_id_stack )
       local statement, next_statement, i;
         
         if IsRecord( tree ) then
@@ -208,7 +208,7 @@ InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function( tree )
             # do not count rapid reassignments
             if tree.type = "STAT_SEQ_STAT" then
                 
-                for i in [ 1 .. Length( tree.statements ) - 1 ]  do
+                for i in [ 1 .. Length( tree.statements ) - 1 ] do
                     
                     statement := tree.statements[i];
                     next_statement := tree.statements[i + 1];
@@ -235,7 +235,7 @@ InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function( tree )
         
     end;
     
-    additional_arguments_func := function( tree, key, func_id_stack )
+    additional_arguments_func := function ( tree, key, func_id_stack )
         
         if IsRecord( tree ) and tree.type = "EXPR_FUNC" then
             
@@ -251,7 +251,7 @@ InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function( tree )
         
     end;
     
-    CapJitIterateOverTree( tree, pre_func, ReturnTrue, additional_arguments_func, [] );
+    CapJitIterateOverTree( tree, pre_func, ReturnTrue, additional_arguments_func, [ ] );
     
     # make sure no variables is assigned more than once
     for i in [ 1 .. Length( number_of_assignments ) ] do
@@ -274,10 +274,10 @@ InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function( tree )
     
 end );
 
-InstallGlobalFunction( CapJitFindNodeDeep, function( tree, condition_func )
+InstallGlobalFunction( CapJitFindNodeDeep, function ( tree, condition_func )
   local result_func, additional_arguments_func;
     
-    result_func := function( tree, result, path )
+    result_func := function ( tree, result, path )
       local key, type;
         
         if IsList( result ) then
@@ -296,7 +296,7 @@ InstallGlobalFunction( CapJitFindNodeDeep, function( tree, condition_func )
                     
             od;
 
-            # none of the descendants fulfills condition, otherwise we would already have returned above 
+            # none of the descendants fulfills condition, otherwise we would already have returned above
             if condition_func( tree, path ) then
                 
                 return path;
@@ -314,17 +314,17 @@ InstallGlobalFunction( CapJitFindNodeDeep, function( tree, condition_func )
         
     end;
 
-    additional_arguments_func := function( tree, key, path )
+    additional_arguments_func := function ( tree, key, path )
         
         return Concatenation( path, [ key ] );
         
     end;
   
-    return CapJitIterateOverTree( tree, ReturnFirst, result_func, additional_arguments_func, [] );
+    return CapJitIterateOverTree( tree, ReturnFirst, result_func, additional_arguments_func, [ ] );
 
 end );
 
-InstallGlobalFunction( CapJitGetNodeByPath, function( tree, path )
+InstallGlobalFunction( CapJitGetNodeByPath, function ( tree, path )
     
     if Length( path ) = 0 then
         

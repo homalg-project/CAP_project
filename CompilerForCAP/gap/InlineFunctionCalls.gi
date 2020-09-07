@@ -3,7 +3,7 @@
 #
 # Implementations
 #
-InstallGlobalFunction( CAP_JIT_INTERNAL_FUNCTION_CAN_BE_INLINED, function( tree )
+InstallGlobalFunction( CAP_JIT_INTERNAL_FUNCTION_CAN_BE_INLINED, function ( tree )
   local statements, statements_to_check, branch_statements, branch, result_func;
     
     # currently only functions
@@ -43,7 +43,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_FUNCTION_CAN_BE_INLINED, function( tree 
     fi;
     
     # check if another return statement occurs
-    result_func := function( tree, result, additional_arguments )
+    result_func := function ( tree, result, additional_arguments )
         
         if IsList( tree ) then
             
@@ -84,10 +84,10 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_FUNCTION_CAN_BE_INLINED, function( tree 
     
 end );
 
-InstallGlobalFunction( CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID, function( tree, source_func_id, target_func_id, offset )
+InstallGlobalFunction( CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID, function ( tree, source_func_id, target_func_id, offset )
   local result_func, additional_arguments_func;
   
-    result_func := function( tree, result, additional_arguments )
+    result_func := function ( tree, result, additional_arguments )
       local key, level;
         
         if IsList( result ) then
@@ -131,10 +131,10 @@ end );
 
 BindGlobal( "CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER", 1 );
 MakeReadWriteGlobal( "CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER" );
-InstallGlobalFunction( CapJitInlinedFunctionCalls, function( tree )
+InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
   local pre_func, additional_arguments_func;
     
-    pre_func := function( tree, current_func )
+    pre_func := function ( tree, current_func )
       local statements, i, statement, search_key, search_tree, condition_func, found_path, path, func_call, inline_func, counter, new_nams, inline_func_stats, offset, inline_return_statement, return_value_lvar, inline_return_statements, inlined_original_statement, ref_return_value_lvar, parent;
         
         tree := StructuralCopy( tree );
@@ -166,7 +166,7 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function( tree )
                 
                 search_tree := statement.(search_key);
                 
-                condition_func := function( tree, path )
+                condition_func := function ( tree, path )
                     
                     if tree.type = "EXPR_FUNCCALL" and tree.funcref.type = "EXPR_FUNC" then
                         
@@ -193,7 +193,7 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function( tree )
                 func_call := CapJitGetNodeByPath( statement, path );
                 inline_func := func_call.funcref;
                 
-                if not ( Length( func_call.args ) = 0 and inline_func.narg = 0 ) then
+                if not (Length( func_call.args ) = 0 and inline_func.narg = 0) then
                     
                     Error( "found function call with arguments, please inline arguments first" );
                     
@@ -268,14 +268,14 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function( tree )
                         initial_name := Last( new_nams ),
                     );
                     
-                    parent := CapJitGetNodeByPath( inlined_original_statement, path{[ 1 .. (Length( path ) - 1) ]} );
+                    parent := CapJitGetNodeByPath( inlined_original_statement, path{[ 1 .. ( Length( path ) - 1 ) ]} );
                     if IsList( parent ) then
                         parent[Last( path )] := ref_return_value_lvar;
                     else
                         parent.(Last( path )) := ref_return_value_lvar;
                     fi;
                     
-                    statements := Concatenation( statements{[ 1 .. i-1 ]}, inline_func_stats.statements, [ inlined_original_statement ], statements{[ i+1 .. Length( statements ) ]} );
+                    statements := Concatenation( statements{[ 1 .. i - 1 ]}, inline_func_stats.statements, [ inlined_original_statement ], statements{[ i + 1 .. Length( statements ) ]} );
                     
                     current_func.nloc := current_func.nloc + inline_func.nloc + 1;
                     
@@ -305,7 +305,7 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function( tree )
         
     end;
 
-    additional_arguments_func := function( tree, key, current_func )
+    additional_arguments_func := function ( tree, key, current_func )
         
         if IsRecord( tree ) and tree.type = "EXPR_FUNC" then
             

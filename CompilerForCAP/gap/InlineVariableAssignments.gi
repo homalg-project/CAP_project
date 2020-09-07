@@ -3,7 +3,7 @@
 #
 # Implementations
 #
-InstallGlobalFunction( CapJitInlinedVariableAssignments, function( tree, args... )
+InstallGlobalFunction( CapJitInlinedVariableAssignments, function ( tree, args... )
   local inline_gvars_only, condition_func, path, lvar_path, lvar_assignment, parent_path, parent, inline_tree, subsequent_child, inline_tree_path, inline_tree_parent, func_path, func, func_id, number_of_assignments, pre_func, rhs, number_of_uses, modified_inline_tree;
     
     if not Length( args ) in [ 0, 1 ] then
@@ -27,9 +27,9 @@ InstallGlobalFunction( CapJitInlinedVariableAssignments, function( tree, args...
     tree := StructuralCopy( tree );
     
     # find STAT_ASS_FVAR
-    condition_func := function( tree, path )
+    condition_func := function ( tree, path )
         
-        if tree.type = "STAT_ASS_FVAR" and ( not inline_gvars_only or tree.rhs.type = "EXPR_REF_GVAR" ) then
+        if tree.type = "STAT_ASS_FVAR" and (not inline_gvars_only or tree.rhs.type = "EXPR_REF_GVAR") then
             
             if IsBound( tree.CAP_JIT_IGNORE_VARIABLE_ASSIGNMENT ) and tree.CAP_JIT_IGNORE_VARIABLE_ASSIGNMENT then
                 
@@ -53,7 +53,7 @@ InstallGlobalFunction( CapJitInlinedVariableAssignments, function( tree, args...
         Info( InfoCapJit, 1, "Inlined all variables, finished." );
 
         # reset CAP_JIT_IGNORE_VARIABLE_ASSIGNMENT
-        pre_func := function( tree, additional_arguments )
+        pre_func := function ( tree, additional_arguments )
           local level, pos;
             
             if IsRecord( tree ) and IsBound( tree.CAP_JIT_IGNORE_VARIABLE_ASSIGNMENT ) then
@@ -120,7 +120,7 @@ InstallGlobalFunction( CapJitInlinedVariableAssignments, function( tree, args...
     rhs := lvar_assignment.rhs;
     number_of_uses := 0;
     
-    pre_func := function( tree, additional_arguments )
+    pre_func := function ( tree, additional_arguments )
         
         if IsRecord( tree ) then
             
@@ -165,7 +165,7 @@ InstallGlobalFunction( CapJitInlinedVariableAssignments, function( tree, args...
             
             inline_tree_parent.(Last( inline_tree_path )) := modified_inline_tree;
             
-        fi; 
+        fi;
         
     fi;
 

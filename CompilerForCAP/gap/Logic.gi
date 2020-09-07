@@ -5,7 +5,7 @@
 #
 BindGlobal( "CAP_JIT_LOGIC_FUNCTIONS", [ ] );
 
-InstallGlobalFunction( CapJitAddLogicFunction, function( func )
+InstallGlobalFunction( CapJitAddLogicFunction, function ( func )
     
     if not IsFunction( func ) then
         
@@ -23,7 +23,7 @@ InstallGlobalFunction( CapJitAddLogicFunction, function( func )
     
 end );
 
-InstallGlobalFunction( CapJitAppliedLogic, function( tree, jit_args )
+InstallGlobalFunction( CapJitAppliedLogic, function ( tree, jit_args )
   local logic_function;
     
     for logic_function in CAP_JIT_LOGIC_FUNCTIONS do
@@ -39,13 +39,13 @@ InstallGlobalFunction( CapJitAppliedLogic, function( tree, jit_args )
 end );
 
 # Concatenation( [ a, b, ... ], [ c, d, ... ], ... ) => [ a, b, ..., c, d, ... ]
-CapJitAddLogicFunction( function( tree, jit_args )
+CapJitAddLogicFunction( function ( tree, jit_args )
   local pre_func;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Apply logic for concatenation of lists." );
     
-    pre_func := function( tree, additional_arguments )
+    pre_func := function ( tree, additional_arguments )
       local args;
         
         if CapJitIsCallToGlobalFunction( tree, "Concatenation" ) then
@@ -72,13 +72,13 @@ CapJitAddLogicFunction( function( tree, jit_args )
 end );
 
 # CallFuncList( func, [ a, b, ... ] ) => func( a, b, ... )
-CapJitAddLogicFunction( function( tree, jit_args )
+CapJitAddLogicFunction( function ( tree, jit_args )
   local pre_func;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Apply logic for CallFuncList." );
     
-    pre_func := function( tree, additional_arguments )
+    pre_func := function ( tree, additional_arguments )
       local args;
         
         if CapJitIsCallToGlobalFunction( tree, "CallFuncList" ) then
@@ -106,13 +106,13 @@ CapJitAddLogicFunction( function( tree, jit_args )
 end );
 
 # AttributeGetter( ObjectifyWithAttributes( ..., Attribute, value, ... ) ) => value
-CapJitAddLogicFunction( function( tree, jit_args )
+CapJitAddLogicFunction( function ( tree, jit_args )
   local pre_func;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Apply logic for attribute getters." );
     
-    pre_func := function( tree, additional_arguments )
+    pre_func := function ( tree, additional_arguments )
       local args, object, value, pos;
         
         if CapJitIsCallToGlobalFunction( tree, gvar -> IsAttribute( ValueGlobal( gvar ) ) ) then
@@ -151,13 +151,13 @@ end );
 # if <condition> then <body>; return <value>; fi; <more statements>
 # =>
 # if <condition> then <body>; return <value>; else <more statements>; fi
-CapJitAddLogicFunction( function( tree, jit_args )
+CapJitAddLogicFunction( function ( tree, jit_args )
   local pre_func;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Apply logic for ifs." );
     
-    pre_func := function( tree, additional_arguments )
+    pre_func := function ( tree, additional_arguments )
       local statements, i, statement, new_branch;
         
         if IsRecord( tree ) and tree.type = "EXPR_FUNC" then
@@ -193,7 +193,7 @@ CapJitAddLogicFunction( function( tree, jit_args )
                             ),
                             body := rec(
                                 type := "STAT_SEQ_STAT",
-                                statements := statements{[ i+1 .. Length( statements ) ]},
+                                statements := statements{[ i + 1 .. Length( statements ) ]},
                             ),
                         );
                         
