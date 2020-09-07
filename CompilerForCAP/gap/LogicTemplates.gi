@@ -1,3 +1,8 @@
+#
+# CompilerForCAP: Speed up computations in CAP categories
+#
+# Implementations
+#
 BindGlobal( "CAP_JIT_LOGIC_TEMPLATES", [
     # if ... then Error( ... ); fi;
     rec(
@@ -49,7 +54,7 @@ BindGlobal( "CAP_JIT_LOGIC_TEMPLATES", [
     ),
 ] );
 
-InstallGlobalFunction( CapJitAddLogicTemplate, function( template )
+InstallGlobalFunction( CapJitAddLogicTemplate, function ( template )
     
     # some basic sanity checks
     if not IsRecord( template ) then
@@ -70,7 +75,7 @@ InstallGlobalFunction( CapJitAddLogicTemplate, function( template )
         
     fi;
 
-    if IsBound( template.needed_packages ) and ( not IsList( template.needed_packages ) or ForAny( template.needed_packages, p -> not IsList( p ) or Length( p ) <> 2 ) ) then
+    if IsBound( template.needed_packages ) and (not IsList( template.needed_packages ) or ForAny( template.needed_packages, p -> not IsList( p ) or Length( p ) <> 2 )) then
         
         Error( "the record entry needed_packages of a logic template must be a list of pairs" );
         
@@ -80,7 +85,7 @@ InstallGlobalFunction( CapJitAddLogicTemplate, function( template )
     
 end );
 
-InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function( tree, template_tree, args... )
+InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( tree, template_tree, args... )
   local debug, variables, pre_func, result_func, additional_arguments_func, result;
     
     if not Length( args ) in [ 0, 1 ] then
@@ -101,9 +106,9 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function( tr
         
     fi;
   
-    variables := [];
+    variables := [ ];
 
-    pre_func := function( tree, additional_arguments )
+    pre_func := function ( tree, additional_arguments )
       local template_tree;
         
         template_tree := additional_arguments[1];
@@ -127,7 +132,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function( tr
         
     end;
     
-    result_func := function( tree, result, additional_arguments )
+    result_func := function ( tree, result, additional_arguments )
       local template_tree, path, var_number, r, key;
         
         template_tree := additional_arguments[1];
@@ -309,7 +314,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function( tr
         
     end;
 
-    additional_arguments_func := function( tree, key, additional_arguments )
+    additional_arguments_func := function ( tree, key, additional_arguments )
       local template_tree, path;
         
         template_tree := additional_arguments[1];
@@ -361,7 +366,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function( tr
         
     end;
     
-    result := CapJitIterateOverTree( tree, pre_func, result_func, additional_arguments_func, [ template_tree, [] ] );
+    result := CapJitIterateOverTree( tree, pre_func, result_func, additional_arguments_func, [ template_tree, [ ] ] );
 
     if result then
     
@@ -375,7 +380,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function( tr
     
 end );
 
-InstallGlobalFunction( CapJitAppliedLogicTemplates, function( tree, jit_args, args... )
+InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, args... )
   local cleanup_only, template, variable_names, variable_filters, src_template, dst_template, new_funcs, i, template_var_name, src_template_tree, dst_template_tree, variables, matched_src_template_tree, condition_func, path, match, new_tree, parent, variable_path, filter, result, value, dst_tree, pre_func;
     
     if not Length( args ) in [ 0, 1 ] then
@@ -408,7 +413,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function( tree, jit_args, ar
         if IsBound( template.variable_filters ) then
             
             # replace strings with actual filters
-            variable_filters := List( template.variable_filters, function( f )
+            variable_filters := List( template.variable_filters, function ( f )
                 
                 if IsString( f ) then
                     
@@ -456,7 +461,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function( tree, jit_args, ar
             
         else
             
-            new_funcs := [];
+            new_funcs := [ ];
             
         fi;
         
@@ -464,7 +469,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function( tree, jit_args, ar
             
             template_var_name := Concatenation( "CAP_INTERNAL_JIT_TEMPLATE_VAR_", String( i ) );
 
-            if not template_var_name in NamesGVars() then
+            if not template_var_name in NamesGVars( ) then
             
                 DeclareGlobalVariable( template_var_name );
 
@@ -484,8 +489,8 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function( tree, jit_args, ar
         
         else
             
-            src_template_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "function() ", src_template, " ; return; end;" ) ) ).stats.statements[1];
-            dst_template_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "function() ", dst_template, " ; return; end;" ) ) ).stats.statements[1];
+            src_template_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "function () ", src_template, " ; return; end;" ) ) ).stats.statements[1];
+            dst_template_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "function () ", dst_template, " ; return; end;" ) ) ).stats.statements[1];
 
         fi;
 
@@ -502,7 +507,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function( tree, jit_args, ar
             variables := fail;
             matched_src_template_tree := StructuralCopy( src_template_tree );
             
-            condition_func := function( tree, path )
+            condition_func := function ( tree, path )
                 
                 # check if we know that the template does not match
                 if IsBound( tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE ) and tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE then
@@ -518,7 +523,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function( tree, jit_args, ar
                     
                 fi;
                 
-                # matched_src_template_tree is modified inplace 
+                # matched_src_template_tree is modified inplace
                 if IsBound( template.debug_path ) and template.debug_path = path then
                     
                     variables := CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree, matched_src_template_tree, true );
@@ -568,7 +573,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function( tree, jit_args, ar
             match := CapJitGetNodeByPath( tree, path );
 
             new_tree := StructuralCopy( tree );
-            parent := CapJitGetNodeByPath( new_tree, path{[ 1 .. Length( path )-1 ]} );
+            parent := CapJitGetNodeByPath( new_tree, path{[ 1 .. Length( path ) - 1 ]} );
 
             if not IsDenseList( variables ) or Length( variables ) <> Length( variable_names ) then
                 
@@ -639,7 +644,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function( tree, jit_args, ar
             dst_tree := StructuralCopy( dst_template_tree );
 
             # set correct function IDs in dst_tree
-            pre_func := function( tree, additional_arguments )
+            pre_func := function ( tree, additional_arguments )
               local current_func, condition_func, path, func;
 
                 if IsRecord( tree ) and tree.type = "EXPR_FUNC" then
@@ -656,7 +661,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function( tree, jit_args, ar
                         
                     else
                         
-                        condition_func := function( tree, path )
+                        condition_func := function ( tree, path )
                             
                             return tree.type = "EXPR_FUNC" and tree.nams = current_func.nams;
                             
@@ -690,7 +695,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function( tree, jit_args, ar
             dst_tree := CapJitIterateOverTree( dst_tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
             
             # insert variables in dst_tree (this has to happen after function IDs are set, since otherwise functions in replaced variables are considered)
-            pre_func := function( tree, additional_arguments )
+            pre_func := function ( tree, additional_arguments )
               local var_number;
 
                 if IsRecord( tree ) and tree.type = "EXPR_REF_GVAR" and StartsWith( tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_" ) then
@@ -758,7 +763,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function( tree, jit_args, ar
         od;
         
         # reset CAP_INTERNAL_JIT_NO_UNUSED_VARIABLES
-        pre_func := function( tree, additional_arguments )
+        pre_func := function ( tree, additional_arguments )
           local level, pos;
             
             if IsRecord( tree ) and IsBound( tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE ) then

@@ -4,15 +4,6 @@
 
 #! @Example
 
-package_loading_info_level := InfoLevel( InfoPackageLoading );;
-debug_info_level := InfoLevel( InfoDebug );;
-SetInfoLevel( InfoPackageLoading, PACKAGE_ERROR );;
-SetInfoLevel( InfoDebug, 0 );;
-LoadPackage( "LinearAlgebraForCAP", false );;
-LoadPackage( "RingsForHomalg", false );;
-SetInfoLevel( InfoPackageLoading, package_loading_info_level );;
-SetInfoLevel( InfoDebug, debug_info_level );;
-
 Q := HomalgFieldOfRationals();;
 vec := MatrixCategory( Q :
     enable_compilation := [ "MorphismBetweenDirectSums" ]

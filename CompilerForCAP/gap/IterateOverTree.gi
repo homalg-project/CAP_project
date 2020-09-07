@@ -1,3 +1,8 @@
+#
+# CompilerForCAP: Speed up computations in CAP categories
+#
+# Implementations
+#
 BindGlobal( "CAP_JIT_INTERNAL_ITERATION_KEYS", rec(
     EXPR_FUNC := "stats",
     STAT_SEQ_STAT := "statements",
@@ -81,7 +86,7 @@ BindGlobal( "CAP_JIT_INTERNAL_ITERATION_KEYS", rec(
     REC_KEY_VALUE_PAIR := [ "value" ],
 ) );
 
-InstallGlobalFunction( CapJitIterateOverTree, function( tree, pre_func, result_func, additional_arguments_func, additional_arguments )
+InstallGlobalFunction( CapJitIterateOverTree, function ( tree, pre_func, result_func, additional_arguments_func, additional_arguments )
   local pre_func_result, result, type, keys, key;
     
     pre_func_result := pre_func( tree, additional_arguments );
@@ -98,7 +103,7 @@ InstallGlobalFunction( CapJitIterateOverTree, function( tree, pre_func, result_f
     
     if IsList( tree ) then
        
-        result := [];
+        result := [ ];
         
         for key in [ 1 .. Length( tree ) ] do
             
@@ -118,9 +123,9 @@ InstallGlobalFunction( CapJitIterateOverTree, function( tree, pre_func, result_f
         
     fi;
     
-    if IsBound(tree.type) then
+    if IsBound( tree.type ) then
         
-        type := tree.type; 
+        type := tree.type;
     
     elif SortedList( RecNames( tree ) ) = [ "body", "condition" ] then
         
@@ -134,7 +139,7 @@ InstallGlobalFunction( CapJitIterateOverTree, function( tree, pre_func, result_f
         
     fi;
     
-    if not IsBound(CAP_JIT_INTERNAL_ITERATION_KEYS.(type)) then
+    if not IsBound( CAP_JIT_INTERNAL_ITERATION_KEYS.(type) ) then
         
         Display( tree );
         
@@ -142,7 +147,7 @@ InstallGlobalFunction( CapJitIterateOverTree, function( tree, pre_func, result_f
 
     fi;
     
-    result := rec();
+    result := rec( );
 
     keys := CAP_JIT_INTERNAL_ITERATION_KEYS.(type);
     if keys <> fail then
@@ -155,7 +160,7 @@ InstallGlobalFunction( CapJitIterateOverTree, function( tree, pre_func, result_f
 
         for key in keys do
            
-            if not IsBound(tree.(key)) then
+            if not IsBound( tree.(key) ) then
                 
                 Display( tree );
         

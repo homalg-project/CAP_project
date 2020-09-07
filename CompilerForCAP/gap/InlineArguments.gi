@@ -1,10 +1,15 @@
-InstallGlobalFunction( CapJitInlinedArguments, function( tree )
+#
+# CompilerForCAP: Speed up computations in CAP categories
+#
+# Implementations
+#
+InstallGlobalFunction( CapJitInlinedArguments, function ( tree )
   local pre_func, additional_arguments_func;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Inlining function arguments." );
     
-    pre_func := function( tree, additional_arguments )
+    pre_func := function ( tree, additional_arguments )
       local func, args, arg_statements, i;
         
         if IsRecord( tree ) and tree.type = "EXPR_FUNCCALL" and Length( tree.args ) > 0 and tree.funcref.type = "EXPR_FUNC" then
@@ -56,7 +61,7 @@ InstallGlobalFunction( CapJitInlinedArguments, function( tree )
             func.stats.statements := Concatenation( arg_statements, func.stats.statements );
             
             tree.funcref := func;
-            tree.args := [];
+            tree.args := [ ];
             
             Info( InfoCapJit, 1, "####" );
             Info( InfoCapJit, 1, "Inlined arguments of a single function." );

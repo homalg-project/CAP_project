@@ -1,8 +1,13 @@
-BindGlobal( "CAP_JIT_INTERNAL_STORED_VALUES", [] );
+#
+# CompilerForCAP: Speed up computations in CAP categories
+#
+# Implementations
+#
+BindGlobal( "CAP_JIT_INTERNAL_STORED_VALUES", [ ] );
 BindGlobal( "CAP_JIT_INTERNAL_STORED_VALUES_COUNTER", 1 );
 MakeReadWriteGlobal( "CAP_JIT_INTERNAL_STORED_VALUES_COUNTER" );
 
-BindGlobal( "CAP_JIT_INTERNAL_STORE_ARGUMENTS", function( counter, func, args... )
+BindGlobal( "CAP_JIT_INTERNAL_STORE_ARGUMENTS", function ( counter, func, args... )
   local result;
     
     CAP_JIT_INTERNAL_STORED_VALUES[counter] := args;
@@ -21,7 +26,7 @@ BindGlobal( "CAP_JIT_INTERNAL_STORE_ARGUMENTS", function( counter, func, args...
 
 end );
 
-BindGlobal( "CAP_JIT_INTERNAL_STORE_VALUE", function( counter, value )
+BindGlobal( "CAP_JIT_INTERNAL_STORE_VALUE", function ( counter, value )
   
     CAP_JIT_INTERNAL_STORED_VALUES[counter] := value;
     
@@ -29,7 +34,7 @@ BindGlobal( "CAP_JIT_INTERNAL_STORE_VALUE", function( counter, value )
 
 end );
 
-InstallGlobalFunction( CapJitGetFunctionCallArgumentsFromJitArgs, function( tree, path, jit_args )
+InstallGlobalFunction( CapJitGetFunctionCallArgumentsFromJitArgs, function ( tree, path, jit_args )
   local jit_tree, jit_record, counter, jit_func;
 
     jit_tree := StructuralCopy( tree );
@@ -64,7 +69,7 @@ InstallGlobalFunction( CapJitGetFunctionCallArgumentsFromJitArgs, function( tree
     
 end );
 
-InstallGlobalFunction( CapJitGetExpressionValueFromJitArgs, function( tree, path, jit_args )
+InstallGlobalFunction( CapJitGetExpressionValueFromJitArgs, function ( tree, path, jit_args )
   local jit_tree, jit_record, parent, counter, new_record, args, jit_func;
 
     jit_tree := StructuralCopy( tree );
@@ -74,7 +79,7 @@ InstallGlobalFunction( CapJitGetExpressionValueFromJitArgs, function( tree, path
     Assert( 0, StartsWith( jit_record.type, "EXPR_" ) );
     Assert( 0, Length( path ) >= 1 );
 
-    parent := CapJitGetNodeByPath( jit_tree, path{[ 1 .. Length( path )-1 ]});
+    parent := CapJitGetNodeByPath( jit_tree, path{[ 1 .. Length( path ) - 1 ]} );
     
     counter := CAP_JIT_INTERNAL_STORED_VALUES_COUNTER;
     CAP_JIT_INTERNAL_STORED_VALUES_COUNTER := CAP_JIT_INTERNAL_STORED_VALUES_COUNTER + 1;

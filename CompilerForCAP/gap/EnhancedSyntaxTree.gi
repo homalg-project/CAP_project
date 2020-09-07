@@ -1,6 +1,11 @@
+#
+# CompilerForCAP: Speed up computations in CAP categories
+#
+# Implementations
+#
 BindGlobal( "CAP_JIT_INTERNAL_FUNCTION_ID", 1 );
 MakeReadWriteGlobal( "CAP_JIT_INTERNAL_FUNCTION_ID" );
-InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function( func, args... )
+InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func, args... )
   local globalize_hvars, tree, pre_func, additional_arguments_func;
     
     Assert( 0, Length( args ) = 0 or Length( args ) = 1 );
@@ -22,7 +27,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function( func, args... )
     # some references to the original function are kept, e.g. tree.nams -> make a copy
     tree := StructuralCopy( tree );
 
-    pre_func := function( tree, additional_arguments )
+    pre_func := function ( tree, additional_arguments )
       local path, func_stack, statements, i, statement, level, pos, lvars, value, branch, keyvalue;
         
         path := additional_arguments[1];
@@ -64,7 +69,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function( func, args... )
                     
                     if StartsWith( statement.type, "STAT_SEQ_STAT" ) then
                         
-                        statements := Concatenation( statements{[ 1 .. i-1 ]}, statement.statements, statements{[ i+1 .. Length( statements ) ]} );
+                        statements := Concatenation( statements{[ 1 .. i - 1 ]}, statement.statements, statements{[ i + 1 .. Length( statements ) ]} );
                         
                     else
                         
@@ -150,8 +155,8 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function( func, args... )
             
             if PositionSublist( tree.type, "HVAR" ) <> fail then
                 
-                level := Int( tree.hvar / 2^16 );
-                pos := tree.hvar mod 2^16;
+                level := Int( tree.hvar / 2 ^ 16 );
+                pos := tree.hvar mod 2 ^ 16;
                 
                 if level >= Length( func_stack ) then
                     
@@ -200,7 +205,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function( func, args... )
         
     end;
     
-    additional_arguments_func := function( tree, key, additional_arguments )
+    additional_arguments_func := function ( tree, key, additional_arguments )
       local path, func_stack;
         
         path := additional_arguments[1];
@@ -220,16 +225,16 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function( func, args... )
         
     end;
     
-    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [[],[]] );
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [ [ ], [ ] ] );
     
 end );
 
-InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function( tree )
+InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
   local pre_func, additional_arguments_func, func;
     
     tree := StructuralCopy( tree );
     
-    pre_func := function( tree, additional_arguments )
+    pre_func := function ( tree, additional_arguments )
       local path, func_stack, statements, first_six_statements, new_statements, func_pos, level;
         
         path := additional_arguments[1];
@@ -388,7 +393,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function( tree )
                 else
                     
                     tree.type := ReplacedString( tree.type, "FVAR", "HVAR" );
-                    tree.hvar := 2^16 * level + tree.pos;
+                    tree.hvar := 2 ^ 16 * level + tree.pos;
                     
                 fi;
                 
@@ -400,7 +405,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function( tree )
         
     end;
     
-    additional_arguments_func := function( tree, key, additional_arguments )
+    additional_arguments_func := function ( tree, key, additional_arguments )
       local path, func_stack;
         
         path := additional_arguments[1];
@@ -420,7 +425,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function( tree )
         
     end;
     
-    tree := CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [[],[]] );
+    tree := CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [ [ ], [ ] ] );
     
     func := SYNTAX_TREE_CODE( tree );
     

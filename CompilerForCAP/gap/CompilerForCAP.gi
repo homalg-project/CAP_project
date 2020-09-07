@@ -1,10 +1,10 @@
 #
-# CompilerForCAP: This package allows to "compile" the code of CAP categories.
+# CompilerForCAP: Speed up computations in CAP categories
 #
 # Implementations
 #
 
-InstallGlobalFunction( StopCompilationAtCategory, function( category )
+InstallGlobalFunction( StopCompilationAtCategory, function ( category )
     
     Assert( 0, IsCapCategory( category ) );
     
@@ -12,7 +12,7 @@ InstallGlobalFunction( StopCompilationAtCategory, function( category )
     
 end );
 
-InstallGlobalFunction( ContinueCompilationAtCategory, function( category )
+InstallGlobalFunction( ContinueCompilationAtCategory, function ( category )
     
     Assert( 0, IsCapCategory( category ) );
     
@@ -20,7 +20,7 @@ InstallGlobalFunction( ContinueCompilationAtCategory, function( category )
     
 end );
 
-InstallGlobalFunction( CapJitCompiledFunction, function( func, jit_args )
+InstallGlobalFunction( CapJitCompiledFunction, function ( func, jit_args )
   local debug, tree, orig_tree, compiled_func;
     
     Info( InfoCapJit, 1, "####" );
@@ -43,7 +43,7 @@ InstallGlobalFunction( CapJitCompiledFunction, function( func, jit_args )
     tree := ENHANCED_SYNTAX_TREE( func, true );
     
     # resolving phase
-    orig_tree := rec();
+    orig_tree := rec( );
     while tree <> orig_tree do
         
         orig_tree := tree;
@@ -53,13 +53,13 @@ InstallGlobalFunction( CapJitCompiledFunction, function( func, jit_args )
         
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display(compiled_func);
+            Display( compiled_func );
             Error( "start resolving" );
         fi;
         
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display(compiled_func);
+            Display( compiled_func );
             Error( "apply CapJitResolvedOperations" );
         fi;
         
@@ -67,7 +67,7 @@ InstallGlobalFunction( CapJitCompiledFunction, function( func, jit_args )
         
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display(compiled_func);
+            Display( compiled_func );
             Error( "apply CapJitAppliedLogicTemplates" );
         fi;
         
@@ -78,7 +78,7 @@ InstallGlobalFunction( CapJitCompiledFunction, function( func, jit_args )
         
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display(compiled_func);
+            Display( compiled_func );
             Error( "apply CapJitInlinedArguments" );
         fi;
         
@@ -86,7 +86,7 @@ InstallGlobalFunction( CapJitCompiledFunction, function( func, jit_args )
         
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display(compiled_func);
+            Display( compiled_func );
             Error( "apply CapJitDroppedUnusedVariables" );
         fi;
         
@@ -94,7 +94,7 @@ InstallGlobalFunction( CapJitCompiledFunction, function( func, jit_args )
         
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display(compiled_func);
+            Display( compiled_func );
             Error( "apply CapJitInlinedVariableAssignments" );
         fi;
         
@@ -102,7 +102,7 @@ InstallGlobalFunction( CapJitCompiledFunction, function( func, jit_args )
         
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display(compiled_func);
+            Display( compiled_func );
             Error( "apply CapJitResolvedGlobalVariables" );
         fi;
         
@@ -111,7 +111,7 @@ InstallGlobalFunction( CapJitCompiledFunction, function( func, jit_args )
     od;
     
     # rule phase
-    orig_tree := rec();
+    orig_tree := rec( );
     while tree <> orig_tree do
         
         orig_tree := tree;
@@ -121,13 +121,13 @@ InstallGlobalFunction( CapJitCompiledFunction, function( func, jit_args )
         
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display(compiled_func);
+            Display( compiled_func );
             Error( "apply rules" );
         fi;
         
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display(compiled_func);
+            Display( compiled_func );
             Error( "apply CapJitAppliedLogic" );
         fi;
         
@@ -135,7 +135,7 @@ InstallGlobalFunction( CapJitCompiledFunction, function( func, jit_args )
         
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display(compiled_func);
+            Display( compiled_func );
             Error( "apply CapJitDroppedHandledEdgeCases" );
         fi;
         
@@ -143,7 +143,7 @@ InstallGlobalFunction( CapJitCompiledFunction, function( func, jit_args )
         
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display(compiled_func);
+            Display( compiled_func );
             Error( "apply CapJitInlinedArguments" );
         fi;
         
@@ -151,7 +151,7 @@ InstallGlobalFunction( CapJitCompiledFunction, function( func, jit_args )
         
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display(compiled_func);
+            Display( compiled_func );
             Error( "apply CapJitInlinedSimpleFunctionCalls" );
         fi;
         
@@ -159,7 +159,7 @@ InstallGlobalFunction( CapJitCompiledFunction, function( func, jit_args )
         
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display(compiled_func);
+            Display( compiled_func );
             Error( "apply CapJitInlinedFunctionCalls" );
         fi;
         
@@ -167,7 +167,7 @@ InstallGlobalFunction( CapJitCompiledFunction, function( func, jit_args )
         
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display(compiled_func);
+            Display( compiled_func );
             Error( "apply CapJitDroppedUnusedVariables" );
         fi;
         
@@ -175,7 +175,7 @@ InstallGlobalFunction( CapJitCompiledFunction, function( func, jit_args )
         
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display(compiled_func);
+            Display( compiled_func );
             Error( "apply CapJitInlinedVariableAssignments" );
         fi;
         
