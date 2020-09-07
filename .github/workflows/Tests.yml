@@ -31,3 +31,32 @@ jobs:
           git clone --depth 1 https://github.com/homalg-project/homalg_project.git
           TERM=dumb make -C CAP_project -j $(nproc) --output-sync ci-test
           curl -s https://codecov.io/bash | bash
+          cd CAP_project
+          CUR_SHA=$(git rev-parse --verify HEAD)
+          git worktree add branch_doc/ doc || (echo "There was an error. Make sure there is a branch named 'doc'."; exit 1)
+          cp CompilerForCAP/doc/manual.pdf branch_doc/CompilerForCAP.pdf
+          cd branch_doc
+          git add CompilerForCAP.pdf
+          git -c user.name='Doc Bot' -c user.email='empty' commit -m "Add CompilerForCAP.pdf for $CUR_SHA" --allow-empty
+          cd ..
+          cp GradedModulePresentationsForCAP/doc/manual.pdf branch_doc/GradedModulePresentationsForCAP.pdf
+          cd branch_doc
+          git add GradedModulePresentationsForCAP.pdf
+          git -c user.name='Doc Bot' -c user.email='empty' commit -m "Add GradedModulePresentationsForCAP.pdf for $CUR_SHA" --allow-empty
+          cd ..
+          cp GroupRepresentationsForCAP/doc/manual.pdf branch_doc/GroupRepresentationsForCAP.pdf
+          cd branch_doc
+          git add GroupRepresentationsForCAP.pdf
+          git -c user.name='Doc Bot' -c user.email='empty' commit -m "Add GroupRepresentationsForCAP.pdf for $CUR_SHA" --allow-empty
+          cd ..
+          cp InternalExteriorAlgebraForCAP/doc/manual.pdf branch_doc/InternalExteriorAlgebraForCAP.pdf
+          cd branch_doc
+          git add InternalExteriorAlgebraForCAP.pdf
+          git -c user.name='Doc Bot' -c user.email='empty' commit -m "Add InternalExteriorAlgebraForCAP.pdf for $CUR_SHA" --allow-empty
+          cd ..
+          # push iff using gap-stable and if on master branch
+          if [ "${{ matrix.image }}" = "gapsystem/gap-docker" ] && [ "$CUR_SHA" = "$(git rev-parse origin/master)" ]; then \
+            git push https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git doc:doc; \
+          else \
+            echo "Not pushing result."; \
+          fi; \
