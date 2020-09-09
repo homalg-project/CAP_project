@@ -1,12 +1,9 @@
-#############################################################################
-##
-##     FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
-##
-##  Copyright 2020, Sebastian Posur, RWTH Aachen
-##
+#
+# FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
+#
+# Declarations
+#
 #! @Chapter Category of relations
-#!
-#############################################################################
 
 ####################################
 ##

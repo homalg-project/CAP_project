@@ -1,12 +1,9 @@
-#############################################################################
-##
-##     FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
-##
-##  Copyright 2020, Sebastian Posur, University of Siegen
-##
+#
+# FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
+#
+# Declarations
+#
 #! @Chapter Serre subcategory functions
-#!
-#############################################################################
 
 DeclareOperation( "MembershipFunctionSerreSubcategoryGeneratedByObjects",
                   [ IsList, IsInt, IsCapCategory ] );

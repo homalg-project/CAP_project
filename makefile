@@ -67,3 +67,4 @@ ci-test: homalg_compatibility doc
 	cd GroupRepresentationsForCAP && make ci-test
 	cd InternalExteriorAlgebraForCAP && make ci-test
 	cd CompilerForCAP && make ci-test
+	cd FreydCategoriesForCAP && make doc

@@ -54,6 +54,11 @@ jobs:
           git add InternalExteriorAlgebraForCAP.pdf
           git -c user.name='Doc Bot' -c user.email='empty' commit -m "Add InternalExteriorAlgebraForCAP.pdf for $CUR_SHA" --allow-empty
           cd ..
+          cp FreydCategoriesForCAP/doc/manual.pdf branch_doc/FreydCategoriesForCAP.pdf
+          cd branch_doc
+          git add FreydCategoriesForCAP.pdf
+          git -c user.name='Doc Bot' -c user.email='empty' commit -m "Add FreydCategoriesForCAP.pdf for $CUR_SHA" --allow-empty
+          cd ..
           # push iff using gap-stable and if on master branch
           if [ "${{ matrix.image }}" = "gapsystem/gap-docker" ] && [ "$CUR_SHA" = "$(git rev-parse origin/master)" ]; then \
             git push https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git doc:doc; \
