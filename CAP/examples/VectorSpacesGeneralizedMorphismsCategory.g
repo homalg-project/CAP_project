@@ -5,14 +5,14 @@
 
 if not IsBound( VectorSpacesConstructorsLoaded ) then
 
-  ReadPackage( "CAP", "examples/testfiles/VectorSpacesConstructors.gi" );;
+  ReadPackage( "CAP", "examples/VectorSpacesConstructors.g" );;
 
 fi;
 # ActivateDerivationInfo();
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
-ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );
+ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );
 #! true
 LoadPackage( "GeneralizedMorphismsForCAP" );
 #! true
@@ -91,7 +91,7 @@ Arrow( c1 + c2 );
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
-ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );
+ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );
 #! true
 A := QVectorSpace( 1 );
 #! <A rational vector space of dimension 1>
@@ -142,7 +142,7 @@ RangeAid( composition );
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
-ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );
+ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );
 #! true
 A := QVectorSpace( 1 );
 #! <A rational vector space of dimension 1>
@@ -196,7 +196,7 @@ SourceAid( composition2 );
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
-ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );
+ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );
 #! true
 A := QVectorSpace( 3 );
 #! <A rational vector space of dimension 3>
@@ -343,7 +343,7 @@ RangeAid( p );
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );
 #! VectorSpacesForGeneralizedMorphismsTest
-ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );
+ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );
 #! true
 A := QVectorSpace( 1 );
 #! <A rational vector space of dimension 1>

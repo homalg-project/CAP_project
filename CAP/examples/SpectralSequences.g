@@ -1,13 +1,13 @@
 if not IsBound( VectorSpacesConstructorsLoaded ) then
 
-  ReadPackage( "CAP", "examples/testfiles/VectorSpacesConstructors.gi" );;
+  ReadPackage( "CAP", "examples/VectorSpacesConstructors.g" );;
 
 fi;
 
 
 vecspaces := CreateCapCategory( "VectorSpacesForSpectralSequenceTest" );
 
-ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );
+ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );
 
 LoadPackage( "HomologicalAlgebraForCAP" );
 

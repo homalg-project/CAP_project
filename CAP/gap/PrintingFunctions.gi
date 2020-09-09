@@ -1,12 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2016, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-#############################################################################
-
+#
+# CAP: Categories, Algorithms, Programming
+#
+# Implementations
+#
 InstallValue( CAP_INTERNAL_CATEGORY_PROPERTY_RANK_AND_STRING, rec( ) );
 
 BindGlobal( "__CAP_INTERNAL_RANK_CATEGORY_FROM_METHOD_RECORD",

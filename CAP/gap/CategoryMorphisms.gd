@@ -1,10 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
+#
+# CAP: Categories, Algorithms, Programming
+#
+# Declarations
+#
 #! @Chapter Morphisms
 #!  Any GAP object satisfying <C>IsCapCategoryMorphism</C> can be added to a category
 #!  and then becomes a morphism in this category.
@@ -13,9 +11,6 @@
 #!  computed in its category and to which category it belongs.
 #!  It knows categorical properties and attributes, and the functions for existential quantifiers
 #!  can be applied to the morphism.
-##
-#############################################################################
-
 
 ###################################
 ##

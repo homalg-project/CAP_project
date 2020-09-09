@@ -1,12 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-#############################################################################
-
+#
+# CAP: Categories, Algorithms, Programming
+#
+# Implementations
+#
 InstallValue( CAP_INTERNAL_FINAL_DERIVATION_LIST,
               rec( final_derivation_list := [ ] ) );
 

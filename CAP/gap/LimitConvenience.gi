@@ -1,3 +1,8 @@
+#
+# CAP: Categories, Algorithms, Programming
+#
+# Implementations
+#
 InstallGlobalFunction( "PrintAutomaticallyGeneratedInstallationsForLimits",
   function ( arg )
     

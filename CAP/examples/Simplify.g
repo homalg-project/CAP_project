@@ -3,7 +3,7 @@
 #! @Section Homomorphism structure
 
 #! @Example
-ReadPackage( "CAP", "examples/testfiles/StringsAsCategory.gi" );;
+ReadPackage( "CAP", "examples/StringsAsCategory.g" );;
 C := StringsAsCategory();;
 obj1 := StringsAsCategoryObject( "qaeiou", C );;
 obj2 := StringsAsCategoryObject( "qxayeziouT", C );;

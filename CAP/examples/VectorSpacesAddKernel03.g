@@ -2,18 +2,16 @@
 ## - AddKernel
 ## - AddKernelEmbedding
 ## - AddKernelEmbeddingWithGivenKernelObject
-## - AddKernelLift
-## - AddKernelLiftWithGivenKernelObject
 
 if not IsBound( VectorSpacesConstructorsLoaded ) then
   
-  ReadPackage( "CAP", "examples/testfiles/VectorSpacesConstructors.gi" );
+  ReadPackage( "CAP", "examples/VectorSpacesConstructors.g" );
   
 fi;
 
 if not IsCapCategory( vecspaces ) then
   
-  vecspaces := CreateCapCategory( "VectorSpacesK1" );
+  vecspaces := CreateCapCategory( "VectorSpacesK3" );
   
 fi;
 
@@ -53,30 +51,6 @@ AddKernelEmbeddingWithGivenKernelObject( vecspaces,
 
     return VectorSpaceMorphism( kernel, kernel_emb, Source( morphism ) );
 
-end );
-
-##
-AddKernelLift( vecspaces,
-
-  function( mor, test_morphism )
-   local kernel_emb;
-   
-   kernel_emb := SyzygiesOfRows( mor!.morphism );
-   
-   return VectorSpaceMorphism( Source( test_morphism ), RightDivide( test_morphism!.morphism, kernel_emb ), QVectorSpace( NrRows( kernel_emb ) ) );
-   
-end );
-
-##
-AddKernelLiftWithGivenKernelObject( vecspaces,
-
-  function( mor, test_morphism, kernel )
-   local kernel_emb;
-   
-   kernel_emb := SyzygiesOfRows( mor!.morphism );
-   
-   return VectorSpaceMorphism( Source( test_morphism ), RightDivide( test_morphism!.morphism, kernel_emb ), kernel );
-   
 end );
 
 Finalize( vecspaces );

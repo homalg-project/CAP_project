@@ -1,5 +1,5 @@
 <!-- BEGIN HEADER -->
-# CAP_project – Categories, Algorithms, and Programming
+# CAP project – Categories, Algorithms, and Programming
 
 | **Documentation**         | **Build Status**                                            |
 |:-------------------------:|:-----------------------------------------------------------:|

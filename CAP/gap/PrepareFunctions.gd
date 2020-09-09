@@ -1,13 +1,9 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2017, Sebastian Gutsche, Siegen University
-##                  Sebastian Posur,   Siegen University
-##
+#
+# CAP: Categories, Algorithms, Programming
+#
+# Declarations
+#
 #! @Chapter Add Functions
-##
-#############################################################################
 
 #! @Section Prepare functions
 

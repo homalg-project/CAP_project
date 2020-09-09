@@ -1,4 +1,2 @@
-#!/bin/bash
-rm -f  *.{six,aux,lab,log,dvi,ps,pdf,bbl,ilg,ind,idx,out,html,tex,pnr,txt,blg,toc,six,brf,xml,xml.bib,css,js}
-rm -f  ../maketest.g ../VERSION ../public_html.version
-
+#!/bin/sh
+rm -f *.{aux,bbl,blg,brf,css,html,idx,ilg,ind,js,lab,log,out,pdf,pnr,six,tex,toc,txt,xml,xml.bib}

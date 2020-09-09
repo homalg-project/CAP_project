@@ -3,7 +3,7 @@
 #! @Section Homomorphism structure
 
 #! @Example
-ReadPackage( "CAP", "examples/testfiles/FieldAsCategory.gi" );;
+ReadPackage( "CAP", "examples/FieldAsCategory.g" );;
 Q := HomalgFieldOfRationals();;
 Qoid := FieldAsCategory( Q );;
 a := FieldAsCategoryMorphism( 1/2, Qoid );;

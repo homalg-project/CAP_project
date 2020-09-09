@@ -4,14 +4,14 @@
 
 if not IsBound( VectorSpacesConstructorsLoaded ) then
   
-  ReadPackage( "CAP", "examples/testfiles/VectorSpacesConstructors.gi" );
+  ReadPackage( "CAP", "examples/VectorSpacesConstructors.g" );
   
 fi;
 
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpaces01" );
 #! VectorSpaces01
-ReadPackage( "CAP", "examples/testfiles/VectorSpacesAddKernel01.gi" );
+ReadPackage( "CAP", "examples/VectorSpacesAddKernel01.g" );
 #! true
 V := QVectorSpace( 2 );
 #! <A rational vector space of dimension 2>
@@ -47,7 +47,7 @@ KernelEmbedding( alpha );
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpaces02" );
 #! VectorSpaces02
-ReadPackage( "CAP", "examples/testfiles/VectorSpacesAddKernel02.gi" );
+ReadPackage( "CAP", "examples/VectorSpacesAddKernel02.g" );
 #! true
 V := QVectorSpace( 2 );
 #! <A rational vector space of dimension 2>
@@ -79,7 +79,7 @@ HasKernelEmbedding( alpha );
 #! @Example
 vecspaces := CreateCapCategory( "VectorSpaces03" );
 #! VectorSpaces03
-ReadPackage( "CAP", "examples/testfiles/VectorSpacesAddKernel03.gi" );
+ReadPackage( "CAP", "examples/VectorSpacesAddKernel03.g" );
 #! true
 V := QVectorSpace( 2 );
 #! <A rational vector space of dimension 2>

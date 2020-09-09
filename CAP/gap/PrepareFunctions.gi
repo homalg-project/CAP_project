@@ -1,13 +1,9 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2017, Sebastian Gutsche, Siegen University
-##                  Sebastian Posur,   Siegen University
-##
+#
+# CAP: Categories, Algorithms, Programming
+#
+# Implementations
+#
 ## @Chapter Prepare functions
-##
-#############################################################################
 
 InstallValue( CAP_PREPARE_FUNCTION_RECORD, rec( ) );
 
