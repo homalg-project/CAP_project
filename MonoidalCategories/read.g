@@ -1,5 +1,5 @@
 #
-# MonoidalCategories
+# MonoidalCategories: Monoidal and monoidal (co)closed categories
 #
 # Reading the implementation part of the package.
 #
