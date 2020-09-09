@@ -1,11 +1,8 @@
-#############################################################################
-##
-##                                GroupRepresentationsForCAP package
-##
-##  Copyright 2016, Sebastian Posur, University of Siegen
-##
-#############################################################################
-
+#
+# GroupRepresentationsForCAP: Skeletal category of group representations for CAP
+#
+# Implementations
+#
 InstallValue( ASSOCIATORS_Setup, rec(
     
     ZZ := HomalgRingOfIntegers(),
