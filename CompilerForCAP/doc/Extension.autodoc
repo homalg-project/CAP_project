@@ -1,0 +1,43 @@
+@Chapter Improving and extending the compiler
+
+The easiest way to extend the compiler is by adding more logic to it, see <Ref Sect="Section_Logic" />. For writing logic functions
+you also have to iterate over enhanced syntax trees, see <Ref Sect="Section_EnhancedSyntaxTrees" /> and <Ref Sect="Section_IterateOverTree" />.
+You might also want to use available tools, see <Ref Sect="Section_Tools" />. If you want to improve an existing compilation step or add
+a completely new one, see <Ref Sect="Section_CompilationSteps" />.
+
+For debugging you can:
+* use <Ref Func="CapJitPrettyPrintSyntaxTree" />,
+* set `debug` to `true` in <Ref Func="CapJitCompiledFunction" /> (Note: this causes informational break loops which are not actual errors),
+* use the `debug` and `debug_path` record entries of logic templates (see <Ref Func="CapJitAddLogicTemplate" />).
+
+@Section Logic
+@SectionLabel Logic
+
+@Section Enhanced syntax trees
+@SectionLabel EnhancedSyntaxTrees
+
+To simplify the handling of syntax trees, the CAP compiler enhances syntax trees in the following ways:
+* All node types starting with STAT_SEQ_STAT are replaced by STAT_SEQ_STAT.
+* All node types starting with EXPR_FUNCCALL_ are replaced by EXPR_FUNCCALL.
+* All node types starting with EXPR_PROCCALL_ are replaced by EXPR_PROCCALL.
+* All node types starting with STAT_FOR are replaced by STAT_FOR.
+* Nested STAT_SEQ_STATs are flattened.
+* A final STAT_RETURN_VOID in functions is dropped.
+* Branches of STAT_IF etc. are given the type BRANCH_IF.
+* If the body of a BRANCH_IF is not a STAT_SEQ_STAT, the body is wrapped in a STAT_SEQ_STAT.
+* The key-value pairs of EXPR_RECs are given the type REC_KEY_VALUE_PAIR.
+* A globally unique ID is assigned to each function.
+* The handling of local variables and higher variables is unified by the concept of function variables:
+  function variables (FVARs) reference local variables in functions via the function id (`func_id`) and
+  the position (`pos`) in the list of arguments/local variables of the function.
+  For easier debugging, the name of the local variable is stored in the entry `initial_name` of the FVAR.
+
+@Section Iterating over a syntax tree
+@SectionLabel IterateOverTree
+
+@Section Tools
+@SectionLabel Tools
+
+@Section Compilation steps
+@SectionLabel CompilationSteps
+
