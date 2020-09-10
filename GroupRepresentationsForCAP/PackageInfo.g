@@ -14,6 +14,8 @@ Version := Maximum( [
   "2017.01.11", ## Sepp's version
   ## this line prevents merge conflicts
   "2019.09.02", ## Mohamed's version
+  ## this line prevents merge conflicts
+  "2020.09.08", ## Fabian's version
 ] ),
 
 Date := Concatenation( ~.Version{[ 9, 10 ]}, "/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
