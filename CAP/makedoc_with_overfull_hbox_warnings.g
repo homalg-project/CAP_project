@@ -13,6 +13,7 @@ AutoDoc( rec(
     dir := "doc_tmp/",
     autodoc := rec(
         files := [ "doc/Doc.autodoc" ],
+        scan_dirs := [ "doc", "gap", "examples", "examples/doc" ],
     ),
     gapdoc := rec(
         LaTeXOptions := rec(
