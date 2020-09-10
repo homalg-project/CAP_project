@@ -468,3 +468,16 @@ InstallMethod( Display,
     Print( Concatenation( String( object ), "\n" ) );
     
 end );
+
+##
+InstallMethod( LaTeXStringOp,
+        "for an object in a semisimple category",
+        [ IsSemisimpleCategoryObject ],
+        
+  function ( object )
+    
+    return LaTeXStringOfSemisimpleCategoryObjectList( SemisimpleCategoryObjectList( object ) );
+    
+end );
+
+MakeShowable( [ "text/latex", "application/x-latex" ], IsSemisimpleCategoryObject );
