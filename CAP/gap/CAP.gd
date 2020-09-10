@@ -530,6 +530,15 @@ DeclareGlobalFunction( "DisableAddForCategoricalOperations" );
 DeclareOperation( "LaTeXOutput", [ IsCapCategoryCell ] );
 
 #! @Description
+#! The argument is a morphism $c$.
+#! The output is a LaTeX string $s$ (without enclosing dollar signs) that may be used to print out nicely
+#! the data which are needed to reconstruct $c$ (e.g., by passing it to an appropriate constructor,
+#! possibly together with its source and range).
+#! @Returns a string
+#! @Arguments c
+DeclareOperation( "LaTeXOutputOnlyMorphismData", [ IsCapCategoryMorphism ] );
+
+#! @Description
 #! The argument is a category $C$.
 #! The output is a LaTeX string $s$ (without enclosing dollar signs) that may be used to print out $C$ nicely.
 #! @Returns a string
