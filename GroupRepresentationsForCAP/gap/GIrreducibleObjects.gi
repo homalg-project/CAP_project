@@ -244,7 +244,7 @@ InstallMethod( String,
               
   function( object )
     
-    return String( object!.UnderlyingCharacterNumber );
+    return Concatenation( "x_", String( object!.UnderlyingCharacterNumber ) );
     
 end );
 
@@ -254,6 +254,6 @@ InstallMethod( ViewObj,
 
   function( object )
 
-    Print( Concatenation( "<x_", String( object ), ">" ) );
+    Print( Concatenation( "<", String( object ), ">" ) );
 
 end );

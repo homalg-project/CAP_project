@@ -388,7 +388,7 @@ InstallMethod( String,
               
   function( object )
     
-    return Concatenation( "[", String( object!.UnderlyingDegree ), ", ", String( object!.UnderlyingCharacterNumber ), "]" );
+    return Concatenation( "x_[", String( object!.UnderlyingDegree ), ", ", String( object!.UnderlyingCharacterNumber ), "]" );
     
 end );
 
@@ -398,6 +398,6 @@ InstallMethod( ViewObj,
 
   function( object )
 
-    Print( Concatenation( "<x_", String( object ), ">" ) );
+    Print( Concatenation( "<", String( object ), ">" ) );
 
 end );

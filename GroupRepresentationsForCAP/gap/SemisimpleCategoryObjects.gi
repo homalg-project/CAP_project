@@ -437,11 +437,11 @@ InstallMethod( String,
         
     fi;
     
-    string := Concatenation( String( object_list[1][1] ), "*(x_", String( object_list[1][2] ), ")" );
+    string := Concatenation( String( object_list[1][1] ), "*(", String( object_list[1][2] ), ")" );
     
     for i in [ 2 .. size ] do
         
-        Append( string, Concatenation( " + ", String( object_list[i][1] ), "*(x_", String( object_list[i][2] ), ")" ) );
+        Append( string, Concatenation( " + ", String( object_list[i][1] ), "*(", String( object_list[i][2] ), ")" ) );
         
     od;
     
