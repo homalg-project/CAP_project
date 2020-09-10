@@ -1,12 +1,9 @@
-#############################################################################
-##
-##                                GroupRepresentationsForCAP package
-##
-##  Copyright 2016, Sebastian Posur, University of Siegen
-##
+#
+# GroupRepresentationsForCAP: Skeletal category of group representations for CAP
+#
+# Declarations
+#
 #! @Chapter Irreducible Objects
-##
-#############################################################################
 
 #! @Section Introduction
 #! For a semisimple category $C$ of the form

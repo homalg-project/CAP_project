@@ -1,12 +1,9 @@
-#############################################################################
-##
-##     FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
-##
-##  Copyright 2020, Tal Gottesman, Paris Diderot, Sebastian Posur, University of Siegen
-##
+#
+# FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
+#
+# Declarations
+#
 #! @Chapter Prosets as categories
-#!
-#############################################################################
 
 ####################################
 ##

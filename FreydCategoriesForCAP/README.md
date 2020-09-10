@@ -1,4 +1,10 @@
-# FreydCategoriesForCAP
+<!-- BEGIN HEADER -->
+# FreydCategoriesForCAP – Freyd categories - Formal (co)kernels for additive categories
+
+| **Documentation**         | **Build Status of [CAP_project](/../../)**                                            |
+|:-------------------------:|:-----------------------------------------------------------:|
+| [![][docs-img]][docs-url] | [![][tests-img]][tests-url] [![][codecov-img]][codecov-url] |
+<!-- END HEADER -->
 
 A package for various universal constructions mostly in an Ab-enriched context.
 
@@ -37,3 +43,14 @@ Additive closures provide a universal way of equipping a given Ab-category with 
 #### Paper (describing the underlying algorithms)
 
 Sebastian Posur, [*Methods of constructive category theory*](https://arxiv.org/abs/1908.04132).
+
+<!-- BEGIN FOOTER -->
+[docs-img]: https://img.shields.io/badge/PDF-dev-blue.svg
+[docs-url]: /../../raw/doc/FreydCategoriesForCAP.pdf
+
+[tests-img]: https://github.com/homalg-project/CAP_project/workflows/Tests/badge.svg
+[tests-url]: https://github.com/homalg-project/CAP_project/actions?query=workflow%3ATests
+
+[codecov-img]: https://codecov.io/gh/homalg-project/CAP_project/branch/master/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/homalg-project/CAP_project
+<!-- END FOOTER -->
