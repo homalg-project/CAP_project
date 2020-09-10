@@ -25,6 +25,11 @@ workflows:
     jobs:
       - test:
           docker_image: gapsystem/gap-docker
+          filters:
+            branches:
+              only:
+                - master
+                - /.*-ci/
   nightly:
     triggers:
       - schedule:
