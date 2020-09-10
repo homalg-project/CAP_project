@@ -1235,6 +1235,36 @@ InstallMethod( Display,
     
 end );
 
+##
+InstallMethod( LaTeXOutput,
+               [ IsCategoryOfRowsObject ],
+               
+  function( obj )
+    
+    return Concatenation( "R^{1 \\times ", String( RankOfObject( obj ) ), "}" );
+    
+end );
+
+##
+InstallMethod( LaTeXOutput,
+               [ IsCategoryOfRowsMorphism ],
+               
+  function( mor )
+    local matrix;
+    
+    matrix := LaTeXStringOp( UnderlyingMatrix( mor ) );
+    
+    if ValueOption( "OnlyDatum" ) = true then
+        
+        return matrix;
+        
+    fi;
+    
+    return Concatenation( LaTeXOutput( Source( mor ) ), matrix, LaTeXOutput( Range( mor ) ) );
+    
+end );
+
+
 ####################################
 ##
 ## Convenience

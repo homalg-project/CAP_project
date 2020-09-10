@@ -1692,6 +1692,51 @@ InstallMethod( Display,
     
 end );
 
+##
+InstallMethod( LaTeXOutput,
+               [ IsFreydCategoryObject ],
+  function( object )
+    local rel, corel, r, m, c, rel_dat, corel_dat;
+    
+    rel := RelationMorphism( object );
+    
+    r := LaTeXOutput( Source( rel ) );
+    
+    m := LaTeXOutput( Range( rel ) );
+    
+    rel_dat := LaTeXOutput( rel : OnlyDatum := true );
+    
+    return Concatenation(
+      "\\big(",
+      r,
+      "\\xrightarrow{",
+      rel_dat,
+      "}",
+      m,
+      "\\big)_{\\mathcal{A}}"
+    );
+    
+end );
+
+##
+InstallMethod( LaTeXOutput,
+               [ IsFreydCategoryMorphism ],
+  function( mor )
+    local datum;
+    
+    datum := LaTeXOutput( MorphismDatum( mor ) : OnlyDatum := true );
+    
+    return Concatenation(
+      "{ \\tiny ", LaTeXOutput( Source( mor ) ), "}",
+      """{\color{blue}{\xrightarrow{""",
+      datum,
+      """}}}""",
+      "{ \\tiny ", LaTeXOutput( Range( mor ) ), "}"
+    );
+    
+end );
+
+
 ####################################################################################
 ##
 ##  Determine properties of input category for Freyd category
