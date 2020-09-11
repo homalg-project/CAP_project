@@ -3,7 +3,8 @@ name: Tests
 on:
   push:
     branches:
-      - "*"
+      - "master"
+      - "*-ci"
   pull_request:
   schedule:
     - cron: "0 0 * * *"
