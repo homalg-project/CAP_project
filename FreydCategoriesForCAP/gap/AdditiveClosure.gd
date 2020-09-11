@@ -180,19 +180,11 @@ DeclareOperation( "\[\]",
 
 
 #! @Description
-#! The arguments are morphism $\alpha:A\to B$ between formal direct sums in some additive category $C^\oplus$ and an integer $i$.
-#! The output is the $i$'th entry in <C>MorphismMatrix</C>($\alpha$).
-#! @Arguments alpha, i
-#! @Returns a list of morphisms in $C$
-DeclareOperation( "\[\]",
-                  [ IsAdditiveClosureMorphism, IsInt ] );
-
-#! @Description
 #! The arguments are a morphism $\alpha:A\to B$ between formal direct sums in some additive category $C^\oplus$ and two integers $i,j$.
 #! The output is the $(i,j)$'th entry in <C>MorphismMatrix</C>($\alpha$).
 #! @Arguments alpha, i, j
 #! @Returns a morphism $C$
-DeclareOperation( "\[\]",
+DeclareOperation( "[,]",
                   [ IsAdditiveClosureMorphism, IsInt, IsInt ] );
 
 #! @Description
