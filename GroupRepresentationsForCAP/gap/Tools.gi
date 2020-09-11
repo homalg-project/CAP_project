@@ -45,3 +45,50 @@ InstallMethod( MultiplicityTripleArray,
       );
     
 end );
+
+##
+InstallGlobalFunction( LaTeXStringOfSemisimpleCategoryObjectList,
+  function ( object_list )
+    local size, parts;
+    
+    size := Size( object_list );
+    
+    if size = 0 then
+        
+        return "0";
+        
+    fi;
+    
+    parts := List( object_list, function ( l )
+      local mult, irr, string;
+        
+        mult := l[1];
+        irr := l[2];
+        
+        if mult = 1 then
+            
+            string := "";
+            
+        else
+            
+            string := Concatenation( String( mult ), " \\cdot " );
+            
+        fi;
+        
+        if IsShowable( "text/latex", irr ) then
+            
+            Append( string, LaTeXStringOp( irr ) );
+            
+        else
+            
+            Append( string, String( irr ) );
+            
+        fi;
+        
+        return string;
+        
+    end );
+    
+    return JoinStringsWithSeparator( parts, " \\oplus " );
+    
+end );

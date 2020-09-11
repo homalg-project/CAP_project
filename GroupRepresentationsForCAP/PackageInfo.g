@@ -14,6 +14,8 @@ Version := Maximum( [
   "2017.01.11", ## Sepp's version
   ## this line prevents merge conflicts
   "2019.09.02", ## Mohamed's version
+  ## this line prevents merge conflicts
+  "2020.09.08", ## Fabian's version
 ] ),
 
 Date := Concatenation( ~.Version{[ 9, 10 ]}, "/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
@@ -78,6 +80,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
+                           [ "ToolsForHomalg", ">= 2020.09.01" ],
                            [ "CAP", ">= 2015.08.17" ],
                            [ "LinearAlgebraForCAP", ">=2015.12.03" ],
                            [ "RingsForHomalg", ">=2016.08.12" ],

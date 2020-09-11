@@ -83,6 +83,19 @@ DeclareOperation( "RepresentationCategory", [ IsGroup, IsList ] );
 #! @Arguments L, C
 DeclareOperation( "RepresentationCategoryObject", [ IsList, IsCapCategory ] );
 
+#! @Description
+#!  There are 3 arguments.
+#!  The first argument is
+#!  an irreducible character <A>c</A>.
+#!  The second argument is the CAP category $C = G$-mod.
+#!  The third argument is a string used as follows:
+#!  <C>SetString</C>( <C>GIrreducibleObject</C>( <A>c</A> ), <A>str</A> ).
+#!  The output is the unique object in $G$-mod
+#!  having $[ [ 1, c ] ]$ as its character decomposition.
+#! @Returns an object in $G$-mod
+#! @Arguments c, C, str
+DeclareOperation( "RepresentationCategoryObject", [ IsCharacter, IsCapCategory, IsString ] );
+
 ##
 DeclareOperation( "RepresentationCategoryMorphism", [ IsSemisimpleCategoryObject, IsList, IsSemisimpleCategoryObject ] );
 

@@ -169,6 +169,19 @@ InstallMethod( RepresentationCategoryObject,
 end );
 
 ##
+InstallMethod( RepresentationCategoryObject,
+        "for a character, a CAP category, and a string",
+        [ IsCharacter, IsCapCategory, IsString ],
+        
+  function ( character, category, str )
+    
+    SetString( GIrreducibleObject( character ), str );
+    
+    return RepresentationCategoryObject( character, category );
+    
+end );
+
+##
 InstallMethod( RepresentationCategoryMorphism,
                [ IsSemisimpleCategoryObject, IsList, IsSemisimpleCategoryObject ],
                
