@@ -906,17 +906,17 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             ##
             AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
               function( source, alpha, beta, range )
-                local size_i, size_k, size_j, size_l;
+                local size_i, size_j, size_s, size_t;
                 
-                size_i := NrCols( alpha );
+                size_i := NrRows( alpha );
                 
-                size_k := NrRows( alpha );
+                size_j := NrCols( alpha );
                 
-                size_j := NrRows( beta );
+                size_s := NrRows( beta );
                 
-                size_l := NrCols( beta );
+                size_t := NrCols( beta );
                 
-                if ForAny( [ size_i, size_k, size_j, size_l ], IsZero ) then
+                if ForAny( [ size_i, size_j, size_s, size_t ], IsZero ) then
                     
                     return ZeroMorphism( source, range );
                     
@@ -924,12 +924,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                 
                 return MorphismBetweenDirectSums(
                         source,
-                        List( [ 1 .. size_i ], i ->
-                          List( [ 1 .. size_k ], k -> 
+                        List( [ 1 .. size_j ], j ->
+                          List( [ 1 .. size_i ], i ->
                             MorphismBetweenDirectSums(
-                              List( [ 1 .. size_j ], j ->
-                                List( [ 1 .. size_l ], l ->
-                                  HomomorphismStructureOnMorphisms( alpha[k, i], beta[j, l] )
+                              List( [ 1 .. size_s ], s ->
+                                List( [ 1 .. size_t ], t ->
+                                  HomomorphismStructureOnMorphisms( alpha[i, j], beta[s, t] )
                                 )
                               )
                             )
