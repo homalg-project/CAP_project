@@ -725,19 +725,29 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     ##
     AddAdditionForMorphisms( category,
       function( morphism_1, morphism_2 )
+        local listlist;
+        
+        listlist := List( [ 1 .. NrRows( morphism_1 ) ],
+                        i -> List( [ 1 .. NrCols( morphism_1 ) ],
+                            j -> morphism_1[i, j] + morphism_2[i, j] ) );
         
         return AdditiveClosureMorphism( Source( morphism_1 ),
-                                        MorphismMatrix( morphism_1 ) + MorphismMatrix( morphism_2 ),
-                                        Range( morphism_2 ) );
+                                        listlist,
+                                        Range( morphism_1 ) );
         
     end );
     
     ##
     AddAdditiveInverseForMorphisms( category,
       function( morphism )
+        local listlist;
+        
+        listlist := List( [ 1 .. NrRows( morphism ) ],
+                        i -> List( [ 1 .. NrCols( morphism ) ],
+                            j -> - ( morphism[i, j] ) ) );
         
         return AdditiveClosureMorphism( Source( morphism ),
-                                        -MorphismMatrix( morphism ),
+                                        listlist,
                                         Range( morphism ) );
         
     end );
