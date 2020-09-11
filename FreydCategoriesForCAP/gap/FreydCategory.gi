@@ -1723,13 +1723,25 @@ InstallMethod( LaTeXOutput,
     
     datum := LaTeXOutput( MorphismDatum( mor ) : OnlyDatum := true );
     
-    return Concatenation(
-      "{ \\tiny ", LaTeXOutput( Source( mor ) ), "}",
-      """{\color{blue}{\xrightarrow{""",
-      datum,
-      """}}}""",
-      "{ \\tiny ", LaTeXOutput( Range( mor ) ), "}"
-    );
+    if ValueOption( "OnlyDatum" ) = true then
+       
+       return Concatenation(
+        """{\color{blue}{""",
+        datum,
+        """}}"""
+      );
+      
+    else
+      
+      return Concatenation(
+        "{ \\tiny ", LaTeXOutput( Source( mor ) ), "}",
+        """{\color{blue}{\xrightarrow{""",
+        datum,
+        """}}}""",
+        "{ \\tiny ", LaTeXOutput( Range( mor ) ), "}"
+      );
+      
+    fi;
     
 end );
 
