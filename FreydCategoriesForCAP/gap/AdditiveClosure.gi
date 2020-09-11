@@ -235,8 +235,17 @@ InstallMethod( NrRows,
                [ IsAdditiveClosureMorphism ],
                
   function( morphism )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
-    return Size( ObjectList( Source( morphism ) ) );
+    if IsMatrixObj( MorphismMatrix( morphism ) ) then
+        
+        return NrRows( MorphismMatrix( morphism ) );
+        
+    else
+        
+        return Size( ObjectList( Source( morphism ) ) );
+        
+    fi;
     
 end );
 
@@ -245,8 +254,17 @@ InstallMethod( NrCols,
                [ IsAdditiveClosureMorphism ],
                
   function( morphism )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
-    return Size( ObjectList( Range( morphism ) ) );
+    if IsMatrixObj( MorphismMatrix( morphism ) ) then
+        
+        return NrCols( MorphismMatrix( morphism ) );
+        
+    else
+        
+        return Size( ObjectList( Range( morphism ) ) );
+        
+    fi;
     
 end );
 
@@ -448,6 +466,7 @@ InstallMethod( \[\,\],
                
   function( morphism, i, j )
     local matrix_element_as_morphism;
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     if not ( i in [ 1 .. NrRows( morphism ) ]
         and j in [ 1 .. NrCols( morphism ) ] ) then
@@ -916,7 +935,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                 
                 size_t := NrCols( beta );
                 
-                if ForAny( [ size_i, size_j, size_s, size_t ], IsZero ) then
+                if size_i <= 0 or size_j <= 0 or size_s <= 0 or size_t <= 0 then
                     
                     return ZeroMorphism( source, range );
                     
