@@ -4,12 +4,6 @@
 # Implementations
 #
 
-## Specification of data structure of morphisms:
-## there are two valid lists that can represent a morphism:
-## 1) an m x n matrix of morphisms with m,n >=1
-## 2) the empty list [], which represents the zero morphism
-## In particular, [ [ ] ] or [ [], [] ] is not allowed
-
 ####################################
 ##
 ## Constructors
@@ -780,12 +774,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                             )
                         )
                     );
-        
-        if not IsEmpty( listlist ) and IsEmpty( listlist[1] ) then
-            
-            listlist := [];
-            
-        fi;
         
         return AdditiveClosureMorphism( test_object,
                                         listlist,
