@@ -1544,7 +1544,7 @@ InstallMethod( LaTeXOutput,
         fi;
     end;
     
-    l := List( l, pair -> Concatenation( "v_{", LabelAsString( pair[1] ), "}^{", exp_func( pair[2] ), "}" ) );
+    l := List( l, pair -> Concatenation( "V_{", LabelAsString( pair[1] ), "}^{", exp_func( pair[2] ), "}" ) );
     
     return JoinStringsWithSeparator( l, " \\oplus " );
     
