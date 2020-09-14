@@ -1564,11 +1564,25 @@ InstallMethod( LaTeXOutput,
     else
         
         matrix := JoinStringsWithSeparator(
-            List( matrix, row -> JoinStringsWithSeparator( List( row, el -> String( el ) ), "\&" ) ),
+            List( matrix, row -> JoinStringsWithSeparator( List( row, el -> Concatenation( "CAPINTMARKER", String( el ) ) ), "\&" ) ),
             """\\"""
         );
         
-        matrix := ReplacedString( matrix, "*", " \\cdot " );
+        matrix := ReplacedString( matrix, "{ 1*", "{" );
+        
+        matrix := ReplacedString( matrix, "{ -1*", "{-" );
+        
+        matrix := ReplacedString( matrix, " + 1*", " + " );
+        
+        matrix := ReplacedString( matrix, " - 1*", " - " );
+        
+        matrix := ReplacedString( matrix, "CAPINTMARKER1*", "" );
+        
+        matrix := ReplacedString( matrix, "CAPINTMARKER-1*", "-" );
+        
+        matrix := ReplacedString( matrix, "CAPINTMARKER", "" );
+        
+        matrix := ReplacedString( matrix, "*", "" );
         
         matrix :=  Concatenation( "\\begin{pmatrix}", matrix, "\\end{pmatrix}" );
     
