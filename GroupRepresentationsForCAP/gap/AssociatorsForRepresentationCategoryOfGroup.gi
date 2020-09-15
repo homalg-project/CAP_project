@@ -1128,7 +1128,7 @@ InstallMethod( WriteAssociatorDataToFile,
        
        RemoveCharacters( ASSOCIATORS_Setup.associator_stringlist, " " );
        
-       PrintTo( filename, ASSOCIATORS_Setup.associator_stringlist );
+       PrintTo( filename, Concatenation( ASSOCIATORS_Setup.associator_stringlist, "\n" ) );
        
 end );
 
@@ -1138,7 +1138,7 @@ InstallMethod( WriteDatabaseKeysToFile,
                
     function( filename )
         
-        PrintTo( filename, ASSOCIATORS_Setup.database_keys );
+        PrintTo( filename, Concatenation( ASSOCIATORS_Setup.database_keys, "\n" ) );
         
 end );
 
@@ -1148,7 +1148,7 @@ InstallMethod( WriteRepresentationsDataToFile,
                
     function( filename )
         
-        PrintTo( filename, ASSOCIATORS_Setup.initialize_group_data_log_list_as_string );
+        PrintTo( filename, Concatenation( ASSOCIATORS_Setup.initialize_group_data_log_list_as_string, "\n" ) );
         
 end );
 
@@ -1158,7 +1158,7 @@ InstallMethod( WriteSkeletalFunctorDataToFile,
                
   function( filename )
     
-    PrintTo( filename, ASSOCIATORS_Setup.skeletalfunctortensordata_log_list_as_string );
+    PrintTo( filename, Concatenation( ASSOCIATORS_Setup.skeletalfunctortensordata_log_list_as_string, "\n" ) );
     
 end );
 
