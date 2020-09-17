@@ -1239,7 +1239,7 @@ InstallMethod( LaTeXOutput,
                
   function( obj )
     
-    return Concatenation( "R^{1 \\times ", String( RankOfObject( obj ) ), "}" );
+    return Concatenation( LaTeXStringOp( UnderlyingRing( CapCategory( obj ) ) ), "^{1 \\times ", String( RankOfObject( obj ) ), "}" );
     
 end );
 
