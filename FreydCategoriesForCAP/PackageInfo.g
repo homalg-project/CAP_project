@@ -13,7 +13,7 @@ Subtitle := "Freyd categories - Formal (co)kernels for additive categories",
 Version := Maximum( [
   "2019.03.04", ## Martin's version
   ## this line prevents merge conflicts
-  "2019.11.02", ## Sepp's version
+  "2020.09.17", ## Sepp's version
   ## this line prevents merge conflicts
   "2020.05.17", ## Mohamed's version
   ## this line prevents merge conflicts
@@ -100,7 +100,7 @@ Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "CAP", ">= 2020.05.16" ],
-                           [ "MatricesForHomalg", ">= 2020.05.21" ],
+                           [ "MatricesForHomalg", ">= 2020.09.06" ],
                            [ "GradedRingForHomalg", ">=2019.08.07" ],
                            [ "LinearAlgebraForCAP", ">= 2020.05.16" ],
                            [ "GeneralizedMorphismsForCAP", ">= 2018.06.15" ]
