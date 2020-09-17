@@ -1289,11 +1289,7 @@ InstallMethod( LaTeXOutput,
     
     corel_dat := LaTeXOutput( corel : OnlyDatum := true );
     
-    if ValueOption( "HighlightMiddle" ) = true then
-        
-        m := Concatenation( """{  \color{blue}{""", m, "} }" );
-        
-    fi;
+    m := Concatenation( """{  \color{blue}{""", m, "} }" );
     
     return Concatenation(
       """{ \big(""",
@@ -1320,11 +1316,11 @@ InstallMethod( LaTeXOutput,
     datum := LaTeXOutput( MorphismDatum( mor ) : OnlyDatum := true );
     
     return Concatenation(
-      LaTeXOutput( Source( mor ) : HighlightMiddle := true ),
+      LaTeXOutput( Source( mor ) ),
       """{\color{blue}{\xrightarrow{""",
       datum,
       """}}}""",
-      LaTeXOutput( Range( mor ) : HighlightMiddle := true )
+      LaTeXOutput( Range( mor ) )
     );
     
 end );
