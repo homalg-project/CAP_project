@@ -48,6 +48,16 @@ InstallMethod( AdelmanCategory,
     
     SetUnderlyingCategory( adelman_category, underlying_category );
     
+    if HasIsLinearCategoryOverCommutativeRing( underlying_category )
+        and IsLinearCategoryOverCommutativeRing( underlying_category )
+          and HasCommutativeRingOfLinearCategory( underlying_category ) then
+      
+      SetIsLinearCategoryOverCommutativeRing( adelman_category, true );
+      
+      SetCommutativeRingOfLinearCategory( adelman_category, CommutativeRingOfLinearCategory( underlying_category ) );
+       
+    fi;
+    
     DisableAddForCategoricalOperations( adelman_category );
     
     AddObjectRepresentation( adelman_category, IsAdelmanCategoryObject );
@@ -705,9 +715,22 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         
     end );
     
+    if ForAll( [ "MultiplyWithElementOfCommutativeRingForMorphisms" ],
+               f -> CanCompute( underlying_category, f ) ) then
+        
+        AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+          { r, alpha } -> AdelmanCategoryMorphism(
+                              Source( alpha ),
+                              MultiplyWithElementOfCommutativeRingForMorphisms( r, MorphismDatum( alpha ) ),
+                              Range( alpha )
+                            )
+        );
+    
+    fi;
+    
     ## Creation of a homomorphism structure for the Freyd category
     
-    if ForAll( [ "DistinguishedObjectOfHomomorphismStructure" ], 
+    if ForAll( [ "DistinguishedObjectOfHomomorphismStructure" ],
                f -> CanCompute( underlying_category, f ) ) then
         
         distinguished_object := DistinguishedObjectOfHomomorphismStructure( underlying_category );
