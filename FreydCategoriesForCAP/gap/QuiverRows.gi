@@ -1640,7 +1640,7 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
                [ IsQuiverVertex, IsQuiverRowsCategory ],
                AsQuiverRowsObject
 );
