@@ -1,0 +1,20 @@
+\documentclass[tikz]{standalone}
+\begin{document}
+\begin{tikzpicture}
+	\def\yfactor{0.5}
+
+	\def\x{0}
+	\draw (\x+0,0*\yfactor) -- node[above] {\scriptsize{input}} (\x+0.2,0*\yfactor) -- (\x+0.3,-1*\yfactor) -- (\x+0.5,-1*\yfactor) -- (\x+0.6,-2*\yfactor) -- (\x+0.8,-2*\yfactor) -- (\x+0.9,-3*\yfactor) -- (\x+1.8,-3*\yfactor) -- (\x+1.9,-2*\yfactor) -- (\x+2.1,-2*\yfactor) -- (\x+2.2,-1*\yfactor) -- (\x+2.4,-1*\yfactor) -- (\x+2.5,0*\yfactor);
+	\def\x{2.5}
+	\draw (\x+0,0*\yfactor) -- node[above] {\scriptsize{intermediate result}} (\x+0.2,0*\yfactor) -- (\x+0.3,-1*\yfactor) -- (\x+0.5,-1*\yfactor) -- (\x+0.6,-2*\yfactor) -- (\x+0.8,-2*\yfactor) -- (\x+0.9,-3*\yfactor) -- (\x+1.8,-3*\yfactor) -- (\x+1.9,-2*\yfactor) -- (\x+2.1,-2*\yfactor) -- (\x+2.2,-1*\yfactor) -- (\x+2.4,-1*\yfactor) -- (\x+2.5,0*\yfactor);
+	\def\x{5.0}
+	\draw (\x+0,0*\yfactor) -- node[above] {\scriptsize{intermediate result}} (\x+0.2,0*\yfactor) -- (\x+0.3,-1*\yfactor) -- (\x+0.5,-1*\yfactor) -- (\x+0.6,-2*\yfactor) -- (\x+0.8,-2*\yfactor) -- (\x+0.9,-3*\yfactor) -- (\x+1.8,-3*\yfactor) -- (\x+1.9,-2*\yfactor) -- (\x+2.1,-2*\yfactor) -- (\x+2.2,-1*\yfactor) -- (\x+2.4,-1*\yfactor) -- (\x+2.5,0*\yfactor);
+	\draw (7.5,0*\yfactor) -- node[above] {\scriptsize{result}} (7.7,0*\yfactor);
+
+	\draw [|->] (8,-1.5*\yfactor) -- node[above] {\scriptsize{$\mathtt{CompilerForCAP}$}} (9.7,-1.5*\yfactor);
+	
+	\def\x{10}
+	\draw (\x+0,0*\yfactor) -- node[above] {\scriptsize{input}} (\x+0.2,0*\yfactor) -- (\x+0.3,-1*\yfactor) -- (\x+0.5,-1*\yfactor) -- (\x+0.6,-2*\yfactor) -- (\x+0.8,-2*\yfactor) -- (\x+0.9,-3*\yfactor) -- (\x+3.6,-3*\yfactor) -- (\x+3.7,-2*\yfactor) -- (\x+3.9,-2*\yfactor) -- (\x+4.0,-1*\yfactor) -- (\x+4.2,-1*\yfactor) -- (\x+4.3,0*\yfactor);
+	\draw (\x+4.3,0*\yfactor) -- node[above] {\scriptsize{result}} (\x+4.5,0*\yfactor);
+\end{tikzpicture}
+\end{document}
