@@ -22,12 +22,8 @@ tree1 := SYNTAX_TREE(
     vec!.compiled_functions.MorphismBetweenDirectSums[3]
 );;
 # fixup nams
-tree1.nams := [ "S", "morphism_matrix", "T" ];;
-tree1.nloc := 0;;
 tree1.stats.statements[1].branches[2].body.statements[1].
     obj.args[12].args[1].args[2].nams := [ "row" ];;
-tree1.stats.statements[1].branches[2].body.statements[1].
-    obj.args[12].args[1].args[2].nloc := 0;;
 Display( SYNTAX_TREE_CODE( tree1 ) );
 #! function ( S, morphism_matrix, T )
 #!     if morphism_matrix = [  ] or morphism_matrix[1] = [  ] then
@@ -51,12 +47,8 @@ tree2 := SYNTAX_TREE( CapJitCompiledFunction(
     [ W, morphism_matrix, W  ]
 ) );;
 # fixup nams
-tree2.nams := [ "S", "morphism_matrix", "T" ];;
-tree2.nloc := 0;;
 tree2.stats.statements[1].branches[2].body.statements[1].
     obj.args[12].args[1].args[2].nams := [ "row" ];;
-tree2.stats.statements[1].branches[2].body.statements[1].
-    obj.args[12].args[1].args[2].nloc := 0;;
 Display( SYNTAX_TREE_CODE( tree2 ) );
 #! function ( S, morphism_matrix, T )
 #!     if morphism_matrix = [  ] or morphism_matrix[1] = [  ] then

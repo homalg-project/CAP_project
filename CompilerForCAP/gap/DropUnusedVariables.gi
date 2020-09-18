@@ -137,6 +137,15 @@ InstallGlobalFunction( CapJitDroppedUnusedVariables, function ( tree, args... )
             
         od;
         
+        # unused local variables at the end of nams can be completely removed
+        while func.nloc > 0 and StartsWith( Last( func.nams ), "_UNUSED_" ) do
+            
+            func.nams := func.nams{[ 1 .. Length( func.nams ) - 1 ]};
+            
+            func.nloc := func.nloc - 1;
+            
+        od;
+        
         # remove STAT_ASS_FVAR
         pre_func := function ( tree, additional_arguments )
             
