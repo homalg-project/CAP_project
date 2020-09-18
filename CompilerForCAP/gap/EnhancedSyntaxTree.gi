@@ -315,7 +315,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 if Length( tree.body ) = 2 or Length( tree.body ) = 3 then
                     
-                    tree.type := Concatenation( tree.type, [ String( Length( tree.body ) ) ] );
+                    tree.type := Concatenation( tree.type, String( Length( tree.body ) ) );
                     
                 fi;
                 
