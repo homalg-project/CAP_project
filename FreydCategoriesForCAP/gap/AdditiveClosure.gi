@@ -680,21 +680,21 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
         size := Size( object_list );
         
-        listlist := List( [ 1 .. size ], i -> [ ] );
-        
-        for i in [ 1 .. size ] do
-            
-            listlist[i][i] := IdentityMorphism( object_list[i] );
-            
-            for j in [ i + 1 .. size ]  do
-                
-                listlist[i][j] := ZeroMorphism( object_list[i], object_list[j] );
-                
-                listlist[j][i] := ZeroMorphism( object_list[j], object_list[i] );
-                
-            od;
-            
-        od;
+        listlist := List( [ 1 .. size ], i ->
+                        List( [ 1 .. size ], function( j )
+                            
+                            if i = j then
+                                
+                                return IdentityMorphism( object_list[i] );
+                                
+                            else
+                                
+                                return ZeroMorphism( object_list[i], object_list[j] );
+                                
+                            fi;
+                            
+                        end )
+                    );
         
         return AdditiveClosureMorphismListList( object, listlist, object );
         
@@ -713,23 +713,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
         size_list_range := Size( object_list_range );
         
-        if size_list_source = 0 or size_list_range = 0 then
-            
-            return AdditiveClosureMorphismListList( source, [ ], range );
-            
-        fi;
-        
-        listlist := List( [ 1 .. size_list_source ], i -> [ ] );
-        
-        for i in [ 1 .. size_list_source ] do
-            
-            for j in [ 1 .. size_list_range ] do
-                
-                listlist[i][j] := ZeroMorphism( object_list_source[i], object_list_range[j] );
-                
-            od;
-            
-        od;
+        listlist := List( [ 1 .. size_list_source ], i ->
+                        List( [ 1 .. size_list_range ], j ->
+                            ZeroMorphism( object_list_source[i], object_list_range[j] )
+                        )
+                    );
         
         return AdditiveClosureMorphismListList( source, listlist, range );
         
@@ -748,29 +736,17 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
         nr_cols_2 := NrCols( morphism_2 );
         
-        if ForAny( [ nr_rows_1, nr_cols_2 ], IsZero ) then
-            
-            return AdditiveClosureMorphismListList( Source( morphism_1 ), [ ], Range( morphism_2 ) );
-            
-        fi;
-        
         if ForAny( [ nr_cols_1, nr_rows_2 ], IsZero ) then
             
             return ZeroMorphism( Source( morphism_1 ), Range( morphism_2 ) );
             
         fi;
         
-        listlist := List( [ 1 .. nr_rows_1 ], i -> [ ] );
-        
-        for i in [ 1 .. nr_rows_1 ] do
-            
-            for j in [ 1 .. nr_cols_2 ] do
-                
-                listlist[i][j] := Sum( List( [ 1 .. nr_cols_1 ], k -> PreCompose( morphism_1[i, k], morphism_2[k, j] ) ) );
-                
-            od;
-            
-        od;
+        listlist := List( [ 1 .. nr_rows_1 ], i ->
+                        List( [ 1 .. nr_cols_2 ], j ->
+                            Sum( List( [ 1 .. nr_cols_1 ], k -> PreCompose( morphism_1[i, k], morphism_2[k, j] ) ) )
+                        )
+                    );
         
         return AdditiveClosureMorphismListList( Source( morphism_1 ), listlist, Range( morphism_2 ) );
         
