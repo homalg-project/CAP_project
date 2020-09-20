@@ -203,12 +203,3 @@ DeclareOperation( "AddSubobjectOfClassifyingMorphism",
 
 DeclareOperation( "AddSubobjectOfClassifyingMorphism",
                   [ IsCapCategory, IsList ] );
-
-#! @Section Stable internal Hom
-
-#! @Description
-#!  Return the stable internal Hom \mathrm{\underline{Hom}}(A,$\mathrm{\underline{Hom}}(A,...\mathrm{\underline{Hom}}(A,B)...))$.
-#! @Arguments A, B
-#! @Returns a &CAP; object
-DeclareOperation( "StableInternalHom",
-        [ IsCapCategoryObject, IsCapCategoryObject ] );
