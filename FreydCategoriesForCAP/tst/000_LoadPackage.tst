@@ -6,7 +6,6 @@
 gap> package_loading_info_level := InfoLevel( InfoPackageLoading );;
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_ERROR );;
 gap> LoadPackage( "FreydCategoriesForCAP", false );
-#I  method installed for / matches more than one declaration
 #I  method installed for IsInjective matches more than one declaration
 true
 gap> LoadPackage( "IO_ForHomalg", false );
