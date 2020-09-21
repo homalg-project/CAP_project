@@ -109,6 +109,96 @@ end : CategoryFilter := IsAdditiveCategory,
       Description := "UniversalMorphismFromDirectSum using projections of the direct sum" );
 
 ##
+AddWithGivenDerivationPairToCAP( ProjectionInFactorOfDirectSum,
+  
+  function( list, projection_number )
+    local morphisms;
+    
+    morphisms := List( [ 1 .. Length( list ) ], function( i )
+        
+        if i = projection_number then
+            
+            return IdentityMorphism( list[projection_number] );
+            
+        else
+            
+            return ZeroMorphism( list[i], list[projection_number] );
+            
+        fi;
+        
+    end );
+    
+    return UniversalMorphismFromDirectSum( list, morphisms );
+    
+  end,
+  
+  function( list, projection_number, direct_sum_object )
+    local morphisms;
+    
+    morphisms := List( [ 1 .. Length( list ) ], function( i )
+        
+        if i = projection_number then
+            
+            return IdentityMorphism( list[projection_number] );
+            
+        else
+            
+            return ZeroMorphism( list[i], list[projection_number] );
+            
+        fi;
+        
+    end );
+    
+    return UniversalMorphismFromDirectSumWithGivenDirectSum( list, morphisms, direct_sum_object );
+    
+end : Description := "ProjectionInFactorOfDirectSum using UniversalMorphismFromDirectSum" );
+
+##
+AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfDirectSum,
+  
+  function( list, injection_number )
+    local morphisms;
+    
+    morphisms := List( [ 1 .. Length( list ) ], function( i )
+        
+        if i = injection_number then
+            
+            return IdentityMorphism( list[injection_number] );
+            
+        else
+            
+            return ZeroMorphism( list[injection_number], list[i] );
+            
+        fi;
+        
+    end );
+    
+    return UniversalMorphismIntoDirectSum( list, morphisms );
+    
+  end,
+  
+  function( list, injection_number, direct_sum_object )
+    local morphisms;
+    
+    morphisms := List( [ 1 .. Length( list ) ], function( i )
+        
+        if i = injection_number then
+            
+            return IdentityMorphism( list[injection_number] );
+            
+        else
+            
+            return ZeroMorphism( list[injection_number], list[i] );
+            
+        fi;
+        
+    end );
+    
+    return UniversalMorphismIntoDirectSumWithGivenDirectSum( list, morphisms, direct_sum_object );
+    
+end : Description := "InjectionOfCofactorOfDirectSum using UniversalMorphismIntoDirectSum" );
+
+##
 AddWithGivenDerivationPairToCAP( UniversalMorphismIntoTerminalObject,
   
   function( test_source )
