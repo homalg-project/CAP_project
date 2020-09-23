@@ -156,7 +156,7 @@ In order to model concatenations of maps, we have to define a notion of concaten
 \end{definition}
 
 \begin{example}
- If we would rely on weak caching in order to satisfy the first item in remark \ref{remark:implementation_of_gap_maps},
+ If we would rely on caching in order to satisfy the first item in remark \ref{remark:implementation_of_gap_maps},
  a concatenation of \GAP maps would not necessarily yield equal output for equal input.
  Here is an example of what can go wrong:
  
@@ -194,8 +194,15 @@ In order to model concatenations of maps, we have to define a notion of concaten
    0 & 0 
   \end{pmatrix},
  \]
-leaving us with two saved results from syntactically identical expressions
-having non equal evaluations.
+ leaving us with two saved results from syntactically identical expressions
+ having non equal evaluations.
+
+ Even if we would use strict caching, a similar problem could occur: we could take $B' = ( 1 )$ equal to $B$ but not identical to it.
+ Now, if $B$ gets lost, even a strict cache might lose access to the first intermediate result $A \otimes B$ as the cache keys are always stored weakly.
+ Thus, although $B$ and $B'$ are equal, $A \oplus B$ and $A \oplus B'$ might differ.
+
+ However, if one compares objects or morphisms with \texttt{IsIdenticalObj}, one cannot construct an equal but not identical copy of an object or morphism. Thus,
+ in this case we can indeed rely on strict caches for fulfilling the specification.
 \end{example}
 
 We now associate to every \GAP set and every \GAP map a corresponding object in set theory.

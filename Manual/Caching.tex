@@ -42,12 +42,15 @@ operation is a \GAP attribute, it first looks at the \GAP attribute, then in its
 \section{Switchability of caches}
 
 In \CapPkg, the caches have three different stages. They can be hard caches, weak caches, and turned off.
-Hard caches mean that the result of a computation is stored forever, weak means it is stored as long as
+Hard caches mean that the result of a computation is stored forever (even though the input is not necessarily), weak means it is stored as long as
 there is a pointer to the object, and turned off means there is no storing at all. These modes can be switched for
 every category and every categorical operation at every time, but we suggest to set it at the creation of a category.
 This setting can be manipulated by the methods \texttt{SetCachingToWeak}, \texttt{SetCachingToCrisp}, and \texttt{DeactivateCaching}.
 All those methods take the category as first argument and the name of the categorical operation (e.g. \texttt{DirectSum}) as second.
 Also, there are methods which set the ceaches for all operations of the category. Those only take the category as argument.
-Their names are \texttt{SetCachingOfCategoryWeak}, \texttt{SetCachingOfCategoryCrisp}, and \texttt{DeactivateCachingOfCategory}.
-
-
+Their names are
+\begin{itemize}
+	\item \texttt{SetCachingOfCategoryWeak},
+	\item \texttt{SetCachingOfCategoryCrisp}, and
+	\item\texttt{DeactivateCachingOfCategory}.
+\end{itemize}
