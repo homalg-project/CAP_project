@@ -1,14 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-##  Cocartesian Categories
-##
-##
-#############################################################################
+#
+# Toposes: Elementary toposes
+#
+# Implementations
+#
 
 ##
 InstallValue( CAP_INTERNAL_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS, rec( ) );

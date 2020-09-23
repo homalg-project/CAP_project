@@ -1,3 +1,9 @@
+#
+# Toposes: Elementary toposes
+#
+# Implementations
+#
+
 InstallValue( COCARTESIAN_COCLOSED_CATEGORIES_METHOD_NAME_RECORD, rec(
 
 CoexponentialOnObjects := rec(

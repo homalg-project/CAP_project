@@ -1,3 +1,9 @@
+#
+# Toposes: Elementary toposes
+#
+# Implementations
+#
+
 InstallValue( DISTRIBUTIVE_CARTESIAN_CATEGORIES_METHOD_NAME_RECORD, rec(
 
 LeftCartesianDistributivityExpandingWithGivenObjects := rec(

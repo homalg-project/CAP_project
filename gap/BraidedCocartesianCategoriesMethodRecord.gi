@@ -1,3 +1,9 @@
+#
+# Toposes: Elementary toposes
+#
+# Implementations
+#
+
 InstallValue( BRAIDED_COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD, rec(
 
 CocartesianBraidingWithGivenCoproducts := rec(

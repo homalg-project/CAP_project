@@ -1,3 +1,9 @@
+#
+# Toposes: Elementary toposes
+#
+# Implementations
+#
+
 InstallValue( BRAIDED_CARTESIAN_CATEGORIES_METHOD_NAME_RECORD, rec(
 
 CartesianBraidingWithGivenDirectProducts := rec(

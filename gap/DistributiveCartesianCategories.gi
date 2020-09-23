@@ -1,3 +1,9 @@
+#
+# Toposes: Elementary toposes
+#
+# Implementations
+#
+
 InstallValue( CAP_INTERNAL_DISTRIBUTIVE_CARTESIAN_CATEGORIES_BASIC_OPERATIONS, rec( ) );
 
 ##

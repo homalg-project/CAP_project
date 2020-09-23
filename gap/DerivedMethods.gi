@@ -1,5 +1,5 @@
 #
-# Toposes: derived methods
+# Toposes: Elementary toposes
 #
 # Implementations
 #

@@ -1,5 +1,5 @@
 #
-# Toposes
+# Toposes: Elementary toposes
 #
 # Reading the declaration part of the package.
 #

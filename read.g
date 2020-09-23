@@ -1,5 +1,5 @@
 #
-# Toposes
+# Toposes: Elementary toposes
 #
 # Reading the implementation part of the package.
 #

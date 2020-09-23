@@ -1,5 +1,5 @@
 #
-# Toposes: method-record
+# Toposes: Elementary toposes
 #
 # Implementations
 #

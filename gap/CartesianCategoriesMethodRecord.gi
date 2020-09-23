@@ -1,3 +1,9 @@
+#
+# Toposes: Elementary toposes
+#
+# Implementations
+#
+
 InstallValue( CARTESIAN_CATEGORIES_METHOD_NAME_RECORD, rec(
 
 ## Basic Operations for Cartesian Categories

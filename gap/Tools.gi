@@ -1,5 +1,5 @@
 #
-# Toposes: Tools
+# Toposes: Elementary toposes
 #
 # Implementations
 #

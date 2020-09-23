@@ -1,14 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-##  Cartesian Categories
-##
-##
-#############################################################################
+#
+# Toposes: Elementary toposes
+#
+# Implementations
+#
 
 ##
 InstallValue( CAP_INTERNAL_CARTESIAN_CATEGORIES_BASIC_OPERATIONS, rec( ) );

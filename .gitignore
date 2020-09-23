@@ -1,6 +1,3 @@
-/maketest.g
-/doc/*.xml
-
 /doc/chap*.html
 /doc/chap*.txt
 /doc/*.css
@@ -21,35 +18,17 @@
 /doc/*.tex
 /doc/*.toc
 /doc/manual.pdf
+/doc/_*.xml
 
-.deps/
-.dirstamp
-.libs/
-
-/aclocal.m4
-/autom4te.cache/
 /bin/
-/cnf
-/config.log
-/config.status
-/configure
-/lib/
-/libtool
-/m4/libtool.m4
-/m4/ltoptions.m4
-/m4/ltsugar.m4
-/m4/ltversion.m4
-/m4/lt~obsolete.m4
+/gen/
 /Makefile
-/Makefile.in
-/src/pkgconfig.h
-/src/stamp-h1
-
-*.la
-src/*.lo
 
 /tmp/
 /gh-pages/
 
-stats
-coverage.json
+/coverage.json
+/doc/*.xml
+/doc_tmp/
+/stats
+/tst/toposes*.tst

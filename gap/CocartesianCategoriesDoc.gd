@@ -1,3 +1,9 @@
+#
+# Toposes: Elementary toposes
+#
+# Declarations
+#
+
 ####################################
 ##
 #! @Chapter Cocartesian Categories
