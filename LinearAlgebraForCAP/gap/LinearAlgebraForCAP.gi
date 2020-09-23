@@ -477,17 +477,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddKernelEmbeddingWithGivenKernelObject( category,
-      function( morphism, kernel )
-        local kernel_emb;
-        
-        kernel_emb := SyzygiesOfRows( UnderlyingMatrix( morphism ) );
-        
-        return VectorSpaceMorphism( kernel, kernel_emb, Source( morphism ) );
-        
-    end );
-    
-    ##
     AddLift( category,
       function( alpha, beta )
         local right_divide;
@@ -527,17 +516,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         cokernel_obj := VectorSpaceObject( NrColumns( cokernel_proj ), homalg_field );
         
         return VectorSpaceMorphism( Range( morphism ), cokernel_proj, cokernel_obj );
-        
-    end );
-    
-    ##
-    AddCokernelProjectionWithGivenCokernelObject( category,
-      function( morphism, cokernel )
-        local cokernel_proj;
-        
-        cokernel_proj := SyzygiesOfColumns( UnderlyingMatrix( morphism ) );
-        
-        return VectorSpaceMorphism( Range( morphism ), cokernel_proj, cokernel );
         
     end );
     
