@@ -327,8 +327,9 @@ DeclareOperation( "IsEqualForCacheForObjects",
 #! @Description
 #!  By default, CAP uses caches to store the values of Categorical operations.
 #!  To get a value out of the cache, one needs to compare the input of a basic operation
-#!  with its previous input. To compare objects in the category, IsEqualForCacheForObject is
-#!  used. By default this is an alias for IsEqualForObjects, where fail is substituted by false.
+#!  with its previous input. To compare objects in the category, IsEqualForCacheForObjects is
+#!  used. By default, IsEqualForCacheForObjects falls back to IsEqualForCache (see ToolsForHomalg),
+#!  which in turn defaults to recursive comparison for lists and `IsIdenticalObj` in all other cases.
 #!  If you add a function, this function
 #!  used instead. A function $F: a,b \mapsto bool$ is expected here. The output has to be
 #!  true or false. Fail is not allowed in this context.

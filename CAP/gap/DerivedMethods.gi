@@ -2733,16 +2733,6 @@ AddDerivationToCAP( VerticalPreCompose,
     
 end : Description := "VerticalPreCompose using VerticalPostCompose" );
 
-##
-AddDerivationToCAP( IsEqualForCacheForObjects,
-  
-  function( object_1, object_2 )
-    local ret_value;
-    
-    return IsEqualForObjects( object_1, object_2 ) = true;
-    
-end : Description := "IsEqualForCacheForObjects using IsEqualForObjects" );
-
 ###########################
 ##
 ## Methods involving homomorphism structures
@@ -3453,22 +3443,6 @@ AddFinalDerivation( IsEqualForMorphisms,
                     [ IsEqualForMorphisms ],
                     
   IsCongruentForMorphisms : Description := "Use IsCongruentForMorphisms for IsEqualForMorphisms" );
-
-AddFinalDerivation( IsEqualForCacheForMorphisms,
-                    [ [ IsEqualForMorphismsOnMor, 1 ] ],
-                    [ ],
-                    
-  function( mor1, mor2 )
-    
-    return IsEqualForMorphismsOnMor( mor1, mor2 ) = true;
-    
-end : Description := "Use IsEqualForMorphismsOnMor for IsEqualForCacheForMorphisms" );
-
-AddFinalDerivation( IsEqualForCacheForMorphisms,
-                    [ [ IsCongruentForMorphisms, 1 ] ],
-                    [ IsEqualForMorphisms ],
-                    
-  IsIdenticalObj : Description := "Use IsIdenticalObj for IsEqualForCacheForMorphisms" );
 
 ## Final methods for BasisOfExternalHom & CoefficientsOfMorphism
 
