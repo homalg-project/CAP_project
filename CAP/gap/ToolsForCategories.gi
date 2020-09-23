@@ -574,15 +574,23 @@ InstallGlobalFunction( "CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION",
   function( func, symbol_list, loop_multiple, replacement_record )
     local func_as_string, func_stream, i, func_as_list, loop_power, symbol_appearance_rec, current_symbol;
     
-    func_as_string := "";
-    
-    func_stream := OutputTextString( func_as_string, false );
-    
-    SetPrintFormattingStatus( func_stream, false );
-    
-    PrintTo( func_stream, func );
-    
-    CloseStream( func_stream );
+    if IsOperation( func ) then
+        
+        func_as_string := NameFunction( func );
+        
+    else
+        
+        func_as_string := "";
+        
+        func_stream := OutputTextString( func_as_string, false );
+        
+        SetPrintFormattingStatus( func_stream, false );
+        
+        PrintTo( func_stream, func );
+        
+        CloseStream( func_stream );
+        
+    fi;
     
     ## Make List, Perform, Apply look like loops
     ## Beginning space is important here, to avoid scanning things like CallFuncList
