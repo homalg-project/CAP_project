@@ -17,22 +17,22 @@ Please take a look at our [manual](https://github.com/homalg-project/CAP_project
 Please visit our website: http://homalg-project.github.io/CAP_project/
 <!-- BEGIN FOOTER -->
 [docs-CAP-img]: https://img.shields.io/badge/CAP-HTML-blue.svg
-[docs-CAP-url]: https://homalg-project.github.io/CAP_project/CAP/doc/chap0.html
+[docs-CAP-url]: https://homalg-project.github.io/CAP_project/CAP/doc/chap0_mj.html
 
 [docs-CompilerForCAP-img]: https://img.shields.io/badge/CompilerForCAP-PDF-blue.svg
 [docs-CompilerForCAP-url]: /../../raw/doc/CompilerForCAP.pdf
 
 [docs-ModulePresentationsForCAP-img]: https://img.shields.io/badge/ModulePresentationsForCAP-HTML-blue.svg
-[docs-ModulePresentationsForCAP-url]: https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP/doc/chap0.html
+[docs-ModulePresentationsForCAP-url]: https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP/doc/chap0_mj.html
 
 [docs-GradedModulePresentationsForCAP-img]: https://img.shields.io/badge/GradedModulePresentationsForCAP-PDF-blue.svg
 [docs-GradedModulePresentationsForCAP-url]: /../../raw/doc/GradedModulePresentationsForCAP.pdf
 
 [docs-LinearAlgebraForCAP-img]: https://img.shields.io/badge/LinearAlgebraForCAP-HTML-blue.svg
-[docs-LinearAlgebraForCAP-url]: https://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/doc/chap0.html
+[docs-LinearAlgebraForCAP-url]: https://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/doc/chap0_mj.html
 
 [docs-GeneralizedMorphismsForCAP-img]: https://img.shields.io/badge/GeneralizedMorphismsForCAP-HTML-blue.svg
-[docs-GeneralizedMorphismsForCAP-url]: https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/doc/chap0.html
+[docs-GeneralizedMorphismsForCAP-url]: https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/doc/chap0_mj.html
 
 [docs-GroupRepresentationsForCAP-img]: https://img.shields.io/badge/GroupRepresentationsForCAP-PDF-blue.svg
 [docs-GroupRepresentationsForCAP-url]: /../../raw/doc/GroupRepresentationsForCAP.pdf
@@ -41,7 +41,7 @@ Please visit our website: http://homalg-project.github.io/CAP_project/
 [docs-InternalExteriorAlgebraForCAP-url]: /../../raw/doc/InternalExteriorAlgebraForCAP.pdf
 
 [docs-MonoidalCategories-img]: https://img.shields.io/badge/MonoidalCategories-HTML-blue.svg
-[docs-MonoidalCategories-url]: https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap0.html
+[docs-MonoidalCategories-url]: https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap0_mj.html
 
 [docs-FreydCategoriesForCAP-img]: https://img.shields.io/badge/FreydCategoriesForCAP-PDF-blue.svg
 [docs-FreydCategoriesForCAP-url]: /../../raw/doc/FreydCategoriesForCAP.pdf
