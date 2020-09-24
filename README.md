@@ -8,7 +8,7 @@
 
 <!-- BEGIN FOOTER -->
 [docs-img]: https://img.shields.io/badge/docs-stable-blue.svg
-[docs-url]: https://homalg-project.github.io/Toposes/doc/chap0.html
+[docs-url]: https://homalg-project.github.io/Toposes/doc/chap0_mj.html
 
 [tests-img]: https://github.com/homalg-project/Toposes/workflows/Tests/badge.svg
 [tests-url]: https://github.com/homalg-project/Toposes/actions?query=workflow%3ATests
