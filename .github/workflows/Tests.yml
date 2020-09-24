@@ -42,8 +42,8 @@ jobs:
           # set SOURCE_DATE_EPOCH for reproducible PDFs
           export SOURCE_DATE_EPOCH=0
           TERM=dumb make -C Toposes -j $(nproc) --output-sync ci-test
+          TERM=dumb make -C FinSetsForCAP -j $(nproc) --output-sync ci-test
           TERM=dumb make -C Locales -j $(nproc) --output-sync ci-test
           TERM=dumb make -C ZariskiFrames -j $(nproc) --output-sync ci-test
-          TERM=dumb make -C FinSetsForCAP -j $(nproc) --output-sync ci-test
           cp ./Toposes/.codecov.yml ./
           curl -s https://codecov.io/bash | bash
