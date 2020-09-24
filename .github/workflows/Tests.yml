@@ -45,4 +45,5 @@ jobs:
           TERM=dumb make -C Locales -j $(nproc) --output-sync ci-test
           TERM=dumb make -C ZariskiFrames -j $(nproc) --output-sync ci-test
           TERM=dumb make -C FinSetsForCAP -j $(nproc) --output-sync ci-test
+          cp ./Toposes/.codecov.yml ./
           curl -s https://codecov.io/bash | bash
