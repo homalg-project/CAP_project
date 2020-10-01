@@ -749,17 +749,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       end );
         
       ##
-      AddKernelEmbeddingWithGivenKernelObject( category,
-        function( morphism, kernel )
-          local kernel_emb;
-          
-          kernel_emb := SyzygiesOfRows( UnderlyingMatrix( morphism ) );
-          
-          return CategoryOfRowsMorphism( kernel, kernel_emb, Source( morphism ) );
-          
-      end );
-      
-      ##
       AddCokernelObject( category,
         function( morphism )
           local homalg_matrix;
@@ -780,17 +769,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
           cokernel_obj := CategoryOfRowsObject( category, NrColumns( cokernel_proj ) );
           
           return CategoryOfRowsMorphism( Range( morphism ), cokernel_proj, cokernel_obj );
-          
-      end );
-      
-      ##
-      AddCokernelProjectionWithGivenCokernelObject( category,
-        function( morphism, cokernel )
-          local cokernel_proj;
-          
-          cokernel_proj := SyzygiesOfColumns( UnderlyingMatrix( morphism ) );
-          
-          return CategoryOfRowsMorphism( Range( morphism ), cokernel_proj, cokernel );
           
       end );
       
