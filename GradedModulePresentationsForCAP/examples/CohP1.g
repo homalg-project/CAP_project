@@ -71,7 +71,7 @@ CohP1 := Sgrmod / C;
 #! The Serre quotient category of The category of graded left f.p. modules
 #! over Q[x,y] (with weights [ 1, 1 ]) by test function with name: is_artinian
 InfoOfInstalledOperationsOfCategory( CohP1 );
-#! 21 primitive operations were used to derive 146 operations for this category which
+#! 21 primitive operations were used to derive 144 operations for this category which
 #! * IsAbCategory
 #! * IsAbelianCategory
 Sh := CanonicalProjection( CohP1 );
