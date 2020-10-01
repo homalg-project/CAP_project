@@ -15,7 +15,7 @@ InstallMethod( AdditiveClosure,
                [ IsCapCategory ],
                
   function( underlying_category )
-    local category, to_be_finalized;
+    local category, matrix_element_as_morphism, list_list_as_matrix, to_be_finalized;
     
     if not ( HasIsAbCategory( underlying_category ) and IsAbCategory( underlying_category ) ) then
         
@@ -24,6 +24,32 @@ InstallMethod( AdditiveClosure,
     fi;
     
     category := CreateCapCategory( Concatenation( "Additive closure( ", Name( underlying_category )," )"  ) );
+    
+    matrix_element_as_morphism := ValueOption( "matrix_element_as_morphism" );
+    list_list_as_matrix := ValueOption( "list_list_as_matrix" );
+    
+    if ( matrix_element_as_morphism = fail and list_list_as_matrix <> fail ) or
+       ( matrix_element_as_morphism <> fail and list_list_as_matrix = fail ) then
+        
+        Display( Concatenation( "WARNING: You have given matrix_element_as_morphism or list_list_as_matrix but not both. ",
+            "This is probably an error. If not, you can set the missing one to its default value manually to suppress this message." ) );
+       
+    fi;
+    
+    if matrix_element_as_morphism = fail then
+        
+        matrix_element_as_morphism := IdFunc;
+        
+    fi;
+    
+    if list_list_as_matrix = fail then
+        
+        list_list_as_matrix := ReturnFirst;
+        
+    fi;
+    
+    category!.matrix_element_as_morphism := matrix_element_as_morphism;
+    category!.list_list_as_matrix := list_list_as_matrix;
     
     SetFilterObj( category, IsAdditiveClosureCategory );
     
@@ -89,7 +115,7 @@ InstallMethod( AsAdditiveClosureMorphism,
                
   function( morphism )
     
-    return AdditiveClosureMorphism( 
+    return AdditiveClosureMorphismListList( 
              AsAdditiveClosureObject( Source( morphism ) ),
              [ [ morphism ] ],
              AsAdditiveClosureObject( Range( morphism ) )
@@ -99,7 +125,7 @@ end );
 
 ##
 InstallMethod( AdditiveClosureMorphism,
-               [ IsAdditiveClosureObject, IsList, IsAdditiveClosureObject ],
+               [ IsAdditiveClosureObject, IsObject, IsAdditiveClosureObject ],
                
   function( source, matrix, range )
     local category;
@@ -112,6 +138,21 @@ InstallMethod( AdditiveClosureMorphism,
                              range,
                              MorphismMatrix, matrix
     );
+    
+end );
+
+##
+InstallMethod( AdditiveClosureMorphismListList,
+               [ IsAdditiveClosureObject, IsList, IsAdditiveClosureObject ],
+               
+  function( source, listlist, range )
+    local category, matrix;
+    
+    category := CapCategory( source );
+    
+    matrix := category!.list_list_as_matrix( listlist, Size( ObjectList( source ) ), Size( ObjectList( range ) ) );
+    
+    return AdditiveClosureMorphism( source, matrix, range );
     
 end );
 
@@ -144,7 +185,7 @@ InstallMethod( \/,
     
     range := AdditiveClosureObject( List( listlist[1], col -> Range( col ) ), category );
     
-    return AdditiveClosureMorphism(
+    return AdditiveClosureMorphismListList(
       source,
       listlist,
       range
@@ -194,8 +235,17 @@ InstallMethod( NrRows,
                [ IsAdditiveClosureMorphism ],
                
   function( morphism )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
-    return Size( ObjectList( Source( morphism ) ) );
+    if IsMatrixObj( MorphismMatrix( morphism ) ) then
+        
+        return NrRows( MorphismMatrix( morphism ) );
+        
+    else
+        
+        return Size( ObjectList( Source( morphism ) ) );
+        
+    fi;
     
 end );
 
@@ -204,8 +254,17 @@ InstallMethod( NrCols,
                [ IsAdditiveClosureMorphism ],
                
   function( morphism )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
-    return Size( ObjectList( Range( morphism ) ) );
+    if IsMatrixObj( MorphismMatrix( morphism ) ) then
+        
+        return NrCols( MorphismMatrix( morphism ) );
+        
+    else
+        
+        return Size( ObjectList( Range( morphism ) ) );
+        
+    fi;
     
 end );
 
@@ -265,7 +324,7 @@ InstallMethod( ExtendFunctorToAdditiveClosures,
         
         listlist := List( [ 1 .. NrRows( alpha ) ], i -> List( [ 1 .. NrCols( alpha ) ], j -> ApplyFunctor( F, alpha[i,j] ) ) );
         
-        return AdditiveClosureMorphism( source, listlist, range );
+        return AdditiveClosureMorphismListList( source, listlist, range );
         
     end );
     
@@ -406,6 +465,8 @@ InstallMethod( \[\,\],
                [ IsAdditiveClosureMorphism, IsInt, IsInt ],
                
   function( morphism, i, j )
+    local matrix_element_as_morphism;
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     if not ( i in [ 1 .. NrRows( morphism ) ]
         and j in [ 1 .. NrCols( morphism ) ] ) then
@@ -414,7 +475,9 @@ InstallMethod( \[\,\],
         
     fi;
     
-    return MorphismMatrix( morphism )[ i, j ];
+    matrix_element_as_morphism := CapCategory( morphism )!.matrix_element_as_morphism;
+    
+    return matrix_element_as_morphism( MorphismMatrix( morphism )[i, j] );
     
 end );
 
@@ -617,23 +680,23 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
         size := Size( object_list );
         
-        listlist := List( [ 1 .. size ], i -> [ ] );
+        listlist := List( [ 1 .. size ], i ->
+                        List( [ 1 .. size ], function( j )
+                            
+                            if i = j then
+                                
+                                return IdentityMorphism( object_list[i] );
+                                
+                            else
+                                
+                                return ZeroMorphism( object_list[i], object_list[j] );
+                                
+                            fi;
+                            
+                        end )
+                    );
         
-        for i in [ 1 .. size ] do
-            
-            listlist[i][i] := IdentityMorphism( object_list[i] );
-            
-            for j in [ i + 1 .. size ]  do
-                
-                listlist[i][j] := ZeroMorphism( object_list[i], object_list[j] );
-                
-                listlist[j][i] := ZeroMorphism( object_list[j], object_list[i] );
-                
-            od;
-            
-        od;
-        
-        return AdditiveClosureMorphism( object, listlist, object );
+        return AdditiveClosureMorphismListList( object, listlist, object );
         
     end );
     
@@ -650,25 +713,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
         size_list_range := Size( object_list_range );
         
-        if size_list_source = 0 or size_list_range = 0 then
-            
-            return AdditiveClosureMorphism( source, [ ], range );
-            
-        fi;
+        listlist := List( [ 1 .. size_list_source ], i ->
+                        List( [ 1 .. size_list_range ], j ->
+                            ZeroMorphism( object_list_source[i], object_list_range[j] )
+                        )
+                    );
         
-        listlist := List( [ 1 .. size_list_source ], i -> [ ] );
-        
-        for i in [ 1 .. size_list_source ] do
-            
-            for j in [ 1 .. size_list_range ] do
-                
-                listlist[i][j] := ZeroMorphism( object_list_source[i], object_list_range[j] );
-                
-            od;
-            
-        od;
-        
-        return AdditiveClosureMorphism( source, listlist, range );
+        return AdditiveClosureMorphismListList( source, listlist, range );
         
     end );
     
@@ -685,31 +736,19 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
         nr_cols_2 := NrCols( morphism_2 );
         
-        if ForAny( [ nr_rows_1, nr_cols_2 ], IsZero ) then
-            
-            return AdditiveClosureMorphism( Source( morphism_1 ), [ ], Range( morphism_2 ) );
-            
-        fi;
-        
         if ForAny( [ nr_cols_1, nr_rows_2 ], IsZero ) then
             
             return ZeroMorphism( Source( morphism_1 ), Range( morphism_2 ) );
             
         fi;
         
-        listlist := List( [ 1 .. nr_rows_1 ], i -> [ ] );
+        listlist := List( [ 1 .. nr_rows_1 ], i ->
+                        List( [ 1 .. nr_cols_2 ], j ->
+                            Sum( List( [ 1 .. nr_cols_1 ], k -> PreCompose( morphism_1[i, k], morphism_2[k, j] ) ) )
+                        )
+                    );
         
-        for i in [ 1 .. nr_rows_1 ] do
-            
-            for j in [ 1 .. nr_cols_2 ] do
-                
-                listlist[i][j] := Sum( List( [ 1 .. nr_cols_1 ], k -> PreCompose( morphism_1[i, k], morphism_2[k, j] ) ) );
-                
-            od;
-            
-        od;
-        
-        return AdditiveClosureMorphism( Source( morphism_1 ), listlist, Range( morphism_2 ) );
+        return AdditiveClosureMorphismListList( Source( morphism_1 ), listlist, Range( morphism_2 ) );
         
     end );
     
@@ -731,9 +770,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                         i -> List( [ 1 .. NrCols( morphism_1 ) ],
                             j -> morphism_1[i, j] + morphism_2[i, j] ) );
         
-        return AdditiveClosureMorphism( Source( morphism_1 ),
-                                        listlist,
-                                        Range( morphism_1 ) );
+        return AdditiveClosureMorphismListList( Source( morphism_1 ),
+                                                listlist,
+                                                Range( morphism_1 ) );
         
     end );
     
@@ -746,9 +785,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                         i -> List( [ 1 .. NrCols( morphism ) ],
                             j -> - ( morphism[i, j] ) ) );
         
-        return AdditiveClosureMorphism( Source( morphism ),
-                                        listlist,
-                                        Range( morphism ) );
+        return AdditiveClosureMorphismListList( Source( morphism ),
+                                                listlist,
+                                                Range( morphism ) );
         
     end );
     ##
@@ -785,9 +824,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                         )
                     );
         
-        return AdditiveClosureMorphism( test_object,
-                                        listlist,
-                                        direct_sum );
+        return AdditiveClosureMorphismListList( test_object,
+                                                listlist,
+                                                direct_sum );
         
     end );
     
@@ -809,9 +848,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                         )
                     );
         
-        return AdditiveClosureMorphism( direct_sum,
-                                        listlist,
-                                        test_object );
+        return AdditiveClosureMorphismListList( direct_sum,
+                                                listlist,
+                                                test_object );
         
     end );
     
@@ -825,7 +864,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                             i -> List( [ 1 .. NrCols( alpha ) ],
                                 j -> MultiplyWithElementOfCommutativeRingForMorphisms( r, alpha[i, j] ) ) );
             
-            return AdditiveClosureMorphism( Source( alpha ), listlist, Range( alpha ) );
+            return AdditiveClosureMorphismListList( Source( alpha ), listlist, Range( alpha ) );
             
       end );
     
@@ -862,17 +901,17 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             ##
             AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
               function( source, alpha, beta, range )
-                local size_i, size_k, size_j, size_l;
+                local size_i, size_j, size_s, size_t;
                 
-                size_i := NrCols( alpha );
+                size_i := NrRows( alpha );
                 
-                size_k := NrRows( alpha );
+                size_j := NrCols( alpha );
                 
-                size_j := NrRows( beta );
+                size_s := NrRows( beta );
                 
-                size_l := NrCols( beta );
+                size_t := NrCols( beta );
                 
-                if ForAny( [ size_i, size_k, size_j, size_l ], IsZero ) then
+                if size_i <= 0 or size_j <= 0 or size_s <= 0 or size_t <= 0 then
                     
                     return ZeroMorphism( source, range );
                     
@@ -880,12 +919,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                 
                 return MorphismBetweenDirectSums(
                         source,
-                        List( [ 1 .. size_i ], i ->
-                          List( [ 1 .. size_k ], k -> 
+                        List( [ 1 .. size_j ], j ->
+                          List( [ 1 .. size_i ], i ->
                             MorphismBetweenDirectSums(
-                              List( [ 1 .. size_j ], j ->
-                                List( [ 1 .. size_l ], l ->
-                                  HomomorphismStructureOnMorphisms( alpha[k, i], beta[j, l] )
+                              List( [ 1 .. size_s ], s ->
+                                List( [ 1 .. size_t ], t ->
+                                  HomomorphismStructureOnMorphisms( alpha[i, j], beta[s, t] )
                                 )
                               )
                             )
@@ -986,7 +1025,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                             )
                           );
                 
-                return AdditiveClosureMorphism(
+                return AdditiveClosureMorphismListList(
                         A,
                         List( [ 1 .. size_i ], i ->
                           List( [ 1 .. size_j ], j ->
