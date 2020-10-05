@@ -82,6 +82,7 @@ end );
 InstallMethod( CategoryOfRowsObjectOp,
                [ IsCategoryOfRows, IsInt ],
   function( category, rank )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     if rank < 0 then
       
@@ -117,6 +118,7 @@ InstallMethod( CategoryOfRowsMorphism,
                
   function( source, homalg_matrix, range )
     local homalg_ring, category;
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     category := CapCategory( source );
     
