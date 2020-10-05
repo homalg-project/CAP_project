@@ -15,7 +15,7 @@ InstallMethod( AdditiveClosure,
                [ IsCapCategory ],
                
   function( underlying_category )
-    local category, matrix_element_as_morphism, list_list_as_matrix, to_be_finalized;
+    local category, matrix_element_as_morphism, list_list_as_matrix, homalg_ring, to_be_finalized;
     
     if not ( HasIsAbCategory( underlying_category ) and IsAbCategory( underlying_category ) ) then
         
@@ -36,15 +36,52 @@ InstallMethod( AdditiveClosure,
        
     fi;
     
-    if matrix_element_as_morphism = fail then
+    if IsRingAsCategory( underlying_category ) and IsHomalgRing( UnderlyingRing( underlying_category ) ) then
         
-        matrix_element_as_morphism := IdFunc;
+        homalg_ring := UnderlyingRing( underlying_category );
         
-    fi;
-    
-    if list_list_as_matrix = fail then
+        if matrix_element_as_morphism = fail then
+            
+            matrix_element_as_morphism := function( r )
+                #% CAP_JIT_RESOLVE_FUNCTION
+                
+                return RingAsCategoryMorphismOp( RingAsCategory( homalg_ring ), r );
+                
+            end;
+            
+        fi;
         
-        list_list_as_matrix := ReturnFirst;
+        if list_list_as_matrix = fail then
+            
+            list_list_as_matrix := function( listlist, m, n )
+              local ring_elements;
+                
+                ring_elements :=
+                    List( listlist,
+                        row -> List( row,
+                            entry -> UnderlyingRingElement( entry )
+                        )
+                    );
+                
+                return HomalgMatrix( ring_elements, m, n, homalg_ring );
+                
+            end;
+            
+        fi;
+        
+    else
+        
+        if matrix_element_as_morphism = fail then
+            
+            matrix_element_as_morphism := IdFunc;
+            
+        fi;
+        
+        if list_list_as_matrix = fail then
+            
+            list_list_as_matrix := ReturnFirst;
+            
+        fi;
         
     fi;
     
