@@ -32,31 +32,61 @@ InternalExteriorAlgebra_test:
 CompilerForCAP_test:
 	cd CompilerForCAP && make test
 
-doc: CAP_doc Modules_doc GradedModules_doc Linear_doc Generalized_doc GroupRepresentations_doc InternalExteriorAlgebra_doc CompilerForCAP_doc
+# BEGIN PACKAGE JANITOR
+doc: doc_CAP doc_ActionsForCAP doc_AttributeCategoryForCAP doc_CompilerForCAP doc_ComplexesAndFilteredObjectsForCAP doc_DeductiveSystemForCAP doc_FreydCategoriesForCAP doc_GeneralizedMorphismsForCAP doc_GradedModulePresentationsForCAP doc_GroupRepresentationsForCAP doc_HomologicalAlgebraForCAP doc_InternalExteriorAlgebraForCAP doc_LinearAlgebraForCAP doc_ModulePresentationsForCAP doc_ModulesOverLocalRingsForCAP doc_MonoidalCategories doc_ToricSheaves
 
-CAP_doc:
-	cd CAP && make doc
+doc_CAP:
+	$(MAKE) -C CAP doc
 
-Modules_doc:
-	cd ModulePresentationsForCAP && make doc
+doc_ActionsForCAP:
+	$(MAKE) -C ActionsForCAP doc
 
-GradedModules_doc:
-	cd GradedModulePresentationsForCAP && make doc
+doc_AttributeCategoryForCAP:
+	$(MAKE) -C AttributeCategoryForCAP doc
 
-Linear_doc:
-	cd LinearAlgebraForCAP && make doc
+doc_CompilerForCAP:
+	$(MAKE) -C CompilerForCAP doc
 
-Generalized_doc:
-	cd GeneralizedMorphismsForCAP && make doc
+doc_ComplexesAndFilteredObjectsForCAP:
+	$(MAKE) -C ComplexesAndFilteredObjectsForCAP doc
 
-GroupRepresentations_doc:
-	cd GroupRepresentationsForCAP && make doc
+doc_DeductiveSystemForCAP:
+	$(MAKE) -C DeductiveSystemForCAP doc
 
-InternalExteriorAlgebra_doc:
-	cd InternalExteriorAlgebraForCAP && make doc
+doc_FreydCategoriesForCAP:
+	$(MAKE) -C FreydCategoriesForCAP doc
 
-CompilerForCAP_doc:
-	cd CompilerForCAP && make doc
+doc_GeneralizedMorphismsForCAP:
+	$(MAKE) -C GeneralizedMorphismsForCAP doc
+
+doc_GradedModulePresentationsForCAP:
+	$(MAKE) -C GradedModulePresentationsForCAP doc
+
+doc_GroupRepresentationsForCAP:
+	$(MAKE) -C GroupRepresentationsForCAP doc
+
+doc_HomologicalAlgebraForCAP:
+	$(MAKE) -C HomologicalAlgebraForCAP doc
+
+doc_InternalExteriorAlgebraForCAP:
+	$(MAKE) -C InternalExteriorAlgebraForCAP doc
+
+doc_LinearAlgebraForCAP:
+	$(MAKE) -C LinearAlgebraForCAP doc
+
+doc_ModulePresentationsForCAP:
+	$(MAKE) -C ModulePresentationsForCAP doc
+
+doc_ModulesOverLocalRingsForCAP:
+	$(MAKE) -C ModulesOverLocalRingsForCAP doc
+
+doc_MonoidalCategories:
+	$(MAKE) -C MonoidalCategories doc
+
+doc_ToricSheaves:
+	$(MAKE) -C ToricSheaves doc
+
+# END PACKAGE JANITOR
 
 ci-test: homalg_compatibility doc
 	cd CAP && make ci-test

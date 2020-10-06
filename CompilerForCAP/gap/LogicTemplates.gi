@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # CompilerForCAP: Speed up computations in CAP categories
 #
 # Implementations

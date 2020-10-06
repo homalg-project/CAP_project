@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # CAP: Categories, Algorithms, Programming
 #
 # This file tests if the package can be loaded without errors or warnings.
