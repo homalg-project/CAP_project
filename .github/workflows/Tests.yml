@@ -33,14 +33,40 @@ jobs:
           # set SOURCE_DATE_EPOCH for reproducible PDFs
           export SOURCE_DATE_EPOCH=0
           TERM=dumb make -C CAP_project -j $(nproc) --output-sync ci-test
+          cp ./CAP_project/.codecov.yml ./
           curl -s https://codecov.io/bash | bash
           cd CAP_project
           CUR_SHA=$(git rev-parse --verify HEAD)
-          git worktree add branch_doc/ doc || (echo "There was an error. Make sure there is a branch named 'doc'."; exit 1)
+          git worktree add branch_doc/ doc || (echo "There was an error. Make sure there is a branch named 'doc'. See https://github.com/homalg-project/PackageJanitor#error-there-was-an-error-make-sure-there-is-a-branch-named-doc"; exit 1)
+          cp ActionsForCAP/doc/manual.pdf branch_doc/ActionsForCAP.pdf
+          cd branch_doc
+          git add ActionsForCAP.pdf
+          git -c user.name='Doc Bot' -c user.email='empty' commit -m "Add ActionsForCAP.pdf for $CUR_SHA" --allow-empty
+          cd ..
+          cp AttributeCategoryForCAP/doc/manual.pdf branch_doc/AttributeCategoryForCAP.pdf
+          cd branch_doc
+          git add AttributeCategoryForCAP.pdf
+          git -c user.name='Doc Bot' -c user.email='empty' commit -m "Add AttributeCategoryForCAP.pdf for $CUR_SHA" --allow-empty
+          cd ..
           cp CompilerForCAP/doc/manual.pdf branch_doc/CompilerForCAP.pdf
           cd branch_doc
           git add CompilerForCAP.pdf
           git -c user.name='Doc Bot' -c user.email='empty' commit -m "Add CompilerForCAP.pdf for $CUR_SHA" --allow-empty
+          cd ..
+          cp ComplexesAndFilteredObjectsForCAP/doc/manual.pdf branch_doc/ComplexesAndFilteredObjectsForCAP.pdf
+          cd branch_doc
+          git add ComplexesAndFilteredObjectsForCAP.pdf
+          git -c user.name='Doc Bot' -c user.email='empty' commit -m "Add ComplexesAndFilteredObjectsForCAP.pdf for $CUR_SHA" --allow-empty
+          cd ..
+          cp DeductiveSystemForCAP/doc/manual.pdf branch_doc/DeductiveSystemForCAP.pdf
+          cd branch_doc
+          git add DeductiveSystemForCAP.pdf
+          git -c user.name='Doc Bot' -c user.email='empty' commit -m "Add DeductiveSystemForCAP.pdf for $CUR_SHA" --allow-empty
+          cd ..
+          cp FreydCategoriesForCAP/doc/manual.pdf branch_doc/FreydCategoriesForCAP.pdf
+          cd branch_doc
+          git add FreydCategoriesForCAP.pdf
+          git -c user.name='Doc Bot' -c user.email='empty' commit -m "Add FreydCategoriesForCAP.pdf for $CUR_SHA" --allow-empty
           cd ..
           cp GradedModulePresentationsForCAP/doc/manual.pdf branch_doc/GradedModulePresentationsForCAP.pdf
           cd branch_doc
@@ -52,15 +78,25 @@ jobs:
           git add GroupRepresentationsForCAP.pdf
           git -c user.name='Doc Bot' -c user.email='empty' commit -m "Add GroupRepresentationsForCAP.pdf for $CUR_SHA" --allow-empty
           cd ..
+          cp HomologicalAlgebraForCAP/doc/manual.pdf branch_doc/HomologicalAlgebraForCAP.pdf
+          cd branch_doc
+          git add HomologicalAlgebraForCAP.pdf
+          git -c user.name='Doc Bot' -c user.email='empty' commit -m "Add HomologicalAlgebraForCAP.pdf for $CUR_SHA" --allow-empty
+          cd ..
           cp InternalExteriorAlgebraForCAP/doc/manual.pdf branch_doc/InternalExteriorAlgebraForCAP.pdf
           cd branch_doc
           git add InternalExteriorAlgebraForCAP.pdf
           git -c user.name='Doc Bot' -c user.email='empty' commit -m "Add InternalExteriorAlgebraForCAP.pdf for $CUR_SHA" --allow-empty
           cd ..
-          cp FreydCategoriesForCAP/doc/manual.pdf branch_doc/FreydCategoriesForCAP.pdf
+          cp ModulesOverLocalRingsForCAP/doc/manual.pdf branch_doc/ModulesOverLocalRingsForCAP.pdf
           cd branch_doc
-          git add FreydCategoriesForCAP.pdf
-          git -c user.name='Doc Bot' -c user.email='empty' commit -m "Add FreydCategoriesForCAP.pdf for $CUR_SHA" --allow-empty
+          git add ModulesOverLocalRingsForCAP.pdf
+          git -c user.name='Doc Bot' -c user.email='empty' commit -m "Add ModulesOverLocalRingsForCAP.pdf for $CUR_SHA" --allow-empty
+          cd ..
+          cp ToricSheaves/doc/manual.pdf branch_doc/ToricSheaves.pdf
+          cd branch_doc
+          git add ToricSheaves.pdf
+          git -c user.name='Doc Bot' -c user.email='empty' commit -m "Add ToricSheaves.pdf for $CUR_SHA" --allow-empty
           cd ..
           # push iff using gap-stable and if on master branch
           if [ "${{ matrix.image }}" = "gapsystem/gap-docker" ] && [ "$CUR_SHA" = "$(git rev-parse origin/master)" ]; then \
