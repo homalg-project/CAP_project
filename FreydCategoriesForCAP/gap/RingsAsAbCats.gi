@@ -61,6 +61,7 @@ InstallMethod( RingAsCategoryMorphismOp,
                
   function( category, element )
     local unique_object;
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     unique_object := RingAsCategoryUniqueObject( category );
     

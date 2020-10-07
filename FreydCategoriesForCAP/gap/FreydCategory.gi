@@ -1753,16 +1753,35 @@ end );
 ####################################################################################
 
 InstallGlobalFunction( IsValidInputForFreydCategory,
-  function( category )
-    local result, installed_ops, required_ops, i;
-
+  function( category, args... )
+    local throw_error, result, required_ops, installed_ops, i;
+    
+    if Length( args ) = 0 then
+        
+        throw_error := true;
+        
+    elif Length( args ) = 1 and args[1] in [ true, false ] then
+        
+        throw_error := args[1];
+        
+    else
+        
+        Error( "IsValidInputForFreydCategory must be called with at most two arguments and the second argument (if given) must be true or false" );
+        
+    fi;
+    
     # set return value
     result := true;
 
     # first check if the category has been finalized (i.e. no methods are to be added...)
     if not HasIsFinalized( category ) or not IsFinalized( category ) then
-
-        Error( "Underlying category must be finalized" );
+        
+        if throw_error then
+            
+            Error( "Underlying category must be finalized" );
+            
+        fi;
+        
         result := false;
 
     fi;
@@ -1793,10 +1812,15 @@ InstallGlobalFunction( IsValidInputForFreydCategory,
     installed_ops := ListInstalledOperationsOfCategory( category );
 
     for i in required_ops do
-
+      
       if not CanCompute( category, i ) then
-
-        Error( Concatenation( i, " cannot be computed but is needed for an underlying category of Freyd category" ) );
+        
+        if throw_error then
+          
+          Error( Concatenation( i, " cannot be computed but is needed for an underlying category of Freyd category" ) );
+          
+        fi;
+        
         result := false;
 
       fi;
@@ -1805,8 +1829,13 @@ InstallGlobalFunction( IsValidInputForFreydCategory,
 
     # if all required methods are installed, check if the category is also additive
     if not HasIsAdditiveCategory( category ) then
-
-      Error( "an underlying category of a Freyd category must be additive, but the attribute is not set for the category in question" );
+      
+      if throw_error then
+        
+        Error( "an underlying category of a Freyd category must be additive, but the attribute is not set for the category in question" );
+        
+      fi;
+      
       result := false;
 
     fi;

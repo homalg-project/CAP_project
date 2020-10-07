@@ -215,6 +215,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
       
     fi;
     
+    TRY_TO_ADD_HOMOMORPHISM_STRUCTURE_LEFT( category );
+    
 end );
 
 ##
@@ -2093,4 +2095,141 @@ end );
     
     end, 1000 );
 
+end );
+
+##
+## Homomorphism structure
+##
+
+##
+InstallGlobalFunction( TRY_TO_ADD_HOMOMORPHISM_STRUCTURE_LEFT,
+                       
+  function( category )
+    local homalg_ring, CR, matrix_element_as_morphism, list_list_as_matrix, enable_compilation, compilation_option, CRplus, freyd, o, obj_in_freyd, obj_from_freyd, mor_in_freyd, mor_from_freyd, phi;
+    
+    homalg_ring := category!.ring_for_representation_category;
+    
+    # we have to make sure that all categories are finalized
+    
+    CR := RingAsCategory( homalg_ring : overhead := false );;
+    Finalize( CR );
+    if HasRangeCategoryOfHomomorphismStructure( CR ) then
+        Finalize( RangeCategoryOfHomomorphismStructure( CR ) );
+    fi;
+    
+    enable_compilation := IsPackageMarkedForLoading( "CompilerForCAP", ">= 2020.06.27" );
+    
+    if enable_compilation then
+        
+        compilation_option := [ "HomomorphismStructureOnMorphismsWithGivenObjects" ];
+        
+    else
+        
+        compilation_option := false;
+        
+    fi;
+    
+    CRplus := AdditiveClosure( CR : enable_compilation := compilation_option );
+    Finalize( CRplus );
+    
+    if IsValidInputForFreydCategory( CRplus, false ) then
+    
+        freyd := FreydCategory( CRplus );
+        Finalize( freyd );
+        
+        if HasRangeCategoryOfHomomorphismStructure( freyd ) then
+            
+            o := AsAdditiveClosureObject( RingAsCategoryUniqueObject( CR ) );
+            
+            obj_in_freyd := function( obj )
+              local source, range;
+                
+                source := DirectSum( CRplus, ListWithIdenticalEntries( NrRows( UnderlyingMatrix( obj ) ), o ) );
+                range := DirectSum( CRplus, ListWithIdenticalEntries( NrCols( UnderlyingMatrix( obj ) ), o ) );
+                
+                return FreydCategoryObject( AdditiveClosureMorphism( source, UnderlyingMatrix( obj ), range ) );
+                
+            end;
+            
+            obj_from_freyd := function( obj )
+                
+                return AsLeftPresentation( MorphismMatrix( RelationMorphism( obj ) ) );
+                
+            end;
+            
+            mor_in_freyd := function( mor )
+              local source, range, add_source, add_range;
+                
+                source := obj_in_freyd( Source( mor ) );
+                range := obj_in_freyd( Range( mor ) );
+                
+                add_source := DirectSum( CRplus, ListWithIdenticalEntries( NrRows( UnderlyingMatrix( mor ) ), o ) );
+                add_range := DirectSum( CRplus, ListWithIdenticalEntries( NrCols( UnderlyingMatrix( mor ) ), o ) );
+                
+                return FreydCategoryMorphism( source, AdditiveClosureMorphism( add_source, UnderlyingMatrix( mor ), add_range ), range );
+                
+            end;
+            
+            mor_from_freyd := function( mor )
+              local source, range;
+                
+                source := obj_from_freyd( Source( mor ) );
+                range := obj_from_freyd( Range( mor ) );
+                         
+                return PresentationMorphism( source, MorphismMatrix( MorphismDatum( mor ) ), range );
+                
+            end;
+            
+            if enable_compilation then
+                
+                # read logic functions and templates
+                ReadPackage( "ModulePresentationsForCAP", "gap/CompilerLogic.gi");
+                
+                # precompile CRplus
+                phi := IdentityMorphism( o );
+                HomomorphismStructureOnMorphisms( phi, phi );
+                
+            fi;
+            
+            ##
+            SetRangeCategoryOfHomomorphismStructure( category, RangeCategoryOfHomomorphismStructure( freyd ) );
+            
+            ##
+            AddDistinguishedObjectOfHomomorphismStructure( category, {} -> DistinguishedObjectOfHomomorphismStructure( freyd ) );
+            
+            ##
+            AddHomomorphismStructureOnObjects( category, function( obj1, obj2 )
+                
+                return HomomorphismStructureOnObjects( obj_in_freyd( obj1 ), obj_in_freyd( obj2 ) );
+                
+            end );
+            
+            ##
+            AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
+              function( source, alpha, beta, range )
+                
+                return HomomorphismStructureOnMorphismsWithGivenObjects( source, mor_in_freyd( alpha ), mor_in_freyd( beta ), range );
+                
+            end );
+            
+            ##
+            AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
+              function( alpha )
+                
+                return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( mor_in_freyd( alpha ) );
+                
+            end );
+            
+            ##
+            AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
+              function( obj1, obj2, mor )
+                
+                return mor_from_freyd( InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( obj_in_freyd( obj1 ), obj_in_freyd( obj2 ), mor ) );
+                
+            end );
+            
+        fi;
+        
+    fi;
+    
 end );
