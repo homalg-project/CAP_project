@@ -2,3 +2,4 @@ highlighter: rouge
 include: ['CAP', 'GeneralizedMorphismsForCAP', 'LinearAlgebraForCAP', 'ModulePresentationsForCAP', 'MonoidalCategories' ]
 baseurl: /CAP_project
 repository: homalg-project/CAP_project
+markdown: GFM
