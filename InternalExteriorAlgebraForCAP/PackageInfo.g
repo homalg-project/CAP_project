@@ -38,16 +38,17 @@ Persons := [
   ),
 ],
 
-#SourceRepository := rec( Type := "TODO", URL := "URL" ),
-#IssueTrackerURL := "TODO",
-#SupportEmail := "TODO",
-
-PackageWWWHome := "http://homalg-project.github.io/CAP_project/",
-
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-README_URL     := Concatenation( ~.PackageWWWHome, "README.md" ),
-ArchiveURL     := Concatenation( ~.PackageWWWHome,
-                                 "/", ~.PackageName, "-", ~.Version ),
+# BEGIN URLS
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/homalg-project/CAP_project",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := "https://github.com/homalg-project/CAP_project/tree/master/InternalExteriorAlgebraForCAP",
+PackageInfoURL  := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/InternalExteriorAlgebraForCAP/PackageInfo.g",
+README_URL      := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/InternalExteriorAlgebraForCAP/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/InternalExteriorAlgebraForCAP-", ~.Version, "/InternalExteriorAlgebraForCAP-", ~.Version ),
+# END URLS
 
 ArchiveFormats := ".tar.gz",
 
@@ -90,5 +91,3 @@ AvailabilityTest := function()
 #Keywords := [ "TODO" ],
 
 ));
-
-

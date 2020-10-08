@@ -47,11 +47,17 @@ Persons := [
   ),
 ],
 
-PackageWWWHome := "http://TODO/",
-
-ArchiveURL     := Concatenation( ~.PackageWWWHome, "DeductiveSystemForCAP-", ~.Version ),
-README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
+# BEGIN URLS
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/homalg-project/CAP_project",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := "https://github.com/homalg-project/CAP_project/tree/master/DeductiveSystemForCAP",
+PackageInfoURL  := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/DeductiveSystemForCAP/PackageInfo.g",
+README_URL      := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/DeductiveSystemForCAP/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/DeductiveSystemForCAP-", ~.Version, "/DeductiveSystemForCAP-", ~.Version ),
+# END URLS
 
 ArchiveFormats := ".tar.gz",
 
@@ -93,5 +99,3 @@ TestFile := "tst/testall.g",
 #Keywords := [ "TODO" ],
 
 ));
-
-

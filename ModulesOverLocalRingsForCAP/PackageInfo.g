@@ -35,16 +35,17 @@ Persons := [
   ),
 ],
 
-#SourceRepository := rec( Type := "TODO", URL := "URL" ),
-#IssueTrackerURL := "TODO",
-#SupportEmail := "TODO",
-
-PackageWWWHome := "http://TODO/",
-
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-README_URL     := Concatenation( ~.PackageWWWHome, "README.md" ),
-ArchiveURL     := Concatenation( ~.PackageWWWHome,
-                                 "/", ~.PackageName, "-", ~.Version ),
+# BEGIN URLS
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/homalg-project/CAP_project",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := "https://github.com/homalg-project/CAP_project/tree/master/ModulesOverLocalRingsForCAP",
+PackageInfoURL  := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/ModulesOverLocalRingsForCAP/PackageInfo.g",
+README_URL      := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/ModulesOverLocalRingsForCAP/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-", ~.Version, "/ModulesOverLocalRingsForCAP-", ~.Version ),
+# END URLS
 
 ArchiveFormats := ".tar.gz",
 
@@ -88,5 +89,3 @@ TestFile := "tst/testall.g",
 #Keywords := [ "TODO" ],
 
 ));
-
-
