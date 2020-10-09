@@ -3,3 +3,5 @@ include: ['CAP', 'GeneralizedMorphismsForCAP', 'LinearAlgebraForCAP', 'ModulePre
 baseurl: /CAP_project
 repository: homalg-project/CAP_project
 markdown: GFM
+plugins:
+  - jekyll-redirect-from
