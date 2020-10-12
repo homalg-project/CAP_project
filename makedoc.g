@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # WrapperCategories: Construct an equivalent wrapper category out of a CAP category
 #
 # This file is a script which compiles the package manual.

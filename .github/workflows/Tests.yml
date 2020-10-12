@@ -37,3 +37,14 @@ jobs:
           TERM=dumb make -C WrapperCategories -j $(nproc) --output-sync ci-test
           cp ./WrapperCategories/.codecov.yml ./
           curl -s https://codecov.io/bash | bash
+          git config --global user.name "Bot"
+          git config --global user.email "empty"
+          cd WrapperCategories
+          CUR_SHA=$(git rev-parse --verify HEAD)
+          if [ "${{ matrix.image }}" = "gapsystem/gap-docker" ] && [ "$CUR_SHA" = "$(git rev-parse origin/master)" ] && [ $(dirname "$GITHUB_REPOSITORY") = "homalg-project" ]; then \
+            git worktree add gh-pages/ gh-pages || (echo "There was an error. Make sure there is a branch named 'gh-pages'. See https://github.com/homalg-project/PackageJanitor#error-there-was-an-error-make-sure-there-is-a-branch-named-gh-pages"; exit 1); \
+            git checkout master; \
+            ./make_dist.sh --token "${{ secrets.GITHUB_TOKEN }}"; \
+          else \
+            echo "Not making a release."; \
+          fi

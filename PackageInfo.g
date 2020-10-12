@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # WrapperCategories: Construct an equivalent wrapper category out of a CAP category
 #
 # This file contains package meta data. For additional information on
@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "WrapperCategories",
 Subtitle := "Construct an equivalent wrapper category out of a CAP category",
 Version := Maximum( [
-                   "2020.09.10", ## Mohamed's version
+                   "2020.10.01", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2020.08.16", ## Fabian's version
                    ## this line prevents merge conflicts
