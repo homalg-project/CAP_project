@@ -32,6 +32,10 @@ InstallMethod( LeftPresentations,
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
       
+      SetIsLinearCategoryOverCommutativeRing( category, true );
+      
+      SetCommutativeRingOfLinearCategory( category, ring );
+      
     fi;
     
     ADD_FUNCTIONS_FOR_LEFT_PRESENTATION( category );
@@ -98,6 +102,10 @@ InstallMethod( RightPresentations,
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
+      
+      SetIsLinearCategoryOverCommutativeRing( category, true );
+      
+      SetCommutativeRingOfLinearCategory( category, ring );
       
     fi;
     
@@ -213,6 +221,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_PRESENTATION,
       
       ADD_COEVALUATION_MORPHISM_LEFT( category );
       
+      ADD_MULTIPLY_WITH_ELEMENT_OF_COMMUTATIVE_RING_FOR_MORPHISMS_LEFT_AND_RIGHT( category );
+      
     fi;
     
 end );
@@ -277,6 +287,8 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION,
       ADD_EVALUATION_MORPHISM_RIGHT( category );
       
       ADD_COEVALUATION_MORPHISM_RIGHT( category );
+      
+      ADD_MULTIPLY_WITH_ELEMENT_OF_COMMUTATIVE_RING_FOR_MORPHISMS_LEFT_AND_RIGHT( category );
       
     fi;
     
@@ -2093,4 +2105,18 @@ end );
     
     end, 1000 );
 
+end );
+
+##
+InstallGlobalFunction( ADD_MULTIPLY_WITH_ELEMENT_OF_COMMUTATIVE_RING_FOR_MORPHISMS_LEFT_AND_RIGHT,
+  
+  function( category )
+    
+    AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+      { r, phi } -> PresentationMorphism(
+                        Source( phi ),
+                        r * UnderlyingMatrix( phi ),
+                        Range( phi )
+                    ) );
+                    
 end );
