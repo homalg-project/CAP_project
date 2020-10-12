@@ -15,7 +15,7 @@ Please take a look at our [manual](https://github.com/homalg-project/CAP_project
 
 ## Website
 
-Please visit our website: http://homalg-project.github.io/CAP_project/
+Please visit our website: https://homalg-project.github.io/docs/CAP_project/
 <!-- BEGIN FOOTER -->
 ## Packages of [CAP_project](/../../):
 | Name | Description | Documentation |
