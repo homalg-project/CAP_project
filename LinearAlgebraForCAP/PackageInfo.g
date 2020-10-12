@@ -65,11 +65,17 @@ Persons := [
   ),
 ],
 
-PackageWWWHome := "http://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/",
-
-ArchiveURL     := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-", ~.Version, "/LinearAlgebraForCAP-", ~.Version ),
-README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
+# BEGIN URLS
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/homalg-project/CAP_project",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := "https://homalg-project.github.io/CAP_project/LinearAlgebraForCAP",
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-", ~.Version, "/LinearAlgebraForCAP-", ~.Version ),
+# END URLS
 
 ArchiveFormats := ".tar.gz .zip",
 
@@ -112,5 +118,3 @@ AvailabilityTest := function()
     end,
 
 ));
-
-

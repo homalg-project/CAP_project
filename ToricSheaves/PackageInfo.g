@@ -28,11 +28,17 @@ Persons := [
   ),
 ],
 
-PackageWWWHome := "http://homalg-project.github.io/CAP_project/",
-
-ArchiveURL     := Concatenation( ~.PackageWWWHome, "ToricSheaves-", ~.Version ),
-README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
+# BEGIN URLS
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/homalg-project/CAP_project",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := "https://github.com/homalg-project/CAP_project/tree/master/ToricSheaves",
+PackageInfoURL  := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/ToricSheaves/PackageInfo.g",
+README_URL      := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/ToricSheaves/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ToricSheaves-", ~.Version, "/ToricSheaves-", ~.Version ),
+# END URLS
 
 ArchiveFormats := ".tar.gz",
 
@@ -77,5 +83,3 @@ TestFile := "tst/testall.g",
 #Keywords := [ "TODO" ],
 
 ));
-
-
