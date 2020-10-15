@@ -1,5 +1,5 @@
 #
-# GitHubgPagesForGAP - a template for using GitHub Pages within GAP packages
+# GitHubPagesForGAP - a template for using GitHub Pages within GAP packages
 #
 # Copyright (c) 2013-2014 Max Horn
 #
@@ -46,12 +46,9 @@ PrintPackageList := function(stream, pkgs)
     AppendTo(stream, "\n");
 end;
 
-# HACK
-MakeReadWriteGlobal("SetPackageInfo");
-SetPackageInfo:=function(pkg)
-    local stream, authors, maintainers, formats, f, name;
-    name := pkg.PackageName;
-    stream := OutputTextFile( Concatenation( "../_data/", name, ".yml" ), false);
+GeneratePackageYML:=function(pkg)
+    local stream, authors, maintainers, formats, f;
+    stream := OutputTextFile("_data/package.yml", false);
     SetPrintFormattingStatus(stream, false);
     
     AppendTo(stream, "name: ", pkg.PackageName, "\n");
@@ -106,7 +103,7 @@ SetPackageInfo:=function(pkg)
         AppendTo(stream, "\n");
     fi;
 
-    AppendTo(stream, "abstract: '", pkg.AbstractHTML, "'\n\n");
+    AppendTo(stream, "abstract: ", pkg.AbstractHTML, "\n\n");
 
     AppendTo(stream, "status: ", pkg.Status, "\n");
     AppendTo(stream, "doc-html: ", pkg.PackageDoc.HTMLStart, "\n");
@@ -118,4 +115,5 @@ SetPackageInfo:=function(pkg)
     CloseStream(stream);
 end;
 Read("PackageInfo.g");
+GeneratePackageYML(GAPInfo.PackageInfoCurrent);
 QUIT;
