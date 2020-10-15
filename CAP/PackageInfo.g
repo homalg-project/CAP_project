@@ -13,20 +13,20 @@ PackageName := "CAP",
 Subtitle := "Categories, Algorithms, Programming",
 
 Version := Maximum( [
-  "2020.05.16", ## Mohamed's version
+  "2020.05-16", ## Mohamed's version
   ## this line prevents merge conflicts
-  "2015.04.01", ## Oystein's version
+  "2015.04-01", ## Oystein's version
   ## this line prevents merge conflicts
-  "2019.06.05", ## Sebas' version
+  "2019.06-05", ## Sebas' version
   ## this line prevents merge conflicts
-  "2020.04.16", ## Sepp's version
+  "2020.04-16", ## Sepp's version
   ## this line prevents merge conflicts
-  "2020.09.01", ## Fabian's version
+  "2020.10-01", ## Fabian's version
   ## this line prevents merge conflicts
-  "2020.08.01", ## Kamal's version
+  "2020.08-01", ## Kamal's version
 ] ),
 
-Date := Concatenation( ~.Version{[ 9, 10 ]}, "/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
+Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
 

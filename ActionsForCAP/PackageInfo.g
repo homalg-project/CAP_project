@@ -12,17 +12,16 @@ PackageName := "ActionsForCAP",
 Subtitle := "Actions and Coactions for CAP",
 
 Version := Maximum( [
-  "2019.09.16", ## Mohamed's version
+  "2019.09-16", ## Mohamed's version
   ## this line prevents merge conflicts
-  "2015.08.19", ## Sebas' version
+  "2015.08-19", ## Sebas' version
   ## this line prevents merge conflicts
-  "2017.01.11", ## Sepp's version
+  "2017.01-11", ## Sepp's version
   ## this line prevents merge conflicts
-  "2020.04.27", ## Fabian's version
+  "2020.10-01", ## Fabian's version
 ] ),
 
-Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
 
@@ -60,13 +59,13 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://github.com/homalg-project/CAP_project/tree/master/ActionsForCAP",
-PackageInfoURL  := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/ActionsForCAP/PackageInfo.g",
-README_URL      := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/ActionsForCAP/README.md",
+PackageWWWHome  := "https://homalg-project.github.io/CAP_project/ActionsForCAP",
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/ActionsForCAP/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/ActionsForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-", ~.Version, "/ActionsForCAP-", ~.Version ),
 # END URLS
 
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages

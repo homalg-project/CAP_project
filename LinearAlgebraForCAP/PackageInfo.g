@@ -13,20 +13,19 @@ PackageName := "LinearAlgebraForCAP",
 Subtitle := "Category of Matrices over a Field for CAP",
 
 Version := Maximum( [
-  "2020.05.17", ## Mohamed's version
+  "2020.05-17", ## Mohamed's version
   ## this line prevents merge conflicts
-  "2017.12.30", ## Sebas' version
+  "2017.12-30", ## Sebas' version
   ## this line prevents merge conflicts
-  "2020.04.16", ## Sepp's version
+  "2020.04-16", ## Sepp's version
   ## this line prevents merge conflicts
-  "2019.08.07", ## Fabian's version
+  "2020.10-01", ## Fabian's version
   ## this line prevents merge conflicts
-  "2020.01.10", ## Kamal's version
+  "2020.01-10", ## Kamal's version
 
 ] ),
 
-Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
 

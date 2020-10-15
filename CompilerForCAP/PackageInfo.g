@@ -11,10 +11,10 @@ SetPackageInfo( rec(
 PackageName := "CompilerForCAP",
 Subtitle := "Speed up computations in CAP categories",
 Version := Maximum( [
-  "2020.07.09", ## Fabian's version
+  "2020.10-01", ## Fabian's version
   ## this line prevents merge conflicts
 ] ),
-Date := Concatenation( ~.Version{[ 9, 10 ]}, "/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
+Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -40,13 +40,13 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://github.com/homalg-project/CAP_project/tree/master/CompilerForCAP",
-PackageInfoURL  := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/CompilerForCAP/PackageInfo.g",
-README_URL      := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/CompilerForCAP/README.md",
+PackageWWWHome  := "https://homalg-project.github.io/CAP_project/CompilerForCAP",
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/CompilerForCAP/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/CompilerForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-", ~.Version, "/CompilerForCAP-", ~.Version ),
 # END URLS
 
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages

@@ -244,6 +244,7 @@ else
     tmp := GAPInfo.PackageInfoCurrent.ArchiveURL;
     Print("GAP_ERROR=\"The ArchiveURL has unexpected value '",tmp,"'\"\n");
 fi;
+Print("PDFFile=\"",GAPInfo.PackageInfoCurrent.PackageDoc.PDFFile,"\"\n");
 EOF
 
 # evaluate the output of GAP, which should be valid shell script code
@@ -407,6 +408,13 @@ git archive --prefix="$BASENAME/" "$TAG" . | tar xf - -C "$TMP_DIR"
 # Build the package documentation, run autoconf, etc.
 cd "$TMP_DIR/$BASENAME"
 
+# adjust date
+# Note that we cannot use sed's `-i` option for in-place editing, as
+# that is a non-portable extension of POSIX, which works differently in
+# BSD and GNU make.
+sed "s;Date := .*;Date := \"$(date +%d/%m/%Y)\",;" PackageInfo.g > PackageInfo.g.bak
+mv PackageInfo.g.bak PackageInfo.g
+
 notice "Removing unnecessary files"
 rm -rf .github .circleci
 rm -f .git* .hg* .cvs*
@@ -450,6 +458,20 @@ fi
 
 # make sure every file is readable
 chmod -R a+r .
+
+# adjust links to other manuals
+# Note that we cannot use sed's `-i` option for in-place editing, as
+# that is a non-portable extension of POSIX, which works differently in
+# BSD and GNU make.
+for f in ./*/*.htm* ; do
+  sed 's;href="/home/gap/.gap/pkg/homalg_project/Modules/doc/;href="https://homalg-project.github.io/homalg_project/Modules/doc/;g' "$f" > "$f.bak"
+  mv "$f.bak" "$f"
+done
+
+for f in ./*/*.htm* ; do
+  sed 's;href="/home/gap/.gap/pkg/homalg_project/homalg/doc/;href="https://homalg-project.github.io/homalg_project/homalg/doc/;g' "$f" > "$f.bak"
+  mv "$f.bak" "$f"
+done
 
 # basic sanity check
 fgrep -q -r '<a href="/' */*.htm* &&
@@ -591,6 +613,26 @@ for EXT in $ARCHIVE_FORMATS ; do
         -H "Content-Type: $MIMETYPE" \
         --data-binary @"$FULLNAME")
 done
+
+
+######################################################################
+#
+# Upload PDF
+#
+cd "$TMP_DIR"
+echo ""
+
+FULLNAME="$TMP_DIR/$BASENAME/$PDFFile"
+if [ ! -f "$FULLNAME" ] ; then
+	error "could not find PDF"
+fi
+notice "Uploading PDF"
+response=$(curl --fail --progress-bar -o "$TMP_DIR/upload.log" \
+	-X POST "$UPLOAD_URL/$RELEASE_ID/assets?name=$BASENAME.pdf" \
+	-H "Accept: application/vnd.github.v3+json" \
+	-H "Authorization: token $TOKEN" \
+	-H "Content-Type: application/pdf" \
+	--data-binary @"$FULLNAME")
 
 
 ######################################################################
