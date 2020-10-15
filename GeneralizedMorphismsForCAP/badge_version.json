@@ -1,0 +1,8 @@
+---
+---
+{
+  "schemaVersion": 1,
+  "label": "version",
+  "message": "{{ site.data.GeneralizedMorphismsForCAP.version }}",
+  "color": "orange"
+}
