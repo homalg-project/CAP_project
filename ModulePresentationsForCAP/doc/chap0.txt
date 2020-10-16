@@ -6,10 +6,10 @@
                            [1X Category R-pres for CAP [101X
   
   
-                                   2019.08.07
+                                   2020.04.16
   
   
-                                 7 August 2019
+                                 16 April 2020
   
   
                                Sebastian Gutsche
@@ -20,7 +20,7 @@
   
   Sebastian Gutsche
       Email:    [7Xmailto:gutsche@mathematik.uni-siegen.de[107X
-      Homepage: [7Xhttp://www.uni-siegen.de/fb6/rmi/[107X
+      Homepage: [7Xhttps://sebasguts.github.io/[107X
       Address:  [33X[0;14YDepartment Mathematik[133X
                 [33X[0;14YUniversität Siegen[133X
                 [33X[0;14YWalter-Flex-Straße 3[133X

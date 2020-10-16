@@ -84,8 +84,8 @@
     [4X[28XA monomorphism in Category of left presentations of Q[x,y,z][128X[104X
     [4X[25Xgap>[125X [27XDisplay( Source( iota1 ) );[127X[104X
     [4X[28X0, -z,y,[128X[104X
-    [4X[28X-y,x, 0,[128X[104X
-    [4X[28X-z,0, x [128X[104X
+    [4X[28X-z,0, x,[128X[104X
+    [4X[28X-y,x, 0 [128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in Category of left presentations of Q[x,y,z][128X[104X
     [4X[25Xgap>[125X [27Xpi1 := CoverByFreeModule( Source( iota1 ) );;[127X[104X
@@ -99,25 +99,25 @@
     [4X[25Xgap>[125X [27Xiota2 := KernelEmbedding( d1 );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( iota2 );[127X[104X
     [4X[28X0, -z,y,[128X[104X
-    [4X[28X-y,x, 0,[128X[104X
-    [4X[28X-z,0, x [128X[104X
+    [4X[28X-z,0, x,[128X[104X
+    [4X[28X-y,x, 0 [128X[104X
     [4X[28X[128X[104X
     [4X[28XA monomorphism in Category of left presentations of Q[x,y,z][128X[104X
     [4X[25Xgap>[125X [27XDisplay( Source( iota2 ) );;[127X[104X
-    [4X[28Xx,z,-y[128X[104X
+    [4X[28Xx,-y,z[128X[104X
     [4X[28X[128X[104X
     [4X[28XAn object in Category of left presentations of Q[x,y,z][128X[104X
     [4X[25Xgap>[125X [27Xpi2 := CoverByFreeModule( Source( iota2 ) );;[127X[104X
     [4X[25Xgap>[125X [27Xd2 := PreCompose( pi2, iota2 );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( d2 );[127X[104X
     [4X[28X0, -z,y,[128X[104X
-    [4X[28X-y,x, 0,[128X[104X
-    [4X[28X-z,0, x [128X[104X
+    [4X[28X-z,0, x,[128X[104X
+    [4X[28X-y,x, 0 [128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in Category of left presentations of Q[x,y,z][128X[104X
     [4X[25Xgap>[125X [27Xiota3 := KernelEmbedding( d2 );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( iota3 );[127X[104X
-    [4X[28Xx,z,-y[128X[104X
+    [4X[28Xx,-y,z[128X[104X
     [4X[28X[128X[104X
     [4X[28XA monomorphism in Category of left presentations of Q[x,y,z][128X[104X
     [4X[25Xgap>[125X [27XDisplay( Source( iota3 ) );[127X[104X
@@ -127,7 +127,7 @@
     [4X[25Xgap>[125X [27Xpi3 := CoverByFreeModule( Source( iota3 ) );;[127X[104X
     [4X[25Xgap>[125X [27Xd3 := PreCompose( pi3, iota3 );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( d3 );[127X[104X
-    [4X[28Xx,z,-y[128X[104X
+    [4X[28Xx,-y,z[128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in Category of left presentations of Q[x,y,z][128X[104X
     [4X[25Xgap>[125X [27XN := HomalgMatrix( [ [ "x" ] ], 1, 1, R );;[127X[104X

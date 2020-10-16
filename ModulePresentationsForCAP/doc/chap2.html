@@ -130,8 +130,8 @@ z
 A monomorphism in Category of left presentations of Q[x,y,z]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Source( iota1 ) );</span>
 0, -z,y,
--y,x, 0,
--z,0, x 
+-z,0, x,
+-y,x, 0 
 
 An object in Category of left presentations of Q[x,y,z]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi1 := CoverByFreeModule( Source( iota1 ) );;</span>
@@ -145,25 +145,25 @@ A morphism in Category of left presentations of Q[x,y,z]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota2 := KernelEmbedding( d1 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota2 );</span>
 0, -z,y,
--y,x, 0,
--z,0, x 
+-z,0, x,
+-y,x, 0 
 
 A monomorphism in Category of left presentations of Q[x,y,z]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Source( iota2 ) );;</span>
-x,z,-y
+x,-y,z
 
 An object in Category of left presentations of Q[x,y,z]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi2 := CoverByFreeModule( Source( iota2 ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d2 := PreCompose( pi2, iota2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( d2 );</span>
 0, -z,y,
--y,x, 0,
--z,0, x 
+-z,0, x,
+-y,x, 0 
 
 A morphism in Category of left presentations of Q[x,y,z]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota3 := KernelEmbedding( d2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( iota3 );</span>
-x,z,-y
+x,-y,z
 
 A monomorphism in Category of left presentations of Q[x,y,z]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Source( iota3 ) );</span>
@@ -173,7 +173,7 @@ An object in Category of left presentations of Q[x,y,z]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi3 := CoverByFreeModule( Source( iota3 ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d3 := PreCompose( pi3, iota3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( d3 );</span>
-x,z,-y
+x,-y,z
 
 A morphism in Category of left presentations of Q[x,y,z]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := HomalgMatrix( [ [ "x" ] ], 1, 1, R );;</span>
