@@ -1,17 +1,17 @@
 name: LinearAlgebraForCAP
-version: 2020.01.10
-date: 10/01/2020
+version: 2020.05.17
+date: 17/05/2020
 description: Category of Matrices over a Field for CAP
 
 authors:
     - name: Sebastian Gutsche
-      url: http://www.uni-siegen.de/fb6/rmi/
+      url: https://sebasguts.github.io/
     - name: Sebastian Posur
       url: https://sebastianpos.github.io
 
 maintainers:
     - name: Sebastian Gutsche
-      url: http://www.uni-siegen.de/fb6/rmi/
+      url: https://sebasguts.github.io/
     - name: Sebastian Posur
       url: https://sebastianpos.github.io
 
@@ -23,28 +23,31 @@ needed-pkgs:
       url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
     - name: "ToolsForHomalg"
       version: ">=2015.09.18"
-      url: "https://homalg-project.github.io/homalg_project/ToolsForHomalg/"
+      url: "https://homalg-project.github.io/homalg_project/ToolsForHomalg"
     - name: "MatricesForHomalg"
-      version: ">= 2019.02.01"
-      url: "https://homalg-project.github.io/homalg_project/MatricesForHomalg/"
+      version: ">= 2020.05.12"
+      url: "https://homalg-project.github.io/homalg_project/MatricesForHomalg"
+    - name: "GaussForHomalg"
+      version: ">= 2019.09.02"
+      url: "https://homalg-project.github.io/homalg_project/GaussForHomalg"
     - name: "CAP"
-      version: ">= 2020.01.10"
-      url: "http://homalg-project.github.io/CAP_project/CAP/"
+      version: ">= 2020.05.16"
+      url: "https://homalg-project.github.io/CAP_project/CAP"
     - name: "MonoidalCategories"
       version: ">= 2019.01.16"
-      url: "http://homalg-project.github.io/CAP_project/MonoidalCategories/"
+      url: "https://homalg-project.github.io/CAP_project/MonoidalCategories"
 
-www: http://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/
-readme: http://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/README
-packageinfo: http://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/PackageInfo.g
+www: https://homalg-project.github.io/CAP_project/LinearAlgebraForCAP
+readme: https://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/README.md
+packageinfo: https://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2020.01.10/LinearAlgebraForCAP-2020.01.10.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2020.05.17/LinearAlgebraForCAP-2020.05.17.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2020.01.10/LinearAlgebraForCAP-2020.01.10.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-2020.05.17/LinearAlgebraForCAP-2020.05.17.zip
 
-abstract: '<span class="pkgname">LinearAlgebraForCAP</span> provides a skeletal model of the category of finite dimensional vector spaces over a computable field.'
+abstract: <span class="pkgname">LinearAlgebraForCAP</span> provides a skeletal model of the category of finite dimensional vector spaces over a computable field.
 
 status: deposited
 doc-html: doc/chap0.html
