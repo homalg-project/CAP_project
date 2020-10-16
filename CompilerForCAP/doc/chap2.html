@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (CompilerForCAP) - Chapter 2: Improving and extending the compiler</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap2"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap2_mj.html">[MathJax on]</a></p>
+<p><a id="X7D62EFD07F991E56" name="X7D62EFD07F991E56"></a></p>
+<div class="ChapSects"><a href="chap2.html#X7D62EFD07F991E56">2 <span class="Heading">Improving and extending the compiler</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X86EC986580F17F44">2.1 <span class="Heading">Logic</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X804E3CAD82BE47BB">2.1-1 CapJitAddLogicFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8592DC367A493530">2.1-2 CapJitAddLogicTemplate</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X84E0923883AE3917">2.2 <span class="Heading">Enhanced syntax trees</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X820FCB30796F2486">2.2-1 ENHANCED_SYNTAX_TREE</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7803FE057B30BAAF">2.2-2 ENHANCED_SYNTAX_TREE_CODE</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X867D15087B608A10">2.3 <span class="Heading">Iterating over a syntax tree</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C227788859AA50E">2.3-1 CapJitIterateOverTree</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8508AEF8845565A1">2.4 <span class="Heading">Tools</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X85163E59818FA6DC">2.4-1 CapJitGetFunctionCallArgumentsFromJitArgs</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X864F72358263AE0E">2.4-2 CapJitGetExpressionValueFromJitArgs</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X868F5CD681DAFA69">2.4-3 CapJitPrettyPrintSyntaxTree</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BF496F97D50591D">2.4-4 CapJitIsCallToGlobalFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7869C74E78CAAB21">2.4-5 CapJitResultFuncCombineChildren</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X856A15627FE43A24">2.4-6 CapJitContainsRefToFVAROutsideOfFuncStack</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8195576380113ACF">2.4-7 CapJitGetOrCreateGlobalVariable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D78F2228335D1F8">2.4-8 CapJitThrowErrorOnSideEffects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X84BE00B18663765C">2.4-9 CapJitFindNodeDeep</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7B97567F7B56CBFA">2.4-10 CapJitGetNodeByPath</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X80608A9A78CF95E0">2.5 <span class="Heading">Compilation steps</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A46699B7922FB1B">2.5-1 CapJitDroppedHandledEdgeCases</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X873B439E79B06D85">2.5-2 CapJitDroppedUnusedVariables</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7DF03AC082073C4C">2.5-3 CapJitInlinedArguments</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7933165D803DEDB2">2.5-4 CapJitInlinedFunctionCalls</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C3064C27FBB1A0D">2.5-5 CapJitInlinedSimpleFunctionCalls</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7FDC395E80CF1BD7">2.5-6 CapJitInlinedVariableAssignments</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X837576207D282C04">2.5-7 CapJitAppliedLogic</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7AE756B8878FD449">2.5-8 CapJitAppliedLogicTemplates</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7FD883BA85F7EBE5">2.5-9 CapJitResolvedGlobalVariables</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D12C378812745DA">2.5-10 CapJitResolvedOperations</a></span>
+</div></div>
+</div>
+
+<h3>2 <span class="Heading">Improving and extending the compiler</span></h3>
+
+<p>The easiest way to extend the compiler is by adding more logic to it, see <a href="chap2.html#X86EC986580F17F44"><span class="RefLink">2.1</span></a>. For writing logic functions you also have to iterate over enhanced syntax trees, see <a href="chap2.html#X84E0923883AE3917"><span class="RefLink">2.2</span></a> and <a href="chap2.html#X867D15087B608A10"><span class="RefLink">2.3</span></a>. You might also want to use available tools, see <a href="chap2.html#X8508AEF8845565A1"><span class="RefLink">2.4</span></a>. If you want to improve an existing compilation step or add a completely new one, see <a href="chap2.html#X80608A9A78CF95E0"><span class="RefLink">2.5</span></a>.</p>
+
+<p>For debugging you can:</p>
+
+
+<ul>
+<li><p>use <code class="func">CapJitPrettyPrintSyntaxTree</code> (<a href="chap2.html#X868F5CD681DAFA69"><span class="RefLink">2.4-3</span></a>),</p>
+
+</li>
+<li><p>set <code class="code">debug</code> to <code class="code">true</code> in <code class="func">CapJitCompiledFunction</code> (<a href="chap1.html#X86F1D06C81670DC8"><span class="RefLink">1.7-1</span></a>) (Note: this causes informational break loops which are not actual errors),</p>
+
+</li>
+<li><p>use the <code class="code">debug</code> and <code class="code">debug_path</code> record entries of logic templates (see <code class="func">CapJitAddLogicTemplate</code> (<a href="chap2.html#X8592DC367A493530"><span class="RefLink">2.1-2</span></a>)).</p>
+
+</li>
+</ul>
+<p><a id="X86EC986580F17F44" name="X86EC986580F17F44"></a></p>
+
+<h4>2.1 <span class="Heading">Logic</span></h4>
+
+<p><a id="X804E3CAD82BE47BB" name="X804E3CAD82BE47BB"></a></p>
+
+<h5>2.1-1 CapJitAddLogicFunction</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitAddLogicFunction</code>( <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Adds the function <var class="Arg">func</var> to the list of logic functions. For a list of pre-installed logic functions, which can be used as guiding examples, see <code class="code">CompilerForCAP/gap/Logic.gi</code>. Technically, <var class="Arg">func</var> should accept an (enhanced) syntax tree and some JIT arguments and return an (enhanced) syntax tree. Semantically, <var class="Arg">func</var> should use some kind of "logic" to transform the tree. For example, <var class="Arg">func</var> could look for calls of <code class="code">CallFuncList</code> and replace them by calls to the actual function. Note: Often it is easier to use a logic template (see <code class="func">CapJitAddLogicTemplate</code> (<a href="chap2.html#X8592DC367A493530"><span class="RefLink">2.1-2</span></a>)) than a logic function.</p>
+
+<p><a id="X8592DC367A493530" name="X8592DC367A493530"></a></p>
+
+<h5>2.1-2 CapJitAddLogicTemplate</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitAddLogicTemplate</code>( <var class="Arg">template</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Adds the logic template <var class="Arg">template</var> to the list of logic templates. For a list of pre-installed logic templates, which can be used as guiding examples, see <code class="code">CompilerForCAP/gap/LogicTemplates.gi</code>. Logic templates are records with the following entries:</p>
+
+
+<ul>
+<li><p><code class="code">src_template</code> and <code class="code">dst_template</code> (required): strings containing valid GAP code</p>
+
+</li>
+<li><p><code class="code">variable_names</code> (required): a list of strings</p>
+
+</li>
+<li><p><code class="code">variable_filters</code> (optional): a list of filters with the same length as <code class="code">variable_names</code>, defaults to a list of <code class="code">IsObject</code></p>
+
+</li>
+<li><p><code class="code">returns_value</code> (required): a boolean</p>
+
+</li>
+<li><p><code class="code">new_funcs</code> (optional): a list of lists of strings, defaults to the empty list</p>
+
+</li>
+<li><p><code class="code">needed_packages</code> (optional): a list of pairs (i.e. lists with two entries) of strings, defaults to the empty list</p>
+
+</li>
+<li><p><code class="code">debug</code> (optional): a boolean</p>
+
+</li>
+<li><p><code class="code">debug_path</code> (optional): a path</p>
+
+</li>
+</ul>
+<p>Semantics: <code class="code">src_template</code> is a piece of code which should be replaced by <code class="code">dst_template</code>:</p>
+
+
+<ul>
+<li><p>The function <code class="func">CapJitAppliedLogicTemplates</code> (<a href="chap2.html#X7AE756B8878FD449"><span class="RefLink">2.5-8</span></a>) tries to find occurences of <code class="code">src_template</code> in a tree and potentially replaces them by <code class="code">dst_template</code>.</p>
+
+</li>
+<li><p>When trying to find an occurence of <code class="code">src_template</code> in a tree, all strings occuring in the list <code class="code">variable_names</code> are considered as variables, i.e., they match any value in the tree. If a variable occurs multiple times, the corresponding parts of the tree must be equal.</p>
+
+</li>
+<li><p><code class="func">CapJitAppliedLogicTemplates</code> (<a href="chap2.html#X7AE756B8878FD449"><span class="RefLink">2.5-8</span></a>) uses <var class="Arg">jit_args</var> to compute a concrete value of each variable. The template is only applied if all values match the corresponding filters in <code class="code">variable_filters</code>.</p>
+
+</li>
+<li><p>For each function in <code class="code">dst_template</code>, <code class="func">CapJitAppliedLogicTemplates</code> (<a href="chap2.html#X7AE756B8878FD449"><span class="RefLink">2.5-8</span></a>) tries to find a corresponding function in <code class="code">src_template</code>. The functions are matched by comparing the lists of names of local variables. If for a function in <code class="code">dst_template</code> no corresponding function in <code class="code">src_template</code> exists, you have to add the list of names of local variables of this function to <code class="code">new_funcs</code>.</p>
+
+</li>
+<li><p><code class="code">returns_value</code> must be <code class="code">true</code> if <code class="code">src_template</code> defines an expression, <code class="code">false</code> if it defines a statement.</p>
+
+</li>
+<li><p><code class="code">needed_packages</code> has the same format as <code class="code">NeededOtherPackages</code> in <code class="code">PackageInfo.g</code>. The template is only evaluated if the packages in <code class="code">needed_packages</code> are loaded in the correct versions.</p>
+
+</li>
+<li><p><code class="code">debug</code> can be set to <code class="code">true</code> to print more information while <code class="func">CapJitAppliedLogicTemplates</code> (<a href="chap2.html#X7AE756B8878FD449"><span class="RefLink">2.5-8</span></a>) tries to apply the template. (Note: this causes informational break loops which are not actual errors).</p>
+
+</li>
+<li><p><code class="code">debug_path</code> can be set to a specific path to get exact information why the subtree at this path does or does not match <code class="code">src_template</code>.</p>
+
+</li>
+</ul>
+<p>Technical note: <code class="code">src_template</code> is only replaced by <code class="code">dst_template</code> if the result is well-defined, i.e., if all function variables reference only functions in their function stack. This can be used to move "static" variables (i.e. variables not depending on local variables) outside of functions. Example: consider a template with <code class="code">src_template</code> given by <code class="code">Sum( List( L, x -&gt; x^2 * value ) )</code> and <code class="code">dst_template</code> given by <code class="code">Sum( List( L, x -&gt; x^2 ) ) * value</code> (assuming distributivity). This replacement is only valid if <code class="code">value</code> is independent of <code class="code">x</code>. However, we do not need to make this explicit at any point, because if <code class="code">value</code> depends on <code class="code">x</code>, the result <code class="code">Sum( List( L, x -&gt; x^2 ) ) * value</code> is not well-defined, so the template is not applied anyway.</p>
+
+<p><a id="X84E0923883AE3917" name="X84E0923883AE3917"></a></p>
+
+<h4>2.2 <span class="Heading">Enhanced syntax trees</span></h4>
+
+<p>To simplify the handling of syntax trees, the CAP compiler enhances syntax trees in the following ways:</p>
+
+
+<ul>
+<li><p>All node types starting with STAT_SEQ_STAT are replaced by STAT_SEQ_STAT.</p>
+
+</li>
+<li><p>All node types starting with EXPR_FUNCCALL_ are replaced by EXPR_FUNCCALL.</p>
+
+</li>
+<li><p>All node types starting with EXPR_PROCCALL_ are replaced by EXPR_PROCCALL.</p>
+
+</li>
+<li><p>All node types starting with STAT_FOR are replaced by STAT_FOR.</p>
+
+</li>
+<li><p>Nested STAT_SEQ_STATs are flattened.</p>
+
+</li>
+<li><p>A final STAT_RETURN_VOID in functions is dropped.</p>
+
+</li>
+<li><p>Branches of STAT_IF etc. are given the type BRANCH_IF.</p>
+
+</li>
+<li><p>If the body of a BRANCH_IF is not a STAT_SEQ_STAT, the body is wrapped in a STAT_SEQ_STAT.</p>
+
+</li>
+<li><p>The key-value pairs of EXPR_RECs are given the type REC_KEY_VALUE_PAIR.</p>
+
+</li>
+<li><p>A globally unique ID is assigned to each function.</p>
+
+</li>
+<li><p>The handling of local variables and higher variables is unified by the concept of function variables: function variables (FVARs) reference local variables in functions via the function id (<code class="code">func_id</code>) and the position (<code class="code">pos</code>) in the list of arguments/local variables of the function. For easier debugging, the name of the local variable is stored in the entry <code class="code">initial_name</code> of the FVAR.</p>
+
+</li>
+</ul>
+<p><a id="X820FCB30796F2486" name="X820FCB30796F2486"></a></p>
+
+<h5>2.2-1 ENHANCED_SYNTAX_TREE</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ENHANCED_SYNTAX_TREE</code>( <var class="Arg">func</var>[, <var class="Arg">globalize_hvars</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record</p>
+
+<p>Returns an enhanced syntax tree of the plain function <var class="Arg">func</var> (see above). If the second argument is set to <code class="code">true</code>, higher variables pointing to variables in the environment of <var class="Arg">func</var> are assigned to global variables and referenced via these global variables in the tree. Otherwise, an error is thrown if such higher variables exist.</p>
+
+<p><a id="X7803FE057B30BAAF" name="X7803FE057B30BAAF"></a></p>
+
+<h5>2.2-2 ENHANCED_SYNTAX_TREE_CODE</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ENHANCED_SYNTAX_TREE_CODE</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a function</p>
+
+<p>Converts the enhanced syntax tree <var class="Arg">tree</var> to a function.</p>
+
+<p><a id="X867D15087B608A10" name="X867D15087B608A10"></a></p>
+
+<h4>2.3 <span class="Heading">Iterating over a syntax tree</span></h4>
+
+<p><a id="X7C227788859AA50E" name="X7C227788859AA50E"></a></p>
+
+<h5>2.3-1 CapJitIterateOverTree</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitIterateOverTree</code>( <var class="Arg">tree</var>, <var class="Arg">pre_func</var>, <var class="Arg">result_func</var>, <var class="Arg">additional_arguments_func</var>, <var class="Arg">additional_arguments</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: see description</p>
+
+<p>Iterates recursively over a syntax tree and calls <var class="Arg">pre_func</var> and <var class="Arg">result_func</var> for each node. Overview:</p>
+
+
+<ul>
+<li><p><var class="Arg">pre_func</var> allows to modify a (sub-)tree before the recursion over its children. For example, you could detect occurrences of <code class="code">if true then &lt;body&gt; fi;</code> and simply return the body to simplify the tree.</p>
+
+</li>
+<li><p><var class="Arg">result_func</var> allows to construct the return value of a (sub-)tree from the return values of its children. For example, if you want to check if a node of a certain type occurs in the tree, return <code class="code">true</code> if <var class="Arg">tree</var> has the type or any of the children returned <code class="code">true</code>, otherwise return <code class="code">false</code>.</p>
+
+</li>
+<li><p><var class="Arg">additional_arguments[_func]</var> allows to create and pass additional data to the children of <var class="Arg">tree</var>, for example the path or the function stack.</p>
+
+</li>
+</ul>
+<p>Details:</p>
+
+
+<ul>
+<li><p>First, <var class="Arg">pre_func</var> is called with the following arguments: <var class="Arg">tree</var> and <var class="Arg">additional_arguments</var>. If it returns <code class="code">fail</code>, the recursion is skipped and <var class="Arg">result_func</var> is called immediately with <code class="code">result</code> set to <code class="code">fail</code> (see below). Otherwise it must return a syntax tree, which is then used as the value of <var class="Arg">tree</var> for the remaining computation. If you do not need this function, use <code class="code">ReturnFirst</code>.</p>
+
+</li>
+<li><p>Secondly, for each child of <var class="Arg">tree</var>, <var class="Arg">additional_arguments_func</var> is called with the following arguments: <var class="Arg">tree</var>, the key of the child, and <var class="Arg">additional_arguments</var>. If <var class="Arg">tree</var> is a list, the key of a child is its list index. If <var class="Arg">tree</var> is a record, the key of a child is the corresponding record name of <var class="Arg">tree</var>. The return value is used in the next step.</p>
+
+</li>
+<li><p>Next, the recursion starts: for each child, <code class="func">CapJitIterateOverTree</code> is called again with the following arguments: the child, <var class="Arg">pre_func</var>, <var class="Arg">result_func</var>, <var class="Arg">additional_arguments_func</var>, and the return value of the call of <var class="Arg">additional_arguments_func</var> in the step above.</p>
+
+</li>
+<li><p>The results of the recursive calls are stored in the variable <code class="code">result</code>: If <var class="Arg">tree</var> is a list, <code class="code">result</code> is also a list and the <code class="code">i</code>-th entry of this list is the return value of the <code class="code">result_func</code> of the <code class="code">i</code>-th child. If <var class="Arg">tree</var> is a record, <code class="code">result</code> is also a record and <code class="code">result.(key)</code> is the return value of the <code class="code">result_func</code> of the child named <code class="code">key</code>.</p>
+
+</li>
+<li><p>Next, <var class="Arg">result_func</var> is called with the following arguments: <var class="Arg">tree</var>, <code class="code">result</code>, and <var class="Arg">additional_arguments</var>. The return value should be the result of the current tree formed by combining the results of the children. For an example see <code class="func">CapJitResultFuncCombineChildren</code> (<a href="chap2.html#X7869C74E78CAAB21"><span class="RefLink">2.4-5</span></a>).</p>
+
+</li>
+<li><p>Finally, the return value of <var class="Arg">result_func</var> is returned.</p>
+
+</li>
+</ul>
+<p>Note: This function on its own does not modify the tree. However, you can make modifications in <var class="Arg">pre_func</var>, <var class="Arg">result_func</var>, and <var class="Arg">additional_arguments_func</var>. If you do not want to make these modifcations in-place, you can replace a (sub-)tree by a modified version in <var class="Arg">pre_func</var> and combine the modified (sub-)trees again using <code class="func">CapJitResultFuncCombineChildren</code> (<a href="chap2.html#X7869C74E78CAAB21"><span class="RefLink">2.4-5</span></a>) as <var class="Arg">result_func</var>.</p>
+
+<p><a id="X8508AEF8845565A1" name="X8508AEF8845565A1"></a></p>
+
+<h4>2.4 <span class="Heading">Tools</span></h4>
+
+<p><a id="X85163E59818FA6DC" name="X85163E59818FA6DC"></a></p>
+
+<h5>2.4-1 CapJitGetFunctionCallArgumentsFromJitArgs</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitGetFunctionCallArgumentsFromJitArgs</code>( <var class="Arg">tree</var>, <var class="Arg">path</var>, <var class="Arg">jit_args</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>Computes the arguments of the function call at the given <var class="Arg">path</var> in <var class="Arg">tree</var> when executing the function defined by <var class="Arg">tree</var> with arguments <var class="Arg">jit_args</var>. If the arguments cannot be determined, a list with first entry <code class="code">false</code> is returned. Otherwise, a list with <code class="code">true</code> as the first value and the computed arguments as the second value is returned.</p>
+
+<p><a id="X864F72358263AE0E" name="X864F72358263AE0E"></a></p>
+
+<h5>2.4-2 CapJitGetExpressionValueFromJitArgs</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitGetExpressionValueFromJitArgs</code>( <var class="Arg">tree</var>, <var class="Arg">path</var>, <var class="Arg">jit_args</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>Computes the value of the expression at the given <var class="Arg">path</var> in <var class="Arg">tree</var> when executing the function defined by <var class="Arg">tree</var> with arguments <var class="Arg">jit_args</var>. If the value cannot be determined, a list with first entry <code class="code">false</code> is returned. Otherwise, a list with <code class="code">true</code> as the first value and the computed value as the second value is returned.</p>
+
+<p><a id="X868F5CD681DAFA69" name="X868F5CD681DAFA69"></a></p>
+
+<h5>2.4-3 CapJitPrettyPrintSyntaxTree</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitPrettyPrintSyntaxTree</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Displays an enhanced syntax tree in a more useful way. For example, prints the type of a node on top.</p>
+
+<p><a id="X7BF496F97D50591D" name="X7BF496F97D50591D"></a></p>
+
+<h5>2.4-4 CapJitIsCallToGlobalFunction</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitIsCallToGlobalFunction</code>( <var class="Arg">tree</var>, <var class="Arg">condition</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>Checks if <var class="Arg">tree</var> is an EXPR_FUNCCALL with <code class="code">funcref</code> EXPR_GVAR such that <code class="code">gvar</code> fulfills <var class="Arg">condition</var>. If <var class="Arg">condition</var> is a string, <code class="code">gvar</code> must be equal to the string. Othwerwise, <var class="Arg">condition</var> must be a function returning a boolean when applied to <code class="code">gvar</code>.</p>
+
+<p><a id="X7869C74E78CAAB21" name="X7869C74E78CAAB21"></a></p>
+
+<h5>2.4-5 CapJitResultFuncCombineChildren</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitResultFuncCombineChildren</code>( <var class="Arg">tree</var>, <var class="Arg">result</var>, <var class="Arg">additional_arguments</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list or a record</p>
+
+<p>Can be used as a <code class="code">result_func</code> for <code class="func">CapJitIterateOverTree</code> (<a href="chap2.html#X7C227788859AA50E"><span class="RefLink">2.3-1</span></a>). Replaces <var class="Arg">tree</var><code class="code">.(key)</code> (resp. <var class="Arg">tree</var><code class="code">[key]</code>) by <var class="Arg">result</var><code class="code">.(key)</code> (resp. <var class="Arg">result</var><code class="code">[key]</code>) for all keys of children of <var class="Arg">tree</var> and returns the result. See <code class="func">CapJitIterateOverTree</code> (<a href="chap2.html#X7C227788859AA50E"><span class="RefLink">2.3-1</span></a>) for more details.</p>
+
+<p><a id="X856A15627FE43A24" name="X856A15627FE43A24"></a></p>
+
+<h5>2.4-6 CapJitContainsRefToFVAROutsideOfFuncStack</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitContainsRefToFVAROutsideOfFuncStack</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>Checks if <var class="Arg">tree</var> contains an FVAR which references a function outside of its function stack. Such a tree is not well-defined.</p>
+
+<p><a id="X8195576380113ACF" name="X8195576380113ACF"></a></p>
+
+<h5>2.4-7 CapJitGetOrCreateGlobalVariable</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitGetOrCreateGlobalVariable</code>( <var class="Arg">value</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a string</p>
+
+<p>Assigns <var class="Arg">value</var> to a global variable and returns the name of the global variable. If <var class="Arg">value</var> has already been assigned to a global variable by this function before, simply returns the name of that global variable.</p>
+
+<p><a id="X7D78F2228335D1F8" name="X7D78F2228335D1F8"></a></p>
+
+<h5>2.4-8 CapJitThrowErrorOnSideEffects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitThrowErrorOnSideEffects</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Checks if <var class="Arg">tree</var> contains statements or expressions indicating side effects. If yes, it throws an error. The following checks are performed:</p>
+
+
+<ul>
+<li><p><var class="Arg">tree</var> must be an enhanced syntax tree. In particular, it may not contain LVARs or HVARs.</p>
+
+</li>
+<li><p>The following statements and expressions are forbidden: STAT_ASS_GVAR, EXPR_ISB_GVAR, STAT_UNB_GVAR, EXPR_ISB_FVAR, EXPR_UNB_FVAR, STAT_PROCCALL.</p>
+
+</li>
+<li><p>An FVAR must not reference functions outside of its function stack (see also <code class="func">CapJitContainsRefToFVAROutsideOfFuncStack</code> (<a href="chap2.html#X856A15627FE43A24"><span class="RefLink">2.4-6</span></a>)).</p>
+
+</li>
+<li><p>An FVAR must be assigned at most once (this includes function arguments, which are assigned at least once, namely when the function is called). An exception is made for "rapid reassignments": if the same variable is assigned and then reassigned immediately in the next statement, this only counts as a single assignment.</p>
+
+</li>
+</ul>
+<p><a id="X84BE00B18663765C" name="X84BE00B18663765C"></a></p>
+
+<h5>2.4-9 CapJitFindNodeDeep</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitFindNodeDeep</code>( <var class="Arg">tree</var>, <var class="Arg">condition_func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record or fail</p>
+
+<p>Finds a node in <var class="Arg">tree</var> for which <var class="Arg">condition_func</var> returns <code class="code">true</code>. For each node, <var class="Arg">condition_func</var> is called with the node and current path as arguments, and must return a boolean. If multiple nodes are found, children are preferred over their parents (i.e. a "deep" node is returned). If no node can be found, <code class="code">fail</code> is returned.</p>
+
+<p><a id="X7B97567F7B56CBFA" name="X7B97567F7B56CBFA"></a></p>
+
+<h5>2.4-10 CapJitGetNodeByPath</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitGetNodeByPath</code>( <var class="Arg">tree</var>, <var class="Arg">path</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record</p>
+
+<p>Gets the node of <var class="Arg">tree</var> with path <var class="Arg">path</var>. Throws an error if no such node exists.</p>
+
+<p><a id="X80608A9A78CF95E0" name="X80608A9A78CF95E0"></a></p>
+
+<h4>2.5 <span class="Heading">Compilation steps</span></h4>
+
+<p><a id="X7A46699B7922FB1B" name="X7A46699B7922FB1B"></a></p>
+
+<h5>2.5-1 CapJitDroppedHandledEdgeCases</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitDroppedHandledEdgeCases</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record</p>
+
+<p>Idea: If the same edge case is handled multiple times in the tree by checking a condition and returning a value, all condition checks except the first can be dropped. Details: Keeps a record of conditions which immediately lead to a return, i.e., statements of the form <code class="code">if condition1 then return value; fi;</code>. If another statement of the form <code class="code">if condition2 then return value; fi;</code> is found later in the tree and if <code class="code">condition2 = true</code> implies <code class="code">condition1 = true</code>, the second statement is dropped.</p>
+
+<p><a id="X873B439E79B06D85" name="X873B439E79B06D85"></a></p>
+
+<h5>2.5-2 CapJitDroppedUnusedVariables</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitDroppedUnusedVariables</code>( <var class="Arg">tree</var>[, <var class="Arg">func_path</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record</p>
+
+<p>Drops assignments to local variables which are never referenced. If a path to a function is given as the second argument, only variables in this function are considered. Otherwise, all functions in <var class="Arg">tree</var> are considered. Marks unused variables with the prefix _UNUSED_. Assumes that arguments of function calls are inlined (i.e., you should use <code class="func">CapJitInlinedArguments</code> (<a href="chap2.html#X7DF03AC082073C4C"><span class="RefLink">2.5-3</span></a>) first).</p>
+
+<p><a id="X7DF03AC082073C4C" name="X7DF03AC082073C4C"></a></p>
+
+<h5>2.5-3 CapJitInlinedArguments</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitInlinedArguments</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record</p>
+
+<p>Example: transforms <code class="code">(function(x) return x; end)(1)</code> into <code class="code">(function() local x; x := 1; return x; end)()</code>. Details: Searches for function calls of resolved functions. Assigns the argument values to local variables at the beginning of the function, and drops the arguments (i.e., makes the function a 0-ary function).</p>
+
+<p><a id="X7933165D803DEDB2" name="X7933165D803DEDB2"></a></p>
+
+<h5>2.5-4 CapJitInlinedFunctionCalls</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitInlinedFunctionCalls</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record</p>
+
+<p>Example: transforms <code class="code">function() local x; x := (y -&gt; y + 2)(1); return x; end</code> into <code class="code">function() local x, y, r; y := 1; r := y + 2; x := r; return x; end</code>. Details: Searches for function calls of a resolved function in the right hand side of a variable assignment or a return statement. Inserts the body of the function right before the variable assignment / return statement to avoid the function call. Assumes that arguments of function calls are inlined (i.e., you should use <code class="func">CapJitInlinedArguments</code> (<a href="chap2.html#X7DF03AC082073C4C"><span class="RefLink">2.5-3</span></a>) first). Due to the nature of a <code class="code">return</code> statement breaking the execution and having no <code class="code">goto</code> keyword in GAP, only functions</p>
+
+
+<ul>
+<li><p>ending with a <code class="code">return</code> statement, or</p>
+
+</li>
+<li><p>ending with an if-(elif)-else-statement with <code class="code">return</code> statements at the end of all branches</p>
+
+</li>
+</ul>
+<p>and not containing other <code class="code">return</code> statements can be inlined.</p>
+
+<p><a id="X7C3064C27FBB1A0D" name="X7C3064C27FBB1A0D"></a></p>
+
+<h5>2.5-5 CapJitInlinedSimpleFunctionCalls</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitInlinedSimpleFunctionCalls</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record</p>
+
+<p>Replaces function calls of the form <code class="code">(function() return value; end)()</code> by <code class="code">value</code>. Assumes that arguments of function calls are inlined (i.e., you should use <code class="func">CapJitInlinedArguments</code> (<a href="chap2.html#X7DF03AC082073C4C"><span class="RefLink">2.5-3</span></a>) first).</p>
+
+<p><a id="X7FDC395E80CF1BD7" name="X7FDC395E80CF1BD7"></a></p>
+
+<h5>2.5-6 CapJitInlinedVariableAssignments</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitInlinedVariableAssignments</code>( <var class="Arg">tree</var>[, <var class="Arg">inline_gvars_only</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record</p>
+
+<p>Example: transforms <code class="code">function() local x; x := 1; return x^2; end</code> into <code class="code">function() return 1^2; end()</code>. Details: Searches for local variable assigments. Replace all references to the local variable in the same STAT_SEQ_STAT as the assignment by the right-hand side of the assignment. If the second argument is set to <code class="code">true</code>, this is only done if the right-hand side is a reference to a global variable. Assumes that any local variable is assigned at most once (this includes function arguments, which are assigned at least once, namely when the function is called). An exception is made for "rapid reassignments": if the same variable is assigned and then reassigned immediately in the next statement, the right-hand side of the first assignment is inserted into the right-hand side of the second assignment. Assumes that unused variables are dropped (i.e., you should use <code class="func">CapJitDroppedUnusedVariables</code> (<a href="chap2.html#X873B439E79B06D85"><span class="RefLink">2.5-2</span></a>) first). Drops the variables assignment after inlining if possible.</p>
+
+<p><a id="X837576207D282C04" name="X837576207D282C04"></a></p>
+
+<h5>2.5-7 CapJitAppliedLogic</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitAppliedLogic</code>( <var class="Arg">tree</var>, <var class="Arg">jit_args</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record</p>
+
+<p>Applies all logic functions (see <code class="func">CapJitAddLogicFunction</code> (<a href="chap2.html#X804E3CAD82BE47BB"><span class="RefLink">2.1-1</span></a>)) and logic templates (see <code class="func">CapJitAppliedLogicTemplates</code> (<a href="chap2.html#X7AE756B8878FD449"><span class="RefLink">2.5-8</span></a>)) to <var class="Arg">tree</var>.</p>
+
+<p><a id="X7AE756B8878FD449" name="X7AE756B8878FD449"></a></p>
+
+<h5>2.5-8 CapJitAppliedLogicTemplates</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitAppliedLogicTemplates</code>( <var class="Arg">tree</var>, <var class="Arg">jit_args</var>[, <var class="Arg">cleanup_only</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record</p>
+
+<p>Applies all logic templates (see <code class="func">CapJitAddLogicTemplate</code> (<a href="chap2.html#X8592DC367A493530"><span class="RefLink">2.1-2</span></a>)) to <var class="Arg">tree</var>. The arguments <var class="Arg">jit_args</var> are used to infer the types of variables. If the third argument is set to <code class="code">true</code>, only templates with empty <code class="code">dst_template</code> are applied. This can be used to quickly drop unwanted statements from the tree without applying all (possibly expensive) logic templates.</p>
+
+<p><a id="X7FD883BA85F7EBE5" name="X7FD883BA85F7EBE5"></a></p>
+
+<h5>2.5-9 CapJitResolvedGlobalVariables</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitResolvedGlobalVariables</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record</p>
+
+<p>Resolves global variables:</p>
+
+
+<ul>
+<li><p>Replaces a global variable referencing an integer, a string, or a boolean by EXPR_INT, EXPR_STRING, EXPR_TRUE or EXPR_FALSE.</p>
+
+</li>
+<li><p>Replaces a global variable referencing a plain function by the syntax tree of this function.</p>
+
+</li>
+<li><p>Replaces a record access of a global function by the value of this record access.</p>
+
+</li>
+</ul>
+<p><a id="X7D12C378812745DA" name="X7D12C378812745DA"></a></p>
+
+<h5>2.5-10 CapJitResolvedOperations</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitResolvedOperations</code>( <var class="Arg">tree</var>, <var class="Arg">jit_args</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record</p>
+
+<p>Tries to resolve operations in <var class="Arg">tree</var>:</p>
+
+
+<ul>
+<li><p>The attribute <code class="code">CapCategory</code> is resolved by computing the category using <var class="Arg">jit_args</var> and storing it in a global variable.</p>
+
+</li>
+<li><p>Operations of CAP categories are resolved by taking one of the functions added to the category via an <code class="code">Add</code> function.</p>
+
+</li>
+<li><p>Other operations are resolved by considering applicable methods of the operation with regard to arguments infered from <var class="Arg">jit_args</var>. Only methods annotated with the pragma CAP_JIT_RESOLVE_FUNCTION are resolved.</p>
+
+</li>
+</ul>
+<p>If the arguments of the operation cannot be infered from <var class="Arg">jit_args</var>, the operation is not resolved.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

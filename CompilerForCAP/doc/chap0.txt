@@ -1,0 +1,81 @@
+  
+  
+                                [1X CompilerForCAP [101X
+  
+  
+                   [1X Speed up computations in CAP categories [101X
+  
+  
+                                   2020.07.09
+  
+  
+                                  9 July 2020
+  
+  
+                                Fabian Zickgraf
+  
+  
+  
+  Fabian Zickgraf
+      Email:    [7Xmailto:fabian.zickgraf@uni-siegen.de[107X
+      Homepage: [7Xhttps://github.com/zickgraf/[107X
+      Address:  [33X[0;14YWalter-Flex-Straße 3[133X
+                [33X[0;14Y57068 Siegen[133X
+                [33X[0;14YGermany[133X
+  
+  
+  
+  -------------------------------------------------------
+  
+  
+  [1XContents (CompilerForCAP)[101X
+  
+  1 [33X[0;0YUsing the compiler[133X
+    1.1 [33X[0;0YTerminology[133X
+    1.2 [33X[0;0YCapabilities of the compiler[133X
+    1.3 [33X[0;0YRequirements[133X
+    1.4 [33X[0;0YActivating the compiler[133X
+    1.5 [33X[0;0YStopping the compiler at a certain level[133X
+      1.5-1 StopCompilationAtCategory
+      1.5-2 ContinueCompilationAtCategory
+    1.6 [33X[0;0YGetting information about the compilation process[133X
+      1.6-1 InfoCapJit
+    1.7 [33X[0;0YCompiling a function manually[133X
+      1.7-1 CapJitCompiledFunction
+    1.8 [33X[0;0YFAQ[133X
+  2 [33X[0;0YImproving and extending the compiler[133X
+    2.1 [33X[0;0YLogic[133X
+      2.1-1 CapJitAddLogicFunction
+      2.1-2 CapJitAddLogicTemplate
+    2.2 [33X[0;0YEnhanced syntax trees[133X
+      2.2-1 ENHANCED_SYNTAX_TREE
+      2.2-2 ENHANCED_SYNTAX_TREE_CODE
+    2.3 [33X[0;0YIterating over a syntax tree[133X
+      2.3-1 CapJitIterateOverTree
+    2.4 [33X[0;0YTools[133X
+      2.4-1 CapJitGetFunctionCallArgumentsFromJitArgs
+      2.4-2 CapJitGetExpressionValueFromJitArgs
+      2.4-3 CapJitPrettyPrintSyntaxTree
+      2.4-4 CapJitIsCallToGlobalFunction
+      2.4-5 CapJitResultFuncCombineChildren
+      2.4-6 CapJitContainsRefToFVAROutsideOfFuncStack
+      2.4-7 CapJitGetOrCreateGlobalVariable
+      2.4-8 CapJitThrowErrorOnSideEffects
+      2.4-9 CapJitFindNodeDeep
+      2.4-10 CapJitGetNodeByPath
+    2.5 [33X[0;0YCompilation steps[133X
+      2.5-1 CapJitDroppedHandledEdgeCases
+      2.5-2 CapJitDroppedUnusedVariables
+      2.5-3 CapJitInlinedArguments
+      2.5-4 CapJitInlinedFunctionCalls
+      2.5-5 CapJitInlinedSimpleFunctionCalls
+      2.5-6 CapJitInlinedVariableAssignments
+      2.5-7 CapJitAppliedLogic
+      2.5-8 CapJitAppliedLogicTemplates
+      2.5-9 CapJitResolvedGlobalVariables
+      2.5-10 CapJitResolvedOperations
+  3 [33X[0;0YExamples and tests[133X
+    3.1 [33X[0;0YExamples[133X
+  
+  
+  [32X

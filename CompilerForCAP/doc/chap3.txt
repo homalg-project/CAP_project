@@ -1,0 +1,68 @@
+  
+  [1X3 [33X[0;0YExamples and tests[133X[101X
+  
+  
+  [1X3.1 [33X[0;0YExamples[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MatrixCategory( Q :[127X[104X
+    [4X[25X>[125X [27X    enable_compilation := [ "MorphismBetweenDirectSums" ][127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XV := VectorSpaceObject( 2, Q );;[127X[104X
+    [4X[25Xgap>[125X [27Xalpha := ZeroMorphism( V, V );;[127X[104X
+    [4X[25Xgap>[125X [27Xbeta := IdentityMorphism( V );;[127X[104X
+    [4X[25Xgap>[125X [27XW := DirectSum( V, V );;[127X[104X
+    [4X[25Xgap>[125X [27Xmorphism_matrix := [ [ alpha, beta ], [ beta, alpha ] ];;[127X[104X
+    [4X[25Xgap>[125X [27X# compile the primitive installation of MorphismBetweenDirectSums[127X[104X
+    [4X[25X>[125X [27XMorphismBetweenDirectSums( morphism_matrix );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree1 := SYNTAX_TREE([127X[104X
+    [4X[25X>[125X [27X    vec!.compiled_functions.MorphismBetweenDirectSums[3][127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27X# fixup nams[127X[104X
+    [4X[25X>[125X [27Xtree1.stats.statements[1].branches[2].body.statements[1].[127X[104X
+    [4X[25X>[125X [27X    obj.args[12].args[1].args[2].nams := [ "row" ];;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( SYNTAX_TREE_CODE( tree1 ) );[127X[104X
+    [4X[28Xfunction ( S, morphism_matrix, T )[128X[104X
+    [4X[28X    if morphism_matrix = [  ] or morphism_matrix[1] = [  ] then[128X[104X
+    [4X[28X        return ZeroMorphism( S, T );[128X[104X
+    [4X[28X    else[128X[104X
+    [4X[28X        return ObjectifyWithAttributes( rec([128X[104X
+    [4X[28X               ), CAP_JIT_INTERNAL_GLOBAL_VARIABLE_3, CapCategory, [128X[104X
+    [4X[28X           CAP_JIT_INTERNAL_GLOBAL_VARIABLE_1, Source, S, Range, T, [128X[104X
+    [4X[28X           UnderlyingFieldForHomalg, CAP_JIT_INTERNAL_GLOBAL_VARIABLE_2, [128X[104X
+    [4X[28X           UnderlyingMatrix, [128X[104X
+    [4X[28X           UnionOfRows( List( morphism_matrix, function ( row )[128X[104X
+    [4X[28X                    return UnionOfColumns( List( row, UnderlyingMatrix ) );[128X[104X
+    [4X[28X                end ) ) );[128X[104X
+    [4X[28X    fi;[128X[104X
+    [4X[28X    return;[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27X# compile the default derivation of MorphismBetweenDirectSums[127X[104X
+    [4X[25X>[125X [27Xtree2 := SYNTAX_TREE( CapJitCompiledFunction([127X[104X
+    [4X[25X>[125X [27X    vec!.added_functions.MorphismBetweenDirectSums[1][1],[127X[104X
+    [4X[25X>[125X [27X    [ W, morphism_matrix, W  ][127X[104X
+    [4X[25X>[125X [27X) );;[127X[104X
+    [4X[25Xgap>[125X [27X# fixup nams[127X[104X
+    [4X[25X>[125X [27Xtree2.stats.statements[1].branches[2].body.statements[1].[127X[104X
+    [4X[25X>[125X [27X    obj.args[12].args[1].args[2].nams := [ "row" ];;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( SYNTAX_TREE_CODE( tree2 ) );[127X[104X
+    [4X[28Xfunction ( S, morphism_matrix, T )[128X[104X
+    [4X[28X    if morphism_matrix = [  ] or morphism_matrix[1] = [  ] then[128X[104X
+    [4X[28X        return ZeroMorphism( S, T );[128X[104X
+    [4X[28X    else[128X[104X
+    [4X[28X        return ObjectifyWithAttributes( rec([128X[104X
+    [4X[28X               ), CAP_JIT_INTERNAL_GLOBAL_VARIABLE_3, CapCategory, [128X[104X
+    [4X[28X           CAP_JIT_INTERNAL_GLOBAL_VARIABLE_1, Source, S, Range, T, [128X[104X
+    [4X[28X           UnderlyingFieldForHomalg, CAP_JIT_INTERNAL_GLOBAL_VARIABLE_2, [128X[104X
+    [4X[28X           UnderlyingMatrix, [128X[104X
+    [4X[28X           UnionOfRows( List( morphism_matrix, function ( row )[128X[104X
+    [4X[28X                    return UnionOfColumns( List( row, function ( s )[128X[104X
+    [4X[28X                              return UnderlyingMatrix( s );[128X[104X
+    [4X[28X                          end ) );[128X[104X
+    [4X[28X                end ) ) );[128X[104X
+    [4X[28X    fi;[128X[104X
+    [4X[28X    return;[128X[104X
+    [4X[28Xend[128X[104X
+  [4X[32X[104X
+  

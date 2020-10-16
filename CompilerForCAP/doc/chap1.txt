@@ -1,0 +1,235 @@
+  
+  [1X1 [33X[0;0YUsing the compiler[133X[101X
+  
+  [33X[0;0Y[13XWARNING[113X:  This  package  is  still  in  alpha  and  not  tested or validated
+  extensively![133X
+  
+  
+  [1X1.1 [33X[0;0YTerminology[133X[101X
+  
+  [33X[0;0YThe compiler is a just-in-time compiler, that is, it needs some arguments to
+  infer  types  of variables. These arguments are refered to as [13XJIT arguments[113X.
+  For a given CAP operation, these are usually the arguments of the first call
+  of the operation.[133X
+  
+  [33X[0;0YThe compiler uses GAP's syntax trees for optimizing functions. The term [13Xtree[113X
+  always refers to the syntax tree of the function to be compiled. Note that a
+  node  of  the  tree  always  knows its children, so technically it is also a
+  tree.  That  is,  the terms [13Xtree[113X, [13Xsubtree[113X, and [13Xnode[113X technically describe the
+  same thing but we use them for different emphases.[133X
+  
+  [33X[0;0YWe often replace a node in the tree by another tree representing the "value"
+  of the original node. Examples:[133X
+  
+  [30X    [33X[0;6YReplace  a  global  variable  referencing  an  integer, a string, or a
+        boolean by EXPR_INT, EXPR_STRING, EXPR_TRUE or EXPR_FALSE.[133X
+  
+  [30X    [33X[0;6YReplace  a  global variable referencing a plain function by the syntax
+        tree of this function.[133X
+  
+  [30X    [33X[0;6YReplace  a  record  access  of  a global function by the value of this
+        record access.[133X
+  
+  [30X    [33X[0;6YReplace an operation by a concrete method.[133X
+  
+  [33X[0;0YWe  call  this [13Xresolving[113X the global variable, operation, etc. Note that this
+  does not change the basic "layout" of the tree.[133X
+  
+  [33X[0;0YOn  the  contrary,  in  the following examples we change the "layout" of the
+  tree:[133X
+  
+  [30X    [33X[0;6YIf  we  have a function call of a resolved function, we can assign the
+        argument  values  to local variables at the beginning of the function.
+        This way we can avoid passing arguments completely.[133X
+  
+  [30X    [33X[0;6YIf  a  function  call  of a resolved function occurs in the right hand
+        side  of a variable assignment, we can insert the body of the resolved
+        function  right  before the variable assignment. This way we can avoid
+        the function call.[133X
+  
+  [30X    [33X[0;6YWe  can  replace  all references to a local variable by the right hand
+        side of the variable assignment and then drop the assignment.[133X
+  
+  [33X[0;0YWe  call  this  [13Xinlining[113X  the  function  arguments,  functions,  or variable
+  assignments.[133X
+  
+  
+  [1X1.2 [33X[0;0YCapabilities of the compiler[133X[101X
+  
+  [33X[0;0YThe  compilation  process  has  two phases: the resolving phase and the rule
+  phase.[133X
+  
+  [33X[0;0YDuring the resolving phase, operations and global variables are resolved:[133X
+  
+  [30X    [33X[0;6YAn operation is resolved by executing the function to be compiled with
+        the  JIT  arguments to determine the arguments of the operation. These
+        arguments  are  used  to  call [10XApplicableMethod[110X, and methods annotated
+        with the pragma [10XCAP_JIT_RESOLVE_FUNCTION[110X are resolved.[133X
+  
+  [30X    [33X[0;6YCAP    operations   are   handled   separately:   instead   of   using
+        [10XApplicableMethod[110X,   the  functions  added  to  the  category  via  [10XAdd[110X
+        functions  are  considered, and those do not have to be annotated with
+        [10XCAP_JIT_RESOLVE_FUNCTION[110X.  In particular, caching, pre functions, etc.
+        are bypassed.[133X
+  
+  [30X    [33X[0;6YReferences  to  global  functions  are  resolved  if  the  function is
+        annotated with the pragma [10XCAP_JIT_RESOLVE_FUNCTION[110X.[133X
+  
+  [33X[0;0YFor      details      see      [2XCapJitResolvedOperations[102X     ([14X2.5-10[114X)     and
+  [2XCapJitResolvedGlobalVariables[102X  ([14X2.5-9[114X).  If  no operation or global variable
+  can be resolved anymore, we continue with the rule phase.[133X
+  
+  [33X[0;0YIn the rule phase, the tree is optimized using several rules and techniques.
+  Function  arguments,  functions,  and  assignments  to  local  variables are
+  inlined.  Unused variables are dropped. Handled edge cases are dropped, that
+  is,  if  the  same  edge case is caught multiple times via [10Xif condition then
+  return  ...; fi;[110X statements, only the first such statement is kept. Finally,
+  "logic"  is  applied  to  the  tree.  For example, calls of [10XCallFuncList[110X are
+  replaced  by  calls to the actual function. The logic can be extended by the
+  user, see chapter [14X2[114X.[133X
+  
+  [33X[0;0YFor all details, see the list of compilations steps in [14X2.5[114X.[133X
+  
+  
+  [1X1.3 [33X[0;0YRequirements[133X[101X
+  
+  [33X[0;0YThere  are  three  main  requirements  for  the  steps described above to be
+  correct:[133X
+  
+  [30X    [33X[0;6YThe  code must not depend on side effects (otherwise dropping "unused"
+        variables   or   inlining   variables   could   change  results).  See
+        [2XCapJitThrowErrorOnSideEffects[102X ([14X2.4-8[114X) for details.[133X
+  
+  [30X    [33X[0;6YThe  methods  selected  for  the operations during the resolving phase
+        must  be  independent  of  the JIT arguments, that is, they must yield
+        correct  results  for  all  allowed  arguments  of  the function to be
+        compiled.   Thus,   be   careful   which  methods  you  annotate  with
+        [10XCAP_JIT_RESOLVE_FUNCTION[110X. In particular, the CAP categories of objects
+        and  morphisms  appearing  during the execution must be independent of
+        the JIT arguments.[133X
+  
+  [30X    [33X[0;6YAll  results  of  applications  of  filters in logic templates must be
+        independent  of  the  JIT  arguments. Thus, be careful when adding new
+        logic templates.[133X
+  
+  [33X[0;0YThere  is  an additional weak requirement: The compiler mainly optimizes the
+  code paths covered when executing the function with the JIT arguments. Thus,
+  the  JIT  arguments should represent a "generic" call, i.e., they should not
+  run  into  edge  cases which do not happen with a "generic" call. Still, the
+  execution using JIT arguments should be fast to improve compilation times.[133X
+  
+  [33X[0;0YAdditionally, there is not detection for recursive function calls currently,
+  so resolving such a function call leads to an infinite loop.[133X
+  
+  
+  [1X1.4 [33X[0;0YActivating the compiler[133X[101X
+  
+  [33X[0;0YYou  can  activate  the compiler by passing the option [10Xenable_compilation[110X to
+  any  category  constructor.  If [10Xenable_compilation[110X is set to [10Xtrue[110X, any basic
+  operation   will   be   compiled   when   called  for  the  first  time.  If
+  [10Xenable_compilation[110X is a list of strings, compilation will only happen if the
+  function name of the basic operation appears in this list.[133X
+  
+  
+  [1X1.5 [33X[0;0YStopping the compiler at a certain level[133X[101X
+  
+  [33X[0;0YYou  can use [10XStopCompilationAtCategory[110X to prevent the compiler from inlining
+  and  optimizing code of a given category. You can revert this decision using
+  [10XContinueCompilationAtCategory[110X.[133X
+  
+  [1X1.5-1 StopCompilationAtCategory[101X
+  
+  [33X[1;0Y[29X[2XStopCompilationAtCategory[102X( [3Xcategory[103X ) [32X function[133X
+  
+  [33X[0;0YStops the compiler from inlining and optimizing code of [3Xcategory[103X.[133X
+  
+  [1X1.5-2 ContinueCompilationAtCategory[101X
+  
+  [33X[1;0Y[29X[2XContinueCompilationAtCategory[102X( [3Xcategory[103X ) [32X function[133X
+  
+  [33X[0;0YAllows  the  compiler  to  inline and optimize code of [3Xcategory[103X (this is the
+  default).[133X
+  
+  
+  [1X1.6 [33X[0;0YGetting information about the compilation process[133X[101X
+  
+  [33X[0;0YYou  can  increase the info level of [10XInfoCapJit[110X to get information about the
+  compilation process.[133X
+  
+  [1X1.6-1 InfoCapJit[101X
+  
+  [33X[1;0Y[29X[2XInfoCapJit[102X[32X info class[133X
+  
+  [33X[0;0YInfo class used for info messsages of the CAP compiler.[133X
+  
+  
+  [1X1.7 [33X[0;0YCompiling a function manually[133X[101X
+  
+  [33X[0;0YUse  [2XCapJitCompiledFunction[102X  ([14X1.7-1[114X)  to  compile  a  function [10Xfunc[110X with JIT
+  arguments  [10Xjit_args[110X.  [10Xjit_args[110X should represent a "generic" call, i.e., they
+  should  not  run  into edge cases which do not happen with a "generic" call.
+  Still,  the  execution  using [10Xjit_args[110X should be fast to improve compilation
+  times.[133X
+  
+  [1X1.7-1 CapJitCompiledFunction[101X
+  
+  [33X[1;0Y[29X[2XCapJitCompiledFunction[102X( [3Xfunc[103X, [3Xjit_args[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya function[133X
+  
+  [33X[0;0YReturns  a compiled version of the function [3Xfunc[103X. The arguments [3Xjit_args[103X are
+  used to infer the types of variables.[133X
+  
+  
+  [1X1.8 [33X[0;0YFAQ[133X[101X
+  
+  [30X    [33X[0;6YQ: Why is my function not resolved?[133X
+  
+  [33X[0;0YA:  Only  functions  annotated  with the pragma [10XCAP_JIT_RESOLVE_FUNCTION[110X are
+  resolved.  Additionally,  a function can only be resolved if it appears as a
+  global  variable  in the tree during the resolving phase of the compilation.
+  That is, it must be referenced from a global variable from the beginning on,
+  or  after  global  variables  are  resolved by [2XCapJitResolvedGlobalVariables[102X
+  ([14X2.5-9[114X).  Possibly  you  have adapt [2XCapJitResolvedGlobalVariables[102X ([14X2.5-9[114X) to
+  your setting.[133X
+  
+  [30X    [33X[0;6YQ: Why is my operation not resolved?[133X
+  
+  [33X[0;0YA:  The  compiler  must  be  able  to  get  the arguments of the call of the
+  operation  from  the  JIT  arguments.  Then  the rules in the description of
+  [2XCapJitResolvedOperations[102X ([14X2.5-10[114X) apply.[133X
+  
+  [30X    [33X[0;6YQ: Why do I get the error "cannot find iteration key"?[133X
+  
+  [33X[0;0YA:  For  each  syntax  tree  node  type, the tree iterator has to know which
+  record  names  it  should  use  for continuing the iteration. Please add the
+  missing keys to [10XCAP_INTERNAL_JIT_ITERATION_KEYS[110X.[133X
+  
+  [30X    [33X[0;6YQ:  Why  do  I  get  the  error  "tree  has no kown type" when calling
+        [2XCapJitPrettyPrintSyntaxTree[102X ([14X2.4-3[114X)?[133X
+  
+  [33X[0;0YA:  [2XCapJitPrettyPrintSyntaxTree[102X  ([14X2.4-3[114X)  needs  to handle every syntax tree
+  node    type    separately.    Please    add    the    missing    type    to
+  [2XCapJitPrettyPrintSyntaxTree[102X ([14X2.4-3[114X).[133X
+  
+  [30X    [33X[0;6YQ:  Why  is  do  I get the error "a local variable with name <name> is
+        assigned  more than once (not as a part of a rapid reassignment), this
+        is not supported"?[133X
+  
+  [33X[0;0YA:  For reasons of correctness, variables cannot be inlined if a variable is
+  assigned  more  than  once in the body of a function (this includes function
+  arguments  which  are  assigned  at  least once, namely when the function is
+  called).  An  exception  is  made  for  "rapid  reassignments":  if the same
+  variable  is assigned and then reassigned immediately in the next statement,
+  this only counts as a single assignment.[133X
+  
+  [30X    [33X[0;6YQ: Why do I get one of the following errors: "tree includes statements
+        or  expressions  which indicate possible side effects", "tree contains
+        an  assignment  of a higher variable with initial name <name>, this is
+        not  supported",  or  "tree contains for loop over non-local variable,
+        this is not supported" ?[133X
+  
+  [33X[0;0YA:  We  can  only drop unused variables, inline variables, etc. if we assume
+  that  the  code  contains  no side effects. Statements like STAT_PROCCALL or
+  assignment to higher variables cause (or at least indicate) side effects, so
+  continuing with the compilation would probably not lead to a correct result.[133X
+  
