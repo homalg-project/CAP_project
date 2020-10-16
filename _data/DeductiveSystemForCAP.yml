@@ -1,0 +1,40 @@
+name: DeductiveSystemForCAP
+version: 2016.01.17
+date: 17/01/2016
+description: Deductive system for CAP
+
+authors:
+    - name: Sebastian Gutsche
+      url: http://wwwb.math.rwth-aachen.de/~gutsche/
+    - name: Sebastian Posur
+      url: https://sebastianpos.github.io
+
+maintainers:
+    - name: Sebastian Gutsche
+      url: http://wwwb.math.rwth-aachen.de/~gutsche/
+    - name: Sebastian Posur
+      url: https://sebastianpos.github.io
+
+GAP: ">= 4.6"
+
+needed-pkgs:
+    - name: "GAPDoc"
+      version: ">= 1.5"
+      url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
+    - name: "CAP"
+      version: ">=2015.01.01"
+      url: "https://homalg-project.github.io/CAP_project/CAP"
+
+www: https://github.com/homalg-project/CAP_project/tree/master/DeductiveSystemForCAP
+readme: https://raw.githubusercontent.com/homalg-project/CAP_project/master/DeductiveSystemForCAP/README.md
+packageinfo: https://raw.githubusercontent.com/homalg-project/CAP_project/master/DeductiveSystemForCAP/PackageInfo.g
+
+downloads:
+    - name: .tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/DeductiveSystemForCAP-2016.01.17/DeductiveSystemForCAP-2016.01.17.tar.gz
+
+abstract: 
+
+status: dev
+doc-html: doc/chap0.html
+doc-pdf: doc/manual.pdf
