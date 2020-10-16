@@ -1,0 +1,59 @@
+name: FreydCategoriesForCAP
+version: 2020.09.21
+date: 21/09/2020
+description: Freyd categories - Formal (co)kernels for additive categories
+
+authors:
+    - name: Sebastian Posur
+      url: https://sebastianpos.github.io
+    - name: Martin Bies
+      url: https://www.ulb.ac.be/sciences/ptm/pmif/people.html
+
+maintainers:
+    - name: Sebastian Posur
+      url: https://sebastianpos.github.io
+    - name: Martin Bies
+      url: https://www.ulb.ac.be/sciences/ptm/pmif/people.html
+
+GAP: ">= 4.8"
+
+needed-pkgs:
+    - name: "GAPDoc"
+      version: ">= 1.5"
+      url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
+    - name: "CAP"
+      version: ">= 2020.09.01"
+      url: "https://homalg-project.github.io/CAP_project/CAP"
+    - name: "MatricesForHomalg"
+      version: ">= 2020.09.06"
+      url: "https://homalg-project.github.io/homalg_project/MatricesForHomalg"
+    - name: "GradedRingForHomalg"
+      version: ">=2019.08.07"
+      url: "https://homalg-project.github.io/homalg_project/GradedRingForHomalg"
+    - name: "LinearAlgebraForCAP"
+      version: ">= 2020.05.16"
+      url: "https://homalg-project.github.io/CAP_project/LinearAlgebraForCAP"
+    - name: "GeneralizedMorphismsForCAP"
+      version: ">= 2018.06.15"
+      url: "https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP"
+
+suggested-pkgs:
+    - name: "QPA"
+      version: ">= 2.0"
+      url: "https://folk.ntnu.no/oyvinso/QPA/"
+    - name: "FinSetsForCAP"
+      version: ">= 2019.10.30"
+
+www: https://github.com/homalg-project/CAP_project/tree/master/FreydCategoriesForCAP
+readme: https://raw.githubusercontent.com/homalg-project/CAP_project/master/FreydCategoriesForCAP/README.md
+packageinfo: https://raw.githubusercontent.com/homalg-project/CAP_project/master/FreydCategoriesForCAP/PackageInfo.g
+
+downloads:
+    - name: .tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2020.09.21/FreydCategoriesForCAP-2020.09.21.tar.gz
+
+abstract: 
+
+status: dev
+doc-html: doc/chap0.html
+doc-pdf: doc/manual.pdf

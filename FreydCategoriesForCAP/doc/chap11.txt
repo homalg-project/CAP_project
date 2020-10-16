@@ -1,0 +1,38 @@
+  
+  [1X11 [33X[0;0YFreyd category[133X[101X
+  
+  
+  [1X11.1 [33X[0;0YInternal Hom-Embedding[133X[101X
+  
+  [1X11.1-1 INTERNAL_HOM_EMBEDDING[101X
+  
+  [33X[1;0Y[29X[2XINTERNAL_HOM_EMBEDDING[102X( [3Xobjects[103X, [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya (mono)morphism[133X
+  
+  [33X[0;0YThe  arguments  are two objects [3Xa[103X and [3Xb[103X of a Freyd category. Assume that the
+  relation  morphism  for [23Xa[123X is [23X\alpha \colon R_A \to A[123X, then we have the exact
+  sequence   [23X0   \to   \mathrm{\underline{Hom}}   \left(   a,b   \right)   \to
+  \mathrm{\underline{Hom}}(A,  b)  \to  \mathrm{\underline{Hom}}(R_A,  b)[123X. The
+  embedding      of      [23X\mathrm{\underline{Hom}}(     a,     b     )[123X     into
+  [23X\mathrm{\underline{Hom}}(A,  b)[123X  is  the internal Hom-embedding. This method
+  returns this very map.[133X
+  
+  
+  [1X11.2 [33X[0;0YConvenient methods for tensor products of freyd objects and morphisms[133X[101X
+  
+  [1X11.2-1 \*[101X
+  
+  [33X[1;0Y[29X[2X\*[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
+  
+  [1X11.2-2 \^[101X
+  
+  [33X[1;0Y[29X[2X\^[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
+  
+  [1X11.2-3 \*[101X
+  
+  [33X[1;0Y[29X[2X\*[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
+  
+  [1X11.2-4 \^[101X
+  
+  [33X[1;0Y[29X[2X\^[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
+  

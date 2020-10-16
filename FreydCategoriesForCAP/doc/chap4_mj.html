@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (FreydCategoriesForCAP) - Chapter 4: Adelman category</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap4"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chap16_mj.html">16</a>  <a href="chap17_mj.html">17</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap4.html">[MathJax off]</a></p>
+<p><a id="X7AC7D2E0842C5993" name="X7AC7D2E0842C5993"></a></p>
+<div class="ChapSects"><a href="chap4_mj.html#X7AC7D2E0842C5993">4 <span class="Heading">Adelman category</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7D03633A7D98026B">4.1 <span class="Heading">GAP Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X8111A5D785333147">4.1-1 IsAdelmanCategoryObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X836E135487EA11DF">4.1-2 IsAdelmanCategoryMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X78393FD179573EDB">4.1-3 IsAdelmanCategory</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X86EC0F0A78ECBC10">4.2 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X8465E21C7AB4134C">4.2-1 AdelmanCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X87F5E2F286D3FFE5">4.2-2 AdelmanCategoryObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X81F049E878DD16BE">4.2-3 AdelmanCategoryMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7EC300AD85DE89C4">4.2-4 AsAdelmanCategoryObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7D1A3B698707A95C">4.2-5 AsAdelmanCategoryMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7C60A7A778E18DF0"><code>4.2-6 \/</code></a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7D33626787DF2809"><code>4.2-7 \/</code></a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7DC480E57D26429A">4.3 <span class="Heading">Attributes and Properties</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7C89D6BD7C5ECC8A">4.3-1 UnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7EE4B0187F3EDE44">4.3-2 RelationMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X865BFD897A919570">4.3-3 CorelationMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X81E716C4843411EF">4.3-4 MorphismDatum</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X8360382487DF3851">4.3-5 RelationWitness</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X85C385667D3F83D0">4.3-6 CorelationWitness</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7B36741282949979">4.3-7 WitnessPairForBeingCongruentToZero</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X79FD71CD805A1AB4">4.3-8 IsSequenceAsAdelmanCategoryObject</a></span>
+</div></div>
+</div>
+
+<h3>4 <span class="Heading">Adelman category</span></h3>
+
+<p>Let <span class="SimpleMath">\(A\)</span> be an additive category. The Adelman category of <span class="SimpleMath">\(A\)</span> is the free abelian category induced by <span class="SimpleMath">\(A\)</span>. An object <span class="SimpleMath">\(x\)</span> of the Adelman category of <span class="SimpleMath">\(A\)</span> consists of a composable pair <span class="SimpleMath">\((\rho: a \rightarrow b, \gamma: b \rightarrow c)\)</span> in <span class="SimpleMath">\(A\)</span>. We call <span class="SimpleMath">\(\rho\)</span> the <em>relation morphism</em>, and <span class="SimpleMath">\(\gamma\)</span> the <em>corelation morphism</em> of <span class="SimpleMath">\(x\)</span>.</p>
+
+<p>Given two objects <span class="SimpleMath">\(x = (\rho: a \rightarrow b, \gamma: b \rightarrow c)\)</span> and <span class="SimpleMath">\(y = (\rho': a' \rightarrow b', \gamma': b' \rightarrow c')\)</span>, a morphism <span class="SimpleMath">\(\alpha\)</span> from <span class="SimpleMath">\(x\)</span> to <span class="SimpleMath">\(y\)</span> in the Adelman category of <span class="SimpleMath">\(A\)</span> consists of a morphism <span class="SimpleMath">\(\beta: b \rightarrow b'\)</span>, called the <em>morphism datum</em>, that has to fit into some commutative diagram of the form Any such morphism <span class="SimpleMath">\(\omega\)</span> is called a <em>relation witness</em>, any such morphism <span class="SimpleMath">\(\psi\)</span> is called a <em>corelation witness</em>. Two morphisms between <span class="SimpleMath">\(x\)</span> and <span class="SimpleMath">\(y\)</span> with morphism data <span class="SimpleMath">\(\beta\)</span> and <span class="SimpleMath">\(\beta'\)</span> are congruent iff there exists <span class="SimpleMath">\(\sigma_1: b \rightarrow a'\)</span> and <span class="SimpleMath">\(\sigma_2: c \rightarrow b'\)</span> such that <span class="SimpleMath">\(\beta - \beta' = \sigma_1 \cdot \rho' + \gamma \cdot \sigma_2\)</span>. We call any such pair <span class="SimpleMath">\((\sigma_1, \sigma_2)\)</span> a <em>witness pair</em> for <span class="SimpleMath">\(\beta, \beta'\)</span> being congruent.</p>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>4.1 <span class="Heading">GAP Categories</span></h4>
+
+<p><a id="X8111A5D785333147" name="X8111A5D785333147"></a></p>
+
+<h5>4.1-1 IsAdelmanCategoryObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsAdelmanCategoryObject</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of objects of an Adelman category. Every object of an Adelman category lies in this <strong class="pkg">GAP</strong> category.</p>
+
+<p><a id="X836E135487EA11DF" name="X836E135487EA11DF"></a></p>
+
+<h5>4.1-2 IsAdelmanCategoryMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsAdelmanCategoryMorphism</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of morphisms of an Adelman category. Every morphism of an Adelman category lies in this <strong class="pkg">GAP</strong> category.</p>
+
+<p><a id="X78393FD179573EDB" name="X78393FD179573EDB"></a></p>
+
+<h5>4.1-3 IsAdelmanCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsAdelmanCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The <strong class="pkg">GAP</strong> category of Adelman categories. Every CAP category which was created as an Adelman category lies in this <strong class="pkg">GAP</strong> category.</p>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>4.2 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X8465E21C7AB4134C" name="X8465E21C7AB4134C"></a></p>
+
+<h5>4.2-1 AdelmanCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdelmanCategory</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>The argument is an additive CAP category <span class="SimpleMath">\(A\)</span>. The output is the Adelman category of <span class="SimpleMath">\(A\)</span>.</p>
+
+<p><a id="X87F5E2F286D3FFE5" name="X87F5E2F286D3FFE5"></a></p>
+
+<h5>4.2-2 AdelmanCategoryObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdelmanCategoryObject</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The arguments are two morphisms <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>, <span class="SimpleMath">\(\beta: b \rightarrow c\)</span> of the same additive category <span class="SimpleMath">\(A\)</span>. The output is an object in the Adelman category of <span class="SimpleMath">\(A\)</span> whose relation morphism is <span class="SimpleMath">\(\alpha\)</span> and whose corelation morphism is <span class="SimpleMath">\(\beta\)</span>.</p>
+
+<p><a id="X81F049E878DD16BE" name="X81F049E878DD16BE"></a></p>
+
+<h5>4.2-3 AdelmanCategoryMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdelmanCategoryMorphism</code>( <var class="Arg">x</var>, <var class="Arg">alpha</var>, <var class="Arg">y</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(x, y)\)</span></p>
+
+<p>Let <span class="SimpleMath">\(A\)</span> be an additive category. The arguments are an object <span class="SimpleMath">\(x\)</span> in the Adelman category of <span class="SimpleMath">\(A\)</span>, a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span> of <span class="SimpleMath">\(A\)</span>, and an object <span class="SimpleMath">\(y\)</span> in the Adelman category of <span class="SimpleMath">\(A\)</span>. The output is a morphism in the Adelman category of <span class="SimpleMath">\(A\)</span> whose morphism datum is given by <span class="SimpleMath">\(\alpha\)</span>.</p>
+
+<p><a id="X7EC300AD85DE89C4" name="X7EC300AD85DE89C4"></a></p>
+
+<h5>4.2-4 AsAdelmanCategoryObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsAdelmanCategoryObject</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The argument is an object <span class="SimpleMath">\(a\)</span> of an additive category <span class="SimpleMath">\(A\)</span>. The output is an object in the Adelman category of <span class="SimpleMath">\(A\)</span> whose relation morphism is <span class="SimpleMath">\(0 \rightarrow a\)</span> and whose corelation morphism is <span class="SimpleMath">\(a \rightarrow 0\)</span>.</p>
+
+<p><a id="X7D1A3B698707A95C" name="X7D1A3B698707A95C"></a></p>
+
+<h5>4.2-5 AsAdelmanCategoryMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsAdelmanCategoryMorphism</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( x, y )\)</span></p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span> of an additive category <span class="SimpleMath">\(A\)</span>. The output is a morphism in the Adelman category of <span class="SimpleMath">\(A\)</span> whose source <span class="SimpleMath">\(x\)</span> is <code class="code">AsAdelmanCategoryObject( a )</code>, whose range <span class="SimpleMath">\(y\)</span> is <code class="code">AsAdelmanCategoryObject( b )</code>, and whose morphism datum is <span class="SimpleMath">\(\alpha\)</span>.</p>
+
+<p><a id="X7C60A7A778E18DF0" name="X7C60A7A778E18DF0"></a></p>
+
+<h5><code>4.2-6 \/</code></h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \/</code>( <var class="Arg">a</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>This is a convenience method. The first argument is an object <span class="SimpleMath">\(a\)</span> which either lies in an additive category <span class="SimpleMath">\(A\)</span> (which was not created as a Freyd category) or in a Freyd category <span class="SimpleMath">\(F\)</span> of an underlying additive category <span class="SimpleMath">\(A\)</span>. The second argument is an Adelman category <span class="SimpleMath">\(C\)</span> of <span class="SimpleMath">\(A\)</span>. If <span class="SimpleMath">\(a\)</span> lies in <span class="SimpleMath">\(A\)</span> this method returns <code class="code">AsAdelmanCategoryObject( a )</code>. If <span class="SimpleMath">\(a\)</span> lies in <span class="SimpleMath">\(F\)</span>, this method return an object in <span class="SimpleMath">\(C\)</span> whose relation morphism is the same as the relation morphism of <span class="SimpleMath">\(a\)</span>, and whose corelation morphism is <span class="SimpleMath">\(0\)</span>.</p>
+
+<p><a id="X7D33626787DF2809" name="X7D33626787DF2809"></a></p>
+
+<h5><code>4.2-7 \/</code></h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \/</code>( <var class="Arg">alpha</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( x, y )\)</span></p>
+
+<p>This is a convenience method. The first argument is a morphism <span class="SimpleMath">\(\alpha\)</span> which lies in an additive category <span class="SimpleMath">\(A\)</span>. The second argument is an Adelman category <span class="SimpleMath">\(C\)</span> of <span class="SimpleMath">\(A\)</span>. This method returns <code class="code">AsAdelmanCategoryMorphism( alpha )</code>. We set <span class="SimpleMath">\(x = \mathrm{ AsAdelmanCategoryObject( Source( \alpha ) ) }\)</span> and <span class="SimpleMath">\(y = \mathrm{ AsAdelmanCategoryObject( Range( \alpha ) ) }\)</span>.</p>
+
+<p><a id="X7DC480E57D26429A" name="X7DC480E57D26429A"></a></p>
+
+<h4>4.3 <span class="Heading">Attributes and Properties</span></h4>
+
+<p><a id="X7C89D6BD7C5ECC8A" name="X7C89D6BD7C5ECC8A"></a></p>
+
+<h5>4.3-1 UnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>The argument is an Adelman category <span class="SimpleMath">\(C\)</span>. The output is its underlying category <span class="SimpleMath">\(A\)</span> with which it was constructed.</p>
+
+<p><a id="X7EE4B0187F3EDE44" name="X7EE4B0187F3EDE44"></a></p>
+
+<h5>4.3-2 RelationMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RelationMorphism</code>( <var class="Arg">x</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a, b )\)</span></p>
+
+<p>The argument is an object <span class="SimpleMath">\(x\)</span> in an Adelman category. The output is its relation morphism <span class="SimpleMath">\(\rho: a \rightarrow b\)</span>.</p>
+
+<p><a id="X865BFD897A919570" name="X865BFD897A919570"></a></p>
+
+<h5>4.3-3 CorelationMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CorelationMorphism</code>( <var class="Arg">x</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( b, c )\)</span></p>
+
+<p>The argument is an object <span class="SimpleMath">\(x\)</span> in an Adelman category. The output is its corelation morphism <span class="SimpleMath">\(\gamma: b \rightarrow c\)</span>.</p>
+
+<p><a id="X81E716C4843411EF" name="X81E716C4843411EF"></a></p>
+
+<h5>4.3-4 MorphismDatum</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismDatum</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( b, b' )\)</span></p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha\)</span> in an Adelman category. The output is its morphism datum <span class="SimpleMath">\(\beta: b \rightarrow b'\)</span>.</p>
+
+<p><a id="X8360382487DF3851" name="X8360382487DF3851"></a></p>
+
+<h5>4.3-5 RelationWitness</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RelationWitness</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( a, a' )\)</span></p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha\)</span> in an Adelman category. The output is its relation witness <span class="SimpleMath">\(\omega: a \rightarrow a'\)</span>.</p>
+
+<p><a id="X85C385667D3F83D0" name="X85C385667D3F83D0"></a></p>
+
+<h5>4.3-6 CorelationWitness</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CorelationWitness</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}( c, c' )\)</span></p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha\)</span> in an Adelman category. The output is its corelation witness <span class="SimpleMath">\(\psi: c \rightarrow c'\)</span>.</p>
+
+<p><a id="X7B36741282949979" name="X7B36741282949979"></a></p>
+
+<h5>4.3-7 WitnessPairForBeingCongruentToZero</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WitnessPairForBeingCongruentToZero</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list of morphisms or <code class="code">fail</code></p>
+
+<p>The argument is a morphism <span class="SimpleMath">\(\alpha\)</span> in an Adelman category. If <span class="SimpleMath">\(\alpha\)</span> is congruent to zero, the output is a witness pair. If <span class="SimpleMath">\(\alpha\)</span> is not congruent to zero, the output is <code class="code">fail</code>.</p>
+
+<p><a id="X79FD71CD805A1AB4" name="X79FD71CD805A1AB4"></a></p>
+
+<h5>4.3-8 IsSequenceAsAdelmanCategoryObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSequenceAsAdelmanCategoryObject</code>( <var class="Arg">x</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is an object <span class="SimpleMath">\(x\)</span> in an Adelman category. The output is <code class="code">true</code> if the composition of its relation morphism and its corelation morphism yields zero. Otherwise, the output is <code class="code">false</code>.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chap16_mj.html">16</a>  <a href="chap17_mj.html">17</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (FreydCategoriesForCAP) - Chapter 6: Example on category of rows</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap6"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chap16_mj.html">16</a>  <a href="chap17_mj.html">17</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap5_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap7_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap6.html">[MathJax off]</a></p>
+<p><a id="X7A88D14981F23BBA" name="X7A88D14981F23BBA"></a></p>
+<div class="ChapSects"><a href="chap6_mj.html#X7A88D14981F23BBA">6 <span class="Heading">Example on category of rows</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X791E8F5C7A872B06">6.1 <span class="Heading">Constructors of objects</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X7A9CA0C983ECE36B">6.2 <span class="Heading">Constructors of morphisms</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X7AE073947AEA9EB7">6.3 <span class="Heading">A few categorical constructions for category of rows</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6_mj.html#X7BC526FF7EA28AC1">6.4 <span class="Heading">Simplifications</span></a>
+</span>
+</div>
+</div>
+
+<h3>6 <span class="Heading">Example on category of rows</span></h3>
+
+<p><a id="X791E8F5C7A872B06" name="X791E8F5C7A872B06"></a></p>
+
+<h4>6.1 <span class="Heading">Constructors of objects</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := HomalgRingOfIntegers();</span>
+Z
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows := CategoryOfRows( S );</span>
+Rows( Z )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj1 := CategoryOfRowsObject( 2, rows );</span>
+&lt;A row module over Z of rank 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj2 := CategoryOfRowsObject( 8, rows );</span>
+&lt;A row module over Z of rank 8&gt;
+</pre></div>
+
+<p><a id="X7A9CA0C983ECE36B" name="X7A9CA0C983ECE36B"></a></p>
+
+<h4>6.2 <span class="Heading">Constructors of morphisms</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj3 := CategoryOfRowsObject( 1, rows );</span>
+&lt;A row module over Z of rank 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( obj1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj4 := CategoryOfRowsObject( 2, rows );</span>
+&lt;A row module over Z of rank 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := CategoryOfRowsMorphism( obj3, HomalgMatrix( [[1,2]], S ), obj4 );</span>
+&lt;A morphism in Rows( Z )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( mor );</span>
+true
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Source( mor ) );</span>
+A row module over Z of rank 1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Range( mor ) );</span>
+A row module over Z of rank 2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( UnderlyingMatrix( mor ) );</span>
+[ [  1, 2 ] ]
+</pre></div>
+
+<p><a id="X7AE073947AEA9EB7" name="X7AE073947AEA9EB7"></a></p>
+
+<h4>6.3 <span class="Heading">A few categorical constructions for category of rows</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZeroObject( rows );</span>
+&lt;A row module over Z of rank 0&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj5 := CategoryOfRowsObject( 2, rows );</span>
+&lt;A row module over Z of rank 2&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ZeroMorphism( ZeroObject( rows ), obj5 ) );</span>
+A zero, split monomorphism in Rows( Z )
+
+Source: 
+A row module over Z of rank 0
+
+Matrix: 
+(an empty 0 x 2 matrix)
+
+Range: 
+A row module over Z of rank 2
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj6 := CategoryOfRowsObject( 1, rows );</span>
+&lt;A row module over Z of rank 1&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( IdentityMorphism( obj6 ) );</span>
+An identity morphism in Rows( Z )
+
+Source: 
+A row module over Z of rank 1
+
+Matrix: 
+[ [  1 ] ]
+
+Range: 
+A row module over Z of rank 1
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">directSum := DirectSum( [ obj5, obj6 ] );</span>
+&lt;A row module over Z of rank 3&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( directSum );</span>
+A row module over Z of rank 3
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i1 := InjectionOfCofactorOfDirectSum( [ obj5, obj6 ], 1 );</span>
+&lt;A morphism in Rows( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( i1 );</span>
+A morphism in Rows( Z )
+
+Source: 
+A row module over Z of rank 2
+
+Matrix: 
+[ [  1,  0,  0 ],
+  [  0,  1,  0 ] ]
+
+Range: 
+A row module over Z of rank 3
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i2 := InjectionOfCofactorOfDirectSum( [ obj5, obj6 ], 2 );</span>
+&lt;A morphism in Rows( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( i2 );</span>
+A morphism in Rows( Z )
+
+Source: 
+A row module over Z of rank 1
+
+Matrix: 
+[ [  0,  0,  1 ] ]
+
+Range: 
+A row module over Z of rank 3
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">proj1 := ProjectionInFactorOfDirectSum( [ obj5, obj6 ], 1 );</span>
+&lt;A morphism in Rows( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( proj1 );</span>
+A morphism in Rows( Z )
+
+Source: 
+A row module over Z of rank 3
+
+Matrix: 
+[ [  1,  0 ],
+  [  0,  1 ],
+  [  0,  0 ] ]
+
+Range: 
+A row module over Z of rank 2
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">proj2 := ProjectionInFactorOfDirectSum( [ obj5, obj6 ], 2 );</span>
+&lt;A morphism in Rows( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( proj2 );</span>
+A morphism in Rows( Z )
+
+Source: 
+A row module over Z of rank 3
+
+Matrix: 
+[ [  0 ],
+  [  0 ],
+  [  1 ] ]
+
+Range: 
+A row module over Z of rank 1
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">k := WeakKernelEmbedding( proj1 );</span>
+&lt;A morphism in Rows( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( k );</span>
+A morphism in Rows( Z )
+
+Source: 
+A row module over Z of rank 1
+
+Matrix: 
+[ [  0,  0,  1 ] ]
+
+Range: 
+A row module over Z of rank 3
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ck := WeakCokernelProjection( k );</span>
+&lt;A morphism in Rows( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ck );</span>
+A morphism in Rows( Z )
+
+Source: 
+A row module over Z of rank 3
+
+Matrix: 
+[ [   0,  -1 ],
+  [   1,   0 ],
+  [   0,   0 ] ]
+
+Range: 
+A row module over Z of rank 2
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( k );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( k );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( ck );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEpimorphism( ck );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor1 := CategoryOfRowsMorphism( obj5, HomalgMatrix( [[ 1 ], [ 2 ]], S ), obj6 );</span>
+&lt;A morphism in Rows( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( mor1 );</span>
+A morphism in Rows( Z )
+
+Source: 
+A row module over Z of rank 2
+
+Matrix: 
+[ [  1 ],
+  [  2 ] ]
+
+Range: 
+A row module over Z of rank 1
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor2 := IdentityMorphism( obj6 );</span>
+&lt;An identity morphism in Rows( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( mor2 );</span>
+An identity morphism in Rows( Z )
+
+Source: 
+A row module over Z of rank 1
+
+Matrix: 
+[ [  1 ] ]
+
+Range: 
+A row module over Z of rank 1
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lift := Lift( mor1, mor2 );</span>
+&lt;A morphism in Rows( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( lift );</span>
+A morphism in Rows( Z )
+
+Source: 
+A row module over Z of rank 2
+
+Matrix: 
+[ [  1 ],
+  [  2 ] ]
+
+Range: 
+A row module over Z of rank 1
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">source := CategoryOfRowsObject( 1, rows );</span>
+&lt;A row module over Z of rank 1&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">range := CategoryOfRowsObject( 2, rows );</span>
+&lt;A row module over Z of rank 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := CategoryOfRowsMorphism( source, HomalgMatrix( [[ 2, 3 ]], S ), range );</span>
+&lt;A morphism in Rows( Z )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">colift := Colift( mor2, mor );</span>
+&lt;A morphism in Rows( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( colift );</span>
+A morphism in Rows( Z )
+
+Source: 
+A row module over Z of rank 1
+
+Matrix: 
+[ [  2,  3 ] ]
+
+Range: 
+A row module over Z of rank 2
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fp := WeakBiFiberProduct( mor1, mor2 );</span>
+&lt;A row module over Z of rank 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fp_proj := ProjectionOfBiasedWeakFiberProduct( mor1, mor2 );</span>
+&lt;A morphism in Rows( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( fp_proj );</span>
+A morphism in Rows( Z )
+
+Source: 
+A row module over Z of rank 2
+
+Matrix: 
+[ [  -2,   1 ],
+  [  -1,   0 ] ]
+
+Range: 
+A row module over Z of rank 2
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">po := WeakBiPushout( mor, mor2 );</span>
+&lt;A row module over Z of rank 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">inj_push := InjectionOfBiasedWeakPushout( mor, mor2 );</span>
+&lt;A morphism in Rows( Z )&gt;
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( inj_push );</span>
+A morphism in Rows( Z )
+
+Source: 
+A row module over Z of rank 2
+
+Matrix: 
+[ [  -3,   1 ],
+  [   2,  -1 ] ]
+
+Range: 
+A row module over Z of rank 2
+</pre></div>
+
+<p><a id="X7BC526FF7EA28AC1" name="X7BC526FF7EA28AC1"></a></p>
+
+<h4>6.4 <span class="Heading">Simplifications</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := HomalgRingOfIntegers();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows := CategoryOfRows( R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := HomalgMatrix( [ [ 2, 2, 2 ], [ 3, 3, 3 ] ], 2, 3, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := AsCategoryOfRowsMorphism( M, rows );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi := PreCompose( [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SimplifySourceAndRange_IsoFromInputSource( alpha, infinity ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SimplifySourceAndRange( alpha, infinity ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SimplifySourceAndRange_IsoToInputRange( alpha, infinity ) ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( pi, alpha );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    PreCompose( SimplifySourceAndRange_IsoFromInputSource( alpha, infinity ), SimplifySourceAndRange_IsoToInputSource( alpha, infinity ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    PreCompose( SimplifySourceAndRange_IsoFromInputRange( alpha, infinity ), SimplifySourceAndRange_IsoToInputRange( alpha, infinity ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi2 := PreCompose(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SimplifySource_IsoFromInputObject( alpha, infinity ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SimplifySource( alpha, infinity )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( pi2, alpha );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( SimplifySource_IsoFromInputObject( alpha, infinity ), SimplifySource_IsoToInputObject( alpha, infinity ) ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi3 := PreCompose(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SimplifyRange( alpha, infinity ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SimplifyRange_IsoToInputObject( alpha, infinity )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( pi3, alpha );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( SimplifyRange_IsoFromInputObject( alpha, infinity ), SimplifyRange_IsoToInputObject( alpha, infinity ) ) );</span>
+true
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := HomalgRingOfIntegers();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cols := CategoryOfColumns( R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := HomalgMatrix( [ [ 2, 2, 2 ], [ 3, 3, 3 ] ], 2, 3, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := AsCategoryOfColumnsMorphism( M, cols );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi := PreCompose( [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SimplifySourceAndRange_IsoFromInputSource( alpha, infinity ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SimplifySourceAndRange( alpha, infinity ), </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SimplifySourceAndRange_IsoToInputRange( alpha, infinity ) ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( pi, alpha );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    PreCompose( SimplifySourceAndRange_IsoFromInputSource( alpha, infinity ), SimplifySourceAndRange_IsoToInputSource( alpha, infinity ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    PreCompose( SimplifySourceAndRange_IsoFromInputRange( alpha, infinity ), SimplifySourceAndRange_IsoToInputRange( alpha, infinity ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi2 := PreCompose(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SimplifySource_IsoFromInputObject( alpha, infinity ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SimplifySource( alpha, infinity )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( pi2, alpha );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( SimplifySource_IsoFromInputObject( alpha, infinity ), SimplifySource_IsoToInputObject( alpha, infinity ) ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pi3 := PreCompose(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SimplifyRange( alpha, infinity ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    SimplifyRange_IsoToInputObject( alpha, infinity )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( pi3, alpha );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( PreCompose( SimplifyRange_IsoFromInputObject( alpha, infinity ), SimplifyRange_IsoToInputObject( alpha, infinity ) ) );</span>
+true
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Qxyz := HomalgFieldOfRationalsInDefaultCAS( ) * "x,y,z";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A3 := RingOfDerivations( Qxyz, "Dx,Dy,Dz" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M1 := HomalgMatrix( "[ \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">Dx  \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">]", 1, 1, A3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M2 := HomalgMatrix( "[ \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">Dx, \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">Dy  \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">]", 2, 1, A3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M3 := HomalgMatrix( "[ \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">Dx, \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">Dy, \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">Dz  \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">]", 3, 1, A3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := DiagMat( [ M1, M2, M3 ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := ShallowCopy( M );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIsMutableMatrix( M, true );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M[ 1, 2 ] := "1";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M[ 2, 3 ] := "1";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M[ 3, 3 ] := "1";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MakeImmutable( M );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tau1 := HomalgMatrix( "[ \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">1, Dx, Dz, \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">0,  0,  1, \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">0,  1, Dy  \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">]", 3, 3, A3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tau2 := HomalgMatrix( "[ \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">0,  1, Dz+x*y, \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">0,  0,      1, \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">1, Dz,    x-y  \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">]", 3, 3, A3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tau3 := HomalgMatrix( "[ \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">1,  0, 0, \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">1,  1, 0, \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">0, -1, 1  \</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">]", 3, 3, A3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tau := tau1 * tau2 * tau3;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := M * tau;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows := CategoryOfRows( A3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := AsCategoryOfRowsMorphism( M, rows );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Mrows := FreydCategoryObject( alpha );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Srows := SimplifyObject( Mrows, infinity );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RankOfObject( Source( RelationMorphism( Srows ) ) );</span>
+4
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RankOfObject( Range( RelationMorphism( Srows ) ) );</span>
+2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( SimplifyObject_IsoFromInputObject( Mrows, infinity ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( SimplifyObject_IsoToInputObject( Mrows, infinity ) );</span>
+true
+</pre></div>
+
+<p>Computing the grade filtration:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mu1 := GradeFiltrationNthMonomorphism( Mrows, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( mu1 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( mu1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mu2 := GradeFiltrationNthMonomorphism( Mrows, 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( mu2 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( mu2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mu3 := GradeFiltrationNthMonomorphism( Mrows, 3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( mu3 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( mu3 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mu4 := GradeFiltrationNthMonomorphism( Mrows, 4 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( mu4 );</span>
+true
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cols := CategoryOfColumns( A3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := AsCategoryOfColumnsMorphism( M, cols );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Mcols := FreydCategoryObject( alpha );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Scols := SimplifyObject( Mcols, infinity );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RankOfObject( Source( RelationMorphism( Scols ) ) );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RankOfObject( Range( RelationMorphism( Scols ) ) );</span>
+4
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( SimplifyObject_IsoFromInputObject( Mcols, infinity ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism( SimplifyObject_IsoToInputObject( Mcols, infinity ) );</span>
+true
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap5_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap7_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chap9_mj.html">9</a>  <a href="chap10_mj.html">10</a>  <a href="chap11_mj.html">11</a>  <a href="chap12_mj.html">12</a>  <a href="chap13_mj.html">13</a>  <a href="chap14_mj.html">14</a>  <a href="chap15_mj.html">15</a>  <a href="chap16_mj.html">16</a>  <a href="chap17_mj.html">17</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (FreydCategoriesForCAP) - Chapter 2: Additive closure</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap2"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chap16.html">16</a>  <a href="chap17.html">17</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap2_mj.html">[MathJax on]</a></p>
+<p><a id="X7E8203B485CE08F7" name="X7E8203B485CE08F7"></a></p>
+<div class="ChapSects"><a href="chap2.html#X7E8203B485CE08F7">2 <span class="Heading">Additive closure</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7D03633A7D98026B">2.1 <span class="Heading">GAP Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X837A08B880122AA8">2.1-1 IsAdditiveClosureCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X842C79EF7B3261A1">2.1-2 IsAdditiveClosureObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X801C787279EB4139">2.1-3 IsAdditiveClosureMorphism</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X86EC0F0A78ECBC10">2.2 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X83CEE62E7F65193B">2.2-1 AdditiveClosure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79F5D5987C402AA8">2.2-2 AdditiveClosureObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BFEDC957BDFD922">2.2-3 AsAdditiveClosureObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C449C727B5F9087">2.2-4 AdditiveClosureMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X846ACC0D82E01767">2.2-5 AdditiveClosureMorphismListList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E68504F7906F9BA">2.2-6 AsAdditiveClosureMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X83052556783E9F72">2.2-7 InclusionFunctorInAdditiveClosure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CB9D74B81E8657F">2.2-8 ExtendFunctorToAdditiveClosures</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X800F55F17A280DE5">2.2-9 ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X80D324A184629A28">2.2-10 ExtendFunctorToAdditiveClosureOfSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X82EE592782202D2E">2.2-11 ExtendNaturalTransformationToAdditiveClosureOfSource</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7C701DBF7BAE649A">2.3 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78941FF180271D5D">2.3-1 UnderlyingCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X806F515A8225F3D5">2.3-2 ObjectList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X801FFB8B7A9200B7">2.3-3 MorphismMatrix</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A84391E80904DF8">2.3-4 NrRows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79E258B7803D0B05">2.3-5 NrCols</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7AD6F77E7D95C996">2.4 <span class="Heading">Operators</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D349F847E6043A8"><code>2.4-1 \[\]</code></a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X85700E97870211FE">2.4-2 [</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D3C3DCE87667A7C"><code>2.4-3 \/</code></a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X790ACC3182D77147"><code>2.4-4 \/</code></a></span>
+</div></div>
+</div>
+
+<h3>2 <span class="Heading">Additive closure</span></h3>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>2.1 <span class="Heading">GAP Categories</span></h4>
+
+<p><a id="X837A08B880122AA8" name="X837A08B880122AA8"></a></p>
+
+<h5>2.1-1 IsAdditiveClosureCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsAdditiveClosureCategory</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>The GAP category of additive closures of Ab-categories.</p>
+
+<p><a id="X842C79EF7B3261A1" name="X842C79EF7B3261A1"></a></p>
+
+<h5>2.1-2 IsAdditiveClosureObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsAdditiveClosureObject</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>The GAP category of objects in additive closures of Ab-categories.</p>
+
+<p><a id="X801C787279EB4139" name="X801C787279EB4139"></a></p>
+
+<h5>2.1-3 IsAdditiveClosureMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsAdditiveClosureMorphism</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: true or false</p>
+
+<p>The GAP category of morphisms in additive closures of Ab-categories.</p>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>2.2 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X83CEE62E7F65193B" name="X83CEE62E7F65193B"></a></p>
+
+<h5>2.2-1 AdditiveClosure</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditiveClosure</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: the category <span class="Math">C^\oplus</span></p>
+
+<p>The argument is an Ab-category <span class="Math">C</span>. The output is its additive closure <span class="Math">C^\oplus</span>.</p>
+
+<p>If <var class="Arg">C</var> is a <strong class="pkg">homalg</strong> ring considered as a category via <code class="code">RingAsCategory</code>, <strong class="pkg">homalg</strong> matrices are used as the underlying data structure for morphisms. In all other cases, lists of lists are used as the underlying data structure for morphisms. This can be changed via the two options <code class="code">matrix_element_as_morphism</code> and <code class="code">list_list_as_matrix</code>, see <code class="func">AdditiveClosureMorphism</code> (<a href="chap2.html#X7C449C727B5F9087"><span class="RefLink">2.2-4</span></a>) for details.</p>
+
+<p><a id="X79F5D5987C402AA8" name="X79F5D5987C402AA8"></a></p>
+
+<h5>2.2-2 AdditiveClosureObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditiveClosureObject</code>( <var class="Arg">L</var>, <var class="Arg">C^\oplus</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object in <span class="Math">C^\oplus</span></p>
+
+<p>The argument is a list of objects <span class="Math">L=[A_1,\dots,A_n]</span> in an Ab-category <span class="Math">C</span>. The output is the formal direct sum <span class="Math">A_1\oplus\dots\oplus A_n</span> in the additive closure <span class="Math">C^\oplus</span>.</p>
+
+<p><a id="X7BFEDC957BDFD922" name="X7BFEDC957BDFD922"></a></p>
+
+<h5>2.2-3 AsAdditiveClosureObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsAdditiveClosureObject</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an object in <span class="Math">C^\oplus</span></p>
+
+<p>The argument is an object <span class="Math">A</span> in an Ab-category <span class="Math">C</span>. The output is the image of <span class="Math">A</span> under the inclusion functor <span class="Math">\iota:C\to C^\oplus</span>.</p>
+
+<p><a id="X7C449C727B5F9087" name="X7C449C727B5F9087"></a></p>
+
+<h5>2.2-4 AdditiveClosureMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditiveClosureMorphism</code>( <var class="Arg">A</var>, <var class="Arg">M</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}_{C^\oplus}(A,B)</span></p>
+
+<p>The arguments are formal direct sums <span class="Math">A=A_1\oplus\dots\oplus A_m</span>, <span class="Math">B=B_1\oplus\dots\oplus B_n</span> in some additive category <span class="Math">C^\oplus</span> and an <span class="Math">m\times n</span> matrix (see below) <span class="Math">M :=(\alpha_{ij}:A_i\to B_j)_{ij}</span> for <span class="Math">i=1,\dots,m,j=1,\dots,n</span>. The output is the formal morphism between <span class="Math">A</span> and <span class="Math">B</span> that is defined by <span class="Math">M</span>.</p>
+
+<p>If <span class="Math">m \neq 0 \neq n</span>, <var class="Arg">M</var> has to provide access to its elements via the operation <code class="code">[,]</code>. In case that the elements of <var class="Arg">M</var> first have to be wrapped to actually obtain morphisms in <span class="Math">C</span>, you can provide the function <code class="code">matrix_element_as_morphism</code> (fallback: <code class="code">IdFunc</code>) as an option to <code class="func">AdditiveClosure</code> (<a href="chap2.html#X83CEE62E7F65193B"><span class="RefLink">2.2-1</span></a>) which will internally be automatically applied to the elements of <var class="Arg">M</var>. In this case you also have to provide the function <code class="code">list_list_as_matrix</code> (fallback: <code class="code">ReturnFirst</code>) as an option to <code class="func">AdditiveClosure</code> (<a href="chap2.html#X83CEE62E7F65193B"><span class="RefLink">2.2-1</span></a>): It gets passed a list of list of morphisms <span class="Math">\alpha_{ij}</span> as well as <span class="Math">m</span> and <span class="Math">n</span> as above and has to return the corresponding matrix <var class="Arg">M</var>. If <code class="code">IsMatrixObj( <var class="Arg">M</var> )</code>, then <code class="code">NrRows( M )</code> resp. <code class="code">NrCols( M )</code> must be <span class="Math">m</span> resp. <span class="Math">n</span>.</p>
+
+<p>The fallback values of <code class="code">matrix_element_as_morphism</code> and <code class="code">list_list_as_matrix</code> allow to use lists of lists as the data structure of <var class="Arg">M</var>. See <code class="func">AdditiveClosure</code> (<a href="chap2.html#X83CEE62E7F65193B"><span class="RefLink">2.2-1</span></a>) for the default data structures.</p>
+
+<p><a id="X846ACC0D82E01767" name="X846ACC0D82E01767"></a></p>
+
+<h5>2.2-5 AdditiveClosureMorphismListList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditiveClosureMorphismListList</code>( <var class="Arg">A</var>, <var class="Arg">L</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}_{C^\oplus}(A,B)</span></p>
+
+<p>Input and return value are the same as for <code class="code">AdditiveClosureMorphism</code> except that the matrix <code class="code">M</code> can be given as a list (of lists) <var class="Arg">L</var> to which <code class="code">list_list_as_matrix</code> will be applied automatically.</p>
+
+<p><a id="X7E68504F7906F9BA" name="X7E68504F7906F9BA"></a></p>
+
+<h5>2.2-6 AsAdditiveClosureMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsAdditiveClosureMorphism</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">C^\oplus</span></p>
+
+<p>The argument is a morphism <span class="Math">\alpha</span> in an Ab-category <span class="Math">C</span>. The output is the image of <span class="Math">\alpha</span> under the inclusion functor <span class="Math">\iota:C\to C^\oplus</span>.</p>
+
+<p><a id="X83052556783E9F72" name="X83052556783E9F72"></a></p>
+
+<h5>2.2-7 InclusionFunctorInAdditiveClosure</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InclusionFunctorInAdditiveClosure</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a functor <span class="Math">C\to C^\oplus</span></p>
+
+<p>The argument is an Ab-category <span class="Math">C</span>. The output is the inclusion functor <span class="Math">\iota:C\to C^\oplus</span>.</p>
+
+<p><a id="X7CB9D74B81E8657F" name="X7CB9D74B81E8657F"></a></p>
+
+<h5>2.2-8 ExtendFunctorToAdditiveClosures</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendFunctorToAdditiveClosures</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a functor <span class="Math">C^\oplus \to D^\oplus</span></p>
+
+<p>The argument is a functor <span class="Math">F:C\to D</span>, and the output is the extension functor <span class="Math">F^\oplus:C^\oplus \to D^\oplus</span>.</p>
+
+<p><a id="X800F55F17A280DE5" name="X800F55F17A280DE5"></a></p>
+
+<h5>2.2-9 ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a functor <span class="Math">C^\oplus \to D</span></p>
+
+<p>The argument is a functor <span class="Math">F:C\to D</span>, where <span class="Math">D</span> is an additive category. The output is the extension functor <span class="Math">F^\oplus:C^\oplus \to D</span>.</p>
+
+<p><a id="X80D324A184629A28" name="X80D324A184629A28"></a></p>
+
+<h5>2.2-10 ExtendFunctorToAdditiveClosureOfSource</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendFunctorToAdditiveClosureOfSource</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a functor <span class="Math">C^\oplus \to D^\oplus</span> or <span class="Math">C^\oplus \to D</span></p>
+
+<p>The argument is a functor <span class="Math">F:C\to D</span>. If <span class="Math">D</span> is not known to be an additive category, then return <code class="code">ExtendFunctorToAdditiveClosures</code>(<var class="Arg">F</var>), otherwise return <code class="code">ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource</code>(<var class="Arg">F</var>).</p>
+
+<p><a id="X82EE592782202D2E" name="X82EE592782202D2E"></a></p>
+
+<h5>2.2-11 ExtendNaturalTransformationToAdditiveClosureOfSource</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendNaturalTransformationToAdditiveClosureOfSource</code>( <var class="Arg">eta</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a natural transformation from <span class="Math">F^\oplus</span> to <span class="Math">G^\oplus</span></p>
+
+<p>The argument is a natural transformation <span class="Math">\eta:(F:C\to D)\Rightarrow (G:C\to D)</span> where <span class="Math">D</span> is an additive category. The ouput is the extension natural transformation <span class="Math">\eta^\oplus:(F^\oplus:C^\oplus\to D)\to(G^\oplus:C^\oplus\to D)</span>.</p>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>2.3 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X78941FF180271D5D" name="X78941FF180271D5D"></a></p>
+
+<h5>2.3-1 UnderlyingCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: the category <span class="Math">C</span></p>
+
+<p>The argument is some additive closure category <span class="Math">A:=C^\oplus</span>. The output is <span class="Math">C</span>.</p>
+
+<p><a id="X806F515A8225F3D5" name="X806F515A8225F3D5"></a></p>
+
+<h5>2.3-2 ObjectList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectList</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list of the objects in <span class="Math">C</span></p>
+
+<p>The argument is a formal direct sum <span class="Math">A:=A_1\oplus\dots\oplus A_m</span> in some additive closure category <span class="Math">C^\oplus</span>. The output is the list <span class="Math">[A_1,\dots,A_m]</span>.</p>
+
+<p><a id="X801FFB8B7A9200B7" name="X801FFB8B7A9200B7"></a></p>
+
+<h5>2.3-3 MorphismMatrix</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismMatrix</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list of lists the morphisms in <span class="Math">C</span></p>
+
+<p>The argument is a morphism <span class="Math">\alpha:A\to B</span> between formal direct sums in some additive closure category <span class="Math">C^\oplus</span>. The output is the defining matrix of <span class="Math">\alpha</span>.</p>
+
+<p><a id="X7A84391E80904DF8" name="X7A84391E80904DF8"></a></p>
+
+<h5>2.3-4 NrRows</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NrRows</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a non-negative integer</p>
+
+<p>The argument is a morphism <span class="Math">\alpha:A\to B</span> between formal direct sums. The output is the number of summands of the the source.</p>
+
+<p><a id="X79E258B7803D0B05" name="X79E258B7803D0B05"></a></p>
+
+<h5>2.3-5 NrCols</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NrCols</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a non-negative integer</p>
+
+<p>The argument is a morphism <span class="Math">\alpha:A\to B</span> between formal direct sums. The output is the number of summands of the the range.</p>
+
+<p><a id="X7AD6F77E7D95C996" name="X7AD6F77E7D95C996"></a></p>
+
+<h4>2.4 <span class="Heading">Operators</span></h4>
+
+<p><a id="X7D349F847E6043A8" name="X7D349F847E6043A8"></a></p>
+
+<h5><code>2.4-1 \[\]</code></h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \[\]</code>( <var class="Arg">A</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object in <span class="Math">C</span></p>
+
+<p>The arguments are a formal direct sum <span class="Math">A</span> in some additive category <span class="Math">C^\oplus</span> and an integers <span class="Math">i</span>. The output is the <span class="Math">i</span>'th entry in <code class="code">ObjectList</code>(<span class="Math">A</span>).</p>
+
+<p><a id="X85700E97870211FE" name="X85700E97870211FE"></a></p>
+
+<h5>2.4-2 [</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; [</code>( <var class="Arg">alpha</var>, <var class="Arg">i</var>, <var class="Arg">j</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism <span class="Math">C</span></p>
+
+<p>The arguments are a morphism <span class="Math">\alpha:A\to B</span> between formal direct sums in some additive category <span class="Math">C^\oplus</span> and two integers <span class="Math">i,j</span>. The output is the <span class="Math">(i,j)</span>'th entry in <code class="code">MorphismMatrix</code>(<span class="Math">\alpha</span>).</p>
+
+<p><a id="X7D3C3DCE87667A7C" name="X7D3C3DCE87667A7C"></a></p>
+
+<h5><code>2.4-3 \/</code></h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \/</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>The input is either a list of objects or list of lists of morphisms. The method delegates to either <code class="code">AdditiveClosureObject</code> or <code class="code">AdditiveClosureMorphism</code>.</p>
+
+<p><a id="X790ACC3182D77147" name="X790ACC3182D77147"></a></p>
+
+<h5><code>2.4-4 \/</code></h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \/</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>This is a convenience method for <code class="code">AsAdditiveClosureObject</code> and <code class="code">AsAdditiveClosureMorphism</code>.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chap9.html">9</a>  <a href="chap10.html">10</a>  <a href="chap11.html">11</a>  <a href="chap12.html">12</a>  <a href="chap13.html">13</a>  <a href="chap14.html">14</a>  <a href="chap15.html">15</a>  <a href="chap16.html">16</a>  <a href="chap17.html">17</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

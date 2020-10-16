@@ -1,0 +1,312 @@
+  
+  
+                            [1X FreydCategoriesForCAP [101X
+  
+  
+        [1X Freyd categories - Formal (co)kernels for additive categories [101X
+  
+  
+                                   2020.09.21
+  
+  
+                               21 September 2020
+  
+  
+                                Sebastian Posur
+  
+                                  Martin Bies
+  
+  
+  
+  Sebastian Posur
+      Email:    [7Xmailto:sebastian.posur@uni-siegen.de[107X
+      Homepage: [7Xhttps://sebastianpos.github.io[107X
+      Address:  [33X[0;14YDepartment Mathematik[133X
+                [33X[0;14YUniversität Siegen[133X
+                [33X[0;14YWalter-Flex-Straße 3[133X
+                [33X[0;14Y57068 Siegen[133X
+                [33X[0;14YGermany[133X
+  
+  
+  Martin Bies
+      Email:    [7Xmailto:martin.bies@alumni.uni-heidelberg.de[107X
+      Homepage: [7Xhttps://www.ulb.ac.be/sciences/ptm/pmif/people.html[107X
+      Address:  [33X[0;14YPhysique Théorique et Mathématique[133X
+                [33X[0;14YUniversité Libre de Bruxelles[133X
+                [33X[0;14YCampus Plaine - CP 231[133X
+                [33X[0;14YBuilding NO - Level 6 - Office O.6.111[133X
+                [33X[0;14Y1050 Brussels[133X
+                [33X[0;14YBelgium[133X
+  
+  
+  
+  -------------------------------------------------------
+  
+  
+  [1XContents (FreydCategoriesForCAP)[101X
+  
+  1 [33X[0;0YBasic operations[133X
+    1.1 [33X[0;0YWeak kernel[133X
+      1.1-1 WeakKernelObject
+      1.1-2 WeakKernelEmbedding
+      1.1-3 WeakKernelEmbeddingWithGivenWeakKernelObject
+      1.1-4 WeakKernelLift
+      1.1-5 WeakKernelLiftWithGivenWeakKernelObject
+      1.1-6 AddWeakKernelObject
+      1.1-7 AddWeakKernelEmbedding
+      1.1-8 AddWeakKernelEmbeddingWithGivenWeakKernelObject
+      1.1-9 AddWeakKernelLift
+      1.1-10 AddWeakKernelLiftWithGivenWeakKernelObject
+    1.2 [33X[0;0YWeak cokernel[133X
+      1.2-1 WeakCokernelObject
+      1.2-2 WeakCokernelProjection
+      1.2-3 WeakCokernelProjectionWithGivenWeakCokernelObject
+      1.2-4 WeakCokernelColift
+      1.2-5 WeakCokernelColiftWithGivenWeakCokernelObject
+      1.2-6 AddWeakCokernelObject
+      1.2-7 AddWeakCokernelProjection
+      1.2-8 AddWeakCokernelProjectionWithGivenWeakCokernelObject
+      1.2-9 AddWeakCokernelColift
+      1.2-10 AddWeakCokernelColiftWithGivenWeakCokernelObject
+    1.3 [33X[0;0YWeak bi-fiber product[133X
+      1.3-1 WeakBiFiberProduct
+      1.3-2 ProjectionInFirstFactorOfWeakBiFiberProduct
+      1.3-3 ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
+      1.3-4 ProjectionInSecondFactorOfWeakBiFiberProduct
+      1.3-5 ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
+      1.3-6 UniversalMorphismIntoWeakBiFiberProduct
+      1.3-7 UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct
+      1.3-8 WeakBiFiberProductMorphismToDirectSum
+      1.3-9 AddWeakBiFiberProduct
+      1.3-10 AddProjectionInFirstFactorOfWeakBiFiberProduct
+      1.3-11 AddProjectionInSecondFactorOfWeakBiFiberProduct
+      1.3-12 AddProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
+      1.3-13 AddProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
+      1.3-14 AddUniversalMorphismIntoWeakBiFiberProduct
+      1.3-15 AddUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct
+      1.3-16 AddWeakBiFiberProductMorphismToDirectSum
+    1.4 [33X[0;0YBiased weak fiber product[133X
+      1.4-1 BiasedWeakFiberProduct
+      1.4-2 ProjectionOfBiasedWeakFiberProduct
+      1.4-3 ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
+      1.4-4 UniversalMorphismIntoBiasedWeakFiberProduct
+      1.4-5 UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
+      1.4-6 AddBiasedWeakFiberProduct
+      1.4-7 AddProjectionOfBiasedWeakFiberProduct
+      1.4-8 AddProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
+      1.4-9 AddUniversalMorphismIntoBiasedWeakFiberProduct
+      1.4-10 AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
+    1.5 [33X[0;0YWeak bi-pushout[133X
+      1.5-1 WeakBiPushout
+      1.5-2 InjectionOfFirstCofactorOfWeakBiPushout
+      1.5-3 InjectionOfSecondCofactorOfWeakBiPushout
+      1.5-4 InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout
+      1.5-5 InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout
+      1.5-6 UniversalMorphismFromWeakBiPushout
+      1.5-7 UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout
+      1.5-8 DirectSumMorphismToWeakBiPushout
+      1.5-9 AddWeakBiPushout
+      1.5-10 AddInjectionOfFirstCofactorOfWeakBiPushout
+      1.5-11 AddInjectionOfSecondCofactorOfWeakBiPushout
+      1.5-12 AddInjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout
+      1.5-13 AddInjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout
+      1.5-14 AddUniversalMorphismFromWeakBiPushout
+      1.5-15 AddUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout
+      1.5-16 AddDirectSumMorphismToWeakBiPushout
+    1.6 [33X[0;0YBiased weak pushout[133X
+      1.6-1 BiasedWeakPushout
+      1.6-2 InjectionOfBiasedWeakPushout
+      1.6-3 InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout
+      1.6-4 UniversalMorphismFromBiasedWeakPushout
+      1.6-5 UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout
+      1.6-6 AddBiasedWeakPushout
+      1.6-7 AddInjectionOfBiasedWeakPushout
+      1.6-8 AddInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout
+      1.6-9 AddUniversalMorphismFromBiasedWeakPushout
+      1.6-10 AddUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout
+    1.7 [33X[0;0YAbelian constructions[133X
+      1.7-1 SomeProjectiveObjectForKernelObject
+      1.7-2 EpimorphismFromSomeProjectiveObjectForKernelObject
+      1.7-3 EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject
+      1.7-4 SomeInjectiveObjectForCokernelObject
+      1.7-5 MonomorphismToSomeInjectiveObjectForCokernelObject
+      1.7-6 MonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject
+      1.7-7 AddSomeProjectiveObjectForKernelObject
+      1.7-8 AddSomeInjectiveObjectForCokernelObject
+      1.7-9 AddEpimorphismFromSomeProjectiveObjectForKernelObject
+      1.7-10 AddMonomorphismToSomeInjectiveObjectForCokernelObject
+      1.7-11 AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject
+      1.7-12 AddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject
+  2 [33X[0;0YAdditive closure[133X
+    2.1 [33X[0;0YGAP Categories[133X
+      2.1-1 IsAdditiveClosureCategory
+      2.1-2 IsAdditiveClosureObject
+      2.1-3 IsAdditiveClosureMorphism
+    2.2 [33X[0;0YConstructors[133X
+      2.2-1 AdditiveClosure
+      2.2-2 AdditiveClosureObject
+      2.2-3 AsAdditiveClosureObject
+      2.2-4 AdditiveClosureMorphism
+      2.2-5 AdditiveClosureMorphismListList
+      2.2-6 AsAdditiveClosureMorphism
+      2.2-7 InclusionFunctorInAdditiveClosure
+      2.2-8 ExtendFunctorToAdditiveClosures
+      2.2-9 ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource
+      2.2-10 ExtendFunctorToAdditiveClosureOfSource
+      2.2-11 ExtendNaturalTransformationToAdditiveClosureOfSource
+    2.3 [33X[0;0YAttributes[133X
+      2.3-1 UnderlyingCategory
+      2.3-2 ObjectList
+      2.3-3 MorphismMatrix
+      2.3-4 NrRows
+      2.3-5 NrCols
+    2.4 [33X[0;0YOperators[133X
+      2.4-1 \[\]
+      2.4-2 [
+      2.4-3 \/
+      2.4-4 \/
+  3 [33X[0;0YExample on additive closure[133X
+    3.1 [33X[0;0YUsing matrix data structures[133X
+  4 [33X[0;0YAdelman category[133X
+    4.1 [33X[0;0YGAP Categories[133X
+      4.1-1 IsAdelmanCategoryObject
+      4.1-2 IsAdelmanCategoryMorphism
+      4.1-3 IsAdelmanCategory
+    4.2 [33X[0;0YConstructors[133X
+      4.2-1 AdelmanCategory
+      4.2-2 AdelmanCategoryObject
+      4.2-3 AdelmanCategoryMorphism
+      4.2-4 AsAdelmanCategoryObject
+      4.2-5 AsAdelmanCategoryMorphism
+      4.2-6 \/
+      4.2-7 \/
+    4.3 [33X[0;0YAttributes and Properties[133X
+      4.3-1 UnderlyingCategory
+      4.3-2 RelationMorphism
+      4.3-3 CorelationMorphism
+      4.3-4 MorphismDatum
+      4.3-5 RelationWitness
+      4.3-6 CorelationWitness
+      4.3-7 WitnessPairForBeingCongruentToZero
+      4.3-8 IsSequenceAsAdelmanCategoryObject
+  5 [33X[0;0YCategory of rows[133X
+    5.1 [33X[0;0YGAP Categories[133X
+      5.1-1 IsCategoryOfRowsObject
+  6 [33X[0;0YExample on category of rows[133X
+    6.1 [33X[0;0YConstructors of objects[133X
+    6.2 [33X[0;0YConstructors of morphisms[133X
+    6.3 [33X[0;0YA few categorical constructions for category of rows[133X
+    6.4 [33X[0;0YSimplifications[133X
+  7 [33X[0;0YCategory of columns[133X
+    7.1 [33X[0;0YGAP Categories[133X
+      7.1-1 IsCategoryOfColumnsObject
+  8 [33X[0;0YExample on category of columns[133X
+    8.1 [33X[0;0YConstructors of objects[133X
+    8.2 [33X[0;0YConstructors of morphisms[133X
+    8.3 [33X[0;0YA few categorical constructions for category of columns[133X
+  9 [33X[0;0YCategory of graded rows and category of graded columns[133X
+    9.1 [33X[0;0YConstructors[133X
+      9.1-1 CategoryOfGradedColumns
+      9.1-2 CategoryOfGradedRows
+      9.1-3 GradedRow
+      9.1-4 GradedRow
+      9.1-5 GradedColumn
+      9.1-6 GradedColumn
+      9.1-7 GradedRowOrColumnMorphism
+      9.1-8 GradedRowOrColumnMorphism
+    9.2 [33X[0;0YAttributes[133X
+      9.2-1 UnderlyingHomalgGradedRing
+      9.2-2 DegreeList
+      9.2-3 RankOfObject
+      9.2-4 UnderlyingHomalgGradedRing
+      9.2-5 UnderlyingHomalgMatrix
+    9.3 [33X[0;0YGAP Categories[133X
+      9.3-1 IsGradedRowOrColumn
+      9.3-2 IsGradedRow
+      9.3-3 IsGradedColumn
+      9.3-4 IsGradedRowOrColumnMorphism
+      9.3-5 IsGradedRowMorphism
+      9.3-6 IsGradedColumnMorphism
+    9.4 [33X[0;0YTools to simplify code[133X
+      9.4-1 DeduceMapFromMatrixAndRangeForGradedRows
+      9.4-2 DeduceSomeMapFromMatrixAndRangeForGradedRows
+      9.4-3 DeduceMapFromMatrixAndSourceForGradedRows
+      9.4-4 DeduceSomeMapFromMatrixAndSourceForGradedRows
+      9.4-5 DeduceMapFromMatrixAndRangeForGradedCols
+      9.4-6 DeduceSomeMapFromMatrixAndRangeForGradedCols
+      9.4-7 DeduceMapFromMatrixAndSourceForGradedCols
+      9.4-8 DeduceSomeMapFromMatrixAndSourceForGradedCols
+      9.4-9 UnzipDegreeList
+  10 [33X[0;0YCokernel image closure[133X
+  11 [33X[0;0YFreyd category[133X
+    11.1 [33X[0;0YInternal Hom-Embedding[133X
+      11.1-1 INTERNAL_HOM_EMBEDDING
+    11.2 [33X[0;0YConvenient methods for tensor products of freyd objects and morphisms[133X
+      11.2-1 \*
+      11.2-2 \^
+      11.2-3 \*
+      11.2-4 \^
+  12 [33X[0;0YExamples and Tests[133X
+    12.1 [33X[0;0YAdelman 5 lemma[133X
+    12.2 [33X[0;0YAdelman category basics for category of rows[133X
+    12.3 [33X[0;0YAdelman category basics for for additive closure of algebroids[133X
+    12.4 [33X[0;0YAdelman category basics for category of columns[133X
+    12.5 [33X[0;0YAdelman category basics[133X
+    12.6 [33X[0;0YAdelman snake lemma[133X
+    12.7 [33X[0;0YBasics based on category of rows[133X
+    12.8 [33X[0;0YBasics of additive closure[133X
+    12.9 [33X[0;0YBasics based on category of columns[133X
+    12.10 [33X[0;0YCokernel image closure in category of rows[133X
+    12.11 [33X[0;0YCokernel image closure in category of columns[133X
+    12.12 [33X[0;0YGrade filtration[133X
+    12.13 [33X[0;0YGroups as categories[133X
+    12.14 [33X[0;0YHomomorphisms between f.p. functors based on category of rows[133X
+    12.15 [33X[0;0YHomomorphisms between f.p. functors based on category of columns[133X
+    12.16 [33X[0;0YLinear closure of categories[133X
+    12.17 [33X[0;0YMatrices over ZP K[133X
+    12.18 [33X[0;0YMatrices over ZG[133X
+    12.19 [33X[0;0YProsets[133X
+    12.20 [33X[0;0YQuiver rows bascis[133X
+    12.21 [33X[0;0YQuiver rows over the integers[133X
+    12.22 [33X[0;0YCategory of relations[133X
+    12.23 [33X[0;0YRings as Ab-categories[133X
+    12.24 [33X[0;0YSnake lemma first proof[133X
+    12.25 [33X[0;0YSnake lemma second proof[133X
+    12.26 [33X[0;0YSubobject lattice[133X
+    12.27 [33X[0;0YAdelman category theorem[133X
+  13 [33X[0;0YLinear closure of a category[133X
+    13.1 [33X[0;0YFunctors[133X
+      13.1-1 ExtendFunctorToLinearClosureOfSource
+      13.1-2 ExtendFunctorToLinearClosureOfSource
+  14 [33X[0;0YExamples on graded rows and columns[133X
+    14.1 [33X[0;0YFreyd category of graded rows[133X
+    14.2 [33X[0;0YFreyd category of graded columns[133X
+    14.3 [33X[0;0YConstructors of objects and reduction of degree lists[133X
+    14.4 [33X[0;0YConstructors of morphisms[133X
+    14.5 [33X[0;0YThe GAP categories[133X
+    14.6 [33X[0;0YA few categorical constructions for graded rows[133X
+    14.7 [33X[0;0YA few categorical constructions for graded columns[133X
+    14.8 [33X[0;0YAdditional examples on monoidal structure for graded rows[133X
+    14.9 [33X[0;0YAdditional examples on monoidal structure for graded columns[133X
+    14.10 [33X[0;0YExamples to test Tools methods in graded rows/cols[133X
+  15 [33X[0;0YCategory of rows and columns over a field[133X
+    15.1 [33X[0;0YAbelian operations for rows[133X
+  16 [33X[0;0YExample on tensor products in Freyd categories[133X
+    16.1 [33X[0;0YTensor products for categories of rows[133X
+    16.2 [33X[0;0YTensor products for categories of columns[133X
+  17 [33X[0;0YThe CAP category of graded module presentations for CAP by use of Freyd
+  categories[133X
+    17.1 [33X[0;0YCAP categories[133X
+      17.1-1 FpGradedLeftModules
+      17.1-2 FpGradedRightModules
+    17.2 [33X[0;0YThe GAP categories for graded module presentations for CAP[133X
+      17.2-1 IsFpGradedLeftOrRightModulesObject
+      17.2-2 IsFpGradedLeftModulesObject
+      17.2-3 IsFpGradedRightModulesObject
+    17.3 [33X[0;0YThe GAP categories for graded module presentation morphisms for CAP[133X
+      17.3-1 IsFpGradedLeftOrRightModulesMorphism
+      17.3-2 IsFpGradedLeftModulesMorphism
+      17.3-3 IsFpGradedRightModulesMorphism
+  
+  
+  [32X
