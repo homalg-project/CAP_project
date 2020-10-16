@@ -1,0 +1,50 @@
+name: ToricSheaves
+version: 2016.08.12
+date: 12/08/2016
+description: Toric sheaves as Serre quotients
+
+authors:
+    - name: Sebastian Gutsche
+      url: http://wwwb.math.rwth-aachen.de/~gutsche/
+
+maintainers:
+    - name: Sebastian Gutsche
+      url: http://wwwb.math.rwth-aachen.de/~gutsche/
+
+GAP: ">= 4.6"
+
+needed-pkgs:
+    - name: "GAPDoc"
+      version: ">= 1.5"
+      url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
+    - name: "GradedModulePresentationsForCAP"
+      version: ">=0"
+      url: "https://github.com/homalg-project/CAP_project/tree/master/GradedModulePresentationsForCAP"
+    - name: "GeneralizedMorphismsForCAP"
+      version: ">=0"
+      url: "https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP"
+    - name: "4ti2Interface"
+      version: ">=0"
+      url: "https://homalg-project.github.io/homalg_project/4ti2Interface"
+    - name: "NConvex"
+      version: "2019.03.25"
+      url: "https://homalg-project.github.io/NConvex"
+
+suggested-pkgs:
+    - name: "ToricVarieties"
+      version: ">=0"
+      url: "https://homalg-project.github.io/homalg_project/ToricVarieties/"
+
+www: https://github.com/homalg-project/CAP_project/tree/master/ToricSheaves
+readme: https://raw.githubusercontent.com/homalg-project/CAP_project/master/ToricSheaves/README.md
+packageinfo: https://raw.githubusercontent.com/homalg-project/CAP_project/master/ToricSheaves/PackageInfo.g
+
+downloads:
+    - name: .tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ToricSheaves-2016.08.12/ToricSheaves-2016.08.12.tar.gz
+
+abstract: 
+
+status: dev
+doc-html: doc/chap0.html
+doc-pdf: doc/manual.pdf
