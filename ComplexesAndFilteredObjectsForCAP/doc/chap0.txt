@@ -1,0 +1,49 @@
+  
+  
+                      [1X ComplexesAndFilteredObjectsForCAP [101X
+  
+  
+    [1X Implementation of complexes, cocomplexes and filtered objects for CAP [101X
+  
+  
+                                   2018.08.02
+  
+  
+                                 2 August 2018
+  
+  
+                                Sebastian Posur
+  
+                               Sebastian Gutsche
+  
+  
+  
+  Sebastian Posur
+      Email:    [7Xmailto:sposur@momo.math.rwth-aachen.de[107X
+      Homepage: [7Xhttps://sebastianpos.github.io[107X
+      Address:  [33X[0;14YSebastian Posur[133X
+                [33X[0;14YLehrstuhl B fuer Mathematik, RWTH Aachen[133X
+                [33X[0;14YTemplergraben 64[133X
+                [33X[0;14Y52062 Aachen[133X
+                [33X[0;14YGermany[133X
+  
+  
+  Sebastian Gutsche
+      Email:    [7Xmailto:gutsche@momo.math.rwth-aachen.de[107X
+      Homepage: [7Xhttp://wwwb.math.rwth-aachen.de/~gutsche/[107X
+      Address:  [33X[0;14YDepartment of Mathematics[133X
+                [33X[0;14YUniversity of Kaiserslautern[133X
+                [33X[0;14Y67653 Kaiserslautern[133X
+                [33X[0;14YGermany[133X
+  
+  
+  
+  -------------------------------------------------------
+  
+  
+  [1XContents (ComplexesAndFilteredObjectsForCAP)[101X
+  
+  1 [33X[0;0YFunctors from integers category[133X
+  
+  
+  [32X
