@@ -1,5 +1,5 @@
 #
-# MonoidalCategories
+# MonoidalCategories: Monoidal and monoidal (co)closed categories
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -15,13 +15,14 @@ Version := Maximum( [
   ## this line prevents merge conflicts
   "2019.06.07", ## Sebas' version
   ## this line prevents merge conflicts
-  "2018.09.19", ## Sepp's version
+  "2020.04.16", ## Sepp's version
   ## this line prevents merge conflicts
   "2019.08.10", ## Fabian's version
+  ## this line prevents merge conflicts
+  "2019.02.01", ## Tom's version
 ] ),
 
-Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := Concatenation( ~.Version{[ 9, 10 ]}, "/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -73,12 +74,17 @@ Persons := [
   ),
 ],
 
-PackageWWWHome  := "http://homalg-project.github.io/CAP_project/MonoidalCategories/",
-
-#SupportEmail   := "TODO",
-ArchiveURL     := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-", ~.Version, "/MonoidalCategories-", ~.Version ),
-README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
+# BEGIN URLS
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/homalg-project/CAP_project",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := "https://homalg-project.github.io/CAP_project/MonoidalCategories",
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/MonoidalCategories/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/MonoidalCategories/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-", ~.Version, "/MonoidalCategories-", ~.Version ),
+# END URLS
 
 ArchiveFormats := ".tar.gz .zip",
 

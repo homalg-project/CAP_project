@@ -1,6 +1,6 @@
 name: MonoidalCategories
-version: 2020.03.01
-date: 01/03/2020
+version: 2020.04.16
+date: 16/04/2020
 description: Monoidal and monoidal (co)closed categories
 
 authors:
@@ -27,22 +27,22 @@ needed-pkgs:
       url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
     - name: "ToolsForHomalg"
       version: ">= 2018.05.22"
-      url: "https://homalg-project.github.io/homalg_project/ToolsForHomalg/"
+      url: "https://homalg-project.github.io/homalg_project/ToolsForHomalg"
     - name: "CAP"
       version: ">= 2019.08.10"
-      url: "http://homalg-project.github.io/CAP_project/CAP/"
+      url: "https://homalg-project.github.io/CAP_project/CAP"
 
-www: http://homalg-project.github.io/CAP_project/MonoidalCategories/
-readme: http://homalg-project.github.io/CAP_project/MonoidalCategories/README
-packageinfo: http://homalg-project.github.io/CAP_project/MonoidalCategories/PackageInfo.g
+www: https://homalg-project.github.io/CAP_project/MonoidalCategories
+readme: https://homalg-project.github.io/CAP_project/MonoidalCategories/README.md
+packageinfo: https://homalg-project.github.io/CAP_project/MonoidalCategories/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2020.03.01/MonoidalCategories-2020.03.01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2020.04.16/MonoidalCategories-2020.04.16.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2020.03.01/MonoidalCategories-2020.03.01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2020.04.16/MonoidalCategories-2020.04.16.zip
 
-abstract: ''
+abstract: 
 
 status: deposited
 doc-html: doc/chap0.html

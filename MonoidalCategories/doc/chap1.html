@@ -719,7 +719,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoevaluationMorphism</code>( <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, \mathrm{\underline{Hom}}(b, a \otimes b) )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span>. The output is the coevaluation morphism <span class="Math">\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}(b, a \otimes b)}</span>, i.e., the unit of the tensor hom adjunction.</p>
+<p>The arguments are two objects <span class="Math">a,b</span>. The output is the coevaluation morphism <span class="Math">\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}}(b, a \otimes b)</span>, i.e., the unit of the tensor hom adjunction.</p>
 
 <p><a id="X7E8123AD8567A5C0" name="X7E8123AD8567A5C0"></a></p>
 
@@ -728,7 +728,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoevaluationMorphismWithGivenRange</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( a, \mathrm{\underline{Hom}}(b, a \otimes b) )</span>.</p>
 
-<p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">r = \mathrm{\underline{Hom}(b, a \otimes b)}</span>. The output is the coevaluation morphism <span class="Math">\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}(b, a \otimes b)}</span>, i.e., the unit of the tensor hom adjunction.</p>
+<p>The arguments are two objects <span class="Math">a,b</span> and an object <span class="Math">r = \mathrm{\underline{Hom}}(b, a \otimes b)</span>. The output is the coevaluation morphism <span class="Math">\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}}(b, a \otimes b)</span>, i.e., the unit of the tensor hom adjunction.</p>
 
 <p><a id="X817E96AA7ACACE89" name="X817E96AA7ACACE89"></a></p>
 
@@ -773,7 +773,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInternalHomToTensorProductAdjunctionMap</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">InternalHomToTensorProductAdjunctionMap</code>. <span class="Math">F: (b, c, g: a \rightarrow \mathrm{\underline{Hom}}(b,c)) \mapsto ( g: a \otimes b \rightarrow c )</span>.</p>
+<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">InternalHomToTensorProductAdjunctionMap</code>. <span class="Math">F: (b, c, g: a \rightarrow \mathrm{\underline{Hom}}(b,c)) \mapsto ( f: a \otimes b \rightarrow c )</span>.</p>
 
 <p><a id="X86E4E97C82BFB45C" name="X86E4E97C82BFB45C"></a></p>
 
@@ -1300,7 +1300,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TraceMap</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(1,1)</span>.</p>
 
-<p>The argument is a morphism <span class="Math">\alpha</span>. The output is the trace morphism <span class="Math">\mathrm{trace}_{\alpha}: 1 \rightarrow 1</span>.</p>
+<p>The argument is an endomorphism <span class="Math">\alpha: A \rightarrow A</span>. The output is the trace morphism <span class="Math">\mathrm{trace}_{\alpha}: 1 \rightarrow 1</span>.</p>
 
 <p><a id="X8446431880FFF111" name="X8446431880FFF111"></a></p>
 

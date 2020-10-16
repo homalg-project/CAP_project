@@ -564,7 +564,7 @@
             \otimes b) )[123X.[133X
   
   [33X[0;0YThe  arguments  are two objects [23Xa,b[123X. The output is the coevaluation morphism
-  [23X\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}(b, a \otimes b)}[123X,
+  [23X\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}}(b, a \otimes b)[123X,
   i.e., the unit of the tensor hom adjunction.[133X
   
   [1X1.5-10 CoevaluationMorphismWithGivenRange[101X
@@ -574,9 +574,9 @@
             \otimes b) )[123X.[133X
   
   [33X[0;0YThe    arguments    are    two    objects    [23Xa,b[123X   and   an   object   [23Xr   =
-  \mathrm{\underline{Hom}(b,  a  \otimes  b)}[123X.  The output is the coevaluation
-  morphism  [23X\mathrm{coev}_{a,b}:  a  \rightarrow  \mathrm{\underline{Hom}(b, a
-  \otimes b)}[123X, i.e., the unit of the tensor hom adjunction.[133X
+  \mathrm{\underline{Hom}}(b,  a  \otimes  b)[123X.  The output is the coevaluation
+  morphism  [23X\mathrm{coev}_{a,b}:  a  \rightarrow \mathrm{\underline{Hom}}(b, a
+  \otimes b)[123X, i.e., the unit of the tensor hom adjunction.[133X
   
   [1X1.5-11 AddCoevaluationMorphismWithGivenRange[101X
   
@@ -624,7 +624,7 @@
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XInternalHomToTensorProductAdjunctionMap[110X.   [23XF:   (b,   c,  g:  a  \rightarrow
-  \mathrm{\underline{Hom}}(b,c)) \mapsto ( g: a \otimes b \rightarrow c )[123X.[133X
+  \mathrm{\underline{Hom}}(b,c)) \mapsto ( f: a \otimes b \rightarrow c )[123X.[133X
   
   [1X1.5-16 MonoidalPreComposeMorphism[101X
   
@@ -1225,8 +1225,8 @@
   [33X[1;0Y[29X[2XTraceMap[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1,1)[123X.[133X
   
-  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha[123X.  The  output  is  the trace morphism
-  [23X\mathrm{trace}_{\alpha}: 1 \rightarrow 1[123X.[133X
+  [33X[0;0YThe  argument  is an endomorphism [23X\alpha: A \rightarrow A[123X. The output is the
+  trace morphism [23X\mathrm{trace}_{\alpha}: 1 \rightarrow 1[123X.[133X
   
   [1X1.7-15 AddTraceMap[101X
   
