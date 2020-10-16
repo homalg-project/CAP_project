@@ -1,0 +1,37 @@
+  
+  
+                        [1X InternalExteriorAlgebraForCAP [101X
+  
+  
+     [1X Constructions for Modules over the Internal Exterior Algebra for CAP [101X
+  
+  
+                                   2017.01.11
+  
+  
+                                11 January 2017
+  
+  
+                                Sebastian Posur
+  
+  
+  
+  Sebastian Posur
+      Email:    [7Xmailto:sebastian.posur@uni-siegen.de[107X
+      Homepage: [7Xhttps://sebastianpos.github.io[107X
+      Address:  [33X[0;14YDepartment Mathematik[133X
+                [33X[0;14YUniversität Siegen[133X
+                [33X[0;14YWalter-Flex-Straße 3[133X
+                [33X[0;14Y57068 Siegen[133X
+                [33X[0;14YGermany[133X
+  
+  
+  
+  -------------------------------------------------------
+  
+  
+  [1XContents (InternalExteriorAlgebraForCAP)[101X
+  
+  
+  
+  [32X
