@@ -1,0 +1,29 @@
+  
+  
+  [1XIndex[101X
+  
+  [2XAffineDimension[102X, for IsGradedLeftOrRightPresentation 1.2-10 
+  [2XAsGradedLeftOrRightPresentation[102X 1.2-4 
+  [2XAsGradedLeftPresentation[102X, for IsHomalgMatrix 1.2-2 
+  [2XAsGradedRightPresentation[102X, for IsHomalgMatrix 1.2-3 
+  [2XCoverByProjective[102X, for IsGradedLeftOrRightPresentation 1.4-2 
+  [2XGeneratorDegrees[102X, for IsGradedLeftOrRightPresentation 1.2-9 
+  [2XGradedFreeLeftPresentation[102X, for IsInt, IsHomalgRing 1.2-5 
+  [2XGradedFreeRightPresentation[102X, for IsInt, IsHomalgRing 1.2-6 
+  [2XGradedLeftPresentations[102X, for IsHomalgRing 1.2-11 
+  [2XGradedPresentationMorphism[102X, for IsGradedLeftOrRightPresentation, IsHomalgMatrix, IsGradedLeftOrRightPresentation 1.2-1 
+  [2XGradedRightPresentations[102X, for IsHomalgRing 1.2-12 
+  [2XIsGradedLeftOrRightPresentation[102X, for IsCapCategoryObject 1.1-4 
+  [2XIsGradedLeftOrRightPresentationMorphism[102X, for IsCapCategoryMorphism 1.1-1 
+  [2XIsGradedLeftPresentation[102X, for IsGradedLeftOrRightPresentation 1.1-5 
+  [2XIsGradedLeftPresentationMorphism[102X, for IsGradedLeftOrRightPresentationMorphism 1.1-2 
+  [2XIsGradedRightPresentation[102X, for IsGradedLeftOrRightPresentation 1.1-6 
+  [2XIsGradedRightPresentationMorphism[102X, for IsGradedLeftOrRightPresentationMorphism 1.1-3 
+  [2XStandardGeneratorMorphism[102X, for IsGradedLeftOrRightPresentation, IsInt 1.4-1 
+  [2XUnderlyingHomalgRing[102X, for IsGradedLeftOrRightPresentation 1.2-8 
+      for IsGradedLeftOrRightPresentationMorphism 1.3-1 
+  [2XUnderlyingMatrix[102X, for IsGradedLeftOrRightPresentationMorphism 1.3-2 
+  [2XUnderlyingPresentationObject[102X, for IsGradedLeftOrRightPresentation 1.2-7 
+  
+  
+  -------------------------------------------------------
