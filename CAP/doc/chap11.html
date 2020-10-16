@@ -151,7 +151,7 @@ true
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/testfiles/FieldAsCategory.gi" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/FieldAsCategory.g" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Qoid := FieldAsCategory( Q );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := FieldAsCategoryMorphism( 1/2, Qoid );;</span>
@@ -202,7 +202,7 @@ fail
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/testfiles/StringsAsCategory.gi" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/StringsAsCategory.g" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C := StringsAsCategory();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj1 := StringsAsCategoryObject( "qaeiou", C );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj2 := StringsAsCategoryObject( "qxayeziouT", C );;</span>
@@ -770,7 +770,7 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );</span>
 VectorSpacesForGeneralizedMorphismsTest
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "GeneralizedMorphismsForCAP" );</span>
 true
@@ -850,7 +850,7 @@ A rational vector space homomorphism with matrix:
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );</span>
 VectorSpacesForGeneralizedMorphismsTest
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := QVectorSpace( 1 );</span>
 &lt;A rational vector space of dimension 1&gt;
@@ -902,7 +902,7 @@ A rational vector space homomorphism with matrix:
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );</span>
 VectorSpacesForGeneralizedMorphismsTest
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := QVectorSpace( 1 );</span>
 &lt;A rational vector space of dimension 1&gt;
@@ -957,7 +957,7 @@ A rational vector space homomorphism with matrix:
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );</span>
 VectorSpacesForGeneralizedMorphismsTest
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := QVectorSpace( 3 );</span>
 &lt;A rational vector space of dimension 3&gt;
@@ -1106,7 +1106,7 @@ A rational vector space homomorphism with matrix:
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );</span>
 VectorSpacesForGeneralizedMorphismsTest
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := QVectorSpace( 1 );</span>
 &lt;A rational vector space of dimension 1&gt;
@@ -1145,7 +1145,7 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vecspaces := CreateCapCategory( "VectorSpacesForIsWellDefinedTest" );</span>
 VectorSpacesForIsWellDefinedTest 
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "GeneralizedMorphismsForCAP" );</span>
 true
@@ -1173,7 +1173,7 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vecspaces := CreateCapCategory( "VectorSpaces01" );</span>
 VectorSpaces01
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/testfiles/VectorSpacesAddKernel01.gi" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/VectorSpacesAddKernel01.g" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := QVectorSpace( 2 );</span>
 &lt;A rational vector space of dimension 2&gt;
@@ -1210,7 +1210,7 @@ A rational vector space homomorphism with matrix:
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vecspaces := CreateCapCategory( "VectorSpaces02" );</span>
 VectorSpaces02
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/testfiles/VectorSpacesAddKernel02.gi" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/VectorSpacesAddKernel02.g" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := QVectorSpace( 2 );</span>
 &lt;A rational vector space of dimension 2&gt;
@@ -1243,7 +1243,7 @@ false
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vecspaces := CreateCapCategory( "VectorSpaces03" );</span>
 VectorSpaces03
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/testfiles/VectorSpacesAddKernel03.gi" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/VectorSpacesAddKernel03.g" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := QVectorSpace( 2 );</span>
 &lt;A rational vector space of dimension 2&gt;
@@ -1287,7 +1287,7 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vecspaces := CreateCapCategory( "VectorSpacesForFiberProductTest" );</span>
 VectorSpacesForFiberProductTest
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := QVectorSpace( 1 );</span>
 &lt;A rational vector space of dimension 1&gt;

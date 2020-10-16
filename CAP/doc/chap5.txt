@@ -111,7 +111,19 @@
   where  [23XD_i  =  A_i[123X  if  [23Xb_i  =  \mathtt{false}[123X,  and [23XD_i = A_i^{\mathrm{op}}[123X
   otherwise.[133X
   
-  [1X5.4-3 AddObjectFunction[101X
+  [1X5.4-3 SourceOfFunctor[101X
+  
+  [33X[1;0Y[29X[2XSourceOfFunctor[102X( [3XF[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe argument is a functor [23XF[123X. The output is its source as CAP category.[133X
+  
+  [1X5.4-4 RangeOfFunctor[101X
+  
+  [33X[1;0Y[29X[2XRangeOfFunctor[102X( [3XF[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe argument is a functor [23XF[123X. The output is its range as CAP category.[133X
+  
+  [1X5.4-5 AddObjectFunction[101X
   
   [33X[1;0Y[29X[2XAddObjectFunction[102X( [3XF[103X, [3Xf[103X ) [32X operation[133X
   
@@ -126,7 +138,7 @@
   GAP object in [10XIsAttributeStoringRep[110X, which will be automatically added as an
   object to the range of the functor.[133X
   
-  [1X5.4-4 FunctorObjectOperation[101X
+  [1X5.4-6 FunctorObjectOperation[101X
   
   [33X[1;0Y[29X[2XFunctorObjectOperation[102X( [3XF[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya GAP operation[133X
@@ -134,7 +146,7 @@
   [33X[0;0YThe  argument  is a functor [23XF[123X. The output is the GAP operation realizing the
   action of [23XF[123X on objects.[133X
   
-  [1X5.4-5 AddMorphismFunction[101X
+  [1X5.4-7 AddMorphismFunction[101X
   
   [33X[1;0Y[29X[2XAddMorphismFunction[102X( [3XF[103X, [3Xf[103X ) [32X operation[133X
   
@@ -154,7 +166,7 @@
   containing  also  GAP  objects  in  [10XIsAttributeStoringRep[110X),  which  will  be
   automatically added as a morphism to the range of the functor.[133X
   
-  [1X5.4-6 FunctorMorphismOperation[101X
+  [1X5.4-8 FunctorMorphismOperation[101X
   
   [33X[1;0Y[29X[2XFunctorMorphismOperation[102X( [3XF[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya GAP operation[133X
@@ -162,7 +174,7 @@
   [33X[0;0YThe  argument  is a functor [23XF[123X. The output is the GAP operation realizing the
   action of [23XF[123X on morphisms.[133X
   
-  [1X5.4-7 ApplyFunctor[101X
+  [1X5.4-9 ApplyFunctor[101X
   
   [33X[1;0Y[29X[2XApplyFunctor[102X( [3Xfunc[103X, [3XA[103X[, [3XB[103X, [3X...[103X] ) [32X function[133X
   [6XReturns:[106X  [33X[0;10YIsCapCategoryCell[133X
@@ -174,7 +186,7 @@
   [30X    [33X[0;6Yto  objects  or  morphisms  belonging  to  the categories in the input
         signature of [3Xfunc[103X.[133X
   
-  [1X5.4-8 InputSignature[101X
+  [1X5.4-10 InputSignature[101X
   
   [33X[1;0Y[29X[2XInputSignature[102X( [3XF[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10YIsList[133X
@@ -185,7 +197,7 @@
   category [23XD_1 \times ... \times D_n[123X, where [23XD_i = A_i[123X if [23Xb_i = \mathtt{false}[123X,
   and [23XD_i = A_i^{\mathrm{op}}[123X otherwise.[133X
   
-  [1X5.4-9 InstallFunctor[101X
+  [1X5.4-11 InstallFunctor[101X
   
   [33X[1;0Y[29X[2XInstallFunctor[102X( [3XF[103X, [3Xs[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -201,7 +213,7 @@
   the  corresponding variants for objects or morphisms only. This function can
   only be called once for each functor, every further call will be ignored.[133X
   
-  [1X5.4-10 IdentityFunctor[101X
+  [1X5.4-12 IdentityFunctor[101X
   
   [33X[1;0Y[29X[2XIdentityFunctor[102X( [3Xcat[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
@@ -209,7 +221,7 @@
   [33X[0;0YReturns  the identity functor of the category [3Xcat[103X viewed as an object in the
   category of categories.[133X
   
-  [1X5.4-11 FunctorCanonicalizeZeroObjects[101X
+  [1X5.4-13 FunctorCanonicalizeZeroObjects[101X
   
   [33X[1;0Y[29X[2XFunctorCanonicalizeZeroObjects[102X( [3Xcat[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
@@ -218,15 +230,15 @@
   (object  isomorphic  to  the)  zero  object to [10XZeroObject[110X([3Xcat[103X) and to itself
   otherwise. This functor is equivalent to the identity functor.[133X
   
-  [1X5.4-12 NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects[101X
+  [1X5.4-14 NaturalIsomorphismFromIdentityToCanonicalizeZeroObjects[101X
   
-  [33X[1;0Y[29X[2XNaturalIsomorophismFromIdentityToCanonicalizeZeroObjects[102X( [3Xcat[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XNaturalIsomorphismFromIdentityToCanonicalizeZeroObjects[102X( [3Xcat[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya natural transformation[133X
   
   [33X[0;0YReturns   the   natural   isomorphism   from   the   identity   functor   to
   [10XFunctorCanonicalizeZeroObjects[110X([3Xcat[103X).[133X
   
-  [1X5.4-13 FunctorCanonicalizeZeroMorphisms[101X
+  [1X5.4-15 FunctorCanonicalizeZeroMorphisms[101X
   
   [33X[1;0Y[29X[2XFunctorCanonicalizeZeroMorphisms[102X( [3Xcat[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor[133X
@@ -236,9 +248,9 @@
   morphism;  in  this  case it is mapped to [10XZeroMorphism[110X([10XSource[110X([22Xϕ[122X), [10XRange[110X([22Xϕ[122X)).
   This functor is equivalent to the identity functor.[133X
   
-  [1X5.4-14 NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms[101X
+  [1X5.4-16 NaturalIsomorphismFromIdentityToCanonicalizeZeroMorphisms[101X
   
-  [33X[1;0Y[29X[2XNaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms[102X( [3Xcat[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XNaturalIsomorphismFromIdentityToCanonicalizeZeroMorphisms[102X( [3Xcat[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya natural transformation[133X
   
   [33X[0;0YReturns   the   natural   isomorphism   from   the   identity   functor   to

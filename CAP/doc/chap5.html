@@ -45,18 +45,20 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7814A6FC86238C93">5.4-1 CapFunctor</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7E4F877C7C91B7CA">5.4-2 CapFunctor</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7A75B6A77C9F6836">5.4-3 AddObjectFunction</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X78CD5D1E811A85CF">5.4-4 FunctorObjectOperation</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X85EFB9BE8145B737">5.4-5 AddMorphismFunction</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7D3BAF84793D9576">5.4-6 FunctorMorphismOperation</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X850397447A1A766E">5.4-7 ApplyFunctor</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X8562CA1F795C5154">5.4-8 InputSignature</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X781664C7876ED8A0">5.4-9 InstallFunctor</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X833F9B6D85713A4F">5.4-10 IdentityFunctor</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X83FFF5538147E243">5.4-11 FunctorCanonicalizeZeroObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X815AF4E57928A453">5.4-12 NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7AA6B22B7BF73AAE">5.4-13 FunctorCanonicalizeZeroMorphisms</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X813A90D28415D9A3">5.4-14 NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X78773EEC7F33AC3A">5.4-3 SourceOfFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X8710DBB68544497A">5.4-4 RangeOfFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7A75B6A77C9F6836">5.4-5 AddObjectFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X78CD5D1E811A85CF">5.4-6 FunctorObjectOperation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X85EFB9BE8145B737">5.4-7 AddMorphismFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7D3BAF84793D9576">5.4-8 FunctorMorphismOperation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X850397447A1A766E">5.4-9 ApplyFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X8562CA1F795C5154">5.4-10 InputSignature</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X781664C7876ED8A0">5.4-11 InstallFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X833F9B6D85713A4F">5.4-12 IdentityFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X83FFF5538147E243">5.4-13 FunctorCanonicalizeZeroObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7EF63850830B8064">5.4-14 NaturalIsomorphismFromIdentityToCanonicalizeZeroObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X7AA6B22B7BF73AAE">5.4-15 FunctorCanonicalizeZeroMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap5.html#X8223CAD483193F52">5.4-16 NaturalIsomorphismFromIdentityToCanonicalizeZeroMorphisms</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap5.html#X836749D8814FEEE6">5.5 <span class="Heading">Natural transformations</span></a>
 </span>
@@ -159,16 +161,30 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapFunctor</code>( <var class="Arg">name</var>, <var class="Arg">list</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>These methods construct a possible multivariate CAP functor. The first argument is a string for the functor's name. The second argument is a list encoding the input signature of the functor. It can be given as a list of pairs <span class="Math">[ [ A_1, b_1 ], \dots, [ A_n, b_n ] ]</span> where a pair consists of a category <span class="Math">A_i</span> (given as an object in <code class="code">CapCat</code> or as a CAP-category) and a boolean <span class="Math">b_i</span> for <span class="Math">i = 1, \dots, n</span>. Instead of a pair <span class="Math">[ A_i, b_i ]</span>, you can also give simply <span class="Math">A_i</span>, which will be interpreted as the pair <span class="Math">[ A_i, \mathtt{false} ]</span>. The third argument is the target <var class="Arg">B</var> of the functor, and it can be given as an object in <code class="code">CapCat</code> or as a CAP-category. The output is a functor with source given by the product category <span class="Math">D_1 \times ... \times D_n</span>, where <span class="Math">D_i = A_i</span> if <span class="Math">b_i = \mathtt{false}</span>, and <span class="Math">D_i = A_i^{\mathrm{op}}</span> otherwise.</p>
 
+<p><a id="X78773EEC7F33AC3A" name="X78773EEC7F33AC3A"></a></p>
+
+<h5>5.4-3 SourceOfFunctor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SourceOfFunctor</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The argument is a functor <span class="Math">F</span>. The output is its source as CAP category.</p>
+
+<p><a id="X8710DBB68544497A" name="X8710DBB68544497A"></a></p>
+
+<h5>5.4-4 RangeOfFunctor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RangeOfFunctor</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>The argument is a functor <span class="Math">F</span>. The output is its range as CAP category.</p>
+
 <p><a id="X7A75B6A77C9F6836" name="X7A75B6A77C9F6836"></a></p>
 
-<h5>5.4-3 AddObjectFunction</h5>
+<h5>5.4-5 AddObjectFunction</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddObjectFunction</code>( <var class="Arg">F</var>, <var class="Arg">f</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>This operation adds a function <span class="Math">f</span> to the functor <span class="Math">F</span> which can then be applied to objects in the source. The given function <span class="Math">f</span> has to take arguments according to the <code class="code">InputSignature</code> of <span class="Math">F</span>, i.e., if the input signature is given by <span class="Math">[ [A_1, b_1], \dots, [A_n,b_n] ]</span>, then <span class="Math">f</span> must take <span class="Math">n</span> arguments, where the <span class="Math">i</span>-th argument is an object in the category <span class="Math">A_i</span> (the boolean <span class="Math">b_i</span> is ignored). The function should return an object in the range of the functor, except when the automatic call of <code class="code">AddObject</code> was enabled via <code class="code">EnableAddForCategoricalOperations</code>. In this case the output only has to be a GAP object in <code class="code">IsAttributeStoringRep</code>, which will be automatically added as an object to the range of the functor.</p>
 
 <p><a id="X78CD5D1E811A85CF" name="X78CD5D1E811A85CF"></a></p>
 
-<h5>5.4-4 FunctorObjectOperation</h5>
+<h5>5.4-6 FunctorObjectOperation</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FunctorObjectOperation</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a GAP operation</p>
@@ -177,14 +193,14 @@
 
 <p><a id="X85EFB9BE8145B737" name="X85EFB9BE8145B737"></a></p>
 
-<h5>5.4-5 AddMorphismFunction</h5>
+<h5>5.4-7 AddMorphismFunction</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismFunction</code>( <var class="Arg">F</var>, <var class="Arg">f</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>This operation adds a function <span class="Math">f</span> to the functor <span class="Math">F</span> which can then be applied to morphisms in the source. The given function <span class="Math">f</span> has to take as its first argument an object <span class="Math">s</span> that is equal (via <code class="code">IsEqualForObjects</code>) to the source of the result of applying <span class="Math">F</span> to the input morphisms. The next arguments of <span class="Math">f</span> have to morphisms according to the <code class="code">InputSignature</code> of <span class="Math">F</span>, i.e., if the input signature is given by <span class="Math">[ [A_1, b_1], \dots, [A_n,b_n] ]</span>, then <span class="Math">f</span> must take <span class="Math">n</span> arguments, where the <span class="Math">i</span>-th argument is a morphism in the category <span class="Math">A_i</span> (the boolean <span class="Math">b_i</span> is ignored). The last argument of <span class="Math">f</span> must be an object <span class="Math">r</span> that is equal (via <code class="code">IsEqualForObjects</code>) to the range of the result of applying <span class="Math">F</span> to the input morphisms. The function should return a morphism in the range of the functor, except when the automatic call of <code class="code">AddMorphism</code> was enabled via <code class="code">EnableAddForCategoricalOperations</code>. In this case the output only has to be a GAP object in <code class="code">IsAttributeStoringRep</code> (with attributes <code class="code">Source</code> and <code class="code">Range</code> containing also GAP objects in <code class="code">IsAttributeStoringRep</code>), which will be automatically added as a morphism to the range of the functor.</p>
 
 <p><a id="X7D3BAF84793D9576" name="X7D3BAF84793D9576"></a></p>
 
-<h5>5.4-6 FunctorMorphismOperation</h5>
+<h5>5.4-8 FunctorMorphismOperation</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FunctorMorphismOperation</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a GAP operation</p>
@@ -193,7 +209,7 @@
 
 <p><a id="X850397447A1A766E" name="X850397447A1A766E"></a></p>
 
-<h5>5.4-7 ApplyFunctor</h5>
+<h5>5.4-9 ApplyFunctor</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ApplyFunctor</code>( <var class="Arg">func</var>, <var class="Arg">A</var>[, <var class="Arg">B</var>, <var class="Arg">...</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: IsCapCategoryCell</p>
@@ -211,7 +227,7 @@
 </ul>
 <p><a id="X8562CA1F795C5154" name="X8562CA1F795C5154"></a></p>
 
-<h5>5.4-8 InputSignature</h5>
+<h5>5.4-10 InputSignature</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InputSignature</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: IsList</p>
@@ -220,7 +236,7 @@
 
 <p><a id="X781664C7876ED8A0" name="X781664C7876ED8A0"></a></p>
 
-<h5>5.4-9 InstallFunctor</h5>
+<h5>5.4-11 InstallFunctor</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InstallFunctor</code>( <var class="Arg">F</var>, <var class="Arg">s</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -229,7 +245,7 @@
 
 <p><a id="X833F9B6D85713A4F" name="X833F9B6D85713A4F"></a></p>
 
-<h5>5.4-10 IdentityFunctor</h5>
+<h5>5.4-12 IdentityFunctor</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IdentityFunctor</code>( <var class="Arg">cat</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a functor</p>
@@ -238,36 +254,36 @@
 
 <p><a id="X83FFF5538147E243" name="X83FFF5538147E243"></a></p>
 
-<h5>5.4-11 FunctorCanonicalizeZeroObjects</h5>
+<h5>5.4-13 FunctorCanonicalizeZeroObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FunctorCanonicalizeZeroObjects</code>( <var class="Arg">cat</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a functor</p>
 
 <p>Returns the endofunctor of the category <var class="Arg">cat</var> with zero which maps each (object isomorphic to the) zero object to <code class="code">ZeroObject</code>(<var class="Arg">cat</var>) and to itself otherwise. This functor is equivalent to the identity functor.</p>
 
-<p><a id="X815AF4E57928A453" name="X815AF4E57928A453"></a></p>
+<p><a id="X7EF63850830B8064" name="X7EF63850830B8064"></a></p>
 
-<h5>5.4-12 NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects</h5>
+<h5>5.4-14 NaturalIsomorphismFromIdentityToCanonicalizeZeroObjects</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects</code>( <var class="Arg">cat</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NaturalIsomorphismFromIdentityToCanonicalizeZeroObjects</code>( <var class="Arg">cat</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a natural transformation</p>
 
 <p>Returns the natural isomorphism from the identity functor to <code class="code">FunctorCanonicalizeZeroObjects</code>(<var class="Arg">cat</var>).</p>
 
 <p><a id="X7AA6B22B7BF73AAE" name="X7AA6B22B7BF73AAE"></a></p>
 
-<h5>5.4-13 FunctorCanonicalizeZeroMorphisms</h5>
+<h5>5.4-15 FunctorCanonicalizeZeroMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FunctorCanonicalizeZeroMorphisms</code>( <var class="Arg">cat</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a functor</p>
 
 <p>Returns the endofunctor of the category <var class="Arg">cat</var> with zero which maps each object to itself, each morphism <span class="SimpleMath">ϕ</span> to itself, unless it is congruent to the zero morphism; in this case it is mapped to <code class="code">ZeroMorphism</code>(<code class="code">Source</code>(<span class="SimpleMath">ϕ</span>), <code class="code">Range</code>(<span class="SimpleMath">ϕ</span>)). This functor is equivalent to the identity functor.</p>
 
-<p><a id="X813A90D28415D9A3" name="X813A90D28415D9A3"></a></p>
+<p><a id="X8223CAD483193F52" name="X8223CAD483193F52"></a></p>
 
-<h5>5.4-14 NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms</h5>
+<h5>5.4-16 NaturalIsomorphismFromIdentityToCanonicalizeZeroMorphisms</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms</code>( <var class="Arg">cat</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NaturalIsomorphismFromIdentityToCanonicalizeZeroMorphisms</code>( <var class="Arg">cat</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a natural transformation</p>
 
 <p>Returns the natural isomorphism from the identity functor to <code class="code">FunctorCanonicalizeZeroMorphisms</code>(<var class="Arg">cat</var>).</p>

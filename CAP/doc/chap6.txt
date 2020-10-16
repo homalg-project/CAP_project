@@ -3425,22 +3425,13 @@
   
   [1X6.14-12 CoimageProjection[101X
   
-  [33X[1;0Y[29X[2XCoimageProjection[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A, C)[123X[133X
-  
-  [33X[0;0YThis  is a convenience method. The argument is an object [23XC[123X which was created
-  as  a  coimage  of  a  morphism  [23X\alpha:  A \rightarrow B[123X. The output is the
-  coimage projection [23X\pi: A \twoheadrightarrow C[123X.[133X
-  
-  [1X6.14-13 CoimageProjection[101X
-  
   [33X[1;0Y[29X[2XCoimageProjection[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A, \mathrm{coim}( \alpha ))[123X[133X
   
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  A  \rightarrow B[123X. The output is the
   coimage projection [23X\pi: A \twoheadrightarrow \mathrm{coim}( \alpha )[123X.[133X
   
-  [1X6.14-14 CoimageProjectionWithGivenCoimage[101X
+  [1X6.14-13 CoimageProjectionWithGivenCoimage[101X
   
   [33X[1;0Y[29X[2XCoimageProjectionWithGivenCoimage[102X( [3Xalpha[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A, C)[123X[133X
@@ -3449,16 +3440,7 @@
   \mathrm{coim}(\alpha)[123X.   The   output  is  the  coimage  projection  [23X\pi:  A
   \twoheadrightarrow C[123X.[133X
   
-  [1X6.14-15 AstrictionToCoimage[101X
-  
-  [33X[1;0Y[29X[2XAstrictionToCoimage[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(C,B)[123X[133X
-  
-  [33X[0;0YThis  is a convenience method. The argument is an object [23XC[123X which was created
-  as  a  coimage  of  a  morphism  [23X\alpha:  A \rightarrow B[123X. The output is the
-  astriction to coimage [23Xa: C \rightarrow B[123X.[133X
-  
-  [1X6.14-16 AstrictionToCoimage[101X
+  [1X6.14-14 AstrictionToCoimage[101X
   
   [33X[1;0Y[29X[2XAstrictionToCoimage[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{coim}( \alpha ),B)[123X[133X
@@ -3466,7 +3448,7 @@
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  A  \rightarrow B[123X. The output is the
   astriction to coimage [23Xa: \mathrm{coim}( \alpha ) \rightarrow B[123X.[133X
   
-  [1X6.14-17 AstrictionToCoimageWithGivenCoimage[101X
+  [1X6.14-15 AstrictionToCoimageWithGivenCoimage[101X
   
   [33X[1;0Y[29X[2XAstrictionToCoimageWithGivenCoimage[102X( [3Xalpha[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(C,B)[123X[133X
@@ -3475,7 +3457,7 @@
   \mathrm{coim}(  \alpha  )[123X.  The  output  is  the  astriction to coimage [23Xa: C
   \rightarrow B[123X.[133X
   
-  [1X6.14-18 UniversalMorphismIntoCoimage[101X
+  [1X6.14-16 UniversalMorphismIntoCoimage[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismIntoCoimage[102X( [3Xalpha[103X, [3Xtau[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(T, \mathrm{coim}( \alpha ))[123X[133X
@@ -3486,7 +3468,7 @@
   The  output  is  the morphism [23Xu(\tau): T \rightarrow \mathrm{coim}( \alpha )[123X
   given by the universal property of the coimage.[133X
   
-  [1X6.14-19 UniversalMorphismIntoCoimageWithGivenCoimage[101X
+  [1X6.14-17 UniversalMorphismIntoCoimageWithGivenCoimage[101X
   
   [33X[1;0Y[29X[2XUniversalMorphismIntoCoimageWithGivenCoimage[102X( [3Xalpha[103X, [3Xtau[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(T, C)[123X[133X
@@ -3497,7 +3479,7 @@
   and  an  object  [23XC  =  \mathrm{coim}(  \alpha  )[123X. The output is the morphism
   [23Xu(\tau): T \rightarrow C[123X given by the universal property of the coimage.[133X
   
-  [1X6.14-20 AddCoimage[101X
+  [1X6.14-18 AddCoimage[101X
   
   [33X[1;0Y[29X[2XAddCoimage[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -3506,7 +3488,7 @@
   given  function [23XF[123X to the category for the basic operation [10XCoimage[110X. [23XF: \alpha
   \mapsto C[123X[133X
   
-  [1X6.14-21 AddCoimageProjection[101X
+  [1X6.14-19 AddCoimageProjection[101X
   
   [33X[1;0Y[29X[2XAddCoimageProjection[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -3515,7 +3497,7 @@
   given  function [23XF[123X to the category for the basic operation [10XCoimageProjection[110X.
   [23XF: \alpha \mapsto \pi[123X[133X
   
-  [1X6.14-22 AddCoimageProjectionWithGivenCoimage[101X
+  [1X6.14-20 AddCoimageProjectionWithGivenCoimage[101X
   
   [33X[1;0Y[29X[2XAddCoimageProjectionWithGivenCoimage[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -3524,7 +3506,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XCoimageProjectionWithGivenCoimage[110X. [23XF: (\alpha,C) \mapsto \pi[123X[133X
   
-  [1X6.14-23 AddAstrictionToCoimage[101X
+  [1X6.14-21 AddAstrictionToCoimage[101X
   
   [33X[1;0Y[29X[2XAddAstrictionToCoimage[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -3533,7 +3515,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XAstrictionToCoimage[110X. [23XF: \alpha \mapsto a[123X[133X
   
-  [1X6.14-24 AddAstrictionToCoimageWithGivenCoimage[101X
+  [1X6.14-22 AddAstrictionToCoimageWithGivenCoimage[101X
   
   [33X[1;0Y[29X[2XAddAstrictionToCoimageWithGivenCoimage[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -3542,7 +3524,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XAstrictionToCoimageWithGivenCoimage[110X. [23XF: (\alpha,C) \mapsto a[123X[133X
   
-  [1X6.14-25 AddUniversalMorphismIntoCoimage[101X
+  [1X6.14-23 AddUniversalMorphismIntoCoimage[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoCoimage[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -3551,7 +3533,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XUniversalMorphismIntoCoimage[110X. [23XF: (\alpha, \tau) \mapsto u(\tau)[123X[133X
   
-  [1X6.14-26 AddUniversalMorphismIntoCoimageWithGivenCoimage[101X
+  [1X6.14-24 AddUniversalMorphismIntoCoimageWithGivenCoimage[101X
   
   [33X[1;0Y[29X[2XAddUniversalMorphismIntoCoimageWithGivenCoimage[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -3566,7 +3548,7 @@
   canonical   morphism   is   an   isomorphism,   we  call  it  the  [13Xcanonical
   identification[113X (between image and coimage).[133X
   
-  [1X6.14-27 CanonicalIdentificationFromImageObjectToCoimage[101X
+  [1X6.14-25 CanonicalIdentificationFromImageObjectToCoimage[101X
   
   [33X[1;0Y[29X[2XCanonicalIdentificationFromImageObjectToCoimage[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in [23X\mathrm{Hom}(\mathrm{im}( \alpha ), \mathrm{coim}(
@@ -3576,7 +3558,7 @@
   canonical identification [23Xc: \mathrm{im}( \alpha ) \rightarrow \mathrm{coim}(
   \alpha )[123X.[133X
   
-  [1X6.14-28 AddCanonicalIdentificationFromImageObjectToCoimage[101X
+  [1X6.14-26 AddCanonicalIdentificationFromImageObjectToCoimage[101X
   
   [33X[1;0Y[29X[2XAddCanonicalIdentificationFromImageObjectToCoimage[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -3585,7 +3567,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XCanonicalIdentificationFromImageObjectToCoimage[110X. [23XF: \alpha \mapsto c[123X[133X
   
-  [1X6.14-29 CanonicalIdentificationFromCoimageToImageObject[101X
+  [1X6.14-27 CanonicalIdentificationFromCoimageToImageObject[101X
   
   [33X[1;0Y[29X[2XCanonicalIdentificationFromCoimageToImageObject[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in [23X\mathrm{Hom}(\mathrm{coim}( \alpha ), \mathrm{im}(
@@ -3595,7 +3577,7 @@
   canonical identification [23Xc: \mathrm{coim}( \alpha ) \rightarrow \mathrm{im}(
   \alpha )[123X.[133X
   
-  [1X6.14-30 AddCanonicalIdentificationFromCoimageToImageObject[101X
+  [1X6.14-28 AddCanonicalIdentificationFromCoimageToImageObject[101X
   
   [33X[1;0Y[29X[2XAddCanonicalIdentificationFromCoimageToImageObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X

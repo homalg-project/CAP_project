@@ -438,13 +438,15 @@
   [1X3.5-4 ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[101X
   
   [33X[1;0Y[29X[2XObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[102X( [3Xmorphism[103X, [3Xcategory[103X, [3Xsource[103X, [3Xrange[103X[, [3Xattr1[103X, [3Xval1[103X, [3Xattr2[103X, [3Xval2[103X, [3X...[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism[133X
   
   [33X[0;0YObjectifies the morphism [3Xmorphism[103X with the type created for morphisms in the
   category  [3Xcategory[103X.  The  type  is  created  by  passing a representation to
   [10XAddMorphismRepresentation[110X. Morphisms which are objectified using this method
   do  not  have to be passed to the [10XAddMorphism[110X function. The arguments [10Xsource[110X
   and  [10Xrange[110X are assumed to be objectified. The optional arguments behave like
-  the corresponding arguments in [10XObjectifyWithAttributes[110X.[133X
+  the  corresponding  arguments  in  [10XObjectifyWithAttributes[110X. Also returns the
+  objectified morphism.[133X
   
   
   [1X3.6 [33X[0;0YEquality and Congruence for Morphisms[133X[101X
@@ -996,7 +998,15 @@
   \sim_{b,b}   \mathrm{id}_b[123X   and   [23X\alpha^{-1}   \circ   \alpha   \sim_{a,a}
   \mathrm{id}_a[123X.[133X
   
-  [1X3.12-1 AddInverse[101X
+  [1X3.12-1 Inverse[101X
+  
+  [33X[1;0Y[29X[2XInverse[102X( [3Xalpha[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(b,a)[123X[133X
+  
+  [33X[0;0YThe  argument  is  an isomorphism [23X\alpha: a \rightarrow b[123X. The output is its
+  inverse [23X\alpha^{-1}: b \rightarrow a[123X.[133X
+  
+  [1X3.12-2 AddInverse[101X
   
   [33X[1;0Y[29X[2XAddInverse[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1023,11 +1033,12 @@
   [33X[0;0YBy  default,  CAP uses caches to store the values of Categorical operations.
   To  get  a value out of the cache, one needs to compare the input of a basic
   operation  with  its  previous  input. To compare morphisms in the category,
-  IsEqualForCacheForMorphism  is  used.  By  default  this  is  an  alias  for
-  IsEqualForMorphismsOnMor,  where  fail is substituted by false. If you add a
-  function,  this  function  used  instead.  A function [23XF: a,b \mapsto bool[123X is
-  expected  here.  The  output has to be true or false. Fail is not allowed in
-  this context.[133X
+  IsEqualForCacheForMorphisms is used. By default, IsEqualForCacheForMorphisms
+  falls  back  to IsEqualForCache (see ToolsForHomalg), which in turn defaults
+  to  recursive comparison for lists and [10XIsIdenticalObj[110X in all other cases. If
+  you  add  a  function, this function used instead. A function [23XF: a,b \mapsto
+  bool[123X  is  expected  here.  The  output  has to be true or false. Fail is not
+  allowed in this context.[133X
   
   
   [1X3.14 [33X[0;0YIsHomSetInhabited[133X[101X

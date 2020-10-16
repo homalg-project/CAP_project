@@ -86,7 +86,7 @@
   [1X11.2 [33X[0;0YHomomorphism structure[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/FieldAsCategory.gi" );;[127X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/FieldAsCategory.g" );;[127X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
     [4X[25Xgap>[125X [27XQoid := FieldAsCategory( Q );;[127X[104X
     [4X[25Xgap>[125X [27Xa := FieldAsCategoryMorphism( 1/2, Qoid );;[127X[104X
@@ -136,7 +136,7 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/StringsAsCategory.gi" );;[127X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/StringsAsCategory.g" );;[127X[104X
     [4X[25Xgap>[125X [27XC := StringsAsCategory();;[127X[104X
     [4X[25Xgap>[125X [27Xobj1 := StringsAsCategoryObject( "qaeiou", C );;[127X[104X
     [4X[25Xgap>[125X [27Xobj2 := StringsAsCategoryObject( "qxayeziouT", C );;[127X[104X
@@ -689,7 +689,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );[127X[104X
     [4X[28XVectorSpacesForGeneralizedMorphismsTest[128X[104X
-    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );[127X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "GeneralizedMorphismsForCAP" );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -768,7 +768,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );[127X[104X
     [4X[28XVectorSpacesForGeneralizedMorphismsTest[128X[104X
-    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );[127X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XA := QVectorSpace( 1 );[127X[104X
     [4X[28X<A rational vector space of dimension 1>[128X[104X
@@ -819,7 +819,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );[127X[104X
     [4X[28XVectorSpacesForGeneralizedMorphismsTest[128X[104X
-    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );[127X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XA := QVectorSpace( 1 );[127X[104X
     [4X[28X<A rational vector space of dimension 1>[128X[104X
@@ -873,7 +873,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );[127X[104X
     [4X[28XVectorSpacesForGeneralizedMorphismsTest[128X[104X
-    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );[127X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XA := QVectorSpace( 3 );[127X[104X
     [4X[28X<A rational vector space of dimension 3>[128X[104X
@@ -1021,7 +1021,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpacesForGeneralizedMorphismsTest" );[127X[104X
     [4X[28XVectorSpacesForGeneralizedMorphismsTest[128X[104X
-    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );[127X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XA := QVectorSpace( 1 );[127X[104X
     [4X[28X<A rational vector space of dimension 1>[128X[104X
@@ -1058,7 +1058,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpacesForIsWellDefinedTest" );[127X[104X
     [4X[28XVectorSpacesForIsWellDefinedTest [128X[104X
-    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );[127X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "GeneralizedMorphismsForCAP" );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -1084,7 +1084,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpaces01" );[127X[104X
     [4X[28XVectorSpaces01[128X[104X
-    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/VectorSpacesAddKernel01.gi" );[127X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/VectorSpacesAddKernel01.g" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XV := QVectorSpace( 2 );[127X[104X
     [4X[28X<A rational vector space of dimension 2>[128X[104X
@@ -1120,7 +1120,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpaces02" );[127X[104X
     [4X[28XVectorSpaces02[128X[104X
-    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/VectorSpacesAddKernel02.gi" );[127X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/VectorSpacesAddKernel02.g" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XV := QVectorSpace( 2 );[127X[104X
     [4X[28X<A rational vector space of dimension 2>[128X[104X
@@ -1152,7 +1152,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpaces03" );[127X[104X
     [4X[28XVectorSpaces03[128X[104X
-    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/VectorSpacesAddKernel03.gi" );[127X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/VectorSpacesAddKernel03.g" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XV := QVectorSpace( 2 );[127X[104X
     [4X[28X<A rational vector space of dimension 2>[128X[104X
@@ -1194,7 +1194,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpacesForFiberProductTest" );[127X[104X
     [4X[28XVectorSpacesForFiberProductTest[128X[104X
-    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/testfiles/VectorSpacesAllMethods.gi" );[127X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "CAP", "examples/VectorSpacesAllMethods.g" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XA := QVectorSpace( 1 );[127X[104X
     [4X[28X<A rational vector space of dimension 1>[128X[104X

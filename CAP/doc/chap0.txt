@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2020.02.16
+                                   2020.09.01
   
   
-                                16 February 2020
+                                1 September 2020
   
   
                                Sebastian Gutsche
@@ -22,7 +22,7 @@
   
   Sebastian Gutsche
       Email:    [7Xmailto:gutsche@mathematik.uni-siegen.de[107X
-      Homepage: [7Xhttp://www.uni-siegen.de/fb6/rmi/[107X
+      Homepage: [7Xhttps://sebasguts.github.io/[107X
       Address:  [33X[0;14YDepartment Mathematik[133X
                 [33X[0;14YUniversität Siegen[133X
                 [33X[0;14YWalter-Flex-Straße 3[133X
@@ -74,22 +74,35 @@
       1.3-5 TwoCellFilter
       1.3-6 CommutativeRingOfLinearCategory
     1.4 [33X[0;0YLogic switcher[133X
-      1.4-1 CapCategorySwitchLogicOn
-      1.4-2 CapCategorySwitchLogicOff
+      1.4-1 CapCategorySwitchLogicPropagationForObjectsOn
+      1.4-2 CapCategorySwitchLogicPropagationForObjectsOff
+      1.4-3 CapCategorySwitchLogicPropagationForMorphismsOn
+      1.4-4 CapCategorySwitchLogicPropagationForMorphismsOff
+      1.4-5 CapCategorySwitchLogicPropagationOn
+      1.4-6 CapCategorySwitchLogicPropagationOff
+      1.4-7 CapCategorySwitchLogicOn
+      1.4-8 CapCategorySwitchLogicOff
     1.5 [33X[0;0YTool functions[133X
       1.5-1 CanCompute
       1.5-2 CheckConstructivenessOfCategory
     1.6 [33X[0;0YWell-Definedness of Cells[133X
       1.6-1 IsWellDefined
-    1.7 [33X[0;0YCaching[133X
-      1.7-1 SetCachingOfCategory
-      1.7-2 SetCachingOfCategoryWeak
-      1.7-3 SetDefaultCaching
-    1.8 [33X[0;0YSanity checks[133X
-      1.8-1 DisableInputSanityChecks
-    1.9 [33X[0;0YEnable automatic calls of [10XAdd[110X[133X
-      1.9-1 EnableAddForCategoricalOperations
-    1.10 [33X[0;0YPerformance tweaks[133X
+    1.7 [33X[0;0YUnpacking data structures[133X
+      1.7-1 Down
+      1.7-2 DownOnlyMorphismData
+      1.7-3 DownToBottom
+    1.8 [33X[0;0YCaching[133X
+      1.8-1 SetCachingOfCategory
+      1.8-2 SetCachingOfCategoryWeak
+      1.8-3 SetDefaultCaching
+    1.9 [33X[0;0YSanity checks[133X
+      1.9-1 DisableInputSanityChecks
+    1.10 [33X[0;0YEnable automatic calls of [10XAdd[110X[133X
+      1.10-1 EnableAddForCategoricalOperations
+    1.11 [33X[0;0YPerformance tweaks[133X
+    1.12 [33X[0;0YLaTeX[133X
+      1.12-1 LaTeXOutput
+      1.12-2 LaTeXOutput
   2 [33X[0;0YObjects[133X
     2.1 [33X[0;0YAttributes for the Type of Objects[133X
       2.1-1 CapCategory
@@ -263,7 +276,8 @@
       3.11-15 IsColiftable
       3.11-16 AddIsColiftable
     3.12 [33X[0;0YInverses[133X
-      3.12-1 AddInverse
+      3.12-1 Inverse
+      3.12-2 AddInverse
     3.13 [33X[0;0YTool functions for caches[133X
       3.13-1 IsEqualForCacheForMorphisms
       3.13-2 AddIsEqualForCacheForMorphisms
@@ -366,18 +380,20 @@
     5.4 [33X[0;0YFunctors[133X
       5.4-1 CapFunctor
       5.4-2 CapFunctor
-      5.4-3 AddObjectFunction
-      5.4-4 FunctorObjectOperation
-      5.4-5 AddMorphismFunction
-      5.4-6 FunctorMorphismOperation
-      5.4-7 ApplyFunctor
-      5.4-8 InputSignature
-      5.4-9 InstallFunctor
-      5.4-10 IdentityFunctor
-      5.4-11 FunctorCanonicalizeZeroObjects
-      5.4-12 NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects
-      5.4-13 FunctorCanonicalizeZeroMorphisms
-      5.4-14 NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms
+      5.4-3 SourceOfFunctor
+      5.4-4 RangeOfFunctor
+      5.4-5 AddObjectFunction
+      5.4-6 FunctorObjectOperation
+      5.4-7 AddMorphismFunction
+      5.4-8 FunctorMorphismOperation
+      5.4-9 ApplyFunctor
+      5.4-10 InputSignature
+      5.4-11 InstallFunctor
+      5.4-12 IdentityFunctor
+      5.4-13 FunctorCanonicalizeZeroObjects
+      5.4-14 NaturalIsomorphismFromIdentityToCanonicalizeZeroObjects
+      5.4-15 FunctorCanonicalizeZeroMorphisms
+      5.4-16 NaturalIsomorphismFromIdentityToCanonicalizeZeroMorphisms
     5.5 [33X[0;0YNatural transformations[133X
       5.5-1 Name
       5.5-2 NaturalTransformation
@@ -706,24 +722,22 @@
       6.14-10 AddIsomorphismFromCokernelOfKernelToCoimage
       6.14-11 Coimage
       6.14-12 CoimageProjection
-      6.14-13 CoimageProjection
-      6.14-14 CoimageProjectionWithGivenCoimage
-      6.14-15 AstrictionToCoimage
-      6.14-16 AstrictionToCoimage
-      6.14-17 AstrictionToCoimageWithGivenCoimage
-      6.14-18 UniversalMorphismIntoCoimage
-      6.14-19 UniversalMorphismIntoCoimageWithGivenCoimage
-      6.14-20 AddCoimage
-      6.14-21 AddCoimageProjection
-      6.14-22 AddCoimageProjectionWithGivenCoimage
-      6.14-23 AddAstrictionToCoimage
-      6.14-24 AddAstrictionToCoimageWithGivenCoimage
-      6.14-25 AddUniversalMorphismIntoCoimage
-      6.14-26 AddUniversalMorphismIntoCoimageWithGivenCoimage
-      6.14-27 CanonicalIdentificationFromImageObjectToCoimage
-      6.14-28 AddCanonicalIdentificationFromImageObjectToCoimage
-      6.14-29 CanonicalIdentificationFromCoimageToImageObject
-      6.14-30 AddCanonicalIdentificationFromCoimageToImageObject
+      6.14-13 CoimageProjectionWithGivenCoimage
+      6.14-14 AstrictionToCoimage
+      6.14-15 AstrictionToCoimageWithGivenCoimage
+      6.14-16 UniversalMorphismIntoCoimage
+      6.14-17 UniversalMorphismIntoCoimageWithGivenCoimage
+      6.14-18 AddCoimage
+      6.14-19 AddCoimageProjection
+      6.14-20 AddCoimageProjectionWithGivenCoimage
+      6.14-21 AddAstrictionToCoimage
+      6.14-22 AddAstrictionToCoimageWithGivenCoimage
+      6.14-23 AddUniversalMorphismIntoCoimage
+      6.14-24 AddUniversalMorphismIntoCoimageWithGivenCoimage
+      6.14-25 CanonicalIdentificationFromImageObjectToCoimage
+      6.14-26 AddCanonicalIdentificationFromImageObjectToCoimage
+      6.14-27 CanonicalIdentificationFromCoimageToImageObject
+      6.14-28 AddCanonicalIdentificationFromCoimageToImageObject
     6.15 [33X[0;0YHomology objects[133X
       6.15-1 HomologyObject
       6.15-2 HomologyObjectFunctorial
@@ -736,11 +750,12 @@
     7.1 [33X[0;0YFunctions Installed by Add[133X
     7.2 [33X[0;0YAdd Method[133X
     7.3 [33X[0;0YInstallAdd Function[133X
-    7.4 [33X[0;0YInstall All Adds[133X
-    7.5 [33X[0;0YPrepare functions[133X
-      7.5-1 CAPOperationPrepareFunction
-      7.5-2 CAPAddPrepareFunction
-      7.5-3 ListCAPPrepareFunctions
+    7.4 [33X[0;0YEnhancing the method name record[133X
+    7.5 [33X[0;0YInstall All Adds[133X
+    7.6 [33X[0;0YPrepare functions[133X
+      7.6-1 CAPOperationPrepareFunction
+      7.6-2 CAPAddPrepareFunction
+      7.6-3 ListCAPPrepareFunctions
   8 [33X[0;0YManaging Derived Methods[133X
     8.1 [33X[0;0YInfo Class[133X
       8.1-1 DerivationInfo

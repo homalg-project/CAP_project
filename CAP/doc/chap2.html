@@ -335,7 +335,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualForCacheForObjects</code>( <var class="Arg">c</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: northing</p>
 
-<p>By default, CAP uses caches to store the values of Categorical operations. To get a value out of the cache, one needs to compare the input of a basic operation with its previous input. To compare objects in the category, IsEqualForCacheForObject is used. By default this is an alias for IsEqualForObjects, where fail is substituted by false. If you add a function, this function used instead. A function <span class="Math">F: a,b \mapsto bool</span> is expected here. The output has to be true or false. Fail is not allowed in this context.</p>
+<p>By default, CAP uses caches to store the values of Categorical operations. To get a value out of the cache, one needs to compare the input of a basic operation with its previous input. To compare objects in the category, IsEqualForCacheForObjects is used. By default, IsEqualForCacheForObjects falls back to IsEqualForCache (see ToolsForHomalg), which in turn defaults to recursive comparison for lists and <code class="code">IsIdenticalObj</code> in all other cases. If you add a function, this function used instead. A function <span class="Math">F: a,b \mapsto bool</span> is expected here. The output has to be true or false. Fail is not allowed in this context.</p>
 
 <p><a id="X81817A2C84F03D1D" name="X81817A2C84F03D1D"></a></p>
 
@@ -367,7 +367,9 @@
 <h5>2.6-4 ObjectifyObjectForCAPWithAttributes</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectifyObjectForCAPWithAttributes</code>( <var class="Arg">object</var>, <var class="Arg">category</var>[, <var class="Arg">attribute1</var>, <var class="Arg">value1</var>, <var class="Arg">...</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Objectifies the object <var class="Arg">object</var> with the type created for objects in the category <var class="Arg">category</var>. The type is created by passing a representation to <code class="code">AddObjectRepresentation</code>. Objects which are objectified using this method do not have to be passed to the <code class="code">AddObject</code> function.</p>
+<p>Returns: an object</p>
+
+<p>Objectifies the object <var class="Arg">object</var> with the type created for objects in the category <var class="Arg">category</var>. The type is created by passing a representation to <code class="code">AddObjectRepresentation</code>. Objects which are objectified using this method do not have to be passed to the <code class="code">AddObject</code> function. The optional arguments behave like the corresponding arguments in <code class="code">ObjectifyWithAttributes</code>. Also returns the objectified object.</p>
 
 <p><a id="X7820B09C781A90A8" name="X7820B09C781A90A8"></a></p>
 

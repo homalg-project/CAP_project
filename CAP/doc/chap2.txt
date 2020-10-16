@@ -215,11 +215,12 @@
   [33X[0;0YBy  default,  CAP uses caches to store the values of Categorical operations.
   To  get  a value out of the cache, one needs to compare the input of a basic
   operation  with  its  previous  input.  To  compare objects in the category,
-  IsEqualForCacheForObject   is   used.  By  default  this  is  an  alias  for
-  IsEqualForObjects,  where  fail  is  substituted  by  false.  If  you  add a
-  function,  this  function  used  instead.  A function [23XF: a,b \mapsto bool[123X is
-  expected  here.  The  output has to be true or false. Fail is not allowed in
-  this context.[133X
+  IsEqualForCacheForObjects  is  used.  By  default, IsEqualForCacheForObjects
+  falls  back  to IsEqualForCache (see ToolsForHomalg), which in turn defaults
+  to  recursive comparison for lists and [10XIsIdenticalObj[110X in all other cases. If
+  you  add  a  function, this function used instead. A function [23XF: a,b \mapsto
+  bool[123X  is  expected  here.  The  output  has to be true or false. Fail is not
+  allowed in this context.[133X
   
   
   [1X2.6 [33X[0;0YAdding Objects to a Category[133X[101X
@@ -248,11 +249,14 @@
   [1X2.6-4 ObjectifyObjectForCAPWithAttributes[101X
   
   [33X[1;0Y[29X[2XObjectifyObjectForCAPWithAttributes[102X( [3Xobject[103X, [3Xcategory[103X[, [3Xattribute1[103X, [3Xvalue1[103X, [3X...[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
   
   [33X[0;0YObjectifies  the  object  [3Xobject[103X  with  the  type created for objects in the
   category  [3Xcategory[103X.  The  type  is  created  by  passing a representation to
   [10XAddObjectRepresentation[110X.  Objects which are objectified using this method do
-  not have to be passed to the [10XAddObject[110X function.[133X
+  not  have  to  be  passed  to the [10XAddObject[110X function. The optional arguments
+  behave  like  the  corresponding  arguments in [10XObjectifyWithAttributes[110X. Also
+  returns the objectified object.[133X
   
   
   [1X2.7 [33X[0;0YWell-Definedness of Objects[133X[101X

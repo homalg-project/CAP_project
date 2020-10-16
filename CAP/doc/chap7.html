@@ -31,15 +31,18 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X7D83FC527EA66166">7.3 <span class="Heading">InstallAdd Function</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X78B69C307CF0DE53">7.4 <span class="Heading">Install All Adds</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X844CF4D187364721">7.4 <span class="Heading">Enhancing the method name record</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X7AFA0108870EE97C">7.5 <span class="Heading">Prepare functions</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X78B69C307CF0DE53">7.5 <span class="Heading">Install All Adds</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X7AFA0108870EE97C">7.6 <span class="Heading">Prepare functions</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X84409FF87D35BE99">7.5-1 CAPOperationPrepareFunction</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7843089F86F47D3B">7.5-2 CAPAddPrepareFunction</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X82AEE9507F0B48BC">7.5-3 ListCAPPrepareFunctions</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X84409FF87D35BE99">7.6-1 CAPOperationPrepareFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7843089F86F47D3B">7.6-2 CAPAddPrepareFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X82AEE9507F0B48BC">7.6-3 ListCAPPrepareFunctions</a></span>
 </div></div>
 </div>
 
@@ -114,7 +117,7 @@
 </ul>
 
 <ul>
-<li><p>Postfunction: The postfunction called with the arguments of the function and the result. It can be an arbitrary function doing some cosmetics. If for example SomeFunc is KernelEmbeddingedding, it will set the KernelObject of the input morphism to result. The postfunction is also taken from the method record and does only depend on the name SomeFunc.</p>
+<li><p>Postfunction: The postfunction called with the arguments of the function and the result. It can be an arbitrary function doing some cosmetics. If for example SomeFunc is KernelEmbedding, it will set the KernelObject of the input morphism to result. The postfunction is also taken from the method record and does only depend on the name SomeFunc.</p>
 
 </li>
 </ul>
@@ -332,7 +335,7 @@
 </ul>
 
 <ul>
-<li><p>is_with_given: Boolean, marks wether the function which is to be installed a with given function or not.</p>
+<li><p>is_with_given: Boolean, marks whether the function which is to be installed is a with given function or not.</p>
 
 </li>
 </ul>
@@ -350,7 +353,7 @@
 </ul>
 
 <ul>
-<li><p>number_of_diagram_arguments: Specifies how many of the arguments (counting from the first argument) of the function specify the diagram of the universal object. Default value is 1.</p>
+<li><p>number_of_diagram_arguments: Specifies how many of the arguments (counting from the first argument) of the function specify the diagram of the universal object.</p>
 
 </li>
 </ul>
@@ -380,21 +383,15 @@
 </ul>
 <p>Using all those entries, the operation CapInternalInstallAdd installs add methods as described above. It first provides a sanity check for all the entries described, then installs the Add method in 4 ways, with list or functions as second argument, and with an optional third parameter for the weight.</p>
 
-<p><a id="X78B69C307CF0DE53" name="X78B69C307CF0DE53"></a></p>
+<p><a id="X844CF4D187364721" name="X844CF4D187364721"></a></p>
 
-<h4>7.4 <span class="Heading">Install All Adds</span></h4>
+<h4>7.4 <span class="Heading">Enhancing the method name record</span></h4>
 
-<p>The function CAP_INTERNAL_INSTALL_ALL_ADDS does not take any arguments, it is an auxiliary function which iterates over the CAP_INTERNAL_METHOD_NAME_RECORD and calls, after some cosmetics, the CapInternalInstallAdd with the corresponding method record entry. The steps below are performed for every entry of the method record:</p>
+<p>The function CAP_INTERNAL_ENHANCE_NAME_RECORD can be applied to a method name record to make the following enhancements:</p>
 
-
-<ul>
-<li><p>No install check: If the no_install component in the record is set to true, the loop continues with the next entry, since this flag indicates that there should be no add function for this operation.</p>
-
-</li>
-</ul>
 
 <ul>
-<li><p>Cache check: If there is no cache_name, set it to the name of the method record entry.</p>
+<li><p>Cache check: If there is no cache_name, set it to the installation_name.</p>
 
 </li>
 </ul>
@@ -406,57 +403,47 @@
 </ul>
 
 <ul>
-<li><p>Redirect: Since the redirect function needs the category to work correctly, the given redirects in the method records are packed up to discard the last argument, which is the category.</p>
+<li><p>Redirect and post functions: Since the redirect and post functions need the category to work correctly, the given functions in the method records are packed up to discard the first argument (which is the category) if necessary.</p>
 
 </li>
 </ul>
 
 <ul>
-<li><p>arg_list: Next, an argument list for redirect and post function is created, by looking at the filter list in the record. If the first one is a list, the first and the last (method selection argument) is used, otherwise only the first.</p>
+<li><p>universal_object_arg_list: An argument list for redirect and post functions is created, by looking at the filter list in the record. If the number of diagram arguments is zero, the first argument is used. If all diagram arguments are lists, the diagram arguments and additionally the last argument (method selection argument) are used. Otherwise, the diagram arguments are used.</p>
 
 </li>
 </ul>
 
 <ul>
-<li><p>WithGiven special case: If the current entry belongs to a WithGiven operation, the with_given_without_given_name_pair is set, the with given flag is set to true, and the CapInternalInstallAdd is called with the record. The loop then continues.</p>
+<li><p>WithGiven special case: If the current entry belongs to a WithGiven operation or its without given pair, the with_given_without_given_name_pair is set. Additionally, the with given flag of the WithGiven operation is set to true.</p>
 
 </li>
 </ul>
 
 <ul>
-<li><p>Non universal object special case: If the Operation does not have a universal type, i.e. does not belong to a universal construction, CapInternalInstallAdd is called with the record. The loop then continues.</p>
-
-</li>
-</ul>
-<p>Please note that we are now in the case where the operation belongs to a universal construction, (e.g. KernelLift) and is not a WithGiven type of operation.</p>
-
-
-<ul>
-<li><p>argument_list: If the method is an Op construction, i.e. has a method selection object, the argument list is set to all but the last object and then used as above. Otherwise, the argument_list is set to all arguments.</p>
+<li><p>argument_list: If argument_list is not bound, it is set to include all arguments.</p>
 
 </li>
 </ul>
 
 <ul>
-<li><p>If the Operation constructs a universal object, the postfunction is created and then CapInternalInstallAdd is called.</p>
+<li><p>Redirect and post functions are created for all operations belonging to universal constructions (e.g. KernelLift) which are not a WithGiven operation.</p>
 
 </li>
 </ul>
+<p><a id="X78B69C307CF0DE53" name="X78B69C307CF0DE53"></a></p>
 
-<ul>
-<li><p>If the Operation constructs a universal morphism, the redirect is created and stored in the record. Also, the postfunction is created. Then CapInternalInstallAdd is called.</p>
+<h4>7.5 <span class="Heading">Install All Adds</span></h4>
 
-</li>
-</ul>
-<p>After one call of this function, all add methods are installed correctly. A second call should not do anything.</p>
+<p>The function CAP_INTERNAL_INSTALL_ALL_ADDS does not take any arguments. It is an auxiliary function which first applies CAP_INTERNAL_ENHANCE_NAME_RECORD to CAP_INTERNAL_METHOD_NAME_RECORD. Afterwards it iterates over CAP_INTERNAL_METHOD_NAME_RECORD and calls the CapInternalInstallAdd with the corresponding method record entry except if the no_install component of the record is set to true.</p>
 
 <p><a id="X7AFA0108870EE97C" name="X7AFA0108870EE97C"></a></p>
 
-<h4>7.5 <span class="Heading">Prepare functions</span></h4>
+<h4>7.6 <span class="Heading">Prepare functions</span></h4>
 
 <p><a id="X84409FF87D35BE99" name="X84409FF87D35BE99"></a></p>
 
-<h5>7.5-1 CAPOperationPrepareFunction</h5>
+<h5>7.6-1 CAPOperationPrepareFunction</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAPOperationPrepareFunction</code>( <var class="Arg">prepare_function</var>, <var class="Arg">category</var>, <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a function</p>
@@ -467,14 +454,14 @@
 
 <p><a id="X7843089F86F47D3B" name="X7843089F86F47D3B"></a></p>
 
-<h5>7.5-2 CAPAddPrepareFunction</h5>
+<h5>7.6-2 CAPAddPrepareFunction</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CAPAddPrepareFunction</code>( <var class="Arg">prepare_function</var>, <var class="Arg">name</var>, <var class="Arg">doc_string</var>[, <var class="Arg">precondition_list</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Adds a prepare function to the list of CAP's prepare functions. The first argument is the prepare function itself. It should always be a function that takes a category and a function and returns a function. The argument <var class="Arg">name</var> is the name of the prepare function, which is used in <code class="code">CAPOperationPrepareFunction</code>. The argument <var class="Arg">doc_string</var> should be a short string describing the functions. The optional argument <var class="Arg">precondition_list</var> can describe preconditions for the prepare function to work, i.e., if the category does need to have PreCompose computable. This information is also recovered automatically from the prepare function itself, so the <var class="Arg">precondition_list</var> is only necessary if the function needed is not explicitly used in the prepare function, e.g., if you use <code class="code">+</code> instead of <code class="code">AdditionForMorphisms</code>.</p>
 
 <p><a id="X82AEE9507F0B48BC" name="X82AEE9507F0B48BC"></a></p>
 
-<h5>7.5-3 ListCAPPrepareFunctions</h5>
+<h5>7.6-3 ListCAPPrepareFunctions</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ListCAPPrepareFunctions</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Lists all prepare functions.</p>

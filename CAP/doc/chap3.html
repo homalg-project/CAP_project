@@ -168,7 +168,8 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X864F84C47DC1A620">3.12 <span class="Heading">Inverses</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7A6B4970823DDAE6">3.12-1 AddInverse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X821E92017C3D63D4">3.12-1 Inverse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7A6B4970823DDAE6">3.12-2 AddInverse</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X7DD668627932185C">3.13 <span class="Heading">Tool functions for caches</span></a>
 </span>
@@ -704,7 +705,9 @@
 <h5>3.5-4 ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes</code>( <var class="Arg">morphism</var>, <var class="Arg">category</var>, <var class="Arg">source</var>, <var class="Arg">range</var>[, <var class="Arg">attr1</var>, <var class="Arg">val1</var>, <var class="Arg">attr2</var>, <var class="Arg">val2</var>, <var class="Arg">...</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Objectifies the morphism <var class="Arg">morphism</var> with the type created for morphisms in the category <var class="Arg">category</var>. The type is created by passing a representation to <code class="code">AddMorphismRepresentation</code>. Morphisms which are objectified using this method do not have to be passed to the <code class="code">AddMorphism</code> function. The arguments <code class="code">source</code> and <code class="code">range</code> are assumed to be objectified. The optional arguments behave like the corresponding arguments in <code class="code">ObjectifyWithAttributes</code>.</p>
+<p>Returns: a morphism</p>
+
+<p>Objectifies the morphism <var class="Arg">morphism</var> with the type created for morphisms in the category <var class="Arg">category</var>. The type is created by passing a representation to <code class="code">AddMorphismRepresentation</code>. Morphisms which are objectified using this method do not have to be passed to the <code class="code">AddMorphism</code> function. The arguments <code class="code">source</code> and <code class="code">range</code> are assumed to be objectified. The optional arguments behave like the corresponding arguments in <code class="code">ObjectifyWithAttributes</code>. Also returns the objectified morphism.</p>
 
 <p><a id="X850CFDD48773998E" name="X850CFDD48773998E"></a></p>
 
@@ -1226,9 +1229,18 @@
 
 <p>Let <span class="Math">\alpha: a \rightarrow b</span> be a morphism. An inverse of <span class="Math">\alpha</span> is a morphism <span class="Math">\alpha^{-1}: b \rightarrow a</span> such that <span class="Math">\alpha \circ \alpha^{-1} \sim_{b,b} \mathrm{id}_b</span> and <span class="Math">\alpha^{-1} \circ \alpha \sim_{a,a} \mathrm{id}_a</span>.</p>
 
+<p><a id="X821E92017C3D63D4" name="X821E92017C3D63D4"></a></p>
+
+<h5>3.12-1 Inverse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Inverse</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism in <span class="Math">\mathrm{Hom}(b,a)</span></p>
+
+<p>The argument is an isomorphism <span class="Math">\alpha: a \rightarrow b</span>. The output is its inverse <span class="Math">\alpha^{-1}: b \rightarrow a</span>.</p>
+
 <p><a id="X7A6B4970823DDAE6" name="X7A6B4970823DDAE6"></a></p>
 
-<h5>3.12-1 AddInverse</h5>
+<h5>3.12-2 AddInverse</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInverse</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
@@ -1255,7 +1267,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualForCacheForMorphisms</code>( <var class="Arg">c</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: northing</p>
 
-<p>By default, CAP uses caches to store the values of Categorical operations. To get a value out of the cache, one needs to compare the input of a basic operation with its previous input. To compare morphisms in the category, IsEqualForCacheForMorphism is used. By default this is an alias for IsEqualForMorphismsOnMor, where fail is substituted by false. If you add a function, this function used instead. A function <span class="Math">F: a,b \mapsto bool</span> is expected here. The output has to be true or false. Fail is not allowed in this context.</p>
+<p>By default, CAP uses caches to store the values of Categorical operations. To get a value out of the cache, one needs to compare the input of a basic operation with its previous input. To compare morphisms in the category, IsEqualForCacheForMorphisms is used. By default, IsEqualForCacheForMorphisms falls back to IsEqualForCache (see ToolsForHomalg), which in turn defaults to recursive comparison for lists and <code class="code">IsIdenticalObj</code> in all other cases. If you add a function, this function used instead. A function <span class="Math">F: a,b \mapsto bool</span> is expected here. The output has to be true or false. Fail is not allowed in this context.</p>
 
 <p><a id="X84563B1A835E9766" name="X84563B1A835E9766"></a></p>
 

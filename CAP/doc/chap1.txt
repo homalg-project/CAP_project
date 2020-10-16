@@ -140,13 +140,55 @@
   
   [1X1.4 [33X[0;0YLogic switcher[133X[101X
   
-  [1X1.4-1 CapCategorySwitchLogicOn[101X
+  [1X1.4-1 CapCategorySwitchLogicPropagationForObjectsOn[101X
+  
+  [33X[1;0Y[29X[2XCapCategorySwitchLogicPropagationForObjectsOn[102X( [3XC[103X ) [32X function[133X
+  
+  [33X[0;0YActivates  the  predicate  logic  propagation  between equal objects for the
+  category [3XC[103X.[133X
+  
+  [1X1.4-2 CapCategorySwitchLogicPropagationForObjectsOff[101X
+  
+  [33X[1;0Y[29X[2XCapCategorySwitchLogicPropagationForObjectsOff[102X( [3XC[103X ) [32X function[133X
+  
+  [33X[0;0YDeactivates  the  predicate  logic propagation between equal objects for the
+  category [3XC[103X.[133X
+  
+  [1X1.4-3 CapCategorySwitchLogicPropagationForMorphismsOn[101X
+  
+  [33X[1;0Y[29X[2XCapCategorySwitchLogicPropagationForMorphismsOn[102X( [3XC[103X ) [32X function[133X
+  
+  [33X[0;0YActivates  the  predicate  logic propagation between equal morphisms for the
+  category [3XC[103X.[133X
+  
+  [1X1.4-4 CapCategorySwitchLogicPropagationForMorphismsOff[101X
+  
+  [33X[1;0Y[29X[2XCapCategorySwitchLogicPropagationForMorphismsOff[102X( [3XC[103X ) [32X function[133X
+  
+  [33X[0;0YDeactivates  the predicate logic propagation between equal morphisms for the
+  category [3XC[103X.[133X
+  
+  [1X1.4-5 CapCategorySwitchLogicPropagationOn[101X
+  
+  [33X[1;0Y[29X[2XCapCategorySwitchLogicPropagationOn[102X( [3XC[103X ) [32X function[133X
+  
+  [33X[0;0YActivates  the  predicate  logic  propagation  between  equal  cells for the
+  category [3XC[103X.[133X
+  
+  [1X1.4-6 CapCategorySwitchLogicPropagationOff[101X
+  
+  [33X[1;0Y[29X[2XCapCategorySwitchLogicPropagationOff[102X( [3XC[103X ) [32X function[133X
+  
+  [33X[0;0YDeactivates  the  predicate  logic  propagation  between equal cells for the
+  category [3XC[103X.[133X
+  
+  [1X1.4-7 CapCategorySwitchLogicOn[101X
   
   [33X[1;0Y[29X[2XCapCategorySwitchLogicOn[102X( [3XC[103X ) [32X function[133X
   
   [33X[0;0YActivates the predicate implication logic for the category [3XC[103X.[133X
   
-  [1X1.4-2 CapCategorySwitchLogicOff[101X
+  [1X1.4-8 CapCategorySwitchLogicOff[101X
   
   [33X[1;0Y[29X[2XCapCategorySwitchLogicOff[102X( [3XC[103X ) [32X function[133X
   
@@ -187,15 +229,48 @@
   the output is [10Xfalse[110X.[133X
   
   
-  [1X1.7 [33X[0;0YCaching[133X[101X
+  [1X1.7 [33X[0;0YUnpacking data structures[133X[101X
   
-  [1X1.7-1 SetCachingOfCategory[101X
+  [1X1.7-1 Down[101X
+  
+  [33X[1;0Y[29X[2XDown[102X( [3Xx[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya GAP object[133X
+  
+  [33X[0;0YThe  argument  is  a  GAP object [23Xx[123X. If [23Xx[123X is an object in a CAP category, the
+  output  consists of data which are needed to reconstruct [23Xx[123X (e.g., by passing
+  them  to  an appropriate constructor). If [23Xx[123X is a morphism in a CAP category,
+  the  output  consists  of a triple whose first entry is the source of [23Xx[123X, the
+  third  entry  is the range of [23Xx[123X, and the second entry consists of data which
+  are  needed  to  reconstruct  [23Xx[123X  (e.g.,  by  passing  them to an appropriate
+  constructor, possibly together with the source and range of [23Xx[123X).[133X
+  
+  [1X1.7-2 DownOnlyMorphismData[101X
+  
+  [33X[1;0Y[29X[2XDownOnlyMorphismData[102X( [3Xx[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya GAP object[133X
+  
+  [33X[0;0YThe  argument  is  a morphism in a CAP category, the output consists of data
+  which  are  needed  to  reconstruct [23Xx[123X (e.g., by passing it to an appropriate
+  constructor, possibly together with its source and range).[133X
+  
+  [1X1.7-3 DownToBottom[101X
+  
+  [33X[1;0Y[29X[2XDownToBottom[102X( [3Xx[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya GAP object[133X
+  
+  [33X[0;0YThe  argument  is a GAP object [23Xx[123X. This function iteratively calls [10XDown[110X until
+  it becomes stable.[133X
+  
+  
+  [1X1.8 [33X[0;0YCaching[133X[101X
+  
+  [1X1.8-1 SetCachingOfCategory[101X
   
   [33X[1;0Y[29X[2XSetCachingOfCategory[102X( [3Xcategory[103X, [3Xtype[103X ) [32X function[133X
   
   [33X[0;0YSets the caching of [3Xcategory[103X to [3Xtype[103X.[133X
   
-  [1X1.7-2 SetCachingOfCategoryWeak[101X
+  [1X1.8-2 SetCachingOfCategoryWeak[101X
   
   [33X[1;0Y[29X[2XSetCachingOfCategoryWeak[102X( [3Xcategory[103X ) [32X function[133X
   [33X[1;0Y[29X[2XSetCachingOfCategoryCrisp[102X( [3Xcategory[103X ) [32X function[133X
@@ -203,7 +278,7 @@
   
   [33X[0;0YSets the caching of [3Xcategory[103X to [10Xweak[110X, [10Xcrisp[110X or [10Xnone[110X, respectively.[133X
   
-  [1X1.7-3 SetDefaultCaching[101X
+  [1X1.8-3 SetDefaultCaching[101X
   
   [33X[1;0Y[29X[2XSetDefaultCaching[102X( [3Xtype[103X ) [32X function[133X
   [33X[1;0Y[29X[2XSetDefaultCachingWeak[102X(  ) [32X function[133X
@@ -214,9 +289,9 @@
   caching set to either [10Xweak[110X, [10Xcrisp[110X, or [10Xnone[110X. The default at startup is [10Xweak[110X.[133X
   
   
-  [1X1.8 [33X[0;0YSanity checks[133X[101X
+  [1X1.9 [33X[0;0YSanity checks[133X[101X
   
-  [1X1.8-1 DisableInputSanityChecks[101X
+  [1X1.9-1 DisableInputSanityChecks[101X
   
   [33X[1;0Y[29X[2XDisableInputSanityChecks[102X( [3Xcategory[103X ) [32X function[133X
   [33X[1;0Y[29X[2XDisableOutputSanityChecks[102X( [3Xcategory[103X ) [32X function[133X
@@ -235,9 +310,9 @@
   can do this for input checks, output checks or for both at once.[133X
   
   
-  [1X1.9 [33X[0;0YEnable automatic calls of [10XAdd[110X[101X[1X[133X[101X
+  [1X1.10 [33X[0;0YEnable automatic calls of [10XAdd[110X[101X[1X[133X[101X
   
-  [1X1.9-1 EnableAddForCategoricalOperations[101X
+  [1X1.10-1 EnableAddForCategoricalOperations[101X
   
   [33X[1;0Y[29X[2XEnableAddForCategoricalOperations[102X( [3XC[103X ) [32X function[133X
   [33X[1;0Y[29X[2XDisableAddForCategoricalOperations[102X( [3XC[103X ) [32X function[133X
@@ -251,21 +326,23 @@
   output should be a morphism or a twocell).[133X
   
   
-  [1X1.10 [33X[0;0YPerformance tweaks[133X[101X
+  [1X1.11 [33X[0;0YPerformance tweaks[133X[101X
   
   [33X[0;0YCAP has several settings which can improve the performance. In the following
   some of these are listed.[133X
   
-  [30X    [33X[0;6Y[10XDeactivateCachingOfCategory[110X or [10XDeactivateDefaultCaching[110X: see [14X1.7[114X. This
+  [30X    [33X[0;6Y[10XDeactivateCachingOfCategory[110X or [10XDeactivateDefaultCaching[110X: see [14X1.8[114X. This
         can  either  improve  or  degrade  the  performance  depending  on the
         concrete example.[133X
   
-  [30X    [33X[0;6Y[10XCapCategorySwitchLogicOff[110X: see [14X1.4[114X. This can either improve or degrade
-        the performance depending on the concrete example.[133X
+  [30X    [33X[0;6Y[10XCapCategorySwitchLogicOff[110X        (on        by       default)       or
+        [10XCapCategorySwitchLogicPropagationOff[110X  (off  by default): see [14X1.4[114X. This
+        can  either  improve  or  degrade  the  performance  depending  on the
+        concrete example.[133X
   
-  [30X    [33X[0;6Y[10XDisableSanityChecks[110X: see [14X1.8[114X.[133X
+  [30X    [33X[0;6Y[10XDisableSanityChecks[110X: see [14X1.9[114X.[133X
   
-  [30X    [33X[0;6Y[10XDisableAddForCategoricalOperations[110X: see [14X1.9[114X.[133X
+  [30X    [33X[0;6Y[10XDisableAddForCategoricalOperations[110X: see [14X1.10[114X.[133X
   
   [30X    [33X[0;6Y[10XDeactivateToDoList[110X: see the package [10XToolsForHomalg[110X.[133X
   
@@ -279,4 +356,23 @@
   
   [30X    [33X[0;6YPass the option [10Xoverhead := false[110X to [10XCreateCapCategory[110X. Note: this may
         have unintended effects. Use with care![133X
+  
+  
+  [1X1.12 [33X[0;0YLaTeX[133X[101X
+  
+  [1X1.12-1 LaTeXOutput[101X
+  
+  [33X[1;0Y[29X[2XLaTeXOutput[102X( [3Xc[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya string[133X
+  
+  [33X[0;0YThe  argument is a cell [23Xc[123X. The output is a LaTeX string [23Xs[123X (without enclosing
+  dollar signs) that may be used to print out [23Xc[123X nicely.[133X
+  
+  [1X1.12-2 LaTeXOutput[101X
+  
+  [33X[1;0Y[29X[2XLaTeXOutput[102X( [3XC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya string[133X
+  
+  [33X[0;0YThe  argument  is  a  category  [23XC[123X.  The  output is a LaTeX string [23Xs[123X (without
+  enclosing dollar signs) that may be used to print out [23XC[123X nicely.[133X
   

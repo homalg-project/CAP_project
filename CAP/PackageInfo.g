@@ -1,3 +1,11 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# This file contains package meta data. For additional information on
+# the meaning and correct usage of these fields, please consult the
+# manual of the "Example" package as well as the comments in its
+# PackageInfo.g file.
+#
 SetPackageInfo( rec(
 
 PackageName := "CAP",
@@ -5,21 +13,20 @@ PackageName := "CAP",
 Subtitle := "Categories, Algorithms, Programming",
 
 Version := Maximum( [
-  "2020.02.16", ## Mohamed's version
+  "2020.05.16", ## Mohamed's version
   ## this line prevents merge conflicts
   "2015.04.01", ## Oystein's version
   ## this line prevents merge conflicts
   "2019.06.05", ## Sebas' version
   ## this line prevents merge conflicts
-  "2019.10.29", ## Sepp's version
+  "2020.04.16", ## Sepp's version
   ## this line prevents merge conflicts
-  "2019.12.12", ## Fabian's version
+  "2020.09.01", ## Fabian's version
   ## this line prevents merge conflicts
-  "2020.01.10", ## Kamal's version
+  "2020.08.01", ## Kamal's version
 ] ),
 
-Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := Concatenation( ~.Version{[ 9, 10 ]}, "/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
 
@@ -29,7 +36,7 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Sebastian",
     LastName := "Gutsche",
-    WWWHome := "http://www.uni-siegen.de/fb6/rmi/",
+    WWWHome := "https://sebasguts.github.io/",
     Email := "gutsche@mathematik.uni-siegen.de",
     PostalAddress := Concatenation(
                "Department Mathematik\n",
@@ -75,14 +82,19 @@ Persons := [
 
 Status := "deposited",
 
-
-PackageWWWHome := "http://homalg-project.github.io/CAP_project/CAP/",
+# BEGIN URLS
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/homalg-project/CAP_project",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := "https://homalg-project.github.io/CAP_project/CAP",
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/CAP/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/CAP/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/CAP-", ~.Version, "/CAP-", ~.Version ),
+# END URLS
 
 ArchiveFormats := ".tar.gz .zip",
-
-ArchiveURL     := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/CAP-", ~.Version, "/CAP-", ~.Version ),
-README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 
 AbstractHTML   :=  
   Concatenation( [
@@ -105,7 +117,9 @@ Dependencies := rec(
                            [ "ToolsForHomalg", ">= 2018.05.22" ],
                            [ "io", ">=0" ],
   ],
-  SuggestedOtherPackages := [ [ "Browse", ">=0" ] ],
+  SuggestedOtherPackages := [ [ "Browse", ">=0" ],
+                              [ "CompilerForCAP", ">= 2020.06.17" ],
+  ],
   ExternalConditions := []
 
 ),
@@ -118,5 +132,3 @@ Autoload := false,
 
 
 ));
-
-

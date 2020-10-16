@@ -1,11 +1,11 @@
 name: CAP
-version: 2020.02.16
-date: 16/02/2020
+version: 2020.09.01
+date: 01/09/2020
 description: Categories, Algorithms, Programming
 
 authors:
     - name: Sebastian Gutsche
-      url: http://www.uni-siegen.de/fb6/rmi/
+      url: https://sebasguts.github.io/
     - name: Sebastian Posur
       url: https://sebastianpos.github.io
     - name: Øystein Skartsæterhagen
@@ -13,7 +13,7 @@ authors:
 
 maintainers:
     - name: Sebastian Gutsche
-      url: http://www.uni-siegen.de/fb6/rmi/
+      url: https://sebasguts.github.io/
     - name: Sebastian Posur
       url: https://sebastianpos.github.io
     - name: Øystein Skartsæterhagen
@@ -27,7 +27,7 @@ needed-pkgs:
       url: "https://gap-packages.github.io/AutoDoc"
     - name: "ToolsForHomalg"
       version: ">= 2018.05.22"
-      url: "https://homalg-project.github.io/homalg_project/ToolsForHomalg/"
+      url: "https://homalg-project.github.io/homalg_project/ToolsForHomalg"
     - name: "io"
       version: ">=0"
       url: "https://gap-packages.github.io/io"
@@ -36,20 +36,23 @@ suggested-pkgs:
     - name: "Browse"
       version: ">=0"
       url: "http://www.math.rwth-aachen.de/~Browse"
+    - name: "CompilerForCAP"
+      version: ">= 2020.06.17"
+      url: "https://github.com/homalg-project/CAP_project/tree/master/CompilerForCAP"
 
-www: http://homalg-project.github.io/CAP_project/CAP/
-readme: http://homalg-project.github.io/CAP_project/CAP/README
-packageinfo: http://homalg-project.github.io/CAP_project/CAP/PackageInfo.g
+www: https://homalg-project.github.io/CAP_project/CAP
+readme: https://homalg-project.github.io/CAP_project/CAP/README.md
+packageinfo: https://homalg-project.github.io/CAP_project/CAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2020.02.16/CAP-2020.02.16.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2020.09.01/CAP-2020.09.01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2020.02.16/CAP-2020.02.16.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2020.09.01/CAP-2020.09.01.zip
 
-abstract: '<span class="pkgname">CAP</span> (Categories, Algorithms, Programming) is a package for category theory.
+abstract: <span class="pkgname">CAP</span> (Categories, Algorithms, Programming) is a package for category theory.
 It facilitates the implementation of specific instances of categories
-and provides a language for writing generic categorical algorithms.'
+and provides a language for writing generic categorical algorithms.
 
 status: deposited
 doc-html: doc/chap0.html
