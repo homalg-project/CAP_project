@@ -6,9 +6,9 @@ Subtitle := "Implementations of generalized morphisms for the CAP project",
 Version := Maximum( [
   "2017.12.30", ## Sebas' version
 ## this line prevents merge conflicts
-  "2020.04.15", ## Sepp's version
+  "2020.04.16", ## Sepp's version
 ## this line prevents merge conflicts
-  "2019.01.16", ## Mohamed's version
+  "2020.04.29", ## Mohamed's version
 ## this line prevents merge conflicts
    ] ),
 
@@ -23,7 +23,7 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Sebastian",
     LastName := "Gutsche",
-    WWWHome := "http://www.uni-siegen.de/fb6/rmi/",
+    WWWHome := "https://sebasguts.github.io/",
     Email := "gutsche@mathematik.uni-siegen.de",
     PostalAddress := Concatenation(
                "Department Mathematik\n",
@@ -52,11 +52,17 @@ Persons := [
   ),
 ],
 
-PackageWWWHome := "http://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/",
-
-ArchiveURL     := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-", ~.Version, "/GeneralizedMorphismsForCAP-", ~.Version ),
-README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
+# BEGIN URLS
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/homalg-project/CAP_project",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := "https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP",
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-", ~.Version, "/GeneralizedMorphismsForCAP-", ~.Version ),
+# END URLS
 
 ArchiveFormats := ".tar.gz .zip",
 
@@ -99,5 +105,3 @@ AvailabilityTest := function()
 #Keywords := [ "TODO" ],
 
 ));
-
-
