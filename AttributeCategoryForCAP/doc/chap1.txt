@@ -1,0 +1,13 @@
+  
+  [1X1 [33X[0;0YAttribute Category[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YGAP Category[133X[101X
+  
+  [1X1.1-1 IsCategoryWithAttributesObject[101X
+  
+  [33X[1;0Y[29X[2XIsCategoryWithAttributesObject[102X( [3Xobject[103X ) [32X filter[133X
+  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  
+  [33X[0;0YTest[133X
+  
