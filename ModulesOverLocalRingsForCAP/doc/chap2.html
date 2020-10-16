@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (ModulesOverLocalRingsForCAP) - Chapter 2: Examples and Tests</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap2"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap2_mj.html">[MathJax on]</a></p>
+<p><a id="X7967FE8E7BBDF485" name="X7967FE8E7BBDF485"></a></p>
+<div class="ChapSects"><a href="chap2.html#X7967FE8E7BBDF485">2 <span class="Heading">Examples and Tests</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X84BFE5DD846A0572">2.1 <span class="Heading">Gauss</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8035414C80AA8826">2.2 <span class="Heading">Intersection theory</span></a>
+</span>
+</div>
+</div>
+
+<h3>2 <span class="Heading">Examples and Tests</span></h3>
+
+<p><a id="X84BFE5DD846A0572" name="X84BFE5DD846A0572"></a></p>
+
+<h4>2.1 <span class="Heading">Gauss</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := Q * "x,y,z";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category := CategoryOfLeftModulePresentationsOverLocalRing( R, [ "x", "y", "z" ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := AsLeftPresentation( HomalgMatrix( [ [ "(x^2 + y^2 + z^2 - 1)^2" ] ], 1, 1, R ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := AsSerreQuotientCategoryObject( category, M );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( N );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := AsLeftPresentation( HomalgMatrix( [ [ "(x^2 + y^2 + z^2)^2" ] ], 1, 1, R ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := AsSerreQuotientCategoryObject( category, M );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( N );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := AsLeftPresentation( HomalgMatrix( "x-1,0,0,0", 2, 2, R ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := AsSerreQuotientCategoryObject( category, M );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">m := MinimalGeneratorsModel( N );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIsomorphism(m);</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( N );</span>
+1
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := Q * "x,y";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := R / "x^2 - y";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIsIntegralDomain( R, true );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">matrix := HomalgMatrix( "[x,0,0,0,y,0,0,0,x^2-y]", 3, 3, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">REFIndicesForMatricesOverIntegralDomain( matrix );</span>
+[ 1,2 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">matrix := HomalgMatrix( "[1,1,1,1,1,1,1,1,1]", 3, 3, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">REFIndicesForMatricesOverIntegralDomain( matrix );</span>
+[ 1 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">matrix := HomalgMatrix( "[0,0,0,0,0,0,0,0,0,0,0,0]", 3, 4, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">REFIndicesForMatricesOverIntegralDomain( matrix );</span>
+[]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">matrix := HomalgZeroMatrix( 0, 4, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">REFIndicesForMatricesOverIntegralDomain( matrix );</span>
+[]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">matrix := HomalgZeroMatrix( 4, 0, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">REFIndicesForMatricesOverIntegralDomain( matrix );</span>
+[]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">matrix := HomalgZeroMatrix( 0, 0, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">REFIndicesForMatricesOverIntegralDomain( matrix );</span>
+[]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">matrix := HomalgMatrix( "[x,y,x,y,y,x,x,x,x^2-y]", 3, 3, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">REFIndicesForMatricesOverIntegralDomain( matrix );</span>
+[ 1, 2, 3 ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">matrix := HomalgIdentityMatrix( 9, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">REFIndicesForMatricesOverIntegralDomain( matrix );</span>
+[ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F5 := HomalgRingOfIntegersInSingular( 5 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := F5 * "x,y,z,v,w";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category := CategoryOfLeftModulePresentationsOverLocalRing( R, [ "x", "y", "z", "v", "w" ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i1 := HomalgMatrix( "[ x-z, y-w ]", 2, 1, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i2 := HomalgMatrix( "[ y^6*v^2*w-y^3*v*w^20+1, x*y^4*z^4*w-z^5*w^5+x^3*y*z^2-1 ]", 2, 1, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M1 := AsLeftPresentation( i1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M2 := AsLeftPresentation( i2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">OI0 := CokernelObject( Annihilator( DirectSum( M1, M2 ) ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">j1 := HomalgMatrix( "[ x*z, x*w, y*z, y*w, v^2 ]", 5, 1, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">j2 := HomalgMatrix( "[ y^6*v^2*w-y^3*v*w^2+1, x*y^4*z^4*w-z^5*w^5+x^3*y*z^2-1, x^7 ]", 3, 1, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M1 := AsLeftPresentation( j1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M2 := AsLeftPresentation( j2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">OJ0 := CokernelObject( Annihilator( DirectSum( M1, M2 ) ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := AsSerreQuotientCategoryObject( category, OI0 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := AsSerreQuotientCategoryObject( category, OJ0 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Min := FunctorMinimalModel( category );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M_min := ApplyFunctor( Min, M );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N_min := ApplyFunctor( Min, N );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TorComplex( M_min, N_min );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H0 := HomologyFunctor( category, 0 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H1 := HomologyFunctor( category, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H2 := HomologyFunctor( category, 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h0 := ApplyFunctor( H0, T );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( h0 );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h0 := Source( FiltrationByPrimeIdealEmbedding( h0 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( h0 );</span>
+3
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h0 := Source( FiltrationByPrimeIdealEmbedding( h0 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( h0 );</span>
+2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h0 := Source( FiltrationByPrimeIdealEmbedding( h0 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( h0 );</span>
+0
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h1 := ApplyFunctor( H1, T );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( h1 );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h1 := Source( FiltrationByPrimeIdealEmbedding( h1 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( h1 );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h1 := Source( FiltrationByPrimeIdealEmbedding( h1 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( h1 );</span>
+0
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h2 := ApplyFunctor( H2, T );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( h2 );</span>
+0
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := HomalgRingOfIntegers( 4 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category := CategoryOfLeftModulePresentationsOverLocalRing( R, [ 2 ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsRegular( category );</span>
+false
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := HomalgFieldOfRationalsInSingular() * "x,y";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := R/ "x^2 - y^3";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category1 := CategoryOfLeftModulePresentationsOverLocalRing( R, [ "x", "y" ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsRegular( category1 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category2 := CategoryOfLeftModulePresentationsOverLocalRing( R, [ "x-1", "y-1" ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsRegular( category2 );</span>
+true
+</pre></div>
+
+<p>This is an example from homalg.</p>
+
+<p><a id="X8035414C80AA8826" name="X8035414C80AA8826"></a></p>
+
+<h4>2.2 <span class="Heading">Intersection theory</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := Q * "x,y,z,w";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category := CategoryOfLeftModulePresentationsOverLocalRing( R, [ "x", "y", "z", "w" ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y1 := HomalgMatrix( "[ x,y ]", 2, 1, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y1 := AsLeftPresentation( Y1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y2 := HomalgMatrix( "[ z,w ]", 2, 1, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y2 := AsLeftPresentation( Y2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y := CokernelObject( Annihilator( DirectSum( Y1, Y2 ) ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y := AsSerreQuotientCategoryObject( category, Y );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgMatrix( "[ x-z, y-w ]", 2, 1, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := AsLeftPresentation( ZZ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := AsSerreQuotientCategoryObject( category, ZZ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TorComplex( ZZ, Y );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H0 := HomologyFunctor( category, 0 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H1 := HomologyFunctor( category, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H2 := HomologyFunctor( category, 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Min := FunctorMinimalModel( category );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h0 := ApplyFunctor( H0, T );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h0 := ApplyFunctor( Min, h0 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( h0 );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ph0 := Source( FiltrationByPrimeIdealEmbedding( h0 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ph0 := ApplyFunctor( Min, ph0 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( ph0 );</span>
+2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pph0 := Source( FiltrationByPrimeIdealEmbedding( ph0 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( pph0 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h1 := ApplyFunctor( H1, T );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h1 := ApplyFunctor( Min, h1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( h1 );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ph1 := Source( FiltrationByPrimeIdealEmbedding( h1 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ph1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ApplyFunctor( H2, T ) );</span>
+true
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := Q * "x,y,z";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category := CategoryOfLeftModulePresentationsOverLocalRing( R, [ "y","z" ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := HomalgMatrix( "[ y ]", 1, 1, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ap := AsLeftPresentation( A );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AsSerreQuotientCategoryObject( category, Ap );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := HomalgMatrix( "[ z ]", 1, 1, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Bp := AsLeftPresentation( B );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := AsSerreQuotientCategoryObject( category, Bp );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TorComplex( A, B );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H0 := HomologyFunctor( category, 0 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H1 := HomologyFunctor( category, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H2 := HomologyFunctor( category, 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h0 := ApplyFunctor( H0, T );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( h0 );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ph0 := Source( FiltrationByPrimeIdealEmbedding( h0 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( ph0 );</span>
+0
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h1 := ApplyFunctor( H1, T );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( h1 );</span>
+0
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

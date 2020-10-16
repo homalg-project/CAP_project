@@ -1,0 +1,42 @@
+name: ModulesOverLocalRingsForCAP
+version: 2017.04.10
+date: 04/04/2017
+description: Category of modules over a local ring modeled by Serre quotients for CAP
+
+authors:
+    - name: Sebastian Posur
+      url: https://sebastianpos.github.io
+
+maintainers:
+    - name: Sebastian Posur
+      url: https://sebastianpos.github.io
+
+GAP: ">= 4.8"
+
+needed-pkgs:
+    - name: "GAPDoc"
+      version: ">= 1.5"
+      url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
+    - name: "ModulePresentationsForCAP"
+      version: "2017.03.27"
+      url: "https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP"
+    - name: "GeneralizedMorphismsForCAP"
+      version: "2016.10.05"
+      url: "https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP"
+    - name: "ComplexesAndFilteredObjectsForCAP"
+      version: "2016.09.19"
+      url: "https://github.com/homalg-project/CAP_project/tree/master/ComplexesAndFilteredObjectsForCAP"
+
+www: https://github.com/homalg-project/CAP_project/tree/master/ModulesOverLocalRingsForCAP
+readme: https://raw.githubusercontent.com/homalg-project/CAP_project/master/ModulesOverLocalRingsForCAP/README.md
+packageinfo: https://raw.githubusercontent.com/homalg-project/CAP_project/master/ModulesOverLocalRingsForCAP/PackageInfo.g
+
+downloads:
+    - name: .tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-2017.04.10/ModulesOverLocalRingsForCAP-2017.04.10.tar.gz
+
+abstract: 
+
+status: dev
+doc-html: doc/chap0.html
+doc-pdf: doc/manual.pdf
