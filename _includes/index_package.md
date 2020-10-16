@@ -1,10 +1,10 @@
-# GAP Package {{site.data[].name}}
+# GAP Package {{site.data[page.package_name].name}}
 
 {{site.data[page.package_name].abstract}}
 
 The current version of this package is version {{site.data[page.package_name].version}}.
 For more information, please refer to [the package manual]({{site.data[page.package_name].doc-html}}).
-There is also a [README](README) file.
+There is also a [README](README.md) file.
 
 ## Dependencies
 
