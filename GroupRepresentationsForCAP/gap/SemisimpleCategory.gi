@@ -359,7 +359,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
           right_distributivity_expanding_permutation, left_distributivity_expanding_permutation,
           distributivity_function, associator_available, is_magma_ring;
     
-    if associator_data <> "" then
+    if associator_data <> fail then
         
         associator_available := true;
         
@@ -2720,7 +2720,7 @@ InstallMethod( SemisimpleCategory,
         
     else
         
-        associator_data := "";
+        associator_data := fail;
         
     fi;
     
