@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (GroupRepresentationsForCAP) - Chapter 2: Semisimple Categories</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap2"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap2_mj.html">[MathJax on]</a></p>
+<p><a id="X843DFDBD7F1C3CCF" name="X843DFDBD7F1C3CCF"></a></p>
+<div class="ChapSects"><a href="chap2.html#X843DFDBD7F1C3CCF">2 <span class="Heading">Semisimple Categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DFB63A97E67C0A1">2.1 <span class="Heading">Introduction</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X86EC0F0A78ECBC10">2.2 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79E5B56B7FB97008">2.2-1 SemisimpleCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8300E11B837F304D">2.2-2 SemisimpleCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X81C9557781A9F165">2.2-3 SemisimpleCategoryMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F0C197D7A87F47A">2.2-4 SemisimpleCategoryMorphismSparse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A32CC0A7AE60C61">2.2-5 ComponentInclusionMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F36E48A85805929">2.2-6 ComponentProjectionMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X794C6C4C876B6A68">2.2-7 SemisimpleCategoryObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X875A8A2C850C8BEA">2.2-8 SemisimpleCategoryObjectConstructorWithFlatList</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7C701DBF7BAE649A">2.3 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X81518FA687DF633F">2.3-1 MembershipFunctionForSemisimpleCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X846A84507F982F0E">2.3-2 UnderlyingCategoryForSemisimpleCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7EEE3A737EB81309">2.3-3 UnderlyingFieldForHomalgForSemisimpleCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8602A0737FDC58DD">2.3-4 GivenObjectFilterForSemisimpleCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8439B4038479EDEC">2.3-5 GivenMorphismFilterForSemisimpleCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X82CB1ED57BA5076C">2.3-6 SemisimpleCategoryMorphismList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E660854875F1AF5">2.3-7 UnderlyingFieldForHomalg</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BBC9D427CB98AF0">2.3-8 SemisimpleCategoryObjectList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8795FC9979C40FBA">2.3-9 SemisimpleCategoryObjectListWithActualObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8136CFC3829CA797">2.3-10 Support</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D54BE0B83DB53C1">2.3-11 UnderlyingFieldForHomalg</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7FEE67717B9976E4">2.3-12 Dimension</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7DE8E16C7C2D387B">2.4 <span class="Heading">Operations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78F77CFA7AD38D43">2.4-1 Component</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X824C57FD7B7AE537">2.4-2 LaTeXStringOp</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X82F531E684C7E864">2.4-3 NormalizeSemisimpleCategoryObjectList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A270A158476EC1D">2.4-4 Multiplicity</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7AD93FBF795953D3">2.4-5 Component</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E1F66317F56BC02">2.4-6 TestPentagonIdentity</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X80B649938558ACBF">2.4-7 TestPentagonIdentityForAllQuadruplesInList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X837231B78322D362">2.4-8 TestBraidingCompatability</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79BE4C95860C1955">2.4-9 TestBraidingCompatabilityForAllTriplesInList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X865FE63485A7D125">2.4-10 TestZigZagIdentitiesForDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8224922683C55F3F">2.4-11 TestZigZagIdentitiesForDualForAllObjectsInList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D711D97786167DD">2.4-12 LaTeXStringOp</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7D03633A7D98026B">2.5 <span class="Heading">GAP Categories</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79376ED27A84B665">2.5-1 IsSemisimpleCategoryMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79463A9285082803">2.5-2 IsSemisimpleCategoryObject</a></span>
+</div></div>
+</div>
+
+<h3>2 <span class="Heading">Semisimple Categories</span></h3>
+
+<p><a id="X7DFB63A97E67C0A1" name="X7DFB63A97E67C0A1"></a></p>
+
+<h4>2.1 <span class="Heading">Introduction</span></h4>
+
+<p>Let <span class="Math">k</span> be a field and <span class="Math">I</span> be a totally ordered set. We denote the matrix category of <span class="Math">k</span> by <span class="Math">k\mathrm{-vec}</span> (see the package <span class="Math">\texttt{LinearAlgebraForCAP}</span>). The semisimple category <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span> associated to <span class="Math">k</span> and <span class="Math">I</span> is defined as the full subcategory of the product category <span class="Math">\prod_{i \in I} k\mathrm{-vec}</span> generated by those <span class="Math">I</span>-indexed tuples having only finitely many non-zero entries. By <span class="Math">\chi^i</span>, we denote the object which is <span class="Math">1</span> at entry <span class="Math">i</span> and <span class="Math">0</span> otherwise. Thus, an arbitrary object in <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span> can be written as <span class="Math">\oplus_{i \in I}a_i \chi^i</span> for non-negative numbers <span class="Math">a_i</span> for which only finitely many are non-zero.</p>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>2.2 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X79E5B56B7FB97008" name="X79E5B56B7FB97008"></a></p>
+
+<h5>2.2-1 SemisimpleCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SemisimpleCategory</code>( <var class="Arg">k</var>, <var class="Arg">m</var>, <var class="Arg">u</var>, <var class="Arg">s</var>, <var class="Arg">b</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>The arguments are:</p>
+
+
+<ul>
+<li><p>a homalg field <span class="Math">k</span>,</p>
+
+</li>
+<li><p>a membership function <span class="Math">m</span> sending any GAP object to a boolean,</p>
+
+</li>
+<li><p>a GAP object <span class="Math">u</span>,</p>
+
+</li>
+<li><p>a string <span class="Math">s</span> containing a filename in the folder "/gap/AssociatorsDatabase/" of this package,</p>
+
+</li>
+<li><p>a boolean <span class="Math">b</span>,</p>
+
+</li>
+<li><p>a list <span class="Math">L</span> containing 4 entries, where the first 3 are filters and the last one is a string.</p>
+
+</li>
+</ul>
+<p>The output is a CAP category modelling <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span>, where <span class="Math">I</span> is the set defined by the membership function <span class="Math">m</span>. Note that objects in <span class="Math">I</span> are expected to be equipped with operations enlisted in the chapter "Irreducible Objects". Furthermore, this CAP category is a rigid symmetric closed monoidal Abelian category. Its tensor product is defined by the data of the file <span class="Math">s</span>, where the boolean <span class="Math">b</span> is true if the associator stored in <span class="Math">s</span> was computed for all triples, and false otherwise (cf. chapter "Associators"). Its braiding and duality comes from the additional structure required for <span class="Math">I</span>. Its tensor unit is modelled by <span class="Math">u</span>. The three filters of the <span class="Math">L</span> are filters for the resulting category, its objects, and its morphisms. <span class="Math">L_4</span> is the name of the resulting category.</p>
+
+<p><a id="X8300E11B837F304D" name="X8300E11B837F304D"></a></p>
+
+<h5>2.2-2 SemisimpleCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SemisimpleCategory</code>( <var class="Arg">k</var>, <var class="Arg">m</var>, <var class="Arg">u</var>, <var class="Arg">s</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>The arguments are:</p>
+
+
+<ul>
+<li><p>a homalg field <span class="Math">k</span>,</p>
+
+</li>
+<li><p>a membership function <span class="Math">m</span> sending any GAP object to a boolean,</p>
+
+</li>
+<li><p>a GAP object <span class="Math">u</span>,</p>
+
+</li>
+<li><p>a string <span class="Math">s</span> containing a filename in the folder "/gap/AssociatorsDatabase/" of this package,</p>
+
+</li>
+<li><p>a boolean <span class="Math">b</span>.</p>
+
+</li>
+</ul>
+<p>This function calls SemisimpleCategory on the six arguments [ k, m, u, s, b, [ IsObject, IsObject, IsObject, automatically generated name ] ]</p>
+
+<p><a id="X81C9557781A9F165" name="X81C9557781A9F165"></a></p>
+
+<h5>2.2-3 SemisimpleCategoryMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SemisimpleCategoryMorphism</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>The arguments are an object <span class="Math">s</span> in a semisimple category <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span>, a list of pairs <span class="Math">L = [ [ \phi_1, i_1 ], \dots [ \phi_l, i_l ] ]</span> where <span class="Math">\phi_j</span> are morphisms in the Matrix Category <span class="Math">k\mathrm{-vec}</span> and <span class="Math">i_j \in I</span>, and another object <span class="Math">r</span> in the same semisimple category. The output is a morphism in <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span> from <span class="Math">s</span> to <span class="Math">r</span> whose <span class="Math">i</span>-th component is given by <span class="Math">\phi_i</span>. For this morphism to be well defined, there has to be an <span class="Math">\phi_i</span> for every <span class="Math">i</span> in the support of <span class="Math">s</span> and <span class="Math">r</span>.</p>
+
+<p><a id="X7F0C197D7A87F47A" name="X7F0C197D7A87F47A"></a></p>
+
+<h5>2.2-4 SemisimpleCategoryMorphismSparse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SemisimpleCategoryMorphismSparse</code>( <var class="Arg">s</var>, <var class="Arg">L</var>, <var class="Arg">r</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>The arguments are an object <span class="Math">s</span> in a semisimple category <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span>, a list of pairs <span class="Math">L = [ [ \phi_1, i_1 ], \dots [ \phi_l, i_l ] ]</span> where <span class="Math">\phi_j</span> are morphisms in the Matrix Category <span class="Math">k\mathrm{-vec}</span> and <span class="Math">i_j \in I</span>, and another object <span class="Math">r</span> in the same semisimple category. The output is a morphism in <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span> from <span class="Math">s</span> to <span class="Math">r</span> whose <span class="Math">i_j</span>-th component is given by <span class="Math">\phi_{i_j}</span> for <span class="Math">j = 1, \dots l</span>, and by the zero morphism otherwise.</p>
+
+<p><a id="X7A32CC0A7AE60C61" name="X7A32CC0A7AE60C61"></a></p>
+
+<h5>2.2-5 ComponentInclusionMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ComponentInclusionMorphism</code>( <var class="Arg">v</var>, <var class="Arg">j</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>The arguments are an object <span class="Math">v = \oplus_{i \in I} a_i \chi^{i}</span> in a semisimple category <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span>, and an object <span class="Math">j \in I</span>. The output is the canonical inclusion <span class="Math">a_j \chi^j \hookrightarrow \oplus_{i \in I} a_i \chi^{i}</span> in <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span>.</p>
+
+<p><a id="X7F36E48A85805929" name="X7F36E48A85805929"></a></p>
+
+<h5>2.2-6 ComponentProjectionMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ComponentProjectionMorphism</code>( <var class="Arg">v</var>, <var class="Arg">j</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a morphism</p>
+
+<p>The arguments are an object <span class="Math">v = \oplus_{i \in I} a_i \chi^{i}</span> in a semisimple category <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span>, and an object <span class="Math">j \in I</span>. The output is the canonical projection <span class="Math">\oplus_{i \in I} a_i \chi^{i} \twoheadrightarrow a_j \chi^j</span> in <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span>.</p>
+
+<p><a id="X794C6C4C876B6A68" name="X794C6C4C876B6A68"></a></p>
+
+<h5>2.2-7 SemisimpleCategoryObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SemisimpleCategoryObject</code>( <var class="Arg">L</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The arguments are a list <span class="Math">L</span> and a semisimple category <span class="Math">C = \bigoplus_{i \in I} k\mathrm{-vec}</span>. The list <span class="Math">L</span> contains pairs <span class="Math">L = [ [ a_1, i_1 ], \dots, [ a_l, i_l ] ]</span> of non-negative integers <span class="Math">a_j</span> and objects <span class="Math">i_j \in I</span>. The output is the object in <span class="Math">C</span> given by <span class="Math">\oplus_{j=1}^l a_j \chi^{i_j}</span>.</p>
+
+<p><a id="X875A8A2C850C8BEA" name="X875A8A2C850C8BEA"></a></p>
+
+<h5>2.2-8 SemisimpleCategoryObjectConstructorWithFlatList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SemisimpleCategoryObjectConstructorWithFlatList</code>( <var class="Arg">L</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object</p>
+
+<p>The arguments are a list <span class="Math">L</span> and a semisimple category <span class="Math">C = \bigoplus_{i \in I} k\mathrm{-vec}</span>. The list <span class="Math">L</span> contains an even number of elements <span class="Math">L = [ a_1, i_1, \dots, a_l, i_l ]</span> of non-negative integers <span class="Math">a_j</span> and objects <span class="Math">i_j \in I</span>. The output is the object in <span class="Math">C</span> given by <span class="Math">\oplus_{j=1}^l a_j \chi^{i_j}</span>.</p>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>2.3 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X81518FA687DF633F" name="X81518FA687DF633F"></a></p>
+
+<h5>2.3-1 MembershipFunctionForSemisimpleCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MembershipFunctionForSemisimpleCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a function</p>
+
+<p>The argument is a semisimple category <span class="Math">C = \bigoplus_{i \in I} k\mathrm{-vec}</span>. The output is its underlying membership function <span class="Math">m</span> for <span class="Math">I</span>.</p>
+
+<p><a id="X846A84507F982F0E" name="X846A84507F982F0E"></a></p>
+
+<h5>2.3-2 UnderlyingCategoryForSemisimpleCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategoryForSemisimpleCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>The argument is a semisimple category <span class="Math">C = \bigoplus_{i \in I} k\mathrm{-vec}</span>. The output is its underlying category <span class="Math">k\mathrm{-vec}</span>.</p>
+
+<p><a id="X7EEE3A737EB81309" name="X7EEE3A737EB81309"></a></p>
+
+<h5>2.3-3 UnderlyingFieldForHomalgForSemisimpleCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingFieldForHomalgForSemisimpleCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a homalg field</p>
+
+<p>The argument is a semisimple category <span class="Math">C = \bigoplus_{i \in I} k\mathrm{-vec}</span>. The output is its underlying field <span class="Math">k</span>.</p>
+
+<p><a id="X8602A0737FDC58DD" name="X8602A0737FDC58DD"></a></p>
+
+<h5>2.3-4 GivenObjectFilterForSemisimpleCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GivenObjectFilterForSemisimpleCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a filter</p>
+
+<p>The argument is a semisimple category <span class="Math">C = \bigoplus_{i \in I} k\mathrm{-vec}</span>. The output is its object filter which could be specified in the constructor of <span class="Math">C</span>.</p>
+
+<p><a id="X8439B4038479EDEC" name="X8439B4038479EDEC"></a></p>
+
+<h5>2.3-5 GivenMorphismFilterForSemisimpleCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GivenMorphismFilterForSemisimpleCategory</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a filter</p>
+
+<p>The argument is a semisimple category <span class="Math">C = \bigoplus_{i \in I} k\mathrm{-vec}</span>. The output is its morphism filter which could be specified in the constructor of <span class="Math">C</span>.</p>
+
+<p><a id="X82CB1ED57BA5076C" name="X82CB1ED57BA5076C"></a></p>
+
+<h5>2.3-6 SemisimpleCategoryMorphismList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SemisimpleCategoryMorphismList</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The argument is a morphism <span class="Math">\alpha = ( \alpha_i )_{i \in I}</span> in a semisimple category <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span>. The output is the list of pairs <span class="Math">[ [ \alpha_{i_1}, i_1 ], \dots, [ \alpha_{i_l}, i_l ] ]</span> where <span class="Math">i_j</span> ranges through the support of the source and range of <span class="Math">\alpha</span>.</p>
+
+<p><a id="X7E660854875F1AF5" name="X7E660854875F1AF5"></a></p>
+
+<h5>2.3-7 UnderlyingFieldForHomalg</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingFieldForHomalg</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a homalg field</p>
+
+<p>The argument is a morphism <span class="Math">\alpha = ( \alpha_i )_{i \in I}</span> in a semisimple category <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span>. The output is the homalg field <span class="Math">k</span>.</p>
+
+<p><a id="X7BBC9D427CB98AF0" name="X7BBC9D427CB98AF0"></a></p>
+
+<h5>2.3-8 SemisimpleCategoryObjectList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SemisimpleCategoryObjectList</code>( <var class="Arg">v</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The argument is an object <span class="Math">v = \oplus_{j=1}^l a_j \chi^{i_j}</span> in a semisimple category. The output is the list <span class="Math">[ [ a_1, i_1 ], \dots [ a_l, i_l ] ]</span>.</p>
+
+<p><a id="X8795FC9979C40FBA" name="X8795FC9979C40FBA"></a></p>
+
+<h5>2.3-9 SemisimpleCategoryObjectListWithActualObjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SemisimpleCategoryObjectListWithActualObjects</code>( <var class="Arg">v</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The argument is an object <span class="Math">v = \oplus_{j=1}^l a_j \chi^{i_j}</span> in a semisimple category. The output is the list <span class="Math">[ [ a_1, \chi^{i_1} ], \dots [ a_l, \chi^{i_l} ] ]</span>.</p>
+
+<p><a id="X8136CFC3829CA797" name="X8136CFC3829CA797"></a></p>
+
+<h5>2.3-10 Support</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Support</code>( <var class="Arg">v</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The argument is an object <span class="Math">v = \oplus_{j=1}^l a_j \chi^{i_j}</span> in a semisimple category. The output is the list <span class="Math">[ i_1, \dots, i_l ]</span>.</p>
+
+<p><a id="X7D54BE0B83DB53C1" name="X7D54BE0B83DB53C1"></a></p>
+
+<h5>2.3-11 UnderlyingFieldForHomalg</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingFieldForHomalg</code>( <var class="Arg">v</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a homalg field</p>
+
+<p>The argument is an object <span class="Math">v = \oplus_{j=1}^l a_j \chi^{i_j}</span> in a semisimple category <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span>. The output is the homalg field <span class="Math">k</span>.</p>
+
+<p><a id="X7FEE67717B9976E4" name="X7FEE67717B9976E4"></a></p>
+
+<h5>2.3-12 Dimension</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Dimension</code>( <var class="Arg">v</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an integer</p>
+
+<p>The argument is an object <span class="Math">v = \oplus_{j=1}^l a_j \chi^{i_j}</span> in a semisimple category <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span>. The output is the integer <span class="Math">\sum_{j=1}^l a_j \cdot \mathrm{dim}( i_j )</span>. This functions works under the assumption that there is a notion of dimension on the objects in <span class="Math">I</span>.</p>
+
+<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
+
+<h4>2.4 <span class="Heading">Operations</span></h4>
+
+<p><a id="X78F77CFA7AD38D43" name="X78F77CFA7AD38D43"></a></p>
+
+<h5>2.4-1 Component</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Component</code>( <var class="Arg">alpha</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a vector space morphism</p>
+
+<p>The argument is a morphism <span class="Math">\alpha = ( \alpha_i )_{i \in I}</span> in a semisimple category <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span> and an object <span class="Math">i \in I</span>. The output is <span class="Math">\alpha_i</span>.</p>
+
+<p><a id="X824C57FD7B7AE537" name="X824C57FD7B7AE537"></a></p>
+
+<h5>2.4-2 LaTeXStringOp</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LaTeXStringOp</code>( <var class="Arg">m</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a string</p>
+
+<p>The argument is a morphism <var class="Arg">m</var> in a semisimple category. The output is a LaTeX string (without enclosing dollar signs) that may be used to print out <var class="Arg">m</var> nicely.</p>
+
+<p><a id="X82F531E684C7E864" name="X82F531E684C7E864"></a></p>
+
+<h5>2.4-3 NormalizeSemisimpleCategoryObjectList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NormalizeSemisimpleCategoryObjectList</code>( <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The argument is a list <span class="Math">L = [ [ a_1, i_1 ], \dots, [ a_l, i_l ] ]</span> of non-negative integers <span class="Math">a_j</span> and objects <span class="Math">i_j \in I</span>, where <span class="Math">I</span> correspond to irreducible objects in a semisimple category <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span>. The output is again a list of pairs consisting of integers an elements in <span class="Math">I</span>, but with the following normalization:</p>
+
+
+<ul>
+<li><p>Each <span class="Math">a_j</span> is positive,</p>
+
+</li>
+<li><p><span class="Math">i_j</span> is strictly less than <span class="Math">i_{j+1}</span>.</p>
+
+</li>
+</ul>
+<p><a id="X7A270A158476EC1D" name="X7A270A158476EC1D"></a></p>
+
+<h5>2.4-4 Multiplicity</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Multiplicity</code>( <var class="Arg">v</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an integer</p>
+
+<p>The arguments are an object <span class="Math">v = \oplus_{j=1}^l a_j \chi^{i_j}</span> in a semisimple category <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span>, and an element <span class="Math">i \in I</span>. The output is the integer <span class="Math">a_i</span>.</p>
+
+<p><a id="X7AD93FBF795953D3" name="X7AD93FBF795953D3"></a></p>
+
+<h5>2.4-5 Component</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Component</code>( <var class="Arg">v</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a vector space object</p>
+
+<p>The arguments are an object <span class="Math">v = \oplus_{j=1}^l a_j \chi^{i_j}</span> in a semisimple category <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span>, and an element <span class="Math">i \in I</span>. The output is the <span class="Math">k</span>-vector space object <span class="Math">k^{a_i}</span> in Cap's Matrix Category.</p>
+
+<p><a id="X7E1F66317F56BC02" name="X7E1F66317F56BC02"></a></p>
+
+<h5>2.4-6 TestPentagonIdentity</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestPentagonIdentity</code>( <var class="Arg">v_1</var>, <var class="Arg">v_2</var>, <var class="Arg">v_3</var>, <var class="Arg">v_4</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>This is a debug operation. The arguments are 4 objects <span class="Math">v_1, v_2, v_3, v_4</span> in a category. The output is true if the pentagon identity holds for those 4 objects, false otherwise.</p>
+
+<p><a id="X80B649938558ACBF" name="X80B649938558ACBF"></a></p>
+
+<h5>2.4-7 TestPentagonIdentityForAllQuadruplesInList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestPentagonIdentityForAllQuadruplesInList</code>( <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>This is a debug operation. The argument is a list <span class="Math">L</span> consisting of quadruples of objects in a semisimple category <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span>. The output is true if the pentagon identity holds for all those quadruples, false otherwise.</p>
+
+<p><a id="X837231B78322D362" name="X837231B78322D362"></a></p>
+
+<h5>2.4-8 TestBraidingCompatability</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestBraidingCompatability</code>( <var class="Arg">v_1</var>, <var class="Arg">v_2</var>, <var class="Arg">v_3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>This is a debug operation. The arguments are 3 objects <span class="Math">v_1, v_2, v_3</span> in a semisimple category <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span>. The output is true if the braiding compatabilities with the associator hold, false otherwise.</p>
+
+<p><a id="X79BE4C95860C1955" name="X79BE4C95860C1955"></a></p>
+
+<h5>2.4-9 TestBraidingCompatabilityForAllTriplesInList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestBraidingCompatabilityForAllTriplesInList</code>( <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>This is a debug operation. The argument is a list <span class="Math">L</span> consisting of triples of objects in a semisimple category <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span>. The output is true if the braiding compatabilities with the associator hold for all those triples false otherwise.</p>
+
+<p><a id="X865FE63485A7D125" name="X865FE63485A7D125"></a></p>
+
+<h5>2.4-10 TestZigZagIdentitiesForDual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestZigZagIdentitiesForDual</code>( <var class="Arg">v</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>This is a debug operation. The argument is an object <span class="Math">v</span> in a semisimple category <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span>. The output is true if the zig zag identity for duals hold, false otherwise.</p>
+
+<p><a id="X8224922683C55F3F" name="X8224922683C55F3F"></a></p>
+
+<h5>2.4-11 TestZigZagIdentitiesForDualForAllObjectsInList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TestZigZagIdentitiesForDualForAllObjectsInList</code>( <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>This is a debug operation. The argument is a list <span class="Math">L</span> consisting of objects in a semisimple category <span class="Math">\bigoplus_{i \in I} k\mathrm{-vec}</span>. The output is true if the zig zag identity for duals hold for all those objects, false otherwise.</p>
+
+<p><a id="X7D711D97786167DD" name="X7D711D97786167DD"></a></p>
+
+<h5>2.4-12 LaTeXStringOp</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LaTeXStringOp</code>( <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a string</p>
+
+<p>The argument is an object <var class="Arg">c</var> in a semisimple category. The output is a LaTeX string (without enclosing dollar signs) that may be used to print out <var class="Arg">c</var> nicely.</p>
+
+<p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
+
+<h4>2.5 <span class="Heading">GAP Categories</span></h4>
+
+<p><a id="X79376ED27A84B665" name="X79376ED27A84B665"></a></p>
+
+<h5>2.5-1 IsSemisimpleCategoryMorphism</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSemisimpleCategoryMorphism</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The GAP category of morphisms in a semisimple category.</p>
+
+<p><a id="X79463A9285082803" name="X79463A9285082803"></a></p>
+
+<h5>2.5-2 IsSemisimpleCategoryObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSemisimpleCategoryObject</code>( <var class="Arg">object</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+
+<p>The GAP category of objects in a semisimple category.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

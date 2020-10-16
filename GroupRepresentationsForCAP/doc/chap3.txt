@@ -1,0 +1,333 @@
+  
+  [1X3 [33X[0;0YIrreducible Objects[133X[101X
+  
+  
+  [1X3.1 [33X[0;0YIntroduction[133X[101X
+  
+  [33X[0;0YFor  a  semisimple category [23XC[123X of the form [23X\bigoplus_{i \in I} k\mathrm{-vec}[123X
+  to become a rigid symmetric closed monoidal skeletal category, the set [23XI[123X has
+  to be equipped with extra strucutre. To become a skeletal category, we need:[133X
+  
+  [30X    [33X[0;6Ya total ordering on [23XI[123X.[133X
+  
+  [33X[0;0YTo become a monoidal category, we need:[133X
+  
+  [30X    [33X[0;6Ya  function  [23X\texttt{IsYieldingIdentities}[123X, deciding whether an object
+        yields  the  identity whenever it is part of an associator triple or a
+        braiding pair,[133X
+  
+  [30X    [33X[0;6Yfunctions  [23X\texttt{Multiplicity}[123X  and  [23X\texttt{*}[123X, defining the tensor
+        product on objects,[133X
+  
+  [30X    [33X[0;6Ya function [23X\texttt{AssociatorFromData}[123X, defining the tensor product on
+        morphisms.[133X
+  
+  [33X[0;0YTo become a symmetric monoidal category, we need:[133X
+  
+  [30X    [33X[0;6Ya function [23X\texttt{ExteriorPower}[123X.[133X
+  
+  [33X[0;0YTo become a rigid symmetric monoidal category, we need:[133X
+  
+  [30X    [33X[0;6Ya function [23X\texttt{Dual}[123X, defining duals on objects.[133X
+  
+  [33X[0;0YIn the following, two families of such sets [23XI[123X are introduced:[133X
+  
+  [30X    [33X[0;6Y[23X\texttt{GIrreducibleObject}[123X:  For a group [23XG[123X, the set [23XI[123X consists of the
+        irreducible   characters   of  [23XG[123X.  We  call  the  elements  in  [23XI[123X  the
+        [23XG[123X-irreducible objects.[133X
+  
+  [30X    [33X[0;6Y[23X\texttt{GZGradedIrreducibleObject}[123X:  For a group [23XG[123X, the set [23XI[123X consists
+        of  the  irreducible  characters  of  [23XG[123X  together  with a degree [23Xn \in
+        \mathbb{Z}[123X.  We  call  the  elements in [23XI[123X the [23XG-\mathbb{Z}[123X-irreducible
+        objects.[133X
+  
+  
+  [1X3.2 [33X[0;0YConstructors[133X[101X
+  
+  [1X3.2-1 GIrreducibleObject[101X
+  
+  [33X[1;0Y[29X[2XGIrreducibleObject[102X( [3Xc[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [23XG[123X-irreducible object[133X
+  
+  [33X[0;0YThe  argument  is  a  character  [23Xc[123X  of a group. The output is its associated
+  [23XG[123X-irreducible object.[133X
+  
+  [1X3.2-2 GZGradedIrreducibleObject[101X
+  
+  [33X[1;0Y[29X[2XGZGradedIrreducibleObject[102X( [3Xn[103X, [3Xc[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya [23XG-\mathbb{Z}[123X-irreducible object[133X
+  
+  [33X[0;0YThe  argument  is  an  integer [23Xn[123X and a character [23Xc[123X of a group. The output is
+  their associated [23XG-\mathbb{Z}[123X-irreducible object.[133X
+  
+  
+  [1X3.3 [33X[0;0YAttributes[133X[101X
+  
+  [1X3.3-1 UnderlyingCharacter[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingCharacter[102X( [3Xi[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan irreducible character[133X
+  
+  [33X[0;0YThe  argument  is  a  [23XG[123X-irreducible  object  [23Xi[123X. The output is its underlying
+  character.[133X
+  
+  [1X3.3-2 UnderlyingGroup[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingGroup[102X( [3Xi[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya group[133X
+  
+  [33X[0;0YThe  argument  is  a  [23XG[123X-irreducible  object  [23Xi[123X. The output is its underlying
+  group.[133X
+  
+  [1X3.3-3 UnderlyingCharacterTable[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingCharacterTable[102X( [3Xi[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya character table[133X
+  
+  [33X[0;0YThe  argument is a [23XG[123X-irreducible object [23Xi[123X. The output is the character table
+  of its underlying group.[133X
+  
+  [1X3.3-4 UnderlyingIrreducibleCharacters[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingIrreducibleCharacters[102X( [3Xi[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe argument is a [23XG[123X-irreducible object [23Xi[123X. The output is a list consisting of
+  the irreducible characters of its underlying group.[133X
+  
+  [1X3.3-5 UnderlyingCharacterNumber[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingCharacterNumber[102X( [3Xi[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan integer[133X
+  
+  [33X[0;0YThe  argument  is a [23XG[123X-irreducible object [23Xi[123X. The output is the integer [23Xn[123X such
+  that  the [23Xn[123X-th entry of the list of the underlying irreducible characters is
+  the underlying irreducible character of [23Xi[123X.[133X
+  
+  [1X3.3-6 Dimension[101X
+  
+  [33X[1;0Y[29X[2XDimension[102X( [3Xi[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan integer[133X
+  
+  [33X[0;0YThe argument is a [23XG[123X-irreducible object [23Xi[123X. The output is the dimension of its
+  underlying irreducible character.[133X
+  
+  [1X3.3-7 Dual[101X
+  
+  [33X[1;0Y[29X[2XDual[102X( [3Xi[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [23XG[123X-irreducible object[133X
+  
+  [33X[0;0YThe  argument  is  a [23XG[123X-irreducible object [23Xi[123X. The output is the [23XG[123X-irreducible
+  object  associated  to  the  dual  character of [23Xc[123X, where [23Xc[123X is the associated
+  character of [23Xi[123X.[133X
+  
+  [1X3.3-8 UnderlyingCharacter[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingCharacter[102X( [3Xi[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan irreducible character[133X
+  
+  [33X[0;0YThe  argument  is  a  [23XG-\mathbb{Z}[123X-irreducible  object  [23Xi[123X. The output is its
+  underlying character.[133X
+  
+  [1X3.3-9 UnderlyingDegree[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingDegree[102X( [3Xi[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan integer[133X
+  
+  [33X[0;0YThe  argument  is  a  [23XG-\mathbb{Z}[123X-irreducible  object  [23Xi[123X. The output is its
+  underlying degree.[133X
+  
+  [1X3.3-10 UnderlyingGroup[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingGroup[102X( [3Xi[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya group[133X
+  
+  [33X[0;0YThe  argument  is  a  [23XG-\mathbb{Z}[123X-irreducible  object  [23Xi[123X. The output is its
+  underlying group.[133X
+  
+  [1X3.3-11 UnderlyingCharacterTable[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingCharacterTable[102X( [3Xi[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya character table[133X
+  
+  [33X[0;0YThe  argument  is  a  [23XG-\mathbb{Z}[123X-irreducible  object  [23Xi[123X. The output is the
+  character table of its underlying group.[133X
+  
+  [1X3.3-12 UnderlyingIrreducibleCharacters[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingIrreducibleCharacters[102X( [3Xi[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  argument  is  a [23XG-\mathbb{Z}[123X-irreducible object [23Xi[123X. The output is a list
+  consisting of the irreducible characters of its underlying group.[133X
+  
+  [1X3.3-13 UnderlyingCharacterNumber[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingCharacterNumber[102X( [3Xi[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan integer[133X
+  
+  [33X[0;0YThe  argument  is  a  [23XG-\mathbb{Z}[123X-irreducible  object  [23Xi[123X. The output is the
+  integer [23Xn[123X such that the [23Xn[123X-th entry of the list of the underlying irreducible
+  characters is the underlying irreducible character of [23Xi[123X.[133X
+  
+  [1X3.3-14 Dimension[101X
+  
+  [33X[1;0Y[29X[2XDimension[102X( [3Xi[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan integer[133X
+  
+  [33X[0;0YThe  argument  is  a  [23XG-\mathbb{Z}[123X-irreducible  object  [23Xi[123X. The output is the
+  dimension of its underlying irreducible character.[133X
+  
+  [1X3.3-15 Dual[101X
+  
+  [33X[1;0Y[29X[2XDual[102X( [3Xi[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya [23XG-\mathbb{Z}[123X-irreducible object[133X
+  
+  [33X[0;0YThe  argument  is  a  [23XG-\mathbb{Z}[123X-irreducible  object  [23Xi[123X. The output is the
+  [23XG-\mathbb{Z}[123X-irreducible  object  associated  to  the degree [23X-n[123X and the dual
+  character  of  [23Xc[123X,  where  [23Xn[123X is the underlying degree and [23Xc[123X is the underlying
+  character of [23Xi[123X.[133X
+  
+  
+  [1X3.4 [33X[0;0YProperties[133X[101X
+  
+  [1X3.4-1 IsYieldingIdentities[101X
+  
+  [33X[1;0Y[29X[2XIsYieldingIdentities[102X( [3Xi[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument  is  a  [23XG[123X-irreducible  object  [23Xi[123X.  The  output  is true if the
+  underlying character of [23Xi[123X is the trivial one, false otherwise.[133X
+  
+  [1X3.4-2 IsYieldingIdentities[101X
+  
+  [33X[1;0Y[29X[2XIsYieldingIdentities[102X( [3Xi[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument  is a [23XG-\mathbb{Z}[123X-irreducible object [23Xi[123X. The output is true if
+  the underlying character of [23Xi[123X is the trivial one, false otherwise.[133X
+  
+  
+  [1X3.5 [33X[0;0YOperations[133X[101X
+  
+  [1X3.5-1 Multiplicity[101X
+  
+  [33X[1;0Y[29X[2XMultiplicity[102X( [3Xi[103X, [3Xj[103X, [3Xk[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan integer[133X
+  
+  [33X[0;0YThe  arguments  are  3  [23XG[123X-irreducible  objects  [23Xi,j,k[123X.  Let their underlying
+  characters  be denoted by [23Xa,b,c[123X, respectively. Then the output is the number
+  [23X\langle  a,  b\cdot c \rangle[123X, i.e., the multiplicity of [23Xa[123X in the product of
+  characters [23Xb \cdot c[123X.[133X
+  
+  [1X3.5-2 \*[101X
+  
+  [33X[1;0Y[29X[2X\*[102X( [3Xi[103X, [3Xj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  arguments  are  2 [23XG[123X-irreducible objects [23Xi,j[123X with underlying irreducible
+  characters  [23Xa,b[123X,  respectively.  The  output  is  a list L = [23X[ [ n_1, k_1 ],
+  \dots,  [ n_l, k_l ] ][123X consisting of positive integers [23Xn_c[123X and [23XG[123X-irreducible
+  objects  [23Xk_c[123X  representing  the character decomposition into irreducibles of
+  the product [23Xa\cdot b[123X.[133X
+  
+  [1X3.5-3 AssociatorFromData[101X
+  
+  [33X[1;0Y[29X[2XAssociatorFromData[102X( [3Xi[103X, [3Xj[103X, [3Xk[103X, [3XA[103X, [3XF[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe arguments are[133X
+  
+  [30X    [33X[0;6Ythree [23XG[123X-irreducible objects [23Xi,j,k[123X,[133X
+  
+  [30X    [33X[0;6Ya  list  [23XA[123X  containing  the associator on all irreducibles as strings,
+        e.g., the list constructed by the methods provided in this package,[133X
+  
+  [30X    [33X[0;6Ya homalg field [23XF[123X,[133X
+  
+  [30X    [33X[0;6Ya  list  L  =  [23X[  [  n_1,  h_1  ], \dots, [ n_l, h_l ] ][123X consisting of
+        positive  integers  [23Xn_c[123X and [23XG[123X-irreducible objects [23Xh_c[123X representing the
+        character decomposition into irreducibles of the product of [23Xi,j,k[123X.[133X
+  
+  [33X[0;0YThe output is the list [23X[ [ \alpha_{h_1}, h_1 ], \dots, [ \alpha_{h_l}, h_l ]
+  ][123X,  where  [23X\alpha_{h_c}[123X  is the [23XF[123X-vector space homomorphism representing the
+  [23Xh_c[123X-th component of the associator of [23Xi,j,k[123X.[133X
+  
+  [1X3.5-4 ExteriorPower[101X
+  
+  [33X[1;0Y[29X[2XExteriorPower[102X( [3Xi[103X, [3Xj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  arguments  are  two [23XG[123X-irreducible objects [23Xi, j[123X. The output is the empty
+  list  if  [23Xi[123X  is not equal to [23Xj[123X. Otherwise, the output is a list [23XL = [ [ n_1,
+  k_1  ],  \dots,  [  n_1,  k_l  ]  ][123X  consisting of positive integers [23Xn_j[123X and
+  [23XG[123X-irreducible  objects [23Xk_j[123X, corresponding to the decomposition of the second
+  exterior  power  character  [23X\wedge^2  c[123X  into  irreducibles.  Here, [23Xc[123X is the
+  associated character of [23Xi[123X.[133X
+  
+  [1X3.5-5 Multiplicity[101X
+  
+  [33X[1;0Y[29X[2XMultiplicity[102X( [3Xi[103X, [3Xj[103X, [3Xk[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan integer[133X
+  
+  [33X[0;0YThe  arguments  are  3  [23XG-\mathbb{Z}[123X-irreducible  objects  [23Xi,j,k[123X.  Let their
+  underlying   characters   be  denoted  by  [23Xa,b,c[123X,  respectively,  and  their
+  underlying degrees by [23Xn_i, n_j, n_k[123X, respectively. The output is [23X0[123X if [23Xn_i[123X is
+  not  equal  to  [23Xn_j  +  n_k[123X.  Otherwise, the output is the number [23X\langle a,
+  b\cdot c \rangle[123X, i.e., the multiplicity of [23Xa[123X in the product of characters [23Xb
+  \cdot c[123X.[133X
+  
+  [33X[0;0YLet  their  underlying characters be denoted by [23Xa,b[123X, respectively, and their
+  underlying  degrees  by  [23Xn_i,  n_j[123X,  respectively.  if  [23Xn_i  =  n_j[123X  and the
+  underlying character number of [23Xj[123X[133X
+  
+  [1X3.5-6 \*[101X
+  
+  [33X[1;0Y[29X[2X\*[102X( [3Xi[103X, [3Xj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  arguments  are  2  [23XG-\mathbb{Z}[123X-irreducible objects [23Xi,j[123X with underlying
+  irreducible  characters [23Xa,b[123X, respectively. The output is a list L = [23X[ [ n_1,
+  k_1  ],  \dots,  [  n_l,  k_l  ]  ][123X  consisting of positive integers [23Xn_c[123X and
+  [23XG[123X-irreducible  objects  [23Xk_c[123X  representing  the  character decomposition into
+  irreducibles  of  the  product  [23Xa\cdot  b[123X. The underlying degrees of [23Xk_c[123X are
+  given by the sum of the underlying degrees of [23Xi[123X and [23Xj[123X.[133X
+  
+  [1X3.5-7 AssociatorFromData[101X
+  
+  [33X[1;0Y[29X[2XAssociatorFromData[102X( [3Xi[103X, [3Xj[103X, [3Xk[103X, [3XA[103X, [3XF[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe arguments are[133X
+  
+  [30X    [33X[0;6Ythree [23XG-\mathbb{Z}[123X-irreducible objects [23Xi,j,k[123X,[133X
+  
+  [30X    [33X[0;6Ya   list   [23XA[123X   containing  the  associator  on  all  irreducibles  (of
+        [23XG[123X-irreducible  objects)  as strings, e.g., the list constructed by the
+        methods provided in this package,[133X
+  
+  [30X    [33X[0;6Ya homalg field [23XF[123X,[133X
+  
+  [30X    [33X[0;6Ya  list  L  =  [23X[  [  n_1,  h_1  ], \dots, [ n_l, h_l ] ][123X consisting of
+        positive   integers   [23Xn_c[123X  and  [23XG-\mathbb{Z}[123X-irreducible  objects  [23Xh_c[123X
+        representing  the  character  decomposition  into  irreducibles of the
+        product of [23Xi,j,k[123X.[133X
+  
+  [33X[0;0YThe output is the list [23X[ [ \alpha_{h_1}, h_1 ], \dots, [ \alpha_{h_l}, h_l ]
+  ][123X,  where  [23X\alpha_{h_c}[123X  is the [23XF[123X-vector space homomorphism representing the
+  [23Xh_c[123X-th component of the associator of [23Xi,j,k[123X.[133X
+  
+  [1X3.5-8 ExteriorPower[101X
+  
+  [33X[1;0Y[29X[2XExteriorPower[102X( [3Xi[103X, [3Xj[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  arguments  are two [23XG-\mathbb{Z}[123X-irreducible objects [23Xi, j[123X. The output is
+  the  empty  list  if  the  underlying  characters  of  [23Xi[123X  and [23Xj[123X are unequal.
+  Otherwise,  the  output  is a list [23XL = [ [ n_1, k_1 ], \dots, [ n_1, k_l ] ][123X
+  consisting  of  positive  integers  [23Xn_j[123X and [23XG-\mathbb{Z}[123X-irreducible objects
+  [23Xk_a[123X,  corresponding  to  the  decomposition  of  the  second  exterior power
+  character  [23X\wedge^2 c[123X into irreducibles. Here, [23Xc[123X is the associated character
+  of  [23Xi[123X  and  [23Xj[123X.  The  underlying  degree  of [23Xk_a[123X is the sum of the underlying
+  degrees of [23Xi[123X and [23Xj[123X.[133X
+  

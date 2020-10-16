@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (GroupRepresentationsForCAP) - Chapter 4: Representation Category of Groups</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap4"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap4.html">[MathJax off]</a></p>
+<p><a id="X7BA69AC67EE4F0B5" name="X7BA69AC67EE4F0B5"></a></p>
+<div class="ChapSects"><a href="chap4_mj.html#X7BA69AC67EE4F0B5">4 <span class="Heading">Representation Category of Groups</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7DFB63A97E67C0A1">4.1 <span class="Heading">Introduction</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X7F83DF528480AEA3">4.2 <span class="Heading">Quickstart</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4_mj.html#X86EC0F0A78ECBC10">4.3 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7C0D257680BDC372">4.3-1 RepresentationCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7E7259AD80572045">4.3-2 RepresentationCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X7B1ABC957CA58568">4.3-3 RepresentationCategoryObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4_mj.html#X79735FA77A6769D0">4.3-4 RepresentationCategoryObject</a></span>
+</div></div>
+</div>
+
+<h3>4 <span class="Heading">Representation Category of Groups</span></h3>
+
+<p><a id="X7DFB63A97E67C0A1" name="X7DFB63A97E67C0A1"></a></p>
+
+<h4>4.1 <span class="Heading">Introduction</span></h4>
+
+<p>For a finite group <span class="SimpleMath">\(G\)</span>, the following methods provide computational tools for working with <span class="SimpleMath">\(G\)</span>-mod, a skeletal version of the monoidal category of finite dimensional complex representations of <span class="SimpleMath">\(G\)</span>, and with <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-mod, a skeletal version of the monoidal category of finite dimensional complex representations of <span class="SimpleMath">\(G\)</span> equipped with a degree in <span class="SimpleMath">\(\mathbb{Z}\)</span>.</p>
+
+<p><a id="X7F83DF528480AEA3" name="X7F83DF528480AEA3"></a></p>
+
+<h4>4.2 <span class="Heading">Quickstart</span></h4>
+
+<p>The following commands construct the category <span class="SimpleMath">\(D_8\)</span>-mod, the unique object <span class="SimpleMath">\(v\)</span> corresponding to the irreducible character of degree 2, and perform some computations.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RepG := RepresentationCategory( 8, 3 );</span>
+The representation category of Group( [ f1, f2, f3 ] )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := UnderlyingGroupForRepresentationCategory( RepG );</span>
+&lt;pc group of size 8 with 3 generators&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">StructureDescription( G );</span>
+"D8"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := First( Irr( G ), i -&gt; Degree( i ) = 2 );</span>
+Character( CharacterTable( D8 ), [ 2, 0, 0, -2, 0 ] )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := RepresentationCategoryObject( c, RepG );</span>
+1*(x_5)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( v );</span>
+2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( AssociatorLeftToRight( v, v, v ) );</span>
+Component: (x_5)
+
+1/2,-1/2,1/2, 1/2, 
+1/2,-1/2,-1/2,-1/2,
+1/2,1/2, 1/2, -1/2,
+1/2,1/2, -1/2,1/2  
+
+A morphism in Category of matrices over Q
+------------------------
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Braiding( v, v ) );</span>
+Component: (x_1)
+
+1
+
+A morphism in Category of matrices over Q
+------------------------
+Component: (x_2)
+
+1
+
+A morphism in Category of matrices over Q
+------------------------
+Component: (x_3)
+
+1
+
+A morphism in Category of matrices over Q
+------------------------
+Component: (x_4)
+
+-1
+
+A morphism in Category of matrices over Q
+------------------------
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := IdentityMorphism( TensorProductOnObjects( v, v ) ) + Braiding( v, v );</span>
+&lt;A morphism in The representation category of Group( [ f1, f2, f3 ] )&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CokernelObject( alpha );</span>
+1*(x_4)
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">TensorUnit( RepG );</span>
+1*(x_1)
+</pre></div>
+
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>4.3 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X7C0D257680BDC372" name="X7C0D257680BDC372"></a></p>
+
+<h5>4.3-1 RepresentationCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RepresentationCategory</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a Cap category</p>
+
+<p>The argument is a group <span class="SimpleMath">\(G\)</span>. The output is the Cap category <span class="SimpleMath">\(G\)</span>-mod. This method uses <span class="SimpleMath">\(\texttt{String( G )}\)</span> as an identifier of <span class="SimpleMath">\(G\)</span>.</p>
+
+<p><a id="X7E7259AD80572045" name="X7E7259AD80572045"></a></p>
+
+<h5>4.3-2 RepresentationCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RepresentationCategory</code>( <var class="Arg">o</var>, <var class="Arg">n</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a Cap category</p>
+
+<p>The arguments are 2 integers <span class="SimpleMath">\(o,n\)</span>. The output is the Cap category <span class="SimpleMath">\(G\)</span>-mod, where <span class="SimpleMath">\(G\)</span> is the group of order <span class="SimpleMath">\(o\)</span> corresponding to the SmallGroupLibrary identification number <span class="SimpleMath">\(n\)</span>.</p>
+
+<p><a id="X7B1ABC957CA58568" name="X7B1ABC957CA58568"></a></p>
+
+<h5>4.3-3 RepresentationCategoryObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RepresentationCategoryObject</code>( <var class="Arg">L</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object in <span class="SimpleMath">\(G\)</span>-mod</p>
+
+<p>There are 2 arguments. The first argument is a list <span class="SimpleMath">\(L = [ [ n_1, c_1 ], \dots, [ n_l, c_l ] ]\)</span> consisting of non-negative integers <span class="SimpleMath">\(n_i\)</span> and characters <span class="SimpleMath">\(c_i\)</span> of the same group. Alternatively, the first argument can simply be an irreducible character c, which will be then interpreted as giving the input <span class="SimpleMath">\([ [ 1, c ] ]\)</span>. The second argument is the Cap category <span class="SimpleMath">\(C = G\)</span>-mod. The output is the unique object in <span class="SimpleMath">\(G\)</span>-mod having <span class="SimpleMath">\(L\)</span> as its character decomposition.</p>
+
+<p><a id="X79735FA77A6769D0" name="X79735FA77A6769D0"></a></p>
+
+<h5>4.3-4 RepresentationCategoryObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RepresentationCategoryObject</code>( <var class="Arg">c</var>, <var class="Arg">C</var>, <var class="Arg">str</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an object in <span class="SimpleMath">\(G\)</span>-mod</p>
+
+<p>There are 3 arguments. The first argument is an irreducible character <var class="Arg">c</var>. The second argument is the CAP category <span class="SimpleMath">\(C = G\)</span>-mod. The third argument is a string used as follows: <code class="code">SetString</code>( <code class="code">GIrreducibleObject</code>( <var class="Arg">c</var> ), <var class="Arg">str</var> ). The output is the unique object in <span class="SimpleMath">\(G\)</span>-mod having <span class="SimpleMath">\([ [ 1, c ] ]\)</span> as its character decomposition.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

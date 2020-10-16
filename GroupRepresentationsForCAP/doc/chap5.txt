@@ -1,0 +1,15 @@
+  
+  [1X5 [33X[0;0YTools[133X[101X
+  
+  
+  [1X5.1 [33X[0;0YHelper functions[133X[101X
+  
+  [1X5.1-1 LaTeXStringOfSemisimpleCategoryObjectList[101X
+  
+  [33X[1;0Y[29X[2XLaTeXStringOfSemisimpleCategoryObjectList[102X( [3XL[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya string[133X
+  
+  [33X[0;0YThe  argument is a list [3XL[103X defining an object [10Xc[110X in a semisimple category. The
+  output  is  a LaTeX string (without enclosing dollar signs) that may be used
+  to print out [10Xc[110X nicely.[133X
+  

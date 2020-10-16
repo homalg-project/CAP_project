@@ -1,0 +1,384 @@
+  
+  [1X1 [33X[0;0YAssociators[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YIntroduction[133X[101X
+  
+  [33X[0;0YLet  [23XG[123X be a finite group and let [23XG[123X-mod be a skeletal version of the monoidal
+  category  of finite dimensional complex representations of [23XG[123X. The purpose of
+  these GAP methods is the computation of the associators of [23XG[123X-mod.[133X
+  
+  
+  [1X1.2 [33X[0;0YQuickstart[133X[101X
+  
+  [33X[0;0YThe  following  commands  compute  the  associator of [23XD_8[123X and write all data
+  necessary  for  the  reproducibility  of  the  computation to files with the
+  prefix "D8".[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XG := DihedralGroup( 8 );;[127X[104X
+    [4X[25Xgap>[125X [27XComputeAssociator( G, true, true, false );;[127X[104X
+    [4X[25Xgap>[125X [27Xpath := Concatenation([127X[104X
+    [4X[25X>[125X [27X  PackageInfo( "GroupRepresentationsForCAP" )[1].InstallationPath,[127X[104X
+    [4X[25X>[125X [27X  "/examples/doc/D8" );;[127X[104X
+    [4X[25Xgap>[125X [27XWriteAssociatorComputationToFiles( path );[127X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.3 [33X[0;0YRead, Write, and Display[133X[101X
+  
+  [33X[0;0YThe  following  intermediate steps of the associator computation can be read
+  from/written to files.[133X
+  
+  [30X    [33X[0;6YIrreducible  representations of a finite group given by matrices (Data
+        1).[133X
+  
+  [30X    [33X[0;6YDecomposition  isomorphisms  of  tensor  products  into direct sums of
+        irreducibles (Data 2).[133X
+  
+  [33X[0;0YFurthermore, the following data can be written to files.[133X
+  
+  [30X    [33X[0;6YA database key for the AssociatorsDatabase/DatabaseKeys.g file.[133X
+  
+  [30X    [33X[0;6YThe final result, namely the associator (Data 3).[133X
+  
+  [33X[0;0YData 1 and Data 2 involve choices and thus are subject to changes in further
+  versions  of  this  package.  However,  the  process  Data  2 -> Data 3 is a
+  mathematical   function   and   thus  stable.  For  reproducibility,  it  is
+  recommended  to  store  all  three  data.  To  facilitate this task, use the
+  function WriteAssociatorComputationToFiles.[133X
+  
+  [1X1.3-1 WriteDatabaseKeysToFile[101X
+  
+  [33X[1;0Y[29X[2XWriteDatabaseKeysToFile[102X( [3Xs[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  argument  is  a  filename  [23Xs[123X.  This  operation writes the database keys
+  computed by the last call of InitializeGroupData to the corresponding file.[133X
+  
+  [1X1.3-2 WriteRepresentationsDataToFile[101X
+  
+  [33X[1;0Y[29X[2XWriteRepresentationsDataToFile[102X( [3Xs[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  argument  is  a  filename  [23Xs[123X. This operation writes the representations
+  computed by the last call of InitializeGroupData to the corresponding file.[133X
+  
+  [1X1.3-3 WriteSkeletalFunctorDataToFile[101X
+  
+  [33X[1;0Y[29X[2XWriteSkeletalFunctorDataToFile[102X( [3Xs[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  argument  is  a  filename [23Xs[123X. This operation writes the skeletal functor
+  data   computed  by  the  last  call  of  SkeletalFunctorTensorData  to  the
+  corresponding file.[133X
+  
+  [1X1.3-4 WriteAssociatorDataToFile[101X
+  
+  [33X[1;0Y[29X[2XWriteAssociatorDataToFile[102X( [3Xs[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  argument  is a filename [23Xs[123X. This operation writes the associator data of
+  the   initialized  group  to  the  corresponding  file.  You  have  to  call
+  AssociatorForSufficientlyManyTriples first.[133X
+  
+  [1X1.3-5 WriteAssociatorComputationToFiles[101X
+  
+  [33X[1;0Y[29X[2XWriteAssociatorComputationToFiles[102X( [3Xs[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YOnly  call  this  function  if  you did a whole associator computation first
+  (e.g.  using  ComputeAssociator).  The argument is a string [23Xs[123X. This function
+  writes 4 files:[133X
+  
+  [30X    [33X[0;6Y[23Xs[123XKey.g: A file for the database key of the associator computation.[133X
+  
+  [30X    [33X[0;6Y[23Xs[123XReps.g:  A  file  containing the irreducible representations used for
+        the associator computation.[133X
+  
+  [30X    [33X[0;6Y[23Xs[123XDec.g:  A  file for the tensor decompositions used for the associator
+        computation.[133X
+  
+  [30X    [33X[0;6Y[23Xs[123XAss.g  or  [23Xs[123XAssD.g:  A  file  containing the computed associator. The
+        suffix [23XD[123X is used if the associator was not computed for all triples.[133X
+  
+  [1X1.3-6 ReadDatabaseKeys[101X
+  
+  [33X[1;0Y[29X[2XReadDatabaseKeys[102X( [3Xs[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  argument  is a filename [23Xs[123X of a file written by WriteDatabaseKeysToFile.
+  The  output  is  a  list  [ group, conductor, position of trivial character,
+  field, category ].[133X
+  
+  [1X1.3-7 ReadRepresentationsData[101X
+  
+  [33X[1;0Y[29X[2XReadRepresentationsData[102X( [3Xs_1[103X, [3Xs_2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe    arguments    are    a   filename   [23Xs_1[123X   of   a   file   written   by
+  WriteDatabaseKeysToFile,   and   a   filename  [23Xs_2[123X  of  a  file  written  by
+  WriteRepresentationsDataToFile.   The   output   is  a  list  [  ,number  of
+  irreducibles,  irreducibles,  representations given by images of generators,
+  inverses of these images, vector space objects for the irreducibles ].[133X
+  
+  [1X1.3-8 ReadSkeletalFunctorData[101X
+  
+  [33X[1;0Y[29X[2XReadSkeletalFunctorData[102X( [3Xs_1[103X, [3Xs_2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe    arguments    are    a   filename   [23Xs_1[123X   of   a   file   written   by
+  WriteDatabaseKeysToFile,   and   a   filename  [23Xs_2[123X  of  a  file  written  by
+  WriteSkeletalFunctorDataToFile.   The  output  is  a  list  [  irreducibles,
+  skeletal functor tensor data, vector space objects for the irreducibles ].[133X
+  
+  
+  [1X1.4 [33X[0;0YComputing associators[133X[101X
+  
+  [1X1.4-1 InitializeGroupData[101X
+  
+  [33X[1;0Y[29X[2XInitializeGroupData[102X( [3XG[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  argument  is a group [23XG[123X. This method calls InitializeGroupData( G, false
+  ).[133X
+  
+  [1X1.4-2 InitializeGroupData[101X
+  
+  [33X[1;0Y[29X[2XInitializeGroupData[102X( [3XG[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  arguments  are  a  group  [23XG[123X  and  a  boolean  [23Xb[123X. The output is a list [
+  generators of [23XG[123X ,number of irreducibles, irreducibles, representations given
+  by  images of generators, inverses of these images, vector space objects for
+  the  irreducibles ]. Furthermore, this method stores the database key, which
+  can  be  written using WriteDatabaseKeysToFile. If [23Xb[123X is true, then the id of
+  the  group in the database key is given by its string, otherwise it is given
+  by its id in the SmallGroupLibrary.[133X
+  
+  [1X1.4-3 InitializeGroupDataDixon[101X
+  
+  [33X[1;0Y[29X[2XInitializeGroupDataDixon[102X( [3XG[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  argument  is  a group [23XG[123X. This method calls InitializeGroupDataDixon( G,
+  false ).[133X
+  
+  [1X1.4-4 InitializeGroupDataDixon[101X
+  
+  [33X[1;0Y[29X[2XInitializeGroupDataDixon[102X( [3XG[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  arguments  are  a group [23XG[123X and a boolean [23Xb[123X. This method does the same as
+  InitializeGroupData,  but uses IrreducibleRepresentationsDixon for affording
+  irreducible representations.[133X
+  
+  [1X1.4-5 InitializeGroupData[101X
+  
+  [33X[1;0Y[29X[2XInitializeGroupData[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X ) [32X operation[133X
+  
+  [1X1.4-6 SkeletalFunctorTensorData[101X
+  
+  [33X[1;0Y[29X[2XSkeletalFunctorTensorData[102X(  ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThere  is no argument. This methods calls SkeletalFunctorTensorData with the
+  output of the last call of InitializeGroupData or InitializeGroupDataDixon.[133X
+  
+  [1X1.4-7 SkeletalFunctorTensorData[101X
+  
+  [33X[1;0Y[29X[2XSkeletalFunctorTensorData[102X( [3Xl[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  argument  is  a  list  [23Xl[123X  which  is  the output of InitializeGroupData,
+  InitializeGroupDataDixon, or ReadRepresentationsData. The output is a triple
+  [23X[t_1,t_2,t_3][123X.  [23Xt_1[123X  is  the list of all characters of [23XG[123X. [23Xt_2[123X is a list such
+  that  the  [23X(i,j)[123X-th  entry,  where  [23Xi,j[123X  range  from  1  to  the  number  of
+  irreducibles,  is  a pair of mutual inverse morphisms [23X[\alpha, \alpha^{-1}][123X,
+  and    [23X\alpha[123X   is   a   decomposition   isomorphism   [23X\bigoplus_{\chi   \in
+  \mathrm{Irr}(G)}V_{\chi}^{n_{\chi}}  \rightarrow  V_i  \otimes V_j[123X. [23Xt_3[123X is a
+  list of vector space objects for the irreducibles.[133X
+  
+  [1X1.4-8 AssociatorDataFromSkeletalFunctorTensorData[101X
+  
+  [33X[1;0Y[29X[2XAssociatorDataFromSkeletalFunctorTensorData[102X( [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xl[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  arguments  are  integers  [23Xa,b,c[123X  and  a  list  [23Xl[123X which is the output of
+  SkeletalFunctorTensorData.  The  output is a list containing homalg matrices
+  representing  the  components  of the associator of [23XV_a, V_b, V_c[123X, where the
+  numbers  correspond  to the enlisting of the irreducible characters given by
+  [23Xl[123X.[133X
+  
+  [1X1.4-9 AssociatorForSufficientlyManyTriples[101X
+  
+  [33X[1;0Y[29X[2XAssociatorForSufficientlyManyTriples[102X(  ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThere       is       no       argument.       This       methods       calls
+  AssociatorForSufficientlyManyTriples  with  the  output  of the last call of
+  SkeletalFunctorTensorData and false.[133X
+  
+  [1X1.4-10 AssociatorForSufficientlyManyTriples[101X
+  
+  [33X[1;0Y[29X[2XAssociatorForSufficientlyManyTriples[102X( [3Xl[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe arguments are a list [23Xl[123X which is the output of SkeletalFunctorTensorData,
+  and  a  boolean  [23Xb[123X.  The  output  is  a list of lists [23XL[123X such that [23XL[a][b][c][123X
+  contains            the           associator           computed           by
+  AssociatorDataFromSkeletalFunctorTensorData(a,b,c). If [23Xb[123X is true, then [23Xa,b,c[123X
+  ranges  through  all  possible triples, otherwise, [23Xa,b,c[123X are computed for so
+  many triples such that the others can be obtained using braidings.[133X
+  
+  [1X1.4-11 ComputeAssociator[101X
+  
+  [33X[1;0Y[29X[2XComputeAssociator[102X( [3XG[103X, [3Xb_1[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe   arguments   are   a  group  [23XG[123X,  and  a  boolean  [23Xb_1[123X.  The  output  is
+  ComputeAssociator( G, b_1, false, true ).[133X
+  
+  [1X1.4-12 ComputeAssociator[101X
+  
+  [33X[1;0Y[29X[2XComputeAssociator[102X( [3XG[103X, [3Xb_1[103X, [3Xb_2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  arguments  are  a  group  [23XG[123X,  and  two booleans [23Xb_1[123X, [23Xb_2[123X. The output is
+  ComputeAssociator( G, b_1, b_2, true ).[133X
+  
+  [1X1.4-13 ComputeAssociator[101X
+  
+  [33X[1;0Y[29X[2XComputeAssociator[102X( [3XG[103X, [3Xb_1[103X, [3Xb_2[103X, [3Xb_3[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe arguments are a group [23XG[123X, and three booleans [23Xb_1[123X, [23Xb_2[123X, [23Xb_3[123X. The output is
+  a  list  [23Xl[123X  whose  [23X(a,b,c)[123X-th  entry  contains  a  string  representing  the
+  associator  of the objects [23XV_a, V_b, V_c[123X in a skeleton of the representation
+  category  of [23XG[123X, where [23XV_{\ast}[123X are irreducible representations corresponding
+  to  the  ordering of the irreducible characters Irr([23XG[123X). If [23Xb_1[123X is true, this
+  method    uses    IrreducibleRepresentationsDixon,    otherwise    it   uses
+  IrreducibleAffordingRepresentation.  If  [23Xb_2[123X  is  true,  the associators are
+  computed  for  all  possible  triples [23Xa,b,c[123X, otherwise only for sufficiently
+  many  such  that  the  others  can  be  reproduced using the braiding in the
+  representation  category.  If  [23Xb_3[123X  is true, then the id of the group in the
+  database  key is given by its string, otherwise it is given by its id in the
+  SmallGroupLibrary.  This  last boolean is relevant only if you want to write
+  the       computed      associators      to      files      (e.g.      using
+  WriteAssociatorComputationToFiles).[133X
+  
+  
+  [1X1.5 [33X[0;0YTechnical functions[133X[101X
+  
+  [1X1.5-1 SetInfoLevelForAssociatorComputations[101X
+  
+  [33X[1;0Y[29X[2XSetInfoLevelForAssociatorComputations[102X( [3Xl[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  argument  is  an  integer [23Xl[123X. If [23Xl > 0[123X, then the functions for computing
+  associators  provide  information  during the computation. This is useful in
+  cases where the computation may take a long time.[133X
+  
+  [1X1.5-2 DefinedOverCyclotomicField[101X
+  
+  [33X[1;0Y[29X[2XDefinedOverCyclotomicField[102X( [3Xn[103X, [3Xf[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  arguments  are an integer [23Xn[123X and a group homomorphism [23Xf[123X whose images are
+  matrices.  The  output  is  true  if the entries of the images of [23Xf[123X lie in a
+  cyclotomic  field  generated  by  a  primitive  [23Xn[123X-th  root  of  unity, false
+  otherwise.[133X
+  
+  [1X1.5-3 GroupReperesentationByImages[101X
+  
+  [33X[1;0Y[29X[2XGroupReperesentationByImages[102X( [3XG[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya group homomorphism[133X
+  
+  [33X[0;0YThe arguments are a group [23XG[123X with generators [23Xg_1, \dots, g_n[123X and a list [23XL = [
+  l_1,  \dots, l_n ][123X. The output is the group homomorphism from [23XG[123X to the group
+  generated by the elements of [23XL[123X, mapping [23Xg_i[123X to [23Xl_i[123X.[133X
+  
+  [1X1.5-4 DiagonalizationTransformationOfBraiding[101X
+  
+  [33X[1;0Y[29X[2XDiagonalizationTransformationOfBraiding[102X( [3Xe[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Yan invertible endomorphism in [23X\mathrm{Hom}(V,V)[123X[133X
+  
+  [33X[0;0YThe  argument  is  an  endomorphism [23Xe \in \mathrm{Hom}(V,V)[123X of vector spaces
+  whose  minimal  polynomial  divides  [23Xx^2  -  1[123X.  The output is an invertible
+  endomorphism [23Xt[123X such that [23Xt^{-1} \circ e \circ t[123X is a diagonal matrix.[133X
+  
+  [1X1.5-5 AffordAllIrreducibleRepresentations[101X
+  
+  [33X[1;0Y[29X[2XAffordAllIrreducibleRepresentations[102X( [3XG[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  argument  is  a  group  [23XG[123X.  The  output  is  a  list of all irreducible
+  representations of [23XG[123X using the command IrreducibleAffordingRepresentation.[133X
+  
+  [1X1.5-6 AffordAllIrreducibleRepresentationsDixon[101X
+  
+  [33X[1;0Y[29X[2XAffordAllIrreducibleRepresentationsDixon[102X( [3XG[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YThe  argument  is  a  group  [23XG[123X.  The  output  is  a  list of all irreducible
+  representations of [23XG[123X using the command IrreducibleRepresentationsDixon.[133X
+  
+  [1X1.5-7 DefaultFieldForListOfRepresentations[101X
+  
+  [33X[1;0Y[29X[2XDefaultFieldForListOfRepresentations[102X( [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya GAP field[133X
+  
+  [33X[0;0YThe  argument  is  a list [23XL[123X of representations of a group [23XG[123X. The output is a
+  field over which all representations are defined simultaniously.[133X
+  
+  [1X1.5-8 RewriteMatrixInCyclotomicGenerator[101X
+  
+  [33X[1;0Y[29X[2XRewriteMatrixInCyclotomicGenerator[102X( [3XM[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya matrix[133X
+  
+  [33X[0;0YThe  arguments  are a matrix [23XM[123X and an integer [23Xn[123X. The output is a matrix [23XN[123X in
+  [23XQ[\epsilon][123X. Substituting an [23Xn[123X-th root of unity for [23X\epsilon[123X in [23XN[123X yields [23XM[123X.[133X
+  
+  [1X1.5-9 InternalHomToTensorProductAdjunctionMapTemp[101X
+  
+  [33X[1;0Y[29X[2XInternalHomToTensorProductAdjunctionMapTemp[102X( [3Xb[103X, [3Xc[103X, [3Xg[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \otimes b, c)[123X.[133X
+  
+  [33X[0;0YThe   arguments   are   objects   [23Xb,c[123X   and  a  morphism  [23Xg:  a  \rightarrow
+  \mathrm{\underline{Hom}}(b,c)[123X.  The  output  is  a  morphism  [23Xf: a \otimes b
+  \rightarrow c[123X corresponding to [23Xg[123X under the tensor hom adjunction.[133X
+  
+  [1X1.5-10 HomalgMatrixAsString[101X
+  
+  [33X[1;0Y[29X[2XHomalgMatrixAsString[102X( [3XM[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya string[133X
+  
+  [33X[0;0YThe  argument  is a homalg matrx [23XM[123X. The output is a string consisting of the
+  elements of [23XM[123X, seperated by commas.[133X
+  
+  [1X1.5-11 DataFromSkeletalFunctorTensorDataAsStringList[101X
+  
+  [33X[1;0Y[29X[2XDataFromSkeletalFunctorTensorDataAsStringList[102X( [3Xl[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list of strings and empty entries[133X
+  
+  [33X[0;0YThe  argument  is  a  list  [23Xl[123X  of  homalg  matrices. In [23Xl[123X, empty entries are
+  allowed.  The  output is a list where each non-empty entry of [23Xl[123X is converted
+  to a string using HomalgMatrixAsString.[133X
+  
+  [1X1.5-12 AsVectorSpaceMorphism[101X
+  
+  [33X[1;0Y[29X[2XAsVectorSpaceMorphism[102X( [3XM[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya vector space morphism[133X
+  
+  [33X[0;0YThe  argument  is  a  homalg matrix [23XM[123X. The output is a vector space morphism
+  whose underlying matrix is given by [23XM[123X.[133X
+  
+  [1X1.5-13 CreateEndomorphismFromString[101X
+  
+  [33X[1;0Y[29X[2XCreateEndomorphismFromString[102X( [3XV[103X, [3Xs[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya vector space morphism[133X
+  
+  [33X[0;0YThe  arguments  are  a  vector  space  object [23XV[123X and a string [23Xs[123X consisting of
+  [23X\mathrm{dim}(V)^2[123X  elements of the ground field of [23XV[123X. The output is a vector
+  space endomorphism [23XV \rightarrow V[123X defined by [23Xs[123X.[133X
+  

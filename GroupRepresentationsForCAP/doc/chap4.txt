@@ -1,0 +1,118 @@
+  
+  [1X4 [33X[0;0YRepresentation Category of Groups[133X[101X
+  
+  
+  [1X4.1 [33X[0;0YIntroduction[133X[101X
+  
+  [33X[0;0YFor  a finite group [23XG[123X, the following methods provide computational tools for
+  working  with  [23XG[123X-mod,  a skeletal version of the monoidal category of finite
+  dimensional  complex  representations  of  [23XG[123X,  and  with [23XG-\mathbb{Z}[123X-mod, a
+  skeletal  version  of  the  monoidal  category of finite dimensional complex
+  representations of [23XG[123X equipped with a degree in [23X\mathbb{Z}[123X.[133X
+  
+  
+  [1X4.2 [33X[0;0YQuickstart[133X[101X
+  
+  [33X[0;0YThe  following  commands construct the category [23XD_8[123X-mod, the unique object [23Xv[123X
+  corresponding  to  the  irreducible  character of degree 2, and perform some
+  computations.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XRepG := RepresentationCategory( 8, 3 );[127X[104X
+    [4X[28XThe representation category of Group( [ f1, f2, f3 ] )[128X[104X
+    [4X[25Xgap>[125X [27XG := UnderlyingGroupForRepresentationCategory( RepG );[127X[104X
+    [4X[28X<pc group of size 8 with 3 generators>[128X[104X
+    [4X[25Xgap>[125X [27XStructureDescription( G );[127X[104X
+    [4X[28X"D8"[128X[104X
+    [4X[25Xgap>[125X [27Xc := First( Irr( G ), i -> Degree( i ) = 2 );[127X[104X
+    [4X[28XCharacter( CharacterTable( D8 ), [ 2, 0, 0, -2, 0 ] )[128X[104X
+    [4X[25Xgap>[125X [27Xv := RepresentationCategoryObject( c, RepG );[127X[104X
+    [4X[28X1*(x_5)[128X[104X
+    [4X[25Xgap>[125X [27XDimension( v );[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( AssociatorLeftToRight( v, v, v ) );[127X[104X
+    [4X[28XComponent: (x_5)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1/2,-1/2,1/2, 1/2, [128X[104X
+    [4X[28X1/2,-1/2,-1/2,-1/2,[128X[104X
+    [4X[28X1/2,1/2, 1/2, -1/2,[128X[104X
+    [4X[28X1/2,1/2, -1/2,1/2  [128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Braiding( v, v ) );[127X[104X
+    [4X[28XComponent: (x_1)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (x_2)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (x_3)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[28XComponent: (x_4)[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X-1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[28X------------------------[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := IdentityMorphism( TensorProductOnObjects( v, v ) ) + Braiding( v, v );[127X[104X
+    [4X[28X<A morphism in The representation category of Group( [ f1, f2, f3 ] )>[128X[104X
+    [4X[25Xgap>[125X [27XCokernelObject( alpha );[127X[104X
+    [4X[28X1*(x_4)[128X[104X
+    [4X[25Xgap>[125X [27XTensorUnit( RepG );[127X[104X
+    [4X[28X1*(x_1)[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X4.3 [33X[0;0YConstructors[133X[101X
+  
+  [1X4.3-1 RepresentationCategory[101X
+  
+  [33X[1;0Y[29X[2XRepresentationCategory[102X( [3XG[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya Cap category[133X
+  
+  [33X[0;0YThe argument is a group [23XG[123X. The output is the Cap category [23XG[123X-mod. This method
+  uses [23X\texttt{String( G )}[123X as an identifier of [23XG[123X.[133X
+  
+  [1X4.3-2 RepresentationCategory[101X
+  
+  [33X[1;0Y[29X[2XRepresentationCategory[102X( [3Xo[103X, [3Xn[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya Cap category[133X
+  
+  [33X[0;0YThe  arguments  are  2  integers  [23Xo,n[123X. The output is the Cap category [23XG[123X-mod,
+  where  [23XG[123X  is  the  group  of  order [23Xo[123X corresponding to the SmallGroupLibrary
+  identification number [23Xn[123X.[133X
+  
+  [1X4.3-3 RepresentationCategoryObject[101X
+  
+  [33X[1;0Y[29X[2XRepresentationCategoryObject[102X( [3XL[103X, [3XC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in [23XG[123X-mod[133X
+  
+  [33X[0;0YThere  are  2  arguments.  The  first argument is a list [23XL = [ [ n_1, c_1 ],
+  \dots, [ n_l, c_l ] ][123X consisting of non-negative integers [23Xn_i[123X and characters
+  [23Xc_i[123X  of  the  same group. Alternatively, the first argument can simply be an
+  irreducible  character c, which will be then interpreted as giving the input
+  [23X[  [ 1, c ] ][123X. The second argument is the Cap category [23XC = G[123X-mod. The output
+  is the unique object in [23XG[123X-mod having [23XL[123X as its character decomposition.[133X
+  
+  [1X4.3-4 RepresentationCategoryObject[101X
+  
+  [33X[1;0Y[29X[2XRepresentationCategoryObject[102X( [3Xc[103X, [3XC[103X, [3Xstr[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object in [23XG[123X-mod[133X
+  
+  [33X[0;0YThere are 3 arguments. The first argument is an irreducible character [3Xc[103X. The
+  second  argument  is  the  CAP  category  [23XC = G[123X-mod. The third argument is a
+  string  used  as  follows:  [10XSetString[110X(  [10XGIrreducibleObject[110X(  [3Xc[103X ), [3Xstr[103X ). The
+  output  is  the  unique object in [23XG[123X-mod having [23X[ [ 1, c ] ][123X as its character
+  decomposition.[133X
+  

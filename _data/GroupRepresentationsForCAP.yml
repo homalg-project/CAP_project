@@ -1,0 +1,48 @@
+name: GroupRepresentationsForCAP
+version: 2020.09.08
+date: 08/09/2020
+description: Skeletal category of group representations for CAP
+
+authors:
+    - name: Sebastian Posur
+      url: https://sebastianpos.github.io
+
+maintainers:
+    - name: Sebastian Posur
+      url: https://sebastianpos.github.io
+
+GAP: ">= 4.8"
+
+needed-pkgs:
+    - name: "GAPDoc"
+      version: ">= 1.5"
+      url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
+    - name: "ToolsForHomalg"
+      version: ">= 2020.09.01"
+      url: "https://homalg-project.github.io/homalg_project/ToolsForHomalg"
+    - name: "CAP"
+      version: ">= 2015.08.17"
+      url: "https://homalg-project.github.io/CAP_project/CAP"
+    - name: "LinearAlgebraForCAP"
+      version: ">=2015.12.03"
+      url: "https://homalg-project.github.io/CAP_project/LinearAlgebraForCAP"
+    - name: "RingsForHomalg"
+      version: ">=2016.08.12"
+      url: "https://homalg-project.github.io/homalg_project/RingsForHomalg"
+    - name: "repsn"
+      version: ">=3.0.2"
+      url: "https://gap-packages.github.io/repsn/"
+
+www: https://github.com/homalg-project/CAP_project/tree/master/GroupRepresentationsForCAP
+readme: https://raw.githubusercontent.com/homalg-project/CAP_project/master/GroupRepresentationsForCAP/README.md
+packageinfo: https://raw.githubusercontent.com/homalg-project/CAP_project/master/GroupRepresentationsForCAP/PackageInfo.g
+
+downloads:
+    - name: .tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-2020.09.08/GroupRepresentationsForCAP-2020.09.08.tar.gz
+
+abstract: 
+
+status: dev
+doc-html: doc/chap0.html
+doc-pdf: doc/manual.pdf

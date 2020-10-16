@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<title>GAP (GroupRepresentationsForCAP) - Chapter 3: Irreducible Objects</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap3"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap3.html">[MathJax off]</a></p>
+<p><a id="X7E9782E686BCF8AE" name="X7E9782E686BCF8AE"></a></p>
+<div class="ChapSects"><a href="chap3_mj.html#X7E9782E686BCF8AE">3 <span class="Heading">Irreducible Objects</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7DFB63A97E67C0A1">3.1 <span class="Heading">Introduction</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X86EC0F0A78ECBC10">3.2 <span class="Heading">Constructors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7FAB648778F8B45A">3.2-1 GIrreducibleObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X82BBBF457C1EE99C">3.2-2 GZGradedIrreducibleObject</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7C701DBF7BAE649A">3.3 <span class="Heading">Attributes</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A358D1579EDD3A7">3.3-1 UnderlyingCharacter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86FE0D30795AC4F6">3.3-2 UnderlyingGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7CD9D45586E98314">3.3-3 UnderlyingCharacterTable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X81C3AC7C7F503BAD">3.3-4 UnderlyingIrreducibleCharacters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X867DB0457D375983">3.3-5 UnderlyingCharacterNumber</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7ACCFCB08337598C">3.3-6 Dimension</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X78D8098C78C9F058">3.3-7 Dual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7AEE2A097FA5E427">3.3-8 UnderlyingCharacter</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X864D86377C7E3F25">3.3-9 UnderlyingDegree</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X84B4CEB6800331B1">3.3-10 UnderlyingGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X82656374822F1B24">3.3-11 UnderlyingCharacterTable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X830411937BD5F6BC">3.3-12 UnderlyingIrreducibleCharacters</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X780A8AB27AAE5491">3.3-13 UnderlyingCharacterNumber</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8143F8387E830553">3.3-14 Dimension</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A3FA2FF84DB4272">3.3-15 Dual</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X871597447BB998A1">3.4 <span class="Heading">Properties</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C9A09E0839FBD8C">3.4-1 IsYieldingIdentities</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X86C09B308399F5BB">3.4-2 IsYieldingIdentities</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7DE8E16C7C2D387B">3.5 <span class="Heading">Operations</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X80F4D09E85E3B38A">3.5-1 Multiplicity</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8562E528821E49B7"><code>3.5-2 \*</code></a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8609F7A3836655E8">3.5-3 AssociatorFromData</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7C70D1017C2BCDD0">3.5-4 ExteriorPower</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A666EA4861B3398">3.5-5 Multiplicity</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7E7DC38A7F3D0AC9"><code>3.5-6 \*</code></a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X786B54D77A014F44">3.5-7 AssociatorFromData</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X85038A3E7D69DBD7">3.5-8 ExteriorPower</a></span>
+</div></div>
+</div>
+
+<h3>3 <span class="Heading">Irreducible Objects</span></h3>
+
+<p><a id="X7DFB63A97E67C0A1" name="X7DFB63A97E67C0A1"></a></p>
+
+<h4>3.1 <span class="Heading">Introduction</span></h4>
+
+<p>For a semisimple category <span class="SimpleMath">\(C\)</span> of the form <span class="SimpleMath">\(\bigoplus_{i \in I} k\mathrm{-vec}\)</span> to become a rigid symmetric closed monoidal skeletal category, the set <span class="SimpleMath">\(I\)</span> has to be equipped with extra strucutre. To become a skeletal category, we need:</p>
+
+
+<ul>
+<li><p>a total ordering on <span class="SimpleMath">\(I\)</span>.</p>
+
+</li>
+</ul>
+<p>To become a monoidal category, we need:</p>
+
+
+<ul>
+<li><p>a function <span class="SimpleMath">\(\texttt{IsYieldingIdentities}\)</span>, deciding whether an object yields the identity whenever it is part of an associator triple or a braiding pair,</p>
+
+</li>
+<li><p>functions <span class="SimpleMath">\(\texttt{Multiplicity}\)</span> and <span class="SimpleMath">\(\texttt{*}\)</span>, defining the tensor product on objects,</p>
+
+</li>
+<li><p>a function <span class="SimpleMath">\(\texttt{AssociatorFromData}\)</span>, defining the tensor product on morphisms.</p>
+
+</li>
+</ul>
+<p>To become a symmetric monoidal category, we need:</p>
+
+
+<ul>
+<li><p>a function <span class="SimpleMath">\(\texttt{ExteriorPower}\)</span>.</p>
+
+</li>
+</ul>
+<p>To become a rigid symmetric monoidal category, we need:</p>
+
+
+<ul>
+<li><p>a function <span class="SimpleMath">\(\texttt{Dual}\)</span>, defining duals on objects.</p>
+
+</li>
+</ul>
+<p>In the following, two families of such sets <span class="SimpleMath">\(I\)</span> are introduced:</p>
+
+
+<ul>
+<li><p><span class="SimpleMath">\(\texttt{GIrreducibleObject}\)</span>: For a group <span class="SimpleMath">\(G\)</span>, the set <span class="SimpleMath">\(I\)</span> consists of the irreducible characters of <span class="SimpleMath">\(G\)</span>. We call the elements in <span class="SimpleMath">\(I\)</span> the <span class="SimpleMath">\(G\)</span>-irreducible objects.</p>
+
+</li>
+<li><p><span class="SimpleMath">\(\texttt{GZGradedIrreducibleObject}\)</span>: For a group <span class="SimpleMath">\(G\)</span>, the set <span class="SimpleMath">\(I\)</span> consists of the irreducible characters of <span class="SimpleMath">\(G\)</span> together with a degree <span class="SimpleMath">\(n \in \mathbb{Z}\)</span>. We call the elements in <span class="SimpleMath">\(I\)</span> the <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-irreducible objects.</p>
+
+</li>
+</ul>
+<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
+
+<h4>3.2 <span class="Heading">Constructors</span></h4>
+
+<p><a id="X7FAB648778F8B45A" name="X7FAB648778F8B45A"></a></p>
+
+<h5>3.2-1 GIrreducibleObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GIrreducibleObject</code>( <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <span class="SimpleMath">\(G\)</span>-irreducible object</p>
+
+<p>The argument is a character <span class="SimpleMath">\(c\)</span> of a group. The output is its associated <span class="SimpleMath">\(G\)</span>-irreducible object.</p>
+
+<p><a id="X82BBBF457C1EE99C" name="X82BBBF457C1EE99C"></a></p>
+
+<h5>3.2-2 GZGradedIrreducibleObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GZGradedIrreducibleObject</code>( <var class="Arg">n</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-irreducible object</p>
+
+<p>The argument is an integer <span class="SimpleMath">\(n\)</span> and a character <span class="SimpleMath">\(c\)</span> of a group. The output is their associated <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-irreducible object.</p>
+
+<p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
+
+<h4>3.3 <span class="Heading">Attributes</span></h4>
+
+<p><a id="X7A358D1579EDD3A7" name="X7A358D1579EDD3A7"></a></p>
+
+<h5>3.3-1 UnderlyingCharacter</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCharacter</code>( <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an irreducible character</p>
+
+<p>The argument is a <span class="SimpleMath">\(G\)</span>-irreducible object <span class="SimpleMath">\(i\)</span>. The output is its underlying character.</p>
+
+<p><a id="X86FE0D30795AC4F6" name="X86FE0D30795AC4F6"></a></p>
+
+<h5>3.3-2 UnderlyingGroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingGroup</code>( <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a group</p>
+
+<p>The argument is a <span class="SimpleMath">\(G\)</span>-irreducible object <span class="SimpleMath">\(i\)</span>. The output is its underlying group.</p>
+
+<p><a id="X7CD9D45586E98314" name="X7CD9D45586E98314"></a></p>
+
+<h5>3.3-3 UnderlyingCharacterTable</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCharacterTable</code>( <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a character table</p>
+
+<p>The argument is a <span class="SimpleMath">\(G\)</span>-irreducible object <span class="SimpleMath">\(i\)</span>. The output is the character table of its underlying group.</p>
+
+<p><a id="X81C3AC7C7F503BAD" name="X81C3AC7C7F503BAD"></a></p>
+
+<h5>3.3-4 UnderlyingIrreducibleCharacters</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingIrreducibleCharacters</code>( <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The argument is a <span class="SimpleMath">\(G\)</span>-irreducible object <span class="SimpleMath">\(i\)</span>. The output is a list consisting of the irreducible characters of its underlying group.</p>
+
+<p><a id="X867DB0457D375983" name="X867DB0457D375983"></a></p>
+
+<h5>3.3-5 UnderlyingCharacterNumber</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCharacterNumber</code>( <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an integer</p>
+
+<p>The argument is a <span class="SimpleMath">\(G\)</span>-irreducible object <span class="SimpleMath">\(i\)</span>. The output is the integer <span class="SimpleMath">\(n\)</span> such that the <span class="SimpleMath">\(n\)</span>-th entry of the list of the underlying irreducible characters is the underlying irreducible character of <span class="SimpleMath">\(i\)</span>.</p>
+
+<p><a id="X7ACCFCB08337598C" name="X7ACCFCB08337598C"></a></p>
+
+<h5>3.3-6 Dimension</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Dimension</code>( <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an integer</p>
+
+<p>The argument is a <span class="SimpleMath">\(G\)</span>-irreducible object <span class="SimpleMath">\(i\)</span>. The output is the dimension of its underlying irreducible character.</p>
+
+<p><a id="X78D8098C78C9F058" name="X78D8098C78C9F058"></a></p>
+
+<h5>3.3-7 Dual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Dual</code>( <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <span class="SimpleMath">\(G\)</span>-irreducible object</p>
+
+<p>The argument is a <span class="SimpleMath">\(G\)</span>-irreducible object <span class="SimpleMath">\(i\)</span>. The output is the <span class="SimpleMath">\(G\)</span>-irreducible object associated to the dual character of <span class="SimpleMath">\(c\)</span>, where <span class="SimpleMath">\(c\)</span> is the associated character of <span class="SimpleMath">\(i\)</span>.</p>
+
+<p><a id="X7AEE2A097FA5E427" name="X7AEE2A097FA5E427"></a></p>
+
+<h5>3.3-8 UnderlyingCharacter</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCharacter</code>( <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an irreducible character</p>
+
+<p>The argument is a <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-irreducible object <span class="SimpleMath">\(i\)</span>. The output is its underlying character.</p>
+
+<p><a id="X864D86377C7E3F25" name="X864D86377C7E3F25"></a></p>
+
+<h5>3.3-9 UnderlyingDegree</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingDegree</code>( <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an integer</p>
+
+<p>The argument is a <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-irreducible object <span class="SimpleMath">\(i\)</span>. The output is its underlying degree.</p>
+
+<p><a id="X84B4CEB6800331B1" name="X84B4CEB6800331B1"></a></p>
+
+<h5>3.3-10 UnderlyingGroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingGroup</code>( <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a group</p>
+
+<p>The argument is a <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-irreducible object <span class="SimpleMath">\(i\)</span>. The output is its underlying group.</p>
+
+<p><a id="X82656374822F1B24" name="X82656374822F1B24"></a></p>
+
+<h5>3.3-11 UnderlyingCharacterTable</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCharacterTable</code>( <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a character table</p>
+
+<p>The argument is a <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-irreducible object <span class="SimpleMath">\(i\)</span>. The output is the character table of its underlying group.</p>
+
+<p><a id="X830411937BD5F6BC" name="X830411937BD5F6BC"></a></p>
+
+<h5>3.3-12 UnderlyingIrreducibleCharacters</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingIrreducibleCharacters</code>( <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The argument is a <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-irreducible object <span class="SimpleMath">\(i\)</span>. The output is a list consisting of the irreducible characters of its underlying group.</p>
+
+<p><a id="X780A8AB27AAE5491" name="X780A8AB27AAE5491"></a></p>
+
+<h5>3.3-13 UnderlyingCharacterNumber</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCharacterNumber</code>( <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an integer</p>
+
+<p>The argument is a <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-irreducible object <span class="SimpleMath">\(i\)</span>. The output is the integer <span class="SimpleMath">\(n\)</span> such that the <span class="SimpleMath">\(n\)</span>-th entry of the list of the underlying irreducible characters is the underlying irreducible character of <span class="SimpleMath">\(i\)</span>.</p>
+
+<p><a id="X8143F8387E830553" name="X8143F8387E830553"></a></p>
+
+<h5>3.3-14 Dimension</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Dimension</code>( <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: an integer</p>
+
+<p>The argument is a <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-irreducible object <span class="SimpleMath">\(i\)</span>. The output is the dimension of its underlying irreducible character.</p>
+
+<p><a id="X7A3FA2FF84DB4272" name="X7A3FA2FF84DB4272"></a></p>
+
+<h5>3.3-15 Dual</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Dual</code>( <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-irreducible object</p>
+
+<p>The argument is a <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-irreducible object <span class="SimpleMath">\(i\)</span>. The output is the <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-irreducible object associated to the degree <span class="SimpleMath">\(-n\)</span> and the dual character of <span class="SimpleMath">\(c\)</span>, where <span class="SimpleMath">\(n\)</span> is the underlying degree and <span class="SimpleMath">\(c\)</span> is the underlying character of <span class="SimpleMath">\(i\)</span>.</p>
+
+<p><a id="X871597447BB998A1" name="X871597447BB998A1"></a></p>
+
+<h4>3.4 <span class="Heading">Properties</span></h4>
+
+<p><a id="X7C9A09E0839FBD8C" name="X7C9A09E0839FBD8C"></a></p>
+
+<h5>3.4-1 IsYieldingIdentities</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsYieldingIdentities</code>( <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is a <span class="SimpleMath">\(G\)</span>-irreducible object <span class="SimpleMath">\(i\)</span>. The output is true if the underlying character of <span class="SimpleMath">\(i\)</span> is the trivial one, false otherwise.</p>
+
+<p><a id="X86C09B308399F5BB" name="X86C09B308399F5BB"></a></p>
+
+<h5>3.4-2 IsYieldingIdentities</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsYieldingIdentities</code>( <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is a <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-irreducible object <span class="SimpleMath">\(i\)</span>. The output is true if the underlying character of <span class="SimpleMath">\(i\)</span> is the trivial one, false otherwise.</p>
+
+<p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>
+
+<h4>3.5 <span class="Heading">Operations</span></h4>
+
+<p><a id="X80F4D09E85E3B38A" name="X80F4D09E85E3B38A"></a></p>
+
+<h5>3.5-1 Multiplicity</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Multiplicity</code>( <var class="Arg">i</var>, <var class="Arg">j</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an integer</p>
+
+<p>The arguments are 3 <span class="SimpleMath">\(G\)</span>-irreducible objects <span class="SimpleMath">\(i,j,k\)</span>. Let their underlying characters be denoted by <span class="SimpleMath">\(a,b,c\)</span>, respectively. Then the output is the number <span class="SimpleMath">\(\langle a, b\cdot c \rangle\)</span>, i.e., the multiplicity of <span class="SimpleMath">\(a\)</span> in the product of characters <span class="SimpleMath">\(b \cdot c\)</span>.</p>
+
+<p><a id="X8562E528821E49B7" name="X8562E528821E49B7"></a></p>
+
+<h5><code>3.5-2 \*</code></h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \*</code>( <var class="Arg">i</var>, <var class="Arg">j</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The arguments are 2 <span class="SimpleMath">\(G\)</span>-irreducible objects <span class="SimpleMath">\(i,j\)</span> with underlying irreducible characters <span class="SimpleMath">\(a,b\)</span>, respectively. The output is a list L = <span class="SimpleMath">\([ [ n_1, k_1 ], \dots, [ n_l, k_l ] ]\)</span> consisting of positive integers <span class="SimpleMath">\(n_c\)</span> and <span class="SimpleMath">\(G\)</span>-irreducible objects <span class="SimpleMath">\(k_c\)</span> representing the character decomposition into irreducibles of the product <span class="SimpleMath">\(a\cdot b\)</span>.</p>
+
+<p><a id="X8609F7A3836655E8" name="X8609F7A3836655E8"></a></p>
+
+<h5>3.5-3 AssociatorFromData</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatorFromData</code>( <var class="Arg">i</var>, <var class="Arg">j</var>, <var class="Arg">k</var>, <var class="Arg">A</var>, <var class="Arg">F</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The arguments are</p>
+
+
+<ul>
+<li><p>three <span class="SimpleMath">\(G\)</span>-irreducible objects <span class="SimpleMath">\(i,j,k\)</span>,</p>
+
+</li>
+<li><p>a list <span class="SimpleMath">\(A\)</span> containing the associator on all irreducibles as strings, e.g., the list constructed by the methods provided in this package,</p>
+
+</li>
+<li><p>a homalg field <span class="SimpleMath">\(F\)</span>,</p>
+
+</li>
+<li><p>a list L = <span class="SimpleMath">\([ [ n_1, h_1 ], \dots, [ n_l, h_l ] ]\)</span> consisting of positive integers <span class="SimpleMath">\(n_c\)</span> and <span class="SimpleMath">\(G\)</span>-irreducible objects <span class="SimpleMath">\(h_c\)</span> representing the character decomposition into irreducibles of the product of <span class="SimpleMath">\(i,j,k\)</span>.</p>
+
+</li>
+</ul>
+<p>The output is the list <span class="SimpleMath">\([ [ \alpha_{h_1}, h_1 ], \dots, [ \alpha_{h_l}, h_l ] ]\)</span>, where <span class="SimpleMath">\(\alpha_{h_c}\)</span> is the <span class="SimpleMath">\(F\)</span>-vector space homomorphism representing the <span class="SimpleMath">\(h_c\)</span>-th component of the associator of <span class="SimpleMath">\(i,j,k\)</span>.</p>
+
+<p><a id="X7C70D1017C2BCDD0" name="X7C70D1017C2BCDD0"></a></p>
+
+<h5>3.5-4 ExteriorPower</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExteriorPower</code>( <var class="Arg">i</var>, <var class="Arg">j</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The arguments are two <span class="SimpleMath">\(G\)</span>-irreducible objects <span class="SimpleMath">\(i, j\)</span>. The output is the empty list if <span class="SimpleMath">\(i\)</span> is not equal to <span class="SimpleMath">\(j\)</span>. Otherwise, the output is a list <span class="SimpleMath">\(L = [ [ n_1, k_1 ], \dots, [ n_1, k_l ] ]\)</span> consisting of positive integers <span class="SimpleMath">\(n_j\)</span> and <span class="SimpleMath">\(G\)</span>-irreducible objects <span class="SimpleMath">\(k_j\)</span>, corresponding to the decomposition of the second exterior power character <span class="SimpleMath">\(\wedge^2 c\)</span> into irreducibles. Here, <span class="SimpleMath">\(c\)</span> is the associated character of <span class="SimpleMath">\(i\)</span>.</p>
+
+<p><a id="X7A666EA4861B3398" name="X7A666EA4861B3398"></a></p>
+
+<h5>3.5-5 Multiplicity</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Multiplicity</code>( <var class="Arg">i</var>, <var class="Arg">j</var>, <var class="Arg">k</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an integer</p>
+
+<p>The arguments are 3 <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-irreducible objects <span class="SimpleMath">\(i,j,k\)</span>. Let their underlying characters be denoted by <span class="SimpleMath">\(a,b,c\)</span>, respectively, and their underlying degrees by <span class="SimpleMath">\(n_i, n_j, n_k\)</span>, respectively. The output is <span class="SimpleMath">\(0\)</span> if <span class="SimpleMath">\(n_i\)</span> is not equal to <span class="SimpleMath">\(n_j + n_k\)</span>. Otherwise, the output is the number <span class="SimpleMath">\(\langle a, b\cdot c \rangle\)</span>, i.e., the multiplicity of <span class="SimpleMath">\(a\)</span> in the product of characters <span class="SimpleMath">\(b \cdot c\)</span>.</p>
+
+<p>Let their underlying characters be denoted by <span class="SimpleMath">\(a,b\)</span>, respectively, and their underlying degrees by <span class="SimpleMath">\(n_i, n_j\)</span>, respectively. if <span class="SimpleMath">\(n_i = n_j\)</span> and the underlying character number of <span class="SimpleMath">\(j\)</span></p>
+
+<p><a id="X7E7DC38A7F3D0AC9" name="X7E7DC38A7F3D0AC9"></a></p>
+
+<h5><code>3.5-6 \*</code></h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \*</code>( <var class="Arg">i</var>, <var class="Arg">j</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The arguments are 2 <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-irreducible objects <span class="SimpleMath">\(i,j\)</span> with underlying irreducible characters <span class="SimpleMath">\(a,b\)</span>, respectively. The output is a list L = <span class="SimpleMath">\([ [ n_1, k_1 ], \dots, [ n_l, k_l ] ]\)</span> consisting of positive integers <span class="SimpleMath">\(n_c\)</span> and <span class="SimpleMath">\(G\)</span>-irreducible objects <span class="SimpleMath">\(k_c\)</span> representing the character decomposition into irreducibles of the product <span class="SimpleMath">\(a\cdot b\)</span>. The underlying degrees of <span class="SimpleMath">\(k_c\)</span> are given by the sum of the underlying degrees of <span class="SimpleMath">\(i\)</span> and <span class="SimpleMath">\(j\)</span>.</p>
+
+<p><a id="X786B54D77A014F44" name="X786B54D77A014F44"></a></p>
+
+<h5>3.5-7 AssociatorFromData</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AssociatorFromData</code>( <var class="Arg">i</var>, <var class="Arg">j</var>, <var class="Arg">k</var>, <var class="Arg">A</var>, <var class="Arg">F</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The arguments are</p>
+
+
+<ul>
+<li><p>three <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-irreducible objects <span class="SimpleMath">\(i,j,k\)</span>,</p>
+
+</li>
+<li><p>a list <span class="SimpleMath">\(A\)</span> containing the associator on all irreducibles (of <span class="SimpleMath">\(G\)</span>-irreducible objects) as strings, e.g., the list constructed by the methods provided in this package,</p>
+
+</li>
+<li><p>a homalg field <span class="SimpleMath">\(F\)</span>,</p>
+
+</li>
+<li><p>a list L = <span class="SimpleMath">\([ [ n_1, h_1 ], \dots, [ n_l, h_l ] ]\)</span> consisting of positive integers <span class="SimpleMath">\(n_c\)</span> and <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-irreducible objects <span class="SimpleMath">\(h_c\)</span> representing the character decomposition into irreducibles of the product of <span class="SimpleMath">\(i,j,k\)</span>.</p>
+
+</li>
+</ul>
+<p>The output is the list <span class="SimpleMath">\([ [ \alpha_{h_1}, h_1 ], \dots, [ \alpha_{h_l}, h_l ] ]\)</span>, where <span class="SimpleMath">\(\alpha_{h_c}\)</span> is the <span class="SimpleMath">\(F\)</span>-vector space homomorphism representing the <span class="SimpleMath">\(h_c\)</span>-th component of the associator of <span class="SimpleMath">\(i,j,k\)</span>.</p>
+
+<p><a id="X85038A3E7D69DBD7" name="X85038A3E7D69DBD7"></a></p>
+
+<h5>3.5-8 ExteriorPower</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExteriorPower</code>( <var class="Arg">i</var>, <var class="Arg">j</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a list</p>
+
+<p>The arguments are two <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-irreducible objects <span class="SimpleMath">\(i, j\)</span>. The output is the empty list if the underlying characters of <span class="SimpleMath">\(i\)</span> and <span class="SimpleMath">\(j\)</span> are unequal. Otherwise, the output is a list <span class="SimpleMath">\(L = [ [ n_1, k_1 ], \dots, [ n_1, k_l ] ]\)</span> consisting of positive integers <span class="SimpleMath">\(n_j\)</span> and <span class="SimpleMath">\(G-\mathbb{Z}\)</span>-irreducible objects <span class="SimpleMath">\(k_a\)</span>, corresponding to the decomposition of the second exterior power character <span class="SimpleMath">\(\wedge^2 c\)</span> into irreducibles. Here, <span class="SimpleMath">\(c\)</span> is the associated character of <span class="SimpleMath">\(i\)</span> and <span class="SimpleMath">\(j\)</span>. The underlying degree of <span class="SimpleMath">\(k_a\)</span> is the sum of the underlying degrees of <span class="SimpleMath">\(i\)</span> and <span class="SimpleMath">\(j\)</span>.</p>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

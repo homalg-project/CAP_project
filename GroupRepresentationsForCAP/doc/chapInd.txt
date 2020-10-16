@@ -1,0 +1,107 @@
+  
+  
+  [1XIndex[101X
+  
+  [2X\*[102X, for IsGIrreducibleObject, IsGIrreducibleObject 3.5-2 
+      for IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject 3.5-6 
+  [2XAffordAllIrreducibleRepresentations[102X, for IsGroup 1.5-5 
+  [2XAffordAllIrreducibleRepresentationsDixon[102X, for IsGroup 1.5-6 
+  [2XAssociatorDataFromSkeletalFunctorTensorData[102X, for IsInt, IsInt, IsInt, IsList 1.4-8 
+  [2XAssociatorForSufficientlyManyTriples[102X 1.4-9 
+      for IsList, IsBool 1.4-10 
+  [2XAssociatorFromData[102X, for IsGIrreducibleObject, IsGIrreducibleObject, IsGIrreducibleObject, IsList, IsFieldForHomalg, IsList 3.5-3 
+      for IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsList, IsFieldForHomalg, IsList 3.5-7 
+  [2XAsVectorSpaceMorphism[102X, for IsHomalgMatrix 1.5-12 
+  [2XComponent[102X, for IsSemisimpleCategoryMorphism, IsObject 2.4-1 
+      for IsSemisimpleCategoryObject, IsObject 2.4-5 
+  [2XComponentInclusionMorphism[102X, for IsSemisimpleCategoryObject, IsObject 2.2-5 
+  [2XComponentProjectionMorphism[102X, for IsSemisimpleCategoryObject, IsObject 2.2-6 
+  [2XComputeAssociator[102X, for IsGroup, IsBool 1.4-11 
+      for IsGroup, IsBool, IsBool 1.4-12 
+      for IsGroup, IsBool, IsBool, IsBool 1.4-13 
+  [2XCreateEndomorphismFromString[102X, for IsVectorSpaceObject, IsString 1.5-13 
+  [2XDataFromSkeletalFunctorTensorDataAsStringList[102X, for IsList 1.5-11 
+  [2XDefaultFieldForListOfRepresentations[102X, for IsList 1.5-7 
+  [2XDefinedOverCyclotomicField[102X, for IsInt, IsGroupHomomorphism 1.5-2 
+  [2XDiagonalizationTransformationOfBraiding[102X, for IsVectorSpaceMorphism 1.5-4 
+  [2XDimension[102X, for IsGIrreducibleObject 3.3-6 
+      for IsGZGradedIrreducibleObject 3.3-14 
+      for IsSemisimpleCategoryObject 2.3-12 
+  [2XDual[102X, for IsGIrreducibleObject 3.3-7 
+      for IsGZGradedIrreducibleObject 3.3-15 
+  [2XExteriorPower[102X, for IsGIrreducibleObject, IsGIrreducibleObject 3.5-4 
+      for IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject 3.5-8 
+  [2XGIrreducibleObject[102X, for IsCharacter 3.2-1 
+  [2XGivenMorphismFilterForSemisimpleCategory[102X, for IsSemisimpleCategory 2.3-5 
+  [2XGivenObjectFilterForSemisimpleCategory[102X, for IsSemisimpleCategory 2.3-4 
+  [2XGroupReperesentationByImages[102X, for IsGroup, IsList 1.5-3 
+  [2XGZGradedIrreducibleObject[102X, for IsInt, IsCharacter 3.2-2 
+  [2XHomalgMatrixAsString[102X, for IsHomalgMatrix 1.5-10 
+  [2XInitializeGroupData[102X, for IsGroup 1.4-1 
+      for IsGroup, IsBool 1.4-2 
+      for IsGroup, IsList, IsBool 1.4-5 
+  [2XInitializeGroupDataDixon[102X, for IsGroup 1.4-3 
+      for IsGroup, IsBool 1.4-4 
+  [2XInternalHomToTensorProductAdjunctionMapTemp[102X, for IsVectorSpaceObject, IsVectorSpaceObject, IsVectorSpaceMorphism 1.5-9 
+  [2XIsSemisimpleCategoryMorphism[102X, for IsCapCategoryMorphism and IsCellOfSkeletalCategory 2.5-1 
+  [2XIsSemisimpleCategoryObject[102X, for IsCapCategoryObject and IsCellOfSkeletalCategory 2.5-2 
+  [2XIsYieldingIdentities[102X, for IsGIrreducibleObject 3.4-1 
+      for IsGZGradedIrreducibleObject 3.4-2 
+  [2XLaTeXStringOfSemisimpleCategoryObjectList[102X 5.1-1 
+  [2XLaTeXStringOp[102X, for IsSemisimpleCategoryMorphism 2.4-2 
+      for IsSemisimpleCategoryObject 2.4-12 
+  [2XMembershipFunctionForSemisimpleCategory[102X, for IsSemisimpleCategory 2.3-1 
+  [2XMultiplicity[102X, for IsGIrreducibleObject, IsGIrreducibleObject, IsGIrreducibleObject 3.5-1 
+      for IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject, IsGZGradedIrreducibleObject 3.5-5 
+      for IsSemisimpleCategoryObject, IsObject 2.4-4 
+  [2XNormalizeSemisimpleCategoryObjectList[102X, for IsList 2.4-3 
+  [2XReadDatabaseKeys[102X, for IsString 1.3-6 
+  [2XReadRepresentationsData[102X, for IsString, IsString 1.3-7 
+  [2XReadSkeletalFunctorData[102X, for IsString, IsString 1.3-8 
+  [2XRepresentationCategory[102X, for IsGroup 4.3-1 
+      for IsInt, IsInt 4.3-2 
+  [2XRepresentationCategoryObject[102X, for IsCharacter, IsCapCategory, IsString 4.3-4 
+      for IsList, IsCapCategory 4.3-3 
+  [2XRewriteMatrixInCyclotomicGenerator[102X, for IsMatrix, IsInt 1.5-8 
+  [2XSemisimpleCategory[102X, for IsFieldForHomalg, IsFunction, IsObject, IsString, IsBool 2.2-2 
+      for IsFieldForHomalg, IsFunction, IsObject, IsString, IsBool, IsList 2.2-1 
+  [2XSemisimpleCategoryMorphism[102X, for IsSemisimpleCategoryObject, IsList, IsSemisimpleCategoryObject 2.2-3 
+  [2XSemisimpleCategoryMorphismList[102X, for IsSemisimpleCategoryMorphism 2.3-6 
+  [2XSemisimpleCategoryMorphismSparse[102X, for IsSemisimpleCategoryObject, IsList, IsSemisimpleCategoryObject 2.2-4 
+  [2XSemisimpleCategoryObject[102X, for IsList, IsCapCategory 2.2-7 
+  [2XSemisimpleCategoryObjectConstructorWithFlatList[102X, for IsList, IsCapCategory 2.2-8 
+  [2XSemisimpleCategoryObjectList[102X, for IsSemisimpleCategoryObject 2.3-8 
+  [2XSemisimpleCategoryObjectListWithActualObjects[102X, for IsSemisimpleCategoryObject 2.3-9 
+  [2XSetInfoLevelForAssociatorComputations[102X, for IsInt 1.5-1 
+  [2XSkeletalFunctorTensorData[102X 1.4-6 
+      for IsList 1.4-7 
+  [2XSupport[102X, for IsSemisimpleCategoryObject 2.3-10 
+  [2XTestBraidingCompatability[102X, for IsSemisimpleCategoryObject, IsSemisimpleCategoryObject, IsSemisimpleCategoryObject 2.4-8 
+  [2XTestBraidingCompatabilityForAllTriplesInList[102X, for IsList 2.4-9 
+  [2XTestPentagonIdentity[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 2.4-6 
+  [2XTestPentagonIdentityForAllQuadruplesInList[102X, for IsList 2.4-7 
+  [2XTestZigZagIdentitiesForDual[102X, for IsSemisimpleCategoryObject 2.4-10 
+  [2XTestZigZagIdentitiesForDualForAllObjectsInList[102X, for IsList 2.4-11 
+  [2XUnderlyingCategoryForSemisimpleCategory[102X, for IsSemisimpleCategory 2.3-2 
+  [2XUnderlyingCharacter[102X, for IsGIrreducibleObject 3.3-1 
+      for IsGZGradedIrreducibleObject 3.3-8 
+  [2XUnderlyingCharacterNumber[102X, for IsGIrreducibleObject 3.3-5 
+      for IsGZGradedIrreducibleObject 3.3-13 
+  [2XUnderlyingCharacterTable[102X, for IsGIrreducibleObject 3.3-3 
+      for IsGZGradedIrreducibleObject 3.3-11 
+  [2XUnderlyingDegree[102X, for IsGZGradedIrreducibleObject 3.3-9 
+  [2XUnderlyingFieldForHomalg[102X, for IsSemisimpleCategoryMorphism 2.3-7 
+      for IsSemisimpleCategoryObject 2.3-11 
+  [2XUnderlyingFieldForHomalgForSemisimpleCategory[102X, for IsSemisimpleCategory 2.3-3 
+  [2XUnderlyingGroup[102X, for IsGIrreducibleObject 3.3-2 
+      for IsGZGradedIrreducibleObject 3.3-10 
+  [2XUnderlyingIrreducibleCharacters[102X, for IsGIrreducibleObject 3.3-4 
+      for IsGZGradedIrreducibleObject 3.3-12 
+  [2XWriteAssociatorComputationToFiles[102X, for IsString 1.3-5 
+  [2XWriteAssociatorDataToFile[102X, for IsString 1.3-4 
+  [2XWriteDatabaseKeysToFile[102X, for IsString 1.3-1 
+  [2XWriteRepresentationsDataToFile[102X, for IsString 1.3-2 
+  [2XWriteSkeletalFunctorDataToFile[102X, for IsString 1.3-3 
+  
+  
+  -------------------------------------------------------
