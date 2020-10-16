@@ -1,0 +1,46 @@
+name: ActionsForCAP
+version: 2020.04.27
+date: 27/04/2020
+description: Actions and Coactions for CAP
+
+authors:
+    - name: Sebastian Gutsche
+      url: http://wwwb.math.rwth-aachen.de/~gutsche
+    - name: Sebastian Posur
+      url: https://sebastianpos.github.io
+
+maintainers:
+    - name: Sebastian Gutsche
+      url: http://wwwb.math.rwth-aachen.de/~gutsche
+    - name: Sebastian Posur
+      url: https://sebastianpos.github.io
+
+GAP: ">= 4.6"
+
+needed-pkgs:
+    - name: "GAPDoc"
+      version: ">= 1.5"
+      url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
+    - name: "CAP"
+      version: ">= 2019.09.16"
+      url: "https://homalg-project.github.io/CAP_project/CAP"
+    - name: "MonoidalCategories"
+      version: ">= 2019.01.16"
+      url: "https://homalg-project.github.io/CAP_project/MonoidalCategories"
+    - name: "AttributeCategoryForCAP"
+      version: ">=2016.09.14"
+      url: "https://github.com/homalg-project/CAP_project/tree/master/AttributeCategoryForCAP"
+
+www: https://github.com/homalg-project/CAP_project/tree/master/ActionsForCAP
+readme: https://raw.githubusercontent.com/homalg-project/CAP_project/master/ActionsForCAP/README.md
+packageinfo: https://raw.githubusercontent.com/homalg-project/CAP_project/master/ActionsForCAP/PackageInfo.g
+
+downloads:
+    - name: .tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2020.04.27/ActionsForCAP-2020.04.27.tar.gz
+
+abstract: 
+
+status: dev
+doc-html: doc/chap0.html
+doc-pdf: doc/manual.pdf
