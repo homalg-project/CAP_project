@@ -1,7 +1,9 @@
 name: ModulesOverLocalRingsForCAP
-version: 2017.04.10
-date: 04/04/2017
-description: Category of modules over a local ring modeled by Serre quotients for CAP
+version: "2020.10-01"
+license: "GPL-2.0-or-later"
+date: 2020-10-19
+description: |
+    Category of modules over a local ring modeled by Serre quotients for CAP
 
 authors:
     - name: Sebastian Posur
@@ -25,18 +27,50 @@ needed-pkgs:
       url: "https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP"
     - name: "ComplexesAndFilteredObjectsForCAP"
       version: "2016.09.19"
-      url: "https://github.com/homalg-project/CAP_project/tree/master/ComplexesAndFilteredObjectsForCAP"
+      url: "https://homalg-project.github.io/CAP_project/ComplexesAndFilteredObjectsForCAP"
 
-www: https://github.com/homalg-project/CAP_project/tree/master/ModulesOverLocalRingsForCAP
-readme: https://raw.githubusercontent.com/homalg-project/CAP_project/master/ModulesOverLocalRingsForCAP/README.md
-packageinfo: https://raw.githubusercontent.com/homalg-project/CAP_project/master/ModulesOverLocalRingsForCAP/PackageInfo.g
+www: https://homalg-project.github.io/CAP_project/ModulesOverLocalRingsForCAP
+readme: README.md
+packageinfo: https://homalg-project.github.io/CAP_project/ModulesOverLocalRingsForCAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-2017.04.10/ModulesOverLocalRingsForCAP-2017.04.10.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-2020.10-01/ModulesOverLocalRingsForCAP-2020.10-01.tar.gz
+    - name: .zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-2020.10-01/ModulesOverLocalRingsForCAP-2020.10-01.zip
 
-abstract: 
+pdf: https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-2020.10-01/ModulesOverLocalRingsForCAP-2020.10-01.pdf
+
+abstract: |
 
 status: dev
 doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
+citeas: |
+    <p class='BibEntry'>
+    [<span class='BibKey'>Pos20</span>]   <b class='BibAuthor'>Posur, S.</b>,
+     <i class='BibTitle'>ModulesOverLocalRingsForCAP, Category of modules over a local ring modeled by Serre quotients for CAP,
+             Version 2020.10-01</i>
+     (<span class='BibYear'>2020</span>)<br />
+    (<span class='BibNote'>GAP package</span>),
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/CAP_project/ModulesOverLocalRingsForCAP">https://homalg-project.github.io/CAP_project/ModulesOverLocalRingsForCAP</a></span>.
+    </p>
+    
+
+bibtex: |
+    @misc{ ModulesOverLocalRingsForCAP2020.10-01,
+      author =           {Posur, S.},
+      title =            {{ModulesOverLocalRingsForCAP},   Category  of  modules
+                          over  a local ring modeled by Serre quotients for CAP,
+                          {V}ersion 2020.10-01},
+      month =            {Oct},
+      year =             {2020},
+      note =             {GAP package},
+      howpublished =     {\href
+                          {https://homalg-project.github.io/CAP_project/ModulesOverLocalRingsForCAP}
+                          {\texttt{https://homalg-project.github.io/}\discretionary
+                          {}{}{}\texttt{CAP{\textunderscore}project/}\discretionary
+                          {}{}{}\texttt{ModulesOverLocalRingsForCAP}}},
+      printedkey =       {Pos20}
+    }
+
