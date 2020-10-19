@@ -34,7 +34,7 @@ BindGlobal( "TheTypeOfCapTerminalCategoryMorphism",
 
 InstallValue( CAP_INTERNAL_TERMINAL_CATEGORY,
               
-              CreateCapCategory( "TerminalCategory" ) );
+              CreateCapCategory( "TerminalCategory" : is_computable := false ) );
 
 SetFilterObj( CAP_INTERNAL_TERMINAL_CATEGORY, IsTerminalCategory );
 
@@ -93,6 +93,9 @@ BindGlobal( "INSTALL_TERMINAL_CATEGORY_FUNCTIONS",
             
   function( )
     local obj_function_list, obj_func, morphism_function_list, morphism_function, i;
+    
+    AddIsEqualForObjects( CAP_INTERNAL_TERMINAL_CATEGORY, ReturnFail ); # IsIdenticalObj is handled by the pre-function
+    AddIsEqualForMorphisms( CAP_INTERNAL_TERMINAL_CATEGORY, ReturnFail ); # IsIdenticalObj is handled by the pre-function
     
     obj_function_list := [ AddZeroObject,
                            AddKernelObject,

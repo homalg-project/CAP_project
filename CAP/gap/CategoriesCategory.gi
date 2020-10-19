@@ -36,6 +36,8 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_Cat,
     
     CREATE_CAP_CATEGORY_OBJECT( CapCat, [ [ "Name", "Cat" ] ] );
     
+    CapCat!.is_computable := false;
+    
     CREATE_CAP_CATEGORY_FILTERS( CapCat );
     
     return CapCat;
@@ -521,6 +523,12 @@ InstallGlobalFunction( ApplyFunctor,
     return computed_value;
     
 end );
+
+##
+AddIsEqualForObjects( CapCat, ReturnFail ); # IsIdenticalObj is handled by the pre-function
+
+##
+AddIsEqualForMorphisms( CapCat, ReturnFail ); # IsIdenticalObj is handled by the pre-function
 
 ##
 AddPreCompose( CapCat,

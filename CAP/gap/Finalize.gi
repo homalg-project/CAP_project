@@ -212,6 +212,25 @@ InstallMethod( IsFinalized,
         
     od;
     
+    # sanity checks
+    if not CanCompute( category, "IsEqualForObjects" ) then
+        
+        Error( Concatenation( "please provide IsEqualForObjects for the category with name \"", Name( category ) , "\"" ) );
+        
+    fi;
+    
+    if not CanCompute( category, "IsEqualForMorphisms" ) then
+        
+        Error( Concatenation( "please provide IsEqualForMorphisms for the category with name \"", Name( category ) , "\"" ) );
+        
+    fi;
+    
+    if not CanCompute( category, "IsCongruentForMorphisms" ) and category!.is_computable then
+        
+        Error( Concatenation( "please provide IsCongruentForMorphisms for the category with name \"", Name( category ) , "\"" ) );
+        
+    fi;
+    
     return true;
     
 end );
