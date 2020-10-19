@@ -1,7 +1,9 @@
 name: ActionsForCAP
-version: 2020.04.27
-date: 27/04/2020
-description: Actions and Coactions for CAP
+version: "2020.10-01"
+license: "GPL-2.0-or-later"
+date: 2020-10-19
+description: |
+    Actions and Coactions for CAP
 
 authors:
     - name: Sebastian Gutsche
@@ -29,18 +31,49 @@ needed-pkgs:
       url: "https://homalg-project.github.io/CAP_project/MonoidalCategories"
     - name: "AttributeCategoryForCAP"
       version: ">=2016.09.14"
-      url: "https://github.com/homalg-project/CAP_project/tree/master/AttributeCategoryForCAP"
+      url: "https://homalg-project.github.io/CAP_project/AttributeCategoryForCAP"
 
-www: https://github.com/homalg-project/CAP_project/tree/master/ActionsForCAP
-readme: https://raw.githubusercontent.com/homalg-project/CAP_project/master/ActionsForCAP/README.md
-packageinfo: https://raw.githubusercontent.com/homalg-project/CAP_project/master/ActionsForCAP/PackageInfo.g
+www: https://homalg-project.github.io/CAP_project/ActionsForCAP
+readme: README.md
+packageinfo: https://homalg-project.github.io/CAP_project/ActionsForCAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2020.04.27/ActionsForCAP-2020.04.27.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2020.10-01/ActionsForCAP-2020.10-01.tar.gz
+    - name: .zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2020.10-01/ActionsForCAP-2020.10-01.zip
 
-abstract: 
+pdf: https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-2020.10-01/ActionsForCAP-2020.10-01.pdf
+
+abstract: |
 
 status: dev
 doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
+citeas: |
+    <p class='BibEntry'>
+    [<span class='BibKey'>GP20</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
+     <i class='BibTitle'>ActionsForCAP, Actions and Coactions for CAP,
+             Version 2020.10-01</i>
+     (<span class='BibYear'>2020</span>)<br />
+    (<span class='BibNote'>GAP package</span>),
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/CAP_project/ActionsForCAP">https://homalg-project.github.io/CAP_project/ActionsForCAP</a></span>.
+    </p>
+    
+
+bibtex: |
+    @misc{ ActionsForCAP2020.10-01,
+      author =           {Gutsche, S. and Posur, S.},
+      title =            {{ActionsForCAP},   Actions   and  Coactions  for  CAP,
+                          {V}ersion 2020.10-01},
+      month =            {Oct},
+      year =             {2020},
+      note =             {GAP package},
+      howpublished =     {\href
+                          {https://homalg-project.github.io/CAP_project/ActionsForCAP}
+                          {\texttt{https://homalg-project.github.io/}\discretionary
+                          {}{}{}\texttt{CAP{\textunderscore}project/}\discretionary
+                          {}{}{}\texttt{ActionsForCAP}}},
+      printedkey =       {GP20}
+    }
+
