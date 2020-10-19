@@ -1,0 +1,8 @@
+---
+---
+{
+  "schemaVersion": 1,
+  "label": "version",
+  "message": "{{ site.data.CompilerForCAP.version }}",
+  "color": "orange"
+}
