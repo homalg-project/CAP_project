@@ -12,18 +12,17 @@ PackageName := "GradedModulePresentationsForCAP",
 Subtitle := "Presentations for graded modules",
 Version := Maximum( [
            ##
-           "2017.03.20", # Sebas version
+           "2017.03-20", # Sebas version
            ##
-           "2018.03.20", # Sepps version
+           "2018.03-20", # Sepps version
            ##
-           "2019.04.03", # Mohamed's version
+           "2019.04-03", # Mohamed's version
            ##
-           "2019.08.07", # Fabian's version
+           "2020.10-01", # Fabian's version
            ##
            ] ),
 
-Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := "19/10/2020",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -51,13 +50,13 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://github.com/homalg-project/CAP_project/tree/master/GradedModulePresentationsForCAP",
-PackageInfoURL  := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/GradedModulePresentationsForCAP/PackageInfo.g",
-README_URL      := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/GradedModulePresentationsForCAP/README.md",
+PackageWWWHome  := "https://homalg-project.github.io/CAP_project/GradedModulePresentationsForCAP",
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/GradedModulePresentationsForCAP/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/GradedModulePresentationsForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-", ~.Version, "/GradedModulePresentationsForCAP-", ~.Version ),
 # END URLS
 
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages
