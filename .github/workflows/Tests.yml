@@ -14,6 +14,7 @@ jobs:
     strategy:
       matrix:
         image: [gapsystem/gap-docker, gapsystem/gap-docker-master]
+      fail-fast: false
     runs-on: ubuntu-latest
     container:
       image: ${{ matrix.image }}
@@ -39,77 +40,10 @@ jobs:
           git config --global user.email "empty"
           cd CAP_project
           CUR_SHA=$(git rev-parse --verify HEAD)
-          git worktree add branch_doc/ doc || (echo "There was an error. Make sure there is a branch named 'doc'. See https://github.com/homalg-project/PackageJanitor#error-there-was-an-error-make-sure-there-is-a-branch-named-doc"; exit 1)
-          cp ActionsForCAP/doc/manual.pdf branch_doc/ActionsForCAP.pdf
-          cd branch_doc
-          git add ActionsForCAP.pdf
-          git commit -m "Add ActionsForCAP.pdf for $CUR_SHA" --allow-empty
-          cd ..
-          cp AttributeCategoryForCAP/doc/manual.pdf branch_doc/AttributeCategoryForCAP.pdf
-          cd branch_doc
-          git add AttributeCategoryForCAP.pdf
-          git commit -m "Add AttributeCategoryForCAP.pdf for $CUR_SHA" --allow-empty
-          cd ..
-          cp CompilerForCAP/doc/manual.pdf branch_doc/CompilerForCAP.pdf
-          cd branch_doc
-          git add CompilerForCAP.pdf
-          git commit -m "Add CompilerForCAP.pdf for $CUR_SHA" --allow-empty
-          cd ..
-          cp ComplexesAndFilteredObjectsForCAP/doc/manual.pdf branch_doc/ComplexesAndFilteredObjectsForCAP.pdf
-          cd branch_doc
-          git add ComplexesAndFilteredObjectsForCAP.pdf
-          git commit -m "Add ComplexesAndFilteredObjectsForCAP.pdf for $CUR_SHA" --allow-empty
-          cd ..
-          cp DeductiveSystemForCAP/doc/manual.pdf branch_doc/DeductiveSystemForCAP.pdf
-          cd branch_doc
-          git add DeductiveSystemForCAP.pdf
-          git commit -m "Add DeductiveSystemForCAP.pdf for $CUR_SHA" --allow-empty
-          cd ..
-          cp FreydCategoriesForCAP/doc/manual.pdf branch_doc/FreydCategoriesForCAP.pdf
-          cd branch_doc
-          git add FreydCategoriesForCAP.pdf
-          git commit -m "Add FreydCategoriesForCAP.pdf for $CUR_SHA" --allow-empty
-          cd ..
-          cp GradedModulePresentationsForCAP/doc/manual.pdf branch_doc/GradedModulePresentationsForCAP.pdf
-          cd branch_doc
-          git add GradedModulePresentationsForCAP.pdf
-          git commit -m "Add GradedModulePresentationsForCAP.pdf for $CUR_SHA" --allow-empty
-          cd ..
-          cp GroupRepresentationsForCAP/doc/manual.pdf branch_doc/GroupRepresentationsForCAP.pdf
-          cd branch_doc
-          git add GroupRepresentationsForCAP.pdf
-          git commit -m "Add GroupRepresentationsForCAP.pdf for $CUR_SHA" --allow-empty
-          cd ..
-          cp HomologicalAlgebraForCAP/doc/manual.pdf branch_doc/HomologicalAlgebraForCAP.pdf
-          cd branch_doc
-          git add HomologicalAlgebraForCAP.pdf
-          git commit -m "Add HomologicalAlgebraForCAP.pdf for $CUR_SHA" --allow-empty
-          cd ..
-          cp InternalExteriorAlgebraForCAP/doc/manual.pdf branch_doc/InternalExteriorAlgebraForCAP.pdf
-          cd branch_doc
-          git add InternalExteriorAlgebraForCAP.pdf
-          git commit -m "Add InternalExteriorAlgebraForCAP.pdf for $CUR_SHA" --allow-empty
-          cd ..
-          cp ModulesOverLocalRingsForCAP/doc/manual.pdf branch_doc/ModulesOverLocalRingsForCAP.pdf
-          cd branch_doc
-          git add ModulesOverLocalRingsForCAP.pdf
-          git commit -m "Add ModulesOverLocalRingsForCAP.pdf for $CUR_SHA" --allow-empty
-          cd ..
-          cp ToricSheaves/doc/manual.pdf branch_doc/ToricSheaves.pdf
-          cd branch_doc
-          git add ToricSheaves.pdf
-          git commit -m "Add ToricSheaves.pdf for $CUR_SHA" --allow-empty
-          cd ..
-          # push iff using gap-stable and if on master branch
-          if [ "${{ matrix.image }}" = "gapsystem/gap-docker" ] && [ "$CUR_SHA" = "$(git rev-parse origin/master)" ]; then \
-            git push https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git doc:doc; \
-          else \
-            echo "Not pushing result."; \
-          fi
           if [ "${{ matrix.image }}" = "gapsystem/gap-docker" ] && [ "$CUR_SHA" = "$(git rev-parse origin/master)" ] && [ $(dirname "$GITHUB_REPOSITORY") = "homalg-project" ]; then \
             git worktree add gh-pages/ gh-pages || (echo "There was an error. Make sure there is a branch named 'gh-pages'. See https://github.com/homalg-project/PackageJanitor#error-there-was-an-error-make-sure-there-is-a-branch-named-gh-pages"; exit 1); \
             git checkout master; \
-            ./make_dist.sh --token "${{ secrets.GITHUB_TOKEN }}"; \
+            LANG=C.UTF-8 ./make_dist.sh --token "${{ secrets.GITHUB_TOKEN }}"; \
           else \
             echo "Not making a release."; \
           fi

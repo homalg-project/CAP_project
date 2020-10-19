@@ -4,14 +4,14 @@ PackageName := "ComplexesAndFilteredObjectsForCAP",
 Subtitle := "Implementation of complexes, cocomplexes and filtered objects for CAP",
 
 Version := Maximum( [
-  "2018.08.02", ## Sebas' version
+  "2018.08-02", ## Sebas' version
 ## this line prevents merge conflicts
-  "2015.04.15", ## Sepp's version
+  "2015.04-15", ## Sepp's version
 ## this line prevents merge conflicts
+  "2020.10-01", ## Fabian's version
    ] ),
 
-Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
 
@@ -56,13 +56,13 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://github.com/homalg-project/CAP_project/tree/master/ComplexesAndFilteredObjectsForCAP",
-PackageInfoURL  := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/ComplexesAndFilteredObjectsForCAP/PackageInfo.g",
-README_URL      := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/ComplexesAndFilteredObjectsForCAP/README.md",
+PackageWWWHome  := "https://homalg-project.github.io/CAP_project/ComplexesAndFilteredObjectsForCAP",
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/ComplexesAndFilteredObjectsForCAP/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/ComplexesAndFilteredObjectsForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ComplexesAndFilteredObjectsForCAP-", ~.Version, "/ComplexesAndFilteredObjectsForCAP-", ~.Version ),
 # END URLS
 
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages

@@ -1,5 +1,7 @@
 <!-- BEGIN HEADER -->
-# CAP project – Categories, Algorithms, and Programming
+# CAP project
+
+### Categories, Algorithms, and Programming
 
 | Build Status | Code Coverage |
 | ------------ | ------------- |
@@ -17,77 +19,145 @@ Please take a look at our [manual](https://github.com/homalg-project/CAP_project
 
 Please visit our website: https://homalg-project.github.io/docs/CAP_project/
 <!-- BEGIN FOOTER -->
-## Packages of [CAP_project](/../../):
+### Packages of [CAP_project](/../../):
 | Name | Description | Documentation |
 | ---- | ----------- | ------------- |
-| [CAP](CAP) | Categories, Algorithms, Programming | [![HTML stable documentation][docs-CAP-img]][docs-CAP-url] |
-| [ActionsForCAP](ActionsForCAP) | Actions and Coactions for CAP | [![PDF development documentation][docs-ActionsForCAP-img]][docs-ActionsForCAP-url] |
-| [AttributeCategoryForCAP](AttributeCategoryForCAP) | Automatic enhancement with attributes of a CAP category | [![PDF development documentation][docs-AttributeCategoryForCAP-img]][docs-AttributeCategoryForCAP-url] |
-| [CompilerForCAP](CompilerForCAP) | Speed up computations in CAP categories | [![PDF development documentation][docs-CompilerForCAP-img]][docs-CompilerForCAP-url] |
-| [ComplexesAndFilteredObjectsForCAP](ComplexesAndFilteredObjectsForCAP) | Implementation of complexes, cocomplexes and filtered objects for CAP | [![PDF development documentation][docs-ComplexesAndFilteredObjectsForCAP-img]][docs-ComplexesAndFilteredObjectsForCAP-url] |
-| [DeductiveSystemForCAP](DeductiveSystemForCAP) | Deductive system for CAP | [![PDF development documentation][docs-DeductiveSystemForCAP-img]][docs-DeductiveSystemForCAP-url] |
-| [FreydCategoriesForCAP](FreydCategoriesForCAP) | Freyd categories - Formal (co)kernels for additive categories | [![PDF development documentation][docs-FreydCategoriesForCAP-img]][docs-FreydCategoriesForCAP-url] |
-| [GeneralizedMorphismsForCAP](GeneralizedMorphismsForCAP) | Implementations of generalized morphisms for the CAP project | [![HTML stable documentation][docs-GeneralizedMorphismsForCAP-img]][docs-GeneralizedMorphismsForCAP-url] |
-| [GradedModulePresentationsForCAP](GradedModulePresentationsForCAP) | Presentations for graded modules | [![PDF development documentation][docs-GradedModulePresentationsForCAP-img]][docs-GradedModulePresentationsForCAP-url] |
-| [GroupRepresentationsForCAP](GroupRepresentationsForCAP) | Skeletal category of group representations for CAP | [![PDF development documentation][docs-GroupRepresentationsForCAP-img]][docs-GroupRepresentationsForCAP-url] |
-| [HomologicalAlgebraForCAP](HomologicalAlgebraForCAP) | Homological algebra algorithms for CAP | [![PDF development documentation][docs-HomologicalAlgebraForCAP-img]][docs-HomologicalAlgebraForCAP-url] |
-| [InternalExteriorAlgebraForCAP](InternalExteriorAlgebraForCAP) | Constructions for Modules over the Internal Exterior Algebra for CAP | [![PDF development documentation][docs-InternalExteriorAlgebraForCAP-img]][docs-InternalExteriorAlgebraForCAP-url] |
-| [LinearAlgebraForCAP](LinearAlgebraForCAP) | Category of Matrices over a Field for CAP | [![HTML stable documentation][docs-LinearAlgebraForCAP-img]][docs-LinearAlgebraForCAP-url] |
-| [ModulePresentationsForCAP](ModulePresentationsForCAP) | Category R-pres for CAP | [![HTML stable documentation][docs-ModulePresentationsForCAP-img]][docs-ModulePresentationsForCAP-url] |
-| [ModulesOverLocalRingsForCAP](ModulesOverLocalRingsForCAP) | Category of modules over a local ring modeled by Serre quotients for CAP | [![PDF development documentation][docs-ModulesOverLocalRingsForCAP-img]][docs-ModulesOverLocalRingsForCAP-url] |
-| [MonoidalCategories](MonoidalCategories) | Monoidal and monoidal (co)closed categories | [![HTML stable documentation][docs-MonoidalCategories-img]][docs-MonoidalCategories-url] |
-| [ToricSheaves](ToricSheaves) | Toric sheaves as Serre quotients | [![PDF development documentation][docs-ToricSheaves-img]][docs-ToricSheaves-url] |
+| [CAP](CAP) | Categories, Algorithms, Programming | [![HTML stable documentation][html-CAP-img]][html-CAP-url] [![PDF stable documentation][pdf-CAP-img]][pdf-CAP-url] |
+| [ActionsForCAP](ActionsForCAP) | Actions and Coactions for CAP | [![HTML stable documentation][html-ActionsForCAP-img]][html-ActionsForCAP-url] [![PDF stable documentation][pdf-ActionsForCAP-img]][pdf-ActionsForCAP-url] |
+| [AttributeCategoryForCAP](AttributeCategoryForCAP) | Automatic enhancement with attributes of a CAP category | [![HTML stable documentation][html-AttributeCategoryForCAP-img]][html-AttributeCategoryForCAP-url] [![PDF stable documentation][pdf-AttributeCategoryForCAP-img]][pdf-AttributeCategoryForCAP-url] |
+| [CompilerForCAP](CompilerForCAP) | Speed up computations in CAP categories | [![HTML stable documentation][html-CompilerForCAP-img]][html-CompilerForCAP-url] [![PDF stable documentation][pdf-CompilerForCAP-img]][pdf-CompilerForCAP-url] |
+| [ComplexesAndFilteredObjectsForCAP](ComplexesAndFilteredObjectsForCAP) | Implementation of complexes, cocomplexes and filtered objects for CAP | [![HTML stable documentation][html-ComplexesAndFilteredObjectsForCAP-img]][html-ComplexesAndFilteredObjectsForCAP-url] [![PDF stable documentation][pdf-ComplexesAndFilteredObjectsForCAP-img]][pdf-ComplexesAndFilteredObjectsForCAP-url] |
+| [DeductiveSystemForCAP](DeductiveSystemForCAP) | Deductive system for CAP | [![HTML stable documentation][html-DeductiveSystemForCAP-img]][html-DeductiveSystemForCAP-url] [![PDF stable documentation][pdf-DeductiveSystemForCAP-img]][pdf-DeductiveSystemForCAP-url] |
+| [FreydCategoriesForCAP](FreydCategoriesForCAP) | Freyd categories - Formal (co)kernels for additive categories | [![HTML stable documentation][html-FreydCategoriesForCAP-img]][html-FreydCategoriesForCAP-url] [![PDF stable documentation][pdf-FreydCategoriesForCAP-img]][pdf-FreydCategoriesForCAP-url] |
+| [GeneralizedMorphismsForCAP](GeneralizedMorphismsForCAP) | Implementations of generalized morphisms for the CAP project | [![HTML stable documentation][html-GeneralizedMorphismsForCAP-img]][html-GeneralizedMorphismsForCAP-url] [![PDF stable documentation][pdf-GeneralizedMorphismsForCAP-img]][pdf-GeneralizedMorphismsForCAP-url] |
+| [GradedModulePresentationsForCAP](GradedModulePresentationsForCAP) | Presentations for graded modules | [![HTML stable documentation][html-GradedModulePresentationsForCAP-img]][html-GradedModulePresentationsForCAP-url] [![PDF stable documentation][pdf-GradedModulePresentationsForCAP-img]][pdf-GradedModulePresentationsForCAP-url] |
+| [GroupRepresentationsForCAP](GroupRepresentationsForCAP) | Skeletal category of group representations for CAP | [![HTML stable documentation][html-GroupRepresentationsForCAP-img]][html-GroupRepresentationsForCAP-url] [![PDF stable documentation][pdf-GroupRepresentationsForCAP-img]][pdf-GroupRepresentationsForCAP-url] |
+| [HomologicalAlgebraForCAP](HomologicalAlgebraForCAP) | Homological algebra algorithms for CAP | [![HTML stable documentation][html-HomologicalAlgebraForCAP-img]][html-HomologicalAlgebraForCAP-url] [![PDF stable documentation][pdf-HomologicalAlgebraForCAP-img]][pdf-HomologicalAlgebraForCAP-url] |
+| [InternalExteriorAlgebraForCAP](InternalExteriorAlgebraForCAP) | Constructions for Modules over the Internal Exterior Algebra for CAP | [![HTML stable documentation][html-InternalExteriorAlgebraForCAP-img]][html-InternalExteriorAlgebraForCAP-url] [![PDF stable documentation][pdf-InternalExteriorAlgebraForCAP-img]][pdf-InternalExteriorAlgebraForCAP-url] |
+| [LinearAlgebraForCAP](LinearAlgebraForCAP) | Category of Matrices over a Field for CAP | [![HTML stable documentation][html-LinearAlgebraForCAP-img]][html-LinearAlgebraForCAP-url] [![PDF stable documentation][pdf-LinearAlgebraForCAP-img]][pdf-LinearAlgebraForCAP-url] |
+| [ModulePresentationsForCAP](ModulePresentationsForCAP) | Category R-pres for CAP | [![HTML stable documentation][html-ModulePresentationsForCAP-img]][html-ModulePresentationsForCAP-url] [![PDF stable documentation][pdf-ModulePresentationsForCAP-img]][pdf-ModulePresentationsForCAP-url] |
+| [ModulesOverLocalRingsForCAP](ModulesOverLocalRingsForCAP) | Category of modules over a local ring modeled by Serre quotients for CAP | [![HTML stable documentation][html-ModulesOverLocalRingsForCAP-img]][html-ModulesOverLocalRingsForCAP-url] [![PDF stable documentation][pdf-ModulesOverLocalRingsForCAP-img]][pdf-ModulesOverLocalRingsForCAP-url] |
+| [MonoidalCategories](MonoidalCategories) | Monoidal and monoidal (co)closed categories | [![HTML stable documentation][html-MonoidalCategories-img]][html-MonoidalCategories-url] [![PDF stable documentation][pdf-MonoidalCategories-img]][pdf-MonoidalCategories-url] |
+| [ToricSheaves](ToricSheaves) | Toric sheaves as Serre quotients | [![HTML stable documentation][html-ToricSheaves-img]][html-ToricSheaves-url] [![PDF stable documentation][pdf-ToricSheaves-img]][pdf-ToricSheaves-url] |
 
-[docs-CAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
-[docs-CAP-url]: https://homalg-project.github.io/CAP_project/CAP/doc/chap0_mj.html
+[html-CAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-CAP-url]: https://homalg-project.github.io/CAP_project/CAP/doc/chap0_mj.html
 
-[docs-ActionsForCAP-img]: https://img.shields.io/badge/PDF-dev-blue.svg
-[docs-ActionsForCAP-url]: /../../raw/doc/ActionsForCAP.pdf
+[pdf-CAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-CAP-url]: https://homalg-project.github.io/CAP_project/CAP/download_pdf.html
 
-[docs-AttributeCategoryForCAP-img]: https://img.shields.io/badge/PDF-dev-blue.svg
-[docs-AttributeCategoryForCAP-url]: /../../raw/doc/AttributeCategoryForCAP.pdf
 
-[docs-CompilerForCAP-img]: https://img.shields.io/badge/PDF-dev-blue.svg
-[docs-CompilerForCAP-url]: /../../raw/doc/CompilerForCAP.pdf
+[html-ActionsForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-ActionsForCAP-url]: https://homalg-project.github.io/CAP_project/ActionsForCAP/doc/chap0_mj.html
 
-[docs-ComplexesAndFilteredObjectsForCAP-img]: https://img.shields.io/badge/PDF-dev-blue.svg
-[docs-ComplexesAndFilteredObjectsForCAP-url]: /../../raw/doc/ComplexesAndFilteredObjectsForCAP.pdf
+[pdf-ActionsForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-ActionsForCAP-url]: https://homalg-project.github.io/CAP_project/ActionsForCAP/download_pdf.html
 
-[docs-DeductiveSystemForCAP-img]: https://img.shields.io/badge/PDF-dev-blue.svg
-[docs-DeductiveSystemForCAP-url]: /../../raw/doc/DeductiveSystemForCAP.pdf
 
-[docs-FreydCategoriesForCAP-img]: https://img.shields.io/badge/PDF-dev-blue.svg
-[docs-FreydCategoriesForCAP-url]: /../../raw/doc/FreydCategoriesForCAP.pdf
+[html-AttributeCategoryForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-AttributeCategoryForCAP-url]: https://homalg-project.github.io/CAP_project/AttributeCategoryForCAP/doc/chap0_mj.html
 
-[docs-GeneralizedMorphismsForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
-[docs-GeneralizedMorphismsForCAP-url]: https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/doc/chap0_mj.html
+[pdf-AttributeCategoryForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-AttributeCategoryForCAP-url]: https://homalg-project.github.io/CAP_project/AttributeCategoryForCAP/download_pdf.html
 
-[docs-GradedModulePresentationsForCAP-img]: https://img.shields.io/badge/PDF-dev-blue.svg
-[docs-GradedModulePresentationsForCAP-url]: /../../raw/doc/GradedModulePresentationsForCAP.pdf
 
-[docs-GroupRepresentationsForCAP-img]: https://img.shields.io/badge/PDF-dev-blue.svg
-[docs-GroupRepresentationsForCAP-url]: /../../raw/doc/GroupRepresentationsForCAP.pdf
+[html-CompilerForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-CompilerForCAP-url]: https://homalg-project.github.io/CAP_project/CompilerForCAP/doc/chap0_mj.html
 
-[docs-HomologicalAlgebraForCAP-img]: https://img.shields.io/badge/PDF-dev-blue.svg
-[docs-HomologicalAlgebraForCAP-url]: /../../raw/doc/HomologicalAlgebraForCAP.pdf
+[pdf-CompilerForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-CompilerForCAP-url]: https://homalg-project.github.io/CAP_project/CompilerForCAP/download_pdf.html
 
-[docs-InternalExteriorAlgebraForCAP-img]: https://img.shields.io/badge/PDF-dev-blue.svg
-[docs-InternalExteriorAlgebraForCAP-url]: /../../raw/doc/InternalExteriorAlgebraForCAP.pdf
 
-[docs-LinearAlgebraForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
-[docs-LinearAlgebraForCAP-url]: https://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/doc/chap0_mj.html
+[html-ComplexesAndFilteredObjectsForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-ComplexesAndFilteredObjectsForCAP-url]: https://homalg-project.github.io/CAP_project/ComplexesAndFilteredObjectsForCAP/doc/chap0_mj.html
 
-[docs-ModulePresentationsForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
-[docs-ModulePresentationsForCAP-url]: https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP/doc/chap0_mj.html
+[pdf-ComplexesAndFilteredObjectsForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-ComplexesAndFilteredObjectsForCAP-url]: https://homalg-project.github.io/CAP_project/ComplexesAndFilteredObjectsForCAP/download_pdf.html
 
-[docs-ModulesOverLocalRingsForCAP-img]: https://img.shields.io/badge/PDF-dev-blue.svg
-[docs-ModulesOverLocalRingsForCAP-url]: /../../raw/doc/ModulesOverLocalRingsForCAP.pdf
 
-[docs-MonoidalCategories-img]: https://img.shields.io/badge/HTML-stable-blue.svg
-[docs-MonoidalCategories-url]: https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap0_mj.html
+[html-DeductiveSystemForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-DeductiveSystemForCAP-url]: https://homalg-project.github.io/CAP_project/DeductiveSystemForCAP/doc/chap0_mj.html
 
-[docs-ToricSheaves-img]: https://img.shields.io/badge/PDF-dev-blue.svg
-[docs-ToricSheaves-url]: /../../raw/doc/ToricSheaves.pdf
+[pdf-DeductiveSystemForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-DeductiveSystemForCAP-url]: https://homalg-project.github.io/CAP_project/DeductiveSystemForCAP/download_pdf.html
+
+
+[html-FreydCategoriesForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-FreydCategoriesForCAP-url]: https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap0_mj.html
+
+[pdf-FreydCategoriesForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-FreydCategoriesForCAP-url]: https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/download_pdf.html
+
+
+[html-GeneralizedMorphismsForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-GeneralizedMorphismsForCAP-url]: https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/doc/chap0_mj.html
+
+[pdf-GeneralizedMorphismsForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-GeneralizedMorphismsForCAP-url]: https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/download_pdf.html
+
+
+[html-GradedModulePresentationsForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-GradedModulePresentationsForCAP-url]: https://homalg-project.github.io/CAP_project/GradedModulePresentationsForCAP/doc/chap0_mj.html
+
+[pdf-GradedModulePresentationsForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-GradedModulePresentationsForCAP-url]: https://homalg-project.github.io/CAP_project/GradedModulePresentationsForCAP/download_pdf.html
+
+
+[html-GroupRepresentationsForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-GroupRepresentationsForCAP-url]: https://homalg-project.github.io/CAP_project/GroupRepresentationsForCAP/doc/chap0_mj.html
+
+[pdf-GroupRepresentationsForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-GroupRepresentationsForCAP-url]: https://homalg-project.github.io/CAP_project/GroupRepresentationsForCAP/download_pdf.html
+
+
+[html-HomologicalAlgebraForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-HomologicalAlgebraForCAP-url]: https://homalg-project.github.io/CAP_project/HomologicalAlgebraForCAP/doc/chap0_mj.html
+
+[pdf-HomologicalAlgebraForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-HomologicalAlgebraForCAP-url]: https://homalg-project.github.io/CAP_project/HomologicalAlgebraForCAP/download_pdf.html
+
+
+[html-InternalExteriorAlgebraForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-InternalExteriorAlgebraForCAP-url]: https://homalg-project.github.io/CAP_project/InternalExteriorAlgebraForCAP/doc/chap0_mj.html
+
+[pdf-InternalExteriorAlgebraForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-InternalExteriorAlgebraForCAP-url]: https://homalg-project.github.io/CAP_project/InternalExteriorAlgebraForCAP/download_pdf.html
+
+
+[html-LinearAlgebraForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-LinearAlgebraForCAP-url]: https://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/doc/chap0_mj.html
+
+[pdf-LinearAlgebraForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-LinearAlgebraForCAP-url]: https://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/download_pdf.html
+
+
+[html-ModulePresentationsForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-ModulePresentationsForCAP-url]: https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP/doc/chap0_mj.html
+
+[pdf-ModulePresentationsForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-ModulePresentationsForCAP-url]: https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP/download_pdf.html
+
+
+[html-ModulesOverLocalRingsForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-ModulesOverLocalRingsForCAP-url]: https://homalg-project.github.io/CAP_project/ModulesOverLocalRingsForCAP/doc/chap0_mj.html
+
+[pdf-ModulesOverLocalRingsForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-ModulesOverLocalRingsForCAP-url]: https://homalg-project.github.io/CAP_project/ModulesOverLocalRingsForCAP/download_pdf.html
+
+
+[html-MonoidalCategories-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-MonoidalCategories-url]: https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap0_mj.html
+
+[pdf-MonoidalCategories-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-MonoidalCategories-url]: https://homalg-project.github.io/CAP_project/MonoidalCategories/download_pdf.html
+
+
+[html-ToricSheaves-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-ToricSheaves-url]: https://homalg-project.github.io/CAP_project/ToricSheaves/doc/chap0_mj.html
+
+[pdf-ToricSheaves-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-ToricSheaves-url]: https://homalg-project.github.io/CAP_project/ToricSheaves/download_pdf.html
+
 
 [tests-img]: https://github.com/homalg-project/CAP_project/workflows/Tests/badge.svg?branch=master
 [tests-url]: https://github.com/homalg-project/CAP_project/actions?query=workflow%3ATests+branch%3Amaster
