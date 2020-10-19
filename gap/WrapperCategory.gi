@@ -119,7 +119,8 @@ InstallMethod( WrapperCategory,
         [ IsCapCategory ],
         
   function( C )
-    local name, create_func_bool, create_func_object0, create_func_morphism0,
+    local name, category_object_filter, category_morphism_filter,
+          create_func_bool, create_func_object0, create_func_morphism0,
           create_func_object, create_func_morphism, create_func_universal_morphism,
           primitive_operations, list_of_operations_to_install, skip, func, pos,
           commutative_ring, properties, D,
@@ -134,6 +135,9 @@ InstallMethod( WrapperCategory,
             name := "wrapper category";
         fi;
     fi;
+    
+    category_object_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_object_filter", IsWrapperCapCategoryObject ) and IsWrapperCapCategoryObject;
+    category_morphism_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_morphism_filter", IsWrapperCapCategoryMorphism ) and IsWrapperCapCategoryMorphism;
     
     ## e.g., IsSplitEpimorphism
     create_func_bool :=
@@ -287,8 +291,8 @@ InstallMethod( WrapperCategory,
     D := CategoryConstructor( :
                  name := name,
                  category_filter := IsWrapperCapCategory,
-                 category_object_filter := IsWrapperCapCategoryObject,
-                 category_morphism_filter := IsWrapperCapCategoryMorphism,
+                 category_object_filter := category_object_filter,
+                 category_morphism_filter := category_morphism_filter,
                  commutative_ring := commutative_ring,
                  properties := properties,
                  is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
