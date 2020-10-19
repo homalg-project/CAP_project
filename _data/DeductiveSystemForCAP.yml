@@ -1,7 +1,9 @@
 name: DeductiveSystemForCAP
-version: 2016.01.17
-date: 17/01/2016
-description: Deductive system for CAP
+version: "2020.10-01"
+license: "GPL-2.0-or-later"
+date: 2020-10-19
+description: |
+    Deductive system for CAP
 
 authors:
     - name: Sebastian Gutsche
@@ -25,16 +27,47 @@ needed-pkgs:
       version: ">=2015.01.01"
       url: "https://homalg-project.github.io/CAP_project/CAP"
 
-www: https://github.com/homalg-project/CAP_project/tree/master/DeductiveSystemForCAP
-readme: https://raw.githubusercontent.com/homalg-project/CAP_project/master/DeductiveSystemForCAP/README.md
-packageinfo: https://raw.githubusercontent.com/homalg-project/CAP_project/master/DeductiveSystemForCAP/PackageInfo.g
+www: https://homalg-project.github.io/CAP_project/DeductiveSystemForCAP
+readme: README.md
+packageinfo: https://homalg-project.github.io/CAP_project/DeductiveSystemForCAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/DeductiveSystemForCAP-2016.01.17/DeductiveSystemForCAP-2016.01.17.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/DeductiveSystemForCAP-2020.10-01/DeductiveSystemForCAP-2020.10-01.tar.gz
+    - name: .zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/DeductiveSystemForCAP-2020.10-01/DeductiveSystemForCAP-2020.10-01.zip
 
-abstract: 
+pdf: https://github.com/homalg-project/CAP_project/releases/download/DeductiveSystemForCAP-2020.10-01/DeductiveSystemForCAP-2020.10-01.pdf
+
+abstract: |
 
 status: dev
 doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
+citeas: |
+    <p class='BibEntry'>
+    [<span class='BibKey'>GP20</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
+     <i class='BibTitle'>DeductiveSystemForCAP, Deductive system for CAP,
+             Version 2020.10-01</i>
+     (<span class='BibYear'>2020</span>)<br />
+    (<span class='BibNote'>GAP package</span>),
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/CAP_project/DeductiveSystemForCAP">https://homalg-project.github.io/CAP_project/DeductiveSystemForCAP</a></span>.
+    </p>
+    
+
+bibtex: |
+    @misc{ DeductiveSystemForCAP2020.10-01,
+      author =           {Gutsche, S. and Posur, S.},
+      title =            {{DeductiveSystemForCAP},  Deductive  system  for  CAP,
+                          {V}ersion 2020.10-01},
+      month =            {Oct},
+      year =             {2020},
+      note =             {GAP package},
+      howpublished =     {\href
+                          {https://homalg-project.github.io/CAP_project/DeductiveSystemForCAP}
+                          {\texttt{https://homalg-project.github.io/}\discretionary
+                          {}{}{}\texttt{CAP{\textunderscore}project/}\discretionary
+                          {}{}{}\texttt{DeductiveSystemForCAP}}},
+      printedkey =       {GP20}
+    }
+
