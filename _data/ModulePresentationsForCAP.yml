@@ -1,7 +1,9 @@
 name: ModulePresentationsForCAP
-version: 2020.04.16
-date: 16/04/2020
-description: Category R-pres for CAP
+version: "2020.10-01"
+license: "GPL-2.0-or-later"
+date: 2020-10-19
+description: |
+    Category R-pres for CAP
 
 authors:
     - name: Sebastian Gutsche
@@ -35,17 +37,47 @@ needed-pkgs:
       url: "https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP"
 
 www: https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP
-readme: https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP/README.md
+readme: README.md
 packageinfo: https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2020.04.16/ModulePresentationsForCAP-2020.04.16.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2020.10-01/ModulePresentationsForCAP-2020.10-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2020.04.16/ModulePresentationsForCAP-2020.04.16.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2020.10-01/ModulePresentationsForCAP-2020.10-01.zip
 
-abstract: <span class="pkgname">ModulePresentationsForCAP</span> provides the category of finitely presented modules over a computable ring.
+pdf: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2020.10-01/ModulePresentationsForCAP-2020.10-01.pdf
+
+abstract: |
+    <span class="pkgname">ModulePresentationsForCAP</span> provides the category of finitely presented modules over a computable ring.
 
 status: deposited
 doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
+citeas: |
+    <p class='BibEntry'>
+    [<span class='BibKey'>GP20</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
+     <i class='BibTitle'>ModulePresentationsForCAP, Category R-pres for CAP,
+             Version 2020.10-01</i>
+     (<span class='BibYear'>2020</span>)<br />
+    (<span class='BibNote'>GAP package</span>),
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP">https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP</a></span>.
+    </p>
+    
+
+bibtex: |
+    @misc{ ModulePresentationsForCAP2020.10-01,
+      author =           {Gutsche, S. and Posur, S.},
+      title =            {{ModulePresentationsForCAP},  Category R-pres for CAP,
+                          {V}ersion 2020.10-01},
+      month =            {Oct},
+      year =             {2020},
+      note =             {GAP package},
+      howpublished =     {\href
+                          {https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP}
+                          {\texttt{https://homalg-project.github.io/}\discretionary
+                          {}{}{}\texttt{CAP{\textunderscore}project/}\discretionary
+                          {}{}{}\texttt{ModulePresentationsForCAP}}},
+      printedkey =       {GP20}
+    }
+
