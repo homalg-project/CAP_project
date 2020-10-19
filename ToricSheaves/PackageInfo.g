@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "ToricSheaves",
 Subtitle := "Toric sheaves as Serre quotients",
-Version := "2016.08.12",
-Date := "12/08/2016", # dd/mm/yyyy format
+Version := "2020.10-01",
+Date := "19/10/2020",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -34,13 +34,13 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://github.com/homalg-project/CAP_project/tree/master/ToricSheaves",
-PackageInfoURL  := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/ToricSheaves/PackageInfo.g",
-README_URL      := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/ToricSheaves/README.md",
+PackageWWWHome  := "https://homalg-project.github.io/CAP_project/ToricSheaves",
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/ToricSheaves/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/ToricSheaves/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ToricSheaves-", ~.Version, "/ToricSheaves-", ~.Version ),
 # END URLS
 
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages
