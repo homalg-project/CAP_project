@@ -12,17 +12,16 @@ PackageName := "AttributeCategoryForCAP",
 Subtitle := "Automatic enhancement with attributes of a CAP category",
 
 Version := Maximum( [
-  "2019.01.16", ## Mohamed's version
+  "2019.01-16", ## Mohamed's version
   ## this line prevents merge conflicts
-  "2016.09.14", ## Sebas' version
+  "2016.09-14", ## Sebas' version
   ## this line prevents merge conflicts
-  "2016.09.14", ## Sepp's version
+  "2016.09-14", ## Sepp's version
   ## this line prevents merge conflicts
-  "2020.04.27", ## Fabian's version
+  "2020.10-01", ## Fabian's version
 ] ),
 
-Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := "19/10/2020",
 License := "GPL-2.0-or-later",
 
 
@@ -61,13 +60,13 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://github.com/homalg-project/CAP_project/tree/master/AttributeCategoryForCAP",
-PackageInfoURL  := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/AttributeCategoryForCAP/PackageInfo.g",
-README_URL      := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/AttributeCategoryForCAP/README.md",
+PackageWWWHome  := "https://homalg-project.github.io/CAP_project/AttributeCategoryForCAP",
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/AttributeCategoryForCAP/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/AttributeCategoryForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/AttributeCategoryForCAP-", ~.Version, "/AttributeCategoryForCAP-", ~.Version ),
 # END URLS
 
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages
