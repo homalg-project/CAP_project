@@ -11,18 +11,18 @@ SetPackageInfo( rec(
 PackageName := "MonoidalCategories",
 Subtitle := "Monoidal and monoidal (co)closed categories",
 Version := Maximum( [
-  "2020.03.01", ## Mohamed's version
+  "2020.03-01", ## Mohamed's version
   ## this line prevents merge conflicts
-  "2019.06.07", ## Sebas' version
+  "2019.06-07", ## Sebas' version
   ## this line prevents merge conflicts
-  "2020.04.16", ## Sepp's version
+  "2020.04-16", ## Sepp's version
   ## this line prevents merge conflicts
-  "2019.08.10", ## Fabian's version
+  "2020.10-01", ## Fabian's version
   ## this line prevents merge conflicts
-  "2019.02.01", ## Tom's version
+  "2019.02-01", ## Tom's version
 ] ),
 
-Date := Concatenation( ~.Version{[ 9, 10 ]}, "/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
+Date := "19/10/2020",
 License := "GPL-2.0-or-later",
 
 Persons := [
