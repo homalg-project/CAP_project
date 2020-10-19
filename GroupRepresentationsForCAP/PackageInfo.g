@@ -11,14 +11,14 @@ SetPackageInfo( rec(
 PackageName := "GroupRepresentationsForCAP",
 Subtitle := "Skeletal category of group representations for CAP",
 Version := Maximum( [
-  "2017.01.11", ## Sepp's version
+  "2017.01-11", ## Sepp's version
   ## this line prevents merge conflicts
-  "2019.09.02", ## Mohamed's version
+  "2019.09-02", ## Mohamed's version
   ## this line prevents merge conflicts
-  "2020.09.08", ## Fabian's version
+  "2020.10-01", ## Fabian's version
 ] ),
 
-Date := Concatenation( ~.Version{[ 9, 10 ]}, "/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
+Date := "19/10/2020",
 License := "GPL-2.0-or-later",
 
 
@@ -48,13 +48,13 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://github.com/homalg-project/CAP_project/tree/master/GroupRepresentationsForCAP",
-PackageInfoURL  := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/GroupRepresentationsForCAP/PackageInfo.g",
-README_URL      := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/GroupRepresentationsForCAP/README.md",
+PackageWWWHome  := "https://homalg-project.github.io/CAP_project/GroupRepresentationsForCAP",
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/GroupRepresentationsForCAP/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/GroupRepresentationsForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-", ~.Version, "/GroupRepresentationsForCAP-", ~.Version ),
 # END URLS
 
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages
