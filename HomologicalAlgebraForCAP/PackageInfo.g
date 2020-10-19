@@ -4,14 +4,14 @@ PackageName := "HomologicalAlgebraForCAP",
 Subtitle := "Homological algebra algorithms for CAP",
 
 Version := Maximum( [
-  "2015.05.08", ## Sebas' version
-## this line prevents merge conflicts
-   "2015.04.15", ## Sepp's version
-## this line prevents merge conflicts
-    ] ),
+  "2015.05-08", ## Sebas' version
+  ## this line prevents merge conflicts
+  "2015.04-15", ## Sepp's version
+  ## this line prevents merge conflicts
+  "2020.10-01", ## Fabian's version
+] ),
 
-Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := "19/10/2020",
 License := "GPL-2.0-or-later",
 
 
@@ -55,13 +55,13 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://github.com/homalg-project/CAP_project/tree/master/HomologicalAlgebraForCAP",
-PackageInfoURL  := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/HomologicalAlgebraForCAP/PackageInfo.g",
-README_URL      := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/HomologicalAlgebraForCAP/README.md",
+PackageWWWHome  := "https://homalg-project.github.io/CAP_project/HomologicalAlgebraForCAP",
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/HomologicalAlgebraForCAP/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/HomologicalAlgebraForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/HomologicalAlgebraForCAP-", ~.Version, "/HomologicalAlgebraForCAP-", ~.Version ),
 # END URLS
 
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages
