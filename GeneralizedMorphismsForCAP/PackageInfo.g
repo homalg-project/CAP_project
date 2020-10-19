@@ -4,16 +4,17 @@ PackageName := "GeneralizedMorphismsForCAP",
 Subtitle := "Implementations of generalized morphisms for the CAP project",
 
 Version := Maximum( [
-  "2017.12.30", ## Sebas' version
+  "2017.12-30", ## Sebas' version
 ## this line prevents merge conflicts
-  "2020.04.16", ## Sepp's version
+  "2020.04-16", ## Sepp's version
 ## this line prevents merge conflicts
-  "2020.04.29", ## Mohamed's version
+  "2020.04-29", ## Mohamed's version
+## this line prevents merge conflicts
+  "2020.10-01", ## Fabian's version
 ## this line prevents merge conflicts
    ] ),
 
-Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := "19/10/2020",
 License := "GPL-2.0-or-later",
 
 

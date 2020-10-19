@@ -1,7 +1,9 @@
 name: GeneralizedMorphismsForCAP
-version: 2020.04.29
-date: 29/04/2020
-description: Implementations of generalized morphisms for the CAP project
+version: "2020.10-01"
+license: "GPL-2.0-or-later"
+date: 2020-10-19
+description: |
+    Implementations of generalized morphisms for the CAP project
 
 authors:
     - name: Sebastian Gutsche
@@ -29,17 +31,48 @@ needed-pkgs:
       url: "https://homalg-project.github.io/CAP_project/MonoidalCategories"
 
 www: https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP
-readme: https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/README.md
+readme: README.md
 packageinfo: https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2020.04.29/GeneralizedMorphismsForCAP-2020.04.29.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2020.10-01/GeneralizedMorphismsForCAP-2020.10-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2020.04.29/GeneralizedMorphismsForCAP-2020.04.29.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2020.10-01/GeneralizedMorphismsForCAP-2020.10-01.zip
 
-abstract: <span class="pkgname">GeneralizedMorphismsForCAP</span> provides the category of generalized morphisms associated to an abelian category.
+pdf: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2020.10-01/GeneralizedMorphismsForCAP-2020.10-01.pdf
+
+abstract: |
+    <span class="pkgname">GeneralizedMorphismsForCAP</span> provides the category of generalized morphisms associated to an abelian category.
 
 status: deposited
 doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
+citeas: |
+    <p class='BibEntry'>
+    [<span class='BibKey'>GP20</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
+     <i class='BibTitle'>GeneralizedMorphismsForCAP, Implementations of generalized morphisms for the CAP project,
+             Version 2020.10-01</i>
+     (<span class='BibYear'>2020</span>)<br />
+    (<span class='BibNote'>GAP package</span>),
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP">https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP</a></span>.
+    </p>
+    
+
+bibtex: |
+    @misc{ GeneralizedMorphismsForCAP2020.10-01,
+      author =           {Gutsche, S. and Posur, S.},
+      title =            {{GeneralizedMorphismsForCAP},    Implementations    of
+                          generalized  morphisms  for the CAP project, {V}ersion
+                          2020.10-01},
+      month =            {Oct},
+      year =             {2020},
+      note =             {GAP package},
+      howpublished =     {\href
+                          {https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP}
+                          {\texttt{https://homalg-project.github.io/}\discretionary
+                          {}{}{}\texttt{CAP{\textunderscore}project/}\discretionary
+                          {}{}{}\texttt{GeneralizedMorphismsForCAP}}},
+      printedkey =       {GP20}
+    }
+
