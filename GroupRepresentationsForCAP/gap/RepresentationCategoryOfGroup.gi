@@ -59,7 +59,15 @@ InstallMethod( RepresentationCategory,
     
     database_keys := EvalString( command );
     
-    group_string := String( group );
+    if HasIsTrivial( group ) and IsTrivial( group ) then
+        
+        group_string := "TrivialGroup( )";
+        
+    else
+        
+        group_string := String( group );
+        
+    fi;
     
     group_data := First( database_keys, entry -> entry[1] = group_string );
     
