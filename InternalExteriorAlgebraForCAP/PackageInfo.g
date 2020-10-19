@@ -11,11 +11,12 @@ SetPackageInfo( rec(
 PackageName := "InternalExteriorAlgebraForCAP",
 Subtitle := "Constructions for Modules over the Internal Exterior Algebra for CAP",
 Version := Maximum( [
-  "2017.01.11", ## Sepp's version
+  "2017.01-11", ## Sepp's version
+  ## this line prevents merge conflicts
+  "2020.10-01", ## Fabian's version
 ] ),
 
-Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := "19/10/2020",
 License := "GPL-2.0-or-later",
 
 
@@ -44,13 +45,13 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://github.com/homalg-project/CAP_project/tree/master/InternalExteriorAlgebraForCAP",
-PackageInfoURL  := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/InternalExteriorAlgebraForCAP/PackageInfo.g",
-README_URL      := "https://raw.githubusercontent.com/homalg-project/CAP_project/master/InternalExteriorAlgebraForCAP/README.md",
+PackageWWWHome  := "https://homalg-project.github.io/CAP_project/InternalExteriorAlgebraForCAP",
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/InternalExteriorAlgebraForCAP/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/InternalExteriorAlgebraForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/InternalExteriorAlgebraForCAP-", ~.Version, "/InternalExteriorAlgebraForCAP-", ~.Version ),
 # END URLS
 
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages
