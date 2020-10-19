@@ -35,17 +35,17 @@ b := b / Wrapper;
 c := c / Wrapper;
 #! <A morphism in WrapperCategory( Category of matrices over Q )>
 d := CokernelProjection( a );
-#! <A morphism in WrapperCategory( Category of matrices over Q )>
+#! <An epimorphism in WrapperCategory( Category of matrices over Q )>
 e := CokernelColift( a, PreCompose( b, c ) );
 #! <A morphism in WrapperCategory( Category of matrices over Q )>
 f := KernelEmbedding( e );
-#! <A morphism in WrapperCategory( Category of matrices over Q )>
+#! <A monomorphism in WrapperCategory( Category of matrices over Q )>
 g := KernelEmbedding( c );
-#! <A morphism in WrapperCategory( Category of matrices over Q )>
+#! <A monomorphism in WrapperCategory( Category of matrices over Q )>
 h := KernelLift( c, PreCompose( a, b ) );
 #! <A morphism in WrapperCategory( Category of matrices over Q )>
 i := CokernelProjection( h );
-#! <A morphism in WrapperCategory( Category of matrices over Q )>
+#! <An epi morphism in WrapperCategory( Category of matrices over Q )>
 ff := AsGeneralizedMorphism( f );
 #! <A morphism in Generalized morphism category of
 #!  WrapperCategory( Category of matrices over Q ) by cospan>

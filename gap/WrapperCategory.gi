@@ -501,28 +501,6 @@ end );
 ##################################
 
 ##
-InstallMethod( ViewObj,
-        "for an object in a wrapper CAP category",
-        [ IsWrapperCapCategoryObject ],
-        
-  function( a )
-    
-    Print( "<An object in ", Name( CapCategory( a ) ), ">" );
-    
-end );
-
-##
-InstallMethod( ViewObj,
-        "for a morphism in a wrapper CAP category",
-        [ IsWrapperCapCategoryMorphism ],
-        
-  function( phi )
-    
-    Print( "<A morphism in ", Name( CapCategory( phi ) ), ">" );
-    
-end );
-
-##
 InstallMethod( Display,
         "for an object in a wrapper CAP category",
         [ IsWrapperCapCategoryObject ],

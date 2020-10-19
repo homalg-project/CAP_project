@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "WrapperCategories",
 Subtitle := "Construct an equivalent wrapper category out of a CAP category",
 Version := Maximum( [
-                   "2020.10-02", ## Mohamed's version
+                   "2020.10-03", ## Mohamed's version
                    ## this line prevents merge conflicts
                    "2020.08.16", ## Fabian's version
                    ## this line prevents merge conflicts
