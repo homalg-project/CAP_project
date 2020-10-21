@@ -24,3 +24,12 @@ ReadPackage( "MonoidalCategories", "gap/SymmetricClosedMonoidalCategoriesDoc.gd"
 
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategoriesDoc.gd" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategories.gd" );
+
+## Coclosed Monoidal
+ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesDoc.gd" );
+ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategories.gd" );
+
+ReadPackage( "MonoidalCategories", "gap/SymmetricCoclosedMonoidalCategoriesDoc.gd" );
+
+ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategoriesDoc.gd" );
+ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategories.gd" );

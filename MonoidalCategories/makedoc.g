@@ -29,6 +29,8 @@ AutoDoc(
                                 "gap/SymmetricClosedMonoidalCategoriesDoc.gd",
                                 "gap/RigidSymmetricClosedMonoidalCategoriesDoc.gd",
                                 "gap/RigidSymmetricClosedMonoidalCategories.gd",
+                                "gap/CoclosedMonoidalCategoriesDoc.gd",
+                                "gap/CoclosedMonoidalCategories.gd",
                                 ],
                             scan_dirs := [ ],
                             ),
