@@ -578,33 +578,33 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
     underlying_category := UnderlyingCategory( category );
     
     if CanCompute( underlying_category, "IsCongruentForMorphisms" ) then
-    
-    ##
-    AddIsEqualForObjects( category,
-      function( action_object_1, action_object_2 )
         
-        return IsEqualForObjects( ActionDomain( action_object_1 ), ActionDomain( action_object_2 ) )
-               and
-               IsCongruentForMorphisms( StructureMorphism( action_object_1 ), StructureMorphism( action_object_2 ) );
+        ##
+        AddIsEqualForObjects( category,
+          function( action_object_1, action_object_2 )
+            
+            return IsEqualForObjects( ActionDomain( action_object_1 ), ActionDomain( action_object_2 ) )
+                   and
+                   IsCongruentForMorphisms( StructureMorphism( action_object_1 ), StructureMorphism( action_object_2 ) );
+            
+        end );
         
-    end );
-    
-    ##
-    AddIsEqualForMorphisms( category,
-      function( morphism_1, morphism_2 )
+        ##
+        AddIsEqualForMorphisms( category,
+          function( morphism_1, morphism_2 )
+            
+            return IsEqualForMorphisms( UnderlyingCell( morphism_1 ), UnderlyingCell( morphism_2 ) );
+            
+        end );
         
-        return IsEqualForMorphisms( UnderlyingCell( morphism_1 ), UnderlyingCell( morphism_2 ) );
+        ##
+        AddIsCongruentForMorphisms( category,
+          function( morphism_1, morphism_2 )
+            
+            return IsCongruentForMorphisms( UnderlyingCell( morphism_1 ), UnderlyingCell( morphism_2 ) );
+            
+        end );
         
-    end );
-    
-    ##
-    AddIsCongruentForMorphisms( category,
-      function( morphism_1, morphism_2 )
-        
-        return IsCongruentForMorphisms( UnderlyingCell( morphism_1 ), UnderlyingCell( morphism_2 ) );
-        
-    end );
-    
     else
         
         ##
