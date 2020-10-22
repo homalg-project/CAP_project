@@ -382,19 +382,30 @@ InstallMethod( \=,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
   function( morphism_1, morphism_2 )
+    local source_equality, range_equality;
     
     if CapCategory( morphism_1 )!.input_sanity_check_level > 0 or CapCategory( morphism_2 )!.input_sanity_check_level > 0  then
         if not IsIdenticalObj( CapCategory( morphism_1 ), CapCategory( morphism_2 ) ) then
             Error( Concatenation( "the morphism \"", String( morphism_1 ), "\" and the morphism \"", String( morphism_2 ), "\" do not belong to the same CAP category" ) );
         fi;
     fi;
-    if not IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) ) or not IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) ) then
+
+    source_equality := IsEqualForObjects( Source( morphism_1 ), Source( morphism_2 ) );
+    range_equality := IsEqualForObjects( Range( morphism_1 ), Range( morphism_2 ) );
+    
+    if source_equality = false or range_equality = false then
         
         return false;
         
-    fi;
+    elif source_equality = fail or range_equality = fail then
+        
+        return fail;
+        
+    else # source_equality = true and range_equality = true
     
-    return IsCongruentForMorphisms( morphism_1, morphism_2 );
+        return IsCongruentForMorphisms( morphism_1, morphism_2 );
+        
+    fi;
     
 end );
 

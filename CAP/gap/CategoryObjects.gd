@@ -62,6 +62,9 @@ DeclareOperationWithCache( "IsEqualForObjects",
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsEqualForObjects</C>.
 #! $F: (a,b) \mapsto \mathtt{IsEqualForObjects}(a,b)$.
+#! Warning: If `F` is a partial function (returning `fail` if $a = b$ is not decidable), CAP cannot type check all inputs,
+#! the usual guaranties coming with the specifications cannot be given, and some derivations (e.g. `IsEndomorphism`) might
+#! also yield partial functions.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddIsEqualForObjects",

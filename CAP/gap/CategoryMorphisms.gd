@@ -757,6 +757,9 @@ DeclareOperation( "IsEqualForMorphisms",
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsEqualForMorphisms</C>.
 #! $F: (\alpha, \beta) \mapsto \mathtt{IsEqualForMorphisms}(\alpha, \beta)$.
+#! Warning: If `F` is a partial function (returning `fail` if $\alpha = \beta$ is not decidable), CAP cannot type check all inputs,
+#! the usual guaranties coming with the specifications cannot be given, and some derivations (e.g. `IsIdenticalToIdentityMorphism`) might
+#! also yield partial functions.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddIsEqualForMorphisms",
@@ -786,6 +789,9 @@ DeclareOperation( "IsEqualForMorphismsOnMor",
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsEqualForMorphismsOnMor</C>.
 #! $F: (\alpha, \beta) \mapsto \mathtt{IsEqualForMorphismsOnMor}(\alpha, \beta)$.
+#! Warning: If `F` is a partial function (returning `fail` if $\alpha = \beta$ is not decidable), CAP cannot type check all inputs,
+#! the usual guaranties coming with the specifications cannot be given, and some derivations (e.g. `IsIdenticalToIdentityMorphism`) might
+#! also yield partial functions.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddIsEqualForMorphismsOnMor",
