@@ -607,13 +607,46 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_LEFT_AND_RIGHT_ACTIONS_CATEGORY,
     
     else
         
-        SetCachingOfCategoryCrisp( category );
+        ##
+        AddIsEqualForObjects( category,
+          function( action_object_1, action_object_2 )
+            local object_equality, structure_morphism_equality;
+            
+            object_equality := IsEqualForObjects( ActionDomain( action_object_1 ), ActionDomain( action_object_2 ) );
+            
+            if object_equality = false then
+                
+                return false;
+                
+            elif object_equality = fail then
+                
+                return fail;
+                
+            else # object_equality = true
+                
+                structure_morphism_equality := IsEqualForMorphisms( StructureMorphism( action_object_1 ), StructureMorphism( action_object_2 ) );
+                
+                if structure_morphism_equality = true then
+                    
+                    return true;
+                    
+                else
+                    
+                    return fail; # we would have to decide IsCongruentForMorphisms
+                    
+                fi;
+                
+            fi;
+            
+        end );
         
         ##
-        AddIsEqualForObjects( category, IsIdenticalObj );
-        
-        ##
-        AddIsEqualForMorphisms( category, IsIdenticalObj );
+        AddIsEqualForMorphisms( category,
+          function( morphism_1, morphism_2 )
+            
+            return IsEqualForMorphisms( UnderlyingCell( morphism_1 ), UnderlyingCell( morphism_2 ) );
+            
+        end );
         
         ## cannot AddIsCongruentForMorphisms
         category!.is_computable := false;
