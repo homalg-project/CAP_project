@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
 # This file is a script which compiles the package manual and prints overfull hbox warnings.
@@ -13,7 +13,7 @@ AutoDoc( rec(
     dir := "doc_tmp/",
     autodoc := rec(
         files := [ "doc/Doc.autodoc" ],
-        scan_dirs := [ "gap", "examples", "examples/doc" ],
+        scan_dirs := [ "doc", "gap", "examples", "examples/doc" ],
     ),
     gapdoc := rec(
         LaTeXOptions := rec(

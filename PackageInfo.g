@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
 # This file contains package meta data. For additional information on
@@ -11,19 +11,19 @@ SetPackageInfo( rec(
 PackageName := "Toposes",
 Subtitle := "Elementary toposes",
 Version := Maximum( [
-                   "2020.07.03", ## Mohamed's version
+                   "2020.10-01", ## Mohamed's version
                    ## this line prevents merge conflicts
-                   "2019.03.16", ## Tom's version
+                   "2019.03-16", ## Tom's version
                    ## this line prevents merge conflicts
-                   "2019.01.29", ## Mario's version
+                   "2019.01-29", ## Mario's version
                    ## this line prevents merge conflicts
-                   "2020.04.27", ## Fabian's version
+                   "2020.04-27", ## Fabian's version
                    ## this line prevents merge conflicts
-                   "2019.09.17", ## Sepp's version
+                   "2019.09-17", ## Sepp's version
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Version{[ 9, 10 ]}, "/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
+Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -97,7 +97,7 @@ README_URL      := "https://homalg-project.github.io/Toposes/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/Toposes/releases/download/v", ~.Version, "/Toposes-", ~.Version ),
 # END URLS
 
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages
