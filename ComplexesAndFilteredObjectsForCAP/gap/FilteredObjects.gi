@@ -66,7 +66,7 @@ InstallMethod( CategoryOfAscendingFilteredObjects,
     
     INSTALL_OPERATIONS_FOR_ASCENDING_FILTERED_OBJECTS_CATEGORY( category );
     
-    Finalize( filtered_objects_category );
+    Finalize( filtered_objects_category : SuppressEqualitiesWarning := true );
     
     return filtered_objects_category;
     
@@ -91,7 +91,7 @@ InstallMethod( CategoryOfDescendingFilteredObjects,
     
     INSTALL_OPERATIONS_FOR_DESCENDING_FILTERED_OBJECTS_CATEGORY( category );
     
-    Finalize( filtered_objects_category );
+    Finalize( filtered_objects_category : SuppressEqualitiesWarning := true );
     
     return filtered_objects_category;
     

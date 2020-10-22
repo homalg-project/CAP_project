@@ -212,22 +212,26 @@ InstallMethod( IsFinalized,
         
     od;
     
-    # sanity checks
-    if not CanCompute( category, "IsEqualForObjects" ) then
+    if not ValueOption( "SuppressEqualitiesWarning" ) = true then
         
-        Error( Concatenation( "please provide IsEqualForObjects for the category with name \"", Name( category ) , "\"" ) );
+        # sanity checks
+        if not CanCompute( category, "IsEqualForObjects" ) then
+            
+            Error( Concatenation( "please provide IsEqualForObjects for the category with name \"", Name( category ) , "\". You can suppress this warning by passing the option \"SuppressEqualitiesWarning := true\" to Finalize." ) );
+            
+        fi;
         
-    fi;
-    
-    if not CanCompute( category, "IsEqualForMorphisms" ) then
+        if not CanCompute( category, "IsEqualForMorphisms" ) then
+            
+            Error( Concatenation( "please provide IsEqualForMorphisms for the category with name \"", Name( category ) , "\". You can suppress this warning by passing the option \"SuppressEqualitiesWarning := true\" to Finalize." ) );
+            
+        fi;
         
-        Error( Concatenation( "please provide IsEqualForMorphisms for the category with name \"", Name( category ) , "\"" ) );
-        
-    fi;
-    
-    if not CanCompute( category, "IsCongruentForMorphisms" ) and category!.is_computable then
-        
-        Error( Concatenation( "please provide IsCongruentForMorphisms for the category with name \"", Name( category ) , "\"" ) );
+        if not CanCompute( category, "IsCongruentForMorphisms" ) and category!.is_computable then
+            
+            Error( Concatenation( "please provide IsCongruentForMorphisms for the category with name \"", Name( category ) , "\". You can suppress this warning by passing the option \"SuppressEqualitiesWarning := true\" to Finalize." ) );
+            
+        fi;
         
     fi;
     

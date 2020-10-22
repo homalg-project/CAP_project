@@ -72,7 +72,7 @@ InstallMethod( CocomplexCategory,
     
     INSTALL_OPERATIONS_FOR_COCOMPLEX_CATEGORY( category );
     
-    Finalize( cocomplex_category );
+    Finalize( cocomplex_category : SuppressEqualitiesWarning := true );
     
     return cocomplex_category;
     
@@ -103,7 +103,7 @@ InstallMethod( ComplexCategory,
     
     INSTALL_OPERATIONS_FOR_COMPLEX_CATEGORY( category );
     
-    Finalize( complex_category );
+    Finalize( complex_category : SuppressEqualitiesWarning := true );
     
     return complex_category;
     

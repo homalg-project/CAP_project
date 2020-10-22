@@ -53,4 +53,4 @@ AddKernelEmbeddingWithGivenKernelObject( vecspaces,
 
 end );
 
-Finalize( vecspaces );
+Finalize( vecspaces : SuppressEqualitiesWarning := true );

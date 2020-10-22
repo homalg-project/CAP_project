@@ -64,7 +64,7 @@ InstallMethod( ZFunctorCategory,
     
     INSTALL_OPERATIONS_FOR_ZFUNCTOR_CATEGORY( category );
     
-    Finalize( z_functor_category );
+    Finalize( z_functor_category : SuppressEqualitiesWarning := true );
     
     return z_functor_category;
     
