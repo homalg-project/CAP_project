@@ -15,9 +15,6 @@ Welcome to the CAP project.
 
 Please take a look at our [manual](https://github.com/homalg-project/CAP_project/raw/master/Manual/CAPManual.pdf) for a first introduction to CAP.
 
-## Website
-
-Please visit our website: https://homalg-project.github.io/docs/CAP_project/
 <!-- BEGIN FOOTER -->
 ### Packages of [CAP_project](/../../):
 | Name | Description | Documentation |
