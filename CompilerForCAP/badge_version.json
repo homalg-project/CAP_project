@@ -2,7 +2,6 @@
 ---
 {
   "schemaVersion": 1,
-  "label": "version",
-  "message": "{{ site.data.CompilerForCAP.version }}",
-  "color": "orange"
+  "label": "to be overridden by url",
+  "message": "{{ site.data.CompilerForCAP.version }}"
 }

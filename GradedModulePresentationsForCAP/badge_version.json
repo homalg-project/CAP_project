@@ -2,7 +2,6 @@
 ---
 {
   "schemaVersion": 1,
-  "label": "version",
-  "message": "{{ site.data.GradedModulePresentationsForCAP.version }}",
-  "color": "orange"
+  "label": "to be overridden by url",
+  "message": "{{ site.data.GradedModulePresentationsForCAP.version }}"
 }
