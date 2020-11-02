@@ -1,5 +1,5 @@
 <!-- BEGIN HEADER -->
-# CAP project
+# CAP project&ensp;<sup><sup>[![View code][code-img]][code-url]</sup></sup>
 
 ### Categories, Algorithms, and Programming
 
@@ -40,122 +40,122 @@ Please visit our website: https://homalg-project.github.io/docs/CAP_project/
 | [MonoidalCategories](MonoidalCategories) | Monoidal and monoidal (co)closed categories | [![HTML stable documentation][html-MonoidalCategories-img]][html-MonoidalCategories-url] [![PDF stable documentation][pdf-MonoidalCategories-img]][pdf-MonoidalCategories-url] |
 | [ToricSheaves](ToricSheaves) | Toric sheaves as Serre quotients | [![HTML stable documentation][html-ToricSheaves-img]][html-ToricSheaves-url] [![PDF stable documentation][pdf-ToricSheaves-img]][pdf-ToricSheaves-url] |
 
-[html-CAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-CAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-CAP-url]: https://homalg-project.github.io/CAP_project/CAP/doc/chap0_mj.html
 
-[pdf-CAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-CAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-CAP-url]: https://homalg-project.github.io/CAP_project/CAP/download_pdf.html
 
 
-[html-ActionsForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-ActionsForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-ActionsForCAP-url]: https://homalg-project.github.io/CAP_project/ActionsForCAP/doc/chap0_mj.html
 
-[pdf-ActionsForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-ActionsForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-ActionsForCAP-url]: https://homalg-project.github.io/CAP_project/ActionsForCAP/download_pdf.html
 
 
-[html-AttributeCategoryForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-AttributeCategoryForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-AttributeCategoryForCAP-url]: https://homalg-project.github.io/CAP_project/AttributeCategoryForCAP/doc/chap0_mj.html
 
-[pdf-AttributeCategoryForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-AttributeCategoryForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-AttributeCategoryForCAP-url]: https://homalg-project.github.io/CAP_project/AttributeCategoryForCAP/download_pdf.html
 
 
-[html-CompilerForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-CompilerForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-CompilerForCAP-url]: https://homalg-project.github.io/CAP_project/CompilerForCAP/doc/chap0_mj.html
 
-[pdf-CompilerForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-CompilerForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-CompilerForCAP-url]: https://homalg-project.github.io/CAP_project/CompilerForCAP/download_pdf.html
 
 
-[html-ComplexesAndFilteredObjectsForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-ComplexesAndFilteredObjectsForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-ComplexesAndFilteredObjectsForCAP-url]: https://homalg-project.github.io/CAP_project/ComplexesAndFilteredObjectsForCAP/doc/chap0_mj.html
 
-[pdf-ComplexesAndFilteredObjectsForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-ComplexesAndFilteredObjectsForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-ComplexesAndFilteredObjectsForCAP-url]: https://homalg-project.github.io/CAP_project/ComplexesAndFilteredObjectsForCAP/download_pdf.html
 
 
-[html-DeductiveSystemForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-DeductiveSystemForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-DeductiveSystemForCAP-url]: https://homalg-project.github.io/CAP_project/DeductiveSystemForCAP/doc/chap0_mj.html
 
-[pdf-DeductiveSystemForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-DeductiveSystemForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-DeductiveSystemForCAP-url]: https://homalg-project.github.io/CAP_project/DeductiveSystemForCAP/download_pdf.html
 
 
-[html-FreydCategoriesForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-FreydCategoriesForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-FreydCategoriesForCAP-url]: https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/doc/chap0_mj.html
 
-[pdf-FreydCategoriesForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-FreydCategoriesForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-FreydCategoriesForCAP-url]: https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/download_pdf.html
 
 
-[html-GeneralizedMorphismsForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-GeneralizedMorphismsForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-GeneralizedMorphismsForCAP-url]: https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/doc/chap0_mj.html
 
-[pdf-GeneralizedMorphismsForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-GeneralizedMorphismsForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-GeneralizedMorphismsForCAP-url]: https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/download_pdf.html
 
 
-[html-GradedModulePresentationsForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-GradedModulePresentationsForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-GradedModulePresentationsForCAP-url]: https://homalg-project.github.io/CAP_project/GradedModulePresentationsForCAP/doc/chap0_mj.html
 
-[pdf-GradedModulePresentationsForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-GradedModulePresentationsForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-GradedModulePresentationsForCAP-url]: https://homalg-project.github.io/CAP_project/GradedModulePresentationsForCAP/download_pdf.html
 
 
-[html-GroupRepresentationsForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-GroupRepresentationsForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-GroupRepresentationsForCAP-url]: https://homalg-project.github.io/CAP_project/GroupRepresentationsForCAP/doc/chap0_mj.html
 
-[pdf-GroupRepresentationsForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-GroupRepresentationsForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-GroupRepresentationsForCAP-url]: https://homalg-project.github.io/CAP_project/GroupRepresentationsForCAP/download_pdf.html
 
 
-[html-HomologicalAlgebraForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-HomologicalAlgebraForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-HomologicalAlgebraForCAP-url]: https://homalg-project.github.io/CAP_project/HomologicalAlgebraForCAP/doc/chap0_mj.html
 
-[pdf-HomologicalAlgebraForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-HomologicalAlgebraForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-HomologicalAlgebraForCAP-url]: https://homalg-project.github.io/CAP_project/HomologicalAlgebraForCAP/download_pdf.html
 
 
-[html-InternalExteriorAlgebraForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-InternalExteriorAlgebraForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-InternalExteriorAlgebraForCAP-url]: https://homalg-project.github.io/CAP_project/InternalExteriorAlgebraForCAP/doc/chap0_mj.html
 
-[pdf-InternalExteriorAlgebraForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-InternalExteriorAlgebraForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-InternalExteriorAlgebraForCAP-url]: https://homalg-project.github.io/CAP_project/InternalExteriorAlgebraForCAP/download_pdf.html
 
 
-[html-LinearAlgebraForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-LinearAlgebraForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-LinearAlgebraForCAP-url]: https://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/doc/chap0_mj.html
 
-[pdf-LinearAlgebraForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-LinearAlgebraForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-LinearAlgebraForCAP-url]: https://homalg-project.github.io/CAP_project/LinearAlgebraForCAP/download_pdf.html
 
 
-[html-ModulePresentationsForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-ModulePresentationsForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-ModulePresentationsForCAP-url]: https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP/doc/chap0_mj.html
 
-[pdf-ModulePresentationsForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-ModulePresentationsForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-ModulePresentationsForCAP-url]: https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP/download_pdf.html
 
 
-[html-ModulesOverLocalRingsForCAP-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-ModulesOverLocalRingsForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-ModulesOverLocalRingsForCAP-url]: https://homalg-project.github.io/CAP_project/ModulesOverLocalRingsForCAP/doc/chap0_mj.html
 
-[pdf-ModulesOverLocalRingsForCAP-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-ModulesOverLocalRingsForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-ModulesOverLocalRingsForCAP-url]: https://homalg-project.github.io/CAP_project/ModulesOverLocalRingsForCAP/download_pdf.html
 
 
-[html-MonoidalCategories-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-MonoidalCategories-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-MonoidalCategories-url]: https://homalg-project.github.io/CAP_project/MonoidalCategories/doc/chap0_mj.html
 
-[pdf-MonoidalCategories-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-MonoidalCategories-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-MonoidalCategories-url]: https://homalg-project.github.io/CAP_project/MonoidalCategories/download_pdf.html
 
 
-[html-ToricSheaves-img]: https://img.shields.io/badge/HTML-stable-blue.svg
+[html-ToricSheaves-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
 [html-ToricSheaves-url]: https://homalg-project.github.io/CAP_project/ToricSheaves/doc/chap0_mj.html
 
-[pdf-ToricSheaves-img]: https://img.shields.io/badge/PDF-stable-blue.svg
+[pdf-ToricSheaves-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
 [pdf-ToricSheaves-url]: https://homalg-project.github.io/CAP_project/ToricSheaves/download_pdf.html
 
 
@@ -164,4 +164,7 @@ Please visit our website: https://homalg-project.github.io/docs/CAP_project/
 
 [codecov-img]: https://codecov.io/gh/homalg-project/CAP_project/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/homalg-project/CAP_project
+
+[code-img]: https://img.shields.io/badge/-View%20code-blue?logo=github
+[code-url]: https://github.com/homalg-project/CAP_project#top
 <!-- END FOOTER -->
