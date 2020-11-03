@@ -2,7 +2,6 @@
 ---
 {
   "schemaVersion": 1,
-  "label": "released on",
-  "message": "{{ site.data.LinearAlgebraForCAP.date }}",
-  "color": "orange"
+  "label": "to be overridden by url",
+  "message": "{{ site.data.LinearAlgebraForCAP.date }}"
 }
