@@ -11,6 +11,8 @@
 
 Welcome to the CAP project.
 
+This repository contains the GAP package [CAP](CAP#readme) and many packages based on it (see the [table below](#packages-of-cap_project)). For more packages based on CAP which are not part of this repository, see the table on [this page](https://homalg-project.github.io/docs/CAP_project-based/).
+
 ## Manual
 
 Please take a look at our [manual](https://github.com/homalg-project/CAP_project/raw/master/Manual/CAPManual.pdf) for a first introduction to CAP.
