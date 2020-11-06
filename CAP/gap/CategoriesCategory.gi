@@ -626,16 +626,16 @@ end );
 ##
 AddDirectProduct( CapCat,
                   
-  function( product_of_categories )
+  function( object_product_list )
     
-    return AsCatObject( CallFuncList( Product, List( Components( product_of_categories ), AsCapCategory ) ) );
+    return AsCatObject( CallFuncList( Product, List( object_product_list, AsCapCategory ) ) );
     
 end );
 
 ##
 AddProjectionInFactorOfDirectProductWithGivenDirectProduct( CapCat,
                             
-  function( object_product_list, direct_product, projection_number )
+  function( object_product_list, projection_number, direct_product )
     local projection_functor;
     
     projection_functor := CapFunctor( 
@@ -684,7 +684,7 @@ AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( CapCat,
           function( object )
             local object_list;
             
-            object_list := List( Components( sink ), F -> ApplyFunctor( F, object ) );
+            object_list := List( sink, F -> ApplyFunctor( F, object ) );
             
             return CallFuncList( Product, object_list );
             
@@ -695,7 +695,7 @@ AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( CapCat,
           function( new_source, morphism, new_range )
             local morphism_list;
             
-            morphism_list := List( Components( sink ), F -> ApplyFunctor( F, morphism ) );
+            morphism_list := List( sink, F -> ApplyFunctor( F, morphism ) );
             
             return CallFuncList( Product, morphism_list );
             
