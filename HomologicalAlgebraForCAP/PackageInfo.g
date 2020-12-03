@@ -55,7 +55,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/HomologicalAlgebraForCAP",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/HomologicalAlgebraForCAP",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/HomologicalAlgebraForCAP/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/HomologicalAlgebraForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/HomologicalAlgebraForCAP-", ~.Version, "/HomologicalAlgebraForCAP-", ~.Version ),
