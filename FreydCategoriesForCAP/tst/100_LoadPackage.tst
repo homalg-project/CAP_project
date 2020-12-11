@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
 #
 # This file tests if the package can be loaded without errors or warnings.
@@ -6,7 +6,6 @@
 gap> package_loading_info_level := InfoLevel( InfoPackageLoading );;
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_ERROR );;
 gap> LoadPackage( "FreydCategoriesForCAP", false );
-#I  method installed for IsInjective matches more than one declaration
 true
 gap> LoadPackage( "IO_ForHomalg", false );
 true

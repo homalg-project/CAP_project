@@ -80,7 +80,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/MonoidalCategories",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/MonoidalCategories",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/MonoidalCategories/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/MonoidalCategories/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-", ~.Version, "/MonoidalCategories-", ~.Version ),

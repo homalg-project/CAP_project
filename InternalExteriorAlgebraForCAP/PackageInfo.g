@@ -45,7 +45,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/InternalExteriorAlgebraForCAP",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/InternalExteriorAlgebraForCAP",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/InternalExteriorAlgebraForCAP/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/InternalExteriorAlgebraForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/InternalExteriorAlgebraForCAP-", ~.Version, "/InternalExteriorAlgebraForCAP-", ~.Version ),

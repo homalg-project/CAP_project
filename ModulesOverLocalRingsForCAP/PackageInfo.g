@@ -43,7 +43,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/ModulesOverLocalRingsForCAP",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/ModulesOverLocalRingsForCAP",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/ModulesOverLocalRingsForCAP/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/ModulesOverLocalRingsForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-", ~.Version, "/ModulesOverLocalRingsForCAP-", ~.Version ),

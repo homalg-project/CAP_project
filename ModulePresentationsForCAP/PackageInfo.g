@@ -59,7 +59,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/ModulePresentationsForCAP",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-", ~.Version, "/ModulePresentationsForCAP-", ~.Version ),

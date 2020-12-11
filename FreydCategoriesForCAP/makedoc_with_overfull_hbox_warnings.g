@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
 #
 # This file is a script which compiles the package manual and prints overfull hbox warnings.

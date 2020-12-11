@@ -56,7 +56,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/ComplexesAndFilteredObjectsForCAP",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/ComplexesAndFilteredObjectsForCAP",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/ComplexesAndFilteredObjectsForCAP/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/ComplexesAndFilteredObjectsForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ComplexesAndFilteredObjectsForCAP-", ~.Version, "/ComplexesAndFilteredObjectsForCAP-", ~.Version ),

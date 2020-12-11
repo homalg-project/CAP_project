@@ -54,7 +54,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/DeductiveSystemForCAP",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/DeductiveSystemForCAP",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/DeductiveSystemForCAP/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/DeductiveSystemForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/DeductiveSystemForCAP-", ~.Version, "/DeductiveSystemForCAP-", ~.Version ),

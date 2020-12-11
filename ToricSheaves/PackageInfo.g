@@ -34,7 +34,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/ToricSheaves",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/ToricSheaves",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/ToricSheaves/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/ToricSheaves/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ToricSheaves-", ~.Version, "/ToricSheaves-", ~.Version ),
