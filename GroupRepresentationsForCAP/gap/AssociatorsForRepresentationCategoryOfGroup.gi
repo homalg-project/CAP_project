@@ -1138,7 +1138,7 @@ InstallMethod( WriteDatabaseKeysToFile,
                
     function( filename )
         
-        PrintTo( filename, Concatenation( ASSOCIATORS_Setup.database_keys, "\n" ) );
+        PrintTo( filename, Concatenation( String( ASSOCIATORS_Setup.database_keys ), "\n" ) );
         
 end );
 
