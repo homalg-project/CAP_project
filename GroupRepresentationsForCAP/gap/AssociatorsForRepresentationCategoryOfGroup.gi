@@ -1123,12 +1123,19 @@ InstallMethod( WriteAssociatorDataToFile,
                [ IsString ],
                
    function( filename )
+     local stream;
        
        ASSOCIATORS_Setup.database_keys[4] := filename;
        
        RemoveCharacters( ASSOCIATORS_Setup.associator_stringlist, " " );
        
-       PrintTo( filename, Concatenation( ASSOCIATORS_Setup.associator_stringlist, "\n" ) );
+       stream := OutputTextFile( filename, false );
+       
+       SetPrintFormattingStatus( stream, false );
+       
+       PrintTo( stream, Concatenation( ASSOCIATORS_Setup.associator_stringlist, "\n" ) );
+       
+       CloseStream( stream );
        
 end );
 
@@ -1137,8 +1144,15 @@ InstallMethod( WriteDatabaseKeysToFile,
                [ IsString ],
                
     function( filename )
+      local stream;
         
-        PrintTo( filename, Concatenation( String( ASSOCIATORS_Setup.database_keys ), "\n" ) );
+        stream := OutputTextFile( filename, false );
+        
+        SetPrintFormattingStatus( stream, false );
+        
+        PrintTo( stream, Concatenation( String( ASSOCIATORS_Setup.database_keys ), "\n" ) );
+        
+        CloseStream( stream );
         
 end );
 
@@ -1147,8 +1161,15 @@ InstallMethod( WriteRepresentationsDataToFile,
                [ IsString ],
                
     function( filename )
+      local stream;
         
-        PrintTo( filename, Concatenation( ASSOCIATORS_Setup.initialize_group_data_log_list_as_string, "\n" ) );
+        stream := OutputTextFile( filename, false );
+        
+        SetPrintFormattingStatus( stream, false );
+        
+        PrintTo( stream, Concatenation( ASSOCIATORS_Setup.initialize_group_data_log_list_as_string, "\n" ) );
+        
+        CloseStream( stream );
         
 end );
 
@@ -1157,8 +1178,15 @@ InstallMethod( WriteSkeletalFunctorDataToFile,
                [ IsString ],
                
   function( filename )
+    local stream;
     
-    PrintTo( filename, Concatenation( ASSOCIATORS_Setup.skeletalfunctortensordata_log_list_as_string, "\n" ) );
+    stream := OutputTextFile( filename, false );
+    
+    SetPrintFormattingStatus( stream, false );
+    
+    PrintTo( stream, Concatenation( ASSOCIATORS_Setup.skeletalfunctortensordata_log_list_as_string, "\n" ) );
+    
+    CloseStream( stream );
     
 end );
 
