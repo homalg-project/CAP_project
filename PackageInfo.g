@@ -44,7 +44,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/WrapperCategories",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/WrapperCategories",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/WrapperCategories",
 PackageInfoURL  := "https://homalg-project.github.io/WrapperCategories/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/WrapperCategories/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/WrapperCategories/releases/download/v", ~.Version, "/WrapperCategories-", ~.Version ),
