@@ -949,6 +949,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             
             rank := RankOfObject( object );
             
+            if rank = 0 then
+                
+                return ZeroMorphism( tensor_object, unit );
+                
+            fi;
+            
             id := HomalgIdentityMatrix( rank, ring );
             
             return CategoryOfRowsMorphism( tensor_object, 
@@ -964,6 +970,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             local rank, id;
             
             rank := RankOfObject( object );
+            
+            if rank = 0 then
+                
+                return ZeroMorphism( unit, tensor_object );
+                
+            fi;
             
             id := HomalgIdentityMatrix( rank, ring );
             
