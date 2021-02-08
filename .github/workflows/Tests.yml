@@ -19,6 +19,8 @@ jobs:
     container:
       image: ${{ matrix.image }}
     steps:
+      # keep workflow active even if repository has no activity for 60 days (do not execute for pull requests)
+      - run: '[ "$GITHUB_EVENT_NAME" = "pull_request" ] || curl --fail -X PUT -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/$GITHUB_REPOSITORY/actions/workflows/Tests.yml/enable'
       - uses: actions/checkout@v1
       - run: mkdir -p /home/gap/.gap/pkg/
       - run: sudo cp -a $GITHUB_WORKSPACE /home/gap/.gap/pkg/
@@ -27,6 +29,7 @@ jobs:
           export HOME="/home/gap"
           cd /home/gap/.gap/pkg/
           sudo apt update
+          sudo apt dist-upgrade -y
           sudo apt install -y texlive-latex-extra texlive-science
           git clone --depth 1 https://github.com/gap-packages/AutoDoc.git
           git clone --depth 1 https://github.com/homalg-project/homalg_project.git
