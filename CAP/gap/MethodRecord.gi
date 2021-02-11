@@ -3337,7 +3337,7 @@ SolveLinearSystemInAbCategory := rec(
   argument_list := [ 1, 2, 3 ],
   filter_list := [ IsList, IsList, IsList, "category" ],
   cache_name := "SolveLinearSystemInAbCategory",
-  return_type := "morphism_or_fail"
+  return_type := "list_of_morphisms_or_fail"
 ),
 
 MereExistenceOfSolutionOfLinearSystemInAbCategory := rec(
