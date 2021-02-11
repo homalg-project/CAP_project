@@ -1713,7 +1713,7 @@ DeclareOperation( "IsEqualForCacheForMorphisms",
 #!  If you add a function, this function
 #!  used instead. A function $F: a,b \mapsto bool$ is expected here. The output has to be
 #!  true or false. Fail is not allowed in this context.
-#! @Returns northing
+#! @Returns nothing
 #! @Arguments c,F
 DeclareOperation( "AddIsEqualForCacheForMorphisms",
                   [ IsCapCategory, IsFunction ] );
