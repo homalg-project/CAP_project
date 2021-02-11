@@ -3,6 +3,22 @@
 #
 # Implementations
 #
+InstallValue( CAP_INTERNAL_VALID_RETURN_TYPES,
+#! @BeginCode CAP_INTERNAL_VALID_RETURN_TYPES
+    [
+        "object",
+        "object_or_fail",
+        "morphism",
+        "morphism_or_fail",
+        "twocell",
+        "bool",
+        "other_object",
+        "other_morphism",
+        "list_of_morphisms_or_fail",
+    ]
+#! @EndCode
+);
+
 InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD, rec(
 LiftAlongMonomorphism := rec(
   installation_name := "LiftAlongMonomorphism",
@@ -4494,6 +4510,15 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
     for current_recname in recnames do
         
         current_rec := record.(current_recname);
+        
+        # validity checks
+        if not IsBound( current_rec.return_type ) then
+            Error( "<current_rec> has no return_type" );
+        fi;
+        
+        if not ( IsFilter( current_rec.return_type ) or current_rec.return_type in CAP_INTERNAL_VALID_RETURN_TYPES ) then
+            Error( "the return_type of <current_rec> is not a filter and does not appear in CAP_INTERNAL_VALID_RETURN_TYPES" );
+        fi;
         
         current_rec.function_name := current_recname;
 

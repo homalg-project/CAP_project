@@ -3,6 +3,8 @@
 #
 # Declarations
 #
+DeclareGlobalVariable( "CAP_INTERNAL_VALID_RETURN_TYPES" );
+
 DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_RECORD" );
 
 DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS" );
