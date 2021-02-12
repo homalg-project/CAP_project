@@ -180,17 +180,55 @@ end );
 ####################################
 
 ##
+CAP_INTERNAL_ORIGINAL_DIRECT_PRODUCT_FUNCTION := DirectProduct;
+MakeReadWriteGlobal( "DirectProduct" );
+UnbindGlobal( "DirectProduct" );
+BindGlobal( "DirectProduct", function( arg... )
+    
+    if Length( arg ) = 1 and IsListOfCapCategoryObjects( arg[1] ) then
+        
+        return DirectProductOp( arg[1] );
+        
+    else
+        
+        return CallFuncList( CAP_INTERNAL_ORIGINAL_DIRECT_PRODUCT_FUNCTION, arg );
+        
+    fi;
+    
+end );
+
+##
+InstallOtherMethod( DirectProductOp,
+               [ IsList, IsCapCategoryObject ],
+  function( list, obj )
+    local cat;
+    
+    cat := CapCategory( obj );
+    
+    return DirectProductOp( ListOfObjectsInCategory( list, cat ) );
+    
+end );
+
+##
 InstallGlobalFunction( UniversalMorphismIntoDirectProduct,
 
   function( arg )
     local diagram;
     
     if Length( arg ) = 2
-       and IsList( arg[1] )
-       and IsList( arg[2] ) then
-       
-       return UniversalMorphismIntoDirectProductOp( arg[1], arg[2], arg[1][1] );
-       
+        and IsList( arg[1] )
+        and IsList( arg[2] ) then
+        
+        if IsListOfCapCategoryObjects( arg[1] ) and IsListOfCapCategoryMorphisms( arg[2] ) then
+            
+            return UniversalMorphismIntoDirectProductOp( arg[1], arg[2] );
+            
+        else
+            
+            return UniversalMorphismIntoDirectProductOp( ListOfObjectsInCategory( arg[1], CapCategory( arg[1][1] ) ), ListOfMorphismsInCategory( arg[2], CapCategory( arg[1][1] ), Source, Source( arg[2][1] ) ) );
+            
+        fi;
+        
     elif Length( arg ) = 1 and IsList( arg[ 1 ] ) then
         arg := arg[ 1 ];
     fi;
@@ -198,8 +236,18 @@ InstallGlobalFunction( UniversalMorphismIntoDirectProduct,
     ##convenience: UniversalMorphismIntoDirectProduct( test_projection_1, ..., test_projection_k )
     diagram := List( arg, Range );
     
-    return UniversalMorphismIntoDirectProductOp( diagram, arg, diagram[1] );
+    return UniversalMorphismIntoDirectProductOp( ListOfObjectsInCategory( diagram, CapCategory( diagram[1] ) ), ListOfMorphismsInCategory( arg, CapCategory( diagram[1] ), Source, Source( arg[1] ) ) );
   
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
+               [ IsList, IsList, IsCapCategoryObject ],
+               
+  function( object_product_list, morphism_list, given_object )
+    
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( ListOfObjectsInCategory( object_product_list, CapCategory( given_object ) ), ListOfMorphismsInCategory( morphism_list, CapCategory( given_object ), Source, Source( morphism_list[1] ) ), given_object );
+    
 end );
 
 ####################################
@@ -212,7 +260,17 @@ InstallMethod( ProjectionInFactorOfDirectProduct,
                
   function( object_product_list, projection_number )
     
-    return ProjectionInFactorOfDirectProductOp( object_product_list, projection_number, object_product_list[1] );
+    return ProjectionInFactorOfDirectProduct( ListOfObjectsInCategory( object_product_list, CapCategory( object_product_list[1] ) ), projection_number );
+    
+end );
+
+##
+InstallOtherMethod( ProjectionInFactorOfDirectProductWithGivenDirectProduct,
+               [ IsList, IsInt, IsCapCategoryObject ],
+               
+  function( object_product_list, projection_number, given_object )
+    
+    return ProjectionInFactorOfDirectProductWithGivenDirectProduct( ListOfObjectsInCategory( object_product_list, CapCategory( given_object ) ), projection_number, given_object );
     
 end );
 

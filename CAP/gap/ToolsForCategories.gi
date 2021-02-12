@@ -438,6 +438,24 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
                   list[ i ] := IsList;
               elif current_entry = "list_of_twocells" then
                   list[ i ] := IsList;
+              elif current_entry = "typed_list_of_objects" then
+                  if category <> false then
+                      list[ i ] := ListOfObjectsFilter( category ) and IsListOfCapCategoryObjects;
+                  else
+                      list[ i ] := IsListOfCapCategoryObjects;
+                  fi;
+              elif current_entry = "typed_list_of_morphisms" then
+                  if category <> false then
+                      list[ i ] := ListOfMorphismsFilter( category ) and IsListOfCapCategoryMorphisms;
+                  else
+                      list[ i ] := IsListOfCapCategoryMorphisms;
+                  fi;
+              elif current_entry = "typed_list_of_twocells" then
+                  if category <> false then
+                      list[ i ] := ListOfTwoCellsFilter( category ) and IsListOfCapCategoryTwoCells;
+                  else
+                      list[ i ] := IsListOfCapCategoryTwoCells;
+                  fi;
               else
                   Error( "filter type is not recognized, see the documentation for allowed values" );
               fi;
@@ -449,6 +467,8 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
                   current_filter := current_filter and j;
               od;
               list[ i ] := current_filter;
+          else
+              Error( "filter type is not recognized, see the documentation for allowed values" );
           fi;
           
       od;

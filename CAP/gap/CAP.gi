@@ -143,7 +143,7 @@ BindGlobal( "TheTypeOfCapCategories",
 InstallGlobalFunction( CREATE_CAP_CATEGORY_FILTERS,
                        
   function( category )
-    local name, cell_filter, filter_name, filter;
+    local name, cell_filter, filter, list_of_cells_filter;
 
     name := Name( category );
     
@@ -153,9 +153,8 @@ InstallGlobalFunction( CREATE_CAP_CATEGORY_FILTERS,
     
     SetFilterObj( category, filter );
     
-    filter_name := Concatenation( name, "CellFilter" );
-    
-    cell_filter := NewFilter( filter_name );
+    # cells
+    cell_filter := NewFilter( Concatenation( name, "CellFilter" ) );
     
     SetCellFilter( category, cell_filter );
     
@@ -170,6 +169,23 @@ InstallGlobalFunction( CREATE_CAP_CATEGORY_FILTERS,
     filter := NewCategory( Concatenation( name, "TwoCellFilter" ), cell_filter );
     
     SetTwoCellFilter( category, filter );
+    
+    # lists of cells
+    list_of_cells_filter := NewFilter( Concatenation( name, "ListOfCellsFilter" ) );
+    
+    SetListOfCellsFilter( category, cell_filter );
+    
+    filter := NewCategory( Concatenation( name, "ListOfObjectsFilter" ), list_of_cells_filter );
+    
+    SetListOfObjectsFilter( category, filter );
+    
+    filter := NewCategory( Concatenation( name, "ListOfMorphismsFilter" ), list_of_cells_filter );
+    
+    SetListOfMorphismsFilter( category, filter );
+    
+    filter := NewCategory( Concatenation( name, "ListOfTwoCellsFilter" ), list_of_cells_filter );
+    
+    SetListOfTwoCellsFilter( category, filter );
     
 end );
 

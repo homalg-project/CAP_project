@@ -21,6 +21,9 @@ BindGlobal( "TheTypeOfCapCategoryObjects",
         NewType( TheFamilyOfCapCategoryObjects,
                 IsCapCategoryObjectRep ) );
 
+BindGlobal( "TheFamilyOfListsOfCapCategoryObjects",
+        NewFamily( "TheFamilyOfListsOfCapCategoryObjects" ) );
+
 #######################################
 ##
 ## Technical implications
@@ -209,6 +212,7 @@ InstallMethod( IsEqualForCacheForObjects,
                
   IsEqualForCache );
 
+##
 InstallMethod( AddObjectRepresentation,
                [ IsCapCategory, IsObject ],
                
@@ -216,6 +220,26 @@ InstallMethod( AddObjectRepresentation,
     
     category!.object_representation := representation;
     category!.object_type := NewType( TheFamilyOfCapCategoryObjects, representation and ObjectFilter( category ) and IsCapCategoryObjectRep and HasCapCategory );
+    
+end );
+
+##
+BindGlobal( "ListOfObjectsInCategory", function( list, category, attributes... )
+  local type;
+    
+    if IsBound( category!.list_of_objects_type ) then
+        
+        type := category!.list_of_objects_type;
+        
+    else
+        
+        type := NewType( TheFamilyOfListsOfCapCategoryObjects, IsListWithAttributesRep and ListOfObjectsFilter( category ) and IsListOfCapCategoryObjects and HasCapCategory );
+        
+        category!.list_of_objects_type := type;
+        
+    fi;
+    
+    return CallFuncList( TypedListWithAttributes, Concatenation( [ list, type, CapCategory, category ], attributes ) );
     
 end );
 

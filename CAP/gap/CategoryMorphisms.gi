@@ -21,6 +21,9 @@ BindGlobal( "TheTypeOfCapCategoryMorphisms",
         NewType( TheFamilyOfCapCategoryMorphisms,
                 IsCapCategoryMorphismRep ) );
 
+BindGlobal( "TheFamilyOfListsOfCapCategoryMorphisms",
+        NewFamily( "TheFamilyOfListsOfCapCategoryMorphisms" ) );
+
 ######################################
 ##
 ## Properties logic
@@ -220,7 +223,7 @@ InstallMethod( IsEqualForCacheForMorphisms,
                
   IsEqualForCache );
 
-
+##
 InstallMethod( AddMorphismRepresentation,
                [ IsCapCategory, IsObject ],
                
@@ -231,6 +234,27 @@ InstallMethod( AddMorphismRepresentation,
     
 end );
 
+##
+BindGlobal( "ListOfMorphismsInCategory", function( list, category, attributes... )
+  local type;
+    
+    if IsBound( category!.list_of_morphisms_type ) then
+        
+        type := category!.list_of_morphisms_type;
+        
+    else
+        
+        type := NewType( TheFamilyOfListsOfCapCategoryMorphisms, IsListWithAttributesRep and ListOfMorphismsFilter( category ) and IsListOfCapCategoryMorphisms and HasCapCategory );
+        
+        category!.list_of_morphisms_type := type;
+        
+    fi;
+    
+    return CallFuncList( TypedListWithAttributes, Concatenation( [ list, type, CapCategory, category ], attributes ) );
+    
+end );
+
+##
 InstallMethod( RandomMorphismWithFixedSourceAndRange,
     [ IsCapCategoryObject, IsCapCategoryObject, IsInt ], RandomMorphismWithFixedSourceAndRangeByInteger );
 InstallMethod( RandomMorphismWithFixedSourceAndRange,

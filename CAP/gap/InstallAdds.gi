@@ -325,6 +325,15 @@ InstallGlobalFunction( CapInternalInstallAdd,
                         CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ j ], category, function( ) return input_human_readable_identifier_getter( i, j ); end );
                     od;
                 end;
+            elif filter = "typed_list_of_objects" then
+                # TODO
+                input_sanity_check_functions[i] := ReturnTrue;
+            elif filter = "typed_list_of_morphisms" then
+                # TODO
+                input_sanity_check_functions[i] := ReturnTrue;
+            elif filter = "typed_list_of_twocells" then
+                # TODO
+                input_sanity_check_functions[i] := ReturnTrue;
             else
                 Display( Concatenation( "Warning: You should add an input sanity check for the following filter: ", String( filter ) ) );
             fi;

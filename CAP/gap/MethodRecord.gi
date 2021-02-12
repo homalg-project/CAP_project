@@ -835,17 +835,15 @@ UniversalMorphismFromInitialObjectWithGivenInitialObject := rec(
 
 DirectProduct := rec(
   installation_name := "DirectProductOp",
-  argument_list := [ 1 ],
-  filter_list := [ "list_of_objects", "object" ],
+  filter_list := [ "typed_list_of_objects" ],
   number_of_diagram_arguments := 1,
   universal_type := "Limit",
   return_type := "object",
   dual_operation := "Coproduct" ),
 
 ProjectionInFactorOfDirectProduct := rec(
-  installation_name := "ProjectionInFactorOfDirectProductOp",
-  argument_list := [ 1, 2 ],
-  filter_list := [ "list_of_objects", IsInt, "object" ],
+  installation_name := "ProjectionInFactorOfDirectProduct",
+  filter_list := [ "typed_list_of_objects", IsInt ],
   io_type := [ [ "objects", "k" ], [ "P", "objects_k" ] ],
   number_of_diagram_arguments := 1,
   universal_object_position := "Source",
@@ -855,7 +853,7 @@ ProjectionInFactorOfDirectProduct := rec(
 
 ProjectionInFactorOfDirectProductWithGivenDirectProduct := rec(
   installation_name := "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
-  filter_list := [ "list_of_objects", IsInt, "object" ],
+  filter_list := [ "typed_list_of_objects", IsInt, "object" ],
   io_type := [ [ "objects", "k", "P" ], [ "P", "objects_k" ] ],
   number_of_diagram_arguments := 1,
   universal_type := "Limit",
@@ -864,34 +862,33 @@ ProjectionInFactorOfDirectProductWithGivenDirectProduct := rec(
 
 UniversalMorphismIntoDirectProduct := rec(
   installation_name := "UniversalMorphismIntoDirectProductOp",
-  argument_list := [ 1, 2 ],
+  filter_list := [ "typed_list_of_objects", "typed_list_of_morphisms" ],
   io_type := [ [ "objects", "tau" ], [ "tau_1_source", "P" ] ],
   number_of_diagram_arguments := 1,
-  filter_list := [ "list_of_objects", "list_of_morphisms", "object" ],
   universal_object_position := "Range",
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromCoproduct",
   
-  pre_function := function( diagram, source, method_selection_object )
+  pre_function := function( diagram, source )
     local test_object, current_morphism, current_return;
     
-    test_object := Source( source[1] );
-    
-    for current_morphism in source{[2 .. Length( source ) ]} do
-        
-        current_return := IsEqualForObjects( Source( current_morphism ), test_object );
-        
-        if current_return = fail then
-            
-            return [ false, "cannot decide whether sources of morphisms in given source diagram are equal" ];
-            
-        elif current_return = false then
-            
-            return [ false, "sources of morphisms must be equal in given source diagram" ];
-            
-        fi;
-        
-    od;
+    #test_object := Source( source[1] );
+    #
+    #for current_morphism in source{[2 .. Length( source ) ]} do
+    #    
+    #    current_return := IsEqualForObjects( Source( current_morphism ), test_object );
+    #    
+    #    if current_return = fail then
+    #        
+    #        return [ false, "cannot decide whether sources of morphisms in given source diagram are equal" ];
+    #        
+    #    elif current_return = false then
+    #        
+    #        return [ false, "sources of morphisms must be equal in given source diagram" ];
+    #        
+    #    fi;
+    #    
+    #od;
     
     return [ true ];
     
@@ -900,7 +897,7 @@ UniversalMorphismIntoDirectProduct := rec(
 
 UniversalMorphismIntoDirectProductWithGivenDirectProduct := rec(
   installation_name := "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
-  filter_list := [ "list_of_objects", "list_of_morphisms", "object" ],
+  filter_list := [ "typed_list_of_objects", "typed_list_of_morphisms", "object" ],
   io_type := [ [ "objects", "tau", "P" ], [ "tau_1_source", "P" ] ],
   number_of_diagram_arguments := 1,
   universal_type := "Limit",
@@ -909,23 +906,23 @@ UniversalMorphismIntoDirectProductWithGivenDirectProduct := rec(
   pre_function := function( diagram, source, direct_product )
     local test_object, current_morphism, current_return;
     
-    test_object := Source( source[1] );
-    
-    for current_morphism in source{[2 .. Length( source ) ]} do
-        
-        current_return := IsEqualForObjects( Source( current_morphism ), test_object );
-        
-        if current_return = fail then
-            
-            return [ false, "cannot decide whether sources of morphisms in given source diagram are equal" ];
-            
-        elif current_return = false then
-            
-            return [ false, "sources of morphisms must be equal in given source diagram" ];
-            
-        fi;
-        
-    od;
+    #test_object := Source( source[1] );
+    #
+    #for current_morphism in source{[2 .. Length( source ) ]} do
+    #    
+    #    current_return := IsEqualForObjects( Source( current_morphism ), test_object );
+    #    
+    #    if current_return = fail then
+    #        
+    #        return [ false, "cannot decide whether sources of morphisms in given source diagram are equal" ];
+    #        
+    #    elif current_return = false then
+    #        
+    #        return [ false, "sources of morphisms must be equal in given source diagram" ];
+    #        
+    #    fi;
+    #    
+    #od;
     
     return [ true ];
     
@@ -3765,12 +3762,12 @@ SomeReductionBySplitEpiSummand_MorphismFromInputRange := rec(
 ) );
 
 InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS, [
-rec(
-  object_specification := [ "varobject" ],
-  morphism_specification := [  ],
-  limit_object_name := "DirectProduct",
-  colimit_object_name := "Coproduct",
-),
+#rec(
+#  object_specification := [ "varobject" ],
+#  morphism_specification := [  ],
+#  limit_object_name := "DirectProduct",
+#  colimit_object_name := "Coproduct",
+#),
 
 rec(
   object_specification := [ "varobject" ],

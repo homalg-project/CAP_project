@@ -2464,6 +2464,8 @@ AddDerivationToCAP( DirectProduct,
                                         
   function( object_product_list )
     
+    # TODO
+      
     return Source( ProjectionInFactorOfDirectProduct( object_product_list, 1 ) );
     
 end : Description := "DirectProduct as Source of ProjectionInFactorOfDirectProduct" );

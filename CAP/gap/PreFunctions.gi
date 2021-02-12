@@ -91,6 +91,13 @@ BindGlobal( "CAP_PREFUNCTION_UNIVERSAL_MORPHISM_INTO_BINARY_DIRECT_PRODUCT_TO_UN
   function( universal_morphism_into_binary_direct_product_func, category )
     return function( diagram, tau )
       local universal_morphism, i;
+
+        if IsEmpty( tau ) then
+            
+            # TODO: what to do if the terminal object is not computable?
+            return UniversalMorphismIntoTerminalObject( Source( tau ) );
+            
+        fi;
         
         # Direct product diagrams are supposed to have at least length 1
         universal_morphism := tau[ 1 ];

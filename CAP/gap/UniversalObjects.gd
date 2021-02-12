@@ -2322,7 +2322,7 @@ DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
 #! @Returns an object
 #! @Arguments D
 DeclareOperationWithCache( "DirectProductOp",
-                           [ IsList, IsCapCategoryObject ] );
+                           [ IsListOfCapCategoryObjects ] );
 
 #! @Description
 #! The arguments are a list of objects $D = ( P_1, \dots, P_n )$
@@ -2380,7 +2380,7 @@ DeclareGlobalFunction( "UniversalMorphismIntoDirectProduct" );
 #! @Returns a morphism in $\mathrm{Hom}(T, \prod_{i=1}^n P_i)$
 #! @Arguments D, tau, method_selection_object
 DeclareOperation( "UniversalMorphismIntoDirectProductOp",
-                  [ IsList, IsList, IsCapCategoryObject ] );
+                  [ IsListOfCapCategoryObjects, IsListOfCapCategoryMorphisms ] );
 
 #! @Description
 #! The arguments are a list of objects $D = ( P_1, \dots, P_n )$,

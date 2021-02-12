@@ -96,6 +96,38 @@ DeclareCategory( "IsCapCategoryMorphism",
 DeclareCategory( "IsCapCategoryTwoCell",
                  IsCapCategoryCell );
 
+#! @Description
+#! The GAP category of lists of CAP category cells.
+#! Every typed list of objects, morphisms, or $2$-cells
+#! of a CAP category lies in this GAP category.
+#! @Arguments object
+DeclareCategory( "IsListOfCapCategoryCells",
+                 IsListWithAttributes );
+
+#! @Description
+#! The GAP category of lists of CAP category objects.
+#! Every typed list of objects of a CAP category lies in
+#! this GAP category.
+#! @Arguments object
+DeclareCategory( "IsListOfCapCategoryObjects",
+                 IsListOfCapCategoryCells );
+
+#! @Description
+#! The GAP category of lists of CAP category morphisms.
+#! Every typed list of morphisms of a CAP category lies in
+#! this GAP category.
+#! @Arguments object
+DeclareCategory( "IsListOfCapCategoryMorphisms",
+                 IsListOfCapCategoryCells );
+
+#! @Description
+#! The GAP category of lists of CAP category $2$-cells.
+#! Every typed list of $2$-cells of a CAP category lies in
+#! this GAP category.
+#! @Arguments object
+DeclareCategory( "IsListOfCapCategoryTwoCells",
+                 IsListOfCapCategoryCells );
+
 DeclareCategory( "IsCellOfSkeletalCategory",
                  IsCapCategoryCell );
 
@@ -230,6 +262,42 @@ DeclareAttribute( "MorphismFilter",
 #! @Arguments C
 #! @Returns a filter
 DeclareAttribute( "TwoCellFilter",
+                  IsCapCategory );
+
+#! @Description
+#! The argument is a category $C$.
+#! The output is a filter in which all typed lists of cells
+#! of $C$ shall lie.
+#! @Arguments C
+#! @Returns a filter
+DeclareAttribute( "ListOfCellsFilter",
+                  IsCapCategory );
+
+#! @Description
+#! The argument is a category $C$.
+#! The output is a filter in which all typed lists of objects
+#! of $C$ shall lie.
+#! @Arguments C
+#! @Returns a filter
+DeclareAttribute( "ListOfObjectsFilter",
+                  IsCapCategory );
+
+#! @Description
+#! The argument is a category $C$.
+#! The output is a filter in which all typed lists of morphisms
+#! of $C$ shall lie.
+#! @Arguments C
+#! @Returns a filter
+DeclareAttribute( "ListOfMorphismsFilter",
+                  IsCapCategory );
+
+#! @Description
+#! The argument is a category $C$.
+#! The output is a filter in which all typed lists of $2$-cells
+#! of $C$ shall lie.
+#! @Arguments C
+#! @Returns a filter
+DeclareAttribute( "ListOfTwoCellsFilter",
                   IsCapCategory );
 
 #! @Description
