@@ -24,7 +24,7 @@ InstallMethod( MatrixCategory,
     
     SetFilterObj( category, IsMatrixCategory );
     
-    AddObjectRepresentation( category, IsVectorSpaceObject );
+    AddObjectRepresentation( category, IsVectorSpaceObject and HasIsProjective and IsProjective );
     
     AddMorphismRepresentation( category, IsVectorSpaceMorphism and HasUnderlyingFieldForHomalg and HasUnderlyingMatrix );
     

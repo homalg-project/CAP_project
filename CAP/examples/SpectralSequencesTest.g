@@ -13,16 +13,14 @@ R := QQ * "x,y";
 SetRecursionTrapInterval( 10000 );
 category := LeftPresentations( R );
 #! Category of left presentations of Q[x,y]
-S := FreeLeftPresentation( 1, R );
-#! <An object in Category of left presentations of Q[x,y]>
+S := FreeLeftPresentation( 1, R );;
 object_func := function( i ) return S; end;
 #! function( i ) ... end
 morphism_func := function( i ) return IdentityMorphism( S ); end;
 #! function( i ) ... end
 C0 := ZFunctorObjectExtendedByInitialAndIdentity( object_func, morphism_func, category, 0, 4 );
 #! <An object in Functors from integers into Category of left presentations of Q[x,y]>
-S2 := FreeLeftPresentation( 2, R );
-#! <An object in Category of left presentations of Q[x,y]>
+S2 := FreeLeftPresentation( 2, R );;
 C1 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactorOfDirectSum( [ S2, S ], 1 ) ], 2 );
 #! <An object in Functors from integers into Category of left presentations of Q[x,y]>
 C1 := ZFunctorObjectExtendedByInitialAndIdentity( C1, 2, 3 );

@@ -11,10 +11,8 @@ LoadPackage( "RingsForHomalg" );
 #! @Example
 ZZ := HomalgRingOfIntegersInSingular( );
 #! Z
-C1 := FreeLeftPresentation( 1, ZZ );
-#! <An object in Category of left presentations of Z>
-C2 := FreeLeftPresentation( 2, ZZ );
-#! <An object in Category of left presentations of Z>
+C1 := FreeLeftPresentation( 1, ZZ );;
+C2 := FreeLeftPresentation( 2, ZZ );;
 h1 := PresentationMorphism( C2, HomalgMatrix( [ [ 0 ], [ 4 ] ], ZZ ), C1 );
 #! <A morphism in Category of left presentations of Z>
 h2 := PresentationMorphism( C2, HomalgMatrix( [ [ 0 ], [ 2 ] ], ZZ ), C1 );
