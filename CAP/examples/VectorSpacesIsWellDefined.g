@@ -29,4 +29,6 @@ IsWellDefined( alpha );
 #! true
 IsWellDefined( g );
 #! true
+IsEqualForObjects( A, B );
+#! false
 #! @EndExample
