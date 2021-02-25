@@ -828,21 +828,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         ##
         AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
           function( alpha )
-            local underlying_matrix, nr_rows;
+            local underlying_matrix;
             
             underlying_matrix := UnderlyingMatrix( alpha );
             
-            nr_rows := NrRows( underlying_matrix );
-            
-            if ( nr_rows = 0 ) or ( NrColumns( underlying_matrix ) = 0 ) then
-                
-                return UniversalMorphismIntoZeroObject( DistinguishedObjectOfHomomorphismStructure( category ) );
-                
-            elif nr_rows > 1 then
-                
-                underlying_matrix := ConvertMatrixToRow( underlying_matrix );
-                
-            fi;
+            underlying_matrix := ConvertMatrixToRow( underlying_matrix );
             
             return CategoryOfRowsMorphism(
                      DistinguishedObjectOfHomomorphismStructure( category ),
@@ -860,12 +850,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             nr_rows := RankOfObject( A );
             
             nr_columns := RankOfObject( B );
-            
-            if nr_rows = 0 or nr_columns = 0 then
-                
-                return ZeroMorphism( A, B );
-                
-            fi;
             
             underlying_matrix := UnderlyingMatrix( morphism );
             
