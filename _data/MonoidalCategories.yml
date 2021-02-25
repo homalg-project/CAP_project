@@ -1,7 +1,7 @@
 name: MonoidalCategories
-version: "2020.10-01"
+version: "2021-02-01"
 license: "GPL-2.0-or-later"
-date: 2020-10-19
+date: 2021-02-25
 description: |
     Monoidal and monoidal (co)closed categories
 
@@ -29,22 +29,22 @@ needed-pkgs:
       url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
     - name: "ToolsForHomalg"
       version: ">= 2018.05.22"
-      url: "https://homalg-project.github.io/homalg_project/ToolsForHomalg"
+      url: "https://homalg-project.github.io/pkg/ToolsForHomalg"
     - name: "CAP"
       version: ">= 2019.08.10"
-      url: "https://homalg-project.github.io/CAP_project/CAP"
+      url: "https://homalg-project.github.io/pkg/CAP"
 
-www: https://homalg-project.github.io/CAP_project/MonoidalCategories
+www: https://homalg-project.github.io/pkg/MonoidalCategories
 readme: README.md
 packageinfo: https://homalg-project.github.io/CAP_project/MonoidalCategories/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2020.10-01/MonoidalCategories-2020.10-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2021-02-01/MonoidalCategories-2021-02-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2020.10-01/MonoidalCategories-2020.10-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2021-02-01/MonoidalCategories-2021-02-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2020.10-01/MonoidalCategories-2020.10-01.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2021-02-01/MonoidalCategories-2021-02-01.pdf
 
 abstract: |
 
@@ -55,31 +55,31 @@ keywords: |
     monoidal categories, monoidal closed categories, monoidal coclosed categories, tensor-Hom adjuction, coHom-tensor adjuction.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BGP20</span>]   <b class='BibAuthor'>Barakat, M., Gutsche, S. and Posur, S.</b>,
+    [<span class='BibKey'>BGP21</span>]   <b class='BibAuthor'>Barakat, M., Gutsche, S. and Posur, S.</b>,
      <i class='BibTitle'>MonoidalCategories, Monoidal and monoidal (co)closed categories,
-             Version 2020.10-01</i>
-     (<span class='BibYear'>2020</span>)<br />
+             Version 2021-02-01</i>
+     (<span class='BibYear'>2021</span>)<br />
     (<span class='BibNote'>GAP package</span>),
-    <span class='BibHowpublished'><a href="https://homalg-project.github.io/CAP_project/MonoidalCategories">https://homalg-project.github.io/CAP_project/MonoidalCategories</a></span>.
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/MonoidalCategories">https://homalg-project.github.io/pkg/MonoidalCategories</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ MonoidalCategories2020.10-01,
+    @misc{ MonoidalCategories2021-02-01,
       author =           {Barakat, M. and Gutsche, S. and Posur, S.},
       title =            {{MonoidalCategories}, Monoidal and monoidal (co)closed
-                          categories, {V}ersion 2020.10-01},
-      month =            {Oct},
-      year =             {2020},
+                          categories, {V}ersion 2021-02-01},
+      month =            {Feb},
+      year =             {2021},
       note =             {GAP package},
       howpublished =     {\href
-                          {https://homalg-project.github.io/CAP_project/MonoidalCategories}
+                          {https://homalg-project.github.io/pkg/MonoidalCategories}
                           {\texttt{https://homalg-project.github.io/}\discretionary
-                          {}{}{}\texttt{CAP{\textunderscore}project/}\discretionary
+                          {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{MonoidalCategories}}},
       keywords =         {monoidal   categories;   monoidal  closed  categories;
                           monoidal  coclosed  categories;  tensor-Hom adjuction;
                           coHom-tensor adjuction},
-      printedkey =       {BGP20}
+      printedkey =       {BGP21}
     }
 

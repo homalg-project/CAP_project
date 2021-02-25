@@ -29,10 +29,10 @@
 <h2>Monoidal and monoidal (co)closed categories</h2>
 
 <p>
-    2020.10-01</p>
+    2021-02-01</p>
 
 <p>
-    19 October 2020
+    25 February 2021
   </p>
 
 </div>
@@ -220,10 +220,72 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X785CF0BB7BC0AC0D">1.7-19 MorphismFromBidualWithGivenBidual</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X877C409E865C2BB3">1.7-20 AddMorphismFromBidualWithGivenBidual</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7B40ED8B78D067A5">1.8 <span class="Heading">Convenience Methods</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X8197D69B805349AC">1.8 <span class="Heading">Coclosed Monoidal Categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8055FF847AC2102A">1.8-1 InternalHom</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X791BE0B0847A430D">1.8-1 InternalCoHomOnObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X828648F183570AE3">1.8-2 AddInternalCoHomOnObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7FDF105D7F56EB53">1.8-3 InternalCoHomOnMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X84DDA3DD878162B9">1.8-4 InternalCoHomOnMorphismsWithGivenInternalCoHoms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87A67CDD86E0CE05">1.8-5 AddInternalCoHomOnMorphismsWithGivenInternalCoHoms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X79E277047AB3E909">1.8-6 CoEvaluationMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7E8123AD8567A5C0">1.8-7 CoEvaluationMorphismWithGivenRange</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X817E96AA7ACACE89">1.8-8 AddCoEvaluationMorphismWithGivenRange</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D1EF29D7EF826E4">1.8-9 DualCoEvaluationMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X80279A98856A1B4E">1.8-10 DualCoEvaluationMorphismWithGivenSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X82701F4A84C7C439">1.8-11 AddDualCoEvaluationMorphismWithGivenSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X872E6B0B859B1BC9">1.8-12 InternalCoHomToTensorProductAdjunctionMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7F35DEC3835AC521">1.8-13 AddInternalCoHomToTensorProductAdjunctionMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X806654B180032304">1.8-14 TensorProductToInternalCoHomAdjunctionMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D5615E185826B6C">1.8-15 AddTensorProductToInternalCoHomAdjunctionMap</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8337DE6B7D61EAC2">1.8-16 MonoidalPreCoComposeMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X82A183B0807A0A01">1.8-17 MonoidalPreCoComposeMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X81DFED7386A953E0">1.8-18 AddMonoidalPreCoComposeMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X83FE0B8D853A76C1">1.8-19 MonoidalPostCoComposeMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X805DF38880B1E9E0">1.8-20 MonoidalPostCoComposeMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X79858B577BD4F1E1">1.8-21 AddMonoidalPostCoComposeMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X817A1F7986256461">1.8-22 CoDualOnObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7C1CDE7F855ACB74">1.8-23 AddCoDualOnObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X840CBC837926138E">1.8-24 CoDualOnMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X79750BFD824D2AAF">1.8-25 CoDualOnMorphismsWithGivenCoDuals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7C2568FD82259231">1.8-26 AddCoDualOnMorphismsWithGivenCoDuals</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X784D8A35856E3D57">1.8-27 CoEvaluationForCoDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X874F99508759C6C7">1.8-28 CoEvaluationForCoDualWithGivenTensorProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7DFEECCA7B83D464">1.8-29 AddCoEvaluationForCoDualWithGivenTensorProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7841B6757A510799">1.8-30 MorphismFromCoBidual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7B2B002979E1CBF6">1.8-31 MorphismFromCoBidualWithGivenCoBidual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X84D1F74D8118B2A0">1.8-32 AddMorphismFromCoBidualWithGivenCoBidual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7B2CFE337E5699D3">1.8-33 InternalCoHomTensorProductCompatibilityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X80F33E8C85AA37EA">1.8-34 InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X82EA4C857C7BCC60">1.8-35 AddInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7B817BC97C1F1DF8">1.8-36 CoDualityTensorProductCompatibilityMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X82119ED686D3874C">1.8-37 CoDualityTensorProductCompatibilityMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7CE8010980DBA597">1.8-38 AddCoDualityTensorProductCompatibilityMorphismWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7A4971267B80B14F">1.8-39 MorphismFromInternalCoHomToTensorProduct</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7B60FB927C37E125">1.8-40 MorphismFromInternalCoHomToTensorProductWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87AB2C4D84F19F37">1.8-41 AddMorphismFromInternalCoHomToTensorProductWithGivenObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8426D51D85696643">1.8-42 IsomorphismFromCoDualToInternalCoHom</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X858FC14F80A70D3C">1.8-43 AddIsomorphismFromCoDualToInternalCoHom</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X811D217180B145B2">1.8-44 IsomorphismFromInternalCoHomToCoDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X850024C7842EF835">1.8-45 AddIsomorphismFromInternalCoHomToCoDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7AEE412D80799D09">1.8-46 UniversalPropertyOfCoDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8519ECF17EC07916">1.8-47 AddUniversalPropertyOfCoDual</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X784CBFB984E66E7A">1.8-48 CoLambdaIntroduction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7C3868657D8A0400">1.8-49 AddCoLambdaIntroduction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X83520B098068CF62">1.8-50 CoLambdaElimination</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7E7962CC7E809023">1.8-51 AddCoLambdaElimination</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X83F11F6184DBD507">1.8-52 IsomorphismFromObjectToInternalCoHom</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8233C995828387E9">1.8-53 IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8304276383585ECC">1.8-54 AddIsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X875A349280E2095C">1.8-55 IsomorphismFromInternalCoHomToObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X858AD1F986BA5BB2">1.8-56 IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D0E88AC7C0304D3">1.8-57 AddIsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7B40ED8B78D067A5">1.9 <span class="Heading">Convenience Methods</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8055FF847AC2102A">1.9-1 InternalHom</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7CB6A9497A971F59">1.9-2 InternalCoHom</a></span>
 </div></div>
 </div>
 <div class="ContChap"><a href="chapInd.html"><span class="Heading">Index</span></a></div>

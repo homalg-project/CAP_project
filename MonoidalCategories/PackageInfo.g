@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "MonoidalCategories",
 Subtitle := "Monoidal and monoidal (co)closed categories",
 Version := Maximum( [
-  "2020.03-01", ## Mohamed's version
+  "2021-02-01", ## Mohamed's version
   ## this line prevents merge conflicts
   "2019.06-07", ## Sebas' version
   ## this line prevents merge conflicts
@@ -22,7 +22,7 @@ Version := Maximum( [
   "2019.02-01", ## Tom's version
 ] ),
 
-Date := "19/10/2020",
+Date := "25/02/2021",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -80,7 +80,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/MonoidalCategories",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/MonoidalCategories",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/MonoidalCategories/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/MonoidalCategories/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-", ~.Version, "/MonoidalCategories-", ~.Version ),
