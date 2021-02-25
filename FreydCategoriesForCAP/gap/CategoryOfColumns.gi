@@ -44,12 +44,16 @@ InstallMethod( CategoryOfColumns,
     fi;
     
     if HasIsFieldForHomalg( homalg_ring ) and IsFieldForHomalg( homalg_ring ) then
-      
-      SetIsAbelianCategory( category, true );
-      
+        
+        AddObjectRepresentation( category, IsCategoryOfColumnsObject and HasIsProjective and IsProjective );
+        
+        SetIsAbelianCategory( category, true );
+        
+    else
+        
+        AddObjectRepresentation( category, IsCategoryOfColumnsObject );
+        
     fi;
-    
-    AddObjectRepresentation( category, IsCategoryOfColumnsObject );
     
     AddMorphismRepresentation( category, IsCategoryOfColumnsMorphism and HasUnderlyingMatrix );
     
