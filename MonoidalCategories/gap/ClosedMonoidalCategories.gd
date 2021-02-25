@@ -802,8 +802,8 @@ DeclareOperation( "AddIsomorphismFromInternalHomToObjectWithGivenInternalHom",
 #! The output is the internal hom cell.
 #! If $a,b$ are two CAP objects the output is the internal Hom object
 #! $\mathrm{\underline{Hom}}(a,b)$.
-#! If at least on of the arguments is a CAP morphism the output is a CAP morphism,
-#! namely the internal Hom on morphisms, where any object is replaced by its identity morphism.
+#! If at least one of the arguments is a CAP morphism the output is a CAP morphism,
+#! namely the internal hom on morphisms, where any object is replaced by its identity morphism.
 #! @Returns a cell
 #! @Arguments a, b
 DeclareOperation( "InternalHom",

@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "MonoidalCategories",
 Subtitle := "Monoidal and monoidal (co)closed categories",
 Version := Maximum( [
-  "2020.03-01", ## Mohamed's version
+  "2021-02-01", ## Mohamed's version
   ## this line prevents merge conflicts
   "2019.06-07", ## Sebas' version
   ## this line prevents merge conflicts
