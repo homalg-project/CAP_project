@@ -13,7 +13,7 @@ PackageName := "CAP",
 Subtitle := "Categories, Algorithms, Programming",
 
 Version := Maximum( [
-  "2020.05-16", ## Mohamed's version
+  "2021.02-01", ## Mohamed's version
   ## this line prevents merge conflicts
   "2015.04-01", ## Oystein's version
   ## this line prevents merge conflicts
@@ -26,7 +26,7 @@ Version := Maximum( [
   "2020.08-01", ## Kamal's version
 ] ),
 
-Date := "19/10/2020",
+Date := "25/02/2021",
 License := "GPL-2.0-or-later",
 
 
@@ -88,7 +88,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/CAP",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/CAP",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/CAP/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/CAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/CAP-", ~.Version, "/CAP-", ~.Version ),

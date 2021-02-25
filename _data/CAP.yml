@@ -1,7 +1,7 @@
 name: CAP
-version: "2020.10-01"
+version: "2021.02-01"
 license: "GPL-2.0-or-later"
-date: 2020-10-19
+date: 2021-02-25
 description: |
     Categories, Algorithms, Programming
 
@@ -29,7 +29,7 @@ needed-pkgs:
       url: "https://gap-packages.github.io/AutoDoc"
     - name: "ToolsForHomalg"
       version: ">= 2018.05.22"
-      url: "https://homalg-project.github.io/homalg_project/ToolsForHomalg"
+      url: "https://homalg-project.github.io/pkg/ToolsForHomalg"
     - name: "io"
       version: ">=0"
       url: "https://gap-packages.github.io/io"
@@ -40,19 +40,19 @@ suggested-pkgs:
       url: "http://www.math.rwth-aachen.de/~Browse"
     - name: "CompilerForCAP"
       version: ">= 2020.06.17"
-      url: "https://homalg-project.github.io/CAP_project/CompilerForCAP"
+      url: "https://homalg-project.github.io/pkg/CompilerForCAP"
 
-www: https://homalg-project.github.io/CAP_project/CAP
+www: https://homalg-project.github.io/pkg/CAP
 readme: README.md
 packageinfo: https://homalg-project.github.io/CAP_project/CAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2020.10-01/CAP-2020.10-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2021.02-01/CAP-2021.02-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2020.10-01/CAP-2020.10-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CAP-2021.02-01/CAP-2021.02-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/CAP-2020.10-01/CAP-2020.10-01.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/CAP-2021.02-01/CAP-2021.02-01.pdf
 
 abstract: |
     <span class="pkgname">CAP</span> (Categories, Algorithms, Programming) is a package for category theory.
@@ -64,29 +64,27 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>GPS20</span>]   <b class='BibAuthor'>Gutsche, S., Posur, S. and Skartsæterhagen, Ø.</b>,
+    [<span class='BibKey'>GPS21</span>]   <b class='BibAuthor'>Gutsche, S., Posur, S. and Skartsæterhagen, Ø.</b>,
      <i class='BibTitle'>CAP, Categories, Algorithms, Programming,
-             Version 2020.10-01</i>
-     (<span class='BibYear'>2020</span>)<br />
+             Version 2021.02-01</i>
+     (<span class='BibYear'>2021</span>)<br />
     (<span class='BibNote'>GAP package</span>),
-    <span class='BibHowpublished'><a href="https://homalg-project.github.io/CAP_project/CAP">https://homalg-project.github.io/CAP_project/CAP</a></span>.
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CAP">https://homalg-project.github.io/pkg/CAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ CAP2020.10-01,
+    @misc{ CAP2021.02-01,
       author =           {Gutsche,  S.  and  Posur,  S. and Skarts{\ae}terhagen,
                           {\O}.},
       title =            {{CAP},  Categories, Algorithms, Programming, {V}ersion
-                          2020.10-01},
-      month =            {Oct},
-      year =             {2020},
+                          2021.02-01},
+      month =            {Feb},
+      year =             {2021},
       note =             {GAP package},
-      howpublished =     {\href
-                          {https://homalg-project.github.io/CAP_project/CAP}
+      howpublished =     {\href       {https://homalg-project.github.io/pkg/CAP}
                           {\texttt{https://homalg-project.github.io/}\discretionary
-                          {}{}{}\texttt{CAP{\textunderscore}project/}\discretionary
-                          {}{}{}\texttt{CAP}}},
-      printedkey =       {GPS20}
+                          {}{}{}\texttt{pkg/}\discretionary {}{}{}\texttt{CAP}}},
+      printedkey =       {GPS21}
     }
 
