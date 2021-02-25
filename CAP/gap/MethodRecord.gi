@@ -1240,6 +1240,7 @@ MultiplyWithElementOfCommutativeRingForMorphisms := rec(
     
     return [ true ];
   end,
+  dual_operation := "MultiplyWithElementOfCommutativeRingForMorphisms",
   return_type := "morphism" ),
 
 AdditiveInverseForMorphisms := rec(
