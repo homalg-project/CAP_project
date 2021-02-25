@@ -459,3 +459,26 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_OBJECT,
     
 end );
 
+##
+InstallMethod( Display,
+        [ IsCapCategoryOppositeObjectRep ],
+        
+  function( object )
+
+    Display( Opposite( object ) );
+
+    Print( "\nAn object in ", Name( CapCategory( object ) ), " given by the above data\n" );
+    
+end );
+
+##
+InstallMethod( Display,
+        [ IsCapCategoryOppositeMorphismRep ],
+        
+  function( morphism )
+
+    Display( Opposite( morphism ) );
+
+    Print( "\nA morphism in ", Name( CapCategory( morphism ) ), " given by the above data\n" );
+    
+end );
