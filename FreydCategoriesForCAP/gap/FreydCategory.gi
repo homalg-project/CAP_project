@@ -1016,7 +1016,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
               function( alpha, beta ) return AsFreydCategoryMorphism( HomomorphismStructureOnMorphisms( alpha, beta ) ); end;
             
             distinguished_object_of_homomorphism_structure := 
-              cat -> AsFreydCategoryObject( DistinguishedObjectOfHomomorphismStructure( range_category ) );
+              cat -> AsFreydCategoryObject( DistinguishedObjectOfHomomorphismStructure( cat ) );
             
             interpret_homomorphism_as_morphism_from_dinstinguished_object_to_homomorphism_structure :=
               alpha -> AsFreydCategoryMorphism(
@@ -1136,7 +1136,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             AddDistinguishedObjectOfHomomorphismStructure( category,
               function( )
                 
-                return distinguished_object_of_homomorphism_structure( range_category );
+                return distinguished_object_of_homomorphism_structure( underlying_category );
                 
             end );
             
