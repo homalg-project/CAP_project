@@ -310,10 +310,8 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegersInSingular( );</span>
 Z
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C1 := FreeLeftPresentation( 1, ZZ );</span>
-&lt;An object in Category of left presentations of Z&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C2 := FreeLeftPresentation( 2, ZZ );</span>
-&lt;An object in Category of left presentations of Z&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C1 := FreeLeftPresentation( 1, ZZ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C2 := FreeLeftPresentation( 2, ZZ );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h1 := PresentationMorphism( C2, HomalgMatrix( [ [ 0 ], [ 4 ] ], ZZ ), C1 );</span>
 &lt;A morphism in Category of left presentations of Z&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h2 := PresentationMorphism( C2, HomalgMatrix( [ [ 0 ], [ 2 ] ], ZZ ), C1 );</span>
@@ -368,16 +366,14 @@ Q[x,y]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetRecursionTrapInterval( 10000 );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category := LeftPresentations( R );</span>
 Category of left presentations of Q[x,y]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := FreeLeftPresentation( 1, R );</span>
-&lt;An object in Category of left presentations of Q[x,y]&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := FreeLeftPresentation( 1, R );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">object_func := function( i ) return S; end;</span>
 function( i ) ... end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morphism_func := function( i ) return IdentityMorphism( S ); end;</span>
 function( i ) ... end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C0 := ZFunctorObjectExtendedByInitialAndIdentity( object_func, morphism_func, category, 0, 4 );</span>
 &lt;An object in Functors from integers into Category of left presentations of Q[x,y]&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S2 := FreeLeftPresentation( 2, R );</span>
-&lt;An object in Category of left presentations of Q[x,y]&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S2 := FreeLeftPresentation( 2, R );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C1 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactorOfDirectSum( [ S2, S ], 1 ) ], 2 );</span>
 &lt;An object in Functors from integers into Category of left presentations of Q[x,y]&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">C1 := ZFunctorObjectExtendedByInitialAndIdentity( C1, 2, 3 );</span>

@@ -242,10 +242,8 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegersInSingular( );[127X[104X
     [4X[28XZ[128X[104X
-    [4X[25Xgap>[125X [27XC1 := FreeLeftPresentation( 1, ZZ );[127X[104X
-    [4X[28X<An object in Category of left presentations of Z>[128X[104X
-    [4X[25Xgap>[125X [27XC2 := FreeLeftPresentation( 2, ZZ );[127X[104X
-    [4X[28X<An object in Category of left presentations of Z>[128X[104X
+    [4X[25Xgap>[125X [27XC1 := FreeLeftPresentation( 1, ZZ );;[127X[104X
+    [4X[25Xgap>[125X [27XC2 := FreeLeftPresentation( 2, ZZ );;[127X[104X
     [4X[25Xgap>[125X [27Xh1 := PresentationMorphism( C2, HomalgMatrix( [ [ 0 ], [ 4 ] ], ZZ ), C1 );[127X[104X
     [4X[28X<A morphism in Category of left presentations of Z>[128X[104X
     [4X[25Xgap>[125X [27Xh2 := PresentationMorphism( C2, HomalgMatrix( [ [ 0 ], [ 2 ] ], ZZ ), C1 );[127X[104X
@@ -299,16 +297,14 @@
     [4X[25Xgap>[125X [27XSetRecursionTrapInterval( 10000 );[127X[104X
     [4X[25Xgap>[125X [27Xcategory := LeftPresentations( R );[127X[104X
     [4X[28XCategory of left presentations of Q[x,y][128X[104X
-    [4X[25Xgap>[125X [27XS := FreeLeftPresentation( 1, R );[127X[104X
-    [4X[28X<An object in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XS := FreeLeftPresentation( 1, R );;[127X[104X
     [4X[25Xgap>[125X [27Xobject_func := function( i ) return S; end;[127X[104X
     [4X[28Xfunction( i ) ... end[128X[104X
     [4X[25Xgap>[125X [27Xmorphism_func := function( i ) return IdentityMorphism( S ); end;[127X[104X
     [4X[28Xfunction( i ) ... end[128X[104X
     [4X[25Xgap>[125X [27XC0 := ZFunctorObjectExtendedByInitialAndIdentity( object_func, morphism_func, category, 0, 4 );[127X[104X
     [4X[28X<An object in Functors from integers into Category of left presentations of Q[x,y]>[128X[104X
-    [4X[25Xgap>[125X [27XS2 := FreeLeftPresentation( 2, R );[127X[104X
-    [4X[28X<An object in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XS2 := FreeLeftPresentation( 2, R );;[127X[104X
     [4X[25Xgap>[125X [27XC1 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactorOfDirectSum( [ S2, S ], 1 ) ], 2 );[127X[104X
     [4X[28X<An object in Functors from integers into Category of left presentations of Q[x,y]>[128X[104X
     [4X[25Xgap>[125X [27XC1 := ZFunctorObjectExtendedByInitialAndIdentity( C1, 2, 3 );[127X[104X
