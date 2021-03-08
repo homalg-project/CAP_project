@@ -789,3 +789,23 @@ DeclareOperation( "AddIsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom
 
 DeclareOperation( "AddIsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom",
                   [ IsCapCategory, IsList ] );
+
+####################################
+##
+#! @Section Convenience Methods
+##
+####################################
+
+##
+#! @Description
+#! This is a convenience method.
+#! The arguments are two cells $a,b$.
+#! The output is the internal cohom cell.
+#! If $a,b$ are two CAP objects the output is the internal cohom object
+#! $\mathrm{\underline{coHom}}(a,b)$.
+#! If at least one of the arguments is a CAP morphism the output is a CAP morphism,
+#! namely the internal cohom on morphisms, where any object is replaced by its identity morphism.
+#! @Returns a cell
+#! @Arguments a, b
+DeclareOperation( "InternalCoHom",
+                  [ IsCapCategoryCell, IsCapCategoryCell ] );

@@ -25,13 +25,13 @@ BindGlobal( "CAP_INTERNAL_degree_zero_monomials",
     
     inequalities_list := List( inequalities_list, i -> Concatenation( [ 0 ], i ) );
     
-    inequalities_polytope := POLYMAKE_CREATE_POLYTOPE_BY_INEQUALITIES( inequalities_list );
+    inequalities_polytope := PolyhedronByInequalities( inequalities_list );
     
-    generating_set := POLYMAKE_LATTICE_POINTS_GENERATORS( inequalities_polytope );
+    generating_set := LatticePointsGenerators( inequalities_polytope );
     
-    generating_set_hilbert := generating_set[ 2 ];
+    generating_set_hilbert := List( generating_set[ 2 ], g -> Concatenation( [ 0 ], g ) );
     
-    generating_set_linear := generating_set[ 3 ];
+    generating_set_linear := List( generating_set[ 3 ], g -> Concatenation( [ 0 ], g ) );
     
     monomial_transformation := EntriesOfHomalgMatrixAsListList( kernel_of_degree_matrix );
         
@@ -49,7 +49,7 @@ BindGlobal( "CAP_INTERNAL_degree_zero_monomials",
 end );
 
 BindGlobal( "CAP_INTERNAL_construct_quotient_ring",
-  function( generating_monomials )
+  function( generating_monomials, k )
     local monomials, relations, indet_string, ring, indeterminates, i, j, left_side, right_side;
     
     monomials := generating_monomials;
@@ -64,7 +64,7 @@ BindGlobal( "CAP_INTERNAL_construct_quotient_ring",
     
     indet_string := JoinStringsWithSeparator( indet_string, "," );
     
-    ring := HomalgFieldOfRationalsInSingular()*indet_string;
+    ring := k * indet_string;
     
     if relations <> [ ] then
         
@@ -116,12 +116,12 @@ BindGlobal( "CAP_INTERNAL_degree_basis",
     rows := Filtered( rows, i -> not i in localized_variables );
     
     inequalities_list := List( rows, i -> Concatenation( [ translation_vector[ i ] ], inequalities_list[ i ] ) );
+
+    inequalities_polytope := PolyhedronByInequalities( inequalities_list );
     
-    inequalities_polytope := POLYMAKE_CREATE_POLYTOPE_BY_INEQUALITIES( inequalities_list );
+    generating_set := LatticePointsGenerators( inequalities_polytope );
     
-    generating_set := POLYMAKE_LATTICE_POINTS_GENERATORS( inequalities_polytope );
-    
-    generating_set := generating_set[ 1 ];
+    generating_set := List( generating_set[ 1 ], g -> Concatenation( [ 1 ], g ) );
     
     monomial_transformation := EntriesOfHomalgMatrixAsListList( kernel_of_degree_matrix );
     
@@ -138,7 +138,7 @@ BindGlobal( "CAP_INTERNAL_degree_part_relations",
     local homogeneous_cone_basis, relation_point_matrix,
           polytope_i, polytope_j, intersection_polytope, intersection_lattice_points_generators, i, j, monomial_solution,
           transposed_degree_zero_generating_set, positive_orthant_inequalities, positive_orthant_inequalities_rhs, current_vector,
-          current_intersected_point;
+          current_intersected_point, homogeneous_points_i, homogeneous_points_j;
     
     homogeneous_cone_basis := List( degree_zero_generating_set, i -> Concatenation( [ 0 ], i ) );
     
@@ -159,12 +159,26 @@ BindGlobal( "CAP_INTERNAL_degree_part_relations",
                 continue;
             fi;
             
-            polytope_i := POLYMAKE_CREATE_POLYTOPE_BY_HOMOGENEOUS_POINTS( Concatenation( homogeneous_cone_basis, [ Concatenation( [ 1 ], degree_basis_elements[ i ] ) ] ) );
-            polytope_j := POLYMAKE_CREATE_POLYTOPE_BY_HOMOGENEOUS_POINTS( Concatenation( homogeneous_cone_basis, [ Concatenation( [ 1 ], degree_basis_elements[ j ] ) ] ) );
+            homogeneous_points_i := Concatenation( homogeneous_cone_basis, [ Concatenation( [ 1 ], degree_basis_elements[ i ] ) ] );
+            homogeneous_points_j := Concatenation( homogeneous_cone_basis, [ Concatenation( [ 1 ], degree_basis_elements[ j ] ) ] );
+
+            if not ForAll( homogeneous_points_i, P -> P[1] = 1 ) then
+              Error( "the first entry is supposed to be 1" );
+            fi;
+
+            if not ForAll( homogeneous_points_j, P -> P[1] = 1 ) then
+              Error( "the first entry is supposed to be 1" );
+            fi;
+
+            Perform( homogeneous_points_i, P -> Remove( P, 1 ) );
+            Perform( homogeneous_points_j, P -> Remove( P, 1 ) );
+
+            polytope_i := Polytope( homogeneous_points_i );
+            polytope_j := Polytope( homogeneous_points_j );
             
-            intersection_polytope := POLYMAKE_INTERSECTION_OF_POLYTOPES( polytope_i, polytope_j );
+            intersection_polytope := IntersectionOfPolytopes( polytope_i, polytope_j );
             
-            intersection_lattice_points_generators := POLYMAKE_LATTICE_POINTS_GENERATORS( intersection_polytope )[ 1 ];
+            intersection_lattice_points_generators := LatticePointsGenerators( intersection_polytope )[ 1 ];
             
 #             if Length( intersection_lattice_points_generators ) > 1 then
 #                 Error( "something went wrong: Too many lattice points in intersection" );
@@ -341,12 +355,12 @@ BindGlobal( "CAP_INTERNAL_block_matrix_to_matrix",
 end );
 
 BindGlobal( "CAP_INTERNAL_degree_zero_ring_and_generators",
-  function( ring_degrees, kernel_of_ring_degrees, localized_variables )
+  function( ring_degrees, kernel_of_ring_degrees, localized_variables, k )
     local ring_generators, ring_as_quotient;
     
     ring_generators := CAP_INTERNAL_degree_zero_monomials( ring_degrees, kernel_of_ring_degrees, localized_variables );
     
-    ring_as_quotient := CAP_INTERNAL_construct_quotient_ring( ring_generators );
+    ring_as_quotient := CAP_INTERNAL_construct_quotient_ring( ring_generators, k );
     
     return [ ring_generators, ring_as_quotient ];
     

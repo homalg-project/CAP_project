@@ -1,5 +1,9 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# Reading the declaration part of the package.
+#
 ReadPackage( "CAP", "gap/ToolsForCategories.gd");
-
 
 ReadPackage( "CAP", "gap/CAP.gd");
 

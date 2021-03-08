@@ -1,11 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# Implementations
+#
 
 ######################################
 ##
@@ -180,7 +177,7 @@ end );
 InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
                        
   function( obj_rec, attr_list )
-    local i, flatted_attribute_list;
+    local i, flatted_attribute_list, obj;
     
     for i in [ 1 .. Length( attr_list ) ] do
         
@@ -207,43 +204,48 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     
     obj_rec!.logical_implication_files := StructuralCopy( CATEGORIES_LOGIC_FILES );
     
-    CallFuncList( ObjectifyWithAttributes, flatted_attribute_list );
+    obj := CallFuncList( ObjectifyWithAttributes, flatted_attribute_list );
     
-    obj_rec!.derivations_weight_list := MakeOperationWeightList( obj_rec, CAP_INTERNAL_DERIVATION_GRAPH );
+    obj!.derivations_weight_list := MakeOperationWeightList( obj, CAP_INTERNAL_DERIVATION_GRAPH );
     
-    obj_rec!.caches := rec( IsEqualForObjects := "never",
-                            IsEqualForMorphisms := "never",
-                            IsEqualForMorphismsOnMor := "never",
-                            IsEqualForCacheForObjects := "never",
-                            IsEqualForCacheForMorphisms := "never",
-                            IsWellDefinedForObjects := "never",
-                            IsWellDefinedForMorphisms := "never",
-                            IsWellDefinedForTwoCells := "never",
-                            RandomObjectByInteger := "never",
-                            RandomMorphismByInteger := "never",
-                            RandomMorphismWithFixedSourceByInteger := "never",
-                            RandomMorphismWithFixedRangeByInteger := "never",
-                            RandomMorphismWithFixedSourceAndRangeByInteger := "never",
-                            RandomObjectByList := "never",
-                            RandomMorphismByList := "never",
-                            RandomMorphismWithFixedSourceByList := "never",
-                            RandomMorphismWithFixedRangeByList := "never",
-                            RandomMorphismWithFixedSourceAndRangeByList := "never" );
+    obj!.caches := rec( IsEqualForObjects := "never",
+                        IsEqualForMorphisms := "never",
+                        IsEqualForMorphismsOnMor := "never",
+                        IsEqualForCacheForObjects := "never",
+                        IsEqualForCacheForMorphisms := "never",
+                        IsWellDefinedForObjects := "never",
+                        IsWellDefinedForMorphisms := "never",
+                        IsWellDefinedForTwoCells := "never",
+                        RandomObjectByInteger := "never",
+                        RandomMorphismByInteger := "never",
+                        RandomMorphismWithFixedSourceByInteger := "never",
+                        RandomMorphismWithFixedRangeByInteger := "never",
+                        RandomMorphismWithFixedSourceAndRangeByInteger := "never",
+                        RandomObjectByList := "never",
+                        RandomMorphismByList := "never",
+                        RandomMorphismWithFixedSourceByList := "never",
+                        RandomMorphismWithFixedRangeByList := "never",
+                        RandomMorphismWithFixedSourceAndRangeByList := "never" );
     
-    obj_rec!.redirects := rec( );
+    obj!.redirects := rec( );
     
-    obj_rec!.primitive_operations := rec( );
+    obj!.primitive_operations := rec( );
+
+    obj!.added_functions := rec( );
     
-    obj_rec!.default_cache_type := CAP_INTERNAL.default_cache_type;
+    obj!.default_cache_type := CAP_INTERNAL.default_cache_type;
     
-    obj_rec!.input_sanity_check_level := 1;
-    obj_rec!.output_sanity_check_level := 1;
+    obj!.input_sanity_check_level := 1;
+    obj!.output_sanity_check_level := 1;
     
-    obj_rec!.predicate_logic := true;
+    obj!.predicate_logic_propagation_for_objects := false;
+    obj!.predicate_logic_propagation_for_morphisms := false;
     
-    obj_rec!.add_primitive_output := false;
+    obj!.predicate_logic := true;
     
-    return obj_rec;
+    obj!.add_primitive_output := false;
+    
+    return obj;
     
 end );
 
@@ -384,7 +386,6 @@ InstallMethod( CachingObject,
                [ IsCapCategoryCell, IsString, IsInt ],
                
   function( cell, name, number )
-    local category, cache;
     
     return GET_METHOD_CACHE( CapCategory( cell ), name, number );
     
@@ -394,11 +395,7 @@ end );
 InstallMethod( CachingObject,
                [ IsCapCategory, IsString, IsInt ],
                
-  function( category, name, number )
-    
-    return GET_METHOD_CACHE( category, name, number );
-    
-end );
+  GET_METHOD_CACHE );
 
 InstallGlobalFunction( SetCachingOfCategory,
   
@@ -500,11 +497,21 @@ InstallMethod( CreateCapCategory,
                [ IsString ],
                
   function( name )
-    local overhead, is_computable, category;
+    local overhead, is_computable, enable_compilation, category;
     
     overhead := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "overhead", true );
     
     is_computable := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_computable", true );
+
+    enable_compilation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "enable_compilation", false );
+
+    if enable_compilation <> false and not IsPackageMarkedForLoading( "CompilerForCAP", ">= 2020.06.17" ) then
+        
+        Display( "WARNING: Package CompilerForCAP is not loaded, so compilation will not be enabled." );
+        
+        enable_compilation := false;
+        
+    fi;
     
     category := rec( );
     
@@ -513,6 +520,10 @@ InstallMethod( CreateCapCategory,
     category!.overhead := overhead;
     
     category!.is_computable := is_computable;
+
+    category!.enable_compilation := enable_compilation;
+
+    category!.compiled_functions := rec( );
     
     CREATE_CAP_CATEGORY_FILTERS( category );
     
@@ -703,6 +714,56 @@ end );
 ##
 #######################################
 
+InstallGlobalFunction( CapCategorySwitchLogicPropagationForObjectsOn,
+  
+  function( category )
+    
+    category!.predicate_logic_propagation_for_objects := true;
+    
+end );
+
+InstallGlobalFunction( CapCategorySwitchLogicPropagationForObjectsOff,
+  
+  function( category )
+    
+    category!.predicate_logic_propagation_for_objects := false;
+    
+end );
+
+InstallGlobalFunction( CapCategorySwitchLogicPropagationForMorphismsOn,
+  
+  function( category )
+    
+    category!.predicate_logic_propagation_for_morphisms := true;
+    
+end );
+
+InstallGlobalFunction( CapCategorySwitchLogicPropagationForMorphismsOff,
+  
+  function( category )
+    
+    category!.predicate_logic_propagation_for_morphisms := false;
+    
+end );
+
+InstallGlobalFunction( CapCategorySwitchLogicPropagationOn,
+  
+  function( category )
+    
+    CapCategorySwitchLogicPropagationForObjectsOn( category );
+    CapCategorySwitchLogicPropagationForMorphismsOn( category );
+    
+end );
+
+InstallGlobalFunction( CapCategorySwitchLogicPropagationOff,
+  
+  function( category )
+    
+    CapCategorySwitchLogicPropagationForObjectsOff( category );
+    CapCategorySwitchLogicPropagationForMorphismsOff( category );
+    
+end );
+
 InstallGlobalFunction( CapCategorySwitchLogicOn,
   
   function( category )
@@ -716,6 +777,79 @@ InstallGlobalFunction( CapCategorySwitchLogicOff,
   function( category )
     
     category!.predicate_logic := false;
+    
+end );
+
+#######################################
+##
+## Unpacking data structures
+##
+#######################################
+
+##
+InstallMethod( Down, [ IsObject ], IdFunc );
+
+##
+InstallMethod( Down, [ IsCapCategoryObject ], x -> "unknown object data" );
+
+##
+InstallMethod( Down2, [ IsObject ], x -> Down( Down( x ) ) );
+
+##
+InstallMethod( Down3, [ IsObject ], x -> Down( Down( Down( x ) ) ) );
+
+##
+InstallMethod( DownOnlyMorphismData, [ IsCapCategoryMorphism ], x -> "unknown morphism data" );
+
+##
+InstallMethod( Down,
+               [ IsCapCategoryMorphism ],
+  function( mor )
+    
+    return [ Source( mor ), DownOnlyMorphismData( mor ), Range( mor ) ];
+    
+end );
+
+##
+InstallMethod( Down,
+               [ IsList ],
+               
+  function( obj )
+    
+    return List( obj, Down );
+    
+end );
+
+##
+InstallMethod( DownToBottom,
+               [ IsObject ],
+               
+  function( obj )
+    local objp, equality_func;
+    
+    objp := obj;
+    
+    equality_func := function( a, b )
+      
+      if IsList( a ) and IsList( b ) and Size( a ) = Size( b ) then
+        
+        return ForAll( [ 1 .. Size( a ) ], i -> equality_func(a[i], b[i]) );
+        
+      else
+        
+        return IsIdenticalObj( a, b );
+        
+      fi;
+      
+    end;
+    
+    while not equality_func( objp, Down( objp ) ) do
+      
+      objp := Down( objp );
+      
+    od;
+    
+    return objp;
     
 end );
 

@@ -892,10 +892,8 @@ BindGlobal( "AS_COMPLEX_OR_COCOMPLEX",
     
     category := UnderlyingCategory( CapCategory( z_functor_object ) );
     
-    object := rec( );
-    
-    ObjectifyWithAttributes( object, type,
-                             UnderlyingZFunctorCell, z_functor_object );
+    object := ObjectifyWithAttributes( rec( ), type,
+                                       UnderlyingZFunctorCell, z_functor_object );
     
     Add( category_getter( category ), object );
     
@@ -976,12 +974,10 @@ BindGlobal( "AS_CHAIN_OR_COCHAIN_MAP",
     
     range := object_constructor( Range( z_functor_morphism ) );
     
-    morphism := rec( );
-    
-    ObjectifyWithAttributes( morphism, type,
-                             UnderlyingZFunctorCell, z_functor_morphism,
-                             Source, source,
-                             Range, range );
+    morphism := ObjectifyWithAttributes( rec( ), type,
+                                         UnderlyingZFunctorCell, z_functor_morphism,
+                                         Source, source,
+                                         Range, range );
     
     Add( category_getter( category ), morphism );
     
@@ -1016,12 +1012,10 @@ BindGlobal( "CHAIN_OR_COCHAIN_MAP",
     
     category := UnderlyingCategory( CapCategory( z_functor_morphism ) );
     
-    morphism := rec( );
-    
-    ObjectifyWithAttributes( morphism, type,
-                             UnderlyingZFunctorCell, z_functor_morphism,
-                             Source, source,
-                             Range, range );
+    morphism := ObjectifyWithAttributes( rec( ), type,
+                                         UnderlyingZFunctorCell, z_functor_morphism,
+                                         Source, source,
+                                         Range, range );
     
     Add( category_getter( category ), morphism );
     

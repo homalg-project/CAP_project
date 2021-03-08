@@ -1,0 +1,472 @@
+Although \CapPkg offers many features and many possibilities to tweak computations,
+it is fairly simple to integrate already existing data types and algorithms in \GAP
+into the \CapPkg setup. In this chapter we give you a hand at the very first steps, using some
+examples and explaining the use and the effect of the commands in it.
+If you are new to \GAP, you can look up the documentation of all following 
+methods via \GAP's help system 
+\footnote{See \href{https://www.gap-system.org/Manuals/doc/ref/chap2.html}{https://www.gap-system.org/Manuals/doc/ref/chap2.html}. 
+It might be neccessary to create \CapPkg's documentation by running \texttt{make doc} in the home folder of \CapPkg.}.
+
+\section{The category of groups}\label{section:groups}
+
+When implementing a category in \CapPkg, one should always have the corresponding classical
+category in mind. In this example we start with the category of groups. The objects in this
+category will be the groups, the morphisms will be the homomorphisms of groups. Every category
+in \CapPkg is presented by a category \GAP object. We start by creating this object.
+
+\input{GAP_tex/group_example/CreateCategory_main}
+
+The string is just the name of the category we have created, and the object the variable
+\texttt{grps} refers to stores information about the category. We can now continue by
+telling the category how operations on the objects or morphisms are performed by adding
+functions the category. First, there should be a compose method for morphisms. In \GAP
+morphisms of groups are composed via the \texttt{*} operator, so we use the two
+argument function \texttt{\textbackslash *} as function for \textrm{PreCompose}.
+
+\input{GAP_tex/group_example/AddPreCompose_main}
+
+Now the composition of two morphisms will be computed by the \texttt{\textbackslash *} operation.
+Another thing every category needs is a function to compute the identity morphism.
+
+\input{GAP_tex/group_example/AddIdentityMorphism_main}
+
+The command used above exactly creates the identity morphism of a group.
+Next, we tell \CapPkg that every output of a basic operation for the category \texttt{grps} should automatically be added to the category \texttt{grps}.
+This step is necessary since in this example, we simply integrate already existing algorithms and data structures of \GAP to
+\CapPkg's infrastructure.
+
+\input{GAP_tex/group_example/EnableAdd_main}
+
+Since the category has now all the functions we wanted it to have, we can finalize it.
+
+\input{GAP_tex/group_example/Finalize_main}
+
+Finalizing a category is necessary after adding all the desired operations and before constructing objects
+for it. We can now create a group and tell the system that the group should be an object in the category.
+Note that \texttt{AddObject} can only be applied to \GAP objects lying in the filter
+\texttt{IsAttributeStoringRep}.
+
+\input{GAP_tex/group_example/AddGroup_main}
+
+Now, \CapPkg considers those groups as objects in the category \texttt{grps}, and we can
+ask them about their category. Also, they are now part of the \GAP filter \texttt{IsCapCategoryObject}.
+
+\input{GAP_tex/group_example/GroupFilter_main}
+
+Now manipulation of the groups is possible using the functions we have already provided to the category.
+It is possible to construct the identity of a group, and compose it with itself.
+
+\input{GAP_tex/group_example/IdentityMorphism_main}
+
+Of course, one can also create a morphism between \texttt{S3} and \texttt{S4} and add it to the category.
+After that, we can also compose it with the identity morphism.
+
+\input{GAP_tex/group_example/AdditionalMorphism_main}
+
+Please note that the constructors for objects and morphisms used in this example are the ones provided
+by \GAP itself, and the only ``change'' done to the data structure was adding it to the category.
+This is one of the design principles of \CapPkg. Already existing data structures and algorithms
+can be integrated into the system with little to no effort, which makes it possible to integrate \CapPkg
+into many existing projects.
+
+This example was pretty basic and only a way to show the very basic structure of \CapPkg. The next example
+will construct a more sophisticated category and some of the computational tools in \CapPkg.
+
+
+\section{The skeletal category of rational vector spaces}
+
+In this section, we implement and compute with the category of finite dimensional rational vector spaces
+(i.e., finite dimensional vector spaces defined over $\Q$) as an
+example of an abelian category. We are going
+to realize this category as a skeletal category, i.e., the objects will be the non-negative integers $\N_0$,
+representing the dimension of the vector space, and we use $a \times b$ matrices with entries in $\Q$ as morphisms
+from $a \in \N_0$ to $b \in \N_0$ (row convention). We will denote this category by $\Svec$
+(the ``S'' stands for \emph{skeletal}, the ``v'' is small since we deal with \emph{finite dimensional} vector spaces).
+
+\subsection{Implementation}
+
+The first part of this tutorial is taken from a file and not from
+an interactive session. Please note that for the sake of completeness, all the necessary code to create the
+functions is displayed. This might seem confusing or simply too much. If you only want to know how a \CapPkg category
+is initialized, only look at the headers of the functions. Also, once the whole process of creation is finished,
+there are examples for computations in the category. If you are primarily interested in the computational capabilities of \CapPkg, please
+continue directly with Subsection \ref{subsection:skeletal_vec_computation}.
+
+\input{GAP_tex/vecspaces_example/Declarations}
+
+We start by loading \texttt{CAP} and the package \texttt{RingsForHomalg} of the \texttt{homalg} project.
+In contrast to the groups example of Section \ref{section:groups}, we won't use existing data structures for the objects and morphisms
+in $\Svec$, but we will create them on our own. Thus, we declare
+a \GAP category for objects in $\Svec$ and for morphisms in $\Svec$.
+
+After that, we declare the dimension as an attribute for objects in $\Svec$,
+and an underlying matrix as an attribute for morphisms in $\Svec$.
+
+Then we declare constructors
+for objects and morphisms. The object constructor only has one attribute, which is the dimension of the vector space.
+The morphism constructor has three arguments. A vector space, which is the \texttt{Source} of the morphism, a matrix
+representing the morphism, and a second vector space, which is the \texttt{Range} of the morphism. Note that every morphism
+which should be added to the category needs the \GAP attributes \texttt{Source} and \texttt{Range}, which should be
+objects of the same category.
+
+After the declarations of the constructors we create a global category \GAP object, which will be the category $\Svec$.
+Since we are going to create an Abelian category, we tell the system that we are doing this, to have all the computational
+properties of an Abelian category. 
+Next, we tell \CapPkg that every \GAP object which lies in the filter \texttt{IsSQVecObj} is an object of $\Svec$,
+and every \GAP object which lies in the filter \texttt{IsSQVecMor} is a morphism of $\Svec$.
+Last, we bind the field $\Q$ to a global variable.
+
+\input{GAP_tex/vecspaces_example/Declarations2}
+
+The first constructor creates the objects of $\Svec$.
+Here, the \CapPkg command
+\begin{itemize}
+  \item \texttt{ObjectifyObjectForCAPWithAttributes}
+\end{itemize}
+creates a \GAP object that resides as an object in the category\footnote{
+  Note that the usual creation of \GAP types is done automatically by \CapPkg.
+One may think of the \GAP type being replaced by the category $\Svec$.
+}
+$\Svec$ with attribute \texttt{Dimension} set to \texttt{dim}.
+
+The second constructor creates the morphisms of $\Svec$.
+Here, the \CapPkg command
+\begin{itemize}
+  \item \texttt{ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes}
+\end{itemize}
+creates a \GAP object that resides as a morphism in the category
+$\Svec$ with attribute \texttt{UnderlyingMatrix} set to \texttt{underlying\_matrix},
+and with source and range coming from the arguments of the constructor.
+
+The resulting objects and morphisms of these constructors
+are automatically part of the category $\Svec$, and after finalizing the category all the operations from the
+category will be applicable to them.
+
+We now continue by adding functions to the category, starting with the same operations as in the groups example (Section \ref{section:groups}).
+If you want to test your implementation function by function,
+please remember to use the command \texttt{Finalize( SQVec )}
+before testing. 
+
+\input{GAP_tex/vecspaces_example/Functions1}
+
+These are straight forward implementations. Before we continue
+adding additional operations, there is another thing we have to take care of. The category of vector spaces $\Svec$ we wanted
+to create is a skeletal category, i.e., vector spaces of the same dimension are supposed to be equal. At the moment
+two consecutive calls of the object constructor will not lead to equal objects, since there is no comparison function.
+\CapPkg offers facilities to give correct comparison functions for objects and morphisms to the category. If no function
+is given, the \GAP function \texttt{IsIdenticalObj} is used. However, giving the right equality function to the
+category is important, please see Section \ref{section:equality_specifications} about equalities for details. We will now add equalities
+for objects and morphisms. Objects will be compared by their dimension, for morphisms the matrices will be compared entry-wise.
+The equalities in \CapPkg do not need to be \texttt{true} or \texttt{false}, but are also allowed to return \texttt{fail},
+which will be interpreted as non decidable. This is used for example for categories of unbounded complexes.
+
+\input{GAP_tex/vecspaces_example/Equalities}
+
+Next we implement some additional functions in the category of vector spaces. We start by defining functions for the kernel.
+A proper implementation needs at least two functions. One for \texttt{KernelEmbedding}, which can compute the embedding of the kernel
+into the source of the given morphism. From this function then automatically a function for \texttt{KernelObject} is derived, which
+computes the embedding and returns the source of this morphism. The second one, \texttt{KernelLift}, implements the universal property of the kernel.
+The diagram of the kernel looks like this:
+\begin{center}
+\begin{tikzpicture}[description/.style={fill=white,inner sep=2pt}]
+  \matrix (m) [matrix of math nodes, row sep=3em,
+               column sep=2.5em, text height=1.5ex, text depth=0.25ex]
+  { \mathrm{KernelObject} \left( \alpha \right) & & \\
+    & A & B \\
+    T & & \\ };
+  \path[->] (m-1-1) edge node[auto]{$\mathrm{KernelEmbedding} \left( \alpha \right)$} (m-2-2);
+  \path[->] (m-2-2) edge node[auto]{$\alpha$} (m-2-3);
+  \path[->] (m-3-1) edge node[auto]{$\tau$} (m-2-2);
+  \path[->, dashed] (m-3-1) edge node[auto]{$\mathrm{KernelLift} \left( \alpha, \tau \right)$} (m-1-1);
+  \path[->] (m-3-1) edge[bend right] node[auto]{$0$} (m-2-3);
+\end{tikzpicture}
+\end{center}
+
+Please note that it is important that the range of the output morphism of the function we give to \texttt{KernelLift},
+under equal first argument, must coincide with the source of the output morphism of the function given to \texttt{KernelEmbedding}.
+In our case this simply means they need to have the same dimension.
+
+\input{GAP_tex/vecspaces_example/Kernel}
+
+There are two things to mention here.
+First thing, instead of \texttt{KernelLift} we could also have installed another method,
+called \texttt{KernelLiftWithGivenKernelObject}. The result would again be an implementation of \texttt{KernelLift}, but those
+\texttt{WithGiven} operations offer an advantage. Instead of calling a function with only $\alpha$ and $\tau$, there
+would be a third argument, which should be equal to the output of \texttt{KernelObject} and then serves as the range of the output morphism.
+This can be done to ensure better compatibility if the given equality function for objects might not be complete, or to save computation time.
+Please have a look at \ref{in_text:with_given} for more details about the \texttt{WithGiven} functions.
+
+Also, the function given for \texttt{KernelLift} does at the beginning the same as the function given for \texttt{KernelEmbedding}. This might lead to
+an unnecessary computation. So, in this context, it would be better to provide a more general function for \texttt{LiftAlongMonomorphism}.
+The input for this function would be a mono, and some morphism, and it would then provide a lift. The function for \texttt{KernelLift} would then be derived
+from this operation and \texttt{KernelEmbedding}, by computing
+\[
+ \mathrm{LiftAlongMonomorphism} \left( \mathrm{KernelEmbedding} \left( \alpha \right), \tau \right).
+\]
+For more information about this system, please refer to the derivations section \ref{section:derivations}.
+An implementation of the kernel would then instead look like this.
+
+\input{GAP_tex/vecspaces_example/KernelAlternative}
+
+The code duplication from above disappear.
+
+Now, we continue by adding more functionality to the category. Dual to our second implementation of the kernel,
+we will provide functions for the cokernel.
+
+\input{GAP_tex/vecspaces_example/Cokernel}
+
+The next step is implementing functions for the \textrm{ZeroObject} in the category, i.e. the vector space
+of dimension 0. A proper implementation here needs three algorithms. One, without any arguments, returns the
+zero object of the category. The other two should, given one object, compute the unique morphisms from and into
+the zero object. Those are named \texttt{UniversalMorphismIntoZeroObject} and \texttt{UniversalMorphismFromZeroObject}.
+For those there are again two choices, either using the \texttt{WithGiven} operations or not.
+For our example we do both, providing functions for the \texttt{WithGiven} operations and for the ones that
+need to compute their own zero object. Please note that this is again possible because of the installed equality of objects.
+
+\input{GAP_tex/vecspaces_example/ZeroObject}
+
+Now we turn the set of homomorphisms between two objects into an Abelian group. For this, we need to define the addition of
+two morphisms having the same sources and ranges, the additive inverse of a morphism, and the zero morphism between two objects.
+
+\input{GAP_tex/vecspaces_example/HomSets}
+
+The installation of \texttt{ZeroMorphism} is not necessary here, since we have the zero object and the corresponding
+universal morphisms, this method could also be derived from those. Of course, providing a primitive implementation might
+increase the speed of some computations.
+
+The last thing left to implement is the direct sum and its universal properties. After that, we can tell the system that the
+category is abelian, finalize it, and start computations. The direct sum needs, for a proper implementation, at least five
+functions. At first, the direct sum of objects needs to be created. Then there are injections of the components and projections
+to the factors. Finally, since the direct sum is product and coproduct at the same time, there are two universal properties to be implemented.
+For details please have a look at Chapter \ref{chapter:constructions}.
+
+\input{GAP_tex/vecspaces_example/DirectSum}
+
+Now we can finalize the category.
+
+\input{GAP_tex/vecspaces_example/Finalize}
+
+The finalize step is very important. It triggers those derivations of methods whose correctness
+rely on the fact that the user won't provide further methods for basic operations in the future.
+Also, it makes the call of category constructors on $\Svec$ possible, e.g.,
+one could create the category of so-called generalized morphisms over $\Svec$.
+
+We are ready to perform some computations with our implementation of $\Svec$.
+In order to have a nice output in the \GAP shell, we also install view methods.
+
+\input{GAP_tex/vecspaces_example/View}
+
+\subsection{Computation}\label{subsection:skeletal_vec_computation}
+
+We initialize an interactive session with our implementation of the category of skeletal rational vector spaces $\Svec$
+and start by creating some morphisms.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/CreateMorphisms_main}
+\end{small}
+
+Unsurprisingly, we can now compute some of the stuff we told the system how to compute, for example the \texttt{KernelEmbedding},
+which is the embedding of the kernel. Also, the cokernel and its projection can be computed. Those computations will
+be carried out using the functions we have given to the system. It is also possible to use the standard arithmetic on the morphism.
+Even if the added functions have different names, e.g., \texttt{AdditionForMorphisms}, it is possible to use the \GAP arithmetic
+operations, e.g., \texttt{+}, for it.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/KernelExample_main}
+\end{small}
+
+The fact that such functions work properly is not surprising at all. But \CapPkg has the power to derive
+further constructions from the given functions. Here are some examples of methods now applicable.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/DerivedMethodsExample_main}
+\end{small}
+
+This \texttt{ImageEmbedding} is probably\footnote{The list of derivations in \CapPkg is ever-growing.} computed by taking the \texttt{KernelEmbedding} of the \textrm{CokernelProjection}.
+There are many more constructions computable right now. One can see a list of all possible operations in the category
+in the category using the 
+\begin{itemize}
+  \item \texttt{InstalledMethodsOfCategory}
+\end{itemize}
+command.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/ViewOperations_main}
+\end{small}
+
+Now, we can also carry out less obvious computations. In the next example we compute the intersection of two 2 dimensional
+subspaces of a 3 dimensional vector space.
+We model subobjects of an object $V \in \Svec$ by monomorphisms with range $V$.
+Taking the intersection of two subobjects 
+$\alpha: W \hookrightarrow V$ and $\beta: U \hookrightarrow V$
+corresponds to taking the fiber product of $\alpha$ and $\beta$ and return the natural morphism from this fiber product to $V$.
+Please note that this point of view is completely general in the sense that we may always think of intersections of
+subobjects as fiber product in all contexts where fiber products exists, for example for ideals or submodules.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/IntersectionExample_main}
+\end{small}
+
+But the computational powers of \CapPkg do not end at this point.
+From the basic operations provided by \CapPkg, we may, for example,
+implement a function for the computation of the famous snake lemma morphism as follows:
+\begin{small}
+  \input{GAP_tex/vecspaces_example/SnakeLemmaImplementation}
+\end{small}
+Actually, this is a translation of a proof of the snake lemma given in \cite{MLCWM} to \CapPkg.
+We will try it on a concrete example:
+
+\begin{center}
+  \begin{tikzpicture}[label/.style={postaction={
+    decorate,
+    decoration={markings, mark=at position .5 with \node #1;}}}]
+    \coordinate (r) at (3.8,0);
+    \coordinate (d) at (0,-2.4);
+    
+    \node (A1) {};
+    \node (B1) at ($(A1)+0.5*(r)$) {${\Q}^2$};
+    \node (C1) at ($(B1)+(r)$) {${\Q}^2$};
+    \node (D1) at ($(C1)+(r)$) {$\cokernel( \delta )$};
+    \node (E1) at ($(D1)+0.5*(r)$) {$0$};
+    
+    \node (A2) at ($(A1)+(d)$) {$0$};
+    \node (B2) at ($(A2)+0.5*(r)$) {$\kernel( \lambda )$};
+    \node (C2) at ($(B2)+(r)$) {${\Q}^3$};
+    \node (D2) at ($(C2)+(r)$) {${\Q}^1$};
+    \node (E2) at ($(D2)+0.5*(r)$) {};
+    
+    \node (D0) at ($(D1)-(d)$) {$\kernel( \gamma )$};
+    
+    \node (B3) at ($(B2)+(d)$) {$\cokernel( \alpha )$};
+    
+    \draw[->,thick] (B1) --node[above]{
+      \color{blue}
+      $
+      \delta :=
+        \begin{pmatrix}
+            1 & 0 \\
+            0 & 0
+        \end{pmatrix}
+      $
+    } (C1);
+    \draw[->,thick] (C1) --node[above]{
+      $\epsilon$
+    } (D1);
+    \draw[->,thick] (D1) -- (E1);
+    
+    \draw[->,thick] (A2) -- (B2);
+    \draw[->,thick] (B2) --node[below]{
+      $\mu$
+    } (C2);
+    \draw[->,thick] (C2) --node[below]{
+      \color{blue}
+      $
+      \lambda :=
+        \begin{pmatrix}
+            0 \\
+            0 \\
+            1
+        \end{pmatrix}
+      $
+    } (D2);
+    
+    \draw[->,thick] (D0) --node[right]{
+      $\iota$
+    } (D1);
+    \draw[->,thick] (B2) --node[left]{
+      $\pi$
+    } (B3);
+    
+    \draw[->,thick] (B1) --node[left]{
+      $\alpha$
+    } (B2);
+    \draw[->,thick] (C1) --node[right]{
+      \color{blue}
+      $
+      \beta :=
+        \begin{pmatrix}
+            2 & 4 & 0 \\
+            3 & 5 & 0
+        \end{pmatrix}
+      $
+    } (C2);
+    \draw[->,thick] (D1) --node[right]{
+      $\gamma$
+    } (D2);
+    
+  \end{tikzpicture}
+\end{center}
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/SnakeLemma_main} 
+\end{small}
+\emph{Challenge}: how does the snake morphism look like if we computed with the same matrices, but interpreted 
+as morphisms between free abelian groups of appropriate finite ranks?
+
+Another nice feature of \CapPkg are functors. The functors in \CapPkg should represent mathematical functors between categories and are modeled
+as morphisms in the \CapPkg category of categories, \texttt{CapCat}. They provide a good way to communicate between different data structures implemented
+by someone in the \CapPkg environment. Then they are functors between different categories. Also, it is useful to implement some internal operations
+in a category as endofunctors, since functors can be manipulated like morphisms, i.e. composed, etc. Also, natural transformations can be implemented in
+\CapPkg. Generally, functors in \CapPkg need two functions, a function describing the action on the objects, and a function describing the actions on the
+morphism. Also, we need to tell the system in which component the functor is covariant and in which the functor is contravariant. Covariant is hereby the standard
+case, so we do not need to specify it.
+In the next example, we create, as a first example, the identity functor of the previously created category of skeletal vector spaces $\Svec$. This is somehow the easiest functor,
+since it does not require any manipulation at all. We start by creating the functor object, and then adding the object and the morphism function to it.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/IdentityFunctor_main} 
+\end{small}
+
+Even if this example is trivial, we already see one of the main points to keep in mind when creating functors. Although the functor only takes one argument,
+the morphism function takes three. This is due to the fact that morphism functions in functors are always kind of \texttt{WithGiven} functions
+(see \ref{in_text:with_given}). The first
+argument here is the image of the source(s) of the morphism(s) given to the object function of the functor, the last is the image of the range(s).
+
+It was already mentioned that functors are morphisms in a specific category, and every \CapPkg category has a specific object in this category.
+Of course, a method for the identity morphism is implemented in \texttt{CapCat}, so we can have the same result with less effort.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/IdentityFunctor2_main}
+\end{small}
+
+The identity functor is not of much computational use, but interesting to show how a functor is created in general. We will now create a second functor. It will
+map a vector space $V$ to its direct sum with itself, i.e. $V \oplus V$, and provides the diagonal of a morphism. The functor is created as follows.
+
+\input{GAP_tex/vecspaces_example/DoubleFunctor}
+
+Since we have given this functor functions about how to act on objects or morphisms, we can actually apply it to such. We can also compose it with itself
+and then again apply it to objects or morphisms.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/ApplyDoubleFunctor_main}
+\end{small}
+
+As said, since functors are morphisms, it is also possible to manipulate functors like morphisms. In the next example, we compose the double functor with itself
+to get a quadruble functor.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/QuadrupleFunctor_main}
+\end{small}
+
+Some functors are more important for applications than others. If some data structure is implemented in the \CapPkg setup, and if some functors are implemented
+in this setup, one might want them to work like methods, and does not want to use \texttt{ApplyFunctor} all the time. This is possible using the \texttt{InstallFunctor}
+command. The example also shows an interesting fact about the caching. Both the functor used with \texttt{ApplyFunctor} and the installed version use the same cache. This
+gives a bit more consistency and might save computation time. Also, it ensures the interchangeability of both ways of applying the functor.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/InstallFunctor_main}
+\end{small}
+
+At last, we want to show natural transformations in \CapPkg and the manipulation which is possible for them. For this, we create the natural transformation which
+swaps the components in the double functor, i.e., for some vector space $V$ it creates the morphism $V \oplus V \rightarrow V \oplus V$, $\left( x,y \right) \mapsto \left( y,x \right)$.
+A natural transformation only needs one function, which returns for an object the correct morphism.
+
+\input{GAP_tex/vecspaces_example/NaturalTrafo}
+
+Of course, we can apply the natural transformation to objects. But it is also possible to compute the vertical and the horizontal composition of natural transformations.
+In the next and last example we compute both the horizontal and the vertical composition of the natural transformation we created with itself. We leave it to the
+reader to verify the results.
+
+\begin{small}
+\input{GAP_tex/vecspaces_example/NaturalTrafoApply_main}
+\end{small}

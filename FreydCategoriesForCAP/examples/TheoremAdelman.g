@@ -2,7 +2,7 @@
 
 LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "RingsForHomalg" );
-LoadPackage( "Bialgebroids" );;
+LoadPackage( "Algebroids" );;
 #! @Section Adelman category theorem
 
 #! @Example

@@ -1,12 +1,9 @@
-#############################################################################
-##
-##                                GroupRepresentationsForCAP package
-##
-##  Copyright 2016, Sebastian Posur, University of Siegen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# GroupRepresentationsForCAP: Skeletal category of group representations for CAP
+#
+# Declarations
+#
 #! @Chapter Semisimple Categories
-##
-#############################################################################
 
 DeclareCategory( "IsSemisimpleCategory",
                  IsCapCategory );

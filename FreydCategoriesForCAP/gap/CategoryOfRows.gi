@@ -1,10 +1,8 @@
-#############################################################################
-##
-##     FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
-##
-##  Copyright 2018, Sebastian Posur, University of Siegen
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
+#
+# Implementations
+#
 
 ####################################
 ##
@@ -24,6 +22,10 @@ InstallMethod( CategoryOfRows,
     category := CreateCapCategory( Concatenation( "Rows( ", RingName( homalg_ring )," )" ) : overhead := overhead_option );
     
     SetFilterObj( category, IsCategoryOfRows );
+
+    if HasHasInvariantBasisProperty( homalg_ring ) and HasInvariantBasisProperty( homalg_ring ) then
+        SetIsSkeletalCategory( category, true );
+    fi;
     
     SetIsAdditiveCategory( category, true );
     
@@ -42,12 +44,16 @@ InstallMethod( CategoryOfRows,
     fi;
     
     if HasIsFieldForHomalg( homalg_ring ) and IsFieldForHomalg( homalg_ring )  then
-      
-      SetIsAbelianCategory( category, true );
-      
+        
+        AddObjectRepresentation( category, IsCategoryOfRowsObject and HasIsProjective and IsProjective );
+        
+        SetIsAbelianCategory( category, true );
+        
+    else
+        
+        AddObjectRepresentation( category, IsCategoryOfRowsObject );
+        
     fi;
-    
-    AddObjectRepresentation( category, IsCategoryOfRowsObject );
     
     AddMorphismRepresentation( category, IsCategoryOfRowsMorphism and HasUnderlyingMatrix );
     
@@ -80,22 +86,18 @@ end );
 InstallMethod( CategoryOfRowsObjectOp,
                [ IsCategoryOfRows, IsInt ],
   function( category, rank )
-    local category_of_rows_object;
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     if rank < 0 then
       
-      return Error( "first argument must be a non-negative integer" );
+      Error( "first argument must be a non-negative integer" );
       
     fi;
     
-    category_of_rows_object := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( category_of_rows_object, 
-                                         category,
-                                         RankOfObject, rank
+    return ObjectifyObjectForCAPWithAttributes( rec( ),
+                                                category,
+                                                RankOfObject, rank
     );
-    
-    return category_of_rows_object;
     
 end );
 
@@ -119,13 +121,14 @@ InstallMethod( CategoryOfRowsMorphism,
                [ IsCategoryOfRowsObject, IsHomalgMatrix, IsCategoryOfRowsObject ],
                
   function( source, homalg_matrix, range )
-    local category_of_rows_morphism, homalg_ring, category;
+    local homalg_ring, category;
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     category := CapCategory( source );
     
     if not IsIdenticalObj( category, CapCategory( range ) ) then
       
-      return Error( "source and range are not defined over identical categories" );
+      Error( "source and range are not defined over identical categories" );
       
     fi;
     
@@ -133,31 +136,27 @@ InstallMethod( CategoryOfRowsMorphism,
     
     if not IsIdenticalObj( homalg_ring, UnderlyingRing( category ) ) then
       
-      return Error( "the matrix is defined over a different ring than the objects" );
+      Error( "the matrix is defined over a different ring than the objects" );
       
     fi;
     
     if NrRows( homalg_matrix ) <> RankOfObject( source ) then
       
-      return Error( "the number of rows has to be equal to the rank of the source" );
+      Error( "the number of rows has to be equal to the rank of the source" );
       
     fi;
     
     if NrColumns( homalg_matrix ) <> RankOfObject( range ) then
       
-      return Error( "the number of columns has to be equal to the rank of the range" );
+      Error( "the number of columns has to be equal to the rank of the range" );
       
     fi;
     
-    category_of_rows_morphism := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( category_of_rows_morphism, category,
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category,
                                            source,
                                            range,
                                            UnderlyingMatrix, homalg_matrix
     );
-    
-    return category_of_rows_morphism;
     
 end );
 
@@ -530,13 +529,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         rank_factor := RankOfObject( object_list[ projection_number ] );
         
-        projection_in_factor := HomalgZeroMatrix( rank_pre, rank_factor, ring );
-        
-        projection_in_factor := UnionOfRows( projection_in_factor, 
-                                             HomalgIdentityMatrix( rank_factor, ring ) );
-        
-        projection_in_factor := UnionOfRows( projection_in_factor, 
-                                             HomalgZeroMatrix( rank_post, rank_factor, ring ) );
+        projection_in_factor := UnionOfRows( HomalgZeroMatrix( rank_pre, rank_factor, ring ),
+                                             HomalgIdentityMatrix( rank_factor, ring ),
+                                             HomalgZeroMatrix( rank_post, rank_factor, ring )
+                                           );
         
         return CategoryOfRowsMorphism( direct_sum_object, projection_in_factor, object_list[ projection_number ] );
         
@@ -570,13 +566,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         rank_cofactor := RankOfObject( object_list[ injection_number ] );
         
         # now construct the mapping matrix
-        injection_of_cofactor := HomalgZeroMatrix( rank_cofactor, rank_pre ,ring );
-        
-        injection_of_cofactor := UnionOfColumns( injection_of_cofactor, 
-                                             HomalgIdentityMatrix( rank_cofactor, ring ) );
-        
-        injection_of_cofactor := UnionOfColumns( injection_of_cofactor, 
-                                             HomalgZeroMatrix( rank_cofactor, rank_post, ring ) );
+        injection_of_cofactor := UnionOfColumns( HomalgZeroMatrix( rank_cofactor, rank_pre ,ring ),
+                                                 HomalgIdentityMatrix( rank_cofactor, ring ),
+                                                 HomalgZeroMatrix( rank_cofactor, rank_post, ring )
+                                               );
         
         return CategoryOfRowsMorphism( object_list[ injection_number ], injection_of_cofactor, coproduct );
         
@@ -713,6 +706,31 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     if is_defined_over_field then
       
       ##
+      AddBasisOfExternalHom( category,
+        function( S, T )
+          local s, t, identity, matrices;
+          
+          s := RankOfObject( S );
+          
+          t := RankOfObject( T );
+          
+          identity := HomalgIdentityMatrix( s * t, UnderlyingRing( CapCategory( S ) ) );
+          
+          matrices := List( [ 1 .. s * t ], i -> ConvertRowToMatrix( CertainRows( identity, [ i ] ), s, t ) );
+          
+          return List( matrices, mat -> CategoryOfRowsMorphism( S, mat, T ) );
+          
+      end );
+      
+      ##
+      AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( category,
+        function( morphism, L )
+          
+          return EntriesOfHomalgMatrix( UnderlyingMatrix( morphism ) );
+          
+      end );
+      
+      ##
       AddKernelObject( category,
         function( morphism )
           local homalg_matrix;
@@ -737,17 +755,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       end );
         
       ##
-      AddKernelEmbeddingWithGivenKernelObject( category,
-        function( morphism, kernel )
-          local kernel_emb;
-          
-          kernel_emb := SyzygiesOfRows( UnderlyingMatrix( morphism ) );
-          
-          return CategoryOfRowsMorphism( kernel, kernel_emb, Source( morphism ) );
-          
-      end );
-      
-      ##
       AddCokernelObject( category,
         function( morphism )
           local homalg_matrix;
@@ -768,17 +775,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
           cokernel_obj := CategoryOfRowsObject( category, NrColumns( cokernel_proj ) );
           
           return CategoryOfRowsMorphism( Range( morphism ), cokernel_proj, cokernel_obj );
-          
-      end );
-      
-      ##
-      AddCokernelProjectionWithGivenCokernelObject( category,
-        function( morphism, cokernel )
-          local cokernel_proj;
-          
-          cokernel_proj := SyzygiesOfColumns( UnderlyingMatrix( morphism ) );
-          
-          return CategoryOfRowsMorphism( Range( morphism ), cokernel_proj, cokernel );
           
       end );
       
@@ -836,21 +832,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         ##
         AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
           function( alpha )
-            local underlying_matrix, nr_rows;
+            local underlying_matrix;
             
             underlying_matrix := UnderlyingMatrix( alpha );
             
-            nr_rows := NrRows( underlying_matrix );
-            
-            if ( nr_rows = 0 ) or ( NrColumns( underlying_matrix ) = 0 ) then
-                
-                return UniversalMorphismIntoZeroObject( DistinguishedObjectOfHomomorphismStructure( category ) );
-                
-            elif nr_rows > 1 then
-                
-                underlying_matrix := Iterated( List( [ 1 .. nr_rows ], i -> CertainRows( underlying_matrix, [ i ] ) ), UnionOfColumns );
-                
-            fi;
+            underlying_matrix := ConvertMatrixToRow( underlying_matrix );
             
             return CategoryOfRowsMorphism(
                      DistinguishedObjectOfHomomorphismStructure( category ),
@@ -869,15 +855,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             
             nr_columns := RankOfObject( B );
             
-            if nr_rows = 0 or nr_columns = 0 then
-                
-                return ZeroMorphism( A, B );
-                
-            fi;
-            
             underlying_matrix := UnderlyingMatrix( morphism );
             
-            underlying_matrix := Iterated( List( [ 1 .. nr_rows ], i -> CertainColumns( underlying_matrix, [ ((i - 1) * nr_columns + 1) .. i * nr_columns ] ) ), UnionOfRows );
+            underlying_matrix := ConvertRowToMatrix( underlying_matrix, nr_rows, nr_columns );
             
             return CategoryOfRowsMorphism( A, underlying_matrix, B );
             
@@ -957,6 +937,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             
             rank := RankOfObject( object );
             
+            if rank = 0 then
+                
+                return ZeroMorphism( tensor_object, unit );
+                
+            fi;
+            
             id := HomalgIdentityMatrix( rank, ring );
             
             return CategoryOfRowsMorphism( tensor_object, 
@@ -972,6 +958,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             local rank, id;
             
             rank := RankOfObject( object );
+            
+            if rank = 0 then
+                
+                return ZeroMorphism( unit, tensor_object );
+                
+            fi;
             
             id := HomalgIdentityMatrix( rank, ring );
             
@@ -1221,6 +1213,36 @@ InstallMethod( Display,
     
 end );
 
+##
+InstallMethod( LaTeXOutput,
+               [ IsCategoryOfRowsObject ],
+               
+  function( obj )
+    
+    return Concatenation( LaTeXStringOp( UnderlyingRing( CapCategory( obj ) ) ), "^{1 \\times ", String( RankOfObject( obj ) ), "}" );
+    
+end );
+
+##
+InstallMethod( LaTeXOutput,
+               [ IsCategoryOfRowsMorphism ],
+               
+  function( mor )
+    local matrix;
+    
+    matrix := LaTeXStringOp( UnderlyingMatrix( mor ) );
+    
+    if ValueOption( "OnlyDatum" ) = true then
+        
+        return matrix;
+        
+    fi;
+    
+    return Concatenation( LaTeXOutput( Source( mor ) ), matrix, LaTeXOutput( Range( mor ) ) );
+    
+end );
+
+
 ####################################
 ##
 ## Convenience
@@ -1237,3 +1259,27 @@ InstallMethod( \/,
 InstallMethod( \/,
                [ IsInt, IsCategoryOfRows ],
                CategoryOfRowsObject );
+
+####################################
+##
+## Down
+##
+####################################
+
+##
+InstallMethod( Down,
+               [ IsCategoryOfRowsObject ],
+  function( obj )
+    
+    return RankOfObject( obj );
+    
+end );
+
+##
+InstallMethod( DownOnlyMorphismData,
+               [ IsCategoryOfRowsMorphism ],
+  function( mor )
+    
+    return UnderlyingMatrix( mor );
+    
+end );

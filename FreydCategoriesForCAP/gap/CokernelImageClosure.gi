@@ -1,10 +1,8 @@
-#############################################################################
-##
-##     FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
-##
-##  Copyright 2018, Sebastian Posur, University of Siegen
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
+#
+# Implementations
+#
 
 ####################################
 ##
@@ -76,7 +74,7 @@ InstallMethod( CokernelImageClosureObject,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
   function( generator_morphism, relation_morphism )
-    local cokernel_image_object, category;
+    local category;
     
     if not IsEqualForObjects( Range( generator_morphism ), Range( relation_morphism ) ) then
         
@@ -84,15 +82,11 @@ InstallMethod( CokernelImageClosureObject,
         
     fi;
 
-    cokernel_image_object := rec( );
-    
     category := CokernelImageClosure( CapCategory( relation_morphism ) );
 
-    ObjectifyObjectForCAPWithAttributes( cokernel_image_object, category,
-                                         GeneratorMorphism, generator_morphism,
-                                         RelationMorphism, relation_morphism );
-    
-    return cokernel_image_object;
+    return ObjectifyObjectForCAPWithAttributes( rec( ), category,
+                                                GeneratorMorphism, generator_morphism,
+                                                RelationMorphism, relation_morphism );
     
 end );
 
@@ -126,7 +120,7 @@ InstallMethod( CokernelImageClosureMorphism,
                [ IsCokernelImageClosureObject, IsCapCategoryMorphism, IsCokernelImageClosureObject ],
                
   function( source, morphism_datum, range )
-    local cokernel_image_closure_morphism, category;
+    local category;
     
     if not IsIdenticalObj( CapCategory( morphism_datum ), UnderlyingCategory( CapCategory( source ) ) ) then
         
@@ -146,18 +140,14 @@ InstallMethod( CokernelImageClosureMorphism,
         
     fi;
     
-    cokernel_image_closure_morphism := rec( );
-    
-    category :=  CapCategory( source );
+    category := CapCategory( source );
 
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
-                             cokernel_image_closure_morphism, category,
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
+                             rec( ), category,
                              source,
                              range,
                              MorphismDatum, morphism_datum
     );
-    
-    return cokernel_image_closure_morphism;
     
 end );
 
@@ -917,3 +907,28 @@ InstallMethod( NaturalIsomorphismFromFinitePresentationOfCokernelImageClosureObj
     return natural_isomorphism;
     
 end );
+
+####################################
+##
+## Down
+##
+####################################
+
+##
+InstallMethod( Down,
+               [ IsCokernelImageClosureObject ],
+  function( obj )
+    
+    return [ GeneratorMorphism( obj ), RelationMorphism( obj ) ];
+    
+end );
+
+##
+InstallMethod( DownOnlyMorphismData,
+               [ IsCokernelImageClosureMorphism ],
+  function( mor )
+    
+    return MorphismDatum( mor );
+    
+end );
+

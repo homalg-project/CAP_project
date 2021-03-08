@@ -297,16 +297,12 @@ InstallMethod( GeneralizedMorphismBySpansObject,
                [ IsCapCategoryObject ],
                                        
   function( object )
-    local gen_object, generalized_category;
+    local generalized_category;
     
     generalized_category := GeneralizedMorphismCategoryBySpans( CapCategory( object ) );
     
-    gen_object := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( gen_object, generalized_category,
+    return ObjectifyObjectForCAPWithAttributes( rec( ), generalized_category,
                              UnderlyingHonestObject, object );
-    
-    return gen_object;
     
 end );
 
@@ -315,7 +311,7 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismBySpan,
                                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                                   
   function( reversed_arrow, arrow )
-    local generalized_morphism, generalized_category;
+    local generalized_category;
     
     if not IsEqualForObjects( Source( arrow ), Source( reversed_arrow ) ) then
         
@@ -325,15 +321,11 @@ InstallMethodWithCacheFromObject( GeneralizedMorphismBySpan,
     
     generalized_category := GeneralizedMorphismCategoryBySpans( CapCategory( arrow ) );
     
-    generalized_morphism := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( generalized_morphism, generalized_category,
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), generalized_category,
                              GeneralizedMorphismBySpansObject( Range( reversed_arrow ) ),
                              GeneralizedMorphismBySpansObject( Range( arrow ) ),
                              Arrow, arrow,
                              ReversedArrow, reversed_arrow );
-    
-    return generalized_morphism;
     
 end );
 

@@ -1,0 +1,15 @@
+LoadPackage( "CAP" );
+LoadPackage( "CAP" );
+grps := CreateCapCategory( "groups" );
+AddPreCompose( grps, \* );
+identity_func := grp -> GroupHomomorphismByImages( grp, grp );
+AddIdentityMorphism( grps, identity_func );
+EnableAddForCategoricalOperations( grps );
+Finalize( grps );
+S3 := SymmetricGroup( 3 );
+AddObject( grps, S3 );
+S4 := SymmetricGroup( 4 );
+AddObject( grps, S4 );
+CapCategory( S3 );
+id_S3 := IdentityMorphism( S3 );
+PreCompose( id_S3, id_S3 );

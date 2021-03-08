@@ -4,7 +4,7 @@
 
 LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "RingsForHomalg" );
-LoadPackage( "Bialgebroids" );
+LoadPackage( "Algebroids" );
 
 #! @Example
 R := HomalgRingOfIntegers();;
@@ -69,7 +69,7 @@ UniversalMorphismIntoDirectSum( [ pr3, pr2 ] );;
 inj1 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 1 );;
 inj2 := InjectionOfCofactorOfDirectSum( [ Z2, Z2, Z2 ], 2 );;
 UniversalMorphismFromDirectSum( [ inj2, inj1 ] );;
-ZFree := AsFreydCategoryObject( obj1 );;
+ZFree := obj1/freyd;;
 id := IdentityMorphism( ZFree );;
 z := id + id;;
 CokernelProjection( z );;

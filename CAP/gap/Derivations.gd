@@ -1,15 +1,9 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# Declarations
+#
 #! @Chapter Managing Derived Methods
-#!
-##
-#############################################################################
-
 
 ####################################
 ##

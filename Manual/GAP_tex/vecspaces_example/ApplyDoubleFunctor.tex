@@ -1,0 +1,33 @@
+\documentclass[12pt]{amsart}
+\usepackage{graphicx}
+\usepackage{a4wide}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+
+\title{GAP Code}
+\author{}
+
+\begin{document}
+\maketitle
+
+\begin{Verbatim}[commandchars=!@\%,frame=single]
+!color@blue%@gap>%!color@red%@ ApplyFunctor( double_functor, V2 );%
+<An object in SQVec of dimension 4>
+!color@blue%@gap>%!color@red%@ alpha2 := SQVecMor( V3, [ [ 0, 0 ], [ 1, 0 ], [ 0, 1 ] ], V2 );%
+A morphism in SQVec with underlying matrix:
+[ [  0,  0 ],
+  [  1,  0 ],
+  [  0,  1 ] ]
+
+!color@blue%@gap>%!color@red%@ ApplyFunctor( double_functor, alpha2 );%
+A morphism in SQVec with underlying matrix:
+[ [  0,  0,  0,  0 ],
+  [  1,  0,  0,  0 ],
+  [  0,  1,  0,  0 ],
+  [  0,  0,  0,  0 ],
+  [  0,  0,  1,  0 ],
+  [  0,  0,  0,  1 ] ]
+
+\end{Verbatim}
+\end{document}

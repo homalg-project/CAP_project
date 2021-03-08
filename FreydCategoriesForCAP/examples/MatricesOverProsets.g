@@ -9,6 +9,8 @@ LoadPackage( "FreydCategoriesForCAP" );;
 K := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;
 #Construction of a tower of categories
 CP_K := ProSetAsCategory( K );;
+#! #I  method installed for IsSplitEpimorphism matches more than one declaration
+#! #I  method installed for IsSplitMonomorphism matches more than one declaration
 ZZ := HomalgRingOfIntegers( );;
 ZP_K := LinearClosure( ZZ, CP_K, ReturnTrue );;
 RowsP_K := AdditiveClosure( ZP_K );;

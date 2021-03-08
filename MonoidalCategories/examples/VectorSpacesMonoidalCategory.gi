@@ -80,10 +80,8 @@ InstallMethod( QVectorSpace,
   function( dim )
     local space;
     
-    space := rec( );
-    
-    ObjectifyWithAttributes( space, TheTypeOfHomalgRationalVectorSpaces,
-                             Dimension, dim 
+    space := ObjectifyWithAttributes( rec( ), TheTypeOfHomalgRationalVectorSpaces,
+                                      Dimension, dim
     );
 
     # is this the right place?
@@ -98,7 +96,7 @@ InstallMethod( VectorSpaceMorphism,
                   [ IsHomalgRationalVectorSpaceRep, IsObject, IsHomalgRationalVectorSpaceRep ],
                   
   function( source, matrix, range )
-    local morphism;
+    local morphism, objectified_morphism;
 
     if not IsHomalgMatrix( matrix ) then
     
@@ -112,15 +110,14 @@ InstallMethod( VectorSpaceMorphism,
 
     morphism := rec( morphism := morphism );
     
-    
-    ObjectifyWithAttributes( morphism, TheTypeOfHomalgRationalVectorSpaceMorphism,
-                             Source, source,
-                             Range, range 
+    objectified_morphism := ObjectifyWithAttributes( morphism, TheTypeOfHomalgRationalVectorSpaceMorphism,
+                                                     Source, source,
+                                                     Range, range
     );
 
-    Add( vecspaces, morphism );
+    Add( vecspaces, objectified_morphism );
     
-    return morphism;
+    return objectified_morphism;
     
 end );
 

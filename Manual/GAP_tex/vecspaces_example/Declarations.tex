@@ -1,0 +1,36 @@
+\begin{small}
+\begin{Verbatim}[frame=single]
+LoadPackage( "CAP" );
+
+LoadPackage( "RingsForHomalg" );
+
+DeclareCategory( "IsSQVecObj",
+                 IsCapCategoryObject );
+
+DeclareCategory( "IsSQVecMor",
+                 IsCapCategoryMorphism );
+
+DeclareAttribute( "Dimension",
+                  IsSQVecObj );
+
+DeclareAttribute( "UnderlyingMatrix", 
+                  IsSQVecMor );
+
+DeclareOperation( "SQVecObj",
+                  [ IsInt ] );
+
+DeclareOperation( "SQVecMor",
+                  [ IsSQVecObj, IsObject, IsSQVecObj ] );
+
+BindGlobal( "SQVec", 
+    CreateCapCategory( "Skeletal category of rational vector spaces" ) );
+
+SetIsAbelianCategory( SQVec, true );
+
+AddObjectRepresentation( SQVec, IsSQVecObj );
+
+AddMorphismRepresentation( SQVec, IsSQVecMor );
+
+BindGlobal( "QQ", HomalgFieldOfRationals( ) );
+\end{Verbatim}
+\end{small}

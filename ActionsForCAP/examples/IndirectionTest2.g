@@ -53,10 +53,8 @@ InstallMethod( WrappedObject,
   function( obj )
     local wrapped_obj;
     
-    wrapped_obj := rec( );
-    
-    ObjectifyWithAttributes( wrapped_obj, TheTypeOfWrappedObjects,
-                             UnderlyingCell, obj
+    wrapped_obj := ObjectifyWithAttributes( rec( ), TheTypeOfWrappedObjects,
+                                            UnderlyingCell, obj
     );
     
     Add( wrapped_cat, wrapped_obj );
@@ -71,12 +69,10 @@ InstallMethod( WrappedMorphism,
   function( source, morphism, range )
     local wrapped_morphism;
 
-    wrapped_morphism := rec( );
-    
-    ObjectifyWithAttributes( wrapped_morphism, TheTypeOfWrappedMorphisms,
-                             Source, source,
-                             Range, range,
-                             UnderlyingCell, morphism
+    wrapped_morphism := ObjectifyWithAttributes( rec( ), TheTypeOfWrappedMorphisms,
+                                                 Source, source,
+                                                 Range, range,
+                                                 UnderlyingCell, morphism
     );
 
     Add( wrapped_cat, wrapped_morphism );

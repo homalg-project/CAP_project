@@ -1,11 +1,8 @@
-#############################################################################
-##
-##                                GroupRepresentationsForCAP package
-##
-##  Copyright 2016, Sebastian Posur, University of Siegen
-##
-#############################################################################
-
+# SPDX-License-Identifier: GPL-2.0-or-later
+# GroupRepresentationsForCAP: Skeletal category of group representations for CAP
+#
+# Implementations
+#
 InstallValue( ASSOCIATORS_Setup, rec(
     
     ZZ := HomalgRingOfIntegers(),
@@ -1125,34 +1122,55 @@ end );
 InstallMethod( WriteAssociatorDataToFile,
                [ IsString ],
                
-   function( filename )
-       
-       ASSOCIATORS_Setup.database_keys[4] := filename;
-       
-       RemoveCharacters( ASSOCIATORS_Setup.associator_stringlist, " " );
-       
-       PrintTo( filename, ASSOCIATORS_Setup.associator_stringlist );
-       
+  function( filename )
+    local stream;
+    
+    ASSOCIATORS_Setup.database_keys[4] := filename;
+    
+    RemoveCharacters( ASSOCIATORS_Setup.associator_stringlist, " " );
+    
+    stream := OutputTextFile( filename, false );
+    
+    SetPrintFormattingStatus( stream, false );
+    
+    PrintTo( stream, Concatenation( ASSOCIATORS_Setup.associator_stringlist, "\n" ) );
+    
+    CloseStream( stream );
+    
 end );
 
 ##
 InstallMethod( WriteDatabaseKeysToFile, 
                [ IsString ],
                
-    function( filename )
-        
-        PrintTo( filename, ASSOCIATORS_Setup.database_keys );
-        
+  function( filename )
+    local stream;
+    
+    stream := OutputTextFile( filename, false );
+    
+    SetPrintFormattingStatus( stream, false );
+    
+    PrintTo( stream, Concatenation( String( ASSOCIATORS_Setup.database_keys ), "\n" ) );
+    
+    CloseStream( stream );
+    
 end );
 
 ##
 InstallMethod( WriteRepresentationsDataToFile,
                [ IsString ],
                
-    function( filename )
-        
-        PrintTo( filename, ASSOCIATORS_Setup.initialize_group_data_log_list_as_string );
-        
+  function( filename )
+    local stream;
+    
+    stream := OutputTextFile( filename, false );
+    
+    SetPrintFormattingStatus( stream, false );
+    
+    PrintTo( stream, Concatenation( ASSOCIATORS_Setup.initialize_group_data_log_list_as_string, "\n" ) );
+    
+    CloseStream( stream );
+    
 end );
 
 ##
@@ -1160,8 +1178,15 @@ InstallMethod( WriteSkeletalFunctorDataToFile,
                [ IsString ],
                
   function( filename )
+    local stream;
     
-    PrintTo( filename, ASSOCIATORS_Setup.skeletalfunctortensordata_log_list_as_string );
+    stream := OutputTextFile( filename, false );
+    
+    SetPrintFormattingStatus( stream, false );
+    
+    PrintTo( stream, Concatenation( ASSOCIATORS_Setup.skeletalfunctortensordata_log_list_as_string, "\n" ) );
+    
+    CloseStream( stream );
     
 end );
 

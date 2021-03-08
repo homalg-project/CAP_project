@@ -1,12 +1,9 @@
-#############################################################################
-##
-##     FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
-##
-##  Copyright 2019, Sebastian Posur, University of Siegen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
+#
+# Declarations
+#
 #! @Chapter Quiver rows
-#!
-#############################################################################
 
 ####################################
 ##
@@ -56,10 +53,10 @@ DeclareOperation( "AsQuiverRowsMorphism",
                   [ IsQuiverAlgebraElement, IsQuiverRowsCategory ] );
 
 DeclareOperation( "\/",
-                  [ IsQuiverVertex, IsQuiverRowsCategory ] );
+                  [ IsQuiverAlgebraElement, IsQuiverRowsCategory ] );
 
 DeclareOperation( "\/",
-                  [ IsQuiverAlgebraElement, IsQuiverRowsCategory ] );
+                  [ IsPath, IsQuiverRowsCategory ] );
 
 ####################################
 ##
@@ -85,7 +82,7 @@ DeclareAttribute( "MorphismMatrix",
 DeclareAttribute( "NrRows",
                   IsQuiverRowsMorphism );
 
-DeclareAttribute( "NrColumns",
+DeclareAttribute( "NrCols",
                   IsQuiverRowsMorphism );
 
 DeclareAttribute( "AsListListOfMatrices",
@@ -114,6 +111,9 @@ DeclareOperation( "\[\]",
 
 DeclareOperation( "\[\]",
                   [ IsQuiverRowsObject, IsInt ] );
+
+DeclareOperation( "\*",
+                  [ IsQuiverRowsMorphism, IsQuiverRowsMorphism ] );
 
 DeclareGlobalFunction( "CAP_INTERNAL_MORPHISM_BETWEEN_DIRECT_SUMS_LIST_LIST" );
 

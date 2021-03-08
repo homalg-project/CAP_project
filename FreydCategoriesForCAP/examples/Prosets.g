@@ -10,11 +10,13 @@ L := [ [1, 1, 0], [0, 1, 1], [0, 0, 1] ];;
 
 
 P_K := ProSetAsCategory(K);;
+#! #I  method installed for IsSplitEpimorphism matches more than one declaration
+#! #I  method installed for IsSplitMonomorphism matches more than one declaration
 
 
 #ProSetAsCategory(L);
 
-a := ProSetAsCategoryObject(1, P_K);;
+a := 1/P_K;;
 b := ProSetAsCategoryObject(2, P_K);;
 c := ProSetAsCategoryObject(3, P_K);;
 
@@ -38,7 +40,7 @@ gamma = PreCompose(alpha, beta);
 id_a := IdentityMorphism(a);;
 IsWellDefined(Inverse(alpha));
 #! false
-PreCompose(beta, Inverse(beta)) = IdentityMorphism(b);
+beta*Inverse(beta) = IdentityMorphism(b);
 #! true
 alpha = Lift(gamma, beta);
 #! true

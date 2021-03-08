@@ -1,13 +1,9 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2017, Sebastian Gutsche, Siegen University
-##                  Sebastian Posur,   Siegen University
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# Implementations
+#
 #! @Chapter Prepare functions
-##
-#############################################################################
 
 ##
 BindGlobal( "CAP_PREFUNCTION_BINARY_DIRECT_PRODUCT_TO_DIRECT_PRODUCT",

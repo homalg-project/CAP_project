@@ -32,7 +32,7 @@ DeclareRepresentation( "IsGradedColumnMorphismRep",
 InstallMethod( GradedRowOrColumnMorphism,
                [ IsGradedRowOrColumn, IsHomalgMatrix, IsGradedRowOrColumn ],
   function( source, homalg_matrix, range )
-    local graded_row_or_column_morphism, homalg_graded_ring, category, left, type;
+    local homalg_graded_ring, category, left, type;
     
     # get category of source
     category := CapCategory( source );
@@ -95,18 +95,13 @@ InstallMethod( GradedRowOrColumnMorphism,
     fi;
     
     # now create the morphism
-    graded_row_or_column_morphism := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-      graded_row_or_column_morphism, category,
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
+      rec( ), category,
       source,
       range,
       UnderlyingHomalgGradedRing, homalg_graded_ring,
       UnderlyingHomalgMatrix, homalg_matrix
     );
-    
-    # and return the morphism
-    return graded_row_or_column_morphism;
     
 end );
 
@@ -114,7 +109,7 @@ end );
 InstallMethod( GradedRowOrColumnMorphism,
                [ IsGradedRowOrColumn, IsHomalgMatrix, IsGradedRowOrColumn, IsBool ],
   function( source, homalg_matrix, range, checks_wished )
-    local graded_row_or_column_morphism, homalg_graded_ring, category, type;
+    local homalg_graded_ring, category, type;
     
     # if checks are wished, hand the input to the method above
     if checks_wished then
@@ -126,19 +121,14 @@ InstallMethod( GradedRowOrColumnMorphism,
     homalg_graded_ring := HomalgRing( homalg_matrix );
     
     # construct the morphism
-    graded_row_or_column_morphism := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
-      graded_row_or_column_morphism, category,
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
+      rec( ), category,
       source,
       range,
       UnderlyingHomalgGradedRing, homalg_graded_ring,
       UnderlyingHomalgMatrix, homalg_matrix
     );
     
-    # finally return the morphism
-    return graded_row_or_column_morphism;
-
 end );
 
 

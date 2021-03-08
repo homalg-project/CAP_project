@@ -1,0 +1,31 @@
+\begin{small}
+\begin{Verbatim}[frame=single]
+##
+AddCokernelProjection( SQVec,
+
+  function( alpha )
+    local cokernel_proj, cokernel_obj;
+
+    cokernel_proj := SyzygiesOfColumns( UnderlyingMatrix( alpha ) );
+
+    cokernel_obj := SQVecObj( NrColumns( cokernel_proj ) );
+
+    return SQVecMor( Range( alpha ), 
+              cokernel_proj, cokernel_obj );
+
+end );
+
+##
+AddColiftAlongEpimorphism( SQVec,
+  
+  function( epsilon, tau )
+    
+    return SQVecMor( Range( epsilon ),
+            LeftDivide(
+              UnderlyingMatrix( epsilon ),
+              UnderlyingMatrix( tau ) ),
+            Range( tau ) );
+    
+end );
+\end{Verbatim}
+\end{small}

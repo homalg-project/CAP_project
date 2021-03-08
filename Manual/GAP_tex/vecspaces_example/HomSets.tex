@@ -1,0 +1,38 @@
+\begin{small}
+\begin{Verbatim}[frame=single]
+##
+AddAdditionForMorphisms( SQVec,
+                         
+  function( alpha, beta )
+    
+    return SQVecMor( Source( alpha ),
+              UnderlyingMatrix( alpha ) + UnderlyingMatrix( beta ),
+              Range( alpha ) );
+    
+end );
+
+##
+AddAdditiveInverseForMorphisms( SQVec,
+                                
+  function( alpha )
+    
+    return SQVecMor( Source( alpha ),
+              - UnderlyingMatrix( alpha ),
+              Range( alpha ) );
+    
+end );
+
+##
+AddZeroMorphism( SQVec,
+                     
+  function( alpha, beta )
+    
+    return SQVecMor( alpha,
+              HomalgZeroMatrix( Dimension( alpha ),
+                                Dimension( beta ),
+                                QQ ),
+              beta );
+    
+end );
+\end{Verbatim}
+\end{small}

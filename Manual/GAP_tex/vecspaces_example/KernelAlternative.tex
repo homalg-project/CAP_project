@@ -1,0 +1,28 @@
+\begin{small}
+\begin{Verbatim}[frame=single]
+##
+AddKernelEmbedding( SQVec,
+
+  function( alpha )
+    local kernel_emb, kernel_obj;
+    
+    kernel_emb := SyzygiesOfRows( UnderlyingMatrix( alpha ) );
+    
+    kernel_obj := SQVecObj( NrRows( kernel_emb ) );
+    
+    return SQVecMor( kernel_obj, kernel_emb, Source( alpha ) );
+    
+end );
+
+##
+AddLiftAlongMonomorphism( SQVec,
+
+  function( mu, tau )
+
+    return SQVecMor( Source( tau ),
+            RightDivide( UnderlyingMatrix( tau ), UnderlyingMatrix( mu ) ),
+            Source( mu ) );
+
+end );
+\end{Verbatim}
+\end{small}

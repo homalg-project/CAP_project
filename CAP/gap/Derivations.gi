@@ -1,13 +1,9 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# Implementations
+#
 #! @Chapter Managing Derived Methods
-##
-#############################################################################
 
 DeclareRepresentation( "IsDerivedMethodRep",
                        IsAttributeStoringRep and IsDerivedMethod,
@@ -1077,6 +1073,8 @@ InstallGlobalFunction( CAP_INTERNAL_DERIVATION_SANITY_CHECK,
         function_string := "";
         
         string_stream := OutputTextString( function_string, false );
+        
+        SetPrintFormattingStatus( string_stream, false );
         
         PrintTo( string_stream, function_object );
         

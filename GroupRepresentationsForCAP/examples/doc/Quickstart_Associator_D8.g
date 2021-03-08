@@ -5,9 +5,7 @@ LoadPackage( "GroupRepresentationsForCAP" );
 #! @Example
 G := DihedralGroup( 8 );;
 ComputeAssociator( G, true, true, false );;
-path := Concatenation(
-  PackageInfo( "GroupRepresentationsForCAP" )[1].InstallationPath,
-  "/examples/doc/D8" );;
+path := Filename( DirectoryTemporary( ), "D8" );;
 WriteAssociatorComputationToFiles( path );
 #! @EndExample
 

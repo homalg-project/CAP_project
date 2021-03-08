@@ -55,7 +55,7 @@ Every other part, except from function, does only depend on the name SomeFunc. W
   it is installed in this step for the result.
 
 * Postfunction: The postfunction called with the arguments of the function and the result. It can be an arbitrary function doing
-  some cosmetics. If for example SomeFunc is KernelEmbeddingedding, it will set the KernelObject of the input morphism to result.
+  some cosmetics. If for example SomeFunc is KernelEmbedding, it will set the KernelObject of the input morphism to result.
   The postfunction is also taken from the method record and does only depend on the name SomeFunc.
 
 * Addfunction: If the result is a category cell, it is added to the category for which the function was installed.
@@ -121,8 +121,9 @@ The record can have the following components, used as described:
 
 * post_function (optional): A function which is used as the postfunction of the installed methods, as described above.
 
-* filter_list: A list containing the basic filters for the methods installed by the add methods. Possible are filters, or
-               the following strings, which will be replaced by appropriate filters at the time the add method is called:
+* filter_list: A list containing the basic filters for the methods installed by the add methods. Possible entries are filters, or
+               the following strings, which will be replaced by appropriate filters at the time the add method is called.
+               Additionally, an entry can be a list consisting of filters and/or the given strings, which will then be joined via `and` to form a single filter.
                * <C>category</C>,
                * <C>cell</C>,
                * <C>object</C>,
@@ -150,18 +151,12 @@ The record can have the following components, used as described:
                             Please note that if you have a method selection argument for your function, you need to give the argument_list
                             to explicitly state which argument is the method selection argument.
 
-* return_type (optional): The return type can be one of the following:
-                          * <C>object</C> or <C>object_or_fail</C>,
-                          * <C>morphism</C> or <C>morphism_or_fail</C>,
-                          * <C>twocell</C>,
-                          * <C>bool</C>,
-                          * <C>other_object</C>,
-                          * <C>other_morphism</C>.
-                          <P/>
-                          If it is one of the first three options, the correct <C>Add</C> function (see above) is
-                          used for the result of the computation. Otherwise, no <C>Add</C> function is used after all.
+* return_type: The return type can either be a filter or one of the strings in the list below.
+               For objects, morphisms and $2$-cells the correct <C>Add</C> function (see above) is
+               used for the result of the computation. Otherwise, no <C>Add</C> function is used after all.
+@InsertCode CAP_INTERNAL_VALID_RETURN_TYPES
 
-* is_with_given: Boolean, marks wether the function which is to be installed a with given function or not.
+* is_with_given: Boolean, marks whether the function which is to be installed is a with given function or not.
 
 * with_given_without_given_name_pair (optional): If the currently installed operation has a corresponding with given operation or
                                                  is the with given of another operation, the names of both should be in this list.

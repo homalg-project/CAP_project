@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
 #
 # This file contains package meta data. For additional information on
@@ -11,18 +11,17 @@ SetPackageInfo( rec(
 PackageName := "FreydCategoriesForCAP",
 Subtitle := "Freyd categories - Formal (co)kernels for additive categories",
 Version := Maximum( [
-  "2019.03.04", ## Martin's version
+  "2019.03-04", ## Martin's version
   ## this line prevents merge conflicts
-  "2019.11.02", ## Sepp's version
+  "2020.09-21", ## Sepp's version
   ## this line prevents merge conflicts
-  "2020.04.15", ## Mohamed's version
+  "2020.05-17", ## Mohamed's version
   ## this line prevents merge conflicts
-  "2019.08.07", ## Fabian's version
+  "2020.10-01", ## Fabian's version
   ## this line prevents merge conflicts
-  "2020.04.18", ## Kamal's version
+  "2020.04-18", ## Kamal's version
 ] ),
-Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
 
@@ -62,18 +61,19 @@ Persons := [
   ),
 ],
 
-#SourceRepository := rec( Type := "TODO", URL := "URL" ),
-#IssueTrackerURL := "TODO",
-#SupportEmail := "TODO",
+# BEGIN URLS
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/homalg-project/CAP_project",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := "https://homalg-project.github.io/pkg/FreydCategoriesForCAP",
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-", ~.Version, "/FreydCategoriesForCAP-", ~.Version ),
+# END URLS
 
-PackageWWWHome := "http://homalg-project.github.io/CAP_project/",
-
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-README_URL     := Concatenation( ~.PackageWWWHome, "README.md" ),
-ArchiveURL     := Concatenation( ~.PackageWWWHome,
-                                 "/", ~.PackageName, "-", ~.Version ),
-
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages
@@ -99,10 +99,10 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">= 2019.10.04" ],
-                           [ "MatricesForHomalg", ">= 2019.11.13" ],
+                           [ "CAP", ">= 2020.09.01" ],
+                           [ "MatricesForHomalg", ">= 2020.09.06" ],
                            [ "GradedRingForHomalg", ">=2019.08.07" ],
-                           [ "LinearAlgebraForCAP", ">= 2017.12.30" ],
+                           [ "LinearAlgebraForCAP", ">= 2020.05.16" ],
                            [ "GeneralizedMorphismsForCAP", ">= 2018.06.15" ]
                          ],
   SuggestedOtherPackages := [
@@ -118,5 +118,3 @@ AvailabilityTest := function()
 #Keywords := [ "TODO" ],
 
 ));
-
-

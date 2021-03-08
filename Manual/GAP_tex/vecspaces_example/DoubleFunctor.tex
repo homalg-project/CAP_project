@@ -1,0 +1,26 @@
+\begin{small}
+\begin{Verbatim}[frame=single]
+double_functor :=
+  CapFunctor( "DoubleOfVecspaces", SQVec, SQVec );
+
+AddObjectFunction( double_functor,
+                   
+  function( obj )
+    
+    return SQVecObj( 2 * Dimension( obj ) );
+    
+end );
+
+AddMorphismFunction( double_functor,
+                     
+  function( new_source, mor, new_range )
+    local matr;
+    
+    matr := UnderlyingMatrix( mor );
+    
+    return
+      SQVecMor( new_source, DiagMat( [ matr, matr ] ), new_range );
+    
+end );
+\end{Verbatim}
+\end{small}

@@ -1,12 +1,8 @@
-#############################################################################
-##
-##                                GroupRepresentationsForCAP package
-##
-##  Copyright 2016, Sebastian Posur, University of Siegen
-##
-##
-#############################################################################
-
+# SPDX-License-Identifier: GPL-2.0-or-later
+# GroupRepresentationsForCAP: Skeletal category of group representations for CAP
+#
+# Implementations
+#
 BindGlobal( "InfoGroupRepresentationsForCAP", NewInfoClass("InfoGroupRepresentationsForCAP") );
 
 ####################################
@@ -60,15 +56,13 @@ InstallMethodWithCache( SemisimpleCategoryObjectConstructorWithFlatList,
     semisimple_object_list := List( [ 1 .. size/2 ], i ->
       [ semisimple_object_flat_list[ 2*i - 1 ], semisimple_object_flat_list[ 2*i ] ] );
     
-    semisimple_category_object := rec( );
-    
     normalized_semisimple_object_list := NormalizeSemisimpleCategoryObjectList( semisimple_object_list );
     
     field := UnderlyingCategoryForSemisimpleCategory( category )!.field_for_matrix_category;
     
-    ObjectifyWithAttributes( semisimple_category_object, TheTypeOfSemisimpleCategoryObjects,
-                             SemisimpleCategoryObjectList, normalized_semisimple_object_list,
-                             UnderlyingFieldForHomalg, field
+    semisimple_category_object := ObjectifyWithAttributes( rec( ), TheTypeOfSemisimpleCategoryObjects,
+                                                           SemisimpleCategoryObjectList, normalized_semisimple_object_list,
+                                                           UnderlyingFieldForHomalg, field
     );
     
     SetFilterObj( semisimple_category_object, GivenObjectFilterForSemisimpleCategory( category ) );
@@ -443,11 +437,11 @@ InstallMethod( String,
         
     fi;
     
-    string := Concatenation( String( object_list[1][1] ), "*(x_", String( object_list[1][2] ), ")" );
+    string := Concatenation( String( object_list[1][1] ), "*(", String( object_list[1][2] ), ")" );
     
     for i in [ 2 .. size ] do
         
-        Append( string, Concatenation( " + ", String( object_list[i][1] ), "*(x_", String( object_list[i][2] ), ")" ) );
+        Append( string, Concatenation( " + ", String( object_list[i][1] ), "*(", String( object_list[i][2] ), ")" ) );
         
     od;
     
@@ -474,3 +468,16 @@ InstallMethod( Display,
     Print( Concatenation( String( object ), "\n" ) );
     
 end );
+
+##
+InstallMethod( LaTeXStringOp,
+        "for an object in a semisimple category",
+        [ IsSemisimpleCategoryObject ],
+        
+  function ( object )
+    
+    return LaTeXStringOfSemisimpleCategoryObjectList( SemisimpleCategoryObjectList( object ) );
+    
+end );
+
+MakeShowable( [ "text/latex", "application/x-latex" ], IsSemisimpleCategoryObject );

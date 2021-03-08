@@ -1,12 +1,9 @@
-#############################################################################
-##
-##                                GroupRepresentationsForCAP package
-##
-##  Copyright 2016, Sebastian Posur, University of Siegen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# GroupRepresentationsForCAP: Skeletal category of group representations for CAP
+#
+# Implementations
+#
 #! @Chapter Irreducible Objects
-##
-#############################################################################
 
 ####################################
 ##
@@ -36,9 +33,7 @@ InstallMethod( GIrreducibleObject,
                [ IsCharacter ],
                
   function( character )
-    local irreducible_object, number, underlying_character_table, underlying_irreducible_characters;
-    
-    irreducible_object := rec( );
+    local number, underlying_character_table, underlying_irreducible_characters;
     
     underlying_character_table := UnderlyingCharacterTable( character );
     
@@ -46,15 +41,13 @@ InstallMethod( GIrreducibleObject,
     
     number := PositionProperty( underlying_irreducible_characters, chi -> chi = character );
     
-    ObjectifyWithAttributes( irreducible_object, TheTypeOfGIrreducibleObjects,
-                             UnderlyingCharacter, character,
-                             UnderlyingCharacterNumber, number,
-                             UnderlyingGroup, UnderlyingGroup( character ),
-                             UnderlyingCharacterTable, underlying_character_table,
-                             UnderlyingIrreducibleCharacters, underlying_irreducible_characters
+    return ObjectifyWithAttributes( rec( ), TheTypeOfGIrreducibleObjects,
+                                    UnderlyingCharacter, character,
+                                    UnderlyingCharacterNumber, number,
+                                    UnderlyingGroup, UnderlyingGroup( character ),
+                                    UnderlyingCharacterTable, underlying_character_table,
+                                    UnderlyingIrreducibleCharacters, underlying_irreducible_characters
     );
-    
-    return irreducible_object;
     
 end );
 
@@ -251,7 +244,7 @@ InstallMethod( String,
               
   function( object )
     
-    return String( object!.UnderlyingCharacterNumber );
+    return Concatenation( "x_", String( object!.UnderlyingCharacterNumber ) );
     
 end );
 
@@ -261,6 +254,6 @@ InstallMethod( ViewObj,
 
   function( object )
 
-    Print( Concatenation( "<x_", String( object ), ">" ) );
+    Print( Concatenation( "<", String( object ), ">" ) );
 
 end );

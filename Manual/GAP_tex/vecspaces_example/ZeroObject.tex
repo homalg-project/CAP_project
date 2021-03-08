@@ -1,0 +1,56 @@
+\begin{small}
+\begin{Verbatim}[frame=single]
+##
+AddZeroObject( SQVec,
+
+  function( )
+
+    return SQVecObj( 0 );
+
+end );
+
+##
+AddUniversalMorphismIntoZeroObject( SQVec,
+
+  function( source )
+
+    return SQVecMor( source,
+              HomalgZeroMatrix( Dimension( source ), 0, QQ ),
+              SQVecObj( 0 ) );
+    
+end );
+
+##
+AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( SQVec,
+
+  function( source, terminal_object )
+
+    return SQVecMor( source,
+              HomalgZeroMatrix( Dimension( source ), 0, QQ ),
+              terminal_object );
+    
+end );
+
+##
+AddUniversalMorphismFromZeroObject( SQVec,
+
+  function( sink )
+    
+    return SQVecMor( SQVecObj( 0 ),
+              HomalgZeroMatrix( 0, Dimension( sink ), QQ ),
+              sink );
+    
+end );
+
+##
+AddUniversalMorphismFromZeroObjectWithGivenZeroObject( SQVec,
+
+  function( sink, initial_object )
+    
+    return SQVecMor( initial_object,
+                   HomalgZeroMatrix( 0, Dimension( sink ), QQ ),
+                   sink );
+    
+end );
+\end{Verbatim}
+\end{small}

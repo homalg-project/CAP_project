@@ -1,10 +1,8 @@
-#############################################################################
-##
-##     FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
-##
-##  Copyright 2020, Tal Gottesman, Paris Diderot, Sebastian Posur, University of Siegen
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
+#
+# Implementations
+#
 
 ####################################
 ##
@@ -90,16 +88,11 @@ InstallMethod( ProSetAsCategoryObject,
                [ IsInt, IsProSetAsCategory ],
 
   function( number_object, category )
-    local object;
     ## TODO: sanity check: is number_object in the range [ 1 .. n ]?
 
-    object := rec( );
-
-    ObjectifyObjectForCAPWithAttributes( object, category,
-                                         UnderlyingInteger, number_object
+    return ObjectifyObjectForCAPWithAttributes( rec( ), category,
+                                                UnderlyingInteger, number_object
     );
-
-    return object;
 
 end );
 
@@ -107,21 +100,15 @@ InstallMethod( ProSetAsCategoryMorphism,
                [ IsProSetAsCategoryObject, IsProSetAsCategoryObject ],
 
   function( source, range )
-    local category, morphism;
+    local category;
 
     category := CapCategory( source );
 
-
-
-    morphism := rec( );
-
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-                             morphism, category,
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
+                             rec( ), category,
                              source,
                              range
     );
-
-    return morphism;
 
 end );
 
@@ -278,7 +265,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_PROSET_AS_CATEGORY,
       ## decision: if the colift exists
 
       ##  if it exists -> output the colift
-      if IsColiftable(alpha, beta) then 
+      if IsColiftable(alpha, beta) then
         return ProSetAsCategoryMorphism( Range( alpha ) , Range( beta ) );
       ## if it does not exist -> fail
       else return fail;
@@ -375,5 +362,42 @@ InstallMethod( ViewObj,
     function( obj )
 
         Print( ViewString( obj ) );
+
+end );
+
+####################################
+##
+## Down
+##
+####################################
+
+##
+InstallMethod( Down,
+               [ IsProSetAsCategoryObject ],
+               UnderlyingInteger );
+
+##
+InstallMethod( DownOnlyMorphismData,
+               [ IsProSetAsCategoryMorphism ],
+  function( mor )
+
+    return "->";
+
+end );
+
+
+InstallMethod(\*,
+              [ IsProSetAsCategoryMorphism, IsProSetAsCategoryMorphism ],
+  function( alpha , beta )
+
+    return PreCompose( alpha , beta ) ;
+
+end );
+
+InstallMethod(\/,
+              [ IsInt, IsProSetAsCategory ],
+  function( n, C )
+
+    return ProSetAsCategoryObject( n , C ) ;
 
 end );

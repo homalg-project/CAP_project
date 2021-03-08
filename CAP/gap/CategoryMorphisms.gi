@@ -1,11 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# Implementations
+#
 
 ######################################
 ##
@@ -258,7 +255,7 @@ InstallMethod( RandomMorphism,
 InstallGlobalFunction( ObjectifyMorphismForCAPWithAttributes,
                        
   function( arg_list... )
-    local category, morphism;
+    local category, objectified_morphism;
     
     category := arg_list[ 2 ];
     
@@ -272,13 +269,14 @@ InstallGlobalFunction( ObjectifyMorphismForCAPWithAttributes,
     
     arg_list[ 2 ] := category!.morphism_type;
     Append( arg_list, [ CapCategory, category ] );
-    CallFuncList( ObjectifyWithAttributes, arg_list );
+    objectified_morphism := CallFuncList( ObjectifyWithAttributes, arg_list );
     
     if category!.predicate_logic then
-        morphism := arg_list[ 1 ];
-        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ morphism ], Source( morphism ), category );
-        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ morphism ], Range( morphism ), category );
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ objectified_morphism ], Source( objectified_morphism ), category );
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ objectified_morphism ], Range( objectified_morphism ), category );
     fi;
+    
+    return objectified_morphism;
     
 end );
 
@@ -286,18 +284,21 @@ end );
 InstallGlobalFunction( ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes,
                        
   function( morphism, category, source, range, additional_arguments_list... )
-    local arg_list;
+    local arg_list, objectified_morphism;
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     arg_list := Concatenation( 
         [ morphism, category!.morphism_type, CapCategory, category, Source, source, Range, range ], additional_arguments_list
     );
     
-    CallFuncList( ObjectifyWithAttributes, arg_list );
+    objectified_morphism := CallFuncList( ObjectifyWithAttributes, arg_list );
     
     if category!.predicate_logic then
-        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ morphism ], source, category );
-        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ morphism ], range, category );
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ objectified_morphism ], source, category );
+        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ objectified_morphism ], range, category );
     fi;
+    
+    return objectified_morphism;
     
 end );
 
@@ -530,6 +531,7 @@ InstallMethod( HomomorphismStructureOnMorphisms,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
   function( alpha, beta )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     return HomomorphismStructureOnMorphismsWithGivenObjects(
              HomomorphismStructureOnObjects( Range( alpha ), Source( beta ) ),

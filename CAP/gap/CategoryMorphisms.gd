@@ -1,10 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# Declarations
+#
 #! @Chapter Morphisms
 #!  Any GAP object satisfying <C>IsCapCategoryMorphism</C> can be added to a category
 #!  and then becomes a morphism in this category.
@@ -13,9 +11,6 @@
 #!  computed in its category and to which category it belongs.
 #!  It knows categorical properties and attributes, and the functions for existential quantifiers
 #!  can be applied to the morphism.
-##
-#############################################################################
-
 
 ###################################
 ##
@@ -49,9 +44,6 @@ DeclareAttribute( "Range",
                   IsCapCategoryMorphism );
 
 # this attribute is also an implied operation
-
-DeclareOperation( "InverseOp",
-                  [ IsCapCategoryMorphism ] );
 
 ###################################
 ##
@@ -707,7 +699,9 @@ DeclareOperation( "AddMorphismRepresentation",
 #!  Morphisms which are objectified using this method do not have to be passed
 #!  to the <C>AddMorphism</C> function.
 #!  The arguments <C>source</C> and <C>range</C> are assumed to be objectified.
-#! The optional arguments behave like the corresponding arguments in <C>ObjectifyWithAttributes</C>.
+#!  The optional arguments behave like the corresponding arguments in <C>ObjectifyWithAttributes</C>.
+#!  Also returns the objectified morphism.
+#! @Returns a morphism
 DeclareGlobalFunction( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" );
 
 ##
@@ -1654,6 +1648,17 @@ DeclareOperation( "AddIsColiftable",
 #! \end{center}
 #! @EndLatexOnly
 
+DeclareOperation( "InverseOp",
+                  [ IsCapCategoryMorphism ] );
+
+#! @Description
+#! The argument is an isomorphism $\alpha: a \rightarrow b$.
+#! The output is its inverse $\alpha^{-1}: b \rightarrow a$.
+#! @Returns a morphism in $\mathrm{Hom}(b,a)$
+#! @Arguments alpha
+# DeclareOperation( "Inverse",
+#         [ IsCapCategoryMorphism ] );
+
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
@@ -1702,12 +1707,13 @@ DeclareOperation( "IsEqualForCacheForMorphisms",
 #! @Description
 #!  By default, CAP uses caches to store the values of Categorical operations.
 #!  To get a value out of the cache, one needs to compare the input of a basic operation
-#!  with its previous input. To compare morphisms in the category, IsEqualForCacheForMorphism is
-#!  used. By default this is an alias for IsEqualForMorphismsOnMor, where fail is substituted by false.
+#!  with its previous input. To compare morphisms in the category, IsEqualForCacheForMorphisms is
+#!  used. By default, IsEqualForCacheForMorphisms falls back to IsEqualForCache (see ToolsForHomalg),
+#!  which in turn defaults to recursive comparison for lists and `IsIdenticalObj` in all other cases.
 #!  If you add a function, this function
 #!  used instead. A function $F: a,b \mapsto bool$ is expected here. The output has to be
 #!  true or false. Fail is not allowed in this context.
-#! @Returns northing
+#! @Returns nothing
 #! @Arguments c,F
 DeclareOperation( "AddIsEqualForCacheForMorphisms",
                   [ IsCapCategory, IsFunction ] );

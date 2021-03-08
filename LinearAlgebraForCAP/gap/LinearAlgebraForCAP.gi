@@ -24,13 +24,15 @@ InstallMethod( MatrixCategory,
     
     SetFilterObj( category, IsMatrixCategory );
     
-    AddObjectRepresentation( category, IsVectorSpaceObject );
+    AddObjectRepresentation( category, IsVectorSpaceObject and HasIsProjective and IsProjective );
     
     AddMorphismRepresentation( category, IsVectorSpaceMorphism and HasUnderlyingFieldForHomalg and HasUnderlyingMatrix );
     
     category!.field_for_matrix_category := homalg_field;
     
     SetUnderlyingRing( category, homalg_field );
+    
+    SetIsSkeletalCategory( category, true );
     
     SetIsAbelianCategory( category, true );
     
@@ -339,13 +341,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         dim_factor := Dimension( object_list[ projection_number ] );
         
-        projection_in_factor := HomalgZeroMatrix( dim_pre, dim_factor, homalg_field );
-        
-        projection_in_factor := UnionOfRows( projection_in_factor, 
-                                             HomalgIdentityMatrix( dim_factor, homalg_field ) );
-        
-        projection_in_factor := UnionOfRows( projection_in_factor, 
-                                             HomalgZeroMatrix( dim_post, dim_factor, homalg_field ) );
+        projection_in_factor := UnionOfRows( HomalgZeroMatrix( dim_pre, dim_factor, homalg_field ),
+                                             HomalgIdentityMatrix( dim_factor, homalg_field ),
+                                             HomalgZeroMatrix( dim_post, dim_factor, homalg_field )
+                                           );
         
         return VectorSpaceMorphism( direct_sum_object, projection_in_factor, object_list[ projection_number ] );
         
@@ -354,17 +353,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
       function( diagram, sink, direct_sum )
-        local underlying_matrix_of_universal_morphism, morphism;
+        local underlying_matrix_of_universal_morphism;
         
-        underlying_matrix_of_universal_morphism := UnderlyingMatrix( sink[1] );
-        
-        for morphism in sink{ [ 2 .. Length( sink ) ] } do
-          
-          underlying_matrix_of_universal_morphism := 
-            UnionOfColumns( underlying_matrix_of_universal_morphism, UnderlyingMatrix( morphism ) );
-          
-        od;
-        
+        underlying_matrix_of_universal_morphism := UnionOfColumns( List( sink, s -> UnderlyingMatrix( s ) ) );
+
         return VectorSpaceMorphism( Source( sink[1] ), underlying_matrix_of_universal_morphism, direct_sum );
       
     end );
@@ -382,13 +374,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         dim_cofactor := Dimension( object_list[ injection_number ] );
         
-        injection_of_cofactor := HomalgZeroMatrix( dim_cofactor, dim_pre ,homalg_field );
-        
-        injection_of_cofactor := UnionOfColumns( injection_of_cofactor, 
-                                             HomalgIdentityMatrix( dim_cofactor, homalg_field ) );
-        
-        injection_of_cofactor := UnionOfColumns( injection_of_cofactor, 
-                                             HomalgZeroMatrix( dim_cofactor, dim_post, homalg_field ) );
+        injection_of_cofactor := UnionOfColumns( HomalgZeroMatrix( dim_cofactor, dim_pre ,homalg_field ),
+                                                 HomalgIdentityMatrix( dim_cofactor, homalg_field ),
+                                                 HomalgZeroMatrix( dim_cofactor, dim_post, homalg_field )
+                                               );
         
         return VectorSpaceMorphism( object_list[ injection_number ], injection_of_cofactor, coproduct );
 
@@ -397,16 +386,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
       function( diagram, sink, coproduct )
-        local underlying_matrix_of_universal_morphism, morphism;
+        local underlying_matrix_of_universal_morphism;
         
-        underlying_matrix_of_universal_morphism := UnderlyingMatrix( sink[1] );
-        
-        for morphism in sink{ [ 2 .. Length( sink ) ] } do
-          
-          underlying_matrix_of_universal_morphism := 
-            UnionOfRows( underlying_matrix_of_universal_morphism, UnderlyingMatrix( morphism ) );
-          
-        od;
+        underlying_matrix_of_universal_morphism := UnionOfRows( List( sink, s -> UnderlyingMatrix( s ) ) );
         
         return VectorSpaceMorphism( coproduct, underlying_matrix_of_universal_morphism, Range( sink[1] ) );
         
@@ -495,17 +477,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddKernelEmbeddingWithGivenKernelObject( category,
-      function( morphism, kernel )
-        local kernel_emb;
-        
-        kernel_emb := SyzygiesOfRows( UnderlyingMatrix( morphism ) );
-        
-        return VectorSpaceMorphism( kernel, kernel_emb, Source( morphism ) );
-        
-    end );
-    
-    ##
     AddLift( category,
       function( alpha, beta )
         local right_divide;
@@ -545,17 +516,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         cokernel_obj := VectorSpaceObject( NrColumns( cokernel_proj ), homalg_field );
         
         return VectorSpaceMorphism( Range( morphism ), cokernel_proj, cokernel_obj );
-        
-    end );
-    
-    ##
-    AddCokernelProjectionWithGivenCokernelObject( category,
-      function( morphism, cokernel )
-        local cokernel_proj;
-        
-        cokernel_proj := SyzygiesOfColumns( UnderlyingMatrix( morphism ) );
-        
-        return VectorSpaceMorphism( Range( morphism ), cokernel_proj, cokernel );
         
     end );
     
@@ -806,22 +766,12 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
       function( alpha )
-        local matrix, m, new_matrix, c;
+        local matrix, new_matrix;
         
         matrix := UnderlyingMatrix( alpha );
         
-        m := NrRows( matrix );
+        new_matrix := ConvertMatrixToRow( matrix );
         
-        if m > 0 then
-            
-            new_matrix := UnionOfColumns( List( [ 1 .. NrRows( matrix ) ], n -> CertainRows( matrix, [ n ] ) ) );
-            
-        else
-            
-            new_matrix := HomalgZeroMatrix( 1, 0, homalg_field );
-            
-        fi;
-            
         return VectorSpaceMorphism(
           VectorSpaceObject( 1, homalg_field ),
           new_matrix,
@@ -841,17 +791,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         n := Dimension( range );
         
-        if m > 0 then
-            
-            new_matrix := UnionOfRows(
-              List( [ 0 .. m - 1 ], i -> CertainColumns( matrix, [ 1 + i*n .. n + i*n ] ) )
-            );
-        
-        else
-            
-            new_matrix := HomalgZeroMatrix( m, n, homalg_field );
-            
-        fi;
+        new_matrix := ConvertRowToMatrix( matrix, m, n );
         
         return VectorSpaceMorphism(
           source,
@@ -913,18 +853,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
    
     ##
     AddBasisOfExternalHom( category,
-      function( object_1, object_2 )
-        local dim_1, dim_2, identity, matrices;
+      function( S, T )
+        local s, t, identity, matrices;
         
-        dim_1 := Dimension( object_1 );
+        s := Dimension( S );
         
-        dim_2 := Dimension( object_2 );
+        t := Dimension( T );
         
-        identity := IdentityMat( dim_1 * dim_2 );
+        identity := HomalgIdentityMatrix( s * t, UnderlyingFieldForHomalg( S ) );
         
-        matrices := List( identity, row -> HomalgMatrix( row, dim_1, dim_2, homalg_field ) );
+        matrices := List( [ 1 .. s * t ], i -> ConvertRowToMatrix( CertainRows( identity, [ i ] ), s, t ) );
         
-        return List( matrices, mat -> VectorSpaceMorphism( object_1, mat, object_2 ) );
+        return List( matrices, mat -> VectorSpaceMorphism( S, mat, T ) );
         
     end );
     

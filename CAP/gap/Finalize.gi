@@ -1,12 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-#############################################################################
-
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# Implementations
+#
 InstallValue( CAP_INTERNAL_FINAL_DERIVATION_LIST,
               rec( final_derivation_list := [ ] ) );
 
@@ -30,6 +26,8 @@ BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
         function_string := "";
         
         string_stream := OutputTextString( function_string, false );
+        
+        SetPrintFormattingStatus( string_stream, false );
         
         PrintTo( string_stream, function_object );
         

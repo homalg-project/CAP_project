@@ -1,12 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2018, Sebastian Gutsche, University of Siegen
-##                  Sebastian Posur,   University of Siegen
-##
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# Implementations
+#
 
 ## This file contains installations for ToolsForCategories functions
 ## that can only be installed after all dependencies have been loaded.
@@ -178,5 +174,95 @@ InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY,
     fi;
     
     CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( Range( two_cell ), category, function( ) return Concatenation( "the range of ", human_readable_identifier_getter() ); end );
+    
+end );
+
+##
+InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_LIST_OF_OBJECTS_OF_CATEGORY,
+  
+  function( list_of_objects, category, human_readable_identifier_getter )
+    local generic_help_string, list_entry_human_readable_identifier_getter, i;
+    
+    generic_help_string := " You can access the list and category via the local variables 'list_of_objects' and 'category' in a break loop.";
+    
+    list_entry_human_readable_identifier_getter := function( i )
+        
+        return Concatenation( "the ", String(i), "-th entry of ", human_readable_identifier_getter() );
+        
+    end;
+    
+    if not IsList( list_of_objects ) then
+        Error( Concatenation( human_readable_identifier_getter(), " does not lie in the filter IsList.", generic_help_string ) );
+    fi;
+    
+    for i in [ 1 .. Length( list_of_objects ) ] do
+        
+        if not IsBound( list_of_objects[i] ) then
+            Error( Concatenation( list_entry_human_readable_identifier_getter( i ), " is not bound.", generic_help_string ) );
+        fi;
+        
+        CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( list_of_objects[i], category, function( ) return list_entry_human_readable_identifier_getter( i ); end );
+        
+    od;
+    
+end );
+
+##
+InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY,
+  
+  function( list_of_morphisms, category, human_readable_identifier_getter )
+    local generic_help_string, list_entry_human_readable_identifier_getter, i;
+    
+    generic_help_string := " You can access the list and category via the local variables 'list_of_morphisms' and 'category' in a break loop.";
+    
+    list_entry_human_readable_identifier_getter := function( i )
+        
+        return Concatenation( "the ", String(i), "-th entry of ", human_readable_identifier_getter() );
+        
+    end;
+    
+    if not IsList( list_of_morphisms ) then
+        Error( Concatenation( human_readable_identifier_getter(), " does not lie in the filter IsList.", generic_help_string ) );
+    fi;
+    
+    for i in [ 1 .. Length( list_of_morphisms ) ] do
+        
+        if not IsBound( list_of_morphisms[i] ) then
+            Error( Concatenation( list_entry_human_readable_identifier_getter( i ), " is not bound.", generic_help_string ) );
+        fi;
+        
+        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( list_of_morphisms[i], category, function( ) return list_entry_human_readable_identifier_getter( i ); end );
+        
+    od;
+    
+end );
+
+##
+InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_LIST_OF_TWO_CELLS_OF_CATEGORY,
+  
+  function( list_of_twocells, category, human_readable_identifier_getter )
+    local generic_help_string, list_entry_human_readable_identifier_getter, i;
+    
+    generic_help_string := " You can access the list and category via the local variables 'list_of_twocells' and 'category' in a break loop.";
+    
+    list_entry_human_readable_identifier_getter := function( i )
+        
+        return Concatenation( "the ", String(i), "-th entry of ", human_readable_identifier_getter() );
+        
+    end;
+    
+    if not IsList( list_of_twocells ) then
+        Error( Concatenation( human_readable_identifier_getter(), " does not lie in the filter IsList.", generic_help_string ) );
+    fi;
+    
+    for i in [ 1 .. Length( list_of_twocells ) ] do
+        
+        if not IsBound( list_of_twocells[i] ) then
+            Error( Concatenation( list_entry_human_readable_identifier_getter( i ), " is not bound.", generic_help_string ) );
+        fi;
+        
+        CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( list_of_twocells[i], category, function( ) return list_entry_human_readable_identifier_getter( i ); end );
+        
+    od;
     
 end );

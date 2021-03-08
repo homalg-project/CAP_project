@@ -1,0 +1,26 @@
+\begin{small}
+\begin{Verbatim}[frame=single]
+AddIdentityMorphism( SQVec,
+                     
+  function( a )
+    
+    return SQVecMor(
+            a,
+            HomalgIdentityMatrix( Dimension( a ), QQ ),
+            a
+    );
+    
+end );
+
+AddPreCompose( SQVec,
+
+  function( alpha, beta )
+    local composition;
+
+    composition := UnderlyingMatrix( alpha ) * UnderlyingMatrix( beta );
+
+    return SQVecMor( Source( alpha ), composition, Range( beta ) );
+
+end );
+\end{Verbatim}
+\end{small}

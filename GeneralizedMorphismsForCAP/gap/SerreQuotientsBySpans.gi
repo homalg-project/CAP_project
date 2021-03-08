@@ -469,9 +469,7 @@ InstallMethodWithCacheFromObject( AsSerreQuotientCategoryBySpansObject,
         
     fi;
     
-    serre_object := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( serre_object, serre_category,
+    serre_object := ObjectifyObjectForCAPWithAttributes( rec( ), serre_category,
                              UnderlyingHonestObject, object,
                              UnderlyingGeneralizedObject, GeneralizedMorphismBySpansObject( object ) );
     
@@ -497,9 +495,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryBySpansMorphism,
         
     fi;
     
-    serre_morphism := rec( );
-    
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( serre_morphism, serre_category,
+    serre_morphism := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), serre_category,
                              AsSerreQuotientCategoryBySpansObject( serre_category, UnderlyingHonestObject( Source( gen_morphism ) ) ),
                              AsSerreQuotientCategoryBySpansObject( serre_category, UnderlyingHonestObject( Range( gen_morphism ) ) ),
                              UnderlyingGeneralizedMorphism, gen_morphism );
@@ -610,7 +606,7 @@ InstallMethod( CanonicalProjection,
     
     underlying_honest := UnderlyingHonestCategory( category );
     
-    functor := CapFunctor( Concatenation( "Embedding in ", Name( category ) ), underlying_honest, category );
+    functor := CapFunctor( Concatenation( "Localization functor of ", Name( category ) ), underlying_honest, category );
     
     AddObjectFunction( functor,
         

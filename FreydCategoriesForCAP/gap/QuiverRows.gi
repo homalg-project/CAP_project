@@ -1,10 +1,8 @@
-#############################################################################
-##
-##     FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
-##
-##  Copyright 2019, Sebastian Posur, University of Siegen
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
+#
+# Implementations
+#
 
 ####################################
 ##
@@ -141,8 +139,6 @@ InstallMethod( QuiverRowsObject,
   function( list_of_vertices, category )
     local quiver_rows_object, s, L, v, vertex, current;
     
-    quiver_rows_object := rec( );
-    
     ## create normal form of list_of_vertices
     ## every object will be constructed via this constructor, thus,
     ## every object can be assumed to be in normal form
@@ -187,8 +183,8 @@ InstallMethod( QuiverRowsObject,
         
     fi;
     
-    ObjectifyObjectForCAPWithAttributes(
-        quiver_rows_object, category,
+    quiver_rows_object := ObjectifyObjectForCAPWithAttributes(
+        rec( ), category,
         ListOfQuiverVertices, L
     );
 
@@ -205,12 +201,10 @@ InstallMethod( QuiverRowsMorphism,
   function( source, matrix, range )
     local quiver_rows_morphism, category;
     
-    quiver_rows_morphism := rec( );
-    
     category := CapCategory( source );
 
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
-                             quiver_rows_morphism, category,
+    quiver_rows_morphism := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
+                             rec( ), category,
                              source,
                              range,
                              MorphismMatrix, matrix
@@ -280,7 +274,7 @@ InstallMethod( NrRows,
 end );
 
 ##
-InstallMethod( NrColumns,
+InstallMethod( NrCols,
                [ IsQuiverRowsMorphism ],
                
   function( morphism )
@@ -302,7 +296,7 @@ InstallMethod( \[\],
         
     fi;
     
-    nr_cols := NrColumns( morphism );
+    nr_cols := NrCols( morphism );
     
     if nr_cols = 0 then
         
@@ -749,7 +743,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
         
         nr_rows := NrRows( morphism );
         
-        nr_cols := NrColumns( morphism );
+        nr_cols := NrCols( morphism );
         
         if nr_rows = 0 or nr_cols = 0 then
             
@@ -1484,7 +1478,7 @@ InstallMethod( ViewObj,
   function( morphism )
     
     Print( "<A morphism in ", Name( CapCategory( morphism ) ),
-            " defined by a ", NrRows( morphism ), " x ", NrColumns( morphism ), " matrix of quiver algebra elements>"
+            " defined by a ", NrRows( morphism ), " x ", NrCols( morphism ), " matrix of quiver algebra elements>"
             );
 end );
 
@@ -1526,11 +1520,124 @@ InstallMethod( Display,
     
 end );
 
+
+##
+InstallMethod( LaTeXOutput,
+               [ IsQuiverRowsObject ],
+               
+  function( obj )
+    local l, exp_func;
+    
+    l := ListOfQuiverVertices( obj );
+    
+    if IsEmpty( l ) then
+        
+        return "0";
+        
+    fi;
+    
+    exp_func := function( i )
+        if i = 1 then
+            return "";
+        else
+            return Concatenation( "\\oplus", String( i ) );
+        fi;
+    end;
+    
+    l := List( l, pair -> Concatenation( "V_{", LabelAsString( pair[1] ), "}^{", exp_func( pair[2] ), "}" ) );
+    
+    return JoinStringsWithSeparator( l, " \\oplus " );
+    
+end );
+
+##
+InstallMethod( LaTeXOutput,
+               [ IsQuiverRowsMorphism ],
+               
+  function( morphism )
+    local matrix, source, range;
+    
+    matrix := MorphismMatrix( morphism );
+    
+    if IsEmpty( matrix ) then
+        matrix := "0";
+    else
+        
+        matrix := JoinStringsWithSeparator(
+            List( matrix, row -> JoinStringsWithSeparator( List( row, el -> Concatenation( "CAPINTMARKER", String( el ) ) ), "\&" ) ),
+            """\\"""
+        );
+        
+        matrix := ReplacedString( matrix, "{ 1*", "{" );
+        
+        matrix := ReplacedString( matrix, "{ -1*", "{-" );
+        
+        matrix := ReplacedString( matrix, " + 1*", " + " );
+        
+        matrix := ReplacedString( matrix, " - 1*", " - " );
+        
+        matrix := ReplacedString( matrix, "CAPINTMARKER1*", "" );
+        
+        matrix := ReplacedString( matrix, "CAPINTMARKER-1*", "-" );
+        
+        matrix := ReplacedString( matrix, "CAPINTMARKER", "" );
+        
+        matrix := ReplacedString( matrix, "*", "" );
+        
+        matrix :=  Concatenation( "\\begin{pmatrix}", matrix, "\\end{pmatrix}" );
+    
+    fi;
+    
+    if ValueOption( "OnlyDatum" ) = true then
+        
+        return matrix;
+        
+    fi;
+    
+    source := LaTeXOutput( Source( morphism ) );
+    
+    range := LaTeXOutput( Range( morphism ) );
+    
+    return Concatenation( source, "\\xrightarrow{", matrix, "}", range );
+    
+end );
+
+
 ####################################
 ##
 ## Convenience
 ##
 ####################################
+
+##
+InstallMethod( \.,
+        [ IsQuiverRowsCategory, IsPosInt ],
+  function( QRows, string_as_int )
+    local name, A, q, a;
+
+    name := NameRNam( string_as_int );
+
+    A := UnderlyingQuiverAlgebra( QRows );
+
+    q := QuiverOfAlgebra( A );
+
+    a  := q.( name );
+
+    if IsQuiverVertex( a ) then
+
+      return AsQuiverRowsObject( a, QRows );
+
+    elif IsArrow( a ) then
+
+      return AsQuiverRowsMorphism( A.( name ), QRows );
+
+    else
+
+      Error( "the given component ", name, " is neither a vertex nor an arrow of the quiver q = ", q, "\n" );
+
+    fi;
+
+end );
 
 ##
 InstallMethod( \/,
@@ -1543,3 +1650,30 @@ InstallMethod( \/,
                [ IsQuiverAlgebraElement, IsQuiverRowsCategory ],
                AsQuiverRowsMorphism );
 
+##
+InstallMethod( \/,
+               [ IsPath, IsQuiverRowsCategory ],
+               {p, QRows} -> PathAsAlgebraElement( UnderlyingQuiverAlgebra( QRows ), p )/QRows
+);
+
+##
+InstallMethod( \*,
+               [ IsQuiverRowsMorphism, IsQuiverRowsMorphism ],
+               PreCompose
+);
+
+####################################
+##
+## Down
+##
+####################################
+
+##
+InstallMethod( Down,
+               [ IsQuiverRowsObject ],
+               ListOfQuiverVertices );
+
+##
+InstallMethod( DownOnlyMorphismData,
+               [ IsQuiverRowsMorphism ],
+               MorphismMatrix );

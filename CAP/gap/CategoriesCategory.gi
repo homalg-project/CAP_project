@@ -1,13 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-##
-#############################################################################
-
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# Implementations
+#
 DeclareRepresentation( "IsCapCategoryAsCatObjectRep",
                        IsCapCategoryObjectRep and IsCapCategoryAsCatObject,
                        [ ] );
@@ -37,7 +32,7 @@ InstallGlobalFunction( CAP_INTERNAL_CREATE_Cat,
                
   function(  )
     
-    InstallValue( CapCat, rec( caching_info := rec( ), overhead := true, is_computable := true ) );
+    InstallValue( CapCat, rec( caching_info := rec( ), overhead := true, is_computable := true, enable_compilation := false, compiled_functions := rec( ) ) );
     
     CREATE_CAP_CATEGORY_OBJECT( CapCat, [ [ "Name", "Cat" ] ] );
     
@@ -56,10 +51,8 @@ InstallMethod( AsCatObject,
   function( category )
     local cat_obj;
     
-    cat_obj := rec( );
-    
-    ObjectifyWithAttributes( cat_obj, TheTypeOfCapCategoriesAsCatObjects,
-                             AsCapCategory, category );
+    cat_obj := ObjectifyWithAttributes( rec( ), TheTypeOfCapCategoriesAsCatObjects,
+                                        AsCapCategory, category );
     
     Add( CapCat, cat_obj );
     
@@ -118,7 +111,7 @@ InstallMethod( CapFunctor,
                [ IsString, IsList, IsCapCategory ],
                
   function( name, source_list, range )
-    local source, functor;
+    local source, functor, objectified_functor;
     
     functor := rec( );
     
@@ -130,15 +123,15 @@ InstallMethod( CapFunctor,
     
     source := CAP_INTERNAL_CREATE_FUNCTOR_SOURCE( source_list );
     
-    ObjectifyWithAttributes( functor, TheTypeOfCapFunctors,
-                             Name, name,
-                             Source, AsCatObject( source ),
-                             Range, AsCatObject( range ),
-                             InputSignature, source_list );
+    objectified_functor := ObjectifyWithAttributes( functor, TheTypeOfCapFunctors,
+                                                    Name, name,
+                                                    Source, AsCatObject( source ),
+                                                    Range, AsCatObject( range ),
+                                                    InputSignature, source_list );
     
-    Add( CapCat, functor );
+    Add( CapCat, objectified_functor );
     
-    return functor;
+    return objectified_functor;
     
 end );
 
@@ -633,16 +626,16 @@ end );
 ##
 AddDirectProduct( CapCat,
                   
-  function( product_of_categories )
+  function( object_product_list )
     
-    return AsCatObject( CallFuncList( Product, List( Components( product_of_categories ), AsCapCategory ) ) );
+    return AsCatObject( CallFuncList( Product, List( object_product_list, AsCapCategory ) ) );
     
 end );
 
 ##
 AddProjectionInFactorOfDirectProductWithGivenDirectProduct( CapCat,
                             
-  function( object_product_list, direct_product, projection_number )
+  function( object_product_list, projection_number, direct_product )
     local projection_functor;
     
     projection_functor := CapFunctor( 
@@ -691,7 +684,7 @@ AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( CapCat,
           function( object )
             local object_list;
             
-            object_list := List( Components( sink ), F -> ApplyFunctor( F, object ) );
+            object_list := List( sink, F -> ApplyFunctor( F, object ) );
             
             return CallFuncList( Product, object_list );
             
@@ -702,7 +695,7 @@ AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( CapCat,
           function( new_source, morphism, new_range )
             local morphism_list;
             
-            morphism_list := List( Components( sink ), F -> ApplyFunctor( F, morphism ) );
+            morphism_list := List( sink, F -> ApplyFunctor( F, morphism ) );
             
             return CallFuncList( Product, morphism_list );
             
@@ -866,7 +859,7 @@ InstallMethod( FunctorCanonicalizeZeroObjects,
 end );
 
 ##
-InstallMethod( NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects,
+InstallMethod( NaturalIsomorphismFromIdentityToCanonicalizeZeroObjects,
                [ IsCapCategory ],
                
   function( category )
@@ -929,7 +922,7 @@ InstallMethod( FunctorCanonicalizeZeroMorphisms,
 end );
 
 ##
-InstallMethod( NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms,
+InstallMethod( NaturalIsomorphismFromIdentityToCanonicalizeZeroMorphisms,
                [ IsCapCategory ],
                
   function( category )
@@ -988,12 +981,10 @@ InstallMethod( NaturalTransformation,
         
     fi;
     
-    natural_transformation := rec( );
-    
-    ObjectifyWithAttributes( natural_transformation, TheTypeOfCapNaturalTransformations,
-                             Name, name,
-                             Source, source,
-                             Range, range );
+    natural_transformation := ObjectifyWithAttributes( rec( ), TheTypeOfCapNaturalTransformations,
+                                                       Name, name,
+                                                       Source, source,
+                                                       Range, range );
     
     Add( CapCategory( source ), natural_transformation );
     

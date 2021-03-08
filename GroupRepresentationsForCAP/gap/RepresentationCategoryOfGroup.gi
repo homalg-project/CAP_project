@@ -1,12 +1,9 @@
-#############################################################################
-##
-##                                GroupRepresentationsForCAP package
-##
-##  Copyright 2016, Sebastian Posur, University of Siegen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# GroupRepresentationsForCAP: Skeletal category of group representations for CAP
+#
+# Implementations
+#
 #! @Chapter Representation Category of Groups
-##
-#############################################################################
 
 ####################################
 ##
@@ -62,7 +59,15 @@ InstallMethod( RepresentationCategory,
     
     database_keys := EvalString( command );
     
-    group_string := String( group );
+    if HasIsTrivial( group ) and IsTrivial( group ) then
+        
+        group_string := "TrivialGroup( )";
+        
+    else
+        
+        group_string := String( group );
+        
+    fi;
     
     group_data := First( database_keys, entry -> entry[1] = group_string );
     
@@ -139,6 +144,8 @@ InstallMethod( RepresentationCategory,
     
     SetUnderlyingGroupForRepresentationCategory( category, group );
     
+    SetIsSkeletalCategory( category, true );
+    
     DeactivateCachingOfCategory( category );
     
     CapCategorySwitchLogicOff( category );
@@ -166,6 +173,19 @@ InstallMethod( RepresentationCategoryObject,
   function( character, category )
     
     return RepresentationCategoryObject( [ [ 1, character ] ], category );
+    
+end );
+
+##
+InstallMethod( RepresentationCategoryObject,
+        "for a character, a CAP category, and a string",
+        [ IsCharacter, IsCapCategory, IsString ],
+        
+  function ( character, category, str )
+    
+    SetString( GIrreducibleObject( character ), str );
+    
+    return RepresentationCategoryObject( character, category );
     
 end );
 
@@ -319,6 +339,8 @@ InstallMethod( RepresentationCategoryZGraded,
                     IsRepresentationCategoryZGradedMorphism, name ] );
     
     SetUnderlyingGroupForRepresentationCategory( category, group );
+    
+    SetIsSkeletalCategory( category, true );
     
     ## side effect: this computes the multiplicity array of group which can thus be accessed without the getter
     MultiplicityArray( group );

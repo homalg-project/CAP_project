@@ -1,0 +1,179 @@
+In this chapter, we explain the philosophy of constructive category theory 
+underlying our software project \CapPkg.
+In short: Existential quantifiers have to be turned into algorithms.
+Using dependent type theory \cite{hottbook}, this short statement can be made precise.
+
+\section{Propositions as Types}
+Like ZFC, dependent type theory is a formal language in which we can do mathematics.
+Every correct mathematical theorem stated in ``everyday language'' can in principle be
+``compiled'' to a formal statement in dependent type theory, where its correctness
+can then be verified formally.
+One of the nice features of dependent type theory is called \textit{proposition as types}.
+Unlike ZFC, dependent type theory makes no distinction between a proposition and
+the objects which we want to describe (e.g. sets or types). So we shall think about
+a proposition like
+\[
+ \exists x \in \Z: x^2 = 4
+\]
+as being the type (or for simplicity the set) consisting of all pairs $(x, p)$ where
+$x$ is a solution of $x^2 = 4$, and $p$ is a witness
+of this fact. This is why in dependent type theory, such a proposition
+is written as a dependent sum (or for simplicity a disjoint union)
+\[
+\sum_{x: \Z} x^2 = 4.
+\]
+Proving a proposition $P$ in dependent type theory means exhibiting a term of $P$.
+So for proving $\sum_{x: \Z} x^2 = 4$, we have to give an explicit $x:\Z$, e.g. $2$ or $-2$,
+and have to show that $x^2 = 4$ (by unwrapping the definition of squaring an integer).
+
+\section{Models on the Computer}
+
+A proof of $\sum_{x: \Z} x^2 = 4$ with a proof assistant uses the constructions
+that can be done within dependent type theory. This means that once a proof is found,
+this proof is valid for every model of dependent type theory
+(there are models interpreting types as sets or groupoids \cite{Hofmann96thegroupoid}).
+Such models can be realized on the computer. For example, in the formalization 
+of $\CapPkg$, we use \GAP-sets and \GAP-maps. A \GAP-map essentially is a
+computer program taking only elements of its source as its arguments
+and returns a uniquely determined element of its range, respecting a notion of 
+equality of elements. This is exactly what an algorithm is supposed to do.
+
+\section{Examples of Constructions in Category Theory}
+
+Combining dependent type theory and computer models, we get to the following 
+concept of constructive category theory:
+\begin{enumerate}
+ \item We use dependent type theory for our formulation of category theory.
+ \item We use a computer model of dependent type theory to interpret category theory.
+\end{enumerate}
+A definition of categories within dependent type theory can be found in \cite{hottbook}.
+We give some examples of the consequences of this concept of constructiveness.
+
+\begin{example}[Identities]
+ For every object $a$ in a category $\mathbf{C}$, there exists a morphism
+ $\id_a$ such that for all objects $b$ and all morphisms $\alpha \in \Hom( a, b )$, $\beta \in \Hom( b, a )$,
+ the equations $\id_a \circ \beta = \beta$ and $\alpha \circ \id_a = \alpha$ hold.
+ Written in the syntax of dependent type theory, this statement looks as follows:
+ \[
+  \prod_{a:\Obj} \sum_{\id_a: \Hom(a,a)} \prod_{\substack{ b: \Obj \\ \alpha: \Hom(a,b) \\ \beta: \Hom(b,a)}}( \id_a \circ \beta = \beta ) \times ( \alpha \circ \id_b = \alpha ).
+ \]
+ A term of this type is equal to a
+ dependent function $f$, mapping an object $a$ to a pair $(\id_a, p)$,
+ where $\id_a$ is a morphism and $p$ is a proof that this morphism acts like a unit.
+ The proof $p$ can be omitted in our computer model because it is a mere proposition, so we end up
+ with a dependent function $a \mapsto \id_a$, which is given in our computer model
+ by an explicit algorithm.
+\end{example}
+
+\begin{example}[Kernels]
+ Universal objects such as kernels are not merely objects. They are a collection of data.
+ Given a morphism $\phi \in \Hom(a,b)$, a kernel of $\phi$ consists of
+ \begin{itemize}
+  \item an object $k$,
+  \item a morphism $\iota: k \rightarrow a$ such that $\phi \circ \iota = 0$,
+  \item a universal property, namely: For every other object $t$ and morphism $\tau: t \rightarrow a$
+        such that $\phi \circ \tau = 0$, there exists a unique morphism $l: t \rightarrow k$
+        such that $\tau = \iota \circ l$.
+ \end{itemize}
+ Written in the syntax of dependent type theory, the type of kernels of $\phi$
+ looks as follows:
+ \begin{align*}
+  \mathrm{KernelsOf}(\phi):\equiv
+  \sum_{k:\Obj} \sum_{\iota: \Hom(k,a)} (\phi \circ \iota = 0) \times \left( \prod_{ \substack{ t: \Obj \\ \tau: \Hom( t, a ) \\ p: \phi \circ \tau = 0}} 
+  \sum_{l: \Hom( t, k )} (\tau = \iota \circ l) \times \mathrm{Uniqueness}( l ) \right)
+ \end{align*}
+ A term of this type is equal to a tupel $(k, \iota, q, u )$ consisting of an object $k$,
+ a morphism $\iota: k \rightarrow a$, a witness $q$ of $\phi \circ \iota = 0$, and a dependent function $u$.
+ This dependent function takes as arguments an object $t$, a morphism $\tau: t \rightarrow a$, and a witness $p$ of $\phi \circ \tau = 0$.
+ The output is a triple consisting of morphism $l: t \rightarrow k$, a witness of $\tau = \iota \circ l$, and a witness of the uniqueness of $l$.
+ Again by omitting mere propositions in our computer model,
+ $u$ is interpreted by an explicit algorithm $(t, \tau) \mapsto l$.
+ \\
+ We say that a category has kernels if for all objects $a,b$ and morphisms $\phi \in \Hom( a, b )$,
+ $\phi$ has a kernel.
+ Written in the syntax of dependent type theory, this statement looks as follows:
+ \[
+  \prod_{ \substack{ a,b: \Obj \\ \phi: \Hom(a,b) } } \mathrm{KernelsOf}( \phi ).
+ \]
+ A term of this type is equal to a dependent function mapping a triple $(a,b,\phi)$
+ to a term of $\mathrm{KernelsOf}( \phi )$.
+ Interpreted in our computer model, such a dependent function is an algorithm 
+ $(a,b,\phi) \mapsto (k, \iota, q, u )$. Note that $u$ (the universal property) is an algorithm by itself,
+ here constructed by another algorithm.
+\end{example}
+
+In the following examples we omit the descriptions in dependent type theory
+and focus on their interpretations in a computer model.
+
+\begin{example}[Functors]
+ A functor $F$ between two categories $\mathbf{C}$ and $\mathbf{D}$ consists of
+ \begin{itemize}
+  \item a function $F_{0}: \Obj_{\mathbf{C}} \rightarrow \Obj_{\mathbf{D}}$, 
+  \item for $a,b \in \Obj_{\mathbf{C}}$, a function $F_{a,b}: \Hom_{\mathbf{C}}(a,b) \rightarrow \Hom_{\mathbf{D}}( F_0(a), F_0(b) )$
+ \end{itemize}
+ such that
+ \begin{itemize}
+  \item $F_{a,a}( \id_a ) = \id_{F_{0}(a)}$,
+  \item for $a,b,c \in \Obj_{\mathbf{C}}$, $\alpha: a \rightarrow b$, $\beta: b \rightarrow c$, we have
+        $F_{a,c}( \beta \circ \alpha ) = F_{b,c}( \beta ) \circ F_{a,b}( \alpha )$.
+ \end{itemize}
+ Interpreting this in a computer model, the action of the functor $F$ is given by two algorithms:
+ \begin{itemize}
+  \item On objects: The argument is an object $a \in \mathbf{C}$. The output is an object $F_0(a) \in \mathbf{D}$.
+  \item On morphisms: The arguments are objects $a,b$ and a morphism $\phi: a \rightarrow b$. 
+        The output is a morphism $F_{a,b}(\phi): F_0(a) \rightarrow F_0(b)$.
+ \end{itemize}
+
+\end{example}
+
+\begin{example}[Natural Transformations]
+ A natural transformation $\nu$ between two functors $F,G: \mathbf{C} \rightarrow \mathbf{D}$ consists of
+ \begin{itemize}
+  \item a dependent function mapping an object $a \in \mathbf{C}$ to a morphism $\nu_{a} \in \Hom_{\mathbf{D}}(Fa, Ga)$
+ \end{itemize}
+ such that 
+ \begin{itemize}
+  \item for $b \in \mathbf{C}$, $\alpha: a \rightarrow b$, there is an equality  $G(\alpha) \circ \nu_{a} = \nu_{b} \circ F(\alpha)$.
+ \end{itemize}
+ Interpreting this in a computer model, a natural transformation is an algorithm 
+ having an object $a$ as an argument. The output is a morphism $\nu_a: F(a) \rightarrow G(a)$.
+\end{example}
+
+\begin{example}[Tensor Hom Adjunction]
+ One of the axioms of a closed monoidal category $\mathbf{C}$ (e.g. the category of modules over a commutative ring $R$)
+ says that
+ \begin{itemize}
+  \item for each $b \in \mathbf{C}$, the functor $- \otimes b$ has a right adjoint $\underline{\Hom}(b,-)$.
+ \end{itemize}
+ To understand this axiom constructively, we have to unwrap it.
+ So $\underline{\Hom}(b,-)$ being a right adjoint to $- \otimes b$ means that
+ \begin{itemize}
+  \item $\exists$ a natural transformation $\mathrm{coev}^b_a: a \rightarrow \underline{\Hom}(b, a \otimes b)$, called \textbf{coevaluation},
+  \item $\exists$ a natural transformation $\mathrm{ev}^b_a: \underline{\Hom}(b,a) \otimes b \rightarrow a$, called \textbf{evaluation},
+ \end{itemize}
+ such that the so called zig-zag relations\footnote{The zig-zag relations are $\mathrm{ev}^b_{a \otimes b} \circ (\mathrm{coev}^b_a \otimes b) = \id_{a \otimes b}$ and
+  $\underline{\Hom}(b,\mathrm{ev}^b_a) \circ \mathrm{coev}^b_{\underline{\Hom}(b,a)} = \id_{\underline{\Hom}(b,a)}$.} hold.
+ Interpreting this axiom in a computer model,
+ it says that we have two algorithms:
+ \begin{enumerate}
+  \item The arguments are objects $b,a$. The output is a morphism $a \rightarrow \underline{\Hom}(b, a \otimes b)$.
+  \item The arguments are objects $b,a$. The output is a morphism $\underline{\Hom}(b,a) \otimes b \rightarrow a$.
+ \end{enumerate}
+ Having these morphisms interpreted in our computer model, we are able to construct all the natural
+ morphisms on the computer that can be constructed formally on the level of dependent type theory.
+ For example, let $a$ be an object, and denote by $a^{\vee} = \underline{\Hom}(a,1)$ its dual.
+ We want to construct the natural map $a \rightarrow (a^{\vee})^{\vee}$. For this, we
+ \begin{enumerate}
+  \item construct $\mathrm{coev}^{(a^{\vee})}_a: a \rightarrow \underline{\Hom}(a^{\vee}, a \otimes a^{\vee})$,
+  \item construct $\underline{\Hom}(a^{\vee}, B_{a, a^{\vee}}): \underline{\Hom}(a^{\vee}, a \otimes a^{\vee}) \rightarrow \underline{\Hom}(a^{\vee}, a^{\vee} \otimes a)$,
+  \item construct $\mathrm{ev}^{a}_1: a^{\vee} \otimes a \rightarrow 1$,
+  \item construct $\underline{\Hom}( a^{\vee}, \mathrm{ev}^{a}_1 ): \underline{\Hom}(a^{\vee}, a^{\vee} \otimes a) \rightarrow (a^{\vee})^{\vee}$.
+ \end{enumerate}
+ The desired morphism is given by the composition of $(1), (2)$, and $(4)$. Note that
+ this is an example of a derivation implemented in \CapPkg.
+ In general, using the evaluation and the coevaluation, we can explicitly construct the bijection
+ \[
+  \Hom( a \otimes b, c ) \cong \Hom( a, \underline{\Hom}(b,c) ),
+ \]
+ and use this in turn for constructing natural morphisms.
+\end{example}

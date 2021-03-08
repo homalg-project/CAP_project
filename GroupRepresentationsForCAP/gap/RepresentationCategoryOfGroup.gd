@@ -1,12 +1,9 @@
-#############################################################################
-##
-##                                GroupRepresentationsForCAP package
-##
-##  Copyright 2016, Sebastian Posur, University of Siegen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# GroupRepresentationsForCAP: Skeletal category of group representations for CAP
+#
+# Declarations
+#
 #! @Chapter Representation Category of Groups
-##
-#############################################################################
 
 #! @Section Introduction
 #! For a finite group $G$,
@@ -85,6 +82,19 @@ DeclareOperation( "RepresentationCategory", [ IsGroup, IsList ] );
 #! @Returns an object in $G$-mod
 #! @Arguments L, C
 DeclareOperation( "RepresentationCategoryObject", [ IsList, IsCapCategory ] );
+
+#! @Description
+#!  There are 3 arguments.
+#!  The first argument is
+#!  an irreducible character <A>c</A>.
+#!  The second argument is the CAP category $C = G$-mod.
+#!  The third argument is a string used as follows:
+#!  <C>SetString</C>( <C>GIrreducibleObject</C>( <A>c</A> ), <A>str</A> ).
+#!  The output is the unique object in $G$-mod
+#!  having $[ [ 1, c ] ]$ as its character decomposition.
+#! @Returns an object in $G$-mod
+#! @Arguments c, C, str
+DeclareOperation( "RepresentationCategoryObject", [ IsCharacter, IsCapCategory, IsString ] );
 
 ##
 DeclareOperation( "RepresentationCategoryMorphism", [ IsSemisimpleCategoryObject, IsList, IsSemisimpleCategoryObject ] );

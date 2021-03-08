@@ -1,13 +1,9 @@
-#############################################################################
-##
-##     FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
-##
-##  Copyright 2018, Sebastian Posur, University of Siegen
-##
-#! @Chapter Freyd categories
-#!
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
+#
+# Declarations
+#
+#! @Chapter Basic operations
 
 DeclareGlobalVariable( "FREYD_CATEGORIES_METHOD_NAME_RECORD" );
 
@@ -61,7 +57,7 @@ DeclareGlobalFunction( "UNIVERSAL_MORPHISM_FROM_BIASED_WEAK_PUSHOUT_PREFUNCTION"
 ## Main Operations and Attributes
 #! @Description
 #! The argument is a morphism $\alpha$.
-#! The output is the kernel $K$ of $\alpha$.
+#! The output is the weak kernel $K$ of $\alpha$.
 #! @Returns an object
 #! @Arguments alpha
 DeclareAttribute( "WeakKernelObject",
@@ -69,16 +65,16 @@ DeclareAttribute( "WeakKernelObject",
 
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
-#! The output is the kernel embedding $\iota: \mathrm{KernelObject}(\alpha) \rightarrow A$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{KernelObject}(\alpha),A)$
+#! The output is the weak kernel embedding $\iota: \mathrm{WeakKernelObject}(\alpha) \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{WeakKernelObject}(\alpha),A)$
 #! @Arguments alpha
 DeclareAttribute( "WeakKernelEmbedding",
                   IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$
-#! and an object $K = \mathrm{KernelObject}(\alpha)$.
-#! The output is the kernel embedding $\iota: K \rightarrow A$.
+#! and an object $K = \mathrm{WeakKernelObject}(\alpha)$.
+#! The output is the weak kernel embedding $\iota: K \rightarrow A$.
 #! @Returns a morphism in $\mathrm{Hom}(K,A)$
 #! @Arguments alpha, K
 DeclareOperation( "WeakKernelEmbeddingWithGivenWeakKernelObject",
@@ -87,9 +83,9 @@ DeclareOperation( "WeakKernelEmbeddingWithGivenWeakKernelObject",
 #! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$
 #! and a test morphism $\tau: T \rightarrow A$ satisfying $\alpha \circ \tau \sim_{T,B} 0$.
-#! The output is the morphism $u(\tau): T \rightarrow \mathrm{KernelObject}(\alpha)$
-#! given by the universal property of the kernel.
-#! @Returns a morphism in $\mathrm{Hom}(T,\mathrm{KernelObject}(\alpha))$
+#! The output is the morphism $u(\tau): T \rightarrow \mathrm{WeakKernelObject}(\alpha)$
+#! given by the universal property of the weak kernel.
+#! @Returns a morphism in $\mathrm{Hom}(T,\mathrm{WeakKernelObject}(\alpha))$
 #! @Arguments alpha, tau
 DeclareOperation( "WeakKernelLift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
@@ -97,9 +93,9 @@ DeclareOperation( "WeakKernelLift",
 #! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$,
 #! a test morphism $\tau: T \rightarrow A$ satisfying $\alpha \circ \tau \sim_{T,B} 0$,
-#! and an object $K = \mathrm{KernelObject}(\alpha)$.
+#! and an object $K = \mathrm{WeakKernelObject}(\alpha)$.
 #! The output is the morphism $u(\tau): T \rightarrow K$
-#! given by the universal property of the kernel.
+#! given by the universal property of the weak kernel.
 #! @Returns a morphism in $\mathrm{Hom}(T,K)$
 #! @Arguments alpha, tau, K
 DeclareOperation( "WeakKernelLiftWithGivenWeakKernelObject",
@@ -111,8 +107,8 @@ DeclareOperation( "WeakKernelLiftWithGivenWeakKernelObject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>KernelObject</C>.
-#! $F: \alpha \mapsto \mathrm{KernelObject}(\alpha)$.
+#! to the category for the basic operation <C>WeakKernelObject</C>.
+#! $F: \alpha \mapsto \mathrm{WeakKernelObject}(\alpha)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddWeakKernelObject",
@@ -131,7 +127,7 @@ DeclareOperation( "AddWeakKernelObject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>KernelEmbedding</C>.
+#! to the category for the basic operation <C>WeakKernelEmbedding</C>.
 #! $F: \alpha \mapsto \iota$.
 #! @Returns nothing
 #! @Arguments C, F
@@ -151,7 +147,7 @@ DeclareOperation( "AddWeakKernelEmbedding",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>KernelEmbeddingWithGivenKernelObject</C>.
+#! to the category for the basic operation <C>WeakKernelEmbeddingWithGivenWeakKernelObject</C>.
 #! $F: (\alpha, K) \mapsto \iota$.
 #! @Returns nothing
 #! @Arguments C, F
@@ -171,7 +167,7 @@ DeclareOperation( "AddWeakKernelEmbeddingWithGivenWeakKernelObject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>KernelLift</C>.
+#! to the category for the basic operation <C>WeakKernelLift</C>.
 #! $F: (\alpha, \tau) \mapsto u(\tau)$.
 #! @Returns nothing
 #! @Arguments C, F
@@ -191,7 +187,7 @@ DeclareOperation( "AddWeakKernelLift",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>KernelLiftWithGivenKernelObject</C>.
+#! to the category for the basic operation <C>WeakKernelLiftWithGivenWeakKernelObject</C>.
 #! $F: (\alpha, \tau, K) \mapsto u$.
 #! @Returns nothing
 #! @Arguments C, F
@@ -245,7 +241,7 @@ DeclareOperation( "AddWeakKernelLiftWithGivenWeakKernelObject",
 ## Main Operations and Attributes
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
-#! The output is the cokernel $K$ of $\alpha$.
+#! The output is the weak cokernel $K$ of $\alpha$.
 #! @Returns an object
 #! @Arguments alpha
 DeclareAttribute( "WeakCokernelObject",
@@ -253,16 +249,16 @@ DeclareAttribute( "WeakCokernelObject",
 
 #! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
-#! The output is the cokernel projection $\epsilon: B \rightarrow \mathrm{CokernelObject}( \alpha )$.
-#! @Returns a morphism in $\mathrm{Hom}(B, \mathrm{CokernelObject}( \alpha ))$
+#! The output is the weak cokernel projection $\epsilon: B \rightarrow \mathrm{WeakCokernelObject}( \alpha )$.
+#! @Returns a morphism in $\mathrm{Hom}(B, \mathrm{WeakCokernelObject}( \alpha ))$
 #! @Arguments alpha
 DeclareAttribute( "WeakCokernelProjection",
                   IsCapCategoryMorphism );
 
 #! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$
-#! and an object $K = \mathrm{CokernelObject}(\alpha)$.
-#! The output is the cokernel projection $\epsilon: B \rightarrow \mathrm{CokernelObject}( \alpha )$.
+#! and an object $K = \mathrm{WeakCokernelObject}(\alpha)$.
+#! The output is the weak cokernel projection $\epsilon: B \rightarrow \mathrm{WeakCokernelObject}( \alpha )$.
 #! @Returns a morphism in $\mathrm{Hom}(B, K)$
 #! @Arguments alpha, K
 DeclareOperation( "WeakCokernelProjectionWithGivenWeakCokernelObject",
@@ -272,9 +268,9 @@ DeclareOperation( "WeakCokernelProjectionWithGivenWeakCokernelObject",
 #! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$
 #! and a test morphism $\tau: B \rightarrow T$ satisfying $\tau \circ \alpha \sim_{A, T} 0$.
-#! The output is the morphism $u(\tau): \mathrm{CokernelObject}(\alpha) \rightarrow T$
-#! given by the universal property of the cokernel.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{CokernelObject}(\alpha),T)$
+#! The output is the morphism $u(\tau): \mathrm{WeakCokernelObject}(\alpha) \rightarrow T$
+#! given by the universal property of the weak cokernel.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{WeakCokernelObject}(\alpha),T)$
 #! @Arguments alpha, tau
 DeclareOperation( "WeakCokernelColift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
@@ -282,9 +278,9 @@ DeclareOperation( "WeakCokernelColift",
 #! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow B$,
 #! a test morphism $\tau: B \rightarrow T$ satisfying $\tau \circ \alpha \sim_{A, T} 0$,
-#! and an object $K = \mathrm{CokernelObject}(\alpha)$.
+#! and an object $K = \mathrm{WeakCokernelObject}(\alpha)$.
 #! The output is the morphism $u(\tau): K \rightarrow T$
-#! given by the universal property of the cokernel.
+#! given by the universal property of the weak cokernel.
 #! @Returns a morphism in $\mathrm{Hom}(K,T)$
 #! @Arguments alpha, tau, K
 DeclareOperation( "WeakCokernelColiftWithGivenWeakCokernelObject",
@@ -296,7 +292,7 @@ DeclareOperation( "WeakCokernelColiftWithGivenWeakCokernelObject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>CokernelObject</C>.
+#! to the category for the basic operation <C>WeakCokernelObject</C>.
 #! $F: \alpha \mapsto K$.
 #! @Returns nothing
 #! @Arguments C, F
@@ -315,7 +311,7 @@ DeclareOperation( "AddWeakCokernelObject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>CokernelProjection</C>.
+#! to the category for the basic operation <C>WeakCokernelProjection</C>.
 #! $F: \alpha \mapsto \epsilon$.
 #! @Returns nothing
 #! @Arguments C, F
@@ -335,7 +331,7 @@ DeclareOperation( "AddWeakCokernelProjection",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>CokernelProjection</C>.
+#! to the category for the basic operation <C>WeakCokernelProjectionWithGivenWeakCokernelObject</C>.
 #! $F: (\alpha, K) \mapsto \epsilon$.
 #! @Returns nothing
 #! @Arguments C, F
@@ -354,7 +350,7 @@ DeclareOperation( "AddWeakCokernelProjectionWithGivenWeakCokernelObject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>CokernelProjection</C>.
+#! to the category for the basic operation <C>WeakCokernelColift</C>.
 #! $F: (\alpha, \tau) \mapsto u(\tau)$.
 #! @Returns nothing
 #! @Arguments C, F
@@ -373,7 +369,7 @@ DeclareOperation( "AddWeakCokernelColift",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>CokernelProjection</C>.
+#! to the category for the basic operation <C>WeakCokernelColiftWithGivenWeakCokernelObject</C>.
 #! $F: (\alpha, \tau, K) \mapsto u(\tau)$.
 #! @Returns nothing
 #! @Arguments C, F
@@ -426,28 +422,76 @@ DeclareOperation( "AddWeakCokernelColiftWithGivenWeakCokernelObject",
 
 ## Main Operations and Attributes
 
-
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B$, $\beta: C \rightarrow B$.
+#! The output is the weak bi-fiber product $P$ of $\alpha$ and $\beta$.
+#! @Returns an object
+#! @Arguments alpha, beta
 DeclareOperation( "WeakBiFiberProduct",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B$, $\beta: C \rightarrow B$.
+#! The output is the first weak bi-fiber product projection $\pi_1: P \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}( P, A )$
+#! @Arguments alpha, beta
 DeclareOperation( "ProjectionInFirstFactorOfWeakBiFiberProduct",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B$, $\beta: C \rightarrow B$
+#! and an object $P = \mathrm{WeakBiFiberProduct}( \alpha, \beta )$.
+#! The output is the first weak bi-fiber product projection $\pi_1: P \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}( P, A )$
+#! @Arguments alpha, beta, P
 DeclareOperation( "ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B$, $\beta: C \rightarrow B$.
+#! The output is the second weak bi-fiber product projection $\pi_2: P \rightarrow C$.
+#! @Returns a morphism in $\mathrm{Hom}( P, C )$
+#! @Arguments alpha, beta
 DeclareOperation( "ProjectionInSecondFactorOfWeakBiFiberProduct",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B$, $\beta: C \rightarrow B$
+#! and an object $P = \mathrm{WeakBiFiberProduct}( \alpha, \beta )$.
+#! The output is the second weak bi-fiber product projection $\pi_2: P \rightarrow C$.
+#! @Returns a morphism in $\mathrm{Hom}( P, C )$
+#! @Arguments alpha, beta, P
 DeclareOperation( "ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are four morphisms $\alpha: A \rightarrow B$, $\beta: C \rightarrow B$,
+#! $\tau_1: T \rightarrow A$, $\tau_2: T \rightarrow C$.
+#! The output is the morphism $u( \tau )$ induced by the universal property of the weak bi-fiber product
+#! $P$ of $\alpha$ and $\beta$.
+#! @Returns a morphism in $\mathrm{Hom}( T, P )$
+#! @Arguments alpha, beta, tau_1, tau_2
 DeclareOperation( "UniversalMorphismIntoWeakBiFiberProduct",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are four morphisms $\alpha: A \rightarrow B$, $\beta: C \rightarrow B$,
+#! $\tau_1: T \rightarrow A$, $\tau_2: T \rightarrow C$
+#! and an object $P = \mathrm{WeakBiFiberProduct}( \alpha, \beta )$.
+#! The output is the morphism $u( \tau )$ induced by the universal property of the weak bi-fiber product
+#! $P$.
+#! @Returns a morphism in $\mathrm{Hom}( T, P )$
+#! @Arguments alpha, beta, tau_1, tau_2, P
 DeclareOperation( "UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B$, $\beta: C \rightarrow B$.
+#! The output is the morphism $P \rightarrow A \oplus C$ obtained
+#! from the two weak bi-fiber product projections $\pi_1$ and $\pi_2$ and
+#! the universal property of the direct sum.
+#! @Returns a morphism in $\mathrm{Hom}( P, A \oplus C )$
+#! @Arguments alpha, beta
 DeclareOperation( "WeakBiFiberProductMorphismToDirectSum",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
@@ -456,8 +500,8 @@ DeclareOperation( "WeakBiFiberProductMorphismToDirectSum",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>FiberProduct</C>.
-#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n} ) \mapsto P$
+#! to the category for the basic operation <C>WeakBiFiberProduct</C>.
+#! $F: ( \alpha, \beta ) \mapsto P$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddWeakBiFiberProduct",
@@ -475,8 +519,8 @@ DeclareOperation( "AddWeakBiFiberProduct",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>ProjectionInFactorOfFiberProduct</C>.
-#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, k ) \mapsto \pi_k$
+#! to the category for the basic operation <C>ProjectionInFirstFactorOfWeakBiFiberProduct</C>.
+#! $F: ( \alpha, \beta ) \mapsto \pi_1$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddProjectionInFirstFactorOfWeakBiFiberProduct",
@@ -491,6 +535,13 @@ DeclareOperation( "AddProjectionInFirstFactorOfWeakBiFiberProduct",
 DeclareOperation( "AddProjectionInFirstFactorOfWeakBiFiberProduct",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>ProjectionInSecondFactorOfWeakBiFiberProduct</C>.
+#! $F: ( \alpha, \beta ) \mapsto \pi_2$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddProjectionInSecondFactorOfWeakBiFiberProduct",
                   [ IsCapCategory, IsFunction ] );
 
@@ -506,8 +557,8 @@ DeclareOperation( "AddProjectionInSecondFactorOfWeakBiFiberProduct",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>ProjectionInFactorOfFiberProductWithGivenFiberProduct</C>.
-#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, k,P ) \mapsto \pi_k$
+#! to the category for the basic operation <C>ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct</C>.
+#! $F: ( \alpha, \beta, P ) \mapsto \pi_1$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct",
@@ -522,6 +573,13 @@ DeclareOperation( "AddProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBi
 DeclareOperation( "AddProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct</C>.
+#! $F: ( \alpha, \beta, P ) \mapsto \pi_2$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct",
                   [ IsCapCategory, IsFunction ] );
 
@@ -537,8 +595,8 @@ DeclareOperation( "AddProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakB
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismIntoFiberProduct</C>.
-#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, \tau  ) \mapsto u(\tau)$
+#! to the category for the basic operation <C>UniversalMorphismIntoWeakBiFiberProduct</C>.
+#! $F: ( \alpha, \beta, \tau_1, \tau_2 ) \mapsto u(\tau)$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismIntoWeakBiFiberProduct",
@@ -557,8 +615,8 @@ DeclareOperation( "AddUniversalMorphismIntoWeakBiFiberProduct",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismIntoFiberProductWithGivenFiberProduct</C>.
-#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, \tau, P  ) \mapsto u(\tau)$
+#! to the category for the basic operation <C>UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct</C>.
+#! $F: ( \alpha, \beta, \tau_1, \tau_2, P ) \mapsto u(\tau)$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct",
@@ -573,7 +631,13 @@ DeclareOperation( "AddUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFibe
 DeclareOperation( "AddUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct",
                   [ IsCapCategory, IsList ] );
 
-##
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>WeakBiFiberProductMorphismToDirectSum</C>.
+#! $F: ( \alpha, \beta ) \mapsto \mathrm{WeakBiFiberProductMorphismToDirectSum}( \alpha, \beta )$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddWeakBiFiberProductMorphismToDirectSum",
                   [ IsCapCategory, IsFunction ] );
 
@@ -624,20 +688,50 @@ DeclareOperation( "AddWeakBiFiberProductMorphismToDirectSum",
 
 ## Main Operations and Attributes
 
-
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B$, $\beta: C \rightarrow B$.
+#! The output is the biased weak fiber product $P$ of $\alpha$ and $\beta$.
+#! @Returns an object
+#! @Arguments alpha, beta
 DeclareOperation( "BiasedWeakFiberProduct",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 ## corresponds to projection in 1st factor
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B$, $\beta: C \rightarrow B$.
+#! The output is the biased weak fiber product projection $\pi: P \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}( P, A )$
+#! @Arguments alpha, beta
 DeclareOperation( "ProjectionOfBiasedWeakFiberProduct",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B$, $\beta: C \rightarrow B$,
+#! and an object $P = \mathrm{BiasedWeakFiberProduct}( \alpha, \beta )$.
+#! The output is the biased weak fiber product projection $\pi: P \rightarrow A$.
+#! @Returns a morphism in $\mathrm{Hom}( P, A )$
+#! @Arguments alpha, beta, P
 DeclareOperation( "ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are three morphisms $\alpha: A \rightarrow B$, $\beta: C \rightarrow B$,
+#! $\tau: T \rightarrow A$.
+#! The output is the morphism $u( \tau )$ induced by the universal property of the biased weak fiber product
+#! $P$ of $\alpha$ and $\beta$.
+#! @Returns a morphism in $\mathrm{Hom}( T, P )$
+#! @Arguments alpha, beta, tau
 DeclareOperation( "UniversalMorphismIntoBiasedWeakFiberProduct",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are three morphisms $\alpha: A \rightarrow B$, $\beta: C \rightarrow B$,
+#! $\tau: T \rightarrow A$
+#! and an object $P = \mathrm{BiasedWeakFiberProduct}( \alpha, \beta )$.
+#! The output is the morphism $u( \tau )$ induced by the universal property of the biased weak fiber product
+#! $P$ of $\alpha$ and $\beta$.
+#! @Returns a morphism in $\mathrm{Hom}( T, P )$
+#! @Arguments alpha, beta, tau, P
 DeclareOperation( "UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
@@ -646,8 +740,8 @@ DeclareOperation( "UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWea
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>FiberProduct</C>.
-#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n} ) \mapsto P$
+#! to the category for the basic operation <C>BiasedWeakFiberProduct</C>.
+#! $F: ( \alpha, \beta ) \mapsto P$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddBiasedWeakFiberProduct",
@@ -665,8 +759,8 @@ DeclareOperation( "AddBiasedWeakFiberProduct",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>ProjectionInFactorOfFiberProduct</C>.
-#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, k ) \mapsto \pi_k$
+#! to the category for the basic operation <C>ProjectionOfBiasedWeakFiberProduct</C>.
+#! $F: ( \alpha, \beta ) \mapsto \pi$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddProjectionOfBiasedWeakFiberProduct",
@@ -684,8 +778,8 @@ DeclareOperation( "AddProjectionOfBiasedWeakFiberProduct",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>ProjectionInFactorOfFiberProductWithGivenFiberProduct</C>.
-#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, k,P ) \mapsto \pi_k$
+#! to the category for the basic operation <C>ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct</C>.
+#! $F: ( \alpha, \beta, P ) \mapsto \pi$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
@@ -703,8 +797,8 @@ DeclareOperation( "AddProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiber
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismIntoFiberProduct</C>.
-#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, \tau  ) \mapsto u(\tau)$
+#! to the category for the basic operation <C>UniversalMorphismIntoBiasedWeakFiberProduct</C>.
+#! $F: ( \alpha, \beta, \tau ) \mapsto u(\tau)$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismIntoBiasedWeakFiberProduct",
@@ -723,8 +817,8 @@ DeclareOperation( "AddUniversalMorphismIntoBiasedWeakFiberProduct",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismIntoFiberProductWithGivenFiberProduct</C>.
-#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, \tau, P  ) \mapsto u(\tau)$
+#! to the category for the basic operation <C>UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct</C>.
+#! $F: ( \alpha, \beta, \tau, P ) \mapsto u(\tau)$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
@@ -775,27 +869,76 @@ DeclareOperation( "AddUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiased
 #! @EndLatexOnly
 
 
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B$, $\beta: A \rightarrow C$.
+#! The output is the weak bi-pushout $P$ of $\alpha$ and $\beta$.
+#! @Returns an object
+#! @Arguments alpha, beta
 DeclareOperation( "WeakBiPushout",
                    [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B$, $\beta: A \rightarrow C$.
+#! The output is the first weak bi-pushout injection $\iota_1: B \rightarrow P$.
+#! @Returns a morphism in $\mathrm{Hom}( B, P )$
+#! @Arguments alpha, beta
 DeclareOperation( "InjectionOfFirstCofactorOfWeakBiPushout",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B$, $\beta: A \rightarrow C$.
+#! The output is the second weak bi-pushout injection $\iota_2: C \rightarrow P$.
+#! @Returns a morphism in $\mathrm{Hom}( C, P )$
+#! @Arguments alpha, beta
 DeclareOperation( "InjectionOfSecondCofactorOfWeakBiPushout",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B$, $\beta: A \rightarrow C$
+#! and an object $P = \mathrm{WeakBiPushout}( \alpha, \beta )$.
+#! The output is the first weak bi-pushout injection $\iota_1: B \rightarrow P$.
+#! @Returns a morphism in $\mathrm{Hom}( B, P )$
+#! @Arguments alpha, beta, P
 DeclareOperation( "InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B$, $\beta: A \rightarrow C$
+#! and an object $P = \mathrm{WeakBiPushout}( \alpha, \beta )$.
+#! The output is the second weak bi-pushout injection $\iota_2: C \rightarrow P$.
+#! @Returns a morphism in $\mathrm{Hom}( C, P )$
+#! @Arguments alpha, beta, P
 DeclareOperation( "InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are four morphisms $\alpha: A \rightarrow B$, $\beta: A \rightarrow C$,
+#! $\tau_1: B \rightarrow T$, $\tau_2: C \rightarrow T$.
+#! The output is the morphism $u( \tau )$ induced by the universal property of the weak bi-pushout
+#! $P$ of $\alpha$ and $\beta$.
+#! @Returns a morphism in $\mathrm{Hom}( P, T )$
+#! @Arguments alpha, beta, tau_1, tau_2
 DeclareOperation( "UniversalMorphismFromWeakBiPushout",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are four morphisms $\alpha: A \rightarrow B$, $\beta: A \rightarrow C$,
+#! $\tau_1: B \rightarrow T$, $\tau_2: C \rightarrow T$,
+#! and an object $P = \mathrm{WeakBiPushout}( \alpha, \beta )$.
+#! The output is the morphism $u( \tau )$ induced by the universal property of the weak bi-pushout
+#! $P$ of $\alpha$ and $\beta$.
+#! @Returns a morphism in $\mathrm{Hom}( P, T )$
+#! @Arguments alpha, beta, tau_1, tau_2, P
 DeclareOperation( "UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B$, $\beta: C \rightarrow B$.
+#! The output is the morphism $B \oplus C \rightarrow P$ obtained
+#! from the two weak bi-fiber product injections $\iota_1$ and $\iota_2$ and
+#! the universal property of the direct sum.
+#! @Returns a morphism in $\mathrm{Hom}(B \oplus C, P )$
+#! @Arguments alpha, beta
 DeclareOperation( "DirectSumMorphismToWeakBiPushout",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
@@ -804,8 +947,8 @@ DeclareOperation( "DirectSumMorphismToWeakBiPushout",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>Pushout</C>.
-#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n} ) \mapsto I$
+#! to the category for the basic operation <C>WeakBiPushout</C>.
+#! $F: ( \alpha, \beta ) \mapsto P$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddWeakBiPushout",
@@ -823,8 +966,8 @@ DeclareOperation( "AddWeakBiPushout",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>InjectionOfCofactorOfPushout</C>.
-#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k ) \mapsto \iota_k$
+#! to the category for the basic operation <C>InjectionOfFirstCofactorOfWeakBiPushout</C>.
+#! $F: ( \alpha, \beta ) \mapsto \iota_1$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddInjectionOfFirstCofactorOfWeakBiPushout",
@@ -839,6 +982,13 @@ DeclareOperation( "AddInjectionOfFirstCofactorOfWeakBiPushout",
 DeclareOperation( "AddInjectionOfFirstCofactorOfWeakBiPushout",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>InjectionOfSecondCofactorOfWeakBiPushout</C>.
+#! $F: ( \alpha, \beta ) \mapsto \iota_2$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddInjectionOfSecondCofactorOfWeakBiPushout",
                   [ IsCapCategory, IsFunction ] );
 
@@ -855,8 +1005,8 @@ DeclareOperation( "AddInjectionOfSecondCofactorOfWeakBiPushout",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>InjectionOfCofactorOfPushoutWithGivenPushout</C>.
-#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k, I ) \mapsto \iota_k$
+#! to the category for the basic operation <C>InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout</C>.
+#! $F: ( \alpha, \beta, P ) \mapsto \iota_1$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddInjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout",
@@ -871,6 +1021,13 @@ DeclareOperation( "AddInjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPush
 DeclareOperation( "AddInjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout</C>.
+#! $F: ( \alpha, \beta, P ) \mapsto \iota_2$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddInjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout",
                   [ IsCapCategory, IsFunction ] );
 
@@ -886,8 +1043,8 @@ DeclareOperation( "AddInjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPus
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismFromPushout</C>.
-#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, \tau ) \mapsto u(\tau)$
+#! to the category for the basic operation <C>UniversalMorphismFromWeakBiPushout</C>.
+#! $F: ( \alpha, \beta, \tau_1, \tau_2 ) \mapsto u(\tau)$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismFromWeakBiPushout",
@@ -905,8 +1062,8 @@ DeclareOperation( "AddUniversalMorphismFromWeakBiPushout",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismFromPushout</C>.
-#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, \tau, I ) \mapsto u(\tau)$
+#! to the category for the basic operation <C>UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout</C>.
+#! $F: ( \alpha, \beta, \tau_1, \tau_2, P ) \mapsto u(\tau)$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout",
@@ -921,7 +1078,13 @@ DeclareOperation( "AddUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout",
 DeclareOperation( "AddUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout",
                   [ IsCapCategory, IsList ] );
 
-##
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>DirectSumMorphismToWeakBiPushout</C>.
+#! $F: ( \alpha, \beta ) \mapsto \mathrm{DirectSumMorphismToWeakBiPushout}( \alpha, \beta )$
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddDirectSumMorphismToWeakBiPushout",
                   [ IsCapCategory, IsFunction ] );
 
@@ -969,18 +1132,49 @@ DeclareOperation( "AddDirectSumMorphismToWeakBiPushout",
 #! \end{center}
 #! @EndLatexOnly
 
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B$, $\beta: A \rightarrow C$.
+#! The output is the biased weak pushout $P$ of $\alpha$ and $\beta$.
+#! @Returns an object
+#! @Arguments alpha, beta
 DeclareOperation( "BiasedWeakPushout",
                    [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B$, $\beta: A \rightarrow C$.
+#! The output is the biased weak pushout injection $\iota: B \rightarrow P$.
+#! @Returns a morphism in $\mathrm{Hom}( B, P )$
+#! @Arguments alpha, beta
 DeclareOperation( "InjectionOfBiasedWeakPushout",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are two morphisms $\alpha: A \rightarrow B$, $\beta: A \rightarrow C$
+#! and an object $P = \mathrm{BiasedWeakPushout}( \alpha, \beta )$.
+#! The output is the biased weak pushout injection $\iota: B \rightarrow P$.
+#! @Returns a morphism in $\mathrm{Hom}( B, P )$
+#! @Arguments alpha, beta, P
 DeclareOperation( "InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+#! @Description
+#! The arguments are three morphisms $\alpha: A \rightarrow B$, $\beta: A \rightarrow C$,
+#! $\tau: B \rightarrow T$.
+#! The output is the morphism $u( \tau )$ induced by the universal property of the biased weak pushout
+#! $P$ of $\alpha$ and $\beta$.
+#! @Returns a morphism in $\mathrm{Hom}( P, T )$
+#! @Arguments alpha, beta, tau
 DeclareOperation( "UniversalMorphismFromBiasedWeakPushout",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
+#! @Description
+#! The arguments are three morphisms $\alpha: A \rightarrow B$, $\beta: A \rightarrow C$,
+#! $\tau: B \rightarrow T$
+#! and an object $P = \mathrm{BiasedWeakPushout}( \alpha, \beta )$.
+#! The output is the morphism $u( \tau )$ induced by the universal property of the biased weak pushout
+#! $P$ of $\alpha$ and $\beta$.
+#! @Returns a morphism in $\mathrm{Hom}( P, T )$
+#! @Arguments alpha, beta, tau, P
 DeclareOperation( "UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
@@ -989,8 +1183,8 @@ DeclareOperation( "UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPush
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>Pushout</C>.
-#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n} ) \mapsto I$
+#! to the category for the basic operation <C>BiasedWeakPushout</C>.
+#! $F: ( \alpha, \beta ) \mapsto P$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddBiasedWeakPushout",
@@ -1008,8 +1202,8 @@ DeclareOperation( "AddBiasedWeakPushout",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>InjectionOfCofactorOfPushout</C>.
-#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k ) \mapsto \iota_k$
+#! to the category for the basic operation <C>InjectionOfBiasedWeakPushout</C>.
+#! $F: ( \alpha, \beta ) \mapsto \iota$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddInjectionOfBiasedWeakPushout",
@@ -1027,8 +1221,8 @@ DeclareOperation( "AddInjectionOfBiasedWeakPushout",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>InjectionOfCofactorOfPushoutWithGivenPushout</C>.
-#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k, I ) \mapsto \iota_k$
+#! to the category for the basic operation <C>InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout</C>.
+#! $F: ( \alpha, \beta, P ) \mapsto \iota$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout",
@@ -1046,8 +1240,8 @@ DeclareOperation( "AddInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismFromPushout</C>.
-#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, \tau ) \mapsto u(\tau)$
+#! to the category for the basic operation <C>UniversalMorphismFromBiasedWeakPushout</C>.
+#! $F: ( \alpha, \beta, \tau ) \mapsto u(\tau)$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismFromBiasedWeakPushout",
@@ -1065,8 +1259,8 @@ DeclareOperation( "AddUniversalMorphismFromBiasedWeakPushout",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismFromPushout</C>.
-#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, \tau, I ) \mapsto u(\tau)$
+#! to the category for the basic operation <C>UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout</C>.
+#! $F: ( \alpha, \beta, \tau, P ) \mapsto u(\tau)$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout",
@@ -1088,33 +1282,54 @@ DeclareOperation( "AddUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakP
 ##
 ####################################
 
+#! @Description
+#! The argument is a morphism $\alpha$.
+#! The output is the source of <C>EpimorphismFromSomeProjectiveObjectForKernelObject</C> applied to $\alpha$.
+#! @Returns an object
+#! @Arguments alpha
 DeclareAttribute( "SomeProjectiveObjectForKernelObject",
                   IsCapCategoryMorphism );
 
 #! @Description
-#! The argument is an object $A$.
-#! The output is an epimorphism $\pi: P \rightarrow A$
-#! with $P$ a projective object that equals the output of $\mathrm{SomeProjectiveObject}(A)$.
-#! @Returns a morphism in $\mathrm{Hom}(P,A)$
-#! @Arguments A
+#! The argument is a morphism $\alpha$.
+#! The output is an epimorphism $\pi: P \rightarrow \mathrm{KernelObject}( \alpha )$
+#! with $P$ a projective object.
+#! @Returns a morphism in $\mathrm{Hom}(P,\mathrm{KernelObject}( \alpha ))$
+#! @Arguments alpha
 DeclareAttribute( "EpimorphismFromSomeProjectiveObjectForKernelObject",
                   IsCapCategoryMorphism );
 
 #! @Description
-#! The arguments are an object $A$
-#! and a projective object $P$ that equals the output of $\mathrm{SomeProjectiveObject}(A)$.
-#! The output is an epimorphism $\pi: P \rightarrow A$.
-#! @Returns a morphism in $\mathrm{Hom}(P,A)$
-#! @Arguments A, P
+#! The arguments are a morphism $\alpha$ and an object $P = \mathrm{SomeProjectiveObjectForKernelObject}( \alpha )$.
+#! The output is an epimorphism $\pi: P \rightarrow \mathrm{KernelObject}( \alpha )$.
+#! @Returns a morphism in $\mathrm{Hom}(P,\mathrm{KernelObject}( \alpha ))$
+#! @Arguments alpha
 DeclareOperation( "EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
+#! @Description
+#! The argument is a morphism $\alpha$.
+#! The output is the range of <C>MonomorphismToSomeInjectiveObjectForCokernelObject</C> applied to $\alpha$.
+#! @Returns an object
+#! @Arguments alpha
 DeclareAttribute( "SomeInjectiveObjectForCokernelObject",
                   IsCapCategoryMorphism );
 
+#! @Description
+#! The argument is a morphism $\alpha$.
+#! The output is a monomorphism $\iota: \mathrm{CokernelObject}( \alpha ) \rightarrow I$
+#! with $I$ an injective object.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{CokernelObject}( \alpha ), I)$
+#! @Arguments alpha
 DeclareAttribute( "MonomorphismToSomeInjectiveObjectForCokernelObject",
                   IsCapCategoryMorphism );
 
+#! @Description
+#! The arguments are a morphism $\alpha$
+#! and an object $I = \mathrm{SomeInjectiveObjectForCokernelObject}( \alpha )$.
+#! The output is a monomorphism $\iota: \mathrm{CokernelObject}( \alpha ) \rightarrow I$.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{CokernelObject}( \alpha ), I)$
+#! @Arguments alpha
 DeclareOperation( "MonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
@@ -1124,8 +1339,8 @@ DeclareOperation( "MonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSo
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>SomeProjectiveObject</C>.
-#! $F: A \mapsto P$.
+#! to the category for the basic operation <C>SomeProjectiveObjectForKernelObject</C>.
+#! $F: \alpha \mapsto P$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddSomeProjectiveObjectForKernelObject",
@@ -1140,7 +1355,13 @@ DeclareOperation( "AddSomeProjectiveObjectForKernelObject",
 DeclareOperation( "AddSomeProjectiveObjectForKernelObject",
                   [ IsCapCategory, IsList ] );
 
-
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>SomeInjectiveObjectForCokernelObject</C>.
+#! $F: \alpha \mapsto I$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddSomeInjectiveObjectForCokernelObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -1156,8 +1377,8 @@ DeclareOperation( "AddSomeInjectiveObjectForCokernelObject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>EpimorphismFromSomeProjectiveObject</C>.
-#! $F: A \mapsto \pi$.
+#! to the category for the basic operation <C>EpimorphismFromSomeProjectiveObjectForKernelObject</C>.
+#! $F: \alpha \mapsto \pi$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObject",
@@ -1172,7 +1393,13 @@ DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObject",
 DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObject",
                   [ IsCapCategory, IsList ] );
 
-
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>MonomorphismToSomeInjectiveObjectForCokernelObject</C>.
+#! $F: \alpha \mapsto \iota$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddMonomorphismToSomeInjectiveObjectForCokernelObject",
                   [ IsCapCategory, IsFunction ] );
 
@@ -1188,8 +1415,8 @@ DeclareOperation( "AddMonomorphismToSomeInjectiveObjectForCokernelObject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</C>.
-#! $F: (A,P) \mapsto \pi$.
+#! to the category for the basic operation <C>EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject</C>.
+#! $F: (\alpha, P) \mapsto \pi$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject",
@@ -1204,7 +1431,13 @@ DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGive
 DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject",
                   [ IsCapCategory, IsList ] );
 
-
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>MonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject</C>.
+#! $F: (\alpha, I) \mapsto \iota$.
+#! @Returns nothing
+#! @Arguments C, F
 DeclareOperation( "AddMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject",
                   [ IsCapCategory, IsFunction ] );
 

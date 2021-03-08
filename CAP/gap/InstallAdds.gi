@@ -1,12 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-#############################################################################
-
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# Implementations
+#
 BindGlobal( "CAP_INTERNAL_ADD_OBJECT_OR_FAIL",
   
   function( category, object_or_fail )
@@ -150,10 +146,14 @@ InstallGlobalFunction( CapInternalInstallAdd,
         local install_func, replaced_filter_list, install_method, popper, i, set_primitive, is_derivation, without_given_name, with_given_name,
               without_given_weight, with_given_weight, number_of_proposed_arguments, current_function_number,
               current_function_argument_number, filter, input_human_readable_identifier_getter, input_sanity_check_functions,
-              output_human_readable_identifier_getter, output_sanity_check_function;
+              output_human_readable_identifier_getter, output_sanity_check_function, cap_jit_compiled_function;
         
         if HasIsFinalized( category ) and IsFinalized( category ) then
             Error( "cannot add methods anymore, category is finalized" );
+        fi;
+        
+        if Length( method_list ) = 0 then
+            Error( "you must pass at least one function to the add method" );
         fi;
         
         ## If there already is a faster method, do nothing!
@@ -242,32 +242,19 @@ InstallGlobalFunction( CapInternalInstallAdd,
         od;
         
         # prepare input sanity check
-        input_human_readable_identifier_getter := function( args... )
-            local human_readable_identifier, i, j;
-            
-            if Length( args ) = 0 then
-                Error( "this function has to be called with at least one argument" );
-            fi;
-            
-            i := args[ 1 ];
-
-            human_readable_identifier := Concatenation( "the ", String(i), "-th argument of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
-            
-            if Length( args ) = 1 then
-                return human_readable_identifier;
-            elif Length( args ) = 2 then
-                j := args[ 2 ];
-                return Concatenation( "the ", String(j), "-th entry of ", human_readable_identifier );
-            else
-                Error( "this function has to be called with at most two arguments" );
-            fi;
-        end;
+        input_human_readable_identifier_getter := i -> Concatenation( "the ", String(i), "-th argument of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
         
         input_sanity_check_functions := [];
         for i in [ 1 .. Length( record.filter_list ) ] do
             filter := record.filter_list[ i ];
+
+            # in the special case of multiple filters, we currently only test for the first one
+            if not IsString( filter ) and IsList( filter ) then
+                filter := filter[1];
+            fi;
             
-            if not IsString( filter ) then
+            if IsFilter( filter ) then
+                # the only check would be that the input lies in the filter, which is already checked by the method selection
                 input_sanity_check_functions[i] := ReturnTrue;
             elif filter = "category" then
                 # the only check would be that the input lies in IsCapCategory, which is already checked by the method selection
@@ -306,27 +293,19 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 end;
             elif filter = "list_of_objects" then
                 input_sanity_check_functions[i] := function( arg, i )
-                    local j;
-                    for j in [ 1 .. Length( arg ) ] do
-                        CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg[ j ], category, function( ) return input_human_readable_identifier_getter( i, j ); end );
-                    od;
+                    CAP_INTERNAL_ASSERT_IS_LIST_OF_OBJECTS_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
             elif filter = "list_of_morphisms" then
                 input_sanity_check_functions[i] := function( arg, i )
-                    local j;
-                    for j in [ 1 .. Length( arg ) ] do
-                        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg[ j ], category, function( ) return input_human_readable_identifier_getter( i, j ); end );
-                    od;
+                    CAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
             elif filter = "list_of_twocells" then
                 input_sanity_check_functions[i] := function( arg, i )
-                    local j;
-                    for j in [ 1 .. Length( arg ) ] do
-                        CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ j ], category, function( ) return input_human_readable_identifier_getter( i, j ); end );
-                    od;
+                    CAP_INTERNAL_ASSERT_IS_LIST_OF_TWO_CELLS_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
             else
                 Display( Concatenation( "Warning: You should add an input sanity check for the following filter: ", String( filter ) ) );
+                input_sanity_check_functions[i] := ReturnTrue;
             fi;
         od;
         
@@ -335,17 +314,15 @@ InstallGlobalFunction( CapInternalInstallAdd,
             return Concatenation( "the result of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
         end;
         
-        if record.return_type = "object" then
+        if IsFilter( record.return_type ) then
+            output_sanity_check_function := function( result )
+                if not record.return_type( result ) then
+                    Error( Concatenation( output_human_readable_identifier_getter(), " does not lie in the required filter. You can access the result and the filter via the local variables 'result' and 'record.return_type' in a break loop." ) );
+                fi;
+            end;
+        elif record.return_type = "object" then
             output_sanity_check_function := function( result )
                 CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
-            end;
-        elif record.return_type = "morphism" then
-            output_sanity_check_function := function( result )
-                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
-            end;
-        elif record.return_type = "twocell" then
-            output_sanity_check_function := function( result )
-                CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
             end;
         elif record.return_type = "object_or_fail" then
             output_sanity_check_function := function( result )
@@ -353,83 +330,177 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
                 fi;
             end;
+        elif record.return_type = "morphism" then
+            output_sanity_check_function := function( result )
+                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
+            end;
         elif record.return_type = "morphism_or_fail" then
             output_sanity_check_function := function( result )
                 if result <> fail then
                     CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
                 fi;
             end;
+        elif record.return_type = "twocell" then
+            output_sanity_check_function := function( result )
+                CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
+            end;
+        elif record.return_type = "bool" then
+            output_sanity_check_function := function( result )
+                if not ( result = true or result = false ) then
+                    Error( Concatenation( output_human_readable_identifier_getter(), " is not a boolean (true/false). You can access the result via the local variable 'result' in a break loop." ) );
+                fi;
+            end;
+        elif record.return_type = "other_object" then
+            output_sanity_check_function := function( result )
+                CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( result, false, output_human_readable_identifier_getter );
+            end;
+        elif record.return_type = "other_morphism" then
+            output_sanity_check_function := function( result )
+                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, false, output_human_readable_identifier_getter );
+            end;
+        elif record.return_type = "list_of_morphisms_or_fail" then
+            output_sanity_check_function := function( result )
+                if result <> fail then
+                    CAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
+                fi;
+            end;
         else
+            Display( Concatenation( "Warning: You should add an output sanity check for the following return_type: ", String( record.return_type ) ) );
             output_sanity_check_function := ReturnTrue;
+        fi;
+
+        if IsPackageMarkedForLoading( "CompilerForCAP", ">= 2020.06.17" ) then
+            
+            cap_jit_compiled_function := ValueGlobal( "CapJitCompiledFunction" );
+            
+        else
+            
+            cap_jit_compiled_function := function( args... )
+                
+                Error( "package CompilerForCAP is not loaded, so please disable compilation" );
+                
+            end;
+            
         fi;
         
         install_func := function( func_to_install, filter_list )
-          local new_filter_list;
+          local new_filter_list, index;
+            
+            Add( category!.added_functions.( function_name ), [ func_to_install, filter_list ] );
             
             new_filter_list := CAP_INTERNAL_MERGE_FILTER_LISTS( replaced_filter_list, filter_list );
             
-            if category!.overhead then
-            
-            install_method( ValueGlobal( install_name ),
-                            new_filter_list,
-                            
-              function( arg )
-                local redirect_return, filter, human_readable_identifier_getter, pre_func_return, result, i, j;
+            if category!.enable_compilation = true or ( IsList( category!.enable_compilation ) and function_name in category!.enable_compilation ) then
                 
-                if (redirect_function <> false) and (not IsBound( category!.redirects.( function_name ) ) or category!.redirects.( function_name ) <> false) then
-                    redirect_return := CallFuncList( redirect_function, Concatenation( [ category ], arg ) );
-                    if redirect_return[ 1 ] = true then
-                        if category!.predicate_logic then
-                            INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, redirect_return[ 2 ], category );
-                        fi;
-                        return redirect_return[ 2 ];
+                index := Length( category!.added_functions.( function_name ) );
+                
+                if Size( new_filter_list ) <> Size( argument_list ) then
+                    
+                    InstallMethod( ValueGlobal( install_name ),
+                                new_filter_list,
+                        
+                        function( arg )
+                            
+                            if not IsBound( category!.compiled_functions.( function_name )[ index ] ) then
+                                
+                                category!.compiled_functions.( function_name )[ index ] := cap_jit_compiled_function( func_to_install, arg{ argument_list } );
+                                
+                            fi;
+                            
+                            return CallFuncList( category!.compiled_functions.( function_name )[ index ], arg{ argument_list } );
+                            
+                    end );
+                    
+                else
+                    
+                    if not ( IsProperty( ValueGlobal( install_name ) ) and IsIdenticalObj( func_to_install, ReturnTrue ) ) then
+                        
+                        InstallMethod( ValueGlobal( install_name ),
+                                    new_filter_list,
+                            function( arg )
+                                
+                                if not IsBound( category!.compiled_functions.( function_name )[ index ] ) then
+                                    
+                                    category!.compiled_functions.( function_name )[ index ] := cap_jit_compiled_function( func_to_install, arg );
+                                    
+                                fi;
+                                
+                                return CallFuncList( category!.compiled_functions.( function_name )[ index ], arg );
+                                
+                        end );
+                        
+                    else
+                        
+                        ## the call of InstallMethod triggers an error in GAP:
+                        ## use `InstallTrueMethod' for <opr>
+                        InstallTrueMethod( ValueGlobal( install_name ), new_filter_list[1] );
+                        
                     fi;
+                    
                 fi;
                 
-                if category!.input_sanity_check_level > 0 then
-                    for i in [ 1 .. Length( input_sanity_check_functions ) ] do
-                        input_sanity_check_functions[ i ]( arg[ i ], i );
-                    od;
+            elif category!.overhead then
+            
+                install_method( ValueGlobal( install_name ),
+                                new_filter_list,
+                                
+                  function( arg )
+                    local redirect_return, filter, human_readable_identifier_getter, pre_func_return, result, i, j;
                     
-                    pre_func_return := CallFuncList( pre_function, arg );
-                    if pre_func_return[ 1 ] = false then
-                        CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, pre_func_return[ 2 ] );
+                    if (redirect_function <> false) and (not IsBound( category!.redirects.( function_name ) ) or category!.redirects.( function_name ) <> false) then
+                        redirect_return := CallFuncList( redirect_function, Concatenation( [ category ], arg ) );
+                        if redirect_return[ 1 ] = true then
+                            if category!.predicate_logic then
+                                INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, redirect_return[ 2 ], category );
+                            fi;
+                            return redirect_return[ 2 ];
+                        fi;
                     fi;
                     
-                    if category!.input_sanity_check_level > 1 then
-                        pre_func_return := CallFuncList( pre_function_full, arg );
+                    if category!.input_sanity_check_level > 0 then
+                        for i in [ 1 .. Length( input_sanity_check_functions ) ] do
+                            input_sanity_check_functions[ i ]( arg[ i ], i );
+                        od;
+                        
+                        pre_func_return := CallFuncList( pre_function, arg );
                         if pre_func_return[ 1 ] = false then
                             CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, pre_func_return[ 2 ] );
                         fi;
+                        
+                        if category!.input_sanity_check_level > 1 then
+                            pre_func_return := CallFuncList( pre_function_full, arg );
+                            if pre_func_return[ 1 ] = false then
+                                CAP_INTERNAL_DISPLAY_ERROR_FOR_FUNCTION_OF_CATEGORY( record.function_name, category, pre_func_return[ 2 ] );
+                            fi;
+                        fi;
+                        
                     fi;
                     
-                fi;
-                
-                result := CallFuncList( func_to_install, arg{ argument_list } );
-                
-                if category!.predicate_logic then
-                    INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, result, category );
-                fi;
-                
-                if (not is_derivation) then
-                    if category!.add_primitive_output then
-                        add_function( category, result );
-                    elif category!.output_sanity_check_level > 0 then
-                        output_sanity_check_function( result );
+                    result := CallFuncList( func_to_install, arg{ argument_list } );
+                    
+                    if category!.predicate_logic then
+                        INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, result, category );
                     fi;
-                fi;
-                
-                if post_function <> false then
                     
-                    Add( arg, result );
+                    if (not is_derivation) then
+                        if category!.add_primitive_output then
+                            add_function( category, result );
+                        elif category!.output_sanity_check_level > 0 then
+                            output_sanity_check_function( result );
+                        fi;
+                    fi;
                     
-                    CallFuncList( post_function, Concatenation( [ category ], arg ) );
+                    if post_function <> false then
+                        
+                        Add( arg, result );
+                        
+                        CallFuncList( post_function, Concatenation( [ category ], arg ) );
+                        
+                    fi;
                     
-                fi;
-                
-                return result;
-                
-            end );
+                    return result;
+                    
+                end );
             
             else #category!.overhead = false
                 
@@ -467,6 +538,18 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
         end;
         
+        if not IsBound( category!.added_functions.( function_name ) ) then
+            
+            category!.added_functions.( function_name ) := [ ];
+            
+        fi;
+        
+        if not IsBound( category!.compiled_functions.( function_name ) ) then
+            
+            category!.compiled_functions.( function_name ) := [ ];
+            
+        fi;
+        
         for i in method_list do
             
             if record.installation_name = "IsEqualForObjects" and IsIdenticalObj( i[ 1 ], IsIdenticalObj ) and category!.default_cache_type <> "crisp" and not ValueOption( "SuppressCacheWarning" ) = true then
@@ -495,6 +578,55 @@ InstallGlobalFunction( CapInternalInstallAdd,
     
 end );
 
+BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without_given_name, with_given_name, object_name, object_arguments )
+    
+    AddDerivationToCAP( ValueGlobal( with_given_name ),
+                        [ [ ValueGlobal( without_given_name ), 1 ] ],
+      function( arg )
+        
+        return CallFuncList( ValueGlobal( without_given_name ), arg{[ 1 .. Length( arg ) - 1 ]} );
+        
+    end : Description := Concatenation( with_given_name, " by calling ", without_given_name, " with the last argument dropped" ) );
+    
+    AddDerivationToCAP( ValueGlobal( without_given_name ),
+                        [ [ ValueGlobal( with_given_name ), 1 ],
+                          [ ValueGlobal( object_name ), 1 ] ],
+      function( arg )
+        
+        return CallFuncList( ValueGlobal( with_given_name ),
+                                    Concatenation( arg, [ CallFuncList( ValueGlobal( object_name ), arg{object_arguments} ) ] ) );
+        
+    end : Description := Concatenation( without_given_name, " by calling ", with_given_name, " with ", object_name, " as last argument" ) );
+    
+end );
+
+BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATIONS", function( record )
+  local recnames, current_recname, current_rec, without_given_name, with_given_name, object_name, object_arguments;
+    
+    recnames := RecNames( record );
+    
+    for current_recname in recnames do
+        
+        current_rec := record.(current_recname);
+
+        if current_rec.is_with_given then
+            
+            without_given_name := current_rec.with_given_without_given_name_pair[1];
+            with_given_name := current_recname;
+            object_name := current_rec.universal_object;
+            if current_rec.number_of_diagram_arguments > 0 then
+                object_arguments := [ 1 .. current_rec.number_of_diagram_arguments ];
+            else
+                object_arguments := [ 1 ];
+            fi;
+            
+            CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR( without_given_name, with_given_name, object_name, object_arguments );
+            
+        fi;
+        
+    od;
+end );
+
 InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
     
   function( record )
@@ -505,6 +637,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
     recnames := RecNames( record );
     
     AddOperationsToDerivationGraph( CAP_INTERNAL_DERIVATION_GRAPH, recnames );
+    
+    CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATIONS( record );
     
     for current_recname in recnames do
         

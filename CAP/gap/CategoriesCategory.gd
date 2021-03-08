@@ -1,11 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# Declarations
+#
 #! @Chapter Category of Categories
 #!  Categories itself with functors as morphisms form a category Cat.
 #!  So the data structure of <C>CapCategory</C>s is designed to be objects in a
@@ -15,8 +12,6 @@
 #!  Those are implemented as morphisms in this category, so functors can be handled like
 #!  morphisms in a category. Also convenience functions to install functors as methods are
 #!  implemented (in order to avoid <C>ApplyFunctor</C>).
-##
-#############################################################################
 
 ####################################
 ##
@@ -346,7 +341,7 @@ DeclareAttribute( "FunctorCanonicalizeZeroObjects",
 #!  to <C>FunctorCanonicalizeZeroObjects</C>(<A>cat</A>).
 #! @Arguments cat
 #! @Returns a natural transformation
-DeclareAttribute( "NaturalIsomorophismFromIdentityToCanonicalizeZeroObjects",
+DeclareAttribute( "NaturalIsomorphismFromIdentityToCanonicalizeZeroObjects",
                   IsCapCategory );
 
 #! @Description
@@ -366,7 +361,7 @@ DeclareAttribute( "FunctorCanonicalizeZeroMorphisms",
 #!  to <C>FunctorCanonicalizeZeroMorphisms</C>(<A>cat</A>).
 #! @Arguments cat
 #! @Returns a natural transformation
-DeclareAttribute( "NaturalIsomorophismFromIdentityToCanonicalizeZeroMorphisms",
+DeclareAttribute( "NaturalIsomorphismFromIdentityToCanonicalizeZeroMorphisms",
                   IsCapCategory );
 
 

@@ -1,32 +1,34 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
 #
-LoadPackage( "AutoDoc" );
+# This file is a script which compiles the package manual.
+#
+if fail = LoadPackage( "AutoDoc", "2019.05.20" ) then
+    
+    Error( "AutoDoc version 2019.05.20 or newer is required." );
+    
+fi;
 
-AutoDoc( "FreydCategoriesForCAP" :
-         scaffold :=
-          rec(
-            gapdoc_latex_options := rec(
-            LateExtraPreamble := "\\usepackage{tikz}\n\\usetikzlibrary{arrows}" )
-          ),
-         autodoc :=
-         rec( files := [ "doc/Intros.autodoc" ],
-         scan_dirs := [ "gap", "gap/CategoryOfGradedRowsAndColumns", "examples", "doc" ] ),
-         maketest := rec( commands :=
-                            [ "LoadPackage( \"CAP\" );",
-                              "LoadPackage( \"IO_ForHomalg\" );",
-                              "LoadPackage( \"FreydCategoriesForCAP\" );",
-                              "LoadPackage( \"RingsForHomalg\" );",
-                              "LoadPackage( \"GaussForHomalg\" );",
-                              "LoadPackage( \"GeneralizedMorphismsForCAP\" );",
-                              "LoadPackage( \"Bialgebroids\" );",
-                              "HOMALG_IO.show_banners := false;",
-                              "HOMALG_IO.suppress_PID := true;",
-                              "HOMALG_IO.use_common_stream := true;",
-                             ]
-                           )
-);
-
+AutoDoc( rec(
+    autodoc := rec(
+        files := [ "doc/Doc.autodoc" ],
+        scan_dirs := [ "doc", "gap", "examples", "examples/doc", "gap/CategoryOfGradedRowsAndColumns", "gap/GradedModulePresentationsByFreyd" ],
+    ),
+    extract_examples := rec(
+        units := "Single",
+    ),
+    gapdoc := rec(
+        LaTeXOptions := rec(
+            LateExtraPreamble := """
+                \usepackage{tikz}
+                \usetikzlibrary{arrows}
+                \usetikzlibrary{calc}
+            """,
+        ),
+    ),
+    scaffold := rec(
+        entities := [ "homalg", "CAP" ],
+    ),
+) );
 
 QUIT;
-

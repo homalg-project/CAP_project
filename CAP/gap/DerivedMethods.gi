@@ -1,3 +1,9 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# Implementations
+#
+
 ###########################
 ##
 ## WithGiven pairs
@@ -101,6 +107,96 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromDirectSum,
   
 end : CategoryFilter := IsAdditiveCategory,
       Description := "UniversalMorphismFromDirectSum using projections of the direct sum" );
+
+##
+AddWithGivenDerivationPairToCAP( ProjectionInFactorOfDirectSum,
+  
+  function( list, projection_number )
+    local morphisms;
+    
+    morphisms := List( [ 1 .. Length( list ) ], function( i )
+        
+        if i = projection_number then
+            
+            return IdentityMorphism( list[projection_number] );
+            
+        else
+            
+            return ZeroMorphism( list[i], list[projection_number] );
+            
+        fi;
+        
+    end );
+    
+    return UniversalMorphismFromDirectSum( list, morphisms );
+    
+  end,
+  
+  function( list, projection_number, direct_sum_object )
+    local morphisms;
+    
+    morphisms := List( [ 1 .. Length( list ) ], function( i )
+        
+        if i = projection_number then
+            
+            return IdentityMorphism( list[projection_number] );
+            
+        else
+            
+            return ZeroMorphism( list[i], list[projection_number] );
+            
+        fi;
+        
+    end );
+    
+    return UniversalMorphismFromDirectSumWithGivenDirectSum( list, morphisms, direct_sum_object );
+    
+end : Description := "ProjectionInFactorOfDirectSum using UniversalMorphismFromDirectSum" );
+
+##
+AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfDirectSum,
+  
+  function( list, injection_number )
+    local morphisms;
+    
+    morphisms := List( [ 1 .. Length( list ) ], function( i )
+        
+        if i = injection_number then
+            
+            return IdentityMorphism( list[injection_number] );
+            
+        else
+            
+            return ZeroMorphism( list[injection_number], list[i] );
+            
+        fi;
+        
+    end );
+    
+    return UniversalMorphismIntoDirectSum( list, morphisms );
+    
+  end,
+  
+  function( list, injection_number, direct_sum_object )
+    local morphisms;
+    
+    morphisms := List( [ 1 .. Length( list ) ], function( i )
+        
+        if i = injection_number then
+            
+            return IdentityMorphism( list[injection_number] );
+            
+        else
+            
+            return ZeroMorphism( list[injection_number], list[i] );
+            
+        fi;
+        
+    end );
+    
+    return UniversalMorphismIntoDirectSumWithGivenDirectSum( list, morphisms, direct_sum_object );
+    
+end : Description := "InjectionOfCofactorOfDirectSum using UniversalMorphismIntoDirectSum" );
 
 ##
 AddWithGivenDerivationPairToCAP( UniversalMorphismIntoTerminalObject,
@@ -1597,13 +1693,9 @@ AddDerivationToCAP( MorphismBetweenDirectSums,
     
     diagram_direct_sum_range := List( morphism_matrix[1], entry -> Range( entry ) );
     
-    test_diagram_coproduct := [ ];
-    
-    for test_diagram_product in morphism_matrix do
-      
-      Add( test_diagram_coproduct, UniversalMorphismIntoDirectSumWithGivenDirectSum( diagram_direct_sum_range, test_diagram_product, T ) );
-      
-    od;
+    test_diagram_coproduct := List( morphism_matrix,
+        test_diagram_product -> UniversalMorphismIntoDirectSumWithGivenDirectSum( diagram_direct_sum_range, test_diagram_product, T )
+    );
     
     return UniversalMorphismFromDirectSumWithGivenDirectSum( diagram_direct_sum_source, test_diagram_coproduct, S );
     
@@ -2641,16 +2733,6 @@ AddDerivationToCAP( VerticalPreCompose,
     
 end : Description := "VerticalPreCompose using VerticalPostCompose" );
 
-##
-AddDerivationToCAP( IsEqualForCacheForObjects,
-  
-  function( object_1, object_2 )
-    local ret_value;
-    
-    return IsEqualForObjects( object_1, object_2 ) = true;
-    
-end : Description := "IsEqualForCacheForObjects using IsEqualForObjects" );
-
 ###########################
 ##
 ## Methods involving homomorphism structures
@@ -3362,22 +3444,6 @@ AddFinalDerivation( IsEqualForMorphisms,
                     
   IsCongruentForMorphisms : Description := "Use IsCongruentForMorphisms for IsEqualForMorphisms" );
 
-AddFinalDerivation( IsEqualForCacheForMorphisms,
-                    [ [ IsEqualForMorphismsOnMor, 1 ] ],
-                    [ ],
-                    
-  function( mor1, mor2 )
-    
-    return IsEqualForMorphismsOnMor( mor1, mor2 ) = true;
-    
-end : Description := "Use IsEqualForMorphismsOnMor for IsEqualForCacheForMorphisms" );
-
-AddFinalDerivation( IsEqualForCacheForMorphisms,
-                    [ [ IsCongruentForMorphisms, 1 ] ],
-                    [ IsEqualForMorphisms ],
-                    
-  IsIdenticalObj : Description := "Use IsIdenticalObj for IsEqualForCacheForMorphisms" );
-
 ## Final methods for BasisOfExternalHom & CoefficientsOfMorphism
 
 ##
@@ -3470,54 +3536,3 @@ AddFinalDerivation( BasisOfExternalHom,
   end,
   Description := "Adding BasisOfExternalHom using homomorphism structure"
 );
-
-BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without_given_name, with_given_name, object_name, object_arguments )
-    
-    AddDerivationToCAP( ValueGlobal( with_given_name ),
-                        [ [ ValueGlobal( without_given_name ), 1 ] ],
-      function( arg )
-        
-        return CallFuncList( ValueGlobal( without_given_name ), arg{[ 1 .. Length( arg ) - 1 ]} );
-        
-    end : Description := Concatenation( with_given_name, " by calling ", without_given_name, " with the last argument dropped" ) );
-    
-    AddDerivationToCAP( ValueGlobal( without_given_name ),
-                        [ [ ValueGlobal( with_given_name ), 1 ],
-                          [ ValueGlobal( object_name ), 1 ] ],
-      function( arg )
-        
-        return CallFuncList( ValueGlobal( with_given_name ),
-                                    Concatenation( arg, [ CallFuncList( ValueGlobal( object_name ), arg{object_arguments} ) ] ) );
-        
-    end : Description := Concatenation( without_given_name, " by calling ", with_given_name, " with ", object_name, " as last argument" ) );
-    
-end );
-
-BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATIONS", function()
-  local recnames, current_recname, current_rec, without_given_name, with_given_name, object_name, object_arguments;
-    
-    recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
-    
-    for current_recname in recnames do
-        
-        current_rec := CAP_INTERNAL_METHOD_NAME_RECORD.(current_recname);
-
-        if current_rec.is_with_given then
-            
-            without_given_name := current_rec.with_given_without_given_name_pair[1];
-            with_given_name := current_recname;
-            object_name := current_rec.universal_object;
-            if current_rec.number_of_diagram_arguments > 0 then
-                object_arguments := [ 1 .. current_rec.number_of_diagram_arguments ];
-            else
-                object_arguments := [ 1 ];
-            fi;
-            
-            CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR( without_given_name, with_given_name, object_name, object_arguments );
-            
-        fi;
-        
-    od;
-end );
-
-CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATIONS();

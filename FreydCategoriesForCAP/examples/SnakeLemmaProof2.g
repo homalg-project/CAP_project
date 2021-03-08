@@ -4,7 +4,7 @@
 
 LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "GeneralizedMorphismsForCAP" );;
-LoadPackage( "Bialgebroids" );;
+LoadPackage( "Algebroids" );;
 
 #! @Example
 DeactivateDefaultCaching();

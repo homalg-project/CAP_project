@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # GroupRepresentationsForCAP: Skeletal category of group representations for CAP
 #
 # This file contains package meta data. For additional information on
@@ -11,13 +11,14 @@ SetPackageInfo( rec(
 PackageName := "GroupRepresentationsForCAP",
 Subtitle := "Skeletal category of group representations for CAP",
 Version := Maximum( [
-  "2017.01.11", ## Sepp's version
+  "2017.01-11", ## Sepp's version
   ## this line prevents merge conflicts
-  "2019.09.02", ## Mohamed's version
+  "2019.09-02", ## Mohamed's version
+  ## this line prevents merge conflicts
+  "2020.10-01", ## Fabian's version
 ] ),
 
-Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
 
@@ -40,18 +41,20 @@ Persons := [
   ),
 ],
 
-#SourceRepository := rec( Type := "TODO", URL := "URL" ),
-#IssueTrackerURL := "TODO",
-#SupportEmail := "TODO",
 
-PackageWWWHome := "http://homalg-project.github.io/CAP_project/",
+# BEGIN URLS
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/homalg-project/CAP_project",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := "https://homalg-project.github.io/pkg/GroupRepresentationsForCAP",
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/GroupRepresentationsForCAP/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/GroupRepresentationsForCAP/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-", ~.Version, "/GroupRepresentationsForCAP-", ~.Version ),
+# END URLS
 
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-README_URL     := Concatenation( ~.PackageWWWHome, "README.md" ),
-ArchiveURL     := Concatenation( ~.PackageWWWHome,
-                                 "/", ~.PackageName, "-", ~.Version ),
-
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages
@@ -77,6 +80,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
+                           [ "ToolsForHomalg", ">= 2020.09.01" ],
                            [ "CAP", ">= 2015.08.17" ],
                            [ "LinearAlgebraForCAP", ">=2015.12.03" ],
                            [ "RingsForHomalg", ">=2016.08.12" ],
@@ -92,5 +96,3 @@ AvailabilityTest := function()
 #Keywords := [ "TODO" ],
 
 ));
-
-

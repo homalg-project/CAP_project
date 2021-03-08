@@ -44,17 +44,15 @@ InstallGlobalFunction( AsLeftOrRightPresentation,
     
     if lazy then
         module.LazyUnderlyingMatrix := matrix;
-        ObjectifyObjectForCAPWithAttributes( module, presentation_category,
+        return ObjectifyObjectForCAPWithAttributes( module, presentation_category,
                 UnderlyingHomalgRing, ring
                 );
     else
-        ObjectifyObjectForCAPWithAttributes( module, presentation_category,
+        return ObjectifyObjectForCAPWithAttributes( module, presentation_category,
                 UnderlyingMatrix, matrix,
                 UnderlyingHomalgRing, ring
                 );
     fi;
-    
-    return module;
     
 end );
 
@@ -75,6 +73,7 @@ InstallMethod( FreeLeftPresentation,
                [ IsInt, IsHomalgRing ],
                
   function( rank, homalg_ring )
+    local object;
     
     if rank < 0 then
       
@@ -82,7 +81,11 @@ InstallMethod( FreeLeftPresentation,
       
     fi;
     
-    return AsLeftPresentation( HomalgZeroMatrix( 0, rank, homalg_ring ) );
+    object := AsLeftPresentation( HomalgZeroMatrix( 0, rank, homalg_ring ) );
+    
+    SetIsProjective( object, true );
+    
+    return object;
     
 end );
 
@@ -91,6 +94,7 @@ InstallMethod( FreeRightPresentation,
                [ IsInt, IsHomalgRing ],
                
   function( rank, homalg_ring )
+    local object;
     
     if rank < 0 then
       
@@ -98,7 +102,11 @@ InstallMethod( FreeRightPresentation,
       
     fi;
     
-    return AsRightPresentation( HomalgZeroMatrix( rank, 0, homalg_ring ) );
+    object := AsRightPresentation( HomalgZeroMatrix( rank, 0, homalg_ring ) );
+    
+    SetIsProjective( object, true );
+    
+    return object;
     
 end );
 

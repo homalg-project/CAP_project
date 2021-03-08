@@ -1,11 +1,8 @@
-#############################################################################
-##
-##                                GroupRepresentationsForCAP package
-##
-##  Copyright 2016, Sebastian Posur, University of Siegen
-##
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# GroupRepresentationsForCAP: Skeletal category of group representations for CAP
+#
+# Implementations
+#
 
 ####################################
 ##
@@ -48,13 +45,11 @@ InstallMethod( SemisimpleCategoryMorphism,
     
     field := UnderlyingFieldForHomalg( source );
     
-    semisimple_category_morphism := rec( );
-    
-    ObjectifyWithAttributes( semisimple_category_morphism, TheTypeOfSemisimpleCategoryMorphisms,
-                             Source, source,
-                             Range, range,
-                             SemisimpleCategoryMorphismList, morphism_list,
-                             UnderlyingFieldForHomalg, field
+    semisimple_category_morphism := ObjectifyWithAttributes( rec( ), TheTypeOfSemisimpleCategoryMorphisms,
+                                                             Source, source,
+                                                             Range, range,
+                                                             SemisimpleCategoryMorphismList, morphism_list,
+                                                             UnderlyingFieldForHomalg, field
     );
     
     SetFilterObj( semisimple_category_morphism, GivenMorphismFilterForSemisimpleCategory( category ) );
@@ -320,7 +315,7 @@ InstallMethod( Display,
         
         for elem in morphism_list do
             
-            Print( Concatenation( "Component: (x_", String( elem[2] ), ")\n" ) );
+            Print( Concatenation( "Component: (", String( elem[2] ), ")\n" ) );
             
             Print( "\n" );
             
@@ -334,3 +329,59 @@ InstallMethod( Display,
     
 end );
 
+##
+InstallMethod( LaTeXStringOp,
+        "for a morphism in a semisimple category",
+        [ IsSemisimpleCategoryMorphism ],
+        
+  function ( morphism )
+    local morphism_list, source_object_list, range_object_list, source_object_string, range_object_string, diag_entries, matrix, string, elem;
+    
+    morphism_list := SemisimpleCategoryMorphismList( morphism );
+    
+    morphism_list := Filtered( morphism_list, pair -> not( IsZeroForObjects( Source( pair[1] ) ) or IsZeroForObjects( Range( pair[1] ) ) ) );
+    
+    if IsEmpty( morphism_list ) then
+        
+        Display( "0" );
+        
+    else
+        
+        source_object_list := List( morphism_list, m -> [ NrRows( UnderlyingMatrix( m[1] ) ), m[2] ] );
+        range_object_list := List( morphism_list, m -> [ NrCols( UnderlyingMatrix( m[1] ) ), m[2] ] );
+        
+        source_object_string := LaTeXStringOfSemisimpleCategoryObjectList( source_object_list );
+        range_object_string := LaTeXStringOfSemisimpleCategoryObjectList( range_object_list );
+        
+        diag_entries := [ ];
+        
+        for elem in morphism_list do
+            
+            matrix := UnderlyingMatrix( elem[1] );
+            
+            if NrRows( matrix ) = 1 and NrCols( matrix ) = 1 then
+                
+                Add( diag_entries, LaTeXStringOp( matrix[1, 1] ) );
+                
+            else
+                
+                Add( diag_entries, LaTeXStringOp( matrix ) );
+                
+            fi;
+            
+        od;
+        
+        string := "";
+        Append( string, source_object_string );
+        Append( string, " \\xrightarrow{\\operatorname{diag}(" );
+        Append( string, JoinStringsWithSeparator( diag_entries, "," ) );
+        Append( string, ")} " );
+        Append( string, range_object_string );
+        
+        return string;
+        
+    fi;
+    
+end );
+
+MakeShowable( [ "text/latex", "application/x-latex" ], IsSemisimpleCategoryMorphism );

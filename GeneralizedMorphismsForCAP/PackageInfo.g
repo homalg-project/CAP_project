@@ -4,16 +4,17 @@ PackageName := "GeneralizedMorphismsForCAP",
 Subtitle := "Implementations of generalized morphisms for the CAP project",
 
 Version := Maximum( [
-  "2017.12.30", ## Sebas' version
+  "2017.12-30", ## Sebas' version
 ## this line prevents merge conflicts
-  "2020.04.16", ## Sepp's version
+  "2020.04-16", ## Sepp's version
 ## this line prevents merge conflicts
-  "2019.01.16", ## Mohamed's version
+  "2020.04-29", ## Mohamed's version
+## this line prevents merge conflicts
+  "2020.10-01", ## Fabian's version
 ## this line prevents merge conflicts
    ] ),
 
-Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
 
@@ -52,11 +53,17 @@ Persons := [
   ),
 ],
 
-PackageWWWHome := "http://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/",
-
-ArchiveURL     := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-", ~.Version, "/GeneralizedMorphismsForCAP-", ~.Version ),
-README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
+# BEGIN URLS
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/homalg-project/CAP_project",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := "https://homalg-project.github.io/pkg/GeneralizedMorphismsForCAP",
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-", ~.Version, "/GeneralizedMorphismsForCAP-", ~.Version ),
+# END URLS
 
 ArchiveFormats := ".tar.gz .zip",
 
@@ -99,5 +106,3 @@ AvailabilityTest := function()
 #Keywords := [ "TODO" ],
 
 ));
-
-

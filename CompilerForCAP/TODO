@@ -1,0 +1,16 @@
+Speed:
+
+* reduce number of calls to `StructuralCopy`
+* get value of all expression from jit args only once
+* logic templates per category?
+* drop unused variables completely (instead of marking them with _UNUSED_)
+
+Features:
+
+* list expressions for logic templates
+* do not inline variables but only a reference to them for the logic to use
+* support for KeyDependentOperation
+* support compilation of operations
+* support assigning a variable multiple times, at least in different if branches
+* handle WithGiven derivations explicitely (Note: The WithGiven derivations use CallFuncList with the second argument
+  being of type EXPR_ELMS_LIST. We do not want to handle this in the resolving phase due to performance concerns.)

@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "ToricSheaves",
 Subtitle := "Toric sheaves as Serre quotients",
-Version := "2016.08.12",
-Date := "12/08/2016", # dd/mm/yyyy format
+Version := "2020.10-01",
+Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -28,13 +28,19 @@ Persons := [
   ),
 ],
 
-PackageWWWHome := "http://homalg-project.github.io/CAP_project/",
+# BEGIN URLS
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/homalg-project/CAP_project",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := "https://homalg-project.github.io/pkg/ToricSheaves",
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/ToricSheaves/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/ToricSheaves/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ToricSheaves-", ~.Version, "/ToricSheaves-", ~.Version ),
+# END URLS
 
-ArchiveURL     := Concatenation( ~.PackageWWWHome, "ToricSheaves-", ~.Version ),
-README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages
@@ -62,8 +68,8 @@ Dependencies := rec(
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "GradedModulePresentationsForCAP", ">=0" ],
                            [ "GeneralizedMorphismsForCAP", ">=0" ],
-                           [ "PolymakeInterface", ">=0" ],
-                           [ "4ti2Interface", ">=0" ] ],
+                           [ "4ti2Interface", ">=0" ],
+                           [ "NConvex", "2019.03.25" ] ],
   SuggestedOtherPackages := [ [ "ToricVarieties", ">=0" ] ],
   ExternalConditions := [ ],
 ),
@@ -77,5 +83,3 @@ TestFile := "tst/testall.g",
 #Keywords := [ "TODO" ],
 
 ));
-
-

@@ -1,12 +1,9 @@
-#############################################################################
-##
-##     FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
-##
-##  Copyright 2019, Sebastian Posur, University of Siegen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
+#
+# Declarations
+#
 #! @Chapter Linear closure of a category
-#!
-#############################################################################
 
 ####################################
 ##
@@ -24,6 +21,10 @@ DeclareCategory( "IsLinearClosureMorphism",
 DeclareCategory( "IsLinearClosure",
                  IsCapCategory );
 
+DeclareGlobalFunction( "LINEAR_CLOSURE_CONSTRUCTOR" );
+
+DeclareGlobalFunction( "LINEAR_CLOSURE_MORPHISM_SIMPLIFY" );
+
 DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE" );
 
 ####################################
@@ -32,8 +33,14 @@ DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE" );
 ##
 ####################################
 
+DeclareOperation( "TwistedLinearClosure",
+                  [ IsHomalgRing, IsCapCategory, IsFunction, IsFunction ] );
+
+DeclareOperation( "TwistedLinearClosure",
+                  [ IsHomalgRing, IsCapCategory, IsFunction ] );
+
 DeclareOperation( "LinearClosure",
-                  [ IsHomalgRing, IsGroupAsCategory ] );
+                  [ IsHomalgRing, IsCapCategory ] );
 
 DeclareOperation( "LinearClosure",
                   [ IsHomalgRing, IsCapCategory, IsFunction ] );

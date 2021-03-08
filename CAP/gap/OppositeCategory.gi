@@ -1,13 +1,9 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# Implementations
+#
 #! @Chapter Opposite category
-##
-#############################################################################
 
 ###################################
 ##
@@ -148,10 +144,8 @@ InstallMethod( Opposite,
   function( object )
     local opposite_object;
     
-    opposite_object := rec( );
-    
-    ObjectifyWithAttributes( opposite_object, TheTypeOfCapCategoryOppositeObjects,
-                             Opposite, object );
+    opposite_object := ObjectifyWithAttributes( rec( ), TheTypeOfCapCategoryOppositeObjects,
+                                                Opposite, object );
     
     Add( Opposite( CapCategory( object ) ), opposite_object );
     
@@ -172,10 +166,8 @@ InstallMethod( Opposite,
   function( morphism )
     local opposite_morphism;
     
-    opposite_morphism := rec( );
-    
-    ObjectifyWithAttributes( opposite_morphism, TheTypeOfCapCategoryOppositeMorphisms,
-                             Opposite, morphism );
+    opposite_morphism := ObjectifyWithAttributes( rec( ), TheTypeOfCapCategoryOppositeMorphisms,
+                                                  Opposite, morphism );
     
     Add( Opposite( CapCategory( morphism ) ), opposite_morphism );
     
@@ -467,3 +459,26 @@ InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_OBJECT,
     
 end );
 
+##
+InstallMethod( Display,
+        [ IsCapCategoryOppositeObjectRep ],
+        
+  function( object )
+
+    Display( Opposite( object ) );
+
+    Print( "\nAn object in ", Name( CapCategory( object ) ), " given by the above data\n" );
+    
+end );
+
+##
+InstallMethod( Display,
+        [ IsCapCategoryOppositeMorphismRep ],
+        
+  function( morphism )
+
+    Display( Opposite( morphism ) );
+
+    Print( "\nA morphism in ", Name( CapCategory( morphism ) ), " given by the above data\n" );
+    
+end );

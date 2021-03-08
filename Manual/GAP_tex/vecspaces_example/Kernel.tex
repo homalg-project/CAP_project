@@ -1,0 +1,31 @@
+\begin{small}
+\begin{Verbatim}[frame=single]
+##
+AddKernelEmbedding( SQVec,
+
+  function( alpha )
+    local kernel_emb, kernel_obj;
+    
+    kernel_emb := SyzygiesOfRows( UnderlyingMatrix( alpha ) );
+    
+    kernel_obj := SQVecObj( NrRows( kernel_emb ) );
+    
+    return SQVecMor( kernel_obj, kernel_emb, Source( alpha ) );
+    
+end );
+
+##
+AddKernelLift( SQVec,
+
+  function( alpha, tau )
+    local kernel_matrix;
+    
+    kernel_matrix := SyzygiesOfRows( UnderlyingMatrix( alpha ) );
+
+    return SQVecMor( Source( tau ),
+                     RightDivide( UnderlyingMatrix( tau ), kernel_matrix ),
+                     SQVecObj( NrRows( kernel_matrix ) ) );
+    
+end );
+\end{Verbatim}
+\end{small}

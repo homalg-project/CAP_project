@@ -1,0 +1,6 @@
+codecov:
+  disable_default_path_fixes: true
+fixes:
+  - "/home/gap/.gap/pkg/CAP_project/::"
+ignore:
+  - "home/"

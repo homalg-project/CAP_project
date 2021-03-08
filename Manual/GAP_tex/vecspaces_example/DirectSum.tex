@@ -1,0 +1,111 @@
+\begin{small}
+\begin{Verbatim}[frame=single]
+##
+AddDirectSum( SQVec,
+
+  function( object_product_list )
+    local dim;
+    
+    dim := Sum( List( object_product_list, c -> Dimension( c ) ) );
+    
+    return SQVecObj( dim );
+  
+end );
+
+##
+AddProjectionInFactorOfDirectSumWithGivenDirectSum( SQVec,
+  function( object_list, projection_number, direct_sum_object )
+    local rank_pre, rank_post, rank_factor, number_of_objects,
+    projection_in_factor;
+    
+    number_of_objects := Length( object_list );
+    
+    rank_pre := 
+      Sum( object_list{ [ 1 .. projection_number - 1 ] },
+           c -> Dimension( c ) );
+    
+    rank_post := 
+      Sum( object_list{ [ projection_number + 1 .. number_of_objects ] },
+           c -> Dimension( c ) );
+    
+    rank_factor := Dimension( object_list[ projection_number ] );
+    
+    projection_in_factor := 
+      UnionOfRows( HomalgZeroMatrix( rank_pre, rank_factor, QQ ),
+                   HomalgIdentityMatrix( rank_factor, QQ ),
+                   HomalgZeroMatrix( rank_post, rank_factor, QQ )
+      );
+    
+    return
+      SQVecMor( direct_sum_object,
+                projection_in_factor,
+                object_list[ projection_number ] );
+    
+end );
+
+##
+AddUniversalMorphismIntoDirectSumWithGivenDirectSum( SQVec,
+  function( diagram, sink, direct_sum )
+    local underlying_matrix_of_universal_morphism;
+    
+    underlying_matrix_of_universal_morphism :=
+      UnionOfColumns(
+        List( sink, UnderlyingMatrix )
+    );
+    
+    return
+      SQVecMor( Source( sink[1] ), 
+                underlying_matrix_of_universal_morphism, 
+                direct_sum );
+  
+end );
+
+##
+AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( SQVec,
+  function( object_list, injection_number, coproduct )
+    local rank_pre, rank_post, rank_cofactor, number_of_objects,
+          injection_of_cofactor;
+    
+    number_of_objects := Length( object_list );
+    
+    rank_pre :=
+      Sum( object_list{ [ 1 .. injection_number - 1 ] },
+           c -> Dimension( c ) );
+    
+    rank_post :=
+      Sum( object_list{ [ injection_number + 1 .. number_of_objects ] },
+           c -> Dimension( c ) );
+    
+    rank_cofactor := Dimension( object_list[ injection_number ] );
+    
+    injection_of_cofactor := 
+      UnionOfColumns( HomalgZeroMatrix( rank_cofactor, rank_pre ,QQ ),
+                      HomalgIdentityMatrix( rank_cofactor, QQ ),
+                      HomalgZeroMatrix( rank_cofactor, rank_post, QQ )
+      );
+    
+    return
+      SQVecMor( object_list[ injection_number ],
+                injection_of_cofactor,
+                coproduct );
+    
+end );
+
+##
+AddUniversalMorphismFromDirectSumWithGivenDirectSum( SQVec,
+  function( diagram, sink, coproduct )
+    local underlying_matrix_of_universal_morphism;
+    
+    underlying_matrix_of_universal_morphism :=
+      UnionOfRows(
+        List( sink, UnderlyingMatrix )
+    );
+    
+    return
+      SQVecMor( coproduct,
+                underlying_matrix_of_universal_morphism,
+                Range( sink[1] ) );
+    
+end );
+\end{Verbatim}
+\end{small}

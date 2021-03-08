@@ -1,10 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# Declarations
+#
 #! @Chapter Objects
 #!  Any GAP object which is IsCapCategoryObject can be added to a category
 #!  and then becomes an object in this category.
@@ -329,12 +327,13 @@ DeclareOperation( "IsEqualForCacheForObjects",
 #! @Description
 #!  By default, CAP uses caches to store the values of Categorical operations.
 #!  To get a value out of the cache, one needs to compare the input of a basic operation
-#!  with its previous input. To compare objects in the category, IsEqualForCacheForObject is
-#!  used. By default this is an alias for IsEqualForObjects, where fail is substituted by false.
+#!  with its previous input. To compare objects in the category, IsEqualForCacheForObjects is
+#!  used. By default, IsEqualForCacheForObjects falls back to IsEqualForCache (see ToolsForHomalg),
+#!  which in turn defaults to recursive comparison for lists and `IsIdenticalObj` in all other cases.
 #!  If you add a function, this function
 #!  used instead. A function $F: a,b \mapsto bool$ is expected here. The output has to be
 #!  true or false. Fail is not allowed in this context.
-#! @Returns northing
+#! @Returns nothing
 #! @Arguments c,F
 DeclareOperation( "AddIsEqualForCacheForObjects",
                   [ IsCapCategory, IsFunction ] );
@@ -385,6 +384,9 @@ DeclareOperation( "AddObjectRepresentation",
 #!  is created by passing a representation to <C>AddObjectRepresentation</C>.
 #!  Objects which are objectified using this method do not have to be passed
 #!  to the <C>AddObject</C> function.
+#!  The optional arguments behave like the corresponding arguments in <C>ObjectifyWithAttributes</C>.
+#!  Also returns the objectified object.
+#! @Returns an object
 DeclareGlobalFunction( "ObjectifyObjectForCAPWithAttributes" );
 
 ###################################

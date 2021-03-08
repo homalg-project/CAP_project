@@ -1,12 +1,9 @@
-#############################################################################
-##
-##                                GroupRepresentationsForCAP package
-##
-##  Copyright 2016, Sebastian Posur, University of Siegen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# GroupRepresentationsForCAP: Skeletal category of group representations for CAP
+#
+# Implementations
+#
 #! @Chapter Semisimple Categories
-##
-#############################################################################
 
 ####################################
 ##
@@ -362,7 +359,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
           right_distributivity_expanding_permutation, left_distributivity_expanding_permutation,
           distributivity_function, associator_available, is_magma_ring;
     
-    if associator_data <> "" then
+    if associator_data <> fail then
         
         associator_available := true;
         
@@ -2723,7 +2720,7 @@ InstallMethod( SemisimpleCategory,
         
     else
         
-        associator_data := "";
+        associator_data := fail;
         
     fi;
     

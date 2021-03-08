@@ -25,6 +25,9 @@ InstallValue( CAP_INTERNAL_STRUCTURE_FUNCTION_RECORD_FOR_CATEGORY_WITH_ATTRIBUTE
   KernelObject := rec(
       filter_list := [ "morphism_filter", "object_filter_of_underlying_category" ] ),
       
+  Equalizer := rec(
+      filter_list := [ "list", "object_filter_of_underlying_category" ] ),
+      
   ImageObject := rec(
       filter_list := [ "morphism_filter", "object_filter_of_underlying_category" ] ),
       
@@ -33,6 +36,9 @@ InstallValue( CAP_INTERNAL_STRUCTURE_FUNCTION_RECORD_FOR_CATEGORY_WITH_ATTRIBUTE
       
   CokernelObject := rec(
       filter_list := [ "morphism_filter", "object_filter_of_underlying_category" ] ),
+      
+  Coequalizer := rec(
+      filter_list := [ "list", "object_filter_of_underlying_category" ] ),
       
   CoimageObject := rec(
       filter_list := [ "morphism_filter", "object_filter_of_underlying_category" ] ),
@@ -461,6 +467,14 @@ InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJE
               
         end );
         
+        derivation_record.Equalizer := rec(
+          uses := [ "EmbeddingOfEqualizer" ],
+          derivation := function( equalizer_diagram, equalizer_object )
+              
+              return lift_operation( EmbeddingOfEqualizer( UnderlyingCell( equalizer_diagram ) ), Source( equalizer_diagram[1] ) );
+              
+        end );
+        
         derivation_record.ImageObject := rec(
           uses := [ "ImageEmbedding" ],
           derivation := function( image_diagram, image_object )
@@ -494,6 +508,14 @@ InstallGlobalFunction( CAP_INTERNAL_DERIVE_STRUCTURE_FUNCTIONS_OF_UNIVERSAL_OBJE
           derivation := function( cokernel_diagram, cokernel_object )
               
               return colift_operation( CokernelProjection( UnderlyingCell( cokernel_diagram ) ), Range( cokernel_diagram ) );
+              
+        end );
+        
+        derivation_record.Coequalizer := rec(
+          uses := [ "ProjectionOntoCoequalizer" ],
+          derivation := function( coequalizer_diagram, coequalizer_object )
+              
+              return colift_operation( ProjectionOntoCoequalizer( UnderlyingCell( coequalizer_diagram ) ), Range( coequalizer_diagram[1] ) );
               
         end );
         
@@ -547,14 +569,12 @@ InstallGlobalFunction( CreateMorphismConstructorForCategoryWithAttributes,
       function( source, morphism, range )
         local attribute_morphism;
         
-        attribute_morphism := rec( );
-        
-        ObjectifyWithAttributes( attribute_morphism, morphism_type,
-                                 UnderlyingCell, morphism,
-                                 Source, source,
-                                 Range, range,
-                                 UnderlyingCategory, underlying_category
-                               );
+        attribute_morphism := ObjectifyWithAttributes( rec( ), morphism_type,
+                                                       UnderlyingCell, morphism,
+                                                       Source, source,
+                                                       Range, range,
+                                                       UnderlyingCategory, underlying_category
+                                                     );
         
         Add( category_with_attributes, attribute_morphism );
         
@@ -572,13 +592,11 @@ InstallGlobalFunction( CreateObjectConstructorForCategoryWithAttributes,
       function( object, attributes )
         local attribute_object;
         
-        attribute_object := rec( );
-        
-        ObjectifyWithAttributes( attribute_object, object_type,
-                                 UnderlyingCell, object,
-                                 ObjectAttributesAsList, attributes,
-                                 UnderlyingCategory, underlying_category
-                               );
+        attribute_object := ObjectifyWithAttributes( rec( ), object_type,
+                                                     UnderlyingCell, object,
+                                                     ObjectAttributesAsList, attributes,
+                                                     UnderlyingCategory, underlying_category
+                                                   );
         
         Add( category_with_attributes, attribute_object );
         

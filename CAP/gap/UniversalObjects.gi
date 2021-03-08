@@ -1,14 +1,9 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# Implementations
+#
 #! @Chapter Universal Objects
-##
-#############################################################################
-
 
 ####################################
 ##
@@ -372,6 +367,7 @@ InstallMethod( MorphismBetweenDirectSums,
                
   function( morphism_matrix )
     local nr_rows, nr_cols;
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     nr_rows := Size( morphism_matrix );
     

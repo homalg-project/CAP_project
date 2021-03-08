@@ -1,11 +1,8 @@
-#############################################################################
-##
-##     FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
-##
-##  Copyright 2018, Sebastian Posur, University of Siegen
-##
-#############################################################################
-
+# SPDX-License-Identifier: GPL-2.0-or-later
+# FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
+#
+# Implementations
+#
 
 ####################################
 ##
@@ -140,16 +137,12 @@ end );
 ##
 InstallGlobalFunction( FREYD_CATEGORY_OBJECT,
 function( relation_morphism )
-    local freyd_category_object, category;
-    
-    freyd_category_object := rec( );
+    local category;
     
     category := FreydCategory( CapCategory( relation_morphism ) );
 
-    ObjectifyObjectForCAPWithAttributes( freyd_category_object, category,
-                                         RelationMorphism, relation_morphism );
-    
-    return freyd_category_object;
+    return ObjectifyObjectForCAPWithAttributes( rec( ), category,
+                                                RelationMorphism, relation_morphism );
     
 end );
 
@@ -176,7 +169,7 @@ end );
 ##
 InstallGlobalFunction( FREYD_CATEGORY_MORPHISM,
   function( source, morphism_datum, range )
-    local freyd_category_morphism, category;
+    local category;
     
     if not IsIdenticalObj( CapCategory( morphism_datum ), UnderlyingCategory( CapCategory( source ) ) ) then
         
@@ -202,18 +195,14 @@ InstallGlobalFunction( FREYD_CATEGORY_MORPHISM,
         
     fi;
     
-    freyd_category_morphism := rec( );
-    
-    category :=  CapCategory( source );
+    category := CapCategory( source );
 
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
-                             freyd_category_morphism, category,
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
+                             rec( ), category,
                              source,
                              range,
                              MorphismDatum, morphism_datum
     );
-    
-    return freyd_category_morphism;
     
 end );
 
@@ -1006,7 +995,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 and IsAdditiveCategory( range_category )
                 and ForAll(
                     [ "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ],
-                    f -> CanCompute( underlying_category, f ) )  then
+                    f -> CanCompute( range_category, f ) )  then
             
             if IsIdenticalObj( range_category, underlying_category ) then
                 
@@ -1027,7 +1016,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
               function( alpha, beta ) return AsFreydCategoryMorphism( HomomorphismStructureOnMorphisms( alpha, beta ) ); end;
             
             distinguished_object_of_homomorphism_structure := 
-              cat -> AsFreydCategoryObject( DistinguishedObjectOfHomomorphismStructure( range_category ) );
+              cat -> AsFreydCategoryObject( DistinguishedObjectOfHomomorphismStructure( cat ) );
             
             interpret_homomorphism_as_morphism_from_dinstinguished_object_to_homomorphism_structure :=
               alpha -> AsFreydCategoryMorphism(
@@ -1147,7 +1136,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             AddDistinguishedObjectOfHomomorphismStructure( category,
               function( )
                 
-                return distinguished_object_of_homomorphism_structure( range_category );
+                return distinguished_object_of_homomorphism_structure( underlying_category );
                 
             end );
             
@@ -1700,6 +1689,63 @@ InstallMethod( Display,
     
 end );
 
+##
+InstallMethod( LaTeXOutput,
+               [ IsFreydCategoryObject ],
+  function( object )
+    local rel, corel, r, m, c, rel_dat, corel_dat;
+    
+    rel := RelationMorphism( object );
+    
+    r := LaTeXOutput( Source( rel ) );
+    
+    m := LaTeXOutput( Range( rel ) );
+    
+    rel_dat := LaTeXOutput( rel : OnlyDatum := true );
+    
+    return Concatenation(
+      "\\big(",
+      r,
+      "\\xrightarrow{",
+      rel_dat,
+      "}",
+      m,
+      "\\big)_{\\mathcal{A}}"
+    );
+    
+end );
+
+##
+InstallMethod( LaTeXOutput,
+               [ IsFreydCategoryMorphism ],
+  function( mor )
+    local datum;
+    
+    datum := LaTeXOutput( MorphismDatum( mor ) : OnlyDatum := true );
+    
+    if ValueOption( "OnlyDatum" ) = true then
+       
+       return Concatenation(
+        """{\color{blue}{""",
+        datum,
+        """}}"""
+      );
+      
+    else
+      
+      return Concatenation(
+        "{ \\tiny ", LaTeXOutput( Source( mor ) ), "}",
+        """{\color{blue}{\xrightarrow{""",
+        datum,
+        """}}}""",
+        "{ \\tiny ", LaTeXOutput( Range( mor ) ), "}"
+      );
+      
+    fi;
+    
+end );
+
+
 ####################################################################################
 ##
 ##  Determine properties of input category for Freyd category
@@ -1844,7 +1890,7 @@ InstallMethod( \^,
     
       if power < 0 then
       
-        return Error( "The power must be non-negative! \n" );
+        Error( "The power must be non-negative! \n" );
             
       elif power = 0 then
       
@@ -1877,7 +1923,7 @@ InstallMethod( \^,
     
       if power < 0 then
       
-        return Error( "The power must be non-negative! \n" );
+        Error( "The power must be non-negative! \n" );
       
       elif power = 0 then
       
@@ -1935,3 +1981,44 @@ InstallMethod( \/,
     return mat/UnderlyingCategory( freyd_category )/freyd_category;
     
 end );
+
+##
+InstallMethod( \/,
+               [ IsCapCategoryObject, IsFreydCategory ],
+               
+  function( obj, freyd_category )
+    
+    if not IsIdenticalObj( UnderlyingCategory( freyd_category ), CapCategory( obj ) ) then
+      
+      Error( "The underlying category of the given Freyd category has to be equal to the category of the given object" );
+      
+    fi;
+    
+    return AsFreydCategoryObject( obj );
+    
+end );
+
+####################################
+##
+## Down
+##
+####################################
+
+##
+InstallMethod( Down,
+               [ IsFreydCategoryObject ],
+  function( obj )
+    
+    return RelationMorphism( obj );
+    
+end );
+
+##
+InstallMethod( DownOnlyMorphismData,
+               [ IsFreydCategoryMorphism ],
+  function( mor )
+    
+    return MorphismDatum( mor );
+    
+end );
+

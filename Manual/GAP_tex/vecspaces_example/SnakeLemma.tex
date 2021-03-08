@@ -1,0 +1,38 @@
+\documentclass[12pt]{amsart}
+\usepackage{graphicx}
+\usepackage{a4wide}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+
+\title{GAP Code}
+\author{}
+
+\begin{document}
+\maketitle
+
+\begin{Verbatim}[commandchars=!@\%,frame=single]
+!color@blue%@gap>%!color@red%@ V1 := SQVecObj( 1 );%
+<An object in SQVec of dimension 1>
+!color@blue%@gap>%!color@red%@ delta := SQVecMor( V2, [ [ 1, 0 ], [ 0, 0 ] ], V2 );%
+A morphism in SQVec with underlying matrix:
+[ [  1,  0 ],
+  [  0,  0 ] ]
+
+!color@blue%@gap>%!color@red%@ beta := SQVecMor( V2, [ [ 2, 4, 0 ], [ 3, 5, 0 ] ], V3 );%
+A morphism in SQVec with underlying matrix:
+[ [  2,  4,  0 ],
+  [  3,  5,  0 ] ]
+
+!color@blue%@gap>%!color@red%@ lambda := SQVecMor( V3, [ [ 0 ], [ 0 ], [ 1 ] ], V1 );%
+A morphism in SQVec with underlying matrix:
+[ [  0 ],
+  [  0 ],
+  [  1 ] ]
+
+!color@blue%@gap>%!color@red%@ snake_lemma_morphism( delta, beta, lambda );%
+A morphism in SQVec with underlying matrix:
+[ [  -1 ] ]
+
+\end{Verbatim}
+\end{document}

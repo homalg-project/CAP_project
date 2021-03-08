@@ -1,3 +1,8 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# Reading the implementation part of the package.
+#
 ## CAP.gi uses implementations in this file.
 ReadPackage( "CAP", "gap/MethodRecord.gi");
 

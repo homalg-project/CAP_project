@@ -1,11 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# Implementations
+#
 
 ######################################
 ##
@@ -231,11 +228,15 @@ InstallMethod( RandomObject, [ IsCapCategory, IsList ], RandomObjectByList );
 
 InstallGlobalFunction( ObjectifyObjectForCAPWithAttributes,
                        
-  function( arg_list... )
+  function( object, category, additional_arguments_list... )
+    local arg_list;
+    #% CAP_JIT_RESOLVE_FUNCTION
     
-    Append( arg_list, [ CapCategory, arg_list[ 2 ] ] );
-    arg_list[ 2 ] := arg_list[ 2 ]!.object_type;
-    CallFuncList( ObjectifyWithAttributes, arg_list );
+    arg_list := Concatenation(
+        [ object, category!.object_type, CapCategory, category ], additional_arguments_list
+    );
+    
+    return CallFuncList( ObjectifyWithAttributes, arg_list );
     
 end );
 

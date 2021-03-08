@@ -12,18 +12,17 @@ PackageName := "GradedModulePresentationsForCAP",
 Subtitle := "Presentations for graded modules",
 Version := Maximum( [
            ##
-           "2017.03.20", # Sebas version
+           "2017.03-20", # Sebas version
            ##
-           "2018.03.20", # Sepps version
+           "2018.03-20", # Sepps version
            ##
-           "2019.04.03", # Mohamed's version
+           "2019.04-03", # Mohamed's version
            ##
-           "2019.08.07", # Fabian's version
+           "2020.10-01", # Fabian's version
            ##
            ] ),
 
-Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -45,13 +44,19 @@ Persons := [
   ),
 ],
 
-PackageWWWHome := "https://homalg-project.github.io/CAP_project/",
+# BEGIN URLS
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/homalg-project/CAP_project",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := "https://homalg-project.github.io/pkg/GradedModulePresentationsForCAP",
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/GradedModulePresentationsForCAP/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/GradedModulePresentationsForCAP/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-", ~.Version, "/GradedModulePresentationsForCAP-", ~.Version ),
+# END URLS
 
-ArchiveURL     := Concatenation( ~.PackageWWWHome, "GradedModulePresentationsForCAP-", ~.Version ),
-README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages
@@ -94,5 +99,3 @@ TestFile := "tst/testall.g",
 #Keywords := [ "TODO" ],
 
 ));
-
-

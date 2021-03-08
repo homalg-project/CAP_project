@@ -1,10 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2013, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# Declarations
+#
 #! @Chapter CAP Categories
 #!  Categories are the main GAP objects in CAP.
 #!  They are used to associate GAP objects which represent objects and
@@ -15,9 +13,6 @@
 #!  associated to the category and after that can be applied to GAP objects in the category.
 #!  A GAP category object also knows which constructions
 #!  are currently possible in this category.
-##
-#############################################################################
-
 
 ###################################
 ##
@@ -136,6 +131,7 @@ end );
 Perform(
 ## This is the CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST
     [ [ "IsEnrichedOverCommutativeRegularSemigroup" ],
+      [ "IsSkeletalCategory" ],
       [ "IsAbCategory" ],
       [ "IsLinearCategoryOverCommutativeRing" ],
       [ "IsAdditiveCategory" ],
@@ -257,6 +253,36 @@ DeclareAttribute( "RangeCategoryOfHomomorphismStructure",
 #############################################
 
 #! @Description
+#!  Activates the predicate logic propagation between equal objects for the category <A>C</A>.
+#! @Arguments C
+DeclareGlobalFunction( "CapCategorySwitchLogicPropagationForObjectsOn" );
+
+#! @Description
+#!  Deactivates the predicate logic propagation between equal objects for the category <A>C</A>.
+#! @Arguments C
+DeclareGlobalFunction( "CapCategorySwitchLogicPropagationForObjectsOff" );
+
+#! @Description
+#!  Activates the predicate logic propagation between equal morphisms for the category <A>C</A>.
+#! @Arguments C
+DeclareGlobalFunction( "CapCategorySwitchLogicPropagationForMorphismsOn" );
+
+#! @Description
+#!  Deactivates the predicate logic propagation between equal morphisms for the category <A>C</A>.
+#! @Arguments C
+DeclareGlobalFunction( "CapCategorySwitchLogicPropagationForMorphismsOff" );
+
+#! @Description
+#!  Activates the predicate logic propagation between equal cells for the category <A>C</A>.
+#! @Arguments C
+DeclareGlobalFunction( "CapCategorySwitchLogicPropagationOn" );
+
+#! @Description
+#!  Deactivates the predicate logic propagation between equal cells for the category <A>C</A>.
+#! @Arguments C
+DeclareGlobalFunction( "CapCategorySwitchLogicPropagationOff" );
+
+#! @Description
 #!  Activates the predicate implication logic for the category <A>C</A>.
 #! @Arguments C
 DeclareGlobalFunction( "CapCategorySwitchLogicOn" );
@@ -309,6 +335,49 @@ DeclareOperation( "CheckConstructivenessOfCategory",
 #! @Arguments c
 DeclareProperty( "IsWellDefined",
                  IsCapCategoryCell );
+
+#############################################
+##
+#! @Section Unpacking data structures
+##
+#############################################
+
+
+#! @Description
+#! The argument is a GAP object $x$.
+#! If $x$ is an object in a CAP category, the output consists of data which are needed to reconstruct $x$
+#! (e.g., by passing them to an appropriate constructor).
+#! If $x$ is a morphism in a CAP category, the output consists of a triple whose first entry is the source of $x$,
+#! the third entry is the range of $x$, and the second entry consists of data which are needed to reconstruct $x$
+#! (e.g., by passing them to an appropriate constructor, possibly together with the source and range of $x$).
+#! @Returns a GAP object
+#! @Arguments x
+DeclareAttribute( "Down",
+                  IsObject );
+
+#! @Description
+#! The argument is a morphism in a CAP category, the output consists of data which are needed to reconstruct $x$
+#! (e.g., by passing it to an appropriate constructor, possibly together with its source and range).
+#! @Returns a GAP object
+#! @Arguments x
+DeclareAttribute( "DownOnlyMorphismData",
+                  IsCapCategoryMorphism );
+
+##
+DeclareAttribute( "Down2",
+                  IsObject );
+
+##
+DeclareAttribute( "Down3",
+                  IsObject );
+
+#! @Description
+#! The argument is a GAP object $x$.
+#! This function iteratively calls <C>Down</C> until it becomes stable.
+#! @Returns a GAP object
+#! @Arguments x
+DeclareAttribute( "DownToBottom",
+                  IsObject );
 
 ####################################
 ##
@@ -432,7 +501,7 @@ DeclareGlobalFunction( "DisableAddForCategoricalOperations" );
 #!  In the following some of these are listed.
 #!    * <C>DeactivateCachingOfCategory</C> or <C>DeactivateDefaultCaching</C>: see <Ref Sect="Section_Caching" />.
 #!        This can either improve or degrade the performance depending on the concrete example.
-#!    * <C>CapCategorySwitchLogicOff</C>: see <Ref Sect="Section_Logic_switcher" />.
+#!    * <C>CapCategorySwitchLogicOff</C> (on by default) or <C>CapCategorySwitchLogicPropagationOff</C> (off by default): see <Ref Sect="Section_Logic_switcher" />.
 #!        This can either improve or degrade the performance depending on the concrete example.
 #!    * <C>DisableSanityChecks</C>: see <Ref Sect="Section_Sanity_checks" />.
 #!    * <C>DisableAddForCategoricalOperations</C>: see <Ref Sect="Section_Automatic_adds" />.
@@ -446,3 +515,23 @@ DeclareGlobalFunction( "DisableAddForCategoricalOperations" );
 #!        <C>AddMorphismRepresentation</C> (<Ref Sect="Section_Adding_Morphisms_to_a_Category" />).
 #!    * Pass the option <C>overhead := false</C> to <C>CreateCapCategory</C>.
 #!        Note: this may have unintended effects. Use with care!
+
+#############################################
+##
+#! @Section LaTeX
+##
+#############################################
+
+#! @Description
+#! The argument is a cell $c$.
+#! The output is a LaTeX string $s$ (without enclosing dollar signs) that may be used to print out $c$ nicely.
+#! @Returns a string
+#! @Arguments c
+DeclareOperation( "LaTeXOutput", [ IsCapCategoryCell ] );
+
+#! @Description
+#! The argument is a category $C$.
+#! The output is a LaTeX string $s$ (without enclosing dollar signs) that may be used to print out $C$ nicely.
+#! @Returns a string
+#! @Arguments C
+DeclareOperation( "LaTeXOutput", [ IsCapCategory ] );

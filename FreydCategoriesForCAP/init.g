@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
 #
 # Reading the declaration part of the package.
@@ -48,4 +48,4 @@ ReadPackage( "FreydCategoriesForCAP", "gap/GradeFiltration.gd" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/SerreSubcategoryFunctions.gd" );
 
-
+ReadPackage( "FreydCategoriesForCAP", "gap/Relations.gd" );

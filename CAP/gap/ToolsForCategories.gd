@@ -1,13 +1,9 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# CAP: Categories, Algorithms, Programming
+#
+# Declarations
+#
 #! @Chapter Technical Details
-##
-#############################################################################
 
 #! @Section Install Functions for IsWellDefined
 
@@ -115,10 +111,31 @@ DeclareGlobalFunction( "CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY" );
 
 #! @Arguments two_cell, category, human_readable_identifier_getter
 #! @Description
-#!  The function throws an error if <A>two_cell</A> is not a 2-cell of <A>category</A>.
+#!  The function throws an error if <A>two_cell</A> is not a $2$-cell of <A>category</A>.
 #!  If <A>category</A> is the boolean <C>false</C>, only general checks not specific to a concrete category are performed.
 #!  <A>human_readable_identifier_getter</A> is a 0-ary function returning a string which is used to refer to <A>two_cell</A> in the error message.
 DeclareGlobalFunction( "CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY" );
+
+#! @Arguments list_of_objects, category, human_readable_identifier_getter
+#! @Description
+#!  The function throws an error if <A>list_of_objects</A> is not a dense list of objects of <A>category</A>.
+#!  If <A>category</A> is the boolean <C>false</C>, only general checks not specific to a concrete category are performed.
+#!  <A>human_readable_identifier_getter</A> is a 0-ary function returning a string which is used to refer to <A>list_of_objects</A> in the error message.
+DeclareGlobalFunction( "CAP_INTERNAL_ASSERT_IS_LIST_OF_OBJECTS_OF_CATEGORY" );
+
+#! @Arguments list_of_morphisms, category, human_readable_identifier_getter
+#! @Description
+#!  The function throws an error if <A>list_of_morphisms</A> is not a dense list of morphisms of <A>category</A>.
+#!  If <A>category</A> is the boolean <C>false</C>, only general checks not specific to a concrete category are performed.
+#!  <A>human_readable_identifier_getter</A> is a 0-ary function returning a string which is used to refer to <A>list_of_morphisms</A> in the error message.
+DeclareGlobalFunction( "CAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY" );
+
+#! @Arguments list_of_twocells, category, human_readable_identifier_getter
+#! @Description
+#!  The function throws an error if <A>list_of_twocells</A> is not a dense list of $2$-cells of <A>category</A>.
+#!  If <A>category</A> is the boolean <C>false</C>, only general checks not specific to a concrete category are performed.
+#!  <A>human_readable_identifier_getter</A> is a 0-ary function returning a string which is used to refer to <A>list_of_twocells</A> in the error message.
+DeclareGlobalFunction( "CAP_INTERNAL_ASSERT_IS_LIST_OF_TWO_CELLS_OF_CATEGORY" );
 
 DeclareGlobalFunction( "ListKnownCategoricalProperties" );
 

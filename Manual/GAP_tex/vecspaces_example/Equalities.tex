@@ -1,0 +1,19 @@
+\begin{small}
+\begin{Verbatim}[frame=single]
+AddIsEqualForObjects( SQVec,
+  
+  function( a, b )
+    
+    return Dimension( a ) = Dimension( b );
+  
+end );
+
+equality_function := function( alpha, beta )
+  return UnderlyingMatrix( alpha ) = UnderlyingMatrix( beta );
+end;
+
+AddIsEqualForMorphisms( SQVec, equality_function );
+
+AddIsCongruentForMorphisms( SQVec, equality_function );
+\end{Verbatim}
+\end{small}

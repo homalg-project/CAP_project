@@ -1,10 +1,8 @@
-#############################################################################
-##
-##     FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
-##
-##  Copyright 2019, Sebastian Posur, University of Siegen
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
+#
+# Implementations
+#
 
 ####################################
 ##
@@ -52,15 +50,10 @@ InstallMethod( GroupAsCategoryUniqueObject,
                [ IsGroupAsCategory ],
                
   function( category )
-    local unique_object;
     
-    unique_object := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( unique_object, 
-                                         category
+    return ObjectifyObjectForCAPWithAttributes( rec( ),
+                                                category
     );
-    
-    return unique_object;
     
 end );
 
@@ -69,21 +62,17 @@ InstallMethod( GroupAsCategoryMorphismOp,
                [ IsGroupAsCategory, IsObject ],
                
   function( category, element )
-    local morphism, unique_object;
-    
-    morphism := rec( );
+    local unique_object;
     
     unique_object := GroupAsCategoryUniqueObject( category );
     
     ## this is a "compiled" version of ObjectifyMorphismForCAPWithAttributes
-    ObjectifyWithAttributes( morphism, category!.morphism_type,
-                             Source, unique_object,
-                             Range, unique_object,
-                             UnderlyingGroupElement, element,
-                             CapCategory, category 
+    return ObjectifyWithAttributes( rec( ), category!.morphism_type,
+                                    Source, unique_object,
+                                    Range, unique_object,
+                                    UnderlyingGroupElement, element,
+                                    CapCategory, category
     );
-    
-    return morphism;
     
 end );
 
@@ -387,3 +376,27 @@ InstallMethod( \=,
 InstallMethod( \/,
                [ IsObject, IsGroupAsCategory ],
                GroupAsCategoryMorphism );
+
+####################################
+##
+## Down
+##
+####################################
+
+##
+InstallMethod( Down,
+               [ IsGroupAsCategoryObject ],
+  function( obj )
+    
+    return "*";
+    
+end );
+
+##
+InstallMethod( DownOnlyMorphismData,
+               [ IsGroupAsCategoryMorphism ],
+  function( mor )
+    
+    return UnderlyingGroupElement( mor );
+    
+end );

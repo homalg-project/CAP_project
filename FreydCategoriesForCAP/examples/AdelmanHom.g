@@ -3,7 +3,7 @@
 #! @Section Adelman category basics
 
 LoadPackage( "FreydCategoriesForCAP" );;
-LoadPackage( "Bialgebroids");
+LoadPackage( "Algebroids");
 #! @Example
 quiver := RightQuiver( "Q(3)[a:1->2,b:1->2,c:2->3]" );;
 kQ := PathAlgebra( HomalgFieldOfRationals(), quiver );;

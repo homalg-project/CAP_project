@@ -1,12 +1,9 @@
-#############################################################################
-##
-##     FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
-##
-##  Copyright 2018, Sebastian Posur, University of Siegen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
+#
+# Declarations
+#
 #! @Chapter Additive closure
-#!
-#############################################################################
 
 ####################################
 ##
@@ -46,6 +43,12 @@ DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE" );
 
 #! @Description
 #! The argument is an Ab-category $C$. The output is its additive closure $C^\oplus$.
+#! 
+#! If <A>C</A> is a &homalg; ring considered as a category via `RingAsCategory`,
+#! &homalg; matrices are used as the underlying data structure for morphisms.
+#! In all other cases, lists of lists are used as the underlying data structure for morphisms.
+#! This can be changed via the two options `matrix_element_as_morphism` and `list_list_as_matrix`, see
+#! <Ref Func="AdditiveClosureMorphism" Label="for IsAdditiveClosureObject, IsObject, IsAdditiveClosureObject" /> for details.
 #! @Arguments C
 #! @Returns the category $C^\oplus$
 DeclareAttribute( "AdditiveClosure",
@@ -68,11 +71,30 @@ DeclareAttribute( "AsAdditiveClosureObject",
 
 #! @Description
 #! The arguments are formal direct sums $A=A_1\oplus\dots\oplus A_m$, $B=B_1\oplus\dots\oplus B_n$ in some additive category $C^\oplus$
-#! and an $m\times n$ matrix $M :=(\alpha_{ij}:A_i\to B_j)_{ij}$ for $i=1,\dots,m,j=1,\dots,n$.
+#! and an $m\times n$ matrix (see below) $M :=(\alpha_{ij}:A_i\to B_j)_{ij}$ for $i=1,\dots,m,j=1,\dots,n$.
 #! The output is the formal morphism between $A$ and $B$ that is defined by $M$.
+#! 
+#! If $m \neq 0 \neq n$, <A>M</A> has to provide access to its elements via the operation `[,]`. In case that the elements of <A>M</A> first have to be wrapped
+#! to actually obtain morphisms in $C$, you can provide the function `matrix_element_as_morphism` (fallback: `IdFunc`) as an option to
+#! <Ref Attr="AdditiveClosure" Label="for IsCapCategory" /> which will internally be automatically applied to the elements of <A>M</A>.
+#! In this case you also have to provide the function `list_list_as_matrix` (fallback: `ReturnFirst`) as an option to
+#! <Ref Attr="AdditiveClosure" Label="for IsCapCategory" />: It gets passed a list of list of morphisms $\alpha_{ij}$ as well as $m$ and $n$
+#! as above and has to return the corresponding matrix <A>M</A>.
+#! If `IsMatrixObj( <A>M</A> )`, then `NrRows( M )` resp. `NrCols( M )` must be $m$ resp. $n$.
+#! 
+#! The fallback values of `matrix_element_as_morphism` and `list_list_as_matrix` allow to use lists of lists as the data structure of <A>M</A>.
+#! See <Ref Attr="AdditiveClosure" Label="for IsCapCategory" /> for the default data structures.
 #! @Arguments A, M, B
 #! @Returns a morphism in $\mathrm{Hom}_{C^\oplus}(A,B)$
 DeclareOperation( "AdditiveClosureMorphism",
+                  [ IsAdditiveClosureObject, IsObject, IsAdditiveClosureObject ] );
+
+#! @Description
+#! Input and return value are the same as for `AdditiveClosureMorphism` except that the matrix `M`
+#! can be given as a list (of lists) <A>L</A> to which `list_list_as_matrix` will be applied automatically.
+#! @Arguments A, L, B
+#! @Returns a morphism in $\mathrm{Hom}_{C^\oplus}(A,B)$
+DeclareOperation( "AdditiveClosureMorphismListList",
                   [ IsAdditiveClosureObject, IsList, IsAdditiveClosureObject ] );
 
 #! @Description
@@ -164,7 +186,7 @@ DeclareAttribute( "NrRows",
 #! The argument is a morphism $\alpha:A\to B$ between formal direct sums. The output is the number of summands of the the range.
 #! @Arguments alpha
 #! @Returns a non-negative integer
-DeclareAttribute( "NrColumns",
+DeclareAttribute( "NrCols",
                   IsAdditiveClosureMorphism );
 
 ####################################
@@ -183,19 +205,11 @@ DeclareOperation( "\[\]",
 
 
 #! @Description
-#! The arguments are morphism $\alpha:A\to B$ between formal direct sums in some additive category $C^\oplus$ and an integer $i$.
-#! The output is the $i$'th entry in <C>MorphismMatrix</C>($\alpha$).
-#! @Arguments alpha, i
-#! @Returns a list of morphisms in $C$
-DeclareOperation( "\[\]",
-                  [ IsAdditiveClosureMorphism, IsInt ] );
-
-#! @Description
 #! The arguments are a morphism $\alpha:A\to B$ between formal direct sums in some additive category $C^\oplus$ and two integers $i,j$.
 #! The output is the $(i,j)$'th entry in <C>MorphismMatrix</C>($\alpha$).
 #! @Arguments alpha, i, j
 #! @Returns a morphism $C$
-DeclareOperation( "\[\]",
+DeclareOperation( "[,]",
                   [ IsAdditiveClosureMorphism, IsInt, IsInt ] );
 
 #! @Description

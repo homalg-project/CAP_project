@@ -11,9 +11,11 @@ SetPackageInfo( rec(
 PackageName := "ModulesOverLocalRingsForCAP",
 Subtitle := "Category of modules over a local ring modeled by Serre quotients for CAP",
 Version := Maximum( [
-           "2017.04.10" # Sepps version
-           ] ),
-Date := "04/04/2017", # dd/mm/yyyy format
+  "2017.04-10", # Sepps version
+  ## this line prevents merge conflicts
+  "2020.10-01", ## Fabian's version
+] ),
+Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -35,18 +37,19 @@ Persons := [
   ),
 ],
 
-#SourceRepository := rec( Type := "TODO", URL := "URL" ),
-#IssueTrackerURL := "TODO",
-#SupportEmail := "TODO",
+# BEGIN URLS
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/homalg-project/CAP_project",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := "https://homalg-project.github.io/pkg/ModulesOverLocalRingsForCAP",
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/ModulesOverLocalRingsForCAP/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/ModulesOverLocalRingsForCAP/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-", ~.Version, "/ModulesOverLocalRingsForCAP-", ~.Version ),
+# END URLS
 
-PackageWWWHome := "http://TODO/",
-
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-README_URL     := Concatenation( ~.PackageWWWHome, "README.md" ),
-ArchiveURL     := Concatenation( ~.PackageWWWHome,
-                                 "/", ~.PackageName, "-", ~.Version ),
-
-ArchiveFormats := ".tar.gz",
+ArchiveFormats := ".tar.gz .zip",
 
 ##  Status information. Currently the following cases are recognized:
 ##    "accepted"      for successfully refereed packages
@@ -88,5 +91,3 @@ TestFile := "tst/testall.g",
 #Keywords := [ "TODO" ],
 
 ));
-
-

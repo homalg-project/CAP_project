@@ -1,0 +1,56 @@
+In this chapter, we will have a closer look at the caching
+which is used in \CapPkg. Almost every function in \CapPkg is cached,
+this means, consecutive calls with the same arguments lead to identical results.
+
+\section{The role of caches}
+
+Caching in \CapPkg is mainly done for two reasons: speed and consistency. On the speed side, it is often
+a good idea to store already computed results. Most computers have a lot of memory right now, so storing is
+cheap. It also simpifies programming, since commands can be typed multiple times without worrying about potential
+recomputing.
+
+The consistency part is a bit more sophisticated. Categorical operations in \CapPkg are mathematical functions
+with respect to some specific equality notion. This means the user has to make sure that the output
+of equal input is equal. Caching can help if the function implemented for equality is not good enough
+to ensure this. If equal input is given to a Categorical operation, the caches look up if there already
+is a result for this input and returns it instead of a newly computed result.
+
+\section{Types of caching}
+
+In \CapPkg, we generally use two types of caching: The \GAP internal attribute/property caching and
+the caches implemented in \CapPkg. They differ mainly in two aspects, namely the way arguments of
+functions are compared and how many arguments a cached function can have. We want to compare the two
+ways of caching.
+
+\subsection{Internal attribute caching}
+\begin{enumerate}
+ \item Only for one argument functions
+ \item Compares arguments by \texttt{IsIdenticalObj}
+ \item Always stores the result
+\end{enumerate}
+
+\subsection{\CapPkg caching}
+\begin{enumerate}
+ \item Arbitrary argument function
+ \item Compares arguments by \texttt{IsEqualForCache}, which can be implemented separately for different types of objects
+ \item Stores the result, or just keeps a weak pointer, or can be disabled completely
+\end{enumerate}
+
+Those properties of the \CapPkg caches are needed. Of Course, \CapPkg makes use of the \GAP caches as well. If some categorical
+operation is a \GAP attribute, it first looks at the \GAP attribute, then in its \CapPkg cache.
+
+\section{Switchability of caches}
+
+In \CapPkg, the caches have three different stages. They can be hard caches, weak caches, and turned off.
+Hard caches mean that the result of a computation is stored forever (even though the input is not necessarily), weak means it is stored as long as
+there is a pointer to the object, and turned off means there is no storing at all. These modes can be switched for
+every category and every categorical operation at every time, but we suggest to set it at the creation of a category.
+This setting can be manipulated by the methods \texttt{SetCachingToWeak}, \texttt{SetCachingToCrisp}, and \texttt{DeactivateCaching}.
+All those methods take the category as first argument and the name of the categorical operation (e.g. \texttt{DirectSum}) as second.
+Also, there are methods which set the ceaches for all operations of the category. Those only take the category as argument.
+Their names are
+\begin{itemize}
+	\item \texttt{SetCachingOfCategoryWeak},
+	\item \texttt{SetCachingOfCategoryCrisp}, and
+	\item\texttt{DeactivateCachingOfCategory}.
+\end{itemize}

@@ -1,10 +1,8 @@
-#############################################################################
-##
-##     FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
-##
-##  Copyright 2018, Sebastian Posur, University of Siegen
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
+#
+# Implementations
+#
 
 ####################################
 ##
@@ -50,6 +48,16 @@ InstallMethod( AdelmanCategory,
     
     SetUnderlyingCategory( adelman_category, underlying_category );
     
+    if HasIsLinearCategoryOverCommutativeRing( underlying_category )
+        and IsLinearCategoryOverCommutativeRing( underlying_category )
+          and HasCommutativeRingOfLinearCategory( underlying_category ) then
+      
+      SetIsLinearCategoryOverCommutativeRing( adelman_category, true );
+      
+      SetCommutativeRingOfLinearCategory( adelman_category, CommutativeRingOfLinearCategory( underlying_category ) );
+       
+    fi;
+    
     DisableAddForCategoricalOperations( adelman_category );
     
     AddObjectRepresentation( adelman_category, IsAdelmanCategoryObject );
@@ -78,7 +86,7 @@ InstallMethod( AdelmanCategoryObject,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
 
   function( relation_morphism, corelation_morphism )
-    local adelman_category_object, category;
+    local category;
     
     if not IsEqualForObjects( Range( relation_morphism ), Source( corelation_morphism ) ) then
     
@@ -86,15 +94,11 @@ InstallMethod( AdelmanCategoryObject,
     
     fi;
     
-    adelman_category_object := rec( );
-    
     category := AdelmanCategory( CapCategory( relation_morphism ) );
     
-    ObjectifyObjectForCAPWithAttributes( adelman_category_object, category,
-                                         RelationMorphism, relation_morphism,
-                                         CorelationMorphism, corelation_morphism );
-    
-    return adelman_category_object;
+    return ObjectifyObjectForCAPWithAttributes( rec( ), category,
+                                                RelationMorphism, relation_morphism,
+                                                CorelationMorphism, corelation_morphism );
     
 end );
 
@@ -138,12 +142,10 @@ InstallMethod( AdelmanCategoryMorphism,
         
     fi;
     
-    adelman_category_morphism := rec( );
-    
     category :=  CapCategory( source );
     
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( 
-                             adelman_category_morphism, category,
+    adelman_category_morphism := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
+                             rec( ), category,
                              source,
                              range,
                              MorphismDatum, morphism_datum
@@ -713,9 +715,22 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         
     end );
     
+    if ForAll( [ "MultiplyWithElementOfCommutativeRingForMorphisms" ],
+               f -> CanCompute( underlying_category, f ) ) then
+        
+        AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+          { r, alpha } -> AdelmanCategoryMorphism(
+                              Source( alpha ),
+                              MultiplyWithElementOfCommutativeRingForMorphisms( r, MorphismDatum( alpha ) ),
+                              Range( alpha )
+                            )
+        );
+    
+    fi;
+    
     ## Creation of a homomorphism structure for the Freyd category
     
-    if ForAll( [ "DistinguishedObjectOfHomomorphismStructure" ], 
+    if ForAll( [ "DistinguishedObjectOfHomomorphismStructure" ],
                f -> CanCompute( underlying_category, f ) ) then
         
         distinguished_object := DistinguishedObjectOfHomomorphismStructure( underlying_category );
@@ -1277,6 +1292,67 @@ InstallMethod( Display,
     
 end );
 
+##
+InstallMethod( LaTeXOutput,
+               [ IsAdelmanCategoryObject ],
+  function( object )
+    local rel, corel, r, m, c, rel_dat, corel_dat;
+    
+    rel := RelationMorphism( object );
+    
+    corel := CorelationMorphism( object );
+    
+    r := LaTeXOutput( Source( rel ) );
+    
+    m := LaTeXOutput( Range( rel ) );
+    
+    c := LaTeXOutput( Range( corel ) );
+    
+    rel_dat := LaTeXOutput( rel : OnlyDatum := true );
+    
+    corel_dat := LaTeXOutput( corel : OnlyDatum := true );
+    
+    m := Concatenation( """{  \color{blue}{""", m, "} }" );
+    
+    return Concatenation(
+      """{ \big(""",
+      r,
+      "\\xrightarrow{",
+      rel_dat,
+      "}",
+      m,
+      "\\xrightarrow{",
+      corel_dat,
+      "}",
+      c,
+      """\big)}"""
+    );
+    
+end );
+
+##
+InstallMethod( LaTeXOutput,
+               [ IsAdelmanCategoryMorphism ],
+  function( mor )
+    local datum;
+    
+    datum := LaTeXOutput( MorphismDatum( mor ) : OnlyDatum := true );
+    
+    return Concatenation(
+      LaTeXOutput( Source( mor ) ),
+      """{\color{blue}{\xrightarrow{""",
+      datum,
+      """}}}""",
+      LaTeXOutput( Range( mor ) )
+    );
+    
+end );
+
+
+
+
+
+
 ####################################
 ##
 ## Convenience
@@ -1329,5 +1405,29 @@ InstallMethod( \/,
     fi;
     
     return AsAdelmanCategoryMorphism( morphism );
+    
+end );
+
+####################################
+##
+## Down
+##
+####################################
+
+##
+InstallMethod( Down,
+               [ IsAdelmanCategoryObject ],
+  function( obj )
+    
+    return [ RelationMorphism( obj ), CorelationMorphism( obj ) ];
+    
+end );
+
+##
+InstallMethod( DownOnlyMorphismData,
+               [ IsAdelmanCategoryMorphism ],
+  function( mor )
+    
+    return MorphismDatum( mor );
     
 end );

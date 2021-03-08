@@ -4,18 +4,17 @@ PackageName := "ModulePresentationsForCAP",
 Subtitle := "Category R-pres for CAP",
 Version := Maximum( [
            ##
-           "2017.12.30", # Sebas version
+           "2017.12-30", # Sebas version
            ##
-           "2020.04.16", # Sepps version
+           "2020.04-16", # Sepps version
            ##
-           "2019.01.16", # Mohamed's version
+           "2019.01-16", # Mohamed's version
            ##
-           "2019.08.07", # Fabian's version
+           "2020.10-01", # Fabian's version
            ##
            ] ),
 
-Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
 
@@ -54,11 +53,17 @@ Persons := [
   ),
 ],
 
-PackageWWWHome := "http://homalg-project.github.io/CAP_project/ModulePresentationsForCAP/",
-
-ArchiveURL     := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-", ~.Version, "/ModulePresentationsForCAP-", ~.Version ),
-README_URL     := Concatenation( ~.PackageWWWHome, "README" ),
-PackageInfoURL := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
+# BEGIN URLS
+SourceRepository := rec(
+    Type := "git",
+    URL := "https://github.com/homalg-project/CAP_project",
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := "https://homalg-project.github.io/pkg/ModulePresentationsForCAP",
+PackageInfoURL  := "https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-", ~.Version, "/ModulePresentationsForCAP-", ~.Version ),
+# END URLS
 
 ArchiveFormats := ".tar.gz .zip",
 
@@ -103,5 +108,3 @@ AvailabilityTest := function()
 #Keywords := [ "TODO" ],
 
 ));
-
-
