@@ -242,32 +242,19 @@ InstallGlobalFunction( CapInternalInstallAdd,
         od;
         
         # prepare input sanity check
-        input_human_readable_identifier_getter := function( args... )
-            local human_readable_identifier, i, j;
-            
-            if Length( args ) = 0 then
-                Error( "this function has to be called with at least one argument" );
-            fi;
-            
-            i := args[ 1 ];
-
-            human_readable_identifier := Concatenation( "the ", String(i), "-th argument of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
-            
-            if Length( args ) = 1 then
-                return human_readable_identifier;
-            elif Length( args ) = 2 then
-                j := args[ 2 ];
-                return Concatenation( "the ", String(j), "-th entry of ", human_readable_identifier );
-            else
-                Error( "this function has to be called with at most two arguments" );
-            fi;
-        end;
+        input_human_readable_identifier_getter := i -> Concatenation( "the ", String(i), "-th argument of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
         
         input_sanity_check_functions := [];
         for i in [ 1 .. Length( record.filter_list ) ] do
             filter := record.filter_list[ i ];
+
+            # in the special case of multiple filters, we currently only test for the first one
+            if not IsString( filter ) and IsList( filter ) then
+                filter := filter[1];
+            fi;
             
-            if not IsString( filter ) then
+            if IsFilter( filter ) then
+                # the only check would be that the input lies in the filter, which is already checked by the method selection
                 input_sanity_check_functions[i] := ReturnTrue;
             elif filter = "category" then
                 # the only check would be that the input lies in IsCapCategory, which is already checked by the method selection
@@ -306,27 +293,19 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 end;
             elif filter = "list_of_objects" then
                 input_sanity_check_functions[i] := function( arg, i )
-                    local j;
-                    for j in [ 1 .. Length( arg ) ] do
-                        CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg[ j ], category, function( ) return input_human_readable_identifier_getter( i, j ); end );
-                    od;
+                    CAP_INTERNAL_ASSERT_IS_LIST_OF_OBJECTS_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
             elif filter = "list_of_morphisms" then
                 input_sanity_check_functions[i] := function( arg, i )
-                    local j;
-                    for j in [ 1 .. Length( arg ) ] do
-                        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg[ j ], category, function( ) return input_human_readable_identifier_getter( i, j ); end );
-                    od;
+                    CAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
             elif filter = "list_of_twocells" then
                 input_sanity_check_functions[i] := function( arg, i )
-                    local j;
-                    for j in [ 1 .. Length( arg ) ] do
-                        CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg[ j ], category, function( ) return input_human_readable_identifier_getter( i, j ); end );
-                    od;
+                    CAP_INTERNAL_ASSERT_IS_LIST_OF_TWO_CELLS_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
             else
                 Display( Concatenation( "Warning: You should add an input sanity check for the following filter: ", String( filter ) ) );
+                input_sanity_check_functions[i] := ReturnTrue;
             fi;
         od;
         
@@ -335,17 +314,15 @@ InstallGlobalFunction( CapInternalInstallAdd,
             return Concatenation( "the result of the function \033[1m", record.function_name, "\033[0m of the category named \033[1m", Name( category ), "\033[0m" );
         end;
         
-        if record.return_type = "object" then
+        if IsFilter( record.return_type ) then
+            output_sanity_check_function := function( result )
+                if not record.return_type( result ) then
+                    Error( Concatenation( output_human_readable_identifier_getter(), " does not lie in the required filter. You can access the result and the filter via the local variables 'result' and 'record.return_type' in a break loop." ) );
+                fi;
+            end;
+        elif record.return_type = "object" then
             output_sanity_check_function := function( result )
                 CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
-            end;
-        elif record.return_type = "morphism" then
-            output_sanity_check_function := function( result )
-                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
-            end;
-        elif record.return_type = "twocell" then
-            output_sanity_check_function := function( result )
-                CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
             end;
         elif record.return_type = "object_or_fail" then
             output_sanity_check_function := function( result )
@@ -353,13 +330,42 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
                 fi;
             end;
+        elif record.return_type = "morphism" then
+            output_sanity_check_function := function( result )
+                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
+            end;
         elif record.return_type = "morphism_or_fail" then
             output_sanity_check_function := function( result )
                 if result <> fail then
                     CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
                 fi;
             end;
+        elif record.return_type = "twocell" then
+            output_sanity_check_function := function( result )
+                CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
+            end;
+        elif record.return_type = "bool" then
+            output_sanity_check_function := function( result )
+                if not ( result = true or result = false ) then
+                    Error( Concatenation( output_human_readable_identifier_getter(), " is not a boolean (true/false). You can access the result via the local variable 'result' in a break loop." ) );
+                fi;
+            end;
+        elif record.return_type = "other_object" then
+            output_sanity_check_function := function( result )
+                CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( result, false, output_human_readable_identifier_getter );
+            end;
+        elif record.return_type = "other_morphism" then
+            output_sanity_check_function := function( result )
+                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, false, output_human_readable_identifier_getter );
+            end;
+        elif record.return_type = "list_of_morphisms_or_fail" then
+            output_sanity_check_function := function( result )
+                if result <> fail then
+                    CAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
+                fi;
+            end;
         else
+            Display( Concatenation( "Warning: You should add an output sanity check for the following return_type: ", String( record.return_type ) ) );
             output_sanity_check_function := ReturnTrue;
         fi;
 

@@ -3,6 +3,22 @@
 #
 # Implementations
 #
+InstallValue( CAP_INTERNAL_VALID_RETURN_TYPES,
+#! @BeginCode CAP_INTERNAL_VALID_RETURN_TYPES
+    [
+        "object",
+        "object_or_fail",
+        "morphism",
+        "morphism_or_fail",
+        "twocell",
+        "bool",
+        "other_object",
+        "other_morphism",
+        "list_of_morphisms_or_fail",
+    ]
+#! @EndCode
+);
+
 InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD, rec(
 LiftAlongMonomorphism := rec(
   installation_name := "LiftAlongMonomorphism",
@@ -3320,12 +3336,53 @@ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism := rec
 ),
 
 SolveLinearSystemInAbCategory := rec(
-    ## TODO: Type-check of linear system
   installation_name := "SolveLinearSystemInAbCategoryOp",
   argument_list := [ 1, 2, 3 ],
-  filter_list := [ IsList, IsList, IsList, "category" ],
+  filter_list := [ IsList, IsList, "list_of_morphisms", "category" ],
   cache_name := "SolveLinearSystemInAbCategory",
-  return_type := "morphism_or_fail"
+  return_type := "list_of_morphisms_or_fail",
+  pre_function := function( left_coeffs, right_coeffs, rhs, cat )
+    
+    if not Length( left_coeffs ) > 0 then
+        return [ false, "the list of left coefficients is empty" ];
+    fi;
+    
+    if not Length( left_coeffs ) = Length( right_coeffs ) then
+        return [ false, "the list of left coefficients and the list of right coefficients do not have the same length" ];
+    fi;
+    
+    if not Length( left_coeffs ) = Length( rhs ) then
+        return [ false, "the list of left coefficients does not have the same length as the right hand side" ];
+    fi;
+    
+    if not ForAll( Concatenation( left_coeffs, right_coeffs ), x -> IsList( x ) and Length( x ) = Length( left_coeffs[1] ) and ForAll( x, y -> IsCapCategoryMorphism( y ) and IsIdenticalObj( CapCategory( y ), cat ) ) ) then
+        return [ false, "the left coefficients and the right coefficients must be given by lists of lists of the same length containing morphisms in the current category" ];
+    fi;
+    
+    return [ true ];
+    
+  end,
+  pre_function_full := function( left_coeffs, right_coeffs, rhs, cat )
+    
+    if not ForAll( [ 1 .. Length( left_coeffs ) ], i -> ForAll( left_coeffs[i], coeff -> IsEqualForObjects( Source( coeff ), Source( rhs[i] ) ) <> false ) ) then
+        return [ false, "the sources of the left coefficients must correspond to the sources of the right hand side" ];
+    fi;
+    
+    if not ForAll( [ 1 .. Length( right_coeffs ) ], i -> ForAll( right_coeffs[i], coeff -> IsEqualForObjects( Range( coeff ), Range( rhs[i] ) ) <> false ) ) then
+        return [ false, "the ranges of the right coefficients must correspond to the ranges of the right hand side" ];
+    fi;
+    
+    if not ForAll( [ 1 .. Length( left_coeffs[1] ) ], j -> ForAll( left_coeffs, x -> IsEqualForObjects( Range( x[j] ), Range( left_coeffs[1][j] ) ) <> false ) ) then
+        return [ false, "all ranges in a column of the left coefficients must be equal" ];
+    fi;
+    
+    if not ForAll( [ 1 .. Length( right_coeffs[1] ) ], j -> ForAll( right_coeffs, x -> IsEqualForObjects( Source( x[j] ), Source( right_coeffs[1][j] ) ) <> false ) ) then
+        return [ false, "all sources in a column of the right coefficients must be equal" ];
+    fi;
+    
+    return [ true ];
+    
+  end,
 ),
 
 MereExistenceOfSolutionOfLinearSystemInAbCategory := rec(
@@ -4498,6 +4555,15 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
     for current_recname in recnames do
         
         current_rec := record.(current_recname);
+        
+        # validity checks
+        if not IsBound( current_rec.return_type ) then
+            Error( "<current_rec> has no return_type" );
+        fi;
+        
+        if not ( IsFilter( current_rec.return_type ) or current_rec.return_type in CAP_INTERNAL_VALID_RETURN_TYPES ) then
+            Error( "the return_type of <current_rec> is not a filter and does not appear in CAP_INTERNAL_VALID_RETURN_TYPES" );
+        fi;
         
         current_rec.function_name := current_recname;
 
