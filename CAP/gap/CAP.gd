@@ -130,7 +130,8 @@ end );
 
 Perform(
 ## This is the CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST
-    [ [ "IsEnrichedOverCommutativeRegularSemigroup" ],
+    [ [ "IsEquippedWithHomomorphismStructure" ],
+      [ "IsEnrichedOverCommutativeRegularSemigroup" ],
       [ "IsSkeletalCategory" ],
       [ "IsAbCategory" ],
       [ "IsLinearCategoryOverCommutativeRing" ],
