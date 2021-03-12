@@ -14,18 +14,18 @@ InternalCoHomOnMorphismsWithGivenInternalCoHoms := rec(
   cache_name := "InternalCoHomOnMorphismsWithGivenInternalCoHoms",
   return_type := "morphism" ),
 
-CoEvaluationMorphismWithGivenRange := rec(
-  installation_name := "CoEvaluationMorphismWithGivenRange",
+CoclosedEvaluationMorphismWithGivenRange := rec(
+  installation_name := "CoclosedEvaluationMorphismWithGivenRange",
   filter_list := [ "object", "object", "object" ],
   io_type := [ [ "a", "b", "r" ], [ "a", "r" ] ],
-  cache_name := "CoEvaluationMorphismWithGivenRange",
+  cache_name := "CoclosedEvaluationMorphismWithGivenRange",
   return_type := "morphism" ),
 
-DualCoEvaluationMorphismWithGivenSource := rec(
-  installation_name := "DualCoEvaluationMorphismWithGivenSource",
+CoclosedCoevaluationMorphismWithGivenSource := rec(
+  installation_name := "CoclosedCoevaluationMorphismWithGivenSource",
   filter_list := [ "object", "object", "object" ],
   io_type := [ [ "a", "b", "s" ], [ "s", "b" ] ],
-  cache_name := "DualCoEvaluationMorphismWithGivenSource",
+  cache_name := "CoclosedCoevaluationMorphismWithGivenSource",
   return_type := "morphism" ),
 
 InternalCoHomToTensorProductAdjunctionMap := rec(
@@ -72,11 +72,11 @@ CoDualOnMorphismsWithGivenCoDuals := rec(
   cache_name := "CoDualOnMorphismsWithGivenCoDuals",
   return_type := "morphism" ),
 
-CoEvaluationForCoDualWithGivenTensorProduct := rec(
-  installation_name := "CoEvaluationForCoDualWithGivenTensorProduct",
+CoclosedEvaluationForCoDualWithGivenTensorProduct := rec(
+  installation_name := "CoclosedEvaluationForCoDualWithGivenTensorProduct",
   filter_list := [ "object", "object", "object" ],
   io_type := [ [ "s", "a", "r" ], [ "s", "r" ] ],
-  cache_name := "CoEvaluationForCoDualWithGivenTensorProduct",
+  cache_name := "CoclosedEvaluationForCoDualWithGivenTensorProduct",
   return_type := "morphism" ),
 
 MorphismFromCoBidualWithGivenCoBidual := rec(

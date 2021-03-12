@@ -10,8 +10,12 @@
 
 @Section Closed Monoidal Categories
 
+@Section Coclosed Monoidal Categories
+
 @Section Symmetric Closed Monoidal Categories
+
+@Section Symmetric Coclosed Monoidal Categories
 
 @Section Rigid Symmetric Closed Monoidal Categories
 
-@Section Coclosed Monoidal Categories
+@Section Rigid Symmetric Coclosed Monoidal Categories

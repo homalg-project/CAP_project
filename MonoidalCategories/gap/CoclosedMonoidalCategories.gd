@@ -13,8 +13,8 @@ DeclareGlobalVariable( "COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD" );
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCoclosedMonoidalCategory  := Concatenation( [
 "InternalCoHomOnObjects",
 "InternalCoHomOnMorphismsWithGivenInternalCoHoms",
-"CoEvaluationMorphismWithGivenRange",
-"DualCoEvaluationMorphismWithGivenSource"
+"CoclosedEvaluationMorphismWithGivenRange",
+"CoclosedCoevaluationMorphismWithGivenSource"
 ], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory );
 
 ##
@@ -28,7 +28,7 @@ DeclareOperation( "InternalCoHomOnObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InternalCoHomOnObjects</C>.
 #! $F: (a,b) \mapsto \mathrm{\underline{coHom}}(a,b)$.
 #! @Returns nothing
@@ -67,7 +67,7 @@ DeclareOperation( "InternalCoHomOnMorphismsWithGivenInternalCoHoms",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InternalCoHomOnMorphismsWithGivenInternalCoHoms</C>.
 #! $F: (\mathrm{\underline{coHom}}(a,b'), \alpha: a \rightarrow a', \beta: b \rightarrow b', \mathrm{\underline{coHom}}(a',b) ) \mapsto \mathrm{\underline{coHom}}(\alpha,\beta)$.
 #! @Returns nothing
@@ -84,82 +84,82 @@ DeclareOperation( "AddInternalCoHomOnMorphismsWithGivenInternalCoHoms",
 DeclareOperation( "AddInternalCoHomOnMorphismsWithGivenInternalCoHoms",
                   [ IsCapCategory, IsList ] );
 
-## TODO: Find a better name!
+
 #! @Description
 #! The arguments are two objects $a, b$.
-#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow b \otimes \mathrm{\underline{coHom}}(a,b)$, i.e.,
+#! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a,b}: a \rightarrow b \otimes \mathrm{\underline{coHom}}(a,b)$, i.e.,
 #! the unit of the cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, b \otimes \mathrm{\underline{coHom}}(a,b) )$.
 #! @Arguments a,b
-DeclareOperation( "CoEvaluationMorphism",
+DeclareOperation( "CoclosedEvaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 ## 3rd argument is $b \otimes \mathrm{\underline{coHom}}(a,b)$
 #! @Description
 #! The arguments are two objects $a,b$ and an object $r = b \otimes \mathrm{\underline{coHom}}(a,b)$.
-#! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow b \otimes \mathrm{\underline{coHom}}(a,b)$, i.e.,
+#! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a,b}: a \rightarrow b \otimes \mathrm{\underline{coHom}}(a,b)$, i.e.,
 #! the unit of the cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, b \otimes \mathrm{\underline{coHom}}(a,b) )$.
 #! @Arguments a,b, r
-DeclareOperation( "CoEvaluationMorphismWithGivenRange",
+DeclareOperation( "CoclosedEvaluationMorphismWithGivenRange",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
-#! to the category for the basic operation <C>CoEvaluationMorphismWithGivenRange</C>.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>CoclosedEvaluationMorphismWithGivenRange</C>.
 #! $F: (a, b, b \otimes \mathrm{\underline{coHom}}(a,b)) \mapsto \mathrm{coev}_{a,b}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddCoEvaluationMorphismWithGivenRange",
+DeclareOperation( "AddCoclosedEvaluationMorphismWithGivenRange",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCoEvaluationMorphismWithGivenRange",
+DeclareOperation( "AddCoclosedEvaluationMorphismWithGivenRange",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddCoEvaluationMorphismWithGivenRange",
+DeclareOperation( "AddCoclosedEvaluationMorphismWithGivenRange",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCoEvaluationMorphismWithGivenRange",
+DeclareOperation( "AddCoclosedEvaluationMorphismWithGivenRange",
                   [ IsCapCategory, IsList ] );
 
-## TODO: Find a better name!
+
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the dual coevaluation morphism $\mathrm{dcoev}_{a,b}: \mathrm{\underline{coHom}}(a \otimes b, a) \rightarrow b$, i.e.,
+#! The output is the coclosed coevaluation morphism $\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(a \otimes b, a) \rightarrow b$, i.e.,
 #! the counit of the cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a \otimes b, a), b )$.
 #! @Arguments a,b
-DeclareOperation( "DualCoEvaluationMorphism",
+DeclareOperation( "CoclosedCoevaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 ## 3rd argument is $\mathrm{\underline{coHom}}(a \otimes b, a)$
 #! @Description
 #! The arguments are two objects $a,b$ and an object $s = \mathrm{\underline{coHom}(a \otimes b, a)}$.
-#! The output is the dual coevaluation morphism $\mathrm{dcoev}_{a,b}: \mathrm{\underline{coHom}}(a \otimes b, a) \rightarrow b$, i.e.,
+#! The output is the coclosed coevaluation morphism $\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(a \otimes b, a) \rightarrow b$, i.e.,
 #! the unit of the cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a \otimes b, a), b )$.
 #! @Arguments a,b,s
-DeclareOperation( "DualCoEvaluationMorphismWithGivenSource",
+DeclareOperation( "CoclosedCoevaluationMorphismWithGivenSource",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
-#! to the category for the basic operation <C>DualCoEvaluationMorphismWithGivenSource</C>.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>CoclosedCoevaluationMorphismWithGivenSource</C>.
 #! $F: (a, b, \mathrm{\underline{coHom}}(a \otimes b, a)) \mapsto \mathrm{dcoev}_{a,b}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddDualCoEvaluationMorphismWithGivenSource",
+DeclareOperation( "AddCoclosedCoevaluationMorphismWithGivenSource",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddDualCoEvaluationMorphismWithGivenSource",
+DeclareOperation( "AddCoclosedCoevaluationMorphismWithGivenSource",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddDualCoEvaluationMorphismWithGivenSource",
+DeclareOperation( "AddCoclosedCoevaluationMorphismWithGivenSource",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddDualCoEvaluationMorphismWithGivenSource",
+DeclareOperation( "AddCoclosedCoevaluationMorphismWithGivenSource",
                   [ IsCapCategory, IsList ] );
 
 
@@ -174,7 +174,7 @@ DeclareOperation( "InternalCoHomToTensorProductAdjunctionMap",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InternalCoHomToTensorProductAdjunctionMap</C>.
 #! $F: (a, b, f: \mathrm{\underline{coHom}}(a,b) \rightarrow c) \mapsto ( g: a \rightarrow b \otimes c )$.
 #! @Returns nothing
@@ -202,7 +202,7 @@ DeclareOperation( "TensorProductToInternalCoHomAdjunctionMap",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>TensorProductToInternalCoHomAdjunctionMap</C>.
 #! $F: (a, b, g: a \rightarrow b \otimes c) \mapsto ( f: \mathrm{\underline{coHom}}(a,b) \rightarrow c)$.
 #! @Returns nothing
@@ -244,7 +244,7 @@ DeclareOperation( "MonoidalPreCoComposeMorphismWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MonoidalPreCoComposeMorphismWithGivenObjects</C>.
 #! $F: (\mathrm{\underline{coHom}}(a,c),a,b,c,\mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(b,c)) \mapsto \mathrm{MonoidalPreCoComposeMorphismWithGivenObjects}_{a,b,c}$.
 #! @Returns nothing
@@ -286,7 +286,7 @@ DeclareOperation( "MonoidalPostCoComposeMorphismWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MonoidalPostCoComposeMorphismWithGivenObjects</C>.
 #! $F: (\mathrm{\underline{coHom}}(a,c),a,b,c,\mathrm{\underline{coHom}}(b,c) \otimes \mathrm{\underline{coHom}}(a,b)) \mapsto \mathrm{MonoidalPostComposeMorphismWithGivenObjects}_{a,b,c}$.
 #! @Returns nothing
@@ -315,7 +315,7 @@ DeclareAttribute( "CoDualOnObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoDualOnObjects</C>.
 #! $F: a \mapsto a_{\vee}$.
 #! @Returns nothing
@@ -353,7 +353,7 @@ DeclareOperation( "CoDualOnMorphismsWithGivenCoDuals",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoDualOnMorphismsWithGivenCoDuals</C>.
 #! $F: (b_{\vee},\alpha,a_{\vee}) \mapsto \alpha_{\vee}$.
 #! @Returns nothing
@@ -373,10 +373,10 @@ DeclareOperation( "AddCoDualOnMorphismsWithGivenCoDuals",
 ##
 #! @Description
 #! The argument is an object $a$.
-#! The output is the coevaluation morphism $\mathrm{coev}_{a}: 1 \rightarrow a \otimes a_{\vee}$.
+#! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a}: 1 \rightarrow a \otimes a_{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}( 1, a \otimes a_{\vee} )$.
 #! @Arguments a
-DeclareAttribute( "CoEvaluationForCoDual",
+DeclareAttribute( "CoclosedEvaluationForCoDual",
                   IsCapCategoryObject );
 
 
@@ -384,29 +384,29 @@ DeclareAttribute( "CoEvaluationForCoDual",
 #! The arguments are an object $s = 1$,
 #! an object $a$,
 #! and an object $r = a \otimes a_{\vee}$.
-#! The output is the coevaluation morphism $\mathrm{coev}_{a}: 1 \rightarrow a \otimes a_{\vee}$.
+#! The output is the coclosed evaluation morphism $\mathrm{cocloev}_{a}: 1 \rightarrow a \otimes a_{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}( 1, a \otimes a_{\vee} )$.
 #! @Arguments s,a,r
-DeclareOperation( "CoEvaluationForCoDualWithGivenTensorProduct",
+DeclareOperation( "CoclosedEvaluationForCoDualWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
-#! to the category for the basic operation <C>CoEvaluationForCoDualWithGivenTensorProduct</C>.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>CoclosedEvaluationForCoDualWithGivenTensorProduct</C>.
 #! $F: (1, a, a \otimes a_{vee}) \mapsto \mathrm{coev}_{a}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddCoEvaluationForCoDualWithGivenTensorProduct",
+DeclareOperation( "AddCoclosedEvaluationForCoDualWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCoEvaluationForCoDualWithGivenTensorProduct",
+DeclareOperation( "AddCoclosedEvaluationForCoDualWithGivenTensorProduct",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddCoEvaluationForCoDualWithGivenTensorProduct",
+DeclareOperation( "AddCoclosedEvaluationForCoDualWithGivenTensorProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCoEvaluationForCoDualWithGivenTensorProduct",
+DeclareOperation( "AddCoclosedEvaluationForCoDualWithGivenTensorProduct",
                   [ IsCapCategory, IsList ] );
 
 ##
@@ -429,7 +429,7 @@ DeclareOperation( "MorphismFromCoBidualWithGivenCoBidual",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismFromCoBidualWithGivenCoBidual</C>.
 #! $F: ((a_{\vee})_{\vee}, a) \mapsto ((a_{\vee})_{\vee} \rightarrow a)$.
 #! @Returns nothing
@@ -472,7 +472,7 @@ DeclareOperation( "InternalCoHomTensorProductCompatibilityMorphismWithGivenObjec
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects</C>.
 #! $F: ( a,a',b,b', [ \mathrm{\underline{coHom}}(a \otimes a', b \otimes b'), \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b') ]) \mapsto \mathrm{InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}$.
 #! @Returns nothing
@@ -512,7 +512,7 @@ DeclareOperation( "CoDualityTensorProductCompatibilityMorphismWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoDualityTensorProductCompatibilityMorphismWithGivenObjects</C>.
 #! $F: ( (a \otimes b)_{\vee}, a, b, a_{\vee} \otimes b_{\vee} ) \mapsto \mathrm{CoDualityTensorProductCompatibilityMorphismWithGivenObjects}_{a,b}$.
 #! @Returns nothing
@@ -551,7 +551,7 @@ DeclareOperation( "MorphismFromInternalCoHomToTensorProductWithGivenObjects",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismFromInternalCoHomToTensorProductWithGivenObjects</C>.
 #! $F: ( \mathrm{\underline{coHom}}(a,b), a, b, a \otimes b_{\vee} ) \mapsto \mathrm{MorphismFromInternalCoHomToTensorProductWithGivenObjects}_{a,b}$.
 #! @Returns nothing
@@ -580,7 +580,7 @@ DeclareAttribute( "IsomorphismFromCoDualToInternalCoHom",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromCoDualToInternalCoHom</C>.
 #! $F: a \mapsto \mathrm{IsomorphismFromCoDualToInternalCoHom}_{a}$
 #! @Returns nothing
@@ -609,7 +609,7 @@ DeclareAttribute( "IsomorphismFromInternalCoHomToCoDual",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromInternalCoHomToCoDual</C>.
 #! $F: a \mapsto \mathrm{IsomorphismFromInternalCoHomToCoDual}_{a}$
 #! @Returns nothing
@@ -640,7 +640,7 @@ DeclareOperation( "UniversalPropertyOfCoDual",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>UniversalPropertyOfCoDual</C>.
 #! $F: ( a,t,\alpha: 1 \rightarrow a \otimes t ) \mapsto ( a^{\vee} \rightarrow t )$.
 #! @Returns nothing
@@ -669,7 +669,7 @@ DeclareAttribute( "CoLambdaIntroduction",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoLambdaIntroduction</C>.
 #! $F: ( \alpha: a \rightarrow b ) \mapsto ( \mathrm{\underline{coHom}}(a,b) \rightarrow 1 )$.
 #! @Returns nothing
@@ -699,7 +699,7 @@ DeclareOperation( "CoLambdaElimination",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoLambdaElimination</C>.
 #! $F: ( a,b,\alpha: \mathrm{\underline{coHom}}(a,b) \rightarrow 1 ) \mapsto ( a \rightarrow b )$.
 #! @Returns nothing
@@ -736,7 +736,7 @@ DeclareOperation( "IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom</C>.
 #! $F: ( a, \mathrm{\underline{coHom}}(a,1) ) \mapsto ( a \rightarrow \mathrm{\underline{coHom}}(a,1) )$.
 #! @Returns nothing
@@ -773,7 +773,7 @@ DeclareOperation( "IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom",
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
-#! This operations adds the given function $F$
+#! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom</C>.
 #! $F: ( a, \mathrm{\underline{coHom}}(a,1) ) \mapsto ( \mathrm{\underline{coHom}}(a,1) \rightarrow a )$.
 #! @Returns nothing

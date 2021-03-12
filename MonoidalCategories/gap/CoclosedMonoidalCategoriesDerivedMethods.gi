@@ -14,7 +14,7 @@ AddFinalDerivation( IsomorphismFromCoDualToInternalCoHom,
                       IsomorphismFromInternalCoHomToCoDual,
                       UniversalPropertyOfCoDual,
                       CoDualityTensorProductCompatibilityMorphismWithGivenObjects,
-                      CoEvaluationForCoDualWithGivenTensorProduct,
+                      CoclosedEvaluationForCoDualWithGivenTensorProduct,
                       MorphismFromInternalCoHomToTensorProductWithGivenObjects
                       ],
   function( object )
@@ -38,7 +38,7 @@ AddFinalDerivation( IsomorphismFromInternalCoHomToCoDual,
                       IsomorphismFromInternalCoHomToCoDual,
                       UniversalPropertyOfCoDual,
                       CoDualityTensorProductCompatibilityMorphismWithGivenObjects,
-                      CoEvaluationForCoDualWithGivenTensorProduct,
+                      CoclosedEvaluationForCoDualWithGivenTensorProduct,
                       MorphismFromInternalCoHomToTensorProductWithGivenObjects
                       ],
 
