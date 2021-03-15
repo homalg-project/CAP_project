@@ -7,9 +7,6 @@ LoadPackage( "FreydCategoriesForCAP" );;
 #! @Example
 G := SymmetricGroup( 3 );;
 CG := GroupAsCategory( G );;
-#! #I  method installed for IsAutomorphism matches more than one declaration
-#! #I  method installed for IsSplitEpimorphism matches more than one declaration
-#! #I  method installed for IsSplitMonomorphism matches more than one declaration
 compare_func := function( g, h ) return UnderlyingGroupElement( g ) < UnderlyingGroupElement( h ); end;;
 ZZ := HomalgRingOfIntegers();;
 ZCG := LinearClosure( ZZ, CG, compare_func );;

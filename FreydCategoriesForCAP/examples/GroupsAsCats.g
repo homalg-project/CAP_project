@@ -7,9 +7,6 @@ LoadPackage( "FreydCategoriesForCAP" );;
 #! @Example
 G := SymmetricGroup( 3 );;
 CG := GroupAsCategory( G );;
-#! #I  method installed for IsAutomorphism matches more than one declaration
-#! #I  method installed for IsSplitEpimorphism matches more than one declaration
-#! #I  method installed for IsSplitMonomorphism matches more than one declaration
 u := GroupAsCategoryUniqueObject( CG );;
 alpha := GroupAsCategoryMorphism( (1,2,3), CG );;
 alpha * Inverse( alpha ) = IdentityMorphism( u );
