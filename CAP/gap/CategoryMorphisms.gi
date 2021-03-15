@@ -220,7 +220,14 @@ InstallMethod( IsEqualForCacheForMorphisms,
                
   IsEqualForCache );
 
+##
+# generic fallback to IsIdenticalObj
+InstallOtherMethod( IsEqualForCache,
+               [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  { cat, mor1, mor2 } -> IsIdenticalObj( mor1, mor2 ) );
 
+##
 InstallMethod( AddMorphismRepresentation,
                [ IsCapCategory, IsObject ],
                

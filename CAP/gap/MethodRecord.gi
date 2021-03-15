@@ -4412,9 +4412,9 @@ BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
             
             has_arg_list := arg{ has_arguments };
             
-            cache := GET_METHOD_CACHE( category, cache_name, Length( has_arguments ) );
+            cache := GET_METHOD_CACHE( category, cache_name, Length( has_arg_list ) + 1 );
             
-            has_return := CallFuncList( CacheValue,  [ cache, has_arg_list ] );
+            has_return := CallFuncList( CacheValue, [ cache, Concatenation( [ category ], has_arg_list ) ] );
             
             if has_return = [ ] then
                 
@@ -4439,21 +4439,25 @@ BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
             
             has_arg_list := arg{ has_arguments };
             
-            if not attribute_tester( has_arg_list ) then
+            if not IsEmpty( has_arg_list ) and attribute_tester( has_arg_list[1] ) then
                 
-                cache := GET_METHOD_CACHE( category, cache_name, Length( has_arguments ) );
+                has_return := [ CallFuncList( object_function, has_arg_list ) ];
                 
-                has_return := CallFuncList( CacheValue,  [ cache, has_arg_list ] );
+            elif IsEmpty( has_arg_list ) and attribute_tester( category ) then
+                
+                has_return := [ CallFuncList( object_function, [ category ] ) ];
+                
+            else
+                
+                cache := GET_METHOD_CACHE( category, cache_name, Length( has_arg_list ) + 1 );
+                
+                has_return := CallFuncList( CacheValue, [ cache, Concatenation( [ category ], has_arg_list ) ] );
                 
                 if has_return = [ ] then
                     
                     return [ false ];
                     
                 fi;
-                
-            else
-                
-                has_return := CallFuncList( object_function, has_arg_list );
                 
             fi;
             
@@ -4481,7 +4485,7 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
     diagram_name := Concatenation( object_call_name, "Diagram" );
     setter_function := Setter( ValueGlobal( object_function_name ) );
     is_attribute := setter_function <> false;
-    cache_key_length := Length( object_function_argument_list );
+    cache_key_length := Length( object_function_argument_list ) + 1;
     
     if not is_attribute then
     
@@ -4496,7 +4500,7 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
             Remove( arg );
             object := object_getter( result );
             
-            SET_VALUE_OF_CATEGORY_CACHE( category, object_cache_name, cache_key_length, arg{ object_function_argument_list }, object );
+            SET_VALUE_OF_CATEGORY_CACHE( category, object_cache_name, cache_key_length, Concatenation( [ category ], arg{ object_function_argument_list } ), object );
             
         end;
         
@@ -4513,7 +4517,7 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
             Remove( arg );
             object := object_getter( result );
             
-            SET_VALUE_OF_CATEGORY_CACHE( category, object_cache_name, cache_key_length, arg{ object_function_argument_list }, object );
+            SET_VALUE_OF_CATEGORY_CACHE( category, object_cache_name, cache_key_length, Concatenation( [ category ], arg{ object_function_argument_list } ), object );
             CallFuncList( setter_function, Concatenation( arg{ object_function_argument_list }, [ object ] ) );
             
         end;
@@ -4656,7 +4660,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
             if current_rec.number_of_diagram_arguments = 0 then
                 
-                arg_list := [ 1 ];
+                arg_list := [ ];
                 
             elif ForAll( current_rec.filter_list{diagram_arguments}, i -> i = IsList or i = "list_of_objects" or i = "list_of_morphisms" ) then
                 
@@ -4709,7 +4713,15 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 fi;
                 
                 if not IsBound( current_rec.post_function ) then
+                    
+                    if current_rec.number_of_diagram_arguments = 0 then
+                        
+                        Error( "CAP_INTERNAL_CREATE_POST_FUNCTION currently does not support this case" );
+                        
+                    fi;
+                    
                     current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.universal_object_position, object_func, arg_list, object_name, object_func );
+                    
                 fi;
                 
             fi;

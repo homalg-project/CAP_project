@@ -42,7 +42,8 @@ InstallGlobalFunction( CapInternalInstallAdd,
   function( record )
     local function_name, install_name, add_name, pre_function, pre_function_full,
           redirect_function, post_function, filter_list, caching,
-          cache_name, nr_arguments, argument_list, add_function;
+          cache_name, nr_arguments, argument_list, add_function, replaced_filter_list,
+          enhanced_filter_list, get_convenience_function;
     
     function_name := record.function_name;
     
@@ -88,6 +89,13 @@ InstallGlobalFunction( CapInternalInstallAdd,
         caching := true;
         cache_name := record.cache_name;
         nr_arguments := Length( filter_list );
+        
+        if filter_list[1] <> "category" then
+            
+            nr_arguments := nr_arguments + 1;
+            
+        fi;
+        
     else
         caching := false;
     fi;
@@ -110,6 +118,41 @@ InstallGlobalFunction( CapInternalInstallAdd,
         add_function := CAP_INTERNAL_ADD_MORPHISM_OR_FAIL;
     else
         add_function := ReturnTrue;
+    fi;
+    
+    # declare operation with category as first argument and install convenience method
+    if filter_list[1] <> "category" then
+        
+        replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list );
+        
+        enhanced_filter_list := Concatenation( [ IsCapCategory ], replaced_filter_list );
+        
+        DeclareOperation( install_name, enhanced_filter_list );
+        
+        if filter_list[1] in [ "object", "morphism", "twocell" ] or ( IsList( filter_list[1] ) and filter_list[1][1] in [ "object", "morphism", "twocell" ] ) then
+            
+            get_convenience_function := oper -> { arg } -> CallFuncList( oper, Concatenation( [ CapCategory( arg[1] ) ], arg ) );
+            
+        elif filter_list[1] = "list_of_objects" or filter_list[1] = "list_of_morphisms" then
+            
+            get_convenience_function := oper -> { arg } -> CallFuncList( oper, Concatenation( [ CapCategory( arg[1][1] ) ], arg ) );
+            
+        elif filter_list[2] in [ "object", "morphism", "twocell" ] then
+            
+            get_convenience_function := oper -> { arg } -> CallFuncList( oper, Concatenation( [ CapCategory( arg[2] ) ], arg ) );
+            
+        elif filter_list[3] = "list_of_objects" or filter_list[3] = "list_of_morphisms" then
+            
+            get_convenience_function := oper -> { arg } -> CallFuncList( oper, Concatenation( [ CapCategory( arg[3][1] ) ], arg ) );
+            
+        else
+            
+            Error( Concatenation( "please add a way to derive the category from the arguments of ", install_name ) );
+            
+        fi;
+        
+        InstallMethod( ValueGlobal( install_name ), replaced_filter_list, get_convenience_function( ValueGlobal( install_name ) ) );
+        
     fi;
     
     InstallMethod( ValueGlobal( add_name ),
@@ -383,18 +426,44 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
         fi;
         
-        install_func := function( func_to_install, filter_list )
+        install_func := function( func_to_install, additional_filters )
           local new_filter_list, index;
             
-            Add( category!.added_functions.( function_name ), [ func_to_install, filter_list ] );
+            Add( category!.added_functions.( function_name ), [ func_to_install, additional_filters ] );
             
-            new_filter_list := CAP_INTERNAL_MERGE_FILTER_LISTS( replaced_filter_list, filter_list );
+            new_filter_list := CAP_INTERNAL_MERGE_FILTER_LISTS( replaced_filter_list, additional_filters );
+            
+            # always allow to pass the category as first argument
+            if filter_list[1] <> "category" then
+                
+                new_filter_list := Concatenation( [ CategoryFilter( category ) and IsCapCategory ], new_filter_list );
+                
+            fi;
             
             if category!.enable_compilation = true or ( IsList( category!.enable_compilation ) and function_name in category!.enable_compilation ) then
                 
                 index := Length( category!.added_functions.( function_name ) );
                 
-                if Size( new_filter_list ) <> Size( argument_list ) then
+                if filter_list[1] <> "category" then
+                    
+                    InstallMethod( ValueGlobal( install_name ),
+                                new_filter_list,
+                        
+                        function( arg )
+                            
+                            if not IsBound( category!.compiled_functions.( function_name )[ index ] ) then
+                                
+                                # strip category as first argument if it was artificially added above
+                                category!.compiled_functions.( function_name )[ index ] := cap_jit_compiled_function( func_to_install, arg{ argument_list + 1 } );
+                                
+                            fi;
+                            
+                            # strip category as first argument if it was artificially added above
+                            return CallFuncList( category!.compiled_functions.( function_name )[ index ], arg{ argument_list + 1 } );
+                            
+                    end );
+                    
+                else
                     
                     InstallMethod( ValueGlobal( install_name ),
                                 new_filter_list,
@@ -411,32 +480,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
                             
                     end );
                     
-                else
-                    
-                    if not ( IsProperty( ValueGlobal( install_name ) ) and IsIdenticalObj( func_to_install, ReturnTrue ) ) then
-                        
-                        InstallMethod( ValueGlobal( install_name ),
-                                    new_filter_list,
-                            function( arg )
-                                
-                                if not IsBound( category!.compiled_functions.( function_name )[ index ] ) then
-                                    
-                                    category!.compiled_functions.( function_name )[ index ] := cap_jit_compiled_function( func_to_install, arg );
-                                    
-                                fi;
-                                
-                                return CallFuncList( category!.compiled_functions.( function_name )[ index ], arg );
-                                
-                        end );
-                        
-                    else
-                        
-                        ## the call of InstallMethod triggers an error in GAP:
-                        ## use `InstallTrueMethod' for <opr>
-                        InstallTrueMethod( ValueGlobal( install_name ), new_filter_list[1] );
-                        
-                    fi;
-                    
                 fi;
                 
             elif category!.overhead then
@@ -447,6 +490,13 @@ InstallGlobalFunction( CapInternalInstallAdd,
                   function( arg )
                     local redirect_return, filter, human_readable_identifier_getter, pre_func_return, result, i, j;
                     
+                    # strip category as first argument if it was artificially added above
+                    if filter_list[1] <> "category" then
+                        
+                        arg := arg{[ 2 .. Length( arg ) ]};
+                        
+                    fi;
+
                     if (redirect_function <> false) and (not IsBound( category!.redirects.( function_name ) ) or category!.redirects.( function_name ) <> false) then
                         redirect_return := CallFuncList( redirect_function, Concatenation( [ category ], arg ) );
                         if redirect_return[ 1 ] = true then
@@ -504,33 +554,28 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
             else #category!.overhead = false
                 
-                if Size( new_filter_list ) <> Size( argument_list ) then
+                if filter_list[1] <> "category" then
                     
                     InstallMethod( ValueGlobal( install_name ),
                                 new_filter_list,
-                                    
+                        
                         function( arg )
                             
-                            return CallFuncList( func_to_install, arg{ argument_list } );
+                            # strip category as first argument if it was artificially added above
+                            return CallFuncList( func_to_install, arg{ argument_list + 1 } );
                             
                     end );
                     
                 else
                     
-                    if not ( IsProperty( ValueGlobal( install_name ) ) and IsIdenticalObj( func_to_install, ReturnTrue ) ) then
+                    InstallMethod( ValueGlobal( install_name ),
+                                new_filter_list,
                         
-                        InstallMethod( ValueGlobal( install_name ),
-                                    new_filter_list,
-                                    func_to_install
-                        );
-                        
-                    else
-                        
-                        ## the call of InstallMethod triggers an error in GAP:
-                        ## use `InstallTrueMethod' for <opr>
-                        InstallTrueMethod( ValueGlobal( install_name ), new_filter_list[1] );
-                        
-                    fi;
+                        function( arg )
+                            
+                            return CallFuncList( func_to_install, arg{ argument_list } );
+                            
+                    end );
                     
                 fi;
                 
