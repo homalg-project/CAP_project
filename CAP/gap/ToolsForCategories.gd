@@ -44,12 +44,13 @@ DeclareGlobalFunction( "DeclareAttributeWithToDoForIsWellDefined" );
 DeclareGlobalFunction( "DeclareFamilyProperty" );
 
 
-#! @Arguments list, category
+#! @Arguments list[, category]
 #! @Returns Replaced list
 #! @Description
 #!  The function takes a list (of lists) of filters or strings, where the strings
 #!  can be category, cell, object, morphism, or twocell. The strings are then recursively replaced
 #!  by the corresponding filters of the category. The replaced list is returned.
+#!  If no category is given, generic filters (`IsCapCategoryObject`, `IsCapCategoryMorphism` etc.) are used.
 DeclareGlobalFunction( "CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS" );
 
 #! @Arguments list, additional list
