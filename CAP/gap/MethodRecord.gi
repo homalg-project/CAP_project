@@ -4464,17 +4464,14 @@ end );
 BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
   
   function( source_range_object, object_function_name, object_function_argument_list, object_call_name, object_cache_name )
-    local object_getter, set_object, diagram_name, setter_function, is_attribute, cache_key_length;
+    local object_getter, diagram_name, setter_function, is_attribute, cache_key_length;
     
     if source_range_object = "Source" then
         object_getter := Source;
-        set_object := true;
     elif source_range_object = "Range" then
         object_getter := Range;
-        set_object := true;
     else
-        object_getter := IdFunc;
-        set_object := false;
+        Error( "the first argument of CAP_INTERNAL_CREATE_POST_FUNCTION must be 'Source' or 'Range'" );
     fi;
     
     diagram_name := Concatenation( object_call_name, "Diagram" );
@@ -4495,9 +4492,7 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
             Remove( arg );
             object := object_getter( result );
             
-            if set_object then
-                  SET_VALUE_OF_CATEGORY_CACHE( category, object_cache_name, cache_key_length, arg{ object_function_argument_list }, object );
-            fi;
+            SET_VALUE_OF_CATEGORY_CACHE( category, object_cache_name, cache_key_length, arg{ object_function_argument_list }, object );
             
         end;
         
@@ -4514,10 +4509,8 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
             Remove( arg );
             object := object_getter( result );
             
-            if set_object then
-                SET_VALUE_OF_CATEGORY_CACHE( category, object_cache_name, cache_key_length, arg{ object_function_argument_list }, object );
-                CallFuncList( setter_function, Concatenation( arg{ object_function_argument_list }, [ object ] ) );
-            fi;
+            SET_VALUE_OF_CATEGORY_CACHE( category, object_cache_name, cache_key_length, arg{ object_function_argument_list }, object );
+            CallFuncList( setter_function, Concatenation( arg{ object_function_argument_list }, [ object ] ) );
             
         end;
         
@@ -4673,13 +4666,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
             current_rec.universal_object_arg_list := arg_list;
             
-            if not IsBound( current_rec.universal_object_position ) then
-                
-                if not IsBound( current_rec.post_function ) then
-                    current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( "id", current_rec.installation_name, arg_list, current_recname, "irrelevant" ); ##Please note that the third argument is not used
-                fi;
-                
-            else
+            if IsBound( current_rec.universal_object_position ) then
                 
                 ## find with given name
                 
