@@ -1492,9 +1492,7 @@ EmbeddingOfEqualizerWithGivenEqualizer := rec(
   io_type := [ [ "morphisms", "P" ], [ "P", "morphisms_1_source" ] ],
   number_of_diagram_arguments := 1,
   universal_type := "Limit",
-  dual_operation := "ProjectionOntoCoequalizerWithGivenCoequalizer",
-  
-  pre_function := ~.Equalizer.pre_function ),
+  dual_operation := "ProjectionOntoCoequalizerWithGivenCoequalizer" ),
 
 MorphismFromEqualizerToSink := rec(
   installation_name := "MorphismFromEqualizerToSinkOp",
@@ -1925,9 +1923,7 @@ ProjectionOntoCoequalizerWithGivenCoequalizer := rec(
   io_type := [ [ "morphisms", "P" ], [ "morphisms_1_range", "P" ] ],
   number_of_diagram_arguments := 1,
   universal_type := "Colimit",
-  dual_operation := "EmbeddingOfEqualizerWithGivenEqualizer",
-  
-  pre_function := ~.Coequalizer.pre_function ),
+  dual_operation := "EmbeddingOfEqualizerWithGivenEqualizer" ),
 
 MorphismFromSourceToCoequalizer := rec(
   installation_name := "MorphismFromSourceToCoequalizerOp",
@@ -2154,7 +2150,7 @@ MorphismFromSourceToPushoutWithGivenPushout := rec(
   universal_type := "Colimit",
   dual_operation := "MorphismFromFiberProductToSinkWithGivenFiberProduct",
   
-  pre_function := function( diagram, injection_number, pushout )
+  pre_function := function( diagram, pushout )
     local cobase, current_morphism, current_value;
     
     cobase := Source( diagram[1] );
@@ -4571,6 +4567,10 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             number_of_arguments := Length( current_rec.argument_list );
         else
             number_of_arguments := Length( current_rec.filter_list );
+        fi;
+        
+        if IsBound( current_rec.pre_function ) and NumberArgumentsFunction( current_rec.pre_function ) >= 0 and NumberArgumentsFunction( current_rec.pre_function ) <> Length( current_rec.filter_list ) then
+            Error( "the pre function of <current_rec> has the wrong number of arguments" );
         fi;
         
         # the redirect function is called with the category as an additional argument -> install wrapper dropping the category if necessary
