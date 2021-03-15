@@ -1935,7 +1935,7 @@ DeclareOperation( "AddInterpretMorphismFromDistinguishedObjectToHomomorphismStru
 
 ##
 DeclareOperation( "SolveLinearSystemInAbCategoryOp",
-                   [ IsList, IsList, IsList, IsCapCategory ] );
+                   [ IsList, IsList, IsList ] );
 
 #! @Description
 #! The arguments are three lists $\alpha$, $\beta$, and $\gamma$.
@@ -1970,7 +1970,7 @@ DeclareOperation( "AddSolveLinearSystemInAbCategory",
 
 ##
 DeclareOperation( "MereExistenceOfSolutionOfLinearSystemInAbCategoryOp",
-                   [ IsList, IsList, IsList, IsCapCategory ] );
+                   [ IsList, IsList, IsList ] );
 
 #! @Description
 #! Like <C>SolveLinearSystemInAbCategory</C>,

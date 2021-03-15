@@ -146,11 +146,6 @@ The record can have the following components, used as described:
 * cache_name (optional): The name of the cache which is used for the installed methods. If no cache name is given, the caching
                          for the operation is deactivated completely.
 
-* argument_list (optional): A list containing integers, which defines which arguments should be used for the additional functions, (e.g redirect, pre, ...).
-                            This is important for the Op method contructions. If no argument list is given, all arguments are used.
-                            Please note that if you have a method selection argument for your function, you need to give the argument_list
-                            to explicitly state which argument is the method selection argument.
-
 * return_type: The return type can either be a filter or one of the strings in the list below.
                For objects, morphisms and $2$-cells the correct <C>Add</C> function (see above) is
                used for the result of the computation. Otherwise, no <C>Add</C> function is used after all.
@@ -190,15 +185,8 @@ The function CAP_INTERNAL_ENHANCE_NAME_RECORD can be applied to a method name re
 * Redirect and post functions: Since the redirect and post functions need the category to work correctly, the given functions in the method records are
             packed up to discard the first argument (which is the category) if necessary.
 
-* universal_object_arg_list: An argument list for redirect and post functions is created, by looking at the filter list in the record.
-            If the number of diagram arguments is zero, no argument is used.
-            If all diagram arguments are lists, the diagram arguments and additionally the last argument (method selection argument) are used.
-            Otherwise, the diagram arguments are used.
-
 * WithGiven special case: If the current entry belongs to a WithGiven operation or its without given pair, the with_given_without_given_name_pair is set.
                           Additionally, the with given flag of the WithGiven operation is set to true.
-
-* argument_list: If argument_list is not bound, it is set to include all arguments.
 
 * Redirect and post functions are created for all operations belonging to universal constructions (e.g. KernelLift) which are not a WithGiven operation.
 

@@ -525,7 +525,7 @@ InstallMethod( SolveLinearSystemInAbCategory,
                
   function( left_coeffs, right_coeffs, right_side )
     
-    return SolveLinearSystemInAbCategoryOp( left_coeffs, right_coeffs, right_side, CapCategory( right_side[1] ) );
+    return SolveLinearSystemInAbCategoryOp( CapCategory( right_side[1] ), left_coeffs, right_coeffs, right_side );
     
 end );
 
@@ -535,7 +535,7 @@ InstallMethod( MereExistenceOfSolutionOfLinearSystemInAbCategory,
                
   function( left_coeffs, right_coeffs, right_side )
     
-    return MereExistenceOfSolutionOfLinearSystemInAbCategoryOp( left_coeffs, right_coeffs, right_side, CapCategory( right_side[1] ) );
+    return MereExistenceOfSolutionOfLinearSystemInAbCategoryOp( CapCategory( right_side[1] ), left_coeffs, right_coeffs, right_side );
     
 end );
 

@@ -42,7 +42,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
   function( record )
     local function_name, install_name, add_name, pre_function, pre_function_full,
           redirect_function, post_function, filter_list, caching,
-          cache_name, nr_arguments, argument_list, add_function, replaced_filter_list,
+          cache_name, nr_arguments, add_function, replaced_filter_list,
           enhanced_filter_list, get_convenience_function;
     
     function_name := record.function_name;
@@ -98,12 +98,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
     else
         caching := false;
-    fi;
-    
-    if IsBound( record.argument_list ) then
-        argument_list := record.argument_list;
-    else
-        argument_list := [ 1 .. Length( filter_list ) ];
     fi;
     
     if record.return_type = "object" then
@@ -267,7 +261,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
         ## Nr arguments sanity check
         
-        number_of_proposed_arguments := Length( argument_list );
+        number_of_proposed_arguments := Length( filter_list );
         
         for current_function_number in [ 1 .. Length( method_list ) ] do
             
@@ -454,12 +448,12 @@ InstallGlobalFunction( CapInternalInstallAdd,
                             if not IsBound( category!.compiled_functions.( function_name )[ index ] ) then
                                 
                                 # strip category as first argument if it was artificially added above
-                                category!.compiled_functions.( function_name )[ index ] := cap_jit_compiled_function( func_to_install, arg{ argument_list + 1 } );
+                                category!.compiled_functions.( function_name )[ index ] := cap_jit_compiled_function( func_to_install, arg{[ 2 .. Length( arg ) ]} );
                                 
                             fi;
                             
                             # strip category as first argument if it was artificially added above
-                            return CallFuncList( category!.compiled_functions.( function_name )[ index ], arg{ argument_list + 1 } );
+                            return CallFuncList( category!.compiled_functions.( function_name )[ index ], arg{[ 2 .. Length( arg ) ]} );
                             
                     end );
                     
@@ -472,11 +466,11 @@ InstallGlobalFunction( CapInternalInstallAdd,
                             
                             if not IsBound( category!.compiled_functions.( function_name )[ index ] ) then
                                 
-                                category!.compiled_functions.( function_name )[ index ] := cap_jit_compiled_function( func_to_install, arg{ argument_list } );
+                                category!.compiled_functions.( function_name )[ index ] := cap_jit_compiled_function( func_to_install, arg );
                                 
                             fi;
                             
-                            return CallFuncList( category!.compiled_functions.( function_name )[ index ], arg{ argument_list } );
+                            return CallFuncList( category!.compiled_functions.( function_name )[ index ], arg );
                             
                     end );
                     
@@ -501,7 +495,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                         redirect_return := CallFuncList( redirect_function, Concatenation( [ category ], arg ) );
                         if redirect_return[ 1 ] = true then
                             if category!.predicate_logic then
-                                INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, redirect_return[ 2 ], category );
+                                INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg, redirect_return[ 2 ], category );
                             fi;
                             return redirect_return[ 2 ];
                         fi;
@@ -526,10 +520,10 @@ InstallGlobalFunction( CapInternalInstallAdd,
                         
                     fi;
                     
-                    result := CallFuncList( func_to_install, arg{ argument_list } );
+                    result := CallFuncList( func_to_install, arg );
                     
                     if category!.predicate_logic then
-                        INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg{ argument_list }, result, category );
+                        INSTALL_TODO_FOR_LOGICAL_THEOREMS( record.function_name, arg, result, category );
                     fi;
                     
                     if (not is_derivation) then
@@ -562,7 +556,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                         function( arg )
                             
                             # strip category as first argument if it was artificially added above
-                            return CallFuncList( func_to_install, arg{ argument_list + 1 } );
+                            return CallFuncList( func_to_install, arg{[ 2 .. Length( arg ) ]} );
                             
                     end );
                     
@@ -573,7 +567,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                         
                         function( arg )
                             
-                            return CallFuncList( func_to_install, arg{ argument_list } );
+                            return CallFuncList( func_to_install, arg );
                             
                     end );
                     
