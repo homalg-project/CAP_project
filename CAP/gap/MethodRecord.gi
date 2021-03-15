@@ -2923,7 +2923,7 @@ VerticalPostCompose := rec(
 
 IdentityTwoCell := rec(
   installation_name := "IdentityTwoCell",
-  filter_list := [ "twocell" ],
+  filter_list := [ "morphism" ],
   dual_operation := "IdentityTwoCell",
   return_type := "twocell" ),
 
@@ -3385,7 +3385,7 @@ MereExistenceOfSolutionOfLinearSystemInAbCategory := rec(
     ## TODO: Type-check of linear system
   installation_name := "MereExistenceOfSolutionOfLinearSystemInAbCategoryOp",
   argument_list := [ 1, 2, 3 ],
-  filter_list := [ IsList, IsList, IsList, "category" ],
+  filter_list := [ IsList, IsList, "list_of_morphisms", "category" ],
   cache_name := "MereExistenceOfSolutionOfLinearSystemInAbCategory",
   return_type := "bool"
 ),
