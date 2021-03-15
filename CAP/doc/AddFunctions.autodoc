@@ -122,8 +122,11 @@ The record can have the following components, used as described:
 * post_function (optional): A function which is used as the postfunction of the installed methods, as described above.
 
 * filter_list: A list containing the basic filters for the methods installed by the add methods. Possible entries are filters, or
-               the following strings, which will be replaced by appropriate filters at the time the add method is called.
+               the strings listed below, which will be replaced by appropriate filters at the time the add method is called.
                Additionally, an entry can be a list consisting of filters and/or the given strings, which will then be joined via `and` to form a single filter.
+               If the first filter is <C>category</C> and the category can be inferred from the remaining arguments, a convenience method without the category
+               as the first argument is installed automatically. Additionally, the category is not passed to primitively added functions, except if
+               `category!.category_as_first_argument` is set to `true` (this will probably change to be the default in the future).
                * <C>category</C>,
                * <C>cell</C>,
                * <C>object</C>,
@@ -181,9 +184,6 @@ The function CAP_INTERNAL_ENHANCE_NAME_RECORD can be applied to a method name re
 * Cache check: If there is no cache_name, set it to the installation_name.
 
 * Function name: Set the component function_name to the entry name.
-
-* Redirect and post functions: Since the redirect and post functions need the category to work correctly, the given functions in the method records are
-            packed up to discard the first argument (which is the category) if necessary.
 
 * WithGiven special case: If the current entry belongs to a WithGiven operation or its without given pair, the with_given_without_given_name_pair is set.
                           Additionally, the with given flag of the WithGiven operation is set to true.
