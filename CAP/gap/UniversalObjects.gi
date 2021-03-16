@@ -540,40 +540,6 @@ InstallMethod( MorphismFromEqualizerToSink,
     
 end );
 
-##
-InstallMethod( EqualizerFunctorial,
-               [ IsList ],
-               
-  function( triple )
-    
-    Print(
-      Concatenation(
-      "WARNING: EqualizerFunctorial( IsList ) is deprecated and will not be supported after 2019.09.19. ",
-      "Please use EqualizerFunctorial( IsList, IsCapCategoryMorphism, IsList ) instead.\n"
-      )
-    );
-    
-    return EqualizerFunctorial( triple[1], triple[2], triple[3] );
-    
-end );
-
-##
-InstallMethod( EqualizerFunctorialWithGivenEqualizers,
-               [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
-               
-  function( source, triple, range )
-    
-    Print(
-      Concatenation(
-      "WARNING: EqualizerFunctorialWithGivenEqualizers( IsCapCategoryObject, IsList, IsCapCategoryObject ) is deprecated and will not be supported after 2019.09.19. ",
-      "Please use EqualizerFunctorialWithGivenEqualizers( IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject ) instead.\n"
-      )
-    );
-    
-    return EqualizerFunctorialWithGivenEqualizers( source, triple[1], triple[2], triple[3], range );
-    
-end );
-
 ####################################
 ##
 ## FiberProduct
@@ -744,54 +710,6 @@ InstallMethod( IsomorphismFromCoequalizerOfCoproductDiagramToPushout,
 end );
 
 ####################################
-## Functorial operations
-####################################
-
-##
-InstallMethod( FiberProductFunctorial,
-               [ IsList ],
-               
-  function( list_of_triples )
-    
-    Print(
-      Concatenation(
-      "WARNING: FiberProductFunctorial( IsList ) is deprecated and will not be supported after 2019.09.19. ",
-      "Please use FiberProductFunctorial( IsList, IsList, IsList ) instead.\n"
-      )
-    );
-    
-    return FiberProductFunctorial( 
-      List( list_of_triples, mor -> mor[1] ),
-      List( list_of_triples, mor -> mor[2] ),
-      List( list_of_triples, mor -> mor[3] )
-    );
-    
-end );
-
-##
-InstallMethod( FiberProductFunctorialWithGivenFiberProducts,
-               [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
-               
-  function( source, list_of_triples, range )
-    
-    Print(
-      Concatenation(
-      "WARNING: FiberProductFunctorialWithGivenFiberProducts( IsCapCategoryObject, IsList, IsCapCategoryObject ) is deprecated and will not be supported after 2019.09.19. ",
-      "Please use FiberProductFunctorialWithGivenFiberProducts( IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ) instead.\n"
-      )
-    );
-    
-    return FiberProductFunctorialWithGivenFiberProducts(
-      source,
-      List( list_of_triples, mor -> mor[1] ),
-      List( list_of_triples, mor -> mor[2] ),
-      List( list_of_triples, mor -> mor[3] ),
-      range
-    );
-    
-end );
-
-####################################
 ##
 ## Coequalizer
 ##
@@ -835,44 +753,6 @@ InstallMethod( MorphismFromSourceToCoequalizer,
   function( diagram )
     
     return MorphismFromSourceToCoequalizerOp( diagram, diagram[1] );
-    
-end );
-
-####################################
-## Functorial operations
-####################################
-
-##
-InstallMethod( CoequalizerFunctorial,
-               [ IsList ],
-               
-  function( triple )
-    
-    Print(
-      Concatenation(
-      "WARNING: CoequalizerFunctorial( IsList ) is deprecated and will not be supported after 2019.09.19. ",
-      "Please use CoequalizerFunctorial( IsList, IsCapCategoryMorphism, IsList ) instead.\n"
-      )
-    );
-    
-    return CoequalizerFunctorial( triple[1], triple[2], triple[3] );
-    
-end );
-
-##
-InstallMethod( CoequalizerFunctorialWithGivenCoequalizers,
-               [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
-               
-  function( source, triple, range )
-    
-    Print(
-      Concatenation(
-      "WARNING: CoequalizerFunctorialWithGivenCoequalizers( IsCapCategoryObject, IsList, IsCapCategoryObject ) is deprecated and will not be supported after 2019.09.19. ",
-      "Please use CoequalizerFunctorialWithGivenCoequalizers( IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject ) instead.\n"
-      )
-    );
-    
-    return CoequalizerFunctorialWithGivenCoequalizers( source, triple[1], triple[2], triple[3], range );
     
 end );
 
@@ -965,55 +845,6 @@ InstallMethod( DirectSumProjectionInPushout,
   function( diagram )
     
     return DirectSumProjectionInPushoutOp( diagram, diagram[1] );
-    
-end );
-
-
-####################################
-## Functorial operations
-####################################
-
-##
-InstallMethod( PushoutFunctorial,
-               [ IsList ],
-               
-  function( list_of_triples )
-    
-    Print(
-      Concatenation(
-      "WARNING: PushoutFunctorial( IsList ) is deprecated and will not be supported after 2019.09.19. ",
-      "Please use PushoutFunctorial( IsList, IsList, IsList ) instead.\n"
-      )
-    );
-    
-    return PushoutFunctorial( 
-      List( list_of_triples, mor -> mor[1] ),
-      List( list_of_triples, mor -> mor[2] ),
-      List( list_of_triples, mor -> mor[3] )
-    );
-    
-end );
-
-##
-InstallMethod( PushoutFunctorialWithGivenPushouts,
-               [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
-               
-  function( source, list_of_triples, range )
-    
-    Print(
-      Concatenation(
-      "WARNING: PushoutFunctorialWithGivenPushouts( IsCapCategoryObject, IsList, IsCapCategoryObject ) is deprecated and will not be supported after 2019.09.19. ",
-      "Please use PushoutFunctorialWithGivenPushouts( IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ) instead.\n"
-      )
-    );
-    
-    return PushoutFunctorialWithGivenPushouts(
-      source,
-      List( list_of_triples, mor -> mor[1] ),
-      List( list_of_triples, mor -> mor[2] ),
-      List( list_of_triples, mor -> mor[3] ),
-      range
-    );
     
 end );
 

@@ -686,7 +686,7 @@ DeclareOperation( "AddMorphism",
 #! @Arguments category, filter
 #! @Description
 #!  The argument <A>filter</A> is used to create a morphism type for the
-#!  category <A>category</A>, which is then used in <C>ObjectifyMorphismForCAPWithAttributes</C>
+#!  category <A>category</A>, which is then used in <C>ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes</C>
 #!  to objectify morphisms for this category.
 DeclareOperation( "AddMorphismRepresentation",
                   [ IsCapCategory, IsObject ] );
@@ -703,9 +703,6 @@ DeclareOperation( "AddMorphismRepresentation",
 #!  Also returns the objectified morphism.
 #! @Returns a morphism
 DeclareGlobalFunction( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" );
-
-##
-DeclareGlobalFunction( "ObjectifyMorphismForCAPWithAttributes" );
 
 ###################################
 ##

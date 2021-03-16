@@ -1492,9 +1492,7 @@ EmbeddingOfEqualizerWithGivenEqualizer := rec(
   io_type := [ [ "morphisms", "P" ], [ "P", "morphisms_1_source" ] ],
   number_of_diagram_arguments := 1,
   universal_type := "Limit",
-  dual_operation := "ProjectionOntoCoequalizerWithGivenCoequalizer",
-  
-  pre_function := ~.Equalizer.pre_function ),
+  dual_operation := "ProjectionOntoCoequalizerWithGivenCoequalizer" ),
 
 MorphismFromEqualizerToSink := rec(
   installation_name := "MorphismFromEqualizerToSinkOp",
@@ -1925,9 +1923,7 @@ ProjectionOntoCoequalizerWithGivenCoequalizer := rec(
   io_type := [ [ "morphisms", "P" ], [ "morphisms_1_range", "P" ] ],
   number_of_diagram_arguments := 1,
   universal_type := "Colimit",
-  dual_operation := "EmbeddingOfEqualizerWithGivenEqualizer",
-  
-  pre_function := ~.Coequalizer.pre_function ),
+  dual_operation := "EmbeddingOfEqualizerWithGivenEqualizer" ),
 
 MorphismFromSourceToCoequalizer := rec(
   installation_name := "MorphismFromSourceToCoequalizerOp",
@@ -2154,7 +2150,7 @@ MorphismFromSourceToPushoutWithGivenPushout := rec(
   universal_type := "Colimit",
   dual_operation := "MorphismFromFiberProductToSinkWithGivenFiberProduct",
   
-  pre_function := function( diagram, injection_number, pushout )
+  pre_function := function( diagram, pushout )
     local cobase, current_morphism, current_value;
     
     cobase := Source( diagram[1] );
@@ -2927,7 +2923,7 @@ VerticalPostCompose := rec(
 
 IdentityTwoCell := rec(
   installation_name := "IdentityTwoCell",
-  filter_list := [ "twocell" ],
+  filter_list := [ "morphism" ],
   dual_operation := "IdentityTwoCell",
   return_type := "twocell" ),
 
@@ -3389,7 +3385,7 @@ MereExistenceOfSolutionOfLinearSystemInAbCategory := rec(
     ## TODO: Type-check of linear system
   installation_name := "MereExistenceOfSolutionOfLinearSystemInAbCategoryOp",
   argument_list := [ 1, 2, 3 ],
-  filter_list := [ IsList, IsList, IsList, "category" ],
+  filter_list := [ IsList, IsList, "list_of_morphisms", "category" ],
   cache_name := "MereExistenceOfSolutionOfLinearSystemInAbCategory",
   return_type := "bool"
 ),
@@ -4468,17 +4464,14 @@ end );
 BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
   
   function( source_range_object, object_function_name, object_function_argument_list, object_call_name, object_cache_name )
-    local object_getter, set_object, diagram_name, setter_function, is_attribute, cache_key_length;
+    local object_getter, diagram_name, setter_function, is_attribute, cache_key_length;
     
     if source_range_object = "Source" then
         object_getter := Source;
-        set_object := true;
     elif source_range_object = "Range" then
         object_getter := Range;
-        set_object := true;
     else
-        object_getter := IdFunc;
-        set_object := false;
+        Error( "the first argument of CAP_INTERNAL_CREATE_POST_FUNCTION must be 'Source' or 'Range'" );
     fi;
     
     diagram_name := Concatenation( object_call_name, "Diagram" );
@@ -4499,9 +4492,7 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
             Remove( arg );
             object := object_getter( result );
             
-            if set_object then
-                  SET_VALUE_OF_CATEGORY_CACHE( category, object_cache_name, cache_key_length, arg{ object_function_argument_list }, object );
-            fi;
+            SET_VALUE_OF_CATEGORY_CACHE( category, object_cache_name, cache_key_length, arg{ object_function_argument_list }, object );
             
         end;
         
@@ -4518,10 +4509,8 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
             Remove( arg );
             object := object_getter( result );
             
-            if set_object then
-                SET_VALUE_OF_CATEGORY_CACHE( category, object_cache_name, cache_key_length, arg{ object_function_argument_list }, object );
-                CallFuncList( setter_function, Concatenation( arg{ object_function_argument_list }, [ object ] ) );
-            fi;
+            SET_VALUE_OF_CATEGORY_CACHE( category, object_cache_name, cache_key_length, arg{ object_function_argument_list }, object );
+            CallFuncList( setter_function, Concatenation( arg{ object_function_argument_list }, [ object ] ) );
             
         end;
         
@@ -4571,6 +4560,10 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             number_of_arguments := Length( current_rec.argument_list );
         else
             number_of_arguments := Length( current_rec.filter_list );
+        fi;
+        
+        if IsBound( current_rec.pre_function ) and NumberArgumentsFunction( current_rec.pre_function ) >= 0 and NumberArgumentsFunction( current_rec.pre_function ) <> Length( current_rec.filter_list ) then
+            Error( "the pre function of <current_rec> has the wrong number of arguments" );
         fi;
         
         # the redirect function is called with the category as an additional argument -> install wrapper dropping the category if necessary
@@ -4673,13 +4666,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
             current_rec.universal_object_arg_list := arg_list;
             
-            if not IsBound( current_rec.universal_object_position ) then
-                
-                if not IsBound( current_rec.post_function ) then
-                    current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( "id", current_rec.installation_name, arg_list, current_recname, "irrelevant" ); ##Please note that the third argument is not used
-                fi;
-                
-            else
+            if IsBound( current_rec.universal_object_position ) then
                 
                 ## find with given name
                 

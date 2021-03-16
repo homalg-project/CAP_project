@@ -252,35 +252,6 @@ InstallMethod( RandomMorphism,
     [ IsCapCategory, IsList ], RandomMorphismByList );
 
 ##
-InstallGlobalFunction( ObjectifyMorphismForCAPWithAttributes,
-                       
-  function( arg_list... )
-    local category, objectified_morphism;
-    
-    category := arg_list[ 2 ];
-    
-    Print(
-      Concatenation(
-      "WARNING (", Name( category ), "): \n",
-      "ObjectifyMorphismForCAPWithAttributes is deprecated and will not be supported after 2020.10.29. \n",
-      "Please use ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( morphism, category, source, range[, attr1, val1, attr2, val2, ...] ) instead.\n"
-      )
-    );
-    
-    arg_list[ 2 ] := category!.morphism_type;
-    Append( arg_list, [ CapCategory, category ] );
-    objectified_morphism := CallFuncList( ObjectifyWithAttributes, arg_list );
-    
-    if category!.predicate_logic then
-        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ objectified_morphism ], Source( objectified_morphism ), category );
-        INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ objectified_morphism ], Range( objectified_morphism ), category );
-    fi;
-    
-    return objectified_morphism;
-    
-end );
-
-##
 InstallGlobalFunction( ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes,
                        
   function( morphism, category, source, range, additional_arguments_list... )

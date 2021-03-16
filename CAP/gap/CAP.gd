@@ -461,12 +461,6 @@ DeclareGlobalFunction( "EnablePartialSanityChecks" );
 DeclareGlobalFunction( "EnableFullSanityChecks" );
 #! @EndGroup
 
-## Undocumented, but kept for compatibility
-DeclareGlobalFunction( "DisableBasicOperationTypeCheck" );
-DeclareGlobalFunction( "EnablePartialBasicOperationTypeCheck" );
-DeclareGlobalFunction( "EnableFullBasicOperationTypeCheck" );
-DeclareGlobalFunction( "EnableBasicOperationTypeCheck" );
-
 #############################################
 ##
 #! @Section Enable automatic calls of <C>Add</C>
