@@ -1358,7 +1358,7 @@ DeclareOperation( "AddInitialObjectFunctorial",
 #! The output is the direct sum $\bigoplus_{i=1}^n S_i$.
 #! @Returns an object
 #! @Arguments D
-DeclareOperationWithCache( "DirectSumOp",
+DeclareOperation( "DirectSumOp",
                            [ IsList ] );
 
 # for compatibility with GAP's DirectSum function
@@ -2004,7 +2004,7 @@ DeclareOperation( "Coproduct",
 #! The output is the coproduct $\bigsqcup_{i=1}^n I_i$.
 #! @Returns an object
 #! @Arguments D
-DeclareOperationWithCache( "CoproductOp",
+DeclareOperation( "CoproductOp",
                            [ IsList ] );
 
 #! @Description
@@ -2263,7 +2263,7 @@ DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
 #! The output is the direct product $\prod_{i=1}^n P_i$.
 #! @Returns an object
 #! @Arguments D
-DeclareOperationWithCache( "DirectProductOp",
+DeclareOperation( "DirectProductOp",
                            [ IsList ] );
 
 # for compatibility with GAP's DirectProduct function
@@ -2536,7 +2536,7 @@ DeclareGlobalFunction( "Equalizer" );
 #! The output is the equalizer $\mathrm{Equalizer}(D)$.
 #! @Returns an object
 #! @Arguments D
-DeclareOperationWithCache( "EqualizerOp",
+DeclareOperation( "EqualizerOp",
                            [ IsList ] );
 
 #! @Description
@@ -2861,7 +2861,7 @@ DeclareGlobalFunction( "Coequalizer" );
 #! The output is the coequalizer $\mathrm{Coequalizer}(D)$.
 #! @Returns an object
 #! @Arguments D
-DeclareOperationWithCache( "CoequalizerOp",
+DeclareOperation( "CoequalizerOp",
                            [ IsList ] );
 
 #! @Description
@@ -3371,7 +3371,7 @@ DeclareGlobalFunction( "FiberProduct" );
 #! The output is the fiber product $\mathrm{FiberProduct}(D)$.
 #! @Returns an object
 #! @Arguments D
-DeclareOperationWithCache( "FiberProductOp",
+DeclareOperation( "FiberProductOp",
                            [ IsList ] );
 
 #! @Description
@@ -3897,7 +3897,7 @@ DeclareOperation( "Pushout",
 #! The output is the pushout $\mathrm{Pushout}(D)$.
 #! @Returns an object
 #! @Arguments D
-DeclareOperationWithCache( "PushoutOp",
+DeclareOperation( "PushoutOp",
                            [ IsList ] );
 
 
