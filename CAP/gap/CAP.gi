@@ -654,60 +654,6 @@ InstallGlobalFunction( "EnableFullSanityChecks" ,
     
 end );
 
-
-InstallGlobalFunction( "DisableBasicOperationTypeCheck",
-  function( category )
-    
-    Print(
-      Concatenation(
-      "WARNING: DisableBasicOperationTypeCheck( category ) is deprecated and will not be supported after 2020.02.27. ",
-      "Please use DisableInputSanityChecks( category ) instead.\n"
-      )
-    );
-    
-    DisableInputSanityChecks( category );
-    
-end );
-InstallGlobalFunction( "EnablePartialBasicOperationTypeCheck",
-  function( category )
-    
-    Print(
-      Concatenation(
-      "WARNING: EnablePartialBasicOperationTypeCheck( category ) is deprecated and will not be supported after 2020.02.27. ",
-      "Please use EnablePartialInputSanityChecks( category ) instead.\n"
-      )
-    );
-    
-    EnablePartialInputSanityChecks( category );
-    
-end );
-InstallGlobalFunction( "EnableFullBasicOperationTypeCheck",
-  function( category )
-    
-    Print(
-      Concatenation(
-      "WARNING: EnableFullBasicOperationTypeCheck( category ) is deprecated and will not be supported after 2020.02.27. ",
-      "Please use EnableFullInputSanityChecks( category ) instead.\n"
-      )
-    );
-    
-    EnableFullInputSanityChecks( category );
-    
-end );
-InstallGlobalFunction( "EnableBasicOperationTypeCheck",
-  function( category )
-    
-    Print(
-      Concatenation(
-      "WARNING: EnableBasicOperationTypeCheck( category ) is deprecated and will not be supported after 2020.02.27. ",
-      "Please use EnablePartialInputSanityChecks( category ) instead.\n"
-      )
-    );
-    
-    EnablePartialInputSanityChecks( category );
-    
-end );
-
 #######################################
 ##
 ## Logic

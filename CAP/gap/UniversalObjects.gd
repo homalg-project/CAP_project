@@ -2840,10 +2840,6 @@ DeclareOperation( "AddUniversalMorphismIntoEqualizerWithGivenEqualizer",
 DeclareOperation( "EqualizerFunctorial",
                   [ IsList, IsCapCategoryMorphism, IsList ] );
 
-##
-DeclareOperation( "EqualizerFunctorial",
-                  [ IsList ] );
-
 #! @Description
 #! The arguments are an object $s = \mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} )$,
 #! a list of morphisms
@@ -2862,10 +2858,6 @@ DeclareOperation( "EqualizerFunctorial",
 #! @Arguments s, Ls, mu, Lr, r
 DeclareOperation( "EqualizerFunctorialWithGivenEqualizers",
                   [ IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject ] );
-
-##
-DeclareOperation( "EqualizerFunctorialWithGivenEqualizers",
-                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -3195,10 +3187,6 @@ DeclareOperation( "AddUniversalMorphismFromCoequalizerWithGivenCoequalizer",
 DeclareOperation( "CoequalizerFunctorial",
                   [ IsList, IsCapCategoryMorphism, IsList ] );
 
-##
-DeclareOperation( "CoequalizerFunctorial",
-                  [ IsList ] );
-
 #! @Description
 #! The arguments are an object $s = \mathrm{Coequalizer}( ( \beta_i )_{i=1}^n )$,
 #! a list of morphisms
@@ -3217,10 +3205,6 @@ DeclareOperation( "CoequalizerFunctorial",
 #! @Arguments s, Ls, mu, Lr, r
 DeclareOperation( "CoequalizerFunctorialWithGivenCoequalizers",
                   [ IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject ] );
-
-##
-DeclareOperation( "CoequalizerFunctorialWithGivenCoequalizers",
-                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -3818,10 +3802,6 @@ DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
 DeclareOperation( "FiberProductFunctorial",
                   [ IsList, IsList, IsList ] );
 
-##
-DeclareOperation( "FiberProductFunctorial",
-                  [ IsList ] );
-
 
 #! @Description
 #! The arguments are an object $s = \mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} )$,
@@ -3840,11 +3820,6 @@ DeclareOperation( "FiberProductFunctorial",
 #! @Arguments s, Ls, Lm, Lr, r
 DeclareOperation( "FiberProductFunctorialWithGivenFiberProducts",
                   [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
-
-##
-DeclareOperation( "FiberProductFunctorialWithGivenFiberProducts",
-                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
-
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -4442,10 +4417,6 @@ DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
 DeclareOperation( "PushoutFunctorial",
                   [ IsList, IsList, IsList ] );
 
-##
-DeclareOperation( "PushoutFunctorial",
-                  [ IsList ] );
-
 
 #! @Description
 #! The arguments are an object $s = \mathrm{Pushout}( ( \beta_i )_{i=1}^n )$,
@@ -4464,10 +4435,6 @@ DeclareOperation( "PushoutFunctorial",
 #! @Arguments s, Ls, Lm, Lr, r
 DeclareOperation( "PushoutFunctorialWithGivenPushouts",
                   [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
-
-##
-DeclareOperation( "PushoutFunctorialWithGivenPushouts",
-                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
