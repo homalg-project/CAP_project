@@ -520,26 +520,6 @@ InstallMethod( HomomorphismStructureOnMorphisms,
 end );
 
 ##
-InstallMethod( SolveLinearSystemInAbCategory,
-               [ IsList, IsList, IsList ],
-               
-  function( left_coeffs, right_coeffs, right_side )
-    
-    return SolveLinearSystemInAbCategoryOp( CapCategory( right_side[1] ), left_coeffs, right_coeffs, right_side );
-    
-end );
-
-##
-InstallMethod( MereExistenceOfSolutionOfLinearSystemInAbCategory,
-               [ IsList, IsList, IsList ],
-               
-  function( left_coeffs, right_coeffs, right_side )
-    
-    return MereExistenceOfSolutionOfLinearSystemInAbCategoryOp( CapCategory( right_side[1] ), left_coeffs, right_coeffs, right_side );
-    
-end );
-
-##
 InstallMethod( HomStructure,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                

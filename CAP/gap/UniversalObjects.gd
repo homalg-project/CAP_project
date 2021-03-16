@@ -1369,16 +1369,6 @@ DeclareOperation( "ProjectionInFactorOfDirectSum",
                   [ IsList, IsInt ] );
 
 #! @Description
-#! The arguments are a list of objects $D = (S_1, \dots, S_n)$
-#! and an integer $k$.
-#! The output is the $k$-th projection
-#! $\pi_k: \bigoplus_{i=1}^n S_i \rightarrow S_k$.
-#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n S_i, S_k )$
-#! @Arguments D,k
-DeclareOperation( "ProjectionInFactorOfDirectSumOp",
-                  [ IsList, IsInt ] );
-
-#! @Description
 #! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
 #! an integer $k$,
 #! and an object $S = \bigoplus_{i=1}^n S_i$.
@@ -1397,16 +1387,6 @@ DeclareOperation( "ProjectionInFactorOfDirectSumWithGivenDirectSum",
 #! @Returns a morphism in $\mathrm{Hom}( S_k, \bigoplus_{i=1}^n S_i )$
 #! @Arguments D,k
 DeclareOperation( "InjectionOfCofactorOfDirectSum",
-                  [ IsList, IsInt ] );
-
-#! @Description
-#! The arguments are a list of objects $D = (S_1, \dots, S_n)$
-#! and an integer $k$.
-#! The output  is the $k$-th injection
-#! $\iota_k: S_k \rightarrow \bigoplus_{i=1}^n S_i$.
-#! @Returns a morphism in $\mathrm{Hom}( S_k, \bigoplus_{i=1}^n S_i )$
-#! @Arguments D,k
-DeclareOperation( "InjectionOfCofactorOfDirectSumOp",
                   [ IsList, IsInt ] );
 
 #! @Description
@@ -1504,28 +1484,10 @@ DeclareOperation( "IsomorphismFromDirectSumToDirectProduct",
 #! @Description
 #! The argument is a list of objects $D = (S_1, \dots, S_n)$.
 #! The output is the canonical isomorphism
-#! $\bigoplus_{i=1}^n S_i \rightarrow \prod_{i=1}^{n}S_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n S_i, \prod_{i=1}^{n}S_i )$
-#! @Arguments D
-DeclareOperation( "IsomorphismFromDirectSumToDirectProductOp",
-                  [ IsList ] );
-
-#! @Description
-#! The argument is a list of objects $D = (S_1, \dots, S_n)$.
-#! The output is the canonical isomorphism
 #! $\prod_{i=1}^{n}S_i \rightarrow \bigoplus_{i=1}^n S_i$.
 #! @Returns a morphism in $\mathrm{Hom}( \prod_{i=1}^{n}S_i, \bigoplus_{i=1}^n S_i )$
 #! @Arguments D
 DeclareOperation( "IsomorphismFromDirectProductToDirectSum",
-                  [ IsList ] );
-
-#! @Description
-#! The argument is a list of objects $D = (S_1, \dots, S_n)$.
-#! The output is the canonical isomorphism
-#! $\prod_{i=1}^{n}S_i \rightarrow \bigoplus_{i=1}^n S_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \prod_{i=1}^{n}S_i, \bigoplus_{i=1}^n S_i )$
-#! @Arguments D
-DeclareOperation( "IsomorphismFromDirectProductToDirectSumOp",
                   [ IsList ] );
 
 #! @Description
@@ -1540,28 +1502,10 @@ DeclareOperation( "IsomorphismFromDirectSumToCoproduct",
 #! @Description
 #! The argument is a list of objects $D = (S_1, \dots, S_n)$.
 #! The output is the canonical isomorphism
-#! $\bigoplus_{i=1}^n S_i \rightarrow \bigsqcup_{i=1}^{n}S_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n S_i, \bigsqcup_{i=1}^{n}S_i )$
-#! @Arguments D
-DeclareOperation( "IsomorphismFromDirectSumToCoproductOp",
-                  [ IsList ] );
-
-#! @Description
-#! The argument is a list of objects $D = (S_1, \dots, S_n)$.
-#! The output is the canonical isomorphism
 #! $\bigsqcup_{i=1}^{n}S_i \rightarrow \bigoplus_{i=1}^n S_i$.
 #! @Returns a morphism in $\mathrm{Hom}( \bigsqcup_{i=1}^{n}S_i, \bigoplus_{i=1}^n S_i )$
 #! @Arguments D
 DeclareOperation( "IsomorphismFromCoproductToDirectSum",
-                  [ IsList ] );
-
-#! @Description
-#! The argument is a list of objects $D = (S_1, \dots, S_n)$.
-#! The output is the canonical isomorphism
-#! $\bigsqcup_{i=1}^{n}S_i \rightarrow \bigoplus_{i=1}^n S_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \bigsqcup_{i=1}^{n}S_i, \bigoplus_{i=1}^n S_i )$
-#! @Arguments D
-DeclareOperation( "IsomorphismFromCoproductToDirectSumOp",
                   [ IsList ] );
 
 
@@ -2065,16 +2009,6 @@ DeclareOperation( "InjectionOfCofactorOfCoproduct",
                   [ IsList, IsInt ] );
 
 #! @Description
-#! The arguments are a list of objects $D = ( I_1, \dots, I_n )$
-#! and an integer $k$.
-#! The output is the $k$-th injection
-#! $\iota_k: I_k \rightarrow \bigsqcup_{i=1}^n I_i$.
-#! @Returns a morphism in $\mathrm{Hom}(I_k, \bigsqcup_{i=1}^n I_i)$
-#! @Arguments D,k
-DeclareOperation( "InjectionOfCofactorOfCoproductOp",
-                  [ IsList, IsInt ] );
-
-#! @Description
 #! The arguments are a list of objects $D = ( I_1, \dots, I_n )$,
 #! an integer $k$,
 #! and an object $I = \bigsqcup_{i=1}^n I_i$.
@@ -2327,16 +2261,6 @@ DeclareOperation( "DirectProductOp",
 #! @Returns a morphism in $\mathrm{Hom}(\prod_{i=1}^n P_i, P_k)$
 #! @Arguments D,k
 DeclareOperation( "ProjectionInFactorOfDirectProduct",
-                  [ IsList, IsInt ] );
-
-#! @Description
-#! The arguments are a list of objects $D = ( P_1, \dots, P_n )$
-#! and an integer $k$.
-#! The output is the $k$-th projection
-#! $\pi_k: \prod_{i=1}^n P_i \rightarrow P_k$.
-#! @Returns a morphism in $\mathrm{Hom}(\prod_{i=1}^n P_i, P_k)$
-#! @Arguments D,k
-DeclareOperation( "ProjectionInFactorOfDirectProductOp",
                   [ IsList, IsInt ] );
 
 #! @Description
@@ -2606,15 +2530,6 @@ DeclareOperation( "EmbeddingOfEqualizer",
                   [ IsList ] );
 
 #! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$.
-#! The output is the equalizer embedding
-#! $\iota: \mathrm{Equalizer}(D) \rightarrow A$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Equalizer}(D), A )$
-#! @Arguments D
-DeclareOperation( "EmbeddingOfEqualizerOp",
-                  [ IsList ] );
-
-#! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$,
 #! and an object $E = \mathrm{Equalizer}(D)$.
 #! The output is the equalizer embedding
@@ -2631,15 +2546,6 @@ DeclareOperation( "EmbeddingOfEqualizerWithGivenEqualizer",
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Equalizer}(D), B )$
 #! @Arguments D
 DeclareOperation( "MorphismFromEqualizerToSink",
-                  [ IsList ] );
-
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$.
-#! The output is the composition $\mu: \mathrm{Equalizer}(D) \rightarrow B$
-#! of the embedding $\iota: \mathrm{Equalizer}(D) \rightarrow A$ and $\beta_1$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Equalizer}(D), B )$
-#! @Arguments D
-DeclareOperation( "MorphismFromEqualizerToSinkOp",
                   [ IsList ] );
 
 #! @Description
@@ -2949,15 +2855,6 @@ DeclareOperation( "ProjectionOntoCoequalizer",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$.
-#! The output is the projection
-#! $\pi: A \rightarrow \mathrm{Coequalizer}( D )$.
-#! @Returns a morphism in $\mathrm{Hom}( A, \mathrm{Coequalizer}( D ) )$.
-#! @Arguments D
-DeclareOperation( "ProjectionOntoCoequalizerOp",
-                  [ IsList ] );
-
-#! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$,
 #! and an object $C = \mathrm{Coequalizer}(D)$.
 #! The output is the projection
@@ -2974,15 +2871,6 @@ DeclareOperation( "ProjectionOntoCoequalizerWithGivenCoequalizer",
 #! @Returns a morphism in $\mathrm{Hom}( B, \mathrm{Coequalizer}( D ) )$.
 #! @Arguments D
 DeclareOperation( "MorphismFromSourceToCoequalizer",
-                  [ IsList ] );
-
-#! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$.
-#! The output is the composition $\mu: B \rightarrow \mathrm{Coequalizer}(D)$
-#! of $\beta_1$ and the projection $\pi: A \rightarrow \mathrm{Coequalizer}( D )$.
-#! @Returns a morphism in $\mathrm{Hom}( B, \mathrm{Coequalizer}( D ) )$.
-#! @Arguments D
-DeclareOperation( "MorphismFromSourceToCoequalizerOp",
                   [ IsList ] );
 
 #! @Description
@@ -3275,15 +3163,6 @@ DeclareOperation( "AddCoequalizerFunctorialWithGivenCoequalizers",
 #! @Arguments D
 DeclareOperation( "IsomorphismFromFiberProductToKernelOfDiagonalDifference",
                   [ IsList ] );
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
-#! The output is a morphism
-#! $\mathrm{FiberProduct}(D) \rightarrow \Delta$,
-#! where $\Delta$ denotes the kernel object equalizing the morphisms $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{FiberProduct}(D), \Delta)$
-#! @Arguments D
-DeclareOperation( "IsomorphismFromFiberProductToKernelOfDiagonalDifferenceOp",
-                  [ IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -3312,16 +3191,6 @@ DeclareOperation( "AddIsomorphismFromFiberProductToKernelOfDiagonalDifference",
 #! @Returns a morphism in $\mathrm{Hom}(\Delta, \mathrm{FiberProduct}(D))$
 #! @Arguments D
 DeclareOperation( "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
-                  [ IsList ] );
-
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$,
-#! The output is a morphism
-#! $\Delta \rightarrow \mathrm{FiberProduct}(D)$,
-#! where $\Delta$ denotes the kernel object equalizing the morphisms $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}(\Delta, \mathrm{FiberProduct}(D))$
-#! @Arguments D
-DeclareOperation( "IsomorphismFromKernelOfDiagonalDifferenceToFiberProductOp",
                   [ IsList ] );
 
 #! @Description
@@ -3355,15 +3224,6 @@ DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
 #! @Arguments D
 DeclareOperation( "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram",
                   [ IsList ] );
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
-#! The output is a morphism
-#! $\mathrm{FiberProduct}(D) \rightarrow \Delta$,
-#! where $\Delta$ denotes the equalizer of the product diagram of the morphisms $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{FiberProduct}(D), \Delta)$
-#! @Arguments D
-DeclareOperation( "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagramOp",
-                  [ IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -3392,16 +3252,6 @@ DeclareOperation( "AddIsomorphismFromFiberProductToEqualizerOfDirectProductDiagr
 #! @Returns a morphism in $\mathrm{Hom}(\Delta, \mathrm{FiberProduct}(D))$
 #! @Arguments D
 DeclareOperation( "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct",
-                  [ IsList ] );
-
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
-#! The output is a morphism
-#! $\Delta \rightarrow \mathrm{FiberProduct}(D)$,
-#! where $\Delta$ denotes the equalizer of the product diagram of the morphisms $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}(\Delta, \mathrm{FiberProduct}(D))$
-#! @Arguments D
-DeclareOperation( "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProductOp",
                   [ IsList ] );
 
 #! @Description
@@ -3437,16 +3287,6 @@ DeclareOperation( "DirectSumDiagonalDifference",
                   [ IsList ] );
 
 #! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
-#! The output is a morphism
-#! $\bigoplus_{i=1}^n P_i \rightarrow B$
-#! such that its kernel equalizes the $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n P_i, B )$
-#! @Arguments D
-DeclareOperationWithCache( "DirectSumDiagonalDifferenceOp",
-                           [ IsList ] );
-
-#! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>DirectSumDiagonalDifference</C>.
@@ -3476,15 +3316,6 @@ DeclareOperation( "AddDirectSumDiagonalDifference",
 #! @Arguments D
 DeclareOperation( "FiberProductEmbeddingInDirectSum",
                   [ IsList ] );
-
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
-#! The output is the natural embedding
-#! $\mathrm{FiberProduct}(D) \rightarrow \bigoplus_{i=1}^n P_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{FiberProduct}(D), \bigoplus_{i=1}^n P_i )$
-#! @Arguments D
-DeclareOperationWithCache( "FiberProductEmbeddingInDirectSumOp",
-                           [ IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -3535,16 +3366,6 @@ DeclareOperation( "ProjectionInFactorOfFiberProduct",
                   [ IsList, IsInt ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
-#! and an integer $k$.
-#! The output is the $k$-th projection
-#! $\pi_{k}: \mathrm{FiberProduct}(D) \rightarrow P_k$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{FiberProduct}(D), P_k )$
-#! @Arguments D,k
-DeclareOperation( "ProjectionInFactorOfFiberProductOp",
-                  [ IsList, IsInt ] );
-
-#! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$,
 #! an integer $k$,
 #! and an object $P = \mathrm{FiberProduct}(D)$.
@@ -3562,15 +3383,6 @@ DeclareOperation( "ProjectionInFactorOfFiberProductWithGivenFiberProduct",
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{FiberProduct}(D), B )$
 #! @Arguments D
 DeclareOperation( "MorphismFromFiberProductToSink",
-                  [ IsList ] );
-
-#! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
-#! The output is the composition $\mu: \mathrm{FiberProduct}(D) \rightarrow B$
-#! of the $1$-st projection $\pi_1: \mathrm{FiberProduct}(D) \rightarrow P_1$ and $\beta_1$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{FiberProduct}(D), B )$
-#! @Arguments D
-DeclareOperation( "MorphismFromFiberProductToSinkOp",
                   [ IsList ] );
 
 #! @Description
@@ -3879,16 +3691,6 @@ DeclareOperation( "IsomorphismFromPushoutToCokernelOfDiagonalDifference",
                   [ IsList ] );
 
 #! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
-#! The output is a morphism
-#! $\mathrm{Pushout}(D) \rightarrow \Delta$,
-#! where $\Delta$ denotes the cokernel object coequalizing the morphisms $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Pushout}(D), \Delta)$
-#! @Arguments D
-DeclareOperation( "IsomorphismFromPushoutToCokernelOfDiagonalDifferenceOp",
-                  [ IsList ] );
-
-#! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromPushoutToCokernelOfDiagonalDifference</C>.
@@ -3915,16 +3717,6 @@ DeclareOperation( "AddIsomorphismFromPushoutToCokernelOfDiagonalDifference",
 #! @Returns a morphism in $\mathrm{Hom}( \Delta, \mathrm{Pushout}(D))$
 #! @Arguments D
 DeclareOperation( "IsomorphismFromCokernelOfDiagonalDifferenceToPushout",
-                  [ IsList ] );
-
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
-#! The output is a morphism
-#! $\Delta \rightarrow \mathrm{Pushout}(D)$,
-#! where $\Delta$ denotes the cokernel object coequalizing the morphisms $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \Delta, \mathrm{Pushout}(D))$
-#! @Arguments D
-DeclareOperation( "IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp",
                   [ IsList ] );
 
 #! @Description
@@ -3957,16 +3749,6 @@ DeclareOperation( "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
                   [ IsList ] );
 
 #! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
-#! The output is a morphism
-#! $\mathrm{Pushout}(D) \rightarrow \Delta$,
-#! where $\Delta$ denotes the coequalizer of the coproduct diagram of the morphisms $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Pushout}(D), \Delta)$
-#! @Arguments D
-DeclareOperation( "IsomorphismFromPushoutToCoequalizerOfCoproductDiagramOp",
-                  [ IsList ] );
-
-#! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromPushoutToCoequalizerOfCoproductDiagram</C>.
@@ -3993,16 +3775,6 @@ DeclareOperation( "AddIsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
 #! @Returns a morphism in $\mathrm{Hom}( \Delta, \mathrm{Pushout}(D))$
 #! @Arguments D
 DeclareOperation( "IsomorphismFromCoequalizerOfCoproductDiagramToPushout",
-                  [ IsList ] );
-
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
-#! The output is a morphism
-#! $\Delta \rightarrow \mathrm{Pushout}(D)$,
-#! where $\Delta$ denotes the coequalizer of the coproduct diagram of the morphisms $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \Delta, \mathrm{Pushout}(D))$
-#! @Arguments D
-DeclareOperation( "IsomorphismFromCoequalizerOfCoproductDiagramToPushoutOp",
                   [ IsList ] );
 
 #! @Description
@@ -4035,16 +3807,6 @@ DeclareOperation( "DirectSumCodiagonalDifference",
                   [ IsList ] );
 
 #! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
-#! The output is a morphism
-#! $B \rightarrow \bigoplus_{i=1}^n I_i$
-#! such that its cokernel coequalizes the $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}(B, \bigoplus_{i=1}^n I_i)$
-#! @Arguments D
-DeclareOperationWithCache( "DirectSumCodiagonalDifferenceOp",
-                           [ IsList ] );
-
-#! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>DirectSumCodiagonalDifference</C>.
@@ -4072,15 +3834,6 @@ DeclareOperation( "AddDirectSumCodiagonalDifference",
 #! @Arguments D
 DeclareOperation( "DirectSumProjectionInPushout",
                   [ IsList ] );
-
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
-#! The output is the natural projection
-#! $\bigoplus_{i=1}^n I_i \rightarrow \mathrm{Pushout}(D)$.
-#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n I_i, \mathrm{Pushout}(D) )$
-#! @Arguments D
-DeclareOperationWithCache( "DirectSumProjectionInPushoutOp",
-                           [ IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -4140,16 +3893,6 @@ DeclareOperation( "InjectionOfCofactorOfPushout",
                   [ IsList, IsInt ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
-#! and an integer $k$.
-#! The output is the $k$-th injection
-#! $\iota_k: I_k \rightarrow \mathrm{Pushout}( D )$.
-#! @Returns a morphism in $\mathrm{Hom}( I_k, \mathrm{Pushout}( D ) )$.
-#! @Arguments D, k
-DeclareOperation( "InjectionOfCofactorOfPushoutOp",
-                  [ IsList, IsInt ] );
-
-#! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$,
 #! an integer $k$,
 #! and an object $I = \mathrm{Pushout}(D)$.
@@ -4167,15 +3910,6 @@ DeclareOperation( "InjectionOfCofactorOfPushoutWithGivenPushout",
 #! @Returns a morphism in $\mathrm{Hom}( B, \mathrm{Pushout}( D ) )$.
 #! @Arguments D
 DeclareOperation( "MorphismFromSourceToPushout",
-                  [ IsList ] );
-
-#! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
-#! The output is the composition $\mu: B \rightarrow \mathrm{Pushout}(D)$
-#! of $\beta_1$ and the $1$-st injection $\iota_1: I_1 \rightarrow \mathrm{Pushout}( D )$.
-#! @Returns a morphism in $\mathrm{Hom}( B, \mathrm{Pushout}( D ) )$.
-#! @Arguments D
-DeclareOperation( "MorphismFromSourceToPushoutOp",
                   [ IsList ] );
 
 #! @Description

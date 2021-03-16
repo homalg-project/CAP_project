@@ -145,20 +145,6 @@ InstallGlobalFunction( UniversalMorphismFromCoproduct,
 end );
 
 ####################################
-## Categorical methods
-####################################
-
-##
-InstallMethod( InjectionOfCofactorOfCoproduct,
-               [ IsList, IsInt ],
-               
-  function( object_product_list, injection_number )
-    
-    return InjectionOfCofactorOfCoproductOp( CapCategory( object_product_list[1] ), object_product_list, injection_number );
-    
-end );
-
-####################################
 ##
 ## Direct Product and FiberProduct
 ##
@@ -228,20 +214,6 @@ InstallMethod( DirectProductOp,
 end );
 
 ####################################
-## Categorical methods
-####################################
-
-##
-InstallMethod( ProjectionInFactorOfDirectProduct,
-               [ IsList, IsInt ],
-               
-  function( object_product_list, projection_number )
-    
-    return ProjectionInFactorOfDirectProductOp( CapCategory( object_product_list[1] ), object_product_list, projection_number );
-    
-end );
-
-####################################
 ##
 ## Direct sum
 ##
@@ -254,26 +226,6 @@ end );
 ####################################
 ## Convenience methods
 ####################################
-
-##
-InstallMethod( ProjectionInFactorOfDirectSum,
-               [ IsList, IsInt ],
-               
-  function( diagram, projection_number )
-    
-    return ProjectionInFactorOfDirectSumOp( CapCategory( diagram[1] ), diagram, projection_number );
-    
-end );
-
-##
-InstallMethod( InjectionOfCofactorOfDirectSum,
-               [ IsList, IsInt ],
-               
-  function( diagram, injection_number )
-    
-    return InjectionOfCofactorOfDirectSumOp( CapCategory( diagram[1] ), diagram, injection_number );
-    
-end );
 
 ##
 InstallGlobalFunction( UniversalMorphismFromDirectSum,
@@ -317,46 +269,6 @@ InstallGlobalFunction( UniversalMorphismIntoDirectSum,
     diagram := List( arg, Range );
     
     return UniversalMorphismIntoDirectSumOp( CapCategory( diagram[1] ), diagram, arg );
-    
-end );
-
-##
-InstallMethod( IsomorphismFromDirectProductToDirectSum,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return IsomorphismFromDirectProductToDirectSumOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
-##
-InstallMethod( IsomorphismFromDirectSumToDirectProduct,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return IsomorphismFromDirectSumToDirectProductOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
-##
-InstallMethod( IsomorphismFromCoproductToDirectSum,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return IsomorphismFromCoproductToDirectSumOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
-##
-InstallMethod( IsomorphismFromDirectSumToCoproduct,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return IsomorphismFromDirectSumToCoproductOp( CapCategory( diagram[1] ), diagram );
     
 end );
 
@@ -557,26 +469,6 @@ InstallGlobalFunction( Equalizer,
     
 end );
 
-##
-InstallMethod( EmbeddingOfEqualizer,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return EmbeddingOfEqualizerOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
-##
-InstallMethod( MorphismFromEqualizerToSink,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return MorphismFromEqualizerToSinkOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
 ####################################
 ##
 ## FiberProduct
@@ -605,26 +497,6 @@ InstallGlobalFunction( FiberProduct,
 end );
 
 ##
-InstallMethod( ProjectionInFactorOfFiberProduct,
-               [ IsList, IsInt ],
-               
-  function( diagram, projection_number )
-    
-    return ProjectionInFactorOfFiberProductOp( CapCategory( diagram[1] ), diagram, projection_number );
-    
-end );
-
-##
-InstallMethod( MorphismFromFiberProductToSink,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return MorphismFromFiberProductToSinkOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
-##
 InstallGlobalFunction( UniversalMorphismIntoFiberProduct,
 
   function( arg )
@@ -643,106 +515,6 @@ InstallGlobalFunction( UniversalMorphismIntoFiberProduct,
     source := arg{[ 2 .. Length( arg ) ]};
     
     return UniversalMorphismIntoFiberProductOp( CapCategory( diagram[1] ), diagram, source );
-    
-end );
-
-##
-InstallMethod( DirectSumDiagonalDifference,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return DirectSumDiagonalDifferenceOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
-##
-InstallMethod( FiberProductEmbeddingInDirectSum,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return FiberProductEmbeddingInDirectSumOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
-##
-InstallMethod( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return IsomorphismFromFiberProductToKernelOfDiagonalDifferenceOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
-##
-InstallMethod( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return IsomorphismFromKernelOfDiagonalDifferenceToFiberProductOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
-##
-InstallMethod( IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return IsomorphismFromFiberProductToEqualizerOfDirectProductDiagramOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
-##
-InstallMethod( IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return IsomorphismFromEqualizerOfDirectProductDiagramToFiberProductOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
-##
-InstallMethod( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return IsomorphismFromPushoutToCokernelOfDiagonalDifferenceOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
-##
-InstallMethod( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
-##
-InstallMethod( IsomorphismFromPushoutToCoequalizerOfCoproductDiagram,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return IsomorphismFromPushoutToCoequalizerOfCoproductDiagramOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
-##
-InstallMethod( IsomorphismFromCoequalizerOfCoproductDiagramToPushout,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return IsomorphismFromCoequalizerOfCoproductDiagramToPushoutOp( CapCategory( diagram[1] ), diagram );
     
 end );
 
@@ -770,26 +542,6 @@ InstallGlobalFunction( Coequalizer,
      fi;
     
     return CoequalizerOp( CapCategory( arg[ 1 ] ), arg );
-    
-end );
-
-##
-InstallMethod( ProjectionOntoCoequalizer,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return ProjectionOntoCoequalizerOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
-##
-InstallMethod( MorphismFromSourceToCoequalizer,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return MorphismFromSourceToCoequalizerOp( CapCategory( diagram[1] ), diagram );
     
 end );
 
@@ -824,26 +576,6 @@ InstallMethod( Pushout,
 end );
 
 ##
-InstallMethod( InjectionOfCofactorOfPushout,
-               [ IsList, IsInt ],
-               
-  function( diagram, injection_number )
-    
-    return InjectionOfCofactorOfPushoutOp( CapCategory( diagram[1] ), diagram, injection_number );
-    
-end );
-
-##
-InstallMethod( MorphismFromSourceToPushout,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return MorphismFromSourceToPushoutOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
-##
 InstallGlobalFunction( UniversalMorphismFromPushout,
 
   function( arg )
@@ -862,26 +594,6 @@ InstallGlobalFunction( UniversalMorphismFromPushout,
     sink := arg{[ 2 .. Length( arg ) ]};
     
     return UniversalMorphismFromPushoutOp( CapCategory( diagram[1] ), diagram, sink );
-    
-end );
-
-##
-InstallMethod( DirectSumCodiagonalDifference,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return DirectSumCodiagonalDifferenceOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
-##
-InstallMethod( DirectSumProjectionInPushout,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return DirectSumProjectionInPushoutOp( CapCategory( diagram[1] ), diagram );
     
 end );
 

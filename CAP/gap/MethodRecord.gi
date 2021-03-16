@@ -586,7 +586,7 @@ DirectSum := rec(
   dual_operation := "DirectSum" ),
 
 ProjectionInFactorOfDirectSum := rec(
-  installation_name := "ProjectionInFactorOfDirectSumOp",
+  installation_name := "ProjectionInFactorOfDirectSum",
   filter_list := [ "list_of_objects", IsInt ],
   io_type := [ [ "objects", "k" ], [ "P", "objects_k" ] ],
   number_of_diagram_arguments := 1,
@@ -674,7 +674,7 @@ UniversalMorphismIntoDirectSumWithGivenDirectSum := rec(
   return_type := "morphism" ),
 
 InjectionOfCofactorOfDirectSum := rec(
-  installation_name := "InjectionOfCofactorOfDirectSumOp",
+  installation_name := "InjectionOfCofactorOfDirectSum",
   filter_list := [ "list_of_objects", IsInt ],
   io_type := [ [ "objects", "k" ], [ "objects_k", "P" ] ],
   number_of_diagram_arguments := 1,
@@ -849,7 +849,7 @@ DirectProduct := rec(
   dual_operation := "Coproduct" ),
 
 ProjectionInFactorOfDirectProduct := rec(
-  installation_name := "ProjectionInFactorOfDirectProductOp",
+  installation_name := "ProjectionInFactorOfDirectProduct",
   filter_list := [ "list_of_objects", IsInt ],
   io_type := [ [ "objects", "k" ], [ "P", "objects_k" ] ],
   number_of_diagram_arguments := 1,
@@ -1263,7 +1263,7 @@ Coproduct := rec(
   dual_operation := "DirectProduct" ),
 
 InjectionOfCofactorOfCoproduct := rec(
-  installation_name := "InjectionOfCofactorOfCoproductOp",
+  installation_name := "InjectionOfCofactorOfCoproduct",
   filter_list := [ "list_of_objects", IsInt ],
   io_type := [ [ "objects", "k" ], [ "objects_k", "P" ] ],
   number_of_diagram_arguments := 1,
@@ -1457,7 +1457,7 @@ Equalizer := rec(
   end ),
 
 EmbeddingOfEqualizer := rec(
-  installation_name := "EmbeddingOfEqualizerOp",
+  installation_name := "EmbeddingOfEqualizer",
   filter_list := [ "list_of_morphisms" ],
   return_type := "morphism",
   io_type := [ [ "morphisms" ], [ "P", "morphisms_1_source" ] ],
@@ -1478,7 +1478,7 @@ EmbeddingOfEqualizerWithGivenEqualizer := rec(
   dual_operation := "ProjectionOntoCoequalizerWithGivenCoequalizer" ),
 
 MorphismFromEqualizerToSink := rec(
-  installation_name := "MorphismFromEqualizerToSinkOp",
+  installation_name := "MorphismFromEqualizerToSink",
   filter_list := [ "list_of_morphisms" ],
   io_type := [ [ "morphisms" ], [ "P", "morphisms_1_range" ] ],
   number_of_diagram_arguments := 1,
@@ -1594,7 +1594,7 @@ FiberProduct := rec(
   return_type := "object" ),
 
 ProjectionInFactorOfFiberProduct := rec(
-  installation_name := "ProjectionInFactorOfFiberProductOp",
+  installation_name := "ProjectionInFactorOfFiberProduct",
   filter_list := [ "list_of_morphisms", IsInt ],
   io_type := [ [ "morphisms", "k" ], [ "P", "morphisms_k_source" ] ],
   number_of_diagram_arguments := 1,
@@ -1661,7 +1661,7 @@ ProjectionInFactorOfFiberProductWithGivenFiberProduct := rec(
   return_type := "morphism" ),
 
 MorphismFromFiberProductToSink := rec(
-  installation_name := "MorphismFromFiberProductToSinkOp",
+  installation_name := "MorphismFromFiberProductToSink",
   filter_list := [ "list_of_morphisms" ],
   io_type := [ [ "morphisms" ], [ "P", "morphisms_1_range" ] ],
   number_of_diagram_arguments := 1,
@@ -1881,7 +1881,7 @@ Coequalizer := rec(
   end ),
 
 ProjectionOntoCoequalizer := rec(
-  installation_name := "ProjectionOntoCoequalizerOp",
+  installation_name := "ProjectionOntoCoequalizer",
   filter_list := [ "list_of_morphisms" ],
   return_type := "morphism",
   io_type := [ [ "morphisms" ], [ "morphisms_1_range", "P" ] ],
@@ -1902,7 +1902,7 @@ ProjectionOntoCoequalizerWithGivenCoequalizer := rec(
   dual_operation := "EmbeddingOfEqualizerWithGivenEqualizer" ),
 
 MorphismFromSourceToCoequalizer := rec(
-  installation_name := "MorphismFromSourceToCoequalizerOp",
+  installation_name := "MorphismFromSourceToCoequalizer",
   filter_list := [ "list_of_morphisms" ],
   io_type := [ [ "morphisms" ], [ "morphisms_1_source", "P" ] ],
   number_of_diagram_arguments := 1,
@@ -2018,7 +2018,7 @@ Pushout := rec(
   return_type := "object" ),
 
 InjectionOfCofactorOfPushout := rec(
-  installation_name := "InjectionOfCofactorOfPushoutOp",
+  installation_name := "InjectionOfCofactorOfPushout",
   filter_list := [ "list_of_morphisms", IsInt ],
   io_type := [ [ "morphisms", "k" ], [ "morphisms_k_range", "P" ] ],
   number_of_diagram_arguments := 1,
@@ -2085,7 +2085,7 @@ InjectionOfCofactorOfPushoutWithGivenPushout := rec(
   return_type := "morphism" ),
 
 MorphismFromSourceToPushout := rec(
-  installation_name := "MorphismFromSourceToPushoutOp",
+  installation_name := "MorphismFromSourceToPushout",
   filter_list := [ "list_of_morphisms" ],
   io_type := [ [ "morphisms" ], [ "morphisms_1_source", "P" ] ],
   number_of_diagram_arguments := 1,
@@ -2920,7 +2920,7 @@ IsWellDefinedForTwoCells := rec(
   return_type := "bool" ),
   
 DirectSumDiagonalDifference := rec(
-  installation_name := "DirectSumDiagonalDifferenceOp",
+  installation_name := "DirectSumDiagonalDifference",
   filter_list := [ "list_of_morphisms" ],
   io_type := [ [ "D" ], [ "S", "D_1_range" ] ],
   return_type := "morphism",
@@ -2928,7 +2928,7 @@ DirectSumDiagonalDifference := rec(
   no_with_given := true ),
   
 FiberProductEmbeddingInDirectSum := rec(
-  installation_name := "FiberProductEmbeddingInDirectSumOp",
+  installation_name := "FiberProductEmbeddingInDirectSum",
   filter_list := [ "list_of_morphisms" ],
   io_type := [ [ "D" ], [ "P", "S" ] ],
   return_type := "morphism",
@@ -2936,7 +2936,7 @@ FiberProductEmbeddingInDirectSum := rec(
   no_with_given := true ),
   
 IsomorphismFromFiberProductToKernelOfDiagonalDifference := rec(
-  installation_name := "IsomorphismFromFiberProductToKernelOfDiagonalDifferenceOp",
+  installation_name := "IsomorphismFromFiberProductToKernelOfDiagonalDifference",
   filter_list := [ "list_of_morphisms" ],
   io_type := [ [ "D" ], [ "P", "Delta" ] ],
   return_type := "morphism",
@@ -2944,7 +2944,7 @@ IsomorphismFromFiberProductToKernelOfDiagonalDifference := rec(
   no_with_given := true ),
   
 IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct := rec(
-  installation_name := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProductOp",
+  installation_name := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
   filter_list := [ "list_of_morphisms" ],
   io_type := [ [ "D" ], [ "Delta", "P" ] ],
   return_type := "morphism",
@@ -2952,7 +2952,7 @@ IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct := rec(
   no_with_given := true ),
   
 IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram := rec(
-  installation_name := "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagramOp",
+  installation_name := "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram",
   filter_list := [ "list_of_morphisms" ],
   io_type := [ [ "D" ], [ "P", "Delta" ] ],
   return_type := "morphism",
@@ -2960,7 +2960,7 @@ IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram := rec(
   no_with_given := true ),
   
 IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct := rec(
-  installation_name := "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProductOp",
+  installation_name := "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct",
   filter_list := [ "list_of_morphisms" ],
   io_type := [ [ "D" ], [ "Delta", "P" ] ],
   return_type := "morphism",
@@ -2968,7 +2968,7 @@ IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct := rec(
   no_with_given := true ),
   
 IsomorphismFromPushoutToCokernelOfDiagonalDifference := rec(
-  installation_name := "IsomorphismFromPushoutToCokernelOfDiagonalDifferenceOp",
+  installation_name := "IsomorphismFromPushoutToCokernelOfDiagonalDifference",
   filter_list := [ "list_of_morphisms" ],
   io_type := [ [ "D" ], [ "I", "Delta" ] ],
   return_type := "morphism",
@@ -2976,7 +2976,7 @@ IsomorphismFromPushoutToCokernelOfDiagonalDifference := rec(
   no_with_given := true ),
   
 IsomorphismFromCokernelOfDiagonalDifferenceToPushout := rec(
-  installation_name := "IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp",
+  installation_name := "IsomorphismFromCokernelOfDiagonalDifferenceToPushout",
   filter_list := [ "list_of_morphisms" ],
   io_type := [ [ "D" ], [ "Delta", "I" ] ],
   return_type := "morphism",
@@ -2984,7 +2984,7 @@ IsomorphismFromCokernelOfDiagonalDifferenceToPushout := rec(
   no_with_given := true ),
   
 IsomorphismFromPushoutToCoequalizerOfCoproductDiagram := rec(
-  installation_name := "IsomorphismFromPushoutToCoequalizerOfCoproductDiagramOp",
+  installation_name := "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
   filter_list := [ "list_of_morphisms" ],
   io_type := [ [ "D" ], [ "P", "Delta" ] ],
   return_type := "morphism",
@@ -2992,7 +2992,7 @@ IsomorphismFromPushoutToCoequalizerOfCoproductDiagram := rec(
   no_with_given := true ),
   
 IsomorphismFromCoequalizerOfCoproductDiagramToPushout := rec(
-  installation_name := "IsomorphismFromCoequalizerOfCoproductDiagramToPushoutOp",
+  installation_name := "IsomorphismFromCoequalizerOfCoproductDiagramToPushout",
   filter_list := [ "list_of_morphisms" ],
   io_type := [ [ "D" ], [ "Delta", "P" ] ],
   return_type := "morphism",
@@ -3048,7 +3048,7 @@ CanonicalIdentificationFromCoimageToImageObject := rec(
   no_with_given := true ),
 
 IsomorphismFromDirectSumToDirectProduct := rec(
-  installation_name := "IsomorphismFromDirectSumToDirectProductOp",
+  installation_name := "IsomorphismFromDirectSumToDirectProduct",
   filter_list := [ "list_of_objects" ],
   io_type := [ [ "D" ], [ "S", "P" ] ],
   return_type := "morphism",
@@ -3056,7 +3056,7 @@ IsomorphismFromDirectSumToDirectProduct := rec(
   no_with_given := true ),
 
 IsomorphismFromDirectSumToCoproduct := rec(
-  installation_name := "IsomorphismFromDirectSumToCoproductOp",
+  installation_name := "IsomorphismFromDirectSumToCoproduct",
   filter_list := [ "list_of_objects" ],
   io_type := [ [ "D" ], [ "S", "C" ] ],
   return_type := "morphism",
@@ -3064,7 +3064,7 @@ IsomorphismFromDirectSumToCoproduct := rec(
   no_with_given := true ),
 
 IsomorphismFromDirectProductToDirectSum := rec(
-  installation_name := "IsomorphismFromDirectProductToDirectSumOp",
+  installation_name := "IsomorphismFromDirectProductToDirectSum",
   filter_list := [ "list_of_objects" ],
   io_type := [ [ "D" ], [ "P", "S" ] ],
   return_type := "morphism",
@@ -3072,15 +3072,15 @@ IsomorphismFromDirectProductToDirectSum := rec(
   no_with_given := true ),
 
 IsomorphismFromCoproductToDirectSum := rec(
-  installation_name := "IsomorphismFromCoproductToDirectSumOp",
+  installation_name := "IsomorphismFromCoproductToDirectSum",
   filter_list := [ "list_of_objects" ],
   io_type := [ [ "D" ], [ "C", "S" ] ],
   return_type := "morphism",
-  dual_operation := "IsomorphismFromDirectSumToCoproduct",
+  dual_operation := "IsomorphismFromDirectSumToDirectProduct",
   no_with_given := true ),
 
 DirectSumCodiagonalDifference := rec(
-  installation_name := "DirectSumCodiagonalDifferenceOp",
+  installation_name := "DirectSumCodiagonalDifference",
   io_type := [ [ "D" ], [ "D_1_source", "S" ] ],
   filter_list := [ "list_of_morphisms" ],
   return_type := "morphism",
@@ -3088,7 +3088,7 @@ DirectSumCodiagonalDifference := rec(
   no_with_given := true ),
 
 DirectSumProjectionInPushout := rec(
-  installation_name := "DirectSumProjectionInPushoutOp",
+  installation_name := "DirectSumProjectionInPushout",
   filter_list := [ "list_of_morphisms" ],
   io_type := [ [ "D" ], [ "S", "I" ] ],
   return_type := "morphism",
@@ -3287,7 +3287,7 @@ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism := rec
 ),
 
 SolveLinearSystemInAbCategory := rec(
-  installation_name := "SolveLinearSystemInAbCategoryOp",
+  installation_name := "SolveLinearSystemInAbCategory",
   filter_list := [ IsList, IsList, "list_of_morphisms" ],
   cache_name := "SolveLinearSystemInAbCategory",
   return_type := "list_of_morphisms_or_fail",
@@ -3340,7 +3340,7 @@ SolveLinearSystemInAbCategory := rec(
 
 MereExistenceOfSolutionOfLinearSystemInAbCategory := rec(
     ## TODO: Type-check of linear system
-  installation_name := "MereExistenceOfSolutionOfLinearSystemInAbCategoryOp",
+  installation_name := "MereExistenceOfSolutionOfLinearSystemInAbCategory",
   filter_list := [ IsList, IsList, "list_of_morphisms" ],
   cache_name := "MereExistenceOfSolutionOfLinearSystemInAbCategory",
   return_type := "bool"
@@ -4275,12 +4275,12 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
         CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_object_name, make_record_op( object_record ) );
 
         if limit.number_of_targets > 0 then
-            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_projection_name, make_record_op( projection_record ) );
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_projection_name, projection_record );
             CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( limit.limit_projection_name, "WithGiven", limit.limit_object_name ), make_record_with_given( projection_record, limit.limit_object_name, limit.colimit_object_name ) );
         fi;
         
         if limit.number_of_nontargets = 1 then
-            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, morphism_to_sink_record.installation_name, make_record_op( morphism_to_sink_record ) );
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, morphism_to_sink_record.installation_name, morphism_to_sink_record );
             CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( morphism_to_sink_record.installation_name, "WithGiven", limit.limit_object_name ), make_record_with_given( morphism_to_sink_record, limit.limit_object_name, limit.colimit_object_name ) );
         fi;
         
@@ -4293,12 +4293,12 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
         CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_object_name, make_record_op( make_colimit( object_record ) ) );
         
         if limit.number_of_targets > 0 then
-            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_injection_name, make_record_op( make_colimit( projection_record ) ) );
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_injection_name, make_colimit( projection_record ) );
             CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( limit.colimit_injection_name, "WithGiven", limit.colimit_object_name ), make_record_with_given( make_colimit( projection_record ), limit.colimit_object_name, limit.limit_object_name ) );
         fi;
         
         if limit.number_of_nontargets = 1 then
-            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, morphism_to_sink_record.dual_operation, make_record_op( make_colimit( morphism_to_sink_record ) ) );
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, morphism_to_sink_record.dual_operation, make_colimit( morphism_to_sink_record ) );
             CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( morphism_to_sink_record.dual_operation, "WithGiven", limit.colimit_object_name ), make_record_with_given( make_colimit( morphism_to_sink_record ), limit.colimit_object_name, limit.limit_object_name ) );
         fi;
         
