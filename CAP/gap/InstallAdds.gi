@@ -662,8 +662,6 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
     
     AddOperationsToDerivationGraph( CAP_INTERNAL_DERIVATION_GRAPH, recnames );
     
-    CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATIONS( record );
-    
     for current_recname in recnames do
         
         current_rec := record.( current_recname );
@@ -680,6 +678,9 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
         CapInternalInstallAdd( current_rec );
         
     od;
+    
+    # for the sanity checks in AddDerivation, the record already has to be attached to CAP_INTERNAL_METHOD_NAME_RECORD at this point
+    CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATIONS( record );
     
 end );
 
