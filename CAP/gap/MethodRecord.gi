@@ -1492,7 +1492,9 @@ EmbeddingOfEqualizerWithGivenEqualizer := rec(
   io_type := [ [ "morphisms", "P" ], [ "P", "morphisms_1_source" ] ],
   number_of_diagram_arguments := 1,
   universal_type := "Limit",
-  dual_operation := "ProjectionOntoCoequalizerWithGivenCoequalizer" ),
+  dual_operation := "ProjectionOntoCoequalizerWithGivenCoequalizer",
+  
+  pre_function := ~.Equalizer.pre_function ),
 
 MorphismFromEqualizerToSink := rec(
   installation_name := "MorphismFromEqualizerToSinkOp",
@@ -1923,7 +1925,9 @@ ProjectionOntoCoequalizerWithGivenCoequalizer := rec(
   io_type := [ [ "morphisms", "P" ], [ "morphisms_1_range", "P" ] ],
   number_of_diagram_arguments := 1,
   universal_type := "Colimit",
-  dual_operation := "EmbeddingOfEqualizerWithGivenEqualizer" ),
+  dual_operation := "EmbeddingOfEqualizerWithGivenEqualizer",
+  
+  pre_function := ~.Coequalizer.pre_function ),
 
 MorphismFromSourceToCoequalizer := rec(
   installation_name := "MorphismFromSourceToCoequalizerOp",
