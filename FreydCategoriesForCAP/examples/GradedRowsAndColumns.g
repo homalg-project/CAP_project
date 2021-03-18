@@ -1124,7 +1124,7 @@ Display( InternalHomOnObjects( ObjectR, ObjectR ) );
 #! @Example
 aR := GradedRow( [ [ [1,0], 1 ] ], S );
 #! <A graded row of rank 1>
-bR := ZeroObject( aR );
+bR := ZeroObject( CapCategory( aR ) );
 #! <A graded row of rank 0>
 coevR := CoevaluationForDual( bR );
 #! <A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
@@ -1160,7 +1160,7 @@ IsWellDefined( tens_mor );
 #! @Example
 aC := GradedColumn( [ [ [1,0], 1 ] ], S );
 #! <A graded column of rank 1>
-bC := ZeroObject( aC );
+bC := ZeroObject( CapCategory( aC ) );
 #! <A graded column of rank 0>
 coevC := CoevaluationForDual( bC );
 #! <A morphism in Category of graded columns over Q[x_1,x_2,x_3,x_4]
