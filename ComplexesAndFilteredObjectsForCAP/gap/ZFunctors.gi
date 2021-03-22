@@ -241,20 +241,20 @@ BindGlobal( "ADD_IDENTITY_MORPHISM_IN_Z_FUNCTORS",
       end );
   end );
 
-## Inverse
+## InverseForMorphisms
 ##
 BindGlobal( "ADD_INVERSE_IN_Z_FUNCTORS",
           
   function( category )
     local morphism_func, inverse;
     
-    AddInverse( ZFunctorCategory( category ),
+    AddInverseForMorphisms( ZFunctorCategory( category ),
         
         function( isomorphism )
             
             morphism_func := function( index )
                 
-                return Inverse( isomorphism[ index ] );
+                return InverseForMorphisms( isomorphism[ index ] );
                 
             end;
             
@@ -1050,7 +1050,7 @@ InstallGlobalFunction( INSTALL_OPERATIONS_FOR_ZFUNCTOR_CATEGORY,
         [ [ "UniversalMorphismFromPushout" ],
           ADD_UNIVERSAL_MORPHISM_FROM_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_Z_FUNCTORS ],
         
-        [ [ "InverseImmutable" ], ADD_INVERSE_IN_Z_FUNCTORS ],
+        [ [ "InverseForMorphisms" ], ADD_INVERSE_IN_Z_FUNCTORS ],
         
         [ [ "LiftAlongMonomorphism" ], ADD_MONO_AS_KERNEL_LIFT_IN_Z_FUNCTORS ],
         

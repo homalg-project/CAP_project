@@ -348,7 +348,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_SPANS",
         
     end );
     
-    AddInverse( category,
+    AddInverseForMorphisms( category,
       
       function( morphism )
         local underlying_general, inverse;

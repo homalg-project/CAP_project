@@ -1645,47 +1645,44 @@ DeclareOperation( "AddIsColiftable",
 #! \end{center}
 #! @EndLatexOnly
 
-DeclareOperation( "InverseOp",
-                  [ IsCapCategoryMorphism ] );
-
 #! @Description
 #! The argument is an isomorphism $\alpha: a \rightarrow b$.
 #! The output is its inverse $\alpha^{-1}: b \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}(b,a)$
 #! @Arguments alpha
-# DeclareOperation( "Inverse",
-#         [ IsCapCategoryMorphism ] );
+DeclareOperation( "InverseForMorphisms",
+                  [ IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>Inverse</C>.
+#! to the category for the basic operation <C>InverseForMorphisms</C>.
 #! $F: \alpha \mapsto \alpha^{-1}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddInverse",
+DeclareOperation( "AddInverseForMorphisms",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddInverse",
+DeclareOperation( "AddInverseForMorphisms",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddInverse",
+DeclareOperation( "AddInverseForMorphisms",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddInverse",
+DeclareOperation( "AddInverseForMorphisms",
                   [ IsCapCategory, IsList ] );
 
-## these are the Add functions which are actually called.
-DeclareOperation( "AddInverseImmutable",
+## convenience methods
+DeclareOperation( "AddInverse",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddInverseImmutable",
+DeclareOperation( "AddInverse",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddInverseImmutable",
+DeclareOperation( "AddInverse",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddInverseImmutable",
+DeclareOperation( "AddInverse",
                   [ IsCapCategory, IsList ] );
 
 ###################################

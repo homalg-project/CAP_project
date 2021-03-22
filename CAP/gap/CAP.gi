@@ -295,28 +295,70 @@ end );
 ##
 InstallMethod( AddInverse,
                [ IsCapCategory, IsFunction ],
-               AddInverseImmutable );
+               
+  function( category, func )
+    
+    Print(
+      Concatenation(
+      "WARNING: AddInverse is deprecated and will not be supported after 2022.03.22. ",
+      "Please use AddInverseForMorphisms instead.\n"
+      )
+    );
+    
+    AddInverseForMorphisms( category, func );
+    
+end );
 
 ##
 InstallMethod( AddInverse,
                [ IsCapCategory, IsFunction, IsInt ],
-               AddInverseImmutable );
+               
+  function( category, func, int )
+    
+    Print(
+      Concatenation(
+      "WARNING: AddInverse is deprecated and will not be supported after 2022.03.22. ",
+      "Please use AddInverseForMorphisms instead.\n"
+      )
+    );
+    
+    AddInverseForMorphisms( category, func, int );
+    
+end );
 
 ##
 InstallMethod( AddInverse,
                [ IsCapCategory, IsList ],
-               AddInverseImmutable );
+               
+  function( category, list )
+    
+    Print(
+      Concatenation(
+      "WARNING: AddInverse is deprecated and will not be supported after 2022.03.22. ",
+      "Please use AddInverseForMorphisms instead.\n"
+      )
+    );
+    
+    AddInverseForMorphisms( category, list );
+    
+end );
 
 ##
 InstallMethod( AddInverse,
                [ IsCapCategory, IsList, IsInt ],
-               AddInverseImmutable );
-
-CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
-  rec(
-    Inverse := [ [ "InverseImmutable", 1 ] ]
-  )
- );
+               
+  function( category, list, int )
+    
+    Print(
+      Concatenation(
+      "WARNING: AddInverse is deprecated and will not be supported after 2022.03.22. ",
+      "Please use AddInverseForMorphisms instead.\n"
+      )
+    );
+    
+    AddInverseForMorphisms( category, list, int );
+    
+end );
 
 #######################################
 ##

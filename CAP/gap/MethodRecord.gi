@@ -269,14 +269,13 @@ IdentityMorphism := rec(
   return_type := "morphism",
   dual_operation := "IdentityMorphism" ),
 
-InverseImmutable := rec(
+InverseForMorphisms := rec(
 # Type check for IsIsomorphism
-  installation_name := "InverseOp",
+  installation_name := "InverseForMorphisms",
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "alpha_range", "alpha_source" ] ],
-  cache_name := "InverseImmutable",
   return_type := "morphism",
-  dual_operation := "InverseImmutable" ),
+  dual_operation := "InverseForMorphisms" ),
 
 KernelObject := rec(
   installation_name := "KernelObject",

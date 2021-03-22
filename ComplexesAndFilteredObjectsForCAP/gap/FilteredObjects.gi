@@ -145,13 +145,13 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
           
     end );
 
-    ## Inverse
+    ## InverseForMorphisms
     ##
     BindGlobal( Concatenation( "ADD_INVERSE_IN_", name_part, "_CATEGORY" ),
               
       function( category )
         
-        AddInverse( category_getter( category ),
+        AddInverseForMorphisms( category_getter( category ),
             
             function( isomorphism )
               local source, range;
@@ -160,7 +160,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
               
               range := Source( isomorphism );
               
-              return morphism_constructor( source, Inverse( UnderlyingZFunctorCell( isomorphism ) ), range );
+              return morphism_constructor( source, InverseForMorphisms( UnderlyingZFunctorCell( isomorphism ) ), range );
               
         end );
         
@@ -533,7 +533,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
             [ [ "UniversalMorphismIntoFiberProduct" ],
               ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "InverseImmutable" ], ValueGlobal( Concatenation(  "ADD_INVERSE_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "InverseForMorphisms" ], ValueGlobal( Concatenation(  "ADD_INVERSE_IN_", name_part, "_CATEGORY" ) ) ],
             
             [ [ "LiftAlongMonomorphism" ], ValueGlobal( Concatenation(  "ADD_MONO_AS_KERNEL_LIFT_IN_", name_part, "_CATEGORY" ) ) ],
             
