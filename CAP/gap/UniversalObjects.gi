@@ -669,29 +669,13 @@ end );
 
 ##
 InstallMethod( Pushout,
-               [ IsList ],
-                
-  function( diagram )
-    
-    return PushoutOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
-##
-InstallMethod( Pushout,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
   function( mor1, mor2 )
     
-    return PushoutOp( CapCategory( mor1 ), [ mor1, mor2 ] );
+    return Pushout( CapCategory( mor1 ), [ mor1, mor2 ] );
     
 end );
-
-##
-InstallOtherMethod( Pushout,
-                    [ IsCapCategory, IsList ],
-                    
-  PushoutOp );
 
 ##
 InstallGlobalFunction( UniversalMorphismFromPushout,

@@ -1973,7 +1973,7 @@ UniversalMorphismFromCoequalizerWithGivenCoequalizer := rec(
   dual_operation := "UniversalMorphismIntoEqualizerWithGivenEqualizer" ),
 
 Pushout := rec(
-  installation_name := "PushoutOp",
+  installation_name := "Pushout",
   filter_list := [ "category", "list_of_morphisms" ],
   number_of_diagram_arguments := 1,
   universal_type := "Colimit",

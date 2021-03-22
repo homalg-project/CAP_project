@@ -3893,15 +3893,6 @@ DeclareOperation( "Pushout",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
-#! The output is the pushout $\mathrm{Pushout}(D)$.
-#! @Returns an object
-#! @Arguments D
-DeclareOperation( "PushoutOp",
-                           [ IsList ] );
-
-
-#! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
 #! and an integer $k$.
 #! The output is the $k$-th injection
