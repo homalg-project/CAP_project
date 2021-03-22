@@ -1570,7 +1570,7 @@ DeclareOperation( "AddMorphismBetweenDirectSums",
 #! defined by the list $M$ regarded as a matrix of dimension $m \times n$.
 #! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^{m}A_i, \bigoplus_{j=1}^n B_j)$
 #! @Arguments M, m, n
-DeclareOperation( "MorphismBetweenDirectSumsOp",
+DeclareOperation( "MorphismBetweenDirectSums",
                            [ IsList, IsInt, IsInt ] );
 
 #! @Description

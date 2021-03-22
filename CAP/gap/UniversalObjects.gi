@@ -404,7 +404,7 @@ InstallMethod( MorphismBetweenDirectSums,
 end );
 
 ##
-InstallMethod( MorphismBetweenDirectSumsOp,
+InstallMethod( MorphismBetweenDirectSums,
                                   [ IsList, IsInt, IsInt ],
                                   
   function( morphism_matrix_listlist, rows, cols )
