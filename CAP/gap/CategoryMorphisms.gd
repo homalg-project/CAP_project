@@ -840,8 +840,6 @@ DeclareProperty( "IsZero", IsCapCategoryMorphism );
 
 DeclareOperation( "\+", [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-DeclareAttribute( "AdditiveInverseImmutable", IsCapCategoryMorphism );
-
 DeclareOperation( "\-", [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
@@ -904,6 +902,9 @@ DeclareOperation( "AddSubtractionForMorphisms",
 #! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments alpha
 DeclareAttribute( "AdditiveInverseForMorphisms",
+                  IsCapCategoryMorphism );
+
+DeclareAttribute( "AdditiveInverse",
                   IsCapCategoryMorphism );
 
 #! @Description

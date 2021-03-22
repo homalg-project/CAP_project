@@ -163,6 +163,13 @@ InstallMethod( AdditiveInverse,
                   
 AdditiveInverseForMorphisms );
 
+CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
+  rec(
+    AdditiveInverse := [ [ "AdditiveInverseForMorphisms", 1 ] ],
+    AdditiveInverseImmutable := [ [ "AdditiveInverseForMorphisms", 1 ] ],
+  )
+ );
+
 ##
 InstallOtherMethod( Inverse,
                   [ IsCapCategoryMorphism ],
