@@ -4394,8 +4394,8 @@ end );
 
 BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
   
-  function( source_range_object, object_function_name, object_arg_list, object_call_name, object_cache_name )
-    local object_getter, diagram_name, setter_function, is_attribute, cache_key_length;
+  function( source_range_object, object_function_name, object_arg_list, object_cache_name )
+    local object_getter, setter_function, is_attribute, cache_key_length;
     
     if source_range_object = "Source" then
         object_getter := Source;
@@ -4405,7 +4405,6 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
         Error( "the first argument of CAP_INTERNAL_CREATE_POST_FUNCTION must be 'Source' or 'Range'" );
     fi;
     
-    diagram_name := Concatenation( object_call_name, "Diagram" );
     setter_function := Setter( ValueGlobal( object_function_name ) );
     is_attribute := setter_function <> false;
     cache_key_length := Length( object_arg_list );
@@ -4708,7 +4707,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                         
                     else
                         
-                        current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.universal_object_position, object_func, object_arg_list, object_name, object_func );
+                        current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.universal_object_position, object_func, object_arg_list, object_func );
                         
                     fi;
                     
