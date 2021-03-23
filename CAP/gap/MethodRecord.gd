@@ -11,6 +11,12 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS" );
 
 DeclareGlobalFunction( "CAP_INTERNAL_ENHANCE_NAME_RECORD_LIMITS" );
 
+#! @Chapter Limits and Colimits
+#! @Section Functions
+#! @Description
+#!   This function takes a method name record and a list of enhanced limits, and validates the entries of the method name record.
+#!   Prefunctions, full prefunctions and postfunctions are excluded from the validation.
+#! @Arguments method_name_record, limits
 DeclareGlobalFunction( "CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD" );
 
 DeclareGlobalVariable( "CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS" );
