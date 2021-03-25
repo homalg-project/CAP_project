@@ -7,7 +7,7 @@
 ##
 AddDerivationToCAP( CocartesianAssociatorLeftToRightWithGivenCoproducts,
                     
-  function( left_associated_object, object_1, object_2, object_3, right_associated_object )
+  function( cat, left_associated_object, object_1, object_2, object_3, right_associated_object )
     
     return Inverse( CocartesianAssociatorRightToLeftWithGivenCoproducts(
                       right_associated_object,
@@ -20,7 +20,7 @@ end : Description := "CocartesianAssociatorLeftToRightWithGivenCoproducts as the
 ##
 AddDerivationToCAP( CocartesianAssociatorRightToLeftWithGivenCoproducts,
                     
-  function( right_associated_object, object_1, object_2, object_3, left_associated_object )
+  function( cat, right_associated_object, object_1, object_2, object_3, left_associated_object )
     
     return Inverse( CocartesianAssociatorLeftToRightWithGivenCoproducts(
                       left_associated_object,
@@ -33,7 +33,7 @@ end : Description := "CocartesianAssociatorRightToLeftWithGivenCoproducts as the
 ##
 AddDerivationToCAP( CocartesianLeftUnitorWithGivenCoproduct,
                   
-  function( object, unit_u_object )
+  function( cat, object, unit_u_object )
     
     return Inverse( CocartesianLeftUnitorInverseWithGivenCoproduct( object, unit_u_object ) );
     
@@ -42,7 +42,7 @@ end : Description := "CocartesianLeftUnitorWithGivenCoproduct as the inverse of 
 ##
 AddDerivationToCAP( CocartesianLeftUnitorInverseWithGivenCoproduct,
                   
-  function( object, unit_u_object )
+  function( cat, object, unit_u_object )
     
     return Inverse( CocartesianLeftUnitorWithGivenCoproduct( object, unit_u_object ) );
     
@@ -51,7 +51,7 @@ end : Description := "CocartesianLeftUnitorInverseWithGivenCoproduct as the inve
 ##
 AddDerivationToCAP( CocartesianRightUnitorWithGivenCoproduct,
                   
-  function( object, object_u_unit )
+  function( cat, object, object_u_unit )
     
     return Inverse( CocartesianRightUnitorInverseWithGivenCoproduct( object, object_u_unit ) );
     
@@ -60,7 +60,7 @@ end : Description := "CocartesianRightUnitorWithGivenCoproduct as the inverse of
 ##
 AddDerivationToCAP( CocartesianRightUnitorInverseWithGivenCoproduct,
                   
-  function( object, object_u_unit )
+  function( cat, object, object_u_unit )
     
     return Inverse( CocartesianRightUnitorWithGivenCoproduct( object, object_u_unit ) );
     
@@ -69,7 +69,7 @@ end : Description := "CocartesianRightUnitorInverseWithGivenCoproduct as the inv
 ##
 AddDerivationToCAP( CocartesianAssociatorLeftToRightWithGivenCoproducts,
                     
-  function( left_associated_object, object_1, object_2, object_3, right_associated_object )
+  function( cat, left_associated_object, object_1, object_2, object_3, right_associated_object )
     
     return IdentityMorphism( left_associated_object );
     
@@ -79,7 +79,7 @@ end : CategoryFilter := IsStrictCocartesianCategory,
 ##
 AddDerivationToCAP( CocartesianAssociatorRightToLeftWithGivenCoproducts,
                     
-  function( right_associated_object, object_1, object_2, object_3, left_associated_object )
+  function( cat, right_associated_object, object_1, object_2, object_3, left_associated_object )
     
     return IdentityMorphism( right_associated_object );
     
@@ -89,7 +89,7 @@ end : CategoryFilter := IsStrictCocartesianCategory,
 ##
 AddDerivationToCAP( CocartesianLeftUnitorWithGivenCoproduct,
                     
-  function( object, unit_u_object )
+  function( cat, object, unit_u_object )
     
     return IdentityMorphism( object );
       
@@ -99,7 +99,7 @@ end : CategoryFilter := IsStrictCocartesianCategory,
 ##
 AddDerivationToCAP( CocartesianLeftUnitorInverseWithGivenCoproduct,
                   
-  function( object, unit_u_object )
+  function( cat, object, unit_u_object )
     
     return IdentityMorphism( object );
     
@@ -109,7 +109,7 @@ end : CategoryFilter := IsStrictCocartesianCategory,
 ##
 AddDerivationToCAP( CocartesianRightUnitorWithGivenCoproduct,
                     
-  function( object, object_u_unit )
+  function( cat, object, object_u_unit )
     
     return IdentityMorphism( object );
     
@@ -119,7 +119,7 @@ end : CategoryFilter := IsStrictCocartesianCategory,
 ##
 AddDerivationToCAP( CocartesianRightUnitorInverseWithGivenCoproduct,
                     
-  function( object, object_u_unit )
+  function( cat, object, object_u_unit )
     
     return IdentityMorphism( object );
     

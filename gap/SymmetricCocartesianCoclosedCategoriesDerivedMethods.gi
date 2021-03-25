@@ -7,7 +7,7 @@
 ##
 AddDerivationToCAP( CoproductToCoexponentialAdjunctionMap,
 
-  function( object_1, object_2, morphism )
+  function( cat, object_1, object_2, morphism )
     local coclosed_coevaluation, internal_cohom_on_morphisms;
     
     internal_cohom_on_morphisms := CoexponentialOnMorphisms( morphism, IdentityMorphism( object_1 ) );
@@ -22,7 +22,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( CoexponentialToCoproductAdjunctionMap,
 
-  function( object_1, object_2, morphism )
+  function( cat, object_1, object_2, morphism )
     
     return PreCompose(
              CocartesianEvaluationMorphism( object_1, object_2 ),
@@ -34,7 +34,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( UniversalPropertyOfCocartesianDual,
 
-  function( object_1, object_2, test_morphism )
+  function( cat, object_1, object_2, test_morphism )
     
     return PreCompose( 
              IsomorphismFromCocartesianDualToCoexponential( object_2 ),
@@ -46,7 +46,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( MorphismFromCocartesianBidualWithGivenCocartesianBidual,
 
-  function( cobidual, object )
+  function( cat, cobidual, object )
     local morphism;
 
     morphism := PreCompose( 
@@ -61,7 +61,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( MorphismFromCocartesianBidualWithGivenCocartesianBidual,
 
-  function( cobidual, object )
+  function( cat, cobidual, object )
     local morphism, codual_object, tensor_unit;
     
     codual_object := CocartesianDualOnObjects( object );
@@ -88,7 +88,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( CocartesianDualOnObjects,
 
-  function( object )
+  function( cat, object )
     
     return Source( IsomorphismFromCocartesianDualToCoexponential( object ) );
 
@@ -98,7 +98,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( CocartesianDualOnObjects,
 
-  function( object )
+  function( cat, object )
     
     return Range( IsomorphismFromCoexponentialToCocartesianDual( object ) );
 
@@ -108,7 +108,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( CocartesianDualOnMorphismsWithGivenCocartesianDuals,
 
-  function( new_source, morphism, new_range )
+  function( cat, new_source, morphism, new_range )
     local category, result_morphism;
     
     category := CapCategory( morphism );
@@ -131,7 +131,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( CocartesianEvaluationForCocartesianDualWithGivenCoproduct,
 
-  function( unit, object, coproduct_object )
+  function( cat, unit, object, coproduct_object )
 
     return CoexponentialToCoproductAdjunctionMap( 
             unit, 
@@ -144,7 +144,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( CocartesianLambdaIntroduction,
 
-  function( morphism )
+  function( cat, morphism )
     local result_morphism, category, range;
 
     category := CapCategory( morphism );
@@ -164,7 +164,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( CocartesianLambdaElimination,
 
-  function( object_1, object_2, morphism )
+  function( cat, object_1, object_2, morphism )
     local result_morphism;
     
     result_morphism := CoexponentialToCoproductAdjunctionMap( object_1, object_2, morphism );
@@ -177,7 +177,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
 
-  function( a1, a2, b1, b2, new_source_and_range_list )
+  function( cat, a1, a2, b1, b2, new_source_and_range_list )
     local morphism, coproduct_b1_b2, int_cohom_a1_b1, int_cohom_a2_b2, id_int_cohom_a1_b1, id_int_cohom_a2_b2;
     
     coproduct_b1_b2 := Coproduct( b1, b2 );
@@ -234,7 +234,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects,
 
-  function( new_source, object_1, object_2, new_range )
+  function( cat, new_source, object_1, object_2, new_range )
     local morphism, unit, coproduct_on_object_1_and_object_2;
     
     unit := InitialObject( CapCategory( object_1 ) );
@@ -263,7 +263,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( IsomorphismFromCoexponentialToObjectWithGivenCoexponential,
                   
-  function( object, internal_cohom )
+  function( cat, object, internal_cohom )
     local unit;
     
     unit := InitialObject( CapCategory( object ) );
@@ -281,7 +281,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( IsomorphismFromCoexponentialToObjectWithGivenCoexponential,
                   
-  function( object, internal_cohom )
+  function( cat, object, internal_cohom )
     local unit;
     
     unit := InitialObject( CapCategory( object ) );
@@ -298,7 +298,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 # ##
 # AddDerivationToCAP( IsomorphismFromInternalHomToObjectWithGivenInternalHom,
 #                     
-#   function( object, internal_hom )
+#   function( cat, object, internal_hom )
 #     
 #     return Inverse( IsomorphismFromObjectToInternalHom( object ) );
 #     
@@ -308,7 +308,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( IsomorphismFromObjectToCoexponentialWithGivenCoexponential,
                   
-  function( object, internal_cohom )
+  function( cat, object, internal_cohom )
     local unit;
     
     unit := InitialObject( CapCategory( object ) );
@@ -323,7 +323,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 # ##
 # AddDerivationToCAP( IsomorphismFromObjectToInternalHomWithGivenInternalHom,
 #                     
-#   function( object, internal_hom )
+#   function( cat, object, internal_hom )
 #     
 #     return Inverse( IsomorphismFromInternalHomToObject( object ) );
 #     
@@ -333,7 +333,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( MorphismFromCoexponentialToCoproductWithGivenObjects,
                     
-  function( internal_cohom, object_1, object_2, coproduct_object )
+  function( cat, internal_cohom, object_1, object_2, coproduct_object )
     local unit;
     
     unit := InitialObject( CapCategory( object_1 ) );
@@ -357,7 +357,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( CocartesianEvaluationMorphismWithGivenRange,
                   
-  function( object_1, object_2, coproduct_object )
+  function( cat, object_1, object_2, coproduct_object )
     
     return CoexponentialToCoproductAdjunctionMap(
              object_1,
@@ -370,7 +370,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 
 AddDerivationToCAP( CocartesianCoevaluationMorphismWithGivenSource,
                   
-  function( object_1, object_2, internal_cohom )
+  function( cat, object_1, object_2, internal_cohom )
     
     return CoproductToCoexponentialAdjunctionMap(
              object_1,
@@ -384,7 +384,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
                   
-  function( new_source, x, y, z, new_range )
+  function( cat, new_source, x, y, z, new_range )
     local cohom_x_y, cohom_y_z, morphism;
     
     cohom_x_y := CoexponentialOnObjects( x, y );
@@ -420,7 +420,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( CocartesianPostCoComposeMorphismWithGivenObjects,
                     
-  function( new_source, x, y, z, new_range )
+  function( cat, new_source, x, y, z, new_range )
     local cohom_x_y, cohom_y_z, morphism;
     
     cohom_x_y := CoexponentialOnObjects( x, y );
@@ -449,7 +449,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( CocartesianPostCoComposeMorphismWithGivenObjects,
                     
-  function( new_source, x, y, z, new_range )
+  function( cat, new_source, x, y, z, new_range )
     local braiding;
     
     braiding := CocartesianBraiding( CoexponentialOnObjects( x, y ), CoexponentialOnObjects( y, z ) );
@@ -462,7 +462,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
                     
-  function( new_source, x, y, z, new_range )
+  function( cat, new_source, x, y, z, new_range )
     local braiding;
     
     braiding := CocartesianBraiding( CoexponentialOnObjects( y, z ), CoexponentialOnObjects( x, y ) );
@@ -475,7 +475,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 ##
 AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
                     
-  function( a1, a2, b1, b2, new_source_and_range_list )
+  function( cat, a1, a2, b1, b2, new_source_and_range_list )
     local morphism, int_cohom_a1_b1, int_cohom_a2_b2, id_int_cohom_a2_b2, coproduct_b1_b2;
     
     int_cohom_a1_b1 := CoexponentialOnObjects( a1, b1 );
@@ -515,7 +515,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory and IsStrictCocartesianCat
 ##
 AddDerivationToCAP( CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects,
                   
-  function( new_source, object_1, object_2, new_range )
+  function( cat, new_source, object_1, object_2, new_range )
     local morphism, unit, coproduct_on_object_1_and_object_2;
     
     unit := InitialObject( CapCategory( object_1 ) );
@@ -540,7 +540,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory and IsStrictCocartesianCat
 ##
 AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
                   
-  function( new_source, x, y, z, new_range )
+  function( cat, new_source, x, y, z, new_range )
     local cohom_x_y, cohom_y_z, morphism;
     
     cohom_x_y := CoexponentialOnObjects( x, y );
@@ -572,7 +572,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory and IsStrictCocartesianCat
 ##
 AddDerivationToCAP( CocartesianPostCoComposeMorphismWithGivenObjects,
                     
-  function( new_source, x, y, z, new_range )
+  function( cat, new_source, x, y, z, new_range )
     local cohom_x_y, cohom_y_z, morphism;
     
     cohom_x_y := CoexponentialOnObjects( x, y );

@@ -8,28 +8,28 @@ InstallValue( DISTRIBUTIVE_COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD, rec(
 
 LeftCocartesianDistributivityExpandingWithGivenObjects := rec(
   installation_name := "LeftCocartesianDistributivityExpandingWithGivenObjects",
-  filter_list := [ "object", "object", IsList, "object" ],
+  filter_list := [ "category", "object", "object", IsList, "object" ],
   io_type := [ [ "s", "a", "L", "r" ], [ "s", "r" ] ],
   cache_name := "LeftCocartesianDistributivityExpandingWithGivenObjects",
   return_type := "morphism" ),
 
 LeftCocartesianDistributivityFactoringWithGivenObjects := rec(
   installation_name := "LeftCocartesianDistributivityFactoringWithGivenObjects",
-  filter_list := [ "object", "object", IsList, "object" ],
+  filter_list := [ "category", "object", "object", IsList, "object" ],
   io_type := [ [ "s", "a", "L", "r" ], [ "s", "r" ] ],
   cache_name := "LeftCocartesianDistributivityFactoringWithGivenObjects",
   return_type := "morphism" ),
 
 RightCocartesianDistributivityExpandingWithGivenObjects := rec(
   installation_name := "RightCocartesianDistributivityExpandingWithGivenObjects",
-  filter_list := [ "object", IsList, "object", "object" ],
+  filter_list := [ "category", "object", IsList, "object", "object" ],
   io_type := [ [ "s", "L", "a", "r" ], [ "s", "r" ] ],
   cache_name := "RightCocartesianDistributivityExpandingWithGivenObjects",
   return_type := "morphism" ),
 
 RightCocartesianDistributivityFactoringWithGivenObjects := rec(
   installation_name := "RightCocartesianDistributivityFactoringWithGivenObjects",
-  filter_list := [ "object", IsList, "object", "object" ],
+  filter_list := [ "category", "object", IsList, "object", "object" ],
   io_type := [ [ "s", "L", "a", "r" ], [ "s", "r" ] ],
   cache_name := "RightCocartesianDistributivityFactoringWithGivenObjects",
   return_type := "morphism" ),
