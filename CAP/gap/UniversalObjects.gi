@@ -121,12 +121,23 @@ InstallMethod( Coproduct,
     
 end );
 
+##
+InstallOtherMethod( Coproduct,
+                    [ IsCapCategory, IsList ],
+                    
+  CoproductOp );
 
 ##
 InstallGlobalFunction( UniversalMorphismFromCoproduct,
 
   function( arg )
     local diagram;
+    
+    if IsCapCategory( arg[1] ) then
+        
+        return CallFuncList( UniversalMorphismFromCoproductOp, arg );
+        
+    fi;
     
     if Length( arg ) = 2
        and IsList( arg[1] )
@@ -170,6 +181,12 @@ InstallGlobalFunction( UniversalMorphismIntoDirectProduct,
 
   function( arg )
     local diagram;
+    
+    if IsCapCategory( arg[1] ) then
+        
+        return CallFuncList( UniversalMorphismIntoDirectProductOp, arg );
+        
+    fi;
     
     if Length( arg ) = 2
        and IsList( arg[1] )
@@ -233,6 +250,12 @@ InstallGlobalFunction( UniversalMorphismFromDirectSum,
   function( arg )
     local diagram;
     
+    if IsCapCategory( arg[1] ) then
+        
+        return CallFuncList( UniversalMorphismFromDirectSumOp, arg );
+        
+    fi;
+    
     if Length( arg ) = 2
        and IsList( arg[1] )
        and IsList( arg[2] ) then
@@ -254,6 +277,12 @@ InstallGlobalFunction( UniversalMorphismIntoDirectSum,
                
   function( arg )
     local diagram;
+    
+    if IsCapCategory( arg[1] ) then
+        
+        return CallFuncList( UniversalMorphismIntoDirectSumOp, arg );
+        
+    fi;
     
     if Length( arg ) = 2
        and IsList( arg[1] )
@@ -457,6 +486,12 @@ InstallGlobalFunction( Equalizer,
   
   function( arg )
     
+    if IsCapCategory( arg[1] ) then
+        
+        return CallFuncList( EqualizerOp, arg );
+        
+    fi;
+    
     if Length( arg ) = 1
        and IsList( arg[1] )
        and ForAll( arg[1], IsCapCategoryMorphism ) then
@@ -484,6 +519,12 @@ InstallGlobalFunction( FiberProduct,
   
   function( arg )
     
+    if IsCapCategory( arg[1] ) then
+        
+        return CallFuncList( FiberProductOp, arg );
+        
+    fi;
+    
     if Length( arg ) = 1
        and IsList( arg[1] )
        and ForAll( arg[1], IsCapCategoryMorphism ) then
@@ -501,6 +542,12 @@ InstallGlobalFunction( UniversalMorphismIntoFiberProduct,
 
   function( arg )
     local diagram, source;
+    
+    if IsCapCategory( arg[1] ) then
+        
+        return CallFuncList( UniversalMorphismIntoFiberProductOp, arg );
+        
+    fi;
     
     if Length( arg ) = 2
        and IsList( arg[1] )
@@ -532,6 +579,12 @@ end );
 InstallGlobalFunction( Coequalizer,
   
   function( arg )
+    
+    if IsCapCategory( arg[1] ) then
+        
+        return CallFuncList( CoequalizerOp, arg );
+        
+    fi;
     
     if Length( arg ) = 1
        and IsList( arg[1] )
@@ -576,10 +629,22 @@ InstallMethod( Pushout,
 end );
 
 ##
+InstallOtherMethod( Pushout,
+                    [ IsCapCategory, IsList ],
+                    
+  PushoutOp );
+
+##
 InstallGlobalFunction( UniversalMorphismFromPushout,
 
   function( arg )
     local diagram, sink;
+    
+    if IsCapCategory( arg[1] ) then
+        
+        return CallFuncList( UniversalMorphismFromPushoutOp, arg );
+        
+    fi;
     
     if Length( arg ) = 2
        and IsList( arg[1] )

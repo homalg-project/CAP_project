@@ -164,6 +164,12 @@ InstallMethod( AdditiveInverse,
 AdditiveInverseForMorphisms );
 
 ##
+InstallOtherMethod( InverseImmutable,
+                  [ IsCapCategory, IsCapCategoryMorphism ],
+                  
+InverseOp );
+
+##
 InstallMethod( \*,
                [ IsRingElement, IsCapCategoryMorphism ],
                
