@@ -8,14 +8,14 @@
 ##
 BindGlobal( "CAP_PREFUNCTION_BINARY_DIRECT_PRODUCT_TO_DIRECT_PRODUCT",
   function( binary_direct_product_func, category )
-    return function( diagram )
+    return function( cat, diagram )
       local direct_product, i;
         
         # Direct product diagrams are supposed to have at least length 1
         direct_product := diagram[ 1 ];
         
         for i in [ 2 .. Length( diagram ) ] do
-            direct_product := binary_direct_product_func( direct_product, diagram[ i ] );
+            direct_product := binary_direct_product_func( cat, direct_product, diagram[ i ] );
         od;
         
         return direct_product;
@@ -38,7 +38,7 @@ CAPAddPrepareFunction( CAP_PREFUNCTION_BINARY_DIRECT_PRODUCT_TO_DIRECT_PRODUCT,
 BindGlobal( "GET_CAP_PREFUNCTION_PROJECTION_IN_FACTOR_OF_BINARY_DIRECT_PRODUCT_TO_PROJECTION_IN_FACTOR_OF_DIRECT_PRODUCT",
   function( direct_product_method, limit_or_colimit )
     return function( projection_in_factor_of_binary_direct_product_func, category )
-        return function( diagram, projection_number )
+        return function( cat, diagram, projection_number )
           local projection, left_hand_side_diagram, left_hand_side_direct_product, i, current_factor, current_projection;
             
             if projection_number = 1 then
@@ -47,7 +47,7 @@ BindGlobal( "GET_CAP_PREFUNCTION_PROJECTION_IN_FACTOR_OF_BINARY_DIRECT_PRODUCT_T
                 left_hand_side_diagram := diagram{ [ 1 .. ( projection_number - 1 ) ] };
                 left_hand_side_direct_product := direct_product_method( left_hand_side_diagram );
                 
-                projection := projection_in_factor_of_binary_direct_product_func( left_hand_side_direct_product, diagram[ projection_number ], 2 );
+                projection := projection_in_factor_of_binary_direct_product_func( cat, left_hand_side_direct_product, diagram[ projection_number ], 2 );
             fi;
             
             for i in [ ( projection_number + 1 ) .. Length( diagram ) ] do
@@ -57,7 +57,7 @@ BindGlobal( "GET_CAP_PREFUNCTION_PROJECTION_IN_FACTOR_OF_BINARY_DIRECT_PRODUCT_T
                     current_factor := Range( projection );
                 fi;
                 
-                current_projection := projection_in_factor_of_binary_direct_product_func( current_factor, diagram[ i ], 1 );
+                current_projection := projection_in_factor_of_binary_direct_product_func( cat, current_factor, diagram[ i ], 1 );
 
                 if limit_or_colimit = "limit" then
                     projection := PreCompose( current_projection, projection );
@@ -89,14 +89,14 @@ CAPAddPrepareFunction( GET_CAP_PREFUNCTION_PROJECTION_IN_FACTOR_OF_BINARY_DIRECT
 ##
 BindGlobal( "CAP_PREFUNCTION_UNIVERSAL_MORPHISM_INTO_BINARY_DIRECT_PRODUCT_TO_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT",
   function( universal_morphism_into_binary_direct_product_func, category )
-    return function( diagram, tau )
+    return function( cat, diagram, tau )
       local universal_morphism, i;
         
         # Direct product diagrams are supposed to have at least length 1
         universal_morphism := tau[ 1 ];
         
         for i in [ 2 .. Length( diagram ) ] do
-            universal_morphism := universal_morphism_into_binary_direct_product_func( universal_morphism, tau[ i ] );
+            universal_morphism := universal_morphism_into_binary_direct_product_func( cat, universal_morphism, tau[ i ] );
         od;
         
         return universal_morphism;
