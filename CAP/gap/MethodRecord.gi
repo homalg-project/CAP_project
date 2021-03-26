@@ -4363,97 +4363,93 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
-        if not current_rec.is_with_given and IsBound( current_rec.universal_type ) then
-
-            if IsBound( current_rec.universal_object_position ) then
+        if not current_rec.is_with_given and IsBound( current_rec.universal_type ) and IsBound( current_rec.universal_object_position ) then
+            
+            ## find with given name
+            
+            ## FIXME: If the redirect function is already bound, then this part is superfluous
+            
+            without_given_name := current_recname;
+            
+            with_given_name := Concatenation( without_given_name, "WithGiven" );
+            
+            with_given_name_length := Length( with_given_name );
+            
+            for i in recnames do
                 
-                ## find with given name
-                
-                ## FIXME: If the redirect function is already bound, then this part is superfluous
-                
-                without_given_name := current_recname;
-                
-                with_given_name := Concatenation( without_given_name, "WithGiven" );
-                
-                with_given_name_length := Length( with_given_name );
-                
-                for i in recnames do
+                if PositionSublist( i, with_given_name ) <> fail then
                     
-                    if PositionSublist( i, with_given_name ) <> fail then
-                        
-                        with_given_name := i;
-                        
-                        break;
-                        
-                    fi;
+                    with_given_name := i;
                     
-                od;
-                
-                if Length( with_given_name ) = with_given_name_length then
-                    
-                    Error( Concatenation( "Name not found: ", with_given_name ) );
+                    break;
                     
                 fi;
                 
-                current_rec.with_given_without_given_name_pair := [ without_given_name, with_given_name ];
+            od;
+            
+            if Length( with_given_name ) = with_given_name_length then
                 
-                object_name := with_given_name{[ with_given_name_length + 1 .. Length( with_given_name ) ]};
+                Error( Concatenation( "Name not found: ", with_given_name ) );
                 
-                object_function_name := record.( object_name ).function_name;
+            fi;
+            
+            current_rec.with_given_without_given_name_pair := [ without_given_name, with_given_name ];
+            
+            object_name := with_given_name{[ with_given_name_length + 1 .. Length( with_given_name ) ]};
+            
+            object_function_name := record.( object_name ).function_name;
+            
+            if not IsBound( current_rec.number_of_diagram_arguments ) then
                 
-                if not IsBound( current_rec.number_of_diagram_arguments ) then
+                Error( "<current_rec> is missing the mandatory component \"number_of_diagram_arguments\"" );
+                
+            fi;
+            
+            # first argument is the category, then the diagram follows
+            object_arg_list := [ 1 .. current_rec.number_of_diagram_arguments + 1 ];
+            
+            if not IsBound( current_rec.redirect_function ) then
+                
+                if record.( without_given_name ).filter_list[1] <> "category" or record.( object_name ).filter_list[1] <> "category" or record.( with_given_name ).filter_list[1] <> "category" then
                     
-                    Error( "<current_rec> is missing the mandatory component \"number_of_diagram_arguments\"" );
+                    Display( Concatenation(
+                        "WARNING: You seem to be relying on automatically installed redirect functions but the first arguments of the functions involved are not the category. ",
+                        "No automatic redirect function will be installed. ",
+                        "To prevent this warning, add the category as the first argument to all functions involved. ",
+                        "Search for `category_as_first_argument` in the documentation for more details."
+                    ) );
+                    
+                elif Length( record.( without_given_name ).filter_list ) + 1 <> Length( record.( with_given_name ).filter_list ) then
+                    
+                    Display( Concatenation(
+                        "WARNING: You seem to be relying on automatically installed redirect functions. ",
+                        "For this, the with given method must have exactly one additional argument compared to the without given method. ",
+                        "This is not the case, so no automatic redirect function will be installed. ",
+                        "Install a custom redirect function to prevent this warning."
+                    ) );
+                    
+                else
+                    
+                    current_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_function_name, object_arg_list );
                     
                 fi;
                 
-                # first argument is the category, then the diagram follows
-                object_arg_list := [ 1 .. current_rec.number_of_diagram_arguments + 1 ];
+            fi;
+            
+            if not IsBound( current_rec.post_function ) then
                 
-                if not IsBound( current_rec.redirect_function ) then
+                if current_rec.filter_list[1] <> "category" or record.( object_name ).filter_list[1] <> "category" then
                     
-                    if record.( without_given_name ).filter_list[1] <> "category" or record.( object_name ).filter_list[1] <> "category" or record.( with_given_name ).filter_list[1] <> "category" then
-                        
-                        Display( Concatenation(
-                            "WARNING: You seem to be relying on automatically installed redirect functions but the first arguments of the functions involved are not the category. ",
-                            "No automatic redirect function will be installed. ",
-                            "To prevent this warning, add the category as the first argument to all functions involved. ",
-                            "Search for `category_as_first_argument` in the documentation for more details."
-                        ) );
-                        
-                    elif Length( record.( without_given_name ).filter_list ) + 1 <> Length( record.( with_given_name ).filter_list ) then
-                        
-                        Display( Concatenation(
-                            "WARNING: You seem to be relying on automatically installed redirect functions. ",
-                            "For this, the with given method must have exactly one additional argument compared to the without given method. ",
-                            "This is not the case, so no automatic redirect function will be installed. ",
-                            "Install a custom redirect function to prevent this warning."
-                        ) );
-                        
-                    else
-                        
-                        current_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_function_name, object_arg_list );
-                        
-                    fi;
+                    Display( Concatenation(
+                        "WARNING: You seem to be relying on automatically installed post functions but the first arguments of the functions involved are not the category. ",
+                        "No automatic post function will be installed. ",
+                        "To prevent this warning, add the category as the first argument to all functions involved. ",
+                        "Search for `category_as_first_argument` in the documentation for more details."
+                    ) );
                     
-                fi;
-                
-                if not IsBound( current_rec.post_function ) then
+                else
                     
-                    if current_rec.filter_list[1] <> "category" or record.( object_name ).filter_list[1] <> "category" then
-                        
-                        Display( Concatenation(
-                            "WARNING: You seem to be relying on automatically installed post functions but the first arguments of the functions involved are not the category. ",
-                            "No automatic post function will be installed. ",
-                            "To prevent this warning, add the category as the first argument to all functions involved. ",
-                            "Search for `category_as_first_argument` in the documentation for more details."
-                        ) );
-                        
-                    else
-                        
-                        current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.universal_object_position, object_function_name, object_arg_list );
-                        
-                    fi;
+                    current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.universal_object_position, object_function_name, object_arg_list );
                     
                 fi;
                 
