@@ -626,18 +626,26 @@ BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATIONS", function( record )
         if current_rec.is_with_given then
             
             without_given_name := current_rec.with_given_without_given_name_pair[1];
-            with_given_name := current_recname;
+            with_given_name := current_rec.with_given_without_given_name_pair[2];
             object_name := current_rec.universal_object;
             # first argument is the category
             object_arguments := [ 1 .. current_rec.number_of_diagram_arguments + 1 ];
             
-            if current_rec.filter_list[1] <> "category" or record.( object_name ).filter_list[1] <> "category" or record.( without_given_name ).filter_list[1] <> "category" then
+            if record.( without_given_name ).filter_list[1] <> "category" or record.( object_name ).filter_list[1] <> "category" or record.( with_given_name ).filter_list[1] <> "category" then
                 
                 Display( Concatenation(
                     "WARNING: You seem to be relying on automatically installed WithGiven derivations but the first arguments of the functions involved are not the category. ",
                     "The automatic WithGiven derivation will not be installed. ",
                     "To prevent this warning, add the category as the first argument to all functions involved. ",
                     "Search for `category_as_first_argument` in the documentation for more details."
+                ) );
+                
+            elif Length( record.( without_given_name ).filter_list ) + 1 <> Length( record.( with_given_name ).filter_list ) then
+                
+                Display( Concatenation(
+                    "WARNING: You seem to be relying on automatically installed WithGiven derivations. ",
+                    "For this, the with given method must have exactly one additional argument compared to the without given method. ",
+                    "This is not the case, so no automatic WithGiven derivation will be installed."
                 ) );
                 
             else

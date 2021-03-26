@@ -4628,7 +4628,9 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 
                 ## FIXME: If the redirect function is already bound, then this part is superfluous
                 
-                with_given_name := Concatenation( current_recname, "WithGiven" );
+                without_given_name := current_recname;
+                
+                with_given_name := Concatenation( without_given_name, "WithGiven" );
                 
                 with_given_name_length := Length( with_given_name );
                 
@@ -4650,7 +4652,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                     
                 fi;
                 
-                current_rec.with_given_without_given_name_pair := [ current_recname, with_given_name ];
+                current_rec.with_given_without_given_name_pair := [ without_given_name, with_given_name ];
                 
                 object_name := with_given_name{[ with_given_name_length + 1 .. Length( with_given_name ) ]};
                 
@@ -4667,13 +4669,22 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 
                 if not IsBound( current_rec.redirect_function ) then
                     
-                    if current_rec.filter_list[1] <> "category" or record.( object_name ).filter_list[1] <> "category" or record.( with_given_name ).filter_list[1] <> "category" then
+                    if record.( without_given_name ).filter_list[1] <> "category" or record.( object_name ).filter_list[1] <> "category" or record.( with_given_name ).filter_list[1] <> "category" then
                         
                         Display( Concatenation(
                             "WARNING: You seem to be relying on automatically installed redirect functions but the first arguments of the functions involved are not the category. ",
                             "No automatic redirect function will be installed. ",
                             "To prevent this warning, add the category as the first argument to all functions involved. ",
                             "Search for `category_as_first_argument` in the documentation for more details."
+                        ) );
+                        
+                    elif Length( record.( without_given_name ).filter_list ) + 1 <> Length( record.( with_given_name ).filter_list ) then
+                        
+                        Display( Concatenation(
+                            "WARNING: You seem to be relying on automatically installed redirect functions. ",
+                            "For this, the with given method must have exactly one additional argument compared to the without given method. ",
+                            "This is not the case, so no automatic redirect function will be installed. ",
+                            "Install a custom redirect function to prevent this warning."
                         ) );
                         
                     else
