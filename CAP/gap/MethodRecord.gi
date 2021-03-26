@@ -435,8 +435,7 @@ ZeroObject := rec(
   number_of_diagram_arguments := 0,
   universal_type := "LimitColimit",
   return_type := "object",
-  dual_operation := "ZeroObject",
-  zero_arguments_for_add_method := true ),
+  dual_operation := "ZeroObject" ),
 
 ZeroObjectFunctorial := rec(
   filter_list := [ "category" ],
@@ -713,8 +712,7 @@ TerminalObject := rec(
   number_of_diagram_arguments := 0,
   universal_type := "Limit",
   return_type := "object",
-  dual_operation := "InitialObject",
-  zero_arguments_for_add_method := true ),
+  dual_operation := "InitialObject" ),
 
 UniversalMorphismIntoTerminalObject := rec(
   filter_list := [ "category", "object" ],
@@ -747,9 +745,7 @@ InitialObject := rec(
   number_of_diagram_arguments := 0,
   universal_type := "Colimit",
   return_type := "object",
-  dual_operation := "TerminalObject",
-  zero_arguments_for_add_method := true
-),
+  dual_operation := "TerminalObject" ),
 
 UniversalMorphismFromInitialObject := rec(
   filter_list := [ "category", "object" ],
@@ -3049,9 +3045,7 @@ DistinguishedObjectOfHomomorphismStructure := rec(
   filter_list := [ "category" ],
   return_type := "other_object",
   dual_operation := "DistinguishedObjectOfHomomorphismStructure",
-  dual_postprocessor_func := IdFunc,
-  zero_arguments_for_add_method := true
-),
+  dual_postprocessor_func := IdFunc ),
 
 InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure := rec(
   filter_list := [ "category", "morphism" ],
@@ -3790,7 +3784,6 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
             if ForAll( record.filter_list, x -> x <> "list_of_objects" and x <> "list_of_morphisms" ) then
                 # cannot express io_type
                 Unbind( record.io_type );
-                record.zero_arguments_for_add_method := true;
             fi;
         fi;
         return record;
@@ -4412,9 +4405,9 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
-        if not IsBound( current_rec.zero_arguments_for_add_method ) then
+        if IsBound( current_rec.zero_arguments_for_add_method ) then
             
-            current_rec.zero_arguments_for_add_method := false;
+            Display( "zero_arguments_for_add_method has no effect anymore, please remove it." );
             
         fi;
         
