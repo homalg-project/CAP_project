@@ -3774,21 +3774,9 @@ end );
 
 InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
   function ( method_name_record, limits )
-    local make_record_op, make_record_with_given, make_colimit, object_universal_type, object_filter_list, projection_filter_list, projection_io_type, morphism_to_sink_filter_list, morphism_to_sink_io_type, universal_morphism_filter_list, universal_morphism_io_type, object_record, projection_record, morphism_to_sink_record, filter_list, io_type, universal_object_position, universal_type, return_type, dual_operation, universal_morphism_record, functorial_record, no_with_given, dual_arguments_reversed, limit;
+    local make_record_with_given, make_colimit, object_universal_type, object_filter_list, projection_filter_list, projection_io_type, morphism_to_sink_filter_list, morphism_to_sink_io_type, universal_morphism_filter_list, universal_morphism_io_type, object_record, projection_record, morphism_to_sink_record, filter_list, io_type, universal_object_position, universal_type, return_type, dual_operation, universal_morphism_record, functorial_record, no_with_given, dual_arguments_reversed, limit;
     
     #### helper functions
-    make_record_op := function ( record )
-        record := StructuralCopy( record );
-
-        if ForAll( record.filter_list, x -> x <> "object" and x <> "morphism" ) then
-            if ForAll( record.filter_list, x -> x <> "list_of_objects" and x <> "list_of_morphisms" ) then
-                # cannot express io_type
-                Unbind( record.io_type );
-            fi;
-        fi;
-        return record;
-    end;
-
     make_record_with_given := function ( record, object_name, coobject_name )
         record := StructuralCopy( record );
         
@@ -4005,7 +3993,7 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
         fi;
         
         #### validate limit records
-        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_object_name, make_record_op( object_record ) );
+        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_object_name, object_record );
 
         if limit.number_of_targets > 0 then
             CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_projection_name, projection_record );
@@ -4017,13 +4005,13 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
             CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( limit.limit_morphism_to_sink_name, "WithGiven", limit.limit_object_name ), make_record_with_given( morphism_to_sink_record, limit.limit_object_name, limit.colimit_object_name ) );
         fi;
         
-        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_universal_morphism_name, make_record_op( universal_morphism_record ) );
+        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_universal_morphism_name, universal_morphism_record );
         CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( limit.limit_universal_morphism_name, "WithGiven", limit.limit_object_name ), make_record_with_given( universal_morphism_record, limit.limit_object_name, limit.colimit_object_name ) );
 
         CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, functorial_record.function_name, functorial_record );
 
         #### validate colimit records
-        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_object_name, make_record_op( make_colimit( object_record ) ) );
+        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_object_name, make_colimit( object_record ) );
         
         if limit.number_of_targets > 0 then
             CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_injection_name, make_colimit( projection_record ) );
@@ -4035,7 +4023,7 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
             CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( limit.colimit_morphism_from_source_name, "WithGiven", limit.colimit_object_name ), make_record_with_given( make_colimit( morphism_to_sink_record ), limit.colimit_object_name, limit.limit_object_name ) );
         fi;
         
-        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_universal_morphism_name, make_record_op( make_colimit( universal_morphism_record ) ) );
+        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_universal_morphism_name, make_colimit( universal_morphism_record ) );
         CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( limit.colimit_universal_morphism_name, "WithGiven", limit.colimit_object_name ), make_record_with_given( make_colimit( universal_morphism_record ), limit.colimit_object_name, limit.limit_object_name ) );
         
         CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, functorial_record.dual_operation, make_colimit( functorial_record, false ) );
