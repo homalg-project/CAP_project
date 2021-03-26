@@ -1246,7 +1246,7 @@ AdditiveInverseForMorphisms := rec(
   return_type := "morphism" ),
 
 Coproduct := rec(
-  installation_name := "CoproductOp",
+  installation_name := "Coproduct",
   filter_list := [ "category", "list_of_objects" ],
   number_of_diagram_arguments := 1,
   universal_type := "Colimit",

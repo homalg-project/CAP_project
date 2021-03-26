@@ -1998,15 +1998,6 @@ DeclareOperation( "Coproduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 
-
-#! @Description
-#! The arguments are a list of objects $D = ( I_1, \dots, I_n )$.
-#! The output is the coproduct $\bigsqcup_{i=1}^n I_i$.
-#! @Returns an object
-#! @Arguments D
-DeclareOperation( "CoproductOp",
-                           [ IsList ] );
-
 #! @Description
 #! The arguments are a list of objects $D = ( I_1, \dots, I_n )$
 #! and an integer $k$.
