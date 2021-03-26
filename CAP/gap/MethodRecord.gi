@@ -452,16 +452,7 @@ UniversalMorphismFromZeroObject := rec(
   universal_object_position := "Source",
   universal_type := "Colimit",
   return_type := "morphism",
-  dual_operation := "UniversalMorphismIntoZeroObject",
-  
-  post_function := function( cat, test_sink, universal_morphism )
-    local zero_object;
-    
-    zero_object := Source( universal_morphism );
-    
-    SetZeroObject( cat, zero_object );
-    
-  end ),
+  dual_operation := "UniversalMorphismIntoZeroObject" ),
   
 UniversalMorphismFromZeroObjectWithGivenZeroObject := rec(
   filter_list := [ "category", "object", "object" ],
@@ -478,16 +469,7 @@ UniversalMorphismIntoZeroObject := rec(
   universal_object_position := "Range",
   universal_type := "Limit",
   return_type := "morphism",
-  dual_operation := "UniversalMorphismFromZeroObject",
-  
-  post_function := function( cat, test_source, universal_morphism )
-    local zero_object;
-    
-    zero_object := Range( universal_morphism );
-    
-    SetZeroObject( cat, zero_object );
-    
-  end ),
+  dual_operation := "UniversalMorphismFromZeroObject" ),
 
 UniversalMorphismIntoZeroObjectWithGivenZeroObject := rec(
   filter_list := [ "category", "object", "object" ],
@@ -721,16 +703,7 @@ UniversalMorphismIntoTerminalObject := rec(
   universal_object_position := "Range",
   universal_type := "Limit",
   return_type := "morphism",
-  dual_operation := "UniversalMorphismFromInitialObject",
-  
-  post_function := function( cat, test_source, universal_morphism )
-    local terminal_object;
-    
-    terminal_object := Range( universal_morphism );
-    
-    SetTerminalObject( cat, terminal_object );
-    
-  end ),
+  dual_operation := "UniversalMorphismFromInitialObject" ),
 
 UniversalMorphismIntoTerminalObjectWithGivenTerminalObject := rec(
   filter_list := [ "category", "object", "object" ],
@@ -754,16 +727,7 @@ UniversalMorphismFromInitialObject := rec(
   universal_object_position := "Source",
   universal_type := "Colimit",
   return_type := "morphism",
-  dual_operation := "UniversalMorphismIntoTerminalObject",
-  
-  post_function := function( cat, test_sink, universal_morphism )
-    local initial_object;
-    
-    initial_object := Source( universal_morphism );
-    
-    SetInitialObject( cat, initial_object );
-    
-  end ),
+  dual_operation := "UniversalMorphismIntoTerminalObject" ),
 
 UniversalMorphismFromInitialObjectWithGivenInitialObject := rec(
   filter_list := [ "category", "object", "object" ],
