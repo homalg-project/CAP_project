@@ -17,12 +17,12 @@ Version := Maximum( [
   ## this line prevents merge conflicts
   "2020.04-16", ## Sepp's version
   ## this line prevents merge conflicts
-  "2020.10-01", ## Fabian's version
+  "2021.03-01", ## Fabian's version
   ## this line prevents merge conflicts
-  "2019.02-01", ## Tom's version
+  "2019.03-14", ## Tom's version
 ] ),
 
-Date := "25/02/2021",
+Date := "12/04/2021",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -63,6 +63,22 @@ Persons := [
     LastName := "Posur",
     WWWHome := "http://algebra.mathematik.uni-siegen.de/posur/",
     Email := "sebastian.posur@uni-siegen.de",
+    PostalAddress := Concatenation(
+               "Department Mathematik\n",
+               "Universität Siegen\n",
+               "Walter-Flex-Straße 3\n",
+               "57068 Siegen\n",
+               "Germany" ),
+    Place := "Siegen",
+    Institution := "University of Siegen",
+  ),
+  rec(
+    IsAuthor := true,
+    IsMaintainer := true,
+    FirstNames := "Tom",
+    LastName := "Kuhmichel",
+    WWWHome := "https://github.com/TKuh",
+    Email := "tom.kuhmichel@student.uni-siegen.de",
     PostalAddress := Concatenation(
                "Department Mathematik\n",
                "Universität Siegen\n",
@@ -114,7 +130,7 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "ToolsForHomalg", ">= 2018.05.22" ],
-                   [ "CAP", ">= 2019.08.10" ],
+                   [ "CAP", ">= 2021.03-01" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
@@ -126,6 +142,6 @@ AvailabilityTest := function()
 
 TestFile := "tst/testall.g",
 
-Keywords := [ "monoidal categories", "monoidal closed categories", "monoidal coclosed categories", "tensor-Hom adjuction", "coHom-tensor adjuction" ],
+Keywords := [ "monoidal categories", "monoidal closed categories", "monoidal coclosed categories", "tensor-Hom adjunction", "coHom-tensor adjunction" ],
 
 ));
