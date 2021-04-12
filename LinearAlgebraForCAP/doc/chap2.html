@@ -41,6 +41,8 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := VectorSpaceObject( 3, Q );</span>
 &lt;A vector space object over Q of dimension 3&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HasIsProjective( a ) and IsProjective( a );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MatrixCategory( Q );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ap := 3/vec;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForObjects( a, ap );</span>
