@@ -4085,14 +4085,14 @@ end );
 
 BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
   
-  function( with_given_name, object_name, object_arg_list, cache_name )
+  function( with_given_name, object_function_name, object_arg_list, cache_name )
     local return_func, has_name, has_function, object_function, with_given_name_function, is_attribute, attribute_tester;
     
-    object_function := ValueGlobal( object_name );
+    object_function := ValueGlobal( object_function_name );
     
     with_given_name_function := ValueGlobal( with_given_name );
     
-    is_attribute := Tester( object_function ) <> false;
+    is_attribute := IsOperation( object_function ) and Tester( object_function ) <> false;
     
     if not is_attribute then
         
@@ -4163,7 +4163,7 @@ end );
 BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
   
   function( source_range_object, object_function_name, object_arg_list, object_cache_name )
-    local object_getter, setter_function, is_attribute, cache_key_length;
+    local object_getter, object_function, setter_function, is_attribute, cache_key_length;
     
     if source_range_object = "Source" then
         object_getter := Source;
@@ -4173,8 +4173,9 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
         Error( "the first argument of CAP_INTERNAL_CREATE_POST_FUNCTION must be 'Source' or 'Range'" );
     fi;
     
-    setter_function := Setter( ValueGlobal( object_function_name ) );
-    is_attribute := setter_function <> false;
+    object_function := ValueGlobal( object_function_name );
+    
+    is_attribute := IsOperation( object_function ) and Setter( object_function ) <> false;
     cache_key_length := Length( object_arg_list );
     
     if not is_attribute then
@@ -4199,6 +4200,8 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
             Error( "we can only handle attributes of the category or of a single object/morphism/twocell" );
             
         fi;
+        
+        setter_function := Setter( object_function );
         
         return function( arg )
           local category, object_args, result, object;
