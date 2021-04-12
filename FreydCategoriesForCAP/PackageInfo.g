@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
 #
 # This file contains package meta data. For additional information on
@@ -17,11 +17,11 @@ Version := Maximum( [
   ## this line prevents merge conflicts
   "2020.05-17", ## Mohamed's version
   ## this line prevents merge conflicts
-  "2020.10-01", ## Fabian's version
+  "2021.03-01", ## Fabian's version
   ## this line prevents merge conflicts
   "2020.04-18", ## Kamal's version
 ] ),
-Date := "19/10/2020",
+Date := "12/04/2021",
 License := "GPL-2.0-or-later",
 
 
@@ -67,7 +67,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/FreydCategoriesForCAP",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-", ~.Version, "/FreydCategoriesForCAP-", ~.Version ),
@@ -99,7 +99,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">= 2020.09.01" ],
+                           [ "CAP", ">= 2021.03-01" ],
                            [ "MatricesForHomalg", ">= 2020.09.06" ],
                            [ "GradedRingForHomalg", ">=2019.08.07" ],
                            [ "LinearAlgebraForCAP", ">= 2020.05.16" ],

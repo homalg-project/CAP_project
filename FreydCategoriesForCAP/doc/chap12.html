@@ -1052,9 +1052,6 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup( 3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CG := GroupAsCategory( G );;</span>
-#I  method installed for IsAutomorphism matches more than one declaration
-#I  method installed for IsSplitEpimorphism matches more than one declaration
-#I  method installed for IsSplitMonomorphism matches more than one declaration
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := GroupAsCategoryUniqueObject( CG );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := GroupAsCategoryMorphism( (1,2,3), CG );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha * Inverse( alpha ) = IdentityMorphism( u );</span>
@@ -1132,9 +1129,6 @@ false
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup( 3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CG := GroupAsCategory( G );;</span>
-#I  method installed for IsAutomorphism matches more than one declaration
-#I  method installed for IsSplitEpimorphism matches more than one declaration
-#I  method installed for IsSplitMonomorphism matches more than one declaration
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compare_func := function( g, h ) return UnderlyingGroupElement( g ) &lt; UnderlyingGroupElement( h ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegers();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZCG := LinearClosure( ZZ, CG, compare_func );;</span>
@@ -1166,8 +1160,6 @@ false
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">K := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#Construction of a tower of categories</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">CP_K := ProSetAsCategory( K );;</span>
-#I  method installed for IsSplitEpimorphism matches more than one declaration
-#I  method installed for IsSplitMonomorphism matches more than one declaration
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegers( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZP_K := LinearClosure( ZZ, CP_K, ReturnTrue );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RowsP_K := AdditiveClosure( ZP_K );;</span>
@@ -1213,9 +1205,6 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup( 3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CG := GroupAsCategory( G );;</span>
-#I  method installed for IsAutomorphism matches more than one declaration
-#I  method installed for IsSplitEpimorphism matches more than one declaration
-#I  method installed for IsSplitMonomorphism matches more than one declaration
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegers( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZCG := LinearClosure( ZZ, CG );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RowsG := AdditiveClosure( ZCG );;</span>
@@ -1269,8 +1258,6 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := [ [1, 1, 0], [0, 1, 1], [0, 0, 1] ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P_K := ProSetAsCategory(K);;</span>
-#I  method installed for IsSplitEpimorphism matches more than one declaration
-#I  method installed for IsSplitMonomorphism matches more than one declaration
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#ProSetAsCategory(L);</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := 1/P_K;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := ProSetAsCategoryObject(2, P_K);;</span>

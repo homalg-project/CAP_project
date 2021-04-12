@@ -918,9 +918,6 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XG := SymmetricGroup( 3 );;[127X[104X
     [4X[25Xgap>[125X [27XCG := GroupAsCategory( G );;[127X[104X
-    [4X[28X#I  method installed for IsAutomorphism matches more than one declaration[128X[104X
-    [4X[28X#I  method installed for IsSplitEpimorphism matches more than one declaration[128X[104X
-    [4X[28X#I  method installed for IsSplitMonomorphism matches more than one declaration[128X[104X
     [4X[25Xgap>[125X [27Xu := GroupAsCategoryUniqueObject( CG );;[127X[104X
     [4X[25Xgap>[125X [27Xalpha := GroupAsCategoryMorphism( (1,2,3), CG );;[127X[104X
     [4X[25Xgap>[125X [27Xalpha * Inverse( alpha ) = IdentityMorphism( u );[127X[104X
@@ -992,9 +989,6 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XG := SymmetricGroup( 3 );;[127X[104X
     [4X[25Xgap>[125X [27XCG := GroupAsCategory( G );;[127X[104X
-    [4X[28X#I  method installed for IsAutomorphism matches more than one declaration[128X[104X
-    [4X[28X#I  method installed for IsSplitEpimorphism matches more than one declaration[128X[104X
-    [4X[28X#I  method installed for IsSplitMonomorphism matches more than one declaration[128X[104X
     [4X[25Xgap>[125X [27Xcompare_func := function( g, h ) return UnderlyingGroupElement( g ) < UnderlyingGroupElement( h ); end;;[127X[104X
     [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers();;[127X[104X
     [4X[25Xgap>[125X [27XZCG := LinearClosure( ZZ, CG, compare_func );;[127X[104X
@@ -1024,8 +1018,6 @@
     [4X[25X>[125X [27XK := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;[127X[104X
     [4X[25Xgap>[125X [27X#Construction of a tower of categories[127X[104X
     [4X[25X>[125X [27XCP_K := ProSetAsCategory( K );;[127X[104X
-    [4X[28X#I  method installed for IsSplitEpimorphism matches more than one declaration[128X[104X
-    [4X[28X#I  method installed for IsSplitMonomorphism matches more than one declaration[128X[104X
     [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );;[127X[104X
     [4X[25Xgap>[125X [27XZP_K := LinearClosure( ZZ, CP_K, ReturnTrue );;[127X[104X
     [4X[25Xgap>[125X [27XRowsP_K := AdditiveClosure( ZP_K );;[127X[104X
@@ -1069,9 +1061,6 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XG := SymmetricGroup( 3 );;[127X[104X
     [4X[25Xgap>[125X [27XCG := GroupAsCategory( G );;[127X[104X
-    [4X[28X#I  method installed for IsAutomorphism matches more than one declaration[128X[104X
-    [4X[28X#I  method installed for IsSplitEpimorphism matches more than one declaration[128X[104X
-    [4X[28X#I  method installed for IsSplitMonomorphism matches more than one declaration[128X[104X
     [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );;[127X[104X
     [4X[25Xgap>[125X [27XZCG := LinearClosure( ZZ, CG );;[127X[104X
     [4X[25Xgap>[125X [27XRowsG := AdditiveClosure( ZCG );;[127X[104X
@@ -1121,8 +1110,6 @@
     [4X[25Xgap>[125X [27XK := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;[127X[104X
     [4X[25Xgap>[125X [27XL := [ [1, 1, 0], [0, 1, 1], [0, 0, 1] ];;[127X[104X
     [4X[25Xgap>[125X [27XP_K := ProSetAsCategory(K);;[127X[104X
-    [4X[28X#I  method installed for IsSplitEpimorphism matches more than one declaration[128X[104X
-    [4X[28X#I  method installed for IsSplitMonomorphism matches more than one declaration[128X[104X
     [4X[25Xgap>[125X [27X#ProSetAsCategory(L);[127X[104X
     [4X[25Xgap>[125X [27Xa := 1/P_K;;[127X[104X
     [4X[25Xgap>[125X [27Xb := ProSetAsCategoryObject(2, P_K);;[127X[104X
