@@ -10,8 +10,6 @@ L := [ [1, 1, 0], [0, 1, 1], [0, 0, 1] ];;
 
 
 P_K := ProSetAsCategory(K);;
-#! #I  method installed for IsSplitEpimorphism matches more than one declaration
-#! #I  method installed for IsSplitMonomorphism matches more than one declaration
 
 
 #ProSetAsCategory(L);

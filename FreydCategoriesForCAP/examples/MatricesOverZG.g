@@ -9,9 +9,6 @@ LoadPackage( "FreydCategoriesForCAP" );;
 #! @Example
 G := SymmetricGroup( 3 );;
 CG := GroupAsCategory( G );;
-#! #I  method installed for IsAutomorphism matches more than one declaration
-#! #I  method installed for IsSplitEpimorphism matches more than one declaration
-#! #I  method installed for IsSplitMonomorphism matches more than one declaration
 ZZ := HomalgRingOfIntegers( );;
 ZCG := LinearClosure( ZZ, CG );;
 RowsG := AdditiveClosure( ZCG );;

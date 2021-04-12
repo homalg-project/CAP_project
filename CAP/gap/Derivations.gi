@@ -219,7 +219,41 @@ end );
 InstallMethod( AddDerivation,
                [ IsDerivedMethodGraphRep, IsDerivedMethod ],
 function( G, d )
-  local op_name;
+  local method_name, filter_list, number_of_proposed_arguments, current_function_argument_number, impl, op_name;
+  
+  if IsIdenticalObj( G, CAP_INTERNAL_DERIVATION_GRAPH ) then
+    
+    method_name := TargetOperation( d );
+    
+    if not method_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) then
+        
+        Error( "trying to add a derivation to CAP_INTERNAL_DERIVATION_GRAPH for a method not in CAP_INTERNAL_METHOD_NAME_RECORD" );
+        
+    fi;
+    
+    filter_list := CAP_INTERNAL_METHOD_NAME_RECORD!.(method_name).filter_list;
+    
+    number_of_proposed_arguments := Length( filter_list );
+    
+    for impl in DerivationFunctionsWithExtraFilters( d ) do
+        
+        current_function_argument_number := NumberArgumentsFunction( impl[ 1 ] );
+        
+        if current_function_argument_number >= 0 and current_function_argument_number <> number_of_proposed_arguments then
+            Error( "While adding a derivation for ", method_name, ": given function has ", String( current_function_argument_number ),
+                   " arguments but should have ", String( number_of_proposed_arguments ) );
+        fi;
+        
+    od;
+    
+    if NumberArgumentsFunction( CategoryFilter( d ) ) = 0 or NumberArgumentsFunction( CategoryFilter( d ) ) > 1 then
+        
+        Error( "the CategoryFilter of a derivation must accept exactly one argument" );
+        
+    fi;
+    
+  fi;
+  
   Add( G!.derivations_by_target.( TargetOperation( d ) ), d );
   for op_name in UsedOperations( d ) do
     Add( G!.derivations_by_used_ops.( op_name ), d );

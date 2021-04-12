@@ -163,15 +163,6 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
             filter_list := operation_name_record_entry.filter_list;
             replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list );
             
-            # prepare Op
-            if Concatenation( operation_name, "Op" ) = installation_name then
-                
-                filter_list := filter_list{[ 1 .. Length( filter_list ) - 1 ]};
-                
-            fi;
-
-            Assert( 0, not IsBound( operation_name_record_entry.argument_list ) or operation_name_record_entry.argument_list = [ 1 .. Length( filter_list ) ] );
-            
             # check that arguments lie in filter
             if Length( filter_list ) = Length( arguments ) and ForAll( [ 1 .. Length( filter_list ) ], i -> replaced_filter_list[i](arguments[i]) ) then
                 

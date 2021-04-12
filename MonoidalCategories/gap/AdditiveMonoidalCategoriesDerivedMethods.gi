@@ -1,7 +1,7 @@
 ##
 AddDerivationToCAP( LeftDistributivityExpandingWithGivenObjects,
                     
-  function( factored_object, object, summands, expanded_object )
+  function( cat, factored_object, object, summands, expanded_object )
     local nr_summands, projection_list, id, diagram;
     
     nr_summands := Size( summands );
@@ -22,7 +22,7 @@ end : CategoryFilter := IsMonoidalCategory and IsAdditiveCategory,
 ##
 AddDerivationToCAP( LeftDistributivityFactoringWithGivenObjects,
                     
-  function( expanded_object, object, summands, factored_object )
+  function( cat, expanded_object, object, summands, factored_object )
     local nr_summands, injection_list, id, diagram;
     
     nr_summands := Size( summands );
@@ -43,7 +43,7 @@ end : CategoryFilter := IsMonoidalCategory and IsAdditiveCategory,
 ##
 AddDerivationToCAP( RightDistributivityExpandingWithGivenObjects,
                     
-  function( factored_object, summands, object, expanded_object )
+  function( cat, factored_object, summands, object, expanded_object )
     local nr_summands, projection_list, id, diagram;
     
     nr_summands := Size( summands );
@@ -64,7 +64,7 @@ end : CategoryFilter := IsMonoidalCategory and IsAdditiveCategory,
 ##
 AddDerivationToCAP( RightDistributivityFactoringWithGivenObjects,
                     
-  function( expanded_object, summands, object, factored_object )
+  function( cat, expanded_object, summands, object, factored_object )
     local nr_summands, injection_list, id, diagram;
     
     nr_summands := Size( summands );

@@ -60,10 +60,8 @@ AddFinalDerivation( DistinguishedObjectOfHomomorphismStructure,
   end,
 [
   HomomorphismStructureOnObjects,
-  function( a, b )
-    local cat, k, dimension;
-    
-    cat := CapCategory( a );
+  function( cat, a, b )
+    local k, dimension;
     
     k := CommutativeRingOfLinearCategory( cat );
     
@@ -85,10 +83,8 @@ AddFinalDerivation( DistinguishedObjectOfHomomorphismStructure,
     #      b' <------- b
     #          beta
     
-  function( hom_source, alpha, beta, hom_range )
-    local cat, k, dim_hom_source, dim_hom_range, B, mat;
-    
-    cat := CapCategory( alpha );
+  function( cat, hom_source, alpha, beta, hom_range )
+    local k, dim_hom_source, dim_hom_range, B, mat;
     
     k := CommutativeRingOfLinearCategory( cat );
     
@@ -116,10 +112,8 @@ AddFinalDerivation( DistinguishedObjectOfHomomorphismStructure,
 ],
 [
   InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure,
-  function( alpha )
-    local cat, k, coeff, D;
-    
-    cat := CapCategory( alpha );
+  function( cat, alpha )
+    local k, coeff, D;
     
     k := CommutativeRingOfLinearCategory( cat );
     
@@ -135,7 +129,7 @@ AddFinalDerivation( DistinguishedObjectOfHomomorphismStructure,
 ],
 [
   InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
-  function( a, b, iota )
+  function( cat, a, b, iota )
     local mat, coeff, B, L;
     
     mat := UnderlyingMatrix( iota );

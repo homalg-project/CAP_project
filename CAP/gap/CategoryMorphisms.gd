@@ -1933,10 +1933,6 @@ DeclareOperation( "AddInterpretMorphismFromDistinguishedObjectToHomomorphismStru
 DeclareOperation( "AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
                   [ IsCapCategory, IsList ] );
 
-##
-DeclareOperation( "SolveLinearSystemInAbCategoryOp",
-                   [ IsList, IsList, IsList, IsCapCategory ] );
-
 #! @Description
 #! The arguments are three lists $\alpha$, $\beta$, and $\gamma$.
 #! The first list $\alpha$ (the left coefficients) is a list of list of morphisms $\alpha_{ij}: A_i \rightarrow B_j$,
@@ -1967,10 +1963,6 @@ DeclareOperation( "AddSolveLinearSystemInAbCategory",
 
 DeclareOperation( "AddSolveLinearSystemInAbCategory",
                   [ IsCapCategory, IsList ] );
-
-##
-DeclareOperation( "MereExistenceOfSolutionOfLinearSystemInAbCategoryOp",
-                   [ IsList, IsList, IsList, IsCapCategory ] );
 
 #! @Description
 #! Like <C>SolveLinearSystemInAbCategory</C>,

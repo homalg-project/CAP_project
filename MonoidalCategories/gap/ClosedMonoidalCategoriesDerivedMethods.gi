@@ -17,7 +17,7 @@ AddFinalDerivation( IsomorphismFromDualToInternalHom,
                       EvaluationForDualWithGivenTensorProduct,
                       MorphismFromTensorProductToInternalHomWithGivenObjects ],
                  
-  function( object )
+  function( cat, object )
     local category;
     
     category := CapCategory( object );
@@ -41,7 +41,7 @@ AddFinalDerivation( IsomorphismFromInternalHomToDual,
                       EvaluationForDualWithGivenTensorProduct,
                       MorphismFromTensorProductToInternalHomWithGivenObjects ],
                  
-  function( object )
+  function( cat, object )
     local category;
     
     category := CapCategory( object );

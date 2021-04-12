@@ -75,8 +75,8 @@ InstallGlobalFunction( "CAP_INTERNAL_INSTALL_CONVENIENCE_METHODS_FOR_LIMITS",
             #### functorial convenience method
             filter_list := functorial_record.filter_list;
             input_type := functorial_record.io_type[1];
-            # first and last entries are the WithGiven-objects
-            filter_list := filter_list{ [ 2 .. Length( filter_list ) - 1 ] };
+            # the first entry is the category, the second and the last entries are the WithGiven-objects
+            filter_list := filter_list{ [ 3 .. Length( filter_list ) - 1 ] };
             input_type := input_type{ [ 2 .. Length( input_type ) - 1 ] };
 
             replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list );

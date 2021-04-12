@@ -209,6 +209,14 @@ InstallMethod( IsEqualForCacheForObjects,
                
   IsEqualForCache );
 
+##
+# generic fallback to IsIdenticalObj
+InstallOtherMethod( IsEqualForCache,
+               [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  { cat, obj1, obj2 } -> IsIdenticalObj( obj1, obj2 ) );
+
+##
 InstallMethod( AddObjectRepresentation,
                [ IsCapCategory, IsObject ],
                

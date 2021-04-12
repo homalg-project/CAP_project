@@ -164,6 +164,12 @@ InstallMethod( AdditiveInverse,
 AdditiveInverseForMorphisms );
 
 ##
+InstallOtherMethod( InverseImmutable,
+                  [ IsCapCategory, IsCapCategoryMorphism ],
+                  
+InverseOp );
+
+##
 InstallMethod( \*,
                [ IsRingElement, IsCapCategoryMorphism ],
                
@@ -220,7 +226,14 @@ InstallMethod( IsEqualForCacheForMorphisms,
                
   IsEqualForCache );
 
+##
+# generic fallback to IsIdenticalObj
+InstallOtherMethod( IsEqualForCache,
+               [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  { cat, mor1, mor2 } -> IsIdenticalObj( mor1, mor2 ) );
 
+##
 InstallMethod( AddMorphismRepresentation,
                [ IsCapCategory, IsObject ],
                
@@ -509,26 +522,6 @@ InstallMethod( HomomorphismStructureOnMorphisms,
              alpha, beta,
              HomomorphismStructureOnObjects( Source( alpha ), Range( beta ) )
            );
-    
-end );
-
-##
-InstallMethod( SolveLinearSystemInAbCategory,
-               [ IsList, IsList, IsList ],
-               
-  function( left_coeffs, right_coeffs, right_side )
-    
-    return SolveLinearSystemInAbCategoryOp( left_coeffs, right_coeffs, right_side, CapCategory( right_side[1] ) );
-    
-end );
-
-##
-InstallMethod( MereExistenceOfSolutionOfLinearSystemInAbCategory,
-               [ IsList, IsList, IsList ],
-               
-  function( left_coeffs, right_coeffs, right_side )
-    
-    return MereExistenceOfSolutionOfLinearSystemInAbCategoryOp( left_coeffs, right_coeffs, right_side, CapCategory( right_side[1] ) );
     
 end );
 

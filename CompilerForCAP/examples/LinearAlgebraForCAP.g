@@ -25,7 +25,7 @@ tree1 := SYNTAX_TREE(
 tree1.stats.statements[1].branches[2].body.statements[1].
     obj.args[12].args[1].args[2].nams := [ "row" ];;
 Display( SYNTAX_TREE_CODE( tree1 ) );
-#! function ( S, morphism_matrix, T )
+#! function ( cat, S, morphism_matrix, T )
 #!     if morphism_matrix = [  ] or morphism_matrix[1] = [  ] then
 #!         return ZeroMorphism( S, T );
 #!     else
@@ -44,13 +44,13 @@ Display( SYNTAX_TREE_CODE( tree1 ) );
 # compile the default derivation of MorphismBetweenDirectSums
 tree2 := SYNTAX_TREE( CapJitCompiledFunction(
     vec!.added_functions.MorphismBetweenDirectSums[1][1],
-    [ W, morphism_matrix, W  ]
+    [ vec, W, morphism_matrix, W  ]
 ) );;
 # fixup nams
 tree2.stats.statements[1].branches[2].body.statements[1].
     obj.args[12].args[1].args[2].nams := [ "row" ];;
 Display( SYNTAX_TREE_CODE( tree2 ) );
-#! function ( S, morphism_matrix, T )
+#! function ( cat, S, morphism_matrix, T )
 #!     if morphism_matrix = [  ] or morphism_matrix[1] = [  ] then
 #!         return ZeroMorphism( S, T );
 #!     else

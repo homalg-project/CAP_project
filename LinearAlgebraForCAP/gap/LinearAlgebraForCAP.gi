@@ -22,6 +22,8 @@ InstallMethod( MatrixCategory,
     
     category := CreateCapCategory( Concatenation( "Category of matrices over ", RingName( homalg_field ) ) );
     
+    category!.category_as_first_argument := true;
+    
     SetFilterObj( category, IsMatrixCategory );
     
     AddObjectRepresentation( category, IsVectorSpaceObject and HasIsProjective and IsProjective );
@@ -90,17 +92,17 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddIsEqualForCacheForObjects( category,
-      IsIdenticalObj );
+      { cat, obj1, obj2 } -> IsIdenticalObj( obj1, obj2 ) );
     
     ##
     AddIsEqualForCacheForMorphisms( category,
-      IsIdenticalObj );
+      { cat, mor1, mor2 } -> IsIdenticalObj( mor1, mor2 ) );
 
      
     ## Well-defined for objects and morphisms
     ##
     AddIsWellDefinedForObjects( category,
-      function( object )
+      function( cat, object )
 
         if not IsIdenticalObj( category, CapCategory( object ) ) then
 
@@ -123,7 +125,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
 
     ##
     AddIsWellDefinedForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
 
         if not IsIdenticalObj( category, CapCategory( Source( morphism ) ) ) then
 
@@ -170,7 +172,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ## Equality Basic Operations for Objects and Morphisms
     ##
     AddIsEqualForObjects( category,
-      function( object_1, object_2 )
+      function( cat, object_1, object_2 )
       
         return Dimension( object_1 ) = Dimension( object_2 );
       
@@ -178,7 +180,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddIsCongruentForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return UnderlyingMatrix( morphism_1 ) = UnderlyingMatrix( morphism_2 );
         
@@ -188,7 +190,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddIdentityMorphism( category,
       
-      function( object )
+      function( cat, object )
         
         return VectorSpaceMorphism( object, HomalgIdentityMatrix( Dimension( object ), homalg_field ), object );
         
@@ -198,42 +200,42 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddPreCompose( category,
       
       [ 
-        [ function( morphism_1, morphism_2 )
+        [ function( cat, morphism_1, morphism_2 )
             local composition;
             
             composition := UnderlyingMatrix( morphism_1 ) * UnderlyingMatrix( morphism_2 );
             
             return VectorSpaceMorphism( Source( morphism_1 ), composition, Range( morphism_2 ) );
             
-          end, [ , ] ],
+          end, [ ] ],
         
-        [ function( left_morphism, identity_morphism )
+        [ function( cat, left_morphism, identity_morphism )
             
             return left_morphism;
             
-          end, [ , IsIdenticalToIdentityMorphism ] ],
+          end, [ IsCapCategory, IsCapCategoryMorphism, IsIdenticalToIdentityMorphism ] ],
         
-        [ function( identity_morphism, right_morphism )
+        [ function( cat, identity_morphism, right_morphism )
             
             return right_morphism;
             
-          end, [ IsIdenticalToIdentityMorphism, ] ],
+          end, [ IsCapCategory, IsIdenticalToIdentityMorphism, IsCapCategoryMorphism ] ],
         
-        [ function( left_morphism, zero_morphism )
+        [ function( cat, left_morphism, zero_morphism )
             
             return VectorSpaceMorphism( Source( left_morphism ),
                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( left_morphism ) ), NrColumns( UnderlyingMatrix( zero_morphism ) ), homalg_field ),
                                         Range( zero_morphism ) );
           
-          end, [ , IsZeroForMorphisms ] ],
+          end, [ IsCapCategory, IsCapCategoryMorphism, IsZeroForMorphisms ] ],
         
-        [ function( zero_morphism, right_morphism )
+        [ function( cat, zero_morphism, right_morphism )
             
             return VectorSpaceMorphism( Source( zero_morphism ),
                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ), NrColumns( UnderlyingMatrix( right_morphism ) ), homalg_field ),
                                         Range( right_morphism ) );
           
-          end, [ IsZeroForMorphisms, ] ],
+          end, [ IsCapCategory, IsZeroForMorphisms, IsCapCategoryMorphism ] ],
       ]
     
     );
@@ -241,7 +243,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ## Basic Operations for an Additive Category
     ##
     AddIsZeroForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
         
         return IsZero( UnderlyingMatrix( morphism ) );
         
@@ -249,7 +251,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddAdditionForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return VectorSpaceMorphism( Source( morphism_1 ),
                                     UnderlyingMatrix( morphism_1 ) + UnderlyingMatrix( morphism_2 ),
@@ -259,7 +261,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddAdditiveInverseForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
         
         return VectorSpaceMorphism( Source( morphism ),
                                     (-1) * UnderlyingMatrix( morphism ),
@@ -269,7 +271,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddZeroMorphism( category,
-      function( source, range )
+      function( cat, source, range )
         
         return VectorSpaceMorphism( source,
                                     HomalgZeroMatrix( Dimension( source ), Dimension( range ), homalg_field ),
@@ -279,7 +281,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddZeroObject( category,
-      function( )
+      function( cat )
         
         return VectorSpaceObject( 0, homalg_field );
         
@@ -287,7 +289,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
-      function( sink, zero_object )
+      function( cat, sink, zero_object )
         local morphism;
         
         morphism := VectorSpaceMorphism( sink, HomalgZeroMatrix( Dimension( sink ), 0, homalg_field ), zero_object );
@@ -298,7 +300,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
-      function( source, zero_object )
+      function( cat, source, zero_object )
         local morphism;
         
         morphism := VectorSpaceMorphism( zero_object, HomalgZeroMatrix( 0, Dimension( source ), homalg_field ), source );
@@ -309,7 +311,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddDirectSum( category,
-      function( object_list )
+      function( cat, object_list )
       local dimension;
       
       dimension := Sum( List( object_list, object -> Dimension( object ) ) );
@@ -320,7 +322,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddDirectSumFunctorialWithGivenDirectSums( category,
-      function( direct_sum_source, diagram, direct_sum_range )
+      function( cat, direct_sum_source, diagram, direct_sum_range )
         
         return VectorSpaceMorphism( direct_sum_source,
                                     DiagMat( List( diagram, mor -> UnderlyingMatrix( mor ) ) ), 
@@ -330,7 +332,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
-      function( object_list, projection_number, direct_sum_object )
+      function( cat, object_list, projection_number, direct_sum_object )
         local dim_pre, dim_post, dim_factor, number_of_objects, projection_in_factor;
         
         number_of_objects := Length( object_list );
@@ -352,7 +354,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
-      function( diagram, sink, direct_sum )
+      function( cat, diagram, sink, direct_sum )
         local underlying_matrix_of_universal_morphism;
         
         underlying_matrix_of_universal_morphism := UnionOfColumns( List( sink, s -> UnderlyingMatrix( s ) ) );
@@ -363,7 +365,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
-      function( object_list, injection_number, coproduct )
+      function( cat, object_list, injection_number, coproduct )
         local dim_pre, dim_post, dim_cofactor, number_of_objects, injection_of_cofactor;
         
         number_of_objects := Length( object_list );
@@ -385,7 +387,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
-      function( diagram, sink, coproduct )
+      function( cat, diagram, sink, coproduct )
         local underlying_matrix_of_universal_morphism;
         
         underlying_matrix_of_universal_morphism := UnionOfRows( List( sink, s -> UnderlyingMatrix( s ) ) );
@@ -396,7 +398,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddComponentOfMorphismIntoDirectSum( category,
-      function( morphism, summands, nr )
+      function( cat, morphism, summands, nr )
         local start, stop;
         
         start := Sum( List( summands{[ 1 .. nr-1 ]}, Dimension ) ) + 1;
@@ -411,7 +413,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddComponentOfMorphismFromDirectSum( category,
-      function( morphism, summands, nr )
+      function( cat, morphism, summands, nr )
         local start, stop;
         
         start := Sum( List( summands{[ 1 .. nr-1 ]}, Dimension ) ) + 1;
@@ -426,7 +428,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddMorphismBetweenDirectSums( category,
-      function( S, morphism_matrix, T )
+      function( cat, S, morphism_matrix, T )
         local underlying_matrix;
         
         if morphism_matrix = [ ] or morphism_matrix[1] = [ ] then
@@ -443,7 +445,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
-      function( ring_element, morphism )
+      function( cat, ring_element, morphism )
         
         return VectorSpaceMorphism( Source( morphism ),
                                     ring_element * UnderlyingMatrix( morphism ),
@@ -454,7 +456,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ## Basic Operations for an Abelian category
     ##
     AddKernelObject( category,
-      function( morphism )
+      function( cat, morphism )
         local homalg_matrix;
         
         homalg_matrix := UnderlyingMatrix( morphism );
@@ -465,7 +467,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddKernelEmbedding( category,
-      function( morphism )
+      function( cat, morphism )
         local kernel_emb, kernel_object;
         
         kernel_emb := SyzygiesOfRows( UnderlyingMatrix( morphism ) );
@@ -478,7 +480,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddLift( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         local right_divide;
         
         right_divide := RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
@@ -497,7 +499,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddCokernelObject( category,
-      function( morphism )
+      function( cat, morphism )
         local homalg_matrix;
         
         homalg_matrix := UnderlyingMatrix( morphism );
@@ -508,7 +510,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddCokernelProjection( category,
-      function( morphism )
+      function( cat, morphism )
         local cokernel_proj, cokernel_obj;
         
         cokernel_proj := SyzygiesOfColumns( UnderlyingMatrix( morphism ) );
@@ -521,7 +523,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddColift( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         local left_divide;
         
         left_divide := LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
@@ -541,7 +543,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ## Basic Operation Properties
     ##
     AddIsZeroForObjects( category,
-      function( object )
+      function( cat, object )
       
         return Dimension( object ) = 0;
       
@@ -549,7 +551,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddIsMonomorphism( category,
-      function( morphism )
+      function( cat, morphism )
       
         return RowRankOfMatrix( UnderlyingMatrix( morphism ) ) = Dimension( Source( morphism ) );
       
@@ -557,7 +559,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddIsEpimorphism( category,
-      function( morphism )
+      function( cat, morphism )
         
         return ColumnRankOfMatrix( UnderlyingMatrix( morphism ) ) = Dimension( Range( morphism ) );
         
@@ -565,7 +567,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddIsIsomorphism( category,
-      function( morphism )
+      function( cat, morphism )
         
         return Dimension( Range( morphism ) ) = Dimension( Source( morphism ) )
                and ColumnRankOfMatrix( UnderlyingMatrix( morphism ) ) = Dimension( Range( morphism ) );
@@ -576,7 +578,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddTensorProductOnObjects( category,
       [ 
-        [ function( object_1, object_2 )
+        [ function( cat, object_1, object_2 )
             
             return VectorSpaceObject( Dimension( object_1 ) * Dimension( object_2 ), homalg_field );
             
@@ -584,21 +586,21 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
           
           [ ] ],
         
-        [ function( object_1, object_2 )
+        [ function( cat, object_1, object_2 )
             
             return object_1;
             
           end,
           
-          [ IsZeroForObjects, ] ],
+          [ IsCapCategory, IsZeroForObjects, IsCapCategoryObject ] ],
          
-        [ function( object_1, object_2 )
+        [ function( cat, object_1, object_2 )
             
             return object_2;
             
           end,
           
-          [ , IsZeroForObjects ] ]
+          [ IsCapCategory, IsCapCategoryObject, IsZeroForObjects ] ]
       ]
     
     );
@@ -606,7 +608,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddTensorProductOnMorphismsWithGivenTensorProducts( category,
       
-      function( new_source, morphism_1, morphism_2, new_range )
+      function( cat, new_source, morphism_1, morphism_2, new_range )
         
         return VectorSpaceMorphism( new_source,
                                     KroneckerMat( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) ),
@@ -617,7 +619,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddTensorUnit( category,
       
-      function( )
+      function( cat )
         
         return VectorSpaceObject( 1, homalg_field );
         
@@ -625,7 +627,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddBraidingWithGivenTensorProducts( category,
-      function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
+      function( cat, object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
         local permutation_matrix, dim, dim_1, dim_2;
         
         dim_1 := Dimension( object_1 );
@@ -647,11 +649,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddDualOnObjects( category, space -> space );
+    AddDualOnObjects( category, { cat, space } -> space );
     
     ##
     AddDualOnMorphismsWithGivenDuals( category,
-      function( dual_source, morphism, dual_range )
+      function( cat, dual_source, morphism, dual_range )
         
         return VectorSpaceMorphism( dual_source,
                                     TransposedMatrix( UnderlyingMatrix( morphism ) ),
@@ -661,7 +663,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddEvaluationForDualWithGivenTensorProduct( category,
-      function( tensor_object, object, unit )
+      function( cat, tensor_object, object, unit )
         local dimension, column, zero_column, i;
         
         dimension := Dimension( object );
@@ -693,7 +695,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddCoevaluationForDualWithGivenTensorProduct( category,
       
-      function( unit, object, tensor_object )
+      function( cat, unit, object, tensor_object )
         local dimension, row, zero_row, i;
         
         dimension := Dimension( object );
@@ -724,7 +726,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddMorphismToBidualWithGivenBidual( category,
-      function( object, bidual_of_object )
+      function( cat, object, bidual_of_object )
         
         return VectorSpaceMorphism( object,
                                     HomalgIdentityMatrix( Dimension( object ), homalg_field ),
@@ -737,7 +739,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddHomomorphismStructureOnObjects( category,
-      function( object_1, object_2 )
+      function( cat, object_1, object_2 )
         
         return VectorSpaceObject( Dimension( object_1 ) * Dimension( object_2 ), homalg_field );
         
@@ -745,7 +747,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
-      function( hom_source, alpha, beta, hom_range )
+      function( cat, hom_source, alpha, beta, hom_range )
         
         return VectorSpaceMorphism( 
           hom_source,
@@ -757,7 +759,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddDistinguishedObjectOfHomomorphismStructure( category,
-      function( )
+      function( cat )
         
         return VectorSpaceObject( 1, homalg_field );
       
@@ -765,7 +767,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
-      function( alpha )
+      function( cat, alpha )
         local matrix, new_matrix;
         
         matrix := UnderlyingMatrix( alpha );
@@ -782,7 +784,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
-      function( source, range, alpha )
+      function( cat, source, range, alpha )
         local matrix, m, n, new_matrix;
         
         matrix := UnderlyingMatrix( alpha );
@@ -803,7 +805,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddSomeReductionBySplitEpiSummand( category,
-      function( alpha )
+      function( cat, alpha )
         
         return MorphismFromZeroObject( CokernelObject( alpha ) );
         
@@ -811,7 +813,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddSomeReductionBySplitEpiSummand_MorphismFromInputRange( category,
-      function( alpha )
+      function( cat, alpha )
         
         return CokernelProjection( alpha );
         
@@ -819,7 +821,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddSomeReductionBySplitEpiSummand_MorphismToInputRange( category,
-      function( alpha )
+      function( cat, alpha )
         local cok;
         
         cok := CokernelProjection( alpha );
@@ -834,26 +836,26 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ## enough projectives & injectives
     
     ##
-    AddSomeProjectiveObject( category, IdFunc );
+    AddSomeProjectiveObject( category, { cat, obj } -> obj );
     
     ##
-    AddEpimorphismFromSomeProjectiveObject( category, IdentityMorphism );
+    AddEpimorphismFromSomeProjectiveObject( category, { cat, obj } -> IdentityMorphism( obj ) );
     
     ##
     AddIsProjective( category, ReturnTrue );
     
     ##
-    AddSomeInjectiveObject( category, IdFunc );
+    AddSomeInjectiveObject( category, { cat, obj } -> obj );
     
     ##
-    AddMonomorphismIntoSomeInjectiveObject( category, IdentityMorphism );
+    AddMonomorphismIntoSomeInjectiveObject( category, { cat, obj } -> IdentityMorphism( obj ) );
     
     ##
     AddIsInjective( category, ReturnTrue );
    
     ##
     AddBasisOfExternalHom( category,
-      function( S, T )
+      function( cat, S, T )
         local s, t, identity, matrices;
         
         s := Dimension( S );
@@ -870,7 +872,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( category,
-      function( morphism, L )
+      function( cat, morphism, L )
         
         return EntriesOfHomalgMatrix( UnderlyingMatrix( morphism ) );
         

@@ -1345,14 +1345,16 @@ DeclareOperation( "AddInitialObjectFunctorial",
 ## Main Operations and Attributes
 
 #! @Description
-#! The argument is a list of objects $D = (S_1, \dots, S_n)$
-#! and an object for method selection.
+#! The argument is a list of objects $D = (S_1, \dots, S_n)$.
 #! The output is the direct sum $\bigoplus_{i=1}^n S_i$.
 #! @Returns an object
-#! @Arguments D, method_selection_object
+#! @Arguments D
 DeclareOperationWithCache( "DirectSumOp",
-                           [ IsList, IsCapCategoryObject ] );
+                           [ IsList ] );
 
+# for compatibility with GAP's DirectSum function
+DeclareOperation( "DirectSumOp",
+                  [ IsList, IsCapCategoryObject ] );
 DeclareOperation( "DirectSumOp",
                   [ IsList, IsCapCategory ] );
 
@@ -1365,17 +1367,6 @@ DeclareOperation( "DirectSumOp",
 #! @Arguments D,k
 DeclareOperation( "ProjectionInFactorOfDirectSum",
                   [ IsList, IsInt ] );
-
-#! @Description
-#! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
-#! an integer $k$,
-#! and an object for method selection.
-#! The output is the $k$-th projection
-#! $\pi_k: \bigoplus_{i=1}^n S_i \rightarrow S_k$.
-#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n S_i, S_k )$
-#! @Arguments D,k, method_selection_object
-DeclareOperation( "ProjectionInFactorOfDirectSumOp",
-                  [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
@@ -1397,17 +1388,6 @@ DeclareOperation( "ProjectionInFactorOfDirectSumWithGivenDirectSum",
 #! @Arguments D,k
 DeclareOperation( "InjectionOfCofactorOfDirectSum",
                   [ IsList, IsInt ] );
-
-#! @Description
-#! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
-#! an integer $k$,
-#! and an object for method selection.
-#! The output  is the $k$-th injection
-#! $\iota_k: S_k \rightarrow \bigoplus_{i=1}^n S_i$.
-#! @Returns a morphism in $\mathrm{Hom}( S_k, \bigoplus_{i=1}^n S_i )$
-#! @Arguments D,k,method_selection_object
-DeclareOperation( "InjectionOfCofactorOfDirectSumOp",
-                  [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
@@ -1434,16 +1414,15 @@ DeclareOperation( "InjectionOfCofactorOfDirectSumWithGivenDirectSum",
 DeclareGlobalFunction( "UniversalMorphismIntoDirectSum" );
 
 #! @Description
-#! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
-#! a list of morphisms $\tau = ( \tau_i: T \rightarrow S_i )_{i = 1 \dots n}$,
-#! and an object for method selection.
+#! The arguments are a list of objects $D = (S_1, \dots, S_n)$
+#! and a list of morphisms $\tau = ( \tau_i: T \rightarrow S_i )_{i = 1 \dots n}$.
 #! The output is the morphism
 #! $u_{\mathrm{in}}(\tau): T \rightarrow \bigoplus_{i=1}^n S_i$
 #! given by the universal property of the direct sum.
 #! @Returns a morphism in $\mathrm{Hom}(T, \bigoplus_{i=1}^n S_i)$
-#! @Arguments D,tau,method_selection_object
+#! @Arguments D,tau
 DeclareOperation( "UniversalMorphismIntoDirectSumOp",
-                  [ IsList, IsList, IsCapCategoryObject ] );
+                  [ IsList, IsList ] );
 
 #! @Description
 #! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
@@ -1471,16 +1450,15 @@ DeclareOperation( "UniversalMorphismIntoDirectSumWithGivenDirectSum",
 DeclareGlobalFunction( "UniversalMorphismFromDirectSum" );
 
 #! @Description
-#! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
-#! a list of morphisms $\tau = ( \tau_i: S_i \rightarrow T )_{i = 1 \dots n}$,
-#! and an object for method selection.
+#! The arguments are a list of objects $D = (S_1, \dots, S_n)$
+#! and a list of morphisms $\tau = ( \tau_i: S_i \rightarrow T )_{i = 1 \dots n}$.
 #! The output is the morphism
 #! $u_{\mathrm{out}}(\tau): \bigoplus_{i=1}^n S_i \rightarrow T$
 #! given by the universal property of the direct sum.
 #! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^n S_i, T)$
-#! @Arguments D, tau, method_selection_object
+#! @Arguments D, tau
 DeclareOperation( "UniversalMorphismFromDirectSumOp",
-                  [ IsList, IsList, IsCapCategoryObject ] );
+                  [ IsList, IsList ] );
 
 #! @Description
 #! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
@@ -1504,16 +1482,6 @@ DeclareOperation( "IsomorphismFromDirectSumToDirectProduct",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are a list of objects $D = (S_1, \dots, S_n)$
-#! and an object for method selection.
-#! The output is the canonical isomorphism
-#! $\bigoplus_{i=1}^n S_i \rightarrow \prod_{i=1}^{n}S_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n S_i, \prod_{i=1}^{n}S_i )$
-#! @Arguments D, method_selection_object
-DeclareOperation( "IsomorphismFromDirectSumToDirectProductOp",
-                  [ IsList, IsCapCategoryObject ] );
-
-#! @Description
 #! The argument is a list of objects $D = (S_1, \dots, S_n)$.
 #! The output is the canonical isomorphism
 #! $\prod_{i=1}^{n}S_i \rightarrow \bigoplus_{i=1}^n S_i$.
@@ -1521,16 +1489,6 @@ DeclareOperation( "IsomorphismFromDirectSumToDirectProductOp",
 #! @Arguments D
 DeclareOperation( "IsomorphismFromDirectProductToDirectSum",
                   [ IsList ] );
-
-#! @Description
-#! The argument is a list of objects $D = (S_1, \dots, S_n)$
-#! and an object for method selection.
-#! The output is the canonical isomorphism
-#! $\prod_{i=1}^{n}S_i \rightarrow \bigoplus_{i=1}^n S_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \prod_{i=1}^{n}S_i, \bigoplus_{i=1}^n S_i )$
-#! @Arguments D, method_selection_object
-DeclareOperation( "IsomorphismFromDirectProductToDirectSumOp",
-                  [ IsList, IsCapCategoryObject ] );
 
 #! @Description
 #! The argument is a list of objects $D = (S_1, \dots, S_n)$.
@@ -1542,16 +1500,6 @@ DeclareOperation( "IsomorphismFromDirectSumToCoproduct",
                   [ IsList ] );
 
 #! @Description
-#! The argument is a list of objects $D = (S_1, \dots, S_n)$
-#! and an object for method selection.
-#! The output is the canonical isomorphism
-#! $\bigoplus_{i=1}^n S_i \rightarrow \bigsqcup_{i=1}^{n}S_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n S_i, \bigsqcup_{i=1}^{n}S_i )$
-#! @Arguments D, method_selection_object
-DeclareOperation( "IsomorphismFromDirectSumToCoproductOp",
-                  [ IsList, IsCapCategoryObject ] );
-
-#! @Description
 #! The argument is a list of objects $D = (S_1, \dots, S_n)$.
 #! The output is the canonical isomorphism
 #! $\bigsqcup_{i=1}^{n}S_i \rightarrow \bigoplus_{i=1}^n S_i$.
@@ -1559,16 +1507,6 @@ DeclareOperation( "IsomorphismFromDirectSumToCoproductOp",
 #! @Arguments D
 DeclareOperation( "IsomorphismFromCoproductToDirectSum",
                   [ IsList ] );
-
-#! @Description
-#! The argument is a list of objects $D = (S_1, \dots, S_n)$
-#! and an object for method selection.
-#! The output is the canonical isomorphism
-#! $\bigsqcup_{i=1}^{n}S_i \rightarrow \bigoplus_{i=1}^n S_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \bigsqcup_{i=1}^{n}S_i, \bigoplus_{i=1}^n S_i )$
-#! @Arguments D, method_selection_object
-DeclareOperation( "IsomorphismFromCoproductToDirectSumOp",
-                  [ IsList, IsCapCategoryObject ] );
 
 
 #! @Description
@@ -1617,15 +1555,14 @@ DeclareOperation( "AddMorphismBetweenDirectSums",
 #! $M = ( \phi_{1,1}, \phi_{1,2}, \dots, \phi_{1,n}, \phi_{2,1}, \dots, \phi_{m,n} )$
 #! of morphisms $\phi_{i,j}: A_i \rightarrow B_j$,
 #! an integer $m$,
-#! an integer $n$,
-#! and a method selection morphism.
+#! and an integer $n$.
 #! The output is the morphism
 #! $\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n B_j$
 #! defined by the list $M$ regarded as a matrix of dimension $m \times n$.
 #! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^{m}A_i, \bigoplus_{j=1}^n B_j)$
-#! @Arguments M, m, n, method_selection_morphism
-DeclareOperationWithCache( "MorphismBetweenDirectSumsOp",
-                           [ IsList, IsInt, IsInt, IsCapCategoryMorphism ] );
+#! @Arguments M, m, n
+DeclareOperation( "MorphismBetweenDirectSumsOp",
+                           [ IsList, IsInt, IsInt ] );
 
 #! @Description
 #! The arguments are a morphism $\alpha: A \rightarrow S$,
@@ -2054,13 +1991,12 @@ DeclareOperation( "Coproduct",
 
 
 #! @Description
-#! The arguments are a list of objects $D = ( I_1, \dots, I_n )$
-#! and a method selection object.
+#! The arguments are a list of objects $D = ( I_1, \dots, I_n )$.
 #! The output is the coproduct $\bigsqcup_{i=1}^n I_i$.
 #! @Returns an object
-#! @Arguments D, method_selection_object
+#! @Arguments D
 DeclareOperationWithCache( "CoproductOp",
-                           [ IsList, IsCapCategoryObject ] );
+                           [ IsList ] );
 
 #! @Description
 #! The arguments are a list of objects $D = ( I_1, \dots, I_n )$
@@ -2071,17 +2007,6 @@ DeclareOperationWithCache( "CoproductOp",
 #! @Arguments D,k
 DeclareOperation( "InjectionOfCofactorOfCoproduct",
                   [ IsList, IsInt ] );
-
-#! @Description
-#! The arguments are a list of objects $D = ( I_1, \dots, I_n )$,
-#! an integer $k$,
-#! and a method selection object.
-#! The output is the $k$-th injection
-#! $\iota_k: I_k \rightarrow \bigsqcup_{i=1}^n I_i$.
-#! @Returns a morphism in $\mathrm{Hom}(I_k, \bigsqcup_{i=1}^n I_i)$
-#! @Arguments D,k,method_selection_object
-DeclareOperation( "InjectionOfCofactorOfCoproductOp",
-                  [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a list of objects $D = ( I_1, \dots, I_n )$,
@@ -2098,7 +2023,7 @@ DeclareOperation( "InjectionOfCofactorOfCoproductWithGivenCoproduct",
 #! This is a convenience method.
 #! There are three different ways to use this method.
 #! * The arguments are a list of objects $D = ( I_1, \dots, I_n )$,
-#!  a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )$.
+#!  and a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )$.
 #! * The argument is a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )$.
 #! * The arguments are morphisms $\tau_1: I_1 \rightarrow T, \dots, \tau_n: I_n \rightarrow T$
 #! The output is the morphism
@@ -2109,15 +2034,14 @@ DeclareGlobalFunction( "UniversalMorphismFromCoproduct" );
 
 #! @Description
 #! The arguments are a list of objects $D = ( I_1, \dots, I_n )$,
-#! a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )$,
-#! and a method selection object.
+#! and a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )$.
 #! The output is the morphism
 #! $u( \tau ): \bigsqcup_{i=1}^n I_i \rightarrow T$
 #! given by the universal property of the coproduct.
 #! @Returns a morphism in $\mathrm{Hom}(\bigsqcup_{i=1}^n I_i, T)$
-#! @Arguments D, tau, method_selection_object
+#! @Arguments D, tau
 DeclareOperation( "UniversalMorphismFromCoproductOp",
-                  [ IsList, IsList, IsCapCategoryObject ] );
+                  [ IsList, IsList ] );
 
 #! @Description
 #! The arguments are a list of objects $D = ( I_1, \dots, I_n )$,
@@ -2316,13 +2240,18 @@ DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
 
 ## Main Operations and Attributes
 #! @Description
-#! The arguments are a list of objects $D = ( P_1, \dots, P_n )$
-#! and an object for method selection.
+#! The argument is a list of objects $D = ( P_1, \dots, P_n )$.
 #! The output is the direct product $\prod_{i=1}^n P_i$.
 #! @Returns an object
 #! @Arguments D
 DeclareOperationWithCache( "DirectProductOp",
-                           [ IsList, IsCapCategoryObject ] );
+                           [ IsList ] );
+
+# for compatibility with GAP's DirectProduct function
+DeclareOperation( "DirectProductOp",
+                  [ IsList, IsCapCategoryObject ] );
+DeclareOperation( "DirectProductOp",
+                  [ IsList, IsCapCategory ] );
 
 #! @Description
 #! The arguments are a list of objects $D = ( P_1, \dots, P_n )$
@@ -2333,17 +2262,6 @@ DeclareOperationWithCache( "DirectProductOp",
 #! @Arguments D,k
 DeclareOperation( "ProjectionInFactorOfDirectProduct",
                   [ IsList, IsInt ] );
-
-#! @Description
-#! The arguments are a list of objects $D = ( P_1, \dots, P_n )$,
-#! an integer $k$,
-#! and an object for method selection.
-#! The output is the $k$-th projection
-#! $\pi_k: \prod_{i=1}^n P_i \rightarrow P_k$.
-#! @Returns a morphism in $\mathrm{Hom}(\prod_{i=1}^n P_i, P_k)$
-#! @Arguments D,k,method_selection_object
-DeclareOperation( "ProjectionInFactorOfDirectProductOp",
-                  [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a list of objects $D = ( P_1, \dots, P_n )$,
@@ -2371,16 +2289,15 @@ DeclareGlobalFunction( "UniversalMorphismIntoDirectProduct" );
 
 
 #! @Description
-#! The arguments are a list of objects $D = ( P_1, \dots, P_n )$,
-#! a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )_{i = 1, \dots, n}$,
-#! and an object for method selection.
+#! The arguments are a list of objects $D = ( P_1, \dots, P_n )$
+#! and a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )_{i = 1, \dots, n}$.
 #! The output is the morphism
 #! $u(\tau): T \rightarrow \prod_{i=1}^n P_i$
 #! given by the universal property of the direct product.
 #! @Returns a morphism in $\mathrm{Hom}(T, \prod_{i=1}^n P_i)$
-#! @Arguments D, tau, method_selection_object
+#! @Arguments D, tau
 DeclareOperation( "UniversalMorphismIntoDirectProductOp",
-                  [ IsList, IsList, IsCapCategoryObject ] );
+                  [ IsList, IsList ] );
 
 #! @Description
 #! The arguments are a list of objects $D = ( P_1, \dots, P_n )$,
@@ -2596,13 +2513,12 @@ DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
 DeclareGlobalFunction( "Equalizer" );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$
-#! and a morphism for method selection.
+#! The argument is a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$.
 #! The output is the equalizer $\mathrm{Equalizer}(D)$.
 #! @Returns an object
-#! @Arguments D, method_selection_morphism
+#! @Arguments D
 DeclareOperationWithCache( "EqualizerOp",
-                           [ IsList, IsCapCategoryMorphism ] );
+                           [ IsList ] );
 
 #! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$.
@@ -2612,16 +2528,6 @@ DeclareOperationWithCache( "EqualizerOp",
 #! @Arguments D
 DeclareOperation( "EmbeddingOfEqualizer",
                   [ IsList ] );
-
-#! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$.
-#! and a morphism for method selection.
-#! The output is the equalizer embedding
-#! $\iota: \mathrm{Equalizer}(D) \rightarrow A$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Equalizer}(D), A )$
-#! @Arguments D,method_selection_morphism
-DeclareOperation( "EmbeddingOfEqualizerOp",
-                  [ IsList, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$,
@@ -2641,16 +2547,6 @@ DeclareOperation( "EmbeddingOfEqualizerWithGivenEqualizer",
 #! @Arguments D
 DeclareOperation( "MorphismFromEqualizerToSink",
                   [ IsList ] );
-
-#! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$
-#! and a morphism for method selection.
-#! The output is the composition $\mu: \mathrm{Equalizer}(D) \rightarrow B$
-#! of the embedding $\iota: \mathrm{Equalizer}(D) \rightarrow A$ and $\beta_1$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Equalizer}(D), B )$
-#! @Arguments D, method_selection_morphism
-DeclareOperation( "MorphismFromEqualizerToSinkOp",
-                  [ IsList, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$
@@ -2942,13 +2838,12 @@ DeclareGlobalFunction( "Coequalizer" );
 
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$
-#! and a morphism for method selection.
+#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$.
 #! The output is the coequalizer $\mathrm{Coequalizer}(D)$.
 #! @Returns an object
-#! @Arguments D, method_selection_morphism
+#! @Arguments D
 DeclareOperationWithCache( "CoequalizerOp",
-                           [ IsList, IsCapCategoryMorphism ] );
+                           [ IsList ] );
 
 #! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$.
@@ -2958,16 +2853,6 @@ DeclareOperationWithCache( "CoequalizerOp",
 #! @Arguments D
 DeclareOperation( "ProjectionOntoCoequalizer",
                   [ IsList ] );
-
-#! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$,
-#! and a morphism for method selection.
-#! The output is the projection
-#! $\pi: A \rightarrow \mathrm{Coequalizer}( D )$.
-#! @Returns a morphism in $\mathrm{Hom}( A, \mathrm{Coequalizer}( D ) )$.
-#! @Arguments D,method_selection_morphism
-DeclareOperation( "ProjectionOntoCoequalizerOp",
-                  [ IsList, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$,
@@ -2987,16 +2872,6 @@ DeclareOperation( "ProjectionOntoCoequalizerWithGivenCoequalizer",
 #! @Arguments D
 DeclareOperation( "MorphismFromSourceToCoequalizer",
                   [ IsList ] );
-
-#! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$
-#! and a morphism for method selection.
-#! The output is the composition $\mu: B \rightarrow \mathrm{Coequalizer}(D)$
-#! of $\beta_1$ and the projection $\pi: A \rightarrow \mathrm{Coequalizer}( D )$.
-#! @Returns a morphism in $\mathrm{Hom}( B, \mathrm{Coequalizer}( D ) )$.
-#! @Arguments D, method_selection_morphism
-DeclareOperation( "MorphismFromSourceToCoequalizerOp",
-                  [ IsList, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$
@@ -3288,16 +3163,6 @@ DeclareOperation( "AddCoequalizerFunctorialWithGivenCoequalizers",
 #! @Arguments D
 DeclareOperation( "IsomorphismFromFiberProductToKernelOfDiagonalDifference",
                   [ IsList ] );
-#! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
-#! and a morphism for method selection.
-#! The output is a morphism
-#! $\mathrm{FiberProduct}(D) \rightarrow \Delta$,
-#! where $\Delta$ denotes the kernel object equalizing the morphisms $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{FiberProduct}(D), \Delta)$
-#! @Arguments D, method_selection_morphism
-DeclareOperation( "IsomorphismFromFiberProductToKernelOfDiagonalDifferenceOp",
-                  [ IsList, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -3327,17 +3192,6 @@ DeclareOperation( "AddIsomorphismFromFiberProductToKernelOfDiagonalDifference",
 #! @Arguments D
 DeclareOperation( "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
                   [ IsList ] );
-
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
-#! and a morphism for method selection.
-#! The output is a morphism
-#! $\Delta \rightarrow \mathrm{FiberProduct}(D)$,
-#! where $\Delta$ denotes the kernel object equalizing the morphisms $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}(\Delta, \mathrm{FiberProduct}(D))$
-#! @Arguments D
-DeclareOperation( "IsomorphismFromKernelOfDiagonalDifferenceToFiberProductOp",
-                  [ IsList, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -3370,16 +3224,6 @@ DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
 #! @Arguments D
 DeclareOperation( "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram",
                   [ IsList ] );
-#! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
-#! and a morphism for method selection.
-#! The output is a morphism
-#! $\mathrm{FiberProduct}(D) \rightarrow \Delta$,
-#! where $\Delta$ denotes the equalizer of the product diagram of the morphisms $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{FiberProduct}(D), \Delta)$
-#! @Arguments D, method_selection_morphism
-DeclareOperation( "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagramOp",
-                  [ IsList, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -3409,17 +3253,6 @@ DeclareOperation( "AddIsomorphismFromFiberProductToEqualizerOfDirectProductDiagr
 #! @Arguments D
 DeclareOperation( "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct",
                   [ IsList ] );
-
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
-#! and a morphism for method selection.
-#! The output is a morphism
-#! $\Delta \rightarrow \mathrm{FiberProduct}(D)$,
-#! where $\Delta$ denotes the equalizer of the product diagram of the morphisms $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}(\Delta, \mathrm{FiberProduct}(D))$
-#! @Arguments D
-DeclareOperation( "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProductOp",
-                  [ IsList, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -3454,17 +3287,6 @@ DeclareOperation( "DirectSumDiagonalDifference",
                   [ IsList ] );
 
 #! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
-#! and a morphism for method selection.
-#! The output is a morphism
-#! $\bigoplus_{i=1}^n P_i \rightarrow B$
-#! such that its kernel equalizes the $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n P_i, B )$
-#! @Arguments D, method_selection_morphism
-DeclareOperationWithCache( "DirectSumDiagonalDifferenceOp",
-                           [ IsList, IsCapCategoryMorphism ] );
-
-#! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>DirectSumDiagonalDifference</C>.
@@ -3494,16 +3316,6 @@ DeclareOperation( "AddDirectSumDiagonalDifference",
 #! @Arguments D
 DeclareOperation( "FiberProductEmbeddingInDirectSum",
                   [ IsList ] );
-
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
-#! and a morphism for method selection.
-#! The output is the natural embedding
-#! $\mathrm{FiberProduct}(D) \rightarrow \bigoplus_{i=1}^n P_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{FiberProduct}(D), \bigoplus_{i=1}^n P_i )$
-#! @Arguments D, method_selection_morphism
-DeclareOperationWithCache( "FiberProductEmbeddingInDirectSumOp",
-                           [ IsList, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -3536,13 +3348,12 @@ DeclareOperation( "AddFiberProductEmbeddingInDirectSum",
 DeclareGlobalFunction( "FiberProduct" );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
-#! and a morphism for method selection.
+#! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
 #! The output is the fiber product $\mathrm{FiberProduct}(D)$.
 #! @Returns an object
-#! @Arguments D, method_selection_morphism
+#! @Arguments D
 DeclareOperationWithCache( "FiberProductOp",
-                           [ IsList, IsCapCategoryMorphism ] );
+                           [ IsList ] );
 
 #! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
@@ -3553,17 +3364,6 @@ DeclareOperationWithCache( "FiberProductOp",
 #! @Arguments D,k
 DeclareOperation( "ProjectionInFactorOfFiberProduct",
                   [ IsList, IsInt ] );
-
-#! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$,
-#! an integer $k$,
-#! and a morphism for method selection.
-#! The output is the $k$-th projection
-#! $\pi_{k}: \mathrm{FiberProduct}(D) \rightarrow P_k$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{FiberProduct}(D), P_k )$
-#! @Arguments D,k,method_selection_morphism
-DeclareOperation( "ProjectionInFactorOfFiberProductOp",
-                  [ IsList, IsInt, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$,
@@ -3584,16 +3384,6 @@ DeclareOperation( "ProjectionInFactorOfFiberProductWithGivenFiberProduct",
 #! @Arguments D
 DeclareOperation( "MorphismFromFiberProductToSink",
                   [ IsList ] );
-
-#! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
-#! and a morphism for method selection.
-#! The output is the composition $\mu: \mathrm{FiberProduct}(D) \rightarrow B$
-#! of the $1$-st projection $\pi_1: \mathrm{FiberProduct}(D) \rightarrow P_1$ and $\beta_1$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{FiberProduct}(D), B )$
-#! @Arguments D, method_selection_morphism
-DeclareOperation( "MorphismFromFiberProductToSinkOp",
-                  [ IsList, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
@@ -3623,17 +3413,16 @@ DeclareOperation( "MorphismFromFiberProductToSinkWithGivenFiberProduct",
 DeclareGlobalFunction( "UniversalMorphismIntoFiberProduct" );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$,
-#! a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )$
-#! such that $\beta_i \circ \tau_i  \sim_{T, B} \beta_j \circ \tau_j$ for all pairs $i,j$,
-#! and a morphism for method selection.
+#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
+#! and a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )$
+#! such that $\beta_i \circ \tau_i  \sim_{T, B} \beta_j \circ \tau_j$ for all pairs $i,j$.
 #! The output is the morphism
 #! $u( \tau ): T \rightarrow \mathrm{FiberProduct}(D)$
 #! given by the universal property of the fiber product.
 #! @Returns a morphism in $\mathrm{Hom}( T, \mathrm{FiberProduct}(D) )$
-#! @Arguments D, tau, method_selection_morphism
+#! @Arguments D, tau
 DeclareOperation( "UniversalMorphismIntoFiberProductOp",
-                  [ IsList, IsList, IsCapCategoryMorphism ] );
+                  [ IsList, IsList ] );
 
 #! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$,
@@ -3902,17 +3691,6 @@ DeclareOperation( "IsomorphismFromPushoutToCokernelOfDiagonalDifference",
                   [ IsList ] );
 
 #! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
-#! and a morphism for method selection.
-#! The output is a morphism
-#! $\mathrm{Pushout}(D) \rightarrow \Delta$,
-#! where $\Delta$ denotes the cokernel object coequalizing the morphisms $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Pushout}(D), \Delta)$
-#! @Arguments D, method_selection_morphism
-DeclareOperation( "IsomorphismFromPushoutToCokernelOfDiagonalDifferenceOp",
-                  [ IsList, IsCapCategoryMorphism ] );
-
-#! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromPushoutToCokernelOfDiagonalDifference</C>.
@@ -3940,17 +3718,6 @@ DeclareOperation( "AddIsomorphismFromPushoutToCokernelOfDiagonalDifference",
 #! @Arguments D
 DeclareOperation( "IsomorphismFromCokernelOfDiagonalDifferenceToPushout",
                   [ IsList ] );
-
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
-#! and a morphism for method selection.
-#! The output is a morphism
-#! $\Delta \rightarrow \mathrm{Pushout}(D)$,
-#! where $\Delta$ denotes the cokernel object coequalizing the morphisms $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \Delta, \mathrm{Pushout}(D))$
-#! @Arguments D, method_selection_morphism
-DeclareOperation( "IsomorphismFromCokernelOfDiagonalDifferenceToPushoutOp",
-                  [ IsList, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -3982,17 +3749,6 @@ DeclareOperation( "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
                   [ IsList ] );
 
 #! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
-#! and a morphism for method selection.
-#! The output is a morphism
-#! $\mathrm{Pushout}(D) \rightarrow \Delta$,
-#! where $\Delta$ denotes the coequalizer of the coproduct diagram of the morphisms $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{Pushout}(D), \Delta)$
-#! @Arguments D, method_selection_morphism
-DeclareOperation( "IsomorphismFromPushoutToCoequalizerOfCoproductDiagramOp",
-                  [ IsList, IsCapCategoryMorphism ] );
-
-#! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>IsomorphismFromPushoutToCoequalizerOfCoproductDiagram</C>.
@@ -4020,17 +3776,6 @@ DeclareOperation( "AddIsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
 #! @Arguments D
 DeclareOperation( "IsomorphismFromCoequalizerOfCoproductDiagramToPushout",
                   [ IsList ] );
-
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
-#! and a morphism for method selection.
-#! The output is a morphism
-#! $\Delta \rightarrow \mathrm{Pushout}(D)$,
-#! where $\Delta$ denotes the coequalizer of the coproduct diagram of the morphisms $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}( \Delta, \mathrm{Pushout}(D))$
-#! @Arguments D, method_selection_morphism
-DeclareOperation( "IsomorphismFromCoequalizerOfCoproductDiagramToPushoutOp",
-                  [ IsList, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -4062,17 +3807,6 @@ DeclareOperation( "DirectSumCodiagonalDifference",
                   [ IsList ] );
 
 #! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
-#! and a morphism for method selection.
-#! The output is a morphism
-#! $B \rightarrow \bigoplus_{i=1}^n I_i$
-#! such that its cokernel coequalizes the $\beta_i$.
-#! @Returns a morphism in $\mathrm{Hom}(B, \bigoplus_{i=1}^n I_i)$
-#! @Arguments D, method_selection_morphism
-DeclareOperationWithCache( "DirectSumCodiagonalDifferenceOp",
-                           [ IsList, IsCapCategoryMorphism ] );
-
-#! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>DirectSumCodiagonalDifference</C>.
@@ -4100,16 +3834,6 @@ DeclareOperation( "AddDirectSumCodiagonalDifference",
 #! @Arguments D
 DeclareOperation( "DirectSumProjectionInPushout",
                   [ IsList ] );
-
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
-#! and a morphism for method selection.
-#! The output is the natural projection
-#! $\bigoplus_{i=1}^n I_i \rightarrow \mathrm{Pushout}(D)$.
-#! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n I_i, \mathrm{Pushout}(D) )$
-#! @Arguments D, method_selection_morphism
-DeclareOperationWithCache( "DirectSumProjectionInPushoutOp",
-                           [ IsList, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
@@ -4150,13 +3874,12 @@ DeclareOperation( "Pushout",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
-#! and a morphism for method selection.
+#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
 #! The output is the pushout $\mathrm{Pushout}(D)$.
 #! @Returns an object
 #! @Arguments D
 DeclareOperationWithCache( "PushoutOp",
-                           [ IsList, IsCapCategoryMorphism ] );
+                           [ IsList ] );
 
 
 #! @Description
@@ -4168,17 +3891,6 @@ DeclareOperationWithCache( "PushoutOp",
 #! @Arguments D, k
 DeclareOperation( "InjectionOfCofactorOfPushout",
                   [ IsList, IsInt ] );
-
-#! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$,
-#! an integer $k$,
-#! and a morphism for method selection.
-#! The output is the $k$-th injection
-#! $\iota_k: I_k \rightarrow \mathrm{Pushout}( D )$.
-#! @Returns a morphism in $\mathrm{Hom}( I_k, \mathrm{Pushout}( D ) )$.
-#! @Arguments D, k, method_selection_morphism
-DeclareOperation( "InjectionOfCofactorOfPushoutOp",
-                  [ IsList, IsInt, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$,
@@ -4199,16 +3911,6 @@ DeclareOperation( "InjectionOfCofactorOfPushoutWithGivenPushout",
 #! @Arguments D
 DeclareOperation( "MorphismFromSourceToPushout",
                   [ IsList ] );
-
-#! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
-#! and a morphism for method selection.
-#! The output is the composition $\mu: B \rightarrow \mathrm{Pushout}(D)$
-#! of $\beta_1$ and the $1$-st injection $\iota_1: I_1 \rightarrow \mathrm{Pushout}( D )$.
-#! @Returns a morphism in $\mathrm{Hom}( B, \mathrm{Pushout}( D ) )$.
-#! @Arguments D, method_selection_morphism
-DeclareOperation( "MorphismFromSourceToPushoutOp",
-                  [ IsList, IsCapCategoryMorphism ] );
 
 #! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
@@ -4238,17 +3940,16 @@ DeclareOperation( "MorphismFromSourceToPushoutWithGivenPushout",
 DeclareGlobalFunction( "UniversalMorphismFromPushout" );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$,
-#! a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ such that
-#! $\tau_i \circ \beta_i \sim_{B,T} \tau_j \circ \beta_j$,
-#! and a morphism for method selection.
+#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
+#! and a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ such that
+#! $\tau_i \circ \beta_i \sim_{B,T} \tau_j \circ \beta_j$.
 #! The output is the morphism
 #! $u( \tau ): \mathrm{Pushout}(D) \rightarrow T$
 #! given by the universal property of the pushout.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Pushout}(D), T )$
-#! @Arguments D, tau, method_selection_morphism
+#! @Arguments D, tau
 DeclareOperation( "UniversalMorphismFromPushoutOp",
-                  [ IsList, IsList, IsCapCategoryMorphism ] );
+                  [ IsList, IsList ] );
 
 #! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$,

@@ -9,9 +9,7 @@ InstallValue( CAP_INTERNAL_FINAL_DERIVATION_LIST,
 BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
   
   function( derivation )
-    
-    local possible_names, all_operations_names, function_object, function_string,
-          string_stream, i, all_operations;
+    local possible_names, all_operations, function_object, function_string, string_stream, methods_to_check, method_name, filter_list, number_of_proposed_arguments, current_function_argument_number, i, method, impl;
     
     possible_names := derivation!.can_compute;
     
@@ -48,6 +46,41 @@ BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
         od;
         
     od;
+    
+    methods_to_check := Concatenation( [ [ derivation.name, derivation.function_list ] ], derivation.additional_functions );
+    
+    for method in methods_to_check do
+        
+        method_name := NameFunction( method[1] );
+        
+        if not method_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) then
+            
+            Error( "trying to add a final derivation for a method not in CAP_INTERNAL_METHOD_NAME_RECORD" );
+            
+        fi;
+        
+        filter_list := CAP_INTERNAL_METHOD_NAME_RECORD!.(method_name).filter_list;
+        
+        number_of_proposed_arguments := Length( filter_list );
+        
+        for impl in method[2] do
+            
+            current_function_argument_number := NumberArgumentsFunction( impl[ 1 ] );
+            
+            if current_function_argument_number >= 0 and current_function_argument_number <> number_of_proposed_arguments then
+                Error( "While adding a final derivation for ", method_name, ": given function has ", String( current_function_argument_number ),
+                       " arguments but should have ", String( number_of_proposed_arguments ) );
+            fi;
+            
+        od;
+        
+    od;
+    
+    if NumberArgumentsFunction( derivation.category_filter ) = 0 or NumberArgumentsFunction( derivation.category_filter ) > 1 then
+        
+        Error( "the CategoryFilter of a final derivation must accept exactly one argument" );
+        
+    fi;
     
 end );
 
