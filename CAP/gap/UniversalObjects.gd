@@ -686,24 +686,6 @@ DeclareAttribute( "ZeroObject",
                   IsCapCategoryCell );
 
 #! @Description
-#! This is a convenience method.
-#! The argument is an object $A$.
-#! It calls $\mathrm{UniversalMorphismFromZeroObject}$ on $A$.
-#! @Returns a morphism in $\mathrm{Hom}(\mathrm{ZeroObject}, A)$
-#! @Arguments A
-DeclareAttribute( "MorphismFromZeroObject",
-                  IsCapCategoryObject );
-
-#! @Description
-#! This is a convenience method.
-#! The argument is an object $A$.
-#! It calls $\mathrm{UniversalMorphismIntoZeroObject}$ on $A$.
-#! @Returns a morphism in $\mathrm{Hom}(A, \mathrm{ZeroObject})$
-#! @Arguments A
-DeclareAttribute( "MorphismIntoZeroObject",
-                  IsCapCategoryObject );
-
-#! @Description
 #! The argument is an object $A$.
 #! The output is the universal morphism $u_{\mathrm{out}}: \mathrm{ZeroObject} \rightarrow A$.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{ZeroObject}, A)$
@@ -736,6 +718,24 @@ DeclareAttribute( "UniversalMorphismIntoZeroObject",
 #! @Arguments A, Z
 DeclareOperation( "UniversalMorphismIntoZeroObjectWithGivenZeroObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! This is a synonym for `UniversalMorphismFromZeroObject`.
+#! @Returns a morphism in $\mathrm{Hom}(\mathrm{ZeroObject}, A)$
+#! @Arguments A
+# DeclareAttribute( "MorphismFromZeroObject", IsCapCategoryObject );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonymAttr( "MorphismFromZeroObject",
+                    UniversalMorphismFromZeroObject );
+
+#! @Description
+#! This is a synonym for `UniversalMorphismIntoZeroObject`.
+#! @Returns a morphism in $\mathrm{Hom}(A, \mathrm{ZeroObject})$
+#! @Arguments A
+# DeclareAttribute( "MorphismIntoZeroObject", IsCapCategoryObject );
+# this comment stops AutoDoc from trying to parse the next line (which it can't at the moment)
+DeclareSynonymAttr( "MorphismIntoZeroObject",
+                    UniversalMorphismIntoZeroObject );
 
 #! @Description
 #! The argument is a category $C$.

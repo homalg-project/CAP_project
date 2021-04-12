@@ -468,26 +468,6 @@ InstallMethod( ZeroObject,
     
 end );
 
-##
-InstallMethod( MorphismFromZeroObject,
-               [ IsCapCategoryObject ],
-               
-   function( obj )
-   
-     return UniversalMorphismFromZeroObject( obj );
-   
-end );
-
-##
-InstallMethod( MorphismIntoZeroObject,
-               [ IsCapCategoryObject ],
-               
-   function( obj )
-   
-     return UniversalMorphismIntoZeroObject( obj );
-   
-end );
-
 ####################################
 ##
 ## Terminal Object
