@@ -11,10 +11,10 @@ SetPackageInfo( rec(
 PackageName := "CompilerForCAP",
 Subtitle := "Speed up computations in CAP categories",
 Version := Maximum( [
-  "2020.10-01", ## Fabian's version
+  "2021.03-01", ## Fabian's version
   ## this line prevents merge conflicts
 ] ),
-Date := "19/10/2020",
+Date := "12/04/2021",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -40,7 +40,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/CompilerForCAP",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/CompilerForCAP",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/CompilerForCAP/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/CompilerForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-", ~.Version, "/CompilerForCAP-", ~.Version ),
@@ -72,7 +72,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.11",
   NeededOtherPackages := [
-      [ "CAP", ">= 2020.06.17" ],
+      [ "CAP", ">= 2021.03-01" ],
   ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],

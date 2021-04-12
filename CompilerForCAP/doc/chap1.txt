@@ -158,7 +158,7 @@
   
   [1X1.6-1 InfoCapJit[101X
   
-  [33X[1;0Y[29X[2XInfoCapJit[102X[32X info class[133X
+  [33X[1;0Y[29X[2XInfoCapJit[102X [32X info class[133X
   
   [33X[0;0YInfo class used for info messsages of the CAP compiler.[133X
   

@@ -56,7 +56,7 @@
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">tree1.stats.statements[1].branches[2].body.statements[1].</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    obj.args[12].args[1].args[2].nams := [ "row" ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( SYNTAX_TREE_CODE( tree1 ) );</span>
-function ( S, morphism_matrix, T )
+function ( cat, S, morphism_matrix, T )
     if morphism_matrix = [  ] or morphism_matrix[1] = [  ] then
         return ZeroMorphism( S, T );
     else
@@ -74,13 +74,13 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># compile the default derivation of MorphismBetweenDirectSums</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">tree2 := SYNTAX_TREE( CapJitCompiledFunction(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.added_functions.MorphismBetweenDirectSums[1][1],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ W, morphism_matrix, W  ]</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ vec, W, morphism_matrix, W  ]</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># fixup nams</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">tree2.stats.statements[1].branches[2].body.statements[1].</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    obj.args[12].args[1].args[2].nams := [ "row" ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( SYNTAX_TREE_CODE( tree2 ) );</span>
-function ( S, morphism_matrix, T )
+function ( cat, S, morphism_matrix, T )
     if morphism_matrix = [  ] or morphism_matrix[1] = [  ] then
         return ZeroMorphism( S, T );
     else

@@ -23,7 +23,7 @@
     [4X[25X>[125X [27Xtree1.stats.statements[1].branches[2].body.statements[1].[127X[104X
     [4X[25X>[125X [27X    obj.args[12].args[1].args[2].nams := [ "row" ];;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( SYNTAX_TREE_CODE( tree1 ) );[127X[104X
-    [4X[28Xfunction ( S, morphism_matrix, T )[128X[104X
+    [4X[28Xfunction ( cat, S, morphism_matrix, T )[128X[104X
     [4X[28X    if morphism_matrix = [  ] or morphism_matrix[1] = [  ] then[128X[104X
     [4X[28X        return ZeroMorphism( S, T );[128X[104X
     [4X[28X    else[128X[104X
@@ -41,13 +41,13 @@
     [4X[25Xgap>[125X [27X# compile the default derivation of MorphismBetweenDirectSums[127X[104X
     [4X[25X>[125X [27Xtree2 := SYNTAX_TREE( CapJitCompiledFunction([127X[104X
     [4X[25X>[125X [27X    vec!.added_functions.MorphismBetweenDirectSums[1][1],[127X[104X
-    [4X[25X>[125X [27X    [ W, morphism_matrix, W  ][127X[104X
+    [4X[25X>[125X [27X    [ vec, W, morphism_matrix, W  ][127X[104X
     [4X[25X>[125X [27X) );;[127X[104X
     [4X[25Xgap>[125X [27X# fixup nams[127X[104X
     [4X[25X>[125X [27Xtree2.stats.statements[1].branches[2].body.statements[1].[127X[104X
     [4X[25X>[125X [27X    obj.args[12].args[1].args[2].nams := [ "row" ];;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( SYNTAX_TREE_CODE( tree2 ) );[127X[104X
-    [4X[28Xfunction ( S, morphism_matrix, T )[128X[104X
+    [4X[28Xfunction ( cat, S, morphism_matrix, T )[128X[104X
     [4X[28X    if morphism_matrix = [  ] or morphism_matrix[1] = [  ] then[128X[104X
     [4X[28X        return ZeroMorphism( S, T );[128X[104X
     [4X[28X    else[128X[104X
