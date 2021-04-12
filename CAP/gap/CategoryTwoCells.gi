@@ -72,9 +72,9 @@ end );
 ###########################
 
 ##
-InstallMethod( IsWellDefinedForTwoCells,
+InstallMethod( IsWellDefined,
                [ IsCapCategoryTwoCell ],
                
-  IsWellDefined
+  IsWellDefinedForTwoCells
 );
 

@@ -1110,7 +1110,7 @@ IsEqualForObjects := rec(
   return_type := "bool" ),
   
 IsEqualForCacheForObjects := rec(
-  installation_name := "IsEqualForCache",
+  installation_name := "IsEqualForCacheForObjects",
   filter_list := [ "category", "object", "object" ],
   cache_name := "IsEqualForCacheForObjects",
   dual_operation := "IsEqualForCacheForObjects",
@@ -1118,7 +1118,7 @@ IsEqualForCacheForObjects := rec(
   return_type := "bool" ),
 
 IsEqualForCacheForMorphisms := rec(
-  installation_name := "IsEqualForCache",
+  installation_name := "IsEqualForCacheForMorphisms",
   filter_list := [ "category", "morphism", "morphism" ],
   cache_name := "IsEqualForCacheForMorphisms",
   dual_operation := "IsEqualForCacheForMorphisms",
@@ -2408,7 +2408,7 @@ InverseMorphismFromCoimageToImageWithGivenObjects := rec(
   return_type := "morphism" ),
 
 IsWellDefinedForMorphisms := rec(
-  installation_name := "IsWellDefined",
+  installation_name := "IsWellDefinedForMorphisms",
   filter_list := [ "category", "morphism" ],
   cache_name := "IsWellDefinedForMorphisms",
   well_defined_todo := false,
@@ -2440,7 +2440,7 @@ IsWellDefinedForMorphisms := rec(
   return_type := "bool" ),
 
 IsWellDefinedForObjects := rec(
-  installation_name := "IsWellDefined",
+  installation_name := "IsWellDefinedForObjects",
   filter_list := [ "category", "object" ],
   cache_name := "IsWellDefinedForObjects",
   well_defined_todo := false,
@@ -2882,7 +2882,7 @@ IdentityTwoCell := rec(
   return_type := "twocell" ),
 
 IsWellDefinedForTwoCells := rec(
-  installation_name := "IsWellDefined",
+  installation_name := "IsWellDefinedForTwoCells",
   filter_list := [ "category", "twocell" ],
   cache_name := "IsWellDefinedForTwoCells",
   well_defined_todo := false,
