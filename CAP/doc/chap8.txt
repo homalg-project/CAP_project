@@ -6,7 +6,7 @@
   
   [1X8.1-1 DerivationInfo[101X
   
-  [33X[1;0Y[29X[2XDerivationInfo[102X[32X info class[133X
+  [33X[1;0Y[29X[2XDerivationInfo[102X [32X info class[133X
   
   [33X[0;0YInfo class for derivations.[133X
   

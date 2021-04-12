@@ -210,7 +210,7 @@
   [1X2.5-2 AddIsEqualForCacheForObjects[101X
   
   [33X[1;0Y[29X[2XAddIsEqualForCacheForObjects[102X( [3Xc[103X, [3XF[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynorthing[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YBy  default,  CAP uses caches to store the values of Categorical operations.
   To  get  a value out of the cache, one needs to compare the input of a basic

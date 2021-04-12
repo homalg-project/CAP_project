@@ -15,7 +15,7 @@
   
   [1X5.1-1 CapCat[101X
   
-  [33X[1;0Y[29X[2XCapCat[102X[32X global variable[133X
+  [33X[1;0Y[29X[2XCapCat[102X [32X global variable[133X
   
   [33X[0;0YThis  variable  stores  the category of categories. Every category object is
   constructed  as  an  object  in  this  category,  so Cat is constructed when

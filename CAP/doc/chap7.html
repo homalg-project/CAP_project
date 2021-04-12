@@ -240,7 +240,7 @@
 </ul>
 
 <ul>
-<li><p>filter_list: A list containing the basic filters for the methods installed by the add methods. Possible are filters, or the following strings, which will be replaced by appropriate filters at the time the add method is called:</p>
+<li><p>filter_list: A list containing the basic filters for the methods installed by the add methods. Possible entries are filters, or the strings listed below, which will be replaced by appropriate filters at the time the add method is called. Additionally, an entry can be a list consisting of filters and/or the given strings, which will then be joined via <code class="code">and</code> to form a single filter. If the first filter is <code class="code">category</code> and the category can be inferred from the remaining arguments, a convenience method without the category as the first argument is installed automatically. Additionally, the category is not passed to primitively added functions, except if <code class="code">category!.category_as_first_argument</code> is set to <code class="code">true</code> (this will probably change to be the default in the future).</p>
 
 
 <ul>
@@ -300,39 +300,25 @@
 </ul>
 
 <ul>
-<li><p>argument_list (optional): A list containing integers, which defines which arguments should be used for the additional functions, (e.g redirect, pre, ...). This is important for the Op method contructions. If no argument list is given, all arguments are used. Please note that if you have a method selection argument for your function, you need to give the argument_list to explicitly state which argument is the method selection argument.</p>
+<li><p>return_type: The return type can either be a filter or one of the strings in the list below. For objects, morphisms and <span class="Math">2</span>-cells the correct <code class="code">Add</code> function (see above) is used for the result of the computation. Otherwise, no <code class="code">Add</code> function is used after all.</p>
 
 </li>
 </ul>
 
-<ul>
-<li><p>return_type (optional): The return type can be one of the following:</p>
+<div class="example"><pre>
+    [
+        "object",
+        "object_or_fail",
+        "morphism",
+        "morphism_or_fail",
+        "twocell",
+        "bool",
+        "other_object",
+        "other_morphism",
+        "list_of_morphisms_or_fail",
+    ]
+</pre></div>
 
-
-<ul>
-<li><p><code class="code">object</code> or <code class="code">object_or_fail</code>,</p>
-
-</li>
-<li><p><code class="code">morphism</code> or <code class="code">morphism_or_fail</code>,</p>
-
-</li>
-<li><p><code class="code">twocell</code>,</p>
-
-</li>
-<li><p><code class="code">bool</code>,</p>
-
-</li>
-<li><p><code class="code">other_object</code>,</p>
-
-</li>
-<li><p><code class="code">other_morphism</code>.</p>
-
-<p>If it is one of the first three options, the correct <code class="code">Add</code> function (see above) is used for the result of the computation. Otherwise, no <code class="code">Add</code> function is used after all.</p>
-
-</li>
-</ul>
-</li>
-</ul>
 
 <ul>
 <li><p>is_with_given: Boolean, marks whether the function which is to be installed is a with given function or not.</p>
@@ -403,25 +389,7 @@
 </ul>
 
 <ul>
-<li><p>Redirect and post functions: Since the redirect and post functions need the category to work correctly, the given functions in the method records are packed up to discard the first argument (which is the category) if necessary.</p>
-
-</li>
-</ul>
-
-<ul>
-<li><p>universal_object_arg_list: An argument list for redirect and post functions is created, by looking at the filter list in the record. If the number of diagram arguments is zero, the first argument is used. If all diagram arguments are lists, the diagram arguments and additionally the last argument (method selection argument) are used. Otherwise, the diagram arguments are used.</p>
-
-</li>
-</ul>
-
-<ul>
 <li><p>WithGiven special case: If the current entry belongs to a WithGiven operation or its without given pair, the with_given_without_given_name_pair is set. Additionally, the with given flag of the WithGiven operation is set to true.</p>
-
-</li>
-</ul>
-
-<ul>
-<li><p>argument_list: If argument_list is not bound, it is set to include all arguments.</p>
 
 </li>
 </ul>

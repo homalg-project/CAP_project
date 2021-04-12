@@ -432,8 +432,9 @@
   [33X[1;0Y[29X[2XAddMorphismRepresentation[102X( [3Xcategory[103X, [3Xfilter[103X ) [32X operation[133X
   
   [33X[0;0YThe  argument  [3Xfilter[103X  is  used  to  create a morphism type for the category
-  [3Xcategory[103X,  which  is  then  used in [10XObjectifyMorphismForCAPWithAttributes[110X to
-  objectify morphisms for this category.[133X
+  [3Xcategory[103X,          which          is          then          used          in
+  [10XObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[110X     to     objectify
+  morphisms for this category.[133X
   
   [1X3.5-4 ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[101X
   
@@ -1028,7 +1029,7 @@
   [1X3.13-2 AddIsEqualForCacheForMorphisms[101X
   
   [33X[1;0Y[29X[2XAddIsEqualForCacheForMorphisms[102X( [3Xc[103X, [3XF[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ynorthing[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YBy  default,  CAP uses caches to store the values of Categorical operations.
   To  get  a value out of the cache, one needs to compare the input of a basic

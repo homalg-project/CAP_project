@@ -701,7 +701,7 @@
 <h5>3.5-3 AddMorphismRepresentation</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddMorphismRepresentation</code>( <var class="Arg">category</var>, <var class="Arg">filter</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>The argument <var class="Arg">filter</var> is used to create a morphism type for the category <var class="Arg">category</var>, which is then used in <code class="code">ObjectifyMorphismForCAPWithAttributes</code> to objectify morphisms for this category.</p>
+<p>The argument <var class="Arg">filter</var> is used to create a morphism type for the category <var class="Arg">category</var>, which is then used in <code class="code">ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes</code> to objectify morphisms for this category.</p>
 
 <p><a id="X7D4369A984B1BD3E" name="X7D4369A984B1BD3E"></a></p>
 
@@ -1268,7 +1268,7 @@
 <h5>3.13-2 AddIsEqualForCacheForMorphisms</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsEqualForCacheForMorphisms</code>( <var class="Arg">c</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: northing</p>
+<p>Returns: nothing</p>
 
 <p>By default, CAP uses caches to store the values of Categorical operations. To get a value out of the cache, one needs to compare the input of a basic operation with its previous input. To compare morphisms in the category, IsEqualForCacheForMorphisms is used. By default, IsEqualForCacheForMorphisms falls back to IsEqualForCache (see ToolsForHomalg), which in turn defaults to recursive comparison for lists and <code class="code">IsIdenticalObj</code> in all other cases. If you add a function, this function used instead. A function <span class="SimpleMath">\(F: a,b \mapsto bool\)</span> is expected here. The output has to be true or false. Fail is not allowed in this context.</p>
 

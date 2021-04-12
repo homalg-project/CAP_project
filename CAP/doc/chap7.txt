@@ -176,9 +176,17 @@
         of the installed methods, as described above.[133X
   
   [30X    [33X[0;6Yfilter_list:  A  list  containing  the  basic  filters for the methods
-        installed  by  the add methods. Possible are filters, or the following
-        strings, which will be replaced by appropriate filters at the time the
-        add method is called:[133X
+        installed  by  the  add  methods. Possible entries are filters, or the
+        strings listed below, which will be replaced by appropriate filters at
+        the  time  the  add  method is called. Additionally, an entry can be a
+        list  consisting  of filters and/or the given strings, which will then
+        be  joined  via  [10Xand[110X  to  form a single filter. If the first filter is
+        [10Xcategory[110X   and  the  category  can  be  inferred  from  the  remaining
+        arguments,  a  convenience  method  without  the category as the first
+        argument is installed automatically. Additionally, the category is not
+        passed     to     primitively     added     functions,    except    if
+        [10Xcategory!.category_as_first_argument[110X   is   set  to  [10Xtrue[110X  (this  will
+        probably change to be the default in the future).[133X
   
         [30X    [33X[0;12Y[10Xcategory[110X,[133X
   
@@ -216,31 +224,24 @@
         installed  methods.  If  no  cache  name is given, the caching for the
         operation is deactivated completely.[133X
   
-  [30X    [33X[0;6Yargument_list  (optional):  A  list containing integers, which defines
-        which  arguments  should  be  used  for the additional functions, (e.g
-        redirect, pre, ...). This is important for the Op method contructions.
-        If no argument list is given, all arguments are used. Please note that
-        if you have a method selection argument for your function, you need to
-        give  the  argument_list  to  explicitly  state  which argument is the
-        method selection argument.[133X
+  [30X    [33X[0;6Yreturn_type:  The  return  type  can  either be a filter or one of the
+        strings  in  the  list  below.  For objects, morphisms and [23X2[123X-cells the
+        correct  [10XAdd[110X  function  (see  above)  is  used  for  the result of the
+        computation. Otherwise, no [10XAdd[110X function is used after all.[133X
   
-  [30X    [33X[0;6Yreturn_type (optional): The return type can be one of the following:[133X
-  
-        [30X    [33X[0;12Y[10Xobject[110X or [10Xobject_or_fail[110X,[133X
-  
-        [30X    [33X[0;12Y[10Xmorphism[110X or [10Xmorphism_or_fail[110X,[133X
-  
-        [30X    [33X[0;12Y[10Xtwocell[110X,[133X
-  
-        [30X    [33X[0;12Y[10Xbool[110X,[133X
-  
-        [30X    [33X[0;12Y[10Xother_object[110X,[133X
-  
-        [30X    [33X[0;12Y[10Xother_morphism[110X.[133X
-  
-              [33X[0;12YIf  it  is  one  of  the  first  three  options, the correct [10XAdd[110X
-              function  (see above) is used for the result of the computation.
-              Otherwise, no [10XAdd[110X function is used after all.[133X
+  [4X[32X  Code  [32X[104X
+    [4X    [[104X
+    [4X        "object",[104X
+    [4X        "object_or_fail",[104X
+    [4X        "morphism",[104X
+    [4X        "morphism_or_fail",[104X
+    [4X        "twocell",[104X
+    [4X        "bool",[104X
+    [4X        "other_object",[104X
+    [4X        "other_morphism",[104X
+    [4X        "list_of_morphisms_or_fail",[104X
+    [4X    ][104X
+  [4X[32X[104X
   
   [30X    [33X[0;6Yis_with_given:  Boolean,  marks  whether  the  function which is to be
         installed is a with given function or not.[133X
@@ -289,25 +290,10 @@
   
   [30X    [33X[0;6YFunction name: Set the component function_name to the entry name.[133X
   
-  [30X    [33X[0;6YRedirect  and  post  functions:  Since the redirect and post functions
-        need the category to work correctly, the given functions in the method
-        records  are  packed  up  to  discard the first argument (which is the
-        category) if necessary.[133X
-  
-  [30X    [33X[0;6Yuniversal_object_arg_list:  An  argument  list  for  redirect and post
-        functions  is created, by looking at the filter list in the record. If
-        the  number  of diagram arguments is zero, the first argument is used.
-        If  all  diagram  arguments  are  lists,  the  diagram  arguments  and
-        additionally  the  last argument (method selection argument) are used.
-        Otherwise, the diagram arguments are used.[133X
-  
   [30X    [33X[0;6YWithGiven  special  case:  If the current entry belongs to a WithGiven
         operation      or      its      without      given      pair,      the
         with_given_without_given_name_pair  is  set.  Additionally,  the  with
         given flag of the WithGiven operation is set to true.[133X
-  
-  [30X    [33X[0;6Yargument_list: If argument_list is not bound, it is set to include all
-        arguments.[133X
   
   [30X    [33X[0;6YRedirect  and  post functions are created for all operations belonging
         to universal constructions (e.g. KernelLift) which are not a WithGiven
