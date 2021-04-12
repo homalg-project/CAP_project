@@ -4470,7 +4470,7 @@ end );
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
     local recnames, current_recname, current_rec, number_of_arguments, flattened_filter_list, position, without_given_name, object_name, functorial,
-          object_arg_list, with_given_name, with_given_name_length, i, object_func;
+          installation_name, object_arg_list, with_given_name, with_given_name_length, i, object_func;
     
     recnames := RecNames( record );
     
@@ -4603,6 +4603,38 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         if not IsBound( current_rec.dual_arguments_reversed ) then
             
             current_rec.dual_arguments_reversed := false;
+            
+        fi;
+        
+        if IsOperation( ValueGlobal( current_recname ) ) then
+            
+            installation_name := current_recname;
+            
+        elif IsFunction( ValueGlobal( current_recname ) ) then
+            
+            installation_name := Concatenation( current_recname, "Op" );
+            
+        else
+            
+            Error( "`ValueGlobal( current_recname )` is neither an operation nor a function" );
+            
+        fi;
+        
+        if IsBound( current_rec.installation_name ) then
+            
+            if current_rec.installation_name <> installation_name then
+                
+                Display( Concatenation(
+                    "WARNING: Manually setting installation_name is not supported anymore. You will probably run into errors. ",
+                    "To avoid this warning, remove installation_name from the method record ",
+                    "and make sure your code supports the automatically chosen installation name \"", installation_name, "\"."
+                ) );
+                
+            fi;
+            
+        else
+            
+            current_rec.installation_name := installation_name;
             
         fi;
         
