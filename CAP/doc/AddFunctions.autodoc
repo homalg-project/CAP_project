@@ -159,8 +159,6 @@ The record can have the following components, used as described:
 * functorial (optional): If an object has a corresponding functorial function, e.g., KernelObject and KernelObjectFunctorial,
                          the name of the functorial is stored as a string.
 
-* number_of_diagram_arguments: Specifies how many of the arguments (counting from the second argument, assuming that the first is the category) of the function specify the diagram of the universal object.
-
 * dual_arguments_reversed: Boolean, marks whether for the call of the dual operation all arguments have to be given in reversed order.
 
 * dual_preprocessor_func: let f be an operation with dual operation g. For the automatic installation of g from f, the arguments given to g are preprocessed by this given function.

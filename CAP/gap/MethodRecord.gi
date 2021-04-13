@@ -267,7 +267,6 @@ InverseForMorphisms := rec(
 
 KernelObject := rec(
   filter_list := [ "category", "morphism" ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit",
   return_type := "object",
   dual_operation := "CokernelObject" ),
@@ -275,8 +274,7 @@ KernelObject := rec(
 KernelEmbedding := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "P", "alpha_source" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Source",
+  with_given_object_position := "Source",
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "CokernelProjection" ),
@@ -284,7 +282,6 @@ KernelEmbedding := rec(
 KernelEmbeddingWithGivenKernelObject := rec(
   filter_list := [ "category", "morphism", "object" ],
   io_type := [ [ "alpha", "P" ], [ "P", "alpha_source" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "CokernelProjectionWithGivenCokernelObject"),
@@ -292,8 +289,7 @@ KernelEmbeddingWithGivenKernelObject := rec(
 MorphismFromKernelObjectToSink := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "P", "alpha_range" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Source",
+  with_given_object_position := "Source",
   universal_type := "Limit",
   dual_operation := "MorphismFromSourceToCokernelObject",
   return_type := "morphism" ),
@@ -301,7 +297,6 @@ MorphismFromKernelObjectToSink := rec(
 MorphismFromKernelObjectToSinkWithGivenKernelObject := rec(
   filter_list := [ "category", "morphism", "object" ],
   io_type := [ [ "alpha", "P" ], [ "P", "alpha_range" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit",
   dual_operation := "MorphismFromSourceToCokernelObjectWithGivenCokernelObject",
   return_type := "morphism" ),
@@ -309,8 +304,7 @@ MorphismFromKernelObjectToSinkWithGivenKernelObject := rec(
 KernelLift := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "alpha", "tau" ], [ "tau_source", "P" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Range",
+  with_given_object_position := "Range",
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "CokernelColift" ),
@@ -318,14 +312,12 @@ KernelLift := rec(
 KernelLiftWithGivenKernelObject := rec(
   filter_list := [ "category", "morphism", "morphism", "object" ],
   io_type := [ [ "alpha", "tau", "P" ], [ "tau_source", "P" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "CokernelColiftWithGivenCokernelObject" ),
 
 CokernelObject := rec(
   filter_list := [ "category", "morphism" ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit",
   return_type := "object",
   dual_operation := "KernelObject" ),
@@ -333,8 +325,7 @@ CokernelObject := rec(
 CokernelProjection := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "alpha_range", "P" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Range",
+  with_given_object_position := "Range",
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "KernelEmbedding" ),
@@ -342,7 +333,6 @@ CokernelProjection := rec(
 CokernelProjectionWithGivenCokernelObject := rec(
   filter_list := [ "category", "morphism", "object" ],
   io_type := [ [ "alpha", "P" ], [ "alpha_range", "P" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "KernelEmbeddingWithGivenKernelObject" ),
@@ -350,8 +340,7 @@ CokernelProjectionWithGivenCokernelObject := rec(
 MorphismFromSourceToCokernelObject := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "alpha_source", "P" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Range",
+  with_given_object_position := "Range",
   universal_type := "Colimit",
   dual_operation := "MorphismFromKernelObjectToSink",
   return_type := "morphism" ),
@@ -359,7 +348,6 @@ MorphismFromSourceToCokernelObject := rec(
 MorphismFromSourceToCokernelObjectWithGivenCokernelObject := rec(
   filter_list := [ "category", "morphism", "object" ],
   io_type := [ [ "alpha", "P" ], [ "alpha_source", "P" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit",
   dual_operation := "MorphismFromKernelObjectToSinkWithGivenKernelObject",
   return_type := "morphism" ),
@@ -367,8 +355,7 @@ MorphismFromSourceToCokernelObjectWithGivenCokernelObject := rec(
 CokernelColift := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "alpha", "tau" ], [ "P", "tau_range" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Source",
+  with_given_object_position := "Source",
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "KernelLift" ),
@@ -376,7 +363,6 @@ CokernelColift := rec(
 CokernelColiftWithGivenCokernelObject := rec(
   filter_list := [ "category", "morphism", "morphism", "object" ],
   io_type := [ [ "alpha", "tau", "P" ], [ "P", "tau_range" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "KernelLiftWithGivenKernelObject" ),
@@ -432,7 +418,6 @@ PostCompose := rec(
 
 ZeroObject := rec(
   filter_list := [ "category" ],
-  number_of_diagram_arguments := 0,
   universal_type := "LimitColimit",
   return_type := "object",
   dual_operation := "ZeroObject" ),
@@ -440,7 +425,6 @@ ZeroObject := rec(
 ZeroObjectFunctorial := rec(
   filter_list := [ "category" ],
   ## TODO: io_type?
-  number_of_diagram_arguments := 0,
   return_type := "morphism",
   dual_operation := "ZeroObjectFunctorial",
   no_with_given := true ),
@@ -448,8 +432,7 @@ ZeroObjectFunctorial := rec(
 UniversalMorphismFromZeroObject := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "A" ], [ "T", "A" ] ],
-  number_of_diagram_arguments := 0,
-  universal_object_position := "Source",
+  with_given_object_position := "Source",
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "UniversalMorphismIntoZeroObject" ),
@@ -457,7 +440,6 @@ UniversalMorphismFromZeroObject := rec(
 UniversalMorphismFromZeroObjectWithGivenZeroObject := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "A", "T" ], [ "T", "A" ] ],
-  number_of_diagram_arguments := 0,
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "UniversalMorphismIntoZeroObjectWithGivenZeroObject" ),
@@ -465,8 +447,7 @@ UniversalMorphismFromZeroObjectWithGivenZeroObject := rec(
 UniversalMorphismIntoZeroObject := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "A" ], [ "A", "T" ] ],
-  number_of_diagram_arguments := 0,
-  universal_object_position := "Range",
+  with_given_object_position := "Range",
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "UniversalMorphismFromZeroObject" ),
@@ -474,7 +455,6 @@ UniversalMorphismIntoZeroObject := rec(
 UniversalMorphismIntoZeroObjectWithGivenZeroObject := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "A", "T" ], [ "A", "T" ] ],
-  number_of_diagram_arguments := 0,
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "UniversalMorphismFromZeroObjectWithGivenZeroObject" ),
@@ -516,7 +496,6 @@ ZeroMorphism := rec(
 
 DirectSum := rec(
   filter_list := [ "category", "list_of_objects" ],
-  number_of_diagram_arguments := 1,
   universal_type := "LimitColimit",
   return_type := "object",
   dual_operation := "DirectSum" ),
@@ -524,8 +503,7 @@ DirectSum := rec(
 ProjectionInFactorOfDirectSum := rec(
   filter_list := [ "category", "list_of_objects", IsInt ],
   io_type := [ [ "objects", "k" ], [ "P", "objects_k" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Source",
+  with_given_object_position := "Source",
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "InjectionOfCofactorOfDirectSum" ),
@@ -533,7 +511,6 @@ ProjectionInFactorOfDirectSum := rec(
 ProjectionInFactorOfDirectSumWithGivenDirectSum := rec(
   filter_list := [ "category", "list_of_objects", IsInt, "object" ],
   io_type := [ [ "objects", "k", "P" ], [ "P", "objects_k" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "InjectionOfCofactorOfDirectSumWithGivenDirectSum" ),
@@ -541,8 +518,7 @@ ProjectionInFactorOfDirectSumWithGivenDirectSum := rec(
 UniversalMorphismIntoDirectSum := rec(
   filter_list := [ "category", "list_of_objects", "list_of_morphisms" ],
   io_type := [ [ "objects", "tau" ], [ "tau_1_source", "P" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Range",
+  with_given_object_position := "Range",
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromDirectSum",
   
@@ -575,7 +551,6 @@ UniversalMorphismIntoDirectSum := rec(
 UniversalMorphismIntoDirectSumWithGivenDirectSum := rec(
   filter_list := [ "category", "list_of_objects", "list_of_morphisms", "object" ],
   io_type := [ [ "objects", "tau", "P" ], [ "tau_1_source", "P" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromDirectSumWithGivenDirectSum",
   
@@ -608,8 +583,7 @@ UniversalMorphismIntoDirectSumWithGivenDirectSum := rec(
 InjectionOfCofactorOfDirectSum := rec(
   filter_list := [ "category", "list_of_objects", IsInt ],
   io_type := [ [ "objects", "k" ], [ "objects_k", "P" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Range",
+  with_given_object_position := "Range",
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "ProjectionInFactorOfDirectSum" ),
@@ -617,7 +591,6 @@ InjectionOfCofactorOfDirectSum := rec(
 InjectionOfCofactorOfDirectSumWithGivenDirectSum := rec(
   filter_list := [ "category", "list_of_objects", IsInt, "object" ],
   io_type := [ [ "objects", "k", "P" ], [ "objects_k", "P" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "ProjectionInFactorOfDirectSumWithGivenDirectSum" ),
@@ -625,8 +598,7 @@ InjectionOfCofactorOfDirectSumWithGivenDirectSum := rec(
 UniversalMorphismFromDirectSum := rec(
   filter_list := [ "category", "list_of_objects", "list_of_morphisms" ],
   io_type := [ [ "objects", "tau" ], [ "P", "tau_1_range" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Source",
+  with_given_object_position := "Source",
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoDirectSum",
   
@@ -659,7 +631,6 @@ UniversalMorphismFromDirectSum := rec(
 UniversalMorphismFromDirectSumWithGivenDirectSum := rec(
   filter_list := [ "category", "list_of_objects", "list_of_morphisms", "object" ],
   io_type := [ [ "objects", "tau", "P" ], [ "P", "tau_1_range" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoDirectSumWithGivenDirectSum",
   
@@ -691,16 +662,14 @@ UniversalMorphismFromDirectSumWithGivenDirectSum := rec(
 
 TerminalObject := rec(
   filter_list := [ "category" ],
-  number_of_diagram_arguments := 0,
   universal_type := "Limit",
   return_type := "object",
   dual_operation := "InitialObject" ),
 
 UniversalMorphismIntoTerminalObject := rec(
   filter_list := [ "category", "object" ],
-  number_of_diagram_arguments := 0,
   io_type := [ [ "A" ], [ "A", "T" ] ],
-  universal_object_position := "Range",
+  with_given_object_position := "Range",
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "UniversalMorphismFromInitialObject" ),
@@ -708,14 +677,12 @@ UniversalMorphismIntoTerminalObject := rec(
 UniversalMorphismIntoTerminalObjectWithGivenTerminalObject := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "A", "T" ], [ "A", "T" ] ],
-  number_of_diagram_arguments := 0,
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "UniversalMorphismFromInitialObjectWithGivenInitialObject" ),
 
 InitialObject := rec(
   filter_list := [ "category" ],
-  number_of_diagram_arguments := 0,
   universal_type := "Colimit",
   return_type := "object",
   dual_operation := "TerminalObject" ),
@@ -723,8 +690,7 @@ InitialObject := rec(
 UniversalMorphismFromInitialObject := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "A" ], [ "T", "A" ] ],
-  number_of_diagram_arguments := 0,
-  universal_object_position := "Source",
+  with_given_object_position := "Source",
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "UniversalMorphismIntoTerminalObject" ),
@@ -732,14 +698,12 @@ UniversalMorphismFromInitialObject := rec(
 UniversalMorphismFromInitialObjectWithGivenInitialObject := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "A", "T" ], [ "T", "A" ] ],
-  number_of_diagram_arguments := 0,
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject" ),
 
 DirectProduct := rec(
   filter_list := [ "category", "list_of_objects" ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit",
   return_type := "object",
   dual_operation := "Coproduct" ),
@@ -747,8 +711,7 @@ DirectProduct := rec(
 ProjectionInFactorOfDirectProduct := rec(
   filter_list := [ "category", "list_of_objects", IsInt ],
   io_type := [ [ "objects", "k" ], [ "P", "objects_k" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Source",
+  with_given_object_position := "Source",
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "InjectionOfCofactorOfCoproduct" ),
@@ -756,16 +719,14 @@ ProjectionInFactorOfDirectProduct := rec(
 ProjectionInFactorOfDirectProductWithGivenDirectProduct := rec(
   filter_list := [ "category", "list_of_objects", IsInt, "object" ],
   io_type := [ [ "objects", "k", "P" ], [ "P", "objects_k" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "InjectionOfCofactorOfCoproductWithGivenCoproduct" ),
 
 UniversalMorphismIntoDirectProduct := rec(
   io_type := [ [ "objects", "tau" ], [ "tau_1_source", "P" ] ],
-  number_of_diagram_arguments := 1,
   filter_list := [ "category", "list_of_objects", "list_of_morphisms" ],
-  universal_object_position := "Range",
+  with_given_object_position := "Range",
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromCoproduct",
   
@@ -798,7 +759,6 @@ UniversalMorphismIntoDirectProduct := rec(
 UniversalMorphismIntoDirectProductWithGivenDirectProduct := rec(
   filter_list := [ "category", "list_of_objects", "list_of_morphisms", "object" ],
   io_type := [ [ "objects", "tau", "P" ], [ "tau_1_source", "P" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromCoproductWithGivenCoproduct",
   
@@ -1135,7 +1095,6 @@ AdditiveInverseForMorphisms := rec(
 
 Coproduct := rec(
   filter_list := [ "category", "list_of_objects" ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit",
   return_type := "object",
   dual_operation := "DirectProduct" ),
@@ -1143,8 +1102,7 @@ Coproduct := rec(
 InjectionOfCofactorOfCoproduct := rec(
   filter_list := [ "category", "list_of_objects", IsInt ],
   io_type := [ [ "objects", "k" ], [ "objects_k", "P" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Range",
+  with_given_object_position := "Range",
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "ProjectionInFactorOfDirectProduct" ),
@@ -1152,7 +1110,6 @@ InjectionOfCofactorOfCoproduct := rec(
 InjectionOfCofactorOfCoproductWithGivenCoproduct := rec(
   filter_list := [ "category", "list_of_objects", IsInt, "object" ],
   io_type := [ [ "objects", "k", "P" ], [ "objects_k", "P" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "ProjectionInFactorOfDirectProductWithGivenDirectProduct" ),
@@ -1160,8 +1117,7 @@ InjectionOfCofactorOfCoproductWithGivenCoproduct := rec(
 UniversalMorphismFromCoproduct := rec(
   filter_list := [ "category", "list_of_objects", "list_of_morphisms" ],
   io_type := [ [ "objects", "tau" ], [ "P", "tau_1_range" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Source",
+  with_given_object_position := "Source",
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoDirectProduct",
   
@@ -1194,7 +1150,6 @@ UniversalMorphismFromCoproduct := rec(
 UniversalMorphismFromCoproductWithGivenCoproduct := rec(
   filter_list := [ "category", "list_of_objects", "list_of_morphisms", "object" ],
   io_type := [ [ "objects", "tau", "P" ], [ "P", "tau_1_range" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
   
@@ -1286,7 +1241,6 @@ IsCodominating := rec(
 
 Equalizer := rec(
   filter_list := [ "category", "list_of_morphisms" ],
-  number_of_diagram_arguments := 1,
   return_type := "object",
   universal_type := "Limit",
   dual_operation := "Coequalizer",
@@ -1329,8 +1283,7 @@ EmbeddingOfEqualizer := rec(
   filter_list := [ "category", "list_of_morphisms" ],
   return_type := "morphism",
   io_type := [ [ "morphisms" ], [ "P", "morphisms_1_source" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Source",
+  with_given_object_position := "Source",
   universal_type := "Limit",
   dual_operation := "ProjectionOntoCoequalizer",
   
@@ -1340,15 +1293,13 @@ EmbeddingOfEqualizerWithGivenEqualizer := rec(
   filter_list := [ "category", "list_of_morphisms", "object" ],
   return_type := "morphism",
   io_type := [ [ "morphisms", "P" ], [ "P", "morphisms_1_source" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit",
   dual_operation := "ProjectionOntoCoequalizerWithGivenCoequalizer" ),
 
 MorphismFromEqualizerToSink := rec(
   filter_list := [ "category", "list_of_morphisms" ],
   io_type := [ [ "morphisms" ], [ "P", "morphisms_1_range" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Source",
+  with_given_object_position := "Source",
   universal_type := "Limit",
   dual_operation := "MorphismFromSourceToCoequalizer",
   return_type := "morphism" ),
@@ -1356,7 +1307,6 @@ MorphismFromEqualizerToSink := rec(
 MorphismFromEqualizerToSinkWithGivenEqualizer := rec(
   filter_list := [ "category", "list_of_morphisms", "object" ],
   io_type := [ [ "morphisms", "P" ], [ "P", "morphisms_1_range" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit",
   dual_operation := "MorphismFromSourceToCoequalizerWithGivenCoequalizer",
   return_type := "morphism" ),
@@ -1365,8 +1315,7 @@ UniversalMorphismIntoEqualizer := rec(
   filter_list := [ "category", "list_of_morphisms", "morphism" ],
   return_type := "morphism",
   io_type := [ [ "morphisms", "tau" ], [ "tau_source", "P" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Range",
+  with_given_object_position := "Range",
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromCoequalizer",
   
@@ -1420,13 +1369,11 @@ UniversalMorphismIntoEqualizerWithGivenEqualizer := rec(
   filter_list := [ "category", "list_of_morphisms", "morphism", "object" ],
   return_type := "morphism",
   io_type := [ [ "morphisms", "tau", "P" ], [ "tau_source", "P" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromCoequalizerWithGivenCoequalizer" ),
 
 FiberProduct := rec(
   filter_list := [ "category", "list_of_morphisms" ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit",
   dual_operation := "Pushout",
   
@@ -1454,8 +1401,7 @@ FiberProduct := rec(
 ProjectionInFactorOfFiberProduct := rec(
   filter_list := [ "category", "list_of_morphisms", IsInt ],
   io_type := [ [ "morphisms", "k" ], [ "P", "morphisms_k_source" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Source",
+  with_given_object_position := "Source",
   universal_type := "Limit",
   dual_operation := "InjectionOfCofactorOfPushout",
   
@@ -1487,7 +1433,6 @@ ProjectionInFactorOfFiberProduct := rec(
 ProjectionInFactorOfFiberProductWithGivenFiberProduct := rec(
   filter_list := [ "category", "list_of_morphisms", IsInt, "object" ],
   io_type := [ [ "morphisms", "k", "P" ], [ "P", "morphisms_k_source" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit",
   dual_operation := "InjectionOfCofactorOfPushoutWithGivenPushout",
   
@@ -1519,8 +1464,7 @@ ProjectionInFactorOfFiberProductWithGivenFiberProduct := rec(
 MorphismFromFiberProductToSink := rec(
   filter_list := [ "category", "list_of_morphisms" ],
   io_type := [ [ "morphisms" ], [ "P", "morphisms_1_range" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Source",
+  with_given_object_position := "Source",
   universal_type := "Limit",
   dual_operation := "MorphismFromSourceToPushout",
   
@@ -1548,7 +1492,6 @@ MorphismFromFiberProductToSink := rec(
 MorphismFromFiberProductToSinkWithGivenFiberProduct := rec(
   filter_list := [ "category", "list_of_morphisms", "object" ],
   io_type := [ [ "morphisms", "P" ], [ "P", "morphisms_1_range" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit",
   dual_operation := "MorphismFromSourceToPushoutWithGivenPushout",
   
@@ -1576,8 +1519,7 @@ MorphismFromFiberProductToSinkWithGivenFiberProduct := rec(
 UniversalMorphismIntoFiberProduct := rec(
   filter_list := [ "category", "list_of_morphisms", "list_of_morphisms" ],
   io_type := [ [ "morphisms", "tau" ], [ "tau_1_source", "P" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Range",
+  with_given_object_position := "Range",
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromPushout",
   
@@ -1635,7 +1577,6 @@ UniversalMorphismIntoFiberProduct := rec(
 UniversalMorphismIntoFiberProductWithGivenFiberProduct := rec(
   filter_list := [ "category", "list_of_morphisms", "list_of_morphisms", "object" ],
   io_type := [ [ "morphisms", "tau", "P" ], [ "tau_1_source", "P" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromPushoutWithGivenPushout",
   
@@ -1692,7 +1633,6 @@ UniversalMorphismIntoFiberProductWithGivenFiberProduct := rec(
 
 Coequalizer := rec(
   filter_list := [ "category", "list_of_morphisms" ],
-  number_of_diagram_arguments := 1,
   return_type := "object",
   universal_type := "Colimit",
   dual_operation := "Equalizer",
@@ -1735,8 +1675,7 @@ ProjectionOntoCoequalizer := rec(
   filter_list := [ "category", "list_of_morphisms" ],
   return_type := "morphism",
   io_type := [ [ "morphisms" ], [ "morphisms_1_range", "P" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Range",
+  with_given_object_position := "Range",
   universal_type := "Colimit",
   dual_operation := "EmbeddingOfEqualizer",
   
@@ -1746,15 +1685,13 @@ ProjectionOntoCoequalizerWithGivenCoequalizer := rec(
   filter_list := [ "category", "list_of_morphisms", "object" ],
   return_type := "morphism",
   io_type := [ [ "morphisms", "P" ], [ "morphisms_1_range", "P" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit",
   dual_operation := "EmbeddingOfEqualizerWithGivenEqualizer" ),
 
 MorphismFromSourceToCoequalizer := rec(
   filter_list := [ "category", "list_of_morphisms" ],
   io_type := [ [ "morphisms" ], [ "morphisms_1_source", "P" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Range",
+  with_given_object_position := "Range",
   universal_type := "Colimit",
   dual_operation := "MorphismFromEqualizerToSink",
   return_type := "morphism" ),
@@ -1762,7 +1699,6 @@ MorphismFromSourceToCoequalizer := rec(
 MorphismFromSourceToCoequalizerWithGivenCoequalizer := rec(
   filter_list := [ "category", "list_of_morphisms", "object" ],
   io_type := [ [ "morphisms", "P" ], [ "morphisms_1_source", "P" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit",
   dual_operation := "MorphismFromEqualizerToSinkWithGivenEqualizer",
   return_type := "morphism" ),
@@ -1771,8 +1707,7 @@ UniversalMorphismFromCoequalizer := rec(
   filter_list := [ "category", "list_of_morphisms", "morphism" ],
   return_type := "morphism",
   io_type := [ [ "morphisms", "tau" ], [ "P", "tau_range" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Source",
+  with_given_object_position := "Source",
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoEqualizer",
   
@@ -1826,13 +1761,11 @@ UniversalMorphismFromCoequalizerWithGivenCoequalizer := rec(
   filter_list := [ "category", "list_of_morphisms", "morphism", "object" ],
   return_type := "morphism",
   io_type := [ [ "morphisms", "tau", "P" ], [ "P", "tau_range" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoEqualizerWithGivenEqualizer" ),
 
 Pushout := rec(
   filter_list := [ "category", "list_of_morphisms" ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit",
   dual_operation := "FiberProduct",
   
@@ -1860,8 +1793,7 @@ Pushout := rec(
 InjectionOfCofactorOfPushout := rec(
   filter_list := [ "category", "list_of_morphisms", IsInt ],
   io_type := [ [ "morphisms", "k" ], [ "morphisms_k_range", "P" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Range",
+  with_given_object_position := "Range",
   universal_type := "Colimit",
   dual_operation := "ProjectionInFactorOfFiberProduct",
   
@@ -1893,7 +1825,6 @@ InjectionOfCofactorOfPushout := rec(
 InjectionOfCofactorOfPushoutWithGivenPushout := rec(
   filter_list := [ "category", "list_of_morphisms", IsInt, "object" ],
   io_type := [ [ "morphisms", "k", "P" ], [ "morphisms_k_range", "P" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit",
   dual_operation := "ProjectionInFactorOfFiberProductWithGivenFiberProduct",
   
@@ -1925,8 +1856,7 @@ InjectionOfCofactorOfPushoutWithGivenPushout := rec(
 MorphismFromSourceToPushout := rec(
   filter_list := [ "category", "list_of_morphisms" ],
   io_type := [ [ "morphisms" ], [ "morphisms_1_source", "P" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Range",
+  with_given_object_position := "Range",
   universal_type := "Colimit",
   dual_operation := "MorphismFromFiberProductToSink",
   
@@ -1954,7 +1884,6 @@ MorphismFromSourceToPushout := rec(
 MorphismFromSourceToPushoutWithGivenPushout := rec(
   filter_list := [ "category", "list_of_morphisms", "object" ],
   io_type := [ [ "morphisms", "P" ], [ "morphisms_1_source", "P" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit",
   dual_operation := "MorphismFromFiberProductToSinkWithGivenFiberProduct",
   
@@ -1982,8 +1911,7 @@ MorphismFromSourceToPushoutWithGivenPushout := rec(
 UniversalMorphismFromPushout := rec(
   filter_list := [ "category", "list_of_morphisms", "list_of_morphisms" ],
   io_type := [ [ "morphisms", "tau" ], [ "P", "tau_1_range" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Source",
+  with_given_object_position := "Source",
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoFiberProduct",
   
@@ -2041,7 +1969,6 @@ UniversalMorphismFromPushout := rec(
 UniversalMorphismFromPushoutWithGivenPushout := rec(
   filter_list := [ "category", "list_of_morphisms", "list_of_morphisms", "object" ],
   io_type := [ [ "morphisms", "tau", "P" ], [ "P", "tau_1_range" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoFiberProductWithGivenFiberProduct",
   
@@ -2098,7 +2025,6 @@ UniversalMorphismFromPushoutWithGivenPushout := rec(
 
 ImageObject := rec(
   filter_list := [ "category", "morphism" ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit",
   return_type := "object",
   dual_operation := "Coimage" ),
@@ -2106,8 +2032,7 @@ ImageObject := rec(
 ImageEmbedding := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "I", "alpha_range" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Source",
+  with_given_object_position := "Source",
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "CoimageProjection" ),
@@ -2115,14 +2040,12 @@ ImageEmbedding := rec(
 ImageEmbeddingWithGivenImageObject := rec(
   filter_list := [ "category", "morphism", "object" ],
   io_type := [ [ "alpha", "I" ], [ "I", "alpha_range" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "CoimageProjectionWithGivenCoimage" ),
 
 Coimage := rec(
   filter_list := [ "category", "morphism" ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit",
   return_type := "object",
   dual_operation := "ImageObject" ),
@@ -2130,8 +2053,7 @@ Coimage := rec(
 CoimageProjection := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "alpha_source", "C" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Range",
+  with_given_object_position := "Range",
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "ImageEmbedding" ),
@@ -2139,7 +2061,6 @@ CoimageProjection := rec(
 CoimageProjectionWithGivenCoimage := rec(
   filter_list := [ "category", "morphism", "object" ],
   io_type := [ [ "alpha", "C" ], [ "alpha_source", "C" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "ImageEmbeddingWithGivenImageObject" ),
@@ -2147,8 +2068,7 @@ CoimageProjectionWithGivenCoimage := rec(
 AstrictionToCoimage := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "C", "alpha_range" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Source",
+  with_given_object_position := "Source",
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "CoastrictionToImage" ),
@@ -2156,7 +2076,6 @@ AstrictionToCoimage := rec(
 AstrictionToCoimageWithGivenCoimage := rec(
   filter_list := [ "category", "morphism", "object" ],
   io_type := [ [ "alpha", "C" ], [ "C", "alpha_range" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "CoastrictionToImageWithGivenImageObject" ),
@@ -2164,8 +2083,7 @@ AstrictionToCoimageWithGivenCoimage := rec(
 UniversalMorphismIntoCoimage := rec(
   filter_list := [ "category", "morphism", IsList ],
   io_type := [ [ "alpha", "tau" ], [ "tau_1_range", "C" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Range",
+  with_given_object_position := "Range",
   universal_type := "Colimit",
   dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
   pre_function := function( cat, morphism, test_factorization )
@@ -2200,7 +2118,6 @@ UniversalMorphismIntoCoimage := rec(
 UniversalMorphismIntoCoimageWithGivenCoimage := rec(
   filter_list := [ "category", "morphism", IsList, "object" ],
   io_type := [ [ "alpha", "tau", "C" ], [ "tau_1_range", "C" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit",
   dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
   pre_function := function( cat, morphism, test_factorization, image )
@@ -2430,8 +2347,7 @@ IsIdenticalToZeroMorphism := rec(
 CoastrictionToImage := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "alpha_source", "I" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Range",
+  with_given_object_position := "Range",
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "AstrictionToCoimage" ),
@@ -2439,7 +2355,6 @@ CoastrictionToImage := rec(
 CoastrictionToImageWithGivenImageObject := rec(
   filter_list := [ "category", "morphism", "object" ],
   io_type := [ [ "alpha", "I" ], [ "alpha_source", "I" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "AstrictionToCoimageWithGivenCoimage" ),
@@ -2447,8 +2362,7 @@ CoastrictionToImageWithGivenImageObject := rec(
 UniversalMorphismFromImage := rec(
   filter_list := [ "category", "morphism", IsList ],
   io_type := [ [ "alpha", "tau" ], [ "I", "tau_1_range" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Source",
+  with_given_object_position := "Source",
   universal_type := "Limit",
   dual_operation := "UniversalMorphismIntoCoimage",
   dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
@@ -2483,7 +2397,6 @@ UniversalMorphismFromImage := rec(
 UniversalMorphismFromImageWithGivenImageObject := rec(
   filter_list := [ "category", "morphism", IsList, "object" ],
   io_type := [ [ "alpha", "tau", "I" ], [ "I", "tau_1_range" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit",
   dual_operation := "UniversalMorphismIntoCoimageWithGivenCoimage",
   dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
@@ -2518,7 +2431,6 @@ UniversalMorphismFromImageWithGivenImageObject := rec(
 KernelObjectFunctorialWithGivenKernelObjects := rec(
   filter_list := [ "category", "object", "morphism", "morphism", "morphism", "object" ],
   io_type := [ [ "P", "alpha", "mu", "alphap", "Pp" ], [ "P", "Pp" ] ],
-  number_of_diagram_arguments := 1,
   return_type := "morphism",
   dual_operation := "CokernelObjectFunctorialWithGivenCokernelObjects",
   dual_arguments_reversed := true ),
@@ -2526,7 +2438,6 @@ KernelObjectFunctorialWithGivenKernelObjects := rec(
 CokernelObjectFunctorialWithGivenCokernelObjects := rec(
   filter_list := [ "category", "object", "morphism", "morphism", "morphism", "object" ],
   io_type := [ [ "P", "alpha", "mu", "alphap", "Pp" ], [ "P", "Pp" ] ],
-  number_of_diagram_arguments := 1,
   return_type := "morphism",
   dual_operation := "KernelObjectFunctorialWithGivenKernelObjects",
   dual_arguments_reversed := true ),
@@ -2534,7 +2445,6 @@ CokernelObjectFunctorialWithGivenCokernelObjects := rec(
 TerminalObjectFunctorial := rec(
   filter_list := [ "category" ],
   ## TODO: io_type?
-  number_of_diagram_arguments := 0,
   return_type := "morphism",
   dual_operation := "InitialObjectFunctorial",
   no_with_given := true ),
@@ -2542,7 +2452,6 @@ TerminalObjectFunctorial := rec(
 InitialObjectFunctorial := rec(
   filter_list := [ "category" ],
   ## TODO: io_type?
-  number_of_diagram_arguments := 0,
   return_type := "morphism",
   dual_operation := "TerminalObjectFunctorial",
   no_with_given := true ),
@@ -2550,7 +2459,6 @@ InitialObjectFunctorial := rec(
 DirectProductFunctorialWithGivenDirectProducts := rec(
   filter_list := [ "category", "object", "list_of_morphisms", "object" ],
   io_type := [ [ "P", "L", "Pp" ], [ "P", "Pp" ] ],
-  number_of_diagram_arguments := 1,
   return_type := "morphism",
   dual_operation := "CoproductFunctorialWithGivenCoproducts",
   dual_arguments_reversed := true ),
@@ -2558,7 +2466,6 @@ DirectProductFunctorialWithGivenDirectProducts := rec(
 CoproductFunctorialWithGivenCoproducts := rec(
   filter_list := [ "category", "object", "list_of_morphisms", "object" ],
   io_type := [ [ "P", "L", "Pp" ], [ "P", "Pp" ] ],
-  number_of_diagram_arguments := 1,
   return_type := "morphism",
   dual_operation := "DirectProductFunctorialWithGivenDirectProducts",
   dual_arguments_reversed := true ),
@@ -2566,7 +2473,6 @@ CoproductFunctorialWithGivenCoproducts := rec(
 DirectSumFunctorialWithGivenDirectSums := rec(
   filter_list := [ "category", "object", "list_of_morphisms", "object" ],
   io_type := [ [ "P", "L", "Pp" ], [ "P", "Pp" ] ],
-  number_of_diagram_arguments := 1,
   return_type := "morphism",
   dual_operation := "DirectSumFunctorialWithGivenDirectSums",
   dual_arguments_reversed := true ),
@@ -2574,7 +2480,6 @@ DirectSumFunctorialWithGivenDirectSums := rec(
 EqualizerFunctorialWithGivenEqualizers := rec(
   filter_list := [ "category", "object", "list_of_morphisms", "morphism", "list_of_morphisms", "object" ],
   io_type := [ [ "P", "morphisms", "mu", "morphismsp", "Pp" ], [ "P", "Pp" ] ],
-  number_of_diagram_arguments := 1,
   return_type := "morphism",
   dual_operation := "CoequalizerFunctorialWithGivenCoequalizers",
   dual_arguments_reversed := true ),
@@ -2582,7 +2487,6 @@ EqualizerFunctorialWithGivenEqualizers := rec(
 FiberProductFunctorialWithGivenFiberProducts := rec(
   filter_list := [ "category", "object", "list_of_morphisms", "list_of_morphisms", "list_of_morphisms", "object" ],
   io_type := [ [ "P", "morphisms", "L", "morphismsp", "Pp" ], [ "P", "Pp" ] ],
-  number_of_diagram_arguments := 1,
   return_type := "morphism",
   dual_operation := "PushoutFunctorialWithGivenPushouts",
   dual_arguments_reversed := true ),
@@ -2590,7 +2494,6 @@ FiberProductFunctorialWithGivenFiberProducts := rec(
 CoequalizerFunctorialWithGivenCoequalizers := rec(
   filter_list := [ "category", "object", "list_of_morphisms", "morphism", "list_of_morphisms", "object" ],
   io_type := [ [ "P", "morphisms", "mu", "morphismsp", "Pp" ], [ "P", "Pp" ] ],
-  number_of_diagram_arguments := 1,
   return_type := "morphism",
   dual_operation := "EqualizerFunctorialWithGivenEqualizers",
   dual_arguments_reversed := true ),
@@ -2598,7 +2501,6 @@ CoequalizerFunctorialWithGivenCoequalizers := rec(
 PushoutFunctorialWithGivenPushouts := rec(
   filter_list := [ "category", "object", "list_of_morphisms", "list_of_morphisms", "list_of_morphisms", "object" ],
   io_type := [ [ "P", "morphisms", "L", "morphismsp", "Pp" ], [ "P", "Pp" ] ],
-  number_of_diagram_arguments := 1,
   return_type := "morphism",
   dual_operation := "FiberProductFunctorialWithGivenFiberProducts",
   dual_arguments_reversed := true ),
@@ -2862,8 +2764,7 @@ SomeProjectiveObject := rec(
 EpimorphismFromSomeProjectiveObject := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "A" ], [ "P", "A" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Source",
+  with_given_object_position := "Source",
   universal_type := "Limit", #FIXME: this is not a limit, but on a technical level, it behaves as if it was
   return_type := "morphism",
   dual_operation := "MonomorphismIntoSomeInjectiveObject",
@@ -2872,7 +2773,6 @@ EpimorphismFromSomeProjectiveObject := rec(
 EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "A", "P" ], [ "P", "A" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Limit", #FIXME: this is not a limit, but on a technical level, it behaves as if it was
   return_type := "morphism",
   dual_operation := "MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
@@ -2887,8 +2787,7 @@ SomeInjectiveObject := rec(
 MonomorphismIntoSomeInjectiveObject := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "A" ], [ "A", "I" ] ],
-  number_of_diagram_arguments := 1,
-  universal_object_position := "Range",
+  with_given_object_position := "Range",
   universal_type := "Colimit", #FIXME: this is not a colimit, but on a technical level, it behaves as if it was
   return_type := "morphism",
   dual_operation := "EpimorphismFromSomeProjectiveObject",
@@ -2897,7 +2796,6 @@ MonomorphismIntoSomeInjectiveObject := rec(
 MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "A", "I" ], [ "A", "I" ] ],
-  number_of_diagram_arguments := 1,
   universal_type := "Colimit", #FIXME: this is not a colimit, but on a technical level, it behaves as if it was
   return_type := "morphism",
   dual_operation := "EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
@@ -3671,8 +3569,7 @@ InstallGlobalFunction( "CAP_INTERNAL_ENHANCE_NAME_RECORD_LIMITS",
 
         limit.diagram_filter_list := diagram_filter_list;
         limit.diagram_input_type := diagram_input_type;
-        limit.number_of_diagram_arguments := Length( diagram_filter_list );
-
+        
         #### set default projection/injection/universal morphism names
         if number_of_targets > 0 and not IsBound( limit.limit_projection_name ) then
             limit.limit_projection_name := Concatenation( "ProjectionInFactorOf", limit.limit_object_name );
@@ -3738,7 +3635,7 @@ end );
 
 InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
   function ( method_name_record, limits )
-    local make_record_with_given, make_colimit, object_universal_type, object_filter_list, projection_filter_list, projection_io_type, morphism_to_sink_filter_list, morphism_to_sink_io_type, universal_morphism_filter_list, universal_morphism_io_type, object_record, projection_record, morphism_to_sink_record, filter_list, io_type, universal_object_position, universal_type, return_type, dual_operation, universal_morphism_record, functorial_record, no_with_given, dual_arguments_reversed, limit;
+    local make_record_with_given, make_colimit, object_universal_type, object_filter_list, projection_filter_list, projection_io_type, morphism_to_sink_filter_list, morphism_to_sink_io_type, universal_morphism_filter_list, universal_morphism_io_type, object_record, projection_record, morphism_to_sink_record, filter_list, io_type, with_given_object_position, universal_type, return_type, dual_operation, universal_morphism_record, functorial_record, no_with_given, dual_arguments_reversed, limit;
     
     #### helper functions
     make_record_with_given := function ( record, object_name, coobject_name )
@@ -3746,13 +3643,13 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
         
         record.function_name := Concatenation( record.function_name, "WithGiven", object_name );
         Add( record.filter_list, "object" );
-        if record.universal_object_position = "Source" then
+        if record.with_given_object_position = "Source" then
             Add( record.io_type[1], record.io_type[2][1] );
         else
             Add( record.io_type[1], record.io_type[2][2] );
         fi;
         record.dual_operation := Concatenation( record.dual_operation, "WithGiven", coobject_name );
-        Unbind( record.universal_object_position );
+        Unbind( record.with_given_object_position );
 
         return record;
     end;
@@ -3782,11 +3679,11 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
             record.io_type[2] := List( record.io_type[2], x -> ReplacedString( x, "tmp", "range" ) );
         fi;
 
-        if IsBound( record.universal_object_position ) then
-            if record.universal_object_position = "Source" then
-                record.universal_object_position := "Range";
+        if IsBound( record.with_given_object_position ) then
+            if record.with_given_object_position = "Source" then
+                record.with_given_object_position := "Range";
             else
-                record.universal_object_position := "Source";
+                record.with_given_object_position := "Source";
             fi;
         fi;
 
@@ -3876,7 +3773,6 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
         object_record :=  rec(
             function_name := limit.limit_object_name,
             filter_list := object_filter_list,
-            number_of_diagram_arguments := limit.number_of_diagram_arguments,
             universal_type := object_universal_type,
             return_type := "object",
             dual_operation := limit.colimit_object_name,
@@ -3887,8 +3783,7 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
                 function_name := limit.limit_projection_name,
                 filter_list := projection_filter_list,
                 io_type := projection_io_type,
-                number_of_diagram_arguments := limit.number_of_diagram_arguments,
-                universal_object_position := "Source",
+                with_given_object_position := "Source",
                 universal_type := "Limit",
                 return_type := "morphism",
                 dual_operation := limit.colimit_injection_name,
@@ -3900,8 +3795,7 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
                 function_name := Concatenation( "MorphismFrom", limit.limit_object_name, "ToSink" ),
                 filter_list := morphism_to_sink_filter_list,
                 io_type := morphism_to_sink_io_type,
-                number_of_diagram_arguments := limit.number_of_diagram_arguments,
-                universal_object_position := "Source",
+                with_given_object_position := "Source",
                 universal_type := "Limit",
                 return_type := "morphism",
                 dual_operation := limit.colimit_morphism_from_source_name,
@@ -3912,8 +3806,7 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
             function_name := limit.limit_universal_morphism_name,
             filter_list := universal_morphism_filter_list,
             io_type := universal_morphism_io_type,
-            number_of_diagram_arguments := limit.number_of_diagram_arguments,
-            universal_object_position := "Range",
+            with_given_object_position := "Range",
             universal_type := "Limit",
             return_type := "morphism",
             dual_operation := limit.colimit_universal_morphism_name,
@@ -3923,7 +3816,6 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
             functorial_record := rec(
                 function_name := limit.limit_functorial_name,
                 filter_list := [ "category" ],
-                number_of_diagram_arguments := limit.number_of_diagram_arguments,
                 return_type := "morphism",
                 dual_operation := limit.colimit_functorial_name,
                 no_with_given := true,
@@ -3931,7 +3823,6 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
         else
             functorial_record := rec(
                 function_name := limit.limit_functorial_with_given_name,
-                number_of_diagram_arguments := limit.number_of_diagram_arguments,
                 return_type := "morphism",
                 dual_operation := limit.colimit_functorial_with_given_name,
                 dual_arguments_reversed := true,
@@ -4023,7 +3914,7 @@ end );
 
 BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
   
-  function( with_given_name, object_function_name, object_arg_list )
+  function( with_given_name, object_function_name, object_arguments_positions )
     local return_func, has_name, has_function, object_function, with_given_name_function, is_attribute, attribute_tester;
     
     object_function := ValueGlobal( object_function_name );
@@ -4039,9 +3930,9 @@ BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
             
             category := arg[ 1 ];
             
-            object_args := arg{ object_arg_list };
+            object_args := arg{ object_arguments_positions };
             
-            cache := GET_METHOD_CACHE( category, object_function_name, Length( object_arg_list ) );
+            cache := GET_METHOD_CACHE( category, object_function_name, Length( object_arguments_positions ) );
             
             cache_value := CallFuncList( CacheValue, [ cache, object_args ] );
             
@@ -4057,7 +3948,7 @@ BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
         
     else
         
-        if not Length( object_arg_list ) in [ 1, 2 ] then
+        if not Length( object_arguments_positions ) in [ 1, 2 ] then
             
             Error( "we can only handle attributes of the category or of a single object/morphism/twocell" );
             
@@ -4070,7 +3961,7 @@ BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
             
             category := arg[ 1 ];
             
-            object_args := arg{ object_arg_list };
+            object_args := arg{ object_arguments_positions };
 
             if attribute_tester( object_args[ Length( object_args ) ] ) then
                 
@@ -4078,7 +3969,7 @@ BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
                 
             else
                 
-                cache := GET_METHOD_CACHE( category, object_function_name, Length( object_arg_list ) );
+                cache := GET_METHOD_CACHE( category, object_function_name, Length( object_arguments_positions ) );
                 
                 cache_value := CallFuncList( CacheValue, [ cache, object_args ] );
                 
@@ -4100,7 +3991,7 @@ end );
 
 BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
   
-  function( source_range_object, object_function_name, object_arg_list )
+  function( source_range_object, object_function_name, object_arguments_positions )
     local object_getter, object_function, setter_function, is_attribute, cache_key_length;
     
     if source_range_object = "Source" then
@@ -4114,7 +4005,7 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
     object_function := ValueGlobal( object_function_name );
     
     is_attribute := IsOperation( object_function ) and Setter( object_function ) <> false;
-    cache_key_length := Length( object_arg_list );
+    cache_key_length := Length( object_arguments_positions );
     
     if not is_attribute then
     
@@ -4127,13 +4018,13 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
             Remove( arg );
             object := object_getter( result );
             
-            SET_VALUE_OF_CATEGORY_CACHE( category, object_function_name, cache_key_length, arg{ object_arg_list }, object );
+            SET_VALUE_OF_CATEGORY_CACHE( category, object_function_name, cache_key_length, arg{ object_arguments_positions }, object );
             
         end;
         
     else
         
-        if not Length( object_arg_list ) in [ 1, 2 ] then
+        if not Length( object_arguments_positions ) in [ 1, 2 ] then
             
             Error( "we can only handle attributes of the category or of a single object/morphism/twocell" );
             
@@ -4146,13 +4037,13 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
             
             category := arg[ 1 ];
 
-            object_args := arg{ object_arg_list };
+            object_args := arg{ object_arguments_positions };
             
             result := arg[ Length( arg ) ];
             Remove( arg );
             object := object_getter( result );
             
-            SET_VALUE_OF_CATEGORY_CACHE( category, object_function_name, cache_key_length, arg{ object_arg_list }, object );
+            SET_VALUE_OF_CATEGORY_CACHE( category, object_function_name, cache_key_length, arg{ object_arguments_positions }, object );
             setter_function( object_args[ Length( object_args ) ], object );
             
         end;
@@ -4180,7 +4071,7 @@ end );
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
     local recnames, current_recname, current_rec, number_of_arguments, flattened_filter_list, position, without_given_name, object_name, functorial,
-          installation_name, object_arg_list, with_given_name, with_given_name_length, i, object_function_name;
+          installation_name, with_given_name, with_given_name_length, i, object_function_name, object_filter_list;
     
     recnames := RecNames( record );
     
@@ -4269,6 +4160,20 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
+        if IsBound( current_rec.universal_object_position ) then
+            
+            Display( "WARNING: universal_object_position was renamed to with_given_object_position" );
+            
+            current_rec.with_given_object_position := current_rec.universal_object_position;
+            
+        fi;
+        
+        if IsBound( current_rec.with_given_object_position ) and not current_rec.with_given_object_position in [ "Source", "Range" ] then
+            
+            Error( "with_given_object_position must be \"Source\" or \"Range\", not ", current_rec.with_given_object_position );
+            
+        fi;
+        
         position := PositionSublist( current_recname, "WithGiven" );
         
         current_rec.is_with_given := false;
@@ -4281,11 +4186,25 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
             if without_given_name in recnames then
                 
+                if not object_name in recnames then
+                    
+                    Error( "detected with(out) given pair ", without_given_name , "(WithGiven", object_name,
+                           ") but the object is not given by a CAP operation" );
+                    
+                fi;
+                
+                if not IsBound( record.( without_given_name ).with_given_object_position ) then
+                    
+                    Error( "detected with(out) given pair ", without_given_name , "(WithGiven", object_name,
+                           ") but with_given_object_position of the without given method is not set" );
+                    
+                fi;
+                
                 current_rec.is_with_given := true;
                 
                 current_rec.with_given_without_given_name_pair := [ without_given_name, current_recname ];
                 
-                current_rec.universal_object := object_name;
+                current_rec.with_given_object_name := object_name;
                 
                 if IsBound( record.(without_given_name).pre_function ) and not IsBound( current_rec.pre_function ) then
                     current_rec.pre_function := CAP_INTERNAL_PREPARE_INHERITED_PRE_FUNCTION( record.(without_given_name).pre_function );
@@ -4363,11 +4282,15 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
-        if not current_rec.is_with_given and IsBound( current_rec.universal_type ) and IsBound( current_rec.universal_object_position ) then
+        if IsBound( current_rec.number_of_diagram_arguments ) then
+            
+            Display( "number_of_diagram_arguments has no effect anymore, please remove it." );
+            
+        fi;
+        
+        if not current_rec.is_with_given and IsBound( current_rec.with_given_object_position ) then
             
             ## find with given name
-            
-            ## FIXME: If the redirect function is already bound, then this part is superfluous
             
             without_given_name := current_recname;
             
@@ -4395,18 +4318,32 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
             current_rec.with_given_without_given_name_pair := [ without_given_name, with_given_name ];
             
-            object_name := with_given_name{[ with_given_name_length + 1 .. Length( with_given_name ) ]};
-            
-            object_function_name := record.( object_name ).function_name;
-            
-            if not IsBound( current_rec.number_of_diagram_arguments ) then
+            if not record.( with_given_name ).filter_list = Concatenation( current_rec.filter_list, [ "object" ] ) then
                 
-                Error( "<current_rec> is missing the mandatory component \"number_of_diagram_arguments\"" );
+                Error( "the filter list of the with given method must be the same as the filter list of the without given method with an additional object" );
                 
             fi;
             
-            # first argument is the category, then the diagram follows
-            object_arg_list := [ 1 .. current_rec.number_of_diagram_arguments + 1 ];
+            object_name := with_given_name{[ with_given_name_length + 1 .. Length( with_given_name ) ]};
+            
+            if not object_name in recnames then
+                
+                Error( "detected with(out) given pair ", without_given_name , "(WithGiven", object_name,
+                       ") but the object is not given by a CAP operation" );
+                
+            fi;
+            
+            object_function_name := record.( object_name ).function_name;
+            
+            object_filter_list := record.( object_name ).filter_list;
+            
+            if not StartsWith( current_rec.filter_list, object_filter_list ) then
+                
+                Error( "the object arguments must be the first arguments of the without given method, but the corresponding filters do not match" );
+                
+            fi;
+            
+            current_rec.object_arguments_positions := [ 1 .. Length( object_filter_list ) ];
             
             if not IsBound( current_rec.redirect_function ) then
                 
@@ -4430,7 +4367,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                     
                 else
                     
-                    current_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_function_name, object_arg_list );
+                    current_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_function_name, current_rec.object_arguments_positions );
                     
                 fi;
                 
@@ -4449,7 +4386,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                     
                 else
                     
-                    current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.universal_object_position, object_function_name, object_arg_list );
+                    current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.with_given_object_position, object_function_name, current_rec.object_arguments_positions );
                     
                 fi;
                 
