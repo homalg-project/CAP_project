@@ -55,6 +55,13 @@ InstallGlobalFunction( GET_METHOD_CACHE,
     
     if IsBound( category!.caches.( name ) ) and IsCachingObject( category!.caches.( name ) ) then
         
+        if category!.caches.( name )!.nr_keys <> number then
+            
+            Error( "you have requested a cache for \"", name, "\" with ", number,
+                   " keys but the existing cache with the same name has ", category!.caches.( name )!.nr_keys, " keys" );
+            
+        fi;
+        
         return category!.caches.( name );
         
     fi;

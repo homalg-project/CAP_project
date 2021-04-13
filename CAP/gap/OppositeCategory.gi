@@ -259,6 +259,12 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
         
         dual_name := current_entry.dual_operation;
         
+        if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.( dual_name ) ) then
+            
+            Error( "the dual operation must be a CAP operation" );
+            
+        fi;
+        
         if CurrentOperationWeight( category_weight_list, dual_name ) = infinity then
             continue;
         fi;

@@ -1345,6 +1345,15 @@ DeclareOperation( "AddInitialObjectFunctorial",
 ## Main Operations and Attributes
 
 #! @Description
+#! This is a convenience method.
+#! There are two different ways to use this method:
+#! * The argument is a list of objects $D = (S_1, \dots, S_n)$.
+#! * The arguments are objects $S_1, \dots, S_n$.
+#! The output is the direct sum $\bigoplus_{i=1}^n S_i$.
+#! @Returns an object
+# DeclareGlobalFunction( "DirectSum" ); # already defined by GAP
+
+#! @Description
 #! The argument is a list of objects $D = (S_1, \dots, S_n)$.
 #! The output is the direct sum $\bigoplus_{i=1}^n S_i$.
 #! @Returns an object
@@ -2239,6 +2248,16 @@ DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
 
 
 ## Main Operations and Attributes
+
+#! @Description
+#! This is a convenience method.
+#! There are two different ways to use this method:
+#! * The argument is a list of objects $D = ( P_1, \dots, P_n )$.
+#! * The arguments are objects $P_1, \dots, P_n$.
+#! The output is the direct product $\prod_{i=1}^n P_i$.
+#! @Returns an object
+# DeclareGlobalFunction( "DirectProduct" ); # already defined by GAP
+
 #! @Description
 #! The argument is a list of objects $D = ( P_1, \dots, P_n )$.
 #! The output is the direct product $\prod_{i=1}^n P_i$.
@@ -3857,7 +3876,7 @@ DeclareOperation( "AddDirectSumProjectionInPushout",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
+#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
 #! The output is the pushout $\mathrm{Pushout}(D)$.
 #! @Returns an object
 #! @Arguments D

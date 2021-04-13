@@ -21,6 +21,13 @@ InstallMethod( KernelObjectFunctorial,
                                   
   function( morphism_of_morphisms )
     
+    Print(
+      Concatenation(
+      "WARNING: KernelObjectFunctorial( IsList ) is deprecated and will not be supported after 2022.03.18. ",
+      "Please use KernelObjectFunctorial( IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ) instead.\n"
+      )
+    );
+    
     return KernelObjectFunctorialWithGivenKernelObjects(
              KernelObject( morphism_of_morphisms[1] ),
              morphism_of_morphisms[1], morphism_of_morphisms[2][1], morphism_of_morphisms[3],
@@ -34,6 +41,15 @@ InstallMethod( KernelObjectFunctorialWithGivenKernelObjects,
                  IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
                                   
   function( s, alpha, mu, nu, alpha_prime, r )
+    
+    Print(
+      Concatenation(
+      "WARNING: KernelObjectFunctorialWithGivenKernelObjects( IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, ",
+      "IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ) is deprecated and will not be supported after 2022.03.18. ",
+      "Please use KernelObjectFunctorialWithGivenKernelObjects( IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, ",
+      "IsCapCategoryMorphism, IsCapCategoryObject ) instead.\n"
+      )
+    );
     
     return KernelObjectFunctorialWithGivenKernelObjects(
              s, alpha, mu, alpha_prime, r );
@@ -56,6 +72,13 @@ InstallMethod( CokernelObjectFunctorial,
                
   function( morphism_of_morphisms )
     
+    Print(
+      Concatenation(
+      "WARNING: CokernelObjectFunctorial( IsList ) is deprecated and will not be supported after 2022.03.18. ",
+      "Please use CokernelObjectFunctorial( IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ) instead.\n"
+      )
+    );
+    
     return CokernelObjectFunctorialWithGivenCokernelObjects( 
            CokernelObject( morphism_of_morphisms[1] ),
            morphism_of_morphisms[1], morphism_of_morphisms[2][2], morphism_of_morphisms[3],
@@ -69,6 +92,15 @@ InstallMethod( CokernelObjectFunctorialWithGivenCokernelObjects,
                  IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
                
   function( s, alpha, mu, nu, alpha_prime, r )
+    
+    Print(
+      Concatenation(
+      "WARNING: CokernelObjectFunctorialWithGivenCokernelObjects( IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, ",
+      "IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ) is deprecated and will not be supported after 2022.03.18. ",
+      "Please use CokernelObjectFunctorialWithGivenCokernelObjects( IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, ",
+      "IsCapCategoryMorphism, IsCapCategoryObject ) instead.\n"
+      )
+    );
     
     return CokernelObjectFunctorialWithGivenCokernelObjects(
              s, alpha, nu, alpha_prime, r );
@@ -371,13 +403,19 @@ InstallMethod( MorphismBetweenDirectSums,
     
 end );
 
-## TODO: is this deprecated?
 ##
 InstallMethod( MorphismBetweenDirectSumsOp,
                                   [ IsList, IsInt, IsInt ],
                                   
   function( morphism_matrix_listlist, rows, cols )
     local morphism_matrix, i, diagram_direct_sum_source, diagram_direct_sum_range, test_diagram_product, test_diagram_coproduct, morphism_into_product;
+    
+    Print(
+      Concatenation(
+      "WARNING: MorphismBetweenDirectSums( IsList, IsInt, IsInt ) is deprecated and will not be supported after 2022.03.18. ",
+      "Please use MorphismBetweenDirectSums( IsList ) instead.\n"
+      )
+    );
     
     morphism_matrix := [ ];
     
@@ -406,6 +444,13 @@ InstallMethod( ZeroObject,
                [ IsCapCategoryCell ],
                
   function( cell )
+    
+    Print(
+      Concatenation(
+      "WARNING: ZeroObject( IsCapCategoryCell ) is deprecated and will not be supported after 2022.03.18. ",
+      "Please use ZeroObject( IsCapCategory ) instead.\n"
+      )
+    );
     
     return ZeroObject( CapCategory( cell ) );
     
@@ -447,6 +492,13 @@ InstallMethod( TerminalObject,
                
   function( cell )
     
+    Print(
+      Concatenation(
+      "WARNING: TerminalObject( IsCapCategoryCell ) is deprecated and will not be supported after 2022.03.18. ",
+      "Please use TerminalObject( IsCapCategory ) instead.\n"
+      )
+    );
+    
     return TerminalObject( CapCategory( cell ) );
     
 end );
@@ -466,6 +518,13 @@ InstallMethod( InitialObject,
                [ IsCapCategoryCell ],
                
   function( cell )
+    
+    Print(
+      Concatenation(
+      "WARNING: InitialObject( IsCapCategoryCell ) is deprecated and will not be supported after 2022.03.18. ",
+      "Please use InitialObject( IsCapCategory ) instead.\n"
+      )
+    );
     
     return InitialObject( CapCategory( cell ) );
     
