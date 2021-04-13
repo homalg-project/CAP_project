@@ -284,8 +284,8 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 current_additional_filter_list_length := Length( method_list[ current_function_number ][ 2 ] );
                 
                 if current_additional_filter_list_length > 0 and current_additional_filter_list_length <> number_of_proposed_arguments then
-                    Error( "In ", add_name, ": the additional filter list of given function ", String( current_function_number ),
-                           " has length ", String( current_additional_filter_list_length ), " but should have ", String( number_of_proposed_arguments ) );
+                    Error( "In ", add_name, ": the additional filter list of given function ", String( current_function_number ), " has length ",
+                           String( current_additional_filter_list_length ), " but should have length ", String( number_of_proposed_arguments ), " (or 0)" );
                 fi;
                 
             fi;

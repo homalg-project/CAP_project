@@ -219,7 +219,7 @@ end );
 InstallMethod( AddDerivation,
                [ IsDerivedMethodGraphRep, IsDerivedMethod ],
 function( G, d )
-  local method_name, filter_list, number_of_proposed_arguments, current_function_argument_number, impl, op_name;
+  local method_name, filter_list, number_of_proposed_arguments, current_function_argument_number, current_additional_filter_list_length, impl, op_name;
   
   if IsIdenticalObj( G, CAP_INTERNAL_DERIVATION_GRAPH ) then
     
@@ -242,6 +242,13 @@ function( G, d )
         if current_function_argument_number >= 0 and current_function_argument_number <> number_of_proposed_arguments then
             Error( "While adding a derivation for ", method_name, ": given function has ", String( current_function_argument_number ),
                    " arguments but should have ", String( number_of_proposed_arguments ) );
+        fi;
+        
+        current_additional_filter_list_length := Length( impl[ 2 ] );
+        
+        if current_additional_filter_list_length > 0 and current_additional_filter_list_length <> number_of_proposed_arguments then
+            Error( "While adding a derivation for ", method_name, ": there are ", String( current_additional_filter_list_length ),
+                   " additional filters but there should be ", String( number_of_proposed_arguments ), " (or none)" );
         fi;
         
     od;

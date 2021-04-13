@@ -9,7 +9,7 @@ InstallValue( CAP_INTERNAL_FINAL_DERIVATION_LIST,
 BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
   
   function( derivation )
-    local possible_names, all_operations, function_object, function_string, string_stream, methods_to_check, method_name, filter_list, number_of_proposed_arguments, current_function_argument_number, i, method, impl;
+    local possible_names, all_operations, function_object, function_string, string_stream, methods_to_check, method_name, filter_list, number_of_proposed_arguments, current_function_argument_number, current_additional_filter_list_length, i, method, impl;
     
     possible_names := derivation!.can_compute;
     
@@ -70,6 +70,13 @@ BindGlobal( "CAP_INTERNAL_FINAL_DERIVATION_SANITY_CHECK",
             if current_function_argument_number >= 0 and current_function_argument_number <> number_of_proposed_arguments then
                 Error( "While adding a final derivation for ", method_name, ": given function has ", String( current_function_argument_number ),
                        " arguments but should have ", String( number_of_proposed_arguments ) );
+            fi;
+            
+            current_additional_filter_list_length := Length( impl[ 2 ] );
+            
+            if current_additional_filter_list_length > 0 and current_additional_filter_list_length <> number_of_proposed_arguments then
+                Error( "While adding a final derivation for ", method_name, ": there are ", String( current_additional_filter_list_length ),
+                       " additional filters but there should be ", String( number_of_proposed_arguments ), " (or none)" );
             fi;
             
         od;
