@@ -23,7 +23,7 @@ AddFinalDerivation( IsomorphismFromCartesianDualToExponential,
                       CartesianEvaluationForCartesianDualWithGivenDirectProduct,
                       MorphismFromDirectProductToExponentialWithGivenObjects ],
                  
-  function( object )
+  function( cat, object )
     local category;
     
     category := CapCategory( object );
@@ -47,7 +47,7 @@ AddFinalDerivation( IsomorphismFromExponentialToCartesianDual,
                       CartesianEvaluationForCartesianDualWithGivenDirectProduct,
                       MorphismFromDirectProductToExponentialWithGivenObjects ],
                  
-  function( object )
+  function( cat, object )
     local category;
     
     category := CapCategory( object );

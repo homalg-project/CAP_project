@@ -6,7 +6,7 @@
 
 ##
 AddDerivationToCAP( DirectProductOnMorphismsWithGivenDirectProducts,
-  function( s, alpha, beta, r )
+  function( cat, s, alpha, beta, r )
     
     return DirectProductFunctorialWithGivenDirectProducts( s, [ alpha, beta ], r );
 
@@ -15,7 +15,7 @@ end : Description := "TensorProductOnMorphisms is DirectProductFunctorial",
 
 ##
 AddDerivationToCAP( CoproductOnMorphismsWithGivenCoproducts,
-  function( s, alpha, beta, r )
+  function( cat, s, alpha, beta, r )
     
     return CoproductFunctorialWithGivenCoproducts( s, [ alpha, beta ], r );
 
@@ -29,7 +29,7 @@ AddDerivationToCAP( CartesianAssociatorRightToLeftWithGivenDirectProducts,
                       [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 4 ],
                       [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 2 ] ],
                  
-  function( s, a, b, c, r )
+  function( cat, s, a, b, c, r )
     local D, bc, pi_b, pi_c, pi_a, pi_bc, ab, pi_ab;
     
     D := [ b, c ];
@@ -66,7 +66,7 @@ AddDerivationToCAP( CartesianAssociatorLeftToRightWithGivenDirectProducts,
                       [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 4 ],
                       [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 2 ] ],
                  
-  function( s, a, b, c, r )
+  function( cat, s, a, b, c, r )
     local D, ab, pi_a, pi_b, pi_ab, pi_c, bc, pi_bc;
     
     D := [ a, b ];
@@ -100,7 +100,7 @@ end : Description := "CartesianAssociatorLeftToRightWithGivenDirectProducts usin
 AddDerivationToCAP( SubobjectOfClassifyingMorphism,
                     [ [ TruthMorphismIntoSubobjectClassifierWithGivenObjects , 1 ],
                       [ ProjectionInFactorOfFiberProduct , 1 ] ],
-  function( mor )
+  function( cat, mor )
 
       local category, truth;
 
@@ -131,14 +131,14 @@ AddFinalDerivation( CanonicalIdentificationFromImageObjectToCoimage,
                       IsomorphismFromCoimageToCokernelOfKernel,
                       IsomorphismFromCokernelOfKernelToCoimage ],
                     
-  function( mor )
+  function( cat, mor )
     
     return IdentityMorphism( ImageObject( mor ) );
     
   end,
   [
     CanonicalIdentificationFromCoimageToImageObject,
-    function( mor )
+    function( cat, mor )
     
       return IdentityMorphism( ImageObject( mor ) );
     

@@ -24,7 +24,7 @@ AddFinalDerivation( IsomorphismFromCocartesianDualToCoexponential,
                       MorphismFromCoexponentialToCoproductWithGivenObjects
                       ],
 
-  function( object )
+  function( cat, object )
     local category;
 
     category := CapCategory( object );
@@ -49,7 +49,7 @@ AddFinalDerivation( IsomorphismFromCoexponentialToCocartesianDual,
                       MorphismFromCoexponentialToCoproductWithGivenObjects
                       ],
 
-  function( object )
+  function( cat, object )
     local category;
 
     category := CapCategory( object );

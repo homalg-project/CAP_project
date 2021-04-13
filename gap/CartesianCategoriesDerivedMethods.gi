@@ -7,7 +7,7 @@
 ##
 AddDerivationToCAP( CartesianAssociatorLeftToRightWithGivenDirectProducts,
                     
-  function( left_associated_object, object_1, object_2, object_3, right_associated_object )
+  function( cat, left_associated_object, object_1, object_2, object_3, right_associated_object )
     
     return Inverse( CartesianAssociatorRightToLeftWithGivenDirectProducts(
                       right_associated_object,
@@ -20,7 +20,7 @@ end : Description := "CartesianAssociatorLeftToRightWithGivenDirectProducts as t
 ##
 AddDerivationToCAP( CartesianAssociatorRightToLeftWithGivenDirectProducts,
                     
-  function( right_associated_object, object_1, object_2, object_3, left_associated_object )
+  function( cat, right_associated_object, object_1, object_2, object_3, left_associated_object )
     
     return Inverse( CartesianAssociatorLeftToRightWithGivenDirectProducts(
                       left_associated_object,
@@ -33,7 +33,7 @@ end : Description := "CartesianAssociatorRightToLeftWithGivenDirectProducts as t
 ##
 AddDerivationToCAP( CartesianLeftUnitorWithGivenDirectProduct,
                   
-  function( object, unit_x_object )
+  function( cat, object, unit_x_object )
     
     return Inverse( CartesianLeftUnitorInverseWithGivenDirectProduct( object, unit_x_object ) );
     
@@ -42,7 +42,7 @@ end : Description := "CartesianLeftUnitorWithGivenDirectProduct as the inverse o
 ##
 AddDerivationToCAP( CartesianLeftUnitorInverseWithGivenDirectProduct,
                   
-  function( object, unit_x_object )
+  function( cat, object, unit_x_object )
     
     return Inverse( CartesianLeftUnitorWithGivenDirectProduct( object, unit_x_object ) );
     
@@ -51,7 +51,7 @@ end : Description := "CartesianLeftUnitorInverseWithGivenDirectProduct as the in
 ##
 AddDerivationToCAP( CartesianRightUnitorWithGivenDirectProduct,
                   
-  function( object, object_x_unit )
+  function( cat, object, object_x_unit )
     
     return Inverse( CartesianRightUnitorInverseWithGivenDirectProduct( object, object_x_unit ) );
     
@@ -60,7 +60,7 @@ end : Description := "CartesianRightUnitorWithGivenDirectProduct as the inverse 
 ##
 AddDerivationToCAP( CartesianRightUnitorInverseWithGivenDirectProduct,
                   
-  function( object, object_x_unit )
+  function( cat, object, object_x_unit )
     
     return Inverse( CartesianRightUnitorWithGivenDirectProduct( object, object_x_unit ) );
     
@@ -69,7 +69,7 @@ end : Description := "CartesianRightUnitorInverseWithGivenDirectProduct as the i
 ##
 AddDerivationToCAP( CartesianAssociatorLeftToRightWithGivenDirectProducts,
                     
-  function( left_associated_object, object_1, object_2, object_3, right_associated_object )
+  function( cat, left_associated_object, object_1, object_2, object_3, right_associated_object )
     
     return IdentityMorphism( left_associated_object );
     
@@ -79,7 +79,7 @@ end : CategoryFilter := IsStrictCartesianCategory,
 ##
 AddDerivationToCAP( CartesianAssociatorRightToLeftWithGivenDirectProducts,
                     
-  function( right_associated_object, object_1, object_2, object_3, left_associated_object )
+  function( cat, right_associated_object, object_1, object_2, object_3, left_associated_object )
     
     return IdentityMorphism( right_associated_object );
     
@@ -89,7 +89,7 @@ end : CategoryFilter := IsStrictCartesianCategory,
 ##
 AddDerivationToCAP( CartesianLeftUnitorWithGivenDirectProduct,
                     
-  function( object, unit_x_object )
+  function( cat, object, unit_x_object )
     
     return IdentityMorphism( object );
       
@@ -99,7 +99,7 @@ end : CategoryFilter := IsStrictCartesianCategory,
 ##
 AddDerivationToCAP( CartesianLeftUnitorInverseWithGivenDirectProduct,
                   
-  function( object, unit_x_object )
+  function( cat, object, unit_x_object )
     
     return IdentityMorphism( object );
     
@@ -109,7 +109,7 @@ end : CategoryFilter := IsStrictCartesianCategory,
 ##
 AddDerivationToCAP( CartesianRightUnitorWithGivenDirectProduct,
                     
-  function( object, object_x_unit )
+  function( cat, object, object_x_unit )
     
     return IdentityMorphism( object );
     
@@ -119,7 +119,7 @@ end : CategoryFilter := IsStrictCartesianCategory,
 ##
 AddDerivationToCAP( CartesianRightUnitorInverseWithGivenDirectProduct,
                     
-  function( object, object_x_unit )
+  function( cat, object, object_x_unit )
     
     return IdentityMorphism( object );
     

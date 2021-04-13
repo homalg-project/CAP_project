@@ -43,12 +43,13 @@ Actions
   -p,  --push                      perform the final push, completing the release [Default]
   -P,  --no-push                   do not perform the final push
   -f,  --force                     if a release with the same name already exists: overwrite it
+  --skip-existing-release          if a release with the same name already exists: exit without error
 
 Paths
   --srcdir <path>                  path of directory containing PackageInfo.g [Default: current directory]
   --tmpdir <path>                  path of temporary directory [Default: tmp subdirectory of srcdir]
   --webdir <path>                  path of web directory [Default: gh-pages subdirectory of srcdir]
-  --update-file <file>             path of the update.g file [Default: update.g in webdir]
+  --update-script <file>           path of the update script [Default: update.g in webdir]
 
 Custom settings
   --token <oauth>                  GitHub access token
@@ -145,12 +146,12 @@ while [ x"$1" != x ]; do
     --srcdir ) SRC_DIR="$1"; shift ;;
     --webdir ) WEB_DIR="$1"; shift ;;
     --tmpdir ) TMP_DIR="$1"; shift ;;
-    --update-file ) UPDATE_FILE="$1"; shift ;;
+    --update-script ) UPDATE_SCRIPT="$1"; shift ;;
 
     --srcdir=*) SRC_DIR=${option#--srcdir=}; shift ;;
     --webdir=*) WEB_DIR=${option#--webdir=}; shift ;;
     --tmpdir=*) TMP_DIR=${option#--tmpdir=}; shift ;;
-    --update-file=*) UPDATE_FILE=${option#--update-file=}; shift ;;
+    --update-script=*) UPDATE_SCRIPT=${option#--update-script=}; shift ;;
 
     --token ) TOKEN="$1"; shift ;;
 
@@ -189,12 +190,12 @@ if [ ! -d "$WEB_DIR" ] ; then
     error "could not find 'webdir' with clone of your gh-pages branch"
 fi
 
-# Check for presence of update.g file
-if [ "x$UPDATE_FILE" = x ] ; then
-    UPDATE_FILE="$WEB_DIR/update.g"
+# Check for presence of the update script
+if [ "x$UPDATE_SCRIPT" = x ] ; then
+    UPDATE_SCRIPT="$WEB_DIR/update.g"
 fi
-if [ ! -f "$UPDATE_FILE" ] ; then
-    error "could not find update.g file"
+if [ ! -f "$UPDATE_SCRIPT" ] ; then
+    error "could not find update script \"${UPDATE_SCRIPT}\""
 fi
 
 # Check whether GAP is usable
@@ -416,8 +417,8 @@ sed "s;Date := .*;Date := \"$(date +%d/%m/%Y)\",;" PackageInfo.g > PackageInfo.g
 mv PackageInfo.g.bak PackageInfo.g
 
 notice "Removing unnecessary files"
-rm -rf .github .circleci
-rm -f .git* .hg* .cvs*
+# Remove recursively in case there is a .github directory
+rm -rf .git* .hg* .cvs* .circleci
 rm -f .appveyor.yml .codecov.yml .travis.yml
 
 # execute .release script, if present
@@ -447,7 +448,7 @@ fi;
 PushOptions(rec(relativePath:="../../.."));
 Read("makedoc.g");
 GAPInput
-    rm -f doc/*.lab doc/*.tex
+    rm -f doc/*.tex
     rm -f doc/*.aux doc/*.bbl doc/*.blg doc/*.brf doc/*.idx doc/*.ilg doc/*.ind doc/*.log doc/*.out doc/*.pnr doc/*.tst
 elif [ -f doc/make_doc ] ; then
     notice "Copying GAP package documentation for archives (using doc/make_doc)"
@@ -565,7 +566,7 @@ fi
 DATA=$(cat <<EOF
 {
   "tag_name": "$TAG",
-  "name": "$PKG-$VERSION",
+  "name": "$PKG $VERSION",
   "body": "Release for $PKG",
   "draft": false,
   "prerelease": false
@@ -627,7 +628,7 @@ if [ ! -f "$FULLNAME" ] ; then
 	error "could not find PDF"
 fi
 notice "Uploading PDF"
-response=$(curl --fail --progress-bar -o "$TMP_DIR/upload.log" \
+response=$(curl --fail --progress-bar -o "$TMP_DIR/upload_pdf.log" \
 	-X POST "$UPLOAD_URL/$RELEASE_ID/assets?name=$BASENAME.pdf" \
 	-H "Accept: application/vnd.github.v3+json" \
 	-H "Authorization: token $TOKEN" \
@@ -666,7 +667,7 @@ for f in ./*/*.htm* ; do
 done
 
 run_gap <<GAPInput
-Read("$UPDATE_FILE");
+Read("$UPDATE_SCRIPT");
 GAPInput
 
 git add -A
