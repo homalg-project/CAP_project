@@ -81,6 +81,254 @@ AddDerivationToCAP( UniversalMorphismFromCoproduct,
 end : Description := "UniversalMorphismFromCoproduct by calling UniversalMorphismFromCoproductWithGivenCoproduct with Coproduct as last argument" );
 
 ##
+InstallMethod( UniversalMorphismIntoDirectProduct,
+               [ IsList ],
+               
+  function( list )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return UniversalMorphismIntoDirectProduct( CapCategory( list[1] ), list );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoDirectProduct,
+               [ IsCapCategory, IsList ],
+               
+  function( cat, list )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return UniversalMorphismIntoDirectProduct( cat, List( list, Range ), list );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoDirectProduct,
+               [ IsCapCategoryMorphism ],
+               
+  function( mor1 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismIntoDirectProduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismIntoDirectProduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismIntoDirectProduct( [ mor1 ] );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoDirectProduct,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismIntoDirectProduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismIntoDirectProduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismIntoDirectProduct( [ mor1, mor2 ] );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoDirectProduct,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2, mor3 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismIntoDirectProduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismIntoDirectProduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismIntoDirectProduct( [ mor1, mor2, mor3 ] );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoDirectProduct,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2, mor3, mor4 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismIntoDirectProduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismIntoDirectProduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismIntoDirectProduct( [ mor1, mor2, mor3, mor4 ] );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoDirectProduct,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2, mor3, mor4, mor5 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismIntoDirectProduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismIntoDirectProduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismIntoDirectProduct( [ mor1, mor2, mor3, mor4, mor5 ] );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoDirectProduct,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2, mor3, mor4, mor5, mor6 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismIntoDirectProduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismIntoDirectProduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismIntoDirectProduct( [ mor1, mor2, mor3, mor4, mor5, mor6 ] );
+    
+end );
+
+##
+InstallMethod( UniversalMorphismFromCoproduct,
+               [ IsList ],
+               
+  function( list )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return UniversalMorphismFromCoproduct( CapCategory( list[1] ), list );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromCoproduct,
+               [ IsCapCategory, IsList ],
+               
+  function( cat, list )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return UniversalMorphismFromCoproduct( cat, List( list, Source ), list );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromCoproduct,
+               [ IsCapCategoryMorphism ],
+               
+  function( mor1 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismFromCoproduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismFromCoproduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismFromCoproduct( [ mor1 ] );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromCoproduct,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismFromCoproduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismFromCoproduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismFromCoproduct( [ mor1, mor2 ] );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromCoproduct,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2, mor3 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismFromCoproduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismFromCoproduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismFromCoproduct( [ mor1, mor2, mor3 ] );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromCoproduct,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2, mor3, mor4 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismFromCoproduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismFromCoproduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismFromCoproduct( [ mor1, mor2, mor3, mor4 ] );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromCoproduct,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2, mor3, mor4, mor5 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismFromCoproduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismFromCoproduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismFromCoproduct( [ mor1, mor2, mor3, mor4, mor5 ] );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromCoproduct,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2, mor3, mor4, mor5, mor6 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismFromCoproduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismFromCoproduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismFromCoproduct( [ mor1, mor2, mor3, mor4, mor5, mor6 ] );
+    
+end );
+
+##
 InstallMethod( DirectProductFunctorial,
                [ IsList ],
                
@@ -183,6 +431,254 @@ AddDerivationToCAP( UniversalMorphismFromDirectSum,
     return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, objects, tau, DirectSum( cat, objects ) );
     
 end : Description := "UniversalMorphismFromDirectSum by calling UniversalMorphismFromDirectSumWithGivenDirectSum with DirectSum as last argument" );
+
+##
+InstallMethod( UniversalMorphismIntoDirectSum,
+               [ IsList ],
+               
+  function( list )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return UniversalMorphismIntoDirectSum( CapCategory( list[1] ), list );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoDirectSum,
+               [ IsCapCategory, IsList ],
+               
+  function( cat, list )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return UniversalMorphismIntoDirectSum( cat, List( list, Range ), list );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoDirectSum,
+               [ IsCapCategoryMorphism ],
+               
+  function( mor1 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismIntoDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismIntoDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismIntoDirectSum( [ mor1 ] );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoDirectSum,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismIntoDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismIntoDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismIntoDirectSum( [ mor1, mor2 ] );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoDirectSum,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2, mor3 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismIntoDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismIntoDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismIntoDirectSum( [ mor1, mor2, mor3 ] );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoDirectSum,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2, mor3, mor4 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismIntoDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismIntoDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismIntoDirectSum( [ mor1, mor2, mor3, mor4 ] );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoDirectSum,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2, mor3, mor4, mor5 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismIntoDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismIntoDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismIntoDirectSum( [ mor1, mor2, mor3, mor4, mor5 ] );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoDirectSum,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2, mor3, mor4, mor5, mor6 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismIntoDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismIntoDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismIntoDirectSum( [ mor1, mor2, mor3, mor4, mor5, mor6 ] );
+    
+end );
+
+##
+InstallMethod( UniversalMorphismFromDirectSum,
+               [ IsList ],
+               
+  function( list )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return UniversalMorphismFromDirectSum( CapCategory( list[1] ), list );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromDirectSum,
+               [ IsCapCategory, IsList ],
+               
+  function( cat, list )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return UniversalMorphismFromDirectSum( cat, List( list, Source ), list );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromDirectSum,
+               [ IsCapCategoryMorphism ],
+               
+  function( mor1 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismFromDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismFromDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismFromDirectSum( [ mor1 ] );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromDirectSum,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismFromDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismFromDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismFromDirectSum( [ mor1, mor2 ] );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromDirectSum,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2, mor3 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismFromDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismFromDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismFromDirectSum( [ mor1, mor2, mor3 ] );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromDirectSum,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2, mor3, mor4 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismFromDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismFromDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismFromDirectSum( [ mor1, mor2, mor3, mor4 ] );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromDirectSum,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2, mor3, mor4, mor5 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismFromDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismFromDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismFromDirectSum( [ mor1, mor2, mor3, mor4, mor5 ] );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromDirectSum,
+               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( mor1, mor2, mor3, mor4, mor5, mor6 )
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismFromDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismFromDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
+      )
+    );
+    
+    return UniversalMorphismFromDirectSum( [ mor1, mor2, mor3, mor4, mor5, mor6 ] );
+    
+end );
 
 ##
 InstallMethod( DirectSumFunctorial,

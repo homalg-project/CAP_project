@@ -1410,28 +1410,19 @@ DeclareOperation( "InjectionOfCofactorOfDirectSumWithGivenDirectSum",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
-#! This is a convenience method.
-#! There are three different ways to use this method:
-#! * The arguments are a list of objects $D = (S_1, \dots, S_n)$
-#!  and a list of morphisms $\tau = ( \tau_i: T \rightarrow S_i )_{i = 1 \dots n}$.
-#! * The argument is a list of morphisms $\tau = ( \tau_i: T \rightarrow S_i )_{i = 1 \dots n}$.
-#! * The arguments are morphisms $\tau_1: T \rightarrow S_1, \dots, \tau_n: T \rightarrow S_n$.
-#! The output is the morphism
-#! $u_{\mathrm{in}}(\tau): T \rightarrow \bigoplus_{i=1}^n S_i$
-#! given by the universal property of the direct sum.
-#! @Returns a morphism in $\mathrm{Hom}(T, \bigoplus_{i=1}^n S_i)$
-DeclareGlobalFunction( "UniversalMorphismIntoDirectSum" );
-
-#! @Description
 #! The arguments are a list of objects $D = (S_1, \dots, S_n)$
 #! and a list of morphisms $\tau = ( \tau_i: T \rightarrow S_i )_{i = 1 \dots n}$.
+#! For convenience, the diagram <A>D</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u_{\mathrm{in}}(\tau): T \rightarrow \bigoplus_{i=1}^n S_i$
 #! given by the universal property of the direct sum.
 #! @Returns a morphism in $\mathrm{Hom}(T, \bigoplus_{i=1}^n S_i)$
 #! @Arguments D,tau
-DeclareOperation( "UniversalMorphismIntoDirectSumOp",
+DeclareOperation( "UniversalMorphismIntoDirectSum",
                   [ IsList, IsList ] );
+
+DeclareOperation( "UniversalMorphismIntoDirectSum",
+                  [ IsList ] );
 
 #! @Description
 #! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
@@ -1446,28 +1437,19 @@ DeclareOperation( "UniversalMorphismIntoDirectSumWithGivenDirectSum",
                   [ IsList, IsList, IsCapCategoryObject ] );
 
 #! @Description
-#! This is a convenience method.
-#! There are three different ways to use this method:
-#! * The arguments are a list of objects $D = (S_1, \dots, S_n)$
-#!  and a list of morphisms $\tau = ( \tau_i: S_i \rightarrow T )_{i = 1 \dots n}$.
-#! * The argument is a list of morphisms $\tau = ( \tau_i: S_i \rightarrow T )_{i = 1 \dots n}$.
-#! * The arguments are morphisms $S_1 \rightarrow T, \dots, S_n \rightarrow T$.
-#! The output is the morphism
-#! $u_{\mathrm{out}}(\tau): \bigoplus_{i=1}^n S_i \rightarrow T$
-#! given by the universal property of the direct sum.
-#! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^n S_i, T)$
-DeclareGlobalFunction( "UniversalMorphismFromDirectSum" );
-
-#! @Description
 #! The arguments are a list of objects $D = (S_1, \dots, S_n)$
 #! and a list of morphisms $\tau = ( \tau_i: S_i \rightarrow T )_{i = 1 \dots n}$.
+#! For convenience, the diagram <A>D</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u_{\mathrm{out}}(\tau): \bigoplus_{i=1}^n S_i \rightarrow T$
 #! given by the universal property of the direct sum.
 #! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^n S_i, T)$
 #! @Arguments D, tau
-DeclareOperation( "UniversalMorphismFromDirectSumOp",
+DeclareOperation( "UniversalMorphismFromDirectSum",
                   [ IsList, IsList ] );
+
+DeclareOperation( "UniversalMorphismFromDirectSum",
+                  [ IsList ] );
 
 #! @Description
 #! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
@@ -2020,28 +2002,19 @@ DeclareOperation( "InjectionOfCofactorOfCoproductWithGivenCoproduct",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
-#! This is a convenience method.
-#! There are three different ways to use this method.
-#! * The arguments are a list of objects $D = ( I_1, \dots, I_n )$,
-#!  and a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )$.
-#! * The argument is a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )$.
-#! * The arguments are morphisms $\tau_1: I_1 \rightarrow T, \dots, \tau_n: I_n \rightarrow T$
-#! The output is the morphism
-#! $u( \tau ): \bigsqcup_{i=1}^n I_i \rightarrow T$
-#! given by the universal property of the coproduct.
-#! @Returns a morphism in $\mathrm{Hom}(\bigsqcup_{i=1}^n I_i, T)$
-DeclareGlobalFunction( "UniversalMorphismFromCoproduct" );
-
-#! @Description
 #! The arguments are a list of objects $D = ( I_1, \dots, I_n )$,
 #! and a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )$.
+#! For convenience, the diagram <A>D</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u( \tau ): \bigsqcup_{i=1}^n I_i \rightarrow T$
 #! given by the universal property of the coproduct.
 #! @Returns a morphism in $\mathrm{Hom}(\bigsqcup_{i=1}^n I_i, T)$
 #! @Arguments D, tau
-DeclareOperation( "UniversalMorphismFromCoproductOp",
+DeclareOperation( "UniversalMorphismFromCoproduct",
                   [ IsList, IsList ] );
+
+DeclareOperation( "UniversalMorphismFromCoproduct",
+                  [ IsList ] );
 
 #! @Description
 #! The arguments are a list of objects $D = ( I_1, \dots, I_n )$,
@@ -2285,29 +2258,19 @@ DeclareOperation( "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
-#! This is a convenience method.
-#! There are three different ways to use this method.
-#! * The arguments are a list of objects $D = ( P_1, \dots, P_n )$
-#!  and a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )_{i = 1, \dots, n}$.
-#! * The argument is a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )_{i = 1, \dots, n}$.
-#! * The arguments are morphisms $\tau_1: T \rightarrow P_1, \dots, \tau_n: T \rightarrow P_n$.
-#! The output is the morphism
-#! $u(\tau): T \rightarrow \prod_{i=1}^n P_i$
-#! given by the universal property of the direct product.
-#! @Returns a morphism in $\mathrm{Hom}(T, \prod_{i=1}^n P_i)$
-DeclareGlobalFunction( "UniversalMorphismIntoDirectProduct" );
-
-
-#! @Description
 #! The arguments are a list of objects $D = ( P_1, \dots, P_n )$
 #! and a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )_{i = 1, \dots, n}$.
+#! For convenience, the diagram <A>D</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u(\tau): T \rightarrow \prod_{i=1}^n P_i$
 #! given by the universal property of the direct product.
 #! @Returns a morphism in $\mathrm{Hom}(T, \prod_{i=1}^n P_i)$
 #! @Arguments D, tau
-DeclareOperation( "UniversalMorphismIntoDirectProductOp",
+DeclareOperation( "UniversalMorphismIntoDirectProduct",
                   [ IsList, IsList ] );
+
+DeclareOperation( "UniversalMorphismIntoDirectProduct",
+                  [ IsList ] );
 
 #! @Description
 #! The arguments are a list of objects $D = ( P_1, \dots, P_n )$,

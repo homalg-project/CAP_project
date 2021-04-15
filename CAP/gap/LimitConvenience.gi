@@ -6,7 +6,7 @@
 
 InstallGlobalFunction( "CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS",
   function ( package_name, method_name_record, limits )
-    local output_string, generate_with_given_derivation, generate_functorial_convenience_method, number_of_diagram_arguments, functorial_record, filter_list, input_type, replaced_filter_list, replaced_filter_list_string, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, source_diagram_input_type, range_diagram_input_type, limit, existing_string, output_path;
+    local output_string, generate_with_given_derivation, generate_universal_morphism_convenience, generate_functorial_convenience_method, number_of_diagram_arguments, functorial_record, filter_list, input_type, replaced_filter_list, replaced_filter_list_string, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, source_diagram_input_type, range_diagram_input_type, limit, existing_string, output_path;
     
     output_string :=
 """# SPDX-License-Identifier: GPL-2.0-or-later
@@ -57,6 +57,167 @@ InstallGlobalFunction( "CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS",
         );
         
         output_string := Concatenation( output_string, current_string );
+        
+    end;
+    
+    generate_universal_morphism_convenience := function( universal_morphism_name, number_of_unbound_morphisms, number_of_targets, diagram_position, diagram_filter_list )
+      local current_string, replaced_filter_list, replaced_filter_list_string;
+        
+        if not diagram_position in [ "Source", "Range" ] then
+            
+            Error( "diagram_position must be \"Source\" or \"Range\"" );
+            
+        fi;
+        
+        if number_of_unbound_morphisms = 0 then
+            
+            # diagram can be derived from morphism(s) via diagram_position
+            
+            if number_of_targets = 1 then
+                
+                Error( "this case is currently not supported" );
+                
+            elif number_of_targets > 1 then
+                
+                # derive diagram from morphisms via diagram_position
+                current_string := Concatenation(
+                    "\n",
+                    "##\n",
+                    "InstallMethod( ", universal_morphism_name, ",\n",
+                    "               [ IsList ],\n",
+                    "               \n",
+                    "  function( list )\n",
+                    "    #% CAP_JIT_RESOLVE_FUNCTION\n",
+                    "    \n",
+                    "    return ", universal_morphism_name, "( CapCategory( list[1] ), list );\n",
+                    "    \n",
+                    "end );\n",
+                    "\n",
+                    "##\n",
+                    "InstallOtherMethod( ", universal_morphism_name, ",\n",
+                    "               [ IsCapCategory, IsList ],\n",
+                    "               \n",
+                    "  function( cat, list )\n",
+                    "    #% CAP_JIT_RESOLVE_FUNCTION\n",
+                    "    \n",
+                    "    return ", universal_morphism_name, "( cat, List( list, ", diagram_position, " ), list );\n",
+                    "    \n",
+                    "end );\n"
+                );
+                
+                output_string := Concatenation( output_string, current_string );
+                
+                # redirect UniversalMorphism( mor1, mor2, ... ) to UniversalMorphism( [ mor1, mor2, ... ] )
+                current_string := Concatenation(
+                    "\n",
+                    "##\n",
+                    "InstallOtherMethod( ", universal_morphism_name, ",\n",
+                    "               [ IsCapCategoryMorphism ],\n",
+                    "               \n",
+                    "  function( mor1 )\n",
+                    "    \n",
+                    "    Print(\n",
+                    "      Concatenation(\n",
+                    "      \"WARNING: ", universal_morphism_name, "( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. \",\n",
+                    "      \"Please use ", universal_morphism_name, "( [ IsCapCategoryMorphism, ... ] ) instead.\\n\"\n",
+                    "      )\n",
+                    "    );\n",
+                    "    \n",
+                    "    return ", universal_morphism_name, "( [ mor1 ] );\n",
+                    "    \n",
+                    "end );\n",
+                    "\n",
+                    "##\n",
+                    "InstallOtherMethod( ", universal_morphism_name, ",\n",
+                    "               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],\n",
+                    "               \n",
+                    "  function( mor1, mor2 )\n",
+                    "    \n",
+                    "    Print(\n",
+                    "      Concatenation(\n",
+                    "      \"WARNING: ", universal_morphism_name, "( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. \",\n",
+                    "      \"Please use ", universal_morphism_name, "( [ IsCapCategoryMorphism, ... ] ) instead.\\n\"\n",
+                    "      )\n",
+                    "    );\n",
+                    "    \n",
+                    "    return ", universal_morphism_name, "( [ mor1, mor2 ] );\n",
+                    "    \n",
+                    "end );\n",
+                    "\n",
+                    "##\n",
+                    "InstallOtherMethod( ", universal_morphism_name, ",\n",
+                    "               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],\n",
+                    "               \n",
+                    "  function( mor1, mor2, mor3 )\n",
+                    "    \n",
+                    "    Print(\n",
+                    "      Concatenation(\n",
+                    "      \"WARNING: ", universal_morphism_name, "( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. \",\n",
+                    "      \"Please use ", universal_morphism_name, "( [ IsCapCategoryMorphism, ... ] ) instead.\\n\"\n",
+                    "      )\n",
+                    "    );\n",
+                    "    \n",
+                    "    return ", universal_morphism_name, "( [ mor1, mor2, mor3 ] );\n",
+                    "    \n",
+                    "end );\n",
+                    "\n",
+                    "##\n",
+                    "InstallOtherMethod( ", universal_morphism_name, ",\n",
+                    "               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],\n",
+                    "               \n",
+                    "  function( mor1, mor2, mor3, mor4 )\n",
+                    "    \n",
+                    "    Print(\n",
+                    "      Concatenation(\n",
+                    "      \"WARNING: ", universal_morphism_name, "( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. \",\n",
+                    "      \"Please use ", universal_morphism_name, "( [ IsCapCategoryMorphism, ... ] ) instead.\\n\"\n",
+                    "      )\n",
+                    "    );\n",
+                    "    \n",
+                    "    return ", universal_morphism_name, "( [ mor1, mor2, mor3, mor4 ] );\n",
+                    "    \n",
+                    "end );\n",
+                    "\n",
+                    "##\n",
+                    "InstallOtherMethod( ", universal_morphism_name, ",\n",
+                    "               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],\n",
+                    "               \n",
+                    "  function( mor1, mor2, mor3, mor4, mor5 )\n",
+                    "    \n",
+                    "    Print(\n",
+                    "      Concatenation(\n",
+                    "      \"WARNING: ", universal_morphism_name, "( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. \",\n",
+                    "      \"Please use ", universal_morphism_name, "( [ IsCapCategoryMorphism, ... ] ) instead.\\n\"\n",
+                    "      )\n",
+                    "    );\n",
+                    "    \n",
+                    "    return ", universal_morphism_name, "( [ mor1, mor2, mor3, mor4, mor5 ] );\n",
+                    "    \n",
+                    "end );\n",
+                    "\n",
+                    "##\n",
+                    "InstallOtherMethod( ", universal_morphism_name, ",\n",
+                    "               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],\n",
+                    "               \n",
+                    "  function( mor1, mor2, mor3, mor4, mor5, mor6 )\n",
+                    "    \n",
+                    "    Print(\n",
+                    "      Concatenation(\n",
+                    "      \"WARNING: ", universal_morphism_name, "( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. \",\n",
+                    "      \"Please use ", universal_morphism_name, "( [ IsCapCategoryMorphism, ... ] ) instead.\\n\"\n",
+                    "      )\n",
+                    "    );\n",
+                    "    \n",
+                    "    return ", universal_morphism_name, "( [ mor1, mor2, mor3, mor4, mor5, mor6 ] );\n",
+                    "    \n",
+                    "end );\n"
+                );
+                
+                output_string := Concatenation( output_string, current_string );
+                
+            fi;
+            
+        fi;
         
     end;
     
@@ -114,6 +275,10 @@ InstallGlobalFunction( "CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS",
         
         
         if number_of_diagram_arguments > 0 then
+            
+            #### universal morphism convenience
+            generate_universal_morphism_convenience( limit.limit_universal_morphism_name, limit.number_of_unbound_morphisms, limit.number_of_targets, "Range", limit.diagram_filter_list );
+            generate_universal_morphism_convenience( limit.colimit_universal_morphism_name, limit.number_of_unbound_morphisms, limit.number_of_targets, "Source", limit.diagram_filter_list );
             
             #### functorial convenience method
             functorial_record := method_name_record.( limit.limit_functorial_with_given_name );
