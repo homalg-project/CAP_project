@@ -379,7 +379,35 @@ InstallMethod( MorphismBetweenDirectSums,
         
     fi;
     
-    return MorphismBetweenDirectSums(
+    return MorphismBetweenDirectSums( CapCategory( morphism_matrix[1,1] ), morphism_matrix );
+    
+end );
+
+##
+InstallOtherMethod( MorphismBetweenDirectSums,
+               [ IsCapCategory, IsList ],
+               
+  function( cat, morphism_matrix )
+    local nr_rows, nr_cols;
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    nr_rows := Size( morphism_matrix );
+    
+    if nr_rows = 0 then
+        
+        Error( "The given matrix must not be empty" );
+        
+    fi;
+    
+    nr_cols := Size( morphism_matrix[1] );
+    
+    if nr_cols = 0 then
+        
+        Error( "The given matrix must not be empty" );
+        
+    fi;
+    
+    return MorphismBetweenDirectSums( cat,
              DirectSum( List( morphism_matrix, row -> Source( row[1] ) ) ),
              morphism_matrix,
              DirectSum( List( morphism_matrix[1], col -> Range( col ) ) )
