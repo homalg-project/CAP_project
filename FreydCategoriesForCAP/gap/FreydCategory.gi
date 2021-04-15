@@ -140,6 +140,7 @@ end );
 InstallGlobalFunction( FREYD_CATEGORY_OBJECT,
 function( relation_morphism )
     local category;
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     category := FreydCategory( CapCategory( relation_morphism ) );
 
@@ -172,6 +173,7 @@ end );
 InstallGlobalFunction( FREYD_CATEGORY_MORPHISM,
   function( source, morphism_datum, range )
     local category;
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     if not IsIdenticalObj( CapCategory( morphism_datum ), UnderlyingCategory( CapCategory( source ) ) ) then
         
@@ -280,6 +282,7 @@ InstallMethod( WitnessForBeingCongruentToZero,
                [ IsFreydCategoryMorphism ],
                
   function( morphism )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     return Lift( MorphismDatum( morphism ), RelationMorphism( Range( morphism ) ) );
     
@@ -289,6 +292,7 @@ InstallMethod( MereExistenceOfWitnessForBeingCongruentToZero,
                [ IsFreydCategoryMorphism ],
                
   function( morphism )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     return IsLiftable( MorphismDatum( morphism ), RelationMorphism( Range( morphism ) ) );
     
@@ -799,6 +803,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     
     lift_via_linear_system_func := function( alpha_freyd, gamma_freyd )
             local rho_A, rho_B, rho_C, alpha, gamma, A, B, C, R_A, R_B, R_C, left_coefficients, right_coefficients, right_side;
+            #% CAP_JIT_RESOLVE_FUNCTION
             
             rho_A := RelationMorphism( Source( alpha_freyd ) );
             
@@ -844,6 +849,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     
     colift_via_linear_system_func := function( alpha_freyd, gamma_freyd )
             local rho_A, rho_B, rho_C, alpha, gamma, A, B, C, R_A, R_B, R_C, left_coefficients, right_coefficients, right_side;
+            #% CAP_JIT_RESOLVE_FUNCTION
             
             rho_A := RelationMorphism( Range( alpha_freyd ) );
             
@@ -1515,7 +1521,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
         AddEvaluationMorphismWithGivenSource( category,
             function( cat, A, B, S )
-                local a, b, emb_a, emb_b, proj_A, proj_B, id_emb_a, Hom_embedding, Hom_emb_aB, epi_concat, eval_concat, colift_along_epi;
+                local a, b, emb_a, emb_b, proj_A, proj_B, id_emb_a, Hom_embedding1, Hom_embedding2, Hom_emb_aB, epi_concat, eval_concat, colift_along_epi;
                 
                 # (0) define quantities
                 a := Range( RelationMorphism( A ) );
@@ -1527,9 +1533,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 id_emb_a := IdentityMorphism( emb_a );
                 
                 # (1) the hom-embedding
-                Hom_embedding := InternalHomOnMorphisms( proj_A, IdentityMorphism( B ) );
-                Hom_emb_aB := Range( Hom_embedding );
-                Hom_embedding := TensorProductOnMorphisms( Hom_embedding, IdentityMorphism( A ) );
+                Hom_embedding1 := InternalHomOnMorphisms( proj_A, IdentityMorphism( B ) );
+                Hom_emb_aB := Range( Hom_embedding1 );
+                Hom_embedding2 := TensorProductOnMorphisms( Hom_embedding1, IdentityMorphism( A ) );
                 
                 # (2) concatenation of epis
                 epi_concat := TensorProductOnMorphisms( InternalHomOnMorphisms( id_emb_a, proj_B ), id_emb_a );
@@ -1542,7 +1548,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 colift_along_epi := ColiftAlongEpimorphism( epi_concat, eval_concat );
 
                 # (5) compose to finally construct the evaluation morphism in the Freyd category
-                return PreCompose( Hom_embedding, colift_along_epi );
+                return PreCompose( Hom_embedding2, colift_along_epi );
                 
         end );
         
