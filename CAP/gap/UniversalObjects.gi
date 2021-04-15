@@ -608,6 +608,13 @@ InstallGlobalFunction( UniversalMorphismIntoFiberProduct,
        
     fi;
     
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismIntoFiberProduct( diagram, mor1, mor2, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismIntoFiberProduct( diagram, [ mor1, mor2, ... ] ) instead.\n"
+      )
+    );
+    
     diagram := arg[ 1 ];
     
     source := arg{[ 2 .. Length( arg ) ]};
@@ -688,6 +695,13 @@ InstallGlobalFunction( UniversalMorphismFromPushout,
        return UniversalMorphismFromPushoutOp( CapCategory( arg[1][1] ), arg[1], arg[2] );
        
     fi;
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismFromPushout( diagram, mor1, mor2, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismFromPushout( diagram, [ mor1, mor2, ... ] ) instead.\n"
+      )
+    );
     
     diagram := arg[ 1 ];
     
