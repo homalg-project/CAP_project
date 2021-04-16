@@ -1048,14 +1048,12 @@ IsEqualForObjects := rec(
   
 IsEqualForCacheForObjects := rec(
   filter_list := [ "category", "object", "object" ],
-  cache_name := "IsEqualForCacheForObjects",
   dual_operation := "IsEqualForCacheForObjects",
   well_defined_todo := false,
   return_type := "bool" ),
 
 IsEqualForCacheForMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  cache_name := "IsEqualForCacheForMorphisms",
   dual_operation := "IsEqualForCacheForMorphisms",
   well_defined_todo := false,
   return_type := "bool" ),
@@ -2290,7 +2288,6 @@ InverseMorphismFromCoimageToImageWithGivenObjects := rec(
 
 IsWellDefinedForMorphisms := rec(
   filter_list := [ "category", "morphism" ],
-  cache_name := "IsWellDefinedForMorphisms",
   well_defined_todo := false,
   dual_operation := "IsWellDefinedForMorphisms",
   
@@ -2321,7 +2318,6 @@ IsWellDefinedForMorphisms := rec(
 
 IsWellDefinedForObjects := rec(
   filter_list := [ "category", "object" ],
-  cache_name := "IsWellDefinedForObjects",
   well_defined_todo := false,
   dual_operation := "IsWellDefinedForObjects",
   return_type := "bool" ),
@@ -2726,7 +2722,6 @@ IdentityTwoCell := rec(
 
 IsWellDefinedForTwoCells := rec(
   filter_list := [ "category", "twocell" ],
-  cache_name := "IsWellDefinedForTwoCells",
   well_defined_todo := false,
   dual_operation := "IsWellDefinedForTwoCells",
   
@@ -3076,7 +3071,6 @@ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism := rec
 
 SolveLinearSystemInAbCategory := rec(
   filter_list := [ "category", IsList, IsList, "list_of_morphisms" ],
-  cache_name := "SolveLinearSystemInAbCategory",
   return_type := "list_of_morphisms_or_fail",
   pre_function := function( cat, left_coeffs, right_coeffs, rhs )
     
@@ -3125,7 +3119,6 @@ SolveLinearSystemInAbCategory := rec(
 MereExistenceOfSolutionOfLinearSystemInAbCategory := rec(
     ## TODO: Type-check of linear system
   filter_list := [ "category", IsList, IsList, "list_of_morphisms" ],
-  cache_name := "MereExistenceOfSolutionOfLinearSystemInAbCategory",
   return_type := "bool"
 ),
 
@@ -4085,7 +4078,7 @@ end );
 
 BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
   
-  function( with_given_name, object_function_name, object_arg_list, cache_name )
+  function( with_given_name, object_function_name, object_arg_list )
     local return_func, has_name, has_function, object_function, with_given_name_function, is_attribute, attribute_tester;
     
     object_function := ValueGlobal( object_function_name );
@@ -4103,7 +4096,7 @@ BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
             
             object_args := arg{ object_arg_list };
             
-            cache := GET_METHOD_CACHE( category, cache_name, Length( object_arg_list ) );
+            cache := GET_METHOD_CACHE( category, object_function_name, Length( object_arg_list ) );
             
             cache_value := CallFuncList( CacheValue, [ cache, object_args ] );
             
@@ -4140,7 +4133,7 @@ BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
                 
             else
                 
-                cache := GET_METHOD_CACHE( category, cache_name, Length( object_arg_list ) );
+                cache := GET_METHOD_CACHE( category, object_function_name, Length( object_arg_list ) );
                 
                 cache_value := CallFuncList( CacheValue, [ cache, object_args ] );
                 
@@ -4162,7 +4155,7 @@ end );
 
 BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
   
-  function( source_range_object, object_function_name, object_arg_list, object_cache_name )
+  function( source_range_object, object_function_name, object_arg_list )
     local object_getter, object_function, setter_function, is_attribute, cache_key_length;
     
     if source_range_object = "Source" then
@@ -4189,7 +4182,7 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
             Remove( arg );
             object := object_getter( result );
             
-            SET_VALUE_OF_CATEGORY_CACHE( category, object_cache_name, cache_key_length, arg{ object_arg_list }, object );
+            SET_VALUE_OF_CATEGORY_CACHE( category, object_function_name, cache_key_length, arg{ object_arg_list }, object );
             
         end;
         
@@ -4214,7 +4207,7 @@ BindGlobal( "CAP_INTERNAL_CREATE_POST_FUNCTION",
             Remove( arg );
             object := object_getter( result );
             
-            SET_VALUE_OF_CATEGORY_CACHE( category, object_cache_name, cache_key_length, arg{ object_arg_list }, object );
+            SET_VALUE_OF_CATEGORY_CACHE( category, object_function_name, cache_key_length, arg{ object_arg_list }, object );
             setter_function( object_args[ Length( object_args ) ], object );
             
         end;
@@ -4242,7 +4235,7 @@ end );
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
     local recnames, current_recname, current_rec, number_of_arguments, flattened_filter_list, position, without_given_name, object_name, functorial,
-          installation_name, object_arg_list, with_given_name, with_given_name_length, i, object_func;
+          installation_name, object_arg_list, with_given_name, with_given_name_length, i, object_function_name;
     
     recnames := RecNames( record );
     
@@ -4412,7 +4405,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         
         if not IsBound( current_rec.cache_name ) then
             
-            current_rec.cache_name := current_rec.installation_name;
+            current_rec.cache_name := current_rec.function_name;
             
         fi;
         
@@ -4458,7 +4451,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 
                 object_name := with_given_name{[ with_given_name_length + 1 .. Length( with_given_name ) ]};
                 
-                object_func := record.( object_name ).installation_name;
+                object_function_name := record.( object_name ).function_name;
                 
                 if not IsBound( current_rec.number_of_diagram_arguments ) then
                     
@@ -4491,7 +4484,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                         
                     else
                         
-                        current_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_func, object_arg_list, object_func );
+                        current_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_function_name, object_arg_list );
                         
                     fi;
                     
@@ -4510,7 +4503,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                         
                     else
                         
-                        current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.universal_object_position, object_func, object_arg_list, object_func );
+                        current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.universal_object_position, object_function_name, object_arg_list );
                         
                     fi;
                     
