@@ -29,7 +29,7 @@ InstallGlobalFunction( CapJitGetCapCategoryFromArguments, function ( arguments )
 end );
 
 InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
-  local condition_func, path, record, operation, funccall_args, result, operation_name, arguments, new_tree, category, global_variable_name, operation_name_record_entry, installation_name, filter_list, replaced_filter_list, positions, index, func_to_resolve, applicable_methods, resolved_tree, parent, method;
+  local condition_func, path, record, operation, funccall_args, result, funccall_does_not_return_fail, operation_name, arguments, new_tree, category, global_variable_name, operation_name_record_entry, installation_name, filter_list, replaced_filter_list, positions, index, func_to_resolve, applicable_methods, resolved_tree, parent, method;
     
     tree := StructuralCopy( tree );
   
@@ -77,6 +77,8 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
         
         result := CapJitGetFunctionCallArgumentsFromJitArgs( tree, path, jit_args );
         
+        funccall_does_not_return_fail := IsBound( record.funcref.does_not_return_fail ) and record.funcref.does_not_return_fail = true;
+        
     elif record.type = "EXPR_ELM_MAT" then
         
         operation := \[\,\];
@@ -112,6 +114,8 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
             fi;
             
         fi;
+        
+        funccall_does_not_return_fail := false;
         
     else
         
@@ -222,16 +226,30 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
                                 args := funccall_args,
                             );
                             
+                            if funccall_does_not_return_fail then
+                                
+                                new_tree.funcref.does_not_return_fail := true;
+                                
+                            fi;
+                            
                         fi;
                         
                     else
-                    
+                        
+                        resolved_tree := ENHANCED_SYNTAX_TREE( func_to_resolve, true );
+                        
+                        if funccall_does_not_return_fail then
+                            
+                            resolved_tree := CapJitRemovedReturnFail( resolved_tree );
+                            
+                        fi;
+                        
                         new_tree := rec(
                             type := "EXPR_FUNCCALL",
-                            funcref := ENHANCED_SYNTAX_TREE( func_to_resolve, true ),
+                            funcref := resolved_tree,
                             args := funccall_args,
                         );
-
+                        
                     fi;
                     
                 fi;
@@ -249,7 +267,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
             for method in applicable_methods do
                 
                 if not IsKernelFunction( method ) then
-                
+                    
                     resolved_tree := ENHANCED_SYNTAX_TREE( method, true );
                     
                     if Length( resolved_tree.stats.statements ) >= 1 and resolved_tree.stats.statements[1].type = "STAT_PRAGMA" and resolved_tree.stats.statements[1].value = "% CAP_JIT_RESOLVE_FUNCTION" then
@@ -259,12 +277,18 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
                         # remove pragma
                         resolved_tree.stats.statements := resolved_tree.stats.statements{[ 2 .. Length( resolved_tree.stats.statements ) ]};
                         
+                        if funccall_does_not_return_fail then
+                            
+                            resolved_tree := CapJitRemovedReturnFail( resolved_tree );
+                            
+                        fi;
+                        
                         new_tree := rec(
                             type := "EXPR_FUNCCALL",
                             funcref := resolved_tree,
                             args := funccall_args,
                         );
-
+                        
                         break;
                         
                     fi;

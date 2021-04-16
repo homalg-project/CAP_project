@@ -65,3 +65,10 @@ DeclareGlobalFunction( "CapJitFindNodeDeep" );
 #! @Returns a record
 #! @Arguments tree, path
 DeclareGlobalFunction( "CapJitGetNodeByPath" );
+
+#! @Description
+#!   Removes removes any statement of the form `if condition then return fail; fi;` (or similar) from the statements of a <A>tree</A> of type `EXPR_FUNC`.
+#!   Throws an error if it cannot find such a statement.
+#! @Returns a record
+#! @Arguments tree
+DeclareGlobalFunction( "CapJitRemovedReturnFail" );

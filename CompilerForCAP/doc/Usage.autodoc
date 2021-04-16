@@ -39,6 +39,10 @@ During the resolving phase, operations and global variables are resolved:
   are considered, and those do not have to be annotated with `CAP_JIT_RESOLVE_FUNCTION`. In particular, caching, pre functions, etc.
   are bypassed.
 * References to global functions are resolved if the function is annotated with the pragma `CAP_JIT_RESOLVE_FUNCTION`.
+* If a call of a global function or operation (occuring as the right hand side of a variable assignment or as the return value of a function)
+  is annotated with the pragma `CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL`, the compiler assumes that the resolved function never returns `fail`
+  and thus simply removes any code of the form `if condition then return fail; fi;` (or similar) from the resolved function.
+  The pragma has to be placed right before the variable assignment or the return statement.
 For details see <Ref Func="CapJitResolvedOperations" /> and <Ref Func="CapJitResolvedGlobalVariables" />.
 If no operation or global variable can be resolved anymore, we continue with the rule phase.
 

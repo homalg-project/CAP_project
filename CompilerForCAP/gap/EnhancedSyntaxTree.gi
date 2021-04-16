@@ -28,7 +28,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func, args... )
     tree := StructuralCopy( tree );
 
     pre_func := function ( tree, additional_arguments )
-      local path, func_stack, statements, i, statement, body_if_true, body_if_false, level, pos, lvars, value, branch, keyvalue;
+      local path, func_stack, statements, i, statement, body_if_true, body_if_false, level, pos, lvars, value, to_delete, next_statement, funccall, branch, keyvalue;
         
         path := additional_arguments[1];
         func_stack := additional_arguments[2];
@@ -234,6 +234,57 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func, args... )
                     Unbind( tree.hvar );
 
                 fi;
+                
+            fi;
+            
+            # detect CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
+            if tree.type = "STAT_SEQ_STAT" then
+                
+                to_delete := [ ];
+                
+                for i in [ 1 .. Length( tree.statements ) ] do
+                    
+                    if tree.statements[i].type = "STAT_PRAGMA" and tree.statements[i].value = "% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL" then
+                        
+                        if i = Length( tree.statements ) then
+                            
+                            Error( "The pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL must not occur as the last statement of a function" );
+                            
+                        fi;
+                        
+                        next_statement := tree.statements[i + 1];
+                        
+                        if StartsWith( next_statement.type, "STAT_ASS_" ) and StartsWith( next_statement.rhs.type, "EXPR_FUNCCALL" ) then
+                            
+                            funccall := next_statement.rhs;
+                            
+                        elif next_statement.type = "STAT_RETURN_OBJ" and StartsWith( next_statement.obj.type, "EXPR_FUNCCALL" ) then
+                            
+                            funccall := next_statement.obj;
+                            
+                        else
+                            
+                            Error( "The line following the pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL must either assign a variable to the result of a function call or return the result of a function call" );
+                            
+                        fi;
+                        
+                        if funccall.funcref.type = "EXPR_REF_GVAR" then
+                            
+                            funccall.funcref.does_not_return_fail := true;
+                            
+                            Add( to_delete, i );
+                            
+                        else
+                            
+                            Error( "The pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL can only be used for calls to global functions or operations" );
+                            
+                        fi;
+                        
+                    fi;
+                    
+                od;
+                
+                tree.statements := tree.statements{Difference( [ 1 .. Length( tree.statements ) ], to_delete )};
                 
             fi;
             
