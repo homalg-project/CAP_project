@@ -122,8 +122,19 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
         Error( "this should never happen" );
         
     fi;
-        
+    
     operation_name := NameFunction( operation );
+    
+    # check if we deal with a KeyDependentOperation
+    if operation in WRAPPER_OPERATIONS then
+        
+        operation_name := Concatenation( operation_name, "Op" );
+        
+        Assert( 0, IsBoundGlobal( operation_name ) );
+        
+        operation := ValueGlobal( operation_name );
+        
+    fi;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, Concatenation( "Try to resolve ", operation_name, "." ) );

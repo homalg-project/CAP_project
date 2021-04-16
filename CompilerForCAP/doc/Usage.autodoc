@@ -43,6 +43,7 @@ During the resolving phase, operations and global variables are resolved:
   is annotated with the pragma `CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL`, the compiler assumes that the resolved function never returns `fail`
   and thus simply removes any code of the form `if condition then return fail; fi;` (or similar) from the resolved function.
   The pragma has to be placed right before the variable assignment or the return statement.
+* If a KeyDependentOperation is detected, the corresponding `Op` method is resolved.
 For details see <Ref Func="CapJitResolvedOperations" /> and <Ref Func="CapJitResolvedGlobalVariables" />.
 If no operation or global variable can be resolved anymore, we continue with the rule phase.
 
