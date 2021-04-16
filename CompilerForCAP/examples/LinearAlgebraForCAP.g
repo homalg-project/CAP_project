@@ -51,7 +51,7 @@ tree2.stats.statements[1].branches[2].body.
 Display( SYNTAX_TREE_CODE( tree2 ) );
 #! function ( cat, S, morphism_matrix, T )
 #!     if morphism_matrix = [  ] or morphism_matrix[1] = [  ] then
-#!         return ZeroMorphism( S, T );
+#!         return ZeroMorphism( cat, S, T );
 #!     else
 #!         return ObjectifyWithAttributes( rec(
 #!                ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, 
