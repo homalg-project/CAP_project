@@ -518,7 +518,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     
                     return result;
                     
-                end : Cache := GET_METHOD_CACHE( category, record.cache_name, Length( filter_list ) ) );
+                end : Cache := GET_METHOD_CACHE( category, function_name, Length( filter_list ) ) );
             
             else #category!.overhead = false
                 

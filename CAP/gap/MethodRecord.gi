@@ -4403,9 +4403,12 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
-        if not IsBound( current_rec.cache_name ) then
+        if IsBound( current_rec.cache_name ) and current_rec.cache_name <> current_rec.function_name then
             
-            current_rec.cache_name := current_rec.function_name;
+            Display( Concatenation(
+                "WARNING: Manually setting cache_name is not supported anymore. The function name will be used instead. ",
+                "To avoid this warning, remove cache_name from the method record."
+            ) );
             
         fi;
         

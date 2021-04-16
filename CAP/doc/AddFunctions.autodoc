@@ -146,9 +146,6 @@ The record can have the following components, used as described:
                                 Please note that true only makes sense if at least one argument and the output of the
                                 installed method is a cell.
 
-* cache_name (optional): The name of the cache which is used for the installed methods. If no cache name is given, the caching
-                         for the operation is deactivated completely.
-
 * return_type: The return type can either be a filter or one of the strings in the list below.
                For objects, morphisms and $2$-cells the correct <C>Add</C> function (see above) is
                used for the result of the computation. Otherwise, no <C>Add</C> function is used after all.
@@ -180,8 +177,6 @@ with an optional third parameter for the weight.
 @Section Enhancing the method name record
 
 The function CAP_INTERNAL_ENHANCE_NAME_RECORD can be applied to a method name record to make the following enhancements:
-
-* Cache check: If there is no cache_name, set it to the installation_name.
 
 * Function name: Set the component function_name to the entry name.
 
