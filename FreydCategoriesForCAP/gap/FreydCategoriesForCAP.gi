@@ -152,7 +152,6 @@ InstallValue( FREYD_CATEGORIES_METHOD_NAME_RECORD, rec(
 ## Weak kernels
 
 WeakKernelObject := rec(
-  installation_name := "WeakKernelObject",
   filter_list := [ "category", "morphism" ],
   number_of_diagram_arguments := 1,
   universal_type := "Limit",
@@ -161,7 +160,6 @@ WeakKernelObject := rec(
   is_merely_set_theoretic := true ),
 
 WeakKernelEmbedding := rec(
-  installation_name := "WeakKernelEmbedding",
   filter_list := [ "category", "morphism" ],
   number_of_diagram_arguments := 1,
   io_type := [ [ "alpha" ], [ "K", "alpha_source" ] ],
@@ -172,7 +170,6 @@ WeakKernelEmbedding := rec(
   is_merely_set_theoretic := true ),
 
 WeakKernelEmbeddingWithGivenWeakKernelObject := rec(
-  installation_name := "WeakKernelEmbeddingWithGivenWeakKernelObject",
   filter_list := [ "category", "morphism", "object" ],
   number_of_diagram_arguments := 1,
   io_type := [ [ "alpha", "K" ], [ "K", "alpha_source" ] ],
@@ -183,7 +180,6 @@ WeakKernelEmbeddingWithGivenWeakKernelObject := rec(
   is_merely_set_theoretic := true ),
 
 WeakKernelLift := rec(
-  installation_name := "WeakKernelLift",
   filter_list := [ "category", "morphism", "morphism" ],
   number_of_diagram_arguments := 1,
   io_type := [ [ "alpha", "tau" ], [ "tau_source", "K" ] ],
@@ -195,7 +191,6 @@ WeakKernelLift := rec(
   is_merely_set_theoretic := true ),
 
 WeakKernelLiftWithGivenWeakKernelObject := rec(
-  installation_name := "WeakKernelLiftWithGivenWeakKernelObject",
   filter_list := [ "category", "morphism", "morphism", "object" ],
   number_of_diagram_arguments := 1,
   io_type := [ [ "alpha", "tau", "K" ], [ "tau_source", "K" ] ],
@@ -208,7 +203,6 @@ WeakKernelLiftWithGivenWeakKernelObject := rec(
 ## Weak cokernels
 
 WeakCokernelObject := rec(
-  installation_name := "WeakCokernelObject",
   filter_list := [ "category", "morphism" ],
   number_of_diagram_arguments := 1,
   universal_type := "Colimit",
@@ -217,7 +211,6 @@ WeakCokernelObject := rec(
   is_merely_set_theoretic := true ),
 
 WeakCokernelProjection := rec(
-  installation_name := "WeakCokernelProjection",
   filter_list := [ "category", "morphism" ],
   number_of_diagram_arguments := 1,
   io_type := [ [ "alpha" ], [ "alpha_range", "K" ] ],
@@ -228,7 +221,6 @@ WeakCokernelProjection := rec(
   is_merely_set_theoretic := true ),
 
 WeakCokernelProjectionWithGivenWeakCokernelObject := rec(
-  installation_name := "WeakCokernelProjectionWithGivenWeakCokernelObject",
   filter_list := [ "category", "morphism", "object" ],
   number_of_diagram_arguments := 1,
   io_type := [ [ "alpha", "K" ], [ "alpha_range", "K" ] ],
@@ -239,7 +231,6 @@ WeakCokernelProjectionWithGivenWeakCokernelObject := rec(
   is_merely_set_theoretic := true ),
 
 WeakCokernelColift := rec(
-  installation_name := "WeakCokernelColift",
   filter_list := [ "category", "morphism", "morphism" ],
   number_of_diagram_arguments := 1,
   io_type := [ [ "alpha", "tau" ], [ "K", "tau_range" ] ],
@@ -251,7 +242,6 @@ WeakCokernelColift := rec(
   is_merely_set_theoretic := true ),
 
 WeakCokernelColiftWithGivenWeakCokernelObject := rec(
-  installation_name := "WeakCokernelColiftWithGivenWeakCokernelObject",
   filter_list := [ "category", "morphism", "morphism", "object" ],
   number_of_diagram_arguments := 1,
   io_type := [ [ "alpha", "tau", "K" ], [ "K", "tau_range" ] ],
@@ -265,7 +255,6 @@ WeakCokernelColiftWithGivenWeakCokernelObject := rec(
 ## FIXME: create universal_type substitute
 
 WeakBiFiberProduct := rec(
-  installation_name := "WeakBiFiberProduct",
   filter_list := [ "category", "morphism", "morphism" ],
   number_of_diagram_arguments := 2,
   cache_name := "WeakBiFiberProduct",
@@ -276,7 +265,6 @@ WeakBiFiberProduct := rec(
   is_merely_set_theoretic := true ),
 
 ProjectionInFirstFactorOfWeakBiFiberProduct := rec(
-  installation_name := "ProjectionInFirstFactorOfWeakBiFiberProduct",
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "a", "b" ], [ "P", "a_source" ] ],
   number_of_diagram_arguments := 2,
@@ -289,7 +277,6 @@ ProjectionInFirstFactorOfWeakBiFiberProduct := rec(
   is_merely_set_theoretic := true ),
 
 ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct := rec(
-  installation_name := "ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct",
   filter_list := [ "category", "morphism", "morphism", "object" ],
   io_type := [ [ "a", "b", "P" ], [ "P", "a_source" ] ],
   number_of_diagram_arguments := 2,
@@ -302,7 +289,6 @@ ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct := rec(
   is_merely_set_theoretic := true ),
 
 ProjectionInSecondFactorOfWeakBiFiberProduct := rec(
-  installation_name := "ProjectionInSecondFactorOfWeakBiFiberProduct",
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "a", "b" ], [ "P", "b_source" ] ],
   number_of_diagram_arguments := 2,
@@ -315,7 +301,6 @@ ProjectionInSecondFactorOfWeakBiFiberProduct := rec(
   is_merely_set_theoretic := true ),
 
 ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct := rec(
-  installation_name := "ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct",
   filter_list := [ "category", "morphism", "morphism", "object" ],
   io_type := [ [ "a", "b", "P" ], [ "P", "b_source" ] ],
   number_of_diagram_arguments := 2,
@@ -328,7 +313,6 @@ ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct := rec(
   is_merely_set_theoretic := true ),
 
 UniversalMorphismIntoWeakBiFiberProduct := rec(
-  installation_name := "UniversalMorphismIntoWeakBiFiberProduct",
   filter_list := [ "category", "morphism", "morphism", "morphism", "morphism" ],
   io_type := [ [ "a", "b", "t", "s" ], [ "t_source", "P" ] ],
   number_of_diagram_arguments := 2,
@@ -341,7 +325,6 @@ UniversalMorphismIntoWeakBiFiberProduct := rec(
   is_merely_set_theoretic := true ),
 
 UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct := rec(
-  installation_name := "UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct",
   filter_list := [ "category", "morphism", "morphism", "morphism", "morphism", "object" ],
   io_type := [ [ "a", "b", "t", "s", "P", ], [ "t_source", "P" ] ],
   number_of_diagram_arguments := 2,
@@ -353,7 +336,6 @@ UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct := rec(
   is_merely_set_theoretic := true ),
 
 WeakBiFiberProductMorphismToDirectSum := rec(
-  installation_name := "WeakBiFiberProductMorphismToDirectSum",
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "F", "S" ] ],
   cache_name := "WeakBiFiberProductMorphismToDirectSum",
@@ -364,7 +346,6 @@ WeakBiFiberProductMorphismToDirectSum := rec(
 ## Weak pushouts
 
 WeakBiPushout := rec(
-  installation_name := "WeakBiPushout",
   number_of_diagram_arguments := 2,
   filter_list := [ "category", "morphism", "morphism" ],
   cache_name := "WeakBiPushout",
@@ -375,7 +356,6 @@ WeakBiPushout := rec(
   is_merely_set_theoretic := true ),
 
 InjectionOfFirstCofactorOfWeakBiPushout := rec(
-  installation_name := "InjectionOfFirstCofactorOfWeakBiPushout",
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "a", "b" ], [ "a_range", "P" ] ],
   number_of_diagram_arguments := 2,
@@ -388,7 +368,6 @@ InjectionOfFirstCofactorOfWeakBiPushout := rec(
   is_merely_set_theoretic := true ),
 
 InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout := rec(
-  installation_name := "InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout",
   filter_list := [ "category", "morphism", "morphism", "object" ],
   io_type := [ [ "a", "b", "P" ], [ "a_range", "P" ] ],
   number_of_diagram_arguments := 2,
@@ -401,7 +380,6 @@ InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout := rec(
   is_merely_set_theoretic := true ),
 
 InjectionOfSecondCofactorOfWeakBiPushout := rec(
-  installation_name := "InjectionOfSecondCofactorOfWeakBiPushout",
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "a", "b" ], [ "b_range", "P" ] ],
   number_of_diagram_arguments := 2,
@@ -414,7 +392,6 @@ InjectionOfSecondCofactorOfWeakBiPushout := rec(
   is_merely_set_theoretic := true ),
 
 InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout := rec(
-  installation_name := "InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout",
   filter_list := [ "category", "morphism", "morphism", "object" ],
   io_type := [ [ "a", "b", "P" ], [ "b_range", "P" ] ],
   number_of_diagram_arguments := 2,
@@ -427,7 +404,6 @@ InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout := rec(
   is_merely_set_theoretic := true ),
 
 UniversalMorphismFromWeakBiPushout := rec(
-  installation_name := "UniversalMorphismFromWeakBiPushout",
   filter_list := [ "category", "morphism", "morphism", "morphism", "morphism" ],
   io_type := [ [ "a", "b", "t", "s" ], [ "P", "t_range" ] ],
   number_of_diagram_arguments := 2,
@@ -440,7 +416,6 @@ UniversalMorphismFromWeakBiPushout := rec(
   is_merely_set_theoretic := true ),
 
 UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout := rec(
-  installation_name := "UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout",
   filter_list := [ "category", "morphism", "morphism", "morphism", "morphism", "object" ],
   io_type := [ [ "a", "b", "t", "s", "P", ], [ "P", "t_range" ] ],
   number_of_diagram_arguments := 2,
@@ -452,7 +427,6 @@ UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout := rec(
   is_merely_set_theoretic := true ),
 
 DirectSumMorphismToWeakBiPushout := rec(
-  installation_name := "DirectSumMorphismToWeakBiPushout",
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "S", "P" ] ],
   cache_name := "DirectSumMorphismToWeakBiPushout",
@@ -464,7 +438,6 @@ DirectSumMorphismToWeakBiPushout := rec(
 ## FIXME: create universal_type substitute
 
 BiasedWeakFiberProduct := rec(
-  installation_name := "BiasedWeakFiberProduct",
   filter_list := [ "category", "morphism", "morphism" ],
   number_of_diagram_arguments := 2,
   cache_name := "BiasedWeakFiberProduct",
@@ -475,7 +448,6 @@ BiasedWeakFiberProduct := rec(
   is_merely_set_theoretic := true ),
 
 ProjectionOfBiasedWeakFiberProduct := rec(
-  installation_name := "ProjectionOfBiasedWeakFiberProduct",
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "a", "b" ], [ "P", "a_source" ] ],
   number_of_diagram_arguments := 2,
@@ -488,7 +460,6 @@ ProjectionOfBiasedWeakFiberProduct := rec(
   is_merely_set_theoretic := true ),
 
 ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct := rec(
-  installation_name := "ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
   filter_list := [ "category", "morphism", "morphism", "object" ],
   io_type := [ [ "a", "b", "P" ], [ "P", "a_source" ] ],
   number_of_diagram_arguments := 2,
@@ -501,7 +472,6 @@ ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct := rec(
   is_merely_set_theoretic := true ),
 
 UniversalMorphismIntoBiasedWeakFiberProduct := rec(
-  installation_name := "UniversalMorphismIntoBiasedWeakFiberProduct",
   filter_list := [ "category", "morphism", "morphism", "morphism" ],
   io_type := [ [ "a", "b", "t" ], [ "t_source", "P" ] ],
   number_of_diagram_arguments := 2,
@@ -514,7 +484,6 @@ UniversalMorphismIntoBiasedWeakFiberProduct := rec(
   is_merely_set_theoretic := true ),
 
 UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct := rec(
-  installation_name := "UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct",
   filter_list := [ "category", "morphism", "morphism", "morphism", "object" ],
   io_type := [ [ "a", "b", "t", "P", ], [ "t_source", "P" ] ],
   number_of_diagram_arguments := 2,
@@ -530,7 +499,6 @@ UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct := re
 ## Weak pushouts
 
 BiasedWeakPushout := rec(
-  installation_name := "BiasedWeakPushout",
   filter_list := [ "category", "morphism", "morphism" ],
   number_of_diagram_arguments := 2,
   cache_name := "BiasedWeakPushout",
@@ -541,7 +509,6 @@ BiasedWeakPushout := rec(
   is_merely_set_theoretic := true ),
 
 InjectionOfBiasedWeakPushout := rec(
-  installation_name := "InjectionOfBiasedWeakPushout",
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "a", "b" ], [ "a_range", "P" ] ],
   number_of_diagram_arguments := 2,
@@ -554,7 +521,6 @@ InjectionOfBiasedWeakPushout := rec(
   is_merely_set_theoretic := true ),
 
 InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout := rec(
-  installation_name := "InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout",
   filter_list := [ "category", "morphism", "morphism", "object" ],
   io_type := [ [ "a", "b", "P" ], [ "a_range", "P" ] ],
   number_of_diagram_arguments := 2,
@@ -567,7 +533,6 @@ InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout := rec(
   is_merely_set_theoretic := true ),
 
 UniversalMorphismFromBiasedWeakPushout := rec(
-  installation_name := "UniversalMorphismFromBiasedWeakPushout",
   filter_list := [ "category", "morphism", "morphism", "morphism" ],
   io_type := [ [ "a", "b", "t", "s" ], [ "P", "t_range" ] ],
   number_of_diagram_arguments := 2,
@@ -580,7 +545,6 @@ UniversalMorphismFromBiasedWeakPushout := rec(
   is_merely_set_theoretic := true ),
 
 UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout := rec(
-  installation_name := "UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout",
   filter_list := [ "category", "morphism", "morphism", "morphism", "object" ],
   io_type := [ [ "a", "b", "t", "P", ], [ "P", "t_range" ] ],
   number_of_diagram_arguments := 2,
@@ -593,14 +557,12 @@ UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout := rec(
 
 ## an abelian construction
 SomeProjectiveObjectForKernelObject := rec(
-  installation_name := "SomeProjectiveObjectForKernelObject",
   filter_list := [ "category", "morphism" ],
   return_type := "object",
   dual_operation := "SomeInjectiveObjectForCokernelObject",
   is_merely_set_theoretic := true ),
 
 EpimorphismFromSomeProjectiveObjectForKernelObject := rec(
-  installation_name := "EpimorphismFromSomeProjectiveObjectForKernelObject",
   filter_list := [ "category", "morphism" ],
   number_of_diagram_arguments := 1,
   io_type := [ [ "alpha" ], [ "epsilon" ] ],
@@ -611,7 +573,6 @@ EpimorphismFromSomeProjectiveObjectForKernelObject := rec(
   is_merely_set_theoretic := true ),
 
 EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject := rec(
-  installation_name := "EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject",
   filter_list := [ "category", "morphism", "object" ],
   number_of_diagram_arguments := 1,
   io_type := [ [ "alpha", "P" ], [ "epsilon" ] ],
@@ -622,14 +583,12 @@ EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectF
   is_merely_set_theoretic := true ),
 
 SomeInjectiveObjectForCokernelObject := rec(
-  installation_name := "SomeInjectiveObjectForCokernelObject",
   filter_list := [ "category", "morphism" ],
   return_type := "object",
   dual_operation := "SomeProjectiveObjectForKernelObject",
   is_merely_set_theoretic := true ),
 
 MonomorphismToSomeInjectiveObjectForCokernelObject := rec(
-  installation_name := "MonomorphismToSomeInjectiveObjectForCokernelObject",
   filter_list := [ "category", "morphism" ],
   number_of_diagram_arguments := 1,
   io_type := [ [ "alpha" ], [ "iota" ] ],
@@ -640,7 +599,6 @@ MonomorphismToSomeInjectiveObjectForCokernelObject := rec(
   is_merely_set_theoretic := true ),
 
 MonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject := rec(
-  installation_name := "MonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject",
   filter_list := [ "category", "morphism", "object" ],
   number_of_diagram_arguments := 1,
   io_type := [ [ "alpha", "I" ], [ "iota" ] ],

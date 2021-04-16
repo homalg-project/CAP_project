@@ -1358,7 +1358,7 @@ DeclareOperation( "AddInitialObjectFunctorial",
 #! The output is the direct sum $\bigoplus_{i=1}^n S_i$.
 #! @Returns an object
 #! @Arguments D
-DeclareOperationWithCache( "DirectSumOp",
+DeclareOperation( "DirectSumOp",
                            [ IsList ] );
 
 # for compatibility with GAP's DirectSum function
@@ -1570,7 +1570,7 @@ DeclareOperation( "AddMorphismBetweenDirectSums",
 #! defined by the list $M$ regarded as a matrix of dimension $m \times n$.
 #! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^{m}A_i, \bigoplus_{j=1}^n B_j)$
 #! @Arguments M, m, n
-DeclareOperation( "MorphismBetweenDirectSumsOp",
+DeclareOperation( "MorphismBetweenDirectSums",
                            [ IsList, IsInt, IsInt ] );
 
 #! @Description
@@ -1998,15 +1998,6 @@ DeclareOperation( "Coproduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 
-
-#! @Description
-#! The arguments are a list of objects $D = ( I_1, \dots, I_n )$.
-#! The output is the coproduct $\bigsqcup_{i=1}^n I_i$.
-#! @Returns an object
-#! @Arguments D
-DeclareOperationWithCache( "CoproductOp",
-                           [ IsList ] );
-
 #! @Description
 #! The arguments are a list of objects $D = ( I_1, \dots, I_n )$
 #! and an integer $k$.
@@ -2263,7 +2254,7 @@ DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
 #! The output is the direct product $\prod_{i=1}^n P_i$.
 #! @Returns an object
 #! @Arguments D
-DeclareOperationWithCache( "DirectProductOp",
+DeclareOperation( "DirectProductOp",
                            [ IsList ] );
 
 # for compatibility with GAP's DirectProduct function
@@ -2536,7 +2527,7 @@ DeclareGlobalFunction( "Equalizer" );
 #! The output is the equalizer $\mathrm{Equalizer}(D)$.
 #! @Returns an object
 #! @Arguments D
-DeclareOperationWithCache( "EqualizerOp",
+DeclareOperation( "EqualizerOp",
                            [ IsList ] );
 
 #! @Description
@@ -2861,7 +2852,7 @@ DeclareGlobalFunction( "Coequalizer" );
 #! The output is the coequalizer $\mathrm{Coequalizer}(D)$.
 #! @Returns an object
 #! @Arguments D
-DeclareOperationWithCache( "CoequalizerOp",
+DeclareOperation( "CoequalizerOp",
                            [ IsList ] );
 
 #! @Description
@@ -3371,7 +3362,7 @@ DeclareGlobalFunction( "FiberProduct" );
 #! The output is the fiber product $\mathrm{FiberProduct}(D)$.
 #! @Returns an object
 #! @Arguments D
-DeclareOperationWithCache( "FiberProductOp",
+DeclareOperation( "FiberProductOp",
                            [ IsList ] );
 
 #! @Description
@@ -3891,15 +3882,6 @@ DeclareOperation( "Pushout",
 #! @Arguments D
 DeclareOperation( "Pushout",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-#! @Description
-#! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
-#! The output is the pushout $\mathrm{Pushout}(D)$.
-#! @Returns an object
-#! @Arguments D
-DeclareOperationWithCache( "PushoutOp",
-                           [ IsList ] );
-
 
 #! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$

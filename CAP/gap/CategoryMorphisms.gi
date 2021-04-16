@@ -163,11 +163,25 @@ InstallMethod( AdditiveInverse,
                   
 AdditiveInverseForMorphisms );
 
+CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
+  rec(
+    AdditiveInverse := [ [ "AdditiveInverseForMorphisms", 1 ] ],
+    AdditiveInverseImmutable := [ [ "AdditiveInverseForMorphisms", 1 ] ],
+  )
+ );
+
 ##
-InstallOtherMethod( InverseImmutable,
-                  [ IsCapCategory, IsCapCategoryMorphism ],
+InstallOtherMethod( Inverse,
+                  [ IsCapCategoryMorphism ],
                   
-InverseOp );
+InverseForMorphisms );
+
+CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
+  rec(
+    Inverse := [ [ "InverseForMorphisms", 1 ] ],
+    InverseImmutable := [ [ "InverseForMorphisms", 1 ] ],
+  )
+ );
 
 ##
 InstallMethod( \*,
@@ -221,14 +235,14 @@ function( q, mor )
 end );
 
 ##
-InstallMethod( IsEqualForCacheForMorphisms,
+InstallMethod( IsEqualForCache,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
-  IsEqualForCache );
+  IsEqualForCacheForMorphisms );
 
 ##
 # generic fallback to IsIdenticalObj
-InstallOtherMethod( IsEqualForCache,
+InstallOtherMethod( IsEqualForCacheForMorphisms,
                [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
   { cat, mor1, mor2 } -> IsIdenticalObj( mor1, mor2 ) );
@@ -613,10 +627,10 @@ end );
 ###########################
 
 ##
-InstallMethod( IsWellDefinedForMorphisms,
+InstallMethod( IsWellDefined,
                [ IsCapCategoryMorphism ],
                
-  IsWellDefined
+  IsWellDefinedForMorphisms
 );
 
 ###########################

@@ -157,13 +157,13 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
     end );
 
-    ## Inverse
+    ## InverseForMorphisms
     ##
     BindGlobal( Concatenation( "ADD_INVERSE_IN_", name_part, "_CATEGORY" ),
               
       function( category )
         
-        AddInverse( category_getter( category ),
+        AddInverseForMorphisms( category_getter( category ),
             
             function( isomorphism )
               local source, range;
@@ -781,7 +781,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
             [ [ "UniversalMorphismFromPushout" ],
               ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_FROM_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "InverseImmutable" ], ValueGlobal( Concatenation(  "ADD_INVERSE_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "InverseForMorphisms" ], ValueGlobal( Concatenation(  "ADD_INVERSE_IN_", name_part, "_CATEGORY" ) ) ],
             
             [ [ "LiftAlongMonomorphism" ], ValueGlobal( Concatenation(  "ADD_MONO_AS_KERNEL_LIFT_IN_", name_part, "_CATEGORY" ) ) ],
             

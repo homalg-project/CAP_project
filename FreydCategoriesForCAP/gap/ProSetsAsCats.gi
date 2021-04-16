@@ -189,7 +189,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_PROSET_AS_CATEGORY,
     end );
 
     ##
-    AddInverse( category,
+    AddInverseForMorphisms( category,
       function( alpha )
 
          return ProSetAsCategoryMorphism(Range(alpha), Source(alpha));

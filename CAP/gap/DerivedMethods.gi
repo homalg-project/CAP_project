@@ -721,7 +721,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoCoimage,
     
     induced_mor := UniversalMorphismFromImage( morphism, test_factorization );
     
-    return PreCompose( Inverse( induced_mor ), CanonicalIdentificationFromImageObjectToCoimage( morphism ) );
+    return PreCompose( InverseForMorphisms( induced_mor ), CanonicalIdentificationFromImageObjectToCoimage( morphism ) );
     
   end : Description := "UniversalMorphismIntoCoimage using UniversalMorphismFromImage and CanonicalIdentificationFromImageObjectToCoimage" );
 
@@ -1249,7 +1249,7 @@ AddDerivationToCAP( PreCompose,
 end : Description := "PreCompose using PostCompose and swapping arguments" );
 
 ##
-AddDerivationToCAP( Inverse,
+AddDerivationToCAP( InverseForMorphisms,
                     [ [ IdentityMorphism, 1 ],
                       [ LiftAlongMonomorphism, 1 ] ],
                                        
@@ -1260,10 +1260,10 @@ AddDerivationToCAP( Inverse,
         
         return LiftAlongMonomorphism( mor, identity_of_range );
         
-end : Description := "Inverse using LiftAlongMonomorphism of an identity morphism" );
+end : Description := "InverseForMorphisms using LiftAlongMonomorphism of an identity morphism" );
 
 ##
-AddDerivationToCAP( Inverse,
+AddDerivationToCAP( InverseForMorphisms,
                     [ [ IdentityMorphism, 1 ],
                       [ ColiftAlongEpimorphism, 1 ] ],
                                        
@@ -1274,7 +1274,7 @@ AddDerivationToCAP( Inverse,
     
     return ColiftAlongEpimorphism( mor, identity_of_source );
       
-end : Description := "Inverse using ColiftAlongEpimorphism of an identity morphism" );
+end : Description := "InverseForMorphisms using ColiftAlongEpimorphism of an identity morphism" );
 
 
 ##
@@ -1405,7 +1405,7 @@ AddDerivationToCAP( IsomorphismFromKernelOfCokernelToImageObject,
         
   function( cat, morphism )
     
-    return Inverse( IsomorphismFromImageObjectToKernelOfCokernel( morphism ) );
+    return InverseForMorphisms( IsomorphismFromImageObjectToKernelOfCokernel( morphism ) );
     
 end : Description := "IsomorphismFromKernelOfCokernelToImageObject as the inverse of IsomorphismFromImageObjectToKernelOfCokernel" );
 
@@ -1414,7 +1414,7 @@ AddDerivationToCAP( IsomorphismFromImageObjectToKernelOfCokernel,
         
   function( cat, morphism )
     
-    return Inverse( IsomorphismFromKernelOfCokernelToImageObject( morphism ) );
+    return InverseForMorphisms( IsomorphismFromKernelOfCokernelToImageObject( morphism ) );
     
 end : Description := "IsomorphismFromImageObjectToKernelOfCokernel as the inverse of IsomorphismFromKernelOfCokernelToImageObject" );
 
@@ -1437,7 +1437,7 @@ AddDerivationToCAP( IsomorphismFromCokernelOfKernelToCoimage,
         
   function( cat, morphism )
     
-    return Inverse( IsomorphismFromCoimageToCokernelOfKernel( morphism ) );
+    return InverseForMorphisms( IsomorphismFromCoimageToCokernelOfKernel( morphism ) );
     
 end : Description := "IsomorphismFromCokernelOfKernelToCoimage as the inverse of IsomorphismFromCoimageToCokernelOfKernel" );
 
@@ -1460,7 +1460,7 @@ AddDerivationToCAP( IsomorphismFromCoimageToCokernelOfKernel,
         
   function( cat, morphism )
     
-    return Inverse( IsomorphismFromCokernelOfKernelToCoimage( morphism ) );
+    return InverseForMorphisms( IsomorphismFromCokernelOfKernelToCoimage( morphism ) );
     
 end : Description := "IsomorphismFromCoimageToCokernelOfKernel as the inverse of IsomorphismFromCokernelOfKernelToCoimage" );
 
@@ -1529,88 +1529,88 @@ end : Description := "IsomorphismFromCokernelOfDiagonalDifferenceToPushout using
 ##
 AddDerivationToCAP( IsomorphismFromFiberProductToKernelOfDiagonalDifference,
                     [ [ IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct, 1 ],
-                      [ Inverse, 1 ] ],
+                      [ InverseForMorphisms, 1 ] ],
                       
   function( cat, diagram )
     
-    return Inverse( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct( diagram ) );
+    return InverseForMorphisms( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct( diagram ) );
     
 end : Description := "IsomorphismFromFiberProductToKernelOfDiagonalDifference as the inverse of IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct" );
 
 ##
 AddDerivationToCAP( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
                     [ [ IsomorphismFromFiberProductToKernelOfDiagonalDifference, 1 ],
-                      [ Inverse, 1 ] ],
+                      [ InverseForMorphisms, 1 ] ],
                       
   function( cat, diagram )
     
-    return Inverse( IsomorphismFromFiberProductToKernelOfDiagonalDifference( diagram ) );
+    return InverseForMorphisms( IsomorphismFromFiberProductToKernelOfDiagonalDifference( diagram ) );
     
 end : Description := "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct as the inverse of IsomorphismFromFiberProductToKernelOfDiagonalDifference" );
 
 ##
 AddDerivationToCAP( IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram,
                     [ [ IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct, 1 ],
-                      [ Inverse, 1 ] ],
+                      [ InverseForMorphisms, 1 ] ],
                       
   function( cat, diagram )
     
-    return Inverse( IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct( diagram ) );
+    return InverseForMorphisms( IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct( diagram ) );
     
 end : Description := "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram as the inverse of IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct" );
 
 ##
 AddDerivationToCAP( IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct,
                     [ [ IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram, 1 ],
-                      [ Inverse, 1 ] ],
+                      [ InverseForMorphisms, 1 ] ],
                       
   function( cat, diagram )
     
-    return Inverse( IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram( diagram ) );
+    return InverseForMorphisms( IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram( diagram ) );
     
 end : Description := "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct as the inverse of IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram" );
 
 ##
 AddDerivationToCAP( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
                     [ [ IsomorphismFromCokernelOfDiagonalDifferenceToPushout , 1 ],
-                      [ Inverse, 1 ] ],
+                      [ InverseForMorphisms, 1 ] ],
                       
   function( cat, diagram )
     
-    return Inverse( IsomorphismFromCokernelOfDiagonalDifferenceToPushout( diagram ) );
+    return InverseForMorphisms( IsomorphismFromCokernelOfDiagonalDifferenceToPushout( diagram ) );
     
 end : Description := "IsomorphismFromPushoutToCokernelOfDiagonalDifference as the inverse of IsomorphismFromCokernelOfDiagonalDifferenceToPushout" );
 
 ##
 AddDerivationToCAP( IsomorphismFromCokernelOfDiagonalDifferenceToPushout,
                     [ [ IsomorphismFromPushoutToCokernelOfDiagonalDifference, 1 ],
-                      [ Inverse, 1 ] ],
+                      [ InverseForMorphisms, 1 ] ],
                       
   function( cat, diagram )
     
-    return Inverse( IsomorphismFromPushoutToCokernelOfDiagonalDifference( diagram ) );
+    return InverseForMorphisms( IsomorphismFromPushoutToCokernelOfDiagonalDifference( diagram ) );
     
 end : Description := "IsomorphismFromCokernelOfDiagonalDifferenceToPushout as the inverse of IsomorphismFromPushoutToCokernelOfDiagonalDifference" );
 
 ##
 AddDerivationToCAP( IsomorphismFromPushoutToCoequalizerOfCoproductDiagram,
                     [ [ IsomorphismFromCoequalizerOfCoproductDiagramToPushout , 1 ],
-                      [ Inverse, 1 ] ],
+                      [ InverseForMorphisms, 1 ] ],
                       
   function( cat, diagram )
     
-    return Inverse( IsomorphismFromCoequalizerOfCoproductDiagramToPushout( diagram ) );
+    return InverseForMorphisms( IsomorphismFromCoequalizerOfCoproductDiagramToPushout( diagram ) );
     
 end : Description := "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram as the inverse of IsomorphismFromCoequalizerOfCoproductDiagramToPushout" );
 
 ##
 AddDerivationToCAP( IsomorphismFromCoequalizerOfCoproductDiagramToPushout,
                     [ [ IsomorphismFromPushoutToCoequalizerOfCoproductDiagram, 1 ],
-                      [ Inverse, 1 ] ],
+                      [ InverseForMorphisms, 1 ] ],
                       
   function( cat, diagram )
     
-    return Inverse( IsomorphismFromPushoutToCoequalizerOfCoproductDiagram( diagram ) );
+    return InverseForMorphisms( IsomorphismFromPushoutToCoequalizerOfCoproductDiagram( diagram ) );
     
 end : Description := "IsomorphismFromCoequalizerOfCoproductDiagramToPushout as the inverse of IsomorphismFromPushoutToCoequalizerOfCoproductDiagram" );
 
@@ -1619,7 +1619,7 @@ AddDerivationToCAP( ColiftAlongEpimorphism,
                     [ [ KernelEmbedding, 1 ],
                       [ CokernelColift, 2 ],
                       [ PreCompose, 1 ],
-                      [ Inverse, 1 ] ],
+                      [ InverseForMorphisms, 1 ] ],
                     
   function( cat, epimorphism, test_morphism )
     local kernel_emb, cokernel_colift_to_range_of_epimorphism, cokernel_colift_to_range_of_test_morphism;
@@ -1632,7 +1632,7 @@ AddDerivationToCAP( ColiftAlongEpimorphism,
     cokernel_colift_to_range_of_test_morphism :=
       CokernelColift( kernel_emb, test_morphism );
     
-    return PreCompose( Inverse( cokernel_colift_to_range_of_epimorphism ), cokernel_colift_to_range_of_test_morphism );
+    return PreCompose( InverseForMorphisms( cokernel_colift_to_range_of_epimorphism ), cokernel_colift_to_range_of_test_morphism );
     
 end : CategoryFilter := IsAbelianCategory, 
       Description := "ColiftAlongEpimorphism by inverting the cokernel colift from the cokernel of the kernel to the range of a given epimorphism");
@@ -1642,7 +1642,7 @@ AddDerivationToCAP( LiftAlongMonomorphism,
                     [ [ CokernelProjection, 1 ],
                       [ KernelLift, 2 ],
                       [ PreCompose, 1 ],
-                      [ Inverse, 1 ] ],
+                      [ InverseForMorphisms, 1 ] ],
                     
   function( cat, monomorphism, test_morphism )
     local cokernel_proj, kernel_lift_from_source_of_monomorphism, kernel_lift_from_source_of_test_morphism;
@@ -1655,7 +1655,7 @@ AddDerivationToCAP( LiftAlongMonomorphism,
     kernel_lift_from_source_of_test_morphism :=
       KernelLift( cokernel_proj, test_morphism );
     
-    return PreCompose( kernel_lift_from_source_of_test_morphism, Inverse( kernel_lift_from_source_of_monomorphism ) );
+    return PreCompose( kernel_lift_from_source_of_test_morphism, InverseForMorphisms( kernel_lift_from_source_of_monomorphism ) );
     
 end : CategoryFilter := IsAbelianCategory, 
       Description := "LiftAlongMonomorphism by inverting the kernel lift from the source to the kernel of the cokernel of a given monomorphism");
@@ -2184,21 +2184,21 @@ end : Description := "IsomorphismFromInitialObjectToZeroObject using the univers
 
 ##
 AddDerivationToCAP( IsomorphismFromInitialObjectToZeroObject,
-                    [ [ Inverse, 1 ],
+                    [ [ InverseForMorphisms, 1 ],
                       [ IsomorphismFromZeroObjectToInitialObject, 1 ] ],
   function( category )
     
-    return Inverse( IsomorphismFromZeroObjectToInitialObject( category ) );
+    return InverseForMorphisms( IsomorphismFromZeroObjectToInitialObject( category ) );
     
 end : Description := "IsomorphismFromInitialObjectToZeroObject as the inverse of IsomorphismFromZeroObjectToInitialObject" );
 
 ##
 AddDerivationToCAP( IsomorphismFromZeroObjectToInitialObject,
-                    [ [ Inverse, 1 ],
+                    [ [ InverseForMorphisms, 1 ],
                       [ IsomorphismFromInitialObjectToZeroObject, 1 ] ],
   function( category )
     
-    return Inverse( IsomorphismFromInitialObjectToZeroObject( category ) );
+    return InverseForMorphisms( IsomorphismFromInitialObjectToZeroObject( category ) );
     
 end : Description := "IsomorphismFromZeroObjectToInitialObject as the inverse of IsomorphismFromInitialObjectToZeroObject" );
 
@@ -2233,11 +2233,11 @@ end : Description := "IsomorphismFromZeroObjectToTerminalObject using the univer
 
 ##
 AddDerivationToCAP( IsomorphismFromTerminalObjectToZeroObject,
-                    [ [ Inverse, 1 ],
+                    [ [ InverseForMorphisms, 1 ],
                       [ IsomorphismFromZeroObjectToTerminalObject, 1 ] ],
   function( category )
     
-    return Inverse( IsomorphismFromZeroObjectToTerminalObject( category ) );
+    return InverseForMorphisms( IsomorphismFromZeroObjectToTerminalObject( category ) );
     
 end : Description := "IsomorphismFromTerminalObjectToZeroObject as the inverse of IsomorphismFromZeroObjectToTerminalObject" );
 
@@ -2252,11 +2252,11 @@ end : Description := "IsomorphismFromTerminalObjectToZeroObject using the univer
 
 ##
 AddDerivationToCAP( IsomorphismFromZeroObjectToTerminalObject,
-                    [ [ Inverse, 1 ],
+                    [ [ InverseForMorphisms, 1 ],
                       [ IsomorphismFromTerminalObjectToZeroObject, 1 ] ],
   function( category )
     
-    return Inverse( IsomorphismFromTerminalObjectToZeroObject( category ) );
+    return InverseForMorphisms( IsomorphismFromTerminalObjectToZeroObject( category ) );
     
 end : Description := "IsomorphismFromZeroObjectToTerminalObject as the inverse of IsomorphismFromTerminalObjectToZeroObject" );
 
@@ -2278,11 +2278,11 @@ end : Description := "IsomorphismFromDirectProductToDirectSum using direct produ
 ##
 AddDerivationToCAP( IsomorphismFromDirectProductToDirectSum,
                     [ [ IsomorphismFromDirectSumToDirectProduct, 1 ],
-                      [ Inverse, 1 ] ],
+                      [ InverseForMorphisms, 1 ] ],
                       
   function( cat, diagram )
     
-    return Inverse( IsomorphismFromDirectSumToDirectProduct( diagram ) );
+    return InverseForMorphisms( IsomorphismFromDirectSumToDirectProduct( diagram ) );
     
 end : Description := "IsomorphismFromDirectProductToDirectSum as the inverse of IsomorphismFromDirectSumToDirectProduct" );
 
@@ -2302,12 +2302,12 @@ end : Description := "IsomorphismFromDirectSumToDirectProduct using direct sum p
 
 ##
 AddDerivationToCAP( IsomorphismFromDirectSumToDirectProduct,
-                    [ [ Inverse, 1 ],
+                    [ [ InverseForMorphisms, 1 ],
                       [ IsomorphismFromDirectProductToDirectSum, 1 ] ],
                       
   function( cat, diagram );
     
-    return Inverse( IsomorphismFromDirectProductToDirectSum( diagram ) );
+    return InverseForMorphisms( IsomorphismFromDirectProductToDirectSum( diagram ) );
     
 end : Description := "IsomorphismFromDirectSumToDirectProduct as the inverse of IsomorphismFromDirectProductToDirectSum" );
 
@@ -2327,12 +2327,12 @@ end : Description := "IsomorphismFromCoproductToDirectSum using cofactor injecti
 
 ##
 AddDerivationToCAP( IsomorphismFromCoproductToDirectSum,
-                    [ [ Inverse, 1 ],
+                    [ [ InverseForMorphisms, 1 ],
                       [ IsomorphismFromDirectSumToCoproduct, 1 ] ],
                       
   function( cat, diagram )
     
-    return Inverse( IsomorphismFromDirectSumToCoproduct( diagram ) );
+    return InverseForMorphisms( IsomorphismFromDirectSumToCoproduct( diagram ) );
   
 end : Description := "IsomorphismFromCoproductToDirectSum as the inverse of IsomorphismFromDirectSumToCoproduct" );
 
@@ -2352,12 +2352,12 @@ end : Description := "IsomorphismFromDirectSumToCoproduct using cofactor injecti
 
 ##
 AddDerivationToCAP( IsomorphismFromDirectSumToCoproduct,
-                    [ [ Inverse, 1 ],
+                    [ [ InverseForMorphisms, 1 ],
                       [ IsomorphismFromCoproductToDirectSum, 1 ] ],
                     
   function( cat, diagram )
     
-    return Inverse( IsomorphismFromCoproductToDirectSum( diagram ) );
+    return InverseForMorphisms( IsomorphismFromCoproductToDirectSum( diagram ) );
     
 end : Description := "IsomorphismFromDirectSumToCoproduct as the inverse of IsomorphismFromCoproductToDirectSum" );
 
@@ -2417,7 +2417,7 @@ end : Description := "Colift by SolveLinearSystemInAbCategory" );
 AddDerivationToCAP( IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject,
   function( cat, alpha, beta )
     
-    return Inverse( IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject( alpha, beta ) );
+    return InverseForMorphisms( IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject( alpha, beta ) );
     
 end : Description := "IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject as the inverse of IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject" );
 
@@ -3170,7 +3170,7 @@ AddDerivationToCAP( InverseMorphismFromCoimageToImageWithGivenObjects,
                     
   function( cat, coimage, morphism, image )
     
-    return Inverse( MorphismFromCoimageToImage( morphism ) );
+    return InverseForMorphisms( MorphismFromCoimageToImage( morphism ) );
     
 end : CategoryFilter := IsAbelianCategory,
       Description := "InverseMorphismFromCoimageToImageWithGivenObjects as the inverse of MorphismFromCoimageToImage" );
@@ -3180,7 +3180,7 @@ AddDerivationToCAP( CanonicalIdentificationFromCoimageToImageObject,
                     
   function( cat, morphism )
     
-    return Inverse( CanonicalIdentificationFromImageObjectToCoimage( morphism ) );
+    return InverseForMorphisms( CanonicalIdentificationFromImageObjectToCoimage( morphism ) );
     
 end : Description := "CanonicalIdentificationFromCoimageToImageObject as the inverse of CanonicalIdentificationFromImageObjectToCoimage" );
 

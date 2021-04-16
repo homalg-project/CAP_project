@@ -192,9 +192,9 @@ InstallMethod( AddObject,
 end );
 
 ##
-InstallMethod( IsWellDefinedForObjects,
+InstallMethod( IsWellDefined,
                [ IsCapCategoryObject ],
-  IsWellDefined
+  IsWellDefinedForObjects
 );
 
 ##
@@ -204,14 +204,14 @@ InstallMethod( IsZero,
 IsZeroForObjects );
 
 ##
-InstallMethod( IsEqualForCacheForObjects,
+InstallMethod( IsEqualForCache,
                [ IsCapCategoryObject, IsCapCategoryObject ],
                
-  IsEqualForCache );
+  IsEqualForCacheForObjects );
 
 ##
 # generic fallback to IsIdenticalObj
-InstallOtherMethod( IsEqualForCache,
+InstallOtherMethod( IsEqualForCacheForObjects,
                [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
                
   { cat, obj1, obj2 } -> IsIdenticalObj( obj1, obj2 ) );

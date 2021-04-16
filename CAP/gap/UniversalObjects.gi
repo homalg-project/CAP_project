@@ -125,21 +125,11 @@ end );
 
 ##
 InstallMethod( Coproduct,
-               [ IsList ],
-               
-  function( diagram )
-    
-    return CoproductOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
-##
-InstallMethod( Coproduct,
                [ IsCapCategoryObject, IsCapCategoryObject ],
                
   function( object_1, object_2 )
     
-    return CoproductOp( CapCategory( object_1 ), [ object_1, object_2 ] );
+    return Coproduct( CapCategory( object_1 ), [ object_1, object_2 ] );
     
 end );
 
@@ -149,15 +139,9 @@ InstallMethod( Coproduct,
                
   function( object_1, object_2, object_3 )
     
-    return CoproductOp( CapCategory( object_1 ), [ object_1, object_2, object_3 ] );
+    return Coproduct( CapCategory( object_1 ), [ object_1, object_2, object_3 ] );
     
 end );
-
-##
-InstallOtherMethod( Coproduct,
-                    [ IsCapCategory, IsList ],
-                    
-  CoproductOp );
 
 ##
 InstallGlobalFunction( UniversalMorphismFromCoproduct,
@@ -404,7 +388,7 @@ InstallMethod( MorphismBetweenDirectSums,
 end );
 
 ##
-InstallMethod( MorphismBetweenDirectSumsOp,
+InstallMethod( MorphismBetweenDirectSums,
                                   [ IsList, IsInt, IsInt ],
                                   
   function( morphism_matrix_listlist, rows, cols )
@@ -669,29 +653,13 @@ end );
 
 ##
 InstallMethod( Pushout,
-               [ IsList ],
-                
-  function( diagram )
-    
-    return PushoutOp( CapCategory( diagram[1] ), diagram );
-    
-end );
-
-##
-InstallMethod( Pushout,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
   function( mor1, mor2 )
     
-    return PushoutOp( CapCategory( mor1 ), [ mor1, mor2 ] );
+    return Pushout( CapCategory( mor1 ), [ mor1, mor2 ] );
     
 end );
-
-##
-InstallOtherMethod( Pushout,
-                    [ IsCapCategory, IsList ],
-                    
-  PushoutOp );
 
 ##
 InstallGlobalFunction( UniversalMorphismFromPushout,

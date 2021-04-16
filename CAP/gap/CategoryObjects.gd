@@ -54,7 +54,7 @@ DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_OBJECTS" );
 #! otherwise the output is <C>false</C>.
 #! @Returns a boolean
 #! @Arguments a,b
-DeclareOperationWithCache( "IsEqualForObjects",
+DeclareOperation( "IsEqualForObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description

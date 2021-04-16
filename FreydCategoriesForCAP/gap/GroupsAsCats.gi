@@ -217,7 +217,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
     end );
     
     ##
-    AddInverse( category,
+    AddInverseForMorphisms( category,
       function( alpha )
         
         return  GroupAsCategoryMorphism(

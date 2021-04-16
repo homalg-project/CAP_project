@@ -107,7 +107,7 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
         
     end );
     
-    AddInverse( deductive_system,
+    AddInverseForMorphisms( deductive_system,
                 
       function( morphism )
         
