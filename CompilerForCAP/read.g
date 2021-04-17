@@ -35,3 +35,5 @@ ReadPackage( "CompilerForCAP", "gap/InlineFunctionCalls.gi");
 ReadPackage( "CompilerForCAP", "gap/Logic.gi");
 
 ReadPackage( "CompilerForCAP", "gap/LogicTemplates.gi");
+
+ReadPackage( "CompilerForCAP", "gap/CompilerHints.gi");

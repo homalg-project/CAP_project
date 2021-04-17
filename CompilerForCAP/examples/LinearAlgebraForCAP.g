@@ -32,9 +32,8 @@ Display( SYNTAX_TREE_CODE( tree1 ) );
 #!         return ZeroMorphism( S, T );
 #!     else
 #!         return ObjectifyWithAttributes( rec(
-#!                ), CAP_JIT_INTERNAL_GLOBAL_VARIABLE_3, CapCategory, 
-#!            CAP_JIT_INTERNAL_GLOBAL_VARIABLE_1, Source, S, Range, T, 
-#!            UnderlyingFieldForHomalg, CAP_JIT_INTERNAL_GLOBAL_VARIABLE_2, 
+#!                ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, 
+#!            UnderlyingFieldForHomalg, UnderlyingRing( cat ), 
 #!            UnderlyingMatrix, 
 #!            UnionOfRows( List( morphism_matrix, function ( row )
 #!                     return UnionOfColumns( List( row, UnderlyingMatrix ) );
@@ -57,9 +56,8 @@ Display( SYNTAX_TREE_CODE( tree2 ) );
 #!         return ZeroMorphism( S, T );
 #!     else
 #!         return ObjectifyWithAttributes( rec(
-#!                ), CAP_JIT_INTERNAL_GLOBAL_VARIABLE_3, CapCategory, 
-#!            CAP_JIT_INTERNAL_GLOBAL_VARIABLE_1, Source, S, Range, T, 
-#!            UnderlyingFieldForHomalg, CAP_JIT_INTERNAL_GLOBAL_VARIABLE_2, 
+#!                ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, 
+#!            UnderlyingFieldForHomalg, UnderlyingRing( cat ), 
 #!            UnderlyingMatrix, 
 #!            UnionOfRows( List( morphism_matrix, function ( row )
 #!                     return UnionOfColumns( List( row, function ( s )

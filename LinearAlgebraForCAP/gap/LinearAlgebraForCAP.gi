@@ -24,6 +24,12 @@ InstallMethod( MatrixCategory,
     
     category!.category_as_first_argument := true;
     
+    category!.compiler_hints := rec(
+        category_attribute_names := [
+            "UnderlyingRing",
+        ],
+    );
+    
     SetFilterObj( category, IsMatrixCategory );
     
     AddObjectRepresentation( category, IsVectorSpaceObject and HasIsProjective and IsProjective );
