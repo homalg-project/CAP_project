@@ -72,3 +72,10 @@ DeclareGlobalFunction( "CapJitGetNodeByPath" );
 #! @Returns a record
 #! @Arguments tree
 DeclareGlobalFunction( "CapJitRemovedReturnFail" );
+
+#! @Description
+#!   Pretty prints the function <A>func</A> and returns the result.
+#!   <A>func</A> must be a regular function, i.e. not an operation or a kernel function.
+#! @Returns a string
+#! @Arguments func
+DeclareGlobalFunction( "CapJitPrettyPrintFunction" );

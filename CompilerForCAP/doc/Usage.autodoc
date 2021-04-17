@@ -103,6 +103,10 @@ Note: The compiler can only discover the hints if the category is the first argu
 You can use `StopCompilationAtCategory` to prevent the compiler from inlining and optimizing code of a given category.
 You can revert this decision using `ContinueCompilationAtCategory`.
 
+@Section Precompiling categories
+
+You can compile categories and store the result in a file for later use.
+
 @Section Getting information about the compilation process
 
 You can increase the info level of `InfoCapJit` to get information about the compilation process.

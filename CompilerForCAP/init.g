@@ -37,3 +37,5 @@ ReadPackage( "CompilerForCAP", "gap/Logic.gd" );
 ReadPackage( "CompilerForCAP", "gap/LogicTemplates.gd" );
 
 ReadPackage( "CompilerForCAP", "gap/CompilerHints.gd" );
+
+ReadPackage( "CompilerForCAP", "gap/PrecompileCategory.gd" );

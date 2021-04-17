@@ -10,3 +10,5 @@ ReadPackage( "LinearAlgebraForCAP", "gap/MatrixCategoryObject.gi" );
 ReadPackage( "LinearAlgebraForCAP", "gap/MatrixCategoryMorphism.gi" );
 
 ReadPackage( "LinearAlgebraForCAP", "gap/DerivedMethodsForMatrixCategories.gi" );
+
+ReadPackage( "LinearAlgebraForCAP", "gap/precompiled_categories/MatrixCategoryPrecompiled.gi" );

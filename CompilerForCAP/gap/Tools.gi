@@ -409,3 +409,33 @@ InstallGlobalFunction( CapJitRemovedReturnFail, function ( tree )
     return tree;
     
 end );
+
+InstallGlobalFunction( CapJitPrettyPrintFunction, function ( func )
+  local size_screen, function_string, string_stream;
+    
+    if IsOperation( func ) or IsKernelFunction( func ) then
+        
+        Error( "<func> must neither be an operation nor a kernel function" );
+        
+    fi;
+    
+    size_screen := SizeScreen( );
+    
+    # Lines which are exceeding SizeScreen and are thus wrapped using "\" are still valid GAP code,
+    # so this is purely cosmetic.
+    # We cannot use SetPrintFormattingStatus as that also prevents indentation.
+    SizeScreen( [ 4096 ] );
+    
+    function_string := "";
+    
+    string_stream := OutputTextString( function_string, false );
+    
+    PrintTo( string_stream, func );
+    
+    CloseStream( string_stream );
+    
+    SizeScreen( size_screen );
+    
+    return function_string;
+    
+end );
