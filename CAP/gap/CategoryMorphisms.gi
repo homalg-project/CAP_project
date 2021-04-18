@@ -725,3 +725,14 @@ InstallMethod( String,
     return Concatenation( "A morphism in ", Name( CapCategory( morphism ) ) );
     
 end );
+
+InstallMethod( Display,
+               [ IsCapCategoryMorphism ],
+  function( morphism )
+
+    Print( Concatenation( "A morphism in ", Name( CapCategory( morphism ) ) ) );
+    Print( "\n\nSource:\n");
+    Display( Source( morphism ) );
+    Print( "\n\nRange:\n");
+    Display( Range( morphism ) );
+end );
