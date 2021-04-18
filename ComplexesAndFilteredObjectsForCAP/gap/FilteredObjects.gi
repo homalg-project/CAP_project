@@ -228,7 +228,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
 
           AddKernelLiftWithGivenKernelObject( category_getter( category ),
             
-            function( morphism, test_morphism, kernel )
+            function( morphism, test_object, test_morphism, kernel )
               local source;
               
               source := Source( test_morphism );
@@ -360,7 +360,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
           
           AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( category_getter( category ),
             
-            function( diagram, source, direct_product )
+            function( diagram, test_object, source, direct_product )
               
               return morphism_constructor( Source( source[1] ),
                        UniversalMorphismIntoDirectProduct(
@@ -422,7 +422,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
           
           AddUniversalMorphismIntoFiberProductWithGivenFiberProduct( category_getter( category ),
             
-            function( diagram, source, pullback )
+            function( diagram, test_object, source, pullback )
               
               return morphism_constructor( Source( source[1] ),
                        UniversalMorphismIntoFiberProduct(

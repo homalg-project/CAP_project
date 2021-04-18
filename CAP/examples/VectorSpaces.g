@@ -364,7 +364,7 @@ end );
 ##
 AddUniversalMorphismFromDirectSum( vecspaces,
 
-  function( diagram, sink )
+  function( diagram, test_object, sink )
     local dim, coproduct, components, universal_morphism, morphism;
     
     components := sink;
@@ -388,7 +388,7 @@ end );
 ##
 AddUniversalMorphismFromDirectSumWithGivenDirectSum( vecspaces,
 
-  function( diagram, sink, coproduct )
+  function( diagram, test_object, sink, coproduct )
     local components, universal_morphism, morphism;
     
     components := sink;
@@ -493,7 +493,7 @@ end );
 
 AddUniversalMorphismIntoDirectSum( vecspaces,
 
-  function( diagram, sink )
+  function( diagram, test_object, sink )
     local dim, direct_product, components, universal_morphism, morphism;
     
     components := sink;
@@ -516,7 +516,7 @@ end );
 
 AddUniversalMorphismIntoDirectSumWithGivenDirectSum( vecspaces,
 
-  function( diagram, sink, direct_product )
+  function( diagram, test_object, sink, direct_product )
     local components, universal_morphism, morphism;
     
     components := sink;

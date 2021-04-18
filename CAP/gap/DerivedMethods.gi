@@ -23,13 +23,13 @@ AddDerivationToCAP( MorphismFromKernelObjectToSink,
 
 ##
 AddWithGivenDerivationPairToCAP( KernelLift,
-  function( cat, mor, test_morphism )
+  function( cat, mor, test_object, test_morphism )
     
     return LiftAlongMonomorphism( cat, KernelEmbedding( cat, mor ), test_morphism );
     
   end,
   
-  function( cat, mor, test_morphism, kernel )
+  function( cat, mor, test_object, test_morphism, kernel )
     
     return LiftAlongMonomorphism( cat, KernelEmbeddingWithGivenKernelObject( cat, mor, kernel ), test_morphism );
     
@@ -49,13 +49,13 @@ AddDerivationToCAP( MorphismFromSourceToCokernelObject,
 
 ##
 AddWithGivenDerivationPairToCAP( CokernelColift,
-  function( cat, mor, test_morphism )
+  function( cat, mor, test_object, test_morphism )
     
     return ColiftAlongEpimorphism( cat, CokernelProjection( cat, mor ), test_morphism );
     
   end,
 
-  function( cat, mor, test_morphism, cokernel )
+  function( cat, mor, test_object, test_morphism, cokernel )
       
       return ColiftAlongEpimorphism( cat, CokernelProjectionWithGivenCokernelObject( cat, mor, cokernel ), test_morphism );
       
@@ -63,7 +63,7 @@ end : Description := "CokernelColift using ColiftAlongEpimorphism and CokernelPr
 
 ##
 AddWithGivenDerivationPairToCAP( UniversalMorphismIntoDirectSum,
-  function( cat, diagram, source )
+  function( cat, diagram, test_object, source )
     local nr_components;
     
     nr_components := Length( source );
@@ -73,7 +73,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoDirectSum,
     
   end,
   
-  function( cat, diagram, source, direct_sum )
+  function( cat, diagram, test_object, source, direct_sum )
     local nr_components;
     
     nr_components := Length( source );
@@ -87,7 +87,7 @@ end : CategoryFilter := IsAdditiveCategory,
 ##
 AddWithGivenDerivationPairToCAP( UniversalMorphismFromDirectSum,
   
-  function( cat, diagram, sink )
+  function( cat, diagram, test_object, sink )
     local nr_components;
     
     nr_components := Length( sink );
@@ -97,7 +97,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromDirectSum,
     
   end,
   
-  function( cat, diagram, sink, direct_sum )
+  function( cat, diagram, test_object, sink, direct_sum )
     local nr_components;
     
     nr_components := Length( sink );
@@ -295,7 +295,7 @@ AddDerivationToCAP( ProjectionInFactorOfFiberProduct,
 ##
 AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
         
-  function( cat, diagram, tau )
+  function( cat, diagram, test_object, tau )
     local D, diagram_of_equalizer, chi, psi;
     
     D := List( diagram, Source );
@@ -361,7 +361,7 @@ AddDerivationToCAP( InjectionOfCofactorOfPushout,
 ##
 AddDerivationToCAP( UniversalMorphismFromPushout,
         
-  function( cat, diagram, tau )
+  function( cat, diagram, test_object, tau )
     local D, diagram_of_coequalizer, chi, psi;
     
     D := List( diagram, Range );
@@ -438,7 +438,7 @@ AddDerivationToCAP( ProjectionInFactorOfDirectSum,
 ##
 AddDerivationToCAP( UniversalMorphismIntoDirectSum,
                     
-  function( cat, diagram, source )
+  function( cat, diagram, test_object, source )
     
     return PreCompose( cat, UniversalMorphismIntoDirectProduct( cat, diagram, source ),
                        IsomorphismFromDirectProductToDirectSum( cat, diagram ) );
@@ -456,7 +456,7 @@ AddDerivationToCAP( InjectionOfCofactorOfDirectSum,
 ##
 AddDerivationToCAP( UniversalMorphismFromDirectSum,
                     
-  function( cat, diagram, sink )
+  function( cat, diagram, test_object, sink )
     
     return PreCompose( cat, IsomorphismFromDirectSumToCoproduct( cat, diagram ),
                        UniversalMorphismFromCoproduct( cat, diagram, sink ) );
@@ -494,7 +494,7 @@ AddDerivationToCAP( ProjectionInFactorOfDirectProduct,
 ##
 AddDerivationToCAP( UniversalMorphismIntoDirectProduct,
                     
-  function( cat, diagram, source )
+  function( cat, diagram, test_object, source )
     
     return PreCompose( cat, UniversalMorphismIntoDirectSum( cat, diagram, source ),
                        IsomorphismFromDirectSumToDirectProduct( cat, diagram ) );
@@ -513,7 +513,7 @@ AddDerivationToCAP( InjectionOfCofactorOfCoproduct,
 ##
 AddDerivationToCAP( UniversalMorphismFromCoproduct,
                     
-  function( cat, diagram, sink )
+  function( cat, diagram, test_object, sink )
     
     return PreCompose( cat, IsomorphismFromCoproductToDirectSum( cat, diagram ),
                        UniversalMorphismFromDirectSum( cat, diagram, sink ) );
@@ -522,7 +522,7 @@ AddDerivationToCAP( UniversalMorphismFromCoproduct,
 ##
 AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
                                        
-  function( cat, diagram, source )
+  function( cat, diagram, test_object, source )
     local test_function, direct_sum_diagonal_difference, kernel_lift;
     
     test_function := UniversalMorphismIntoDirectSum( cat, source );
@@ -541,7 +541,7 @@ AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
 ##
 AddDerivationToCAP( UniversalMorphismFromPushout,
                             
-  function( cat, diagram, sink )
+  function( cat, diagram, test_object, sink )
     local test_function, direct_sum_codiagonal_difference, cokernel_colift;
     
     test_function := UniversalMorphismFromDirectSum( cat, sink );
@@ -715,13 +715,13 @@ AddDerivationToCAP( UniversalMorphismIntoCoimage,
 
 ##
 AddWithGivenDerivationPairToCAP( UniversalMorphismIntoEqualizer,
-  function( cat, diagram, test_morphism )
+  function( cat, diagram, test_object, test_morphism )
     
     return LiftAlongMonomorphism( cat, EmbeddingOfEqualizer( cat, diagram ), test_morphism );
     
   end,
   
-  function( cat, diagram, test_morphism, equalizer )
+  function( cat, diagram, test_object, test_morphism, equalizer )
     
     return LiftAlongMonomorphism( cat, EmbeddingOfEqualizerWithGivenEqualizer( cat, diagram, equalizer ), test_morphism );
     
@@ -741,13 +741,13 @@ AddDerivationToCAP( MorphismFromEqualizerToSink,
 
 ##
 AddWithGivenDerivationPairToCAP( UniversalMorphismFromCoequalizer,
-  function( cat, diagram, test_morphism )
+  function( cat, diagram, test_object, test_morphism )
     
     return ColiftAlongEpimorphism( cat, ProjectionOntoCoequalizer( cat, diagram ), test_morphism );
     
   end,
 
-  function( cat, diagram, test_morphism, coequalizer )
+  function( cat, diagram, test_object, test_morphism, coequalizer )
       
       return ColiftAlongEpimorphism( cat, ProjectionOntoCoequalizerWithGivenCoequalizer( cat, diagram, coequalizer ), test_morphism );
       

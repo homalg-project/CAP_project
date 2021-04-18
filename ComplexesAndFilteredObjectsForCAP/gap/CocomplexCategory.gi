@@ -261,7 +261,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
 
           AddKernelLiftWithGivenKernelObject( category_getter( category ),
             
-            function( morphism, test_morphism, kernel )
+            function( morphism, test_object, test_morphism, kernel )
               local source;
               
               source := Source( test_morphism );
@@ -313,7 +313,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
 
           AddCokernelColiftWithGivenCokernelObject( category_getter( category ),
             
-            function( morphism, test_morphism, cokernel )
+            function( morphism, test_object, test_morphism, cokernel )
               local range;
               
               range := Range( test_morphism );
@@ -449,7 +449,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( category_getter( category ),
             
-            function( diagram, source, direct_product )
+            function( diagram, test_object, source, direct_product )
               
               return morphism_constructor( Source( source[1] ),
                        UniversalMorphismIntoDirectProductWithGivenDirectProduct(
@@ -506,7 +506,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           AddUniversalMorphismFromCoproductWithGivenCoproduct( category_getter( category ),
             
-            function( diagram, sink, coproduct )
+            function( diagram, test_object, sink, coproduct )
               
               return morphism_constructor( coproduct,
                        UniversalMorphismFromCoproductWithGivenCoproduct(
@@ -584,7 +584,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           AddUniversalMorphismIntoFiberProductWithGivenFiberProduct( category_getter( category ),
             
-            function( diagram, source, pullback )
+            function( diagram, test_object, source, pullback )
               
               return morphism_constructor( Source( source[1] ),
                        UniversalMorphismIntoFiberProductWithGivenFiberProduct(
@@ -646,7 +646,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           AddUniversalMorphismFromPushoutWithGivenPushout( category_getter( category ),
             
-            function( diagram, sink, pushout )
+            function( diagram, test_object, sink, pushout )
 
               return morphism_constructor( pushout,
                        UniversalMorphismFromPushoutWithGivenPushout(

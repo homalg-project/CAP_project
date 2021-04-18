@@ -89,25 +89,27 @@ DeclareOperation( "MorphismFromKernelObjectToSinkWithGivenKernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a morphism $\alpha: A \rightarrow B$
+#! The arguments are a morphism $\alpha: A \rightarrow B$, a test object $T$,
 #! and a test morphism $\tau: T \rightarrow A$ satisfying $\alpha \circ \tau \sim_{T,B} 0$.
+#! For convenience, the test object <A>T</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism $u(\tau): T \rightarrow \mathrm{KernelObject}(\alpha)$
 #! given by the universal property of the kernel.
 #! @Returns a morphism in $\mathrm{Hom}(T,\mathrm{KernelObject}(\alpha))$
-#! @Arguments alpha, tau
+#! @Arguments alpha, T, tau
 DeclareOperation( "KernelLift",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are a morphism $\alpha: A \rightarrow B$,
+#! The arguments are a morphism $\alpha: A \rightarrow B$, a test object $T$,
 #! a test morphism $\tau: T \rightarrow A$ satisfying $\alpha \circ \tau \sim_{T,B} 0$,
 #! and an object $K = \mathrm{KernelObject}(\alpha)$.
+#! For convenience, the test object <A>T</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism $u(\tau): T \rightarrow K$
 #! given by the universal property of the kernel.
 #! @Returns a morphism in $\mathrm{Hom}(T,K)$
-#! @Arguments alpha, tau, K
+#! @Arguments alpha, T, tau, K
 DeclareOperation( "KernelLiftWithGivenKernelObject",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 
 ## Add Operations
@@ -406,25 +408,27 @@ DeclareOperation( "MorphismFromSourceToCokernelObjectWithGivenCokernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a morphism $\alpha: A \rightarrow B$
+#! The arguments are a morphism $\alpha: A \rightarrow B$, a test object $T$,
 #! and a test morphism $\tau: B \rightarrow T$ satisfying $\tau \circ \alpha \sim_{A, T} 0$.
+#! For convenience, the test object <A>T</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism $u(\tau): \mathrm{CokernelObject}(\alpha) \rightarrow T$
 #! given by the universal property of the cokernel.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{CokernelObject}(\alpha),T)$
-#! @Arguments alpha, tau
+#! @Arguments alpha, T, tau
 DeclareOperation( "CokernelColift",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are a morphism $\alpha: A \rightarrow B$,
+#! The arguments are a morphism $\alpha: A \rightarrow B$, a test object $T$,
 #! a test morphism $\tau: B \rightarrow T$ satisfying $\tau \circ \alpha \sim_{A, T} 0$,
 #! and an object $K = \mathrm{CokernelObject}(\alpha)$.
+#! For convenience, the test object <A>T</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism $u(\tau): K \rightarrow T$
 #! given by the universal property of the cokernel.
 #! @Returns a morphism in $\mathrm{Hom}(K,T)$
-#! @Arguments alpha, tau, K
+#! @Arguments alpha, T, tau, K
 DeclareOperation( "CokernelColiftWithGivenCokernelObject",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
+                  [ IsCapCategoryMorphism, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 
 ## Add Operations
@@ -1410,58 +1414,62 @@ DeclareOperation( "InjectionOfCofactorOfDirectSumWithGivenDirectSum",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a list of objects $D = (S_1, \dots, S_n)$
+#! The arguments are a list of objects $D = (S_1, \dots, S_n)$, a test object $T$,
 #! and a list of morphisms $\tau = ( \tau_i: T \rightarrow S_i )_{i = 1 \dots n}$.
-#! For convenience, the diagram <A>D</A> can be omitted and is automatically derived from <A>tau</A> in that case.
+#! For convenience, the diagram <A>D</A> and/or the test object <A>T</A> can be omitted
+#! and are automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u_{\mathrm{in}}(\tau): T \rightarrow \bigoplus_{i=1}^n S_i$
 #! given by the universal property of the direct sum.
 #! @Returns a morphism in $\mathrm{Hom}(T, \bigoplus_{i=1}^n S_i)$
-#! @Arguments D,tau
+#! @Arguments D, T, tau
 DeclareOperation( "UniversalMorphismIntoDirectSum",
-                  [ IsList, IsList ] );
+                  [ IsList, IsCapCategoryObject, IsList ] );
 
 DeclareOperation( "UniversalMorphismIntoDirectSum",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
+#! The arguments are a list of objects $D = (S_1, \dots, S_n)$, a test object $T$,
 #! a list of morphisms $\tau = ( \tau_i: T \rightarrow S_i )_{i = 1 \dots n}$,
 #! and an object $S = \bigoplus_{i=1}^n S_i$.
+#! For convenience, the test object <A>T</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u_{\mathrm{in}}(\tau): T \rightarrow S$
 #! given by the universal property of the direct sum.
 #! @Returns a morphism in $\mathrm{Hom}(T, S)$
-#! @Arguments D,tau,S
+#! @Arguments D, T, tau, S
 DeclareOperation( "UniversalMorphismIntoDirectSumWithGivenDirectSum",
-                  [ IsList, IsList, IsCapCategoryObject ] );
+                  [ IsList, IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a list of objects $D = (S_1, \dots, S_n)$
+#! The arguments are a list of objects $D = (S_1, \dots, S_n)$, a test object $T$,
 #! and a list of morphisms $\tau = ( \tau_i: S_i \rightarrow T )_{i = 1 \dots n}$.
-#! For convenience, the diagram <A>D</A> can be omitted and is automatically derived from <A>tau</A> in that case.
+#! For convenience, the diagram <A>D</A> and/or the test object <A>T</A> can be omitted
+#! and are automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u_{\mathrm{out}}(\tau): \bigoplus_{i=1}^n S_i \rightarrow T$
 #! given by the universal property of the direct sum.
 #! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^n S_i, T)$
-#! @Arguments D, tau
+#! @Arguments D, T, tau
 DeclareOperation( "UniversalMorphismFromDirectSum",
-                  [ IsList, IsList ] );
+                  [ IsList, IsCapCategoryObject, IsList ] );
 
 DeclareOperation( "UniversalMorphismFromDirectSum",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are a list of objects $D = (S_1, \dots, S_n)$,
+#! The arguments are a list of objects $D = (S_1, \dots, S_n)$, a test object $T$,
 #! a list of morphisms $\tau = ( \tau_i: S_i \rightarrow T )_{i = 1 \dots n}$,
 #! and an object $S = \bigoplus_{i=1}^n S_i$.
+#! For convenience, the test object <A>T</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u_{\mathrm{out}}(\tau): S \rightarrow T$
 #! given by the universal property of the direct sum.
 #! @Returns a morphism in $\mathrm{Hom}(S, T)$
-#! @Arguments D, tau, S
+#! @Arguments D, T, tau, S
 DeclareOperation( "UniversalMorphismFromDirectSumWithGivenDirectSum",
-                  [ IsList, IsList, IsCapCategoryObject ] );
+                  [ IsList, IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
 #! The argument is a list of objects $D = (S_1, \dots, S_n)$.
@@ -2027,31 +2035,33 @@ DeclareOperation( "InjectionOfCofactorOfCoproductWithGivenCoproduct",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a list of objects $D = ( I_1, \dots, I_n )$,
+#! The arguments are a list of objects $D = ( I_1, \dots, I_n )$, a test object $T$,
 #! and a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )$.
-#! For convenience, the diagram <A>D</A> can be omitted and is automatically derived from <A>tau</A> in that case.
+#! For convenience, the diagram <A>D</A> and/or the test object <A>T</A> can be omitted
+#! and are automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u( \tau ): \bigsqcup_{i=1}^n I_i \rightarrow T$
 #! given by the universal property of the coproduct.
 #! @Returns a morphism in $\mathrm{Hom}(\bigsqcup_{i=1}^n I_i, T)$
-#! @Arguments D, tau
+#! @Arguments D, T, tau
 DeclareOperation( "UniversalMorphismFromCoproduct",
-                  [ IsList, IsList ] );
+                  [ IsList, IsCapCategoryObject, IsList ] );
 
 DeclareOperation( "UniversalMorphismFromCoproduct",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are a list of objects $D = ( I_1, \dots, I_n )$,
+#! The arguments are a list of objects $D = ( I_1, \dots, I_n )$, a test object $T$,
 #! a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )$,
 #! and an object $I = \bigsqcup_{i=1}^n I_i$.
+#! For convenience, the test object <A>T</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u( \tau ): I \rightarrow T$
 #! given by the universal property of the coproduct.
 #! @Returns a morphism in $\mathrm{Hom}(I, T)$
-#! @Arguments D, tau, I
+#! @Arguments D, T, tau, I
 DeclareOperation( "UniversalMorphismFromCoproductWithGivenCoproduct",
-                  [ IsList, IsList, IsCapCategoryObject ] );
+                  [ IsList, IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 ## Add Operations
 
@@ -2286,31 +2296,33 @@ DeclareOperation( "ProjectionInFactorOfDirectProductWithGivenDirectProduct",
                   [ IsList, IsInt, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a list of objects $D = ( P_1, \dots, P_n )$
+#! The arguments are a list of objects $D = ( P_1, \dots, P_n )$, a test object $T$,
 #! and a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )_{i = 1, \dots, n}$.
-#! For convenience, the diagram <A>D</A> can be omitted and is automatically derived from <A>tau</A> in that case.
+#! For convenience, the diagram <A>D</A> and/or the test object <A>T</A> can be omitted
+#! and are automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u(\tau): T \rightarrow \prod_{i=1}^n P_i$
 #! given by the universal property of the direct product.
 #! @Returns a morphism in $\mathrm{Hom}(T, \prod_{i=1}^n P_i)$
-#! @Arguments D, tau
+#! @Arguments D, T, tau
 DeclareOperation( "UniversalMorphismIntoDirectProduct",
-                  [ IsList, IsList ] );
+                  [ IsList, IsCapCategoryObject, IsList ] );
 
 DeclareOperation( "UniversalMorphismIntoDirectProduct",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are a list of objects $D = ( P_1, \dots, P_n )$,
+#! The arguments are a list of objects $D = ( P_1, \dots, P_n )$, a test object $T$,
 #! a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )_{i = 1, \dots, n}$,
 #! and an object $P = \prod_{i=1}^n P_i$.
+#! For convenience, the test object <A>T</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u(\tau): T \rightarrow \prod_{i=1}^n P_i$
 #! given by the universal property of the direct product.
 #! @Returns a morphism in $\mathrm{Hom}(T, \prod_{i=1}^n P_i)$
-#! @Arguments D, tau, P
+#! @Arguments D, T, tau, P
 DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
-                  [ IsList, IsList, IsCapCategoryObject ] );
+                  [ IsList, IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 ## Add Operations
 
@@ -2563,29 +2575,31 @@ DeclareOperation( "MorphismFromEqualizerToSinkWithGivenEqualizer",
                   [ IsList, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$
+#! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$, a test object $T$,
 #! and a morphism $ \tau: T \rightarrow A $
 #! such that $\beta_i \circ \tau  \sim_{T, B} \beta_j \circ \tau$ for all pairs $i,j$.
+#! For convenience, the test object <A>T</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u( \tau ): T \rightarrow \mathrm{Equalizer}(D)$
 #! given by the universal property of the equalizer.
 #! @Returns a morphism in $\mathrm{Hom}( T, \mathrm{Equalizer}(D) )$
-#! @Arguments D, tau
+#! @Arguments D, T, tau
 DeclareOperation( "UniversalMorphismIntoEqualizer",
-                  [ IsList, IsCapCategoryMorphism ] );
+                  [ IsList, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$,
+#! The arguments are a list of morphisms $D = ( \beta_i: A \rightarrow B )_{i = 1 \dots n}$, a test object $T$,
 #! a morphism $\tau: T \rightarrow A )$
 #! such that $\beta_i \circ \tau  \sim_{T, B} \beta_j \circ \tau$ for all pairs $i,j$,
 #! and an object $E = \mathrm{Equalizer}(D)$.
+#! For convenience, the test object <A>T</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u( \tau ): T \rightarrow E$
 #! given by the universal property of the equalizer.
 #! @Returns a morphism in $\mathrm{Hom}( T, E )$
-#! @Arguments D, tau, E
+#! @Arguments D, T, tau, E
 DeclareOperation( "UniversalMorphismIntoEqualizerWithGivenEqualizer",
-                  [ IsList, IsCapCategoryMorphism, IsCapCategoryObject ] );
+                  [ IsList, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 ## Add Operations
 
@@ -2888,29 +2902,31 @@ DeclareOperation( "MorphismFromSourceToCoequalizerWithGivenCoequalizer",
                   [ IsList, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$
+#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$, a test object $T$,
 #! and a morphism $\tau: A \rightarrow T $ such that
 #! $\tau \circ \beta_i \sim_{B,T} \tau \circ \beta_j$ for all pairs $i,j$.
+#! For convenience, the test object <A>T</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u( \tau ): \mathrm{Coequalizer}(D) \rightarrow T$
 #! given by the universal property of the coequalizer.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coequalizer}(D), T )$
-#! @Arguments D, tau
+#! @Arguments D, T, tau
 DeclareOperation( "UniversalMorphismFromCoequalizer",
-                  [ IsList, IsCapCategoryMorphism ] );
+                  [ IsList, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$,
+#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$, a test object $T$,
 #! a morphism $\tau: A \rightarrow T $ such that
 #! $\tau \circ \beta_i \sim_{B,T} \tau \circ \beta_j$,
 #! and an object $C = \mathrm{Coequalizer}(D)$.
+#! For convenience, the test object <A>T</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u( \tau ): C \rightarrow T$
 #! given by the universal property of the coequalizer.
 #! @Returns a morphism in $\mathrm{Hom}( C, T )$
-#! @Arguments D, tau, C
+#! @Arguments D, T, tau, C
 DeclareOperation( "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
-                  [ IsList, IsCapCategoryMorphism, IsCapCategoryObject ] );
+                  [ IsList, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 ## Add Operations
 
@@ -3417,29 +3433,31 @@ DeclareOperation( "MorphismFromFiberProductToSinkWithGivenFiberProduct",
 DeclareGlobalFunction( "UniversalMorphismIntoFiberProduct" );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
+#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$, a test object $T$,
 #! and a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )$
 #! such that $\beta_i \circ \tau_i  \sim_{T, B} \beta_j \circ \tau_j$ for all pairs $i,j$.
+#! For convenience, the test object <A>T</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u( \tau ): T \rightarrow \mathrm{FiberProduct}(D)$
 #! given by the universal property of the fiber product.
 #! @Returns a morphism in $\mathrm{Hom}( T, \mathrm{FiberProduct}(D) )$
-#! @Arguments D, tau
+#! @Arguments D, T, tau
 DeclareOperation( "UniversalMorphismIntoFiberProductOp",
-                  [ IsList, IsList ] );
+                  [ IsList, IsCapCategoryObject, IsList ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$,
+#! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$, a test object $T$,
 #! a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )$
 #! such that $\beta_i \circ \tau_i  \sim_{T, B} \beta_j \circ \tau_j$ for all pairs $i,j$,
 #! and an object $P = \mathrm{FiberProduct}(D)$.
+#! For convenience, the test object <A>T</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u( \tau ): T \rightarrow P$
 #! given by the universal property of the fiber product.
 #! @Returns a morphism in $\mathrm{Hom}( T, P )$
-#! @Arguments D, tau, P
+#! @Arguments D, T, tau, P
 DeclareOperation( "UniversalMorphismIntoFiberProductWithGivenFiberProduct",
-                  [ IsList, IsList, IsCapCategoryObject ] );
+                  [ IsList, IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 ## Add Operations
 
@@ -3935,29 +3953,31 @@ DeclareOperation( "MorphismFromSourceToPushoutWithGivenPushout",
 DeclareGlobalFunction( "UniversalMorphismFromPushout" );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
+#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$, a test object $T$,
 #! and a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ such that
 #! $\tau_i \circ \beta_i \sim_{B,T} \tau_j \circ \beta_j$.
+#! For convenience, the test object <A>T</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u( \tau ): \mathrm{Pushout}(D) \rightarrow T$
 #! given by the universal property of the pushout.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Pushout}(D), T )$
-#! @Arguments D, tau
+#! @Arguments D, T, tau
 DeclareOperation( "UniversalMorphismFromPushoutOp",
-                  [ IsList, IsList ] );
+                  [ IsList, IsCapCategoryObject, IsList ] );
 
 #! @Description
-#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$,
+#! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$, a test object $T$,
 #! a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ such that
 #! $\tau_i \circ \beta_i \sim_{B,T} \tau_j \circ \beta_j$,
 #! and an object $I = \mathrm{Pushout}(D)$.
+#! For convenience, the test object <A>T</A> can be omitted and is automatically derived from <A>tau</A> in that case.
 #! The output is the morphism
 #! $u( \tau ): I \rightarrow T$
 #! given by the universal property of the pushout.
 #! @Returns a morphism in $\mathrm{Hom}( I, T )$
-#! @Arguments D, tau, I
+#! @Arguments D, T, tau, I
 DeclareOperation( "UniversalMorphismFromPushoutWithGivenPushout",
-                  [ IsList, IsList, IsCapCategoryObject ] );
+                  [ IsList, IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 ## Add Operations
 

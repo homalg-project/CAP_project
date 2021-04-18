@@ -26,9 +26,9 @@ end : Description := "ProjectionInFactorOfDirectProduct by calling ProjectionInF
 ##
 AddDerivationToCAP( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
                     [ [ UniversalMorphismIntoDirectProduct, 1 ] ],
-  function( cat, objects, tau, with_given_object )
+  function( cat, objects, T, tau, with_given_object )
     
-    return UniversalMorphismIntoDirectProduct( cat, objects, tau );
+    return UniversalMorphismIntoDirectProduct( cat, objects, T, tau );
     
 end : Description := "UniversalMorphismIntoDirectProductWithGivenDirectProduct by calling UniversalMorphismIntoDirectProduct with the last argument dropped" );
 
@@ -36,9 +36,9 @@ end : Description := "UniversalMorphismIntoDirectProductWithGivenDirectProduct b
 AddDerivationToCAP( UniversalMorphismIntoDirectProduct,
                     [ [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 1 ],
                       [ DirectProduct, 1 ] ],
-  function( cat, objects, tau )
+  function( cat, objects, T, tau )
     
-    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, objects, tau, DirectProduct( cat, objects ) );
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, objects, T, tau, DirectProduct( cat, objects ) );
     
 end : Description := "UniversalMorphismIntoDirectProduct by calling UniversalMorphismIntoDirectProductWithGivenDirectProduct with DirectProduct as last argument" );
 
@@ -64,9 +64,9 @@ end : Description := "InjectionOfCofactorOfCoproduct by calling InjectionOfCofac
 ##
 AddDerivationToCAP( UniversalMorphismFromCoproductWithGivenCoproduct,
                     [ [ UniversalMorphismFromCoproduct, 1 ] ],
-  function( cat, objects, tau, with_given_object )
+  function( cat, objects, T, tau, with_given_object )
     
-    return UniversalMorphismFromCoproduct( cat, objects, tau );
+    return UniversalMorphismFromCoproduct( cat, objects, T, tau );
     
 end : Description := "UniversalMorphismFromCoproductWithGivenCoproduct by calling UniversalMorphismFromCoproduct with the last argument dropped" );
 
@@ -74,9 +74,9 @@ end : Description := "UniversalMorphismFromCoproductWithGivenCoproduct by callin
 AddDerivationToCAP( UniversalMorphismFromCoproduct,
                     [ [ UniversalMorphismFromCoproductWithGivenCoproduct, 1 ],
                       [ Coproduct, 1 ] ],
-  function( cat, objects, tau )
+  function( cat, objects, T, tau )
     
-    return UniversalMorphismFromCoproductWithGivenCoproduct( cat, objects, tau, Coproduct( cat, objects ) );
+    return UniversalMorphismFromCoproductWithGivenCoproduct( cat, objects, T, tau, Coproduct( cat, objects ) );
     
 end : Description := "UniversalMorphismFromCoproduct by calling UniversalMorphismFromCoproductWithGivenCoproduct with Coproduct as last argument" );
 
@@ -99,6 +99,28 @@ InstallOtherMethod( UniversalMorphismIntoDirectProduct,
     #% CAP_JIT_RESOLVE_FUNCTION
     
     return UniversalMorphismIntoDirectProduct( cat, List( list, Range ), list );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoDirectProduct,
+               [ IsCapCategoryObject, IsList ],
+               
+  function( test_object, list )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return UniversalMorphismIntoDirectProduct( CapCategory( test_object ), test_object, list );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoDirectProduct,
+               [ IsCapCategory, IsCapCategoryObject, IsList ],
+               
+  function( cat, test_object, list )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return UniversalMorphismIntoDirectProduct( cat, List( list, Range ), test_object, list );
     
 end );
 
@@ -204,6 +226,152 @@ InstallOtherMethod( UniversalMorphismIntoDirectProduct,
     
 end );
 
+InstallOtherMethod( UniversalMorphismIntoDirectProduct,
+                    [ IsList, IsList ],
+                    
+    function( diagram, tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismIntoDirectProduct( diagram, Source( tau[1] ), tau );
+        
+end );
+
+InstallOtherMethod( UniversalMorphismIntoDirectProduct,
+                    [ IsCapCategory, IsList, IsList ],
+                    
+    function( cat, diagram, tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismIntoDirectProduct( cat, diagram, Source( tau[1] ), tau );
+        
+end );
+
+InstallOtherMethod( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
+                    [ IsList, IsList, IsCapCategoryObject ],
+                    
+    function( diagram, tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismIntoDirectProductWithGivenDirectProduct( diagram, Source( tau[1] ), tau, P );
+        
+end );
+
+InstallOtherMethod( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
+                    [ IsCapCategory, IsList, IsList, IsCapCategoryObject ],
+                    
+    function( cat, diagram, tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, diagram, Source( tau[1] ), tau, P );
+        
+end );
+
+##
+InstallMethod( AddUniversalMorphismIntoDirectProduct,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local nr_arguments, wrapper;
+    
+    nr_arguments := NumberArgumentsFunction( func );
+    
+    wrapper := fail;
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        if nr_arguments = 3 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismIntoDirectProduct with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 4 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { cat, diagram, T, tau } -> func( cat, diagram, tau );
+            
+        fi;
+        
+    else
+        
+        if nr_arguments = 2 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismIntoDirectProduct with a function with 2 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 3 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { diagram, T, tau } -> func( diagram, tau );
+            
+        fi;
+        
+    fi;
+    
+    if wrapper = fail then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    AddUniversalMorphismIntoDirectProduct( category, wrapper );
+    
+end );
+
+##
+InstallMethod( AddUniversalMorphismIntoDirectProductWithGivenDirectProduct,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local nr_arguments, wrapper;
+    
+    nr_arguments := NumberArgumentsFunction( func );
+    
+    wrapper := fail;
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        if nr_arguments = 4 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismIntoDirectProductWithGivenDirectProduct with a function with 4 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 5 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { cat, diagram, T, tau, P } -> func( cat, diagram, tau, P );
+            
+        fi;
+        
+    else
+        
+        if nr_arguments = 3 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismIntoDirectProductWithGivenDirectProduct with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 4 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { diagram, T, tau, P } -> func( diagram, tau, P );
+            
+        fi;
+        
+    fi;
+    
+    if wrapper = fail then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( category, wrapper );
+    
+end );
+
 ##
 InstallMethod( UniversalMorphismFromCoproduct,
                [ IsList ],
@@ -223,6 +391,28 @@ InstallOtherMethod( UniversalMorphismFromCoproduct,
     #% CAP_JIT_RESOLVE_FUNCTION
     
     return UniversalMorphismFromCoproduct( cat, List( list, Source ), list );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromCoproduct,
+               [ IsCapCategoryObject, IsList ],
+               
+  function( test_object, list )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return UniversalMorphismFromCoproduct( CapCategory( test_object ), test_object, list );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromCoproduct,
+               [ IsCapCategory, IsCapCategoryObject, IsList ],
+               
+  function( cat, test_object, list )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return UniversalMorphismFromCoproduct( cat, List( list, Source ), test_object, list );
     
 end );
 
@@ -328,6 +518,152 @@ InstallOtherMethod( UniversalMorphismFromCoproduct,
     
 end );
 
+InstallOtherMethod( UniversalMorphismFromCoproduct,
+                    [ IsList, IsList ],
+                    
+    function( diagram, tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismFromCoproduct( diagram, Range( tau[1] ), tau );
+        
+end );
+
+InstallOtherMethod( UniversalMorphismFromCoproduct,
+                    [ IsCapCategory, IsList, IsList ],
+                    
+    function( cat, diagram, tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismFromCoproduct( cat, diagram, Range( tau[1] ), tau );
+        
+end );
+
+InstallOtherMethod( UniversalMorphismFromCoproductWithGivenCoproduct,
+                    [ IsList, IsList, IsCapCategoryObject ],
+                    
+    function( diagram, tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismFromCoproductWithGivenCoproduct( diagram, Range( tau[1] ), tau, P );
+        
+end );
+
+InstallOtherMethod( UniversalMorphismFromCoproductWithGivenCoproduct,
+                    [ IsCapCategory, IsList, IsList, IsCapCategoryObject ],
+                    
+    function( cat, diagram, tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismFromCoproductWithGivenCoproduct( cat, diagram, Range( tau[1] ), tau, P );
+        
+end );
+
+##
+InstallMethod( AddUniversalMorphismFromCoproduct,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local nr_arguments, wrapper;
+    
+    nr_arguments := NumberArgumentsFunction( func );
+    
+    wrapper := fail;
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        if nr_arguments = 3 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismFromCoproduct with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 4 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { cat, diagram, T, tau } -> func( cat, diagram, tau );
+            
+        fi;
+        
+    else
+        
+        if nr_arguments = 2 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismFromCoproduct with a function with 2 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 3 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { diagram, T, tau } -> func( diagram, tau );
+            
+        fi;
+        
+    fi;
+    
+    if wrapper = fail then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    AddUniversalMorphismFromCoproduct( category, wrapper );
+    
+end );
+
+##
+InstallMethod( AddUniversalMorphismFromCoproductWithGivenCoproduct,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local nr_arguments, wrapper;
+    
+    nr_arguments := NumberArgumentsFunction( func );
+    
+    wrapper := fail;
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        if nr_arguments = 4 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismFromCoproductWithGivenCoproduct with a function with 4 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 5 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { cat, diagram, T, tau, P } -> func( cat, diagram, tau, P );
+            
+        fi;
+        
+    else
+        
+        if nr_arguments = 3 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismFromCoproductWithGivenCoproduct with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 4 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { diagram, T, tau, P } -> func( diagram, tau, P );
+            
+        fi;
+        
+    fi;
+    
+    if wrapper = fail then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    AddUniversalMorphismFromCoproductWithGivenCoproduct( category, wrapper );
+    
+end );
+
 ##
 InstallMethod( DirectProductFunctorial,
                [ IsList ],
@@ -410,9 +746,9 @@ end : Description := "ProjectionInFactorOfDirectSum by calling ProjectionInFacto
 ##
 AddDerivationToCAP( UniversalMorphismIntoDirectSumWithGivenDirectSum,
                     [ [ UniversalMorphismIntoDirectSum, 1 ] ],
-  function( cat, objects, tau, with_given_object )
+  function( cat, objects, T, tau, with_given_object )
     
-    return UniversalMorphismIntoDirectSum( cat, objects, tau );
+    return UniversalMorphismIntoDirectSum( cat, objects, T, tau );
     
 end : Description := "UniversalMorphismIntoDirectSumWithGivenDirectSum by calling UniversalMorphismIntoDirectSum with the last argument dropped" );
 
@@ -420,9 +756,9 @@ end : Description := "UniversalMorphismIntoDirectSumWithGivenDirectSum by callin
 AddDerivationToCAP( UniversalMorphismIntoDirectSum,
                     [ [ UniversalMorphismIntoDirectSumWithGivenDirectSum, 1 ],
                       [ DirectSum, 1 ] ],
-  function( cat, objects, tau )
+  function( cat, objects, T, tau )
     
-    return UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, objects, tau, DirectSum( cat, objects ) );
+    return UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, objects, T, tau, DirectSum( cat, objects ) );
     
 end : Description := "UniversalMorphismIntoDirectSum by calling UniversalMorphismIntoDirectSumWithGivenDirectSum with DirectSum as last argument" );
 
@@ -448,9 +784,9 @@ end : Description := "InjectionOfCofactorOfDirectSum by calling InjectionOfCofac
 ##
 AddDerivationToCAP( UniversalMorphismFromDirectSumWithGivenDirectSum,
                     [ [ UniversalMorphismFromDirectSum, 1 ] ],
-  function( cat, objects, tau, with_given_object )
+  function( cat, objects, T, tau, with_given_object )
     
-    return UniversalMorphismFromDirectSum( cat, objects, tau );
+    return UniversalMorphismFromDirectSum( cat, objects, T, tau );
     
 end : Description := "UniversalMorphismFromDirectSumWithGivenDirectSum by calling UniversalMorphismFromDirectSum with the last argument dropped" );
 
@@ -458,9 +794,9 @@ end : Description := "UniversalMorphismFromDirectSumWithGivenDirectSum by callin
 AddDerivationToCAP( UniversalMorphismFromDirectSum,
                     [ [ UniversalMorphismFromDirectSumWithGivenDirectSum, 1 ],
                       [ DirectSum, 1 ] ],
-  function( cat, objects, tau )
+  function( cat, objects, T, tau )
     
-    return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, objects, tau, DirectSum( cat, objects ) );
+    return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, objects, T, tau, DirectSum( cat, objects ) );
     
 end : Description := "UniversalMorphismFromDirectSum by calling UniversalMorphismFromDirectSumWithGivenDirectSum with DirectSum as last argument" );
 
@@ -483,6 +819,28 @@ InstallOtherMethod( UniversalMorphismIntoDirectSum,
     #% CAP_JIT_RESOLVE_FUNCTION
     
     return UniversalMorphismIntoDirectSum( cat, List( list, Range ), list );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoDirectSum,
+               [ IsCapCategoryObject, IsList ],
+               
+  function( test_object, list )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return UniversalMorphismIntoDirectSum( CapCategory( test_object ), test_object, list );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismIntoDirectSum,
+               [ IsCapCategory, IsCapCategoryObject, IsList ],
+               
+  function( cat, test_object, list )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return UniversalMorphismIntoDirectSum( cat, List( list, Range ), test_object, list );
     
 end );
 
@@ -588,6 +946,152 @@ InstallOtherMethod( UniversalMorphismIntoDirectSum,
     
 end );
 
+InstallOtherMethod( UniversalMorphismIntoDirectSum,
+                    [ IsList, IsList ],
+                    
+    function( diagram, tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismIntoDirectSum( diagram, Source( tau[1] ), tau );
+        
+end );
+
+InstallOtherMethod( UniversalMorphismIntoDirectSum,
+                    [ IsCapCategory, IsList, IsList ],
+                    
+    function( cat, diagram, tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismIntoDirectSum( cat, diagram, Source( tau[1] ), tau );
+        
+end );
+
+InstallOtherMethod( UniversalMorphismIntoDirectSumWithGivenDirectSum,
+                    [ IsList, IsList, IsCapCategoryObject ],
+                    
+    function( diagram, tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismIntoDirectSumWithGivenDirectSum( diagram, Source( tau[1] ), tau, P );
+        
+end );
+
+InstallOtherMethod( UniversalMorphismIntoDirectSumWithGivenDirectSum,
+                    [ IsCapCategory, IsList, IsList, IsCapCategoryObject ],
+                    
+    function( cat, diagram, tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, diagram, Source( tau[1] ), tau, P );
+        
+end );
+
+##
+InstallMethod( AddUniversalMorphismIntoDirectSum,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local nr_arguments, wrapper;
+    
+    nr_arguments := NumberArgumentsFunction( func );
+    
+    wrapper := fail;
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        if nr_arguments = 3 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismIntoDirectSum with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 4 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { cat, diagram, T, tau } -> func( cat, diagram, tau );
+            
+        fi;
+        
+    else
+        
+        if nr_arguments = 2 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismIntoDirectSum with a function with 2 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 3 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { diagram, T, tau } -> func( diagram, tau );
+            
+        fi;
+        
+    fi;
+    
+    if wrapper = fail then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    AddUniversalMorphismIntoDirectSum( category, wrapper );
+    
+end );
+
+##
+InstallMethod( AddUniversalMorphismIntoDirectSumWithGivenDirectSum,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local nr_arguments, wrapper;
+    
+    nr_arguments := NumberArgumentsFunction( func );
+    
+    wrapper := fail;
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        if nr_arguments = 4 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismIntoDirectSumWithGivenDirectSum with a function with 4 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 5 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { cat, diagram, T, tau, P } -> func( cat, diagram, tau, P );
+            
+        fi;
+        
+    else
+        
+        if nr_arguments = 3 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismIntoDirectSumWithGivenDirectSum with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 4 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { diagram, T, tau, P } -> func( diagram, tau, P );
+            
+        fi;
+        
+    fi;
+    
+    if wrapper = fail then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category, wrapper );
+    
+end );
+
 ##
 InstallMethod( UniversalMorphismFromDirectSum,
                [ IsList ],
@@ -607,6 +1111,28 @@ InstallOtherMethod( UniversalMorphismFromDirectSum,
     #% CAP_JIT_RESOLVE_FUNCTION
     
     return UniversalMorphismFromDirectSum( cat, List( list, Source ), list );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromDirectSum,
+               [ IsCapCategoryObject, IsList ],
+               
+  function( test_object, list )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return UniversalMorphismFromDirectSum( CapCategory( test_object ), test_object, list );
+    
+end );
+
+##
+InstallOtherMethod( UniversalMorphismFromDirectSum,
+               [ IsCapCategory, IsCapCategoryObject, IsList ],
+               
+  function( cat, test_object, list )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return UniversalMorphismFromDirectSum( cat, List( list, Source ), test_object, list );
     
 end );
 
@@ -712,6 +1238,152 @@ InstallOtherMethod( UniversalMorphismFromDirectSum,
     
 end );
 
+InstallOtherMethod( UniversalMorphismFromDirectSum,
+                    [ IsList, IsList ],
+                    
+    function( diagram, tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismFromDirectSum( diagram, Range( tau[1] ), tau );
+        
+end );
+
+InstallOtherMethod( UniversalMorphismFromDirectSum,
+                    [ IsCapCategory, IsList, IsList ],
+                    
+    function( cat, diagram, tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismFromDirectSum( cat, diagram, Range( tau[1] ), tau );
+        
+end );
+
+InstallOtherMethod( UniversalMorphismFromDirectSumWithGivenDirectSum,
+                    [ IsList, IsList, IsCapCategoryObject ],
+                    
+    function( diagram, tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismFromDirectSumWithGivenDirectSum( diagram, Range( tau[1] ), tau, P );
+        
+end );
+
+InstallOtherMethod( UniversalMorphismFromDirectSumWithGivenDirectSum,
+                    [ IsCapCategory, IsList, IsList, IsCapCategoryObject ],
+                    
+    function( cat, diagram, tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, diagram, Range( tau[1] ), tau, P );
+        
+end );
+
+##
+InstallMethod( AddUniversalMorphismFromDirectSum,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local nr_arguments, wrapper;
+    
+    nr_arguments := NumberArgumentsFunction( func );
+    
+    wrapper := fail;
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        if nr_arguments = 3 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismFromDirectSum with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 4 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { cat, diagram, T, tau } -> func( cat, diagram, tau );
+            
+        fi;
+        
+    else
+        
+        if nr_arguments = 2 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismFromDirectSum with a function with 2 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 3 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { diagram, T, tau } -> func( diagram, tau );
+            
+        fi;
+        
+    fi;
+    
+    if wrapper = fail then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    AddUniversalMorphismFromDirectSum( category, wrapper );
+    
+end );
+
+##
+InstallMethod( AddUniversalMorphismFromDirectSumWithGivenDirectSum,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local nr_arguments, wrapper;
+    
+    nr_arguments := NumberArgumentsFunction( func );
+    
+    wrapper := fail;
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        if nr_arguments = 4 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismFromDirectSumWithGivenDirectSum with a function with 4 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 5 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { cat, diagram, T, tau, P } -> func( cat, diagram, tau, P );
+            
+        fi;
+        
+    else
+        
+        if nr_arguments = 3 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismFromDirectSumWithGivenDirectSum with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 4 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { diagram, T, tau, P } -> func( diagram, tau, P );
+            
+        fi;
+        
+    fi;
+    
+    if wrapper = fail then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    AddUniversalMorphismFromDirectSumWithGivenDirectSum( category, wrapper );
+    
+end );
+
 ##
 InstallMethod( DirectSumFunctorial,
                [ IsList ],
@@ -783,9 +1455,9 @@ end : Description := "MorphismFromFiberProductToSink by calling MorphismFromFibe
 ##
 AddDerivationToCAP( UniversalMorphismIntoFiberProductWithGivenFiberProduct,
                     [ [ UniversalMorphismIntoFiberProduct, 1 ] ],
-  function( cat, morphisms, tau, with_given_object )
+  function( cat, morphisms, T, tau, with_given_object )
     
-    return UniversalMorphismIntoFiberProduct( cat, morphisms, tau );
+    return UniversalMorphismIntoFiberProduct( cat, morphisms, T, tau );
     
 end : Description := "UniversalMorphismIntoFiberProductWithGivenFiberProduct by calling UniversalMorphismIntoFiberProduct with the last argument dropped" );
 
@@ -793,9 +1465,9 @@ end : Description := "UniversalMorphismIntoFiberProductWithGivenFiberProduct by 
 AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
                     [ [ UniversalMorphismIntoFiberProductWithGivenFiberProduct, 1 ],
                       [ FiberProduct, 1 ] ],
-  function( cat, morphisms, tau )
+  function( cat, morphisms, T, tau )
     
-    return UniversalMorphismIntoFiberProductWithGivenFiberProduct( cat, morphisms, tau, FiberProduct( cat, morphisms ) );
+    return UniversalMorphismIntoFiberProductWithGivenFiberProduct( cat, morphisms, T, tau, FiberProduct( cat, morphisms ) );
     
 end : Description := "UniversalMorphismIntoFiberProduct by calling UniversalMorphismIntoFiberProductWithGivenFiberProduct with FiberProduct as last argument" );
 
@@ -840,9 +1512,9 @@ end : Description := "MorphismFromSourceToPushout by calling MorphismFromSourceT
 ##
 AddDerivationToCAP( UniversalMorphismFromPushoutWithGivenPushout,
                     [ [ UniversalMorphismFromPushout, 1 ] ],
-  function( cat, morphisms, tau, with_given_object )
+  function( cat, morphisms, T, tau, with_given_object )
     
-    return UniversalMorphismFromPushout( cat, morphisms, tau );
+    return UniversalMorphismFromPushout( cat, morphisms, T, tau );
     
 end : Description := "UniversalMorphismFromPushoutWithGivenPushout by calling UniversalMorphismFromPushout with the last argument dropped" );
 
@@ -850,11 +1522,223 @@ end : Description := "UniversalMorphismFromPushoutWithGivenPushout by calling Un
 AddDerivationToCAP( UniversalMorphismFromPushout,
                     [ [ UniversalMorphismFromPushoutWithGivenPushout, 1 ],
                       [ Pushout, 1 ] ],
-  function( cat, morphisms, tau )
+  function( cat, morphisms, T, tau )
     
-    return UniversalMorphismFromPushoutWithGivenPushout( cat, morphisms, tau, Pushout( cat, morphisms ) );
+    return UniversalMorphismFromPushoutWithGivenPushout( cat, morphisms, T, tau, Pushout( cat, morphisms ) );
     
 end : Description := "UniversalMorphismFromPushout by calling UniversalMorphismFromPushoutWithGivenPushout with Pushout as last argument" );
+
+##
+InstallMethod( AddUniversalMorphismIntoFiberProduct,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local nr_arguments, wrapper;
+    
+    nr_arguments := NumberArgumentsFunction( func );
+    
+    wrapper := fail;
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        if nr_arguments = 3 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismIntoFiberProduct with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 4 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { cat, diagram, T, tau } -> func( cat, diagram, tau );
+            
+        fi;
+        
+    else
+        
+        if nr_arguments = 2 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismIntoFiberProduct with a function with 2 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 3 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { diagram, T, tau } -> func( diagram, tau );
+            
+        fi;
+        
+    fi;
+    
+    if wrapper = fail then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    AddUniversalMorphismIntoFiberProduct( category, wrapper );
+    
+end );
+
+##
+InstallMethod( AddUniversalMorphismIntoFiberProductWithGivenFiberProduct,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local nr_arguments, wrapper;
+    
+    nr_arguments := NumberArgumentsFunction( func );
+    
+    wrapper := fail;
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        if nr_arguments = 4 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismIntoFiberProductWithGivenFiberProduct with a function with 4 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 5 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { cat, diagram, T, tau, P } -> func( cat, diagram, tau, P );
+            
+        fi;
+        
+    else
+        
+        if nr_arguments = 3 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismIntoFiberProductWithGivenFiberProduct with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 4 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { diagram, T, tau, P } -> func( diagram, tau, P );
+            
+        fi;
+        
+    fi;
+    
+    if wrapper = fail then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    AddUniversalMorphismIntoFiberProductWithGivenFiberProduct( category, wrapper );
+    
+end );
+
+##
+InstallMethod( AddUniversalMorphismFromPushout,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local nr_arguments, wrapper;
+    
+    nr_arguments := NumberArgumentsFunction( func );
+    
+    wrapper := fail;
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        if nr_arguments = 3 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismFromPushout with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 4 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { cat, diagram, T, tau } -> func( cat, diagram, tau );
+            
+        fi;
+        
+    else
+        
+        if nr_arguments = 2 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismFromPushout with a function with 2 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 3 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { diagram, T, tau } -> func( diagram, tau );
+            
+        fi;
+        
+    fi;
+    
+    if wrapper = fail then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    AddUniversalMorphismFromPushout( category, wrapper );
+    
+end );
+
+##
+InstallMethod( AddUniversalMorphismFromPushoutWithGivenPushout,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local nr_arguments, wrapper;
+    
+    nr_arguments := NumberArgumentsFunction( func );
+    
+    wrapper := fail;
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        if nr_arguments = 4 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismFromPushoutWithGivenPushout with a function with 4 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 5 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { cat, diagram, T, tau, P } -> func( cat, diagram, tau, P );
+            
+        fi;
+        
+    else
+        
+        if nr_arguments = 3 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismFromPushoutWithGivenPushout with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 4 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { diagram, T, tau, P } -> func( diagram, tau, P );
+            
+        fi;
+        
+    fi;
+    
+    if wrapper = fail then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    AddUniversalMorphismFromPushoutWithGivenPushout( category, wrapper );
+    
+end );
 
 ##
 InstallMethod( FiberProductFunctorial,
@@ -957,9 +1841,9 @@ end : Description := "MorphismFromEqualizerToSink by calling MorphismFromEqualiz
 ##
 AddDerivationToCAP( UniversalMorphismIntoEqualizerWithGivenEqualizer,
                     [ [ UniversalMorphismIntoEqualizer, 1 ] ],
-  function( cat, morphisms, tau, with_given_object )
+  function( cat, morphisms, T, tau, with_given_object )
     
-    return UniversalMorphismIntoEqualizer( cat, morphisms, tau );
+    return UniversalMorphismIntoEqualizer( cat, morphisms, T, tau );
     
 end : Description := "UniversalMorphismIntoEqualizerWithGivenEqualizer by calling UniversalMorphismIntoEqualizer with the last argument dropped" );
 
@@ -967,9 +1851,9 @@ end : Description := "UniversalMorphismIntoEqualizerWithGivenEqualizer by callin
 AddDerivationToCAP( UniversalMorphismIntoEqualizer,
                     [ [ UniversalMorphismIntoEqualizerWithGivenEqualizer, 1 ],
                       [ Equalizer, 1 ] ],
-  function( cat, morphisms, tau )
+  function( cat, morphisms, T, tau )
     
-    return UniversalMorphismIntoEqualizerWithGivenEqualizer( cat, morphisms, tau, Equalizer( cat, morphisms ) );
+    return UniversalMorphismIntoEqualizerWithGivenEqualizer( cat, morphisms, T, tau, Equalizer( cat, morphisms ) );
     
 end : Description := "UniversalMorphismIntoEqualizer by calling UniversalMorphismIntoEqualizerWithGivenEqualizer with Equalizer as last argument" );
 
@@ -1014,9 +1898,9 @@ end : Description := "MorphismFromSourceToCoequalizer by calling MorphismFromSou
 ##
 AddDerivationToCAP( UniversalMorphismFromCoequalizerWithGivenCoequalizer,
                     [ [ UniversalMorphismFromCoequalizer, 1 ] ],
-  function( cat, morphisms, tau, with_given_object )
+  function( cat, morphisms, T, tau, with_given_object )
     
-    return UniversalMorphismFromCoequalizer( cat, morphisms, tau );
+    return UniversalMorphismFromCoequalizer( cat, morphisms, T, tau );
     
 end : Description := "UniversalMorphismFromCoequalizerWithGivenCoequalizer by calling UniversalMorphismFromCoequalizer with the last argument dropped" );
 
@@ -1024,11 +1908,303 @@ end : Description := "UniversalMorphismFromCoequalizerWithGivenCoequalizer by ca
 AddDerivationToCAP( UniversalMorphismFromCoequalizer,
                     [ [ UniversalMorphismFromCoequalizerWithGivenCoequalizer, 1 ],
                       [ Coequalizer, 1 ] ],
-  function( cat, morphisms, tau )
+  function( cat, morphisms, T, tau )
     
-    return UniversalMorphismFromCoequalizerWithGivenCoequalizer( cat, morphisms, tau, Coequalizer( cat, morphisms ) );
+    return UniversalMorphismFromCoequalizerWithGivenCoequalizer( cat, morphisms, T, tau, Coequalizer( cat, morphisms ) );
     
 end : Description := "UniversalMorphismFromCoequalizer by calling UniversalMorphismFromCoequalizerWithGivenCoequalizer with Coequalizer as last argument" );
+
+InstallOtherMethod( UniversalMorphismIntoEqualizer,
+                    [ IsList, IsCapCategoryMorphism ],
+                    
+    function( diagram, tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismIntoEqualizer( diagram, Source( tau ), tau );
+        
+end );
+
+InstallOtherMethod( UniversalMorphismIntoEqualizer,
+                    [ IsCapCategory, IsList, IsCapCategoryMorphism ],
+                    
+    function( cat, diagram, tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismIntoEqualizer( cat, diagram, Source( tau ), tau );
+        
+end );
+
+InstallOtherMethod( UniversalMorphismIntoEqualizerWithGivenEqualizer,
+                    [ IsList, IsCapCategoryMorphism, IsCapCategoryObject ],
+                    
+    function( diagram, tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismIntoEqualizerWithGivenEqualizer( diagram, Source( tau ), tau, P );
+        
+end );
+
+InstallOtherMethod( UniversalMorphismIntoEqualizerWithGivenEqualizer,
+                    [ IsCapCategory, IsList, IsCapCategoryMorphism, IsCapCategoryObject ],
+                    
+    function( cat, diagram, tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismIntoEqualizerWithGivenEqualizer( cat, diagram, Source( tau ), tau, P );
+        
+end );
+
+##
+InstallMethod( AddUniversalMorphismIntoEqualizer,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local nr_arguments, wrapper;
+    
+    nr_arguments := NumberArgumentsFunction( func );
+    
+    wrapper := fail;
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        if nr_arguments = 3 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismIntoEqualizer with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 4 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { cat, diagram, T, tau } -> func( cat, diagram, tau );
+            
+        fi;
+        
+    else
+        
+        if nr_arguments = 2 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismIntoEqualizer with a function with 2 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 3 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { diagram, T, tau } -> func( diagram, tau );
+            
+        fi;
+        
+    fi;
+    
+    if wrapper = fail then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    AddUniversalMorphismIntoEqualizer( category, wrapper );
+    
+end );
+
+##
+InstallMethod( AddUniversalMorphismIntoEqualizerWithGivenEqualizer,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local nr_arguments, wrapper;
+    
+    nr_arguments := NumberArgumentsFunction( func );
+    
+    wrapper := fail;
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        if nr_arguments = 4 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismIntoEqualizerWithGivenEqualizer with a function with 4 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 5 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { cat, diagram, T, tau, P } -> func( cat, diagram, tau, P );
+            
+        fi;
+        
+    else
+        
+        if nr_arguments = 3 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismIntoEqualizerWithGivenEqualizer with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 4 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { diagram, T, tau, P } -> func( diagram, tau, P );
+            
+        fi;
+        
+    fi;
+    
+    if wrapper = fail then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    AddUniversalMorphismIntoEqualizerWithGivenEqualizer( category, wrapper );
+    
+end );
+
+InstallOtherMethod( UniversalMorphismFromCoequalizer,
+                    [ IsList, IsCapCategoryMorphism ],
+                    
+    function( diagram, tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismFromCoequalizer( diagram, Range( tau ), tau );
+        
+end );
+
+InstallOtherMethod( UniversalMorphismFromCoequalizer,
+                    [ IsCapCategory, IsList, IsCapCategoryMorphism ],
+                    
+    function( cat, diagram, tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismFromCoequalizer( cat, diagram, Range( tau ), tau );
+        
+end );
+
+InstallOtherMethod( UniversalMorphismFromCoequalizerWithGivenCoequalizer,
+                    [ IsList, IsCapCategoryMorphism, IsCapCategoryObject ],
+                    
+    function( diagram, tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismFromCoequalizerWithGivenCoequalizer( diagram, Range( tau ), tau, P );
+        
+end );
+
+InstallOtherMethod( UniversalMorphismFromCoequalizerWithGivenCoequalizer,
+                    [ IsCapCategory, IsList, IsCapCategoryMorphism, IsCapCategoryObject ],
+                    
+    function( cat, diagram, tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismFromCoequalizerWithGivenCoequalizer( cat, diagram, Range( tau ), tau, P );
+        
+end );
+
+##
+InstallMethod( AddUniversalMorphismFromCoequalizer,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local nr_arguments, wrapper;
+    
+    nr_arguments := NumberArgumentsFunction( func );
+    
+    wrapper := fail;
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        if nr_arguments = 3 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismFromCoequalizer with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 4 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { cat, diagram, T, tau } -> func( cat, diagram, tau );
+            
+        fi;
+        
+    else
+        
+        if nr_arguments = 2 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismFromCoequalizer with a function with 2 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 3 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { diagram, T, tau } -> func( diagram, tau );
+            
+        fi;
+        
+    fi;
+    
+    if wrapper = fail then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    AddUniversalMorphismFromCoequalizer( category, wrapper );
+    
+end );
+
+##
+InstallMethod( AddUniversalMorphismFromCoequalizerWithGivenCoequalizer,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local nr_arguments, wrapper;
+    
+    nr_arguments := NumberArgumentsFunction( func );
+    
+    wrapper := fail;
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        if nr_arguments = 4 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismFromCoequalizerWithGivenCoequalizer with a function with 4 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 5 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { cat, diagram, T, tau, P } -> func( cat, diagram, tau, P );
+            
+        fi;
+        
+    else
+        
+        if nr_arguments = 3 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddUniversalMorphismFromCoequalizerWithGivenCoequalizer with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 4 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { diagram, T, tau, P } -> func( diagram, tau, P );
+            
+        fi;
+        
+    fi;
+    
+    if wrapper = fail then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    AddUniversalMorphismFromCoequalizerWithGivenCoequalizer( category, wrapper );
+    
+end );
 
 ##
 InstallMethod( EqualizerFunctorial,
@@ -1131,9 +2307,9 @@ end : Description := "MorphismFromKernelObjectToSink by calling MorphismFromKern
 ##
 AddDerivationToCAP( KernelLiftWithGivenKernelObject,
                     [ [ KernelLift, 1 ] ],
-  function( cat, alpha, tau, with_given_object )
+  function( cat, alpha, T, tau, with_given_object )
     
-    return KernelLift( cat, alpha, tau );
+    return KernelLift( cat, alpha, T, tau );
     
 end : Description := "KernelLiftWithGivenKernelObject by calling KernelLift with the last argument dropped" );
 
@@ -1141,9 +2317,9 @@ end : Description := "KernelLiftWithGivenKernelObject by calling KernelLift with
 AddDerivationToCAP( KernelLift,
                     [ [ KernelLiftWithGivenKernelObject, 1 ],
                       [ KernelObject, 1 ] ],
-  function( cat, alpha, tau )
+  function( cat, alpha, T, tau )
     
-    return KernelLiftWithGivenKernelObject( cat, alpha, tau, KernelObject( cat, alpha ) );
+    return KernelLiftWithGivenKernelObject( cat, alpha, T, tau, KernelObject( cat, alpha ) );
     
 end : Description := "KernelLift by calling KernelLiftWithGivenKernelObject with KernelObject as last argument" );
 
@@ -1188,9 +2364,9 @@ end : Description := "MorphismFromSourceToCokernelObject by calling MorphismFrom
 ##
 AddDerivationToCAP( CokernelColiftWithGivenCokernelObject,
                     [ [ CokernelColift, 1 ] ],
-  function( cat, alpha, tau, with_given_object )
+  function( cat, alpha, T, tau, with_given_object )
     
-    return CokernelColift( cat, alpha, tau );
+    return CokernelColift( cat, alpha, T, tau );
     
 end : Description := "CokernelColiftWithGivenCokernelObject by calling CokernelColift with the last argument dropped" );
 
@@ -1198,11 +2374,303 @@ end : Description := "CokernelColiftWithGivenCokernelObject by calling CokernelC
 AddDerivationToCAP( CokernelColift,
                     [ [ CokernelColiftWithGivenCokernelObject, 1 ],
                       [ CokernelObject, 1 ] ],
-  function( cat, alpha, tau )
+  function( cat, alpha, T, tau )
     
-    return CokernelColiftWithGivenCokernelObject( cat, alpha, tau, CokernelObject( cat, alpha ) );
+    return CokernelColiftWithGivenCokernelObject( cat, alpha, T, tau, CokernelObject( cat, alpha ) );
     
 end : Description := "CokernelColift by calling CokernelColiftWithGivenCokernelObject with CokernelObject as last argument" );
+
+InstallOtherMethod( KernelLift,
+                    [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                    
+    function( diagram, tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return KernelLift( diagram, Source( tau ), tau );
+        
+end );
+
+InstallOtherMethod( KernelLift,
+                    [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                    
+    function( cat, diagram, tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return KernelLift( cat, diagram, Source( tau ), tau );
+        
+end );
+
+InstallOtherMethod( KernelLiftWithGivenKernelObject,
+                    [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
+                    
+    function( diagram, tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return KernelLiftWithGivenKernelObject( diagram, Source( tau ), tau, P );
+        
+end );
+
+InstallOtherMethod( KernelLiftWithGivenKernelObject,
+                    [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
+                    
+    function( cat, diagram, tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return KernelLiftWithGivenKernelObject( cat, diagram, Source( tau ), tau, P );
+        
+end );
+
+##
+InstallMethod( AddKernelLift,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local nr_arguments, wrapper;
+    
+    nr_arguments := NumberArgumentsFunction( func );
+    
+    wrapper := fail;
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        if nr_arguments = 3 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddKernelLift with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 4 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { cat, diagram, T, tau } -> func( cat, diagram, tau );
+            
+        fi;
+        
+    else
+        
+        if nr_arguments = 2 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddKernelLift with a function with 2 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 3 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { diagram, T, tau } -> func( diagram, tau );
+            
+        fi;
+        
+    fi;
+    
+    if wrapper = fail then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    AddKernelLift( category, wrapper );
+    
+end );
+
+##
+InstallMethod( AddKernelLiftWithGivenKernelObject,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local nr_arguments, wrapper;
+    
+    nr_arguments := NumberArgumentsFunction( func );
+    
+    wrapper := fail;
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        if nr_arguments = 4 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddKernelLiftWithGivenKernelObject with a function with 4 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 5 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { cat, diagram, T, tau, P } -> func( cat, diagram, tau, P );
+            
+        fi;
+        
+    else
+        
+        if nr_arguments = 3 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddKernelLiftWithGivenKernelObject with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 4 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { diagram, T, tau, P } -> func( diagram, tau, P );
+            
+        fi;
+        
+    fi;
+    
+    if wrapper = fail then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    AddKernelLiftWithGivenKernelObject( category, wrapper );
+    
+end );
+
+InstallOtherMethod( CokernelColift,
+                    [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                    
+    function( diagram, tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return CokernelColift( diagram, Range( tau ), tau );
+        
+end );
+
+InstallOtherMethod( CokernelColift,
+                    [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+                    
+    function( cat, diagram, tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return CokernelColift( cat, diagram, Range( tau ), tau );
+        
+end );
+
+InstallOtherMethod( CokernelColiftWithGivenCokernelObject,
+                    [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
+                    
+    function( diagram, tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return CokernelColiftWithGivenCokernelObject( diagram, Range( tau ), tau, P );
+        
+end );
+
+InstallOtherMethod( CokernelColiftWithGivenCokernelObject,
+                    [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ],
+                    
+    function( cat, diagram, tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return CokernelColiftWithGivenCokernelObject( cat, diagram, Range( tau ), tau, P );
+        
+end );
+
+##
+InstallMethod( AddCokernelColift,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local nr_arguments, wrapper;
+    
+    nr_arguments := NumberArgumentsFunction( func );
+    
+    wrapper := fail;
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        if nr_arguments = 3 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddCokernelColift with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 4 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { cat, diagram, T, tau } -> func( cat, diagram, tau );
+            
+        fi;
+        
+    else
+        
+        if nr_arguments = 2 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddCokernelColift with a function with 2 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 3 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { diagram, T, tau } -> func( diagram, tau );
+            
+        fi;
+        
+    fi;
+    
+    if wrapper = fail then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    AddCokernelColift( category, wrapper );
+    
+end );
+
+##
+InstallMethod( AddCokernelColiftWithGivenCokernelObject,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local nr_arguments, wrapper;
+    
+    nr_arguments := NumberArgumentsFunction( func );
+    
+    wrapper := fail;
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        if nr_arguments = 4 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddCokernelColiftWithGivenCokernelObject with a function with 4 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 5 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { cat, diagram, T, tau, P } -> func( cat, diagram, tau, P );
+            
+        fi;
+        
+    else
+        
+        if nr_arguments = 3 then
+        
+            Print(
+              Concatenation(
+              "WARNING: AddCokernelColiftWithGivenCokernelObject with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
+              "Please give a function with 4 arguments instead.\n"
+              )
+            );
+                
+            wrapper := { diagram, T, tau, P } -> func( diagram, tau, P );
+            
+        fi;
+        
+    fi;
+    
+    if wrapper = fail then
+        
+        TryNextMethod( );
+        
+    fi;
+    
+    AddCokernelColiftWithGivenCokernelObject( category, wrapper );
+    
+end );
 
 ##
 InstallMethod( KernelObjectFunctorial,
@@ -1267,9 +2735,9 @@ end );
 ##
 AddDerivationToCAP( UniversalMorphismIntoTerminalObjectWithGivenTerminalObject,
                     [ [ UniversalMorphismIntoTerminalObject, 1 ] ],
-  function( cat, A, with_given_object )
+  function( cat, T, with_given_object )
     
-    return UniversalMorphismIntoTerminalObject( cat, A );
+    return UniversalMorphismIntoTerminalObject( cat, T );
     
 end : Description := "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject by calling UniversalMorphismIntoTerminalObject with the last argument dropped" );
 
@@ -1277,18 +2745,18 @@ end : Description := "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject
 AddDerivationToCAP( UniversalMorphismIntoTerminalObject,
                     [ [ UniversalMorphismIntoTerminalObjectWithGivenTerminalObject, 1 ],
                       [ TerminalObject, 1 ] ],
-  function( cat, A )
+  function( cat, T )
     
-    return UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, A, TerminalObject( cat ) );
+    return UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, T, TerminalObject( cat ) );
     
 end : Description := "UniversalMorphismIntoTerminalObject by calling UniversalMorphismIntoTerminalObjectWithGivenTerminalObject with TerminalObject as last argument" );
 
 ##
 AddDerivationToCAP( UniversalMorphismFromInitialObjectWithGivenInitialObject,
                     [ [ UniversalMorphismFromInitialObject, 1 ] ],
-  function( cat, A, with_given_object )
+  function( cat, T, with_given_object )
     
-    return UniversalMorphismFromInitialObject( cat, A );
+    return UniversalMorphismFromInitialObject( cat, T );
     
 end : Description := "UniversalMorphismFromInitialObjectWithGivenInitialObject by calling UniversalMorphismFromInitialObject with the last argument dropped" );
 
@@ -1296,18 +2764,18 @@ end : Description := "UniversalMorphismFromInitialObjectWithGivenInitialObject b
 AddDerivationToCAP( UniversalMorphismFromInitialObject,
                     [ [ UniversalMorphismFromInitialObjectWithGivenInitialObject, 1 ],
                       [ InitialObject, 1 ] ],
-  function( cat, A )
+  function( cat, T )
     
-    return UniversalMorphismFromInitialObjectWithGivenInitialObject( cat, A, InitialObject( cat ) );
+    return UniversalMorphismFromInitialObjectWithGivenInitialObject( cat, T, InitialObject( cat ) );
     
 end : Description := "UniversalMorphismFromInitialObject by calling UniversalMorphismFromInitialObjectWithGivenInitialObject with InitialObject as last argument" );
 
 ##
 AddDerivationToCAP( UniversalMorphismIntoZeroObjectWithGivenZeroObject,
                     [ [ UniversalMorphismIntoZeroObject, 1 ] ],
-  function( cat, A, with_given_object )
+  function( cat, T, with_given_object )
     
-    return UniversalMorphismIntoZeroObject( cat, A );
+    return UniversalMorphismIntoZeroObject( cat, T );
     
 end : Description := "UniversalMorphismIntoZeroObjectWithGivenZeroObject by calling UniversalMorphismIntoZeroObject with the last argument dropped" );
 
@@ -1315,18 +2783,18 @@ end : Description := "UniversalMorphismIntoZeroObjectWithGivenZeroObject by call
 AddDerivationToCAP( UniversalMorphismIntoZeroObject,
                     [ [ UniversalMorphismIntoZeroObjectWithGivenZeroObject, 1 ],
                       [ ZeroObject, 1 ] ],
-  function( cat, A )
+  function( cat, T )
     
-    return UniversalMorphismIntoZeroObjectWithGivenZeroObject( cat, A, ZeroObject( cat ) );
+    return UniversalMorphismIntoZeroObjectWithGivenZeroObject( cat, T, ZeroObject( cat ) );
     
 end : Description := "UniversalMorphismIntoZeroObject by calling UniversalMorphismIntoZeroObjectWithGivenZeroObject with ZeroObject as last argument" );
 
 ##
 AddDerivationToCAP( UniversalMorphismFromZeroObjectWithGivenZeroObject,
                     [ [ UniversalMorphismFromZeroObject, 1 ] ],
-  function( cat, A, with_given_object )
+  function( cat, T, with_given_object )
     
-    return UniversalMorphismFromZeroObject( cat, A );
+    return UniversalMorphismFromZeroObject( cat, T );
     
 end : Description := "UniversalMorphismFromZeroObjectWithGivenZeroObject by calling UniversalMorphismFromZeroObject with the last argument dropped" );
 
@@ -1334,8 +2802,8 @@ end : Description := "UniversalMorphismFromZeroObjectWithGivenZeroObject by call
 AddDerivationToCAP( UniversalMorphismFromZeroObject,
                     [ [ UniversalMorphismFromZeroObjectWithGivenZeroObject, 1 ],
                       [ ZeroObject, 1 ] ],
-  function( cat, A )
+  function( cat, T )
     
-    return UniversalMorphismFromZeroObjectWithGivenZeroObject( cat, A, ZeroObject( cat ) );
+    return UniversalMorphismFromZeroObjectWithGivenZeroObject( cat, T, ZeroObject( cat ) );
     
 end : Description := "UniversalMorphismFromZeroObject by calling UniversalMorphismFromZeroObjectWithGivenZeroObject with ZeroObject as last argument" );

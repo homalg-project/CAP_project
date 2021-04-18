@@ -513,7 +513,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     # @Returns a morphism
     # @Arguments diagram, sink, direct_sum
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
-      function( diagram, sink, direct_sum )
+      function( diagram, test_object, sink, direct_sum )
         local underlying_matrix_of_universal_morphism;
         
         # construct the homalg matrix to represent the universal morphism
@@ -565,7 +565,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_ROWS,
     # @Returns a morphism
     # @Arguments diagram, sink, coproduct
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
-      function( diagram, sink, coproduct )
+      function( diagram, test_object, sink, coproduct )
         local underlying_matrix_of_universal_morphism;
         
         underlying_matrix_of_universal_morphism := UnderlyingHomalgMatrix( sink[1] );

@@ -507,7 +507,7 @@ InstallGlobalFunction( ADD_GRADED_KERNEL_LEFT,
     
     AddKernelLift( category,
     
-      function( morphism, tau )
+      function( morphism, test_object, tau )
       local underlying_lift;
         
       underlying_lift := KernelLift( UnderlyingPresentationMorphism( morphism ), UnderlyingPresentationMorphism( tau ) );
@@ -554,7 +554,7 @@ InstallGlobalFunction( ADD_GRADED_KERNEL_RIGHT,
     
     AddKernelLift( category,
     
-    function( morphism, tau )
+    function( morphism, test_object, tau )
         local underlying_lift;
         
       underlying_lift := KernelLift( UnderlyingPresentationMorphism( morphism ), UnderlyingPresentationMorphism( tau ) );
@@ -781,7 +781,7 @@ InstallGlobalFunction( ADD_GRADED_COKERNEL,
     
     AddCokernelColiftWithGivenCokernelObject( category,
       
-      function( morphism, test_morphism, cokernel_object )
+      function( morphism, test_object, test_morphism, cokernel_object )
         local lift;
         
         lift := CokernelColiftWithGivenCokernelObject( UnderlyingPresentationMorphism( morphism ),
@@ -836,7 +836,7 @@ InstallGlobalFunction( ADD_GRADED_DIRECT_SUM,
     
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
                                                                  
-      function( diagram, product_morphism, direct_sum )
+      function( diagram, test_object, product_morphism, direct_sum )
         local underlying_diagram, underlying_product_morphism, underlying_direct_sum, universal_morphism;
         
         underlying_diagram := List( diagram, UnderlyingPresentationObject );
@@ -870,7 +870,7 @@ InstallGlobalFunction( ADD_GRADED_DIRECT_SUM,
     
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
                                                          
-      function( diagram, product_morphism, direct_sum )
+      function( diagram, test_object, product_morphism, direct_sum )
         local underlying_diagram, underlying_product_morphism, underlying_direct_sum, universal_morphism;
         
         underlying_diagram := List( diagram, UnderlyingPresentationObject );

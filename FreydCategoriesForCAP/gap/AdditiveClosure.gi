@@ -848,10 +848,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
-      function( diagram, morphisms, direct_sum )
-        local test_object, listlist;
-        
-        test_object := Source( morphisms[1] );
+      function( diagram, test_object, morphisms, direct_sum )
+        local listlist;
         
         # UnionOfColumns
         listlist := List( [ 1 .. NrRows( morphisms[1] ) ], i ->
@@ -872,10 +870,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
-      function( diagram, morphisms, direct_sum )
-        local test_object, listlist;
-        
-        test_object := Range( morphisms[1] );
+      function( diagram, test_object, morphisms, direct_sum )
+        local listlist;
         
         # UnionOfRows
         listlist := Concatenation(

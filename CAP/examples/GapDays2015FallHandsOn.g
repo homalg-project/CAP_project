@@ -353,7 +353,7 @@ end;
 AddInjectionOfCofactorOfDirectSum( vecspaces, injection_of_cofactor_of_direct_sum );
 
 ##
-universal_morphism_from_direct_sum := function( diagram, sink )
+universal_morphism_from_direct_sum := function( diagram, test_object, sink )
     local dim, coproduct, components, universal_morphism, morphism;
     
     components := sink;
@@ -409,7 +409,7 @@ end;
 AddProjectionInFactorOfDirectSum( vecspaces, projection_in_factor_of_direct_sum );
 
 ##
-universal_morphism_into_direct_sum := function( diagram, sink )
+universal_morphism_into_direct_sum := function( diagram, test_object, sink )
     local dim, direct_product, components, universal_morphism, morphism;
     
     components := sink;

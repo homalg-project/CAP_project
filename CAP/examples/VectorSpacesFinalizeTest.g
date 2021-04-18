@@ -100,7 +100,7 @@ end );
 ##
 AddUniversalMorphismIntoDirectSumWithGivenDirectSum( vecspaces,
 
-  function( diagram, sink, direct_product )
+  function( diagram, test_object, sink, direct_product )
     local components, universal_morphism, morphism;
     
     components := sink;
@@ -139,7 +139,7 @@ end );
 ##
 AddKernelLift( vecspaces,
 
-  function( mor, test_morphism )
+  function( mor, test_object, test_morphism )
    local kernel_emb;
    
    kernel_emb := SyzygiesOfRows( mor!.morphism );
@@ -186,7 +186,7 @@ end );
 ##
 AddUniversalMorphismFromDirectSumWithGivenDirectSum( vecspaces,
 
-  function( diagram, sink, coproduct )
+  function( diagram, test_object, sink, coproduct )
     local components, universal_morphism, morphism;
     
     components := sink;
@@ -234,7 +234,7 @@ end );
 ##
 AddUniversalMorphismFromDirectSumWithGivenDirectSum( vecspaces,
 
-  function( diagram, sink, coproduct )
+  function( diagram, test_object, sink, coproduct )
     local components, universal_morphism, morphism;
     
     components := sink;

@@ -554,7 +554,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
-      function( cat, diagram, sink, direct_sum )
+      function( cat, diagram, test_object, sink, direct_sum )
         local underlying_matrix_of_universal_morphism;
         
         underlying_matrix_of_universal_morphism :=
@@ -591,7 +591,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
-      function( cat, diagram, sink, coproduct )
+      function( cat, diagram, test_object, sink, coproduct )
         local underlying_matrix_of_universal_morphism;
         
         underlying_matrix_of_universal_morphism :=

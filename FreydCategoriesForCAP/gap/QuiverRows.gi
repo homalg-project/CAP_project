@@ -1049,10 +1049,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     # ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
-      function( diagram, source, direct_sum )
-        local test_object, mat, nr_rows;
-        
-        test_object := Source( source[1] );
+      function( diagram, test_object, source, direct_sum )
+        local mat, nr_rows;
         
         nr_rows := NrSummands( test_object );
         
@@ -1070,10 +1068,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
-      function( diagram, sink, direct_sum )
-        local test_object, mat;
-        
-        test_object := Range( sink[1] );
+      function( diagram, test_object, sink, direct_sum )
+        local mat;
         
         if NrSummands( direct_sum ) = 0 or NrSummands( test_object ) = 0 then
             

@@ -667,7 +667,7 @@ end );
 ##
 AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( CapCat,
                                        
-  function( diagram, sink, direct_product )
+  function( diagram, test_object, sink, direct_product )
     local name_string, universal_functor;
     
     name_string := Concatenation( 

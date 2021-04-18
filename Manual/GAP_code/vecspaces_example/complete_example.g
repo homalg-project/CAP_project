@@ -131,7 +131,7 @@ end );
 
 AddKernelLift( SQVec,
 
-  function( alpha, tau )
+  function( alpha, test_object, tau )
     local kernel_matrix;
     
     kernel_matrix := SyzygiesOfRows( UnderlyingMatrix( alpha ) );
@@ -314,7 +314,7 @@ end );
 
 ##
 AddUniversalMorphismIntoDirectSumWithGivenDirectSum( SQVec,
-  function( diagram, sink, direct_sum )
+  function( diagram, test_object, sink, direct_sum )
     local underlying_matrix_of_universal_morphism;
     
     underlying_matrix_of_universal_morphism :=
@@ -362,7 +362,7 @@ end );
 
 ##
 AddUniversalMorphismFromDirectSumWithGivenDirectSum( SQVec,
-  function( diagram, sink, coproduct )
+  function( diagram, test_object, sink, coproduct )
     local underlying_matrix_of_universal_morphism;
     
     underlying_matrix_of_universal_morphism :=
