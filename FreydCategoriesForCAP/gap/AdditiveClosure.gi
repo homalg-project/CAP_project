@@ -413,11 +413,14 @@ InstallMethod( ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSourc
     
     AddMorphismFunction( G,
       function( source, alpha, range )
-        local listlist;
+        local source_diagram, range_diagram, listlist;
+        
+        source_diagram := List( ObjectList( Source( alpha ) ), obj -> ApplyFunctor( F, obj ) );
+        range_diagram := List( ObjectList( Range( alpha ) ), obj -> ApplyFunctor( F, obj ) );
         
         listlist := List( [ 1 .. NrRows( alpha ) ], i -> List( [ 1 .. NrCols( alpha ) ], j -> ApplyFunctor( F, alpha[i,j] ) ) );
         
-        return MorphismBetweenDirectSums( source, listlist, range );
+        return MorphismBetweenDirectSumsWithGivenDirectSums( source, source_diagram, listlist, range_diagram, range );
         
     end );
     
@@ -932,7 +935,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
         fi;
         
-        if ForAll( [ "MorphismBetweenDirectSums" ], f -> CanCompute( range_category, f ) )
+        if ForAll( [ "MorphismBetweenDirectSumsWithGivenDirectSums" ], f -> CanCompute( range_category, f ) )
            and  ForAll( [ "HomomorphismStructureOnMorphismsWithGivenObjects" ], f -> CanCompute( underlying_category, f ) ) then
             
             ##
@@ -955,7 +958,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                 fi;
                 
                 return MorphismBetweenDirectSums(
-                        source,
                         List( [ 1 .. size_j ], j ->
                           List( [ 1 .. size_i ], i ->
                             MorphismBetweenDirectSums(
@@ -966,8 +968,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                               )
                             )
                           )
-                        ),
-                        range );
+                        ) );
                 
             end );
             

@@ -1672,26 +1672,22 @@ AddDerivationToCAP( ComponentOfMorphismFromDirectSum,
 end : Description := "ComponentOfMorphismFromDirectSum by composing with the direct sum injection" );
 
 ##
-AddDerivationToCAP( MorphismBetweenDirectSums,
+AddDerivationToCAP( MorphismBetweenDirectSumsWithGivenDirectSums,
                     
-  function( cat, S, morphism_matrix, T )
-    local diagram_direct_sum_source, diagram_direct_sum_range, test_diagram_product, test_diagram_coproduct;
+  function( cat, S, diagram_S, morphism_matrix, diagram_T, T )
+    local test_diagram_product, test_diagram_coproduct;
     
     if morphism_matrix = [ ] or morphism_matrix[1] = [ ] then
         return ZeroMorphism( cat, S, T );
     fi;
     
-    diagram_direct_sum_source := List( morphism_matrix, row -> Source( row[1] ) );
-    
-    diagram_direct_sum_range := List( morphism_matrix[1], entry -> Range( entry ) );
-    
     test_diagram_coproduct := List( morphism_matrix,
-        test_diagram_product -> UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, diagram_direct_sum_range, test_diagram_product, T )
+        test_diagram_product -> UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, diagram_T, test_diagram_product, T )
     );
     
-    return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, diagram_direct_sum_source, test_diagram_coproduct, S );
+    return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, diagram_S, test_diagram_coproduct, S );
     
-end : Description := "MorphismBetweenDirectSums using universal morphisms of direct sums" );
+end : Description := "MorphismBetweenDirectSumsWithGivenDirectSums using universal morphisms of direct sums" );
 
 ##
 AddDerivationToCAP( HomologyObjectFunctorialWithGivenHomologyObjects,
@@ -2760,7 +2756,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
       j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( left_coefficients[i][j], right_coefficients[i][j] ) ) 
     );
     
-    H := MorphismBetweenDirectSums( range_cat, list );
+    H := MorphismBetweenDirectSums( list );
     
     ## the actual computation of the solution
     lift := Lift( range_cat, nu, H );
@@ -2793,7 +2789,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
         
         conditions := [
           "UniversalMorphismIntoDirectSum",
-          "MorphismBetweenDirectSums",
+          "MorphismBetweenDirectSumsWithGivenDirectSums",
           "Lift",
           "PreCompose"
         ];
@@ -2848,7 +2844,7 @@ AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
       j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( left_coefficients[i][j], right_coefficients[i][j] ) )
     );
     
-    H := MorphismBetweenDirectSums( range_cat, list );
+    H := MorphismBetweenDirectSums( list );
     
     ## the actual computation of the solution
     return IsLiftable( range_cat, nu, H );
@@ -2864,7 +2860,7 @@ AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
         
         conditions := [
           "UniversalMorphismIntoDirectSum",
-          "MorphismBetweenDirectSums",
+          "MorphismBetweenDirectSumsWithGivenDirectSums",
           "IsLiftable"
         ];
         

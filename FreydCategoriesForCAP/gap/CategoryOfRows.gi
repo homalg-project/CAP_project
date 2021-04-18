@@ -604,8 +604,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     end );
     
     ##
-    AddMorphismBetweenDirectSums( category,
-      function( cat, source, listlist, range )
+    AddMorphismBetweenDirectSumsWithGivenDirectSums( category,
+      function( cat, source, source_diagram, listlist, range_diagram, range )
         local mat;
         
         if IsEmpty( listlist ) or IsEmpty( listlist[1] ) then

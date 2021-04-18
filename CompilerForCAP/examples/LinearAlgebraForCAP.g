@@ -16,16 +16,24 @@ beta := IdentityMorphism( V );;
 W := DirectSum( V, V );;
 morphism_matrix := [ [ alpha, beta ], [ beta, alpha ] ];;
 
-# compile the primitive installation of MorphismBetweenDirectSums
-MorphismBetweenDirectSums( morphism_matrix );;
+# compile the primitive installation of
+# MorphismBetweenDirectSumsWithGivenDirectSums
+MorphismBetweenDirectSumsWithGivenDirectSums(
+    vec,
+    W,
+    [ V, V ],
+    morphism_matrix,
+    [ V, V ],
+    W
+);;
 tree1 := SYNTAX_TREE(
-    vec!.compiled_functions.MorphismBetweenDirectSums[3]
+    vec!.compiled_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3]
 );;
 # fixup nams
 tree1.stats.statements[1].branches[2].body.
     obj.args[12].args[1].args[2].nams := [ "row" ];;
 Display( SYNTAX_TREE_CODE( tree1 ) );
-#! function ( cat, S, morphism_matrix, T )
+#! function ( cat, S, diagram_S, morphism_matrix, diagram_T, T )
 #!     if morphism_matrix = [  ] or morphism_matrix[1] = [  ] then
 #!         return ZeroMorphism( S, T );
 #!     else
@@ -40,16 +48,17 @@ Display( SYNTAX_TREE_CODE( tree1 ) );
 #!     return;
 #! end
 
-# compile the default derivation of MorphismBetweenDirectSums
+# compile the default derivation of
+# MorphismBetweenDirectSumsWithGivenDirectSums
 tree2 := SYNTAX_TREE( CapJitCompiledFunction(
-    vec!.added_functions.MorphismBetweenDirectSums[1][1],
-    [ vec, W, morphism_matrix, W  ]
+    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1][1],
+    [ vec, W, [ V, V ], morphism_matrix, [ V, V ], W  ]
 ) );;
 # fixup nams
 tree2.stats.statements[1].branches[2].body.
     obj.args[12].args[1].args[2].nams := [ "row" ];;
 Display( SYNTAX_TREE_CODE( tree2 ) );
-#! function ( cat, S, morphism_matrix, T )
+#! function ( cat, S, diagram_S, morphism_matrix, diagram_T, T  )
 #!     if morphism_matrix = [  ] or morphism_matrix[1] = [  ] then
 #!         return ZeroMorphism( cat, S, T );
 #!     else

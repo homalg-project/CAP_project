@@ -751,3 +751,31 @@ InstallMethod( AddDistinguishedObjectOfHomomorphismStructure,
     AddDistinguishedObjectOfHomomorphismStructure( category, [ [ wrapped_func, [ ] ] ], weight );
     
 end );
+
+##
+InstallMethod( AddMorphismBetweenDirectSums,
+               [ IsCapCategory, IsFunction ],
+               
+  function( category, func )
+    local wrapper;
+    
+    Print(
+      Concatenation(
+      "WARNING: AddMorphismBetweenDirectSums is deprecated and will not be supported after 2022.04.18. ",
+      "Please use AddMorphismBetweenDirectSumsWithGivenDirectSums instead.\n"
+      )
+    );
+    
+    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+        
+        wrapper := { cat, S, diagram_S, M, diagram_T, T } -> func( cat, S, M, T );
+        
+    else
+        
+        wrapper := { S, diagram_S, M, diagram_T, T } -> func( S, M, T );
+        
+    fi;
+    
+    AddMorphismBetweenDirectSumsWithGivenDirectSums( category, wrapper );
+    
+end );

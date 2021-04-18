@@ -2813,53 +2813,50 @@ ComponentOfMorphismFromDirectSum := rec(
   return_type := "morphism",
   dual_operation := "ComponentOfMorphismIntoDirectSum" ),
 
-MorphismBetweenDirectSums := rec(
-  filter_list := [ "category", "object", IsList, "object" ],
+MorphismBetweenDirectSumsWithGivenDirectSums := rec(
+  filter_list := [ "category", "object", "list_of_objects", IsList, "list_of_objects", "object" ],
   io_type := [ [ "S", "mat", "T" ], [ "S", "T" ] ],
   return_type := "morphism",
-  pre_function := function( cat, source, listlist, range )
-    local sources, ranges, result, i, j;
+  pre_function := function( cat, source, source_diagram, listlist, range_diagram, range )
+    local result, i, j;
       
-      if IsEmpty( listlist ) or ForAll( listlist, IsEmpty ) then
+      if Length( listlist ) <> Length( source_diagram ) then
           
-          return [ true ];
+          return [ false, "the number of rows does not match the length of the source diagram" ];
           
       fi;
       
-      sources := List( listlist, l -> Source( l[1] ) );
-      ranges := List( listlist[1], l -> Range( l ) );
-      
-      for i in [ 2 .. Length( listlist ) ] do
+      for i in [ 1 .. Length( listlist ) ] do
           
-          if Length( listlist[i] ) <> Length( ranges ) then
+          if Length( listlist[i] ) <> Length( range_diagram ) then
               
-              return [ false, Concatenation( "the ", String(i), "-th row has not the same length as the first row" ) ];
+              return [ false, Concatenation( "the ", String(i), "-th row has not the same length as the range diagram" ) ];
               
           fi;
           
-          for j in [ 2 .. Length( ranges ) ] do
+          for j in [ 1 .. Length( range_diagram ) ] do
               
-              result := IsEqualForObjects( sources[i], Source( listlist[i][j] ) );
+              result := IsEqualForObjects( source_diagram[i], Source( listlist[i][j] ) );
               
               if result = fail then
                   
-                  return [ false, Concatenation( "cannot decide whether the sources of the morphisms in the ", String(i), "-th row are equal" ) ];
+                  return [ false, Concatenation( "cannot decide whether the sources of the morphisms in the ", String(i), "-th row are equal to the ", String(i), "-th entry of the source diagram" ) ];
                   
               elif result = false then
                   
-                  return [ false, Concatenation( "the sources of the morphisms in the ", String(i), "-th row must be equal" ) ];
+                  return [ false, Concatenation( "the sources of the morphisms in the ", String(i), "-th row must be equal to the ", String(i), "-th entry of the source diagram" ) ];
                   
               fi;
               
-              result := IsEqualForObjects( ranges[j], Range( listlist[i][j] ) );
+              result := IsEqualForObjects( range_diagram[j], Range( listlist[i][j] ) );
               
               if result = fail then
                   
-                  return [ false, Concatenation( "cannot decide whether the ranges of the morphisms in the ", String(j), "-th column are equal" ) ];
+                  return [ false, Concatenation( "cannot decide whether the ranges of the morphisms in the ", String(j), "-th column are equal to the ", String(j), "-th entry of the range diagram" ) ];
                   
               elif result = false then
                   
-                  return [ false, Concatenation( "the ranges of the morphisms in the ", String(j), "-th column must be equal" ) ];
+                  return [ false, Concatenation( "the ranges of the morphisms in the ", String(j), "-th column must be equal to the ", String(j), "-th entry of the range diagram" ) ];
                   
               fi;
               
@@ -2870,11 +2867,11 @@ MorphismBetweenDirectSums := rec(
       return [ true ];
       
   end,
-  dual_operation := "MorphismBetweenDirectSums",
+  dual_operation := "MorphismBetweenDirectSumsWithGivenDirectSums",
   dual_preprocessor_func := function( arg )
       local list;
       list := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
-      return [ list[3], TransposedMat( list[2] ), list[1] ];
+      return [ list[5], list[4], TransposedMat( list[3] ), list[2], list[1] ];
   end
 ),
 

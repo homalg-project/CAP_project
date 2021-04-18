@@ -446,8 +446,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     end );
     
     ##
-    AddMorphismBetweenDirectSums( category,
-      function( cat, S, morphism_matrix, T )
+    AddMorphismBetweenDirectSumsWithGivenDirectSums( category,
+      function( cat, S, diagram_S, morphism_matrix, diagram_T, T )
         local underlying_matrix;
         
         if morphism_matrix = [ ] or morphism_matrix[1] = [ ] then

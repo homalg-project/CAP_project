@@ -1499,49 +1499,71 @@ DeclareOperation( "IsomorphismFromDirectSumToCoproduct",
 DeclareOperation( "IsomorphismFromCoproductToDirectSum",
                   [ IsList ] );
 
+#! @Description
+#! The arguments are given as follows:
+#! * <A>diagram_S</A> is a list of objects $(A_i)_{i = 1 \dots m}$,
+#! * <A>diagram_T</A> is a list of objects $(B_j)_{j = 1 \dots n}$,
+#! * <A>M</A> is a list of lists of morphisms $( ( \phi_{i,j}: A_i \rightarrow B_j )_{j = 1 \dots n} )_{i = 1 \dots m}$.
+#! The output is the morphism
+#! $\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n B_j$
+#! defined by the matrix $M$.
+#! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^{m}A_i, \bigoplus_{j=1}^n B_j)$
+#! @Arguments diagram_S, M, diagram_T
+DeclareOperation( "MorphismBetweenDirectSums",
+                  [ IsList, IsList, IsList ] );
 
 #! @Description
+#! This is a convenience method.
 #! The argument $M = ( ( \phi_{i,j}: A_i \rightarrow B_j )_{j = 1 \dots n} )_{i = 1 \dots m}$
-#! is a list of lists of morphisms.
+#! is a (non-empty) list of (non-empty) lists of morphisms.
+#! The output is the morphism
+#! $\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n B_j$
+#! defined by the matrix $M$.
+#! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^{m}A_i, \bigoplus_{j=1}^n B_j)$
 #! @Arguments M
-#! @Group MorphismBetweenDirectSums
 DeclareOperation( "MorphismBetweenDirectSums",
                   [ IsList ] );
 
 #! @Description
+#! The arguments are given as follows:
+#! * <A>diagram_S</A> is a list of objects $(A_i)_{i = 1 \dots m}$,
+#! * <A>diagram_T</A> is a list of objects $(B_j)_{j = 1 \dots n}$,
+#! * <A>S</A> is the direct sum $\bigoplus_{i=1}^{m}A_i$,
+#! * <A>T</A> is the direct sum $\bigoplus_{j=1}^{n}B_j$,
+#! * <A>M</A> is a list of lists of morphisms $( ( \phi_{i,j}: A_i \rightarrow B_j )_{j = 1 \dots n} )_{i = 1 \dots m}$.
 #! The output is the morphism
 #! $\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n B_j$
 #! defined by the matrix $M$.
-#! The extra arguments $S = \bigoplus_{i=1}^{m}A_i$
-#! and $T = \bigoplus_{j=1}^n B_j$ are source and target of the output,
-#! respectively. They must be provided in case $M$ is an empty list
-#! or a list of empty lists.
 #! @Returns a morphism in $\mathrm{Hom}(\bigoplus_{i=1}^{m}A_i, \bigoplus_{j=1}^n B_j)$
-#! @Arguments S, M, T
-#! @Group MorphismBetweenDirectSums
-DeclareOperation( "MorphismBetweenDirectSums",
-                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
+#! @Arguments S, diagram_S, M, diagram_T, T
+DeclareOperation( "MorphismBetweenDirectSumsWithGivenDirectSums",
+                  [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismBetweenDirectSums</C>.
-#! $F: (\bigoplus_{i=1}^{m}A_i, M, \bigoplus_{j=1}^n B_j) \mapsto (\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n B_j)$.
+#! to the category for the basic operation <C>MorphismBetweenDirectSumsWithGivenDirectSums</C>.
+#! $F: (\bigoplus_{i=1}^{m}A_i, (A_i)_{i = 1 \dots m}, M, (B_j)_{j = 1 \dots n}, \bigoplus_{j=1}^n B_j) \mapsto (\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n B_j)$.
 #! @Returns nothing
 #! @Arguments C, F
+DeclareOperation( "AddMorphismBetweenDirectSumsWithGivenDirectSums",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismBetweenDirectSumsWithGivenDirectSums",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismBetweenDirectSumsWithGivenDirectSums",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismBetweenDirectSumsWithGivenDirectSums",
+                  [ IsCapCategory, IsList ] );
+
+# backwards compatibility
 DeclareOperation( "AddMorphismBetweenDirectSums",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddMorphismBetweenDirectSums",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismBetweenDirectSums",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismBetweenDirectSums",
-                  [ IsCapCategory, IsList ] );
-
 #! @Description
+#! This is a deprecated convenience method.
 #! The arguments are a list
 #! $M = ( \phi_{1,1}, \phi_{1,2}, \dots, \phi_{1,n}, \phi_{2,1}, \dots, \phi_{m,n} )$
 #! of morphisms $\phi_{i,j}: A_i \rightarrow B_j$,
