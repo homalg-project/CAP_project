@@ -1885,6 +1885,7 @@ DeclareOperation( "AddDirectSum",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
+#! This is a convenience method.
 #! The argument is a list of morphisms $L = ( \mu_1: S_1 \rightarrow S_1', \dots, \mu_n: S_n \rightarrow S_n' )$.
 #! The output is a morphism
 #! $\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i'$
@@ -1896,21 +1897,23 @@ DeclareOperation( "DirectSumFunctorial",
 
 #! @Description
 #! The arguments are an object $d_1 = \bigoplus_{i=1}^n S_i$,
+#! a list of objects $(S_i)_{i = 1 \dots n}$,
 #! a list of morphisms $L = ( \mu_1: S_1 \rightarrow S_1', \dots, \mu_n: S_n \rightarrow S_n' )$,
+#! a list of objects $(S_i')_{i = 1 \dots n}$,
 #! and an object $d_2 = \bigoplus_{i=1}^n S_i'$.
 #! The output is a morphism
 #! $d_1 \rightarrow d_2$
 #! given by the functoriality of the direct sum.
 #! @Returns a morphism in $\mathrm{Hom}( d_1, d_2 )$
-#! @Arguments d_1, L, d_2
+#! @Arguments d_1, source_diagram, L, range_diagram, d_2
 DeclareOperation( "DirectSumFunctorialWithGivenDirectSums",
-                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
+                  [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>DirectSumFunctorialWithGivenDirectSums</C>.
-#! $F: (\bigoplus_{i=1}^n S_i, ( \mu_1, \dots, \mu_n ), \bigoplus_{i=1}^n S_i') \mapsto (\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i')$.
+#! $F: (\bigoplus_{i=1}^n S_i, ( S_1, \dots, S_n ), ( \mu_1, \dots, \mu_n ), ( S_1', \dots, S_n' ), \bigoplus_{i=1}^n S_i') \mapsto (\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i')$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddDirectSumFunctorialWithGivenDirectSums",
@@ -2152,6 +2155,7 @@ DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
+#! This is a convenience method.
 #! The argument is a list $L = ( \mu_1: I_1 \rightarrow I_1', \dots, \mu_n: I_n \rightarrow I_n' )$.
 #! The output is a morphism
 #! $\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i'$
@@ -2163,21 +2167,23 @@ DeclareOperation( "CoproductFunctorial",
 
 #! @Description
 #! The arguments are an object $s = \bigsqcup_{i=1}^n I_i$, 
+#! a list of objects $(I_i)_{i = 1 \dots n}$,
 #! a list $L = ( \mu_1: I_1 \rightarrow I_1', \dots, \mu_n: I_n \rightarrow I_n' )$,
+#! a list of objects $(I_i')_{i = 1 \dots n}$,
 #! and an object $r = \bigsqcup_{i=1}^n I_i'$.
 #! The output is a morphism
 #! $\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i'$
 #! given by the functoriality of the coproduct.
 #! @Returns a morphism in $\mathrm{Hom}(s, r)$
-#! @Arguments s, L, r
+#! @Arguments s, source_diagram, L, range_diagram, r
 DeclareOperation( "CoproductFunctorialWithGivenCoproducts",
-                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
+                  [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>CoproductFunctorialWithGivenCoproducts</C>.
-#! $F: (\bigsqcup_{i=1}^n I_i, (\mu_1, \dots, \mu_n), \bigsqcup_{i=1}^n I_i') \rightarrow (\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i')$.
+#! $F: (\bigsqcup_{i=1}^n I_i, ( I_1, \dots, I_n ), (\mu_1, \dots, \mu_n), ( I_1', \dots, I_n' ), \bigsqcup_{i=1}^n I_i') \rightarrow (\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i')$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
@@ -2405,6 +2411,7 @@ DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
+#! This is a convenience method.
 #! The argument is a list of morphisms $L = (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$.
 #! The output is a morphism
 #! $\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'$
@@ -2416,21 +2423,23 @@ DeclareOperation( "DirectProductFunctorial",
 
 #! @Description
 #! The arguments are an object $s = \prod_{i=1}^n P_i$,
+#! a list of objects $(P_i)_{i = 1 \dots n}$,
 #! a list of morphisms $L = (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$,
+#! a list of objects $(P_i')_{i = 1 \dots n}$,
 #! and an object $r = \prod_{i=1}^n P_i'$.
 #! The output is a morphism
 #! $\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'$
 #! given by the functoriality of the direct product.
 #! @Returns a morphism in $\mathrm{Hom}( s, r )$
-#! @Arguments s, L, r
+#! @Arguments s, source_diagram, L, range_diagram r
 DeclareOperation( "DirectProductFunctorialWithGivenDirectProducts",
-                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
+                  [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>DirectProductFunctorialWithGivenDirectProducts</C>.
-#! $F: ( \prod_{i=1}^n P_i, (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}, \prod_{i=1}^n P_i' ) \mapsto (\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i')$
+#! $F: ( \prod_{i=1}^n P_i, (P_i)_{i=1\dots n}, (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}, (P_i')_{i=1\dots n}, \prod_{i=1}^n P_i' ) \mapsto (\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i')$
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",

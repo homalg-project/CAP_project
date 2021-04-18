@@ -484,7 +484,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     
     ##
     AddDirectSumFunctorialWithGivenDirectSums( category,
-      function( direct_sum_source, diagram, direct_sum_range )
+      function( direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
         
         return CategoryOfColumnsMorphism( direct_sum_source,
                                        DiagMat( List( diagram, mor -> UnderlyingMatrix( mor ) ) ), 

@@ -1778,20 +1778,14 @@ AddDerivationToCAP( CoproductFunctorialWithGivenCoproducts,
                       [ InjectionOfCofactorOfCoproduct, 2 ], ## Length( morphism_list ) would be the correct number
                       [ UniversalMorphismFromCoproduct, 1 ] ], 
                                   
-  function( cat, coproduct_source, morphism_list, coproduct_range )
-    local coproduct_diagram, sink, diagram;
+  function( cat, coproduct_source, source_diagram, morphism_list, range_diagram, coproduct_range )
+    local sink;
         
-        coproduct_diagram := List( morphism_list, mor -> Range( mor ) );
+        sink := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( cat, morphism_list[i], InjectionOfCofactorOfCoproduct( cat, range_diagram, i ) ) );
         
-        sink := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( cat, morphism_list[i], InjectionOfCofactorOfCoproduct( cat, coproduct_diagram, i ) ) );
-        
-        diagram := List( morphism_list, mor -> Source( mor ) );
-        
-        return UniversalMorphismFromCoproduct( cat, diagram, sink );
+        return UniversalMorphismFromCoproduct( cat, source_diagram, sink );
         
 end : Description := "CoproductFunctorialWithGivenCoproducts using the universality of the coproduct" );
-
-
 
 ##
 AddDerivationToCAP( DirectProductFunctorialWithGivenDirectProducts,
@@ -1799,16 +1793,12 @@ AddDerivationToCAP( DirectProductFunctorialWithGivenDirectProducts,
                       [ ProjectionInFactorOfDirectProduct, 2 ], ## Length( morphism_list ) would be the correct number
                       [ UniversalMorphismIntoDirectProduct, 1 ] ],
                                   
-  function( cat, direct_product_source, morphism_list, direct_product_range )
-    local direct_product_diagram, source, diagram;
+  function( cat, direct_product_source, source_diagram, morphism_list, range_diagram, direct_product_range )
+    local source;
         
-        direct_product_diagram := List( morphism_list, mor -> Source( mor ) );
+        source := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( cat, ProjectionInFactorOfDirectProduct( cat, source_diagram, i ), morphism_list[i] ) );
         
-        source := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( cat, ProjectionInFactorOfDirectProduct( cat, direct_product_diagram, i ), morphism_list[i] ) );
-        
-        diagram := List( morphism_list, mor -> Range( mor ) );
-        
-        return UniversalMorphismIntoDirectProduct( cat, diagram, source );
+        return UniversalMorphismIntoDirectProduct( cat, range_diagram, source );
         
 end : Description := "DirectProductFunctorialWithGivenDirectProducts using universality of direct product" );
 
@@ -1818,16 +1808,12 @@ AddDerivationToCAP( DirectSumFunctorialWithGivenDirectSums,
                       [ ProjectionInFactorOfDirectSum, 2 ], ## Length( morphism_list ) would be the correct number
                       [ UniversalMorphismIntoDirectSum, 1 ] ],
                  
-  function( cat, direct_sum_source, morphism_list, direct_sum_range )
-    local direct_sum_diagram, source, diagram;
+  function( cat, direct_sum_source, source_diagram, morphism_list, range_diagram, direct_sum_range )
+    local source;
         
-        direct_sum_diagram := List( morphism_list, mor -> Source( mor ) );
+        source := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( cat, ProjectionInFactorOfDirectSum( cat, source_diagram, i ), morphism_list[i] ) );
         
-        source := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( cat, ProjectionInFactorOfDirectSum( cat, direct_sum_diagram, i ), morphism_list[i] ) );
-        
-        diagram := List( morphism_list, mor -> Range( mor ) );
-        
-        return UniversalMorphismIntoDirectSum( cat, diagram, source );
+        return UniversalMorphismIntoDirectSum( cat, range_diagram, source );
     
 end : CategoryFilter := IsAdditiveCategory,
       Description := "DirectSumFunctorialWithGivenDirectSums using the universal morphism into direct sum");
@@ -1838,16 +1824,12 @@ AddDerivationToCAP( DirectSumFunctorialWithGivenDirectSums,
                       [ InjectionOfCofactorOfDirectSum, 2 ], ## Length( morphism_list ) would be the correct number
                       [ UniversalMorphismFromDirectSum, 1 ] ], 
                                   
-  function( cat, direct_sum_source, morphism_list, direct_sum_range )
-    local direct_sum_diagram, sink, diagram;
+  function( cat, direct_sum_source, source_diagram, morphism_list, range_diagram, direct_sum_range )
+    local sink;
         
-        direct_sum_diagram := List( morphism_list, mor -> Range( mor ) );
+        sink := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( cat, morphism_list[i], InjectionOfCofactorOfDirectSum( cat, range_diagram, i ) ) );
         
-        sink := List( [ 1 .. Length( morphism_list ) ], i -> PreCompose( cat, morphism_list[i], InjectionOfCofactorOfDirectSum( cat, direct_sum_diagram, i ) ) );
-        
-        diagram := List( morphism_list, mor -> Source( mor ) );
-        
-        return UniversalMorphismFromDirectSum( cat, diagram, sink );
+        return UniversalMorphismFromDirectSum( cat, source_diagram, sink );
     
 end : CategoryFilter := IsAdditiveCategory,
       Description := "DirectSumFunctorialWithGivenDirectSums using the universal morphism from direct sum" );

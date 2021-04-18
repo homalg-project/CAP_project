@@ -2457,22 +2457,22 @@ InitialObjectFunctorial := rec(
   no_with_given := true ),
 
 DirectProductFunctorialWithGivenDirectProducts := rec(
-  filter_list := [ "category", "object", "list_of_morphisms", "object" ],
-  io_type := [ [ "P", "L", "Pp" ], [ "P", "Pp" ] ],
+  filter_list := [ "category", "object", "list_of_objects", "list_of_morphisms", "list_of_objects", "object" ],
+  io_type := [ [ "P", "objects", "L", "objectsp", "Pp" ], [ "P", "Pp" ] ],
   return_type := "morphism",
   dual_operation := "CoproductFunctorialWithGivenCoproducts",
   dual_arguments_reversed := true ),
 
 CoproductFunctorialWithGivenCoproducts := rec(
-  filter_list := [ "category", "object", "list_of_morphisms", "object" ],
-  io_type := [ [ "P", "L", "Pp" ], [ "P", "Pp" ] ],
+  filter_list := [ "category", "object", "list_of_objects", "list_of_morphisms", "list_of_objects", "object" ],
+  io_type := [ [ "P", "objects", "L", "objectsp", "Pp" ], [ "P", "Pp" ] ],
   return_type := "morphism",
   dual_operation := "DirectProductFunctorialWithGivenDirectProducts",
   dual_arguments_reversed := true ),
 
 DirectSumFunctorialWithGivenDirectSums := rec(
-  filter_list := [ "category", "object", "list_of_morphisms", "object" ],
-  io_type := [ [ "P", "L", "Pp" ], [ "P", "Pp" ] ],
+  filter_list := [ "category", "object", "list_of_objects", "list_of_morphisms", "list_of_objects", "object" ],
+  io_type := [ [ "P", "objects", "L", "objectsp", "Pp" ], [ "P", "Pp" ] ],
   return_type := "morphism",
   dual_operation := "DirectSumFunctorialWithGivenDirectSums",
   dual_arguments_reversed := true ),
@@ -3592,6 +3592,16 @@ InstallGlobalFunction( "CAP_INTERNAL_ENHANCE_NAME_RECORD_LIMITS",
             limit.limit_morphism_to_sink_name := Concatenation( "MorphismFrom", limit.limit_object_name, "ToSink" );
             limit.colimit_morphism_from_source_name := Concatenation( "MorphismFromSourceTo", limit.colimit_object_name );
         fi;
+
+        if Length( diagram_filter_list ) > 0 then
+            if limit.number_of_targets = 1 then
+                limit.diagram_morphism_filter_list := [ "morphism" ];
+                limit.diagram_morphism_input_type := [ "mu" ];
+            else
+                limit.diagram_morphism_filter_list := [ "list_of_morphisms" ];
+                limit.diagram_morphism_input_type := [ "L" ];
+            fi;
+        fi;
     od;
 end );
 
@@ -3820,28 +3830,12 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
         else
             functorial_record := rec(
                 function_name := limit.limit_functorial_with_given_name,
+                filter_list := Concatenation( [ "category", "object" ], limit.diagram_filter_list, limit.diagram_morphism_filter_list, limit.diagram_filter_list, [ "object" ] ),
+                io_type := [ Concatenation( [ "P" ], limit.diagram_input_type, limit.diagram_morphism_input_type, List( limit.diagram_input_type, x -> Concatenation( x, "p" ) ), [ "Pp" ] ), [ "P", "Pp" ] ],
                 return_type := "morphism",
                 dual_operation := limit.colimit_functorial_with_given_name,
                 dual_arguments_reversed := true,
             );
-            
-            if limit.number_of_unbound_morphisms = 0 then
-                if limit.number_of_targets = 1 then
-                    functorial_record.filter_list := [ "category", "object", "morphism", "object" ];
-                    functorial_record.io_type := [ [ "P", "mu", "Pp" ], [ "P", "Pp" ] ];
-                else
-                    functorial_record.filter_list := [ "category", "object", "list_of_morphisms", "object" ];
-                    functorial_record.io_type := [ [ "P", "L", "Pp" ], [ "P", "Pp" ] ];
-                fi;
-            else
-                if limit.number_of_targets = 1 then
-                    functorial_record.filter_list := Concatenation( [ "category", "object" ], limit.diagram_filter_list, [ "morphism" ], limit.diagram_filter_list, [ "object" ] );
-                    functorial_record.io_type := [ Concatenation( [ "P" ], limit.diagram_input_type, [ "mu" ], List( limit.diagram_input_type, x -> Concatenation( x, "p" ) ), [ "Pp" ] ), [ "P", "Pp" ] ];
-                else
-                    functorial_record.filter_list := Concatenation( [ "category", "object" ], limit.diagram_filter_list, [ "list_of_morphisms" ], limit.diagram_filter_list, [ "object" ] );
-                    functorial_record.io_type := [ Concatenation( [ "P" ], limit.diagram_input_type, [ "L" ], List( limit.diagram_input_type, x -> Concatenation( x, "p" ) ), [ "Pp" ] ), [ "P", "Pp" ] ];
-                fi;
-            fi;
         fi;
         
         #### validate limit records

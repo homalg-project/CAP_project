@@ -6,7 +6,7 @@
 
 InstallGlobalFunction( "CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS",
   function ( package_name, method_name_record, limits )
-    local output_string, generate_with_given_derivation, generate_universal_morphism_convenience, generate_functorial_convenience_method, number_of_diagram_arguments, functorial_record, filter_list, input_type, replaced_filter_list, replaced_filter_list_string, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, source_diagram_input_type, range_diagram_input_type, limit, existing_string, output_path;
+    local output_string, generate_with_given_derivation, generate_universal_morphism_convenience, generate_functorial_convenience_method, number_of_diagram_arguments, functorial_record, filter_list, input_type, replaced_filter_list, replaced_filter_list_string, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, source_diagram_input_type, range_diagram_input_type, call_arguments_string, limit, existing_string, output_path;
     
     output_string :=
 """# SPDX-License-Identifier: GPL-2.0-or-later
@@ -221,7 +221,7 @@ InstallGlobalFunction( "CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS",
         
     end;
     
-    generate_functorial_convenience_method := function( object_name, functorial_name, functorial_with_given_name, filter_list_string, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string )
+    generate_functorial_convenience_method := function( object_name, functorial_name, functorial_with_given_name, filter_list_string, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, call_arguments_string )
       local current_string;
         
         current_string := Concatenation(
@@ -234,7 +234,7 @@ InstallGlobalFunction( "CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS",
             "    \n",
             "    return ", functorial_with_given_name, "(\n",
             "        ", object_name, "( ", source_diagram_arguments_string, " ),\n",
-            "        ", arguments_string, ",\n",
+            "        ", call_arguments_string, ",\n",
             "        ", object_name, "( ", range_diagram_arguments_string, " )\n",
             "    );\n",
             "    \n",
@@ -255,7 +255,7 @@ InstallGlobalFunction( "CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS",
             "    return ", functorial_with_given_name, "(\n",
             "        cat,\n",
             "        ", object_name, "( cat, ", source_diagram_arguments_string, " ),\n",
-            "        ", arguments_string, ",\n",
+            "        ", call_arguments_string, ",\n",
             "        ", object_name, "( cat, ", range_diagram_arguments_string, " )\n",
             "    );\n",
             "    \n",
@@ -303,18 +303,17 @@ InstallGlobalFunction( "CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS",
             
             #### functorial convenience method
             functorial_record := method_name_record.( limit.limit_functorial_with_given_name );
-            filter_list := functorial_record.filter_list;
-            input_type := functorial_record.io_type[1];
-            # the first entry is the category, the second and the last entries are the WithGiven-objects
-            filter_list := filter_list{ [ 3 .. Length( filter_list ) - 1 ] };
-            input_type := input_type{ [ 2 .. Length( input_type ) - 1 ] };
-            
-            replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list );
-            replaced_filter_list_string := JoinStringsWithSeparator( List( replaced_filter_list, NameFunction ), ", " );
-            arguments_string := JoinStringsWithSeparator( input_type, ", " );
             
             if limit.number_of_unbound_morphisms = 0 then
                 # derive diagrams from arguments
+                filter_list := limit.diagram_morphism_filter_list;
+                input_type := limit.diagram_morphism_input_type;
+
+                Assert( 0, Length( filter_list ) = 1 );
+                Assert( 0, Length( input_type ) = 1 );
+
+                arguments_string := JoinStringsWithSeparator( input_type, ", " );
+
                 if limit.number_of_targets = 1 then
                     source_diagram_arguments_string := Concatenation( "Source( ", arguments_string, " )" );
                     range_diagram_arguments_string := Concatenation( "Range( ", arguments_string, " )" );
@@ -322,21 +321,36 @@ InstallGlobalFunction( "CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS",
                     source_diagram_arguments_string := Concatenation( "List( ", arguments_string, ", Source )" );
                     range_diagram_arguments_string := Concatenation( "List( ", arguments_string, ", Range )" );
                 fi;
+                
+                call_arguments_string := JoinStringsWithSeparator( [ source_diagram_arguments_string, arguments_string, range_diagram_arguments_string ], ", " );
             else
+                filter_list := functorial_record.filter_list;
+                input_type := functorial_record.io_type[1];
+                # the first entry is the category, the second and the last entries are the WithGiven-objects
+                filter_list := filter_list{ [ 3 .. Length( filter_list ) - 1 ] };
+                input_type := input_type{ [ 2 .. Length( input_type ) - 1 ] };
+                
+                arguments_string := JoinStringsWithSeparator( input_type, ", " );
+
                 # diagrams are passed as first and last argument(s)
                 source_diagram_input_type := input_type{ [ 1 .. number_of_diagram_arguments ] };
                 range_diagram_input_type := input_type{ [ (Length( input_type ) - number_of_diagram_arguments + 1) .. Length( input_type ) ] };
 
                 source_diagram_arguments_string := JoinStringsWithSeparator( source_diagram_input_type, ", " );
                 range_diagram_arguments_string := JoinStringsWithSeparator( range_diagram_input_type, ", " );
+
+                call_arguments_string := arguments_string;
             fi;
             
+            replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list );
+            replaced_filter_list_string := JoinStringsWithSeparator( List( replaced_filter_list, NameFunction ), ", " );
+            
             # limit
-            generate_functorial_convenience_method( limit.limit_object_name, limit.limit_functorial_name, limit.limit_functorial_with_given_name, replaced_filter_list_string, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string );
+            generate_functorial_convenience_method( limit.limit_object_name, limit.limit_functorial_name, limit.limit_functorial_with_given_name, replaced_filter_list_string, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, call_arguments_string );
             
             # colimit
             if limit.limit_object_name <> limit.colimit_object_name then
-                generate_functorial_convenience_method( limit.colimit_object_name, limit.colimit_functorial_name, limit.colimit_functorial_with_given_name, replaced_filter_list_string, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string );
+                generate_functorial_convenience_method( limit.colimit_object_name, limit.colimit_functorial_name, limit.colimit_functorial_with_given_name, replaced_filter_list_string, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, call_arguments_string );
             fi;
             
         fi;

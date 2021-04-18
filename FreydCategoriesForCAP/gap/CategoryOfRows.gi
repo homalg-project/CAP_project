@@ -522,7 +522,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddDirectSumFunctorialWithGivenDirectSums( category,
-      function( cat, direct_sum_source, diagram, direct_sum_range )
+      function( cat, direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
         
         return CategoryOfRowsMorphism( direct_sum_source,
                                        DiagMat( List( diagram, mor -> UnderlyingMatrix( mor ) ) ), 

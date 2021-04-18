@@ -463,7 +463,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddDirectSumFunctorialWithGivenDirectSums( category,
-      function( direct_sum_source, diagram, direct_sum_range )
+      function( direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
         
         return AdelmanCategoryMorphism( direct_sum_source,
                                         DirectSumFunctorial( List( diagram, MorphismDatum ) ),

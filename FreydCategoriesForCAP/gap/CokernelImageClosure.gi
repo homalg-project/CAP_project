@@ -445,7 +445,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     
     ##
     AddDirectSumFunctorialWithGivenDirectSums( category,
-      function( direct_sum_source, diagram, direct_sum_range )
+      function( direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
         
         return CokernelImageClosureMorphism(
                     direct_sum_source,

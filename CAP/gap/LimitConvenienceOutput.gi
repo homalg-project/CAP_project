@@ -336,7 +336,7 @@ InstallMethod( DirectProductFunctorial,
     
     return DirectProductFunctorialWithGivenDirectProducts(
         DirectProduct( List( L, Source ) ),
-        L,
+        List( L, Source ), L, List( L, Range ),
         DirectProduct( List( L, Range ) )
     );
     
@@ -352,7 +352,7 @@ InstallOtherMethod( DirectProductFunctorial,
     return DirectProductFunctorialWithGivenDirectProducts(
         cat,
         DirectProduct( cat, List( L, Source ) ),
-        L,
+        List( L, Source ), L, List( L, Range ),
         DirectProduct( cat, List( L, Range ) )
     );
     
@@ -366,7 +366,7 @@ InstallMethod( CoproductFunctorial,
     
     return CoproductFunctorialWithGivenCoproducts(
         Coproduct( List( L, Source ) ),
-        L,
+        List( L, Source ), L, List( L, Range ),
         Coproduct( List( L, Range ) )
     );
     
@@ -382,7 +382,7 @@ InstallOtherMethod( CoproductFunctorial,
     return CoproductFunctorialWithGivenCoproducts(
         cat,
         Coproduct( cat, List( L, Source ) ),
-        L,
+        List( L, Source ), L, List( L, Range ),
         Coproduct( cat, List( L, Range ) )
     );
     
@@ -720,7 +720,7 @@ InstallMethod( DirectSumFunctorial,
     
     return DirectSumFunctorialWithGivenDirectSums(
         DirectSum( List( L, Source ) ),
-        L,
+        List( L, Source ), L, List( L, Range ),
         DirectSum( List( L, Range ) )
     );
     
@@ -736,7 +736,7 @@ InstallOtherMethod( DirectSumFunctorial,
     return DirectSumFunctorialWithGivenDirectSums(
         cat,
         DirectSum( cat, List( L, Source ) ),
-        L,
+        List( L, Source ), L, List( L, Range ),
         DirectSum( cat, List( L, Range ) )
     );
     
