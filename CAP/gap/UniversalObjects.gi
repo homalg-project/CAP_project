@@ -224,7 +224,7 @@ InstallMethod( DirectSumOp,
     
     diagram := category_and_diagram[2];
     
-    if diagram = [ ] then
+    if not ( IsBound( category!.supports_empty_limits ) and category!.supports_empty_limits = true ) and diagram = [ ] then
         return ZeroObject( category );
     fi;
     
