@@ -73,6 +73,14 @@ InstallGlobalFunction( CapJitCompiledFunction, function ( func, jit_args )
         
         tree := CapJitAppliedLogicTemplates( tree, jit_args, true );
         
+        if debug then
+            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
+            Display( compiled_func );
+            Error( "apply CapJitInlinedVariableAssignments (for rapid reassignments only)" );
+        fi;
+        
+        tree := CapJitInlinedVariableAssignments( tree : inline_rapid_reassignments_only := true );
+        
         # new functions might be resolved -> test for side effects
         CapJitThrowErrorOnSideEffects( tree );
         
@@ -95,10 +103,10 @@ InstallGlobalFunction( CapJitCompiledFunction, function ( func, jit_args )
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
-            Error( "apply CapJitInlinedVariableAssignments" );
+            Error( "apply CapJitInlinedVariableAssignments (for global variables only)" );
         fi;
         
-        tree := CapJitInlinedVariableAssignments( tree, true );
+        tree := CapJitInlinedVariableAssignments( tree : inline_gvars_only := true );
         
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );

@@ -205,30 +205,6 @@ InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function ( tree )
                 
             fi;
             
-            # do not count rapid reassignments
-            if tree.type = "STAT_SEQ_STAT" then
-                
-                for i in [ 1 .. Length( tree.statements ) - 1 ] do
-                    
-                    statement := tree.statements[i];
-                    next_statement := tree.statements[i + 1];
-                    
-                    if statement.type = "STAT_ASS_FVAR" and next_statement.type = "STAT_ASS_FVAR" and statement.func_id = next_statement.func_id and statement.pos = next_statement.pos then
-                        
-                        if IsBound( number_of_assignments[statement.func_id] ) then
-                            
-                            Assert( 0, IsBound( number_of_assignments[statement.func_id][statement.pos] ) );
-                            
-                            number_of_assignments[statement.func_id][statement.pos] := number_of_assignments[statement.func_id][statement.pos] - 1;
-                            
-                        fi;
-                        
-                    fi;
-                    
-                od;
-                
-            fi;
-            
         fi;
             
         return tree;

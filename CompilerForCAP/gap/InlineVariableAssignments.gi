@@ -3,27 +3,13 @@
 #
 # Implementations
 #
-InstallGlobalFunction( CapJitInlinedVariableAssignments, function ( tree, args... )
-  local inline_gvars_only, condition_func, path, lvar_path, lvar_assignment, parent_path, parent, inline_tree, subsequent_child, inline_tree_path, inline_tree_parent, func_path, func, func_id, number_of_assignments, pre_func, rhs, number_of_uses, modified_inline_tree;
+InstallGlobalFunction( CapJitInlinedVariableAssignments, function ( tree )
+  local inline_gvars_only, inline_rapid_reassignments_only, condition_func, path, lvar_path, lvar_assignment, parent_path, parent, inline_tree, subsequent_child, is_rapid_reassigment, inline_tree_path, inline_tree_parent, func_path, func, func_id, number_of_assignments, pre_func, rhs, number_of_uses, modified_inline_tree;
     
-    if not Length( args ) in [ 0, 1 ] then
-        
-        Error( "CapJitInlinedVariableAssignments cannot be called with more than two arguments" );
-        
-    fi;
-
-    if Length( args ) = 1 then
-        
-        Assert( 0, IsBool( args[1] ) );
-        
-        inline_gvars_only := args[1];
-        
-    else
-        
-        inline_gvars_only := false;
-        
-    fi;
-  
+    inline_gvars_only := ValueOption( "inline_gvars_only" ) = true;
+    
+    inline_rapid_reassignments_only := ValueOption( "inline_rapid_reassignments_only" ) = true;
+    
     tree := StructuralCopy( tree );
     
     # find STAT_ASS_FVAR
@@ -96,11 +82,21 @@ InstallGlobalFunction( CapJitInlinedVariableAssignments, function ( tree, args..
             
             Info( InfoCapJit, 1, "Found rapid reassignment." );
             
+            is_rapid_reassigment := true;
+            
             inline_tree := subsequent_child.rhs;
             inline_tree_path := Concatenation( parent_path, [ Last( lvar_path ) + 1, "rhs" ] );
             inline_tree_parent := subsequent_child;
             
+        elif inline_rapid_reassignments_only then
+            
+            Info( InfoCapJit, 1, "Not a rapid reassignment. Skip inlining..." );
+            
+            return CapJitInlinedVariableAssignments( tree );
+            
         else
+            
+            is_rapid_reassigment := false;
             
             inline_tree_path := parent_path;
             inline_tree := parent;
@@ -112,7 +108,7 @@ InstallGlobalFunction( CapJitInlinedVariableAssignments, function ( tree, args..
         
         Info( InfoCapJit, 1, "Variable assignment is the last statement in STAT_SEQ_STAT. Skip inlining..." );
         
-        return CapJitInlinedVariableAssignments( tree, inline_gvars_only );
+        return CapJitInlinedVariableAssignments( tree );
         
     fi;
 
@@ -168,26 +164,38 @@ InstallGlobalFunction( CapJitInlinedVariableAssignments, function ( tree, args..
         fi;
         
     fi;
-
-    # drop lvar assignment if possible
-
-    # get func containing lvar assignment
-    func_path := ShallowCopy( lvar_path );
     
-    # find "stats"
-    while Last( func_path ) <> "stats" do
+    # drop lvar assignment if possible
+    # if this is a rapid reassignment, we can simply drop the assignment
+    # if not, the assignment might be in the body of an if statement and the lvar might still be used after the if statement
+    
+    if is_rapid_reassigment then
         
+        Info( InfoCapJit, 1, "Drop first assignment of rapid reassignment." );
+        
+        Remove( parent, Last( lvar_path ) );
+        
+    else
+        
+        # get func containing lvar assignment
+        func_path := ShallowCopy( lvar_path );
+        
+        # find "stats"
+        while Last( func_path ) <> "stats" do
+            
+            Remove( func_path );
+            
+        od;
+        
+        # remove "stats"
         Remove( func_path );
         
-    od;
-    
-    # remove "stats"
-    Remove( func_path );
-    
-    Info( InfoCapJit, 1, "Try to drop variable assignment:" );
+        Info( InfoCapJit, 1, "Try to drop variable assignment:" );
         
-    tree := CapJitDroppedUnusedVariables( tree, func_path );
+        tree := CapJitDroppedUnusedVariables( tree, func_path );
+        
+    fi;
     
-    return CapJitInlinedVariableAssignments( tree, inline_gvars_only );
+    return CapJitInlinedVariableAssignments( tree );
     
 end );
