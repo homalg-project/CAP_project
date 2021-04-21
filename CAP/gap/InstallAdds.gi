@@ -200,7 +200,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
             weight := 100;
         fi;
         
-        if not is_derivation and record.with_given_without_given_name_pair <> fail then
+        if record.with_given_without_given_name_pair <> fail then
             
             without_given_name := record.with_given_without_given_name_pair[ 1 ];
             with_given_name := record.with_given_without_given_name_pair[ 2 ];
