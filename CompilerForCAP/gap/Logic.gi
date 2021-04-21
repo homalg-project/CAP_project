@@ -115,12 +115,10 @@ CapJitAddLogicFunction( function ( tree, jit_args )
     pre_func := function ( tree, additional_arguments )
       local args, object, value, pos;
         
-        if CapJitIsCallToGlobalFunction( tree, gvar -> IsAttribute( ValueGlobal( gvar ) ) ) then
+        # attribute getters can also be applied to more than one argument, but we are not interested in that case
+        if CapJitIsCallToGlobalFunction( tree, gvar -> IsAttribute( ValueGlobal( gvar ) ) ) and Length( tree.args ) = 1 then
             
             args := tree.args;
-            
-            # an attribute getter only has a single argument
-            Assert( 0, Length( args ) = 1 );
             
             object := args[1];
 
