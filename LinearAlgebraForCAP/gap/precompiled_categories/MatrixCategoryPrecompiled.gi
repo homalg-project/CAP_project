@@ -629,17 +629,6 @@ end
     );
     
     ##
-    AddIsZeroForMorphisms( cat,
-        
-########
-function ( cat, morphism )
-    return IsZero( UnderlyingMatrix( morphism ) );
-end
-########
-        
-    );
-    
-    ##
     AddIsZeroForObjects( cat,
         
 ########

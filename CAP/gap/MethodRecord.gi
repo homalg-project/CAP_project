@@ -14,6 +14,7 @@ InstallValue( CAP_INTERNAL_VALID_RETURN_TYPES,
         "bool",
         "other_object",
         "other_morphism",
+        "list_of_morphisms",
         "list_of_morphisms_or_fail",
     ]
 #! @EndCode
@@ -2927,7 +2928,7 @@ MorphismBetweenDirectSumsWithGivenDirectSums := rec(
   dual_preprocessor_func := function( arg )
       local list;
       list := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
-      return [ list[5], list[4], TransposedMat( list[3] ), list[2], list[1] ];
+      return [ list[1], list[6], list[5], TransposedMat( list[4] ), list[3], list[2] ];
   end
 ),
 
@@ -2950,8 +2951,8 @@ HomomorphismStructureOnMorphismsWithGivenObjects := rec(
   filter_list := [ "category", "other_object", "morphism", "morphism", "other_object" ],
   return_type := "other_morphism",
   dual_operation := "HomomorphismStructureOnMorphismsWithGivenObjects",
-  dual_preprocessor_func := function( source, alpha, beta, range )
-    return [ source, Opposite( beta ), Opposite( alpha ), range ];
+  dual_preprocessor_func := function( cat, source, alpha, beta, range )
+    return [ Opposite( cat ), source, Opposite( beta ), Opposite( alpha ), range ];
   end,
   dual_postprocessor_func := IdFunc
 ),
@@ -2973,8 +2974,8 @@ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism := rec
   filter_list := [ "category", "object", "object", "other_morphism" ],
   return_type := "morphism",
   dual_operation := "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
-  dual_preprocessor_func := function( A, B, morphism )
-    return [ Opposite( B ), Opposite( A ), morphism ];
+  dual_preprocessor_func := function( cat, A, B, morphism )
+    return [ Opposite( cat ), Opposite( B ), Opposite( A ), morphism ];
   end
 ),
 
@@ -3033,14 +3034,13 @@ MereExistenceOfSolutionOfLinearSystemInAbCategory := rec(
 
 BasisOfExternalHom := rec(
   filter_list := [ "category", "object", "object" ],
-  return_type := IsList,
+  return_type := "list_of_morphisms",
   dual_operation := "BasisOfExternalHom",
-  dual_arguments_reversed := true,
-  dual_postprocessor_func := CAP_INTERNAL_OPPOSITE_RECURSIVE,
+  dual_arguments_reversed := true
 ),
 
 CoefficientsOfMorphismWithGivenBasisOfExternalHom := rec(
-  filter_list := [ "category", "morphism", IsList ],
+  filter_list := [ "category", "morphism", "list_of_morphisms" ],
   return_type := IsList,
   dual_operation := "CoefficientsOfMorphismWithGivenBasisOfExternalHom",
   dual_postprocessor_func := IdFunc
@@ -3172,7 +3172,7 @@ HomologyObjectFunctorialWithGivenHomologyObjects := rec(
   dual_preprocessor_func := function( arg )
       local list;
       list := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
-      return [ list[3], Reversed( list[2] ), list[1] ];
+      return [ list[1], list[4], Reversed( list[3] ), list[2] ];
   end
 ),
 
@@ -4179,6 +4179,10 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         
         if IsBound( current_rec.post_function ) and NumberArgumentsFunction( current_rec.post_function ) >= 0 and NumberArgumentsFunction( current_rec.post_function ) <> number_of_arguments + 1 then
             Error( "the post function of <current_rec> has the wrong number of arguments" );
+        fi;
+        
+        if IsBound( current_rec.dual_preprocessor_func ) and NumberArgumentsFunction( current_rec.dual_preprocessor_func ) >= 0 and NumberArgumentsFunction( current_rec.dual_preprocessor_func ) <> number_of_arguments then
+            Error( "the dual preprocessor function of <current_rec> has the wrong number of arguments" );
         fi;
         
         if not ForAll( current_rec.filter_list, x -> IsFilter( x ) or IsString( x ) or (IsList( x ) and Length( x ) = 2 and IsString( x[1] ) and IsFilter( x[2] )) ) then

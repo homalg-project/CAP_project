@@ -98,39 +98,6 @@ end );
 
 CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS();
 
-##
-InstallImmediateMethod( Opposite,
-                        IsCapCategory and HasOpposite,
-                        0,
-                        
-  function( obj )
-    
-    SetOpposite( Opposite( obj ), obj );
-    
-end );
-
-##
-InstallImmediateMethod( Opposite,
-                        IsCapCategoryObject and HasOpposite,
-                        0,
-                        
-  function( obj )
-    
-    SetOpposite( Opposite( obj ), obj );
-    
-end );
-
-##
-InstallImmediateMethod( Opposite,
-                        IsCapCategoryMorphism and HasOpposite,
-                        0,
-                        
-  function( obj )
-    
-    SetOpposite( Opposite( obj ), obj );
-    
-end );
-
 ##################################
 ##
 ## Construtor
@@ -142,20 +109,8 @@ InstallMethod( Opposite,
                [ IsCapCategoryObject ],
                
   function( object )
-    local opposite_object;
     
-    opposite_object := ObjectifyWithAttributes( rec( ), TheTypeOfCapCategoryOppositeObjects,
-                                                Opposite, object );
-    
-    Add( Opposite( CapCategory( object ) ), opposite_object );
-    
-    if CapCategory( object )!.predicate_logic then
-        
-        INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_OBJECT( object );
-        
-    fi;
-    
-    return opposite_object;
+    return ObjectConstructor( Opposite( CapCategory( object ) ), object );
     
 end );
 
@@ -164,20 +119,8 @@ InstallMethod( Opposite,
                [ IsCapCategoryMorphism ],
                
   function( morphism )
-    local opposite_morphism;
     
-    opposite_morphism := ObjectifyWithAttributes( rec( ), TheTypeOfCapCategoryOppositeMorphisms,
-                                                  Opposite, morphism );
-    
-    Add( Opposite( CapCategory( morphism ) ), opposite_morphism );
-    
-    if CapCategory( morphism )!.predicate_logic then
-        
-        INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_MORPHISM( morphism );
-        
-    fi;
-    
-    return opposite_morphism;
+    return MorphismConstructor( Opposite( CapCategory( morphism ) ), Opposite( Range( morphism ) ), morphism, Opposite( Source( morphism ) ) );
     
 end );
 
@@ -198,29 +141,13 @@ end );
 BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
   
   function( opposite_category, category )
-    local recnames, current_recname, category_weight_list, dual_name, current_entry, func,
-          current_add, create_func, morphism_between_direct_sums_func,
-          dual_preprocessor_func, dual_postprocessor_func,
-          list_of_attributes, attr, tester, setter, getter;
+    local recnames, current_recname, current_entry, dual_operation_name,
+          filter_list, input_arguments_names, return_type, func_string,
+          dual_preprocessor_func_string, preprocessor_string, dual_arguments,
+          dual_postprocessor_func_string, postprocessor_string, return_statement,
+          func, current_add, list_of_attributes, attr, tester, setter, getter;
     
     recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
-    
-    category_weight_list := category!.derivations_weight_list;
-    
-    create_func := function( dual_name, dual_preprocessor_func, dual_postprocessor_func )
-        
-        return function( opposite_category, arg... )
-            local prep_arg, result;
-            
-            prep_arg := CallFuncList( dual_preprocessor_func, arg );
-            
-            result := CallFuncList( ValueGlobal( dual_name ), Concatenation( [ category ], prep_arg ) );
-            
-            return dual_postprocessor_func( result );
-            
-        end;
-        
-    end;
     
     for current_recname in recnames do
         
@@ -244,44 +171,16 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
             continue;
         fi;
         
-        dual_name := current_entry.dual_operation;
+        dual_operation_name := current_entry.dual_operation;
         
-        if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.( dual_name ) ) then
+        if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.( dual_operation_name ) ) then
             
             Error( "the dual operation must be a CAP operation" );
             
         fi;
         
-        if CurrentOperationWeight( category_weight_list, dual_name ) = infinity then
+        if not CanCompute( category, dual_operation_name ) then
             continue;
-        fi;
-        
-        if IsBound( current_entry.dual_preprocessor_func ) then
-            
-            dual_preprocessor_func := current_entry.dual_preprocessor_func;
-            
-        elif current_entry.dual_arguments_reversed then
-            
-            dual_preprocessor_func := function( arg )
-                return Reversed( CAP_INTERNAL_OPPOSITE_RECURSIVE( arg ) );
-            end;
-            
-        else
-            
-            dual_preprocessor_func := function( arg )
-                return CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
-            end;
-            
-        fi;
-        
-        if IsBound( current_entry.dual_postprocessor_func ) then
-            
-            dual_postprocessor_func := current_entry.dual_postprocessor_func;
-            
-        else
-            
-            dual_postprocessor_func := CAP_INTERNAL_OPPOSITE_RECURSIVE;
-            
         fi;
         
         if current_entry.filter_list[1] <> "category" then
@@ -290,13 +189,165 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                 "WARNING: The opposite category cannot deal with operations which do not get the category as the first argument. ",
                 "The installation of ", current_recname, " will be skipped. ",
                 "To get rid of this warning, add \"category\" as the first entry of `filter_list` in the corresponding method record entry. ",
-                "For more information about the implications of doing so, search for `filter_list` in the documentation."
+                "For more information about the implications of doing so, search for `filter_list` in the documentation of CAP."
             ) );
             continue;
             
         fi;
         
-        func := create_func( dual_name, dual_preprocessor_func, dual_postprocessor_func );
+        filter_list := current_entry.filter_list;
+        input_arguments_names := current_entry.input_arguments_names;
+        return_type := current_entry.return_type;
+        
+        func_string :=
+            """
+            function ( input_arguments )
+              local dual_preprocessor_func, prep_arg, result, dual_postprocessor_func;
+                
+                preprocessor_string
+                
+                result := dual_operation_name( dual_arguments );
+                
+                postprocessor_string
+                
+                return_statement;
+                
+            end
+            """;
+        
+        if IsBound( current_entry.dual_preprocessor_func ) then
+            
+            if IsOperation( current_entry.dual_preprocessor_func ) or IsKernelFunction( current_entry.dual_preprocessor_func ) then
+                
+                dual_preprocessor_func_string := NameFunction( current_entry.dual_preprocessor_func );
+                
+            else
+                
+                dual_preprocessor_func_string := String( current_entry.dual_preprocessor_func );
+                
+            fi;
+            
+            preprocessor_string := ReplacedStringViaRecord(
+                """
+                dual_preprocessor_func := dual_preprocessor_func_string;
+                prep_arg := dual_preprocessor_func( input_arguments );
+                """,
+                rec(
+                    dual_preprocessor_func_string := dual_preprocessor_func_string,
+                    input_arguments := input_arguments_names,
+                )
+            );
+            
+            dual_arguments := List( [ 1 .. Length( filter_list ) ], i -> Concatenation( "prep_arg[", String( i ), "]" ) );
+            
+        else
+            
+            preprocessor_string := "";
+            
+            dual_arguments := List( [ 1 .. Length( filter_list ) ], function( i )
+              local filter, argument_name;
+                
+                filter := filter_list[i];
+                argument_name := input_arguments_names[i];
+                
+                # we only take the first filter in a filter list into account
+                if not IsString( filter ) and IsList( filter ) then
+                    
+                    filter := filter[1];
+                    
+                fi;
+                
+                if filter = "category" or filter = "object" or filter = "morphism" then
+                    
+                    return Concatenation( "Opposite( ", argument_name, " )" );
+                    
+                elif filter = IsInt or filter = IsRingElement or filter = IsCyclotomic then
+                    
+                    return argument_name;
+                    
+                elif filter = "list_of_objects" or filter = "list_of_morphisms" then
+                    
+                    return Concatenation( "List( ", argument_name, ", Opposite )" );
+                    
+                else
+                    
+                    Error( "this case is not handled yet" );
+                    
+                fi;
+                
+            end );
+            
+            if current_entry.dual_arguments_reversed then
+                
+                # only reverse the arguments following the category
+                dual_arguments := Concatenation( [ dual_arguments[1] ], Reversed( dual_arguments{ [ 2 .. Length( dual_arguments ) ] } ) );
+                
+            fi;
+            
+        fi;
+        
+        if IsBound( current_entry.dual_postprocessor_func ) then
+            
+            if IsOperation( current_entry.dual_postprocessor_func ) or IsKernelFunction( current_entry.dual_postprocessor_func ) then
+                
+                dual_postprocessor_func_string := NameFunction( current_entry.dual_postprocessor_func );
+                
+            else
+                
+                dual_postprocessor_func_string := String( current_entry.dual_postprocessor_func );
+                
+            fi;
+            
+            postprocessor_string := Concatenation( "dual_postprocessor_func := ", dual_postprocessor_func_string, ";" );
+            
+            return_statement := "return dual_postprocessor_func( result )";
+            
+        else
+            
+            postprocessor_string := "";
+            
+            if return_type = "object" then
+                
+                return_statement := "return ObjectConstructor( cat, result )";
+                
+            elif return_type = "morphism" then
+                
+                return_statement := "return MorphismConstructor( cat, ObjectConstructor( cat, Range( result ) ), result, ObjectConstructor( cat, Source( result ) ) )";
+                
+            elif return_type = "object_or_fail" then
+                
+                return_statement := "if result = fail then return fail; else return ObjectConstructor( cat, result ); fi";
+                
+            elif return_type = "morphism_or_fail" then
+                
+                return_statement := "if result = fail then return fail; else return MorphismConstructor( cat, ObjectConstructor( cat, Range( result ) ), result, ObjectConstructor( cat, Source( result ) ) ); fi";
+                
+            elif return_type = "list_of_morphisms" then
+                
+                return_statement := "return List( result, mor -> MorphismConstructor( cat, ObjectConstructor( cat, Range( mor ) ), mor, ObjectConstructor( cat, Source( mor ) ) ) )";
+                
+            elif return_type = "bool" then
+                
+                return_statement := "return result";
+                
+            else
+                
+                Error( "this case is not handled yet" );
+                
+            fi;
+            
+        fi;
+        
+        func_string := ReplacedStringViaRecord( func_string, rec(
+            input_arguments := input_arguments_names,
+            preprocessor_string := preprocessor_string,
+            dual_arguments := dual_arguments,
+            dual_operation_name := dual_operation_name,
+            postprocessor_string := postprocessor_string,
+            return_statement := return_statement
+        ) );
+        
+        func := EvalString( func_string );
         
         current_add := ValueGlobal( Concatenation( "Add", current_recname ) );
         
@@ -332,7 +383,7 @@ InstallMethod( Opposite,
                [ IsCapCategory, IsString ],
                
   function( category, name )
-    local opposite_category;
+    local opposite_category, to_be_finalized;
     
     if not HasIsFinalized( category ) or not IsFinalized( category ) then
         Error( "Input category must be finalized to create opposite category" );
@@ -342,9 +393,92 @@ InstallMethod( Opposite,
     
     opposite_category!.category_as_first_argument := true;
     
+    opposite_category!.compiler_hints := rec(
+        category_attribute_names := [
+            "Opposite",
+        ],
+    );
+    
+    AddObjectRepresentation( opposite_category, IsCapCategoryOppositeObjectRep );
+    AddMorphismRepresentation( opposite_category, IsCapCategoryOppositeMorphismRep );
+    
     SetWasCreatedAsOppositeCategory( opposite_category, true );
     
     SetOpposite( opposite_category, category );
+    SetOpposite( category, opposite_category );
+    
+    AddObjectConstructor( opposite_category, function( cat, object )
+      local opposite_object;
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( object, Opposite( cat ), {} -> "the object datum given to the object constructor of <cat>" );
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        if HasOpposite( object ) then
+            
+            return Opposite( object );
+            
+        fi;
+        
+        opposite_object := ObjectifyObjectForCAPWithAttributes( rec( ), cat,
+                                                                Opposite, object );
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        if CapCategory( object )!.predicate_logic then
+            
+            INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_OBJECT( object );
+            
+        fi;
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        SetOpposite( object, opposite_object );
+        
+        return opposite_object;
+        
+    end );
+    
+    AddMorphismConstructor( opposite_category, function( cat, source, morphism, range )
+      local opposite_morphism;
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( morphism, Opposite( cat ), {} -> "the morphism datum given to the morphism constructor of <cat>" );
+        
+        if IsEqualForObjects( Source( morphism ), Opposite( range ) ) = false then
+            
+            Error( "the source of the morphism datum must be equal to <Opposite( range )>" );
+            
+        fi;
+        
+        if IsEqualForObjects( Range( morphism ), Opposite( source ) ) = false then
+            
+            Error( "the range of the morphism datum must be equal to <Opposite( source )>" );
+            
+        fi;
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        if HasOpposite( morphism ) then
+            
+            return Opposite( morphism );
+            
+        fi;
+        
+        opposite_morphism := ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
+                                                                                      source, range,
+                                                                                      Opposite, morphism );
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        if CapCategory( morphism )!.predicate_logic then
+            
+            INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_MORPHISM( morphism );
+            
+        fi;
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        SetOpposite( morphism, opposite_morphism );
+        
+        return opposite_morphism;
+        
+    end );
     
     CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY( opposite_category, category );
     
@@ -354,7 +488,17 @@ InstallMethod( Opposite,
         
     fi;
     
-    Finalize( opposite_category );
+    to_be_finalized := ValueOption( "FinalizeCategory" );
+    
+    if to_be_finalized = false then
+        
+        return opposite_category;
+        
+    else
+        
+        Finalize( opposite_category );
+        
+    fi;
     
     return opposite_category;
     
@@ -378,28 +522,6 @@ end );
 ## Methods
 ##
 ##################################
-
-##
-InstallImmediateMethod( Source,
-                        IsCapCategoryOppositeMorphismRep,
-                        0,
-                        
-  function( morphism )
-    
-    return Opposite( Range( Opposite( morphism ) ) );
-    
-end );
-
-##
-InstallImmediateMethod( Range,
-                        IsCapCategoryOppositeMorphismRep,
-                        0,
-                        
-  function( morphism )
-    
-    return Opposite( Source( Opposite( morphism ) ) );
-    
-end );
 
 InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY,
                        
