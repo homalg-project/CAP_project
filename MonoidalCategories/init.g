@@ -33,3 +33,8 @@ ReadPackage( "MonoidalCategories", "gap/SymmetricCoclosedMonoidalCategoriesDoc.g
 
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategoriesDoc.gd" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategories.gd" );
+
+## Using this package as a template
+ReadPackage( "MonoidalCategories", "gap/CreateMonoidalCategories.gd" );
+ReadPackage( "MonoidalCategories", "gap/CreateClosedMonoidalCategories.gd" );
+ReadPackage( "MonoidalCategories", "gap/CreateCoclosedMonoidalCategories.gd" );
