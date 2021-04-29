@@ -3404,32 +3404,6 @@ AddFinalDerivation( IsomorphismFromHomologyObjectToItsConstructionAsAnImageObjec
 end : CategoryFilter := HasIsAbelianCategory and IsAbelianCategory,
       Description := "IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject as the identity of the homology object constructed as an image object" );
 
-
-## Final method for IsEqualForObjects
-##
-AddFinalDerivation( IsEqualForObjects,
-                    [ ],
-                    [ IsEqualForObjects ],
-                    
-  ReturnFail );
-
-## Final methods for IsEqual/IsEqualForMorphisms
-##
-AddFinalDerivation( IsCongruentForMorphisms,
-                    [ ],
-                    [ IsCongruentForMorphisms,
-                      IsEqualForMorphisms ],
-                      
-  ReturnFail : Description := "Only IsIdenticalObj for comparing" );
-
-##
-AddFinalDerivation( IsEqualForMorphisms,
-                    [ ],
-                    [ IsCongruentForMorphisms,
-                      IsEqualForMorphisms ],
-                      
-  ReturnFail : Description := "Only IsIdenticalObj for comparing" );
-
 ##
 AddFinalDerivation( IsCongruentForMorphisms,
                     [ [ IsEqualForMorphisms, 1 ] ],
