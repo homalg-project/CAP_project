@@ -508,3 +508,170 @@ AddFinalDerivation( InjectionOfBiasedWeakPushout,
     return InjectionOfFirstCofactorOfWeakBiPushout( alpha, beta );
 
 end : Description := "ProjectioInjectionOfBiasedWeakPushoutnOfBiasedWeakFiberProduct using InjectionOfFirstCofactorOfWeakBiPushout" );
+
+##
+AddFinalDerivation( DistinguishedObjectOfHomomorphismStructure,
+                    [
+                      [ BasisOfExternalHom, 1 ],
+                      [ CoefficientsOfMorphismWithGivenBasisOfExternalHom, 1 ],
+                      [ MultiplyWithElementOfCommutativeRingForMorphisms, 1 ]
+                    ],
+                    [
+                      HomomorphismStructureOnObjects,
+                      HomomorphismStructureOnMorphismsWithGivenObjects,
+                      DistinguishedObjectOfHomomorphismStructure,
+                      InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure,
+                      InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
+                    ],
+  
+  function( cat )
+    local rows_cat;
+    
+    rows_cat := RangeCategoryOfHomomorphismStructure( cat );
+    
+    return CategoryOfRowsObject( rows_cat, 1 );
+    
+  end,
+[
+  HomomorphismStructureOnObjects,
+  function( a, b )
+    local cat, R, rows_cat, rank;
+    
+    cat := CapCategory( a );
+    
+    rows_cat := RangeCategoryOfHomomorphismStructure( cat );
+    
+    rank := Size( BasisOfExternalHom( a, b ) );
+    
+    return CategoryOfRowsObject( rows_cat, rank );
+    
+  end
+],
+[
+  HomomorphismStructureOnMorphismsWithGivenObjects,
+    
+    #          alpha
+    #      a --------> a'     s = H(a',b) ---??--> r = H(a,b')
+    #      |           |
+    # alpha.h.beta     h
+    #      |           |
+    #      v           v
+    #      b' <------- b
+    #          beta
+    
+  function( hom_source, alpha, beta, hom_range )
+    local cat, R, rank_hom_source, rank_hom_range, C, B, mat;
+    
+    cat := CapCategory( alpha );
+    
+    R := CommutativeRingOfLinearCategory( cat );
+    
+    rank_hom_source := RankOfObject( hom_source );
+    
+    rank_hom_range := RankOfObject( hom_range );
+    
+    if rank_hom_source * rank_hom_range = 0 then
+      
+      return ValueGlobal( "ZeroMorphism" )( hom_source, hom_range ); # sanity checks for final derivations
+                                                                     # thinks this ZeroMorphism is being used in cat;
+    fi;                                                              # hence, insists that it should be in the list of required
+                                                                     # primitive methods.
+                                                                     
+    C := BasisOfExternalHom( Source( alpha ), Range( beta ) );
+    
+    B := BasisOfExternalHom( Range( alpha ), Source( beta ) );
+    
+    B := List( B, b -> PreCompose( [ alpha, b, beta ] ) );
+    
+    B := List( B, b -> CoefficientsOfMorphismWithGivenBasisOfExternalHom( b, C ) );
+    
+    mat := HomalgMatrix( B, rank_hom_source, rank_hom_range, R );
+    
+    return CategoryOfRowsMorphism( hom_source, mat, hom_range );
+    
+  end
+],
+[
+  InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure,
+  function( alpha )
+    local cat, R, rows_cat, coeff, D;
+    
+    cat := CapCategory( alpha );
+    
+    R := CommutativeRingOfLinearCategory( cat );
+    
+    rows_cat := RangeCategoryOfHomomorphismStructure( cat );
+    
+    coeff := CoefficientsOfMorphism( alpha );
+    
+    coeff := HomalgMatrix( coeff, 1, Size( coeff ), R );
+    
+    return CategoryOfRowsMorphism(
+              CategoryOfRowsObject( rows_cat, 1 ),
+              coeff,
+              CategoryOfRowsObject( rows_cat, NrCols( coeff ) )
+            );
+    
+  end
+],
+[
+  InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
+  function( a, b, iota )
+    local mat, coeff, B, L;
+    
+    mat := UnderlyingMatrix( iota );
+    
+    coeff := EntriesOfHomalgMatrix( mat );
+    
+    B := BasisOfExternalHom( a, b );
+    
+    L := List( [ 1 .. Length( coeff ) ],
+      i -> MultiplyWithElementOfCommutativeRingForMorphisms( coeff[ i ], B[ i ] ) );
+      
+    if L = [  ] then
+      
+      return ZeroMorphism( a, b );
+      
+    else
+      
+      return Sum( L );
+      
+    fi;
+    
+  end
+] : ConditionsListComplete := true,
+  FunctionCalledBeforeInstallation :=
+    function( cat )
+      local rows_cat;
+      rows_cat := CategoryOfRows( CommutativeRingOfLinearCategory( cat ) );
+      SetRangeCategoryOfHomomorphismStructure( cat, rows_cat );
+      return;
+    end,
+  CategoryFilter :=
+    function( cat )
+      local R;
+      
+      # if the category is the category of rows then do nothing
+      if  IsCategoryOfRows( cat ) then
+        
+        return false;
+        
+      fi;
+       
+      if not ( HasIsLinearCategoryOverCommutativeRing( cat ) and IsLinearCategoryOverCommutativeRing( cat ) ) then
+        
+        return false;
+        
+      fi;
+       
+      if HasRangeCategoryOfHomomorphismStructure( cat ) then
+        
+        return false;
+        
+      fi;
+      
+      return true;
+      
+  end,
+  Description := "Adding homomorphism structure using external hom methods"
+);
