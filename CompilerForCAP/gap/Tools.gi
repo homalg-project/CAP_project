@@ -262,7 +262,7 @@ InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function ( tree )
                 
                 if number_of_assignments[i][j] >= 2 then
                     
-                    Error( Concatenation( "a local variable with name ", nams[i][j], " is assigned more than once (not as a part of a rapid reassignment), this is not supported" ) );
+                    Error( Concatenation( "a local variable with name ", nams[i][j], " is assigned more than once (not as part of a rapid reassignment), this is not supported" ) );
                     
                 fi;
                 
