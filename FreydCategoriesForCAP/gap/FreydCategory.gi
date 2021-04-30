@@ -33,6 +33,12 @@ InstallGlobalFunction( FREYD_CATEGORY,
     
     freyd_category!.category_as_first_argument := true;
     
+    if IsBound( underlying_category!.supports_empty_limits ) then
+        
+        freyd_category!.supports_empty_limits := underlying_category!.supports_empty_limits;
+        
+    fi;
+    
     freyd_category!.compiler_hints := rec(
         category_attribute_names := [
             "UnderlyingCategory",
@@ -597,9 +603,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
       function( cat, diagram, test_object, source, direct_sum_object )
         
-        return FreydCategoryMorphism( Source( source[1] ),
+        return FreydCategoryMorphism( test_object,
                                       UniversalMorphismIntoDirectSum( underlying_category,
                                                                       List( diagram, obj -> Range( RelationMorphism( obj ) ) ),
+                                                                      Range( RelationMorphism( test_object ) ),
                                                                       List( source, mor -> MorphismDatum( mor ) ) ),
                                       direct_sum_object
                                     );
@@ -624,8 +631,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         return FreydCategoryMorphism( direct_sum_object,
                                       UniversalMorphismFromDirectSum( underlying_category,
                                                                       List( diagram, obj -> Range( RelationMorphism( obj ) ) ),
+                                                                      Range( RelationMorphism( test_object ) ),
                                                                       List( sink, mor -> MorphismDatum( mor ) ) ),
-                                      Range( sink[1] )
+                                      test_object
                                     );
         
     end );
