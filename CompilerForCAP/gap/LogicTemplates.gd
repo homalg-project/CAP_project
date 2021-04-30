@@ -42,13 +42,21 @@ DeclareGlobalFunction( "CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE" );
 #!     * `debug_path` can be set to a specific path to get exact information why the subtree at this path does or does not match
 #!       `src_template`.
 #!
-#!    Technical note: `src_template` is only replaced by `dst_template` if the result is well-defined, i.e., if all function variables
-#!    reference only functions in their function stack. This can be used to move "static" variables (i.e. variables not depending
-#!    on local variables) outside of functions. Example: consider a template with `src_template` given by
-#!    `Sum( List( L, x -> x^2 * value ) )` and `dst_template` given by `Sum( List( L, x -> x^2 ) ) * value` (assuming distributivity).
-#!    This replacement is only valid if `value` is independent of `x`. However, we do not need to make this explicit at any point,
-#!    because if `value` depends on `x`, the result `Sum( List( L, x -> x^2 ) ) * value` is not well-defined,
-#!    so the template is not applied anyway.
+#!  Notes:
+#!     * `src_template` is only replaced by `dst_template` if the result is well-defined, i.e., if all function variables
+#!       reference only functions in their function stack. This can be used to move "static" variables (i.e. variables not depending
+#!       on local variables) outside of functions. Example: consider a template with `src_template` given by
+#!       `Sum( List( L, x -> x^2 * value ) )` and `dst_template` given by `Sum( List( L, x -> x^2 ) ) * value` (assuming distributivity).
+#!       This replacement is only valid if `value` is independent of `x`. However, we do not need to make this explicit at any point,
+#!       because if `value` depends on `x`, the result `Sum( List( L, x -> x^2 ) ) * value` is not well-defined,
+#!       so the template is not applied anyway.
+#!     * If `src_template` cannot be expressed as valid GAP code, the component `src_template_tree` can be set.
+#!       In that case, `src_template` is not parsed and `src_template_tree` is used when trying to find a match.
+#!       Variables in the sense of `variable_names` have to be given as references to global variables called
+#!       `CAP_INTERNAL_JIT_TEMPLATE_VAR_n` where `n` is consecutively incremented starting from 1.
+#!       Setting `src_template` and `variable_names` is still required to have a readable representation of the template and to make sure
+#!       that the global variables `CAP_INTERNAL_JIT_TEMPLATE_VAR_n` are declared by <Ref Func="CapJitAppliedLogicTemplates" />.
+#!       If `dst_template` cannot be expressed as valid GAP code, it can be in an analogous manner.
 #! @Arguments template
 DeclareGlobalFunction( "CapJitAddLogicTemplate" );
 

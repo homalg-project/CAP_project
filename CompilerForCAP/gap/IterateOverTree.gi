@@ -88,6 +88,7 @@ BindGlobal( "CAP_JIT_INTERNAL_ITERATION_KEYS", rec(
     STAT_INFO := [ "sel", "lev", "args" ],
     BRANCH_IF := [ "condition", "body" ],
     REC_KEY_VALUE_PAIR := [ "value" ],
+    EXPR_CONDITIONAL := [ "condition", "expr_if_true", "expr_if_false" ],
 ) );
 
 InstallGlobalFunction( CapJitIterateOverTree, function ( tree, pre_func, result_func, additional_arguments_func, additional_arguments )
