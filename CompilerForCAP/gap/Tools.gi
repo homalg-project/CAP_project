@@ -152,7 +152,7 @@ InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function ( tree )
             fi;
             
             # exclude most common statements and expression indicating possible side effects
-            if tree.type in [ "STAT_ASS_GVAR", "EXPR_ISB_GVAR", "STAT_UNB_GVAR", "EXPR_ISB_FVAR", "EXPR_UNB_FVAR", "STAT_PROCCALL" ] then
+            if tree.type in [ "STAT_ASS_GVAR", "EXPR_ISB_GVAR", "STAT_UNB_GVAR", "EXPR_ISB_FVAR", "EXPR_UNB_FVAR", "STAT_PROCCALL", "STAT_ASS_LIST", "STAT_ASS_COMOBJ_NAME", "STAT_ASS_MAT" ] then
 
                 Error( Concatenation( "tree includes statements or expressions which indicate possible side effects: ", tree.type ) );
 

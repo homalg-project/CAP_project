@@ -53,6 +53,7 @@ BindGlobal( "CAP_JIT_INTERNAL_ITERATION_KEYS", rec(
     EXPR_ISB_COMOBJ_NAME := [ "comobj" ],
     STAT_ASS_COMOBJ_NAME := [ "comobj", "rhs" ],
     EXPR_ELM_MAT := [ "list", "row", "col" ],
+    STAT_ASS_MAT := [ "list", "row", "col", "rhs" ],
     EXPR_LIST := "list",
     STAT_RETURN_OBJ := "obj",
     EXPR_RANGE := [ "first", "last" ],
