@@ -170,7 +170,7 @@ CapJitAddLogicFunction( function ( tree, jit_args )
                 
                 statement := statements[i];
                 
-                if StartsWith( statement.type, "STAT_IF" ) and ForAll( statement.branches, b -> Last( b.body.statements ).type = "STAT_RETURN_OBJ" ) then
+                if StartsWith( statement.type, "STAT_IF" ) and ForAll( statement.branches, b -> Length( b.body.statements ) > 0 and Last( b.body.statements ).type = "STAT_RETURN_OBJ" ) then
                     # we are in the main sequence of statements of a function => we are not inside of a loop
                     # and all branches end with a return statement
                     # => we reach the remaining statements iff none of the conditions of the branches match

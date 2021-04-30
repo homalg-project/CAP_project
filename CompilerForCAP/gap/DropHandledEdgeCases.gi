@@ -65,7 +65,7 @@ InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function ( tree )
                         
                         branch := branches[j];
                         
-                        if Last( branch.body.statements ).type = "STAT_RETURN_OBJ" then
+                        if Length( branch.body.statements ) > 0 and Last( branch.body.statements ).type = "STAT_RETURN_OBJ" then
                             
                             # we are in the main sequence of statements of a function => we are not inside of a loop
                             # and this branch ends with a return statement
