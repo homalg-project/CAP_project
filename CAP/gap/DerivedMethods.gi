@@ -3435,14 +3435,14 @@ AddFinalDerivation( IsCongruentForMorphisms,
                     [ [ IsEqualForMorphisms, 1 ] ],
                     [ IsCongruentForMorphisms ],
                     
-  IsEqualForMorphisms : Description := "Use IsEqualForMorphisms for IsCongruentForMorphisms" );
+  { cat, mor1, mor2 } -> IsEqualForMorphisms( mor1, mor2 ) : Description := "Use IsEqualForMorphisms for IsCongruentForMorphisms" );
 
 ##
 AddFinalDerivation( IsEqualForMorphisms,
                     [ [ IsCongruentForMorphisms, 1 ] ],
                     [ IsEqualForMorphisms ],
                     
-  IsCongruentForMorphisms : Description := "Use IsCongruentForMorphisms for IsEqualForMorphisms" );
+  { cat, mor1, mor2 } -> IsCongruentForMorphisms( mor1, mor2 ) : Description := "Use IsCongruentForMorphisms for IsEqualForMorphisms" );
 
 ## Final methods for BasisOfExternalHom & CoefficientsOfMorphism
 
