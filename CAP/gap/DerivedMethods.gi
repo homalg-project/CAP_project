@@ -831,9 +831,9 @@ AddDerivationToCAP( IsAutomorphism,
                     
   function( cat, morphism )
     
-    return IsIsomorphism( morphism ) and IsEndomorphism( morphism );
+    return IsEndomorphism( morphism ) and IsIsomorphism( morphism );
     
-end : Description := "IsAutomorphism by checking IsIsomorphism and IsEndomorphism");
+end : Description := "IsAutomorphism by checking IsEndomorphism and IsIsomorphism");
 
 ##
 AddDerivationToCAP( IsZeroForMorphisms,
