@@ -8,6 +8,8 @@ InstallGlobalFunction( CapJitAppliedCompilerHints, function ( tree, category )
     
     tree := CapJitReplacedGlobalVariablesByCategoryAttributes( tree, category );
     
+    tree := CapJitReplacedSourceAndRangeAttributes( tree, category );
+    
     return tree;
     
 end );
@@ -139,5 +141,147 @@ InstallGlobalFunction( CapJitReplacedGlobalVariablesByCategoryAttributes, functi
     end;
     
     return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    
+end );
+
+InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, category )
+  local object_attribute_name, morphism_attribute_name, source_attribute_getter_name, range_attribute_getter_name, args, morphism_attribute_position, morphism_attribute_value, source_args, source_attribute_position, range_args, range_attribute_position;
+    
+    if not (IsBound( category!.compiler_hints ) and IsBound( category!.compiler_hints.source_and_range_attributes_from_morphism_attribute )) then
+        
+        return tree;
+        
+    fi;
+    
+    object_attribute_name := category!.compiler_hints.source_and_range_attributes_from_morphism_attribute.object_attribute_name;
+    morphism_attribute_name := category!.compiler_hints.source_and_range_attributes_from_morphism_attribute.morphism_attribute_name;
+    source_attribute_getter_name := category!.compiler_hints.source_and_range_attributes_from_morphism_attribute.source_attribute_getter_name;
+    range_attribute_getter_name := category!.compiler_hints.source_and_range_attributes_from_morphism_attribute.range_attribute_getter_name;
+    
+    if Length( tree.stats.statements ) = 1 and tree.stats.statements[1].type = "STAT_RETURN_OBJ" and CapJitIsCallToGlobalFunction( tree.stats.statements[1].obj, "ObjectifyWithAttributes" ) then
+        
+        args := tree.stats.statements[1].obj.args;
+        
+        if Length( args ) > 7 and args[5].type = "EXPR_REF_GVAR" and args[5].gvar = "Source" and args[7].type = "EXPR_REF_GVAR" and args[7].gvar = "Range" then
+            
+            # check if either Source or Range are constructed inplace
+            if CapJitIsCallToGlobalFunction( args[6], "ObjectifyWithAttributes" ) or CapJitIsCallToGlobalFunction( args[8], "ObjectifyWithAttributes" ) then
+                
+                morphism_attribute_position := PositionProperty( args, x -> x.type = "EXPR_REF_GVAR" and x.gvar = morphism_attribute_name );
+                
+                if morphism_attribute_position = fail then
+                    
+                    Error( "cannot find morphism attribute" );
+                    
+                fi;
+                
+                Assert( 0, morphism_attribute_position < Length( args ) );
+                
+                morphism_attribute_value := args[morphism_attribute_position + 1];
+                
+                tree.nams := Concatenation( tree.nams, [ "cap_jit_morphism_attribute" ] );
+                tree.nloc := tree.nloc + 1;
+                
+                tree.stats.statements := Concatenation(
+                    [
+                        rec(
+                            type := "STAT_ASS_FVAR",
+                            func_id := tree.id,
+                            pos := tree.narg + tree.nloc,
+                            initial_name := "cap_jit_morphism_attribute",
+                            rhs := morphism_attribute_value,
+                        )
+                    ],
+                    tree.stats.statements
+                );
+                
+                args[morphism_attribute_position + 1] := rec(
+                    type := "EXPR_REF_FVAR",
+                    func_id := tree.id,
+                    pos := tree.narg + tree.nloc,
+                    initial_name := "cap_jit_morphism_attribute",
+                );
+                
+                if CapJitIsCallToGlobalFunction( args[6], "ObjectifyWithAttributes" ) then
+                    
+                    source_args := args[6].args;
+                    
+                    source_attribute_position := PositionProperty( source_args, x -> x.type = "EXPR_REF_GVAR" and x.gvar = object_attribute_name );
+                    
+                    if source_attribute_position = fail then
+                        
+                        Error( "cannot find source attribute" );
+                        
+                    fi;
+                    
+                    Assert( 0, source_attribute_position < Length( source_args ) );
+                    
+                    # ignore simple expression, e.g. integers
+                    if not source_args[source_attribute_position + 1].type in [ "EXPR_INT", "EXPR_STRING", , "EXPR_CHAR", "EXPR_TRUE", "EXPR_FALSE", "EXPR_REF_GVAR", "EXPR_RANGE" ] then
+                        
+                        source_args[source_attribute_position + 1] := rec(
+                            type := "EXPR_FUNCCALL",
+                            funcref := rec(
+                                type := "EXPR_REF_GVAR",
+                                gvar := source_attribute_getter_name,
+                            ),
+                            args := [
+                                rec(
+                                    type := "EXPR_REF_FVAR",
+                                    func_id := tree.id,
+                                    pos := tree.narg + tree.nloc,
+                                    initial_name := "cap_jit_morphism_attribute",
+                                ),
+                            ],
+                        );
+                        
+                    fi;
+                    
+                fi;
+                        
+                if CapJitIsCallToGlobalFunction( args[8], "ObjectifyWithAttributes" ) then
+                    
+                    range_args := args[8].args;
+                    
+                    range_attribute_position := PositionProperty( range_args, x -> x.type = "EXPR_REF_GVAR" and x.gvar = object_attribute_name );
+                    
+                    if range_attribute_position = fail then
+                        
+                        Error( "cannot find range attribute" );
+                        
+                    fi;
+                    
+                    Assert( 0, range_attribute_position < Length( range_args ) );
+                    
+                    # ignore simple expression, e.g. integers
+                    if not range_args[range_attribute_position + 1].type in [ "EXPR_INT", "EXPR_STRING", , "EXPR_CHAR", "EXPR_TRUE", "EXPR_FALSE", "EXPR_REF_GVAR", "EXPR_RANGE" ] then
+                        
+                        range_args[range_attribute_position + 1] := rec(
+                            type := "EXPR_FUNCCALL",
+                            funcref := rec(
+                                type := "EXPR_REF_GVAR",
+                                gvar := range_attribute_getter_name,
+                            ),
+                            args := [
+                                rec(
+                                    type := "EXPR_REF_FVAR",
+                                    func_id := tree.id,
+                                    pos := tree.narg + tree.nloc,
+                                    initial_name := "cap_jit_morphism_attribute",
+                                ),
+                            ],
+                        );
+                        
+                    fi;
+                    
+                fi;
+                
+            fi;
+            
+        fi;
+        
+    fi;
+    
+    return tree;
     
 end );

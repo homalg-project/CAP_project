@@ -7,9 +7,7 @@ LoadPackage( "LinearAlgebraForCAP" );
 #! @Example
 
 Q := HomalgFieldOfRationals();;
-vec := MatrixCategory( Q :
-    enable_compilation := [ "MorphismBetweenDirectSums" ]
-);;
+vec := MatrixCategory( Q : enable_compilation := true );;
 
 V := VectorSpaceObject( 2, Q );;
 alpha := ZeroMorphism( V, V );;
@@ -66,6 +64,22 @@ Display( SYNTAX_TREE_CODE( tree2 ) );
 #!                 end ) ) );
 #!     fi;
 #!     return;
+#! end
+
+KernelEmbedding( alpha );;
+Display( Last( vec!.compiled_functions.KernelEmbedding ) );
+#! function ( cat, morphism )
+#!     local cap_jit_morphism_attribute;
+#!     cap_jit_morphism_attribute 
+#!      := SyzygiesOfRows( UnderlyingMatrix( morphism ) );
+#!     return ObjectifyWithAttributes( rec(
+#!            ), MorphismType( cat ), CapCategory, cat, Source, 
+#!        ObjectifyWithAttributes( rec(
+#!              ), ObjectType( cat ), CapCategory, cat, Dimension, 
+#!          NrRows( cap_jit_morphism_attribute ), UnderlyingFieldForHomalg, 
+#!          UnderlyingRing( cat ) ), Range, Source( morphism ), 
+#!        UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, 
+#!        cap_jit_morphism_attribute );
 #! end
 
 #! @EndExample

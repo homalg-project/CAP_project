@@ -19,3 +19,9 @@ DeclareGlobalFunction( "CapJitAppliedCompilerHints" );
 #! @Returns a record
 #! @Arguments tree, category
 DeclareGlobalFunction( "CapJitReplacedGlobalVariablesByCategoryAttributes" );
+
+#! @Description
+#!   Applies the compiler hint `source_and_range_attributes_from_morphism_attribute` (see <Ref Sect="Section_CompilerHints" />) to <A>tree</A>.
+#! @Returns a record
+#! @Arguments tree, category
+DeclareGlobalFunction( "CapJitReplacedSourceAndRangeAttributes" );
