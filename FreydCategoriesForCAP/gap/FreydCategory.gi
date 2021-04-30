@@ -291,7 +291,7 @@ InstallMethod( WitnessForBeingCongruentToZero,
     #% CAP_JIT_RESOLVE_FUNCTION
     
     #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
-    return Lift( MorphismDatum( morphism ), RelationMorphism( Range( morphism ) ) );
+    return Lift( UnderlyingCategory( CapCategory( morphism ) ), MorphismDatum( morphism ), RelationMorphism( Range( morphism ) ) );
     
 end );
 
@@ -301,7 +301,7 @@ InstallMethod( MereExistenceOfWitnessForBeingCongruentToZero,
   function( morphism )
     #% CAP_JIT_RESOLVE_FUNCTION
     
-    return IsLiftable( MorphismDatum( morphism ), RelationMorphism( Range( morphism ) ) );
+    return IsLiftable( UnderlyingCategory( CapCategory( morphism ) ),  MorphismDatum( morphism ), RelationMorphism( Range( morphism ) ) );
     
 end );
 
@@ -390,7 +390,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddIsWellDefinedForObjects( category,
       function( cat, object )
         
-        if not IsWellDefined( RelationMorphism( object ) ) then
+        if not IsWellDefinedForMorphisms( underlying_category, RelationMorphism( object ) ) then
             
             return false;
             
@@ -405,7 +405,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddIsWellDefinedForMorphisms( category,
       function( cat, morphism )
         
-        if not IsLiftable( PreCompose( RelationMorphism( Source( morphism ) ), MorphismDatum( morphism ) ), RelationMorphism( Range( morphism ) ) ) then
+        if not IsLiftable( underlying_category, PreCompose( underlying_category, RelationMorphism( Source( morphism ) ), MorphismDatum( morphism ) ), RelationMorphism( Range( morphism ) ) ) then
           
           return false;
           
@@ -421,7 +421,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddIsEqualForObjects( category,
       function( cat, object_1, object_2 )
       
-        return IsEqualForMorphismsOnMor( RelationMorphism( object_1 ), RelationMorphism( object_2 ) );
+        return IsEqualForMorphismsOnMor( underlying_category, RelationMorphism( object_1 ), RelationMorphism( object_2 ) );
       
     end );
     
@@ -429,7 +429,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddIsEqualForMorphisms( category,
       function( cat, morphism_1, morphism_2 )
         
-        return IsEqualForMorphisms( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
+        return IsEqualForMorphisms( underlying_category, MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
         
     end );
     
@@ -437,7 +437,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddIsCongruentForMorphisms( category,
       function( cat, morphism_1, morphism_2 )
         
-        return MereExistenceOfWitnessForBeingCongruentToZero( SubtractionForMorphisms( morphism_1, morphism_2 ) );
+        return MereExistenceOfWitnessForBeingCongruentToZero( SubtractionForMorphisms( cat, morphism_1, morphism_2 ) );
         
     end );
     
@@ -450,7 +450,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
         relation_morphism := RelationMorphism( object );
         
-        identity_morphism := FreydCategoryMorphism( object, IdentityMorphism( Range( relation_morphism ) ), object );
+        identity_morphism := FreydCategoryMorphism( object, IdentityMorphism( underlying_category, Range( relation_morphism ) ), object );
         
         return identity_morphism;
         
@@ -462,7 +462,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       function( cat, morphism_1, morphism_2 )
         local composition;
         
-        composition := PreCompose( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
+        composition := PreCompose( underlying_category, MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
         
         composition := FreydCategoryMorphism( Source( morphism_1 ), composition, Range( morphism_2 ) );
         
@@ -480,7 +480,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
         addition := FreydCategoryMorphism(
                       Source( morphism_1 ),
-                      AdditionForMorphisms( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) ),
+                      AdditionForMorphisms( underlying_category, MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) ),
                       Range( morphism_1 )
                     );
         
@@ -495,7 +495,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
         additive_inverse := FreydCategoryMorphism(
                               Source( morphism ),
-                              AdditiveInverseForMorphisms( MorphismDatum( morphism ) ),
+                              AdditiveInverseForMorphisms( underlying_category, MorphismDatum( morphism ) ),
                               Range( morphism )
                             );
         
@@ -510,7 +510,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
         zero_morphism := FreydCategoryMorphism(
                            source,
-                           ZeroMorphism( Range( RelationMorphism( source ) ), Range( RelationMorphism( range ) ) ),
+                           ZeroMorphism( underlying_category, Range( RelationMorphism( source ) ), Range( RelationMorphism( range ) ) ),
                            range
                          );
         
@@ -533,7 +533,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
         universal_morphism := FreydCategoryMorphism(
                                 sink,
-                                UniversalMorphismIntoZeroObject( Range( RelationMorphism( sink ) ) ),
+                                UniversalMorphismIntoZeroObject( underlying_category, Range( RelationMorphism( sink ) ) ),
                                 zero_object
                               );
         
@@ -548,7 +548,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
         universal_morphism := FreydCategoryMorphism(
                                 zero_object,
-                                UniversalMorphismFromZeroObject( Range( RelationMorphism( source ) ) ),
+                                UniversalMorphismFromZeroObject( underlying_category, Range( RelationMorphism( source ) ) ),
                                 source
                               );
         
@@ -568,7 +568,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddDirectSum( category,
       function( cat, object_list )
         
-        return FreydCategoryObject( DirectSumFunctorial( List( object_list, RelationMorphism ) ) );
+        return FreydCategoryObject( DirectSumFunctorial( underlying_category, List( object_list, RelationMorphism ) ) );
         
     end );
     
@@ -577,7 +577,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       function( cat, direct_sum_source, diagram, direct_sum_range )
         
         return FreydCategoryMorphism( direct_sum_source,
-                                      DirectSumFunctorial( List( diagram, MorphismDatum ) ),
+                                      DirectSumFunctorial( underlying_category, List( diagram, MorphismDatum ) ),
                                       direct_sum_range );
         
     end );
@@ -587,7 +587,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       function( cat, object_list, projection_number, direct_sum_object )
         
         return FreydCategoryMorphism( direct_sum_object,
-                                      ProjectionInFactorOfDirectSum( List( object_list, obj -> Range( RelationMorphism( obj ) ) ), projection_number ),
+                                      ProjectionInFactorOfDirectSum( underlying_category, List( object_list, obj -> Range( RelationMorphism( obj ) ) ), projection_number ),
                                       object_list[projection_number]
                                     );
         
@@ -598,7 +598,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       function( cat, diagram, source, direct_sum_object )
         
         return FreydCategoryMorphism( Source( source[1] ),
-                                      UniversalMorphismIntoDirectSum( List( diagram, obj -> Range( RelationMorphism( obj ) ) ),
+                                      UniversalMorphismIntoDirectSum( underlying_category,
+                                                                      List( diagram, obj -> Range( RelationMorphism( obj ) ) ),
                                                                       List( source, mor -> MorphismDatum( mor ) ) ),
                                       direct_sum_object
                                     );
@@ -610,7 +611,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       function( cat, object_list, injection_number, direct_sum_object )
         
         return FreydCategoryMorphism( object_list[injection_number],
-                                      InjectionOfCofactorOfDirectSum( List( object_list, obj -> Range( RelationMorphism( obj ) ) ), injection_number ),
+                                      InjectionOfCofactorOfDirectSum( underlying_category, List( object_list, obj -> Range( RelationMorphism( obj ) ) ), injection_number ),
                                       direct_sum_object
                                     );
         
@@ -621,7 +622,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       function( cat, diagram, sink, direct_sum_object )
         
         return FreydCategoryMorphism( direct_sum_object,
-                                      UniversalMorphismFromDirectSum( List( diagram, obj -> Range( RelationMorphism( obj ) ) ),
+                                      UniversalMorphismFromDirectSum( underlying_category,
+                                                                      List( diagram, obj -> Range( RelationMorphism( obj ) ) ),
                                                                       List( sink, mor -> MorphismDatum( mor ) ) ),
                                       Range( sink[1] )
                                     );
@@ -638,10 +640,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
         relation_morphism := RelationMorphism( range );
         
-        cokernel_object := FreydCategoryObject( UniversalMorphismFromDirectSum( [ relation_morphism, MorphismDatum( morphism ) ] ) );
+        cokernel_object := FreydCategoryObject( UniversalMorphismFromDirectSum( underlying_category, [ relation_morphism, MorphismDatum( morphism ) ] ) );
         
         cokernel_projection := FreydCategoryMorphism( range,
-                                                      IdentityMorphism( Range( relation_morphism ) ),
+                                                      IdentityMorphism( underlying_category, Range( relation_morphism ) ),
                                                       cokernel_object );
         
         return cokernel_projection;
@@ -665,7 +667,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
           { cat, r, alpha } -> FreydCategoryMorphism(
                               Source( alpha ),
-                              MultiplyWithElementOfCommutativeRingForMorphisms( r, MorphismDatum( alpha ) ),
+                              MultiplyWithElementOfCommutativeRingForMorphisms( underlying_category, r, MorphismDatum( alpha ) ),
                               Range( alpha )
                             )
         );
@@ -688,9 +690,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             rho_A := RelationMorphism( Source( morphism ) );
             
             ## We use the bias in the first projection of weak fiber products
-            projection_1 := ProjectionOfBiasedWeakFiberProduct( alpha, rho_B );
+            projection_1 := ProjectionOfBiasedWeakFiberProduct( underlying_category, alpha, rho_B );
             
-            projection_2 := ProjectionOfBiasedWeakFiberProduct( projection_1, rho_A );
+            projection_2 := ProjectionOfBiasedWeakFiberProduct( underlying_category, projection_1, rho_A );
             
             kernel_object := FreydCategoryObject( projection_2 );
             
@@ -717,7 +719,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             tau := MorphismDatum( test_morphism );
             
-            morphism_datum := UniversalMorphismIntoBiasedWeakFiberProduct( alpha, rho_B, tau );
+            morphism_datum := UniversalMorphismIntoBiasedWeakFiberProduct( underlying_category, alpha, rho_B, tau );
             
             return FreydCategoryMorphism( Source( test_morphism ),
                                           morphism_datum,
@@ -736,13 +738,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             function( cat, alpha, test_morphism )
             local sigma, R_B, A, tau_A;
             
-            sigma := WitnessForBeingCongruentToZero( PreCompose( test_morphism, CokernelProjection( alpha ) ) );
+            sigma := WitnessForBeingCongruentToZero( PreCompose( cat, test_morphism, CokernelProjection( cat, alpha ) ) );
             
             R_B := Source( RelationMorphism( Range( alpha ) ) );
             
             A := Range( RelationMorphism( Source( alpha ) ) );
             
-            tau_A := ComponentOfMorphismIntoDirectSum( sigma, [ R_B, A ], 2 );
+            tau_A := ComponentOfMorphismIntoDirectSum( underlying_category, sigma, [ R_B, A ], 2 );
             
             return FreydCategoryMorphism( Source( test_morphism ), tau_A, Source( alpha ) );
         
@@ -754,15 +756,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             function( cat, alpha, test_morphism )
             local witness, R_B, A, sigma_A;
             
-            witness := WitnessForBeingCongruentToZero( CokernelProjection( alpha ) );
+            witness := WitnessForBeingCongruentToZero( CokernelProjection( cat, alpha ) );
             
             R_B := Source( RelationMorphism( Range( alpha ) ) );
             
             A := Range( RelationMorphism( Source( alpha ) ) );
             
-            sigma_A := ComponentOfMorphismIntoDirectSum( witness, [ R_B, A ], 2 );
+            sigma_A := ComponentOfMorphismIntoDirectSum( underlying_category, witness, [ R_B, A ], 2 );
             
-            return FreydCategoryMorphism( Range( alpha ), PreCompose( sigma_A, MorphismDatum( test_morphism ) ), Range( test_morphism ) );
+            return FreydCategoryMorphism( Range( alpha ), PreCompose( underlying_category, sigma_A, MorphismDatum( test_morphism ) ), Range( test_morphism ) );
         
         end );
         
@@ -782,7 +784,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             rho_B := RelationMorphism( Range( morphism ) );
 
             ## We use the bias in the first projection of weak fiber products
-            projection_1 := ProjectionOfBiasedWeakFiberProduct( alpha, rho_B );
+            projection_1 := ProjectionOfBiasedWeakFiberProduct( underlying_category, alpha, rho_B );
 
             projective_object := AsFreydCategoryObject( Source( projection_1 ) );
 
@@ -802,7 +804,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
         return FreydCategoryMorphism(
                  AsFreydCategoryObject( range ),
-                 IdentityMorphism( range ),
+                 IdentityMorphism( underlying_category, range ),
                  object
                );
         
@@ -839,18 +841,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             ##
             
             left_coefficients := [
-              [ rho_A, AdditiveInverseForMorphisms( IdentityMorphism( R_A ) ), ZeroMorphism( R_A, A ) ],
-              [ IdentityMorphism( A ), ZeroMorphism( A, R_A ), AdditiveInverseForMorphisms( IdentityMorphism( A ) ) ]
+              [ rho_A, AdditiveInverseForMorphisms( underlying_category, IdentityMorphism( underlying_category, R_A ) ), ZeroMorphism( underlying_category, R_A, A ) ],
+              [ IdentityMorphism( underlying_category, A ), ZeroMorphism( underlying_category, A, R_A ), AdditiveInverseForMorphisms( underlying_category, IdentityMorphism( underlying_category, A ) ) ]
             ];
             
             right_coefficients := [
-              [ IdentityMorphism( C ), rho_C, ZeroMorphism( R_B, C ) ],
-              [ gamma, ZeroMorphism( R_C, B ), rho_B ]
+              [ IdentityMorphism( underlying_category, C ), rho_C, ZeroMorphism( underlying_category, R_B, C ) ],
+              [ gamma, ZeroMorphism( underlying_category, R_C, B ), rho_B ]
             ];
             
-            right_side := [ ZeroMorphism( R_A, C ), alpha ];
+            right_side := [ ZeroMorphism( underlying_category, R_A, C ), alpha ];
             
-            return [ left_coefficients, right_coefficients, right_side ];
+            return [ underlying_category, left_coefficients, right_coefficients, right_side ];
             
         end;
     
@@ -885,18 +887,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             ##
             
             left_coefficients := [
-              [ rho_A, AdditiveInverseForMorphisms( IdentityMorphism( R_A ) ), ZeroMorphism( R_A, B ) ],
-              [ alpha, ZeroMorphism( B, R_A ), AdditiveInverseForMorphisms( IdentityMorphism( B ) ) ]
+              [ rho_A, AdditiveInverseForMorphisms( underlying_category, IdentityMorphism( underlying_category, R_A ) ), ZeroMorphism( underlying_category, R_A, B ) ],
+              [ alpha, ZeroMorphism( underlying_category, B, R_A ), AdditiveInverseForMorphisms( underlying_category, IdentityMorphism( underlying_category, B ) ) ]
             ];
             
             right_coefficients := [
-              [ IdentityMorphism( C ), rho_C, ZeroMorphism( R_C, C ) ],
-              [ IdentityMorphism( C ), ZeroMorphism( R_C, C ), rho_C ]
+              [ IdentityMorphism( underlying_category, C ), rho_C, ZeroMorphism( underlying_category, R_C, C ) ],
+              [ IdentityMorphism( underlying_category, C ), ZeroMorphism( underlying_category, R_C, C ), rho_C ]
             ];
             
-            right_side := [ ZeroMorphism( R_A, C ), gamma ];
+            right_side := [ ZeroMorphism( underlying_category, R_A, C ), gamma ];
             
-            return [ left_coefficients, right_coefficients, right_side ];
+            return [ underlying_category, left_coefficients, right_coefficients, right_side ];
             
         end;
     
@@ -1282,7 +1284,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         AddTensorUnit( category,
             function( cat )
             
-            return FreydCategoryObject( UniversalMorphismFromZeroObject( TensorUnit( underlying_category ) ) );
+            return FreydCategoryObject( UniversalMorphismFromZeroObject( underlying_category, TensorUnit( underlying_category ) ) );
             
         end );
         
