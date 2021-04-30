@@ -475,13 +475,14 @@ end
         
 ########
 function ( cat, alpha, beta )
+    local _UNUSED_inline_10074__UNUSED_inline_arg_cat, _UNUSED_inline_10074_inline_arg_alpha, _UNUSED_inline_10074_inline_arg_beta, _UNUSED_inline_10074_right_divide, inline_10074_return_value;
     if RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ) = fail then
-        return IsCapCategoryMorphism( fail );
+        inline_10074_return_value := fail;
     else
-        return IsCapCategoryMorphism( ObjectifyWithAttributes( rec(
-                 ), MorphismType( cat ), CapCategory, cat, Source, Source( alpha ), Range, Source( beta ), UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ) ) );
+        inline_10074_return_value := ObjectifyWithAttributes( rec(
+               ), MorphismType( cat ), CapCategory, cat, Source, Source( alpha ), Range, Source( beta ), UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ) );
     fi;
-    return;
+    return IsCapCategoryMorphism( inline_10074_return_value );
 end
 ########
         
@@ -492,13 +493,14 @@ end
         
 ########
 function ( cat, iota, tau )
+    local _UNUSED_inline_10077__UNUSED_inline_arg_cat, _UNUSED_inline_10077_inline_arg_alpha, _UNUSED_inline_10077_inline_arg_beta, _UNUSED_inline_10077_right_divide, inline_10077_return_value;
     if RightDivide( UnderlyingMatrix( tau ), UnderlyingMatrix( iota ) ) = fail then
-        return IsCapCategoryMorphism( fail );
+        inline_10077_return_value := fail;
     else
-        return IsCapCategoryMorphism( ObjectifyWithAttributes( rec(
-                 ), MorphismType( cat ), CapCategory, cat, Source, Source( tau ), Range, Source( iota ), UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( tau ), UnderlyingMatrix( iota ) ) ) );
+        inline_10077_return_value := ObjectifyWithAttributes( rec(
+               ), MorphismType( cat ), CapCategory, cat, Source, Source( tau ), Range, Source( iota ), UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( tau ), UnderlyingMatrix( iota ) ) );
     fi;
-    return;
+    return IsCapCategoryMorphism( inline_10077_return_value );
 end
 ########
         
@@ -543,7 +545,7 @@ end
 ########
 function ( cat, morphism )
     if RightDivide( HomalgIdentityMatrix( Dimension( Range( morphism ) ), UnderlyingRing( cat ) ), UnderlyingMatrix( morphism ) ) = fail then
-        return false;
+        return IsCapCategoryMorphism( fail );
     else
         return IsCapCategoryMorphism( ObjectifyWithAttributes( rec(
                  ), MorphismType( cat ), CapCategory, cat, Source, Range( morphism ), Range, Source( morphism ), UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, RightDivide( HomalgIdentityMatrix( Dimension( Range( morphism ) ), UnderlyingRing( cat ) ), UnderlyingMatrix( morphism ) ) ) );

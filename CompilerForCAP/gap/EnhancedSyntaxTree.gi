@@ -5,28 +5,40 @@
 #
 BindGlobal( "CAP_JIT_INTERNAL_FUNCTION_ID", 1 );
 MakeReadWriteGlobal( "CAP_JIT_INTERNAL_FUNCTION_ID" );
-InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func, args... )
-  local globalize_hvars, tree, pre_func, additional_arguments_func;
+InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
+  local globalize_hvars, given_arguments, tree, orig_tree, pre_func, additional_arguments_func;
     
-    Assert( 0, Length( args ) = 0 or Length( args ) = 1 );
+    globalize_hvars := ValueOption( "globalize_hvars" ) = true;
     
-    if Length( args ) = 1 then
+    if ValueOption( "given_arguments" ) = fail then
         
-        Assert( 0, IsBool( args[1] ) );
-        
-        globalize_hvars := args[1];
+        given_arguments := [ ];
         
     else
         
-        globalize_hvars := false;
+        given_arguments := ValueOption( "given_arguments" );
         
     fi;
-  
+    
+    if not IsList( given_arguments ) then
+        
+        Error( "the option \"given_arguments\" must be a list" );
+        
+    fi;
+    
     tree := SYNTAX_TREE( func );
+    
+    if tree.variadic and Length( given_arguments ) >= tree.narg then
+        
+        Error( "cannot insert given arguments into variadic arguments" );
+        
+    fi;
     
     # some references to the original function are kept, e.g. tree.nams -> make a copy
     tree := StructuralCopy( tree );
-
+    
+    orig_tree := tree;
+    
     pre_func := function ( tree, additional_arguments )
       local path, func_stack, statements, i, statement, body_if_true, body_if_false, level, pos, lvars, value, to_delete, next_statement, funccall, branch, keyvalue;
         
@@ -234,6 +246,16 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func, args... )
                     Unbind( tree.hvar );
 
                 fi;
+                
+            fi;
+            
+            # try to find EXPR_REF_FVAR in given_arguments
+            if tree.type = "EXPR_REF_FVAR" and tree.func_id = orig_tree.id and IsBound( given_arguments[tree.pos] ) then
+                
+                tree := rec(
+                    type := "EXPR_REF_GVAR",
+                    gvar := CapJitGetOrCreateGlobalVariable( given_arguments[tree.pos] ),
+                );
                 
             fi;
             

@@ -40,7 +40,15 @@ InstallGlobalFunction( CapJitCompiledFunction, function ( func, jit_args )
         Error( "start compilation" );
     fi;
     
-    tree := ENHANCED_SYNTAX_TREE( func, true );
+    if Length( jit_args ) > 0 and IsCapCategory( jit_args[1] ) then
+        
+        tree := ENHANCED_SYNTAX_TREE( func : globalize_hvars := true, given_arguments := [ jit_args[1] ] );
+        
+    else
+        
+        tree := ENHANCED_SYNTAX_TREE( func : globalize_hvars := true );
+        
+    fi;
     
     # resolving phase
     orig_tree := rec( );

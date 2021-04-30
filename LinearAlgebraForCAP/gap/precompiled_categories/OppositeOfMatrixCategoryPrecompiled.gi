@@ -53,8 +53,11 @@ end
         
 ########
 function ( cat, arg2, arg3 )
-    return List( [ 1 .. Dimension( Opposite( arg3 ) ) * Dimension( Opposite( arg2 ) ) ], function ( logic_new_func_20277_x )
-            return MorphismConstructor( cat, ObjectConstructor( cat, Range( VectorSpaceMorphism( Opposite( arg3 ), ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( Dimension( Opposite( arg3 ) ) * Dimension( Opposite( arg2 ) ), UnderlyingFieldForHomalg( Opposite( arg3 ) ) ), [ logic_new_func_20277_x ] ), Dimension( Opposite( arg3 ) ), Dimension( Opposite( arg2 ) ) ), Opposite( arg2 ) ) ) ), VectorSpaceMorphism( Opposite( arg3 ), ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( Dimension( Opposite( arg3 ) ) * Dimension( Opposite( arg2 ) ), UnderlyingFieldForHomalg( Opposite( arg3 ) ) ), [ logic_new_func_20277_x ] ), Dimension( Opposite( arg3 ) ), Dimension( Opposite( arg2 ) ) ), Opposite( arg2 ) ), ObjectConstructor( cat, Source( VectorSpaceMorphism( Opposite( arg3 ), ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( Dimension( Opposite( arg3 ) ) * Dimension( Opposite( arg2 ) ), UnderlyingFieldForHomalg( Opposite( arg3 ) ) ), [ logic_new_func_20277_x ] ), Dimension( Opposite( arg3 ) ), Dimension( Opposite( arg2 ) ) ), Opposite( arg2 ) ) ) ) );
+    return List( [ 1 .. Dimension( Opposite( arg3 ) ) * Dimension( Opposite( arg2 ) ) ], function ( logic_new_func_20290_x )
+            return ObjectifyWithAttributes( rec(
+                   ), MorphismType( cat ), CapCategory, cat, Source, ObjectifyWithAttributes( rec(
+                     ), ObjectType( cat ), CapCategory, cat, Opposite, Range( VectorSpaceMorphism( Opposite( arg3 ), ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( Dimension( Opposite( arg3 ) ) * Dimension( Opposite( arg2 ) ), UnderlyingFieldForHomalg( Opposite( arg3 ) ) ), [ logic_new_func_20290_x ] ), Dimension( Opposite( arg3 ) ), Dimension( Opposite( arg2 ) ) ), Opposite( arg2 ) ) ) ), Range, ObjectifyWithAttributes( rec(
+                     ), ObjectType( cat ), CapCategory, cat, Opposite, Source( VectorSpaceMorphism( Opposite( arg3 ), ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( Dimension( Opposite( arg3 ) ) * Dimension( Opposite( arg2 ) ), UnderlyingFieldForHomalg( Opposite( arg3 ) ) ), [ logic_new_func_20290_x ] ), Dimension( Opposite( arg3 ) ), Dimension( Opposite( arg2 ) ) ), Opposite( arg2 ) ) ) ), Opposite, VectorSpaceMorphism( Opposite( arg3 ), ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( Dimension( Opposite( arg3 ) ) * Dimension( Opposite( arg2 ) ), UnderlyingFieldForHomalg( Opposite( arg3 ) ) ), [ logic_new_func_20290_x ] ), Dimension( Opposite( arg3 ) ), Dimension( Opposite( arg2 ) ) ), Opposite( arg2 ) ) );
         end );
 end
 ########
@@ -96,20 +99,20 @@ end
         
 ########
 function ( cat, alpha, beta )
-    local _UNUSED_dual_preprocessor_func, _UNUSED_prep_arg, _UNUSED_result, _UNUSED_inline_20041__UNUSED_inline_arg_cat, _UNUSED_inline_20041_inline_arg_alpha, _UNUSED_inline_20041_inline_arg_beta, _UNUSED_inline_20041_right_divide, inline_20041_return_value;
+    local _UNUSED_dual_preprocessor_func, _UNUSED_prep_arg, _UNUSED_result, _UNUSED_inline_20043__UNUSED_inline_arg_cat, _UNUSED_inline_20043_inline_arg_alpha, _UNUSED_inline_20043_inline_arg_beta, _UNUSED_inline_20043_right_divide, inline_20043_return_value;
     if RightDivide( UnderlyingMatrix( Opposite( beta ) ), UnderlyingMatrix( Opposite( alpha ) ) ) = fail then
-        inline_20041_return_value := fail;
+        inline_20043_return_value := fail;
     else
-        inline_20041_return_value := ObjectifyWithAttributes( rec(
+        inline_20043_return_value := ObjectifyWithAttributes( rec(
                ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Source( Opposite( beta ) ), Range, Source( Opposite( alpha ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( Opposite( beta ) ), UnderlyingMatrix( Opposite( alpha ) ) ) );
     fi;
-    if inline_20041_return_value = fail then
+    if inline_20043_return_value = fail then
         return fail;
     else
         return ObjectifyWithAttributes( rec(
                ), MorphismType( cat ), CapCategory, cat, Source, ObjectifyWithAttributes( rec(
-                 ), ObjectType( cat ), CapCategory, cat, Opposite, Range( inline_20041_return_value ) ), Range, ObjectifyWithAttributes( rec(
-                 ), ObjectType( cat ), CapCategory, cat, Opposite, Source( inline_20041_return_value ) ), Opposite, inline_20041_return_value );
+                 ), ObjectType( cat ), CapCategory, cat, Opposite, Range( inline_20043_return_value ) ), Range, ObjectifyWithAttributes( rec(
+                 ), ObjectType( cat ), CapCategory, cat, Opposite, Source( inline_20043_return_value ) ), Opposite, inline_20043_return_value );
     fi;
     return;
 end
@@ -124,8 +127,8 @@ end
 function ( cat, arg2 )
     return ObjectifyWithAttributes( rec(
            ), ObjectType( cat ), CapCategory, cat, Opposite, ObjectifyWithAttributes( rec(
-             ), ObjectType( Opposite( cat ) ), CapCategory, Opposite( cat ), Dimension, Sum( List( arg2, function ( logic_new_func_20468_x )
-                  return Dimension( Opposite( logic_new_func_20468_x ) );
+             ), ObjectType( Opposite( cat ) ), CapCategory, Opposite( cat ), Dimension, Sum( List( arg2, function ( logic_new_func_20491_x )
+                  return Dimension( Opposite( logic_new_func_20491_x ) );
               end ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ) );
 end
 ########
@@ -323,23 +326,23 @@ end
         
 ########
 function ( cat, arg2 )
-    local _UNUSED_dual_preprocessor_func, _UNUSED_prep_arg, _UNUSED_result, _UNUSED_inline_20091__UNUSED_inline_arg_cat, _UNUSED_inline_20091_inline_arg_morphism, inline_20091_return_value;
+    local _UNUSED_dual_preprocessor_func, _UNUSED_prep_arg, _UNUSED_result, _UNUSED_inline_20092__UNUSED_inline_arg_cat, _UNUSED_inline_20092_inline_arg_morphism, inline_20092_return_value;
     if not true then
-        inline_20091_return_value := false;
+        inline_20092_return_value := false;
     elif not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Source( Opposite( arg2 ) ) ), UnderlyingRing( Opposite( cat ) ) ) then
-        inline_20091_return_value := false;
+        inline_20092_return_value := false;
     elif not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Opposite( arg2 ) ), UnderlyingRing( Opposite( cat ) ) ) then
-        inline_20091_return_value := false;
+        inline_20092_return_value := false;
     elif not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Range( Opposite( arg2 ) ) ), UnderlyingRing( Opposite( cat ) ) ) then
-        inline_20091_return_value := false;
+        inline_20092_return_value := false;
     elif NumberRows( UnderlyingMatrix( Opposite( arg2 ) ) ) <> Dimension( Source( Opposite( arg2 ) ) ) then
-        inline_20091_return_value := false;
+        inline_20092_return_value := false;
     elif NumberColumns( UnderlyingMatrix( Opposite( arg2 ) ) ) <> Dimension( Range( Opposite( arg2 ) ) ) then
-        inline_20091_return_value := false;
+        inline_20092_return_value := false;
     else
-        inline_20091_return_value := true;
+        inline_20092_return_value := true;
     fi;
-    return inline_20091_return_value;
+    return inline_20092_return_value;
 end
 ########
         
@@ -350,17 +353,17 @@ end
         
 ########
 function ( cat, arg2 )
-    local _UNUSED_dual_preprocessor_func, _UNUSED_prep_arg, _UNUSED_result, _UNUSED_inline_20092__UNUSED_inline_arg_cat, _UNUSED_inline_20092_inline_arg_object, inline_20092_return_value;
+    local _UNUSED_dual_preprocessor_func, _UNUSED_prep_arg, _UNUSED_result, _UNUSED_inline_20093__UNUSED_inline_arg_cat, _UNUSED_inline_20093_inline_arg_object, inline_20093_return_value;
     if not true then
-        inline_20092_return_value := false;
+        inline_20093_return_value := false;
     elif not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Opposite( arg2 ) ), UnderlyingRing( Opposite( cat ) ) ) then
-        inline_20092_return_value := false;
+        inline_20093_return_value := false;
     elif Dimension( Opposite( arg2 ) ) < 0 then
-        inline_20092_return_value := false;
+        inline_20093_return_value := false;
     else
-        inline_20092_return_value := true;
+        inline_20093_return_value := true;
     fi;
-    return inline_20092_return_value;
+    return inline_20093_return_value;
 end
 ########
         
@@ -412,20 +415,20 @@ end
         
 ########
 function ( cat, alpha, beta )
-    local _UNUSED_dual_preprocessor_func, _UNUSED_prep_arg, _UNUSED_result, _UNUSED_inline_20106__UNUSED_inline_arg_cat, _UNUSED_inline_20106_inline_arg_alpha, _UNUSED_inline_20106_inline_arg_beta, _UNUSED_inline_20106_left_divide, inline_20106_return_value;
+    local _UNUSED_dual_preprocessor_func, _UNUSED_prep_arg, _UNUSED_result, _UNUSED_inline_20107__UNUSED_inline_arg_cat, _UNUSED_inline_20107_inline_arg_alpha, _UNUSED_inline_20107_inline_arg_beta, _UNUSED_inline_20107_left_divide, inline_20107_return_value;
     if LeftDivide( UnderlyingMatrix( Opposite( beta ) ), UnderlyingMatrix( Opposite( alpha ) ) ) = fail then
-        inline_20106_return_value := fail;
+        inline_20107_return_value := fail;
     else
-        inline_20106_return_value := ObjectifyWithAttributes( rec(
+        inline_20107_return_value := ObjectifyWithAttributes( rec(
                ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Range( Opposite( beta ) ), Range, Range( Opposite( alpha ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, LeftDivide( UnderlyingMatrix( Opposite( beta ) ), UnderlyingMatrix( Opposite( alpha ) ) ) );
     fi;
-    if inline_20106_return_value = fail then
+    if inline_20107_return_value = fail then
         return fail;
     else
         return ObjectifyWithAttributes( rec(
                ), MorphismType( cat ), CapCategory, cat, Source, ObjectifyWithAttributes( rec(
-                 ), ObjectType( cat ), CapCategory, cat, Opposite, Range( inline_20106_return_value ) ), Range, ObjectifyWithAttributes( rec(
-                 ), ObjectType( cat ), CapCategory, cat, Opposite, Source( inline_20106_return_value ) ), Opposite, inline_20106_return_value );
+                 ), ObjectType( cat ), CapCategory, cat, Opposite, Range( inline_20107_return_value ) ), Range, ObjectifyWithAttributes( rec(
+                 ), ObjectType( cat ), CapCategory, cat, Opposite, Source( inline_20107_return_value ) ), Opposite, inline_20107_return_value );
     fi;
     return;
 end
@@ -515,8 +518,8 @@ function ( cat, objects, T, tau, P )
            ), MorphismType( cat ), CapCategory, cat, Source, ObjectifyWithAttributes( rec(
              ), ObjectType( cat ), CapCategory, cat, Opposite, Opposite( P ) ), Range, ObjectifyWithAttributes( rec(
              ), ObjectType( cat ), CapCategory, cat, Opposite, Opposite( T ) ), Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Opposite( T ), Range, Opposite( P ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, UnionOfColumns( UnderlyingRing( Opposite( cat ) ), Dimension( Opposite( T ) ), List( tau, function ( logic_new_func_21458_x )
-                  return UnderlyingMatrix( Opposite( logic_new_func_21458_x ) );
+             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Opposite( T ), Range, Opposite( P ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, UnionOfColumns( UnderlyingRing( Opposite( cat ) ), Dimension( Opposite( T ) ), List( tau, function ( logic_new_func_21536_x )
+                  return UnderlyingMatrix( Opposite( logic_new_func_21536_x ) );
               end ) ) ) );
 end
 ########
@@ -547,8 +550,8 @@ function ( cat, objects, T, tau, P )
            ), MorphismType( cat ), CapCategory, cat, Source, ObjectifyWithAttributes( rec(
              ), ObjectType( cat ), CapCategory, cat, Opposite, Opposite( T ) ), Range, ObjectifyWithAttributes( rec(
              ), ObjectType( cat ), CapCategory, cat, Opposite, Opposite( P ) ), Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Opposite( P ), Range, Opposite( T ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, UnionOfRows( UnderlyingRing( Opposite( cat ) ), Dimension( Opposite( T ) ), List( tau, function ( logic_new_func_21556_x )
-                  return UnderlyingMatrix( Opposite( logic_new_func_21556_x ) );
+             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Opposite( P ), Range, Opposite( T ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, UnionOfRows( UnderlyingRing( Opposite( cat ) ), Dimension( Opposite( T ) ), List( tau, function ( logic_new_func_21639_x )
+                  return UnderlyingMatrix( Opposite( logic_new_func_21639_x ) );
               end ) ) ) );
 end
 ########

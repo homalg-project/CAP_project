@@ -94,7 +94,7 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
                     
                     if not IsKernelFunction( value ) and not IsOperation( value ) then
                         
-                        inline_tree := ENHANCED_SYNTAX_TREE( value, true );
+                        inline_tree := ENHANCED_SYNTAX_TREE( value : globalize_hvars := true );
                         
                         if Length( inline_tree.stats.statements ) >= 1 and inline_tree.stats.statements[1].type = "STAT_PRAGMA" and inline_tree.stats.statements[1].value = "% CAP_JIT_RESOLVE_FUNCTION" then
                             
