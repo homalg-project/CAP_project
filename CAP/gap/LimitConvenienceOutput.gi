@@ -343,6 +343,22 @@ InstallMethod( DirectProductFunctorial,
 end );
 
 ##
+InstallOtherMethod( DirectProductFunctorial,
+               [ IsCapCategory, IsList ],
+               
+  function( cat, L )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return DirectProductFunctorialWithGivenDirectProducts(
+        cat,
+        DirectProduct( cat, List( L, Source ) ),
+        L,
+        DirectProduct( cat, List( L, Range ) )
+    );
+    
+end );
+
+##
 InstallMethod( CoproductFunctorial,
                [ IsList ],
                
@@ -352,6 +368,22 @@ InstallMethod( CoproductFunctorial,
         Coproduct( List( L, Source ) ),
         L,
         Coproduct( List( L, Range ) )
+    );
+    
+end );
+
+##
+InstallOtherMethod( CoproductFunctorial,
+               [ IsCapCategory, IsList ],
+               
+  function( cat, L )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return CoproductFunctorialWithGivenCoproducts(
+        cat,
+        Coproduct( cat, List( L, Source ) ),
+        L,
+        Coproduct( cat, List( L, Range ) )
     );
     
 end );
@@ -695,6 +727,22 @@ InstallMethod( DirectSumFunctorial,
 end );
 
 ##
+InstallOtherMethod( DirectSumFunctorial,
+               [ IsCapCategory, IsList ],
+               
+  function( cat, L )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return DirectSumFunctorialWithGivenDirectSums(
+        cat,
+        DirectSum( cat, List( L, Source ) ),
+        L,
+        DirectSum( cat, List( L, Range ) )
+    );
+    
+end );
+
+##
 AddDerivationToCAP( ProjectionInFactorOfFiberProductWithGivenFiberProduct,
                     [ [ ProjectionInFactorOfFiberProduct, 1 ] ],
   function( cat, morphisms, k, with_given_object )
@@ -823,6 +871,22 @@ InstallMethod( FiberProductFunctorial,
 end );
 
 ##
+InstallOtherMethod( FiberProductFunctorial,
+               [ IsCapCategory, IsList, IsList, IsList ],
+               
+  function( cat, morphisms, L, morphismsp )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return FiberProductFunctorialWithGivenFiberProducts(
+        cat,
+        FiberProduct( cat, morphisms ),
+        morphisms, L, morphismsp,
+        FiberProduct( cat, morphismsp )
+    );
+    
+end );
+
+##
 InstallMethod( PushoutFunctorial,
                [ IsList, IsList, IsList ],
                
@@ -832,6 +896,22 @@ InstallMethod( PushoutFunctorial,
         Pushout( morphisms ),
         morphisms, L, morphismsp,
         Pushout( morphismsp )
+    );
+    
+end );
+
+##
+InstallOtherMethod( PushoutFunctorial,
+               [ IsCapCategory, IsList, IsList, IsList ],
+               
+  function( cat, morphisms, L, morphismsp )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return PushoutFunctorialWithGivenPushouts(
+        cat,
+        Pushout( cat, morphisms ),
+        morphisms, L, morphismsp,
+        Pushout( cat, morphismsp )
     );
     
 end );
@@ -965,6 +1045,22 @@ InstallMethod( EqualizerFunctorial,
 end );
 
 ##
+InstallOtherMethod( EqualizerFunctorial,
+               [ IsCapCategory, IsList, IsCapCategoryMorphism, IsList ],
+               
+  function( cat, morphisms, mu, morphismsp )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return EqualizerFunctorialWithGivenEqualizers(
+        cat,
+        Equalizer( cat, morphisms ),
+        morphisms, mu, morphismsp,
+        Equalizer( cat, morphismsp )
+    );
+    
+end );
+
+##
 InstallMethod( CoequalizerFunctorial,
                [ IsList, IsCapCategoryMorphism, IsList ],
                
@@ -974,6 +1070,22 @@ InstallMethod( CoequalizerFunctorial,
         Coequalizer( morphisms ),
         morphisms, mu, morphismsp,
         Coequalizer( morphismsp )
+    );
+    
+end );
+
+##
+InstallOtherMethod( CoequalizerFunctorial,
+               [ IsCapCategory, IsList, IsCapCategoryMorphism, IsList ],
+               
+  function( cat, morphisms, mu, morphismsp )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return CoequalizerFunctorialWithGivenCoequalizers(
+        cat,
+        Coequalizer( cat, morphisms ),
+        morphisms, mu, morphismsp,
+        Coequalizer( cat, morphismsp )
     );
     
 end );
@@ -1107,6 +1219,22 @@ InstallMethod( KernelObjectFunctorial,
 end );
 
 ##
+InstallOtherMethod( KernelObjectFunctorial,
+               [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( cat, alpha, mu, alphap )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return KernelObjectFunctorialWithGivenKernelObjects(
+        cat,
+        KernelObject( cat, alpha ),
+        alpha, mu, alphap,
+        KernelObject( cat, alphap )
+    );
+    
+end );
+
+##
 InstallMethod( CokernelObjectFunctorial,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
@@ -1116,6 +1244,22 @@ InstallMethod( CokernelObjectFunctorial,
         CokernelObject( alpha ),
         alpha, mu, alphap,
         CokernelObject( alphap )
+    );
+    
+end );
+
+##
+InstallOtherMethod( CokernelObjectFunctorial,
+               [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( cat, alpha, mu, alphap )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return CokernelObjectFunctorialWithGivenCokernelObjects(
+        cat,
+        CokernelObject( cat, alpha ),
+        alpha, mu, alphap,
+        CokernelObject( cat, alphap )
     );
     
 end );

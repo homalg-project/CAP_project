@@ -243,6 +243,27 @@ InstallGlobalFunction( "CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS",
         
         output_string := Concatenation( output_string, current_string );
         
+        current_string := Concatenation(
+            "\n",
+            "##\n",
+            "InstallOtherMethod( ", functorial_name, ",\n",
+            "               [ IsCapCategory, ", filter_list_string, " ],\n",
+            "               \n",
+            "  function( cat, ", arguments_string, " )\n",
+            "    #% CAP_JIT_RESOLVE_FUNCTION\n",
+            "    \n",
+            "    return ", functorial_with_given_name, "(\n",
+            "        cat,\n",
+            "        ", object_name, "( cat, ", source_diagram_arguments_string, " ),\n",
+            "        ", arguments_string, ",\n",
+            "        ", object_name, "( cat, ", range_diagram_arguments_string, " )\n",
+            "    );\n",
+            "    \n",
+            "end );\n"
+        );
+        
+        output_string := Concatenation( output_string, current_string );
+        
     end;
     
     for limit in limits do
