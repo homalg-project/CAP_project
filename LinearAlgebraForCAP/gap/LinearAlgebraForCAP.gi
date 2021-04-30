@@ -31,6 +31,8 @@ InstallGlobalFunction( MATRIX_CATEGORY,
     
     category!.category_as_first_argument := true;
     
+    category!.supports_empty_limits := true;
+    
     category!.compiler_hints := rec(
         category_attribute_names := [
             "UnderlyingRing",
@@ -344,7 +346,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( cat, direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
         
         return VectorSpaceMorphism( direct_sum_source,
-                                    DiagMat( List( diagram, mor -> UnderlyingMatrix( mor ) ) ), 
+                                    DiagMat( homalg_field, List( diagram, mor -> UnderlyingMatrix( mor ) ) ),
                                     direct_sum_range );
         
     end );
@@ -376,9 +378,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( cat, diagram, test_object, sink, direct_sum )
         local underlying_matrix_of_universal_morphism;
         
-        underlying_matrix_of_universal_morphism := UnionOfColumns( List( sink, s -> UnderlyingMatrix( s ) ) );
+        underlying_matrix_of_universal_morphism := UnionOfColumns( homalg_field, Dimension( test_object ), List( sink, s -> UnderlyingMatrix( s ) ) );
 
-        return VectorSpaceMorphism( Source( sink[1] ), underlying_matrix_of_universal_morphism, direct_sum );
+        return VectorSpaceMorphism( test_object, underlying_matrix_of_universal_morphism, direct_sum );
       
     end );
     
@@ -409,9 +411,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( cat, diagram, test_object, sink, coproduct )
         local underlying_matrix_of_universal_morphism;
         
-        underlying_matrix_of_universal_morphism := UnionOfRows( List( sink, s -> UnderlyingMatrix( s ) ) );
+        underlying_matrix_of_universal_morphism := UnionOfRows( homalg_field, Dimension( test_object ), List( sink, s -> UnderlyingMatrix( s ) ) );
         
-        return VectorSpaceMorphism( coproduct, underlying_matrix_of_universal_morphism, Range( sink[1] ) );
+        return VectorSpaceMorphism( coproduct, underlying_matrix_of_universal_morphism, test_object );
         
     end );
     
@@ -450,15 +452,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( cat, S, diagram_S, morphism_matrix, diagram_T, T )
         local underlying_matrix;
         
-        if morphism_matrix = [ ] or morphism_matrix[1] = [ ] then
-            return ZeroMorphism( S, T );
-        fi;
-        
         underlying_matrix := List( morphism_matrix, row -> List( row, UnderlyingMatrix ) );
         
-        underlying_matrix := List( underlying_matrix, row -> UnionOfColumns( row ) );
+        underlying_matrix := List( [ 1 .. Length( underlying_matrix ) ], i -> UnionOfColumns( homalg_field, Dimension( diagram_S[i] ), underlying_matrix[i] ) );
         
-        return VectorSpaceMorphism( S, UnionOfRows( underlying_matrix ), T );
+        return VectorSpaceMorphism( S, UnionOfRows( homalg_field, Dimension( T ), underlying_matrix ), T );
         
     end );
     
