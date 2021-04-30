@@ -19,6 +19,7 @@ InstallMethod( VectorSpaceObject,
                [ IsInt, IsFieldForHomalg ],
                 
   function( dimension, homalg_field )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     return MatrixCategoryObject( homalg_field, dimension );
     
@@ -30,6 +31,7 @@ InstallMethod( MatrixCategoryObjectOp,
                
   function( homalg_field, dimension )
     local category;
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     if dimension < 0 then
       
