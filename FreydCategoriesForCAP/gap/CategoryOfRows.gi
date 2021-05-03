@@ -21,6 +21,8 @@ InstallMethod( CategoryOfRows,
     
     category := CreateCapCategory( Concatenation( "Rows( ", RingName( homalg_ring )," )" ) : overhead := overhead_option );
     
+    category!.category_as_first_argument := true;
+    
     SetFilterObj( category, IsCategoryOfRows );
 
     if HasHasInvariantBasisProperty( homalg_ring ) and HasInvariantBasisProperty( homalg_ring ) then
@@ -108,9 +110,9 @@ InstallMethod( AsCategoryOfRowsMorphism,
   function( homalg_matrix, category )
     local source, range;
     
-    source := CategoryOfRowsObject( NrRows( homalg_matrix ), category );
+    source := CategoryOfRowsObject( category, NrRows( homalg_matrix ) );
     
-    range := CategoryOfRowsObject( NrColumns( homalg_matrix ), category );
+    range := CategoryOfRowsObject( category, NrColumns( homalg_matrix ) );
     
     return CategoryOfRowsMorphism( source, homalg_matrix, range );
     
@@ -178,7 +180,7 @@ InstallMethod( StandardRowMorphismOp,
     category := CapCategory( object );
     
     return CategoryOfRowsMorphism(
-      CategoryOfRowsObject( 1, category ),
+      CategoryOfRowsObject( category, 1 ),
       CertainRows( HomalgIdentityMatrix( rank, UnderlyingRing( category ) ), [ n ] ),
       object
     );
@@ -295,17 +297,17 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddIsEqualForCacheForObjects( category,
-      IsIdenticalObj );
+      { cat, obj1, obj2 } -> IsIdenticalObj( obj1, obj2 ) );
     
     ##
     AddIsEqualForCacheForMorphisms( category,
-      IsIdenticalObj );
+      {cat, mor1, mor2 } -> IsIdenticalObj( mor1, mor2 ) );
 
     
     ## Well-defined for objects and morphisms
     ##
     AddIsWellDefinedForObjects( category,
-      function( object )
+      function( cat, object )
         
         if not IsIdenticalObj( category, CapCategory( object ) ) then
           
@@ -324,7 +326,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddIsWellDefinedForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
         
         if not IsIdenticalObj( category, CapCategory( Source( morphism ) ) ) then
           
@@ -356,7 +358,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     ## Equality Basic Operations for Objects and Morphisms
     ##
     AddIsEqualForObjects( category,
-      function( object_1, object_2 )
+      function( cat, object_1, object_2 )
       
         return RankOfObject( object_1 ) = RankOfObject( object_2 );
       
@@ -364,7 +366,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddIsCongruentForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return UnderlyingMatrix( morphism_1 ) = UnderlyingMatrix( morphism_2 );
         
@@ -374,7 +376,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     ##
     AddIdentityMorphism( category,
       
-      function( object )
+      function( cat, object )
         
         return CategoryOfRowsMorphism( object, HomalgIdentityMatrix( RankOfObject( object ), ring ), object );
         
@@ -384,44 +386,44 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     AddPreCompose( category,
       
       [ 
-        [ function( morphism_1, morphism_2 )
+        [ function( cat, morphism_1, morphism_2 )
             local composition;
             
             composition := UnderlyingMatrix( morphism_1 ) * UnderlyingMatrix( morphism_2 );
             
             return CategoryOfRowsMorphism( Source( morphism_1 ), composition, Range( morphism_2 ) );
             
-          end, [ , ] ],
+          end, [ ] ],
         
-        [ function( left_morphism, identity_morphism )
+        [ function( cat, left_morphism, identity_morphism )
             
             return left_morphism;
             
-          end, [ , IsIdenticalToIdentityMorphism ] ],
+          end, [ IsCapCategory, IsCapCategoryMorphism, IsIdenticalToIdentityMorphism ] ],
         
-        [ function( identity_morphism, right_morphism )
+        [ function( cat, identity_morphism, right_morphism )
             
             return right_morphism;
             
-          end, [ IsIdenticalToIdentityMorphism, ] ],
+          end, [ IsCapCategory, IsIdenticalToIdentityMorphism, IsCapCategoryMorphism ] ],
         
-        [ function( left_morphism, zero_morphism )
+        [ function( cat, left_morphism, zero_morphism )
             
             return CategoryOfRowsMorphism( Source( left_morphism ),
                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( left_morphism ) ),
                                         NrColumns( UnderlyingMatrix( zero_morphism ) ), ring ),
                                         Range( zero_morphism ) );
           
-          end, [ , IsZeroForMorphisms ] ],
+          end, [ IsCapCategory, IsCapCategoryMorphism, IsZeroForMorphisms ] ],
         
-        [ function( zero_morphism, right_morphism )
+        [ function( cat, zero_morphism, right_morphism )
             
             return CategoryOfRowsMorphism( Source( zero_morphism ),
                                            HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ),
                                            NrColumns( UnderlyingMatrix( right_morphism ) ), ring ),
                                            Range( right_morphism ) );
           
-          end, [ IsZeroForMorphisms, ] ],
+          end, [ IsCapCategory, IsZeroForMorphisms, IsCapCategoryMorphism ] ],
       ]
     
     );
@@ -429,7 +431,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     ## Basic Operations for an Additive Category
     ##
     AddIsZeroForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
         
         return IsZero( UnderlyingMatrix( morphism ) );
         
@@ -437,7 +439,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddAdditionForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return CategoryOfRowsMorphism( Source( morphism_1 ),
                                        UnderlyingMatrix( morphism_1 ) + UnderlyingMatrix( morphism_2 ),
@@ -447,7 +449,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddAdditiveInverseForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
         
         return CategoryOfRowsMorphism( Source( morphism ),
                                        MinusOne( ring ) * UnderlyingMatrix( morphism ),
@@ -457,7 +459,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddZeroMorphism( category,
-      function( source, range )
+      function( cat, source, range )
         
         return CategoryOfRowsMorphism( source,
                                        HomalgZeroMatrix( RankOfObject( source ), RankOfObject( range ), ring ),
@@ -467,15 +469,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddZeroObject( category,
-      function( )
+      function( cat )
         
-        return CategoryOfRowsObject( 0, category );
+        return CategoryOfRowsObject( cat, 0 );
         
     end );
     
     ##
     AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
-      function( sink, zero_object )
+      function( cat, sink, zero_object )
         local morphism;
         
         morphism := CategoryOfRowsMorphism( sink, HomalgZeroMatrix( RankOfObject( sink ), 0, ring ), zero_object );
@@ -486,7 +488,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
-      function( source, zero_object )
+      function( cat, source, zero_object )
         local morphism;
         
         morphism := CategoryOfRowsMorphism( zero_object, HomalgZeroMatrix( 0, RankOfObject( source ), ring ), source );
@@ -497,18 +499,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddDirectSum( category,
-      function( object_list )
+      function( cat, object_list )
       local dimension;
       
       dimension := Sum( List( object_list, object -> RankOfObject( object ) ) );
       
-      return CategoryOfRowsObject( dimension, category );
+      return CategoryOfRowsObject( cat, dimension );
       
     end );
     
     ##
     AddDirectSumFunctorialWithGivenDirectSums( category,
-      function( direct_sum_source, diagram, direct_sum_range )
+      function( cat, direct_sum_source, diagram, direct_sum_range )
         
         return CategoryOfRowsMorphism( direct_sum_source,
                                        DiagMat( List( diagram, mor -> UnderlyingMatrix( mor ) ) ), 
@@ -518,7 +520,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
-      function( object_list, projection_number, direct_sum_object )
+      function( cat, object_list, projection_number, direct_sum_object )
         local rank_pre, rank_post, rank_factor, number_of_objects, projection_in_factor;
         
         number_of_objects := Length( object_list );
@@ -540,7 +542,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
-      function( diagram, sink, direct_sum )
+      function( cat, diagram, sink, direct_sum )
         local underlying_matrix_of_universal_morphism;
         
         underlying_matrix_of_universal_morphism :=
@@ -554,7 +556,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
-      function( object_list, injection_number, coproduct )
+      function( cat, object_list, injection_number, coproduct )
         local rank_pre, rank_post, rank_cofactor, number_of_objects, injection_of_cofactor;
         
         number_of_objects := Length( object_list );
@@ -577,7 +579,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
-      function( diagram, sink, coproduct )
+      function( cat, diagram, sink, coproduct )
         local underlying_matrix_of_universal_morphism;
         
         underlying_matrix_of_universal_morphism :=
@@ -591,7 +593,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddMorphismBetweenDirectSums( category,
-      function( source, listlist, range )
+      function( cat, source, listlist, range )
         local mat;
         
         if IsEmpty( listlist ) or IsEmpty( listlist[1] ) then
@@ -610,39 +612,39 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     ## Operations important for Freyd categories
     
     AddWeakKernelEmbedding( category,
-      function( morphism )
+      function( cat, morphism )
         local homalg_matrix;
         
         homalg_matrix := ReducedSyzygiesOfRows( UnderlyingMatrix( morphism ) );
         
-        return CategoryOfRowsMorphism( CategoryOfRowsObject( NrRows( homalg_matrix ), category ), homalg_matrix, Source( morphism ) );
+        return CategoryOfRowsMorphism( CategoryOfRowsObject( cat, NrRows( homalg_matrix ) ), homalg_matrix, Source( morphism ) );
         
     end );
     
     AddWeakCokernelProjection( category,
-      function( morphism )
+      function( cat, morphism )
         local homalg_matrix;
         
         homalg_matrix := ReducedSyzygiesOfColumns( UnderlyingMatrix( morphism ) );
         
-        return CategoryOfRowsMorphism( Range( morphism ), homalg_matrix, CategoryOfRowsObject( NrColumns( homalg_matrix ), category ) );
+        return CategoryOfRowsMorphism( Range( morphism ), homalg_matrix, CategoryOfRowsObject( cat, NrColumns( homalg_matrix ) ) );
         
     end );
     
     ##
     AddProjectionOfBiasedWeakFiberProduct( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         local homalg_matrix;
         
         homalg_matrix := ReducedSyzygiesOfRows( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) );
         
-        return CategoryOfRowsMorphism( CategoryOfRowsObject( NrRows( homalg_matrix ), category ), homalg_matrix, Source( morphism_1 ) );
+        return CategoryOfRowsMorphism( CategoryOfRowsObject( cat, NrRows( homalg_matrix ) ), homalg_matrix, Source( morphism_1 ) );
         
     end );
     
     ##
     AddIsLiftable( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         
         return IsZero( DecideZeroRows( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ) );
         
@@ -650,7 +652,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddLift( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         local right_divide;
         
         right_divide := RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
@@ -667,18 +669,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddInjectionOfBiasedWeakPushout( category,
-        function( morphism_1, morphism_2 )
+        function( cat, morphism_1, morphism_2 )
         local homalg_matrix;
         
         homalg_matrix := ReducedSyzygiesOfColumns( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) );
         
-        return CategoryOfRowsMorphism( Range( morphism_1 ), homalg_matrix, CategoryOfRowsObject( NrColumns( homalg_matrix ), category ) );
+        return CategoryOfRowsMorphism( Range( morphism_1 ), homalg_matrix, CategoryOfRowsObject( cat, NrColumns( homalg_matrix ) ) );
         
     end );
     
     ##
     AddIsColiftable( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         
         return IsZero( DecideZeroColumns( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ) ) );
         
@@ -686,7 +688,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddColift( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         local left_divide;
         
         left_divide := LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
@@ -707,7 +709,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       
       ##
       AddBasisOfExternalHom( category,
-        function( S, T )
+        function( cat, S, T )
           local s, t, identity, matrices;
           
           s := RankOfObject( S );
@@ -724,7 +726,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       
       ##
       AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( category,
-        function( morphism, L )
+        function( cat, morphism, L )
           
           return EntriesOfHomalgMatrix( UnderlyingMatrix( morphism ) );
           
@@ -732,23 +734,23 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       
       ##
       AddKernelObject( category,
-        function( morphism )
+        function( cat, morphism )
           local homalg_matrix;
           
           homalg_matrix := UnderlyingMatrix( morphism );
           
-          return CategoryOfRowsObject( category, NrRows( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ) );
+          return CategoryOfRowsObject( cat, NrRows( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ) );
           
       end );
       
       ##
       AddKernelEmbedding( category,
-        function( morphism )
+        function( cat, morphism )
           local kernel_emb, kernel_object;
           
           kernel_emb := SyzygiesOfRows( UnderlyingMatrix( morphism ) );
           
-          kernel_object := CategoryOfRowsObject( category, NrRows( kernel_emb ) );
+          kernel_object := CategoryOfRowsObject( cat, NrRows( kernel_emb ) );
           
           return CategoryOfRowsMorphism( kernel_object, kernel_emb, Source( morphism ) );
           
@@ -756,23 +758,23 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
       ##
       AddCokernelObject( category,
-        function( morphism )
+        function( cat, morphism )
           local homalg_matrix;
           
           homalg_matrix := UnderlyingMatrix( morphism );
           
-          return CategoryOfRowsObject( category, NrColumns( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ) );
+          return CategoryOfRowsObject( cat, NrColumns( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ) );
           
       end );
       
       ##
       AddCokernelProjection( category,
-        function( morphism )
+        function( cat, morphism )
           local cokernel_proj, cokernel_obj;
           
           cokernel_proj := SyzygiesOfColumns( UnderlyingMatrix( morphism ) );
           
-          cokernel_obj := CategoryOfRowsObject( category, NrColumns( cokernel_proj ) );
+          cokernel_obj := CategoryOfRowsObject( cat, NrColumns( cokernel_proj ) );
           
           return CategoryOfRowsMorphism( Range( morphism ), cokernel_proj, cokernel_obj );
           
@@ -783,7 +785,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     ## Basic Operation Properties
     ##
     AddIsZeroForObjects( category,
-      function( object )
+      function( cat, object )
       
         return RankOfObject( object ) = 0;
       
@@ -793,7 +795,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         ##
         AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
-          function( r, alpha )
+          function( cat, r, alpha )
             
             return CategoryOfRowsMorphism( Source( alpha ), r * UnderlyingMatrix( alpha ), Range( alpha ) );
             
@@ -805,15 +807,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         ##
         AddHomomorphismStructureOnObjects( category,
-          function( object_1, object_2 )
+          function( cat, object_1, object_2 )
             
-            return CategoryOfRowsObject( RankOfObject( object_1 ) * RankOfObject( object_2 ), category );
+            return CategoryOfRowsObject( cat, RankOfObject( object_1 ) * RankOfObject( object_2 ) );
             
         end );
         
         ##
         AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
-          function( source, alpha, beta, range )
+          function( cat, source, alpha, beta, range )
             
             return CategoryOfRowsMorphism( source,
                                            KroneckerMat( TransposedMatrix( UnderlyingMatrix( alpha ) ), UnderlyingMatrix( beta ) ),
@@ -823,15 +825,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         ##
         AddDistinguishedObjectOfHomomorphismStructure( category,
-          function( )
+          function( cat )
             
-            return CategoryOfRowsObject( 1, category );
+            return CategoryOfRowsObject( cat, 1 );
             
         end );
         
         ##
         AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
-          function( alpha )
+          function( cat, alpha )
             local underlying_matrix;
             
             underlying_matrix := UnderlyingMatrix( alpha );
@@ -848,7 +850,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         ##
         AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
-          function( A, B, morphism )
+          function( cat, A, B, morphism )
             local nr_rows, nr_columns, underlying_matrix;
             
             nr_rows := RankOfObject( A );
@@ -871,15 +873,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         ##
         AddTensorProductOnObjects( category,
-          function( a, b )
+          function( cat, a, b )
             
-            return CategoryOfRowsObject( category, RankOfObject( a ) * RankOfObject( b ) );
+            return CategoryOfRowsObject( cat, RankOfObject( a ) * RankOfObject( b ) );
             
         end );
         
         ##
         AddTensorProductOnMorphismsWithGivenTensorProducts( category,
-          function( s, alpha, beta, r)
+          function( cat, s, alpha, beta, r)
             
             return CategoryOfRowsMorphism( s,
               KroneckerMat( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ),
@@ -888,15 +890,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         end );
         
         AddTensorUnit( category,
-          function()
+          function( cat )
             
-            return CategoryOfRowsObject( category, 1 );
+            return CategoryOfRowsObject( cat, 1 );
             
         end );
         
         ##
         AddBraidingWithGivenTensorProducts( category,
-          function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
+          function( cat, object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
           local permutation_matrix, rank, rank_1, rank_2;
           
           rank_1 := RankOfObject( object_1 );
@@ -918,11 +920,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         end );
         
         ##
-        AddDualOnObjects( category, IdFunc );
+        AddDualOnObjects( category, { cat, obj } -> obj );
         
         ##
         AddDualOnMorphismsWithGivenDuals( category,
-          function( dual_source, morphism, dual_range )
+          function( cat, dual_source, morphism, dual_range )
             
             return CategoryOfRowsMorphism( dual_source,
                                            TransposedMatrix( UnderlyingMatrix( morphism ) ),
@@ -932,7 +934,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         ##
         AddEvaluationForDualWithGivenTensorProduct( category,
-          function( tensor_object, object, unit )
+          function( cat, tensor_object, object, unit )
             local rank, id;
             
             rank := RankOfObject( object );
@@ -954,7 +956,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         ##
         AddCoevaluationForDualWithGivenTensorProduct( category,
           
-          function( unit, object, tensor_object )
+          function( cat, unit, object, tensor_object )
             local rank, id;
             
             rank := RankOfObject( object );
@@ -974,7 +976,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         end );
        
         ##
-        AddMorphismToBidualWithGivenBidual( category, {obj, dual} -> IdentityMorphism( obj ) );
+        AddMorphismToBidualWithGivenBidual( category, { cat, obj, dual } -> IdentityMorphism( obj ) );
         
     fi; ## commutative case
     
@@ -983,7 +985,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     ## Source and Range
     ##
     AddSimplifySourceAndRange( category,
-      function( alpha, i )
+      function( cat, alpha, i )
         
         return
           CategoryOfRowsMorphism(
@@ -996,7 +998,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddSimplifySourceAndRange_IsoToInputRange( category,
-      function( alpha, i )
+      function( cat, alpha, i )
         
         return
           CategoryOfRowsMorphism(
@@ -1009,7 +1011,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddSimplifySourceAndRange_IsoFromInputRange( category,
-      function( alpha, i )
+      function( cat, alpha, i )
         
         return
           CategoryOfRowsMorphism(
@@ -1022,7 +1024,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddSimplifySourceAndRange_IsoToInputSource( category,
-      function( alpha, i )
+      function( cat, alpha, i )
         
         return
           CategoryOfRowsMorphism(
@@ -1035,7 +1037,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddSimplifySourceAndRange_IsoFromInputSource( category,
-      function( alpha, i )
+      function( cat, alpha, i )
         
         return
           CategoryOfRowsMorphism(
@@ -1049,7 +1051,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     ## only Source
     ##
     AddSimplifySource( category,
-      function( alpha, i )
+      function( cat, alpha, i )
         
         return
           CategoryOfRowsMorphism(
@@ -1062,7 +1064,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddSimplifySource_IsoToInputObject( category,
-      function( alpha, i )
+      function( cat, alpha, i )
         
         return
           CategoryOfRowsMorphism(
@@ -1075,7 +1077,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddSimplifySource_IsoFromInputObject( category,
-      function( alpha, i )
+      function( cat, alpha, i )
         
         return
           CategoryOfRowsMorphism(
@@ -1089,7 +1091,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     ## only Range
     ##
     AddSimplifyRange( category,
-      function( alpha, i )
+      function( cat, alpha, i )
         
         return
           CategoryOfRowsMorphism(
@@ -1102,7 +1104,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddSimplifyRange_IsoToInputObject( category,
-      function( alpha, i )
+      function( cat, alpha, i )
         
         return
           CategoryOfRowsMorphism(
@@ -1115,7 +1117,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddSimplifyRange_IsoFromInputObject( category,
-      function( alpha, i )
+      function( cat, alpha, i )
         
         return
           CategoryOfRowsMorphism(
@@ -1128,7 +1130,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddSomeReductionBySplitEpiSummand( category,
-      function( alpha )
+      function( cat, alpha )
         
         return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[1], category );
         
@@ -1136,7 +1138,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddSomeReductionBySplitEpiSummand_MorphismFromInputRange( category,
-      function( alpha )
+      function( cat, alpha )
         
         return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[2], category );
         
@@ -1144,7 +1146,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddSomeReductionBySplitEpiSummand_MorphismToInputRange( category,
-      function( alpha )
+      function( cat, alpha )
         
         return AsCategoryOfRowsMorphism( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple( alpha )[3], category );
         

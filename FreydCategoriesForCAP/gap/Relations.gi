@@ -90,7 +90,7 @@ InstallMethod( AssociatedSubobject,
   function( mor )
     
     return ImageEmbedding( 
-            UniversalMorphismIntoDirectProduct( ReversedArrow( mor ), Arrow( mor ) ) 
+            UniversalMorphismIntoDirectProduct( [ ReversedArrow( mor ), Arrow( mor ) ] )
     );
     
 end );

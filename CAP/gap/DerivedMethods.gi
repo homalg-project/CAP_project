@@ -537,7 +537,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoFiberProduct,
   function( cat, diagram, source )
     local test_function, direct_sum_diagonal_difference, kernel_lift;
     
-    test_function := CallFuncList( UniversalMorphismIntoDirectSum, source );
+    test_function := UniversalMorphismIntoDirectSum( source );
     
     direct_sum_diagonal_difference := DirectSumDiagonalDifference( diagram );
     
@@ -556,7 +556,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromPushout,
   function( cat, diagram, sink )
     local test_function, direct_sum_codiagonal_difference, cokernel_colift;
     
-    test_function := CallFuncList( UniversalMorphismFromDirectSum, sink );
+    test_function := UniversalMorphismFromDirectSum( sink );
     
     direct_sum_codiagonal_difference := DirectSumCodiagonalDifference( diagram );
     
@@ -984,7 +984,7 @@ AddDerivationToCAP( IsMonomorphism,
       
       identity := IdentityMorphism( Source( morphism ) );
       
-      diagonal_morphism := UniversalMorphismIntoFiberProduct( pullback_diagram, identity, identity );
+      diagonal_morphism := UniversalMorphismIntoFiberProduct( pullback_diagram, [ identity, identity ] );
       
       return IsIsomorphism( diagonal_morphism );
     
@@ -1014,7 +1014,7 @@ AddDerivationToCAP( IsEpimorphism,
       
       identity := IdentityMorphism( Range( morphism ) );
       
-      codiagonal_morphism := UniversalMorphismFromPushout( pushout_diagram, identity, identity );
+      codiagonal_morphism := UniversalMorphismFromPushout( pushout_diagram, [ identity, identity ] );
       
       return IsIsomorphism( codiagonal_morphism );
     
@@ -1289,11 +1289,11 @@ AddDerivationToCAP( AdditionForMorphisms,
     
     B := Range( mor1 );
     
-    componentwise_morphism := UniversalMorphismIntoDirectSum( mor1, mor2 );
+    componentwise_morphism := UniversalMorphismIntoDirectSum( [ mor1, mor2 ] );
     
     identity_morphism_B := IdentityMorphism( B );
     
-    addition_morphism := UniversalMorphismFromDirectSum( identity_morphism_B, identity_morphism_B );
+    addition_morphism := UniversalMorphismFromDirectSum( [ identity_morphism_B, identity_morphism_B ] );
     
     return PreCompose( componentwise_morphism, addition_morphism );
     
@@ -1992,9 +1992,9 @@ AddDerivationToCAP( DirectSumDiagonalDifference,
         
     fi;
     
-    mor1 := CallFuncList( UniversalMorphismIntoDirectSum, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
+    mor1 := UniversalMorphismIntoDirectSum( list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
     
-    mor2 := CallFuncList( UniversalMorphismIntoDirectSum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
+    mor2 := UniversalMorphismIntoDirectSum( list_of_morphisms{[ 2 .. number_of_morphisms ]} );
     
     return SubtractionForMorphisms( mor1, mor2 );
     
@@ -2056,9 +2056,9 @@ AddDerivationToCAP( DirectSumCodiagonalDifference,
         
     fi;
     
-    mor1 := CallFuncList( UniversalMorphismFromDirectSum, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
+    mor1 := UniversalMorphismFromDirectSum( list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
     
-    mor2 := CallFuncList( UniversalMorphismFromDirectSum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
+    mor2 := UniversalMorphismFromDirectSum( list_of_morphisms{[ 2 .. number_of_morphisms ]} );
     
     return SubtractionForMorphisms( mor1, mor2 );
     
@@ -3435,14 +3435,14 @@ AddFinalDerivation( IsCongruentForMorphisms,
                     [ [ IsEqualForMorphisms, 1 ] ],
                     [ IsCongruentForMorphisms ],
                     
-  IsEqualForMorphisms : Description := "Use IsEqualForMorphisms for IsCongruentForMorphisms" );
+  { cat, mor1, mor2 } -> IsEqualForMorphisms( mor1, mor2 ) : Description := "Use IsEqualForMorphisms for IsCongruentForMorphisms" );
 
 ##
 AddFinalDerivation( IsEqualForMorphisms,
                     [ [ IsCongruentForMorphisms, 1 ] ],
                     [ IsEqualForMorphisms ],
                     
-  IsCongruentForMorphisms : Description := "Use IsCongruentForMorphisms for IsEqualForMorphisms" );
+  { cat, mor1, mor2 } -> IsCongruentForMorphisms( mor1, mor2 ) : Description := "Use IsCongruentForMorphisms for IsEqualForMorphisms" );
 
 ## Final methods for BasisOfExternalHom & CoefficientsOfMorphism
 
