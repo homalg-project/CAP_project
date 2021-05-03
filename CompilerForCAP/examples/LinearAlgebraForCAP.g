@@ -2,6 +2,8 @@
 
 #! @Section Examples
 
+LoadPackage( "LinearAlgebra" );
+
 #! @Example
 
 Q := HomalgFieldOfRationals();;
@@ -22,7 +24,7 @@ tree1 := SYNTAX_TREE(
     vec!.compiled_functions.MorphismBetweenDirectSums[3]
 );;
 # fixup nams
-tree1.stats.statements[1].branches[2].body.statements[1].
+tree1.stats.statements[1].branches[2].body.
     obj.args[12].args[1].args[2].nams := [ "row" ];;
 Display( SYNTAX_TREE_CODE( tree1 ) );
 #! function ( cat, S, morphism_matrix, T )
@@ -47,7 +49,7 @@ tree2 := SYNTAX_TREE( CapJitCompiledFunction(
     [ vec, W, morphism_matrix, W  ]
 ) );;
 # fixup nams
-tree2.stats.statements[1].branches[2].body.statements[1].
+tree2.stats.statements[1].branches[2].body.
     obj.args[12].args[1].args[2].nams := [ "row" ];;
 Display( SYNTAX_TREE_CODE( tree2 ) );
 #! function ( cat, S, morphism_matrix, T )

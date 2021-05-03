@@ -488,6 +488,13 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
             fi;
             
+            # remove STAT_SEQ_STAT from if branches with only a single statement
+            if tree.type = "BRANCH_IF" and tree.body.type = "STAT_SEQ_STAT" and Length( tree.body.statements ) = 1 then
+                
+                tree.body := tree.body.statements[1];
+                
+            fi;
+            
             # convert EXPR_CONDITIONAL back into if/else
             
             # EXPR_CONDITIONAL as obj of STAT_RETURN_OBJ
