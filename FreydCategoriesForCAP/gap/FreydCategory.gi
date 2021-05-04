@@ -33,6 +33,12 @@ InstallGlobalFunction( FREYD_CATEGORY,
     
     freyd_category!.category_as_first_argument := true;
     
+    freyd_category!.compiler_hints := rec(
+        category_attribute_names := [
+            "UnderlyingCategory",
+        ],
+    );
+    
     SetFilterObj( freyd_category, IsFreydCategory );
     
     SetIsAdditiveCategory( freyd_category, true );
