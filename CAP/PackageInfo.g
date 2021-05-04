@@ -128,7 +128,4 @@ AvailabilityTest := function()
         return true;
     end,
 
-Autoload := false,
-
-
 ));
