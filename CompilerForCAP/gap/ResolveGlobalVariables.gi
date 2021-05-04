@@ -10,7 +10,9 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
     Info( InfoCapJit, 1, "Resolving global variables." );
     
     pre_func := function ( tree, additional_arguments )
-      local value, inline_tree, name, global_variable_name;
+      local funccall_does_not_return_fail, value, inline_tree, name, global_variable_name;
+        
+        funccall_does_not_return_fail := false;
         
         if IsRecord( tree ) and not (IsBound( tree.CAP_JIT_NOT_RESOLVABLE ) and tree.CAP_JIT_NOT_RESOLVABLE) then
             
@@ -18,7 +20,10 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
             if tree.type = "EXPR_REF_GVAR" and tree.gvar <> "Julia" then
                 
                 value := ValueGlobal( tree.gvar );
-
+                
+                # will only be used if <value> is a function
+                funccall_does_not_return_fail := IsBound( tree.does_not_return_fail ) and tree.does_not_return_fail = true;
+                
             elif tree.type = "EXPR_ELM_COMOBJ_NAME" and tree.comobj.type = "EXPR_REF_GVAR" and tree.comobj.gvar <> "Julia" then
                 
                 value := ValueGlobal( tree.comobj.gvar )!.(tree.name);
@@ -95,12 +100,18 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
                             
                             inline_tree.stats.statements := inline_tree.stats.statements{[ 2 .. Length( inline_tree.stats.statements ) ]};
                             
+                            if funccall_does_not_return_fail then
+                                
+                                inline_tree := CapJitRemovedReturnFail( inline_tree );
+                                
+                            fi;
+                            
                             return inline_tree;
                             
                         fi;
                         
                     fi;
-        
+                    
                     name := NameFunction( value );
                     
                     if name in NamesGVars( ) and IsIdenticalObj( value, ValueGlobal( name ) ) then
@@ -109,6 +120,12 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
                             type := "EXPR_REF_GVAR",
                             gvar := name,
                         );
+                        
+                        if funccall_does_not_return_fail then
+                            
+                            tree.does_not_return_fail := true;
+                            
+                        fi;
                         
                     fi;
                     

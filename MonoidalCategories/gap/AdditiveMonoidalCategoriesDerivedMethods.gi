@@ -6,9 +6,9 @@ AddDerivationToCAP( LeftDistributivityExpandingWithGivenObjects,
     
     nr_summands := Size( summands );
     
-    projection_list := List( [ 1 .. nr_summands ], i -> ProjectionInFactorOfDirectSum( summands, i ) );
-    
     id := IdentityMorphism( object );
+    
+    projection_list := List( [ 1 .. nr_summands ], i -> ProjectionInFactorOfDirectSum( summands, i ) );
     
     projection_list := List( projection_list, mor -> TensorProductOnMorphisms( id, mor ) );
     
@@ -27,9 +27,9 @@ AddDerivationToCAP( LeftDistributivityFactoringWithGivenObjects,
     
     nr_summands := Size( summands );
     
-    injection_list := List( [ 1 .. nr_summands ], i -> InjectionOfCofactorOfDirectSum( summands, i ) );
-    
     id := IdentityMorphism( object );
+    
+    injection_list := List( [ 1 .. nr_summands ], i -> InjectionOfCofactorOfDirectSum( summands, i ) );
     
     injection_list := List( injection_list, mor -> TensorProductOnMorphisms( id, mor ) );
     
@@ -48,9 +48,9 @@ AddDerivationToCAP( RightDistributivityExpandingWithGivenObjects,
     
     nr_summands := Size( summands );
     
-    projection_list := List( [ 1 .. nr_summands ], i -> ProjectionInFactorOfDirectSum( summands, i ) );
-    
     id := IdentityMorphism( object );
+    
+    projection_list := List( [ 1 .. nr_summands ], i -> ProjectionInFactorOfDirectSum( summands, i ) );
     
     projection_list := List( projection_list, mor -> TensorProductOnMorphisms( mor, id ) );
     
@@ -69,9 +69,9 @@ AddDerivationToCAP( RightDistributivityFactoringWithGivenObjects,
     
     nr_summands := Size( summands );
     
-    injection_list := List( [ 1 .. nr_summands ], i -> InjectionOfCofactorOfDirectSum( summands, i ) );
-    
     id := IdentityMorphism( object );
+    
+    injection_list := List( [ 1 .. nr_summands ], i -> InjectionOfCofactorOfDirectSum( summands, i ) );
     
     injection_list := List( injection_list, mor -> TensorProductOnMorphisms( mor, id ) );
     

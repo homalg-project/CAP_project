@@ -52,6 +52,92 @@ BindGlobal( "CAP_JIT_LOGIC_TEMPLATES", [
         dst_template := "func( list[index] )",
         returns_value := true,
     ),
+    # func( condition ? expr_if_true : expr_if_false ) => condition ? func( expr_if_true ) : func( expr_if_false )
+    rec(
+        variable_names := [ "func", "condition", "expr_if_true", "expr_if_false" ],
+        src_template := "func( condition ? expr_if_true : expr_if_false )",
+        dst_template := "condition ? func( expr_if_true ) : func( expr_if_false )",
+        src_template_tree := rec(
+            type := "EXPR_FUNCCALL",
+            funcref := rec(
+                type := "EXPR_REF_GVAR",
+                gvar := "CAP_INTERNAL_JIT_TEMPLATE_VAR_1",
+            ),
+            args := [
+                rec(
+                    type := "EXPR_CONDITIONAL",
+                    condition := rec(
+                        type := "EXPR_REF_GVAR",
+                        gvar := "CAP_INTERNAL_JIT_TEMPLATE_VAR_2",
+                    ),
+                    expr_if_true := rec(
+                        type := "EXPR_REF_GVAR",
+                        gvar := "CAP_INTERNAL_JIT_TEMPLATE_VAR_3",
+                    ),
+                    expr_if_false := rec(
+                        type := "EXPR_REF_GVAR",
+                        gvar := "CAP_INTERNAL_JIT_TEMPLATE_VAR_4",
+                    ),
+                ),
+            ],
+        ),
+        dst_template_tree := rec(
+            type := "EXPR_CONDITIONAL",
+            condition := rec(
+                type := "EXPR_REF_GVAR",
+                gvar := "CAP_INTERNAL_JIT_TEMPLATE_VAR_2",
+            ),
+            expr_if_true := rec(
+                type := "EXPR_FUNCCALL",
+                funcref := rec(
+                    type := "EXPR_REF_GVAR",
+                    gvar := "CAP_INTERNAL_JIT_TEMPLATE_VAR_1",
+                ),
+                args := [
+                    rec(
+                        type := "EXPR_REF_GVAR",
+                        gvar := "CAP_INTERNAL_JIT_TEMPLATE_VAR_3",
+                    ),
+                ],
+            ),
+            expr_if_false := rec(
+                type := "EXPR_FUNCCALL",
+                funcref := rec(
+                    type := "EXPR_REF_GVAR",
+                    gvar := "CAP_INTERNAL_JIT_TEMPLATE_VAR_1",
+                ),
+                args := [
+                    rec(
+                        type := "EXPR_REF_GVAR",
+                        gvar := "CAP_INTERNAL_JIT_TEMPLATE_VAR_4",
+                    ),
+                ],
+            ),
+        ),
+        returns_value := true,
+    ),
+    # condition ? expr : expr => expr
+    rec(
+        variable_names := [ "condition", "expr" ],
+        src_template := "condition ? expr : expr",
+        dst_template := "expr",
+        src_template_tree := rec(
+            type := "EXPR_CONDITIONAL",
+            condition := rec(
+                type := "EXPR_REF_GVAR",
+                gvar := "CAP_INTERNAL_JIT_TEMPLATE_VAR_1",
+            ),
+            expr_if_true := rec(
+                type := "EXPR_REF_GVAR",
+                gvar := "CAP_INTERNAL_JIT_TEMPLATE_VAR_2",
+            ),
+            expr_if_false := rec(
+                type := "EXPR_REF_GVAR",
+                gvar := "CAP_INTERNAL_JIT_TEMPLATE_VAR_2",
+            ),
+        ),
+        returns_value := true,
+    ),
 ] );
 
 InstallGlobalFunction( CapJitAddLogicTemplate, function ( template )
@@ -480,20 +566,44 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, a
             
         od;
         
-        # to get a syntax tree we have to wrap the template in a function
-        
-        if template.returns_value then
-
-            src_template_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "x -> ", src_template ) ) ).stats.statements[1].obj;
-            dst_template_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "x -> ", dst_template ) ) ).stats.statements[1].obj;
-        
+        if IsBound( template.src_template_tree ) then
+            
+            src_template_tree := template.src_template_tree;
+            
         else
             
-            src_template_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "function () ", src_template, " ; return; end;" ) ) ).stats.statements[1];
-            dst_template_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "function () ", dst_template, " ; return; end;" ) ) ).stats.statements[1];
-
+            # to get a syntax tree we have to wrap the template in a function
+            if template.returns_value then
+                
+                src_template_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "x -> ", src_template ) ) ).stats.statements[1].obj;
+                
+            else
+                
+                src_template_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "function () ", src_template, " ; return; end;" ) ) ).stats.statements[1];
+                
+            fi;
+            
         fi;
-
+        
+        if IsBound( template.dst_template_tree ) then
+            
+            dst_template_tree := template.dst_template_tree;
+            
+        else
+            
+            # to get a syntax tree we have to wrap the template in a function
+            if template.returns_value then
+                
+                dst_template_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "x -> ", dst_template ) ) ).stats.statements[1].obj;
+                
+            else
+                
+                dst_template_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "function () ", dst_template, " ; return; end;" ) ) ).stats.statements[1];
+                
+            fi;
+            
+        fi;
+        
         while true do
             
             if IsBound( template.debug ) and template.debug then

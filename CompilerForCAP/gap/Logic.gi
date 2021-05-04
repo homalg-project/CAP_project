@@ -115,12 +115,10 @@ CapJitAddLogicFunction( function ( tree, jit_args )
     pre_func := function ( tree, additional_arguments )
       local args, object, value, pos;
         
-        if CapJitIsCallToGlobalFunction( tree, gvar -> IsAttribute( ValueGlobal( gvar ) ) ) then
+        # attribute getters can also be applied to more than one argument, but we are not interested in that case
+        if CapJitIsCallToGlobalFunction( tree, gvar -> IsAttribute( ValueGlobal( gvar ) ) ) and Length( tree.args ) = 1 then
             
             args := tree.args;
-            
-            # an attribute getter only has a single argument
-            Assert( 0, Length( args ) = 1 );
             
             object := args[1];
 
@@ -170,7 +168,7 @@ CapJitAddLogicFunction( function ( tree, jit_args )
                 
                 statement := statements[i];
                 
-                if StartsWith( statement.type, "STAT_IF" ) and ForAll( statement.branches, b -> Last( b.body.statements ).type = "STAT_RETURN_OBJ" ) then
+                if StartsWith( statement.type, "STAT_IF" ) and ForAll( statement.branches, b -> Length( b.body.statements ) > 0 and Last( b.body.statements ).type = "STAT_RETURN_OBJ" ) then
                     # we are in the main sequence of statements of a function => we are not inside of a loop
                     # and all branches end with a return statement
                     # => we reach the remaining statements iff none of the conditions of the branches match

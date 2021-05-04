@@ -1317,6 +1317,7 @@ AddDerivationToCAP( LiftAlongMonomorphism,
   function( cat, alpha, beta )
     
     ## Caution with the order of the arguments!
+    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
     return Lift( beta, alpha );
     
 end : Description := "LiftAlongMonomorphism using Lift" );
@@ -1327,6 +1328,7 @@ AddDerivationToCAP( ProjectiveLift,
                     
   function( cat, alpha, beta )
     
+    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
     return Lift( alpha, beta );
     
 end : Description := "ProjectiveLift using Lift" );
@@ -1338,6 +1340,7 @@ AddDerivationToCAP( ColiftAlongEpimorphism,
                     
   function( cat, alpha, beta )
     
+    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
     return Colift( alpha, beta );
     
 end : Description := "ColiftAlongEpimorphism using Colift" );
@@ -1348,6 +1351,7 @@ AddDerivationToCAP( InjectiveColift,
                     
   function( cat, alpha, beta )
     
+    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
     return Colift( alpha, beta );
     
 end : Description := "InjectiveColift using Colift" );

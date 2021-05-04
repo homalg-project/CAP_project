@@ -53,6 +53,7 @@ BindGlobal( "CAP_JIT_INTERNAL_ITERATION_KEYS", rec(
     EXPR_ISB_COMOBJ_NAME := [ "comobj" ],
     STAT_ASS_COMOBJ_NAME := [ "comobj", "rhs" ],
     EXPR_ELM_MAT := [ "list", "row", "col" ],
+    STAT_ASS_MAT := [ "list", "row", "col", "rhs" ],
     EXPR_LIST := "list",
     STAT_RETURN_OBJ := "obj",
     EXPR_RANGE := [ "first", "last" ],
@@ -87,6 +88,7 @@ BindGlobal( "CAP_JIT_INTERNAL_ITERATION_KEYS", rec(
     STAT_INFO := [ "sel", "lev", "args" ],
     BRANCH_IF := [ "condition", "body" ],
     REC_KEY_VALUE_PAIR := [ "value" ],
+    EXPR_CONDITIONAL := [ "condition", "expr_if_true", "expr_if_false" ],
 ) );
 
 InstallGlobalFunction( CapJitIterateOverTree, function ( tree, pre_func, result_func, additional_arguments_func, additional_arguments )

@@ -28,7 +28,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func, args... )
     tree := StructuralCopy( tree );
 
     pre_func := function ( tree, additional_arguments )
-      local path, func_stack, statements, i, statement, level, pos, lvars, value, branch, keyvalue;
+      local path, func_stack, statements, i, statement, body_if_true, body_if_false, level, pos, lvars, value, to_delete, next_statement, funccall, branch, keyvalue;
         
         path := additional_arguments[1];
         func_stack := additional_arguments[2];
@@ -127,7 +127,45 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func, args... )
                 od;
                 
             fi;
-
+            
+            # detect EXPR_CONDITIONAL (before unifying lvar and hvar handling)
+            if tree.type = "STAT_IF_ELSE" then
+                
+                Assert( 0, Length( tree.branches ) = 2 );
+                Assert( 0, tree.branches[2].condition.type = "EXPR_TRUE" );
+                
+                body_if_true := tree.branches[1].body;
+                body_if_false := tree.branches[2].body;
+                
+                if body_if_true.type = "STAT_RETURN_OBJ" and body_if_false.type = "STAT_RETURN_OBJ" then
+                    
+                    tree := rec(
+                        type := "STAT_RETURN_OBJ",
+                        obj := rec(
+                            type := "EXPR_CONDITIONAL",
+                            condition := tree.branches[1].condition,
+                            expr_if_true := body_if_true.obj,
+                            expr_if_false := body_if_false.obj,
+                        ),
+                    );
+                    
+                elif body_if_true.type = "STAT_ASS_LVAR" and body_if_false.type = "STAT_ASS_LVAR" and body_if_true.lvar = body_if_false.lvar then
+                    
+                    tree := rec(
+                        type := "STAT_ASS_LVAR",
+                        lvar := body_if_true.lvar,
+                        rhs := rec(
+                            type := "EXPR_CONDITIONAL",
+                            condition := tree.branches[1].condition,
+                            expr_if_true := body_if_true.rhs,
+                            expr_if_false := body_if_false.rhs,
+                        ),
+                    );
+                    
+                fi;
+                
+            fi;
+            
             # assign IDs to functions
             if tree.type = "EXPR_FUNC" then
                 
@@ -196,6 +234,57 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func, args... )
                     Unbind( tree.hvar );
 
                 fi;
+                
+            fi;
+            
+            # detect CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
+            if tree.type = "STAT_SEQ_STAT" then
+                
+                to_delete := [ ];
+                
+                for i in [ 1 .. Length( tree.statements ) ] do
+                    
+                    if tree.statements[i].type = "STAT_PRAGMA" and tree.statements[i].value = "% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL" then
+                        
+                        if i = Length( tree.statements ) then
+                            
+                            Error( "The pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL must not occur as the last statement of a function" );
+                            
+                        fi;
+                        
+                        next_statement := tree.statements[i + 1];
+                        
+                        if StartsWith( next_statement.type, "STAT_ASS_" ) and StartsWith( next_statement.rhs.type, "EXPR_FUNCCALL" ) then
+                            
+                            funccall := next_statement.rhs;
+                            
+                        elif next_statement.type = "STAT_RETURN_OBJ" and StartsWith( next_statement.obj.type, "EXPR_FUNCCALL" ) then
+                            
+                            funccall := next_statement.obj;
+                            
+                        else
+                            
+                            Error( "The line following the pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL must either assign a variable to the result of a function call or return the result of a function call" );
+                            
+                        fi;
+                        
+                        if funccall.funcref.type = "EXPR_REF_GVAR" then
+                            
+                            funccall.funcref.does_not_return_fail := true;
+                            
+                            Add( to_delete, i );
+                            
+                        else
+                            
+                            Error( "The pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL can only be used for calls to global functions or operations" );
+                            
+                        fi;
+                        
+                    fi;
+                    
+                od;
+                
+                tree.statements := tree.statements{Difference( [ 1 .. Length( tree.statements ) ], to_delete )};
                 
             fi;
             
@@ -398,9 +487,124 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 fi;
                 
             fi;
-
+            
+            # remove STAT_SEQ_STAT from if branches with only a single statement
+            if tree.type = "BRANCH_IF" and tree.body.type = "STAT_SEQ_STAT" and Length( tree.body.statements ) = 1 then
+                
+                tree.body := tree.body.statements[1];
+                
+            fi;
+            
+            # convert EXPR_CONDITIONAL back into if/else
+            
+            # EXPR_CONDITIONAL as obj of STAT_RETURN_OBJ
+            if tree.type = "STAT_RETURN_OBJ" and tree.obj.type = "EXPR_CONDITIONAL" then
+                
+                tree := rec(
+                    type := "STAT_IF_ELSE",
+                    branches := [
+                        rec(
+                            type := "BRANCH_IF",
+                            condition := tree.obj.condition,
+                            body := rec(
+                                type := "STAT_RETURN_OBJ",
+                                obj := tree.obj.expr_if_true,
+                            ),
+                        ),
+                        rec(
+                            type := "BRANCH_IF",
+                            condition := rec(
+                                type := "EXPR_TRUE",
+                            ),
+                            body := rec(
+                                type := "STAT_RETURN_OBJ",
+                                obj := tree.obj.expr_if_false,
+                            ),
+                        ),
+                    ],
+                );
+                
+            fi;
+            
+            # EXPR_CONDITIONAL as rhs of STAT_ASS_LVAR
+            if tree.type = "STAT_ASS_LVAR" and tree.rhs.type = "EXPR_CONDITIONAL" then
+                
+                tree := rec(
+                    type := "STAT_IF_ELSE",
+                    branches := [
+                        rec(
+                            type := "BRANCH_IF",
+                            condition := tree.rhs.condition,
+                            body := rec(
+                                type := "STAT_ASS_LVAR",
+                                lvar := tree.lvar,
+                                rhs := tree.rhs.expr_if_true,
+                            ),
+                        ),
+                        rec(
+                            type := "BRANCH_IF",
+                            condition := rec(
+                                type := "EXPR_TRUE",
+                            ),
+                            body := rec(
+                                type := "STAT_ASS_LVAR",
+                                lvar := tree.lvar,
+                                rhs := tree.rhs.expr_if_false,
+                            ),
+                        ),
+                    ],
+                );
+                
+            fi;
+            
+            # EXPR_CONDITIONAL without suitable context
+            if tree.type = "EXPR_CONDITIONAL" then
+                
+                tree := rec(
+                    type := "EXPR_FUNCCALL_0ARGS",
+                    args := [ ],
+                    funcref := rec(
+                        type := "EXPR_FUNC",
+                        id := -1, # will be ignored anyway
+                        nams := [ ],
+                        narg := 0,
+                        nloc := 0,
+                        variadic := false,
+                        stats := rec(
+                            type := "STAT_SEQ_STAT",
+                            statements := [
+                                rec(
+                                    type := "STAT_IF_ELSE",
+                                    branches := [
+                                        rec(
+                                            type := "BRANCH_IF",
+                                            condition := tree.condition,
+                                            body := rec(
+                                                type := "STAT_RETURN_OBJ",
+                                                obj := tree.expr_if_true,
+                                            ),
+                                        ),
+                                        rec(
+                                            type := "BRANCH_IF",
+                                            condition := rec(
+                                                type := "EXPR_TRUE",
+                                            ),
+                                            body := rec(
+                                                type := "STAT_RETURN_OBJ",
+                                                obj := tree.expr_if_false,
+                                            ),
+                                        ),
+                                    ],
+                                ),
+                            ],
+                        ),
+                    ),
+                );
+                
+            fi;
+            
         fi;
-
+        
         return tree;
         
     end;

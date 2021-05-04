@@ -152,7 +152,7 @@ InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function ( tree )
             fi;
             
             # exclude most common statements and expression indicating possible side effects
-            if tree.type in [ "STAT_ASS_GVAR", "EXPR_ISB_GVAR", "STAT_UNB_GVAR", "EXPR_ISB_FVAR", "EXPR_UNB_FVAR", "STAT_PROCCALL" ] then
+            if tree.type in [ "STAT_ASS_GVAR", "EXPR_ISB_GVAR", "STAT_UNB_GVAR", "EXPR_ISB_FVAR", "EXPR_UNB_FVAR", "STAT_PROCCALL", "STAT_ASS_LIST", "STAT_ASS_COMOBJ_NAME", "STAT_ASS_MAT" ] then
 
                 Error( Concatenation( "tree includes statements or expressions which indicate possible side effects: ", tree.type ) );
 
@@ -205,30 +205,6 @@ InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function ( tree )
                 
             fi;
             
-            # do not count rapid reassignments
-            if tree.type = "STAT_SEQ_STAT" then
-                
-                for i in [ 1 .. Length( tree.statements ) - 1 ] do
-                    
-                    statement := tree.statements[i];
-                    next_statement := tree.statements[i + 1];
-                    
-                    if statement.type = "STAT_ASS_FVAR" and next_statement.type = "STAT_ASS_FVAR" and statement.func_id = next_statement.func_id and statement.pos = next_statement.pos then
-                        
-                        if IsBound( number_of_assignments[statement.func_id] ) then
-                            
-                            Assert( 0, IsBound( number_of_assignments[statement.func_id][statement.pos] ) );
-                            
-                            number_of_assignments[statement.func_id][statement.pos] := number_of_assignments[statement.func_id][statement.pos] - 1;
-                            
-                        fi;
-                        
-                    fi;
-                    
-                od;
-                
-            fi;
-            
         fi;
             
         return tree;
@@ -262,7 +238,7 @@ InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function ( tree )
                 
                 if number_of_assignments[i][j] >= 2 then
                     
-                    Error( Concatenation( "a local variable with name ", nams[i][j], " is assigned more than once (not as a part of a rapid reassignment), this is not supported" ) );
+                    Error( Concatenation( "a local variable with name ", nams[i][j], " is assigned more than once (not as part of a rapid reassignment), this is not supported" ) );
                     
                 fi;
                 
@@ -343,5 +319,93 @@ InstallGlobalFunction( CapJitGetNodeByPath, function ( tree, path )
         return CapJitGetNodeByPath( tree.(path[1]), path{[ 2 .. Length( path ) ]} );
         
     fi;
+    
+end );
+
+InstallGlobalFunction( CapJitRemovedReturnFail, function ( tree )
+  local found_return_fail;
+    
+    Assert( 0, IsRecord( tree ) );
+    Assert( 0, tree.type = "EXPR_FUNC" );
+    
+    tree := StructuralCopy( tree );
+
+    found_return_fail := false;
+    
+    tree.stats.statements := Concatenation( List( [ 1 .. Length( tree.stats.statements ) ], function ( i )
+      local statement, branch, body_stat, next_statement;
+        
+        statement := tree.stats.statements[i];
+        
+        # detect "if ... then return fail; fi"
+        if statement.type = "STAT_IF" and Length( statement.branches ) = 1 then
+            
+            branch := statement.branches[1];
+            
+            if Length( branch.body.statements ) = 1 then
+                
+                body_stat := branch.body.statements[1];
+                
+                if body_stat.type = "STAT_RETURN_OBJ" and body_stat.obj.type = "EXPR_REF_GVAR" and body_stat.obj.gvar = "fail" then
+                    
+                    found_return_fail := true;
+                    
+                    return [ ];
+                    
+                fi;
+                
+            fi;
+            
+        fi;
+        
+        # detect "if ... then return fail; else return ...; fi" (as EXPR_CONDITIONAL)
+        if statement.type = "STAT_RETURN_OBJ" and statement.obj.type = "EXPR_CONDITIONAL" and statement.obj.expr_if_true.type = "EXPR_REF_GVAR" and statement.obj.expr_if_true.gvar = "fail" then
+            
+            found_return_fail := true;
+            
+            return [
+                rec(
+                    type := "STAT_RETURN_OBJ",
+                    obj := statement.obj.expr_if_false,
+                )
+            ];
+            
+        fi;
+        
+        # detect "if ... then var := fail; else var := fi; return var" (as EXPR_CONDITIONAL)
+        if statement.type = "STAT_ASS_FVAR" and statement.rhs.type = "EXPR_CONDITIONAL" and statement.rhs.expr_if_true.type = "EXPR_REF_GVAR" and statement.rhs.expr_if_true.gvar = "fail" and i < Length( tree.stats.statements ) then
+            
+            # check if next statement is "return var"
+            next_statement := tree.stats.statements[i + 1];
+            
+            if next_statement.type = "STAT_RETURN_OBJ" and next_statement.obj.type = "EXPR_REF_FVAR" and next_statement.obj.func_id = statement.func_id and next_statement.obj.pos = statement.pos then
+                
+                found_return_fail := true;
+                
+                return [
+                    rec(
+                        type := "STAT_ASS_FVAR",
+                        func_id := statement.func_id,
+                        pos := statement.pos,
+                        initial_name := statement.initial_name,
+                        rhs := statement.rhs.expr_if_false,
+                    )
+                ];
+                
+            fi;
+            
+        fi;
+        
+        return [ statement ];
+        
+    end ) );
+    
+    if not found_return_fail then
+        
+        Error( "Could not detect a statement returning fail. Either the pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL is not set correctly or the given structure is not yet handled correctly by the compiler" );
+        
+    fi;
+    
+    return tree;
     
 end );
