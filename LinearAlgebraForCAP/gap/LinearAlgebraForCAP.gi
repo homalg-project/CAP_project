@@ -18,11 +18,30 @@ InstallMethod( MatrixCategory,
                [ IsFieldForHomalg ],
                
   function( homalg_field )
+    
+    return MATRIX_CATEGORY( homalg_field );
+    
+end );
+
+InstallGlobalFunction( MATRIX_CATEGORY,
+  function( homalg_field )
     local category, to_be_finalized;
     
     category := CreateCapCategory( Concatenation( "Category of matrices over ", RingName( homalg_field ) ) );
     
     category!.category_as_first_argument := true;
+    
+    category!.compiler_hints := rec(
+        category_attribute_names := [
+            "UnderlyingRing",
+        ],
+        source_and_range_attributes_from_morphism_attribute := rec(
+            object_attribute_name := "Dimension",
+            morphism_attribute_name := "UnderlyingMatrix",
+            source_attribute_getter_name := "NrRows",
+            range_attribute_getter_name := "NrColumns",
+        ),
+    );
     
     SetFilterObj( category, IsMatrixCategory );
     
@@ -283,7 +302,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddZeroObject( category,
       function( cat )
         
-        return VectorSpaceObject( 0, homalg_field );
+        return MatrixCategoryObject( cat, 0 );
         
     end );
     
@@ -316,7 +335,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       
       dimension := Sum( List( object_list, object -> Dimension( object ) ) );
       
-      return VectorSpaceObject( dimension, homalg_field );
+      return MatrixCategoryObject( cat, dimension );
       
     end );
     
@@ -461,7 +480,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         homalg_matrix := UnderlyingMatrix( morphism );
         
-        return VectorSpaceObject( NrRows( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ), homalg_field );
+        return MatrixCategoryObject( cat, NrRows( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ) );
         
     end );
     
@@ -472,7 +491,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         kernel_emb := SyzygiesOfRows( UnderlyingMatrix( morphism ) );
         
-        kernel_object := VectorSpaceObject( NrRows( kernel_emb ), homalg_field );
+        kernel_object := MatrixCategoryObject( cat, NrRows( kernel_emb ) );
         
         return VectorSpaceMorphism( kernel_object, kernel_emb, Source( morphism ) );
         
@@ -504,7 +523,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         homalg_matrix := UnderlyingMatrix( morphism );
         
-        return VectorSpaceObject( NrColumns( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ), homalg_field );
+        return MatrixCategoryObject( cat, NrColumns( homalg_matrix ) - RowRankOfMatrix( homalg_matrix ) );
         
     end );
     
@@ -515,7 +534,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         cokernel_proj := SyzygiesOfColumns( UnderlyingMatrix( morphism ) );
         
-        cokernel_obj := VectorSpaceObject( NrColumns( cokernel_proj ), homalg_field );
+        cokernel_obj := MatrixCategoryObject( cat, NrColumns( cokernel_proj ) );
         
         return VectorSpaceMorphism( Range( morphism ), cokernel_proj, cokernel_obj );
         
@@ -580,7 +599,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       [ 
         [ function( cat, object_1, object_2 )
             
-            return VectorSpaceObject( Dimension( object_1 ) * Dimension( object_2 ), homalg_field );
+            return MatrixCategoryObject( cat, Dimension( object_1 ) * Dimension( object_2 ) );
             
           end,
           
@@ -621,7 +640,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       
       function( cat )
         
-        return VectorSpaceObject( 1, homalg_field );
+        return MatrixCategoryObject( cat, 1 );
         
     end );
     
@@ -741,7 +760,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddHomomorphismStructureOnObjects( category,
       function( cat, object_1, object_2 )
         
-        return VectorSpaceObject( Dimension( object_1 ) * Dimension( object_2 ), homalg_field );
+        return MatrixCategoryObject( cat, Dimension( object_1 ) * Dimension( object_2 ) );
         
     end );
     
@@ -761,7 +780,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddDistinguishedObjectOfHomomorphismStructure( category,
       function( cat )
         
-        return VectorSpaceObject( 1, homalg_field );
+        return MatrixCategoryObject( cat, 1 );
       
     end );
     
@@ -775,9 +794,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         new_matrix := ConvertMatrixToRow( matrix );
         
         return VectorSpaceMorphism(
-          VectorSpaceObject( 1, homalg_field ),
+          MatrixCategoryObject( cat, 1 ),
           new_matrix,
-          VectorSpaceObject( NrColumns( new_matrix ), homalg_field )
+          MatrixCategoryObject( cat, NrColumns( new_matrix ) )
         );
         
     end );

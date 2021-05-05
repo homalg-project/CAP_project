@@ -23,6 +23,18 @@ InstallMethod( CategoryOfRows,
     
     category!.category_as_first_argument := true;
     
+    category!.compiler_hints := rec(
+        category_attribute_names := [
+            "UnderlyingRing",
+        ],
+        source_and_range_attributes_from_morphism_attribute := rec(
+            object_attribute_name := "RankOfObject",
+            morphism_attribute_name := "UnderlyingMatrix",
+            source_attribute_getter_name := "NrRows",
+            range_attribute_getter_name := "NrColumns",
+        ),
+    );
+    
     SetFilterObj( category, IsCategoryOfRows );
 
     if HasHasInvariantBasisProperty( homalg_ring ) and HasInvariantBasisProperty( homalg_ring ) then

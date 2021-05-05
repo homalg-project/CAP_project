@@ -18,19 +18,20 @@ compiled_func := CapJitCompiledFunction(
     MyKernelLift,
     [ rows, ZeroMorphism( V, V ), IdentityMorphism( V ) ]
 );;
-tree := SYNTAX_TREE( compiled_func );;
-# check that the fail has been compiled away,
-# that is, we simply return a CAP morphism
-Length( tree.stats.statements ) = 1;
-#! true
-tree.stats.statements[1].type = "STAT_RETURN_OBJ";
-#! true
-StartsWith( tree.stats.statements[1].obj.type, "EXPR_FUNCCALL" );
-#! true
-tree.stats.statements[1].obj.funcref.type = "EXPR_REF_GVAR";
-#! true
-tree.stats.statements[1].obj.funcref.gvar = "ObjectifyWithAttributes";
-#! true
+Display( compiled_func );
+#! function ( cat, mor, test_morphism )
+#!     local cap_jit_morphism_attribute;
+#!     cap_jit_morphism_attribute 
+#!      := RightDivide( UnderlyingMatrix( test_morphism ), 
+#!        SyzygiesOfRows( UnderlyingMatrix( mor ) ) );
+#!     return ObjectifyWithAttributes( rec(
+#!            ), MorphismType( cat ), CapCategory, cat, Source, 
+#!        Source( test_morphism ), Range, ObjectifyWithAttributes( rec(
+#!              ), ObjectType( cat ), CapCategory, cat, Dimension, 
+#!          NrColumns( cap_jit_morphism_attribute ), UnderlyingFieldForHomalg, 
+#!          UnderlyingRing( cat ) ), UnderlyingFieldForHomalg, 
+#!        UnderlyingRing( cat ), UnderlyingMatrix, cap_jit_morphism_attribute );
+#! end
 
 func1 := function( x )
     #% CAP_JIT_RESOLVE_FUNCTION

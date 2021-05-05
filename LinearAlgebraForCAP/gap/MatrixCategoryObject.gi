@@ -19,31 +19,39 @@ InstallMethod( VectorSpaceObject,
                [ IsInt, IsFieldForHomalg ],
                 
   function( dimension, homalg_field )
-    #% CAP_JIT_RESOLVE_FUNCTION
     
-    return MatrixCategoryObject( homalg_field, dimension );
+    return MatrixCategoryObject( MatrixCategory( homalg_field ), dimension );
     
 end );
 
 ##
 InstallMethod( MatrixCategoryObjectOp,
-               [ IsFieldForHomalg, IsInt ],
+               [ IsMatrixCategory, IsInt ],
                
-  function( homalg_field, dimension )
+  function( cat, dimension )
     local category;
     #% CAP_JIT_RESOLVE_FUNCTION
     
     if dimension < 0 then
-      
-      Error( "first argument must be a non-negative integer" );
-      
+        
+        Error( "the dimension must be a non-negative integer" );
+        
     fi;
     
-    category := MatrixCategory( homalg_field );
-    
-    return ObjectifyObjectForCAPWithAttributes( rec( ), category,
+    return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
                                                 Dimension, dimension,
-                                                UnderlyingFieldForHomalg, homalg_field );
+                                                UnderlyingFieldForHomalg, UnderlyingRing( cat ) );
+    
+end );
+
+##
+# backwards compatibility
+InstallOtherMethod( MatrixCategoryObject,
+                    [ IsFieldForHomalg, IsInt ],
+                    
+  function( homalg_field, dimension )
+    
+    return MatrixCategoryObject( MatrixCategory( homalg_field ), dimension );
     
 end );
 

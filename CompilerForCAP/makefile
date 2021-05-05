@@ -32,14 +32,14 @@ test-with-coverage: doc
 	echo 'LoadPackage("profiling"); OutputJsonCoverage("stats", "coverage.json");' | gap --quitonbreak
 
 test-spacing:
-	grep -R "[^ []  " gap/*.gi && echo "Duplicate spaces found" && exit 1 || exit 0
+	grep -R "[^ []  " gap/*.gi | grep -v '\\n' && echo "Duplicate spaces found" && exit 1 || exit 0
 	grep -RE '[^ ] +$$' gap/* && echo "Trailing whitespace found" && exit 1 || exit 0
 	for filename in gap/*; do \
 		echo $$filename; \
 		echo "LoadPackage(\"CompilerForCAP\"); SizeScreen([4096]); func := ReadAsFunction(\"$$filename\"); FileString(\"gap_spacing\", PrintString(func));" | gap --quitonbreak --banner; \
 		echo -e "\033[0m"; \
-		cat "gap_spacing" | sed 's/^function ( ) //g' | sed 's/ return; end$$//g' | sed 's/;/;\n/g' > modified_gap_spacing; \
-		cat "$$filename" | grep -v "^ *[#]" | sed 's/^ *//' | grep -v "^$$" | tr "\n" " " | sed "s/;/;\n/g" | head -c -1 > modified_custom_spacing; \
+		cat "gap_spacing" | sed 's/^function ( ) //g' | sed 's/ return; end$$//g' | sed 's/;/;\n/g' | grep -v '\\n' > modified_gap_spacing; \
+		cat "$$filename" | grep -v "^ *[#]" | sed 's/^ *//' | grep -v "^$$" | grep -v '\\n' | tr "\n" " " | sed "s/;/;\n/g" | head -c -1 > modified_custom_spacing; \
 		diff modified_gap_spacing modified_custom_spacing > spacing_diff; \
 		diff modified_gap_spacing modified_custom_spacing --ignore-all-space --ignore-space-change --ignore-trailing-space --ignore-blank-lines > spacing_diff_no_blanks; \
 		diff spacing_diff_no_blanks spacing_diff || exit; \

@@ -2,14 +2,12 @@
 
 #! @Section Examples
 
-LoadPackage( "LinearAlgebra" );
+LoadPackage( "LinearAlgebraForCAP" );
 
 #! @Example
 
 Q := HomalgFieldOfRationals();;
-vec := MatrixCategory( Q :
-    enable_compilation := [ "MorphismBetweenDirectSums" ]
-);;
+vec := MatrixCategory( Q : enable_compilation := true );;
 
 V := VectorSpaceObject( 2, Q );;
 alpha := ZeroMorphism( V, V );;
@@ -32,9 +30,8 @@ Display( SYNTAX_TREE_CODE( tree1 ) );
 #!         return ZeroMorphism( S, T );
 #!     else
 #!         return ObjectifyWithAttributes( rec(
-#!                ), CAP_JIT_INTERNAL_GLOBAL_VARIABLE_3, CapCategory, 
-#!            CAP_JIT_INTERNAL_GLOBAL_VARIABLE_1, Source, S, Range, T, 
-#!            UnderlyingFieldForHomalg, CAP_JIT_INTERNAL_GLOBAL_VARIABLE_2, 
+#!                ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, 
+#!            UnderlyingFieldForHomalg, UnderlyingRing( cat ), 
 #!            UnderlyingMatrix, 
 #!            UnionOfRows( List( morphism_matrix, function ( row )
 #!                     return UnionOfColumns( List( row, UnderlyingMatrix ) );
@@ -57,9 +54,8 @@ Display( SYNTAX_TREE_CODE( tree2 ) );
 #!         return ZeroMorphism( S, T );
 #!     else
 #!         return ObjectifyWithAttributes( rec(
-#!                ), CAP_JIT_INTERNAL_GLOBAL_VARIABLE_3, CapCategory, 
-#!            CAP_JIT_INTERNAL_GLOBAL_VARIABLE_1, Source, S, Range, T, 
-#!            UnderlyingFieldForHomalg, CAP_JIT_INTERNAL_GLOBAL_VARIABLE_2, 
+#!                ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, 
+#!            UnderlyingFieldForHomalg, UnderlyingRing( cat ), 
 #!            UnderlyingMatrix, 
 #!            UnionOfRows( List( morphism_matrix, function ( row )
 #!                     return UnionOfColumns( List( row, function ( s )
@@ -68,6 +64,22 @@ Display( SYNTAX_TREE_CODE( tree2 ) );
 #!                 end ) ) );
 #!     fi;
 #!     return;
+#! end
+
+KernelEmbedding( alpha );;
+Display( Last( vec!.compiled_functions.KernelEmbedding ) );
+#! function ( cat, morphism )
+#!     local cap_jit_morphism_attribute;
+#!     cap_jit_morphism_attribute 
+#!      := SyzygiesOfRows( UnderlyingMatrix( morphism ) );
+#!     return ObjectifyWithAttributes( rec(
+#!            ), MorphismType( cat ), CapCategory, cat, Source, 
+#!        ObjectifyWithAttributes( rec(
+#!              ), ObjectType( cat ), CapCategory, cat, Dimension, 
+#!          NrRows( cap_jit_morphism_attribute ), UnderlyingFieldForHomalg, 
+#!          UnderlyingRing( cat ) ), Range, Source( morphism ), 
+#!        UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, 
+#!        cap_jit_morphism_attribute );
 #! end
 
 #! @EndExample

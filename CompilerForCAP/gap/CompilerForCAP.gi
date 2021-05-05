@@ -191,6 +191,18 @@ InstallGlobalFunction( CapJitCompiledFunction, function ( func, jit_args )
         
     od;
     
+    if Length( jit_args ) > 0 and IsCapCategory( jit_args[1] ) then
+        
+        if debug then
+            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
+            Display( compiled_func );
+            Display( "apply CapJitAppliedCompilerHints" );
+        fi;
+        
+        tree := CapJitAppliedCompilerHints( tree, jit_args[1] );
+        
+    fi;
+    
     if debug then
         
         compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
