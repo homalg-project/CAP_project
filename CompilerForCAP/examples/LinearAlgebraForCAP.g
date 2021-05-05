@@ -2,7 +2,7 @@
 
 #! @Section Examples
 
-LoadPackage( "LinearAlgebra" );
+LoadPackage( "LinearAlgebraForCAP" );
 
 #! @Example
 
