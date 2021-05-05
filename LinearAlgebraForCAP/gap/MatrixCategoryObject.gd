@@ -40,14 +40,13 @@ DeclareOperation( "VectorSpaceObject",
                   [ IsInt, IsFieldForHomalg ] );
 
 #! @Description
-#! The arguments are a homalg field $F$
+#! The arguments are a matrix category $cat$ over a field
 #! and a non-negative integer $d$.
-#! The output is an object in the category of
-#! matrices over $F$ of dimension $d$.
+#! The output is an object in $cat$ of dimension $d$.
 #! @Returns an object
-#! @Arguments F, d
+#! @Arguments cat, d
 KeyDependentOperation( "MatrixCategoryObject",
-                       IsFieldForHomalg, IsInt, ReturnTrue );
+                       IsMatrixCategory, IsInt, ReturnTrue );
 
 
 ####################################

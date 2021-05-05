@@ -29,6 +29,9 @@ DeclareCategory( "IsMatrixCategory",
 DeclareAttribute( "MatrixCategory",
                   IsFieldForHomalg );
 
+# provide a constructor which is not an attribute
+DeclareGlobalFunction( "MATRIX_CATEGORY" );
+
 DeclareGlobalFunction( "INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY" );
 
 ####################################
