@@ -10,7 +10,7 @@
 ##
 ###########################
 
-AddWithGivenDerivationPairToCAP( MorphismFromKernelObjectToSink,
+AddDerivationToCAP( MorphismFromKernelObjectToSink,
         
   function( cat, alpha )
     local K;
@@ -36,7 +36,7 @@ AddWithGivenDerivationPairToCAP( KernelLift,
 end : Description := "KernelLift using LiftAlongMonomorphism and KernelEmbedding" );
 
 ##
-AddWithGivenDerivationPairToCAP( MorphismFromSourceToCokernelObject,
+AddDerivationToCAP( MorphismFromSourceToCokernelObject,
         
   function( cat, alpha )
     local C;
@@ -275,7 +275,7 @@ end : CategoryFilter := IsAdditiveCategory,
       Description := "UniversalMorphismIntoZeroObject computing the zero morphism" );
 
 ##
-AddWithGivenDerivationPairToCAP( ProjectionInFactorOfFiberProduct,
+AddDerivationToCAP( ProjectionInFactorOfFiberProduct,
         
   function( cat, diagram, projection_number )
     local D, diagram_of_equalizer, iota;
@@ -293,7 +293,7 @@ AddWithGivenDerivationPairToCAP( ProjectionInFactorOfFiberProduct,
   end : Description := "ProjectionInFactorOfFiberProduct by composing the embedding of equalizer with the direct product projection" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismIntoFiberProduct,
+AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
         
   function( cat, diagram, tau )
     local D, diagram_of_equalizer, chi, psi;
@@ -313,7 +313,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoFiberProduct,
   end : Description := "UniversalMorphismIntoFiberProduct as the universal morphism into equalizer of a univeral morphism into direct product" );
 
 ##
-AddWithGivenDerivationPairToCAP( ProjectionInFactorOfFiberProduct,
+AddDerivationToCAP( ProjectionInFactorOfFiberProduct,
                       
   function( cat, diagram, projection_number )
     local embedding_in_direct_sum, direct_sum_diagram, projection;
@@ -329,7 +329,7 @@ AddWithGivenDerivationPairToCAP( ProjectionInFactorOfFiberProduct,
   end : Description := "ProjectionInFactorOfFiberProduct by composing the direct sum embedding with the direct sum projection" );
 
 ##
-AddWithGivenDerivationPairToCAP( MorphismFromFiberProductToSink,
+AddDerivationToCAP( MorphismFromFiberProductToSink,
         
   function( cat, diagram )
     local pi_1;
@@ -341,7 +341,7 @@ AddWithGivenDerivationPairToCAP( MorphismFromFiberProductToSink,
   end : Description := "MorphismFromFiberProductToSink by composing the first projection with the first morphism in the diagram" );
 
 ##
-AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfPushout,
+AddDerivationToCAP( InjectionOfCofactorOfPushout,
         
   function( cat, diagram, injection_number )
     local D, diagram_of_coequalizer, pi;
@@ -359,7 +359,7 @@ AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfPushout,
   end : Description := "InjectionOfCofactorOfPushout by composing the coproduct injection with the projection onto coequalizer" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismFromPushout,
+AddDerivationToCAP( UniversalMorphismFromPushout,
         
   function( cat, diagram, tau )
     local D, diagram_of_coequalizer, chi, psi;
@@ -379,7 +379,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromPushout,
   end : Description := "UniversalMorphismFromPushout as the universal morphism from coequalizer of a univeral morphism from coproduct" );
 
 ##
-AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfPushout,
+AddDerivationToCAP( InjectionOfCofactorOfPushout,
                                          
   function( cat, diagram, injection_number )
     local projection_from_direct_sum, direct_sum_diagram, injection;
@@ -395,7 +395,7 @@ AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfPushout,
   end : Description := "InjectionOfCofactorOfPushout by composing the direct sum injection with the direct sum projection to the pushout" );
 
 ##
-AddWithGivenDerivationPairToCAP( MorphismFromSourceToPushout,
+AddDerivationToCAP( MorphismFromSourceToPushout,
   
   function( cat, diagram )
     local iota_1;
@@ -407,7 +407,7 @@ AddWithGivenDerivationPairToCAP( MorphismFromSourceToPushout,
   end : Description := "MorphismFromSourceToPushout by composing the first morphism in the diagram with the first injection" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismFromZeroObject,
+AddDerivationToCAP( UniversalMorphismFromZeroObject,
                   
   function( cat, obj )
     local category;
@@ -420,7 +420,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromZeroObject,
   end : Description := "UniversalMorphismFromZeroObject using UniversalMorphismFromInitialObject" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismIntoZeroObject,
+AddDerivationToCAP( UniversalMorphismIntoZeroObject,
                   
   function( cat, obj )
     local category;
@@ -432,7 +432,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoZeroObject,
   end : Description := "UniversalMorphismIntoZeroObject using UniversalMorphismIntoTerminalObject" );
 
 ##
-AddWithGivenDerivationPairToCAP( ProjectionInFactorOfDirectSum,
+AddDerivationToCAP( ProjectionInFactorOfDirectSum,
                 
   function( cat, diagram, projection_number )
     
@@ -442,7 +442,7 @@ AddWithGivenDerivationPairToCAP( ProjectionInFactorOfDirectSum,
   end : Description := "ProjectionInFactorOfDirectSum using ProjectionInFactorOfDirectProduct" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismIntoDirectSum,
+AddDerivationToCAP( UniversalMorphismIntoDirectSum,
                     
   function( cat, diagram, source )
     
@@ -451,7 +451,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoDirectSum,
   end : Description := "UniversalMorphismIntoDirectSum using UniversalMorphismIntoDirectProduct" );
 
 ##
-AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfDirectSum,
+AddDerivationToCAP( InjectionOfCofactorOfDirectSum,
                     
   function( cat, diagram, injection_number )
     
@@ -460,7 +460,7 @@ AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfDirectSum,
   end : Description := "InjectionOfCofactorOfDirectSum using InjectionOfCofactorOfCoproduct" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismFromDirectSum,
+AddDerivationToCAP( UniversalMorphismFromDirectSum,
                     
   function( cat, diagram, sink )
     
@@ -469,7 +469,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromDirectSum,
   end : Description := "UniversalMorphismFromDirectSum using UniversalMorphismFromCoproduct" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismIntoTerminalObject,
+AddDerivationToCAP( UniversalMorphismIntoTerminalObject,
   
   function( cat, obj )
     local category;
@@ -482,7 +482,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoTerminalObject,
   end : Description := "UniversalMorphismFromInitialObject using UniversalMorphismFromZeroObject" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismFromInitialObject,
+AddDerivationToCAP( UniversalMorphismFromInitialObject,
   
   function( cat, obj )
     local category;
@@ -495,7 +495,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromInitialObject,
   end : Description := "UniversalMorphismFromInitialObject using UniversalMorphismFromZeroObject" );
 
 ##
-AddWithGivenDerivationPairToCAP( ProjectionInFactorOfDirectProduct,
+AddDerivationToCAP( ProjectionInFactorOfDirectProduct,
   
   function( cat, diagram, projection_number )
     
@@ -504,7 +504,7 @@ AddWithGivenDerivationPairToCAP( ProjectionInFactorOfDirectProduct,
   end : Description := "ProjectionInFactorOfDirectProduct using ProjectionInFactorOfDirectSum" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismIntoDirectProduct,
+AddDerivationToCAP( UniversalMorphismIntoDirectProduct,
                     
   function( cat, diagram, source )
     
@@ -514,7 +514,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoDirectProduct,
   end : Description := "UniversalMorphismIntoDirectProduct using UniversalMorphismIntoDirectSum" );
 
 ##
-AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfCoproduct,
+AddDerivationToCAP( InjectionOfCofactorOfCoproduct,
                       
   function( cat, diagram, injection_number )
     
@@ -523,7 +523,7 @@ AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfCoproduct,
   end : Description := "InjectionOfCofactorOfCoproduct using InjectionOfCofactorOfDirectSum" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismFromCoproduct,
+AddDerivationToCAP( UniversalMorphismFromCoproduct,
                     
   function( cat, diagram, sink )
     
@@ -532,7 +532,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromCoproduct,
   end : Description := "UniversalMorphismFromCoproduct using UniversalMorphismFromDirectSum" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismIntoFiberProduct,
+AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
                                        
   function( cat, diagram, source )
     local test_function, direct_sum_diagonal_difference, kernel_lift;
@@ -551,7 +551,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoFiberProduct,
   end : Description := "UniversalMorphismIntoFiberProduct using the universality of the kernel representation of the pullback" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismFromPushout,
+AddDerivationToCAP( UniversalMorphismFromPushout,
                             
   function( cat, diagram, sink )
     local test_function, direct_sum_codiagonal_difference, cokernel_colift;
@@ -568,7 +568,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromPushout,
   end : Description := "UniversalMorphismFromPushout using the universality of the cokernel representation of the pushout" );
 
 ##
-AddWithGivenDerivationPairToCAP( ImageEmbedding,
+AddDerivationToCAP( ImageEmbedding,
                       
   function( cat, mor )
     local image_embedding;
@@ -583,7 +583,7 @@ AddWithGivenDerivationPairToCAP( ImageEmbedding,
 );
 
 ##
-AddWithGivenDerivationPairToCAP( CoimageProjection,
+AddDerivationToCAP( CoimageProjection,
   
   function( cat, mor )
     local coimage_projection;
@@ -597,7 +597,7 @@ end : CategoryFilter := IsAbelianCategory, ##FIXME: PreAbelian?
       Description := "CoimageProjection as the cokernel projection of the kernel embedding" );
 
 ##
-AddWithGivenDerivationPairToCAP( CoimageProjection,
+AddDerivationToCAP( CoimageProjection,
   
   function( cat, mor )
     local iso;
@@ -714,7 +714,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoCoimage,
 end : Description := "UniversalMorphismIntoCoimage using CoimageProjection and ColiftAlongEpimorphism" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismIntoCoimage,
+AddDerivationToCAP( UniversalMorphismIntoCoimage,
   
   function( cat, morphism, test_factorization )
     local induced_mor;
@@ -740,7 +740,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoEqualizer,
 end : Description := "UniversalMorphismIntoEqualizer using LiftAlongMonomorphism and EmbeddingOfEqualizer" );
 
 ##
-AddWithGivenDerivationPairToCAP( MorphismFromEqualizerToSink,
+AddDerivationToCAP( MorphismFromEqualizerToSink,
         
   function( cat, diagram )
     local iota;
@@ -766,7 +766,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromCoequalizer,
 end : Description := "UniversalMorphismFromCoequalizer using ColiftAlongEpimorphism and ProjectionOntoCoequalizer" );
 
 ##
-AddWithGivenDerivationPairToCAP( MorphismFromSourceToCoequalizer,
+AddDerivationToCAP( MorphismFromSourceToCoequalizer,
   
   function( cat, diagram )
     local pi;
