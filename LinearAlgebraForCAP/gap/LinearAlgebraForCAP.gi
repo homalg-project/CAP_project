@@ -283,7 +283,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       
       function( cat, object )
         
-        return VectorSpaceMorphism( object, HomalgIdentityMatrix( Dimension( object ), homalg_field ), object );
+        return VectorSpaceMorphism( cat, object, HomalgIdentityMatrix( Dimension( object ), homalg_field ), object );
         
     end );
     
@@ -296,7 +296,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
             
             composition := UnderlyingMatrix( morphism_1 ) * UnderlyingMatrix( morphism_2 );
             
-            return VectorSpaceMorphism( Source( morphism_1 ), composition, Range( morphism_2 ) );
+            return VectorSpaceMorphism( cat, Source( morphism_1 ), composition, Range( morphism_2 ) );
             
           end, [ ] ],
         
@@ -314,7 +314,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         [ function( cat, left_morphism, zero_morphism )
             
-            return VectorSpaceMorphism( Source( left_morphism ),
+            return VectorSpaceMorphism( cat, Source( left_morphism ),
                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( left_morphism ) ), NrColumns( UnderlyingMatrix( zero_morphism ) ), homalg_field ),
                                         Range( zero_morphism ) );
           
@@ -322,7 +322,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         [ function( cat, zero_morphism, right_morphism )
             
-            return VectorSpaceMorphism( Source( zero_morphism ),
+            return VectorSpaceMorphism( cat, Source( zero_morphism ),
                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ), NrColumns( UnderlyingMatrix( right_morphism ) ), homalg_field ),
                                         Range( right_morphism ) );
           
@@ -344,7 +344,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddAdditionForMorphisms( category,
       function( cat, morphism_1, morphism_2 )
         
-        return VectorSpaceMorphism( Source( morphism_1 ),
+        return VectorSpaceMorphism( cat, Source( morphism_1 ),
                                     UnderlyingMatrix( morphism_1 ) + UnderlyingMatrix( morphism_2 ),
                                     Range( morphism_2 ) );
         
@@ -354,7 +354,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddAdditiveInverseForMorphisms( category,
       function( cat, morphism )
         
-        return VectorSpaceMorphism( Source( morphism ),
+        return VectorSpaceMorphism( cat, Source( morphism ),
                                     (-1) * UnderlyingMatrix( morphism ),
                                     Range( morphism ) );
         
@@ -364,7 +364,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddZeroMorphism( category,
       function( cat, source, range )
         
-        return VectorSpaceMorphism( source,
+        return VectorSpaceMorphism( cat, source,
                                     HomalgZeroMatrix( Dimension( source ), Dimension( range ), homalg_field ),
                                     range );
         
@@ -383,7 +383,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( cat, sink, zero_object )
         local morphism;
         
-        morphism := VectorSpaceMorphism( sink, HomalgZeroMatrix( Dimension( sink ), 0, homalg_field ), zero_object );
+        morphism := VectorSpaceMorphism( cat, sink, HomalgZeroMatrix( Dimension( sink ), 0, homalg_field ), zero_object );
         
         return morphism;
         
@@ -394,7 +394,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( cat, source, zero_object )
         local morphism;
         
-        morphism := VectorSpaceMorphism( zero_object, HomalgZeroMatrix( 0, Dimension( source ), homalg_field ), source );
+        morphism := VectorSpaceMorphism( cat, zero_object, HomalgZeroMatrix( 0, Dimension( source ), homalg_field ), source );
         
         return morphism;
         
@@ -415,7 +415,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddDirectSumFunctorialWithGivenDirectSums( category,
       function( cat, direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
         
-        return VectorSpaceMorphism( direct_sum_source,
+        return VectorSpaceMorphism( cat, direct_sum_source,
                                     DiagMat( homalg_field, List( diagram, mor -> UnderlyingMatrix( mor ) ) ),
                                     direct_sum_range );
         
@@ -439,7 +439,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
                                              HomalgZeroMatrix( dim_post, dim_factor, homalg_field )
                                            );
         
-        return VectorSpaceMorphism( direct_sum_object, projection_in_factor, object_list[ projection_number ] );
+        return VectorSpaceMorphism( cat, direct_sum_object, projection_in_factor, object_list[ projection_number ] );
         
     end );
     
@@ -450,7 +450,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         underlying_matrix_of_universal_morphism := UnionOfColumns( homalg_field, Dimension( test_object ), List( sink, s -> UnderlyingMatrix( s ) ) );
 
-        return VectorSpaceMorphism( test_object, underlying_matrix_of_universal_morphism, direct_sum );
+        return VectorSpaceMorphism( cat, test_object, underlying_matrix_of_universal_morphism, direct_sum );
       
     end );
     
@@ -472,7 +472,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
                                                  HomalgZeroMatrix( dim_cofactor, dim_post, homalg_field )
                                                );
         
-        return VectorSpaceMorphism( object_list[ injection_number ], injection_of_cofactor, coproduct );
+        return VectorSpaceMorphism( cat, object_list[ injection_number ], injection_of_cofactor, coproduct );
 
     end );
     
@@ -483,7 +483,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         underlying_matrix_of_universal_morphism := UnionOfRows( homalg_field, Dimension( test_object ), List( sink, s -> UnderlyingMatrix( s ) ) );
         
-        return VectorSpaceMorphism( coproduct, underlying_matrix_of_universal_morphism, test_object );
+        return VectorSpaceMorphism( cat, coproduct, underlying_matrix_of_universal_morphism, test_object );
         
     end );
     
@@ -496,7 +496,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         stop := (start - 1) + Dimension( summands[nr] );
         
-        return VectorSpaceMorphism( Source( morphism ),
+        return VectorSpaceMorphism( cat, Source( morphism ),
                                     CertainColumns( UnderlyingMatrix( morphism ), [ start .. stop ] ),
                                     summands[ nr ] );
         
@@ -511,7 +511,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         stop := (start - 1) + Dimension( summands[nr] );
         
-        return VectorSpaceMorphism( summands[nr],
+        return VectorSpaceMorphism( cat, summands[nr],
                                     CertainRows( UnderlyingMatrix( morphism ), [ start .. stop ] ),
                                     Range( morphism ) );
         
@@ -526,7 +526,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         underlying_matrix := List( [ 1 .. Length( underlying_matrix ) ], i -> UnionOfColumns( homalg_field, Dimension( diagram_S[i] ), underlying_matrix[i] ) );
         
-        return VectorSpaceMorphism( S, UnionOfRows( homalg_field, Dimension( T ), underlying_matrix ), T );
+        return VectorSpaceMorphism( cat, S, UnionOfRows( homalg_field, Dimension( T ), underlying_matrix ), T );
         
     end );
     
@@ -534,7 +534,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
       function( cat, ring_element, morphism )
         
-        return VectorSpaceMorphism( Source( morphism ),
+        return VectorSpaceMorphism( cat, Source( morphism ),
                                     ring_element * UnderlyingMatrix( morphism ),
                                     Range( morphism ) );
         
@@ -561,7 +561,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         kernel_object := MatrixCategoryObject( cat, NrRows( kernel_emb ) );
         
-        return VectorSpaceMorphism( kernel_object, kernel_emb, Source( morphism ) );
+        return VectorSpaceMorphism( cat, kernel_object, kernel_emb, Source( morphism ) );
         
     end );
     
@@ -572,7 +572,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         right_divide := RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
         
-        return VectorSpaceMorphism( Source( alpha ),
+        return VectorSpaceMorphism( cat, Source( alpha ),
                                     right_divide,
                                     Source( beta ) );
         
@@ -591,7 +591,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
           
         fi;
         
-        return VectorSpaceMorphism( Source( alpha ),
+        return VectorSpaceMorphism( cat, Source( alpha ),
                                     right_divide,
                                     Source( beta ) );
         
@@ -625,7 +625,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         cokernel_obj := MatrixCategoryObject( cat, NrColumns( cokernel_proj ) );
         
-        return VectorSpaceMorphism( Range( morphism ), cokernel_proj, cokernel_obj );
+        return VectorSpaceMorphism( cat, Range( morphism ), cokernel_proj, cokernel_obj );
         
     end );
     
@@ -636,7 +636,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         left_divide := LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
         
-        return VectorSpaceMorphism( Range( alpha ),
+        return VectorSpaceMorphism( cat, Range( alpha ),
                                     left_divide,
                                     Range( beta ) );
         
@@ -655,7 +655,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
           
         fi;
         
-        return VectorSpaceMorphism( Range( alpha ),
+        return VectorSpaceMorphism( cat, Range( alpha ),
                                     left_divide,
                                     Range( beta ) );
         
@@ -739,7 +739,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       
       function( cat, new_source, morphism_1, morphism_2, new_range )
         
-        return VectorSpaceMorphism( new_source,
+        return VectorSpaceMorphism( cat, new_source,
                                     KroneckerMat( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) ),
                                     new_range );
         
@@ -770,7 +770,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
                                 dim 
                               );
         
-        return VectorSpaceMorphism( object_1_tensored_object_2,
+        return VectorSpaceMorphism( cat, object_1_tensored_object_2,
                                     HomalgMatrix( permutation_matrix, dim, dim, homalg_field ),
                                     object_2_tensored_object_1
                                   );
@@ -784,7 +784,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddDualOnMorphismsWithGivenDuals( category,
       function( cat, dual_source, morphism, dual_range )
         
-        return VectorSpaceMorphism( dual_source,
+        return VectorSpaceMorphism( cat, dual_source,
                                     TransposedMatrix( UnderlyingMatrix( morphism ) ),
                                     dual_range );
         
@@ -815,7 +815,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
           
         fi;
         
-        return VectorSpaceMorphism( tensor_object,
+        return VectorSpaceMorphism( cat, tensor_object,
                                     HomalgMatrix( column, Dimension( tensor_object ), 1, homalg_field ),
                                     unit );
         
@@ -847,7 +847,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
           
         fi;
         
-        return VectorSpaceMorphism( unit,
+        return VectorSpaceMorphism( cat, unit,
                                     HomalgMatrix( row, 1, Dimension( tensor_object ), homalg_field ),
                                     tensor_object );
         
@@ -857,7 +857,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddMorphismToBidualWithGivenBidual( category,
       function( cat, object, bidual_of_object )
         
-        return VectorSpaceMorphism( object,
+        return VectorSpaceMorphism( cat, object,
                                     HomalgIdentityMatrix( Dimension( object ), homalg_field ),
                                     bidual_of_object
                                   );
@@ -878,7 +878,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
       function( cat, hom_source, alpha, beta, hom_range )
         
-        return VectorSpaceMorphism( 
+        return VectorSpaceMorphism( cat, 
           hom_source,
           KroneckerMat( TransposedMatrix( UnderlyingMatrix( alpha ) ), UnderlyingMatrix( beta ) ),
           hom_range
@@ -903,7 +903,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         new_matrix := ConvertMatrixToRow( matrix );
         
-        return VectorSpaceMorphism(
+        return VectorSpaceMorphism( cat,
           MatrixCategoryObject( cat, 1 ),
           new_matrix,
           MatrixCategoryObject( cat, NrColumns( new_matrix ) )
@@ -924,7 +924,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         new_matrix := ConvertRowToMatrix( matrix, m, n );
         
-        return VectorSpaceMorphism(
+        return VectorSpaceMorphism( cat,
           source,
           new_matrix,
           range
@@ -995,7 +995,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         matrices := List( [ 1 .. s * t ], i -> ConvertRowToMatrix( CertainRows( identity, [ i ] ), s, t ) );
         
-        return List( matrices, mat -> VectorSpaceMorphism( S, mat, T ) );
+        return List( matrices, mat -> VectorSpaceMorphism( cat, S, mat, T ) );
         
     end );
     

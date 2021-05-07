@@ -48,12 +48,23 @@ InstallMethod( VectorSpaceMorphism,
 end );
 
 ##
-InstallMethodForCompilerForCAP( VectorSpaceMorphism,
-                                [ IsVectorSpaceObject, IsHomalgMatrix, IsVectorSpaceObject ],
-                                
+# convenience
+InstallMethod( VectorSpaceMorphism,
+               [ IsVectorSpaceObject, IsHomalgMatrix, IsVectorSpaceObject ],
+               
   function( source, homalg_matrix, range )
     
-    return MorphismConstructor( CapCategory( source ), source, homalg_matrix, range );
+    return VectorSpaceMorphism( CapCategory( source ), source, homalg_matrix, range );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( VectorSpaceMorphism,
+                                     [ IsMatrixCategory, IsVectorSpaceObject, IsHomalgMatrix, IsVectorSpaceObject ],
+                                     
+  function( cat, source, homalg_matrix, range )
+    
+    return MorphismConstructor( cat, source, homalg_matrix, range );
     
 end );
 
