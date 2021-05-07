@@ -59,6 +59,70 @@ DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_MORPHISMS" );
 
 ###################################
 ##
+#! @Section Morphism constructors
+##
+###################################
+
+#! @Description
+#! EXPERIMENTAL: This specification might change any time without prior notice.
+#! The arguments are two objects $S$ and $T$ in a category,
+#! and a morphism datum $a$ (type and semantics of the morphism datum depend on the category).
+#! The output is a morphism in $\mathrm{Hom}(S,T)$ defined by $a$.
+#! @Returns a morphism in $\mathrm{Hom}(S,T)$
+#! @Arguments S, a, T
+DeclareOperation( "MorphismConstructor",
+                  [ IsCapCategoryObject, IsObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>MorphismConstructor</C>.
+#! $F: S, a, T \mapsto \mathtt{MorphismConstructor}( S, a, T )$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismConstructor",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismConstructor",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismConstructor",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismConstructor",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! EXPERIMENTAL: This specification might change any time without prior notice.
+#! The argument is a CAP category morphism <A>mor</A>.
+#! The output is a datum which can be used to construct <A>mor</A>, that is,
+#! `IsEqualForMorphisms( `<A>mor</A>`, MorphismConstructor( Source( `<A>mor</A>` ), MorphismDatum( `<A>mor</A>` ), Range( `<A>mor</A>` ) ) )`.
+#! @Returns depends on the category
+#! @Arguments mor
+DeclareAttribute( "MorphismDatum",
+                  IsCapCategoryMorphism );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>MorphismDatum</C>.
+#! $F: mor \mapsto \mathtt{MorphismDatum}( mor )$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismDatum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismDatum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismDatum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismDatum",
+                  [ IsCapCategory, IsList ] );
+
+###################################
+##
 #! @Section Categorical Properties of Morphisms
 ##
 ###################################

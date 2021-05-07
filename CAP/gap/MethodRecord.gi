@@ -20,6 +20,26 @@ InstallValue( CAP_INTERNAL_VALID_RETURN_TYPES,
 );
 
 InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD, rec(
+ObjectConstructor := rec(
+  filter_list := [ "category", IsObject ],
+  return_type := "object",
+),
+
+ObjectDatum := rec(
+  filter_list := [ "category", "object" ],
+  return_type := IsObject,
+),
+
+MorphismConstructor := rec(
+  filter_list := [ "category", "object", IsObject, "object" ],
+  return_type := "morphism",
+),
+
+MorphismDatum := rec(
+  filter_list := [ "category", "morphism" ],
+  return_type := IsObject,
+),
+
 LiftAlongMonomorphism := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "iota", "tau" ], [ "tau_source", "iota_source" ] ],
