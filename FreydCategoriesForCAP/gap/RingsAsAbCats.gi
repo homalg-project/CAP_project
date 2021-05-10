@@ -21,6 +21,14 @@ InstallMethod( RingAsCategory,
     
     category := CreateCapCategory( Concatenation( "Ring as category( ", String( ring )," )" ) );
     
+    category!.category_as_first_argument := true;
+    
+    category!.compiler_hints := rec(
+        category_attribute_names := [
+            "UnderlyingRing",
+        ],
+    );
+    
     SetFilterObj( category, IsRingAsCategory );
     
     SetUnderlyingRing( category, ring );
@@ -146,7 +154,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
     ##
     AddIsEqualForObjects( category, ReturnTrue );
     
-    equality_func := {alpha, beta} -> UnderlyingRingElement( alpha ) = UnderlyingRingElement( beta );
+    equality_func := {cat, alpha, beta} -> UnderlyingRingElement( alpha ) = UnderlyingRingElement( beta );
     
     ##
     AddIsEqualForMorphisms( category, equality_func );
@@ -155,11 +163,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
     AddIsCongruentForMorphisms( category, equality_func );
     
     ##
-    AddIsWellDefinedForObjects( category, x -> IsIdenticalObj( category, CapCategory( x ) ) );
+    AddIsWellDefinedForObjects( category, {cat, x} -> IsIdenticalObj( category, CapCategory( x ) ) );
     
     ##
     AddIsWellDefinedForMorphisms( category,
-      function( alpha )
+      function( cat, alpha )
         
         return UnderlyingRingElement( alpha ) in UnderlyingRing( category );
         
@@ -167,7 +175,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
     
     ##
     AddPreCompose( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         
         return RingAsCategoryMorphism(
             category,
@@ -178,7 +186,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
     
     ##
     AddIdentityMorphism( category,
-      function( unique_object )
+      function( cat, unique_object )
         
         return RingAsCategoryMorphism(
             category,
@@ -189,7 +197,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
     
     ##
     AddIsOne( category,
-      function( alpha )
+      function( cat, alpha )
         
         return IsOne( UnderlyingRingElement( alpha ) );
         
@@ -197,7 +205,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
     
     ##
     AddZeroMorphism( category,
-      function( a, b )
+      function( cat, a, b )
         
         return RingAsCategoryMorphism(
             category,
@@ -208,7 +216,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
     
     ##
     AddIsZeroForMorphisms( category,
-      function( alpha )
+      function( cat, alpha )
         
         return IsZero( UnderlyingRingElement( alpha ) );
         
@@ -216,7 +224,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
     
     ##
     AddAdditionForMorphisms( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         
         return RingAsCategoryMorphism(
             category,
@@ -227,7 +235,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
     
     ##
     AddAdditiveInverseForMorphisms( category,
-      function( alpha )
+      function( cat, alpha )
         
         return RingAsCategoryMorphism(
             category,
@@ -313,14 +321,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         SetRangeCategoryOfHomomorphismStructure( category, range_category );
         
         ##
-        AddDistinguishedObjectOfHomomorphismStructure( category, {} -> distinguished_object );
+        AddDistinguishedObjectOfHomomorphismStructure( category, {cat} -> distinguished_object );
         
         ##
-        AddHomomorphismStructureOnObjects( category, {a,b} -> ring_as_module );
+        AddHomomorphismStructureOnObjects( category, {cat, a, b} -> ring_as_module );
         
         ##
         AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
-          function( source, alpha, beta, range )
+          function( cat, source, alpha, beta, range )
             local a, b, rows;
             
             a := UnderlyingRingElement( alpha );
@@ -343,7 +351,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         
         ##
         AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
-          function( alpha )
+          function( cat, alpha )
             local decomposition;
             
             decomposition := interpret_element_as_row_vector( UnderlyingRingElement( alpha ) );
@@ -354,7 +362,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         
         ##
         AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
-          function( a, b, mor )
+          function( cat, a, b, mor )
             local element;
             
             element := EntriesOfHomalgMatrix( Pullback( ring_inclusion, UnderlyingMatrix( mor ) ) * generating_system_as_column )[1];
