@@ -272,7 +272,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
             
         fi;
         
-    else
+    elif Length( jit_args ) = tree.narg and not tree.variadic then
         
         result := CapJitGetFunctionCallArgumentsFromJitArgs( tree, path, jit_args );
         
@@ -355,6 +355,10 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
             fi;
 
         fi;
+        
+    else
+        
+        Info( InfoCapJit, 1, "Not enough JIT arguments for getting the function via `ApplicableMethod`." );
         
     fi;
     

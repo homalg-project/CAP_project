@@ -118,7 +118,9 @@ You can increase the info level of `InfoCapJit` to get information about the com
 
 Use <Ref Func="CapJitCompiledFunction" /> to compile a function `func` with JIT arguments `jit_args`.
 `jit_args` should represent a "generic" call, i.e., they should not run into edge cases which do not happen with a "generic" call.
-Still, the execution using `jit_args` should be fast to improve compilation times.
+Still, the execution using `jit_args` should be fast to improve compilation times. If `func` gets a CAP category as the first
+argument and you want to compile `func` ahead of time, you can use the CAP category as the first and only entry of `jit_args`.
+In this case, the CAP category is used to get the type information required to resolve CAP operations.
 
 @Section FAQ
 

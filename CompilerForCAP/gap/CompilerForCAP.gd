@@ -27,7 +27,11 @@ DeclareInfoClass( "InfoCapJit" );
 
 #! @Description
 #!   Returns a compiled version of the function <A>func</A>.
-#!   The arguments <A>jit_args</A> are used to infer the types of variables.
+#!   The list of arguments <A>jit_args</A> is used to infer the types of variables.
+#!   If <A>jit_args</A> is shorter than the number of arguments accepted by <A>func</A>,
+#!   all steps which require knowledge about the types of variables are skipped.
+#!   If the first entry of <A>jit_args</A> is a CAP category, this category is used to get the type
+#!   information required to resolve CAP operations.
 #! @Returns a function
 #! @Arguments func, jit_args
 DeclareGlobalFunction( "CapJitCompiledFunction" );

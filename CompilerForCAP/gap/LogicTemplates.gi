@@ -691,6 +691,17 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, a
                     
                 fi;
                 
+                if Length( jit_args ) <> tree.narg or tree.variadic then
+                    
+                    Info( InfoCapJit, 1, "####" );
+                    Info( InfoCapJit, 1, "Logic template has variable filters but we are executing without jit args (or function is variadic)." );
+                    
+                    match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
+                    
+                    break;
+                    
+                fi;
+                
                 result := CapJitGetExpressionValueFromJitArgs( tree, variable_path, jit_args );
 
                 if result[1] = false then
