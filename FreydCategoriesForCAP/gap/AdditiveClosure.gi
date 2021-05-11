@@ -974,8 +974,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
         fi;
         
+        # legacy
         if ForAll( [ "MorphismBetweenDirectSumsWithGivenDirectSums" ], f -> CanCompute( range_category, f ) )
-           and  ForAll( [ "HomomorphismStructureOnMorphismsWithGivenObjects" ], f -> CanCompute( underlying_category, f ) ) then
+           and  ForAll( [ "HomomorphismStructureOnMorphismsWithGivenObjects" ], f -> CanCompute( underlying_category, f ) )
+           and not (IsBound( range_category!.supports_empty_limits ) and range_category!.supports_empty_limits = true) then
             
             ##
             AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
@@ -1008,6 +1010,73 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                             )
                           )
                         ) );
+                
+            end );
+            
+        fi;
+        
+        if ForAll( [ "MorphismBetweenDirectSumsWithGivenDirectSums" ], f -> CanCompute( range_category, f ) )
+           and ForAll( [ "HomomorphismStructureOnMorphismsWithGivenObjects" ], f -> CanCompute( underlying_category, f ) )
+           and IsBound( range_category!.supports_empty_limits ) and range_category!.supports_empty_limits = true then
+            
+            ##
+            AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
+              function( cat, source, alpha, beta, range )
+                local size_i, size_j, size_s, size_t, A, B, C, D, H_B_C, H_A_D, source_direct_sums, range_direct_sums;
+                
+                size_i := NrRows( alpha );
+                
+                size_j := NrCols( alpha );
+                
+                size_s := NrRows( beta );
+                
+                size_t := NrCols( beta );
+                
+                A := Source( alpha );
+                B := Range( alpha );
+                C := Source( beta );
+                D := Range( beta );
+                
+                H_B_C :=
+                    List( [ 1 .. size_j ], j ->
+                        List( [ 1 .. size_s ], s ->
+                            HomomorphismStructureOnObjects( UnderlyingCategory( cat ), B[j], C[s] )
+                        )
+                    );
+                
+                H_A_D :=
+                    List( [ 1 .. size_i ], i ->
+                        List( [ 1 .. size_t ], t ->
+                            HomomorphismStructureOnObjects( UnderlyingCategory( cat ), A[i], D[t] )
+                        )
+                    );
+                
+                source_direct_sums := List( [ 1 .. size_j ], j -> DirectSum( range_category, List( [ 1 .. size_s ], s -> H_B_C[j, s] ) ) );
+                range_direct_sums := List( [ 1 .. size_i ], i -> DirectSum( range_category, List( [ 1 .. size_t ], t -> H_A_D[i, t] ) ) );
+                
+                return MorphismBetweenDirectSumsWithGivenDirectSums(
+                    range_category,
+                    source,
+                    source_direct_sums,
+                    List( [ 1 .. size_j ], j ->
+                        List( [ 1 .. size_i ], i ->
+                            MorphismBetweenDirectSumsWithGivenDirectSums(
+                                range_category,
+                                source_direct_sums[j],
+                                List( [ 1 .. size_s ], s -> H_B_C[j, s] ),
+                                List( [ 1 .. size_s ], s ->
+                                    List( [ 1 .. size_t ], t ->
+                                        HomomorphismStructureOnMorphismsWithGivenObjects( UnderlyingCategory( cat ), H_B_C[j, s], alpha[i, j], beta[s, t], H_A_D[i, t] )
+                                    )
+                                ),
+                                List( [ 1 .. size_t ], t -> H_A_D[i, t] ),
+                                range_direct_sums[i]
+                            )
+                        )
+                    ),
+                    range_direct_sums,
+                    range
+                );
                 
             end );
             
