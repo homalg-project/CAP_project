@@ -288,6 +288,24 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func, args... )
                 
             fi;
             
+            # replace EXPR_ELM_MAT by call to MatElm
+            if tree.type = "EXPR_ELM_MAT" then
+                
+                tree := rec(
+                    type := "EXPR_FUNCCALL",
+                    funcref := rec(
+                        type := "EXPR_REF_GVAR",
+                        gvar := "MatElm",
+                    ),
+                    args := [
+                        tree.list,
+                        tree.row,
+                        tree.col,
+                    ],
+                );
+                
+            fi;
+            
         fi;
 
         return tree;

@@ -48,12 +48,6 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
             return tree.funcref.gvar in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) or IsOperation( ValueGlobal( tree.funcref.gvar ) );
             
         fi;
-
-        if tree.type = "EXPR_ELM_MAT" then
-            
-            return true;
-            
-        fi;
         
         return false;
         
@@ -69,59 +63,13 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
     
     record := CapJitGetNodeByPath( tree, path );
     
-    if record.type = "EXPR_FUNCCALL" then
-        
-        operation := ValueGlobal( record.funcref.gvar );
-
-        funccall_args := record.args;
-        
-        result := CapJitGetFunctionCallArgumentsFromJitArgs( tree, path, jit_args );
-        
-        funccall_does_not_return_fail := IsBound( record.funcref.does_not_return_fail ) and record.funcref.does_not_return_fail = true;
-        
-    elif record.type = "EXPR_ELM_MAT" then
-        
-        operation := \[\,\];
-
-        funccall_args := [ record.list, record.row, record.col ];
-        
-        # get values of "list", "row" and "col"
-        
-        arguments := [ ];
-        
-        result := CapJitGetExpressionValueFromJitArgs( tree, Concatenation( path, [ "list" ] ), jit_args );
-        
-        if result[1] <> false then
-            
-            arguments[1] := result[2];
-            
-            result := CapJitGetExpressionValueFromJitArgs( tree, Concatenation( path, [ "row" ] ), jit_args );
-            
-            if result[1] <> false then
-                
-                arguments[2] := result[2];
-                
-                result := CapJitGetExpressionValueFromJitArgs( tree, Concatenation( path, [ "col" ] ), jit_args );
-                
-                if result[1] <> false then
-                    
-                    arguments[3] := result[2];
-                    
-                    result := [ true, arguments ];
-                    
-                fi;
-                
-            fi;
-            
-        fi;
-        
-        funccall_does_not_return_fail := false;
-        
-    else
-        
-        Error( "this should never happen" );
-        
-    fi;
+    operation := ValueGlobal( record.funcref.gvar );
+    
+    funccall_args := record.args;
+    
+    result := CapJitGetFunctionCallArgumentsFromJitArgs( tree, path, jit_args );
+    
+    funccall_does_not_return_fail := IsBound( record.funcref.does_not_return_fail ) and record.funcref.does_not_return_fail = true;
     
     operation_name := NameFunction( operation );
     
