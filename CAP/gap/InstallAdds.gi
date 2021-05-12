@@ -41,8 +41,8 @@ InstallGlobalFunction( CapInternalInstallAdd,
   
   function( record )
     local function_name, install_name, add_name, pre_function, pre_function_full,
-          redirect_function, post_function, filter_list, caching,
-          cache_name, nr_arguments, add_function, replaced_filter_list,
+          redirect_function, post_function, filter_list,
+          add_function, replaced_filter_list,
           enhanced_filter_list, get_convenience_function;
     
     function_name := record.function_name;
@@ -84,14 +84,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
     fi;
     
     filter_list := record.filter_list;
-    
-    if IsBound( record.cache_name ) then
-        caching := true;
-        cache_name := record.cache_name;
-        nr_arguments := Length( filter_list );
-    else
-        caching := false;
-    fi;
     
     if record.return_type = "object" then
         add_function := AddObject;
@@ -171,7 +163,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                    [ IsCapCategory, IsList, IsInt ],
       
       function( category, method_list, weight )
-        local install_func, replaced_filter_list, install_method, popper, needs_wrapping, i, set_primitive, is_derivation, is_final_derivation, without_given_name, with_given_name,
+        local install_func, replaced_filter_list, needs_wrapping, i, set_primitive, is_derivation, is_final_derivation, without_given_name, with_given_name,
               without_given_weight, with_given_weight, number_of_proposed_arguments, current_function_number,
               current_function_argument_number, current_additional_filter_list_length, filter, input_human_readable_identifier_getter, input_sanity_check_functions,
               output_human_readable_identifier_getter, output_sanity_check_function, cap_jit_compiled_function;
@@ -245,15 +237,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
         fi;
         
         replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list, category );
-        
-        if caching = true then
-            install_method := InstallMethodWithCache;
-            PushOptions( rec( Cache := GET_METHOD_CACHE( category, cache_name, nr_arguments )  ) );
-            popper := true;
-        else
-            install_method := InstallMethod;
-            popper := false;
-        fi;
         
         ## Nr arguments sanity check
         
@@ -470,7 +453,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 
             elif category!.overhead then
             
-                install_method( ValueGlobal( install_name ),
+                InstallMethodWithCache( ValueGlobal( install_name ),
                                 new_filter_list,
                                 
                   function( arg )
@@ -535,7 +518,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     
                     return result;
                     
-                end );
+                end : Cache := GET_METHOD_CACHE( category, function_name, Length( filter_list ) ) );
             
             else #category!.overhead = false
                 
@@ -573,10 +556,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
             install_func( i[ 1 ], i[ 2 ] );
         od;
         
-        if popper then
-            PopOptions();
-        fi;
-        
         if set_primitive then
             AddPrimitiveOperation( category!.derivations_weight_list, function_name, weight );
             
@@ -585,8 +564,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
             fi;
             
         fi;
-        
-        
         
     end );
     
