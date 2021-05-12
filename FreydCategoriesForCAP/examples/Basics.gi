@@ -74,6 +74,8 @@ id := IdentityMorphism( ZFree );;
 z := id + id;;
 CokernelProjection( z );;
 CokernelColift( z, CokernelProjection( z ) );;
+UniversalMorphismFromZeroObjectWithGivenZeroObject( obj_gamma, ZeroObject( freyd ) );;
+(2 / R) * f;;
 
 S := HomalgFieldOfRationalsInSingular() * "x,y,z";;
 Rows_S := CategoryOfRows( S );;
