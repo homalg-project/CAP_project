@@ -7,7 +7,7 @@
 ## Derivations for basic operations with existing WithGiven
 
 ##
-AddWithGivenDerivationPairToCAP( ProjectionInSecondFactorOfWeakBiFiberProduct,
+AddDerivationToCAP( ProjectionInSecondFactorOfWeakBiFiberProduct,
                     
   function( cat, alpha, beta )
     local first_projection;
@@ -20,7 +20,7 @@ AddWithGivenDerivationPairToCAP( ProjectionInSecondFactorOfWeakBiFiberProduct,
 end : Description := "ProjectionInSecondFactorOfWeakBiFiberProduct using ProjectionInFirstFactorOfWeakBiFiberProduct and Lift" );
 
 ##
-AddWithGivenDerivationPairToCAP( ProjectionInFirstFactorOfWeakBiFiberProduct,
+AddDerivationToCAP( ProjectionInFirstFactorOfWeakBiFiberProduct,
                     
   function( cat, alpha, beta )
     local second_projection;
@@ -33,7 +33,7 @@ AddWithGivenDerivationPairToCAP( ProjectionInFirstFactorOfWeakBiFiberProduct,
 end : Description := "ProjectionInFirstFactorOfWeakBiFiberProduct using ProjectionInSecondFactorOfWeakBiFiberProduct and Lift" );
 
 ##
-AddWithGivenDerivationPairToCAP( InjectionOfSecondCofactorOfWeakBiPushout,
+AddDerivationToCAP( InjectionOfSecondCofactorOfWeakBiPushout,
                     
   function( cat, alpha, beta )
     local first_injection;
@@ -46,7 +46,7 @@ AddWithGivenDerivationPairToCAP( InjectionOfSecondCofactorOfWeakBiPushout,
 end : Description := "InjectionOfSecondCofactorOfWeakBiPushout using InjectionOfFirstCofactorOfWeakBiPushout and Colift" );
 
 ##
-AddWithGivenDerivationPairToCAP( InjectionOfFirstCofactorOfWeakBiPushout,
+AddDerivationToCAP( InjectionOfFirstCofactorOfWeakBiPushout,
                     
   function( cat, alpha, beta )
     local second_injection;
@@ -59,7 +59,7 @@ AddWithGivenDerivationPairToCAP( InjectionOfFirstCofactorOfWeakBiPushout,
 end : Description := "InjectionOfFirstCofactorOfWeakBiPushout using InjectionOfSecondCofactorOfWeakBiPushout and Colift" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismIntoWeakBiFiberProduct,
+AddDerivationToCAP( UniversalMorphismIntoWeakBiFiberProduct,
                                  
   function( cat, alpha, beta, test_mor_1, test_mor_2 )
     local projection_1, projection_2;
@@ -75,7 +75,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoWeakBiFiberProduct,
 end : Description := "UniversalMorphismIntoWeakBiFiberProduct using Lift" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismIntoBiasedWeakFiberProduct,
+AddDerivationToCAP( UniversalMorphismIntoBiasedWeakFiberProduct,
                                  
   function( cat, alpha, beta, test_mor )
     
@@ -87,7 +87,7 @@ end : Description := "UniversalMorphismIntoBiasedWeakFiberProduct using Lift" );
 
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismFromWeakBiPushout,
+AddDerivationToCAP( UniversalMorphismFromWeakBiPushout,
                                  
   function( cat, alpha, beta, test_mor_1, test_mor_2 )
     local injection_1, injection_2;
@@ -103,7 +103,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromWeakBiPushout,
 end : Description := "UniversalMorphismFromWeakBiPushout using Colift" );
 
 ##
-AddWithGivenDerivationPairToCAP( UniversalMorphismFromBiasedWeakPushout,
+AddDerivationToCAP( UniversalMorphismFromBiasedWeakPushout,
                                  
   function( cat, alpha, beta, test_mor )
     
@@ -114,7 +114,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromBiasedWeakPushout,
 end : Description := "UniversalMorphismFromBiasedWeakPushout using Colift" );
 
 ##
-AddWithGivenDerivationPairToCAP( WeakKernelLift,
+AddDerivationToCAP( WeakKernelLift,
                                  
   function( cat, mor, test_mor )
     
@@ -124,7 +124,7 @@ AddWithGivenDerivationPairToCAP( WeakKernelLift,
 end : Description := "WeakKernelLift as Lift of WeakKernelEmbedding" );
 
 ##
-AddWithGivenDerivationPairToCAP( WeakCokernelColift,
+AddDerivationToCAP( WeakCokernelColift,
                                  
   function( cat, mor, test_mor )
     

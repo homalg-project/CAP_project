@@ -199,7 +199,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
   
   function( opposite_category, category )
     local recnames, current_recname, category_weight_list, dual_name, current_entry, func,
-          current_add, create_func, create_func_with_category_input, morphism_between_direct_sums_func,
+          current_add, create_func, morphism_between_direct_sums_func,
           dual_preprocessor_func, dual_postprocessor_func,
           list_of_attributes, attr, tester, setter, getter;
     
@@ -209,30 +209,17 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
     
     create_func := function( dual_name, dual_preprocessor_func, dual_postprocessor_func )
         
-        return function( arg )
+        return function( opposite_category, arg... )
             local prep_arg, result;
             
             prep_arg := CallFuncList( dual_preprocessor_func, arg );
             
-            result := CallFuncList( ValueGlobal( dual_name ), prep_arg );
+            result := CallFuncList( ValueGlobal( dual_name ), Concatenation( [ category ], prep_arg ) );
             
             return dual_postprocessor_func( result );
             
         end;
         
-    end;
-    
-    create_func_with_category_input := function( dual_name, dual_postprocessor_func )
-      
-      return function()
-            local result;
-            
-            result := CallFuncList( ValueGlobal( dual_name ), [ category ] );
-            
-            return dual_postprocessor_func( result );
-            
-        end;
-      
     end;
     
     for current_recname in recnames do
@@ -297,15 +284,19 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
             
         fi;
         
-        if current_entry.zero_arguments_for_add_method then
+        if current_entry.filter_list[1] <> "category" then
             
-            func := create_func_with_category_input( dual_name, dual_postprocessor_func );
-            
-        else
-            
-            func := create_func( dual_name, dual_preprocessor_func, dual_postprocessor_func );
+            Display( Concatenation(
+                "WARNING: The opposite category cannot deal with operations which do not get the category as the first argument. ",
+                "The installation of ", current_recname, " will be skipped. ",
+                "To get rid of this warning, add \"category\" as the first entry of `filter_list` in the corresponding method record entry. ",
+                "For more information about the implications of doing so, search for `filter_list` in the documentation."
+            ) );
+            continue;
             
         fi;
+        
+        func := create_func( dual_name, dual_preprocessor_func, dual_postprocessor_func );
         
         current_add := ValueGlobal( Concatenation( "Add", current_recname ) );
         
@@ -348,6 +339,8 @@ InstallMethod( Opposite,
     fi;
     
     opposite_category := CreateCapCategory( name );
+    
+    opposite_category!.category_as_first_argument := true;
     
     SetWasCreatedAsOppositeCategory( opposite_category, true );
     

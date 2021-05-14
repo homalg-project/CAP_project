@@ -742,7 +742,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             A := Range( RelationMorphism( Source( alpha ) ) );
             
-            tau_A := PreCompose( sigma, ProjectionInFactorOfDirectSum( [ R_B, A ], 2 ) );
+            tau_A := ComponentOfMorphismIntoDirectSum( sigma, [ R_B, A ], 2 );
             
             return FreydCategoryMorphism( Source( test_morphism ), tau_A, Source( alpha ) );
         
@@ -760,7 +760,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             A := Range( RelationMorphism( Source( alpha ) ) );
             
-            sigma_A := PreCompose( witness, ProjectionInFactorOfDirectSum( [ R_B, A ], 2 ) );
+            sigma_A := ComponentOfMorphismIntoDirectSum( witness, [ R_B, A ], 2 );
             
             return FreydCategoryMorphism( Range( alpha ), PreCompose( sigma_A, MorphismDatum( test_morphism ) ), Range( test_morphism ) );
         

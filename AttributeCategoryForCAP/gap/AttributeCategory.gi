@@ -130,7 +130,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
           direct_sum_attributes_operation, create_function_primitive_type, create_function_object,
           create_function_morphism_no_new_object, create_function_morphism_new_source,
           create_function_morphism_new_range, attributes, recnames, name, func, pos, function_to_add, add_function,
-          create_function_object_no_arguments, create_function_morphism_or_fail, universal_object, entry,
+          create_function_object_no_arguments, create_function_morphism_or_fail, with_given_object_name, entry,
           no_install_list, installed_operations_of_underlying_category;
     
     category_with_attributes := structure_record.category_with_attributes;
@@ -409,19 +409,19 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
                 elif IsBound( entry.universal_type ) then
                     
                     ## TODO: this should be directly accessible in the method record
-                    universal_object := CAP_INTERNAL_METHOD_NAME_RECORD.(entry.with_given_without_given_name_pair[2]).universal_object;
+                    with_given_object_name := CAP_INTERNAL_METHOD_NAME_RECORD.(entry.with_given_without_given_name_pair[2]).with_given_object_name;
                     
-                    if IsBound( structure_record.(universal_object) ) then
+                    if IsBound( structure_record.(with_given_object_name) ) then
                         
-                        if entry.universal_object_position = "Source" then
+                        if entry.with_given_object_position = "Source" then
                             
-                            function_to_add := create_function_morphism_new_source( name, structure_record.(universal_object) );
+                            function_to_add := create_function_morphism_new_source( name, structure_record.(with_given_object_name) );
                             
                             add_function( category_with_attributes, function_to_add );
                             
-                        elif entry.universal_object_position = "Range" then
+                        elif entry.with_given_object_position = "Range" then
                             
-                            function_to_add := create_function_morphism_new_range( name, structure_record.(universal_object) );
+                            function_to_add := create_function_morphism_new_range( name, structure_record.(with_given_object_name) );
                             
                             add_function( category_with_attributes, function_to_add );
                             

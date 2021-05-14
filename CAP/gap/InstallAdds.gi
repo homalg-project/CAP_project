@@ -200,7 +200,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
             weight := 100;
         fi;
         
-        if not is_derivation and record.with_given_without_given_name_pair <> fail then
+        if record.with_given_without_given_name_pair <> fail then
             
             without_given_name := record.with_given_without_given_name_pair[ 1 ];
             with_given_name := record.with_given_without_given_name_pair[ 2 ];
@@ -569,7 +569,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
     
 end );
 
-BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without_given_name, with_given_name, object_name, object_arguments )
+BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without_given_name, with_given_name, object_name, object_arguments_positions )
     
     AddDerivationToCAP( ValueGlobal( with_given_name ),
                         [ [ ValueGlobal( without_given_name ), 1 ] ],
@@ -585,14 +585,14 @@ BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without
       function( arg )
         
         return CallFuncList( ValueGlobal( with_given_name ),
-                                    Concatenation( arg, [ CallFuncList( ValueGlobal( object_name ), arg{object_arguments} ) ] ) );
+                                    Concatenation( arg, [ CallFuncList( ValueGlobal( object_name ), arg{object_arguments_positions} ) ] ) );
         
     end : Description := Concatenation( without_given_name, " by calling ", with_given_name, " with ", object_name, " as last argument" ) );
     
 end );
 
 BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATIONS", function( record )
-  local recnames, current_recname, current_rec, without_given_name, with_given_name, object_name, object_arguments;
+  local recnames, current_recname, current_rec, without_given_name, with_given_name, object_name, object_arguments_positions;
     
     recnames := RecNames( record );
     
@@ -604,9 +604,8 @@ BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATIONS", function( record )
             
             without_given_name := current_rec.with_given_without_given_name_pair[1];
             with_given_name := current_rec.with_given_without_given_name_pair[2];
-            object_name := current_rec.universal_object;
-            # first argument is the category
-            object_arguments := [ 1 .. current_rec.number_of_diagram_arguments + 1 ];
+            object_name := current_rec.with_given_object_name;
+            object_arguments_positions := record.( without_given_name ).object_arguments_positions;
             
             if record.( without_given_name ).filter_list[1] <> "category" or record.( object_name ).filter_list[1] <> "category" or record.( with_given_name ).filter_list[1] <> "category" then
                 
@@ -627,7 +626,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATIONS", function( record )
                 
             else
                 
-                CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR( without_given_name, with_given_name, object_name, object_arguments );
+                CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR( without_given_name, with_given_name, object_name, object_arguments_positions );
                 
             fi;
             

@@ -144,7 +144,7 @@ function( d, weight, C )
       fi;
       
       add_method := ValueGlobal( add_name );
-      add_method( C, implementation_list, 1 : SetPrimitive := false, IsDerivation := true ); ##The third argument is ignored
+      add_method( C, implementation_list, weight : SetPrimitive := false, IsDerivation := true );
       
 #   fi;
   
@@ -494,23 +494,18 @@ InstallGlobalFunction( AddWithGivenDerivationPairToCAP,
     test_arg := arg[ Length( arg ) - 1 ];
     
     if Length( arg ) = 2 or ( not IsFunction( test_arg ) and not ( IsList( test_arg ) and IsList( test_arg[ 1 ] ) ) ) then
-        ## need to fill function
         
-        func_arg := arg[ Length( arg ) ];
+        Print(
+          Concatenation(
+          "WARNING: AddWithGivenDerivationPairToCAP with a single function is deprecated and will not be supported after 2022.05.06. ",
+          "Please use AddDerivationToCAP instead and make sure that suitable WithGiven derivations are installed.\n"
+          )
+        );
         
-        if IsFunction( func_arg ) then
-            
-            func_arg := CAP_INTERNAL_CREATE_WITH_GIVEN_FUNCTION_BY_REDUCTION( func_arg );
-            
-            Add( arg, func_arg );
-            
-        elif IsList( func_arg ) then
-            
-            func_arg := List( func_arg, i -> [ CAP_INTERNAL_CREATE_WITH_GIVEN_FUNCTION_BY_REDUCTION( i[ 1 ] ), i[ 2 ] ] );
-            
-            Add( arg, func_arg );
-            
-        fi;
+        # we only get one function -> leave the other for the usual WithGiven derivation
+        CallFuncList( AddDerivationToCAP, arg );
+        
+        return;
         
     fi;
     
