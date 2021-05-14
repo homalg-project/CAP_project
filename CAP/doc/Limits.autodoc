@@ -67,6 +67,5 @@ The number of unbound objects, unbound morphisms and (non-)targets is expressed 
 
 * 2: else
 
-@Section Validating entries of a method name record which are part of a limit or colimit
+@Section Functions
 
-The function CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD takes a method name record and a list of enhanced limits, and validates the entries of the method name record. Prefunctions, full prefunctions and postfunctions are excluded from the validation.
