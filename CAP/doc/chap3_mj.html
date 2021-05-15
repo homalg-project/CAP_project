@@ -171,8 +171,8 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X864F84C47DC1A620">3.12 <span class="Heading">Inverses</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X821E92017C3D63D4">3.12-1 Inverse</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7A6B4970823DDAE6">3.12-2 AddInverse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8371BF227B4C32EF">3.12-1 InverseForMorphisms</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X865C7A1781F3AEF7">3.12-2 AddInverseForMorphisms</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7DD668627932185C">3.13 <span class="Heading">Tool functions for caches</span></a>
 </span>
@@ -1232,23 +1232,23 @@
 
 <p>Let <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span> be a morphism. An inverse of <span class="SimpleMath">\(\alpha\)</span> is a morphism <span class="SimpleMath">\(\alpha^{-1}: b \rightarrow a\)</span> such that <span class="SimpleMath">\(\alpha \circ \alpha^{-1} \sim_{b,b} \mathrm{id}_b\)</span> and <span class="SimpleMath">\(\alpha^{-1} \circ \alpha \sim_{a,a} \mathrm{id}_a\)</span>.</p>
 
-<p><a id="X821E92017C3D63D4" name="X821E92017C3D63D4"></a></p>
+<p><a id="X8371BF227B4C32EF" name="X8371BF227B4C32EF"></a></p>
 
-<h5>3.12-1 Inverse</h5>
+<h5>3.12-1 InverseForMorphisms</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Inverse</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InverseForMorphisms</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="SimpleMath">\(\mathrm{Hom}(b,a)\)</span></p>
 
 <p>The argument is an isomorphism <span class="SimpleMath">\(\alpha: a \rightarrow b\)</span>. The output is its inverse <span class="SimpleMath">\(\alpha^{-1}: b \rightarrow a\)</span>.</p>
 
-<p><a id="X7A6B4970823DDAE6" name="X7A6B4970823DDAE6"></a></p>
+<p><a id="X865C7A1781F3AEF7" name="X865C7A1781F3AEF7"></a></p>
 
-<h5>3.12-2 AddInverse</h5>
+<h5>3.12-2 AddInverseForMorphisms</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInverse</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddInverseForMorphisms</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">Inverse</code>. <span class="SimpleMath">\(F: \alpha \mapsto \alpha^{-1}\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">InverseForMorphisms</code>. <span class="SimpleMath">\(F: \alpha \mapsto \alpha^{-1}\)</span>.</p>
 
 <p><a id="X7DD668627932185C" name="X7DD668627932185C"></a></p>
 

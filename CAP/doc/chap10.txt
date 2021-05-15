@@ -131,11 +131,24 @@
   [30X    [33X[0;6Y2: else[133X
   
   
-  [1X10.3 [33X[0;0YValidating entries of a method name record which are part of a limit or[101X
-  [1Xcolimit[133X[101X
+  [1X10.3 [33X[0;0YFunctions[133X[101X
   
-  [33X[0;0YThe function CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD takes a method name
-  record  and  a  list  of  enhanced  limits, and validates the entries of the
-  method  name  record.  Prefunctions, full prefunctions and postfunctions are
-  excluded from the validation.[133X
+  [1X10.3-1 CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS[101X
+  
+  [33X[1;0Y[29X[2XCAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS[102X( [3Xpackage_name[103X, [3Xmethod_name_record[103X, [3Xlimits[103X ) [32X function[133X
+  
+  [33X[0;0YThis  function  takes  a  package  name,  a method name record and a list of
+  enhanced  limits,  and  generates  convenience  methods  for the limits as a
+  string  of  GAP  code.  The  result  is  compared to the content of the file
+  [3Xpackage_name[103X[10X/gap/LimitConvenienceOutput.gi[110X.  If  a  difference  is  found, a
+  warning  is  raised  and the generated string is written to a temporary file
+  for manual inspection.[133X
+  
+  [1X10.3-2 CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD[101X
+  
+  [33X[1;0Y[29X[2XCAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD[102X( [3Xmethod_name_record[103X, [3Xlimits[103X ) [32X function[133X
+  
+  [33X[0;0YThis  function takes a method name record and a list of enhanced limits, and
+  validates  the  entries  of  the  method  name  record.  Prefunctions,  full
+  prefunctions and postfunctions are excluded from the validation.[133X
   

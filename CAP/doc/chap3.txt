@@ -999,22 +999,22 @@
   \sim_{b,b}   \mathrm{id}_b[123X   and   [23X\alpha^{-1}   \circ   \alpha   \sim_{a,a}
   \mathrm{id}_a[123X.[133X
   
-  [1X3.12-1 Inverse[101X
+  [1X3.12-1 InverseForMorphisms[101X
   
-  [33X[1;0Y[29X[2XInverse[102X( [3Xalpha[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XInverseForMorphisms[102X( [3Xalpha[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(b,a)[123X[133X
   
   [33X[0;0YThe  argument  is  an isomorphism [23X\alpha: a \rightarrow b[123X. The output is its
   inverse [23X\alpha^{-1}: b \rightarrow a[123X.[133X
   
-  [1X3.12-2 AddInverse[101X
+  [1X3.12-2 AddInverseForMorphisms[101X
   
-  [33X[1;0Y[29X[2XAddInverse[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddInverseForMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given  function [23XF[123X to the category for the basic operation [10XInverse[110X. [23XF: \alpha
-  \mapsto \alpha^{-1}[123X.[133X
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XInverseForMorphisms[110X. [23XF: \alpha \mapsto \alpha^{-1}[123X.[133X
   
   
   [1X3.13 [33X[0;0YTool functions for caches[133X[101X

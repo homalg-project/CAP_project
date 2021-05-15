@@ -220,10 +220,6 @@
         Please  note  that  true only makes sense if at least one argument and
         the output of the installed method is a cell.[133X
   
-  [30X    [33X[0;6Ycache_name  (optional):  The  name  of the cache which is used for the
-        installed  methods.  If  no  cache  name is given, the caching for the
-        operation is deactivated completely.[133X
-  
   [30X    [33X[0;6Yreturn_type:  The  return  type  can  either be a filter or one of the
         strings  in  the  list  below.  For objects, morphisms and [23X2[123X-cells the
         correct  [10XAdd[110X  function  (see  above)  is  used  for  the result of the
@@ -255,10 +251,6 @@
         function,  e.g.,  KernelObject and KernelObjectFunctorial, the name of
         the functorial is stored as a string.[133X
   
-  [30X    [33X[0;6Ynumber_of_diagram_arguments:  Specifies  how  many  of  the  arguments
-        (counting from the first argument) of the function specify the diagram
-        of the universal object.[133X
-  
   [30X    [33X[0;6Ydual_arguments_reversed:  Boolean,  marks  whether for the call of the
         dual operation all arguments have to be given in reversed order.[133X
   
@@ -284,9 +276,6 @@
   
   [33X[0;0YThe  function  CAP_INTERNAL_ENHANCE_NAME_RECORD  can  be applied to a method
   name record to make the following enhancements:[133X
-  
-  [30X    [33X[0;6YCache   check:   If   there   is   no   cache_name,   set  it  to  the
-        installation_name.[133X
   
   [30X    [33X[0;6YFunction name: Set the component function_name to the entry name.[133X
   

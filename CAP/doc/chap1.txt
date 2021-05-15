@@ -128,7 +128,23 @@
   [33X[0;0YThe argument is a category [23XC[123X. The output is a filter in which all [23X2[123X-cells of
   [23XC[123X shall lie.[133X
   
-  [1X1.3-6 CommutativeRingOfLinearCategory[101X
+  [1X1.3-6 ObjectType[101X
+  
+  [33X[1;0Y[29X[2XObjectType[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya GAP type[133X
+  
+  [33X[0;0YThe  argument  is  a category [23XC[123X. The output is the GAP type of objects of [23XC[123X.
+  Only available after calling [10XAddObjectRepresentation[110X.[133X
+  
+  [1X1.3-7 MorphismType[101X
+  
+  [33X[1;0Y[29X[2XMorphismType[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya GAP type[133X
+  
+  [33X[0;0YThe  argument is a category [23XC[123X. The output is the GAP type of morphisms of [23XC[123X.
+  Only available after calling [10XAddMorphismRepresentation[110X.[133X
+  
+  [1X1.3-8 CommutativeRingOfLinearCategory[101X
   
   [33X[1;0Y[29X[2XCommutativeRingOfLinearCategory[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya ring[133X

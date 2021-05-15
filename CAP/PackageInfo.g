@@ -21,12 +21,12 @@ Version := Maximum( [
   ## this line prevents merge conflicts
   "2020.04-16", ## Sepp's version
   ## this line prevents merge conflicts
-  "2021.03-01", ## Fabian's version
+  "2021.05-01", ## Fabian's version
   ## this line prevents merge conflicts
   "2020.08-01", ## Kamal's version
 ] ),
 
-Date := "12/04/2021",
+Date := "15/05/2021",
 License := "GPL-2.0-or-later",
 
 
@@ -114,7 +114,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.9.1",
   NeededOtherPackages := [ [ "AutoDoc", ">= 2016.02.16" ],
-                           [ "ToolsForHomalg", ">= 2018.05.22" ],
+                           [ "ToolsForHomalg", ">= 2021.03-01" ],
                            [ "io", ">=0" ],
   ],
   SuggestedOtherPackages := [ [ "Browse", ">=0" ],
@@ -127,8 +127,5 @@ Dependencies := rec(
 AvailabilityTest := function()
         return true;
     end,
-
-Autoload := false,
-
 
 ));

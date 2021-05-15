@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2021.03-01
+                                   2021.05-01
   
   
-                                 12 April 2021
+                                  15 May 2021
   
   
                                Sebastian Gutsche
@@ -72,7 +72,9 @@
       1.3-3 ObjectFilter
       1.3-4 MorphismFilter
       1.3-5 TwoCellFilter
-      1.3-6 CommutativeRingOfLinearCategory
+      1.3-6 ObjectType
+      1.3-7 MorphismType
+      1.3-8 CommutativeRingOfLinearCategory
     1.4 [33X[0;0YLogic switcher[133X
       1.4-1 CapCategorySwitchLogicPropagationForObjectsOn
       1.4-2 CapCategorySwitchLogicPropagationForObjectsOff
@@ -276,8 +278,8 @@
       3.11-15 IsColiftable
       3.11-16 AddIsColiftable
     3.12 [33X[0;0YInverses[133X
-      3.12-1 Inverse
-      3.12-2 AddInverse
+      3.12-1 InverseForMorphisms
+      3.12-2 AddInverseForMorphisms
     3.13 [33X[0;0YTool functions for caches[133X
       3.13-1 IsEqualForCacheForMorphisms
       3.13-2 AddIsEqualForCacheForMorphisms
@@ -446,12 +448,12 @@
     6.3 [33X[0;0YZero Object[133X
       6.3-1 ZeroObject
       6.3-2 ZeroObject
-      6.3-3 MorphismFromZeroObject
-      6.3-4 MorphismIntoZeroObject
-      6.3-5 UniversalMorphismFromZeroObject
-      6.3-6 UniversalMorphismFromZeroObjectWithGivenZeroObject
-      6.3-7 UniversalMorphismIntoZeroObject
-      6.3-8 UniversalMorphismIntoZeroObjectWithGivenZeroObject
+      6.3-3 UniversalMorphismFromZeroObject
+      6.3-4 UniversalMorphismFromZeroObjectWithGivenZeroObject
+      6.3-5 UniversalMorphismIntoZeroObject
+      6.3-6 UniversalMorphismIntoZeroObjectWithGivenZeroObject
+      6.3-7 MorphismFromZeroObject
+      6.3-8 MorphismIntoZeroObject
       6.3-9 IsomorphismFromZeroObjectToInitialObject
       6.3-10 IsomorphismFromInitialObjectToZeroObject
       6.3-11 IsomorphismFromZeroObjectToTerminalObject
@@ -488,68 +490,67 @@
       6.5-8 InitialObjectFunctorial
       6.5-9 AddInitialObjectFunctorial
     6.6 [33X[0;0YDirect Sum[133X
-      6.6-1 DirectSumOp
-      6.6-2 ProjectionInFactorOfDirectSum
-      6.6-3 ProjectionInFactorOfDirectSumWithGivenDirectSum
-      6.6-4 InjectionOfCofactorOfDirectSum
-      6.6-5 InjectionOfCofactorOfDirectSumWithGivenDirectSum
-      6.6-6 UniversalMorphismIntoDirectSum
-      6.6-7 UniversalMorphismIntoDirectSumOp
+      6.6-1 DirectSum
+      6.6-2 DirectSumOp
+      6.6-3 ProjectionInFactorOfDirectSum
+      6.6-4 ProjectionInFactorOfDirectSumWithGivenDirectSum
+      6.6-5 InjectionOfCofactorOfDirectSum
+      6.6-6 InjectionOfCofactorOfDirectSumWithGivenDirectSum
+      6.6-7 UniversalMorphismIntoDirectSum
       6.6-8 UniversalMorphismIntoDirectSumWithGivenDirectSum
       6.6-9 UniversalMorphismFromDirectSum
-      6.6-10 UniversalMorphismFromDirectSumOp
-      6.6-11 UniversalMorphismFromDirectSumWithGivenDirectSum
-      6.6-12 IsomorphismFromDirectSumToDirectProduct
-      6.6-13 IsomorphismFromDirectProductToDirectSum
-      6.6-14 IsomorphismFromDirectSumToCoproduct
-      6.6-15 IsomorphismFromCoproductToDirectSum
+      6.6-10 UniversalMorphismFromDirectSumWithGivenDirectSum
+      6.6-11 IsomorphismFromDirectSumToDirectProduct
+      6.6-12 IsomorphismFromDirectProductToDirectSum
+      6.6-13 IsomorphismFromDirectSumToCoproduct
+      6.6-14 IsomorphismFromCoproductToDirectSum
+      6.6-15 MorphismBetweenDirectSums
       6.6-16 MorphismBetweenDirectSums
-      6.6-17 AddMorphismBetweenDirectSums
-      6.6-18 MorphismBetweenDirectSumsOp
-      6.6-19 ComponentOfMorphismIntoDirectSum
-      6.6-20 ComponentOfMorphismFromDirectSum
-      6.6-21 AddComponentOfMorphismIntoDirectSum
-      6.6-22 AddComponentOfMorphismFromDirectSum
-      6.6-23 AddProjectionInFactorOfDirectSum
-      6.6-24 AddProjectionInFactorOfDirectSumWithGivenDirectSum
-      6.6-25 AddInjectionOfCofactorOfDirectSum
-      6.6-26 AddInjectionOfCofactorOfDirectSumWithGivenDirectSum
-      6.6-27 AddUniversalMorphismIntoDirectSum
-      6.6-28 AddUniversalMorphismIntoDirectSumWithGivenDirectSum
-      6.6-29 AddUniversalMorphismFromDirectSum
-      6.6-30 AddUniversalMorphismFromDirectSumWithGivenDirectSum
-      6.6-31 AddIsomorphismFromDirectSumToDirectProduct
-      6.6-32 AddIsomorphismFromDirectProductToDirectSum
-      6.6-33 AddIsomorphismFromDirectSumToCoproduct
-      6.6-34 AddIsomorphismFromCoproductToDirectSum
-      6.6-35 AddDirectSum
-      6.6-36 DirectSumFunctorial
-      6.6-37 DirectSumFunctorialWithGivenDirectSums
-      6.6-38 AddDirectSumFunctorialWithGivenDirectSums
+      6.6-17 MorphismBetweenDirectSumsWithGivenDirectSums
+      6.6-18 AddMorphismBetweenDirectSumsWithGivenDirectSums
+      6.6-19 MorphismBetweenDirectSums
+      6.6-20 ComponentOfMorphismIntoDirectSum
+      6.6-21 ComponentOfMorphismFromDirectSum
+      6.6-22 AddComponentOfMorphismIntoDirectSum
+      6.6-23 AddComponentOfMorphismFromDirectSum
+      6.6-24 AddProjectionInFactorOfDirectSum
+      6.6-25 AddProjectionInFactorOfDirectSumWithGivenDirectSum
+      6.6-26 AddInjectionOfCofactorOfDirectSum
+      6.6-27 AddInjectionOfCofactorOfDirectSumWithGivenDirectSum
+      6.6-28 AddUniversalMorphismIntoDirectSum
+      6.6-29 AddUniversalMorphismIntoDirectSumWithGivenDirectSum
+      6.6-30 AddUniversalMorphismFromDirectSum
+      6.6-31 AddUniversalMorphismFromDirectSumWithGivenDirectSum
+      6.6-32 AddIsomorphismFromDirectSumToDirectProduct
+      6.6-33 AddIsomorphismFromDirectProductToDirectSum
+      6.6-34 AddIsomorphismFromDirectSumToCoproduct
+      6.6-35 AddIsomorphismFromCoproductToDirectSum
+      6.6-36 AddDirectSum
+      6.6-37 DirectSumFunctorial
+      6.6-38 DirectSumFunctorialWithGivenDirectSums
+      6.6-39 AddDirectSumFunctorialWithGivenDirectSums
     6.7 [33X[0;0YCoproduct[133X
       6.7-1 Coproduct
       6.7-2 Coproduct
       6.7-3 Coproduct
-      6.7-4 CoproductOp
-      6.7-5 InjectionOfCofactorOfCoproduct
-      6.7-6 InjectionOfCofactorOfCoproductWithGivenCoproduct
-      6.7-7 UniversalMorphismFromCoproduct
-      6.7-8 UniversalMorphismFromCoproductOp
-      6.7-9 UniversalMorphismFromCoproductWithGivenCoproduct
-      6.7-10 AddCoproduct
-      6.7-11 AddInjectionOfCofactorOfCoproduct
-      6.7-12 AddInjectionOfCofactorOfCoproductWithGivenCoproduct
-      6.7-13 AddUniversalMorphismFromCoproduct
-      6.7-14 AddUniversalMorphismFromCoproductWithGivenCoproduct
-      6.7-15 CoproductFunctorial
-      6.7-16 CoproductFunctorialWithGivenCoproducts
-      6.7-17 AddCoproductFunctorialWithGivenCoproducts
+      6.7-4 InjectionOfCofactorOfCoproduct
+      6.7-5 InjectionOfCofactorOfCoproductWithGivenCoproduct
+      6.7-6 UniversalMorphismFromCoproduct
+      6.7-7 UniversalMorphismFromCoproductWithGivenCoproduct
+      6.7-8 AddCoproduct
+      6.7-9 AddInjectionOfCofactorOfCoproduct
+      6.7-10 AddInjectionOfCofactorOfCoproductWithGivenCoproduct
+      6.7-11 AddUniversalMorphismFromCoproduct
+      6.7-12 AddUniversalMorphismFromCoproductWithGivenCoproduct
+      6.7-13 CoproductFunctorial
+      6.7-14 CoproductFunctorialWithGivenCoproducts
+      6.7-15 AddCoproductFunctorialWithGivenCoproducts
     6.8 [33X[0;0YDirect Product[133X
-      6.8-1 DirectProductOp
-      6.8-2 ProjectionInFactorOfDirectProduct
-      6.8-3 ProjectionInFactorOfDirectProductWithGivenDirectProduct
-      6.8-4 UniversalMorphismIntoDirectProduct
-      6.8-5 UniversalMorphismIntoDirectProductOp
+      6.8-1 DirectProduct
+      6.8-2 DirectProductOp
+      6.8-3 ProjectionInFactorOfDirectProduct
+      6.8-4 ProjectionInFactorOfDirectProductWithGivenDirectProduct
+      6.8-5 UniversalMorphismIntoDirectProduct
       6.8-6 UniversalMorphismIntoDirectProductWithGivenDirectProduct
       6.8-7 AddDirectProduct
       6.8-8 AddProjectionInFactorOfDirectProduct
@@ -644,24 +645,23 @@
       6.12-12 AddDirectSumProjectionInPushout
       6.12-13 Pushout
       6.12-14 Pushout
-      6.12-15 PushoutOp
-      6.12-16 InjectionOfCofactorOfPushout
-      6.12-17 InjectionOfCofactorOfPushoutWithGivenPushout
-      6.12-18 MorphismFromSourceToPushout
-      6.12-19 MorphismFromSourceToPushoutWithGivenPushout
-      6.12-20 UniversalMorphismFromPushout
-      6.12-21 UniversalMorphismFromPushoutOp
-      6.12-22 UniversalMorphismFromPushoutWithGivenPushout
-      6.12-23 AddPushout
-      6.12-24 AddInjectionOfCofactorOfPushout
-      6.12-25 AddInjectionOfCofactorOfPushoutWithGivenPushout
-      6.12-26 AddMorphismFromSourceToPushout
-      6.12-27 AddMorphismFromSourceToPushoutWithGivenPushout
-      6.12-28 AddUniversalMorphismFromPushout
-      6.12-29 AddUniversalMorphismFromPushoutWithGivenPushout
-      6.12-30 PushoutFunctorial
-      6.12-31 PushoutFunctorialWithGivenPushouts
-      6.12-32 AddPushoutFunctorialWithGivenPushouts
+      6.12-15 InjectionOfCofactorOfPushout
+      6.12-16 InjectionOfCofactorOfPushoutWithGivenPushout
+      6.12-17 MorphismFromSourceToPushout
+      6.12-18 MorphismFromSourceToPushoutWithGivenPushout
+      6.12-19 UniversalMorphismFromPushout
+      6.12-20 UniversalMorphismFromPushoutOp
+      6.12-21 UniversalMorphismFromPushoutWithGivenPushout
+      6.12-22 AddPushout
+      6.12-23 AddInjectionOfCofactorOfPushout
+      6.12-24 AddInjectionOfCofactorOfPushoutWithGivenPushout
+      6.12-25 AddMorphismFromSourceToPushout
+      6.12-26 AddMorphismFromSourceToPushoutWithGivenPushout
+      6.12-27 AddUniversalMorphismFromPushout
+      6.12-28 AddUniversalMorphismFromPushoutWithGivenPushout
+      6.12-29 PushoutFunctorial
+      6.12-30 PushoutFunctorialWithGivenPushouts
+      6.12-31 AddPushoutFunctorialWithGivenPushouts
     6.13 [33X[0;0YImage[133X
       6.13-1 IsomorphismFromImageObjectToKernelOfCokernel
       6.13-2 AddIsomorphismFromImageObjectToKernelOfCokernel
@@ -818,8 +818,9 @@
   10 [33X[0;0YLimits and Colimits[133X
     10.1 [33X[0;0YSpecification of Limits and Colimits[133X
     10.2 [33X[0;0YEnhancing Limit Specifications[133X
-    10.3 [33X[0;0YValidating entries of a method name record which are part of a limit
-    or colimit[133X
+    10.3 [33X[0;0YFunctions[133X
+      10.3-1 CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS
+      10.3-2 CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD
   11 [33X[0;0YExamples and Tests[133X
     11.1 [33X[0;0YFunctors[133X
     11.2 [33X[0;0YHomomorphism structure[133X
