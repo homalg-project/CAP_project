@@ -15,10 +15,10 @@ Version := Maximum( [
   ## this line prevents merge conflicts
   "2019.09-02", ## Mohamed's version
   ## this line prevents merge conflicts
-  "2020.10-01", ## Fabian's version
+  "2021.05-01", ## Fabian's version
 ] ),
 
-Date := "19/10/2020",
+Date := "15/05/2021",
 License := "GPL-2.0-or-later",
 
 
@@ -48,7 +48,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/GroupRepresentationsForCAP",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/GroupRepresentationsForCAP",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/GroupRepresentationsForCAP/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/GroupRepresentationsForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-", ~.Version, "/GroupRepresentationsForCAP-", ~.Version ),
@@ -81,7 +81,7 @@ Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "ToolsForHomalg", ">= 2020.09.01" ],
-                           [ "CAP", ">= 2015.08.17" ],
+                           [ "CAP", ">= 2021.05-01" ],
                            [ "LinearAlgebraForCAP", ">=2015.12.03" ],
                            [ "RingsForHomalg", ">=2016.08.12" ],
                            [ "repsn", ">=3.0.2" ] ],

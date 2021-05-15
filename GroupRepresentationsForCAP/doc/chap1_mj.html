@@ -97,9 +97,7 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := DihedralGroup( 8 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ComputeAssociator( G, true, true, false );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">path := Concatenation(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  PackageInfo( "GroupRepresentationsForCAP" )[1].InstallationPath,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  "/examples/doc/D8" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">path := Filename( DirectoryTemporary( ), "D8" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">WriteAssociatorComputationToFiles( path );</span>
 </pre></div>
 

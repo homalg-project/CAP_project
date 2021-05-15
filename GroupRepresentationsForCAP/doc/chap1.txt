@@ -18,9 +18,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XG := DihedralGroup( 8 );;[127X[104X
     [4X[25Xgap>[125X [27XComputeAssociator( G, true, true, false );;[127X[104X
-    [4X[25Xgap>[125X [27Xpath := Concatenation([127X[104X
-    [4X[25X>[125X [27X  PackageInfo( "GroupRepresentationsForCAP" )[1].InstallationPath,[127X[104X
-    [4X[25X>[125X [27X  "/examples/doc/D8" );;[127X[104X
+    [4X[25Xgap>[125X [27Xpath := Filename( DirectoryTemporary( ), "D8" );;[127X[104X
     [4X[25Xgap>[125X [27XWriteAssociatorComputationToFiles( path );[127X[104X
   [4X[32X[104X
   
