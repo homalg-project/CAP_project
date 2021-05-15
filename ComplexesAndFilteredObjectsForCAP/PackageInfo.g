@@ -8,10 +8,10 @@ Version := Maximum( [
 ## this line prevents merge conflicts
   "2015.04-15", ## Sepp's version
 ## this line prevents merge conflicts
-  "2020.10-01", ## Fabian's version
+  "2021.05-01", ## Fabian's version
    ] ),
 
-Date := "19/10/2020",
+Date := "15/05/2021",
 License := "GPL-2.0-or-later",
 
 
@@ -56,7 +56,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/ComplexesAndFilteredObjectsForCAP",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/ComplexesAndFilteredObjectsForCAP",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/ComplexesAndFilteredObjectsForCAP/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/ComplexesAndFilteredObjectsForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ComplexesAndFilteredObjectsForCAP-", ~.Version, "/ComplexesAndFilteredObjectsForCAP-", ~.Version ),
@@ -88,7 +88,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">=2018.08.02" ] ],
+                           [ "CAP", ">= 2021.05-01" ] ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
 ),
