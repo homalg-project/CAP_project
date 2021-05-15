@@ -117,4 +117,6 @@ AvailabilityTest := function()
     end,
 #Keywords := [ "TODO" ],
 
+TestFile := "tst/testall.g",
+
 ));

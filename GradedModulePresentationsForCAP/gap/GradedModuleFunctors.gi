@@ -735,9 +735,9 @@ InstallMethod( PurityFiltrationBySpectralSequence,
         
         eta := Lift( PreCompose( mp_mat, eta_0 ), iota_i );
         
-        kappa := UniversalMorphismIntoDirectSum( mp_mat, eta );
+        kappa := UniversalMorphismIntoDirectSum( [ mp_mat, eta ] );
         
-        rho := UniversalMorphismFromDirectSum( -eta_0, iota_i );
+        rho := UniversalMorphismFromDirectSum( [ -eta_0, iota_i ] );
         
         ## from new to old
         iso := CokernelColift( kappa, rho );

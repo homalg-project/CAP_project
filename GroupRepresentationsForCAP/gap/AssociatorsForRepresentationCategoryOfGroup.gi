@@ -934,7 +934,7 @@ InstallMethod( DiagonalizationTransformationOfBraiding,
     
     kernel_emb_minus_1 := KernelEmbedding( endomorphism + identity_morphism );
     
-    return UniversalMorphismFromDirectSum( kernel_emb_1, kernel_emb_minus_1 );
+    return UniversalMorphismFromDirectSum( [ kernel_emb_1, kernel_emb_minus_1 ] );
     
 end );
 

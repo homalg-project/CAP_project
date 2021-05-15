@@ -11,5 +11,3 @@ Features:
 * do not inline variables but only a reference to them for the logic to use
 * support compilation of operations
 * support assigning a variable multiple times, at least in different if branches
-* handle WithGiven derivations explicitely (Note: The WithGiven derivations use CallFuncList with the second argument
-  being of type EXPR_ELMS_LIST. We do not want to handle this in the resolving phase due to performance concerns.)

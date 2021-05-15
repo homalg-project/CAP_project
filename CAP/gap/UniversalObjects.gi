@@ -143,34 +143,6 @@ InstallMethod( Coproduct,
     
 end );
 
-##
-InstallGlobalFunction( UniversalMorphismFromCoproduct,
-
-  function( arg )
-    local diagram;
-    
-    if IsCapCategory( arg[1] ) then
-        
-        return CallFuncList( UniversalMorphismFromCoproductOp, arg );
-        
-    fi;
-    
-    if Length( arg ) = 2
-       and IsList( arg[1] )
-       and IsList( arg[2] ) then
-       
-       return UniversalMorphismFromCoproductOp( CapCategory( arg[1][1] ), arg[1], arg[2] );
-       
-    elif Length( arg ) = 1 and IsList( arg[ 1 ] ) then
-        arg := arg[ 1 ];
-    fi;
-    
-    diagram := List( arg, Source );
-    
-    return UniversalMorphismFromCoproductOp( CapCategory( diagram[1] ), diagram, arg );
-  
-end );
-
 ####################################
 ##
 ## Direct Product and FiberProduct
@@ -191,35 +163,6 @@ end );
 ####################################
 ## Convenience methods
 ####################################
-
-##
-InstallGlobalFunction( UniversalMorphismIntoDirectProduct,
-
-  function( arg )
-    local diagram;
-    
-    if IsCapCategory( arg[1] ) then
-        
-        return CallFuncList( UniversalMorphismIntoDirectProductOp, arg );
-        
-    fi;
-    
-    if Length( arg ) = 2
-       and IsList( arg[1] )
-       and IsList( arg[2] ) then
-       
-       return UniversalMorphismIntoDirectProductOp( CapCategory( arg[1][1] ), arg[1], arg[2] );
-       
-    elif Length( arg ) = 1 and IsList( arg[ 1 ] ) then
-        arg := arg[ 1 ];
-    fi;
-    
-    ##convenience: UniversalMorphismIntoDirectProduct( test_projection_1, ..., test_projection_k )
-    diagram := List( arg, Range );
-    
-    return UniversalMorphismIntoDirectProductOp( CapCategory( diagram[1] ), diagram, arg );
-  
-end );
 
 ##
 # compatibility with GAP's DirectProduct function
@@ -259,63 +202,6 @@ end );
 ####################################
 ## Convenience methods
 ####################################
-
-##
-InstallGlobalFunction( UniversalMorphismFromDirectSum,
-
-  function( arg )
-    local diagram;
-    
-    if IsCapCategory( arg[1] ) then
-        
-        return CallFuncList( UniversalMorphismFromDirectSumOp, arg );
-        
-    fi;
-    
-    if Length( arg ) = 2
-       and IsList( arg[1] )
-       and IsList( arg[2] ) then
-       
-       return UniversalMorphismFromDirectSumOp( CapCategory( arg[1][1] ), arg[1], arg[2] );
-       
-    elif Length( arg ) = 1 and IsList( arg[ 1 ] ) then
-        arg := arg[ 1 ];
-    fi;
-    
-    diagram := List( arg, Source );
-    
-    return UniversalMorphismFromDirectSumOp( CapCategory( diagram[1] ), diagram, arg );
-  
-end );
-
-##
-InstallGlobalFunction( UniversalMorphismIntoDirectSum,
-               
-  function( arg )
-    local diagram;
-    
-    if IsCapCategory( arg[1] ) then
-        
-        return CallFuncList( UniversalMorphismIntoDirectSumOp, arg );
-        
-    fi;
-    
-    if Length( arg ) = 2
-       and IsList( arg[1] )
-       and IsList( arg[2] ) then
-       
-       return UniversalMorphismIntoDirectSumOp( CapCategory( arg[1][1] ), arg[1], arg[2] );
-       
-    elif Length( arg ) = 1 and IsList( arg[ 1 ] ) then
-        arg := arg[ 1 ];
-    fi;
-    
-    ##convenience: UniversalMorphismIntoDirectSum( test_projection_1, ..., test_projection_k )
-    diagram := List( arg, Range );
-    
-    return UniversalMorphismIntoDirectSumOp( CapCategory( diagram[1] ), diagram, arg );
-    
-end );
 
 ##
 # compatibility with GAP's DirectSum function
@@ -608,6 +494,13 @@ InstallGlobalFunction( UniversalMorphismIntoFiberProduct,
        
     fi;
     
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismIntoFiberProduct( diagram, mor1, mor2, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismIntoFiberProduct( diagram, [ mor1, mor2, ... ] ) instead.\n"
+      )
+    );
+    
     diagram := arg[ 1 ];
     
     source := arg{[ 2 .. Length( arg ) ]};
@@ -688,6 +581,13 @@ InstallGlobalFunction( UniversalMorphismFromPushout,
        return UniversalMorphismFromPushoutOp( CapCategory( arg[1][1] ), arg[1], arg[2] );
        
     fi;
+    
+    Print(
+      Concatenation(
+      "WARNING: UniversalMorphismFromPushout( diagram, mor1, mor2, ... ) is deprecated and will not be supported after 2022.04.15. ",
+      "Please use UniversalMorphismFromPushout( diagram, [ mor1, mor2, ... ] ) instead.\n"
+      )
+    );
     
     diagram := arg[ 1 ];
     
