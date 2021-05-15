@@ -10,11 +10,11 @@ Version := Maximum( [
 ## this line prevents merge conflicts
   "2020.04-29", ## Mohamed's version
 ## this line prevents merge conflicts
-  "2020.10-01", ## Fabian's version
+  "2021.05-01", ## Fabian's version
 ## this line prevents merge conflicts
    ] ),
 
-Date := "19/10/2020",
+Date := "15/05/2021",
 License := "GPL-2.0-or-later",
 
 
@@ -59,7 +59,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/GeneralizedMorphismsForCAP",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-", ~.Version, "/GeneralizedMorphismsForCAP-", ~.Version ),
@@ -91,7 +91,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">= 2019.01.16" ],
+                           [ "CAP", ">= 2021.05-01" ],
                            [ "MonoidalCategories", ">= 2019.01.16" ],
                          ],
   SuggestedOtherPackages := [ ],

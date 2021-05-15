@@ -1,7 +1,7 @@
 name: GeneralizedMorphismsForCAP
-version: "2020.10-01"
+version: "2021.05-01"
 license: "GPL-2.0-or-later"
-date: 2020-10-19
+date: 2021-05-15
 description: |
     Implementations of generalized morphisms for the CAP project
 
@@ -24,23 +24,23 @@ needed-pkgs:
       version: ">= 1.5"
       url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
     - name: "CAP"
-      version: ">= 2019.01.16"
-      url: "https://homalg-project.github.io/CAP_project/CAP"
+      version: ">= 2021.05-01"
+      url: "https://homalg-project.github.io/pkg/CAP"
     - name: "MonoidalCategories"
       version: ">= 2019.01.16"
-      url: "https://homalg-project.github.io/CAP_project/MonoidalCategories"
+      url: "https://homalg-project.github.io/pkg/MonoidalCategories"
 
-www: https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP
+www: https://homalg-project.github.io/pkg/GeneralizedMorphismsForCAP
 readme: README.md
 packageinfo: https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2020.10-01/GeneralizedMorphismsForCAP-2020.10-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2021.05-01/GeneralizedMorphismsForCAP-2021.05-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2020.10-01/GeneralizedMorphismsForCAP-2020.10-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2021.05-01/GeneralizedMorphismsForCAP-2021.05-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2020.10-01/GeneralizedMorphismsForCAP-2020.10-01.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2021.05-01/GeneralizedMorphismsForCAP-2021.05-01.pdf
 
 abstract: |
     <span class="pkgname">GeneralizedMorphismsForCAP</span> provides the category of generalized morphisms associated to an abelian category.
@@ -50,29 +50,29 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>GP20</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
+    [<span class='BibKey'>GP21</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
      <i class='BibTitle'>GeneralizedMorphismsForCAP, Implementations of generalized morphisms for the CAP project,
-             Version 2020.10-01</i>
-     (<span class='BibYear'>2020</span>)<br />
+             Version 2021.05-01</i>
+     (<span class='BibYear'>2021</span>)<br />
     (<span class='BibNote'>GAP package</span>),
-    <span class='BibHowpublished'><a href="https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP">https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP</a></span>.
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/GeneralizedMorphismsForCAP">https://homalg-project.github.io/pkg/GeneralizedMorphismsForCAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ GeneralizedMorphismsForCAP2020.10-01,
+    @misc{ GeneralizedMorphismsForCAP2021.05-01,
       author =           {Gutsche, S. and Posur, S.},
       title =            {{GeneralizedMorphismsForCAP},    Implementations    of
                           generalized  morphisms  for the CAP project, {V}ersion
-                          2020.10-01},
-      month =            {Oct},
-      year =             {2020},
+                          2021.05-01},
+      month =            {May},
+      year =             {2021},
       note =             {GAP package},
       howpublished =     {\href
-                          {https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP}
+                          {https://homalg-project.github.io/pkg/GeneralizedMorphismsForCAP}
                           {\texttt{https://homalg-project.github.io/}\discretionary
-                          {}{}{}\texttt{CAP{\textunderscore}project/}\discretionary
+                          {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{GeneralizedMorphismsForCAP}}},
-      printedkey =       {GP20}
+      printedkey =       {GP21}
     }
 
