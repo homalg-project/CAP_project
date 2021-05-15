@@ -18,7 +18,7 @@ Version := Maximum( [
            ##
            "2019.04-03", # Mohamed's version
            ##
-           "2020.10-01", # Fabian's version
+           "2021.05-01", # Fabian's version
            ##
            ] ),
 
@@ -82,6 +82,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
+                           [ "CAP", ">= 2021.05-01" ],
                            [ "ModulePresentationsForCAP", ">=2019.08.07" ],
                            [ "GradedRingForHomalg", ">=2019.08.07" ],
                            [ "ComplexesAndFilteredObjectsForCAP", ">=2016.09.19" ],
