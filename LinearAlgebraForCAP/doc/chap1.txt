@@ -35,11 +35,11 @@
   
   [1X1.1-4 MatrixCategoryObject[101X
   
-  [33X[1;0Y[29X[2XMatrixCategoryObject[102X( [3XF[103X, [3Xd[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XMatrixCategoryObject[102X( [3Xcat[103X, [3Xd[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
-  [33X[0;0YThe  arguments are a homalg field [23XF[123X and a non-negative integer [23Xd[123X. The output
-  is an object in the category of matrices over [23XF[123X of dimension [23Xd[123X.[133X
+  [33X[0;0YThe  arguments  are  a  matrix  category [23Xcat[123X over a field and a non-negative
+  integer [23Xd[123X. The output is an object in [23Xcat[123X of dimension [23Xd[123X.[133X
   
   
   [1X1.2 [33X[0;0YAttributes[133X[101X
