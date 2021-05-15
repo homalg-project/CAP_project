@@ -37,23 +37,31 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7A502E2F78A33B91">1.4 <span class="Heading">Activating the compiler</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7C1A71BB7DC16DDF">1.5 <span class="Heading">Stopping the compiler at a certain level</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7E61259E7D6E8EEB">1.5 <span class="Heading">Giving hints to the compiler</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7C1A71BB7DC16DDF">1.6 <span class="Heading">Stopping the compiler at a certain level</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X85B3DF4C80406968">1.5-1 StopCompilationAtCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7ECBAF2483705ED2">1.5-2 ContinueCompilationAtCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X85B3DF4C80406968">1.6-1 StopCompilationAtCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7ECBAF2483705ED2">1.6-2 ContinueCompilationAtCategory</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7B946AD083F7CEEA">1.6 <span class="Heading">Getting information about the compilation process</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X8307AD6B823FB122">1.7 <span class="Heading">Precompiling categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8202365E84A044DC">1.6-1 InfoCapJit</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X81627716853DCE40">1.7-1 CapJitPrecompileCategory</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X78F1B59B7DBEF671">1.7 <span class="Heading">Compiling a function manually</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7B946AD083F7CEEA">1.8 <span class="Heading">Getting information about the compilation process</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86F1D06C81670DC8">1.7-1 CapJitCompiledFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8202365E84A044DC">1.8-1 InfoCapJit</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X780099B481AB3AB7">1.8 <span class="Heading">FAQ</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X78F1B59B7DBEF671">1.9 <span class="Heading">Compiling a function manually</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86F1D06C81670DC8">1.9-1 CapJitCompiledFunction</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X780099B481AB3AB7">1.10 <span class="Heading">FAQ</span></a>
 </span>
 </div>
 </div>
@@ -124,8 +132,14 @@
 <li><p>References to global functions are resolved if the function is annotated with the pragma <code class="code">CAP_JIT_RESOLVE_FUNCTION</code>.</p>
 
 </li>
+<li><p>If a call of a global function or operation (occuring as the right hand side of a variable assignment or as the return value of a function) is annotated with the pragma <code class="code">CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL</code>, the compiler assumes that the resolved function never returns <code class="code">fail</code> and thus simply removes any code of the form <code class="code">if condition then return fail; fi;</code> (or similar) from the resolved function. The pragma has to be placed right before the variable assignment or the return statement.</p>
+
+</li>
+<li><p>If a KeyDependentOperation is detected, the corresponding <code class="code">Op</code> method is resolved.</p>
+
+</li>
 </ul>
-<p>For details see <code class="func">CapJitResolvedOperations</code> (<a href="chap2_mj.html#X7D12C378812745DA"><span class="RefLink">2.5-10</span></a>) and <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2_mj.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-9</span></a>). If no operation or global variable can be resolved anymore, we continue with the rule phase.</p>
+<p>For details see <code class="func">CapJitResolvedOperations</code> (<a href="chap2_mj.html#X7D12C378812745DA"><span class="RefLink">2.5-13</span></a>) and <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2_mj.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-12</span></a>). If no operation or global variable can be resolved anymore, we continue with the rule phase.</p>
 
 <p>In the rule phase, the tree is optimized using several rules and techniques. Function arguments, functions, and assignments to local variables are inlined. Unused variables are dropped. Handled edge cases are dropped, that is, if the same edge case is caught multiple times via <code class="code">if condition then return ...; fi;</code> statements, only the first such statement is kept. Finally, "logic" is applied to the tree. For example, calls of <code class="code">CallFuncList</code> are replaced by calls to the actual function. The logic can be extended by the user, see chapter <a href="chap2_mj.html#X7D62EFD07F991E56"><span class="RefLink">2</span></a>.</p>
 
@@ -159,48 +173,104 @@
 
 <p>You can activate the compiler by passing the option <code class="code">enable_compilation</code> to any category constructor. If <code class="code">enable_compilation</code> is set to <code class="code">true</code>, any basic operation will be compiled when called for the first time. If <code class="code">enable_compilation</code> is a list of strings, compilation will only happen if the function name of the basic operation appears in this list.</p>
 
+<p><a id="X7E61259E7D6E8EEB" name="X7E61259E7D6E8EEB"></a></p>
+
+<h4>1.5 <span class="Heading">Giving hints to the compiler</span></h4>
+
+<p>You can give hints to the compiler to improve the result of the compilation. Compiler hints are attached to the category by making <code class="code">category!.compiler_hints</code> a record with one or more of the following keys:</p>
+
+
+<ul>
+<li><p><code class="code">category_attributes_names</code>: a list of names of attributes of the category. If a global variable in the compiled code has the same value as one of the given attributes of the category, the global variable is replaced by the attribute getter applied to the category. Background: During the compilation, the compiler resolves attributes occuring in the code and stores them in global variables called <code class="code">CAP_JIT_INTERNAL_GLOBAL_VARIABLE_n</code> (for integers <code class="code">n</code> starting from 1). If these variables cannot be replaced, the resulting code is only valid in the current session.</p>
+
+</li>
+<li><p><code class="code">source_and_range_attributes_from_morphism_attribute</code>: a record with keys <code class="code">object_attribute_name</code>, <code class="code">morphism_attribute_name</code>, <code class="code">source_attribute_getter_name</code>, and <code class="code">range_attribute_getter_name</code>. Replaces the attribute <code class="code">object_attribute_name</code> of the source (resp. range) of a morphism by <code class="code">source_attribute_getter_name</code> (resp. <code class="code">range_attribute_getter_name</code>) applied to the attribute <code class="code">morphism_attribute_name</code> of the morphism. Can be used if objects and morphisms can be easily created from the morphism datum anyway. Note: Some simple expressions like integers are NOT replaced.</p>
+
+</li>
+</ul>
+<p>Note: The compiler can only discover the hints if the category is the first argument of the function.</p>
+
 <p><a id="X7C1A71BB7DC16DDF" name="X7C1A71BB7DC16DDF"></a></p>
 
-<h4>1.5 <span class="Heading">Stopping the compiler at a certain level</span></h4>
+<h4>1.6 <span class="Heading">Stopping the compiler at a certain level</span></h4>
 
 <p>You can use <code class="code">StopCompilationAtCategory</code> to prevent the compiler from inlining and optimizing code of a given category. You can revert this decision using <code class="code">ContinueCompilationAtCategory</code>.</p>
 
 <p><a id="X85B3DF4C80406968" name="X85B3DF4C80406968"></a></p>
 
-<h5>1.5-1 StopCompilationAtCategory</h5>
+<h5>1.6-1 StopCompilationAtCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; StopCompilationAtCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Stops the compiler from inlining and optimizing code of <var class="Arg">category</var>.</p>
 
 <p><a id="X7ECBAF2483705ED2" name="X7ECBAF2483705ED2"></a></p>
 
-<h5>1.5-2 ContinueCompilationAtCategory</h5>
+<h5>1.6-2 ContinueCompilationAtCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ContinueCompilationAtCategory</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Allows the compiler to inline and optimize code of <var class="Arg">category</var> (this is the default).</p>
 
+<p><a id="X8307AD6B823FB122" name="X8307AD6B823FB122"></a></p>
+
+<h4>1.7 <span class="Heading">Precompiling categories</span></h4>
+
+<p>You can compile categories and store the result in a file for later use.</p>
+
+<p><a id="X81627716853DCE40" name="X81627716853DCE40"></a></p>
+
+<h5>1.7-1 CapJitPrecompileCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitPrecompileCategory</code>( <var class="Arg">category_constructor</var>, <var class="Arg">given_arguments</var>, <var class="Arg">package_name</var>, <var class="Arg">compiled_category_name</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record</p>
+
+<p>Compiles operations of the CAP category returned by the function <var class="Arg">category_constructor</var> applied to <var class="Arg">given_arguments</var>. The result is available via a global function called <var class="Arg">compiled_category_name</var> which is written to the file <var class="Arg">package_name</var><code class="code">/precompiled_categories/</code><var class="Arg">compiled_category_name</var><code class="code">.gi</code>. The global function takes the same arguments as <var class="Arg">category_constructor</var> and returns the category with the compiled functions installed as primitive operations. If a list of operations is given via the option <code class="code">operations</code>, only operations in this list are precompiled. Else all installed operations of the category are precompiled. Technical requirements:</p>
+
+
+<ul>
+<li><p><var class="Arg">category_constructor</var> must be a regular function, i.e. not an operation or a kernel function.</p>
+
+</li>
+<li><p><var class="Arg">category_constructor</var> must support the options <code class="code">FinalizeCategory</code> and <code class="code">enable_compilation</code>. WARNING: When using attributes you might run into errors because the options are only respected the first time you call the attribute getter.</p>
+
+</li>
+<li><p>The compiler has to create a valid input for the operations which should be compiled. Currently, this leads to the following restrictions (detailed errors are thrown if any of the restrictions is not met):</p>
+
+
+<ul>
+<li><p>Only categories with a zero object and zero morphisms can be compiled.</p>
+
+</li>
+<li><p>Not all CAP operations are available for compilation.</p>
+
+</li>
+<li><p><code class="code">WithGiven</code> operations can only be compiled if the object operation is computable.</p>
+
+</li>
+</ul>
+</li>
+</ul>
 <p><a id="X7B946AD083F7CEEA" name="X7B946AD083F7CEEA"></a></p>
 
-<h4>1.6 <span class="Heading">Getting information about the compilation process</span></h4>
+<h4>1.8 <span class="Heading">Getting information about the compilation process</span></h4>
 
 <p>You can increase the info level of <code class="code">InfoCapJit</code> to get information about the compilation process.</p>
 
 <p><a id="X8202365E84A044DC" name="X8202365E84A044DC"></a></p>
 
-<h5>1.6-1 InfoCapJit</h5>
+<h5>1.8-1 InfoCapJit</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InfoCapJit</code></td><td class="tdright">(&nbsp;info class&nbsp;)</td></tr></table></div>
 <p>Info class used for info messsages of the CAP compiler.</p>
 
 <p><a id="X78F1B59B7DBEF671" name="X78F1B59B7DBEF671"></a></p>
 
-<h4>1.7 <span class="Heading">Compiling a function manually</span></h4>
+<h4>1.9 <span class="Heading">Compiling a function manually</span></h4>
 
-<p>Use <code class="func">CapJitCompiledFunction</code> (<a href="chap1_mj.html#X86F1D06C81670DC8"><span class="RefLink">1.7-1</span></a>) to compile a function <code class="code">func</code> with JIT arguments <code class="code">jit_args</code>. <code class="code">jit_args</code> should represent a "generic" call, i.e., they should not run into edge cases which do not happen with a "generic" call. Still, the execution using <code class="code">jit_args</code> should be fast to improve compilation times.</p>
+<p>Use <code class="func">CapJitCompiledFunction</code> (<a href="chap1_mj.html#X86F1D06C81670DC8"><span class="RefLink">1.9-1</span></a>) to compile a function <code class="code">func</code> with JIT arguments <code class="code">jit_args</code>. <code class="code">jit_args</code> should represent a "generic" call, i.e., they should not run into edge cases which do not happen with a "generic" call. Still, the execution using <code class="code">jit_args</code> should be fast to improve compilation times.</p>
 
 <p><a id="X86F1D06C81670DC8" name="X86F1D06C81670DC8"></a></p>
 
-<h5>1.7-1 CapJitCompiledFunction</h5>
+<h5>1.9-1 CapJitCompiledFunction</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitCompiledFunction</code>( <var class="Arg">func</var>, <var class="Arg">jit_args</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a function</p>
@@ -209,7 +279,7 @@
 
 <p><a id="X780099B481AB3AB7" name="X780099B481AB3AB7"></a></p>
 
-<h4>1.8 <span class="Heading">FAQ</span></h4>
+<h4>1.10 <span class="Heading">FAQ</span></h4>
 
 
 <ul>
@@ -217,7 +287,7 @@
 
 </li>
 </ul>
-<p>A: Only functions annotated with the pragma <code class="code">CAP_JIT_RESOLVE_FUNCTION</code> are resolved. Additionally, a function can only be resolved if it appears as a global variable in the tree during the resolving phase of the compilation. That is, it must be referenced from a global variable from the beginning on, or after global variables are resolved by <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2_mj.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-9</span></a>). Possibly you have adapt <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2_mj.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-9</span></a>) to your setting.</p>
+<p>A: Only functions annotated with the pragma <code class="code">CAP_JIT_RESOLVE_FUNCTION</code> are resolved. Additionally, a function can only be resolved if it appears as a global variable in the tree during the resolving phase of the compilation. That is, it must be referenced from a global variable from the beginning on, or after global variables are resolved by <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2_mj.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-12</span></a>). Possibly you have adapt <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2_mj.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-12</span></a>) to your setting.</p>
 
 
 <ul>
@@ -225,7 +295,7 @@
 
 </li>
 </ul>
-<p>A: The compiler must be able to get the arguments of the call of the operation from the JIT arguments. Then the rules in the description of <code class="func">CapJitResolvedOperations</code> (<a href="chap2_mj.html#X7D12C378812745DA"><span class="RefLink">2.5-10</span></a>) apply.</p>
+<p>A: The compiler must be able to get the arguments of the call of the operation from the JIT arguments. Then the rules in the description of <code class="func">CapJitResolvedOperations</code> (<a href="chap2_mj.html#X7D12C378812745DA"><span class="RefLink">2.5-13</span></a>) apply.</p>
 
 
 <ul>

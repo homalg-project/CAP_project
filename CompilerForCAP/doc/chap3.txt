@@ -6,63 +6,293 @@
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
-    [4X[25Xgap>[125X [27Xvec := MatrixCategory( Q :[127X[104X
-    [4X[25X>[125X [27X    enable_compilation := [ "MorphismBetweenDirectSums" ][127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MatrixCategory( Q : enable_compilation := true );;[127X[104X
     [4X[25Xgap>[125X [27XV := VectorSpaceObject( 2, Q );;[127X[104X
     [4X[25Xgap>[125X [27Xalpha := ZeroMorphism( V, V );;[127X[104X
     [4X[25Xgap>[125X [27Xbeta := IdentityMorphism( V );;[127X[104X
     [4X[25Xgap>[125X [27XW := DirectSum( V, V );;[127X[104X
     [4X[25Xgap>[125X [27Xmorphism_matrix := [ [ alpha, beta ], [ beta, alpha ] ];;[127X[104X
-    [4X[25Xgap>[125X [27X# compile the primitive installation of MorphismBetweenDirectSums[127X[104X
-    [4X[25X>[125X [27XMorphismBetweenDirectSums( morphism_matrix );;[127X[104X
-    [4X[25Xgap>[125X [27Xtree1 := SYNTAX_TREE([127X[104X
-    [4X[25X>[125X [27X    vec!.compiled_functions.MorphismBetweenDirectSums[3][127X[104X
+    [4X[25Xgap>[125X [27X# compile the primitive installation of[127X[104X
+    [4X[25X>[125X [27X# MorphismBetweenDirectSumsWithGivenDirectSums[127X[104X
+    [4X[25X>[125X [27XMorphismBetweenDirectSumsWithGivenDirectSums([127X[104X
+    [4X[25X>[125X [27X    vec,[127X[104X
+    [4X[25X>[125X [27X    W,[127X[104X
+    [4X[25X>[125X [27X    [ V, V ],[127X[104X
+    [4X[25X>[125X [27X    morphism_matrix,[127X[104X
+    [4X[25X>[125X [27X    [ V, V ],[127X[104X
+    [4X[25X>[125X [27X    W[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27X# fixup nams[127X[104X
-    [4X[25X>[125X [27Xtree1.stats.statements[1].branches[2].body.statements[1].[127X[104X
-    [4X[25X>[125X [27X    obj.args[12].args[1].args[2].nams := [ "row" ];;[127X[104X
+    [4X[25Xgap>[125X [27Xtree1 := SYNTAX_TREE([127X[104X
+    [4X[25X>[125X [27X    vec!.compiled_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3][127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( SYNTAX_TREE_CODE( tree1 ) );[127X[104X
-    [4X[28Xfunction ( cat, S, morphism_matrix, T )[128X[104X
-    [4X[28X    if morphism_matrix = [  ] or morphism_matrix[1] = [  ] then[128X[104X
-    [4X[28X        return ZeroMorphism( S, T );[128X[104X
-    [4X[28X    else[128X[104X
-    [4X[28X        return ObjectifyWithAttributes( rec([128X[104X
-    [4X[28X               ), CAP_JIT_INTERNAL_GLOBAL_VARIABLE_3, CapCategory, [128X[104X
-    [4X[28X           CAP_JIT_INTERNAL_GLOBAL_VARIABLE_1, Source, S, Range, T, [128X[104X
-    [4X[28X           UnderlyingFieldForHomalg, CAP_JIT_INTERNAL_GLOBAL_VARIABLE_2, [128X[104X
-    [4X[28X           UnderlyingMatrix, [128X[104X
-    [4X[28X           UnionOfRows( List( morphism_matrix, function ( row )[128X[104X
-    [4X[28X                    return UnionOfColumns( List( row, UnderlyingMatrix ) );[128X[104X
-    [4X[28X                end ) ) );[128X[104X
-    [4X[28X    fi;[128X[104X
-    [4X[28X    return;[128X[104X
+    [4X[28Xfunction ( cat, S, diagram_S, morphism_matrix, diagram_T, T )[128X[104X
+    [4X[28X    return ObjectifyWithAttributes( rec([128X[104X
+    [4X[28X           ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, [128X[104X
+    [4X[28X       UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, [128X[104X
+    [4X[28X       UnionOfRows( UnderlyingRing( cat ), Dimension( T ), [128X[104X
+    [4X[28X         List( [ 1 .. Length( List( morphism_matrix, function ( row )[128X[104X
+    [4X[28X                        return List( row, UnderlyingMatrix );[128X[104X
+    [4X[28X                    end ) ) ], function ( i )[128X[104X
+    [4X[28X                return UnionOfColumns( UnderlyingRing( cat ), [128X[104X
+    [4X[28X                   Dimension( diagram_S[i] ), [128X[104X
+    [4X[28X                   List( morphism_matrix[i], UnderlyingMatrix ) );[128X[104X
+    [4X[28X            end ) ) );[128X[104X
     [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27X# compile the default derivation of MorphismBetweenDirectSums[127X[104X
+    [4X[25Xgap>[125X [27X# compile the default derivation of[127X[104X
+    [4X[25X>[125X [27X# MorphismBetweenDirectSumsWithGivenDirectSums[127X[104X
     [4X[25X>[125X [27Xtree2 := SYNTAX_TREE( CapJitCompiledFunction([127X[104X
-    [4X[25X>[125X [27X    vec!.added_functions.MorphismBetweenDirectSums[1][1],[127X[104X
-    [4X[25X>[125X [27X    [ vec, W, morphism_matrix, W  ][127X[104X
+    [4X[25X>[125X [27X    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1][1],[127X[104X
+    [4X[25X>[125X [27X    [ vec, W, [ V, V ], morphism_matrix, [ V, V ], W  ][127X[104X
     [4X[25X>[125X [27X) );;[127X[104X
     [4X[25Xgap>[125X [27X# fixup nams[127X[104X
-    [4X[25X>[125X [27Xtree2.stats.statements[1].branches[2].body.statements[1].[127X[104X
-    [4X[25X>[125X [27X    obj.args[12].args[1].args[2].nams := [ "row" ];;[127X[104X
+    [4X[25X>[125X [27Xtree2.stats.statements[1].obj.args[12].args[3].args[2].nams := [ "i" ];;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( SYNTAX_TREE_CODE( tree2 ) );[127X[104X
-    [4X[28Xfunction ( cat, S, morphism_matrix, T )[128X[104X
-    [4X[28X    if morphism_matrix = [  ] or morphism_matrix[1] = [  ] then[128X[104X
-    [4X[28X        return ZeroMorphism( S, T );[128X[104X
+    [4X[28Xfunction ( cat, S, diagram_S, morphism_matrix, diagram_T, T )[128X[104X
+    [4X[28X    return ObjectifyWithAttributes( rec([128X[104X
+    [4X[28X           ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, [128X[104X
+    [4X[28X       UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, [128X[104X
+    [4X[28X       UnionOfRows( UnderlyingRing( cat ), Dimension( T ), [128X[104X
+    [4X[28X         List( [ 1 .. Length( morphism_matrix ) ], function ( i )[128X[104X
+    [4X[28X                return UnionOfColumns( UnderlyingRing( cat ), [128X[104X
+    [4X[28X                   Dimension( diagram_S[i] ), [128X[104X
+    [4X[28X                   List( morphism_matrix[i], function ( s )[128X[104X
+    [4X[28X                          return UnderlyingMatrix( s );[128X[104X
+    [4X[28X                      end ) );[128X[104X
+    [4X[28X            end ) ) );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27XKernelEmbedding( alpha );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( Last( vec!.compiled_functions.KernelEmbedding ) );[127X[104X
+    [4X[28Xfunction ( cat, morphism )[128X[104X
+    [4X[28X    local cap_jit_morphism_attribute;[128X[104X
+    [4X[28X    cap_jit_morphism_attribute [128X[104X
+    [4X[28X     := SyzygiesOfRows( UnderlyingMatrix( morphism ) );[128X[104X
+    [4X[28X    return ObjectifyWithAttributes( rec([128X[104X
+    [4X[28X           ), MorphismType( cat ), CapCategory, cat, Source, [128X[104X
+    [4X[28X       ObjectifyWithAttributes( rec([128X[104X
+    [4X[28X             ), ObjectType( cat ), CapCategory, cat, Dimension, [128X[104X
+    [4X[28X         NrRows( cap_jit_morphism_attribute ), UnderlyingFieldForHomalg, [128X[104X
+    [4X[28X         UnderlyingRing( cat ) ), Range, Source( morphism ), [128X[104X
+    [4X[28X       UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, [128X[104X
+    [4X[28X       cap_jit_morphism_attribute );[128X[104X
+    [4X[28Xend[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27X# be careful not to use `MatrixCategory` because attributes are not supported[127X[104X
+    [4X[25X>[125X [27Xcategory_constructor := field -> MATRIX_CATEGORY( field );;[127X[104X
+    [4X[25Xgap>[125X [27Xgiven_arguments := [ QQ ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "MatrixCategoryPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xpackage_name := "LinearAlgebraForCAP";;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations := [[127X[104X
+    [4X[25X>[125X [27X    "AdditionForMorphisms",[127X[104X
+    [4X[25X>[125X [27X    "PreCompose",[127X[104X
+    [4X[25X>[125X [27X    "KernelEmbedding",[127X[104X
+    [4X[25X>[125X [27X];;[127X[104X
+    [4X[25Xgap>[125X [27Xfilepath := "precompiled_categories/MatrixCategoryPrecompiled.gi";;[127X[104X
+    [4X[25Xgap>[125X [27Xold_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategory([127X[104X
+    [4X[25X>[125X [27X    category_constructor,[127X[104X
+    [4X[25X>[125X [27X    given_arguments,[127X[104X
+    [4X[25X>[125X [27X    package_name,[127X[104X
+    [4X[25X>[125X [27X    compiled_category_name :[127X[104X
+    [4X[25X>[125X [27X    operations := operations[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27Xnew_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;[127X[104X
+    [4X[25Xgap>[125X [27Xold_file_content = new_file_content;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XMatrixCategoryPrecompiled( QQ );[127X[104X
+    [4X[28XCategory of matrices over Q[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X3.2 [33X[0;0YTests[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
+    [4X[25Xgap>[125X [27Xrows := MatrixCategory( Q );;[127X[104X
+    [4X[25Xgap>[125X [27XMyKernelLift := function( cat, mor, test_morphism )[127X[104X
+    [4X[25X>[125X [27X    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL[127X[104X
+    [4X[25X>[125X [27X    return Lift( cat, test_morphism, KernelEmbedding( cat, mor ) ); end;;[127X[104X
+    [4X[25Xgap>[125X [27XV := VectorSpaceObject( 2, Q );;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func := CapJitCompiledFunction([127X[104X
+    [4X[25X>[125X [27X    MyKernelLift,[127X[104X
+    [4X[25X>[125X [27X    [ rows, ZeroMorphism( V, V ), IdentityMorphism( V ) ][127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
+    [4X[28Xfunction ( cat, mor, test_morphism )[128X[104X
+    [4X[28X    local cap_jit_morphism_attribute;[128X[104X
+    [4X[28X    cap_jit_morphism_attribute [128X[104X
+    [4X[28X     := RightDivide( UnderlyingMatrix( test_morphism ), [128X[104X
+    [4X[28X       SyzygiesOfRows( UnderlyingMatrix( mor ) ) );[128X[104X
+    [4X[28X    return ObjectifyWithAttributes( rec([128X[104X
+    [4X[28X           ), MorphismType( cat ), CapCategory, cat, Source, [128X[104X
+    [4X[28X       Source( test_morphism ), Range, ObjectifyWithAttributes( rec([128X[104X
+    [4X[28X             ), ObjectType( cat ), CapCategory, cat, Dimension, [128X[104X
+    [4X[28X         NrColumns( cap_jit_morphism_attribute ), UnderlyingFieldForHomalg, [128X[104X
+    [4X[28X         UnderlyingRing( cat ) ), UnderlyingFieldForHomalg, [128X[104X
+    [4X[28X       UnderlyingRing( cat ), UnderlyingMatrix, cap_jit_morphism_attribute );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27Xfunc1 := function( x )[127X[104X
+    [4X[25X>[125X [27X    #% CAP_JIT_RESOLVE_FUNCTION[127X[104X
+    [4X[25X>[125X [27X    if x = 1 then return fail; fi; return 1; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xfunc2 := function( x )[127X[104X
+    [4X[25X>[125X [27X    #% CAP_JIT_RESOLVE_FUNCTION[127X[104X
+    [4X[25X>[125X [27X    if x = 1 then return fail; else return 1; fi; end;;[127X[104X
+    [4X[25Xgap>[125X [27X# we have to work hard to not write semicolons so AutoDoc[127X[104X
+    [4X[25X>[125X [27X# does not begin a new statement[127X[104X
+    [4X[25X>[125X [27Xfunc3 := EvalString( ReplacedString( """function( x )[127X[104X
+    [4X[25X>[125X [27X    local y@[127X[104X
+    [4X[25X>[125X [27X    #% CAP_JIT_RESOLVE_FUNCTION[127X[104X
+    [4X[25X>[125X [27X    if x = 1 then[127X[104X
+    [4X[25X>[125X [27X        y := fail@[127X[104X
+    [4X[25X>[125X [27X    else[127X[104X
+    [4X[25X>[125X [27X        y := 1@[127X[104X
+    [4X[25X>[125X [27X    fi@[127X[104X
+    [4X[25X>[125X [27X    return y@[127X[104X
+    [4X[25X>[125X [27Xend""", "@", ";" ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xcall_func1 := function( x )[127X[104X
+    [4X[25X>[125X [27X    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL[127X[104X
+    [4X[25X>[125X [27X    return func1( x ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xcall_func2 := function( x )[127X[104X
+    [4X[25X>[125X [27X    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL[127X[104X
+    [4X[25X>[125X [27X    return func2( x ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xcall_func3 := function( x )[127X[104X
+    [4X[25X>[125X [27X    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL[127X[104X
+    [4X[25X>[125X [27X    return func3( x ); end;;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( call_func1, [ 2 ] ) );[127X[104X
+    [4X[28Xfunction ( x )[128X[104X
+    [4X[28X    return 1;[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( call_func2, [ 2 ] ) );[127X[104X
+    [4X[28Xfunction ( x )[128X[104X
+    [4X[28X    return 1;[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( call_func3, [ 2 ] ) );[127X[104X
+    [4X[28Xfunction ( x )[128X[104X
+    [4X[28X    return 1;[128X[104X
+    [4X[28Xend[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xfunc1 := function( x )[127X[104X
+    [4X[25X>[125X [27X    if x = 1 then return 1; else return 2; fi; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree1 := ENHANCED_SYNTAX_TREE( func1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree1.stats.statements[1].obj.type = "EXPR_CONDITIONAL";[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcoded_func1 := ENHANCED_SYNTAX_TREE_CODE( tree1 );;[127X[104X
+    [4X[25Xgap>[125X [27XString( func1 ) = String( coded_func1 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xfunc2 := function( x )[127X[104X
+    [4X[25X>[125X [27X  local y; if x = 1 then y := 1; else y := 2; fi; return y; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree2 := ENHANCED_SYNTAX_TREE( func2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree2.stats.statements[1].rhs.type = "EXPR_CONDITIONAL";[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcoded_func2 := ENHANCED_SYNTAX_TREE_CODE( tree2 );;[127X[104X
+    [4X[25Xgap>[125X [27XString( func2 ) = String( coded_func2 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xtree3 := rec([127X[104X
+    [4X[25X>[125X [27X    type := "EXPR_FUNC",[127X[104X
+    [4X[25X>[125X [27X    id := 1,[127X[104X
+    [4X[25X>[125X [27X    nams := [ ],[127X[104X
+    [4X[25X>[125X [27X    narg := 0,[127X[104X
+    [4X[25X>[125X [27X    nloc := 0,[127X[104X
+    [4X[25X>[125X [27X    variadic := false,[127X[104X
+    [4X[25X>[125X [27X    stats := rec([127X[104X
+    [4X[25X>[125X [27X        type := "STAT_SEQ_STAT",[127X[104X
+    [4X[25X>[125X [27X        statements := [[127X[104X
+    [4X[25X>[125X [27X            rec([127X[104X
+    [4X[25X>[125X [27X                type := "STAT_RETURN_OBJ",[127X[104X
+    [4X[25X>[125X [27X                obj := rec([127X[104X
+    [4X[25X>[125X [27X                    type := "EXPR_FUNCCALL",[127X[104X
+    [4X[25X>[125X [27X                    funcref := rec([127X[104X
+    [4X[25X>[125X [27X                        type := "EXPR_REF_GVAR",[127X[104X
+    [4X[25X>[125X [27X                        gvar := "IdFunc",[127X[104X
+    [4X[25X>[125X [27X                    ),[127X[104X
+    [4X[25X>[125X [27X                    args := [[127X[104X
+    [4X[25X>[125X [27X                        rec([127X[104X
+    [4X[25X>[125X [27X                            type := "EXPR_CONDITIONAL",[127X[104X
+    [4X[25X>[125X [27X                            condition := rec([127X[104X
+    [4X[25X>[125X [27X                                type := "EXPR_FALSE",[127X[104X
+    [4X[25X>[125X [27X                            ),[127X[104X
+    [4X[25X>[125X [27X                            expr_if_true := rec([127X[104X
+    [4X[25X>[125X [27X                                type := "EXPR_INT",[127X[104X
+    [4X[25X>[125X [27X                                value := 1,[127X[104X
+    [4X[25X>[125X [27X                            ),[127X[104X
+    [4X[25X>[125X [27X                            expr_if_false := rec([127X[104X
+    [4X[25X>[125X [27X                                type := "EXPR_INT",[127X[104X
+    [4X[25X>[125X [27X                                value := 2,[127X[104X
+    [4X[25X>[125X [27X                            ),[127X[104X
+    [4X[25X>[125X [27X                        ),[127X[104X
+    [4X[25X>[125X [27X                    ],[127X[104X
+    [4X[25X>[125X [27X                ),[127X[104X
+    [4X[25X>[125X [27X            ),[127X[104X
+    [4X[25X>[125X [27X        ],[127X[104X
+    [4X[25X>[125X [27X    ),[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27Xcoded_func3 := ENHANCED_SYNTAX_TREE_CODE( tree3 );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( coded_func3 );[127X[104X
+    [4X[28Xfunction (  )[128X[104X
+    [4X[28X    return IdFunc( function (  )[128X[104X
+    [4X[28X              if false then[128X[104X
+    [4X[28X                  return 1;[128X[104X
+    [4X[28X              else[128X[104X
+    [4X[28X                  return 2;[128X[104X
+    [4X[28X              fi;[128X[104X
+    [4X[28X              return;[128X[104X
+    [4X[28X          end(  ) );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27Xcoded_func3();[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27Xfunc4 := function( x )[127X[104X
+    [4X[25X>[125X [27X  local y; if x then y := 1; else y := 2; fi; return IdFunc( y ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func4 := CapJitCompiledFunction( func4, [ true ] );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func4 );[127X[104X
+    [4X[28Xfunction ( x )[128X[104X
+    [4X[28X    if x then[128X[104X
+    [4X[28X        return ID_FUNC( 1 );[128X[104X
     [4X[28X    else[128X[104X
-    [4X[28X        return ObjectifyWithAttributes( rec([128X[104X
-    [4X[28X               ), CAP_JIT_INTERNAL_GLOBAL_VARIABLE_3, CapCategory, [128X[104X
-    [4X[28X           CAP_JIT_INTERNAL_GLOBAL_VARIABLE_1, Source, S, Range, T, [128X[104X
-    [4X[28X           UnderlyingFieldForHomalg, CAP_JIT_INTERNAL_GLOBAL_VARIABLE_2, [128X[104X
-    [4X[28X           UnderlyingMatrix, [128X[104X
-    [4X[28X           UnionOfRows( List( morphism_matrix, function ( row )[128X[104X
-    [4X[28X                    return UnionOfColumns( List( row, function ( s )[128X[104X
-    [4X[28X                              return UnderlyingMatrix( s );[128X[104X
-    [4X[28X                          end ) );[128X[104X
-    [4X[28X                end ) ) );[128X[104X
+    [4X[28X        return ID_FUNC( 2 );[128X[104X
     [4X[28X    fi;[128X[104X
     [4X[28X    return;[128X[104X
     [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27Xfunc5 := function( x )[127X[104X
+    [4X[25X>[125X [27X  local y; if x then return 1; else return 1; fi; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func5 := CapJitCompiledFunction( func5, [ true ] );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func5 );[127X[104X
+    [4X[28Xfunction ( x )[128X[104X
+    [4X[28X    return 1;[128X[104X
+    [4X[28Xend[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XKeyDependentOperation( "MyKeyDependentOperation",[127X[104X
+    [4X[25X>[125X [27X                       IsGroup, IsInt, ReturnTrue );;[127X[104X
+    [4X[25Xgap>[125X [27XInstallMethod( MyKeyDependentOperationOp,[127X[104X
+    [4X[25X>[125X [27X    [ IsGroup, IsInt ],[127X[104X
+    [4X[25X>[125X [27X    function( G, int )[127X[104X
+    [4X[25X>[125X [27X        #% CAP_JIT_RESOLVE_FUNCTION[127X[104X
+    [4X[25X>[125X [27X        return int; end );;[127X[104X
+    [4X[25Xgap>[125X [27XG := SymmetricGroup(3);;[127X[104X
+    [4X[25Xgap>[125X [27XMyKeyDependentOperation( G, 2 ) = 2;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XMyFunction := G -> MyKeyDependentOperation( G, 2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func := CapJitCompiledFunction( MyFunction, [ G ] );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
+    [4X[28Xfunction ( G )[128X[104X
+    [4X[28X    return 2;[128X[104X
+    [4X[28Xend[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xfunc1 := function( x, y )[127X[104X
+    [4X[25X>[125X [27X    #% CAP_JIT_RESOLVE_FUNCTION[127X[104X
+    [4X[25X>[125X [27X    return x; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xfunc2 := function( )[127X[104X
+    [4X[25X>[125X [27X  local var; var := 1; var := func1( 2, var ); return var; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func := CapJitCompiledFunction( func2, [] );;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func();[127X[104X
+    [4X[28X2[128X[104X
   [4X[32X[104X
   

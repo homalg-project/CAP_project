@@ -28,6 +28,9 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7A489A5D79DA9E5C">3.1 <span class="Heading">Examples</span></a>
 </span>
 </div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X7A810CDA83F2897F">3.2 <span class="Heading">Tests</span></a>
+</span>
+</div>
 </div>
 
 <h3>3 <span class="Heading">Examples and tests</span></h3>
@@ -39,64 +42,300 @@
 
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MatrixCategory( Q :</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    enable_compilation := [ "MorphismBetweenDirectSums" ]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MatrixCategory( Q : enable_compilation := true );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := VectorSpaceObject( 2, Q );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := ZeroMorphism( V, V );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := IdentityMorphism( V );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W := DirectSum( V, V );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morphism_matrix := [ [ alpha, beta ], [ beta, alpha ] ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># compile the primitive installation of MorphismBetweenDirectSums</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">MorphismBetweenDirectSums( morphism_matrix );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree1 := SYNTAX_TREE(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.compiled_functions.MorphismBetweenDirectSums[3]</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># compile the primitive installation of</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># MorphismBetweenDirectSumsWithGivenDirectSums</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">MorphismBetweenDirectSumsWithGivenDirectSums(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    W,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ V, V ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    morphism_matrix,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ V, V ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    W</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># fixup nams</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">tree1.stats.statements[1].branches[2].body.statements[1].</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    obj.args[12].args[1].args[2].nams := [ "row" ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree1 := SYNTAX_TREE(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.compiled_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3]</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( SYNTAX_TREE_CODE( tree1 ) );</span>
-function ( cat, S, morphism_matrix, T )
-    if morphism_matrix = [  ] or morphism_matrix[1] = [  ] then
-        return ZeroMorphism( S, T );
-    else
-        return ObjectifyWithAttributes( rec(
-               ), CAP_JIT_INTERNAL_GLOBAL_VARIABLE_3, CapCategory, 
-           CAP_JIT_INTERNAL_GLOBAL_VARIABLE_1, Source, S, Range, T, 
-           UnderlyingFieldForHomalg, CAP_JIT_INTERNAL_GLOBAL_VARIABLE_2, 
-           UnderlyingMatrix, 
-           UnionOfRows( List( morphism_matrix, function ( row )
-                    return UnionOfColumns( List( row, UnderlyingMatrix ) );
-                end ) ) );
-    fi;
-    return;
+function ( cat, S, diagram_S, morphism_matrix, diagram_T, T )
+    return ObjectifyWithAttributes( rec(
+           ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, 
+       UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, 
+       UnionOfRows( UnderlyingRing( cat ), Dimension( T ), 
+         List( [ 1 .. Length( List( morphism_matrix, function ( row )
+                        return List( row, UnderlyingMatrix );
+                    end ) ) ], function ( i )
+                return UnionOfColumns( UnderlyingRing( cat ), 
+                   Dimension( diagram_S[i] ), 
+                   List( morphism_matrix[i], UnderlyingMatrix ) );
+            end ) ) );
 end
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># compile the default derivation of MorphismBetweenDirectSums</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># compile the default derivation of</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># MorphismBetweenDirectSumsWithGivenDirectSums</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">tree2 := SYNTAX_TREE( CapJitCompiledFunction(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.added_functions.MorphismBetweenDirectSums[1][1],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ vec, W, morphism_matrix, W  ]</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1][1],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ vec, W, [ V, V ], morphism_matrix, [ V, V ], W  ]</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># fixup nams</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">tree2.stats.statements[1].branches[2].body.statements[1].</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    obj.args[12].args[1].args[2].nams := [ "row" ];;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">tree2.stats.statements[1].obj.args[12].args[3].args[2].nams := [ "i" ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( SYNTAX_TREE_CODE( tree2 ) );</span>
-function ( cat, S, morphism_matrix, T )
-    if morphism_matrix = [  ] or morphism_matrix[1] = [  ] then
-        return ZeroMorphism( S, T );
+function ( cat, S, diagram_S, morphism_matrix, diagram_T, T )
+    return ObjectifyWithAttributes( rec(
+           ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, 
+       UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, 
+       UnionOfRows( UnderlyingRing( cat ), Dimension( T ), 
+         List( [ 1 .. Length( morphism_matrix ) ], function ( i )
+                return UnionOfColumns( UnderlyingRing( cat ), 
+                   Dimension( diagram_S[i] ), 
+                   List( morphism_matrix[i], function ( s )
+                          return UnderlyingMatrix( s );
+                      end ) );
+            end ) ) );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KernelEmbedding( alpha );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Last( vec!.compiled_functions.KernelEmbedding ) );</span>
+function ( cat, morphism )
+    local cap_jit_morphism_attribute;
+    cap_jit_morphism_attribute 
+     := SyzygiesOfRows( UnderlyingMatrix( morphism ) );
+    return ObjectifyWithAttributes( rec(
+           ), MorphismType( cat ), CapCategory, cat, Source, 
+       ObjectifyWithAttributes( rec(
+             ), ObjectType( cat ), CapCategory, cat, Dimension, 
+         NrRows( cap_jit_morphism_attribute ), UnderlyingFieldForHomalg, 
+         UnderlyingRing( cat ) ), Range, Source( morphism ), 
+       UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, 
+       cap_jit_morphism_attribute );
+end
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># be careful not to use `MatrixCategory` because attributes are not supported</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">category_constructor := field -&gt; MATRIX_CATEGORY( field );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ QQ ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "MatrixCategoryPrecompiled";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "LinearAlgebraForCAP";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "AdditionForMorphisms",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "PreCompose",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "KernelEmbedding",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">filepath := "precompiled_categories/MatrixCategoryPrecompiled.gi";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">old_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategory(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name :</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations := operations</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">new_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">old_file_content = new_file_content;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MatrixCategoryPrecompiled( QQ );</span>
+Category of matrices over Q
+</pre></div>
+
+<p><a id="X7A810CDA83F2897F" name="X7A810CDA83F2897F"></a></p>
+
+<h4>3.2 <span class="Heading">Tests</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows := MatrixCategory( Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MyKernelLift := function( cat, mor, test_morphism )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return Lift( cat, test_morphism, KernelEmbedding( cat, mor ) ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := VectorSpaceObject( 2, Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := CapJitCompiledFunction(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    MyKernelLift,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ rows, ZeroMorphism( V, V ), IdentityMorphism( V ) ]</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
+function ( cat, mor, test_morphism )
+    local cap_jit_morphism_attribute;
+    cap_jit_morphism_attribute 
+     := RightDivide( UnderlyingMatrix( test_morphism ), 
+       SyzygiesOfRows( UnderlyingMatrix( mor ) ) );
+    return ObjectifyWithAttributes( rec(
+           ), MorphismType( cat ), CapCategory, cat, Source, 
+       Source( test_morphism ), Range, ObjectifyWithAttributes( rec(
+             ), ObjectType( cat ), CapCategory, cat, Dimension, 
+         NrColumns( cap_jit_morphism_attribute ), UnderlyingFieldForHomalg, 
+         UnderlyingRing( cat ) ), UnderlyingFieldForHomalg, 
+       UnderlyingRing( cat ), UnderlyingMatrix, cap_jit_morphism_attribute );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func1 := function( x )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    #% CAP_JIT_RESOLVE_FUNCTION</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    if x = 1 then return fail; fi; return 1; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func2 := function( x )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    #% CAP_JIT_RESOLVE_FUNCTION</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    if x = 1 then return fail; else return 1; fi; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># we have to work hard to not write semicolons so AutoDoc</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># does not begin a new statement</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">func3 := EvalString( ReplacedString( """function( x )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    local y@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    #% CAP_JIT_RESOLVE_FUNCTION</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    if x = 1 then</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        y := fail@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    else</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        y := 1@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    fi@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return y@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">end""", "@", ";" ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">call_func1 := function( x )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return func1( x ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">call_func2 := function( x )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return func2( x ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">call_func3 := function( x )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return func3( x ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( call_func1, [ 2 ] ) );</span>
+function ( x )
+    return 1;
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( call_func2, [ 2 ] ) );</span>
+function ( x )
+    return 1;
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( call_func3, [ 2 ] ) );</span>
+function ( x )
+    return 1;
+end
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func1 := function( x )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    if x = 1 then return 1; else return 2; fi; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree1 := ENHANCED_SYNTAX_TREE( func1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree1.stats.statements[1].obj.type = "EXPR_CONDITIONAL";</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coded_func1 := ENHANCED_SYNTAX_TREE_CODE( tree1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">String( func1 ) = String( coded_func1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func2 := function( x )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  local y; if x = 1 then y := 1; else y := 2; fi; return y; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree2 := ENHANCED_SYNTAX_TREE( func2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree2.stats.statements[1].rhs.type = "EXPR_CONDITIONAL";</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coded_func2 := ENHANCED_SYNTAX_TREE_CODE( tree2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">String( func2 ) = String( coded_func2 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree3 := rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    type := "EXPR_FUNC",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    id := 1,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    nams := [ ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    narg := 0,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    nloc := 0,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    variadic := false,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    stats := rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        type := "STAT_SEQ_STAT",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        statements := [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                type := "STAT_RETURN_OBJ",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                obj := rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    type := "EXPR_FUNCCALL",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    funcref := rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                        type := "EXPR_REF_GVAR",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                        gvar := "IdFunc",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    args := [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                        rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                            type := "EXPR_CONDITIONAL",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                            condition := rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                type := "EXPR_FALSE",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                            ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                            expr_if_true := rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                type := "EXPR_INT",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                value := 1,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                            ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                            expr_if_false := rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                type := "EXPR_INT",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                                value := 2,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                            ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                        ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coded_func3 := ENHANCED_SYNTAX_TREE_CODE( tree3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( coded_func3 );</span>
+function (  )
+    return IdFunc( function (  )
+              if false then
+                  return 1;
+              else
+                  return 2;
+              fi;
+              return;
+          end(  ) );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coded_func3();</span>
+2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func4 := function( x )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  local y; if x then y := 1; else y := 2; fi; return IdFunc( y ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func4 := CapJitCompiledFunction( func4, [ true ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func4 );</span>
+function ( x )
+    if x then
+        return ID_FUNC( 1 );
     else
-        return ObjectifyWithAttributes( rec(
-               ), CAP_JIT_INTERNAL_GLOBAL_VARIABLE_3, CapCategory, 
-           CAP_JIT_INTERNAL_GLOBAL_VARIABLE_1, Source, S, Range, T, 
-           UnderlyingFieldForHomalg, CAP_JIT_INTERNAL_GLOBAL_VARIABLE_2, 
-           UnderlyingMatrix, 
-           UnionOfRows( List( morphism_matrix, function ( row )
-                    return UnionOfColumns( List( row, function ( s )
-                              return UnderlyingMatrix( s );
-                          end ) );
-                end ) ) );
+        return ID_FUNC( 2 );
     fi;
     return;
 end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func5 := function( x )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  local y; if x then return 1; else return 1; fi; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func5 := CapJitCompiledFunction( func5, [ true ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func5 );</span>
+function ( x )
+    return 1;
+end
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KeyDependentOperation( "MyKeyDependentOperation",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                       IsGroup, IsInt, ReturnTrue );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InstallMethod( MyKeyDependentOperationOp,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ IsGroup, IsInt ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    function( G, int )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        #% CAP_JIT_RESOLVE_FUNCTION</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        return int; end );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup(3);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MyKeyDependentOperation( G, 2 ) = 2;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MyFunction := G -&gt; MyKeyDependentOperation( G, 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := CapJitCompiledFunction( MyFunction, [ G ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
+function ( G )
+    return 2;
+end
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func1 := function( x, y )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    #% CAP_JIT_RESOLVE_FUNCTION</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return x; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func2 := function( )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  local var; var := 1; var := func1( 2, var ); return var; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := CapJitCompiledFunction( func2, [] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func();</span>
+2
 </pre></div>
 
 

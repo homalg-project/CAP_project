@@ -75,8 +75,20 @@
   [30X    [33X[0;6YReferences  to  global  functions  are  resolved  if  the  function is
         annotated with the pragma [10XCAP_JIT_RESOLVE_FUNCTION[110X.[133X
   
-  [33X[0;0YFor      details      see      [2XCapJitResolvedOperations[102X     ([14X2.5-10[114X)     and
-  [2XCapJitResolvedGlobalVariables[102X  ([14X2.5-9[114X).  If  no operation or global variable
+  [30X    [33X[0;6YIf  a  call  of  a global function or operation (occuring as the right
+        hand  side  of  a  variable  assignment  or  as  the return value of a
+        function)        is        annotated       with       the       pragma
+        [10XCAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL[110X,  the compiler assumes that
+        the  resolved  function never returns [10Xfail[110X and thus simply removes any
+        code  of the form [10Xif condition then return fail; fi;[110X (or similar) from
+        the  resolved  function.  The pragma has to be placed right before the
+        variable assignment or the return statement.[133X
+  
+  [30X    [33X[0;6YIf a KeyDependentOperation is detected, the corresponding [10XOp[110X method is
+        resolved.[133X
+  
+  [33X[0;0YFor      details      see      [2XCapJitResolvedOperations[102X     ([14X2.5-13[114X)     and
+  [2XCapJitResolvedGlobalVariables[102X  ([14X2.5-12[114X).  If no operation or global variable
   can be resolved anymore, we continue with the rule phase.[133X
   
   [33X[0;0YIn the rule phase, the tree is optimized using several rules and techniques.
@@ -131,19 +143,49 @@
   function name of the basic operation appears in this list.[133X
   
   
-  [1X1.5 [33X[0;0YStopping the compiler at a certain level[133X[101X
+  [1X1.5 [33X[0;0YGiving hints to the compiler[133X[101X
+  
+  [33X[0;0YYou can give hints to the compiler to improve the result of the compilation.
+  Compiler    hints    are    attached    to    the    category    by   making
+  [10Xcategory!.compiler_hints[110X a record with one or more of the following keys:[133X
+  
+  [30X    [33X[0;6Y[10Xcategory_attributes_names[110X:  a  list  of  names  of  attributes  of the
+        category. If a global variable in the compiled code has the same value
+        as one of the given attributes of the category, the global variable is
+        replaced  by the attribute getter applied to the category. Background:
+        During  the  compilation, the compiler resolves attributes occuring in
+        the    code    and    stores   them   in   global   variables   called
+        [10XCAP_JIT_INTERNAL_GLOBAL_VARIABLE_n[110X  (for  integers [10Xn[110X starting from 1).
+        If  these  variables  cannot  be  replaced, the resulting code is only
+        valid in the current session.[133X
+  
+  [30X    [33X[0;6Y[10Xsource_and_range_attributes_from_morphism_attribute[110X:   a  record  with
+        keys          [10Xobject_attribute_name[110X,          [10Xmorphism_attribute_name[110X,
+        [10Xsource_attribute_getter_name[110X,     and     [10Xrange_attribute_getter_name[110X.
+        Replaces  the  attribute  [10Xobject_attribute_name[110X  of  the source (resp.
+        range)   of   a   morphism   by   [10Xsource_attribute_getter_name[110X  (resp.
+        [10Xrange_attribute_getter_name[110X)      applied     to     the     attribute
+        [10Xmorphism_attribute_name[110X  of  the  morphism. Can be used if objects and
+        morphisms  can be easily created from the morphism datum anyway. Note:
+        Some simple expressions like integers are NOT replaced.[133X
+  
+  [33X[0;0YNote:  The compiler can only discover the hints if the category is the first
+  argument of the function.[133X
+  
+  
+  [1X1.6 [33X[0;0YStopping the compiler at a certain level[133X[101X
   
   [33X[0;0YYou  can use [10XStopCompilationAtCategory[110X to prevent the compiler from inlining
   and  optimizing code of a given category. You can revert this decision using
   [10XContinueCompilationAtCategory[110X.[133X
   
-  [1X1.5-1 StopCompilationAtCategory[101X
+  [1X1.6-1 StopCompilationAtCategory[101X
   
   [33X[1;0Y[29X[2XStopCompilationAtCategory[102X( [3Xcategory[103X ) [32X function[133X
   
   [33X[0;0YStops the compiler from inlining and optimizing code of [3Xcategory[103X.[133X
   
-  [1X1.5-2 ContinueCompilationAtCategory[101X
+  [1X1.6-2 ContinueCompilationAtCategory[101X
   
   [33X[1;0Y[29X[2XContinueCompilationAtCategory[102X( [3Xcategory[103X ) [32X function[133X
   
@@ -151,27 +193,68 @@
   default).[133X
   
   
-  [1X1.6 [33X[0;0YGetting information about the compilation process[133X[101X
+  [1X1.7 [33X[0;0YPrecompiling categories[133X[101X
+  
+  [33X[0;0YYou can compile categories and store the result in a file for later use.[133X
+  
+  [1X1.7-1 CapJitPrecompileCategory[101X
+  
+  [33X[1;0Y[29X[2XCapJitPrecompileCategory[102X( [3Xcategory_constructor[103X, [3Xgiven_arguments[103X, [3Xpackage_name[103X, [3Xcompiled_category_name[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya record[133X
+  
+  [33X[0;0YCompiles   operations   of   the  CAP  category  returned  by  the  function
+  [3Xcategory_constructor[103X applied to [3Xgiven_arguments[103X. The result is available via
+  a global function called [3Xcompiled_category_name[103X which is written to the file
+  [3Xpackage_name[103X[10X/precompiled_categories/[110X[3Xcompiled_category_name[103X[10X.gi[110X.   The  global
+  function  takes  the  same arguments as [3Xcategory_constructor[103X and returns the
+  category with the compiled functions installed as primitive operations. If a
+  list  of  operations  is given via the option [10Xoperations[110X, only operations in
+  this list are precompiled. Else all installed operations of the category are
+  precompiled. Technical requirements:[133X
+  
+  [30X    [33X[0;6Y[3Xcategory_constructor[103X must be a regular function, i.e. not an operation
+        or a kernel function.[133X
+  
+  [30X    [33X[0;6Y[3Xcategory_constructor[103X  must  support  the  options [10XFinalizeCategory[110X and
+        [10Xenable_compilation[110X.  WARNING: When using attributes you might run into
+        errors  because the options are only respected the first time you call
+        the attribute getter.[133X
+  
+  [30X    [33X[0;6YThe  compiler  has  to  create  a valid input for the operations which
+        should   be   compiled.   Currently,   this  leads  to  the  following
+        restrictions (detailed errors are thrown if any of the restrictions is
+        not met):[133X
+  
+        [30X    [33X[0;12YOnly  categories  with  a  zero object and zero morphisms can be
+              compiled.[133X
+  
+        [30X    [33X[0;12YNot all CAP operations are available for compilation.[133X
+  
+        [30X    [33X[0;12Y[10XWithGiven[110X   operations  can  only  be  compiled  if  the  object
+              operation is computable.[133X
+  
+  
+  [1X1.8 [33X[0;0YGetting information about the compilation process[133X[101X
   
   [33X[0;0YYou  can  increase the info level of [10XInfoCapJit[110X to get information about the
   compilation process.[133X
   
-  [1X1.6-1 InfoCapJit[101X
+  [1X1.8-1 InfoCapJit[101X
   
   [33X[1;0Y[29X[2XInfoCapJit[102X [32X info class[133X
   
   [33X[0;0YInfo class used for info messsages of the CAP compiler.[133X
   
   
-  [1X1.7 [33X[0;0YCompiling a function manually[133X[101X
+  [1X1.9 [33X[0;0YCompiling a function manually[133X[101X
   
-  [33X[0;0YUse  [2XCapJitCompiledFunction[102X  ([14X1.7-1[114X)  to  compile  a  function [10Xfunc[110X with JIT
+  [33X[0;0YUse  [2XCapJitCompiledFunction[102X  ([14X1.9-1[114X)  to  compile  a  function [10Xfunc[110X with JIT
   arguments  [10Xjit_args[110X.  [10Xjit_args[110X should represent a "generic" call, i.e., they
   should  not  run  into edge cases which do not happen with a "generic" call.
   Still,  the  execution  using [10Xjit_args[110X should be fast to improve compilation
   times.[133X
   
-  [1X1.7-1 CapJitCompiledFunction[101X
+  [1X1.9-1 CapJitCompiledFunction[101X
   
   [33X[1;0Y[29X[2XCapJitCompiledFunction[102X( [3Xfunc[103X, [3Xjit_args[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya function[133X
@@ -180,7 +263,7 @@
   used to infer the types of variables.[133X
   
   
-  [1X1.8 [33X[0;0YFAQ[133X[101X
+  [1X1.10 [33X[0;0YFAQ[133X[101X
   
   [30X    [33X[0;6YQ: Why is my function not resolved?[133X
   
@@ -189,14 +272,14 @@
   global  variable  in the tree during the resolving phase of the compilation.
   That is, it must be referenced from a global variable from the beginning on,
   or  after  global  variables  are  resolved by [2XCapJitResolvedGlobalVariables[102X
-  ([14X2.5-9[114X).  Possibly  you  have adapt [2XCapJitResolvedGlobalVariables[102X ([14X2.5-9[114X) to
+  ([14X2.5-12[114X).  Possibly you have adapt [2XCapJitResolvedGlobalVariables[102X ([14X2.5-12[114X) to
   your setting.[133X
   
   [30X    [33X[0;6YQ: Why is my operation not resolved?[133X
   
   [33X[0;0YA:  The  compiler  must  be  able  to  get  the arguments of the call of the
   operation  from  the  JIT  arguments.  Then  the rules in the description of
-  [2XCapJitResolvedOperations[102X ([14X2.5-10[114X) apply.[133X
+  [2XCapJitResolvedOperations[102X ([14X2.5-13[114X) apply.[133X
   
   [30X    [33X[0;6YQ: Why do I get the error "cannot find iteration key"?[133X
   
