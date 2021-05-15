@@ -18,11 +18,11 @@ Version := Maximum( [
            ##
            "2019.04-03", # Mohamed's version
            ##
-           "2020.10-01", # Fabian's version
+           "2021.05-01", # Fabian's version
            ##
            ] ),
 
-Date := "19/10/2020",
+Date := "15/05/2021",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -50,7 +50,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/GradedModulePresentationsForCAP",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/GradedModulePresentationsForCAP",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/GradedModulePresentationsForCAP/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/GradedModulePresentationsForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-", ~.Version, "/GradedModulePresentationsForCAP-", ~.Version ),
@@ -82,6 +82,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
+                           [ "CAP", ">= 2021.05-01" ],
                            [ "ModulePresentationsForCAP", ">=2019.08.07" ],
                            [ "GradedRingForHomalg", ">=2019.08.07" ],
                            [ "ComplexesAndFilteredObjectsForCAP", ">=2016.09.19" ],

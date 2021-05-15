@@ -1,7 +1,7 @@
 name: GradedModulePresentationsForCAP
-version: "2020.10-01"
+version: "2021.05-01"
 license: "GPL-2.0-or-later"
-date: 2020-10-19
+date: 2021-05-15
 description: |
     Presentations for graded modules
 
@@ -19,30 +19,33 @@ needed-pkgs:
     - name: "GAPDoc"
       version: ">= 1.5"
       url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
+    - name: "CAP"
+      version: ">= 2021.05-01"
+      url: "https://homalg-project.github.io/pkg/CAP"
     - name: "ModulePresentationsForCAP"
       version: ">=2019.08.07"
-      url: "https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP"
+      url: "https://homalg-project.github.io/pkg/ModulePresentationsForCAP"
     - name: "GradedRingForHomalg"
       version: ">=2019.08.07"
-      url: "https://homalg-project.github.io/homalg_project/GradedRingForHomalg"
+      url: "https://homalg-project.github.io/pkg/GradedRingForHomalg"
     - name: "ComplexesAndFilteredObjectsForCAP"
       version: ">=2016.09.19"
-      url: "https://homalg-project.github.io/CAP_project/ComplexesAndFilteredObjectsForCAP"
+      url: "https://homalg-project.github.io/pkg/ComplexesAndFilteredObjectsForCAP"
     - name: "HomologicalAlgebraForCAP"
       version: ">=2015.05.08"
-      url: "https://homalg-project.github.io/CAP_project/HomologicalAlgebraForCAP"
+      url: "https://homalg-project.github.io/pkg/HomologicalAlgebraForCAP"
 
-www: https://homalg-project.github.io/CAP_project/GradedModulePresentationsForCAP
+www: https://homalg-project.github.io/pkg/GradedModulePresentationsForCAP
 readme: README.md
 packageinfo: https://homalg-project.github.io/CAP_project/GradedModulePresentationsForCAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2020.10-01/GradedModulePresentationsForCAP-2020.10-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2021.05-01/GradedModulePresentationsForCAP-2021.05-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2020.10-01/GradedModulePresentationsForCAP-2020.10-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2021.05-01/GradedModulePresentationsForCAP-2021.05-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2020.10-01/GradedModulePresentationsForCAP-2020.10-01.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/GradedModulePresentationsForCAP-2021.05-01/GradedModulePresentationsForCAP-2021.05-01.pdf
 
 abstract: |
 
@@ -51,28 +54,28 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Gut20</span>]   <b class='BibAuthor'>Gutsche, S.</b>,
+    [<span class='BibKey'>Gut21</span>]   <b class='BibAuthor'>Gutsche, S.</b>,
      <i class='BibTitle'>GradedModulePresentationsForCAP, Presentations for graded modules,
-             Version 2020.10-01</i>
-     (<span class='BibYear'>2020</span>)<br />
+             Version 2021.05-01</i>
+     (<span class='BibYear'>2021</span>)<br />
     (<span class='BibNote'>GAP package</span>),
-    <span class='BibHowpublished'><a href="https://homalg-project.github.io/CAP_project/GradedModulePresentationsForCAP">https://homalg-project.github.io/CAP_project/GradedModulePresentationsForCAP</a></span>.
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/GradedModulePresentationsForCAP">https://homalg-project.github.io/pkg/GradedModulePresentationsForCAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ GradedModulePresentationsForCAP2020.10-01,
+    @misc{ GradedModulePresentationsForCAP2021.05-01,
       author =           {Gutsche, S.},
       title =            {{GradedModulePresentationsForCAP},  Presentations  for
-                          graded modules, {V}ersion 2020.10-01},
-      month =            {Oct},
-      year =             {2020},
+                          graded modules, {V}ersion 2021.05-01},
+      month =            {May},
+      year =             {2021},
       note =             {GAP package},
       howpublished =     {\href
-                          {https://homalg-project.github.io/CAP_project/GradedModulePresentationsForCAP}
+                          {https://homalg-project.github.io/pkg/GradedModulePresentationsForCAP}
                           {\texttt{https://homalg-project.github.io/}\discretionary
-                          {}{}{}\texttt{CAP{\textunderscore}project/}\discretionary
+                          {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{GradedModulePresentationsForCAP}}},
-      printedkey =       {Gut20}
+      printedkey =       {Gut21}
     }
 
