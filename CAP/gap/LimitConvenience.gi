@@ -482,6 +482,61 @@ InstallGlobalFunction( "CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS",
         
         output_string := Concatenation( output_string, current_string );
         
+        if limit.number_of_unbound_morphisms = 0 then
+            
+            if limit.number_of_targets = 1 then
+                
+                Error( "this case is currently not supported" );
+                
+            elif limit.number_of_targets > 1 then
+                
+                # diagram can be derived from morphisms
+                
+                current_string := Concatenation(
+                    "\n",
+                    "##\n",
+                    "InstallOtherMethod( ", functorial_name, "WithGiven", object_name, "s,\n",
+                    "               [ IsCapCategoryObject, ", filter_list_string, ", IsCapCategoryObject ],\n",
+                    "               \n",
+                    "  function( source, ", arguments_string, ", range )\n",
+                    "    #% CAP_JIT_RESOLVE_FUNCTION\n",
+                    "    \n",
+                    "    return ", functorial_with_given_name, "(\n",
+                    "        source,\n",
+                    "        ", call_arguments_string, ",\n",
+                    "        range\n",
+                    "    );\n",
+                    "    \n",
+                    "end );\n"
+                );
+                
+                output_string := Concatenation( output_string, current_string );
+                
+                current_string := Concatenation(
+                    "\n",
+                    "##\n",
+                    "InstallOtherMethod( ", functorial_name, "WithGiven", object_name, "s,\n",
+                    "               [ IsCapCategory, IsCapCategoryObject, ", filter_list_string, ", IsCapCategoryObject ],\n",
+                    "               \n",
+                    "  function( cat, source, ", arguments_string, ", range )\n",
+                    "    #% CAP_JIT_RESOLVE_FUNCTION\n",
+                    "    \n",
+                    "    return ", functorial_with_given_name, "(\n",
+                    "        cat,\n",
+                    "        source,\n",
+                    "        ", call_arguments_string, ",\n",
+                    "        range\n",
+                    "    );\n",
+                    "    \n",
+                    "end );\n"
+                );
+                
+                output_string := Concatenation( output_string, current_string );
+                
+            fi;
+            
+        fi;
+        
     end;
     
     for limit in limits do
