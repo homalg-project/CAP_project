@@ -1279,8 +1279,10 @@
   [33X[0;0YThe  arguments  are an object [23Xd_1 = \bigoplus_{i=1}^n S_i[123X, a list of objects
   [23X(S_i)_{i  =  1  \dots  n}[123X,  a list of morphisms [23XL = ( \mu_1: S_1 \rightarrow
   S_1',  \dots, \mu_n: S_n \rightarrow S_n' )[123X, a list of objects [23X(S_i')_{i = 1
-  \dots  n}[123X,  and  an  object  [23Xd_2  =  \bigoplus_{i=1}^n S_i'[123X. The output is a
-  morphism [23Xd_1 \rightarrow d_2[123X given by the functoriality of the direct sum.[133X
+  \dots  n}[123X,  and  an  object  [23Xd_2  = \bigoplus_{i=1}^n S_i'[123X. For convenience,
+  [3Xsource_diagram[103X  and  [3Xrange_diagram[103X  can  be  omitted  and  are automatically
+  derived  from  [3XL[103X  in that case. The output is a morphism [23Xd_1 \rightarrow d_2[123X
+  given by the functoriality of the direct sum.[133X
   
   [1X6.6-39 AddDirectSumFunctorialWithGivenDirectSums[101X
   
@@ -1450,9 +1452,10 @@
   [33X[0;0YThe  arguments  are  an  object [23Xs = \bigsqcup_{i=1}^n I_i[123X, a list of objects
   [23X(I_i)_{i  =  1  \dots  n}[123X,  a list [23XL = ( \mu_1: I_1 \rightarrow I_1', \dots,
   \mu_n: I_n \rightarrow I_n' )[123X, a list of objects [23X(I_i')_{i = 1 \dots n}[123X, and
-  an   object   [23Xr   =   \bigsqcup_{i=1}^n  I_i'[123X.  The  output  is  a  morphism
-  [23X\bigsqcup_{i=1}^n  I_i  \rightarrow  \bigsqcup_{i=1}^n  I_i'[123X  given  by  the
-  functoriality of the coproduct.[133X
+  an  object  [23Xr  = \bigsqcup_{i=1}^n I_i'[123X. For convenience, [3Xsource_diagram[103X and
+  [3Xrange_diagram[103X  can  be  omitted and are automatically derived from [3XL[103X in that
+  case.   The   output   is   a  morphism  [23X\bigsqcup_{i=1}^n  I_i  \rightarrow
+  \bigsqcup_{i=1}^n I_i'[123X given by the functoriality of the coproduct.[133X
   
   [1X6.7-15 AddCoproductFunctorialWithGivenCoproducts[101X
   
@@ -1620,9 +1623,10 @@
   [33X[0;0YThe  arguments  are  an  object  [23Xs  =  \prod_{i=1}^n  P_i[123X, a list of objects
   [23X(P_i)_{i  =  1  \dots  n}[123X,  a  list of morphisms [23XL = (\mu_i: P_i \rightarrow
   P'_i)_{i=1\dots  n}[123X, a list of objects [23X(P_i')_{i = 1 \dots n}[123X, and an object
-  [23Xr  =  \prod_{i=1}^n  P_i'[123X.  The  output  is  a  morphism  [23X\prod_{i=1}^n  P_i
-  \rightarrow  \prod_{i=1}^n  P_i'[123X  given  by  the functoriality of the direct
-  product.[133X
+  [23Xr  =  \prod_{i=1}^n  P_i'[123X. For convenience, [3Xsource_diagram[103X and [3Xrange_diagram[103X
+  can be omitted and are automatically derived from [3XL[103X in that case. The output
+  is  a morphism [23X\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'[123X given by the
+  functoriality of the direct product.[133X
   
   [1X6.8-14 AddDirectProductFunctorialWithGivenDirectProducts[101X
   
