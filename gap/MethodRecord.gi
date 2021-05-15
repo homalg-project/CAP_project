@@ -17,21 +17,19 @@ TruthMorphismIntoSubobjectClassifierWithGivenObjects := rec(
   installation_name := "TruthMorphismIntoSubobjectClassifierWithGivenObjects",
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "I", "S" ] , [ "I" , "S" ] ],
-  universal_object_position := "Range",
   return_type := "morphism" ),
 
 ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier := rec(
   installation_name := "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
   filter_list := [ "category", "morphism" , "object" ],
   io_type := [ [ "alpha", "S" ] , [ "alpha_range" , "S" ] ],
-  number_of_diagram_arguments := 0,
   return_type := "morphism" ),
 
 ClassifyingMorphismOfSubobject := rec(
   installation_name := "ClassifyingMorphismOfSubobject",
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ] , [ "alpha_range" , "S" ] ],
-  number_of_diagram_arguments := 0,
+  with_given_object_position := "Range",
   return_type := "morphism" ),
 
 SubobjectOfClassifyingMorphism := rec(
