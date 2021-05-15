@@ -529,7 +529,16 @@ InstallGlobalFunction( UniversalMorphismIntoFiberProduct,
        and IsList( arg[1] )
        and IsList( arg[2] ) then
        
-       return UniversalMorphismIntoFiberProductOp( CapCategory( arg[1][1] ), arg[1], arg[2] );
+       return UniversalMorphismIntoFiberProduct( CapCategory( arg[1][1] ), arg[1], arg[2] );
+       
+    fi;
+    
+    if Length( arg ) = 3
+       and IsList( arg[1] )
+       and IsCapCategoryObject( arg[2] )
+       and IsList( arg[3] ) then
+       
+       return UniversalMorphismIntoFiberProduct( CapCategory( arg[1][1] ), arg[1], arg[2], arg[3] );
        
     fi;
     
@@ -625,7 +634,16 @@ InstallGlobalFunction( UniversalMorphismFromPushout,
        and IsList( arg[1] )
        and IsList( arg[2] ) then
        
-       return UniversalMorphismFromPushoutOp( CapCategory( arg[1][1] ), arg[1], arg[2] );
+       return UniversalMorphismFromPushout( CapCategory( arg[1][1] ), arg[1], arg[2] );
+       
+    fi;
+    
+    if Length( arg ) = 3
+       and IsList( arg[1] )
+       and IsCapCategoryObject( arg[2] )
+       and IsList( arg[3] ) then
+       
+       return UniversalMorphismFromPushout( CapCategory( arg[1][1] ), arg[1], arg[2], arg[3] );
        
     fi;
     
