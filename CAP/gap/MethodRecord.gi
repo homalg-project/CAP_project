@@ -1232,6 +1232,12 @@ Equalizer := rec(
   pre_function := function( cat, diagram )
     local cobase, base, current_morphism, current_value;
     
+    if IsEmpty( diagram ) then
+        
+        return [ true ];
+        
+    fi;
+    
     cobase := Source( diagram[1] );
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
@@ -1306,6 +1312,12 @@ UniversalMorphismIntoEqualizer := rec(
   pre_function := function( cat, diagram, test_object, tau )
     local cobase, base, current_morphism, current_value, current_morphism_position;
     
+    if IsEmpty( diagram ) then
+        
+        return [ true ];
+        
+    fi;
+    
     cobase := Source( diagram[1] );
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
@@ -1363,6 +1375,12 @@ FiberProduct := rec(
   
   pre_function := function( cat, diagram )
     local base, current_morphism, current_value;
+    
+    if IsEmpty( diagram ) then
+        
+        return [ true ];
+        
+    fi;
     
     base := Range( diagram[1] );
     
@@ -1514,6 +1532,12 @@ UniversalMorphismIntoFiberProduct := rec(
         return [ false, "fiber product diagram and test diagram must have equal length" ];
     fi;
     
+    if IsEmpty( diagram ) then
+        
+        return [ true ];
+        
+    fi;
+    
     base := Range( diagram[1] );
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
@@ -1569,6 +1593,12 @@ UniversalMorphismIntoFiberProductWithGivenFiberProduct := rec(
         return [ false, "fiber product diagram and test diagram must have equal length" ];
     fi;
     
+    if IsEmpty( diagram ) then
+        
+        return [ true ];
+        
+    fi;
+    
     base := Range( diagram[1] );
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
@@ -1619,6 +1649,12 @@ Coequalizer := rec(
   
   pre_function := function( cat, diagram )
     local base, cobase, current_morphism, current_value;
+    
+    if IsEmpty( diagram ) then
+        
+        return [ true ];
+        
+    fi;
     
     base := Source( diagram[1] );
     
@@ -1694,6 +1730,12 @@ UniversalMorphismFromCoequalizer := rec(
   pre_function := function( cat, diagram, test_object, tau )
     local base, cobase, current_morphism, current_value, current_morphism_position;
     
+    if IsEmpty( diagram ) then
+        
+        return [ true ];
+        
+    fi;
+    
     base := Source( diagram[1] );
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
@@ -1751,6 +1793,12 @@ Pushout := rec(
   
   pre_function := function( cat, diagram )
     local cobase, current_morphism, current_value;
+    
+    if IsEmpty( diagram ) then
+        
+        return [ true ];
+        
+    fi;
     
     cobase := Source( diagram[1] );
     
@@ -1902,6 +1950,12 @@ UniversalMorphismFromPushout := rec(
         return [ false, "pushout diagram and test diagram must have equal length" ];
     fi;
     
+    if IsEmpty( diagram ) then
+        
+        return [ true ];
+        
+    fi;
+    
     cobase := Source( diagram[1] );
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
@@ -1955,6 +2009,12 @@ UniversalMorphismFromPushoutWithGivenPushout := rec(
     
     if Length( diagram ) <> Length( sink ) then
         return [ false, "pushout diagram and test diagram must have equal length" ];
+    fi;
+    
+    if IsEmpty( diagram ) then
+        
+        return [ true ];
+        
     fi;
     
     cobase := Source( diagram[1] );
