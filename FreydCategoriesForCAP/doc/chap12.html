@@ -549,6 +549,8 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">z := id + id;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CokernelProjection( z );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CokernelColift( z, CokernelProjection( z ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismFromZeroObjectWithGivenZeroObject( obj_gamma, ZeroObject( freyd ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">(2 / R) * f;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := HomalgFieldOfRationalsInSingular() * "x,y,z";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Rows_S := CategoryOfRows( S );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S3 := CategoryOfRowsObject( 3, Rows_S );;</span>
@@ -1500,7 +1502,7 @@ true
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := HomalgFieldOfRationalsInSingular() * "t";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := IndeterminatesOfPolynomialRing( R )[1];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cocycle := function( a, b, c ) local e; e := CoastrictionToImage( UniversalMorphismIntoDirectSum( ReversedArrow( c ), Arrow( c ) ) ); return t^RankOfObject( KernelObject( e ) ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cocycle := function( a, b, c ) local e; e := CoastrictionToImage( UniversalMorphismIntoDirectSum( [ ReversedArrow( c ), Arrow( c ) ] ) ); return t^RankOfObject( KernelObject( e ) ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TwistedLinearClosure( R, rel, cocycle );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := beta/T;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta := ZeroMorphism( 1/vec, 1/vec )/rel/T;;</span>

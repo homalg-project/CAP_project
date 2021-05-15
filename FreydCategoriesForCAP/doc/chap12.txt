@@ -427,6 +427,8 @@
     [4X[25Xgap>[125X [27Xz := id + id;;[127X[104X
     [4X[25Xgap>[125X [27XCokernelProjection( z );;[127X[104X
     [4X[25Xgap>[125X [27XCokernelColift( z, CokernelProjection( z ) );;[127X[104X
+    [4X[25Xgap>[125X [27XUniversalMorphismFromZeroObjectWithGivenZeroObject( obj_gamma, ZeroObject( freyd ) );;[127X[104X
+    [4X[25Xgap>[125X [27X(2 / R) * f;;[127X[104X
     [4X[25Xgap>[125X [27XS := HomalgFieldOfRationalsInSingular() * "x,y,z";;[127X[104X
     [4X[25Xgap>[125X [27XRows_S := CategoryOfRows( S );;[127X[104X
     [4X[25Xgap>[125X [27XS3 := CategoryOfRowsObject( 3, Rows_S );;[127X[104X
@@ -1344,7 +1346,7 @@
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XR := HomalgFieldOfRationalsInSingular() * "t";;[127X[104X
     [4X[25Xgap>[125X [27Xt := IndeterminatesOfPolynomialRing( R )[1];;[127X[104X
-    [4X[25Xgap>[125X [27Xcocycle := function( a, b, c ) local e; e := CoastrictionToImage( UniversalMorphismIntoDirectSum( ReversedArrow( c ), Arrow( c ) ) ); return t^RankOfObject( KernelObject( e ) ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xcocycle := function( a, b, c ) local e; e := CoastrictionToImage( UniversalMorphismIntoDirectSum( [ ReversedArrow( c ), Arrow( c ) ] ) ); return t^RankOfObject( KernelObject( e ) ); end;;[127X[104X
     [4X[25Xgap>[125X [27XT := TwistedLinearClosure( R, rel, cocycle );;[127X[104X
     [4X[25Xgap>[125X [27Xgamma := beta/T;;[127X[104X
     [4X[25Xgap>[125X [27Xdelta := ZeroMorphism( 1/vec, 1/vec )/rel/T;;[127X[104X
