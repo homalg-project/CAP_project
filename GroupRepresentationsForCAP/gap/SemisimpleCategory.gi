@@ -818,10 +818,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
-      function( diagram, source, direct_sum_object )
-        local test_object, support, morphism_list, irr, irr_diagram, irr_source;
-        
-        test_object := Source( source[1] );
+      function( diagram, test_object, source, direct_sum_object )
+        local support, morphism_list, irr, irr_diagram, irr_source;
         
         support := Set( Concatenation( Support( direct_sum_object ), Support( test_object ) ) );
         
@@ -870,10 +868,8 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
-      function( diagram, sink, direct_sum_object )
-        local test_object, support, morphism_list, irr, irr_diagram, irr_sink;
-        
-        test_object := Range( sink[1] );
+      function( diagram, test_object, sink, direct_sum_object )
+        local support, morphism_list, irr, irr_diagram, irr_sink;
         
         support := Set( Concatenation( Support( direct_sum_object ), Support( test_object ) ) );
         
@@ -895,7 +891,7 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SEMISIMPLE_CATEGORY,
     
     ##
     AddDirectSumFunctorialWithGivenDirectSums( category,
-      function( source, diagram, range )
+      function( source, source_diagram, diagram, range_diagram, range )
         local support, irr, irr_diagram, morphism_list;
         
         support := Set( Concatenation( Support( source ), Support( range ) ) );

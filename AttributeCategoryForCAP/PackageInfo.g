@@ -18,7 +18,7 @@ Version := Maximum( [
   ## this line prevents merge conflicts
   "2016.09-14", ## Sepp's version
   ## this line prevents merge conflicts
-  "2020.10-01", ## Fabian's version
+  "2021.05-01", ## Fabian's version
 ] ),
 
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
@@ -92,7 +92,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">= 2019.01.16" ],
+                           [ "CAP", ">= 2021.05-01" ],
                            [ "MonoidalCategories", ">= 2019.01.16" ],
                    ],
   SuggestedOtherPackages := [ ],

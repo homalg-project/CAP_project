@@ -380,7 +380,7 @@ BindGlobal( "ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_Z_FUNCTORS",
 
       AddKernelLiftWithGivenKernelObject( ZFunctorCategory( category ),
         
-        function( morphism, test_morphism, kernel )
+        function( morphism, test_object, test_morphism, kernel )
           
           morphism_func := function( index )
               
@@ -466,7 +466,7 @@ BindGlobal( "ADD_COKERNEL_COLIFT_WITH_GIVEN_COKERNEL_IN_Z_FUNCTORS",
 
       AddCokernelColiftWithGivenCokernelObject( ZFunctorCategory( category ),
         
-        function( morphism, test_morphism, cokernel )
+        function( morphism, test_object, test_morphism, cokernel )
           
           morphism_func := function( index )
               
@@ -643,7 +643,7 @@ BindGlobal( "ADD_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUC
       
       AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( ZFunctorCategory( category ),
         
-        function( diagram, source, direct_product )
+        function( diagram, test_object, source, direct_product )
           
           differential_func := function( index )
               
@@ -715,7 +715,7 @@ BindGlobal( "ADD_UNIVERSAL_MORPHISM_FROM_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_Z_FUN
       
       AddUniversalMorphismFromCoproductWithGivenCoproduct( ZFunctorCategory( category ),
         
-        function( diagram, sink, coproduct )
+        function( diagram, test_object, sink, coproduct )
           
           differential_func := function( index )
               
@@ -817,7 +817,7 @@ BindGlobal( "ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_Z_FUNCT
       
       AddUniversalMorphismIntoFiberProductWithGivenFiberProduct( ZFunctorCategory( category ),
         
-        function( diagram, source, pullback )
+        function( diagram, test_object, source, pullback )
           
           differential_func := function( index )
               
@@ -897,7 +897,7 @@ BindGlobal( "ADD_UNIVERSAL_MORPHISM_FROM_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_Z_FUNCTOR
       
       AddUniversalMorphismFromPushoutWithGivenPushout( ZFunctorCategory( category ),
         
-        function( diagram, sink, pushout )
+        function( diagram, test_object, sink, pushout )
           
           differential_func := function( index )
               

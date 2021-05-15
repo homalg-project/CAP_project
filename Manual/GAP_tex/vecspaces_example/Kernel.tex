@@ -17,7 +17,7 @@ end );
 ##
 AddKernelLift( SQVec,
 
-  function( alpha, tau )
+  function( alpha, T, tau )
     local kernel_matrix;
     
     kernel_matrix := SyzygiesOfRows( UnderlyingMatrix( alpha ) );

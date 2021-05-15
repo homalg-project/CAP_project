@@ -484,7 +484,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     
     ##
     AddDirectSumFunctorialWithGivenDirectSums( category,
-      function( direct_sum_source, diagram, direct_sum_range )
+      function( direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
         
         return CategoryOfColumnsMorphism( direct_sum_source,
                                        DiagMat( List( diagram, mor -> UnderlyingMatrix( mor ) ) ), 
@@ -516,7 +516,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
-      function( diagram, sink, direct_sum )
+      function( diagram, test_object, sink, direct_sum )
         local underlying_matrix_of_universal_morphism;
         
         underlying_matrix_of_universal_morphism :=
@@ -553,7 +553,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
-      function( diagram, sink, coproduct )
+      function( diagram, test_object, sink, coproduct )
         local underlying_matrix_of_universal_morphism;
         
         underlying_matrix_of_universal_morphism :=

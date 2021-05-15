@@ -302,16 +302,16 @@ MorphismFromKernelObjectToSinkWithGivenKernelObject := rec(
   return_type := "morphism" ),
 
 KernelLift := rec(
-  filter_list := [ "category", "morphism", "morphism" ],
-  io_type := [ [ "alpha", "tau" ], [ "tau_source", "P" ] ],
+  filter_list := [ "category", "morphism", "object", "morphism" ],
+  io_type := [ [ "alpha", "T", "tau" ], [ "T", "P" ] ],
   with_given_object_position := "Range",
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "CokernelColift" ),
 
 KernelLiftWithGivenKernelObject := rec(
-  filter_list := [ "category", "morphism", "morphism", "object" ],
-  io_type := [ [ "alpha", "tau", "P" ], [ "tau_source", "P" ] ],
+  filter_list := [ "category", "morphism", "object", "morphism", "object" ],
+  io_type := [ [ "alpha", "T", "tau", "P" ], [ "T", "P" ] ],
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "CokernelColiftWithGivenCokernelObject" ),
@@ -353,16 +353,16 @@ MorphismFromSourceToCokernelObjectWithGivenCokernelObject := rec(
   return_type := "morphism" ),
 
 CokernelColift := rec(
-  filter_list := [ "category", "morphism", "morphism" ],
-  io_type := [ [ "alpha", "tau" ], [ "P", "tau_range" ] ],
+  filter_list := [ "category", "morphism", "object", "morphism" ],
+  io_type := [ [ "alpha", "T", "tau" ], [ "P", "T" ] ],
   with_given_object_position := "Source",
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "KernelLift" ),
 
 CokernelColiftWithGivenCokernelObject := rec(
-  filter_list := [ "category", "morphism", "morphism", "object" ],
-  io_type := [ [ "alpha", "tau", "P" ], [ "P", "tau_range" ] ],
+  filter_list := [ "category", "morphism", "object", "morphism", "object" ],
+  io_type := [ [ "alpha", "T", "tau", "P" ], [ "P", "T" ] ],
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "KernelLiftWithGivenKernelObject" ),
@@ -431,7 +431,7 @@ ZeroObjectFunctorial := rec(
 
 UniversalMorphismFromZeroObject := rec(
   filter_list := [ "category", "object" ],
-  io_type := [ [ "A" ], [ "T", "A" ] ],
+  io_type := [ [ "T" ], [ "P", "T" ] ],
   with_given_object_position := "Source",
   universal_type := "Colimit",
   return_type := "morphism",
@@ -439,14 +439,14 @@ UniversalMorphismFromZeroObject := rec(
   
 UniversalMorphismFromZeroObjectWithGivenZeroObject := rec(
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "A", "T" ], [ "T", "A" ] ],
+  io_type := [ [ "T", "P" ], [ "P", "T" ] ],
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "UniversalMorphismIntoZeroObjectWithGivenZeroObject" ),
 
 UniversalMorphismIntoZeroObject := rec(
   filter_list := [ "category", "object" ],
-  io_type := [ [ "A" ], [ "A", "T" ] ],
+  io_type := [ [ "T" ], [ "T", "P" ] ],
   with_given_object_position := "Range",
   universal_type := "Limit",
   return_type := "morphism",
@@ -454,7 +454,7 @@ UniversalMorphismIntoZeroObject := rec(
 
 UniversalMorphismIntoZeroObjectWithGivenZeroObject := rec(
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "A", "T" ], [ "A", "T" ] ],
+  io_type := [ [ "T", "P" ], [ "T", "P" ] ],
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "UniversalMorphismFromZeroObjectWithGivenZeroObject" ),
@@ -516,28 +516,26 @@ ProjectionInFactorOfDirectSumWithGivenDirectSum := rec(
   dual_operation := "InjectionOfCofactorOfDirectSumWithGivenDirectSum" ),
 
 UniversalMorphismIntoDirectSum := rec(
-  filter_list := [ "category", "list_of_objects", "list_of_morphisms" ],
-  io_type := [ [ "objects", "tau" ], [ "tau_1_source", "P" ] ],
+  filter_list := [ "category", "list_of_objects", "object", "list_of_morphisms" ],
+  io_type := [ [ "objects", "T", "tau" ], [ "T", "P" ] ],
   with_given_object_position := "Range",
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromDirectSum",
   
-  pre_function := function( cat, diagram, source )
-    local test_object, current_morphism, current_return;
+  pre_function := function( cat, diagram, test_object, source )
+    local current_morphism, current_return;
     
-    test_object := Source( source[1] );
-    
-    for current_morphism in source{[2 .. Length( source ) ]} do
+    for current_morphism in source do
         
         current_return := IsEqualForObjects( Source( current_morphism ), test_object );
         
         if current_return = fail then
             
-            return [ false, "cannot decide whether sources of morphisms in given source diagram are equal" ];
+            return [ false, "cannot decide whether sources of morphisms in given source diagram are equal to the test object" ];
             
         elif current_return = false then
             
-            return [ false, "sources of morphisms must be equal in given source diagram" ];
+            return [ false, "sources of morphisms must be equal to the test object in given source diagram" ];
             
         fi;
         
@@ -549,27 +547,25 @@ UniversalMorphismIntoDirectSum := rec(
   return_type := "morphism" ),
 
 UniversalMorphismIntoDirectSumWithGivenDirectSum := rec(
-  filter_list := [ "category", "list_of_objects", "list_of_morphisms", "object" ],
-  io_type := [ [ "objects", "tau", "P" ], [ "tau_1_source", "P" ] ],
+  filter_list := [ "category", "list_of_objects", "object", "list_of_morphisms", "object" ],
+  io_type := [ [ "objects", "T", "tau", "P" ], [ "T", "P" ] ],
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromDirectSumWithGivenDirectSum",
   
-  pre_function := function( cat, diagram, source, direct_sum )
-    local test_object, current_morphism, current_return;
+  pre_function := function( cat, diagram, test_object, source, direct_sum )
+    local current_morphism, current_return;
     
-    test_object := Source( source[1] );
-    
-    for current_morphism in source{[2 .. Length( source ) ]} do
+    for current_morphism in source do
         
         current_return := IsEqualForObjects( Source( current_morphism ), test_object );
         
         if current_return = fail then
             
-            return [ false, "cannot decide whether sources of morphisms in given source diagram are equal" ];
+            return [ false, "cannot decide whether sources of morphisms in given source diagram are equal to the test object" ];
             
         elif current_return = false then
             
-            return [ false, "sources of morphisms must be equal in given source diagram" ];
+            return [ false, "sources of morphisms must be equal to the test object in given source diagram" ];
             
         fi;
         
@@ -596,28 +592,26 @@ InjectionOfCofactorOfDirectSumWithGivenDirectSum := rec(
   dual_operation := "ProjectionInFactorOfDirectSumWithGivenDirectSum" ),
 
 UniversalMorphismFromDirectSum := rec(
-  filter_list := [ "category", "list_of_objects", "list_of_morphisms" ],
-  io_type := [ [ "objects", "tau" ], [ "P", "tau_1_range" ] ],
+  filter_list := [ "category", "list_of_objects", "object", "list_of_morphisms" ],
+  io_type := [ [ "objects", "T", "tau" ], [ "P", "T" ] ],
   with_given_object_position := "Source",
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoDirectSum",
   
-  pre_function := function( cat, diagram, sink )
-    local test_object, current_morphism, current_return;
+  pre_function := function( cat, diagram, test_object, sink )
+    local current_morphism, current_return;
     
-    test_object := Range( sink[1] );
-    
-    for current_morphism in sink{[2 .. Length( sink ) ]} do
+    for current_morphism in sink do
         
         current_return := IsEqualForObjects( Range( current_morphism ), test_object );
         
         if current_return = fail then
             
-            return [ false, "cannot decide whether ranges of morphisms in given sink diagram are equal" ];
+            return [ false, "cannot decide whether ranges of morphisms in given sink diagram are equal to the test object" ];
             
         elif current_return = false then
             
-            return [ false, "ranges of morphisms must be equal in given sink diagram" ];
+            return [ false, "ranges of morphisms must be equal to the test object in given sink diagram" ];
             
         fi;
         
@@ -629,27 +623,25 @@ UniversalMorphismFromDirectSum := rec(
   return_type := "morphism" ),
 
 UniversalMorphismFromDirectSumWithGivenDirectSum := rec(
-  filter_list := [ "category", "list_of_objects", "list_of_morphisms", "object" ],
-  io_type := [ [ "objects", "tau", "P" ], [ "P", "tau_1_range" ] ],
+  filter_list := [ "category", "list_of_objects", "object", "list_of_morphisms", "object" ],
+  io_type := [ [ "objects", "T", "tau", "P" ], [ "P", "T" ] ],
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoDirectSumWithGivenDirectSum",
   
-  pre_function := function( cat, diagram, sink, direct_sum )
-    local test_object, current_morphism, current_return;
+  pre_function := function( cat, diagram, test_object, sink, direct_sum )
+    local current_morphism, current_return;
     
-    test_object := Range( sink[1] );
-    
-    for current_morphism in sink{[2 .. Length( sink ) ]} do
+    for current_morphism in sink do
         
         current_return := IsEqualForObjects( Range( current_morphism ), test_object );
         
         if current_return = fail then
             
-            return [ false, "cannot decide whether ranges of morphisms in given sink diagram are equal" ];
+            return [ false, "cannot decide whether ranges of morphisms in given sink diagram are equal to the test object" ];
             
         elif current_return = false then
             
-            return [ false, "ranges of morphisms must be equal in given sink diagram" ];
+            return [ false, "ranges of morphisms must be equal to the test object in given sink diagram" ];
             
         fi;
         
@@ -668,7 +660,7 @@ TerminalObject := rec(
 
 UniversalMorphismIntoTerminalObject := rec(
   filter_list := [ "category", "object" ],
-  io_type := [ [ "A" ], [ "A", "T" ] ],
+  io_type := [ [ "T" ], [ "T", "P" ] ],
   with_given_object_position := "Range",
   universal_type := "Limit",
   return_type := "morphism",
@@ -676,7 +668,7 @@ UniversalMorphismIntoTerminalObject := rec(
 
 UniversalMorphismIntoTerminalObjectWithGivenTerminalObject := rec(
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "A", "T" ], [ "A", "T" ] ],
+  io_type := [ [ "T", "P" ], [ "T", "P" ] ],
   universal_type := "Limit",
   return_type := "morphism",
   dual_operation := "UniversalMorphismFromInitialObjectWithGivenInitialObject" ),
@@ -689,7 +681,7 @@ InitialObject := rec(
 
 UniversalMorphismFromInitialObject := rec(
   filter_list := [ "category", "object" ],
-  io_type := [ [ "A" ], [ "T", "A" ] ],
+  io_type := [ [ "T" ], [ "P", "T" ] ],
   with_given_object_position := "Source",
   universal_type := "Colimit",
   return_type := "morphism",
@@ -697,7 +689,7 @@ UniversalMorphismFromInitialObject := rec(
 
 UniversalMorphismFromInitialObjectWithGivenInitialObject := rec(
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "A", "T" ], [ "T", "A" ] ],
+  io_type := [ [ "T", "P" ], [ "P", "T" ] ],
   universal_type := "Colimit",
   return_type := "morphism",
   dual_operation := "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject" ),
@@ -724,28 +716,26 @@ ProjectionInFactorOfDirectProductWithGivenDirectProduct := rec(
   dual_operation := "InjectionOfCofactorOfCoproductWithGivenCoproduct" ),
 
 UniversalMorphismIntoDirectProduct := rec(
-  io_type := [ [ "objects", "tau" ], [ "tau_1_source", "P" ] ],
-  filter_list := [ "category", "list_of_objects", "list_of_morphisms" ],
+  filter_list := [ "category", "list_of_objects", "object", "list_of_morphisms" ],
+  io_type := [ [ "objects", "T", "tau" ], [ "T", "P" ] ],
   with_given_object_position := "Range",
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromCoproduct",
   
-  pre_function := function( cat, diagram, source )
-    local test_object, current_morphism, current_return;
+  pre_function := function( cat, diagram, test_object, source )
+    local current_morphism, current_return;
     
-    test_object := Source( source[1] );
-    
-    for current_morphism in source{[2 .. Length( source ) ]} do
+    for current_morphism in source do
         
         current_return := IsEqualForObjects( Source( current_morphism ), test_object );
         
         if current_return = fail then
             
-            return [ false, "cannot decide whether sources of morphisms in given source diagram are equal" ];
+            return [ false, "cannot decide whether sources of morphisms in given source diagram are equal to the test object" ];
             
         elif current_return = false then
             
-            return [ false, "sources of morphisms must be equal in given source diagram" ];
+            return [ false, "sources of morphisms must be equal to the test object in given source diagram" ];
             
         fi;
         
@@ -757,27 +747,25 @@ UniversalMorphismIntoDirectProduct := rec(
   return_type := "morphism" ),
 
 UniversalMorphismIntoDirectProductWithGivenDirectProduct := rec(
-  filter_list := [ "category", "list_of_objects", "list_of_morphisms", "object" ],
-  io_type := [ [ "objects", "tau", "P" ], [ "tau_1_source", "P" ] ],
+  filter_list := [ "category", "list_of_objects", "object", "list_of_morphisms", "object" ],
+  io_type := [ [ "objects", "T", "tau", "P" ], [ "T", "P" ] ],
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromCoproductWithGivenCoproduct",
   
-  pre_function := function( cat, diagram, source, direct_product )
-    local test_object, current_morphism, current_return;
+  pre_function := function( cat, diagram, test_object, source, direct_product )
+    local current_morphism, current_return;
     
-    test_object := Source( source[1] );
-    
-    for current_morphism in source{[2 .. Length( source ) ]} do
+    for current_morphism in source do
         
         current_return := IsEqualForObjects( Source( current_morphism ), test_object );
         
         if current_return = fail then
             
-            return [ false, "cannot decide whether sources of morphisms in given source diagram are equal" ];
+            return [ false, "cannot decide whether sources of morphisms in given source diagram are equal to the test object" ];
             
         elif current_return = false then
             
-            return [ false, "sources of morphisms must be equal in given source diagram" ];
+            return [ false, "sources of morphisms must be equal to the test object in given source diagram" ];
             
         fi;
         
@@ -1115,28 +1103,26 @@ InjectionOfCofactorOfCoproductWithGivenCoproduct := rec(
   dual_operation := "ProjectionInFactorOfDirectProductWithGivenDirectProduct" ),
 
 UniversalMorphismFromCoproduct := rec(
-  filter_list := [ "category", "list_of_objects", "list_of_morphisms" ],
-  io_type := [ [ "objects", "tau" ], [ "P", "tau_1_range" ] ],
+  filter_list := [ "category", "list_of_objects", "object", "list_of_morphisms" ],
+  io_type := [ [ "objects",  "T", "tau" ], [ "P", "T" ] ],
   with_given_object_position := "Source",
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoDirectProduct",
   
-  pre_function := function( cat, diagram, sink )
-    local test_object, current_morphism, current_return;
+  pre_function := function( cat, diagram, test_object, sink )
+    local current_morphism, current_return;
     
-    test_object := Range( sink[1] );
-    
-    for current_morphism in sink{[2 .. Length( sink ) ]} do
+    for current_morphism in sink do
         
         current_return := IsEqualForObjects( Range( current_morphism ), test_object );
         
         if current_return = fail then
             
-            return [ false, "cannot decide whether ranges of morphisms in given sink diagram are equal" ];
+            return [ false, "cannot decide whether ranges of morphisms in given sink diagram are equal to the test object" ];
             
         elif current_return = false then
             
-            return [ false, "ranges of morphisms must be equal in given sink diagram" ];
+            return [ false, "ranges of morphisms must be equal to the test object in given sink diagram" ];
             
         fi;
         
@@ -1148,27 +1134,25 @@ UniversalMorphismFromCoproduct := rec(
   return_type := "morphism" ),
 
 UniversalMorphismFromCoproductWithGivenCoproduct := rec(
-  filter_list := [ "category", "list_of_objects", "list_of_morphisms", "object" ],
-  io_type := [ [ "objects", "tau", "P" ], [ "P", "tau_1_range" ] ],
+  filter_list := [ "category", "list_of_objects", "object", "list_of_morphisms", "object" ],
+  io_type := [ [ "objects", "T", "tau", "P" ], [ "P", "T" ] ],
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
   
-  pre_function := function( cat, diagram, sink, coproduct )
-    local test_object, current_morphism, current_return;
+  pre_function := function( cat, diagram, test_object, sink, coproduct )
+    local current_morphism, current_return;
     
-    test_object := Range( sink[1] );
-    
-    for current_morphism in sink{[2 .. Length( sink ) ]} do
+    for current_morphism in sink do
         
         current_return := IsEqualForObjects( Range( current_morphism ), test_object );
         
         if current_return = fail then
             
-            return [ false, "cannot decide whether ranges of morphisms in given sink diagram are equal" ];
+            return [ false, "cannot decide whether ranges of morphisms in given sink diagram are equal to the test object" ];
             
         elif current_return = false then
             
-            return [ false, "ranges of morphisms must be equal in given sink diagram" ];
+            return [ false, "ranges of morphisms must be equal to the test object in given sink diagram" ];
             
         fi;
         
@@ -1248,6 +1232,12 @@ Equalizer := rec(
   pre_function := function( cat, diagram )
     local cobase, base, current_morphism, current_value;
     
+    if IsEmpty( diagram ) then
+        
+        return [ true ];
+        
+    fi;
+    
     cobase := Source( diagram[1] );
     
     for current_morphism in diagram{[ 2 .. Length( diagram ) ]} do
@@ -1312,15 +1302,21 @@ MorphismFromEqualizerToSinkWithGivenEqualizer := rec(
   return_type := "morphism" ),
 
 UniversalMorphismIntoEqualizer := rec(
-  filter_list := [ "category", "list_of_morphisms", "morphism" ],
-  return_type := "morphism",
-  io_type := [ [ "morphisms", "tau" ], [ "tau_source", "P" ] ],
+  filter_list := [ "category", "list_of_morphisms", "object", "morphism" ],
+  io_type := [ [ "morphisms", "T", "tau" ], [ "T", "P" ] ],
   with_given_object_position := "Range",
   universal_type := "Limit",
+  return_type := "morphism",
   dual_operation := "UniversalMorphismFromCoequalizer",
   
-  pre_function := function( cat, diagram, tau )
+  pre_function := function( cat, diagram, test_object, tau )
     local cobase, base, current_morphism, current_value, current_morphism_position;
+    
+    if IsEmpty( diagram ) then
+        
+        return [ true ];
+        
+    fi;
     
     cobase := Source( diagram[1] );
     
@@ -1366,10 +1362,10 @@ UniversalMorphismIntoEqualizer := rec(
   end ),
 
 UniversalMorphismIntoEqualizerWithGivenEqualizer := rec(
-  filter_list := [ "category", "list_of_morphisms", "morphism", "object" ],
-  return_type := "morphism",
-  io_type := [ [ "morphisms", "tau", "P" ], [ "tau_source", "P" ] ],
+  filter_list := [ "category", "list_of_morphisms", "object", "morphism", "object" ],
+  io_type := [ [ "morphisms", "T", "tau", "P" ], [ "T", "P" ] ],
   universal_type := "Limit",
+  return_type := "morphism",
   dual_operation := "UniversalMorphismFromCoequalizerWithGivenCoequalizer" ),
 
 FiberProduct := rec(
@@ -1379,6 +1375,12 @@ FiberProduct := rec(
   
   pre_function := function( cat, diagram )
     local base, current_morphism, current_value;
+    
+    if IsEmpty( diagram ) then
+        
+        return [ true ];
+        
+    fi;
     
     base := Range( diagram[1] );
     
@@ -1517,17 +1519,23 @@ MorphismFromFiberProductToSinkWithGivenFiberProduct := rec(
   return_type := "morphism" ),
 
 UniversalMorphismIntoFiberProduct := rec(
-  filter_list := [ "category", "list_of_morphisms", "list_of_morphisms" ],
-  io_type := [ [ "morphisms", "tau" ], [ "tau_1_source", "P" ] ],
+  filter_list := [ "category", "list_of_morphisms", "object", "list_of_morphisms" ],
+  io_type := [ [ "morphisms", "T", "tau" ], [ "T", "P" ] ],
   with_given_object_position := "Range",
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromPushout",
   
-  pre_function := function( cat, diagram, source )
-    local base, current_morphism, current_value, current_morphism_position, test_object;
+  pre_function := function( cat, diagram, test_object, source )
+    local base, current_morphism, current_value, current_morphism_position;
     
     if Length( diagram ) <> Length( source ) then
         return [ false, "fiber product diagram and test diagram must have equal length" ];
+    fi;
+    
+    if IsEmpty( diagram ) then
+        
+        return [ true ];
+        
     fi;
     
     base := Range( diagram[1] );
@@ -1544,16 +1552,14 @@ UniversalMorphismIntoFiberProduct := rec(
         
     od;
     
-    test_object := Source( source[1] );
-    
-    for current_morphism in source{[ 2 .. Length( source ) ]} do
+    for current_morphism in source do
         
         current_value := IsEqualForObjects( Source( current_morphism ), test_object );
         
         if current_value = fail then
-            return [ false, "cannot decide whether the given morphisms of the test source have equal sources" ];
+            return [ false, "cannot decide whether the given morphisms of the test source have sources equal to the test object" ];
         elif current_value = false then
-            return [ false, "the given morphisms of the test source do not have equal sources" ];
+            return [ false, "the given morphisms of the test source do not have sources equal to the test object" ];
         fi;
         
     od;
@@ -1575,16 +1581,22 @@ UniversalMorphismIntoFiberProduct := rec(
   return_type := "morphism" ),
 
 UniversalMorphismIntoFiberProductWithGivenFiberProduct := rec(
-  filter_list := [ "category", "list_of_morphisms", "list_of_morphisms", "object" ],
-  io_type := [ [ "morphisms", "tau", "P" ], [ "tau_1_source", "P" ] ],
+  filter_list := [ "category", "list_of_morphisms", "object", "list_of_morphisms", "object" ],
+  io_type := [ [ "morphisms", "T", "tau", "P" ], [ "T", "P" ] ],
   universal_type := "Limit",
   dual_operation := "UniversalMorphismFromPushoutWithGivenPushout",
   
-  pre_function := function( cat, diagram, source, pullback )
-    local base, current_morphism, current_value, current_morphism_position, test_object;
+  pre_function := function( cat, diagram, test_object, source, pullback )
+    local base, current_morphism, current_value, current_morphism_position;
     
     if Length( diagram ) <> Length( source ) then
         return [ false, "fiber product diagram and test diagram must have equal length" ];
+    fi;
+    
+    if IsEmpty( diagram ) then
+        
+        return [ true ];
+        
     fi;
     
     base := Range( diagram[1] );
@@ -1601,16 +1613,14 @@ UniversalMorphismIntoFiberProductWithGivenFiberProduct := rec(
         
     od;
     
-    test_object := Source( source[1] );
-    
-    for current_morphism in source{[ 2 .. Length( source ) ]} do
+    for current_morphism in source do
         
         current_value := IsEqualForObjects( Source( current_morphism ), test_object );
         
         if current_value = fail then
-            return [ false, "cannot decide whether the given morphisms of the test source have equal sources" ];
+            return [ false, "cannot decide whether the given morphisms of the test source have sources equal to the test object" ];
         elif current_value = false then
-            return [ false, "the given morphisms of the test source do not have equal sources" ];
+            return [ false, "the given morphisms of the test source do not have sources equal to the test object" ];
         fi;
         
     od;
@@ -1639,6 +1649,12 @@ Coequalizer := rec(
   
   pre_function := function( cat, diagram )
     local base, cobase, current_morphism, current_value;
+    
+    if IsEmpty( diagram ) then
+        
+        return [ true ];
+        
+    fi;
     
     base := Source( diagram[1] );
     
@@ -1704,15 +1720,21 @@ MorphismFromSourceToCoequalizerWithGivenCoequalizer := rec(
   return_type := "morphism" ),
 
 UniversalMorphismFromCoequalizer := rec(
-  filter_list := [ "category", "list_of_morphisms", "morphism" ],
-  return_type := "morphism",
-  io_type := [ [ "morphisms", "tau" ], [ "P", "tau_range" ] ],
+  filter_list := [ "category", "list_of_morphisms", "object", "morphism" ],
+  io_type := [ [ "morphisms", "T", "tau" ], [ "P", "T" ] ],
   with_given_object_position := "Source",
   universal_type := "Colimit",
+  return_type := "morphism",
   dual_operation := "UniversalMorphismIntoEqualizer",
   
-  pre_function := function( cat, diagram, tau )
+  pre_function := function( cat, diagram, test_object, tau )
     local base, cobase, current_morphism, current_value, current_morphism_position;
+    
+    if IsEmpty( diagram ) then
+        
+        return [ true ];
+        
+    fi;
     
     base := Source( diagram[1] );
     
@@ -1758,10 +1780,10 @@ UniversalMorphismFromCoequalizer := rec(
   end ),
 
 UniversalMorphismFromCoequalizerWithGivenCoequalizer := rec(
-  filter_list := [ "category", "list_of_morphisms", "morphism", "object" ],
-  return_type := "morphism",
-  io_type := [ [ "morphisms", "tau", "P" ], [ "P", "tau_range" ] ],
+  filter_list := [ "category", "list_of_morphisms", "object", "morphism", "object" ],
+  io_type := [ [ "morphisms", "T", "tau", "P" ], [ "P", "T" ] ],
   universal_type := "Colimit",
+  return_type := "morphism",
   dual_operation := "UniversalMorphismIntoEqualizerWithGivenEqualizer" ),
 
 Pushout := rec(
@@ -1771,6 +1793,12 @@ Pushout := rec(
   
   pre_function := function( cat, diagram )
     local cobase, current_morphism, current_value;
+    
+    if IsEmpty( diagram ) then
+        
+        return [ true ];
+        
+    fi;
     
     cobase := Source( diagram[1] );
     
@@ -1909,17 +1937,23 @@ MorphismFromSourceToPushoutWithGivenPushout := rec(
   return_type := "morphism" ),
 
 UniversalMorphismFromPushout := rec(
-  filter_list := [ "category", "list_of_morphisms", "list_of_morphisms" ],
-  io_type := [ [ "morphisms", "tau" ], [ "P", "tau_1_range" ] ],
+  filter_list := [ "category", "list_of_morphisms", "object", "list_of_morphisms" ],
+  io_type := [ [ "morphisms", "T", "tau" ], [ "P", "T" ] ],
   with_given_object_position := "Source",
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoFiberProduct",
   
-  pre_function := function( cat, diagram, sink )
-    local cobase, current_morphism, current_value, current_morphism_position, test_object;
+  pre_function := function( cat, diagram, test_object, sink )
+    local cobase, current_morphism, current_value, current_morphism_position;
     
     if Length( diagram ) <> Length( sink ) then
         return [ false, "pushout diagram and test diagram must have equal length" ];
+    fi;
+    
+    if IsEmpty( diagram ) then
+        
+        return [ true ];
+        
     fi;
     
     cobase := Source( diagram[1] );
@@ -1936,16 +1970,14 @@ UniversalMorphismFromPushout := rec(
         
     od;
     
-    test_object := Range( sink[1] );
-    
-    for current_morphism in sink{[ 2 .. Length( sink ) ]} do
+    for current_morphism in sink do
         
         current_value := IsEqualForObjects( Range( current_morphism ), test_object );
         
         if current_value = fail then
-            return [ false, "cannot decide whether the given morphisms of the test sink have equal ranges" ];
+            return [ false, "cannot decide whether the given morphisms of the test sink have ranges equal to the test object" ];
         elif current_value = false then
-            return [ false, "the given morphisms of the test sink do not have equal ranges" ];
+            return [ false, "the given morphisms of the test sink do not have ranges equal to the test object" ];
         fi;
         
     od;
@@ -1967,16 +1999,22 @@ UniversalMorphismFromPushout := rec(
   return_type := "morphism" ),
 
 UniversalMorphismFromPushoutWithGivenPushout := rec(
-  filter_list := [ "category", "list_of_morphisms", "list_of_morphisms", "object" ],
-  io_type := [ [ "morphisms", "tau", "P" ], [ "P", "tau_1_range" ] ],
+  filter_list := [ "category", "list_of_morphisms", "object", "list_of_morphisms", "object" ],
+  io_type := [ [ "morphisms", "T", "tau", "P" ], [ "P", "T" ] ],
   universal_type := "Colimit",
   dual_operation := "UniversalMorphismIntoFiberProductWithGivenFiberProduct",
   
-  pre_function := function( cat, diagram, sink, pushout )
-    local cobase, current_morphism, current_value, current_morphism_position, test_object;
+  pre_function := function( cat, diagram, test_object, sink, pushout )
+    local cobase, current_morphism, current_value, current_morphism_position;
     
     if Length( diagram ) <> Length( sink ) then
         return [ false, "pushout diagram and test diagram must have equal length" ];
+    fi;
+    
+    if IsEmpty( diagram ) then
+        
+        return [ true ];
+        
     fi;
     
     cobase := Source( diagram[1] );
@@ -1993,16 +2031,14 @@ UniversalMorphismFromPushoutWithGivenPushout := rec(
         
     od;
     
-    test_object := Range( sink[1] );
-    
-    for current_morphism in sink{[ 2 .. Length( sink ) ]} do
+    for current_morphism in sink do
         
         current_value := IsEqualForObjects( Range( current_morphism ), test_object );
         
         if current_value = fail then
-            return [ false, "cannot decide whether the given morphisms of the test sink have equal ranges" ];
+            return [ false, "cannot decide whether the given morphisms of the test sink have ranges equal to the test object" ];
         elif current_value = false then
-            return [ false, "the given morphisms of the test sink do not have equal ranges" ];
+            return [ false, "the given morphisms of the test sink do not have ranges equal to the test object" ];
         fi;
         
     od;
@@ -2457,22 +2493,22 @@ InitialObjectFunctorial := rec(
   no_with_given := true ),
 
 DirectProductFunctorialWithGivenDirectProducts := rec(
-  filter_list := [ "category", "object", "list_of_morphisms", "object" ],
-  io_type := [ [ "P", "L", "Pp" ], [ "P", "Pp" ] ],
+  filter_list := [ "category", "object", "list_of_objects", "list_of_morphisms", "list_of_objects", "object" ],
+  io_type := [ [ "P", "objects", "L", "objectsp", "Pp" ], [ "P", "Pp" ] ],
   return_type := "morphism",
   dual_operation := "CoproductFunctorialWithGivenCoproducts",
   dual_arguments_reversed := true ),
 
 CoproductFunctorialWithGivenCoproducts := rec(
-  filter_list := [ "category", "object", "list_of_morphisms", "object" ],
-  io_type := [ [ "P", "L", "Pp" ], [ "P", "Pp" ] ],
+  filter_list := [ "category", "object", "list_of_objects", "list_of_morphisms", "list_of_objects", "object" ],
+  io_type := [ [ "P", "objects", "L", "objectsp", "Pp" ], [ "P", "Pp" ] ],
   return_type := "morphism",
   dual_operation := "DirectProductFunctorialWithGivenDirectProducts",
   dual_arguments_reversed := true ),
 
 DirectSumFunctorialWithGivenDirectSums := rec(
-  filter_list := [ "category", "object", "list_of_morphisms", "object" ],
-  io_type := [ [ "P", "L", "Pp" ], [ "P", "Pp" ] ],
+  filter_list := [ "category", "object", "list_of_objects", "list_of_morphisms", "list_of_objects", "object" ],
+  io_type := [ [ "P", "objects", "L", "objectsp", "Pp" ], [ "P", "Pp" ] ],
   return_type := "morphism",
   dual_operation := "DirectSumFunctorialWithGivenDirectSums",
   dual_arguments_reversed := true ),
@@ -2813,53 +2849,50 @@ ComponentOfMorphismFromDirectSum := rec(
   return_type := "morphism",
   dual_operation := "ComponentOfMorphismIntoDirectSum" ),
 
-MorphismBetweenDirectSums := rec(
-  filter_list := [ "category", "object", IsList, "object" ],
+MorphismBetweenDirectSumsWithGivenDirectSums := rec(
+  filter_list := [ "category", "object", "list_of_objects", IsList, "list_of_objects", "object" ],
   io_type := [ [ "S", "mat", "T" ], [ "S", "T" ] ],
   return_type := "morphism",
-  pre_function := function( cat, source, listlist, range )
-    local sources, ranges, result, i, j;
+  pre_function := function( cat, source, source_diagram, listlist, range_diagram, range )
+    local result, i, j;
       
-      if IsEmpty( listlist ) or ForAll( listlist, IsEmpty ) then
+      if Length( listlist ) <> Length( source_diagram ) then
           
-          return [ true ];
+          return [ false, "the number of rows does not match the length of the source diagram" ];
           
       fi;
       
-      sources := List( listlist, l -> Source( l[1] ) );
-      ranges := List( listlist[1], l -> Range( l ) );
-      
-      for i in [ 2 .. Length( listlist ) ] do
+      for i in [ 1 .. Length( listlist ) ] do
           
-          if Length( listlist[i] ) <> Length( ranges ) then
+          if Length( listlist[i] ) <> Length( range_diagram ) then
               
-              return [ false, Concatenation( "the ", String(i), "-th row has not the same length as the first row" ) ];
+              return [ false, Concatenation( "the ", String(i), "-th row has not the same length as the range diagram" ) ];
               
           fi;
           
-          for j in [ 2 .. Length( ranges ) ] do
+          for j in [ 1 .. Length( range_diagram ) ] do
               
-              result := IsEqualForObjects( sources[i], Source( listlist[i][j] ) );
+              result := IsEqualForObjects( source_diagram[i], Source( listlist[i][j] ) );
               
               if result = fail then
                   
-                  return [ false, Concatenation( "cannot decide whether the sources of the morphisms in the ", String(i), "-th row are equal" ) ];
+                  return [ false, Concatenation( "cannot decide whether the sources of the morphisms in the ", String(i), "-th row are equal to the ", String(i), "-th entry of the source diagram" ) ];
                   
               elif result = false then
                   
-                  return [ false, Concatenation( "the sources of the morphisms in the ", String(i), "-th row must be equal" ) ];
+                  return [ false, Concatenation( "the sources of the morphisms in the ", String(i), "-th row must be equal to the ", String(i), "-th entry of the source diagram" ) ];
                   
               fi;
               
-              result := IsEqualForObjects( ranges[j], Range( listlist[i][j] ) );
+              result := IsEqualForObjects( range_diagram[j], Range( listlist[i][j] ) );
               
               if result = fail then
                   
-                  return [ false, Concatenation( "cannot decide whether the ranges of the morphisms in the ", String(j), "-th column are equal" ) ];
+                  return [ false, Concatenation( "cannot decide whether the ranges of the morphisms in the ", String(j), "-th column are equal to the ", String(j), "-th entry of the range diagram" ) ];
                   
               elif result = false then
                   
-                  return [ false, Concatenation( "the ranges of the morphisms in the ", String(j), "-th column must be equal" ) ];
+                  return [ false, Concatenation( "the ranges of the morphisms in the ", String(j), "-th column must be equal to the ", String(j), "-th entry of the range diagram" ) ];
                   
               fi;
               
@@ -2870,11 +2903,11 @@ MorphismBetweenDirectSums := rec(
       return [ true ];
       
   end,
-  dual_operation := "MorphismBetweenDirectSums",
+  dual_operation := "MorphismBetweenDirectSumsWithGivenDirectSums",
   dual_preprocessor_func := function( arg )
       local list;
       list := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
-      return [ list[3], TransposedMat( list[2] ), list[1] ];
+      return [ list[5], list[4], TransposedMat( list[3] ), list[2], list[1] ];
   end
 ),
 
@@ -3595,6 +3628,16 @@ InstallGlobalFunction( "CAP_INTERNAL_ENHANCE_NAME_RECORD_LIMITS",
             limit.limit_morphism_to_sink_name := Concatenation( "MorphismFrom", limit.limit_object_name, "ToSink" );
             limit.colimit_morphism_from_source_name := Concatenation( "MorphismFromSourceTo", limit.colimit_object_name );
         fi;
+
+        if Length( diagram_filter_list ) > 0 then
+            if limit.number_of_targets = 1 then
+                limit.diagram_morphism_filter_list := [ "morphism" ];
+                limit.diagram_morphism_input_type := [ "mu" ];
+            else
+                limit.diagram_morphism_filter_list := [ "list_of_morphisms" ];
+                limit.diagram_morphism_input_type := [ "L" ];
+            fi;
+        fi;
     od;
 end );
 
@@ -3752,20 +3795,14 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
             morphism_to_sink_io_type[2] := [ "P", "morphisms_1_range" ];
         fi;
 
-        universal_morphism_filter_list := Concatenation( [ "category" ], StructuralCopy( limit.diagram_filter_list ) );
-        universal_morphism_io_type := [ StructuralCopy( limit.diagram_input_type ), [ ] ];
-        if limit.number_of_targets = 0 then
-            Add( universal_morphism_filter_list, "object" );
-            Add( universal_morphism_io_type[1], "A" );
-            universal_morphism_io_type[2] := [ "A", "T" ];
-        elif limit.number_of_targets = 1 then
+        universal_morphism_filter_list := Concatenation( [ "category" ], StructuralCopy( limit.diagram_filter_list ), [ "object" ] );
+        universal_morphism_io_type := [ Concatenation( StructuralCopy( limit.diagram_input_type ), [ "T" ] ), [ "T", "P" ] ];
+        if limit.number_of_targets = 1 then
             Add( universal_morphism_filter_list, "morphism" );
             Add( universal_morphism_io_type[1], "tau" );
-            universal_morphism_io_type[2] := [ "tau_source", "P" ];
-        else
+        elif limit.number_of_targets > 1 then
             Add( universal_morphism_filter_list, "list_of_morphisms" );
             Add( universal_morphism_io_type[1], "tau" );
-            universal_morphism_io_type[2] := [ "tau_1_source", "P" ];
         fi;
 
         
@@ -3823,28 +3860,12 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
         else
             functorial_record := rec(
                 function_name := limit.limit_functorial_with_given_name,
+                filter_list := Concatenation( [ "category", "object" ], limit.diagram_filter_list, limit.diagram_morphism_filter_list, limit.diagram_filter_list, [ "object" ] ),
+                io_type := [ Concatenation( [ "P" ], limit.diagram_input_type, limit.diagram_morphism_input_type, List( limit.diagram_input_type, x -> Concatenation( x, "p" ) ), [ "Pp" ] ), [ "P", "Pp" ] ],
                 return_type := "morphism",
                 dual_operation := limit.colimit_functorial_with_given_name,
                 dual_arguments_reversed := true,
             );
-            
-            if limit.number_of_unbound_morphisms = 0 then
-                if limit.number_of_targets = 1 then
-                    functorial_record.filter_list := [ "category", "object", "morphism", "object" ];
-                    functorial_record.io_type := [ [ "P", "mu", "Pp" ], [ "P", "Pp" ] ];
-                else
-                    functorial_record.filter_list := [ "category", "object", "list_of_morphisms", "object" ];
-                    functorial_record.io_type := [ [ "P", "L", "Pp" ], [ "P", "Pp" ] ];
-                fi;
-            else
-                if limit.number_of_targets = 1 then
-                    functorial_record.filter_list := Concatenation( [ "category", "object" ], limit.diagram_filter_list, [ "morphism" ], limit.diagram_filter_list, [ "object" ] );
-                    functorial_record.io_type := [ Concatenation( [ "P" ], limit.diagram_input_type, [ "mu" ], List( limit.diagram_input_type, x -> Concatenation( x, "p" ) ), [ "Pp" ] ), [ "P", "Pp" ] ];
-                else
-                    functorial_record.filter_list := Concatenation( [ "category", "object" ], limit.diagram_filter_list, [ "list_of_morphisms" ], limit.diagram_filter_list, [ "object" ] );
-                    functorial_record.io_type := [ Concatenation( [ "P" ], limit.diagram_input_type, [ "L" ], List( limit.diagram_input_type, x -> Concatenation( x, "p" ) ), [ "Pp" ] ), [ "P", "Pp" ] ];
-                fi;
-            fi;
         fi;
         
         #### validate limit records

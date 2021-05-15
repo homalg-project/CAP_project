@@ -23,6 +23,8 @@ InstallMethod( CategoryOfRows,
     
     category!.category_as_first_argument := true;
     
+    category!.supports_empty_limits := true;
+    
     category!.compiler_hints := rec(
         category_attribute_names := [
             "UnderlyingRing",
@@ -522,10 +524,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddDirectSumFunctorialWithGivenDirectSums( category,
-      function( cat, direct_sum_source, diagram, direct_sum_range )
+      function( cat, direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
         
         return CategoryOfRowsMorphism( direct_sum_source,
-                                       DiagMat( List( diagram, mor -> UnderlyingMatrix( mor ) ) ), 
+                                       DiagMat( ring, List( diagram, mor -> UnderlyingMatrix( mor ) ) ),
                                        direct_sum_range );
         
     end );
@@ -554,15 +556,17 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
-      function( cat, diagram, sink, direct_sum )
+      function( cat, diagram, test_object, sink, direct_sum )
         local underlying_matrix_of_universal_morphism;
         
         underlying_matrix_of_universal_morphism :=
           UnionOfColumns(
+            ring,
+            RankOfObject( test_object ),
             List( sink, UnderlyingMatrix )
         );
         
-        return CategoryOfRowsMorphism( Source( sink[1] ), underlying_matrix_of_universal_morphism, direct_sum );
+        return CategoryOfRowsMorphism( test_object, underlying_matrix_of_universal_morphism, direct_sum );
       
     end );
     
@@ -591,32 +595,32 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
-      function( cat, diagram, sink, coproduct )
+      function( cat, diagram, test_object, sink, coproduct )
         local underlying_matrix_of_universal_morphism;
         
         underlying_matrix_of_universal_morphism :=
           UnionOfRows(
+            ring,
+            RankOfObject( test_object ),
             List( sink, UnderlyingMatrix )
         );
         
-        return CategoryOfRowsMorphism( coproduct, underlying_matrix_of_universal_morphism, Range( sink[1] ) );
+        return CategoryOfRowsMorphism( coproduct, underlying_matrix_of_universal_morphism, test_object );
         
     end );
     
     ##
-    AddMorphismBetweenDirectSums( category,
-      function( cat, source, listlist, range )
-        local mat;
+    AddMorphismBetweenDirectSumsWithGivenDirectSums( category,
+      function( cat, source, source_diagram, morphism_matrix, range_diagram, range )
+        local underlying_matrix;
         
-        if IsEmpty( listlist ) or IsEmpty( listlist[1] ) then
-          
-          return ZeroMorphism( source, range );
-          
-        fi;
+        underlying_matrix := List( morphism_matrix, row -> List( row, UnderlyingMatrix ) );
+        
+        underlying_matrix := List( [ 1 .. Length( underlying_matrix ) ], i -> UnionOfColumns( ring, RankOfObject( source_diagram[i] ), underlying_matrix[i] ) );
         
         return CategoryOfRowsMorphism(
           source, 
-          UnionOfRows( List( listlist, row -> UnionOfColumns( List( row, alpha -> UnderlyingMatrix( alpha ) ) ) ) ),
+          UnionOfRows( ring, RankOfObject( range ), underlying_matrix ),
           range );
         
     end );

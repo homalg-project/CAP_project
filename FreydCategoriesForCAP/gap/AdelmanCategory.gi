@@ -463,7 +463,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddDirectSumFunctorialWithGivenDirectSums( category,
-      function( direct_sum_source, diagram, direct_sum_range )
+      function( direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
         
         return AdelmanCategoryMorphism( direct_sum_source,
                                         DirectSumFunctorial( List( diagram, MorphismDatum ) ),
@@ -484,7 +484,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
-      function( diagram, source, direct_sum_object )
+      function( diagram, test_object, source, direct_sum_object )
         
         return AdelmanCategoryMorphism( Source( source[1] ),
                                         UniversalMorphismIntoDirectSum( List( diagram, obj -> Range( RelationMorphism( obj ) ) ),
@@ -507,7 +507,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
-      function( diagram, sink, direct_sum_object )
+      function( diagram, test_object, sink, direct_sum_object )
         
         return AdelmanCategoryMorphism( direct_sum_object,
                                         UniversalMorphismFromDirectSum( List( diagram, obj -> Range( RelationMorphism( obj ) ) ),
@@ -558,7 +558,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     ##
     AddCokernelColiftWithGivenCokernelObject( category,
       
-      function( morphism, test_morphism, cokernel_object )
+      function( morphism, test_object, test_morphism, cokernel_object )
         local witness_pair, datum;
         
         witness_pair := WitnessPairForBeingCongruentToZero( PreCompose( morphism, test_morphism ) );
@@ -661,7 +661,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     ##
     AddKernelLiftWithGivenKernelObject( category,
       
-      function( morphism, test_morphism, kernel_object )
+      function( morphism, test_object, test_morphism, kernel_object )
         local witness_pair, datum;
         
         witness_pair := WitnessPairForBeingCongruentToZero( PreCompose( test_morphism, morphism ) );

@@ -58,7 +58,7 @@ end );
 ##
 AddKernelLift( vecspaces,
 
-  function( mor, test_morphism )
+  function( mor, test_object, test_morphism )
    local kernel_emb;
    
    kernel_emb := KernelEmbedding( mor );
@@ -70,7 +70,7 @@ end );
 ##
 AddKernelLiftWithGivenKernelObject( vecspaces,
 
-  function( mor, test_morphism, kernel )
+  function( mor, test_object, test_morphism, kernel )
    local kernel_emb;
    
    kernel_emb := KernelEmbeddingWithGivenKernelObject( mor, kernel );

@@ -445,7 +445,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     
     ##
     AddDirectSumFunctorialWithGivenDirectSums( category,
-      function( direct_sum_source, diagram, direct_sum_range )
+      function( direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
         
         return CokernelImageClosureMorphism(
                     direct_sum_source,
@@ -469,7 +469,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
-      function( diagram, source, direct_sum_object )
+      function( diagram, test_object, source, direct_sum_object )
         
         return CokernelImageClosureMorphism(
                 Source( source[1] ),
@@ -496,7 +496,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
-      function( diagram, sink, direct_sum_object )
+      function( diagram, test_object, sink, direct_sum_object )
         
         return CokernelImageClosureMorphism(
                 direct_sum_object,
@@ -542,7 +542,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     ##
     AddCokernelColiftWithGivenCokernelObject( category,
       
-      function( morphism, test_morphism, cokernel_object )
+      function( morphism, test_object, test_morphism, cokernel_object )
         
         return 
             CokernelImageClosureMorphism( 
@@ -649,7 +649,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
         ##
         AddKernelLiftWithGivenKernelObject( category,
           
-          function( morphism, test_morphism, kernel )
+          function( morphism, test_object, test_morphism, kernel )
             local range, u;
 
             range := Range( morphism );

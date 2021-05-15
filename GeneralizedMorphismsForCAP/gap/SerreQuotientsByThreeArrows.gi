@@ -213,7 +213,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     
     AddUniversalMorphismIntoDirectSum( category,
       
-      function( diagram, morphism_list )
+      function( diagram, test_object, morphism_list )
         local generalized_morphisms, source_aid, associated, range_aid, associated_list;
         
         generalized_morphisms := List( morphism_list, UnderlyingGeneralizedMorphism );
@@ -236,7 +236,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_THREE_ARROWS"
     
     AddUniversalMorphismFromDirectSum( category,
       
-      function( diagram, morphism_list )
+      function( diagram, test_object, morphism_list )
         local generalized_morphisms, source_aid, associated, range_aid;
         
         generalized_morphisms := List( morphism_list, UnderlyingGeneralizedMorphism );

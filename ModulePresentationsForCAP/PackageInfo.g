@@ -10,7 +10,7 @@ Version := Maximum( [
            ##
            "2019.01-16", # Mohamed's version
            ##
-           "2020.10-01", # Fabian's version
+           "2021.05-01", # Fabian's version
            ##
            ] ),
 
@@ -92,7 +92,7 @@ Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "MatricesForHomalg", ">=2019.02.01" ],
-                           [ "CAP", ">= 2019.01.16" ],
+                           [ "CAP", ">= 2021.05-01" ],
                            [ "MonoidalCategories", ">= 2019.01.16" ],
                            [ "GeneralizedMorphismsForCAP", ">=0" ],
   ],

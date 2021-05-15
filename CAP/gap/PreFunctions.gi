@@ -89,7 +89,7 @@ CAPAddPrepareFunction( GET_CAP_PREFUNCTION_PROJECTION_IN_FACTOR_OF_BINARY_DIRECT
 ##
 BindGlobal( "CAP_PREFUNCTION_UNIVERSAL_MORPHISM_INTO_BINARY_DIRECT_PRODUCT_TO_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT",
   function( universal_morphism_into_binary_direct_product_func, category )
-    return function( cat, diagram, tau )
+    return function( cat, diagram, test_object, tau )
       local universal_morphism, i;
         
         # Direct product diagrams are supposed to have at least length 1

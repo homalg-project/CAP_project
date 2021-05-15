@@ -239,17 +239,17 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddKernelLift( deductive_system,
                    
-      function( morphism, test_morphism )
+      function( morphism, test_object, test_morphism )
         
-        return DeductiveSystemMorphism( Source( test_morphism ), "KernelLift", [ morphism, test_morphism ], KernelObject( morphism ) );
+        return DeductiveSystemMorphism( Source( test_morphism ), "KernelLift", [ morphism, test_object, test_morphism ], KernelObject( morphism ) );
         
     end );
     
     AddKernelLiftWithGivenKernelObject( deductive_system,
                                   
-      function( morphism, test_morphism, kernel )
+      function( morphism, test_object, test_morphism, kernel )
         
-        return DeductiveSystemMorphism( Source( test_morphism ), "KernelLift", [ morphism, test_morphism ], kernel );
+        return DeductiveSystemMorphism( Source( test_morphism ), "KernelLift", [ morphism, test_object, test_morphism ], kernel );
         
     end );
     
@@ -279,17 +279,17 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddCokernelColift( deductive_system,
                        
-      function( morphism, test_morphism )
+      function( morphism, test_object, test_morphism )
         
-        return DeductiveSystemMorphism( CokernelObject( morphism ), "CokernelColift", [ morphism, test_morphism ], Range( test_morphism ) );
+        return DeductiveSystemMorphism( CokernelObject( morphism ), "CokernelColift", [ morphism, test_object, test_morphism ], Range( test_morphism ) );
         
     end );
     
     AddCokernelColiftWithGivenCokernelObject( deductive_system,
                                         
-      function( morphism, test_morphism, cokernel )
+      function( morphism, test_object, test_morphism, cokernel )
         
-        return DeductiveSystemMorphism( cokernel, "AddCokernelColift", [ morphism, test_morphism ], Range( test_morphism ) );
+        return DeductiveSystemMorphism( cokernel, "CokernelColift", [ morphism, test_object, test_morphism ], Range( test_morphism ) );
         
     end );
     
@@ -386,20 +386,20 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismFromCoproduct( deductive_system,
                                        
-      function( diagram, sink )
+      function( diagram, test_object, sink )
         local coproduct;
         
         coproduct := Coproduct( List( sink, Source ) );
         
-        return DeductiveSystemMorphism( coproduct, "UniversalMorphismFromCoproduct", [ diagram, sink ], Source( sink[ 1 ] ) );
+        return DeductiveSystemMorphism( coproduct, "UniversalMorphismFromCoproduct", [ diagram, test_object, sink ], Source( sink[ 1 ] ) );
         
     end );
     
     AddUniversalMorphismFromCoproductWithGivenCoproduct( deductive_system,
                                                          
-      function( diagram, sink, coproduct )
+      function( diagram, test_object, sink, coproduct )
         
-        return DeductiveSystemMorphism( coproduct, "UniversalMorphismFromCoproduct", [ diagram, sink ], Source( sink[ 1 ] ) );
+        return DeductiveSystemMorphism( coproduct, "UniversalMorphismFromCoproduct", [ diagram, test_object, sink ], Source( sink[ 1 ] ) );
         
     end );
     
@@ -432,20 +432,20 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismIntoDirectProduct( deductive_system,
                                            
-      function( diagram, source )
+      function( diagram, test_object, source )
         local direct_product;
         
         direct_product := DirectProduct( List( source, Range ) );
         
-        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProduct", [ diagram, source ], direct_product );
+        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProduct", [ diagram, test_object, source ], direct_product );
         
     end );
     
     AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( deductive_system,
                                            
-      function( diagram, source, direct_product )
+      function( diagram, test_object, source, direct_product )
         
-        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProduct", [ diagram, source ], direct_product );
+        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoDirectProduct", [ diagram, test_object, source ], direct_product );
         
     end );
     
@@ -478,20 +478,20 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismIntoFiberProduct( deductive_system,
                                       
-      function( diagram, source )
+      function( diagram, test_object, source )
         local pullback;
         
         pullback := FiberProduct( diagram );
         
-        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoFiberProduct", [ diagram, source ], pullback );
+        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoFiberProduct", [ diagram, test_object, source ], pullback );
         
     end );
     
     AddUniversalMorphismIntoFiberProductWithGivenFiberProduct( deductive_system,
                                       
-      function( diagram, source, pullback )
+      function( diagram, test_object, source, pullback )
         
-        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoFiberProduct", [ diagram, source ], pullback );
+        return DeductiveSystemMorphism( Source( source[ 1 ] ), "UniversalMorphismIntoFiberProduct", [ diagram, test_object, source ], pullback );
         
     end );
     
@@ -524,20 +524,20 @@ InstallGlobalFunction( ADDS_FOR_DEDUCTIVE_SYSTEM,
     
     AddUniversalMorphismFromPushout( deductive_system,
                                      
-      function( diagram, sink )
+      function( diagram, test_object, sink )
         local pushout;
         
         pushout := Pushout( diagram );
         
-        return DeductiveSystemMorphism( pushout, "UniversalMorphismFromPushout", [ diagram, sink ], Range( sink[ 1 ] ) );
+        return DeductiveSystemMorphism( pushout, "UniversalMorphismFromPushout", [ diagram, test_object, sink ], Range( sink[ 1 ] ) );
         
     end );
     
     AddUniversalMorphismFromPushoutWithGivenPushout( deductive_system,
                                      
-      function( diagram, sink, pushout )
+      function( diagram, test_object, sink, pushout )
         
-        return DeductiveSystemMorphism( pushout, "UniversalMorphismFromPushout", [ diagram, sink ], Range( sink[ 1 ] ) );
+        return DeductiveSystemMorphism( pushout, "UniversalMorphismFromPushout", [ diagram, test_object, sink ], Range( sink[ 1 ] ) );
         
     end );
     

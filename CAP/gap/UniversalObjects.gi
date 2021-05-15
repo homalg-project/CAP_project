@@ -224,7 +224,7 @@ InstallMethod( DirectSumOp,
     
     diagram := category_and_diagram[2];
     
-    if diagram = [ ] then
+    if not ( IsBound( category!.supports_empty_limits ) and category!.supports_empty_limits = true ) and diagram = [ ] then
         return ZeroObject( category );
     fi;
     
@@ -243,11 +243,10 @@ end );
 
 ##
 InstallMethod( MorphismBetweenDirectSums,
-               [ IsList ],
+               [ IsList, IsList, IsList ],
                
-  function( morphism_matrix )
+  function( diagram_S, morphism_matrix, diagram_T )
     local nr_rows, nr_cols;
-    #% CAP_JIT_RESOLVE_FUNCTION
     
     nr_rows := Size( morphism_matrix );
     
@@ -265,17 +264,34 @@ InstallMethod( MorphismBetweenDirectSums,
         
     fi;
     
-    return MorphismBetweenDirectSums( CapCategory( morphism_matrix[1,1] ), morphism_matrix );
+    return MorphismBetweenDirectSums( CapCategory( morphism_matrix[1,1] ), diagram_S, morphism_matrix, diagram_T );
     
 end );
 
 ##
 InstallOtherMethod( MorphismBetweenDirectSums,
-               [ IsCapCategory, IsList ],
+               [ IsCapCategory, IsList, IsList, IsList ],
                
-  function( cat, morphism_matrix )
-    local nr_rows, nr_cols;
+  function( cat, diagram_S, morphism_matrix, diagram_T )
     #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return MorphismBetweenDirectSumsWithGivenDirectSums( cat,
+        DirectSum( cat, diagram_S ),
+        diagram_S,
+        morphism_matrix,
+        diagram_T,
+        DirectSum( cat, diagram_T )
+    );
+    
+end );
+
+# convenience
+##
+InstallMethod( MorphismBetweenDirectSums,
+               [ IsList ],
+               
+  function( morphism_matrix )
+    local nr_rows, nr_cols;
     
     nr_rows := Size( morphism_matrix );
     
@@ -293,11 +309,26 @@ InstallOtherMethod( MorphismBetweenDirectSums,
         
     fi;
     
-    return MorphismBetweenDirectSums( cat,
-             DirectSum( List( morphism_matrix, row -> Source( row[1] ) ) ),
+    return MorphismBetweenDirectSums( CapCategory( morphism_matrix[1,1] ),
+             List( morphism_matrix, row -> Source( row[1] ) ),
              morphism_matrix,
-             DirectSum( List( morphism_matrix[1], col -> Range( col ) ) )
+             List( morphism_matrix[1], col -> Range( col ) )
            );
+end );
+
+# explicit error for backwards incompatibility
+##
+InstallOtherMethod( MorphismBetweenDirectSums,
+               [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
+               
+  function( S, morphism_matrix, T )
+    
+    Error(
+      Concatenation(
+      "MorphismBetweenDirectSums( IsCapCategoryObject, IsList, IsCapCategoryObject ) is not supported anymore. ",
+      "Please use MorphismBetweenDirectSumsWithGivenDirectSums instead.\n"
+      )
+    );
     
 end );
 
@@ -482,7 +513,15 @@ InstallGlobalFunction( UniversalMorphismIntoFiberProduct,
     
     if IsCapCategory( arg[1] ) then
         
-        return CallFuncList( UniversalMorphismIntoFiberProductOp, arg );
+        if Length( arg ) = 3 then
+            
+            return UniversalMorphismIntoFiberProductOp( arg[1], arg[2], Source( arg[3][1] ), arg[3] );
+            
+        else
+            
+            return CallFuncList( UniversalMorphismIntoFiberProductOp, arg );
+            
+        fi;
         
     fi;
     
@@ -505,7 +544,7 @@ InstallGlobalFunction( UniversalMorphismIntoFiberProduct,
     
     source := arg{[ 2 .. Length( arg ) ]};
     
-    return UniversalMorphismIntoFiberProductOp( CapCategory( diagram[1] ), diagram, source );
+    return UniversalMorphismIntoFiberProductOp( CapCategory( diagram[1] ), diagram, Source( source[1] ), source );
     
 end );
 
@@ -569,8 +608,16 @@ InstallGlobalFunction( UniversalMorphismFromPushout,
     local diagram, sink;
     
     if IsCapCategory( arg[1] ) then
-        
-        return CallFuncList( UniversalMorphismFromPushoutOp, arg );
+
+        if Length( arg ) = 3 then
+            
+            return UniversalMorphismFromPushoutOp( arg[1], arg[2], Range( arg[3][1] ), arg[3] );
+            
+        else
+            
+            return CallFuncList( UniversalMorphismFromPushoutOp, arg );
+            
+        fi;
         
     fi;
     
@@ -593,7 +640,7 @@ InstallGlobalFunction( UniversalMorphismFromPushout,
     
     sink := arg{[ 2 .. Length( arg ) ]};
     
-    return UniversalMorphismFromPushoutOp( CapCategory( diagram[1] ), diagram, sink );
+    return UniversalMorphismFromPushoutOp( CapCategory( diagram[1] ), diagram, Range( sink[1] ), sink );
     
 end );
 

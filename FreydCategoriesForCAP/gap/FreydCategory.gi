@@ -574,7 +574,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     
     ##
     AddDirectSumFunctorialWithGivenDirectSums( category,
-      function( cat, direct_sum_source, diagram, direct_sum_range )
+      function( cat, direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
         
         return FreydCategoryMorphism( direct_sum_source,
                                       DirectSumFunctorial( underlying_category, List( diagram, MorphismDatum ) ),
@@ -595,7 +595,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
-      function( cat, diagram, source, direct_sum_object )
+      function( cat, diagram, test_object, source, direct_sum_object )
         
         return FreydCategoryMorphism( Source( source[1] ),
                                       UniversalMorphismIntoDirectSum( underlying_category,
@@ -619,7 +619,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
-      function( cat, diagram, sink, direct_sum_object )
+      function( cat, diagram, test_object, sink, direct_sum_object )
         
         return FreydCategoryMorphism( direct_sum_object,
                                       UniversalMorphismFromDirectSum( underlying_category,
@@ -653,7 +653,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     ##
     AddCokernelColiftWithGivenCokernelObject( category,
       
-      function( cat, morphism, test_morphism, cokernel_object )
+      function( cat, morphism, test_object, test_morphism, cokernel_object )
         
         return FreydCategoryMorphism( cokernel_object,
                                       MorphismDatum( test_morphism ),
@@ -709,7 +709,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         ##
         AddKernelLiftWithGivenKernelObject( category,
                                             
-          function( cat, morphism, test_morphism, kernel_object )
+          function( cat, morphism, test_object, test_morphism, kernel_object )
             local sigma, alpha, rho_B, tau, morphism_datum;
             
             ## for notational convenience
