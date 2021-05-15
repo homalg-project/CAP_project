@@ -976,7 +976,7 @@ IsZeroForMorphisms := rec(
 
 AdditionForMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  io_type := [ [ "a" ], [ "a_source", "a_range" ] ],
+  io_type := [ [ "a", "b" ], [ "a_source", "a_range" ] ],
   dual_operation := "AdditionForMorphisms",
   
   pre_function := function( cat, morphism_1, morphism_2 )
@@ -1018,7 +1018,7 @@ AdditionForMorphisms := rec(
 
 SubtractionForMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
-  io_type := [ [ "a" ], [ "a_source", "a_range" ] ],
+  io_type := [ [ "a", "b" ], [ "a_source", "a_range" ] ],
   dual_operation := "SubtractionForMorphisms",
   
   pre_function := function( cat, morphism_1, morphism_2 )
@@ -2851,7 +2851,7 @@ ComponentOfMorphismFromDirectSum := rec(
 
 MorphismBetweenDirectSumsWithGivenDirectSums := rec(
   filter_list := [ "category", "object", "list_of_objects", IsList, "list_of_objects", "object" ],
-  io_type := [ [ "S", "mat", "T" ], [ "S", "T" ] ],
+  io_type := [ [ "S", "source_diagram", "mat", "range_diagram", "T" ], [ "S", "T" ] ],
   return_type := "morphism",
   pre_function := function( cat, source, source_diagram, listlist, range_diagram, range )
     local result, i, j;
@@ -3027,13 +3027,13 @@ CoefficientsOfMorphismWithGivenBasisOfExternalHom := rec(
 
 RandomObjectByInteger := rec(
   filter_list := [ "category", IsInt ],
-  io_type := [ [ "C", "n" ], [ "A" ] ],
+  io_type := [ [ "n" ], [ "A" ] ],
   return_type := "object_or_fail"
 ),
 
 RandomMorphismByInteger := rec(
   filter_list := [ "category", IsInt ],
-  io_type := [ [ "C", "n" ], [ "alpha" ] ],
+  io_type := [ [ "n" ], [ "alpha" ] ],
   return_type := "morphism_or_fail"
 ),
 
@@ -3057,13 +3057,13 @@ RandomMorphismWithFixedSourceAndRangeByInteger := rec(
 
 RandomObjectByList := rec(
   filter_list := [ "category", IsList ],
-  io_type := [ [ "C", "L" ], [ "A" ] ],
+  io_type := [ [ "L" ], [ "A" ] ],
   return_type := "object_or_fail"
 ),
 
 RandomMorphismByList := rec(
   filter_list := [ "category", IsList ],
-  io_type := [ [ "C", "L" ], [ "alpha" ] ],
+  io_type := [ [ "L" ], [ "alpha" ] ],
   return_type := "morphism_or_fail"
 ),
 
@@ -4116,6 +4116,17 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 "Please use the category as the first argument instead of method selections objects/morphisms and adjust pre, post and redirect functions as well as derivations appropriately. ",
                 "Search for `category_as_first_argument` in the documentation for more details."
             ) );
+            
+        fi;
+        
+        if IsBound( current_rec.io_type ) then
+            
+            if (current_rec.filter_list[1] = "category" and Length( current_rec.io_type[1] ) <> Length( current_rec.filter_list ) - 1) or
+               (current_rec.filter_list[1] <> "category" and Length( current_rec.io_type[1] ) <> Length( current_rec.filter_list )) then
+                
+                Error( "input type has the wrong length" );
+                
+            fi;
             
         fi;
         

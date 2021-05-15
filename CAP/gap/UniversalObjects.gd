@@ -1909,6 +1909,8 @@ DeclareOperation( "DirectSumFunctorial",
 #! a list of morphisms $L = ( \mu_1: S_1 \rightarrow S_1', \dots, \mu_n: S_n \rightarrow S_n' )$,
 #! a list of objects $(S_i')_{i = 1 \dots n}$,
 #! and an object $d_2 = \bigoplus_{i=1}^n S_i'$.
+#! For convenience, <A>source_diagram</A> and <A>range_diagram</A> can be omitted
+#! and are automatically derived from <A>L</A> in that case.
 #! The output is a morphism
 #! $d_1 \rightarrow d_2$
 #! given by the functoriality of the direct sum.
@@ -2181,6 +2183,8 @@ DeclareOperation( "CoproductFunctorial",
 #! a list $L = ( \mu_1: I_1 \rightarrow I_1', \dots, \mu_n: I_n \rightarrow I_n' )$,
 #! a list of objects $(I_i')_{i = 1 \dots n}$,
 #! and an object $r = \bigsqcup_{i=1}^n I_i'$.
+#! For convenience, <A>source_diagram</A> and <A>range_diagram</A> can be omitted
+#! and are automatically derived from <A>L</A> in that case.
 #! The output is a morphism
 #! $\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i'$
 #! given by the functoriality of the coproduct.
@@ -2439,6 +2443,8 @@ DeclareOperation( "DirectProductFunctorial",
 #! a list of morphisms $L = (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$,
 #! a list of objects $(P_i')_{i = 1 \dots n}$,
 #! and an object $r = \prod_{i=1}^n P_i'$.
+#! For convenience, <A>source_diagram</A> and <A>range_diagram</A> can be omitted
+#! and are automatically derived from <A>L</A> in that case.
 #! The output is a morphism
 #! $\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'$
 #! given by the functoriality of the direct product.

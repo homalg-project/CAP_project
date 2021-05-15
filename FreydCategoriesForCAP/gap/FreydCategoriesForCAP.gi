@@ -502,7 +502,7 @@ InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout := rec(
 
 UniversalMorphismFromBiasedWeakPushout := rec(
   filter_list := [ "category", "morphism", "morphism", "morphism" ],
-  io_type := [ [ "a", "b", "t", "s" ], [ "P", "t_range" ] ],
+  io_type := [ [ "a", "b", "t" ], [ "P", "t_range" ] ],
   cache_name := "UniversalMorphismFromBiasedWeakPushout",
   with_given_object_position := "Source",
   universal_type := "Colimit",

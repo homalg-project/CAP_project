@@ -695,6 +695,37 @@ InstallOtherMethod( DirectProductFunctorial,
 end );
 
 ##
+InstallOtherMethod( DirectProductFunctorialWithGivenDirectProducts,
+               [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
+               
+  function( source, L, range )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return DirectProductFunctorialWithGivenDirectProducts(
+        source,
+        List( L, Source ), L, List( L, Range ),
+        range
+    );
+    
+end );
+
+##
+InstallOtherMethod( DirectProductFunctorialWithGivenDirectProducts,
+               [ IsCapCategory, IsCapCategoryObject, IsList, IsCapCategoryObject ],
+               
+  function( cat, source, L, range )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return DirectProductFunctorialWithGivenDirectProducts(
+        cat,
+        source,
+        List( L, Source ), L, List( L, Range ),
+        range
+    );
+    
+end );
+
+##
 InstallMethod( CoproductFunctorial,
                [ IsList ],
                
@@ -720,6 +751,37 @@ InstallOtherMethod( CoproductFunctorial,
         Coproduct( cat, List( L, Source ) ),
         List( L, Source ), L, List( L, Range ),
         Coproduct( cat, List( L, Range ) )
+    );
+    
+end );
+
+##
+InstallOtherMethod( CoproductFunctorialWithGivenCoproducts,
+               [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
+               
+  function( source, L, range )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return CoproductFunctorialWithGivenCoproducts(
+        source,
+        List( L, Source ), L, List( L, Range ),
+        range
+    );
+    
+end );
+
+##
+InstallOtherMethod( CoproductFunctorialWithGivenCoproducts,
+               [ IsCapCategory, IsCapCategoryObject, IsList, IsCapCategoryObject ],
+               
+  function( cat, source, L, range )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return CoproductFunctorialWithGivenCoproducts(
+        cat,
+        source,
+        List( L, Source ), L, List( L, Range ),
+        range
     );
     
 end );
@@ -1410,6 +1472,37 @@ InstallOtherMethod( DirectSumFunctorial,
         DirectSum( cat, List( L, Source ) ),
         List( L, Source ), L, List( L, Range ),
         DirectSum( cat, List( L, Range ) )
+    );
+    
+end );
+
+##
+InstallOtherMethod( DirectSumFunctorialWithGivenDirectSums,
+               [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
+               
+  function( source, L, range )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return DirectSumFunctorialWithGivenDirectSums(
+        source,
+        List( L, Source ), L, List( L, Range ),
+        range
+    );
+    
+end );
+
+##
+InstallOtherMethod( DirectSumFunctorialWithGivenDirectSums,
+               [ IsCapCategory, IsCapCategoryObject, IsList, IsCapCategoryObject ],
+               
+  function( cat, source, L, range )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return DirectSumFunctorialWithGivenDirectSums(
+        cat,
+        source,
+        List( L, Source ), L, List( L, Range ),
+        range
     );
     
 end );
