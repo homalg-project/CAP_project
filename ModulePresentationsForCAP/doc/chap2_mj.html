@@ -260,6 +260,12 @@ A morphism in Category of left presentations of Z
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := Q * "x";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">F := FreeLeftPresentation( 2, Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HasIsProjective( F ) and IsProjective( F );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := FreeRightPresentation( 2, Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HasIsProjective( G ) and IsProjective( G );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := AsLeftPresentation( HomalgMatrix( "[ x, x ]", 1, 2, R ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsProjective( M );</span>
 false

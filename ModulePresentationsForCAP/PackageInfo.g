@@ -10,11 +10,11 @@ Version := Maximum( [
            ##
            "2019.01-16", # Mohamed's version
            ##
-           "2020.10-01", # Fabian's version
+           "2021.05-01", # Fabian's version
            ##
            ] ),
 
-Date := "19/10/2020",
+Date := "15/05/2021",
 License := "GPL-2.0-or-later",
 
 
@@ -59,7 +59,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/ModulePresentationsForCAP",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-", ~.Version, "/ModulePresentationsForCAP-", ~.Version ),
@@ -92,7 +92,7 @@ Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "MatricesForHomalg", ">=2019.02.01" ],
-                           [ "CAP", ">= 2019.01.16" ],
+                           [ "CAP", ">= 2021.05-01" ],
                            [ "MonoidalCategories", ">= 2019.01.16" ],
                            [ "GeneralizedMorphismsForCAP", ">=0" ],
   ],

@@ -1,7 +1,7 @@
 name: ModulePresentationsForCAP
-version: "2020.10-01"
+version: "2021.05-01"
 license: "GPL-2.0-or-later"
-date: 2020-10-19
+date: 2021-05-15
 description: |
     Category R-pres for CAP
 
@@ -25,28 +25,28 @@ needed-pkgs:
       url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
     - name: "MatricesForHomalg"
       version: ">=2019.02.01"
-      url: "https://homalg-project.github.io/homalg_project/MatricesForHomalg"
+      url: "https://homalg-project.github.io/pkg/MatricesForHomalg"
     - name: "CAP"
-      version: ">= 2019.01.16"
-      url: "https://homalg-project.github.io/CAP_project/CAP"
+      version: ">= 2021.05-01"
+      url: "https://homalg-project.github.io/pkg/CAP"
     - name: "MonoidalCategories"
       version: ">= 2019.01.16"
-      url: "https://homalg-project.github.io/CAP_project/MonoidalCategories"
+      url: "https://homalg-project.github.io/pkg/MonoidalCategories"
     - name: "GeneralizedMorphismsForCAP"
       version: ">=0"
-      url: "https://homalg-project.github.io/CAP_project/GeneralizedMorphismsForCAP"
+      url: "https://homalg-project.github.io/pkg/GeneralizedMorphismsForCAP"
 
-www: https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP
+www: https://homalg-project.github.io/pkg/ModulePresentationsForCAP
 readme: README.md
 packageinfo: https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2020.10-01/ModulePresentationsForCAP-2020.10-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2021.05-01/ModulePresentationsForCAP-2021.05-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2020.10-01/ModulePresentationsForCAP-2020.10-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2021.05-01/ModulePresentationsForCAP-2021.05-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2020.10-01/ModulePresentationsForCAP-2020.10-01.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2021.05-01/ModulePresentationsForCAP-2021.05-01.pdf
 
 abstract: |
     <span class="pkgname">ModulePresentationsForCAP</span> provides the category of finitely presented modules over a computable ring.
@@ -56,28 +56,28 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>GP20</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
+    [<span class='BibKey'>GP21</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
      <i class='BibTitle'>ModulePresentationsForCAP, Category R-pres for CAP,
-             Version 2020.10-01</i>
-     (<span class='BibYear'>2020</span>)<br />
+             Version 2021.05-01</i>
+     (<span class='BibYear'>2021</span>)<br />
     (<span class='BibNote'>GAP package</span>),
-    <span class='BibHowpublished'><a href="https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP">https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP</a></span>.
+    <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/ModulePresentationsForCAP">https://homalg-project.github.io/pkg/ModulePresentationsForCAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ ModulePresentationsForCAP2020.10-01,
+    @misc{ ModulePresentationsForCAP2021.05-01,
       author =           {Gutsche, S. and Posur, S.},
       title =            {{ModulePresentationsForCAP},  Category R-pres for CAP,
-                          {V}ersion 2020.10-01},
-      month =            {Oct},
-      year =             {2020},
+                          {V}ersion 2021.05-01},
+      month =            {May},
+      year =             {2021},
       note =             {GAP package},
       howpublished =     {\href
-                          {https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP}
+                          {https://homalg-project.github.io/pkg/ModulePresentationsForCAP}
                           {\texttt{https://homalg-project.github.io/}\discretionary
-                          {}{}{}\texttt{CAP{\textunderscore}project/}\discretionary
+                          {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{ModulePresentationsForCAP}}},
-      printedkey =       {GP20}
+      printedkey =       {GP21}
     }
 
