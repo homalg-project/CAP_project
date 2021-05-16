@@ -426,9 +426,9 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
             "    ##\n",
             "    Add", function_name, "( cat,\n",
             "        \n",
-            "        \n",
-            "        ", function_string, "\n",
-            "        \n",
+            "########\n",
+            function_string, "\n",
+            "########\n",
             "        \n",
             "    );\n"
         );
