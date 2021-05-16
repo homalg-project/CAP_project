@@ -389,7 +389,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
             
             if CanCompute( cat, object_name ) then
                 
-                example_input[Length( example_input )] := CallFuncList( ValueGlobal( object_name ), example_input{[ 1 .. current_rec.number_of_diagram_arguments + 1 ]} );
+                example_input[Length( example_input )] := CallFuncList( ValueGlobal( object_name ), example_input{CAP_INTERNAL_METHOD_NAME_RECORD.(current_rec.with_given_without_given_name_pair[1]).object_arguments_positions} );
                 
             else
                 
