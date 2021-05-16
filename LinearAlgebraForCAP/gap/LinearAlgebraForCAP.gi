@@ -859,7 +859,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddEpimorphismFromSomeProjectiveObject( category, { cat, obj } -> IdentityMorphism( obj ) );
     
     ##
-    AddIsProjective( category, ReturnTrue );
+    AddIsProjective( category, { cat, obj } -> true );
     
     ##
     AddSomeInjectiveObject( category, { cat, obj } -> obj );
@@ -868,7 +868,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddMonomorphismIntoSomeInjectiveObject( category, { cat, obj } -> IdentityMorphism( obj ) );
     
     ##
-    AddIsInjective( category, ReturnTrue );
+    AddIsInjective( category, { cat, obj } -> true );
    
     ##
     AddBasisOfExternalHom( category,
