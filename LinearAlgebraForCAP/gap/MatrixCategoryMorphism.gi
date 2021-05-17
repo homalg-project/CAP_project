@@ -125,7 +125,14 @@ end );
 InstallMethod( \/,
                [ IsHomalgMatrix, IsMatrixCategory ],
   function( homalg_matrix, category )
+    local field;
     
-    return AsVectorSpaceMorphism( homalg_matrix );
+    field := HomalgRing( homalg_matrix );
+    
+    return VectorSpaceMorphism(
+      MatrixCategoryObject( category, NrRows( homalg_matrix ) ),
+      homalg_matrix,
+      MatrixCategoryObject( category, NrColumns( homalg_matrix ) )
+    );
     
 end );

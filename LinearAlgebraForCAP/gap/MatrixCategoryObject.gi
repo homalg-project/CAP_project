@@ -102,6 +102,6 @@ InstallMethod( \/,
                [ IsInt, IsMatrixCategory ],
   function( dim, category )
     
-    return VectorSpaceObject( dim, UnderlyingRing( category ) );
+    return MatrixCategoryObject( category, dim );
     
 end );
