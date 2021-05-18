@@ -569,32 +569,57 @@ InstallGlobalFunction( CapInternalInstallAdd,
     
 end );
 
-BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without_given_name, with_given_name, object_name, object_arguments_positions )
+BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without_given_name, with_given_name, object_name, with_given_arguments_names, object_arguments_positions )
+  local without_given_arguments_names, with_given_via_without_given_function, without_given_via_with_given_function;
     
-    # install derivations with Weight := 2 to make them slightly more expensive than explicitly installed derivations, e.g. in LimitConvenienceOutput.gi
+    without_given_arguments_names := with_given_arguments_names{[ 1 .. Length( with_given_arguments_names ) - 1 ]};
+    
+    with_given_via_without_given_function := EvalString( ReplacedStringViaRecord(
+        """
+        function( with_given_arguments )
+            
+            return without_given_name( without_given_arguments );
+            
+        end
+        """,
+        rec(
+            with_given_arguments := with_given_arguments_names,
+            without_given_arguments := without_given_arguments_names,
+            without_given_name := without_given_name,
+        )
+    ) );
+    
+    without_given_via_with_given_function := EvalString( ReplacedStringViaRecord(
+        """
+        function( without_given_arguments )
+            
+            return with_given_name( without_given_arguments, object_name( object_arguments ) );
+            
+        end
+        """,
+        rec(
+            without_given_arguments := without_given_arguments_names,
+            with_given_name := with_given_name,
+            object_name := object_name,
+            object_arguments := without_given_arguments_names{object_arguments_positions},
+        )
+    ) );
     
     AddDerivationToCAP( ValueGlobal( with_given_name ),
                         [ [ ValueGlobal( without_given_name ), 1 ] ],
-      function( arg )
-        
-        return CallFuncList( ValueGlobal( without_given_name ), arg{[ 1 .. Length( arg ) - 1 ]} );
-        
-    end : Description := Concatenation( with_given_name, " by calling ", without_given_name, " with the last argument dropped" ), Weight := 2 );
+      with_given_via_without_given_function
+      : Description := Concatenation( with_given_name, " by calling ", without_given_name, " with the last argument dropped" ) );
     
     AddDerivationToCAP( ValueGlobal( without_given_name ),
                         [ [ ValueGlobal( with_given_name ), 1 ],
                           [ ValueGlobal( object_name ), 1 ] ],
-      function( arg )
-        
-        return CallFuncList( ValueGlobal( with_given_name ),
-                                    Concatenation( arg, [ CallFuncList( ValueGlobal( object_name ), arg{object_arguments_positions} ) ] ) );
-        
-    end : Description := Concatenation( without_given_name, " by calling ", with_given_name, " with ", object_name, " as last argument" ), Weight := 2 );
+      without_given_via_with_given_function
+      : Description := Concatenation( without_given_name, " by calling ", with_given_name, " with ", object_name, " as last argument" ) );
     
 end );
 
 BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATIONS", function( record )
-  local recnames, current_recname, current_rec, without_given_name, with_given_name, object_name, object_arguments_positions;
+  local recnames, current_recname, current_rec, without_given_name, with_given_name, object_name, with_given_arguments_names, object_arguments_positions;
     
     recnames := RecNames( record );
     
@@ -607,6 +632,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATIONS", function( record )
             without_given_name := current_rec.with_given_without_given_name_pair[1];
             with_given_name := current_rec.with_given_without_given_name_pair[2];
             object_name := current_rec.with_given_object_name;
+            with_given_arguments_names := current_rec.input_arguments_names;
             object_arguments_positions := record.( without_given_name ).object_arguments_positions;
             
             if record.( without_given_name ).filter_list[1] <> "category" or record.( object_name ).filter_list[1] <> "category" or record.( with_given_name ).filter_list[1] <> "category" then
@@ -628,7 +654,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATIONS", function( record )
                 
             else
                 
-                CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR( without_given_name, with_given_name, object_name, object_arguments_positions );
+                CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR( without_given_name, with_given_name, object_name, with_given_arguments_names, object_arguments_positions );
                 
             fi;
             

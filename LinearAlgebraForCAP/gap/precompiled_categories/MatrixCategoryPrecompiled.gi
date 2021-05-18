@@ -115,7 +115,7 @@ end
     AddCokernelProjectionWithGivenCokernelObject( cat,
         
 ########
-function ( cat, alpha, with_given_object )
+function ( cat, alpha, P )
     local cap_jit_morphism_attribute;
     cap_jit_morphism_attribute := SyzygiesOfColumns( UnderlyingMatrix( alpha ) );
     return ObjectifyWithAttributes( rec(
@@ -196,8 +196,8 @@ end
     AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject( cat,
         
 ########
-function ( arg... )
-    return CallFuncList( EpimorphismFromSomeProjectiveObject, arg{[ 1 .. Length( arg ) - 1 ]} );
+function ( cat, A, P )
+    return IdentityMorphism( A );
 end
 ########
         
@@ -667,7 +667,7 @@ end
     AddKernelEmbeddingWithGivenKernelObject( cat,
         
 ########
-function ( cat, alpha, with_given_object )
+function ( cat, alpha, P )
     local cap_jit_morphism_attribute;
     cap_jit_morphism_attribute := SyzygiesOfRows( UnderlyingMatrix( alpha ) );
     return ObjectifyWithAttributes( rec(
@@ -764,8 +764,8 @@ end
     AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject( cat,
         
 ########
-function ( arg... )
-    return CallFuncList( MonomorphismIntoSomeInjectiveObject, arg{[ 1 .. Length( arg ) - 1 ]} );
+function ( cat, A, I )
+    return IdentityMorphism( A );
 end
 ########
         
@@ -790,7 +790,7 @@ end
     AddMorphismFromKernelObjectToSinkWithGivenKernelObject( cat,
         
 ########
-function ( cat, alpha, with_given_object )
+function ( cat, alpha, P )
     local cap_jit_morphism_attribute;
     cap_jit_morphism_attribute := HomalgZeroMatrix( NumberRows( UnderlyingMatrix( alpha ) ) - RowRankOfMatrix( UnderlyingMatrix( alpha ) ), Dimension( Range( alpha ) ), UnderlyingRing( cat ) );
     return ObjectifyWithAttributes( rec(
@@ -820,7 +820,7 @@ end
     AddMorphismFromSourceToCokernelObjectWithGivenCokernelObject( cat,
         
 ########
-function ( cat, alpha, with_given_object )
+function ( cat, alpha, P )
     local cap_jit_morphism_attribute;
     cap_jit_morphism_attribute := HomalgZeroMatrix( Dimension( Source( alpha ) ), NumberColumns( UnderlyingMatrix( alpha ) ) - RowRankOfMatrix( UnderlyingMatrix( alpha ) ), UnderlyingRing( cat ) );
     return ObjectifyWithAttributes( rec(
