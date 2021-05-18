@@ -4354,6 +4354,46 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
+        if not IsBound( current_rec.input_arguments_names ) then
+            
+            if IsBound( current_rec.io_type ) then
+                
+                if current_rec.filter_list[1] = "category" then
+                    
+                    current_rec.input_arguments_names := Concatenation( [ "cat" ], current_rec.io_type[1] );
+                    
+                else
+                    
+                    current_rec.input_arguments_names := current_rec.io_type[1];
+                    
+                fi;
+                
+            else
+                
+                current_rec.input_arguments_names := List( [ 1 .. Length( current_rec.filter_list ) ], i -> Concatenation( "arg", String( i ) ) );
+                
+                if current_rec.filter_list[1] = "category" then
+                    
+                    current_rec.input_arguments_names[1] := "cat";
+                    
+                fi;
+                
+            fi;
+            
+        fi;
+        
+        if current_rec.filter_list[1] = "category" and current_rec.input_arguments_names[1] <> "cat" then
+            
+            Error( "the category argument must always be called \"cat\", please adjust the method record entry of ", current_recname );
+            
+        fi;
+        
+        if not ForAll( current_rec.input_arguments_names, x -> IsString( x ) ) then
+            
+            Error( "the entries of input_arguments_names must be strings, please adjust the method record entry of ", current_recname );
+            
+        fi;
+        
         if not current_rec.is_with_given and IsBound( current_rec.with_given_object_position ) then
             
             ## find with given name
