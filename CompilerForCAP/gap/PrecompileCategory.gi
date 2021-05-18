@@ -296,8 +296,16 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
     fi;
     
+    diff := Difference( operations, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) );
+    
+    if Length( diff ) > 0 then
+        
+        Error( "The following strings are no CAP operations and can thus not be compiled: ", diff );
+        
+    fi;
+    
     diff := Difference( operations, CAP_JIT_INTERNAL_SAFE_OPERATIONS );
-
+    
     if Length( diff ) > 0 then
         
         Error( "Cannot compile the following operations yet: ", diff );
@@ -305,7 +313,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     fi;
     
     diff := Difference( operations, ListInstalledOperationsOfCategory( cat ) );
-
+    
     if Length( diff ) > 0 then
         
         Error( "The following operations you want to have compiled are not computable in the given category: ", diff );
