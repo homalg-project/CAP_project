@@ -242,11 +242,21 @@ BindGlobal( "CAP_JIT_INTERNAL_SAFE_OPERATIONS", [
 ] );
 
 InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_constructor, given_arguments, package_name, compiled_category_name )
-  local cat, obj, mor, operations, diff, output_string, package_info, parameters_string, current_string, object_name, index, compiled_func, function_string, filter_list, example_input, function_name, current_rec;
+  local cat1, cat2, cat, obj, mor, operations, diff, output_string, package_info, parameters_string, current_string, object_name, index, compiled_func, function_string, filter_list, example_input, function_name, current_rec;
     
     if IsOperation( category_constructor ) or IsKernelFunction( category_constructor ) then
         
         Error( "category_constructor must be a regular function, i.e. not an operation or a kernel function" );
+        
+    fi;
+    
+    # check if category_constructor returns a new instance of the category every time
+    cat1 := CallFuncList( category_constructor, given_arguments );
+    cat2 := CallFuncList( category_constructor, given_arguments );
+    
+    if IsIdenticalObj( cat1, cat2 ) then
+        
+        Error( "the category constructor must not return the same instance of the category if called twice" );
         
     fi;
     
