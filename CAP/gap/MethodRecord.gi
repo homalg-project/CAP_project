@@ -4092,7 +4092,7 @@ end );
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
     local recnames, current_recname, current_rec, number_of_arguments, flattened_filter_list, position, without_given_name, object_name, functorial,
-          installation_name, with_given_name, with_given_name_length, i, object_function_name, object_filter_list;
+          installation_name, with_given_name, with_given_name_length, i, object_filter_list;
     
     recnames := RecNames( record );
     
@@ -4365,8 +4365,6 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 
             fi;
             
-            object_function_name := record.( object_name ).function_name;
-            
             object_filter_list := record.( object_name ).filter_list;
             
             if not StartsWith( current_rec.filter_list, object_filter_list ) then
@@ -4399,7 +4397,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                     
                 else
                     
-                    current_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_function_name, current_rec.object_arguments_positions );
+                    current_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_name, current_rec.object_arguments_positions );
                     
                 fi;
                 
@@ -4418,7 +4416,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                     
                 else
                     
-                    current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.with_given_object_position, object_function_name, current_rec.object_arguments_positions );
+                    current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.with_given_object_position, object_name, current_rec.object_arguments_positions );
                     
                 fi;
                 
