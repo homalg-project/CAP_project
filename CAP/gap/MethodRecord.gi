@@ -4091,7 +4091,7 @@ end );
 
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
-    local recnames, current_recname, current_rec, number_of_arguments, flattened_filter_list, position, without_given_name, object_name, functorial,
+    local recnames, current_recname, current_rec, io_type, number_of_arguments, flattened_filter_list, position, without_given_name, object_name, functorial,
           installation_name, with_given_name, with_given_name_length, i, object_filter_list;
     
     recnames := RecNames( record );
@@ -4121,10 +4121,20 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         
         if IsBound( current_rec.io_type ) then
             
-            if (current_rec.filter_list[1] = "category" and Length( current_rec.io_type[1] ) <> Length( current_rec.filter_list ) - 1) or
-               (current_rec.filter_list[1] <> "category" and Length( current_rec.io_type[1] ) <> Length( current_rec.filter_list )) then
+            io_type := current_rec.io_type;
+            
+            if not IsList( io_type ) or not Length( io_type ) = 2 then
+                Error( "the io_type of <current_rec> is not a list of length 2" );
+            fi;
+            
+            if not ForAll( io_type[1], x -> IsString( x ) ) then
+                Error( "the input type of <current_rec> contains non-strings" );
+            fi;
+            
+            if (current_rec.filter_list[1] = "category" and Length( io_type[1] ) <> Length( current_rec.filter_list ) - 1) or
+               (current_rec.filter_list[1] <> "category" and Length( io_type[1] ) <> Length( current_rec.filter_list )) then
                 
-                Error( "input type has the wrong length" );
+                Error( "the input type of <current_rec> has the wrong length" );
                 
             fi;
             
