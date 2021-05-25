@@ -4160,6 +4160,10 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             Error( "the post function of <current_rec> has the wrong number of arguments" );
         fi;
         
+        if not ForAll( current_rec.filter_list, x -> IsFilter( x ) or IsString( x ) or (IsList( x ) and Length( x ) = 2 and IsString( x[1] ) and IsFilter( x[2] )) ) then
+            Error( "the filter list of <current_rec> does not fulfill the requirements" );
+        fi;
+        
         if IsBound( current_rec.install_convenience_without_category ) then
             
             if current_rec.install_convenience_without_category = true and current_rec.filter_list[1] <> "category" then
