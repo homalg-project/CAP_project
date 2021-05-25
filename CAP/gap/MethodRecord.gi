@@ -3167,7 +3167,7 @@ IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject := rec(
   
 ## SimplifyObject*
 SimplifyObject := rec(
-  filter_list := [ "category", "object", IsObject ],
+  filter_list := [ "category", "object", IsCyclotomic ],
   io_type := [ [ "A", "n" ], [ "B" ] ],
   return_type := "object",
   dual_operation := "SimplifyObject",
@@ -3192,7 +3192,7 @@ SimplifyObject := rec(
   ),
 
 SimplifyObject_IsoFromInputObject := rec(
-  filter_list := [ "category", "object", IsObject ],
+  filter_list := [ "category", "object", IsCyclotomic ],
   io_type := [ [ "A", "n" ], [ "A", "B" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyObject_IsoToInputObject",
@@ -3209,7 +3209,7 @@ SimplifyObject_IsoFromInputObject := rec(
   ),
 
 SimplifyObject_IsoToInputObject := rec(
-  filter_list := [ "category", "object", IsObject ],
+  filter_list := [ "category", "object", IsCyclotomic ],
   io_type := [ [ "A", "n" ], [ "B", "A" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyObject_IsoFromInputObject",
@@ -3219,8 +3219,8 @@ SimplifyObject_IsoToInputObject := rec(
 
 ## SimplifyMorphism
 SimplifyMorphism := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [  [ [ "A", "B" ], "n" ], [ "A", "B" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "mor_source", "mor_range" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyMorphism",
   redirect_function := ~.SimplifyObject.redirect_function,
@@ -3229,8 +3229,8 @@ SimplifyMorphism := rec(
 
 ## SimplifySource*
 SimplifySource := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "Ap", "B" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "Ap", "mor_range" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyRange",
   redirect_function := ~.SimplifyObject.redirect_function,
@@ -3238,8 +3238,8 @@ SimplifySource := rec(
   ),
 
 SimplifySource_IsoToInputObject := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "Ap", "A" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "Ap", "mor_source" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyRange_IsoFromInputObject",
   redirect_function := function( cat, alpha, n )
@@ -3255,8 +3255,8 @@ SimplifySource_IsoToInputObject := rec(
   ),
   
 SimplifySource_IsoFromInputObject := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "A", "Ap" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "mor_source", "Ap" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyRange_IsoToInputObject",
   redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
@@ -3265,8 +3265,8 @@ SimplifySource_IsoFromInputObject := rec(
 
 ## SimplifyRange*
 SimplifyRange := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "A", "Bp" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "mor_source", "Bp" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySource",
   redirect_function := ~.SimplifyObject.redirect_function,
@@ -3274,8 +3274,8 @@ SimplifyRange := rec(
   ),
 
 SimplifyRange_IsoToInputObject := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "Bp", "B" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "Bp", "mor_range" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySource_IsoFromInputObject",
   redirect_function := function( cat, alpha, n )
@@ -3291,8 +3291,8 @@ SimplifyRange_IsoToInputObject := rec(
   ),
   
 SimplifyRange_IsoFromInputObject := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "B", "Bp" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "mor_range", "Bp" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySource_IsoToInputObject",
   redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
@@ -3301,8 +3301,8 @@ SimplifyRange_IsoFromInputObject := rec(
 
 ## SimplifySourceAndRange*
 SimplifySourceAndRange := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "Ap", "Bp" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "Ap", "Bp" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySourceAndRange",
   redirect_function := ~.SimplifyObject.redirect_function,
@@ -3310,8 +3310,8 @@ SimplifySourceAndRange := rec(
   ),
 
 SimplifySourceAndRange_IsoToInputSource := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "Ap", "A" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "Ap", "mor_source" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySourceAndRange_IsoFromInputRange",
   redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
@@ -3319,8 +3319,8 @@ SimplifySourceAndRange_IsoToInputSource := rec(
   ),
   
 SimplifySourceAndRange_IsoFromInputSource := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "A", "Ap" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "mor_source", "Ap" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySourceAndRange_IsoToInputRange",
   redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
@@ -3328,8 +3328,8 @@ SimplifySourceAndRange_IsoFromInputSource := rec(
   ),
 
 SimplifySourceAndRange_IsoToInputRange := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "Bp", "B" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "Bp", "mor_range" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySourceAndRange_IsoFromInputSource",
   redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
@@ -3337,8 +3337,8 @@ SimplifySourceAndRange_IsoToInputRange := rec(
   ),
   
 SimplifySourceAndRange_IsoFromInputRange := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "B", "Bp" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "mor_range", "Bp" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySourceAndRange_IsoToInputSource",
   redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
@@ -3347,8 +3347,8 @@ SimplifySourceAndRange_IsoFromInputRange := rec(
 
 ## SimplifyEndo*
 SimplifyEndo := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "A" ], "n" ], [ "Ap", "Ap" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "Ap", "Ap" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyEndo",
   redirect_function := ~.SimplifyObject.redirect_function,
@@ -3368,8 +3368,8 @@ SimplifyEndo := rec(
   ),
 
 SimplifyEndo_IsoFromInputObject := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "A" ], "n" ], [ "A", "Ap" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "mor_source", "Ap" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyEndo_IsoToInputObject",
   redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
@@ -3377,8 +3377,8 @@ SimplifyEndo_IsoFromInputObject := rec(
   ),
 
 SimplifyEndo_IsoToInputObject := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "A" ], "n" ], [ "Ap", "A" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "Ap", "mor_range" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyEndo_IsoFromInputObject",
   redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
