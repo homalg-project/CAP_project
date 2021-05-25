@@ -40,7 +40,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
     orig_tree := tree;
     
     pre_func := function ( tree, additional_arguments )
-      local path, func_stack, statements, i, statement, body_if_true, body_if_false, level, pos, lvars, value, to_delete, next_statement, funccall, branch, keyvalue;
+      local path, func_stack, statements, i, statement, body_if_true, body_if_false, level, pos, lvars, value, to_delete, next_statement, funccall, branch, keyvalue, operation_name;
         
         path := additional_arguments[1];
         func_stack := additional_arguments[2];
@@ -351,6 +351,24 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                         tree.col,
                     ],
                 );
+                
+            fi;
+            
+            # check if operations can be resolved
+            if CapJitIsCallToGlobalFunction( tree, gvar -> HasNameFunction( ValueGlobal( gvar ) ) and NameFunction( ValueGlobal( gvar ) ) in Concatenation( RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ), RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) ) ) then
+                
+                operation_name := NameFunction( ValueGlobal( tree.funcref.gvar ) );
+                
+                if not (
+                    (operation_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) and Length( tree.args ) = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list ))
+                    or
+                    (operation_name in RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) and ForAny( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name), x -> Length( tree.args ) = Length( x[1] ) ))
+                    ) then
+                    
+                    # using LocationFunc causes a segfault (https://github.com/gap-system/gap/issues/4507)
+                    Print( "WARNING: operation ", tree.funcref.gvar, ", located in function at ", FilenameFunc( func ), ":", StartlineFunc( func ), " can probably not be resolved.\n" );
+                    
+                fi;
                 
             fi;
             
