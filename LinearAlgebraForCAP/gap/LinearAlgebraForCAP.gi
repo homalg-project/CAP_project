@@ -824,7 +824,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddSomeReductionBySplitEpiSummand( category,
       function( cat, alpha )
         
-        return MorphismFromZeroObject( CokernelObject( alpha ) );
+        return MorphismFromZeroObject( cat, CokernelObject( cat, alpha ) );
         
     end );
     
@@ -832,7 +832,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddSomeReductionBySplitEpiSummand_MorphismFromInputRange( category,
       function( cat, alpha )
         
-        return CokernelProjection( alpha );
+        return CokernelProjection( cat, alpha );
         
     end );
     
@@ -841,10 +841,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
       function( cat, alpha )
         local cok;
         
-        cok := CokernelProjection( alpha );
+        cok := CokernelProjection( cat, alpha );
         
-        return Lift(
-                IdentityMorphism( Range( cok ) ),
+        return Lift( cat,
+                IdentityMorphism( cat, Range( cok ) ),
                 cok
         );
         
@@ -856,7 +856,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddSomeProjectiveObject( category, { cat, obj } -> obj );
     
     ##
-    AddEpimorphismFromSomeProjectiveObject( category, { cat, obj } -> IdentityMorphism( obj ) );
+    AddEpimorphismFromSomeProjectiveObject( category, { cat, obj } -> IdentityMorphism( cat, obj ) );
     
     ##
     AddIsProjective( category, { cat, obj } -> true );
@@ -865,7 +865,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddSomeInjectiveObject( category, { cat, obj } -> obj );
     
     ##
-    AddMonomorphismIntoSomeInjectiveObject( category, { cat, obj } -> IdentityMorphism( obj ) );
+    AddMonomorphismIntoSomeInjectiveObject( category, { cat, obj } -> IdentityMorphism( cat, obj ) );
     
     ##
     AddIsInjective( category, { cat, obj } -> true );

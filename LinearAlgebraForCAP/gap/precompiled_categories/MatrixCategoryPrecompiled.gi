@@ -186,7 +186,8 @@ end
         
 ########
 function ( cat, obj )
-    return IdentityMorphism( obj );
+    return ObjectifyWithAttributes( rec(
+           ), MorphismType( cat ), CapCategory, cat, Source, obj, Range, obj, UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, HomalgIdentityMatrix( Dimension( obj ), UnderlyingRing( cat ) ) );
 end
 ########
         
@@ -197,7 +198,8 @@ end
         
 ########
 function ( cat, A, P )
-    return IdentityMorphism( A );
+    return ObjectifyWithAttributes( rec(
+           ), MorphismType( cat ), CapCategory, cat, Source, A, Range, A, UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, HomalgIdentityMatrix( Dimension( A ), UnderlyingRing( cat ) ) );
 end
 ########
         
@@ -754,7 +756,8 @@ end
         
 ########
 function ( cat, obj )
-    return IdentityMorphism( obj );
+    return ObjectifyWithAttributes( rec(
+           ), MorphismType( cat ), CapCategory, cat, Source, obj, Range, obj, UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, HomalgIdentityMatrix( Dimension( obj ), UnderlyingRing( cat ) ) );
 end
 ########
         
@@ -765,7 +768,8 @@ end
         
 ########
 function ( cat, A, I )
-    return IdentityMorphism( A );
+    return ObjectifyWithAttributes( rec(
+           ), MorphismType( cat ), CapCategory, cat, Source, A, Range, A, UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, HomalgIdentityMatrix( Dimension( A ), UnderlyingRing( cat ) ) );
 end
 ########
         
