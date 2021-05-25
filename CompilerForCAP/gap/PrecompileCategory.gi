@@ -330,7 +330,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
     fi;
     
-    parameters_string := JoinStringsWithSeparator( NamesLocalVariablesFunction( category_constructor ), ", " );
+    parameters_string := JoinStringsWithSeparator( NamesLocalVariablesFunction( category_constructor ){[ 1 .. NumberArgumentsFunction( category_constructor ) ]}, ", " );
     
     current_string := Concatenation(
         "# SPDX-License-Identifier: GPL-2.0-or-later\n",
