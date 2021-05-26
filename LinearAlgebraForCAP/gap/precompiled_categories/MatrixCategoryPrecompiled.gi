@@ -46,8 +46,8 @@ end
         
 ########
 function ( cat, S, T )
-    return List( [ 1 .. Dimension( S ) * Dimension( T ) ], function ( logic_new_func_991_x )
-            return VectorSpaceMorphism( S, ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( Dimension( S ) * Dimension( T ), UnderlyingFieldForHomalg( S ) ), [ logic_new_func_991_x ] ), Dimension( S ), Dimension( T ) ), T );
+    return List( [ 1 .. Dimension( S ) * Dimension( T ) ], function ( logic_new_func_517_x )
+            return VectorSpaceMorphism( S, ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( Dimension( S ) * Dimension( T ), UnderlyingFieldForHomalg( S ) ), [ logic_new_func_517_x ] ), Dimension( S ), Dimension( T ) ), T );
         end );
 end
 ########
