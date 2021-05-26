@@ -29,7 +29,7 @@ InstallGlobalFunction( CapJitGetCapCategoryFromArguments, function ( arguments )
 end );
 
 InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
-  local condition_func, path, record, operation, funccall_args, funccall_does_not_return_fail, operation_name, new_tree, category, index, func_to_resolve, global_variable_name, resolved_tree, result, arguments, applicable_methods, parent, method;
+  local condition_func, path, record, operation, funccall_args, funccall_does_not_return_fail, operation_name, new_tree, category, index, func_to_resolve, global_variable_name, resolved_tree, known_methods, pos, result, arguments, applicable_methods, parent, method;
     
     tree := StructuralCopy( tree );
   
@@ -83,6 +83,13 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
                 
             fi;
             
+            # check if we know methods for this operation
+            if operation_name in RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) then
+                
+                return true;
+                
+            fi;
+            
             if IsOperation( operation ) then
                 
                 return true;
@@ -114,17 +121,6 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
     funccall_does_not_return_fail := IsBound( record.funcref.does_not_return_fail ) and record.funcref.does_not_return_fail = true;
     
     operation_name := NameFunction( operation );
-    
-    # check if we deal with a KeyDependentOperation
-    if operation in WRAPPER_OPERATIONS then
-        
-        operation_name := Concatenation( operation_name, "Op" );
-        
-        Assert( 0, IsBoundGlobal( operation_name ) );
-        
-        operation := ValueGlobal( operation_name );
-        
-    fi;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, Concatenation( "Try to resolve ", operation_name, "." ) );
@@ -216,6 +212,66 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
             
         fi;
         
+    # check if we know methods for this operation
+    elif operation_name in RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) then
+        
+        Info( InfoCapJit, 1, "Methods are known for this operation." );
+        
+        known_methods := CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name);
+        
+        pos := PositionProperty( known_methods, m -> Length( m[1] ) = Length( funccall_args ) );
+        
+        if pos = fail then
+            
+            Error( "Could not find known method for ", operation_name, " with correct length" );
+            
+        fi;
+        
+        func_to_resolve := known_methods[pos][2];
+        
+        if IsOperation( func_to_resolve ) or IsKernelFunction( func_to_resolve ) then
+            
+            # cannot resolve recursive calls
+            if not IsIdenticalObj( func_to_resolve, operation ) then
+                
+                # will be handled in the next iteration
+                global_variable_name := CapJitGetOrCreateGlobalVariable( func_to_resolve );
+                
+                new_tree := rec(
+                    type := "EXPR_FUNCCALL",
+                    funcref := rec(
+                        type := "EXPR_REF_GVAR",
+                        gvar := global_variable_name,
+                    ),
+                    args := funccall_args,
+                );
+                
+                if funccall_does_not_return_fail then
+                    
+                    new_tree.funcref.does_not_return_fail := true;
+                    
+                fi;
+                
+            fi;
+            
+        else
+            
+            resolved_tree := ENHANCED_SYNTAX_TREE( func_to_resolve : globalize_hvars := true );
+            
+            if funccall_does_not_return_fail then
+                
+                resolved_tree := CapJitRemovedReturnFail( resolved_tree );
+                
+            fi;
+            
+            new_tree := rec(
+                type := "EXPR_FUNCCALL",
+                funcref := resolved_tree,
+                args := funccall_args,
+            );
+            
+        fi;
+        
     else
         
         result := CapJitGetFunctionCallArgumentsFromJitArgs( tree, path, jit_args );
@@ -249,6 +305,17 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
             elif IsOperation( operation ) then
                 
                 Info( InfoCapJit, 1, "Try applicable methods." );
+                
+                # check if we deal with a KeyDependentOperation
+                if operation in WRAPPER_OPERATIONS then
+                    
+                    operation_name := Concatenation( operation_name, "Op" );
+                    
+                    Assert( 0, IsBoundGlobal( operation_name ) );
+                    
+                    operation := ValueGlobal( operation_name );
+                    
+                fi;
                 
                 applicable_methods := ApplicableMethod( operation, arguments, 0, "all" );
                 

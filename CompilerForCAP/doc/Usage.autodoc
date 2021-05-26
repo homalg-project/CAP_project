@@ -38,6 +38,8 @@ During the resolving phase, operations and global variables are resolved:
 * CAP operations are handled separately: instead of using `ApplicableMethod`, the functions added to the category via `Add` functions
   are considered, and those do not have to be annotated with `CAP_JIT_RESOLVE_FUNCTION`. In particular, caching, pre functions, etc.
   are bypassed.
+* You can also use `InstallMethodForCompilerForCAP` or `InstallOtherMethodForCompilerForCAP` (see the documentation of CAP) to make methods known
+  to the compiler. These methods are resolved via the number of arguments and do not have to be annotated with `CAP_JIT_RESOLVE_FUNCTION`.
 * References to global functions are resolved if the function is annotated with the pragma `CAP_JIT_RESOLVE_FUNCTION`.
 * If a call of a global function or operation (occuring as the right hand side of a variable assignment or as the return value of a function)
   is annotated with the pragma `CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL`, the compiler assumes that the resolved function never returns `fail`
