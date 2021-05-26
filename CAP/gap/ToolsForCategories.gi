@@ -845,6 +845,98 @@ InstallGlobalFunction( CachingStatistic,
     
 end );
 
+##
+InstallGlobalFunction( InstallMethodForCompilerForCAP,
+  
+  function( args... )
+    local operation, method, filters;
+    
+    # let InstallMethod do the type checking
+    CallFuncList( InstallMethod, args );
+    
+    operation := First( args );
+    method := Last( args );
+    
+    if IsList( args[Length( args ) - 1] ) then
+        
+        filters := args[Length( args ) - 1];
+        
+    elif IsList( args[Length( args ) - 2] ) then
+        
+        filters := args[Length( args ) - 2];
+        
+    else
+        
+        Error( "this should never happen" );
+        
+    fi;
+    
+    CapJitAddKnownMethod( operation, filters, method );
+    
+end );
+
+##
+InstallGlobalFunction( InstallOtherMethodForCompilerForCAP,
+  
+  function( args... )
+    local operation, method, filters;
+    
+    # let InstallOtherMethod do the type checking
+    CallFuncList( InstallOtherMethod, args );
+    
+    operation := First( args );
+    method := Last( args );
+    
+    if IsList( args[Length( args ) - 1] ) then
+        
+        filters := args[Length( args ) - 1];
+        
+    elif IsList( args[Length( args ) - 2] ) then
+        
+        filters := args[Length( args ) - 2];
+        
+    else
+        
+        Error( "this should never happen" );
+        
+    fi;
+    
+    CapJitAddKnownMethod( operation, filters, method );
+    
+end );
+
+##
+BindGlobal( "CAP_JIT_INTERNAL_KNOWN_METHODS", rec( ) );
+
+InstallGlobalFunction( CapJitAddKnownMethod,
+  
+  function( operation, filters, method )
+    local known_methods;
+    
+    if not IsOperation( operation ) or not IsList( filters ) or not IsFunction( method ) then
+        
+        Error( "usage: CapJitAddKnownMethod( <operation>, <list of filters>, <method> )" );
+        
+    fi;
+    
+    if not IsBound( CAP_JIT_INTERNAL_KNOWN_METHODS.(NameFunction( operation )) ) then
+        
+        CAP_JIT_INTERNAL_KNOWN_METHODS.(NameFunction( operation )) := [ ];
+        
+    fi;
+    
+    known_methods := CAP_JIT_INTERNAL_KNOWN_METHODS.(NameFunction( operation ));
+    
+    if ForAny( known_methods, m -> Length( m[1] ) = Length( filters ) ) then
+        
+        Error( "there is already a method known for ", NameFunction( operation ), " with ", Length( filters ), " arguments" );
+        
+    fi;
+    
+    Add( known_methods, [ filters, method ] );
+    
+end );
+
 ## Hack for making CAP work with GAP versions smaller than 4.11
 ## Fixme: Remove this once we are sure we do not want compatibility
 ## to GAP < 4.11 anymore.

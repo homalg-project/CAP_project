@@ -292,6 +292,7 @@ InstallGlobalFunction( ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes,
     
     objectified_morphism := CallFuncList( ObjectifyWithAttributes, arg_list );
     
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     if category!.predicate_logic then
         INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ objectified_morphism ], source, category );
         INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ objectified_morphism ], range, category );

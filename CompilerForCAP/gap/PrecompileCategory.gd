@@ -17,6 +17,8 @@
 #!     * <A>category_constructor</A> must be a regular function, i.e. not an operation or a kernel function.
 #!     * <A>category_constructor</A> must support the options `FinalizeCategory` and `enable_compilation`.
 #!       WARNING: When using attributes you might run into errors because the options are only respected the first time you call the attribute getter.
+#!       To catch such a situation, <A>category_constructor</A> is applied to <A>given_arguments</A> twice and if the results are identical (`IsIdenticalObj`)
+#!       an error is raised.
 #!     * The compiler has to create a valid input for the operations which should be compiled. Currently, this leads to the following restrictions
 #!       (detailed errors are thrown if any of the restrictions is not met):
 #!       * Only categories with a zero object and zero morphisms can be compiled.

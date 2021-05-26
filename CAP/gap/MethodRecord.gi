@@ -20,6 +20,26 @@ InstallValue( CAP_INTERNAL_VALID_RETURN_TYPES,
 );
 
 InstallValue( CAP_INTERNAL_METHOD_NAME_RECORD, rec(
+ObjectConstructor := rec(
+  filter_list := [ "category", IsObject ],
+  return_type := "object",
+),
+
+ObjectDatum := rec(
+  filter_list := [ "category", "object" ],
+  return_type := IsObject,
+),
+
+MorphismConstructor := rec(
+  filter_list := [ "category", "object", IsObject, "object" ],
+  return_type := "morphism",
+),
+
+MorphismDatum := rec(
+  filter_list := [ "category", "morphism" ],
+  return_type := IsObject,
+),
+
 LiftAlongMonomorphism := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "iota", "tau" ], [ "tau_source", "iota_source" ] ],
@@ -3167,7 +3187,7 @@ IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject := rec(
   
 ## SimplifyObject*
 SimplifyObject := rec(
-  filter_list := [ "category", "object", IsObject ],
+  filter_list := [ "category", "object", IsCyclotomic ],
   io_type := [ [ "A", "n" ], [ "B" ] ],
   return_type := "object",
   dual_operation := "SimplifyObject",
@@ -3192,7 +3212,7 @@ SimplifyObject := rec(
   ),
 
 SimplifyObject_IsoFromInputObject := rec(
-  filter_list := [ "category", "object", IsObject ],
+  filter_list := [ "category", "object", IsCyclotomic ],
   io_type := [ [ "A", "n" ], [ "A", "B" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyObject_IsoToInputObject",
@@ -3209,7 +3229,7 @@ SimplifyObject_IsoFromInputObject := rec(
   ),
 
 SimplifyObject_IsoToInputObject := rec(
-  filter_list := [ "category", "object", IsObject ],
+  filter_list := [ "category", "object", IsCyclotomic ],
   io_type := [ [ "A", "n" ], [ "B", "A" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyObject_IsoFromInputObject",
@@ -3219,8 +3239,8 @@ SimplifyObject_IsoToInputObject := rec(
 
 ## SimplifyMorphism
 SimplifyMorphism := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [  [ [ "A", "B" ], "n" ], [ "A", "B" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "mor_source", "mor_range" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyMorphism",
   redirect_function := ~.SimplifyObject.redirect_function,
@@ -3229,8 +3249,8 @@ SimplifyMorphism := rec(
 
 ## SimplifySource*
 SimplifySource := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "Ap", "B" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "Ap", "mor_range" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyRange",
   redirect_function := ~.SimplifyObject.redirect_function,
@@ -3238,8 +3258,8 @@ SimplifySource := rec(
   ),
 
 SimplifySource_IsoToInputObject := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "Ap", "A" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "Ap", "mor_source" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyRange_IsoFromInputObject",
   redirect_function := function( cat, alpha, n )
@@ -3255,8 +3275,8 @@ SimplifySource_IsoToInputObject := rec(
   ),
   
 SimplifySource_IsoFromInputObject := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "A", "Ap" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "mor_source", "Ap" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyRange_IsoToInputObject",
   redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
@@ -3265,8 +3285,8 @@ SimplifySource_IsoFromInputObject := rec(
 
 ## SimplifyRange*
 SimplifyRange := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "A", "Bp" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "mor_source", "Bp" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySource",
   redirect_function := ~.SimplifyObject.redirect_function,
@@ -3274,8 +3294,8 @@ SimplifyRange := rec(
   ),
 
 SimplifyRange_IsoToInputObject := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "Bp", "B" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "Bp", "mor_range" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySource_IsoFromInputObject",
   redirect_function := function( cat, alpha, n )
@@ -3291,8 +3311,8 @@ SimplifyRange_IsoToInputObject := rec(
   ),
   
 SimplifyRange_IsoFromInputObject := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "B", "Bp" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "mor_range", "Bp" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySource_IsoToInputObject",
   redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
@@ -3301,8 +3321,8 @@ SimplifyRange_IsoFromInputObject := rec(
 
 ## SimplifySourceAndRange*
 SimplifySourceAndRange := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "Ap", "Bp" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "Ap", "Bp" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySourceAndRange",
   redirect_function := ~.SimplifyObject.redirect_function,
@@ -3310,8 +3330,8 @@ SimplifySourceAndRange := rec(
   ),
 
 SimplifySourceAndRange_IsoToInputSource := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "Ap", "A" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "Ap", "mor_source" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySourceAndRange_IsoFromInputRange",
   redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
@@ -3319,8 +3339,8 @@ SimplifySourceAndRange_IsoToInputSource := rec(
   ),
   
 SimplifySourceAndRange_IsoFromInputSource := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "A", "Ap" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "mor_source", "Ap" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySourceAndRange_IsoToInputRange",
   redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
@@ -3328,8 +3348,8 @@ SimplifySourceAndRange_IsoFromInputSource := rec(
   ),
 
 SimplifySourceAndRange_IsoToInputRange := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "Bp", "B" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "Bp", "mor_range" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySourceAndRange_IsoFromInputSource",
   redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
@@ -3337,8 +3357,8 @@ SimplifySourceAndRange_IsoToInputRange := rec(
   ),
   
 SimplifySourceAndRange_IsoFromInputRange := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "B" ], "n" ], [ "B", "Bp" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "mor_range", "Bp" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySourceAndRange_IsoToInputSource",
   redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
@@ -3347,8 +3367,8 @@ SimplifySourceAndRange_IsoFromInputRange := rec(
 
 ## SimplifyEndo*
 SimplifyEndo := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "A" ], "n" ], [ "Ap", "Ap" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "Ap", "Ap" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyEndo",
   redirect_function := ~.SimplifyObject.redirect_function,
@@ -3368,8 +3388,8 @@ SimplifyEndo := rec(
   ),
 
 SimplifyEndo_IsoFromInputObject := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "A" ], "n" ], [ "A", "Ap" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "mor_source", "Ap" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyEndo_IsoToInputObject",
   redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
@@ -3377,8 +3397,8 @@ SimplifyEndo_IsoFromInputObject := rec(
   ),
 
 SimplifyEndo_IsoToInputObject := rec(
-  filter_list := [ "category", "morphism", IsObject ],
-  io_type := [ [ [ "A", "A" ], "n" ], [ "Ap", "A" ] ],
+  filter_list := [ "category", "morphism", IsCyclotomic ],
+  io_type := [ [ "mor", "n" ], [ "Ap", "mor_range" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyEndo_IsoFromInputObject",
   redirect_function := ~.SimplifySource_IsoToInputObject.redirect_function,
@@ -4091,7 +4111,7 @@ end );
 
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
-    local recnames, current_recname, current_rec, number_of_arguments, flattened_filter_list, position, without_given_name, object_name, functorial,
+    local recnames, current_recname, current_rec, io_type, number_of_arguments, flattened_filter_list, position, without_given_name, object_name, functorial,
           installation_name, with_given_name, with_given_name_length, i, object_filter_list;
     
     recnames := RecNames( record );
@@ -4121,10 +4141,20 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         
         if IsBound( current_rec.io_type ) then
             
-            if (current_rec.filter_list[1] = "category" and Length( current_rec.io_type[1] ) <> Length( current_rec.filter_list ) - 1) or
-               (current_rec.filter_list[1] <> "category" and Length( current_rec.io_type[1] ) <> Length( current_rec.filter_list )) then
+            io_type := current_rec.io_type;
+            
+            if not IsList( io_type ) or not Length( io_type ) = 2 then
+                Error( "the io_type of <current_rec> is not a list of length 2" );
+            fi;
+            
+            if not ForAll( io_type[1], x -> IsString( x ) ) then
+                Error( "the input type of <current_rec> contains non-strings" );
+            fi;
+            
+            if (current_rec.filter_list[1] = "category" and Length( io_type[1] ) <> Length( current_rec.filter_list ) - 1) or
+               (current_rec.filter_list[1] <> "category" and Length( io_type[1] ) <> Length( current_rec.filter_list )) then
                 
-                Error( "input type has the wrong length" );
+                Error( "the input type of <current_rec> has the wrong length" );
                 
             fi;
             
@@ -4148,6 +4178,10 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         
         if IsBound( current_rec.post_function ) and NumberArgumentsFunction( current_rec.post_function ) >= 0 and NumberArgumentsFunction( current_rec.post_function ) <> number_of_arguments + 1 then
             Error( "the post function of <current_rec> has the wrong number of arguments" );
+        fi;
+        
+        if not ForAll( current_rec.filter_list, x -> IsFilter( x ) or IsString( x ) or (IsList( x ) and Length( x ) = 2 and IsString( x[1] ) and IsFilter( x[2] )) ) then
+            Error( "the filter list of <current_rec> does not fulfill the requirements" );
         fi;
         
         if IsBound( current_rec.install_convenience_without_category ) then
@@ -4317,6 +4351,46 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         if IsBound( current_rec.number_of_diagram_arguments ) then
             
             Display( "number_of_diagram_arguments has no effect anymore, please remove it." );
+            
+        fi;
+        
+        if not IsBound( current_rec.input_arguments_names ) then
+            
+            if IsBound( current_rec.io_type ) then
+                
+                if current_rec.filter_list[1] = "category" then
+                    
+                    current_rec.input_arguments_names := Concatenation( [ "cat" ], current_rec.io_type[1] );
+                    
+                else
+                    
+                    current_rec.input_arguments_names := current_rec.io_type[1];
+                    
+                fi;
+                
+            else
+                
+                current_rec.input_arguments_names := List( [ 1 .. Length( current_rec.filter_list ) ], i -> Concatenation( "arg", String( i ) ) );
+                
+                if current_rec.filter_list[1] = "category" then
+                    
+                    current_rec.input_arguments_names[1] := "cat";
+                    
+                fi;
+                
+            fi;
+            
+        fi;
+        
+        if current_rec.filter_list[1] = "category" and current_rec.input_arguments_names[1] <> "cat" then
+            
+            Error( "the category argument must always be called \"cat\", please adjust the method record entry of ", current_recname );
+            
+        fi;
+        
+        if not ForAll( current_rec.input_arguments_names, x -> IsString( x ) ) then
+            
+            Error( "the entries of input_arguments_names must be strings, please adjust the method record entry of ", current_recname );
             
         fi;
         

@@ -28,7 +28,7 @@ InstallGlobalFunction( CapJitAppliedLogic, function ( tree, jit_args )
     
     for logic_function in CAP_JIT_LOGIC_FUNCTIONS do
         
-        tree := CallFuncList( logic_function, [ tree, jit_args ] );
+        tree := logic_function( tree, jit_args );
         
     od;
     

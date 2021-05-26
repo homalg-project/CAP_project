@@ -11,32 +11,6 @@ BindGlobal( "CAP_JIT_LOGIC_TEMPLATES", [
         dst_template := "",
         returns_value := false,
     ),
-    # INSTALL_TODO_FOR_LOGICAL_THEOREMS
-    rec(
-        variable_names := [ "condition", "objectified_morphism", "source", "range", "category" ],
-        src_template := """
-            if condition then
-                INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Source", [ objectified_morphism ], source, category );
-                INSTALL_TODO_FOR_LOGICAL_THEOREMS( "Range", [ objectified_morphism ], range, category );
-            fi;
-        """,
-        dst_template := "",
-        returns_value := false,
-    ),
-    # Assert( level, condition )
-    rec(
-        variable_names := [ "level", "condition" ],
-        src_template := "Assert( level, condition )",
-        dst_template := "",
-        returns_value := false,
-    ),
-    # Assert( level, condition, message )
-    rec(
-        variable_names := [ "level", "condition", "message" ],
-        src_template := "Assert( level, condition, message )",
-        dst_template := "",
-        returns_value := false,
-    ),
     # List( List( L, f ), g ) => List( L, x -> g( f( x ) ) )
     rec(
         variable_names := [ "list", "outer_func", "inner_func" ],

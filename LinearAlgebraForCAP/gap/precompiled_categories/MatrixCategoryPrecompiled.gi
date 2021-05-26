@@ -46,8 +46,8 @@ end
         
 ########
 function ( cat, S, T )
-    return List( [ 1 .. Dimension( S ) * Dimension( T ) ], function ( logic_new_func_991_x )
-            return VectorSpaceMorphism( S, ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( Dimension( S ) * Dimension( T ), UnderlyingFieldForHomalg( S ) ), [ logic_new_func_991_x ] ), Dimension( S ), Dimension( T ) ), T );
+    return List( [ 1 .. Dimension( S ) * Dimension( T ) ], function ( logic_new_func_517_x )
+            return VectorSpaceMorphism( S, ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( Dimension( S ) * Dimension( T ), UnderlyingFieldForHomalg( S ) ), [ logic_new_func_517_x ] ), Dimension( S ), Dimension( T ) ), T );
         end );
 end
 ########
@@ -115,7 +115,7 @@ end
     AddCokernelProjectionWithGivenCokernelObject( cat,
         
 ########
-function ( cat, alpha, with_given_object )
+function ( cat, alpha, P )
     local cap_jit_morphism_attribute;
     cap_jit_morphism_attribute := SyzygiesOfColumns( UnderlyingMatrix( alpha ) );
     return ObjectifyWithAttributes( rec(
@@ -186,7 +186,8 @@ end
         
 ########
 function ( cat, obj )
-    return IdentityMorphism( obj );
+    return ObjectifyWithAttributes( rec(
+           ), MorphismType( cat ), CapCategory, cat, Source, obj, Range, obj, UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, HomalgIdentityMatrix( Dimension( obj ), UnderlyingRing( cat ) ) );
 end
 ########
         
@@ -196,8 +197,9 @@ end
     AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject( cat,
         
 ########
-function ( arg... )
-    return CallFuncList( EpimorphismFromSomeProjectiveObject, arg{[ 1 .. Length( arg ) - 1 ]} );
+function ( cat, A, P )
+    return ObjectifyWithAttributes( rec(
+           ), MorphismType( cat ), CapCategory, cat, Source, A, Range, A, UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, HomalgIdentityMatrix( Dimension( A ), UnderlyingRing( cat ) ) );
 end
 ########
         
@@ -667,7 +669,7 @@ end
     AddKernelEmbeddingWithGivenKernelObject( cat,
         
 ########
-function ( cat, alpha, with_given_object )
+function ( cat, alpha, P )
     local cap_jit_morphism_attribute;
     cap_jit_morphism_attribute := SyzygiesOfRows( UnderlyingMatrix( alpha ) );
     return ObjectifyWithAttributes( rec(
@@ -754,7 +756,8 @@ end
         
 ########
 function ( cat, obj )
-    return IdentityMorphism( obj );
+    return ObjectifyWithAttributes( rec(
+           ), MorphismType( cat ), CapCategory, cat, Source, obj, Range, obj, UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, HomalgIdentityMatrix( Dimension( obj ), UnderlyingRing( cat ) ) );
 end
 ########
         
@@ -764,8 +767,9 @@ end
     AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject( cat,
         
 ########
-function ( arg... )
-    return CallFuncList( MonomorphismIntoSomeInjectiveObject, arg{[ 1 .. Length( arg ) - 1 ]} );
+function ( cat, A, I )
+    return ObjectifyWithAttributes( rec(
+           ), MorphismType( cat ), CapCategory, cat, Source, A, Range, A, UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, HomalgIdentityMatrix( Dimension( A ), UnderlyingRing( cat ) ) );
 end
 ########
         
@@ -790,7 +794,7 @@ end
     AddMorphismFromKernelObjectToSinkWithGivenKernelObject( cat,
         
 ########
-function ( cat, alpha, with_given_object )
+function ( cat, alpha, P )
     local cap_jit_morphism_attribute;
     cap_jit_morphism_attribute := HomalgZeroMatrix( NumberRows( UnderlyingMatrix( alpha ) ) - RowRankOfMatrix( UnderlyingMatrix( alpha ) ), Dimension( Range( alpha ) ), UnderlyingRing( cat ) );
     return ObjectifyWithAttributes( rec(
@@ -820,7 +824,7 @@ end
     AddMorphismFromSourceToCokernelObjectWithGivenCokernelObject( cat,
         
 ########
-function ( cat, alpha, with_given_object )
+function ( cat, alpha, P )
     local cap_jit_morphism_attribute;
     cap_jit_morphism_attribute := HomalgZeroMatrix( Dimension( Source( alpha ) ), NumberColumns( UnderlyingMatrix( alpha ) ) - RowRankOfMatrix( UnderlyingMatrix( alpha ) ), UnderlyingRing( cat ) );
     return ObjectifyWithAttributes( rec(

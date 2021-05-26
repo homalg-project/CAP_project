@@ -114,7 +114,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.9.1",
   NeededOtherPackages := [ [ "AutoDoc", ">= 2016.02.16" ],
-                           [ "ToolsForHomalg", ">= 2021.05-01" ],
+                           [ "ToolsForHomalg", ">= 2021.05-02" ],
                            [ "io", ">=0" ],
   ],
   SuggestedOtherPackages := [ [ "Browse", ">=0" ],

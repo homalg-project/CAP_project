@@ -159,3 +159,24 @@ DeclareGlobalFunction( "CachingStatistic" );
 #! "hits" is the number of successful cache accesses, "misses" the number of unsuccessful cache
 #! accesses, and "stored" the number of objects currently stored in the cache.
 DeclareGlobalFunction( "BrowseCachingStatistic" );
+
+#! @Description
+#!   Installs a method via `InstallMethod` and adds it to the list of methods known to the compiler.
+#!   Different methods for the same operation must have different numbers of arguments
+#!   so that the method selection can be done ahead of time.
+#! @Arguments same as for InstallMethod
+DeclareGlobalFunction( "InstallMethodForCompilerForCAP" );
+
+#! @Description
+#!   Installs a method via `InstallOtherMethod` and adds it to the list of methods known to the compiler.
+#!   Different methods for the same operation must have different numbers of arguments
+#!   so that the method selection can be done ahead of time.
+#! @Arguments same as for InstallOtherMethod
+DeclareGlobalFunction( "InstallOtherMethodForCompilerForCAP" );
+
+#! @Description
+#!   Adds a method to the list of methods known to the compiler.
+#!   Different methods for the same operation must have different numbers of arguments
+#!   so that the method selection can be done ahead of time.
+#! @Arguments operation, filters, method
+DeclareGlobalFunction( "CapJitAddKnownMethod" );

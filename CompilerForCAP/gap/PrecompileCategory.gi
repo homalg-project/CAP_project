@@ -242,11 +242,21 @@ BindGlobal( "CAP_JIT_INTERNAL_SAFE_OPERATIONS", [
 ] );
 
 InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_constructor, given_arguments, package_name, compiled_category_name )
-  local cat, obj, mor, operations, diff, output_string, package_info, parameters_string, current_string, object_name, index, compiled_func, function_string, filter_list, example_input, function_name, current_rec;
+  local cat1, cat2, cat, obj, mor, operations, diff, output_string, package_info, parameters_string, current_string, object_name, index, compiled_func, function_string, filter_list, example_input, function_name, current_rec;
     
     if IsOperation( category_constructor ) or IsKernelFunction( category_constructor ) then
         
         Error( "category_constructor must be a regular function, i.e. not an operation or a kernel function" );
+        
+    fi;
+    
+    # check if category_constructor returns a new instance of the category every time
+    cat1 := CallFuncList( category_constructor, given_arguments );
+    cat2 := CallFuncList( category_constructor, given_arguments );
+    
+    if IsIdenticalObj( cat1, cat2 ) then
+        
+        Error( "the category constructor must not return the same instance of the category if called twice" );
         
     fi;
     
@@ -286,8 +296,16 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
     fi;
     
+    diff := Difference( operations, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) );
+    
+    if Length( diff ) > 0 then
+        
+        Error( "The following strings are no CAP operations and can thus not be compiled: ", diff );
+        
+    fi;
+    
     diff := Difference( operations, CAP_JIT_INTERNAL_SAFE_OPERATIONS );
-
+    
     if Length( diff ) > 0 then
         
         Error( "Cannot compile the following operations yet: ", diff );
@@ -295,7 +313,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     fi;
     
     diff := Difference( operations, ListInstalledOperationsOfCategory( cat ) );
-
+    
     if Length( diff ) > 0 then
         
         Error( "The following operations you want to have compiled are not computable in the given category: ", diff );

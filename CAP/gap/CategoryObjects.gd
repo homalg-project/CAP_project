@@ -391,6 +391,70 @@ DeclareGlobalFunction( "ObjectifyObjectForCAPWithAttributes" );
 
 ###################################
 ##
+#! @Section Object constructors
+##
+###################################
+
+#! @Description
+#! EXPERIMENTAL: This specification might change any time without prior notice.
+#! The arguments are a category $C$ and an object datum $a$
+#! (type and semantics of the object datum depend on the category).
+#! The output is an object of $C$ defined by $a$.
+#! @Returns an object
+#! @Arguments C, a
+DeclareOperation( "ObjectConstructor",
+                  [ IsCapCategory, IsObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>ObjectConstructor</C>.
+#! $F: C, a \mapsto \mathtt{ObjectConstructor}( C, a )$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddObjectConstructor",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddObjectConstructor",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddObjectConstructor",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddObjectConstructor",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! EXPERIMENTAL: This specification might change any time without prior notice.
+#! The argument is a CAP category object <A>obj</A>.
+#! The output is a datum which can be used to construct <A>obj</A>, that is,
+#! `IsEqualForObjects( `<A>obj</A>`, ObjectConstructor( CapCategory( `<A>obj</A>` ), ObjectDatum( `<A>obj</A>` ) ) )`.
+#! @Returns depends on the category
+#! @Arguments obj
+DeclareAttribute( "ObjectDatum",
+                  IsCapCategoryObject );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>ObjectDatum</C>.
+#! $F: obj \mapsto \mathtt{ObjectDatum}( obj )$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddObjectDatum",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddObjectDatum",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddObjectDatum",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddObjectDatum",
+                  [ IsCapCategory, IsList ] );
+
+###################################
+##
 #! @Section Well-Definedness of Objects
 ##
 ###################################
