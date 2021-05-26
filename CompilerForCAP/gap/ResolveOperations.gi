@@ -29,7 +29,7 @@ InstallGlobalFunction( CapJitGetCapCategoryFromArguments, function ( arguments )
 end );
 
 InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
-  local condition_func, path, record, operation, funccall_args, funccall_does_not_return_fail, operation_name, new_tree, category, index, func_to_resolve, global_variable_name, resolved_tree, known_methods, pos, result, arguments, applicable_methods, parent, method;
+  local condition_func, path, record, operation, funccall_args, funccall_does_not_return_fail, operation_name, new_tree, category, index, func_to_resolve, result, example_input, global_variable_name, resolved_tree, known_methods, pos, arguments, applicable_methods, parent, method;
     
     tree := StructuralCopy( tree );
   
@@ -165,7 +165,29 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
             
             Info( InfoCapJit, 1, Concatenation( "Taking added function with index ", String( index ), "." ) );
             
-            func_to_resolve := category!.added_functions.(operation_name)[index][1];
+            if not tree.variadic and Length( jit_args ) = tree.narg then
+                
+                result := CapJitGetFunctionCallArgumentsFromJitArgs( tree, path, jit_args );
+                
+            else
+                
+                result := [ false ];
+                
+            fi;
+            
+            if result[1] = false then
+                
+                example_input := [ category ];
+                
+            else
+                
+                example_input := result[2];
+                
+            fi;
+            
+            func_to_resolve := CapJitCompiledFunction( category!.added_functions.(operation_name)[index][1], example_input );
+            
+            category!.compiled_functions.(operation_name)[index] := func_to_resolve;
             
         fi;
         
