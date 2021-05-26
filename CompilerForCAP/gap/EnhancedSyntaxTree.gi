@@ -248,7 +248,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func, args... )
                         
                         if i = Length( tree.statements ) then
                             
-                            Error( "The pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL must not occur as the last statement of a function" );
+                            Error( "The pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL must not occur as the last statement in a sequence of statements" );
                             
                         fi;
                         
@@ -279,6 +279,32 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func, args... )
                             Error( "The pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL can only be used for calls to global functions or operations" );
                             
                         fi;
+                        
+                    fi;
+                    
+                od;
+                
+                tree.statements := tree.statements{Difference( [ 1 .. Length( tree.statements ) ], to_delete )};
+                
+            fi;
+            
+            # detect CAP_JIT_DROP_NEXT_STATEMENT
+            if tree.type = "STAT_SEQ_STAT" then
+                
+                to_delete := [ ];
+                
+                for i in [ 1 .. Length( tree.statements ) ] do
+                    
+                    if tree.statements[i].type = "STAT_PRAGMA" and tree.statements[i].value = "% CAP_JIT_DROP_NEXT_STATEMENT" then
+                        
+                        if i = Length( tree.statements ) then
+                            
+                            Error( "The pragma CAP_JIT_DROP_NEXT_STATEMENT must not occur as the last statement in a sequence of statements" );
+                            
+                        fi;
+                        
+                        Add( to_delete, i );
+                        Add( to_delete, i + 1 );
                         
                     fi;
                     
