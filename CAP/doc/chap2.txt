@@ -259,9 +259,50 @@
   returns the objectified object.[133X
   
   
-  [1X2.7 [33X[0;0YWell-Definedness of Objects[133X[101X
+  [1X2.7 [33X[0;0YObject constructors[133X[101X
   
-  [1X2.7-1 IsWellDefinedForObjects[101X
+  [1X2.7-1 ObjectConstructor[101X
+  
+  [33X[1;0Y[29X[2XObjectConstructor[102X( [3XC[103X, [3Xa[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan object[133X
+  
+  [33X[0;0YEXPERIMENTAL: This specification might change any time without prior notice.
+  The  arguments are a category [23XC[123X and an object datum [23Xa[123X (type and semantics of
+  the  object  datum  depend  on  the  category). The output is an object of [23XC[123X
+  defined by [23Xa[123X.[133X
+  
+  [1X2.7-2 AddObjectConstructor[101X
+  
+  [33X[1;0Y[29X[2XAddObjectConstructor[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given  function [23XF[123X to the category for the basic operation [10XObjectConstructor[110X.
+  [23XF: C, a \mapsto \mathtt{ObjectConstructor}( C, a )[123X.[133X
+  
+  [1X2.7-3 ObjectDatum[101X
+  
+  [33X[1;0Y[29X[2XObjectDatum[102X( [3Xobj[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ydepends on the category[133X
+  
+  [33X[0;0YEXPERIMENTAL: This specification might change any time without prior notice.
+  The  argument  is a CAP category object [3Xobj[103X. The output is a datum which can
+  be    used    to   construct   [3Xobj[103X,   that   is,   [10XIsEqualForObjects(   [110X[3Xobj[103X[10X,
+  ObjectConstructor( CapCategory( [110X[3Xobj[103X[10X ), ObjectDatum( [110X[3Xobj[103X[10X ) ) )[110X.[133X
+  
+  [1X2.7-4 AddObjectDatum[101X
+  
+  [33X[1;0Y[29X[2XAddObjectDatum[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given function [23XF[123X to the category for the basic operation [10XObjectDatum[110X. [23XF: obj
+  \mapsto \mathtt{ObjectDatum}( obj )[123X.[133X
+  
+  
+  [1X2.8 [33X[0;0YWell-Definedness of Objects[133X[101X
+  
+  [1X2.8-1 IsWellDefinedForObjects[101X
   
   [33X[1;0Y[29X[2XIsWellDefinedForObjects[102X( [3Xa[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -269,7 +310,7 @@
   [33X[0;0YThe  argument  is  an  object  [23Xa[123X.  The  output is [10Xtrue[110X if [23Xa[123X is well-defined,
   otherwise the output is [10Xfalse[110X.[133X
   
-  [1X2.7-2 AddIsWellDefinedForObjects[101X
+  [1X2.8-2 AddIsWellDefinedForObjects[101X
   
   [33X[1;0Y[29X[2XAddIsWellDefinedForObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -279,13 +320,13 @@
   [10XIsWellDefinedForObjects[110X. [23XF: a \mapsto \mathtt{IsWellDefinedForObjects}( a )[123X.[133X
   
   
-  [1X2.8 [33X[0;0YProjectives[133X[101X
+  [1X2.9 [33X[0;0YProjectives[133X[101X
   
   [33X[0;0YFor  a  given object [23XA[123X in an abelian category having enough projectives, the
   following  commands  allow  us  to compute some projective object [23XP[123X together
   with an epimorphism [23X\pi: P \rightarrow A[123X.[133X
   
-  [1X2.8-1 SomeProjectiveObject[101X
+  [1X2.9-1 SomeProjectiveObject[101X
   
   [33X[1;0Y[29X[2XSomeProjectiveObject[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -293,7 +334,7 @@
   [33X[0;0YThe  argument  is  an  object  [23XA[123X. The output is some projective object [23XP[123X for
   which there exists an epimorphism [23X\pi: P \rightarrow A[123X.[133X
   
-  [1X2.8-2 EpimorphismFromSomeProjectiveObject[101X
+  [1X2.9-2 EpimorphismFromSomeProjectiveObject[101X
   
   [33X[1;0Y[29X[2XEpimorphismFromSomeProjectiveObject[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(P,A)[123X[133X
@@ -302,7 +343,7 @@
   A[123X    with    [23XP[123X   a   projective   object   that   equals   the   output   of
   [23X\mathrm{SomeProjectiveObject}(A)[123X.[133X
   
-  [1X2.8-3 EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[101X
+  [1X2.9-3 EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[101X
   
   [33X[1;0Y[29X[2XEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[102X( [3XA[103X, [3XP[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(P,A)[123X[133X
@@ -311,7 +352,7 @@
   output  of  [23X\mathrm{SomeProjectiveObject}(A)[123X.  The  output is an epimorphism
   [23X\pi: P \rightarrow A[123X.[133X
   
-  [1X2.8-4 ProjectiveLift[101X
+  [1X2.9-4 ProjectiveLift[101X
   
   [33X[1;0Y[29X[2XProjectiveLift[102X( [3Xpi[103X, [3Xepsilon[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(P,B)[123X[133X
@@ -320,7 +361,7 @@
   an  epimorphism [23X\epsilon: B \rightarrow A[123X. The output is a morphism [23X\lambda:
   P \rightarrow B[123X such that [23X\epsilon \circ \lambda = \pi[123X.[133X
   
-  [1X2.8-5 AddSomeProjectiveObject[101X
+  [1X2.9-5 AddSomeProjectiveObject[101X
   
   [33X[1;0Y[29X[2XAddSomeProjectiveObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -329,7 +370,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XSomeProjectiveObject[110X. [23XF: A \mapsto P[123X.[133X
   
-  [1X2.8-6 AddEpimorphismFromSomeProjectiveObject[101X
+  [1X2.9-6 AddEpimorphismFromSomeProjectiveObject[101X
   
   [33X[1;0Y[29X[2XAddEpimorphismFromSomeProjectiveObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -338,7 +379,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XEpimorphismFromSomeProjectiveObject[110X. [23XF: A \mapsto \pi[123X.[133X
   
-  [1X2.8-7 AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[101X
+  [1X2.9-7 AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[101X
   
   [33X[1;0Y[29X[2XAddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -348,7 +389,7 @@
   [10XAddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[110X.      [23XF:
   (A,P) \mapsto \pi[123X.[133X
   
-  [1X2.8-8 AddProjectiveLift[101X
+  [1X2.9-8 AddProjectiveLift[101X
   
   [33X[1;0Y[29X[2XAddProjectiveLift[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -358,13 +399,13 @@
   function [23XF[123X maps a pair [23X(\pi, \epsilon)[123X to a projective lift [23X\lambda[123X.[133X
   
   
-  [1X2.9 [33X[0;0YInjectives[133X[101X
+  [1X2.10 [33X[0;0YInjectives[133X[101X
   
   [33X[0;0YFor  a  given  object [23XA[123X in an abelian category having enough injectives, the
   following commands allow us to compute some injective object [23XI[123X together with
   a monomorphism [23X\iota: A \rightarrow I[123X.[133X
   
-  [1X2.9-1 SomeInjectiveObject[101X
+  [1X2.10-1 SomeInjectiveObject[101X
   
   [33X[1;0Y[29X[2XSomeInjectiveObject[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -372,7 +413,7 @@
   [33X[0;0YThe argument is an object [23XA[123X. The output is some injective object [23XI[123X for which
   there exists a monomorphism [23X\iota: A \rightarrow I[123X.[133X
   
-  [1X2.9-2 MonomorphismIntoSomeInjectiveObject[101X
+  [1X2.10-2 MonomorphismIntoSomeInjectiveObject[101X
   
   [33X[1;0Y[29X[2XMonomorphismIntoSomeInjectiveObject[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(I,A)[123X[133X
@@ -381,7 +422,7 @@
   \rightarrow  I[123X  with  [23XI[123X  an  injective  object  that  equals  the  output of
   [23X\mathrm{SomeInjectiveObject}(A)[123X.[133X
   
-  [1X2.9-3 MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[101X
+  [1X2.10-3 MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[101X
   
   [33X[1;0Y[29X[2XMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[102X( [3XA[103X, [3XI[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(I,A)[123X[133X
@@ -390,7 +431,7 @@
   output  of  [23X\mathrm{SomeInjectiveObject}(A)[123X.  The  output  is a monomorphism
   [23X\iota: A \rightarrow I[123X.[133X
   
-  [1X2.9-4 InjectiveColift[101X
+  [1X2.10-4 InjectiveColift[101X
   
   [33X[1;0Y[29X[2XInjectiveColift[102X( [3X\iota[103X, [3X\beta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A,I)[123X[133X
@@ -399,7 +440,7 @@
   I[123X  where  [23XI[123X  is  an  injective  object.  The output is a morphism [23X\lambda: A
   \rightarrow I[123X such that [23X\lambda \circ \iota = \beta[123X.[133X
   
-  [1X2.9-5 AddSomeInjectiveObject[101X
+  [1X2.10-5 AddSomeInjectiveObject[101X
   
   [33X[1;0Y[29X[2XAddSomeInjectiveObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -408,7 +449,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XSomeInjectiveObject[110X. [23XF: A \mapsto I[123X.[133X
   
-  [1X2.9-6 AddMonomorphismIntoSomeInjectiveObject[101X
+  [1X2.10-6 AddMonomorphismIntoSomeInjectiveObject[101X
   
   [33X[1;0Y[29X[2XAddMonomorphismIntoSomeInjectiveObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -417,7 +458,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XMonomorphismIntoSomeInjectiveObject[110X. [23XF: A \mapsto \pi[123X.[133X
   
-  [1X2.9-7 AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[101X
+  [1X2.10-7 AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[101X
   
   [33X[1;0Y[29X[2XAddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -427,7 +468,7 @@
   [10XAddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[110X. [23XF: (A,I)
   \mapsto \pi[123X.[133X
   
-  [1X2.9-8 AddInjectiveColift[101X
+  [1X2.10-8 AddInjectiveColift[101X
   
   [33X[1;0Y[29X[2XAddInjectiveColift[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -438,7 +479,7 @@
   it exists, and to [10Xfail[110X otherwise.[133X
   
   
-  [1X2.10 [33X[0;0YSimplified Objects[133X[101X
+  [1X2.11 [33X[0;0YSimplified Objects[133X[101X
   
   [33X[0;0YLet  [23Xi[123X  be  a  positive  integer  or  [23X\infty[123X.  For a given object [23XA[123X, an [23Xi[123X-th
   simplified object of [23XA[123X consists of[133X
@@ -450,14 +491,14 @@
   [33X[0;0YThe  idea  is  that the greater the [23Xi[123X, the "simpler" the [23XA_i[123X (but this could
   mean the harder the computation) with [23X\infty[123X as a possible value.[133X
   
-  [1X2.10-1 Simplify[101X
+  [1X2.11-1 Simplify[101X
   
   [33X[1;0Y[29X[2XSimplify[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
   [33X[0;0YThe argument is an object [23XA[123X. The output is a simplified object [23XA_{\infty}[123X.[133X
   
-  [1X2.10-2 SimplifyObject[101X
+  [1X2.11-2 SimplifyObject[101X
   
   [33X[1;0Y[29X[2XSimplifyObject[102X( [3XA[103X, [3Xi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -465,7 +506,7 @@
   [33X[0;0YThe  arguments  are  an  object  [23XA[123X and a positive integer [23Xi[123X or [10Xinfinity[110X. The
   output is a simplified object [23XA_i[123X.[133X
   
-  [1X2.10-3 AddSimplifyObject[101X
+  [1X2.11-3 AddSimplifyObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifyObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -474,7 +515,7 @@
   given function [23XF[123X to the category for the basic operation [10XSimplifyObject[110X. The
   function [23XF[123X maps [23X(A,i)[123X to [23XA_i[123X.[133X
   
-  [1X2.10-4 SimplifyObject_IsoFromInputObject[101X
+  [1X2.11-4 SimplifyObject_IsoFromInputObject[101X
   
   [33X[1;0Y[29X[2XSimplifyObject_IsoFromInputObject[102X( [3XA[103X, [3Xi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A,A_i)[123X[133X
@@ -483,7 +524,7 @@
   output  is  an  isomorphism  to a simplified object [23X\iota_A^i: A \rightarrow
   A_i[123X.[133X
   
-  [1X2.10-5 AddSimplifyObject_IsoFromInputObject[101X
+  [1X2.11-5 AddSimplifyObject_IsoFromInputObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifyObject_IsoFromInputObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -492,7 +533,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XSimplifyObject_IsoFromInputObject[110X. The function [23XF[123X maps [23X(A,i)[123X to [23X\iota_A^i[123X.[133X
   
-  [1X2.10-6 SimplifyObject_IsoToInputObject[101X
+  [1X2.11-6 SimplifyObject_IsoToInputObject[101X
   
   [33X[1;0Y[29X[2XSimplifyObject_IsoToInputObject[102X( [3XA[103X, [3Xi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A_i,A)[123X[133X
@@ -502,7 +543,7 @@
   \rightarrow    A[123X    which    is    the    inverse    of    the   output   of
   [10XSimplifyObject_IsoFromInputObject[110X.[133X
   
-  [1X2.10-7 AddSimplifyObject_IsoToInputObject[101X
+  [1X2.11-7 AddSimplifyObject_IsoToInputObject[101X
   
   [33X[1;0Y[29X[2XAddSimplifyObject_IsoToInputObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X

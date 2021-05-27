@@ -52,6 +52,9 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X856160007E5AA72D">9.2-16 CAP_INTERNAL_ASSERT_IS_LIST_OF_TWO_CELLS_OF_CATEGORY</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X82FC76688082956A">9.2-17 CachingStatistic</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7E4CA53E7C03600F">9.2-18 BrowseCachingStatistic</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7F953A7086264653">9.2-19 InstallMethodForCompilerForCAP</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7FC9241882AB3F5A">9.2-20 InstallOtherMethodForCompilerForCAP</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7AF9D3AC85CB0F3D">9.2-21 CapJitAddKnownMethod</a></span>
 </div></div>
 </div>
 
@@ -216,6 +219,27 @@
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BrowseCachingStatistic</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Displays statistics for all caches in <var class="Arg">category</var>. in a Browse window. Here "status" indicates if the cache is weak, strong, or inactive, "hits" is the number of successful cache accesses, "misses" the number of unsuccessful cache accesses, and "stored" the number of objects currently stored in the cache.</p>
+
+<p><a id="X7F953A7086264653" name="X7F953A7086264653"></a></p>
+
+<h5>9.2-19 InstallMethodForCompilerForCAP</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InstallMethodForCompilerForCAP</code>( <var class="Arg">same</var>, <var class="Arg">as</var>, <var class="Arg">for</var>, <var class="Arg">InstallMethod</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Installs a method via <code class="code">InstallMethod</code> and adds it to the list of methods known to the compiler. Different methods for the same operation must have different numbers of arguments so that the method selection can be done ahead of time.</p>
+
+<p><a id="X7FC9241882AB3F5A" name="X7FC9241882AB3F5A"></a></p>
+
+<h5>9.2-20 InstallOtherMethodForCompilerForCAP</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InstallOtherMethodForCompilerForCAP</code>( <var class="Arg">same</var>, <var class="Arg">as</var>, <var class="Arg">for</var>, <var class="Arg">InstallOtherMethod</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Installs a method via <code class="code">InstallOtherMethod</code> and adds it to the list of methods known to the compiler. Different methods for the same operation must have different numbers of arguments so that the method selection can be done ahead of time.</p>
+
+<p><a id="X7AF9D3AC85CB0F3D" name="X7AF9D3AC85CB0F3D"></a></p>
+
+<h5>9.2-21 CapJitAddKnownMethod</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitAddKnownMethod</code>( <var class="Arg">operation</var>, <var class="Arg">filters</var>, <var class="Arg">method</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Adds a method to the list of methods known to the compiler. Different methods for the same operation must have different numbers of arguments so that the method selection can be done ahead of time.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap8_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap10_mj.html">[Next Chapter]</a>&nbsp;  </div>

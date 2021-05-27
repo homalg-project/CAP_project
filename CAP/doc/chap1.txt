@@ -363,12 +363,12 @@
   [30X    [33X[0;6Y[10XDeactivateToDoList[110X: see the package [10XToolsForHomalg[110X.[133X
   
   [30X    [33X[0;6YUse [10XObjectifyObjectForCAPWithAttributes[110X ([14X2.6[114X) instead of [10XAddObject[110X and
-        [10XObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[110X  ([14X3.5[114X) instead
+        [10XObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[110X  ([14X3.6[114X) instead
         of [10XAddMorphism[110X.[133X
   
   [30X    [33X[0;6YAdd  all attribute testers ([10XHas...[110X) of your objects resp. morphisms to
         the    filters   passed   to   [10XAddObjectRepresentation[110X   ([14X2.6[114X)   resp.
-        [10XAddMorphismRepresentation[110X ([14X3.5[114X).[133X
+        [10XAddMorphismRepresentation[110X ([14X3.6[114X).[133X
   
   [30X    [33X[0;6YPass the option [10Xoverhead := false[110X to [10XCreateCapCategory[110X. Note: this may
         have unintended effects. Use with care![133X

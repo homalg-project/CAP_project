@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2021.05-03
+                                   2021.05-04
   
   
-                                  22 May 2021
+                                  27 May 2021
   
   
                                Sebastian Gutsche
@@ -137,220 +137,230 @@
       2.6-2 AddObject
       2.6-3 AddObjectRepresentation
       2.6-4 ObjectifyObjectForCAPWithAttributes
-    2.7 [33X[0;0YWell-Definedness of Objects[133X
-      2.7-1 IsWellDefinedForObjects
-      2.7-2 AddIsWellDefinedForObjects
-    2.8 [33X[0;0YProjectives[133X
-      2.8-1 SomeProjectiveObject
-      2.8-2 EpimorphismFromSomeProjectiveObject
-      2.8-3 EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject
-      2.8-4 ProjectiveLift
-      2.8-5 AddSomeProjectiveObject
-      2.8-6 AddEpimorphismFromSomeProjectiveObject
-      2.8-7 AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject
-      2.8-8 AddProjectiveLift
-    2.9 [33X[0;0YInjectives[133X
-      2.9-1 SomeInjectiveObject
-      2.9-2 MonomorphismIntoSomeInjectiveObject
-      2.9-3 MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject
-      2.9-4 InjectiveColift
-      2.9-5 AddSomeInjectiveObject
-      2.9-6 AddMonomorphismIntoSomeInjectiveObject
-      2.9-7 AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject
-      2.9-8 AddInjectiveColift
-    2.10 [33X[0;0YSimplified Objects[133X
-      2.10-1 Simplify
-      2.10-2 SimplifyObject
-      2.10-3 AddSimplifyObject
-      2.10-4 SimplifyObject_IsoFromInputObject
-      2.10-5 AddSimplifyObject_IsoFromInputObject
-      2.10-6 SimplifyObject_IsoToInputObject
-      2.10-7 AddSimplifyObject_IsoToInputObject
+    2.7 [33X[0;0YObject constructors[133X
+      2.7-1 ObjectConstructor
+      2.7-2 AddObjectConstructor
+      2.7-3 ObjectDatum
+      2.7-4 AddObjectDatum
+    2.8 [33X[0;0YWell-Definedness of Objects[133X
+      2.8-1 IsWellDefinedForObjects
+      2.8-2 AddIsWellDefinedForObjects
+    2.9 [33X[0;0YProjectives[133X
+      2.9-1 SomeProjectiveObject
+      2.9-2 EpimorphismFromSomeProjectiveObject
+      2.9-3 EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject
+      2.9-4 ProjectiveLift
+      2.9-5 AddSomeProjectiveObject
+      2.9-6 AddEpimorphismFromSomeProjectiveObject
+      2.9-7 AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject
+      2.9-8 AddProjectiveLift
+    2.10 [33X[0;0YInjectives[133X
+      2.10-1 SomeInjectiveObject
+      2.10-2 MonomorphismIntoSomeInjectiveObject
+      2.10-3 MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject
+      2.10-4 InjectiveColift
+      2.10-5 AddSomeInjectiveObject
+      2.10-6 AddMonomorphismIntoSomeInjectiveObject
+      2.10-7 AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject
+      2.10-8 AddInjectiveColift
+    2.11 [33X[0;0YSimplified Objects[133X
+      2.11-1 Simplify
+      2.11-2 SimplifyObject
+      2.11-3 AddSimplifyObject
+      2.11-4 SimplifyObject_IsoFromInputObject
+      2.11-5 AddSimplifyObject_IsoFromInputObject
+      2.11-6 SimplifyObject_IsoToInputObject
+      2.11-7 AddSimplifyObject_IsoToInputObject
   3 [33X[0;0YMorphisms[133X
     3.1 [33X[0;0YAttributes for the Type of Morphisms[133X
       3.1-1 CapCategory
       3.1-2 Source
       3.1-3 Range
-    3.2 [33X[0;0YCategorical Properties of Morphisms[133X
-      3.2-1 IsMonomorphism
-      3.2-2 AddIsMonomorphism
-      3.2-3 IsEpimorphism
-      3.2-4 AddIsEpimorphism
-      3.2-5 IsIsomorphism
-      3.2-6 AddIsIsomorphism
-      3.2-7 IsSplitMonomorphism
-      3.2-8 AddIsSplitMonomorphism
-      3.2-9 IsSplitEpimorphism
-      3.2-10 AddIsSplitEpimorphism
-      3.2-11 IsOne
-      3.2-12 AddIsOne
-      3.2-13 IsIdempotent
-      3.2-14 AddIsIdempotent
-    3.3 [33X[0;0YRandom Morphisms[133X
-      3.3-1 RandomMorphismWithFixedSourceByInteger
-      3.3-2 AddRandomMorphismWithFixedSourceByInteger
-      3.3-3 RandomMorphismWithFixedSourceByList
-      3.3-4 AddRandomMorphismWithFixedSourceByList
-      3.3-5 RandomMorphismWithFixedRangeByInteger
-      3.3-6 AddRandomMorphismWithFixedRangeByInteger
-      3.3-7 RandomMorphismWithFixedRangeByList
-      3.3-8 AddRandomMorphismWithFixedRangeByList
-      3.3-9 RandomMorphismWithFixedSourceAndRangeByInteger
-      3.3-10 AddRandomMorphismWithFixedSourceAndRangeByInteger
-      3.3-11 RandomMorphismWithFixedSourceAndRangeByList
-      3.3-12 AddRandomMorphismWithFixedSourceAndRangeByList
-      3.3-13 RandomMorphismByInteger
-      3.3-14 AddRandomMorphismByInteger
-      3.3-15 RandomMorphismByList
-      3.3-16 AddRandomMorphismByList
-      3.3-17 RandomMorphismWithFixedSource
-    3.4 [33X[0;0YNon-Categorical Properties of Morphisms[133X
-      3.4-1 IsIdenticalToIdentityMorphism
-      3.4-2 AddIsIdenticalToIdentityMorphism
-      3.4-3 IsIdenticalToZeroMorphism
-      3.4-4 AddIsIdenticalToZeroMorphism
-      3.4-5 IsEndomorphism
-      3.4-6 AddIsEndomorphism
-      3.4-7 IsAutomorphism
-      3.4-8 AddIsAutomorphism
-    3.5 [33X[0;0YAdding Morphisms to a Category[133X
-      3.5-1 Add
-      3.5-2 AddMorphism
-      3.5-3 AddMorphismRepresentation
-      3.5-4 ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes
-    3.6 [33X[0;0YEquality and Congruence for Morphisms[133X
-      3.6-1 IsCongruentForMorphisms
-      3.6-2 AddIsCongruentForMorphisms
-      3.6-3 IsEqualForMorphisms
-      3.6-4 AddIsEqualForMorphisms
-      3.6-5 IsEqualForMorphismsOnMor
-      3.6-6 AddIsEqualForMorphismsOnMor
-    3.7 [33X[0;0YBasic Operations for Morphisms in Ab-Categories[133X
-      3.7-1 IsZeroForMorphisms
-      3.7-2 AddIsZeroForMorphisms
-      3.7-3 AdditionForMorphisms
-      3.7-4 AddAdditionForMorphisms
-      3.7-5 SubtractionForMorphisms
-      3.7-6 AddSubtractionForMorphisms
-      3.7-7 AdditiveInverseForMorphisms
-      3.7-8 AddAdditiveInverseForMorphisms
-      3.7-9 MultiplyWithElementOfCommutativeRingForMorphisms
-      3.7-10 \*
-      3.7-11 AddMultiplyWithElementOfCommutativeRingForMorphisms
-      3.7-12 ZeroMorphism
-      3.7-13 AddZeroMorphism
-    3.8 [33X[0;0YSubobject and Factorobject Operations[133X
-      3.8-1 IsEqualAsSubobjects
-      3.8-2 AddIsEqualAsSubobjects
-      3.8-3 IsEqualAsFactorobjects
-      3.8-4 AddIsEqualAsFactorobjects
-      3.8-5 IsDominating
-      3.8-6 AddIsDominating
-      3.8-7 IsCodominating
-      3.8-8 AddIsCodominating
-    3.9 [33X[0;0YIdentity Morphism and Composition of Morphisms[133X
-      3.9-1 IdentityMorphism
-      3.9-2 AddIdentityMorphism
-      3.9-3 PreCompose
-      3.9-4 PreCompose
-      3.9-5 AddPreCompose
-      3.9-6 PostCompose
-      3.9-7 PostCompose
-      3.9-8 AddPostCompose
-    3.10 [33X[0;0YWell-Definedness of Morphisms[133X
-      3.10-1 IsWellDefinedForMorphisms
-      3.10-2 AddIsWellDefinedForMorphisms
-    3.11 [33X[0;0YLift/Colift[133X
-      3.11-1 LiftAlongMonomorphism
-      3.11-2 AddLiftAlongMonomorphism
-      3.11-3 ColiftAlongEpimorphism
-      3.11-4 AddColiftAlongEpimorphism
-      3.11-5 IsLiftableAlongMonomorphism
-      3.11-6 AddIsLiftableAlongMonomorphism
-      3.11-7 IsColiftableAlongEpimorphism
-      3.11-8 AddIsColiftableAlongEpimorphism
-      3.11-9 Lift
-      3.11-10 AddLift
-      3.11-11 Colift
-      3.11-12 AddColift
-      3.11-13 IsLiftable
-      3.11-14 AddIsLiftable
-      3.11-15 IsColiftable
-      3.11-16 AddIsColiftable
-    3.12 [33X[0;0YInverses[133X
-      3.12-1 InverseForMorphisms
-      3.12-2 AddInverseForMorphisms
-    3.13 [33X[0;0YTool functions for caches[133X
-      3.13-1 IsEqualForCacheForMorphisms
-      3.13-2 AddIsEqualForCacheForMorphisms
-    3.14 [33X[0;0YIsHomSetInhabited[133X
-      3.14-1 IsHomSetInhabited
-      3.14-2 AddIsHomSetInhabited
-    3.15 [33X[0;0YHomomorphism structures[133X
-      3.15-1 HomomorphismStructureOnObjects
-      3.15-2 AddHomomorphismStructureOnObjects
-      3.15-3 HomomorphismStructureOnMorphisms
-      3.15-4 HomomorphismStructureOnMorphismsWithGivenObjects
-      3.15-5 AddHomomorphismStructureOnMorphismsWithGivenObjects
-      3.15-6 DistinguishedObjectOfHomomorphismStructure
-      3.15-7 AddDistinguishedObjectOfHomomorphismStructure
-      3.15-8 InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure
-      3.15-9 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure
-      3.15-10 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
-      3.15-11 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
-      3.15-12 SolveLinearSystemInAbCategory
-      3.15-13 MereExistenceOfSolutionOfLinearSystemInAbCategory
-      3.15-14 HomStructure
-      3.15-15 HomStructure
-      3.15-16 HomStructure
-      3.15-17 HomStructure
-      3.15-18 HomStructure
-      3.15-19 HomStructure
-      3.15-20 HomStructure
-      3.15-21 BasisOfExternalHom
-      3.15-22 AddBasisOfExternalHom
-      3.15-23 CoefficientsOfMorphismWithGivenBasisOfExternalHom
-      3.15-24 AddCoefficientsOfMorphismWithGivenBasisOfExternalHom
-      3.15-25 CoefficientsOfMorphism
-    3.16 [33X[0;0YSimplified Morphisms[133X
-      3.16-1 SimplifyMorphism
-      3.16-2 AddSimplifyMorphism
-      3.16-3 SimplifySource
-      3.16-4 AddSimplifySource
-      3.16-5 SimplifySource_IsoToInputObject
-      3.16-6 AddSimplifySource_IsoToInputObject
-      3.16-7 SimplifySource_IsoFromInputObject
-      3.16-8 AddSimplifySource_IsoFromInputObject
-      3.16-9 SimplifyRange
-      3.16-10 AddSimplifyRange
-      3.16-11 SimplifyRange_IsoToInputObject
-      3.16-12 AddSimplifyRange_IsoToInputObject
-      3.16-13 SimplifyRange_IsoFromInputObject
-      3.16-14 AddSimplifyRange_IsoFromInputObject
-      3.16-15 SimplifySourceAndRange
-      3.16-16 AddSimplifySourceAndRange
-      3.16-17 SimplifySourceAndRange_IsoToInputRange
-      3.16-18 AddSimplifySourceAndRange_IsoToInputRange
-      3.16-19 SimplifySourceAndRange_IsoFromInputRange
-      3.16-20 AddSimplifySourceAndRange_IsoFromInputRange
-      3.16-21 SimplifySourceAndRange_IsoToInputSource
-      3.16-22 AddSimplifySourceAndRange_IsoToInputSource
-      3.16-23 SimplifySourceAndRange_IsoFromInputSource
-      3.16-24 AddSimplifySourceAndRange_IsoFromInputSource
-      3.16-25 SimplifyEndo
-      3.16-26 AddSimplifyEndo
-      3.16-27 SimplifyEndo_IsoToInputObject
-      3.16-28 AddSimplifyEndo_IsoToInputObject
-      3.16-29 SimplifyEndo_IsoFromInputObject
-      3.16-30 AddSimplifyEndo_IsoFromInputObject
-      3.16-31 Simplify
-    3.17 [33X[0;0YReduction by split epi summands[133X
-      3.17-1 SomeReductionBySplitEpiSummand
-      3.17-2 AddSomeReductionBySplitEpiSummand
-      3.17-3 SomeReductionBySplitEpiSummand_MorphismToInputRange
-      3.17-4 AddSomeReductionBySplitEpiSummand_MorphismToInputRange
-      3.17-5 SomeReductionBySplitEpiSummand_MorphismFromInputRange
-      3.17-6 AddSomeReductionBySplitEpiSummand_MorphismFromInputRange
+    3.2 [33X[0;0YMorphism constructors[133X
+      3.2-1 MorphismConstructor
+      3.2-2 AddMorphismConstructor
+      3.2-3 MorphismDatum
+      3.2-4 AddMorphismDatum
+    3.3 [33X[0;0YCategorical Properties of Morphisms[133X
+      3.3-1 IsMonomorphism
+      3.3-2 AddIsMonomorphism
+      3.3-3 IsEpimorphism
+      3.3-4 AddIsEpimorphism
+      3.3-5 IsIsomorphism
+      3.3-6 AddIsIsomorphism
+      3.3-7 IsSplitMonomorphism
+      3.3-8 AddIsSplitMonomorphism
+      3.3-9 IsSplitEpimorphism
+      3.3-10 AddIsSplitEpimorphism
+      3.3-11 IsOne
+      3.3-12 AddIsOne
+      3.3-13 IsIdempotent
+      3.3-14 AddIsIdempotent
+    3.4 [33X[0;0YRandom Morphisms[133X
+      3.4-1 RandomMorphismWithFixedSourceByInteger
+      3.4-2 AddRandomMorphismWithFixedSourceByInteger
+      3.4-3 RandomMorphismWithFixedSourceByList
+      3.4-4 AddRandomMorphismWithFixedSourceByList
+      3.4-5 RandomMorphismWithFixedRangeByInteger
+      3.4-6 AddRandomMorphismWithFixedRangeByInteger
+      3.4-7 RandomMorphismWithFixedRangeByList
+      3.4-8 AddRandomMorphismWithFixedRangeByList
+      3.4-9 RandomMorphismWithFixedSourceAndRangeByInteger
+      3.4-10 AddRandomMorphismWithFixedSourceAndRangeByInteger
+      3.4-11 RandomMorphismWithFixedSourceAndRangeByList
+      3.4-12 AddRandomMorphismWithFixedSourceAndRangeByList
+      3.4-13 RandomMorphismByInteger
+      3.4-14 AddRandomMorphismByInteger
+      3.4-15 RandomMorphismByList
+      3.4-16 AddRandomMorphismByList
+      3.4-17 RandomMorphismWithFixedSource
+    3.5 [33X[0;0YNon-Categorical Properties of Morphisms[133X
+      3.5-1 IsIdenticalToIdentityMorphism
+      3.5-2 AddIsIdenticalToIdentityMorphism
+      3.5-3 IsIdenticalToZeroMorphism
+      3.5-4 AddIsIdenticalToZeroMorphism
+      3.5-5 IsEndomorphism
+      3.5-6 AddIsEndomorphism
+      3.5-7 IsAutomorphism
+      3.5-8 AddIsAutomorphism
+    3.6 [33X[0;0YAdding Morphisms to a Category[133X
+      3.6-1 Add
+      3.6-2 AddMorphism
+      3.6-3 AddMorphismRepresentation
+      3.6-4 ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes
+    3.7 [33X[0;0YEquality and Congruence for Morphisms[133X
+      3.7-1 IsCongruentForMorphisms
+      3.7-2 AddIsCongruentForMorphisms
+      3.7-3 IsEqualForMorphisms
+      3.7-4 AddIsEqualForMorphisms
+      3.7-5 IsEqualForMorphismsOnMor
+      3.7-6 AddIsEqualForMorphismsOnMor
+    3.8 [33X[0;0YBasic Operations for Morphisms in Ab-Categories[133X
+      3.8-1 IsZeroForMorphisms
+      3.8-2 AddIsZeroForMorphisms
+      3.8-3 AdditionForMorphisms
+      3.8-4 AddAdditionForMorphisms
+      3.8-5 SubtractionForMorphisms
+      3.8-6 AddSubtractionForMorphisms
+      3.8-7 AdditiveInverseForMorphisms
+      3.8-8 AddAdditiveInverseForMorphisms
+      3.8-9 MultiplyWithElementOfCommutativeRingForMorphisms
+      3.8-10 \*
+      3.8-11 AddMultiplyWithElementOfCommutativeRingForMorphisms
+      3.8-12 ZeroMorphism
+      3.8-13 AddZeroMorphism
+    3.9 [33X[0;0YSubobject and Factorobject Operations[133X
+      3.9-1 IsEqualAsSubobjects
+      3.9-2 AddIsEqualAsSubobjects
+      3.9-3 IsEqualAsFactorobjects
+      3.9-4 AddIsEqualAsFactorobjects
+      3.9-5 IsDominating
+      3.9-6 AddIsDominating
+      3.9-7 IsCodominating
+      3.9-8 AddIsCodominating
+    3.10 [33X[0;0YIdentity Morphism and Composition of Morphisms[133X
+      3.10-1 IdentityMorphism
+      3.10-2 AddIdentityMorphism
+      3.10-3 PreCompose
+      3.10-4 PreCompose
+      3.10-5 AddPreCompose
+      3.10-6 PostCompose
+      3.10-7 PostCompose
+      3.10-8 AddPostCompose
+    3.11 [33X[0;0YWell-Definedness of Morphisms[133X
+      3.11-1 IsWellDefinedForMorphisms
+      3.11-2 AddIsWellDefinedForMorphisms
+    3.12 [33X[0;0YLift/Colift[133X
+      3.12-1 LiftAlongMonomorphism
+      3.12-2 AddLiftAlongMonomorphism
+      3.12-3 ColiftAlongEpimorphism
+      3.12-4 AddColiftAlongEpimorphism
+      3.12-5 IsLiftableAlongMonomorphism
+      3.12-6 AddIsLiftableAlongMonomorphism
+      3.12-7 IsColiftableAlongEpimorphism
+      3.12-8 AddIsColiftableAlongEpimorphism
+      3.12-9 Lift
+      3.12-10 AddLift
+      3.12-11 Colift
+      3.12-12 AddColift
+      3.12-13 IsLiftable
+      3.12-14 AddIsLiftable
+      3.12-15 IsColiftable
+      3.12-16 AddIsColiftable
+    3.13 [33X[0;0YInverses[133X
+      3.13-1 InverseForMorphisms
+      3.13-2 AddInverseForMorphisms
+    3.14 [33X[0;0YTool functions for caches[133X
+      3.14-1 IsEqualForCacheForMorphisms
+      3.14-2 AddIsEqualForCacheForMorphisms
+    3.15 [33X[0;0YIsHomSetInhabited[133X
+      3.15-1 IsHomSetInhabited
+      3.15-2 AddIsHomSetInhabited
+    3.16 [33X[0;0YHomomorphism structures[133X
+      3.16-1 HomomorphismStructureOnObjects
+      3.16-2 AddHomomorphismStructureOnObjects
+      3.16-3 HomomorphismStructureOnMorphisms
+      3.16-4 HomomorphismStructureOnMorphismsWithGivenObjects
+      3.16-5 AddHomomorphismStructureOnMorphismsWithGivenObjects
+      3.16-6 DistinguishedObjectOfHomomorphismStructure
+      3.16-7 AddDistinguishedObjectOfHomomorphismStructure
+      3.16-8 InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure
+      3.16-9 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure
+      3.16-10 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
+      3.16-11 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
+      3.16-12 SolveLinearSystemInAbCategory
+      3.16-13 MereExistenceOfSolutionOfLinearSystemInAbCategory
+      3.16-14 HomStructure
+      3.16-15 HomStructure
+      3.16-16 HomStructure
+      3.16-17 HomStructure
+      3.16-18 HomStructure
+      3.16-19 HomStructure
+      3.16-20 HomStructure
+      3.16-21 BasisOfExternalHom
+      3.16-22 AddBasisOfExternalHom
+      3.16-23 CoefficientsOfMorphismWithGivenBasisOfExternalHom
+      3.16-24 AddCoefficientsOfMorphismWithGivenBasisOfExternalHom
+      3.16-25 CoefficientsOfMorphism
+    3.17 [33X[0;0YSimplified Morphisms[133X
+      3.17-1 SimplifyMorphism
+      3.17-2 AddSimplifyMorphism
+      3.17-3 SimplifySource
+      3.17-4 AddSimplifySource
+      3.17-5 SimplifySource_IsoToInputObject
+      3.17-6 AddSimplifySource_IsoToInputObject
+      3.17-7 SimplifySource_IsoFromInputObject
+      3.17-8 AddSimplifySource_IsoFromInputObject
+      3.17-9 SimplifyRange
+      3.17-10 AddSimplifyRange
+      3.17-11 SimplifyRange_IsoToInputObject
+      3.17-12 AddSimplifyRange_IsoToInputObject
+      3.17-13 SimplifyRange_IsoFromInputObject
+      3.17-14 AddSimplifyRange_IsoFromInputObject
+      3.17-15 SimplifySourceAndRange
+      3.17-16 AddSimplifySourceAndRange
+      3.17-17 SimplifySourceAndRange_IsoToInputRange
+      3.17-18 AddSimplifySourceAndRange_IsoToInputRange
+      3.17-19 SimplifySourceAndRange_IsoFromInputRange
+      3.17-20 AddSimplifySourceAndRange_IsoFromInputRange
+      3.17-21 SimplifySourceAndRange_IsoToInputSource
+      3.17-22 AddSimplifySourceAndRange_IsoToInputSource
+      3.17-23 SimplifySourceAndRange_IsoFromInputSource
+      3.17-24 AddSimplifySourceAndRange_IsoFromInputSource
+      3.17-25 SimplifyEndo
+      3.17-26 AddSimplifyEndo
+      3.17-27 SimplifyEndo_IsoToInputObject
+      3.17-28 AddSimplifyEndo_IsoToInputObject
+      3.17-29 SimplifyEndo_IsoFromInputObject
+      3.17-30 AddSimplifyEndo_IsoFromInputObject
+      3.17-31 Simplify
+    3.18 [33X[0;0YReduction by split epi summands[133X
+      3.18-1 SomeReductionBySplitEpiSummand
+      3.18-2 AddSomeReductionBySplitEpiSummand
+      3.18-3 SomeReductionBySplitEpiSummand_MorphismToInputRange
+      3.18-4 AddSomeReductionBySplitEpiSummand_MorphismToInputRange
+      3.18-5 SomeReductionBySplitEpiSummand_MorphismFromInputRange
+      3.18-6 AddSomeReductionBySplitEpiSummand_MorphismFromInputRange
   4 [33X[0;0YCategory 2-Cells[133X
     4.1 [33X[0;0YAttributes for the Type of 2-Cells[133X
       4.1-1 Source
@@ -815,6 +825,9 @@
       9.2-16 CAP_INTERNAL_ASSERT_IS_LIST_OF_TWO_CELLS_OF_CATEGORY
       9.2-17 CachingStatistic
       9.2-18 BrowseCachingStatistic
+      9.2-19 InstallMethodForCompilerForCAP
+      9.2-20 InstallOtherMethodForCompilerForCAP
+      9.2-21 CapJitAddKnownMethod
   10 [33X[0;0YLimits and Colimits[133X
     10.1 [33X[0;0YSpecification of Limits and Colimits[133X
     10.2 [33X[0;0YEnhancing Limit Specifications[133X
