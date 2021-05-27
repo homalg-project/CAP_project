@@ -21,11 +21,11 @@ Version := Maximum( [
   ## this line prevents merge conflicts
   "2021.05-01", ## Fabian's version
   ## this line prevents merge conflicts
-  "2020.01-10", ## Kamal's version
+  "2021.05-02", ## Kamal's version
 
 ] ),
 
-Date := "15/05/2021",
+Date := "27/05/2021",
 License := "GPL-2.0-or-later",
 
 
@@ -105,7 +105,7 @@ Dependencies := rec(
                            [ "ToolsForHomalg", ">=2015.09.18" ],
                            [ "MatricesForHomalg", ">= 2021.04-04" ],
                            [ "GaussForHomalg", ">= 2021.04-02" ],
-                           [ "CAP", ">= 2021.05-01" ],
+                           [ "CAP", ">= 2021.05-04" ],
                            [ "MonoidalCategories", ">= 2021.03-01" ],
                            ],
   SuggestedOtherPackages := [ ],
