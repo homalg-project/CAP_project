@@ -41,6 +41,9 @@ operations := Difference( operations, [ "HomologyObject" ] );;
 operations := Difference( operations, [ "IsEqualForMorphismsOnMor" ] );;
 operations := Difference( operations, [ "IsIdenticalToIdentityMorphism" ] );;
 operations := Difference( operations, [ "IsIdenticalToZeroMorphism" ] );;
+# IsZeroForMorphisms tries to resolve IsZero and IsZero has a new
+# installation in GAP 4.12, so this causes slight differences in the output
+operations := Difference( operations, [ "IsZeroForMorphisms" ] );;
 
 filepath := "precompiled_categories/MatrixCategoryPrecompiled.gi";;
 old_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;

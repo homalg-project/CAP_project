@@ -400,6 +400,10 @@ InstallGlobalFunction( CapInternalInstallAdd,
             output_sanity_check_function := function( result )
                 CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, false, output_human_readable_identifier_getter );
             end;
+        elif record.return_type = "list_of_morphisms" then
+            output_sanity_check_function := function( result )
+                CAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
+            end;
         elif record.return_type = "list_of_morphisms_or_fail" then
             output_sanity_check_function := function( result )
                 if result <> fail then
