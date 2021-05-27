@@ -114,6 +114,13 @@ IsCongruentForMorphisms(
     )
 );
 #! true
+alpha_op := Opposite( alpha );
+#! <A morphism in Opposite of Category of matrices over Q>
+basis := BasisOfExternalHom( Source( alpha_op ), Range( alpha_op ) );;
+coeffs := CoefficientsOfMorphism( alpha_op );
+#! [ 1, 0, 0, 0, 0, 1, 0, -1, -1, 0, 2, 1 ]
+IsEqualForMorphisms( alpha_op, coeffs * basis );
+#! true
 vec := CapCategory( alpha );;
 t := TensorUnit( vec );;
 z := ZeroObject( vec );;
