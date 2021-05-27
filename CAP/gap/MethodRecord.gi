@@ -3036,13 +3036,14 @@ BasisOfExternalHom := rec(
   return_type := IsList,
   dual_operation := "BasisOfExternalHom",
   dual_arguments_reversed := true,
-  dual_postprocessor_func := IdFunc
+  dual_postprocessor_func := CAP_INTERNAL_OPPOSITE_RECURSIVE,
 ),
 
 CoefficientsOfMorphismWithGivenBasisOfExternalHom := rec(
   filter_list := [ "category", "morphism", IsList ],
   return_type := IsList,
-  ## TODO: add support for dual_*
+  dual_operation := "CoefficientsOfMorphismWithGivenBasisOfExternalHom",
+  dual_postprocessor_func := IdFunc
 ),
 
 RandomObjectByInteger := rec(
