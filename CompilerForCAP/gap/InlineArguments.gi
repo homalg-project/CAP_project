@@ -12,7 +12,7 @@ InstallGlobalFunction( CapJitInlinedArguments, function ( tree )
     pre_func := function ( tree, additional_arguments )
       local func, args, arg_statements, i;
         
-        if IsRecord( tree ) and tree.type = "EXPR_FUNCCALL" and Length( tree.args ) > 0 and tree.funcref.type = "EXPR_FUNC" then
+        if IsRecord( tree ) and tree.type = "EXPR_FUNCCALL" and tree.funcref.type = "EXPR_FUNC" and tree.funcref.narg <> 0 then
             
             tree := ShallowCopy( tree );
             func := ShallowCopy( tree.funcref );

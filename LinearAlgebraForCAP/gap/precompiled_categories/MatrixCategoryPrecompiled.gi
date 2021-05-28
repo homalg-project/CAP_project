@@ -46,8 +46,9 @@ end
         
 ########
 function ( cat, S, T )
-    return List( [ 1 .. Dimension( S ) * Dimension( T ) ], function ( logic_new_func_517_x )
-            return VectorSpaceMorphism( S, ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( Dimension( S ) * Dimension( T ), UnderlyingFieldForHomalg( S ) ), [ logic_new_func_517_x ] ), Dimension( S ), Dimension( T ) ), T );
+    return List( [ 1 .. Dimension( S ) * Dimension( T ) ], function ( logic_new_func_10180_x )
+            return ObjectifyWithAttributes( rec(
+                   ), MorphismType( CapCategory( S ) ), CapCategory, CapCategory( S ), Source, S, Range, T, UnderlyingFieldForHomalg, CapCategory( S )!.field_for_matrix_category, UnderlyingMatrix, ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( Dimension( S ) * Dimension( T ), UnderlyingFieldForHomalg( S ) ), [ logic_new_func_10180_x ] ), Dimension( S ), Dimension( T ) ) );
         end );
 end
 ########
@@ -1080,6 +1081,20 @@ function ( cat )
            ), MorphismType( cat ), CapCategory, cat, Source, ObjectifyWithAttributes( rec(
              ), ObjectType( cat ), CapCategory, cat, Dimension, 0, UnderlyingFieldForHomalg, UnderlyingRing( cat ) ), Range, ObjectifyWithAttributes( rec(
              ), ObjectType( cat ), CapCategory, cat, Dimension, 0, UnderlyingFieldForHomalg, UnderlyingRing( cat ) ), UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, cap_jit_morphism_attribute );
+end
+########
+        
+    );
+    
+    ##
+    AddDirectSumFunctorialWithGivenDirectSums( cat,
+        
+########
+function ( cat, direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
+    return ObjectifyWithAttributes( rec(
+           ), MorphismType( CapCategory( direct_sum_source ) ), CapCategory, CapCategory( direct_sum_source ), Source, direct_sum_source, Range, direct_sum_range, UnderlyingFieldForHomalg, CapCategory( direct_sum_source )!.field_for_matrix_category, UnderlyingMatrix, DiagMat( UnderlyingRing( cat ), List( diagram, function ( mor )
+                return UnderlyingMatrix( mor );
+            end ) ) );
 end
 ########
         

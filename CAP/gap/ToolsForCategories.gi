@@ -911,7 +911,7 @@ BindGlobal( "CAP_JIT_INTERNAL_KNOWN_METHODS", rec( ) );
 InstallGlobalFunction( CapJitAddKnownMethod,
   
   function( operation, filters, method )
-    local known_methods;
+    local operation_name, wrapper_operation_name, known_methods;
     
     if not IsOperation( operation ) or not IsList( filters ) or not IsFunction( method ) then
         
@@ -919,17 +919,32 @@ InstallGlobalFunction( CapJitAddKnownMethod,
         
     fi;
     
-    if not IsBound( CAP_JIT_INTERNAL_KNOWN_METHODS.(NameFunction( operation )) ) then
+    operation_name := NameFunction( operation );
+    
+    # check if we deal with a KeyDependentOperation
+    if EndsWith( operation_name, "Op" ) then
         
-        CAP_JIT_INTERNAL_KNOWN_METHODS.(NameFunction( operation )) := [ ];
+        wrapper_operation_name := operation_name{[ 1 .. Length( operation_name ) - 2 ]};
+        
+        if IsBoundGlobal( wrapper_operation_name ) and ValueGlobal( wrapper_operation_name ) in WRAPPER_OPERATIONS then
+            
+            operation_name := wrapper_operation_name;
+            
+        fi;
         
     fi;
     
-    known_methods := CAP_JIT_INTERNAL_KNOWN_METHODS.(NameFunction( operation ));
+    if not IsBound( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name) ) then
+        
+        CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name) := [ ];
+        
+    fi;
+    
+    known_methods := CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name);
     
     if ForAny( known_methods, m -> Length( m[1] ) = Length( filters ) ) then
         
-        Error( "there is already a method known for ", NameFunction( operation ), " with ", Length( filters ), " arguments" );
+        Error( "there is already a method known for ", operation_name, " with ", Length( filters ), " arguments" );
         
     fi;
     

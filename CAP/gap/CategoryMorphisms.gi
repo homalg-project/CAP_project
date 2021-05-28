@@ -531,9 +531,20 @@ InstallMethod( HomomorphismStructureOnMorphisms,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                
   function( alpha, beta )
+    
+    return HomomorphismStructureOnMorphisms( CapCategory( alpha ), alpha, beta );
+    
+end );
+
+##
+InstallOtherMethod( HomomorphismStructureOnMorphisms,
+               [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
+               
+  function( cat, alpha, beta )
     #% CAP_JIT_RESOLVE_FUNCTION
     
     return HomomorphismStructureOnMorphismsWithGivenObjects(
+             cat,
              HomomorphismStructureOnObjects( Range( alpha ), Source( beta ) ),
              alpha, beta,
              HomomorphismStructureOnObjects( Source( alpha ), Range( beta ) )

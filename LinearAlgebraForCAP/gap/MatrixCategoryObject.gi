@@ -25,12 +25,11 @@ InstallMethod( VectorSpaceObject,
 end );
 
 ##
-InstallMethod( MatrixCategoryObjectOp,
-               [ IsMatrixCategory, IsInt ],
+InstallMethodForCompilerForCAP( MatrixCategoryObjectOp,
+                                [ IsMatrixCategory, IsInt ],
                
   function( cat, dimension )
     local category;
-    #% CAP_JIT_RESOLVE_FUNCTION
     
     if dimension < 0 then
         

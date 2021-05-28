@@ -438,6 +438,12 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
             if category!.enable_compilation = true or ( IsList( category!.enable_compilation ) and function_name in category!.enable_compilation ) then
                 
+                if not (IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true) then
+                    
+                    Error( "only categories with `category!.category_as_first_argument = true` can be compiled" );
+                    
+                fi;
+                
                 index := Length( category!.added_functions.( function_name ) );
                 
                 InstallMethod( ValueGlobal( install_name ),

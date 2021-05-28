@@ -48,12 +48,11 @@ end );
 
 
 ##
-InstallMethod( VectorSpaceMorphism,
-               [ IsVectorSpaceObject, IsHomalgMatrix, IsVectorSpaceObject ],
+InstallMethodForCompilerForCAP( VectorSpaceMorphism,
+                               [ IsVectorSpaceObject, IsHomalgMatrix, IsVectorSpaceObject ],
                
   function( source, homalg_matrix, range )
     local homalg_field, category;
-    #% CAP_JIT_RESOLVE_FUNCTION
     
     category := CapCategory( source );
     

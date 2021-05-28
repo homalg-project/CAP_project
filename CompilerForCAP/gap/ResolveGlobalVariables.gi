@@ -32,7 +32,7 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
                 
                 value := ValueGlobal( tree.record.gvar ).(tree.name);
                 
-            elif tree.type = "EXPR_FUNCCALL" and tree.funcref.type = "EXPR_REF_GVAR" and ForAll( tree.args, a -> a.type in [ "EXPR_REF_GVAR", "EXPR_INT", "EXPR_STRING", "EXPR_TRUE", "EXPR_FALSE" ] ) then
+            elif tree.type = "EXPR_FUNCCALL" and tree.funcref.type = "EXPR_REF_GVAR" and ForAll( tree.args, a -> a.type in [ "EXPR_REF_GVAR", "EXPR_INT", "EXPR_STRING", "EXPR_TRUE", "EXPR_FALSE" ] ) and not NameFunction( ValueGlobal( tree.funcref.gvar ) ) in Concatenation( RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ), RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) ) then
                 
                 value := CallFuncList( ValueGlobal( tree.funcref.gvar ), List( tree.args, function ( a )
                     
@@ -94,7 +94,7 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
                     
                     if not IsKernelFunction( value ) and not IsOperation( value ) then
                         
-                        inline_tree := ENHANCED_SYNTAX_TREE( value, true );
+                        inline_tree := ENHANCED_SYNTAX_TREE( value : globalize_hvars := true );
                         
                         if Length( inline_tree.stats.statements ) >= 1 and inline_tree.stats.statements[1].type = "STAT_PRAGMA" and inline_tree.stats.statements[1].value = "% CAP_JIT_RESOLVE_FUNCTION" then
                             

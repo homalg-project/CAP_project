@@ -44,9 +44,21 @@ operations := Difference( operations, [ "IsIdenticalToZeroMorphism" ] );;
 # IsZeroForMorphisms tries to resolve IsZero and IsZero has a new
 # installation in GAP 4.12, so this causes slight differences in the output
 operations := Difference( operations, [ "IsZeroForMorphisms" ] );;
+Add( operations, "DirectSumFunctorialWithGivenDirectSums" );
 
 filepath := "precompiled_categories/MatrixCategoryPrecompiled.gi";;
 old_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;
+
+# set CAP_JIT_INTERNAL_FUNCTION_ID and
+# CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER
+# to known values for a stable output
+CAP_JIT_INTERNAL_FUNCTION_ID < 10000;
+#! true
+CAP_JIT_INTERNAL_FUNCTION_ID := 10000;;
+
+CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER < 10000;
+#! true
+CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER := 10000;;
 
 CapJitPrecompileCategory(
     category_constructor,
