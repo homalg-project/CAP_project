@@ -1088,6 +1088,20 @@ end
         
     );
     
+    ##
+    AddDirectSumFunctorialWithGivenDirectSums( cat,
+        
+########
+function ( cat, direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
+    return ObjectifyWithAttributes( rec(
+           ), MorphismType( CapCategory( direct_sum_source ) ), CapCategory, CapCategory( direct_sum_source ), Source, direct_sum_source, Range, direct_sum_range, UnderlyingFieldForHomalg, CapCategory( direct_sum_source )!.field_for_matrix_category, UnderlyingMatrix, DiagMat( UnderlyingRing( cat ), List( diagram, function ( mor )
+                return UnderlyingMatrix( mor );
+            end ) ) );
+end
+########
+        
+    );
+    
     Finalize( cat );
     
     return cat;
