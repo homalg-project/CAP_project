@@ -347,6 +347,17 @@ end
     );
     
     ##
+    AddIsZeroForMorphisms( cat,
+        
+########
+function ( cat, arg2 )
+    return IsZero( UnderlyingMatrix( Opposite( arg2 ) ) );
+end
+########
+        
+    );
+    
+    ##
     AddIsZeroForObjects( cat,
         
 ########
@@ -469,8 +480,8 @@ function ( cat, objects, T, tau, P )
            ), MorphismType( cat ), CapCategory, cat, Source, ObjectifyWithAttributes( rec(
              ), ObjectType( cat ), CapCategory, cat, Opposite, Opposite( P ) ), Range, ObjectifyWithAttributes( rec(
              ), ObjectType( cat ), CapCategory, cat, Opposite, Opposite( T ) ), Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Opposite( T ), Range, Opposite( P ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, UnionOfColumns( UnderlyingRing( Opposite( cat ) ), Dimension( Opposite( T ) ), List( tau, function ( logic_new_func_22232_x )
-                  return UnderlyingMatrix( Opposite( logic_new_func_22232_x ) );
+             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Opposite( T ), Range, Opposite( P ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, UnionOfColumns( UnderlyingRing( Opposite( cat ) ), Dimension( Opposite( T ) ), List( tau, function ( logic_new_func_22271_x )
+                  return UnderlyingMatrix( Opposite( logic_new_func_22271_x ) );
               end ) ) ) );
 end
 ########
@@ -501,8 +512,8 @@ function ( cat, objects, T, tau, P )
            ), MorphismType( cat ), CapCategory, cat, Source, ObjectifyWithAttributes( rec(
              ), ObjectType( cat ), CapCategory, cat, Opposite, Opposite( T ) ), Range, ObjectifyWithAttributes( rec(
              ), ObjectType( cat ), CapCategory, cat, Opposite, Opposite( P ) ), Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Opposite( P ), Range, Opposite( T ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, UnionOfRows( UnderlyingRing( Opposite( cat ) ), Dimension( Opposite( T ) ), List( tau, function ( logic_new_func_22397_x )
-                  return UnderlyingMatrix( Opposite( logic_new_func_22397_x ) );
+             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Opposite( P ), Range, Opposite( T ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, UnionOfRows( UnderlyingRing( Opposite( cat ) ), Dimension( Opposite( T ) ), List( tau, function ( logic_new_func_22436_x )
+                  return UnderlyingMatrix( Opposite( logic_new_func_22436_x ) );
               end ) ) ) );
 end
 ########

@@ -3,6 +3,12 @@
 #
 # Implementations
 #
+BindGlobal( "CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES", [
+    "DecideZeroColumns",
+    "DecideZeroRows",
+    "IsZero",
+] );
+
 InstallGlobalFunction( CapJitGetCapCategoryFromArguments, function ( arguments )
   local result;
     
@@ -90,7 +96,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
                 
             fi;
             
-            if IsOperation( operation ) then
+            if IsOperation( operation ) and not operation_name in CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES then
                 
                 return true;
                 
