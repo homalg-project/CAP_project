@@ -1559,12 +1559,12 @@ DeclareOperation( "AddIsColiftableAlongEpimorphism",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
-#! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$.
-#! The output is a lift $\alpha / \beta: a \rightarrow b$ of $\alpha$ along $\beta$
-#! if such a lift exists or $\mathtt{fail}$ if it doesn't.
+#! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$
+#! such that a lift $\alpha / \beta: a \rightarrow b$ of $\alpha$ along $\beta$ exists.
+#! The output is such a lift $\alpha / \beta: a \rightarrow b$.
 #! Recall that a lift $\alpha / \beta: a \rightarrow b$ of $\alpha$ along $\beta$ is
 #! a morphism such that $\beta \circ (\alpha / \beta) \sim_{a,c} \alpha$.
-#! @Returns a morphism in $\mathrm{Hom}(a,b) + \{ \mathtt{fail} \}$
+#! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments alpha, beta
 DeclareOperation( "Lift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
@@ -1573,8 +1573,7 @@ DeclareOperation( "Lift",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>Lift</C>.
-#! The function $F$ maps a pair $(\alpha, \beta)$ to a lift $\alpha / \beta$ if it
-#! exists, and to <C>fail</C> otherwise.
+#! The function $F$ maps a pair $(\alpha, \beta)$ to a lift $\alpha / \beta$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddLift",
@@ -1589,37 +1588,35 @@ DeclareOperation( "AddLift",
 DeclareOperation( "AddLift",
                   [ IsCapCategory, IsList ] );
 
-##
 #! @Description
-#! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: a \rightarrow b$.
-#! The output is a colift $\alpha \backslash \beta: c \rightarrow b$ of $\beta$ along $\alpha$
-#! if such a colift exists or $\mathtt{fail}$ if it doesn't.
-#! Recall that a colift $\alpha \backslash \beta: c \rightarrow b$ of $\beta$ along $\alpha$ is
-#! a morphism such that $(\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta$.
-#! @Returns a morphism in $\mathrm{Hom}(c,b) + \{ \mathtt{fail} \}$
+#! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$.
+#! The output is a lift $\alpha / \beta: a \rightarrow b$ of $\alpha$ along $\beta$
+#! if such a lift exists or $\mathtt{fail}$ if it doesn't.
+#! Recall that a lift $\alpha / \beta: a \rightarrow b$ of $\alpha$ along $\beta$ is
+#! a morphism such that $\beta \circ (\alpha / \beta) \sim_{a,c} \alpha$.
+#! @Returns a morphism in $\mathrm{Hom}(a,b) + \{ \mathtt{fail} \}$
 #! @Arguments alpha, beta
-DeclareOperation( "Colift",
+DeclareOperation( "LiftOrFail",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation <C>Colift</C>.
-#! The function $F$ maps a pair $(\alpha, \beta)$ to a colift $\alpha \backslash \beta$ if it
+#! to the category for the basic operation <C>LiftOrFail</C>.
+#! The function $F$ maps a pair $(\alpha, \beta)$ to a lift $\alpha / \beta$ if it
 #! exists, and to <C>fail</C> otherwise.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddColift",
+DeclareOperation( "AddLiftOrFail",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddColift",
+DeclareOperation( "AddLiftOrFail",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddColift",
+DeclareOperation( "AddLiftOrFail",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddColift",
+DeclareOperation( "AddLiftOrFail",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -1652,8 +1649,69 @@ DeclareOperation( "AddIsLiftable",
 DeclareOperation( "AddIsLiftable",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: a \rightarrow b$
+#! such that a colift $\alpha \backslash \beta: c \rightarrow b$ of $\beta$ along $\alpha$ exists.
+#! The output is such a colift $\alpha \backslash \beta: c \rightarrow b$.
+#! Recall that a colift $\alpha \backslash \beta: c \rightarrow b$ of $\beta$ along $\alpha$ is
+#! a morphism such that $(\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta$.
+#! @Returns a morphism in $\mathrm{Hom}(c,b)$
+#! @Arguments alpha, beta
+DeclareOperation( "Colift",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-##
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>Colift</C>.
+#! The function $F$ maps a pair $(\alpha, \beta)$ to a colift $\alpha \backslash \beta$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddColift",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddColift",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddColift",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddColift",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: a \rightarrow b$.
+#! The output is a colift $\alpha \backslash \beta: c \rightarrow b$ of $\beta$ along $\alpha$
+#! if such a colift exists or $\mathtt{fail}$ if it doesn't.
+#! Recall that a colift $\alpha \backslash \beta: c \rightarrow b$ of $\beta$ along $\alpha$ is
+#! a morphism such that $(\alpha \backslash \beta) \circ \alpha \sim_{a,b} \beta$.
+#! @Returns a morphism in $\mathrm{Hom}(c,b) + \{ \mathtt{fail} \}$
+#! @Arguments alpha, beta
+DeclareOperation( "ColiftOrFail",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
+
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>ColiftOrFail</C>.
+#! The function $F$ maps a pair $(\alpha, \beta)$ to a colift $\alpha \backslash \beta$ if it
+#! exists, and to <C>fail</C> otherwise.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddColiftOrFail",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddColiftOrFail",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddColiftOrFail",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddColiftOrFail",
+                  [ IsCapCategory, IsList ] );
+
 #! @Description
 #! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: a \rightarrow b$.
 #! The output is <C>true</C> if there exists
@@ -2003,12 +2061,11 @@ DeclareOperation( "AddInterpretMorphismFromDistinguishedObjectToHomomorphismStru
 #! where $i = 1 \dots m$ and $j = 1 \dots n$.
 #! The third list $\gamma$ (the right side) is a list of morphisms $\gamma_i: A_i \rightarrow D_i$,
 #! where $i = 1, \dots, m$.
-#! The output is either
-#! a list of morphisms $X_j: B_j \rightarrow C_j$ for $j=1\dots n$ solving the linear system
-#! defined by $\alpha$, $\beta$, $\gamma$, i.e.,
+#! Assumes that a solution to the linear system defined by $\alpha$, $\beta$, $\gamma$ exists, i.e.,
+#! there exist morphisms $X_j: B_j \rightarrow C_j$ for $j=1\dots n$ such that
 #! $\sum_{j = 1}^n \alpha_{ij}\cdot X_j \cdot \beta_{ij} = \gamma_i$
-#! for all $i = 1 \dots m$,
-#! or $\texttt{fail}$ if no such solution exists.
+#! for all $i = 1 \dots m$.
+#! The output is list of such morphisms $X_j: B_j \rightarrow C_j$ for $j=1\dots n$.
 #! @Returns a list of morphisms $[X_1, \dots, X_n]$
 #! @Arguments alpha, beta, gamma
 DeclareOperation( "SolveLinearSystemInAbCategory",
@@ -2024,6 +2081,27 @@ DeclareOperation( "AddSolveLinearSystemInAbCategory",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddSolveLinearSystemInAbCategory",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! Like <C>SolveLinearSystemInAbCategory</C>,
+#! but without the assumption that a solution exists.
+#! If no solution exists, `fail` is returned.
+#! @Returns a list of morphisms $[X_1, \dots, X_n]$ or `fail`
+#! @Arguments alpha, beta, gamma
+DeclareOperation( "SolveLinearSystemInAbCategoryOrFail",
+                   [ IsList, IsList, IsList ] );
+
+DeclareOperation( "AddSolveLinearSystemInAbCategoryOrFail",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddSolveLinearSystemInAbCategoryOrFail",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddSolveLinearSystemInAbCategoryOrFail",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddSolveLinearSystemInAbCategoryOrFail",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

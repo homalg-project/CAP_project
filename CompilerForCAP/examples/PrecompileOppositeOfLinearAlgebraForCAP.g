@@ -24,9 +24,9 @@ operations := Intersection(
     ListPrimitivelyInstalledOperationsOfCategory( MatrixCategory( QQ ) ),
     CAP_JIT_INTERNAL_SAFE_OPERATIONS
 );;
-# The output for Lift and Colift differs between GAP 4.11 and GAP 4.12, see
+# The output for Lift/ColiftOrFail differs between GAP 4.11 and GAP 4.12, see
 # https://github.com/gap-system/gap/issues/4523
-operations := Difference( operations, [ "Lift", "Colift" ] );;
+operations := Difference( operations, [ "LiftOrFail", "ColiftOrFail" ] );;
 
 filepath := "precompiled_categories/OppositeOfMatrixCategoryPrecompiled.gi";;
 old_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;

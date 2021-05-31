@@ -14,7 +14,6 @@ AddDerivationToCAP( ProjectionInSecondFactorOfWeakBiFiberProduct,
     
     first_projection := ProjectionInFirstFactorOfWeakBiFiberProduct( cat, alpha, beta );
     
-    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
     return Lift( cat, PreCompose( cat, first_projection, alpha ), beta );
     
 end : Description := "ProjectionInSecondFactorOfWeakBiFiberProduct using ProjectionInFirstFactorOfWeakBiFiberProduct and Lift" );
@@ -27,7 +26,6 @@ AddDerivationToCAP( ProjectionInFirstFactorOfWeakBiFiberProduct,
     
     second_projection := ProjectionInSecondFactorOfWeakBiFiberProduct( cat, alpha, beta );
     
-    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
     return Lift( cat, PreCompose( cat, second_projection, beta ), alpha );
     
 end : Description := "ProjectionInFirstFactorOfWeakBiFiberProduct using ProjectionInSecondFactorOfWeakBiFiberProduct and Lift" );
@@ -40,7 +38,6 @@ AddDerivationToCAP( InjectionOfSecondCofactorOfWeakBiPushout,
     
     first_injection := InjectionOfFirstCofactorOfWeakBiPushout( cat, alpha, beta );
     
-    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
     return Colift( cat, beta, PreCompose( cat, alpha, first_injection ) );
     
 end : Description := "InjectionOfSecondCofactorOfWeakBiPushout using InjectionOfFirstCofactorOfWeakBiPushout and Colift" );
@@ -53,7 +50,6 @@ AddDerivationToCAP( InjectionOfFirstCofactorOfWeakBiPushout,
     
     second_injection := InjectionOfSecondCofactorOfWeakBiPushout( cat, alpha, beta );
     
-    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
     return Colift( cat, alpha, PreCompose( cat, beta, second_injection ) );
     
 end : Description := "InjectionOfFirstCofactorOfWeakBiPushout using InjectionOfSecondCofactorOfWeakBiPushout and Colift" );
@@ -68,7 +64,6 @@ AddDerivationToCAP( UniversalMorphismIntoWeakBiFiberProduct,
     
     projection_2 := ProjectionInSecondFactorOfWeakBiFiberProduct( cat, alpha, beta );
     
-    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
     return Lift( cat, UniversalMorphismIntoDirectSum( cat, [ test_mor_1, test_mor_2 ] ),
                       UniversalMorphismIntoDirectSum( cat, [ projection_1, projection_2 ] ) );
     
@@ -79,7 +74,6 @@ AddDerivationToCAP( UniversalMorphismIntoBiasedWeakFiberProduct,
                                  
   function( cat, alpha, beta, test_mor )
     
-    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
     return Lift( cat,
                  test_mor,
                  ProjectionOfBiasedWeakFiberProduct( cat, alpha, beta ) );
@@ -97,7 +91,6 @@ AddDerivationToCAP( UniversalMorphismFromWeakBiPushout,
     
     injection_2 := InjectionOfSecondCofactorOfWeakBiPushout( cat, alpha, beta );
     
-    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
     return Colift( cat, UniversalMorphismFromDirectSum( cat, [ injection_1, injection_2 ] ),
                         UniversalMorphismFromDirectSum( cat, [ test_mor_1, test_mor_2 ] ) );
     
@@ -108,7 +101,6 @@ AddDerivationToCAP( UniversalMorphismFromBiasedWeakPushout,
                                  
   function( cat, alpha, beta, test_mor )
     
-    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
     return Colift( cat,
                    InjectionOfBiasedWeakPushout( cat, alpha, beta ),
                    test_mor );
@@ -120,7 +112,6 @@ AddDerivationToCAP( WeakKernelLift,
                                  
   function( cat, mor, test_mor )
     
-    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
     return Lift( cat, test_mor, WeakKernelEmbedding( cat, mor ) );
     
 end : Description := "WeakKernelLift as Lift of WeakKernelEmbedding" );
@@ -130,7 +121,6 @@ AddDerivationToCAP( WeakCokernelColift,
                                  
   function( cat, mor, test_mor )
     
-    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
     return Colift( cat, WeakCokernelProjection( cat, mor ), test_mor );
     
 end : Description := "WeakCokernelColift as Colift of WeakCokernelProjection" );

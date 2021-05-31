@@ -23,7 +23,7 @@ InstallMethod( AdelmanCategory,
         
     fi;
     
-    for func in [ "Lift", "Colift", "SubtractionForMorphisms", "AdditionForMorphisms", "PreCompose", "IdentityMorphism" ] do
+    for func in [ "Lift", "IsLiftable", "Colift", "IsColiftable", "SubtractionForMorphisms", "AdditionForMorphisms", "PreCompose", "IdentityMorphism" ] do
         
         if not CanCompute( underlying_category, func ) then
             
@@ -217,6 +217,25 @@ InstallMethod( WitnessPairForBeingCongruentToZero,
 end );
 
 ##
+InstallMethod( MereExistenceOfWitnessPairForBeingCongruentToZero,
+               [ IsAdelmanCategoryMorphism ],
+               
+  function( morphism )
+    local datum, left_coeffs, right_coeffs;
+    
+    datum := MorphismDatum( morphism );
+    
+    left_coeffs :=
+        [ [ IdentityMorphism( Source( datum ) ), CorelationMorphism( Source( morphism ) ) ] ];
+    
+    right_coeffs :=
+        [ [ RelationMorphism( Range( morphism ) ), IdentityMorphism( Range( datum ) ) ] ];
+    
+    return MereExistenceOfSolutionOfLinearSystemInAbCategory( left_coeffs, right_coeffs, [ datum ] );
+    
+end );
+
+##
 InstallMethod( IsSequenceAsAdelmanCategoryObject,
                [ IsAdelmanCategoryObject ],
                
@@ -281,13 +300,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     AddIsWellDefinedForMorphisms( category,
       function( morphism )
         
-        if RelationWitness( morphism ) = fail then
+        if not IsLiftable( PreCompose( RelationMorphism( Source( morphism ) ), MorphismDatum( morphism ) ), RelationMorphism( Range( morphism ) ) ) then
             
             return false;
             
         fi;
         
-        if CorelationWitness( morphism ) = fail then
+        if not IsColiftable( CorelationMorphism( Source( morphism ) ), PreCompose( MorphismDatum( morphism ), CorelationMorphism( Range( morphism ) ) ) ) then
             
             return false;
             
@@ -320,15 +339,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     AddIsCongruentForMorphisms( category,
       function( morphism_1, morphism_2 )
         
-        if WitnessPairForBeingCongruentToZero( SubtractionForMorphisms( morphism_1, morphism_2 ) ) = fail then
-            
-            return false;
-            
-        else
-            
-            return true;
-            
-        fi;
+        return MereExistenceOfWitnessPairForBeingCongruentToZero( SubtractionForMorphisms( morphism_1, morphism_2 ) );
         
     end );
     

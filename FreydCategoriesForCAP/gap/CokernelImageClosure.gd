@@ -74,6 +74,9 @@ DeclareAttribute( "MorphismWitness",
 DeclareAttribute( "WitnessForBeingCongruentToZero",
                   IsCokernelImageClosureMorphism );
 
+DeclareAttribute( "MereExistenceOfWitnessForBeingCongruentToZero",
+                  IsCokernelImageClosureMorphism );
+
 #######################################
 ##
 #! @Section Functors
