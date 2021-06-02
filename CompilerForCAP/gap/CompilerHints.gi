@@ -22,7 +22,7 @@ InstallGlobalFunction( CapJitReplacedGlobalVariablesByCategoryAttributes, functi
         rec(
             type := "EXPR_REF_FVAR",
             func_id := tree.id,
-            pos := 1,
+            name := tree.nams[1],
             initial_name := tree.nams[1],
         )
     ];
@@ -179,6 +179,8 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
                 
                 morphism_attribute_value := args[morphism_attribute_position + 1];
                 
+                Assert( 0, not "cap_jit_morphism_attribute" in tree.nams );
+                
                 tree.nams := Concatenation( tree.nams, [ "cap_jit_morphism_attribute" ] );
                 tree.nloc := tree.nloc + 1;
                 
@@ -187,7 +189,7 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
                         rec(
                             type := "STAT_ASS_FVAR",
                             func_id := tree.id,
-                            pos := tree.narg + tree.nloc,
+                            name := "cap_jit_morphism_attribute",
                             initial_name := "cap_jit_morphism_attribute",
                             rhs := morphism_attribute_value,
                         )
@@ -198,7 +200,7 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
                 args[morphism_attribute_position + 1] := rec(
                     type := "EXPR_REF_FVAR",
                     func_id := tree.id,
-                    pos := tree.narg + tree.nloc,
+                    name := "cap_jit_morphism_attribute",
                     initial_name := "cap_jit_morphism_attribute",
                 );
                 
@@ -229,7 +231,7 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
                                 rec(
                                     type := "EXPR_REF_FVAR",
                                     func_id := tree.id,
-                                    pos := tree.narg + tree.nloc,
+                                    name := "cap_jit_morphism_attribute",
                                     initial_name := "cap_jit_morphism_attribute",
                                 ),
                             ],
@@ -266,7 +268,7 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
                                 rec(
                                     type := "EXPR_REF_FVAR",
                                     func_id := tree.id,
-                                    pos := tree.narg + tree.nloc,
+                                    name := "cap_jit_morphism_attribute",
                                     initial_name := "cap_jit_morphism_attribute",
                                 ),
                             ],

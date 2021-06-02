@@ -181,10 +181,13 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
         
         if IsRecord( tree ) and tree.type = "EXPR_FUNC" and template_tree.type = "EXPR_FUNC" then
             
-            template_tree.stats := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( template_tree.stats, template_tree.id, tree.id, 0 );
+            # we have to adapt template_tree to tree so variables actually have a chance to match
+            # the information set here will later be used to do the same replacement in the destination tree
+            template_tree.stats := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( template_tree.stats, template_tree.id, tree.id, template_tree.nams, tree.nams );
             template_tree.id := tree.id;
-            template_tree.real_nloc := tree.nloc;
-            template_tree.real_nams := tree.nams;
+            # the actual tree might have more local variables
+            template_tree.nloc := tree.nloc;
+            template_tree.nams := tree.nams;
             
         fi;
         
@@ -287,7 +290,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
                 fi;
                 
                 # ignore these keys
-                if key in [ "nams", "nloc", "real_nams", "real_nloc", "initial_name" ] then
+                if key in [ "nams", "nloc", "initial_name" ] then
                     
                     continue;
                     
@@ -608,6 +611,8 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, a
                 fi;
                 
                 # matched_src_template_tree is modified inplace
+                # reset it before every call to CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE because variable names might have been changed inplace
+                matched_src_template_tree := StructuralCopy( src_template_tree );
                 if IsBound( template.debug_path ) and template.debug_path = path then
                     
                     variables := CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree, matched_src_template_tree, true );
@@ -740,7 +745,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, a
 
             # set correct function IDs in dst_tree
             pre_func := function ( tree, additional_arguments )
-              local current_func, condition_func, path, func;
+              local current_func, new_nams, condition_func, path, func;
 
                 if IsRecord( tree ) and tree.type = "EXPR_FUNC" then
                     
@@ -748,34 +753,38 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, a
 
                     if current_func.nams in new_funcs then
                         
-                        current_func.stats := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( current_func.stats, current_func.id, CAP_JIT_INTERNAL_FUNCTION_ID, 0 );
+                        new_nams := List( current_func.nams, nam -> Concatenation( "logic_new_func_", String( CAP_JIT_INTERNAL_FUNCTION_ID ), "_", nam ) );
+                        
+                        current_func.stats := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( current_func.stats, current_func.id, CAP_JIT_INTERNAL_FUNCTION_ID, current_func.nams, new_nams );
                         current_func.id := CAP_JIT_INTERNAL_FUNCTION_ID;
                         CAP_JIT_INTERNAL_FUNCTION_ID := CAP_JIT_INTERNAL_FUNCTION_ID + 1;
-
-                        current_func.nams := List( current_func.nams, nam -> Concatenation( "logic_new_func_", String( current_func.id ), "_", nam ) );
+                        
+                        current_func.nams := new_nams;
                         
                     else
                         
+                        # find matching function in src_template_tree (matched_src_template_tree might have been modified)
                         condition_func := function ( tree, path )
                             
                             return tree.type = "EXPR_FUNC" and tree.nams = current_func.nams;
                             
                         end;
                         
-                        path := CapJitFindNodeDeep( matched_src_template_tree, condition_func );
+                        path := CapJitFindNodeDeep( src_template_tree, condition_func );
                         
                         if path = fail then
                             
                             Error( "could not find matching func in src_template" );
 
                         fi;
-
+                        
+                        # now get the function from matched_src_template_tree where id, nloc and nams have been set correctly during the matching phase
                         func := CapJitGetNodeByPath( matched_src_template_tree, path );
 
-                        current_func.stats := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( current_func.stats, current_func.id, func.id, 0 );
+                        current_func.stats := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( current_func.stats, current_func.id, func.id, current_func.nams, func.nams );
                         current_func.id := func.id;
-                        current_func.nloc := func.real_nloc;
-                        current_func.nams := func.real_nams;
+                        current_func.nloc := func.nloc;
+                        current_func.nams := func.nams;
                         
                     fi;
 

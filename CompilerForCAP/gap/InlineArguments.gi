@@ -10,7 +10,7 @@ InstallGlobalFunction( CapJitInlinedArguments, function ( tree )
     Info( InfoCapJit, 1, "Inlining function arguments." );
     
     pre_func := function ( tree, additional_arguments )
-      local func, args, arg_statements, i;
+      local func, args, arg_statements;
         
         if IsRecord( tree ) and tree.type = "EXPR_FUNCCALL" and tree.funcref.type = "EXPR_FUNC" and tree.funcref.narg <> 0 then
             
@@ -27,14 +27,6 @@ InstallGlobalFunction( CapJitInlinedArguments, function ( tree )
                 
             fi;
 
-            func.nams := ShallowCopy( func.nams );
-
-            for i in [ 1 .. func.narg ] do
-                
-                func.nams[i] := Concatenation( "inline_arg_", func.nams[i] );
-                
-            od;
-            
             args := ShallowCopy( tree.args );
             
             if func.variadic then
@@ -49,7 +41,7 @@ InstallGlobalFunction( CapJitInlinedArguments, function ( tree )
             arg_statements := List( [ 1 .. func.narg ], j -> rec(
                 type := "STAT_ASS_FVAR",
                 func_id := func.id,
-                pos := j,
+                name := func.nams[j],
                 initial_name := func.nams[j],
                 rhs := args[j],
             ) );

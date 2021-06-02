@@ -301,7 +301,7 @@ end
         
 ########
 function ( cat, arg2 )
-    local _UNUSED_dual_preprocessor_func, _UNUSED_prep_arg, _UNUSED_result, _UNUSED_inline_20086__UNUSED_inline_arg_cat, _UNUSED_inline_20086_inline_arg_morphism, inline_20086_return_value;
+    local inline_20086_return_value;
     if not true then
         inline_20086_return_value := false;
     elif not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Source( Opposite( arg2 ) ) ), UnderlyingRing( Opposite( cat ) ) ) then
@@ -328,7 +328,7 @@ end
         
 ########
 function ( cat, arg2 )
-    local _UNUSED_dual_preprocessor_func, _UNUSED_prep_arg, _UNUSED_result, _UNUSED_inline_20087__UNUSED_inline_arg_cat, _UNUSED_inline_20087_inline_arg_object, inline_20087_return_value;
+    local inline_20087_return_value;
     if not true then
         inline_20087_return_value := false;
     elif not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Opposite( arg2 ) ), UnderlyingRing( Opposite( cat ) ) ) then

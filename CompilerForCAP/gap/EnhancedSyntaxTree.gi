@@ -197,8 +197,8 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 
                 tree.type := ReplacedString( tree.type, "LVAR", "FVAR" );
                 tree.func_id := func_stack[Length( func_stack )].id;
-                tree.pos := tree.lvar;
-                tree.initial_name := func_stack[Length( func_stack )].nams[tree.lvar];
+                tree.name := func_stack[Length( func_stack )].nams[tree.lvar];
+                tree.initial_name := tree.name;
                 Unbind( tree.lvar );
                 
             fi;
@@ -241,8 +241,8 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
 
                     tree.type := ReplacedString( tree.type, "HVAR", "FVAR" );
                     tree.func_id := func_stack[Length( func_stack ) - level].id;
-                    tree.pos := pos;
-                    tree.initial_name := func_stack[Length( func_stack ) - level].nams[pos];
+                    tree.name := func_stack[Length( func_stack ) - level].nams[pos];
+                    tree.initial_name := tree.name;
                     Unbind( tree.hvar );
 
                 fi;
@@ -250,11 +250,11 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
             fi;
             
             # try to find EXPR_REF_FVAR in given_arguments
-            if tree.type = "EXPR_REF_FVAR" and tree.func_id = orig_tree.id and IsBound( given_arguments[tree.pos] ) then
+            if tree.type = "EXPR_REF_FVAR" and tree.func_id = orig_tree.id and IsBound( given_arguments[Position( orig_tree.nams, tree.name )] ) then
                 
                 tree := rec(
                     type := "EXPR_REF_GVAR",
-                    gvar := CapJitGetOrCreateGlobalVariable( given_arguments[tree.pos] ),
+                    gvar := CapJitGetOrCreateGlobalVariable( given_arguments[Position( orig_tree.nams, tree.name )] ),
                 );
                 
             fi;
@@ -552,21 +552,21 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 level := Length( func_stack ) - func_pos;
                 
-                if tree.pos > Length( func_stack[func_pos].nams ) then
+                if not tree.name in func_stack[func_pos].nams then
                     
-                    Error( "FVAR references a non-existing position" );
-
+                    Error( "FVAR name does not occur in the names of local variables of its function" );
+                    
                 fi;
                 
                 if level = 0 then
                     
                     tree.type := ReplacedString( tree.type, "FVAR", "LVAR" );
-                    tree.lvar := tree.pos;
+                    tree.lvar := Position( func_stack[func_pos].nams, tree.name );
                     
                 else
                     
                     tree.type := ReplacedString( tree.type, "FVAR", "HVAR" );
-                    tree.hvar := 2 ^ 16 * level + tree.pos;
+                    tree.hvar := 2 ^ 16 * level + Position( func_stack[func_pos].nams, tree.name );
                     
                 fi;
                 

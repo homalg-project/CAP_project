@@ -133,14 +133,13 @@ InstallGlobalFunction( CapJitGetOrCreateGlobalVariable, function ( value )
 end );
 
 InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function ( tree )
-  local number_of_assignments, nams, pre_func, additional_arguments_func, i, j;
+  local number_of_assignments, pre_func, additional_arguments_func, i, name;
     
     # modified inplace
     number_of_assignments := [ ];
-    nams := [ ];
     
     pre_func := function ( tree, func_id_stack )
-      local statement, next_statement, i;
+      local name;
         
         if IsRecord( tree ) then
             
@@ -182,11 +181,22 @@ InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function ( tree )
                 
             fi;
             
-            # initialize number_of_assignments and nams per function
+            # initialize number_of_assignments per function
             if tree.type = "EXPR_FUNC" and not IsBound( number_of_assignments[tree.id] ) then
                 
-                number_of_assignments[tree.id] := Concatenation( ListWithIdenticalEntries( tree.narg, 1 ), ListWithIdenticalEntries( tree.nloc, 0 ) );
-                nams[tree.id] := tree.nams;
+                number_of_assignments[tree.id] := rec( );
+                
+                for name in tree.nams{[ 1 .. tree.narg ]} do
+                    
+                    number_of_assignments[tree.id].(name) := 1;
+                    
+                od;
+                
+                for name in tree.nams{[ tree.narg + 1 .. tree.narg + tree.nloc ]} do
+                    
+                    number_of_assignments[tree.id].(name) := 0;
+                    
+                od;
                 
             fi;
             
@@ -199,9 +209,9 @@ InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function ( tree )
                     
                 fi;
 
-                Assert( 0, IsBound( number_of_assignments[tree.func_id][tree.pos] ) );
+                Assert( 0, IsBound( number_of_assignments[tree.func_id].(tree.name) ) );
                 
-                number_of_assignments[tree.func_id][tree.pos] := number_of_assignments[tree.func_id][tree.pos] + 1;
+                number_of_assignments[tree.func_id].(tree.name) := number_of_assignments[tree.func_id].(tree.name) + 1;
                 
             fi;
             
@@ -234,11 +244,11 @@ InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function ( tree )
         
         if IsBound( number_of_assignments[i] ) then
             
-            for j in [ 1 .. Length( number_of_assignments[i] ) ] do
+            for name in RecNames( number_of_assignments[i] ) do
                 
-                if number_of_assignments[i][j] >= 2 then
+                if number_of_assignments[i].(name) >= 2 then
                     
-                    Error( Concatenation( "a local variable with name ", nams[i][j], " is assigned more than once (not as part of a rapid reassignment), this is not supported" ) );
+                    Error( Concatenation( "a local variable with name ", name, " is assigned more than once (not as part of a rapid reassignment), this is not supported" ) );
                     
                 fi;
                 
@@ -378,7 +388,7 @@ InstallGlobalFunction( CapJitRemovedReturnFail, function ( tree )
             # check if next statement is "return var"
             next_statement := tree.stats.statements[i + 1];
             
-            if next_statement.type = "STAT_RETURN_OBJ" and next_statement.obj.type = "EXPR_REF_FVAR" and next_statement.obj.func_id = statement.func_id and next_statement.obj.pos = statement.pos then
+            if next_statement.type = "STAT_RETURN_OBJ" and next_statement.obj.type = "EXPR_REF_FVAR" and next_statement.obj.func_id = statement.func_id and next_statement.obj.name = statement.name then
                 
                 found_return_fail := true;
                 
@@ -386,7 +396,7 @@ InstallGlobalFunction( CapJitRemovedReturnFail, function ( tree )
                     rec(
                         type := "STAT_ASS_FVAR",
                         func_id := statement.func_id,
-                        pos := statement.pos,
+                        name := statement.name,
                         initial_name := statement.initial_name,
                         rhs := statement.rhs.expr_if_false,
                     )

@@ -84,9 +84,11 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_FUNCTION_CAN_BE_INLINED, function ( tree
     
 end );
 
-InstallGlobalFunction( CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID, function ( tree, source_func_id, target_func_id, offset )
+InstallGlobalFunction( CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID, function ( tree, source_func_id, target_func_id, old_nams, new_nams )
   local result_func, additional_arguments_func;
-  
+    
+    Assert( 0, Length( new_nams ) >= Length( old_nams ) );
+    
     result_func := function ( tree, result, additional_arguments )
       local key, level;
         
@@ -109,7 +111,10 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID, function ( tree,
                 if tree.func_id = source_func_id then
                     
                     tree.func_id := target_func_id;
-                    tree.pos := tree.pos + offset;
+                    
+                    Assert( 0, tree.name in old_nams );
+                    
+                    tree.name := new_nams[Position( old_nams, tree.name )];
                     
                 fi;
                 
@@ -135,7 +140,7 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
   local pre_func, additional_arguments_func;
     
     pre_func := function ( tree, current_func )
-      local statements, i, statement, search_key, search_tree, condition_func, found_path, path, func_call, inline_func, counter, new_nams, inline_func_stats, offset, inline_return_statement, return_value_lvar, inline_return_statements, inlined_original_statement, ref_return_value_lvar, parent;
+      local statements, i, statement, search_key, search_tree, condition_func, found_path, path, func_call, inline_func, prefix, new_nams, inline_func_stats, inline_return_statement, inline_return_statements, inlined_original_statement, ref_return_value_lvar, parent;
         
         tree := StructuralCopy( tree );
         
@@ -214,26 +219,20 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
 
                 if CAP_JIT_INTERNAL_FUNCTION_CAN_BE_INLINED( func_call.funcref ) then
                     
-                    counter := CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER;
+                    prefix := Concatenation( "inline_", String( CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER ), "_" );
                     
                     # create new local variables
-                    new_nams := List( [ 1 .. inline_func.nloc ], i -> Concatenation( "inline_", String( counter ), "_", inline_func.nams[i] ) );
-                    Add( new_nams, Concatenation( "inline_", String( counter ), "_return_value" ) );
+                    new_nams := List( inline_func.nams, name -> Concatenation( prefix, name ) );
+                    Add( new_nams, Concatenation( prefix, "return_value" ) );
 
                     Assert( 0, IsDuplicateFree( new_nams ) );
                     
                     # prepare function statements for inlining
                     inline_func_stats := StructuralCopy( inline_func.stats );
 
-                    offset := current_func.narg + current_func.nloc;
-
-                    inline_func_stats := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( inline_func_stats, inline_func.id, current_func.id, offset );
+                    inline_func_stats := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( inline_func_stats, inline_func.id, current_func.id, inline_func.nams, new_nams );
 
                     # find and modify the return statements
-                    return_value_lvar := offset + inline_func.nloc + 1;
-                    
-                    Assert( 0, return_value_lvar = Length( current_func.nams ) + Length( new_nams ) );
-                    
                     if Last( inline_func_stats.statements ).type = "STAT_RETURN_OBJ" then
                         
                         inline_return_statements := [ Last( inline_func_stats.statements ) ];
@@ -252,7 +251,7 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
                     
                         inline_return_statement.type := "STAT_ASS_FVAR";
                         inline_return_statement.func_id := current_func.id;
-                        inline_return_statement.pos := return_value_lvar;
+                        inline_return_statement.name := Last( new_nams );
                         inline_return_statement.initial_name := Last( new_nams );
                         inline_return_statement.rhs := inline_return_statement.obj;
                         Unbind( inline_return_statement.obj );
@@ -264,7 +263,7 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
                     ref_return_value_lvar := rec(
                         type := "EXPR_REF_FVAR",
                         func_id := current_func.id,
-                        pos := return_value_lvar,
+                        name := Last( new_nams ),
                         initial_name := Last( new_nams ),
                     );
                     

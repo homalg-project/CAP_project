@@ -55,14 +55,13 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT, fu
         func := First( func_stack, f -> f.id = tree.func_id );
         
         Assert( 0, func <> fail );
-        Assert( 0, tree.pos <= Length( func.nams ) );
+        Assert( 0, tree.name in func.nams );
         
         return rec( 0_type := tree.type,
                     1_func_id := tree.func_id,
-                    2_pos := tree.pos,
-                    3_current_name := func.nams[tree.pos],
-                    4_initial_name := tree.initial_name,
-                    5_rhs := CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT( tree.rhs, func_stack ),
+                    2_name := tree.name,
+                    3_initial_name := tree.initial_name,
+                    4_rhs := CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT( tree.rhs, func_stack ),
                   );
         
     elif StartsWith( type, "EXPR_FUNCCALL" ) or StartsWith( type, "STAT_PROCCALL" ) then
@@ -94,13 +93,12 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT, fu
         func := First( func_stack, f -> f.id = tree.func_id );
         
         Assert( 0, func <> fail );
-        Assert( 0, tree.pos <= Length( func.nams ) );
+        Assert( 0, tree.name in func.nams );
         
         return rec( 0_type := tree.type,
                     1_func_id := tree.func_id,
-                    2_pos := tree.pos,
-                    3_current_name := func.nams[tree.pos],
-                    4_initial_name := tree.initial_name,
+                    2_name := tree.name,
+                    3_initial_name := tree.initial_name,
                   );
         
     elif type = "STAT_IF" or type = "STAT_IF_ELSE" then
