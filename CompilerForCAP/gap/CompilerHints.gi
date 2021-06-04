@@ -162,7 +162,13 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
         
         args := tree.stats.statements[1].obj.args;
         
-        if Length( args ) > 7 and args[5].type = "EXPR_REF_GVAR" and args[5].gvar = "Source" and args[7].type = "EXPR_REF_GVAR" and args[7].gvar = "Range" then
+        if Length( args ) > 7 and
+            # check if 2nd argument is "MorphismType( cat )"
+            CapJitIsCallToGlobalFunction( args[2], "MorphismType" ) and Length( args[2].args ) = 1 and args[2].args[1].type = "EXPR_REF_FVAR" and args[2].args[1].func_id = tree.id and args[2].args[1].name = tree.nams[1] and
+            # check if 5th argument is "Source"
+            args[5].type = "EXPR_REF_GVAR" and args[5].gvar = "Source" and
+            # check if 7th argument is "Range"
+            args[7].type = "EXPR_REF_GVAR" and args[7].gvar = "Range" then
             
             # check if either Source or Range are constructed inplace
             if CapJitIsCallToGlobalFunction( args[6], "ObjectifyWithAttributes" ) or CapJitIsCallToGlobalFunction( args[8], "ObjectifyWithAttributes" ) then
