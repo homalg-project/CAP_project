@@ -723,7 +723,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
           
           t := RankOfObject( T );
           
-          identity := HomalgIdentityMatrix( s * t, UnderlyingRing( CapCategory( S ) ) );
+          identity := HomalgIdentityMatrix( s * t, UnderlyingRing( cat ) );
           
           matrices := List( [ 1 .. s * t ], i -> ConvertRowToMatrix( CertainRows( identity, [ i ] ), s, t ) );
           
