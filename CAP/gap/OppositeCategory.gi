@@ -148,7 +148,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
     local recnames, current_recname, current_entry, dual_operation_name,
           filter_list, input_arguments_names, return_type, func_string,
           dual_preprocessor_func_string, preprocessor_string, dual_arguments,
-          dual_postprocessor_func_string, postprocessor_string, return_statement,
+          dual_postprocessor_func_string, postprocessor_string, output_source_getter_string, output_range_getter_string, return_statement,
           func, current_add, list_of_attributes, attr, tester, setter, getter;
     
     recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
@@ -328,7 +328,32 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                 
             elif return_type = "morphism" then
                 
-                return_statement := "return MorphismConstructor( cat, ObjectConstructor( cat, Range( result ) ), result, ObjectConstructor( cat, Source( result ) ) )";
+                return_statement := "return MorphismConstructor( cat, output_source_getter, result, output_range_getter )";
+                
+                if IsBound( current_entry.output_source_getter_string ) then
+                    
+                    output_source_getter_string := current_entry.output_source_getter_string;
+                    
+                else
+                    
+                    output_source_getter_string := "ObjectConstructor( cat, Range( result ) )";
+                    
+                fi;
+                
+                if IsBound( current_entry.output_range_getter_string ) then
+                    
+                    output_range_getter_string := current_entry.output_range_getter_string;
+                    
+                else
+                    
+                    output_range_getter_string := "ObjectConstructor( cat, Source( result ) )";
+                    
+                fi;
+                
+                return_statement := ReplacedStringViaRecord( return_statement, rec(
+                    output_source_getter := output_source_getter_string,
+                    output_range_getter := output_range_getter_string,
+                ) );
                 
             elif return_type = "object_or_fail" then
                 
