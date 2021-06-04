@@ -530,7 +530,6 @@ SomeProjectiveObjectForKernelObject := rec(
 
 EpimorphismFromSomeProjectiveObjectForKernelObject := rec(
   filter_list := [ "category", "morphism" ],
-  io_type := [ [ "alpha" ], [ "epsilon" ] ],
   with_given_object_position := "Source",
   universal_type := "Limit", #FIXME: this is not a limit, but on a technical level, it behaves as if it was
   return_type := "morphism",
@@ -539,7 +538,6 @@ EpimorphismFromSomeProjectiveObjectForKernelObject := rec(
 
 EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject := rec(
   filter_list := [ "category", "morphism", "object" ],
-  io_type := [ [ "alpha", "P" ], [ "epsilon" ] ],
   universal_type := "Limit", #FIXME: this is not a limit, but on a technical level, it behaves as if it was
   cache_name := "EpimorphismFromSomeProjectiveObjectForKernelObjectWithGivenSomeProjectiveObjectForKernelObject",
   return_type := "morphism",
@@ -554,7 +552,6 @@ SomeInjectiveObjectForCokernelObject := rec(
 
 MonomorphismToSomeInjectiveObjectForCokernelObject := rec(
   filter_list := [ "category", "morphism" ],
-  io_type := [ [ "alpha" ], [ "iota" ] ],
   with_given_object_position := "Range",
   universal_type := "Colimit", #FIXME: this is not a colimit, but on a technical level, it behaves as if it was
   return_type := "morphism",
@@ -563,7 +560,6 @@ MonomorphismToSomeInjectiveObjectForCokernelObject := rec(
 
 MonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject := rec(
   filter_list := [ "category", "morphism", "object" ],
-  io_type := [ [ "alpha", "I" ], [ "iota" ] ],
   universal_type := "Colift", #FIXME: this is not a limit, but on a technical level, it behaves as if it was
   cache_name := "MonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject",
   return_type := "morphism",
