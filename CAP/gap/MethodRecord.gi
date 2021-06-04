@@ -2938,7 +2938,7 @@ HomomorphismStructureOnMorphismsWithGivenObjects := rec(
   return_type := "other_morphism",
   dual_operation := "HomomorphismStructureOnMorphismsWithGivenObjects",
   dual_preprocessor_func := function( cat, source, alpha, beta, range )
-    return [ Opposite( cat ), source, Opposite( beta ), Opposite( alpha ), range ];
+    return [ Opposite( cat ), source, MorphismDatum( cat, beta ), MorphismDatum( cat, alpha ), range ];
   end,
   dual_postprocessor_func := IdFunc
 ),
@@ -2961,7 +2961,7 @@ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism := rec
   return_type := "morphism",
   dual_operation := "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
   dual_preprocessor_func := function( cat, A, B, morphism )
-    return [ Opposite( cat ), Opposite( B ), Opposite( A ), morphism ];
+    return [ Opposite( cat ), ObjectDatum( cat, B ), ObjectDatum( cat, A ), morphism ];
   end
 ),
 

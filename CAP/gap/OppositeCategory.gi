@@ -128,8 +128,12 @@ InstallGlobalFunction( CAP_INTERNAL_OPPOSITE_RECURSIVE,
   
   function( obj )
     
-    if IsCapCategory( obj ) or IsCapCategoryCell( obj ) then
+    if IsCapCategory( obj ) then
         return Opposite( obj );
+    elif IsCapCategoryObject( obj ) then
+        return ObjectDatum( CapCategory( obj ), obj );
+    elif IsCapCategoryMorphism( obj ) then
+        return MorphismDatum( CapCategory( obj ), obj );
     elif IsList( obj ) then
         return List( obj, CAP_INTERNAL_OPPOSITE_RECURSIVE );
     else
@@ -257,17 +261,29 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                     
                 fi;
                 
-                if filter = "category" or filter = "object" or filter = "morphism" then
+                if filter = "category" then
                     
                     return Concatenation( "Opposite( ", argument_name, " )" );
+                    
+                elif filter = "object" then
+                    
+                    return Concatenation( "ObjectDatum( cat, ", argument_name, " )" );
+                    
+                elif filter = "morphism" then
+                    
+                    return Concatenation( "MorphismDatum( cat, ", argument_name, " )" );
                     
                 elif filter = IsInt or filter = IsRingElement or filter = IsCyclotomic then
                     
                     return argument_name;
                     
-                elif filter = "list_of_objects" or filter = "list_of_morphisms" then
+                elif filter = "list_of_objects" then
                     
-                    return Concatenation( "List( ", argument_name, ", Opposite )" );
+                    return Concatenation( "List( ", argument_name, ", x -> ObjectDatum( cat, x ) )" );
+                    
+                elif filter = "list_of_morphisms" then
+                    
+                    return Concatenation( "List( ", argument_name, ", x -> MorphismDatum( cat, x ) )" );
                     
                 else
                     
@@ -437,6 +453,12 @@ InstallMethod( Opposite,
         
     end );
     
+    AddObjectDatum( opposite_category, function( cat, opposite_object )
+        
+        return Opposite( opposite_object );
+        
+    end );
+    
     AddMorphismConstructor( opposite_category, function( cat, source, morphism, range )
       local opposite_morphism;
         
@@ -477,6 +499,12 @@ InstallMethod( Opposite,
         SetOpposite( morphism, opposite_morphism );
         
         return opposite_morphism;
+        
+    end );
+    
+    AddMorphismDatum( opposite_category, function( cat, opposite_morphism )
+        
+        return Opposite( opposite_morphism );
         
     end );
     
