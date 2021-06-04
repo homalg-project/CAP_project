@@ -269,15 +269,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     
     is_defined_over_field := HasIsFieldForHomalg( ring ) and IsFieldForHomalg( ring );
     
-    ##
-    AddIsEqualForCacheForObjects( category,
-      IsIdenticalObj );
-    
-    ##
-    AddIsEqualForCacheForMorphisms( category,
-      IsIdenticalObj );
-
-    
     ## Well-defined for objects and morphisms
     ##
     AddIsWellDefinedForObjects( category,
