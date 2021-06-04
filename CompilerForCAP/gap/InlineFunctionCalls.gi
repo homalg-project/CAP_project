@@ -8,8 +8,8 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_FUNCTION_CAN_BE_INLINED, function ( tree
     
     # currently only functions
     # a) ending with a return statement, or
-    # b) ending with an if-(elif)-else-statement with return statements at the end of all branches
-    # and not containing other return statements can be inlined
+    # # b) ending with an if-(elif)-else-statement with return statements at the end of all branches
+    # # and not containing other return statements can be inlined
     
     statements := tree.stats.statements;
 
@@ -18,17 +18,19 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_FUNCTION_CAN_BE_INLINED, function ( tree
     if Last( statements ).type = "STAT_RETURN_OBJ" then
         
         statements_to_check := statements{[ 1 .. Length( statements ) - 1 ]};
-
+        
+    # We disable this case because it creates multiple assignments to the same variable and we do not support this.
+    # We do not remove the case (yet) because we might want it again in the future, and the code below contains some complexity due to this case, so keep this code for reference.
     elif Last( statements ).type in [ "STAT_IF_ELSE", "STAT_IF_ELIF_ELSE" ] and ForAll( Last( statements ).branches, b -> Last( b.body.statements ).type = "STAT_RETURN_OBJ" ) then
         
         Assert( 0, Last( Last( statements ).branches ).condition.type = "EXPR_TRUE" );
         
-        statements_to_check := statements{[ 1 .. Length( statements ) - 1 ]};
-
+        #statements_to_check := statements{[ 1 .. Length( statements ) - 1 ]};
+        
         for branch in Last( statements ).branches do
             
             branch_statements := branch.body.statements;
-            statements_to_check := Concatenation( statements_to_check, branch_statements{[ 1 .. Length( branch_statements ) - 1 ]} );
+            #statements_to_check := Concatenation( statements_to_check, branch_statements{[ 1 .. Length( branch_statements ) - 1 ]} );
             
         od;
         
