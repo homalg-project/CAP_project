@@ -76,7 +76,6 @@ MorphismToBidualWithGivenBidual := rec(
 
 TensorProductInternalHomCompatibilityMorphismWithGivenObjects := rec(
   filter_list := [ "category", "object", "object", "object", "object", IsList ],
-  io_type := [ [ "a", "ap", "b", "bp", "L" ], [ "L_1", "L_2" ] ],
   cache_name := "TensorProductInternalHomCompatibilityMorphismWithGivenObjects",
   return_type := "morphism" ),
 
