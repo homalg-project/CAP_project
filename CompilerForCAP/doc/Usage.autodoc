@@ -35,6 +35,7 @@ The compilation process has two phases: the resolving phase and the rule phase.
 During the resolving phase, operations and global variables are resolved:
 * An operation is resolved by executing the function to be compiled with the JIT arguments to determine the arguments of the operation.
   These arguments are used to call `ApplicableMethod`, and methods annotated with the pragma `CAP_JIT_RESOLVE_FUNCTION` are resolved.
+  This step is skipped if the operation is listed in `CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES`.
 * CAP operations are handled separately: instead of using `ApplicableMethod`, the functions added to the category via `Add` functions
   are considered, and those do not have to be annotated with `CAP_JIT_RESOLVE_FUNCTION`. In particular, caching, pre functions, etc.
   are bypassed.
@@ -131,7 +132,10 @@ a global variable from the beginning on, or after global variables are resolved 
 Possibly you have adapt <Ref Func="CapJitResolvedGlobalVariables" /> to your setting.
 
 * Q: Why is my operation not resolved?
-A: The compiler must be able to get the arguments of the call of the operation from the JIT arguments.
+A: The operation might be listed in `CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES`.
+If the operation is not a CAP operation and if there are no methods installed for the operation via
+`InstallMethodForCompilerForCAP` or `InstallOtherMethodForCompilerForCAP`,
+the compiler must be able to get the arguments of the call of the operation from the JIT arguments.
 Then the rules in the description of <Ref Func="CapJitResolvedOperations" /> apply.
 
 * Q: Why do I get the error "cannot find iteration key"?

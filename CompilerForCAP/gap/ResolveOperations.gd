@@ -17,7 +17,8 @@ DeclareGlobalFunction( "CapJitGetCapCategoryFromArguments" );
 #!   * Operations announced to the compiler via `InstallMethodForCompilerForCAP` or `InstallOtherMethodForCompilerForCAP`
 #!     (see the documentation of CAP) are resolved via the number of arguments.
 #!   * Other operations are resolved by considering applicable methods of the operation with regard to arguments infered
-#!     from <A>jit_args</A>. Only methods annotated with the pragma CAP_JIT_RESOLVE_FUNCTION are resolved.
+#!     from <A>jit_args</A>, except if the operation is listed in `CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES`.
+#!     Only methods annotated with the pragma `CAP_JIT_RESOLVE_FUNCTION` are resolved.
 #!
 #!   If the arguments of the operation cannot be infered from <A>jit_args</A>, the operation is not resolved.
 #! @Returns a record

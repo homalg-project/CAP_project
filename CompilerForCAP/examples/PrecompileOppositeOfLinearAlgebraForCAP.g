@@ -24,9 +24,6 @@ operations := Intersection(
     ListPrimitivelyInstalledOperationsOfCategory( MatrixCategory( QQ ) ),
     CAP_JIT_INTERNAL_SAFE_OPERATIONS
 );;
-# IsZeroForMorphisms tries to resolve IsZero and IsZero has a new
-# installation in GAP 4.12, so this causes slight differences in the output
-operations := Difference( operations, [ "IsZeroForMorphisms" ] );;
 # The output for Lift and Colift differs between GAP 4.11 and GAP 4.12, see
 # https://github.com/gap-system/gap/issues/4523
 operations := Difference( operations, [ "Lift", "Colift" ] );;
