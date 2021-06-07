@@ -301,23 +301,24 @@ end
         
 ########
 function ( cat, arg2 )
-    local _UNUSED_dual_preprocessor_func, _UNUSED_prep_arg, _UNUSED_result, _UNUSED_inline_20086__UNUSED_inline_arg_cat, _UNUSED_inline_20086_inline_arg_morphism, inline_20086_return_value;
-    if not true then
-        inline_20086_return_value := false;
-    elif not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Source( Opposite( arg2 ) ) ), UnderlyingRing( Opposite( cat ) ) ) then
-        inline_20086_return_value := false;
-    elif not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Opposite( arg2 ) ), UnderlyingRing( Opposite( cat ) ) ) then
-        inline_20086_return_value := false;
-    elif not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Range( Opposite( arg2 ) ) ), UnderlyingRing( Opposite( cat ) ) ) then
-        inline_20086_return_value := false;
-    elif NumberRows( UnderlyingMatrix( Opposite( arg2 ) ) ) <> Dimension( Source( Opposite( arg2 ) ) ) then
-        inline_20086_return_value := false;
-    elif NumberColumns( UnderlyingMatrix( Opposite( arg2 ) ) ) <> Dimension( Range( Opposite( arg2 ) ) ) then
-        inline_20086_return_value := false;
-    else
-        inline_20086_return_value := true;
-    fi;
-    return inline_20086_return_value;
+    return function (  )
+            if not true then
+                return false;
+            elif not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Source( Opposite( arg2 ) ) ), UnderlyingRing( Opposite( cat ) ) ) then
+                return false;
+            elif not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Opposite( arg2 ) ), UnderlyingRing( Opposite( cat ) ) ) then
+                return false;
+            elif not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Range( Opposite( arg2 ) ) ), UnderlyingRing( Opposite( cat ) ) ) then
+                return false;
+            elif NumberRows( UnderlyingMatrix( Opposite( arg2 ) ) ) <> Dimension( Source( Opposite( arg2 ) ) ) then
+                return false;
+            elif NumberColumns( UnderlyingMatrix( Opposite( arg2 ) ) ) <> Dimension( Range( Opposite( arg2 ) ) ) then
+                return false;
+            else
+                return true;
+            fi;
+            return;
+        end(  );
 end
 ########
         
@@ -328,17 +329,18 @@ end
         
 ########
 function ( cat, arg2 )
-    local _UNUSED_dual_preprocessor_func, _UNUSED_prep_arg, _UNUSED_result, _UNUSED_inline_20087__UNUSED_inline_arg_cat, _UNUSED_inline_20087_inline_arg_object, inline_20087_return_value;
-    if not true then
-        inline_20087_return_value := false;
-    elif not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Opposite( arg2 ) ), UnderlyingRing( Opposite( cat ) ) ) then
-        inline_20087_return_value := false;
-    elif Dimension( Opposite( arg2 ) ) < 0 then
-        inline_20087_return_value := false;
-    else
-        inline_20087_return_value := true;
-    fi;
-    return inline_20087_return_value;
+    return function (  )
+            if not true then
+                return false;
+            elif not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Opposite( arg2 ) ), UnderlyingRing( Opposite( cat ) ) ) then
+                return false;
+            elif Dimension( Opposite( arg2 ) ) < 0 then
+                return false;
+            else
+                return true;
+            fi;
+            return;
+        end(  );
 end
 ########
         

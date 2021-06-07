@@ -38,7 +38,7 @@ InstallMethod( CategoryOfRows,
     );
     
     SetFilterObj( category, IsCategoryOfRows );
-
+    
     if HasHasInvariantBasisProperty( homalg_ring ) and HasInvariantBasisProperty( homalg_ring ) then
         SetIsSkeletalCategory( category, true );
     fi;
@@ -59,7 +59,7 @@ InstallMethod( CategoryOfRows,
       
     fi;
     
-    if HasIsFieldForHomalg( homalg_ring ) and IsFieldForHomalg( homalg_ring )  then
+    if HasIsFieldForHomalg( homalg_ring ) and IsFieldForHomalg( homalg_ring ) then
         
         AddObjectRepresentation( category, IsCategoryOfRowsObject and HasIsProjective and IsProjective );
         
@@ -99,10 +99,11 @@ InstallOtherMethod( CategoryOfRowsObject,
     
 end );
 
-InstallMethod( CategoryOfRowsObjectOp,
-               [ IsCategoryOfRows, IsInt ],
+##
+InstallMethodForCompilerForCAP( CategoryOfRowsObjectOp,
+                                [ IsCategoryOfRows, IsInt ],
+               
   function( category, rank )
-    #% CAP_JIT_RESOLVE_FUNCTION
     
     if rank < 0 then
       
@@ -133,12 +134,11 @@ InstallMethod( AsCategoryOfRowsMorphism,
 end );
 
 ##
-InstallMethod( CategoryOfRowsMorphism,
-               [ IsCategoryOfRowsObject, IsHomalgMatrix, IsCategoryOfRowsObject ],
+InstallMethodForCompilerForCAP( CategoryOfRowsMorphism,
+                                [ IsCategoryOfRowsObject, IsHomalgMatrix, IsCategoryOfRowsObject ],
                
   function( source, homalg_matrix, range )
     local homalg_ring, category;
-    #% CAP_JIT_RESOLVE_FUNCTION
     
     category := CapCategory( source );
     
@@ -309,15 +309,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     
     is_defined_over_field := HasIsFieldForHomalg( ring ) and IsFieldForHomalg( ring );
     
-    ##
-    AddIsEqualForCacheForObjects( category,
-      { cat, obj1, obj2 } -> IsIdenticalObj( obj1, obj2 ) );
-    
-    ##
-    AddIsEqualForCacheForMorphisms( category,
-      {cat, mor1, mor2 } -> IsIdenticalObj( mor1, mor2 ) );
-
-    
     ## Well-defined for objects and morphisms
     ##
     AddIsWellDefinedForObjects( category,
@@ -399,7 +390,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     ##
     AddPreCompose( category,
       
-      [ 
+      [
         [ function( cat, morphism_1, morphism_2 )
             local composition;
             
@@ -466,7 +457,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       function( cat, morphism )
         
         return CategoryOfRowsMorphism( Source( morphism ),
-                                       MinusOne( ring ) * UnderlyingMatrix( morphism ),
+                                       - UnderlyingMatrix( morphism ),
                                        Range( morphism ) );
         
     end );
@@ -619,7 +610,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         underlying_matrix := List( [ 1 .. Length( underlying_matrix ) ], i -> UnionOfColumns( ring, RankOfObject( source_diagram[i] ), underlying_matrix[i] ) );
         
         return CategoryOfRowsMorphism(
-          source, 
+          source,
           UnionOfRows( ring, RankOfObject( range ), underlying_matrix ),
           range );
         
@@ -732,7 +723,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
           
           t := RankOfObject( T );
           
-          identity := HomalgIdentityMatrix( s * t, UnderlyingRing( CapCategory( S ) ) );
+          identity := HomalgIdentityMatrix( s * t, UnderlyingRing( cat ) );
           
           matrices := List( [ 1 .. s * t ], i -> ConvertRowToMatrix( CertainRows( identity, [ i ] ), s, t ) );
           
@@ -857,7 +848,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             underlying_matrix := ConvertMatrixToRow( underlying_matrix );
             
             return CategoryOfRowsMorphism(
-                     DistinguishedObjectOfHomomorphismStructure( category ),
+                     DistinguishedObjectOfHomomorphismStructure( cat ),
                      underlying_matrix,
                      HomomorphismStructureOnObjects( Source( alpha ), Range( alpha ) )
                    );
@@ -897,7 +888,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         ##
         AddTensorProductOnMorphismsWithGivenTensorProducts( category,
-          function( cat, s, alpha, beta, r)
+          function( cat, s, alpha, beta, r )
             
             return CategoryOfRowsMorphism( s,
               KroneckerMat( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ),
@@ -923,9 +914,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
           
           rank := RankOfObject( object_1_tensored_object_2 );
           
-          permutation_matrix := PermutationMat( 
+          permutation_matrix := PermutationMat(
                                   PermList( List( [ 1 .. rank ], i -> ( RemInt( i - 1, rank_2 ) * rank_1 + QuoInt( i - 1, rank_2 ) + 1 ) ) ),
-                                  rank 
+                                  rank
                                 );
           
           return CategoryOfRowsMorphism( object_1_tensored_object_2,
@@ -963,7 +954,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             
             id := HomalgIdentityMatrix( rank, ring );
             
-            return CategoryOfRowsMorphism( tensor_object, 
+            return CategoryOfRowsMorphism( tensor_object,
                                            UnionOfRows( List( [ 1 .. rank ], i -> CertainColumns( id, [i] ) ) ),
                                            unit );
             
@@ -985,7 +976,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             
             id := HomalgIdentityMatrix( rank, ring );
             
-            return CategoryOfRowsMorphism( unit, 
+            return CategoryOfRowsMorphism( unit,
                                            UnionOfColumns( List( [ 1 .. rank ], i -> CertainRows( id, [i] ) ) ),
                                            tensor_object );
             

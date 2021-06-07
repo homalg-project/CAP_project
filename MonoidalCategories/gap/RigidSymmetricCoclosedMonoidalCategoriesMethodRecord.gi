@@ -14,7 +14,6 @@ MorphismToCoBidualWithGivenCoBidual := rec(
 
 InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects := rec(
   filter_list := [ "category", "object", "object", "object", "object", IsList ],
-  io_type := [ [ "a", "ap", "b", "bp", "L" ], [ "L_2", "L_1" ] ],
   cache_name := "InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
   return_type := "morphism" ),
 

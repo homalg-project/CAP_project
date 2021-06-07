@@ -25,6 +25,14 @@ InstallMethod( AdditiveClosure,
     
     category := CreateCapCategory( Concatenation( "Additive closure( ", Name( underlying_category )," )"  ) );
     
+    category!.category_as_first_argument := true;
+    
+    category!.compiler_hints := rec(
+        category_attribute_names := [
+            "UnderlyingCategory",
+        ],
+    );
+    
     matrix_element_as_morphism := ValueOption( "matrix_element_as_morphism" );
     list_list_as_matrix := ValueOption( "list_list_as_matrix" );
     
@@ -554,17 +562,17 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     ##
     AddIsEqualForCacheForObjects( category,
-      IsIdenticalObj );
+      { cat, obj1, obj2 } -> IsIdenticalObj( obj1, obj2 ) );
     
     ##
     AddIsEqualForCacheForMorphisms( category,
-      IsIdenticalObj );
+      { cat, mor1, mor2 } -> IsIdenticalObj( mor1, mor2 ) );
 
     
     ## Well-defined for objects and morphisms
     ##
     AddIsWellDefinedForObjects( category,
-      function( object )
+      function( cat, object )
         
         if not ForAll( ObjectList( object ), obj -> IsIdenticalObj( underlying_category, CapCategory( obj ) ) ) then
             
@@ -579,7 +587,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     ##
     AddIsWellDefinedForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
         local nr_rows, nr_cols, source_list, range_list;
         
         nr_rows := Size( ObjectList( Source( morphism ) ) );
@@ -637,7 +645,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     ## Equality Basic Operations for Objects and Morphisms
     ##
     AddIsEqualForObjects( category,
-      function( object_1, object_2 )
+      function( cat, object_1, object_2 )
         local list_1, list_2, size_1, size_2;
         
         list_1 := ObjectList( object_1 );
@@ -695,7 +703,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     ##
     AddIsEqualForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return compare_morphisms( morphism_1, morphism_2, IsEqualForMorphisms );
         
@@ -703,7 +711,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     ##
     AddIsCongruentForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return compare_morphisms( morphism_1, morphism_2, IsCongruentForMorphisms );
         
@@ -712,8 +720,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     ## Basic Operations for a Category
     ##
     AddIdentityMorphism( category,
-      
-      function( object )
+      function( cat, object )
         local object_list, size, listlist, i, j;
         
         object_list := ObjectList( object );
@@ -742,7 +749,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     ##
     AddZeroMorphism( category,
-      function( source, range )
+      function( cat, source, range )
         local object_list_source, object_list_range, size_list_source, size_list_range, listlist, i, j;
         
         object_list_source := ObjectList( source );
@@ -765,7 +772,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     ##
     AddPreCompose( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         local nr_rows_1, nr_cols_1, nr_rows_2, nr_cols_2, listlist, i, j;
         
         nr_rows_1 := NrRows( morphism_1 );
@@ -795,7 +802,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     ## Basic Operations for an Additive Category
     ##
     AddIsZeroForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
         
         return ForAll( [ 1 .. NrRows( morphism ) ], i -> ForAll( [ 1 .. NrCols( morphism ) ], j -> IsZeroForMorphisms( morphism[i, j] ) ) );
         
@@ -803,7 +810,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     ##
     AddAdditionForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         local listlist;
         
         listlist := List( [ 1 .. NrRows( morphism_1 ) ],
@@ -818,7 +825,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     ##
     AddAdditiveInverseForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
         local listlist;
         
         listlist := List( [ 1 .. NrRows( morphism ) ],
@@ -832,7 +839,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     end );
     ##
     AddZeroObject( category,
-      function( )
+      function( cat )
         
         return AdditiveClosureObject( [ ], category );
         
@@ -840,7 +847,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     ##
     AddDirectSum( category,
-      function( list )
+      function( cat, list )
         
         return AdditiveClosureObject( Concatenation( List( list, ObjectList ) ), category );
         
@@ -848,7 +855,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
-      function( diagram, test_object, morphisms, direct_sum )
+      function( cat, diagram, test_object, morphisms, direct_sum )
         local listlist;
         
         # UnionOfColumns
@@ -870,7 +877,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
-      function( diagram, test_object, morphisms, direct_sum )
+      function( cat, diagram, test_object, morphisms, direct_sum )
         local listlist;
         
         # UnionOfRows
@@ -893,7 +900,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     if CanCompute( underlying_category, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
       
       AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
-        function( r, alpha )
+        function( cat, r, alpha )
           local listlist;
             
             listlist := List( [ 1 .. NrRows( alpha ) ],
@@ -917,7 +924,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             
             ##
             AddHomomorphismStructureOnObjects( category,
-              function( object_1, object_2 )
+              function( cat, object_1, object_2 )
                 
                 return DirectSum( range_category,
                           Concatenation(
@@ -936,7 +943,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             
             ##
             AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
-              function( source, alpha, beta, range )
+              function( cat, source, alpha, beta, range )
                 local size_i, size_j, size_s, size_t;
                 
                 size_i := NrRows( alpha );
@@ -973,7 +980,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         if ForAll( [ "DistinguishedObjectOfHomomorphismStructure" ], f -> CanCompute( underlying_category, f ) ) then
             ##
             AddDistinguishedObjectOfHomomorphismStructure( category,
-              function( )
+              function( cat )
                 
                 return DistinguishedObjectOfHomomorphismStructure( underlying_category );
                 
@@ -990,7 +997,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             
             ##
             AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
-              function( alpha )
+              function( cat, alpha )
                 local size_i, size_j;
                 
                 size_i := NrRows( alpha );
@@ -1026,7 +1033,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             
             ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
-              function( A, B, morphism )
+              function( cat, A, B, morphism )
                 local obj_list_A, obj_list_B, size_i, size_j, listlist, summands;
                 
                 obj_list_A := ObjectList( A );

@@ -78,7 +78,7 @@ InstallGlobalFunction( CapJitInlinedVariableAssignments, function ( tree )
         subsequent_child := parent[Last( lvar_path ) + 1];
 
         # detect "rapid reassignment"
-        if subsequent_child.type = "STAT_ASS_FVAR" and subsequent_child.func_id = lvar_assignment.func_id and subsequent_child.pos = lvar_assignment.pos then
+        if subsequent_child.type = "STAT_ASS_FVAR" and subsequent_child.func_id = lvar_assignment.func_id and subsequent_child.name = lvar_assignment.name then
             
             Info( InfoCapJit, 1, "Found rapid reassignment." );
             
@@ -120,7 +120,7 @@ InstallGlobalFunction( CapJitInlinedVariableAssignments, function ( tree )
         
         if IsRecord( tree ) then
             
-            if PositionSublist( tree.type, "FVAR" ) <> fail and tree.func_id = lvar_assignment.func_id and tree.pos = lvar_assignment.pos then
+            if PositionSublist( tree.type, "FVAR" ) <> fail and tree.func_id = lvar_assignment.func_id and tree.name = lvar_assignment.name then
                 
                 if tree.type = "EXPR_REF_FVAR" then
                     
