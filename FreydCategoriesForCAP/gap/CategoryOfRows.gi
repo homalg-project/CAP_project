@@ -99,10 +99,11 @@ InstallOtherMethod( CategoryOfRowsObject,
     
 end );
 
-InstallMethod( CategoryOfRowsObjectOp,
-               [ IsCategoryOfRows, IsInt ],
+##
+InstallMethodForCompilerForCAP( CategoryOfRowsObjectOp,
+                                [ IsCategoryOfRows, IsInt ],
+               
   function( category, rank )
-    #% CAP_JIT_RESOLVE_FUNCTION
     
     if rank < 0 then
       
@@ -133,12 +134,11 @@ InstallMethod( AsCategoryOfRowsMorphism,
 end );
 
 ##
-InstallMethod( CategoryOfRowsMorphism,
-               [ IsCategoryOfRowsObject, IsHomalgMatrix, IsCategoryOfRowsObject ],
+InstallMethodForCompilerForCAP( CategoryOfRowsMorphism,
+                                [ IsCategoryOfRowsObject, IsHomalgMatrix, IsCategoryOfRowsObject ],
                
   function( source, homalg_matrix, range )
     local homalg_ring, category;
-    #% CAP_JIT_RESOLVE_FUNCTION
     
     category := CapCategory( source );
     
