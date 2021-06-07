@@ -623,12 +623,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         
         left_divide := LeftDivide( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ) );
         
-        if left_divide = fail then
-          
-          return fail;
-          
-        fi;
-        
         return CategoryOfColumnsMorphism( Source( alpha ), left_divide, Source( beta ) );
         
     end );
@@ -658,12 +652,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         local right_divide;
         
         right_divide := RightDivide( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ) );
-        
-        if right_divide = fail then
-          
-          return fail;
-          
-        fi;
         
         return CategoryOfColumnsMorphism( Range( alpha ), right_divide, Range( beta ) );
         
