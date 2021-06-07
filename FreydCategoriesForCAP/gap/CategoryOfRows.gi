@@ -457,7 +457,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
       function( cat, morphism )
         
         return CategoryOfRowsMorphism( Source( morphism ),
-                                       MinusOne( ring ) * UnderlyingMatrix( morphism ),
+                                       - UnderlyingMatrix( morphism ),
                                        Range( morphism ) );
         
     end );
