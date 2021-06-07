@@ -239,7 +239,10 @@ DeclareAttribute( "TwoCellFilter",
 #! @Arguments C
 #! @Returns a GAP type
 DeclareAttribute( "ObjectType",
-                  IsCapCategory );
+                  IsCapCategory,
+                  "mutable" );
+# make this mutable so we can overwrite it even if
+# some category constructor has already set it
 
 #! @Description
 #! The argument is a category $C$.
@@ -248,7 +251,10 @@ DeclareAttribute( "ObjectType",
 #! @Arguments C
 #! @Returns a GAP type
 DeclareAttribute( "MorphismType",
-                  IsCapCategory );
+                  IsCapCategory,
+                  "mutable" );
+# make this mutable so we can overwrite it even if
+# some category constructor has already set it
 
 #! @Description
 #! The argument is a category $C$ which is expected to lie in the
@@ -257,11 +263,17 @@ DeclareAttribute( "MorphismType",
 #! @Arguments C
 #! @Returns a ring
 DeclareAttribute( "CommutativeRingOfLinearCategory",
-                  IsCapCategory );
+                  IsCapCategory,
+                  "mutable" );
+# make this mutable so we can overwrite it even if
+# some category constructor has already set it
 
 ##
 DeclareAttribute( "RangeCategoryOfHomomorphismStructure",
-                  IsCapCategory );
+                  IsCapCategory,
+                  "mutable" );
+# make this mutable so we can overwrite it even if
+# some category constructor has already set it
 
 #############################################
 ##
