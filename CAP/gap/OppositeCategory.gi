@@ -434,6 +434,12 @@ InstallMethod( Opposite,
     
     opposite_category!.category_as_first_argument := true;
     
+    if IsBound( category!.supports_empty_limits ) then
+        
+        opposite_category!.supports_empty_limits := category!.supports_empty_limits;
+        
+    fi;
+    
     opposite_category!.compiler_hints := rec(
         category_attribute_names := [
             "Opposite",
