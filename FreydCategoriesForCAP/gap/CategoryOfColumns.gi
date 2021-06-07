@@ -499,28 +499,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     end );
     
     ##
-    AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
-      function( cat, object_list, projection_number, direct_sum_object )
-        local rank_pre, rank_post, rank_factor, number_of_objects, projection_in_factor;
-        
-        number_of_objects := Length( object_list );
-        
-        rank_pre := Sum( object_list{ [ 1 .. projection_number - 1 ] }, c -> RankOfObject( c ) );
-        
-        rank_post := Sum( object_list{ [ projection_number + 1 .. number_of_objects ] }, c -> RankOfObject( c ) );
-        
-        rank_factor := RankOfObject( object_list[ projection_number ] );
-        
-        projection_in_factor := UnionOfColumns( HomalgZeroMatrix( rank_factor, rank_pre, ring ),
-                                                HomalgIdentityMatrix( rank_factor, ring ),
-                                                HomalgZeroMatrix( rank_factor, rank_post, ring )
-                                              );
-        
-        return CategoryOfColumnsMorphism( direct_sum_object, projection_in_factor, object_list[ projection_number ] );
-        
-    end );
-    
-    ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
       function( cat, diagram, test_object, sink, direct_sum )
         local underlying_matrix_of_universal_morphism;
@@ -534,29 +512,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         
         return CategoryOfColumnsMorphism( test_object, underlying_matrix_of_universal_morphism, direct_sum );
       
-    end );
-    
-    ##
-    AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
-      function( cat, object_list, injection_number, coproduct )
-        local rank_pre, rank_post, rank_cofactor, number_of_objects, injection_of_cofactor;
-        
-        number_of_objects := Length( object_list );
-        
-        rank_pre := Sum( object_list{ [ 1 .. injection_number - 1 ] }, c -> RankOfObject( c ) );
-        
-        rank_post := Sum( object_list{ [ injection_number + 1 .. number_of_objects ] }, c -> RankOfObject( c ) );
-        
-        rank_cofactor := RankOfObject( object_list[ injection_number ] );
-        
-        # now construct the mapping matrix
-        injection_of_cofactor := UnionOfRows( HomalgZeroMatrix( rank_pre, rank_cofactor, ring ),
-                                              HomalgIdentityMatrix( rank_cofactor, ring ),
-                                              HomalgZeroMatrix( rank_post, rank_cofactor, ring )
-                                            );
-        
-        return CategoryOfColumnsMorphism( object_list[ injection_number ], injection_of_cofactor, coproduct );
-        
     end );
     
     ##
