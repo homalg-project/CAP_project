@@ -121,8 +121,7 @@ InstallMethod( WrapperCategory,
   function( C )
     local name, category_object_filter, category_morphism_filter,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
-          create_func_bool, create_func_object, create_func_morphism,
-          primitive_operations, list_of_operations_to_install, skip, func, pos,
+          primitive_operations, list_of_operations_to_install, func,
           commutative_ring, properties, D,
           cache, print, list, wrap_range_of_hom_structure, HC, finalize;
     
@@ -144,61 +143,6 @@ InstallMethod( WrapperCategory,
     category_object_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_object_filter", IsWrapperCapCategoryObject ) and IsWrapperCapCategoryObject;
     category_morphism_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_morphism_filter", IsWrapperCapCategoryMorphism ) and IsWrapperCapCategoryMorphism;
     
-    ## e.g., IsSplitEpimorphism
-    create_func_bool :=
-      function( name, D )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( cat, arg... )
-            
-            return CallFuncList( oper, Concatenation( [ UnderlyingCategory( cat ) ], List( arg, UnderlyingCell ) ) );
-            
-        end;
-        
-    end;
-    
-    ## e.g., DirectSum
-    create_func_object :=
-      function( name, D )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return ## a constructor for universal objects
-          function( cat, arg... )
-            
-            return ObjectConstructor( cat, CallFuncList( oper, Concatenation( [ UnderlyingCategory( cat ) ], List( arg, UnderlyingCell ) ) ) );
-            
-          end;
-          
-      end;
-    
-    ## e.g., IdentityMorphism, PreCompose
-    create_func_morphism :=
-      function( name, D )
-        local type, oper;
-        
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( cat, arg... )
-            local src_trg, S, T;
-            
-            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
-            S := src_trg[1];
-            T := src_trg[2];
-            
-            return MorphismConstructor( cat, S, CallFuncList( oper, Concatenation( [ UnderlyingCategory( cat ) ], List( arg, UnderlyingCell ) ) ), T );
-            
-          end;
-          
-      end;
-    
     primitive_operations := not IsIdenticalObj( ValueOption( "primitive_operations" ), false );
     
     if primitive_operations then
@@ -206,21 +150,6 @@ InstallMethod( WrapperCategory,
     else
         list_of_operations_to_install := ListInstalledOperationsOfCategory( C );
     fi;
-    
-    list_of_operations_to_install := ShallowCopy( list_of_operations_to_install );
-    
-    skip := [ "MultiplyWithElementOfCommutativeRingForMorphisms",
-              "FiberProductEmbeddingInDirectSum", ## TODO: CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS in create_func_morphism cannot deal with it yet
-              ];
-    
-    for func in skip do
-        
-        pos := Position( list_of_operations_to_install, func );
-        if not pos = fail then
-            Remove( list_of_operations_to_install, pos );
-        fi;
-        
-    od;
     
     if HasCommutativeRingOfLinearCategory( C ) then
         commutative_ring := CommutativeRingOfLinearCategory( C );
@@ -245,10 +174,14 @@ InstallMethod( WrapperCategory,
                  properties := properties,
                  is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
                  list_of_operations_to_install := list_of_operations_to_install,
-                 create_func_bool := create_func_bool,
-                 create_func_object := create_func_object,
-                 create_func_morphism := create_func_morphism,
-                 category_as_first_argument := true
+                 create_func_bool := "default",
+                 create_func_object := "default",
+                 create_func_morphism := "default",
+                 create_func_morphism_or_fail := "default",
+                 category_as_first_argument := true,
+                 underlying_category_getter_string := "UnderlyingCategory",
+                 underlying_object_getter_string := "ObjectDatum",
+                 underlying_morphism_getter_string := "MorphismDatum"
                  );
     
     if IsBound( C!.supports_empty_limits ) then
@@ -273,22 +206,6 @@ InstallMethod( WrapperCategory,
     fi;
     
     print := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "print", false ), true );
-    
-    if CanCompute( C, "MultiplyWithElementOfCommutativeRingForMorphisms" ) then
-        
-        if print then
-            Display( "MultiplyWithElementOfCommutativeRingForMorphisms" );
-        fi;
-        
-        ##
-        AddMultiplyWithElementOfCommutativeRingForMorphisms( D,
-          function( cat, r, phi )
-            
-            return MorphismConstructor( cat, Source( phi ), MultiplyWithElementOfCommutativeRingForMorphisms( UnderlyingCategory( cat ), r, MorphismDatum( cat, phi ) ), Range( phi ) );
-            
-        end );
-        
-    fi;
     
     if HasRangeCategoryOfHomomorphismStructure( C ) then
         
