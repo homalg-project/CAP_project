@@ -10,3 +10,7 @@
 @Section Attributes
 @Section Constructors
 @Section Functors
+
+@Section Tests
+
+@InsertChunk LinearAlgebraForCAP

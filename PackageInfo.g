@@ -13,7 +13,7 @@ Subtitle := "Construct an equivalent wrapper category out of a CAP category",
 Version := Maximum( [
                    "2020.10-04", ## Mohamed's version
                    ## this line prevents merge conflicts
-                   "2020.08.16", ## Fabian's version
+                   "2021.06-01", ## Fabian's version
                    ## this line prevents merge conflicts
                    ] ),
 
@@ -80,7 +80,7 @@ Dependencies := rec(
                    [ "ToolsForHomalg", ">= 2020.09.06" ],
                    [ "CAP", ">= 2020.04.15" ],
                    [ "MonoidalCategories", ">= 2020.03.01" ],
-                   [ "CategoryConstructor", ">= 2020.09.10" ],
+                   [ "CategoryConstructor", ">= 2021.06-01" ],
                   ],
   SuggestedOtherPackages := [
                   ],

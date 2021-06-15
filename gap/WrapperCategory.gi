@@ -120,8 +120,7 @@ InstallMethod( WrapperCategory,
         
   function( C )
     local name, category_object_filter, category_morphism_filter,
-          create_func_bool, create_func_object0, create_func_morphism0,
-          create_func_object, create_func_morphism, create_func_universal_morphism,
+          create_func_bool, create_func_object, create_func_morphism,
           primitive_operations, list_of_operations_to_install, skip, func, pos,
           commutative_ring, properties, D,
           cache, print, list, wrap_range_of_hom_structure, HC, finalize;
@@ -147,45 +146,13 @@ InstallMethod( WrapperCategory,
         oper := ValueGlobal( name );
         
         return
-          function( arg )
+          function( cat, arg... )
             
-            return CallFuncList( oper, List( arg, UnderlyingCell ) );
+            return CallFuncList( oper, Concatenation( [ UnderlyingCategory( cat ) ], List( arg, UnderlyingCell ) ) );
             
         end;
         
     end;
-    
-    ## e.g., ZeroObject
-    create_func_object0 :=
-      function( name, D )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( )
-            
-            return AsObjectInWrapperCategory( D, oper( UnderlyingCategory( D ) ) );
-            
-          end;
-          
-      end;
-    
-    ## e.g., ZeroObjectFunctorial
-    create_func_morphism0 :=
-      function( name, D )
-        local oper;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( D )
-            
-            return AsMorphismInWrapperCategory( D, oper( UnderlyingCategory( D ) ) );
-            
-          end;
-          
-      end;
     
     ## e.g., DirectSum
     create_func_object :=
@@ -195,9 +162,9 @@ InstallMethod( WrapperCategory,
         oper := ValueGlobal( name );
         
         return ## a constructor for universal objects
-          function( arg )
+          function( cat, arg... )
             
-            return AsObjectInWrapperCategory( D, CallFuncList( oper, List( arg, UnderlyingCell ) ) );
+            return AsObjectInWrapperCategory( cat, CallFuncList( oper, Concatenation( [ UnderlyingCategory( cat ) ], List( arg, UnderlyingCell ) ) ) );
             
           end;
           
@@ -213,47 +180,18 @@ InstallMethod( WrapperCategory,
         oper := ValueGlobal( name );
         
         return
-          function( arg )
+          function( cat, arg... )
             local src_trg, S, T;
             
             src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
             S := src_trg[1];
             T := src_trg[2];
             
-            return AsMorphismInWrapperCategory( S, CallFuncList( oper, List( arg, UnderlyingCell ) ), T );
+            return AsMorphismInWrapperCategory( S, CallFuncList( oper, Concatenation( [ UnderlyingCategory( cat ) ], List( arg, UnderlyingCell ) ) ), T );
             
           end;
           
       end;
-    
-    ## e.g., ProjectionInFactorOfDirectSumWithGivenDirectSum
-    create_func_universal_morphism :=
-      function( name, D )
-        local info, type, oper;
-        
-        info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
-        
-        if not info.with_given_without_given_name_pair[2] = name then
-            Error( name, " is not the constructor of a universal morphism with a given universal object\n" );
-        fi;
-        
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( arg )
-            local src_trg, S, T;
-            
-            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
-            S := src_trg[1];
-            T := src_trg[2];
-            
-            return AsMorphismInWrapperCategory( S, CallFuncList( oper, List( arg, UnderlyingCell ) ), T );
-            
-          end;
-        
-    end;
     
     primitive_operations := not IsIdenticalObj( ValueOption( "primitive_operations" ), false );
     
@@ -298,12 +236,16 @@ InstallMethod( WrapperCategory,
                  is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
                  list_of_operations_to_install := list_of_operations_to_install,
                  create_func_bool := create_func_bool,
-                 create_func_object0 := create_func_object0,
-                 create_func_morphism0 := create_func_morphism0,
                  create_func_object := create_func_object,
                  create_func_morphism := create_func_morphism,
-                 create_func_universal_morphism := create_func_universal_morphism
+                 category_as_first_argument := true
                  );
+    
+    if IsBound( C!.supports_empty_limits ) then
+        
+        D!.supports_empty_limits := C!.supports_empty_limits;
+        
+    fi;
     
     SetUnderlyingCategory( D, C );
     
@@ -324,9 +266,9 @@ InstallMethod( WrapperCategory,
         
         ##
         AddMultiplyWithElementOfCommutativeRingForMorphisms( D,
-          function( r, phi )
+          function( cat, r, phi )
             
-            return AsMorphismInWrapperCategory( Source( phi ), MultiplyWithElementOfCommutativeRingForMorphisms( r, phi ), Range( phi ) );
+            return AsMorphismInWrapperCategory( Source( phi ), MultiplyWithElementOfCommutativeRingForMorphisms( UnderlyingCategory( cat ), r, UnderlyingCell( phi ) ), Range( phi ) );
             
         end );
         
@@ -355,9 +297,9 @@ InstallMethod( WrapperCategory,
         
         if CanCompute( C, "BasisOfExternalHom" ) then
             AddBasisOfExternalHom( D,
-              function( a, b )
+              function( cat, a, b )
                 
-                return List( BasisOfExternalHom( UnderlyingCell( a ), UnderlyingCell( b ) ),
+                return List( BasisOfExternalHom( UnderlyingCategory( cat ), UnderlyingCell( a ), UnderlyingCell( b ) ),
                              mor -> AsMorphismInWrapperCategory( a, mor, b ) );
                 
             end );
@@ -365,9 +307,9 @@ InstallMethod( WrapperCategory,
         
         if CanCompute( C, "CoefficientsOfMorphismWithGivenBasisOfExternalHom" ) then
             AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( D,
-              function( alpha, L )
+              function( cat, alpha, L )
                 
-                return CoefficientsOfMorphismWithGivenBasisOfExternalHom(
+                return CoefficientsOfMorphismWithGivenBasisOfExternalHom( UnderlyingCategory( cat ),
                                UnderlyingCell( alpha ),
                                List( L, UnderlyingCell ) );
                 
@@ -384,49 +326,60 @@ InstallMethod( WrapperCategory,
         
         if wrap_range_of_hom_structure and not IsWrapperCapCategory( HC ) then
             
-            HC := WrapperCategory( HC : wrap_range_of_hom_structure := false );
+            if IsIdenticalObj( C, HC ) then
+                
+                # The range of the homomorphism structure of C is C itself,
+                # so the range of the homomorphism structure of D should be D itself.
+                # This prevents infinite recursions.
+                HC := D;
+                
+            else
+                
+                HC := WrapperCategory( HC );
+                
+            fi;
             
             if CanCompute( C, "DistinguishedObjectOfHomomorphismStructure" ) then
                 AddDistinguishedObjectOfHomomorphismStructure( D,
-                  function( )
+                  function( cat )
                     
-                    return AsObjectInWrapperCategory( HC, DistinguishedObjectOfHomomorphismStructure( C ) );
+                    return AsObjectInWrapperCategory( HC, DistinguishedObjectOfHomomorphismStructure( UnderlyingCategory( cat ) ) );
                     
                 end );
             fi;
             
             if CanCompute( C, "HomomorphismStructureOnObjects" ) then
                 AddHomomorphismStructureOnObjects( D,
-                  function( a, b )
+                  function( cat, a, b )
                     
-                    return AsObjectInWrapperCategory( HC, HomomorphismStructureOnObjects( a, b ) );
+                    return AsObjectInWrapperCategory( HC, HomomorphismStructureOnObjects( UnderlyingCategory( cat ), UnderlyingCell( a ), UnderlyingCell( b ) ) );
                     
                 end );
             fi;
             
             if CanCompute( C, "HomomorphismStructureOnMorphismsWithGivenObjects" ) then
                 AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
-                  function( s, alpha, beta, r )
+                  function( cat, s, alpha, beta, r )
                     
-                    return AsMorphismInWrapperCategory( s, HomomorphismStructureOnMorphismsWithGivenObjects( s, alpha, beta, r ), r );
+                    return AsMorphismInWrapperCategory( s, HomomorphismStructureOnMorphismsWithGivenObjects( UnderlyingCategory( cat ), UnderlyingCell( s ), UnderlyingCell( alpha ), UnderlyingCell( beta ), UnderlyingCell( r ) ), r );
                     
                 end );
             fi;
             
             if CanCompute( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ) then
                 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
-                  function( alpha )
+                  function( cat, alpha )
                     
-                    return AsMorphismInWrapperCategory( DistinguishedObjectOfHomomorphismStructure( CapCategory( alpha ) ), InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( alpha ), HomomorphismStructureOnObjects( Source( alpha ), Range( alpha ) ) );
+                    return AsMorphismInWrapperCategory( DistinguishedObjectOfHomomorphismStructure( cat ), InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( UnderlyingCategory( cat ), UnderlyingCell( alpha ) ), HomomorphismStructureOnObjects( cat, Source( alpha ), Range( alpha ) ) );
                     
                 end );
             fi;
             
             if CanCompute( C, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ) then
                 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
-                  function( a, b, iota )
+                  function( cat, a, b, iota )
                     
-                    return AsMorphismInWrapperCategory( a, InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( a, b, iota ), b );
+                    return AsMorphismInWrapperCategory( a, InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UnderlyingCategory( cat ), UnderlyingCell( a ), UnderlyingCell( b ), UnderlyingCell( iota ) ), b );
                     
                 end );
             fi;
@@ -435,45 +388,45 @@ InstallMethod( WrapperCategory,
             
             if CanCompute( C, "DistinguishedObjectOfHomomorphismStructure" ) then
                 AddDistinguishedObjectOfHomomorphismStructure( D,
-                  function( )
+                  function( cat )
                     
-                    return DistinguishedObjectOfHomomorphismStructure( C );
+                    return DistinguishedObjectOfHomomorphismStructure( UnderlyingCategory( cat ) );
                     
                 end );
             fi;
             
             if CanCompute( C, "HomomorphismStructureOnObjects" ) then
                 AddHomomorphismStructureOnObjects( D,
-                  function( a, b )
+                  function( cat, a, b )
                     
-                    return HomomorphismStructureOnObjects( UnderlyingCell( a ), UnderlyingCell( b ) );
+                    return HomomorphismStructureOnObjects( UnderlyingCategory( cat ), UnderlyingCell( a ), UnderlyingCell( b ) );
                     
                 end );
             fi;
             
             if CanCompute( C, "HomomorphismStructureOnMorphismsWithGivenObjects" ) then
                 AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
-                  function( s, alpha, beta, r )
+                  function( cat, s, alpha, beta, r )
                     
-                    return HomomorphismStructureOnMorphismsWithGivenObjects( s, UnderlyingCell( alpha ), UnderlyingCell( beta ), r );
+                    return HomomorphismStructureOnMorphismsWithGivenObjects( UnderlyingCategory( cat ), s, UnderlyingCell( alpha ), UnderlyingCell( beta ), r );
                     
                 end );
             fi;
             
             if CanCompute( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ) then
                 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
-                  function( alpha )
+                  function( cat, alpha )
                     
-                    return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( UnderlyingCell( alpha ) );
+                    return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( UnderlyingCategory( cat ), UnderlyingCell( alpha ) );
                     
                 end );
             fi;
             
             if CanCompute( C, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ) then
                 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
-                  function( a, b, iota )
+                  function( cat, a, b, iota )
                     
-                    return AsMorphismInWrapperCategory( CapCategory( a ), InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UnderlyingCell( a ), UnderlyingCell( b ), iota ) );
+                    return AsMorphismInWrapperCategory( CapCategory( a ), InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UnderlyingCategory( cat ), UnderlyingCell( a ), UnderlyingCell( b ), iota ) );
                     
                 end );
             fi;
