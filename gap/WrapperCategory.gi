@@ -384,7 +384,18 @@ InstallMethod( WrapperCategory,
         
         if wrap_range_of_hom_structure and not IsWrapperCapCategory( HC ) then
             
-            HC := WrapperCategory( HC : wrap_range_of_hom_structure := false );
+            if IsIdenticalObj( C, HC ) then
+                
+                # The range of the homomorphism structure of C is C itself,
+                # so the range of the homomorphism structure of D should be D itself.
+                # This prevents infinite recursions.
+                HC := D;
+                
+            else
+                
+                HC := WrapperCategory( HC );
+                
+            fi;
             
             if CanCompute( C, "DistinguishedObjectOfHomomorphismStructure" ) then
                 AddDistinguishedObjectOfHomomorphismStructure( D,
