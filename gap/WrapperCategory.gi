@@ -121,7 +121,7 @@ InstallMethod( WrapperCategory,
   function( C )
     local name, category_object_filter, category_morphism_filter,
           create_func_bool, create_func_object0, create_func_morphism0,
-          create_func_object, create_func_morphism, create_func_universal_morphism,
+          create_func_object, create_func_morphism,
           primitive_operations, list_of_operations_to_install, skip, func, pos,
           commutative_ring, properties, D,
           cache, print, list, wrap_range_of_hom_structure, HC, finalize;
@@ -226,35 +226,6 @@ InstallMethod( WrapperCategory,
           
       end;
     
-    ## e.g., ProjectionInFactorOfDirectSumWithGivenDirectSum
-    create_func_universal_morphism :=
-      function( name, D )
-        local info, type, oper;
-        
-        info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
-        
-        if not info.with_given_without_given_name_pair[2] = name then
-            Error( name, " is not the constructor of a universal morphism with a given universal object\n" );
-        fi;
-        
-        type := CAP_INTERNAL_METHOD_NAME_RECORD.(name).io_type;
-        
-        oper := ValueGlobal( name );
-        
-        return
-          function( arg )
-            local src_trg, S, T;
-            
-            src_trg := CAP_INTERNAL_GET_CORRESPONDING_OUTPUT_OBJECTS( type, arg );
-            S := src_trg[1];
-            T := src_trg[2];
-            
-            return AsMorphismInWrapperCategory( S, CallFuncList( oper, List( arg, UnderlyingCell ) ), T );
-            
-          end;
-        
-    end;
-    
     primitive_operations := not IsIdenticalObj( ValueOption( "primitive_operations" ), false );
     
     if primitive_operations then
@@ -302,7 +273,6 @@ InstallMethod( WrapperCategory,
                  create_func_morphism0 := create_func_morphism0,
                  create_func_object := create_func_object,
                  create_func_morphism := create_func_morphism,
-                 create_func_universal_morphism := create_func_universal_morphism
                  );
     
     SetUnderlyingCategory( D, C );
