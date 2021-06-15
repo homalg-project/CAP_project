@@ -241,6 +241,12 @@ InstallMethod( WrapperCategory,
                  category_as_first_argument := true
                  );
     
+    if IsBound( C!.supports_empty_limits ) then
+        
+        D!.supports_empty_limits := C!.supports_empty_limits;
+        
+    fi;
+    
     SetUnderlyingCategory( D, C );
     
     cache := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "cache", true );
