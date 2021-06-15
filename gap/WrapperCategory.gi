@@ -326,7 +326,7 @@ InstallMethod( WrapperCategory,
         AddMultiplyWithElementOfCommutativeRingForMorphisms( D,
           function( r, phi )
             
-            return AsMorphismInWrapperCategory( Source( phi ), MultiplyWithElementOfCommutativeRingForMorphisms( r, phi ), Range( phi ) );
+            return AsMorphismInWrapperCategory( Source( phi ), MultiplyWithElementOfCommutativeRingForMorphisms( C, r, UnderlyingCell( phi ) ), Range( phi ) );
             
         end );
         
@@ -357,7 +357,7 @@ InstallMethod( WrapperCategory,
             AddBasisOfExternalHom( D,
               function( a, b )
                 
-                return List( BasisOfExternalHom( UnderlyingCell( a ), UnderlyingCell( b ) ),
+                return List( BasisOfExternalHom( C, UnderlyingCell( a ), UnderlyingCell( b ) ),
                              mor -> AsMorphismInWrapperCategory( a, mor, b ) );
                 
             end );
@@ -367,7 +367,7 @@ InstallMethod( WrapperCategory,
             AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( D,
               function( alpha, L )
                 
-                return CoefficientsOfMorphismWithGivenBasisOfExternalHom(
+                return CoefficientsOfMorphismWithGivenBasisOfExternalHom( C,
                                UnderlyingCell( alpha ),
                                List( L, UnderlyingCell ) );
                 
@@ -399,7 +399,7 @@ InstallMethod( WrapperCategory,
                 AddHomomorphismStructureOnObjects( D,
                   function( a, b )
                     
-                    return AsObjectInWrapperCategory( HC, HomomorphismStructureOnObjects( a, b ) );
+                    return AsObjectInWrapperCategory( HC, HomomorphismStructureOnObjects( C, UnderlyingCell( a ), UnderlyingCell( b ) ) );
                     
                 end );
             fi;
@@ -408,7 +408,7 @@ InstallMethod( WrapperCategory,
                 AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
                   function( s, alpha, beta, r )
                     
-                    return AsMorphismInWrapperCategory( s, HomomorphismStructureOnMorphismsWithGivenObjects( s, alpha, beta, r ), r );
+                    return AsMorphismInWrapperCategory( s, HomomorphismStructureOnMorphismsWithGivenObjects( C, UnderlyingCell( s ), UnderlyingCell( alpha ), UnderlyingCell( beta ), UnderlyingCell( r ) ), r );
                     
                 end );
             fi;
@@ -417,7 +417,7 @@ InstallMethod( WrapperCategory,
                 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
                   function( alpha )
                     
-                    return AsMorphismInWrapperCategory( DistinguishedObjectOfHomomorphismStructure( CapCategory( alpha ) ), InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( alpha ), HomomorphismStructureOnObjects( Source( alpha ), Range( alpha ) ) );
+                    return AsMorphismInWrapperCategory( DistinguishedObjectOfHomomorphismStructure( D ), InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C, UnderlyingCell( alpha ) ), HomomorphismStructureOnObjects( D, Source( alpha ), Range( alpha ) ) );
                     
                 end );
             fi;
@@ -426,7 +426,7 @@ InstallMethod( WrapperCategory,
                 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
                   function( a, b, iota )
                     
-                    return AsMorphismInWrapperCategory( a, InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( a, b, iota ), b );
+                    return AsMorphismInWrapperCategory( a, InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C, UnderlyingCell( a ), UnderlyingCell( b ), UnderlyingCell( iota ) ), b );
                     
                 end );
             fi;
@@ -446,7 +446,7 @@ InstallMethod( WrapperCategory,
                 AddHomomorphismStructureOnObjects( D,
                   function( a, b )
                     
-                    return HomomorphismStructureOnObjects( UnderlyingCell( a ), UnderlyingCell( b ) );
+                    return HomomorphismStructureOnObjects( C, UnderlyingCell( a ), UnderlyingCell( b ) );
                     
                 end );
             fi;
@@ -455,7 +455,7 @@ InstallMethod( WrapperCategory,
                 AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
                   function( s, alpha, beta, r )
                     
-                    return HomomorphismStructureOnMorphismsWithGivenObjects( s, UnderlyingCell( alpha ), UnderlyingCell( beta ), r );
+                    return HomomorphismStructureOnMorphismsWithGivenObjects( C, s, UnderlyingCell( alpha ), UnderlyingCell( beta ), r );
                     
                 end );
             fi;
@@ -464,7 +464,7 @@ InstallMethod( WrapperCategory,
                 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
                   function( alpha )
                     
-                    return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( UnderlyingCell( alpha ) );
+                    return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C, UnderlyingCell( alpha ) );
                     
                 end );
             fi;
@@ -473,7 +473,7 @@ InstallMethod( WrapperCategory,
                 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
                   function( a, b, iota )
                     
-                    return AsMorphismInWrapperCategory( CapCategory( a ), InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UnderlyingCell( a ), UnderlyingCell( b ), iota ) );
+                    return AsMorphismInWrapperCategory( CapCategory( a ), InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C, UnderlyingCell( a ), UnderlyingCell( b ), iota ) );
                     
                 end );
             fi;
