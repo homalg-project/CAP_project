@@ -9,6 +9,7 @@ ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategoriesForCAP.gd" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfRows.gd" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfColumns.gd" );
+ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfColumnsAsOppositeOfCategoryOfRows.gd" );
 
 # include the packages for graded rows and columns
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfGradedRowsAndColumns/GradedRowOrColumn.gd" );

@@ -128,8 +128,12 @@ InstallGlobalFunction( CAP_INTERNAL_OPPOSITE_RECURSIVE,
   
   function( obj )
     
-    if IsCapCategory( obj ) or IsCapCategoryCell( obj ) then
+    if IsCapCategory( obj ) then
         return Opposite( obj );
+    elif IsCapCategoryObject( obj ) then
+        return ObjectDatum( CapCategory( obj ), obj );
+    elif IsCapCategoryMorphism( obj ) then
+        return MorphismDatum( CapCategory( obj ), obj );
     elif IsList( obj ) then
         return List( obj, CAP_INTERNAL_OPPOSITE_RECURSIVE );
     else
@@ -144,7 +148,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
     local recnames, current_recname, current_entry, dual_operation_name,
           filter_list, input_arguments_names, return_type, func_string,
           dual_preprocessor_func_string, preprocessor_string, dual_arguments,
-          dual_postprocessor_func_string, postprocessor_string, return_statement,
+          dual_postprocessor_func_string, postprocessor_string, output_source_getter_string, output_range_getter_string, return_statement,
           func, current_add, list_of_attributes, attr, tester, setter, getter;
     
     recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
@@ -257,17 +261,29 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                     
                 fi;
                 
-                if filter = "category" or filter = "object" or filter = "morphism" then
+                if filter = "category" then
                     
                     return Concatenation( "Opposite( ", argument_name, " )" );
+                    
+                elif filter = "object" then
+                    
+                    return Concatenation( "ObjectDatum( cat, ", argument_name, " )" );
+                    
+                elif filter = "morphism" then
+                    
+                    return Concatenation( "MorphismDatum( cat, ", argument_name, " )" );
                     
                 elif filter = IsInt or filter = IsRingElement or filter = IsCyclotomic then
                     
                     return argument_name;
                     
-                elif filter = "list_of_objects" or filter = "list_of_morphisms" then
+                elif filter = "list_of_objects" then
                     
-                    return Concatenation( "List( ", argument_name, ", Opposite )" );
+                    return Concatenation( "List( ", argument_name, ", x -> ObjectDatum( cat, x ) )" );
+                    
+                elif filter = "list_of_morphisms" then
+                    
+                    return Concatenation( "List( ", argument_name, ", x -> MorphismDatum( cat, x ) )" );
                     
                 else
                     
@@ -312,7 +328,32 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                 
             elif return_type = "morphism" then
                 
-                return_statement := "return MorphismConstructor( cat, ObjectConstructor( cat, Range( result ) ), result, ObjectConstructor( cat, Source( result ) ) )";
+                return_statement := "return MorphismConstructor( cat, output_source_getter, result, output_range_getter )";
+                
+                if IsBound( current_entry.output_source_getter_string ) then
+                    
+                    output_source_getter_string := current_entry.output_source_getter_string;
+                    
+                else
+                    
+                    output_source_getter_string := "ObjectConstructor( cat, Range( result ) )";
+                    
+                fi;
+                
+                if IsBound( current_entry.output_range_getter_string ) then
+                    
+                    output_range_getter_string := current_entry.output_range_getter_string;
+                    
+                else
+                    
+                    output_range_getter_string := "ObjectConstructor( cat, Source( result ) )";
+                    
+                fi;
+                
+                return_statement := ReplacedStringViaRecord( return_statement, rec(
+                    output_source_getter := output_source_getter_string,
+                    output_range_getter := output_range_getter_string,
+                ) );
                 
             elif return_type = "object_or_fail" then
                 
@@ -393,6 +434,12 @@ InstallMethod( Opposite,
     
     opposite_category!.category_as_first_argument := true;
     
+    if IsBound( category!.supports_empty_limits ) then
+        
+        opposite_category!.supports_empty_limits := category!.supports_empty_limits;
+        
+    fi;
+    
     opposite_category!.compiler_hints := rec(
         category_attribute_names := [
             "Opposite",
@@ -437,6 +484,12 @@ InstallMethod( Opposite,
         
     end );
     
+    AddObjectDatum( opposite_category, function( cat, opposite_object )
+        
+        return Opposite( opposite_object );
+        
+    end );
+    
     AddMorphismConstructor( opposite_category, function( cat, source, morphism, range )
       local opposite_morphism;
         
@@ -477,6 +530,12 @@ InstallMethod( Opposite,
         SetOpposite( morphism, opposite_morphism );
         
         return opposite_morphism;
+        
+    end );
+    
+    AddMorphismDatum( opposite_category, function( cat, opposite_morphism )
+        
+        return Opposite( opposite_morphism );
         
     end );
     

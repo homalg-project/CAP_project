@@ -232,7 +232,13 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
                         RandomMorphismByList := "never",
                         RandomMorphismWithFixedSourceByList := "never",
                         RandomMorphismWithFixedRangeByList := "never",
-                        RandomMorphismWithFixedSourceAndRangeByList := "never" );
+                        RandomMorphismWithFixedSourceAndRangeByList := "never",
+                        # object and morphism data must never be cashed
+                        # because `IsEqualForCache*` might involve them,
+                        # possibly leading to an infinite recursion
+                        ObjectDatum := "never",
+                        MorphismDatum := "never",
+                      );
     
     obj!.redirects := rec( );
     

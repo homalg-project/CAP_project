@@ -2938,7 +2938,7 @@ HomomorphismStructureOnMorphismsWithGivenObjects := rec(
   return_type := "other_morphism",
   dual_operation := "HomomorphismStructureOnMorphismsWithGivenObjects",
   dual_preprocessor_func := function( cat, source, alpha, beta, range )
-    return [ Opposite( cat ), source, Opposite( beta ), Opposite( alpha ), range ];
+    return [ Opposite( cat ), source, MorphismDatum( cat, beta ), MorphismDatum( cat, alpha ), range ];
   end,
   dual_postprocessor_func := IdFunc
 ),
@@ -2961,7 +2961,7 @@ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism := rec
   return_type := "morphism",
   dual_operation := "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
   dual_preprocessor_func := function( cat, A, B, morphism )
-    return [ Opposite( cat ), Opposite( B ), Opposite( A ), morphism ];
+    return [ Opposite( cat ), ObjectDatum( cat, B ), ObjectDatum( cat, A ), morphism ];
   end
 ),
 
@@ -4107,7 +4107,8 @@ end );
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
     local recnames, current_recname, current_rec, io_type, number_of_arguments, flattened_filter_list, position, without_given_name, object_name, functorial,
-          installation_name, with_given_name, with_given_name_length, i, object_filter_list;
+          installation_name, with_given_name, with_given_name_length, i, object_filter_list,
+          output_list, input_list, argument_names, return_list, current_output, input_position, list_position;
     
     recnames := RecNames( record );
     
@@ -4496,7 +4497,101 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             fi;
             
         fi;
-
+        
+        if IsBound( current_rec.io_type ) and current_rec.return_type = "morphism" and not IsString( current_rec.io_type[ 2 ] ) and IsList( current_rec.io_type[ 2 ] ) then
+            
+            output_list := current_rec.io_type[ 2 ];
+            
+            if not Length( output_list ) = 2 then
+                
+                Error( "the output type is not a list of length 2" );
+                
+            fi;
+            
+            output_list := List( output_list, i -> SplitString( i, "_" ) );
+            
+            input_list := current_rec.io_type[ 1 ];
+            
+            argument_names := input_list;
+            
+            return_list := [ ];
+            
+            for i in [ 1 .. Length( output_list ) ] do
+                
+                current_output := output_list[ i ];
+                
+                input_position := Position( input_list, current_output[ 1 ] );
+                
+                if input_position = fail then
+                    
+                    return_list[ i ] := fail;
+                    
+                    continue;
+                    
+                fi;
+                
+                if Length( current_output ) = 1 then
+                    
+                   return_list[ i ] := argument_names[ input_position ];
+                   
+                elif Length( current_output ) = 2 then
+                    
+                    if LowercaseString( current_output[ 2 ] ) = "source" then
+                        return_list[ i ] := Concatenation( "Source( ", argument_names[ input_position ], " )" );
+                    elif LowercaseString( current_output[ 2 ] ) = "range" then
+                        return_list[ i ] := Concatenation( "Range( ", argument_names[ input_position ], " )" );
+                    elif Position( input_list, current_output[ 2 ] ) <> fail then
+                        return_list[ i ] := Concatenation( argument_names[ input_position ], "[", argument_names[ Position( input_list, current_output[ 2 ] ) ], "]" );
+                    else
+                        Error( "wrong input type" );
+                    fi;
+                    
+                elif Length( current_output ) = 3 then
+                    
+                    if ForAll( current_output[ 2 ], i -> i in "0123456789" ) then
+                        list_position := String( Int( current_output[ 2 ] ) );
+                    else
+                        list_position := Position( input_list, current_output[ 2 ] );
+                        if list_position = fail then
+                            Error( "unable to find ", current_output[ 2 ], " in input_list" );
+                        fi;
+                        list_position := argument_names[ list_position ];
+                    fi;
+                    
+                    if list_position = fail then
+                        Error( "list index variable not found" );
+                    fi;
+                    
+                    if LowercaseString( current_output[ 3 ] ) = "source" then
+                        return_list[ i ] := Concatenation( "Source( ", argument_names[ input_position ], "[", list_position, "] )" );
+                    elif LowercaseString( current_output[ 3 ] ) = "range" then
+                        return_list[ i ] := Concatenation( "Range( ", argument_names[ input_position ], "[", list_position, "] )" );
+                    else
+                        Error( "wrong output syntax" );
+                    fi;
+                    
+                else
+                    
+                    Error( "wrong entry length" );
+                    
+                fi;
+                
+            od;
+            
+            if IsBound( return_list[1] ) and return_list[1] <> fail then
+                
+                current_rec.output_source_getter_string := return_list[1];
+                
+            fi;
+            
+            if IsBound( return_list[2] ) and return_list[2] <> fail then
+                
+                current_rec.output_range_getter_string := return_list[2];
+                
+            fi;
+            
+        fi;
+        
     od;
     
 end );
