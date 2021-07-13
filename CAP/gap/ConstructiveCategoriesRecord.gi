@@ -8,6 +8,13 @@ InstallValue( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD, rec(
 EveryCategory := [
   "PreCompose", "IdentityMorphism", "IsEqualForObjects", "IsEqualForMorphisms", "IsCongruentForMorphisms" ],
 
+IsEquippedWithHomomorphismStructure := Concatenation( [
+   "DistinguishedObjectOfHomomorphismStructure",
+   "HomomorphismStructureOnObjects",
+   "HomomorphismStructureOnMorphismsWithGivenObjects",
+   "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
+   "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ], ~.EveryCategory ),
+
 IsEnrichedOverCommutativeRegularSemigroup := Concatenation(
   [ "AdditionForMorphisms" ], ~.EveryCategory ),
 

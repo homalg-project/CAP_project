@@ -25,6 +25,9 @@ ReadPackage( "MonoidalCategories", "gap/SymmetricClosedMonoidalCategoriesDoc.gd"
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategoriesDoc.gd" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategories.gd" );
 
+## Homomorphism Structure from Closed Structure
+ReadPackage( "MonoidalCategories", "gap/HomomorphismStructure.gd" );
+
 ## Coclosed Monoidal
 ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesDoc.gd" );
 ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategories.gd" );
