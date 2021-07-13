@@ -175,14 +175,17 @@
   
   [1X2.2-1 ENHANCED_SYNTAX_TREE[101X
   
-  [33X[1;0Y[29X[2XENHANCED_SYNTAX_TREE[102X( [3Xfunc[103X[, [3Xglobalize_hvars[103X] ) [32X function[133X
+  [33X[1;0Y[29X[2XENHANCED_SYNTAX_TREE[102X( [3Xfunc[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YReturns  an  enhanced syntax tree of the plain function [3Xfunc[103X (see above). If
-  the  second  argument is set to [10Xtrue[110X, higher variables pointing to variables
-  in  the  environment of [3Xfunc[103X are assigned to global variables and referenced
-  via  these  global  variables  in the tree. Otherwise, an error is thrown if
-  such higher variables exist.[133X
+  the  option  [10Xglobalize_hvars[110X  is  set  to [10Xtrue[110X, higher variables pointing to
+  variables  in  the  environment of [3Xfunc[103X are assigned to global variables and
+  referenced  via  these  global variables in the tree. Otherwise, an error is
+  thrown  if  such  higher  variables  exist. If a list is given as the option
+  [10Xgiven_arguments[110X,  references  to  the  [10Xi[110X-th  argument  of  the  function are
+  replaced   by   references   to   a   global  variable  with  the  value  of
+  [10Xgiven_arguments[i][110X (only in case this position is bound).[133X
   
   [1X2.2-2 ENHANCED_SYNTAX_TREE_CODE[101X
   
@@ -552,9 +555,16 @@
   [30X    [33X[0;6YOperations  of  CAP  categories  are  resolved  by  taking  one of the
         functions added to the category via an [10XAdd[110X function.[133X
   
+  [30X    [33X[0;6YOperations       announced       to       the       compiler       via
+        [10XInstallMethodForCompilerForCAP[110X  or [10XInstallOtherMethodForCompilerForCAP[110X
+        (see  the  documentation  of  CAP)  are  resolved  via  the  number of
+        arguments.[133X
+  
   [30X    [33X[0;6YOther operations are resolved by considering applicable methods of the
-        operation with regard to arguments infered from [3Xjit_args[103X. Only methods
-        annotated with the pragma CAP_JIT_RESOLVE_FUNCTION are resolved.[133X
+        operation  with  regard  to arguments infered from [3Xjit_args[103X, except if
+        the  operation  is  listed  in [10XCAP_JIT_NON_RESOLVABLE_OPERATION_NAMES[110X.
+        Only  methods  annotated  with the pragma [10XCAP_JIT_RESOLVE_FUNCTION[110X are
+        resolved.[133X
   
   [33X[0;0YIf  the  arguments  of  the  operation  cannot be infered from [3Xjit_args[103X, the
   operation is not resolved.[133X

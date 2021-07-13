@@ -119,13 +119,50 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ QQ ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "MatrixCategoryPrecompiled";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "LinearAlgebraForCAP";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := [</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "AdditionForMorphisms",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "PreCompose",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "KernelEmbedding",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Intersection(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ListInstalledOperationsOfCategory( category_constructor( QQ ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    CAP_JIT_INTERNAL_SAFE_OPERATIONS</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># exclude some operations which currently do not yield nice results</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">operations := Filtered( operations,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                        o -&gt; PositionSublist( o, "FiberProduct" ) = fail );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Filtered( operations,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                        o -&gt; PositionSublist( o, "Pushout" ) = fail );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Filtered( operations,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                        o -&gt; PositionSublist( o, "Image" ) = fail );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Filtered( operations,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                        o -&gt; PositionSublist( o, "Coimage" ) = fail );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Filtered( operations,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                        o -&gt; PositionSublist( o, "DirectProduct" ) = fail );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Filtered( operations,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                        o -&gt; PositionSublist( o, "Coproduct" ) = fail );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Filtered( operations,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                        o -&gt; PositionSublist( o, "TerminalObject" ) = fail );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Filtered( operations,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                        o -&gt; PositionSublist( o, "InitialObject" ) = fail );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Difference( operations, [ "DirectSumCodiagonalDifference" ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Difference( operations, [ "DirectSumDiagonalDifference" ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Difference( operations, [ "HomologyObject" ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Difference( operations, [ "LiftOrFail", "ColiftOrFail" ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># IsEqualForMorphismsOnMor causes problems in GAP 4.11 (see GAP issue #4449)</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">operations := Difference( operations, [ "IsEqualForMorphismsOnMor" ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Difference( operations, [ "IsIdenticalToIdentityMorphism" ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Difference( operations, [ "IsIdenticalToZeroMorphism" ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># IsZeroForMorphisms tries to resolve IsZero and IsZero has a new</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># installation in GAP 4.12, so this causes slight differences in the output</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">operations := Difference( operations, [ "IsZeroForMorphisms" ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Add( operations, "DirectSumFunctorialWithGivenDirectSums" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">filepath := "precompiled_categories/MatrixCategoryPrecompiled.gi";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">old_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># set CAP_JIT_INTERNAL_FUNCTION_ID and</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># to known values for a stable output</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_FUNCTION_ID &lt; 10000;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_FUNCTION_ID := 10000;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER &lt; 10000;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER := 10000;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategory(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
@@ -146,25 +183,36 @@ Category of matrices over Q
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    #% CAP_JIT_DROP_NEXT_STATEMENT</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Display( 1 ); return 1; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, [ ] ) );</span>
+function ( )
+    return 1;
+end
+</pre></div>
+
+
+<div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows := MatrixCategory( Q );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MyKernelLift := function( cat, mor, test_morphism )</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MyKernelLift := function( cat, mor, test_mor )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return Lift( cat, test_morphism, KernelEmbedding( cat, mor ) ); end;;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return LiftOrFail( cat, test_mor, KernelEmbedding( cat, mor ) ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := VectorSpaceObject( 2, Q );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := CapJitCompiledFunction(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    MyKernelLift,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ rows, ZeroMorphism( V, V ), IdentityMorphism( V ) ]</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
-function ( cat, mor, test_morphism )
+function ( cat, mor, test_mor )
     local cap_jit_morphism_attribute;
     cap_jit_morphism_attribute 
-     := RightDivide( UnderlyingMatrix( test_morphism ), 
+     := RightDivide( UnderlyingMatrix( test_mor ), 
        SyzygiesOfRows( UnderlyingMatrix( mor ) ) );
     return ObjectifyWithAttributes( rec(
            ), MorphismType( cat ), CapCategory, cat, Source, 
-       Source( test_morphism ), Range, ObjectifyWithAttributes( rec(
+       Source( test_mor ), Range, ObjectifyWithAttributes( rec(
              ), ObjectType( cat ), CapCategory, cat, Dimension, 
          NrColumns( cap_jit_morphism_attribute ), UnderlyingFieldForHomalg, 
          UnderlyingRing( cat ) ), UnderlyingFieldForHomalg, 
@@ -320,6 +368,194 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
 function ( G )
     return 2;
+end
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">GUARD_STRING := "\"THIS_STRING_SHOULD_NEVER_APPEAR_IN_PRODUCTION_CODE\"";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># add a nonsense template</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">logic_template := rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    variable_names := [ "variable" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    src_template := "x -&gt; x + variable + x - x",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    dst_template := Concatenation( "x -&gt; x + variable + ", GUARD_STRING ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    returns_value := true,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitAddLogicTemplate( logic_template );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( a )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return b -&gt; b + ( 2 * b + a ) + b - b; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, [ ] ) );</span>
+function ( a )
+    return function ( b )
+          return b + (2 * b + a) 
+            + "THIS_STRING_SHOULD_NEVER_APPEAR_IN_PRODUCTION_CODE";
+      end;
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># remove the last template again and make sure it is</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># the one we have added above</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">MakeReadWriteGlobal( "CAP_JIT_LOGIC_TEMPLATES" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Remove( CAP_JIT_LOGIC_TEMPLATES ) = logic_template;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MakeReadOnlyGlobal( "CAP_JIT_LOGIC_TEMPLATES" );</span>
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    field -&gt; CategoryOfColumns( field );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ QQ ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "CategoryOfColumnsOfFieldPrecompiled";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "FreydCategoriesForCAP";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Intersection(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ListPrimitivelyInstalledOperationsOfCategory( CategoryOfColumns( QQ ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    CAP_JIT_INTERNAL_SAFE_OPERATIONS</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Filtered(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    o -&gt; PositionSublist( o, "HomomorphismStructure" ) = fail</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">filepath :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "precompiled_categories/CategoryOfColumnsOfFieldPrecompiled.gi";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">old_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># set CAP_JIT_INTERNAL_FUNCTION_ID and</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># to known values for a stable output</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_FUNCTION_ID &lt; 20000;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_FUNCTION_ID := 20000;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER &lt; 20000;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER := 20000;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategory(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name :</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations := operations</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">new_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">old_file_content = new_file_content;</span>
+true
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    field -&gt; CategoryOfColumnsAsOppositeOfCategoryOfRows( field );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ QQ ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "OppositeOfCategoryOfRowsOfFieldPrecompiled";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "FreydCategoriesForCAP";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Intersection(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ListPrimitivelyInstalledOperationsOfCategory( CategoryOfColumns( QQ ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    CAP_JIT_INTERNAL_SAFE_OPERATIONS</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Filtered(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    o -&gt; PositionSublist( o, "HomomorphismStructure" ) = fail</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">filepath :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "precompiled_categories/OppositeOfCategoryOfRowsOfFieldPrecompiled.gi";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">old_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># set CAP_JIT_INTERNAL_FUNCTION_ID and</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># to known values for a stable output</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_FUNCTION_ID &lt; 30000;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_FUNCTION_ID := 30000;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER &lt; 30000;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER := 30000;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategory(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name :</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations := operations</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">new_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">old_file_content = new_file_content;</span>
+true
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># be careful not to use `MatrixCategory` because attributes are not supported</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">category_constructor := function( field )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return Opposite( MATRIX_CATEGORY(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        field :</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        FinalizeCategory := true,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        enable_compilation := false</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ) ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ QQ ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "OppositeOfMatrixCategoryPrecompiled";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "LinearAlgebraForCAP";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Intersection(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ListPrimitivelyInstalledOperationsOfCategory( MatrixCategory( QQ ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    CAP_JIT_INTERNAL_SAFE_OPERATIONS</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># The output for Lift/ColiftOrFail differs between GAP 4.11 and GAP 4.12, see</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># https://github.com/gap-system/gap/issues/4523</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">operations := Difference( operations, [ "LiftOrFail", "ColiftOrFail" ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">filepath := "precompiled_categories/OppositeOfMatrixCategoryPrecompiled.gi";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">old_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># set CAP_JIT_INTERNAL_FUNCTION_ID and</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># to known values for a stable output</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_FUNCTION_ID &lt; 40000;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_FUNCTION_ID := 40000;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER &lt; 40000;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER := 40000;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategory(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name :</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations := operations</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">new_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">old_file_content = new_file_content;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "LinearAlgebraForCAP",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "gap/precompiled_categories/OppositeOfMatrixCategoryPrecompiled.gi"</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">OppositeOfMatrixCategoryPrecompiled( QQ );</span>
+Opposite of Category of matrices over Q
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MATRIX_CATEGORY( Q : enable_compilation := true );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( cat, x )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    #% CAP_JIT_RESOLVE_FUNCTION</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return ZeroObject( cat ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># make sure that ZeroObject( cat ) is not resolved to a global variable</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( { cat, x } -&gt; func( cat, x ), [ vec ] ) );</span>
+function ( cat, x )
+    return ObjectifyWithAttributes( rec(
+           ), ObjectType( cat ), CapCategory, cat, Dimension, 0, 
+       UnderlyingFieldForHomalg, UnderlyingRing( cat ) );
+end
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  local x; x := { args... } -&gt; 1; return x( ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, [ ] ) );</span>
+function ( )
+    return 1;
 end
 </pre></div>
 

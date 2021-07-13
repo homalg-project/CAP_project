@@ -226,10 +226,10 @@
 
 <h5>2.2-1 ENHANCED_SYNTAX_TREE</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ENHANCED_SYNTAX_TREE</code>( <var class="Arg">func</var>[, <var class="Arg">globalize_hvars</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ENHANCED_SYNTAX_TREE</code>( <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
 
-<p>Returns an enhanced syntax tree of the plain function <var class="Arg">func</var> (see above). If the second argument is set to <code class="code">true</code>, higher variables pointing to variables in the environment of <var class="Arg">func</var> are assigned to global variables and referenced via these global variables in the tree. Otherwise, an error is thrown if such higher variables exist.</p>
+<p>Returns an enhanced syntax tree of the plain function <var class="Arg">func</var> (see above). If the option <code class="code">globalize_hvars</code> is set to <code class="code">true</code>, higher variables pointing to variables in the environment of <var class="Arg">func</var> are assigned to global variables and referenced via these global variables in the tree. Otherwise, an error is thrown if such higher variables exist. If a list is given as the option <code class="code">given_arguments</code>, references to the <code class="code">i</code>-th argument of the function are replaced by references to a global variable with the value of <code class="code">given_arguments[i]</code> (only in case this position is bound).</p>
 
 <p><a id="X7803FE057B30BAAF" name="X7803FE057B30BAAF"></a></p>
 
@@ -576,7 +576,10 @@
 <li><p>Operations of CAP categories are resolved by taking one of the functions added to the category via an <code class="code">Add</code> function.</p>
 
 </li>
-<li><p>Other operations are resolved by considering applicable methods of the operation with regard to arguments infered from <var class="Arg">jit_args</var>. Only methods annotated with the pragma CAP_JIT_RESOLVE_FUNCTION are resolved.</p>
+<li><p>Operations announced to the compiler via <code class="code">InstallMethodForCompilerForCAP</code> or <code class="code">InstallOtherMethodForCompilerForCAP</code> (see the documentation of CAP) are resolved via the number of arguments.</p>
+
+</li>
+<li><p>Other operations are resolved by considering applicable methods of the operation with regard to arguments infered from <var class="Arg">jit_args</var>, except if the operation is listed in <code class="code">CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES</code>. Only methods annotated with the pragma <code class="code">CAP_JIT_RESOLVE_FUNCTION</code> are resolved.</p>
 
 </li>
 </ul>

@@ -64,13 +64,21 @@
   [30X    [33X[0;6YAn operation is resolved by executing the function to be compiled with
         the  JIT  arguments to determine the arguments of the operation. These
         arguments  are  used  to  call [10XApplicableMethod[110X, and methods annotated
-        with the pragma [10XCAP_JIT_RESOLVE_FUNCTION[110X are resolved.[133X
+        with  the  pragma  [10XCAP_JIT_RESOLVE_FUNCTION[110X are resolved. This step is
+        skipped       if       the       operation      is      listed      in
+        [10XCAP_JIT_NON_RESOLVABLE_OPERATION_NAMES[110X.[133X
   
   [30X    [33X[0;6YCAP    operations   are   handled   separately:   instead   of   using
         [10XApplicableMethod[110X,   the  functions  added  to  the  category  via  [10XAdd[110X
         functions  are  considered, and those do not have to be annotated with
         [10XCAP_JIT_RESOLVE_FUNCTION[110X.  In particular, caching, pre functions, etc.
         are bypassed.[133X
+  
+  [30X    [33X[0;6YYou     can     also     use     [10XInstallMethodForCompilerForCAP[110X     or
+        [10XInstallOtherMethodForCompilerForCAP[110X  (see the documentation of CAP) to
+        make methods known to the compiler. These methods are resolved via the
+        number   of   arguments   and   do  not  have  to  be  annotated  with
+        [10XCAP_JIT_RESOLVE_FUNCTION[110X.[133X
   
   [30X    [33X[0;6YReferences  to  global  functions  are  resolved  if  the  function is
         annotated with the pragma [10XCAP_JIT_RESOLVE_FUNCTION[110X.[133X
@@ -83,6 +91,9 @@
         code  of the form [10Xif condition then return fail; fi;[110X (or similar) from
         the  resolved  function.  The pragma has to be placed right before the
         variable assignment or the return statement.[133X
+  
+  [30X    [33X[0;6YIf  the  pragma  [10XCAP_JIT_DROP_NEXT_STATEMENT[110X  occurs  in  the resolved
+        function, the statement following the pragma is removed.[133X
   
   [30X    [33X[0;6YIf a KeyDependentOperation is detected, the corresponding [10XOp[110X method is
         resolved.[133X
@@ -149,7 +160,7 @@
   Compiler    hints    are    attached    to    the    category    by   making
   [10Xcategory!.compiler_hints[110X a record with one or more of the following keys:[133X
   
-  [30X    [33X[0;6Y[10Xcategory_attributes_names[110X:  a  list  of  names  of  attributes  of the
+  [30X    [33X[0;6Y[10Xcategory_attribute_names[110X:  a  list  of  names  of  attributes  of  the
         category. If a global variable in the compiled code has the same value
         as one of the given attributes of the category, the global variable is
         replaced  by the attribute getter applied to the category. Background:
@@ -218,7 +229,9 @@
   [30X    [33X[0;6Y[3Xcategory_constructor[103X  must  support  the  options [10XFinalizeCategory[110X and
         [10Xenable_compilation[110X.  WARNING: When using attributes you might run into
         errors  because the options are only respected the first time you call
-        the attribute getter.[133X
+        the  attribute getter. To catch such a situation, [3Xcategory_constructor[103X
+        is  applied  to [3Xgiven_arguments[103X twice and if the results are identical
+        ([10XIsIdenticalObj[110X) an error is raised.[133X
   
   [30X    [33X[0;6YThe  compiler  has  to  create  a valid input for the operations which
         should   be   compiled.   Currently,   this  leads  to  the  following
@@ -252,15 +265,22 @@
   arguments  [10Xjit_args[110X.  [10Xjit_args[110X should represent a "generic" call, i.e., they
   should  not  run  into edge cases which do not happen with a "generic" call.
   Still,  the  execution  using [10Xjit_args[110X should be fast to improve compilation
-  times.[133X
+  times.  If  [10Xfunc[110X  gets  a CAP category as the first argument and you want to
+  compile  [10Xfunc[110X  ahead  of time, you can use the CAP category as the first and
+  only  entry  of  [10Xjit_args[110X. In this case, the CAP category is used to get the
+  type information required to resolve CAP operations.[133X
   
   [1X1.9-1 CapJitCompiledFunction[101X
   
   [33X[1;0Y[29X[2XCapJitCompiledFunction[102X( [3Xfunc[103X, [3Xjit_args[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya function[133X
   
-  [33X[0;0YReturns  a compiled version of the function [3Xfunc[103X. The arguments [3Xjit_args[103X are
-  used to infer the types of variables.[133X
+  [33X[0;0YReturns  a  compiled  version  of  the  function [3Xfunc[103X. The list of arguments
+  [3Xjit_args[103X  is  used  to  infer the types of variables. If [3Xjit_args[103X is shorter
+  than  the  number  of  arguments  accepted  by [3Xfunc[103X, all steps which require
+  knowledge  about  the  types of variables are skipped. If the first entry of
+  [3Xjit_args[103X  is  a  CAP  category,  this  category  is  used  to  get  the type
+  information required to resolve CAP operations.[133X
   
   
   [1X1.10 [33X[0;0YFAQ[133X[101X
@@ -277,9 +297,12 @@
   
   [30X    [33X[0;6YQ: Why is my operation not resolved?[133X
   
-  [33X[0;0YA:  The  compiler  must  be  able  to  get  the arguments of the call of the
-  operation  from  the  JIT  arguments.  Then  the rules in the description of
-  [2XCapJitResolvedOperations[102X ([14X2.5-13[114X) apply.[133X
+  [33X[0;0YA:  The operation might be listed in [10XCAP_JIT_NON_RESOLVABLE_OPERATION_NAMES[110X.
+  If  the  operation  is  not  a  CAP  operation  and  if there are no methods
+  installed   for   the   operation   via   [10XInstallMethodForCompilerForCAP[110X  or
+  [10XInstallOtherMethodForCompilerForCAP[110X,  the  compiler  must be able to get the
+  arguments  of  the  call  of  the operation from the JIT arguments. Then the
+  rules in the description of [2XCapJitResolvedOperations[102X ([14X2.5-13[114X) apply.[133X
   
   [30X    [33X[0;6YQ: Why do I get the error "cannot find iteration key"?[133X
   

@@ -120,16 +120,22 @@
 
 
 <ul>
-<li><p>An operation is resolved by executing the function to be compiled with the JIT arguments to determine the arguments of the operation. These arguments are used to call <code class="code">ApplicableMethod</code>, and methods annotated with the pragma <code class="code">CAP_JIT_RESOLVE_FUNCTION</code> are resolved.</p>
+<li><p>An operation is resolved by executing the function to be compiled with the JIT arguments to determine the arguments of the operation. These arguments are used to call <code class="code">ApplicableMethod</code>, and methods annotated with the pragma <code class="code">CAP_JIT_RESOLVE_FUNCTION</code> are resolved. This step is skipped if the operation is listed in <code class="code">CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES</code>.</p>
 
 </li>
 <li><p>CAP operations are handled separately: instead of using <code class="code">ApplicableMethod</code>, the functions added to the category via <code class="code">Add</code> functions are considered, and those do not have to be annotated with <code class="code">CAP_JIT_RESOLVE_FUNCTION</code>. In particular, caching, pre functions, etc. are bypassed.</p>
+
+</li>
+<li><p>You can also use <code class="code">InstallMethodForCompilerForCAP</code> or <code class="code">InstallOtherMethodForCompilerForCAP</code> (see the documentation of CAP) to make methods known to the compiler. These methods are resolved via the number of arguments and do not have to be annotated with <code class="code">CAP_JIT_RESOLVE_FUNCTION</code>.</p>
 
 </li>
 <li><p>References to global functions are resolved if the function is annotated with the pragma <code class="code">CAP_JIT_RESOLVE_FUNCTION</code>.</p>
 
 </li>
 <li><p>If a call of a global function or operation (occuring as the right hand side of a variable assignment or as the return value of a function) is annotated with the pragma <code class="code">CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL</code>, the compiler assumes that the resolved function never returns <code class="code">fail</code> and thus simply removes any code of the form <code class="code">if condition then return fail; fi;</code> (or similar) from the resolved function. The pragma has to be placed right before the variable assignment or the return statement.</p>
+
+</li>
+<li><p>If the pragma <code class="code">CAP_JIT_DROP_NEXT_STATEMENT</code> occurs in the resolved function, the statement following the pragma is removed.</p>
 
 </li>
 <li><p>If a KeyDependentOperation is detected, the corresponding <code class="code">Op</code> method is resolved.</p>
@@ -178,7 +184,7 @@
 
 
 <ul>
-<li><p><code class="code">category_attributes_names</code>: a list of names of attributes of the category. If a global variable in the compiled code has the same value as one of the given attributes of the category, the global variable is replaced by the attribute getter applied to the category. Background: During the compilation, the compiler resolves attributes occuring in the code and stores them in global variables called <code class="code">CAP_JIT_INTERNAL_GLOBAL_VARIABLE_n</code> (for integers <code class="code">n</code> starting from 1). If these variables cannot be replaced, the resulting code is only valid in the current session.</p>
+<li><p><code class="code">category_attribute_names</code>: a list of names of attributes of the category. If a global variable in the compiled code has the same value as one of the given attributes of the category, the global variable is replaced by the attribute getter applied to the category. Background: During the compilation, the compiler resolves attributes occuring in the code and stores them in global variables called <code class="code">CAP_JIT_INTERNAL_GLOBAL_VARIABLE_n</code> (for integers <code class="code">n</code> starting from 1). If these variables cannot be replaced, the resulting code is only valid in the current session.</p>
 
 </li>
 <li><p><code class="code">source_and_range_attributes_from_morphism_attribute</code>: a record with keys <code class="code">object_attribute_name</code>, <code class="code">morphism_attribute_name</code>, <code class="code">source_attribute_getter_name</code>, and <code class="code">range_attribute_getter_name</code>. Replaces the attribute <code class="code">object_attribute_name</code> of the source (resp. range) of a morphism by <code class="code">source_attribute_getter_name</code> (resp. <code class="code">range_attribute_getter_name</code>) applied to the attribute <code class="code">morphism_attribute_name</code> of the morphism. Can be used if objects and morphisms can be easily created from the morphism datum anyway. Note: Some simple expressions like integers are NOT replaced.</p>
@@ -227,7 +233,7 @@
 <li><p><var class="Arg">category_constructor</var> must be a regular function, i.e. not an operation or a kernel function.</p>
 
 </li>
-<li><p><var class="Arg">category_constructor</var> must support the options <code class="code">FinalizeCategory</code> and <code class="code">enable_compilation</code>. WARNING: When using attributes you might run into errors because the options are only respected the first time you call the attribute getter.</p>
+<li><p><var class="Arg">category_constructor</var> must support the options <code class="code">FinalizeCategory</code> and <code class="code">enable_compilation</code>. WARNING: When using attributes you might run into errors because the options are only respected the first time you call the attribute getter. To catch such a situation, <var class="Arg">category_constructor</var> is applied to <var class="Arg">given_arguments</var> twice and if the results are identical (<code class="code">IsIdenticalObj</code>) an error is raised.</p>
 
 </li>
 <li><p>The compiler has to create a valid input for the operations which should be compiled. Currently, this leads to the following restrictions (detailed errors are thrown if any of the restrictions is not met):</p>
@@ -263,7 +269,7 @@
 
 <h4>1.9 <span class="Heading">Compiling a function manually</span></h4>
 
-<p>Use <code class="func">CapJitCompiledFunction</code> (<a href="chap1.html#X86F1D06C81670DC8"><span class="RefLink">1.9-1</span></a>) to compile a function <code class="code">func</code> with JIT arguments <code class="code">jit_args</code>. <code class="code">jit_args</code> should represent a "generic" call, i.e., they should not run into edge cases which do not happen with a "generic" call. Still, the execution using <code class="code">jit_args</code> should be fast to improve compilation times.</p>
+<p>Use <code class="func">CapJitCompiledFunction</code> (<a href="chap1.html#X86F1D06C81670DC8"><span class="RefLink">1.9-1</span></a>) to compile a function <code class="code">func</code> with JIT arguments <code class="code">jit_args</code>. <code class="code">jit_args</code> should represent a "generic" call, i.e., they should not run into edge cases which do not happen with a "generic" call. Still, the execution using <code class="code">jit_args</code> should be fast to improve compilation times. If <code class="code">func</code> gets a CAP category as the first argument and you want to compile <code class="code">func</code> ahead of time, you can use the CAP category as the first and only entry of <code class="code">jit_args</code>. In this case, the CAP category is used to get the type information required to resolve CAP operations.</p>
 
 <p><a id="X86F1D06C81670DC8" name="X86F1D06C81670DC8"></a></p>
 
@@ -272,7 +278,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitCompiledFunction</code>( <var class="Arg">func</var>, <var class="Arg">jit_args</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a function</p>
 
-<p>Returns a compiled version of the function <var class="Arg">func</var>. The arguments <var class="Arg">jit_args</var> are used to infer the types of variables.</p>
+<p>Returns a compiled version of the function <var class="Arg">func</var>. The list of arguments <var class="Arg">jit_args</var> is used to infer the types of variables. If <var class="Arg">jit_args</var> is shorter than the number of arguments accepted by <var class="Arg">func</var>, all steps which require knowledge about the types of variables are skipped. If the first entry of <var class="Arg">jit_args</var> is a CAP category, this category is used to get the type information required to resolve CAP operations.</p>
 
 <p><a id="X780099B481AB3AB7" name="X780099B481AB3AB7"></a></p>
 
@@ -292,7 +298,7 @@
 
 </li>
 </ul>
-<p>A: The compiler must be able to get the arguments of the call of the operation from the JIT arguments. Then the rules in the description of <code class="func">CapJitResolvedOperations</code> (<a href="chap2.html#X7D12C378812745DA"><span class="RefLink">2.5-13</span></a>) apply.</p>
+<p>A: The operation might be listed in <code class="code">CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES</code>. If the operation is not a CAP operation and if there are no methods installed for the operation via <code class="code">InstallMethodForCompilerForCAP</code> or <code class="code">InstallOtherMethodForCompilerForCAP</code>, the compiler must be able to get the arguments of the call of the operation from the JIT arguments. Then the rules in the description of <code class="func">CapJitResolvedOperations</code> (<a href="chap2.html#X7D12C378812745DA"><span class="RefLink">2.5-13</span></a>) apply.</p>
 
 
 <ul>

@@ -85,13 +85,50 @@
     [4X[25Xgap>[125X [27Xgiven_arguments := [ QQ ];;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_category_name := "MatrixCategoryPrecompiled";;[127X[104X
     [4X[25Xgap>[125X [27Xpackage_name := "LinearAlgebraForCAP";;[127X[104X
-    [4X[25Xgap>[125X [27Xoperations := [[127X[104X
-    [4X[25X>[125X [27X    "AdditionForMorphisms",[127X[104X
-    [4X[25X>[125X [27X    "PreCompose",[127X[104X
-    [4X[25X>[125X [27X    "KernelEmbedding",[127X[104X
-    [4X[25X>[125X [27X];;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations := Intersection([127X[104X
+    [4X[25X>[125X [27X    ListInstalledOperationsOfCategory( category_constructor( QQ ) ),[127X[104X
+    [4X[25X>[125X [27X    CAP_JIT_INTERNAL_SAFE_OPERATIONS[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27X# exclude some operations which currently do not yield nice results[127X[104X
+    [4X[25X>[125X [27Xoperations := Filtered( operations,[127X[104X
+    [4X[25X>[125X [27X                        o -> PositionSublist( o, "FiberProduct" ) = fail );;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations := Filtered( operations,[127X[104X
+    [4X[25X>[125X [27X                        o -> PositionSublist( o, "Pushout" ) = fail );;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations := Filtered( operations,[127X[104X
+    [4X[25X>[125X [27X                        o -> PositionSublist( o, "Image" ) = fail );;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations := Filtered( operations,[127X[104X
+    [4X[25X>[125X [27X                        o -> PositionSublist( o, "Coimage" ) = fail );;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations := Filtered( operations,[127X[104X
+    [4X[25X>[125X [27X                        o -> PositionSublist( o, "DirectProduct" ) = fail );;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations := Filtered( operations,[127X[104X
+    [4X[25X>[125X [27X                        o -> PositionSublist( o, "Coproduct" ) = fail );;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations := Filtered( operations,[127X[104X
+    [4X[25X>[125X [27X                        o -> PositionSublist( o, "TerminalObject" ) = fail );;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations := Filtered( operations,[127X[104X
+    [4X[25X>[125X [27X                        o -> PositionSublist( o, "InitialObject" ) = fail );;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations := Difference( operations, [ "DirectSumCodiagonalDifference" ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations := Difference( operations, [ "DirectSumDiagonalDifference" ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations := Difference( operations, [ "HomologyObject" ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations := Difference( operations, [ "LiftOrFail", "ColiftOrFail" ] );;[127X[104X
+    [4X[25Xgap>[125X [27X# IsEqualForMorphismsOnMor causes problems in GAP 4.11 (see GAP issue #4449)[127X[104X
+    [4X[25X>[125X [27Xoperations := Difference( operations, [ "IsEqualForMorphismsOnMor" ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations := Difference( operations, [ "IsIdenticalToIdentityMorphism" ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations := Difference( operations, [ "IsIdenticalToZeroMorphism" ] );;[127X[104X
+    [4X[25Xgap>[125X [27X# IsZeroForMorphisms tries to resolve IsZero and IsZero has a new[127X[104X
+    [4X[25X>[125X [27X# installation in GAP 4.12, so this causes slight differences in the output[127X[104X
+    [4X[25X>[125X [27Xoperations := Difference( operations, [ "IsZeroForMorphisms" ] );;[127X[104X
+    [4X[25Xgap>[125X [27XAdd( operations, "DirectSumFunctorialWithGivenDirectSums" );[127X[104X
     [4X[25Xgap>[125X [27Xfilepath := "precompiled_categories/MatrixCategoryPrecompiled.gi";;[127X[104X
     [4X[25Xgap>[125X [27Xold_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;[127X[104X
+    [4X[25Xgap>[125X [27X# set CAP_JIT_INTERNAL_FUNCTION_ID and[127X[104X
+    [4X[25X>[125X [27X# CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER[127X[104X
+    [4X[25X>[125X [27X# to known values for a stable output[127X[104X
+    [4X[25X>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID < 10000;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID := 10000;;[127X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER < 10000;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER := 10000;;[127X[104X
     [4X[25Xgap>[125X [27XCapJitPrecompileCategory([127X[104X
     [4X[25X>[125X [27X    category_constructor,[127X[104X
     [4X[25X>[125X [27X    given_arguments,[127X[104X
@@ -110,25 +147,35 @@
   [1X3.2 [33X[0;0YTests[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xfunc := function ( )[127X[104X
+    [4X[25X>[125X [27X    #% CAP_JIT_DROP_NEXT_STATEMENT[127X[104X
+    [4X[25X>[125X [27X    Display( 1 ); return 1; end;;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, [ ] ) );[127X[104X
+    [4X[28Xfunction ( )[128X[104X
+    [4X[28X    return 1;[128X[104X
+    [4X[28Xend[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
     [4X[25Xgap>[125X [27Xrows := MatrixCategory( Q );;[127X[104X
-    [4X[25Xgap>[125X [27XMyKernelLift := function( cat, mor, test_morphism )[127X[104X
+    [4X[25Xgap>[125X [27XMyKernelLift := function( cat, mor, test_mor )[127X[104X
     [4X[25X>[125X [27X    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL[127X[104X
-    [4X[25X>[125X [27X    return Lift( cat, test_morphism, KernelEmbedding( cat, mor ) ); end;;[127X[104X
+    [4X[25X>[125X [27X    return LiftOrFail( cat, test_mor, KernelEmbedding( cat, mor ) ); end;;[127X[104X
     [4X[25Xgap>[125X [27XV := VectorSpaceObject( 2, Q );;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_func := CapJitCompiledFunction([127X[104X
     [4X[25X>[125X [27X    MyKernelLift,[127X[104X
     [4X[25X>[125X [27X    [ rows, ZeroMorphism( V, V ), IdentityMorphism( V ) ][127X[104X
     [4X[25X>[125X [27X);;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
-    [4X[28Xfunction ( cat, mor, test_morphism )[128X[104X
+    [4X[28Xfunction ( cat, mor, test_mor )[128X[104X
     [4X[28X    local cap_jit_morphism_attribute;[128X[104X
     [4X[28X    cap_jit_morphism_attribute [128X[104X
-    [4X[28X     := RightDivide( UnderlyingMatrix( test_morphism ), [128X[104X
+    [4X[28X     := RightDivide( UnderlyingMatrix( test_mor ), [128X[104X
     [4X[28X       SyzygiesOfRows( UnderlyingMatrix( mor ) ) );[128X[104X
     [4X[28X    return ObjectifyWithAttributes( rec([128X[104X
     [4X[28X           ), MorphismType( cat ), CapCategory, cat, Source, [128X[104X
-    [4X[28X       Source( test_morphism ), Range, ObjectifyWithAttributes( rec([128X[104X
+    [4X[28X       Source( test_mor ), Range, ObjectifyWithAttributes( rec([128X[104X
     [4X[28X             ), ObjectType( cat ), CapCategory, cat, Dimension, [128X[104X
     [4X[28X         NrColumns( cap_jit_morphism_attribute ), UnderlyingFieldForHomalg, [128X[104X
     [4X[28X         UnderlyingRing( cat ) ), UnderlyingFieldForHomalg, [128X[104X
@@ -282,6 +329,188 @@
     [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
     [4X[28Xfunction ( G )[128X[104X
     [4X[28X    return 2;[128X[104X
+    [4X[28Xend[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XGUARD_STRING := "\"THIS_STRING_SHOULD_NEVER_APPEAR_IN_PRODUCTION_CODE\"";;[127X[104X
+    [4X[25Xgap>[125X [27X# add a nonsense template[127X[104X
+    [4X[25X>[125X [27Xlogic_template := rec([127X[104X
+    [4X[25X>[125X [27X    variable_names := [ "variable" ],[127X[104X
+    [4X[25X>[125X [27X    src_template := "x -> x + variable + x - x",[127X[104X
+    [4X[25X>[125X [27X    dst_template := Concatenation( "x -> x + variable + ", GUARD_STRING ),[127X[104X
+    [4X[25X>[125X [27X    returns_value := true,[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitAddLogicTemplate( logic_template );[127X[104X
+    [4X[25Xgap>[125X [27Xfunc := function ( a )[127X[104X
+    [4X[25X>[125X [27X    return b -> b + ( 2 * b + a ) + b - b; end;;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, [ ] ) );[127X[104X
+    [4X[28Xfunction ( a )[128X[104X
+    [4X[28X    return function ( b )[128X[104X
+    [4X[28X          return b + (2 * b + a) [128X[104X
+    [4X[28X            + "THIS_STRING_SHOULD_NEVER_APPEAR_IN_PRODUCTION_CODE";[128X[104X
+    [4X[28X      end;[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27X# remove the last template again and make sure it is[127X[104X
+    [4X[25X>[125X [27X# the one we have added above[127X[104X
+    [4X[25X>[125X [27XMakeReadWriteGlobal( "CAP_JIT_LOGIC_TEMPLATES" );[127X[104X
+    [4X[25Xgap>[125X [27XRemove( CAP_JIT_LOGIC_TEMPLATES ) = logic_template;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XMakeReadOnlyGlobal( "CAP_JIT_LOGIC_TEMPLATES" );[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor :=[127X[104X
+    [4X[25X>[125X [27X    field -> CategoryOfColumns( field );;[127X[104X
+    [4X[25Xgap>[125X [27Xgiven_arguments := [ QQ ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "CategoryOfColumnsOfFieldPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xpackage_name := "FreydCategoriesForCAP";;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations := Intersection([127X[104X
+    [4X[25X>[125X [27X    ListPrimitivelyInstalledOperationsOfCategory( CategoryOfColumns( QQ ) ),[127X[104X
+    [4X[25X>[125X [27X    CAP_JIT_INTERNAL_SAFE_OPERATIONS[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations := Filtered([127X[104X
+    [4X[25X>[125X [27X    operations,[127X[104X
+    [4X[25X>[125X [27X    o -> PositionSublist( o, "HomomorphismStructure" ) = fail[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27Xfilepath :=[127X[104X
+    [4X[25X>[125X [27X    "precompiled_categories/CategoryOfColumnsOfFieldPrecompiled.gi";;[127X[104X
+    [4X[25Xgap>[125X [27Xold_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;[127X[104X
+    [4X[25Xgap>[125X [27X# set CAP_JIT_INTERNAL_FUNCTION_ID and[127X[104X
+    [4X[25X>[125X [27X# CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER[127X[104X
+    [4X[25X>[125X [27X# to known values for a stable output[127X[104X
+    [4X[25X>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID < 20000;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID := 20000;;[127X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER < 20000;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER := 20000;;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategory([127X[104X
+    [4X[25X>[125X [27X    category_constructor,[127X[104X
+    [4X[25X>[125X [27X    given_arguments,[127X[104X
+    [4X[25X>[125X [27X    package_name,[127X[104X
+    [4X[25X>[125X [27X    compiled_category_name :[127X[104X
+    [4X[25X>[125X [27X    operations := operations[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27Xnew_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;[127X[104X
+    [4X[25Xgap>[125X [27Xold_file_content = new_file_content;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FreydCategoriesForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor :=[127X[104X
+    [4X[25X>[125X [27X    field -> CategoryOfColumnsAsOppositeOfCategoryOfRows( field );;[127X[104X
+    [4X[25Xgap>[125X [27Xgiven_arguments := [ QQ ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "OppositeOfCategoryOfRowsOfFieldPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xpackage_name := "FreydCategoriesForCAP";;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations := Intersection([127X[104X
+    [4X[25X>[125X [27X    ListPrimitivelyInstalledOperationsOfCategory( CategoryOfColumns( QQ ) ),[127X[104X
+    [4X[25X>[125X [27X    CAP_JIT_INTERNAL_SAFE_OPERATIONS[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations := Filtered([127X[104X
+    [4X[25X>[125X [27X    operations,[127X[104X
+    [4X[25X>[125X [27X    o -> PositionSublist( o, "HomomorphismStructure" ) = fail[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27Xfilepath :=[127X[104X
+    [4X[25X>[125X [27X    "precompiled_categories/OppositeOfCategoryOfRowsOfFieldPrecompiled.gi";;[127X[104X
+    [4X[25Xgap>[125X [27Xold_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;[127X[104X
+    [4X[25Xgap>[125X [27X# set CAP_JIT_INTERNAL_FUNCTION_ID and[127X[104X
+    [4X[25X>[125X [27X# CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER[127X[104X
+    [4X[25X>[125X [27X# to known values for a stable output[127X[104X
+    [4X[25X>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID < 30000;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID := 30000;;[127X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER < 30000;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER := 30000;;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategory([127X[104X
+    [4X[25X>[125X [27X    category_constructor,[127X[104X
+    [4X[25X>[125X [27X    given_arguments,[127X[104X
+    [4X[25X>[125X [27X    package_name,[127X[104X
+    [4X[25X>[125X [27X    compiled_category_name :[127X[104X
+    [4X[25X>[125X [27X    operations := operations[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27Xnew_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;[127X[104X
+    [4X[25Xgap>[125X [27Xold_file_content = new_file_content;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
+    [4X[25Xgap>[125X [27X# be careful not to use `MatrixCategory` because attributes are not supported[127X[104X
+    [4X[25X>[125X [27Xcategory_constructor := function( field )[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    return Opposite( MATRIX_CATEGORY([127X[104X
+    [4X[25X>[125X [27X        field :[127X[104X
+    [4X[25X>[125X [27X        FinalizeCategory := true,[127X[104X
+    [4X[25X>[125X [27X        enable_compilation := false[127X[104X
+    [4X[25X>[125X [27X    ) ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xgiven_arguments := [ QQ ];;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "OppositeOfMatrixCategoryPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xpackage_name := "LinearAlgebraForCAP";;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations := Intersection([127X[104X
+    [4X[25X>[125X [27X    ListPrimitivelyInstalledOperationsOfCategory( MatrixCategory( QQ ) ),[127X[104X
+    [4X[25X>[125X [27X    CAP_JIT_INTERNAL_SAFE_OPERATIONS[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27X# The output for Lift/ColiftOrFail differs between GAP 4.11 and GAP 4.12, see[127X[104X
+    [4X[25X>[125X [27X# https://github.com/gap-system/gap/issues/4523[127X[104X
+    [4X[25X>[125X [27Xoperations := Difference( operations, [ "LiftOrFail", "ColiftOrFail" ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xfilepath := "precompiled_categories/OppositeOfMatrixCategoryPrecompiled.gi";;[127X[104X
+    [4X[25Xgap>[125X [27Xold_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;[127X[104X
+    [4X[25Xgap>[125X [27X# set CAP_JIT_INTERNAL_FUNCTION_ID and[127X[104X
+    [4X[25X>[125X [27X# CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER[127X[104X
+    [4X[25X>[125X [27X# to known values for a stable output[127X[104X
+    [4X[25X>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID < 40000;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID := 40000;;[127X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER < 40000;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER := 40000;;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategory([127X[104X
+    [4X[25X>[125X [27X    category_constructor,[127X[104X
+    [4X[25X>[125X [27X    given_arguments,[127X[104X
+    [4X[25X>[125X [27X    package_name,[127X[104X
+    [4X[25X>[125X [27X    compiled_category_name :[127X[104X
+    [4X[25X>[125X [27X    operations := operations[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27Xnew_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;[127X[104X
+    [4X[25Xgap>[125X [27Xold_file_content = new_file_content;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XReadPackage([127X[104X
+    [4X[25X>[125X [27X    "LinearAlgebraForCAP",[127X[104X
+    [4X[25X>[125X [27X    "gap/precompiled_categories/OppositeOfMatrixCategoryPrecompiled.gi"[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XOppositeOfMatrixCategoryPrecompiled( QQ );[127X[104X
+    [4X[28XOpposite of Category of matrices over Q[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MATRIX_CATEGORY( Q : enable_compilation := true );;[127X[104X
+    [4X[25Xgap>[125X [27Xfunc := function ( cat, x )[127X[104X
+    [4X[25X>[125X [27X    #% CAP_JIT_RESOLVE_FUNCTION[127X[104X
+    [4X[25X>[125X [27X    return ZeroObject( cat ); end;;[127X[104X
+    [4X[25Xgap>[125X [27X# make sure that ZeroObject( cat ) is not resolved to a global variable[127X[104X
+    [4X[25X>[125X [27XDisplay( CapJitCompiledFunction( { cat, x } -> func( cat, x ), [ vec ] ) );[127X[104X
+    [4X[28Xfunction ( cat, x )[128X[104X
+    [4X[28X    return ObjectifyWithAttributes( rec([128X[104X
+    [4X[28X           ), ObjectType( cat ), CapCategory, cat, Dimension, 0, [128X[104X
+    [4X[28X       UnderlyingFieldForHomalg, UnderlyingRing( cat ) );[128X[104X
+    [4X[28Xend[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xfunc := function ( )[127X[104X
+    [4X[25X>[125X [27X  local x; x := { args... } -> 1; return x( ); end;;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, [ ] ) );[127X[104X
+    [4X[28Xfunction ( )[128X[104X
+    [4X[28X    return 1;[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
   

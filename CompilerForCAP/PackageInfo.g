@@ -11,10 +11,10 @@ SetPackageInfo( rec(
 PackageName := "CompilerForCAP",
 Subtitle := "Speed up computations in CAP categories",
 Version := Maximum( [
-  "2021.05-01", ## Fabian's version
+  "2021.06-02", ## Fabian's version
   ## this line prevents merge conflicts
 ] ),
-Date := "15/05/2021",
+Date := "13/07/2021",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -72,7 +72,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.11",
   NeededOtherPackages := [
-      [ "CAP", ">= 2021.05-01" ],
+      [ "CAP", ">= 2021.06-02" ],
   ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
