@@ -502,6 +502,19 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         right_divide := RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
         
+        return VectorSpaceMorphism( Source( alpha ),
+                                    right_divide,
+                                    Source( beta ) );
+        
+    end );
+    
+    ##
+    AddLiftOrFail( category,
+      function( cat, alpha, beta )
+        local right_divide;
+        
+        right_divide := RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
+        
         if right_divide = fail then
           
           return fail;
@@ -511,6 +524,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         return VectorSpaceMorphism( Source( alpha ),
                                     right_divide,
                                     Source( beta ) );
+        
+    end );
+    
+    ##
+    AddIsLiftable( category,
+      function( cat, alpha, beta )
+        
+        return IsZero( DecideZeroRows( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ) );
         
     end );
     
@@ -545,6 +566,19 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         left_divide := LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
         
+        return VectorSpaceMorphism( Range( alpha ),
+                                    left_divide,
+                                    Range( beta ) );
+        
+    end );
+    
+    ##
+    AddColiftOrFail( category,
+      function( cat, alpha, beta )
+        local left_divide;
+        
+        left_divide := LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) );
+        
         if left_divide = fail then
           
           return fail;
@@ -554,6 +588,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         return VectorSpaceMorphism( Range( alpha ),
                                     left_divide,
                                     Range( beta ) );
+        
+    end );
+    
+    ##
+    AddIsColiftable( category,
+      function( cat, alpha, beta )
+        
+        return IsZero( DecideZeroColumns( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ) ) );
         
     end );
     

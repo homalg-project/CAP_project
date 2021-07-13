@@ -296,7 +296,6 @@ InstallMethod( WitnessForBeingCongruentToZero,
   function( morphism )
     #% CAP_JIT_RESOLVE_FUNCTION
     
-    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
     return Lift( UnderlyingCategory( CapCategory( morphism ) ), MorphismDatum( morphism ), RelationMorphism( Range( morphism ) ) );
     
 end );

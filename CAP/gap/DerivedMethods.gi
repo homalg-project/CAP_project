@@ -1170,40 +1170,22 @@ AddDerivationToCAP( IsCodominating,
 end : Description := "IsCodominating(factor1, factor2) by deciding if KernelEmbedding( cat,factor2) composed with factor1 is zero" );
 
 ##
-AddDerivationToCAP( IsLiftable,
-                    [ [ Lift, 1 ] ],
-  function( cat, alpha, beta )
-    
-    return IsCapCategoryMorphism( Lift( cat, alpha, beta ) );
-    
-end : Description := "IsLiftable using Lift" );
-
-##
 AddDerivationToCAP( IsLiftableAlongMonomorphism,
-                    [ [ Lift, 1 ] ],
+                    [ [ IsLiftable, 1 ] ],
   function( cat, iota, tau )
     
-    return IsCapCategoryMorphism( Lift( cat, tau, iota ) );
+    return IsLiftable( cat, tau, iota );
     
-end : Description := "IsLiftableAlongMonomorphism using Lift" );
-
-##
-AddDerivationToCAP( IsColiftable,
-                    [ [ Colift, 1 ] ],
-  function( cat, alpha, beta )
-    
-    return IsCapCategoryMorphism( Colift( cat, alpha, beta ) );
-    
-end : Description := "IsColiftable using Colift" );
+end : Description := "IsLiftableAlongMonomorphism using IsLiftable" );
 
 ##
 AddDerivationToCAP( IsColiftableAlongEpimorphism,
-                    [ [ Colift, 1 ] ],
+                    [ [ IsColiftable, 1 ] ],
   function( cat, epsilon, tau )
     
-    return IsCapCategoryMorphism( Colift( cat, epsilon, tau ) );
+    return IsColiftable( cat, epsilon, tau );
     
-end : Description := "IsColiftableAlongEpimorphism using Colift" );
+end : Description := "IsColiftableAlongEpimorphism using IsColiftable" );
 
 ###########################
 ##
@@ -1313,7 +1295,6 @@ AddDerivationToCAP( LiftAlongMonomorphism,
   function( cat, alpha, beta )
     
     ## Caution with the order of the arguments!
-    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
     return Lift( cat, beta, alpha );
     
 end : Description := "LiftAlongMonomorphism using Lift" );
@@ -1324,7 +1305,6 @@ AddDerivationToCAP( ProjectiveLift,
                     
   function( cat, alpha, beta )
     
-    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
     return Lift( cat, alpha, beta );
     
 end : Description := "ProjectiveLift using Lift" );
@@ -1336,7 +1316,6 @@ AddDerivationToCAP( ColiftAlongEpimorphism,
                     
   function( cat, alpha, beta )
     
-    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
     return Colift( cat, alpha, beta );
     
 end : Description := "ColiftAlongEpimorphism using Colift" );
@@ -1347,7 +1326,6 @@ AddDerivationToCAP( InjectiveColift,
                     
   function( cat, alpha, beta )
     
-    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
     return Colift( cat, alpha, beta );
     
 end : Description := "InjectiveColift using Colift" );
@@ -2450,6 +2428,26 @@ AddDerivationToCAP( Lift,
     right_divide := SolveLinearSystemInAbCategory( cat,
                       left_coefficients, right_coefficients, right_side );
     
+    return right_divide[1];
+    
+end : Description := "Lift by SolveLinearSystemInAbCategory" );
+
+##
+AddDerivationToCAP( LiftOrFail,
+                    [ [ IdentityMorphism, 1 ],
+                      [ SolveLinearSystemInAbCategoryOrFail, 1 ] ],
+  function( cat, alpha, beta )
+    local left_coefficients, right_coefficients, right_side, right_divide;
+    
+    left_coefficients := [ [ IdentityMorphism( cat, Source( alpha ) ) ] ];
+    
+    right_coefficients := [ [ beta ] ];
+    
+    right_side := [ alpha ];
+    
+    right_divide := SolveLinearSystemInAbCategoryOrFail( cat,
+                      left_coefficients, right_coefficients, right_side );
+    
     if right_divide = fail then
       
       return fail;
@@ -2458,8 +2456,26 @@ AddDerivationToCAP( Lift,
     
     return right_divide[1];
     
-end : Description := "Lift by SolveLinearSystemInAbCategory" );
-              
+end : Description := "LiftOrFail by SolveLinearSystemInAbCategoryOrFail" );
+
+##
+AddDerivationToCAP( IsLiftable,
+                    [ [ IdentityMorphism, 1 ],
+                      [ MereExistenceOfSolutionOfLinearSystemInAbCategory, 1 ] ],
+  function( cat, alpha, beta )
+    local left_coefficients, right_coefficients, right_side;
+    
+    left_coefficients := [ [ IdentityMorphism( cat, Source( alpha ) ) ] ];
+    
+    right_coefficients := [ [ beta ] ];
+    
+    right_side := [ alpha ];
+    
+    return MereExistenceOfSolutionOfLinearSystemInAbCategory( cat,
+                      left_coefficients, right_coefficients, right_side );
+    
+end : Description := "IsLiftable by MereExistenceOfSolutionOfLinearSystemInAbCategory" );
+
 ##
 AddDerivationToCAP( Colift,
                     [ [ IdentityMorphism, 1 ],
@@ -2476,6 +2492,26 @@ AddDerivationToCAP( Colift,
     left_divide := SolveLinearSystemInAbCategory( cat,
                       left_coefficients, right_coefficients, right_side );
     
+    return left_divide[1];
+    
+end : Description := "Colift by SolveLinearSystemInAbCategory" );
+
+##
+AddDerivationToCAP( ColiftOrFail,
+                    [ [ IdentityMorphism, 1 ],
+                      [ SolveLinearSystemInAbCategoryOrFail, 1 ] ],
+  function( cat, alpha, beta )
+    local left_coefficients, right_coefficients, right_side, left_divide;
+    
+    left_coefficients := [ [ alpha ] ];
+    
+    right_coefficients := [ [ IdentityMorphism( cat, Range( beta ) ) ] ];
+    
+    right_side := [ beta ];
+    
+    left_divide := SolveLinearSystemInAbCategoryOrFail( cat,
+                      left_coefficients, right_coefficients, right_side );
+    
     if left_divide = fail then
       
       return fail;
@@ -2484,7 +2520,79 @@ AddDerivationToCAP( Colift,
     
     return left_divide[1];
     
-end : Description := "Colift by SolveLinearSystemInAbCategory" );
+end : Description := "ColiftOrFail by SolveLinearSystemInAbCategoryOrFail" );
+
+##
+AddDerivationToCAP( IsColiftable,
+                    [ [ IdentityMorphism, 1 ],
+                      [ MereExistenceOfSolutionOfLinearSystemInAbCategory, 1 ] ],
+  function( cat, alpha, beta )
+    local left_coefficients, right_coefficients, right_side;
+    
+    left_coefficients := [ [ alpha ] ];
+    
+    right_coefficients := [ [ IdentityMorphism( cat, Range( beta ) ) ] ];
+    
+    right_side := [ beta ];
+    
+    return MereExistenceOfSolutionOfLinearSystemInAbCategory( cat,
+                      left_coefficients, right_coefficients, right_side );
+    
+end : Description := "IsColiftable by MereExistenceOfSolutionOfLinearSystemInAbCategory" );
+
+##
+AddDerivationToCAP( LiftOrFail,
+                    [ [ IsLiftable, 1 ],
+                      [ Lift, 1 ] ],
+  function( cat, alpha, beta )
+    
+    if IsLiftable( cat, alpha, beta ) then
+        
+        return Lift( cat, alpha, beta );
+        
+    else
+        
+        return fail;
+        
+    fi;
+    
+end : Description := "LiftOrFail using IsLiftable and Lift" );
+
+##
+AddDerivationToCAP( ColiftOrFail,
+                    [ [ IsColiftable, 1 ],
+                      [ Colift, 1 ] ],
+  function( cat, alpha, beta )
+    
+    if IsColiftable( cat, alpha, beta ) then
+        
+        return Colift( cat, alpha, beta );
+        
+    else
+        
+        return fail;
+        
+    fi;
+    
+end : Description := "ColiftOrFail using IsColiftable and Colift" );
+
+##
+AddDerivationToCAP( SolveLinearSystemInAbCategoryOrFail,
+                    [ [ MereExistenceOfSolutionOfLinearSystemInAbCategory, 1 ],
+                      [ SolveLinearSystemInAbCategory, 1 ] ],
+  function( cat, left_coefficients, right_coefficients, right_side )
+    
+    if MereExistenceOfSolutionOfLinearSystemInAbCategory( cat, left_coefficients, right_coefficients, right_side ) then
+        
+        return SolveLinearSystemInAbCategory( cat, left_coefficients, right_coefficients, right_side );
+        
+    else
+        
+        return fail;
+        
+    fi;
+    
+end : Description := "SolveLinearSystemInAbCategoryOrFail using MereExistenceOfSolutionOfLinearSystemInAbCategory and SolveLinearSystemInAbCategory" );
 
 ##
 AddDerivationToCAP( IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject,
@@ -2849,12 +2957,6 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
     ## the actual computation of the solution
     lift := Lift( range_cat, nu, H );
     
-    if lift = fail then
-        
-        return fail;
-        
-    fi;
-    
     ## reinterpretation of the solution
     summands := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( cat, Range( left_coefficients[1][j] ), Source( right_coefficients[1][j] ) ) );
     
@@ -2897,13 +2999,84 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
 );
 
 ##
-AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
-                    [ [ SolveLinearSystemInAbCategory, 1 ] ],
+AddDerivationToCAP( SolveLinearSystemInAbCategoryOrFail,
+                    [ [ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, 1 ],
+                      [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ],
+                      [ HomomorphismStructureOnObjects, 1 ],
+                      [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
   function( cat, left_coefficients, right_coefficients, right_side )
+    local range_cat, m, n, nu, H, lift, summands, list;
     
-    return SolveLinearSystemInAbCategory( cat, left_coefficients, right_coefficients, right_side ) <> fail;
+    range_cat := RangeCategoryOfHomomorphismStructure( cat );
     
-end : Description := "MereExistenceOfSolutionOfLinearSystemInAbCategory using SolveLinearSystemInAbCategory" );
+    m := Size( left_coefficients );
+    
+    n := Size( left_coefficients[1] );
+    
+    ## create lift diagram
+    
+    nu :=
+      UniversalMorphismIntoDirectSum( range_cat,
+        List( [ 1 .. m ],
+        i -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, right_side[i] ) )
+    );
+    
+    list := 
+      List( [ 1 .. n ],
+      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( left_coefficients[i][j], right_coefficients[i][j] ) ) 
+    );
+    
+    H := MorphismBetweenDirectSums( list );
+    
+    ## the actual computation of the solution
+    lift := LiftOrFail( range_cat, nu, H );
+    
+    if lift = fail then
+        
+        return fail;
+        
+    fi;
+    
+    ## reinterpretation of the solution
+    summands := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( cat, Range( left_coefficients[1][j] ), Source( right_coefficients[1][j] ) ) );
+    
+    return
+      List( [ 1 .. n ], j -> 
+        InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+          Range( left_coefficients[1][j] ),
+          Source( right_coefficients[1][j] ),
+          PreCompose( range_cat, lift, ProjectionInFactorOfDirectSum( range_cat, summands, j ) )
+        )
+      );
+  end :
+  ConditionsListComplete := true,
+  CategoryFilter := function( cat )
+    local B, conditions;
+    
+    if HasIsAbCategory( cat ) and IsAbCategory( cat ) and HasRangeCategoryOfHomomorphismStructure( cat ) then
+        
+        B := RangeCategoryOfHomomorphismStructure( cat );
+        
+        conditions := [
+          "UniversalMorphismIntoDirectSum",
+          "MorphismBetweenDirectSumsWithGivenDirectSums",
+          "LiftOrFail",
+          "PreCompose"
+        ];
+        
+        if ForAll( conditions, c -> CanCompute( B, c ) ) then
+            
+            return true;
+            
+        fi;
+        
+    fi;
+    
+    return false;
+    
+  end,
+  Description := "SolveLinearSystemInAbCategoryOrFail using the homomorphism structure" 
+);
 
 ##
 AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,

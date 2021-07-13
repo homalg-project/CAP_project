@@ -30,6 +30,12 @@ InstallMethod( CokernelImageClosure,
         
     fi;
     
+    if not CanCompute( underlying_category, "IsLiftable" ) then
+        
+        Error( "The given category should be able to compute IsLiftable" );
+        
+    fi;
+    
     if not CanCompute( underlying_category, "SubtractionForMorphisms" ) then
         
         Error( "The given category should be able to compute SubtractionForMorphisms" );
@@ -201,6 +207,26 @@ InstallMethod( WitnessForBeingCongruentToZero,
 
 end );
 
+##
+InstallMethod( MereExistenceOfWitnessForBeingCongruentToZero,
+               [ IsCokernelImageClosureMorphism ],
+
+  function( morphism )
+    local range;
+    
+    range := Range( morphism );
+
+    return
+    IsLiftable(
+        PreCompose(
+            MorphismDatum( morphism ),
+            GeneratorMorphism( range )
+        ),
+        RelationMorphism( range )
+    );
+
+end );
+
 ####################################
 ##
 ## Basic operations
@@ -253,7 +279,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     ##
     AddIsWellDefinedForMorphisms( category,
       function( morphism )
-        local alpha, lift;
+        local alpha;
         
         alpha := PreCompose( [ 
             RelationOfGeneratorMorphism( Source( morphism ) ),
@@ -261,9 +287,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
             GeneratorMorphism( Range( morphism ) )
         ] );
         
-        lift := Lift( alpha, RelationMorphism( Range( morphism ) ) );
-
-        if lift = fail then
+        if not IsLiftable( alpha, RelationMorphism( Range( morphism ) ) ) then
             
             return false;
 
@@ -297,15 +321,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_COKERNEL_IMAGE_CLOSURE,
     AddIsCongruentForMorphisms( category,
       function( morphism_1, morphism_2 )
         
-        if WitnessForBeingCongruentToZero( SubtractionForMorphisms( morphism_1, morphism_2 ) ) = fail then
-            
-            return false;
-            
-        else
-            
-            return true;
-            
-        fi;
+        return MereExistenceOfWitnessForBeingCongruentToZero( SubtractionForMorphisms( morphism_1, morphism_2 ) );
         
     end );
 

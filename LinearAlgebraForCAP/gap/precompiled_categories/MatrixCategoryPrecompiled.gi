@@ -132,13 +132,8 @@ end
         
 ########
 function ( cat, alpha, beta )
-    if LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ) = fail then
-        return fail;
-    else
-        return ObjectifyWithAttributes( rec(
-               ), MorphismType( cat ), CapCategory, cat, Source, Range( alpha ), Range, Range( beta ), UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ) );
-    fi;
-    return;
+    return ObjectifyWithAttributes( rec(
+           ), MorphismType( cat ), CapCategory, cat, Source, Range( alpha ), Range, Range( beta ), UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ) );
 end
 ########
         
@@ -321,13 +316,7 @@ end
         
 ########
 function ( cat, alpha, beta )
-    if LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ) = fail then
-        return IsCapCategoryMorphism( fail );
-    else
-        return IsCapCategoryMorphism( ObjectifyWithAttributes( rec(
-                 ), MorphismType( cat ), CapCategory, cat, Source, Range( alpha ), Range, Range( beta ), UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ) ) );
-    fi;
-    return;
+    return IsZero( DecideZeroColumns( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ) ) );
 end
 ########
         
@@ -338,13 +327,7 @@ end
         
 ########
 function ( cat, epsilon, tau )
-    if LeftDivide( UnderlyingMatrix( epsilon ), UnderlyingMatrix( tau ) ) = fail then
-        return IsCapCategoryMorphism( fail );
-    else
-        return IsCapCategoryMorphism( ObjectifyWithAttributes( rec(
-                 ), MorphismType( cat ), CapCategory, cat, Source, Range( epsilon ), Range, Range( tau ), UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, LeftDivide( UnderlyingMatrix( epsilon ), UnderlyingMatrix( tau ) ) ) );
-    fi;
-    return;
+    return IsZero( DecideZeroColumns( UnderlyingMatrix( tau ), UnderlyingMatrix( epsilon ) ) );
 end
 ########
         
@@ -476,13 +459,7 @@ end
         
 ########
 function ( cat, alpha, beta )
-    if RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ) = fail then
-        return IsCapCategoryMorphism( fail );
-    else
-        return IsCapCategoryMorphism( ObjectifyWithAttributes( rec(
-                 ), MorphismType( cat ), CapCategory, cat, Source, Source( alpha ), Range, Source( beta ), UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ) ) );
-    fi;
-    return;
+    return IsZero( DecideZeroRows( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ) );
 end
 ########
         
@@ -493,13 +470,7 @@ end
         
 ########
 function ( cat, iota, tau )
-    if RightDivide( UnderlyingMatrix( tau ), UnderlyingMatrix( iota ) ) = fail then
-        return IsCapCategoryMorphism( fail );
-    else
-        return IsCapCategoryMorphism( ObjectifyWithAttributes( rec(
-                 ), MorphismType( cat ), CapCategory, cat, Source, Source( tau ), Range, Source( iota ), UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( tau ), UnderlyingMatrix( iota ) ) ) );
-    fi;
-    return;
+    return IsZero( DecideZeroRows( UnderlyingMatrix( tau ), UnderlyingMatrix( iota ) ) );
 end
 ########
         
@@ -543,13 +514,7 @@ end
         
 ########
 function ( cat, morphism )
-    if RightDivide( HomalgIdentityMatrix( Dimension( Range( morphism ) ), UnderlyingRing( cat ) ), UnderlyingMatrix( morphism ) ) = fail then
-        return false;
-    else
-        return IsCapCategoryMorphism( ObjectifyWithAttributes( rec(
-                 ), MorphismType( cat ), CapCategory, cat, Source, Range( morphism ), Range, Source( morphism ), UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, RightDivide( HomalgIdentityMatrix( Dimension( Range( morphism ) ), UnderlyingRing( cat ) ), UnderlyingMatrix( morphism ) ) ) );
-    fi;
-    return;
+    return IsZero( DecideZeroRows( HomalgIdentityMatrix( Dimension( Range( morphism ) ), UnderlyingRing( cat ) ), UnderlyingMatrix( morphism ) ) );
 end
 ########
         
@@ -560,13 +525,7 @@ end
         
 ########
 function ( cat, morphism )
-    if LeftDivide( UnderlyingMatrix( morphism ), HomalgIdentityMatrix( Dimension( Source( morphism ) ), UnderlyingRing( cat ) ) ) = fail then
-        return false;
-    else
-        return IsCapCategoryMorphism( ObjectifyWithAttributes( rec(
-                 ), MorphismType( cat ), CapCategory, cat, Source, Range( morphism ), Range, Source( morphism ), UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, LeftDivide( UnderlyingMatrix( morphism ), HomalgIdentityMatrix( Dimension( Source( morphism ) ), UnderlyingRing( cat ) ) ) ) );
-    fi;
-    return;
+    return IsZero( DecideZeroColumns( HomalgIdentityMatrix( Dimension( Source( morphism ) ), UnderlyingRing( cat ) ), UnderlyingMatrix( morphism ) ) );
 end
 ########
         
@@ -717,13 +676,8 @@ end
         
 ########
 function ( cat, alpha, beta )
-    if RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ) = fail then
-        return fail;
-    else
-        return ObjectifyWithAttributes( rec(
-               ), MorphismType( cat ), CapCategory, cat, Source, Source( alpha ), Range, Source( beta ), UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ) );
-    fi;
-    return;
+    return ObjectifyWithAttributes( rec(
+           ), MorphismType( cat ), CapCategory, cat, Source, Source( alpha ), Range, Source( beta ), UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ) );
 end
 ########
         

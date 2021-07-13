@@ -37,6 +37,7 @@ operations := Filtered( operations,
 operations := Difference( operations, [ "DirectSumCodiagonalDifference" ] );;
 operations := Difference( operations, [ "DirectSumDiagonalDifference" ] );;
 operations := Difference( operations, [ "HomologyObject" ] );;
+operations := Difference( operations, [ "LiftOrFail", "ColiftOrFail" ] );;
 # IsEqualForMorphismsOnMor causes problems in GAP 4.11 (see GAP issue #4449)
 operations := Difference( operations, [ "IsEqualForMorphismsOnMor" ] );;
 operations := Difference( operations, [ "IsIdenticalToIdentityMorphism" ] );;

@@ -42,12 +42,27 @@ ForAll( [ 1, 2 ], i ->
     )
 );
 #! true
-Lift( c, d );
+
+IsLiftable( c, d );
+#! false
+LiftOrFail( c, d );
 #! fail
+IsLiftable( d, c );
+#! true
+LiftOrFail( d, c );
+#! 0
 Lift( d, c );
+#! 0
+
+IsColiftable( c, d );
+#! true
+ColiftOrFail( c, d );
 #! 0
 Colift( c, d );
 #! 0
-Colift( d, c );
+IsColiftable( d, c );
+#! false
+ColiftOrFail( d, c );
 #! fail
+
 #! @EndExample

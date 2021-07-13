@@ -42,8 +42,8 @@ beta*Inverse(beta) = IdentityMorphism(b);
 #! true
 alpha = Lift(gamma, beta);
 #! true
-fail = Lift(beta, gamma);
-#! true
+IsLiftable(beta, gamma);
+#! false
 Colift(alpha, gamma) = beta;
 #! true
 alpha = HomStructure(a, b, HomStructure(alpha));

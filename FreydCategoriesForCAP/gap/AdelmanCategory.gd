@@ -256,12 +256,19 @@ DeclareAttribute( "CorelationWitness",
                   IsAdelmanCategoryMorphism );
 
 #! @Description
-#! The argument is a morphism $\alpha$ in an Adelman category.
-#! If $\alpha$ is congruent to zero, the output is a witness pair.
-#! If $\alpha$ is not congruent to zero, the output is <C>fail</C>.
-#! @Returns a list of morphisms or <C>fail</C>
+#! The argument is a morphism $\alpha$ congruent to zero in an Adelman category.
+#! The output is a witness pair.
+#! @Returns a list of morphisms
 #! @Arguments alpha
 DeclareAttribute( "WitnessPairForBeingCongruentToZero",
+                  IsAdelmanCategoryMorphism );
+
+#! @Description
+#! The argument is a morphism $\alpha$ in an Adelman category.
+#! The output is `true` if $\alpha$ is congruent to zero, else `false`.
+#! @Returns a boolean
+#! @Arguments alpha
+DeclareAttribute( "MereExistenceOfWitnessPairForBeingCongruentToZero",
                   IsAdelmanCategoryMorphism );
 
 DeclareOperation( "HomomorphismStructureOnObjectsForAdelmanCategoryGeneralizedEmbedding",

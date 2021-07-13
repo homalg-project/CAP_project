@@ -9,9 +9,9 @@ LoadPackage( "LinearAlgebraForCAP" );
 Q := HomalgFieldOfRationals();;
 rows := MatrixCategory( Q );;
 
-MyKernelLift := function( cat, mor, test_morphism )
+MyKernelLift := function( cat, mor, test_mor )
     #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
-    return Lift( cat, test_morphism, KernelEmbedding( cat, mor ) ); end;;
+    return LiftOrFail( cat, test_mor, KernelEmbedding( cat, mor ) ); end;;
 
 V := VectorSpaceObject( 2, Q );;
 compiled_func := CapJitCompiledFunction(
@@ -19,14 +19,14 @@ compiled_func := CapJitCompiledFunction(
     [ rows, ZeroMorphism( V, V ), IdentityMorphism( V ) ]
 );;
 Display( compiled_func );
-#! function ( cat, mor, test_morphism )
+#! function ( cat, mor, test_mor )
 #!     local cap_jit_morphism_attribute;
 #!     cap_jit_morphism_attribute 
-#!      := RightDivide( UnderlyingMatrix( test_morphism ), 
+#!      := RightDivide( UnderlyingMatrix( test_mor ), 
 #!        SyzygiesOfRows( UnderlyingMatrix( mor ) ) );
 #!     return ObjectifyWithAttributes( rec(
 #!            ), MorphismType( cat ), CapCategory, cat, Source, 
-#!        Source( test_morphism ), Range, ObjectifyWithAttributes( rec(
+#!        Source( test_mor ), Range, ObjectifyWithAttributes( rec(
 #!              ), ObjectType( cat ), CapCategory, cat, Dimension, 
 #!          NrColumns( cap_jit_morphism_attribute ), UnderlyingFieldForHomalg, 
 #!          UnderlyingRing( cat ) ), UnderlyingFieldForHomalg, 

@@ -135,30 +135,6 @@ Lift := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "alpha_source", "beta_source" ] ],
   pre_function := function( cat, iota, tau )
-    local value, category;
-    
-    value := IsEqualForObjects( Range( iota ), Range( tau ) );
-    
-    if value = fail then
-        
-        return [ false, "cannot decide whether the two morphisms have equal ranges" ];
-        
-    elif value = false then
-        
-        return [ false, "the two morphisms must have equal ranges" ];
-        
-    fi;
-    
-    return [ true ];
-  end,
-  return_type := "morphism_or_fail",
-  dual_operation := "Colift",
-  dual_arguments_reversed := true,
-  is_merely_set_theoretic := true ),
-
-IsLiftable := rec(
-  filter_list := [ "category", "morphism", "morphism" ],
-  pre_function := function( cat, iota, tau )
     local value;
     
     value := IsEqualForObjects( Range( iota ), Range( tau ) );
@@ -175,6 +151,23 @@ IsLiftable := rec(
     
     return [ true ];
   end,
+  return_type := "morphism",
+  dual_operation := "Colift",
+  dual_arguments_reversed := true,
+  is_merely_set_theoretic := true ),
+
+LiftOrFail := rec(
+  filter_list := [ "category", "morphism", "morphism" ],
+  io_type := [ [ "alpha", "beta" ], [ "alpha_source", "beta_source" ] ],
+  pre_function := ~.Lift.pre_function,
+  return_type := "morphism_or_fail",
+  dual_operation := "ColiftOrFail",
+  dual_arguments_reversed := true,
+  is_merely_set_theoretic := true ),
+
+IsLiftable := rec(
+  filter_list := [ "category", "morphism", "morphism" ],
+  pre_function := ~.Lift.pre_function,
   return_type := "bool",
   dual_operation := "IsColiftable",
   dual_arguments_reversed := true ),
@@ -183,30 +176,6 @@ Colift := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "alpha_range", "beta_range" ] ],
   pre_function := function( cat, epsilon, tau )
-    local value, category;
-    
-    value := IsEqualForObjects( Source( epsilon ), Source( tau ) );
-    
-    if value = fail then
-        
-        return [ false, "cannot decide whether the two morphisms have equal sources" ];
-        
-    elif value = false then
-        
-        return [ false, "the two morphisms must have equal sources" ];
-        
-    fi;
-    
-    return [ true ];
-  end,
-  return_type := "morphism_or_fail",
-  dual_operation := "Lift",
-  dual_arguments_reversed := true,
-  is_merely_set_theoretic := true  ),
-
-IsColiftable := rec(
-  filter_list := [ "category", "morphism", "morphism" ],
-  pre_function := function( cat, epsilon, tau )
     local value;
     
     value := IsEqualForObjects( Source( epsilon ), Source( tau ) );
@@ -223,6 +192,23 @@ IsColiftable := rec(
     
     return [ true ];
   end,
+  return_type := "morphism",
+  dual_operation := "Lift",
+  dual_arguments_reversed := true,
+  is_merely_set_theoretic := true  ),
+
+ColiftOrFail := rec(
+  filter_list := [ "category", "morphism", "morphism" ],
+  io_type := [ [ "alpha", "beta" ], [ "alpha_range", "beta_range" ] ],
+  pre_function := ~.Colift.pre_function,
+  return_type := "morphism_or_fail",
+  dual_operation := "LiftOrFail",
+  dual_arguments_reversed := true,
+  is_merely_set_theoretic := true  ),
+
+IsColiftable := rec(
+  filter_list := [ "category", "morphism", "morphism" ],
+  pre_function := ~.Colift.pre_function,
   return_type := "bool",
   dual_operation := "IsLiftable",
   dual_arguments_reversed := true ),
@@ -2981,7 +2967,7 @@ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism := rec
 
 SolveLinearSystemInAbCategory := rec(
   filter_list := [ "category", IsList, IsList, "list_of_morphisms" ],
-  return_type := "list_of_morphisms_or_fail",
+  return_type := "list_of_morphisms",
   pre_function := function( cat, left_coeffs, right_coeffs, rhs )
     
     if not Length( left_coeffs ) > 0 then
@@ -3026,10 +3012,18 @@ SolveLinearSystemInAbCategory := rec(
   end,
 ),
 
-MereExistenceOfSolutionOfLinearSystemInAbCategory := rec(
-    ## TODO: Type-check of linear system
+SolveLinearSystemInAbCategoryOrFail := rec(
   filter_list := [ "category", IsList, IsList, "list_of_morphisms" ],
-  return_type := "bool"
+  return_type := "list_of_morphisms_or_fail",
+  pre_function := ~.SolveLinearSystemInAbCategory.pre_function,
+  pre_function_full := ~.SolveLinearSystemInAbCategory.pre_function_full
+),
+
+MereExistenceOfSolutionOfLinearSystemInAbCategory := rec(
+  filter_list := [ "category", IsList, IsList, "list_of_morphisms" ],
+  return_type := "bool",
+  pre_function := ~.SolveLinearSystemInAbCategory.pre_function,
+  pre_function_full := ~.SolveLinearSystemInAbCategory.pre_function_full
 ),
 
 BasisOfExternalHom := rec(
