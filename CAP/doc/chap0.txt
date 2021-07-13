@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2021.05-04
+                                   2021.06-02
   
   
-                                  27 May 2021
+                                  13 July 2021
   
   
                                Sebastian Gutsche
@@ -281,12 +281,16 @@
       3.12-8 AddIsColiftableAlongEpimorphism
       3.12-9 Lift
       3.12-10 AddLift
-      3.12-11 Colift
-      3.12-12 AddColift
+      3.12-11 LiftOrFail
+      3.12-12 AddLiftOrFail
       3.12-13 IsLiftable
       3.12-14 AddIsLiftable
-      3.12-15 IsColiftable
-      3.12-16 AddIsColiftable
+      3.12-15 Colift
+      3.12-16 AddColift
+      3.12-17 ColiftOrFail
+      3.12-18 AddColiftOrFail
+      3.12-19 IsColiftable
+      3.12-20 AddIsColiftable
     3.13 [33X[0;0YInverses[133X
       3.13-1 InverseForMorphisms
       3.13-2 AddInverseForMorphisms
@@ -309,19 +313,20 @@
       3.16-10 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
       3.16-11 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
       3.16-12 SolveLinearSystemInAbCategory
-      3.16-13 MereExistenceOfSolutionOfLinearSystemInAbCategory
-      3.16-14 HomStructure
+      3.16-13 SolveLinearSystemInAbCategoryOrFail
+      3.16-14 MereExistenceOfSolutionOfLinearSystemInAbCategory
       3.16-15 HomStructure
       3.16-16 HomStructure
       3.16-17 HomStructure
       3.16-18 HomStructure
       3.16-19 HomStructure
       3.16-20 HomStructure
-      3.16-21 BasisOfExternalHom
-      3.16-22 AddBasisOfExternalHom
-      3.16-23 CoefficientsOfMorphismWithGivenBasisOfExternalHom
-      3.16-24 AddCoefficientsOfMorphismWithGivenBasisOfExternalHom
-      3.16-25 CoefficientsOfMorphism
+      3.16-21 HomStructure
+      3.16-22 BasisOfExternalHom
+      3.16-23 AddBasisOfExternalHom
+      3.16-24 CoefficientsOfMorphismWithGivenBasisOfExternalHom
+      3.16-25 AddCoefficientsOfMorphismWithGivenBasisOfExternalHom
+      3.16-26 CoefficientsOfMorphism
     3.17 [33X[0;0YSimplified Morphisms[133X
       3.17-1 SimplifyMorphism
       3.17-2 AddSimplifyMorphism

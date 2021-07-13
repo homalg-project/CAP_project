@@ -237,6 +237,7 @@
     [4X        "bool",[104X
     [4X        "other_object",[104X
     [4X        "other_morphism",[104X
+    [4X        "list_of_morphisms",[104X
     [4X        "list_of_morphisms_or_fail",[104X
     [4X    ][104X
   [4X[32X[104X

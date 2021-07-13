@@ -954,13 +954,13 @@
   [1X3.12-9 Lift[101X
   
   [33X[1;0Y[29X[2XLift[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b) + \{ \mathtt{fail} \}[123X[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b)[123X[133X
   
   [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  a  \rightarrow  c[123X,  [23X\beta:  b
-  \rightarrow  c[123X.  The  output  is  a  lift [23X\alpha / \beta: a \rightarrow b[123X of
-  [23X\alpha[123X  along  [23X\beta[123X  if  such a lift exists or [23X\mathtt{fail}[123X if it doesn't.
-  Recall  that a lift [23X\alpha / \beta: a \rightarrow b[123X of [23X\alpha[123X along [23X\beta[123X is
-  a morphism such that [23X\beta \circ (\alpha / \beta) \sim_{a,c} \alpha[123X.[133X
+  \rightarrow  c[123X  such  that  a lift [23X\alpha / \beta: a \rightarrow b[123X of [23X\alpha[123X
+  along  [23X\beta[123X exists. The output is such a lift [23X\alpha / \beta: a \rightarrow
+  b[123X.  Recall that a lift [23X\alpha / \beta: a \rightarrow b[123X of [23X\alpha[123X along [23X\beta[123X
+  is a morphism such that [23X\beta \circ (\alpha / \beta) \sim_{a,c} \alpha[123X.[133X
   
   [1X3.12-10 AddLift[101X
   
@@ -969,30 +969,28 @@
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given  function [23XF[123X to the category for the basic operation [10XLift[110X. The function
-  [23XF[123X  maps a pair [23X(\alpha, \beta)[123X to a lift [23X\alpha / \beta[123X if it exists, and to
-  [10Xfail[110X otherwise.[133X
+  [23XF[123X maps a pair [23X(\alpha, \beta)[123X to a lift [23X\alpha / \beta[123X.[133X
   
-  [1X3.12-11 Colift[101X
+  [1X3.12-11 LiftOrFail[101X
   
-  [33X[1;0Y[29X[2XColift[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(c,b) + \{ \mathtt{fail} \}[123X[133X
+  [33X[1;0Y[29X[2XLiftOrFail[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a,b) + \{ \mathtt{fail} \}[123X[133X
   
-  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  a  \rightarrow  c[123X,  [23X\beta:  a
-  \rightarrow b[123X. The output is a colift [23X\alpha \backslash \beta: c \rightarrow
-  b[123X  of  [23X\beta[123X  along  [23X\alpha[123X  if  such a colift exists or [23X\mathtt{fail}[123X if it
-  doesn't.  Recall  that  a colift [23X\alpha \backslash \beta: c \rightarrow b[123X of
-  [23X\beta[123X  along  [23X\alpha[123X is a morphism such that [23X(\alpha \backslash \beta) \circ
-  \alpha \sim_{a,b} \beta[123X.[133X
+  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  a  \rightarrow  c[123X,  [23X\beta:  b
+  \rightarrow  c[123X.  The  output  is  a  lift [23X\alpha / \beta: a \rightarrow b[123X of
+  [23X\alpha[123X  along  [23X\beta[123X  if  such a lift exists or [23X\mathtt{fail}[123X if it doesn't.
+  Recall  that a lift [23X\alpha / \beta: a \rightarrow b[123X of [23X\alpha[123X along [23X\beta[123X is
+  a morphism such that [23X\beta \circ (\alpha / \beta) \sim_{a,c} \alpha[123X.[133X
   
-  [1X3.12-12 AddColift[101X
+  [1X3.12-12 AddLiftOrFail[101X
   
-  [33X[1;0Y[29X[2XAddColift[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddLiftOrFail[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given  function  [23XF[123X  to  the  category  for  the  basic operation [10XColift[110X. The
-  function  [23XF[123X  maps a pair [23X(\alpha, \beta)[123X to a colift [23X\alpha \backslash \beta[123X
-  if it exists, and to [10Xfail[110X otherwise.[133X
+  given  function  [23XF[123X  to  the category for the basic operation [10XLiftOrFail[110X. The
+  function  [23XF[123X  maps  a  pair  [23X(\alpha,  \beta)[123X  to a lift [23X\alpha / \beta[123X if it
+  exists, and to [10Xfail[110X otherwise.[133X
   
   [1X3.12-13 IsLiftable[101X
   
@@ -1013,7 +1011,50 @@
   given  function  [23XF[123X  to the category for the basic operation [10XIsLiftable[110X. [23XF: (
   \alpha, \beta ) \mapsto \mathtt{IsLiftable}( \alpha, \beta )[123X.[133X
   
-  [1X3.12-15 IsColiftable[101X
+  [1X3.12-15 Colift[101X
+  
+  [33X[1;0Y[29X[2XColift[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(c,b)[123X[133X
+  
+  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  a  \rightarrow  c[123X,  [23X\beta:  a
+  \rightarrow b[123X such that a colift [23X\alpha \backslash \beta: c \rightarrow b[123X of
+  [23X\beta[123X  along  [23X\alpha[123X  exists.  The output is such a colift [23X\alpha \backslash
+  \beta:  c  \rightarrow  b[123X.  Recall  that a colift [23X\alpha \backslash \beta: c
+  \rightarrow  b[123X  of  [23X\beta[123X  along  [23X\alpha[123X  is  a  morphism  such that [23X(\alpha
+  \backslash \beta) \circ \alpha \sim_{a,b} \beta[123X.[133X
+  
+  [1X3.12-16 AddColift[101X
+  
+  [33X[1;0Y[29X[2XAddColift[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given  function  [23XF[123X  to  the  category  for  the  basic operation [10XColift[110X. The
+  function [23XF[123X maps a pair [23X(\alpha, \beta)[123X to a colift [23X\alpha \backslash \beta[123X.[133X
+  
+  [1X3.12-17 ColiftOrFail[101X
+  
+  [33X[1;0Y[29X[2XColiftOrFail[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(c,b) + \{ \mathtt{fail} \}[123X[133X
+  
+  [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  a  \rightarrow  c[123X,  [23X\beta:  a
+  \rightarrow b[123X. The output is a colift [23X\alpha \backslash \beta: c \rightarrow
+  b[123X  of  [23X\beta[123X  along  [23X\alpha[123X  if  such a colift exists or [23X\mathtt{fail}[123X if it
+  doesn't.  Recall  that  a colift [23X\alpha \backslash \beta: c \rightarrow b[123X of
+  [23X\beta[123X  along  [23X\alpha[123X is a morphism such that [23X(\alpha \backslash \beta) \circ
+  \alpha \sim_{a,b} \beta[123X.[133X
+  
+  [1X3.12-18 AddColiftOrFail[101X
+  
+  [33X[1;0Y[29X[2XAddColiftOrFail[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given  function  [23XF[123X to the category for the basic operation [10XColiftOrFail[110X. The
+  function  [23XF[123X  maps a pair [23X(\alpha, \beta)[123X to a colift [23X\alpha \backslash \beta[123X
+  if it exists, and to [10Xfail[110X otherwise.[133X
+  
+  [1X3.12-19 IsColiftable[101X
   
   [33X[1;0Y[29X[2XIsColiftable[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -1024,7 +1065,7 @@
   [23X(\alpha  \backslash  \beta)  \circ  \alpha  \sim_{a,b} \beta[123X. Otherwise, the
   output is [10Xfalse[110X.[133X
   
-  [1X3.12-16 AddIsColiftable[101X
+  [1X3.12-20 AddIsColiftable[101X
   
   [33X[1;0Y[29X[2XAddIsColiftable[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1231,13 +1272,22 @@
   \geq  1[123X. The second list [23X\beta[123X (the right coefficients) is a list of list of
   morphisms  [23X\beta_{ij}:  C_j  \rightarrow  D_i[123X, where [23Xi = 1 \dots m[123X and [23Xj = 1
   \dots  n[123X.  The  third  list  [23X\gamma[123X  (the right side) is a list of morphisms
-  [23X\gamma_i: A_i \rightarrow D_i[123X, where [23Xi = 1, \dots, m[123X. The output is either a
-  list of morphisms [23XX_j: B_j \rightarrow C_j[123X for [23Xj=1\dots n[123X solving the linear
-  system   defined   by   [23X\alpha[123X,   [23X\beta[123X,   [23X\gamma[123X,   i.e.,  [23X\sum_{j  =  1}^n
-  \alpha_{ij}\cdot  X_j  \cdot \beta_{ij} = \gamma_i[123X for all [23Xi = 1 \dots m[123X, or
-  [23X\texttt{fail}[123X if no such solution exists.[133X
+  [23X\gamma_i:  A_i  \rightarrow  D_i[123X,  where  [23Xi  =  1,  \dots, m[123X. Assumes that a
+  solution to the linear system defined by [23X\alpha[123X, [23X\beta[123X, [23X\gamma[123X exists, i.e.,
+  there  exist  morphisms  [23XX_j:  B_j  \rightarrow C_j[123X for [23Xj=1\dots n[123X such that
+  [23X\sum_{j  = 1}^n \alpha_{ij}\cdot X_j \cdot \beta_{ij} = \gamma_i[123X for all [23Xi =
+  1 \dots m[123X. The output is list of such morphisms [23XX_j: B_j \rightarrow C_j[123X for
+  [23Xj=1\dots n[123X.[133X
   
-  [1X3.16-13 MereExistenceOfSolutionOfLinearSystemInAbCategory[101X
+  [1X3.16-13 SolveLinearSystemInAbCategoryOrFail[101X
+  
+  [33X[1;0Y[29X[2XSolveLinearSystemInAbCategoryOrFail[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list of morphisms [23X[X_1, \dots, X_n][123X or [10Xfail[110X[133X
+  
+  [33X[0;0YLike  [10XSolveLinearSystemInAbCategory[110X,  but  without  the  assumption  that  a
+  solution exists. If no solution exists, [10Xfail[110X is returned.[133X
+  
+  [1X3.16-14 MereExistenceOfSolutionOfLinearSystemInAbCategory[101X
   
   [33X[1;0Y[29X[2XMereExistenceOfSolutionOfLinearSystemInAbCategory[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -1245,7 +1295,7 @@
   [33X[0;0YLike  [10XSolveLinearSystemInAbCategory[110X,  but  the  output  is  simply [10Xtrue[110X if a
   solution exists, [10Xfalse[110X otherwise.[133X
   
-  [1X3.16-14 HomStructure[101X
+  [1X3.16-15 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{D}(H(a',b), H(a,b'))[123X[133X
@@ -1254,7 +1304,7 @@
   \rightarrow   a',   \beta:   b   \rightarrow   b'[123X   in   [23XC[123X.  The  output  is
   [10XHomomorphismStructureOnMorphisms[110X called on [23X\alpha[123X, [23X\beta[123X.[133X
   
-  [1X3.16-15 HomStructure[101X
+  [1X3.16-16 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xalpha[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{D}(H(a',b), H(a,b))[123X[133X
@@ -1263,7 +1313,7 @@
   \rightarrow    a'[123X    and    an    object    [23Xb[123X    in   [23XC[123X.   The   output   is
   [10XHomomorphismStructureOnMorphisms[110X called on [23X\alpha[123X, [23X\mathrm{id}_b[123X.[133X
   
-  [1X3.16-16 HomStructure[101X
+  [1X3.16-17 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xa[103X, [3Xbeta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{D}(H(a,b), H(a,b'))[123X[133X
@@ -1272,7 +1322,7 @@
   [23X\beta: b \rightarrow b'[123X in [23XC[123X. The output is [10XHomomorphismStructureOnMorphisms[110X
   called on [23X\mathrm{id}_a[123X, [23X\beta[123X.[133X
   
-  [1X3.16-17 HomStructure[101X
+  [1X3.16-18 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -1280,27 +1330,27 @@
   [33X[0;0YThis  is  a  convenience method. The arguments are two objects [23Xa[123X and [23Xb[123X in [23XC[123X.
   The output is [10XHomomorphismStructureOnObjects[110X called on [23Xa,b[123X.[133X
   
-  [1X3.16-18 HomStructure[101X
+  [1X3.16-19 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis          is          a          convenience          method         for
   [10XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure[110X.[133X
   
-  [1X3.16-19 HomStructure[101X
+  [1X3.16-20 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X ) [32X operation[133X
   
   [33X[0;0YThis          is          a          convenience          method         for
   [10XInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism[110X.[133X
   
-  [1X3.16-20 HomStructure[101X
+  [1X3.16-21 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis is a convenience method for [10XDistinguishedObjectOfHomomorphismStructure[110X.[133X
   
-  [1X3.16-21 BasisOfExternalHom[101X
+  [1X3.16-22 BasisOfExternalHom[101X
   
   [33X[1;0Y[29X[2XBasisOfExternalHom[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list of morphisms in [23X\mathrm{Hom}_{C}(a,b)[123X[133X
@@ -1311,7 +1361,7 @@
   combination       of       [23XL[123X       with       the       coefficients      in
   [10XCoefficientsOfMorphismWithGivenBasisOfExternalHom[110X([23X\alpha,L[123X).[133X
   
-  [1X3.16-22 AddBasisOfExternalHom[101X
+  [1X3.16-23 AddBasisOfExternalHom[101X
   
   [33X[1;0Y[29X[2XAddBasisOfExternalHom[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1319,7 +1369,7 @@
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given function [23XF[123X to the category for the basic operation [10XBasisOfExternalHom[110X.[133X
   
-  [1X3.16-23 CoefficientsOfMorphismWithGivenBasisOfExternalHom[101X
+  [1X3.16-24 CoefficientsOfMorphismWithGivenBasisOfExternalHom[101X
   
   [33X[1;0Y[29X[2XCoefficientsOfMorphismWithGivenBasisOfExternalHom[102X( [3Xalpha[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list of elements in [23Xk[123X[133X
@@ -1328,7 +1378,7 @@
   list  [3XL[103X[10X=BasisOfExternalHom[110X([23Xa,b[123X).  The  output  is  a list of coefficients of
   [23X\alpha[123X with respect to [23XL[123X.[133X
   
-  [1X3.16-24 AddCoefficientsOfMorphismWithGivenBasisOfExternalHom[101X
+  [1X3.16-25 AddCoefficientsOfMorphismWithGivenBasisOfExternalHom[101X
   
   [33X[1;0Y[29X[2XAddCoefficientsOfMorphismWithGivenBasisOfExternalHom[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1337,7 +1387,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XCoefficientsOfMorphismWithGivenBasisOfExternalHom[110X.[133X
   
-  [1X3.16-25 CoefficientsOfMorphism[101X
+  [1X3.16-26 CoefficientsOfMorphism[101X
   
   [33X[1;0Y[29X[2XCoefficientsOfMorphism[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list of elements in [23Xk[123X[133X

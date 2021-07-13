@@ -190,13 +190,25 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lift( c, d );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable( c, d );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LiftOrFail( c, d );</span>
 fail
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable( d, c );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LiftOrFail( d, c );</span>
+0
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Lift( d, c );</span>
+0
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftable( c, d );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ColiftOrFail( c, d );</span>
 0
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Colift( c, d );</span>
 0
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Colift( d, c );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftable( d, c );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ColiftOrFail( d, c );</span>
 fail
 </pre></div>
 
