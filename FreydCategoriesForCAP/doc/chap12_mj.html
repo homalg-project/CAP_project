@@ -1287,8 +1287,8 @@ false
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha = Lift(gamma, beta);</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">fail = Lift(beta, gamma);</span>
-true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable(beta, gamma);</span>
+false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Colift(alpha, gamma) = beta;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha = HomStructure(a, b, HomStructure(alpha));</span>

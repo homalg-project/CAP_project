@@ -1136,8 +1136,8 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xalpha = Lift(gamma, beta);[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xfail = Lift(beta, gamma);[127X[104X
-    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsLiftable(beta, gamma);[127X[104X
+    [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XColift(alpha, gamma) = beta;[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xalpha = HomStructure(a, b, HomStructure(alpha));[127X[104X

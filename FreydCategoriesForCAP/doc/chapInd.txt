@@ -125,7 +125,8 @@
   [2XIsGradedRowMorphism[102X, for IsGradedRowOrColumnMorphism 9.3-5 
   [2XIsGradedRowOrColumn[102X, for IsCapCategoryObject 9.3-1 
   [2XIsGradedRowOrColumnMorphism[102X, for IsCapCategoryMorphism 9.3-4 
-  [2XIsSequenceAsAdelmanCategoryObject[102X, for IsAdelmanCategoryObject 4.3-8 
+  [2XIsSequenceAsAdelmanCategoryObject[102X, for IsAdelmanCategoryObject 4.3-9 
+  [2XMereExistenceOfWitnessPairForBeingCongruentToZero[102X, for IsAdelmanCategoryMorphism 4.3-8 
   [2XMonomorphismToSomeInjectiveObjectForCokernelObject[102X, for IsCapCategoryMorphism 1.7-5 
   [2XMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 1.7-6 
   [2XMorphismDatum[102X, for IsAdelmanCategoryMorphism 4.3-4 

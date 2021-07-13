@@ -50,7 +50,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8360382487DF3851">4.3-5 RelationWitness</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X85C385667D3F83D0">4.3-6 CorelationWitness</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7B36741282949979">4.3-7 WitnessPairForBeingCongruentToZero</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X79FD71CD805A1AB4">4.3-8 IsSequenceAsAdelmanCategoryObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X80EB82578187AFB0">4.3-8 MereExistenceOfWitnessPairForBeingCongruentToZero</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X79FD71CD805A1AB4">4.3-9 IsSequenceAsAdelmanCategoryObject</a></span>
 </div></div>
 </div>
 
@@ -221,13 +222,22 @@
 <h5>4.3-7 WitnessPairForBeingCongruentToZero</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WitnessPairForBeingCongruentToZero</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a list of morphisms or <code class="code">fail</code></p>
+<p>Returns: a list of morphisms</p>
 
-<p>The argument is a morphism <span class="Math">\alpha</span> in an Adelman category. If <span class="Math">\alpha</span> is congruent to zero, the output is a witness pair. If <span class="Math">\alpha</span> is not congruent to zero, the output is <code class="code">fail</code>.</p>
+<p>The argument is a morphism <span class="Math">\alpha</span> congruent to zero in an Adelman category. The output is a witness pair.</p>
+
+<p><a id="X80EB82578187AFB0" name="X80EB82578187AFB0"></a></p>
+
+<h5>4.3-8 MereExistenceOfWitnessPairForBeingCongruentToZero</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MereExistenceOfWitnessPairForBeingCongruentToZero</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is a morphism <span class="Math">\alpha</span> in an Adelman category. The output is <code class="code">true</code> if <span class="Math">\alpha</span> is congruent to zero, else <code class="code">false</code>.</p>
 
 <p><a id="X79FD71CD805A1AB4" name="X79FD71CD805A1AB4"></a></p>
 
-<h5>4.3-8 IsSequenceAsAdelmanCategoryObject</h5>
+<h5>4.3-9 IsSequenceAsAdelmanCategoryObject</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSequenceAsAdelmanCategoryObject</code>( <var class="Arg">x</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
