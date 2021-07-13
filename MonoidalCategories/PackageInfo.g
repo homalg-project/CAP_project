@@ -17,12 +17,12 @@ Version := Maximum( [
   ## this line prevents merge conflicts
   "2020.04-16", ## Sepp's version
   ## this line prevents merge conflicts
-  "2021.05-01", ## Fabian's version
+  "2021.06-01", ## Fabian's version
   ## this line prevents merge conflicts
   "2019.03-14", ## Tom's version
 ] ),
 
-Date := "15/05/2021",
+Date := "13/07/2021",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -130,7 +130,7 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "ToolsForHomalg", ">= 2018.05.22" ],
-                   [ "CAP", ">= 2021.05-01" ],
+                   [ "CAP", ">= 2021.06-02" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
