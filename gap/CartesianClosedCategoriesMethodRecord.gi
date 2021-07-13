@@ -95,7 +95,6 @@ MorphismToCartesianBidualWithGivenCartesianBidual := rec(
 DirectProductExponentialCompatibilityMorphismWithGivenObjects := rec(
   installation_name := "DirectProductExponentialCompatibilityMorphismWithGivenObjects",
   filter_list := [ "category", "object", "object", "object", "object", IsList ],
-  io_type := [ [ "a", "ap", "b", "bp", "L" ], [ "L_1", "L_2" ] ],
   cache_name := "DirectProductExponentialCompatibilityMorphismWithGivenObjects",
   return_type := "morphism" ),
 
