@@ -16,7 +16,6 @@ jobs:
           cd ..
           git clone --depth 1 https://github.com/homalg-project/homalg_project.git
           cd CAP_project
-          echo "SetInfoLevel(InfoPackageLoading, 3);" > ~/.gap/gaprc
           TERM=dumb make ci-test
           bash <(curl -s https://codecov.io/bash)
 workflows:
