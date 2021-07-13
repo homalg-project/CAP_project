@@ -10,11 +10,11 @@ Version := Maximum( [
            ##
            "2019.01-16", # Mohamed's version
            ##
-           "2021.05-01", # Fabian's version
+           "2021.06-01", # Fabian's version
            ##
            ] ),
 
-Date := "15/05/2021",
+Date := "13/07/2021",
 License := "GPL-2.0-or-later",
 
 
@@ -92,7 +92,7 @@ Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "MatricesForHomalg", ">=2019.02.01" ],
-                           [ "CAP", ">= 2021.05-01" ],
+                           [ "CAP", ">= 2021.06-01" ],
                            [ "MonoidalCategories", ">= 2019.01.16" ],
                            [ "GeneralizedMorphismsForCAP", ">=0" ],
   ],
