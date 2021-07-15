@@ -105,7 +105,7 @@ CapJitAddLogicFunction( function ( tree, jit_args )
     
 end );
 
-# AttributeGetter( ObjectifyWithAttributes( ..., Attribute, value, ... ) ) => value
+# AttributeGetter( ObjectifyObject/MorphismForCAPWithAttributes( ..., Attribute, value, ... ) ) => value
 CapJitAddLogicFunction( function ( tree, jit_args )
   local pre_func;
     
@@ -113,29 +113,67 @@ CapJitAddLogicFunction( function ( tree, jit_args )
     Info( InfoCapJit, 1, "Apply logic for attribute getters." );
     
     pre_func := function ( tree, additional_arguments )
-      local args, object, value, pos;
+      local attribute_name, args, object, list, pos;
         
         # attribute getters can also be applied to more than one argument, but we are not interested in that case
         if CapJitIsCallToGlobalFunction( tree, gvar -> IsAttribute( ValueGlobal( gvar ) ) ) and Length( tree.args ) = 1 then
             
+            attribute_name := tree.funcref.gvar;
+            
             args := tree.args;
             
             object := args[1];
-
-            if CapJitIsCallToGlobalFunction( object, "ObjectifyWithAttributes" ) then
+            
+            list := fail;
+            
+            if CapJitIsCallToGlobalFunction( object, "ObjectifyObjectForCAPWithAttributes" ) then
                 
-                pos := PositionProperty( object.args, a -> a.type = "EXPR_REF_GVAR" and a.gvar = tree.funcref.gvar );
+                # special case
+                if attribute_name = "CapCategory" then
+                    
+                    return object.args[2];
+                    
+                fi;
                 
-                if pos <> fail then
+                list := object.args{[ 3 .. Length( object.args ) ]};
+                
+            fi;
+            
+            if CapJitIsCallToGlobalFunction( object, "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" ) then
+                
+                # special cases
+                if attribute_name = "CapCategory" then
                     
-                    Assert( 0, IsBound( object.args[pos + 1] ) );
+                    return object.args[2];
                     
-                    return object.args[pos + 1];
+                elif attribute_name = "Source" then
+                    
+                    return object.args[3];
+                    
+                elif attribute_name = "Range" then
+                    
+                    return object.args[4];
+                    
+                fi;
+                
+                list := object.args{[ 5 .. Length( object.args ) ]};
+                
+            fi;
+            
+            if list <> fail then
+                
+                pos := PositionProperty( list, a -> a.type = "EXPR_REF_GVAR" and a.gvar = tree.funcref.gvar );
+                
+                if pos <> fail and IsOddInt( pos ) then
+                    
+                    Assert( 0, IsBound( list[pos + 1] ) );
+                    
+                    return list[pos + 1];
                     
                 fi;
                 
             fi;
-
+            
         fi;
             
         return tree;
