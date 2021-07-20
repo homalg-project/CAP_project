@@ -32,9 +32,10 @@ InstallMethod( AsVectorSpaceMorphism,
 end );
 
 ##
+# convenience
 InstallMethod( VectorSpaceMorphism,
                [ IsVectorSpaceObject, IsList, IsVectorSpaceObject ],
-                        
+               
   function( source, element_list, range )
     local field, homalg_matrix;
     
@@ -46,48 +47,24 @@ InstallMethod( VectorSpaceMorphism,
     
 end );
 
-
 ##
-InstallMethodForCompilerForCAP( VectorSpaceMorphism,
-                               [ IsVectorSpaceObject, IsHomalgMatrix, IsVectorSpaceObject ],
+# convenience
+InstallMethod( VectorSpaceMorphism,
+               [ IsVectorSpaceObject, IsHomalgMatrix, IsVectorSpaceObject ],
                
   function( source, homalg_matrix, range )
-    local homalg_field, category;
     
-    category := CapCategory( source );
+    return VectorSpaceMorphism( CapCategory( source ), source, homalg_matrix, range );
     
-    if not IsIdenticalObj( category, CapCategory( range ) ) then
-      
-      Error( "source and range are not defined over identical categories" );
-      
-    fi;
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( VectorSpaceMorphism,
+                                     [ IsMatrixCategory, IsVectorSpaceObject, IsHomalgMatrix, IsVectorSpaceObject ],
+                                     
+  function( cat, source, homalg_matrix, range )
     
-    homalg_field := HomalgRing( homalg_matrix );
-    
-    if not IsIdenticalObj( homalg_field, UnderlyingFieldForHomalg( source ) ) then
-      
-      Error( "the matrix is defined over a different ring than the objects" );
-      
-    fi;
-    
-    if NrRows( homalg_matrix ) <> Dimension( source ) then
-      
-      Error( "the number of rows has to be equal to the dimension of the source" );
-      
-    fi;
-    
-    if NrColumns( homalg_matrix ) <> Dimension( range ) then
-      
-      Error( "the number of columns has to be equal to the dimension of the range" );
-      
-    fi;
-    
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category,
-                                           source,
-                                           range,
-                                           UnderlyingFieldForHomalg, category!.field_for_matrix_category,
-                                           UnderlyingMatrix, homalg_matrix
-    );
+    return MorphismConstructor( cat, source, homalg_matrix, range );
     
 end );
 

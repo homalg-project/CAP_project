@@ -46,9 +46,9 @@ end
         
 ########
 function ( cat, S, T )
-    return List( [ 1 .. RankOfObject( S ) * RankOfObject( T ) ], function ( logic_new_func_20180_x )
+    return List( [ 1 .. RankOfObject( S ) * RankOfObject( T ) ], function ( logic_new_func_20247_x )
             return ObjectifyWithAttributes( rec(
-                   ), MorphismType( CapCategory( S ) ), CapCategory, CapCategory( S ), Source, S, Range, T, UnderlyingMatrix, ConvertColumnToMatrix( CertainColumns( HomalgIdentityMatrix( RankOfObject( S ) * RankOfObject( T ), UnderlyingRing( cat ) ), [ logic_new_func_20180_x ] ), RankOfObject( T ), RankOfObject( S ) ) );
+                   ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, UnderlyingMatrix, ConvertColumnToMatrix( CertainColumns( HomalgIdentityMatrix( RankOfObject( S ) * RankOfObject( T ), UnderlyingRing( cat ) ), [ logic_new_func_20247_x ] ), RankOfObject( T ), RankOfObject( S ) ) );
         end );
 end
 ########

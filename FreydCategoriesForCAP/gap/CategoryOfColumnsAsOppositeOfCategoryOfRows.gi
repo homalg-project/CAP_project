@@ -55,7 +55,7 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
         
         category_of_rows := Opposite( cat );
         
-        return CategoryOfRowsMorphism(
+        return CategoryOfRowsMorphism( category_of_rows,
             CategoryOfRowsObject( category_of_rows, RankOfObject( Range( mor ) ) ),
             UnderlyingMatrix( mor ),
             CategoryOfRowsObject( category_of_rows, RankOfObject( Source( mor ) ) )
@@ -127,6 +127,69 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
     
 end );
 
+# legacy constructors used below
+BindGlobal( "LegacyCategoryOfColumnsObject", function( cat, rank )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    if not IsInt( rank ) or rank < 0 then
+        
+        Error( "the object datum must be a non-negative integer" );
+        
+    fi;
+    
+    return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
+                                                RankOfObject, rank );
+    
+end );
+
+BindGlobal( "LegacyCategoryOfColumnsMorphism", function( cat, source, homalg_matrix, range )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    if not IsHomalgMatrix( homalg_matrix ) then
+        
+        Error( "the morphism datum must be a homalg matrix" );
+        
+    fi;
+    
+    if not IsIdenticalObj( HomalgRing( homalg_matrix ), UnderlyingRing( cat ) ) then
+        
+        Error( "the matrix is defined over a different ring than the category" );
+        
+    fi;
+    
+    if NrColumns( homalg_matrix ) <> ObjectDatum( cat, source ) then
+        
+        Error( "the number of rows has to be equal to the dimension of the source" );
+        
+    fi;
+    
+    if NrRows( homalg_matrix ) <> ObjectDatum( cat, range ) then
+        
+        Error( "the number of columns has to be equal to the dimension of the range" );
+        
+    fi;
+    
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
+                                           source,
+                                           range,
+                                           UnderlyingMatrix, homalg_matrix
+    );
+    
+end );
+
+BindGlobal( "LegacyAsCategoryOfColumnsMorphism", function( homalg_matrix, category )
+    local source, range;
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    source := CategoryOfColumnsObject( category, NrColumns( homalg_matrix ) );
+    
+    range := CategoryOfColumnsObject( category, NrRows( homalg_matrix ) );
+    
+    return LegacyCategoryOfColumnsMorphism( CapCategory( source ), source, homalg_matrix, range );
+    
+end );
+
+
 ####################################
 ##
 ## Basic operations
@@ -149,7 +212,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
         AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
           function( cat, r, alpha )
             
-            return CategoryOfColumnsMorphism( Source( alpha ), r * UnderlyingMatrix( alpha ), Range( alpha ) );
+            return LegacyCategoryOfColumnsMorphism( cat, Source( alpha ), r * UnderlyingMatrix( alpha ), Range( alpha ) );
             
         end );
         
@@ -161,7 +224,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
         AddHomomorphismStructureOnObjects( category,
           function( cat, object_1, object_2 )
             
-            return CategoryOfColumnsObject( cat, RankOfObject( object_1 ) * RankOfObject( object_2 ) );
+            return LegacyCategoryOfColumnsObject( cat, RankOfObject( object_1 ) * RankOfObject( object_2 ) );
             
         end );
         
@@ -169,7 +232,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
         AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
           function( cat, source, alpha, beta, range )
             
-            return CategoryOfColumnsMorphism( source,
+            return LegacyCategoryOfColumnsMorphism( cat, source,
                                            KroneckerMat( TransposedMatrix( UnderlyingMatrix( alpha ) ), UnderlyingMatrix( beta ) ),
                                            range );
             
@@ -179,7 +242,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
         AddDistinguishedObjectOfHomomorphismStructure( category,
           function( cat )
             
-            return CategoryOfColumnsObject( cat, 1 );
+            return LegacyCategoryOfColumnsObject( cat, 1 );
             
         end );
         
@@ -192,7 +255,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
             
             underlying_matrix := ConvertMatrixToColumn( underlying_matrix );
             
-            return CategoryOfColumnsMorphism(
+            return LegacyCategoryOfColumnsMorphism( cat,
                      DistinguishedObjectOfHomomorphismStructure( cat ),
                      underlying_matrix,
                      HomomorphismStructureOnObjects( Source( alpha ), Range( alpha ) )
@@ -213,7 +276,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
             
             underlying_matrix := ConvertColumnToMatrix( underlying_matrix, nr_rows, nr_columns );
             
-            return CategoryOfColumnsMorphism( A, underlying_matrix, B );
+            return LegacyCategoryOfColumnsMorphism( cat, A, underlying_matrix, B );
             
         end );
         
@@ -227,7 +290,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
         AddTensorProductOnObjects( category,
           function( cat, a, b )
             
-            return CategoryOfColumnsObject( cat, RankOfObject( a ) * RankOfObject( b ) );
+            return LegacyCategoryOfColumnsObject( cat, RankOfObject( a ) * RankOfObject( b ) );
             
         end );
         
@@ -235,7 +298,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
         AddTensorProductOnMorphismsWithGivenTensorProducts( category,
           function( cat, s, alpha, beta, r )
             
-            return CategoryOfColumnsMorphism( s,
+            return LegacyCategoryOfColumnsMorphism( cat, s,
               KroneckerMat( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ),
             r );
             
@@ -244,7 +307,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
         AddTensorUnit( category,
           function( cat )
             
-            return CategoryOfColumnsObject( cat, 1 );
+            return LegacyCategoryOfColumnsObject( cat, 1 );
             
         end );
         
@@ -265,7 +328,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
                                   rank
                                 );
           
-          return CategoryOfColumnsMorphism( object_1_tensored_object_2,
+          return LegacyCategoryOfColumnsMorphism( cat, object_1_tensored_object_2,
                                             HomalgMatrix( permutation_matrix, rank, rank, ring ),
                                             object_2_tensored_object_1
                                           );
@@ -279,7 +342,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
         AddDualOnMorphismsWithGivenDuals( category,
           function( cat, dual_source, morphism, dual_range )
             
-            return CategoryOfColumnsMorphism( dual_source,
+            return LegacyCategoryOfColumnsMorphism( cat, dual_source,
                                               TransposedMatrix( UnderlyingMatrix( morphism ) ),
                                               dual_range );
             
@@ -300,7 +363,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
             
             id := HomalgIdentityMatrix( rank, ring );
             
-            return CategoryOfColumnsMorphism( tensor_object,
+            return LegacyCategoryOfColumnsMorphism( cat, tensor_object,
                                               UnionOfColumns( List( [ 1 .. rank ], i -> CertainRows( id, [i] ) ) ),
                                               unit );
             
@@ -322,7 +385,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
             
             id := HomalgIdentityMatrix( rank, ring );
             
-            return CategoryOfColumnsMorphism( unit,
+            return LegacyCategoryOfColumnsMorphism( cat, unit,
                                               UnionOfRows( List( [ 1 .. rank ], i -> CertainColumns( id, [i] ) ) ),
                                               tensor_object );
             
@@ -341,7 +404,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          LegacyCategoryOfColumnsMorphism( cat,
             Source( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple( alpha )[1],
             Range( alpha )
@@ -354,7 +417,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          LegacyCategoryOfColumnsMorphism( cat,
             Range( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple( alpha )[4],
             Range( alpha )
@@ -367,7 +430,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          LegacyCategoryOfColumnsMorphism( cat,
             Range( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple( alpha )[2],
             Range( alpha )
@@ -380,7 +443,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          LegacyCategoryOfColumnsMorphism( cat,
             Source( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple( alpha )[3],
             Source( alpha )
@@ -393,7 +456,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          LegacyCategoryOfColumnsMorphism( cat,
             Source( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple( alpha )[5],
             Source( alpha )
@@ -407,7 +470,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          LegacyCategoryOfColumnsMorphism( cat,
             Source( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationSourceTuple( alpha )[1],
             Range( alpha )
@@ -420,7 +483,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          LegacyCategoryOfColumnsMorphism( cat,
             Source( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationSourceTuple( alpha )[2],
             Source( alpha )
@@ -433,7 +496,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          LegacyCategoryOfColumnsMorphism( cat,
             Source( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationSourceTuple( alpha )[3],
             Source( alpha )
@@ -447,7 +510,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          LegacyCategoryOfColumnsMorphism( cat,
             Source( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationRangeTuple( alpha )[1],
             Range( alpha )
@@ -460,7 +523,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          LegacyCategoryOfColumnsMorphism( cat,
             Range( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationRangeTuple( alpha )[3],
             Range( alpha )
@@ -473,7 +536,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          LegacyCategoryOfColumnsMorphism( cat,
             Range( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationRangeTuple( alpha )[2],
             Range( alpha )
@@ -485,7 +548,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
     AddSomeReductionBySplitEpiSummand( category,
       function( cat, alpha )
         
-        return AsCategoryOfColumnsMorphism( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha )[1], category );
+        return LegacyAsCategoryOfColumnsMorphism( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha )[1], category );
         
     end );
     
@@ -493,7 +556,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
     AddSomeReductionBySplitEpiSummand_MorphismFromInputRange( category,
       function( cat, alpha )
         
-        return AsCategoryOfColumnsMorphism( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha )[2], category );
+        return LegacyAsCategoryOfColumnsMorphism( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha )[2], category );
         
     end );
     
@@ -501,7 +564,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
     AddSomeReductionBySplitEpiSummand_MorphismToInputRange( category,
       function( cat, alpha )
         
-        return AsCategoryOfColumnsMorphism( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha )[3], category );
+        return LegacyAsCategoryOfColumnsMorphism( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple( alpha )[3], category );
         
     end );
     

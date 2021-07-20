@@ -105,16 +105,7 @@ InstallMethodForCompilerForCAP( CategoryOfColumnsObjectOp,
                
   function( category, rank )
     
-    if rank < 0 then
-      
-      Error( "first argument must be a non-negative integer" );
-      
-    fi;
-    
-    return ObjectifyObjectForCAPWithAttributes( rec( ),
-                                                category,
-                                                RankOfObject, rank
-    );
+    return ObjectConstructor( category, rank );
     
 end );
 
@@ -134,45 +125,22 @@ InstallMethod( AsCategoryOfColumnsMorphism,
 end );
 
 ##
-InstallMethodForCompilerForCAP( CategoryOfColumnsMorphism,
-                                [ IsCategoryOfColumnsObject, IsHomalgMatrix, IsCategoryOfColumnsObject ],
+InstallMethod( CategoryOfColumnsMorphism,
+               [ IsCategoryOfColumnsObject, IsHomalgMatrix, IsCategoryOfColumnsObject ],
                
   function( source, homalg_matrix, range )
-    local homalg_ring, category;
     
-    category := CapCategory( source );
+    return CategoryOfColumnsMorphism( CapCategory( source ), source, homalg_matrix, range );
     
-    if not IsIdenticalObj( category, CapCategory( range ) ) then
-      
-      Error( "source and range are not defined over identical categories" );
-      
-    fi;
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( CategoryOfColumnsMorphism,
+                                     [ IsCategoryOfColumns, IsCategoryOfColumnsObject, IsHomalgMatrix, IsCategoryOfColumnsObject ],
+                                     
+  function( cat, source, homalg_matrix, range )
     
-    homalg_ring := HomalgRing( homalg_matrix );
-    
-    if not IsIdenticalObj( homalg_ring, UnderlyingRing( category ) ) then
-      
-      Error( "the matrix is defined over a different ring than the objects" );
-      
-    fi;
-    
-    if NrColumns( homalg_matrix ) <> RankOfObject( source ) then
-      
-      Error( "the number of columns has to be equal to the rank of the source" );
-      
-    fi;
-    
-    if NrRows( homalg_matrix ) <> RankOfObject( range ) then
-      
-      Error( "the number of rows has to be equal to the rank of the range" );
-      
-    fi;
-    
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category,
-                                           source,
-                                           range,
-                                           UnderlyingMatrix, homalg_matrix
-    );
+    return MorphismConstructor( cat, source, homalg_matrix, range );
     
 end );
 
@@ -284,6 +252,74 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     
     is_defined_over_field := HasIsFieldForHomalg( ring ) and IsFieldForHomalg( ring );
     
+    ## constructors
+    ##
+    AddObjectConstructor( category,
+      function( cat, rank )
+        
+        if not IsInt( rank ) or rank < 0 then
+            
+            Error( "the object datum must be a non-negative integer" );
+            
+        fi;
+        
+        return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
+                                                    RankOfObject, rank );
+        
+    end );
+    
+    ##
+    AddObjectDatum( category,
+      function( cat, object )
+        
+        return RankOfObject( object );
+        
+    end );
+    
+    ##
+    AddMorphismConstructor( category,
+      function( cat, source, homalg_matrix, range )
+        
+        if not IsHomalgMatrix( homalg_matrix ) then
+            
+            Error( "the morphism datum must be a homalg matrix" );
+            
+        fi;
+        
+        if not IsIdenticalObj( HomalgRing( homalg_matrix ), UnderlyingRing( cat ) ) then
+            
+            Error( "the matrix is defined over a different ring than the category" );
+            
+        fi;
+        
+        if NrColumns( homalg_matrix ) <> ObjectDatum( cat, source ) then
+            
+            Error( "the number of rows has to be equal to the dimension of the source" );
+            
+        fi;
+        
+        if NrRows( homalg_matrix ) <> ObjectDatum( cat, range ) then
+            
+            Error( "the number of columns has to be equal to the dimension of the range" );
+            
+        fi;
+        
+        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
+                                               source,
+                                               range,
+                                               UnderlyingMatrix, homalg_matrix
+        );
+        
+    end );
+    
+    ##
+    AddMorphismDatum( category,
+      function( cat, morphism )
+        
+        return UnderlyingMatrix( morphism );
+        
+    end );
+    
     ## Well-defined for objects and morphisms
     ##
     AddIsWellDefinedForObjects( category,
@@ -358,7 +394,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
       
       function( cat, object )
         
-        return CategoryOfColumnsMorphism( object, HomalgIdentityMatrix( RankOfObject( object ), ring ), object );
+        return CategoryOfColumnsMorphism( cat, object, HomalgIdentityMatrix( RankOfObject( object ), ring ), object );
         
     end );
     
@@ -371,7 +407,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
             
             composition := UnderlyingMatrix( morphism_2 ) * UnderlyingMatrix( morphism_1 );
             
-            return CategoryOfColumnsMorphism( Source( morphism_1 ), composition, Range( morphism_2 ) );
+            return CategoryOfColumnsMorphism( cat, Source( morphism_1 ), composition, Range( morphism_2 ) );
             
           end, [ ] ],
         
@@ -389,7 +425,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         
         [ function( cat, left_morphism, zero_morphism )
             
-            return CategoryOfColumnsMorphism( Source( left_morphism ),
+            return CategoryOfColumnsMorphism( cat, Source( left_morphism ),
                                         HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ),
                                         NrColumns( UnderlyingMatrix( left_morphism ) ), ring ),
                                         Range( zero_morphism ) );
@@ -398,7 +434,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         
         [ function( cat, zero_morphism, right_morphism )
             
-            return CategoryOfColumnsMorphism( Source( zero_morphism ),
+            return CategoryOfColumnsMorphism( cat, Source( zero_morphism ),
                                            HomalgZeroMatrix( NrRows( UnderlyingMatrix( right_morphism ) ),
                                            NrColumns( UnderlyingMatrix( zero_morphism ) ), ring ),
                                            Range( right_morphism ) );
@@ -421,7 +457,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     AddAdditionForMorphisms( category,
       function( cat, morphism_1, morphism_2 )
         
-        return CategoryOfColumnsMorphism( Source( morphism_1 ),
+        return CategoryOfColumnsMorphism( cat, Source( morphism_1 ),
                                        UnderlyingMatrix( morphism_1 ) + UnderlyingMatrix( morphism_2 ),
                                        Range( morphism_2 ) );
         
@@ -431,7 +467,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     AddAdditiveInverseForMorphisms( category,
       function( cat, morphism )
         
-        return CategoryOfColumnsMorphism( Source( morphism ),
+        return CategoryOfColumnsMorphism( cat, Source( morphism ),
                                        - UnderlyingMatrix( morphism ),
                                        Range( morphism ) );
         
@@ -441,7 +477,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     AddZeroMorphism( category,
       function( cat, source, range )
         
-        return CategoryOfColumnsMorphism( source,
+        return CategoryOfColumnsMorphism( cat, source,
                                        HomalgZeroMatrix( RankOfObject( range ), RankOfObject( source ), ring ),
                                        range );
         
@@ -460,7 +496,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
       function( cat, sink, zero_object )
         local morphism;
         
-        morphism := CategoryOfColumnsMorphism( sink, HomalgZeroMatrix( 0, RankOfObject( sink ), ring ), zero_object );
+        morphism := CategoryOfColumnsMorphism( cat, sink, HomalgZeroMatrix( 0, RankOfObject( sink ), ring ), zero_object );
         
         return morphism;
         
@@ -471,7 +507,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
       function( cat, source, zero_object )
         local morphism;
         
-        morphism := CategoryOfColumnsMorphism( zero_object, HomalgZeroMatrix( RankOfObject( source ), 0, ring ), source );
+        morphism := CategoryOfColumnsMorphism( cat, zero_object, HomalgZeroMatrix( RankOfObject( source ), 0, ring ), source );
         
         return morphism;
         
@@ -492,7 +528,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     AddDirectSumFunctorialWithGivenDirectSums( category,
       function( cat, direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
         
-        return CategoryOfColumnsMorphism( direct_sum_source,
+        return CategoryOfColumnsMorphism( cat, direct_sum_source,
                                        DiagMat( ring, List( diagram, mor -> UnderlyingMatrix( mor ) ) ),
                                        direct_sum_range );
         
@@ -510,7 +546,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
             List( sink, UnderlyingMatrix )
         );
         
-        return CategoryOfColumnsMorphism( test_object, underlying_matrix_of_universal_morphism, direct_sum );
+        return CategoryOfColumnsMorphism( cat, test_object, underlying_matrix_of_universal_morphism, direct_sum );
       
     end );
     
@@ -526,7 +562,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
             List( sink, UnderlyingMatrix )
         );
         
-        return CategoryOfColumnsMorphism( coproduct, underlying_matrix_of_universal_morphism, test_object );
+        return CategoryOfColumnsMorphism( cat, coproduct, underlying_matrix_of_universal_morphism, test_object );
         
     end );
     
@@ -538,7 +574,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         
         homalg_matrix := ReducedSyzygiesOfColumns( UnderlyingMatrix( morphism ) );
         
-        return CategoryOfColumnsMorphism( CategoryOfColumnsObject( cat, NrColumns( homalg_matrix ) ), homalg_matrix, Source( morphism ) );
+        return CategoryOfColumnsMorphism( cat, CategoryOfColumnsObject( cat, NrColumns( homalg_matrix ) ), homalg_matrix, Source( morphism ) );
         
     end );
     
@@ -548,7 +584,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         
         homalg_matrix := ReducedSyzygiesOfRows( UnderlyingMatrix( morphism ) );
         
-        return CategoryOfColumnsMorphism( Range( morphism ), homalg_matrix, CategoryOfColumnsObject( cat, NrRows( homalg_matrix ) ) );
+        return CategoryOfColumnsMorphism( cat, Range( morphism ), homalg_matrix, CategoryOfColumnsObject( cat, NrRows( homalg_matrix ) ) );
         
     end );
     
@@ -559,7 +595,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         
         homalg_matrix := ReducedSyzygiesOfColumns( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) );
         
-        return CategoryOfColumnsMorphism( CategoryOfColumnsObject( cat, NrColumns( homalg_matrix ) ), homalg_matrix, Source( morphism_1 ) );
+        return CategoryOfColumnsMorphism( cat, CategoryOfColumnsObject( cat, NrColumns( homalg_matrix ) ), homalg_matrix, Source( morphism_1 ) );
         
     end );
     
@@ -578,7 +614,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         
         left_divide := LeftDivide( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ) );
         
-        return CategoryOfColumnsMorphism( Source( alpha ), left_divide, Source( beta ) );
+        return CategoryOfColumnsMorphism( cat, Source( alpha ), left_divide, Source( beta ) );
         
     end );
     
@@ -589,7 +625,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         
         homalg_matrix := ReducedSyzygiesOfRows( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) );
         
-        return CategoryOfColumnsMorphism( Range( morphism_1 ), homalg_matrix, CategoryOfColumnsObject( cat, NrRows( homalg_matrix ) ) );
+        return CategoryOfColumnsMorphism( cat, Range( morphism_1 ), homalg_matrix, CategoryOfColumnsObject( cat, NrRows( homalg_matrix ) ) );
         
     end );
     
@@ -608,7 +644,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         
         right_divide := RightDivide( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ) );
         
-        return CategoryOfColumnsMorphism( Range( alpha ), right_divide, Range( beta ) );
+        return CategoryOfColumnsMorphism( cat, Range( alpha ), right_divide, Range( beta ) );
         
     end );
     
@@ -629,7 +665,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
           
           matrices := List( [ 1 .. s * t ], i -> ConvertColumnToMatrix( CertainColumns( identity, [ i ] ), t, s ) );
           
-          return List( matrices, mat -> CategoryOfColumnsMorphism( S, mat, T ) );
+          return List( matrices, mat -> CategoryOfColumnsMorphism( cat, S, mat, T ) );
           
       end );
       
@@ -661,7 +697,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
           
           kernel_object := CategoryOfColumnsObject( cat, NrColumns( kernel_emb ) );
           
-          return CategoryOfColumnsMorphism( kernel_object, kernel_emb, Source( morphism ) );
+          return CategoryOfColumnsMorphism( cat, kernel_object, kernel_emb, Source( morphism ) );
           
       end );
         
@@ -685,7 +721,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
           
           cokernel_obj := CategoryOfColumnsObject( cat, NrRows( cokernel_proj ) );
           
-          return CategoryOfColumnsMorphism( Range( morphism ), cokernel_proj, cokernel_obj );
+          return CategoryOfColumnsMorphism( cat, Range( morphism ), cokernel_proj, cokernel_obj );
           
       end );
       
@@ -706,7 +742,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
           function( cat, r, alpha )
             
-            return CategoryOfColumnsMorphism( Source( alpha ), r * UnderlyingMatrix( alpha ), Range( alpha ) );
+            return CategoryOfColumnsMorphism( cat, Source( alpha ), r * UnderlyingMatrix( alpha ), Range( alpha ) );
             
         end );
         
@@ -726,7 +762,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
           function( cat, source, alpha, beta, range )
             
-            return CategoryOfColumnsMorphism( source,
+            return CategoryOfColumnsMorphism( cat, source,
                                            KroneckerMat( TransposedMatrix( UnderlyingMatrix( alpha ) ), UnderlyingMatrix( beta ) ),
                                            range );
             
@@ -749,7 +785,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
             
             underlying_matrix := ConvertMatrixToColumn( underlying_matrix );
             
-            return CategoryOfColumnsMorphism(
+            return CategoryOfColumnsMorphism( cat,
                      DistinguishedObjectOfHomomorphismStructure( cat ),
                      underlying_matrix,
                      HomomorphismStructureOnObjects( Source( alpha ), Range( alpha ) )
@@ -770,7 +806,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
             
             underlying_matrix := ConvertColumnToMatrix( underlying_matrix, nr_rows, nr_columns );
             
-            return CategoryOfColumnsMorphism( A, underlying_matrix, B );
+            return CategoryOfColumnsMorphism( cat, A, underlying_matrix, B );
             
         end );
         
@@ -792,7 +828,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         AddTensorProductOnMorphismsWithGivenTensorProducts( category,
           function( cat, s, alpha, beta, r )
             
-            return CategoryOfColumnsMorphism( s,
+            return CategoryOfColumnsMorphism( cat, s,
               KroneckerMat( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ) ),
             r );
             
@@ -822,7 +858,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
                                   rank
                                 );
           
-          return CategoryOfColumnsMorphism( object_1_tensored_object_2,
+          return CategoryOfColumnsMorphism( cat, object_1_tensored_object_2,
                                             HomalgMatrix( permutation_matrix, rank, rank, ring ),
                                             object_2_tensored_object_1
                                           );
@@ -836,7 +872,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         AddDualOnMorphismsWithGivenDuals( category,
           function( cat, dual_source, morphism, dual_range )
             
-            return CategoryOfColumnsMorphism( dual_source,
+            return CategoryOfColumnsMorphism( cat, dual_source,
                                               TransposedMatrix( UnderlyingMatrix( morphism ) ),
                                               dual_range );
             
@@ -857,7 +893,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
             
             id := HomalgIdentityMatrix( rank, ring );
             
-            return CategoryOfColumnsMorphism( tensor_object,
+            return CategoryOfColumnsMorphism( cat, tensor_object,
                                               UnionOfColumns( List( [ 1 .. rank ], i -> CertainRows( id, [i] ) ) ),
                                               unit );
             
@@ -879,7 +915,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
             
             id := HomalgIdentityMatrix( rank, ring );
             
-            return CategoryOfColumnsMorphism( unit,
+            return CategoryOfColumnsMorphism( cat, unit,
                                               UnionOfRows( List( [ 1 .. rank ], i -> CertainColumns( id, [i] ) ) ),
                                               tensor_object );
             
@@ -898,7 +934,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          CategoryOfColumnsMorphism( cat,
             Source( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple( alpha )[1],
             Range( alpha )
@@ -911,7 +947,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          CategoryOfColumnsMorphism( cat,
             Range( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple( alpha )[4],
             Range( alpha )
@@ -924,7 +960,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          CategoryOfColumnsMorphism( cat,
             Range( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple( alpha )[2],
             Range( alpha )
@@ -937,7 +973,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          CategoryOfColumnsMorphism( cat,
             Source( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple( alpha )[3],
             Source( alpha )
@@ -950,7 +986,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          CategoryOfColumnsMorphism( cat,
             Source( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple( alpha )[5],
             Source( alpha )
@@ -964,7 +1000,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          CategoryOfColumnsMorphism( cat,
             Source( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationSourceTuple( alpha )[1],
             Range( alpha )
@@ -977,7 +1013,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          CategoryOfColumnsMorphism( cat,
             Source( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationSourceTuple( alpha )[2],
             Source( alpha )
@@ -990,7 +1026,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          CategoryOfColumnsMorphism( cat,
             Source( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationSourceTuple( alpha )[3],
             Source( alpha )
@@ -1004,7 +1040,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          CategoryOfColumnsMorphism( cat,
             Source( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationRangeTuple( alpha )[1],
             Range( alpha )
@@ -1017,7 +1053,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          CategoryOfColumnsMorphism( cat,
             Range( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationRangeTuple( alpha )[3],
             Range( alpha )
@@ -1030,7 +1066,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
       function( cat, alpha, i )
         
         return
-          CategoryOfColumnsMorphism(
+          CategoryOfColumnsMorphism( cat,
             Range( alpha ),
             CATEGORY_OF_COLUMNS_SimplificationRangeTuple( alpha )[2],
             Range( alpha )

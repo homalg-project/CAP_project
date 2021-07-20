@@ -46,9 +46,9 @@ end
         
 ########
 function ( cat, S, T )
-    return List( [ 1 .. Dimension( S ) * Dimension( T ) ], function ( logic_new_func_10180_x )
+    return List( [ 1 .. Dimension( S ) * Dimension( T ) ], function ( logic_new_func_10247_x )
             return ObjectifyWithAttributes( rec(
-                   ), MorphismType( CapCategory( S ) ), CapCategory, CapCategory( S ), Source, S, Range, T, UnderlyingFieldForHomalg, CapCategory( S )!.field_for_matrix_category, UnderlyingMatrix, ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( Dimension( S ) * Dimension( T ), UnderlyingFieldForHomalg( S ) ), [ logic_new_func_10180_x ] ), Dimension( S ), Dimension( T ) ) );
+                   ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( Dimension( S ) * Dimension( T ), UnderlyingFieldForHomalg( S ) ), [ logic_new_func_10247_x ] ), Dimension( S ), Dimension( T ) ) );
         end );
 end
 ########
@@ -1046,7 +1046,7 @@ end
 ########
 function ( cat, direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
     return ObjectifyWithAttributes( rec(
-           ), MorphismType( CapCategory( direct_sum_source ) ), CapCategory, CapCategory( direct_sum_source ), Source, direct_sum_source, Range, direct_sum_range, UnderlyingFieldForHomalg, CapCategory( direct_sum_source )!.field_for_matrix_category, UnderlyingMatrix, DiagMat( UnderlyingRing( cat ), List( diagram, function ( mor )
+           ), MorphismType( cat ), CapCategory, cat, Source, direct_sum_source, Range, direct_sum_range, UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, DiagMat( UnderlyingRing( cat ), List( diagram, function ( mor )
                 return UnderlyingMatrix( mor );
             end ) ) );
 end
