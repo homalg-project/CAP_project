@@ -17,11 +17,11 @@ Version := Maximum( [
   ## this line prevents merge conflicts
   "2020.05-17", ## Mohamed's version
   ## this line prevents merge conflicts
-  "2021.06-02", ## Fabian's version
+  "2021.07-01", ## Fabian's version
   ## this line prevents merge conflicts
   "2020.04-18", ## Kamal's version
 ] ),
-Date := "13/07/2021",
+Date := "20/07/2021",
 License := "GPL-2.0-or-later",
 
 
