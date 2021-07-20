@@ -396,7 +396,6 @@ DeclareGlobalFunction( "ObjectifyObjectForCAPWithAttributes" );
 ###################################
 
 #! @Description
-#! EXPERIMENTAL: This specification might change any time without prior notice.
 #! The arguments are a category $C$ and an object datum $a$
 #! (type and semantics of the object datum depend on the category).
 #! The output is an object of $C$ defined by $a$.
@@ -425,7 +424,6 @@ DeclareOperation( "AddObjectConstructor",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
-#! EXPERIMENTAL: This specification might change any time without prior notice.
 #! The argument is a CAP category object <A>obj</A>.
 #! The output is a datum which can be used to construct <A>obj</A>, that is,
 #! `IsEqualForObjects( `<A>obj</A>`, ObjectConstructor( CapCategory( `<A>obj</A>` ), ObjectDatum( `<A>obj</A>` ) ) )`.

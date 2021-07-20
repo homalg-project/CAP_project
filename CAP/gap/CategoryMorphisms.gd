@@ -64,7 +64,6 @@ DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_MORPHISMS" );
 ###################################
 
 #! @Description
-#! EXPERIMENTAL: This specification might change any time without prior notice.
 #! The arguments are two objects $S$ and $T$ in a category,
 #! and a morphism datum $a$ (type and semantics of the morphism datum depend on the category).
 #! The output is a morphism in $\mathrm{Hom}(S,T)$ defined by $a$.
@@ -93,7 +92,6 @@ DeclareOperation( "AddMorphismConstructor",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
-#! EXPERIMENTAL: This specification might change any time without prior notice.
 #! The argument is a CAP category morphism <A>mor</A>.
 #! The output is a datum which can be used to construct <A>mor</A>, that is,
 #! `IsEqualForMorphisms( `<A>mor</A>`, MorphismConstructor( Source( `<A>mor</A>` ), MorphismDatum( `<A>mor</A>` ), Range( `<A>mor</A>` ) ) )`.
