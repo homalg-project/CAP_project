@@ -39,7 +39,7 @@ InstallGlobalFunction( CapJitReplacedGlobalVariablesByCategoryAttributes, functi
         
         if IsBound( cat!.compiler_hints ) and IsBound( cat!.compiler_hints.category_attribute_names ) then
             
-            attribute_names := cat!.compiler_hints.category_attribute_names;
+            attribute_names := ShallowCopy( cat!.compiler_hints.category_attribute_names );
             
         else
             
