@@ -27,10 +27,8 @@ Display( compiled_func );
 #!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
 #!            ), cat_1, Source( test_mor_1 ), 
 #!        ObjectifyObjectForCAPWithAttributes( rec(
-#!              ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1 ), 
-#!          UnderlyingFieldForHomalg, UnderlyingRing( cat_1 ) ), 
-#!        UnderlyingFieldForHomalg, UnderlyingRing( cat_1 ), UnderlyingMatrix, 
-#!        cap_jit_morphism_attribute_1 );
+#!              ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1 ) )
+#!         , UnderlyingMatrix, cap_jit_morphism_attribute_1 );
 #! end
 
 func1 := function( x )

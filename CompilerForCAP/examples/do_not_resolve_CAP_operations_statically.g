@@ -17,8 +17,7 @@ func := function ( cat, x )
 Display( CapJitCompiledFunction( { cat, x } -> func( cat, x ), [ vec ] ) );
 #! function ( cat_1, x_1 )
 #!     return ObjectifyObjectForCAPWithAttributes( rec(
-#!            ), cat_1, Dimension, 0, UnderlyingFieldForHomalg, 
-#!        UnderlyingRing( cat_1 ) );
+#!            ), cat_1, Dimension, 0 );
 #! end
 
 #! @EndExample

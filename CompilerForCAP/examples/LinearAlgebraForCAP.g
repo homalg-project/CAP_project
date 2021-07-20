@@ -34,8 +34,7 @@ Display( SYNTAX_TREE_CODE( tree1 ) );
 #!     local cap_jit_hoisted_expression_1_1;
 #!     cap_jit_hoisted_expression_1_1 := UnderlyingRing( cat_1 );
 #!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-#!            ), cat_1, S_1, T_1, UnderlyingFieldForHomalg, 
-#!        UnderlyingRing( cat_1 ), UnderlyingMatrix, 
+#!            ), cat_1, S_1, T_1, UnderlyingMatrix, 
 #!        UnionOfRows( UnderlyingRing( cat_1 ), Dimension( T_1 ), 
 #!          ListN( diagram_S_1, List( morphism_matrix_1, function ( row_2 )
 #!                   return List( row_2, UnderlyingMatrix );
@@ -56,8 +55,7 @@ Display( SYNTAX_TREE_CODE( tree2 ) );
 #!     local cap_jit_hoisted_expression_1_1;
 #!     cap_jit_hoisted_expression_1_1 := UnderlyingRing( cat_1 );
 #!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-#!            ), cat_1, S_1, T_1, UnderlyingFieldForHomalg, 
-#!        UnderlyingRing( cat_1 ), UnderlyingMatrix, 
+#!            ), cat_1, S_1, T_1,  UnderlyingMatrix, 
 #!        UnionOfRows( UnderlyingRing( cat_1 ), Dimension( T_1 ), 
 #!          ListN( diagram_S_1, morphism_matrix_1, 
 #!            function ( logic_new_func_x_2, logic_new_func_y_2 )
@@ -77,10 +75,8 @@ Display( Last( vec!.compiled_functions.KernelEmbedding ) );
 #!      := SyzygiesOfRows( UnderlyingMatrix( morphism_1 ) );
 #!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
 #!            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-#!              ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1 ), 
-#!          UnderlyingFieldForHomalg, UnderlyingRing( cat_1 ) ), 
-#!        Source( morphism_1 ), UnderlyingFieldForHomalg, UnderlyingRing( cat_1 )
-#!         , UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+#!              ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1 ) ), 
+#!        Source( morphism_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
 #! end
 
 #! @EndExample

@@ -48,6 +48,22 @@ end );
 
 ####################################
 ##
+## Attributes
+##
+####################################
+
+##
+InstallMethod( UnderlyingFieldForHomalg,
+               [ IsVectorSpaceObject ],
+               
+  function( object )
+    
+    return UnderlyingRing( CapCategory( object ) );
+    
+end );
+
+####################################
+##
 ## View
 ##
 ####################################
@@ -58,7 +74,7 @@ InstallMethod( String,
   function( vector_space_object )
     
     return Concatenation( "A vector space object over ",
-                          RingName( UnderlyingFieldForHomalg( vector_space_object ) ),
+                          RingName( UnderlyingRing( CapCategory( vector_space_object ) ) ),
                           " of dimension ", String( Dimension( vector_space_object ) ) );
     
 end );

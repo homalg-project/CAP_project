@@ -39,7 +39,7 @@ InstallMethod( VectorSpaceMorphism,
   function( source, element_list, range )
     local field, homalg_matrix;
     
-    field := UnderlyingFieldForHomalg( source );
+    field := UnderlyingRing( CapCategory( source ) );
     
     homalg_matrix := HomalgMatrix( element_list, Dimension( source ), Dimension( range ), field );
     
@@ -65,6 +65,22 @@ InstallOtherMethodForCompilerForCAP( VectorSpaceMorphism,
   function( cat, source, homalg_matrix, range )
     
     return MorphismConstructor( cat, source, homalg_matrix, range );
+    
+end );
+
+####################################
+##
+## Attributes
+##
+####################################
+
+##
+InstallMethod( UnderlyingFieldForHomalg,
+               [ IsVectorSpaceMorphism ],
+               
+  function( morphism )
+    
+    return UnderlyingRing( CapCategory( morphism ) );
     
 end );
 
