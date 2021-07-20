@@ -105,16 +105,7 @@ InstallMethodForCompilerForCAP( CategoryOfColumnsObjectOp,
                
   function( category, rank )
     
-    if rank < 0 then
-      
-      Error( "first argument must be a non-negative integer" );
-      
-    fi;
-    
-    return ObjectifyObjectForCAPWithAttributes( rec( ),
-                                                category,
-                                                RankOfObject, rank
-    );
+    return ObjectConstructor( category, rank );
     
 end );
 
@@ -138,41 +129,8 @@ InstallMethodForCompilerForCAP( CategoryOfColumnsMorphism,
                                 [ IsCategoryOfColumnsObject, IsHomalgMatrix, IsCategoryOfColumnsObject ],
                
   function( source, homalg_matrix, range )
-    local homalg_ring, category;
     
-    category := CapCategory( source );
-    
-    if not IsIdenticalObj( category, CapCategory( range ) ) then
-      
-      Error( "source and range are not defined over identical categories" );
-      
-    fi;
-    
-    homalg_ring := HomalgRing( homalg_matrix );
-    
-    if not IsIdenticalObj( homalg_ring, UnderlyingRing( category ) ) then
-      
-      Error( "the matrix is defined over a different ring than the objects" );
-      
-    fi;
-    
-    if NrColumns( homalg_matrix ) <> RankOfObject( source ) then
-      
-      Error( "the number of columns has to be equal to the rank of the source" );
-      
-    fi;
-    
-    if NrRows( homalg_matrix ) <> RankOfObject( range ) then
-      
-      Error( "the number of rows has to be equal to the rank of the range" );
-      
-    fi;
-    
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category,
-                                           source,
-                                           range,
-                                           UnderlyingMatrix, homalg_matrix
-    );
+    return MorphismConstructor( CapCategory( source ), source, homalg_matrix, range );
     
 end );
 
@@ -283,6 +241,74 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
     ring := UnderlyingRing( category );
     
     is_defined_over_field := HasIsFieldForHomalg( ring ) and IsFieldForHomalg( ring );
+    
+    ## constructors
+    ##
+    AddObjectConstructor( category,
+      function( cat, rank )
+        
+        if not IsInt( rank ) or rank < 0 then
+            
+            Error( "the object datum must be a non-negative integer" );
+            
+        fi;
+        
+        return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
+                                                    RankOfObject, rank );
+        
+    end );
+    
+    ##
+    AddObjectDatum( category,
+      function( cat, object )
+        
+        return RankOfObject( object );
+        
+    end );
+    
+    ##
+    AddMorphismConstructor( category,
+      function( cat, source, homalg_matrix, range )
+        
+        if not IsHomalgMatrix( homalg_matrix ) then
+            
+            Error( "the morphism datum must be a homalg matrix" );
+            
+        fi;
+        
+        if not IsIdenticalObj( HomalgRing( homalg_matrix ), UnderlyingRing( cat ) ) then
+            
+            Error( "the matrix is defined over a different ring than the category" );
+            
+        fi;
+        
+        if NrColumns( homalg_matrix ) <> ObjectDatum( cat, source ) then
+            
+            Error( "the number of rows has to be equal to the dimension of the source" );
+            
+        fi;
+        
+        if NrRows( homalg_matrix ) <> ObjectDatum( cat, range ) then
+            
+            Error( "the number of columns has to be equal to the dimension of the range" );
+            
+        fi;
+        
+        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
+                                               source,
+                                               range,
+                                               UnderlyingMatrix, homalg_matrix
+        );
+        
+    end );
+    
+    ##
+    AddMorphismDatum( category,
+      function( cat, morphism )
+        
+        return UnderlyingMatrix( morphism );
+        
+    end );
     
     ## Well-defined for objects and morphisms
     ##
