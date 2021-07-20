@@ -266,8 +266,7 @@
   [33X[1;0Y[29X[2XObjectConstructor[102X( [3XC[103X, [3Xa[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
-  [33X[0;0YEXPERIMENTAL: This specification might change any time without prior notice.
-  The  arguments are a category [23XC[123X and an object datum [23Xa[123X (type and semantics of
+  [33X[0;0YThe  arguments are a category [23XC[123X and an object datum [23Xa[123X (type and semantics of
   the  object  datum  depend  on  the  category). The output is an object of [23XC[123X
   defined by [23Xa[123X.[133X
   
@@ -285,8 +284,7 @@
   [33X[1;0Y[29X[2XObjectDatum[102X( [3Xobj[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ydepends on the category[133X
   
-  [33X[0;0YEXPERIMENTAL: This specification might change any time without prior notice.
-  The  argument  is a CAP category object [3Xobj[103X. The output is a datum which can
+  [33X[0;0YThe  argument  is a CAP category object [3Xobj[103X. The output is a datum which can
   be    used    to   construct   [3Xobj[103X,   that   is,   [10XIsEqualForObjects(   [110X[3Xobj[103X[10X,
   ObjectConstructor( CapCategory( [110X[3Xobj[103X[10X ), ObjectDatum( [110X[3Xobj[103X[10X ) ) )[110X.[133X
   

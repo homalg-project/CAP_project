@@ -318,7 +318,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismConstructor</code>( <var class="Arg">S</var>, <var class="Arg">a</var>, <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(S,T)</span></p>
 
-<p>EXPERIMENTAL: This specification might change any time without prior notice. The arguments are two objects <span class="Math">S</span> and <span class="Math">T</span> in a category, and a morphism datum <span class="Math">a</span> (type and semantics of the morphism datum depend on the category). The output is a morphism in <span class="Math">\mathrm{Hom}(S,T)</span> defined by <span class="Math">a</span>.</p>
+<p>The arguments are two objects <span class="Math">S</span> and <span class="Math">T</span> in a category, and a morphism datum <span class="Math">a</span> (type and semantics of the morphism datum depend on the category). The output is a morphism in <span class="Math">\mathrm{Hom}(S,T)</span> defined by <span class="Math">a</span>.</p>
 
 <p><a id="X7A1067568608419D" name="X7A1067568608419D"></a></p>
 
@@ -336,7 +336,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MorphismDatum</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: depends on the category</p>
 
-<p>EXPERIMENTAL: This specification might change any time without prior notice. The argument is a CAP category morphism <var class="Arg">mor</var>. The output is a datum which can be used to construct <var class="Arg">mor</var>, that is, <code class="code">IsEqualForMorphisms( </code><var class="Arg">mor</var><code class="code">, MorphismConstructor( Source( </code><var class="Arg">mor</var><code class="code"> ), MorphismDatum( </code><var class="Arg">mor</var><code class="code"> ), Range( </code><var class="Arg">mor</var><code class="code"> ) ) )</code>.</p>
+<p>The argument is a CAP category morphism <var class="Arg">mor</var>. The output is a datum which can be used to construct <var class="Arg">mor</var>, that is, <code class="code">IsEqualForMorphisms( </code><var class="Arg">mor</var><code class="code">, MorphismConstructor( Source( </code><var class="Arg">mor</var><code class="code"> ), MorphismDatum( </code><var class="Arg">mor</var><code class="code"> ), Range( </code><var class="Arg">mor</var><code class="code"> ) ) )</code>.</p>
 
 <p><a id="X7ADDB80C7F9BC838" name="X7ADDB80C7F9BC838"></a></p>
 

@@ -43,8 +43,7 @@
   [33X[1;0Y[29X[2XMorphismConstructor[102X( [3XS[103X, [3Xa[103X, [3XT[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(S,T)[123X[133X
   
-  [33X[0;0YEXPERIMENTAL: This specification might change any time without prior notice.
-  The  arguments are two objects [23XS[123X and [23XT[123X in a category, and a morphism datum [23Xa[123X
+  [33X[0;0YThe  arguments are two objects [23XS[123X and [23XT[123X in a category, and a morphism datum [23Xa[123X
   (type  and  semantics  of  the  morphism  datum depend on the category). The
   output is a morphism in [23X\mathrm{Hom}(S,T)[123X defined by [23Xa[123X.[133X
   
@@ -63,8 +62,7 @@
   [33X[1;0Y[29X[2XMorphismDatum[102X( [3Xmor[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ydepends on the category[133X
   
-  [33X[0;0YEXPERIMENTAL: This specification might change any time without prior notice.
-  The argument is a CAP category morphism [3Xmor[103X. The output is a datum which can
+  [33X[0;0YThe argument is a CAP category morphism [3Xmor[103X. The output is a datum which can
   be   used   to   construct   [3Xmor[103X,   that   is,   [10XIsEqualForMorphisms(   [110X[3Xmor[103X[10X,
   MorphismConstructor( Source( [110X[3Xmor[103X[10X ), MorphismDatum( [110X[3Xmor[103X[10X ), Range( [110X[3Xmor[103X[10X ) ) )[110X.[133X
   
