@@ -90,6 +90,13 @@ InstallMethod( CategoryOfColumns,
 end );
 
 ##
+InstallMethod( CategoryOfColumnsAttr,
+               [ IsHomalgRing ],
+               
+  homalg_ring -> CategoryOfColumns( homalg_ring )
+);
+
+##
 InstallOtherMethod( CategoryOfColumnsObject,
                     [ IsInt, IsCategoryOfColumns ],
                

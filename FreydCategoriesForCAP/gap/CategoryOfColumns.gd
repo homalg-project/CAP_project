@@ -35,6 +35,9 @@ DeclareCategory( "IsCategoryOfColumns",
 DeclareOperation( "CategoryOfColumns",
                   [ IsHomalgRing ] );
 
+DeclareAttribute( "CategoryOfColumnsAttr",
+                  IsHomalgRing );
+
 DeclareOperation( "CategoryOfColumnsObject",
                   [ IsInt, IsCategoryOfColumns ] );
 

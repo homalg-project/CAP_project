@@ -90,6 +90,13 @@ InstallMethod( CategoryOfRows,
 end );
 
 ##
+InstallMethod( CategoryOfRowsAttr,
+               [ IsHomalgRing ],
+               
+  homalg_ring -> CategoryOfRows( homalg_ring )
+);
+
+##
 InstallOtherMethod( CategoryOfRowsObject,
                     [ IsInt, IsCategoryOfRows ],
                

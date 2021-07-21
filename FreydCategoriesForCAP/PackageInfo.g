@@ -19,7 +19,7 @@ Version := Maximum( [
   ## this line prevents merge conflicts
   "2021.07-01", ## Fabian's version
   ## this line prevents merge conflicts
-  "2020.04-18", ## Kamal's version
+  "2021.07-02", ## Kamal's version
 ] ),
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
