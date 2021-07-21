@@ -469,8 +469,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
   function( category, over_Z )
     local algebra, quiver, zero, IDENTITY_MATRIX_QUIVER_ROWS, ZERO_MATRIX_QUIVER_ROWS,
           vertices, basis, basis_paths_by_vertex_index, path, MATRIX_FOR_ALGEBROID_HOMSTRUCTURE, hom_structure_algebroid,
-          object_constructor, ring, morphism_constructor, hom_structure_range_category, hom_structure_on_morphisms_for_pure_components,
-          distinguished_object, representative_func;
+          ring, default_range_of_HomStructure, hom_structure_range_category, hom_structure_on_morphisms_for_pure_components,
+          representative_func;
     
     algebra := UnderlyingQuiverAlgebra( category );
     
@@ -566,60 +566,17 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
             )
         );
     
-    ## object constructor for hom structure
-    
     if over_Z then
         
-        hom_structure_range_category := CategoryOfRows( ring );
-        
-        ##
-        object_constructor := function( n )
-            
-            return CategoryOfRowsObject( n, hom_structure_range_category );
-            
-        end;
-        
-        ##
-        morphism_constructor := function( source, mat, range )
-            local matrix;
-            
-            if IsEmpty( mat ) then
-                
-                matrix := HomalgZeroMatrix( RankOfObject( source ), RankOfObject( range ), ring );
-                
-            else
-                
-                matrix := HomalgMatrix( mat, RankOfObject( source ), RankOfObject( range ), ring );
-                
-            fi;
-            
-            return CategoryOfRowsMorphism( source, matrix, range );
-            
-        end;
-        
-        distinguished_object := CategoryOfRowsObject( 1, hom_structure_range_category );
+        default_range_of_HomStructure := CategoryOfRows( ring );
         
     else
         
-        hom_structure_range_category := MatrixCategory( ring );
-        
-        ##
-        object_constructor := function( n )
-            
-            return VectorSpaceObject( n, ring );
-            
-        end;
-        
-        ##
-        morphism_constructor := function( source, mat, range )
-            
-            return VectorSpaceMorphism( source, mat, range );
-            
-        end;
-        
-        distinguished_object := TensorUnit( hom_structure_range_category );
+        default_range_of_HomStructure := MatrixCategory( ring );
         
     fi;
+    
+    hom_structure_range_category := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "range_of_HomStructure", default_range_of_HomStructure );
     
     SetRangeCategoryOfHomomorphismStructure( category, hom_structure_range_category );
     
@@ -1083,6 +1040,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
         
     end );
     
+    ##
     AddHomomorphismStructureOnObjects( category,
       function( A, B )
         local listA, listB, rank, a, b;
@@ -1103,7 +1061,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
             
         od;
         
-        return object_constructor( rank );
+        return ObjectConstructor( hom_structure_range_category, rank );
         
     end );
     
@@ -1288,7 +1246,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
             row_counts, mat, col_counts
         );
         
-        return morphism_constructor( hom_source, mat, hom_range );
+        if IsEmpty( mat ) then
+            
+            return ZeroMorphism( hom_structure_range_category, hom_source, hom_range );
+            
+        else
+            
+            return MorphismConstructor( hom_structure_range_category, hom_source, HomalgMatrix( mat, RankOfObject( hom_source ), RankOfObject( hom_range ), ring ), hom_range );
+            
+        fi;
         
     end );
     
@@ -1296,13 +1262,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
     AddDistinguishedObjectOfHomomorphismStructure( category,
       function( )
         
-        return distinguished_object;
+        return ObjectConstructor( hom_structure_range_category, 1 );
         
     end );
     
     ##
-    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
-      function( alpha )
+    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( category,
+      function( source, alpha, range )
         local listlist, lists, listr, row, i, j, submat, basis, c, a;
         
         listlist := AsListListOfMatrices( alpha );
@@ -1335,7 +1301,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
             
         od;
         
-        return morphism_constructor( distinguished_object, row, object_constructor( Size( row ) ) );
+        if IsEmpty( row ) then
+            
+            return ZeroMorphism( hom_structure_range_category, source, range );
+            
+        else
+            
+            return MorphismConstructor( hom_structure_range_category, source, HomalgMatrix( row, 1, Size( row ), ring ), range );
+            
+        fi;
         
     end );
     
