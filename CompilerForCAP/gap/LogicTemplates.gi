@@ -19,6 +19,14 @@ BindGlobal( "CAP_JIT_LOGIC_TEMPLATES", [
         new_funcs := [ [ "x" ] ],
         returns_value := true,
     ),
+    # List( ListN( L1, L2, f ), g ) => ListN( L1, L2, { x, y } -> g( f( x, y ) ) )
+    rec(
+        variable_names := [ "list1", "list2", "outer_func", "inner_func" ],
+        src_template := "List( ListN( list1, list2, inner_func ), outer_func )",
+        dst_template := "ListN( list1, list2, { x, y } -> outer_func( inner_func( x, y ) ) )",
+        new_funcs := [ [ "x", "y" ] ],
+        returns_value := true,
+    ),
     # List( L, f )[index] => f( L[index] )
     rec(
         variable_names := [ "list", "func", "index" ],

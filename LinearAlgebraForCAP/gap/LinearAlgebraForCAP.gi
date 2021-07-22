@@ -524,7 +524,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         underlying_matrix := List( morphism_matrix, row -> List( row, UnderlyingMatrix ) );
         
-        underlying_matrix := List( [ 1 .. Length( underlying_matrix ) ], i -> UnionOfColumns( homalg_field, Dimension( diagram_S[i] ), underlying_matrix[i] ) );
+        underlying_matrix := ListN( diagram_S, underlying_matrix, { source, row } -> UnionOfColumns( homalg_field, Dimension( source ), row ) );
         
         return VectorSpaceMorphism( cat, S, UnionOfRows( homalg_field, Dimension( T ), underlying_matrix ), T );
         

@@ -46,9 +46,9 @@ end
         
 ########
 function ( cat, S, T )
-    return List( [ 1 .. Dimension( S ) * Dimension( T ) ], function ( logic_new_func_10247_x )
+    return List( [ 1 .. Dimension( S ) * Dimension( T ) ], function ( logic_new_func_10302_x )
             return ObjectifyWithAttributes( rec(
-                   ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( Dimension( S ) * Dimension( T ), UnderlyingFieldForHomalg( S ) ), [ logic_new_func_10247_x ] ), Dimension( S ), Dimension( T ) ) );
+                   ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( Dimension( S ) * Dimension( T ), UnderlyingFieldForHomalg( S ) ), [ logic_new_func_10302_x ] ), Dimension( S ), Dimension( T ) ) );
         end );
 end
 ########

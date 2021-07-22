@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "CompilerForCAP",
 Subtitle := "Speed up computations in CAP categories",
 Version := Maximum( [
-  "2021.06-02", ## Fabian's version
+  "2021.07-01", ## Fabian's version
   ## this line prevents merge conflicts
 ] ),
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),

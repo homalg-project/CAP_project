@@ -1667,8 +1667,8 @@ AddDerivationToCAP( MorphismBetweenDirectSumsWithGivenDirectSums,
         return ZeroMorphism( cat, S, T );
     fi;
     
-    test_diagram_coproduct := List( [ 1 .. Length( morphism_matrix ) ],
-        i -> UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, diagram_T, diagram_S[i], morphism_matrix[i], T )
+    test_diagram_coproduct := ListN( diagram_S, morphism_matrix,
+        { source, row } -> UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, diagram_T, source, row, T )
     );
     
     return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, diagram_S, T, test_diagram_coproduct, S );
@@ -1682,8 +1682,8 @@ AddDerivationToCAP( MorphismBetweenDirectSumsWithGivenDirectSums,
   function( cat, S, diagram_S, morphism_matrix, diagram_T, T )
     local test_diagram_product, test_diagram_coproduct;
     
-    test_diagram_coproduct := List( [ 1 .. Length( morphism_matrix ) ],
-        i -> UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, diagram_T, diagram_S[i], morphism_matrix[i], T )
+    test_diagram_coproduct := ListN( diagram_S, morphism_matrix,
+        { source, row } -> UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, diagram_T, source, row, T )
     );
     
     return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, diagram_S, T, test_diagram_coproduct, S );

@@ -46,11 +46,11 @@ end
         
 ########
 function ( cat, arg2, arg3 )
-    return List( [ 1 .. RankOfObject( arg3 ) * RankOfObject( arg2 ) ], function ( logic_new_func_30559_x )
+    return List( [ 1 .. RankOfObject( arg3 ) * RankOfObject( arg2 ) ], function ( logic_new_func_30687_x )
             return ObjectifyWithAttributes( rec(
                    ), MorphismType( cat ), CapCategory, cat, Source, ObjectifyWithAttributes( rec(
                      ), ObjectType( cat ), CapCategory, cat, RankOfObject, RankOfObject( arg2 ) ), Range, ObjectifyWithAttributes( rec(
-                     ), ObjectType( cat ), CapCategory, cat, RankOfObject, RankOfObject( arg3 ) ), UnderlyingMatrix, ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( RankOfObject( arg3 ) * RankOfObject( arg2 ), UnderlyingRing( cat ) ), [ logic_new_func_30559_x ] ), RankOfObject( arg3 ), RankOfObject( arg2 ) ) );
+                     ), ObjectType( cat ), CapCategory, cat, RankOfObject, RankOfObject( arg3 ) ), UnderlyingMatrix, ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( RankOfObject( arg3 ) * RankOfObject( arg2 ), UnderlyingRing( cat ) ), [ logic_new_func_30687_x ] ), RankOfObject( arg3 ), RankOfObject( arg2 ) ) );
         end );
 end
 ########
@@ -102,8 +102,8 @@ end
 ########
 function ( cat, arg2 )
     return ObjectifyWithAttributes( rec(
-           ), ObjectType( cat ), CapCategory, cat, RankOfObject, Sum( List( arg2, function ( logic_new_func_30872_x )
-                return RankOfObject( logic_new_func_30872_x );
+           ), ObjectType( cat ), CapCategory, cat, RankOfObject, Sum( List( arg2, function ( logic_new_func_31066_x )
+                return RankOfObject( logic_new_func_31066_x );
             end ) ) );
 end
 ########
@@ -287,8 +287,8 @@ end
 ########
 function ( cat, objects, T, tau, P )
     return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, P, Range, T, UnderlyingMatrix, UnionOfColumns( UnderlyingRing( cat ), RankOfObject( T ), List( tau, function ( logic_new_func_31760_x )
-                return UnderlyingMatrix( logic_new_func_31760_x );
+           ), MorphismType( cat ), CapCategory, cat, Source, P, Range, T, UnderlyingMatrix, UnionOfColumns( UnderlyingRing( cat ), RankOfObject( T ), List( tau, function ( logic_new_func_32163_x )
+                return UnderlyingMatrix( logic_new_func_32163_x );
             end ) ) );
 end
 ########
@@ -313,8 +313,8 @@ end
 ########
 function ( cat, objects, T, tau, P )
     return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, T, Range, P, UnderlyingMatrix, UnionOfRows( UnderlyingRing( cat ), RankOfObject( T ), List( tau, function ( logic_new_func_31903_x )
-                return UnderlyingMatrix( logic_new_func_31903_x );
+           ), MorphismType( cat ), CapCategory, cat, Source, T, Range, P, UnderlyingMatrix, UnionOfRows( UnderlyingRing( cat ), RankOfObject( T ), List( tau, function ( logic_new_func_32335_x )
+                return UnderlyingMatrix( logic_new_func_32335_x );
             end ) ) );
 end
 ########
