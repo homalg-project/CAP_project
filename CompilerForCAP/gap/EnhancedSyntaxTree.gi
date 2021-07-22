@@ -586,7 +586,12 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 if func_pos = fail then
                     
-                    Error( "FVAR reference outside of function stack" );
+                    Error( "An FVAR references a variable outside of the function stack. However, if you type 'return;', it will be replaced by a dummy variable." );
+                    
+                    tree.type := ReplacedString( tree.type, "FVAR", "GVAR" );
+                    tree.gvar := Concatenation( "FVAR_outside_of_function_stack_", tree.name );
+                    
+                    return tree;
                     
                 fi;
                 
