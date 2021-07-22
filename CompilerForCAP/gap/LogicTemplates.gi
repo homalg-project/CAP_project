@@ -761,7 +761,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, a
 
                     if current_func.nams in new_funcs then
                         
-                        new_nams := List( current_func.nams, nam -> Concatenation( "logic_new_func_", String( CAP_JIT_INTERNAL_FUNCTION_ID ), "_", nam ) );
+                        new_nams := List( current_func.nams, nam -> Concatenation( "logic_new_func_", nam ) );
                         
                         current_func.stats := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( current_func.stats, current_func.id, CAP_JIT_INTERNAL_FUNCTION_ID, current_func.nams, new_nams );
                         current_func.id := CAP_JIT_INTERNAL_FUNCTION_ID;

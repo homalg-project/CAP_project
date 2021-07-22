@@ -14,7 +14,7 @@ tree1.stats.statements[1].obj.type = "EXPR_CONDITIONAL";
 #! true
 
 coded_func1 := ENHANCED_SYNTAX_TREE_CODE( tree1 );;
-String( func1 ) = String( coded_func1 );
+String( func1 ) = ReplacedString( String( coded_func1 ), "_1", "" );
 #! true
 
 func2 := function( x )
@@ -25,7 +25,7 @@ tree2.stats.statements[1].rhs.type = "EXPR_CONDITIONAL";
 #! true
 
 coded_func2 := ENHANCED_SYNTAX_TREE_CODE( tree2 );;
-String( func2 ) = String( coded_func2 );
+String( func2 ) = ReplacedString( String( coded_func2 ), "_1", "" );
 #! true
 
 tree3 := rec(
@@ -89,8 +89,8 @@ func4 := function( x )
 
 compiled_func4 := CapJitCompiledFunction( func4, [ true ] );;
 Display( compiled_func4 );
-#! function ( x )
-#!     if x then
+#! function ( x_1 )
+#!     if x_1 then
 #!         return ID_FUNC( 1 );
 #!     else
 #!         return ID_FUNC( 2 );
@@ -103,7 +103,7 @@ func5 := function( x )
 
 compiled_func5 := CapJitCompiledFunction( func5, [ true ] );;
 Display( compiled_func5 );
-#! function ( x )
+#! function ( x_1 )
 #!     return 1;
 #! end
 

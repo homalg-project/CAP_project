@@ -22,9 +22,9 @@ func := function ( a )
     return b -> b + ( 2 * b + a ) + b - b; end;;
 
 Display( CapJitCompiledFunction( func, [ ] ) );
-#! function ( a )
-#!     return function ( b )
-#!           return b + (2 * b + a) 
+#! function ( a_1 )
+#!     return function ( b_2 )
+#!           return b_2 + (2 * b_2 + a_1) 
 #!             + "THIS_STRING_SHOULD_NEVER_APPEAR_IN_PRODUCTION_CODE";
 #!       end;
 #! end

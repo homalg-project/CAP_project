@@ -476,6 +476,9 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 Assert( 0, IsBound( tree.id ) );
                 
+                # append position of function in stack to nams for unique names (the function is not yet on the stack at this point, so we have to add 1)
+                tree.nams := List( tree.nams, name -> Concatenation( name, "_", String( Length( func_stack ) + 1 ) ) );
+                
             fi;
             
             # assert that short types are used and replace by verbose types
@@ -610,6 +613,9 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 fi;
                 
                 level := Length( func_stack ) - func_pos;
+                
+                # append position of function in stack for unique names
+                tree.name := Concatenation( tree.name, "_", String( func_pos ) );
                 
                 if not tree.name in func_stack[func_pos].nams then
                     
