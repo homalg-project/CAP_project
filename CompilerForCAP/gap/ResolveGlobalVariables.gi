@@ -3,6 +3,12 @@
 #
 # Implementations
 #
+BindGlobal( "CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES", [
+    "Julia", # if we resolve this, we lose information about the Julia module and operation
+    "List",
+    "ListN",
+] );
+
 InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
   local pre_func;
     
@@ -16,23 +22,22 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
         
         if IsRecord( tree ) and not (IsBound( tree.CAP_JIT_NOT_RESOLVABLE ) and tree.CAP_JIT_NOT_RESOLVABLE) then
             
-            # do not resolve the global variable "Julia" since we otherwise lose information about the Julia module and operation
-            if tree.type = "EXPR_REF_GVAR" and tree.gvar <> "Julia" then
+            if tree.type = "EXPR_REF_GVAR" and not tree.gvar in CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES then
                 
                 value := ValueGlobal( tree.gvar );
                 
                 # will only be used if <value> is a function
                 funccall_does_not_return_fail := IsBound( tree.does_not_return_fail ) and tree.does_not_return_fail = true;
                 
-            elif tree.type = "EXPR_ELM_COMOBJ_NAME" and tree.comobj.type = "EXPR_REF_GVAR" and tree.comobj.gvar <> "Julia" then
+            elif tree.type = "EXPR_ELM_COMOBJ_NAME" and tree.comobj.type = "EXPR_REF_GVAR" and not tree.comobj.gvar in CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES then
                 
                 value := ValueGlobal( tree.comobj.gvar )!.(tree.name);
                 
-            elif tree.type = "EXPR_ELM_REC_NAME" and tree.record.type = "EXPR_REF_GVAR" and tree.record.gvar <> "Julia" then
+            elif tree.type = "EXPR_ELM_REC_NAME" and tree.record.type = "EXPR_REF_GVAR" and not tree.record.gvar in CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES then
                 
                 value := ValueGlobal( tree.record.gvar ).(tree.name);
                 
-            elif tree.type = "EXPR_FUNCCALL" and tree.funcref.type = "EXPR_REF_GVAR" and ForAll( tree.args, a -> a.type in [ "EXPR_REF_GVAR", "EXPR_INT", "EXPR_STRING", "EXPR_TRUE", "EXPR_FALSE" ] ) and not NameFunction( ValueGlobal( tree.funcref.gvar ) ) in Concatenation( RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ), RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) ) then
+            elif tree.type = "EXPR_FUNCCALL" and tree.funcref.type = "EXPR_REF_GVAR" and ForAll( tree.args, a -> a.type in [ "EXPR_REF_GVAR", "EXPR_INT", "EXPR_STRING", "EXPR_TRUE", "EXPR_FALSE" ] ) and not NameFunction( ValueGlobal( tree.funcref.gvar ) ) in Concatenation( CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ), RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) ) then
                 
                 value := CallFuncList( ValueGlobal( tree.funcref.gvar ), List( tree.args, function ( a )
                     
