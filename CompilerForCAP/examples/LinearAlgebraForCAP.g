@@ -35,12 +35,11 @@ Display( SYNTAX_TREE_CODE( tree1 ) );
 #!            ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, 
 #!        UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, 
 #!        UnionOfRows( UnderlyingRing( cat ), Dimension( T ), 
-#!          List( [ 1 .. Length( List( morphism_matrix, function ( row )
-#!                         return List( row, UnderlyingMatrix );
-#!                     end ) ) ], function ( i )
+#!          ListN( diagram_S, List( morphism_matrix, function ( row )
+#!                   return List( row, UnderlyingMatrix );
+#!               end ), function ( source, row )
 #!                 return UnionOfColumns( UnderlyingRing( cat ), 
-#!                    Dimension( diagram_S[i] ), 
-#!                    List( morphism_matrix[i], UnderlyingMatrix ) );
+#!                    Dimension( source ), row );
 #!             end ) ) );
 #! end
 
@@ -51,17 +50,19 @@ tree2 := SYNTAX_TREE( CapJitCompiledFunction(
     [ vec, W, [ V, V ], morphism_matrix, [ V, V ], W  ]
 ) );;
 # fixup nams
-tree2.stats.statements[1].obj.args[12].args[3].args[2].nams := [ "i" ];;
+tree2.stats.statements[1].obj.args[12].args[3].args[3].nams :=
+    [ "source", "row" ];;
 Display( SYNTAX_TREE_CODE( tree2 ) );
 #! function ( cat, S, diagram_S, morphism_matrix, diagram_T, T )
 #!     return ObjectifyWithAttributes( rec(
 #!            ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, 
 #!        UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, 
 #!        UnionOfRows( UnderlyingRing( cat ), Dimension( T ), 
-#!          List( [ 1 .. Length( morphism_matrix ) ], function ( i )
+#!          ListN( diagram_S, morphism_matrix, 
+#!            function ( source, row )
 #!                 return UnionOfColumns( UnderlyingRing( cat ), 
-#!                    Dimension( diagram_S[i] ), 
-#!                    List( morphism_matrix[i], function ( s )
+#!                    Dimension( source ), 
+#!                    List( row, function ( s )
 #!                           return UnderlyingMatrix( s );
 #!                       end ) );
 #!             end ) ) );
