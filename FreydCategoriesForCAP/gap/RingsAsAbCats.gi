@@ -277,7 +277,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         interpret_element_as_row_vector := function( r )
             #% CAP_JIT_RESOLVE_FUNCTION
             
-            return CoefficientsWithGivenMonomials( HomalgMatrix( [ r ], 1, 1, ring ), generating_system_as_column ) * field;
+            return CoercedMatrix( ring, field, CoefficientsWithGivenMonomials( HomalgMatrix( [ r ], 1, 1, ring ), generating_system_as_column ) );
             
         end;
         
@@ -345,7 +345,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
                 
             end );
             
-            return morphism_constructor( ring_as_module, UnionOfRows( rows ), ring_as_module );
+            return morphism_constructor( range_category, ring_as_module, UnionOfRows( UnderlyingRing( range_category ), Length( generating_system ), rows ), ring_as_module );
             
         end );
         
@@ -356,7 +356,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
             
             decomposition := interpret_element_as_row_vector( UnderlyingRingElement( alpha ) );
             
-            return morphism_constructor( distinguished_object, decomposition, ring_as_module );
+            return morphism_constructor( range_category, distinguished_object, decomposition, ring_as_module );
             
         end );
         
