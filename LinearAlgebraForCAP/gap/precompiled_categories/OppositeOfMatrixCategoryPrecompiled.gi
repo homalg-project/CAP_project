@@ -182,9 +182,7 @@ function ( cat_1, objects_1, k_1, P_1 )
                     return Dimension( c_2_2 );
                 end ), Dimension( Opposite( objects_1[k_1] ) ), UnderlyingRing( Opposite( cat_1 ) ) ), HomalgIdentityMatrix( Dimension( Opposite( objects_1[k_1] ) ), UnderlyingRing( Opposite( cat_1 ) ) ), HomalgZeroMatrix( Sum( List( objects_1, function ( x_2 )
                         return Opposite( x_2 );
-                    end ){[ k_1 + 1 .. Length( List( objects_1, function ( x_2 )
-                             return Opposite( x_2 );
-                         end ) ) ]}, function ( c_2_2 )
+                    end ){[ k_1 + 1 .. Length( objects_1 ) ]}, function ( c_2_2 )
                     return Dimension( c_2_2 );
                 end ), Dimension( Opposite( objects_1[k_1] ) ), UnderlyingRing( Opposite( cat_1 ) ) ) ) ) );
 end
@@ -492,9 +490,7 @@ function ( cat_1, objects_1, k_1, P_1 )
                     return Dimension( c_2_2 );
                 end ), UnderlyingRing( Opposite( cat_1 ) ) ), HomalgIdentityMatrix( Dimension( Opposite( objects_1[k_1] ) ), UnderlyingRing( Opposite( cat_1 ) ) ), HomalgZeroMatrix( Dimension( Opposite( objects_1[k_1] ) ), Sum( List( objects_1, function ( x_2 )
                         return Opposite( x_2 );
-                    end ){[ k_1 + 1 .. Length( List( objects_1, function ( x_2 )
-                             return Opposite( x_2 );
-                         end ) ) ]}, function ( c_2_2 )
+                    end ){[ k_1 + 1 .. Length( objects_1 ) ]}, function ( c_2_2 )
                     return Dimension( c_2_2 );
                 end ), UnderlyingRing( Opposite( cat_1 ) ) ) ) ) );
 end

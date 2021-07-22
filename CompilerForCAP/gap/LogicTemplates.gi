@@ -27,11 +27,48 @@ BindGlobal( "CAP_JIT_LOGIC_TEMPLATES", [
         new_funcs := [ [ "x", "y" ] ],
         returns_value := true,
     ),
+    # ListN( List( L, f1 ), List( L, f2 ), g ) => List( L, x -> g( f1( x ), f2( x ) ) )
+    rec(
+        variable_names := [ "list", "inner_func1", "inner_func2", "outer_func" ],
+        src_template := "ListN( List( list, inner_func1 ), List( list, inner_func2 ), outer_func )",
+        dst_template := "List( list, x -> outer_func( inner_func1( x ), inner_func2( x ) ) )",
+        new_funcs := [ [ "x" ] ],
+        returns_value := true,
+    ),
+    # List( Concatenation( list ), func ) => Concatenation( List( list, x -> List( x, func ) ) )
+    rec(
+        variable_names := [ "list", "func" ],
+        src_template := "List( Concatenation( list ), func )",
+        dst_template := "Concatenation( List( list, x -> List( x, func ) ) )",
+        new_funcs := [ [ "x" ] ],
+        returns_value := true,
+    ),
+    # MatElm( List( list, func ), index1, index2 ) => func( list[ index1 ] )[ index2 ]
+    rec(
+        variable_names := [ "list", "func", "index1", "index2" ],
+        src_template := "MatElm( List( list, func ), index1, index2 )",
+        dst_template := "func( list[ index1 ] )[ index2 ]",
+        returns_value := true,
+    ),
     # List( L, f )[index] => f( L[index] )
     rec(
         variable_names := [ "list", "func", "index" ],
         src_template := "List( list, func )[index]",
         dst_template := "func( list[index] )",
+        returns_value := true,
+    ),
+    # Length( List( list, func ) ) => Length( list )
+    rec(
+        variable_names := [ "list", "func" ],
+        src_template := "Length( List( list, func ) )",
+        dst_template := "Length( list )",
+        returns_value := true,
+    ),
+    # [ 1 .. end ][i] => i
+    rec(
+        variable_names := [ "end", "index" ],
+        src_template := "[ 1 .. end ][index]",
+        dst_template := "index",
         returns_value := true,
     ),
     # func( condition ? expr_if_true : expr_if_false ) => condition ? func( expr_if_true ) : func( expr_if_false )
