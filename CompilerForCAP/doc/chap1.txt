@@ -80,8 +80,9 @@
         number   of   arguments   and   do  not  have  to  be  annotated  with
         [10XCAP_JIT_RESOLVE_FUNCTION[110X.[133X
   
-  [30X    [33X[0;6YReferences  to  global  functions  are  resolved  if  the  function is
-        annotated with the pragma [10XCAP_JIT_RESOLVE_FUNCTION[110X.[133X
+  [30X    [33X[0;6YReferences  to  global  functions are resolved if the function name is
+        not  listed in [10XCAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES[110X and if the
+        function is annotated with the pragma [10XCAP_JIT_RESOLVE_FUNCTION[110X.[133X
   
   [30X    [33X[0;6YIf  a  call  of  a global function or operation (occuring as the right
         hand  side  of  a  variable  assignment  or  as  the return value of a
@@ -287,13 +288,14 @@
   
   [30X    [33X[0;6YQ: Why is my function not resolved?[133X
   
-  [33X[0;0YA:  Only  functions  annotated  with the pragma [10XCAP_JIT_RESOLVE_FUNCTION[110X are
-  resolved.  Additionally,  a function can only be resolved if it appears as a
-  global  variable  in the tree during the resolving phase of the compilation.
-  That is, it must be referenced from a global variable from the beginning on,
-  or  after  global  variables  are  resolved by [2XCapJitResolvedGlobalVariables[102X
-  ([14X2.5-12[114X).  Possibly you have adapt [2XCapJitResolvedGlobalVariables[102X ([14X2.5-12[114X) to
-  your setting.[133X
+  [33X[0;0YA:        The        function        might        be        listed        in
+  [10XCAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES[110X  or  it  might  be  missing  an
+  annotation   with   the  pragma  [10XCAP_JIT_RESOLVE_FUNCTION[110X.  Additionally,  a
+  function can only be resolved if it appears as a global variable in the tree
+  during  the  resolving  phase  of  the  compilation.  That  is,  it  must be
+  referenced  from  a  global  variable from the beginning on, or after global
+  variables  are  resolved by [2XCapJitResolvedGlobalVariables[102X ([14X2.5-12[114X). Possibly
+  you have adapt [2XCapJitResolvedGlobalVariables[102X ([14X2.5-12[114X) to your setting.[133X
   
   [30X    [33X[0;6YQ: Why is my operation not resolved?[133X
   

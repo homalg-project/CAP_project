@@ -31,12 +31,11 @@
     [4X[28X           ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, [128X[104X
     [4X[28X       UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, [128X[104X
     [4X[28X       UnionOfRows( UnderlyingRing( cat ), Dimension( T ), [128X[104X
-    [4X[28X         List( [ 1 .. Length( List( morphism_matrix, function ( row )[128X[104X
-    [4X[28X                        return List( row, UnderlyingMatrix );[128X[104X
-    [4X[28X                    end ) ) ], function ( i )[128X[104X
+    [4X[28X         ListN( diagram_S, List( morphism_matrix, function ( row )[128X[104X
+    [4X[28X                  return List( row, UnderlyingMatrix );[128X[104X
+    [4X[28X              end ), function ( source, row )[128X[104X
     [4X[28X                return UnionOfColumns( UnderlyingRing( cat ), [128X[104X
-    [4X[28X                   Dimension( diagram_S[i] ), [128X[104X
-    [4X[28X                   List( morphism_matrix[i], UnderlyingMatrix ) );[128X[104X
+    [4X[28X                   Dimension( source ), row );[128X[104X
     [4X[28X            end ) ) );[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27X# compile the default derivation of[127X[104X
@@ -46,17 +45,19 @@
     [4X[25X>[125X [27X    [ vec, W, [ V, V ], morphism_matrix, [ V, V ], W  ][127X[104X
     [4X[25X>[125X [27X) );;[127X[104X
     [4X[25Xgap>[125X [27X# fixup nams[127X[104X
-    [4X[25X>[125X [27Xtree2.stats.statements[1].obj.args[12].args[3].args[2].nams := [ "i" ];;[127X[104X
+    [4X[25X>[125X [27Xtree2.stats.statements[1].obj.args[12].args[3].args[3].nams :=[127X[104X
+    [4X[25X>[125X [27X    [ "source", "row" ];;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( SYNTAX_TREE_CODE( tree2 ) );[127X[104X
     [4X[28Xfunction ( cat, S, diagram_S, morphism_matrix, diagram_T, T )[128X[104X
     [4X[28X    return ObjectifyWithAttributes( rec([128X[104X
     [4X[28X           ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, [128X[104X
     [4X[28X       UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, [128X[104X
     [4X[28X       UnionOfRows( UnderlyingRing( cat ), Dimension( T ), [128X[104X
-    [4X[28X         List( [ 1 .. Length( morphism_matrix ) ], function ( i )[128X[104X
+    [4X[28X         ListN( diagram_S, morphism_matrix, [128X[104X
+    [4X[28X           function ( source, row )[128X[104X
     [4X[28X                return UnionOfColumns( UnderlyingRing( cat ), [128X[104X
-    [4X[28X                   Dimension( diagram_S[i] ), [128X[104X
-    [4X[28X                   List( morphism_matrix[i], function ( s )[128X[104X
+    [4X[28X                   Dimension( source ), [128X[104X
+    [4X[28X                   List( row, function ( s )[128X[104X
     [4X[28X                          return UnderlyingMatrix( s );[128X[104X
     [4X[28X                      end ) );[128X[104X
     [4X[28X            end ) ) );[128X[104X

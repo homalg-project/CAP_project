@@ -531,13 +531,15 @@
   [33X[1;0Y[29X[2XCapJitResolvedGlobalVariables[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
-  [33X[0;0YResolves global variables:[133X
+  [33X[0;0YResolves    global   variables   (except   those   which   are   listed   in
+  [10XCAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES[110X):[133X
   
   [30X    [33X[0;6YReplaces  a  global  variable  referencing  an integer, a string, or a
         boolean by EXPR_INT, EXPR_STRING, EXPR_TRUE or EXPR_FALSE.[133X
   
   [30X    [33X[0;6YReplaces  a global variable referencing a plain function by the syntax
-        tree of this function.[133X
+        tree  of  this  function  in  case  the function is annotated with the
+        pragma [10XCAP_JIT_RESOLVE_FUNCTION[110X.[133X
   
   [30X    [33X[0;6YReplaces  a  record  access  of a global function by the value of this
         record access.[133X

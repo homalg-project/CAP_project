@@ -548,14 +548,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitResolvedGlobalVariables</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
 
-<p>Resolves global variables:</p>
+<p>Resolves global variables (except those which are listed in <code class="code">CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES</code>):</p>
 
 
 <ul>
 <li><p>Replaces a global variable referencing an integer, a string, or a boolean by EXPR_INT, EXPR_STRING, EXPR_TRUE or EXPR_FALSE.</p>
 
 </li>
-<li><p>Replaces a global variable referencing a plain function by the syntax tree of this function.</p>
+<li><p>Replaces a global variable referencing a plain function by the syntax tree of this function in case the function is annotated with the pragma <code class="code">CAP_JIT_RESOLVE_FUNCTION</code>.</p>
 
 </li>
 <li><p>Replaces a record access of a global function by the value of this record access.</p>
