@@ -952,6 +952,21 @@ InstallGlobalFunction( CapJitAddKnownMethod,
     
 end );
 
+##
+InstallGlobalFunction( CapFixpoint, function ( predicate, func, initial_value )
+  local x, y;
+    
+    y := initial_value;
+    
+    repeat
+        x := y;
+        y := func( x );
+    until predicate( x, y );
+    
+    return y;
+    
+end );
+
 ## Hack for making CAP work with GAP versions smaller than 4.11
 ## Fixme: Remove this once we are sure we do not want compatibility
 ## to GAP < 4.11 anymore.

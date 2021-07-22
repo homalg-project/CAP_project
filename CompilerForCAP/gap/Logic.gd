@@ -25,3 +25,5 @@ DeclareGlobalFunction( "CapJitAddLogicFunction" );
 #! @Returns a record
 #! @Arguments tree, jit_args
 DeclareGlobalFunction( "CapJitAppliedLogic" );
+
+DeclareGlobalFunction( "CAP_JIT_INTERNAL_TELESCOPED_ITERATION" );

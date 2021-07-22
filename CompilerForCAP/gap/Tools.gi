@@ -128,7 +128,7 @@ InstallGlobalFunction( CapJitFindNodeDeep, function ( tree, condition_func )
   local result_func, additional_arguments_func;
     
     result_func := function ( tree, result, keys, path )
-      local key, type;
+      local key;
         
         for key in keys do
             
@@ -151,15 +151,47 @@ InstallGlobalFunction( CapJitFindNodeDeep, function ( tree, condition_func )
         return fail;
         
     end;
-
+    
     additional_arguments_func := function ( tree, key, path )
         
         return Concatenation( path, [ key ] );
         
     end;
-  
+    
     return CapJitIterateOverTree( tree, ReturnFirst, result_func, additional_arguments_func, [ ] );
+    
+end );
 
+InstallGlobalFunction( CapJitFindNodes, function ( tree, condition_func )
+  local result_func, additional_arguments_func;
+    
+    result_func := function ( tree, result, keys, path )
+      local new_result;
+        
+        # concatenate the results of the children
+        new_result := Concatenation( List( keys, name -> result.(name) ) );
+        
+        # add this node if it fulfills the condition
+        if condition_func( tree, path ) then
+            
+            return Concatenation( new_result, [ path ] );
+            
+        else
+            
+            return new_result;
+            
+        fi;
+        
+    end;
+    
+    additional_arguments_func := function ( tree, key, path )
+        
+        return Concatenation( path, [ key ] );
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, ReturnFirst, result_func, additional_arguments_func, [ ] );
+    
 end );
 
 InstallGlobalFunction( CapJitGetNodeByPath, function ( tree, path )

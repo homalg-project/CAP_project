@@ -180,3 +180,9 @@ DeclareGlobalFunction( "InstallOtherMethodForCompilerForCAP" );
 #!   so that the method selection can be done ahead of time.
 #! @Arguments operation, filters, method
 DeclareGlobalFunction( "CapJitAddKnownMethod" );
+
+#! @Description
+#!   Computes a fixpoint of <A>func</A> with regard to equality given by <A>predicate</A>, starting with <A>initial_value</A>.
+#!   If no such fixpoint exists, the execution does not terminate.
+#! @Arguments predicate, func, initial_value
+DeclareGlobalFunction( "CapFixpoint" );
