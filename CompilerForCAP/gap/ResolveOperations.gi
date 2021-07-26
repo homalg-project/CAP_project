@@ -7,6 +7,8 @@ BindGlobal( "CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES", [
     "DecideZeroColumns",
     "DecideZeroRows",
     "IsZero",
+    "ObjectifyObjectForCAPWithAttributes",
+    "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes",
 ] );
 
 InstallGlobalFunction( CapJitGetCapCategoryFromArguments, function ( arguments )

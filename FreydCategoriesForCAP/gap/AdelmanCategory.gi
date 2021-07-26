@@ -41,6 +41,8 @@ InstallMethod( AdelmanCategory,
     
     adelman_category := CreateCapCategory( Concatenation( "Adelman category( ", Name( underlying_category ), " )" ) );
     
+    adelman_category!.category_as_first_argument := true;
+    
     SetFilterObj( adelman_category, IsAdelmanCategory );
     
     ## this is the purpose of the Adelman category
@@ -262,16 +264,16 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddIsEqualForCacheForObjects( category,
-      IsIdenticalObj );
+      { cat, obj1, obj2 } -> IsIdenticalObj( obj1, obj2 ) );
     
     ##
     AddIsEqualForCacheForMorphisms( category,
-      IsIdenticalObj );
+      { cat, mor1, mor2 } -> IsIdenticalObj( mor1, mor2 ) );
     
     ## Well-defined for objects and morphisms
     ##
     AddIsWellDefinedForObjects( category,
-      function( object )
+      function( cat, object )
         local relation_morphism, corelation_morphism;
         
         relation_morphism := RelationMorphism( object );
@@ -298,7 +300,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddIsWellDefinedForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
         
         if not IsLiftable( PreCompose( RelationMorphism( Source( morphism ) ), MorphismDatum( morphism ) ), RelationMorphism( Range( morphism ) ) ) then
             
@@ -320,7 +322,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     ## Equality Basic Operations for Objects and Morphisms
     ##
     AddIsEqualForObjects( category,
-      function( object_1, object_2 )
+      function( cat, object_1, object_2 )
         
         return IsEqualForMorphismsOnMor( RelationMorphism( object_1 ), RelationMorphism( object_2 ) )
                and IsEqualForMorphismsOnMor( CorelationMorphism( object_1 ), CorelationMorphism( object_2 ) );
@@ -329,7 +331,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddIsEqualForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return IsEqualForMorphisms( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
         
@@ -337,7 +339,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddIsCongruentForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return MereExistenceOfWitnessPairForBeingCongruentToZero( SubtractionForMorphisms( morphism_1, morphism_2 ) );
         
@@ -347,7 +349,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     ##
     AddIdentityMorphism( category,
       
-      function( object )
+      function( cat, object )
         
         return AdelmanCategoryMorphism( object, IdentityMorphism( Range( RelationMorphism( object ) ) ), object );
         
@@ -356,7 +358,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     ##
     AddPreCompose( category,
       
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         local composition;
         
         composition := PreCompose( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
@@ -367,7 +369,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
 
     ##
     AddSubtractionForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         local subtraction;
         
         subtraction := AdelmanCategoryMorphism(
@@ -382,7 +384,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddAdditionForMorphisms( category,
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         local addition;
         
         addition := AdelmanCategoryMorphism(
@@ -397,7 +399,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddAdditiveInverseForMorphisms( category,
-      function( morphism )
+      function( cat, morphism )
         local additive_inverse;
         
         additive_inverse := AdelmanCategoryMorphism(
@@ -412,7 +414,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddZeroMorphism( category,
-      function( source, range )
+      function( cat, source, range )
         local zero_morphism;
         
         zero_morphism := AdelmanCategoryMorphism(
@@ -427,7 +429,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddZeroObject( category,
-      function( )
+      function( cat )
         
         return AsAdelmanCategoryObject( ZeroObject( underlying_category) );
         
@@ -435,7 +437,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
-      function( sink, zero_object )
+      function( cat, sink, zero_object )
         local universal_morphism;
         
         universal_morphism := AdelmanCategoryMorphism(
@@ -450,7 +452,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
-      function( source, zero_object )
+      function( cat, source, zero_object )
         local universal_morphism;
         
         universal_morphism := AdelmanCategoryMorphism(
@@ -465,7 +467,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddDirectSum( category,
-      function( object_list )
+      function( cat, object_list )
         
         return AdelmanCategoryObject( DirectSumFunctorial( List( object_list, RelationMorphism ) ),
                                       DirectSumFunctorial( List( object_list, CorelationMorphism ) ) );
@@ -474,7 +476,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddDirectSumFunctorialWithGivenDirectSums( category,
-      function( direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
+      function( cat, direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
         
         return AdelmanCategoryMorphism( direct_sum_source,
                                         DirectSumFunctorial( List( diagram, MorphismDatum ) ),
@@ -484,7 +486,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
-      function( object_list, projection_number, direct_sum_object )
+      function( cat, object_list, projection_number, direct_sum_object )
         
         return AdelmanCategoryMorphism( direct_sum_object,
                                         ProjectionInFactorOfDirectSum( List( object_list, obj -> Range( RelationMorphism( obj ) ) ), projection_number ),
@@ -495,7 +497,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
-      function( diagram, test_object, source, direct_sum_object )
+      function( cat, diagram, test_object, source, direct_sum_object )
         
         return AdelmanCategoryMorphism( Source( source[1] ),
                                         UniversalMorphismIntoDirectSum( List( diagram, obj -> Range( RelationMorphism( obj ) ) ),
@@ -507,7 +509,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
-      function( object_list, injection_number, direct_sum_object )
+      function( cat, object_list, injection_number, direct_sum_object )
         
         return AdelmanCategoryMorphism( object_list[injection_number],
                                         InjectionOfCofactorOfDirectSum( List( object_list, obj -> Range( RelationMorphism( obj ) ) ), injection_number ),
@@ -518,7 +520,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
-      function( diagram, test_object, sink, direct_sum_object )
+      function( cat, diagram, test_object, sink, direct_sum_object )
         
         return AdelmanCategoryMorphism( direct_sum_object,
                                         UniversalMorphismFromDirectSum( List( diagram, obj -> Range( RelationMorphism( obj ) ) ),
@@ -531,7 +533,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     ##
     AddCokernelProjection( category,
                      
-      function( morphism )
+      function( cat, morphism )
         local source, range, b, bp, ap, B, Bp, App, alpha, cokernel_object;
         
         source := Source( morphism );
@@ -569,7 +571,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     ##
     AddCokernelColiftWithGivenCokernelObject( category,
       
-      function( morphism, test_object, test_morphism, cokernel_object )
+      function( cat, morphism, test_object, test_morphism, cokernel_object )
         local witness_pair, datum;
         
         witness_pair := WitnessPairForBeingCongruentToZero( PreCompose( morphism, test_morphism ) );
@@ -588,7 +590,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     ##
     AddColiftAlongEpimorphism( category,
       
-      function( alpha, tau )
+      function( cat, alpha, tau )
         local witness_alpha, sigma78, sigma56, witness_test, sigma12, range_alpha, b2, datum_tau, A, B, Bp, App, sigma8, sigma6, sigma5, sigma2, sigma1;
         
         witness_alpha := WitnessPairForBeingCongruentToZero( CokernelProjection( alpha ) );
@@ -634,7 +636,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     ##
     AddKernelEmbedding( category,
       
-      function( morphism )
+      function( cat, morphism )
         local source, range, a, ap, alpha, b, Bp, App, A, kernel_object;
         
         source := Source( morphism );
@@ -672,7 +674,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     ##
     AddKernelLiftWithGivenKernelObject( category,
       
-      function( morphism, test_object, test_morphism, kernel_object )
+      function( cat, morphism, test_object, test_morphism, kernel_object )
         local witness_pair, datum;
         
         witness_pair := WitnessPairForBeingCongruentToZero( PreCompose( test_morphism, morphism ) );
@@ -690,7 +692,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddEpimorphismFromSomeProjectiveObject( category,
-        function( obj )
+        function( cat, obj )
         local proj, rel, A;
         
         rel := CorelationMorphism( obj );
@@ -709,7 +711,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     
     ##
     AddMonomorphismIntoSomeInjectiveObject( category,
-        function( obj )
+        function( cat, obj )
         local inj, rel, B;
         
         rel := RelationMorphism( obj );
@@ -730,7 +732,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
                f -> CanCompute( underlying_category, f ) ) then
         
         AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
-          { r, alpha } -> AdelmanCategoryMorphism(
+          { cat, r, alpha } -> AdelmanCategoryMorphism(
                               Source( alpha ),
                               MultiplyWithElementOfCommutativeRingForMorphisms( r, MorphismDatum( alpha ) ),
                               Range( alpha )
@@ -874,7 +876,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
             
             ##
             AddHomomorphismStructureOnObjects( category,
-              function( object_A, object_B )
+              function( cat, object_A, object_B )
                 
                 return UnderlyingHonestObject( Source( HomomorphismStructureOnObjectsForAdelmanCategoryGeneralizedEmbedding( object_A, object_B ) ) );
                 
@@ -882,7 +884,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
             
             ##
             AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
-              function( source, mor_alpha, mor_beta, range )
+              function( cat, source, mor_alpha, mor_beta, range )
                 local alpha, beta, H_alpha_beta, composition;
                 
                 alpha := MorphismDatum( mor_alpha );
@@ -904,7 +906,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
             
              ##
             AddDistinguishedObjectOfHomomorphismStructure( category,
-              function( )
+              function( cat )
                 
                 return distinguished_object;
                 
@@ -912,7 +914,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
             
             ##
             AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
-              function( mor_alpha )
+              function( cat, mor_alpha )
                 local object_A, object_B, A, B, gen, arrow, reversed, alpha, interpret;
                 
                 object_A := Source( mor_alpha );
@@ -939,7 +941,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
             
             ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
-              function( object_A, object_B, morphism )
+              function( cat, object_A, object_B, morphism )
                 local gen, arrow, reversed, lift, A, B, interpret;
                 
                 gen := HomomorphismStructureOnObjectsForAdelmanCategoryGeneralizedEmbedding( object_A, object_B );

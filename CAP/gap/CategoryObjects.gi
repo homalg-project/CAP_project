@@ -239,7 +239,6 @@ InstallGlobalFunction( ObjectifyObjectForCAPWithAttributes,
                        
   function( object, category, additional_arguments_list... )
     local arg_list;
-    #% CAP_JIT_RESOLVE_FUNCTION
     
     arg_list := Concatenation(
         [ object, ObjectType( category ), CapCategory, category ], additional_arguments_list

@@ -23,9 +23,9 @@ end;
         
 ########
 function ( cat, a, b )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, Source( a ), Range, Range( a ), Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Source( Opposite( a ) ), Range, Range( Opposite( b ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, UnderlyingMatrix( Opposite( a ) ) + UnderlyingMatrix( Opposite( b ) ) ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, Source( a ), Range( a ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), Opposite( cat ), Source( Opposite( a ) ), Range( Opposite( b ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, UnderlyingMatrix( Opposite( a ) ) + UnderlyingMatrix( Opposite( b ) ) ) );
 end
 ########
         
@@ -36,9 +36,9 @@ end
         
 ########
 function ( cat, a )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, Source( a ), Range, Range( a ), Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Source( Opposite( a ) ), Range, Range( Opposite( a ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, -1 * UnderlyingMatrix( Opposite( a ) ) ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, Source( a ), Range( a ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), Opposite( cat ), Source( Opposite( a ) ), Range( Opposite( a ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, -1 * UnderlyingMatrix( Opposite( a ) ) ) );
 end
 ########
         
@@ -49,12 +49,12 @@ end
         
 ########
 function ( cat, arg2, arg3 )
-    return List( [ 1 .. Dimension( Opposite( arg3 ) ) * Dimension( Opposite( arg2 ) ) ], function ( logic_new_func_40574_x )
-            return ObjectifyWithAttributes( rec(
-                   ), MorphismType( cat ), CapCategory, cat, Source, ObjectifyWithAttributes( rec(
-                     ), ObjectType( cat ), CapCategory, cat, Opposite, Opposite( arg2 ) ), Range, ObjectifyWithAttributes( rec(
-                     ), ObjectType( cat ), CapCategory, cat, Opposite, Opposite( arg3 ) ), Opposite, ObjectifyWithAttributes( rec(
-                     ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Opposite( arg3 ), Range, Opposite( arg2 ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( Dimension( Opposite( arg3 ) ) * Dimension( Opposite( arg2 ) ), UnderlyingFieldForHomalg( Opposite( arg3 ) ) ), [ logic_new_func_40574_x ] ), Dimension( Opposite( arg3 ) ), Dimension( Opposite( arg2 ) ) ) ) );
+    return List( [ 1 .. Dimension( Opposite( arg3 ) ) * Dimension( Opposite( arg2 ) ) ], function ( logic_new_func_40513_x )
+            return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                   ), cat, ObjectifyObjectForCAPWithAttributes( rec(
+                     ), cat, Opposite, Opposite( arg2 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+                     ), cat, Opposite, Opposite( arg3 ) ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                     ), Opposite( cat ), Opposite( arg3 ), Opposite( arg2 ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( Dimension( Opposite( arg3 ) ) * Dimension( Opposite( arg2 ) ), UnderlyingFieldForHomalg( Opposite( arg3 ) ) ), [ logic_new_func_40513_x ] ), Dimension( Opposite( arg3 ) ), Dimension( Opposite( arg2 ) ) ) ) );
         end );
 end
 ########
@@ -66,9 +66,9 @@ end
         
 ########
 function ( cat, arg2 )
-    return ObjectifyWithAttributes( rec(
-           ), ObjectType( cat ), CapCategory, cat, Opposite, ObjectifyWithAttributes( rec(
-             ), ObjectType( Opposite( cat ) ), CapCategory, Opposite( cat ), Dimension, NumberRows( UnderlyingMatrix( Opposite( arg2 ) ) ) - RowRankOfMatrix( UnderlyingMatrix( Opposite( arg2 ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ) );
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
+             ), Opposite( cat ), Dimension, NumberRows( UnderlyingMatrix( Opposite( arg2 ) ) ) - RowRankOfMatrix( UnderlyingMatrix( Opposite( arg2 ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ) );
 end
 ########
         
@@ -79,12 +79,12 @@ end
         
 ########
 function ( cat, alpha )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, Range( alpha ), Range, ObjectifyWithAttributes( rec(
-             ), ObjectType( cat ), CapCategory, cat, Opposite, ObjectifyWithAttributes( rec(
-               ), ObjectType( Opposite( cat ) ), CapCategory, Opposite( cat ), Dimension, NumberRows( SyzygiesOfRows( UnderlyingMatrix( Opposite( alpha ) ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ) ), Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, ObjectifyWithAttributes( rec(
-               ), ObjectType( Opposite( cat ) ), CapCategory, Opposite( cat ), Dimension, NumberRows( SyzygiesOfRows( UnderlyingMatrix( Opposite( alpha ) ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ), Range, Source( Opposite( alpha ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, SyzygiesOfRows( UnderlyingMatrix( Opposite( alpha ) ) ) ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, Range( alpha ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
+               ), Opposite( cat ), Dimension, NumberRows( SyzygiesOfRows( UnderlyingMatrix( Opposite( alpha ) ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ) ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), Opposite( cat ), ObjectifyObjectForCAPWithAttributes( rec(
+               ), Opposite( cat ), Dimension, NumberRows( SyzygiesOfRows( UnderlyingMatrix( Opposite( alpha ) ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ), Source( Opposite( alpha ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, SyzygiesOfRows( UnderlyingMatrix( Opposite( alpha ) ) ) ) );
 end
 ########
         
@@ -95,9 +95,9 @@ end
         
 ########
 function ( cat, alpha, beta )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, Range( alpha ), Range, Range( beta ), Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Source( Opposite( beta ) ), Range, Source( Opposite( alpha ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( Opposite( beta ) ), UnderlyingMatrix( Opposite( alpha ) ) ) ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, Range( alpha ), Range( beta ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), Opposite( cat ), Source( Opposite( beta ) ), Source( Opposite( alpha ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( Opposite( beta ) ), UnderlyingMatrix( Opposite( alpha ) ) ) ) );
 end
 ########
         
@@ -108,10 +108,10 @@ end
         
 ########
 function ( cat, arg2 )
-    return ObjectifyWithAttributes( rec(
-           ), ObjectType( cat ), CapCategory, cat, Opposite, ObjectifyWithAttributes( rec(
-             ), ObjectType( Opposite( cat ) ), CapCategory, Opposite( cat ), Dimension, Sum( List( arg2, function ( logic_new_func_40914_x )
-                  return Dimension( Opposite( logic_new_func_40914_x ) );
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
+             ), Opposite( cat ), Dimension, Sum( List( arg2, function ( logic_new_func_40868_x )
+                  return Dimension( Opposite( logic_new_func_40868_x ) );
               end ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ) );
 end
 ########
@@ -123,8 +123,8 @@ end
         
 ########
 function ( cat )
-    return ID_FUNC( ObjectifyWithAttributes( rec(
-             ), ObjectType( Opposite( cat ) ), CapCategory, Opposite( cat ), Dimension, 1, UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ) );
+    return ID_FUNC( ObjectifyObjectForCAPWithAttributes( rec(
+             ), Opposite( cat ), Dimension, 1, UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ) );
 end
 ########
         
@@ -135,10 +135,10 @@ end
         
 ########
 function ( cat, A )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, ObjectifyWithAttributes( rec(
-             ), ObjectType( cat ), CapCategory, cat, Opposite, Opposite( A ) ), Range, A, Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Opposite( A ), Range, Opposite( A ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, HomalgIdentityMatrix( Dimension( Opposite( A ) ), UnderlyingRing( Opposite( cat ) ) ) ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat, Opposite, Opposite( A ) ), A, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), Opposite( cat ), Opposite( A ), Opposite( A ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, HomalgIdentityMatrix( Dimension( Opposite( A ) ), UnderlyingRing( Opposite( cat ) ) ) ) );
 end
 ########
         
@@ -149,8 +149,8 @@ end
         
 ########
 function ( cat, arg2, arg3 )
-    return ID_FUNC( ObjectifyWithAttributes( rec(
-             ), ObjectType( Opposite( cat ) ), CapCategory, Opposite( cat ), Dimension, Dimension( Opposite( arg3 ) ) * Dimension( Opposite( arg2 ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ) );
+    return ID_FUNC( ObjectifyObjectForCAPWithAttributes( rec(
+             ), Opposite( cat ), Dimension, Dimension( Opposite( arg3 ) ) * Dimension( Opposite( arg2 ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ) );
 end
 ########
         
@@ -161,9 +161,9 @@ end
         
 ########
 function ( cat, a )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, a, Range, a, Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Opposite( a ), Range, Opposite( a ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, HomalgIdentityMatrix( Dimension( Opposite( a ) ), UnderlyingRing( Opposite( cat ) ) ) ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, a, a, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), Opposite( cat ), Opposite( a ), Opposite( a ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, HomalgIdentityMatrix( Dimension( Opposite( a ) ), UnderlyingRing( Opposite( cat ) ) ) ) );
 end
 ########
         
@@ -174,9 +174,9 @@ end
         
 ########
 function ( cat, objects, k, P )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, objects[k], Range, P, Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Opposite( P ), Range, Opposite( objects[k] ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, UnionOfRows( HomalgZeroMatrix( Sum( List( objects, function ( x )
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, objects[k], P, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), Opposite( cat ), Opposite( P ), Opposite( objects[k] ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, UnionOfRows( HomalgZeroMatrix( Sum( List( objects, function ( x )
                         return Opposite( x );
                     end ){[ 1 .. k - 1 ]}, function ( c )
                     return Dimension( c );
@@ -197,10 +197,10 @@ end
         
 ########
 function ( cat, arg2 )
-    return ID_FUNC( ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, ObjectifyWithAttributes( rec(
-               ), ObjectType( Opposite( cat ) ), CapCategory, Opposite( cat ), Dimension, 1, UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ), Range, ObjectifyWithAttributes( rec(
-               ), ObjectType( Opposite( cat ) ), CapCategory, Opposite( cat ), Dimension, NumberColumns( ConvertMatrixToRow( UnderlyingMatrix( Opposite( arg2 ) ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, ConvertMatrixToRow( UnderlyingMatrix( Opposite( arg2 ) ) ) ) );
+    return ID_FUNC( ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), Opposite( cat ), ObjectifyObjectForCAPWithAttributes( rec(
+               ), Opposite( cat ), Dimension, 1, UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ), ObjectifyObjectForCAPWithAttributes( rec(
+               ), Opposite( cat ), Dimension, NumberColumns( ConvertMatrixToRow( UnderlyingMatrix( Opposite( arg2 ) ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, ConvertMatrixToRow( UnderlyingMatrix( Opposite( arg2 ) ) ) ) );
 end
 ########
         
@@ -404,12 +404,12 @@ end
         
 ########
 function ( cat, alpha )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, ObjectifyWithAttributes( rec(
-             ), ObjectType( cat ), CapCategory, cat, Opposite, ObjectifyWithAttributes( rec(
-               ), ObjectType( Opposite( cat ) ), CapCategory, Opposite( cat ), Dimension, NumberColumns( SyzygiesOfColumns( UnderlyingMatrix( Opposite( alpha ) ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ) ), Range, Source( alpha ), Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Range( Opposite( alpha ) ), Range, ObjectifyWithAttributes( rec(
-               ), ObjectType( Opposite( cat ) ), CapCategory, Opposite( cat ), Dimension, NumberColumns( SyzygiesOfColumns( UnderlyingMatrix( Opposite( alpha ) ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, SyzygiesOfColumns( UnderlyingMatrix( Opposite( alpha ) ) ) ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
+               ), Opposite( cat ), Dimension, NumberColumns( SyzygiesOfColumns( UnderlyingMatrix( Opposite( alpha ) ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ) ), Source( alpha ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), Opposite( cat ), Range( Opposite( alpha ) ), ObjectifyObjectForCAPWithAttributes( rec(
+               ), Opposite( cat ), Dimension, NumberColumns( SyzygiesOfColumns( UnderlyingMatrix( Opposite( alpha ) ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, SyzygiesOfColumns( UnderlyingMatrix( Opposite( alpha ) ) ) ) );
 end
 ########
         
@@ -420,9 +420,9 @@ end
         
 ########
 function ( cat, arg2 )
-    return ObjectifyWithAttributes( rec(
-           ), ObjectType( cat ), CapCategory, cat, Opposite, ObjectifyWithAttributes( rec(
-             ), ObjectType( Opposite( cat ) ), CapCategory, Opposite( cat ), Dimension, NumberColumns( UnderlyingMatrix( Opposite( arg2 ) ) ) - RowRankOfMatrix( UnderlyingMatrix( Opposite( arg2 ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ) );
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
+             ), Opposite( cat ), Dimension, NumberColumns( UnderlyingMatrix( Opposite( arg2 ) ) ) - RowRankOfMatrix( UnderlyingMatrix( Opposite( arg2 ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ) );
 end
 ########
         
@@ -433,9 +433,9 @@ end
         
 ########
 function ( cat, alpha, beta )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, Source( alpha ), Range, Source( beta ), Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Range( Opposite( beta ) ), Range, Range( Opposite( alpha ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, LeftDivide( UnderlyingMatrix( Opposite( beta ) ), UnderlyingMatrix( Opposite( alpha ) ) ) ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, Source( alpha ), Source( beta ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), Opposite( cat ), Range( Opposite( beta ) ), Range( Opposite( alpha ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, LeftDivide( UnderlyingMatrix( Opposite( beta ) ), UnderlyingMatrix( Opposite( alpha ) ) ) ) );
 end
 ########
         
@@ -446,10 +446,10 @@ end
         
 ########
 function ( cat, A )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, A, Range, ObjectifyWithAttributes( rec(
-             ), ObjectType( cat ), CapCategory, cat, Opposite, Opposite( A ) ), Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Opposite( A ), Range, Opposite( A ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, HomalgIdentityMatrix( Dimension( Opposite( A ) ), UnderlyingRing( Opposite( cat ) ) ) ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, A, ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat, Opposite, Opposite( A ) ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), Opposite( cat ), Opposite( A ), Opposite( A ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, HomalgIdentityMatrix( Dimension( Opposite( A ) ), UnderlyingRing( Opposite( cat ) ) ) ) );
 end
 ########
         
@@ -460,9 +460,9 @@ end
         
 ########
 function ( cat, alpha, beta )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, Source( alpha ), Range, Range( beta ), Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Source( Opposite( beta ) ), Range, Range( Opposite( alpha ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, UnderlyingMatrix( Opposite( beta ) ) * UnderlyingMatrix( Opposite( alpha ) ) ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, Source( alpha ), Range( beta ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), Opposite( cat ), Source( Opposite( beta ) ), Range( Opposite( alpha ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, UnderlyingMatrix( Opposite( beta ) ) * UnderlyingMatrix( Opposite( alpha ) ) ) );
 end
 ########
         
@@ -473,9 +473,9 @@ end
         
 ########
 function ( cat, objects, k, P )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, P, Range, objects[k], Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Opposite( objects[k] ), Range, Opposite( P ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, UnionOfColumns( HomalgZeroMatrix( Dimension( Opposite( objects[k] ) ), Sum( List( objects, function ( x )
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, P, objects[k], Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), Opposite( cat ), Opposite( objects[k] ), Opposite( P ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, UnionOfColumns( HomalgZeroMatrix( Dimension( Opposite( objects[k] ) ), Sum( List( objects, function ( x )
                         return Opposite( x );
                     end ){[ 1 .. k - 1 ]}, function ( c )
                     return Dimension( c );
@@ -496,8 +496,8 @@ end
         
 ########
 function ( cat, arg2 )
-    return ObjectifyWithAttributes( rec(
-           ), ObjectType( cat ), CapCategory, cat, Opposite, Opposite( arg2 ) );
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat, Opposite, Opposite( arg2 ) );
 end
 ########
         
@@ -508,8 +508,8 @@ end
         
 ########
 function ( cat, arg2 )
-    return ObjectifyWithAttributes( rec(
-           ), ObjectType( cat ), CapCategory, cat, Opposite, Opposite( arg2 ) );
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat, Opposite, Opposite( arg2 ) );
 end
 ########
         
@@ -520,10 +520,10 @@ end
         
 ########
 function ( cat, objects, T, tau, P )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, P, Range, T, Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Opposite( T ), Range, Opposite( P ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, UnionOfColumns( UnderlyingRing( Opposite( cat ) ), Dimension( Opposite( T ) ), List( tau, function ( logic_new_func_42871_x )
-                  return UnderlyingMatrix( Opposite( logic_new_func_42871_x ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, P, T, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), Opposite( cat ), Opposite( T ), Opposite( P ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, UnionOfColumns( UnderlyingRing( Opposite( cat ) ), Dimension( Opposite( T ) ), List( tau, function ( logic_new_func_42873_x )
+                  return UnderlyingMatrix( Opposite( logic_new_func_42873_x ) );
               end ) ) ) );
 end
 ########
@@ -535,9 +535,9 @@ end
         
 ########
 function ( cat, T, P )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, P, Range, T, Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Opposite( T ), Range, Opposite( P ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, HomalgZeroMatrix( Dimension( Opposite( T ) ), 0, UnderlyingRing( Opposite( cat ) ) ) ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, P, T, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), Opposite( cat ), Opposite( T ), Opposite( P ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, HomalgZeroMatrix( Dimension( Opposite( T ) ), 0, UnderlyingRing( Opposite( cat ) ) ) ) );
 end
 ########
         
@@ -548,10 +548,10 @@ end
         
 ########
 function ( cat, objects, T, tau, P )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, T, Range, P, Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Opposite( P ), Range, Opposite( T ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, UnionOfRows( UnderlyingRing( Opposite( cat ) ), Dimension( Opposite( T ) ), List( tau, function ( logic_new_func_43029_x )
-                  return UnderlyingMatrix( Opposite( logic_new_func_43029_x ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, T, P, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), Opposite( cat ), Opposite( P ), Opposite( T ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, UnionOfRows( UnderlyingRing( Opposite( cat ) ), Dimension( Opposite( T ) ), List( tau, function ( logic_new_func_43037_x )
+                  return UnderlyingMatrix( Opposite( logic_new_func_43037_x ) );
               end ) ) ) );
 end
 ########
@@ -563,9 +563,9 @@ end
         
 ########
 function ( cat, T, P )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, T, Range, P, Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Opposite( P ), Range, Opposite( T ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, HomalgZeroMatrix( 0, Dimension( Opposite( T ) ), UnderlyingRing( Opposite( cat ) ) ) ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, T, P, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), Opposite( cat ), Opposite( P ), Opposite( T ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, HomalgZeroMatrix( 0, Dimension( Opposite( T ) ), UnderlyingRing( Opposite( cat ) ) ) ) );
 end
 ########
         
@@ -576,9 +576,9 @@ end
         
 ########
 function ( cat, a, b )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, a, Range, b, Opposite, ObjectifyWithAttributes( rec(
-             ), MorphismType( Opposite( cat ) ), CapCategory, Opposite( cat ), Source, Opposite( b ), Range, Opposite( a ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, HomalgZeroMatrix( Dimension( Opposite( b ) ), Dimension( Opposite( a ) ), UnderlyingRing( Opposite( cat ) ) ) ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, a, b, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), Opposite( cat ), Opposite( b ), Opposite( a ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ), UnderlyingMatrix, HomalgZeroMatrix( Dimension( Opposite( b ) ), Dimension( Opposite( a ) ), UnderlyingRing( Opposite( cat ) ) ) ) );
 end
 ########
         
@@ -589,9 +589,9 @@ end
         
 ########
 function ( cat )
-    return ObjectifyWithAttributes( rec(
-           ), ObjectType( cat ), CapCategory, cat, Opposite, ObjectifyWithAttributes( rec(
-             ), ObjectType( Opposite( cat ) ), CapCategory, Opposite( cat ), Dimension, 0, UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ) );
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
+             ), Opposite( cat ), Dimension, 0, UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat ) ) ) );
 end
 ########
         

@@ -21,16 +21,15 @@ compiled_func := CapJitCompiledFunction(
 Display( compiled_func );
 #! function ( cat, mor, test_mor )
 #!     local cap_jit_morphism_attribute;
-#!     cap_jit_morphism_attribute 
-#!      := RightDivide( UnderlyingMatrix( test_mor ), 
+#!     cap_jit_morphism_attribute := RightDivide( UnderlyingMatrix( test_mor ), 
 #!        SyzygiesOfRows( UnderlyingMatrix( mor ) ) );
-#!     return ObjectifyWithAttributes( rec(
-#!            ), MorphismType( cat ), CapCategory, cat, Source, 
-#!        Source( test_mor ), Range, ObjectifyWithAttributes( rec(
-#!              ), ObjectType( cat ), CapCategory, cat, Dimension, 
-#!          NrColumns( cap_jit_morphism_attribute ), UnderlyingFieldForHomalg, 
-#!          UnderlyingRing( cat ) ), UnderlyingFieldForHomalg, 
-#!        UnderlyingRing( cat ), UnderlyingMatrix, cap_jit_morphism_attribute );
+#!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+#!            ), cat, Source( test_mor ), ObjectifyObjectForCAPWithAttributes( 
+#!          rec(
+#!              ), cat, Dimension, NrColumns( cap_jit_morphism_attribute ), 
+#!          UnderlyingFieldForHomalg, UnderlyingRing( cat ) ), 
+#!        UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, 
+#!        cap_jit_morphism_attribute );
 #! end
 
 func1 := function( x )

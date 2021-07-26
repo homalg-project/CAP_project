@@ -403,7 +403,47 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
 end );
 
 InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
-  local pre_func, additional_arguments_func, func;
+  local stat, pre_func, additional_arguments_func, func;
+    
+    if not IsRecord( tree ) then
+        
+        Error( "the syntax tree must be a record" );
+        
+    fi;
+    
+    if tree.type <> "EXPR_FUNC" then
+        
+        Error( "The syntax tree is not of type EXPR_FUNC. However, if you type 'return;', it will be wrapped in a dummy function." );
+        
+        if StartsWith( tree.type, "EXPR" ) then
+            
+            stat := rec(
+                type := "STAT_RETURN_OBJ",
+                obj := tree,
+            );
+            
+        else
+            
+            stat := tree;
+            
+        fi;
+        
+        tree := rec(
+            type := "EXPR_FUNC",
+            narg := 0,
+            nloc := 0,
+            id := -1,
+            nams := [ ],
+            variadic := false,
+            stats := rec(
+                type := "STAT_SEQ_STAT",
+                statements := [
+                    stat,
+                ],
+            ),
+        );
+        
+    fi;
     
     tree := StructuralCopy( tree );
     
@@ -546,7 +586,12 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 if func_pos = fail then
                     
-                    Error( "FVAR reference outside of function stack" );
+                    Error( "An FVAR references a variable outside of the function stack. However, if you type 'return;', it will be replaced by a dummy variable." );
+                    
+                    tree.type := ReplacedString( tree.type, "FVAR", "GVAR" );
+                    tree.gvar := Concatenation( "FVAR_outside_of_function_stack_", tree.name );
+                    
+                    return tree;
                     
                 fi;
                 

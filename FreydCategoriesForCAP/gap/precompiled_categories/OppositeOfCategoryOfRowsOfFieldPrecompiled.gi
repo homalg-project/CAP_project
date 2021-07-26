@@ -22,8 +22,8 @@ end;
         
 ########
 function ( cat, a, b )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, Source( a ), Range, Range( a ), UnderlyingMatrix, UnderlyingMatrix( a ) + UnderlyingMatrix( b ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, Source( a ), Range( a ), UnderlyingMatrix, UnderlyingMatrix( a ) + UnderlyingMatrix( b ) );
 end
 ########
         
@@ -34,8 +34,8 @@ end
         
 ########
 function ( cat, a )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, Source( a ), Range, Range( a ), UnderlyingMatrix, - UnderlyingMatrix( a ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, Source( a ), Range( a ), UnderlyingMatrix, - UnderlyingMatrix( a ) );
 end
 ########
         
@@ -46,11 +46,13 @@ end
         
 ########
 function ( cat, arg2, arg3 )
-    return List( [ 1 .. RankOfObject( arg3 ) * RankOfObject( arg2 ) ], function ( logic_new_func_30687_x )
-            return ObjectifyWithAttributes( rec(
-                   ), MorphismType( cat ), CapCategory, cat, Source, ObjectifyWithAttributes( rec(
-                     ), ObjectType( cat ), CapCategory, cat, RankOfObject, RankOfObject( arg2 ) ), Range, ObjectifyWithAttributes( rec(
-                     ), ObjectType( cat ), CapCategory, cat, RankOfObject, RankOfObject( arg3 ) ), UnderlyingMatrix, ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( RankOfObject( arg3 ) * RankOfObject( arg2 ), UnderlyingRing( cat ) ), [ logic_new_func_30687_x ] ), RankOfObject( arg3 ), RankOfObject( arg2 ) ) );
+    return List( [ 1 .. RankOfObject( arg3 ) * RankOfObject( arg2 ) ], function ( logic_new_func_30608_x )
+            local cap_jit_morphism_attribute;
+            cap_jit_morphism_attribute := ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( RankOfObject( arg3 ) * RankOfObject( arg2 ), UnderlyingRing( cat ) ), [ logic_new_func_30608_x ] ), RankOfObject( arg3 ), RankOfObject( arg2 ) );
+            return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                   ), cat, ObjectifyObjectForCAPWithAttributes( rec(
+                     ), cat, RankOfObject, NrColumns( cap_jit_morphism_attribute ) ), ObjectifyObjectForCAPWithAttributes( rec(
+                     ), cat, RankOfObject, NrRows( cap_jit_morphism_attribute ) ), UnderlyingMatrix, cap_jit_morphism_attribute );
         end );
 end
 ########
@@ -62,8 +64,8 @@ end
         
 ########
 function ( cat, arg2 )
-    return ObjectifyWithAttributes( rec(
-           ), ObjectType( cat ), CapCategory, cat, RankOfObject, NumberRows( UnderlyingMatrix( arg2 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2 ) ) );
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat, RankOfObject, NumberRows( UnderlyingMatrix( arg2 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2 ) ) );
 end
 ########
         
@@ -76,9 +78,9 @@ end
 function ( cat, alpha )
     local cap_jit_morphism_attribute;
     cap_jit_morphism_attribute := SyzygiesOfRows( UnderlyingMatrix( alpha ) );
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, Range( alpha ), Range, ObjectifyWithAttributes( rec(
-             ), ObjectType( cat ), CapCategory, cat, RankOfObject, NrRows( cap_jit_morphism_attribute ) ), UnderlyingMatrix, cap_jit_morphism_attribute );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, Range( alpha ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat, RankOfObject, NrRows( cap_jit_morphism_attribute ) ), UnderlyingMatrix, cap_jit_morphism_attribute );
 end
 ########
         
@@ -89,8 +91,8 @@ end
         
 ########
 function ( cat, alpha, beta )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, Range( alpha ), Range, Range( beta ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ) ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, Range( alpha ), Range( beta ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ) ) );
 end
 ########
         
@@ -101,9 +103,9 @@ end
         
 ########
 function ( cat, arg2 )
-    return ObjectifyWithAttributes( rec(
-           ), ObjectType( cat ), CapCategory, cat, RankOfObject, Sum( List( arg2, function ( logic_new_func_31066_x )
-                return RankOfObject( logic_new_func_31066_x );
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat, RankOfObject, Sum( List( arg2, function ( logic_new_func_31031_x )
+                return RankOfObject( logic_new_func_31031_x );
             end ) ) );
 end
 ########
@@ -115,8 +117,8 @@ end
         
 ########
 function ( cat, a )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, a, Range, a, UnderlyingMatrix, HomalgIdentityMatrix( RankOfObject( a ), UnderlyingRing( cat ) ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, a, a, UnderlyingMatrix, HomalgIdentityMatrix( RankOfObject( a ), UnderlyingRing( cat ) ) );
 end
 ########
         
@@ -174,9 +176,9 @@ function ( cat, arg2 )
     return function (  )
             if not true then
                 return false;
-            elif NumberRows( UnderlyingMatrix( arg2 ) ) <> RankOfObject( Range( arg2 ) ) then
+            elif NumberRows( UnderlyingMatrix( arg2 ) ) <> NumberRows( UnderlyingMatrix( arg2 ) ) then
                 return false;
-            elif NumberColumns( UnderlyingMatrix( arg2 ) ) <> RankOfObject( Source( arg2 ) ) then
+            elif NumberColumns( UnderlyingMatrix( arg2 ) ) <> NumberColumns( UnderlyingMatrix( arg2 ) ) then
                 return false;
             else
                 return true;
@@ -237,9 +239,9 @@ end
 function ( cat, alpha )
     local cap_jit_morphism_attribute;
     cap_jit_morphism_attribute := SyzygiesOfColumns( UnderlyingMatrix( alpha ) );
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, ObjectifyWithAttributes( rec(
-             ), ObjectType( cat ), CapCategory, cat, RankOfObject, NrColumns( cap_jit_morphism_attribute ) ), Range, Source( alpha ), UnderlyingMatrix, cap_jit_morphism_attribute );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat, RankOfObject, NrColumns( cap_jit_morphism_attribute ) ), Source( alpha ), UnderlyingMatrix, cap_jit_morphism_attribute );
 end
 ########
         
@@ -250,8 +252,8 @@ end
         
 ########
 function ( cat, arg2 )
-    return ObjectifyWithAttributes( rec(
-           ), ObjectType( cat ), CapCategory, cat, RankOfObject, NumberColumns( UnderlyingMatrix( arg2 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2 ) ) );
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat, RankOfObject, NumberColumns( UnderlyingMatrix( arg2 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2 ) ) );
 end
 ########
         
@@ -262,8 +264,8 @@ end
         
 ########
 function ( cat, alpha, beta )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, Source( alpha ), Range, Source( beta ), UnderlyingMatrix, LeftDivide( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ) ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, Source( alpha ), Source( beta ), UnderlyingMatrix, LeftDivide( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ) ) );
 end
 ########
         
@@ -274,8 +276,8 @@ end
         
 ########
 function ( cat, alpha, beta )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, Source( alpha ), Range, Range( beta ), UnderlyingMatrix, UnderlyingMatrix( beta ) * UnderlyingMatrix( alpha ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, Source( alpha ), Range( beta ), UnderlyingMatrix, UnderlyingMatrix( beta ) * UnderlyingMatrix( alpha ) );
 end
 ########
         
@@ -286,9 +288,9 @@ end
         
 ########
 function ( cat, objects, T, tau, P )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, P, Range, T, UnderlyingMatrix, UnionOfColumns( UnderlyingRing( cat ), RankOfObject( T ), List( tau, function ( logic_new_func_32163_x )
-                return UnderlyingMatrix( logic_new_func_32163_x );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, P, T, UnderlyingMatrix, UnionOfColumns( UnderlyingRing( cat ), RankOfObject( T ), List( tau, function ( logic_new_func_32264_x )
+                return UnderlyingMatrix( logic_new_func_32264_x );
             end ) ) );
 end
 ########
@@ -300,8 +302,8 @@ end
         
 ########
 function ( cat, T, P )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, P, Range, T, UnderlyingMatrix, HomalgZeroMatrix( RankOfObject( T ), 0, UnderlyingRing( cat ) ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, P, T, UnderlyingMatrix, HomalgZeroMatrix( RankOfObject( T ), 0, UnderlyingRing( cat ) ) );
 end
 ########
         
@@ -312,9 +314,9 @@ end
         
 ########
 function ( cat, objects, T, tau, P )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, T, Range, P, UnderlyingMatrix, UnionOfRows( UnderlyingRing( cat ), RankOfObject( T ), List( tau, function ( logic_new_func_32335_x )
-                return UnderlyingMatrix( logic_new_func_32335_x );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, T, P, UnderlyingMatrix, UnionOfRows( UnderlyingRing( cat ), RankOfObject( T ), List( tau, function ( logic_new_func_32454_x )
+                return UnderlyingMatrix( logic_new_func_32454_x );
             end ) ) );
 end
 ########
@@ -326,8 +328,8 @@ end
         
 ########
 function ( cat, T, P )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, T, Range, P, UnderlyingMatrix, HomalgZeroMatrix( 0, RankOfObject( T ), UnderlyingRing( cat ) ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, T, P, UnderlyingMatrix, HomalgZeroMatrix( 0, RankOfObject( T ), UnderlyingRing( cat ) ) );
 end
 ########
         
@@ -338,8 +340,8 @@ end
         
 ########
 function ( cat, a, b )
-    return ObjectifyWithAttributes( rec(
-           ), MorphismType( cat ), CapCategory, cat, Source, a, Range, b, UnderlyingMatrix, HomalgZeroMatrix( RankOfObject( b ), RankOfObject( a ), UnderlyingRing( cat ) ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat, a, b, UnderlyingMatrix, HomalgZeroMatrix( RankOfObject( b ), RankOfObject( a ), UnderlyingRing( cat ) ) );
 end
 ########
         
@@ -350,8 +352,8 @@ end
         
 ########
 function ( cat )
-    return ObjectifyWithAttributes( rec(
-           ), ObjectType( cat ), CapCategory, cat, RankOfObject, 0 );
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat, RankOfObject, 0 );
 end
 ########
         

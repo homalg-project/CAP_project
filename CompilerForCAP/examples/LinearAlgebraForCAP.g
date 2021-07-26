@@ -31,10 +31,9 @@ tree1 := SYNTAX_TREE(
 );;
 Display( SYNTAX_TREE_CODE( tree1 ) );
 #! function ( cat, S, diagram_S, morphism_matrix, diagram_T, T )
-#!     return ObjectifyWithAttributes( rec(
-#!            ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, 
-#!        UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, 
-#!        UnionOfRows( UnderlyingRing( cat ), Dimension( T ), 
+#!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+#!            ), cat, S, T, UnderlyingFieldForHomalg, UnderlyingRing( cat ), 
+#!        UnderlyingMatrix, UnionOfRows( UnderlyingRing( cat ), Dimension( T ), 
 #!          ListN( diagram_S, List( morphism_matrix, function ( row )
 #!                   return List( row, UnderlyingMatrix );
 #!               end ), function ( source, row )
@@ -50,14 +49,13 @@ tree2 := SYNTAX_TREE( CapJitCompiledFunction(
     [ vec, W, [ V, V ], morphism_matrix, [ V, V ], W  ]
 ) );;
 # fixup nams
-tree2.stats.statements[1].obj.args[12].args[3].args[3].nams :=
+Last( tree2.stats.statements[1].obj.args ).args[3].args[3].nams :=
     [ "source", "row" ];;
 Display( SYNTAX_TREE_CODE( tree2 ) );
 #! function ( cat, S, diagram_S, morphism_matrix, diagram_T, T )
-#!     return ObjectifyWithAttributes( rec(
-#!            ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, 
-#!        UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, 
-#!        UnionOfRows( UnderlyingRing( cat ), Dimension( T ), 
+#!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+#!            ), cat, S, T, UnderlyingFieldForHomalg, UnderlyingRing( cat ), 
+#!        UnderlyingMatrix, UnionOfRows( UnderlyingRing( cat ), Dimension( T ), 
 #!          ListN( diagram_S, morphism_matrix, 
 #!            function ( source, row )
 #!                 return UnionOfColumns( UnderlyingRing( cat ), 
@@ -74,13 +72,11 @@ Display( Last( vec!.compiled_functions.KernelEmbedding ) );
 #!     local cap_jit_morphism_attribute;
 #!     cap_jit_morphism_attribute 
 #!      := SyzygiesOfRows( UnderlyingMatrix( morphism ) );
-#!     return ObjectifyWithAttributes( rec(
-#!            ), MorphismType( cat ), CapCategory, cat, Source, 
-#!        ObjectifyWithAttributes( rec(
-#!              ), ObjectType( cat ), CapCategory, cat, Dimension, 
-#!          NrRows( cap_jit_morphism_attribute ), UnderlyingFieldForHomalg, 
-#!          UnderlyingRing( cat ) ), Range, Source( morphism ), 
-#!        UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, 
+#!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+#!            ), cat, ObjectifyObjectForCAPWithAttributes( rec(
+#!              ), cat, Dimension, NrRows( cap_jit_morphism_attribute ), 
+#!          UnderlyingFieldForHomalg, UnderlyingRing( cat ) ), Source( morphism )
+#!         , UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, 
 #!        cap_jit_morphism_attribute );
 #! end
 
