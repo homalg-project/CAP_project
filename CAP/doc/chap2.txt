@@ -268,7 +268,9 @@
   
   [33X[0;0YThe  arguments are a category [23XC[123X and an object datum [23Xa[123X (type and semantics of
   the  object  datum  depend  on  the  category). The output is an object of [23XC[123X
-  defined by [23Xa[123X.[133X
+  defined by [23Xa[123X. Note that by default this CAP operation is not cached. You can
+  change  this behaviour by calling [10XSetCachingToWeak( C, "ObjectConstructor" )[110X
+  resp. [10XSetCachingToCrisp( C, "ObjectConstructor" )[110X.[133X
   
   [1X2.7-2 AddObjectConstructor[101X
   
@@ -286,7 +288,10 @@
   
   [33X[0;0YThe  argument  is a CAP category object [3Xobj[103X. The output is a datum which can
   be    used    to   construct   [3Xobj[103X,   that   is,   [10XIsEqualForObjects(   [110X[3Xobj[103X[10X,
-  ObjectConstructor( CapCategory( [110X[3Xobj[103X[10X ), ObjectDatum( [110X[3Xobj[103X[10X ) ) )[110X.[133X
+  ObjectConstructor(  CapCategory( [110X[3Xobj[103X[10X ), ObjectDatum( [110X[3Xobj[103X[10X ) ) )[110X. Note that by
+  default  this  CAP operation is not cached. You can change this behaviour by
+  calling  [10XSetCachingToWeak(  C,  "ObjectDatum"  )[110X resp. [10XSetCachingToCrisp( C,
+  "ObjectDatum" )[110X.[133X
   
   [1X2.7-4 AddObjectDatum[101X
   

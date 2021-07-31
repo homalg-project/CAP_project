@@ -393,7 +393,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectConstructor</code>( <var class="Arg">C</var>, <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an object</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and an object datum <span class="SimpleMath">\(a\)</span> (type and semantics of the object datum depend on the category). The output is an object of <span class="SimpleMath">\(C\)</span> defined by <span class="SimpleMath">\(a\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and an object datum <span class="SimpleMath">\(a\)</span> (type and semantics of the object datum depend on the category). The output is an object of <span class="SimpleMath">\(C\)</span> defined by <span class="SimpleMath">\(a\)</span>. Note that by default this CAP operation is not cached. You can change this behaviour by calling <code class="code">SetCachingToWeak( C, "ObjectConstructor" )</code> resp. <code class="code">SetCachingToCrisp( C, "ObjectConstructor" )</code>.</p>
 
 <p><a id="X7D093D4981AC4E7F" name="X7D093D4981AC4E7F"></a></p>
 
@@ -411,7 +411,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ObjectDatum</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: depends on the category</p>
 
-<p>The argument is a CAP category object <var class="Arg">obj</var>. The output is a datum which can be used to construct <var class="Arg">obj</var>, that is, <code class="code">IsEqualForObjects( </code><var class="Arg">obj</var><code class="code">, ObjectConstructor( CapCategory( </code><var class="Arg">obj</var><code class="code"> ), ObjectDatum( </code><var class="Arg">obj</var><code class="code"> ) ) )</code>.</p>
+<p>The argument is a CAP category object <var class="Arg">obj</var>. The output is a datum which can be used to construct <var class="Arg">obj</var>, that is, <code class="code">IsEqualForObjects( </code><var class="Arg">obj</var><code class="code">, ObjectConstructor( CapCategory( </code><var class="Arg">obj</var><code class="code"> ), ObjectDatum( </code><var class="Arg">obj</var><code class="code"> ) ) )</code>. Note that by default this CAP operation is not cached. You can change this behaviour by calling <code class="code">SetCachingToWeak( C, "ObjectDatum" )</code> resp. <code class="code">SetCachingToCrisp( C, "ObjectDatum" )</code>.</p>
 
 <p><a id="X7EF116D57BFA80B5" name="X7EF116D57BFA80B5"></a></p>
 

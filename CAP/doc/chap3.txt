@@ -45,7 +45,10 @@
   
   [33X[0;0YThe  arguments are two objects [23XS[123X and [23XT[123X in a category, and a morphism datum [23Xa[123X
   (type  and  semantics  of  the  morphism  datum depend on the category). The
-  output is a morphism in [23X\mathrm{Hom}(S,T)[123X defined by [23Xa[123X.[133X
+  output is a morphism in [23X\mathrm{Hom}(S,T)[123X defined by [23Xa[123X. Note that by default
+  this  CAP  operation is not cached. You can change this behaviour by calling
+  [10XSetCachingToWeak(  C,  "MorphismConstructor"  )[110X  resp. [10XSetCachingToCrisp( C,
+  "MorphismConstructor" )[110X.[133X
   
   [1X3.2-2 AddMorphismConstructor[101X
   
@@ -64,7 +67,10 @@
   
   [33X[0;0YThe argument is a CAP category morphism [3Xmor[103X. The output is a datum which can
   be   used   to   construct   [3Xmor[103X,   that   is,   [10XIsEqualForMorphisms(   [110X[3Xmor[103X[10X,
-  MorphismConstructor( Source( [110X[3Xmor[103X[10X ), MorphismDatum( [110X[3Xmor[103X[10X ), Range( [110X[3Xmor[103X[10X ) ) )[110X.[133X
+  MorphismConstructor(  Source( [110X[3Xmor[103X[10X ), MorphismDatum( [110X[3Xmor[103X[10X ), Range( [110X[3Xmor[103X[10X ) ) )[110X.
+  Note  that  by default this CAP operation is not cached. You can change this
+  behaviour   by   calling   [10XSetCachingToWeak(   C,  "MorphismDatum"  )[110X  resp.
+  [10XSetCachingToCrisp( C, "MorphismDatum" )[110X.[133X
   
   [1X3.2-4 AddMorphismDatum[101X
   
