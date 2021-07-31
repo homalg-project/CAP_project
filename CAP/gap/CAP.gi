@@ -27,9 +27,40 @@ InstallTrueMethod( IsPreAbelianCategory, IsAbelianCategory );
 
 ##
 InstallValue( CAP_INTERNAL,
-              rec(
-                   name_counter := 0,
-                   default_cache_type := "weak",
+                rec(
+                    name_counter := 0,
+                    default_cache_type := "weak",
+                    operation_names_with_cache_disabled_by_default := [
+                        # the following operations are needed for comparison in caches
+                        "IsEqualForObjects",
+                        "IsEqualForMorphisms",
+                        "IsEqualForMorphismsOnMor",
+                        "IsEqualForCacheForObjects",
+                        "IsEqualForCacheForMorphisms",
+                        # it is unclear how `IsEqualForCacheForObjects` and `IsEqualForCacheForMorphisms`
+                        # would behave on non-well-defined objects/morphisms, so exclude `IsWellDefined*`
+                        "IsWellDefinedForObjects",
+                        "IsWellDefinedForMorphisms",
+                        "IsWellDefinedForTwoCells",
+                        # do not cache operations returning random data
+                        "RandomObjectByInteger",
+                        "RandomMorphismByInteger",
+                        "RandomMorphismWithFixedSourceByInteger",
+                        "RandomMorphismWithFixedRangeByInteger",
+                        "RandomMorphismWithFixedSourceAndRangeByInteger",
+                        "RandomObjectByList",
+                        "RandomMorphismByList",
+                        "RandomMorphismWithFixedSourceByList",
+                        "RandomMorphismWithFixedRangeByList",
+                        "RandomMorphismWithFixedSourceAndRangeByList",
+                        # by default, do not cache constructors and object/morphism data
+                        # because in general these operations are cheap,
+                        # so caching would not improve the performance
+                        "ObjectConstructor",
+                        "ObjectDatum",
+                        "MorphismConstructor",
+                        "MorphismDatum",
+                    ],
               )
 );
 
@@ -80,7 +111,7 @@ InstallGlobalFunction( GET_METHOD_CACHE,
         cache := CreateWeakCachingObject( number );
     elif cache_type = "crisp" then
         cache := CreateCrispCachingObject( number );
-    elif cache_type = "none" or cache_type = "never" then
+    elif cache_type = "none" then
         cache := CreateCrispCachingObject( number );
         DeactivateCachingObject( cache );
     else
@@ -184,7 +215,7 @@ end );
 InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
                        
   function( obj_rec, attr_list )
-    local i, flatted_attribute_list, obj;
+    local i, flatted_attribute_list, obj, operation_name;
     
     for i in [ 1 .. Length( attr_list ) ] do
         
@@ -215,30 +246,13 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     
     obj!.derivations_weight_list := MakeOperationWeightList( obj, CAP_INTERNAL_DERIVATION_GRAPH );
     
-    obj!.caches := rec( IsEqualForObjects := "never",
-                        IsEqualForMorphisms := "never",
-                        IsEqualForMorphismsOnMor := "never",
-                        IsEqualForCacheForObjects := "never",
-                        IsEqualForCacheForMorphisms := "never",
-                        IsWellDefinedForObjects := "never",
-                        IsWellDefinedForMorphisms := "never",
-                        IsWellDefinedForTwoCells := "never",
-                        RandomObjectByInteger := "never",
-                        RandomMorphismByInteger := "never",
-                        RandomMorphismWithFixedSourceByInteger := "never",
-                        RandomMorphismWithFixedRangeByInteger := "never",
-                        RandomMorphismWithFixedSourceAndRangeByInteger := "never",
-                        RandomObjectByList := "never",
-                        RandomMorphismByList := "never",
-                        RandomMorphismWithFixedSourceByList := "never",
-                        RandomMorphismWithFixedRangeByList := "never",
-                        RandomMorphismWithFixedSourceAndRangeByList := "never",
-                        # object and morphism data must never be cashed
-                        # because `IsEqualForCache*` might involve them,
-                        # possibly leading to an infinite recursion
-                        ObjectDatum := "never",
-                        MorphismDatum := "never",
-                      );
+    obj!.caches := rec( );
+    
+    for operation_name in CAP_INTERNAL.operation_names_with_cache_disabled_by_default do
+        
+        obj!.caches.(operation_name) := "none";
+        
+    od;
     
     obj!.redirects := rec( );
     
@@ -385,8 +399,7 @@ InstallMethod( SetCaching,
         
     fi;
     
-    if not IsBound( category!.caches.( function_name ) ) or
-        ( IsString( category!.caches.( function_name ) ) and category!.caches.( function_name ) <> "never" ) then
+    if not IsBound( category!.caches.( function_name ) ) or IsString( category!.caches.( function_name ) ) then
         
         category!.caches.( function_name ) := caching_info;
         
@@ -465,8 +478,8 @@ InstallGlobalFunction( SetCachingOfCategory,
     
     for current_name in RecNames( category!.caches ) do
         
-        if current_name in [ "IsEqualForMorphisms", "IsEqualForObjects", "IsEqualForMorphismsOnMor", "IsEqualForCacheForMorphisms", "IsEqualForCacheForObjects" ] then
-            continue; ## Those are needed for comparison in caches
+        if current_name in CAP_INTERNAL.operation_names_with_cache_disabled_by_default then
+            continue;
         fi;
         
         SetCaching( category, current_name, type );

@@ -399,6 +399,8 @@ DeclareGlobalFunction( "ObjectifyObjectForCAPWithAttributes" );
 #! The arguments are a category $C$ and an object datum $a$
 #! (type and semantics of the object datum depend on the category).
 #! The output is an object of $C$ defined by $a$.
+#! Note that by default this CAP operation is not cached. You can change this behaviour
+#! by calling `SetCachingToWeak( C, "ObjectConstructor" )` resp. `SetCachingToCrisp( C, "ObjectConstructor" )`.
 #! @Returns an object
 #! @Arguments C, a
 DeclareOperation( "ObjectConstructor",
@@ -427,6 +429,8 @@ DeclareOperation( "AddObjectConstructor",
 #! The argument is a CAP category object <A>obj</A>.
 #! The output is a datum which can be used to construct <A>obj</A>, that is,
 #! `IsEqualForObjects( `<A>obj</A>`, ObjectConstructor( CapCategory( `<A>obj</A>` ), ObjectDatum( `<A>obj</A>` ) ) )`.
+#! Note that by default this CAP operation is not cached. You can change this behaviour
+#! by calling `SetCachingToWeak( C, "ObjectDatum" )` resp. `SetCachingToCrisp( C, "ObjectDatum" )`.
 #! @Returns depends on the category
 #! @Arguments obj
 DeclareAttribute( "ObjectDatum",

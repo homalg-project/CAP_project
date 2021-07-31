@@ -67,6 +67,8 @@ DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_MORPHISMS" );
 #! The arguments are two objects $S$ and $T$ in a category,
 #! and a morphism datum $a$ (type and semantics of the morphism datum depend on the category).
 #! The output is a morphism in $\mathrm{Hom}(S,T)$ defined by $a$.
+#! Note that by default this CAP operation is not cached. You can change this behaviour
+#! by calling `SetCachingToWeak( C, "MorphismConstructor" )` resp. `SetCachingToCrisp( C, "MorphismConstructor" )`.
 #! @Returns a morphism in $\mathrm{Hom}(S,T)$
 #! @Arguments S, a, T
 DeclareOperation( "MorphismConstructor",
@@ -95,6 +97,8 @@ DeclareOperation( "AddMorphismConstructor",
 #! The argument is a CAP category morphism <A>mor</A>.
 #! The output is a datum which can be used to construct <A>mor</A>, that is,
 #! `IsEqualForMorphisms( `<A>mor</A>`, MorphismConstructor( Source( `<A>mor</A>` ), MorphismDatum( `<A>mor</A>` ), Range( `<A>mor</A>` ) ) )`.
+#! Note that by default this CAP operation is not cached. You can change this behaviour
+#! by calling `SetCachingToWeak( C, "MorphismDatum" )` resp. `SetCachingToCrisp( C, "MorphismDatum" )`.
 #! @Returns depends on the category
 #! @Arguments mor
 DeclareAttribute( "MorphismDatum",
