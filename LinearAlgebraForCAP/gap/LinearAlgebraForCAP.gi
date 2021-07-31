@@ -45,6 +45,9 @@ InstallGlobalFunction( MATRIX_CATEGORY,
         ),
     );
     
+    # this cache replaces the KeyDependentOperation caching when using ObjectConstructor directly instead of MatrixCategoryObject
+    SetCachingToWeak( category, "ObjectConstructor" );
+    
     SetFilterObj( category, IsMatrixCategory );
     
     AddObjectRepresentation( category, IsVectorSpaceObject and HasIsProjective and IsProjective );

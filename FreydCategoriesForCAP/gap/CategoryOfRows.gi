@@ -37,6 +37,9 @@ InstallMethod( CategoryOfRows,
         ),
     );
     
+    # this cache replaces the KeyDependentOperation caching when using ObjectConstructor directly instead of CategoryOfRowsObject
+    SetCachingToWeak( category, "ObjectConstructor" );
+    
     SetFilterObj( category, IsCategoryOfRows );
     
     if HasHasInvariantBasisProperty( homalg_ring ) and HasInvariantBasisProperty( homalg_ring ) then
