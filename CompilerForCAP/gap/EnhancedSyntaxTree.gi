@@ -613,7 +613,11 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 if not tree.name in func_stack[func_pos].nams then
                     
-                    Error( "FVAR name does not occur in the names of local variables of its function" );
+                    Error( "The FVAR name ", tree.name, " does not occur in the names of local variables of its function. ",
+                        "However, if you type 'return;', the name will be added for debugging purposes (this might lead to unexpected results for variadic functions)." );
+                    
+                    Add( func_stack[func_pos].nams, tree.name );
+                    func_stack[func_pos].nloc := func_stack[func_pos].nloc + 1;
                     
                 fi;
                 
