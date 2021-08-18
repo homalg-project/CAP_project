@@ -173,12 +173,16 @@ end
         
 ########
 function ( cat_1, arg2_1 )
+    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1;
+    cap_jit_hoisted_expression_1_1 := not true;
+    cap_jit_hoisted_expression_2_1 := NumberRows( UnderlyingMatrix( arg2_1 ) ) <> NumberRows( UnderlyingMatrix( arg2_1 ) );
+    cap_jit_hoisted_expression_3_1 := NumberColumns( UnderlyingMatrix( arg2_1 ) ) <> NumberColumns( UnderlyingMatrix( arg2_1 ) );
     return function (  )
-            if not true then
+            if cap_jit_hoisted_expression_1_1 then
                 return false;
-            elif NumberRows( UnderlyingMatrix( arg2_1 ) ) <> NumberRows( UnderlyingMatrix( arg2_1 ) ) then
+            elif cap_jit_hoisted_expression_2_1 then
                 return false;
-            elif NumberColumns( UnderlyingMatrix( arg2_1 ) ) <> NumberColumns( UnderlyingMatrix( arg2_1 ) ) then
+            elif cap_jit_hoisted_expression_3_1 then
                 return false;
             else
                 return true;
@@ -195,10 +199,13 @@ end
         
 ########
 function ( cat_1, arg2_1 )
+    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1;
+    cap_jit_hoisted_expression_1_1 := not true;
+    cap_jit_hoisted_expression_2_1 := RankOfObject( arg2_1 ) < 0;
     return function (  )
-            if not true then
+            if cap_jit_hoisted_expression_1_1 then
                 return false;
-            elif RankOfObject( arg2_1 ) < 0 then
+            elif cap_jit_hoisted_expression_2_1 then
                 return false;
             else
                 return true;

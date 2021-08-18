@@ -85,3 +85,12 @@ DeclareGlobalFunction( "CapJitPrettyPrintFunction" );
 #! @Returns a record
 #! @Arguments tree
 DeclareGlobalFunction( "CapJitCopyWithNewFunctionIDs" );
+
+#! @Description
+#!   Returns `true` if the enhanced syntax trees <A>tree1</A> and <A>tree2</A> are equal up to:
+#!     * renaming of local variables,
+#!     * replacement of function IDs,
+#!     * changing the names of global variables while still referencing the identical value.
+#! @Returns a boolean
+#! @Arguments tree1, tree2
+DeclareGlobalFunction( "CapJitIsEqualForEnhancedSyntaxTrees" );

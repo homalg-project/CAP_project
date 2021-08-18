@@ -332,18 +332,25 @@ end
         
 ########
 function ( cat_1, arg2_1 )
+    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1, cap_jit_hoisted_expression_4_1, cap_jit_hoisted_expression_5_1, cap_jit_hoisted_expression_6_1;
+    cap_jit_hoisted_expression_1_1 := not true;
+    cap_jit_hoisted_expression_2_1 := not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Source( Opposite( arg2_1 ) ) ), UnderlyingRing( Opposite( cat_1 ) ) );
+    cap_jit_hoisted_expression_3_1 := not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Opposite( arg2_1 ) ), UnderlyingRing( Opposite( cat_1 ) ) );
+    cap_jit_hoisted_expression_4_1 := not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Range( Opposite( arg2_1 ) ) ), UnderlyingRing( Opposite( cat_1 ) ) );
+    cap_jit_hoisted_expression_5_1 := NumberRows( UnderlyingMatrix( Opposite( arg2_1 ) ) ) <> Dimension( Source( Opposite( arg2_1 ) ) );
+    cap_jit_hoisted_expression_6_1 := NumberColumns( UnderlyingMatrix( Opposite( arg2_1 ) ) ) <> Dimension( Range( Opposite( arg2_1 ) ) );
     return function (  )
-            if not true then
+            if cap_jit_hoisted_expression_1_1 then
                 return false;
-            elif not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Source( Opposite( arg2_1 ) ) ), UnderlyingRing( Opposite( cat_1 ) ) ) then
+            elif cap_jit_hoisted_expression_2_1 then
                 return false;
-            elif not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Opposite( arg2_1 ) ), UnderlyingRing( Opposite( cat_1 ) ) ) then
+            elif cap_jit_hoisted_expression_3_1 then
                 return false;
-            elif not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Range( Opposite( arg2_1 ) ) ), UnderlyingRing( Opposite( cat_1 ) ) ) then
+            elif cap_jit_hoisted_expression_4_1 then
                 return false;
-            elif NumberRows( UnderlyingMatrix( Opposite( arg2_1 ) ) ) <> Dimension( Source( Opposite( arg2_1 ) ) ) then
+            elif cap_jit_hoisted_expression_5_1 then
                 return false;
-            elif NumberColumns( UnderlyingMatrix( Opposite( arg2_1 ) ) ) <> Dimension( Range( Opposite( arg2_1 ) ) ) then
+            elif cap_jit_hoisted_expression_6_1 then
                 return false;
             else
                 return true;
@@ -360,12 +367,16 @@ end
         
 ########
 function ( cat_1, arg2_1 )
+    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1;
+    cap_jit_hoisted_expression_1_1 := not true;
+    cap_jit_hoisted_expression_2_1 := not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Opposite( arg2_1 ) ), UnderlyingRing( Opposite( cat_1 ) ) );
+    cap_jit_hoisted_expression_3_1 := Dimension( Opposite( arg2_1 ) ) < 0;
     return function (  )
-            if not true then
+            if cap_jit_hoisted_expression_1_1 then
                 return false;
-            elif not IS_IDENTICAL_OBJ( UnderlyingFieldForHomalg( Opposite( arg2_1 ) ), UnderlyingRing( Opposite( cat_1 ) ) ) then
+            elif cap_jit_hoisted_expression_2_1 then
                 return false;
-            elif Dimension( Opposite( arg2_1 ) ) < 0 then
+            elif cap_jit_hoisted_expression_3_1 then
                 return false;
             else
                 return true;

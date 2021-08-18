@@ -477,3 +477,12 @@ InstallGlobalFunction( CapJitCopyWithNewFunctionIDs, function ( tree )
     return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
     
 end );
+
+InstallGlobalFunction( CapJitIsEqualForEnhancedSyntaxTrees, function ( tree1, tree2 )
+    
+    # well be changed inplace
+    tree2 := StructuralCopy( tree2 );
+    
+    return CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree1, tree2 ) <> fail;
+    
+end );
