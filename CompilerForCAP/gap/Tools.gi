@@ -3,6 +3,9 @@
 #
 # Implementations
 #
+BindGlobal( "CAP_JIT_INTERNAL_FUNCTION_ID", 1 );
+MakeReadWriteGlobal( "CAP_JIT_INTERNAL_FUNCTION_ID" );
+
 InstallGlobalFunction( CapJitIsCallToGlobalFunction, function ( tree, condition )
   local condition_func;
     
@@ -447,5 +450,30 @@ InstallGlobalFunction( CapJitPrettyPrintFunction, function ( func )
     SizeScreen( size_screen );
     
     return function_string;
+    
+end );
+
+InstallGlobalFunction( CapJitCopyWithNewFunctionIDs, function ( tree )
+  local pre_func;
+    
+    tree := StructuralCopy( tree );
+    
+    pre_func := function ( tree, additional_arguments )
+        
+        if IsRecord( tree ) and tree.type = "EXPR_FUNC" then
+            
+            tree := ShallowCopy( tree );
+            
+            tree.stats := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( tree.stats, tree.id, CAP_JIT_INTERNAL_FUNCTION_ID, tree.nams, tree.nams );
+            tree.id := CAP_JIT_INTERNAL_FUNCTION_ID;
+            CAP_JIT_INTERNAL_FUNCTION_ID := CAP_JIT_INTERNAL_FUNCTION_ID + 1;
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
     
 end );

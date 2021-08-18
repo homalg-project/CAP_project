@@ -3,8 +3,6 @@
 #
 # Implementations
 #
-BindGlobal( "CAP_JIT_INTERNAL_FUNCTION_ID", 1 );
-MakeReadWriteGlobal( "CAP_JIT_INTERNAL_FUNCTION_ID" );
 InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
   local globalize_hvars, given_arguments, tree, orig_tree, pre_func, additional_arguments_func;
     

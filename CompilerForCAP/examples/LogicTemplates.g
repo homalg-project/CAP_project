@@ -6,6 +6,8 @@ LoadPackage( "CompilerForCAP" );
 
 #! @Example
 
+logic_templates_orig := ShallowCopy( CAP_JIT_LOGIC_TEMPLATES );;
+
 GUARD_STRING := "\"THIS_STRING_SHOULD_NEVER_APPEAR_IN_PRODUCTION_CODE\"";;
 
 # add a nonsense template
@@ -29,11 +31,34 @@ Display( CapJitCompiledFunction( func, [ ] ) );
 #!       end;
 #! end
 
-# remove the last template again and make sure it is
-# the one we have added above
+# check that functions can be used multiple times in dst_template
+# add a nonsense template
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list", "value" ],
+        src_template := "List( list, l -> value )",
+        dst_template := "Sum( list, l -> value ) + Sum( list, l -> value )",
+        returns_value := true,
+    )
+);
+
+func := function ( list )
+    return List( list, l -> l ); end;;
+
+# we are not interested in the output, but only that this does not throw
+# an error due to some function id being used multiple times
+CapJitCompiledFunction( func, [ ] );;
+
+func := function ( list )
+    return List( list, l -> (x -> x) ); end;;
+
+# we are not interested in the output, but only that this does not throw
+# an error due to some function id being used multiple times
+CapJitCompiledFunction( func, [ ] );;
+
+# reset CAP_JIT_LOGIC_TEMPLATES
 MakeReadWriteGlobal( "CAP_JIT_LOGIC_TEMPLATES" );
-Remove( CAP_JIT_LOGIC_TEMPLATES ) = logic_template;
-#! true
+CAP_JIT_LOGIC_TEMPLATES  := logic_templates_orig;;
 MakeReadOnlyGlobal( "CAP_JIT_LOGIC_TEMPLATES" );
 
 #! @EndExample

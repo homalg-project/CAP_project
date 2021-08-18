@@ -125,8 +125,8 @@ InstallGlobalFunction( CapJitInlinedVariableAssignments, function ( tree )
                 if tree.type = "EXPR_REF_FVAR" then
                     
                     number_of_uses := number_of_uses + 1;
-
-                    return StructuralCopy( rhs );
+                    
+                    return CapJitCopyWithNewFunctionIDs( rhs );
                 
                 fi;
                 

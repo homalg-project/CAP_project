@@ -452,7 +452,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
 end );
 
 InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, args... )
-  local cleanup_only, template, variable_names, variable_filters, src_template, dst_template, new_funcs, i, template_var_name, src_template_tree, dst_template_tree, variables, matched_src_template_tree, condition_func, path, match, new_tree, parent, variable_path, filter, result, value, dst_tree, pre_func;
+  local cleanup_only, template, variable_names, variable_filters, src_template, dst_template, new_funcs, i, template_var_name, src_template_tree, dst_template_tree, variables, matched_src_template_tree, condition_func, path, match, new_tree, parent, variable_path, filter, result, value, dst_tree, func_id_replacements, additional_arguments_func, pre_func;
     
     if not Length( args ) in [ 0, 1 ] then
         
@@ -750,10 +750,19 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, a
             fi;
             
             dst_tree := StructuralCopy( dst_template_tree );
-
+            
+            func_id_replacements := [ ];
+            
+            # will be used twice
+            additional_arguments_func := function ( tree, key, path )
+                
+                return Concatenation( path, [ key ] );
+                
+            end;
+            
             # set correct function IDs in dst_tree
-            pre_func := function ( tree, additional_arguments )
-              local current_func, new_nams, condition_func, path, func;
+            pre_func := function ( tree, path )
+              local current_func, new_nams, condition_func, src_template_path, func;
 
                 if IsRecord( tree ) and tree.type = "EXPR_FUNC" then
                     
@@ -778,19 +787,27 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, a
                             
                         end;
                         
-                        path := CapJitFindNodeDeep( src_template_tree, condition_func );
+                        src_template_path := CapJitFindNodeDeep( src_template_tree, condition_func );
                         
-                        if path = fail then
+                        if src_template_path = fail then
                             
                             Error( "could not find matching func in src_template" );
-
+                            
                         fi;
                         
                         # now get the function from matched_src_template_tree where id, nloc and nams have been set correctly during the matching phase
-                        func := CapJitGetNodeByPath( matched_src_template_tree, path );
-
-                        current_func.stats := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( current_func.stats, current_func.id, func.id, current_func.nams, func.nams );
-                        current_func.id := func.id;
+                        func := CapJitGetNodeByPath( matched_src_template_tree, src_template_path );
+                        
+                        current_func.stats := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( current_func.stats, current_func.id, CAP_JIT_INTERNAL_FUNCTION_ID, current_func.nams, func.nams );
+                        Add( func_id_replacements, rec(
+                            path := path,
+                            from_id := func.id,
+                            to_id := CAP_JIT_INTERNAL_FUNCTION_ID,
+                            nams := func.nams,
+                        ) );
+                        current_func.id := CAP_JIT_INTERNAL_FUNCTION_ID;
+                        CAP_JIT_INTERNAL_FUNCTION_ID := CAP_JIT_INTERNAL_FUNCTION_ID + 1;
+                        
                         current_func.nloc := func.nloc;
                         current_func.nams := func.nams;
                         
@@ -804,27 +821,39 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, a
                 
             end;
             
-            dst_tree := CapJitIterateOverTree( dst_tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+            dst_tree := CapJitIterateOverTree( dst_tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [ ] );
             
             # insert variables in dst_tree (this has to happen after function IDs are set, since otherwise functions in replaced variables are considered)
-            pre_func := function ( tree, additional_arguments )
-              local var_number;
+            pre_func := function ( tree, path )
+              local var_number, new_tree, replacement;
 
                 if IsRecord( tree ) and tree.type = "EXPR_REF_GVAR" and StartsWith( tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_" ) then
                     
                     var_number := Int( ReplacedString( tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_", "" ) );
         
                     Assert( 0, var_number <> fail );
-
-                    return variables[var_number].tree;
-
+                    
+                    new_tree := CapJitCopyWithNewFunctionIDs( variables[var_number].tree );
+                    
+                    for replacement in func_id_replacements do
+                        
+                        if StartsWith( path, replacement.path ) then
+                            
+                            new_tree := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( new_tree, replacement.from_id, replacement.to_id, replacement.nams, replacement.nams );
+                            
+                        fi;
+                        
+                    od;
+                    
+                    return new_tree;
+                    
                 fi;
                 
                 return tree;
                 
             end;
             
-            dst_tree := CapJitIterateOverTree( dst_tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+            dst_tree := CapJitIterateOverTree( dst_tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [ ] );
 
             if IsList( parent ) then
                 

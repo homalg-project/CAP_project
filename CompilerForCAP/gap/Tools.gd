@@ -79,3 +79,9 @@ DeclareGlobalFunction( "CapJitRemovedReturnFail" );
 #! @Returns a string
 #! @Arguments func
 DeclareGlobalFunction( "CapJitPrettyPrintFunction" );
+
+#! @Description
+#!   Returns a structural copy of the enhanced syntax <A>tree</A> which is 1:1 except that all functions have new, unused IDs.
+#! @Returns a record
+#! @Arguments tree
+DeclareGlobalFunction( "CapJitCopyWithNewFunctionIDs" );
