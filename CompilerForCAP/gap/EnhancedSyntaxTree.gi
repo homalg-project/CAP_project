@@ -459,7 +459,18 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
         if IsRecord( tree ) then
             
             Assert( 0, IsBound( tree.type ) );
-
+            
+            # check that the input is a proper tree, i.e. acyclic
+            if IsBound( tree.touched ) then
+                
+                Error( "this subtree can be reached via at least two different paths, i.e. the input contains a cycle and thus is not a proper tree" );
+                
+            else
+                
+                tree.touched := true;
+                
+            fi;
+            
             # sanity check that every function has an ID
             if tree.type = "EXPR_FUNC" then
                 
