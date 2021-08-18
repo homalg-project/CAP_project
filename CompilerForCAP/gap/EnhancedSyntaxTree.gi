@@ -403,7 +403,10 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
 end );
 
 InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
-  local stat, pre_func, additional_arguments_func, func;
+  local orig_tree, stat, pre_func, additional_arguments_func, func;
+    
+    # to simplify debugging in break loops, we keep a reference to the original input
+    orig_tree := tree;
     
     if not IsRecord( tree ) then
         
