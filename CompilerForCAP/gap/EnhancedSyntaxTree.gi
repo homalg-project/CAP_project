@@ -403,7 +403,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
 end );
 
 InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
-  local orig_tree, stat, pre_func, additional_arguments_func, func;
+  local orig_tree, seen_function_ids, stat, pre_func, additional_arguments_func, func;
     
     # to simplify debugging in break loops, we keep a reference to the original input
     orig_tree := tree;
@@ -450,6 +450,9 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
     
     tree := StructuralCopy( tree );
     
+    # check if a function ID is used more than once
+    seen_function_ids := [ ];
+    
     pre_func := function ( tree, additional_arguments )
       local path, func_stack, statements, first_six_statements, new_statements, func_pos, level;
         
@@ -471,10 +474,18 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
             fi;
             
-            # sanity check that every function has an ID
-            if tree.type = "EXPR_FUNC" then
+            # check that function IDs are unique (except dummy ID -1)
+            if tree.type = "EXPR_FUNC" and tree.id <> -1 then
                 
-                Assert( 0, IsBound( tree.id ) );
+                if tree.id in seen_function_ids then
+                    
+                    Error( "tree contains multiple functions with the same ID" );
+                    
+                else
+                    
+                    Add( seen_function_ids, tree.id );
+                    
+                fi;
                 
                 # append position of function in stack to nams for unique names (the function is not yet on the stack at this point, so we have to add 1)
                 tree.nams := List( tree.nams, name -> Concatenation( name, "_", String( Length( func_stack ) + 1 ) ) );
