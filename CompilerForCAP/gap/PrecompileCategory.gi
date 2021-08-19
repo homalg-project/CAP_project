@@ -244,7 +244,7 @@ BindGlobal( "CAP_JIT_INTERNAL_SAFE_OPERATIONS", [
 ] );
 
 InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_constructor, given_arguments, package_name, compiled_category_name )
-  local cat1, cat2, cat, obj, mor, operations, diff, output_string, package_info, parameters_string, current_string, object_name, example_input, index, compiled_func, function_string, filter_list, function_name, current_rec;
+  local cat1, cat2, cat, obj, mor, operations, diff, output_string, package_info, parameters_string, current_string, object_name, example_input, index, compiled_func, compiled_tree, function_string, filter_list, function_name, current_rec;
     
     if IsOperation( category_constructor ) or IsKernelFunction( category_constructor ) then
         
@@ -449,6 +449,11 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
             cat!.compiled_functions.(function_name)[index] := compiled_func;
             
         fi;
+        
+        # change names of arguments
+        compiled_tree := SYNTAX_TREE( compiled_func );
+        compiled_tree.nams := Concatenation( List( current_rec.input_arguments_names, name -> Concatenation( name, "_1" ) ), compiled_tree.nams{[ compiled_tree.narg + 1 .. compiled_tree.narg + compiled_tree.nloc ]} );
+        compiled_func := SYNTAX_TREE_CODE( compiled_tree );
         
         function_string := CapJitPrettyPrintFunction( compiled_func );
         
