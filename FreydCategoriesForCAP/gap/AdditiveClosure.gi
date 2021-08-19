@@ -668,6 +668,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     compare_morphisms := function( morphism_1, morphism_2, comparison_function )
       local nr_rows_1, nr_rows_2, nr_cols_1, nr_cols_2;
+        #% CAP_JIT_RESOLVE_FUNCTION
         
         nr_rows_1 := NrRows( morphism_1 );
         
