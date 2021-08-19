@@ -79,3 +79,18 @@ DeclareGlobalFunction( "CapJitRemovedReturnFail" );
 #! @Returns a string
 #! @Arguments func
 DeclareGlobalFunction( "CapJitPrettyPrintFunction" );
+
+#! @Description
+#!   Returns a structural copy of the enhanced syntax <A>tree</A> which is 1:1 except that all functions have new, unused IDs.
+#! @Returns a record
+#! @Arguments tree
+DeclareGlobalFunction( "CapJitCopyWithNewFunctionIDs" );
+
+#! @Description
+#!   Returns `true` if the enhanced syntax trees <A>tree1</A> and <A>tree2</A> are equal up to:
+#!     * renaming of local variables,
+#!     * replacement of function IDs,
+#!     * changing the names of global variables while still referencing the identical value.
+#! @Returns a boolean
+#! @Arguments tree1, tree2
+DeclareGlobalFunction( "CapJitIsEqualForEnhancedSyntaxTrees" );

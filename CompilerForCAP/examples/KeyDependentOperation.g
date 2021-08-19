@@ -25,7 +25,7 @@ MyFunction := G -> MyKeyDependentOperation( G, 2 );;
 compiled_func := CapJitCompiledFunction( MyFunction, [ G ] );;
 
 Display( compiled_func );
-#! function ( G )
+#! function ( G_1 )
 #!     return 2;
 #! end
 

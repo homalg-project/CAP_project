@@ -136,13 +136,11 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID, function ( tree,
     
 end );
 
-BindGlobal( "CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER", 1 );
-MakeReadWriteGlobal( "CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER" );
 InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
   local pre_func, additional_arguments_func;
     
     pre_func := function ( tree, current_func )
-      local statements, i, statement, search_key, search_tree, condition_func, found_path, path, func_call, inline_func, prefix, new_nams, inline_func_stats, inline_return_statement, inline_return_statements, inlined_original_statement, ref_return_value_lvar, parent;
+      local statements, i, statement, search_key, search_tree, condition_func, found_path, path, func_call, inline_func, new_nams, inline_func_stats, inline_return_statement, inline_return_statements, inlined_original_statement, ref_return_value_lvar, parent;
         
         tree := StructuralCopy( tree );
         
@@ -221,12 +219,10 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
 
                 if CAP_JIT_INTERNAL_FUNCTION_CAN_BE_INLINED( func_call.funcref ) then
                     
-                    prefix := Concatenation( "inline_", String( CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER ), "_" );
-                    
                     # create new local variables
-                    new_nams := List( inline_func.nams, name -> Concatenation( prefix, name ) );
-                    Add( new_nams, Concatenation( prefix, "return_value" ) );
-
+                    new_nams := List( [ 1 .. Length( inline_func.nams ) ], i -> Concatenation( "inline_", String( Length( current_func.nams ) + i ), "_", inline_func.nams[i] ) );
+                    Add( new_nams, Concatenation( "inline_", String( Length( current_func.nams ) + Length( inline_func.nams ) + 1 ), "_return_value" ) );
+                    
                     Assert( 0, IsDuplicateFree( new_nams ) );
                     
                     # prepare function statements for inlining
@@ -286,8 +282,6 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
 
                     Assert( 0, IsDuplicateFreeList( current_func.nams ) );
                     
-                    CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER := CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER + 1;
-
                     Info( InfoCapJit, 1, "Successfully inlined." );
     
                 else

@@ -668,6 +668,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     
     compare_morphisms := function( morphism_1, morphism_2, comparison_function )
       local nr_rows_1, nr_rows_2, nr_cols_1, nr_cols_2;
+        #% CAP_JIT_RESOLVE_FUNCTION
         
         nr_rows_1 := NrRows( morphism_1 );
         
@@ -905,7 +906,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             
             listlist := List( [ 1 .. NrRows( alpha ) ],
                             i -> List( [ 1 .. NrCols( alpha ) ],
-                                j -> MultiplyWithElementOfCommutativeRingForMorphisms( r, alpha[i, j] ) ) );
+                                j -> MultiplyWithElementOfCommutativeRingForMorphisms( UnderlyingCategory( cat ), r, alpha[i, j] ) ) );
             
             return AdditiveClosureMorphismListList( Source( alpha ), listlist, Range( alpha ) );
             
@@ -1006,13 +1007,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                 
                 if size_i = 0 or size_j = 0 then
                     
-                    return UniversalMorphismIntoZeroObject( DistinguishedObjectOfHomomorphismStructure( UnderlyingCategory( cat ) ) );
+                    return UniversalMorphismIntoZeroObject( range_category, DistinguishedObjectOfHomomorphismStructure( UnderlyingCategory( cat ) ) );
                     
                 fi;
                 
-                return UniversalMorphismIntoDirectSum(
+                return UniversalMorphismIntoDirectSum( range_category,
                         List( [ 1 .. size_i ], i ->
-                          UniversalMorphismIntoDirectSum(
+                          UniversalMorphismIntoDirectSum( range_category,
                             List( [ 1 .. size_j ], j ->
                               InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( UnderlyingCategory( cat ), alpha[i, j] )
                             )
@@ -1046,22 +1047,22 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                 
                 if size_i = 0 or size_j = 0 then
                     
-                    return ZeroMorphism( A, B );
+                    return ZeroMorphism( cat, A, B );
                     
                 fi;
                 
                 summands := 
                   Concatenation(
                             List( obj_list_A, obj_i ->
-                                List( obj_list_B, obj_j -> HomomorphismStructureOnObjects( obj_i, obj_j ) )
+                                List( obj_list_B, obj_j -> HomomorphismStructureOnObjects( UnderlyingCategory( cat ), obj_i, obj_j ) )
                             )
                           );
                 
                 listlist := List( [ 1 .. size_i ], i ->
                             List( [ 1 .. size_j ], j ->
-                              PreCompose(
+                              PreCompose( range_category,
                                 morphism,
-                                ProjectionInFactorOfDirectSum( summands, size_j * (i - 1) + j )
+                                ProjectionInFactorOfDirectSum( range_category, summands, size_j * (i - 1) + j )
                               )
                             )
                           );
@@ -1070,7 +1071,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                         A,
                         List( [ 1 .. size_i ], i ->
                           List( [ 1 .. size_j ], j ->
-                            InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
+                            InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( UnderlyingCategory( cat ),
                               obj_list_A[i],
                               obj_list_B[j],
                               listlist[i][j]

@@ -27,17 +27,6 @@ filepath :=
     "precompiled_categories/CategoryOfColumnsOfFieldPrecompiled.gi";;
 old_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;
 
-# set CAP_JIT_INTERNAL_FUNCTION_ID and
-# CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER
-# to known values for a stable output
-CAP_JIT_INTERNAL_FUNCTION_ID < 20000;
-#! true
-CAP_JIT_INTERNAL_FUNCTION_ID := 20000;;
-
-CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER < 20000;
-#! true
-CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER := 20000;;
-
 CapJitPrecompileCategory(
     category_constructor,
     given_arguments,

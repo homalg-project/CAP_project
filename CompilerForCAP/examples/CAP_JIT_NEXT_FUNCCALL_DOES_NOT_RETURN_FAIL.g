@@ -19,17 +19,18 @@ compiled_func := CapJitCompiledFunction(
     [ rows, ZeroMorphism( V, V ), IdentityMorphism( V ) ]
 );;
 Display( compiled_func );
-#! function ( cat, mor, test_mor )
-#!     local cap_jit_morphism_attribute;
-#!     cap_jit_morphism_attribute := RightDivide( UnderlyingMatrix( test_mor ), 
-#!        SyzygiesOfRows( UnderlyingMatrix( mor ) ) );
+#! function ( cat_1, mor_1, test_mor_1 )
+#!     local cap_jit_morphism_attribute_1;
+#!     cap_jit_morphism_attribute_1 
+#!      := RightDivide( UnderlyingMatrix( test_mor_1 ), 
+#!        SyzygiesOfRows( UnderlyingMatrix( mor_1 ) ) );
 #!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-#!            ), cat, Source( test_mor ), ObjectifyObjectForCAPWithAttributes( 
-#!          rec(
-#!              ), cat, Dimension, NrColumns( cap_jit_morphism_attribute ), 
-#!          UnderlyingFieldForHomalg, UnderlyingRing( cat ) ), 
-#!        UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, 
-#!        cap_jit_morphism_attribute );
+#!            ), cat_1, Source( test_mor_1 ), 
+#!        ObjectifyObjectForCAPWithAttributes( rec(
+#!              ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1 ), 
+#!          UnderlyingFieldForHomalg, UnderlyingRing( cat_1 ) ), 
+#!        UnderlyingFieldForHomalg, UnderlyingRing( cat_1 ), UnderlyingMatrix, 
+#!        cap_jit_morphism_attribute_1 );
 #! end
 
 func1 := function( x )
@@ -66,15 +67,15 @@ call_func3 := function( x )
     return func3( x ); end;;
 
 Display( CapJitCompiledFunction( call_func1, [ 2 ] ) );
-#! function ( x )
+#! function ( x_1 )
 #!     return 1;
 #! end
 Display( CapJitCompiledFunction( call_func2, [ 2 ] ) );
-#! function ( x )
+#! function ( x_1 )
 #!     return 1;
 #! end
 Display( CapJitCompiledFunction( call_func3, [ 2 ] ) );
-#! function ( x )
+#! function ( x_1 )
 #!     return 1;
 #! end
 

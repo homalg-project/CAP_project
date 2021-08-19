@@ -3,8 +3,6 @@
 #
 # Implementations
 #
-BindGlobal( "CAP_JIT_INTERNAL_FUNCTION_ID", 1 );
-MakeReadWriteGlobal( "CAP_JIT_INTERNAL_FUNCTION_ID" );
 InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
   local globalize_hvars, given_arguments, tree, orig_tree, pre_func, additional_arguments_func;
     
@@ -403,7 +401,10 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
 end );
 
 InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
-  local stat, pre_func, additional_arguments_func, func;
+  local orig_tree, seen_function_ids, stat, pre_func, additional_arguments_func, func;
+    
+    # to simplify debugging in break loops, we keep a reference to the original input
+    orig_tree := tree;
     
     if not IsRecord( tree ) then
         
@@ -447,6 +448,9 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
     
     tree := StructuralCopy( tree );
     
+    # check if a function ID is used more than once
+    seen_function_ids := [ ];
+    
     pre_func := function ( tree, additional_arguments )
       local path, func_stack, statements, first_six_statements, new_statements, func_pos, level;
         
@@ -456,11 +460,33 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
         if IsRecord( tree ) then
             
             Assert( 0, IsBound( tree.type ) );
-
-            # sanity check that every function has an ID
-            if tree.type = "EXPR_FUNC" then
+            
+            # check that the input is a proper tree, i.e. acyclic
+            if IsBound( tree.touched ) then
                 
-                Assert( 0, IsBound( tree.id ) );
+                Error( "this subtree can be reached via at least two different paths, i.e. the input contains a cycle and thus is not a proper tree" );
+                
+            else
+                
+                tree.touched := true;
+                
+            fi;
+            
+            # check that function IDs are unique (except dummy ID -1)
+            if tree.type = "EXPR_FUNC" and tree.id <> -1 then
+                
+                if tree.id in seen_function_ids then
+                    
+                    Error( "tree contains multiple functions with the same ID" );
+                    
+                else
+                    
+                    Add( seen_function_ids, tree.id );
+                    
+                fi;
+                
+                # append position of function in stack to nams for unique names (the function is not yet on the stack at this point, so we have to add 1)
+                tree.nams := List( tree.nams, name -> Concatenation( name, "_", String( Length( func_stack ) + 1 ) ) );
                 
             fi;
             
@@ -597,9 +623,16 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 level := Length( func_stack ) - func_pos;
                 
+                # append position of function in stack for unique names
+                tree.name := Concatenation( tree.name, "_", String( func_pos ) );
+                
                 if not tree.name in func_stack[func_pos].nams then
                     
-                    Error( "FVAR name does not occur in the names of local variables of its function" );
+                    Error( "The FVAR name ", tree.name, " does not occur in the names of local variables of its function. ",
+                        "However, if you type 'return;', the name will be added for debugging purposes (this might lead to unexpected results for variadic functions)." );
+                    
+                    Add( func_stack[func_pos].nams, tree.name );
+                    func_stack[func_pos].nloc := func_stack[func_pos].nloc + 1;
                     
                 fi;
                 

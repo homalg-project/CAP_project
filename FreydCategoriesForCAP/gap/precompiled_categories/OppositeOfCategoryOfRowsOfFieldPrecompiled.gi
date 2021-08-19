@@ -21,9 +21,9 @@ end;
     AddAdditionForMorphisms( cat,
         
 ########
-function ( cat, a, b )
+function ( cat_1, a_1, b_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat, Source( a ), Range( a ), UnderlyingMatrix, UnderlyingMatrix( a ) + UnderlyingMatrix( b ) );
+           ), cat_1, Source( a_1 ), Range( a_1 ), UnderlyingMatrix, UnderlyingMatrix( a_1 ) + UnderlyingMatrix( b_1 ) );
 end
 ########
         
@@ -33,9 +33,9 @@ end
     AddAdditiveInverseForMorphisms( cat,
         
 ########
-function ( cat, a )
+function ( cat_1, a_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat, Source( a ), Range( a ), UnderlyingMatrix, - UnderlyingMatrix( a ) );
+           ), cat_1, Source( a_1 ), Range( a_1 ), UnderlyingMatrix, - UnderlyingMatrix( a_1 ) );
 end
 ########
         
@@ -45,14 +45,14 @@ end
     AddBasisOfExternalHom( cat,
         
 ########
-function ( cat, arg2, arg3 )
-    return List( [ 1 .. RankOfObject( arg3 ) * RankOfObject( arg2 ) ], function ( logic_new_func_30608_x )
-            local cap_jit_morphism_attribute;
-            cap_jit_morphism_attribute := ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( RankOfObject( arg3 ) * RankOfObject( arg2 ), UnderlyingRing( cat ) ), [ logic_new_func_30608_x ] ), RankOfObject( arg3 ), RankOfObject( arg2 ) );
+function ( cat_1, arg2_1, arg3_1 )
+    return List( [ 1 .. RankOfObject( arg3_1 ) * RankOfObject( arg2_1 ) ], function ( logic_new_func_x_2 )
+            local cap_jit_morphism_attribute_2;
+            cap_jit_morphism_attribute_2 := ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( RankOfObject( arg3_1 ) * RankOfObject( arg2_1 ), UnderlyingRing( cat_1 ) ), [ logic_new_func_x_2 ] ), RankOfObject( arg3_1 ), RankOfObject( arg2_1 ) );
             return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                   ), cat, ObjectifyObjectForCAPWithAttributes( rec(
-                     ), cat, RankOfObject, NrColumns( cap_jit_morphism_attribute ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                     ), cat, RankOfObject, NrRows( cap_jit_morphism_attribute ) ), UnderlyingMatrix, cap_jit_morphism_attribute );
+                   ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
+                     ), cat_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_2 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+                     ), cat_1, RankOfObject, NrRows( cap_jit_morphism_attribute_2 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_2 );
         end );
 end
 ########
@@ -63,9 +63,9 @@ end
     AddCokernelObject( cat,
         
 ########
-function ( cat, arg2 )
+function ( cat_1, arg2_1 )
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat, RankOfObject, NumberRows( UnderlyingMatrix( arg2 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2 ) ) );
+           ), cat_1, RankOfObject, NumberRows( UnderlyingMatrix( arg2_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
 end
 ########
         
@@ -75,12 +75,12 @@ end
     AddCokernelProjection( cat,
         
 ########
-function ( cat, alpha )
-    local cap_jit_morphism_attribute;
-    cap_jit_morphism_attribute := SyzygiesOfRows( UnderlyingMatrix( alpha ) );
+function ( cat_1, alpha_1 )
+    local cap_jit_morphism_attribute_1;
+    cap_jit_morphism_attribute_1 := SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat, Range( alpha ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat, RankOfObject, NrRows( cap_jit_morphism_attribute ) ), UnderlyingMatrix, cap_jit_morphism_attribute );
+           ), cat_1, Range( alpha_1 ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, RankOfObject, NrRows( cap_jit_morphism_attribute_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
 end
 ########
         
@@ -90,9 +90,9 @@ end
     AddColift( cat,
         
 ########
-function ( cat, alpha, beta )
+function ( cat_1, alpha_1, beta_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat, Range( alpha ), Range( beta ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ) ) );
+           ), cat_1, Range( alpha_1 ), Range( beta_1 ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( beta_1 ), UnderlyingMatrix( alpha_1 ) ) );
 end
 ########
         
@@ -102,10 +102,10 @@ end
     AddDirectSum( cat,
         
 ########
-function ( cat, arg2 )
+function ( cat_1, arg2_1 )
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat, RankOfObject, Sum( List( arg2, function ( logic_new_func_31031_x )
-                return RankOfObject( logic_new_func_31031_x );
+           ), cat_1, RankOfObject, Sum( List( arg2_1, function ( logic_new_func_x_2 )
+                return RankOfObject( logic_new_func_x_2 );
             end ) ) );
 end
 ########
@@ -116,9 +116,9 @@ end
     AddIdentityMorphism( cat,
         
 ########
-function ( cat, a )
+function ( cat_1, a_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat, a, a, UnderlyingMatrix, HomalgIdentityMatrix( RankOfObject( a ), UnderlyingRing( cat ) ) );
+           ), cat_1, a_1, a_1, UnderlyingMatrix, HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) );
 end
 ########
         
@@ -128,8 +128,8 @@ end
     AddIsColiftable( cat,
         
 ########
-function ( cat, arg2, arg3 )
-    return IsZero( DecideZeroRows( UnderlyingMatrix( arg3 ), UnderlyingMatrix( arg2 ) ) );
+function ( cat_1, arg2_1, arg3_1 )
+    return IsZero( DecideZeroRows( UnderlyingMatrix( arg3_1 ), UnderlyingMatrix( arg2_1 ) ) );
 end
 ########
         
@@ -139,8 +139,8 @@ end
     AddIsCongruentForMorphisms( cat,
         
 ########
-function ( cat, arg2, arg3 )
-    return UnderlyingMatrix( arg2 ) = UnderlyingMatrix( arg3 );
+function ( cat_1, arg2_1, arg3_1 )
+    return UnderlyingMatrix( arg2_1 ) = UnderlyingMatrix( arg3_1 );
 end
 ########
         
@@ -150,8 +150,8 @@ end
     AddIsEqualForObjects( cat,
         
 ########
-function ( cat, arg2, arg3 )
-    return RankOfObject( arg2 ) = RankOfObject( arg3 );
+function ( cat_1, arg2_1, arg3_1 )
+    return RankOfObject( arg2_1 ) = RankOfObject( arg3_1 );
 end
 ########
         
@@ -161,8 +161,8 @@ end
     AddIsLiftable( cat,
         
 ########
-function ( cat, arg2, arg3 )
-    return IsZero( DecideZeroColumns( UnderlyingMatrix( arg2 ), UnderlyingMatrix( arg3 ) ) );
+function ( cat_1, arg2_1, arg3_1 )
+    return IsZero( DecideZeroColumns( UnderlyingMatrix( arg2_1 ), UnderlyingMatrix( arg3_1 ) ) );
 end
 ########
         
@@ -172,13 +172,17 @@ end
     AddIsWellDefinedForMorphisms( cat,
         
 ########
-function ( cat, arg2 )
+function ( cat_1, arg2_1 )
+    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1;
+    cap_jit_hoisted_expression_1_1 := not true;
+    cap_jit_hoisted_expression_2_1 := NumberRows( UnderlyingMatrix( arg2_1 ) ) <> NumberRows( UnderlyingMatrix( arg2_1 ) );
+    cap_jit_hoisted_expression_3_1 := NumberColumns( UnderlyingMatrix( arg2_1 ) ) <> NumberColumns( UnderlyingMatrix( arg2_1 ) );
     return function (  )
-            if not true then
+            if cap_jit_hoisted_expression_1_1 then
                 return false;
-            elif NumberRows( UnderlyingMatrix( arg2 ) ) <> NumberRows( UnderlyingMatrix( arg2 ) ) then
+            elif cap_jit_hoisted_expression_2_1 then
                 return false;
-            elif NumberColumns( UnderlyingMatrix( arg2 ) ) <> NumberColumns( UnderlyingMatrix( arg2 ) ) then
+            elif cap_jit_hoisted_expression_3_1 then
                 return false;
             else
                 return true;
@@ -194,11 +198,14 @@ end
     AddIsWellDefinedForObjects( cat,
         
 ########
-function ( cat, arg2 )
+function ( cat_1, arg2_1 )
+    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1;
+    cap_jit_hoisted_expression_1_1 := not true;
+    cap_jit_hoisted_expression_2_1 := RankOfObject( arg2_1 ) < 0;
     return function (  )
-            if not true then
+            if cap_jit_hoisted_expression_1_1 then
                 return false;
-            elif RankOfObject( arg2 ) < 0 then
+            elif cap_jit_hoisted_expression_2_1 then
                 return false;
             else
                 return true;
@@ -214,8 +221,8 @@ end
     AddIsZeroForMorphisms( cat,
         
 ########
-function ( cat, arg2 )
-    return IsZero( UnderlyingMatrix( arg2 ) );
+function ( cat_1, arg2_1 )
+    return IsZero( UnderlyingMatrix( arg2_1 ) );
 end
 ########
         
@@ -225,8 +232,8 @@ end
     AddIsZeroForObjects( cat,
         
 ########
-function ( cat, arg2 )
-    return RankOfObject( arg2 ) = 0;
+function ( cat_1, arg2_1 )
+    return RankOfObject( arg2_1 ) = 0;
 end
 ########
         
@@ -236,12 +243,12 @@ end
     AddKernelEmbedding( cat,
         
 ########
-function ( cat, alpha )
-    local cap_jit_morphism_attribute;
-    cap_jit_morphism_attribute := SyzygiesOfColumns( UnderlyingMatrix( alpha ) );
+function ( cat_1, alpha_1 )
+    local cap_jit_morphism_attribute_1;
+    cap_jit_morphism_attribute_1 := SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat, RankOfObject, NrColumns( cap_jit_morphism_attribute ) ), Source( alpha ), UnderlyingMatrix, cap_jit_morphism_attribute );
+           ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_1 ) ), Source( alpha_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
 end
 ########
         
@@ -251,9 +258,9 @@ end
     AddKernelObject( cat,
         
 ########
-function ( cat, arg2 )
+function ( cat_1, arg2_1 )
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat, RankOfObject, NumberColumns( UnderlyingMatrix( arg2 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2 ) ) );
+           ), cat_1, RankOfObject, NumberColumns( UnderlyingMatrix( arg2_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
 end
 ########
         
@@ -263,9 +270,9 @@ end
     AddLift( cat,
         
 ########
-function ( cat, alpha, beta )
+function ( cat_1, alpha_1, beta_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat, Source( alpha ), Source( beta ), UnderlyingMatrix, LeftDivide( UnderlyingMatrix( beta ), UnderlyingMatrix( alpha ) ) );
+           ), cat_1, Source( alpha_1 ), Source( beta_1 ), UnderlyingMatrix, LeftDivide( UnderlyingMatrix( beta_1 ), UnderlyingMatrix( alpha_1 ) ) );
 end
 ########
         
@@ -275,9 +282,9 @@ end
     AddPreCompose( cat,
         
 ########
-function ( cat, alpha, beta )
+function ( cat_1, alpha_1, beta_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat, Source( alpha ), Range( beta ), UnderlyingMatrix, UnderlyingMatrix( beta ) * UnderlyingMatrix( alpha ) );
+           ), cat_1, Source( alpha_1 ), Range( beta_1 ), UnderlyingMatrix, UnderlyingMatrix( beta_1 ) * UnderlyingMatrix( alpha_1 ) );
 end
 ########
         
@@ -287,10 +294,10 @@ end
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( cat,
         
 ########
-function ( cat, objects, T, tau, P )
+function ( cat_1, objects_1, T_1, tau_1, P_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat, P, T, UnderlyingMatrix, UnionOfColumns( UnderlyingRing( cat ), RankOfObject( T ), List( tau, function ( logic_new_func_32264_x )
-                return UnderlyingMatrix( logic_new_func_32264_x );
+           ), cat_1, P_1, T_1, UnderlyingMatrix, UnionOfColumns( UnderlyingRing( cat_1 ), RankOfObject( T_1 ), List( tau_1, function ( logic_new_func_x_2 )
+                return UnderlyingMatrix( logic_new_func_x_2 );
             end ) ) );
 end
 ########
@@ -301,9 +308,9 @@ end
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( cat,
         
 ########
-function ( cat, T, P )
+function ( cat_1, T_1, P_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat, P, T, UnderlyingMatrix, HomalgZeroMatrix( RankOfObject( T ), 0, UnderlyingRing( cat ) ) );
+           ), cat_1, P_1, T_1, UnderlyingMatrix, HomalgZeroMatrix( RankOfObject( T_1 ), 0, UnderlyingRing( cat_1 ) ) );
 end
 ########
         
@@ -313,10 +320,10 @@ end
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( cat,
         
 ########
-function ( cat, objects, T, tau, P )
+function ( cat_1, objects_1, T_1, tau_1, P_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat, T, P, UnderlyingMatrix, UnionOfRows( UnderlyingRing( cat ), RankOfObject( T ), List( tau, function ( logic_new_func_32454_x )
-                return UnderlyingMatrix( logic_new_func_32454_x );
+           ), cat_1, T_1, P_1, UnderlyingMatrix, UnionOfRows( UnderlyingRing( cat_1 ), RankOfObject( T_1 ), List( tau_1, function ( logic_new_func_x_2 )
+                return UnderlyingMatrix( logic_new_func_x_2 );
             end ) ) );
 end
 ########
@@ -327,9 +334,9 @@ end
     AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( cat,
         
 ########
-function ( cat, T, P )
+function ( cat_1, T_1, P_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat, T, P, UnderlyingMatrix, HomalgZeroMatrix( 0, RankOfObject( T ), UnderlyingRing( cat ) ) );
+           ), cat_1, T_1, P_1, UnderlyingMatrix, HomalgZeroMatrix( 0, RankOfObject( T_1 ), UnderlyingRing( cat_1 ) ) );
 end
 ########
         
@@ -339,9 +346,9 @@ end
     AddZeroMorphism( cat,
         
 ########
-function ( cat, a, b )
+function ( cat_1, a_1, b_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat, a, b, UnderlyingMatrix, HomalgZeroMatrix( RankOfObject( b ), RankOfObject( a ), UnderlyingRing( cat ) ) );
+           ), cat_1, a_1, b_1, UnderlyingMatrix, HomalgZeroMatrix( RankOfObject( b_1 ), RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) );
 end
 ########
         
@@ -351,9 +358,9 @@ end
     AddZeroObject( cat,
         
 ########
-function ( cat )
+function ( cat_1 )
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat, RankOfObject, 0 );
+           ), cat_1, RankOfObject, 0 );
 end
 ########
         

@@ -36,6 +36,8 @@ ReadPackage( "CompilerForCAP", "gap/Logic.gi" );
 
 ReadPackage( "CompilerForCAP", "gap/LogicTemplates.gi" );
 
+ReadPackage( "CompilerForCAP", "gap/HoistExpressions.gi" );
+
 ReadPackage( "CompilerForCAP", "gap/CompilerHints.gi" );
 
 ReadPackage( "CompilerForCAP", "gap/PrecompileCategory.gi" );
