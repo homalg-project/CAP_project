@@ -47,21 +47,13 @@ operations := Difference( operations, [ "IsIdenticalToZeroMorphism" ] );;
 operations := Difference( operations, [ "IsZeroForMorphisms" ] );;
 Add( operations, "DirectSumFunctorialWithGivenDirectSums" );
 
-filepath := "precompiled_categories/MatrixCategoryPrecompiled.gi";;
-old_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;
-
-CapJitPrecompileCategory(
+CapJitPrecompileCategoryAndCompareResult(
     category_constructor,
     given_arguments,
     package_name,
     compiled_category_name :
     operations := operations
-);
-
-new_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;
-
-old_file_content = new_file_content;
-#! true
+);;
 
 MatrixCategoryPrecompiled( QQ );
 #! Category of matrices over Q

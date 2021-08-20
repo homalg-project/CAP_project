@@ -24,6 +24,11 @@
 #!       * Only categories with a zero object and zero morphisms can be compiled.
 #!       * Not all CAP operations are available for compilation.
 #!       * `WithGiven` operations can only be compiled if the object operation is computable.
-#! @Returns a record
 #! @Arguments category_constructor, given_arguments, package_name, compiled_category_name
 DeclareGlobalFunction( "CapJitPrecompileCategory" );
+
+#! @Description
+#!   Calls <Ref Func="CapJitPrecompileCategory" /> with the given arguments and displays a warning if this changes the contents of
+#!   <A>package_name</A>`/precompiled_categories/`<A>compiled_category_name</A>`.gi`.
+#! @Arguments category_constructor, given_arguments, package_name, compiled_category_name
+DeclareGlobalFunction( "CapJitPrecompileCategoryAndCompareResult" );
