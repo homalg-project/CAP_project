@@ -3,7 +3,7 @@
 #
 # Implementations
 #
-BindGlobal( "ADD_FUNCTIONS_FOR_CategoryOfColumnsOfFieldPrecompiled", function ( cat )
+BindGlobal( "ADD_FUNCTIONS_FOR_CategoryOfColumnsAsOppositeOfCategoryOfRowsOfFieldPrecompiled", function ( cat )
     
     ##
     AddAdditionForMorphisms( cat,
@@ -11,7 +11,7 @@ BindGlobal( "ADD_FUNCTIONS_FOR_CategoryOfColumnsOfFieldPrecompiled", function ( 
 ########
 function ( cat_1, a_1, b_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Source( a_1 ), Range( b_1 ), UnderlyingMatrix, UnderlyingMatrix( a_1 ) + UnderlyingMatrix( b_1 ) );
+           ), cat_1, Source( a_1 ), Range( a_1 ), UnderlyingMatrix, UnderlyingMatrix( a_1 ) + UnderlyingMatrix( b_1 ) );
 end
 ########
         
@@ -35,12 +35,16 @@ end
 ########
 function ( cat_1, arg2_1, arg3_1 )
     local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1;
-    cap_jit_hoisted_expression_1_1 := HomalgIdentityMatrix( RankOfObject( arg2_1 ) * RankOfObject( arg3_1 ), UnderlyingRing( cat_1 ) );
+    cap_jit_hoisted_expression_1_1 := HomalgIdentityMatrix( RankOfObject( arg3_1 ) * RankOfObject( arg2_1 ), UnderlyingRing( cat_1 ) );
     cap_jit_hoisted_expression_2_1 := RankOfObject( arg3_1 );
     cap_jit_hoisted_expression_3_1 := RankOfObject( arg2_1 );
-    return List( [ 1 .. RankOfObject( arg2_1 ) * RankOfObject( arg3_1 ) ], function ( logic_new_func_x_2 )
+    return List( [ 1 .. RankOfObject( arg3_1 ) * RankOfObject( arg2_1 ) ], function ( logic_new_func_x_2 )
+            local cap_jit_morphism_attribute_2;
+            cap_jit_morphism_attribute_2 := ConvertRowToMatrix( CertainRows( cap_jit_hoisted_expression_1_1, [ logic_new_func_x_2 ] ), cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1 );
             return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                   ), cat_1, arg2_1, arg3_1, UnderlyingMatrix, ConvertColumnToMatrix( CertainColumns( cap_jit_hoisted_expression_1_1, [ logic_new_func_x_2 ] ), cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1 ) );
+                   ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
+                     ), cat_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_2 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+                     ), cat_1, RankOfObject, NrRows( cap_jit_morphism_attribute_2 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_2 );
         end );
 end
 ########
@@ -69,7 +73,7 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    return EntriesOfHomalgMatrix( TransposedMatrix( UnderlyingMatrix( arg2_1 ) ) );
+    return ID_FUNC( EntriesOfHomalgMatrix( UnderlyingMatrix( arg2_1 ) ) );
 end
 ########
         
@@ -103,7 +107,7 @@ end
 ########
 function ( cat_1, arg2_1 )
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, RankOfObject, NumberRows( UnderlyingMatrix( arg2_1 ) ) - ColumnRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
+           ), cat_1, RankOfObject, NumberRows( UnderlyingMatrix( arg2_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
 end
 ########
         
@@ -142,8 +146,8 @@ end
 ########
 function ( cat_1, arg2_1 )
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, RankOfObject, Sum( List( arg2_1, function ( object_2 )
-                return RankOfObject( object_2 );
+           ), cat_1, RankOfObject, Sum( List( arg2_1, function ( logic_new_func_x_2 )
+                return RankOfObject( logic_new_func_x_2 );
             end ) ) );
 end
 ########
@@ -156,8 +160,8 @@ end
 ########
 function ( cat_1, P_1, objects_1, L_1, objectsp_1, Pp_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, P_1, Pp_1, UnderlyingMatrix, DiagMat( UnderlyingRing( cat_1 ), List( L_1, function ( mor_2 )
-                return UnderlyingMatrix( mor_2 );
+           ), cat_1, P_1, Pp_1, UnderlyingMatrix, DiagMat( UnderlyingRing( cat_1 ), List( L_1, function ( logic_new_func_x_2 )
+                return UnderlyingMatrix( logic_new_func_x_2 );
             end ) ) );
 end
 ########
@@ -349,16 +353,22 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    if not true then
-        return false;
-    elif NumberColumns( UnderlyingMatrix( arg2_1 ) ) <> RankOfObject( Source( arg2_1 ) ) then
-        return false;
-    elif NumberRows( UnderlyingMatrix( arg2_1 ) ) <> RankOfObject( Range( arg2_1 ) ) then
-        return false;
-    else
-        return true;
-    fi;
-    return;
+    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1;
+    cap_jit_hoisted_expression_1_1 := not true;
+    cap_jit_hoisted_expression_2_1 := NumberRows( UnderlyingMatrix( arg2_1 ) ) <> NumberRows( UnderlyingMatrix( arg2_1 ) );
+    cap_jit_hoisted_expression_3_1 := NumberColumns( UnderlyingMatrix( arg2_1 ) ) <> NumberColumns( UnderlyingMatrix( arg2_1 ) );
+    return function (  )
+            if cap_jit_hoisted_expression_1_1 then
+                return false;
+            elif cap_jit_hoisted_expression_2_1 then
+                return false;
+            elif cap_jit_hoisted_expression_3_1 then
+                return false;
+            else
+                return true;
+            fi;
+            return;
+        end(  );
 end
 ########
         
@@ -369,14 +379,19 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    if not true then
-        return false;
-    elif RankOfObject( arg2_1 ) < 0 then
-        return false;
-    else
-        return true;
-    fi;
-    return;
+    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1;
+    cap_jit_hoisted_expression_1_1 := not true;
+    cap_jit_hoisted_expression_2_1 := RankOfObject( arg2_1 ) < 0;
+    return function (  )
+            if cap_jit_hoisted_expression_1_1 then
+                return false;
+            elif cap_jit_hoisted_expression_2_1 then
+                return false;
+            else
+                return true;
+            fi;
+            return;
+        end(  );
 end
 ########
         
@@ -425,7 +440,7 @@ end
 ########
 function ( cat_1, arg2_1 )
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, RankOfObject, NumberColumns( UnderlyingMatrix( arg2_1 ) ) - ColumnRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
+           ), cat_1, RankOfObject, NumberColumns( UnderlyingMatrix( arg2_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
 end
 ########
         
@@ -449,7 +464,7 @@ end
 ########
 function ( cat_1, arg2_1, arg3_1, arg4_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, arg2_1, arg4_1, UnderlyingMatrix, arg3_1 );
+           ), cat_1, arg2_1, arg4_1, UnderlyingMatrix, UnderlyingMatrix( arg3_1 ) );
 end
 ########
         
@@ -460,7 +475,12 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    return UnderlyingMatrix( arg2_1 );
+    local cap_jit_morphism_attribute_1;
+    cap_jit_morphism_attribute_1 := UnderlyingMatrix( arg2_1 );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), Opposite( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), Opposite( cat_1 ), RankOfObject, NrRows( cap_jit_morphism_attribute_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), Opposite( cat_1 ), RankOfObject, NrColumns( cap_jit_morphism_attribute_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
 end
 ########
         
@@ -496,7 +516,7 @@ end
 ########
 function ( cat_1, arg2_1 )
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, RankOfObject, arg2_1 );
+           ), cat_1, RankOfObject, RankOfObject( arg2_1 ) );
 end
 ########
         
@@ -507,17 +527,18 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    return RankOfObject( arg2_1 );
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), Opposite( cat_1 ), RankOfObject, RankOfObject( arg2_1 ) );
 end
 ########
         
     );
     
     ##
-    AddPreCompose( cat,
+    AddPostCompose( cat,
         
 ########
-function ( cat_1, alpha_1, beta_1 )
+function ( cat_1, beta_1, alpha_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Source( alpha_1 ), Range( beta_1 ), UnderlyingMatrix, UnderlyingMatrix( beta_1 ) * UnderlyingMatrix( alpha_1 ) );
 end
@@ -545,8 +566,11 @@ end
         
 ########
 function ( cat_1, mor_1, n_1 )
+    local cap_jit_morphism_attribute_1;
+    cap_jit_morphism_attribute_1 := SimplifyHomalgMatrixByLeftMultiplicationWithInvertibleMatrix( UnderlyingMatrix( mor_1 ) )[1];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Source( mor_1 ), Range( mor_1 ), UnderlyingMatrix, SimplifyHomalgMatrixByLeftMultiplicationWithInvertibleMatrix( UnderlyingMatrix( mor_1 ) )[1] );
+           ), cat_1, Source( mor_1 ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, RankOfObject, NrRows( cap_jit_morphism_attribute_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
 end
 ########
         
@@ -557,8 +581,11 @@ end
         
 ########
 function ( cat_1, mor_1, n_1 )
+    local cap_jit_morphism_attribute_1;
+    cap_jit_morphism_attribute_1 := SimplifyHomalgMatrixByLeftMultiplicationWithInvertibleMatrix( UnderlyingMatrix( mor_1 ) )[2];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Range( mor_1 ), Range( mor_1 ), UnderlyingMatrix, SimplifyHomalgMatrixByLeftMultiplicationWithInvertibleMatrix( UnderlyingMatrix( mor_1 ) )[2] );
+           ), cat_1, Range( mor_1 ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, RankOfObject, NrRows( cap_jit_morphism_attribute_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
 end
 ########
         
@@ -569,8 +596,11 @@ end
         
 ########
 function ( cat_1, mor_1, n_1 )
+    local cap_jit_morphism_attribute_1;
+    cap_jit_morphism_attribute_1 := SimplifyHomalgMatrixByLeftMultiplicationWithInvertibleMatrix( UnderlyingMatrix( mor_1 ) )[3];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Range( mor_1 ), Range( mor_1 ), UnderlyingMatrix, SimplifyHomalgMatrixByLeftMultiplicationWithInvertibleMatrix( UnderlyingMatrix( mor_1 ) )[3] );
+           ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_1 ) ), Range( mor_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
 end
 ########
         
@@ -581,8 +611,11 @@ end
         
 ########
 function ( cat_1, mor_1, n_1 )
+    local cap_jit_morphism_attribute_1;
+    cap_jit_morphism_attribute_1 := SimplifyHomalgMatrixByRightMultiplicationWithInvertibleMatrix( UnderlyingMatrix( mor_1 ) )[1];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Source( mor_1 ), Range( mor_1 ), UnderlyingMatrix, SimplifyHomalgMatrixByRightMultiplicationWithInvertibleMatrix( UnderlyingMatrix( mor_1 ) )[1] );
+           ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_1 ) ), Range( mor_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
 end
 ########
         
@@ -593,8 +626,12 @@ end
         
 ########
 function ( cat_1, mor_1, n_1 )
+    local cap_jit_morphism_attribute_1;
+    cap_jit_morphism_attribute_1 := SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices( UnderlyingMatrix( mor_1 ) )[1];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Source( mor_1 ), Range( mor_1 ), UnderlyingMatrix, SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices( UnderlyingMatrix( mor_1 ) )[1] );
+           ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, RankOfObject, NrRows( cap_jit_morphism_attribute_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
 end
 ########
         
@@ -605,8 +642,11 @@ end
         
 ########
 function ( cat_1, mor_1, n_1 )
+    local cap_jit_morphism_attribute_1;
+    cap_jit_morphism_attribute_1 := SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices( UnderlyingMatrix( mor_1 ) )[2];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Range( mor_1 ), Range( mor_1 ), UnderlyingMatrix, SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices( UnderlyingMatrix( mor_1 ) )[2] );
+           ), cat_1, Range( mor_1 ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, RankOfObject, NrRows( cap_jit_morphism_attribute_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
 end
 ########
         
@@ -617,8 +657,11 @@ end
         
 ########
 function ( cat_1, mor_1, n_1 )
+    local cap_jit_morphism_attribute_1;
+    cap_jit_morphism_attribute_1 := SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices( UnderlyingMatrix( mor_1 ) )[5];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Source( mor_1 ), Source( mor_1 ), UnderlyingMatrix, SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices( UnderlyingMatrix( mor_1 ) )[5] );
+           ), cat_1, Source( mor_1 ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, RankOfObject, NrRows( cap_jit_morphism_attribute_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
 end
 ########
         
@@ -629,8 +672,11 @@ end
         
 ########
 function ( cat_1, mor_1, n_1 )
+    local cap_jit_morphism_attribute_1;
+    cap_jit_morphism_attribute_1 := SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices( UnderlyingMatrix( mor_1 ) )[4];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Range( mor_1 ), Range( mor_1 ), UnderlyingMatrix, SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices( UnderlyingMatrix( mor_1 ) )[4] );
+           ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_1 ) ), Range( mor_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
 end
 ########
         
@@ -641,8 +687,11 @@ end
         
 ########
 function ( cat_1, mor_1, n_1 )
+    local cap_jit_morphism_attribute_1;
+    cap_jit_morphism_attribute_1 := SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices( UnderlyingMatrix( mor_1 ) )[3];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Source( mor_1 ), Source( mor_1 ), UnderlyingMatrix, SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices( UnderlyingMatrix( mor_1 ) )[3] );
+           ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_1 ) ), Source( mor_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
 end
 ########
         
@@ -653,8 +702,11 @@ end
         
 ########
 function ( cat_1, mor_1, n_1 )
+    local cap_jit_morphism_attribute_1;
+    cap_jit_morphism_attribute_1 := SimplifyHomalgMatrixByRightMultiplicationWithInvertibleMatrix( UnderlyingMatrix( mor_1 ) )[3];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Source( mor_1 ), Source( mor_1 ), UnderlyingMatrix, SimplifyHomalgMatrixByRightMultiplicationWithInvertibleMatrix( UnderlyingMatrix( mor_1 ) )[3] );
+           ), cat_1, Source( mor_1 ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, RankOfObject, NrRows( cap_jit_morphism_attribute_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
 end
 ########
         
@@ -665,8 +717,11 @@ end
         
 ########
 function ( cat_1, mor_1, n_1 )
+    local cap_jit_morphism_attribute_1;
+    cap_jit_morphism_attribute_1 := SimplifyHomalgMatrixByRightMultiplicationWithInvertibleMatrix( UnderlyingMatrix( mor_1 ) )[2];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Source( mor_1 ), Source( mor_1 ), UnderlyingMatrix, SimplifyHomalgMatrixByRightMultiplicationWithInvertibleMatrix( UnderlyingMatrix( mor_1 ) )[2] );
+           ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_1 ) ), Source( mor_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
 end
 ########
         
@@ -747,7 +802,9 @@ end
 ########
 function ( cat_1, objects_1, T_1, tau_1, P_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, P_1, T_1, UnderlyingMatrix, UnionOfColumns( UnderlyingRing( cat_1 ), RankOfObject( T_1 ), List( tau_1, UnderlyingMatrix ) ) );
+           ), cat_1, P_1, T_1, UnderlyingMatrix, UnionOfColumns( UnderlyingRing( cat_1 ), RankOfObject( T_1 ), List( tau_1, function ( logic_new_func_x_2 )
+                return UnderlyingMatrix( logic_new_func_x_2 );
+            end ) ) );
 end
 ########
         
@@ -771,7 +828,9 @@ end
 ########
 function ( cat_1, objects_1, T_1, tau_1, P_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, T_1, P_1, UnderlyingMatrix, UnionOfRows( UnderlyingRing( cat_1 ), RankOfObject( T_1 ), List( tau_1, UnderlyingMatrix ) ) );
+           ), cat_1, T_1, P_1, UnderlyingMatrix, UnionOfRows( UnderlyingRing( cat_1 ), RankOfObject( T_1 ), List( tau_1, function ( logic_new_func_x_2 )
+                return UnderlyingMatrix( logic_new_func_x_2 );
+            end ) ) );
 end
 ########
         
@@ -845,21 +904,21 @@ end
     
 end );
 
-BindGlobal( "CategoryOfColumnsOfFieldPrecompiled", function ( field )
+BindGlobal( "CategoryOfColumnsAsOppositeOfCategoryOfRowsOfFieldPrecompiled", function ( homalg_ring )
   local category_constructor, cat;
     
     category_constructor := 
         
         
-        function ( field )
-    return CategoryOfColumns( field );
+        function ( homalg_ring )
+    return CategoryOfColumnsAsOppositeOfCategoryOfRows( homalg_ring );
 end;
         
         
     
-    cat := category_constructor( field : FinalizeCategory := false, no_precompiled_code := true );
+    cat := category_constructor( homalg_ring : FinalizeCategory := false, no_precompiled_code := true );
     
-    ADD_FUNCTIONS_FOR_CategoryOfColumnsOfFieldPrecompiled( cat );
+    ADD_FUNCTIONS_FOR_CategoryOfColumnsAsOppositeOfCategoryOfRowsOfFieldPrecompiled( cat );
     
     if ValueOption( "FinalizeCategory" ) = false then
         
