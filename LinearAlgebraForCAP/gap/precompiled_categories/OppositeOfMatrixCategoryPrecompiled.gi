@@ -604,6 +604,12 @@ end
         
     );
     
+    if ValueOption( "FinalizeCategory" ) = false then
+        
+        return cat;
+        
+    fi;
+    
     Finalize( cat );
     
     return cat;

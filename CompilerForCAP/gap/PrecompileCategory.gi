@@ -480,6 +480,12 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     
     current_string := Concatenation(
         "    \n",
+        "    if ValueOption( \"FinalizeCategory\" ) = false then\n",
+        "        \n",
+        "        return cat;\n",
+        "        \n",
+        "    fi;\n",
+        "    \n",
         "    Finalize( cat );\n",
         "    \n",
         "    return cat;\n",
