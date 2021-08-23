@@ -227,11 +227,17 @@ InstallMethod( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple,
     
 end );
 
+####################################
 ##
-InstallMethod( CATEGORY_OF_ROWS_SimplificationSourceAndRangeTuple,
-               [ IsCategoryOfRowsMorphism ],
-               
+## Global functions
+##
+####################################
+
+##
+InstallGlobalFunction( CATEGORY_OF_ROWS_SimplificationSourceAndRangeTuple,
+  
   function( alpha )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     ## [ S, U, V, UI, VI ];
     ## U M V = S
@@ -240,10 +246,10 @@ InstallMethod( CATEGORY_OF_ROWS_SimplificationSourceAndRangeTuple,
 end );
 
 ##
-InstallMethod( CATEGORY_OF_ROWS_SimplificationSourceTuple,
-               [ IsCategoryOfRowsMorphism ],
-               
+InstallGlobalFunction( CATEGORY_OF_ROWS_SimplificationSourceTuple,
+  
   function( alpha )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     ## [ S, T, TI ];
     ## T M = S
@@ -252,10 +258,10 @@ InstallMethod( CATEGORY_OF_ROWS_SimplificationSourceTuple,
 end );
 
 ##
-InstallMethod( CATEGORY_OF_ROWS_SimplificationRangeTuple,
-               [ IsCategoryOfRowsMorphism ],
-               
+InstallGlobalFunction( CATEGORY_OF_ROWS_SimplificationRangeTuple,
+  
   function( alpha )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     ## [ S, T, TI ];
     ## M T = S

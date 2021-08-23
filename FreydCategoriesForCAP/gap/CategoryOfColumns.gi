@@ -202,11 +202,17 @@ InstallMethod( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple,
     
 end );
 
+####################################
 ##
-InstallMethod( CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple,
-               [ IsCategoryOfColumnsMorphism ],
-               
+## Global functions
+##
+####################################
+
+##
+InstallGlobalFunction( CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple,
+  
   function( alpha )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     ## [ S, U, V, UI, VI ];
     ## U M V = S
@@ -215,10 +221,10 @@ InstallMethod( CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple,
 end );
 
 ##
-InstallMethod( CATEGORY_OF_COLUMNS_SimplificationSourceTuple,
-               [ IsCategoryOfColumnsMorphism ],
-               
+InstallGlobalFunction( CATEGORY_OF_COLUMNS_SimplificationSourceTuple,
+  
   function( alpha )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     ## [ S, T, TI ];
     ## M T = S
@@ -227,10 +233,10 @@ InstallMethod( CATEGORY_OF_COLUMNS_SimplificationSourceTuple,
 end );
 
 ##
-InstallMethod( CATEGORY_OF_COLUMNS_SimplificationRangeTuple,
-               [ IsCategoryOfColumnsMorphism ],
-               
+InstallGlobalFunction( CATEGORY_OF_COLUMNS_SimplificationRangeTuple,
+  
   function( alpha )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     ## [ S, T, TI ];
     ## T M = S

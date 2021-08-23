@@ -72,12 +72,14 @@ DeclareAttribute( "UnderlyingMatrix",
 DeclareAttribute( "CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple",
                   IsCategoryOfColumnsMorphism );
 
-DeclareAttribute( "CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple",
-                  IsCategoryOfColumnsMorphism );
+####################################
+##
+#! @Section Global functions
+##
+####################################
 
-DeclareAttribute( "CATEGORY_OF_COLUMNS_SimplificationSourceTuple",
-                  IsCategoryOfColumnsMorphism );
+DeclareGlobalFunction( "CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple" );
 
-DeclareAttribute( "CATEGORY_OF_COLUMNS_SimplificationRangeTuple",
-                  IsCategoryOfColumnsMorphism );
+DeclareGlobalFunction( "CATEGORY_OF_COLUMNS_SimplificationSourceTuple" );
 
+DeclareGlobalFunction( "CATEGORY_OF_COLUMNS_SimplificationRangeTuple" );
