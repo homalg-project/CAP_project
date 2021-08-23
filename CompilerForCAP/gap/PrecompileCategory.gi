@@ -295,6 +295,10 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         operations := ListInstalledOperationsOfCategory( cat );
         
+    elif ValueOption( "operations" ) = "primitive" then
+        
+        operations := ListPrimitivelyInstalledOperationsOfCategory( cat );
+        
     else
         
         operations := ValueOption( "operations" );
