@@ -600,22 +600,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
     end );
     
-    ##
-    AddMorphismBetweenDirectSumsWithGivenDirectSums( category,
-      function( cat, source, source_diagram, morphism_matrix, range_diagram, range )
-        local underlying_matrix;
-        
-        underlying_matrix := List( morphism_matrix, row -> List( row, UnderlyingMatrix ) );
-        
-        underlying_matrix := ListN( source_diagram, underlying_matrix, { source, row } -> UnionOfColumns( ring, RankOfObject( source ), row ) );
-        
-        return CategoryOfRowsMorphism( cat,
-          source,
-          UnionOfRows( ring, RankOfObject( range ), underlying_matrix ),
-          range );
-        
-    end );
-    
     ## Operations important for Freyd categories
     
     AddWeakKernelEmbedding( category,
