@@ -293,7 +293,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     
     if ValueOption( "operations" ) = fail then
         
-        operations := Intersection( ListInstalledOperationsOfCategory( cat ) );
+        operations := ListInstalledOperationsOfCategory( cat );
         
     else
         
