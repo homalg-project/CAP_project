@@ -145,11 +145,13 @@ end );
 BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
   
   function( opposite_category, category )
-    local recnames, current_recname, current_entry, dual_operation_name,
+    local only_primitive_operations, recnames, current_recname, current_entry, dual_operation_name,
           filter_list, input_arguments_names, return_type, func_string,
           dual_preprocessor_func_string, preprocessor_string, dual_arguments,
           dual_postprocessor_func_string, postprocessor_string, output_source_getter_string, output_range_getter_string, return_statement,
           func, current_add, list_of_attributes, attr, tester, setter, getter;
+    
+    only_primitive_operations := ValueOption( "only_primitive_operations" ) = true;
     
     recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
     
@@ -184,6 +186,10 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
         fi;
         
         if not CanCompute( category, dual_operation_name ) then
+            continue;
+        fi;
+        
+        if only_primitive_operations and not dual_operation_name in ListPrimitivelyInstalledOperationsOfCategory( category ) then
             continue;
         fi;
         

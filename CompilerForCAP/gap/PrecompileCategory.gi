@@ -293,7 +293,11 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     
     if ValueOption( "operations" ) = fail then
         
-        operations := Intersection( ListInstalledOperationsOfCategory( cat ) );
+        operations := ListInstalledOperationsOfCategory( cat );
+        
+    elif ValueOption( "operations" ) = "primitive" then
+        
+        operations := ListPrimitivelyInstalledOperationsOfCategory( cat );
         
     else
         
@@ -480,6 +484,12 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     
     current_string := Concatenation(
         "    \n",
+        "    if ValueOption( \"FinalizeCategory\" ) = false then\n",
+        "        \n",
+        "        return cat;\n",
+        "        \n",
+        "    fi;\n",
+        "    \n",
         "    Finalize( cat );\n",
         "    \n",
         "    return cat;\n",
@@ -489,5 +499,47 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     output_string := Concatenation( output_string, current_string );
     
     WriteFileInPackageForHomalg( package_name, Concatenation( "precompiled_categories/", compiled_category_name, ".gi" ), output_string );
+    
+end );
+
+InstallGlobalFunction( "CapJitPrecompileCategoryAndCompareResult", function ( category_constructor, given_arguments, package_name, compiled_category_name )
+  local filepath, dirs, complete_path, old_file_content, new_file_content;
+    
+    filepath := Concatenation( "precompiled_categories/", compiled_category_name, ".gi" );
+    
+    dirs := DirectoriesPackageLibrary( package_name, "gap" );
+    
+    if Length( dirs ) <> 1 then
+        
+        Error( Concatenation( "could not find gap directory of package ", package_name ) );
+        
+    fi;
+    
+    complete_path := Filename( dirs[1], filepath );
+    
+    if IsExistingFile( complete_path ) then
+        
+        old_file_content := ReadFileFromPackageForHomalg( package_name, filepath );
+        
+    else
+        
+        old_file_content := "";
+        
+    fi;
+    
+    CapJitPrecompileCategory(
+        category_constructor,
+        given_arguments,
+        package_name,
+        compiled_category_name
+    );
+    
+    new_file_content := ReadFileFromPackageForHomalg( package_name, filepath );
+    
+    if old_file_content <> new_file_content then
+        
+        Display( "WARNING: old and new file contents differ" );
+        
+    fi;
     
 end );

@@ -10,20 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "FreydCategoriesForCAP",
 Subtitle := "Freyd categories - Formal (co)kernels for additive categories",
-Version := Maximum( [
-  "2019.03-04", ## Martin's version
-  ## this line prevents merge conflicts
-  "2020.09-21", ## Sepp's version
-  ## this line prevents merge conflicts
-  "2020.05-17", ## Mohamed's version
-  ## this line prevents merge conflicts
-  "2021.07-03", ## Fabian's version
-  ## this line prevents merge conflicts
-  "2020.04-18", ## Kamal's version
-] ),
+Version := "2021.08-01",
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
-
 
 Persons := [
   rec(
@@ -99,7 +88,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.8",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">= 2021.06-02" ],
+                           [ "CAP", ">= 2021.08-01" ],
                            [ "MatricesForHomalg", ">= 2021.07-01" ],
                            [ "GradedRingForHomalg", ">=2019.08.07" ],
                            [ "LinearAlgebraForCAP", ">= 2020.05.16" ],

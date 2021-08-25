@@ -227,11 +227,17 @@ InstallMethod( CATEGORY_OF_ROWS_ReductionBySplitEpiSummandTuple,
     
 end );
 
+####################################
 ##
-InstallMethod( CATEGORY_OF_ROWS_SimplificationSourceAndRangeTuple,
-               [ IsCategoryOfRowsMorphism ],
-               
+## Global functions
+##
+####################################
+
+##
+InstallGlobalFunction( CATEGORY_OF_ROWS_SimplificationSourceAndRangeTuple,
+  
   function( alpha )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     ## [ S, U, V, UI, VI ];
     ## U M V = S
@@ -240,10 +246,10 @@ InstallMethod( CATEGORY_OF_ROWS_SimplificationSourceAndRangeTuple,
 end );
 
 ##
-InstallMethod( CATEGORY_OF_ROWS_SimplificationSourceTuple,
-               [ IsCategoryOfRowsMorphism ],
-               
+InstallGlobalFunction( CATEGORY_OF_ROWS_SimplificationSourceTuple,
+  
   function( alpha )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     ## [ S, T, TI ];
     ## T M = S
@@ -252,10 +258,10 @@ InstallMethod( CATEGORY_OF_ROWS_SimplificationSourceTuple,
 end );
 
 ##
-InstallMethod( CATEGORY_OF_ROWS_SimplificationRangeTuple,
-               [ IsCategoryOfRowsMorphism ],
-               
+InstallGlobalFunction( CATEGORY_OF_ROWS_SimplificationRangeTuple,
+  
   function( alpha )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     ## [ S, T, TI ];
     ## M T = S
@@ -594,22 +600,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
     end );
     
-    ##
-    AddMorphismBetweenDirectSumsWithGivenDirectSums( category,
-      function( cat, source, source_diagram, morphism_matrix, range_diagram, range )
-        local underlying_matrix;
-        
-        underlying_matrix := List( morphism_matrix, row -> List( row, UnderlyingMatrix ) );
-        
-        underlying_matrix := ListN( source_diagram, underlying_matrix, { source, row } -> UnionOfColumns( ring, RankOfObject( source ), row ) );
-        
-        return CategoryOfRowsMorphism( cat,
-          source,
-          UnionOfRows( ring, RankOfObject( range ), underlying_matrix ),
-          range );
-        
-    end );
-    
     ## Operations important for Freyd categories
     
     AddWeakKernelEmbedding( category,
@@ -832,7 +822,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             return CategoryOfRowsMorphism( cat,
                      DistinguishedObjectOfHomomorphismStructure( cat ),
                      underlying_matrix,
-                     HomomorphismStructureOnObjects( Source( alpha ), Range( alpha ) )
+                     HomomorphismStructureOnObjects( cat, Source( alpha ), Range( alpha ) )
                    );
             
         end );
@@ -930,7 +920,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             
             if rank = 0 then
                 
-                return ZeroMorphism( tensor_object, unit );
+                return ZeroMorphism( cat, tensor_object, unit );
                 
             fi;
             
@@ -952,7 +942,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             
             if rank = 0 then
                 
-                return ZeroMorphism( unit, tensor_object );
+                return ZeroMorphism( cat, unit, tensor_object );
                 
             fi;
             
@@ -965,7 +955,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         end );
        
         ##
-        AddMorphismToBidualWithGivenBidual( category, { cat, obj, dual } -> IdentityMorphism( obj ) );
+        AddMorphismToBidualWithGivenBidual( category, { cat, obj, dual } -> IdentityMorphism( cat, obj ) );
         
     fi; ## commutative case
     

@@ -28,21 +28,13 @@ operations := Intersection(
 # https://github.com/gap-system/gap/issues/4523
 operations := Difference( operations, [ "LiftOrFail", "ColiftOrFail" ] );;
 
-filepath := "precompiled_categories/OppositeOfMatrixCategoryPrecompiled.gi";;
-old_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;
-
-CapJitPrecompileCategory(
+CapJitPrecompileCategoryAndCompareResult(
     category_constructor,
     given_arguments,
     package_name,
     compiled_category_name :
     operations := operations
-);
-
-new_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;
-
-old_file_content = new_file_content;
-#! true
+);;
 
 ReadPackage(
     "LinearAlgebraForCAP",

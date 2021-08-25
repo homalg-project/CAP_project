@@ -106,9 +106,16 @@ end );
 InstallMethodForCompilerForCAP( CategoryOfColumnsObjectOp,
                                 [ IsCategoryOfColumns, IsInt ],
                
-  function( category, rank )
+  function( cat, rank )
     
-    return ObjectConstructor( category, rank );
+    if not IsInt( rank ) or rank < 0 then
+        
+        Error( "the object datum must be a non-negative integer" );
+        
+    fi;
+    
+    return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
+                                                RankOfObject, rank );
     
 end );
 
@@ -143,7 +150,35 @@ InstallOtherMethodForCompilerForCAP( CategoryOfColumnsMorphism,
                                      
   function( cat, source, homalg_matrix, range )
     
-    return MorphismConstructor( cat, source, homalg_matrix, range );
+    if not IsHomalgMatrix( homalg_matrix ) then
+        
+        Error( "the morphism datum must be a homalg matrix" );
+        
+    fi;
+    
+    if not IsIdenticalObj( HomalgRing( homalg_matrix ), UnderlyingRing( cat ) ) then
+        
+        Error( "the matrix is defined over a different ring than the category" );
+        
+    fi;
+    
+    if NrColumns( homalg_matrix ) <> RankOfObject( source ) then
+        
+        Error( "the number of columns has to be equal to the dimension of the source" );
+        
+    fi;
+    
+    if NrRows( homalg_matrix ) <> RankOfObject( range ) then
+        
+        Error( "the number of rows has to be equal to the dimension of the range" );
+        
+    fi;
+    
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
+                                           source,
+                                           range,
+                                           UnderlyingMatrix, homalg_matrix
+    );
     
 end );
 
@@ -202,11 +237,17 @@ InstallMethod( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple,
     
 end );
 
+####################################
 ##
-InstallMethod( CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple,
-               [ IsCategoryOfColumnsMorphism ],
-               
+## Global functions
+##
+####################################
+
+##
+InstallGlobalFunction( CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple,
+  
   function( alpha )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     ## [ S, U, V, UI, VI ];
     ## U M V = S
@@ -215,10 +256,10 @@ InstallMethod( CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple,
 end );
 
 ##
-InstallMethod( CATEGORY_OF_COLUMNS_SimplificationSourceTuple,
-               [ IsCategoryOfColumnsMorphism ],
-               
+InstallGlobalFunction( CATEGORY_OF_COLUMNS_SimplificationSourceTuple,
+  
   function( alpha )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     ## [ S, T, TI ];
     ## M T = S
@@ -227,10 +268,10 @@ InstallMethod( CATEGORY_OF_COLUMNS_SimplificationSourceTuple,
 end );
 
 ##
-InstallMethod( CATEGORY_OF_COLUMNS_SimplificationRangeTuple,
-               [ IsCategoryOfColumnsMorphism ],
-               
+InstallGlobalFunction( CATEGORY_OF_COLUMNS_SimplificationRangeTuple,
+  
   function( alpha )
+    #% CAP_JIT_RESOLVE_FUNCTION
     
     ## [ S, T, TI ];
     ## T M = S
@@ -791,7 +832,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
             return CategoryOfColumnsMorphism( cat,
                      DistinguishedObjectOfHomomorphismStructure( cat ),
                      underlying_matrix,
-                     HomomorphismStructureOnObjects( Source( alpha ), Range( alpha ) )
+                     HomomorphismStructureOnObjects( cat, Source( alpha ), Range( alpha ) )
                    );
             
         end );
@@ -890,7 +931,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
             
             if rank = 0 then
                 
-                return ZeroMorphism( tensor_object, unit );
+                return ZeroMorphism( cat, tensor_object, unit );
                 
             fi;
             
@@ -912,7 +953,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
             
             if rank = 0 then
                 
-                return ZeroMorphism( unit, tensor_object );
+                return ZeroMorphism( cat, unit, tensor_object );
                 
             fi;
             
@@ -925,7 +966,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS,
         end );
        
         ##
-        AddMorphismToBidualWithGivenBidual( category, { cat, obj, dual } -> IdentityMorphism( obj ) );
+        AddMorphismToBidualWithGivenBidual( category, { cat, obj, dual } -> IdentityMorphism( cat, obj ) );
         
     fi; ## commutative case
     
