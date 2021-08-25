@@ -9,26 +9,10 @@
 SetPackageInfo( rec(
 
 PackageName := "CAP",
-
 Subtitle := "Categories, Algorithms, Programming",
-
-Version := Maximum( [
-  "2021.02-03", ## Mohamed's version
-  ## this line prevents merge conflicts
-  "2015.04-01", ## Oystein's version
-  ## this line prevents merge conflicts
-  "2019.06-05", ## Sebas' version
-  ## this line prevents merge conflicts
-  "2020.04-16", ## Sepp's version
-  ## this line prevents merge conflicts
-  "2021.07-02", ## Fabian's version
-  ## this line prevents merge conflicts
-  "2021.05-04", ## Kamal's version
-] ),
-
-Date := "31/07/2021",
+Version := "2021.08-01",
+Date := "25/08/2021",
 License := "GPL-2.0-or-later",
-
 
 Persons := [
   rec(
