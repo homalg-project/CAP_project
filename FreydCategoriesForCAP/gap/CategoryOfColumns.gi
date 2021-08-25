@@ -106,9 +106,16 @@ end );
 InstallMethodForCompilerForCAP( CategoryOfColumnsObjectOp,
                                 [ IsCategoryOfColumns, IsInt ],
                
-  function( category, rank )
+  function( cat, rank )
     
-    return ObjectConstructor( category, rank );
+    if not IsInt( rank ) or rank < 0 then
+        
+        Error( "the object datum must be a non-negative integer" );
+        
+    fi;
+    
+    return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
+                                                RankOfObject, rank );
     
 end );
 
@@ -143,7 +150,35 @@ InstallOtherMethodForCompilerForCAP( CategoryOfColumnsMorphism,
                                      
   function( cat, source, homalg_matrix, range )
     
-    return MorphismConstructor( cat, source, homalg_matrix, range );
+    if not IsHomalgMatrix( homalg_matrix ) then
+        
+        Error( "the morphism datum must be a homalg matrix" );
+        
+    fi;
+    
+    if not IsIdenticalObj( HomalgRing( homalg_matrix ), UnderlyingRing( cat ) ) then
+        
+        Error( "the matrix is defined over a different ring than the category" );
+        
+    fi;
+    
+    if NrColumns( homalg_matrix ) <> RankOfObject( source ) then
+        
+        Error( "the number of columns has to be equal to the dimension of the source" );
+        
+    fi;
+    
+    if NrRows( homalg_matrix ) <> RankOfObject( range ) then
+        
+        Error( "the number of rows has to be equal to the dimension of the range" );
+        
+    fi;
+    
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
+                                           source,
+                                           range,
+                                           UnderlyingMatrix, homalg_matrix
+    );
     
 end );
 
