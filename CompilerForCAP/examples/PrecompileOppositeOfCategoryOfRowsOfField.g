@@ -14,14 +14,7 @@ category_constructor :=
 given_arguments := [ QQ ];;
 compiled_category_name := "OppositeOfCategoryOfRowsOfFieldPrecompiled";;
 package_name := "FreydCategoriesForCAP";;
-operations := Intersection(
-    ListPrimitivelyInstalledOperationsOfCategory( CategoryOfColumns( QQ ) ),
-    CAP_JIT_INTERNAL_SAFE_OPERATIONS
-);;
-operations := Filtered(
-    operations,
-    o -> PositionSublist( o, "HomomorphismStructure" ) = fail
-);;
+operations := "primitive";;
 
 CapJitPrecompileCategoryAndCompareResult(
     category_constructor,

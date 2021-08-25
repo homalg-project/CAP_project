@@ -19,7 +19,7 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
     
     category_of_rows := CategoryOfRows( homalg_ring : FinalizeCategory := true );
     
-    op := Opposite( category_of_rows, Concatenation( "Columns( ", RingName( homalg_ring )," )" ) : FinalizeCategory := false );
+    op := Opposite( category_of_rows, Concatenation( "Columns( ", RingName( homalg_ring )," )" ) : only_primitive_operations := true, FinalizeCategory := false );
     
     ##
     AddObjectConstructor( op, function( cat, underlying_object )
@@ -66,6 +66,7 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
     op!.compiler_hints := rec(
         category_attribute_names := [
             "UnderlyingRing",
+            "Opposite",
         ],
         source_and_range_attributes_from_morphism_attribute := rec(
             object_attribute_name := "RankOfObject",
@@ -145,14 +146,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
     
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
         
-        ##
-        AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
-          function( cat, r, alpha )
-            
-            return CategoryOfColumnsMorphism( cat, Source( alpha ), r * UnderlyingMatrix( alpha ), Range( alpha ) );
-            
-        end );
-        
         ## Operations related to homomorphism structure
         
         SetRangeCategoryOfHomomorphismStructure( category, category );
@@ -195,7 +188,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
             return CategoryOfColumnsMorphism( cat,
                      DistinguishedObjectOfHomomorphismStructure( cat ),
                      underlying_matrix,
-                     HomomorphismStructureOnObjects( Source( alpha ), Range( alpha ) )
+                     HomomorphismStructureOnObjects( cat, Source( alpha ), Range( alpha ) )
                    );
             
         end );
@@ -294,7 +287,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
             
             if rank = 0 then
                 
-                return ZeroMorphism( tensor_object, unit );
+                return ZeroMorphism( cat, tensor_object, unit );
                 
             fi;
             
@@ -316,7 +309,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
             
             if rank = 0 then
                 
-                return ZeroMorphism( unit, tensor_object );
+                return ZeroMorphism( cat, unit, tensor_object );
                 
             fi;
             
@@ -329,157 +322,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
         end );
        
         ##
-        AddMorphismToBidualWithGivenBidual( category, { cat, obj, dual } -> IdentityMorphism( obj ) );
+        AddMorphismToBidualWithGivenBidual( category, { cat, obj, dual } -> IdentityMorphism( cat, obj ) );
         
     fi; ## commutative case
-    
-    ## Simplifications
-    
-    ## Source and Range
-    ##
-    AddSimplifySourceAndRange( category,
-      function( cat, alpha, i )
-        
-        return
-          CategoryOfColumnsMorphism( cat,
-            Source( alpha ),
-            CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple( alpha )[1],
-            Range( alpha )
-          );
-        
-    end );
-    
-    ##
-    AddSimplifySourceAndRange_IsoToInputRange( category,
-      function( cat, alpha, i )
-        
-        return
-          CategoryOfColumnsMorphism( cat,
-            Range( alpha ),
-            CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple( alpha )[4],
-            Range( alpha )
-          );
-        
-    end );
-    
-    ##
-    AddSimplifySourceAndRange_IsoFromInputRange( category,
-      function( cat, alpha, i )
-        
-        return
-          CategoryOfColumnsMorphism( cat,
-            Range( alpha ),
-            CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple( alpha )[2],
-            Range( alpha )
-          );
-        
-    end );
-    
-    ##
-    AddSimplifySourceAndRange_IsoToInputSource( category,
-      function( cat, alpha, i )
-        
-        return
-          CategoryOfColumnsMorphism( cat,
-            Source( alpha ),
-            CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple( alpha )[3],
-            Source( alpha )
-          );
-        
-    end );
-    
-    ##
-    AddSimplifySourceAndRange_IsoFromInputSource( category,
-      function( cat, alpha, i )
-        
-        return
-          CategoryOfColumnsMorphism( cat,
-            Source( alpha ),
-            CATEGORY_OF_COLUMNS_SimplificationSourceAndRangeTuple( alpha )[5],
-            Source( alpha )
-          );
-        
-    end );
-    
-    ## only Source
-    ##
-    AddSimplifySource( category,
-      function( cat, alpha, i )
-        
-        return
-          CategoryOfColumnsMorphism( cat,
-            Source( alpha ),
-            CATEGORY_OF_COLUMNS_SimplificationSourceTuple( alpha )[1],
-            Range( alpha )
-          );
-        
-    end );
-    
-    ##
-    AddSimplifySource_IsoToInputObject( category,
-      function( cat, alpha, i )
-        
-        return
-          CategoryOfColumnsMorphism( cat,
-            Source( alpha ),
-            CATEGORY_OF_COLUMNS_SimplificationSourceTuple( alpha )[2],
-            Source( alpha )
-          );
-        
-    end );
-    
-    ##
-    AddSimplifySource_IsoFromInputObject( category,
-      function( cat, alpha, i )
-        
-        return
-          CategoryOfColumnsMorphism( cat,
-            Source( alpha ),
-            CATEGORY_OF_COLUMNS_SimplificationSourceTuple( alpha )[3],
-            Source( alpha )
-          );
-        
-    end );
-    
-    ## only Range
-    ##
-    AddSimplifyRange( category,
-      function( cat, alpha, i )
-        
-        return
-          CategoryOfColumnsMorphism( cat,
-            Source( alpha ),
-            CATEGORY_OF_COLUMNS_SimplificationRangeTuple( alpha )[1],
-            Range( alpha )
-          );
-        
-    end );
-    
-    ##
-    AddSimplifyRange_IsoToInputObject( category,
-      function( cat, alpha, i )
-        
-        return
-          CategoryOfColumnsMorphism( cat,
-            Range( alpha ),
-            CATEGORY_OF_COLUMNS_SimplificationRangeTuple( alpha )[3],
-            Range( alpha )
-          );
-        
-    end );
-    
-    ##
-    AddSimplifyRange_IsoFromInputObject( category,
-      function( cat, alpha, i )
-        
-        return
-          CategoryOfColumnsMorphism( cat,
-            Range( alpha ),
-            CATEGORY_OF_COLUMNS_SimplificationRangeTuple( alpha )[2],
-            Range( alpha )
-          );
-        
-    end );
     
     ##
     AddSomeReductionBySplitEpiSummand( category,

@@ -822,7 +822,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             return CategoryOfRowsMorphism( cat,
                      DistinguishedObjectOfHomomorphismStructure( cat ),
                      underlying_matrix,
-                     HomomorphismStructureOnObjects( Source( alpha ), Range( alpha ) )
+                     HomomorphismStructureOnObjects( cat, Source( alpha ), Range( alpha ) )
                    );
             
         end );
@@ -920,7 +920,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             
             if rank = 0 then
                 
-                return ZeroMorphism( tensor_object, unit );
+                return ZeroMorphism( cat, tensor_object, unit );
                 
             fi;
             
@@ -942,7 +942,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             
             if rank = 0 then
                 
-                return ZeroMorphism( unit, tensor_object );
+                return ZeroMorphism( cat, unit, tensor_object );
                 
             fi;
             
@@ -955,7 +955,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         end );
        
         ##
-        AddMorphismToBidualWithGivenBidual( category, { cat, obj, dual } -> IdentityMorphism( obj ) );
+        AddMorphismToBidualWithGivenBidual( category, { cat, obj, dual } -> IdentityMorphism( cat, obj ) );
         
     fi; ## commutative case
     
