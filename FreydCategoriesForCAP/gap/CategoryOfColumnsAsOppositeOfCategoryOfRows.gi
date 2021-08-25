@@ -157,15 +157,15 @@ BindGlobal( "LegacyCategoryOfColumnsMorphism", function( cat, source, homalg_mat
         
     fi;
     
-    if NrColumns( homalg_matrix ) <> ObjectDatum( cat, source ) then
+    if NrColumns( homalg_matrix ) <> RankOfObject( source ) then
         
-        Error( "the number of rows has to be equal to the dimension of the source" );
+        Error( "the number of columns has to be equal to the dimension of the source" );
         
     fi;
     
-    if NrRows( homalg_matrix ) <> ObjectDatum( cat, range ) then
+    if NrRows( homalg_matrix ) <> RankOfObject( range ) then
         
-        Error( "the number of columns has to be equal to the dimension of the range" );
+        Error( "the number of rows has to be equal to the dimension of the range" );
         
     fi;
     
