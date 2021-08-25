@@ -32,10 +32,10 @@
 <h2>Speed up computations in CAP categories</h2>
 
 <p>
-    2021.07-01</p>
+    2021.08-01</p>
 
 <p>
-    22 July 2021
+    25 August 2021
   </p>
 
 </div>
@@ -82,6 +82,7 @@
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X81627716853DCE40">1.7-1 CapJitPrecompileCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X819343157D62111A">1.7-2 CapJitPrecompileCategoryAndCompareResult</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7B946AD083F7CEEA">1.8 <span class="Heading">Getting information about the compilation process</span></a>
 </span>
@@ -130,6 +131,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7B97567F7B56CBFA">2.4-10 CapJitGetNodeByPath</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7981CA50837DB87A">2.4-11 CapJitRemovedReturnFail</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X79A0FCEC7F45C5F1">2.4-12 CapJitPrettyPrintFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7A76B5D0839AF130">2.4-13 CapJitCopyWithNewFunctionIDs</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7DB6AB468352F1A9">2.4-14 CapJitIsEqualForEnhancedSyntaxTrees</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X80608A9A78CF95E0">2.5 <span class="Heading">Compilation steps</span></a>
 </span>
@@ -139,14 +142,15 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X797464D18296B4BC">2.5-3 CapJitReplacedSourceAndRangeAttributes</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7A46699B7922FB1B">2.5-4 CapJitDroppedHandledEdgeCases</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X873B439E79B06D85">2.5-5 CapJitDroppedUnusedVariables</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7DF03AC082073C4C">2.5-6 CapJitInlinedArguments</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7933165D803DEDB2">2.5-7 CapJitInlinedFunctionCalls</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7C3064C27FBB1A0D">2.5-8 CapJitInlinedSimpleFunctionCalls</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7FDC395E80CF1BD7">2.5-9 CapJitInlinedVariableAssignments</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X837576207D282C04">2.5-10 CapJitAppliedLogic</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7AE756B8878FD449">2.5-11 CapJitAppliedLogicTemplates</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7FD883BA85F7EBE5">2.5-12 CapJitResolvedGlobalVariables</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7D12C378812745DA">2.5-13 CapJitResolvedOperations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X82763C7D7CAD3B16">2.5-6 CapJitHoistedExpressions</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7DF03AC082073C4C">2.5-7 CapJitInlinedArguments</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7933165D803DEDB2">2.5-8 CapJitInlinedFunctionCalls</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7C3064C27FBB1A0D">2.5-9 CapJitInlinedSimpleFunctionCalls</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7FDC395E80CF1BD7">2.5-10 CapJitInlinedVariableAssignments</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X837576207D282C04">2.5-11 CapJitAppliedLogic</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7AE756B8878FD449">2.5-12 CapJitAppliedLogicTemplates</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7FD883BA85F7EBE5">2.5-13 CapJitResolvedGlobalVariables</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7D12C378812745DA">2.5-14 CapJitResolvedOperations</a></span>
 </div></div>
 </div>
 <div class="ContChap"><a href="chap3_mj.html#X7967FE8E7BBDF485">3 <span class="Heading">Examples and tests</span></a>

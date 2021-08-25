@@ -26,16 +26,16 @@
     [4X[25X>[125X [27X    vec!.compiled_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3][127X[104X
     [4X[25X>[125X [27X);;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( SYNTAX_TREE_CODE( tree1 ) );[127X[104X
-    [4X[28Xfunction ( cat, S, diagram_S, morphism_matrix, diagram_T, T )[128X[104X
-    [4X[28X    return ObjectifyWithAttributes( rec([128X[104X
-    [4X[28X           ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, [128X[104X
-    [4X[28X       UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, [128X[104X
-    [4X[28X       UnionOfRows( UnderlyingRing( cat ), Dimension( T ), [128X[104X
-    [4X[28X         ListN( diagram_S, List( morphism_matrix, function ( row )[128X[104X
-    [4X[28X                  return List( row, UnderlyingMatrix );[128X[104X
-    [4X[28X              end ), function ( source, row )[128X[104X
-    [4X[28X                return UnionOfColumns( UnderlyingRing( cat ), [128X[104X
-    [4X[28X                   Dimension( source ), row );[128X[104X
+    [4X[28Xfunction ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )[128X[104X
+    [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
+    [4X[28X           ), cat_1, S_1, T_1, UnderlyingFieldForHomalg, [128X[104X
+    [4X[28X       UnderlyingRing( cat_1 ), UnderlyingMatrix, [128X[104X
+    [4X[28X       UnionOfRows( UnderlyingRing( cat_1 ), Dimension( T_1 ), [128X[104X
+    [4X[28X         ListN( diagram_S_1, List( morphism_matrix_1, function ( row_2 )[128X[104X
+    [4X[28X                  return List( row_2, UnderlyingMatrix );[128X[104X
+    [4X[28X              end ), function ( source_2, row_2 )[128X[104X
+    [4X[28X                return UnionOfColumns( UnderlyingRing( cat_1 ), [128X[104X
+    [4X[28X                   Dimension( source_2 ), row_2 );[128X[104X
     [4X[28X            end ) ) );[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27X# compile the default derivation of[127X[104X
@@ -44,38 +44,33 @@
     [4X[25X>[125X [27X    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1][1],[127X[104X
     [4X[25X>[125X [27X    [ vec, W, [ V, V ], morphism_matrix, [ V, V ], W  ][127X[104X
     [4X[25X>[125X [27X) );;[127X[104X
-    [4X[25Xgap>[125X [27X# fixup nams[127X[104X
-    [4X[25X>[125X [27Xtree2.stats.statements[1].obj.args[12].args[3].args[3].nams :=[127X[104X
-    [4X[25X>[125X [27X    [ "source", "row" ];;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( SYNTAX_TREE_CODE( tree2 ) );[127X[104X
-    [4X[28Xfunction ( cat, S, diagram_S, morphism_matrix, diagram_T, T )[128X[104X
-    [4X[28X    return ObjectifyWithAttributes( rec([128X[104X
-    [4X[28X           ), MorphismType( cat ), CapCategory, cat, Source, S, Range, T, [128X[104X
-    [4X[28X       UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, [128X[104X
-    [4X[28X       UnionOfRows( UnderlyingRing( cat ), Dimension( T ), [128X[104X
-    [4X[28X         ListN( diagram_S, morphism_matrix, [128X[104X
-    [4X[28X           function ( source, row )[128X[104X
-    [4X[28X                return UnionOfColumns( UnderlyingRing( cat ), [128X[104X
-    [4X[28X                   Dimension( source ), [128X[104X
-    [4X[28X                   List( row, function ( s )[128X[104X
-    [4X[28X                          return UnderlyingMatrix( s );[128X[104X
+    [4X[28Xfunction ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )[128X[104X
+    [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
+    [4X[28X           ), cat_1, S_1, T_1, UnderlyingFieldForHomalg, [128X[104X
+    [4X[28X       UnderlyingRing( cat_1 ), UnderlyingMatrix, [128X[104X
+    [4X[28X       UnionOfRows( UnderlyingRing( cat_1 ), Dimension( T_1 ), [128X[104X
+    [4X[28X         ListN( diagram_S_1, morphism_matrix_1, [128X[104X
+    [4X[28X           function ( logic_new_func_x_2, logic_new_func_y_2 )[128X[104X
+    [4X[28X                return UnionOfColumns( UnderlyingRing( cat_1 ), [128X[104X
+    [4X[28X                   Dimension( logic_new_func_x_2 ), [128X[104X
+    [4X[28X                   List( logic_new_func_y_2, function ( s_2_3 )[128X[104X
+    [4X[28X                          return UnderlyingMatrix( s_2_3 );[128X[104X
     [4X[28X                      end ) );[128X[104X
     [4X[28X            end ) ) );[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27XKernelEmbedding( alpha );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( Last( vec!.compiled_functions.KernelEmbedding ) );[127X[104X
-    [4X[28Xfunction ( cat, morphism )[128X[104X
-    [4X[28X    local cap_jit_morphism_attribute;[128X[104X
-    [4X[28X    cap_jit_morphism_attribute [128X[104X
-    [4X[28X     := SyzygiesOfRows( UnderlyingMatrix( morphism ) );[128X[104X
-    [4X[28X    return ObjectifyWithAttributes( rec([128X[104X
-    [4X[28X           ), MorphismType( cat ), CapCategory, cat, Source, [128X[104X
-    [4X[28X       ObjectifyWithAttributes( rec([128X[104X
-    [4X[28X             ), ObjectType( cat ), CapCategory, cat, Dimension, [128X[104X
-    [4X[28X         NrRows( cap_jit_morphism_attribute ), UnderlyingFieldForHomalg, [128X[104X
-    [4X[28X         UnderlyingRing( cat ) ), Range, Source( morphism ), [128X[104X
-    [4X[28X       UnderlyingFieldForHomalg, UnderlyingRing( cat ), UnderlyingMatrix, [128X[104X
-    [4X[28X       cap_jit_morphism_attribute );[128X[104X
+    [4X[28Xfunction ( cat_1, morphism_1 )[128X[104X
+    [4X[28X    local cap_jit_morphism_attribute_1;[128X[104X
+    [4X[28X    cap_jit_morphism_attribute_1 [128X[104X
+    [4X[28X     := SyzygiesOfRows( UnderlyingMatrix( morphism_1 ) );[128X[104X
+    [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
+    [4X[28X           ), cat_1, ObjectifyObjectForCAPWithAttributes( rec([128X[104X
+    [4X[28X             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1 ), [128X[104X
+    [4X[28X         UnderlyingFieldForHomalg, UnderlyingRing( cat_1 ) ), [128X[104X
+    [4X[28X       Source( morphism_1 ), UnderlyingFieldForHomalg, UnderlyingRing( cat_1 )[128X[104X
+    [4X[28X        , UnderlyingMatrix, cap_jit_morphism_attribute_1 );[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
   
@@ -119,27 +114,13 @@
     [4X[25X>[125X [27X# installation in GAP 4.12, so this causes slight differences in the output[127X[104X
     [4X[25X>[125X [27Xoperations := Difference( operations, [ "IsZeroForMorphisms" ] );;[127X[104X
     [4X[25Xgap>[125X [27XAdd( operations, "DirectSumFunctorialWithGivenDirectSums" );[127X[104X
-    [4X[25Xgap>[125X [27Xfilepath := "precompiled_categories/MatrixCategoryPrecompiled.gi";;[127X[104X
-    [4X[25Xgap>[125X [27Xold_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;[127X[104X
-    [4X[25Xgap>[125X [27X# set CAP_JIT_INTERNAL_FUNCTION_ID and[127X[104X
-    [4X[25X>[125X [27X# CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER[127X[104X
-    [4X[25X>[125X [27X# to known values for a stable output[127X[104X
-    [4X[25X>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID < 10000;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID := 10000;;[127X[104X
-    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER < 10000;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER := 10000;;[127X[104X
-    [4X[25Xgap>[125X [27XCapJitPrecompileCategory([127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
     [4X[25X>[125X [27X    category_constructor,[127X[104X
     [4X[25X>[125X [27X    given_arguments,[127X[104X
     [4X[25X>[125X [27X    package_name,[127X[104X
     [4X[25X>[125X [27X    compiled_category_name :[127X[104X
     [4X[25X>[125X [27X    operations := operations[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[25Xgap>[125X [27Xnew_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;[127X[104X
-    [4X[25Xgap>[125X [27Xold_file_content = new_file_content;[127X[104X
-    [4X[28Xtrue[128X[104X
+    [4X[25X>[125X [27X);;[127X[104X
     [4X[25Xgap>[125X [27XMatrixCategoryPrecompiled( QQ );[127X[104X
     [4X[28XCategory of matrices over Q[128X[104X
   [4X[32X[104X
@@ -169,18 +150,18 @@
     [4X[25X>[125X [27X    [ rows, ZeroMorphism( V, V ), IdentityMorphism( V ) ][127X[104X
     [4X[25X>[125X [27X);;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
-    [4X[28Xfunction ( cat, mor, test_mor )[128X[104X
-    [4X[28X    local cap_jit_morphism_attribute;[128X[104X
-    [4X[28X    cap_jit_morphism_attribute [128X[104X
-    [4X[28X     := RightDivide( UnderlyingMatrix( test_mor ), [128X[104X
-    [4X[28X       SyzygiesOfRows( UnderlyingMatrix( mor ) ) );[128X[104X
-    [4X[28X    return ObjectifyWithAttributes( rec([128X[104X
-    [4X[28X           ), MorphismType( cat ), CapCategory, cat, Source, [128X[104X
-    [4X[28X       Source( test_mor ), Range, ObjectifyWithAttributes( rec([128X[104X
-    [4X[28X             ), ObjectType( cat ), CapCategory, cat, Dimension, [128X[104X
-    [4X[28X         NrColumns( cap_jit_morphism_attribute ), UnderlyingFieldForHomalg, [128X[104X
-    [4X[28X         UnderlyingRing( cat ) ), UnderlyingFieldForHomalg, [128X[104X
-    [4X[28X       UnderlyingRing( cat ), UnderlyingMatrix, cap_jit_morphism_attribute );[128X[104X
+    [4X[28Xfunction ( cat_1, mor_1, test_mor_1 )[128X[104X
+    [4X[28X    local cap_jit_morphism_attribute_1;[128X[104X
+    [4X[28X    cap_jit_morphism_attribute_1 [128X[104X
+    [4X[28X     := RightDivide( UnderlyingMatrix( test_mor_1 ), [128X[104X
+    [4X[28X       SyzygiesOfRows( UnderlyingMatrix( mor_1 ) ) );[128X[104X
+    [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
+    [4X[28X           ), cat_1, Source( test_mor_1 ), [128X[104X
+    [4X[28X       ObjectifyObjectForCAPWithAttributes( rec([128X[104X
+    [4X[28X             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1 ), [128X[104X
+    [4X[28X         UnderlyingFieldForHomalg, UnderlyingRing( cat_1 ) ), [128X[104X
+    [4X[28X       UnderlyingFieldForHomalg, UnderlyingRing( cat_1 ), UnderlyingMatrix, [128X[104X
+    [4X[28X       cap_jit_morphism_attribute_1 );[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27Xfunc1 := function( x )[127X[104X
     [4X[25X>[125X [27X    #% CAP_JIT_RESOLVE_FUNCTION[127X[104X
@@ -210,16 +191,131 @@
     [4X[25X>[125X [27X    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL[127X[104X
     [4X[25X>[125X [27X    return func3( x ); end;;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( call_func1, [ 2 ] ) );[127X[104X
-    [4X[28Xfunction ( x )[128X[104X
+    [4X[28Xfunction ( x_1 )[128X[104X
     [4X[28X    return 1;[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( call_func2, [ 2 ] ) );[127X[104X
-    [4X[28Xfunction ( x )[128X[104X
+    [4X[28Xfunction ( x_1 )[128X[104X
     [4X[28X    return 1;[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( call_func3, [ 2 ] ) );[127X[104X
-    [4X[28Xfunction ( x )[128X[104X
+    [4X[28Xfunction ( x_1 )[128X[104X
     [4X[28X    return 1;[128X[104X
+    [4X[28Xend[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X##[127X[104X
+    [4X[25X>[125X [27Xfunc := function( x )[127X[104X
+    [4X[25X>[125X [27X    return List( [ 1 .. 9 ], y -> (y + (x + 1)) + (y + (x + 1)) ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitHoistedExpressions( tree );;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
+    [4X[28Xfunction ( x_1 )[128X[104X
+    [4X[28X    local cap_jit_hoisted_expression_1_1;[128X[104X
+    [4X[28X    cap_jit_hoisted_expression_1_1 := x_1 + 1;[128X[104X
+    [4X[28X    return List( [ 1 .. 9 ], function ( y_2 )[128X[104X
+    [4X[28X            return y_2 + cap_jit_hoisted_expression_1_1 [128X[104X
+    [4X[28X              + (y_2 + cap_jit_hoisted_expression_1_1);[128X[104X
+    [4X[28X        end );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27X##[127X[104X
+    [4X[25X>[125X [27Xfunc := function( x )[127X[104X
+    [4X[25X>[125X [27X    return List( [ 1 .. 9 ], y -> y + List( [ 1 .. 9 ], z -> x + z ) ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitHoistedExpressions( tree );;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
+    [4X[28Xfunction ( x_1 )[128X[104X
+    [4X[28X    local cap_jit_hoisted_expression_1_1;[128X[104X
+    [4X[28X    cap_jit_hoisted_expression_1_1 := List( [ 1 .. 9 ], function ( z_2 )[128X[104X
+    [4X[28X            return x_1 + z_2;[128X[104X
+    [4X[28X        end );[128X[104X
+    [4X[28X    return List( [ 1 .. 9 ], function ( y_2 )[128X[104X
+    [4X[28X            return y_2 + cap_jit_hoisted_expression_1_1;[128X[104X
+    [4X[28X        end );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27X##[127X[104X
+    [4X[25X>[125X [27Xfunc := function( x )[127X[104X
+    [4X[25X>[125X [27X    return List( [ 1 .. 9 ], y -> y + 1 ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitHoistedExpressions( tree );;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
+    [4X[28Xfunction ( x_1 )[128X[104X
+    [4X[28X    return List( [ 1 .. 9 ], function ( y_2 )[128X[104X
+    [4X[28X            return y_2 + 1;[128X[104X
+    [4X[28X        end );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27X##[127X[104X
+    [4X[25X>[125X [27Xfunc := function( x )[127X[104X
+    [4X[25X>[125X [27X    return List( [ 1 .. 9 ], y -> x + 1 ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitHoistedExpressions( tree );;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
+    [4X[28Xfunction ( x_1 )[128X[104X
+    [4X[28X    local cap_jit_hoisted_expression_1_1;[128X[104X
+    [4X[28X    cap_jit_hoisted_expression_1_1 := x_1 + 1;[128X[104X
+    [4X[28X    return List( [ 1 .. 9 ], function ( y_2 )[128X[104X
+    [4X[28X            return cap_jit_hoisted_expression_1_1;[128X[104X
+    [4X[28X        end );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27X##[127X[104X
+    [4X[25X>[125X [27Xfunc := function( x )[127X[104X
+    [4X[25X>[125X [27X    return List( [ 1 .. 9 ], function( y )[127X[104X
+    [4X[25X>[125X [27X        local z; z := x + 1; return z; end ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitHoistedExpressions( tree );;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
+    [4X[28Xfunction ( x_1 )[128X[104X
+    [4X[28X    local cap_jit_hoisted_expression_1_1;[128X[104X
+    [4X[28X    cap_jit_hoisted_expression_1_1 := x_1 + 1;[128X[104X
+    [4X[28X    return List( [ 1 .. 9 ], function ( y_2 )[128X[104X
+    [4X[28X            local z_2;[128X[104X
+    [4X[28X            z_2 := cap_jit_hoisted_expression_1_1;[128X[104X
+    [4X[28X            return z_2;[128X[104X
+    [4X[28X        end );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27X##[127X[104X
+    [4X[25X>[125X [27Xfunc := function( x )[127X[104X
+    [4X[25X>[125X [27X    return List( [ 1 .. 9 ], function( y )[127X[104X
+    [4X[25X>[125X [27X        return List( [ 1 .. 9 ], z -> z + (1 + 1) ); end ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitHoistedExpressions( tree );;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
+    [4X[28Xfunction ( x_1 )[128X[104X
+    [4X[28X    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1;[128X[104X
+    [4X[28X    cap_jit_hoisted_expression_1_1 := 1 + 1;[128X[104X
+    [4X[28X    cap_jit_hoisted_expression_2_1 := List( [ 1 .. 9 ], function ( z_2 )[128X[104X
+    [4X[28X            return z_2 + cap_jit_hoisted_expression_1_1;[128X[104X
+    [4X[28X        end );[128X[104X
+    [4X[28X    return List( [ 1 .. 9 ], function ( y_2 )[128X[104X
+    [4X[28X            return cap_jit_hoisted_expression_2_1;[128X[104X
+    [4X[28X        end );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27X##[127X[104X
+    [4X[25X>[125X [27Xfunc := function( list )[127X[104X
+    [4X[25X>[125X [27X    return List( [ 1 .. 9 ], function( y )[127X[104X
+    [4X[25X>[125X [27X        return (y + Sum( list, a -> a )) + Sum( list, a -> a ); end ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitHoistedExpressions( tree );;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
+    [4X[28Xfunction ( list_1 )[128X[104X
+    [4X[28X    local cap_jit_hoisted_expression_1_1;[128X[104X
+    [4X[28X    cap_jit_hoisted_expression_1_1 := Sum( list_1, function ( a_2 )[128X[104X
+    [4X[28X            return a_2;[128X[104X
+    [4X[28X        end );[128X[104X
+    [4X[28X    return List( [ 1 .. 9 ], function ( y_2 )[128X[104X
+    [4X[28X            return y_2 + cap_jit_hoisted_expression_1_1 [128X[104X
+    [4X[28X              + cap_jit_hoisted_expression_1_1;[128X[104X
+    [4X[28X        end );[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
   
@@ -230,7 +326,7 @@
     [4X[25Xgap>[125X [27Xtree1.stats.statements[1].obj.type = "EXPR_CONDITIONAL";[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xcoded_func1 := ENHANCED_SYNTAX_TREE_CODE( tree1 );;[127X[104X
-    [4X[25Xgap>[125X [27XString( func1 ) = String( coded_func1 );[127X[104X
+    [4X[25Xgap>[125X [27XString( func1 ) = ReplacedString( String( coded_func1 ), "_1", "" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xfunc2 := function( x )[127X[104X
     [4X[25X>[125X [27X  local y; if x = 1 then y := 1; else y := 2; fi; return y; end;;[127X[104X
@@ -238,7 +334,7 @@
     [4X[25Xgap>[125X [27Xtree2.stats.statements[1].rhs.type = "EXPR_CONDITIONAL";[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xcoded_func2 := ENHANCED_SYNTAX_TREE_CODE( tree2 );;[127X[104X
-    [4X[25Xgap>[125X [27XString( func2 ) = String( coded_func2 );[127X[104X
+    [4X[25Xgap>[125X [27XString( func2 ) = ReplacedString( String( coded_func2 ), "_1", "" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xtree3 := rec([127X[104X
     [4X[25X>[125X [27X    type := "EXPR_FUNC",[127X[104X
@@ -297,8 +393,8 @@
     [4X[25X>[125X [27X  local y; if x then y := 1; else y := 2; fi; return IdFunc( y ); end;;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_func4 := CapJitCompiledFunction( func4, [ true ] );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( compiled_func4 );[127X[104X
-    [4X[28Xfunction ( x )[128X[104X
-    [4X[28X    if x then[128X[104X
+    [4X[28Xfunction ( x_1 )[128X[104X
+    [4X[28X    if x_1 then[128X[104X
     [4X[28X        return ID_FUNC( 1 );[128X[104X
     [4X[28X    else[128X[104X
     [4X[28X        return ID_FUNC( 2 );[128X[104X
@@ -309,7 +405,7 @@
     [4X[25X>[125X [27X  local y; if x then return 1; else return 1; fi; end;;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_func5 := CapJitCompiledFunction( func5, [ true ] );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( compiled_func5 );[127X[104X
-    [4X[28Xfunction ( x )[128X[104X
+    [4X[28Xfunction ( x_1 )[128X[104X
     [4X[28X    return 1;[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
@@ -328,12 +424,13 @@
     [4X[25Xgap>[125X [27XMyFunction := G -> MyKeyDependentOperation( G, 2 );;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_func := CapJitCompiledFunction( MyFunction, [ G ] );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
-    [4X[28Xfunction ( G )[128X[104X
+    [4X[28Xfunction ( G_1 )[128X[104X
     [4X[28X    return 2;[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xlogic_templates_orig := ShallowCopy( CAP_JIT_LOGIC_TEMPLATES );;[127X[104X
     [4X[25Xgap>[125X [27XGUARD_STRING := "\"THIS_STRING_SHOULD_NEVER_APPEAR_IN_PRODUCTION_CODE\"";;[127X[104X
     [4X[25Xgap>[125X [27X# add a nonsense template[127X[104X
     [4X[25X>[125X [27Xlogic_template := rec([127X[104X
@@ -346,17 +443,35 @@
     [4X[25Xgap>[125X [27Xfunc := function ( a )[127X[104X
     [4X[25X>[125X [27X    return b -> b + ( 2 * b + a ) + b - b; end;;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, [ ] ) );[127X[104X
-    [4X[28Xfunction ( a )[128X[104X
-    [4X[28X    return function ( b )[128X[104X
-    [4X[28X          return b + (2 * b + a) [128X[104X
+    [4X[28Xfunction ( a_1 )[128X[104X
+    [4X[28X    return function ( b_2 )[128X[104X
+    [4X[28X          return b_2 + (2 * b_2 + a_1) [128X[104X
     [4X[28X            + "THIS_STRING_SHOULD_NEVER_APPEAR_IN_PRODUCTION_CODE";[128X[104X
     [4X[28X      end;[128X[104X
     [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27X# remove the last template again and make sure it is[127X[104X
-    [4X[25X>[125X [27X# the one we have added above[127X[104X
+    [4X[25Xgap>[125X [27X# check that functions can be used multiple times in dst_template[127X[104X
+    [4X[25X>[125X [27X# add a nonsense template[127X[104X
+    [4X[25X>[125X [27XCapJitAddLogicTemplate([127X[104X
+    [4X[25X>[125X [27X    rec([127X[104X
+    [4X[25X>[125X [27X        variable_names := [ "list", "value" ],[127X[104X
+    [4X[25X>[125X [27X        src_template := "List( list, l -> value )",[127X[104X
+    [4X[25X>[125X [27X        dst_template := "Sum( list, l -> value ) + Sum( list, l -> value )",[127X[104X
+    [4X[25X>[125X [27X        returns_value := true,[127X[104X
+    [4X[25X>[125X [27X    )[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27Xfunc := function ( list )[127X[104X
+    [4X[25X>[125X [27X    return List( list, l -> l ); end;;[127X[104X
+    [4X[25Xgap>[125X [27X# we are not interested in the output, but only that this does not throw[127X[104X
+    [4X[25X>[125X [27X# an error due to some function id being used multiple times[127X[104X
+    [4X[25X>[125X [27XCapJitCompiledFunction( func, [ ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xfunc := function ( list )[127X[104X
+    [4X[25X>[125X [27X    return List( list, l -> (x -> x) ); end;;[127X[104X
+    [4X[25Xgap>[125X [27X# we are not interested in the output, but only that this does not throw[127X[104X
+    [4X[25X>[125X [27X# an error due to some function id being used multiple times[127X[104X
+    [4X[25X>[125X [27XCapJitCompiledFunction( func, [ ] );;[127X[104X
+    [4X[25Xgap>[125X [27X# reset CAP_JIT_LOGIC_TEMPLATES[127X[104X
     [4X[25X>[125X [27XMakeReadWriteGlobal( "CAP_JIT_LOGIC_TEMPLATES" );[127X[104X
-    [4X[25Xgap>[125X [27XRemove( CAP_JIT_LOGIC_TEMPLATES ) = logic_template;[127X[104X
-    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_LOGIC_TEMPLATES  := logic_templates_orig;;[127X[104X
     [4X[25Xgap>[125X [27XMakeReadOnlyGlobal( "CAP_JIT_LOGIC_TEMPLATES" );[127X[104X
   [4X[32X[104X
   
@@ -369,36 +484,14 @@
     [4X[25Xgap>[125X [27Xgiven_arguments := [ QQ ];;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_category_name := "CategoryOfColumnsOfFieldPrecompiled";;[127X[104X
     [4X[25Xgap>[125X [27Xpackage_name := "FreydCategoriesForCAP";;[127X[104X
-    [4X[25Xgap>[125X [27Xoperations := Intersection([127X[104X
-    [4X[25X>[125X [27X    ListPrimitivelyInstalledOperationsOfCategory( CategoryOfColumns( QQ ) ),[127X[104X
-    [4X[25X>[125X [27X    CAP_JIT_INTERNAL_SAFE_OPERATIONS[127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27Xoperations := Filtered([127X[104X
-    [4X[25X>[125X [27X    operations,[127X[104X
-    [4X[25X>[125X [27X    o -> PositionSublist( o, "HomomorphismStructure" ) = fail[127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27Xfilepath :=[127X[104X
-    [4X[25X>[125X [27X    "precompiled_categories/CategoryOfColumnsOfFieldPrecompiled.gi";;[127X[104X
-    [4X[25Xgap>[125X [27Xold_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;[127X[104X
-    [4X[25Xgap>[125X [27X# set CAP_JIT_INTERNAL_FUNCTION_ID and[127X[104X
-    [4X[25X>[125X [27X# CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER[127X[104X
-    [4X[25X>[125X [27X# to known values for a stable output[127X[104X
-    [4X[25X>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID < 20000;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID := 20000;;[127X[104X
-    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER < 20000;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER := 20000;;[127X[104X
-    [4X[25Xgap>[125X [27XCapJitPrecompileCategory([127X[104X
+    [4X[25Xgap>[125X [27Xoperations := "primitive";;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
     [4X[25X>[125X [27X    category_constructor,[127X[104X
     [4X[25X>[125X [27X    given_arguments,[127X[104X
     [4X[25X>[125X [27X    package_name,[127X[104X
     [4X[25X>[125X [27X    compiled_category_name :[127X[104X
     [4X[25X>[125X [27X    operations := operations[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[25Xgap>[125X [27Xnew_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;[127X[104X
-    [4X[25Xgap>[125X [27Xold_file_content = new_file_content;[127X[104X
-    [4X[28Xtrue[128X[104X
+    [4X[25X>[125X [27X);;[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -410,36 +503,14 @@
     [4X[25Xgap>[125X [27Xgiven_arguments := [ QQ ];;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_category_name := "OppositeOfCategoryOfRowsOfFieldPrecompiled";;[127X[104X
     [4X[25Xgap>[125X [27Xpackage_name := "FreydCategoriesForCAP";;[127X[104X
-    [4X[25Xgap>[125X [27Xoperations := Intersection([127X[104X
-    [4X[25X>[125X [27X    ListPrimitivelyInstalledOperationsOfCategory( CategoryOfColumns( QQ ) ),[127X[104X
-    [4X[25X>[125X [27X    CAP_JIT_INTERNAL_SAFE_OPERATIONS[127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27Xoperations := Filtered([127X[104X
-    [4X[25X>[125X [27X    operations,[127X[104X
-    [4X[25X>[125X [27X    o -> PositionSublist( o, "HomomorphismStructure" ) = fail[127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27Xfilepath :=[127X[104X
-    [4X[25X>[125X [27X    "precompiled_categories/OppositeOfCategoryOfRowsOfFieldPrecompiled.gi";;[127X[104X
-    [4X[25Xgap>[125X [27Xold_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;[127X[104X
-    [4X[25Xgap>[125X [27X# set CAP_JIT_INTERNAL_FUNCTION_ID and[127X[104X
-    [4X[25X>[125X [27X# CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER[127X[104X
-    [4X[25X>[125X [27X# to known values for a stable output[127X[104X
-    [4X[25X>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID < 30000;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID := 30000;;[127X[104X
-    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER < 30000;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER := 30000;;[127X[104X
-    [4X[25Xgap>[125X [27XCapJitPrecompileCategory([127X[104X
+    [4X[25Xgap>[125X [27Xoperations := "primitive";;[127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
     [4X[25X>[125X [27X    category_constructor,[127X[104X
     [4X[25X>[125X [27X    given_arguments,[127X[104X
     [4X[25X>[125X [27X    package_name,[127X[104X
     [4X[25X>[125X [27X    compiled_category_name :[127X[104X
     [4X[25X>[125X [27X    operations := operations[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[25Xgap>[125X [27Xnew_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;[127X[104X
-    [4X[25Xgap>[125X [27Xold_file_content = new_file_content;[127X[104X
-    [4X[28Xtrue[128X[104X
+    [4X[25X>[125X [27X);;[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -462,27 +533,13 @@
     [4X[25Xgap>[125X [27X# The output for Lift/ColiftOrFail differs between GAP 4.11 and GAP 4.12, see[127X[104X
     [4X[25X>[125X [27X# https://github.com/gap-system/gap/issues/4523[127X[104X
     [4X[25X>[125X [27Xoperations := Difference( operations, [ "LiftOrFail", "ColiftOrFail" ] );;[127X[104X
-    [4X[25Xgap>[125X [27Xfilepath := "precompiled_categories/OppositeOfMatrixCategoryPrecompiled.gi";;[127X[104X
-    [4X[25Xgap>[125X [27Xold_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;[127X[104X
-    [4X[25Xgap>[125X [27X# set CAP_JIT_INTERNAL_FUNCTION_ID and[127X[104X
-    [4X[25X>[125X [27X# CAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER[127X[104X
-    [4X[25X>[125X [27X# to known values for a stable output[127X[104X
-    [4X[25X>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID < 40000;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID := 40000;;[127X[104X
-    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER < 40000;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_INLINED_FUNCTION_COUNTER := 40000;;[127X[104X
-    [4X[25Xgap>[125X [27XCapJitPrecompileCategory([127X[104X
+    [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
     [4X[25X>[125X [27X    category_constructor,[127X[104X
     [4X[25X>[125X [27X    given_arguments,[127X[104X
     [4X[25X>[125X [27X    package_name,[127X[104X
     [4X[25X>[125X [27X    compiled_category_name :[127X[104X
     [4X[25X>[125X [27X    operations := operations[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[25Xgap>[125X [27Xnew_file_content := ReadFileFromPackageForHomalg( package_name, filepath );;[127X[104X
-    [4X[25Xgap>[125X [27Xold_file_content = new_file_content;[127X[104X
-    [4X[28Xtrue[128X[104X
+    [4X[25X>[125X [27X);;[127X[104X
     [4X[25Xgap>[125X [27XReadPackage([127X[104X
     [4X[25X>[125X [27X    "LinearAlgebraForCAP",[127X[104X
     [4X[25X>[125X [27X    "gap/precompiled_categories/OppositeOfMatrixCategoryPrecompiled.gi"[127X[104X
@@ -499,10 +556,10 @@
     [4X[25X>[125X [27X    return ZeroObject( cat ); end;;[127X[104X
     [4X[25Xgap>[125X [27X# make sure that ZeroObject( cat ) is not resolved to a global variable[127X[104X
     [4X[25X>[125X [27XDisplay( CapJitCompiledFunction( { cat, x } -> func( cat, x ), [ vec ] ) );[127X[104X
-    [4X[28Xfunction ( cat, x )[128X[104X
-    [4X[28X    return ObjectifyWithAttributes( rec([128X[104X
-    [4X[28X           ), ObjectType( cat ), CapCategory, cat, Dimension, 0, [128X[104X
-    [4X[28X       UnderlyingFieldForHomalg, UnderlyingRing( cat ) );[128X[104X
+    [4X[28Xfunction ( cat_1, x_1 )[128X[104X
+    [4X[28X    return ObjectifyObjectForCAPWithAttributes( rec([128X[104X
+    [4X[28X           ), cat_1, Dimension, 0, UnderlyingFieldForHomalg, [128X[104X
+    [4X[28X       UnderlyingRing( cat_1 ) );[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
   
@@ -524,5 +581,13 @@
     [4X[25Xgap>[125X [27Xcompiled_func := CapJitCompiledFunction( func2, [] );;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_func();[127X[104X
     [4X[28X2[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xfunc := function( )[127X[104X
+    [4X[25X>[125X [27X  local id; id := y -> y; return [ id, id ]; end;;[127X[104X
+    [4X[25Xgap>[125X [27X# we are not interested in the output, but only that this does not throw[127X[104X
+    [4X[25X>[125X [27X# an error due to some function id being used multiple times[127X[104X
+    [4X[25X>[125X [27XCapJitCompiledFunction( func, [ ] );;[127X[104X
   [4X[32X[104X
   

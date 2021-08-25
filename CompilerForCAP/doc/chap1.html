@@ -47,6 +47,7 @@
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X81627716853DCE40">1.7-1 CapJitPrecompileCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X819343157D62111A">1.7-2 CapJitPrecompileCategoryAndCompareResult</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7B946AD083F7CEEA">1.8 <span class="Heading">Getting information about the compilation process</span></a>
 </span>
@@ -142,7 +143,7 @@
 
 </li>
 </ul>
-<p>For details see <code class="func">CapJitResolvedOperations</code> (<a href="chap2.html#X7D12C378812745DA"><span class="RefLink">2.5-13</span></a>) and <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-12</span></a>). If no operation or global variable can be resolved anymore, we continue with the rule phase.</p>
+<p>For details see <code class="func">CapJitResolvedOperations</code> (<a href="chap2.html#X7D12C378812745DA"><span class="RefLink">2.5-14</span></a>) and <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-13</span></a>). If no operation or global variable can be resolved anymore, we continue with the rule phase.</p>
 
 <p>In the rule phase, the tree is optimized using several rules and techniques. Function arguments, functions, and assignments to local variables are inlined. Unused variables are dropped. Handled edge cases are dropped, that is, if the same edge case is caught multiple times via <code class="code">if condition then return ...; fi;</code> statements, only the first such statement is kept. Finally, "logic" is applied to the tree. For example, calls of <code class="code">CallFuncList</code> are replaced by calls to the actual function. The logic can be extended by the user, see chapter <a href="chap2.html#X7D62EFD07F991E56"><span class="RefLink">2</span></a>.</p>
 
@@ -224,8 +225,6 @@
 <h5>1.7-1 CapJitPrecompileCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitPrecompileCategory</code>( <var class="Arg">category_constructor</var>, <var class="Arg">given_arguments</var>, <var class="Arg">package_name</var>, <var class="Arg">compiled_category_name</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
-<p>Returns: a record</p>
-
 <p>Compiles operations of the CAP category returned by the function <var class="Arg">category_constructor</var> applied to <var class="Arg">given_arguments</var>. The result is available via a global function called <var class="Arg">compiled_category_name</var> which is written to the file <var class="Arg">package_name</var><code class="code">/precompiled_categories/</code><var class="Arg">compiled_category_name</var><code class="code">.gi</code>. The global function takes the same arguments as <var class="Arg">category_constructor</var> and returns the category with the compiled functions installed as primitive operations. If a list of operations is given via the option <code class="code">operations</code>, only operations in this list are precompiled. Else all installed operations of the category are precompiled. Technical requirements:</p>
 
 
@@ -252,6 +251,13 @@
 </ul>
 </li>
 </ul>
+<p><a id="X819343157D62111A" name="X819343157D62111A"></a></p>
+
+<h5>1.7-2 CapJitPrecompileCategoryAndCompareResult</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitPrecompileCategoryAndCompareResult</code>( <var class="Arg">category_constructor</var>, <var class="Arg">given_arguments</var>, <var class="Arg">package_name</var>, <var class="Arg">compiled_category_name</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Calls <code class="func">CapJitPrecompileCategory</code> (<a href="chap1.html#X81627716853DCE40"><span class="RefLink">1.7-1</span></a>) with the given arguments and displays a warning if this changes the contents of <var class="Arg">package_name</var><code class="code">/precompiled_categories/</code><var class="Arg">compiled_category_name</var><code class="code">.gi</code>.</p>
+
 <p><a id="X7B946AD083F7CEEA" name="X7B946AD083F7CEEA"></a></p>
 
 <h4>1.8 <span class="Heading">Getting information about the compilation process</span></h4>
@@ -290,7 +296,7 @@
 
 </li>
 </ul>
-<p>A: The function might be listed in <code class="code">CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES</code> or it might be missing an annotation with the pragma <code class="code">CAP_JIT_RESOLVE_FUNCTION</code>. Additionally, a function can only be resolved if it appears as a global variable in the tree during the resolving phase of the compilation. That is, it must be referenced from a global variable from the beginning on, or after global variables are resolved by <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-12</span></a>). Possibly you have adapt <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-12</span></a>) to your setting.</p>
+<p>A: The function might be listed in <code class="code">CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES</code> or it might be missing an annotation with the pragma <code class="code">CAP_JIT_RESOLVE_FUNCTION</code>. Additionally, a function can only be resolved if it appears as a global variable in the tree during the resolving phase of the compilation. That is, it must be referenced from a global variable from the beginning on, or after global variables are resolved by <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-13</span></a>). Possibly you have adapt <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-13</span></a>) to your setting.</p>
 
 
 <ul>
@@ -298,7 +304,7 @@
 
 </li>
 </ul>
-<p>A: The operation might be listed in <code class="code">CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES</code>. If the operation is not a CAP operation and if there are no methods installed for the operation via <code class="code">InstallMethodForCompilerForCAP</code> or <code class="code">InstallOtherMethodForCompilerForCAP</code>, the compiler must be able to get the arguments of the call of the operation from the JIT arguments. Then the rules in the description of <code class="func">CapJitResolvedOperations</code> (<a href="chap2.html#X7D12C378812745DA"><span class="RefLink">2.5-13</span></a>) apply.</p>
+<p>A: The operation might be listed in <code class="code">CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES</code>. If the operation is not a CAP operation and if there are no methods installed for the operation via <code class="code">InstallMethodForCompilerForCAP</code> or <code class="code">InstallOtherMethodForCompilerForCAP</code>, the compiler must be able to get the arguments of the call of the operation from the JIT arguments. Then the rules in the description of <code class="func">CapJitResolvedOperations</code> (<a href="chap2.html#X7D12C378812745DA"><span class="RefLink">2.5-14</span></a>) apply.</p>
 
 
 <ul>
