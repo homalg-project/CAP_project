@@ -202,6 +202,34 @@ end
     );
     
     ##
+    AddHomomorphismStructureOnMorphisms( cat,
+        
+########
+function ( cat_1, alpha_1, beta_1 )
+    local cap_jit_morphism_attribute_1;
+    cap_jit_morphism_attribute_1 := KroneckerMat( TransposedMatrix( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( beta_1 ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1 ), UnderlyingFieldForHomalg, UnderlyingRing( cat_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1 ), UnderlyingFieldForHomalg, UnderlyingRing( cat_1 ) ), UnderlyingFieldForHomalg, UnderlyingRing( cat_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+end
+########
+        
+    );
+    
+    ##
+    AddHomomorphismStructureOnMorphismsWithGivenObjects( cat,
+        
+########
+function ( cat_1, source_1, alpha_1, beta_1, range_1 )
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, source_1, range_1, UnderlyingFieldForHomalg, UnderlyingRing( cat_1 ), UnderlyingMatrix, KroneckerMat( TransposedMatrix( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( beta_1 ) ) );
+end
+########
+        
+    );
+    
+    ##
     AddHomomorphismStructureOnObjects( cat,
         
 ########
@@ -276,9 +304,25 @@ end
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat,
         
 ########
-function ( cat_1, arg2_1 )
+function ( cat_1, alpha_1 )
     local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := ConvertMatrixToRow( UnderlyingMatrix( arg2_1 ) );
+    cap_jit_morphism_attribute_1 := ConvertMatrixToRow( UnderlyingMatrix( alpha_1 ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, Dimension, 1, UnderlyingFieldForHomalg, UnderlyingRing( cat_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1 ), UnderlyingFieldForHomalg, UnderlyingRing( cat_1 ) ), UnderlyingFieldForHomalg, UnderlyingRing( cat_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+end
+########
+        
+    );
+    
+    ##
+    AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
+        
+########
+function ( cat_1, source_1, alpha_1, range_1 )
+    local cap_jit_morphism_attribute_1;
+    cap_jit_morphism_attribute_1 := ConvertMatrixToRow( UnderlyingMatrix( alpha_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, 1, UnderlyingFieldForHomalg, UnderlyingRing( cat_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(

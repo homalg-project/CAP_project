@@ -525,31 +525,6 @@ InstallMethod( PostCompose,
 end );
 
 ##
-InstallMethod( HomomorphismStructureOnMorphisms,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( alpha, beta )
-    
-    return HomomorphismStructureOnMorphisms( CapCategory( alpha ), alpha, beta );
-    
-end );
-
-##
-InstallOtherMethodForCompilerForCAP( HomomorphismStructureOnMorphisms,
-                                     [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( cat, alpha, beta )
-    
-    return HomomorphismStructureOnMorphismsWithGivenObjects(
-             cat,
-             HomomorphismStructureOnObjects( cat, Range( alpha ), Source( beta ) ),
-             alpha, beta,
-             HomomorphismStructureOnObjects( cat, Source( alpha ), Range( beta ) )
-           );
-    
-end );
-
-##
 InstallMethod( HomStructure,
                [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                

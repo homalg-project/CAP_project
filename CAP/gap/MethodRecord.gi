@@ -2933,14 +2933,31 @@ HomomorphismStructureOnObjects := rec(
   dual_postprocessor_func := IdFunc
 ),
 
+HomomorphismStructureOnMorphisms := rec(
+  filter_list := [ "category", "morphism", "morphism" ],
+  input_arguments_names := [ "cat", "alpha", "beta" ],
+  output_source_getter_string := "HomomorphismStructureOnObjects( cat, Range( alpha ), Source( beta ) )",
+  output_range_getter_string := "HomomorphismStructureOnObjects( cat, Source( alpha ), Range( beta ) )",
+  with_given_object_position := "both",
+  return_type := "other_morphism",
+  dual_operation := "HomomorphismStructureOnMorphisms",
+  dual_preprocessor_func := function( cat, alpha, beta )
+    return [ Opposite( cat ), MorphismDatum( cat, beta ), MorphismDatum( cat, alpha ) ];
+  end,
+  dual_postprocessor_func := IdFunc,
+),
+
 HomomorphismStructureOnMorphismsWithGivenObjects := rec(
   filter_list := [ "category", "other_object", "morphism", "morphism", "other_object" ],
+  input_arguments_names := [ "cat", "source", "alpha", "beta", "range" ],
+  output_source_getter_string := "source",
+  output_range_getter_string := "range",
   return_type := "other_morphism",
   dual_operation := "HomomorphismStructureOnMorphismsWithGivenObjects",
   dual_preprocessor_func := function( cat, source, alpha, beta, range )
     return [ Opposite( cat ), source, MorphismDatum( cat, beta ), MorphismDatum( cat, alpha ), range ];
   end,
-  dual_postprocessor_func := IdFunc
+  dual_postprocessor_func := IdFunc,
 ),
 
 DistinguishedObjectOfHomomorphismStructure := rec(
@@ -2951,8 +2968,25 @@ DistinguishedObjectOfHomomorphismStructure := rec(
 
 InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure := rec(
   filter_list := [ "category", "morphism" ],
+  input_arguments_names := [ "cat", "alpha" ],
+  output_source_getter_string := "DistinguishedObjectOfHomomorphismStructure( cat )",
+  output_range_getter_string := "HomomorphismStructureOnObjects( cat, Source( alpha ), Range( alpha ) )",
+  with_given_object_position := "both",
   return_type := "other_morphism",
   dual_operation := "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
+  dual_postprocessor_func := IdFunc
+),
+
+InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects := rec(
+  filter_list := [ "category", "other_object", "morphism", "other_object" ],
+  input_arguments_names := [ "cat", "source", "alpha", "range" ],
+  output_source_getter_string := "source",
+  output_range_getter_string := "range",
+  return_type := "other_morphism",
+  dual_operation := "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
+  dual_preprocessor_func := function( cat, distinguished_object, alpha, hom_source_range )
+    return [ Opposite( cat ), distinguished_object, MorphismDatum( cat, alpha ), hom_source_range ];
+  end,
   dual_postprocessor_func := IdFunc
 ),
 
@@ -3660,15 +3694,17 @@ CAP_INTERNAL_ENHANCE_NAME_RECORD_LIMITS( CAP_INTERNAL_METHOD_NAME_RECORD_LIMITS 
 
 
 BindGlobal( "CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES", function ( method_record, entry_name, generated_entry )
-    local excluded_names, method_record_entry, name;
+  local excluded_names, subset_only, method_record_entry, name;
     
     excluded_names := [ "function_name", "pre_function", "pre_function_full", "post_function" ];
-
+    
+    subset_only := ValueOption( "subset_only" ) = true;
+    
     if not IsBound( method_record.(entry_name) ) then
         Display( Concatenation( "WARNING: The method record is missing a component named \"", entry_name, "\" which is expected by the validator.\n" ) );
         return;
     fi;
-
+    
     method_record_entry := method_record.(entry_name);
     
     for name in RecNames( method_record_entry ) do
@@ -3676,7 +3712,11 @@ BindGlobal( "CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES", function ( method
             continue;
         fi;
         if not IsBound( generated_entry.(name) ) then
-            Display( Concatenation( "WARNING: The entry \"", entry_name, "\" in the method record has a component named \"", name, "\" which is not expected by the validator.\n" ) );
+            if subset_only then
+                continue;
+            else
+                Display( Concatenation( "WARNING: The entry \"", entry_name, "\" in the method record has a component named \"", name, "\" which is not expected by the validator.\n" ) );
+            fi;
         elif method_record_entry.(name) <> generated_entry.(name) then
             Display( Concatenation( "WARNING: The entry \"", entry_name, "\" in the method record has a component named \"", name, "\" with value \"", String( method_record_entry.(name) ), "\". The value expected by the validator is \"", String( generated_entry.(name) ), "\".\n" ) );
         fi;
@@ -3941,11 +3981,24 @@ InstallGlobalFunction( CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD,
 end );
 
 BindGlobal( "CAP_INTERNAL_PREPARE_INHERITED_PRE_FUNCTION",
-  function( func )
+  function( func, drop_both )
     
-    return function( arg_list... )
-        return CallFuncList( func, arg_list{[ 1 .. Length( arg_list ) - 1]} );
-    end;
+    if drop_both then
+        
+        return function( arg_list... )
+            # drop second and last argument
+            return CallFuncList( func, arg_list{Concatenation( [ 1 ], [ 3 .. Length( arg_list ) - 1 ] )} );
+        end;
+        
+    else
+        
+        return function( arg_list... )
+            # drop last argument
+            return CallFuncList( func, arg_list{[ 1 .. Length( arg_list ) - 1 ]} );
+        end;
+        
+    fi;
+    
 end );
 
 BindGlobal( "CAP_INTERNAL_CREATE_REDIRECTION",
@@ -4106,9 +4159,10 @@ end );
 
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
-    local recnames, current_recname, current_rec, io_type, number_of_arguments, flattened_filter_list, position, without_given_name, object_name, functorial,
-          installation_name, with_given_name, with_given_name_length, i, object_filter_list,
-          output_list, input_list, argument_names, return_list, current_output, input_position, list_position;
+    local recnames, current_recname, current_rec, io_type, number_of_arguments, flattened_filter_list, functorial,
+          installation_name, output_list, input_list, argument_names, return_list, current_output, input_position, list_position,
+          without_given_name, with_given_names, with_given_name, without_given_rec, with_given_object_position, object_name,
+          object_filter_list, with_given_object_filter, given_source_argument_name, given_range_argument_name, with_given_rec, i;
     
     recnames := RecNames( record );
     
@@ -4234,52 +4288,21 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
-        if IsBound( current_rec.with_given_object_position ) and not current_rec.with_given_object_position in [ "Source", "Range" ] then
+        if IsBound( current_rec.with_given_object_position ) and not current_rec.with_given_object_position in [ "Source", "Range", "both" ] then
             
-            Error( "with_given_object_position must be \"Source\" or \"Range\", not ", current_rec.with_given_object_position );
+            Error( "with_given_object_position must be one of the strings \"Source\", \"Range\", or \"both\", not ", current_rec.with_given_object_position );
             
         fi;
         
-        position := PositionSublist( current_recname, "WithGiven" );
-        
-        current_rec.is_with_given := false;
-        current_rec.with_given_without_given_name_pair := fail;
-        
-        if position <> fail then
+        if not IsBound( current_rec.is_with_given ) then
             
-            without_given_name := current_recname{[ 1 .. position - 1 ]};
-            object_name := current_recname{[ position + 9 .. Length( current_recname ) ]};
+            current_rec.is_with_given := false;
             
-            if without_given_name in recnames then
-                
-                if not object_name in recnames then
-                    
-                    Error( "detected with(out) given pair ", without_given_name , "(WithGiven", object_name,
-                           ") but the object is not given by a CAP operation" );
-                    
-                fi;
-                
-                if not IsBound( record.( without_given_name ).with_given_object_position ) then
-                    
-                    Error( "detected with(out) given pair ", without_given_name , "(WithGiven", object_name,
-                           ") but with_given_object_position of the without given method is not set" );
-                    
-                fi;
-                
-                current_rec.is_with_given := true;
-                
-                current_rec.with_given_without_given_name_pair := [ without_given_name, current_recname ];
-                
-                current_rec.with_given_object_name := object_name;
-                
-                if IsBound( record.(without_given_name).pre_function ) and not IsBound( current_rec.pre_function ) then
-                    current_rec.pre_function := CAP_INTERNAL_PREPARE_INHERITED_PRE_FUNCTION( record.(without_given_name).pre_function );
-                fi;
-                if IsBound( record.(without_given_name).pre_function_full ) and not IsBound( current_rec.pre_function_full ) then
-                    current_rec.pre_function_full := CAP_INTERNAL_PREPARE_INHERITED_PRE_FUNCTION( record.(without_given_name).pre_function_full );
-                fi;
-                
-            fi;
+        fi;
+        
+        if not IsBound( current_rec.with_given_without_given_name_pair ) then
+            
+            current_rec.with_given_without_given_name_pair := fail;
             
         fi;
         
@@ -4394,107 +4417,9 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
-        if not current_rec.is_with_given and IsBound( current_rec.with_given_object_position ) then
+        if not IsDuplicateFreeList( current_rec.input_arguments_names ) then
             
-            ## find with given name
-            
-            without_given_name := current_recname;
-            
-            with_given_name := Concatenation( without_given_name, "WithGiven" );
-            
-            with_given_name_length := Length( with_given_name );
-            
-            for i in recnames do
-                
-                if PositionSublist( i, with_given_name ) <> fail then
-                    
-                    with_given_name := i;
-                    
-                    break;
-                    
-                fi;
-                
-            od;
-            
-            if Length( with_given_name ) = with_given_name_length then
-                
-                Error( Concatenation( "Name not found: ", with_given_name ) );
-                
-            fi;
-            
-            current_rec.with_given_without_given_name_pair := [ without_given_name, with_given_name ];
-            
-            if not record.( with_given_name ).filter_list = Concatenation( current_rec.filter_list, [ "object" ] ) then
-                
-                Error( "the filter list of the with given method must be the same as the filter list of the without given method with an additional object" );
-                
-            fi;
-            
-            object_name := with_given_name{[ with_given_name_length + 1 .. Length( with_given_name ) ]};
-            
-            if not object_name in recnames then
-                
-                Error( "detected with(out) given pair ", without_given_name , "(WithGiven", object_name,
-                       ") but the object is not given by a CAP operation" );
-                
-            fi;
-            
-            object_filter_list := record.( object_name ).filter_list;
-            
-            if not StartsWith( current_rec.filter_list, object_filter_list ) then
-                
-                Error( "the object arguments must be the first arguments of the without given method, but the corresponding filters do not match" );
-                
-            fi;
-            
-            current_rec.object_arguments_positions := [ 1 .. Length( object_filter_list ) ];
-            
-            if not IsBound( current_rec.redirect_function ) then
-                
-                if record.( without_given_name ).filter_list[1] <> "category" or record.( object_name ).filter_list[1] <> "category" or record.( with_given_name ).filter_list[1] <> "category" then
-                    
-                    Display( Concatenation(
-                        "WARNING: You seem to be relying on automatically installed redirect functions but the first arguments of the functions involved are not the category. ",
-                        "No automatic redirect function will be installed. ",
-                        "To prevent this warning, add the category as the first argument to all functions involved. ",
-                        "Search for `category_as_first_argument` in the documentation for more details."
-                    ) );
-                    
-                elif Length( record.( without_given_name ).filter_list ) + 1 <> Length( record.( with_given_name ).filter_list ) then
-                    
-                    Display( Concatenation(
-                        "WARNING: You seem to be relying on automatically installed redirect functions. ",
-                        "For this, the with given method must have exactly one additional argument compared to the without given method. ",
-                        "This is not the case, so no automatic redirect function will be installed. ",
-                        "Install a custom redirect function to prevent this warning."
-                    ) );
-                    
-                else
-                    
-                    current_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_name, current_rec.object_arguments_positions );
-                    
-                fi;
-                
-            fi;
-            
-            if not IsBound( current_rec.post_function ) then
-                
-                if current_rec.filter_list[1] <> "category" or record.( object_name ).filter_list[1] <> "category" then
-                    
-                    Display( Concatenation(
-                        "WARNING: You seem to be relying on automatically installed post functions but the first arguments of the functions involved are not the category. ",
-                        "No automatic post function will be installed. ",
-                        "To prevent this warning, add the category as the first argument to all functions involved. ",
-                        "Search for `category_as_first_argument` in the documentation for more details."
-                    ) );
-                    
-                else
-                    
-                    current_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( current_rec.with_given_object_position, object_name, current_rec.object_arguments_positions );
-                    
-                fi;
-                
-            fi;
+            Error( "input_arguments_names must be duplicate free, please adjust the method record entry of ", current_recname );
             
         fi;
         
@@ -4589,6 +4514,351 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 current_rec.output_range_getter_string := return_list[2];
                 
             fi;
+            
+        fi;
+        
+    od;
+    
+    # detect With(out)Given pairs
+    for current_recname in recnames do
+        
+        current_rec := record.(current_recname);
+        
+        if IsBound( current_rec.with_given_object_position ) then
+            
+            if PositionSublist( current_recname, "WithGiven" ) <> fail then
+                
+                Error( "WithGiven operations must NOT have the component with_given_object_position set, please adjust the method record entry of ", current_recname );
+                
+            fi;
+            
+            without_given_name := current_recname;
+            
+            with_given_names := Filtered( recnames, x -> StartsWith( x, Concatenation( without_given_name, "WithGiven" ) ) );
+            
+            if Length( with_given_names ) <> 1 then
+                
+                Error( "Could not find unique WithGiven version for ", without_given_name );
+                
+            fi;
+            
+            with_given_name := with_given_names[1];
+            
+            without_given_rec := record.(without_given_name);
+            
+            with_given_object_position := without_given_rec.with_given_object_position;
+            
+            object_name := ReplacedString( with_given_name, Concatenation( without_given_name, "WithGiven" ), "" );
+            
+            # generate output_source_getter_string resp. output_range_getter_string automatically if possible
+            if object_name in recnames then
+                
+                object_filter_list := record.( object_name ).filter_list;
+                
+                if with_given_object_position = "Source" then
+                    
+                    if not IsBound( without_given_rec.output_source_getter_string ) then
+                        
+                        without_given_rec.output_source_getter_string := Concatenation( object_name, "( ", JoinStringsWithSeparator( without_given_rec.input_arguments_names{[ 1 .. Length( object_filter_list ) ]}, ", " ), " )" );
+                        
+                    fi;
+                    
+                fi;
+                
+                if with_given_object_position = "Range" then
+                    
+                    if not IsBound( without_given_rec.output_range_getter_string ) then
+                        
+                        without_given_rec.output_range_getter_string := Concatenation( object_name, "( ", JoinStringsWithSeparator( without_given_rec.input_arguments_names{[ 1 .. Length( object_filter_list ) ]}, ", " ), " )" );
+                        
+                    fi;
+                    
+                fi;
+                
+            fi;
+            
+            # plausibility checks for without_given_rec
+            if without_given_rec.filter_list[1] <> "category" then
+                
+                Error( "This is a WithoutGiven record, but the first argument is not the category. This is not supported." );
+                
+            fi;
+            
+            if with_given_object_position in [ "Source", "both" ] then
+                
+                if not IsBound( without_given_rec.output_source_getter_string ) then
+                    
+                    Error( "This is a WithoutGiven record, but output_source_getter_string is not set. This is not supported." );
+                    
+                fi;
+                
+            fi;
+            
+            if with_given_object_position in [ "Range", "both" ] then
+                
+                if not IsBound( without_given_rec.output_range_getter_string ) then
+                    
+                    Error( "This is a WithoutGiven record, but output_range_getter_string is not set. This is not supported." );
+                    
+                fi;
+                
+            fi;
+            
+            if not without_given_rec.return_type in [ "morphism", "other_morphism" ] then
+                
+                Error( "This is a WithoutGiven record, but return_type is neither \"morphism\" nor \"other_morphism\". This is not supported." );
+                
+            fi;
+            
+            # generate with_given_rec
+            if without_given_rec.return_type = "morphism" then
+                
+                with_given_object_filter := "object";
+                
+            elif without_given_rec.return_type = "other_morphism" then
+                
+                with_given_object_filter := "other_object";
+                
+            else
+                
+                Error( "this should never happen" );
+                
+            fi;
+            
+            if with_given_object_position = "Source" then
+                
+                given_source_argument_name := Last( record.(with_given_name).input_arguments_names );
+                
+            elif with_given_object_position = "Range" then
+                
+                given_range_argument_name := Last( record.(with_given_name).input_arguments_names );
+                
+            else
+                
+                given_source_argument_name := record.(with_given_name).input_arguments_names[2];
+                given_range_argument_name := Last( record.(with_given_name).input_arguments_names );
+                
+            fi;
+            
+            with_given_rec := rec(
+                return_type := without_given_rec.return_type,
+            );
+            
+            if with_given_object_position = "Source" then
+                
+                with_given_rec.filter_list := Concatenation( without_given_rec.filter_list, [ with_given_object_filter ] );
+                with_given_rec.input_arguments_names := Concatenation( without_given_rec.input_arguments_names, [ given_source_argument_name ] );
+                
+                if IsBound( record.(with_given_name).output_source_getter_string ) then
+                    
+                    with_given_rec.output_source_getter_string := given_source_argument_name;
+                    
+                fi;
+                
+                if IsBound( without_given_rec.output_range_getter_string ) then
+                    
+                    with_given_rec.output_range_getter_string := without_given_rec.output_range_getter_string;
+                    
+                fi;
+                
+            elif with_given_object_position = "Range" then
+                
+                with_given_rec.filter_list := Concatenation( without_given_rec.filter_list, [ with_given_object_filter ] );
+                with_given_rec.input_arguments_names := Concatenation( without_given_rec.input_arguments_names, [ given_range_argument_name ] );
+                
+                if IsBound( record.(with_given_name).output_range_getter_string ) then
+                    
+                    with_given_rec.output_range_getter_string := given_range_argument_name;
+                    
+                fi;
+                
+                if IsBound( without_given_rec.output_source_getter_string ) then
+                    
+                    with_given_rec.output_source_getter_string := without_given_rec.output_source_getter_string;
+                    
+                fi;
+                
+            elif with_given_object_position = "both" then
+                
+                with_given_rec.filter_list := Concatenation(
+                    [ without_given_rec.filter_list[1] ],
+                    [ with_given_object_filter ],
+                    without_given_rec.filter_list{[ 2 .. Length( without_given_rec.filter_list ) ]},
+                    [ with_given_object_filter ]
+                );
+                with_given_rec.input_arguments_names := Concatenation(
+                    [ without_given_rec.input_arguments_names[1] ],
+                    [ given_source_argument_name ],
+                    without_given_rec.input_arguments_names{[ 2 .. Length( without_given_rec.input_arguments_names ) ]},
+                    [ given_range_argument_name ]
+                );
+                
+                if IsBound( record.(with_given_name).output_source_getter_string ) then
+                    
+                    with_given_rec.output_source_getter_string := given_source_argument_name;
+                    
+                fi;
+                
+                if IsBound( record.(with_given_name).output_range_getter_string ) then
+                    
+                    with_given_rec.output_range_getter_string := given_range_argument_name;
+                    
+                fi;
+                
+            else
+                
+                Error( "this should never happen" );
+                
+            fi;
+            
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( record, with_given_name, with_given_rec : subset_only );
+            
+            # now enhance the actual with_given_rec
+            with_given_rec := record.(with_given_name);
+            
+            if IsBound( without_given_rec.pre_function ) and not IsBound( with_given_rec.pre_function ) then
+                with_given_rec.pre_function := CAP_INTERNAL_PREPARE_INHERITED_PRE_FUNCTION( record.(without_given_name).pre_function, with_given_object_position = "both" );
+            fi;
+            
+            if IsBound( without_given_rec.pre_function_full ) and not IsBound( with_given_rec.pre_function_full ) then
+                with_given_rec.pre_function_full := CAP_INTERNAL_PREPARE_INHERITED_PRE_FUNCTION( record.(without_given_name).pre_function_full, with_given_object_position = "both" );
+            fi;
+            
+            with_given_rec.is_with_given := true;
+            with_given_rec.with_given_without_given_name_pair := [ without_given_name, with_given_name ];
+            without_given_rec.with_given_without_given_name_pair := [ without_given_name, with_given_name ];
+            
+            if object_name in recnames then
+                
+                if with_given_object_position = "both" then
+                    
+                    Error( "with_given_object_position is \"both\", but the WithGiven name suggests that only a single object of name ", object_name, " is given. This is not supported." );
+                    
+                fi;
+                
+                with_given_rec.with_given_object_name := object_name;
+                
+                object_filter_list := record.( object_name ).filter_list;
+                
+                if with_given_object_position = "Source" then
+                    
+                    if not StartsWith( without_given_rec.output_source_getter_string, object_name ) then
+                        
+                        Error( "the output_source_getter_string of the WithoutGiven record does not call the detected object ", object_name );
+                        
+                    fi;
+                    
+                fi;
+                
+                if with_given_object_position = "Range" then
+                    
+                    if not StartsWith( without_given_rec.output_range_getter_string, object_name ) then
+                        
+                        Error( "the output_range_getter_string of the WithoutGiven record does not call the detected object ", object_name );
+                        
+                    fi;
+                    
+                fi;
+                
+                if not StartsWith( without_given_rec.filter_list, object_filter_list ) then
+                    
+                    Error( "the object arguments must be the first arguments of the without given method, but the corresponding filters do not match" );
+                    
+                fi;
+                
+                if not IsBound( without_given_rec.redirect_function ) then
+                    
+                    if record.( without_given_name ).filter_list[1] <> "category" or record.( object_name ).filter_list[1] <> "category" or record.( with_given_name ).filter_list[1] <> "category" then
+                        
+                        Display( Concatenation(
+                            "WARNING: You seem to be relying on automatically installed redirect functions but the first arguments of the functions involved are not the category. ",
+                            "No automatic redirect function will be installed. ",
+                            "To prevent this warning, add the category as the first argument to all functions involved. ",
+                            "Search for `category_as_first_argument` in the documentation for more details."
+                        ) );
+                        
+                    elif Length( record.( without_given_name ).filter_list ) + 1 <> Length( record.( with_given_name ).filter_list ) then
+                        
+                        Display( Concatenation(
+                            "WARNING: You seem to be relying on automatically installed redirect functions. ",
+                            "For this, the with given method must have exactly one additional argument compared to the without given method. ",
+                            "This is not the case, so no automatic redirect function will be installed. ",
+                            "Install a custom redirect function to prevent this warning."
+                        ) );
+                        
+                    else
+                        
+                        without_given_rec.redirect_function := CAP_INTERNAL_CREATE_REDIRECTION( with_given_name, object_name, [ 1 .. Length( object_filter_list ) ] );
+                        
+                    fi;
+                    
+                fi;
+                
+                if not IsBound( without_given_rec.post_function ) then
+                    
+                    if without_given_rec.filter_list[1] <> "category" or record.( object_name ).filter_list[1] <> "category" then
+                        
+                        Display( Concatenation(
+                            "WARNING: You seem to be relying on automatically installed post functions but the first arguments of the functions involved are not the category. ",
+                            "No automatic post function will be installed. ",
+                            "To prevent this warning, add the category as the first argument to all functions involved. ",
+                            "Search for `category_as_first_argument` in the documentation for more details."
+                        ) );
+                        
+                    else
+                        
+                        without_given_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( with_given_object_position, object_name, [ 1 .. Length( object_filter_list ) ] );
+                        
+                    fi;
+                    
+                fi;
+                
+            fi;
+            
+        fi;
+        
+    od;
+    
+    # set `output_source_getter` and `output_range_getter`
+    for current_recname in recnames do
+        
+        current_rec := record.(current_recname);
+        
+        if IsBound( current_rec.output_source_getter_string ) then
+            
+            current_rec.output_source_getter := EvalString( ReplacedStringViaRecord(
+                "{ arguments } -> getter",
+                rec(
+                    arguments := current_rec.input_arguments_names,
+                    getter := current_rec.output_source_getter_string,
+                )
+            ) );
+            
+            # Test if output_source_getter_string contains a CAP operation.
+            # If not, it can always be computed (independent of the conrete category).
+            current_rec.can_always_compute_output_source_getter := ForAll(
+                Concatenation( recnames, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) ),
+                x -> PositionSublist( current_rec.output_source_getter_string, x ) = fail
+            );
+            
+        fi;
+        
+        if IsBound( current_rec.output_range_getter_string ) then
+            
+            current_rec.output_range_getter := EvalString( ReplacedStringViaRecord(
+                "{ arguments } -> getter",
+                rec(
+                    arguments := current_rec.input_arguments_names,
+                    getter := current_rec.output_range_getter_string,
+                )
+            ) );
+            
+            # Test if output_range_getter_string contains a CAP operation.
+            # If not, it can always be computed (independent of the conrete category).
+            current_rec.can_always_compute_output_range_getter := ForAll(
+                Concatenation( recnames, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) ),
+                x -> PositionSublist( current_rec.output_range_getter_string, x ) = fail
+            );
             
         fi;
         

@@ -145,6 +145,17 @@ end
     );
     
     ##
+    AddHomomorphismStructureOnMorphismsWithGivenObjects( cat,
+        
+########
+function ( cat_1, source_1, alpha_1, beta_1, range_1 )
+    return ID_FUNC( HomomorphismStructureOnMorphismsWithGivenObjects( [ Opposite( cat_1 ), source_1, MorphismDatum( cat_1, beta_1 ), MorphismDatum( cat_1, alpha_1 ), range_1 ][1], [ Opposite( cat_1 ), source_1, MorphismDatum( cat_1, beta_1 ), MorphismDatum( cat_1, alpha_1 ), range_1 ][2], [ Opposite( cat_1 ), source_1, MorphismDatum( cat_1, beta_1 ), MorphismDatum( cat_1, alpha_1 ), range_1 ][3], [ Opposite( cat_1 ), source_1, MorphismDatum( cat_1, beta_1 ), MorphismDatum( cat_1, alpha_1 ), range_1 ][4], [ Opposite( cat_1 ), source_1, MorphismDatum( cat_1, beta_1 ), MorphismDatum( cat_1, alpha_1 ), range_1 ][5] ) );
+end
+########
+        
+    );
+    
+    ##
     AddHomomorphismStructureOnObjects( cat,
         
 ########
@@ -194,11 +205,11 @@ end
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat,
         
 ########
-function ( cat_1, arg2_1 )
+function ( cat_1, alpha_1 )
     return ID_FUNC( ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
              ), Opposite( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
                ), Opposite( cat_1 ), Dimension, 1, UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat_1 ) ) ), ObjectifyObjectForCAPWithAttributes( rec(
-               ), Opposite( cat_1 ), Dimension, NumberColumns( ConvertMatrixToRow( UnderlyingMatrix( Opposite( arg2_1 ) ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat_1 ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat_1 ) ), UnderlyingMatrix, ConvertMatrixToRow( UnderlyingMatrix( Opposite( arg2_1 ) ) ) ) );
+               ), Opposite( cat_1 ), Dimension, NumberColumns( ConvertMatrixToRow( UnderlyingMatrix( Opposite( alpha_1 ) ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat_1 ) ) ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat_1 ) ), UnderlyingMatrix, ConvertMatrixToRow( UnderlyingMatrix( Opposite( alpha_1 ) ) ) ) );
 end
 ########
         

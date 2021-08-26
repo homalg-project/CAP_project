@@ -336,7 +336,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                 
                 return_statement := "return MorphismConstructor( cat, output_source_getter, result, output_range_getter )";
                 
-                if IsBound( current_entry.output_source_getter_string ) then
+                if IsBound( current_entry.output_source_getter_string ) and current_entry.can_always_compute_output_source_getter then
                     
                     output_source_getter_string := current_entry.output_source_getter_string;
                     
@@ -346,7 +346,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                     
                 fi;
                 
-                if IsBound( current_entry.output_range_getter_string ) then
+                if IsBound( current_entry.output_range_getter_string ) and current_entry.can_always_compute_output_range_getter then
                     
                     output_range_getter_string := current_entry.output_range_getter_string;
                     

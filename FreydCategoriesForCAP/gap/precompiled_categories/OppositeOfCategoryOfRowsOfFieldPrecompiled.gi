@@ -232,9 +232,9 @@ end
     AddHomomorphismStructureOnMorphismsWithGivenObjects( cat,
         
 ########
-function ( cat_1, arg2_1, arg3_1, arg4_1, arg5_1 )
+function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, arg2_1, arg5_1, UnderlyingMatrix, KroneckerMat( TransposedMatrix( UnderlyingMatrix( arg3_1 ) ), UnderlyingMatrix( arg4_1 ) ) );
+           ), cat_1, source_1, range_1, UnderlyingMatrix, KroneckerMat( TransposedMatrix( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( beta_1 ) ) );
 end
 ########
         
@@ -283,9 +283,9 @@ end
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat,
         
 ########
-function ( cat_1, arg2_1 )
+function ( cat_1, alpha_1 )
     local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := ConvertMatrixToColumn( UnderlyingMatrix( arg2_1 ) );
+    cap_jit_morphism_attribute_1 := ConvertMatrixToColumn( UnderlyingMatrix( alpha_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, RankOfObject, 1 ), ObjectifyObjectForCAPWithAttributes( rec(

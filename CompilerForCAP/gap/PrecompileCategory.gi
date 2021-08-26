@@ -52,7 +52,8 @@ BindGlobal( "CAP_JIT_INTERNAL_SAFE_OPERATIONS", [
     #"FiberProductFunctorialWithGivenFiberProducts",
     "HomologyObject",
     #"HomologyObjectFunctorialWithGivenHomologyObjects",
-    #"HomomorphismStructureOnMorphismsWithGivenObjects",
+    "HomomorphismStructureOnMorphisms",
+    "HomomorphismStructureOnMorphismsWithGivenObjects",
     "HomomorphismStructureOnObjects",
     #"HorizontalPostCompose",
     #"HorizontalPreCompose",
@@ -71,6 +72,7 @@ BindGlobal( "CAP_JIT_INTERNAL_SAFE_OPERATIONS", [
     "InjectionOfCofactorOfPushoutWithGivenPushout",
     "InjectiveColift",
     "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
+    "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
     #"InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
     "InverseForMorphisms",
     #"InverseMorphismFromCoimageToImageWithGivenObjects",
@@ -244,7 +246,7 @@ BindGlobal( "CAP_JIT_INTERNAL_SAFE_OPERATIONS", [
 ] );
 
 InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_constructor, given_arguments, package_name, compiled_category_name )
-  local cat1, cat2, cat, obj, mor, operations, diff, output_string, package_info, parameters_string, current_string, object_name, example_input, index, compiled_func, compiled_tree, function_string, filter_list, function_name, current_rec;
+  local cat1, cat2, cat, obj, mor, operations, diff, output_string, package_info, parameters_string, current_string, object_name, example_input, without_given_name, without_given_rec, with_given_object_position, source, range, index, compiled_func, compiled_tree, function_string, filter_list, function_name, current_rec;
     
     if IsOperation( category_constructor ) or IsKernelFunction( category_constructor ) then
         
@@ -368,13 +370,6 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         # construct example input if possible
         if function_name in CAP_JIT_INTERNAL_SAFE_OPERATIONS and obj <> fail and mor <> fail then
             
-            # check if we can construct an example input
-            if not ForAll( filter_list, f -> f in [ "category", "object", "morphism", "list_of_objects", "list_of_morphisms", IsInt ] ) then
-                
-                Error( "cannot generate example input for the operation ", function_name );
-                
-            fi;
-            
             example_input := List( filter_list, function ( filter )
                 
                 if filter = "category" then
@@ -403,7 +398,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
                     
                 else
                     
-                    Error( "this should never happen" );
+                    return fail;
                     
                 fi;
                 
@@ -411,19 +406,56 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
             
             if current_rec.is_with_given then
                 
-                # try to use object as last argument
+                without_given_name := current_rec.with_given_without_given_name_pair[1];
                 
-                object_name := current_rec.with_given_object_name;
+                without_given_rec := CAP_INTERNAL_METHOD_NAME_RECORD.(without_given_name);
                 
-                if CanCompute( cat, object_name ) then
+                if CanCompute( cat, without_given_name ) then
                     
-                    example_input[Length( example_input )] := CallFuncList( ValueGlobal( object_name ), example_input{CAP_INTERNAL_METHOD_NAME_RECORD.(current_rec.with_given_without_given_name_pair[1]).object_arguments_positions} );
+                    with_given_object_position := without_given_rec.with_given_object_position;
+                    
+                    if with_given_object_position = "Source" then
+                        
+                        # replace last element of example_input
+                        Remove( example_input );
+                        Add( example_input, CallFuncList( without_given_rec.output_source_getter, example_input ) );
+                        
+                    elif with_given_object_position = "Range" then
+                        
+                        # replace last element of example_input
+                        Remove( example_input );
+                        Add( example_input, CallFuncList( without_given_rec.output_range_getter, example_input ) );
+                        
+                    elif with_given_object_position = "both" then
+                        
+                        # replace second and last element of example_input
+                        Remove( example_input, 2 );
+                        Remove( example_input );
+                        
+                        source := CallFuncList( without_given_rec.output_source_getter, example_input );
+                        range := CallFuncList( without_given_rec.output_range_getter, example_input );
+                        
+                        Add( example_input, source, 2 );
+                        Add( example_input, range );
+                       
+                    else
+                        
+                        Error( "this should never happen" );
+                        
+                    fi;
                     
                 else
                     
-                    Error( "The category cannot compute the object operation of a WithGiven operation. This is not supported." );
+                    Error( "The category cannot compute the WithoutGiven operation of a WithGiven pair. This is not supported." );
                     
                 fi;
+                
+            fi;
+            
+            # check if we have been able to construct an example input
+            if fail in example_input then
+                
+                Error( "cannot generate example input for the operation ", function_name );
                 
             fi;
             
