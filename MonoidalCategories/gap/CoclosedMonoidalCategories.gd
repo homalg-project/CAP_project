@@ -411,19 +411,19 @@ DeclareOperation( "AddCoclosedEvaluationForCoDualWithGivenTensorProduct",
 
 ##
 #! @Description
-#! The argument is a cobidual object $(a_{\vee})_{\vee}$.
+#! The argument is an object $a$.
 #! The output is the morphism from the cobidual $(a_{\vee})_{\vee} \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}((a_{\vee})_{\vee}, a)$.
-#! @Arguments avv
+#! @Arguments a
 DeclareAttribute( "MorphismFromCoBidual",
                   IsCapCategoryObject );
 
 #! @Description
-#! The arguments are an object $s = (a_{\vee})_{\vee}$,
-#! and an object $a$.
+#! The arguments are an object $a$,
+#! and an object $s = (a_{\vee})_{\vee}$.
 #! The output is the morphism from the cobidual $(a_{\vee})_{\vee} \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}((a_{\vee})_{\vee}, a)$.
-#! @Arguments s, a
+#! @Arguments a, s
 DeclareOperation( "MorphismFromCoBidualWithGivenCoBidual",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
@@ -431,7 +431,7 @@ DeclareOperation( "MorphismFromCoBidualWithGivenCoBidual",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismFromCoBidualWithGivenCoBidual</C>.
-#! $F: ((a_{\vee})_{\vee}, a) \mapsto ((a_{\vee})_{\vee} \rightarrow a)$.
+#! $F: (a, (a_{\vee})_{\vee}) \mapsto ((a_{\vee})_{\vee} \rightarrow a)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddMorphismFromCoBidualWithGivenCoBidual",
@@ -447,34 +447,33 @@ DeclareOperation( "AddMorphismFromCoBidualWithGivenCoBidual",
                   [ IsCapCategory, IsList ] );
 
 ##
+## The four objects are given are given as a list because otherwise the WithGiven operation would
+## exceed the maximal number of arguments for an operation (6)
 #! @Description
-#! The arguments are four objects $a, a', b, b'$.
+#! The argument is a list of four objects $[ a, a', b, b' ]$.
 #! The output is the natural morphism
 #! $\mathrm{InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{coHom}}(a \otimes a', b \otimes b') \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b')$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a \otimes a', b \otimes b'), \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b'))$.
-#! @Arguments a,a',b,b'
+#! @Arguments list
 DeclareOperation( "InternalCoHomTensorProductCompatibilityMorphism",
-                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+                  [ IsList ] );
 
 ##
-## The new_source and new_range arguments are the first and second element of the list.
-## This construction is due to the fact that the maximal number of arguments for an operation is 6,
-## but a basic operation with 6 arguments would install a setter having 7 arguments.
 #! @Description
-#! The arguments are four objects $a, a', b, b'$,
-#! and a list $L = [ \mathrm{\underline{coHom}}(a \otimes a', b \otimes b'), \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b') ]$.
+#! The arguments are a list of four objects $[ a, a', b, b' ]$,
+#! and two objects $s = \mathrm{\underline{coHom}}(a \otimes a', b \otimes b')$ and $r = \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b')$.
 #! The output is the natural morphism
 #! $\mathrm{InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{coHom}}(a \otimes a', b \otimes b') \rightarrow \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b')$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a \otimes a', b \otimes b'), \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b') )$.
-#! @Arguments a,a',b,b',L
+#! @Arguments s, list, r
 DeclareOperation( "InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects",
-                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsList ] );
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects</C>.
-#! $F: ( a,a',b,b', [ \mathrm{\underline{coHom}}(a \otimes a', b \otimes b'), \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b') ]) \mapsto \mathrm{InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}$.
+#! $F: (\mathrm{\underline{coHom}}(a \otimes a', b \otimes b'), [ a,a',b,b' ], \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b') ]) \mapsto \mathrm{InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddInternalCoHomTensorProductCompatibilityMorphismWithGivenObjects",

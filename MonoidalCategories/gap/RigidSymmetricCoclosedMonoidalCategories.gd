@@ -109,34 +109,33 @@ DeclareOperation( "AddIsomorphismFromTensorProductToInternalCoHom",
                   [ IsCapCategory, IsList ] );
 
 ##
+## The four objects are given are given as a list because otherwise the WithGiven operation would
+## exceed the maximal number of arguments for an operation (6)
 #! @Description
-#! The arguments are four objects $a, a', b, b'$.
+#! The argument is a list of four objects $[ a, a', b, b' ]$.
 #! The output is the natural morphism
 #! $\mathrm{InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{coHom}}(a_1, a_2) \otimes \mathrm{\underline{coHom}}(b_1, b_2) \rightarrow \mathrm{\underline{coHom}}(a_1 \otimes b_1, a_2 \otimes b_2)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a_1, a_2) \otimes \mathrm{\underline{coHom}}(b_1, b_2), \mathrm{\underline{coHom}}(a_1 \otimes b_1, a_2 \otimes b_2)$.
-#! @Arguments a,a',b,b'
+#! @Arguments list
 DeclareOperation( "InternalCoHomTensorProductCompatibilityMorphismInverse",
-                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+                  [ IsList ] );
 
 ##
-## The new_source and new_range arguments are the first and second element of the list.
-## This construction is due to the fact that the maximal number of arguments for an operation is 6,
-## but a basic operation with 6 arguments would install a setter having 7 arguments.
 #! @Description
-#! The arguments are four objects $a, a', b, b'$,
-#! and a list $L = [ \mathrm{\underline{coHom}}(a_1 \otimes b_1, a_2 \otimes b_2), \mathrm{\underline{coHom}}(a_1, a_2) \otimes \mathrm{\underline{coHom}}(b_1, b_2) ]$.
+#! The arguments are a list of four objects $[ a, a', b, b' ]$,
+#! and two objects $s = \mathrm{\underline{coHom}}(a_1, a_2) \otimes \mathrm{\underline{coHom}}(b_1, b_2)$ and $r = \mathrm{\underline{coHom}}(a_1 \otimes b_1, a_2 \otimes b_2)$.
 #! The output is the natural morphism
 #! $\mathrm{InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{coHom}}(a_1, a_2) \otimes \mathrm{\underline{coHom}}(b_1, b_2) \rightarrow \mathrm{\underline{coHom}}(a_1 \otimes b_1, a_2 \otimes b_2)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a_1, a_2) \otimes \mathrm{\underline{coHom}}(b_1, b_2), \mathrm{\underline{coHom}}(a_1 \otimes b_1, a_2 \otimes b_2) )$.
-#! @Arguments a,a',b,b',L
+#! @Arguments s, list, r
 DeclareOperation( "InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
-                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsList ] );
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects</C>.
-#! $F: ( a,a',b,b', [ \mathrm{\underline{coHom}}(a_1 \otimes b_1, a_2 \otimes b_2), \mathrm{\underline{coHom}}(a_1, a_2) \otimes \mathrm{\underline{coHom}}(b_1, b_2) ]) \mapsto \mathrm{InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}$.
+#! $F: ( \mathrm{\underline{coHom}}(a_1, a_2) \otimes \mathrm{\underline{coHom}}(b_1, b_2) ), [ a,a',b,b' ], \mathrm{\underline{coHom}}(a_1 \otimes b_1, a_2 \otimes b_2) \mapsto \mathrm{InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",

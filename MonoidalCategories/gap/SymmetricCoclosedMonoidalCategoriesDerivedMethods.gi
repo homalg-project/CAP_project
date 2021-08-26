@@ -168,8 +168,13 @@ end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
 ##
 AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects,
 
-  function( cat, a1, a2, b1, b2, new_source_and_range_list )
-    local morphism, tensor_product_b1_b2, int_cohom_a1_b1, int_cohom_a2_b2, id_int_cohom_a1_b1, id_int_cohom_a2_b2;
+  function( cat, source, list, range )
+    local a1, a2, b1, b2, morphism, tensor_product_b1_b2, int_cohom_a1_b1, int_cohom_a2_b2, id_int_cohom_a1_b1, id_int_cohom_a2_b2;
+    
+    a1 := list[1];
+    a2 := list[2];
+    b1 := list[3];
+    b2 := list[4];
     
     tensor_product_b1_b2 := TensorProductOnObjects( b1, b2 );
     
@@ -239,7 +244,7 @@ AddDerivationToCAP( CoDualityTensorProductCompatibilityMorphismWithGivenObjects,
                     LeftUnitorInverse( unit ),
                     IdentityMorphism( tensor_product_on_object_1_and_object_2 ) ),
                   
-                  InternalCoHomTensorProductCompatibilityMorphism( unit, unit, object_1, object_2 ),
+                  InternalCoHomTensorProductCompatibilityMorphism( [ unit, unit, object_1, object_2 ] ),
                   
                   TensorProductOnMorphisms(
                     IsomorphismFromInternalCoHomToCoDual( object_1 ),
@@ -335,7 +340,7 @@ AddDerivationToCAP( MorphismFromInternalCoHomToTensorProductWithGivenObjects,
                LeftUnitorInverse( object_2 ) ),
               
              InternalCoHomTensorProductCompatibilityMorphism(
-               object_1, unit, unit, object_2 ),
+               [ object_1, unit, unit, object_2 ] ),
               
              TensorProductOnMorphisms(
                IsomorphismFromInternalCoHomToObject( object_1 ),
@@ -466,8 +471,13 @@ end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
 ##
 AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects,
                     
-  function( cat, a1, a2, b1, b2, new_source_and_range_list )
-    local morphism, int_cohom_a1_b1, int_cohom_a2_b2, id_int_cohom_a2_b2, tensor_product_b1_b2;
+  function( cat, source, list, range )
+    local a1, a2, b1, b2, morphism, int_cohom_a1_b1, int_cohom_a2_b2, id_int_cohom_a2_b2, tensor_product_b1_b2;
+    
+    a1 := list[1];
+    a2 := list[2];
+    b1 := list[3];
+    b2 := list[4];
     
     int_cohom_a1_b1 := InternalCoHomOnObjects( a1, b1 );
     
@@ -516,7 +526,7 @@ AddDerivationToCAP( CoDualityTensorProductCompatibilityMorphismWithGivenObjects,
     morphism := PreCompose( [
                   IsomorphismFromCoDualToInternalCoHom( tensor_product_on_object_1_and_object_2 ),
                   
-                  InternalCoHomTensorProductCompatibilityMorphism( unit, unit, object_1, object_2 ),
+                  InternalCoHomTensorProductCompatibilityMorphism( [ unit, unit, object_1, object_2 ] ),
                   
                   TensorProductOnMorphisms(
                     IsomorphismFromInternalCoHomToCoDual( object_1 ),

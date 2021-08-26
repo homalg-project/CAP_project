@@ -268,9 +268,9 @@ end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
 ##
 AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects,
                     
-  function( cat, a1, a2, b1, b2, new_source_and_range_list )
+  function( cat, source, list, range )
     
-    return Inverse( InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects( a1, a2, b1, b2, new_source_and_range_list ) );
+    return Inverse( InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects( source, list, range ) );
     
 end : CategoryFilter := IsRigidSymmetricCoclosedMonoidalCategory,
       Description := "InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects as the inverse of TensorProductInternalCoHomCompatibilityMorphismWithGivenObjects" );

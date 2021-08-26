@@ -1,28 +1,7 @@
-InstallValue( CAP_INTERNAL_DISTRIBUTIVE_MONOIDAL_CATEGORIES_BASIC_OPERATIONS, rec( ) );
+##
+AddDerivationToCAP( LeftDistributivityExpanding,
 
-##
-CAP_INTERNAL_DISTRIBUTIVE_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.LeftDistributivityExpanding := 
-  [ [ "TensorProductOnObjects", 1 + 2 ], ## 1 + Size( summands_list ) would be the correct number
-    [ "DirectSum", 2 ] ];
-##
-InstallMethod( LeftDistributivityExpanding,
-               [ IsCapCategoryObject, IsList ],
-               
-  function( object, summands_list )
-    
-    return LeftDistributivityExpandingWithGivenObjects(
-             TensorProductOnObjects( object, DirectSum( summands_list ) ),
-             object, summands_list,
-             DirectSum( List( summands_list, summand -> TensorProductOnObjects( object, summand ) ) )
-           );
-    
-end );
-
-##
-InstallMethod( LeftDistributivityExpanding,
-               [ IsCapCategoryObject and IsCellOfSkeletalCategory, IsList ],
-               
-  function( object, summands_list )
+  function( cat, object, summands_list )
     local source_and_range;
     
     source_and_range := TensorProductOnObjects( object, DirectSum( summands_list ) );
@@ -33,31 +12,13 @@ InstallMethod( LeftDistributivityExpanding,
              source_and_range
            );
     
-end );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-CAP_INTERNAL_DISTRIBUTIVE_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.LeftDistributivityFactoring := 
-  [ [ "TensorProductOnObjects", 1 + 2 ], ## 1 + Size( summands_list ) would be the correct number
-    [ "DirectSum", 2 ] ];
-##
-InstallMethod( LeftDistributivityFactoring,
-               [ IsCapCategoryObject, IsList ],
-               
-  function( object, summands_list )
-    
-    return LeftDistributivityFactoringWithGivenObjects(
-             DirectSum( List( summands_list, summand -> TensorProductOnObjects( object, summand ) ) ),
-             object, summands_list,
-             TensorProductOnObjects( object, DirectSum( summands_list ) )
-           );
-    
-end );
+AddDerivationToCAP( LeftDistributivityFactoring,
 
-##
-InstallMethod( LeftDistributivityFactoring,
-               [ IsCapCategoryObject and IsCellOfSkeletalCategory, IsList ],
-               
-  function( object, summands_list )
+  function( cat, object, summands_list )
     local source_and_range;
     
     source_and_range := TensorProductOnObjects( object, DirectSum( summands_list ) );
@@ -68,31 +29,13 @@ InstallMethod( LeftDistributivityFactoring,
              source_and_range
            );
     
-end );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-CAP_INTERNAL_DISTRIBUTIVE_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.RightDistributivityExpanding := 
-  [ [ "TensorProductOnObjects", 1 + 2 ], ## 1 + Size( summands_list ) would be the correct number
-    [ "DirectSum", 2 ] ];
-##
-InstallMethod( RightDistributivityExpanding,
-               [ IsList, IsCapCategoryObject ],
-               
-  function( summands_list, object )
-    
-    return RightDistributivityExpandingWithGivenObjects(
-             TensorProductOnObjects( DirectSum( summands_list ), object ),
-             summands_list, object,
-             DirectSum( List( summands_list, summand -> TensorProductOnObjects( summand, object ) ) )
-           );
-    
-end );
+AddDerivationToCAP( RightDistributivityExpanding,
 
-##
-InstallMethod( RightDistributivityExpanding,
-               [ IsList, IsCapCategoryObject and IsCellOfSkeletalCategory ],
-               
-  function( summands_list, object )
+  function( cat, summands_list, object )
     local source_and_range;
     
     source_and_range := TensorProductOnObjects( DirectSum( summands_list ), object );
@@ -103,31 +46,13 @@ InstallMethod( RightDistributivityExpanding,
              source_and_range
            );
     
-end );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-CAP_INTERNAL_DISTRIBUTIVE_MONOIDAL_CATEGORIES_BASIC_OPERATIONS.RightDistributivityFactoring := 
-  [ [ "TensorProductOnObjects", 1 + 2 ], ## 1 + Size( summands_list ) would be the correct number
-    [ "DirectSum", 2 ] ];
-##
-InstallMethod( RightDistributivityFactoring,
-               [ IsList, IsCapCategoryObject ],
-               
-  function( summands_list, object )
-    
-    return RightDistributivityFactoringWithGivenObjects(
-             DirectSum( List( summands_list, summand -> TensorProductOnObjects( summand, object ) ) ),
-             summands_list, object,
-             TensorProductOnObjects( DirectSum( summands_list ), object )
-           );
-    
-end );
+AddDerivationToCAP( RightDistributivityFactoring,
 
-##
-InstallMethod( RightDistributivityFactoring,
-               [ IsList, IsCapCategoryObject and IsCellOfSkeletalCategory ],
-               
-  function( summands_list, object )
+  function( cat, summands_list, object )
     local source_and_range;
     
     source_and_range := TensorProductOnObjects( DirectSum( summands_list ), object );
@@ -138,6 +63,5 @@ InstallMethod( RightDistributivityFactoring,
              source_and_range
            );
     
-end );
-
-CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD( CAP_INTERNAL_DISTRIBUTIVE_MONOIDAL_CATEGORIES_BASIC_OPERATIONS );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
