@@ -208,29 +208,24 @@ InstallGlobalFunction( CapInternalInstallAdd,
             without_given_weight := CurrentOperationWeight( category!.derivations_weight_list, without_given_name );
             with_given_weight := CurrentOperationWeight( category!.derivations_weight_list, with_given_name );
             
-            if record.is_with_given = false then
+            # take the weight of the currently added function into account
+            if record.is_with_given then
                 
-                if with_given_weight <= weight then
-                    
-                    category!.redirects.( without_given_name ) := true;
-                    
-                else
-                    
-                    category!.redirects.( without_given_name ) := false;
-                    
-                fi;
+                with_given_weight := weight;
                 
             else
                 
-                if weight <= without_given_weight then
-                    
-                    category!.redirects.( without_given_name ) := true;
-                    
-                else
-                    
-                    category!.redirects.( without_given_name ) := false;
-                    
-                fi;
+                without_given_weight := weight;
+                
+            fi;
+            
+            if with_given_weight <= without_given_weight then
+                
+                category!.redirects.( without_given_name ) := true;
+                
+            else
+                
+                category!.redirects.( without_given_name ) := false;
                 
             fi;
             
