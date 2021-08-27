@@ -1189,7 +1189,17 @@
   \rightarrow  b'[123X  in [23XC[123X. The output is the value of the homomorphism structure
   on morphisms [23XH(\alpha, \beta )[123X.[133X
   
-  [1X3.16-4 HomomorphismStructureOnMorphismsWithGivenObjects[101X
+  [1X3.16-4 AddHomomorphismStructureOnMorphisms[101X
+  
+  [33X[1;0Y[29X[2XAddHomomorphismStructureOnMorphisms[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XHomomorphismStructureOnMorphisms[110X.  [23XF:  (  \alpha: a \rightarrow a', \beta: b
+  \rightarrow b' ) \mapsto H( \alpha, \beta )[123X.[133X
+  
+  [1X3.16-5 HomomorphismStructureOnMorphismsWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XHomomorphismStructureOnMorphismsWithGivenObjects[102X( [3Xs[103X, [3Xalpha[103X, [3Xbeta[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{D}(H(a',b), H(a,b'))[123X[133X
@@ -1199,7 +1209,7 @@
   [23XD[123X.  The  output  is  the  value  of  the homomorphism structure on morphisms
   [23XH(\alpha, \beta )[123X.[133X
   
-  [1X3.16-5 AddHomomorphismStructureOnMorphismsWithGivenObjects[101X
+  [1X3.16-6 AddHomomorphismStructureOnMorphismsWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XAddHomomorphismStructureOnMorphismsWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1209,7 +1219,7 @@
   [10XHomomorphismStructureOnMorphismsWithGivenObjects[110X.   [23XF:   (   s,   \alpha:  a
   \rightarrow a', \beta: b \rightarrow b', r ) \mapsto H( \alpha, \beta )[123X.[133X
   
-  [1X3.16-6 DistinguishedObjectOfHomomorphismStructure[101X
+  [1X3.16-7 DistinguishedObjectOfHomomorphismStructure[101X
   
   [33X[1;0Y[29X[2XDistinguishedObjectOfHomomorphismStructure[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object in [23XD[123X[133X
@@ -1217,7 +1227,7 @@
   [33X[0;0YThe  argument is a category [23XC[123X. The output is the distinguished object [23X1[123X in [23XD[123X
   of the homomorphism structure.[133X
   
-  [1X3.16-7 AddDistinguishedObjectOfHomomorphismStructure[101X
+  [1X3.16-8 AddDistinguishedObjectOfHomomorphismStructure[101X
   
   [33X[1;0Y[29X[2XAddDistinguishedObjectOfHomomorphismStructure[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1226,7 +1236,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XDistinguishedObjectOfHomomorphismStructure[110X. [23XF: ( ) \mapsto 1[123X.[133X
   
-  [1X3.16-8 InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure[101X
+  [1X3.16-9 InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure[101X
   
   [33X[1;0Y[29X[2XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{D}(1, H(a,a'))[123X[133X
@@ -1235,7 +1245,7 @@
   corresponding  morphism  [23X\nu(  \alpha  ):  1 \rightarrow H(a,a')[123X in [23XD[123X of the
   homomorphism structure.[133X
   
-  [1X3.16-9 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure[101X
+  [1X3.16-10 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure[101X
   
   [33X[1;0Y[29X[2XAddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1245,7 +1255,26 @@
   [10XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure[110X.
   [23XF: (\alpha: a \rightarrow a') \mapsto (\nu(\alpha):1 \rightarrow H(a,a'))[123X.[133X
   
-  [1X3.16-10 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism[101X
+  [1X3.16-11 InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects[101X
+  
+  [33X[1;0Y[29X[2XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects[102X( [3Xalpha[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{D}(1, r)[123X[133X
+  
+  [33X[0;0YThe  arguments  are  the  distinguished  object  [23X1[123X,  a  morphism  [23X\alpha:  a
+  \rightarrow  a'[123X, and the object [23Xr = H(a,a')[123X. The output is the corresponding
+  morphism [23X\nu( \alpha ): 1 \rightarrow r[123X in [23XD[123X of the homomorphism structure.[133X
+  
+  [1X3.16-12 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects[101X
+  
+  [33X[1;0Y[29X[2XAddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given    function    [23XF[123X   to   the   category   for   the   basic   operation
+  [10XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects[110X.
+  [23XF: (1, \alpha: a \rightarrow a', r) \mapsto (\nu(\alpha):1 \rightarrow r)[123X.[133X
+  
+  [1X3.16-13 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism[101X
   
   [33X[1;0Y[29X[2XInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism[102X( [3Xa[103X, [3Xa'[103X, [3Xiota[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{C}(a,a')[123X[133X
@@ -1254,7 +1283,7 @@
   H(a,a')[123X  in  [23XD[123X.  The output is the corresponding morphism [23X\nu^{-1}(\iota): a
   \rightarrow a'[123X in [23XC[123X of the homomorphism structure.[133X
   
-  [1X3.16-11 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism[101X
+  [1X3.16-14 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism[101X
   
   [33X[1;0Y[29X[2XAddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1265,7 +1294,7 @@
   [23XF:   (a,a',\iota:   1   \rightarrow  H(a,a'))  \mapsto  (\nu^{-1}(\iota):  a
   \rightarrow a')[123X.[133X
   
-  [1X3.16-12 SolveLinearSystemInAbCategory[101X
+  [1X3.16-15 SolveLinearSystemInAbCategory[101X
   
   [33X[1;0Y[29X[2XSolveLinearSystemInAbCategory[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list of morphisms [23X[X_1, \dots, X_n][123X[133X
@@ -1283,7 +1312,7 @@
   1 \dots m[123X. The output is list of such morphisms [23XX_j: B_j \rightarrow C_j[123X for
   [23Xj=1\dots n[123X.[133X
   
-  [1X3.16-13 SolveLinearSystemInAbCategoryOrFail[101X
+  [1X3.16-16 SolveLinearSystemInAbCategoryOrFail[101X
   
   [33X[1;0Y[29X[2XSolveLinearSystemInAbCategoryOrFail[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list of morphisms [23X[X_1, \dots, X_n][123X or [10Xfail[110X[133X
@@ -1291,7 +1320,7 @@
   [33X[0;0YLike  [10XSolveLinearSystemInAbCategory[110X,  but  without  the  assumption  that  a
   solution exists. If no solution exists, [10Xfail[110X is returned.[133X
   
-  [1X3.16-14 MereExistenceOfSolutionOfLinearSystemInAbCategory[101X
+  [1X3.16-17 MereExistenceOfSolutionOfLinearSystemInAbCategory[101X
   
   [33X[1;0Y[29X[2XMereExistenceOfSolutionOfLinearSystemInAbCategory[102X( [3Xalpha[103X, [3Xbeta[103X, [3Xgamma[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -1299,7 +1328,7 @@
   [33X[0;0YLike  [10XSolveLinearSystemInAbCategory[110X,  but  the  output  is  simply [10Xtrue[110X if a
   solution exists, [10Xfalse[110X otherwise.[133X
   
-  [1X3.16-15 HomStructure[101X
+  [1X3.16-18 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xalpha[103X, [3Xbeta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{D}(H(a',b), H(a,b'))[123X[133X
@@ -1308,7 +1337,7 @@
   \rightarrow   a',   \beta:   b   \rightarrow   b'[123X   in   [23XC[123X.  The  output  is
   [10XHomomorphismStructureOnMorphisms[110X called on [23X\alpha[123X, [23X\beta[123X.[133X
   
-  [1X3.16-16 HomStructure[101X
+  [1X3.16-19 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xalpha[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{D}(H(a',b), H(a,b))[123X[133X
@@ -1317,7 +1346,7 @@
   \rightarrow    a'[123X    and    an    object    [23Xb[123X    in   [23XC[123X.   The   output   is
   [10XHomomorphismStructureOnMorphisms[110X called on [23X\alpha[123X, [23X\mathrm{id}_b[123X.[133X
   
-  [1X3.16-17 HomStructure[101X
+  [1X3.16-20 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xa[103X, [3Xbeta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{D}(H(a,b), H(a,b'))[123X[133X
@@ -1326,7 +1355,7 @@
   [23X\beta: b \rightarrow b'[123X in [23XC[123X. The output is [10XHomomorphismStructureOnMorphisms[110X
   called on [23X\mathrm{id}_a[123X, [23X\beta[123X.[133X
   
-  [1X3.16-18 HomStructure[101X
+  [1X3.16-21 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
@@ -1334,27 +1363,27 @@
   [33X[0;0YThis  is  a  convenience method. The arguments are two objects [23Xa[123X and [23Xb[123X in [23XC[123X.
   The output is [10XHomomorphismStructureOnObjects[110X called on [23Xa,b[123X.[133X
   
-  [1X3.16-19 HomStructure[101X
+  [1X3.16-22 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis          is          a          convenience          method         for
   [10XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure[110X.[133X
   
-  [1X3.16-20 HomStructure[101X
+  [1X3.16-23 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X ) [32X operation[133X
   
   [33X[0;0YThis          is          a          convenience          method         for
   [10XInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism[110X.[133X
   
-  [1X3.16-21 HomStructure[101X
+  [1X3.16-24 HomStructure[101X
   
   [33X[1;0Y[29X[2XHomStructure[102X( [3Xarg[103X ) [32X operation[133X
   
   [33X[0;0YThis is a convenience method for [10XDistinguishedObjectOfHomomorphismStructure[110X.[133X
   
-  [1X3.16-22 BasisOfExternalHom[101X
+  [1X3.16-25 BasisOfExternalHom[101X
   
   [33X[1;0Y[29X[2XBasisOfExternalHom[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list of morphisms in [23X\mathrm{Hom}_{C}(a,b)[123X[133X
@@ -1365,7 +1394,7 @@
   combination       of       [23XL[123X       with       the       coefficients      in
   [10XCoefficientsOfMorphismWithGivenBasisOfExternalHom[110X([23X\alpha,L[123X).[133X
   
-  [1X3.16-23 AddBasisOfExternalHom[101X
+  [1X3.16-26 AddBasisOfExternalHom[101X
   
   [33X[1;0Y[29X[2XAddBasisOfExternalHom[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1373,7 +1402,7 @@
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given function [23XF[123X to the category for the basic operation [10XBasisOfExternalHom[110X.[133X
   
-  [1X3.16-24 CoefficientsOfMorphismWithGivenBasisOfExternalHom[101X
+  [1X3.16-27 CoefficientsOfMorphismWithGivenBasisOfExternalHom[101X
   
   [33X[1;0Y[29X[2XCoefficientsOfMorphismWithGivenBasisOfExternalHom[102X( [3Xalpha[103X, [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list of elements in [23Xk[123X[133X
@@ -1382,7 +1411,7 @@
   list  [3XL[103X[10X=BasisOfExternalHom[110X([23Xa,b[123X).  The  output  is  a list of coefficients of
   [23X\alpha[123X with respect to [23XL[123X.[133X
   
-  [1X3.16-25 AddCoefficientsOfMorphismWithGivenBasisOfExternalHom[101X
+  [1X3.16-28 AddCoefficientsOfMorphismWithGivenBasisOfExternalHom[101X
   
   [33X[1;0Y[29X[2XAddCoefficientsOfMorphismWithGivenBasisOfExternalHom[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -1391,7 +1420,7 @@
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
   [10XCoefficientsOfMorphismWithGivenBasisOfExternalHom[110X.[133X
   
-  [1X3.16-26 CoefficientsOfMorphism[101X
+  [1X3.16-29 CoefficientsOfMorphism[101X
   
   [33X[1;0Y[29X[2XCoefficientsOfMorphism[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list of elements in [23Xk[123X[133X

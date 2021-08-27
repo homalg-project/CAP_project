@@ -30,7 +30,9 @@
 </div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X7D83FC527EA66166">7.3 <span class="Heading">InstallAdd Function</span></a>
 </span>
-</div>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7AFC15FE81D083CB">7.3-1 CapInternalInstallAdd</a></span>
+</div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X844CF4D187364721">7.4 <span class="Heading">Enhancing the method name record</span></a>
 </span>
 </div>
@@ -54,11 +56,15 @@
 
 <h4>7.1 <span class="Heading">Functions Installed by Add</span></h4>
 
-<p>Add functions (up to some exceptions) have the following syntax</p>
+<p>Add functions have the following syntax:</p>
 
-<p>DeclareOperation( "AddSomeFunc", [ IsCapCategory, IsList, IsInt ] );</p>
 
-<p>The first argument is the category to which some function (e.g. KernelObject) is added, the second is a list containing pairs of functions and additional filters for the arguments, (e.g. if one argument is a morphism, an additional filter could be IsMomomorphism). The third is a weight which will then be the weight for SomeFunc. This is described later. If only one function is to be installed, the list can be replaced by the function. Via InstallMethod, CAP installs the given function(s) as methods for the install name of SomeFunc, as listed in the MethodRecord. If no install name is given, the name SomeFunc is used.</p>
+<div class="example"><pre>
+DeclareOperation( "AddSomeFunc",
+                  [ IsCapCategory, IsList, IsInt ] );
+</pre></div>
+
+<p>The first argument is the category to which some function (e.g. <code class="code">KernelObject</code>) is added, the second is a list containing pairs of functions and additional filters for the arguments, (e.g. if one argument is a morphism, an additional filter could be <code class="code">IsMomomorphism</code>). The third is an optional weight which will then be the weight for <code class="code">SomeFunc</code> (default value: 100). This is described later. If only one function is to be installed, the list can be replaced by the function. CAP installs the given function(s) as methods for <code class="code">SomeFunc</code> (resp. <code class="code">SomeFuncOp</code> if <code class="code">SomeFunc</code> is not an operation).</p>
 
 <p>All installed methods follow the following steps, described below:</p>
 
@@ -83,17 +89,17 @@
 
 </li>
 </ul>
-<p>Every other part, except from function, does only depend on the name SomeFunc. We now explain the steps in detail.</p>
+<p>Every other part, except from function, does only depend on the name <code class="code">SomeFunc</code>. We now explain the steps in detail.</p>
 
 
 <ul>
-<li><p>Redirect function: The redirect is used to redirect the computation from the given functions to some other symbol. If there is for example a with given method for some universal property, and the universal object is already computed, the redirect function might detect such a thing, calls the with given operation with the universal object as additional argument and then returns the value. In general, the redirect can be an arbitrary function. It is called with the same arguments as the operation SomeFunc itself and can return an array containing [ true, something ], which will cause the installed method to simply return the object something, or [ false ]. If the output is false, the computation will continue with the step Prefunction. Additionally, for every category and every name like SomeFunc, there is a boolean, stored in the categorys redirects component under the name of SomeFunc, which, when it is false, will prevent the redirect function from being executed.</p>
+<li><p>Redirect function: The redirect is used to redirect the computation from the given functions to some other symbol. If there is for example a with given method for some universal property, and the universal object is already computed, the redirect function might detect such a thing, calls the with given operation with the universal object as additional argument and then returns the value. In general, the redirect can be an arbitrary function. It is called with the same arguments as the operation <code class="code">SomeFunc</code> itself and can return an array containing <code class="code">[ true, something ]</code>, which will cause the installed method to simply return the object <code class="code">something</code>, or <code class="code">[ false ]</code>. If the output is <code class="code">false</code>, the computation will continue with the step Prefunction. Additionally, for every category and every name like <code class="code">SomeFunc</code>, there is a boolean, stored in the category's component <code class="code">redirects</code> under the name of <code class="code">SomeFunc</code>, which, when it is <code class="code">false</code>, will prevent the redirect function from being executed.</p>
 
 </li>
 </ul>
 
 <ul>
-<li><p>Prefunction: The prefunction should be used for error handling and soft checks of the sanity of the input to SomeFunc (e.g. for KernelLift it should check wether range and source of the morphims coincide). Generally, the prefunction is defined in the method record and only depend on the name SomeFunc. It is called with the same input as the function itself, and should return either [ true ], which continues the computation, or [ false, "message" ], which will cause an error with message "message" and some additional information.</p>
+<li><p>Prefunction: The prefunction should be used for error handling and plausibility checks of the input to <code class="code">SomeFunc</code> (e.g. for <code class="code">KernelLift</code> it should check wether range and source of the morphims coincide). Generally, the prefunction is defined in the method record and only depends on the name <code class="code">SomeFunc</code>. It is called with the same input as the function itself, and should return either <code class="code">[ true ]</code>, which continues the computation, or <code class="code">[ false, "message" ]</code>, which will cause an error with message <code class="code">"message"</code> and some additional information.</p>
 
 </li>
 </ul>
@@ -105,25 +111,25 @@
 </ul>
 
 <ul>
-<li><p>Function: This will launch the function(s) given as arguments. The result should be as specified in the type of SomeFunc. The resulting object is now named the result.</p>
+<li><p>Function: This will launch the function(s) given as arguments. The result should be as specified in the type of <code class="code">SomeFunc</code>. The resulting object is now named the result.</p>
 
 </li>
 </ul>
 
 <ul>
-<li><p>Logic: For every function, some logical todos can be implemented in a logic texfile for the category. If there is some logic written down in a file belonging to the category, or belonging to some type of category. Please see the description of logic for more details. If there is some logic and some predicate relations for the function SomeFunc, it is installed in this step for the result.</p>
+<li><p>Logic: For every function, some logical todos can be implemented in a logic texfile for the category. If there is some logic written down in a file belonging to the category, or belonging to some type of category. Please see the description of logic for more details. If there is some logic and some predicate relations for the function <code class="code">SomeFunc</code>, it is installed in this step for the result.</p>
 
 </li>
 </ul>
 
 <ul>
-<li><p>Postfunction: The postfunction called with the arguments of the function and the result. It can be an arbitrary function doing some cosmetics. If for example SomeFunc is KernelEmbedding, it will set the KernelObject of the input morphism to result. The postfunction is also taken from the method record and does only depend on the name SomeFunc.</p>
+<li><p>Postfunction: The postfunction called with the arguments of the function and the result. It can be an arbitrary function doing some cosmetics. If for example <code class="code">SomeFunc</code> is <code class="code">KernelEmbedding</code>, it will set the <code class="code">KernelObject</code> of the input morphism to result. The postfunction is also taken from the method record and does only depend on the name <code class="code">SomeFunc</code>.</p>
 
 </li>
 </ul>
 
 <ul>
-<li><p>Addfunction: If the result is a category cell, it is added to the category for which the function was installed.</p>
+<li><p>Addfunction: If the result is a category cell, it is added to the category for which the function was installed. This is disabled by default and can be enabled via <code class="func">EnableAddForCategoricalOperations</code> (<a href="chap1.html#X7C01E3727D08D219"><span class="RefLink">1.10-1</span></a>).</p>
 
 </li>
 </ul>
@@ -131,7 +137,7 @@
 
 <h4>7.2 <span class="Heading">Add Method</span></h4>
 
-<p>Except from installing a new method for the name SomeFunc, an Add method does slightly more. Every Add method has the same structure. The steps in the Add method are as follows:</p>
+<p>Except from installing a new method for the name <code class="code">SomeFunc</code>, an Add method does slightly more. Every Add method has the same structure. The steps in the Add method are as follows:</p>
 
 
 <ul>
@@ -141,14 +147,14 @@
 </ul>
 
 <ul>
-<li><p>Option check: There are two possible options for every add method: SetPrimitive and IsDerivation.</p>
+<li><p>Option check: There are two possible options for every add method: <code class="code">SetPrimitive</code> and <code class="code">IsDerivation</code>.</p>
 
 
 <ul>
-<li><p>SetPrimitive should be a boolean, the default is true. If SetPrimitive is false, then the current call of this add will not set the installed function to be primitive. This is used for derivations.</p>
+<li><p><code class="code">SetPrimitive</code> should be a boolean, the default is true. If <code class="code">SetPrimitive</code> is false, then the current call of this add will not set the installed function to be primitive. This is used for derivations.</p>
 
 </li>
-<li><p>IsDerivation should be a boolean, default is false. If it is true, the add method assumes that the given function is a derivation and does not try to install a corresponding pair (See below).</p>
+<li><p><code class="code">IsDerivation</code> should be a boolean, default is false. If it is true, the add method assumes that the given function is a derivation and does not try to install a corresponding pair (See below).</p>
 
 </li>
 </ul>
@@ -156,25 +162,13 @@
 </ul>
 
 <ul>
-<li><p>Standard weight: If the weight parameter is -1, the Standard weight is assumed, which is 100.</p>
+<li><p>Default weight: If the weight parameter is -1, the default weight is assumed, which is 100.</p>
 
 </li>
 </ul>
 
 <ul>
-<li><p>Checking for pairs: If the function is not a with given operation, has a corresponding with given or is a with given, and is newly installed, i.e. the current installation weight which is given to the add function is less than the current weight, the add method is going to install a corresponding pair function, i.e. a function for the corresponding with or without given method, which redirects to the currently installed functions. It also deactivates the redirect for this function. Note that the pair install is only done for primitive functions, and if the current weight is higher than the given weight.</p>
-
-</li>
-</ul>
-
-<ul>
-<li><p>Can compute: Set the corresponding can compute of the category to true</p>
-
-</li>
-</ul>
-
-<ul>
-<li><p>Install methods: Decide on the methods used to install the function. Check wether InstallMethodWithCache, InstallMethodWithToDoForIsWellDefined, both, or simply InstallMethod is used. This is decided by the ToDo and the caching flags.</p>
+<li><p>Checking for pairs: If the function is part of a with given pair, we check if the weight of the with given operation is less than or equal to the weight of the without given operation. If this is the case, the redirect function for the without given operation is enabled, else disabled.</p>
 
 </li>
 </ul>
@@ -190,23 +184,21 @@
 
 </li>
 </ul>
-
-<ul>
-<li><p>Pair install: If there is a function pair, as described above, it is installed.</p>
-
-</li>
-</ul>
-<p>After calling an add method, the corresponding Operation is available in the category. Also, some derivations, which are triggered by the setting of the primitive value, might be available.</p>
+<p>After calling an add method, the corresponding operation is available in the category. Also, some derivations, which are triggered by the setting of the primitive value, might be available.</p>
 
 <p><a id="X7D83FC527EA66166" name="X7D83FC527EA66166"></a></p>
 
 <h4>7.3 <span class="Heading">InstallAdd Function</span></h4>
 
-<p>Almost all Add methods in the CAP kernel are installed by the CapInternalInstallAdd operation. The definition of this function is as follows:</p>
+<p>Almost all Add methods in the CAP kernel are installed by the <code class="code">CapInternalInstallAdd</code> operation. The definition of this function is as follows:</p>
 
-<p>DeclareOperation( "CapInternalInstallAdd", [ IsRecord ] );</p>
 
-<p>The record can have the following components, used as described:</p>
+<div class="example"><pre>
+DeclareOperation( "CapInternalInstallAdd",
+                  [ IsRecord ] );
+</pre></div>
+
+<p>The record can have the following components, most of which can be set in the method name record, used as described:</p>
 
 
 <ul>
@@ -223,6 +215,12 @@
 
 <ul>
 <li><p>pre_function (optional): A function which is used as the prefunction of the installed methods, as described above.</p>
+
+</li>
+</ul>
+
+<ul>
+<li><p>pre_function_full (optional): A function which is used as the full prefunction of the installed methods, as described above.</p>
 
 </li>
 </ul>
@@ -316,7 +314,7 @@
 
 
 <ul>
-<li><p>is_with_given: Boolean, marks whether the function which is to be installed is a with given function or not.</p>
+<li><p>is_with_given (optional): Boolean, marks whether the function which is to be installed is a with given function or not.</p>
 
 </li>
 </ul>
@@ -328,35 +326,60 @@
 </ul>
 
 <ul>
-<li><p>functorial (optional): If an object has a corresponding functorial function, e.g., KernelObject and KernelObjectFunctorial, the name of the functorial is stored as a string.</p>
+<li><p>functorial (optional): If an object has a corresponding functorial function, e.g., <code class="code">KernelObject</code> and <code class="code">KernelObjectFunctorial</code>, the name of the functorial is stored as a string.</p>
 
 </li>
 </ul>
 
 <ul>
-<li><p>dual_arguments_reversed: Boolean, marks whether for the call of the dual operation all arguments have to be given in reversed order.</p>
+<li><p>dual_arguments_reversed (optional): Boolean, marks whether for the call of the dual operation all arguments have to be given in reversed order.</p>
 
 </li>
 </ul>
 
 <ul>
-<li><p>dual_preprocessor_func: let f be an operation with dual operation g. For the automatic installation of g from f, the arguments given to g are preprocessed by this given function.</p>
+<li><p>dual_preprocessor_func (optional): let f be an operation with dual operation g. For the automatic installation of g from f, the arguments given to g are preprocessed by this given function.</p>
 
 </li>
 </ul>
 
 <ul>
-<li><p>dual_postprocessor_func: let f be an operation with dual operation g. For the automatic installation of g from f, the computed value of f is postprocessed by the given function.</p>
+<li><p>dual_postprocessor_func (optional): let f be an operation with dual operation g. For the automatic installation of g from f, the computed value of f is postprocessed by the given function.</p>
 
 </li>
 </ul>
 
 <ul>
-<li><p>zero_arguments_for_add_method: the add method of this operation should get a function without arguments</p>
+<li><p>input_arguments_names (optional): A duplicate free list (of the same length as <code class="code">filter_list</code>) of strings. For example, these strings will be used as the names of the arguments when automatically generating functions for this operation, e.g. in the opposite category.</p>
 
 </li>
 </ul>
-<p>Using all those entries, the operation CapInternalInstallAdd installs add methods as described above. It first provides a sanity check for all the entries described, then installs the Add method in 4 ways, with list or functions as second argument, and with an optional third parameter for the weight.</p>
+
+<ul>
+<li><p>output_source_getter_string (optional): Only valid if the operation returns a morphism: a piece of GAP code which computes the source of the returned morphism. The input arguments are available via the names given in <code class="code">input_arguments_names</code>.</p>
+
+</li>
+</ul>
+
+<ul>
+<li><p>output_range_getter_string (optional): Only valid if the operation returns a morphism: a piece of GAP code which computes the range of the returned morphism. The input arguments are available via the names given in <code class="code">input_arguments_names</code>.</p>
+
+</li>
+</ul>
+
+<ul>
+<li><p>with_given_object_position (optional): One of the following strings: <code class="code">"Source"</code>, <code class="code">"Range"</code>, or <code class="code">"both"</code>. Set for the without given operation in a with given pair. Describes whether the source resp. range are given (as the last argument of the with given operation) or both (as the second and the last argument of the with given operation).</p>
+
+</li>
+</ul>
+<p>Using all those entries, the operation <code class="code">CapInternalInstallAdd</code> installs add methods as described above. It first provides plausibility checks for all the entries described, then installs the Add method in 4 ways, with list or functions as second argument, and with an optional third parameter for the weight.</p>
+
+<p><a id="X7AFC15FE81D083CB" name="X7AFC15FE81D083CB"></a></p>
+
+<h5>7.3-1 CapInternalInstallAdd</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapInternalInstallAdd</code>( <var class="Arg">record</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>See <a href="chap7.html#X7D83FC527EA66166"><span class="RefLink">7.3</span></a>.</p>
 
 <p><a id="X844CF4D187364721" name="X844CF4D187364721"></a></p>
 
@@ -378,7 +401,7 @@
 </ul>
 
 <ul>
-<li><p>Redirect and post functions are created for all operations belonging to universal constructions (e.g. KernelLift) which are not a WithGiven operation.</p>
+<li><p>Redirect and post functions are created for all operations belonging to universal constructions (e.g. <code class="code">KernelLift</code>) which are not a WithGiven operation.</p>
 
 </li>
 </ul>

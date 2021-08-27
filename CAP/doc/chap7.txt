@@ -7,19 +7,21 @@
   
   [1X7.1 [33X[0;0YFunctions Installed by Add[133X[101X
   
-  [33X[0;0YAdd functions (up to some exceptions) have the following syntax[133X
+  [33X[0;0YAdd functions have the following syntax:[133X
   
-  [33X[0;0YDeclareOperation( "AddSomeFunc", [ IsCapCategory, IsList, IsInt ] );[133X
+  [4X[32X  Code  [32X[104X
+    [4XDeclareOperation( "AddSomeFunc",[104X
+    [4X                  [ IsCapCategory, IsList, IsInt ] );[104X
+  [4X[32X[104X
   
   [33X[0;0YThe   first   argument   is  the  category  to  which  some  function  (e.g.
-  KernelObject)  is  added, the second is a list containing pairs of functions
+  [10XKernelObject[110X)  is  added, the second is a list containing pairs of functions
   and  additional  filters  for  the  arguments,  (e.g.  if  one argument is a
-  morphism,  an  additional  filter  could  be IsMomomorphism). The third is a
-  weight  which will then be the weight for SomeFunc. This is described later.
-  If  only  one  function  is to be installed, the list can be replaced by the
-  function.  Via  InstallMethod, CAP installs the given function(s) as methods
-  for  the  install  name  of  SomeFunc,  as listed in the MethodRecord. If no
-  install name is given, the name SomeFunc is used.[133X
+  morphism,  an  additional  filter  could be [10XIsMomomorphism[110X). The third is an
+  optional  weight  which will then be the weight for [10XSomeFunc[110X (default value:
+  100).  This is described later. If only one function is to be installed, the
+  list  can be replaced by the function. CAP installs the given function(s) as
+  methods for [10XSomeFunc[110X (resp. [10XSomeFuncOp[110X if [10XSomeFunc[110X is not an operation).[133X
   
   [33X[0;0YAll installed methods follow the following steps, described below:[133X
   
@@ -36,7 +38,7 @@
   [30X    [33X[0;6YAddfunction[133X
   
   [33X[0;0YEvery  other  part,  except  from  function,  does  only  depend on the name
-  SomeFunc. We now explain the steps in detail.[133X
+  [10XSomeFunc[110X. We now explain the steps in detail.[133X
   
   [30X    [33X[0;6YRedirect  function:  The  redirect is used to redirect the computation
         from the given functions to some other symbol. If there is for example
@@ -45,30 +47,30 @@
         thing,  calls  the  with  given operation with the universal object as
         additional  argument  and  then  returns  the  value.  In general, the
         redirect  can  be  an  arbitrary  function. It is called with the same
-        arguments  as  the  operation  SomeFunc itself and can return an array
-        containing  [ true, something ], which will cause the installed method
-        to  simply return the object something, or [ false ]. If the output is
-        false,  the  computation  will  continue  with  the  step Prefunction.
-        Additionally,  for  every category and every name like SomeFunc, there
-        is  a  boolean,  stored in the categorys redirects component under the
-        name  of  SomeFunc, which, when it is false, will prevent the redirect
+        arguments  as  the  operation  [10XSomeFunc[110X itself and can return an array
+        containing  [10X[ true, something ][110X, which will cause the installed method
+        to  simply return the object [10Xsomething[110X, or [10X[ false ][110X. If the output is
+        [10Xfalse[110X,  the  computation  will  continue  with  the  step Prefunction.
+        Additionally,  for  every category and every name like [10XSomeFunc[110X, there
+        is  a  boolean, stored in the category's component [10Xredirects[110X under the
+        name  of  [10XSomeFunc[110X, which, when it is [10Xfalse[110X, will prevent the redirect
         function from being executed.[133X
   
   [30X    [33X[0;6YPrefunction:  The  prefunction  should  be used for error handling and
-        soft  checks  of  the  sanity  of  the  input  to  SomeFunc  (e.g. for
-        KernelLift  it  should  check  wether range and source of the morphims
-        coincide).  Generally, the prefunction is defined in the method record
-        and only depend on the name SomeFunc. It is called with the same input
-        as  the  function  itself,  and  should  return either [ true ], which
-        continues  the  computation, or [ false, "message" ], which will cause
-        an error with message "message" and some additional information.[133X
+        plausibility  checks  of the input to [10XSomeFunc[110X (e.g. for [10XKernelLift[110X it
+        should  check  wether  range  and  source  of  the morphims coincide).
+        Generally,  the  prefunction  is defined in the method record and only
+        depends  on the name [10XSomeFunc[110X. It is called with the same input as the
+        function  itself,  and  should return either [10X[ true ][110X, which continues
+        the  computation,  or  [10X[ false, "message" ][110X, which will cause an error
+        with message [10X"message"[110X and some additional information.[133X
   
   [30X    [33X[0;6YFull  prefunction:  The  full prefuction has the same semantics as the
         prefunction,  but can perform additional, very costly checks. They are
         disabled by default.[133X
   
   [30X    [33X[0;6YFunction:  This  will  launch  the function(s) given as arguments. The
-        result  should  be as specified in the type of SomeFunc. The resulting
+        result  should  be as specified in the type of [10XSomeFunc[110X. The resulting
         object is now named the result.[133X
   
   [30X    [33X[0;6YLogic:  For every function, some logical todos can be implemented in a
@@ -76,22 +78,24 @@
         a  file  belonging  to  the  category,  or  belonging  to some type of
         category.  Please  see  the  description of logic for more details. If
         there  is  some  logic  and  some predicate relations for the function
-        SomeFunc, it is installed in this step for the result.[133X
+        [10XSomeFunc[110X, it is installed in this step for the result.[133X
   
   [30X    [33X[0;6YPostfunction:  The  postfunction  called  with  the  arguments  of the
         function  and  the  result. It can be an arbitrary function doing some
-        cosmetics. If for example SomeFunc is KernelEmbedding, it will set the
-        KernelObject of the input morphism to result. The postfunction is also
+        cosmetics. If for example [10XSomeFunc[110X is [10XKernelEmbedding[110X, it will set the
+        [10XKernelObject[110X of the input morphism to result. The postfunction is also
         taken  from  the  method  record  and  does  only  depend  on the name
-        SomeFunc.[133X
+        [10XSomeFunc[110X.[133X
   
   [30X    [33X[0;6YAddfunction:  If  the  result  is  a category cell, it is added to the
-        category for which the function was installed.[133X
+        category  for  which  the  function was installed. This is disabled by
+        default  and  can  be  enabled  via  [2XEnableAddForCategoricalOperations[102X
+        ([14X1.10-1[114X).[133X
   
   
   [1X7.2 [33X[0;0YAdd Method[133X[101X
   
-  [33X[0;0YExcept  from  installing  a  new method for the name SomeFunc, an Add method
+  [33X[0;0YExcept  from  installing  a  new method for the name [10XSomeFunc[110X, an Add method
   does  slightly  more.  Every Add method has the same structure. The steps in
   the Add method are as follows:[133X
   
@@ -100,37 +104,26 @@
         installs nothing.[133X
   
   [30X    [33X[0;6YOption  check:  There  are  two possible options for every add method:
-        SetPrimitive and IsDerivation.[133X
+        [10XSetPrimitive[110X and [10XIsDerivation[110X.[133X
   
-        [30X    [33X[0;12YSetPrimitive  should  be  a  boolean,  the  default  is true. If
-              SetPrimitive  is  false,  then the current call of this add will
+        [30X    [33X[0;12Y[10XSetPrimitive[110X  should  be  a  boolean,  the  default  is true. If
+              [10XSetPrimitive[110X  is  false,  then the current call of this add will
               not set the installed function to be primitive. This is used for
               derivations.[133X
   
-        [30X    [33X[0;12YIsDerivation  should  be  a  boolean, default is false. If it is
+        [30X    [33X[0;12Y[10XIsDerivation[110X  should  be  a  boolean, default is false. If it is
               true,  the  add  method  assumes  that  the  given function is a
               derivation and does not try to install a corresponding pair (See
               below).[133X
   
-  [30X    [33X[0;6YStandard weight: If the weight parameter is -1, the Standard weight is
+  [30X    [33X[0;6YDefault  weight:  If the weight parameter is -1, the default weight is
         assumed, which is 100.[133X
   
-  [30X    [33X[0;6YChecking for pairs: If the function is not a with given operation, has
-        a corresponding with given or is a with given, and is newly installed,
-        i.e.  the  current  installation  weight  which  is  given  to the add
-        function  is  less than the current weight, the add method is going to
-        install  a  corresponding  pair  function,  i.e.  a  function  for the
-        corresponding  with  or  without  given method, which redirects to the
-        currently  installed  functions.  It also deactivates the redirect for
-        this  function.  Note that the pair install is only done for primitive
-        functions, and if the current weight is higher than the given weight.[133X
-  
-  [30X    [33X[0;6YCan compute: Set the corresponding can compute of the category to true[133X
-  
-  [30X    [33X[0;6YInstall  methods:  Decide on the methods used to install the function.
-        Check                  wether                  InstallMethodWithCache,
-        InstallMethodWithToDoForIsWellDefined,  both,  or simply InstallMethod
-        is used. This is decided by the ToDo and the caching flags.[133X
+  [30X    [33X[0;6YChecking  for  pairs: If the function is part of a with given pair, we
+        check  if the weight of the with given operation is less than or equal
+        to the weight of the without given operation. If this is the case, the
+        redirect  function  for  the  without given operation is enabled, else
+        disabled.[133X
   
   [30X    [33X[0;6YInstallation: Next, the method to install the functions is created. It
         creates  the  correct filter list, by merging the standard filters for
@@ -140,10 +133,7 @@
   [30X    [33X[0;6YSetPrimitive:  If  the  set  primitive  flag  is  true,  it  is set as
         primitive in the weight list of the category.[133X
   
-  [30X    [33X[0;6YPair  install:  If there is a function pair, as described above, it is
-        installed.[133X
-  
-  [33X[0;0YAfter calling an add method, the corresponding Operation is available in the
+  [33X[0;0YAfter calling an add method, the corresponding operation is available in the
   category.  Also, some derivations, which are triggered by the setting of the
   primitive value, might be available.[133X
   
@@ -151,12 +141,16 @@
   [1X7.3 [33X[0;0YInstallAdd Function[133X[101X
   
   [33X[0;0YAlmost   all   Add   methods   in  the  CAP  kernel  are  installed  by  the
-  CapInternalInstallAdd  operation.  The  definition  of  this  function is as
+  [10XCapInternalInstallAdd[110X  operation.  The  definition  of  this  function is as
   follows:[133X
   
-  [33X[0;0YDeclareOperation( "CapInternalInstallAdd", [ IsRecord ] );[133X
+  [4X[32X  Code  [32X[104X
+    [4XDeclareOperation( "CapInternalInstallAdd",[104X
+    [4X                  [ IsRecord ] );[104X
+  [4X[32X[104X
   
-  [33X[0;0YThe record can have the following components, used as described:[133X
+  [33X[0;0YThe  record  can  have the following components, most of which can be set in
+  the method name record, used as described:[133X
   
   [30X    [33X[0;6Yfunction_name:  The  name  of  the  function.  This  does  not have to
         coincide  with  the  installation  name. It is used for the derivation
@@ -168,6 +162,9 @@
   
   [30X    [33X[0;6Ypre_function  (optional):  A function which is used as the prefunction
         of the installed methods, as described above.[133X
+  
+  [30X    [33X[0;6Ypre_function_full  (optional):  A  function  which is used as the full
+        prefunction of the installed methods, as described above.[133X
   
   [30X    [33X[0;6Yredirect_function (optional): A function which is used as the redirect
         function of the installed methods, as described above.[133X
@@ -242,8 +239,8 @@
     [4X    ][104X
   [4X[32X[104X
   
-  [30X    [33X[0;6Yis_with_given:  Boolean,  marks  whether  the  function which is to be
-        installed is a with given function or not.[133X
+  [30X    [33X[0;6Yis_with_given (optional): Boolean, marks whether the function which is
+        to be installed is a with given function or not.[133X
   
   [30X    [33X[0;6Ywith_given_without_given_name_pair   (optional):   If   the  currently
         installed operation has a corresponding with given operation or is the
@@ -251,28 +248,53 @@
         list.[133X
   
   [30X    [33X[0;6Yfunctorial  (optional):  If  an  object has a corresponding functorial
-        function,  e.g.,  KernelObject and KernelObjectFunctorial, the name of
+        function,  e.g.,  [10XKernelObject[110X and [10XKernelObjectFunctorial[110X, the name of
         the functorial is stored as a string.[133X
   
-  [30X    [33X[0;6Ydual_arguments_reversed:  Boolean,  marks  whether for the call of the
-        dual operation all arguments have to be given in reversed order.[133X
+  [30X    [33X[0;6Ydual_arguments_reversed  (optional):  Boolean,  marks  whether for the
+        call  of the dual operation all arguments have to be given in reversed
+        order.[133X
   
-  [30X    [33X[0;6Ydual_preprocessor_func:  let  f be an operation with dual operation g.
-        For  the  automatic installation of g from f, the arguments given to g
-        are preprocessed by this given function.[133X
+  [30X    [33X[0;6Ydual_preprocessor_func  (optional):  let  f  be an operation with dual
+        operation g. For the automatic installation of g from f, the arguments
+        given to g are preprocessed by this given function.[133X
   
-  [30X    [33X[0;6Ydual_postprocessor_func:  let f be an operation with dual operation g.
-        For the automatic installation of g from f, the computed value of f is
-        postprocessed by the given function.[133X
+  [30X    [33X[0;6Ydual_postprocessor_func  (optional):  let  f be an operation with dual
+        operation  g. For the automatic installation of g from f, the computed
+        value of f is postprocessed by the given function.[133X
   
-  [30X    [33X[0;6Yzero_arguments_for_add_method: the add method of this operation should
-        get a function without arguments[133X
+  [30X    [33X[0;6Yinput_arguments_names  (optional):  A duplicate free list (of the same
+        length  as [10Xfilter_list[110X) of strings. For example, these strings will be
+        used  as  the  names  of  the  arguments when automatically generating
+        functions for this operation, e.g. in the opposite category.[133X
   
-  [33X[0;0YUsing  all  those  entries, the operation CapInternalInstallAdd installs add
-  methods  as  described  above.  It first provides a sanity check for all the
-  entries  described,  then  installs  the  Add method in 4 ways, with list or
+  [30X    [33X[0;6Youtput_source_getter_string  (optional):  Only  valid if the operation
+        returns  a  morphism: a piece of GAP code which computes the source of
+        the returned morphism. The input arguments are available via the names
+        given in [10Xinput_arguments_names[110X.[133X
+  
+  [30X    [33X[0;6Youtput_range_getter_string  (optional):  Only  valid  if the operation
+        returns  a  morphism:  a piece of GAP code which computes the range of
+        the returned morphism. The input arguments are available via the names
+        given in [10Xinput_arguments_names[110X.[133X
+  
+  [30X    [33X[0;6Ywith_given_object_position  (optional):  One of the following strings:
+        [10X"Source"[110X, [10X"Range"[110X, or [10X"both"[110X. Set for the without given operation in a
+        with  given  pair.  Describes whether the source resp. range are given
+        (as  the  last  argument  of the with given operation) or both (as the
+        second and the last argument of the with given operation).[133X
+  
+  [33X[0;0YUsing  all  those  entries, the operation [10XCapInternalInstallAdd[110X installs add
+  methods  as  described  above. It first provides plausibility checks for all
+  the  entries described, then installs the Add method in 4 ways, with list or
   functions  as  second argument, and with an optional third parameter for the
   weight.[133X
+  
+  [1X7.3-1 CapInternalInstallAdd[101X
+  
+  [33X[1;0Y[29X[2XCapInternalInstallAdd[102X( [3Xrecord[103X ) [32X function[133X
+  
+  [33X[0;0YSee [14X7.3[114X.[133X
   
   
   [1X7.4 [33X[0;0YEnhancing the method name record[133X[101X
@@ -288,7 +310,7 @@
         given flag of the WithGiven operation is set to true.[133X
   
   [30X    [33X[0;6YRedirect  and  post functions are created for all operations belonging
-        to universal constructions (e.g. KernelLift) which are not a WithGiven
+        to universal constructions (e.g. [10XKernelLift[110X) which are not a WithGiven
         operation.[133X
   
   

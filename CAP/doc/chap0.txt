@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2021.08-01
+                                   2021.08-02
   
   
-                                 25 August 2021
+                                 27 August 2021
   
   
                                Sebastian Gutsche
@@ -304,29 +304,32 @@
       3.16-1 HomomorphismStructureOnObjects
       3.16-2 AddHomomorphismStructureOnObjects
       3.16-3 HomomorphismStructureOnMorphisms
-      3.16-4 HomomorphismStructureOnMorphismsWithGivenObjects
-      3.16-5 AddHomomorphismStructureOnMorphismsWithGivenObjects
-      3.16-6 DistinguishedObjectOfHomomorphismStructure
-      3.16-7 AddDistinguishedObjectOfHomomorphismStructure
-      3.16-8 InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure
-      3.16-9 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure
-      3.16-10 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
-      3.16-11 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
-      3.16-12 SolveLinearSystemInAbCategory
-      3.16-13 SolveLinearSystemInAbCategoryOrFail
-      3.16-14 MereExistenceOfSolutionOfLinearSystemInAbCategory
-      3.16-15 HomStructure
-      3.16-16 HomStructure
-      3.16-17 HomStructure
+      3.16-4 AddHomomorphismStructureOnMorphisms
+      3.16-5 HomomorphismStructureOnMorphismsWithGivenObjects
+      3.16-6 AddHomomorphismStructureOnMorphismsWithGivenObjects
+      3.16-7 DistinguishedObjectOfHomomorphismStructure
+      3.16-8 AddDistinguishedObjectOfHomomorphismStructure
+      3.16-9 InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure
+      3.16-10 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure
+      3.16-11 InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects
+      3.16-12 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects
+      3.16-13 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
+      3.16-14 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
+      3.16-15 SolveLinearSystemInAbCategory
+      3.16-16 SolveLinearSystemInAbCategoryOrFail
+      3.16-17 MereExistenceOfSolutionOfLinearSystemInAbCategory
       3.16-18 HomStructure
       3.16-19 HomStructure
       3.16-20 HomStructure
       3.16-21 HomStructure
-      3.16-22 BasisOfExternalHom
-      3.16-23 AddBasisOfExternalHom
-      3.16-24 CoefficientsOfMorphismWithGivenBasisOfExternalHom
-      3.16-25 AddCoefficientsOfMorphismWithGivenBasisOfExternalHom
-      3.16-26 CoefficientsOfMorphism
+      3.16-22 HomStructure
+      3.16-23 HomStructure
+      3.16-24 HomStructure
+      3.16-25 BasisOfExternalHom
+      3.16-26 AddBasisOfExternalHom
+      3.16-27 CoefficientsOfMorphismWithGivenBasisOfExternalHom
+      3.16-28 AddCoefficientsOfMorphismWithGivenBasisOfExternalHom
+      3.16-29 CoefficientsOfMorphism
     3.17 [33X[0;0YSimplified Morphisms[133X
       3.17-1 SimplifyMorphism
       3.17-2 AddSimplifyMorphism
@@ -737,6 +740,7 @@
     7.1 [33X[0;0YFunctions Installed by Add[133X
     7.2 [33X[0;0YAdd Method[133X
     7.3 [33X[0;0YInstallAdd Function[133X
+      7.3-1 CapInternalInstallAdd
     7.4 [33X[0;0YEnhancing the method name record[133X
     7.5 [33X[0;0YInstall All Adds[133X
     7.6 [33X[0;0YPrepare functions[133X
