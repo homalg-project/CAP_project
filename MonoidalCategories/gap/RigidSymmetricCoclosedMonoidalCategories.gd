@@ -10,7 +10,6 @@ DeclareGlobalVariable( "CAP_INTERNAL_RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIE
   
 DeclareGlobalVariable( "RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD" );
 
-##
 #! @Description
 #! The arguments are two objects $a,b$.
 #! The output is the natural morphism $\mathrm{IsomorphismFromInternalCoHomToTensorProductWithGivenObjects}_{a,b}: \mathrm{\underline{coHom}}(a,b) \rightarrow a \otimes b_{\vee}$.
@@ -20,26 +19,6 @@ DeclareOperation( "IsomorphismFromInternalCoHomToTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromInternalCoHomToTensorProduct</C>.
-#! $F: ( a, b ) \mapsto \mathrm{IsomorphismFromInternalCoHomToTensorProduct}_{a,b}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromInternalCoHomToTensorProduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromInternalCoHomToTensorProduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromInternalCoHomToTensorProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromInternalCoHomToTensorProduct",
-                  [ IsCapCategory, IsList ] );
-
-##
-#! @Description
 #! The arguments are two objects $a,b$.
 #! The output is the inverse of $\mathrm{MorphismFromInternalCoHomToTensorProductWithGivenObjects}$, namely
 #! $\mathrm{MorphismFromTensorProductToInternalCoHomWithGivenObjects}_{a,b}: a \otimes b_{\vee} \rightarrow \mathrm{\underline{coHom}}(a,b)$.
@@ -47,7 +26,6 @@ DeclareOperation( "AddIsomorphismFromInternalCoHomToTensorProduct",
 #! @Arguments a,b
 DeclareOperation( "MorphismFromTensorProductToInternalCoHom",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
-
 
 #! @Description
 #! The arguments are an object $s = a \otimes b_{\vee}$,
@@ -61,26 +39,6 @@ DeclareOperation( "MorphismFromTensorProductToInternalCoHomWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromTensorProductToInternalCoHomWithGivenObjects</C>.
-#! $F: ( a \otimes b_{\vee},a,b,\mathrm{\underline{coHom}}(a,b) ) \mapsto \mathrm{MorphismFromTensorProductToInternalCoHomWithGivenObjects}_{a,b}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismFromTensorProductToInternalCoHomWithGivenObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismFromTensorProductToInternalCoHomWithGivenObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismFromTensorProductToInternalCoHomWithGivenObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismFromTensorProductToInternalCoHomWithGivenObjects",
-                  [ IsCapCategory, IsList ] );
-
-##
-#! @Description
 #! The arguments are two objects $a,b$.
 #! The output is the inverse of $\mathrm{IsomorphismFromInternalCoHomToTensorProduct}$, namely
 #! $\mathrm{IsomorphismFromTensorProductToInternalCoHom}_{a,b}: a \otimes b_{\vee} \rightarrow \mathrm{\underline{coHom}}(a,b)$.
@@ -89,26 +47,6 @@ DeclareOperation( "AddMorphismFromTensorProductToInternalCoHomWithGivenObjects",
 DeclareOperation( "IsomorphismFromTensorProductToInternalCoHom",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromTensorProductToInternalCoHom</C>.
-#! $F: ( a,b ) \mapsto \mathrm{IsomorphismFromTensorProductToInternalCoHom}_{a,b}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromTensorProductToInternalCoHom",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromTensorProductToInternalCoHom",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromTensorProductToInternalCoHom",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromTensorProductToInternalCoHom",
-                  [ IsCapCategory, IsList ] );
-
-##
 ## The four objects are given are given as a list because otherwise the WithGiven operation would
 ## exceed the maximal number of arguments for an operation (6)
 #! @Description
@@ -120,7 +58,6 @@ DeclareOperation( "AddIsomorphismFromTensorProductToInternalCoHom",
 DeclareOperation( "InternalCoHomTensorProductCompatibilityMorphismInverse",
                   [ IsList ] );
 
-##
 #! @Description
 #! The arguments are a list of four objects $[ a, a', b, b' ]$,
 #! and two objects $s = \mathrm{\underline{coHom}}(a_1, a_2) \otimes \mathrm{\underline{coHom}}(b_1, b_2)$ and $r = \mathrm{\underline{coHom}}(a_1 \otimes b_1, a_2 \otimes b_2)$.
@@ -131,26 +68,6 @@ DeclareOperation( "InternalCoHomTensorProductCompatibilityMorphismInverse",
 DeclareOperation( "InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
                   [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects</C>.
-#! $F: ( \mathrm{\underline{coHom}}(a_1, a_2) \otimes \mathrm{\underline{coHom}}(b_1, b_2) ), [ a,a',b,b' ], \mathrm{\underline{coHom}}(a_1 \otimes b_1, a_2 \otimes b_2) \mapsto \mathrm{InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
-                  [ IsCapCategory, IsList ] );
-
-##
 #! @Description
 #! The argument is an object $a$.
 #! The output is the coclosed coevaluation morphism $\mathrm{coclcoev}_{a}: a_{\vee} \otimes a \rightarrow 1$.
@@ -171,27 +88,6 @@ DeclareOperation( "CoclosedCoevaluationForCoDualWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CoclosedCoevaluationForCoDualWithGivenTensorProduct</C>.
-#! $F: (a_{\vee} \otimes a, a,1) \mapsto \mathrm{dcoev}_{a}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoclosedCoevaluationForCoDualWithGivenTensorProduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoclosedCoevaluationForCoDualWithGivenTensorProduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoclosedCoevaluationForCoDualWithGivenTensorProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoclosedCoevaluationForCoDualWithGivenTensorProduct",
-                  [ IsCapCategory, IsList ] );
-
-
-##
-#! @Description
 #! The argument is an endomorphism $\alpha: A \rightarrow A$.
 #! The output is the cotrace morphism $\mathrm{cotrace}_{\alpha}: 1 \rightarrow 1$.
 #! @Returns a morphism in $\mathrm{Hom}(1,1)$.
@@ -200,27 +96,6 @@ DeclareAttribute( "CoTraceMap",
                   IsCapCategoryMorphism );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CoTraceMap</C>.
-#! $F: \alpha \mapsto \mathrm{cotrace}_{\alpha}$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoTraceMap",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoTraceMap",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoTraceMap",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoTraceMap",
-                  [ IsCapCategory, IsList ] );
-
-
-##
-#! @Description
 #! The argument is an object $a$.
 #! The output is the corank morphism $\mathrm{corank}_a: 1 \rightarrow 1$.
 #! @Returns a morphism in $\mathrm{Hom}(1,1)$.
@@ -228,27 +103,6 @@ DeclareOperation( "AddCoTraceMap",
 DeclareAttribute( "CoRankMorphism",
                   IsCapCategoryObject );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CoRankMorphism</C>.
-#! $F: a \mapsto \mathrm{corank}_{a}$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoRankMorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoRankMorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoRankMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoRankMorphism",
-                  [ IsCapCategory, IsList ] );
-
-
-##
 #! @Description
 #! The argument is an object $a$.
 #! The output is the inverse of the morphism from the cobidual $a \rightarrow (a_{\vee})_{\vee}$.
@@ -265,22 +119,3 @@ DeclareAttribute( "MorphismToCoBidual",
 #! @Arguments a, r
 DeclareOperation( "MorphismToCoBidualWithGivenCoBidual",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismToCoBidualWithGivenCoBidual</C>.
-#! $F: (a, (a_{\vee})_{\vee}) \mapsto (a \rightarrow (a_{\vee})_{\vee} )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismToCoBidualWithGivenCoBidual",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismToCoBidualWithGivenCoBidual",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismToCoBidualWithGivenCoBidual",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismToCoBidualWithGivenCoBidual",
-                  [ IsCapCategory, IsList ] );

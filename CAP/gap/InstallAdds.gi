@@ -59,22 +59,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
     
     add_name := Concatenation( "Add", function_name );
     
-    if not IsBoundGlobal( add_name ) then
-        
-        DeclareOperation( add_name,
-                          [ IsCapCategory, IsFunction ] );
-        
-        DeclareOperation( add_name,
-                          [ IsCapCategory, IsFunction, IsInt ] );
-        
-        DeclareOperation( add_name,
-                          [ IsCapCategory, IsList, IsInt ] );
-        
-        DeclareOperation( add_name,
-                          [ IsCapCategory, IsList ] );
-        
-    fi;
-    
     if IsBound( record.pre_function ) then
         pre_function := record.pre_function;
     else
