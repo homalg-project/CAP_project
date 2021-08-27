@@ -3,7 +3,7 @@ AddDerivationToCAP( BraidingWithGivenTensorProducts,
                   
   function( cat, object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
     
-    return BraidingInverseWithGivenTensorProducts(
+    return BraidingInverseWithGivenTensorProducts( cat,
                             object_1_tensored_object_2,
                             object_2, object_1,
                             object_2_tensored_object_1 );
@@ -16,7 +16,7 @@ AddDerivationToCAP( BraidingInverseWithGivenTensorProducts,
                   
   function( cat, object_2_tensored_object_1, object_1, object_2, object_1_tensored_object_2 )
     
-    return BraidingWithGivenTensorProducts(
+    return BraidingWithGivenTensorProducts( cat,
                      object_2_tensored_object_1,
                      object_2, object_1,
                      object_1_tensored_object_2 );

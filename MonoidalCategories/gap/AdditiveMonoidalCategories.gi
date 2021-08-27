@@ -4,9 +4,9 @@ AddDerivationToCAP( LeftDistributivityExpanding,
   function( cat, object, summands_list )
     local source_and_range;
     
-    source_and_range := TensorProductOnObjects( object, DirectSum( summands_list ) );
+    source_and_range := TensorProductOnObjects( cat, object, DirectSum( cat, summands_list ) );
     
-    return LeftDistributivityExpandingWithGivenObjects(
+    return LeftDistributivityExpandingWithGivenObjects( cat,
              source_and_range,
              object, summands_list,
              source_and_range
@@ -21,9 +21,9 @@ AddDerivationToCAP( LeftDistributivityFactoring,
   function( cat, object, summands_list )
     local source_and_range;
     
-    source_and_range := TensorProductOnObjects( object, DirectSum( summands_list ) );
+    source_and_range := TensorProductOnObjects( cat, object, DirectSum( cat, summands_list ) );
     
-    return LeftDistributivityFactoringWithGivenObjects(
+    return LeftDistributivityFactoringWithGivenObjects( cat,
              source_and_range,
              object, summands_list,
              source_and_range
@@ -38,9 +38,9 @@ AddDerivationToCAP( RightDistributivityExpanding,
   function( cat, summands_list, object )
     local source_and_range;
     
-    source_and_range := TensorProductOnObjects( DirectSum( summands_list ), object );
+    source_and_range := TensorProductOnObjects( cat, DirectSum( cat, summands_list ), object );
     
-    return RightDistributivityExpandingWithGivenObjects(
+    return RightDistributivityExpandingWithGivenObjects( cat,
              source_and_range,
              summands_list, object,
              source_and_range
@@ -55,9 +55,9 @@ AddDerivationToCAP( RightDistributivityFactoring,
   function( cat, summands_list, object )
     local source_and_range;
     
-    source_and_range := TensorProductOnObjects( DirectSum( summands_list ), object );
+    source_and_range := TensorProductOnObjects( cat, DirectSum( cat, summands_list ), object );
     
-    return RightDistributivityFactoringWithGivenObjects(
+    return RightDistributivityFactoringWithGivenObjects( cat,
              source_and_range,
              summands_list, object,
              source_and_range
