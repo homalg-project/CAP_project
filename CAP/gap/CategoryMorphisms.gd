@@ -1942,6 +1942,25 @@ DeclareOperation( "HomomorphismStructureOnMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>HomomorphismStructureOnMorphisms</C>.
+#! $F: ( \alpha: a \rightarrow a', \beta: b \rightarrow b' ) \mapsto H( \alpha, \beta )$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddHomomorphismStructureOnMorphisms",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddHomomorphismStructureOnMorphisms",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddHomomorphismStructureOnMorphisms",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddHomomorphismStructureOnMorphisms",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
 #! The arguments are an object $s = H(a',b)$ in $D$,
 #! two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$ in $C$,
 #! and an object $r = H(a,b')$ in $D$.
@@ -2023,6 +2042,34 @@ DeclareOperation( "AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomo
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are the distinguished object $1$, a morphism  $\alpha: a \rightarrow a'$, and the object $r = H(a,a')$.
+#! The output is the corresponding morphism
+#! $\nu( \alpha ): 1 \rightarrow r$ in $D$ of the homomorphism structure.
+#! @Returns a morphism in $\mathrm{Hom}_{D}(1, r)$
+#! @Arguments alpha
+DeclareOperation( "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
+                  [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation <C>InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects</C>.
+#! $F: (1, \alpha: a \rightarrow a', r) \mapsto (\nu(\alpha):1 \rightarrow r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

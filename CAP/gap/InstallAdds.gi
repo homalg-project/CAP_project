@@ -208,29 +208,24 @@ InstallGlobalFunction( CapInternalInstallAdd,
             without_given_weight := CurrentOperationWeight( category!.derivations_weight_list, without_given_name );
             with_given_weight := CurrentOperationWeight( category!.derivations_weight_list, with_given_name );
             
-            if record.is_with_given = false then
+            # take the weight of the currently added function into account
+            if record.is_with_given then
                 
-                if with_given_weight <= weight then
-                    
-                    category!.redirects.( without_given_name ) := true;
-                    
-                else
-                    
-                    category!.redirects.( without_given_name ) := false;
-                    
-                fi;
+                with_given_weight := weight;
                 
             else
                 
-                if weight <= without_given_weight then
-                    
-                    category!.redirects.( without_given_name ) := true;
-                    
-                else
-                    
-                    category!.redirects.( without_given_name ) := false;
-                    
-                fi;
+                without_given_weight := weight;
+                
+            fi;
+            
+            if with_given_weight <= without_given_weight then
+                
+                category!.redirects.( without_given_name ) := true;
+                
+            else
+                
+                category!.redirects.( without_given_name ) := false;
                 
             fi;
             
@@ -579,10 +574,16 @@ InstallGlobalFunction( CapInternalInstallAdd,
     
 end );
 
-BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without_given_name, with_given_name, object_name, with_given_arguments_names, object_arguments_positions )
-  local without_given_arguments_names, with_given_via_without_given_function, without_given_via_with_given_function;
+BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without_given_rec, with_given_rec )
+  local without_given_name, with_given_name, without_given_arguments_names, with_given_arguments_names, with_given_object_position, with_given_via_without_given_function, with_given_arguments_strings, without_given_via_with_given_function;
     
-    without_given_arguments_names := with_given_arguments_names{[ 1 .. Length( with_given_arguments_names ) - 1 ]};
+    without_given_name := without_given_rec.function_name;
+    with_given_name := with_given_rec.function_name;
+    
+    without_given_arguments_names := without_given_rec.input_arguments_names;
+    with_given_arguments_names := with_given_rec.input_arguments_names;
+    
+    with_given_object_position := without_given_rec.with_given_object_position;
     
     with_given_via_without_given_function := EvalString( ReplacedStringViaRecord(
         """
@@ -599,78 +600,74 @@ BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR", function( without
         )
     ) );
     
+    if with_given_object_position = "Source" then
+        
+        with_given_arguments_strings := Concatenation( without_given_arguments_names, [ without_given_rec.output_source_getter_string ] );
+        
+    elif with_given_object_position = "Range" then
+        
+        with_given_arguments_strings := Concatenation( without_given_arguments_names, [ without_given_rec.output_range_getter_string ] );
+        
+    elif with_given_object_position = "both" then
+        
+        with_given_arguments_strings := Concatenation(
+            [ without_given_arguments_names[1] ],
+            [ without_given_rec.output_source_getter_string ],
+            without_given_arguments_names{[ 2 .. Length( without_given_arguments_names ) ]},
+            [ without_given_rec.output_range_getter_string ]
+        );
+        
+    else
+        
+        Error( "this should never happen" );
+        
+    fi;
+    
     without_given_via_with_given_function := EvalString( ReplacedStringViaRecord(
         """
         function( without_given_arguments )
             
-            return with_given_name( without_given_arguments, object_name( object_arguments ) );
+            return with_given_name( with_given_arguments );
             
         end
         """,
         rec(
             without_given_arguments := without_given_arguments_names,
+            with_given_arguments := with_given_arguments_strings,
             with_given_name := with_given_name,
-            object_name := object_name,
-            object_arguments := without_given_arguments_names{object_arguments_positions},
         )
     ) );
     
     AddDerivationToCAP( ValueGlobal( with_given_name ),
-                        [ [ ValueGlobal( without_given_name ), 1 ] ],
       with_given_via_without_given_function
-      : Description := Concatenation( with_given_name, " by calling ", without_given_name, " with the last argument dropped" ) );
+      : Description := Concatenation( with_given_name, " by calling ", without_given_name, " with the WithGiven argument(s) dropped" ) );
     
     AddDerivationToCAP( ValueGlobal( without_given_name ),
-                        [ [ ValueGlobal( with_given_name ), 1 ],
-                          [ ValueGlobal( object_name ), 1 ] ],
       without_given_via_with_given_function
-      : Description := Concatenation( without_given_name, " by calling ", with_given_name, " with ", object_name, " as last argument" ) );
+      : Description := Concatenation( without_given_name, " by calling ", with_given_name, " with the WithGiven object(s)" ) );
     
 end );
 
 BindGlobal( "CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATIONS", function( record )
-  local recnames, current_recname, current_rec, without_given_name, with_given_name, object_name, with_given_arguments_names, object_arguments_positions;
+  local recnames, current_rec, without_given_rec, with_given_rec, current_recname;
     
     recnames := RecNames( record );
     
     for current_recname in recnames do
         
         current_rec := record.(current_recname);
-
+        
         if current_rec.is_with_given then
             
-            without_given_name := current_rec.with_given_without_given_name_pair[1];
-            with_given_name := current_rec.with_given_without_given_name_pair[2];
-            object_name := current_rec.with_given_object_name;
-            with_given_arguments_names := current_rec.input_arguments_names;
-            object_arguments_positions := record.( without_given_name ).object_arguments_positions;
+            without_given_rec := record.(current_rec.with_given_without_given_name_pair[1]);
+            with_given_rec := record.(current_rec.with_given_without_given_name_pair[2]);
             
-            if record.( without_given_name ).filter_list[1] <> "category" or record.( object_name ).filter_list[1] <> "category" or record.( with_given_name ).filter_list[1] <> "category" then
-                
-                Display( Concatenation(
-                    "WARNING: You seem to be relying on automatically installed WithGiven derivations but the first arguments of the functions involved are not the category. ",
-                    "The automatic WithGiven derivation will not be installed. ",
-                    "To prevent this warning, add the category as the first argument to all functions involved. ",
-                    "Search for `category_as_first_argument` in the documentation for more details."
-                ) );
-                
-            elif Length( record.( without_given_name ).filter_list ) + 1 <> Length( record.( with_given_name ).filter_list ) then
-                
-                Display( Concatenation(
-                    "WARNING: You seem to be relying on automatically installed WithGiven derivations. ",
-                    "For this, the with given method must have exactly one additional argument compared to the without given method. ",
-                    "This is not the case, so no automatic WithGiven derivation will be installed."
-                ) );
-                
-            else
-                
-                CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR( without_given_name, with_given_name, object_name, with_given_arguments_names, object_arguments_positions );
-                
-            fi;
+            CAP_INTERNAL_INSTALL_WITH_GIVEN_DERIVATION_PAIR( without_given_rec, with_given_rec );
             
         fi;
         
     od;
+    
 end );
 
 InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD,
