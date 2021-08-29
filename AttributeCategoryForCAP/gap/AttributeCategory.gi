@@ -326,7 +326,12 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
     
     recnames := ShallowCopy( ListPrimitivelyInstalledOperationsOfCategory( underlying_category ) );
     
-    no_install_list := [
+    no_install_list :=
+           [
+            "ObjectConstructor",
+            "ObjectDatum",
+            "MorphismConstructor",
+            "MorphismDatum",
             "IsEqualForObjects",
             "IsEqualForMorphisms",
             "IsCongruentForMorphisms",
