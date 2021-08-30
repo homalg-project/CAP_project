@@ -1,0 +1,15 @@
+  
+  [1X12 [33X[0;0Ychapter name[133X[101X
+  
+  
+  [1X12.1 [33X[0;0Ysection name[133X[101X
+  
+  [1X12.1-1 Addfunction_name[101X
+  
+  [33X[1;0Y[29X[2XAddfunction_name[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ynothing[133X
+  
+  [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
+  given function [23XF[123X to the category for the basic operation [10Xfunction_name[110X. [23XF: (
+  input_arguments ) \mapsto \mathtt{function_name}(input_arguments)[123X.[133X
+  
