@@ -417,19 +417,19 @@ DeclareOperation( "AddCocartesianEvaluationForCocartesianDualWithGivenCoproduct"
 
 ##
 #! @Description
-#! The argument is a cobidual object $(a_{\vee})_{\vee}$.
+#! The argument is a an object $a$.
 #! The output is the morphism from the cobidual $(a_{\vee})_{\vee} \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}((a_{\vee})_{\vee}, a)$.
-#! @Arguments avv
+#! @Arguments a
 DeclareAttribute( "MorphismFromCocartesianBidual",
                   IsCapCategoryObject );
 
 #! @Description
-#! The arguments are an object $s = (a_{\vee})_{\vee}$,
-#! and an object $a$.
+#! The arguments are an object $a$,
+#! and an object $s = (a_{\vee})_{\vee}$.
 #! The output is the morphism from the cobidual $(a_{\vee})_{\vee} \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}((a_{\vee})_{\vee}, a)$.
-#! @Arguments s, a
+#! @Arguments a, s
 DeclareOperation( "MorphismFromCocartesianBidualWithGivenCocartesianBidual",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
@@ -437,7 +437,7 @@ DeclareOperation( "MorphismFromCocartesianBidualWithGivenCocartesianBidual",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation <C>MorphismFromCocartesianBidualWithGivenCocartesianBidual</C>.
-#! $F: ((a_{\vee})_{\vee}, a) \mapsto ((a_{\vee})_{\vee} \rightarrow a)$.
+#! $F: (a, (a_{\vee})_{\vee}) \mapsto ((a_{\vee})_{\vee} \rightarrow a)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddMorphismFromCocartesianBidualWithGivenCocartesianBidual",

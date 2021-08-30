@@ -92,7 +92,7 @@ CocartesianEvaluationForCocartesianDualWithGivenCoproduct := rec(
 MorphismFromCocartesianBidualWithGivenCocartesianBidual := rec(
   installation_name := "MorphismFromCocartesianBidualWithGivenCocartesianBidual",
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "s", "a" ], [ "s", "a" ] ],
+  io_type := [ [ "a", "s" ], [ "s", "a" ] ],
   cache_name := "MorphismFromCocartesianBidualWithGivenCocartesianBidual",
   return_type := "morphism" ),
 
