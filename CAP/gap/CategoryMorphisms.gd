@@ -1292,7 +1292,7 @@ DeclareOperation( "PreCompose",
 #! This is a convenience method.
 #! The argument is a list of morphisms
 #! $L = ( \alpha_1: a_1 \rightarrow a_2, \alpha_2: a_2 \rightarrow a_3, \dots, \alpha_n: a_n \rightarrow a_{n+1} )$.
-#! The output is the composition 
+#! The output is the composition
 #! $\alpha_{n} \circ ( \alpha_{n-1} \circ ( \dots ( \alpha_2 \circ \alpha_1 ) ) )$.
 #! @Returns a morphism in $\mathrm{Hom}(a_1, a_{n+1})$
 #! @Arguments L
@@ -1318,6 +1318,17 @@ DeclareOperation( "AddPreCompose",
 DeclareOperation( "AddPreCompose",
                   [ IsCapCategory, IsList ] );
 
+#! @Description
+#! This is a convenience method.
+#! The arguments are a category $C$ and a list of morphisms
+#! $L = ( \alpha_1: a_1 \rightarrow a_2, \alpha_2: a_2 \rightarrow a_3, \dots, \alpha_n: a_n \rightarrow a_{n+1} )$ in $C$.
+#! The output is the composition
+#! $\alpha_{n} \circ ( \alpha_{n-1} \circ ( \dots ( \alpha_2 \circ \alpha_1 ) ) )$.
+#! @Returns a morphism in $\mathrm{Hom}(a_1, a_{n+1})$
+#! @Arguments C, L
+DeclareOperation( "PreComposeList",
+                  [ IsCapCategory, IsList ] );
+
 
 #! @Description
 #! The arguments are two morphisms $\beta: b \rightarrow c$, $\alpha: a \rightarrow b$.
@@ -1331,7 +1342,7 @@ DeclareOperation( "PostCompose",
 #! This is a convenience method.
 #! The argument is a list of morphisms
 #! $L = ( \alpha_n: a_n \rightarrow a_{n+1}, \alpha_{n-1}: a_{n-1} \rightarrow a_n, \dots, \alpha_1: a_1 \rightarrow a_2 )$.
-#! The output is the composition 
+#! The output is the composition
 #! $((\alpha_{n} \circ  \alpha_{n-1}) \circ \dots  \alpha_2) \circ \alpha_1$.
 #! @Returns a morphism in $\mathrm{Hom}(a_1, a_{n+1})$
 #! @Arguments L
@@ -1355,6 +1366,17 @@ DeclareOperation( "AddPostCompose",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddPostCompose",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! This is a convenience method.
+#! The arguments are a category $C$ and a list of morphisms
+#! $L = ( \alpha_n: a_n \rightarrow a_{n+1}, \alpha_{n-1}: a_{n-1} \rightarrow a_n, \dots, \alpha_1: a_1 \rightarrow a_2 )$.
+#! The output is the composition
+#! $((\alpha_{n} \circ  \alpha_{n-1}) \circ \dots  \alpha_2) \circ \alpha_1$.
+#! @Returns a morphism in $\mathrm{Hom}(a_1, a_{n+1})$
+#! @Arguments C, L
+DeclareOperation( "PostComposeList",
                   [ IsCapCategory, IsList ] );
 
 

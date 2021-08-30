@@ -475,25 +475,24 @@ InstallMethod( PreCompose,
                [ IsList ],
                
   function( morphism_list )
-    local length, result_morphism, i;
     
-    length := Length( morphism_list );
-    
-    if length = 0 then
-      
-      Error( "non-empty list expected" );
-      
+    if IsEmpty( morphism_list ) then
+        
+        Error( "non-empty list expected" );
+        
     fi;
     
-    result_morphism := morphism_list[1];
+    return PreComposeList( CapCategory( morphism_list[1] ), morphism_list );
     
-    for i in [ 2 .. length ] do
-      
-      result_morphism := PreCompose( result_morphism, morphism_list[i] );
-      
-    od;
+end );
+
+##
+InstallMethodForCompilerForCAP( PreComposeList,
+                                [ IsCapCategory, IsList ],
+                                
+  function( cat, morphism_list )
     
-    return result_morphism;
+    return Iterated( morphism_list, { alpha, beta } -> PreCompose( cat, alpha, beta ) );
     
 end );
 
@@ -502,25 +501,24 @@ InstallMethod( PostCompose,
                [ IsList ],
                
   function( morphism_list )
-    local length, result_morphism, i;
     
-    length := Length( morphism_list );
-    
-    if length = 0 then
-      
-      Error( "non-empty list expected" );
-      
+    if IsEmpty( morphism_list ) then
+        
+        Error( "non-empty list expected" );
+        
     fi;
     
-    result_morphism := morphism_list[1];
+    return PostComposeList( CapCategory( morphism_list[1] ), morphism_list );
     
-    for i in [ 2 .. length ] do
-      
-      result_morphism := PostCompose( result_morphism, morphism_list[i] );
-      
-    od;
+end );
+
+##
+InstallMethodForCompilerForCAP( PostComposeList,
+                                [ IsCapCategory, IsList ],
+                                
+  function( cat, morphism_list )
     
-    return result_morphism;
+    return Iterated( morphism_list, { beta, alpha } -> PostCompose( cat, beta, alpha ) );
     
 end );
 
