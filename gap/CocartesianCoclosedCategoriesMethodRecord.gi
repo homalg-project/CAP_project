@@ -11,14 +11,18 @@ CoexponentialOnObjects := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "i" ] ],
   cache_name := "CoexponentialOnObjects",
-  return_type := "object" ),
+  return_type := "object",
+  dual_operation := "ExponentialOnObjects",
+  dual_arguments_reversed := true ),
 
 CoexponentialOnMorphismsWithGivenCoexponentials := rec(
   installation_name := "CoexponentialOnMorphismsWithGivenCoexponentials",
   filter_list := [ "category", "object", "morphism", "morphism", "object" ],
   io_type := [ [ "s", "alpha", "beta", "r" ], [ "s", "r" ] ],
   cache_name := "CoexponentialOnMorphismsWithGivenCoexponentials",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "ExponentialOnMorphismsWithGivenExponentials",
+  dual_arguments_reversed := true ),
 
 CocartesianEvaluationMorphismWithGivenRange := rec(
   installation_name := "CocartesianEvaluationMorphismWithGivenRange",

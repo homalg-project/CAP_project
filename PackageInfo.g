@@ -10,18 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "Toposes",
 Subtitle := "Elementary toposes",
-Version := Maximum( [
-                   "2020.11-01", ## Mohamed's version
-                   ## this line prevents merge conflicts
-                   "2019.03-16", ## Tom's version
-                   ## this line prevents merge conflicts
-                   "2019.01-29", ## Mario's version
-                   ## this line prevents merge conflicts
-                   "2021.07-01", ## Fabian's version
-                   ## this line prevents merge conflicts
-                   "2019.09-17", ## Sepp's version
-                   ] ),
-
+Version := "2021.08-01",
 Date := ~.Version{[ 1 .. 10 ]},
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
