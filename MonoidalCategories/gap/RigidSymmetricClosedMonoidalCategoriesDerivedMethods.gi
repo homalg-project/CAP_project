@@ -270,9 +270,9 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
 ##
 AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects,
                     
-  function( cat, a1, a2, b1, b2, new_source_and_range_list )
+  function( cat, source, list, range )
     
-    return Inverse( TensorProductInternalHomCompatibilityMorphismWithGivenObjects( a1, a2, b1, b2, new_source_and_range_list ) );
+    return Inverse( TensorProductInternalHomCompatibilityMorphismWithGivenObjects( source, list, range ) );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects as the inverse of TensorProductInternalHomCompatibilityMorphismWithGivenObjects" );

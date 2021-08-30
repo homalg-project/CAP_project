@@ -160,8 +160,13 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
 ##
 AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismWithGivenObjects,
                     
-  function( cat, a1, b1, a2, b2, new_source_and_range_list )
-    local morphism, int_hom_a1_b1, int_hom_a2_b2, id_a2, tensor_product_on_objects_int_hom_a1_b1_int_hom_a2_b2;
+  function( cat, source, list, range )
+    local a1, b1, a2, b2, morphism, int_hom_a1_b1, int_hom_a2_b2, id_a2, tensor_product_on_objects_int_hom_a1_b1_int_hom_a2_b2;
+    
+    a1 := list[1];
+    b1 := list[2];
+    a2 := list[3];
+    b2 := list[4];
     
     int_hom_a1_b1 := InternalHomOnObjects( a1, b1 );
     
@@ -227,7 +232,7 @@ AddDerivationToCAP( TensorProductDualityCompatibilityMorphismWithGivenObjects,
                     IsomorphismFromDualToInternalHom( object_1 ),
                     IsomorphismFromDualToInternalHom( object_2 ) ),
                   
-                  TensorProductInternalHomCompatibilityMorphism( object_1, unit, object_2, unit ),
+                  TensorProductInternalHomCompatibilityMorphism( [ object_1, unit, object_2, unit ] ),
                   
                   InternalHomOnMorphisms(
                     IdentityMorphism( tensor_product_on_object_1_and_object_2 ),
@@ -324,7 +329,7 @@ AddDerivationToCAP( MorphismFromTensorProductToInternalHomWithGivenObjects,
                IsomorphismFromObjectToInternalHom( object_2 ) ),
                 
              TensorProductInternalHomCompatibilityMorphism(
-               object_1, unit, unit, object_2 ),
+               [ object_1, unit, unit, object_2 ] ),
                 
              InternalHomOnMorphisms(
                RightUnitor( object_1 ),
@@ -460,8 +465,13 @@ end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
 ##
 AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismWithGivenObjects,
                     
-  function( cat, a1, b1, a2, b2, new_source_and_range_list )
-    local morphism, int_hom_a1_b1, int_hom_a2_b2, id_a2, tensor_product_on_objects_int_hom_a1_b1_int_hom_a2_b2;
+  function( cat, source, list, range )
+    local a1, b1, a2, b2, morphism, int_hom_a1_b1, int_hom_a2_b2, id_a2, tensor_product_on_objects_int_hom_a1_b1_int_hom_a2_b2;
+    
+    a1 := list[1];
+    b1 := list[2];
+    a2 := list[3];
+    b2 := list[4];
     
     int_hom_a1_b1 := InternalHomOnObjects( a1, b1 );
     
@@ -513,7 +523,7 @@ AddDerivationToCAP( TensorProductDualityCompatibilityMorphismWithGivenObjects,
                     IsomorphismFromDualToInternalHom( object_1 ),
                     IsomorphismFromDualToInternalHom( object_2 ) ),
                   
-                  TensorProductInternalHomCompatibilityMorphism( object_1, unit, object_2, unit ),
+                  TensorProductInternalHomCompatibilityMorphism( [ object_1, unit, object_2, unit ] ),
                   
                   IsomorphismFromInternalHomToDual( tensor_product_on_object_1_and_object_2 ) 
                 ] );
