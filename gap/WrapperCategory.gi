@@ -231,7 +231,7 @@ InstallMethod( WrapperCategory,
     properties := ListKnownCategoricalProperties( C );
     
     properties := List( properties, p -> [ p, ValueGlobal( p )( C ) ] );
-
+    
     D := CategoryConstructor( :
                  name := name,
                  category_filter := IsWrapperCapCategory,
@@ -256,6 +256,12 @@ InstallMethod( WrapperCategory,
         D!.supports_empty_limits := C!.supports_empty_limits;
         
     fi;
+    
+    D!.compiler_hints := rec(
+        category_attribute_names := [
+            "UnderlyingCategory",
+        ],
+    );
     
     SetUnderlyingCategory( D, C );
     
