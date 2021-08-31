@@ -1,0 +1,12 @@
+# Prefer GAPInfo.UserGapRoot over other package directories to prevent accidentally testing package
+# versions distributed with GAP.
+(function()
+  local name, package_info, pos;
+    for name in RecNames( GAPInfo.PackagesInfo ) do
+        package_info := GAPInfo.PackagesInfo.(name);
+        pos := PositionProperty( package_info, info -> StartsWith( info.InstallationPath, GAPInfo.UserGapRoot ) );
+        if pos <> fail then
+            SetPackagePath( name, package_info[pos].InstallationPath );
+        fi;
+    od;
+end)();
