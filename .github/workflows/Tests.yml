@@ -8,6 +8,7 @@ on:
   pull_request:
   schedule:
     - cron: "0 0 * * *"
+  workflow_dispatch:
 
 jobs:
   test:
@@ -31,6 +32,7 @@ jobs:
           sudo apt update
           sudo apt dist-upgrade -y
           sudo apt install -y texlive-latex-extra texlive-fonts-extra
+          cp ./Toposes/ci_gaprc /home/gap/.gap/gaprc
           git clone --depth 1 https://github.com/gap-packages/AutoDoc.git
           git clone --depth 1 https://github.com/homalg-project/homalg_project.git
           git clone --depth 1 https://github.com/homalg-project/CAP_project.git
