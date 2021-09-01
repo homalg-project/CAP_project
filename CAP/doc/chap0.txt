@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2021.08-03
+                                   2021.08-04
   
   
-                                 30 August 2021
+                                1 September 2021
   
   
                                Sebastian Gutsche
@@ -264,9 +264,11 @@
       3.10-3 PreCompose
       3.10-4 PreCompose
       3.10-5 AddPreCompose
-      3.10-6 PostCompose
+      3.10-6 PreComposeList
       3.10-7 PostCompose
-      3.10-8 AddPostCompose
+      3.10-8 PostCompose
+      3.10-9 AddPostCompose
+      3.10-10 PostComposeList
     3.11 [33X[0;0YWell-Definedness of Morphisms[133X
       3.11-1 IsWellDefinedForMorphisms
       3.11-2 AddIsWellDefinedForMorphisms

@@ -810,7 +810,18 @@
   given  function  [23XF[123X  to  the  category for the basic operation [10XPreCompose[110X. [23XF:
   (\alpha, \beta) \mapsto \beta \circ \alpha[123X.[133X
   
-  [1X3.10-6 PostCompose[101X
+  [1X3.10-6 PreComposeList[101X
+  
+  [33X[1;0Y[29X[2XPreComposeList[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a_1, a_{n+1})[123X[133X
+  
+  [33X[0;0YThis  is  a convenience method. The arguments are a category [23XC[123X and a list of
+  morphisms  [23XL  =  (  \alpha_1: a_1 \rightarrow a_2, \alpha_2: a_2 \rightarrow
+  a_3,  \dots,  \alpha_n:  a_n  \rightarrow  a_{n+1} )[123X in [23XC[123X. The output is the
+  composition  [23X\alpha_{n}  \circ ( \alpha_{n-1} \circ ( \dots ( \alpha_2 \circ
+  \alpha_1 ) ) )[123X.[133X
+  
+  [1X3.10-7 PostCompose[101X
   
   [33X[1;0Y[29X[2XPostCompose[102X( [3Xbeta[103X, [3Xalpha[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( a, c )[123X[133X
@@ -819,7 +830,7 @@
   \rightarrow  b[123X.  The  output  is  the  composition  [23X\beta  \circ  \alpha:  a
   \rightarrow c[123X.[133X
   
-  [1X3.10-7 PostCompose[101X
+  [1X3.10-8 PostCompose[101X
   
   [33X[1;0Y[29X[2XPostCompose[102X( [3XL[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a_1, a_{n+1})[123X[133X
@@ -829,7 +840,7 @@
   \dots,  \alpha_1:  a_1  \rightarrow  a_2  )[123X.  The  output is the composition
   [23X((\alpha_{n} \circ \alpha_{n-1}) \circ \dots \alpha_2) \circ \alpha_1[123X.[133X
   
-  [1X3.10-8 AddPostCompose[101X
+  [1X3.10-9 AddPostCompose[101X
   
   [33X[1;0Y[29X[2XAddPostCompose[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
@@ -837,6 +848,17 @@
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given  function  [23XF[123X  to  the category for the basic operation [10XPostCompose[110X. [23XF:
   (\alpha, \beta) \mapsto \alpha \circ \beta[123X.[133X
+  
+  [1X3.10-10 PostComposeList[101X
+  
+  [33X[1;0Y[29X[2XPostComposeList[102X( [3XC[103X, [3XL[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a_1, a_{n+1})[123X[133X
+  
+  [33X[0;0YThis  is  a convenience method. The arguments are a category [23XC[123X and a list of
+  morphisms  [23XL  =  (  \alpha_n: a_n \rightarrow a_{n+1}, \alpha_{n-1}: a_{n-1}
+  \rightarrow  a_n,  \dots, \alpha_1: a_1 \rightarrow a_2 )[123X. The output is the
+  composition  [23X((\alpha_{n}  \circ  \alpha_{n-1})  \circ \dots \alpha_2) \circ
+  \alpha_1[123X.[133X
   
   
   [1X3.11 [33X[0;0YWell-Definedness of Morphisms[133X[101X
