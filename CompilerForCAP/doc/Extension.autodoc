@@ -7,7 +7,8 @@ a completely new one, see <Ref Sect="Section_CompilationSteps" />.
 
 For debugging you can:
 * use <Ref Func="CapJitPrettyPrintSyntaxTree" />,
-* set `debug` to `true` in <Ref Func="CapJitCompiledFunction" /> (Note: this causes informational break loops which are not actual errors),
+* set `debug` to `true` in the code of <Ref Func="CapJitCompiledFunctionAsEnhancedSyntaxTree" />
+  (Note: this causes informational break loops which are not actual errors),
 * use the `debug` and `debug_path` record entries of logic templates (see <Ref Func="CapJitAddLogicTemplate" />).
 
 @Section Logic

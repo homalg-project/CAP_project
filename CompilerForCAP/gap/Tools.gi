@@ -185,7 +185,13 @@ InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function ( tree )
             fi;
             
             # initialize number_of_assignments per function
-            if tree.type = "EXPR_FUNC" and not IsBound( number_of_assignments[tree.id] ) then
+            if tree.type = "EXPR_FUNC" then
+                
+                if IsBound( number_of_assignments[tree.id] ) then
+                    
+                    Error( "tree contains multiple functions with the same ID" );
+                    
+                fi;
                 
                 number_of_assignments[tree.id] := rec( );
                 
