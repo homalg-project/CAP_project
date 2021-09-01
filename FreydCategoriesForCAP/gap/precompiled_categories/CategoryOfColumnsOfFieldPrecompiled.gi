@@ -15,7 +15,7 @@ end;
         
         
     
-    cat := category_constructor( field : FinalizeCategory := false );
+    cat := category_constructor( field : FinalizeCategory := false, no_precompiled_code := true );
     
     ##
     AddAdditionForMorphisms( cat,

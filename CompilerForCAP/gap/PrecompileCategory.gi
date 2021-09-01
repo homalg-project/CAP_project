@@ -265,7 +265,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     fi;
     
     # check that category_constructor supports `FinalizeCategory` and `enable_compilation`
-    cat := CallFuncList( category_constructor, given_arguments : FinalizeCategory := false, enable_compilation := true );
+    cat := CallFuncList( category_constructor, given_arguments : FinalizeCategory := false, enable_compilation := true, no_precompiled_code := true );
     
     if HasIsFinalized( cat ) then
         
@@ -351,7 +351,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         "        \n",
         "        \n",
         "    \n",
-        "    cat := category_constructor( ", parameters_string, " : FinalizeCategory := false );\n"
+        "    cat := category_constructor( ", parameters_string, " : FinalizeCategory := false, no_precompiled_code := true );\n"
     );
     output_string := Concatenation( output_string, current_string );
     
