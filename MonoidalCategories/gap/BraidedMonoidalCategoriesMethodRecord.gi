@@ -3,8 +3,8 @@ InstallValue( BRAIDED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD, rec(
 Braiding := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "s", "r" ] ],
-  output_source_getter_string := "TensorProductOnObjects( a, b )",
-  output_range_getter_string := "TensorProductOnObjects( b, a )",
+  output_source_getter_string := "TensorProductOnObjects( cat, a, b )",
+  output_range_getter_string := "TensorProductOnObjects( cat, b, a )",
   with_given_object_position := "both",
   return_type := "morphism" ),
 
@@ -16,8 +16,8 @@ BraidingWithGivenTensorProducts := rec(
 BraidingInverse := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "s", "r" ] ],
-  output_source_getter_string := "TensorProductOnObjects( b, a )",
-  output_range_getter_string := "TensorProductOnObjects( a, b )",
+  output_source_getter_string := "TensorProductOnObjects( cat, b, a )",
+  output_range_getter_string := "TensorProductOnObjects( cat, a, b )",
   with_given_object_position := "both",
   return_type := "morphism" ),
 

@@ -18,11 +18,8 @@ AddFinalDerivation( IsomorphismFromDualToInternalHom,
                       MorphismFromTensorProductToInternalHomWithGivenObjects ],
                  
   function( cat, object )
-    local category;
     
-    category := CapCategory( object );
-    
-    return IdentityMorphism( InternalHomOnObjects( object, TensorUnit( category ) ) );
+    return IdentityMorphism( cat, InternalHomOnObjects( cat, object, TensorUnit( cat ) ) );
     
 end : CategoryFilter := IsClosedMonoidalCategory,
       Description := "IsomorphismFromDualToInternalHom as the identity of Hom(a,1)" );
@@ -42,11 +39,8 @@ AddFinalDerivation( IsomorphismFromInternalHomToDual,
                       MorphismFromTensorProductToInternalHomWithGivenObjects ],
                  
   function( cat, object )
-    local category;
     
-    category := CapCategory( object );
-    
-    return IdentityMorphism( InternalHomOnObjects( object, TensorUnit( category ) ) );
+    return IdentityMorphism( cat, InternalHomOnObjects( cat, object, TensorUnit( cat ) ) );
     
 end : CategoryFilter := IsClosedMonoidalCategory,
       Description := "IsomorphismFromInternalHomToDual as the identity of Hom(a,1)" );

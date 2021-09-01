@@ -4,9 +4,9 @@ AddDerivationToCAP( Braiding,
   function( cat, object_1, object_2 )
     local source_and_range;
     
-    source_and_range := TensorProductOnObjects( object_1, object_2 );
+    source_and_range := TensorProductOnObjects( cat, object_1, object_2 );
     
-    return BraidingWithGivenTensorProducts( source_and_range, object_1, object_2, source_and_range );
+    return BraidingWithGivenTensorProducts( cat, source_and_range, object_1, object_2, source_and_range );
     
 end : CategoryFilter := IsSkeletalCategory,
       Description := "calling the WithGiven operation in a skeletal setting" );
@@ -17,9 +17,9 @@ AddDerivationToCAP( BraidingInverse,
   function( cat, object_1, object_2 )
     local source_and_range;
     
-    source_and_range := TensorProductOnObjects( object_1, object_2 );
+    source_and_range := TensorProductOnObjects( cat, object_1, object_2 );
     
-    return BraidingInverseWithGivenTensorProducts( source_and_range, object_1, object_2, source_and_range );
+    return BraidingInverseWithGivenTensorProducts( cat, source_and_range, object_1, object_2, source_and_range );
     
 end : CategoryFilter := IsSkeletalCategory,
       Description := "calling the WithGiven operation in a skeletal setting" );

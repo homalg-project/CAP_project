@@ -18,12 +18,9 @@ AddFinalDerivation( IsomorphismFromCoDualToInternalCoHom,
                       MorphismFromInternalCoHomToTensorProductWithGivenObjects
                       ],
   function( cat, object )
-    local category;
-
-    category := CapCategory( object );
-
-    return IdentityMorphism( InternalCoHomOnObjects( TensorUnit( category ), object ) );
-
+    
+    return IdentityMorphism( cat, InternalCoHomOnObjects( cat, TensorUnit( cat ), object ) );
+    
 end : CategoryFilter := IsCoclosedMonoidalCategory,
       Description := "IsomorphismFromCoDualToInternalCoHom as the identity of coHom(1,a)" );
 
@@ -43,11 +40,8 @@ AddFinalDerivation( IsomorphismFromInternalCoHomToCoDual,
                       ],
 
   function( cat, object )
-    local category;
-
-    category := CapCategory( object );
-
-    return IdentityMorphism( InternalCoHomOnObjects( TensorUnit( category ), object ) );
-
+    
+    return IdentityMorphism( cat, InternalCoHomOnObjects( cat, TensorUnit( cat ), object ) );
+    
 end : CategoryFilter := IsCoclosedMonoidalCategory,
       Description := "IsomorphismFromInternalCoHomToCoDual as the identity of coHom(1,a)" );
