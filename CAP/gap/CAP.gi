@@ -260,6 +260,9 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
 
     obj!.added_functions := rec( );
     
+    obj!.timing_statistics := rec( );
+    obj!.timing_statistics_enabled := false;
+    
     obj!.default_cache_type := CAP_INTERNAL.default_cache_type;
     
     obj!.input_sanity_check_level := 1;
@@ -721,6 +724,190 @@ InstallGlobalFunction( "EnableFullSanityChecks" ,
     EnableFullOutputSanityChecks( category );
     
 end );
+
+####################################
+##
+## Timing statistics
+##
+####################################
+
+InstallGlobalFunction( "EnableTimingStatistics",
+  function( category )
+    
+    category!.timing_statistics_enabled := true;
+    
+end );
+
+InstallGlobalFunction( "DisableTimingStatistics",
+  function( category )
+    
+    category!.timing_statistics_enabled := false;
+    
+end );
+
+InstallGlobalFunction( "ResetTimingStatistics",
+  function( category )
+    local recname;
+    
+    for recname in RecNames( category!.timing_statistics ) do
+        
+        category!.timing_statistics.(recname) := [ ];
+        
+    od;
+    
+end );
+
+BindGlobal( "CAP_INTERNAL_PREPARE_TIMING_STATISTICS_FOR_DISPLAY",
+  function( category )
+    local header, warning, operations, total_time_global, times, execs, total_time, time_per_exec, recname;
+    
+    header := Concatenation( "Timing statistics for the primitive operations of the category ", Name( category ), ":" );
+    
+    operations := [ ];
+    
+    total_time_global := 0;
+    
+    for recname in SortedList( RecNames( category!.timing_statistics ) ) do
+        
+        times := category!.timing_statistics.(recname);
+        
+        if Length( times ) > 0 then
+            
+            execs := Length( times );
+            total_time := Sum( times );
+            time_per_exec := Int( total_time / execs * 1000 );
+            
+            Add( operations, rec(
+                name := recname,
+                execs := execs,
+                total_time := total_time,
+                time_per_exec := time_per_exec,
+            ) );
+            
+            total_time_global := total_time_global + total_time;
+            
+        fi;
+        
+    od;
+    
+    if IsEmpty( operations ) then
+        
+        warning := "No timing statistics recorded, use `EnableTimingStatistics( <category> )` to enable timing statistics.";
+        
+    elif not category!.timing_statistics_enabled then
+        
+        warning := "WARNING: timing statistics for this category are disabled, so the results shown may not be up to date. Use `EnableTimingStatistics( <category> )` to enable timing statistics.";
+        
+    else
+        
+        warning := fail;
+        
+    fi;
+    
+    return rec(
+        header := header,
+        warning := warning,
+        total_time_global := total_time_global,
+        operations := operations,
+    );
+    
+end );
+
+InstallGlobalFunction( "DisplayTimingStatistics",
+  function( category )
+    local info, operation;
+    
+    info := CAP_INTERNAL_PREPARE_TIMING_STATISTICS_FOR_DISPLAY( category );
+    
+    if IsEmpty( info.operations ) then
+        
+        Display( info.warning );
+        
+        return;
+        
+    fi;
+    
+    Display( info.header );
+    
+    if info.warning <> fail then
+        
+        Display( info.warning );
+        
+    fi;
+    
+    Display( Concatenation( "Total time spent in primitive operations of this category: ", String( info.total_time_global ) , " ms" ) );
+    
+    for operation in info.operations do
+        
+        Print(
+            operation.name,
+            " was called ",
+            operation.execs,
+            " times with a total runtime of ",
+            operation.total_time,
+            " ms ( = ",
+            operation.time_per_exec,
+            " μs per execution)\n"
+        );
+        
+    od;
+    
+end );
+
+if IsPackageMarkedForLoading( "Browse", ">=0" ) and IsBound( NCurses ) and IsBound( NCurses.BrowseDenseList ) then
+    
+    InstallGlobalFunction( "BrowseTimingStatistics",
+      function( category )
+        local info, header, value_matrix, labelsRow, labelsCol, operation;
+        
+        info := CAP_INTERNAL_PREPARE_TIMING_STATISTICS_FOR_DISPLAY( category );
+        
+        if IsEmpty( info.operations ) then
+            
+            Display( info.warning );
+            
+            return;
+            
+        fi;
+        
+        header := [ info.header ];
+        
+        if info.warning <> fail then
+            
+            Add( header, info.warning );
+            
+        fi;
+        
+        Add( header, Concatenation( "Total time spent in primitive operations of this category: ", String( info.total_time_global ) , " ms" ) );
+        Add( header, "" );
+        
+        value_matrix := [ ];
+        labelsRow := [ ];
+        labelsCol := [ [ "times called", "total time (ms)", "time per execution (μs)"  ] ];
+        
+        for operation in info.operations do
+            
+            Add( labelsRow, [ operation.name ] );
+            
+            Add( value_matrix, [ operation.execs, operation.total_time, operation.time_per_exec ] );
+            
+        od;
+        
+        NCurses.BrowseDenseList( value_matrix, rec( header := header, labelsCol := labelsCol, labelsRow := labelsRow ) );
+        
+    end );
+    
+else
+    
+    InstallGlobalFunction( "BrowseTimingStatistics",
+      function( category )
+        
+        Display( "`BrowseTimingStatistics` needs the function `NCurses.BrowseDenseList`, which should be available in the package \"Browse\"." );
+        Display( "Please load \"Browse\" before/together with \"CAP\" or use `DisplayTimingStatistics( <category> )` instead." );
+        
+    end );
+    
+fi;
 
 #######################################
 ##

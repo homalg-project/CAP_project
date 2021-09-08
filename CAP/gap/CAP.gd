@@ -491,6 +491,31 @@ DeclareGlobalFunction( "EnablePartialSanityChecks" );
 DeclareGlobalFunction( "EnableFullSanityChecks" );
 #! @EndGroup
 
+####################################
+##
+#! @Section Timing statistics
+#! @SectionLabel Timing_statistics
+##
+####################################
+
+#! @BeginGroup
+#! @Description
+#!   Enable, disable, reset, display, or browse timing statistics of the primitive operations of <A>category</A>.
+#!   Caution: If a primitive operation calls another primitive operation, the runtime
+#!   of the later (including sanity checks etc.) is also included in the runtime of the former.
+#! @Arguments category
+DeclareGlobalFunction( "EnableTimingStatistics" );
+#! @Arguments category
+DeclareGlobalFunction( "DisableTimingStatistics" );
+#! @Arguments category
+DeclareGlobalFunction( "ResetTimingStatistics" );
+#! @Arguments category
+DeclareGlobalFunction( "DisplayTimingStatistics" );
+#! @Arguments category
+DeclareGlobalFunction( "BrowseTimingStatistics" );
+#! @Arguments category
+#! @EndGroup
+
 #############################################
 ##
 #! @Section Enable automatic calls of <C>Add</C>
@@ -521,7 +546,8 @@ DeclareGlobalFunction( "DisableAddForCategoricalOperations" );
 ##
 #############################################
 
-#!  CAP has several settings which can improve the performance.
+#!  For finding performance issues in primitive operations, you can collect timing statistics, see <Ref Sect="Section_Timing_statistics" />.
+#!  Additionally, CAP has several settings which can improve the performance.
 #!  In the following some of these are listed.
 #!    * <C>DeactivateCachingOfCategory</C> or <C>DeactivateDefaultCaching</C>: see <Ref Sect="Section_Caching" />.
 #!        This can either improve or degrade the performance depending on the concrete example.
