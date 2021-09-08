@@ -883,8 +883,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
             end );
             
             ##
-            AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
-              function( cat, source, mor_alpha, mor_beta, range )
+            AddHomomorphismStructureOnMorphisms( category,
+              function( cat, mor_alpha, mor_beta )
                 local alpha, beta, H_alpha_beta, composition;
                 
                 alpha := MorphismDatum( mor_alpha );

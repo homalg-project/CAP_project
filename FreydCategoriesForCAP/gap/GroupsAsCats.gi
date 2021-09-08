@@ -298,8 +298,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
             
             ## Should this function have a cache?
             ##
-            AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
-            function( source, alpha, beta, range )
+            AddHomomorphismStructureOnMorphisms( category,
+            function( alpha, beta )
                 
                 return MapOfFinSets(
                         RG,
@@ -313,8 +313,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
             
             ## Should this function have a cache?
             ##
-            AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
-            function( source, alpha, beta, range )
+            AddHomomorphismStructureOnMorphisms( category,
+            function( alpha, beta )
                 
                 return MapOfFinSets(
                         RG,

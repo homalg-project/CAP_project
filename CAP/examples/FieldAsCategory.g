@@ -184,8 +184,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FIELD_AS_CATEGORY,
         
     end );
     
-    AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
-      function( source, alpha, beta, range )
+    AddHomomorphismStructureOnMorphisms( category,
+      function( alpha, beta )
         
         return VectorSpaceMorphism( 
             tunit,
