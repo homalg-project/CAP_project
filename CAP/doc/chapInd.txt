@@ -277,6 +277,7 @@
   [2XAstrictionToCoimageWithGivenCoimage[102X, for IsCapCategoryMorphism, IsCapCategoryObject 6.14-15 
   [2XBasisOfExternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 3.16-25 
   [2XBrowseCachingStatistic[102X 9.2-18 
+  [2XBrowseTimingStatistics[102X 1.10-1 
   [2XCachingStatistic[102X 9.2-17 
   [2XCanCompute[102X, for IsCapCategory, IsString 1.5-1 
   [2XCanonicalIdentificationFromCoimageToImageObject[102X, for IsCapCategoryMorphism 6.14-27 
@@ -382,23 +383,26 @@
   [2XDirectSumFunctorialWithGivenDirectSums[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.6-38 
   [2XDirectSumOp[102X, for IsList 6.6-2 
   [2XDirectSumProjectionInPushout[102X, for IsList 6.12-11 
-  [2XDisableAddForCategoricalOperations[102X 1.10-1 
+  [2XDisableAddForCategoricalOperations[102X 1.11-1 
   [2XDisableInputSanityChecks[102X 1.9-1 
   [2XDisableOutputSanityChecks[102X 1.9-1 
   [2XDisableSanityChecks[102X 1.9-1 
+  [2XDisableTimingStatistics[102X 1.10-1 
+  [2XDisplayTimingStatistics[102X 1.10-1 
   [2XDistinguishedObjectOfHomomorphismStructure[102X, for IsCapCategory 3.16-7 
   [2XDown[102X, for IsObject 1.7-1 
   [2XDownOnlyMorphismData[102X, for IsCapCategoryMorphism 1.7-2 
   [2XDownToBottom[102X, for IsObject 1.7-3 
   [2XEmbeddingOfEqualizer[102X, for IsList 6.9-3 
   [2XEmbeddingOfEqualizerWithGivenEqualizer[102X, for IsList, IsCapCategoryObject 6.9-4 
-  [2XEnableAddForCategoricalOperations[102X 1.10-1 
+  [2XEnableAddForCategoricalOperations[102X 1.11-1 
   [2XEnableFullInputSanityChecks[102X 1.9-1 
   [2XEnableFullOutputSanityChecks[102X 1.9-1 
   [2XEnableFullSanityChecks[102X 1.9-1 
   [2XEnablePartialInputSanityChecks[102X 1.9-1 
   [2XEnablePartialOutputSanityChecks[102X 1.9-1 
   [2XEnablePartialSanityChecks[102X 1.9-1 
+  [2XEnableTimingStatistics[102X 1.10-1 
   [2XEpimorphismFromSomeProjectiveObject[102X, for IsCapCategoryObject 2.9-2 
   [2XEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[102X, for IsCapCategoryObject, IsCapCategoryObject 2.9-3 
   [2XEqualizer[102X 6.9-1 
@@ -548,8 +552,8 @@
       for IsList 6.1-15 
   [2XKernelObjectFunctorialWithGivenKernelObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 6.1-18 
       for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,IsCapCategoryMorphism, IsCapCategoryObject 6.1-17 
-  [2XLaTeXOutput[102X, for IsCapCategory 1.12-2 
-      for IsCapCategoryCell 1.12-1 
+  [2XLaTeXOutput[102X, for IsCapCategory 1.13-2 
+      for IsCapCategoryCell 1.13-1 
   [2XLift[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-9 
   [2XLiftAlongMonomorphism[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-1 
   [2XLiftOrFail[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-11 
@@ -645,6 +649,7 @@
       for IsCapCategoryTwoCell 4.1-2 
   [2XRangeOfFunctor[102X, for IsCapFunctor 5.4-4 
   [2XReevaluate[102X, for IsOperationWeightList 8.4-9 
+  [2XResetTimingStatistics[102X 1.10-1 
   [2XSaturate[102X, for IsOperationWeightList 8.4-10 
   [2XSetCachingOfCategory[102X 1.8-1 
   [2XSetCachingOfCategoryCrisp[102X 1.8-2 

@@ -92,19 +92,24 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7BB84C7B83FE3D80">1.9-1 DisableInputSanityChecks</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X81A1CDD77D375231">1.10 <span class="Heading">Enable automatic calls of <code class="code">Add</code></span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7984C0E986CF0986">1.10 <span class="Heading">Timing statistics</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7C01E3727D08D219">1.10-1 EnableAddForCategoricalOperations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X86C6F8828628B070">1.10-1 EnableTimingStatistics</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7876FF1F831F58B0">1.11 <span class="Heading">Performance tweaks</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X81A1CDD77D375231">1.11 <span class="Heading">Enable automatic calls of <code class="code">Add</code></span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7C01E3727D08D219">1.11-1 EnableAddForCategoricalOperations</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7876FF1F831F58B0">1.12 <span class="Heading">Performance tweaks</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7B6A66AA7D212DDC">1.12 <span class="Heading">LaTeX</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7B6A66AA7D212DDC">1.13 <span class="Heading">LaTeX</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X831B157D7CC3DDA3">1.12-1 LaTeXOutput</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7B34A09D7AF0F683">1.12-2 LaTeXOutput</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X831B157D7CC3DDA3">1.13-1 LaTeXOutput</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7B34A09D7AF0F683">1.13-2 LaTeXOutput</a></span>
 </div></div>
 </div>
 
@@ -443,13 +448,28 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EnableFullSanityChecks</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Most operations can perform optional sanity checks on their arguments and results. The checks can either be partial (set by default), full, or disabled. With the following commands you can either enable the full checks, the partial checks or, for performance, disable the checks altogether. You can do this for input checks, output checks or for both at once.</p>
 
+<p><a id="X7984C0E986CF0986" name="X7984C0E986CF0986"></a></p>
+
+<h4>1.10 <span class="Heading">Timing statistics</span></h4>
+
+<p><a id="X86C6F8828628B070" name="X86C6F8828628B070"></a></p>
+
+<h5>1.10-1 EnableTimingStatistics</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EnableTimingStatistics</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DisableTimingStatistics</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ResetTimingStatistics</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DisplayTimingStatistics</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BrowseTimingStatistics</code>( <var class="Arg">category</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Enable, disable, reset, display, or browse timing statistics of the primitive operations of <var class="Arg">category</var>. Caution: If a primitive operation calls another primitive operation, the runtime of the later (including sanity checks etc.) is also included in the runtime of the former.</p>
+
 <p><a id="X81A1CDD77D375231" name="X81A1CDD77D375231"></a></p>
 
-<h4>1.10 <span class="Heading">Enable automatic calls of <code class="code">Add</code></span></h4>
+<h4>1.11 <span class="Heading">Enable automatic calls of <code class="code">Add</code></span></h4>
 
 <p><a id="X7C01E3727D08D219" name="X7C01E3727D08D219"></a></p>
 
-<h5>1.10-1 EnableAddForCategoricalOperations</h5>
+<h5>1.11-1 EnableAddForCategoricalOperations</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EnableAddForCategoricalOperations</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DisableAddForCategoricalOperations</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
@@ -457,9 +477,9 @@
 
 <p><a id="X7876FF1F831F58B0" name="X7876FF1F831F58B0"></a></p>
 
-<h4>1.11 <span class="Heading">Performance tweaks</span></h4>
+<h4>1.12 <span class="Heading">Performance tweaks</span></h4>
 
-<p>CAP has several settings which can improve the performance. In the following some of these are listed.</p>
+<p>For finding performance issues in primitive operations, you can collect timing statistics, see <a href="chap1.html#X7984C0E986CF0986"><span class="RefLink">1.10</span></a>. Additionally, CAP has several settings which can improve the performance. In the following some of these are listed.</p>
 
 
 <ul>
@@ -472,7 +492,7 @@
 <li><p><code class="code">DisableSanityChecks</code>: see <a href="chap1.html#X7EC631BC7CFCF5DB"><span class="RefLink">1.9</span></a>.</p>
 
 </li>
-<li><p><code class="code">DisableAddForCategoricalOperations</code>: see <a href="chap1.html#X81A1CDD77D375231"><span class="RefLink">1.10</span></a>.</p>
+<li><p><code class="code">DisableAddForCategoricalOperations</code>: see <a href="chap1.html#X81A1CDD77D375231"><span class="RefLink">1.11</span></a>.</p>
 
 </li>
 <li><p><code class="code">DeactivateToDoList</code>: see the package <code class="code">ToolsForHomalg</code>.</p>
@@ -490,11 +510,11 @@
 </ul>
 <p><a id="X7B6A66AA7D212DDC" name="X7B6A66AA7D212DDC"></a></p>
 
-<h4>1.12 <span class="Heading">LaTeX</span></h4>
+<h4>1.13 <span class="Heading">LaTeX</span></h4>
 
 <p><a id="X831B157D7CC3DDA3" name="X831B157D7CC3DDA3"></a></p>
 
-<h5>1.12-1 LaTeXOutput</h5>
+<h5>1.13-1 LaTeXOutput</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LaTeXOutput</code>( <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a string</p>
@@ -503,7 +523,7 @@
 
 <p><a id="X7B34A09D7AF0F683" name="X7B34A09D7AF0F683"></a></p>
 
-<h5>1.12-2 LaTeXOutput</h5>
+<h5>1.13-2 LaTeXOutput</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LaTeXOutput</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a string</p>

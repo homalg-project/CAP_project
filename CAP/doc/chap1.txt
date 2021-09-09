@@ -326,9 +326,25 @@
   can do this for input checks, output checks or for both at once.[133X
   
   
-  [1X1.10 [33X[0;0YEnable automatic calls of [10XAdd[110X[101X[1X[133X[101X
+  [1X1.10 [33X[0;0YTiming statistics[133X[101X
   
-  [1X1.10-1 EnableAddForCategoricalOperations[101X
+  [1X1.10-1 EnableTimingStatistics[101X
+  
+  [33X[1;0Y[29X[2XEnableTimingStatistics[102X( [3Xcategory[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XDisableTimingStatistics[102X( [3Xcategory[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XResetTimingStatistics[102X( [3Xcategory[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XDisplayTimingStatistics[102X( [3Xcategory[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XBrowseTimingStatistics[102X( [3Xcategory[103X ) [32X function[133X
+  
+  [33X[0;0YEnable,  disable,  reset,  display,  or  browse  timing  statistics  of  the
+  primitive  operations  of  [3Xcategory[103X. Caution: If a primitive operation calls
+  another  primitive  operation,  the  runtime  of the later (including sanity
+  checks etc.) is also included in the runtime of the former.[133X
+  
+  
+  [1X1.11 [33X[0;0YEnable automatic calls of [10XAdd[110X[101X[1X[133X[101X
+  
+  [1X1.11-1 EnableAddForCategoricalOperations[101X
   
   [33X[1;0Y[29X[2XEnableAddForCategoricalOperations[102X( [3XC[103X ) [32X function[133X
   [33X[1;0Y[29X[2XDisableAddForCategoricalOperations[102X( [3XC[103X ) [32X function[133X
@@ -342,10 +358,11 @@
   output should be a morphism or a twocell).[133X
   
   
-  [1X1.11 [33X[0;0YPerformance tweaks[133X[101X
+  [1X1.12 [33X[0;0YPerformance tweaks[133X[101X
   
-  [33X[0;0YCAP has several settings which can improve the performance. In the following
-  some of these are listed.[133X
+  [33X[0;0YFor  finding  performance  issues  in  primitive operations, you can collect
+  timing  statistics,  see  [14X1.10[114X. Additionally, CAP has several settings which
+  can improve the performance. In the following some of these are listed.[133X
   
   [30X    [33X[0;6Y[10XDeactivateCachingOfCategory[110X or [10XDeactivateDefaultCaching[110X: see [14X1.8[114X. This
         can  either  improve  or  degrade  the  performance  depending  on the
@@ -358,7 +375,7 @@
   
   [30X    [33X[0;6Y[10XDisableSanityChecks[110X: see [14X1.9[114X.[133X
   
-  [30X    [33X[0;6Y[10XDisableAddForCategoricalOperations[110X: see [14X1.10[114X.[133X
+  [30X    [33X[0;6Y[10XDisableAddForCategoricalOperations[110X: see [14X1.11[114X.[133X
   
   [30X    [33X[0;6Y[10XDeactivateToDoList[110X: see the package [10XToolsForHomalg[110X.[133X
   
@@ -374,9 +391,9 @@
         have unintended effects. Use with care![133X
   
   
-  [1X1.12 [33X[0;0YLaTeX[133X[101X
+  [1X1.13 [33X[0;0YLaTeX[133X[101X
   
-  [1X1.12-1 LaTeXOutput[101X
+  [1X1.13-1 LaTeXOutput[101X
   
   [33X[1;0Y[29X[2XLaTeXOutput[102X( [3Xc[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya string[133X
@@ -384,7 +401,7 @@
   [33X[0;0YThe  argument is a cell [23Xc[123X. The output is a LaTeX string [23Xs[123X (without enclosing
   dollar signs) that may be used to print out [23Xc[123X nicely.[133X
   
-  [1X1.12-2 LaTeXOutput[101X
+  [1X1.13-2 LaTeXOutput[101X
   
   [33X[1;0Y[29X[2XLaTeXOutput[102X( [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya string[133X

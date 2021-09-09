@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2021.08-04
+                                   2021.09-01
   
   
-                                1 September 2021
+                                9 September 2021
   
   
                                Sebastian Gutsche
@@ -99,12 +99,14 @@
       1.8-3 SetDefaultCaching
     1.9 [33X[0;0YSanity checks[133X
       1.9-1 DisableInputSanityChecks
-    1.10 [33X[0;0YEnable automatic calls of [10XAdd[110X[133X
-      1.10-1 EnableAddForCategoricalOperations
-    1.11 [33X[0;0YPerformance tweaks[133X
-    1.12 [33X[0;0YLaTeX[133X
-      1.12-1 LaTeXOutput
-      1.12-2 LaTeXOutput
+    1.10 [33X[0;0YTiming statistics[133X
+      1.10-1 EnableTimingStatistics
+    1.11 [33X[0;0YEnable automatic calls of [10XAdd[110X[133X
+      1.11-1 EnableAddForCategoricalOperations
+    1.12 [33X[0;0YPerformance tweaks[133X
+    1.13 [33X[0;0YLaTeX[133X
+      1.13-1 LaTeXOutput
+      1.13-2 LaTeXOutput
   2 [33X[0;0YObjects[133X
     2.1 [33X[0;0YAttributes for the Type of Objects[133X
       2.1-1 CapCategory
