@@ -28,7 +28,7 @@ if IsPackageMarkedForLoading( "Browse", ">=0" ) and IsBound( NCurses ) and IsBou
                 continue;
             fi;
             current_cache := category!.caches.(current_cache_name);
-            if IsDisabledCache( current_cache ) then
+            if current_cache = "none" or IsDisabledCache( current_cache ) then
                 Add( value_matrix, [ "deactivated", "-", "-", "-" ] );
                 continue;
             fi;

@@ -327,8 +327,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         AddHomomorphismStructureOnObjects( category, {cat, a, b} -> ring_as_module );
         
         ##
-        AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
-          function( cat, source, alpha, beta, range )
+        AddHomomorphismStructureOnMorphisms( category,
+          function( cat, alpha, beta )
             local a, b, rows;
             
             a := UnderlyingRingElement( alpha );

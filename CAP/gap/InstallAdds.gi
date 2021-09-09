@@ -462,7 +462,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
                                 new_filter_list,
                                 
                   function( arg )
-                    local redirect_return, filter, human_readable_identifier_getter, pre_func_return, result, i, j;
+                    local redirect_return, pre_func_return, collect_timing_statistics, start_time, result, end_time, i;
                     
                     if (redirect_function <> false) and (not IsBound( category!.redirects.( function_name ) ) or category!.redirects.( function_name ) <> false) then
                         redirect_return := CallFuncList( redirect_function, arg );
@@ -497,7 +497,23 @@ InstallGlobalFunction( CapInternalInstallAdd,
                         
                     fi;
                     
+                    collect_timing_statistics := category!.timing_statistics_enabled and not is_derivation and not is_final_derivation;
+                    
+                    if collect_timing_statistics then
+                        
+                        start_time := Runtime( );
+                        
+                    fi;
+                    
                     result := CallFuncList( func_to_install, arg );
+                    
+                    if collect_timing_statistics then
+                        
+                        end_time := Runtime( );
+                        
+                        Add( category!.timing_statistics.( function_name ), end_time - start_time );
+                        
+                    fi;
                     
                     if category!.predicate_logic then
                         if record!.install_convenience_without_category then
@@ -543,6 +559,12 @@ InstallGlobalFunction( CapInternalInstallAdd,
         if not IsBound( category!.added_functions.( function_name ) ) then
             
             category!.added_functions.( function_name ) := [ ];
+            
+        fi;
+        
+        if not IsBound( category!.timing_statistics.( function_name ) ) then
+            
+            category!.timing_statistics.( function_name ) := [ ];
             
         fi;
         
