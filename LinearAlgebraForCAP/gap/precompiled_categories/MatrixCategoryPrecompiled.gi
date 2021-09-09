@@ -3,19 +3,7 @@
 #
 # Implementations
 #
-BindGlobal( "MatrixCategoryPrecompiled", function ( field )
-  local category_constructor, cat;
-    
-    category_constructor := 
-        
-        
-        function ( field )
-    return MATRIX_CATEGORY( field );
-end;
-        
-        
-    
-    cat := category_constructor( field : FinalizeCategory := false, no_precompiled_code := true );
+BindGlobal( "ADD_FUNCTIONS_FOR_MatrixCategoryPrecompiled", function ( cat )
     
     ##
     AddAdditionForMorphisms( cat,
@@ -1097,6 +1085,24 @@ end
 ########
         
     );
+    
+end );
+
+BindGlobal( "MatrixCategoryPrecompiled", function ( field )
+  local category_constructor, cat;
+    
+    category_constructor := 
+        
+        
+        function ( field )
+    return MATRIX_CATEGORY( field );
+end;
+        
+        
+    
+    cat := category_constructor( field : FinalizeCategory := false, no_precompiled_code := true );
+    
+    ADD_FUNCTIONS_FOR_MatrixCategoryPrecompiled( cat );
     
     if ValueOption( "FinalizeCategory" ) = false then
         

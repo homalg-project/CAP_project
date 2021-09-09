@@ -15,50 +15,11 @@ InstallMethod( AdditiveClosure,
                [ IsCapCategory ],
                
   function( underlying_category )
-    local precompiled_tower_constructors, constructors_in_tower, precompiled_category_getter, category, matrix_element_as_morphism, list_list_as_matrix, homalg_ring, to_be_finalized, info;
+    local category, matrix_element_as_morphism, list_list_as_matrix, homalg_ring, precompiled_towers, remaining_constructors_in_tower, precompiled_functions_adder, to_be_finalized, info;
     
     if not ( HasIsAbCategory( underlying_category ) and IsAbCategory( underlying_category ) ) then
         
         Error( "The underlying category has to be an Ab-category" );
-        
-    fi;
-    
-    # EXPERIMENTAL
-    precompiled_tower_constructors := [ ];
-    
-    if IsBound( underlying_category!.compiler_hints ) and IsBound( underlying_category!.compiler_hints.precompiled_tower_constructors ) then
-        
-        for info in underlying_category!.compiler_hints.precompiled_tower_constructors do
-            
-            constructors_in_tower := info.constructors_in_tower;
-            precompiled_category_getter := info.precompiled_category_getter;
-            
-            if constructors_in_tower[1] = "AdditiveClosure" then
-                
-                if Length( constructors_in_tower ) = 1 and ValueOption( "no_precompiled_code" ) <> true then
-                    
-                    # try to get precompiled version
-                    category := CallFuncList( precompiled_category_getter, [ underlying_category ] );
-                    
-                    if category <> fail then
-                        
-                        return category;
-                        
-                    fi;
-                    
-                else
-                    
-                    # pass information on to the next level
-                    Add( precompiled_tower_constructors, rec(
-                        constructors_in_tower := constructors_in_tower{[ 2 .. Length( constructors_in_tower ) ]},
-                        precompiled_category_getter := precompiled_category_getter,
-                    ) );
-                    
-                fi;
-                
-            fi;
-            
-        od;
         
     fi;
     
@@ -70,8 +31,6 @@ InstallMethod( AdditiveClosure,
         category_attribute_names := [
             "UnderlyingCategory",
         ],
-        # EXPERIMENTAL
-        precompiled_tower_constructors := precompiled_tower_constructors,
     );
     
     matrix_element_as_morphism := ValueOption( "matrix_element_as_morphism" );
@@ -157,6 +116,41 @@ InstallMethod( AdditiveClosure,
     fi;
     
     INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE( category );
+    
+    # EXPERIMENTAL
+    precompiled_towers := [ ];
+    
+    if IsBound( underlying_category!.compiler_hints ) and IsBound( underlying_category!.compiler_hints.precompiled_towers ) then
+        
+        for info in underlying_category!.compiler_hints.precompiled_towers do
+            
+            remaining_constructors_in_tower := info.remaining_constructors_in_tower;
+            precompiled_functions_adder := info.precompiled_functions_adder;
+            
+            if remaining_constructors_in_tower[1] = "AdditiveClosure" then
+                
+                if Length( remaining_constructors_in_tower ) = 1 and ValueOption( "no_precompiled_code" ) <> true then
+                    
+                    # add precompiled functions
+                    CallFuncList( precompiled_functions_adder, [ category ] );
+                    
+                else
+                    
+                    # pass information on to the next level
+                    Add( precompiled_towers, rec(
+                        remaining_constructors_in_tower := remaining_constructors_in_tower{[ 2 .. Length( remaining_constructors_in_tower ) ]},
+                        precompiled_functions_adder := precompiled_functions_adder,
+                    ) );
+                    
+                fi;
+                
+            fi;
+            
+        od;
+        
+    fi;
+    
+    category!.compiler_hints.precompiled_towers := precompiled_towers;
     
     to_be_finalized := ValueOption( "FinalizeCategory" );
     

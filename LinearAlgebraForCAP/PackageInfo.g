@@ -9,25 +9,10 @@
 SetPackageInfo( rec(
 
 PackageName := "LinearAlgebraForCAP",
-
 Subtitle := "Category of Matrices over a Field for CAP",
-
-Version := Maximum( [
-  "2020.05-17", ## Mohamed's version
-  ## this line prevents merge conflicts
-  "2017.12-30", ## Sebas' version
-  ## this line prevents merge conflicts
-  "2020.04-16", ## Sepp's version
-  ## this line prevents merge conflicts
-  "2021.07-01", ## Fabian's version
-  ## this line prevents merge conflicts
-  "2021.05-02", ## Kamal's version
-
-] ),
-
+Version := "2021.09-01",
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
-
 
 Persons := [
   rec(

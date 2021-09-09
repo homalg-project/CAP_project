@@ -3,20 +3,7 @@
 #
 # Implementations
 #
-BindGlobal( "OppositeOfMatrixCategoryPrecompiled", function ( field )
-  local category_constructor, cat;
-    
-    category_constructor := 
-        
-        
-        function ( field )
-    return Opposite( MATRIX_CATEGORY( field : FinalizeCategory := true,
-          enable_compilation := false ) );
-end;
-        
-        
-    
-    cat := category_constructor( field : FinalizeCategory := false, no_precompiled_code := true );
+BindGlobal( "ADD_FUNCTIONS_FOR_OppositeOfMatrixCategoryPrecompiled", function ( cat )
     
     ##
     AddAdditionForMorphisms( cat,
@@ -614,6 +601,25 @@ end
 ########
         
     );
+    
+end );
+
+BindGlobal( "OppositeOfMatrixCategoryPrecompiled", function ( field )
+  local category_constructor, cat;
+    
+    category_constructor := 
+        
+        
+        function ( field )
+    return Opposite( MATRIX_CATEGORY( field : FinalizeCategory := true,
+          enable_compilation := false ) );
+end;
+        
+        
+    
+    cat := category_constructor( field : FinalizeCategory := false, no_precompiled_code := true );
+    
+    ADD_FUNCTIONS_FOR_OppositeOfMatrixCategoryPrecompiled( cat );
     
     if ValueOption( "FinalizeCategory" ) = false then
         

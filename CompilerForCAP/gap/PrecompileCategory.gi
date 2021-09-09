@@ -255,8 +255,8 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     fi;
     
     # check if category_constructor returns a new instance of the category every time
-    cat1 := CallFuncList( category_constructor, given_arguments );
-    cat2 := CallFuncList( category_constructor, given_arguments );
+    cat1 := CallFuncList( category_constructor, given_arguments : no_precompiled_code := true );
+    cat2 := CallFuncList( category_constructor, given_arguments : no_precompiled_code := true );
     
     if IsIdenticalObj( cat1, cat2 ) then
         
@@ -345,17 +345,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         "#\n",
         "# Implementations\n",
         "#\n",
-        "BindGlobal( \"", compiled_category_name, "\", function ( ", parameters_string, " )\n",
-        "  local category_constructor, cat;\n",
-        "    \n",
-        "    category_constructor := \n",
-        "        \n",
-        "        \n",
-        "        ", CapJitPrettyPrintFunction( category_constructor ), ";\n",
-        "        \n",
-        "        \n",
-        "    \n",
-        "    cat := category_constructor( ", parameters_string, " : FinalizeCategory := false, no_precompiled_code := true );\n"
+        "BindGlobal( \"ADD_FUNCTIONS_FOR_", compiled_category_name, "\", function ( cat )\n"
     );
     output_string := Concatenation( output_string, current_string );
     
@@ -519,6 +509,22 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     od;
     
     current_string := Concatenation(
+        "    \n",
+        "end );\n",
+        "\n",
+        "BindGlobal( \"", compiled_category_name, "\", function ( ", parameters_string, " )\n",
+        "  local category_constructor, cat;\n",
+        "    \n",
+        "    category_constructor := \n",
+        "        \n",
+        "        \n",
+        "        ", CapJitPrettyPrintFunction( category_constructor ), ";\n",
+        "        \n",
+        "        \n",
+        "    \n",
+        "    cat := category_constructor( ", parameters_string, " : FinalizeCategory := false, no_precompiled_code := true );\n",
+        "    \n",
+        "    ADD_FUNCTIONS_FOR_", compiled_category_name, "( cat );\n",
         "    \n",
         "    if ValueOption( \"FinalizeCategory\" ) = false then\n",
         "        \n",
