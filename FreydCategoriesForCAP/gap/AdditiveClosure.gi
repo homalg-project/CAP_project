@@ -236,7 +236,7 @@ InstallMethod( AdditiveClosureMorphismListList,
     
     category := CapCategory( source );
     
-    matrix := category!.list_list_as_matrix( listlist, Size( ObjectList( source ) ), Size( ObjectList( range ) ) );
+    matrix := category!.list_list_as_matrix( listlist, Length( ObjectList( source ) ), Length( ObjectList( range ) ) );
     
     return AdditiveClosureMorphism( source, matrix, range );
     
@@ -329,7 +329,7 @@ InstallMethod( NrRows,
         
     else
         
-        return Size( ObjectList( Source( morphism ) ) );
+        return Length( ObjectList( Source( morphism ) ) );
         
     fi;
     
@@ -348,7 +348,7 @@ InstallMethod( NrCols,
         
     else
         
-        return Size( ObjectList( Range( morphism ) ) );
+        return Length( ObjectList( Range( morphism ) ) );
         
     fi;
     
@@ -579,7 +579,7 @@ InstallMethod( \[\],
     
     obj_list := ObjectList( object );
     
-    if i < 1 or i > Size( obj_list ) then
+    if i < 1 or i > Length( obj_list ) then
         Error( "bad index!\n" );
     fi;
     
@@ -631,9 +631,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
       function( cat, morphism )
         local nr_rows, nr_cols, source_list, range_list;
         
-        nr_rows := Size( ObjectList( Source( morphism ) ) );
+        nr_rows := Length( ObjectList( Source( morphism ) ) );
         
-        nr_cols := Size( ObjectList( Range( morphism ) ) );
+        nr_cols := Length( ObjectList( Range( morphism ) ) );
         
         if IsMatrixObj( MorphismMatrix( morphism ) ) then
             
@@ -693,9 +693,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
         list_2 := ObjectList( object_2 );
         
-        size_1 := Size( list_1 );
+        size_1 := Length( list_1 );
         
-        size_2 := Size( list_2 );
+        size_2 := Length( list_2 );
         
         if size_1 <> size_2 then
             
@@ -767,7 +767,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
         object_list := ObjectList( object );
         
-        size := Size( object_list );
+        size := Length( object_list );
         
         listlist := List( [ 1 .. size ], i ->
                         List( [ 1 .. size ], function( j )
@@ -798,9 +798,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
         object_list_range := ObjectList( range );
         
-        size_list_source := Size( object_list_source );
+        size_list_source := Length( object_list_source );
         
-        size_list_range := Size( object_list_range );
+        size_list_range := Length( object_list_range );
         
         listlist := List( [ 1 .. size_list_source ], i ->
                         List( [ 1 .. size_list_range ], j ->
@@ -1082,9 +1082,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                 
                 obj_list_B := ObjectList( B );
                 
-                size_i := Size( obj_list_A );
+                size_i := Length( obj_list_A );
                 
-                size_j := Size( obj_list_B );
+                size_j := Length( obj_list_B );
                 
                 if size_i = 0 or size_j = 0 then
                     
@@ -1149,7 +1149,7 @@ InstallMethod( ViewObj,
           [ IsAdditiveClosureObject ],
   function( object )
     Print( "<An object in ", Name( CapCategory( object ) ),
-            " defined by ", Size( ObjectList( object ) ), " underlying objects>"
+            " defined by ", Length( ObjectList( object ) ), " underlying objects>"
             );
 end );
 
@@ -1189,7 +1189,7 @@ InstallMethod( Display,
     
     object_list := ObjectList( object );
     
-    Print( Concatenation( "A formal direct sum consisting of ", String( Size( object_list ) ), " objects.\n" ) );
+    Print( Concatenation( "A formal direct sum consisting of ", String( Length( object_list ) ), " objects.\n" ) );
     
     for obj in object_list do
         
