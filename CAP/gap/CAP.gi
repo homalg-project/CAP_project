@@ -595,6 +595,7 @@ InstallMethod( CreateCapCategory,
     category!.enable_compilation := enable_compilation;
 
     category!.compiled_functions := rec( );
+    category!.compiled_functions_trees := rec( );
     
     CREATE_CAP_CATEGORY_FILTERS( category );
     

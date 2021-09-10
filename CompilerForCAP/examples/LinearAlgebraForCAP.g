@@ -59,8 +59,8 @@ Display( SYNTAX_TREE_CODE( tree2 ) );
 #!            function ( logic_new_func_x_2, logic_new_func_y_2 )
 #!                 return UnionOfColumns( UnderlyingRing( cat_1 ), 
 #!                    Dimension( logic_new_func_x_2 ), 
-#!                    List( logic_new_func_y_2, function ( s_2_3 )
-#!                           return UnderlyingMatrix( s_2_3 );
+#!                    List( logic_new_func_y_2, function ( s_3 )
+#!                           return UnderlyingMatrix( s_3 );
 #!                       end ) );
 #!             end ) ) );
 #! end

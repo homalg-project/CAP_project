@@ -588,11 +588,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, a
             
         od;
         
-        if IsBound( template.src_template_tree ) then
-            
-            src_template_tree := template.src_template_tree;
-            
-        else
+        if not IsBound( template.src_template_tree ) then
             
             # to get a syntax tree we have to wrap the template in a function
             if template.returns_value then
@@ -605,13 +601,16 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, a
                 
             fi;
             
+            # we have to take EXPR_CONDITIONAL into account
+            src_template_tree := CapJitDetectedTernaryConditionalExpressions( src_template_tree );
+            
+            template.src_template_tree := src_template_tree;
+            
         fi;
         
-        if IsBound( template.dst_template_tree ) then
-            
-            dst_template_tree := template.dst_template_tree;
-            
-        else
+        src_template_tree := template.src_template_tree;
+        
+        if not IsBound( template.dst_template_tree ) then
             
             # to get a syntax tree we have to wrap the template in a function
             if template.returns_value then
@@ -624,7 +623,15 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, a
                 
             fi;
             
+            # this is not strictly necessary but still do it for symmetry with src_template_tree
+            # this might also improve the performance
+            dst_template_tree := CapJitDetectedTernaryConditionalExpressions( dst_template_tree );
+            
+            template.dst_template_tree := dst_template_tree;
+            
         fi;
+        
+        dst_template_tree := template.dst_template_tree;
         
         while true do
             

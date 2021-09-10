@@ -138,44 +138,6 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 
             fi;
             
-            # detect EXPR_CONDITIONAL (before unifying lvar and hvar handling)
-            if tree.type = "STAT_IF_ELSE" then
-                
-                Assert( 0, Length( tree.branches ) = 2 );
-                Assert( 0, tree.branches[2].condition.type = "EXPR_TRUE" );
-                
-                body_if_true := tree.branches[1].body;
-                body_if_false := tree.branches[2].body;
-                
-                if body_if_true.type = "STAT_RETURN_OBJ" and body_if_false.type = "STAT_RETURN_OBJ" then
-                    
-                    tree := rec(
-                        type := "STAT_RETURN_OBJ",
-                        obj := rec(
-                            type := "EXPR_CONDITIONAL",
-                            condition := tree.branches[1].condition,
-                            expr_if_true := body_if_true.obj,
-                            expr_if_false := body_if_false.obj,
-                        ),
-                    );
-                    
-                elif body_if_true.type = "STAT_ASS_LVAR" and body_if_false.type = "STAT_ASS_LVAR" and body_if_true.lvar = body_if_false.lvar then
-                    
-                    tree := rec(
-                        type := "STAT_ASS_LVAR",
-                        lvar := body_if_true.lvar,
-                        rhs := rec(
-                            type := "EXPR_CONDITIONAL",
-                            condition := tree.branches[1].condition,
-                            expr_if_true := body_if_true.rhs,
-                            expr_if_false := body_if_false.rhs,
-                        ),
-                    );
-                    
-                fi;
-                
-            fi;
-            
             # assign IDs to functions
             if tree.type = "EXPR_FUNC" then
                 

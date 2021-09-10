@@ -21,6 +21,19 @@ InstallGlobalFunction( ContinueCompilationAtCategory, function ( category )
 end );
 
 InstallGlobalFunction( CapJitCompiledFunction, function ( func, jit_args )
+    
+    if IsOperation( func ) or IsKernelFunction( func ) then
+        
+        Info( InfoCapJit, 1, "<func> is a operation or kernel function, this is not supported yet." );
+        return func;
+        
+    fi;
+    
+    return ENHANCED_SYNTAX_TREE_CODE( CapJitCompiledFunctionAsEnhancedSyntaxTree( func, jit_args ) );
+    
+end );
+
+InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( func, jit_args )
   local debug, tree, orig_tree, compiled_func;
     
     Info( InfoCapJit, 1, "####" );
@@ -28,8 +41,7 @@ InstallGlobalFunction( CapJitCompiledFunction, function ( func, jit_args )
     
     if IsOperation( func ) or IsKernelFunction( func ) then
         
-        Info( InfoCapJit, 1, "<func> is a operation or kernel function, this is not supported yet." );
-        return func;
+        Error( "<func> is a operation or kernel function, this is not supported yet." );
         
     fi;
     
@@ -197,6 +209,14 @@ InstallGlobalFunction( CapJitCompiledFunction, function ( func, jit_args )
         
         tree := CapJitInlinedVariableAssignments( tree );
         
+        if debug then
+            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
+            Display( compiled_func );
+            Error( "apply CapJitDetectedTernaryConditionalExpressions" );
+        fi;
+        
+        tree := CapJitDetectedTernaryConditionalExpressions( tree );
+        
     od;
     
     # post-processing
@@ -233,11 +253,9 @@ InstallGlobalFunction( CapJitCompiledFunction, function ( func, jit_args )
         
     fi;
     
-    compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-    
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Compilation finished." );
     
-    return compiled_func;
+    return tree;
     
 end );

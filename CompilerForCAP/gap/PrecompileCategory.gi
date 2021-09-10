@@ -246,7 +246,7 @@ BindGlobal( "CAP_JIT_INTERNAL_SAFE_OPERATIONS", [
 ] );
 
 InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_constructor, given_arguments, package_name, compiled_category_name )
-  local cat1, cat2, cat, obj, mor, operations, diff, output_string, package_info, parameters_string, current_string, object_name, example_input, without_given_name, without_given_rec, with_given_object_position, source, range, index, compiled_func, compiled_tree, function_string, filter_list, function_name, current_rec;
+  local cat1, cat2, cat, obj, mor, operations, diff, output_string, package_info, parameters_string, current_string, object_name, example_input, without_given_name, without_given_rec, with_given_object_position, source, range, index, function_to_compile, compiled_tree, compiled_func, function_string, filter_list, function_name, current_rec;
     
     if IsOperation( category_constructor ) or IsKernelFunction( category_constructor ) then
         
@@ -468,22 +468,32 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
             
         fi;
         
-        if IsBound( cat!.compiled_functions.(function_name)[index] ) then
+        function_to_compile := cat!.added_functions.(function_name)[index][1];
+        
+        if IsOperation( function_to_compile ) or IsKernelFunction( function_to_compile ) then
             
-            compiled_func := cat!.compiled_functions.(function_name)[index];
-            
-        else
-            
-            compiled_func := CapJitCompiledFunction( cat!.added_functions.(function_name)[index][1], example_input );
-            
-            cat!.compiled_functions.(function_name)[index] := compiled_func;
+            Error( "Precompiling operations or kernel functions is not supported." );
             
         fi;
         
+        if not IsBound( cat!.compiled_functions_trees.(function_name)[index] ) then
+            
+            cat!.compiled_functions_trees.(function_name)[index] := CapJitCompiledFunctionAsEnhancedSyntaxTree( function_to_compile, example_input );
+            
+        fi;
+        
+        compiled_tree := cat!.compiled_functions_trees.(function_name)[index];
+        
         # change names of arguments
-        compiled_tree := SYNTAX_TREE( compiled_func );
-        compiled_tree.nams := Concatenation( List( current_rec.input_arguments_names, name -> Concatenation( name, "_1" ) ), compiled_tree.nams{[ compiled_tree.narg + 1 .. compiled_tree.narg + compiled_tree.nloc ]} );
-        compiled_func := SYNTAX_TREE_CODE( compiled_tree );
+        compiled_tree := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID(
+            compiled_tree,
+            compiled_tree.id,
+            compiled_tree.id,
+            compiled_tree.nams,
+            Concatenation( current_rec.input_arguments_names, compiled_tree.nams{[ compiled_tree.narg + 1 .. compiled_tree.narg + compiled_tree.nloc ]} )
+        );
+        
+        compiled_func := ENHANCED_SYNTAX_TREE_CODE( compiled_tree );
         
         function_string := CapJitPrettyPrintFunction( compiled_func );
         

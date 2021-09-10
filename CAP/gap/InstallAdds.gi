@@ -571,6 +571,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
         if not IsBound( category!.compiled_functions.( function_name ) ) then
             
             category!.compiled_functions.( function_name ) := [ ];
+            category!.compiled_functions_trees.( function_name ) := [ ];
             
         fi;
         

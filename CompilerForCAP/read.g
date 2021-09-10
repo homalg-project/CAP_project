@@ -24,6 +24,8 @@ ReadPackage( "CompilerForCAP", "gap/DropUnusedVariables.gi" );
 
 ReadPackage( "CompilerForCAP", "gap/InlineVariableAssignments.gi" );
 
+ReadPackage( "CompilerForCAP", "gap/DetectTernaryConditionalExpressions.gi" );
+
 ReadPackage( "CompilerForCAP", "gap/ResolveGlobalVariables.gi" );
 
 ReadPackage( "CompilerForCAP", "gap/DropHandledEdgeCases.gi" );

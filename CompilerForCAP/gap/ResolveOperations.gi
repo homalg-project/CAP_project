@@ -163,41 +163,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
             
         fi;
         
-        if IsBound( category!.compiled_functions.(operation_name)[index] ) then
-            
-            Info( InfoCapJit, 1, Concatenation( "Taking compiled function with index ", String( index ), "." ) );
-            
-            func_to_resolve := category!.compiled_functions.(operation_name)[index];
-            
-        else
-            
-            Info( InfoCapJit, 1, Concatenation( "Taking added function with index ", String( index ), "." ) );
-            
-            if not tree.variadic and Length( jit_args ) = tree.narg then
-                
-                result := CapJitGetFunctionCallArgumentsFromJitArgs( tree, path, jit_args );
-                
-            else
-                
-                result := [ false ];
-                
-            fi;
-            
-            if result[1] = false then
-                
-                example_input := [ category ];
-                
-            else
-                
-                example_input := result[2];
-                
-            fi;
-            
-            func_to_resolve := CapJitCompiledFunction( category!.added_functions.(operation_name)[index][1], example_input );
-            
-            category!.compiled_functions.(operation_name)[index] := func_to_resolve;
-            
-        fi;
+        func_to_resolve := category!.added_functions.(operation_name)[index][1];
         
         if IsOperation( func_to_resolve ) or IsKernelFunction( func_to_resolve ) then
             
@@ -226,7 +192,41 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
             
         else
             
-            resolved_tree := ENHANCED_SYNTAX_TREE( func_to_resolve : globalize_hvars := true, given_arguments := [ category ] );
+            if IsBound( category!.compiled_functions_trees.(operation_name)[index] ) then
+                
+                Info( InfoCapJit, 1, Concatenation( "Taking compiled function with index ", String( index ), "." ) );
+                
+                resolved_tree := CapJitCopyWithNewFunctionIDs( category!.compiled_functions_trees.(operation_name)[index] );
+                
+            else
+                
+                Info( InfoCapJit, 1, Concatenation( "Taking added function with index ", String( index ), "." ) );
+                
+                if not tree.variadic and Length( jit_args ) = tree.narg then
+                    
+                    result := CapJitGetFunctionCallArgumentsFromJitArgs( tree, path, jit_args );
+                    
+                else
+                    
+                    result := [ false ];
+                    
+                fi;
+                
+                if result[1] = false then
+                    
+                    example_input := [ category ];
+                    
+                else
+                    
+                    example_input := result[2];
+                    
+                fi;
+                
+                resolved_tree := CapJitCompiledFunctionAsEnhancedSyntaxTree( func_to_resolve, example_input );
+                
+                category!.compiled_functions_trees.(operation_name)[index] := resolved_tree;
+                
+            fi;
             
             if funccall_does_not_return_fail then
                 

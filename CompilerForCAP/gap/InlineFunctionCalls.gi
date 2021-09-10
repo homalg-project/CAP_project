@@ -97,7 +97,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID, function ( tree,
         if IsList( result ) then
             
             return result;
-
+            
         elif IsRecord( result ) then
             
             tree := ShallowCopy( tree );
@@ -105,9 +105,18 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID, function ( tree,
             for key in RecNames( result ) do
                 
                 tree.(key) := result.(key);
-
+                
             od;
-
+            
+            if tree.type = "EXPR_FUNC" and tree.id = source_func_id then
+                
+                Assert( 0, tree.nams = old_nams );
+                
+                tree.id := target_func_id;
+                tree.nams := new_nams;
+                
+            fi;
+            
             if PositionSublist( tree.type, "FVAR" ) <> fail then
                 
                 if tree.func_id = source_func_id then
@@ -131,7 +140,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID, function ( tree,
         fi;
         
     end;
-
+    
     return CapJitIterateOverTree( tree, ReturnFirst, result_func, ReturnTrue, true );
     
 end );

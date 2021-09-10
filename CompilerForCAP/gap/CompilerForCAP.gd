@@ -26,7 +26,7 @@ DeclareInfoClass( "InfoCapJit" );
 #! @Section Compiling a function manually
 
 #! @Description
-#!   Returns a compiled version of the function <A>func</A>.
+#!   Returns a compiled version of the function <A>func</A> (if <A>func</A> is an operation or a kernel function, it is returned unchanged).
 #!   The list of arguments <A>jit_args</A> is used to infer the types of variables.
 #!   If <A>jit_args</A> is shorter than the number of arguments accepted by <A>func</A>,
 #!   all steps which require knowledge about the types of variables are skipped.
@@ -35,3 +35,10 @@ DeclareInfoClass( "InfoCapJit" );
 #! @Returns a function
 #! @Arguments func, jit_args
 DeclareGlobalFunction( "CapJitCompiledFunction" );
+
+#! @Description
+#!   Like <Ref Func="CapJitCompiledFunction" />, but returns an enhanced syntax tree of the compiled function.
+#!   <A>func</A> must not be an operation or a kernel function because those cannot properly be represented as a syntax tree.
+#! @Returns a record
+#! @Arguments func, jit_args
+DeclareGlobalFunction( "CapJitCompiledFunctionAsEnhancedSyntaxTree" );

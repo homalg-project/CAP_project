@@ -247,10 +247,10 @@ end
 ########
 function ( cat_1, objects_1, k_1 )
     local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := UnionOfColumns( HomalgZeroMatrix( Dimension( objects_1[k_1] ), Sum( objects_1{[ 1 .. k_1 - 1 ]}, function ( c_2_2 )
-                return Dimension( c_2_2 );
-            end ), UnderlyingRing( cat_1 ) ), HomalgIdentityMatrix( Dimension( objects_1[k_1] ), UnderlyingRing( cat_1 ) ), HomalgZeroMatrix( Dimension( objects_1[k_1] ), Sum( objects_1{[ k_1 + 1 .. Length( objects_1 ) ]}, function ( c_2_2 )
-                return Dimension( c_2_2 );
+    cap_jit_morphism_attribute_1 := UnionOfColumns( HomalgZeroMatrix( Dimension( objects_1[k_1] ), Sum( objects_1{[ 1 .. k_1 - 1 ]}, function ( c_2 )
+                return Dimension( c_2 );
+            end ), UnderlyingRing( cat_1 ) ), HomalgIdentityMatrix( Dimension( objects_1[k_1] ), UnderlyingRing( cat_1 ) ), HomalgZeroMatrix( Dimension( objects_1[k_1] ), Sum( objects_1{[ k_1 + 1 .. Length( objects_1 ) ]}, function ( c_2 )
+                return Dimension( c_2 );
             end ), UnderlyingRing( cat_1 ) ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, objects_1[k_1], ObjectifyObjectForCAPWithAttributes( rec(
@@ -841,10 +841,10 @@ end
 ########
 function ( cat_1, objects_1, k_1 )
     local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := UnionOfRows( HomalgZeroMatrix( Sum( objects_1{[ 1 .. k_1 - 1 ]}, function ( c_2_2 )
-                return Dimension( c_2_2 );
-            end ), Dimension( objects_1[k_1] ), UnderlyingRing( cat_1 ) ), HomalgIdentityMatrix( Dimension( objects_1[k_1] ), UnderlyingRing( cat_1 ) ), HomalgZeroMatrix( Sum( objects_1{[ k_1 + 1 .. Length( objects_1 ) ]}, function ( c_2_2 )
-                return Dimension( c_2_2 );
+    cap_jit_morphism_attribute_1 := UnionOfRows( HomalgZeroMatrix( Sum( objects_1{[ 1 .. k_1 - 1 ]}, function ( c_2 )
+                return Dimension( c_2 );
+            end ), Dimension( objects_1[k_1] ), UnderlyingRing( cat_1 ) ), HomalgIdentityMatrix( Dimension( objects_1[k_1] ), UnderlyingRing( cat_1 ) ), HomalgZeroMatrix( Sum( objects_1{[ k_1 + 1 .. Length( objects_1 ) ]}, function ( c_2 )
+                return Dimension( c_2 );
             end ), Dimension( objects_1[k_1] ), UnderlyingRing( cat_1 ) ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
@@ -922,8 +922,8 @@ end
 ########
 function ( cat_1, objects_1, T_1, tau_1 )
     local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := UnionOfRows( UnderlyingRing( cat_1 ), Dimension( T_1 ), List( tau_1, function ( s_2_2 )
-              return UnderlyingMatrix( s_2_2 );
+    cap_jit_morphism_attribute_1 := UnionOfRows( UnderlyingRing( cat_1 ), Dimension( T_1 ), List( tau_1, function ( s_2 )
+              return UnderlyingMatrix( s_2 );
           end ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
@@ -980,8 +980,8 @@ end
 ########
 function ( cat_1, objects_1, T_1, tau_1 )
     local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := UnionOfColumns( UnderlyingRing( cat_1 ), Dimension( T_1 ), List( tau_1, function ( s_2_2 )
-              return UnderlyingMatrix( s_2_2 );
+    cap_jit_morphism_attribute_1 := UnionOfColumns( UnderlyingRing( cat_1 ), Dimension( T_1 ), List( tau_1, function ( s_2 )
+              return UnderlyingMatrix( s_2 );
           end ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, T_1, ObjectifyObjectForCAPWithAttributes( rec(
