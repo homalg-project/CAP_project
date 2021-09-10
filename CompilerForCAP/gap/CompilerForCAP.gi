@@ -197,6 +197,14 @@ InstallGlobalFunction( CapJitCompiledFunction, function ( func, jit_args )
         
         tree := CapJitInlinedVariableAssignments( tree );
         
+        if debug then
+            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
+            Display( compiled_func );
+            Error( "apply CapJitDetectedTernaryConditionalExpressions" );
+        fi;
+        
+        tree := CapJitDetectedTernaryConditionalExpressions( tree );
+        
     od;
     
     # post-processing

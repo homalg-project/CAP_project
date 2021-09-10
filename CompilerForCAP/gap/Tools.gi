@@ -342,7 +342,10 @@ InstallGlobalFunction( CapJitRemovedReturnFail, function ( tree )
     Assert( 0, tree.type = "EXPR_FUNC" );
     
     tree := StructuralCopy( tree );
-
+    
+    # we want to rely on EXPR_CONDITIONAL below
+    tree := CapJitDetectedTernaryConditionalExpressions( tree );
+    
     found_return_fail := false;
     
     tree.stats.statements := Concatenation( List( [ 1 .. Length( tree.stats.statements ) ], function ( i )
@@ -382,30 +385,6 @@ InstallGlobalFunction( CapJitRemovedReturnFail, function ( tree )
                     obj := statement.obj.expr_if_false,
                 )
             ];
-            
-        fi;
-        
-        # detect "if ... then var := fail; else var := fi; return var" (as EXPR_CONDITIONAL)
-        if statement.type = "STAT_ASS_FVAR" and statement.rhs.type = "EXPR_CONDITIONAL" and statement.rhs.expr_if_true.type = "EXPR_REF_GVAR" and statement.rhs.expr_if_true.gvar = "fail" and i < Length( tree.stats.statements ) then
-            
-            # check if next statement is "return var"
-            next_statement := tree.stats.statements[i + 1];
-            
-            if next_statement.type = "STAT_RETURN_OBJ" and next_statement.obj.type = "EXPR_REF_FVAR" and next_statement.obj.func_id = statement.func_id and next_statement.obj.name = statement.name then
-                
-                found_return_fail := true;
-                
-                return [
-                    rec(
-                        type := "STAT_ASS_FVAR",
-                        func_id := statement.func_id,
-                        name := statement.name,
-                        initial_name := statement.initial_name,
-                        rhs := statement.rhs.expr_if_false,
-                    )
-                ];
-                
-            fi;
             
         fi;
         
