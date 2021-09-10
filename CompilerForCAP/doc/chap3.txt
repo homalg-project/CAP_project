@@ -54,8 +54,8 @@
     [4X[28X           function ( logic_new_func_x_2, logic_new_func_y_2 )[128X[104X
     [4X[28X                return UnionOfColumns( UnderlyingRing( cat_1 ), [128X[104X
     [4X[28X                   Dimension( logic_new_func_x_2 ), [128X[104X
-    [4X[28X                   List( logic_new_func_y_2, function ( s_2_3 )[128X[104X
-    [4X[28X                          return UnderlyingMatrix( s_2_3 );[128X[104X
+    [4X[28X                   List( logic_new_func_y_2, function ( s_3 )[128X[104X
+    [4X[28X                          return UnderlyingMatrix( s_3 );[128X[104X
     [4X[28X                      end ) );[128X[104X
     [4X[28X            end ) ) );[128X[104X
     [4X[28Xend[128X[104X
@@ -169,36 +169,17 @@
     [4X[25Xgap>[125X [27Xfunc2 := function( x )[127X[104X
     [4X[25X>[125X [27X    #% CAP_JIT_RESOLVE_FUNCTION[127X[104X
     [4X[25X>[125X [27X    if x = 1 then return fail; else return 1; fi; end;;[127X[104X
-    [4X[25Xgap>[125X [27X# we have to work hard to not write semicolons so AutoDoc[127X[104X
-    [4X[25X>[125X [27X# does not begin a new statement[127X[104X
-    [4X[25X>[125X [27Xfunc3 := EvalString( ReplacedString( """function( x )[127X[104X
-    [4X[25X>[125X [27X    local y@[127X[104X
-    [4X[25X>[125X [27X    #% CAP_JIT_RESOLVE_FUNCTION[127X[104X
-    [4X[25X>[125X [27X    if x = 1 then[127X[104X
-    [4X[25X>[125X [27X        y := fail@[127X[104X
-    [4X[25X>[125X [27X    else[127X[104X
-    [4X[25X>[125X [27X        y := 1@[127X[104X
-    [4X[25X>[125X [27X    fi@[127X[104X
-    [4X[25X>[125X [27X    return y@[127X[104X
-    [4X[25X>[125X [27Xend""", "@", ";" ) );;[127X[104X
     [4X[25Xgap>[125X [27Xcall_func1 := function( x )[127X[104X
     [4X[25X>[125X [27X    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL[127X[104X
     [4X[25X>[125X [27X    return func1( x ); end;;[127X[104X
     [4X[25Xgap>[125X [27Xcall_func2 := function( x )[127X[104X
     [4X[25X>[125X [27X    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL[127X[104X
     [4X[25X>[125X [27X    return func2( x ); end;;[127X[104X
-    [4X[25Xgap>[125X [27Xcall_func3 := function( x )[127X[104X
-    [4X[25X>[125X [27X    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL[127X[104X
-    [4X[25X>[125X [27X    return func3( x ); end;;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( call_func1, [ 2 ] ) );[127X[104X
     [4X[28Xfunction ( x_1 )[128X[104X
     [4X[28X    return 1;[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( call_func2, [ 2 ] ) );[127X[104X
-    [4X[28Xfunction ( x_1 )[128X[104X
-    [4X[28X    return 1;[128X[104X
-    [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( call_func3, [ 2 ] ) );[127X[104X
     [4X[28Xfunction ( x_1 )[128X[104X
     [4X[28X    return 1;[128X[104X
     [4X[28Xend[128X[104X
@@ -320,23 +301,19 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XMY_ID_FUNC := x -> x;;[127X[104X
     [4X[25Xgap>[125X [27Xfunc1 := function( x )[127X[104X
     [4X[25X>[125X [27X    if x = 1 then return 1; else return 2; fi; end;;[127X[104X
     [4X[25Xgap>[125X [27Xtree1 := ENHANCED_SYNTAX_TREE( func1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree1 := CapJitDetectedTernaryConditionalExpressions( tree1 );;[127X[104X
     [4X[25Xgap>[125X [27Xtree1.stats.statements[1].obj.type = "EXPR_CONDITIONAL";[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xcoded_func1 := ENHANCED_SYNTAX_TREE_CODE( tree1 );;[127X[104X
     [4X[25Xgap>[125X [27XString( func1 ) = ReplacedString( String( coded_func1 ), "_1", "" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xfunc2 := function( x )[127X[104X
-    [4X[25X>[125X [27X  local y; if x = 1 then y := 1; else y := 2; fi; return y; end;;[127X[104X
-    [4X[25Xgap>[125X [27Xtree2 := ENHANCED_SYNTAX_TREE( func2 );;[127X[104X
-    [4X[25Xgap>[125X [27Xtree2.stats.statements[1].rhs.type = "EXPR_CONDITIONAL";[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xcoded_func2 := ENHANCED_SYNTAX_TREE_CODE( tree2 );;[127X[104X
-    [4X[25Xgap>[125X [27XString( func2 ) = ReplacedString( String( coded_func2 ), "_1", "" );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xtree3 := rec([127X[104X
+    [4X[25Xgap>[125X [27Xtree2 := rec([127X[104X
     [4X[25X>[125X [27X    type := "EXPR_FUNC",[127X[104X
     [4X[25X>[125X [27X    id := 1,[127X[104X
     [4X[25X>[125X [27X    nams := [ ],[127X[104X
@@ -352,7 +329,7 @@
     [4X[25X>[125X [27X                    type := "EXPR_FUNCCALL",[127X[104X
     [4X[25X>[125X [27X                    funcref := rec([127X[104X
     [4X[25X>[125X [27X                        type := "EXPR_REF_GVAR",[127X[104X
-    [4X[25X>[125X [27X                        gvar := "IdFunc",[127X[104X
+    [4X[25X>[125X [27X                        gvar := "MY_ID_FUNC",[127X[104X
     [4X[25X>[125X [27X                    ),[127X[104X
     [4X[25X>[125X [27X                    args := [[127X[104X
     [4X[25X>[125X [27X                        rec([127X[104X
@@ -375,10 +352,10 @@
     [4X[25X>[125X [27X        ],[127X[104X
     [4X[25X>[125X [27X    ),[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27Xcoded_func3 := ENHANCED_SYNTAX_TREE_CODE( tree3 );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( coded_func3 );[127X[104X
+    [4X[25Xgap>[125X [27Xcoded_func2 := ENHANCED_SYNTAX_TREE_CODE( tree2 );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( coded_func2 );[127X[104X
     [4X[28Xfunction (  )[128X[104X
-    [4X[28X    return IdFunc( function (  )[128X[104X
+    [4X[28X    return MY_ID_FUNC( function (  )[128X[104X
     [4X[28X              if false then[128X[104X
     [4X[28X                  return 1;[128X[104X
     [4X[28X              else[128X[104X
@@ -387,24 +364,40 @@
     [4X[28X              return;[128X[104X
     [4X[28X          end(  ) );[128X[104X
     [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27Xcoded_func3();[127X[104X
+    [4X[25Xgap>[125X [27Xcoded_func2();[127X[104X
     [4X[28X2[128X[104X
-    [4X[25Xgap>[125X [27Xfunc4 := function( x )[127X[104X
-    [4X[25X>[125X [27X  local y; if x then y := 1; else y := 2; fi; return IdFunc( y ); end;;[127X[104X
-    [4X[25Xgap>[125X [27Xcompiled_func4 := CapJitCompiledFunction( func4, [ true ] );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( compiled_func4 );[127X[104X
+    [4X[25Xgap>[125X [27X# we have to work hard to not write semicolons so AutoDoc[127X[104X
+    [4X[25X>[125X [27X# does not begin a new statement[127X[104X
+    [4X[25X>[125X [27Xfunc3 := EvalString( ReplacedString( """function( x )[127X[104X
+    [4X[25X>[125X [27X  local inner_func@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    inner_func := function( )[127X[104X
+    [4X[25X>[125X [27X      local y@[127X[104X
+    [4X[25X>[125X [27X        if x then[127X[104X
+    [4X[25X>[125X [27X            return 1@[127X[104X
+    [4X[25X>[125X [27X        else[127X[104X
+    [4X[25X>[125X [27X            y := 2@[127X[104X
+    [4X[25X>[125X [27X            return y@[127X[104X
+    [4X[25X>[125X [27X        fi@[127X[104X
+    [4X[25X>[125X [27X    end@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    return MY_ID_FUNC( inner_func( ) )@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27Xend""", "@", ";" ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func3 := CapJitCompiledFunction( func3, [ true ] );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func3 );[127X[104X
     [4X[28Xfunction ( x_1 )[128X[104X
     [4X[28X    if x_1 then[128X[104X
-    [4X[28X        return ID_FUNC( 1 );[128X[104X
+    [4X[28X        return MY_ID_FUNC( 1 );[128X[104X
     [4X[28X    else[128X[104X
-    [4X[28X        return ID_FUNC( 2 );[128X[104X
+    [4X[28X        return MY_ID_FUNC( 2 );[128X[104X
     [4X[28X    fi;[128X[104X
     [4X[28X    return;[128X[104X
     [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27Xfunc5 := function( x )[127X[104X
+    [4X[25Xgap>[125X [27Xfunc4 := function( x )[127X[104X
     [4X[25X>[125X [27X  local y; if x then return 1; else return 1; fi; end;;[127X[104X
-    [4X[25Xgap>[125X [27Xcompiled_func5 := CapJitCompiledFunction( func5, [ true ] );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( compiled_func5 );[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func4 := CapJitCompiledFunction( func4, [ true ] );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func4 );[127X[104X
     [4X[28Xfunction ( x_1 )[128X[104X
     [4X[28X    return 1;[128X[104X
     [4X[28Xend[128X[104X

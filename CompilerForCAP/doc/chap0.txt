@@ -6,10 +6,10 @@
                    [1X Speed up computations in CAP categories [101X
   
   
-                                   2021.09-02
+                                   2021.09-03
   
   
-                                9 September 2021
+                               10 September 2021
   
   
                                 Fabian Zickgraf
@@ -46,6 +46,7 @@
       1.8-1 InfoCapJit
     1.9 [33X[0;0YCompiling a function manually[133X
       1.9-1 CapJitCompiledFunction
+      1.9-2 CapJitCompiledFunctionAsEnhancedSyntaxTree
     1.10 [33X[0;0YFAQ[133X
   2 [33X[0;0YImproving and extending the compiler[133X
     2.1 [33X[0;0YLogic[133X
@@ -75,17 +76,18 @@
       2.5-1 CapJitAppliedCompilerHints
       2.5-2 CapJitReplacedGlobalVariablesByCategoryAttributes
       2.5-3 CapJitReplacedSourceAndRangeAttributes
-      2.5-4 CapJitDroppedHandledEdgeCases
-      2.5-5 CapJitDroppedUnusedVariables
-      2.5-6 CapJitHoistedExpressions
-      2.5-7 CapJitInlinedArguments
-      2.5-8 CapJitInlinedFunctionCalls
-      2.5-9 CapJitInlinedSimpleFunctionCalls
-      2.5-10 CapJitInlinedVariableAssignments
-      2.5-11 CapJitAppliedLogic
-      2.5-12 CapJitAppliedLogicTemplates
-      2.5-13 CapJitResolvedGlobalVariables
-      2.5-14 CapJitResolvedOperations
+      2.5-4 CapJitDetectedTernaryConditionalExpressions
+      2.5-5 CapJitDroppedHandledEdgeCases
+      2.5-6 CapJitDroppedUnusedVariables
+      2.5-7 CapJitHoistedExpressions
+      2.5-8 CapJitInlinedArguments
+      2.5-9 CapJitInlinedFunctionCalls
+      2.5-10 CapJitInlinedSimpleFunctionCalls
+      2.5-11 CapJitInlinedVariableAssignments
+      2.5-12 CapJitAppliedLogic
+      2.5-13 CapJitAppliedLogicTemplates
+      2.5-14 CapJitResolvedGlobalVariables
+      2.5-15 CapJitResolvedOperations
   3 [33X[0;0YExamples and tests[133X
     3.1 [33X[0;0YExamples[133X
     3.2 [33X[0;0YTests[133X
