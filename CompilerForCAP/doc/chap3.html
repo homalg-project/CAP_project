@@ -60,6 +60,8 @@
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( SYNTAX_TREE_CODE( tree1 ) );</span>
 function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
+    local cap_jit_hoisted_expression_1_1;
+    cap_jit_hoisted_expression_1_1 := UnderlyingRing( cat_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, S_1, T_1, UnderlyingFieldForHomalg, 
        UnderlyingRing( cat_1 ), UnderlyingMatrix, 
@@ -67,7 +69,7 @@ function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
          ListN( diagram_S_1, List( morphism_matrix_1, function ( row_2 )
                   return List( row_2, UnderlyingMatrix );
               end ), function ( source_2, row_2 )
-                return UnionOfColumns( UnderlyingRing( cat_1 ), 
+                return UnionOfColumns( cap_jit_hoisted_expression_1_1, 
                    Dimension( source_2 ), row_2 );
             end ) ) );
 end
@@ -79,13 +81,15 @@ end
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( SYNTAX_TREE_CODE( tree2 ) );</span>
 function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
+    local cap_jit_hoisted_expression_1_1;
+    cap_jit_hoisted_expression_1_1 := UnderlyingRing( cat_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, S_1, T_1, UnderlyingFieldForHomalg, 
        UnderlyingRing( cat_1 ), UnderlyingMatrix, 
        UnionOfRows( UnderlyingRing( cat_1 ), Dimension( T_1 ), 
          ListN( diagram_S_1, morphism_matrix_1, 
            function ( logic_new_func_x_2, logic_new_func_y_2 )
-                return UnionOfColumns( UnderlyingRing( cat_1 ), 
+                return UnionOfColumns( cap_jit_hoisted_expression_1_1, 
                    Dimension( logic_new_func_x_2 ), 
                    List( logic_new_func_y_2, function ( s_3 )
                           return UnderlyingMatrix( s_3 );
@@ -336,6 +340,21 @@ function ( list_1 )
               + cap_jit_hoisted_expression_1_1;
         end );
 end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">func := function( x, func )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return List( [ 1 .. 9 ], y -&gt; func( x + 1, x + 1, y ) ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitHoistedExpressions( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
+function ( x_1, func_1 )
+    local cap_jit_hoisted_expression_1_1;
+    cap_jit_hoisted_expression_1_1 := x_1 + 1;
+    return List( [ 1 .. 9 ], function ( y_2 )
+            return func_1( cap_jit_hoisted_expression_1_1, 
+               cap_jit_hoisted_expression_1_1, y_2 );
+        end );
+end
 </pre></div>
 
 
@@ -347,7 +366,7 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    if x = 1 then return 1; else return 2; fi; end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree1 := ENHANCED_SYNTAX_TREE( func1 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree1 := CapJitDetectedTernaryConditionalExpressions( tree1 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree1.stats.statements[1].obj.type = "EXPR_CONDITIONAL";</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree1.stats.statements.1.obj.type = "EXPR_CONDITIONAL";</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coded_func1 := ENHANCED_SYNTAX_TREE_CODE( tree1 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">String( func1 ) = ReplacedString( String( coded_func1 ), "_1", "" );</span>
@@ -361,7 +380,7 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    variadic := false,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    stats := rec(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        type := "STAT_SEQ_STAT",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        statements := [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        statements := AsSyntaxTreeList( [</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            rec(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                type := "STAT_RETURN_OBJ",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                obj := rec(</span>
@@ -370,7 +389,7 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                        type := "EXPR_REF_GVAR",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                        gvar := "MY_ID_FUNC",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                    ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    args := [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    args := AsSyntaxTreeList( [</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                        rec(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                            type := "EXPR_CONDITIONAL",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                            condition := rec(</span>
@@ -385,10 +404,10 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                                value := 2,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                            ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                        ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    ] ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ] ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">coded_func2 := ENHANCED_SYNTAX_TREE_CODE( tree2 );;</span>

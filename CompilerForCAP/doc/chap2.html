@@ -189,6 +189,9 @@
 
 
 <ul>
+<li><p>Lists are transformed (in the expected way) into records of type SYNTAX_TREE_LIST with integer keys (and an additional key <code class="code">length</code>).</p>
+
+</li>
 <li><p>All node types starting with STAT_SEQ_STAT are replaced by STAT_SEQ_STAT.</p>
 
 </li>
@@ -282,7 +285,7 @@
 <li><p>The results of the recursive calls are stored in the variable <code class="code">result</code>: If <var class="Arg">tree</var> is a list, <code class="code">result</code> is also a list and the <code class="code">i</code>-th entry of this list is the return value of the <code class="code">result_func</code> of the <code class="code">i</code>-th child. If <var class="Arg">tree</var> is a record, <code class="code">result</code> is also a record and <code class="code">result.(key)</code> is the return value of the <code class="code">result_func</code> of the child named <code class="code">key</code>.</p>
 
 </li>
-<li><p>Next, <var class="Arg">result_func</var> is called with the following arguments: <var class="Arg">tree</var>, <code class="code">result</code>, and <var class="Arg">additional_arguments</var>. The return value should be the result of the current tree formed by combining the results of the children. For an example see <code class="func">CapJitResultFuncCombineChildren</code> (<a href="chap2.html#X7869C74E78CAAB21"><span class="RefLink">2.4-5</span></a>).</p>
+<li><p>Next, <var class="Arg">result_func</var> is called with the following arguments: <var class="Arg">tree</var>, <code class="code">result</code>, <code class="code">keys</code> (a list containing the children's keys), and <var class="Arg">additional_arguments</var>. The return value should be the result of the current tree formed by combining the results of the children. For an example see <code class="func">CapJitResultFuncCombineChildren</code> (<a href="chap2.html#X7869C74E78CAAB21"><span class="RefLink">2.4-5</span></a>).</p>
 
 </li>
 <li><p>Finally, the return value of <var class="Arg">result_func</var> is returned.</p>

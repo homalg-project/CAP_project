@@ -134,6 +134,9 @@
   [33X[0;0YTo  simplify  the handling of syntax trees, the CAP compiler enhances syntax
   trees in the following ways:[133X
   
+  [30X    [33X[0;6YLists  are  transformed  (in  the  expected  way) into records of type
+        SYNTAX_TREE_LIST with integer keys (and an additional key [10Xlength[110X).[133X
+  
   [30X    [33X[0;6YAll   node   types   starting   with  STAT_SEQ_STAT  are  replaced  by
         STAT_SEQ_STAT.[133X
   
@@ -239,9 +242,10 @@
         value of the [10Xresult_func[110X of the child named [10Xkey[110X.[133X
   
   [30X    [33X[0;6YNext,  [3Xresult_func[103X  is  called  with  the  following  arguments: [3Xtree[103X,
-        [10Xresult[110X,  and  [3Xadditional_arguments[103X.  The  return  value  should be the
-        result  of  the  current  tree  formed by combining the results of the
-        children. For an example see [2XCapJitResultFuncCombineChildren[102X ([14X2.4-5[114X).[133X
+        [10Xresult[110X,   [10Xkeys[110X   (a   list   containing   the  children's  keys),  and
+        [3Xadditional_arguments[103X.  The  return  value  should be the result of the
+        current  tree  formed by combining the results of the children. For an
+        example see [2XCapJitResultFuncCombineChildren[102X ([14X2.4-5[114X).[133X
   
   [30X    [33X[0;6YFinally, the return value of [3Xresult_func[103X is returned.[133X
   

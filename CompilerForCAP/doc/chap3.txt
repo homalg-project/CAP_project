@@ -27,6 +27,8 @@
     [4X[25X>[125X [27X);;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( SYNTAX_TREE_CODE( tree1 ) );[127X[104X
     [4X[28Xfunction ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )[128X[104X
+    [4X[28X    local cap_jit_hoisted_expression_1_1;[128X[104X
+    [4X[28X    cap_jit_hoisted_expression_1_1 := UnderlyingRing( cat_1 );[128X[104X
     [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
     [4X[28X           ), cat_1, S_1, T_1, UnderlyingFieldForHomalg, [128X[104X
     [4X[28X       UnderlyingRing( cat_1 ), UnderlyingMatrix, [128X[104X
@@ -34,7 +36,7 @@
     [4X[28X         ListN( diagram_S_1, List( morphism_matrix_1, function ( row_2 )[128X[104X
     [4X[28X                  return List( row_2, UnderlyingMatrix );[128X[104X
     [4X[28X              end ), function ( source_2, row_2 )[128X[104X
-    [4X[28X                return UnionOfColumns( UnderlyingRing( cat_1 ), [128X[104X
+    [4X[28X                return UnionOfColumns( cap_jit_hoisted_expression_1_1, [128X[104X
     [4X[28X                   Dimension( source_2 ), row_2 );[128X[104X
     [4X[28X            end ) ) );[128X[104X
     [4X[28Xend[128X[104X
@@ -46,13 +48,15 @@
     [4X[25X>[125X [27X) );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( SYNTAX_TREE_CODE( tree2 ) );[127X[104X
     [4X[28Xfunction ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )[128X[104X
+    [4X[28X    local cap_jit_hoisted_expression_1_1;[128X[104X
+    [4X[28X    cap_jit_hoisted_expression_1_1 := UnderlyingRing( cat_1 );[128X[104X
     [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
     [4X[28X           ), cat_1, S_1, T_1, UnderlyingFieldForHomalg, [128X[104X
     [4X[28X       UnderlyingRing( cat_1 ), UnderlyingMatrix, [128X[104X
     [4X[28X       UnionOfRows( UnderlyingRing( cat_1 ), Dimension( T_1 ), [128X[104X
     [4X[28X         ListN( diagram_S_1, morphism_matrix_1, [128X[104X
     [4X[28X           function ( logic_new_func_x_2, logic_new_func_y_2 )[128X[104X
-    [4X[28X                return UnionOfColumns( UnderlyingRing( cat_1 ), [128X[104X
+    [4X[28X                return UnionOfColumns( cap_jit_hoisted_expression_1_1, [128X[104X
     [4X[28X                   Dimension( logic_new_func_x_2 ), [128X[104X
     [4X[28X                   List( logic_new_func_y_2, function ( s_3 )[128X[104X
     [4X[28X                          return UnderlyingMatrix( s_3 );[128X[104X
@@ -298,6 +302,21 @@
     [4X[28X              + cap_jit_hoisted_expression_1_1;[128X[104X
     [4X[28X        end );[128X[104X
     [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27X##[127X[104X
+    [4X[25X>[125X [27Xfunc := function( x, func )[127X[104X
+    [4X[25X>[125X [27X    return List( [ 1 .. 9 ], y -> func( x + 1, x + 1, y ) ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitHoistedExpressions( tree );;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
+    [4X[28Xfunction ( x_1, func_1 )[128X[104X
+    [4X[28X    local cap_jit_hoisted_expression_1_1;[128X[104X
+    [4X[28X    cap_jit_hoisted_expression_1_1 := x_1 + 1;[128X[104X
+    [4X[28X    return List( [ 1 .. 9 ], function ( y_2 )[128X[104X
+    [4X[28X            return func_1( cap_jit_hoisted_expression_1_1, [128X[104X
+    [4X[28X               cap_jit_hoisted_expression_1_1, y_2 );[128X[104X
+    [4X[28X        end );[128X[104X
+    [4X[28Xend[128X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -308,7 +327,7 @@
     [4X[25X>[125X [27X    if x = 1 then return 1; else return 2; fi; end;;[127X[104X
     [4X[25Xgap>[125X [27Xtree1 := ENHANCED_SYNTAX_TREE( func1 );;[127X[104X
     [4X[25Xgap>[125X [27Xtree1 := CapJitDetectedTernaryConditionalExpressions( tree1 );;[127X[104X
-    [4X[25Xgap>[125X [27Xtree1.stats.statements[1].obj.type = "EXPR_CONDITIONAL";[127X[104X
+    [4X[25Xgap>[125X [27Xtree1.stats.statements.1.obj.type = "EXPR_CONDITIONAL";[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xcoded_func1 := ENHANCED_SYNTAX_TREE_CODE( tree1 );;[127X[104X
     [4X[25Xgap>[125X [27XString( func1 ) = ReplacedString( String( coded_func1 ), "_1", "" );[127X[104X
@@ -322,7 +341,7 @@
     [4X[25X>[125X [27X    variadic := false,[127X[104X
     [4X[25X>[125X [27X    stats := rec([127X[104X
     [4X[25X>[125X [27X        type := "STAT_SEQ_STAT",[127X[104X
-    [4X[25X>[125X [27X        statements := [[127X[104X
+    [4X[25X>[125X [27X        statements := AsSyntaxTreeList( [[127X[104X
     [4X[25X>[125X [27X            rec([127X[104X
     [4X[25X>[125X [27X                type := "STAT_RETURN_OBJ",[127X[104X
     [4X[25X>[125X [27X                obj := rec([127X[104X
@@ -331,7 +350,7 @@
     [4X[25X>[125X [27X                        type := "EXPR_REF_GVAR",[127X[104X
     [4X[25X>[125X [27X                        gvar := "MY_ID_FUNC",[127X[104X
     [4X[25X>[125X [27X                    ),[127X[104X
-    [4X[25X>[125X [27X                    args := [[127X[104X
+    [4X[25X>[125X [27X                    args := AsSyntaxTreeList( [[127X[104X
     [4X[25X>[125X [27X                        rec([127X[104X
     [4X[25X>[125X [27X                            type := "EXPR_CONDITIONAL",[127X[104X
     [4X[25X>[125X [27X                            condition := rec([127X[104X
@@ -346,10 +365,10 @@
     [4X[25X>[125X [27X                                value := 2,[127X[104X
     [4X[25X>[125X [27X                            ),[127X[104X
     [4X[25X>[125X [27X                        ),[127X[104X
-    [4X[25X>[125X [27X                    ],[127X[104X
+    [4X[25X>[125X [27X                    ] ),[127X[104X
     [4X[25X>[125X [27X                ),[127X[104X
     [4X[25X>[125X [27X            ),[127X[104X
-    [4X[25X>[125X [27X        ],[127X[104X
+    [4X[25X>[125X [27X        ] ),[127X[104X
     [4X[25X>[125X [27X    ),[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
     [4X[25Xgap>[125X [27Xcoded_func2 := ENHANCED_SYNTAX_TREE_CODE( tree2 );;[127X[104X
