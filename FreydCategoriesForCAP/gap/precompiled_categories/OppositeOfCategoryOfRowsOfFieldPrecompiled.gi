@@ -34,9 +34,13 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
+    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1;
+    cap_jit_hoisted_expression_1_1 := HomalgIdentityMatrix( RankOfObject( arg3_1 ) * RankOfObject( arg2_1 ), UnderlyingRing( cat_1 ) );
+    cap_jit_hoisted_expression_2_1 := RankOfObject( arg3_1 );
+    cap_jit_hoisted_expression_3_1 := RankOfObject( arg2_1 );
     return List( [ 1 .. RankOfObject( arg3_1 ) * RankOfObject( arg2_1 ) ], function ( logic_new_func_x_2 )
             local cap_jit_morphism_attribute_2;
-            cap_jit_morphism_attribute_2 := ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( RankOfObject( arg3_1 ) * RankOfObject( arg2_1 ), UnderlyingRing( cat_1 ) ), [ logic_new_func_x_2 ] ), RankOfObject( arg3_1 ), RankOfObject( arg2_1 ) );
+            cap_jit_morphism_attribute_2 := ConvertRowToMatrix( CertainRows( cap_jit_hoisted_expression_1_1, [ logic_new_func_x_2 ] ), cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1 );
             return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                    ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
                      ), cat_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_2 ) ), ObjectifyObjectForCAPWithAttributes( rec(
@@ -52,11 +56,12 @@ end
         
 ########
 function ( cat_1, s_1, a_1, b_1, r_1 )
-    local cap_jit_hoisted_expression_1_1;
-    cap_jit_hoisted_expression_1_1 := RankOfObject( a_1 );
+    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1;
+    cap_jit_hoisted_expression_1_1 := RankOfObject( b_1 );
+    cap_jit_hoisted_expression_2_1 := RankOfObject( a_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, s_1, r_1, UnderlyingMatrix, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. RankOfObject( s_1 ) ], function ( i_2 )
-                      return (REM_INT( (i_2 - 1), RankOfObject( b_1 ) ) * cap_jit_hoisted_expression_1_1 + QUO_INT( (i_2 - 1), RankOfObject( b_1 ) ) + 1);
+                      return (REM_INT( (i_2 - 1), cap_jit_hoisted_expression_1_1 ) * cap_jit_hoisted_expression_2_1 + QUO_INT( (i_2 - 1), cap_jit_hoisted_expression_1_1 ) + 1);
                   end ) ) ^ -1, RankOfObject( s_1 ) ), RankOfObject( s_1 ), RankOfObject( s_1 ), UnderlyingRing( cat_1 ) ) );
 end
 ########
@@ -79,13 +84,15 @@ end
         
 ########
 function ( cat_1, s_1, a_1, r_1 )
+    local cap_jit_hoisted_expression_1_1;
+    cap_jit_hoisted_expression_1_1 := HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) );
     if RankOfObject( a_1 ) = 0 then
         return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                ), cat_1, s_1, r_1, UnderlyingMatrix, HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), UnderlyingRing( cat_1 ) ) );
     else
         return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                ), cat_1, s_1, r_1, UnderlyingMatrix, UnionOfRows( List( [ 1 .. RankOfObject( a_1 ) ], function ( i_2 )
-                    return CertainColumns( HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ), [ i_2 ] );
+                    return CertainColumns( cap_jit_hoisted_expression_1_1, [ i_2 ] );
                 end ) ) );
     fi;
     return;
@@ -201,13 +208,15 @@ end
         
 ########
 function ( cat_1, s_1, a_1, r_1 )
+    local cap_jit_hoisted_expression_1_1;
+    cap_jit_hoisted_expression_1_1 := HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) );
     if RankOfObject( a_1 ) = 0 then
         return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                ), cat_1, s_1, r_1, UnderlyingMatrix, HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), UnderlyingRing( cat_1 ) ) );
     else
         return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                ), cat_1, s_1, r_1, UnderlyingMatrix, UnionOfColumns( List( [ 1 .. RankOfObject( a_1 ) ], function ( i_2 )
-                    return CertainRows( HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ), [ i_2 ] );
+                    return CertainRows( cap_jit_hoisted_expression_1_1, [ i_2 ] );
                 end ) ) );
     fi;
     return;

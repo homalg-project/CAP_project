@@ -18,6 +18,7 @@ For debugging you can:
 @SectionLabel EnhancedSyntaxTrees
 
 To simplify the handling of syntax trees, the CAP compiler enhances syntax trees in the following ways:
+* Lists are transformed (in the expected way) into records of type SYNTAX_TREE_LIST with integer keys (and an additional key `length`).
 * All node types starting with STAT_SEQ_STAT are replaced by STAT_SEQ_STAT.
 * All node types starting with EXPR_FUNCCALL_ are replaced by EXPR_FUNCCALL.
 * All node types starting with EXPR_PROCCALL_ are replaced by EXPR_PROCCALL.

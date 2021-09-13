@@ -11,31 +11,6 @@ BindGlobal( "CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES", [
     "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes",
 ] );
 
-InstallGlobalFunction( CapJitGetCapCategoryFromArguments, function ( arguments )
-  local result;
-    
-    if IsList( arguments ) then
-        
-        result := List( arguments, arg -> CapJitGetCapCategoryFromArguments( arg ) );
-        
-        return First( result, r -> r <> fail );
-        
-    elif IsCapCategory( arguments ) then
-        
-        return arguments;
-        
-    elif HasCapCategory( arguments ) then
-        
-        return CapCategory( arguments );
-    
-    else
-        
-        return fail;
-
-    fi;
-    
-end );
-
 InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
   local condition_func, path, record, operation, funccall_args, funccall_does_not_return_fail, operation_name, new_tree, category, index, func_to_resolve, result, example_input, global_variable_name, resolved_tree, known_methods, pos, arguments, applicable_methods, parent, method;
     
@@ -58,7 +33,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
             operation_name := NameFunction( operation );
             
             # check if this is a CAP operation which is not a convenience method
-            if operation_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) and Length( tree.args ) = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list ) then
+            if operation_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) and tree.args.length = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list ) then
                 
                 if CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list[1] <> "category" then
                     
@@ -67,9 +42,9 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
                 fi;
                 
                 # we can resolve CAP operations if and only if the category is known, i.e., stored in a global variable
-                if tree.args[1].type = "EXPR_REF_GVAR" then
+                if tree.args.1.type = "EXPR_REF_GVAR" then
                     
-                    category := ValueGlobal( tree.args[1].gvar );
+                    category := ValueGlobal( tree.args.1.gvar );
                     
                     Assert( 0, IsCapCategory( category ) );
                     
@@ -136,13 +111,13 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
     new_tree := fail;
     
     # check if this is a CAP operation which is not a convenience method
-    if operation_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) and Length( funccall_args ) = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list ) then
+    if operation_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) and funccall_args.length = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list ) then
         
         Info( InfoCapJit, 1, "This is a CAP operation, try to determine category and take the added function." );
         
-        Assert( 0, funccall_args[1].type = "EXPR_REF_GVAR" );
+        Assert( 0, funccall_args.1.type = "EXPR_REF_GVAR" );
         
-        category := ValueGlobal( funccall_args[1].gvar );
+        category := ValueGlobal( funccall_args.1.gvar );
         
         Assert( 0, IsCapCategory( category ) );
         Assert( 0, CanCompute( category, operation_name ) );
@@ -249,7 +224,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
         
         known_methods := CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name);
         
-        pos := PositionProperty( known_methods, m -> Length( m[1] ) = Length( funccall_args ) );
+        pos := PositionProperty( known_methods, m -> Length( m[1] ) = funccall_args.length );
         
         if pos = fail then
             
@@ -355,12 +330,12 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
                         
                         resolved_tree := ENHANCED_SYNTAX_TREE( method : globalize_hvars := true );
                         
-                        if Length( resolved_tree.stats.statements ) >= 1 and resolved_tree.stats.statements[1].type = "STAT_PRAGMA" and resolved_tree.stats.statements[1].value = "% CAP_JIT_RESOLVE_FUNCTION" then
+                        if resolved_tree.stats.statements.length >= 1 and resolved_tree.stats.statements.1.type = "STAT_PRAGMA" and resolved_tree.stats.statements.1.value = "% CAP_JIT_RESOLVE_FUNCTION" then
                             
                             Info( InfoCapJit, 1, "Found suitable applicable method." );
                             
                             # remove pragma
-                            resolved_tree.stats.statements := resolved_tree.stats.statements{[ 2 .. Length( resolved_tree.stats.statements ) ]};
+                            resolved_tree.stats.statements := Sublist( resolved_tree.stats.statements, [ 2 .. resolved_tree.stats.statements.length ] );
                             
                             if funccall_does_not_return_fail then
                                 
@@ -396,15 +371,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
         
         parent := CapJitGetNodeByPath( tree, path{[ 1 .. Length( path ) - 1 ]} );
         
-        if IsList( parent ) then
-            
-            parent[Last( path )] := new_tree;
-            
-        else
-            
-            parent.(Last( path )) := new_tree;
-            
-        fi;
+        parent.(Last( path )) := new_tree;
         
         Info( InfoCapJit, 1, "Successfully resolved operation." );
         

@@ -49,29 +49,29 @@ InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function ( tree )
     pre_func := function ( tree, path )
       local statements, statement, branches, branch, if_path, i, j;
         
-        if IsRecord( tree ) and tree.type = "EXPR_FUNC" then
+        if tree.type = "EXPR_FUNC" then
             
             statements := tree.stats.statements;
             
-            for i in [ 1 .. Length( statements ) ] do
+            for i in [ 1 .. statements.length ] do
                 
-                statement := statements[i];
+                statement := statements.(i);
                 
                 if StartsWith( statement.type, "STAT_IF" ) then
                     
                     branches := statement.branches;
                     
-                    for j in [ 1 .. Length( branches ) ] do
+                    for j in [ 1 .. branches.length ] do
                         
-                        branch := branches[j];
+                        branch := branches.(j);
                         
-                        if Length( branch.body.statements ) > 0 and Last( branch.body.statements ).type = "STAT_RETURN_OBJ" then
+                        if branch.body.statements.length > 0 and Last( branch.body.statements ).type = "STAT_RETURN_OBJ" then
                             
                             # we are in the main sequence of statements of a function => we are not inside of a loop
                             # and this branch ends with a return statement
                             # => we can only reach the remaining branches if the condition of this branch does not match
-                            if_path := Concatenation( path, [ "stats", "statements", i ] );
-                            Add( handled_edge_cases, rec( if_path := if_path, key := j, condition := branch.condition ) );
+                            if_path := Concatenation( path, [ "stats", "statements", String( i ) ] );
+                            Add( handled_edge_cases, rec( if_path := if_path, key := String( j ), condition := branch.condition ) );
                             
                         fi;
                         
@@ -87,115 +87,103 @@ InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function ( tree )
         
     end;
     
-    result_func := function ( tree, result, path )
+    result_func := function ( tree, result, keys, path )
       local statements, i, statement, positions, key;
         
-        if IsList( result ) then
+        tree := ShallowCopy( tree );
+        
+        for key in keys do
             
-            return result;
+            tree.(key) := result.(key);
             
-        elif IsRecord( result ) then
+        od;
+        
+        if tree.type = "STAT_SEQ_STAT" then
             
-            tree := ShallowCopy( tree );
-
-            for key in RecNames( result ) do
+            tree.statements := Filtered( tree.statements, s -> s.type <> "STAT_EMPTY" );
+            
+            statements := tree.statements;
+            
+            i := 1;
+            
+            while i <= statements.length do
                 
-                tree.(key) := result.(key);
-
+                statement := statements.(i);
+                
+                if statement.type = "STAT_SEQ_STAT" then
+                    
+                    statements := ConcatenationForSyntaxTreeLists( Sublist( statements, [ 1 .. i - 1 ] ), statement.statements, Sublist( statements, [ i + 1 .. statements.length ] ) );
+                    
+                else
+                    
+                    i := i + 1;
+                    
+                fi;
+                
             od;
-
-            if tree.type = "STAT_SEQ_STAT" then
+            
+            tree.statements := statements;
+            
+        elif StartsWith( tree.type, "STAT_IF" ) then
+            
+            positions := Filtered( [ 1 .. tree.branches.length ], function ( j )
+              local branch, key, handled_edge_case;
                 
-                tree.statements := Filtered( tree.statements, s -> s.type <> "STAT_EMPTY" );
-
-                statements := tree.statements;
+                branch := tree.branches.(j);
                 
-                i := 1;
-                
-                while i <= Length( statements ) do
+                for handled_edge_case in handled_edge_cases do
                     
-                    statement := statements[i];
-                    
-                    if statement.type = "STAT_SEQ_STAT" then
+                    if PositionSublist( path, handled_edge_case.if_path ) = 1 then
                         
-                        statements := Concatenation( statements{[ 1 .. i - 1 ]}, statement.statements, statements{[ i + 1 .. Length( statements ) ]} );
+                        if Length( path ) > Length( handled_edge_case.if_path ) then
+                            
+                            # next entry of path is "branches", then the key
+                            key := path[Length( handled_edge_case.if_path ) + 2];
+                            
+                        else
+                            
+                            key := String( j );
+                            
+                        fi;
                         
-                    else
+                        Assert( 0, IsString( key ) );
                         
-                        i := i + 1;
+                        if Int( key ) > Int( handled_edge_case.key ) and CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION( branch.condition, handled_edge_case.condition ) = true then
+                            
+                            Info( InfoCapJit, 1, "####" );
+                            Info( InfoCapJit, 1, "Dropped edge case." );
+                            
+                            return false;
+                            
+                        fi;
                         
                     fi;
                     
                 od;
                 
-                tree.statements := statements;
+                return true;
+                
+            end );
             
-            elif StartsWith( tree.type, "STAT_IF" ) then
+            if Length( positions ) = 0 then
                 
-                positions := Filtered( [ 1 .. Length( tree.branches ) ], function ( j )
-                  local branch, key, handled_edge_case;
-                    
-                    branch := tree.branches[j];
-                    
-                    for handled_edge_case in handled_edge_cases do
-                        
-                        if PositionSublist( path, handled_edge_case.if_path ) = 1 then
-                            
-                            if Length( path ) > Length( handled_edge_case.if_path ) then
-                                
-                                # next entry of path is "branches", then the key
-                                key := path[Length( handled_edge_case.if_path ) + 2];
-
-                            else
-                                
-                                key := j;
-                                
-                            fi;
-                            
-                            Assert( 0, IsInt( key ) );
-                            
-                            if key > handled_edge_case.key and CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION( branch.condition, handled_edge_case.condition ) = true then
-
-                                Info( InfoCapJit, 1, "####" );
-                                Info( InfoCapJit, 1, "Dropped edge case." );
-    
-                                return false;
-                                
-                            fi;
-                            
-                        fi;
-                        
-                    od;
-                    
-                    return true;
-                    
-                end );
+                return rec( type := "STAT_EMPTY" );
                 
-                if Length( positions ) = 0 then
-                    
-                    return rec( type := "STAT_EMPTY" );
-                    
-                else
-                    
-                    tree.branches := tree.branches{positions};
-                    
-                fi;
-
-                if Length( tree.branches ) = 1 and tree.branches[1].condition.type = "EXPR_TRUE" then
-                    
-                    return tree.branches[1].body;
-                    
-                fi;
-
+            else
+                
+                tree.branches := Sublist( tree.branches, positions );
+                
             fi;
             
-            return tree;
-
-        else
-            
-            Error( "this should never happen" );
+            if tree.branches.length = 1 and tree.branches.1.condition.type = "EXPR_TRUE" then
+                
+                return tree.branches.1.body;
+                
+            fi;
             
         fi;
+        
+        return tree;
         
     end;
 

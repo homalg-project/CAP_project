@@ -82,7 +82,7 @@ BindGlobal( "CAP_JIT_LOGIC_TEMPLATES", [
                 type := "EXPR_REF_GVAR",
                 gvar := "CAP_INTERNAL_JIT_TEMPLATE_VAR_1",
             ),
-            args := [
+            args := AsSyntaxTreeList( [
                 rec(
                     type := "EXPR_CONDITIONAL",
                     condition := rec(
@@ -98,7 +98,7 @@ BindGlobal( "CAP_JIT_LOGIC_TEMPLATES", [
                         gvar := "CAP_INTERNAL_JIT_TEMPLATE_VAR_4",
                     ),
                 ),
-            ],
+            ] ),
         ),
         dst_template_tree := rec(
             type := "EXPR_CONDITIONAL",
@@ -112,12 +112,12 @@ BindGlobal( "CAP_JIT_LOGIC_TEMPLATES", [
                     type := "EXPR_REF_GVAR",
                     gvar := "CAP_INTERNAL_JIT_TEMPLATE_VAR_1",
                 ),
-                args := [
+                args := AsSyntaxTreeList( [
                     rec(
                         type := "EXPR_REF_GVAR",
                         gvar := "CAP_INTERNAL_JIT_TEMPLATE_VAR_3",
                     ),
-                ],
+                ] ),
             ),
             expr_if_false := rec(
                 type := "EXPR_FUNCCALL",
@@ -125,12 +125,12 @@ BindGlobal( "CAP_JIT_LOGIC_TEMPLATES", [
                     type := "EXPR_REF_GVAR",
                     gvar := "CAP_INTERNAL_JIT_TEMPLATE_VAR_1",
                 ),
-                args := [
+                args := AsSyntaxTreeList( [
                     rec(
                         type := "EXPR_REF_GVAR",
                         gvar := "CAP_INTERNAL_JIT_TEMPLATE_VAR_4",
                     ),
-                ],
+                ] ),
             ),
         ),
         returns_value := true,
@@ -224,7 +224,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
             
         fi;
         
-        if IsRecord( tree ) and tree.type = "EXPR_FUNC" and template_tree.type = "EXPR_FUNC" then
+        if tree.type = "EXPR_FUNC" and template_tree.type = "EXPR_FUNC" then
             
             # we have to adapt template_tree to tree so variables actually have a chance to match
             # the information set here will later be used to do the same replacement in the destination tree
@@ -240,159 +240,126 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
         
     end;
     
-    result_func := function ( tree, result, additional_arguments )
+    result_func := function ( tree, result, keys, additional_arguments )
       local template_tree, path, var_number, r, key;
         
         template_tree := additional_arguments[1];
         path := additional_arguments[2];
-      
+        
         if debug then
             Display( "now matching against" );
             Display( template_tree );
             Display( "result" );
             Display( result );
         fi;
-            
+        
         if template_tree = fail then
             
             Assert( 0, result = fail );
             
             return false;
-      
-        elif IsList( result ) then
             
-            for r in result do
+        fi;
+        
+        if template_tree.type = "EXPR_REF_GVAR" and StartsWith( template_tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_" ) then
+            
+            var_number := Int( ReplacedString( template_tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_", "" ) );
+            
+            Assert( 0, var_number <> fail );
+            
+            if not IsBound( variables[var_number] ) then
                 
-                if r = false then
+                variables[var_number] := rec(
+                    path := path,
+                    tree := tree,
+                );
+                
+                if debug then
+                    Display( "matched via variable1" );
+                    Display( true );
+                fi;
+                
+                return true;
+                
+            else
+                
+                if debug then
+                    Display( "matched via variable2" );
+                    Display( variables[var_number].tree = tree );
+                fi;
+                
+                return variables[var_number].tree = tree;
+                
+            fi;
+            
+        fi;
+        
+        if template_tree.type <> tree.type then
+            
+            if debug then
+                Display( "type mismatch" );
+            fi;
+            
+            return false;
+            
+        fi;
+        
+        if template_tree.type = "SYNTAX_TREE_LIST" and template_tree.length <> tree.length then
+            
+            if debug then
+                Display( "list length mismatch" );
+            fi;
+            
+            return false;
+            
+        fi;
+        
+        for key in RecNames( template_tree ) do
+            
+            if debug then
+                Display( "checking" );
+                Display( key );
+            fi;
+            
+            # ignore these keys
+            if key in [ "nams", "nloc", "initial_name", "CAP_JIT_NOT_RESOLVABLE" ] then
+                
+                continue;
+                
+            fi;
+            
+            Assert( 0, IsBound( tree.(key) ) );
+            
+            # different gvars might point to the same value
+            if key = "gvar" then
+                
+                if IsIdenticalObj( ValueGlobal( template_tree.gvar ), ValueGlobal( tree.gvar ) ) then
                     
                     if debug then
-                        Display( "child mismatch" );
+                        Display( "match: gvars point to identical values" );
+                    fi;
+                    
+                    continue;
+                    
+                else
+                    
+                    if debug then
+                        Display( "mismatch: gvars point to non-identical values" );
                     fi;
                     
                     return false;
                     
                 fi;
                 
-            od;
-
-            if debug then
-                Display( "list length match" );
-                Display( Length( tree ) = Length( template_tree ) );
             fi;
             
-            return Length( tree ) = Length( template_tree );
-            
-        elif IsRecord( result ) then
-
-            if template_tree.type = "EXPR_REF_GVAR" and StartsWith( template_tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_" ) then
+            # check if children match
+            if IsBound( result.(key) ) then
                 
-                var_number := Int( ReplacedString( template_tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_", "" ) );
-                
-                Assert( 0, var_number <> fail );
-
-                if not IsBound( variables[var_number] ) then
-                    
-                    variables[var_number] := rec(
-                        path := path,
-                        tree := tree,
-                    );
-
-                    if debug then
-                        Display( "matched via variable1" );
-                        Display( true );
-                    fi;
-                    
-                    return true;
-                    
-                else
-
-                    if debug then
-                        Display( "matched via variable2" );
-                        Display( variables[var_number].tree = tree );
-                    fi;
-                    
-                    return variables[var_number].tree = tree;
-                    
-                fi;
-                
-            fi;
-
-            if template_tree.type <> tree.type then
-                
-                if debug then
-                    Display( "type mismatch" );
-                fi;
-                
-                return false;
-                
-            fi;
-            
-            for key in RecNames( template_tree ) do
-
-                if debug then
-                    Display( "checking" );
-                    Display( key );
-                fi;
-                
-                # ignore these keys
-                if key in [ "nams", "nloc", "initial_name" ] then
-                    
-                    continue;
-                    
-                fi;
-
-                Assert( 0, IsBound( tree.(key) ) );
-
-                # different gvars might point to the same value
-                if key = "gvar" then
-                    
-                    if IsIdenticalObj( ValueGlobal( template_tree.gvar ), ValueGlobal( tree.gvar ) ) then
-                        
-                        if debug then
-                            Display( "match: gvars point to identical values" );
-                        fi;
-                
-                        continue;
-                        
-                    else
-                        
-                        if debug then
-                            Display( "mismatch: gvars point to non-identical values" );
-                        fi;
-
-                        return false;
-                        
-                    fi;
-                        
-                fi;
-                
-                # check if children match
-                if IsBound( result.(key) ) then
-                    
-                    if result.(key) = false then
-                        
-                        if debug then
-                            Display( "result mismatch" );
-                            Display( key );
-                        fi;
-                        
-                        return false;
-                        
-                    else
-                        
-                        continue;
-                        
-                    fi;
-                    
-                fi;
-                
-                # now there should only remain integers, booleans or strings
-                Assert( 0, IsInt( template_tree.(key) ) or IsBool( template_tree.(key) ) or IsString( template_tree.(key) ) );
-                
-                if template_tree.(key) <> tree.(key) then
+                if result.(key) = false then
                     
                     if debug then
-                        Display( "tree mismatch" );
+                        Display( "child mismatch" );
                         Display( key );
                     fi;
                     
@@ -403,22 +370,36 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
                     continue;
                     
                 fi;
-
-                Error( "should never get here" );
                 
-            od;
-
-            if debug then
-                Display( "everything matched" );
             fi;
             
-            return true;
-
-        else
+            # now there should only remain integers, booleans or strings
+            Assert( 0, IsInt( template_tree.(key) ) or IsBool( template_tree.(key) ) or IsString( template_tree.(key) ) );
             
-            Error( "this should never happen" );
+            if template_tree.(key) <> tree.(key) then
+                
+                if debug then
+                    Display( "tree mismatch" );
+                    Display( key );
+                fi;
+                
+                return false;
+                
+            else
+                
+                continue;
+                
+            fi;
             
+            Error( "should never get here" );
+            
+        od;
+        
+        if debug then
+            Display( "everything matched" );
         fi;
+        
+        return true;
         
     end;
 
@@ -432,27 +413,10 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
             
             # do nothing
             
-        elif IsList( tree ) then
+        else
             
-            Assert( 0, IsList( template_tree ) );
-            
-            if IsBound( template_tree[key] ) then
-                
-                template_tree := template_tree[key];
-                
-            else
-                
-                template_tree := fail;
-                
-            fi;
-
-        elif IsRecord( tree ) then
-            
-            Assert( 0, IsRecord( template_tree ) );
-            
-            if tree.type = template_tree.type then
-                
-                Assert( 0, IsBound( template_tree.(key) ) );
+            # template_tree.(key) might not be bound for SYNTAX_TREE_LIST
+            if tree.type = template_tree.type and IsBound( template_tree.(key) ) then
                 
                 template_tree := template_tree.(key);
                 
@@ -461,15 +425,11 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
                 template_tree := fail;
                 
             fi;
-
-        else
-            
-            Error( "this should never happen" );
             
         fi;
-
+        
         path := Concatenation( path, [ key ] );
-
+        
         return [ template_tree, path ];
         
     end;
@@ -593,11 +553,11 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, a
             # to get a syntax tree we have to wrap the template in a function
             if template.returns_value then
                 
-                src_template_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "x -> ", src_template ) ) ).stats.statements[1].obj;
+                src_template_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "x -> ", src_template ) ) ).stats.statements.1.obj;
                 
             else
                 
-                src_template_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "function () ", src_template, " ; return; end;" ) ) ).stats.statements[1];
+                src_template_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "function () ", src_template, " ; return; end;" ) ) ).stats.statements.1;
                 
             fi;
             
@@ -615,11 +575,11 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, a
             # to get a syntax tree we have to wrap the template in a function
             if template.returns_value then
                 
-                dst_template_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "x -> ", dst_template ) ) ).stats.statements[1].obj;
+                dst_template_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "x -> ", dst_template ) ) ).stats.statements.1.obj;
                 
             else
                 
-                dst_template_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "function () ", dst_template, " ; return; end;" ) ) ).stats.statements[1];
+                dst_template_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "function () ", dst_template, " ; return; end;" ) ) ).stats.statements.1;
                 
             fi;
             
@@ -710,12 +670,12 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, a
             
             # not handled yet
             Assert( 0, Length( path ) >= 1 );
-
+            
             match := CapJitGetNodeByPath( tree, path );
-
+            
             new_tree := StructuralCopy( tree );
             parent := CapJitGetNodeByPath( new_tree, path{[ 1 .. Length( path ) - 1 ]} );
-
+            
             if not IsDenseList( variables ) or Length( variables ) <> Length( variable_names ) then
                 
                 Error( "matched wrong number of variables" );
@@ -725,13 +685,18 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, a
             if dst_template = "" then
                 
                 # can only drop expression if it is in a list of statements
-                Assert( 0, IsList( parent ) );
-                Assert( 0, IsInt( Last( path ) ) );
+                Assert( 0, parent.type = "SYNTAX_TREE_LIST" );
                 
-                Remove( parent, Last( path ) );
-
+                if parent.length = 1 then
+                    
+                    Error( "This should never happen because we would generate an empty list of statements in the next step." );
+                    
+                fi;
+                
+                Remove( parent, Int( Last( path ) ) );
+                
                 tree := new_tree;
-
+                
                 continue;
                 
             fi;
@@ -808,7 +773,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, a
             pre_func := function ( tree, path )
               local current_func, new_nams, condition_func, src_template_path, func;
 
-                if IsRecord( tree ) and tree.type = "EXPR_FUNC" then
+                if tree.type = "EXPR_FUNC" then
                     
                     current_func := ShallowCopy( tree );
 
@@ -871,7 +836,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, a
             pre_func := function ( tree, path )
               local var_number, new_tree, replacement;
 
-                if IsRecord( tree ) and tree.type = "EXPR_REF_GVAR" and StartsWith( tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_" ) then
+                if tree.type = "EXPR_REF_GVAR" and StartsWith( tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_" ) then
                     
                     var_number := Int( ReplacedString( tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_", "" ) );
         
@@ -898,24 +863,8 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, a
             end;
             
             dst_tree := CapJitIterateOverTree( dst_tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [ ] );
-
-            if IsList( parent ) then
-                
-                Assert( 0, IsInt( Last( path ) ) );
-
-                parent[Last( path )] := dst_tree;
-                
-            elif IsRecord( parent ) then
-                
-                Assert( 0, IsString( Last( path ) ) );
-
-                parent.(Last( path )) := dst_tree;
-                
-            else
-                
-                Error( "this should never happen" );
-                
-            fi;
+            
+            parent.(Last( path )) := dst_tree;
             
             # if new_tree is well-defined, take it
             if not CapJitContainsRefToFVAROutsideOfFuncStack( new_tree ) then
@@ -951,7 +900,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args, a
         pre_func := function ( tree, additional_arguments )
           local level, pos;
             
-            if IsRecord( tree ) and IsBound( tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE ) then
+            if IsBound( tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE ) then
                 
                 Unbind( tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE );
                 

@@ -34,9 +34,14 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
+    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1, cap_jit_hoisted_expression_4_1;
+    cap_jit_hoisted_expression_1_1 := HomalgIdentityMatrix( Dimension( arg2_1 ) * Dimension( arg3_1 ), UnderlyingFieldForHomalg( arg2_1 ) );
+    cap_jit_hoisted_expression_2_1 := Dimension( arg2_1 );
+    cap_jit_hoisted_expression_3_1 := Dimension( arg3_1 );
+    cap_jit_hoisted_expression_4_1 := UnderlyingRing( cat_1 );
     return List( [ 1 .. Dimension( arg2_1 ) * Dimension( arg3_1 ) ], function ( logic_new_func_x_2 )
             return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                   ), cat_1, arg2_1, arg3_1, UnderlyingFieldForHomalg, UnderlyingRing( cat_1 ), UnderlyingMatrix, ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( Dimension( arg2_1 ) * Dimension( arg3_1 ), UnderlyingFieldForHomalg( arg2_1 ) ), [ logic_new_func_x_2 ] ), Dimension( arg2_1 ), Dimension( arg3_1 ) ) );
+                   ), cat_1, arg2_1, arg3_1, UnderlyingFieldForHomalg, cap_jit_hoisted_expression_4_1, UnderlyingMatrix, ConvertRowToMatrix( CertainRows( cap_jit_hoisted_expression_1_1, [ logic_new_func_x_2 ] ), cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1 ) );
         end );
 end
 ########

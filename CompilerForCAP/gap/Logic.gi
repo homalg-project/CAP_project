@@ -56,7 +56,7 @@ CapJitAddLogicFunction( function ( tree, jit_args )
                 
                 return rec(
                     type := "EXPR_LIST",
-                    list := Concatenation( List( args, a -> a.list ) ),
+                    list := ConcatenationForSyntaxTreeLists( List( args, a -> a.list ) ),
                 );
                 
             fi;
@@ -85,12 +85,12 @@ CapJitAddLogicFunction( function ( tree, jit_args )
             
             args := tree.args;
             
-            if args[2].type = "EXPR_LIST" then
+            if args.2.type = "EXPR_LIST" then
                 
                 return rec(
                     type := "EXPR_FUNCCALL",
-                    funcref := args[1],
-                    args := args[2].list,
+                    funcref := args.1,
+                    args := args.2.list,
                 );
                 
             fi;
@@ -116,13 +116,13 @@ CapJitAddLogicFunction( function ( tree, jit_args )
       local attribute_name, args, object, list, pos;
         
         # attribute getters can also be applied to more than one argument, but we are not interested in that case
-        if CapJitIsCallToGlobalFunction( tree, gvar -> IsAttribute( ValueGlobal( gvar ) ) ) and Length( tree.args ) = 1 then
+        if CapJitIsCallToGlobalFunction( tree, gvar -> IsAttribute( ValueGlobal( gvar ) ) ) and tree.args.length = 1 then
             
             attribute_name := tree.funcref.gvar;
             
             args := tree.args;
             
-            object := args[1];
+            object := args.1;
             
             list := fail;
             
@@ -131,11 +131,11 @@ CapJitAddLogicFunction( function ( tree, jit_args )
                 # special case
                 if attribute_name = "CapCategory" then
                     
-                    return object.args[2];
+                    return object.args.2;
                     
                 fi;
                 
-                list := object.args{[ 3 .. Length( object.args ) ]};
+                list := Sublist( object.args, [ 3 .. object.args.length ] );
                 
             fi;
             
@@ -144,19 +144,19 @@ CapJitAddLogicFunction( function ( tree, jit_args )
                 # special cases
                 if attribute_name = "CapCategory" then
                     
-                    return object.args[2];
+                    return object.args.2;
                     
                 elif attribute_name = "Source" then
                     
-                    return object.args[3];
+                    return object.args.3;
                     
                 elif attribute_name = "Range" then
                     
-                    return object.args[4];
+                    return object.args.4;
                     
                 fi;
                 
-                list := object.args{[ 5 .. Length( object.args ) ]};
+                list := Sublist( object.args, [ 5 .. object.args.length ] );
                 
             fi;
             
@@ -166,9 +166,9 @@ CapJitAddLogicFunction( function ( tree, jit_args )
                 
                 if pos <> fail and IsOddInt( pos ) then
                     
-                    Assert( 0, IsBound( list[pos + 1] ) );
+                    Assert( 0, IsBound( list.(pos + 1) ) );
                     
-                    return list[pos + 1];
+                    return list.(pos + 1);
                     
                 fi;
                 
@@ -196,25 +196,25 @@ CapJitAddLogicFunction( function ( tree, jit_args )
     pre_func := function ( tree, additional_arguments )
       local statements, i, statement, new_branch;
         
-        if IsRecord( tree ) and tree.type = "EXPR_FUNC" then
+        if tree.type = "EXPR_FUNC" then
             
             statements := tree.stats.statements;
 
             # find if ... then ...; return ...; elif ...; return ...; fi; (excluding the last statement)
             i := 1;
-            while i <= Length( statements ) - 1 do
+            while i <= statements.length - 1 do
                 
-                statement := statements[i];
+                statement := statements.(i);
                 
-                if StartsWith( statement.type, "STAT_IF" ) and ForAll( statement.branches, b -> Length( b.body.statements ) > 0 and Last( b.body.statements ).type = "STAT_RETURN_OBJ" ) then
+                if StartsWith( statement.type, "STAT_IF" ) and ForAll( statement.branches, b -> b.body.statements.length > 0 and Last( b.body.statements ).type = "STAT_RETURN_OBJ" ) then
                     # we are in the main sequence of statements of a function => we are not inside of a loop
                     # and all branches end with a return statement
                     # => we reach the remaining statements iff none of the conditions of the branches match
-
+                    
                     if Last( statement.branches ).condition.type = "EXPR_TRUE" then
                         
                         Error( "found unreachable code, this is not yet handled" );
-
+                        
                     else
                         
                         Assert( 0, not EndsWith( statement.type, "_ELSE" ) );
@@ -229,13 +229,15 @@ CapJitAddLogicFunction( function ( tree, jit_args )
                             ),
                             body := rec(
                                 type := "STAT_SEQ_STAT",
-                                statements := statements{[ i + 1 .. Length( statements ) ]},
+                                statements := Sublist( statements, [ i + 1 .. statements.length ] ),
                             ),
                         );
                         
-                        Add( statement.branches, new_branch );
+                        # GAP does not allow to implement Add for records :(
+                        statement.branches.(statement.branches.length + 1) := new_branch;
+                        statement.branches.length := statement.branches.length + 1;
                         
-                        statements := statements{[ 1 .. i ]};
+                        statements := Sublist( statements, [ 1 .. i ] );
 
                         tree := ShallowCopy( tree );
                         tree.stats := ShallowCopy( tree.stats );

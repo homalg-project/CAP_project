@@ -39,7 +39,7 @@
 #!       If <A>tree</A> is a record, `result` is also a record
 #!         and `result.(key)` is the return value of the `result_func` of the child named `key`.
 #!     * Next, <A>result_func</A> is called with the following arguments:
-#!         <A>tree</A>, `result`, and <A>additional_arguments</A>.
+#!         <A>tree</A>, `result`,  `keys` (a list containing the children's keys), and <A>additional_arguments</A>.
 #!       The return value should be the result of the current tree formed by combining the results of the children.
 #!       For an example see <Ref Func="CapJitResultFuncCombineChildren" />.
 #!     * Finally, the return value of <A>result_func</A> is returned.

@@ -7,9 +7,6 @@
 
 #! @Section Compilation steps
 
-# helper function
-DeclareGlobalFunction( "CapJitGetCapCategoryFromArguments" );
-
 #! @Description
 #!   Tries to resolve operations in <A>tree</A>:
 #!   * The attribute `CapCategory` is resolved by computing the category using <A>jit_args</A> and storing it in a global variable.
