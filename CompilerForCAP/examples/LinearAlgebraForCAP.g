@@ -31,6 +31,8 @@ tree1 := SYNTAX_TREE(
 );;
 Display( SYNTAX_TREE_CODE( tree1 ) );
 #! function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
+#!     local cap_jit_hoisted_expression_1_1;
+#!     cap_jit_hoisted_expression_1_1 := UnderlyingRing( cat_1 );
 #!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
 #!            ), cat_1, S_1, T_1, UnderlyingFieldForHomalg, 
 #!        UnderlyingRing( cat_1 ), UnderlyingMatrix, 
@@ -38,7 +40,7 @@ Display( SYNTAX_TREE_CODE( tree1 ) );
 #!          ListN( diagram_S_1, List( morphism_matrix_1, function ( row_2 )
 #!                   return List( row_2, UnderlyingMatrix );
 #!               end ), function ( source_2, row_2 )
-#!                 return UnionOfColumns( UnderlyingRing( cat_1 ), 
+#!                 return UnionOfColumns( cap_jit_hoisted_expression_1_1, 
 #!                    Dimension( source_2 ), row_2 );
 #!             end ) ) );
 #! end
@@ -51,13 +53,15 @@ tree2 := SYNTAX_TREE( CapJitCompiledFunction(
 ) );;
 Display( SYNTAX_TREE_CODE( tree2 ) );
 #! function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
+#!     local cap_jit_hoisted_expression_1_1;
+#!     cap_jit_hoisted_expression_1_1 := UnderlyingRing( cat_1 );
 #!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
 #!            ), cat_1, S_1, T_1, UnderlyingFieldForHomalg, 
 #!        UnderlyingRing( cat_1 ), UnderlyingMatrix, 
 #!        UnionOfRows( UnderlyingRing( cat_1 ), Dimension( T_1 ), 
 #!          ListN( diagram_S_1, morphism_matrix_1, 
 #!            function ( logic_new_func_x_2, logic_new_func_y_2 )
-#!                 return UnionOfColumns( UnderlyingRing( cat_1 ), 
+#!                 return UnionOfColumns( cap_jit_hoisted_expression_1_1, 
 #!                    Dimension( logic_new_func_x_2 ), 
 #!                    List( logic_new_func_y_2, function ( s_3 )
 #!                           return UnderlyingMatrix( s_3 );

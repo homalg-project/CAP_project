@@ -20,7 +20,7 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
         
         funccall_does_not_return_fail := false;
         
-        if IsRecord( tree ) and not (IsBound( tree.CAP_JIT_NOT_RESOLVABLE ) and tree.CAP_JIT_NOT_RESOLVABLE) then
+        if not (IsBound( tree.CAP_JIT_NOT_RESOLVABLE ) and tree.CAP_JIT_NOT_RESOLVABLE) then
             
             if tree.type = "EXPR_REF_GVAR" and not tree.gvar in CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES then
                 
@@ -39,7 +39,7 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
                 
             elif tree.type = "EXPR_FUNCCALL" and tree.funcref.type = "EXPR_REF_GVAR" and ForAll( tree.args, a -> a.type in [ "EXPR_REF_GVAR", "EXPR_INT", "EXPR_STRING", "EXPR_TRUE", "EXPR_FALSE" ] ) and not NameFunction( ValueGlobal( tree.funcref.gvar ) ) in Concatenation( CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ), RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) ) then
                 
-                value := CallFuncList( ValueGlobal( tree.funcref.gvar ), List( tree.args, function ( a )
+                value := CallFuncList( ValueGlobal( tree.funcref.gvar ), AsListMut( List( tree.args, function ( a )
                     
                     if a.type = "EXPR_REF_GVAR" then
                         
@@ -63,10 +63,10 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
                         
                     fi;
                 
-                end ) );
+                end ) ) );
                 
             fi;
-                
+            
             if IsBound( value ) then
                 
                 if IsInt( value ) then
@@ -101,9 +101,9 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
                         
                         inline_tree := ENHANCED_SYNTAX_TREE( value : globalize_hvars := true );
                         
-                        if Length( inline_tree.stats.statements ) >= 1 and inline_tree.stats.statements[1].type = "STAT_PRAGMA" and inline_tree.stats.statements[1].value = "% CAP_JIT_RESOLVE_FUNCTION" then
+                        if inline_tree.stats.statements.length >= 1 and inline_tree.stats.statements.1.type = "STAT_PRAGMA" and inline_tree.stats.statements.1.value = "% CAP_JIT_RESOLVE_FUNCTION" then
                             
-                            inline_tree.stats.statements := inline_tree.stats.statements{[ 2 .. Length( inline_tree.stats.statements ) ]};
+                            inline_tree.stats.statements := Sublist( inline_tree.stats.statements, [ 2 .. inline_tree.stats.statements.length ] );
                             
                             if funccall_does_not_return_fail then
                                 

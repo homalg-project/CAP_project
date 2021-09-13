@@ -131,4 +131,21 @@ Display( compiled_func );
 #!         end );
 #! end
 
+##
+func := function( x, func )
+    return List( [ 1 .. 9 ], y -> func( x + 1, x + 1, y ) ); end;;
+
+tree := ENHANCED_SYNTAX_TREE( func );;
+tree := CapJitHoistedExpressions( tree );;
+compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
+Display( compiled_func );
+#! function ( x_1, func_1 )
+#!     local cap_jit_hoisted_expression_1_1;
+#!     cap_jit_hoisted_expression_1_1 := x_1 + 1;
+#!     return List( [ 1 .. 9 ], function ( y_2 )
+#!             return func_1( cap_jit_hoisted_expression_1_1, 
+#!                cap_jit_hoisted_expression_1_1, y_2 );
+#!         end );
+#! end
+
 #! @EndExample

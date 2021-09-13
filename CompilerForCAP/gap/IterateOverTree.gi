@@ -4,16 +4,16 @@
 # Implementations
 #
 BindGlobal( "CAP_JIT_INTERNAL_ITERATION_KEYS", rec(
-    EXPR_FUNC := "stats",
-    STAT_SEQ_STAT := "statements",
-    STAT_SEQ_STAT2 := "statements",
-    STAT_SEQ_STAT3 := "statements",
-    STAT_SEQ_STAT4 := "statements",
-    STAT_SEQ_STAT5 := "statements",
-    STAT_SEQ_STAT6 := "statements",
-    STAT_SEQ_STAT7 := "statements",
-    STAT_ASS_LVAR := "rhs",
-    STAT_ASS_FVAR := "rhs",
+    EXPR_FUNC := [ "stats" ],
+    STAT_SEQ_STAT := [ "statements" ],
+    STAT_SEQ_STAT2 := [ "statements" ],
+    STAT_SEQ_STAT3 := [ "statements" ],
+    STAT_SEQ_STAT4 := [ "statements" ],
+    STAT_SEQ_STAT5 := [ "statements" ],
+    STAT_SEQ_STAT6 := [ "statements" ],
+    STAT_SEQ_STAT7 := [ "statements" ],
+    STAT_ASS_LVAR := [ "rhs" ],
+    STAT_ASS_FVAR := [ "rhs" ],
     EXPR_FUNCCALL := [ "funcref", "args" ],
     EXPR_FUNCCALL_0ARGS := [ "funcref", "args" ],
     EXPR_FUNCCALL_1ARGS := [ "funcref", "args" ],
@@ -32,11 +32,11 @@ BindGlobal( "CAP_JIT_INTERNAL_ITERATION_KEYS", rec(
     STAT_PROCCALL_5ARGS := [ "funcref", "args" ],
     STAT_PROCCALL_6ARGS := [ "funcref", "args" ],
     STAT_PROCCALL_XARGS := [ "funcref", "args" ],
-    EXPR_REF_LVAR := fail,
-    EXPR_REF_HVAR := fail,
-    EXPR_REF_FVAR := fail,
-    EXPR_REF_GVAR := fail,
-    STAT_RETURN_VOID := fail,
+    EXPR_REF_LVAR := [ ],
+    EXPR_REF_HVAR := [ ],
+    EXPR_REF_FVAR := [ ],
+    EXPR_REF_GVAR := [ ],
+    STAT_RETURN_VOID := [ ],
     STAT_IF := [ "branches" ],
     STAT_IF_ELSE := [ "branches" ],
     STAT_IF_ELIF := [ "branches" ],
@@ -54,18 +54,18 @@ BindGlobal( "CAP_JIT_INTERNAL_ITERATION_KEYS", rec(
     STAT_ASS_COMOBJ_NAME := [ "comobj", "rhs" ],
     EXPR_ELM_MAT := [ "list", "row", "col" ],
     STAT_ASS_MAT := [ "list", "row", "col", "rhs" ],
-    EXPR_LIST := "list",
-    STAT_RETURN_OBJ := "obj",
+    EXPR_LIST := [ "list" ],
+    STAT_RETURN_OBJ := [ "obj" ],
     EXPR_RANGE := [ "first", "last" ],
-    EXPR_INT := fail,
-    EXPR_STRING := fail,
-    EXPR_CHAR := fail,
-    EXPR_TRUE := fail,
-    EXPR_FALSE := fail,
-    STAT_EMPTY := fail,
-    STAT_PRAGMA := fail,
-    STAT_CONTINUE := fail,
-    STAT_BREAK := fail,
+    EXPR_INT := [ ],
+    EXPR_STRING := [ ],
+    EXPR_CHAR := [ ],
+    EXPR_TRUE := [ ],
+    EXPR_FALSE := [ ],
+    STAT_EMPTY := [ ],
+    STAT_PRAGMA := [ ],
+    STAT_CONTINUE := [ ],
+    STAT_BREAK := [ ],
     EXPR_POW := [ "left", "right" ],
     EXPR_PROD := [ "left", "right" ],
     EXPR_QUO := [ "left", "right" ],
@@ -99,13 +99,14 @@ InstallGlobalFunction( CapJitIterateOverTree, function ( tree, pre_func, result_
     # check if we should stop iteration
     if pre_func_result = fail then
         
-        return result_func( tree, fail, additional_arguments );
+        return result_func( tree, fail, [ ], additional_arguments );
         
     fi;
     
     # continue iteration
     tree := pre_func_result;
     
+    # when unenhancing an enhanced syntax tree, the "list" case can still occur
     if IsList( tree ) then
        
         result := [ ];
@@ -116,22 +117,17 @@ InstallGlobalFunction( CapJitIterateOverTree, function ( tree, pre_func, result_
             
         od;
 
-        return result_func( tree, result, additional_arguments );
+        return result_func( tree, result, [ 1 .. Length( tree ) ], additional_arguments );
 
     fi;
     
-    if not IsRecord( tree ) then
-        
-        Display( tree );
-        
-        Error( "tree is neither a list nor a record" );
-        
-    fi;
+    Assert( 0, IsRecord( tree ) );
     
     if IsBound( tree.type ) then
         
         type := tree.type;
     
+    # needed for dealing with non-enhanced syntax trees
     elif SortedList( RecNames( tree ) ) = [ "body", "condition" ] then
         
         type := "BRANCH_IF";
@@ -144,41 +140,38 @@ InstallGlobalFunction( CapJitIterateOverTree, function ( tree, pre_func, result_
         
     fi;
     
-    if not IsBound( CAP_JIT_INTERNAL_ITERATION_KEYS.(type) ) then
+    if type = "SYNTAX_TREE_LIST" then
+        
+        keys := List( [ 1 .. tree.length ], i -> String( i ) );
+        
+    elif IsBound( CAP_JIT_INTERNAL_ITERATION_KEYS.(type) ) then
+        
+        keys := CAP_JIT_INTERNAL_ITERATION_KEYS.(type);
+        
+    else
         
         Display( tree );
         
         Error( "cannot find iteration key" );
-
+        
     fi;
     
     result := rec( );
-
-    keys := CAP_JIT_INTERNAL_ITERATION_KEYS.(type);
-    if keys <> fail then
-       
-        if IsString( keys ) then
+    
+    for key in keys do
+        
+        if not IsBound( tree.(key) ) then
             
-            keys := [ keys ];
+            Display( tree );
+            
+            Error( "invalid iteration key" );
             
         fi;
-
-        for key in keys do
-           
-            if not IsBound( tree.(key) ) then
-                
-                Display( tree );
         
-                Error( "invalid iteration key" );
-            
-            fi;
-            
-            result.(key) := CapJitIterateOverTree( tree.(key), pre_func, result_func, additional_arguments_func, additional_arguments_func( tree, key, additional_arguments ) );
-
-        od;
+        result.(key) := CapJitIterateOverTree( tree.(key), pre_func, result_func, additional_arguments_func, additional_arguments_func( tree, key, additional_arguments ) );
         
-    fi;
-
-    return result_func( tree, result, additional_arguments );
+    od;
+    
+    return result_func( tree, result, keys, additional_arguments );
     
 end );

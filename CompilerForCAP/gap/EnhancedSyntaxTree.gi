@@ -38,12 +38,28 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
     orig_tree := tree;
     
     pre_func := function ( tree, additional_arguments )
-      local path, func_stack, statements, i, statement, body_if_true, body_if_false, level, pos, lvars, value, to_delete, next_statement, funccall, branch, keyvalue, operation_name;
+      local path, func_stack, new_tree, statements, i, statement, level, pos, lvars, value, to_delete, next_statement, funccall, operation_name, branch, keyvalue;
         
         path := additional_arguments[1];
         func_stack := additional_arguments[2];
         
-        if IsRecord( tree ) then
+        # convert lists to records
+        if IsList( tree ) then
+            
+            new_tree := rec(
+                type := "SYNTAX_TREE_LIST",
+                length := Length( tree ),
+            );
+            
+            for i in [ 1 .. Length( tree ) ] do
+                
+                new_tree.(i) := tree[i];
+                
+            od;
+            
+            tree := new_tree;
+            
+        elif IsRecord( tree ) then
             
             Assert( 0, IsBound( tree.type ) );
             
@@ -332,8 +348,12 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 
             fi;
             
+        else
+            
+            Error( "this should never happen" );
+            
         fi;
-
+        
         return tree;
         
     end;
@@ -400,9 +420,9 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
             variadic := false,
             stats := rec(
                 type := "STAT_SEQ_STAT",
-                statements := [
+                statements := AsSyntaxTreeList( [
                     stat,
-                ],
+                ] ),
             ),
         );
         
@@ -418,21 +438,26 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
         
         path := additional_arguments[1];
         func_stack := additional_arguments[2];
-      
-        if IsRecord( tree ) then
+        
+        Assert( 0, IsRecord( tree ) );
+        Assert( 0, IsBound( tree.type ) );
+        
+        # check that the input is a proper tree, i.e. acyclic
+        if IsBound( tree.touched ) then
             
-            Assert( 0, IsBound( tree.type ) );
+            Error( "this subtree can be reached via at least two different paths, i.e. the input contains a cycle and thus is not a proper tree" );
             
-            # check that the input is a proper tree, i.e. acyclic
-            if IsBound( tree.touched ) then
-                
-                Error( "this subtree can be reached via at least two different paths, i.e. the input contains a cycle and thus is not a proper tree" );
-                
-            else
-                
-                tree.touched := true;
-                
-            fi;
+        else
+            
+            tree.touched := true;
+            
+        fi;
+        
+        if tree.type = "SYNTAX_TREE_LIST" then
+            
+            tree := List( [ 1 .. tree.length ], i -> tree.(i) );
+            
+        else
             
             # check that function IDs are unique (except dummy ID -1)
             if tree.type = "EXPR_FUNC" and tree.id <> -1 then
@@ -470,14 +495,14 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                     Error( "enhanced syntax trees can only be used with short types" );
                     
                 fi;
-
-                if Length( tree.args ) > 6 then
+                
+                if tree.args.length > 6 then
                     
                     tree.type := "EXPR_FUNCCALL_XARGS";
                     
                 else
                     
-                    tree.type := Concatenation( "EXPR_FUNCCALL_", String( Length( tree.args ) ), "ARGS" );
+                    tree.type := Concatenation( "EXPR_FUNCCALL_", String( tree.args.length ), "ARGS" );
                     
                 fi;
             
@@ -488,14 +513,14 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                     Error( "enhanced syntax trees can only be used with short types" );
                     
                 fi;
-
-                if Length( tree.args ) > 6 then
+                
+                if tree.args.length > 6 then
                     
                     tree.type := "STAT_PROCCALL_XARGS";
                     
                 else
                     
-                    tree.type := Concatenation( "STAT_PROCCALL_", String( Length( tree.args ) ), "ARGS" );
+                    tree.type := Concatenation( "STAT_PROCCALL_", String( tree.args.length ), "ARGS" );
                     
                 fi;
                 
@@ -514,9 +539,9 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                     
                 fi;
                 
-                if Length( tree.body ) = 2 or Length( tree.body ) = 3 then
+                if tree.body.length = 2 or tree.body.length = 3 then
                     
-                    tree.type := Concatenation( tree.type, String( Length( tree.body ) ) );
+                    tree.type := Concatenation( tree.type, String( tree.body.length ) );
                     
                 fi;
                 
@@ -528,15 +553,15 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 statements := tree.statements;
                 
                 # assert that statements are flat
-                Assert( 0, Length( statements ) > 0 );
+                Assert( 0, statements.length > 0 );
                 Assert( 0, ForAll( statements, s -> not StartsWith( s.type, "STAT_SEQ_STAT" ) ) );
                 
                 first_six_statements := fail;
                 
-                if Last( path ) = "stats" and Length( statements ) > 7 then
+                if Last( path ) = "stats" and statements.length > 7 then
                     
-                    first_six_statements := statements{[ 1 .. 6 ]};
-                    statements := statements{[ 7 .. Length( statements ) ]};
+                    first_six_statements := Sublist( statements, [ 1 .. 6 ] );
+                    statements := Sublist( statements, [ 7 .. statements.length ] );
                     
                 fi;
                 
@@ -544,20 +569,20 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                     type := "STAT_SEQ_STAT",
                     statements := statements,
                 );
-                    
+                
                 if first_six_statements <> fail then
                     
                     # new_statements.type will be handled by the recursion
                     return rec(
                         type := "STAT_SEQ_STAT7",
-                        statements := Concatenation( first_six_statements, [ new_statements ] ),
+                        statements := ConcatenationForSyntaxTreeLists( first_six_statements, AsSyntaxTreeList( [ new_statements ] ) ),
                     );
                     
                 else
-
-                    if Length( statements ) >= 2 and Length( statements ) <= 7 then
+                    
+                    if statements.length >= 2 and statements.length <= 7 then
                         
-                        new_statements.type := Concatenation( "STAT_SEQ_STAT", String( Length( statements ) ) );
+                        new_statements.type := Concatenation( "STAT_SEQ_STAT", String( statements.length ) );
                         
                     fi;
                     
@@ -613,9 +638,9 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
             fi;
             
             # remove STAT_SEQ_STAT from if branches with only a single statement
-            if tree.type = "BRANCH_IF" and tree.body.type = "STAT_SEQ_STAT" and Length( tree.body.statements ) = 1 then
+            if tree.type = "BRANCH_IF" and tree.body.type = "STAT_SEQ_STAT" and tree.body.statements.length = 1 then
                 
-                tree.body := tree.body.statements[1];
+                tree.body := tree.body.statements.1;
                 
             fi;
             
@@ -626,7 +651,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 tree := rec(
                     type := "STAT_IF_ELSE",
-                    branches := [
+                    branches := AsSyntaxTreeList( [
                         rec(
                             type := "BRANCH_IF",
                             condition := tree.obj.condition,
@@ -645,7 +670,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                                 obj := tree.obj.expr_if_false,
                             ),
                         ),
-                    ],
+                    ] ),
                 );
                 
             fi;
@@ -655,7 +680,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 tree := rec(
                     type := "STAT_IF_ELSE",
-                    branches := [
+                    branches := AsSyntaxTreeList( [
                         rec(
                             type := "BRANCH_IF",
                             condition := tree.rhs.condition,
@@ -676,7 +701,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                                 rhs := tree.rhs.expr_if_false,
                             ),
                         ),
-                    ],
+                    ] ),
                 );
                 
             fi;
@@ -686,7 +711,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 tree := rec(
                     type := "EXPR_FUNCCALL_0ARGS",
-                    args := [ ],
+                    args := AsSyntaxTreeList( [ ] ),
                     funcref := rec(
                         type := "EXPR_FUNC",
                         id := -1, # will be ignored anyway
@@ -696,10 +721,10 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                         variadic := false,
                         stats := rec(
                             type := "STAT_SEQ_STAT",
-                            statements := [
+                            statements := AsSyntaxTreeList( [
                                 rec(
                                     type := "STAT_IF_ELSE",
-                                    branches := [
+                                    branches := AsSyntaxTreeList( [
                                         rec(
                                             type := "BRANCH_IF",
                                             condition := tree.condition,
@@ -718,9 +743,9 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                                                 obj := tree.expr_if_false,
                                             ),
                                         ),
-                                    ],
+                                    ] ),
                                 ),
-                            ],
+                            ] ),
                         ),
                     ),
                 );

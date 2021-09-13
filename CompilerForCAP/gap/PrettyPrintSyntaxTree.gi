@@ -5,12 +5,6 @@
 #
 InstallGlobalFunction( CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT, function ( tree, func_stack )
   local type, statements, lvars, level, hvars, func;
-
-    if IsList( tree ) then
-        
-        return List( tree, t -> CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT( t, func_stack ) );
-        
-    fi;
     
     tree := ShallowCopy( tree );
     
@@ -20,7 +14,11 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT, fu
     
     type := tree.type;
     
-    if type = "EXPR_FUNC" then
+    if type = "SYNTAX_TREE_LIST" then
+        
+        return List( [ 1 .. tree.length ], i -> CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT( tree.(i), func_stack ) );
+        
+    elif type = "EXPR_FUNC" then
         
         return rec( 0_type := tree.type,
                     1_id := tree.id,
@@ -115,8 +113,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT, fu
                   );
         
     elif type = "EXPR_REC" then
-        
-        Assert( 0, Length( tree.keyvalue ) = 0 );
         
         return rec( 0_type := tree.type,
                     1_keyvalue := CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT( tree.keyvalue, func_stack ),

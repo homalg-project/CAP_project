@@ -36,12 +36,22 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
+    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1, cap_jit_hoisted_expression_4_1, cap_jit_hoisted_expression_5_1, cap_jit_hoisted_expression_6_1, cap_jit_hoisted_expression_7_1, cap_jit_hoisted_expression_8_1, cap_jit_hoisted_expression_9_1;
+    cap_jit_hoisted_expression_1_1 := HomalgIdentityMatrix( Dimension( Opposite( arg3_1 ) ) * Dimension( Opposite( arg2_1 ) ), UnderlyingFieldForHomalg( Opposite( arg3_1 ) ) );
+    cap_jit_hoisted_expression_2_1 := Dimension( Opposite( arg3_1 ) );
+    cap_jit_hoisted_expression_3_1 := Dimension( Opposite( arg2_1 ) );
+    cap_jit_hoisted_expression_4_1 := Opposite( cat_1 );
+    cap_jit_hoisted_expression_5_1 := Opposite( arg3_1 );
+    cap_jit_hoisted_expression_6_1 := Opposite( arg2_1 );
+    cap_jit_hoisted_expression_7_1 := UnderlyingRing( Opposite( cat_1 ) );
+    cap_jit_hoisted_expression_8_1 := ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat_1, Opposite, Opposite( arg2_1 ) );
+    cap_jit_hoisted_expression_9_1 := ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat_1, Opposite, Opposite( arg3_1 ) );
     return List( [ 1 .. Dimension( Opposite( arg3_1 ) ) * Dimension( Opposite( arg2_1 ) ) ], function ( logic_new_func_x_2 )
             return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                   ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-                     ), cat_1, Opposite, Opposite( arg2_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                     ), cat_1, Opposite, Opposite( arg3_1 ) ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                     ), Opposite( cat_1 ), Opposite( arg3_1 ), Opposite( arg2_1 ), UnderlyingFieldForHomalg, UnderlyingRing( Opposite( cat_1 ) ), UnderlyingMatrix, ConvertRowToMatrix( CertainRows( HomalgIdentityMatrix( Dimension( Opposite( arg3_1 ) ) * Dimension( Opposite( arg2_1 ) ), UnderlyingFieldForHomalg( Opposite( arg3_1 ) ) ), [ logic_new_func_x_2 ] ), Dimension( Opposite( arg3_1 ) ), Dimension( Opposite( arg2_1 ) ) ) ) );
+                   ), cat_1, cap_jit_hoisted_expression_8_1, cap_jit_hoisted_expression_9_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                     ), cap_jit_hoisted_expression_4_1, cap_jit_hoisted_expression_5_1, cap_jit_hoisted_expression_6_1, UnderlyingFieldForHomalg, cap_jit_hoisted_expression_7_1, UnderlyingMatrix, ConvertRowToMatrix( CertainRows( cap_jit_hoisted_expression_1_1, [ logic_new_func_x_2 ] ), cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1 ) ) );
         end );
 end
 ########

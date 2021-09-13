@@ -40,9 +40,8 @@ InstallGlobalFunction( CapJitInlinedVariableAssignments, function ( tree )
 
         # reset CAP_JIT_IGNORE_VARIABLE_ASSIGNMENT
         pre_func := function ( tree, additional_arguments )
-          local level, pos;
             
-            if IsRecord( tree ) and IsBound( tree.CAP_JIT_IGNORE_VARIABLE_ASSIGNMENT ) then
+            if IsBound( tree.CAP_JIT_IGNORE_VARIABLE_ASSIGNMENT ) then
                 
                 Unbind( tree.CAP_JIT_IGNORE_VARIABLE_ASSIGNMENT );
                 
@@ -62,8 +61,8 @@ InstallGlobalFunction( CapJitInlinedVariableAssignments, function ( tree )
     parent_path := lvar_path{[ 1 .. Length( lvar_path ) - 1 ]};
     parent := CapJitGetNodeByPath( tree, parent_path );
 
-    # assert that parent is a STAT_SEQ_STAT
-    Assert( 0, IsInt( Last( lvar_path ) ) and Last( parent_path ) = "statements" and IsList( parent ) );
+    # assert that parent is a list of statements
+    Assert( 0, Last( parent_path ) = "statements" and parent.type = "SYNTAX_TREE_LIST" );
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, Concatenation( "Try to inline variable with initial name ", lvar_assignment.initial_name ), "." );
@@ -73,9 +72,9 @@ InstallGlobalFunction( CapJitInlinedVariableAssignments, function ( tree )
     
     inline_tree := fail;
     
-    if Length( parent ) >= Last( lvar_path ) + 1 then
+    if parent.length >= Int( Last( lvar_path ) ) + 1 then
         
-        subsequent_child := parent[Last( lvar_path ) + 1];
+        subsequent_child := parent.(Int( Last( lvar_path ) ) + 1);
 
         # detect "rapid reassignment"
         if subsequent_child.type = "STAT_ASS_FVAR" and subsequent_child.func_id = lvar_assignment.func_id and subsequent_child.name = lvar_assignment.name then
@@ -85,7 +84,7 @@ InstallGlobalFunction( CapJitInlinedVariableAssignments, function ( tree )
             is_rapid_reassigment := true;
             
             inline_tree := subsequent_child.rhs;
-            inline_tree_path := Concatenation( parent_path, [ Last( lvar_path ) + 1, "rhs" ] );
+            inline_tree_path := Concatenation( parent_path, [ Int( Last( lvar_path ) ) + 1, "rhs" ] );
             inline_tree_parent := subsequent_child;
             
         elif inline_rapid_reassignments_only then
@@ -118,22 +117,18 @@ InstallGlobalFunction( CapJitInlinedVariableAssignments, function ( tree )
     
     pre_func := function ( tree, additional_arguments )
         
-        if IsRecord( tree ) then
+        if PositionSublist( tree.type, "FVAR" ) <> fail and tree.func_id = lvar_assignment.func_id and tree.name = lvar_assignment.name then
             
-            if PositionSublist( tree.type, "FVAR" ) <> fail and tree.func_id = lvar_assignment.func_id and tree.name = lvar_assignment.name then
+            if tree.type = "EXPR_REF_FVAR" then
                 
-                if tree.type = "EXPR_REF_FVAR" then
-                    
-                    number_of_uses := number_of_uses + 1;
-                    
-                    return CapJitCopyWithNewFunctionIDs( rhs );
+                number_of_uses := number_of_uses + 1;
                 
-                fi;
+                return CapJitCopyWithNewFunctionIDs( rhs );
                 
             fi;
-
-        fi;
             
+        fi;
+        
         return tree;
         
     end;
@@ -148,20 +143,7 @@ InstallGlobalFunction( CapJitInlinedVariableAssignments, function ( tree )
         
         Info( InfoCapJit, 1, "Success." );
         
-        # replace inline_tree
-        if IsInt( Last( inline_tree_path ) ) then
-            
-            Assert( 0, IsList( inline_tree_parent ) );
-            
-            inline_tree_parent[Last( inline_tree_path )] := modified_inline_tree;
-            
-        else
-            
-            Assert( 0, IsRecord( inline_tree_parent ) );
-            
-            inline_tree_parent.(Last( inline_tree_path )) := modified_inline_tree;
-            
-        fi;
+        inline_tree_parent.(Last( inline_tree_path )) := modified_inline_tree;
         
     fi;
     
@@ -173,7 +155,7 @@ InstallGlobalFunction( CapJitInlinedVariableAssignments, function ( tree )
         
         Info( InfoCapJit, 1, "Drop first assignment of rapid reassignment." );
         
-        Remove( parent, Last( lvar_path ) );
+        Remove( parent, Int( Last( lvar_path ) ) );
         
     else
         

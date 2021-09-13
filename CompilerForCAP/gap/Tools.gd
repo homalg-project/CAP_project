@@ -94,3 +94,20 @@ DeclareGlobalFunction( "CapJitCopyWithNewFunctionIDs" );
 #! @Returns a boolean
 #! @Arguments tree1, tree2
 DeclareGlobalFunction( "CapJitIsEqualForEnhancedSyntaxTrees" );
+
+## allow to handle SYNTAX_TREE_LISTs like lists
+# Declare attributes as mutable because we want to modify them (after taking StructuralCopy, which preserves mutability).
+DeclareAttribute( "AsSyntaxTreeList", IsList, "mutable" );
+DeclareAttribute( "AsListMut", IsRecord, "mutable" );
+# GAP does not allow to implement \{\} for records :(
+DeclareOperation( "Sublist", [ IsRecord, IsDenseList and IsSmallList ] );
+# GAP does not allow to implement Add for records :(
+# DeclareOperation( "Add", [ IsRecord and IsMutable, IsObject ] );
+DeclareOperation( "Remove", [ IsRecord and IsMutable, IsPosInt ] );
+DeclareOperation( "PositionProperty", [ IsRecord, IsFunction ] );
+DeclareGlobalFunction( "ConcatenationForSyntaxTreeLists" );
+DeclareOperation( "ListOp", [ IsRecord, IsFunction ] );
+DeclareOperation( "FilteredOp", [ IsRecord, IsFunction ] );
+DeclareOperation( "LastOp", [ IsRecord ] );
+DeclareOperation( "ForAllOp", [ IsRecord, IsFunction ] );
+DeclareOperation( "Iterator", [ IsRecord ] );

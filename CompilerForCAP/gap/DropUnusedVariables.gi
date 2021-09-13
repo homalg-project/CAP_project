@@ -51,14 +51,13 @@ InstallGlobalFunction( CapJitDroppedUnusedVariables, function ( tree, args... )
             
             # reset CAP_JIT_NO_UNUSED_VARIABLES
             pre_func := function ( tree, additional_arguments )
-              local level, pos;
                 
-                if IsRecord( tree ) and IsBound( tree.CAP_JIT_NO_UNUSED_VARIABLES ) then
+                if IsBound( tree.CAP_JIT_NO_UNUSED_VARIABLES ) then
                     
                     Unbind( tree.CAP_JIT_NO_UNUSED_VARIABLES );
                     
                 fi;
-                    
+                
                 return tree;
                 
             end;
@@ -68,11 +67,11 @@ InstallGlobalFunction( CapJitDroppedUnusedVariables, function ( tree, args... )
             return tree;
             
         fi;
-
+        
     fi;
-
+    
     func := CapJitGetNodeByPath( tree, func_path );
-
+    
     if Last( func_path ) = "funcref" and func.narg <> 0 then
         
         Error( "please inline arguments first" );
@@ -100,23 +99,16 @@ InstallGlobalFunction( CapJitDroppedUnusedVariables, function ( tree, args... )
     od;
     
     pre_func := function ( tree, additional_arguments )
-      local level;
         
-        if IsRecord( tree ) then
+        # STAT_ASS_FVAR does not count as using the variable and EXPR_ISB_FVAR and STAT_UNB_FVAR are forbidden
+        if tree.type = "EXPR_REF_FVAR" and tree.func_id = func.id then
             
-            level := fail;
+            Assert( 0, IsBound( name_is_used.(tree.name) ) );
             
-            # STAT_ASS_FVAR does not count as using the variable and EXPR_ISB_FVAR and STAT_UNB_FVAR are forbidden
-            if tree.type = "EXPR_REF_FVAR" and tree.func_id = func.id then
-                
-                Assert( 0, IsBound( name_is_used.(tree.name) ) );
-                
-                name_is_used.(tree.name) := true;
-                
-            fi;
+            name_is_used.(tree.name) := true;
             
         fi;
-            
+        
         return tree;
         
     end;
@@ -143,7 +135,7 @@ InstallGlobalFunction( CapJitDroppedUnusedVariables, function ( tree, args... )
         # remove STAT_ASS_FVAR
         pre_func := function ( tree, additional_arguments )
             
-            if IsRecord( tree ) and tree.type = "STAT_SEQ_STAT" then
+            if tree.type = "STAT_SEQ_STAT" then
                 
                 tree.statements := Filtered( tree.statements, function ( statement )
                     
@@ -152,9 +144,9 @@ InstallGlobalFunction( CapJitDroppedUnusedVariables, function ( tree, args... )
                         return false;
                         
                     fi;
-
+                    
                     return true;
-                
+                    
                 end );
                 
             fi;

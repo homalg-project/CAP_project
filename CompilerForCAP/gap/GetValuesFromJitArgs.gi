@@ -36,49 +36,49 @@ end );
 
 InstallGlobalFunction( CapJitGetFunctionCallArgumentsFromJitArgs, function ( tree, path, jit_args )
   local jit_tree, jit_record, counter, jit_func;
-
+    
     jit_tree := StructuralCopy( tree );
     
     jit_record := CapJitGetNodeByPath( jit_tree, path );
-
+    
     Assert( 0, jit_record.type = "EXPR_FUNCCALL" and jit_record.funcref.type = "EXPR_REF_GVAR" );
     
     counter := CAP_JIT_INTERNAL_STORED_VALUES_COUNTER;
     CAP_JIT_INTERNAL_STORED_VALUES_COUNTER := CAP_JIT_INTERNAL_STORED_VALUES_COUNTER + 1;
     
-    jit_record.args := Concatenation( [ rec( type := "EXPR_INT", value := counter ), jit_record.funcref ], jit_record.args );
-
+    jit_record.args := ConcatenationForSyntaxTreeLists( AsSyntaxTreeList( [ rec( type := "EXPR_INT", value := counter ), jit_record.funcref ] ), jit_record.args );
+    
     jit_record.funcref := rec(
         type := "EXPR_REF_GVAR",
         gvar := "CAP_JIT_INTERNAL_STORE_ARGUMENTS",
     );
-
+    
     jit_func := ENHANCED_SYNTAX_TREE_CODE( jit_tree );
     
     CallFuncList( jit_func, jit_args );
-
+    
     if IsBound( CAP_JIT_INTERNAL_STORED_VALUES[counter] ) then
-
+        
         return [ true, CAP_JIT_INTERNAL_STORED_VALUES[counter] ];
-
+        
     else
         
         return [ false ];
-
+        
     fi;
     
 end );
 
 InstallGlobalFunction( CapJitGetExpressionValueFromJitArgs, function ( tree, path, jit_args )
   local jit_tree, jit_record, parent, counter, new_record, args, jit_func;
-
+    
     jit_tree := StructuralCopy( tree );
     
     jit_record := CapJitGetNodeByPath( jit_tree, path );
     
     Assert( 0, StartsWith( jit_record.type, "EXPR_" ) );
     Assert( 0, Length( path ) >= 1 );
-
+    
     parent := CapJitGetNodeByPath( jit_tree, path{[ 1 .. Length( path ) - 1 ]} );
     
     counter := CAP_JIT_INTERNAL_STORED_VALUES_COUNTER;
@@ -90,45 +90,29 @@ InstallGlobalFunction( CapJitGetExpressionValueFromJitArgs, function ( tree, pat
             type := "EXPR_REF_GVAR",
             gvar := "CAP_JIT_INTERNAL_STORE_VALUE",
         ),
-        args := [
+        args := AsSyntaxTreeList( [
             rec(
                 type := "EXPR_INT",
                 value := counter,
             ),
             jit_record,
-        ],
+        ] ),
     );
-
-    if IsList( parent ) then
-        
-        Assert( 0, IsInt( Last( path ) ) );
-
-        parent[Last( path )] := new_record;
     
-    elif IsRecord( parent ) then
-        
-        Assert( 0, IsString( Last( path ) ) );
-
-        parent.(Last( path )) := new_record;
-        
-    else
-        
-        Error( "this should never happen" );
-        
-    fi;
-
+    parent.(Last( path )) := new_record;
+    
     jit_func := ENHANCED_SYNTAX_TREE_CODE( jit_tree );
     
     CallFuncList( jit_func, jit_args );
     
     if IsBound( CAP_JIT_INTERNAL_STORED_VALUES[counter] ) then
-
+        
         return [ true, CAP_JIT_INTERNAL_STORED_VALUES[counter] ];
-
+        
     else
         
         return [ false ];
-
+        
     fi;
     
 end );

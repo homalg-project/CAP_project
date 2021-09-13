@@ -4,74 +4,82 @@
 # Implementations
 #
 InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
-  local expressions_to_hoist, result_func, additional_arguments_func, HOISTED_VARIABLE_ID, pre_func;
+  local expressions_to_hoist, pre_func, result_func, additional_arguments_func, HOISTED_VARIABLE_ID;
     
     # functions and hoisted variables will be modified inline
     tree := StructuralCopy( tree );
     
     expressions_to_hoist := [ ];
     
-    result_func := function ( tree, result, func_id_stack )
+    pre_func := function ( tree, additional_arguments )
+        
+        if CapJitIsCallToGlobalFunction( tree, gvar -> gvar in [ "ObjectifyObjectForCAPWithAttributes", "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" ] ) then
+            
+            # special case: the first argument of Objectify*WithAttributes is affected by side effects and thus must not be hoisted
+            tree.args.1.CAP_JIT_DO_NOT_HOIST := true;
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    result_func := function ( tree, result, keys, func_id_stack )
       local levels, level, func_id, name;
         
-        if IsList( result ) then
+        levels := Union( List( keys, name -> result.(name) ) );
+        
+        if tree.type in [ "EXPR_REF_FVAR", "STAT_ASS_FVAR" ] then
             
-            levels := Union( result );
+            # references and assignments to variables always restrict the scope
+            Add( levels, Position( func_id_stack, tree.func_id ) );
             
-        elif IsRecord( result ) then
+        elif tree.type = "STAT_RETURN_OBJ" then
             
-            Assert( 0, IsRecord( tree ) );
+            # return statements restrict the scope to the current function
+            Add( levels, Length( func_id_stack ) );
             
-            levels := Union( List( RecNames( result ), name -> result.(name) ) );
+        elif tree.type = "EXPR_FUNC" then
             
-            if tree.type in [ "EXPR_REF_FVAR", "STAT_ASS_FVAR" ] then
+            # a function binds its variables, so the level of the function variables can be ignored (at this point, the function stack does not yet include the current func)
+            levels := Difference( levels, [ Length( func_id_stack ) + 1 ] );
+            
+        fi;
+        
+        # we do not want to create global variables, because this would break precompilation -> the minimum level is 1
+        level := MaximumList( levels, 1 );
+        
+        for name in keys do
+            
+            if IsBound( tree.(name).CAP_JIT_DO_NOT_HOIST ) and tree.(name).CAP_JIT_DO_NOT_HOIST = true then
                 
-                # references and assignments to variables always restrict the scope
-                Add( levels, Position( func_id_stack, tree.func_id ) );
+                # we do not need this information anymore
+                Unbind( tree.(name).CAP_JIT_DO_NOT_HOIST );
                 
-            elif tree.type = "STAT_RETURN_OBJ" then
-                
-                # return statements restrict the scope to the current function
-                Add( levels, Length( func_id_stack ) );
-                
-            elif tree.type = "EXPR_FUNC" then
-                
-                # a function binds its variables, so the level of the function variables can be ignored (at this point, the function stack does not yet include the current func)
-                levels := Difference( levels, [ Length( func_id_stack ) + 1 ] );
+                continue;
                 
             fi;
             
-            # we do not want to create global variables, because this would break precompilation -> the minimum level is 1
-            level := MaximumList( levels, 1 );
-            
-            for name in RecNames( result ) do
+            # Check if child expressions have a lower level than the current level.
+            # If yes, this child expression will be hoisted, except if they already are "static", e.g. variable references or function expressions.
+            if MaximumList( result.(name), 1 ) < level and StartsWith( tree.(name).type, "EXPR_" ) and not tree.(name).type in [ "EXPR_REF_FVAR", "EXPR_REF_GVAR", "EXPR_FUNC", "EXPR_INT", "EXPR_STRING", "EXPR_TRUE", "EXPR_FALSE" ] then
                 
-                # Check if child expressions have a lower level than the current level.
-                # If yes, this child expression will be hoisted, except if they already are "static", e.g. variable references or function expressions.
-                if MaximumList( result.(name), 1 ) < level and IsRecord( tree.(name) ) and StartsWith( tree.(name).type, "EXPR_" ) and not tree.(name).type in [ "EXPR_REF_FVAR", "EXPR_REF_GVAR", "EXPR_FUNC", "EXPR_INT", "EXPR_STRING", "EXPR_TRUE", "EXPR_FALSE" ] then
+                func_id := func_id_stack[MaximumList( result.(name), 1 )];
+                
+                if not IsBound( expressions_to_hoist[func_id] ) then
                     
-                    func_id := func_id_stack[MaximumList( result.(name), 1 )];
-                    
-                    if not IsBound( expressions_to_hoist[func_id] ) then
-                        
-                        expressions_to_hoist[func_id] := [ ];
-                        
-                    fi;
-                    
-                    Add( expressions_to_hoist[func_id], rec(
-                            parent := tree,
-                            key := name,
-                    ) );
+                    expressions_to_hoist[func_id] := [ ];
                     
                 fi;
                 
-            od;
+                Add( expressions_to_hoist[func_id], rec(
+                    parent := tree,
+                    key := name,
+                ) );
+                
+            fi;
             
-        else
-            
-            Error( "this should never happen" );
-            
-        fi;
+        od;
         
         return levels;
         
@@ -79,7 +87,7 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
     
     additional_arguments_func := function ( tree, key, func_id_stack )
         
-        if IsRecord( tree ) and tree.type = "EXPR_FUNC" then
+        if tree.type = "EXPR_FUNC" then
             
             Assert( 0, IsBound( tree.id ) );
             
@@ -92,7 +100,7 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
     end;
     
     # populate `expressions_to_hoist`
-    CapJitIterateOverTree( tree, ReturnFirst, result_func, additional_arguments_func, [ ] );
+    CapJitIterateOverTree( tree, pre_func, result_func, additional_arguments_func, [ ] );
     
     # we have to work from top to bottom, because we first have to lift the innermost expressions (which correspond to the outermost functions)
     
@@ -101,7 +109,7 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
     pre_func := function ( tree, additional_arguments )
       local new_variable_assignments, info, parent, key, expr, new_variable_name, to_delete, info2, i;
         
-        if IsRecord( tree ) and tree.type = "EXPR_FUNC" and IsBound( expressions_to_hoist[tree.id] ) then
+        if tree.type = "EXPR_FUNC" and IsBound( expressions_to_hoist[tree.id] ) then
             
             new_variable_assignments := [ ];
             
@@ -154,8 +162,8 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
                 
             od;
             
-            tree.stats.statements := Concatenation(
-                new_variable_assignments,
+            tree.stats.statements := ConcatenationForSyntaxTreeLists(
+                AsSyntaxTreeList( new_variable_assignments ),
                 tree.stats.statements
             );
             

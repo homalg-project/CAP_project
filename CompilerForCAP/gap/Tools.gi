@@ -23,13 +23,14 @@ InstallGlobalFunction( CapJitIsCallToGlobalFunction, function ( tree, condition 
         
     fi;
     
-    return IsRecord( tree ) and tree.type = "EXPR_FUNCCALL" and tree.funcref.type = "EXPR_REF_GVAR" and condition_func( tree.funcref.gvar );
+    return tree.type = "EXPR_FUNCCALL" and tree.funcref.type = "EXPR_REF_GVAR" and condition_func( tree.funcref.gvar );
     
 end );
 
-InstallGlobalFunction( CapJitResultFuncCombineChildren, function ( tree, result, additional_arguments )
+InstallGlobalFunction( CapJitResultFuncCombineChildren, function ( tree, result, keys, additional_arguments )
   local key;
     
+    # when unenhancing an enhanced syntax tree, the "list" case can still occur
     if IsList( result ) then
         
         return result;
@@ -38,7 +39,7 @@ InstallGlobalFunction( CapJitResultFuncCombineChildren, function ( tree, result,
         
         tree := ShallowCopy( tree );
 
-        for key in RecNames( result ) do
+        for key in keys do
             
             tree.(key) := result.(key);
 
@@ -57,38 +58,26 @@ end );
 InstallGlobalFunction( CapJitContainsRefToFVAROutsideOfFuncStack, function ( tree )
   local result_func, additional_arguments_func;
   
-    result_func := function ( tree, result, func_id_stack )
+    result_func := function ( tree, result, keys, func_id_stack )
       local type, level;
         
-        if IsList( result ) then
+        if PositionSublist( tree.type, "FVAR" ) <> fail then
             
-            return true in result;
-
-        elif IsRecord( result ) then
-            
-            if PositionSublist( tree.type, "FVAR" ) <> fail then
+            if not tree.func_id in func_id_stack then
                 
-                if not tree.func_id in func_id_stack then
-                    
-                    return true;
-                    
-                fi;
+                return true;
                 
             fi;
             
-            return ForAny( RecNames( result ), key -> result.(key) = true );
-            
-        else
-            
-            Error( "this should never happen" );
-            
         fi;
         
+        return ForAny( keys, key -> result.(key) );
+        
     end;
-
+    
     additional_arguments_func := function ( tree, key, func_id_stack )
         
-        if IsRecord( tree ) and tree.type = "EXPR_FUNC" then
+        if tree.type = "EXPR_FUNC" then
             
             Assert( 0, IsBound( tree.id ) );
             
@@ -144,95 +133,91 @@ InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function ( tree )
     pre_func := function ( tree, func_id_stack )
       local name;
         
-        if IsRecord( tree ) then
+        # make sure we deal with an enhanced syntax tree
+        if PositionSublist( tree.type, "HVAR" ) <> fail or PositionSublist( tree.type, "LVAR" ) <> fail then
             
-            # make sure we deal with an enhanced syntax tree
-            if PositionSublist( tree.type, "HVAR" ) <> fail or PositionSublist( tree.type, "LVAR" ) <> fail then
-                
-                Error( "tree contains reference to HVAR or LVAR, this is not supported. Please use an enhanced syntax tree" );
-                
-            fi;
+            Error( "tree contains reference to HVAR or LVAR, this is not supported. Please use an enhanced syntax tree" );
             
-            # exclude most common statements and expression indicating possible side effects
-            if tree.type in [ "STAT_ASS_GVAR", "EXPR_ISB_GVAR", "STAT_UNB_GVAR", "EXPR_ISB_FVAR", "EXPR_UNB_FVAR", "STAT_PROCCALL", "STAT_ASS_LIST", "STAT_ASS_COMOBJ_NAME", "STAT_ASS_MAT" ] then
-
-                Error( Concatenation( "tree includes statements or expressions which indicate possible side effects: ", tree.type ) );
-
-            fi;
+        fi;
+        
+        # exclude most common statements and expression indicating possible side effects
+        if tree.type in [ "STAT_ASS_GVAR", "EXPR_ISB_GVAR", "STAT_UNB_GVAR", "EXPR_ISB_FVAR", "EXPR_UNB_FVAR", "STAT_PROCCALL", "STAT_ASS_LIST", "STAT_ASS_COMOBJ_NAME", "STAT_ASS_MAT" ] then
             
-            # make sure that fvars reference only functions in the current function stack
-            if PositionSublist( tree.type, "FVAR" ) <> fail then
-                
-                Assert( 0, IsBound( tree.func_id ) );
-                
-                if not tree.func_id in func_id_stack then
-                    
-                    Error( Concatenation( "tree contains reference to an fvar with inital name ", tree.initial_name, " outside of the current function stack, this is not well-defined" ) );
-                    
-                fi;
-                
-            fi;
-
-            # make sure for loop only loops over local variables
-            if tree.type = "STAT_FOR" then
-                
-                if tree.variable.type <> "EXPR_REF_FVAR" or tree.variable.func_id <> Last( func_id_stack ) then
-                    
-                    Error( "tree contains for loop over non-local variable, this is not supported" );
-                    
-                fi;
-                
-            fi;
+            Error( Concatenation( "tree includes statements or expressions which indicate possible side effects: ", tree.type ) );
             
-            # initialize number_of_assignments per function
-            if tree.type = "EXPR_FUNC" then
-                
-                if IsBound( number_of_assignments[tree.id] ) then
-                    
-                    Error( "tree contains multiple functions with the same ID" );
-                    
-                fi;
-                
-                number_of_assignments[tree.id] := rec( );
-                
-                for name in tree.nams{[ 1 .. tree.narg ]} do
-                    
-                    number_of_assignments[tree.id].(name) := 1;
-                    
-                od;
-                
-                for name in tree.nams{[ tree.narg + 1 .. tree.narg + tree.nloc ]} do
-                    
-                    number_of_assignments[tree.id].(name) := 0;
-                    
-                od;
-                
-            fi;
+        fi;
+        
+        # make sure that fvars reference only functions in the current function stack
+        if PositionSublist( tree.type, "FVAR" ) <> fail then
             
-            # make sure that only local variables are assigned, increase number_of_assignments
-            if tree.type = "STAT_ASS_FVAR" then
+            Assert( 0, IsBound( tree.func_id ) );
+            
+            if not tree.func_id in func_id_stack then
                 
-                if tree.func_id <> Last( func_id_stack ) then
-                    
-                    Error( Concatenation( "tree contains an assignment of a higher variable with initial name ", tree.initial_name, ", this is not supported" ) );
-                    
-                fi;
-
-                Assert( 0, IsBound( number_of_assignments[tree.func_id].(tree.name) ) );
-                
-                number_of_assignments[tree.func_id].(tree.name) := number_of_assignments[tree.func_id].(tree.name) + 1;
+                Error( Concatenation( "tree contains reference to an fvar with inital name ", tree.initial_name, " outside of the current function stack, this is not well-defined" ) );
                 
             fi;
             
         fi;
+        
+        # make sure for loop only loops over local variables
+        if tree.type = "STAT_FOR" then
             
+            if tree.variable.type <> "EXPR_REF_FVAR" or tree.variable.func_id <> Last( func_id_stack ) then
+                
+                Error( "tree contains for loop over non-local variable, this is not supported" );
+                
+            fi;
+            
+        fi;
+        
+        # initialize number_of_assignments per function
+        if tree.type = "EXPR_FUNC" then
+            
+            if IsBound( number_of_assignments[tree.id] ) then
+                
+                Error( "tree contains multiple functions with the same ID" );
+                
+            fi;
+            
+            number_of_assignments[tree.id] := rec( );
+            
+            for name in tree.nams{[ 1 .. tree.narg ]} do
+                
+                number_of_assignments[tree.id].(name) := 1;
+                
+            od;
+            
+            for name in tree.nams{[ tree.narg + 1 .. tree.narg + tree.nloc ]} do
+                
+                number_of_assignments[tree.id].(name) := 0;
+                
+            od;
+            
+        fi;
+        
+        # make sure that only local variables are assigned, increase number_of_assignments
+        if tree.type = "STAT_ASS_FVAR" then
+            
+            if tree.func_id <> Last( func_id_stack ) then
+                
+                Error( Concatenation( "tree contains an assignment of a higher variable with initial name ", tree.initial_name, ", this is not supported" ) );
+                
+            fi;
+            
+            Assert( 0, IsBound( number_of_assignments[tree.func_id].(tree.name) ) );
+            
+            number_of_assignments[tree.func_id].(tree.name) := number_of_assignments[tree.func_id].(tree.name) + 1;
+            
+        fi;
+        
         return tree;
         
     end;
     
     additional_arguments_func := function ( tree, key, func_id_stack )
         
-        if IsRecord( tree ) and tree.type = "EXPR_FUNC" then
+        if tree.type = "EXPR_FUNC" then
             
             Assert( 0, IsBound( tree.id ) );
             
@@ -272,40 +257,28 @@ end );
 InstallGlobalFunction( CapJitFindNodeDeep, function ( tree, condition_func )
   local result_func, additional_arguments_func;
     
-    result_func := function ( tree, result, path )
+    result_func := function ( tree, result, keys, path )
       local key, type;
         
-        if IsList( result ) then
+        for key in keys do
             
-            return First( result, r -> r <> fail );
-            
-        elif IsRecord( result ) then
-        
-            for key in RecNames( result ) do
+            if result.(key) <> fail then
                 
-                if result.(key) <> fail then
-                    
-                    return result.(key);
-                
-                fi;
-                    
-            od;
-
-            # none of the descendants fulfills condition, otherwise we would already have returned above
-            if condition_func( tree, path ) then
-                
-                return path;
+                return result.(key);
                 
             fi;
             
-            # neither this record nor any of its descendants fulfills the condition
-            return fail;
-
-        else
+        od;
+        
+        # none of the descendants fulfills condition, otherwise we would already have returned above
+        if condition_func( tree, path ) then
             
-            Error( "this should never happen" );
+            return path;
             
         fi;
+        
+        # neither this record nor any of its descendants fulfills the condition
+        return fail;
         
     end;
 
@@ -325,12 +298,6 @@ InstallGlobalFunction( CapJitGetNodeByPath, function ( tree, path )
         
         return tree;
         
-    elif IsList( tree ) then
-        
-        Assert( 0, IsPosInt( path[1] ) and path[1] <= Length( tree ) );
-
-        return CapJitGetNodeByPath( tree[path[1]], path{[ 2 .. Length( path ) ]} );
-
     else
        
         Assert( 0, IsBound( tree.(path[1]) ) );
@@ -344,7 +311,6 @@ end );
 InstallGlobalFunction( CapJitRemovedReturnFail, function ( tree )
   local found_return_fail;
     
-    Assert( 0, IsRecord( tree ) );
     Assert( 0, tree.type = "EXPR_FUNC" );
     
     tree := StructuralCopy( tree );
@@ -354,19 +320,19 @@ InstallGlobalFunction( CapJitRemovedReturnFail, function ( tree )
     
     found_return_fail := false;
     
-    tree.stats.statements := Concatenation( List( [ 1 .. Length( tree.stats.statements ) ], function ( i )
+    tree.stats.statements := AsSyntaxTreeList( Concatenation( List( [ 1 .. tree.stats.statements.length ], function ( i )
       local statement, branch, body_stat, next_statement;
         
-        statement := tree.stats.statements[i];
+        statement := tree.stats.statements.(i);
         
         # detect "if ... then return fail; fi"
-        if statement.type = "STAT_IF" and Length( statement.branches ) = 1 then
+        if statement.type = "STAT_IF" and statement.branches.length = 1 then
             
-            branch := statement.branches[1];
+            branch := statement.branches.1;
             
-            if Length( branch.body.statements ) = 1 then
+            if branch.body.statements.length = 1 then
                 
-                body_stat := branch.body.statements[1];
+                body_stat := branch.body.statements.1;
                 
                 if body_stat.type = "STAT_RETURN_OBJ" and body_stat.obj.type = "EXPR_REF_GVAR" and body_stat.obj.gvar = "fail" then
                     
@@ -396,7 +362,7 @@ InstallGlobalFunction( CapJitRemovedReturnFail, function ( tree )
         
         return [ statement ];
         
-    end ) );
+    end ) ) );
     
     if not found_return_fail then
         
@@ -445,7 +411,7 @@ InstallGlobalFunction( CapJitCopyWithNewFunctionIDs, function ( tree )
     
     pre_func := function ( tree, additional_arguments )
         
-        if IsRecord( tree ) and tree.type = "EXPR_FUNC" then
+        if tree.type = "EXPR_FUNC" then
             
             tree := ShallowCopy( tree );
             
@@ -469,5 +435,277 @@ InstallGlobalFunction( CapJitIsEqualForEnhancedSyntaxTrees, function ( tree1, tr
     tree2 := StructuralCopy( tree2 );
     
     return CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree1, tree2 ) <> fail;
+    
+end );
+
+## allow to handle SYNTAX_TREE_LISTs like lists
+InstallMethod( AsSyntaxTreeList,
+               [ IsList ],
+               
+  function ( list )
+    local tree, i;
+    
+    tree := rec(
+        type := "SYNTAX_TREE_LIST",
+        length := Length( list ),
+    );
+    
+    for i in [ 1 .. Length( list ) ] do
+        
+        tree.(i) := list[i];
+        
+    od;
+    
+    return tree;
+    
+end );
+
+InstallMethod( AsListMut,
+               "for syntax tree nodes of type SYNTAX_TREE_LIST",
+               [ IsRecord ],
+               
+  function ( tree )
+    
+    if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
+        
+        TryNextMethod();
+        
+    fi;
+    
+    return List( [ 1 .. tree.length ], i -> tree.(i) );
+    
+end );
+
+InstallMethod( Sublist,
+               "for syntax tree nodes of type SYNTAX_TREE_LIST",
+               [ IsRecord, IsDenseList and IsSmallList ],
+               
+  function ( tree, poslist )
+    local choice, j, i;
+    
+    if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
+        
+        TryNextMethod();
+        
+    fi;
+    
+    choice := rec(
+        type := "SYNTAX_TREE_LIST",
+        length := Length( poslist ),
+    );
+    
+    j := 1;
+    
+    for i in poslist do
+        
+        choice.(j) := tree.(i);
+        
+        j := j + 1;
+        
+    od;
+    
+    return choice;
+    
+end );
+
+InstallMethod( Remove,
+               "for syntax tree nodes of type SYNTAX_TREE_LIST",
+               [ IsRecord and IsMutable, IsPosInt ],
+               
+  function ( tree, index )
+    local old_value, i;
+    
+    if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
+        
+        TryNextMethod();
+        
+    fi;
+    
+    if index > tree.length then
+        
+        return;
+        
+    fi;
+    
+    old_value := tree.(index);
+    
+    # move all elements after index by one index to the front
+    for i in [ index .. tree.length - 1 ] do
+        
+        tree.(i) := tree.(i + 1);
+        
+    od;
+    
+    Unbind( tree.(tree.length) );
+    
+    tree.length := tree.length - 1;
+    
+    return old_value;
+    
+end );
+
+InstallMethod( PositionProperty,
+               "for syntax tree nodes of type SYNTAX_TREE_LIST",
+               [ IsRecord, IsFunction ],
+               
+  function ( tree, func )
+    
+    if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
+        
+        TryNextMethod();
+        
+    fi;
+    
+    return PositionProperty( [ 1 .. tree.length ], i -> func( tree.(i) ) );
+    
+end );
+
+InstallGlobalFunction( ConcatenationForSyntaxTreeLists, function ( arg... )
+  local tree, index, i, j;
+    
+    if Length( arg ) = 1 and IsList( arg[1] ) then
+        
+        arg := arg[1];
+        
+    fi;
+    
+    tree := rec(
+        type := "SYNTAX_TREE_LIST",
+        length := Sum( arg, tree -> tree.length ),
+    );
+    
+    index := 1;
+    
+    for i in [ 1 .. Length( arg ) ] do
+        
+        for j in [ 1 .. arg[i].length ] do
+            
+            tree.(index) := arg[i].(j);
+            
+            index := index + 1;
+            
+        od;
+        
+    od;
+    
+    return tree;
+    
+end );
+
+InstallMethod( ListOp,
+               "for syntax tree nodes of type SYNTAX_TREE_LIST",
+               [ IsRecord, IsFunction ],
+               
+  function ( tree, func )
+    local result, i;
+    
+    if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
+        
+        TryNextMethod();
+        
+    fi;
+    
+    result := rec(
+        type := "SYNTAX_TREE_LIST",
+        length := tree.length,
+    );
+    
+    for i in [ 1 .. tree.length ] do
+        
+        result.(i) := func( tree.(i) );
+        
+    od;
+    
+    return result;
+    
+end );
+
+InstallMethod( FilteredOp,
+               "for syntax tree nodes of type SYNTAX_TREE_LIST",
+               [ IsRecord, IsFunction ],
+               
+  function ( tree, func )
+    
+    if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
+        
+        TryNextMethod();
+        
+    fi;
+    
+    return AsSyntaxTreeList( Filtered( AsListMut( tree ), func ) );
+    
+end );
+
+InstallMethod( LastOp,
+               "for syntax tree nodes of type SYNTAX_TREE_LIST",
+               [ IsRecord ],
+               
+  function ( tree )
+    
+    if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
+        
+        TryNextMethod();
+        
+    fi;
+    
+    if tree.length = 0 then
+        
+        return fail;
+        
+    fi;
+    
+    return tree.(tree.length);
+    
+end );
+
+InstallMethod( ForAllOp,
+               "for syntax tree nodes of type SYNTAX_TREE_LIST",
+               [ IsRecord, IsFunction ],
+               
+  function ( tree, func )
+    
+    if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
+        
+        TryNextMethod();
+        
+    fi;
+    
+    return ForAll( [ 1 .. tree.length ], i -> func( tree.(i) ) );
+    
+end );
+
+InstallMethod( Iterator,
+               "for syntax tree nodes of type SYNTAX_TREE_LIST",
+               [ IsRecord ],
+               
+  function ( tree )
+    local iter;
+    
+    if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
+        
+        TryNextMethod();
+        
+    fi;
+    
+    # cf. IteratorList
+    iter := rec(
+        tree := tree,
+        pos := 0,
+        len := tree.length,
+        NextIterator := function ( iter )
+          local p;
+            
+            p := iter!.pos + 1;
+            
+            iter!.pos := p;
+            
+            return iter!.tree.(p);
+            
+        end,
+        IsDoneIterator := iter -> iter!.pos >= iter!.len,
+        ShallowCopy := iter -> rec( tree := iter!.tree, pos := iter!.pos, len := iter!.len ),
+    );
+    
+    return IteratorByFunctions( iter );
     
 end );

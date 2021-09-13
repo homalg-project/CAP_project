@@ -14,7 +14,7 @@ func1 := function( x )
 
 tree1 := ENHANCED_SYNTAX_TREE( func1 );;
 tree1 := CapJitDetectedTernaryConditionalExpressions( tree1 );;
-tree1.stats.statements[1].obj.type = "EXPR_CONDITIONAL";
+tree1.stats.statements.1.obj.type = "EXPR_CONDITIONAL";
 #! true
 
 coded_func1 := ENHANCED_SYNTAX_TREE_CODE( tree1 );;
@@ -32,7 +32,7 @@ tree2 := rec(
     variadic := false,
     stats := rec(
         type := "STAT_SEQ_STAT",
-        statements := [
+        statements := AsSyntaxTreeList( [
             rec(
                 type := "STAT_RETURN_OBJ",
                 obj := rec(
@@ -41,7 +41,7 @@ tree2 := rec(
                         type := "EXPR_REF_GVAR",
                         gvar := "MY_ID_FUNC",
                     ),
-                    args := [
+                    args := AsSyntaxTreeList( [
                         rec(
                             type := "EXPR_CONDITIONAL",
                             condition := rec(
@@ -56,10 +56,10 @@ tree2 := rec(
                                 value := 2,
                             ),
                         ),
-                    ],
+                    ] ),
                 ),
             ),
-        ],
+        ] ),
     ),
 );;
 

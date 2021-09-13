@@ -17,7 +17,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_FUNCTION_CAN_BE_INLINED, function ( tree
     
     if Last( statements ).type = "STAT_RETURN_OBJ" then
         
-        statements_to_check := statements{[ 1 .. Length( statements ) - 1 ]};
+        statements_to_check := Sublist( statements, [ 1 .. statements.length - 1 ] );
         
     # We disable this case because it creates multiple assignments to the same variable and we do not support this.
     # We do not remove the case (yet) because we might want it again in the future, and the code below contains some complexity due to this case, so keep this code for reference.
@@ -25,12 +25,12 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_FUNCTION_CAN_BE_INLINED, function ( tree
         
         Assert( 0, Last( Last( statements ).branches ).condition.type = "EXPR_TRUE" );
         
-        #statements_to_check := statements{[ 1 .. Length( statements ) - 1 ]};
+        #statements_to_check := Sublist( statements, [ 1 .. statements.length - 1 ] );
         
         for branch in Last( statements ).branches do
             
             branch_statements := branch.body.statements;
-            #statements_to_check := Concatenation( statements_to_check, branch_statements{[ 1 .. Length( branch_statements ) - 1 ]} );
+            #statements_to_check := ConcatenationForSyntaxTreeLists( statements_to_check, Sublist( branch_statements, [ 1 .. branch_statements.length - 1 ] ) );
             
         od;
         
@@ -45,35 +45,23 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_FUNCTION_CAN_BE_INLINED, function ( tree
     fi;
     
     # check if another return statement occurs
-    result_func := function ( tree, result, additional_arguments )
+    result_func := function ( tree, result, keys, additional_arguments )
         
-        if IsList( tree ) then
+        if tree.type = "EXPR_FUNC" then
             
-            return true in result;
+            # return statements inside of another function do not matter
+            return false;
             
-        elif IsRecord( tree ) then
+        elif tree.type = "STAT_RETURN_OBJ" then
             
-            if tree.type = "EXPR_FUNC" then
-                
-                # return statements inside of another function do not matter
-                return false;
-                
-            elif tree.type = "STAT_RETURN_OBJ" then
-                
-                return true;
-                
-            fi;
-            
-            return ForAny( RecNames( result ), key -> result.(key) );
-            
-        else
-            
-            Error( "this should never happen" );
+            return true;
             
         fi;
         
+        return ForAny( keys, key -> result.(key) );
+        
     end;
-
+    
     if CapJitIterateOverTree( statements_to_check, ReturnFirst, result_func, ReturnTrue, true ) then
         
         Info( InfoCapJit, 1, "Function contains another return statement." );
@@ -91,53 +79,41 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID, function ( tree,
     
     Assert( 0, Length( new_nams ) >= Length( old_nams ) );
     
-    result_func := function ( tree, result, additional_arguments )
+    result_func := function ( tree, result, keys, additional_arguments )
       local key, level;
         
-        if IsList( result ) then
+        tree := ShallowCopy( tree );
+        
+        for key in keys do
             
-            return result;
+            tree.(key) := result.(key);
             
-        elif IsRecord( result ) then
+        od;
+        
+        if tree.type = "EXPR_FUNC" and tree.id = source_func_id then
             
-            tree := ShallowCopy( tree );
+            Assert( 0, tree.nams = old_nams );
             
-            for key in RecNames( result ) do
-                
-                tree.(key) := result.(key);
-                
-            od;
-            
-            if tree.type = "EXPR_FUNC" and tree.id = source_func_id then
-                
-                Assert( 0, tree.nams = old_nams );
-                
-                tree.id := target_func_id;
-                tree.nams := new_nams;
-                
-            fi;
-            
-            if PositionSublist( tree.type, "FVAR" ) <> fail then
-                
-                if tree.func_id = source_func_id then
-                    
-                    tree.func_id := target_func_id;
-                    
-                    Assert( 0, tree.name in old_nams );
-                    
-                    tree.name := new_nams[Position( old_nams, tree.name )];
-                    
-                fi;
-                
-            fi;
-            
-            return tree;
-            
-        else
-            
-            Error( "this should never happen" );
+            tree.id := target_func_id;
+            tree.nams := new_nams;
             
         fi;
+        
+        if PositionSublist( tree.type, "FVAR" ) <> fail then
+            
+            if tree.func_id = source_func_id then
+                
+                tree.func_id := target_func_id;
+                
+                Assert( 0, tree.name in old_nams );
+                
+                tree.name := new_nams[Position( old_nams, tree.name )];
+                
+            fi;
+            
+        fi;
+        
+        return tree;
         
     end;
     
@@ -153,15 +129,15 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
         
         tree := StructuralCopy( tree );
         
-        if IsRecord( tree ) and tree.type = "STAT_SEQ_STAT" then
+        if tree.type = "STAT_SEQ_STAT" then
             
             statements := tree.statements;
             
             i := 1;
             
-            while i <= Length( statements ) do
+            while i <= statements.length do
                 
-                statement := statements[i];
+                statement := statements.(i);
                 
                 if statement.type = "STAT_ASS_FVAR" then
                     
@@ -201,13 +177,13 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
                     continue;
                     
                 fi;
-
+                
                 path := Concatenation( [ search_key ], found_path );
                 
                 func_call := CapJitGetNodeByPath( statement, path );
                 inline_func := func_call.funcref;
                 
-                if not (Length( func_call.args ) = 0 and inline_func.narg = 0) then
+                if not (func_call.args.length = 0 and inline_func.narg = 0) then
                     
                     Error( "found function call with arguments, please inline arguments first" );
                     
@@ -236,14 +212,14 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
                     
                     # prepare function statements for inlining
                     inline_func_stats := StructuralCopy( inline_func.stats );
-
+                    
                     inline_func_stats := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( inline_func_stats, inline_func.id, current_func.id, inline_func.nams, new_nams );
-
+                    
                     # find and modify the return statements
                     if Last( inline_func_stats.statements ).type = "STAT_RETURN_OBJ" then
                         
-                        inline_return_statements := [ Last( inline_func_stats.statements ) ];
-                    
+                        inline_return_statements := AsSyntaxTreeList( [ Last( inline_func_stats.statements ) ] );
+                        
                     elif Last( inline_func_stats.statements ).type in [ "STAT_IF_ELSE", "STAT_IF_ELIF_ELSE" ] then
                         
                         inline_return_statements := List( Last( inline_func_stats.statements ).branches, b -> Last( b.body.statements ) );
@@ -255,14 +231,14 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
                     fi;
                     
                     for inline_return_statement in inline_return_statements do
-                    
+                        
                         inline_return_statement.type := "STAT_ASS_FVAR";
                         inline_return_statement.func_id := current_func.id;
                         inline_return_statement.name := Last( new_nams );
                         inline_return_statement.initial_name := Last( new_nams );
                         inline_return_statement.rhs := inline_return_statement.obj;
                         Unbind( inline_return_statement.obj );
-
+                        
                     od;
                     
                     # modify original statement
@@ -275,24 +251,20 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
                     );
                     
                     parent := CapJitGetNodeByPath( inlined_original_statement, path{[ 1 .. ( Length( path ) - 1 ) ]} );
-                    if IsList( parent ) then
-                        parent[Last( path )] := ref_return_value_lvar;
-                    else
-                        parent.(Last( path )) := ref_return_value_lvar;
-                    fi;
+                    parent.(Last( path )) := ref_return_value_lvar;
                     
-                    statements := Concatenation( statements{[ 1 .. i - 1 ]}, inline_func_stats.statements, [ inlined_original_statement ], statements{[ i + 1 .. Length( statements ) ]} );
+                    statements := ConcatenationForSyntaxTreeLists( Sublist( statements, [ 1 .. i - 1 ] ), inline_func_stats.statements, AsSyntaxTreeList( [ inlined_original_statement ] ), Sublist( statements, [ i + 1 .. statements.length ] ) );
                     
                     current_func.nloc := current_func.nloc + inline_func.nloc + 1;
                     
                     current_func.nams := Concatenation( current_func.nams, new_nams );
-
+                    
                     Assert( 0, Length( current_func.nams ) = current_func.narg + current_func.nloc );
-
+                    
                     Assert( 0, IsDuplicateFreeList( current_func.nams ) );
                     
                     Info( InfoCapJit, 1, "Successfully inlined." );
-    
+                    
                 else
                     
                     i := i + 1;
@@ -304,17 +276,17 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
             tree.statements := statements;
             
         fi;
-
+        
         return tree;
         
     end;
-
+    
     additional_arguments_func := function ( tree, key, current_func )
         
-        if IsRecord( tree ) and tree.type = "EXPR_FUNC" then
+        if tree.type = "EXPR_FUNC" then
             
             return tree;
-        
+            
         else
             
             return current_func;
@@ -322,7 +294,7 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
         fi;
         
     end;
-
+    
     return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, fail );
     
 end );
