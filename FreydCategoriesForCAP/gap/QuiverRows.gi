@@ -1252,7 +1252,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
             
         else
             
-            return MorphismConstructor( hom_structure_range_category, hom_source, HomalgMatrix( mat, RankOfObject( hom_source ), RankOfObject( hom_range ), ring ), hom_range );
+            return MorphismConstructor( hom_structure_range_category, hom_source, HomalgMatrix( mat, ObjectDatum( hom_structure_range_category, hom_source ), ObjectDatum( hom_structure_range_category, hom_range ), ring ), hom_range );
             
         fi;
         
