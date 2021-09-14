@@ -231,6 +231,7 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># hoisting with deduplication</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">func := function( x )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return List( [ 1 .. 9 ], y -&gt; (y + (x + 1)) + (y + (x + 1)) ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
@@ -246,6 +247,7 @@ function ( x_1 )
         end );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># hoisting of whole functions</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">func := function( x )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return List( [ 1 .. 9 ], y -&gt; y + List( [ 1 .. 9 ], z -&gt; x + z ) ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
@@ -262,6 +264,7 @@ function ( x_1 )
         end );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># no hoisting of constants</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">func := function( x )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return List( [ 1 .. 9 ], y -&gt; y + 1 ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
@@ -274,6 +277,7 @@ function ( x_1 )
         end );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># hoisting of returned expressions</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">func := function( x )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return List( [ 1 .. 9 ], y -&gt; x + 1 ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
@@ -288,6 +292,7 @@ function ( x_1 )
         end );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># hoisting of assigned expressions</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">func := function( x )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return List( [ 1 .. 9 ], function( y )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        local z; z := x + 1; return z; end ); end;;</span>
@@ -305,6 +310,7 @@ function ( x_1 )
         end );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># hosted expressions inside hosted expressions</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">func := function( x )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return List( [ 1 .. 9 ], function( y )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        return List( [ 1 .. 9 ], z -&gt; z + (1 + 1) ); end ); end;;</span>
@@ -323,6 +329,7 @@ function ( x_1 )
         end );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># deduplication of more complex trees, e.g. functions</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">func := function( list )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return List( [ 1 .. 9 ], function( y )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        return (y + Sum( list, a -&gt; a )) + Sum( list, a -&gt; a ); end ); end;;</span>
@@ -341,6 +348,7 @@ function ( list_1 )
         end );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># hosting of expressions in lists, e.g. function call arguments</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">func := function( x, func )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return List( [ 1 .. 9 ], y -&gt; func( x + 1, x + 1, y ) ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
@@ -354,6 +362,75 @@ function ( x_1, func_1 )
             return func_1( cap_jit_hoisted_expression_1_1, 
                cap_jit_hoisted_expression_1_1, y_2 );
         end );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># restrict hoisting to if/else branches (where possible)</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">func := function( x )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    if x &lt; 0 then return 0; else return y -&gt; [ x + 1, z -&gt; y + 1 ]; fi; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitDetectedTernaryConditionalExpressions( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitHoistedExpressions( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
+function ( x_1 )
+    local cap_jit_hoisted_expression_1_1;
+    if x_1 &lt; 0 then
+        return 0;
+    else
+        cap_jit_hoisted_expression_1_1 := x_1 + 1;
+        return function ( y_2 )
+              local cap_jit_hoisted_expression_2_2;
+              cap_jit_hoisted_expression_2_2 := y_2 + 1;
+              return [ cap_jit_hoisted_expression_1_1, function ( z_3 )
+                        return cap_jit_hoisted_expression_2_2;
+                    end ];
+          end;
+    fi;
+    return;
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function( x )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    if x &lt; 0 then return y -&gt; [ x + 1, z -&gt; y + 1 ]; else return 0; fi; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitDetectedTernaryConditionalExpressions( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitHoistedExpressions( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
+function ( x_1 )
+    local cap_jit_hoisted_expression_1_1;
+    if x_1 &lt; 0 then
+        cap_jit_hoisted_expression_1_1 := x_1 + 1;
+        return function ( y_2 )
+              local cap_jit_hoisted_expression_2_2;
+              cap_jit_hoisted_expression_2_2 := y_2 + 1;
+              return [ cap_jit_hoisted_expression_1_1, function ( z_3 )
+                        return cap_jit_hoisted_expression_2_2;
+                    end ];
+          end;
+    else
+        return 0;
+    fi;
+    return;
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function( x )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  if x &lt; 0 then return y -&gt; [ y, x+1 ]; else return y -&gt; [ y, x+1 ]; fi; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitDetectedTernaryConditionalExpressions( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitHoistedExpressions( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
+function ( x_1 )
+    local cap_jit_hoisted_expression_1_1;
+    cap_jit_hoisted_expression_1_1 := x_1 + 1;
+    if x_1 &lt; 0 then
+        return function ( y_2 )
+              return [ y_2, cap_jit_hoisted_expression_1_1 ];
+          end;
+    else
+        return function ( y_2 )
+              return [ y_2, cap_jit_hoisted_expression_1_1 ];
+          end;
+    fi;
+    return;
 end
 </pre></div>
 

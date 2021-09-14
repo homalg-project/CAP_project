@@ -145,6 +145,11 @@
   [33X[0;0YAdditionally, there is not detection for recursive function calls currently,
   so resolving such a function call leads to an infinite loop.[133X
   
+  [33X[0;0YFor  performance  optimizations,  the compiler might move expressions out of
+  if/else statements, e.g. if they occur inside a (potentially expensive) [10XList[110X
+  call.  Thus,  code inside if/else statements must execute without error even
+  if moved outside of the if/else statement.[133X
+  
   
   [1X1.4 [33X[0;0YActivating the compiler[133X[101X
   
