@@ -8,6 +8,7 @@ LoadPackage( "CompilerForCAP" );
 #! true
 
 ##
+# hoisting with deduplication
 func := function( x )
     return List( [ 1 .. 9 ], y -> (y + (x + 1)) + (y + (x + 1)) ); end;;
 
@@ -25,6 +26,7 @@ Display( compiled_func );
 #! end
 
 ##
+# hoisting of whole functions
 func := function( x )
     return List( [ 1 .. 9 ], y -> y + List( [ 1 .. 9 ], z -> x + z ) ); end;;
 
@@ -43,6 +45,7 @@ Display( compiled_func );
 #! end
 
 ##
+# no hoisting of constants
 func := function( x )
     return List( [ 1 .. 9 ], y -> y + 1 ); end;;
 
@@ -57,6 +60,7 @@ Display( compiled_func );
 #! end
 
 ##
+# hoisting of returned expressions
 func := function( x )
     return List( [ 1 .. 9 ], y -> x + 1 ); end;;
 
@@ -73,6 +77,7 @@ Display( compiled_func );
 #! end
 
 ##
+# hoisting of assigned expressions
 func := function( x )
     return List( [ 1 .. 9 ], function( y )
         local z; z := x + 1; return z; end ); end;;
@@ -92,6 +97,7 @@ Display( compiled_func );
 #! end
 
 ##
+# hosted expressions inside hosted expressions
 func := function( x )
     return List( [ 1 .. 9 ], function( y )
         return List( [ 1 .. 9 ], z -> z + (1 + 1) ); end ); end;;
@@ -112,6 +118,7 @@ Display( compiled_func );
 #! end
 
 ##
+# deduplication of more complex trees, e.g. functions
 func := function( list )
     return List( [ 1 .. 9 ], function( y )
         return (y + Sum( list, a -> a )) + Sum( list, a -> a ); end ); end;;
@@ -132,6 +139,7 @@ Display( compiled_func );
 #! end
 
 ##
+# hosting of expressions in lists, e.g. function call arguments
 func := function( x, func )
     return List( [ 1 .. 9 ], y -> func( x + 1, x + 1, y ) ); end;;
 
@@ -146,6 +154,81 @@ Display( compiled_func );
 #!             return func_1( cap_jit_hoisted_expression_1_1, 
 #!                cap_jit_hoisted_expression_1_1, y_2 );
 #!         end );
+#! end
+
+##
+# restrict hoisting to if/else branches (where possible)
+func := function( x )
+    if x < 0 then return 0; else return y -> [ x + 1, z -> y + 1 ]; fi; end;;
+
+tree := ENHANCED_SYNTAX_TREE( func );;
+tree := CapJitDetectedTernaryConditionalExpressions( tree );;
+tree := CapJitHoistedExpressions( tree );;
+compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
+Display( compiled_func );
+#! function ( x_1 )
+#!     local cap_jit_hoisted_expression_1_1;
+#!     if x_1 < 0 then
+#!         return 0;
+#!     else
+#!         cap_jit_hoisted_expression_1_1 := x_1 + 1;
+#!         return function ( y_2 )
+#!               local cap_jit_hoisted_expression_2_2;
+#!               cap_jit_hoisted_expression_2_2 := y_2 + 1;
+#!               return [ cap_jit_hoisted_expression_1_1, function ( z_3 )
+#!                         return cap_jit_hoisted_expression_2_2;
+#!                     end ];
+#!           end;
+#!     fi;
+#!     return;
+#! end
+
+func := function( x )
+    if x < 0 then return y -> [ x + 1, z -> y + 1 ]; else return 0; fi; end;;
+
+tree := ENHANCED_SYNTAX_TREE( func );;
+tree := CapJitDetectedTernaryConditionalExpressions( tree );;
+tree := CapJitHoistedExpressions( tree );;
+compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
+Display( compiled_func );
+#! function ( x_1 )
+#!     local cap_jit_hoisted_expression_1_1;
+#!     if x_1 < 0 then
+#!         cap_jit_hoisted_expression_1_1 := x_1 + 1;
+#!         return function ( y_2 )
+#!               local cap_jit_hoisted_expression_2_2;
+#!               cap_jit_hoisted_expression_2_2 := y_2 + 1;
+#!               return [ cap_jit_hoisted_expression_1_1, function ( z_3 )
+#!                         return cap_jit_hoisted_expression_2_2;
+#!                     end ];
+#!           end;
+#!     else
+#!         return 0;
+#!     fi;
+#!     return;
+#! end
+
+func := function( x )
+  if x < 0 then return y -> [ y, x+1 ]; else return y -> [ y, x+1 ]; fi; end;;
+
+tree := ENHANCED_SYNTAX_TREE( func );;
+tree := CapJitDetectedTernaryConditionalExpressions( tree );;
+tree := CapJitHoistedExpressions( tree );;
+compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
+Display( compiled_func );
+#! function ( x_1 )
+#!     local cap_jit_hoisted_expression_1_1;
+#!     cap_jit_hoisted_expression_1_1 := x_1 + 1;
+#!     if x_1 < 0 then
+#!         return function ( y_2 )
+#!               return [ y_2, cap_jit_hoisted_expression_1_1 ];
+#!           end;
+#!     else
+#!         return function ( y_2 )
+#!               return [ y_2, cap_jit_hoisted_expression_1_1 ];
+#!           end;
+#!     fi;
+#!     return;
 #! end
 
 #! @EndExample

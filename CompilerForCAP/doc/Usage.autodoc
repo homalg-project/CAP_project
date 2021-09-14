@@ -78,6 +78,9 @@ with a "generic" call. Still, the execution using JIT arguments should be fast t
 
 Additionally, there is not detection for recursive function calls currently, so resolving such a function call leads to an infinite loop.
 
+For performance optimizations, the compiler might move expressions out of if/else statements, e.g. if they occur inside a (potentially
+expensive) `List` call. Thus, code inside if/else statements must execute without error even if moved outside of the if/else statement.
+
 @Section Activating the compiler
 
 You can activate the compiler by passing the option `enable_compilation` to any category constructor.
