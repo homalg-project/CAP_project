@@ -131,8 +131,6 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
         
         if tree.type = "EXPR_FUNC" and IsBound( expressions_to_hoist[tree.id] ) then
             
-            Assert( 0, Last( tree.stats.statements ).type = "STAT_RETURN_OBJ" );
-            
             new_variable_assignments := [ ];
             # used in the context of EXPR_CONDITIONALs:
             # for performance reasons we do not want to hoist the expressions above the conditional
@@ -190,7 +188,7 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
                     rhs := expr,
                 );
                 
-                if Last( tree.stats.statements ).obj.type = "EXPR_CONDITIONAL" then
+                if Last( tree.stats.statements ).type = "STAT_RETURN_OBJ" and Last( tree.stats.statements ).obj.type = "EXPR_CONDITIONAL" then
                     
                     # check if the hoisted expression is only used in the if resp. else branch
                     if ForAll( hoisted_relative_paths, relative_path -> StartsWith( relative_path, [ "stats", "statements", "1", "obj", "expr_if_true" ] ) ) then
@@ -215,7 +213,7 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
                 
             od;
             
-            if Last( tree.stats.statements ).obj.type = "EXPR_CONDITIONAL" then
+            if Last( tree.stats.statements ).type = "STAT_RETURN_OBJ" and Last( tree.stats.statements ).obj.type = "EXPR_CONDITIONAL" then
                 
                 conditional := Last( tree.stats.statements ).obj;
                 
