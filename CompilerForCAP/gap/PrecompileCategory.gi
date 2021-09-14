@@ -284,7 +284,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     if CanCompute( cat, "ZeroObject" ) and CanCompute( cat, "ZeroMorphism" ) then
         
         obj := ZeroObject( cat );
-        mor := ZeroMorphism( obj, obj );
+        mor := ZeroMorphism( cat, obj, obj );
         
     else
         
