@@ -129,7 +129,7 @@ InstallGlobalFunction( CAP_INTERNAL_OPPOSITE_RECURSIVE,
   function( obj )
     
     if IsCapCategory( obj ) then
-        return Opposite( obj );
+        return OppositeCategory( obj );
     elif IsCapCategoryObject( obj ) then
         return ObjectDatum( CapCategory( obj ), obj );
     elif IsCapCategoryMorphism( obj ) then
@@ -269,7 +269,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                 
                 if filter = "category" then
                     
-                    return Concatenation( "Opposite( ", argument_name, " )" );
+                    return Concatenation( "OppositeCategory( ", argument_name, " )" );
                     
                 elif filter = "object" then
                     
@@ -448,7 +448,7 @@ InstallMethod( Opposite,
     
     opposite_category!.compiler_hints := rec(
         category_attribute_names := [
-            "Opposite",
+            "OppositeCategory",
         ],
     );
     
@@ -456,6 +456,7 @@ InstallMethod( Opposite,
     AddMorphismRepresentation( opposite_category, IsCapCategoryOppositeMorphismRep );
     
     SetWasCreatedAsOppositeCategory( opposite_category, true );
+    SetOppositeCategory( opposite_category, category );
     
     SetOpposite( opposite_category, category );
     SetOpposite( category, opposite_category );
@@ -464,7 +465,7 @@ InstallMethod( Opposite,
       local opposite_object;
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( object, Opposite( cat ), {} -> "the object datum given to the object constructor of <cat>" );
+        CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( object, OppositeCategory( cat ), {} -> "the object datum given to the object constructor of <cat>" );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         if HasOpposite( object ) then
@@ -500,15 +501,15 @@ InstallMethod( Opposite,
       local opposite_morphism;
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( morphism, Opposite( cat ), {} -> "the morphism datum given to the morphism constructor of <cat>" );
+        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( morphism, OppositeCategory( cat ), {} -> "the morphism datum given to the morphism constructor of <cat>" );
         
-        if IsEqualForObjects( Opposite( cat ), Source( morphism ), Opposite( range ) ) = false then
+        if IsEqualForObjects( OppositeCategory( cat ), Source( morphism ), Opposite( range ) ) = false then
             
             Error( "the source of the morphism datum must be equal to <Opposite( range )>" );
             
         fi;
         
-        if IsEqualForObjects( Opposite( cat ), Range( morphism ), Opposite( source ) ) = false then
+        if IsEqualForObjects( OppositeCategory( cat ), Range( morphism ), Opposite( source ) ) = false then
             
             Error( "the range of the morphism datum must be equal to <Opposite( source )>" );
             

@@ -2942,7 +2942,7 @@ HomomorphismStructureOnMorphisms := rec(
   return_type := "other_morphism",
   dual_operation := "HomomorphismStructureOnMorphisms",
   dual_preprocessor_func := function( cat, alpha, beta )
-    return [ Opposite( cat ), MorphismDatum( cat, beta ), MorphismDatum( cat, alpha ) ];
+    return [ OppositeCategory( cat ), MorphismDatum( cat, beta ), MorphismDatum( cat, alpha ) ];
   end,
   dual_postprocessor_func := IdFunc,
 ),
@@ -2955,7 +2955,7 @@ HomomorphismStructureOnMorphismsWithGivenObjects := rec(
   return_type := "other_morphism",
   dual_operation := "HomomorphismStructureOnMorphismsWithGivenObjects",
   dual_preprocessor_func := function( cat, source, alpha, beta, range )
-    return [ Opposite( cat ), source, MorphismDatum( cat, beta ), MorphismDatum( cat, alpha ), range ];
+    return [ OppositeCategory( cat ), source, MorphismDatum( cat, beta ), MorphismDatum( cat, alpha ), range ];
   end,
   dual_postprocessor_func := IdFunc,
 ),
@@ -2985,7 +2985,7 @@ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGiv
   return_type := "other_morphism",
   dual_operation := "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
   dual_preprocessor_func := function( cat, distinguished_object, alpha, hom_source_range )
-    return [ Opposite( cat ), distinguished_object, MorphismDatum( cat, alpha ), hom_source_range ];
+    return [ OppositeCategory( cat ), distinguished_object, MorphismDatum( cat, alpha ), hom_source_range ];
   end,
   dual_postprocessor_func := IdFunc
 ),
@@ -2995,7 +2995,7 @@ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism := rec
   return_type := "morphism",
   dual_operation := "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
   dual_preprocessor_func := function( cat, A, B, morphism )
-    return [ Opposite( cat ), ObjectDatum( cat, B ), ObjectDatum( cat, A ), morphism ];
+    return [ OppositeCategory( cat ), ObjectDatum( cat, B ), ObjectDatum( cat, A ), morphism ];
   end
 ),
 
@@ -4159,7 +4159,7 @@ end );
 
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
-    local recnames, current_recname, current_rec, io_type, number_of_arguments, flattened_filter_list, functorial,
+    local recnames, current_recname, current_rec, io_type, number_of_arguments, flattened_filter_list, functorial, func_string,
           installation_name, output_list, input_list, argument_names, return_list, current_output, input_position, list_position,
           without_given_name, with_given_names, with_given_name, without_given_rec, with_given_object_position, object_name,
           object_filter_list, with_given_object_filter, given_source_argument_name, given_range_argument_name, with_given_rec, i;
@@ -4321,6 +4321,36 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         if not IsBound( current_rec.dual_arguments_reversed ) then
             
             current_rec.dual_arguments_reversed := false;
+            
+        fi;
+        
+        # check if current_rec.dual_preprocessor_func uses Opposite
+        if IsBound( current_rec.dual_preprocessor_func ) then
+            
+            func_string := PrintString( current_rec.dual_preprocessor_func );
+            
+            func_string := ReplacedString( func_string, "OppositeCategory", "" );
+            
+            if PositionSublist( func_string, "Opposite" ) <> fail then
+                
+                Error( "<current_rec.dual_preprocessor_func> seems to use the attribute `Opposite`. Please use `OppositeCategory` (for categories),  `ObjectDatum` (for objects), or `MorphismDatum` (for morphisms) instead." );
+                
+            fi;
+            
+        fi;
+        
+        # check if current_rec.dual_postprocessor_func uses Opposite
+        if IsBound( current_rec.dual_postprocessor_func ) then
+            
+            func_string := PrintString( current_rec.dual_postprocessor_func );
+            
+            func_string := ReplacedString( func_string, "OppositeCategory", "" );
+            
+            if PositionSublist( func_string, "Opposite" ) <> fail then
+                
+                Error( "<current_rec.dual_postprocessor_func> seems to use the attribute `Opposite`. Please use `OppositeCategory` (for categories),  `ObjectDatum` (for objects), or `MorphismDatum` (for morphisms) instead." );
+                
+            fi;
             
         fi;
         

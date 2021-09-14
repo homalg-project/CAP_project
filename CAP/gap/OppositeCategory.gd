@@ -37,6 +37,9 @@ DeclareGlobalFunction( "CAP_INTERNAL_OPPOSITE_RECURSIVE" );
 DeclareAttribute( "Opposite",
                   IsCapCategory );
 
+DeclareAttribute( "OppositeCategory",
+                  IsCapCategory );
+
 DeclareOperation( "Opposite",
                   [ IsCapCategory, IsString ] );
 
