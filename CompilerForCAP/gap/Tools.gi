@@ -154,7 +154,7 @@ InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function ( tree )
             
             if not tree.func_id in func_id_stack then
                 
-                Error( Concatenation( "tree contains reference to an fvar with inital name ", tree.initial_name, " outside of the current function stack, this is not well-defined" ) );
+                Error( Concatenation( "tree contains reference to an fvar with name ", tree.name, " outside of the current function stack, this is not well-defined" ) );
                 
             fi;
             
@@ -201,7 +201,7 @@ InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function ( tree )
             
             if tree.func_id <> Last( func_id_stack ) then
                 
-                Error( Concatenation( "tree contains an assignment of a higher variable with initial name ", tree.initial_name, ", this is not supported" ) );
+                Error( Concatenation( "tree contains an assignment of a higher variable with name ", tree.name, ", this is not supported" ) );
                 
             fi;
             

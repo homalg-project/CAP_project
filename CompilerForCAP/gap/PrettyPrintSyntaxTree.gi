@@ -58,8 +58,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT, fu
         return rec( 0_type := tree.type,
                     1_func_id := tree.func_id,
                     2_name := tree.name,
-                    3_initial_name := tree.initial_name,
-                    4_rhs := CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT( tree.rhs, func_stack ),
+                    3_rhs := CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT( tree.rhs, func_stack ),
                   );
         
     elif StartsWith( type, "EXPR_FUNCCALL" ) or StartsWith( type, "STAT_PROCCALL" ) then
@@ -96,7 +95,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT, fu
         return rec( 0_type := tree.type,
                     1_func_id := tree.func_id,
                     2_name := tree.name,
-                    3_initial_name := tree.initial_name,
                   );
         
     elif type = "STAT_IF" or type = "STAT_IF_ELSE" then

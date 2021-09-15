@@ -165,7 +165,6 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
                             type := "EXPR_REF_FVAR",
                             func_id := tree.id,
                             name := new_variable_name,
-                            initial_name := new_variable_name,
                         );
                         
                         Add( hoisted_relative_paths, info2.relative_path );
@@ -184,7 +183,6 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
                     type := "STAT_ASS_FVAR",
                     func_id := tree.id,
                     name := new_variable_name,
-                    initial_name := new_variable_name,
                     rhs := expr,
                 );
                 

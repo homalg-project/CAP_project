@@ -42,7 +42,6 @@ InstallGlobalFunction( CapJitInlinedArguments, function ( tree )
                 type := "STAT_ASS_FVAR",
                 func_id := func.id,
                 name := func.nams[j],
-                initial_name := func.nams[j],
                 rhs := args.(j),
             ) ) );
             

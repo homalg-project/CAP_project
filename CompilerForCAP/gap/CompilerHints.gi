@@ -66,7 +66,6 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
                                     type := "STAT_ASS_FVAR",
                                     func_id := tree.id,
                                     name := "cap_jit_morphism_attribute",
-                                    initial_name := "cap_jit_morphism_attribute",
                                     rhs := morphism_attribute_value,
                                 )
                             ] ),
@@ -77,7 +76,6 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
                             type := "EXPR_REF_FVAR",
                             func_id := tree.id,
                             name := "cap_jit_morphism_attribute",
-                            initial_name := "cap_jit_morphism_attribute",
                         );
                         
                         if CapJitIsCallToGlobalFunction( args.3, "ObjectifyObjectForCAPWithAttributes" ) then
@@ -108,7 +106,6 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
                                             type := "EXPR_REF_FVAR",
                                             func_id := tree.id,
                                             name := "cap_jit_morphism_attribute",
-                                            initial_name := "cap_jit_morphism_attribute",
                                         ),
                                     ] ),
                                 );
@@ -145,7 +142,6 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
                                             type := "EXPR_REF_FVAR",
                                             func_id := tree.id,
                                             name := "cap_jit_morphism_attribute",
-                                            initial_name := "cap_jit_morphism_attribute",
                                         ),
                                     ] ),
                                 );
@@ -179,7 +175,6 @@ InstallGlobalFunction( CapJitReplacedGlobalVariablesByCategoryAttributes, functi
             type := "EXPR_REF_FVAR",
             func_id := tree.id,
             name := tree.nams[1],
-            initial_name := tree.nams[1],
         )
     ];
     

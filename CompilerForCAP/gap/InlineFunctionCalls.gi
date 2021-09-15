@@ -235,7 +235,6 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
                         inline_return_statement.type := "STAT_ASS_FVAR";
                         inline_return_statement.func_id := current_func.id;
                         inline_return_statement.name := Last( new_nams );
-                        inline_return_statement.initial_name := Last( new_nams );
                         inline_return_statement.rhs := inline_return_statement.obj;
                         Unbind( inline_return_statement.obj );
                         
@@ -247,7 +246,6 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
                         type := "EXPR_REF_FVAR",
                         func_id := current_func.id,
                         name := Last( new_nams ),
-                        initial_name := Last( new_nams ),
                     );
                     
                     parent := CapJitGetNodeByPath( inlined_original_statement, path{[ 1 .. ( Length( path ) - 1 ) ]} );

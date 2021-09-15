@@ -65,7 +65,7 @@ InstallGlobalFunction( CapJitInlinedVariableAssignments, function ( tree )
     Assert( 0, Last( parent_path ) = "statements" and parent.type = "SYNTAX_TREE_LIST" );
     
     Info( InfoCapJit, 1, "####" );
-    Info( InfoCapJit, 1, Concatenation( "Try to inline variable with initial name ", lvar_assignment.initial_name ), "." );
+    Info( InfoCapJit, 1, Concatenation( "Try to inline variable with name ", lvar_assignment.name ), "." );
     
     # we want to ignore the variable in the next iteration in any case
     lvar_assignment.CAP_JIT_IGNORE_VARIABLE_ASSIGNMENT := true;

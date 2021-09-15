@@ -174,7 +174,6 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 tree.type := ReplacedString( tree.type, "LVAR", "FVAR" );
                 tree.func_id := func_stack[Length( func_stack )].id;
                 tree.name := func_stack[Length( func_stack )].nams[tree.lvar];
-                tree.initial_name := tree.name;
                 Unbind( tree.lvar );
                 
             fi;
@@ -218,7 +217,6 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                     tree.type := ReplacedString( tree.type, "HVAR", "FVAR" );
                     tree.func_id := func_stack[Length( func_stack ) - level].id;
                     tree.name := func_stack[Length( func_stack ) - level].nams[pos];
-                    tree.initial_name := tree.name;
                     Unbind( tree.hvar );
 
                 fi;

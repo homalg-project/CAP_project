@@ -322,7 +322,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
             fi;
             
             # ignore these keys
-            if key in [ "nams", "nloc", "initial_name", "CAP_JIT_NOT_RESOLVABLE" ] then
+            if key in [ "nams", "nloc", "CAP_JIT_NOT_RESOLVABLE" ] then
                 
                 continue;
                 
