@@ -10,9 +10,9 @@ InstallGlobalFunction( CapJitInlinedArguments, function ( tree )
     Info( InfoCapJit, 1, "Inlining function arguments." );
     
     pre_func := function ( tree, additional_arguments )
-      local func, args, arg_statements;
+      local func, args, j;
         
-        if tree.type = "EXPR_FUNCCALL" and tree.funcref.type = "EXPR_FUNC" and tree.funcref.narg <> 0 then
+        if tree.type = "EXPR_FUNCCALL" and tree.funcref.type = "EXPR_DECLARATIVE_FUNC" and tree.funcref.narg <> 0 then
             
             tree := ShallowCopy( tree );
             func := ShallowCopy( tree.funcref );
@@ -38,18 +38,16 @@ InstallGlobalFunction( CapJitInlinedArguments, function ( tree )
                 
             fi;
             
-            arg_statements := AsSyntaxTreeList( List( [ 1 .. func.narg ], j -> rec(
-                type := "STAT_ASS_FVAR",
-                func_id := func.id,
-                name := func.nams[j],
-                rhs := args.(j),
-            ) ) );
+            func.bindings := ShallowCopy( func.bindings );
             
-            func.nloc := func.nloc + func.narg;
+            for j in [ 1 .. func.narg ] do
+                
+                CapJitAddBinding( func.bindings, func.nams[j], args.(j) );
+                
+            od;
+            
             func.narg := 0;
             func.variadic := false;
-            func.stats := ShallowCopy( func.stats );
-            func.stats.statements := ConcatenationForSyntaxTreeLists( arg_statements, func.stats.statements );
             
             tree.funcref := func;
             tree.args := AsSyntaxTreeList( [ ] );

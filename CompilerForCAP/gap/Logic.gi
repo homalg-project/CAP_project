@@ -184,75 +184,57 @@ CapJitAddLogicFunction( function ( tree, jit_args )
     
 end );
 
-# if <condition> then <body>; return <value>; fi; <more statements>
-# =>
-# if <condition> then <body>; return <value>; else <more statements>; fi
+# EXPR_CASE with all branches having the same value
 CapJitAddLogicFunction( function ( tree, jit_args )
   local pre_func;
     
     Info( InfoCapJit, 1, "####" );
-    Info( InfoCapJit, 1, "Apply logic for ifs." );
+    Info( InfoCapJit, 1, "Apply logic for EXPR_CASE with all branches having the same value." );
     
     pre_func := function ( tree, additional_arguments )
-      local statements, i, statement, new_branch;
         
-        if tree.type = "EXPR_FUNC" then
+        if tree.type = "EXPR_CASE" and tree.branches.length > 0 and ForAll( tree.branches, branch -> CapJitIsEqualForEnhancedSyntaxTrees( branch.value, tree.branches.1.value ) ) then
             
-            statements := tree.stats.statements;
-
-            # find if ... then ...; return ...; elif ...; return ...; fi; (excluding the last statement)
-            i := 1;
-            while i <= statements.length - 1 do
-                
-                statement := statements.(i);
-                
-                if StartsWith( statement.type, "STAT_IF" ) and ForAll( statement.branches, b -> b.body.statements.length > 0 and Last( b.body.statements ).type = "STAT_RETURN_OBJ" ) then
-                    # we are in the main sequence of statements of a function => we are not inside of a loop
-                    # and all branches end with a return statement
-                    # => we reach the remaining statements iff none of the conditions of the branches match
-                    
-                    if Last( statement.branches ).condition.type = "EXPR_TRUE" then
-                        
-                        Error( "found unreachable code, this is not yet handled" );
-                        
-                    else
-                        
-                        Assert( 0, not EndsWith( statement.type, "_ELSE" ) );
-                        
-                        # put remaining statements into an else branch
-                        statement.type := Concatenation( statement.type, "_ELSE" );
-                        
-                        new_branch := rec(
-                            type := "BRANCH_IF",
-                            condition := rec(
-                                type := "EXPR_TRUE",
-                            ),
-                            body := rec(
-                                type := "STAT_SEQ_STAT",
-                                statements := Sublist( statements, [ i + 1 .. statements.length ] ),
-                            ),
-                        );
-                        
-                        # GAP does not allow to implement Add for records :(
-                        statement.branches.(statement.branches.length + 1) := new_branch;
-                        statement.branches.length := statement.branches.length + 1;
-                        
-                        statements := Sublist( statements, [ 1 .. i ] );
-
-                        tree := ShallowCopy( tree );
-                        tree.stats := ShallowCopy( tree.stats );
-                        tree.stats.statements := statements;
-                        
-                    fi;
-                    
-                fi;
-                
-                i := i + 1;
-                
-            od;
+            return tree.branches.1.value;
             
         fi;
+        
+        return tree;
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    
+end );
+
+# func( EXPR_CASE )
+CapJitAddLogicFunction( function ( tree, jit_args )
+  local pre_func;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Apply logic for func( EXPR_CASE )." );
+    
+    pre_func := function ( tree, additional_arguments )
+        
+        if tree.type = "EXPR_FUNCCALL" and tree.args.length = 1 and tree.args.1.type = "EXPR_CASE" then
             
+            return rec(
+                type := "EXPR_CASE",
+                branches := List( tree.args.1.branches, branch -> rec(
+                    type := "CASE_BRANCH",
+                    condition := branch.condition,
+                    value := rec(
+                        type := "EXPR_FUNCCALL",
+                        funcref := tree.funcref,
+                        args := AsSyntaxTreeList( [
+                            branch.value
+                        ] ),
+                    ),
+                ) ),
+            );
+            
+        fi;
+        
         return tree;
         
     end;

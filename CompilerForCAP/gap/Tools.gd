@@ -39,19 +39,6 @@ DeclareGlobalFunction( "CapJitContainsRefToFVAROutsideOfFuncStack" );
 DeclareGlobalFunction( "CapJitGetOrCreateGlobalVariable" );
 
 #! @Description
-#!   Checks if <A>tree</A> contains statements or expressions indicating side effects. If yes, it throws an error.
-#!   The following checks are performed:
-#!     * <A>tree</A> must be an enhanced syntax tree. In particular, it may not contain LVARs or HVARs.
-#!     * The following statements and expressions are forbidden: STAT_ASS_GVAR, EXPR_ISB_GVAR, STAT_UNB_GVAR,
-#!         EXPR_ISB_FVAR, EXPR_UNB_FVAR, STAT_PROCCALL.
-#!     * An FVAR must not reference functions outside of its function stack (see also <Ref Func="CapJitContainsRefToFVAROutsideOfFuncStack" />).
-#!     * An FVAR must be assigned at most once (this includes function arguments, which are assigned at least once,
-#!         namely when the function is called). An exception is made for "rapid reassignments": if the same variable
-#!         is assigned and then reassigned immediately in the next statement, this only counts as a single assignment.
-#! @Arguments tree
-DeclareGlobalFunction( "CapJitThrowErrorOnSideEffects" );
-
-#! @Description
 #!   Finds a node in <A>tree</A> for which <A>condition_func</A> returns `true`.
 #!   For each node, <A>condition_func</A> is called with the node and current path as arguments, and must return a boolean.
 #!   If multiple nodes are found, children are preferred over their parents (i.e. a "deep" node is returned).
@@ -95,6 +82,30 @@ DeclareGlobalFunction( "CapJitCopyWithNewFunctionIDs" );
 #! @Arguments tree1, tree2
 DeclareGlobalFunction( "CapJitIsEqualForEnhancedSyntaxTrees" );
 
+#! @Description
+#!   Adds a binding for <A>name</A> with value <A>value</A> to a syntax tree <A>bindings</A> of type `FVAR_BINDING_SEQ`.
+#! @Returns a record
+#! @Arguments bindings, name, value
+DeclareGlobalFunction( "CapJitAddBinding" );
+
+#! @Description
+#!   Gets the value of the binding named <A>name</A> from a syntax tree <A>bindings</A> of type `FVAR_BINDING_SEQ`.
+#! @Returns a record
+#! @Arguments bindings, name
+DeclareGlobalFunction( "CapJitValueOfBinding" );
+
+#! @Description
+#!   Unbinds the the binding named <A>name</A> from a syntax tree <A>bindings</A> of type `FVAR_BINDING_SEQ`.
+#! @Arguments bindings, name
+DeclareGlobalFunction( "CapJitUnbindBinding" );
+
+#! @Description
+#!   Replaces all subtrees of the enhanced syntax tree <A>tree</A> which are of type EXPR_REF_FVAR
+#!   with given <A>func_id</A> and <A>name</A> by <A>value</A>.
+#! @Returns a record
+#! @Arguments tree, func_id, name, value
+DeclareGlobalFunction( "CapJitReplacedEXPR_REF_FVARByValue" );
+
 ## allow to handle SYNTAX_TREE_LISTs like lists
 # Declare attributes as mutable because we want to modify them (after taking StructuralCopy, which preserves mutability).
 DeclareAttribute( "AsSyntaxTreeList", IsList, "mutable" );
@@ -108,6 +119,7 @@ DeclareOperation( "PositionProperty", [ IsRecord, IsFunction ] );
 DeclareGlobalFunction( "ConcatenationForSyntaxTreeLists" );
 DeclareOperation( "ListOp", [ IsRecord, IsFunction ] );
 DeclareOperation( "FilteredOp", [ IsRecord, IsFunction ] );
+DeclareOperation( "FirstOp", [ IsRecord, IsFunction ] );
 DeclareOperation( "LastOp", [ IsRecord ] );
 DeclareOperation( "ForAllOp", [ IsRecord, IsFunction ] );
 DeclareOperation( "Iterator", [ IsRecord ] );

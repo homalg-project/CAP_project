@@ -2,9 +2,10 @@
 
 #! @Section Tests
 
-LoadPackage( "LinearAlgebraForCAP" );
-
 #! @Example
+
+LoadPackage( "LinearAlgebraForCAP", false );
+#! true
 
 Q := HomalgFieldOfRationals();;
 rows := MatrixCategory( Q );;

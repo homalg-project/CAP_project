@@ -5,6 +5,7 @@
 #
 BindGlobal( "CAP_JIT_INTERNAL_ITERATION_KEYS", rec(
     EXPR_FUNC := [ "stats" ],
+    EXPR_DECLARATIVE_FUNC := [ "bindings" ],
     STAT_SEQ_STAT := [ "statements" ],
     STAT_SEQ_STAT2 := [ "statements" ],
     STAT_SEQ_STAT3 := [ "statements" ],
@@ -88,7 +89,8 @@ BindGlobal( "CAP_JIT_INTERNAL_ITERATION_KEYS", rec(
     STAT_INFO := [ "sel", "lev", "args" ],
     BRANCH_IF := [ "condition", "body" ],
     REC_KEY_VALUE_PAIR := [ "value" ],
-    EXPR_CONDITIONAL := [ "condition", "expr_if_true", "expr_if_false" ],
+    EXPR_CASE := [ "branches" ],
+    CASE_BRANCH := [ "condition", "value" ],
 ) );
 
 InstallGlobalFunction( CapJitIterateOverTree, function ( tree, pre_func, result_func, additional_arguments_func, additional_arguments )
@@ -143,6 +145,10 @@ InstallGlobalFunction( CapJitIterateOverTree, function ( tree, pre_func, result_
     if type = "SYNTAX_TREE_LIST" then
         
         keys := List( [ 1 .. tree.length ], i -> String( i ) );
+        
+    elif type = "FVAR_BINDING_SEQ" then
+        
+        keys := List( tree.names, name -> Concatenation( "BINDING_", name ) );
         
     elif IsBound( CAP_JIT_INTERNAL_ITERATION_KEYS.(type) ) then
         

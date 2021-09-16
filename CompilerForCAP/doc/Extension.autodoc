@@ -29,9 +29,29 @@ To simplify the handling of syntax trees, the CAP compiler enhances syntax trees
 * If the body of a BRANCH_IF is not a STAT_SEQ_STAT, the body is wrapped in a STAT_SEQ_STAT.
 * The key-value pairs of EXPR_RECs are given the type REC_KEY_VALUE_PAIR.
 * A globally unique ID is assigned to each function.
+* Return statements are replaced by assignments to a special local variable "RETURN_VALUE".
 * The handling of local variables and higher variables is unified by the concept of function variables:
   function variables (FVARs) reference local variables in functions via the function id (`func_id`) and
   their name (`name`), which is determined from the list of arguments/local variables of the function.
+* All statements after `if ... then return ...; fi;` are moved into an `else` branch.
+* `EXPR_ELM_MAT` is replaced by a call to `MatElm` such that it does not require special handling.
+* if/elif/else statements must all end with the assignment to the same local variable and must have an else clause.
+  They are coded using a new type `EXPR_CASE`:
+  Trees of type `EXPR_CASE` have a key `branches` which holds a list of trees of type `CASE_BRANCH`.
+  Trees of type `CASE_BRANCH` have two keys `condition` and `value`, which get populated with the condition of the if branch and the
+  right hand side of the last variable assignment in the body of the branch. Caution: The remaining statements in the body of the
+  if branch are moved outside of the if/elif/else statement!
+* Statements which are not assignments to local variables or if/else statements as well as nested if/else statements are not supported.
+* `EXPR_FUNC`s are coded as `EXPR_DECLARATIVE_FUNC`s: The latter has not key `nloc`.
+  Additionally, instead of `stats`, the latter has a key `bindings` of type `FVAR_BINDING_SEQ`.
+  A syntax tree of type `FVAR_BINDING_SEQ` describes a set(!) of bindings (= assignments) of local variables.
+  It has a key `names`, a list of bound names. Values of bindings can be added/obtained/unbound via
+  `CapJitAddBinding`, `CapJitValueOfBinding`, and `CapJitUnbindBinding`.
+  When the tree to a function again, the set of bindings is endowed with a order which respects the relation "uses".
+* Local variables must not be assigned more than once (this includes function arguments, which are assigned at least once,
+  namely when the function is called). An exception is made for "rapid reassignments": if the same variable is assigned
+  and then reassigned immediately in the next statement, the right-hand side of the first assignment is inserted
+  into the right-hand side of the second assignment.
 
 @Section Iterating over a syntax tree
 @SectionLabel IterateOverTree

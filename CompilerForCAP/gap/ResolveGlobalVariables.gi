@@ -7,6 +7,8 @@ BindGlobal( "CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES", [
     "Julia", # if we resolve this, we lose information about the Julia module and operation
     "List",
     "ListN",
+    "ObjectifyObjectForCAPWithAttributes",
+    "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes",
 ] );
 
 InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
@@ -99,11 +101,9 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
                     
                     if not IsKernelFunction( value ) and not IsOperation( value ) then
                         
-                        inline_tree := ENHANCED_SYNTAX_TREE( value : globalize_hvars := true );
+                        inline_tree := ENHANCED_SYNTAX_TREE( value : globalize_hvars := true, only_if_CAP_JIT_RESOLVE_FUNCTION := true );
                         
-                        if inline_tree.stats.statements.length >= 1 and inline_tree.stats.statements.1.type = "STAT_PRAGMA" and inline_tree.stats.statements.1.value = "% CAP_JIT_RESOLVE_FUNCTION" then
-                            
-                            inline_tree.stats.statements := Sublist( inline_tree.stats.statements, [ 2 .. inline_tree.stats.statements.length ] );
+                        if inline_tree <> fail then
                             
                             if funccall_does_not_return_fail then
                                 
