@@ -656,12 +656,12 @@ DeclareOperation( "MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObje
 
 ##
 #! @Description
-#! The arguments are a morphism $\iota: B \rightarrow A$
-#! and $\beta: B \rightarrow I$ where $I$ is an injective object.
+#! The arguments are a monomorphism $\iota: B \rightarrow A$
+#! and a morphism $\beta: B \rightarrow I$ where $I$ is an injective object.
 #! The output is a morphism $\lambda: A \rightarrow I$ such that
 #! $\lambda \circ \iota = \beta$.
 #! @Returns a morphism in $\mathrm{Hom}(A,I)$
-#! @Arguments \iota, \beta
+#! @Arguments iota, beta
 DeclareOperation( "InjectiveColift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
