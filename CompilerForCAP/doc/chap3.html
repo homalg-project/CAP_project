@@ -63,8 +63,7 @@ function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
     local cap_jit_hoisted_expression_1_1;
     cap_jit_hoisted_expression_1_1 := UnderlyingRing( cat_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, S_1, T_1, UnderlyingFieldForHomalg, 
-       UnderlyingRing( cat_1 ), UnderlyingMatrix, 
+           ), cat_1, S_1, T_1, UnderlyingMatrix, 
        UnionOfRows( UnderlyingRing( cat_1 ), Dimension( T_1 ), 
          ListN( diagram_S_1, List( morphism_matrix_1, function ( row_2 )
                   return List( row_2, UnderlyingMatrix );
@@ -84,8 +83,7 @@ function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
     local cap_jit_hoisted_expression_1_1;
     cap_jit_hoisted_expression_1_1 := UnderlyingRing( cat_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, S_1, T_1, UnderlyingFieldForHomalg, 
-       UnderlyingRing( cat_1 ), UnderlyingMatrix, 
+           ), cat_1, S_1, T_1,  UnderlyingMatrix, 
        UnionOfRows( UnderlyingRing( cat_1 ), Dimension( T_1 ), 
          ListN( diagram_S_1, morphism_matrix_1, 
            function ( logic_new_func_x_2, logic_new_func_y_2 )
@@ -104,10 +102,8 @@ function ( cat_1, morphism_1 )
      := SyzygiesOfRows( UnderlyingMatrix( morphism_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1 ), 
-         UnderlyingFieldForHomalg, UnderlyingRing( cat_1 ) ), 
-       Source( morphism_1 ), UnderlyingFieldForHomalg, UnderlyingRing( cat_1 )
-        , UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1 ) ), 
+       Source( morphism_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
 end
 </pre></div>
 
@@ -199,10 +195,8 @@ function ( cat_1, mor_1, test_mor_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Source( test_mor_1 ), 
        ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1 ), 
-         UnderlyingFieldForHomalg, UnderlyingRing( cat_1 ) ), 
-       UnderlyingFieldForHomalg, UnderlyingRing( cat_1 ), UnderlyingMatrix, 
-       cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1 ) )
+        , UnderlyingMatrix, cap_jit_morphism_attribute_1 );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func1 := function( x )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    #% CAP_JIT_RESOLVE_FUNCTION</span>
@@ -609,40 +603,27 @@ end
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    field -&gt; CategoryOfColumns( field );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ QQ ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "CategoryOfColumnsOfFieldPrecompiled";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "FreydCategoriesForCAP";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := "primitive";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name :</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations := operations</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-</pre></div>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP", false );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    field -&gt; CategoryOfColumnsAsOppositeOfCategoryOfRows( field );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ QQ ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "OppositeOfCategoryOfRowsOfFieldPrecompiled";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "FreydCategoriesForCAP";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := "primitive";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name :</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations := operations</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationalsInSingular( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQxy := QQ * "x,y";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EEE := KoszulDualRing( QQxy );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns := function( homalg_ring, name )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    CapJitPrecompileCategoryAndCompareResult(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        homalg_ring -&gt; CategoryOfColumnsAsOppositeOfCategoryOfRows(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            homalg_ring</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ homalg_ring ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "FreydCategoriesForCAP",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        Concatenation(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "CategoryOfColumnsAsOppositeOfCategoryOfRowsOf",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            name,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            "Precompiled"</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ) :</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        operations := "primitive"</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns( QQ, "Field" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns( QQxy, "CommutativeRing" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">precompile_CategoryOfColumns( EEE, "ArbitraryRing" );;</span>
 </pre></div>
 
 
@@ -692,8 +673,7 @@ Opposite of Category of matrices over Q
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( { cat, x } -&gt; func( cat, x ), [ vec ] ) );</span>
 function ( cat_1, x_1 )
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, Dimension, 0, UnderlyingFieldForHomalg, 
-       UnderlyingRing( cat_1 ) );
+           ), cat_1, Dimension, 0 );
 end
 </pre></div>
 

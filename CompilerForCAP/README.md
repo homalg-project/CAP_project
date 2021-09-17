@@ -9,8 +9,6 @@
 
 <!-- END HEADER -->
 
-**WARNING**: This package is still in alpha and not tested or validated extensively!
-
 Using the notions of category theory initially comes with a measurable performance overhead when implementing algorithms on a computer.
 The main reason for this is the excessive amount of superfluous wrapping and unwrapping occurring during complex computations once we use several category constructors.
 As an example, consider the category

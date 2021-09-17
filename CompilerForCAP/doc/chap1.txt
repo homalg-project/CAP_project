@@ -1,9 +1,6 @@
   
   [1X1 [33X[0;0YUsing the compiler[133X[101X
   
-  [33X[0;0Y[13XWARNING[113X:  This  package  is  still  in  alpha  and  not  tested or validated
-  extensively![133X
-  
   
   [1X1.1 [33X[0;0YTerminology[133X[101X
   
