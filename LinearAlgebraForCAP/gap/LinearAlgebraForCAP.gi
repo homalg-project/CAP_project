@@ -50,9 +50,9 @@ InstallGlobalFunction( MATRIX_CATEGORY,
     
     SetFilterObj( category, IsMatrixCategory );
     
-    AddObjectRepresentation( category, IsVectorSpaceObject and HasIsProjective and IsProjective );
+    AddObjectRepresentation( category, IsVectorSpaceObject and HasDimension and HasIsProjective and IsProjective );
     
-    AddMorphismRepresentation( category, IsVectorSpaceMorphism and HasUnderlyingFieldForHomalg and HasUnderlyingMatrix );
+    AddMorphismRepresentation( category, IsVectorSpaceMorphism and HasUnderlyingMatrix );
     
     category!.field_for_matrix_category := homalg_field;
     
@@ -126,8 +126,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         fi;
         
         return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
-                                                    Dimension, dimension,
-                                                    UnderlyingFieldForHomalg, UnderlyingRing( cat ) );
+                                                    Dimension, dimension );
         
     end );
     
@@ -170,7 +169,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
                                                source,
                                                range,
-                                               UnderlyingFieldForHomalg, UnderlyingRing( cat ),
                                                UnderlyingMatrix, homalg_matrix
         );
         
@@ -202,10 +200,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
 
           return false;
 
-        elif not IsIdenticalObj( UnderlyingFieldForHomalg( object ), category!.field_for_matrix_category ) then
-
-          return false;
-
         elif Dimension( object ) < 0 then
 
           return false;
@@ -230,21 +224,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
           return false;
 
         elif not IsIdenticalObj( category, CapCategory( Range( morphism ) ) ) then
-
-          return false;
-
-        elif not IsIdenticalObj( UnderlyingFieldForHomalg( Source( morphism ) ),
-                                 category!.field_for_matrix_category ) then
-
-          return false;
-
-        elif not IsIdenticalObj( UnderlyingFieldForHomalg( morphism ),
-                                 category!.field_for_matrix_category ) then
-
-          return false;
-
-        elif not IsIdenticalObj( UnderlyingFieldForHomalg( Range( morphism ) ),
-                                 category!.field_for_matrix_category ) then
 
           return false;
 
@@ -994,7 +973,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         t := Dimension( T );
         
-        identity := HomalgIdentityMatrix( s * t, UnderlyingFieldForHomalg( S ) );
+        identity := HomalgIdentityMatrix( s * t, UnderlyingRing( cat ) );
         
         matrices := List( [ 1 .. s * t ], i -> ConvertRowToMatrix( CertainRows( identity, [ i ] ), s, t ) );
         
