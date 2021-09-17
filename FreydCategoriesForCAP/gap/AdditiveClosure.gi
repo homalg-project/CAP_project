@@ -129,10 +129,14 @@ InstallMethod( AdditiveClosure,
             
             if remaining_constructors_in_tower[1] = "AdditiveClosure" then
                 
-                if Length( remaining_constructors_in_tower ) = 1 and ValueOption( "no_precompiled_code" ) <> true then
+                if Length( remaining_constructors_in_tower ) = 1 then
                     
-                    # add precompiled functions
-                    CallFuncList( precompiled_functions_adder, [ category ] );
+                    if ValueOption( "no_precompiled_code" ) <> true then
+                        
+                        # add precompiled functions
+                        CallFuncList( precompiled_functions_adder, [ category ] );
+                        
+                    fi;
                     
                 else
                     
