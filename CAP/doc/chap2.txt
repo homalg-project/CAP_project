@@ -436,12 +436,12 @@
   
   [1X2.10-4 InjectiveColift[101X
   
-  [33X[1;0Y[29X[2XInjectiveColift[102X( [3X\iota[103X, [3X\beta[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XInjectiveColift[102X( [3Xiota[103X, [3Xbeta[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A,I)[123X[133X
   
-  [33X[0;0YThe arguments are a morphism [23X\iota: B \rightarrow A[123X and [23X\beta: B \rightarrow
-  I[123X  where  [23XI[123X  is  an  injective  object.  The output is a morphism [23X\lambda: A
-  \rightarrow I[123X such that [23X\lambda \circ \iota = \beta[123X.[133X
+  [33X[0;0YThe  arguments  are  a  monomorphism  [23X\iota:  B \rightarrow A[123X and a morphism
+  [23X\beta:  B  \rightarrow  I[123X  where  [23XI[123X  is an injective object. The output is a
+  morphism [23X\lambda: A \rightarrow I[123X such that [23X\lambda \circ \iota = \beta[123X.[133X
   
   [1X2.10-5 AddSomeInjectiveObject[101X
   
