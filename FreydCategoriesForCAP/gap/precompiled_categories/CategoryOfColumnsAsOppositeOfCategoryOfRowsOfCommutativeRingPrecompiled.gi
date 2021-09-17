@@ -3,7 +3,7 @@
 #
 # Implementations
 #
-BindGlobal( "ADD_FUNCTIONS_FOR_OppositeOfCategoryOfRowsOfFieldPrecompiled", function ( cat )
+BindGlobal( "ADD_FUNCTIONS_FOR_CategoryOfColumnsAsOppositeOfCategoryOfRowsOfCommutativeRingPrecompiled", function ( cat )
     
     ##
     AddAdditionForMorphisms( cat,
@@ -30,28 +30,6 @@ end
     );
     
     ##
-    AddBasisOfExternalHom( cat,
-        
-########
-function ( cat_1, arg2_1, arg3_1 )
-    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1;
-    cap_jit_hoisted_expression_1_1 := HomalgIdentityMatrix( RankOfObject( arg3_1 ) * RankOfObject( arg2_1 ), UnderlyingRing( cat_1 ) );
-    cap_jit_hoisted_expression_2_1 := RankOfObject( arg3_1 );
-    cap_jit_hoisted_expression_3_1 := RankOfObject( arg2_1 );
-    return List( [ 1 .. RankOfObject( arg3_1 ) * RankOfObject( arg2_1 ) ], function ( logic_new_func_x_2 )
-            local cap_jit_morphism_attribute_2;
-            cap_jit_morphism_attribute_2 := ConvertRowToMatrix( CertainRows( cap_jit_hoisted_expression_1_1, [ logic_new_func_x_2 ] ), cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1 );
-            return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                   ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-                     ), cat_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_2 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                     ), cat_1, RankOfObject, NrRows( cap_jit_morphism_attribute_2 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_2 );
-        end );
-end
-########
-        
-    );
-    
-    ##
     AddBraidingWithGivenTensorProducts( cat,
         
 ########
@@ -63,17 +41,6 @@ function ( cat_1, s_1, a_1, b_1, r_1 )
            ), cat_1, s_1, r_1, UnderlyingMatrix, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. RankOfObject( s_1 ) ], function ( i_2 )
                       return (REM_INT( (i_2 - 1), cap_jit_hoisted_expression_1_1 ) * cap_jit_hoisted_expression_2_1 + QUO_INT( (i_2 - 1), cap_jit_hoisted_expression_1_1 ) + 1);
                   end ) ) ^ -1, RankOfObject( s_1 ) ), RankOfObject( s_1 ), RankOfObject( s_1 ), UnderlyingRing( cat_1 ) ) );
-end
-########
-        
-    );
-    
-    ##
-    AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( cat,
-        
-########
-function ( cat_1, arg2_1, arg3_1 )
-    return ID_FUNC( EntriesOfHomalgMatrix( UnderlyingMatrix( arg2_1 ) ) );
 end
 ########
         
@@ -96,33 +63,6 @@ function ( cat_1, s_1, a_1, r_1 )
                 end ) ) );
     fi;
     return;
-end
-########
-        
-    );
-    
-    ##
-    AddCokernelObject( cat,
-        
-########
-function ( cat_1, arg2_1 )
-    return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, RankOfObject, NumberRows( UnderlyingMatrix( arg2_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
-end
-########
-        
-    );
-    
-    ##
-    AddCokernelProjection( cat,
-        
-########
-function ( cat_1, alpha_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) );
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Range( alpha_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, RankOfObject, NrRows( cap_jit_morphism_attribute_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
 end
 ########
         
@@ -414,33 +354,6 @@ end
 ########
 function ( cat_1, arg2_1 )
     return RankOfObject( arg2_1 ) = 0;
-end
-########
-        
-    );
-    
-    ##
-    AddKernelEmbedding( cat,
-        
-########
-function ( cat_1, alpha_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) );
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_1 ) ), Source( alpha_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
-end
-########
-        
-    );
-    
-    ##
-    AddKernelObject( cat,
-        
-########
-function ( cat_1, arg2_1 )
-    return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, RankOfObject, NumberColumns( UnderlyingMatrix( arg2_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
 end
 ########
         
@@ -904,21 +817,21 @@ end
     
 end );
 
-BindGlobal( "OppositeOfCategoryOfRowsOfFieldPrecompiled", function ( field )
+BindGlobal( "CategoryOfColumnsAsOppositeOfCategoryOfRowsOfCommutativeRingPrecompiled", function ( homalg_ring )
   local category_constructor, cat;
     
     category_constructor := 
         
         
-        function ( field )
-    return CategoryOfColumnsAsOppositeOfCategoryOfRows( field );
+        function ( homalg_ring )
+    return CategoryOfColumnsAsOppositeOfCategoryOfRows( homalg_ring );
 end;
         
         
     
-    cat := category_constructor( field : FinalizeCategory := false, no_precompiled_code := true );
+    cat := category_constructor( homalg_ring : FinalizeCategory := false, no_precompiled_code := true );
     
-    ADD_FUNCTIONS_FOR_OppositeOfCategoryOfRowsOfFieldPrecompiled( cat );
+    ADD_FUNCTIONS_FOR_CategoryOfColumnsAsOppositeOfCategoryOfRowsOfCommutativeRingPrecompiled( cat );
     
     if ValueOption( "FinalizeCategory" ) = false then
         

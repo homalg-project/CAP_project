@@ -1,7 +1,5 @@
 @Chapter Using the compiler
 
-**WARNING**: This package is still in alpha and not tested or validated extensively!
-
 @Section Terminology
 
 The compiler is a just-in-time compiler, that is, it needs some arguments to infer types of variables. These arguments
