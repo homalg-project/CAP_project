@@ -20,11 +20,9 @@ ReadPackage( "CompilerForCAP", "gap/ResolveOperations.gd" );
 
 ReadPackage( "CompilerForCAP", "gap/InlineArguments.gd" );
 
-ReadPackage( "CompilerForCAP", "gap/DropUnusedVariables.gd" );
+ReadPackage( "CompilerForCAP", "gap/DropUnusedBindings.gd" );
 
-ReadPackage( "CompilerForCAP", "gap/InlineVariableAssignments.gd" );
-
-ReadPackage( "CompilerForCAP", "gap/DetectTernaryConditionalExpressions.gd" );
+ReadPackage( "CompilerForCAP", "gap/InlineBindings.gd" );
 
 ReadPackage( "CompilerForCAP", "gap/ResolveGlobalVariables.gd" );
 

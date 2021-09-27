@@ -28,7 +28,24 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT, fu
                     5_variadic := tree.variadic,
                     6_stats := CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT( tree.stats, Concatenation( func_stack, [ tree ] ) ),
                   );
-
+        
+    elif type = "EXPR_DECLARATIVE_FUNC" then
+        
+        return rec( 0_type := tree.type,
+                    1_id := tree.id,
+                    2_nams := tree.nams,
+                    3_narg := tree.narg,
+                    4_variadic := tree.variadic,
+                    5_bindings := CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT( tree.bindings, Concatenation( func_stack, [ tree ] ) ),
+                  );
+        
+    elif type = "FVAR_BINDING_SEQ" then
+        
+        return rec( 0_type := tree.type,
+                    1_names := tree.names,
+                    2_bindings := List( tree.names, name -> rec( name := name, value := CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT( CapJitValueOfBinding( tree, name ), func_stack ) ) ),
+                  );
+        
     elif StartsWith( type, "STAT_SEQ_STAT" ) then
         
         return rec(
@@ -58,8 +75,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT, fu
         return rec( 0_type := tree.type,
                     1_func_id := tree.func_id,
                     2_name := tree.name,
-                    3_initial_name := tree.initial_name,
-                    4_rhs := CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT( tree.rhs, func_stack ),
+                    3_rhs := CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT( tree.rhs, func_stack ),
                   );
         
     elif StartsWith( type, "EXPR_FUNCCALL" ) or StartsWith( type, "STAT_PROCCALL" ) then
@@ -96,7 +112,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT, fu
         return rec( 0_type := tree.type,
                     1_func_id := tree.func_id,
                     2_name := tree.name,
-                    3_initial_name := tree.initial_name,
                   );
         
     elif type = "STAT_IF" or type = "STAT_IF_ELSE" then
@@ -209,11 +224,24 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT, fu
                     3_list := CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT( tree.list, func_stack ),
                   );
         
+    elif type = "EXPR_CASE" then
+        
+        return rec( 0_type := tree.type,
+                    1_branches := CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT( tree.branches, func_stack ),
+                  );
+        
+    elif type = "CASE_BRANCH" then
+        
+        return rec( 0_type := tree.type,
+                    1_condition := CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT( tree.condition, func_stack ),
+                    2_value := CAP_JIT_INTERNAL_PREPARE_SYNTAX_TREE_FOR_PRETTY_PRINT( tree.value, func_stack ),
+                  );
+        
     else
         
         Display( tree );
         
-        Error( "tree has no kown type" );
+        Error( "tree has no known type" );
         
     fi;
     

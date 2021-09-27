@@ -57,11 +57,11 @@ end );
 
 InstallGlobalFunction( CapJitContainsRefToFVAROutsideOfFuncStack, function ( tree )
   local result_func, additional_arguments_func;
-  
+    
     result_func := function ( tree, result, keys, func_id_stack )
       local type, level;
         
-        if PositionSublist( tree.type, "FVAR" ) <> fail then
+        if tree.type = "EXPR_REF_FVAR" then
             
             if not tree.func_id in func_id_stack then
                 
@@ -77,7 +77,7 @@ InstallGlobalFunction( CapJitContainsRefToFVAROutsideOfFuncStack, function ( tre
     
     additional_arguments_func := function ( tree, key, func_id_stack )
         
-        if tree.type = "EXPR_FUNC" then
+        if tree.type = "EXPR_DECLARATIVE_FUNC" then
             
             Assert( 0, IsBound( tree.id ) );
             
@@ -121,136 +121,6 @@ InstallGlobalFunction( CapJitGetOrCreateGlobalVariable, function ( value )
     CAP_JIT_INTERNAL_GLOBAL_VARIABLE_COUNTER := CAP_JIT_INTERNAL_GLOBAL_VARIABLE_COUNTER + 1;
     
     return gvar;
-    
-end );
-
-InstallGlobalFunction( CapJitThrowErrorOnSideEffects, function ( tree )
-  local number_of_assignments, pre_func, additional_arguments_func, i, name;
-    
-    # modified inplace
-    number_of_assignments := [ ];
-    
-    pre_func := function ( tree, func_id_stack )
-      local name;
-        
-        # make sure we deal with an enhanced syntax tree
-        if PositionSublist( tree.type, "HVAR" ) <> fail or PositionSublist( tree.type, "LVAR" ) <> fail then
-            
-            Error( "tree contains reference to HVAR or LVAR, this is not supported. Please use an enhanced syntax tree" );
-            
-        fi;
-        
-        # exclude most common statements and expression indicating possible side effects
-        if tree.type in [ "STAT_ASS_GVAR", "EXPR_ISB_GVAR", "STAT_UNB_GVAR", "EXPR_ISB_FVAR", "EXPR_UNB_FVAR", "STAT_PROCCALL", "STAT_ASS_LIST", "STAT_ASS_COMOBJ_NAME", "STAT_ASS_MAT" ] then
-            
-            Error( Concatenation( "tree includes statements or expressions which indicate possible side effects: ", tree.type ) );
-            
-        fi;
-        
-        # make sure that fvars reference only functions in the current function stack
-        if PositionSublist( tree.type, "FVAR" ) <> fail then
-            
-            Assert( 0, IsBound( tree.func_id ) );
-            
-            if not tree.func_id in func_id_stack then
-                
-                Error( Concatenation( "tree contains reference to an fvar with inital name ", tree.initial_name, " outside of the current function stack, this is not well-defined" ) );
-                
-            fi;
-            
-        fi;
-        
-        # make sure for loop only loops over local variables
-        if tree.type = "STAT_FOR" then
-            
-            if tree.variable.type <> "EXPR_REF_FVAR" or tree.variable.func_id <> Last( func_id_stack ) then
-                
-                Error( "tree contains for loop over non-local variable, this is not supported" );
-                
-            fi;
-            
-        fi;
-        
-        # initialize number_of_assignments per function
-        if tree.type = "EXPR_FUNC" then
-            
-            if IsBound( number_of_assignments[tree.id] ) then
-                
-                Error( "tree contains multiple functions with the same ID" );
-                
-            fi;
-            
-            number_of_assignments[tree.id] := rec( );
-            
-            for name in tree.nams{[ 1 .. tree.narg ]} do
-                
-                number_of_assignments[tree.id].(name) := 1;
-                
-            od;
-            
-            for name in tree.nams{[ tree.narg + 1 .. tree.narg + tree.nloc ]} do
-                
-                number_of_assignments[tree.id].(name) := 0;
-                
-            od;
-            
-        fi;
-        
-        # make sure that only local variables are assigned, increase number_of_assignments
-        if tree.type = "STAT_ASS_FVAR" then
-            
-            if tree.func_id <> Last( func_id_stack ) then
-                
-                Error( Concatenation( "tree contains an assignment of a higher variable with initial name ", tree.initial_name, ", this is not supported" ) );
-                
-            fi;
-            
-            Assert( 0, IsBound( number_of_assignments[tree.func_id].(tree.name) ) );
-            
-            number_of_assignments[tree.func_id].(tree.name) := number_of_assignments[tree.func_id].(tree.name) + 1;
-            
-        fi;
-        
-        return tree;
-        
-    end;
-    
-    additional_arguments_func := function ( tree, key, func_id_stack )
-        
-        if tree.type = "EXPR_FUNC" then
-            
-            Assert( 0, IsBound( tree.id ) );
-            
-            return Concatenation( func_id_stack, [ tree.id ] );
-            
-        else
-            
-            return func_id_stack;
-            
-        fi;
-        
-    end;
-    
-    CapJitIterateOverTree( tree, pre_func, ReturnTrue, additional_arguments_func, [ ] );
-    
-    # make sure no variables is assigned more than once
-    for i in [ 1 .. Length( number_of_assignments ) ] do
-        
-        if IsBound( number_of_assignments[i] ) then
-            
-            for name in RecNames( number_of_assignments[i] ) do
-                
-                if number_of_assignments[i].(name) >= 2 then
-                    
-                    Error( Concatenation( "a local variable with name ", name, " is assigned more than once (not as part of a rapid reassignment), this is not supported" ) );
-                    
-                fi;
-                
-            od;
-            
-        fi;
-        
-    od;
     
 end );
 
@@ -309,64 +179,38 @@ InstallGlobalFunction( CapJitGetNodeByPath, function ( tree, path )
 end );
 
 InstallGlobalFunction( CapJitRemovedReturnFail, function ( tree )
-  local found_return_fail;
+  local found_return_fail, return_value, new_branches;
     
-    Assert( 0, tree.type = "EXPR_FUNC" );
+    Assert( 0, tree.type = "EXPR_DECLARATIVE_FUNC" );
     
     tree := StructuralCopy( tree );
     
-    # we want to rely on EXPR_CONDITIONAL below
-    tree := CapJitDetectedTernaryConditionalExpressions( tree );
-    
     found_return_fail := false;
     
-    tree.stats.statements := AsSyntaxTreeList( Concatenation( List( [ 1 .. tree.stats.statements.length ], function ( i )
-      local statement, branch, body_stat, next_statement;
+    return_value := tree.bindings.BINDING_RETURN_VALUE;
+    
+    if return_value.type = "EXPR_CASE" then
         
-        statement := tree.stats.statements.(i);
+        new_branches := Filtered( return_value.branches, branch -> not (branch.value.type = "EXPR_REF_GVAR" and branch.value.gvar = "fail") );
         
-        # detect "if ... then return fail; fi"
-        if statement.type = "STAT_IF" and statement.branches.length = 1 then
+        found_return_fail := return_value.branches.length <> new_branches.length;
+        
+        # turn `if true then var := value; fi;` into `var := value;`
+        if new_branches.length = 1 and new_branches.1.condition.type = "EXPR_TRUE" then
             
-            branch := statement.branches.1;
+            tree.bindings.BINDING_RETURN_VALUE := new_branches.1.value;
             
-            if branch.body.statements.length = 1 then
-                
-                body_stat := branch.body.statements.1;
-                
-                if body_stat.type = "STAT_RETURN_OBJ" and body_stat.obj.type = "EXPR_REF_GVAR" and body_stat.obj.gvar = "fail" then
-                    
-                    found_return_fail := true;
-                    
-                    return [ ];
-                    
-                fi;
-                
-            fi;
+        else
+            
+            return_value.branches := new_branches;
             
         fi;
         
-        # detect "if ... then return fail; else return ...; fi" (as EXPR_CONDITIONAL)
-        if statement.type = "STAT_RETURN_OBJ" and statement.obj.type = "EXPR_CONDITIONAL" and statement.obj.expr_if_true.type = "EXPR_REF_GVAR" and statement.obj.expr_if_true.gvar = "fail" then
-            
-            found_return_fail := true;
-            
-            return [
-                rec(
-                    type := "STAT_RETURN_OBJ",
-                    obj := statement.obj.expr_if_false,
-                )
-            ];
-            
-        fi;
-        
-        return [ statement ];
-        
-    end ) ) );
+    fi;
     
     if not found_return_fail then
         
-        Error( "Could not detect a statement returning fail. Either the pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL is not set correctly or the given structure is not yet handled correctly by the compiler" );
+        Error( "Could not detect a statement returning fail. Either the pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL is not set correctly or the given structure is not yet handled correctly by the compiler." );
         
     fi;
     
@@ -411,12 +255,9 @@ InstallGlobalFunction( CapJitCopyWithNewFunctionIDs, function ( tree )
     
     pre_func := function ( tree, additional_arguments )
         
-        if tree.type = "EXPR_FUNC" then
+        if tree.type = "EXPR_DECLARATIVE_FUNC" then
             
-            tree := ShallowCopy( tree );
-            
-            tree.stats := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( tree.stats, tree.id, CAP_JIT_INTERNAL_FUNCTION_ID, tree.nams, tree.nams );
-            tree.id := CAP_JIT_INTERNAL_FUNCTION_ID;
+            tree := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( tree, tree.id, CAP_JIT_INTERNAL_FUNCTION_ID, tree.nams, tree.nams );
             CAP_JIT_INTERNAL_FUNCTION_ID := CAP_JIT_INTERNAL_FUNCTION_ID + 1;
             
         fi;
@@ -435,6 +276,102 @@ InstallGlobalFunction( CapJitIsEqualForEnhancedSyntaxTrees, function ( tree1, tr
     tree2 := StructuralCopy( tree2 );
     
     return CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree1, tree2 ) <> fail;
+    
+end );
+
+InstallGlobalFunction( CapJitAddBinding, function ( bindings, name, value )
+  local rec_name;
+    
+    if not IsRecord( bindings ) or not IsBound( bindings.type ) or bindings.type <> "FVAR_BINDING_SEQ" then
+        
+        Error( "the first argument must be a syntax tree of type FVAR_BINDING_SEQ" );
+        
+    fi;
+    
+    if not IsString( name ) then
+        
+        Error( "the second arguments must be a string" );
+        
+    fi;
+    
+    rec_name := Concatenation( "BINDING_", name );
+    
+    if IsBound( bindings.(rec_name) ) then
+        
+        Error( "there already is a binding with name ", name );
+        
+    fi;
+    
+    bindings.(rec_name) := value;
+    AddSet( bindings.names, name );
+    
+end );
+
+InstallGlobalFunction( CapJitValueOfBinding, function ( bindings, name )
+    
+    if not IsRecord( bindings ) or not IsBound( bindings.type ) or bindings.type <> "FVAR_BINDING_SEQ" then
+        
+        Error( "the first argument must be a syntax tree of type FVAR_BINDING_SEQ" );
+        
+    fi;
+    
+    if not IsString( name ) then
+        
+        Error( "the second arguments must be a string" );
+        
+    fi;
+    
+    if not name in bindings.names then
+        
+        Error( name, " is not the name of a binding" );
+        
+    fi;
+    
+    return bindings.(Concatenation( "BINDING_", name ));
+    
+end );
+
+InstallGlobalFunction( CapJitUnbindBinding, function ( bindings, name )
+    
+    if not IsRecord( bindings ) or not IsBound( bindings.type ) or bindings.type <> "FVAR_BINDING_SEQ" then
+        
+        Error( "the first argument must be a syntax tree of type FVAR_BINDING_SEQ" );
+        
+    fi;
+    
+    if not IsString( name ) then
+        
+        Error( "the second arguments must be a string" );
+        
+    fi;
+    
+    if not name in bindings.names then
+        
+        Error( name, " is not the name of a binding" );
+        
+    fi;
+    
+    Unbind( bindings.(Concatenation( "BINDING_", name )) );
+    RemoveSet( bindings.names, name );
+    
+end );
+
+InstallGlobalFunction( CapJitReplacedEXPR_REF_FVARByValue, function ( tree, func_id, name, value )
+  local pre_func;
+    
+    pre_func := function ( tree, additional_arguments )
+        
+        if tree.type = "EXPR_REF_FVAR" and tree.func_id = func_id and tree.name = name then
+            
+            return CapJitCopyWithNewFunctionIDs( value );
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
     
 end );
 
@@ -633,6 +570,33 @@ InstallMethod( FilteredOp,
     fi;
     
     return AsSyntaxTreeList( Filtered( AsListMut( tree ), func ) );
+    
+end );
+
+InstallMethod( FirstOp,
+               "for syntax tree nodes of type SYNTAX_TREE_LIST",
+               [ IsRecord, IsFunction ],
+               
+  function ( tree, func )
+    local elm;
+    
+    if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
+        
+        TryNextMethod();
+        
+    fi;
+    
+    for elm in tree do
+        
+        if func( elm ) then
+            
+            return elm;
+            
+        fi;
+        
+    od;
+    
+    return fail;
     
 end );
 

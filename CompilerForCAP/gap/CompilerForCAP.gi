@@ -88,25 +88,6 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
-            Error( "apply CapJitAppliedLogicTemplates" );
-        fi;
-        
-        tree := CapJitAppliedLogicTemplates( tree, jit_args, true );
-        
-        if debug then
-            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display( compiled_func );
-            Error( "apply CapJitInlinedVariableAssignments (for rapid reassignments only)" );
-        fi;
-        
-        tree := CapJitInlinedVariableAssignments( tree : inline_rapid_reassignments_only := true );
-        
-        # new functions might be resolved -> test for side effects
-        CapJitThrowErrorOnSideEffects( tree );
-        
-        if debug then
-            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display( compiled_func );
             Error( "apply CapJitInlinedArguments" );
         fi;
         
@@ -115,18 +96,18 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
-            Error( "apply CapJitDroppedUnusedVariables" );
+            Error( "apply CapJitDroppedUnusedBindings" );
         fi;
         
-        tree := CapJitDroppedUnusedVariables( tree );
+        tree := CapJitDroppedUnusedBindings( tree );
         
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
-            Error( "apply CapJitInlinedVariableAssignments (for global variables only)" );
+            Error( "apply CapJitInlinedBindings (for global variables only)" );
         fi;
         
-        tree := CapJitInlinedVariableAssignments( tree : inline_gvars_only := true );
+        tree := CapJitInlinedBindings( tree : inline_gvars_only := true );
         
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
@@ -196,26 +177,18 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
-            Error( "apply CapJitDroppedUnusedVariables" );
+            Error( "apply CapJitDroppedUnusedBindings" );
         fi;
         
-        tree := CapJitDroppedUnusedVariables( tree );
+        tree := CapJitDroppedUnusedBindings( tree );
         
         if debug then
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
-            Error( "apply CapJitInlinedVariableAssignments" );
+            Error( "apply CapJitInlinedBindings" );
         fi;
         
-        tree := CapJitInlinedVariableAssignments( tree );
-        
-        if debug then
-            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display( compiled_func );
-            Error( "apply CapJitDetectedTernaryConditionalExpressions" );
-        fi;
-        
-        tree := CapJitDetectedTernaryConditionalExpressions( tree );
+        tree := CapJitInlinedBindings( tree );
         
     od;
     

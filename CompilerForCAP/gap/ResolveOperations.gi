@@ -7,8 +7,6 @@ BindGlobal( "CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES", [
     "DecideZeroColumns",
     "DecideZeroRows",
     "IsZero",
-    "ObjectifyObjectForCAPWithAttributes",
-    "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes",
 ] );
 
 InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
@@ -328,14 +326,11 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
                     
                     if not IsKernelFunction( method ) then
                         
-                        resolved_tree := ENHANCED_SYNTAX_TREE( method : globalize_hvars := true );
+                        resolved_tree := ENHANCED_SYNTAX_TREE( method : globalize_hvars := true, only_if_CAP_JIT_RESOLVE_FUNCTION );
                         
-                        if resolved_tree.stats.statements.length >= 1 and resolved_tree.stats.statements.1.type = "STAT_PRAGMA" and resolved_tree.stats.statements.1.value = "% CAP_JIT_RESOLVE_FUNCTION" then
+                        if resolved_tree <> fail then
                             
                             Info( InfoCapJit, 1, "Found suitable applicable method." );
-                            
-                            # remove pragma
-                            resolved_tree.stats.statements := Sublist( resolved_tree.stats.statements, [ 2 .. resolved_tree.stats.statements.length ] );
                             
                             if funccall_does_not_return_fail then
                                 

@@ -65,9 +65,6 @@ DeclareGlobalFunction( "CapJitAddLogicTemplate" );
 #! @Description
 #!   Applies all logic templates (see <Ref Func="CapJitAddLogicTemplate" />) to <A>tree</A>.
 #!   The arguments <A>jit_args</A> are used to infer the types of variables.
-#!   If the third argument is set to `true`, only templates with empty `dst_template` are applied.
-#!   This can be used to quickly drop unwanted statements from the tree without applying all
-#!   (possibly expensive) logic templates.
 #! @Returns a record
-#! @Arguments tree, jit_args[, cleanup_only]
+#! @Arguments tree, jit_args
 DeclareGlobalFunction( "CapJitAppliedLogicTemplates" );

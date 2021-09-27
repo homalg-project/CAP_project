@@ -4,9 +4,18 @@
 # Implementations
 #
 InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
-  local globalize_hvars, given_arguments, tree, orig_tree, pre_func, additional_arguments_func;
+  local ErrorWithFuncLocation, globalize_hvars, only_if_CAP_JIT_RESOLVE_FUNCTION, given_arguments, tree, orig_tree, pre_func, result_func, additional_arguments_func;
+    
+    ErrorWithFuncLocation := function ( args... )
+        
+        # using LocationFunc causes a segfault (https://github.com/gap-system/gap/issues/4507)
+        CallFuncList( Error, Concatenation( [ "for function at ", FilenameFunc( func ), ":", StartlineFunc( func ), ":\n" ], args ) );
+        
+    end;
     
     globalize_hvars := ValueOption( "globalize_hvars" ) = true;
+    
+    only_if_CAP_JIT_RESOLVE_FUNCTION := ValueOption( "only_if_CAP_JIT_RESOLVE_FUNCTION" ) = true;
     
     if ValueOption( "given_arguments" ) = fail then
         
@@ -36,6 +45,20 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
     tree := StructuralCopy( tree );
     
     orig_tree := tree;
+    
+    if only_if_CAP_JIT_RESOLVE_FUNCTION then
+        
+        if Length( tree.stats.statements ) >= 1 and tree.stats.statements[1].type = "STAT_PRAGMA" and tree.stats.statements[1].value = "% CAP_JIT_RESOLVE_FUNCTION" then
+            
+            tree.stats.statements := tree.stats.statements{[ 2 .. Length( tree.stats.statements ) ]};
+            
+        else
+            
+            return fail;
+            
+        fi;
+        
+    fi;
     
     pre_func := function ( tree, additional_arguments )
       local path, func_stack, new_tree, statements, i, statement, level, pos, lvars, value, to_delete, next_statement, funccall, operation_name, branch, keyvalue;
@@ -112,10 +135,12 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                     
                 fi;
                 
+                Assert( 0, Length( statements ) > 0 );
+                
                 tree.statements := statements;
                 
             fi;
-
+            
             # give if branches a type
             if tree.type in [ "STAT_IF", "STAT_IF_ELSE", "STAT_IF_ELIF", "STAT_IF_ELIF_ELSE" ] then
                 
@@ -126,7 +151,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 od;
                 
             fi;
-
+            
             # make sure the body of an if branch is a STAT_SEQ_STAT
             if tree.type = "BRANCH_IF" then
                 
@@ -142,7 +167,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 fi;
                 
             fi;
-
+            
             # give rec key-values a type
             if tree.type = "EXPR_REC" then
                 
@@ -159,22 +184,41 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 
                 # id might already have been set during inlining of global vars
                 if not IsBound( tree.id ) then
-                
+                    
                     tree.id := CAP_JIT_INTERNAL_FUNCTION_ID;
                     
                     CAP_JIT_INTERNAL_FUNCTION_ID := CAP_JIT_INTERNAL_FUNCTION_ID + 1;
-                
-                fi;
                     
+                fi;
+                
+                if "RETURN_VALUE" in tree.nams then
+                    
+                    ErrorWithFuncLocation( "Function has argument or local variable with name RETURN_VALUE. This is not supported." );
+                    
+                fi;
+                
+                tree.nams := Concatenation( tree.nams, [ "RETURN_VALUE" ] );
+                
             fi;
-
+            
+            # replace STAT_RETURN_OBJ
+            if tree.type = "STAT_RETURN_OBJ" then
+                
+                tree := rec(
+                    type := "STAT_ASS_FVAR",
+                    func_id := Last( func_stack ).id,
+                    name := "RETURN_VALUE",
+                    rhs := tree.obj,
+                );
+                
+            fi;
+            
             # unify lvar and hvar handling
             if PositionSublist( tree.type, "LVAR" ) <> fail then
                 
                 tree.type := ReplacedString( tree.type, "LVAR", "FVAR" );
-                tree.func_id := func_stack[Length( func_stack )].id;
-                tree.name := func_stack[Length( func_stack )].nams[tree.lvar];
-                tree.initial_name := tree.name;
+                tree.func_id := Last( func_stack ).id;
+                tree.name := Last( func_stack ).nams[tree.lvar];
                 Unbind( tree.lvar );
                 
             fi;
@@ -209,7 +253,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                         
                     else
                         
-                        Error( "tree contains hvar ref outside of stack" );
+                        ErrorWithFuncLocation( "tree contains hvar ref outside of stack" );
                         
                     fi;
                     
@@ -218,7 +262,6 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                     tree.type := ReplacedString( tree.type, "HVAR", "FVAR" );
                     tree.func_id := func_stack[Length( func_stack ) - level].id;
                     tree.name := func_stack[Length( func_stack ) - level].nams[pos];
-                    tree.initial_name := tree.name;
                     Unbind( tree.hvar );
 
                 fi;
@@ -246,7 +289,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                         
                         if i = Length( tree.statements ) then
                             
-                            Error( "The pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL must not occur as the last statement in a sequence of statements" );
+                            ErrorWithFuncLocation( "The pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL must not occur as the last statement in a sequence of statements" );
                             
                         fi;
                         
@@ -262,7 +305,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                             
                         else
                             
-                            Error( "The line following the pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL must either assign a variable to the result of a function call or return the result of a function call" );
+                            ErrorWithFuncLocation( "The line following the pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL must either assign a variable to the result of a function call or return the result of a function call" );
                             
                         fi;
                         
@@ -274,7 +317,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                             
                         else
                             
-                            Error( "The pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL can only be used for calls to global functions or operations" );
+                            ErrorWithFuncLocation( "The pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL can only be used for calls to global functions or operations" );
                             
                         fi;
                         
@@ -283,6 +326,8 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 od;
                 
                 tree.statements := tree.statements{Difference( [ 1 .. Length( tree.statements ) ], to_delete )};
+                
+                Assert( 0, Length( tree.statements ) > 0 );
                 
             fi;
             
@@ -297,7 +342,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                         
                         if i = Length( tree.statements ) then
                             
-                            Error( "The pragma CAP_JIT_DROP_NEXT_STATEMENT must not occur as the last statement in a sequence of statements" );
+                            ErrorWithFuncLocation( "The pragma CAP_JIT_DROP_NEXT_STATEMENT must not occur as the last statement in a sequence of statements" );
                             
                         fi;
                         
@@ -309,6 +354,58 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 od;
                 
                 tree.statements := tree.statements{Difference( [ 1 .. Length( tree.statements ) ], to_delete )};
+                
+                Assert( 0, Length( tree.statements ) > 0 );
+                
+            fi;
+            
+            # remove `if <condition> then Error( <message> ); fi;`
+            # CAUTION: this has to be done after CAP_JIT_DROP_NEXT_STATEMENT, in case the user manually drops such a statement
+            if tree.type = "STAT_SEQ_STAT" then
+                
+                tree.statements := Filtered( tree.statements, statement -> not (statement.type in [ "STAT_IF", "STAT_IF_ELSE", "STAT_IF_ELIF", "STAT_IF_ELIF_ELSE" ] and Length( statement.branches ) = 1 and StartsWith( statement.branches[1].body.type, "STAT_PROCCALL_" ) and statement.branches[1].body.funcref.type = "EXPR_REF_GVAR" and statement.branches[1].body.funcref.gvar = "Error") );
+                
+                Assert( 0, Length( tree.statements ) > 0 );
+                
+            fi;
+            
+            # move all statements after if ... then return ...; fi; into an else branch
+            # CAUTION: this has to be done after CAP_JIT_DROP_NEXT_STATEMENT, in case the user manually drops the if statement
+            if tree.type = "STAT_SEQ_STAT" then
+                
+                for i in [ 1 .. Length( tree.statements ) - 1 ] do
+                    
+                    statement := tree.statements[i];
+                    
+                    if statement.type in [ "STAT_IF", "STAT_IF_ELSE", "STAT_IF_ELIF", "STAT_IF_ELIF_ELSE" ] and ForAll( statement.branches, branch -> branch.body.type = "STAT_RETURN_OBJ" or (branch.body.type = "STAT_SEQ_STAT" and Last( branch.body.statements ).type = "STAT_RETURN_OBJ") ) then
+                        
+                        # add remaining statements as else-branch
+                        statement.branches := Concatenation(
+                            statement.branches,
+                            [
+                                rec(
+                                    type := "IF_BRANCH",
+                                    condition := rec(
+                                        type := "EXPR_TRUE",
+                                    ),
+                                    body := rec(
+                                        type := "STAT_SEQ_STAT",
+                                        statements := tree.statements{[ i + 1 .. Length( tree.statements ) ]},
+                                    ),
+                                ),
+                            ]
+                        );
+                        
+                        tree.statements := tree.statements{[ 1 .. i ]};
+                        
+                        # we have added all remaining statements to the else-clause, so there is nothing to do anymore
+                        break;
+                        
+                    fi;
+                    
+                od;
+                
+                Assert( 0, Length( tree.statements ) > 0 );
                 
             fi;
             
@@ -358,6 +455,167 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
         
     end;
     
+    result_func := function ( tree, result, keys, additional_arguments )
+      local statements, bindings, add_binding, statement, name, case_expression, key, i, branch, j;
+        
+        tree := ShallowCopy( tree );
+        
+        for key in keys do
+            
+            tree.(key) := result.(key);
+            
+        od;
+        
+        if tree.type = "EXPR_FUNC" then
+            
+            statements := tree.stats.statements;
+            
+            bindings := rec(
+                type := "FVAR_BINDING_SEQ",
+                names := [ ],
+            );
+            
+            add_binding := function ( name, value )
+              local rec_name;
+                
+                rec_name := Concatenation( "BINDING_", name );
+                
+                if IsBound( bindings.(rec_name) ) then
+                    
+                    ErrorWithFuncLocation( "Variable with name ", name, " is assigned more than once (not as part of a rapid reassignment). This is not supported." );
+                    
+                fi;
+                
+                Assert( 0, name in tree.nams );
+                
+                if Position( tree.nams, name ) <= tree.narg then
+                    
+                    ErrorWithFuncLocation( "A function argument with name ", name, " is assigned. This is not supported." );
+                    
+                fi;
+                
+                CapJitAddBinding( bindings, name, value );
+                
+            end;
+            
+            for i in [ 1 .. statements.length ] do
+                
+                statement := statements.(i);
+                
+                if statement.type = "STAT_ASS_FVAR" then
+                    
+                    if statement.func_id <> tree.id then
+                        
+                        ErrorWithFuncLocation( "A higher variable with name ", statement.name, " is assigned. This is not supported." );
+                        
+                    fi;
+                    
+                    # detect rapid reassignments
+                    if i < statements.length and statements.(i + 1).type = "STAT_ASS_FVAR" and statements.(i + 1).func_id = tree.id and statements.(i + 1).name = statement.name then
+                        
+                        statements.(i + 1) := CapJitReplacedEXPR_REF_FVARByValue( statements.(i + 1), statement.func_id, statement.name, statement.rhs );
+                        continue;
+                        
+                    fi;
+                    
+                    add_binding( statement.name, statement.rhs );
+                    
+                elif statement.type in [ "STAT_IF", "STAT_IF_ELSE", "STAT_IF_ELIF", "STAT_IF_ELIF_ELSE" ] then
+                    
+                    if statement.branches.1.body.statements.length = 0 then
+                        
+                        ErrorWithFuncLocation( "Found empty if branch. This is not supported." );
+                        
+                    fi;
+                    
+                    if Last( statement.branches.1.body.statements ).type = "STAT_ASS_FVAR" then
+                        
+                        if Last( statement.branches.1.body.statements ).func_id <> tree.id then
+                            
+                            ErrorWithFuncLocation( "Assignment to a non-local variable. This is not supported." );
+                            
+                        fi;
+                        
+                        if not Last( statement.branches ).condition.type = "EXPR_TRUE" then
+                            
+                            ErrorWithFuncLocation( "Found if without else clause. This is not supported." );
+                            
+                        fi;
+                        
+                        name := Last( statement.branches.1.body.statements ).name;
+                        
+                        case_expression := rec(
+                            type := "EXPR_CASE",
+                            branches := [ ],
+                        );
+                        
+                        for branch in statement.branches do
+                            
+                            if branch.body.statements.length = 0 then
+                                
+                                ErrorWithFuncLocation( "Found empty if branch. This is not supported." );
+                                
+                            fi;
+                            
+                            for j in [ 1 .. branch.body.statements.length - 1 ] do
+                                
+                                if branch.body.statements.(j).type <> "STAT_ASS_FVAR" then
+                                    
+                                    ErrorWithFuncLocation( "The type ", branch.body.statements.(j).type, " is not supported at this point in the code." );
+                                    
+                                fi;
+                                
+                                add_binding( branch.body.statements.(j).name, branch.body.statements.(j).rhs );
+                                
+                            od;
+                            
+                            if Last( branch.body.statements ).type <> "STAT_ASS_FVAR" or Last( branch.body.statements ).func_id <> tree.id or Last( branch.body.statements ).name <> name then
+                                
+                                ErrorWithFuncLocation( "Not all if branches end with the assignment to the same local variable. This is not supported." );
+                                
+                            fi;
+                            
+                            Add( case_expression.branches, rec(
+                                type := "CASE_BRANCH",
+                                condition := branch.condition,
+                                value := Last( branch.body.statements ).rhs,
+                            ) );
+                            
+                        od;
+                        
+                        case_expression.branches := AsSyntaxTreeList( case_expression.branches );
+                        
+                        add_binding( name, case_expression );
+                        
+                    else
+                        
+                        ErrorWithFuncLocation( "statement type ", Last( statement.branches.1.body.statements ).type, " is not supported by CompilerForCAP" );
+                        
+                    fi;
+                    
+                else
+                    
+                    ErrorWithFuncLocation( "statement type ", statement.type, " is not supported by CompilerForCAP" );
+                    
+                fi;
+                
+            od;
+            
+            # check that at least a binding for RETURN_VALUE was added
+            Assert( 0, "RETURN_VALUE" in bindings.names );
+            Assert( 0, IsSubset( tree.nams, bindings.names ) );
+            
+            tree.type := "EXPR_DECLARATIVE_FUNC";
+            Unbind( tree.stats );
+            Unbind( tree.nloc );
+            tree.bindings := bindings;
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
     additional_arguments_func := function ( tree, key, additional_arguments )
       local path, func_stack;
         
@@ -378,7 +636,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
         
     end;
     
-    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [ [ ], [ ] ] );
+    return CapJitIterateOverTree( tree, pre_func, result_func, additional_arguments_func, [ [ ], [ ] ] );
     
 end );
 
@@ -394,7 +652,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
         
     fi;
     
-    if tree.type <> "EXPR_FUNC" then
+    if tree.type <> "EXPR_DECLARATIVE_FUNC" then
         
         Error( "The syntax tree is not of type EXPR_FUNC. However, if you type 'return;', it will be wrapped in a dummy function." );
         
@@ -434,7 +692,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
     seen_function_ids := [ ];
     
     pre_func := function ( tree, additional_arguments )
-      local path, func_stack, statements, first_six_statements, new_statements, func_pos, level;
+      local path, func_stack, func, statements, binding_names, processed_binding_names, used_by_paths, pre_func, additional_arguments_func, name_of_immediate_child, name, value, pos_RETURN_VALUE, first_six_statements, new_statements, func_pos, level, branch;
         
         path := additional_arguments[1];
         func_stack := additional_arguments[2];
@@ -460,7 +718,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
         else
             
             # check that function IDs are unique (except dummy ID -1)
-            if tree.type = "EXPR_FUNC" and tree.id <> -1 then
+            if tree.type = "EXPR_DECLARATIVE_FUNC" and tree.id <> -1 then
                 
                 if tree.id in seen_function_ids then
                     
@@ -472,8 +730,206 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                     
                 fi;
                 
+                func := tree;
+                
+                Assert( 0, IsSubset( func.nams, func.bindings.names ) );
+                
+                statements := [ ];
+                
+                binding_names := func.bindings.names;
+                
+                processed_binding_names := [ ];
+                
+                used_by_paths := rec( );
+                
+                for name in func.nams do
+                    
+                    used_by_paths.(name) := [ ];
+                    
+                od;
+                
+                pre_func := function ( tree, path )
+                    
+                    if tree.type = "EXPR_REF_FVAR" and tree.func_id = func.id then
+                        
+                        Assert( 0, tree.name in func.nams );
+                        
+                        Add( used_by_paths.(tree.name), path );
+                        
+                    fi;
+                    
+                    return tree;
+                    
+                end;
+                
+                additional_arguments_func := function ( tree, key, path )
+                    
+                    return Concatenation( path, [ key ] );
+                    
+                end;
+                
+                CapJitIterateOverTree( func.bindings, pre_func, ReturnTrue, additional_arguments_func, [ ] );
+                
+                Assert( 0, IsEmpty( used_by_paths.RETURN_VALUE ) );
+                
+                # CAUTION: this has a side effect
+                binding_names := Filtered( binding_names, function ( name )
+                  local value, paths, path1, used_by_name, used_by_value, branch_number;
+                    
+                    value := CapJitValueOfBinding( func.bindings, name );
+                    
+                    # for each binding A not of type EXPR_CASE which is used in a binding B of EXPR_CASE:
+                    # check if A is used solely in a single branch of B
+                    # if yes: add A as a subbinding of this branch of B, i.e. the STAT_ASS_FVAR corresponding to A should be placed inside the branch
+                    if value.type <> "EXPR_CASE" and not IsEmpty( used_by_paths.(name) ) then
+                        
+                        paths := used_by_paths.(name);
+                        path1 := paths[1];
+                        
+                        Assert( 0, StartsWith( path1[1], "BINDING_" ) );
+                        
+                        # remove "BINDING_" from the start
+                        used_by_name := path1[1]{[ 9 .. Length( path1[1] ) ]};
+                        used_by_value := CapJitValueOfBinding( func.bindings, used_by_name );
+                        
+                        # if used_by_value.type = "EXPR_CASE", then each path is of the form [ BINDING_<binding_name>, "branches", <branch_number> ]
+                        # check if binding names and branch numbers coincide for all paths
+                        if used_by_value.type = "EXPR_CASE" and ForAll( paths, path -> path[1] = path1[1] and path[3] = path1[3] ) then
+                            
+                            branch_number := path1[3];
+                            
+                            if not IsBound( used_by_value.branches.(branch_number).subbinding_names ) then
+                                
+                                used_by_value.branches.(branch_number).subbinding_names := [ ];
+                                
+                            fi;
+                            
+                            Add( used_by_value.branches.(branch_number).subbinding_names, name );
+                            
+                            return false;
+                            
+                        fi;
+                        
+                    fi;
+                    
+                    return true;
+                    
+                end );
+                
+                name_of_immediate_child := function ( parents, children )
+                    
+                    # take last child because this better reflects what the user would expect
+                    # the sublist removes "BINDING_" from path[1]
+                    return Last( Filtered( children, child -> ForAll( used_by_paths.(child), path -> path[1]{[ 9 .. Length( path[1] ) ]} in parents ) ) );
+                    
+                end;
+                
+                while Length( binding_names ) > 0 do
+                    
+                    name := name_of_immediate_child( processed_binding_names, binding_names );
+                    
+                    if name = fail then
+                        
+                        Error( "The relation \"uses\" between bindings does not give rise to a partial order, i.e. a DAG. This is not supported." );
+                        
+                    fi;
+                    
+                    RemoveSet( binding_names, name );
+                    
+                    Add( processed_binding_names, name );
+                    
+                    # turning "RETURN_VALUE := ...;" into "return ...;" will be done below
+                    
+                    value := CapJitValueOfBinding( tree.bindings, name );
+                    
+                    if value.type = "EXPR_CASE" then
+                        
+                        for branch in value.branches do
+                            
+                            if IsBound( branch.subbinding_names ) then
+                                
+                                processed_binding_names := Concatenation( processed_binding_names, branch.subbinding_names );
+                                
+                            else
+                                
+                                branch.subbinding_names := [ ];
+                                
+                            fi;
+                            
+                        od;
+                        
+                        # prepend new statement
+                        Add( statements, rec(
+                            type := "STAT_IF_ELIF",
+                            branches := List( value.branches, branch -> rec(
+                                type := "BRANCH_IF",
+                                condition := branch.condition,
+                                body := rec(
+                                    type := "STAT_SEQ_STAT",
+                                    statements := AsSyntaxTreeList(
+                                        Concatenation(
+                                            List( branch.subbinding_names, subbinding_name ->
+                                                rec(
+                                                    type := "STAT_ASS_FVAR",
+                                                    func_id := func.id,
+                                                    name := subbinding_name,
+                                                    rhs := CapJitValueOfBinding( func.bindings, subbinding_name ),
+                                                )
+                                            ),
+                                            [ rec(
+                                                type := "STAT_ASS_FVAR",
+                                                func_id := func.id,
+                                                name := name,
+                                                rhs := branch.value,
+                                            ) ]
+                                        )
+                                    ),
+                                ),
+                            ) ),
+                        ), 1 );
+                        
+                    else
+                        
+                        # prepend new statement
+                        Add( statements, rec(
+                            type := "STAT_ASS_FVAR",
+                            func_id := func.id,
+                            name := name,
+                            rhs := value,
+                        ), 1 );
+                        
+                    fi;
+                    
+                od;
+                
+                # Recall: tree = func
+                tree.type := "EXPR_FUNC";
+                Unbind( tree.bindings );
+                tree.stats := rec(
+                    type := "STAT_SEQ_STAT",
+                    statements := AsSyntaxTreeList( statements ),
+                );
+                
+                pos_RETURN_VALUE := Position( tree.nams, "RETURN_VALUE" );
+                
+                Assert( 0, pos_RETURN_VALUE <> fail );
+                
+                Remove( tree.nams, pos_RETURN_VALUE );
+                
                 # append position of function in stack to nams for unique names (the function is not yet on the stack at this point, so we have to add 1)
                 tree.nams := List( tree.nams, name -> Concatenation( name, "_", String( Length( func_stack ) + 1 ) ) );
+                
+                tree.nloc := Length( tree.nams ) - tree.narg;
+                
+            fi;
+            
+            if tree.type = "STAT_ASS_FVAR" and tree.name = "RETURN_VALUE" then
+                
+                tree.type := "STAT_RETURN_OBJ";
+                tree.obj := tree.rhs;
+                Unbind( tree.func_id );
+                Unbind( tree.name );
+                Unbind( tree.rhs );
                 
             fi;
             
@@ -619,7 +1075,6 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                         "However, if you type 'return;', the name will be added for debugging purposes (this might lead to unexpected results for variadic functions)." );
                     
                     Add( func_stack[func_pos].nams, tree.name );
-                    func_stack[func_pos].nloc := func_stack[func_pos].nloc + 1;
                     
                 fi;
                 
@@ -644,70 +1099,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
             fi;
             
-            # convert EXPR_CONDITIONAL back into if/else
-            
-            # EXPR_CONDITIONAL as obj of STAT_RETURN_OBJ
-            if tree.type = "STAT_RETURN_OBJ" and tree.obj.type = "EXPR_CONDITIONAL" then
-                
-                tree := rec(
-                    type := "STAT_IF_ELSE",
-                    branches := AsSyntaxTreeList( [
-                        rec(
-                            type := "BRANCH_IF",
-                            condition := tree.obj.condition,
-                            body := rec(
-                                type := "STAT_RETURN_OBJ",
-                                obj := tree.obj.expr_if_true,
-                            ),
-                        ),
-                        rec(
-                            type := "BRANCH_IF",
-                            condition := rec(
-                                type := "EXPR_TRUE",
-                            ),
-                            body := rec(
-                                type := "STAT_RETURN_OBJ",
-                                obj := tree.obj.expr_if_false,
-                            ),
-                        ),
-                    ] ),
-                );
-                
-            fi;
-            
-            # EXPR_CONDITIONAL as rhs of STAT_ASS_LVAR
-            if tree.type = "STAT_ASS_LVAR" and tree.rhs.type = "EXPR_CONDITIONAL" then
-                
-                tree := rec(
-                    type := "STAT_IF_ELSE",
-                    branches := AsSyntaxTreeList( [
-                        rec(
-                            type := "BRANCH_IF",
-                            condition := tree.rhs.condition,
-                            body := rec(
-                                type := "STAT_ASS_LVAR",
-                                lvar := tree.lvar,
-                                rhs := tree.rhs.expr_if_true,
-                            ),
-                        ),
-                        rec(
-                            type := "BRANCH_IF",
-                            condition := rec(
-                                type := "EXPR_TRUE",
-                            ),
-                            body := rec(
-                                type := "STAT_ASS_LVAR",
-                                lvar := tree.lvar,
-                                rhs := tree.rhs.expr_if_false,
-                            ),
-                        ),
-                    ] ),
-                );
-                
-            fi;
-            
-            # EXPR_CONDITIONAL without suitable context
-            if tree.type = "EXPR_CONDITIONAL" then
+            if tree.type = "EXPR_CASE" then
                 
                 tree := rec(
                     type := "EXPR_FUNCCALL_0ARGS",
@@ -723,27 +1115,15 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                             type := "STAT_SEQ_STAT",
                             statements := AsSyntaxTreeList( [
                                 rec(
-                                    type := "STAT_IF_ELSE",
-                                    branches := AsSyntaxTreeList( [
-                                        rec(
-                                            type := "BRANCH_IF",
-                                            condition := tree.condition,
-                                            body := rec(
-                                                type := "STAT_RETURN_OBJ",
-                                                obj := tree.expr_if_true,
-                                            ),
+                                    type := "STAT_IF_ELIF",
+                                    branches := List( tree.branches, branch -> rec(
+                                        type := "BRANCH_IF",
+                                        condition := branch.condition,
+                                        body := rec(
+                                            type := "STAT_RETURN_OBJ",
+                                            obj := branch.value,
                                         ),
-                                        rec(
-                                            type := "BRANCH_IF",
-                                            condition := rec(
-                                                type := "EXPR_TRUE",
-                                            ),
-                                            body := rec(
-                                                type := "STAT_RETURN_OBJ",
-                                                obj := tree.expr_if_false,
-                                            ),
-                                        ),
-                                    ] ),
+                                    ) ),
                                 ),
                             ] ),
                         ),
@@ -766,7 +1146,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
         
         path := Concatenation( path, [ key ] );
         
-        if IsRecord( tree ) and tree.type = "EXPR_FUNC" then
+        if IsRecord( tree ) and tree.type in [ "EXPR_FUNC", "EXPR_DECLARATIVE_FUNC" ] then
             
             Assert( 0, IsBound( tree.id ) );
             

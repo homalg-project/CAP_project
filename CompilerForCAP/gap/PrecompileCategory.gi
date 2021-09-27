@@ -490,7 +490,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
             compiled_tree.id,
             compiled_tree.id,
             compiled_tree.nams,
-            Concatenation( current_rec.input_arguments_names, compiled_tree.nams{[ compiled_tree.narg + 1 .. compiled_tree.narg + compiled_tree.nloc ]} )
+            Concatenation( current_rec.input_arguments_names, compiled_tree.nams{[ compiled_tree.narg + 1 .. Length( compiled_tree.nams ) ]} )
         );
         
         compiled_func := ENHANCED_SYNTAX_TREE_CODE( compiled_tree );

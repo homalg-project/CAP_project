@@ -44,140 +44,74 @@ InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function ( tree )
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Drop handled edge cases." );
     
-    handled_edge_cases := [ ];
-
-    pre_func := function ( tree, path )
-      local statements, statement, branches, branch, if_path, i, j;
-        
-        if tree.type = "EXPR_FUNC" then
-            
-            statements := tree.stats.statements;
-            
-            for i in [ 1 .. statements.length ] do
-                
-                statement := statements.(i);
-                
-                if StartsWith( statement.type, "STAT_IF" ) then
-                    
-                    branches := statement.branches;
-                    
-                    for j in [ 1 .. branches.length ] do
-                        
-                        branch := branches.(j);
-                        
-                        if branch.body.statements.length > 0 and Last( branch.body.statements ).type = "STAT_RETURN_OBJ" then
-                            
-                            # we are in the main sequence of statements of a function => we are not inside of a loop
-                            # and this branch ends with a return statement
-                            # => we can only reach the remaining branches if the condition of this branch does not match
-                            if_path := Concatenation( path, [ "stats", "statements", String( i ) ] );
-                            Add( handled_edge_cases, rec( if_path := if_path, key := String( j ), condition := branch.condition ) );
-                            
-                        fi;
-                        
-                    od;
-                    
-                fi;
-                
-            od;
-            
-        fi;
-            
-        return tree;
-        
-    end;
+    tree := StructuralCopy( tree );
     
-    result_func := function ( tree, result, keys, path )
-      local statements, i, statement, positions, key;
+    handled_edge_cases := [ ];
+    
+    pre_func := function ( tree, additional_arguments )
+      local branches, handled_conditions, new_branches, pre_func, i;
         
-        tree := ShallowCopy( tree );
-        
-        for key in keys do
+        if tree.type = "EXPR_CASE" then
             
-            tree.(key) := result.(key);
+            branches := tree.branches;
             
-        od;
-        
-        if tree.type = "STAT_SEQ_STAT" then
+            handled_conditions := [ branches.1.condition ];
             
-            tree.statements := Filtered( tree.statements, s -> s.type <> "STAT_EMPTY" );
+            new_branches := [ branches.1 ];
             
-            statements := tree.statements;
-            
-            i := 1;
-            
-            while i <= statements.length do
+            for i in [ 2 .. branches.length ] do
                 
-                statement := statements.(i);
-                
-                if statement.type = "STAT_SEQ_STAT" then
+                # check if the whole branch is already handled, if yes: skip
+                if ForAny( handled_conditions, handled_condition -> CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION( branches.(i).condition, handled_condition ) = true ) then
                     
-                    statements := ConcatenationForSyntaxTreeLists( Sublist( statements, [ 1 .. i - 1 ] ), statement.statements, Sublist( statements, [ i + 1 .. statements.length ] ) );
-                    
-                else
-                    
-                    i := i + 1;
+                    continue;
                     
                 fi;
                 
-            od;
-            
-            tree.statements := statements;
-            
-        elif StartsWith( tree.type, "STAT_IF" ) then
-            
-            positions := Filtered( [ 1 .. tree.branches.length ], function ( j )
-              local branch, key, handled_edge_case;
-                
-                branch := tree.branches.(j);
-                
-                for handled_edge_case in handled_edge_cases do
+                # for every EXPR_CASE in the value of this branch, drop handled conditions
+                pre_func := function ( tree, additional_arguments )
                     
-                    if PositionSublist( path, handled_edge_case.if_path ) = 1 then
+                    if tree.type = "EXPR_CASE" then
                         
-                        if Length( path ) > Length( handled_edge_case.if_path ) then
+                        tree := ShallowCopy( tree );
+                        
+                        tree.branches := Filtered( tree.branches, branch -> not ForAny( handled_conditions, handled_condition -> CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION( branch.condition, handled_condition ) = true ) );
+                        
+                        if tree.branches.length = 0 then
                             
-                            # next entry of path is "branches", then the key
-                            key := path[Length( handled_edge_case.if_path ) + 2];
-                            
-                        else
-                            
-                            key := String( j );
+                            Error( "No branches remain, this should never happen." );
                             
                         fi;
                         
-                        Assert( 0, IsString( key ) );
-                        
-                        if Int( key ) > Int( handled_edge_case.key ) and CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION( branch.condition, handled_edge_case.condition ) = true then
+                        # normalize
+                        if tree.branches.length = 1 and tree.branches.1.condition.type = "EXPR_TRUE" then
                             
-                            Info( InfoCapJit, 1, "####" );
-                            Info( InfoCapJit, 1, "Dropped edge case." );
-                            
-                            return false;
+                            tree := tree.branches.1.value;
                             
                         fi;
                         
                     fi;
                     
-                od;
+                    return tree;
+                    
+                end;
                 
-                return true;
+                Add( new_branches, rec(
+                    type := "CASE_BRANCH",
+                    condition := branches.(i).condition,
+                    value := CapJitIterateOverTree( branches.(i).value, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true ),
+                ) );
                 
-            end );
+                Add( handled_conditions, branches.(i).condition );
+                
+            od;
             
-            if Length( positions ) = 0 then
-                
-                return rec( type := "STAT_EMPTY" );
-                
-            else
-                
-                tree.branches := Sublist( tree.branches, positions );
-                
-            fi;
+            tree.branches := AsSyntaxTreeList( new_branches );
             
+            # normalize
             if tree.branches.length = 1 and tree.branches.1.condition.type = "EXPR_TRUE" then
                 
-                return tree.branches.1.body;
+                tree := tree.branches.1.value;
                 
             fi;
             
@@ -186,13 +120,7 @@ InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function ( tree )
         return tree;
         
     end;
-
-    additional_arguments_func := function ( tree, key, path )
-        
-        return Concatenation( path, [ key ] );
-        
-    end;
-  
-    return CapJitIterateOverTree( tree, pre_func, result_func, additional_arguments_func, [ ] );
-
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    
 end );

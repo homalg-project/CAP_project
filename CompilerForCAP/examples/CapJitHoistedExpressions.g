@@ -162,7 +162,6 @@ func := function( x )
     if x < 0 then return 0; else return y -> [ x + 1, z -> y + 1 ]; fi; end;;
 
 tree := ENHANCED_SYNTAX_TREE( func );;
-tree := CapJitDetectedTernaryConditionalExpressions( tree );;
 tree := CapJitHoistedExpressions( tree );;
 compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
 Display( compiled_func );
@@ -187,7 +186,6 @@ func := function( x )
     if x < 0 then return y -> [ x + 1, z -> y + 1 ]; else return 0; fi; end;;
 
 tree := ENHANCED_SYNTAX_TREE( func );;
-tree := CapJitDetectedTernaryConditionalExpressions( tree );;
 tree := CapJitHoistedExpressions( tree );;
 compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
 Display( compiled_func );
@@ -212,7 +210,6 @@ func := function( x )
   if x < 0 then return y -> [ y, x+1 ]; else return y -> [ y, x+1 ]; fi; end;;
 
 tree := ENHANCED_SYNTAX_TREE( func );;
-tree := CapJitDetectedTernaryConditionalExpressions( tree );;
 tree := CapJitHoistedExpressions( tree );;
 compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
 Display( compiled_func );

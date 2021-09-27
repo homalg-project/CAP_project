@@ -13,8 +13,7 @@ func1 := function( x )
     if x = 1 then return 1; else return 2; fi; end;;
 
 tree1 := ENHANCED_SYNTAX_TREE( func1 );;
-tree1 := CapJitDetectedTernaryConditionalExpressions( tree1 );;
-tree1.stats.statements.1.obj.type = "EXPR_CONDITIONAL";
+tree1.bindings.BINDING_RETURN_VALUE.type = "EXPR_CASE";
 #! true
 
 coded_func1 := ENHANCED_SYNTAX_TREE_CODE( tree1 );;
@@ -24,42 +23,50 @@ String( func1 ) = ReplacedString( String( coded_func1 ), "_1", "" );
 
 
 tree2 := rec(
-    type := "EXPR_FUNC",
+    type := "EXPR_DECLARATIVE_FUNC",
     id := 1,
-    nams := [ ],
+    nams := [ "RETURN_VALUE" ],
     narg := 0,
-    nloc := 0,
+    nloc := 1,
     variadic := false,
-    stats := rec(
-        type := "STAT_SEQ_STAT",
-        statements := AsSyntaxTreeList( [
-            rec(
-                type := "STAT_RETURN_OBJ",
-                obj := rec(
-                    type := "EXPR_FUNCCALL",
-                    funcref := rec(
-                        type := "EXPR_REF_GVAR",
-                        gvar := "MY_ID_FUNC",
-                    ),
-                    args := AsSyntaxTreeList( [
+    bindings := rec(
+        type := "FVAR_BINDING_SEQ",
+        length := 1,
+        names := [ "RETURN_VALUE" ],
+        BINDING_RETURN_VALUE := rec(
+            type := "EXPR_FUNCCALL",
+            funcref := rec(
+                type := "EXPR_REF_GVAR",
+                gvar := "MY_ID_FUNC",
+            ),
+            args := AsSyntaxTreeList( [
+                rec(
+                    type := "EXPR_CASE",
+                    branches := AsSyntaxTreeList( [
                         rec(
-                            type := "EXPR_CONDITIONAL",
+                            type := "CASE_BRANCH",
                             condition := rec(
                                 type := "EXPR_FALSE",
                             ),
-                            expr_if_true := rec(
+                            value := rec(
                                 type := "EXPR_INT",
                                 value := 1,
                             ),
-                            expr_if_false := rec(
+                        ),
+                        rec(
+                            type := "CASE_BRANCH",
+                            condition := rec(
+                                type := "EXPR_TRUE",
+                            ),
+                            value := rec(
                                 type := "EXPR_INT",
                                 value := 2,
                             ),
                         ),
                     ] ),
                 ),
-            ),
-        ] ),
+            ] ),
+        ),
     ),
 );;
 
