@@ -732,6 +732,8 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 func := tree;
                 
+                Assert( 0, "RETURN_VALUE" in func.nams );
+                
                 Assert( 0, IsSubset( func.nams, func.bindings.names ) );
                 
                 statements := [ ];

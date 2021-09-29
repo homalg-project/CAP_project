@@ -119,7 +119,7 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
                     
                     name := NameFunction( value );
                     
-                    if name in NamesGVars( ) and IsIdenticalObj( value, ValueGlobal( name ) ) then
+                    if IsBoundGlobal( name ) and IsIdenticalObj( value, ValueGlobal( name ) ) then
                         
                         tree := rec(
                             type := "EXPR_REF_GVAR",

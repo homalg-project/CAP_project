@@ -7,6 +7,10 @@
 LoadPackage( "CompilerForCAP" );
 #! true
 
+# make tests deteministic
+original_func_id := CAP_JIT_INTERNAL_FUNCTION_ID;;
+CAP_JIT_INTERNAL_FUNCTION_ID := 1;;
+
 # we have to work hard to not write semicolons so AutoDoc
 # does not begin a new statement
 func := EvalString( ReplacedString( """function( x )
@@ -216,5 +220,7 @@ CapJitPrettyPrintSyntaxTree( tree );
 #!               value := rec(
 #!                   0_type := "EXPR_INT",
 #!                   1_value := 2 ) ) ] ) )
+
+CAP_JIT_INTERNAL_FUNCTION_ID := original_func_id;;
 
 #! @EndExample

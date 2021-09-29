@@ -3,10 +3,18 @@
 #
 # Implementations
 #
-InstallGlobalFunction( CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID, function ( tree, source_func_id, target_func_id, old_nams, new_nams )
-  local result_func, additional_arguments_func;
+InstallGlobalFunction( CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID, function ( tree, new_func_id, new_nams )
+  local old_func_id, old_nams, result_func;
+    
+    Assert( 0, tree.type = "EXPR_DECLARATIVE_FUNC" );
+    
+    old_func_id := tree.id;
+    old_nams := tree.nams;
     
     Assert( 0, Length( new_nams ) >= Length( old_nams ) );
+    Assert( 0, "RETURN_VALUE" in old_nams );
+    # if RETURN_VALUE in new_nams: check that it has the same position as in old_nams
+    Assert( 0, not "RETURN_VALUE" in new_nams or Position( new_nams, "RETURN_VALUE" ) = Position( old_nams, "RETURN_VALUE" ) );
     
     tree := StructuralCopy( tree );
     
@@ -19,12 +27,13 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID, function ( tree,
             
         od;
         
-        if tree.type = "EXPR_DECLARATIVE_FUNC" and tree.id = source_func_id then
+        if tree.type = "EXPR_DECLARATIVE_FUNC" and tree.id = old_func_id then
             
             Assert( 0, tree.nams = old_nams );
             
-            tree.id := target_func_id;
-            tree.nams := new_nams;
+            tree.id := new_func_id;
+            # copy new_nams so the pointer does not leak
+            tree.nams := StructuralCopy( new_nams );
             
             new_bindings := rec(
                 type := "FVAR_BINDING_SEQ",
@@ -43,9 +52,9 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID, function ( tree,
             
         fi;
         
-        if tree.type = "EXPR_REF_FVAR" and tree.func_id = source_func_id then
+        if tree.type = "EXPR_REF_FVAR" and tree.func_id = old_func_id then
             
-            tree.func_id := target_func_id;
+            tree.func_id := new_func_id;
             
             Assert( 0, tree.name in old_nams );
             
@@ -95,7 +104,7 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
             Assert( 0, IsDuplicateFreeList( new_nams ) );
             
             # prepare function for inlining
-            inline_func := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( inline_func, inline_func.id, target_func.id, inline_func.nams, new_nams );
+            inline_func := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( inline_func, target_func.id, new_nams );
             
             # copy bindings from inline_func to target_func
             for name in inline_func.bindings.names do
