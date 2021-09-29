@@ -96,8 +96,8 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
             Info( InfoCapJit, 1, "Inline function with the following arguments:" );
             Info( InfoCapJit, 1, inline_func.nams );
             
-            # create new local variables and make them unique by prepending an integer
-            new_nams := List( [ 1 .. Length( inline_func.nams ) ], i -> Concatenation( "inline_", String( Length( target_func.nams ) + i ), "_", inline_func.nams[i] ) );
+            # create new local variables and make them unique by prepending the function ID
+            new_nams := List( inline_func.nams, name -> Concatenation( "inline_", String( inline_func.id ), "_", name ) );
             pos_RETURN_VALUE := Position( inline_func.nams, "RETURN_VALUE" );
             Assert( 0, pos_RETURN_VALUE <> fail );
             
