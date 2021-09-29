@@ -692,7 +692,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
     seen_function_ids := [ ];
     
     pre_func := function ( tree, additional_arguments )
-      local path, func_stack, func, statements, binding_names, processed_binding_names, used_by_paths, pre_func, additional_arguments_func, name_of_immediate_child, name, value, pos_RETURN_VALUE, first_six_statements, new_statements, func_pos, level, branch;
+      local path, func_stack, func, statements, used_by_paths, pre_func, additional_arguments_func, name_of_immediate_child, binding_names, ordered_binding_names, name, value, pos_RETURN_VALUE, first_six_statements, new_statements, func_pos, level, branch;
         
         path := additional_arguments[1];
         func_stack := additional_arguments[2];
@@ -738,9 +738,10 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 statements := [ ];
                 
-                binding_names := func.bindings.names;
-                
-                processed_binding_names := [ ];
+                # Order bindings by the relation "is used by" and store the result in <ordered_binding_names>.
+                # <name_of_immediate_child> chooses a name in <children> which is only used by the bindings with names in <parents>, i.e. an "immediate" child of <parents>
+                # and is applied iteratively to the already ordered bindings and the not yet ordered bindings.
+                # We always have a starting point because "RETURN_VALUE" must not be used explicitly.
                 
                 used_by_paths := rec( );
                 
@@ -774,15 +775,44 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 Assert( 0, IsEmpty( used_by_paths.RETURN_VALUE ) );
                 
-                # CAUTION: this has a side effect
-                binding_names := Filtered( binding_names, function ( name )
-                  local value, paths, path1, used_by_name, used_by_value, branch_number;
+                name_of_immediate_child := function ( parents, children )
+                    
+                    # take last child because this better reflects what the user would expect
+                    # the sublist removes "BINDING_" from path[1]
+                    return Last( Filtered( children, child -> ForAll( used_by_paths.(child), path -> path[1]{[ 9 .. Length( path[1] ) ]} in parents ) ) );
+                    
+                end;
+                
+                # is modified below
+                binding_names := ShallowCopy( func.bindings.names );
+                
+                ordered_binding_names := [ ];
+                
+                while Length( binding_names ) > 0 do
+                    
+                    name := name_of_immediate_child( ordered_binding_names, binding_names );
+                    
+                    if name = fail then
+                        
+                        Error( "The relation \"is used by\" between bindings does not give rise to a partial order, i.e. a DAG. This is not supported." );
+                        
+                    fi;
+                    
+                    RemoveSet( binding_names, name );
+                    
+                    Add( ordered_binding_names, name );
+                    
+                od;
+                
+                # for each binding A not of type EXPR_CASE which is used in a binding B of EXPR_CASE:
+                # check if A is used solely in a single branch of B
+                # if yes: add A as a subbinding of this branch of B, i.e. the STAT_ASS_FVAR corresponding to A should be placed inside the branch
+                # and remove it from <ordered_binding_names> because it will be handled separately
+                ordered_binding_names := Filtered( ordered_binding_names, function ( name )
+                  local value, paths, path1, used_by_name, used_by_value, branch_number, key, i;
                     
                     value := CapJitValueOfBinding( func.bindings, name );
                     
-                    # for each binding A not of type EXPR_CASE which is used in a binding B of EXPR_CASE:
-                    # check if A is used solely in a single branch of B
-                    # if yes: add A as a subbinding of this branch of B, i.e. the STAT_ASS_FVAR corresponding to A should be placed inside the branch
                     if value.type <> "EXPR_CASE" and not IsEmpty( used_by_paths.(name) ) then
                         
                         paths := used_by_paths.(name);
@@ -806,7 +836,24 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                                 
                             fi;
                             
-                            Add( used_by_value.branches.(branch_number).subbinding_names, name );
+                            # prepend name because we work from the back to the front
+                            Add( used_by_value.branches.(branch_number).subbinding_names, name, 1 );
+                            
+                            # for A and B as above: replace path to A by path to B
+                            for key in func.nams do
+                                
+                                for i in [ 1 .. Length( used_by_paths.(key) ) ] do
+                                    
+                                    if used_by_paths.(key)[i][1] = Concatenation( "BINDING_", name ) then
+                                        
+                                        # we are only interested in the first 4 keys anyway, see above
+                                        used_by_paths.(key)[i] := path1{[ 1 .. 4 ]};
+                                        
+                                    fi;
+                                    
+                                od;
+                                
+                            od;
                             
                             return false;
                             
@@ -818,27 +865,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                     
                 end );
                 
-                name_of_immediate_child := function ( parents, children )
-                    
-                    # take last child because this better reflects what the user would expect
-                    # the sublist removes "BINDING_" from path[1]
-                    return Last( Filtered( children, child -> ForAll( used_by_paths.(child), path -> path[1]{[ 9 .. Length( path[1] ) ]} in parents ) ) );
-                    
-                end;
-                
-                while Length( binding_names ) > 0 do
-                    
-                    name := name_of_immediate_child( processed_binding_names, binding_names );
-                    
-                    if name = fail then
-                        
-                        Error( "The relation \"uses\" between bindings does not give rise to a partial order, i.e. a DAG. This is not supported." );
-                        
-                    fi;
-                    
-                    RemoveSet( binding_names, name );
-                    
-                    Add( processed_binding_names, name );
+                for name in ordered_binding_names do
                     
                     # turning "RETURN_VALUE := ...;" into "return ...;" will be done below
                     
@@ -848,11 +875,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                         
                         for branch in value.branches do
                             
-                            if IsBound( branch.subbinding_names ) then
-                                
-                                processed_binding_names := Concatenation( processed_binding_names, branch.subbinding_names );
-                                
-                            else
+                            if not IsBound( branch.subbinding_names ) then
                                 
                                 branch.subbinding_names := [ ];
                                 

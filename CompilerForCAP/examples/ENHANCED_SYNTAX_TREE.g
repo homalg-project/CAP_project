@@ -14,7 +14,7 @@ CAP_JIT_INTERNAL_FUNCTION_ID := 1;;
 # we have to work hard to not write semicolons so AutoDoc
 # does not begin a new statement
 func := EvalString( ReplacedString( """function( x )
-  local a, b, c, d, e@
+  local a, b, c, d, e, f, g@
     
     a := 1@
     
@@ -48,7 +48,11 @@ func := EvalString( ReplacedString( """function( x )
         
     else
         
-        return d@
+        f := d@
+        
+        g := f@
+        
+        return g@
         
     fi@
     
@@ -59,12 +63,12 @@ CapJitPrettyPrintSyntaxTree( tree );
 #! rec(
 #!   0_type := "EXPR_DECLARATIVE_FUNC",
 #!   1_id := 1,
-#!   2_nams := [ "x", "a", "b", "c", "d", "e", "RETURN_VALUE" ],
+#!   2_nams := [ "x", "a", "b", "c", "d", "e", "f", "g", "RETURN_VALUE" ],
 #!   3_narg := 1,
 #!   4_variadic := false,
 #!   5_bindings := rec(
 #!       0_type := "FVAR_BINDING_SEQ",
-#!       1_names := [ "RETURN_VALUE", "a", "b", "c", "d", "e" ],
+#!       1_names := [ "RETURN_VALUE", "a", "b", "c", "d", "e", "f", "g" ],
 #!       2_bindings := [ rec(
 #!               name := "RETURN_VALUE",
 #!               value := rec(
@@ -104,7 +108,7 @@ CapJitPrettyPrintSyntaxTree( tree );
 #!                           2_value := rec(
 #!                               0_type := "EXPR_REF_FVAR",
 #!                               1_func_id := 1,
-#!                               2_name := "d" ) ) ] ) ), rec(
+#!                               2_name := "g" ) ) ] ) ), rec(
 #!               name := "a",
 #!               value := rec(
 #!                   0_type := "EXPR_INT",
@@ -160,7 +164,43 @@ CapJitPrettyPrintSyntaxTree( tree );
 #!               value := rec(
 #!                   0_type := "EXPR_REF_FVAR",
 #!                   1_func_id := 1,
-#!                   2_name := "c" ) ) ] ) )
+#!                   2_name := "c" ) ), rec(
+#!               name := "f",
+#!               value := rec(
+#!                   0_type := "EXPR_REF_FVAR",
+#!                   1_func_id := 1,
+#!                   2_name := "d" ) ), rec(
+#!               name := "g",
+#!               value := rec(
+#!                   0_type := "EXPR_REF_FVAR",
+#!                   1_func_id := 1,
+#!                   2_name := "f" ) ) ] ) )
+
+Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
+#! function ( x_1 )
+#!     local a_1, b_1, c_1, d_1, e_1, f_1, g_1;
+#!     a_1 := 1;
+#!     if x_1 < 0 then
+#!         c_1 := 3;
+#!     elif x_1 = 1 then
+#!         b_1 := 2;
+#!         c_1 := b_1;
+#!     else
+#!         c_1 := a_1;
+#!     fi;
+#!     if x_1 < 0 then
+#!         return a_1;
+#!     elif x_1 = 1 then
+#!         return c_1;
+#!     else
+#!         d_1 := a_1;
+#!         f_1 := d_1;
+#!         g_1 := f_1;
+#!         return g_1;
+#!     fi;
+#!     e_1 := c_1;
+#!     return;
+#! end
 
 func := EvalString( ReplacedString( """function( x )
   local y@
