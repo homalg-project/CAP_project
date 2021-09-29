@@ -794,9 +794,9 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                         used_by_name := path1[1]{[ 9 .. Length( path1[1] ) ]};
                         used_by_value := CapJitValueOfBinding( func.bindings, used_by_name );
                         
-                        # if used_by_value.type = "EXPR_CASE", then each path is of the form [ BINDING_<binding_name>, "branches", <branch_number> ]
-                        # check if binding names and branch numbers coincide for all paths
-                        if used_by_value.type = "EXPR_CASE" and ForAll( paths, path -> path[1] = path1[1] and path[3] = path1[3] ) then
+                        # if used_by_value.type = "EXPR_CASE", then each path is of the form [ BINDING_<binding_name>, "branches", <branch_number>, "condition"/"value" ]
+                        # check if binding names and branch numbers coincide for all paths, and if the variable is only used in the value
+                        if used_by_value.type = "EXPR_CASE" and ForAll( paths, path -> path[1] = path1[1] and path[3] = path1[3] and path[4] = "value" ) then
                             
                             branch_number := path1[3];
                             
