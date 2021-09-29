@@ -633,26 +633,22 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
         nr_cols := Length( ObjectList( Range( morphism ) ) );
         
-        if IsMatrixObj( MorphismMatrix( morphism ) ) then
-            
-            if not ( nr_rows = NrRows( MorphismMatrix( morphism ) ) and nr_cols = NrCols( MorphismMatrix( morphism ) ) ) then
-                
-                return false;
-                
-            fi;
-            
-        fi;
+        source_list := ObjectList( Source( morphism ) );
         
-        if not ForAll( [ 1 .. nr_rows ], i ->
+        range_list := ObjectList( Range( morphism ) );
+        
+        if IsMatrixObj( MorphismMatrix( morphism ) ) and not ( nr_rows = NrRows( MorphismMatrix( morphism ) ) and nr_cols = NrCols( MorphismMatrix( morphism ) ) ) then
+            
+            return false;
+            
+        elif not ForAll( [ 1 .. nr_rows ], i ->
                  ForAll( [ 1 .. nr_cols ], j ->
                    IsCapCategoryMorphism( morphism[i, j] ) )
                  ) then
             
             return false;
             
-        fi;
-        
-        if not ForAll( [ 1 .. nr_rows ], i ->
+        elif not ForAll( [ 1 .. nr_rows ], i ->
                  ForAll( [ 1 .. nr_cols ], j ->
                    IsIdenticalObj( UnderlyingCategory( cat ), CapCategory( morphism[i, j] ) )
                  ) 
@@ -660,13 +656,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
             
             return false;
             
-        fi;
-        
-        source_list := ObjectList( Source( morphism ) );
-        
-        range_list := ObjectList( Range( morphism ) );
-        
-        if not ForAll( [ 1 .. nr_rows ], i ->
+        elif not ForAll( [ 1 .. nr_rows ], i ->
                  ForAll( [ 1 .. nr_cols ], j ->
                    IsEqualForObjects( UnderlyingCategory( cat ), Source( morphism[i, j] ), source_list[i] ) and IsEqualForObjects( UnderlyingCategory( cat ), Range( morphism[i, j] ), range_list[j] )
                  )
@@ -713,23 +703,19 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
         nr_rows_2 := NrRows( morphism_2 );
         
-        if nr_rows_1 <> nr_rows_2 then
-            
-            return false;
-            
-        fi;
-        
         nr_cols_1 := NrCols( morphism_1 );
         
         nr_cols_2 := NrCols( morphism_2 );
         
-        if nr_cols_1 <> nr_cols_2 then
+        if nr_rows_1 <> nr_rows_2 then
+            
+            return false;
+        
+        elif nr_cols_1 <> nr_cols_2 then
             
             return false;
             
-        fi;
-        
-        if nr_rows_1 = 0 or nr_cols_1 = 0 then
+        elif nr_rows_1 = 0 or nr_cols_1 = 0 then
             
             return true;
             
