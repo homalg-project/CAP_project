@@ -608,6 +608,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
             tree.type := "EXPR_DECLARATIVE_FUNC";
             Unbind( tree.stats );
             Unbind( tree.nloc );
+            Unbind( tree.name );
             tree.bindings := bindings;
             
         fi;
