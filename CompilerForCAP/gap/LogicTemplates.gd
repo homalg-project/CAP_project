@@ -7,6 +7,8 @@
 
 #! @Section Logic
 
+DeclareGlobalFunction( "CAP_JIT_INTERNAL_ENHANCED_LOGIC_TEMPLATE" );
+
 DeclareGlobalFunction( "CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE" );
 
 #! @Description
@@ -68,3 +70,7 @@ DeclareGlobalFunction( "CapJitAddLogicTemplate" );
 #! @Returns a record
 #! @Arguments tree, jit_args
 DeclareGlobalFunction( "CapJitAppliedLogicTemplates" );
+
+# applies a single logic template
+# we do not make this an officially documented function because it requires an enhanced logic template
+DeclareGlobalFunction( "CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE" );

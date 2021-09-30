@@ -257,7 +257,7 @@ InstallGlobalFunction( CapJitCopyWithNewFunctionIDs, function ( tree )
         
         if tree.type = "EXPR_DECLARATIVE_FUNC" then
             
-            tree := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( tree, tree.id, CAP_JIT_INTERNAL_FUNCTION_ID, tree.nams, tree.nams );
+            tree := CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( tree, CAP_JIT_INTERNAL_FUNCTION_ID, tree.nams );
             CAP_JIT_INTERNAL_FUNCTION_ID := CAP_JIT_INTERNAL_FUNCTION_ID + 1;
             
         fi;
@@ -271,9 +271,6 @@ InstallGlobalFunction( CapJitCopyWithNewFunctionIDs, function ( tree )
 end );
 
 InstallGlobalFunction( CapJitIsEqualForEnhancedSyntaxTrees, function ( tree1, tree2 )
-    
-    # well be changed inplace
-    tree2 := StructuralCopy( tree2 );
     
     return CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree1, tree2 ) <> fail;
     
