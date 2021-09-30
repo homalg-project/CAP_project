@@ -5,6 +5,12 @@
 #
 BindGlobal( "CAP_JIT_LOGIC_TEMPLATES", [ ] );
 InstallGlobalFunction( CapJitAddLogicTemplate, function ( template )
+    
+    Add( CAP_JIT_LOGIC_TEMPLATES, CAP_JIT_INTERNAL_ENHANCED_LOGIC_TEMPLATE( template ) );
+    
+end );
+
+InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCED_LOGIC_TEMPLATE, function ( template )
   local template_var_name, tmp_tree, pre_func, additional_arguments_func, i;
     
     # we will modify the template below
@@ -182,7 +188,7 @@ InstallGlobalFunction( CapJitAddLogicTemplate, function ( template )
     
     template.dst_template_tree := CapJitIterateOverTree( template.dst_template_tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [ ] );
     
-    Add( CAP_JIT_LOGIC_TEMPLATES, template );
+    return template;
     
 end );
 
@@ -525,250 +531,210 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
 end );
 
 InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args )
-  local variable_filters, matching_info, condition_func, path, match, new_tree, parent, variables, func_id_replacements, variable_path, filter, result, value, pre_func, dst_tree, template, i;
+  local template;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Apply logic templates." );
     
-    tree := StructuralCopy( tree );
-    
     for template in CAP_JIT_LOGIC_TEMPLATES do
         
-        if IsBound( template.needed_packages ) then
+        tree := CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE( tree, template, jit_args );
+        
+    od;
+    
+    return tree;
+    
+end );
+
+InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree, template, jit_args )
+  local variable_filters, matching_info, condition_func, path, match, new_tree, parent, variables, func_id_replacements, variable_path, filter, result, value, pre_func, dst_tree, i;
+    
+    tree := StructuralCopy( tree );
+    
+    if IsBound( template.needed_packages ) then
+        
+        # check if all needed packages are loaded
+        if not ForAll( template.needed_packages, p -> IsPackageMarkedForLoading( p[1], p[2] ) ) then
             
-            # check if all needed packages are loaded
-            if not ForAll( template.needed_packages, p -> IsPackageMarkedForLoading( p[1], p[2] ) ) then
+            return tree;
+            
+        fi;
+        
+    fi;
+    
+    # replace strings with actual filters
+    # this cannot be done in CapJitAddLogicTemplate because the needed package might not have been loaded yet
+    variable_filters := List( template.variable_filters, function ( f )
+        
+        if IsString( f ) then
+            
+            return ValueGlobal( f );
+            
+        else
+            
+            return f;
+            
+        fi;
+        
+    end );
+    
+    while true do
+        
+        if IsBound( template.debug ) and template.debug then
+            
+            Display( "try to match template:" );
+            Display( template.src_template );
+            
+        fi;
+        
+        # will be modified inplace
+        matching_info := fail;
+        
+        condition_func := function ( tree, path )
+            
+            # check if we know that the template does not match
+            if IsBound( tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE ) and tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE then
+                
+                return false;
+                
+            fi;
+            
+            # check if we already have a match
+            if matching_info <> fail then
+                
+                return false;
+                
+            fi;
+            
+            matching_info := CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree, template.src_template_tree : debug := IsBound( template.debug_path ) and template.debug_path = path );
+            
+            if matching_info = fail then
+                
+                tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
+                
+            fi;
+            
+            return matching_info <> fail;
+            
+        end;
+        
+        path := CapJitFindNodeDeep( tree, condition_func );
+        
+        if path = fail then
+            
+            Assert( 0, matching_info = fail );
+            
+            if IsBound( template.debug ) and template.debug then
+                
+                Display( "could not find a match" );
+                
+            fi;
+            
+            # no further occurrences -> done
+            break;
+            
+        fi;
+        
+        if IsBound( template.debug ) and template.debug then
+            
+            Error( "found match" );
+            
+        fi;
+        
+        # not handled yet
+        Assert( 0, Length( path ) >= 1 );
+        
+        match := CapJitGetNodeByPath( tree, path );
+        
+        new_tree := StructuralCopy( tree );
+        parent := CapJitGetNodeByPath( new_tree, path{[ 1 .. Length( path ) - 1 ]} );
+        
+        variables := matching_info.variables;
+        func_id_replacements := matching_info.func_id_replacements;
+        
+        if not IsDenseList( variables ) or Length( variables ) <> Length( template.variable_names ) then
+            
+            Error( "matched wrong number of variables" );
+            
+        fi;
+        
+        # type check
+        for i in [ 1 .. Length( template.variable_names ) ] do
+            
+            variable_path := Concatenation( path, variables[i].path );
+            filter := variable_filters[i];
+            
+            if IsIdenticalObj( filter, IsObject ) then
                 
                 continue;
                 
             fi;
             
-        fi;
-        
-        # replace strings with actual filters
-        # this cannot be done in CapJitAddLogicTemplate because the needed package might not have been loaded yet
-        variable_filters := List( template.variable_filters, function ( f )
-            
-            if IsString( f ) then
+            if Length( jit_args ) <> tree.narg or tree.variadic then
                 
-                return ValueGlobal( f );
+                Info( InfoCapJit, 1, "####" );
+                Info( InfoCapJit, 1, "Logic template has variable filters but we are executing without jit args (or function is variadic)." );
                 
-            else
+                match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
                 
-                return f;
-                
-            fi;
-            
-        end );
-        
-        while true do
-            
-            if IsBound( template.debug ) and template.debug then
-                
-                Display( "try to match template:" );
-                Display( template.src_template );
-                
-            fi;
-            
-            # will be modified inplace
-            matching_info := fail;
-            
-            condition_func := function ( tree, path )
-                
-                # check if we know that the template does not match
-                if IsBound( tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE ) and tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE then
-                    
-                    return false;
-                    
-                fi;
-                
-                # check if we already have a match
-                if matching_info <> fail then
-                    
-                    return false;
-                    
-                fi;
-                
-                matching_info := CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree, template.src_template_tree : debug := IsBound( template.debug_path ) and template.debug_path = path );
-                
-                if matching_info = fail then
-                    
-                    tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
-                    
-                fi;
-                
-                return matching_info <> fail;
-                
-            end;
-            
-            path := CapJitFindNodeDeep( tree, condition_func );
-
-            if path = fail then
-                
-                Assert( 0, matching_info = fail );
-                
-                if IsBound( template.debug ) and template.debug then
-                    
-                    Display( "could not find a match" );
-                    
-                fi;
-            
-                # no further occurrences -> done
                 break;
                 
             fi;
             
-            if IsBound( template.debug ) and template.debug then
-                
-                Error( "found match" );
-                
-            fi;
+            result := CapJitGetExpressionValueFromJitArgs( tree, variable_path, jit_args );
             
-            # not handled yet
-            Assert( 0, Length( path ) >= 1 );
-            
-            match := CapJitGetNodeByPath( tree, path );
-            
-            new_tree := StructuralCopy( tree );
-            parent := CapJitGetNodeByPath( new_tree, path{[ 1 .. Length( path ) - 1 ]} );
-            
-            variables := matching_info.variables;
-            func_id_replacements := matching_info.func_id_replacements;
-            
-            if not IsDenseList( variables ) or Length( variables ) <> Length( template.variable_names ) then
-                
-                Error( "matched wrong number of variables" );
-                
-            fi;
-            
-            # type check
-            for i in [ 1 .. Length( template.variable_names ) ] do
-                
-                variable_path := Concatenation( path, variables[i].path );
-                filter := variable_filters[i];
-
-                if IsIdenticalObj( filter, IsObject ) then
-                    
-                    continue;
-                    
-                fi;
-                
-                if Length( jit_args ) <> tree.narg or tree.variadic then
-                    
-                    Info( InfoCapJit, 1, "####" );
-                    Info( InfoCapJit, 1, "Logic template has variable filters but we are executing without jit args (or function is variadic)." );
-                    
-                    match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
-                    
-                    break;
-                    
-                fi;
-                
-                result := CapJitGetExpressionValueFromJitArgs( tree, variable_path, jit_args );
-
-                if result[1] = false then
-                    
-                    match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
-                    
-                    break;
-                    
-                fi;
-
-                value := result[2];
-
-                if not filter( value ) then
-                    
-                    match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
-                    
-                    break;
-                    
-                fi;
-                
-            od;
-            
-            if IsBound( match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE ) and match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE then
-                
-                if IsBound( template.debug ) and template.debug then
-                    
-                    Error( "type check did not succeed" );
-                    
-                fi;
-                
-                continue;
-                
-            fi;
-            
-            # adjust function IDs and insert variables in dst_template_tree
-            pre_func := function ( tree, additional_arguments )
-              local var_number, new_tree, replacement;
-                
-                if tree.type = "EXPR_DECLARATIVE_FUNC" and IsBound( func_id_replacements[tree.id] ) then
-                    
-                    replacement := func_id_replacements[tree.id];
-                    
-                    return CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( tree, replacement.func_id, replacement.nams );
-                    
-                fi;
-                
-                if tree.type = "EXPR_REF_GVAR" and StartsWith( tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_" ) then
-                    
-                    var_number := Int( ReplacedString( tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_", "" ) );
-                    
-                    Assert( 0, var_number <> fail );
-                    
-                    # new function IDs will be set below
-                    return StructuralCopy( variables[var_number].tree );
-                    
-                fi;
-                
-                return tree;
-                
-            end;
-            
-            dst_tree := CapJitIterateOverTree( template.dst_template_tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
-            
-            # make sure we have new function IDs
-            dst_tree := CapJitCopyWithNewFunctionIDs( dst_tree );
-            
-            parent.(Last( path )) := dst_tree;
-            
-            # if new_tree is well-defined, take it
-            if not CapJitContainsRefToFVAROutsideOfFuncStack( new_tree ) then
-                
-                if IsBound( template.debug ) and template.debug then
-                    
-                    Error( "success, new_tree is well-defined" );
-                    
-                fi;
-                
-                tree := new_tree;
-                
-                Info( InfoCapJit, 1, "####" );
-                Info( InfoCapJit, 1, "Applied the following template:" );
-                Info( InfoCapJit, 1, template.src_template );
-                Info( InfoCapJit, 1, template.dst_template );
-            
-            else
-                
-                if IsBound( template.debug ) and template.debug then
-                    
-                    Error( "new_tree is not well-defined" );
-                    
-                fi;
+            if result[1] = false then
                 
                 match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
                 
+                break;
+                
             fi;
-
+            
+            value := result[2];
+            
+            if not filter( value ) then
+                
+                match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
+                
+                break;
+                
+            fi;
+            
         od;
         
-        # reset CAP_INTERNAL_JIT_NO_UNUSED_VARIABLES
-        pre_func := function ( tree, additional_arguments )
-          local level, pos;
+        if IsBound( match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE ) and match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE then
             
-            if IsBound( tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE ) then
+            if IsBound( template.debug ) and template.debug then
                 
-                Unbind( tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE );
+                Error( "type check did not succeed" );
+                
+            fi;
+            
+            continue;
+            
+        fi;
+        
+        # adjust function IDs and insert variables in dst_template_tree
+        pre_func := function ( tree, additional_arguments )
+          local var_number, new_tree, replacement;
+            
+            if tree.type = "EXPR_DECLARATIVE_FUNC" and IsBound( func_id_replacements[tree.id] ) then
+                
+                replacement := func_id_replacements[tree.id];
+                
+                return CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( tree, replacement.func_id, replacement.nams );
+                
+            fi;
+            
+            if tree.type = "EXPR_REF_GVAR" and StartsWith( tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_" ) then
+                
+                var_number := Int( ReplacedString( tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_", "" ) );
+                
+                Assert( 0, var_number <> fail );
+                
+                # new function IDs will be set below
+                return StructuralCopy( variables[var_number].tree );
                 
             fi;
             
@@ -776,9 +742,58 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args )
             
         end;
         
-        CapJitIterateOverTree( tree, pre_func, ReturnTrue, ReturnTrue, true );
+        dst_tree := CapJitIterateOverTree( template.dst_template_tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+        
+        # make sure we have new function IDs
+        dst_tree := CapJitCopyWithNewFunctionIDs( dst_tree );
+        
+        parent.(Last( path )) := dst_tree;
+        
+        # if new_tree is well-defined, take it
+        if not CapJitContainsRefToFVAROutsideOfFuncStack( new_tree ) then
+            
+            if IsBound( template.debug ) and template.debug then
+                
+                Error( "success, new_tree is well-defined" );
+                
+            fi;
+            
+            tree := new_tree;
+            
+            Info( InfoCapJit, 1, "####" );
+            Info( InfoCapJit, 1, "Applied the following template:" );
+            Info( InfoCapJit, 1, template.src_template );
+            Info( InfoCapJit, 1, template.dst_template );
+            
+        else
+            
+            if IsBound( template.debug ) and template.debug then
+                
+                Error( "new_tree is not well-defined" );
+                
+            fi;
+            
+            match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
+            
+        fi;
         
     od;
+    
+    # reset CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE
+    pre_func := function ( tree, additional_arguments )
+      local level, pos;
+        
+        if IsBound( tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE ) then
+            
+            Unbind( tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE );
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    CapJitIterateOverTree( tree, pre_func, ReturnTrue, ReturnTrue, true );
     
     return tree;
     
