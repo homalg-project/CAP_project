@@ -70,13 +70,14 @@ Display( SYNTAX_TREE_CODE( tree2 ) );
 KernelEmbedding( alpha );;
 Display( Last( vec!.compiled_functions.KernelEmbedding ) );
 #! function ( cat_1, morphism_1 )
-#!     local cap_jit_morphism_attribute_1;
-#!     cap_jit_morphism_attribute_1 
+#!     local cap_jit_morphism_attribute_1_1;
+#!     cap_jit_morphism_attribute_1_1 
 #!      := SyzygiesOfRows( UnderlyingMatrix( morphism_1 ) );
 #!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
 #!            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-#!              ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1 ) ), 
-#!        Source( morphism_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+#!              ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1_1 ) ), 
+#!        Source( morphism_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 
+#!        );
 #! end
 
 #! @EndExample

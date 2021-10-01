@@ -52,11 +52,11 @@ end
         
 ########
 function ( cat_1, alpha_1, T_1, tau_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := LeftDivide( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( tau_1 ) );
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := LeftDivide( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( tau_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1 ) ), Range( tau_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1_1 ) ), Range( tau_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -67,11 +67,11 @@ end
         
 ########
 function ( cat_1, alpha_1, T_1, tau_1, P_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := LeftDivide( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( tau_1 ) );
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := LeftDivide( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( tau_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1 ) ), Range( tau_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1_1 ) ), Range( tau_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -94,11 +94,11 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) );
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Range( alpha_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -109,11 +109,11 @@ end
         
 ########
 function ( cat_1, alpha_1, P_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) );
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Range( alpha_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -198,12 +198,12 @@ end
         
 ########
 function ( cat_1, alpha_1, beta_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := KroneckerMat( TransposedMatrix( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( beta_1 ) );
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := KroneckerMat( TransposedMatrix( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( beta_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -250,15 +250,15 @@ end
         
 ########
 function ( cat_1, objects_1, k_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := UnionOfColumns( HomalgZeroMatrix( Dimension( objects_1[k_1] ), Sum( objects_1{[ 1 .. k_1 - 1 ]}, function ( c_2 )
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := UnionOfColumns( HomalgZeroMatrix( Dimension( objects_1[k_1] ), Sum( objects_1{[ 1 .. k_1 - 1 ]}, function ( c_2 )
                 return Dimension( c_2 );
             end ), UnderlyingRing( cat_1 ) ), HomalgIdentityMatrix( Dimension( objects_1[k_1] ), UnderlyingRing( cat_1 ) ), HomalgZeroMatrix( Dimension( objects_1[k_1] ), Sum( objects_1{[ k_1 + 1 .. Length( objects_1 ) ]}, function ( c_2 )
                 return Dimension( c_2 );
             end ), UnderlyingRing( cat_1 ) ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, objects_1[k_1], ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -297,12 +297,12 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := ConvertMatrixToRow( UnderlyingMatrix( alpha_1 ) );
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := ConvertMatrixToRow( UnderlyingMatrix( alpha_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, 1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -313,12 +313,12 @@ end
         
 ########
 function ( cat_1, source_1, alpha_1, range_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := ConvertMatrixToRow( UnderlyingMatrix( alpha_1 ) );
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := ConvertMatrixToRow( UnderlyingMatrix( alpha_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, 1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -632,11 +632,11 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) );
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1 ) ), Source( alpha_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1_1 ) ), Source( alpha_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -647,11 +647,11 @@ end
         
 ########
 function ( cat_1, alpha_1, P_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) );
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1 ) ), Source( alpha_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1_1 ) ), Source( alpha_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -662,11 +662,11 @@ end
         
 ########
 function ( cat_1, alpha_1, T_1, tau_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := RightDivide( UnderlyingMatrix( tau_1 ), SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) );
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := RightDivide( UnderlyingMatrix( tau_1 ), SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Source( tau_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -677,11 +677,11 @@ end
         
 ########
 function ( cat_1, alpha_1, T_1, tau_1, P_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := RightDivide( UnderlyingMatrix( tau_1 ), SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) );
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := RightDivide( UnderlyingMatrix( tau_1 ), SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Source( tau_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -752,11 +752,11 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := HomalgZeroMatrix( NumberRows( UnderlyingMatrix( alpha_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ), Dimension( Range( alpha_1 ) ), UnderlyingRing( cat_1 ) );
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := HomalgZeroMatrix( NumberRows( UnderlyingMatrix( alpha_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ), Dimension( Range( alpha_1 ) ), UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1 ) ), Range( alpha_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1_1 ) ), Range( alpha_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -767,11 +767,11 @@ end
         
 ########
 function ( cat_1, alpha_1, P_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := HomalgZeroMatrix( NumberRows( UnderlyingMatrix( alpha_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ), Dimension( Range( alpha_1 ) ), UnderlyingRing( cat_1 ) );
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := HomalgZeroMatrix( NumberRows( UnderlyingMatrix( alpha_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ), Dimension( Range( alpha_1 ) ), UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1 ) ), Range( alpha_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1_1 ) ), Range( alpha_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -782,11 +782,11 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := HomalgZeroMatrix( Dimension( Source( alpha_1 ) ), NumberColumns( UnderlyingMatrix( alpha_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ), UnderlyingRing( cat_1 ) );
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := HomalgZeroMatrix( Dimension( Source( alpha_1 ) ), NumberColumns( UnderlyingMatrix( alpha_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ), UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Source( alpha_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -797,11 +797,11 @@ end
         
 ########
 function ( cat_1, alpha_1, P_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := HomalgZeroMatrix( Dimension( Source( alpha_1 ) ), NumberColumns( UnderlyingMatrix( alpha_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ), UnderlyingRing( cat_1 ) );
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := HomalgZeroMatrix( Dimension( Source( alpha_1 ) ), NumberColumns( UnderlyingMatrix( alpha_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( alpha_1 ) ), UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Source( alpha_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -836,15 +836,15 @@ end
         
 ########
 function ( cat_1, objects_1, k_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := UnionOfRows( HomalgZeroMatrix( Sum( objects_1{[ 1 .. k_1 - 1 ]}, function ( c_2 )
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := UnionOfRows( HomalgZeroMatrix( Sum( objects_1{[ 1 .. k_1 - 1 ]}, function ( c_2 )
                 return Dimension( c_2 );
             end ), Dimension( objects_1[k_1] ), UnderlyingRing( cat_1 ) ), HomalgIdentityMatrix( Dimension( objects_1[k_1] ), UnderlyingRing( cat_1 ) ), HomalgZeroMatrix( Sum( objects_1{[ k_1 + 1 .. Length( objects_1 ) ]}, function ( c_2 )
                 return Dimension( c_2 );
             end ), Dimension( objects_1[k_1] ), UnderlyingRing( cat_1 ) ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1 ) ), objects_1[k_1], UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1_1 ) ), objects_1[k_1], UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -917,13 +917,13 @@ end
         
 ########
 function ( cat_1, objects_1, T_1, tau_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := UnionOfRows( UnderlyingRing( cat_1 ), Dimension( T_1 ), List( tau_1, function ( s_2 )
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := UnionOfRows( UnderlyingRing( cat_1 ), Dimension( T_1 ), List( tau_1, function ( s_2 )
               return UnderlyingMatrix( s_2 );
           end ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1 ) ), T_1, UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1_1 ) ), T_1, UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -948,11 +948,11 @@ end
         
 ########
 function ( cat_1, T_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := HomalgZeroMatrix( 0, Dimension( T_1 ), UnderlyingRing( cat_1 ) );
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := HomalgZeroMatrix( 0, Dimension( T_1 ), UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, 0 ), T_1, UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, 0 ), T_1, UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -975,13 +975,13 @@ end
         
 ########
 function ( cat_1, objects_1, T_1, tau_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := UnionOfColumns( UnderlyingRing( cat_1 ), Dimension( T_1 ), List( tau_1, function ( s_2 )
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := UnionOfColumns( UnderlyingRing( cat_1 ), Dimension( T_1 ), List( tau_1, function ( s_2 )
               return UnderlyingMatrix( s_2 );
           end ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, T_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -1006,11 +1006,11 @@ end
         
 ########
 function ( cat_1, T_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := HomalgZeroMatrix( Dimension( T_1 ), 0, UnderlyingRing( cat_1 ) );
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := HomalgZeroMatrix( Dimension( T_1 ), 0, UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, T_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, 0 ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, 0 ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -1057,12 +1057,12 @@ end
         
 ########
 function ( cat_1 )
-    local cap_jit_morphism_attribute_1;
-    cap_jit_morphism_attribute_1 := HomalgIdentityMatrix( 0, UnderlyingRing( cat_1 ) );
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := HomalgIdentityMatrix( 0, UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, 0 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, 0 ), UnderlyingMatrix, cap_jit_morphism_attribute_1 );
+             ), cat_1, Dimension, 0 ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
