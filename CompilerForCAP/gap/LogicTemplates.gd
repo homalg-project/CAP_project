@@ -7,7 +7,7 @@
 
 #! @Section Logic
 
-DeclareGlobalFunction( "CAP_JIT_INTERNAL_ENHANCED_LOGIC_TEMPLATE" );
+DeclareGlobalFunction( "CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE" );
 
 DeclareGlobalFunction( "CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE" );
 
@@ -36,7 +36,8 @@ DeclareGlobalFunction( "CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE" );
 #!       `src_template`. The functions are matched by comparing the lists of names of local variables. If for a function in
 #!       `dst_template` no corresponding function in `src_template` exists, you have to add the list of names of local variables
 #!       of this function to `new_funcs`.
-#!     * `returns_value` must be `true` if `src_template` defines an expression, `false` if it defines a statement.
+#!     * `returns_value` must be `true` if `src_template` defines an expression, `false` if it defines a statement
+#!       ultimately returning a value (including trailing semicolon!).
 #!     * `needed_packages` has the same format as `NeededOtherPackages` in `PackageInfo.g`. The template is only evaluated if
 #!       the packages in `needed_packages` are loaded in the correct versions.
 #!     * `debug` can be set to `true` to print more information while <Ref Func="CapJitAppliedLogicTemplates" /> tries to apply the template.
@@ -71,6 +72,6 @@ DeclareGlobalFunction( "CapJitAddLogicTemplate" );
 #! @Arguments tree, jit_args
 DeclareGlobalFunction( "CapJitAppliedLogicTemplates" );
 
-# applies a single logic template
-# we do not make this an officially documented function because it requires an enhanced logic template
+# enhances a single logic template and applies it if all needed packages are loaded, else does nothing
+# we do not make this an officially documented function because it changes the logic template in-place
 DeclareGlobalFunction( "CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE" );

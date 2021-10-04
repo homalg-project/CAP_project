@@ -48,6 +48,14 @@ DeclareGlobalFunction( "CapJitGetOrCreateGlobalVariable" );
 DeclareGlobalFunction( "CapJitFindNodeDeep" );
 
 #! @Description
+#!   Finds all nodes in <A>tree</A> for which <A>condition_func</A> returns `true`.
+#!   For each node, <A>condition_func</A> is called with the node and current path as arguments, and must return a boolean.
+#!   Returns a list of nodes for which this call yields true.
+#! @Returns a list
+#! @Arguments tree, condition_func
+DeclareGlobalFunction( "CapJitFindNodes" );
+
+#! @Description
 #!   Gets the node of <A>tree</A> with path <A>path</A>. Throws an error if no such node exists.
 #! @Returns a record
 #! @Arguments tree, path

@@ -16,130 +16,137 @@ InstallGlobalFunction( CapJitAppliedCompilerHints, function ( tree, category )
 end );
 
 InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, category )
-  local pre_func;
-  
-    pre_func := function ( tree, additional_arguments )
-      local return_value, args, category, object_attribute_name, morphism_attribute_name, source_attribute_getter_name, range_attribute_getter_name, morphism_attribute_position, morphism_attribute_value, source_args, source_attribute_position, range_args, range_attribute_position;
+  local pre_func, additional_arguments_func;
+    
+    # functions will be modified in-place
+    tree := StructuralCopy( tree );
+    
+    pre_func := function ( tree, func_stack )
+      local func, args, category, object_attribute_name, morphism_attribute_name, source_attribute_getter_name, range_attribute_getter_name, morphism_attribute_position, morphism_attribute_value, id, new_variable_name, source_args, source_attribute_position, range_args, range_attribute_position;
         
-        tree := StructuralCopy( tree );
+        func := Last( func_stack );
         
-        if tree.type = "EXPR_DECLARATIVE_FUNC" then
+        if CapJitIsCallToGlobalFunction( tree, "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" ) then
             
-            return_value := tree.bindings.BINDING_RETURN_VALUE;
+            args := tree.args;
             
-            if CapJitIsCallToGlobalFunction( return_value, "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" ) then
+            if args.2.type = "EXPR_REF_GVAR" then
                 
-                args := return_value.args;
+                category := ValueGlobal( args.2.gvar );
                 
-                if args.2.type = "EXPR_REF_GVAR" then
+                Assert( 0, IsCapCategory( category ) );
+                
+                if IsBound( category!.compiler_hints ) and IsBound( category!.compiler_hints.source_and_range_attributes_from_morphism_attribute ) then
                     
-                    category := ValueGlobal( args.2.gvar );
+                    object_attribute_name := category!.compiler_hints.source_and_range_attributes_from_morphism_attribute.object_attribute_name;
+                    morphism_attribute_name := category!.compiler_hints.source_and_range_attributes_from_morphism_attribute.morphism_attribute_name;
+                    source_attribute_getter_name := category!.compiler_hints.source_and_range_attributes_from_morphism_attribute.source_attribute_getter_name;
+                    range_attribute_getter_name := category!.compiler_hints.source_and_range_attributes_from_morphism_attribute.range_attribute_getter_name;
                     
-                    Assert( 0, IsCapCategory( category ) );
-                    
-                    if IsBound( category!.compiler_hints ) and IsBound( category!.compiler_hints.source_and_range_attributes_from_morphism_attribute ) then
+                    # check if either Source or Range are constructed inplace
+                    if CapJitIsCallToGlobalFunction( args.3, "ObjectifyObjectForCAPWithAttributes" ) or CapJitIsCallToGlobalFunction( args.4, "ObjectifyObjectForCAPWithAttributes" ) then
                         
-                        object_attribute_name := category!.compiler_hints.source_and_range_attributes_from_morphism_attribute.object_attribute_name;
-                        morphism_attribute_name := category!.compiler_hints.source_and_range_attributes_from_morphism_attribute.morphism_attribute_name;
-                        source_attribute_getter_name := category!.compiler_hints.source_and_range_attributes_from_morphism_attribute.source_attribute_getter_name;
-                        range_attribute_getter_name := category!.compiler_hints.source_and_range_attributes_from_morphism_attribute.range_attribute_getter_name;
+                        morphism_attribute_position := PositionProperty( args, x -> x.type = "EXPR_REF_GVAR" and x.gvar = morphism_attribute_name );
                         
-                        # check if either Source or Range are constructed inplace
-                        if CapJitIsCallToGlobalFunction( args.3, "ObjectifyObjectForCAPWithAttributes" ) or CapJitIsCallToGlobalFunction( args.4, "ObjectifyObjectForCAPWithAttributes" ) then
+                        if morphism_attribute_position = fail then
                             
-                            morphism_attribute_position := PositionProperty( args, x -> x.type = "EXPR_REF_GVAR" and x.gvar = morphism_attribute_name );
+                            Error( "cannot find morphism attribute" );
                             
-                            if morphism_attribute_position = fail then
+                        fi;
+                        
+                        Assert( 0, IsOddInt( morphism_attribute_position ) and morphism_attribute_position > 4 and morphism_attribute_position < args.length );
+                        
+                        morphism_attribute_value := args.(morphism_attribute_position + 1);
+                        
+                        # search for an unused id
+                        id := 0;
+                        repeat
+                            
+                            id := id + 1;
+                            
+                            new_variable_name := Concatenation( "cap_jit_morphism_attribute_", String( id ) );
+                            
+                        until not new_variable_name in func.nams;
+                        
+                        func.nams := Concatenation( func.nams, [ new_variable_name ] );
+                        
+                        Assert( 0, IsDuplicateFreeList( func.nams ) );
+                        
+                        CapJitAddBinding( func.bindings, new_variable_name, morphism_attribute_value );
+                        
+                        args.(morphism_attribute_position + 1) := rec(
+                            type := "EXPR_REF_FVAR",
+                            func_id := func.id,
+                            name := new_variable_name,
+                        );
+                        
+                        if CapJitIsCallToGlobalFunction( args.3, "ObjectifyObjectForCAPWithAttributes" ) then
+                            
+                            source_args := args.3.args;
+                            
+                            source_attribute_position := PositionProperty( source_args, x -> x.type = "EXPR_REF_GVAR" and x.gvar = object_attribute_name );
+                            
+                            if source_attribute_position = fail then
                                 
-                                Error( "cannot find morphism attribute" );
+                                Error( "cannot find source attribute" );
                                 
                             fi;
                             
-                            Assert( 0, IsOddInt( morphism_attribute_position ) and morphism_attribute_position > 4 and morphism_attribute_position < args.length );
+                            Assert( 0, IsOddInt( source_attribute_position ) and source_attribute_position > 2 and source_attribute_position < source_args.length );
                             
-                            morphism_attribute_value := args.(morphism_attribute_position + 1);
-                            
-                            Assert( 0, not "cap_jit_morphism_attribute" in tree.nams );
-                            
-                            tree.nams := Concatenation( tree.nams, [ "cap_jit_morphism_attribute" ] );
-                            
-                            CapJitAddBinding( tree.bindings, "cap_jit_morphism_attribute", morphism_attribute_value );
-                            
-                            args.(morphism_attribute_position + 1) := rec(
-                                type := "EXPR_REF_FVAR",
-                                func_id := tree.id,
-                                name := "cap_jit_morphism_attribute",
-                            );
-                            
-                            if CapJitIsCallToGlobalFunction( args.3, "ObjectifyObjectForCAPWithAttributes" ) then
+                            # ignore simple expression, e.g. integers
+                            if not source_args.(source_attribute_position + 1).type in [ "EXPR_INT", "EXPR_STRING", "EXPR_CHAR", "EXPR_TRUE", "EXPR_FALSE", "EXPR_REF_GVAR" ] then
                                 
-                                source_args := args.3.args;
-                                
-                                source_attribute_position := PositionProperty( source_args, x -> x.type = "EXPR_REF_GVAR" and x.gvar = object_attribute_name );
-                                
-                                if source_attribute_position = fail then
-                                    
-                                    Error( "cannot find source attribute" );
-                                    
-                                fi;
-                                
-                                Assert( 0, IsOddInt( source_attribute_position ) and source_attribute_position > 2 and source_attribute_position < source_args.length );
-                                
-                                # ignore simple expression, e.g. integers
-                                if not source_args.(source_attribute_position + 1).type in [ "EXPR_INT", "EXPR_STRING", "EXPR_CHAR", "EXPR_TRUE", "EXPR_FALSE", "EXPR_REF_GVAR" ] then
-                                    
-                                    source_args.(source_attribute_position + 1) := rec(
-                                        type := "EXPR_FUNCCALL",
-                                        funcref := rec(
-                                            type := "EXPR_REF_GVAR",
-                                            gvar := source_attribute_getter_name,
+                                source_args.(source_attribute_position + 1) := rec(
+                                    type := "EXPR_FUNCCALL",
+                                    funcref := rec(
+                                        type := "EXPR_REF_GVAR",
+                                        gvar := source_attribute_getter_name,
+                                    ),
+                                    args := AsSyntaxTreeList( [
+                                        rec(
+                                            type := "EXPR_REF_FVAR",
+                                            func_id := func.id,
+                                            name := new_variable_name,
                                         ),
-                                        args := AsSyntaxTreeList( [
-                                            rec(
-                                                type := "EXPR_REF_FVAR",
-                                                func_id := tree.id,
-                                                name := "cap_jit_morphism_attribute",
-                                            ),
-                                        ] ),
-                                    );
-                                    
-                                fi;
+                                    ] ),
+                                );
                                 
                             fi;
                             
-                            if CapJitIsCallToGlobalFunction( args.4, "ObjectifyObjectForCAPWithAttributes" ) then
+                        fi;
+                        
+                        if CapJitIsCallToGlobalFunction( args.4, "ObjectifyObjectForCAPWithAttributes" ) then
+                            
+                            range_args := args.4.args;
+                            
+                            range_attribute_position := PositionProperty( range_args, x -> x.type = "EXPR_REF_GVAR" and x.gvar = object_attribute_name );
+                            
+                            if range_attribute_position = fail then
                                 
-                                range_args := args.4.args;
+                                Error( "cannot find range attribute" );
                                 
-                                range_attribute_position := PositionProperty( range_args, x -> x.type = "EXPR_REF_GVAR" and x.gvar = object_attribute_name );
+                            fi;
+                            
+                            Assert( 0, IsOddInt( range_attribute_position ) and range_attribute_position > 2 and range_attribute_position < range_args.length );
+                            
+                            # ignore simple expression, e.g. integers
+                            if not range_args.(range_attribute_position + 1).type in [ "EXPR_INT", "EXPR_STRING", "EXPR_CHAR", "EXPR_TRUE", "EXPR_FALSE", "EXPR_REF_GVAR" ] then
                                 
-                                if range_attribute_position = fail then
-                                    
-                                    Error( "cannot find range attribute" );
-                                    
-                                fi;
-                                
-                                Assert( 0, IsOddInt( range_attribute_position ) and range_attribute_position > 2 and range_attribute_position < range_args.length );
-                                
-                                # ignore simple expression, e.g. integers
-                                if not range_args.(range_attribute_position + 1).type in [ "EXPR_INT", "EXPR_STRING", "EXPR_CHAR", "EXPR_TRUE", "EXPR_FALSE", "EXPR_REF_GVAR" ] then
-                                    
-                                    range_args.(range_attribute_position + 1) := rec(
-                                        type := "EXPR_FUNCCALL",
-                                        funcref := rec(
-                                            type := "EXPR_REF_GVAR",
-                                            gvar := range_attribute_getter_name,
+                                range_args.(range_attribute_position + 1) := rec(
+                                    type := "EXPR_FUNCCALL",
+                                    funcref := rec(
+                                        type := "EXPR_REF_GVAR",
+                                        gvar := range_attribute_getter_name,
+                                    ),
+                                    args := AsSyntaxTreeList( [
+                                        rec(
+                                            type := "EXPR_REF_FVAR",
+                                            func_id := func.id,
+                                            name := new_variable_name,
                                         ),
-                                        args := AsSyntaxTreeList( [
-                                            rec(
-                                                type := "EXPR_REF_FVAR",
-                                                func_id := tree.id,
-                                                name := "cap_jit_morphism_attribute",
-                                            ),
-                                        ] ),
-                                    );
-                                    
-                                fi;
+                                    ] ),
+                                );
                                 
                             fi;
                             
@@ -157,7 +164,21 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
         
     end;
     
-    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    additional_arguments_func := function ( tree, key, func_stack )
+        
+        if tree.type = "EXPR_DECLARATIVE_FUNC" then
+            
+            return Concatenation( func_stack, [ tree ] );
+            
+        else
+            
+            return func_stack;
+            
+        fi;
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [ ] );
     
 end );
 

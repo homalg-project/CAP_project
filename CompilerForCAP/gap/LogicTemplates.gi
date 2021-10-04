@@ -6,15 +6,17 @@
 BindGlobal( "CAP_JIT_LOGIC_TEMPLATES", [ ] );
 InstallGlobalFunction( CapJitAddLogicTemplate, function ( template )
     
-    Add( CAP_JIT_LOGIC_TEMPLATES, CAP_JIT_INTERNAL_ENHANCED_LOGIC_TEMPLATE( template ) );
+    # the logic template will later be enhanced in-place -> make a copy
+    template := StructuralCopy( template );
+    
+    Add( CAP_JIT_LOGIC_TEMPLATES, template );
     
 end );
 
-InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCED_LOGIC_TEMPLATE, function ( template )
+InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( template )
   local template_var_name, tmp_tree, pre_func, additional_arguments_func, i;
     
-    # we will modify the template below
-    template := StructuralCopy( template );
+    # Caution: this function must only be called once the needed packages of the template are loaded!
     
     # some basic sanity checks
     if not IsRecord( template ) then
@@ -41,9 +43,26 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCED_LOGIC_TEMPLATE, function ( temp
         
     fi;
     
-    # default variable filters: IsObject
-    if not IsBound( template.variable_filters ) then
+    if IsBound( template.variable_filters ) then
         
+        # replace strings with actual filters
+        template.variable_filters := List( template.variable_filters, function ( f )
+            
+            if IsString( f ) then
+                
+                return ValueGlobal( f );
+                
+            else
+                
+                return f;
+                
+            fi;
+            
+        end );
+        
+    else
+        
+        # default variable filters: IsObject
         template.variable_filters := ListWithIdenticalEntries( Length( template.variable_names ), IsObject );
         
     fi;
@@ -188,7 +207,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCED_LOGIC_TEMPLATE, function ( temp
     
     template.dst_template_tree := CapJitIterateOverTree( template.dst_template_tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [ ] );
     
-    return template;
+    template.is_fully_enhanced := true;
     
 end );
 
@@ -547,7 +566,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args )
 end );
 
 InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree, template, jit_args )
-  local variable_filters, matching_info, condition_func, path, match, new_tree, parent, variables, func_id_replacements, variable_path, filter, result, value, pre_func, dst_tree, i;
+  local matching_info, condition_func, path, match, new_tree, parent, variables, func_id_replacements, variable_path, filter, result, value, pre_func, dst_tree, i;
     
     tree := StructuralCopy( tree );
     
@@ -562,21 +581,11 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
         
     fi;
     
-    # replace strings with actual filters
-    # this cannot be done in CapJitAddLogicTemplate because the needed package might not have been loaded yet
-    variable_filters := List( template.variable_filters, function ( f )
+    if not IsBound( template.is_fully_enhanced ) or template.is_fully_enhanced <> true then
         
-        if IsString( f ) then
-            
-            return ValueGlobal( f );
-            
-        else
-            
-            return f;
-            
-        fi;
+        CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );
         
-    end );
+    fi;
     
     while true do
         
@@ -662,7 +671,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
         for i in [ 1 .. Length( template.variable_names ) ] do
             
             variable_path := Concatenation( path, variables[i].path );
-            filter := variable_filters[i];
+            filter := template.variable_filters[i];
             
             if IsIdenticalObj( filter, IsObject ) then
                 

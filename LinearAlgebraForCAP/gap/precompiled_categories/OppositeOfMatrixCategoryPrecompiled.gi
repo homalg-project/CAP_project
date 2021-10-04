@@ -75,12 +75,14 @@ end
         
 ########
 function ( cat_1, alpha_1 )
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := SyzygiesOfRows( UnderlyingMatrix( Opposite( alpha_1 ) ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Range( alpha_1 ), ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
                ), OppositeCategory( cat_1 ), Dimension, NumberRows( SyzygiesOfRows( UnderlyingMatrix( Opposite( alpha_1 ) ) ) ) ) ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
              ), OppositeCategory( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-               ), OppositeCategory( cat_1 ), Dimension, NumberRows( SyzygiesOfRows( UnderlyingMatrix( Opposite( alpha_1 ) ) ) ) ), Source( Opposite( alpha_1 ) ), UnderlyingMatrix, SyzygiesOfRows( UnderlyingMatrix( Opposite( alpha_1 ) ) ) ) );
+               ), OppositeCategory( cat_1 ), Dimension, NrRows( cap_jit_morphism_attribute_1_1 ) ), Source( Opposite( alpha_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 ) );
 end
 ########
         
@@ -202,10 +204,12 @@ end
         
 ########
 function ( cat_1, alpha_1 )
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := ConvertMatrixToRow( UnderlyingMatrix( Opposite( alpha_1 ) ) );
     return ID_FUNC( ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
              ), OppositeCategory( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
                ), OppositeCategory( cat_1 ), Dimension, 1 ), ObjectifyObjectForCAPWithAttributes( rec(
-               ), OppositeCategory( cat_1 ), Dimension, NumberColumns( ConvertMatrixToRow( UnderlyingMatrix( Opposite( alpha_1 ) ) ) ) ), UnderlyingMatrix, ConvertMatrixToRow( UnderlyingMatrix( Opposite( alpha_1 ) ) ) ) );
+               ), OppositeCategory( cat_1 ), Dimension, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 ) );
 end
 ########
         
@@ -397,12 +401,14 @@ end
         
 ########
 function ( cat_1, alpha_1 )
+    local cap_jit_morphism_attribute_1_1;
+    cap_jit_morphism_attribute_1_1 := SyzygiesOfColumns( UnderlyingMatrix( Opposite( alpha_1 ) ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
                ), OppositeCategory( cat_1 ), Dimension, NumberColumns( SyzygiesOfColumns( UnderlyingMatrix( Opposite( alpha_1 ) ) ) ) ) ), Source( alpha_1 ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
              ), OppositeCategory( cat_1 ), Range( Opposite( alpha_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-               ), OppositeCategory( cat_1 ), Dimension, NumberColumns( SyzygiesOfColumns( UnderlyingMatrix( Opposite( alpha_1 ) ) ) ) ), UnderlyingMatrix, SyzygiesOfColumns( UnderlyingMatrix( Opposite( alpha_1 ) ) ) ) );
+               ), OppositeCategory( cat_1 ), Dimension, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 ) );
 end
 ########
         
