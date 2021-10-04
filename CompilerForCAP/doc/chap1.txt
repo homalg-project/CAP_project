@@ -96,8 +96,8 @@
   [30X    [33X[0;6YIf a KeyDependentOperation is detected, the corresponding [10XOp[110X method is
         resolved.[133X
   
-  [33X[0;0YFor      details      see      [2XCapJitResolvedOperations[102X     ([14X2.5-15[114X)     and
-  [2XCapJitResolvedGlobalVariables[102X  ([14X2.5-14[114X).  If no operation or global variable
+  [33X[0;0YFor      details      see      [2XCapJitResolvedOperations[102X     ([14X2.5-14[114X)     and
+  [2XCapJitResolvedGlobalVariables[102X  ([14X2.5-13[114X).  If no operation or global variable
   can be resolved anymore, we continue with the rule phase.[133X
   
   [33X[0;0YIn the rule phase, the tree is optimized using several rules and techniques.
@@ -118,8 +118,7 @@
   correct:[133X
   
   [30X    [33X[0;6YThe  code must not depend on side effects (otherwise dropping "unused"
-        variables   or   inlining   variables   could   change  results).  See
-        [2XCapJitThrowErrorOnSideEffects[102X ([14X2.4-8[114X) for details.[133X
+        variables or inlining variables could change results).[133X
   
   [30X    [33X[0;6YThe  methods  selected  for  the operations during the resolving phase
         must  be  independent  of  the JIT arguments, that is, they must yield
@@ -133,19 +132,47 @@
         independent  of  the  JIT  arguments. Thus, be careful when adding new
         logic templates.[133X
   
-  [33X[0;0YThere  is  an additional weak requirement: The compiler mainly optimizes the
-  code paths covered when executing the function with the JIT arguments. Thus,
-  the  JIT  arguments should represent a "generic" call, i.e., they should not
-  run  into  edge  cases which do not happen with a "generic" call. Still, the
-  execution using JIT arguments should be fast to improve compilation times.[133X
+  [33X[0;0YThere are also additional strong requirements:[133X
   
-  [33X[0;0YAdditionally, there is not detection for recursive function calls currently,
-  so resolving such a function call leads to an infinite loop.[133X
+  [30X    [33X[0;6YOnly  assignments  to  local  variables,  if/elif/else statements, and
+        return statements are allowed as statements in functions.[133X
   
-  [33X[0;0YFor  performance  optimizations,  the compiler might move expressions out of
-  if/else statements, e.g. if they occur inside a (potentially expensive) [10XList[110X
-  call.  Thus,  code inside if/else statements must execute without error even
-  if moved outside of the if/else statement.[133X
+  [30X    [33X[0;6YAll  branches  of  any  given  if/elif/else  statement must end with a
+        return statement or the assignment to the same local variable.[133X
+  
+  [30X    [33X[0;6YIf  statements  must  always  have  an  else  statement, except if all
+        branches  end  with  a  return  statement.  In  the  latter  case, the
+        statements  following  the  if statement are automatically put into an
+        else statement.[133X
+  
+  [30X    [33X[0;6YNested if/elif/else statements are not allowed.[133X
+  
+  [30X    [33X[0;6YFunction arguments or local variables must not be called [10XRETURN_VALUE[110X,
+        as this name is used internally.[133X
+  
+  [30X    [33X[0;6YLocal  variables must be assigned at most once (this includes function
+        arguments,  which are assigned at least once, namely when the function
+        is  called).  An  exception  is made for "rapid reassignments": if the
+        same  variable is assigned and then reassigned immediately in the next
+        statement, this only counts as a single assignment.[133X
+  
+  [30X    [33X[0;6YSince the compiler might change the order of statements, checking if a
+        local variable (or list entry etc.) is bound is not safe.[133X
+  
+  [30X    [33X[0;6YFor performance optimizations, the compiler might move expressions out
+        of  if/else  statements,  e.g.  if  they  occur  inside a (potentially
+        expensive)  [10XList[110X  call.  Thus,  code  inside  if/else  statements must
+        execute without error even if moved outside of the if/else statement.[133X
+  
+  [33X[0;0YThere  is  an  additional  weak  requirement when passing JIT arguments: The
+  compiler mainly optimizes the code paths covered when executing the function
+  with the JIT arguments. Thus, the JIT arguments should represent a "generic"
+  call,  i.e.,  they should not run into edge cases which do not happen with a
+  "generic"  call.  Still, the execution using JIT arguments should be fast to
+  improve compilation times.[133X
+  
+  [33X[0;0YAdditionally,  there  is  no  detection  for  recursive  function  calls, so
+  resolving such a function call leads to an infinite loop.[133X
   
   
   [1X1.4 [33X[0;0YActivating the compiler[133X[101X
@@ -313,8 +340,8 @@
   function can only be resolved if it appears as a global variable in the tree
   during  the  resolving  phase  of  the  compilation.  That  is,  it  must be
   referenced  from  a  global  variable from the beginning on, or after global
-  variables  are  resolved by [2XCapJitResolvedGlobalVariables[102X ([14X2.5-14[114X). Possibly
-  you have adapt [2XCapJitResolvedGlobalVariables[102X ([14X2.5-14[114X) to your setting.[133X
+  variables  are  resolved by [2XCapJitResolvedGlobalVariables[102X ([14X2.5-13[114X). Possibly
+  you have adapt [2XCapJitResolvedGlobalVariables[102X ([14X2.5-13[114X) to your setting.[133X
   
   [30X    [33X[0;6YQ: Why is my operation not resolved?[133X
   
@@ -323,7 +350,7 @@
   installed   for   the   operation   via   [10XInstallMethodForCompilerForCAP[110X  or
   [10XInstallOtherMethodForCompilerForCAP[110X,  the  compiler  must be able to get the
   arguments  of  the  call  of  the operation from the JIT arguments. Then the
-  rules in the description of [2XCapJitResolvedOperations[102X ([14X2.5-15[114X) apply.[133X
+  rules in the description of [2XCapJitResolvedOperations[102X ([14X2.5-14[114X) apply.[133X
   
   [30X    [33X[0;6YQ: Why do I get the error "cannot find iteration key"?[133X
   

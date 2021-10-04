@@ -66,7 +66,7 @@
   [33X[0;0YSemantics:  [10Xsrc_template[110X  is  a  piece  of  code which should be replaced by
   [10Xdst_template[110X:[133X
   
-  [30X    [33X[0;6YThe   function  [2XCapJitAppliedLogicTemplates[102X  ([14X2.5-13[114X)  tries  to  find
+  [30X    [33X[0;6YThe   function  [2XCapJitAppliedLogicTemplates[102X  ([14X2.5-12[114X)  tries  to  find
         occurences  of [10Xsrc_template[110X in a tree and potentially replaces them by
         [10Xdst_template[110X.[133X
   
@@ -76,26 +76,27 @@
         occurs  multiple  times,  the  corresponding parts of the tree must be
         equal.[133X
   
-  [30X    [33X[0;6Y[2XCapJitAppliedLogicTemplates[102X   ([14X2.5-13[114X)  uses  [3Xjit_args[103X  to  compute  a
+  [30X    [33X[0;6Y[2XCapJitAppliedLogicTemplates[102X   ([14X2.5-12[114X)  uses  [3Xjit_args[103X  to  compute  a
         concrete  value  of each variable. The template is only applied if all
         values match the corresponding filters in [10Xvariable_filters[110X.[133X
   
   [30X    [33X[0;6YFor   each   function   in  [10Xdst_template[110X,  [2XCapJitAppliedLogicTemplates[102X
-        ([14X2.5-13[114X)  tries  to find a corresponding function in [10Xsrc_template[110X. The
+        ([14X2.5-12[114X)  tries  to find a corresponding function in [10Xsrc_template[110X. The
         functions  are  matched  by  comparing  the  lists  of  names of local
         variables. If for a function in [10Xdst_template[110X no corresponding function
         in  [10Xsrc_template[110X  exists,  you  have to add the list of names of local
         variables of this function to [10Xnew_funcs[110X.[133X
   
   [30X    [33X[0;6Y[10Xreturns_value[110X  must  be  [10Xtrue[110X  if  [10Xsrc_template[110X defines an expression,
-        [10Xfalse[110X if it defines a statement.[133X
+        [10Xfalse[110X   if  it  defines  a  statement  ultimately  returning  a  value
+        (including trailing semicolon!).[133X
   
   [30X    [33X[0;6Y[10Xneeded_packages[110X   has   the  same  format  as  [10XNeededOtherPackages[110X  in
         [10XPackageInfo.g[110X.  The  template  is  only  evaluated  if the packages in
         [10Xneeded_packages[110X are loaded in the correct versions.[133X
   
   [30X    [33X[0;6Y[10Xdebug[110X   can   be   set   to  [10Xtrue[110X  to  print  more  information  while
-        [2XCapJitAppliedLogicTemplates[102X  ([14X2.5-13[114X)  tries  to  apply  the template.
+        [2XCapJitAppliedLogicTemplates[102X  ([14X2.5-12[114X)  tries  to  apply  the template.
         (Note:  this  causes  informational  break  loops which are not actual
         errors).[133X
   
@@ -125,7 +126,7 @@
         [10Xvariable_names[110X  is still required to have a readable representation of
         the   template   and   to   make   sure   that  the  global  variables
         [10XCAP_INTERNAL_JIT_TEMPLATE_VAR_n[110X         are         declared        by
-        [2XCapJitAppliedLogicTemplates[102X   ([14X2.5-13[114X).   If  [10Xdst_template[110X  cannot  be
+        [2XCapJitAppliedLogicTemplates[102X   ([14X2.5-12[114X).   If  [10Xdst_template[110X  cannot  be
         expressed as valid GAP code, it can be in an analogous manner.[133X
   
   
@@ -162,12 +163,50 @@
   
   [30X    [33X[0;6YA globally unique ID is assigned to each function.[133X
   
+  [30X    [33X[0;6YReturn  statements  are  replaced  by  assignments  to a special local
+        variable "RETURN_VALUE".[133X
+  
   [30X    [33X[0;6YThe handling of local variables and higher variables is unified by the
         concept  of  function  variables: function variables (FVARs) reference
-        local  variables  in  functions  via the function id ([10Xfunc_id[110X) and the
-        position  ([10Xpos[110X)  in  the  list  of  arguments/local  variables  of the
-        function.  For  easier  debugging,  the  name of the local variable is
-        stored in the entry [10Xinitial_name[110X of the FVAR.[133X
+        local  variables  in functions via the function id ([10Xfunc_id[110X) and their
+        name  ([10Xname[110X),  which  is  determined  from the list of arguments/local
+        variables of the function.[133X
+  
+  [30X    [33X[0;6YAll  statements  after  [10Xif  ... then return ...; fi;[110X are moved into an
+        [10Xelse[110X branch.[133X
+  
+  [30X    [33X[0;6Y[10XEXPR_ELM_MAT[110X  is  replaced  by  a call to [10XMatElm[110X such that it does not
+        require special handling.[133X
+  
+  [30X    [33X[0;6Yif/elif/else  statements  must all end with the assignment to the same
+        local  variable  and  must have an else clause. They are coded using a
+        new  type [10XEXPR_CASE[110X: Trees of type [10XEXPR_CASE[110X have a key [10Xbranches[110X which
+        holds  a  list of trees of type [10XCASE_BRANCH[110X. Trees of type [10XCASE_BRANCH[110X
+        have  two  keys  [10Xcondition[110X  and  [10Xvalue[110X,  which  get populated with the
+        condition  of  the  if  branch  and  the  right  hand side of the last
+        variable  assignment in the body of the branch. Caution: The remaining
+        statements  in  the  body  of  the  if branch are moved outside of the
+        if/elif/else statement![133X
+  
+  [30X    [33X[0;6YStatements  which  are  not  assignments to local variables or if/else
+        statements as well as nested if/else statements are not supported.[133X
+  
+  [30X    [33X[0;6Y[10XEXPR_FUNC[110Xs are coded as [10XEXPR_DECLARATIVE_FUNC[110Xs: The latter has not key
+        [10Xnloc[110X and no key [10Xname[110X. Additionally, instead of [10Xstats[110X, the latter has a
+        key   [10Xbindings[110X  of  type  [10XFVAR_BINDING_SEQ[110X.  A  syntax  tree  of  type
+        [10XFVAR_BINDING_SEQ[110X  describes  a  set(!)  of bindings (= assignments) of
+        local  variables. It has a key [10Xnames[110X, a list of bound names. Values of
+        bindings   can   be   added/obtained/unbound   via   [10XCapJitAddBinding[110X,
+        [10XCapJitValueOfBinding[110X,  and  [10XCapJitUnbindBinding[110X.  When  the  tree to a
+        function  again,  the  set  of  bindings is endowed with a order which
+        respects the relation "uses".[133X
+  
+  [30X    [33X[0;6YLocal  variables  must  not  be assigned more than once (this includes
+        function  arguments, which are assigned at least once, namely when the
+        function  is  called). An exception is made for "rapid reassignments":
+        if  the  same  variable is assigned and then reassigned immediately in
+        the  next  statement,  the  right-hand side of the first assignment is
+        inserted into the right-hand side of the second assignment.[133X
   
   [1X2.2-1 ENHANCED_SYNTAX_TREE[101X
   
@@ -325,30 +364,7 @@
   variable.  If  [3Xvalue[103X  has already been assigned to a global variable by this
   function before, simply returns the name of that global variable.[133X
   
-  [1X2.4-8 CapJitThrowErrorOnSideEffects[101X
-  
-  [33X[1;0Y[29X[2XCapJitThrowErrorOnSideEffects[102X( [3Xtree[103X ) [32X function[133X
-  
-  [33X[0;0YChecks  if  [3Xtree[103X contains statements or expressions indicating side effects.
-  If yes, it throws an error. The following checks are performed:[133X
-  
-  [30X    [33X[0;6Y[3Xtree[103X  must  be  an  enhanced  syntax  tree.  In particular, it may not
-        contain LVARs or HVARs.[133X
-  
-  [30X    [33X[0;6YThe following statements and expressions are forbidden: STAT_ASS_GVAR,
-        EXPR_ISB_GVAR,     STAT_UNB_GVAR,     EXPR_ISB_FVAR,    EXPR_UNB_FVAR,
-        STAT_PROCCALL.[133X
-  
-  [30X    [33X[0;6YAn  FVAR  must  not  reference functions outside of its function stack
-        (see also [2XCapJitContainsRefToFVAROutsideOfFuncStack[102X ([14X2.4-6[114X)).[133X
-  
-  [30X    [33X[0;6YAn  FVAR  must  be  assigned  at  most  once  (this  includes function
-        arguments,  which are assigned at least once, namely when the function
-        is  called).  An  exception  is made for "rapid reassignments": if the
-        same  variable is assigned and then reassigned immediately in the next
-        statement, this only counts as a single assignment.[133X
-  
-  [1X2.4-9 CapJitFindNodeDeep[101X
+  [1X2.4-8 CapJitFindNodeDeep[101X
   
   [33X[1;0Y[29X[2XCapJitFindNodeDeep[102X( [3Xtree[103X, [3Xcondition_func[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record or fail[133X
@@ -358,6 +374,16 @@
   must  return  a boolean. If multiple nodes are found, children are preferred
   over  their  parents  (i.e.  a  "deep"  node is returned). If no node can be
   found, [10Xfail[110X is returned.[133X
+  
+  [1X2.4-9 CapJitFindNodes[101X
+  
+  [33X[1;0Y[29X[2XCapJitFindNodes[102X( [3Xtree[103X, [3Xcondition_func[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YFinds  all  nodes  in  [3Xtree[103X  for which [3Xcondition_func[103X returns [10Xtrue[110X. For each
+  node,  [3Xcondition_func[103X is called with the node and current path as arguments,
+  and  must  return  a  boolean.  Returns  a list of nodes for which this call
+  yields true.[133X
   
   [1X2.4-10 CapJitGetNodeByPath[101X
   
@@ -399,12 +425,43 @@
   
   [33X[0;0YReturns [10Xtrue[110X if the enhanced syntax trees [3Xtree1[103X and [3Xtree2[103X are equal up to:[133X
   
-  [30X    [33X[0;6Yrenaming of local variables,[133X
+  [30X    [33X[0;6Yrenaming of arguments,[133X
   
   [30X    [33X[0;6Yreplacement of function IDs,[133X
   
   [30X    [33X[0;6Ychanging  the  names  of  global variables while still referencing the
         identical value.[133X
+  
+  [1X2.4-15 CapJitAddBinding[101X
+  
+  [33X[1;0Y[29X[2XCapJitAddBinding[102X( [3Xbindings[103X, [3Xname[103X, [3Xvalue[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya record[133X
+  
+  [33X[0;0YAdds  a  binding for [3Xname[103X with value [3Xvalue[103X to a syntax tree [3Xbindings[103X of type
+  [10XFVAR_BINDING_SEQ[110X.[133X
+  
+  [1X2.4-16 CapJitValueOfBinding[101X
+  
+  [33X[1;0Y[29X[2XCapJitValueOfBinding[102X( [3Xbindings[103X, [3Xname[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya record[133X
+  
+  [33X[0;0YGets the value of the binding named [3Xname[103X from a syntax tree [3Xbindings[103X of type
+  [10XFVAR_BINDING_SEQ[110X.[133X
+  
+  [1X2.4-17 CapJitUnbindBinding[101X
+  
+  [33X[1;0Y[29X[2XCapJitUnbindBinding[102X( [3Xbindings[103X, [3Xname[103X ) [32X function[133X
+  
+  [33X[0;0YUnbinds  the  the  binding  named  [3Xname[103X  from a syntax tree [3Xbindings[103X of type
+  [10XFVAR_BINDING_SEQ[110X.[133X
+  
+  [1X2.4-18 CapJitReplacedEXPR_REF_FVARByValue[101X
+  
+  [33X[1;0Y[29X[2XCapJitReplacedEXPR_REF_FVARByValue[102X( [3Xtree[103X, [3Xfunc_id[103X, [3Xname[103X, [3Xvalue[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya record[133X
+  
+  [33X[0;0YReplaces  all  subtrees  of  the enhanced syntax tree [3Xtree[103X which are of type
+  EXPR_REF_FVAR with given [3Xfunc_id[103X and [3Xname[103X by [3Xvalue[103X.[133X
   
   
   [1X2.5 [33X[0;0YCompilation steps[133X[101X
@@ -432,17 +489,7 @@
   [33X[0;0YApplies                  the                  compiler                  hint
   [10Xsource_and_range_attributes_from_morphism_attribute[110X (see [14X1.5[114X) to [3Xtree[103X.[133X
   
-  [1X2.5-4 CapJitDetectedTernaryConditionalExpressions[101X
-  
-  [33X[1;0Y[29X[2XCapJitDetectedTernaryConditionalExpressions[102X( [3Xtree[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya record[133X
-  
-  [33X[0;0YDetects  statements  of the form [10Xif condition then return expr_if_true; else
-  return  expr_if_false;  fi[110X  and  changes their representation by using a new
-  expression  type  [10XEXPR_CONDITIONAL[110X  with components [10Xcondition[110X, [10Xexpr_if_true[110X,
-  and [10Xexpr_if_false[110X. This makes such statements easier to handle.[133X
-  
-  [1X2.5-5 CapJitDroppedHandledEdgeCases[101X
+  [1X2.5-4 CapJitDroppedHandledEdgeCases[101X
   
   [33X[1;0Y[29X[2XCapJitDroppedHandledEdgeCases[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -455,19 +502,15 @@
   return  value;  fi;[110X  is  found  later  in  the tree and if [10Xcondition2 = true[110X
   implies [10Xcondition1 = true[110X, the second statement is dropped.[133X
   
-  [1X2.5-6 CapJitDroppedUnusedVariables[101X
+  [1X2.5-5 CapJitDroppedUnusedBindings[101X
   
-  [33X[1;0Y[29X[2XCapJitDroppedUnusedVariables[102X( [3Xtree[103X[, [3Xfunc_path[103X] ) [32X function[133X
+  [33X[1;0Y[29X[2XCapJitDroppedUnusedBindings[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
-  [33X[0;0YDrops  assignments  to local variables which are never referenced. If a path
-  to  a  function  is  given  as  the  second argument, only variables in this
-  function  are  considered.  Otherwise, all functions in [3Xtree[103X are considered.
-  Marks  unused  variables with the prefix _UNUSED_. Assumes that arguments of
-  function  calls  are  inlined  (i.e.,  you should use [2XCapJitInlinedArguments[102X
-  ([14X2.5-8[114X) first).[133X
+  [33X[0;0YDrops bindings (and names) of variables in functions in [3Xtree[103X which are never
+  referenced.[133X
   
-  [1X2.5-7 CapJitHoistedExpressions[101X
+  [1X2.5-6 CapJitHoistedExpressions[101X
   
   [33X[1;0Y[29X[2XCapJitHoistedExpressions[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -475,7 +518,7 @@
   [33X[0;0YHoists  expressions  which  are part of but indepedent of inner functions to
   outer functions.[133X
   
-  [1X2.5-8 CapJitInlinedArguments[101X
+  [1X2.5-7 CapJitInlinedArguments[101X
   
   [33X[1;0Y[29X[2XCapJitInlinedArguments[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -485,6 +528,17 @@
   functions.  Assigns  the argument values to local variables at the beginning
   of  the  function, and drops the arguments (i.e., makes the function a 0-ary
   function).[133X
+  
+  [1X2.5-8 CapJitInlinedBindings[101X
+  
+  [33X[1;0Y[29X[2XCapJitInlinedBindings[102X( [3Xtree[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya record[133X
+  
+  [33X[0;0YExample:  transforms  [10Xfunction()  local  x;  x  :=  1;  return x^2; end[110X into
+  [10Xfunction()   return  1^2;  end()[110X.  Details:  Replaces  references  to  local
+  variables  of  a  function  by the value of the corresponding binding of the
+  function.  If the option [10Xinline_gvars_only[110X is set to [10Xtrue[110X, this is only done
+  if the value is a reference to a global variable.[133X
   
   [1X2.5-9 CapJitInlinedFunctionCalls[101X
   
@@ -497,7 +551,7 @@
   hand  side  of a variable assignment or a return statement. Inserts the body
   of  the  function right before the variable assignment / return statement to
   avoid  the  function  call.  Assumes  that  arguments  of function calls are
-  inlined  (i.e., you should use [2XCapJitInlinedArguments[102X ([14X2.5-8[114X) first). Due to
+  inlined  (i.e., you should use [2XCapJitInlinedArguments[102X ([14X2.5-7[114X) first). Due to
   the  nature  of a [10Xreturn[110X statement breaking the execution and having no [10Xgoto[110X
   keyword in GAP, only functions[133X
   
@@ -515,55 +569,25 @@
   
   [33X[0;0YReplaces  function  calls  of  the  form [10X(function() return value; end)()[110X by
   [10Xvalue[110X.  Assumes  that  arguments  of  function  calls are inlined (i.e., you
-  should use [2XCapJitInlinedArguments[102X ([14X2.5-8[114X) first).[133X
+  should use [2XCapJitInlinedArguments[102X ([14X2.5-7[114X) first).[133X
   
-  [1X2.5-11 CapJitInlinedVariableAssignments[101X
-  
-  [33X[1;0Y[29X[2XCapJitInlinedVariableAssignments[102X( [3Xtree[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya record[133X
-  
-  [33X[0;0YExample:  transforms  [10Xfunction()  local  x;  x  :=  1;  return x^2; end[110X into
-  [10Xfunction()   return   1^2;  end()[110X.  Details:  Searches  for  local  variable
-  assigments.  Replace  all  references  to  the  local  variable  in the same
-  STAT_SEQ_STAT  as  the  assignment by the right-hand side of the assignment,
-  subject to the following options:[133X
-  
-  [30X    [33X[0;6YIf  the  option [10Xinline_gvars_only[110X is set to [10Xtrue[110X, this is only done if
-        the right-hand side is a reference to a global variable.[133X
-  
-  [30X    [33X[0;6YIf  the option [10Xinline_rapid_reassignments_only[110X is set to [10Xtrue[110X, this is
-        only  done  if  the  assignment  is  the  first assignment of a "rapid
-        reassignment" (see below).[133X
-  
-  [33X[0;0YAssumes  that  any  local  variable  is assigned at most once (this includes
-  function  arguments,  which  are  assigned  at  least  once, namely when the
-  function  is called). An exception is made for "rapid reassignments": if the
-  same  variable  is  assigned  and  then  reassigned  immediately in the next
-  statement,  the right-hand side of the first assignment is inserted into the
-  right-hand  side of the second assignment. Assumes that unused variables are
-  dropped  (i.e.,  you should use [2XCapJitDroppedUnusedVariables[102X ([14X2.5-6[114X) first).
-  Drops the variables assignment after inlining if possible.[133X
-  
-  [1X2.5-12 CapJitAppliedLogic[101X
+  [1X2.5-11 CapJitAppliedLogic[101X
   
   [33X[1;0Y[29X[2XCapJitAppliedLogic[102X( [3Xtree[103X, [3Xjit_args[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YApplies  all  logic functions (see [2XCapJitAddLogicFunction[102X ([14X2.1-1[114X)) and logic
-  templates (see [2XCapJitAppliedLogicTemplates[102X ([14X2.5-13[114X)) to [3Xtree[103X.[133X
+  templates (see [2XCapJitAppliedLogicTemplates[102X ([14X2.5-12[114X)) to [3Xtree[103X.[133X
   
-  [1X2.5-13 CapJitAppliedLogicTemplates[101X
+  [1X2.5-12 CapJitAppliedLogicTemplates[101X
   
-  [33X[1;0Y[29X[2XCapJitAppliedLogicTemplates[102X( [3Xtree[103X, [3Xjit_args[103X[, [3Xcleanup_only[103X] ) [32X function[133X
+  [33X[1;0Y[29X[2XCapJitAppliedLogicTemplates[102X( [3Xtree[103X, [3Xjit_args[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YApplies  all  logic  templates (see [2XCapJitAddLogicTemplate[102X ([14X2.1-2[114X)) to [3Xtree[103X.
-  The  arguments  [3Xjit_args[103X  are  used  to infer the types of variables. If the
-  third  argument  is  set to [10Xtrue[110X, only templates with empty [10Xdst_template[110X are
-  applied.  This can be used to quickly drop unwanted statements from the tree
-  without applying all (possibly expensive) logic templates.[133X
+  The arguments [3Xjit_args[103X are used to infer the types of variables.[133X
   
-  [1X2.5-14 CapJitResolvedGlobalVariables[101X
+  [1X2.5-13 CapJitResolvedGlobalVariables[101X
   
   [33X[1;0Y[29X[2XCapJitResolvedGlobalVariables[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -581,7 +605,7 @@
   [30X    [33X[0;6YReplaces  a  record  access  of a global function by the value of this
         record access.[133X
   
-  [1X2.5-15 CapJitResolvedOperations[101X
+  [1X2.5-14 CapJitResolvedOperations[101X
   
   [33X[1;0Y[29X[2XCapJitResolvedOperations[102X( [3Xtree[103X, [3Xjit_args[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X

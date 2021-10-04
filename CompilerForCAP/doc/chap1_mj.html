@@ -145,7 +145,7 @@
 
 </li>
 </ul>
-<p>For details see <code class="func">CapJitResolvedOperations</code> (<a href="chap2_mj.html#X7D12C378812745DA"><span class="RefLink">2.5-15</span></a>) and <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2_mj.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-14</span></a>). If no operation or global variable can be resolved anymore, we continue with the rule phase.</p>
+<p>For details see <code class="func">CapJitResolvedOperations</code> (<a href="chap2_mj.html#X7D12C378812745DA"><span class="RefLink">2.5-14</span></a>) and <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2_mj.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-13</span></a>). If no operation or global variable can be resolved anymore, we continue with the rule phase.</p>
 
 <p>In the rule phase, the tree is optimized using several rules and techniques. Function arguments, functions, and assignments to local variables are inlined. Unused variables are dropped. Handled edge cases are dropped, that is, if the same edge case is caught multiple times via <code class="code">if condition then return ...; fi;</code> statements, only the first such statement is kept. Finally, "logic" is applied to the tree. For example, calls of <code class="code">CallFuncList</code> are replaced by calls to the actual function. The logic can be extended by the user, see chapter <a href="chap2_mj.html#X7D62EFD07F991E56"><span class="RefLink">2</span></a>.</p>
 
@@ -159,7 +159,7 @@
 
 
 <ul>
-<li><p>The code must not depend on side effects (otherwise dropping "unused" variables or inlining variables could change results). See <code class="func">CapJitThrowErrorOnSideEffects</code> (<a href="chap2_mj.html#X7D78F2228335D1F8"><span class="RefLink">2.4-8</span></a>) for details.</p>
+<li><p>The code must not depend on side effects (otherwise dropping "unused" variables or inlining variables could change results).</p>
 
 </li>
 <li><p>The methods selected for the operations during the resolving phase must be independent of the JIT arguments, that is, they must yield correct results for all allowed arguments of the function to be compiled. Thus, be careful which methods you annotate with <code class="code">CAP_JIT_RESOLVE_FUNCTION</code>. In particular, the CAP categories of objects and morphisms appearing during the execution must be independent of the JIT arguments.</p>
@@ -169,11 +169,38 @@
 
 </li>
 </ul>
-<p>There is an additional weak requirement: The compiler mainly optimizes the code paths covered when executing the function with the JIT arguments. Thus, the JIT arguments should represent a "generic" call, i.e., they should not run into edge cases which do not happen with a "generic" call. Still, the execution using JIT arguments should be fast to improve compilation times.</p>
+<p>There are also additional strong requirements:</p>
 
-<p>Additionally, there is not detection for recursive function calls currently, so resolving such a function call leads to an infinite loop.</p>
 
-<p>For performance optimizations, the compiler might move expressions out of if/else statements, e.g. if they occur inside a (potentially expensive) <code class="code">List</code> call. Thus, code inside if/else statements must execute without error even if moved outside of the if/else statement.</p>
+<ul>
+<li><p>Only assignments to local variables, if/elif/else statements, and return statements are allowed as statements in functions.</p>
+
+</li>
+<li><p>All branches of any given if/elif/else statement must end with a return statement or the assignment to the same local variable.</p>
+
+</li>
+<li><p>If statements must always have an else statement, except if all branches end with a return statement. In the latter case, the statements following the if statement are automatically put into an else statement.</p>
+
+</li>
+<li><p>Nested if/elif/else statements are not allowed.</p>
+
+</li>
+<li><p>Function arguments or local variables must not be called <code class="code">RETURN_VALUE</code>, as this name is used internally.</p>
+
+</li>
+<li><p>Local variables must be assigned at most once (this includes function arguments, which are assigned at least once, namely when the function is called). An exception is made for "rapid reassignments": if the same variable is assigned and then reassigned immediately in the next statement, this only counts as a single assignment.</p>
+
+</li>
+<li><p>Since the compiler might change the order of statements, checking if a local variable (or list entry etc.) is bound is not safe.</p>
+
+</li>
+<li><p>For performance optimizations, the compiler might move expressions out of if/else statements, e.g. if they occur inside a (potentially expensive) <code class="code">List</code> call. Thus, code inside if/else statements must execute without error even if moved outside of the if/else statement.</p>
+
+</li>
+</ul>
+<p>There is an additional weak requirement when passing JIT arguments: The compiler mainly optimizes the code paths covered when executing the function with the JIT arguments. Thus, the JIT arguments should represent a "generic" call, i.e., they should not run into edge cases which do not happen with a "generic" call. Still, the execution using JIT arguments should be fast to improve compilation times.</p>
+
+<p>Additionally, there is no detection for recursive function calls, so resolving such a function call leads to an infinite loop.</p>
 
 <p><a id="X7A502E2F78A33B91" name="X7A502E2F78A33B91"></a></p>
 
@@ -309,7 +336,7 @@
 
 </li>
 </ul>
-<p>A: The function might be listed in <code class="code">CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES</code> or it might be missing an annotation with the pragma <code class="code">CAP_JIT_RESOLVE_FUNCTION</code>. Additionally, a function can only be resolved if it appears as a global variable in the tree during the resolving phase of the compilation. That is, it must be referenced from a global variable from the beginning on, or after global variables are resolved by <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2_mj.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-14</span></a>). Possibly you have adapt <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2_mj.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-14</span></a>) to your setting.</p>
+<p>A: The function might be listed in <code class="code">CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES</code> or it might be missing an annotation with the pragma <code class="code">CAP_JIT_RESOLVE_FUNCTION</code>. Additionally, a function can only be resolved if it appears as a global variable in the tree during the resolving phase of the compilation. That is, it must be referenced from a global variable from the beginning on, or after global variables are resolved by <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2_mj.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-13</span></a>). Possibly you have adapt <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2_mj.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-13</span></a>) to your setting.</p>
 
 
 <ul>
@@ -317,7 +344,7 @@
 
 </li>
 </ul>
-<p>A: The operation might be listed in <code class="code">CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES</code>. If the operation is not a CAP operation and if there are no methods installed for the operation via <code class="code">InstallMethodForCompilerForCAP</code> or <code class="code">InstallOtherMethodForCompilerForCAP</code>, the compiler must be able to get the arguments of the call of the operation from the JIT arguments. Then the rules in the description of <code class="func">CapJitResolvedOperations</code> (<a href="chap2_mj.html#X7D12C378812745DA"><span class="RefLink">2.5-15</span></a>) apply.</p>
+<p>A: The operation might be listed in <code class="code">CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES</code>. If the operation is not a CAP operation and if there are no methods installed for the operation via <code class="code">InstallMethodForCompilerForCAP</code> or <code class="code">InstallOtherMethodForCompilerForCAP</code>, the compiler must be able to get the arguments of the call of the operation from the JIT arguments. Then the rules in the description of <code class="func">CapJitResolvedOperations</code> (<a href="chap2_mj.html#X7D12C378812745DA"><span class="RefLink">2.5-14</span></a>) apply.</p>
 
 
 <ul>

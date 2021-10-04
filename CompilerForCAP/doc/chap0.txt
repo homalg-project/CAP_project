@@ -6,10 +6,10 @@
                    [1X Speed up computations in CAP categories [101X
   
   
-                                   2021.09-07
+                                   2021.10-01
   
   
-                               17 September 2021
+                                 4 October 2021
   
   
                                 Fabian Zickgraf
@@ -65,29 +65,32 @@
       2.4-5 CapJitResultFuncCombineChildren
       2.4-6 CapJitContainsRefToFVAROutsideOfFuncStack
       2.4-7 CapJitGetOrCreateGlobalVariable
-      2.4-8 CapJitThrowErrorOnSideEffects
-      2.4-9 CapJitFindNodeDeep
+      2.4-8 CapJitFindNodeDeep
+      2.4-9 CapJitFindNodes
       2.4-10 CapJitGetNodeByPath
       2.4-11 CapJitRemovedReturnFail
       2.4-12 CapJitPrettyPrintFunction
       2.4-13 CapJitCopyWithNewFunctionIDs
       2.4-14 CapJitIsEqualForEnhancedSyntaxTrees
+      2.4-15 CapJitAddBinding
+      2.4-16 CapJitValueOfBinding
+      2.4-17 CapJitUnbindBinding
+      2.4-18 CapJitReplacedEXPR_REF_FVARByValue
     2.5 [33X[0;0YCompilation steps[133X
       2.5-1 CapJitAppliedCompilerHints
       2.5-2 CapJitReplacedGlobalVariablesByCategoryAttributes
       2.5-3 CapJitReplacedSourceAndRangeAttributes
-      2.5-4 CapJitDetectedTernaryConditionalExpressions
-      2.5-5 CapJitDroppedHandledEdgeCases
-      2.5-6 CapJitDroppedUnusedVariables
-      2.5-7 CapJitHoistedExpressions
-      2.5-8 CapJitInlinedArguments
+      2.5-4 CapJitDroppedHandledEdgeCases
+      2.5-5 CapJitDroppedUnusedBindings
+      2.5-6 CapJitHoistedExpressions
+      2.5-7 CapJitInlinedArguments
+      2.5-8 CapJitInlinedBindings
       2.5-9 CapJitInlinedFunctionCalls
       2.5-10 CapJitInlinedSimpleFunctionCalls
-      2.5-11 CapJitInlinedVariableAssignments
-      2.5-12 CapJitAppliedLogic
-      2.5-13 CapJitAppliedLogicTemplates
-      2.5-14 CapJitResolvedGlobalVariables
-      2.5-15 CapJitResolvedOperations
+      2.5-11 CapJitAppliedLogic
+      2.5-12 CapJitAppliedLogicTemplates
+      2.5-13 CapJitResolvedGlobalVariables
+      2.5-14 CapJitResolvedOperations
   3 [33X[0;0YExamples and tests[133X
     3.1 [33X[0;0YExamples[133X
     3.2 [33X[0;0YTests[133X
