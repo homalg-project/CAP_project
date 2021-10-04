@@ -29,9 +29,10 @@ jobs:
       - run: |
           export HOME="/home/gap"
           cd /home/gap/.gap/pkg/
-          sudo apt update
-          sudo apt dist-upgrade -y
-          sudo apt install -y texlive-latex-extra texlive-fonts-extra
+          # work around https://github.com/gap-system/gap-docker-base/issues/30
+          sudo apt -o Acquire::https::Verify-Peer="false" update
+          sudo apt -o Acquire::https::Verify-Peer="false" dist-upgrade -y
+          sudo apt -o Acquire::https::Verify-Peer="false" install -y texlive-latex-extra texlive-fonts-extra
           cp ./Toposes/ci_gaprc /home/gap/.gap/gaprc
           git clone --depth 1 https://github.com/gap-packages/AutoDoc.git
           git clone --depth 1 https://github.com/homalg-project/homalg_project.git
