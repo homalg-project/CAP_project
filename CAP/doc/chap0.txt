@@ -6,7 +6,7 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2021.10-01
+                                   2021.10-02
   
   
                                  4 October 2021
@@ -841,6 +841,7 @@
       9.2-19 InstallMethodForCompilerForCAP
       9.2-20 InstallOtherMethodForCompilerForCAP
       9.2-21 CapJitAddKnownMethod
+      9.2-22 CapFixpoint
   10 [33X[0;0YLimits and Colimits[133X
     10.1 [33X[0;0YSpecification of Limits and Colimits[133X
     10.2 [33X[0;0YEnhancing Limit Specifications[133X

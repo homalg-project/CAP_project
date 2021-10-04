@@ -55,6 +55,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7F953A7086264653">9.2-19 InstallMethodForCompilerForCAP</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7FC9241882AB3F5A">9.2-20 InstallOtherMethodForCompilerForCAP</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7AF9D3AC85CB0F3D">9.2-21 CapJitAddKnownMethod</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X824449507B8AC925">9.2-22 CapFixpoint</a></span>
 </div></div>
 </div>
 
@@ -240,6 +241,13 @@
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitAddKnownMethod</code>( <var class="Arg">operation</var>, <var class="Arg">filters</var>, <var class="Arg">method</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Adds a method to the list of methods known to the compiler. Different methods for the same operation must have different numbers of arguments so that the method selection can be done ahead of time.</p>
+
+<p><a id="X824449507B8AC925" name="X824449507B8AC925"></a></p>
+
+<h5>9.2-22 CapFixpoint</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapFixpoint</code>( <var class="Arg">predicate</var>, <var class="Arg">func</var>, <var class="Arg">initial_value</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Computes a fixpoint of <var class="Arg">func</var> with regard to equality given by <var class="Arg">predicate</var>, starting with <var class="Arg">initial_value</var>. If no such fixpoint exists, the execution does not terminate.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap8_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap10_mj.html">[Next Chapter]</a>&nbsp;  </div>

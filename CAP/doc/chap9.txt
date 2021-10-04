@@ -231,3 +231,11 @@
   methods  for  the same operation must have different numbers of arguments so
   that the method selection can be done ahead of time.[133X
   
+  [1X9.2-22 CapFixpoint[101X
+  
+  [33X[1;0Y[29X[2XCapFixpoint[102X( [3Xpredicate[103X, [3Xfunc[103X, [3Xinitial_value[103X ) [32X function[133X
+  
+  [33X[0;0YComputes  a  fixpoint  of  [3Xfunc[103X  with regard to equality given by [3Xpredicate[103X,
+  starting  with [3Xinitial_value[103X. If no such fixpoint exists, the execution does
+  not terminate.[133X
+  

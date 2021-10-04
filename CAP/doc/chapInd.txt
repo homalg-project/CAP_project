@@ -308,6 +308,7 @@
   [2XCapCategorySwitchLogicPropagationForObjectsOn[102X 1.4-1 
   [2XCapCategorySwitchLogicPropagationOff[102X 1.4-6 
   [2XCapCategorySwitchLogicPropagationOn[102X 1.4-5 
+  [2XCapFixpoint[102X 9.2-22 
   [2XCapFunctor[102X, for IsString, IsCapCategory, IsCapCategory 5.4-1 
       for IsString, IsCapCategory, IsCapCategoryAsCatObject 5.4-1 
       for IsString, IsCapCategoryAsCatObject, IsCapCategory 5.4-1 
