@@ -14,3 +14,4 @@
 @Section Tests
 
 @InsertChunk LinearAlgebraForCAP
+@InsertChunk WrapperOfOppositeOfCategoryOfRowsOfFieldPrecompiled
