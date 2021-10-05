@@ -134,7 +134,14 @@ InstallMethod( WrapperCategory,
             name := "wrapper category";
         fi;
     fi;
-
+    
+    ########################################
+    # CAUTION: options must be reset below
+    # when calling WrapperCategory when
+    # wrapping the range of the homomorphism
+    # structure!
+    ########################################
+    
     object_constructor := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "object_constructor", AsObjectInWrapperCategory );
     object_datum := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "object_datum", { D, o } -> UnderlyingCell( o ) );
     morphism_constructor := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "morphism_constructor", { D, s, m, r } -> AsMorphismInWrapperCategory( s, m, r ) );
@@ -269,7 +276,16 @@ InstallMethod( WrapperCategory,
                 
             else
                 
-                HC := WrapperCategory( HC );
+                # reset all options which do not apply to the range of the homomorphism structure
+                HC := WrapperCategory( HC :
+                    name := fail,
+                    object_constructor := fail,
+                    object_datum := fail,
+                    morphism_constructor := fail,
+                    morphism_datum := fail,
+                    category_object_filter := fail,
+                    category_morphism_filter := fail
+                );
                 
             fi;
             
