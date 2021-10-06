@@ -15,7 +15,7 @@
 #!   Else all installed operations of the category are precompiled.
 #!   Technical requirements:
 #!     * <A>category_constructor</A> must be a regular function, i.e. not an operation or a kernel function.
-#!     * <A>category_constructor</A> must support the options `FinalizeCategory` and `enable_compilation`.
+#!     * <A>category_constructor</A> must support the option `FinalizeCategory`.
 #!       WARNING: When using attributes you might run into errors because the options are only respected the first time you call the attribute getter.
 #!       To catch such a situation, <A>category_constructor</A> is applied to <A>given_arguments</A> twice and if the results are identical (`IsIdenticalObj`)
 #!       an error is raised.

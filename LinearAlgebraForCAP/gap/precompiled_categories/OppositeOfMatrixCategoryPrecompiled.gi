@@ -603,8 +603,7 @@ BindGlobal( "OppositeOfMatrixCategoryPrecompiled", function ( field )
         
         
         function ( field )
-    return Opposite( MATRIX_CATEGORY( field : FinalizeCategory := true,
-          enable_compilation := false ) );
+    return Opposite( MATRIX_CATEGORY( field : FinalizeCategory := true ) );
 end;
         
         

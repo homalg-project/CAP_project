@@ -10,12 +10,7 @@ QQ := HomalgFieldOfRationals( );;
 
 # be careful not to use `MatrixCategory` because attributes are not supported
 category_constructor := function( field )
-    
-    return Opposite( MATRIX_CATEGORY(
-        field :
-        FinalizeCategory := true,
-        enable_compilation := false
-    ) ); end;;
+  return Opposite( MATRIX_CATEGORY( field : FinalizeCategory := true ) ); end;;
 
 given_arguments := [ QQ ];;
 compiled_category_name := "OppositeOfMatrixCategoryPrecompiled";;
