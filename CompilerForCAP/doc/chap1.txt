@@ -255,11 +255,11 @@
   [30X    [33X[0;6Y[3Xcategory_constructor[103X must be a regular function, i.e. not an operation
         or a kernel function.[133X
   
-  [30X    [33X[0;6Y[3Xcategory_constructor[103X  must  support  the  options [10XFinalizeCategory[110X and
-        [10Xenable_compilation[110X.  WARNING: When using attributes you might run into
-        errors  because the options are only respected the first time you call
-        the  attribute getter. To catch such a situation, [3Xcategory_constructor[103X
-        is  applied  to [3Xgiven_arguments[103X twice and if the results are identical
+  [30X    [33X[0;6Y[3Xcategory_constructor[103X   must   support   the  option  [10XFinalizeCategory[110X.
+        WARNING:  When  using attributes you might run into errors because the
+        options  are  only  respected  the  first  time you call the attribute
+        getter.  To catch such a situation, [3Xcategory_constructor[103X is applied to
+        [3Xgiven_arguments[103X    twice    and   if   the   results   are   identical
         ([10XIsIdenticalObj[110X) an error is raised.[133X
   
   [30X    [33X[0;6YThe  compiler  has  to  create  a valid input for the operations which

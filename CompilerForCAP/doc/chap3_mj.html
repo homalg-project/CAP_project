@@ -1133,12 +1133,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># be careful not to use `MatrixCategory` because attributes are not supported</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">category_constructor := function( field )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return Opposite( MATRIX_CATEGORY(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        field :</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        FinalizeCategory := true,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        enable_compilation := false</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ) ); end;;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  return Opposite( MATRIX_CATEGORY( field : FinalizeCategory := true ) ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ QQ ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "OppositeOfMatrixCategoryPrecompiled";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "LinearAlgebraForCAP";;</span>

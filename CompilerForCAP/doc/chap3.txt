@@ -1083,12 +1083,7 @@
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
     [4X[25Xgap>[125X [27X# be careful not to use `MatrixCategory` because attributes are not supported[127X[104X
     [4X[25X>[125X [27Xcategory_constructor := function( field )[127X[104X
-    [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27X    return Opposite( MATRIX_CATEGORY([127X[104X
-    [4X[25X>[125X [27X        field :[127X[104X
-    [4X[25X>[125X [27X        FinalizeCategory := true,[127X[104X
-    [4X[25X>[125X [27X        enable_compilation := false[127X[104X
-    [4X[25X>[125X [27X    ) ); end;;[127X[104X
+    [4X[25X>[125X [27X  return Opposite( MATRIX_CATEGORY( field : FinalizeCategory := true ) ); end;;[127X[104X
     [4X[25Xgap>[125X [27Xgiven_arguments := [ QQ ];;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_category_name := "OppositeOfMatrixCategoryPrecompiled";;[127X[104X
     [4X[25Xgap>[125X [27Xpackage_name := "LinearAlgebraForCAP";;[127X[104X
