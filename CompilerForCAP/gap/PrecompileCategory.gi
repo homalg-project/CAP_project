@@ -470,6 +470,13 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
             
         fi;
         
+        # catch errors in the code before compilation by first executing the function as is
+        if Length( example_input ) = Length( filter_list ) then
+            
+            CallFuncList( function_to_compile, example_input );
+            
+        fi;
+        
         if not IsBound( cat!.compiled_functions_trees.(function_name)[index] ) then
             
             cat!.compiled_functions_trees.(function_name)[index] := CapJitCompiledFunctionAsEnhancedSyntaxTree( function_to_compile, example_input );
