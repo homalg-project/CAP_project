@@ -14,9 +14,9 @@ QQ := HomalgFieldOfRationals( );;
 category_constructor := EvalString( ReplacedString( """function( field )
   local matrix_category, op, object_constructor, object_datum, morphism_constructor, morphism_datum, wrapper@
     
-    matrix_category := CategoryOfRows( field : FinalizeCategory := true, enable_compilation := false )@
+    matrix_category := CategoryOfRows( field : FinalizeCategory := true )@
     
-    op := Opposite( matrix_category : FinalizeCategory := true, enable_compilation := false, only_primitive_operations := true )@
+    op := Opposite( matrix_category : FinalizeCategory := true, only_primitive_operations := true )@
     
     ##
     object_constructor := function( cat, underlying_object )
