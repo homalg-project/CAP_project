@@ -923,25 +923,16 @@ AddDerivationToCAP( IsEqualForMorphismsOnMor,
     
     value_1 := IsEqualForObjects( cat, Source( morphism_1 ), Source( morphism_2 ) );
     
-    if value_1 = fail then
-      
-      return fail;
-      
-    fi;
-    
     value_2 := IsEqualForObjects( cat, Range( morphism_1 ), Range( morphism_2 ) );
     
-    if value_2 = fail then
-      
-      return fail;
-      
-    fi;
-    
-    
-    if ( value_1 = false ) or ( value_2 = false ) then
-    
-      return false;
-    
+    if value_1 = fail or value_2 = fail then
+        
+        return fail;
+        
+    elif value_1 = false or value_2 = false then
+        
+        return false;
+        
     fi;
     
     return IsEqualForMorphisms( cat, morphism_1, morphism_2 );
