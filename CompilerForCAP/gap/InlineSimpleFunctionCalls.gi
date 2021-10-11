@@ -15,6 +15,7 @@ InstallGlobalFunction( CapJitInlinedSimpleFunctionCalls, function ( tree )
             
             if not (tree.args.length = 0 and tree.funcref.narg = 0) then
                 
+                # COVERAGE_IGNORE_NEXT_LINE
                 Error( "found function call with arguments, please inline arguments first" );
                 
             fi;

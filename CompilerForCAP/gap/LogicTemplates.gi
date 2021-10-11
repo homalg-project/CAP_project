@@ -21,24 +21,28 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
     # some basic sanity checks
     if not IsRecord( template ) then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "a logic template must be a record" );
         
     fi;
     
     if not IsSubset( RecNames( template ), [ "variable_names", "src_template", "dst_template", "returns_value" ] ) then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "a logic template must have the following required record entries: variable_names, src_template, dst_template, returns_value" );
         
     fi;
     
     if IsBound( template.variable_filters ) and Length( template.variable_names ) <> Length( template.variable_filters ) then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "the length of the record entries variable_names and variable_filters of a logic template must be equal" );
         
     fi;
 
     if IsBound( template.needed_packages ) and (not IsList( template.needed_packages ) or ForAny( template.needed_packages, p -> not IsList( p ) or Length( p ) <> 2 )) then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "the record entry needed_packages of a logic template must be a list of pairs" );
         
     fi;
@@ -165,6 +169,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
                 
                 if src_template_path = fail then
                     
+                    # COVERAGE_IGNORE_NEXT_LINE
                     Error( "could not find matching func in src_template" );
                     
                 fi;
@@ -175,6 +180,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
                 
                 if src_func.id in func_id_stack then
                     
+                    # COVERAGE_IGNORE_NEXT_LINE
                     Error( "A function in src_template is used multiple times in dst_template in a nested way. This is not supported." );
                     
                 fi;
@@ -350,10 +356,12 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
         tree_path := additional_arguments[2];
         
         if debug then
+            # COVERAGE_IGNORE_BLOCK_START
             Display( "now matching against" );
             Display( template_tree );
             Display( "result" );
             Display( result );
+            # COVERAGE_IGNORE_BLOCK_END
         fi;
         
         # check if we already bailed out in pre_func
@@ -378,8 +386,10 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
                 );
                 
                 if debug then
+                    # COVERAGE_IGNORE_BLOCK_START
                     Display( "matched via variable1" );
                     Display( true );
+                    # COVERAGE_IGNORE_BLOCK_END
                 fi;
                 
                 return true;
@@ -387,8 +397,10 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
             else
                 
                 if debug then
+                    # COVERAGE_IGNORE_BLOCK_START
                     Display( "matched via variable2" );
                     Display( CapJitIsEqualForEnhancedSyntaxTrees( variables[var_number].tree, tree ) );
+                    # COVERAGE_IGNORE_BLOCK_END
                 fi;
                 
                 return CapJitIsEqualForEnhancedSyntaxTrees( variables[var_number].tree, tree );
@@ -400,6 +412,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
         if template_tree.type <> tree.type then
             
             if debug then
+                # COVERAGE_IGNORE_NEXT_LINE
                 Display( "type mismatch" );
             fi;
             
@@ -410,6 +423,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
         if template_tree.type = "SYNTAX_TREE_LIST" and template_tree.length <> tree.length then
             
             if debug then
+                # COVERAGE_IGNORE_NEXT_LINE
                 Display( "list length mismatch" );
             fi;
             
@@ -421,8 +435,10 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
         for key in RecNames( template_tree ) do
             
             if debug then
+                # COVERAGE_IGNORE_BLOCK_START
                 Display( "checking" );
                 Display( key );
+                # COVERAGE_IGNORE_BLOCK_END
             fi;
             
             Assert( 0, IsBound( tree.(key) ) );
@@ -433,6 +449,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
                 if IsIdenticalObj( ValueGlobal( template_tree.gvar ), ValueGlobal( tree.gvar ) ) then
                     
                     if debug then
+                        # COVERAGE_IGNORE_NEXT_LINE
                         Display( "match: gvars point to identical values" );
                     fi;
                     
@@ -441,6 +458,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
                 else
                     
                     if debug then
+                        # COVERAGE_IGNORE_NEXT_LINE
                         Display( "mismatch: gvars point to non-identical values" );
                     fi;
                     
@@ -456,8 +474,10 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
                 if result.(key) = false then
                     
                     if debug then
+                        # COVERAGE_IGNORE_BLOCK_START
                         Display( "child mismatch" );
                         Display( key );
+                        # COVERAGE_IGNORE_BLOCK_END
                     fi;
                     
                     return false;
@@ -476,8 +496,10 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
             if template_tree.(key) <> tree.(key) then
                 
                 if debug then
+                    # COVERAGE_IGNORE_BLOCK_START
                     Display( "tree mismatch" );
                     Display( key );
+                    # COVERAGE_IGNORE_BLOCK_END
                 fi;
                 
                 return false;
@@ -488,11 +510,13 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
                 
             fi;
             
+            # COVERAGE_IGNORE_NEXT_LINE
             Error( "should never get here" );
             
         od;
         
         if debug then
+            # COVERAGE_IGNORE_NEXT_LINE
             Display( "everything matched" );
         fi;
         
@@ -591,8 +615,10 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
         
         if IsBound( template.debug ) and template.debug then
             
+            # COVERAGE_IGNORE_BLOCK_START
             Display( "try to match template:" );
             Display( template.src_template );
+            # COVERAGE_IGNORE_BLOCK_END
             
         fi;
         
@@ -635,6 +661,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
             
             if IsBound( template.debug ) and template.debug then
                 
+                # COVERAGE_IGNORE_NEXT_LINE
                 Display( "could not find a match" );
                 
             fi;
@@ -646,6 +673,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
         
         if IsBound( template.debug ) and template.debug then
             
+            # COVERAGE_IGNORE_NEXT_LINE
             Error( "found match" );
             
         fi;
@@ -663,6 +691,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
         
         if not IsDenseList( variables ) or Length( variables ) <> Length( template.variable_names ) then
             
+            # COVERAGE_IGNORE_NEXT_LINE
             Error( "matched wrong number of variables" );
             
         fi;
@@ -716,6 +745,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
             
             if IsBound( template.debug ) and template.debug then
                 
+                # COVERAGE_IGNORE_NEXT_LINE
                 Error( "type check did not succeed" );
                 
             fi;
@@ -763,6 +793,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
             
             if IsBound( template.debug ) and template.debug then
                 
+                # COVERAGE_IGNORE_NEXT_LINE
                 Error( "success, new_tree is well-defined" );
                 
             fi;
@@ -778,6 +809,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
             
             if IsBound( template.debug ) and template.debug then
                 
+                # COVERAGE_IGNORE_NEXT_LINE
                 Error( "new_tree is not well-defined" );
                 
             fi;

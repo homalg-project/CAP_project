@@ -19,6 +19,7 @@ InstallGlobalFunction( CapJitIsCallToGlobalFunction, function ( tree, condition 
         
     else
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "<condition> must be a string or a function" );
         
     fi;
@@ -49,6 +50,7 @@ InstallGlobalFunction( CapJitResultFuncCombineChildren, function ( tree, result,
 
     else
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "this should never happen" );
         
     fi;
@@ -242,6 +244,7 @@ InstallGlobalFunction( CapJitRemovedReturnFail, function ( tree )
     
     if not found_return_fail then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "Could not detect a statement returning fail. Either the pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL is not set correctly or the given structure is not yet handled correctly by the compiler." );
         
     fi;
@@ -255,6 +258,7 @@ InstallGlobalFunction( CapJitPrettyPrintFunction, function ( func )
     
     if IsOperation( func ) or IsKernelFunction( func ) then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "<func> must neither be an operation nor a kernel function" );
         
     fi;
@@ -313,12 +317,14 @@ InstallGlobalFunction( CapJitAddBinding, function ( bindings, name, value )
     
     if not IsRecord( bindings ) or not IsBound( bindings.type ) or bindings.type <> "FVAR_BINDING_SEQ" then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "the first argument must be a syntax tree of type FVAR_BINDING_SEQ" );
         
     fi;
     
     if not IsString( name ) then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "the second arguments must be a string" );
         
     fi;
@@ -327,6 +333,7 @@ InstallGlobalFunction( CapJitAddBinding, function ( bindings, name, value )
     
     if IsBound( bindings.(rec_name) ) then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "there already is a binding with name ", name );
         
     fi;
@@ -340,18 +347,21 @@ InstallGlobalFunction( CapJitValueOfBinding, function ( bindings, name )
     
     if not IsRecord( bindings ) or not IsBound( bindings.type ) or bindings.type <> "FVAR_BINDING_SEQ" then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "the first argument must be a syntax tree of type FVAR_BINDING_SEQ" );
         
     fi;
     
     if not IsString( name ) then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "the second arguments must be a string" );
         
     fi;
     
     if not name in bindings.names then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( name, " is not the name of a binding" );
         
     fi;
@@ -364,18 +374,21 @@ InstallGlobalFunction( CapJitUnbindBinding, function ( bindings, name )
     
     if not IsRecord( bindings ) or not IsBound( bindings.type ) or bindings.type <> "FVAR_BINDING_SEQ" then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "the first argument must be a syntax tree of type FVAR_BINDING_SEQ" );
         
     fi;
     
     if not IsString( name ) then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "the second arguments must be a string" );
         
     fi;
     
     if not name in bindings.names then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( name, " is not the name of a binding" );
         
     fi;
@@ -434,6 +447,7 @@ InstallMethod( AsListMut,
     
     if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         TryNextMethod();
         
     fi;
@@ -451,6 +465,7 @@ InstallMethod( Sublist,
     
     if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         TryNextMethod();
         
     fi;
@@ -483,6 +498,7 @@ InstallMethod( Remove,
     
     if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         TryNextMethod();
         
     fi;
@@ -518,6 +534,7 @@ InstallMethod( PositionProperty,
     
     if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         TryNextMethod();
         
     fi;
@@ -567,6 +584,7 @@ InstallMethod( ListOp,
     
     if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         TryNextMethod();
         
     fi;
@@ -594,6 +612,7 @@ InstallMethod( FilteredOp,
     
     if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         TryNextMethod();
         
     fi;
@@ -611,6 +630,7 @@ InstallMethod( FirstOp,
     
     if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         TryNextMethod();
         
     fi;
@@ -637,6 +657,7 @@ InstallMethod( LastOp,
     
     if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         TryNextMethod();
         
     fi;
@@ -659,6 +680,7 @@ InstallMethod( ForAllOp,
     
     if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         TryNextMethod();
         
     fi;
@@ -676,6 +698,7 @@ InstallMethod( Iterator,
     
     if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         TryNextMethod();
         
     fi;

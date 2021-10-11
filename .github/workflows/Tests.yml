@@ -40,6 +40,7 @@ jobs:
           export SOURCE_DATE_EPOCH=0
           TERM=dumb make -C CAP_project -j $(nproc) --output-sync ci-test
           cp ./CAP_project/.codecov.yml ./
+          (cd CAP_project && LANG=C.UTF-8 python3 process_coverage_ignored_lines.py)
           curl -s https://codecov.io/bash | bash
           git config --global user.name "Bot"
           git config --global user.email "empty"

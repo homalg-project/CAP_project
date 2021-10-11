@@ -50,6 +50,7 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
                         
                         if morphism_attribute_position = fail then
                             
+                            # COVERAGE_IGNORE_NEXT_LINE
                             Error( "cannot find morphism attribute" );
                             
                         fi;
@@ -88,6 +89,7 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
                             
                             if source_attribute_position = fail then
                                 
+                                # COVERAGE_IGNORE_NEXT_LINE
                                 Error( "cannot find source attribute" );
                                 
                             fi;
@@ -124,6 +126,7 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
                             
                             if range_attribute_position = fail then
                                 
+                                # COVERAGE_IGNORE_NEXT_LINE
                                 Error( "cannot find range attribute" );
                                 
                             fi;

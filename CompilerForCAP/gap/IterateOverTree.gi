@@ -136,9 +136,11 @@ InstallGlobalFunction( CapJitIterateOverTree, function ( tree, pre_func, result_
         
     else
         
+        # COVERAGE_IGNORE_BLOCK_START
         Display( tree );
         
         Error( "cannot determine type of tree" );
+        # COVERAGE_IGNORE_BLOCK_END
         
     fi;
     
@@ -156,9 +158,11 @@ InstallGlobalFunction( CapJitIterateOverTree, function ( tree, pre_func, result_
         
     else
         
+        # COVERAGE_IGNORE_BLOCK_START
         Display( tree );
         
         Error( "cannot find iteration key" );
+        # COVERAGE_IGNORE_BLOCK_END
         
     fi;
     
@@ -168,9 +172,11 @@ InstallGlobalFunction( CapJitIterateOverTree, function ( tree, pre_func, result_
         
         if not IsBound( tree.(key) ) then
             
+            # COVERAGE_IGNORE_BLOCK_START
             Display( tree );
             
             Error( "invalid iteration key" );
+            # COVERAGE_IGNORE_BLOCK_END
             
         fi;
         
