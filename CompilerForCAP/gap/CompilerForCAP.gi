@@ -41,6 +41,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     
     if IsOperation( func ) or IsKernelFunction( func ) then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "<func> is a operation or kernel function, this is not supported yet." );
         
     fi;
@@ -48,8 +49,10 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     debug := false;
     
     if debug then
+        # COVERAGE_IGNORE_BLOCK_START
         Display( func );
         Error( "start compilation" );
+        # COVERAGE_IGNORE_BLOCK_END
     fi;
     
     if Length( jit_args ) > 0 and IsCapCategory( jit_args[1] ) then
@@ -72,47 +75,59 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         Info( InfoCapJit, 1, "Start resolving." );
         
         if debug then
+            # COVERAGE_IGNORE_BLOCK_START
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
             Error( "start resolving" );
+            # COVERAGE_IGNORE_BLOCK_END
         fi;
         
         if debug then
+            # COVERAGE_IGNORE_BLOCK_START
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
             Error( "apply CapJitResolvedOperations" );
+            # COVERAGE_IGNORE_BLOCK_END
         fi;
         
         tree := CapJitResolvedOperations( tree, jit_args );
         
         if debug then
+            # COVERAGE_IGNORE_BLOCK_START
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
             Error( "apply CapJitInlinedArguments" );
+            # COVERAGE_IGNORE_BLOCK_END
         fi;
         
         tree := CapJitInlinedArguments( tree );
         
         if debug then
+            # COVERAGE_IGNORE_BLOCK_START
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
             Error( "apply CapJitDroppedUnusedBindings" );
+            # COVERAGE_IGNORE_BLOCK_END
         fi;
         
         tree := CapJitDroppedUnusedBindings( tree );
         
         if debug then
+            # COVERAGE_IGNORE_BLOCK_START
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
             Error( "apply CapJitInlinedBindings (for global variables only)" );
+            # COVERAGE_IGNORE_BLOCK_END
         fi;
         
         tree := CapJitInlinedBindings( tree : inline_gvars_only := true );
         
         if debug then
+            # COVERAGE_IGNORE_BLOCK_START
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
             Error( "apply CapJitResolvedGlobalVariables" );
+            # COVERAGE_IGNORE_BLOCK_END
         fi;
         
         tree := CapJitResolvedGlobalVariables( tree );
@@ -129,63 +144,79 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         Info( InfoCapJit, 1, "Apply rules." );
         
         if debug then
+            # COVERAGE_IGNORE_BLOCK_START
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
             Error( "apply rules" );
+            # COVERAGE_IGNORE_BLOCK_END
         fi;
         
         if debug then
+            # COVERAGE_IGNORE_BLOCK_START
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
             Error( "apply CapJitAppliedLogic" );
+            # COVERAGE_IGNORE_BLOCK_END
         fi;
         
         tree := CapJitAppliedLogic( tree, jit_args );
         
         if debug then
+            # COVERAGE_IGNORE_BLOCK_START
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
             Error( "apply CapJitDroppedHandledEdgeCases" );
+            # COVERAGE_IGNORE_BLOCK_END
         fi;
         
         tree := CapJitDroppedHandledEdgeCases( tree );
         
         if debug then
+            # COVERAGE_IGNORE_BLOCK_START
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
             Error( "apply CapJitInlinedArguments" );
+            # COVERAGE_IGNORE_BLOCK_END
         fi;
         
         tree := CapJitInlinedArguments( tree );
         
         if debug then
+            # COVERAGE_IGNORE_BLOCK_START
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
             Error( "apply CapJitInlinedSimpleFunctionCalls" );
+            # COVERAGE_IGNORE_BLOCK_END
         fi;
         
         tree := CapJitInlinedSimpleFunctionCalls( tree );
         
         if debug then
+            # COVERAGE_IGNORE_BLOCK_START
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
             Error( "apply CapJitInlinedFunctionCalls" );
+            # COVERAGE_IGNORE_BLOCK_END
         fi;
         
         tree := CapJitInlinedFunctionCalls( tree );
         
         if debug then
+            # COVERAGE_IGNORE_BLOCK_START
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
             Error( "apply CapJitDroppedUnusedBindings" );
+            # COVERAGE_IGNORE_BLOCK_END
         fi;
         
         tree := CapJitDroppedUnusedBindings( tree );
         
         if debug then
+            # COVERAGE_IGNORE_BLOCK_START
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
             Error( "apply CapJitInlinedBindings" );
+            # COVERAGE_IGNORE_BLOCK_END
         fi;
         
         tree := CapJitInlinedBindings( tree );
@@ -197,9 +228,11 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     if Length( jit_args ) > 0 and IsCapCategory( jit_args[1] ) then
         
         if debug then
+            # COVERAGE_IGNORE_BLOCK_START
             compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
             Display( compiled_func );
             Error( "apply CapJitAppliedCompilerHints" );
+            # COVERAGE_IGNORE_BLOCK_END
         fi;
         
         tree := CapJitAppliedCompilerHints( tree, jit_args[1] );
@@ -207,15 +240,18 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     fi;
     
     if debug then
+        # COVERAGE_IGNORE_BLOCK_START
         compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
         Display( compiled_func );
         Error( "apply CapJitHoistedExpressions" );
+        # COVERAGE_IGNORE_BLOCK_END
     fi;
     
     tree := CapJitHoistedExpressions( tree );
     
     if debug then
         
+        # COVERAGE_IGNORE_BLOCK_START
         compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
         
         Display( compiled_func );
@@ -223,6 +259,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         Assert( 0, CallFuncList( compiled_func, jit_args ) = CallFuncList( func, jit_args ) );
         
         Error( "compilation finished" );
+        # COVERAGE_IGNORE_BLOCK_END
         
     fi;
     

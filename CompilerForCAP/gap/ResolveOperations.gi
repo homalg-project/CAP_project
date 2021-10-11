@@ -35,6 +35,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
                 
                 if CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list[1] <> "category" then
                     
+                    # COVERAGE_IGNORE_NEXT_LINE
                     Error( "cannot resolve CAP operations which do not get the category as the first argument" );
                     
                 fi;
@@ -123,6 +124,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
         
         if not (IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true) then
             
+            # COVERAGE_IGNORE_NEXT_LINE
             Error( "only operations of categories with `category!.category_as_first_argument = true` can be resolved" );
             
         fi;
@@ -132,6 +134,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
         
         if index = fail then
             
+            # COVERAGE_IGNORE_NEXT_LINE
             Error( "All added functions for <operation> in <category> have additional filters. Cannot continue with compilation." );
             
         fi;
@@ -226,6 +229,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
         
         if pos = fail then
             
+            # COVERAGE_IGNORE_NEXT_LINE
             Error( "Could not find known method for ", operation_name, " with correct length" );
             
         fi;

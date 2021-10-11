@@ -79,6 +79,7 @@ InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function ( tree )
                         
                         if tree.branches.length = 0 then
                             
+                            # COVERAGE_IGNORE_NEXT_LINE
                             Error( "No branches remain, this should never happen." );
                             
                         fi;

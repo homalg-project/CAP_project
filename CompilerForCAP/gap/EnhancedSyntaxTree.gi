@@ -9,6 +9,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
     ErrorWithFuncLocation := function ( args... )
         
         # using LocationFunc causes a segfault (https://github.com/gap-system/gap/issues/4507)
+        # COVERAGE_IGNORE_NEXT_LINE
         CallFuncList( Error, Concatenation( [ "for function at ", FilenameFunc( func ), ":", StartlineFunc( func ), ":\n" ], args ) );
         
     end;
@@ -29,6 +30,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
     
     if not IsList( given_arguments ) then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "the option \"given_arguments\" must be a list" );
         
     fi;
@@ -37,6 +39,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
     
     if tree.variadic and Length( given_arguments ) >= tree.narg then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "cannot insert given arguments into variadic arguments" );
         
     fi;
@@ -193,6 +196,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 
                 if "RETURN_VALUE" in tree.nams then
                     
+                    # COVERAGE_IGNORE_NEXT_LINE
                     ErrorWithFuncLocation( "Function has argument or local variable with name RETURN_VALUE. This is not supported." );
                     
                 fi;
@@ -253,6 +257,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                         
                     else
                         
+                        # COVERAGE_IGNORE_NEXT_LINE
                         ErrorWithFuncLocation( "tree contains hvar ref outside of stack" );
                         
                     fi;
@@ -289,6 +294,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                         
                         if i = Length( tree.statements ) then
                             
+                            # COVERAGE_IGNORE_NEXT_LINE
                             ErrorWithFuncLocation( "The pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL must not occur as the last statement in a sequence of statements" );
                             
                         fi;
@@ -305,6 +311,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                             
                         else
                             
+                            # COVERAGE_IGNORE_NEXT_LINE
                             ErrorWithFuncLocation( "The line following the pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL must either assign a variable to the result of a function call or return the result of a function call" );
                             
                         fi;
@@ -317,6 +324,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                             
                         else
                             
+                            # COVERAGE_IGNORE_NEXT_LINE
                             ErrorWithFuncLocation( "The pragma CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL can only be used for calls to global functions or operations" );
                             
                         fi;
@@ -342,6 +350,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                         
                         if i = Length( tree.statements ) then
                             
+                            # COVERAGE_IGNORE_NEXT_LINE
                             ErrorWithFuncLocation( "The pragma CAP_JIT_DROP_NEXT_STATEMENT must not occur as the last statement in a sequence of statements" );
                             
                         fi;
@@ -447,6 +456,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
             
         else
             
+            # COVERAGE_IGNORE_NEXT_LINE
             Error( "this should never happen" );
             
         fi;
@@ -482,6 +492,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 
                 if IsBound( bindings.(rec_name) ) then
                     
+                    # COVERAGE_IGNORE_NEXT_LINE
                     ErrorWithFuncLocation( "Variable with name ", name, " is assigned more than once (not as part of a rapid reassignment). This is not supported." );
                     
                 fi;
@@ -490,6 +501,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 
                 if Position( tree.nams, name ) <= tree.narg then
                     
+                    # COVERAGE_IGNORE_NEXT_LINE
                     ErrorWithFuncLocation( "A function argument with name ", name, " is assigned. This is not supported." );
                     
                 fi;
@@ -506,6 +518,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                     
                     if statement.func_id <> tree.id then
                         
+                        # COVERAGE_IGNORE_NEXT_LINE
                         ErrorWithFuncLocation( "A higher variable with name ", statement.name, " is assigned. This is not supported." );
                         
                     fi;
@@ -524,6 +537,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                     
                     if statement.branches.1.body.statements.length = 0 then
                         
+                        # COVERAGE_IGNORE_NEXT_LINE
                         ErrorWithFuncLocation( "Found empty if branch. This is not supported." );
                         
                     fi;
@@ -532,12 +546,14 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                         
                         if Last( statement.branches.1.body.statements ).func_id <> tree.id then
                             
+                            # COVERAGE_IGNORE_NEXT_LINE
                             ErrorWithFuncLocation( "Assignment to a non-local variable. This is not supported." );
                             
                         fi;
                         
                         if not Last( statement.branches ).condition.type = "EXPR_TRUE" then
                             
+                            # COVERAGE_IGNORE_NEXT_LINE
                             ErrorWithFuncLocation( "Found if without else clause. This is not supported." );
                             
                         fi;
@@ -553,6 +569,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                             
                             if branch.body.statements.length = 0 then
                                 
+                                # COVERAGE_IGNORE_NEXT_LINE
                                 ErrorWithFuncLocation( "Found empty if branch. This is not supported." );
                                 
                             fi;
@@ -561,6 +578,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                                 
                                 if branch.body.statements.(j).type <> "STAT_ASS_FVAR" then
                                     
+                                    # COVERAGE_IGNORE_NEXT_LINE
                                     ErrorWithFuncLocation( "The type ", branch.body.statements.(j).type, " is not supported at this point in the code." );
                                     
                                 fi;
@@ -571,6 +589,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                             
                             if Last( branch.body.statements ).type <> "STAT_ASS_FVAR" or Last( branch.body.statements ).func_id <> tree.id or Last( branch.body.statements ).name <> name then
                                 
+                                # COVERAGE_IGNORE_NEXT_LINE
                                 ErrorWithFuncLocation( "Not all if branches end with the assignment to the same local variable. This is not supported." );
                                 
                             fi;
@@ -589,12 +608,14 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                         
                     else
                         
+                        # COVERAGE_IGNORE_NEXT_LINE
                         ErrorWithFuncLocation( "statement type ", Last( statement.branches.1.body.statements ).type, " is not supported by CompilerForCAP" );
                         
                     fi;
                     
                 else
                     
+                    # COVERAGE_IGNORE_NEXT_LINE
                     ErrorWithFuncLocation( "statement type ", statement.type, " is not supported by CompilerForCAP" );
                     
                 fi;
@@ -649,12 +670,14 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
     
     if not IsRecord( tree ) then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "the syntax tree must be a record" );
         
     fi;
     
     if tree.type <> "EXPR_DECLARATIVE_FUNC" then
         
+        # COVERAGE_IGNORE_BLOCK_START
         Error( "The syntax tree is not of type EXPR_FUNC. However, if you type 'return;', it will be wrapped in a dummy function." );
         
         if StartsWith( tree.type, "EXPR" ) then
@@ -684,6 +707,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 ] ),
             ),
         );
+        # COVERAGE_IGNORE_BLOCK_END
         
     fi;
     
@@ -704,6 +728,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
         # check that the input is a proper tree, i.e. acyclic
         if IsBound( tree.touched ) then
             
+            # COVERAGE_IGNORE_NEXT_LINE
             Error( "this subtree can be reached via at least two different paths, i.e. the input contains a cycle and thus is not a proper tree" );
             
         else
@@ -723,6 +748,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 if tree.id in seen_function_ids then
                     
+                    # COVERAGE_IGNORE_NEXT_LINE
                     Error( "tree contains multiple functions with the same ID" );
                     
                 else
@@ -795,6 +821,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                     
                     if name = fail then
                         
+                        # COVERAGE_IGNORE_NEXT_LINE
                         Error( "The relation \"is used by\" between bindings does not give rise to a partial order, i.e. a DAG. This is not supported." );
                         
                     fi;
@@ -964,6 +991,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 if tree.type <> "STAT_SEQ_STAT" then
                     
+                    # COVERAGE_IGNORE_NEXT_LINE
                     Error( "enhanced syntax trees can only be used with short types" );
                     
                 fi;
@@ -974,6 +1002,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 if tree.type <> "EXPR_FUNCCALL" then
                     
+                    # COVERAGE_IGNORE_NEXT_LINE
                     Error( "enhanced syntax trees can only be used with short types" );
                     
                 fi;
@@ -992,6 +1021,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 if tree.type <> "STAT_PROCCALL" then
                     
+                    # COVERAGE_IGNORE_NEXT_LINE
                     Error( "enhanced syntax trees can only be used with short types" );
                     
                 fi;
@@ -1010,6 +1040,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 if tree.type <> "STAT_FOR" then
                     
+                    # COVERAGE_IGNORE_NEXT_LINE
                     Error( "enhanced syntax trees can only be used with short types" );
                     
                 fi;
@@ -1081,12 +1112,14 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 if func_pos = fail then
                     
+                    # COVERAGE_IGNORE_BLOCK_START
                     Error( "An FVAR references a variable outside of the function stack. However, if you type 'return;', it will be replaced by a dummy variable." );
                     
                     tree.type := ReplacedString( tree.type, "FVAR", "GVAR" );
                     tree.gvar := Concatenation( "FVAR_outside_of_function_stack_", tree.name );
                     
                     return tree;
+                    # COVERAGE_IGNORE_BLOCK_END
                     
                 fi;
                 
@@ -1097,10 +1130,12 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 if not tree.name in func_stack[func_pos].nams then
                     
+                    # COVERAGE_IGNORE_BLOCK_START
                     Error( "The FVAR name ", tree.name, " does not occur in the names of local variables of its function. ",
                         "However, if you type 'return;', the name will be added for debugging purposes (this might lead to unexpected results for variadic functions)." );
                     
                     Add( func_stack[func_pos].nams, tree.name );
+                    # COVERAGE_IGNORE_BLOCK_END
                     
                 fi;
                 

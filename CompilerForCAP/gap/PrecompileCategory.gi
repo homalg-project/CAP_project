@@ -250,6 +250,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     
     if IsOperation( category_constructor ) or IsKernelFunction( category_constructor ) then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "category_constructor must be a regular function, i.e. not an operation or a kernel function" );
         
     fi;
@@ -260,6 +261,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     
     if IsIdenticalObj( cat1, cat2 ) then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "the category constructor must not return the same instance of the category if called twice" );
         
     fi;
@@ -269,6 +271,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     
     if HasIsFinalized( cat ) then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "the category constructor must support the option `FinalizeCategory`" );
         
     fi;
@@ -309,6 +312,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     
     if Length( diff ) > 0 then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "The following strings are no CAP operations and can thus not be compiled: ", diff );
         
     fi;
@@ -317,6 +321,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     
     if Length( diff ) > 0 then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "The following operations you want to have compiled are not computable in the given category: ", diff );
         
     fi;
@@ -327,6 +332,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     
     if package_info = fail then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "could not find package info" );
         
     fi;
@@ -351,6 +357,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         if not filter_list[1] = "category" then
             
+            # COVERAGE_IGNORE_NEXT_LINE
             Error( function_name, " does not get the category as the first argument. This is not supported when precompiling categories." );
             
         fi;
@@ -428,12 +435,14 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
                        
                     else
                         
+                        # COVERAGE_IGNORE_NEXT_LINE
                         Error( "this should never happen" );
                         
                     fi;
                     
                 else
                     
+                    # COVERAGE_IGNORE_NEXT_LINE
                     Error( "The category cannot compute the WithoutGiven operation of a WithGiven pair. This is not supported." );
                     
                 fi;
@@ -443,6 +452,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
             # check if we have been able to construct an example input
             if fail in example_input then
                 
+                # COVERAGE_IGNORE_NEXT_LINE
                 Error( "cannot generate example input for the operation ", function_name );
                 
             fi;
@@ -458,6 +468,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         if index = fail then
             
+            # COVERAGE_IGNORE_NEXT_LINE
             Error( "All added functions for <function_name> in <cat> have additional filters. Cannot continue with compilation." );
             
         fi;
@@ -466,6 +477,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         if IsOperation( function_to_compile ) or IsKernelFunction( function_to_compile ) then
             
+            # COVERAGE_IGNORE_NEXT_LINE
             Error( "Precompiling operations or kernel functions is not supported." );
             
         fi;
@@ -498,6 +510,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         if PositionSublist( function_string, "CAP_JIT_INTERNAL_GLOBAL_VARIABLE_" ) <> fail then
             
+            # COVERAGE_IGNORE_NEXT_LINE
             Error( "Could not get rid of all global variables. You should use category_hints.category_attribute_names." );
             
         fi;
@@ -564,6 +577,8 @@ InstallGlobalFunction( "CapJitPrecompileCategoryAndCompareResult", function ( ca
         
     else
         
+        # this should never happen in tests
+        # COVERAGE_IGNORE_NEXT_LINE
         old_file_content := "";
         
     fi;
@@ -579,6 +594,8 @@ InstallGlobalFunction( "CapJitPrecompileCategoryAndCompareResult", function ( ca
     
     if old_file_content <> new_file_content then
         
+        # this should never happen in tests
+        # COVERAGE_IGNORE_NEXT_LINE
         Display( "WARNING: old and new file contents differ" );
         
     fi;

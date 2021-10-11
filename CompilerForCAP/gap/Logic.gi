@@ -9,12 +9,14 @@ InstallGlobalFunction( CapJitAddLogicFunction, function ( func )
     
     if not IsFunction( func ) then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "a logic function must be a function" );
         
     fi;
     
     if not NumberArgumentsFunction( func ) in [ -2, -1, 2 ] then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "a logic function must be callable with two arguments" );
         
     fi;
@@ -527,6 +529,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                     
                 else
                     
+                    # COVERAGE_IGNORE_NEXT_LINE
                     Error( "This should never happen" );
                     
                 fi;
