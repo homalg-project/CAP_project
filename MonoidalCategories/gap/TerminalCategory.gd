@@ -57,10 +57,3 @@ DeclareGlobalFunction( "TerminalCategory" );
 #! @Arguments
 DeclareGlobalFunction( "TerminalCategoryWithMultipleObjects" );
 #! @InsertChunk TerminalCategoryWithMultipleObjects
-
-#! @Description
-#!  Create an object $a$ in the terminal category <A>T</A> with multiple objects
-#!  with <C>String</C>(<A>str</A>) = $a$.
-#! @Arguments T, str
-DeclareOperation( "/",
-        [ IsString, IsTerminalCategoryWithMultipleObjects ] );

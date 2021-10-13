@@ -1618,18 +1618,18 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
                [ IsQuiverVertex, IsQuiverRowsCategory ],
                AsQuiverRowsObject
 );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
                [ IsQuiverAlgebraElement, IsQuiverRowsCategory ],
                AsQuiverRowsMorphism );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
                [ IsPath, IsQuiverRowsCategory ],
                {p, QRows} -> PathAsAlgebraElement( UnderlyingQuiverAlgebra( QRows ), p )/QRows
 );

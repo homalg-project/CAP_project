@@ -386,16 +386,16 @@ InstallMethod( DownOnlyMorphismData,
 end );
 
 
-InstallMethod(\*,
-              [ IsProSetAsCategoryMorphism, IsProSetAsCategoryMorphism ],
+InstallMethod( \*,
+               [ IsProSetAsCategoryMorphism, IsProSetAsCategoryMorphism ],
   function( alpha , beta )
 
     return PreCompose( alpha , beta ) ;
 
 end );
 
-InstallMethod(\/,
-              [ IsInt, IsProSetAsCategory ],
+InstallOtherMethod( \/,
+               [ IsInt, IsProSetAsCategory ],
   function( n, C )
 
     return ProSetAsCategoryObject( n , C ) ;

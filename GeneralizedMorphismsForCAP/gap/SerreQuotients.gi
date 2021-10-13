@@ -98,7 +98,7 @@ end );
 ####################################
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
                [ IsCapCategoryObject, IsSerreQuotientCategory ],
                
   function( obj, serre_category )

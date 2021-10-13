@@ -89,7 +89,7 @@ InstallOtherMethod( \/,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
         "for a CAP category object and a wrapper CAP category",
          [ IsCapCategoryObject, IsWrapperCapCategory ],
         
@@ -104,7 +104,7 @@ InstallMethod( \/,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
         "for a CAP category morphism and a wrapper CAP category",
         [ IsCapCategoryMorphism, IsWrapperCapCategory ],
         

@@ -1417,15 +1417,10 @@ end );
 ####################################
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
                [ IsHomalgMatrix, IsCategoryOfRows ],
                AsCategoryOfRowsMorphism
 );
-
-##
-InstallMethod( \/,
-               [ IsInt, IsCategoryOfRows ],
-               CategoryOfRowsObject );
 
 ####################################
 ##

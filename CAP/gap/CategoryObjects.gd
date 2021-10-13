@@ -248,6 +248,13 @@ DeclareOperation( "ObjectConstructor",
                   [ IsCapCategory, IsObject ] );
 
 #! @Description
+#!   Shorthand for `ObjectConstructor( C, a )`.
+#! @Returns an object
+#! @Arguments a, C
+DeclareOperation( "\/",
+                  [ IsObject, IsCapCategory ] );
+
+#! @Description
 #! The argument is a CAP category object <A>obj</A>.
 #! The output is a datum which can be used to construct <A>obj</A>, that is,
 #! `IsEqualForObjects( `<A>obj</A>`, ObjectConstructor( CapCategory( `<A>obj</A>` ), ObjectDatum( `<A>obj</A>` ) ) )`.

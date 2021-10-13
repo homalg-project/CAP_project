@@ -228,7 +228,7 @@ InstallMethod( AdditiveClosureMorphismListList,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
                [ IsList, IsAdditiveClosureCategory ],
                
   function( listlist, category )
@@ -265,7 +265,7 @@ InstallMethod( \/,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
           [ IsCapCategoryObject, IsAdditiveClosureCategory ],
   function( o, C )
     
@@ -280,7 +280,7 @@ InstallMethod( \/,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
           [ IsCapCategoryMorphism, IsAdditiveClosureCategory ],
   function( alpha, C )
     

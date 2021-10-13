@@ -263,15 +263,10 @@ end );
 ####################################
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
                [ IsHomalgMatrix, IsCategoryOfColumns ],
                AsCategoryOfColumnsMorphism
 );
-
-##
-InstallMethod( \/,
-               [ IsInt, IsCategoryOfColumns ],
-               CategoryOfColumnsObject );
 
 ####################################
 ##

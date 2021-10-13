@@ -1489,7 +1489,7 @@ end );
 ####################################
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
               [ IsCapCategoryObject, IsAdelmanCategory ],
               
   function( object, adel )
@@ -1505,7 +1505,7 @@ InstallMethod( \/,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
                [ IsFreydCategoryObject, IsAdelmanCategory ],
   function( freyd_obj, adel )
     local underlying_category;
@@ -1523,7 +1523,7 @@ InstallMethod( \/,
 end );
 
 ##
-InstallMethod( \/,
+InstallOtherMethod( \/,
               [ IsCapCategoryMorphism, IsAdelmanCategory ],
   function( morphism, adel )
     
