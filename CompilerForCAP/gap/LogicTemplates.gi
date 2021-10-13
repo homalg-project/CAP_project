@@ -441,6 +441,13 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
                 # COVERAGE_IGNORE_BLOCK_END
             fi;
             
+            # ignore these keys
+            if key in [ "CAP_JIT_NOT_RESOLVABLE" ] then
+                
+                continue;
+                
+            fi;
+            
             Assert( 0, IsBound( tree.(key) ) );
             
             # different gvars might point to the same value
