@@ -250,6 +250,16 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     tree := CapJitHoistedExpressions( tree );
     
     if debug then
+        # COVERAGE_IGNORE_BLOCK_START
+        compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
+        Display( compiled_func );
+        Error( "apply CapJitDeduplicatedExpressions" );
+        # COVERAGE_IGNORE_BLOCK_END
+    fi;
+    
+    tree := CapJitDeduplicatedExpressions( tree );
+    
+    if debug then
         
         # COVERAGE_IGNORE_BLOCK_START
         compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
