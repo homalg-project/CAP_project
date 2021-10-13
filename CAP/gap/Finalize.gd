@@ -11,8 +11,9 @@ DeclareGlobalVariable( "CAP_INTERNAL_FINAL_DERIVATION_LIST" );
 DeclareGlobalFunction( "AddFinalDerivation" );
 
 
-DeclareProperty( "IsFinalized",
-                  IsCapCategory );
+DeclareAttribute( "IsFinalized",
+                  IsCapCategory,
+                  "mutable" );
 
 DeclareOperation( "Finalize",
                   [ IsCapCategory ] );

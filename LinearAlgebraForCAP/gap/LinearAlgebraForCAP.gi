@@ -25,7 +25,7 @@ end );
 
 InstallGlobalFunction( MATRIX_CATEGORY,
   function( homalg_field )
-    local category, to_be_finalized;
+    local category;
     
     category := CreateCapCategory( Concatenation( "Category of matrices over ", RingName( homalg_field ) ) );
     
@@ -85,17 +85,7 @@ InstallGlobalFunction( MATRIX_CATEGORY,
         "PredicateImplicationsForMatrixCategory.tex" )
     );
      
-    to_be_finalized := ValueOption( "FinalizeCategory" );
-   
-    if to_be_finalized = false then
-      
-       return category;
-    
-    else
-    
-       Finalize( category );
-      
-    fi;
+    Finalize( category );
     
     return category;
     

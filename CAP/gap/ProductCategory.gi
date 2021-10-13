@@ -182,7 +182,7 @@ InstallMethodWithCrispCache( ProductOp,
   function( category_list, selector )
     local product_category, namestring;
     
-    if not ForAll( category_list, HasIsFinalized ) or not ForAll( category_list, IsFinalized ) then
+    if not ForAll( category_list, IsFinalized ) then
         Error( "all categories for the product must be finalized" );
     fi;
     

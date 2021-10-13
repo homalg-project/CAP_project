@@ -320,7 +320,7 @@ InstallMethodWithCacheFromObject( SerreQuotientCategoryByCospans,
   function( category, test_function, function_name )
     local serre_category, gen_category, name, preconditions, category_weight_list, i;
     
-    if not HasIsFinalized( category ) or not IsFinalized( category ) then
+    if not IsFinalized( category ) then
         
         Error( "category must be finalized" );
         return;

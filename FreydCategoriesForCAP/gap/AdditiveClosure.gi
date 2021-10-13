@@ -15,7 +15,7 @@ InstallMethod( AdditiveClosure,
                [ IsCapCategory ],
                
   function( underlying_category )
-    local category, matrix_element_as_morphism, list_list_as_matrix, homalg_ring, precompiled_towers, remaining_constructors_in_tower, precompiled_functions_adder, to_be_finalized, info;
+    local category, matrix_element_as_morphism, list_list_as_matrix, homalg_ring, precompiled_towers, remaining_constructors_in_tower, precompiled_functions_adder, info;
     
     if not ( HasIsAbCategory( underlying_category ) and IsAbCategory( underlying_category ) ) then
         
@@ -155,14 +155,6 @@ InstallMethod( AdditiveClosure,
     fi;
     
     category!.compiler_hints.precompiled_towers := precompiled_towers;
-    
-    to_be_finalized := ValueOption( "FinalizeCategory" );
-    
-    if to_be_finalized = false then
-      
-      return category;
-    
-    fi;
     
     Finalize( category );
     

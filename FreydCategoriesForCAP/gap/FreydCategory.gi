@@ -23,7 +23,7 @@ BindGlobal( "InfoFreydCategoriesForCAP", NewInfoClass("InfoFreydCategoriesForCAP
 ##
 InstallGlobalFunction( FREYD_CATEGORY,
   function( underlying_category )
-    local freyd_category, to_be_finalized, conditions;
+    local freyd_category, conditions;
     
     if not IsValidInputForFreydCategory( underlying_category ) then
         return false;
@@ -112,14 +112,6 @@ InstallGlobalFunction( FREYD_CATEGORY,
     AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism and HasMorphismDatum );
     
     INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY( freyd_category );
-    
-    to_be_finalized := ValueOption( "FinalizeCategory" );
-    
-    if to_be_finalized = false then
-      
-      return freyd_category;
-    
-    fi;
     
     Finalize( freyd_category );
     
@@ -1784,7 +1776,7 @@ InstallGlobalFunction( IsValidInputForFreydCategory,
     result := true;
 
     # first check if the category has been finalized (i.e. no methods are to be added...)
-    if not HasIsFinalized( category ) or not IsFinalized( category ) then
+    if not IsFinalized( category ) then
 
         Error( "Underlying category must be finalized" );
         result := false;

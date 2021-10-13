@@ -162,13 +162,20 @@ end );
 InstallMethod( Finalize,
                [ IsCapCategory ],
   
-  IsFinalized );
-
-InstallMethod( IsFinalized,
-               [ IsCapCategory ],
-               
   function( category )
     local current_final_derivation, derivation_list, i, n, weight_list, weight, add_name, current_installs, current_tester_func, current_additional_func;
+    
+    if IsFinalized( category ) then
+        
+        return true;
+        
+    fi;
+    
+    if ValueOption( "FinalizeCategory" ) = false then
+        
+        return false;
+        
+    fi;
     
     derivation_list := ShallowCopy( CAP_INTERNAL_FINAL_DERIVATION_LIST.final_derivation_list );
     
@@ -251,6 +258,8 @@ InstallMethod( IsFinalized,
         derivation_list := derivation_list{ Difference( [ 1 .. Length( derivation_list ) ], current_installs ) };
         
     od;
+    
+    SetIsFinalized( category, true );
     
     return true;
     

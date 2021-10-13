@@ -15,7 +15,7 @@ InstallMethod( CategoryOfRows,
                [ IsHomalgRing ],
                
   function( homalg_ring )
-    local overhead_option, category, to_be_finalized;
+    local overhead_option, category;
     
     overhead_option := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "overhead", true );
     
@@ -77,14 +77,6 @@ InstallMethod( CategoryOfRows,
     AddMorphismRepresentation( category, IsCategoryOfRowsMorphism and HasUnderlyingMatrix );
     
     INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS( category );
-    
-    to_be_finalized := ValueOption( "FinalizeCategory" );
-      
-    if to_be_finalized = false then
-      
-      return category;
-    
-    fi;
     
     Finalize( category );
     

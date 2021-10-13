@@ -13,7 +13,7 @@
 ##
 InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR,
     function( ring, underlying_category, arg... )
-    local category, is_finite, to_be_finalized, sorting_function, with_nf, cocycle;
+    local category, is_finite, sorting_function, with_nf, cocycle;
     
     if not ( HasIsCommutative( ring ) and IsCommutative( ring ) ) then
         
@@ -86,14 +86,6 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR,
     AddMorphismRepresentation( category, IsLinearClosureMorphism and HasCoefficientsList and HasSupportMorphisms );
     
     INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE( category );
-    
-    to_be_finalized := ValueOption( "FinalizeCategory" );
-    
-    if to_be_finalized = false then
-      
-      return category;
-      
-    fi;
     
     Finalize( category );
     

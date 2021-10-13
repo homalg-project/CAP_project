@@ -15,7 +15,7 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
                [ IsHomalgRing ],
                
   function( homalg_ring )
-    local category_of_rows, op, to_be_finalized;
+    local category_of_rows, op;
     
     category_of_rows := CategoryOfRows( homalg_ring : FinalizeCategory := true );
     
@@ -113,14 +113,6 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
     AddMorphismRepresentation( op, IsCategoryOfColumnsMorphism and HasUnderlyingMatrix );
     
     INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_CATEGORY_OF_ROWS( op );
-    
-    to_be_finalized := ValueOption( "FinalizeCategory" );
-    
-    if to_be_finalized = false then
-        
-        return op;
-        
-    fi;
     
     Finalize( op );
     

@@ -15,9 +15,7 @@ InstallMethod( RingAsCategory,
                [ IsRing ],
                
   function( ring )
-    local finalize_option, category;
-    
-    finalize_option := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "FinalizeCategory", true );
+    local category;
     
     category := CreateCapCategory( Concatenation( "Ring as category( ", String( ring )," )" ) );
     
@@ -41,11 +39,7 @@ InstallMethod( RingAsCategory,
     
     INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY( category );
     
-    if finalize_option then
-        
-        Finalize( category );
-        
-    fi;
+    Finalize( category );
     
     return category;
     

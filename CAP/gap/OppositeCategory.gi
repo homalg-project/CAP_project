@@ -430,9 +430,9 @@ InstallMethod( Opposite,
                [ IsCapCategory, IsString ],
                
   function( category, name )
-    local opposite_category, to_be_finalized;
+    local opposite_category;
     
-    if not HasIsFinalized( category ) or not IsFinalized( category ) then
+    if not IsFinalized( category ) then
         Error( "Input category must be finalized to create opposite category" );
     fi;
     
@@ -554,17 +554,7 @@ InstallMethod( Opposite,
         
     fi;
     
-    to_be_finalized := ValueOption( "FinalizeCategory" );
-    
-    if to_be_finalized = false then
-        
-        return opposite_category;
-        
-    else
-        
-        Finalize( opposite_category );
-        
-    fi;
+    Finalize( opposite_category );
     
     return opposite_category;
     

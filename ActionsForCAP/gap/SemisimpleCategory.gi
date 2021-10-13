@@ -47,7 +47,7 @@ InstallMethod( SemisimpleCategory,
   function( underlying_category, membership_function, membership_function_name )
     local name, semisimple_category;
     
-    if not HasIsFinalized( underlying_category ) or not IsFinalized( underlying_category ) then
+    if not IsFinalized( underlying_category ) then
         
         Error( "the underlying category must be finalized" );
         return;
