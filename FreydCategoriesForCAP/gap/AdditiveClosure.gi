@@ -1205,9 +1205,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                 
                 listlist := List( [ 1 .. size_i ], i ->
                             List( [ 1 .. size_j ], j ->
-                              PreCompose( range_category,
+                              ComponentOfMorphismIntoDirectSum( range_category,
                                 morphism,
-                                ProjectionInFactorOfDirectSum( range_category, summands, size_j * (i - 1) + j )
+                                summands,
+                                size_j * (i - 1) + j
                               )
                             )
                           );
