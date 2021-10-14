@@ -472,11 +472,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddComponentOfMorphismIntoDirectSum( category,
       function( cat, morphism, summands, nr )
-        local start, stop;
+        local dimensions, start, stop;
         
-        start := Sum( List( summands{[ 1 .. nr-1 ]}, Dimension ) ) + 1;
+        dimensions := List( summands, Dimension );
         
-        stop := (start - 1) + Dimension( summands[nr] );
+        start := Sum( dimensions{[ 1 .. nr-1 ]} ) + 1;
+        
+        stop := (start - 1) + dimensions[nr];
         
         return VectorSpaceMorphism( cat, Source( morphism ),
                                     CertainColumns( UnderlyingMatrix( morphism ), [ start .. stop ] ),
@@ -487,11 +489,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddComponentOfMorphismFromDirectSum( category,
       function( cat, morphism, summands, nr )
-        local start, stop;
+        local dimensions, start, stop;
         
-        start := Sum( List( summands{[ 1 .. nr-1 ]}, Dimension ) ) + 1;
+        dimensions := List( summands, Dimension );
         
-        stop := (start - 1) + Dimension( summands[nr] );
+        start := Sum( dimensions{[ 1 .. nr-1 ]} ) + 1;
+        
+        stop := (start - 1) + dimensions[nr];
         
         return VectorSpaceMorphism( cat, summands[nr],
                                     CertainRows( UnderlyingMatrix( morphism ), [ start .. stop ] ),
