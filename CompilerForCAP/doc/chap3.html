@@ -317,11 +317,12 @@ rec(
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( SYNTAX_TREE_CODE( tree1 ) );</span>
 function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
-    local cap_jit_hoisted_expression_1_1;
-    cap_jit_hoisted_expression_1_1 := UnderlyingRing( cat_1 );
+    local cap_jit_hoisted_expression_1_1, cap_jit_deduplicated_expression_1_1;
+    cap_jit_deduplicated_expression_1_1 := UnderlyingRing( cat_1 );
+    cap_jit_hoisted_expression_1_1 := cap_jit_deduplicated_expression_1_1;
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, S_1, T_1, UnderlyingMatrix, 
-       UnionOfRows( UnderlyingRing( cat_1 ), Dimension( T_1 ), 
+       UnionOfRows( cap_jit_deduplicated_expression_1_1, Dimension( T_1 ), 
          ListN( diagram_S_1, List( morphism_matrix_1, function ( row_2 )
                   return List( row_2, UnderlyingMatrix );
               end ), function ( source_2, row_2 )
@@ -337,11 +338,12 @@ end
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( SYNTAX_TREE_CODE( tree2 ) );</span>
 function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
-    local cap_jit_hoisted_expression_1_1;
-    cap_jit_hoisted_expression_1_1 := UnderlyingRing( cat_1 );
+    local cap_jit_hoisted_expression_1_1, cap_jit_deduplicated_expression_1_1;
+    cap_jit_deduplicated_expression_1_1 := UnderlyingRing( cat_1 );
+    cap_jit_hoisted_expression_1_1 := cap_jit_deduplicated_expression_1_1;
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, S_1, T_1,  UnderlyingMatrix, 
-       UnionOfRows( UnderlyingRing( cat_1 ), Dimension( T_1 ), 
+           ), cat_1, S_1, T_1, UnderlyingMatrix, 
+       UnionOfRows( cap_jit_deduplicated_expression_1_1, Dimension( T_1 ), 
          ListN( diagram_S_1, morphism_matrix_1, 
            function ( logic_new_func_x_2, logic_new_func_y_2 )
                 return UnionOfColumns( cap_jit_hoisted_expression_1_1, 
@@ -547,6 +549,83 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( call_func2, [ 2 ] ) );</span>
 function ( x_1 )
     return 1;
+end
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># duplicate code inside a function</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">func := function( x )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return List( [ 1 .. 9 ], y -&gt; (y + (x + 1)) + (y + (x + 1)) ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitDeduplicatedExpressions( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
+function ( x_1 )
+    return List( [ 1 .. 9 ], function ( y_2 )
+            local cap_jit_deduplicated_expression_1_2;
+            cap_jit_deduplicated_expression_1_2 := y_2 + (x_1 + 1);
+            return cap_jit_deduplicated_expression_1_2 
+              + cap_jit_deduplicated_expression_1_2;
+        end );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># duplicate code inside duplicate code</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">func := function( x, y )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return (y + (x + 1) + (x + 1)) + (y + (x + 1) + (x + 1)); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitDeduplicatedExpressions( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
+function ( x_1, y_1 )
+    local cap_jit_deduplicated_expression_1_1, 
+    cap_jit_deduplicated_expression_2_1;
+    cap_jit_deduplicated_expression_2_1 := x_1 + 1;
+    cap_jit_deduplicated_expression_1_1 
+     := y_1 + cap_jit_deduplicated_expression_2_1 
+      + cap_jit_deduplicated_expression_2_1;
+    return cap_jit_deduplicated_expression_1_1 
+      + cap_jit_deduplicated_expression_1_1;
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># don't deduplicate code accross functions</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">func := function( )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return [ [ x -&gt; (x + 1) + 2 ], [ x -&gt; (x + 1) + 3 ] ]; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitDeduplicatedExpressions( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
+function (  )
+    return [ [ function ( x_2 )
+                  return x_2 + 1 + 2;
+              end ], [ function ( x_2 )
+                  return x_2 + 1 + 3;
+              end ] ];
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># duplicate code inside duplicate code at different function levels</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">func := {} -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    y -&gt; [ [ y, x -&gt; (x + 1) + (x + 1) ], [ y, x -&gt; (x + 1) + (x + 1) ] ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitDeduplicatedExpressions( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
+function (  )
+    return function ( y_2 )
+          local cap_jit_deduplicated_expression_1_2;
+          cap_jit_deduplicated_expression_1_2 := [ y_2, function ( x_3 )
+                    local cap_jit_deduplicated_expression_2_3;
+                    cap_jit_deduplicated_expression_2_3 := x_3 + 1;
+                    return cap_jit_deduplicated_expression_2_3 
+                      + cap_jit_deduplicated_expression_2_3;
+                end ];
+          return 
+           [ cap_jit_deduplicated_expression_1_2, 
+              cap_jit_deduplicated_expression_1_2 ];
+      end;
 end
 </pre></div>
 
@@ -813,6 +892,21 @@ end
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># test that `CAP_JIT_NOT_RESOLVABLE` does not cause errors when comparing</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># syntax trees</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">DeclareOperation( "MyNonResolvableOperation", [ ] );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := { } -&gt; MyNonResolvableOperation( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree2 := StructuralCopy( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree2.bindings.BINDING_RETURN_VALUE.funcref.CAP_JIT_NOT_RESOLVABLE := true;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitIsEqualForEnhancedSyntaxTrees( tree, tree2 );</span>
+true
+</pre></div>
+
+
+<div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := { cat, matrix } -&gt; [</span>
@@ -1003,12 +1097,14 @@ function ( a_1 )
       end;
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># general example not returning a value</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">template := StructuralCopy( template );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">template.src_template :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Concatenation( "return ", template.src_template, ";" );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">template.dst_template :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Concatenation( "return ", template.dst_template, ";" );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">template.returns_value := false;;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># we have to work hard to not write semicolons so AutoDoc</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># does not begin a new statement</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">template := EvalString( ReplacedString( """rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    variable_names := [ "variable" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    src_template := "return x -&gt; x + variable + x - x@",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    dst_template := "return x -&gt; x + variable + 0@",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    returns_value := false,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">)""", "@", ";" ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template, [ ] ) );</span>
 function ( a_1 )
     return function ( b_2 )
@@ -1044,6 +1140,61 @@ function ( L1_1, L2_1 )
     return List( Concatenation( L1_1, L2_1 ), function ( x_2 )
             return x_2;
         end );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that template is not executed if variable filters but not enough</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># jit_args are given</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">template := rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    variable_names := [ "L1", "L2", "func" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    variable_filters := [ "IsList", IsList, IsFunction ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    src_template := "Concatenation( List( L1, func ), List( L2, func ) )",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    dst_template := "List( Concatenation( L1, L2 ), func )",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    returns_value := true,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( L1, L2 )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return Concatenation( List( L1, x -&gt; x ), List( L2, x -&gt; x ) ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template, [ ] ) );</span>
+function ( L1_1, L2_1 )
+    return Concatenation( List( L1_1, function ( x_2 )
+              return x_2;
+          end ), List( L2_1, function ( x_2 )
+              return x_2;
+          end ) );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that template is only applied if filters match</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">template := rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    variable_names := [ "value" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    variable_filters := [ IsInt ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    src_template := "Sum( [ value ] )",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    dst_template := "value",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    returns_value := true,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := { x } -&gt; Sum( [ x ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template, [ 1/2 ] ) );</span>
+function ( x_1 )
+    return Sum( [ x_1 ] );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template, [ 1 ] ) );</span>
+function ( x_1 )
+    return x_1;
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that template is skipped if values cannot be determined from jit_args</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">template := EvalString( ReplacedString( """rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    variable_names := [ "value1", "value2" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    variable_filters := [ IsInt, IsObject ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    src_template := "if 1 &lt;&gt; 1 then return value1@ else return value2@ fi@",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    dst_template := "return value2@",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    returns_value := false,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">)""", "@", ";" ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    if 1 &lt;&gt; 1 then return 1; else return 1; fi; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template, [ ] ) );</span>
+function (  )
+    if 1 &lt;&gt; 1 then
+        return 1;
+    else
+        return 1;
+    fi;
+    return;
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that functions can be used multiple times in dst_template</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput"># add a nonsense template</span>
@@ -1095,6 +1246,28 @@ function ( x_1 )
             r_2 := x_1;
             return r_2;
         end );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that values are pulled out iff</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># they are independent of local variables</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">template := rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    variable_names := [ "list", "value" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    src_template := "List( list, l -&gt; value * l )",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    dst_template := "value * List( list, l -&gt; l )",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    returns_value := true,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := L -&gt; List( L, l -&gt; l * l );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template, [ ] ) );</span>
+function ( L_1 )
+    return List( L_1, function ( l_2 )
+            return l_2 * l_2;
+        end );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := L -&gt; List( L, l -&gt; 2 * l );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template, [ ] ) );</span>
+function ( L_1 )
+    return 2 * List( L_1, function ( l_2 )
+              return l_2;
+          end );
 end
 </pre></div>
 

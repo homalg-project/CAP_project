@@ -6,25 +6,26 @@
   [2XCapJitAddLogicFunction[102X 2.1-1 
   [2XCapJitAddLogicTemplate[102X 2.1-2 
   [2XCapJitAppliedCompilerHints[102X 2.5-1 
-  [2XCapJitAppliedLogic[102X 2.5-11 
-  [2XCapJitAppliedLogicTemplates[102X 2.5-12 
+  [2XCapJitAppliedLogic[102X 2.5-12 
+  [2XCapJitAppliedLogicTemplates[102X 2.5-13 
   [2XCapJitCompiledFunction[102X 1.9-1 
   [2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X 1.9-2 
   [2XCapJitContainsRefToFVAROutsideOfFuncStack[102X 2.4-6 
   [2XCapJitCopyWithNewFunctionIDs[102X 2.4-13 
-  [2XCapJitDroppedHandledEdgeCases[102X 2.5-4 
-  [2XCapJitDroppedUnusedBindings[102X 2.5-5 
+  [2XCapJitDeduplicatedExpressions[102X 2.5-4 
+  [2XCapJitDroppedHandledEdgeCases[102X 2.5-5 
+  [2XCapJitDroppedUnusedBindings[102X 2.5-6 
   [2XCapJitFindNodeDeep[102X 2.4-8 
   [2XCapJitFindNodes[102X 2.4-9 
   [2XCapJitGetExpressionValueFromJitArgs[102X 2.4-2 
   [2XCapJitGetFunctionCallArgumentsFromJitArgs[102X 2.4-1 
   [2XCapJitGetNodeByPath[102X 2.4-10 
   [2XCapJitGetOrCreateGlobalVariable[102X 2.4-7 
-  [2XCapJitHoistedExpressions[102X 2.5-6 
-  [2XCapJitInlinedArguments[102X 2.5-7 
-  [2XCapJitInlinedBindings[102X 2.5-8 
-  [2XCapJitInlinedFunctionCalls[102X 2.5-9 
-  [2XCapJitInlinedSimpleFunctionCalls[102X 2.5-10 
+  [2XCapJitHoistedExpressions[102X 2.5-7 
+  [2XCapJitInlinedArguments[102X 2.5-8 
+  [2XCapJitInlinedBindings[102X 2.5-9 
+  [2XCapJitInlinedFunctionCalls[102X 2.5-10 
+  [2XCapJitInlinedSimpleFunctionCalls[102X 2.5-11 
   [2XCapJitIsCallToGlobalFunction[102X 2.4-4 
   [2XCapJitIsEqualForEnhancedSyntaxTrees[102X 2.4-14 
   [2XCapJitIterateOverTree[102X 2.3-1 
@@ -36,8 +37,8 @@
   [2XCapJitReplacedEXPR_REF_FVARByValue[102X 2.4-18 
   [2XCapJitReplacedGlobalVariablesByCategoryAttributes[102X 2.5-2 
   [2XCapJitReplacedSourceAndRangeAttributes[102X 2.5-3 
-  [2XCapJitResolvedGlobalVariables[102X 2.5-13 
-  [2XCapJitResolvedOperations[102X 2.5-14 
+  [2XCapJitResolvedGlobalVariables[102X 2.5-14 
+  [2XCapJitResolvedOperations[102X 2.5-15 
   [2XCapJitResultFuncCombineChildren[102X 2.4-5 
   [2XCapJitUnbindBinding[102X 2.4-17 
   [2XCapJitValueOfBinding[102X 2.4-16 
