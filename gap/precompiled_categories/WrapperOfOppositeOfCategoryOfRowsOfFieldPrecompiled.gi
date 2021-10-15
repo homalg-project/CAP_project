@@ -34,11 +34,14 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1;
-    cap_jit_hoisted_expression_1_1 := HomalgIdentityMatrix( RankOfObject( arg3_1 ) * RankOfObject( arg2_1 ), UnderlyingRing( cat_1 ) );
-    cap_jit_hoisted_expression_2_1 := RankOfObject( arg3_1 );
-    cap_jit_hoisted_expression_3_1 := RankOfObject( arg2_1 );
-    return List( [ 1 .. RankOfObject( arg3_1 ) * RankOfObject( arg2_1 ) ], function ( logic_new_func_x_2 )
+    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1;
+    cap_jit_deduplicated_expression_2_1 := RankOfObject( arg3_1 );
+    cap_jit_deduplicated_expression_3_1 := RankOfObject( arg2_1 );
+    cap_jit_deduplicated_expression_1_1 := cap_jit_deduplicated_expression_2_1 * cap_jit_deduplicated_expression_3_1;
+    cap_jit_hoisted_expression_1_1 := HomalgIdentityMatrix( cap_jit_deduplicated_expression_1_1, UnderlyingRing( cat_1 ) );
+    cap_jit_hoisted_expression_2_1 := cap_jit_deduplicated_expression_2_1;
+    cap_jit_hoisted_expression_3_1 := cap_jit_deduplicated_expression_3_1;
+    return List( [ 1 .. cap_jit_deduplicated_expression_1_1 ], function ( logic_new_func_x_2 )
             return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                    ), cat_1, arg2_1, arg3_1, UnderlyingMatrix, ConvertRowToMatrix( CertainRows( cap_jit_hoisted_expression_1_1, [ logic_new_func_x_2 ] ), cap_jit_hoisted_expression_2_1, cap_jit_hoisted_expression_3_1 ) );
         end );
@@ -87,8 +90,10 @@ end
         
 ########
 function ( cat_1, arg2_1 )
+    local cap_jit_deduplicated_expression_1_1;
+    cap_jit_deduplicated_expression_1_1 := UnderlyingMatrix( arg2_1 );
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, RankOfObject, NumberRows( UnderlyingMatrix( arg2_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
+           ), cat_1, RankOfObject, NumberRows( cap_jit_deduplicated_expression_1_1 ) - RowRankOfMatrix( cap_jit_deduplicated_expression_1_1 ) );
 end
 ########
         
@@ -163,48 +168,51 @@ end
         
 ########
 function ( cat_1, source_1, alpha_1, beta_1, range_1 )
-    local cap_jit_morphism_attribute_1_1, cap_jit_morphism_attribute_2_1, cap_jit_morphism_attribute_3_1, cap_jit_morphism_attribute_4_1, cap_jit_morphism_attribute_5_1, cap_jit_morphism_attribute_6_1, cap_jit_morphism_attribute_7_1, cap_jit_morphism_attribute_8_1, cap_jit_morphism_attribute_9_1, cap_jit_morphism_attribute_10_1;
-    cap_jit_morphism_attribute_1_1 := UnderlyingMatrix( beta_1 );
-    cap_jit_morphism_attribute_10_1 := UnderlyingMatrix( alpha_1 );
-    cap_jit_morphism_attribute_2_1 := UnderlyingMatrix( alpha_1 );
-    cap_jit_morphism_attribute_3_1 := UnderlyingMatrix( beta_1 );
-    cap_jit_morphism_attribute_4_1 := UnderlyingMatrix( alpha_1 );
-    cap_jit_morphism_attribute_5_1 := UnderlyingMatrix( beta_1 );
-    cap_jit_morphism_attribute_6_1 := UnderlyingMatrix( alpha_1 );
-    cap_jit_morphism_attribute_7_1 := UnderlyingMatrix( beta_1 );
-    cap_jit_morphism_attribute_8_1 := UnderlyingMatrix( alpha_1 );
-    cap_jit_morphism_attribute_9_1 := UnderlyingMatrix( beta_1 );
-    return ID_FUNC( HomomorphismStructureOnMorphismsWithGivenObjects( [ RangeCategoryOfHomomorphismStructure( cat_1 ), source_1, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                     ), RangeCategoryOfHomomorphismStructure( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrRows( cap_jit_morphism_attribute_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 ), ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                     ), RangeCategoryOfHomomorphismStructure( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrRows( cap_jit_morphism_attribute_2_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrColumns( cap_jit_morphism_attribute_2_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_2_1 ), range_1 ][1], [ RangeCategoryOfHomomorphismStructure( cat_1 ), source_1, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                     ), RangeCategoryOfHomomorphismStructure( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrRows( cap_jit_morphism_attribute_3_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrColumns( cap_jit_morphism_attribute_3_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_3_1 ), ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                     ), RangeCategoryOfHomomorphismStructure( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrRows( cap_jit_morphism_attribute_4_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrColumns( cap_jit_morphism_attribute_4_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_4_1 ), range_1 ][2], [ RangeCategoryOfHomomorphismStructure( cat_1 ), source_1, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                     ), RangeCategoryOfHomomorphismStructure( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrRows( cap_jit_morphism_attribute_5_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrColumns( cap_jit_morphism_attribute_5_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_5_1 ), ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                     ), RangeCategoryOfHomomorphismStructure( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrRows( cap_jit_morphism_attribute_6_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrColumns( cap_jit_morphism_attribute_6_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_6_1 ), range_1 ][3], [ RangeCategoryOfHomomorphismStructure( cat_1 ), source_1, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                     ), RangeCategoryOfHomomorphismStructure( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrRows( cap_jit_morphism_attribute_7_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrColumns( cap_jit_morphism_attribute_7_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_7_1 ), ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                     ), RangeCategoryOfHomomorphismStructure( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrRows( cap_jit_morphism_attribute_8_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrColumns( cap_jit_morphism_attribute_8_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_8_1 ), range_1 ][4], [ RangeCategoryOfHomomorphismStructure( cat_1 ), source_1, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                     ), RangeCategoryOfHomomorphismStructure( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrRows( cap_jit_morphism_attribute_9_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrColumns( cap_jit_morphism_attribute_9_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_9_1 ), ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                     ), RangeCategoryOfHomomorphismStructure( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrRows( cap_jit_morphism_attribute_10_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrColumns( cap_jit_morphism_attribute_10_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_10_1 ), range_1 ][5] ) );
+    local cap_jit_morphism_attribute_1_1, cap_jit_morphism_attribute_2_1, cap_jit_morphism_attribute_3_1, cap_jit_morphism_attribute_4_1, cap_jit_morphism_attribute_5_1, cap_jit_morphism_attribute_6_1, cap_jit_morphism_attribute_7_1, cap_jit_morphism_attribute_8_1, cap_jit_morphism_attribute_9_1, cap_jit_morphism_attribute_10_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1;
+    cap_jit_deduplicated_expression_1_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
+    cap_jit_deduplicated_expression_2_1 := UnderlyingMatrix( beta_1 );
+    cap_jit_deduplicated_expression_3_1 := UnderlyingMatrix( alpha_1 );
+    cap_jit_morphism_attribute_1_1 := cap_jit_deduplicated_expression_2_1;
+    cap_jit_morphism_attribute_10_1 := cap_jit_deduplicated_expression_3_1;
+    cap_jit_morphism_attribute_2_1 := cap_jit_deduplicated_expression_3_1;
+    cap_jit_morphism_attribute_3_1 := cap_jit_deduplicated_expression_2_1;
+    cap_jit_morphism_attribute_4_1 := cap_jit_deduplicated_expression_3_1;
+    cap_jit_morphism_attribute_5_1 := cap_jit_deduplicated_expression_2_1;
+    cap_jit_morphism_attribute_6_1 := cap_jit_deduplicated_expression_3_1;
+    cap_jit_morphism_attribute_7_1 := cap_jit_deduplicated_expression_2_1;
+    cap_jit_morphism_attribute_8_1 := cap_jit_deduplicated_expression_3_1;
+    cap_jit_morphism_attribute_9_1 := cap_jit_deduplicated_expression_2_1;
+    return ID_FUNC( HomomorphismStructureOnMorphismsWithGivenObjects( [ cap_jit_deduplicated_expression_1_1, source_1, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                     ), cap_jit_deduplicated_expression_1_1, ObjectifyObjectForCAPWithAttributes( rec(
+                       ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrRows( cap_jit_morphism_attribute_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+                       ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 ), ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                     ), cap_jit_deduplicated_expression_1_1, ObjectifyObjectForCAPWithAttributes( rec(
+                       ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrRows( cap_jit_morphism_attribute_2_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+                       ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_2_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_2_1 ), range_1 ][1], [ cap_jit_deduplicated_expression_1_1, source_1, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                     ), cap_jit_deduplicated_expression_1_1, ObjectifyObjectForCAPWithAttributes( rec(
+                       ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrRows( cap_jit_morphism_attribute_3_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+                       ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_3_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_3_1 ), ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                     ), cap_jit_deduplicated_expression_1_1, ObjectifyObjectForCAPWithAttributes( rec(
+                       ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrRows( cap_jit_morphism_attribute_4_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+                       ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_4_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_4_1 ), range_1 ][2], [ cap_jit_deduplicated_expression_1_1, source_1, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                     ), cap_jit_deduplicated_expression_1_1, ObjectifyObjectForCAPWithAttributes( rec(
+                       ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrRows( cap_jit_morphism_attribute_5_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+                       ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_5_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_5_1 ), ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                     ), cap_jit_deduplicated_expression_1_1, ObjectifyObjectForCAPWithAttributes( rec(
+                       ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrRows( cap_jit_morphism_attribute_6_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+                       ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_6_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_6_1 ), range_1 ][3], [ cap_jit_deduplicated_expression_1_1, source_1, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                     ), cap_jit_deduplicated_expression_1_1, ObjectifyObjectForCAPWithAttributes( rec(
+                       ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrRows( cap_jit_morphism_attribute_7_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+                       ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_7_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_7_1 ), ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                     ), cap_jit_deduplicated_expression_1_1, ObjectifyObjectForCAPWithAttributes( rec(
+                       ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrRows( cap_jit_morphism_attribute_8_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+                       ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_8_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_8_1 ), range_1 ][4], [ cap_jit_deduplicated_expression_1_1, source_1, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                     ), cap_jit_deduplicated_expression_1_1, ObjectifyObjectForCAPWithAttributes( rec(
+                       ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrRows( cap_jit_morphism_attribute_9_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+                       ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_9_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_9_1 ), ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                     ), cap_jit_deduplicated_expression_1_1, ObjectifyObjectForCAPWithAttributes( rec(
+                       ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrRows( cap_jit_morphism_attribute_10_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+                       ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_10_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_10_1 ), range_1 ][5] ) );
 end
 ########
         
@@ -251,12 +259,13 @@ end
         
 ########
 function ( cat_1, alpha_1 )
-    local cap_jit_morphism_attribute_1_1;
+    local cap_jit_morphism_attribute_1_1, cap_jit_deduplicated_expression_1_1;
+    cap_jit_deduplicated_expression_1_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
     cap_jit_morphism_attribute_1_1 := ConvertMatrixToRow( UnderlyingMatrix( alpha_1 ) );
     return ID_FUNC( ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), RangeCategoryOfHomomorphismStructure( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-               ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, 1 ), ObjectifyObjectForCAPWithAttributes( rec(
-               ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 ) );
+             ), cap_jit_deduplicated_expression_1_1, ObjectifyObjectForCAPWithAttributes( rec(
+               ), cap_jit_deduplicated_expression_1_1, RankOfObject, 1 ), ObjectifyObjectForCAPWithAttributes( rec(
+               ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 ) );
 end
 ########
         
@@ -267,16 +276,13 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1, arg4_1 )
+    local cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1;
+    cap_jit_deduplicated_expression_2_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
+    cap_jit_deduplicated_expression_1_1 := [ cap_jit_deduplicated_expression_2_1, ObjectifyObjectForCAPWithAttributes( rec(
+               ), cap_jit_deduplicated_expression_2_1, RankOfObject, RankOfObject( arg3_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+               ), cap_jit_deduplicated_expression_2_1, RankOfObject, RankOfObject( arg2_1 ) ), arg4_1 ];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, arg2_1, arg3_1, UnderlyingMatrix, UnderlyingMatrix( InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( [ RangeCategoryOfHomomorphismStructure( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, RankOfObject( arg3_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, RankOfObject( arg2_1 ) ), arg4_1 ][1], [ RangeCategoryOfHomomorphismStructure( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, RankOfObject( arg3_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, RankOfObject( arg2_1 ) ), arg4_1 ][2], [ RangeCategoryOfHomomorphismStructure( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, RankOfObject( arg3_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, RankOfObject( arg2_1 ) ), arg4_1 ][3], [ RangeCategoryOfHomomorphismStructure( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, RankOfObject( arg3_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                       ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, RankOfObject( arg2_1 ) ), arg4_1 ][4] ) ) );
+           ), cat_1, arg2_1, arg3_1, UnderlyingMatrix, UnderlyingMatrix( InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cap_jit_deduplicated_expression_1_1[1], cap_jit_deduplicated_expression_1_1[2], cap_jit_deduplicated_expression_1_1[3], cap_jit_deduplicated_expression_1_1[4] ) ) );
 end
 ########
         
@@ -331,11 +337,15 @@ end
         
 ########
 function ( cat_1, arg2_1 )
+    local cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1;
+    cap_jit_deduplicated_expression_3_1 := UnderlyingMatrix( arg2_1 );
+    cap_jit_deduplicated_expression_1_1 := NumberRows( cap_jit_deduplicated_expression_3_1 );
+    cap_jit_deduplicated_expression_2_1 := NumberColumns( cap_jit_deduplicated_expression_3_1 );
     if not true then
         return false;
-    elif NumberRows( UnderlyingMatrix( arg2_1 ) ) <> NumberRows( UnderlyingMatrix( arg2_1 ) ) then
+    elif cap_jit_deduplicated_expression_1_1 <> cap_jit_deduplicated_expression_1_1 then
         return false;
-    elif NumberColumns( UnderlyingMatrix( arg2_1 ) ) <> NumberColumns( UnderlyingMatrix( arg2_1 ) ) then
+    elif cap_jit_deduplicated_expression_2_1 <> cap_jit_deduplicated_expression_2_1 then
         return false;
     else
         return true;
@@ -403,8 +413,10 @@ end
         
 ########
 function ( cat_1, arg2_1 )
+    local cap_jit_deduplicated_expression_1_1;
+    cap_jit_deduplicated_expression_1_1 := UnderlyingMatrix( arg2_1 );
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, RankOfObject, NumberColumns( UnderlyingMatrix( arg2_1 ) ) - RowRankOfMatrix( UnderlyingMatrix( arg2_1 ) ) );
+           ), cat_1, RankOfObject, NumberColumns( cap_jit_deduplicated_expression_1_1 ) - RowRankOfMatrix( cap_jit_deduplicated_expression_1_1 ) );
 end
 ########
         
@@ -439,17 +451,19 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local cap_jit_morphism_attribute_1_1;
+    local cap_jit_morphism_attribute_1_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1;
+    cap_jit_deduplicated_expression_1_1 := UnderlyingCategory( cat_1 );
+    cap_jit_deduplicated_expression_2_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
     cap_jit_morphism_attribute_1_1 := UnderlyingMatrix( arg2_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), UnderlyingCategory( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), UnderlyingCategory( cat_1 ), Opposite, ObjectifyObjectForCAPWithAttributes( rec(
-               ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, RankOfObject( Source( arg2_1 ) ) ) ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), UnderlyingCategory( cat_1 ), Opposite, ObjectifyObjectForCAPWithAttributes( rec(
-               ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, RankOfObject( Range( arg2_1 ) ) ) ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), RangeCategoryOfHomomorphismStructure( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-               ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrRows( cap_jit_morphism_attribute_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-               ), RangeCategoryOfHomomorphismStructure( cat_1 ), RankOfObject, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 ) );
+           ), cap_jit_deduplicated_expression_1_1, ObjectifyObjectForCAPWithAttributes( rec(
+             ), cap_jit_deduplicated_expression_1_1, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
+               ), cap_jit_deduplicated_expression_2_1, RankOfObject, RankOfObject( Source( arg2_1 ) ) ) ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cap_jit_deduplicated_expression_1_1, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
+               ), cap_jit_deduplicated_expression_2_1, RankOfObject, RankOfObject( Range( arg2_1 ) ) ) ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), cap_jit_deduplicated_expression_2_1, ObjectifyObjectForCAPWithAttributes( rec(
+               ), cap_jit_deduplicated_expression_2_1, RankOfObject, NrRows( cap_jit_morphism_attribute_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+               ), cap_jit_deduplicated_expression_2_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 ) );
 end
 ########
         
