@@ -40,4 +40,6 @@ ReadPackage( "CompilerForCAP", "gap/HoistExpressions.gi" );
 
 ReadPackage( "CompilerForCAP", "gap/CompilerHints.gi" );
 
+ReadPackage( "CompilerForCAP", "gap/DeduplicateExpressions.gi" );
+
 ReadPackage( "CompilerForCAP", "gap/PrecompileCategory.gi" );

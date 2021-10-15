@@ -145,11 +145,15 @@ end
         
 ########
 function ( cat_1, arg2_1 )
+    local cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1;
+    cap_jit_deduplicated_expression_3_1 := UnderlyingMatrix( arg2_1 );
+    cap_jit_deduplicated_expression_1_1 := NumberRows( cap_jit_deduplicated_expression_3_1 );
+    cap_jit_deduplicated_expression_2_1 := NumberColumns( cap_jit_deduplicated_expression_3_1 );
     if not true then
         return false;
-    elif NumberRows( UnderlyingMatrix( arg2_1 ) ) <> NumberRows( UnderlyingMatrix( arg2_1 ) ) then
+    elif cap_jit_deduplicated_expression_1_1 <> cap_jit_deduplicated_expression_1_1 then
         return false;
-    elif NumberColumns( UnderlyingMatrix( arg2_1 ) ) <> NumberColumns( UnderlyingMatrix( arg2_1 ) ) then
+    elif cap_jit_deduplicated_expression_2_1 <> cap_jit_deduplicated_expression_2_1 then
         return false;
     else
         return true;
@@ -229,12 +233,13 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local cap_jit_morphism_attribute_1_1;
+    local cap_jit_morphism_attribute_1_1, cap_jit_deduplicated_expression_1_1;
+    cap_jit_deduplicated_expression_1_1 := Opposite( cat_1 );
     cap_jit_morphism_attribute_1_1 := UnderlyingMatrix( arg2_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), Opposite( cat_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), Opposite( cat_1 ), RankOfObject, NrRows( cap_jit_morphism_attribute_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), Opposite( cat_1 ), RankOfObject, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
+           ), cap_jit_deduplicated_expression_1_1, ObjectifyObjectForCAPWithAttributes( rec(
+             ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrRows( cap_jit_morphism_attribute_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cap_jit_deduplicated_expression_1_1, RankOfObject, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         

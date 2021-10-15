@@ -1088,7 +1088,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                      f -> CanCompute( range_category, f ) )
            and ForAll( [ "DistinguishedObjectOfHomomorphismStructure", 
                          "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ],
-                         f -> CanCompute( underlying_category, f ) ) then
+                         f -> CanCompute( underlying_category, f ) )
+           and not (IsBound( range_category!.supports_empty_limits ) and range_category!.supports_empty_limits = true) then
             
             ##
             AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
@@ -1114,6 +1115,56 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                           )
                         )
                       );
+                
+            end );
+            
+        fi;
+        
+        if ForAll( [ "UniversalMorphismIntoZeroObject",
+                     "UniversalMorphismIntoDirectSum" ],
+                     f -> CanCompute( range_category, f ) )
+           and ForAll( [ "DistinguishedObjectOfHomomorphismStructure",
+                         "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ],
+                         f -> CanCompute( underlying_category, f ) )
+           and IsBound( range_category!.supports_empty_limits ) and range_category!.supports_empty_limits = true then
+            
+            ##
+            AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( category,
+              function( cat, distinguished_object, alpha, range )
+                local size_j, size_s, B, C, H_B_C, direct_sums;
+                
+                size_j := NrRows( alpha );
+                
+                size_s := NrCols( alpha );
+                
+                B := Source( alpha );
+                C := Range( alpha );
+                
+                H_B_C :=
+                    List( [ 1 .. size_j ], j ->
+                        List( [ 1 .. size_s ], s ->
+                            HomomorphismStructureOnObjects( UnderlyingCategory( cat ), B[j], C[s] )
+                        )
+                    );
+                
+                direct_sums := List( [ 1 .. size_j ], j -> DirectSum( range_category, List( [ 1 .. size_s ], s -> H_B_C[j, s] ) ) );
+                
+                return UniversalMorphismIntoDirectSumWithGivenDirectSum(
+                    range_category,
+                    direct_sums,
+                    distinguished_object,
+                    List( [ 1 .. size_j ], j ->
+                        UniversalMorphismIntoDirectSumWithGivenDirectSum( range_category,
+                            List( [ 1 .. size_s ], s -> H_B_C[j, s] ),
+                            distinguished_object,
+                            List( [ 1 .. size_s ], s ->
+                                InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( UnderlyingCategory( cat ), alpha[j, s] )
+                            ),
+                            direct_sums[j]
+                        )
+                    ),
+                    range
+                );
                 
             end );
             
@@ -1154,9 +1205,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
                 
                 listlist := List( [ 1 .. size_i ], i ->
                             List( [ 1 .. size_j ], j ->
-                              PreCompose( range_category,
+                              ComponentOfMorphismIntoDirectSum( range_category,
                                 morphism,
-                                ProjectionInFactorOfDirectSum( range_category, summands, size_j * (i - 1) + j )
+                                summands,
+                                size_j * (i - 1) + j
                               )
                             )
                           );
