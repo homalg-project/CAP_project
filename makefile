@@ -88,13 +88,28 @@ doc_ToricSheaves:
 
 # END PACKAGE JANITOR
 
-ci-test: homalg_compatibility doc
-	cd CAP && make ci-test
-	cd ModulePresentationsForCAP && make ci-test
-	cd GradedModulePresentationsForCAP && make ci-test
-	cd LinearAlgebraForCAP && make ci-test
-	cd GeneralizedMorphismsForCAP && make ci-test
-	cd GroupRepresentationsForCAP && make ci-test
-	cd InternalExteriorAlgebraForCAP && make ci-test
-	cd CompilerForCAP && make ci-test
-	cd FreydCategoriesForCAP && make doc
+ci-test_CAP:
+	$(MAKE) -C CAP ci-test
+
+ci-test_CompilerForCAP:
+	$(MAKE) -C CompilerForCAP ci-test
+
+ci-test_GeneralizedMorphismsForCAP:
+	$(MAKE) -C GeneralizedMorphismsForCAP ci-test
+
+ci-test_GradedModulePresentationsForCAP:
+	$(MAKE) -C GradedModulePresentationsForCAP ci-test
+
+ci-test_GroupRepresentationsForCAP:
+	$(MAKE) -C GroupRepresentationsForCAP ci-test
+
+ci-test_InternalExteriorAlgebraForCAP:
+	$(MAKE) -C InternalExteriorAlgebraForCAP ci-test
+
+ci-test_LinearAlgebraForCAP:
+	$(MAKE) -C LinearAlgebraForCAP ci-test
+
+ci-test_ModulePresentationsForCAP:
+	$(MAKE) -C ModulePresentationsForCAP ci-test
+
+ci-test: homalg_compatibility doc ci-test_CAP ci-test_CompilerForCAP ci-test_GeneralizedMorphismsForCAP ci-test_GradedModulePresentationsForCAP ci-test_GroupRepresentationsForCAP ci-test_InternalExteriorAlgebraForCAP ci-test_LinearAlgebraForCAP ci-test_ModulePresentationsForCAP

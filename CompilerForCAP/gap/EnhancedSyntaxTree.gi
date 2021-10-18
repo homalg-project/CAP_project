@@ -1193,6 +1193,19 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
             fi;
             
+            # normalize "[,]" (GAP 4.11) to "MatElm" (GAP 4.12)
+            if tree.type = "EXPR_REF_GVAR" and tree.gvar = "[,]" then
+                
+                # this code is only executed with GAP 4.11, but coverage information is only uploaded for GAP master
+                Assert( 0, IsIdenticalObj( \[\,\], MatElm ) );
+                
+                tree := rec(
+                    type := "EXPR_REF_GVAR",
+                    gvar := "MatElm",
+                );
+                
+            fi;
+            
         fi;
         
         return tree;
