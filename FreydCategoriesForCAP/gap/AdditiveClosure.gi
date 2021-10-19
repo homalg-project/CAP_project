@@ -695,7 +695,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
       
     end );
     
-    compare_morphisms := function( morphism_1, morphism_2, comparison_function )
+    compare_morphisms := function( cat, morphism_1, morphism_2, comparison_function )
       local nr_rows_1, nr_rows_2, nr_cols_1, nr_cols_2;
         #% CAP_JIT_RESOLVE_FUNCTION
         
@@ -722,7 +722,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         fi;
         
         return ForAll( [ 1 .. nr_rows_1 ], i ->
-                 ForAll( [ 1 .. nr_cols_1 ], j -> comparison_function( morphism_1[i, j], morphism_2[i, j] ) )
+                 ForAll( [ 1 .. nr_cols_1 ], j -> comparison_function( UnderlyingCategory( cat ), morphism_1[i, j], morphism_2[i, j] ) )
                );
         
     end;
@@ -731,7 +731,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     AddIsEqualForMorphisms( category,
       function( cat, morphism_1, morphism_2 )
         
-        return compare_morphisms( morphism_1, morphism_2, IsEqualForMorphisms );
+        return compare_morphisms( cat, morphism_1, morphism_2, IsEqualForMorphisms );
         
     end );
     
@@ -739,7 +739,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
     AddIsCongruentForMorphisms( category,
       function( cat, morphism_1, morphism_2 )
         
-        return compare_morphisms( morphism_1, morphism_2, IsCongruentForMorphisms );
+        return compare_morphisms( cat, morphism_1, morphism_2, IsCongruentForMorphisms );
         
     end );
     
