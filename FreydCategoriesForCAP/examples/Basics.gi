@@ -23,9 +23,21 @@ UniversalMorphismIntoZeroObject( obj2 );;
 UniversalMorphismFromZeroObject( obj1 );;
 DirectSum( obj1, obj2 );;
 DirectSumFunctorial( [ alpha, beta, id ] );;
-ProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 3 );;
+proj := ProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 2 );;
+IsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 1 ) );
+#! true
+IsOne( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 2 ) );
+#! true
+IsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 3 ) );
+#! true
 UniversalMorphismIntoDirectSum( [ alpha, alpha, alpha ] );;
-InjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;
+inj := InjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;
+IsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 1 ) );
+#! true
+IsOne( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 2 ) );
+#! true
+IsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 3 ) );
+#! true
 gamma := CategoryOfRowsMorphism( obj2, HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, R ), obj2 );;
 IsColiftable( beta, gamma );
 #! true
@@ -229,9 +241,21 @@ UniversalMorphismIntoZeroObject( obj2 );;
 UniversalMorphismFromZeroObject( obj1 );;
 DirectSum( obj1, obj2 );;
 DirectSumFunctorial( [ alpha, beta, id ] );;
-ProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 3 );;
+proj := ProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 2 );;
+IsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 1 ) );
+#! true
+IsOne( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 2 ) );
+#! true
+IsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 3 ) );
+#! true
 UniversalMorphismIntoDirectSum( [ alpha, alpha, alpha ] );;
-InjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;
+inj := InjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;
+IsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 1 ) );
+#! true
+IsOne( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 2 ) );
+#! true
+IsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 3 ) );
+#! true
 gamma := CategoryOfColumnsMorphism( obj2, HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, R ), obj2 );;
 IsColiftable( beta, gamma );
 #! false
