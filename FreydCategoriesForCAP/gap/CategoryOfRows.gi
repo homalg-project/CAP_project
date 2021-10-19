@@ -600,6 +600,40 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
     end );
     
+    ##
+    AddComponentOfMorphismIntoDirectSum( category,
+      function( cat, morphism, summands, nr )
+        local ranks, start, stop;
+        
+        ranks := List( summands, RankOfObject );
+        
+        start := Sum( ranks{[ 1 .. nr-1 ]} ) + 1;
+        
+        stop := (start - 1) + ranks[nr];
+        
+        return CategoryOfRowsMorphism( cat, Source( morphism ),
+                                       CertainColumns( UnderlyingMatrix( morphism ), [ start .. stop ] ),
+                                       summands[nr] );
+        
+    end );
+    
+    ##
+    AddComponentOfMorphismFromDirectSum( category,
+      function( cat, morphism, summands, nr )
+        local ranks, start, stop;
+        
+        ranks := List( summands, RankOfObject );
+        
+        start := Sum( ranks{[ 1 .. nr-1 ]} ) + 1;
+        
+        stop := (start - 1) + ranks[nr];
+        
+        return CategoryOfRowsMorphism( cat, summands[nr],
+                                       CertainRows( UnderlyingMatrix( morphism ), [ start .. stop ] ),
+                                       Range( morphism ) );
+        
+    end );
+    
     ## Operations important for Freyd categories
     
     AddWeakKernelEmbedding( category,
