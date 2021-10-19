@@ -377,9 +377,21 @@
     [4X[25Xgap>[125X [27XUniversalMorphismFromZeroObject( obj1 );;[127X[104X
     [4X[25Xgap>[125X [27XDirectSum( obj1, obj2 );;[127X[104X
     [4X[25Xgap>[125X [27XDirectSumFunctorial( [ alpha, beta, id ] );;[127X[104X
-    [4X[25Xgap>[125X [27XProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 3 );;[127X[104X
+    [4X[25Xgap>[125X [27Xproj := ProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 2 );;[127X[104X
+    [4X[25Xgap>[125X [27XIsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 1 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 2 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 3 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XUniversalMorphismIntoDirectSum( [ alpha, alpha, alpha ] );;[127X[104X
-    [4X[25Xgap>[125X [27XInjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xinj := InjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;[127X[104X
+    [4X[25Xgap>[125X [27XIsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 1 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 2 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 3 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xgamma := CategoryOfRowsMorphism( obj2, HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, R ), obj2 );;[127X[104X
     [4X[25Xgap>[125X [27XIsColiftable( beta, gamma );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -564,9 +576,21 @@
     [4X[25Xgap>[125X [27XUniversalMorphismFromZeroObject( obj1 );;[127X[104X
     [4X[25Xgap>[125X [27XDirectSum( obj1, obj2 );;[127X[104X
     [4X[25Xgap>[125X [27XDirectSumFunctorial( [ alpha, beta, id ] );;[127X[104X
-    [4X[25Xgap>[125X [27XProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 3 );;[127X[104X
+    [4X[25Xgap>[125X [27Xproj := ProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 2 );;[127X[104X
+    [4X[25Xgap>[125X [27XIsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 1 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 2 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 3 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XUniversalMorphismIntoDirectSum( [ alpha, alpha, alpha ] );;[127X[104X
-    [4X[25Xgap>[125X [27XInjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xinj := InjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;[127X[104X
+    [4X[25Xgap>[125X [27XIsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 1 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 2 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 3 ) );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xgamma := CategoryOfColumnsMorphism( obj2, HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, R ), obj2 );;[127X[104X
     [4X[25Xgap>[125X [27XIsColiftable( beta, gamma );[127X[104X
     [4X[28Xfalse[128X[104X

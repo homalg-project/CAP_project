@@ -499,9 +499,21 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismFromZeroObject( obj1 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectSum( obj1, obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectSumFunctorial( [ alpha, beta, id ] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">proj := ProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 1 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 2 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 3 ) );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismIntoDirectSum( [ alpha, alpha, alpha ] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">inj := InjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 1 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 2 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 3 ) );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := CategoryOfRowsMorphism( obj2, HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, R ), obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftable( beta, gamma );</span>
 true
@@ -690,9 +702,21 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismFromZeroObject( obj1 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectSum( obj1, obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DirectSumFunctorial( [ alpha, beta, id ] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 3 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">proj := ProjectionInFactorOfDirectSum( [ obj2, obj1, obj2 ], 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 1 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 2 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismFromDirectSum( proj, [ obj2, obj1, obj2 ], 3 ) );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">UniversalMorphismIntoDirectSum( [ alpha, alpha, alpha ] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">inj := InjectionOfCofactorOfDirectSum( [ obj2, obj2, obj1 ], 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 1 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsOne( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 2 ) );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ComponentOfMorphismIntoDirectSum( inj, [ obj2, obj2, obj1 ], 3 ) );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := CategoryOfColumnsMorphism( obj2, HomalgMatrix( [ [ 1, 1 ], [ 1, 1 ] ], 2, 2, R ), obj2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsColiftable( beta, gamma );</span>
 false
