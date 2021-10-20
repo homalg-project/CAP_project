@@ -94,6 +94,9 @@ ci-test_CAP:
 ci-test_CompilerForCAP:
 	$(MAKE) -C CompilerForCAP ci-test
 
+ci-test_FreydCategoriesForCAP:
+	$(MAKE) -C FreydCategoriesForCAP ci-test
+
 ci-test_GeneralizedMorphismsForCAP:
 	$(MAKE) -C GeneralizedMorphismsForCAP ci-test
 
@@ -112,4 +115,4 @@ ci-test_LinearAlgebraForCAP:
 ci-test_ModulePresentationsForCAP:
 	$(MAKE) -C ModulePresentationsForCAP ci-test
 
-ci-test: homalg_compatibility doc ci-test_CAP ci-test_CompilerForCAP ci-test_GeneralizedMorphismsForCAP ci-test_GradedModulePresentationsForCAP ci-test_GroupRepresentationsForCAP ci-test_InternalExteriorAlgebraForCAP ci-test_LinearAlgebraForCAP ci-test_ModulePresentationsForCAP
+ci-test: homalg_compatibility doc ci-test_CAP ci-test_CompilerForCAP ci-test_FreydCategoriesForCAP ci-test_GeneralizedMorphismsForCAP ci-test_GradedModulePresentationsForCAP ci-test_GroupRepresentationsForCAP ci-test_InternalExteriorAlgebraForCAP ci-test_LinearAlgebraForCAP ci-test_ModulePresentationsForCAP

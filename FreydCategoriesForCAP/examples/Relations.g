@@ -26,6 +26,7 @@ IsEqualForMorphisms( beta, id );
 R := HomalgFieldOfRationalsInSingular() * "t";;
 t := IndeterminatesOfPolynomialRing( R )[1];;
 cocycle := function( a, b, c ) local e; e := CoastrictionToImage( UniversalMorphismIntoDirectSum( [ ReversedArrow( c ), Arrow( c ) ] ) ); return t^RankOfObject( KernelObject( e ) ); end;;
+#! #@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )
 T := TwistedLinearClosure( R, rel, cocycle );;
 gamma := beta/T;;
 delta := ZeroMorphism( 1/vec, 1/vec )/rel/T;;
@@ -38,4 +39,5 @@ IsZero( beta - t * IdentityMorphism( Range( alpha_rel/T ) ) );
 #! true
 IsZero( ( gamma * delta ) * gamma - gamma * ( delta * gamma ) );
 #! true
+#! #@fi
 #! @EndExample

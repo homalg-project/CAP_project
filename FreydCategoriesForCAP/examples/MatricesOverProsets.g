@@ -5,6 +5,7 @@
 LoadPackage( "FreydCategoriesForCAP" );;
 
 #! @Example
+#! #@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )
 #Incidence matrix of our proset
 K := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;
 #Construction of a tower of categories
@@ -52,4 +53,5 @@ gamma := PreCompose( alpha, beta );;
 lift := Lift( gamma, beta );;
 PreCompose(lift, beta) = gamma;
 #! true
+#! #@fi
 #! @EndExample

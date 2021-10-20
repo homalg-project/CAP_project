@@ -5,6 +5,7 @@
 LoadPackage( "FreydCategoriesForCAP" );;
 
 #! @Example
+#! #@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )
 K := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;
 L := [ [1, 1, 0], [0, 1, 1], [0, 0, 1] ];;
 
@@ -48,4 +49,5 @@ Colift(alpha, gamma) = beta;
 #! true
 alpha = HomStructure(a, b, HomStructure(alpha));
 #! true
+#! #@fi
 #! @EndExample

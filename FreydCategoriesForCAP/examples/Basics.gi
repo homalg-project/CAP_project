@@ -4,7 +4,6 @@
 
 LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "RingsForHomalg" );
-LoadPackage( "Algebroids" );
 
 #! @Example
 R := HomalgRingOfIntegers();;
@@ -174,6 +173,9 @@ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Sourc
 
 #! @Example
 ## Algebroid
+#! #@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )
+LoadPackage( "Algebroids", false );
+#! true
 snake_quiver := RightQuiver( "Q(6)[a:1->2,b:2->3,c:1->4,d:2->5,e:3->6,f:4->5,g:5->6]" );;
 kQ := PathAlgebra( HomalgFieldOfRationalsInSingular(), snake_quiver );;
 A := kQ / [ kQ.ad - kQ.cf, kQ.dg - kQ.be, kQ.ab, kQ.fg ];;
@@ -216,6 +218,7 @@ IsCongruentForMorphisms( PreCompose( l, f ), PreCompose( a, d ) );
 l := Colift( c, PreCompose( a, d ) );;
 IsCongruentForMorphisms( PreCompose( c, l ), PreCompose( a, d ) );
 #! true
+#! #@fi
 #! @EndExample
 
 

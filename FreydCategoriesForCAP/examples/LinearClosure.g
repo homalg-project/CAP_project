@@ -5,6 +5,7 @@
 LoadPackage( "FreydCategoriesForCAP" );;
 
 #! @Example
+#! #@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )
 G := SymmetricGroup( 3 );;
 CG := GroupAsCategory( G );;
 compare_func := function( g, h ) return UnderlyingGroupElement( g ) < UnderlyingGroupElement( h ); end;;
@@ -26,4 +27,5 @@ Lift( a + b, a ) * a = a + b;
 #! true
 IsLiftable( a + b, -2*a ); ## over Q this is liftable
 #! false
+#! #@fi
 #! @EndExample

@@ -3,8 +3,11 @@
 #! @Section Adelman category basics
 
 LoadPackage( "FreydCategoriesForCAP" );;
-LoadPackage( "Algebroids");
+
 #! @Example
+#! #@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )
+LoadPackage( "Algebroids", false );
+#! true
 quiver := RightQuiver( "Q(3)[a:1->2,b:1->2,c:2->3]" );;
 kQ := PathAlgebra( HomalgFieldOfRationals(), quiver );;
 Aoid := Algebroid( kQ );;
@@ -27,4 +30,5 @@ mor := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure
 int := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( A, B, mor );;
 IsCongruentForMorphisms( int, a );
 #! true
+#! #@fi
 #! @EndExample

@@ -2,10 +2,13 @@
 
 LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "RingsForHomalg" );
-LoadPackage( "Algebroids" );;
+
 #! @Section Adelman category theorem
 
 #! @Example
+#! #@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )
+LoadPackage( "Algebroids", false );
+#! true
 quiver := RightQuiver( "Q(9)[a:1->2,b:3->2]" );;
 kQ := PathAlgebra( HomalgFieldOfRationals(), quiver );;
 Aoid := Algebroid( kQ );;
@@ -21,4 +24,5 @@ pi2 := ProjectionInFactorOfFiberProduct( [ a, b ], 1 );;
 c := CokernelColift( pi1, PreCompose( a, CokernelProjection( b ) ) );;
 IsMonomorphism( c );
 #! true
+#! #@fi
 #! @EndExample

@@ -6,7 +6,7 @@ LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "RingsForHomalg" );
 
 #! @Example
-
+#! #@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )
 ## quiver without relations
 QQ := HomalgFieldOfRationals();;
 quiver := RightQuiver( "Q(3)[a:1->2,b:1->2,c:2->3]" );;
@@ -96,4 +96,5 @@ obj := QuiverRowsObject( [ [ Bv[1], 2 ], [ Bv[1], 4 ], [ Bv[1], 4 ], [ Bv[1], 6 
 IsWellDefined( obj );
 #! true
 IdentityMorphism( obj );;
+#! #@fi
 #! @EndExample
