@@ -524,7 +524,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                     fi;
                     
                     # detect rapid reassignments
-                    if i < statements.length and statements.(i + 1).type = "STAT_ASS_FVAR" and statements.(i + 1).func_id = tree.id and statements.(i + 1).name = statement.name then
+                    if i < statements.length and statements.(i + 1).type = "STAT_ASS_FVAR" and statements.(i + 1).func_id = tree.id and statements.(i + 1).name = statement.name and statement.name <> "RETURN_VALUE" then
                         
                         statements.(i + 1) := CapJitReplacedEXPR_REF_FVARByValue( statements.(i + 1), statement.func_id, statement.name, statement.rhs );
                         continue;
