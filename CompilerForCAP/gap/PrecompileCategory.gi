@@ -269,7 +269,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
     # check that category_constructor supports `FinalizeCategory`
     cat := CallFuncList( category_constructor, given_arguments : FinalizeCategory := false, no_precompiled_code := true );
     
-    if HasIsFinalized( cat ) then
+    if IsFinalized( cat ) then
         
         # COVERAGE_IGNORE_NEXT_LINE
         Error( "the category constructor must support the option `FinalizeCategory`" );
@@ -547,12 +547,6 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         "    cat := category_constructor( ", parameters_string, " : FinalizeCategory := false, no_precompiled_code := true );\n",
         "    \n",
         "    ADD_FUNCTIONS_FOR_", compiled_category_name, "( cat );\n",
-        "    \n",
-        "    if ValueOption( \"FinalizeCategory\" ) = false then\n",
-        "        \n",
-        "        return cat;\n",
-        "        \n",
-        "    fi;\n",
         "    \n",
         "    Finalize( cat );\n",
         "    \n",

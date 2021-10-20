@@ -168,7 +168,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
               current_function_argument_number, current_additional_filter_list_length, filter, input_human_readable_identifier_getter, input_sanity_check_functions,
               output_human_readable_identifier_getter, output_sanity_check_function, cap_jit_compiled_function;
         
-        if HasIsFinalized( category ) and IsFinalized( category ) then
+        if IsFinalized( category ) then
             Error( "cannot add methods anymore, category is finalized" );
         fi;
         
@@ -463,6 +463,15 @@ InstallGlobalFunction( CapInternalInstallAdd,
                                 
                   function( arg )
                     local redirect_return, pre_func_return, collect_timing_statistics, start_time, result, end_time, i;
+                    
+                    if not IsFinalized( category ) then
+                        
+                        Display( Concatenation(
+                            "WARNING: You are calling an operation in a unfinalized category with name \"", Name( category ),
+                            "\". This is fine for debugging purposes, but for production use you should finalize the category by calling `Finalize` (with the option `FinalizeCategory := true` if needed)."
+                        ) );
+                        
+                    fi;
                     
                     if (redirect_function <> false) and (not IsBound( category!.redirects.( function_name ) ) or category!.redirects.( function_name ) <> false) then
                         redirect_return := CallFuncList( redirect_function, arg );

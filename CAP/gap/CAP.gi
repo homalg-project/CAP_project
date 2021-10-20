@@ -244,6 +244,8 @@ InstallGlobalFunction( "CREATE_CAP_CATEGORY_OBJECT",
     
     obj := CallFuncList( ObjectifyWithAttributes, flatted_attribute_list );
     
+    SetIsFinalized( obj, false );
+    
     obj!.derivations_weight_list := MakeOperationWeightList( obj, CAP_INTERNAL_DERIVATION_GRAPH );
     
     obj!.caches := rec( );

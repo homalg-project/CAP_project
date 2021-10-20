@@ -20,7 +20,7 @@ InstallMethod( CategoryOfColumns,
                [ IsHomalgRing ],
                
   function( homalg_ring )
-    local cat, to_be_finalized;
+    local cat;
     
     cat := CategoryOfColumnsAsOppositeOfCategoryOfRows( homalg_ring : FinalizeCategory := false );
     
@@ -39,14 +39,6 @@ InstallMethod( CategoryOfColumns,
             ADD_FUNCTIONS_FOR_CategoryOfColumnsAsOppositeOfCategoryOfRowsOfArbitraryRingPrecompiled( cat );
             
         fi;
-        
-    fi;
-    
-    to_be_finalized := ValueOption( "FinalizeCategory" );
-    
-    if to_be_finalized = false then
-        
-        return cat;
         
     fi;
     

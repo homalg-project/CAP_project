@@ -12,7 +12,7 @@ InstallMethod( LeftPresentations,
                [ IsHomalgRing ],
                
   function( ring )
-    local category, to_be_finalized;
+    local category;
     
     category := CreateCapCategory( Concatenation( "Category of left presentations of ", RingName( ring ) ) );
     
@@ -62,17 +62,7 @@ InstallMethod( LeftPresentations,
         "RelationsForGeneralModuleCategories.tex" )
     );
     
-    to_be_finalized := ValueOption( "FinalizeCategory" );
-   
-    if to_be_finalized = false then
-      
-       return category;
-    
-    else
-    
-       Finalize( category );
-      
-    fi;
+    Finalize( category );
     
     return category;
     

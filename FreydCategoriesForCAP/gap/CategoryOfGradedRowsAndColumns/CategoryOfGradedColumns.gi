@@ -18,7 +18,7 @@
 InstallMethod( CategoryOfGradedColumns,
                [ IsHomalgGradedRing ],
   function( homalg_graded_ring )
-    local category, to_be_finalized;
+    local category;
     
       # create category
       category := CreateCapCategory( Concatenation( "Category of graded columns over ", RingName( homalg_graded_ring ) ) );
@@ -46,14 +46,6 @@ InstallMethod( CategoryOfGradedColumns,
       INSTALL_FUNCTIONS_FOR_CAP_CATEGORY_OF_GRADED_COLUMNS( category, category!.constructor_checks_wished );
       
       CapCategorySwitchLogicOff( category );
-      
-      to_be_finalized := ValueOption( "FinalizeCategory" );
-      
-      if to_be_finalized = false then
-        
-        return category;
-      
-      fi;
       
       # finalise it
       Finalize( category );

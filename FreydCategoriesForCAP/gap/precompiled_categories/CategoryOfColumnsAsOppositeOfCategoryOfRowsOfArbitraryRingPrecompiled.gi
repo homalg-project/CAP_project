@@ -653,12 +653,6 @@ end;
     
     ADD_FUNCTIONS_FOR_CategoryOfColumnsAsOppositeOfCategoryOfRowsOfArbitraryRingPrecompiled( cat );
     
-    if ValueOption( "FinalizeCategory" ) = false then
-        
-        return cat;
-        
-    fi;
-    
     Finalize( cat );
     
     return cat;
