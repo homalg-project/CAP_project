@@ -953,7 +953,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             id := HomalgIdentityMatrix( rank, ring );
             
             return CategoryOfRowsMorphism( cat, tensor_object,
-                                           UnionOfRows( List( [ 1 .. rank ], i -> CertainColumns( id, [i] ) ) ),
+                                           ConvertMatrixToColumn( id ),
                                            unit );
             
         end );
@@ -975,7 +975,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
             id := HomalgIdentityMatrix( rank, ring );
             
             return CategoryOfRowsMorphism( cat, unit,
-                                           UnionOfColumns( List( [ 1 .. rank ], i -> CertainRows( id, [i] ) ) ),
+                                           ConvertMatrixToRow( id ),
                                            tensor_object );
             
         end );
