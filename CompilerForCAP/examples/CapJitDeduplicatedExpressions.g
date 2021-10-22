@@ -110,4 +110,25 @@ Display( compiled_func );
 #!         cap_jit_deduplicated_expression_1_1 ];
 #! end
 
+##
+# make sure that ignoring paths in replaced paths works as expected
+func := {} ->
+    [ [ [ [ 1 ] ], [ [ 1 ] ] ], [ [ [ 1 ] ], [ [ 1 ] ] ] ];;
+
+tree := ENHANCED_SYNTAX_TREE( func );;
+tree := CapJitDeduplicatedExpressions( tree );;
+compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
+Display( compiled_func );
+#! function (  )
+#!     local cap_jit_deduplicated_expression_1_1, 
+#!     cap_jit_deduplicated_expression_2_1;
+#!     cap_jit_deduplicated_expression_2_1 := [ [ 1 ] ];
+#!     cap_jit_deduplicated_expression_1_1 
+#!      := [ cap_jit_deduplicated_expression_2_1, 
+#!         cap_jit_deduplicated_expression_2_1 ];
+#!     return 
+#!      [ cap_jit_deduplicated_expression_1_1, 
+#!         cap_jit_deduplicated_expression_1_1 ];
+#! end
+
 #! @EndExample

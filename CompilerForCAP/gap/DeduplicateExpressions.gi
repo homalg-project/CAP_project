@@ -87,9 +87,6 @@ InstallGlobalFunction( CapJitDeduplicatedExpressions, function ( tree )
             
             expressions := expressions_by_type.(key);
             
-            # drop ignored expressions
-            expressions := Filtered( expressions, info -> not ForAny( ignored_paths, path -> StartsWith( info.path, path ) ) );
-            
             # honor path replacements
             for info in expressions do
                 
@@ -104,6 +101,10 @@ InstallGlobalFunction( CapJitDeduplicatedExpressions, function ( tree )
                 od;
                 
             od;
+            
+            # drop ignored expressions
+            # this has to happen after applying the replacements because replaced paths might be ignored
+            expressions := Filtered( expressions, info -> not ForAny( ignored_paths, path -> StartsWith( info.path, path ) ) );
             
             while not IsEmpty( expressions ) do
                 
