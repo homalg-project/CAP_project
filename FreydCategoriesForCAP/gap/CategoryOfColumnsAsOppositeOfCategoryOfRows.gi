@@ -286,7 +286,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
             id := HomalgIdentityMatrix( rank, ring );
             
             return CategoryOfColumnsMorphism( cat, tensor_object,
-                                              UnionOfColumns( List( [ 1 .. rank ], i -> CertainRows( id, [i] ) ) ),
+                                              ConvertMatrixToRow( id ),
                                               unit );
             
         end );
@@ -308,7 +308,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_
             id := HomalgIdentityMatrix( rank, ring );
             
             return CategoryOfColumnsMorphism( cat, unit,
-                                              UnionOfRows( List( [ 1 .. rank ], i -> CertainColumns( id, [i] ) ) ),
+                                              ConvertMatrixToColumn( id ),
                                               tensor_object );
             
         end );

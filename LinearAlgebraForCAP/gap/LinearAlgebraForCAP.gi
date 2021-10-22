@@ -769,30 +769,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     ##
     AddEvaluationForDualWithGivenTensorProduct( category,
       function( cat, tensor_object, object, unit )
-        local dimension, column, zero_column, i;
+        local dimension, id;
         
         dimension := Dimension( object );
         
-        column := [ ];
-        
-        zero_column := List( [ 1 .. dimension ], i -> 0 );
-        
-        for i in [ 1 .. dimension - 1 ] do
-          
-          Add( column, 1 );
-          
-          Append( column, zero_column );
-          
-        od;
-        
-        if dimension > 0 then 
-          
-          Add( column, 1 );
-          
+        if dimension = 0 then
+            
+            return ZeroMorphism( cat, tensor_object, unit );
+            
         fi;
         
+        id := HomalgIdentityMatrix( dimension, homalg_field );
+        
         return VectorSpaceMorphism( cat, tensor_object,
-                                    HomalgMatrix( column, Dimension( tensor_object ), 1, homalg_field ),
+                                    ConvertMatrixToColumn( id ),
                                     unit );
         
     end );
@@ -801,30 +791,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     AddCoevaluationForDualWithGivenTensorProduct( category,
       
       function( cat, unit, object, tensor_object )
-        local dimension, row, zero_row, i;
+        local dimension, id;
         
         dimension := Dimension( object );
         
-        row := [ ];
-        
-        zero_row := List( [ 1 .. dimension ], i -> 0 );
-        
-        for i in [ 1 .. dimension - 1 ] do
-          
-          Add( row, 1 );
-          
-          Append( row, zero_row );
-          
-        od;
-        
-        if dimension > 0 then 
-          
-          Add( row, 1 );
-          
+        if dimension = 0 then
+            
+            return ZeroMorphism( cat, unit, tensor_object );
+            
         fi;
         
+        id := HomalgIdentityMatrix( dimension, homalg_field );
+        
         return VectorSpaceMorphism( cat, unit,
-                                    HomalgMatrix( row, 1, Dimension( tensor_object ), homalg_field ),
+                                    ConvertMatrixToRow( id ),
                                     tensor_object );
         
     end );
