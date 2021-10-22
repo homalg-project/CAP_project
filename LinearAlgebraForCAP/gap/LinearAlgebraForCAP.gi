@@ -172,15 +172,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
     end );
     
-    ##
-    AddIsEqualForCacheForObjects( category,
-      { cat, obj1, obj2 } -> IsIdenticalObj( obj1, obj2 ) );
-    
-    ##
-    AddIsEqualForCacheForMorphisms( category,
-      { cat, mor1, mor2 } -> IsIdenticalObj( mor1, mor2 ) );
-
-     
     ## Well-defined for objects and morphisms
     ##
     AddIsWellDefinedForObjects( category,

@@ -420,28 +420,6 @@ end
     );
     
     ##
-    AddIsEqualForCacheForMorphisms( cat,
-        
-########
-function ( cat_1, arg2_1, arg3_1 )
-    return IS_IDENTICAL_OBJ( arg2_1, arg3_1 );
-end
-########
-        
-    );
-    
-    ##
-    AddIsEqualForCacheForObjects( cat,
-        
-########
-function ( cat_1, arg2_1, arg3_1 )
-    return IS_IDENTICAL_OBJ( arg2_1, arg3_1 );
-end
-########
-        
-    );
-    
-    ##
     AddIsEqualForMorphisms( cat,
         
 ########
