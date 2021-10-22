@@ -14,7 +14,7 @@ AddDerivationToCAP( LeftDistributivityExpandingWithGivenObjects,
     
     diagram := List( summands, summand -> TensorProductOnObjects( cat, object, summand ) );
     
-    return UniversalMorphismIntoDirectSum( cat, diagram, projection_list );
+    return UniversalMorphismIntoDirectSum( cat, diagram, factored_object, projection_list );
     
 end : CategoryFilter := IsMonoidalCategory and IsAdditiveCategory,
       Description := "LeftDistributivityExpandingWithGivenObjects using the universal property of the direct sum" );
@@ -35,7 +35,7 @@ AddDerivationToCAP( LeftDistributivityFactoringWithGivenObjects,
     
     diagram := List( summands, summand -> TensorProductOnObjects( cat, object, summand ) );
     
-    return UniversalMorphismFromDirectSum( cat, diagram, injection_list );
+    return UniversalMorphismFromDirectSum( cat, diagram, factored_object, injection_list );
     
 end : CategoryFilter := IsMonoidalCategory and IsAdditiveCategory,
       Description := "LeftDistributivityFactoringWithGivenObjects using the universal property of the direct sum" );
@@ -56,7 +56,7 @@ AddDerivationToCAP( RightDistributivityExpandingWithGivenObjects,
     
     diagram := List( summands, summand -> TensorProductOnObjects( cat, summand, object ) );
     
-    return UniversalMorphismIntoDirectSum( cat, diagram, projection_list );
+    return UniversalMorphismIntoDirectSum( cat, diagram, factored_object, projection_list );
     
 end : CategoryFilter := IsMonoidalCategory and IsAdditiveCategory,
       Description := "RightDistributivityExpandingWithGivenObjects using the universal property of the direct sum" );
@@ -77,7 +77,7 @@ AddDerivationToCAP( RightDistributivityFactoringWithGivenObjects,
     
     diagram := List( summands, summand -> TensorProductOnObjects( cat, summand, object ) );
     
-    return UniversalMorphismFromDirectSum( cat, diagram, injection_list );
+    return UniversalMorphismFromDirectSum( cat, diagram, factored_object, injection_list );
     
 end : CategoryFilter := IsMonoidalCategory and IsAdditiveCategory,
       Description := "RightDistributivityFactoringWithGivenObjects using the universal property of the direct sum" );
