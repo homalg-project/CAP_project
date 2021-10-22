@@ -418,9 +418,21 @@ ZeroObject := rec(
 
 ZeroObjectFunctorial := rec(
   filter_list := [ "category" ],
-  ## TODO: io_type?
+  input_arguments_names := [ "cat" ],
   return_type := "morphism",
+  output_source_getter_string := "ZeroObject( cat )",
+  output_range_getter_string := "ZeroObject( cat )",
+  with_given_object_position := "both",
   dual_operation := "ZeroObjectFunctorial",
+  dual_arguments_reversed := true
+),
+
+ZeroObjectFunctorialWithGivenZeroObjects := rec(
+  filter_list := [ "category", "object", "object" ],
+  io_type := [ [ "P", "Pp" ], [ "P", "Pp" ] ],
+  return_type := "morphism",
+  dual_operation := "ZeroObjectFunctorialWithGivenZeroObjects",
+  dual_arguments_reversed := true
 ),
 
 UniversalMorphismFromZeroObject := rec(
@@ -2387,32 +2399,91 @@ UniversalMorphismFromImageWithGivenImageObject := rec(
   end,
   return_type := "morphism" ),
 
+KernelObjectFunctorial := rec(
+  filter_list := [ "category", "morphism", "morphism", "morphism" ],
+  input_arguments_names := [ "cat", "alpha", "mu", "alphap" ],
+  return_type := "morphism",
+  output_source_getter_string := "KernelObject( cat, alpha )",
+  output_range_getter_string := "KernelObject( cat, alphap )",
+  with_given_object_position := "both",
+  dual_operation := "CokernelObjectFunctorial",
+  dual_arguments_reversed := true,
+),
+
 KernelObjectFunctorialWithGivenKernelObjects := rec(
   filter_list := [ "category", "object", "morphism", "morphism", "morphism", "object" ],
   io_type := [ [ "P", "alpha", "mu", "alphap", "Pp" ], [ "P", "Pp" ] ],
   return_type := "morphism",
   dual_operation := "CokernelObjectFunctorialWithGivenCokernelObjects",
-  dual_arguments_reversed := true ),
+  dual_arguments_reversed := true,
+),
+
+CokernelObjectFunctorial := rec(
+  filter_list := [ "category", "morphism", "morphism", "morphism" ],
+  input_arguments_names := [ "cat", "alpha", "mu", "alphap" ],
+  return_type := "morphism",
+  output_source_getter_string := "CokernelObject( cat, alpha )",
+  output_range_getter_string := "CokernelObject( cat, alphap )",
+  with_given_object_position := "both",
+  dual_operation := "KernelObjectFunctorial",
+  dual_arguments_reversed := true,
+),
 
 CokernelObjectFunctorialWithGivenCokernelObjects := rec(
   filter_list := [ "category", "object", "morphism", "morphism", "morphism", "object" ],
   io_type := [ [ "P", "alpha", "mu", "alphap", "Pp" ], [ "P", "Pp" ] ],
   return_type := "morphism",
   dual_operation := "KernelObjectFunctorialWithGivenKernelObjects",
-  dual_arguments_reversed := true ),
+  dual_arguments_reversed := true,
+),
 
 TerminalObjectFunctorial := rec(
   filter_list := [ "category" ],
-  ## TODO: io_type?
+  input_arguments_names := [ "cat" ],
   return_type := "morphism",
+  output_source_getter_string := "TerminalObject( cat )",
+  output_range_getter_string := "TerminalObject( cat )",
+  with_given_object_position := "both",
   dual_operation := "InitialObjectFunctorial",
+  dual_arguments_reversed := true,
+),
+
+TerminalObjectFunctorialWithGivenTerminalObjects := rec(
+  filter_list := [ "category", "object", "object" ],
+  io_type := [ [ "P", "Pp" ], [ "P", "Pp" ] ],
+  return_type := "morphism",
+  dual_operation := "InitialObjectFunctorialWithGivenInitialObjects",
+  dual_arguments_reversed := true,
 ),
 
 InitialObjectFunctorial := rec(
   filter_list := [ "category" ],
-  ## TODO: io_type?
+  input_arguments_names := [ "cat" ],
   return_type := "morphism",
+  output_source_getter_string := "InitialObject( cat )",
+  output_range_getter_string := "InitialObject( cat )",
+  with_given_object_position := "both",
   dual_operation := "TerminalObjectFunctorial",
+  dual_arguments_reversed := true,
+),
+
+InitialObjectFunctorialWithGivenInitialObjects := rec(
+  filter_list := [ "category", "object", "object" ],
+  io_type := [ [ "P", "Pp" ], [ "P", "Pp" ] ],
+  return_type := "morphism",
+  dual_operation := "TerminalObjectFunctorialWithGivenTerminalObjects",
+  dual_arguments_reversed := true,
+),
+
+DirectProductFunctorial := rec(
+  filter_list := [ "category", "list_of_objects", "list_of_morphisms", "list_of_objects" ],
+  input_arguments_names := [ "cat", "objects", "L", "objectsp" ],
+  return_type := "morphism",
+  output_source_getter_string := "DirectProduct( cat, objects )",
+  output_range_getter_string := "DirectProduct( cat, objectsp )",
+  with_given_object_position := "both",
+  dual_operation := "CoproductFunctorial",
+  dual_arguments_reversed := true,
 ),
 
 DirectProductFunctorialWithGivenDirectProducts := rec(
@@ -2420,49 +2491,122 @@ DirectProductFunctorialWithGivenDirectProducts := rec(
   io_type := [ [ "P", "objects", "L", "objectsp", "Pp" ], [ "P", "Pp" ] ],
   return_type := "morphism",
   dual_operation := "CoproductFunctorialWithGivenCoproducts",
-  dual_arguments_reversed := true ),
+  dual_arguments_reversed := true,
+),
+
+CoproductFunctorial := rec(
+  filter_list := [ "category", "list_of_objects", "list_of_morphisms", "list_of_objects" ],
+  input_arguments_names := [ "cat", "objects", "L", "objectsp" ],
+  return_type := "morphism",
+  output_source_getter_string := "Coproduct( cat, objects )",
+  output_range_getter_string := "Coproduct( cat, objectsp )",
+  with_given_object_position := "both",
+  dual_operation := "DirectProductFunctorial",
+  dual_arguments_reversed := true,
+),
 
 CoproductFunctorialWithGivenCoproducts := rec(
   filter_list := [ "category", "object", "list_of_objects", "list_of_morphisms", "list_of_objects", "object" ],
   io_type := [ [ "P", "objects", "L", "objectsp", "Pp" ], [ "P", "Pp" ] ],
   return_type := "morphism",
   dual_operation := "DirectProductFunctorialWithGivenDirectProducts",
-  dual_arguments_reversed := true ),
+  dual_arguments_reversed := true,
+),
+
+DirectSumFunctorial := rec(
+  filter_list := [ "category", "list_of_objects", "list_of_morphisms", "list_of_objects" ],
+  input_arguments_names := [ "cat", "objects", "L", "objectsp" ],
+  return_type := "morphism",
+  output_source_getter_string := "DirectSum( cat, objects )",
+  output_range_getter_string := "DirectSum( cat, objectsp )",
+  with_given_object_position := "both",
+  dual_operation := "DirectSumFunctorial",
+  dual_arguments_reversed := true,
+),
 
 DirectSumFunctorialWithGivenDirectSums := rec(
   filter_list := [ "category", "object", "list_of_objects", "list_of_morphisms", "list_of_objects", "object" ],
   io_type := [ [ "P", "objects", "L", "objectsp", "Pp" ], [ "P", "Pp" ] ],
   return_type := "morphism",
   dual_operation := "DirectSumFunctorialWithGivenDirectSums",
-  dual_arguments_reversed := true ),
+  dual_arguments_reversed := true,
+),
+
+EqualizerFunctorial := rec(
+  filter_list := [ "category", "list_of_morphisms", "morphism", "list_of_morphisms" ],
+  input_arguments_names := [ "cat", "morphisms", "mu", "morphismsp" ],
+  return_type := "morphism",
+  output_source_getter_string := "Equalizer( cat, morphisms )",
+  output_range_getter_string := "Equalizer( cat, morphismsp )",
+  with_given_object_position := "both",
+  dual_operation := "CoequalizerFunctorial",
+  dual_arguments_reversed := true,
+),
 
 EqualizerFunctorialWithGivenEqualizers := rec(
   filter_list := [ "category", "object", "list_of_morphisms", "morphism", "list_of_morphisms", "object" ],
   io_type := [ [ "P", "morphisms", "mu", "morphismsp", "Pp" ], [ "P", "Pp" ] ],
   return_type := "morphism",
   dual_operation := "CoequalizerFunctorialWithGivenCoequalizers",
-  dual_arguments_reversed := true ),
+  dual_arguments_reversed := true,
+),
 
-FiberProductFunctorialWithGivenFiberProducts := rec(
-  filter_list := [ "category", "object", "list_of_morphisms", "list_of_morphisms", "list_of_morphisms", "object" ],
-  io_type := [ [ "P", "morphisms", "L", "morphismsp", "Pp" ], [ "P", "Pp" ] ],
+CoequalizerFunctorial := rec(
+  filter_list := [ "category", "list_of_morphisms", "morphism", "list_of_morphisms" ],
+  input_arguments_names := [ "cat", "morphisms", "mu", "morphismsp" ],
   return_type := "morphism",
-  dual_operation := "PushoutFunctorialWithGivenPushouts",
-  dual_arguments_reversed := true ),
+  output_source_getter_string := "Coequalizer( cat, morphisms )",
+  output_range_getter_string := "Coequalizer( cat, morphismsp )",
+  with_given_object_position := "both",
+  dual_operation := "EqualizerFunctorial",
+  dual_arguments_reversed := true,
+),
 
 CoequalizerFunctorialWithGivenCoequalizers := rec(
   filter_list := [ "category", "object", "list_of_morphisms", "morphism", "list_of_morphisms", "object" ],
   io_type := [ [ "P", "morphisms", "mu", "morphismsp", "Pp" ], [ "P", "Pp" ] ],
   return_type := "morphism",
   dual_operation := "EqualizerFunctorialWithGivenEqualizers",
-  dual_arguments_reversed := true ),
+  dual_arguments_reversed := true,
+),
+
+FiberProductFunctorial := rec(
+  filter_list := [ "category", "list_of_morphisms", "list_of_morphisms", "list_of_morphisms" ],
+  input_arguments_names := [ "cat", "morphisms", "L", "morphismsp" ],
+  return_type := "morphism",
+  output_source_getter_string := "FiberProduct( cat, morphisms )",
+  output_range_getter_string := "FiberProduct( cat, morphismsp )",
+  with_given_object_position := "both",
+  dual_operation := "PushoutFunctorial",
+  dual_arguments_reversed := true,
+),
+
+FiberProductFunctorialWithGivenFiberProducts := rec(
+  filter_list := [ "category", "object", "list_of_morphisms", "list_of_morphisms", "list_of_morphisms", "object" ],
+  io_type := [ [ "P", "morphisms", "L", "morphismsp", "Pp" ], [ "P", "Pp" ] ],
+  return_type := "morphism",
+  dual_operation := "PushoutFunctorialWithGivenPushouts",
+  dual_arguments_reversed := true,
+),
+
+PushoutFunctorial := rec(
+  filter_list := [ "category", "list_of_morphisms", "list_of_morphisms", "list_of_morphisms" ],
+  input_arguments_names := [ "cat", "morphisms", "L", "morphismsp" ],
+  return_type := "morphism",
+  output_source_getter_string := "Pushout( cat, morphisms )",
+  output_range_getter_string := "Pushout( cat, morphismsp )",
+  with_given_object_position := "both",
+  dual_operation := "FiberProductFunctorial",
+  dual_arguments_reversed := true,
+),
 
 PushoutFunctorialWithGivenPushouts := rec(
   filter_list := [ "category", "object", "list_of_morphisms", "list_of_morphisms", "list_of_morphisms", "object" ],
   io_type := [ [ "P", "morphisms", "L", "morphismsp", "Pp" ], [ "P", "Pp" ] ],
   return_type := "morphism",
   dual_operation := "FiberProductFunctorialWithGivenFiberProducts",
-  dual_arguments_reversed := true ),
+  dual_arguments_reversed := true
+),
 
 HorizontalPreCompose := rec(
   filter_list := [ "category", "twocell", "twocell" ],
@@ -3593,7 +3737,15 @@ InstallGlobalFunction( "CAP_INTERNAL_ENHANCE_NAME_RECORD_LIMITS",
         if not IsBound( limit.colimit_universal_morphism_name ) then
             limit.colimit_universal_morphism_name := Concatenation( "UniversalMorphismFrom", limit.colimit_object_name );
         fi;
-
+        
+        if number_of_targets > 0 then
+            limit.limit_projection_with_given_name := Concatenation( limit.limit_projection_name, "WithGiven", limit.limit_object_name );
+            limit.colimit_injection_with_given_name := Concatenation( limit.colimit_injection_name, "WithGiven", limit.colimit_object_name );
+        fi;
+        
+        limit.limit_universal_morphism_with_given_name := Concatenation( limit.limit_universal_morphism_name, "WithGiven", limit.limit_object_name );
+        limit.colimit_universal_morphism_with_given_name := Concatenation( limit.colimit_universal_morphism_name, "WithGiven", limit.colimit_object_name );
+        
         limit.limit_functorial_name := Concatenation( limit.limit_object_name, "Functorial" );
         limit.colimit_functorial_name := Concatenation( limit.colimit_object_name, "Functorial" );
 
@@ -3613,7 +3765,14 @@ InstallGlobalFunction( "CAP_INTERNAL_ENHANCE_NAME_RECORD_LIMITS",
                 limit.diagram_morphism_filter_list := [ "list_of_morphisms" ];
                 limit.diagram_morphism_input_type := [ "L" ];
             fi;
+        else
+            limit.diagram_morphism_filter_list := [ ];
+            limit.diagram_morphism_input_type := [ ];
         fi;
+        
+        limit.functorial_source_diagram_arguments_names := limit.diagram_input_type;
+        limit.functorial_range_diagram_arguments_names := List( limit.diagram_input_type, x -> Concatenation( x, "p" ) );
+        
     od;
 end );
 
@@ -3660,7 +3819,7 @@ end );
 
 InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
   function ( method_name_record, limits )
-    local make_record_with_given, make_colimit, object_filter_list, projection_filter_list, projection_io_type, morphism_to_sink_filter_list, morphism_to_sink_io_type, universal_morphism_filter_list, universal_morphism_io_type, object_record, projection_record, morphism_to_sink_record, filter_list, io_type, with_given_object_position, return_type, dual_operation, universal_morphism_record, functorial_record, dual_arguments_reversed, limit;
+    local make_record_with_given, make_colimit, object_filter_list, projection_filter_list, projection_io_type, morphism_to_sink_filter_list, morphism_to_sink_io_type, universal_morphism_filter_list, universal_morphism_io_type, object_record, projection_record, morphism_to_sink_record, filter_list, io_type, with_given_object_position, return_type, dual_operation, universal_morphism_record, functorial_record, functorial_with_given_record, limit;
     
     #### helper functions
     make_record_with_given := function ( record, object_name, coobject_name )
@@ -3679,17 +3838,8 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
         return record;
     end;
 
-    make_colimit := function ( record, args... )
-        local reverse_output_type, orig_function_name;
-        
-        
-        if Length( args ) > 1 then
-            Error( "make_colimit must be called with at most two arguments" );
-        elif Length( args ) = 1 then
-            reverse_output_type := args[1];
-        else
-            reverse_output_type := true;
-        fi;
+    make_colimit := function ( limit, record )
+      local orig_function_name;
         
         record := StructuralCopy( record );
         
@@ -3697,7 +3847,8 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
         record.function_name := record.dual_operation;
         record.dual_operation := orig_function_name;
         
-        if IsBound( record.io_type ) and reverse_output_type then
+        # reverse the output type, except if the input is reversed
+        if IsBound( record.io_type ) and not (IsBound( record.dual_arguments_reversed ) and record.dual_arguments_reversed) then
             record.io_type[2] := Reversed( record.io_type[2] );
             record.io_type[2] := List( record.io_type[2], x -> ReplacedString( x, "source", "tmp" ) );
             record.io_type[2] := List( record.io_type[2], x -> ReplacedString( x, "range", "source" ) );
@@ -3707,9 +3858,17 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
         if IsBound( record.with_given_object_position ) then
             if record.with_given_object_position = "Source" then
                 record.with_given_object_position := "Range";
-            else
+            elif record.with_given_object_position = "Range" then
                 record.with_given_object_position := "Source";
             fi;
+        fi;
+
+        if IsBound( record.output_source_getter_string ) then
+            record.output_source_getter_string := ReplacedString( record.output_source_getter_string, limit.limit_object_name, limit.colimit_object_name );
+        fi;
+        
+        if IsBound( record.output_range_getter_string ) then
+            record.output_range_getter_string := ReplacedString( record.output_range_getter_string, limit.limit_object_name, limit.colimit_object_name );
         fi;
         
         return record;
@@ -3815,30 +3974,40 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
             dual_operation := limit.colimit_universal_morphism_name,
         );
 
-        if IsEmpty( limit.diagram_filter_list ) then
-            functorial_record := rec(
-                function_name := limit.limit_functorial_name,
-                filter_list := [ "category" ],
-                return_type := "morphism",
-                dual_operation := limit.colimit_functorial_name,
-            );
-        else
-            functorial_record := rec(
-                function_name := limit.limit_functorial_with_given_name,
-                filter_list := Concatenation( [ "category", "object" ], limit.diagram_filter_list, limit.diagram_morphism_filter_list, limit.diagram_filter_list, [ "object" ] ),
-                io_type := [ Concatenation( [ "P" ], limit.diagram_input_type, limit.diagram_morphism_input_type, List( limit.diagram_input_type, x -> Concatenation( x, "p" ) ), [ "Pp" ] ), [ "P", "Pp" ] ],
-                return_type := "morphism",
-                dual_operation := limit.colimit_functorial_with_given_name,
-                dual_arguments_reversed := true,
-            );
-        fi;
+        functorial_record := rec(
+            function_name := limit.limit_functorial_name,
+            filter_list := Concatenation( [ "category" ], limit.diagram_filter_list, limit.diagram_morphism_filter_list, limit.diagram_filter_list ),
+            input_arguments_names := Concatenation( [ "cat" ], limit.functorial_source_diagram_arguments_names, limit.diagram_morphism_input_type, limit.functorial_range_diagram_arguments_names ),
+            return_type := "morphism",
+            # object_name
+            output_source_getter_string := ReplacedStringViaRecord(
+                "object_name( arguments )",
+                rec( object_name := limit.limit_object_name, arguments := Concatenation( [ "cat" ], limit.functorial_source_diagram_arguments_names ) )
+            ),
+            output_range_getter_string := ReplacedStringViaRecord(
+                "object_name( arguments )",
+                rec( object_name := limit.limit_object_name, arguments := Concatenation( [ "cat" ], limit.functorial_range_diagram_arguments_names ) )
+            ),
+            with_given_object_position := "both",
+            dual_operation := limit.colimit_functorial_name,
+            dual_arguments_reversed := true,
+        );
+        
+        functorial_with_given_record := rec(
+            function_name := limit.limit_functorial_with_given_name,
+            filter_list := Concatenation( [ "category", "object" ], limit.diagram_filter_list, limit.diagram_morphism_filter_list, limit.diagram_filter_list, [ "object" ] ),
+            io_type := [ Concatenation( [ "P" ], limit.functorial_source_diagram_arguments_names, limit.diagram_morphism_input_type, limit.functorial_range_diagram_arguments_names, [ "Pp" ] ), [ "P", "Pp" ] ],
+            return_type := "morphism",
+            dual_operation := limit.colimit_functorial_with_given_name,
+            dual_arguments_reversed := true,
+        );
         
         #### validate limit records
         CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_object_name, object_record );
 
         if limit.number_of_targets > 0 then
             CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_projection_name, projection_record );
-            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( limit.limit_projection_name, "WithGiven", limit.limit_object_name ), make_record_with_given( projection_record, limit.limit_object_name, limit.colimit_object_name ) );
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_projection_with_given_name, make_record_with_given( projection_record, limit.limit_object_name, limit.colimit_object_name ) );
         fi;
         
         if limit.number_of_nontargets = 1 then
@@ -3847,27 +4016,30 @@ InstallGlobalFunction( CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD,
         fi;
         
         CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_universal_morphism_name, universal_morphism_record );
-        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( limit.limit_universal_morphism_name, "WithGiven", limit.limit_object_name ), make_record_with_given( universal_morphism_record, limit.limit_object_name, limit.colimit_object_name ) );
+        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.limit_universal_morphism_with_given_name, make_record_with_given( universal_morphism_record, limit.limit_object_name, limit.colimit_object_name ) );
 
         CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, functorial_record.function_name, functorial_record );
+        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, functorial_with_given_record.function_name, functorial_with_given_record );
 
         #### validate colimit records
-        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_object_name, make_colimit( object_record ) );
+        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_object_name, make_colimit( limit, object_record ) );
         
         if limit.number_of_targets > 0 then
-            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_injection_name, make_colimit( projection_record ) );
-            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( limit.colimit_injection_name, "WithGiven", limit.colimit_object_name ), make_record_with_given( make_colimit( projection_record ), limit.colimit_object_name, limit.limit_object_name ) );
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_injection_name, make_colimit( limit, projection_record ) );
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_injection_with_given_name, make_record_with_given( make_colimit( limit, projection_record ), limit.colimit_object_name, limit.limit_object_name ) );
         fi;
         
         if limit.number_of_nontargets = 1 then
-            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_morphism_from_source_name, make_colimit( morphism_to_sink_record ) );
-            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( limit.colimit_morphism_from_source_name, "WithGiven", limit.colimit_object_name ), make_record_with_given( make_colimit( morphism_to_sink_record ), limit.colimit_object_name, limit.limit_object_name ) );
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_morphism_from_source_name, make_colimit( limit, morphism_to_sink_record ) );
+            CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( limit.colimit_morphism_from_source_name, "WithGiven", limit.colimit_object_name ), make_record_with_given( make_colimit( limit, morphism_to_sink_record ), limit.colimit_object_name, limit.limit_object_name ) );
         fi;
         
-        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_universal_morphism_name, make_colimit( universal_morphism_record ) );
-        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, Concatenation( limit.colimit_universal_morphism_name, "WithGiven", limit.colimit_object_name ), make_record_with_given( make_colimit( universal_morphism_record ), limit.colimit_object_name, limit.limit_object_name ) );
+        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_universal_morphism_name, make_colimit( limit, universal_morphism_record ) );
+        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, limit.colimit_universal_morphism_with_given_name, make_record_with_given( make_colimit( limit, universal_morphism_record ), limit.colimit_object_name, limit.limit_object_name ) );
         
-        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, functorial_record.dual_operation, make_colimit( functorial_record, false ) );
+        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, functorial_record.dual_operation, make_colimit( limit, functorial_record ) );
+        CAP_INTERNAL_IS_EQUAL_FOR_METHOD_RECORD_ENTRIES( method_name_record, functorial_with_given_record.dual_operation, make_colimit( limit, functorial_with_given_record ) );
+        
     od;
     
 end );

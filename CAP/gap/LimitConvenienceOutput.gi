@@ -589,32 +589,23 @@ InstallMethod( AddUniversalMorphismFromCoproductWithGivenCoproduct,
 end );
 
 ##
-InstallMethod( DirectProductFunctorial,
-               [ IsList ],
+InstallOtherMethod( DirectProductFunctorial,
+                    [ IsList ],
                
   function( L )
     
-    return DirectProductFunctorialWithGivenDirectProducts(
-        DirectProduct( List( L, Source ) ),
-        List( L, Source ), L, List( L, Range ),
-        DirectProduct( List( L, Range ) )
-    );
+    return DirectProductFunctorial( List( L, Source ), L, List( L, Range ) );
     
 end );
 
 ##
 InstallOtherMethod( DirectProductFunctorial,
-               [ IsCapCategory, IsList ],
-               
+                    [ IsCapCategory, IsList ],
+                    
   function( cat, L )
     #% CAP_JIT_RESOLVE_FUNCTION
     
-    return DirectProductFunctorialWithGivenDirectProducts(
-        cat,
-        DirectProduct( cat, List( L, Source ) ),
-        List( L, Source ), L, List( L, Range ),
-        DirectProduct( cat, List( L, Range ) )
-    );
+    return DirectProductFunctorial( cat, List( L, Source ), L, List( L, Range ) );
     
 end );
 
@@ -623,13 +614,8 @@ InstallOtherMethod( DirectProductFunctorialWithGivenDirectProducts,
                [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
                
   function( source, L, range )
-    #% CAP_JIT_RESOLVE_FUNCTION
     
-    return DirectProductFunctorialWithGivenDirectProducts(
-        source,
-        List( L, Source ), L, List( L, Range ),
-        range
-    );
+    return DirectProductFunctorialWithGivenDirectProducts( source, List( L, Source ), L, List( L, Range ), range );
     
 end );
 
@@ -640,42 +626,37 @@ InstallOtherMethod( DirectProductFunctorialWithGivenDirectProducts,
   function( cat, source, L, range )
     #% CAP_JIT_RESOLVE_FUNCTION
     
-    return DirectProductFunctorialWithGivenDirectProducts(
-        cat,
-        source,
-        List( L, Source ), L, List( L, Range ),
-        range
-    );
+    return DirectProductFunctorialWithGivenDirectProducts( cat, source, List( L, Source ), L, List( L, Range ), range );
     
 end );
 
 ##
-InstallMethod( CoproductFunctorial,
-               [ IsList ],
+AddDerivationToCAP( DirectProductFunctorialWithGivenDirectProducts,
+                    
+  function( cat, P, objects, L, objectsp, Pp )
+    
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, objectsp, P, List( [ 1 .. Length( L ) ], i -> PreCompose( cat, ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, objects, i, P ), L[i] ) ), Pp );
+    
+end : Description := "DirectProductFunctorialWithGivenDirectProducts using the universality of the limit" );
+
+##
+InstallOtherMethod( CoproductFunctorial,
+                    [ IsList ],
                
   function( L )
     
-    return CoproductFunctorialWithGivenCoproducts(
-        Coproduct( List( L, Source ) ),
-        List( L, Source ), L, List( L, Range ),
-        Coproduct( List( L, Range ) )
-    );
+    return CoproductFunctorial( List( L, Source ), L, List( L, Range ) );
     
 end );
 
 ##
 InstallOtherMethod( CoproductFunctorial,
-               [ IsCapCategory, IsList ],
-               
+                    [ IsCapCategory, IsList ],
+                    
   function( cat, L )
     #% CAP_JIT_RESOLVE_FUNCTION
     
-    return CoproductFunctorialWithGivenCoproducts(
-        cat,
-        Coproduct( cat, List( L, Source ) ),
-        List( L, Source ), L, List( L, Range ),
-        Coproduct( cat, List( L, Range ) )
-    );
+    return CoproductFunctorial( cat, List( L, Source ), L, List( L, Range ) );
     
 end );
 
@@ -684,13 +665,8 @@ InstallOtherMethod( CoproductFunctorialWithGivenCoproducts,
                [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
                
   function( source, L, range )
-    #% CAP_JIT_RESOLVE_FUNCTION
     
-    return CoproductFunctorialWithGivenCoproducts(
-        source,
-        List( L, Source ), L, List( L, Range ),
-        range
-    );
+    return CoproductFunctorialWithGivenCoproducts( source, List( L, Source ), L, List( L, Range ), range );
     
 end );
 
@@ -701,14 +677,18 @@ InstallOtherMethod( CoproductFunctorialWithGivenCoproducts,
   function( cat, source, L, range )
     #% CAP_JIT_RESOLVE_FUNCTION
     
-    return CoproductFunctorialWithGivenCoproducts(
-        cat,
-        source,
-        List( L, Source ), L, List( L, Range ),
-        range
-    );
+    return CoproductFunctorialWithGivenCoproducts( cat, source, List( L, Source ), L, List( L, Range ), range );
     
 end );
+
+##
+AddDerivationToCAP( CoproductFunctorialWithGivenCoproducts,
+                    
+  function( cat, P, objects, L, objectsp, Pp )
+    
+    return UniversalMorphismFromCoproductWithGivenCoproduct( cat, objects, Pp, List( [ 1 .. Length( L ) ], i -> PreCompose( cat, L[i], InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, objectsp, i, Pp ) ) ), P );
+    
+end : Description := "CoproductFunctorialWithGivenCoproducts using the universality of the colimit" );
 
 ##
 InstallMethod( UniversalMorphismIntoDirectSum,
@@ -1295,32 +1275,23 @@ InstallMethod( AddUniversalMorphismFromDirectSumWithGivenDirectSum,
 end );
 
 ##
-InstallMethod( DirectSumFunctorial,
-               [ IsList ],
+InstallOtherMethod( DirectSumFunctorial,
+                    [ IsList ],
                
   function( L )
     
-    return DirectSumFunctorialWithGivenDirectSums(
-        DirectSum( List( L, Source ) ),
-        List( L, Source ), L, List( L, Range ),
-        DirectSum( List( L, Range ) )
-    );
+    return DirectSumFunctorial( List( L, Source ), L, List( L, Range ) );
     
 end );
 
 ##
 InstallOtherMethod( DirectSumFunctorial,
-               [ IsCapCategory, IsList ],
-               
+                    [ IsCapCategory, IsList ],
+                    
   function( cat, L )
     #% CAP_JIT_RESOLVE_FUNCTION
     
-    return DirectSumFunctorialWithGivenDirectSums(
-        cat,
-        DirectSum( cat, List( L, Source ) ),
-        List( L, Source ), L, List( L, Range ),
-        DirectSum( cat, List( L, Range ) )
-    );
+    return DirectSumFunctorial( cat, List( L, Source ), L, List( L, Range ) );
     
 end );
 
@@ -1329,13 +1300,8 @@ InstallOtherMethod( DirectSumFunctorialWithGivenDirectSums,
                [ IsCapCategoryObject, IsList, IsCapCategoryObject ],
                
   function( source, L, range )
-    #% CAP_JIT_RESOLVE_FUNCTION
     
-    return DirectSumFunctorialWithGivenDirectSums(
-        source,
-        List( L, Source ), L, List( L, Range ),
-        range
-    );
+    return DirectSumFunctorialWithGivenDirectSums( source, List( L, Source ), L, List( L, Range ), range );
     
 end );
 
@@ -1346,14 +1312,27 @@ InstallOtherMethod( DirectSumFunctorialWithGivenDirectSums,
   function( cat, source, L, range )
     #% CAP_JIT_RESOLVE_FUNCTION
     
-    return DirectSumFunctorialWithGivenDirectSums(
-        cat,
-        source,
-        List( L, Source ), L, List( L, Range ),
-        range
-    );
+    return DirectSumFunctorialWithGivenDirectSums( cat, source, List( L, Source ), L, List( L, Range ), range );
     
 end );
+
+##
+AddDerivationToCAP( DirectSumFunctorialWithGivenDirectSums,
+                    
+  function( cat, P, objects, L, objectsp, Pp )
+    
+    return UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, objectsp, P, List( [ 1 .. Length( L ) ], i -> PreCompose( cat, ProjectionInFactorOfDirectSumWithGivenDirectSum( cat, objects, i, P ), L[i] ) ), Pp );
+    
+end : Description := "DirectSumFunctorialWithGivenDirectSums using the universality of the limit" );
+
+##
+AddDerivationToCAP( DirectSumFunctorialWithGivenDirectSums,
+                    
+  function( cat, P, objects, L, objectsp, Pp )
+    
+    return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, objects, Pp, List( [ 1 .. Length( L ) ], i -> PreCompose( cat, L[i], InjectionOfCofactorOfDirectSumWithGivenDirectSum( cat, objectsp, i, Pp ) ) ), P );
+    
+end : Description := "DirectSumFunctorialWithGivenDirectSums using the universality of the colimit" );
 
 ##
 InstallMethod( AddUniversalMorphismIntoFiberProduct,
@@ -1568,64 +1547,22 @@ InstallMethod( AddUniversalMorphismFromPushoutWithGivenPushout,
 end );
 
 ##
-InstallMethod( FiberProductFunctorial,
-               [ IsList, IsList, IsList ],
-               
-  function( morphisms, L, morphismsp )
+AddDerivationToCAP( FiberProductFunctorialWithGivenFiberProducts,
+                    
+  function( cat, P, morphisms, L, morphismsp, Pp )
     
-    return FiberProductFunctorialWithGivenFiberProducts(
-        FiberProduct( morphisms ),
-        morphisms, L, morphismsp,
-        FiberProduct( morphismsp )
-    );
+    return UniversalMorphismIntoFiberProductWithGivenFiberProduct( cat, morphismsp, P, List( [ 1 .. Length( L ) ], i -> PreCompose( cat, ProjectionInFactorOfFiberProductWithGivenFiberProduct( cat, morphisms, i, P ), L[i] ) ), Pp );
     
-end );
+end : Description := "FiberProductFunctorialWithGivenFiberProducts using the universality of the limit" );
 
 ##
-InstallOtherMethod( FiberProductFunctorial,
-               [ IsCapCategory, IsList, IsList, IsList ],
-               
-  function( cat, morphisms, L, morphismsp )
-    #% CAP_JIT_RESOLVE_FUNCTION
+AddDerivationToCAP( PushoutFunctorialWithGivenPushouts,
+                    
+  function( cat, P, morphisms, L, morphismsp, Pp )
     
-    return FiberProductFunctorialWithGivenFiberProducts(
-        cat,
-        FiberProduct( cat, morphisms ),
-        morphisms, L, morphismsp,
-        FiberProduct( cat, morphismsp )
-    );
+    return UniversalMorphismFromPushoutWithGivenPushout( cat, morphisms, Pp, List( [ 1 .. Length( L ) ], i -> PreCompose( cat, L[i], InjectionOfCofactorOfPushoutWithGivenPushout( cat, morphismsp, i, Pp ) ) ), P );
     
-end );
-
-##
-InstallMethod( PushoutFunctorial,
-               [ IsList, IsList, IsList ],
-               
-  function( morphisms, L, morphismsp )
-    
-    return PushoutFunctorialWithGivenPushouts(
-        Pushout( morphisms ),
-        morphisms, L, morphismsp,
-        Pushout( morphismsp )
-    );
-    
-end );
-
-##
-InstallOtherMethod( PushoutFunctorial,
-               [ IsCapCategory, IsList, IsList, IsList ],
-               
-  function( cat, morphisms, L, morphismsp )
-    #% CAP_JIT_RESOLVE_FUNCTION
-    
-    return PushoutFunctorialWithGivenPushouts(
-        cat,
-        Pushout( cat, morphisms ),
-        morphisms, L, morphismsp,
-        Pushout( cat, morphismsp )
-    );
-    
-end );
+end : Description := "PushoutFunctorialWithGivenPushouts using the universality of the colimit" );
 
 InstallOtherMethod( UniversalMorphismIntoEqualizer,
                     [ IsList, IsCapCategoryMorphism ],
@@ -1920,64 +1857,22 @@ InstallMethod( AddUniversalMorphismFromCoequalizerWithGivenCoequalizer,
 end );
 
 ##
-InstallMethod( EqualizerFunctorial,
-               [ IsList, IsCapCategoryMorphism, IsList ],
-               
-  function( morphisms, mu, morphismsp )
+AddDerivationToCAP( EqualizerFunctorialWithGivenEqualizers,
+                    
+  function( cat, P, morphisms, mu, morphismsp, Pp )
     
-    return EqualizerFunctorialWithGivenEqualizers(
-        Equalizer( morphisms ),
-        morphisms, mu, morphismsp,
-        Equalizer( morphismsp )
-    );
+    return UniversalMorphismIntoEqualizerWithGivenEqualizer( cat, morphismsp, P, PreCompose( cat, EmbeddingOfEqualizerWithGivenEqualizer( cat, morphisms, P ), mu ), Pp );
     
-end );
+end : Description := "EqualizerFunctorialWithGivenEqualizers using the universality of the limit" );
 
 ##
-InstallOtherMethod( EqualizerFunctorial,
-               [ IsCapCategory, IsList, IsCapCategoryMorphism, IsList ],
-               
-  function( cat, morphisms, mu, morphismsp )
-    #% CAP_JIT_RESOLVE_FUNCTION
+AddDerivationToCAP( CoequalizerFunctorialWithGivenCoequalizers,
+                    
+  function( cat, P, morphisms, mu, morphismsp, Pp )
     
-    return EqualizerFunctorialWithGivenEqualizers(
-        cat,
-        Equalizer( cat, morphisms ),
-        morphisms, mu, morphismsp,
-        Equalizer( cat, morphismsp )
-    );
+    return UniversalMorphismFromCoequalizerWithGivenCoequalizer( cat, morphisms, Pp, PreCompose( cat, mu, ProjectionOntoCoequalizerWithGivenCoequalizer( cat, morphismsp, Pp ) ), P );
     
-end );
-
-##
-InstallMethod( CoequalizerFunctorial,
-               [ IsList, IsCapCategoryMorphism, IsList ],
-               
-  function( morphisms, mu, morphismsp )
-    
-    return CoequalizerFunctorialWithGivenCoequalizers(
-        Coequalizer( morphisms ),
-        morphisms, mu, morphismsp,
-        Coequalizer( morphismsp )
-    );
-    
-end );
-
-##
-InstallOtherMethod( CoequalizerFunctorial,
-               [ IsCapCategory, IsList, IsCapCategoryMorphism, IsList ],
-               
-  function( cat, morphisms, mu, morphismsp )
-    #% CAP_JIT_RESOLVE_FUNCTION
-    
-    return CoequalizerFunctorialWithGivenCoequalizers(
-        cat,
-        Coequalizer( cat, morphisms ),
-        morphisms, mu, morphismsp,
-        Coequalizer( cat, morphismsp )
-    );
-    
-end );
+end : Description := "CoequalizerFunctorialWithGivenCoequalizers using the universality of the colimit" );
 
 InstallOtherMethod( KernelLift,
                     [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
@@ -2272,61 +2167,82 @@ InstallMethod( AddCokernelColiftWithGivenCokernelObject,
 end );
 
 ##
-InstallMethod( KernelObjectFunctorial,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( alpha, mu, alphap )
+AddDerivationToCAP( KernelObjectFunctorialWithGivenKernelObjects,
+                    
+  function( cat, P, alpha, mu, alphap, Pp )
     
-    return KernelObjectFunctorialWithGivenKernelObjects(
-        KernelObject( alpha ),
-        alpha, mu, alphap,
-        KernelObject( alphap )
-    );
+    return KernelLiftWithGivenKernelObject( cat, alphap, P, PreCompose( cat, KernelEmbeddingWithGivenKernelObject( cat, alpha, P ), mu ), Pp );
     
-end );
+end : Description := "KernelObjectFunctorialWithGivenKernelObjects using the universality of the limit" );
 
 ##
-InstallOtherMethod( KernelObjectFunctorial,
-               [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( cat, alpha, mu, alphap )
-    #% CAP_JIT_RESOLVE_FUNCTION
+AddDerivationToCAP( CokernelObjectFunctorialWithGivenCokernelObjects,
+                    
+  function( cat, P, alpha, mu, alphap, Pp )
     
-    return KernelObjectFunctorialWithGivenKernelObjects(
-        cat,
-        KernelObject( cat, alpha ),
-        alpha, mu, alphap,
-        KernelObject( cat, alphap )
-    );
+    return CokernelColiftWithGivenCokernelObject( cat, alpha, Pp, PreCompose( cat, mu, CokernelProjectionWithGivenCokernelObject( cat, alphap, Pp ) ), P );
     
-end );
+end : Description := "CokernelObjectFunctorialWithGivenCokernelObjects using the universality of the colimit" );
 
 ##
-InstallMethod( CokernelObjectFunctorial,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( alpha, mu, alphap )
+AddDerivationToCAP( TerminalObjectFunctorialWithGivenTerminalObjects,
+                    
+  function( cat, P, Pp )
     
-    return CokernelObjectFunctorialWithGivenCokernelObjects(
-        CokernelObject( alpha ),
-        alpha, mu, alphap,
-        CokernelObject( alphap )
-    );
+    return UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, P, Pp );
     
-end );
+end : Description := "TerminalObjectFunctorialWithGivenTerminalObjects using the universality of the limit" );
 
 ##
-InstallOtherMethod( CokernelObjectFunctorial,
-               [ IsCapCategory, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( cat, alpha, mu, alphap )
-    #% CAP_JIT_RESOLVE_FUNCTION
+AddDerivationToCAP( TerminalObjectFunctorial,
+                    
+  function( cat )
     
-    return CokernelObjectFunctorialWithGivenCokernelObjects(
-        cat,
-        CokernelObject( cat, alpha ),
-        alpha, mu, alphap,
-        CokernelObject( cat, alphap )
-    );
+    return IdentityMorphism( cat, TerminalObject( cat ) );
     
-end );
+end : Description := "TerminalObjectFunctorial by taking the identity morphism of TerminalObject" );
+
+##
+AddDerivationToCAP( InitialObjectFunctorialWithGivenInitialObjects,
+                    
+  function( cat, P, Pp )
+    
+    return UniversalMorphismFromInitialObjectWithGivenInitialObject( cat, Pp, P );
+    
+end : Description := "InitialObjectFunctorialWithGivenInitialObjects using the universality of the colimit" );
+
+##
+AddDerivationToCAP( InitialObjectFunctorial,
+                    
+  function( cat )
+    
+    return IdentityMorphism( cat, InitialObject( cat ) );
+    
+end : Description := "InitialObjectFunctorial by taking the identity morphism of InitialObject" );
+
+##
+AddDerivationToCAP( ZeroObjectFunctorialWithGivenZeroObjects,
+                    
+  function( cat, P, Pp )
+    
+    return UniversalMorphismIntoZeroObjectWithGivenZeroObject( cat, P, Pp );
+    
+end : Description := "ZeroObjectFunctorialWithGivenZeroObjects using the universality of the limit" );
+
+##
+AddDerivationToCAP( ZeroObjectFunctorial,
+                    
+  function( cat )
+    
+    return IdentityMorphism( cat, ZeroObject( cat ) );
+    
+end : Description := "ZeroObjectFunctorial by taking the identity morphism of ZeroObject" );
+
+##
+AddDerivationToCAP( ZeroObjectFunctorialWithGivenZeroObjects,
+                    
+  function( cat, P, Pp )
+    
+    return UniversalMorphismFromZeroObjectWithGivenZeroObject( cat, Pp, P );
+    
+end : Description := "ZeroObjectFunctorialWithGivenZeroObjects using the universality of the colimit" );

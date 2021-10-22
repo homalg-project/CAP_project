@@ -1078,7 +1078,7 @@ function ( cat_1 )
     local cap_jit_morphism_attribute_1_1, cap_jit_deduplicated_expression_1_1;
     cap_jit_deduplicated_expression_1_1 := ObjectifyObjectForCAPWithAttributes( rec(
            ), cat_1, Dimension, 0 );
-    cap_jit_morphism_attribute_1_1 := HomalgIdentityMatrix( 0, UnderlyingRing( cat_1 ) );
+    cap_jit_morphism_attribute_1_1 := HomalgZeroMatrix( 0, 0, UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_1_1, UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
