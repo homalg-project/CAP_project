@@ -15,9 +15,9 @@ InstallMethod( FunctorFromCospansToThreeArrows,
   function( category )
     local source_cat, range_cat, functor;
     
-    source_cat := GeneralizedMorphismCategoryByCospans( category );
+    source_cat := GeneralizedMorphismCategoryByCospans( category : FinalizeCategory := true );
     
-    range_cat := GeneralizedMorphismCategoryByThreeArrows( category );
+    range_cat := GeneralizedMorphismCategoryByThreeArrows( category : FinalizeCategory := true );
     
     functor := CapFunctor( Concatenation( "Functor from cospans to three arrows on ", Name( category ) ), source_cat, range_cat );
     
@@ -40,9 +40,9 @@ InstallMethod( FunctorFromCospansToSpans,
   function( category )
     local source_cat, range_cat, functor;
     
-    source_cat := GeneralizedMorphismCategoryByCospans( category );
+    source_cat := GeneralizedMorphismCategoryByCospans( category : FinalizeCategory := true );
     
-    range_cat := GeneralizedMorphismCategoryBySpans( category );
+    range_cat := GeneralizedMorphismCategoryBySpans( category : FinalizeCategory := true );
     
     functor := CapFunctor( Concatenation( "Functor from cospans to spans on ", Name( category ) ), source_cat, range_cat );
     
@@ -65,9 +65,9 @@ InstallMethod( FunctorFromSpansToThreeArrows,
   function( category )
     local source_cat, range_cat, functor;
     
-    source_cat := GeneralizedMorphismCategoryBySpans( category );
+    source_cat := GeneralizedMorphismCategoryBySpans( category : FinalizeCategory := true );
     
-    range_cat := GeneralizedMorphismCategoryByThreeArrows( category );
+    range_cat := GeneralizedMorphismCategoryByThreeArrows( category : FinalizeCategory := true );
     
     functor := CapFunctor( Concatenation( "Functor from spans to three arrows on ", Name( category ) ), source_cat, range_cat );
     
@@ -90,9 +90,9 @@ InstallMethod( FunctorFromSpansToCospans,
   function( category )
     local source_cat, range_cat, functor;
     
-    source_cat := GeneralizedMorphismCategoryBySpans( category );
+    source_cat := GeneralizedMorphismCategoryBySpans( category : FinalizeCategory := true );
     
-    range_cat := GeneralizedMorphismCategoryByCospans( category );
+    range_cat := GeneralizedMorphismCategoryByCospans( category : FinalizeCategory := true );
     
     functor := CapFunctor( Concatenation( "Functor from spans to cospans on ", Name( category ) ), source_cat, range_cat );
     
@@ -115,9 +115,9 @@ InstallMethod( FunctorFromThreeArrowsToCospans,
   function( category )
     local source_cat, range_cat, functor;
     
-    source_cat := GeneralizedMorphismCategoryByThreeArrows( category );
+    source_cat := GeneralizedMorphismCategoryByThreeArrows( category : FinalizeCategory := true );
     
-    range_cat := GeneralizedMorphismCategoryByCospans( category );
+    range_cat := GeneralizedMorphismCategoryByCospans( category : FinalizeCategory := true );
     
     functor := CapFunctor( Concatenation( "Functor from three arrows to cospans on ", Name( category ) ), source_cat, range_cat );
     
@@ -140,9 +140,9 @@ InstallMethod( FunctorFromThreeArrowsToSpans,
   function( category )
     local source_cat, range_cat, functor;
     
-    source_cat := GeneralizedMorphismCategoryByThreeArrows( category );
+    source_cat := GeneralizedMorphismCategoryByThreeArrows( category : FinalizeCategory := true );
     
-    range_cat := GeneralizedMorphismCategoryBySpans( category );
+    range_cat := GeneralizedMorphismCategoryBySpans( category : FinalizeCategory := true );
     
     functor := CapFunctor( Concatenation( "Functor from three arrows to cospans on ", Name( category ) ), source_cat, range_cat );
     
