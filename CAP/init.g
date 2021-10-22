@@ -14,6 +14,8 @@ ReadPackage( "CAP", "gap/ToolsForCategories.gi");
 
 ReadPackage( "CAP", "gap/Finalize.gd" );
 
+ReadPackage( "CAP", "gap/AddFunctions.autogen.gd" );
+
 ReadPackage( "CAP", "gap/CategoryObjects.gd");
 
 ReadPackage( "CAP", "gap/CategoryMorphisms.gd");

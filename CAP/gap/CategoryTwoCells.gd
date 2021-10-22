@@ -89,25 +89,6 @@ DeclareAttribute( "IdentityTwoCell",
                                           IsCapCategoryMorphism );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IdentityTwoCell</C>.
-#! $F: \alpha \mapsto \mathrm{id}_{\alpha}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIdentityTwoCell",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIdentityTwoCell",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIdentityTwoCell",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIdentityTwoCell",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are two $2$-cells 
 #! $c: \alpha \rightarrow \beta$,
 #! $d: \gamma \rightarrow \delta$
@@ -118,25 +99,6 @@ DeclareOperation( "AddIdentityTwoCell",
 #! @Arguments c,d
 DeclareOperation( "HorizontalPreCompose",
                   [ IsCapCategoryTwoCell, IsCapCategoryTwoCell ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>HorizontalPreCompose</C>.
-#! $F: (c,d) \mapsto d \ast c$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddHorizontalPreCompose",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddHorizontalPreCompose",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddHorizontalPreCompose",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddHorizontalPreCompose",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are two $2$-cells
@@ -151,26 +113,6 @@ DeclareOperation( "HorizontalPostCompose",
                   [ IsCapCategoryTwoCell, IsCapCategoryTwoCell ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>HorizontalPostCompose</C>.
-#! $F: (d,c) \mapsto d \ast c$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddHorizontalPostCompose",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddHorizontalPostCompose",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddHorizontalPostCompose",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddHorizontalPostCompose",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
 #! The arguments are two $2$-cells 
 #! $c: \alpha \rightarrow \beta$,
 #! $d: \beta \rightarrow \gamma$
@@ -183,25 +125,6 @@ DeclareOperation( "VerticalPreCompose",
                   [ IsCapCategoryTwoCell, IsCapCategoryTwoCell ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>VerticalPreCompose</C>.
-#! $F: (c,d) \mapsto d \circ c$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddVerticalPreCompose",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddVerticalPreCompose",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddVerticalPreCompose",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddVerticalPreCompose",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are two $2$-cells 
 #! $d: \beta \rightarrow \gamma$,
 #! $c: \alpha \rightarrow \beta$
@@ -212,25 +135,6 @@ DeclareOperation( "AddVerticalPreCompose",
 #! @Arguments d,c
 DeclareOperation( "VerticalPostCompose",
                   [ IsCapCategoryTwoCell, IsCapCategoryTwoCell ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>VerticalPostCompose</C>.
-#! $F: (d,c) \mapsto d \circ c$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddVerticalPostCompose",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddVerticalPostCompose",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddVerticalPostCompose",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddVerticalPostCompose",
-                  [ IsCapCategory, IsList ] );
 
 ######################################
 ##
@@ -246,25 +150,3 @@ DeclareOperation( "AddVerticalPostCompose",
 #! @Arguments c
 DeclareOperation( "IsWellDefinedForTwoCells",
                   [ IsCapCategoryTwoCell ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsWellDefinedForTwoCells</C>.
-#! $F: c \mapsto \mathtt{IsWellDefinedForMorphisms}( c )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsWellDefinedForTwoCells",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsWellDefinedForTwoCells",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsWellDefinedForTwoCells",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsWellDefinedForTwoCells",
-                  [ IsCapCategory, IsList ] );
-
-
-

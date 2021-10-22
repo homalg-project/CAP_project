@@ -4903,3 +4903,11 @@ DeclareOperation( "Addfunction_name",
     fi;
     
 end );
+
+CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
+    CAP_INTERNAL_METHOD_NAME_RECORD,
+    "CAP",
+    "AddFunctions.autogen.gd",
+    "Add Functions",
+    "Available Add functions"
+);

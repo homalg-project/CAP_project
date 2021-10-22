@@ -57,25 +57,6 @@ DeclareGlobalVariable( "PROPAGATION_LIST_FOR_EQUAL_OBJECTS" );
 DeclareOperation( "IsEqualForObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsEqualForObjects</C>.
-#! $F: (a,b) \mapsto \mathtt{IsEqualForObjects}(a,b)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsEqualForObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsEqualForObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsEqualForObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsEqualForObjects",
-                  [ IsCapCategory, IsList ] );
-
 ## adds the given string to PROPAGATION_LIST_FOR_EQUAL_OBJECTS
 DeclareOperation( "AddPropertyToMatchAtIsEqualForObjects",
                   [ IsCapCategory, IsString ] );
@@ -96,25 +77,6 @@ DeclareProperty( "IsProjective",
                  IsCapCategoryObject );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsProjective</C>.
-#! $F: a \mapsto \mathtt{IsProjective}(a)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsProjective",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsProjective",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsProjective",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsProjective",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The argument is an object $a$.
 #! The output is <C>true</C> if $a$ is an injective object,
 #! otherwise the output is <C>false</C>.
@@ -122,25 +84,6 @@ DeclareOperation( "AddIsProjective",
 #! @Arguments a
 DeclareProperty( "IsInjective",
                  IsCapCategoryObject );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsInjective</C>.
-#! $F: a \mapsto \mathtt{IsInjective}(a)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsInjective",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsInjective",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsInjective",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsInjective",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The argument is an object $a$ of a category $\mathbf{C}$.
@@ -152,25 +95,6 @@ DeclareProperty( "IsTerminal",
                  IsCapCategoryObject );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsTerminal</C>.
-#! $F: a \mapsto \mathtt{IsTerminal}(a)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsTerminal",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsTerminal",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsTerminal",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsTerminal",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The argument is an object $a$ of a category $\mathbf{C}$.
 #! The output is <C>true</C> if $a$ is isomorphic to the initial object of $\mathbf{C}$, 
 #! otherwise the output is <C>false</C>.
@@ -178,25 +102,6 @@ DeclareOperation( "AddIsTerminal",
 #! @Arguments a
 DeclareProperty( "IsInitial",
                  IsCapCategoryObject );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsInitial</C>.
-#! $F: a \mapsto \mathtt{IsInitial}(a)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsInitial",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsInitial",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsInitial",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsInitial",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The argument is an object $a$ of a category $\mathbf{C}$.
@@ -215,25 +120,6 @@ DeclareProperty( "IsZeroForObjects",
 #! @Arguments a
 DeclareProperty( "IsZero",
                  IsCapCategoryObject );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsZeroForObjects</C>.
-#! $F: a \mapsto \mathtt{IsZeroForObjects}(a)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsZeroForObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsZeroForObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsZeroForObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsZeroForObjects",
-                  [ IsCapCategory, IsList ] );
 
 ###################################
 ##
@@ -258,25 +144,6 @@ DeclareOperation( "RandomObjectByInteger",
                   [ IsCapCategory, IsInt ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>RandomObjectByInteger</C>.
-#! The function $F$ maps $(C,n)$ to <C>fail</C> or to a random object in $C$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddRandomObjectByInteger",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddRandomObjectByInteger",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddRandomObjectByInteger",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddRandomObjectByInteger",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are a category $C$ and a list $L$.
 #! The output is a random object in $C$ or <C>fail</C>.
 #! @Returns an object or <C>fail</C>
@@ -284,25 +151,6 @@ DeclareOperation( "AddRandomObjectByInteger",
 DeclareOperation( "RandomObjectByList",
                   [ IsCapCategory, IsList ] );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>RandomObjectByList</C>.
-#! The function $F$ maps $(C,L)$ to <C>fail</C> or to a random object in $C$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddRandomObjectByList",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddRandomObjectByList",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddRandomObjectByList",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddRandomObjectByList",
-                  [ IsCapCategory, IsList ] );
-#! @BeginGroup
 #! @Description
 #! These are convenient methods and they, depending on the input, delegate to one of the above methods.
 #! @Arguments C, n
@@ -318,34 +166,18 @@ DeclareOperation( "RandomObject", [ IsCapCategory, IsList ] );
 ###################################
 
 #! @Description
-#!  Compares two objects in the cache
-#! @Arguments phi, psi
-#! @Returns true or false
-DeclareOperation( "IsEqualForCacheForObjects",
-                  [ IsCapCategoryObject, IsCapCategoryObject ] );
-
-#! @Description
 #!  By default, CAP uses caches to store the values of Categorical operations.
 #!  To get a value out of the cache, one needs to compare the input of a basic operation
 #!  with its previous input. To compare objects in the category, IsEqualForCacheForObjects is
 #!  used. By default, IsEqualForCacheForObjects falls back to IsEqualForCache (see ToolsForHomalg),
 #!  which in turn defaults to recursive comparison for lists and `IsIdenticalObj` in all other cases.
-#!  If you add a function, this function
-#!  used instead. A function $F: a,b \mapsto bool$ is expected here. The output has to be
+#!  If you add a function via `AddIsEqualForCacheForObjects`, that function is used instead.
+#!  A function $F: a,b \mapsto bool$ is expected there. The output has to be
 #!  true or false. Fail is not allowed in this context.
-#! @Returns nothing
-#! @Arguments c,F
-DeclareOperation( "AddIsEqualForCacheForObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsEqualForCacheForObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsEqualForCacheForObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsEqualForCacheForObjects",
-                  [ IsCapCategory, IsList ] );
+#! @Arguments phi, psi
+#! @Returns true or false
+DeclareOperation( "IsEqualForCacheForObjects",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 ###################################
 ##
@@ -407,25 +239,6 @@ DeclareOperation( "ObjectConstructor",
                   [ IsCapCategory, IsObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ObjectConstructor</C>.
-#! $F: C, a \mapsto \mathtt{ObjectConstructor}( C, a )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddObjectConstructor",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddObjectConstructor",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddObjectConstructor",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddObjectConstructor",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The argument is a CAP category object <A>obj</A>.
 #! The output is a datum which can be used to construct <A>obj</A>, that is,
 #! `IsEqualForObjects( `<A>obj</A>`, ObjectConstructor( CapCategory( `<A>obj</A>` ), ObjectDatum( `<A>obj</A>` ) ) )`.
@@ -435,25 +248,6 @@ DeclareOperation( "AddObjectConstructor",
 #! @Arguments obj
 DeclareAttribute( "ObjectDatum",
                   IsCapCategoryObject );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ObjectDatum</C>.
-#! $F: obj \mapsto \mathtt{ObjectDatum}( obj )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddObjectDatum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddObjectDatum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddObjectDatum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddObjectDatum",
-                  [ IsCapCategory, IsList ] );
 
 ###################################
 ##
@@ -469,25 +263,6 @@ DeclareOperation( "AddObjectDatum",
 #! @Arguments a
 DeclareOperation( "IsWellDefinedForObjects",
                   [ IsCapCategoryObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsWellDefinedForObjects</C>.
-#! $F: a \mapsto \mathtt{IsWellDefinedForObjects}( a )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsWellDefinedForObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsWellDefinedForObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsWellDefinedForObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsWellDefinedForObjects",
-                  [ IsCapCategory, IsList ] );
 
 
 ###################################
@@ -538,84 +313,6 @@ DeclareOperation( "EpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObj
 DeclareOperation( "ProjectiveLift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-## Add Operations
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SomeProjectiveObject</C>.
-#! $F: A \mapsto P$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSomeProjectiveObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSomeProjectiveObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSomeProjectiveObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSomeProjectiveObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>EpimorphismFromSomeProjectiveObject</C>.
-#! $F: A \mapsto \pi$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddEpimorphismFromSomeProjectiveObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddEpimorphismFromSomeProjectiveObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddEpimorphismFromSomeProjectiveObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddEpimorphismFromSomeProjectiveObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject</C>.
-#! $F: (A,P) \mapsto \pi$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ProjectiveLift</C>.
-#! The function $F$ maps a pair $(\pi, \epsilon)$ to a projective lift $\lambda$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddProjectiveLift",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddProjectiveLift",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddProjectiveLift",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddProjectiveLift",
-                  [ IsCapCategory, IsList ] );
-
 ###################################
 ##
 #! @Section Injectives
@@ -665,85 +362,6 @@ DeclareOperation( "MonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObje
 DeclareOperation( "InjectiveColift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-## Add Operations
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SomeInjectiveObject</C>.
-#! $F: A \mapsto I$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSomeInjectiveObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSomeInjectiveObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSomeInjectiveObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSomeInjectiveObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MonomorphismIntoSomeInjectiveObject</C>.
-#! $F: A \mapsto \pi$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMonomorphismIntoSomeInjectiveObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMonomorphismIntoSomeInjectiveObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMonomorphismIntoSomeInjectiveObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMonomorphismIntoSomeInjectiveObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject</C>.
-#! $F: (A,I) \mapsto \pi$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>InjectiveColift</C>.
-#! The function $F$ maps a pair $(\iota, \beta)$ to an injective colift $\lambda$ if it
-#! exists, and to <C>fail</C> otherwise.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddInjectiveColift",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInjectiveColift",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInjectiveColift",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInjectiveColift",
-                  [ IsCapCategory, IsList ] );
-
 ###################################
 ##
 #! @Section Simplified Objects
@@ -774,50 +392,12 @@ DeclareOperation( "SimplifyObject",
                   [ IsCapCategoryObject, IsObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SimplifyObject</C>.
-#! The function $F$ maps $(A,i)$ to $A_i$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSimplifyObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSimplifyObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSimplifyObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSimplifyObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are an object $A$ and a positive integer $i$ or <C>infinity</C>.
 #! The output is an isomorphism to a simplified object $\iota_A^i: A \rightarrow A_i$.
 #! @Returns a morphism in $\mathrm{Hom}(A,A_i)$
 #! @Arguments A, i
 DeclareOperation( "SimplifyObject_IsoFromInputObject",
                   [ IsCapCategoryObject, IsObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SimplifyObject_IsoFromInputObject</C>.
-#! The function $F$ maps $(A,i)$ to $\iota_A^i$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSimplifyObject_IsoFromInputObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSimplifyObject_IsoFromInputObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSimplifyObject_IsoFromInputObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSimplifyObject_IsoFromInputObject",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are an object $A$ and a positive integer $i$ or <C>infinity</C>.
@@ -827,22 +407,3 @@ DeclareOperation( "AddSimplifyObject_IsoFromInputObject",
 #! @Arguments A, i
 DeclareOperation( "SimplifyObject_IsoToInputObject",
                   [ IsCapCategoryObject, IsObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SimplifyObject_IsoToInputObject</C>.
-#! The function $F$ maps $(A,i)$ to $(\iota_A^i)^{-1}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSimplifyObject_IsoToInputObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSimplifyObject_IsoToInputObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSimplifyObject_IsoToInputObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSimplifyObject_IsoToInputObject",
-                  [ IsCapCategory, IsList ] );

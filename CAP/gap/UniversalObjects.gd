@@ -111,148 +111,6 @@ DeclareOperation( "KernelLift",
 DeclareOperation( "KernelLiftWithGivenKernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
-
-## Add Operations
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>KernelObject</C>.
-#! $F: \alpha \mapsto \mathrm{KernelObject}(\alpha)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddKernelObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddKernelObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddKernelObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddKernelObject",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>KernelEmbedding</C>.
-#! $F: \alpha \mapsto \iota$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddKernelEmbedding",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddKernelEmbedding",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddKernelEmbedding",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddKernelEmbedding",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>KernelEmbeddingWithGivenKernelObject</C>.
-#! $F: (\alpha, K) \mapsto \iota$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddKernelEmbeddingWithGivenKernelObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddKernelEmbeddingWithGivenKernelObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddKernelEmbeddingWithGivenKernelObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddKernelEmbeddingWithGivenKernelObject",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromKernelObjectToSink</C>.
-#! $F: \alpha \mapsto \mu$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismFromKernelObjectToSink",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismFromKernelObjectToSink",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismFromKernelObjectToSink",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismFromKernelObjectToSink",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromKernelObjectToSinkWithGivenKernelObject</C>.
-#! $F: ( \alpha, K ) \mapsto \mu$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismFromKernelObjectToSinkWithGivenKernelObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismFromKernelObjectToSinkWithGivenKernelObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismFromKernelObjectToSinkWithGivenKernelObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismFromKernelObjectToSinkWithGivenKernelObject",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>KernelLift</C>.
-#! $F: (\alpha, \tau) \mapsto u(\tau)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddKernelLift",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddKernelLift",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddKernelLift",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddKernelLift",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>KernelLiftWithGivenKernelObject</C>.
-#! $F: (\alpha, \tau, K) \mapsto u$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddKernelLiftWithGivenKernelObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddKernelLiftWithGivenKernelObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddKernelLiftWithGivenKernelObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddKernelLiftWithGivenKernelObject",
-                  [ IsCapCategory, IsList ] );
-
 #! @Description
 #! The argument is a list $L = [ \alpha: A \rightarrow B, [ \mu: A \rightarrow A', \nu: B \rightarrow B' ], \alpha': A' \rightarrow B' ]$ of morphisms.
 #! The output is the morphism
@@ -302,25 +160,6 @@ DeclareOperation( "KernelObjectFunctorialWithGivenKernelObjects",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,
                     IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>KernelObjectFunctorialWithGivenKernelObjects</C>.
-#! $F: (\mathrm{KernelObject}( \alpha ), \alpha, \mu, \alpha', \mathrm{KernelObject}( \alpha' )) \mapsto (\mathrm{KernelObject}( \alpha ) \rightarrow \mathrm{KernelObject}( \alpha' ))$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddKernelObjectFunctorialWithGivenKernelObjects",
-                  [ IsCapCategory, IsList ] );
 
 #! @Chapter Universal Objects
 
@@ -430,147 +269,6 @@ DeclareOperation( "CokernelColift",
 DeclareOperation( "CokernelColiftWithGivenCokernelObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
-
-## Add Operations
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CokernelObject</C>.
-#! $F: \alpha \mapsto K$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCokernelObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCokernelObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCokernelObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCokernelObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CokernelProjection</C>.
-#! $F: \alpha \mapsto \epsilon$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCokernelProjection",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCokernelProjection",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCokernelProjection",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCokernelProjection",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CokernelProjection</C>.
-#! $F: (\alpha, K) \mapsto \epsilon$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCokernelProjectionWithGivenCokernelObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCokernelProjectionWithGivenCokernelObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCokernelProjectionWithGivenCokernelObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCokernelProjectionWithGivenCokernelObject",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromSourceToCokernelObject</C>.
-#! $F: \alpha \mapsto \mu$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismFromSourceToCokernelObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismFromSourceToCokernelObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismFromSourceToCokernelObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismFromSourceToCokernelObject",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromSourceToCokernelObjectWithGivenCokernelObject</C>.
-#! $F: ( \alpha, K ) \mapsto \mu$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismFromSourceToCokernelObjectWithGivenCokernelObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismFromSourceToCokernelObjectWithGivenCokernelObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismFromSourceToCokernelObjectWithGivenCokernelObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismFromSourceToCokernelObjectWithGivenCokernelObject",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CokernelProjection</C>.
-#! $F: (\alpha, \tau) \mapsto u(\tau)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCokernelColift",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCokernelColift",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCokernelColift",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCokernelColift",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CokernelProjection</C>.
-#! $F: (\alpha, \tau, K) \mapsto u(\tau)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCokernelColiftWithGivenCokernelObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCokernelColiftWithGivenCokernelObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCokernelColiftWithGivenCokernelObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCokernelColiftWithGivenCokernelObject",
-                  [ IsCapCategory, IsList ] );
-
-
 #! @Description
 #! The argument is a list $L = [ \alpha: A \rightarrow B, [ \mu:A \rightarrow A', \nu: B \rightarrow B' ], \alpha': A' \rightarrow B' ]$.
 #! The output is the morphism
@@ -628,29 +326,6 @@ DeclareOperation( "CokernelObjectFunctorialWithGivenCokernelObjects",
 DeclareSynonym( "CokernelFunctorialWithGivenCokernelObjects", CokernelObjectFunctorialWithGivenCokernelObjects );
 ## FIXME:
 ## DeclareDeprecatedSynonym( "CokernelFunctorialWithGivenCokernelObjects", CokernelObjectFunctorialWithGivenCokernelObjects );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CokernelObjectFunctorialWithGivenCokernelObjects</C>.
-#! $F: (\mathrm{CokernelObject}( \alpha ), \alpha, \nu, \alpha', \mathrm{CokernelObject}( \alpha' )) \mapsto (\mathrm{CokernelObject}( \alpha ) \rightarrow \mathrm{CokernelObject}( \alpha' ))$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCokernelObjectFunctorialWithGivenCokernelObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCokernelObjectFunctorialWithGivenCokernelObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCokernelObjectFunctorialWithGivenCokernelObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCokernelObjectFunctorialWithGivenCokernelObjects",
-                  [ IsCapCategory, IsList ] );
-
-DeclareSynonym( "AddCokernelFunctorialWithGivenCokernelObjects", AddCokernelObjectFunctorialWithGivenCokernelObjects );
-## FIXME:
-## DeclareDeprecatedSynonym( "AddCokernelFunctorialWithGivenCokernelObjects", AddCokernelObjectFunctorialWithGivenCokernelObjects );
 
 #! @Chapter Universal Objects
 
@@ -773,185 +448,6 @@ DeclareAttribute( "IsomorphismFromZeroObjectToTerminalObject",
 DeclareAttribute( "IsomorphismFromTerminalObjectToZeroObject",
                   IsCapCategory );
 
-## Add Operations
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ZeroObject</C>.
-#! $F: () \mapsto \mathrm{ZeroObject}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddZeroObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddZeroObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddZeroObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddZeroObject",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismIntoZeroObject</C>.
-#! $F: A \mapsto u_{\mathrm{in}}(A)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismIntoZeroObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismIntoZeroObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoZeroObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoZeroObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismIntoZeroObjectWithGivenZeroObject</C>.
-#! $F: (A, Z) \mapsto u_{\mathrm{in}}(A)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismIntoZeroObjectWithGivenZeroObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismIntoZeroObjectWithGivenZeroObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoZeroObjectWithGivenZeroObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoZeroObjectWithGivenZeroObject",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismFromZeroObject</C>.
-#! $F: A \mapsto u_{\mathrm{out}}(A)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismFromZeroObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismFromZeroObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromZeroObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromZeroObject",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismFromZeroObjectWithGivenZeroObject</C>.
-#! $F: (A,Z) \mapsto u_{\mathrm{out}}(A)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismFromZeroObjectWithGivenZeroObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismFromZeroObjectWithGivenZeroObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromZeroObjectWithGivenZeroObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromZeroObjectWithGivenZeroObject",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromZeroObjectToInitialObject</C>.
-#! $F: () \mapsto (\mathrm{ZeroObject} \rightarrow \mathrm{InitialObject})$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromZeroObjectToInitialObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromZeroObjectToInitialObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromZeroObjectToInitialObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromZeroObjectToInitialObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromInitialObjectToZeroObject</C>.
-#! $F: () \mapsto ( \mathrm{InitialObject} \rightarrow \mathrm{ZeroObject})$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromInitialObjectToZeroObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromInitialObjectToZeroObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromInitialObjectToZeroObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromInitialObjectToZeroObject",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromZeroObjectToTerminalObject</C>.
-#! $F: () \mapsto (\mathrm{ZeroObject} \rightarrow \mathrm{TerminalObject})$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromZeroObjectToTerminalObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromZeroObjectToTerminalObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromZeroObjectToTerminalObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromZeroObjectToTerminalObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromTerminalObjectToZeroObject</C>.
-#! $F: () \mapsto ( \mathrm{TerminalObject} \rightarrow \mathrm{ZeroObject})$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromTerminalObjectToZeroObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromTerminalObjectToZeroObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromTerminalObjectToZeroObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromTerminalObjectToZeroObject",
-                  [ IsCapCategory, IsList ] );
-
 #! @Description
 #! The argument is a category $C$.
 #! The output is the unique morphism $\mathrm{ZeroObject} \rightarrow \mathrm{ZeroObject}$.
@@ -959,25 +455,6 @@ DeclareOperation( "AddIsomorphismFromTerminalObjectToZeroObject",
 #! @Arguments C
 DeclareAttribute( "ZeroObjectFunctorial",
                   IsCapCategory );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ZeroObjectFunctorial</C>.
-#! $F: () \mapsto (T \rightarrow T)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddZeroObjectFunctorial",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddZeroObjectFunctorial",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddZeroObjectFunctorial",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddZeroObjectFunctorial",
-                  [ IsCapCategory, IsList ] );
 
 #! @Chapter Universal Objects
 
@@ -1037,70 +514,6 @@ DeclareAttribute( "UniversalMorphismIntoTerminalObject",
 DeclareOperation( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-## Add Operations
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>TerminalObject</C>.
-#! $F: () \mapsto T$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddTerminalObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddTerminalObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-## don't document this function
-DeclareOperation( "AddTerminalObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddTerminalObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismIntoTerminalObject</C>.
-#! $F: A \mapsto u(A)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoTerminalObject",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismIntoTerminalObjectWithGivenTerminalObject</C>.
-#! $F: (A,T) \mapsto u(A)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
-                  [ IsCapCategory, IsList ] );
-
-
-
 #! @Description
 #! The argument is a category $C$.
 #! The output is the unique morphism $\mathrm{TerminalObject} \rightarrow \mathrm{TerminalObject}$.
@@ -1108,25 +521,6 @@ DeclareOperation( "AddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject
 #! @Arguments C
 DeclareAttribute( "TerminalObjectFunctorial",
                   IsCapCategory );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>TerminalObjectFunctorial</C>.
-#! $F: () \mapsto (T \rightarrow T)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddTerminalObjectFunctorial",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddTerminalObjectFunctorial",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddTerminalObjectFunctorial",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddTerminalObjectFunctorial",
-                  [ IsCapCategory, IsList ] );
 
 #! @Chapter Universal Objects
 
@@ -1187,65 +581,6 @@ DeclareAttribute( "UniversalMorphismFromInitialObject",
 DeclareOperation( "UniversalMorphismFromInitialObjectWithGivenInitialObject",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-## Add Operations
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>InitialObject</C>.
-#! $F: () \mapsto I$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddInitialObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInitialObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInitialObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInitialObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismFromInitialObject</C>.
-#! $F: A \mapsto u(A)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismFromInitialObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismFromInitialObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromInitialObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromInitialObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismFromInitialObjectWithGivenInitialObject</C>.
-#! $F: (A,I) \mapsto u(A)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
-                  [ IsCapCategory, IsList ] );
-
 #! @Description
 #! The argument is a category $C$.
 #! The output is the unique morphism $\mathrm{InitialObject} \rightarrow \mathrm{InitialObject}$.
@@ -1253,25 +588,6 @@ DeclareOperation( "AddUniversalMorphismFromInitialObjectWithGivenInitialObject",
 #! @Arguments C
 DeclareAttribute( "InitialObjectFunctorial",
                   IsCapCategory );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>InitialObjectFunctorial</C>.
-#! $F: () \rightarrow ( I \rightarrow I )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddInitialObjectFunctorial",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInitialObjectFunctorial",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInitialObjectFunctorial",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInitialObjectFunctorial",
-                  [ IsCapCategory, IsList ] );
 
 #! @Chapter Universal Objects
 
@@ -1547,25 +863,6 @@ DeclareOperation( "MorphismBetweenDirectSums",
 DeclareOperation( "MorphismBetweenDirectSumsWithGivenDirectSums",
                   [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismBetweenDirectSumsWithGivenDirectSums</C>.
-#! $F: (\bigoplus_{i=1}^{m}A_i, (A_i)_{i = 1 \dots m}, M, (B_j)_{j = 1 \dots n}, \bigoplus_{j=1}^n B_j) \mapsto (\bigoplus_{i=1}^{m}A_i \rightarrow \bigoplus_{j=1}^n B_j)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismBetweenDirectSumsWithGivenDirectSums",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismBetweenDirectSumsWithGivenDirectSums",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismBetweenDirectSumsWithGivenDirectSums",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismBetweenDirectSumsWithGivenDirectSums",
-                  [ IsCapCategory, IsList ] );
-
 # backwards compatibility
 DeclareOperation( "AddMorphismBetweenDirectSums",
                   [ IsCapCategory, IsFunction ] );
@@ -1608,291 +905,6 @@ DeclareOperation( "ComponentOfMorphismFromDirectSum",
                   [ IsCapCategoryMorphism, IsList, IsInt ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ComponentOfMorphismIntoDirectSum</C>.
-#! $F: (\alpha: A \rightarrow S,D,k) \mapsto (A \rightarrow S_k)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddComponentOfMorphismIntoDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddComponentOfMorphismIntoDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddComponentOfMorphismIntoDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddComponentOfMorphismIntoDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ComponentOfMorphismFromDirectSum</C>.
-#! $F: (\alpha: S \rightarrow A,D,k) \mapsto (S_k \rightarrow A)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddComponentOfMorphismFromDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddComponentOfMorphismFromDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddComponentOfMorphismFromDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddComponentOfMorphismFromDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ProjectionInFactorOfDirectSum</C>.
-#! $F: (D,k) \mapsto \pi_{k}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddProjectionInFactorOfDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddProjectionInFactorOfDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddProjectionInFactorOfDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddProjectionInFactorOfDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ProjectionInFactorOfDirectSumWithGivenDirectSum</C>.
-#! $F: (D,k,S) \mapsto \pi_{k}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddProjectionInFactorOfDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddProjectionInFactorOfDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddProjectionInFactorOfDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddProjectionInFactorOfDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>InjectionOfCofactorOfDirectSum</C>.
-#! $F: (D,k) \mapsto \iota_{k}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddInjectionOfCofactorOfDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>InjectionOfCofactorOfDirectSumWithGivenDirectSum</C>.
-#! $F: (D,k,S) \mapsto \iota_{k}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddInjectionOfCofactorOfDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismIntoDirectSum</C>.
-#! $F: (D,\tau) \mapsto u_{\mathrm{in}}(\tau)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismIntoDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismIntoDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismIntoDirectSumWithGivenDirectSum</C>.
-#! $F: (D,\tau,S) \mapsto u_{\mathrm{in}}(\tau)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismIntoDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismIntoDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismFromDirectSum</C>.
-#! $F: (D,\tau) \mapsto u_{\mathrm{out}}(\tau)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismFromDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismFromDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismFromDirectSumWithGivenDirectSum</C>.
-#! $F: (D,\tau,S) \mapsto u_{\mathrm{out}}(\tau)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismFromDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismFromDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromDirectSumWithGivenDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromDirectSumToDirectProduct</C>.
-#! $F: D \mapsto (\bigoplus_{i=1}^n S_i \rightarrow \prod_{i=1}^{n}S_i)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromDirectSumToDirectProduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromDirectSumToDirectProduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromDirectSumToDirectProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromDirectSumToDirectProduct",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromDirectProductToDirectSum</C>.
-#! $F: D \mapsto ( \prod_{i=1}^{n}S_i \rightarrow  \bigoplus_{i=1}^n S_i )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromDirectProductToDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromDirectProductToDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromDirectProductToDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromDirectProductToDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromDirectSumToCoproduct</C>.
-#! $F: D \mapsto ( \bigoplus_{i=1}^n S_i \rightarrow \bigsqcup_{i=1}^{n}S_i )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromDirectSumToCoproduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromDirectSumToCoproduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromDirectSumToCoproduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromDirectSumToCoproduct",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromCoproductToDirectSum</C>.
-#! $F: D \mapsto ( \bigsqcup_{i=1}^{n}S_i \rightarrow  \bigoplus_{i=1}^n S_i )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromCoproductToDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromCoproductToDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromCoproductToDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromCoproductToDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>DirectSum</C>.
-#! $F: D \mapsto \bigoplus_{i=1}^n S_i$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddDirectSum",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! This is a convenience method.
 #! The argument is a list of morphisms $L = ( \mu_1: S_1 \rightarrow S_1', \dots, \mu_n: S_n \rightarrow S_n' )$.
 #! The output is a morphism
@@ -1918,25 +930,6 @@ DeclareOperation( "DirectSumFunctorial",
 #! @Arguments d_1, source_diagram, L, range_diagram, d_2
 DeclareOperation( "DirectSumFunctorialWithGivenDirectSums",
                   [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>DirectSumFunctorialWithGivenDirectSums</C>.
-#! $F: (\bigoplus_{i=1}^n S_i, ( S_1, \dots, S_n ), ( \mu_1, \dots, \mu_n ), ( S_1', \dots, S_n' ), \bigoplus_{i=1}^n S_i') \mapsto (\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i')$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddDirectSumFunctorialWithGivenDirectSums",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddDirectSumFunctorialWithGivenDirectSums",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddDirectSumFunctorialWithGivenDirectSums",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddDirectSumFunctorialWithGivenDirectSums",
-                  [ IsCapCategory, IsList ] );
 
 #! @Chapter Technical Details
 
@@ -2065,107 +1058,6 @@ DeclareOperation( "UniversalMorphismFromCoproduct",
 DeclareOperation( "UniversalMorphismFromCoproductWithGivenCoproduct",
                   [ IsList, IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
-## Add Operations
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>Coproduct</C>.
-#! $F: ( (I_1, \dots, I_n) ) \mapsto I$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoproduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoproduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoproduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoproduct",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>InjectionOfCofactorOfCoproduct</C>.
-#! $F: ( (I_1, \dots, I_n), i ) \mapsto \iota_i$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfCoproduct",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>InjectionOfCofactorOfCoproductWithGivenCoproduct</C>.
-#! $F: ( (I_1, \dots, I_n), i, I ) \mapsto \iota_i$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfCoproductWithGivenCoproduct",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismFromCoproduct</C>.
-#! $F: ( (I_1, \dots, I_n), \tau ) \mapsto u( \tau )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismFromCoproduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismFromCoproduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromCoproduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromCoproduct",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismFromCoproductWithGivenCoproduct</C>.
-#! $F: ( (I_1, \dots, I_n), \tau, I ) \mapsto u( \tau )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromCoproductWithGivenCoproduct",
-                  [ IsCapCategory, IsList ] );
-
 #! @Description
 #! This is a convenience method.
 #! The argument is a list $L = ( \mu_1: I_1 \rightarrow I_1', \dots, \mu_n: I_n \rightarrow I_n' )$.
@@ -2192,25 +1084,6 @@ DeclareOperation( "CoproductFunctorial",
 #! @Arguments s, source_diagram, L, range_diagram, r
 DeclareOperation( "CoproductFunctorialWithGivenCoproducts",
                   [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CoproductFunctorialWithGivenCoproducts</C>.
-#! $F: (\bigsqcup_{i=1}^n I_i, ( I_1, \dots, I_n ), (\mu_1, \dots, \mu_n), ( I_1', \dots, I_n' ), \bigsqcup_{i=1}^n I_i') \rightarrow (\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i')$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoproductFunctorialWithGivenCoproducts",
-                  [ IsCapCategory, IsList ] );
 
 #! @Chapter Universal Objects
 
@@ -2328,104 +1201,6 @@ DeclareOperation( "UniversalMorphismIntoDirectProduct",
 DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsList, IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
-## Add Operations
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>DirectProduct</C>.
-#! $F: ( (P_1, \dots, P_n) ) \mapsto P$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddDirectProduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddDirectProduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddDirectProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddDirectProduct",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ProjectionInFactorOfDirectProduct</C>.
-#! $F: ( (P_1, \dots, P_n),k ) \mapsto \pi_k$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddProjectionInFactorOfDirectProduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddProjectionInFactorOfDirectProduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddProjectionInFactorOfDirectProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddProjectionInFactorOfDirectProduct",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ProjectionInFactorOfDirectProductWithGivenDirectProduct</C>.
-#! $F: ( (P_1, \dots, P_n),k,P ) \mapsto \pi_k$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddProjectionInFactorOfDirectProductWithGivenDirectProduct",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismIntoDirectProduct</C>.
-#! $F: ( (P_1, \dots, P_n), \tau ) \mapsto u( \tau )$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoDirectProduct",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismIntoDirectProductWithGivenDirectProduct</C>.
-#! $F: ( (P_1, \dots, P_n), \tau, P ) \mapsto u( \tau )$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoDirectProductWithGivenDirectProduct",
-                  [ IsCapCategory, IsList ] );
-
 #! @Description
 #! This is a convenience method.
 #! The argument is a list of morphisms $L = (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$.
@@ -2452,25 +1227,6 @@ DeclareOperation( "DirectProductFunctorial",
 #! @Arguments s, source_diagram, L, range_diagram r
 DeclareOperation( "DirectProductFunctorialWithGivenDirectProducts",
                   [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>DirectProductFunctorialWithGivenDirectProducts</C>.
-#! $F: ( \prod_{i=1}^n P_i, (P_i)_{i=1\dots n}, (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}, (P_i')_{i=1\dots n}, \prod_{i=1}^n P_i' ) \mapsto (\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i')$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddDirectProductFunctorialWithGivenDirectProducts",
-                  [ IsCapCategory, IsList ] );
 
 #! @Chapter Universal Objects
 
@@ -2607,142 +1363,6 @@ DeclareOperation( "UniversalMorphismIntoEqualizer",
 DeclareOperation( "UniversalMorphismIntoEqualizerWithGivenEqualizer",
                   [ IsList, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
-## Add Operations
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>Equalizer</C>.
-#! $F: ( (\beta_i: A \rightarrow B)_{i = 1 \dots n} ) \mapsto E$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddEqualizer",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddEqualizer",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddEqualizer",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddEqualizer",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>EmbeddingOfEqualizer</C>.
-#! $F: ( (\beta_i: A \rightarrow B)_{i = 1 \dots n}, k ) \mapsto \iota$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddEmbeddingOfEqualizer",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddEmbeddingOfEqualizer",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddEmbeddingOfEqualizer",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddEmbeddingOfEqualizer",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>EmbeddingOfEqualizerWithGivenEqualizer</C>.
-#! $F: ( (\beta_i: A \rightarrow B)_{i = 1 \dots n},E ) \mapsto \iota$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddEmbeddingOfEqualizerWithGivenEqualizer",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddEmbeddingOfEqualizerWithGivenEqualizer",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddEmbeddingOfEqualizerWithGivenEqualizer",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddEmbeddingOfEqualizerWithGivenEqualizer",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromEqualizerToSink</C>.
-#! $F: ( (\beta_i: P \rightarrow B)_{i = 1 \dots n} ) \mapsto \mu$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismFromEqualizerToSink",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismFromEqualizerToSink",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismFromEqualizerToSink",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismFromEqualizerToSink",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromEqualizerToSinkWithGivenEqualizer</C>.
-#! $F: ( (\beta_i: P \rightarrow B)_{i = 1 \dots n}, E ) \mapsto \mu$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismFromEqualizerToSinkWithGivenEqualizer",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismFromEqualizerToSinkWithGivenEqualizer",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismFromEqualizerToSinkWithGivenEqualizer",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismFromEqualizerToSinkWithGivenEqualizer",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismIntoEqualizer</C>.
-#! $F: ( (\beta_i: A \rightarrow B)_{i = 1 \dots n}, \tau  ) \mapsto u(\tau)$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismIntoEqualizer",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismIntoEqualizer",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoEqualizer",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoEqualizer",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismIntoEqualizerWithGivenEqualizer</C>.
-#! $F: ( (\beta_i: A \rightarrow B)_{i = 1 \dots n}, \tau, E  ) \mapsto u(\tau)$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismIntoEqualizerWithGivenEqualizer",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismIntoEqualizerWithGivenEqualizer",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoEqualizerWithGivenEqualizer",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoEqualizerWithGivenEqualizer",
-                  [ IsCapCategory, IsList ] );
-
 #! @Description
 #! The arguments are a list of morphisms
 #! $L_s = (\beta_i: A \rightarrow B)_{i = 1 \dots n}$,
@@ -2778,25 +1398,6 @@ DeclareOperation( "EqualizerFunctorial",
 #! @Arguments s, Ls, mu, Lr, r
 DeclareOperation( "EqualizerFunctorialWithGivenEqualizers",
                   [ IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>EqualizerFunctorialWithGivenEqualizers</C>.
-#! $F: ( \mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ), ( \beta_i: A \rightarrow B )_{i = 1 \dots n}, \mu: A \rightarrow A', ( \beta_i': A' \rightarrow B' )_{i = 1 \dots n}, \mathrm{Equalizer}( ( \beta_i' )_{i=1 \dots n} ) ) \mapsto (\mathrm{Equalizer}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm {Equalizer}( ( \beta_i' )_{i=1 \dots n} ) )$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddEqualizerFunctorialWithGivenEqualizers",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddEqualizerFunctorialWithGivenEqualizers",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddEqualizerFunctorialWithGivenEqualizers",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddEqualizerFunctorialWithGivenEqualizers",
-                  [ IsCapCategory, IsList ] );
 
 #! @Chapter Universal Objects
 
@@ -2934,143 +1535,6 @@ DeclareOperation( "UniversalMorphismFromCoequalizer",
 DeclareOperation( "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
                   [ IsList, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
-## Add Operations
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>Coequalizer</C>.
-#! $F: ( (\beta_i: B \rightarrow A)_{i = 1 \dots n} ) \mapsto C$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoequalizer",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoequalizer",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoequalizer",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoequalizer",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ProjectionOntoCoequalizer</C>.
-#! $F: ( (\beta_i: B \rightarrow A)_{i = 1 \dots n}, k ) \mapsto \pi$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddProjectionOntoCoequalizer",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddProjectionOntoCoequalizer",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddProjectionOntoCoequalizer",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddProjectionOntoCoequalizer",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ProjectionOntoCoequalizerWithGivenCoequalizer</C>.
-#! $F: ( (\beta_i: B \rightarrow A)_{i = 1 \dots n}, C) \mapsto \pi$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddProjectionOntoCoequalizerWithGivenCoequalizer",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddProjectionOntoCoequalizerWithGivenCoequalizer",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddProjectionOntoCoequalizerWithGivenCoequalizer",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddProjectionOntoCoequalizerWithGivenCoequalizer",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromSourceToCoequalizer</C>.
-#! $F: ( (\beta_i: B \rightarrow A)_{i = 1 \dots n} ) \mapsto \mu$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismFromSourceToCoequalizer",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismFromSourceToCoequalizer",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismFromSourceToCoequalizer",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismFromSourceToCoequalizer",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromSourceToCoequalizerWithGivenCoequalizer</C>.
-#! $F: ( (\beta_i: B \rightarrow A)_{i = 1 \dots n}, C ) \mapsto \mu$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismFromSourceToCoequalizerWithGivenCoequalizer",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismFromSourceToCoequalizerWithGivenCoequalizer",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismFromSourceToCoequalizerWithGivenCoequalizer",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismFromSourceToCoequalizerWithGivenCoequalizer",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismFromCoequalizer</C>.
-#! $F: ( (\beta_i: B \rightarrow A)_{i = 1 \dots n}, \tau ) \mapsto u(\tau)$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismFromCoequalizer",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismFromCoequalizer",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromCoequalizer",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromCoequalizer",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismFromCoequalizerWithGivenCoequalizer</C>.
-#! $F: ( (\beta_i: B \rightarrow A)_{i = 1 \dots n}, \tau, C ) \mapsto u(\tau)$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismFromCoequalizerWithGivenCoequalizer",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismFromCoequalizerWithGivenCoequalizer",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromCoequalizerWithGivenCoequalizer",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromCoequalizerWithGivenCoequalizer",
-                  [ IsCapCategory, IsList ] );
-
-
 #! @Description
 #! The arguments are a list of morphisms
 #! $L_s = ( \beta_i: B \rightarrow A )_{i = 1 \dots n}$,
@@ -3106,25 +1570,6 @@ DeclareOperation( "CoequalizerFunctorial",
 #! @Arguments s, Ls, mu, Lr, r
 DeclareOperation( "CoequalizerFunctorialWithGivenCoequalizers",
                   [ IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CoequalizerFunctorialWithGivenCoequalizers</C>.
-#! $F: ( \mathrm{Coequalizer}( ( \beta_i )_{i=1}^n ), ( \beta_i: B \rightarrow A )_{i = 1 \dots n}, \mu: A \rightarrow A', ( \beta_i': B' \rightarrow A' )_{i = 1 \dots n}, \mathrm{Coequalizer}( ( \beta_i' )_{i=1}^n ) ) \mapsto (\mathrm{Coequalizer}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Coequalizer}( ( \beta_i' )_{i=1}^n ) )$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoequalizerFunctorialWithGivenCoequalizers",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoequalizerFunctorialWithGivenCoequalizers",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoequalizerFunctorialWithGivenCoequalizers",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoequalizerFunctorialWithGivenCoequalizers",
-                  [ IsCapCategory, IsList ] );
 
 #! @Chapter Universal Objects
 
@@ -3191,25 +1636,6 @@ DeclareOperation( "IsomorphismFromFiberProductToKernelOfDiagonalDifference",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromFiberProductToKernelOfDiagonalDifference</C>.
-#! $F: ( ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n} ) \mapsto \mathrm{FiberProduct}(D) \rightarrow \Delta$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromFiberProductToKernelOfDiagonalDifference",
-                  [ IsCapCategory, IsFunction ] );
-##
-DeclareOperation( "AddIsomorphismFromFiberProductToKernelOfDiagonalDifference",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-##
-DeclareOperation( "AddIsomorphismFromFiberProductToKernelOfDiagonalDifference",
-                  [ IsCapCategory, IsList, IsInt ] );
-##
-DeclareOperation( "AddIsomorphismFromFiberProductToKernelOfDiagonalDifference",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
 #! The output is a morphism
 #! $\Delta \rightarrow \mathrm{FiberProduct}(D)$,
@@ -3218,28 +1644,6 @@ DeclareOperation( "AddIsomorphismFromFiberProductToKernelOfDiagonalDifference",
 #! @Arguments D
 DeclareOperation( "IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
                   [ IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct</C>.
-#! $F: ( ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n} ) \mapsto \Delta \rightarrow \mathrm{FiberProduct}(D)$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
-                  [ IsCapCategory, IsFunction ] );
-
-##
-DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-##
-DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-##
-DeclareOperation( "AddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
@@ -3252,25 +1656,6 @@ DeclareOperation( "IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram"
                   [ IsList ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromFiberProductToEqualizerOfDirectProductDiagram</C>.
-#! $F: ( ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n} ) \mapsto \mathrm{FiberProduct}(D) \rightarrow \Delta$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromFiberProductToEqualizerOfDirectProductDiagram",
-                  [ IsCapCategory, IsFunction ] );
-##
-DeclareOperation( "AddIsomorphismFromFiberProductToEqualizerOfDirectProductDiagram",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-##
-DeclareOperation( "AddIsomorphismFromFiberProductToEqualizerOfDirectProductDiagram",
-                  [ IsCapCategory, IsList, IsInt ] );
-##
-DeclareOperation( "AddIsomorphismFromFiberProductToEqualizerOfDirectProductDiagram",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
 #! The output is a morphism
 #! $\Delta \rightarrow \mathrm{FiberProduct}(D)$,
@@ -3279,28 +1664,6 @@ DeclareOperation( "AddIsomorphismFromFiberProductToEqualizerOfDirectProductDiagr
 #! @Arguments D
 DeclareOperation( "IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct",
                   [ IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct</C>.
-#! $F: ( ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n} ) \mapsto \Delta \rightarrow \mathrm{FiberProduct}(D)$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct",
-                  [ IsCapCategory, IsFunction ] );
-
-##
-DeclareOperation( "AddIsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-##
-DeclareOperation( "AddIsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-##
-DeclareOperation( "AddIsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
@@ -3313,28 +1676,6 @@ DeclareOperation( "DirectSumDiagonalDifference",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>DirectSumDiagonalDifference</C>.
-#! $F: ( D ) \mapsto \mathrm{DirectSumDiagonalDifference}(D)$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddDirectSumDiagonalDifference",
-                  [ IsCapCategory, IsFunction ] );
-
-##
-DeclareOperation( "AddDirectSumDiagonalDifference",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-##
-DeclareOperation( "AddDirectSumDiagonalDifference",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-##
-DeclareOperation( "AddDirectSumDiagonalDifference",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The argument is a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$.
 #! The output is the natural embedding
 #! $\mathrm{FiberProduct}(D) \rightarrow \bigoplus_{i=1}^n P_i$.
@@ -3342,27 +1683,6 @@ DeclareOperation( "AddDirectSumDiagonalDifference",
 #! @Arguments D
 DeclareOperation( "FiberProductEmbeddingInDirectSum",
                   [ IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>FiberProductEmbeddingInDirectSum</C>.
-#! $F: ( ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n} ) \mapsto \mathrm{FiberProduct}(D) \rightarrow \bigoplus_{i=1}^n P_i$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddFiberProductEmbeddingInDirectSum",
-                  [ IsCapCategory, IsFunction ] );
-
-##
-DeclareOperation( "AddFiberProductEmbeddingInDirectSum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-##
-DeclareOperation( "AddFiberProductEmbeddingInDirectSum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddFiberProductEmbeddingInDirectSum",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! This is a convenience method.
@@ -3465,144 +1785,6 @@ DeclareOperation( "UniversalMorphismIntoFiberProductOp",
 DeclareOperation( "UniversalMorphismIntoFiberProductWithGivenFiberProduct",
                   [ IsList, IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
-## Add Operations
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>FiberProduct</C>.
-#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n} ) \mapsto P$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddFiberProduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddFiberProduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddFiberProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddFiberProduct",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ProjectionInFactorOfFiberProduct</C>.
-#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, k ) \mapsto \pi_k$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddProjectionInFactorOfFiberProduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddProjectionInFactorOfFiberProduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddProjectionInFactorOfFiberProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddProjectionInFactorOfFiberProduct",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ProjectionInFactorOfFiberProductWithGivenFiberProduct</C>.
-#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, k,P ) \mapsto \pi_k$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddProjectionInFactorOfFiberProductWithGivenFiberProduct",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromFiberProductToSink</C>.
-#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n} ) \mapsto \mu$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismFromFiberProductToSink",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismFromFiberProductToSink",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismFromFiberProductToSink",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismFromFiberProductToSink",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromFiberProductToSinkWithGivenFiberProduct</C>.
-#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, P ) \mapsto \mu$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismFromFiberProductToSinkWithGivenFiberProduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismFromFiberProductToSinkWithGivenFiberProduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismFromFiberProductToSinkWithGivenFiberProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismFromFiberProductToSinkWithGivenFiberProduct",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismIntoFiberProduct</C>.
-#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, \tau  ) \mapsto u(\tau)$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismIntoFiberProduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismIntoFiberProduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoFiberProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoFiberProduct",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismIntoFiberProductWithGivenFiberProduct</C>.
-#! $F: ( (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, \tau, P  ) \mapsto u(\tau)$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoFiberProductWithGivenFiberProduct",
-                  [ IsCapCategory, IsList ] );
-
 #! @Description
 #! The arguments are three lists of morphisms
 #! $L_s = ( \beta_i: P_i \rightarrow B)_{i = 1 \dots n}$,
@@ -3637,25 +1819,6 @@ DeclareOperation( "FiberProductFunctorial",
 #! @Arguments s, Ls, Lm, Lr, r
 DeclareOperation( "FiberProductFunctorialWithGivenFiberProducts",
                   [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>FiberProductFunctorialWithGivenFiberProducts</C>.
-#! $F: ( \mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ), (\beta_i: P_i \rightarrow B)_{i = 1 \dots n}, (\mu_i: P_i \rightarrow P_i')_{i = 1 \dots n}, (\beta_i': P_i' \rightarrow B')_{i = 1 \dots n}, \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ) ) ) \mapsto (\mathrm{FiberProduct}( ( \beta_i )_{i=1 \dots n} ) \rightarrow \mathrm{FiberProduct}( ( \beta_i' )_{i=1 \dots n} ) )$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddFiberProductFunctorialWithGivenFiberProducts",
-                  [ IsCapCategory, IsList ] );
 
 #! @Chapter Universal Objects
 
@@ -3719,25 +1882,6 @@ DeclareOperation( "IsomorphismFromPushoutToCokernelOfDiagonalDifference",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromPushoutToCokernelOfDiagonalDifference</C>.
-#! $F: ( ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n} ) \mapsto (\mathrm{Pushout}(D) \rightarrow \Delta)$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromPushoutToCokernelOfDiagonalDifference",
-                  [ IsCapCategory, IsFunction ] );
-##
-DeclareOperation( "AddIsomorphismFromPushoutToCokernelOfDiagonalDifference",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-##
-DeclareOperation( "AddIsomorphismFromPushoutToCokernelOfDiagonalDifference",
-                  [ IsCapCategory, IsList, IsInt ] );
-##
-DeclareOperation( "AddIsomorphismFromPushoutToCokernelOfDiagonalDifference",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
 #! The output is a morphism
 #! $\Delta \rightarrow \mathrm{Pushout}(D)$,
@@ -3746,25 +1890,6 @@ DeclareOperation( "AddIsomorphismFromPushoutToCokernelOfDiagonalDifference",
 #! @Arguments D
 DeclareOperation( "IsomorphismFromCokernelOfDiagonalDifferenceToPushout",
                   [ IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromCokernelOfDiagonalDifferenceToPushout</C>.
-#! $F: ( ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n} ) \mapsto (\Delta \rightarrow \mathrm{Pushout}(D))$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
-                  [ IsCapCategory, IsFunction ] );
-##
-DeclareOperation( "AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-##
-DeclareOperation( "AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
-                  [ IsCapCategory, IsList, IsInt ] );
-##
-DeclareOperation( "AddIsomorphismFromCokernelOfDiagonalDifferenceToPushout",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
@@ -3777,25 +1902,6 @@ DeclareOperation( "IsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromPushoutToCoequalizerOfCoproductDiagram</C>.
-#! $F: ( ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n} ) \mapsto (\mathrm{Pushout}(D) \rightarrow \Delta)$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
-                  [ IsCapCategory, IsFunction ] );
-##
-DeclareOperation( "AddIsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-##
-DeclareOperation( "AddIsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
-                  [ IsCapCategory, IsList, IsInt ] );
-##
-DeclareOperation( "AddIsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
 #! The output is a morphism
 #! $\Delta \rightarrow \mathrm{Pushout}(D)$,
@@ -3804,25 +1910,6 @@ DeclareOperation( "AddIsomorphismFromPushoutToCoequalizerOfCoproductDiagram",
 #! @Arguments D
 DeclareOperation( "IsomorphismFromCoequalizerOfCoproductDiagramToPushout",
                   [ IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromCoequalizerOfCoproductDiagramToPushout</C>.
-#! $F: ( ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n} ) \mapsto (\Delta \rightarrow \mathrm{Pushout}(D))$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromCoequalizerOfCoproductDiagramToPushout",
-                  [ IsCapCategory, IsFunction ] );
-##
-DeclareOperation( "AddIsomorphismFromCoequalizerOfCoproductDiagramToPushout",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-##
-DeclareOperation( "AddIsomorphismFromCoequalizerOfCoproductDiagramToPushout",
-                  [ IsCapCategory, IsList, IsInt ] );
-##
-DeclareOperation( "AddIsomorphismFromCoequalizerOfCoproductDiagramToPushout",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
@@ -3835,26 +1922,6 @@ DeclareOperation( "DirectSumCodiagonalDifference",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>DirectSumCodiagonalDifference</C>.
-#! $F: ( D ) \mapsto \mathrm{DirectSumCodiagonalDifference}(D)$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddDirectSumCodiagonalDifference",
-                  [ IsCapCategory, IsFunction ] );
-##
-DeclareOperation( "AddDirectSumCodiagonalDifference",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-##
-DeclareOperation( "AddDirectSumCodiagonalDifference",
-                  [ IsCapCategory, IsList, IsInt ] );
-##
-DeclareOperation( "AddDirectSumCodiagonalDifference",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
 #! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
 #! The output is the natural projection
 #! $\bigoplus_{i=1}^n I_i \rightarrow \mathrm{Pushout}(D)$.
@@ -3862,27 +1929,6 @@ DeclareOperation( "AddDirectSumCodiagonalDifference",
 #! @Arguments D
 DeclareOperation( "DirectSumProjectionInPushout",
                   [ IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>DirectSumProjectionInPushout</C>.
-#! $F: ( ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n} ) \mapsto (\bigoplus_{i=1}^n I_i \rightarrow \mathrm{Pushout}(D))$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddDirectSumProjectionInPushout",
-                  [ IsCapCategory, IsFunction ] );
-
-##
-DeclareOperation( "AddDirectSumProjectionInPushout",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-##
-DeclareOperation( "AddDirectSumProjectionInPushout",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddDirectSumProjectionInPushout",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The argument is a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$.
@@ -3985,144 +2031,6 @@ DeclareOperation( "UniversalMorphismFromPushoutOp",
 DeclareOperation( "UniversalMorphismFromPushoutWithGivenPushout",
                   [ IsList, IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
-## Add Operations
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>Pushout</C>.
-#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n} ) \mapsto I$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddPushout",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddPushout",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddPushout",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddPushout",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>InjectionOfCofactorOfPushout</C>.
-#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k ) \mapsto \iota_k$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddInjectionOfCofactorOfPushout",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfPushout",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfPushout",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfPushout",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>InjectionOfCofactorOfPushoutWithGivenPushout</C>.
-#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, k, I ) \mapsto \iota_k$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInjectionOfCofactorOfPushoutWithGivenPushout",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromSourceToPushout</C>.
-#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n} ) \mapsto \mu$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismFromSourceToPushout",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismFromSourceToPushout",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismFromSourceToPushout",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismFromSourceToPushout",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromSourceToPushoutWithGivenPushout</C>.
-#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, I ) \mapsto \mu$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismFromSourceToPushoutWithGivenPushout",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismFromSourceToPushoutWithGivenPushout",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismFromSourceToPushoutWithGivenPushout",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismFromSourceToPushoutWithGivenPushout",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismFromPushout</C>.
-#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, \tau ) \mapsto u(\tau)$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismFromPushout",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismFromPushout",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromPushout",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromPushout",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismFromPushout</C>.
-#! $F: ( (\beta_i: B \rightarrow I_i)_{i = 1 \dots n}, \tau, I ) \mapsto u(\tau)$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromPushoutWithGivenPushout",
-                  [ IsCapCategory, IsList ] );
-
-
 #! @Description
 #! The arguments are three lists of morphisms
 #! $L_s = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$,
@@ -4157,25 +2065,6 @@ DeclareOperation( "PushoutFunctorial",
 #! @Arguments s, Ls, Lm, Lr, r
 DeclareOperation( "PushoutFunctorialWithGivenPushouts",
                   [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>PushoutFunctorial</C>.
-#! $F: ( \mathrm{Pushout}( ( \beta_i )_{i=1}^n ), ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}, ( \mu_i: I_i \rightarrow I_i' )_{i = 1 \dots n}, ( \beta_i': B' \rightarrow I_i' )_{i = 1 \dots n}, \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ) ) ) \mapsto (\mathrm{Pushout}( ( \beta_i )_{i=1}^n ) \rightarrow \mathrm{Pushout}( ( \beta_i' )_{i=1}^n ) )$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddPushoutFunctorialWithGivenPushouts",
-                  [ IsCapCategory, IsList ] );
 
 #! @Chapter Universal Objects
 
@@ -4229,25 +2118,6 @@ DeclareAttribute( "IsomorphismFromImageObjectToKernelOfCokernel",
                   IsCapCategoryMorphism );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromImageObjectToKernelOfCokernel</C>.
-#! $F: \alpha \mapsto ( \mathrm{im}(\alpha) \rightarrow \mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) ) )$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromImageObjectToKernelOfCokernel",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromImageObjectToKernelOfCokernel",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromImageObjectToKernelOfCokernel",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromImageObjectToKernelOfCokernel",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The argument is a morphism $\alpha$.
 #! The output is the canonical morphism
 #! $\mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) ) \rightarrow \mathrm{im}(\alpha)$.
@@ -4255,25 +2125,6 @@ DeclareOperation( "AddIsomorphismFromImageObjectToKernelOfCokernel",
 #! @Arguments alpha
 DeclareAttribute( "IsomorphismFromKernelOfCokernelToImageObject",
                   IsCapCategoryMorphism );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromKernelOfCokernelToImageObject</C>.
-#! $F: \alpha \mapsto ( \mathrm{KernelObject}( \mathrm{CokernelProjection}( \alpha ) ) \rightarrow \mathrm{im}(\alpha) )$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromKernelOfCokernelToImageObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromKernelOfCokernelToImageObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromKernelOfCokernelToImageObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromKernelOfCokernelToImageObject",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The argument is a morphism $\alpha$.
@@ -4351,142 +2202,6 @@ DeclareOperation( "UniversalMorphismFromImage",
 DeclareOperation( "UniversalMorphismFromImageWithGivenImageObject",
                   [ IsCapCategoryMorphism, IsList, IsCapCategoryObject ] );
 
-## Add Operations
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ImageObject</C>.
-#! $F: \alpha \mapsto I$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddImageObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddImageObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddImageObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddImageObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ImageEmbedding</C>.
-#! $F: \alpha \mapsto \iota$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddImageEmbedding",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddImageEmbedding",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddImageEmbedding",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddImageEmbedding",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ImageEmbeddingWithGivenImageObject</C>.
-#! $F: (\alpha,I) \mapsto \iota$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddImageEmbeddingWithGivenImageObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddImageEmbeddingWithGivenImageObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddImageEmbeddingWithGivenImageObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddImageEmbeddingWithGivenImageObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CoastrictionToImage</C>.
-#! $F: \alpha \mapsto c$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoastrictionToImage",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoastrictionToImage",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoastrictionToImage",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoastrictionToImage",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CoastrictionToImageWithGivenImageObject</C>.
-#! $F: (\alpha,I) \mapsto c$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoastrictionToImageWithGivenImageObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoastrictionToImageWithGivenImageObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoastrictionToImageWithGivenImageObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoastrictionToImageWithGivenImageObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismFromImage</C>.
-#! $F: (\alpha, \tau) \mapsto u(\tau)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismFromImage",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismFromImage",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromImage",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromImage",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismFromImageWithGivenImageObject</C>.
-#! $F: (\alpha, \tau, I) \mapsto u(\tau)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismFromImageWithGivenImageObject",
-                  [ IsCapCategory, IsList ] );
-
 #! @Chapter Universal Objects
 
 ####################################
@@ -4549,25 +2264,6 @@ DeclareOperation( "MorphismFromCoimageToImageWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromCoimageToImageWithGivenObjects</C>.
-#! $F: (C, \alpha, I) \mapsto ( C \rightarrow I )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismFromCoimageToImageWithGivenObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismFromCoimageToImageWithGivenObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismFromCoimageToImageWithGivenObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismFromCoimageToImageWithGivenObjects",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
 #! The output is the inverse of the canonical morphism (in an abelian category)
 #! $\mathrm{im}(\alpha) \rightarrow \mathrm{coim}(\alpha)$.
@@ -4588,27 +2284,6 @@ DeclareOperation( "InverseMorphismFromCoimageToImageWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromCoimageToImageWithGivenObjects</C>.
-#! $F: (C, \alpha, I) \mapsto ( I \rightarrow C )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddInverseMorphismFromCoimageToImageWithGivenObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInverseMorphismFromCoimageToImageWithGivenObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInverseMorphismFromCoimageToImageWithGivenObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInverseMorphismFromCoimageToImageWithGivenObjects",
-                  [ IsCapCategory, IsList ] );
-
-
-
-#! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
 #! The output is the canonical morphism
 #! $\mathrm{coim}( \alpha ) \rightarrow \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) )$.
@@ -4618,25 +2293,6 @@ DeclareAttribute( "IsomorphismFromCoimageToCokernelOfKernel",
                   IsCapCategoryMorphism );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromCoimageToCokernelOfKernel</C>.
-#! $F: \alpha \mapsto ( \mathrm{coim}( \alpha ) \rightarrow \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) ) )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
 #! The output is the canonical morphism
 #! $\mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) ) \rightarrow \mathrm{coim}( \alpha )$.
@@ -4644,25 +2300,6 @@ DeclareOperation( "AddIsomorphismFromCoimageToCokernelOfKernel",
 #! @Arguments alpha
 DeclareAttribute( "IsomorphismFromCokernelOfKernelToCoimage",
                   IsCapCategoryMorphism );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromCokernelOfKernelToCoimage</C>.
-#! $F: \alpha \mapsto ( \mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) ) \rightarrow \mathrm{coim}( \alpha ) )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromCokernelOfKernelToCoimage",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromCokernelOfKernelToCoimage",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromCokernelOfKernelToCoimage",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromCokernelOfKernelToCoimage",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The argument is a morphism $\alpha$.
@@ -4739,145 +2376,6 @@ DeclareOperation( "UniversalMorphismIntoCoimage",
 DeclareOperation( "UniversalMorphismIntoCoimageWithGivenCoimage",
                   [ IsCapCategoryMorphism, IsList, IsCapCategoryObject ] );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>Coimage</C>.
-#! $F: \alpha \mapsto C$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoimage",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoimage",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoimage",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoimage",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CoimageProjection</C>.
-#! $F: \alpha \mapsto \pi$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoimageProjection",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoimageProjection",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoimageProjection",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoimageProjection",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CoimageProjectionWithGivenCoimage</C>.
-#! $F: (\alpha,C) \mapsto \pi$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoimageProjectionWithGivenCoimage",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoimageProjectionWithGivenCoimage",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoimageProjectionWithGivenCoimage",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoimageProjectionWithGivenCoimage",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>AstrictionToCoimage</C>.
-#! $F: \alpha \mapsto a$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddAstrictionToCoimage",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddAstrictionToCoimage",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddAstrictionToCoimage",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddAstrictionToCoimage",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>AstrictionToCoimageWithGivenCoimage</C>.
-#! $F: (\alpha,C) \mapsto a$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddAstrictionToCoimageWithGivenCoimage",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddAstrictionToCoimageWithGivenCoimage",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddAstrictionToCoimageWithGivenCoimage",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddAstrictionToCoimageWithGivenCoimage",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismIntoCoimage</C>.
-#! $F: (\alpha, \tau) \mapsto u(\tau)$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismIntoCoimage",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismIntoCoimage",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoCoimage",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoCoimage",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalMorphismIntoCoimageWithGivenCoimage</C>.
-#! $F: (\alpha, \tau,C) \mapsto u(\tau)$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
-                  [ IsCapCategory, IsList ] );
-
-
 #! Whenever the <C>CoastrictionToImage</C> is an epi,
 #! or the <C>AstrictionToCoimage</C> is a mono,
 #! there is a canonical morphism from the image to the coimage.
@@ -4895,25 +2393,6 @@ DeclareAttribute( "CanonicalIdentificationFromImageObjectToCoimage",
                   IsCapCategoryMorphism );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CanonicalIdentificationFromImageObjectToCoimage</C>.
-#! $F: \alpha \mapsto c$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCanonicalIdentificationFromImageObjectToCoimage",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCanonicalIdentificationFromImageObjectToCoimage",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCanonicalIdentificationFromImageObjectToCoimage",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCanonicalIdentificationFromImageObjectToCoimage",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
 #! The output is the canonical identification
 #! $c: \mathrm{coim}( \alpha ) \rightarrow \mathrm{im}( \alpha )$.
@@ -4921,26 +2400,6 @@ DeclareOperation( "AddCanonicalIdentificationFromImageObjectToCoimage",
 #! @Arguments alpha
 DeclareAttribute( "CanonicalIdentificationFromCoimageToImageObject",
                   IsCapCategoryMorphism );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CanonicalIdentificationFromCoimageToImageObject</C>.
-#! $F: \alpha \mapsto c$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCanonicalIdentificationFromCoimageToImageObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCanonicalIdentificationFromCoimageToImageObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCanonicalIdentificationFromCoimageToImageObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCanonicalIdentificationFromCoimageToImageObject",
-                  [ IsCapCategory, IsList ] );
-
 
 #! @Chapter Universal Objects
 
@@ -5030,75 +2489,6 @@ DeclareOperation( "IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject
 #! @Arguments alpha, beta
 DeclareOperation( "IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-## Add Operations
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>HomologyObject</C>.
-#! $F: (\alpha, \beta) \mapsto \mathrm{HomologyObject}(\alpha, \beta)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddHomologyObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddHomologyObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddHomologyObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddHomologyObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>AddHomologyObjectFunctorialWithGivenHomologyObjects</C>.
-#! $F: (H_1, \alpha, \beta, \epsilon, \gamma, \delta, H_2) \mapsto (H_1 \rightarrow H_2)$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddHomologyObjectFunctorialWithGivenHomologyObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddHomologyObjectFunctorialWithGivenHomologyObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddHomologyObjectFunctorialWithGivenHomologyObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddHomologyObjectFunctorialWithGivenHomologyObjects",
-                  [ IsCapCategory, IsList ] );
-
-
-DeclareOperation( "AddIsomorphismFromHomologyObjectToItsConstructionAsAnImageObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromHomologyObjectToItsConstructionAsAnImageObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromHomologyObjectToItsConstructionAsAnImageObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromHomologyObjectToItsConstructionAsAnImageObject",
-                  [ IsCapCategory, IsList ] );
-
-
-DeclareOperation( "AddIsomorphismFromItsConstructionAsAnImageObjectToHomologyObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromItsConstructionAsAnImageObjectToHomologyObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromItsConstructionAsAnImageObjectToHomologyObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromItsConstructionAsAnImageObjectToHomologyObject",
-                  [ IsCapCategory, IsList ] );
-
-
-
 
 #! @Chapter Universal Objects
 
