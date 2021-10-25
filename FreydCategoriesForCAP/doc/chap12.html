@@ -113,6 +113,7 @@
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "QPA", "&gt;= 2.0" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quiver := RightQuiver( "Q(8)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4,d:3-&gt;5,e:4-&gt;6,f:5-&gt;6,g:6-&gt;7,h:7-&gt;8]" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := PathAlgebra( QQ, quiver );;</span>
@@ -153,6 +154,7 @@ Warning: the provided function returns either true or fail!
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := K/Serre;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( K );</span>
 true
+#@fi
 </pre></div>
 
 <p><a id="X816168F27A34BC10" name="X816168F27A34BC10"></a></p>
@@ -217,6 +219,9 @@ true
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "QPA", "&gt;= 2.0" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quiver := RightQuiver( "Q(9)[a:1-&gt;2,b:2-&gt;3,c:1-&gt;4,d:2-&gt;5,e:3-&gt;6,f:4-&gt;5,g:5-&gt;6,h:4-&gt;7,i:5-&gt;8,j:6-&gt;9,k:7-&gt;8,l:8-&gt;9,m:2-&gt;7,n:3-&gt;8]" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kQ := PathAlgebra( HomalgFieldOfRationals(), quiver );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Aoid := Algebroid( kQ, [ kQ.ad - kQ.cf, </span>
@@ -269,6 +274,7 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( LiftAlongMonomorphism( KernelEmbedding( tau ), alpha ), lift );</span>
 true
+#@fi
 </pre></div>
 
 <p><a id="X7F10D27C8668C8FF" name="X7F10D27C8668C8FF"></a></p>
@@ -333,6 +339,9 @@ true
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "QPA", "&gt;= 2.0" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quiver := RightQuiver( "Q(3)[a:1-&gt;2,b:1-&gt;2,c:2-&gt;3]" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kQ := PathAlgebra( HomalgFieldOfRationals(), quiver );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Aoid := Algebroid( kQ );;</span>
@@ -355,6 +364,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">int := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( A, B, mor );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( int, a );</span>
 true
+#@fi
 </pre></div>
 
 
@@ -392,6 +402,9 @@ true
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "QPA", "&gt;= 2.0" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DeactivateDefaultCaching();</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SwitchGeneralizedMorphismStandard( "span" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">snake_quiver := RightQuiver( "Q(6)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" );;</span>
@@ -430,10 +443,12 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">comp := PreCompose( jj, pp );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( comp );</span>
 true
+#@fi
 </pre></div>
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "QPA", "&gt;= 2.0" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SwitchGeneralizedMorphismStandard( "cospan" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">snake_quiver := RightQuiver( "Q(6)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals();;</span>
@@ -475,6 +490,7 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( homology( pp, kk ) );</span>
 true
+#@fi
 </pre></div>
 
 <p><a id="X800F00FC80F05442" name="X800F00FC80F05442"></a></p>
@@ -640,7 +656,10 @@ true
 
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## Algebroid</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">snake_quiver := RightQuiver( "Q(6)[a:1-&gt;2,b:2-&gt;3,c:1-&gt;4,d:2-&gt;5,e:3-&gt;6,f:4-&gt;5,g:5-&gt;6]" );;</span>
+#@if IsPackageMarkedForLoading( "QPA", "&gt;= 2.0" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">snake_quiver := RightQuiver( "Q(6)[a:1-&gt;2,b:2-&gt;3,c:1-&gt;4,d:2-&gt;5,e:3-&gt;6,f:4-&gt;5,g:5-&gt;6]" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kQ := PathAlgebra( HomalgFieldOfRationalsInSingular(), snake_quiver );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := kQ / [ kQ.ad - kQ.cf, kQ.dg - kQ.be, kQ.ab, kQ.fg ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Aoid := Algebroid( kQ, [ kQ.ad - kQ.cf, kQ.dg - kQ.be, kQ.ab, kQ.fg ] );;</span>
@@ -678,6 +697,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">l := Colift( c, PreCompose( a, d ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( PreCompose( c, l ), PreCompose( a, d ) );</span>
 true
+#@fi
 </pre></div>
 
 <p><a id="X825D413F7D891B06" name="X825D413F7D891B06"></a></p>
@@ -1076,6 +1096,7 @@ true
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2019.09.20" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup( 3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CG := GroupAsCategory( G );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := GroupAsCategoryUniqueObject( CG );;</span>
@@ -1107,6 +1128,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id := ()/CG;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsIdenticalObj( x * x, id );</span>
 true
+#@fi
 </pre></div>
 
 <p><a id="X7E4FE96D7AD5A312" name="X7E4FE96D7AD5A312"></a></p>
@@ -1153,6 +1175,7 @@ false
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2019.09.20" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup( 3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CG := GroupAsCategory( G );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compare_func := function( g, h ) return UnderlyingGroupElement( g ) &lt; UnderlyingGroupElement( h ); end;;</span>
@@ -1174,6 +1197,7 @@ false
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsLiftable( a + b, -2*a ); ## over Q this is liftable</span>
 false
+#@fi
 </pre></div>
 
 <p><a id="X81E7031D85FD2569" name="X81E7031D85FD2569"></a></p>
@@ -1182,6 +1206,7 @@ false
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2019.09.20" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#Incidence matrix of our proset</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">K := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#Construction of a tower of categories</span>
@@ -1219,6 +1244,7 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lift := Lift( gamma, beta );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose(lift, beta) = gamma;</span>
 true
+#@fi
 </pre></div>
 
 <p><a id="X7F1E3F5A7EC538B6" name="X7F1E3F5A7EC538B6"></a></p>
@@ -1229,17 +1255,20 @@ true
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2019.09.20" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup( 3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CG := GroupAsCategory( G );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZZ := HomalgRingOfIntegers( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ZCG := LinearClosure( ZZ, CG );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RowsG := AdditiveClosure( ZCG );;</span>
+#@fi
 </pre></div>
 
 <p>Construction of elements</p>
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2019.09.20" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := (1,2)/CG/ZCG;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := (2,3)/CG/ZCG;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e := ()/CG/ZCG;;</span>
@@ -1248,12 +1277,14 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">v := LinearClosureObject( ZCG, u );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">u := AsAdditiveClosureObject( v );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( u, omega );;</span>
+#@fi
 </pre></div>
 
 <p>A random lifting problem over ZG</p>
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2019.09.20" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">elem := Elements( G );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">elem := List( elem, x -&gt; x/CG/ZCG );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rand_elem := function() local coeffs; coeffs := List( [ 1 .. 6 ], i -&gt; Random( [ -20 .. 20 ] ) ); if ForAll( coeffs, IsZero ) then return ZeroMorphism( v, v ); fi; return Sum( List( [ 1 .. 6 ], i -&gt; Random( [ -20 .. 20 ] ) * One( ZZ ) * elem[i] ) ); end;;</span>
@@ -1273,6 +1304,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">lift := Lift( gamma, beta );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">PreCompose( lift, beta ) = gamma;</span>
 true
+#@fi
 </pre></div>
 
 <p><a id="X7AFC8F247C00D608" name="X7AFC8F247C00D608"></a></p>
@@ -1281,6 +1313,7 @@ true
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2019.09.20" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">L := [ [1, 1, 0], [0, 1, 1], [0, 0, 1] ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">P_K := ProSetAsCategory(K);;</span>
@@ -1314,6 +1347,7 @@ false
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha = HomStructure(a, b, HomStructure(alpha));</span>
 true
+#@fi
 </pre></div>
 
 <p><a id="X816C8E7A811E9438" name="X816C8E7A811E9438"></a></p>
@@ -1322,6 +1356,7 @@ true
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "QPA", "&gt;= 2.0" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## quiver without relations</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quiver := RightQuiver( "Q(3)[a:1-&gt;2,b:1-&gt;2,c:2-&gt;3]" );;</span>
@@ -1410,6 +1445,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( obj );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IdentityMorphism( obj );;</span>
+#@fi
 </pre></div>
 
 <p><a id="X7A3B76387B5880D4" name="X7A3B76387B5880D4"></a></p>
@@ -1420,6 +1456,7 @@ true
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "QPA", "&gt;= 2.0" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">snake_quiver := RightQuiver( "Q(4)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vertices := Vertices( snake_quiver );;</span>
@@ -1436,12 +1473,14 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">x := QuiverRowsMorphism( v1, mat, v2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( x );</span>
 true
+#@fi
 </pre></div>
 
 <p>Snake lemma over the integers</p>
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "QPA", "&gt;= 2.0" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := AsQuiverRowsMorphism( A.a, QRowsA );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">b := AsQuiverRowsMorphism( A.b, QRowsA );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := AsQuiverRowsMorphism( A.c, QRowsA );;</span>
@@ -1476,12 +1515,14 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( homology( pp, kk ) );</span>
 true
+#@fi
 </pre></div>
 
 <p>Phenomena over the integers</p>
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "QPA", "&gt;= 2.0" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quiver := RightQuiver( "Q(2)[a:1-&gt;2]" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vertices := Vertices( quiver );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">B := PathAlgebra( QQ, quiver );;</span>
@@ -1501,6 +1542,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">K2_Z := KernelEmbedding( aa_Z );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualAsSubobjects( K1_Z, K2_Z );</span>
 false
+#@fi
 </pre></div>
 
 <p><a id="X789E61CF843CF960" name="X789E61CF843CF960"></a></p>
@@ -1527,6 +1569,7 @@ false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := HomalgFieldOfRationalsInSingular() * "t";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := IndeterminatesOfPolynomialRing( R )[1];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cocycle := function( a, b, c ) local e; e := CoastrictionToImage( UniversalMorphismIntoDirectSum( [ ReversedArrow( c ), Arrow( c ) ] ) ); return t^RankOfObject( KernelObject( e ) ); end;;</span>
+#@if IsPackageMarkedForLoading( "FinSetsForCAP", "&gt;= 2019.09.20" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TwistedLinearClosure( R, rel, cocycle );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := beta/T;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">delta := ZeroMorphism( 1/vec, 1/vec )/rel/T;;</span>
@@ -1539,6 +1582,7 @@ false
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsZero( ( gamma * delta ) * gamma - gamma * ( delta * gamma ) );</span>
 true
+#@fi
 </pre></div>
 
 <p><a id="X8001962586A4466B" name="X8001962586A4466B"></a></p>
@@ -1580,6 +1624,9 @@ true
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "QPA", "&gt;= 2.0" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DeactivateDefaultCaching();</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SwitchGeneralizedMorphismStandard( "cospan" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">snake_quiver := RightQuiver( "Q(6)[a:1-&gt;2,b:2-&gt;3,c:1-&gt;4,d:2-&gt;5,e:3-&gt;6,f:4-&gt;5,g:5-&gt;6]" );;</span>
@@ -1641,6 +1688,7 @@ false
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">timeend := Runtimes().user_time - timestart;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h := HonestRepresentative( p4 );;</span>
+#@fi
 </pre></div>
 
 <p><a id="X80ABE43A7CC9CA81" name="X80ABE43A7CC9CA81"></a></p>
@@ -1649,6 +1697,9 @@ true
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "QPA", "&gt;= 2.0" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DeactivateDefaultCaching();</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SwitchGeneralizedMorphismStandard( "cospan" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">snake_quiver := RightQuiver( "Q(6)[a:1-&gt;2,b:2-&gt;3,c:3-&gt;4]" );;</span>
@@ -1687,6 +1738,7 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">] );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsHonest( p );</span>
 true
+#@fi
 </pre></div>
 
 <p><a id="X7CA9460078765CA9" name="X7CA9460078765CA9"></a></p>
@@ -1697,6 +1749,7 @@ true
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "QPA", "&gt;= 2.0" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "FreydCategoriesForCAP", "examples/SubobjectLatticeFunctions.g" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quiver := RightQuiver( "Q(4)[a:1-&gt;2,b:2-&gt;3,c:1-&gt;4]" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals();;</span>
@@ -1712,6 +1765,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gens := [ x, y, z ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size( GenerateSubobjects( gens ) );</span>
 8
+#@fi
 </pre></div>
 
 <p><a id="X7C93B0F6874AB31E" name="X7C93B0F6874AB31E"></a></p>
@@ -1720,6 +1774,9 @@ true
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "QPA", "&gt;= 2.0" )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Algebroids", false );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">quiver := RightQuiver( "Q(9)[a:1-&gt;2,b:3-&gt;2]" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kQ := PathAlgebra( HomalgFieldOfRationals(), quiver );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Aoid := Algebroid( kQ );;</span>
@@ -1735,6 +1792,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">c := CokernelColift( pi1, PreCompose( a, CokernelProjection( b ) ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( c );</span>
 true
+#@fi
 </pre></div>
 
 

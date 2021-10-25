@@ -5,6 +5,7 @@
   [1X12.1 [33X[0;0YAdelman 5 lemma[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
     [4X[25Xgap>[125X [27Xquiver := RightQuiver( "Q(8)[a:1->2,b:2->3,c:3->4,d:3->5,e:4->6,f:5->6,g:6->7,h:7->8]" );;[127X[104X
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals();;[127X[104X
     [4X[25Xgap>[125X [27XA := PathAlgebra( QQ, quiver );;[127X[104X
@@ -45,6 +46,7 @@
     [4X[25Xgap>[125X [27XK := K/Serre;;[127X[104X
     [4X[25Xgap>[125X [27XIsZero( K );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   
@@ -105,6 +107,9 @@
   [1X12.3 [33X[0;0YAdelman category basics for for additive closure of algebroids[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xquiver := RightQuiver( "Q(9)[a:1->2,b:2->3,c:1->4,d:2->5,e:3->6,f:4->5,g:5->6,h:4->7,i:5->8,j:6->9,k:7->8,l:8->9,m:2->7,n:3->8]" );;[127X[104X
     [4X[25Xgap>[125X [27XkQ := PathAlgebra( HomalgFieldOfRationals(), quiver );;[127X[104X
     [4X[25Xgap>[125X [27XAoid := Algebroid( kQ, [ kQ.ad - kQ.cf, [127X[104X
@@ -157,6 +162,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( LiftAlongMonomorphism( KernelEmbedding( tau ), alpha ), lift );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   
@@ -217,6 +223,9 @@
   [1X12.5 [33X[0;0YAdelman category basics[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xquiver := RightQuiver( "Q(3)[a:1->2,b:1->2,c:2->3]" );;[127X[104X
     [4X[25Xgap>[125X [27XkQ := PathAlgebra( HomalgFieldOfRationals(), quiver );;[127X[104X
     [4X[25Xgap>[125X [27XAoid := Algebroid( kQ );;[127X[104X
@@ -239,6 +248,7 @@
     [4X[25Xgap>[125X [27Xint := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( A, B, mor );;[127X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( int, a );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -273,6 +283,9 @@
   [1X12.6 [33X[0;0YAdelman snake lemma[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDeactivateDefaultCaching();[127X[104X
     [4X[25Xgap>[125X [27XSwitchGeneralizedMorphismStandard( "span" );;[127X[104X
     [4X[25Xgap>[125X [27Xsnake_quiver := RightQuiver( "Q(6)[a:1->2,b:2->3,c:3->4]" );;[127X[104X
@@ -311,9 +324,11 @@
     [4X[25Xgap>[125X [27Xcomp := PreCompose( jj, pp );;[127X[104X
     [4X[25Xgap>[125X [27XIsZero( comp );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
     [4X[25Xgap>[125X [27XSwitchGeneralizedMorphismStandard( "cospan" );;[127X[104X
     [4X[25Xgap>[125X [27Xsnake_quiver := RightQuiver( "Q(6)[a:1->2,b:2->3,c:3->4]" );;[127X[104X
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals();;[127X[104X
@@ -355,6 +370,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsZero( homology( pp, kk ) );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   
@@ -516,7 +532,10 @@
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27X## Algebroid[127X[104X
-    [4X[25X>[125X [27Xsnake_quiver := RightQuiver( "Q(6)[a:1->2,b:2->3,c:1->4,d:2->5,e:3->6,f:4->5,g:5->6]" );;[127X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xsnake_quiver := RightQuiver( "Q(6)[a:1->2,b:2->3,c:1->4,d:2->5,e:3->6,f:4->5,g:5->6]" );;[127X[104X
     [4X[25Xgap>[125X [27XkQ := PathAlgebra( HomalgFieldOfRationalsInSingular(), snake_quiver );;[127X[104X
     [4X[25Xgap>[125X [27XA := kQ / [ kQ.ad - kQ.cf, kQ.dg - kQ.be, kQ.ab, kQ.fg ];;[127X[104X
     [4X[25Xgap>[125X [27XAoid := Algebroid( kQ, [ kQ.ad - kQ.cf, kQ.dg - kQ.be, kQ.ab, kQ.fg ] );;[127X[104X
@@ -554,6 +573,7 @@
     [4X[25Xgap>[125X [27Xl := Colift( c, PreCompose( a, d ) );;[127X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( PreCompose( c, l ), PreCompose( a, d ) );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   
@@ -942,6 +962,7 @@
   [1X12.13 [33X[0;0YGroups as categories[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
     [4X[25Xgap>[125X [27XG := SymmetricGroup( 3 );;[127X[104X
     [4X[25Xgap>[125X [27XCG := GroupAsCategory( G );;[127X[104X
     [4X[25Xgap>[125X [27Xu := GroupAsCategoryUniqueObject( CG );;[127X[104X
@@ -973,6 +994,7 @@
     [4X[25Xgap>[125X [27Xid := ()/CG;;[127X[104X
     [4X[25Xgap>[125X [27XIsIdenticalObj( x * x, id );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   
@@ -1013,6 +1035,7 @@
   [1X12.16 [33X[0;0YLinear closure of categories[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
     [4X[25Xgap>[125X [27XG := SymmetricGroup( 3 );;[127X[104X
     [4X[25Xgap>[125X [27XCG := GroupAsCategory( G );;[127X[104X
     [4X[25Xgap>[125X [27Xcompare_func := function( g, h ) return UnderlyingGroupElement( g ) < UnderlyingGroupElement( h ); end;;[127X[104X
@@ -1034,12 +1057,14 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsLiftable( a + b, -2*a ); ## over Q this is liftable[127X[104X
     [4X[28Xfalse[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   
   [1X12.17 [33X[0;0YMatrices over ZP K[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
     [4X[25Xgap>[125X [27X#Incidence matrix of our proset[127X[104X
     [4X[25X>[125X [27XK := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;[127X[104X
     [4X[25Xgap>[125X [27X#Construction of a tower of categories[127X[104X
@@ -1077,6 +1102,7 @@
     [4X[25Xgap>[125X [27Xlift := Lift( gamma, beta );;[127X[104X
     [4X[25Xgap>[125X [27XPreCompose(lift, beta) = gamma;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   
@@ -1085,16 +1111,19 @@
   [33X[0;0YConstruction of a tower of categories[133X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
     [4X[25Xgap>[125X [27XG := SymmetricGroup( 3 );;[127X[104X
     [4X[25Xgap>[125X [27XCG := GroupAsCategory( G );;[127X[104X
     [4X[25Xgap>[125X [27XZZ := HomalgRingOfIntegers( );;[127X[104X
     [4X[25Xgap>[125X [27XZCG := LinearClosure( ZZ, CG );;[127X[104X
     [4X[25Xgap>[125X [27XRowsG := AdditiveClosure( ZCG );;[127X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   [33X[0;0YConstruction of elements[133X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
     [4X[25Xgap>[125X [27Xa := (1,2)/CG/ZCG;;[127X[104X
     [4X[25Xgap>[125X [27Xb := (2,3)/CG/ZCG;;[127X[104X
     [4X[25Xgap>[125X [27Xe := ()/CG/ZCG;;[127X[104X
@@ -1103,11 +1132,13 @@
     [4X[25Xgap>[125X [27Xv := LinearClosureObject( ZCG, u );;[127X[104X
     [4X[25Xgap>[125X [27Xu := AsAdditiveClosureObject( v );;[127X[104X
     [4X[25Xgap>[125X [27XHomStructure( u, omega );;[127X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   [33X[0;0YA random lifting problem over ZG[133X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
     [4X[25Xgap>[125X [27Xelem := Elements( G );;[127X[104X
     [4X[25Xgap>[125X [27Xelem := List( elem, x -> x/CG/ZCG );;[127X[104X
     [4X[25Xgap>[125X [27Xrand_elem := function() local coeffs; coeffs := List( [ 1 .. 6 ], i -> Random( [ -20 .. 20 ] ) ); if ForAll( coeffs, IsZero ) then return ZeroMorphism( v, v ); fi; return Sum( List( [ 1 .. 6 ], i -> Random( [ -20 .. 20 ] ) * One( ZZ ) * elem[i] ) ); end;;[127X[104X
@@ -1127,12 +1158,14 @@
     [4X[25Xgap>[125X [27Xlift := Lift( gamma, beta );;[127X[104X
     [4X[25Xgap>[125X [27XPreCompose( lift, beta ) = gamma;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   
   [1X12.19 [33X[0;0YProsets[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
     [4X[25Xgap>[125X [27XK := [ [1, 1, 1], [0, 1, 1], [0, 1, 1] ];;[127X[104X
     [4X[25Xgap>[125X [27XL := [ [1, 1, 0], [0, 1, 1], [0, 0, 1] ];;[127X[104X
     [4X[25Xgap>[125X [27XP_K := ProSetAsCategory(K);;[127X[104X
@@ -1166,12 +1199,14 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xalpha = HomStructure(a, b, HomStructure(alpha));[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   
   [1X12.20 [33X[0;0YQuiver rows bascis[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
     [4X[25Xgap>[125X [27X## quiver without relations[127X[104X
     [4X[25X>[125X [27XQQ := HomalgFieldOfRationals();;[127X[104X
     [4X[25Xgap>[125X [27Xquiver := RightQuiver( "Q(3)[a:1->2,b:1->2,c:2->3]" );;[127X[104X
@@ -1260,6 +1295,7 @@
     [4X[25Xgap>[125X [27XIsWellDefined( obj );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIdentityMorphism( obj );;[127X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   
@@ -1268,6 +1304,7 @@
   [33X[0;0YWell-defined morphisms[133X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals();;[127X[104X
     [4X[25Xgap>[125X [27Xsnake_quiver := RightQuiver( "Q(4)[a:1->2,b:2->3,c:3->4]" );;[127X[104X
     [4X[25Xgap>[125X [27Xvertices := Vertices( snake_quiver );;[127X[104X
@@ -1284,11 +1321,13 @@
     [4X[25Xgap>[125X [27Xx := QuiverRowsMorphism( v1, mat, v2 );;[127X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( x );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   [33X[0;0YSnake lemma over the integers[133X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
     [4X[25Xgap>[125X [27Xa := AsQuiverRowsMorphism( A.a, QRowsA );;[127X[104X
     [4X[25Xgap>[125X [27Xb := AsQuiverRowsMorphism( A.b, QRowsA );;[127X[104X
     [4X[25Xgap>[125X [27Xc := AsQuiverRowsMorphism( A.c, QRowsA );;[127X[104X
@@ -1323,11 +1362,13 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsZero( homology( pp, kk ) );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   [33X[0;0YPhenomena over the integers[133X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
     [4X[25Xgap>[125X [27Xquiver := RightQuiver( "Q(2)[a:1->2]" );;[127X[104X
     [4X[25Xgap>[125X [27Xvertices := Vertices( quiver );;[127X[104X
     [4X[25Xgap>[125X [27XB := PathAlgebra( QQ, quiver );;[127X[104X
@@ -1347,6 +1388,7 @@
     [4X[25Xgap>[125X [27XK2_Z := KernelEmbedding( aa_Z );;[127X[104X
     [4X[25Xgap>[125X [27XIsEqualAsSubobjects( K1_Z, K2_Z );[127X[104X
     [4X[28Xfalse[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   
@@ -1371,6 +1413,7 @@
     [4X[25Xgap>[125X [27XR := HomalgFieldOfRationalsInSingular() * "t";;[127X[104X
     [4X[25Xgap>[125X [27Xt := IndeterminatesOfPolynomialRing( R )[1];;[127X[104X
     [4X[25Xgap>[125X [27Xcocycle := function( a, b, c ) local e; e := CoastrictionToImage( UniversalMorphismIntoDirectSum( [ ReversedArrow( c ), Arrow( c ) ] ) ); return t^RankOfObject( KernelObject( e ) ); end;;[127X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )[128X[104X
     [4X[25Xgap>[125X [27XT := TwistedLinearClosure( R, rel, cocycle );;[127X[104X
     [4X[25Xgap>[125X [27Xgamma := beta/T;;[127X[104X
     [4X[25Xgap>[125X [27Xdelta := ZeroMorphism( 1/vec, 1/vec )/rel/T;;[127X[104X
@@ -1383,6 +1426,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsZero( ( gamma * delta ) * gamma - gamma * ( delta * gamma ) );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   
@@ -1420,6 +1464,9 @@
   [1X12.24 [33X[0;0YSnake lemma first proof[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDeactivateDefaultCaching();[127X[104X
     [4X[25Xgap>[125X [27XSwitchGeneralizedMorphismStandard( "cospan" );;[127X[104X
     [4X[25Xgap>[125X [27Xsnake_quiver := RightQuiver( "Q(6)[a:1->2,b:2->3,c:1->4,d:2->5,e:3->6,f:4->5,g:5->6]" );;[127X[104X
@@ -1481,12 +1528,16 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xtimeend := Runtimes().user_time - timestart;;[127X[104X
     [4X[25Xgap>[125X [27Xh := HonestRepresentative( p4 );;[127X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   
   [1X12.25 [33X[0;0YSnake lemma second proof[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XDeactivateDefaultCaching();[127X[104X
     [4X[25Xgap>[125X [27XSwitchGeneralizedMorphismStandard( "cospan" );;[127X[104X
     [4X[25Xgap>[125X [27Xsnake_quiver := RightQuiver( "Q(6)[a:1->2,b:2->3,c:3->4]" );;[127X[104X
@@ -1525,6 +1576,7 @@
     [4X[25X>[125X [27X] );;[127X[104X
     [4X[25Xgap>[125X [27XIsHonest( p );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   
@@ -1534,6 +1586,7 @@
   independent subobjects y,z and one subobject x of y.[133X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
     [4X[25Xgap>[125X [27XReadPackage( "FreydCategoriesForCAP", "examples/SubobjectLatticeFunctions.g" );;[127X[104X
     [4X[25Xgap>[125X [27Xquiver := RightQuiver( "Q(4)[a:1->2,b:2->3,c:1->4]" );;[127X[104X
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals();;[127X[104X
@@ -1549,12 +1602,16 @@
     [4X[25Xgap>[125X [27Xgens := [ x, y, z ];;[127X[104X
     [4X[25Xgap>[125X [27XSize( GenerateSubobjects( gens ) );[127X[104X
     [4X[28X8[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   
   [1X12.27 [33X[0;0YAdelman category theorem[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xquiver := RightQuiver( "Q(9)[a:1->2,b:3->2]" );;[127X[104X
     [4X[25Xgap>[125X [27XkQ := PathAlgebra( HomalgFieldOfRationals(), quiver );;[127X[104X
     [4X[25Xgap>[125X [27XAoid := Algebroid( kQ );;[127X[104X
@@ -1570,5 +1627,6 @@
     [4X[25Xgap>[125X [27Xc := CokernelColift( pi1, PreCompose( a, CokernelProjection( b ) ) );;[127X[104X
     [4X[25Xgap>[125X [27XIsMonomorphism( c );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
