@@ -6,6 +6,7 @@ LoadPackage( "FreydCategoriesForCAP" );;
 #! Well-defined morphisms
 
 #! @Example
+#! #@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )
 QQ := HomalgFieldOfRationals();;
 snake_quiver := RightQuiver( "Q(4)[a:1->2,b:2->3,c:3->4]" );;
 vertices := Vertices( snake_quiver );;
@@ -22,11 +23,13 @@ mat := [ [ 2*A.a ] ];;
 x := QuiverRowsMorphism( v1, mat, v2 );;
 IsWellDefined( x );
 #! true
+#! #@fi
 #! @EndExample
 
 #! Snake lemma over the integers
 
 #! @Example
+#! #@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )
 a := AsQuiverRowsMorphism( A.a, QRowsA );;
 b := AsQuiverRowsMorphism( A.b, QRowsA );;
 c := AsQuiverRowsMorphism( A.c, QRowsA );;
@@ -61,11 +64,13 @@ IsZero( homology( jj, pp ) );
 #! true
 IsZero( homology( pp, kk ) );
 #! true
+#! #@fi
 # @EndExample
 
 #! Phenomena over the integers
 
 #! @Example
+#! #@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )
 quiver := RightQuiver( "Q(2)[a:1->2]" );;
 vertices := Vertices( quiver );;
 B := PathAlgebra( QQ, quiver );;
@@ -85,4 +90,5 @@ K1_Z := KernelEmbedding( bb_Z );;
 K2_Z := KernelEmbedding( aa_Z );;
 IsEqualAsSubobjects( K1_Z, K2_Z );
 #! false
+#! #@fi
 #! @EndExample

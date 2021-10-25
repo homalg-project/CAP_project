@@ -4,7 +4,6 @@
 
 LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "RingsForHomalg" );
-LoadPackage( "Algebroids" );
 
 #! @Example
 R := HomalgRingOfIntegers();;
@@ -60,6 +59,9 @@ IsCongruentForMorphisms( KernelLift( m, KernelEmbedding( m ) ), IdentityMorphism
 #! @Section Adelman category basics for for additive closure of algebroids
 
 #! @Example
+#! #@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )
+LoadPackage( "Algebroids", false );
+#! true
 quiver := RightQuiver( "Q(9)[a:1->2,b:2->3,c:1->4,d:2->5,e:3->6,f:4->5,g:5->6,h:4->7,i:5->8,j:6->9,k:7->8,l:8->9,m:2->7,n:3->8]" );;
 kQ := PathAlgebra( HomalgFieldOfRationals(), quiver );;
 Aoid := Algebroid( kQ, [ kQ.ad - kQ.cf, 
@@ -112,6 +114,7 @@ IsCongruentForMorphisms( ColiftAlongEpimorphism( CokernelProjection( alpha ), ta
 #! true
 IsCongruentForMorphisms( LiftAlongMonomorphism( KernelEmbedding( tau ), alpha ), lift );
 #! true
+#! #@fi
 #! @EndExample
 
 #! @Section Adelman category basics for category of columns

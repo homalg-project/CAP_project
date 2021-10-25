@@ -5,6 +5,7 @@
 LoadPackage( "FreydCategoriesForCAP" );;
 
 #! @Example
+#! #@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )
 G := SymmetricGroup( 3 );;
 CG := GroupAsCategory( G );;
 u := GroupAsCategoryUniqueObject( CG );;
@@ -36,4 +37,5 @@ x := (2,3)/CG;;
 id := ()/CG;;
 IsIdenticalObj( x * x, id );
 #! true
+#! #@fi
 #! @EndExample

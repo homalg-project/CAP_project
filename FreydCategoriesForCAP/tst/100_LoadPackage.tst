@@ -15,8 +15,6 @@ gap> LoadPackage( "GaussForHomalg", false );
 true
 gap> LoadPackage( "GeneralizedMorphismsForCAP", false );
 true
-gap> LoadPackage( "Algebroids", false );
-true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
 gap> LoadPackage( "FreydCategoriesForCAP" );
 true
@@ -27,8 +25,6 @@ true
 gap> LoadPackage( "GaussForHomalg" );
 true
 gap> LoadPackage( "GeneralizedMorphismsForCAP" );
-true
-gap> LoadPackage( "Algebroids" );
 true
 gap> SetInfoLevel( InfoPackageLoading, package_loading_info_level );;
 gap> HOMALG_IO.show_banners := false;;

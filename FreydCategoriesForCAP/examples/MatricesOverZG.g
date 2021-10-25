@@ -7,15 +7,18 @@ LoadPackage( "FreydCategoriesForCAP" );;
 #! Construction of a tower of categories
 
 #! @Example
+#! #@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )
 G := SymmetricGroup( 3 );;
 CG := GroupAsCategory( G );;
 ZZ := HomalgRingOfIntegers( );;
 ZCG := LinearClosure( ZZ, CG );;
 RowsG := AdditiveClosure( ZCG );;
+#! #@fi
 #! @EndExample
 
 #! Construction of elements
 #! @Example
+#! #@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )
 a := (1,2)/CG/ZCG;;
 b := (2,3)/CG/ZCG;;
 e := ()/CG/ZCG;;
@@ -24,10 +27,12 @@ u := GroupAsCategoryUniqueObject( CG );;
 v := LinearClosureObject( ZCG, u );;
 u := AsAdditiveClosureObject( v );;
 HomStructure( u, omega );;
+#! #@fi
 #! @EndExample
 
 #! A random lifting problem over ZG
 #! @Example
+#! #@if IsPackageMarkedForLoading( "FinSetsForCAP", ">= 2019.09.20" )
 elem := Elements( G );;
 elem := List( elem, x -> x/CG/ZCG );;
 rand_elem := function() local coeffs; coeffs := List( [ 1 .. 6 ], i -> Random( [ -20 .. 20 ] ) ); if ForAll( coeffs, IsZero ) then return ZeroMorphism( v, v ); fi; return Sum( List( [ 1 .. 6 ], i -> Random( [ -20 .. 20 ] ) * One( ZZ ) * elem[i] ) ); end;;
@@ -47,4 +52,5 @@ gamma := PreCompose( alpha, beta );;
 lift := Lift( gamma, beta );;
 PreCompose( lift, beta ) = gamma;
 #! true
+#! #@fi
 #! @EndExample

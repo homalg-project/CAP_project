@@ -8,6 +8,7 @@ LoadPackage( "FreydCategoriesForCAP" );;
 #! and one subobject x of y.
 
 #! @Example
+#! #@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )
 ReadPackage( "FreydCategoriesForCAP", "examples/SubobjectLatticeFunctions.g" );;
 quiver := RightQuiver( "Q(4)[a:1->2,b:2->3,c:1->4]" );;
 QQ := HomalgFieldOfRationals();;
@@ -23,4 +24,5 @@ z := KernelEmbedding( c );;
 gens := [ x, y, z ];;
 Size( GenerateSubobjects( gens ) );
 #! 8
+#! #@fi
 #! @EndExample

@@ -6,6 +6,7 @@ LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "GeneralizedMorphisms");;
 
 #! @Example
+#! #@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )
 quiver := RightQuiver( "Q(8)[a:1->2,b:2->3,c:3->4,d:3->5,e:4->6,f:5->6,g:6->7,h:7->8]" );;
 QQ := HomalgFieldOfRationals();;
 A := PathAlgebra( QQ, quiver );;
@@ -46,4 +47,5 @@ Serre := Adel/C;;
 K := K/Serre;;
 IsZero( K );
 #! true
+#! #@fi
 # @EndExample

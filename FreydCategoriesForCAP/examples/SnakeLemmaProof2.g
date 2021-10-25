@@ -4,9 +4,11 @@
 
 LoadPackage( "FreydCategoriesForCAP" );;
 LoadPackage( "GeneralizedMorphismsForCAP" );;
-LoadPackage( "Algebroids" );;
 
 #! @Example
+#! #@if IsPackageMarkedForLoading( "QPA", ">= 2.0" )
+LoadPackage( "Algebroids", false );
+#! true
 DeactivateDefaultCaching();
 SwitchGeneralizedMorphismStandard( "cospan" );;
 snake_quiver := RightQuiver( "Q(6)[a:1->2,b:2->3,c:3->4]" );;
@@ -52,4 +54,5 @@ p := PreCompose( [
 
 IsHonest( p );
 #! true
+#! #@fi
 #! @EndExample
