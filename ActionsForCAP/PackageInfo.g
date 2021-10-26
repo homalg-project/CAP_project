@@ -11,15 +11,7 @@ SetPackageInfo( rec(
 PackageName := "ActionsForCAP",
 Subtitle := "Actions and Coactions for CAP",
 
-Version := Maximum( [
-  "2019.09-16", ## Mohamed's version
-  ## this line prevents merge conflicts
-  "2015.08-19", ## Sebas' version
-  ## this line prevents merge conflicts
-  "2017.01-11", ## Sepp's version
-  ## this line prevents merge conflicts
-  "2020.10-01", ## Fabian's version
-] ),
+Version := "2021.10-01",
 
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
