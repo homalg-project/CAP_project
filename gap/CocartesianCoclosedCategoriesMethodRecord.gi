@@ -44,7 +44,7 @@ CoexponentialToCoproductAdjunctionMap := rec(
   io_type := [ [ "a", "b", "f" ], [ "a", "t" ] ],
   cache_name := "CoexponentialToCoproductAdjunctionMap",
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 CoproductToCoexponentialAdjunctionMap := rec(
   installation_name := "CoproductToCoexponentialAdjunctionMap",
@@ -52,7 +52,7 @@ CoproductToCoexponentialAdjunctionMap := rec(
   io_type := [ [ "b", "c", "g" ], [ "i", "c" ] ],
   cache_name := "CoproductToCoexponentialAdjunctionMap",
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 CocartesianPreCoComposeMorphismWithGivenObjects := rec(
   installation_name := "CocartesianPreCoComposeMorphismWithGivenObjects",
@@ -122,7 +122,7 @@ IsomorphismFromCocartesianDualToCoexponential := rec(
   io_type := [ [ "a" ], [ "i", "d" ] ],
   cache_name := "IsomorphismFromCocartesianDualToCoexponential",
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 IsomorphismFromCoexponentialToCocartesianDual := rec(
   installation_name := "IsomorphismFromCoexponentialToCocartesianDual",
@@ -130,7 +130,7 @@ IsomorphismFromCoexponentialToCocartesianDual := rec(
   io_type := [ [ "a" ], [ "d", "i" ] ],
   cache_name := "IsomorphismFromCoexponentialToCocartesianDual",
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 UniversalPropertyOfCocartesianDual := rec(
   installation_name := "UniversalPropertyOfCocartesianDual",
@@ -138,7 +138,7 @@ UniversalPropertyOfCocartesianDual := rec(
   io_type := [ [ "a", "t", "alpha" ], [ "d", "t" ] ],
   cache_name := "UniversalPropertyOfCocartesianDual",
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 CocartesianLambdaIntroduction := rec(
   installation_name := "CocartesianLambdaIntroduction",
@@ -146,7 +146,7 @@ CocartesianLambdaIntroduction := rec(
   io_type := [ [ "alpha" ], [ "u", "i" ] ],
   cache_name := "CocartesianLambdaIntroduction",
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 CocartesianLambdaElimination := rec(
   installation_name := "CocartesianLambdaElimination",
@@ -154,7 +154,7 @@ CocartesianLambdaElimination := rec(
   io_type := [ [ "a", "b", "alpha" ], [ "a", "b" ] ],
   cache_name := "CocartesianLambdaElimination",
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 IsomorphismFromObjectToCoexponentialWithGivenCoexponential := rec(
   installation_name := "IsomorphismFromObjectToCoexponentialWithGivenCoexponential",
