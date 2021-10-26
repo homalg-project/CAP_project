@@ -2768,11 +2768,14 @@ ComponentOfMorphismFromDirectSum := rec(
   return_type := "morphism",
   dual_operation := "ComponentOfMorphismIntoDirectSum" ),
 
-MorphismBetweenDirectSumsWithGivenDirectSums := rec(
-  filter_list := [ "category", "object", "list_of_objects", IsList, "list_of_objects", "object" ],
-  io_type := [ [ "S", "source_diagram", "mat", "range_diagram", "T" ], [ "S", "T" ] ],
+MorphismBetweenDirectSums := rec(
+  filter_list := [ "category", "list_of_objects", IsList, "list_of_objects" ],
+  input_arguments_names := [ "cat", "source_diagram", "mat", "range_diagram" ],
   return_type := "morphism",
-  pre_function := function( cat, source, source_diagram, listlist, range_diagram, range )
+  output_source_getter_string := "DirectSum( cat, source_diagram )",
+  output_range_getter_string := "DirectSum( cat, range_diagram )",
+  with_given_object_position := "both",
+  pre_function := function( cat, source_diagram, listlist, range_diagram )
     local result, i, j;
       
       if Length( listlist ) <> Length( source_diagram ) then
@@ -2822,6 +2825,18 @@ MorphismBetweenDirectSumsWithGivenDirectSums := rec(
       return [ true ];
       
   end,
+  dual_operation := "MorphismBetweenDirectSums",
+  dual_preprocessor_func := function( arg )
+      local list;
+      list := CAP_INTERNAL_OPPOSITE_RECURSIVE( arg );
+      return [ list[1], list[4], TransposedMat( list[3] ), list[2] ];
+  end
+),
+
+MorphismBetweenDirectSumsWithGivenDirectSums := rec(
+  filter_list := [ "category", "object", "list_of_objects", IsList, "list_of_objects", "object" ],
+  io_type := [ [ "S", "source_diagram", "mat", "range_diagram", "T" ], [ "S", "T" ] ],
+  return_type := "morphism",
   dual_operation := "MorphismBetweenDirectSumsWithGivenDirectSums",
   dual_preprocessor_func := function( arg )
       local list;

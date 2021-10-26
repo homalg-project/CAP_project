@@ -2672,6 +2672,25 @@ DeclareOperation( "AddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveO
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `MorphismBetweenDirectSums`.
+#! $F: ( source_diagram, mat, range_diagram ) \mapsto \mathtt{MorphismBetweenDirectSums}(source_diagram, mat, range_diagram)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismBetweenDirectSums",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismBetweenDirectSums",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismBetweenDirectSums",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismBetweenDirectSums",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `MorphismBetweenDirectSumsWithGivenDirectSums`.
 #! $F: ( S, source_diagram, mat, range_diagram, T ) \mapsto \mathtt{MorphismBetweenDirectSumsWithGivenDirectSums}(S, source_diagram, mat, range_diagram, T)$.
 #! @Returns nothing

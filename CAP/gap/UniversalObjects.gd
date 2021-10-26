@@ -863,10 +863,6 @@ DeclareOperation( "MorphismBetweenDirectSums",
 DeclareOperation( "MorphismBetweenDirectSumsWithGivenDirectSums",
                   [ IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject ] );
 
-# backwards compatibility
-DeclareOperation( "AddMorphismBetweenDirectSums",
-                  [ IsCapCategory, IsFunction ] );
-
 #! @Description
 #! This is a deprecated convenience method.
 #! The arguments are a list
