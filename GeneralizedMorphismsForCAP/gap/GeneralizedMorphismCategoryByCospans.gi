@@ -363,8 +363,8 @@ InstallMethod( AsGeneralizedMorphismByCospan,
   function( F, name )
     local A, B, gmcF;
     
-    A := GeneralizedMorphismCategoryByCospans( AsCapCategory( Source( F ) ) );
-    B := GeneralizedMorphismCategoryByCospans( AsCapCategory( Range( F ) ) );
+    A := GeneralizedMorphismCategoryByCospans( AsCapCategory( Source( F ) ) : FinalizeCategory := true );
+    B := GeneralizedMorphismCategoryByCospans( AsCapCategory( Range( F ) ) : FinalizeCategory := true );
     
     gmcF := CapFunctor( name, A, B );
     

@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# ActionsForCAP: Actions and Coactions for CAP
+# AttributeCategoryForCAP: Automatic enhancement with attributes of a CAP category
 #
 # This file runs package tests. It is also referenced in the package
 # metadata in PackageInfo.g.
@@ -11,6 +11,6 @@ options := rec(
     ),
 );
 
-TestDirectory( DirectoriesPackageLibrary( "ActionsForCAP", "tst" ), options );
+TestDirectory( DirectoriesPackageLibrary( "AttributeCategoryForCAP", "tst" ), options );
 
 FORCE_QUIT_GAP( 1 ); # if we ever get here, there was an error

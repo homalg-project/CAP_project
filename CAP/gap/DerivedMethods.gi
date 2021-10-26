@@ -1090,7 +1090,7 @@ AddDerivationToCAP( IsEqualAsFactorobjects,
                                   
   function( cat, factor1, factor2 )
     
-    return IsCodominating( cat, factor1, factor2 ) and IsCodominating( cat, factor1, factor2 );
+    return IsCodominating( cat, factor1, factor2 ) and IsCodominating( cat, factor2, factor1 );
     
 end : Description := "IsEqualAsFactorobjects(factor1, factor2) if factor1 dominates factor2 and vice versa" );
 

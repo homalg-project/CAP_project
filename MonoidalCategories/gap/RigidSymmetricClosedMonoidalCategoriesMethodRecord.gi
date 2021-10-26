@@ -58,25 +58,25 @@ TraceMap := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "u", "u" ] ],
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 RankMorphism := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "u", "u" ] ],
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 IsomorphismFromTensorProductToInternalHom := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "t", "i" ] ],
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 IsomorphismFromInternalHomToTensorProduct := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "i", "t" ] ],
   return_type := "morphism",
-  no_with_given := true ),
+),
   
 ) );
 

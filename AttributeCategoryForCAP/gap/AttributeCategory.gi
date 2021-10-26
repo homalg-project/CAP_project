@@ -1,12 +1,8 @@
-#############################################################################
-##
-##                                AttributeCategoryForCAP package
-##
-##  Copyright 2016, Sebastian Gutsche, University of Siegen
-##                  Sebastian Posur,   University of Siegen
-##
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# AttributeCategoryForCAP: Automatic enhancement with attributes of a CAP category
+#
+# Implementations
+#
 
 ##
 InstallValue( CAP_INTERNAL_STRUCTURE_FUNCTION_RECORD_FOR_CATEGORY_WITH_ATTRIBUTES, rec(
@@ -401,40 +397,43 @@ InstallGlobalFunction( CAP_INTERNAL_INSTALL_ADDS_FOR_CATEGORY_WITH_ATTRIBUTES,
              
         elif entry.return_type = "morphism" then
             
-            ## functions marked with no_with_given cannot automatically be equipped with attributes
-            if not( IsBound( entry.no_with_given ) and entry.no_with_given = true ) then
+            if not IsBound( entry.io_type ) then
                 
-                if not IsBound( entry.universal_type )
-                   or ( IsBound( entry.universal_type ) and entry.is_with_given ) then
-                    
-                    function_to_add := create_function_morphism_no_new_object( name );
-                    
-                    add_function( category_with_attributes, function_to_add );
-                    
-                elif IsBound( entry.universal_type ) then
-                    
-                    ## TODO: this should be directly accessible in the method record
-                    with_given_object_name := CAP_INTERNAL_METHOD_NAME_RECORD.(entry.with_given_without_given_name_pair[2]).with_given_object_name;
-                    
-                    if IsBound( structure_record.(with_given_object_name) ) then
-                        
-                        if entry.with_given_object_position = "Source" then
-                            
-                            function_to_add := create_function_morphism_new_source( name, structure_record.(with_given_object_name) );
-                            
-                            add_function( category_with_attributes, function_to_add );
-                            
-                        elif entry.with_given_object_position = "Range" then
-                            
-                            function_to_add := create_function_morphism_new_range( name, structure_record.(with_given_object_name) );
-                            
-                            add_function( category_with_attributes, function_to_add );
-                            
-                        fi;
-                    
-                    fi;
-                fi;
+                ## if there is no io_type we cannot do anything
+                continue;
+                
+            fi;
             
+            if IsBound( entry.output_source_getter_string ) and entry.can_always_compute_output_source_getter and
+               IsBound( entry.output_range_getter_string ) and entry.can_always_compute_output_range_getter then
+                
+                function_to_add := create_function_morphism_no_new_object( name );
+                
+                add_function( category_with_attributes, function_to_add );
+                
+            elif IsBound( entry.with_given_object_position ) and entry.with_given_object_position in [ "Source", "Range" ] and
+               IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(entry.with_given_without_given_name_pair[2]).with_given_object_name ) then
+                
+                with_given_object_name := CAP_INTERNAL_METHOD_NAME_RECORD.(entry.with_given_without_given_name_pair[2]).with_given_object_name;
+                
+                if IsBound( structure_record.(with_given_object_name) ) then
+                    
+                    if entry.with_given_object_position = "Source" then
+                        
+                        function_to_add := create_function_morphism_new_source( name, structure_record.(with_given_object_name) );
+                        
+                        add_function( category_with_attributes, function_to_add );
+                        
+                    elif entry.with_given_object_position = "Range" then
+                        
+                        function_to_add := create_function_morphism_new_range( name, structure_record.(with_given_object_name) );
+                        
+                        add_function( category_with_attributes, function_to_add );
+                        
+                    fi;
+                    
+                fi;
+                
             fi;
             
         elif entry.return_type = "morphism_or_fail" then

@@ -1,32 +1,31 @@
-LoadPackage( "LinearAlgebraForCAP" );
+#! @Chapter Examples and tests
+
+#! @Section Tests
+
+#! @Example
+
+LoadPackage( "LinearAlgebraForCAP", false );
+#! true
 
 DeclareRepresentation( "IsWrappedObjectRep",
                        IsCapCategoryObjectRep,
-                       [ ] );
-
-BindGlobal( "TheTypeOfWrappedObjects",
-        NewType( TheFamilyOfCapCategoryObjects,
-                IsWrappedObjectRep ) );
+                       [ ] );;
 
 DeclareRepresentation( "IsWrappedMorphismRep",
                        IsCapCategoryMorphismRep,
-                       [ ] );
-
-BindGlobal( "TheTypeOfWrappedMorphisms",
-        NewType( TheFamilyOfCapCategoryMorphisms,
-                IsWrappedMorphismRep ) );
+                       [ ] );;
 
 DeclareOperation( "WrappedObject",
-                  [ IsCapCategoryObject ] );
+                  [ IsCapCategoryObject ] );;
 
 DeclareAttribute( "UnderlyingCell",
-                  IsWrappedObjectRep );
+                  IsWrappedObjectRep );;
 
 DeclareOperation( "WrappedMorphism",
-                  [ IsWrappedObjectRep, IsCapCategoryMorphism, IsWrappedObjectRep ] );
+                  [ IsWrappedObjectRep, IsCapCategoryMorphism, IsWrappedObjectRep ] );;
 
 DeclareAttribute( "UnderlyingCell",
-                  IsWrappedMorphismRep );
+                  IsWrappedMorphismRep );;
 
 
 #################################
@@ -35,11 +34,15 @@ DeclareAttribute( "UnderlyingCell",
 ##
 #################################
 
-Q := HomalgFieldOfRationals();
+Q := HomalgFieldOfRationals();;
 
-vec := MatrixCategory( Q );
+vec := MatrixCategory( Q );;
 
 wrapped_cat := CreateCapCategory( "Wrapped Category" );
+#! Wrapped Category
+
+AddObjectRepresentation( wrapped_cat, IsWrappedObjectRep );
+AddMorphismRepresentation( wrapped_cat, IsWrappedMorphismRep );
 
 #################################
 ##
@@ -51,52 +54,44 @@ InstallMethod( WrappedObject,
                [ IsCapCategoryObject ],
                
   function( obj )
-    local wrapped_obj;
     
-    wrapped_obj := ObjectifyWithAttributes( rec( ), TheTypeOfWrappedObjects,
-                                            UnderlyingCell, obj
-    );
-    
-    Add( wrapped_cat, wrapped_obj );
-    
-    return wrapped_obj;
-    
-end );
+    return ObjectifyObjectForCAPWithAttributes(
+        rec( ), wrapped_cat,
+        UnderlyingCell, obj
+    ); end );
 
 InstallMethod( WrappedMorphism,
-                  [ IsWrappedObjectRep, IsCapCategoryMorphism, IsWrappedObjectRep ],
+               [ IsWrappedObjectRep, IsCapCategoryMorphism, IsWrappedObjectRep ],
                   
   function( source, morphism, range )
-    local wrapped_morphism;
-
-    wrapped_morphism := ObjectifyWithAttributes( rec( ), TheTypeOfWrappedMorphisms,
-                                                 Source, source,
-                                                 Range, range,
-                                                 UnderlyingCell, morphism
-    );
-
-    Add( wrapped_cat, wrapped_morphism );
     
-    return wrapped_morphism;
-    
-end );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
+        rec( ), wrapped_cat,
+        Source, source,
+        Range, range,
+        UnderlyingCell, morphism
+    ); end );
 
 AddKernelEmbedding( wrapped_cat,
   function( diagram )
-    local underlying_kernel_embedding;
     
-    underlying_kernel_embedding := KernelEmbedding( UnderlyingCell( diagram ) );
-    
-    return WrappedMorphism( WrappedObject( Source( underlying_kernel_embedding ) ),
-                            underlying_kernel_embedding,
-                            Source( diagram ) );
-    
-end );
+    # avoid semicolons so AutoDoc does not start a new statement
+    return ({ underlying_kernel_embedding } ->
+        WrappedMorphism( WrappedObject( Source( underlying_kernel_embedding ) ),
+                         underlying_kernel_embedding,
+                         Source( diagram ) )
+    )(KernelEmbedding( UnderlyingCell( diagram ) )); end );
 
-Finalize( wrapped_cat );
+Finalize( wrapped_cat );;
 
 V := VectorSpaceObject( 3, Q );
+#! <A vector space object over Q of dimension 3>
 alpha := VectorSpaceMorphism( V, HomalgMatrix( [ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ], 3, 3, Q ), V );
+#! <A morphism in Category of matrices over Q>
 
 V_wrapped := WrappedObject( V );
+#! <An object in Wrapped Category>
 alpha_wrapped := WrappedMorphism( V_wrapped, alpha, V_wrapped );
+#! <A morphism in Wrapped Category>
+
+#! @EndExample

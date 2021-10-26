@@ -48,13 +48,13 @@ InternalCoHomToTensorProductAdjunctionMap := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   io_type := [ [ "a", "b", "f" ], [ "a", "t" ] ],
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 TensorProductToInternalCoHomAdjunctionMap := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   io_type := [ [ "b", "c", "g" ], [ "i", "c" ] ],
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 MonoidalPreCoComposeMorphism := rec(
   filter_list := [ "category", "object", "object", "object" ],
@@ -171,31 +171,31 @@ IsomorphismFromCoDualToInternalCoHom := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "i", "d" ] ],
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 IsomorphismFromInternalCoHomToCoDual := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "d", "i" ] ],
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 UniversalPropertyOfCoDual := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   io_type := [ [ "a", "t", "alpha" ], [ "d", "t" ] ],
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 CoLambdaIntroduction := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "u", "i" ] ],
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 CoLambdaElimination := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   io_type := [ [ "a", "b", "alpha" ], [ "a", "b" ] ],
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 IsomorphismFromObjectToInternalCoHom := rec(
   filter_list := [ "category", "object" ],
