@@ -48,13 +48,13 @@ TensorProductToInternalHomAdjunctionMap := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   io_type := [ [ "a", "b", "f" ], [ "a", "i" ] ],
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 InternalHomToTensorProductAdjunctionMap := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   io_type := [ [ "b", "c", "g" ], [ "t", "c" ] ],
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 MonoidalPreComposeMorphism := rec(
   filter_list := [ "category", "object", "object", "object" ],
@@ -171,31 +171,31 @@ IsomorphismFromInternalHomToDual := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "i", "d" ] ],
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 IsomorphismFromDualToInternalHom := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "d", "i" ] ],
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 UniversalPropertyOfDual := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   io_type := [ [ "t", "a", "alpha" ], [ "t", "d" ] ],
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 LambdaIntroduction := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "u", "i" ] ],
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 LambdaElimination := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   io_type := [ [ "a", "b", "alpha" ], [ "a", "b" ] ],
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 IsomorphismFromObjectToInternalHom := rec(
   filter_list := [ "category", "object" ],
