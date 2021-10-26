@@ -3,18 +3,9 @@ SetPackageInfo( rec(
 PackageName := "GeneralizedMorphismsForCAP",
 Subtitle := "Implementations of generalized morphisms for the CAP project",
 
-Version := Maximum( [
-  "2017.12-30", ## Sebas' version
-## this line prevents merge conflicts
-  "2020.04-16", ## Sepp's version
-## this line prevents merge conflicts
-  "2020.04-29", ## Mohamed's version
-## this line prevents merge conflicts
-  "2021.05-01", ## Fabian's version
-## this line prevents merge conflicts
-   ] ),
+Version := "2021.10-01",
 
-Date := "15/05/2021",
+Date := "26/10/2021",
 License := "GPL-2.0-or-later",
 
 
