@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>GAP (AttributeCategoryForCAP) - Chapter 2: Examples and tests</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="GAPDoc2HTML" />
+<link rel="stylesheet" type="text/css" href="manual.css" />
+<script src="manual.js" type="text/javascript"></script>
+<script type="text/javascript">overwriteStyle();</script>
+</head>
+<body class="chap2"  onload="jscontent()">
+
+
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+
+<p id="mathjaxlink" class="pcenter"><a href="chap2_mj.html">[MathJax on]</a></p>
+<p><a id="X7967FE8E7BBDF485" name="X7967FE8E7BBDF485"></a></p>
+<div class="ChapSects"><a href="chap2.html#X7967FE8E7BBDF485">2 <span class="Heading">Examples and tests</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7A810CDA83F2897F">2.1 <span class="Heading">Tests</span></a>
+</span>
+</div>
+</div>
+
+<h3>2 <span class="Heading">Examples and tests</span></h3>
+
+<p><a id="X7A810CDA83F2897F" name="X7A810CDA83F2897F"></a></p>
+
+<h4>2.1 <span class="Heading">Tests</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## As an example for the usage of the attribute category,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">## we install the category of pairs ( A, alpha: A -&gt; A )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">## consisting of an object equipped with an endomorphism.</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"></span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">LoadPackage( "AttributeCategoryForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#################################</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"></span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">## Note: This filter implies IsCategoryWithAttributesObject</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">DeclareCategory( "IsObjectWithEndomorphism",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                 IsCategoryWithAttributesObject );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DeclareRepresentation( "IsObjectWithEndomorphismRep",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                       IsObjectWithEndomorphism and IsAttributeStoringRep,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                       [ ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BindGlobal( "TheFamilyOfObjectsWithEndomorphism",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        NewFamily( "TheFamilyOfObjectsWithEndomorphism" ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BindGlobal( "TheTypeOfObjectsWithEndomorphism",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        NewType( TheFamilyOfObjectsWithEndomorphism,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                IsObjectWithEndomorphismRep ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## Note: This filter implies IsCategoryWithAttributesMorphism</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">DeclareCategory( "IsMorphismOfObjectsWithEndomorphism",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                 IsCategoryWithAttributesMorphism );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DeclareRepresentation( "IsMorphismOfObjectsWithEndomorphismRep",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                       IsMorphismOfObjectsWithEndomorphism and IsAttributeStoringRep,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                       [ ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BindGlobal( "TheFamilyOfMorphismsOfObjectsWithEndomorphism",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        NewFamily( "TheFamilyOfMorphismsOfObjectsWithEndomorphism" ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BindGlobal( "TheTypeOfMorphismsOfObjectsWithEndomorphism",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        NewType( TheFamilyOfMorphismsOfObjectsWithEndomorphism,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                IsMorphismOfObjectsWithEndomorphismRep ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#################################</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"></span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">underlying_category := MatrixCategory( Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## We create a "void" CapCategory here and set its properties (abelian, monoidal) in the beginning</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">category_of_objects_with_endomorphism := CreateCapCategory( "Category of objects with endomorphisms" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIsAbelianCategory( category_of_objects_with_endomorphism, true );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIsRigidSymmetricClosedMonoidalCategory( category_of_objects_with_endomorphism, true );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIsStrictMonoidalCategory( category_of_objects_with_endomorphism, true );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## This record will be the input of the function that enhances underlying_category with attributes</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">structure_record := rec(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      underlying_category := underlying_category,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      category_with_attributes := category_of_objects_with_endomorphism</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## We can give the types of objects and morphisms to the structure_record.</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">## In this case, object and morphism constructors will automatically be generated.</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">## Alternatively, you can provide your own constructors via</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">## structure_record.ObjectConstructor and structure_record.MorphismConstructor.</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">## Note: If you provide your own object constructor,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">## you have to set the attributes UnderlyingCell, ObjectAttributesAsList, and UnderlyingCategory.</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">## If you write your own morphism constructor,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">## you have to set the attributes UnderlyingCell, and UnderlyingCategory</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">structure_record.object_type := TheTypeOfObjectsWithEndomorphism;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">structure_record.morphism_type := TheTypeOfMorphismsOfObjectsWithEndomorphism;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## This is the mathematical core: provide the functions that enhance objects with attributes</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">structure_record.ZeroObject :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( underlying_zero_object )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      return [ ZeroMorphism( underlying_zero_object, underlying_zero_object ) ]; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">structure_record.DirectSum :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( obj_list, underlying_direct_sum )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      return [ DirectSumFunctorial( List( obj_list, obj -&gt; ObjectAttributesAsList( obj )[1] ) ) ]; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">structure_record.Lift :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( mono, range )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      return [ LiftAlongMonomorphism( mono, PreCompose( mono, ObjectAttributesAsList( range )[1] ) ) ]; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">structure_record.Colift :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( epi, source )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      return [ ColiftAlongEpimorphism( epi, PreCompose( ObjectAttributesAsList( source )[1], epi ) ) ]; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">structure_record.TensorUnit :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( underlying_tensor_unit )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      return [ IdentityMorphism( underlying_tensor_unit ) ]; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">structure_record.TensorProductOnObjects :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( object1, object2, underlying_tensor_product )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      return [ TensorProductOnMorphisms( ObjectAttributesAsList( object1 )[1], ObjectAttributesAsList( object2 )[1] ) ]; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">structure_record.DualOnObjects :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( object, dual_object )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      return [ DualOnMorphisms( ObjectAttributesAsList( object )[1] ) ]; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## In this particular example, this function would be not necessary since it can be </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">## derived from the rigidity of the category</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">structure_record.InternalHomOnObjects :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( object1, object2, underlying_internal_hom )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      return [ TensorProductOnMorphisms( DualOnMorphisms( ObjectAttributesAsList( object1 )[1] ), </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">               ObjectAttributesAsList( object2 )[1] ) ]; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">structure_record.NoInstallList := [ "Lift", "Colift" ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">structure_record.InstallList := [ "LiftAlongMonomorphism", "ColiftAlongEpimorphism" ];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## This function installs all the primitive functions for the category_of_objects_with_endomorphism.</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">triple := EnhancementWithAttributes( structure_record );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## EnhancementWithAttributes alters category_of_objects_with_endomorphism as a side effect:</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">IsIdenticalObj( category_of_objects_with_endomorphism, triple[1] );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">object_constructor := triple[2];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morphism_constructor := triple[3];;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## Install equality/ congruence functions manually since they cannot be deduced automatically</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">AddIsEqualForObjects( category_of_objects_with_endomorphism,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( object1, object2 )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return IsEqualForObjects( UnderlyingCell( object1 ), UnderlyingCell( object2 ) )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">           and IsCongruentForMorphisms( ObjectAttributesAsList( object1 )[1], ObjectAttributesAsList( object2 )[1] ); end );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AddIsEqualForMorphisms( category_of_objects_with_endomorphism,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  function( morphism1, morphism2 )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return IsCongruentForMorphisms( UnderlyingCell( morphism1 ), UnderlyingCell( morphism2 ) ); end );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## Finalize the category</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">Finalize( category_of_objects_with_endomorphism );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##############################</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"></span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">## Example computations</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"></span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">V := VectorSpaceObject( 2, Q );</span>
+&lt;A vector space object over Q of dimension 2&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">endo := VectorSpaceMorphism( V, HomalgMatrix( [ [ 0, 1 ], [ 1, 0 ] ], 2, 2, Q ), V );</span>
+&lt;A morphism in Category of matrices over Q&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Vendo := object_constructor( V, [ endo ] );</span>
+&lt;An object in Category of objects with endomorphisms&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( endo, ObjectAttributesAsList( Vendo )[1] );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := Braiding( Vendo, Vendo );</span>
+&lt;A morphism in Category of objects with endomorphisms&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Fendo := FiberProduct( [ beta, IdentityMorphism( TensorProductOnObjects( Vendo, Vendo ) ) ] );</span>
+&lt;An object in Category of objects with endomorphisms&gt;
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chapInd.html">Ind</a>  </div>
+
+<hr />
+<p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>
+</body>
+</html>

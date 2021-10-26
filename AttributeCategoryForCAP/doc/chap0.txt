@@ -6,10 +6,10 @@
            [1X Automatic enhancement with attributes of a CAP category [101X
   
   
-                                   2021.08-01
+                                   2021.10-01
   
   
-                               30 September 2021
+                                26 October 2021
   
   
                                 Sebastian Posur
@@ -40,6 +40,8 @@
   1 [33X[0;0YAttribute Category[133X
     1.1 [33X[0;0YGAP Category[133X
       1.1-1 IsCategoryWithAttributesObject
+  2 [33X[0;0YExamples and tests[133X
+    2.1 [33X[0;0YTests[133X
   
   
   [32X

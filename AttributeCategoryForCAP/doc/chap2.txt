@@ -1,0 +1,138 @@
+  
+  [1X2 [33X[0;0YExamples and tests[133X[101X
+  
+  
+  [1X2.1 [33X[0;0YTests[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27X## As an example for the usage of the attribute category,[127X[104X
+    [4X[25X>[125X [27X## we install the category of pairs ( A, alpha: A -> A )[127X[104X
+    [4X[25X>[125X [27X## consisting of an object equipped with an endomorphism.[127X[104X
+    [4X[25X>[125X [27X[127X[104X
+    [4X[25X>[125X [27XLoadPackage( "AttributeCategoryForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X#################################[127X[104X
+    [4X[25X>[125X [27X[127X[104X
+    [4X[25X>[125X [27X## Note: This filter implies IsCategoryWithAttributesObject[127X[104X
+    [4X[25X>[125X [27XDeclareCategory( "IsObjectWithEndomorphism",[127X[104X
+    [4X[25X>[125X [27X                 IsCategoryWithAttributesObject );;[127X[104X
+    [4X[25Xgap>[125X [27XDeclareRepresentation( "IsObjectWithEndomorphismRep",[127X[104X
+    [4X[25X>[125X [27X                       IsObjectWithEndomorphism and IsAttributeStoringRep,[127X[104X
+    [4X[25X>[125X [27X                       [ ] );;[127X[104X
+    [4X[25Xgap>[125X [27XBindGlobal( "TheFamilyOfObjectsWithEndomorphism",[127X[104X
+    [4X[25X>[125X [27X        NewFamily( "TheFamilyOfObjectsWithEndomorphism" ) );;[127X[104X
+    [4X[25Xgap>[125X [27XBindGlobal( "TheTypeOfObjectsWithEndomorphism",[127X[104X
+    [4X[25X>[125X [27X        NewType( TheFamilyOfObjectsWithEndomorphism,[127X[104X
+    [4X[25X>[125X [27X                IsObjectWithEndomorphismRep ) );;[127X[104X
+    [4X[25Xgap>[125X [27X## Note: This filter implies IsCategoryWithAttributesMorphism[127X[104X
+    [4X[25X>[125X [27XDeclareCategory( "IsMorphismOfObjectsWithEndomorphism",[127X[104X
+    [4X[25X>[125X [27X                 IsCategoryWithAttributesMorphism );;[127X[104X
+    [4X[25Xgap>[125X [27XDeclareRepresentation( "IsMorphismOfObjectsWithEndomorphismRep",[127X[104X
+    [4X[25X>[125X [27X                       IsMorphismOfObjectsWithEndomorphism and IsAttributeStoringRep,[127X[104X
+    [4X[25X>[125X [27X                       [ ] );;[127X[104X
+    [4X[25Xgap>[125X [27XBindGlobal( "TheFamilyOfMorphismsOfObjectsWithEndomorphism",[127X[104X
+    [4X[25X>[125X [27X        NewFamily( "TheFamilyOfMorphismsOfObjectsWithEndomorphism" ) );;[127X[104X
+    [4X[25Xgap>[125X [27XBindGlobal( "TheTypeOfMorphismsOfObjectsWithEndomorphism",[127X[104X
+    [4X[25X>[125X [27X        NewType( TheFamilyOfMorphismsOfObjectsWithEndomorphism,[127X[104X
+    [4X[25X>[125X [27X                IsMorphismOfObjectsWithEndomorphismRep ) );;[127X[104X
+    [4X[25Xgap>[125X [27X#################################[127X[104X
+    [4X[25X>[125X [27X[127X[104X
+    [4X[25X>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
+    [4X[25Xgap>[125X [27Xunderlying_category := MatrixCategory( Q );;[127X[104X
+    [4X[25Xgap>[125X [27X## We create a "void" CapCategory here and set its properties (abelian, monoidal) in the beginning[127X[104X
+    [4X[25X>[125X [27Xcategory_of_objects_with_endomorphism := CreateCapCategory( "Category of objects with endomorphisms" );;[127X[104X
+    [4X[25Xgap>[125X [27XSetIsAbelianCategory( category_of_objects_with_endomorphism, true );;[127X[104X
+    [4X[25Xgap>[125X [27XSetIsRigidSymmetricClosedMonoidalCategory( category_of_objects_with_endomorphism, true );;[127X[104X
+    [4X[25Xgap>[125X [27XSetIsStrictMonoidalCategory( category_of_objects_with_endomorphism, true );;[127X[104X
+    [4X[25Xgap>[125X [27X## This record will be the input of the function that enhances underlying_category with attributes[127X[104X
+    [4X[25X>[125X [27Xstructure_record := rec([127X[104X
+    [4X[25X>[125X [27X      underlying_category := underlying_category,[127X[104X
+    [4X[25X>[125X [27X      category_with_attributes := category_of_objects_with_endomorphism[127X[104X
+    [4X[25X>[125X [27X    );;[127X[104X
+    [4X[25Xgap>[125X [27X## We can give the types of objects and morphisms to the structure_record.[127X[104X
+    [4X[25X>[125X [27X## In this case, object and morphism constructors will automatically be generated.[127X[104X
+    [4X[25X>[125X [27X## Alternatively, you can provide your own constructors via[127X[104X
+    [4X[25X>[125X [27X## structure_record.ObjectConstructor and structure_record.MorphismConstructor.[127X[104X
+    [4X[25X>[125X [27X## Note: If you provide your own object constructor,[127X[104X
+    [4X[25X>[125X [27X## you have to set the attributes UnderlyingCell, ObjectAttributesAsList, and UnderlyingCategory.[127X[104X
+    [4X[25X>[125X [27X## If you write your own morphism constructor,[127X[104X
+    [4X[25X>[125X [27X## you have to set the attributes UnderlyingCell, and UnderlyingCategory[127X[104X
+    [4X[25X>[125X [27Xstructure_record.object_type := TheTypeOfObjectsWithEndomorphism;;[127X[104X
+    [4X[25Xgap>[125X [27Xstructure_record.morphism_type := TheTypeOfMorphismsOfObjectsWithEndomorphism;;[127X[104X
+    [4X[25Xgap>[125X [27X## This is the mathematical core: provide the functions that enhance objects with attributes[127X[104X
+    [4X[25X>[125X [27Xstructure_record.ZeroObject :=[127X[104X
+    [4X[25X>[125X [27X  function( underlying_zero_object )[127X[104X
+    [4X[25X>[125X [27X      [127X[104X
+    [4X[25X>[125X [27X      return [ ZeroMorphism( underlying_zero_object, underlying_zero_object ) ]; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xstructure_record.DirectSum :=[127X[104X
+    [4X[25X>[125X [27X  function( obj_list, underlying_direct_sum )[127X[104X
+    [4X[25X>[125X [27X      [127X[104X
+    [4X[25X>[125X [27X      return [ DirectSumFunctorial( List( obj_list, obj -> ObjectAttributesAsList( obj )[1] ) ) ]; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xstructure_record.Lift :=[127X[104X
+    [4X[25X>[125X [27X  function( mono, range )[127X[104X
+    [4X[25X>[125X [27X      [127X[104X
+    [4X[25X>[125X [27X      return [ LiftAlongMonomorphism( mono, PreCompose( mono, ObjectAttributesAsList( range )[1] ) ) ]; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xstructure_record.Colift :=[127X[104X
+    [4X[25X>[125X [27X  function( epi, source )[127X[104X
+    [4X[25X>[125X [27X      [127X[104X
+    [4X[25X>[125X [27X      return [ ColiftAlongEpimorphism( epi, PreCompose( ObjectAttributesAsList( source )[1], epi ) ) ]; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xstructure_record.TensorUnit :=[127X[104X
+    [4X[25X>[125X [27X  function( underlying_tensor_unit )[127X[104X
+    [4X[25X>[125X [27X      [127X[104X
+    [4X[25X>[125X [27X      return [ IdentityMorphism( underlying_tensor_unit ) ]; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xstructure_record.TensorProductOnObjects :=[127X[104X
+    [4X[25X>[125X [27X  function( object1, object2, underlying_tensor_product )[127X[104X
+    [4X[25X>[125X [27X      [127X[104X
+    [4X[25X>[125X [27X      return [ TensorProductOnMorphisms( ObjectAttributesAsList( object1 )[1], ObjectAttributesAsList( object2 )[1] ) ]; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xstructure_record.DualOnObjects :=[127X[104X
+    [4X[25X>[125X [27X  function( object, dual_object )[127X[104X
+    [4X[25X>[125X [27X      [127X[104X
+    [4X[25X>[125X [27X      return [ DualOnMorphisms( ObjectAttributesAsList( object )[1] ) ]; end;;[127X[104X
+    [4X[25Xgap>[125X [27X## In this particular example, this function would be not necessary since it can be [127X[104X
+    [4X[25X>[125X [27X## derived from the rigidity of the category[127X[104X
+    [4X[25X>[125X [27Xstructure_record.InternalHomOnObjects :=[127X[104X
+    [4X[25X>[125X [27X  function( object1, object2, underlying_internal_hom )[127X[104X
+    [4X[25X>[125X [27X      [127X[104X
+    [4X[25X>[125X [27X      return [ TensorProductOnMorphisms( DualOnMorphisms( ObjectAttributesAsList( object1 )[1] ), [127X[104X
+    [4X[25X>[125X [27X               ObjectAttributesAsList( object2 )[1] ) ]; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xstructure_record.NoInstallList := [ "Lift", "Colift" ];;[127X[104X
+    [4X[25Xgap>[125X [27Xstructure_record.InstallList := [ "LiftAlongMonomorphism", "ColiftAlongEpimorphism" ];;[127X[104X
+    [4X[25Xgap>[125X [27X## This function installs all the primitive functions for the category_of_objects_with_endomorphism.[127X[104X
+    [4X[25X>[125X [27Xtriple := EnhancementWithAttributes( structure_record );;[127X[104X
+    [4X[25Xgap>[125X [27X## EnhancementWithAttributes alters category_of_objects_with_endomorphism as a side effect:[127X[104X
+    [4X[25X>[125X [27XIsIdenticalObj( category_of_objects_with_endomorphism, triple[1] );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xobject_constructor := triple[2];;[127X[104X
+    [4X[25Xgap>[125X [27Xmorphism_constructor := triple[3];;[127X[104X
+    [4X[25Xgap>[125X [27X## Install equality/ congruence functions manually since they cannot be deduced automatically[127X[104X
+    [4X[25X>[125X [27XAddIsEqualForObjects( category_of_objects_with_endomorphism,[127X[104X
+    [4X[25X>[125X [27X  function( object1, object2 )[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    return IsEqualForObjects( UnderlyingCell( object1 ), UnderlyingCell( object2 ) )[127X[104X
+    [4X[25X>[125X [27X           and IsCongruentForMorphisms( ObjectAttributesAsList( object1 )[1], ObjectAttributesAsList( object2 )[1] ); end );;[127X[104X
+    [4X[25Xgap>[125X [27XAddIsEqualForMorphisms( category_of_objects_with_endomorphism,[127X[104X
+    [4X[25X>[125X [27X  function( morphism1, morphism2 )[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    return IsCongruentForMorphisms( UnderlyingCell( morphism1 ), UnderlyingCell( morphism2 ) ); end );;[127X[104X
+    [4X[25Xgap>[125X [27X## Finalize the category[127X[104X
+    [4X[25X>[125X [27XFinalize( category_of_objects_with_endomorphism );;[127X[104X
+    [4X[25Xgap>[125X [27X##############################[127X[104X
+    [4X[25X>[125X [27X[127X[104X
+    [4X[25X>[125X [27X## Example computations[127X[104X
+    [4X[25X>[125X [27X[127X[104X
+    [4X[25X>[125X [27XV := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27Xendo := VectorSpaceMorphism( V, HomalgMatrix( [ [ 0, 1 ], [ 1, 0 ] ], 2, 2, Q ), V );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27XVendo := object_constructor( V, [ endo ] );[127X[104X
+    [4X[28X<An object in Category of objects with endomorphisms>[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( endo, ObjectAttributesAsList( Vendo )[1] );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xbeta := Braiding( Vendo, Vendo );[127X[104X
+    [4X[28X<A morphism in Category of objects with endomorphisms>[128X[104X
+    [4X[25Xgap>[125X [27XFendo := FiberProduct( [ beta, IdentityMorphism( TensorProductOnObjects( Vendo, Vendo ) ) ] );[127X[104X
+    [4X[28X<An object in Category of objects with endomorphisms>[128X[104X
+  [4X[32X[104X
+  
