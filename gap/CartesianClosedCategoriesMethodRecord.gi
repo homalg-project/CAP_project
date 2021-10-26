@@ -44,7 +44,7 @@ DirectProductToExponentialAdjunctionMap := rec(
   io_type := [ [ "a", "b", "f" ], [ "a", "i" ] ],
   cache_name := "DirectProductToExponentialAdjunctionMap",
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 ExponentialToDirectProductAdjunctionMap := rec(
   installation_name := "ExponentialToDirectProductAdjunctionMap",
@@ -52,7 +52,7 @@ ExponentialToDirectProductAdjunctionMap := rec(
   io_type := [ [ "b", "c", "g" ], [ "t", "c" ] ],
   cache_name := "ExponentialToDirectProductAdjunctionMap",
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 CartesianPreComposeMorphismWithGivenObjects := rec(
   installation_name := "CartesianPreComposeMorphismWithGivenObjects",
@@ -122,7 +122,7 @@ IsomorphismFromExponentialToCartesianDual := rec(
   io_type := [ [ "a" ], [ "i", "d" ] ],
   cache_name := "IsomorphismFromExponentialToCartesianDual",
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 IsomorphismFromCartesianDualToExponential := rec(
   installation_name := "IsomorphismFromCartesianDualToExponential",
@@ -130,7 +130,7 @@ IsomorphismFromCartesianDualToExponential := rec(
   io_type := [ [ "a" ], [ "d", "i" ] ],
   cache_name := "IsomorphismFromCartesianDualToExponential",
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 UniversalPropertyOfCartesianDual := rec(
   installation_name := "UniversalPropertyOfCartesianDual",
@@ -138,7 +138,7 @@ UniversalPropertyOfCartesianDual := rec(
   io_type := [ [ "t", "a", "alpha" ], [ "t", "d" ] ],
   cache_name := "UniversalPropertyOfCartesianDual",
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 CartesianLambdaIntroduction := rec(
   installation_name := "CartesianLambdaIntroduction",
@@ -146,7 +146,7 @@ CartesianLambdaIntroduction := rec(
   io_type := [ [ "alpha" ], [ "u", "i" ] ],
   cache_name := "CartesianLambdaIntroduction",
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 CartesianLambdaElimination := rec(
   installation_name := "CartesianLambdaElimination",
@@ -154,7 +154,7 @@ CartesianLambdaElimination := rec(
   io_type := [ [ "a", "b", "alpha" ], [ "a", "b" ] ],
   cache_name := "CartesianLambdaElimination",
   return_type := "morphism",
-  no_with_given := true ),
+),
 
 IsomorphismFromObjectToExponentialWithGivenExponential := rec(
   installation_name := "IsomorphismFromObjectToExponentialWithGivenExponential",
