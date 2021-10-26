@@ -172,10 +172,10 @@ Display( compiled_func );
 #!     else
 #!         cap_jit_hoisted_expression_1_1 := x_1 + 1;
 #!         return function ( y_2 )
-#!               local cap_jit_hoisted_expression_2_2;
-#!               cap_jit_hoisted_expression_2_2 := y_2 + 1;
+#!               local cap_jit_hoisted_expression_1_2;
+#!               cap_jit_hoisted_expression_1_2 := y_2 + 1;
 #!               return [ cap_jit_hoisted_expression_1_1, function ( z_3 )
-#!                         return cap_jit_hoisted_expression_2_2;
+#!                         return cap_jit_hoisted_expression_1_2;
 #!                     end ];
 #!           end;
 #!     fi;
@@ -194,10 +194,10 @@ Display( compiled_func );
 #!     if x_1 < 0 then
 #!         cap_jit_hoisted_expression_1_1 := x_1 + 1;
 #!         return function ( y_2 )
-#!               local cap_jit_hoisted_expression_2_2;
-#!               cap_jit_hoisted_expression_2_2 := y_2 + 1;
+#!               local cap_jit_hoisted_expression_1_2;
+#!               cap_jit_hoisted_expression_1_2 := y_2 + 1;
 #!               return [ cap_jit_hoisted_expression_1_1, function ( z_3 )
-#!                         return cap_jit_hoisted_expression_2_2;
+#!                         return cap_jit_hoisted_expression_1_2;
 #!                     end ];
 #!           end;
 #!     else

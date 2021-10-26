@@ -4,7 +4,7 @@
 # Implementations
 #
 InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
-  local expressions_to_hoist, pre_func, result_func, additional_arguments_func, HOISTED_VARIABLE_ID;
+  local expressions_to_hoist, pre_func, result_func, additional_arguments_func;
     
     # functions and hoisted variables will be modified inline
     tree := StructuralCopy( tree );
@@ -104,11 +104,9 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
     # populate `expressions_to_hoist`
     CapJitIterateOverTree( tree, pre_func, result_func, additional_arguments_func, [ ] );
     
-    HOISTED_VARIABLE_ID := 1;
-    
     # now actually hoist the expressions
     pre_func := function ( tree, additional_arguments )
-      local info, parent, key, expr, new_variable_name, to_delete, info2, i;
+      local info, parent, key, expr, id, new_variable_name, to_delete, info2, i;
         
         if tree.type = "EXPR_DECLARATIVE_FUNC" and IsBound( expressions_to_hoist[tree.id] ) then
             
@@ -120,8 +118,15 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
                 key := info.key;
                 expr := parent.(key);
                 
-                new_variable_name := Concatenation( "cap_jit_hoisted_expression_", String( HOISTED_VARIABLE_ID ) );
-                HOISTED_VARIABLE_ID := HOISTED_VARIABLE_ID + 1;
+                # search for an unused id
+                id := 0;
+                repeat
+                    
+                    id := id + 1;
+                    
+                    new_variable_name := Concatenation( "cap_jit_hoisted_expression_", String( id ) );
+                    
+                until not new_variable_name in tree.nams;
                 
                 tree.nams := Concatenation( tree.nams, [ new_variable_name ] );
                 
