@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # ActionsForCAP: Actions and Coactions for CAP
 #
 # This file contains package meta data. For additional information on
@@ -11,17 +11,9 @@ SetPackageInfo( rec(
 PackageName := "ActionsForCAP",
 Subtitle := "Actions and Coactions for CAP",
 
-Version := Maximum( [
-  "2019.09-16", ## Mohamed's version
-  ## this line prevents merge conflicts
-  "2015.08-19", ## Sebas' version
-  ## this line prevents merge conflicts
-  "2017.01-11", ## Sepp's version
-  ## this line prevents merge conflicts
-  "2020.10-01", ## Fabian's version
-] ),
+Version := "2021.10-01",
 
-Date := "19/10/2020",
+Date := "26/10/2021",
 License := "GPL-2.0-or-later",
 
 
@@ -59,7 +51,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/ActionsForCAP",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/ActionsForCAP",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/ActionsForCAP/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/ActionsForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ActionsForCAP-", ~.Version, "/ActionsForCAP-", ~.Version ),

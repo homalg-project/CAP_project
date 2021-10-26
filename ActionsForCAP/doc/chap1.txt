@@ -1,0 +1,376 @@
+  
+  [1X1 [33X[0;0YExamples and tests[133X[101X
+  
+  
+  [1X1.1 [33X[0;0YTests[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "ActionsForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MatrixCategory( Q );;[127X[104X
+    [4X[25Xgap>[125X [27Xu := TensorUnit( vec );;[127X[104X
+    [4X[25Xgap>[125X [27Xcat := LeftActionsCategory( u );[127X[104X
+    [4X[28XCategory of left actions of <A vector space object over Q of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27XV := VectorSpaceObject( 2, Q );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := VectorSpaceMorphism( TensorProductOnObjects( u, V ), HomalgMatrix( [ [ 0, 1 ], [ -1, 0 ] ], 2, 2, Q ), V );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "ActionsForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X## Category and Type of Objects[127X[104X
+    [4X[25X>[125X [27X##[127X[104X
+    [4X[25X>[125X [27XDeclareCategory( "IsObjectWithEndo",[127X[104X
+    [4X[25X>[125X [27X                 IsCategoryWithAttributesObject );;[127X[104X
+    [4X[25Xgap>[125X [27XDeclareRepresentation( "IsObjectWithEndoRep",[127X[104X
+    [4X[25X>[125X [27X                       IsObjectWithEndo and IsAttributeStoringRep,[127X[104X
+    [4X[25X>[125X [27X                       [ ] );;[127X[104X
+    [4X[25Xgap>[125X [27XBindGlobal( "TheFamilyOfObjectsWithEndo",[127X[104X
+    [4X[25X>[125X [27X            NewFamily( "TheFamilyOfObjectsWithEndo" ) );;[127X[104X
+    [4X[25Xgap>[125X [27XBindGlobal( "TheTypeOfObjectsWithEndo",[127X[104X
+    [4X[25X>[125X [27X            NewType( TheFamilyOfObjectsWithEndo,[127X[104X
+    [4X[25X>[125X [27X                     IsObjectWithEndoRep ) );;[127X[104X
+    [4X[25Xgap>[125X [27X## Category and Type of Morphisms[127X[104X
+    [4X[25X>[125X [27X##[127X[104X
+    [4X[25X>[125X [27XDeclareCategory( "IsMorphismWithEndo",[127X[104X
+    [4X[25X>[125X [27X                 IsCategoryWithAttributesMorphism );;[127X[104X
+    [4X[25Xgap>[125X [27XDeclareRepresentation( "IsMorphismWithEndoRep",[127X[104X
+    [4X[25X>[125X [27X                       IsMorphismWithEndo and IsAttributeStoringRep,[127X[104X
+    [4X[25X>[125X [27X                       [ ] );;[127X[104X
+    [4X[25Xgap>[125X [27XBindGlobal( "TheFamilyOfMorphismsWithEndo",[127X[104X
+    [4X[25X>[125X [27X            NewFamily( "TheFamilyOfMorphismsWithEndo" ) );;[127X[104X
+    [4X[25Xgap>[125X [27XBindGlobal( "TheTypeOfMorphismsWithEndo",[127X[104X
+    [4X[25X>[125X [27X            NewType( TheFamilyOfMorphismsWithEndo,[127X[104X
+    [4X[25X>[125X [27X                     IsMorphismWithEndoRep ) );;[127X[104X
+    [4X[25Xgap>[125X [27X##[127X[104X
+    [4X[25X>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MatrixCategory( Q );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_with_endo_record := rec( );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_with_endo_record.underlying_category := vec;;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_with_endo_record.object_type := TheTypeOfObjectsWithEndo;;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_with_endo_record.morphism_type := TheTypeOfMorphismsWithEndo;;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_with_endo_record.ZeroObject :=[127X[104X
+    [4X[25X>[125X [27X    function( zero_object )[127X[104X
+    [4X[25X>[125X [27X      [127X[104X
+    [4X[25X>[125X [27X      return [ IdentityMorphism( zero_object ) ]; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_with_endo_record.DirectSum :=[127X[104X
+    [4X[25X>[125X [27X    function( obj_list, underlying_direct_sum )[127X[104X
+    [4X[25X>[125X [27X      [127X[104X
+    [4X[25X>[125X [27X      return [ DirectSumFunctorial( List( obj_list, obj -> ObjectAttributesAsList( obj )[1] ) ) ]; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_with_endo_record.Lift :=[127X[104X
+    [4X[25X>[125X [27X    function( mono, range )[127X[104X
+    [4X[25X>[125X [27X      [127X[104X
+    [4X[25X>[125X [27X      return [ LiftAlongMonomorphism( mono,  PreCompose( mono, ObjectAttributesAsList( range )[1] ) ) ]; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_with_endo_record.Colift :=[127X[104X
+    [4X[25X>[125X [27X    function( epi, source )[127X[104X
+    [4X[25X>[125X [27X      [127X[104X
+    [4X[25X>[125X [27X      return [ ColiftAlongEpimorphism( epi, PreCompose( ObjectAttributesAsList( source )[1], epi ) ) ]; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_with_endo_record.TensorProductOnObjects :=[127X[104X
+    [4X[25X>[125X [27X    function( obj1, obj2, underlying_tensor_product )[127X[104X
+    [4X[25X>[125X [27X      [127X[104X
+    [4X[25X>[125X [27X      return [ TensorProductOnMorphisms( ObjectAttributesAsList( obj1 )[1], ObjectAttributesAsList( obj2 )[1] ) ]; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_with_endo_record.TensorUnit :=[127X[104X
+    [4X[25X>[125X [27X    function( unit )[127X[104X
+    [4X[25X>[125X [27X      [127X[104X
+    [4X[25X>[125X [27X      return [ IdentityMorphism( unit ) ]; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtriple := EnhancementWithAttributes( category_with_endo_record );;[127X[104X
+    [4X[25Xgap>[125X [27Xendo_cat := triple[1];[127X[104X
+    [4X[28XCategory with attributes of Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27X## not finalized yet[127X[104X
+    [4X[25X>[125X [27XObjConstr := triple[2];[127X[104X
+    [4X[28Xfunction( object, attributes ) ... end[128X[104X
+    [4X[25Xgap>[125X [27XV := VectorSpaceObject( 3, Q );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27XendV := IdentityMorphism( V );[127X[104X
+    [4X[28X<An identity morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27XVwithEndo := ObjConstr( V, [ endV ] );[127X[104X
+    [4X[28X<An object in Category with attributes of Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27XMorConstr := triple[3];[127X[104X
+    [4X[28Xfunction( source, morphism, range ) ... end[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := MorConstr( VwithEndo, VectorSpaceMorphism( V, HomalgMatrix( [ [ 1, -1, 1 ], [ 1, 1, 1 ], [ 0, 0 , 0 ] ], 3, 3, Q ), V ), VwithEndo );[127X[104X
+    [4X[28X<A morphism in Category with attributes of Category of matrices over Q>[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "ModulePresentationsForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "HomologicalAlgebraForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "RingsForHomalg", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "IO_ForHomalg", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "ActionsForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XHOMALG_IO.show_banners := false;;[127X[104X
+    [4X[25Xgap>[125X [27X##[127X[104X
+    [4X[25X>[125X [27X## Category and Type of Objects[127X[104X
+    [4X[25X>[125X [27X##[127X[104X
+    [4X[25X>[125X [27XDeclareCategory( "IsModuleWithAttribute",[127X[104X
+    [4X[25X>[125X [27X                 IsCategoryWithAttributesObject );;[127X[104X
+    [4X[25Xgap>[125X [27XDeclareRepresentation( "IsModuleWithAttributeRep",[127X[104X
+    [4X[25X>[125X [27X                       IsModuleWithAttribute and IsAttributeStoringRep,[127X[104X
+    [4X[25X>[125X [27X                       [ ] );;[127X[104X
+    [4X[25Xgap>[125X [27XBindGlobal( "TheFamilyOfModulesWithAttribute",[127X[104X
+    [4X[25X>[125X [27X            NewFamily( "TheFamilyOfModulesWithAttribute" ) );;[127X[104X
+    [4X[25Xgap>[125X [27XBindGlobal( "TheTypeOfModulesWithAttribute",[127X[104X
+    [4X[25X>[125X [27X            NewType( TheFamilyOfModulesWithAttribute,[127X[104X
+    [4X[25X>[125X [27X                     IsModuleWithAttributeRep ) );;[127X[104X
+    [4X[25Xgap>[125X [27X## Category and Type of Morphisms[127X[104X
+    [4X[25X>[125X [27X##[127X[104X
+    [4X[25X>[125X [27XDeclareCategory( "IsModuleMorphismWithAttribute",[127X[104X
+    [4X[25X>[125X [27X                 IsCategoryWithAttributesMorphism );;[127X[104X
+    [4X[25Xgap>[125X [27XDeclareRepresentation( "IsModuleMorphismWithAttributeRep",[127X[104X
+    [4X[25X>[125X [27X                       IsModuleMorphismWithAttribute and IsAttributeStoringRep,[127X[104X
+    [4X[25X>[125X [27X                       [ ] );;[127X[104X
+    [4X[25Xgap>[125X [27XBindGlobal( "TheFamilyOfModuleMorphismsWithAttribute",[127X[104X
+    [4X[25X>[125X [27X            NewFamily( "TheFamilyOfModuleMorphismsWithAttribute" ) );;[127X[104X
+    [4X[25Xgap>[125X [27XBindGlobal( "TheTypeOfModuleMorphismsWithAttribute",[127X[104X
+    [4X[25X>[125X [27X            NewType( TheFamilyOfModuleMorphismsWithAttribute,[127X[104X
+    [4X[25X>[125X [27X                     IsModuleMorphismWithAttributeRep ) );;[127X[104X
+    [4X[25Xgap>[125X [27X##[127X[104X
+    [4X[25X>[125X [27X[127X[104X
+    [4X[25X>[125X [27X[127X[104X
+    [4X[25X>[125X [27X[127X[104X
+    [4X[25X>[125X [27XQQ := HomalgFieldOfRationalsInSingular( );;[127X[104X
+    [4X[25Xgap>[125X [27XR := QQ * "x,y";[127X[104X
+    [4X[28XQ[x,y][128X[104X
+    [4X[25Xgap>[125X [27XSetRecursionTrapInterval( 10000 );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory := LeftPresentations( R );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_with_attributes_record := rec([127X[104X
+    [4X[25X>[125X [27X  underlying_category := category,[127X[104X
+    [4X[25X>[125X [27X  object_type := TheTypeOfModulesWithAttribute,[127X[104X
+    [4X[25X>[125X [27X  morphism_type := TheTypeOfModuleMorphismsWithAttribute,[127X[104X
+    [4X[25X>[125X [27X  [127X[104X
+    [4X[25X>[125X [27X  ZeroObject :=[127X[104X
+    [4X[25X>[125X [27X    { zero_object } -> [ "a string for indirection" ],[127X[104X
+    [4X[25X>[125X [27X  [127X[104X
+    [4X[25X>[125X [27X  DirectSum :=[127X[104X
+    [4X[25X>[125X [27X    { obj_list, underlying_direct_sum } -> [ "a string for indirection" ],[127X[104X
+    [4X[25X>[125X [27X  [127X[104X
+    [4X[25X>[125X [27X  KernelObject := [127X[104X
+    [4X[25X>[125X [27X    { diagram, underlying_kernel_object } -> [ "a string for indirection" ],[127X[104X
+    [4X[25X>[125X [27X      [127X[104X
+    [4X[25X>[125X [27X  ImageObject := [127X[104X
+    [4X[25X>[125X [27X    { diagram, underlying_image_object } -> [ "a string for indirection" ],[127X[104X
+    [4X[25X>[125X [27X      [127X[104X
+    [4X[25X>[125X [27X  FiberProduct := [127X[104X
+    [4X[25X>[125X [27X    { diagram, underlying_fiber_product } -> [ "a string for indirection" ],[127X[104X
+    [4X[25X>[125X [27X      [127X[104X
+    [4X[25X>[125X [27X  CokernelObject := [127X[104X
+    [4X[25X>[125X [27X    { diagram, underlying_cokernel_object } -> [ "a string for indirection" ],[127X[104X
+    [4X[25X>[125X [27X  [127X[104X
+    [4X[25X>[125X [27X  CoimageObject := [127X[104X
+    [4X[25X>[125X [27X    { diagram, underlying_coimage_object } -> [ "a string for indirection" ],[127X[104X
+    [4X[25X>[125X [27X  [127X[104X
+    [4X[25X>[125X [27X  Pushout := [127X[104X
+    [4X[25X>[125X [27X    { diagram, underlying_pushout_object } -> [ "a string for indirection" ],[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27Xtriple := EnhancementWithAttributes( category_with_attributes_record );;[127X[104X
+    [4X[25Xgap>[125X [27Xindirection_category := triple[1];;[127X[104X
+    [4X[25Xgap>[125X [27XSetIsAbelianCategory( indirection_category, true );;[127X[104X
+    [4X[25Xgap>[125X [27XAddIsEqualForCacheForObjects( indirection_category, IsIdenticalObj );;[127X[104X
+    [4X[25Xgap>[125X [27XAddIsEqualForObjects( indirection_category, function( obj1, obj2 ) return UnderlyingCell( obj1 ) = UnderlyingCell( obj2 ); end );;[127X[104X
+    [4X[25Xgap>[125X [27XAddIsEqualForCacheForMorphisms( indirection_category, IsIdenticalObj );;[127X[104X
+    [4X[25Xgap>[125X [27XAddIsEqualForMorphisms( indirection_category, IsIdenticalObj );;[127X[104X
+    [4X[25Xgap>[125X [27XAddIsCongruentForMorphisms( indirection_category, function( mor1, mor2 ) return UnderlyingCell( mor1 ) = UnderlyingCell( mor2 ); end );;[127X[104X
+    [4X[25Xgap>[125X [27XFinalize( indirection_category );;[127X[104X
+    [4X[25Xgap>[125X [27XObject_Constructor := triple[2];;[127X[104X
+    [4X[25Xgap>[125X [27XMorphism_Constructor := triple[3];;[127X[104X
+    [4X[25Xgap>[125X [27XS := Object_Constructor( FreeLeftPresentation( 1, R ), [ "a string for indirection" ] );[127X[104X
+    [4X[28X<An object in Category with attributes of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xobject_func := function( i ) return S; end;[127X[104X
+    [4X[28Xfunction( i ) ... end[128X[104X
+    [4X[25Xgap>[125X [27Xmorphism_func := function( i ) return IdentityMorphism( S ); end;[127X[104X
+    [4X[28Xfunction( i ) ... end[128X[104X
+    [4X[25Xgap>[125X [27XC0 := ZFunctorObjectExtendedByInitialAndIdentity( object_func, morphism_func, indirection_category, 0, 4 );[127X[104X
+    [4X[28X<An object in Functors from integers into Category with attributes of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XS2 := Object_Constructor( FreeLeftPresentation( 2, R ), [ "a string for indirection" ] );[127X[104X
+    [4X[28X<An object in Category with attributes of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XC1 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactorOfDirectSum( [ S2, S ], 1 ) ], 2 );[127X[104X
+    [4X[28X<An object in Functors from integers into Category with attributes of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XC1 := ZFunctorObjectExtendedByInitialAndIdentity( C1, 2, 3 );[127X[104X
+    [4X[28X<An object in Functors from integers into Category with attributes of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XC2 := ZFunctorObjectFromMorphismList( [ InjectionOfCofactorOfDirectSum( [ S, S ], 1 ) ], 3 );[127X[104X
+    [4X[28X<An object in Functors from integers into Category with attributes of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XC2 := ZFunctorObjectExtendedByInitialAndIdentity( C2, 3, 4 );[127X[104X
+    [4X[28X<An object in Functors from integers into Category with attributes of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta_1_3 := PresentationMorphism( UnderlyingCell( C1[3] ), HomalgMatrix( [ [ "x^2" ], [ "xy" ], [ "y^3"] ], 3, 1, R ), UnderlyingCell( C0[3] ) );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta_1_3 := Morphism_Constructor( C1[3], delta_1_3, C0[3] );[127X[104X
+    [4X[28X<A morphism in Category with attributes of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta_1_2 := PresentationMorphism( UnderlyingCell( C1[2] ), HomalgMatrix( [ [ "x^2" ], [ "xy" ] ], 2, 1, R ), UnderlyingCell( C0[2] ) );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta_1_2 := Morphism_Constructor( C1[2], delta_1_2, C0[2] );[127X[104X
+    [4X[28X<A morphism in Category with attributes of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta1 := ZFunctorMorphism( C1, [ UniversalMorphismFromInitialObject( C0[1] ), UniversalMorphismFromInitialObject( C0[1] ), delta_1_2, delta_1_3 ], 0, C0 );[127X[104X
+    [4X[28X<A morphism in Functors from integers into Category with attributes of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta1 := ZFunctorMorphismExtendedByInitialAndIdentity( delta1, 0, 3 );[127X[104X
+    [4X[28X<A morphism in Functors from integers into Category with attributes of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta1 := AsAscendingFilteredMorphism( delta1 );[127X[104X
+    [4X[28X<A morphism in Ascending filtered object category of Category with attributes of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta_2_3 := PresentationMorphism( UnderlyingCell( C2[3] ), HomalgMatrix( [ [ "y", "-x", "0" ] ], 1, 3, R ), UnderlyingCell( C1[3] ) );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta_2_3 := Morphism_Constructor( C2[3], delta_2_3, C1[3] );[127X[104X
+    [4X[28X<A morphism in Category with attributes of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta_2_4 := PresentationMorphism( UnderlyingCell( C2[4] ), HomalgMatrix( [ [ "y", "-x", "0" ], [ "0", "y^2", "-x" ] ], 2, 3, R ), UnderlyingCell( C1[4] ) );[127X[104X
+    [4X[28X<A morphism in Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta_2_4 := Morphism_Constructor( C2[4], delta_2_4, C1[4] );[127X[104X
+    [4X[28X<A morphism in Category with attributes of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta2 := ZFunctorMorphism( C2, [  UniversalMorphismFromInitialObject( C1[2] ), delta_2_3, delta_2_4 ], 2, C1 );[127X[104X
+    [4X[28X<A morphism in Functors from integers into Category with attributes of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta2 := ZFunctorMorphismExtendedByInitialAndIdentity( delta2, 2, 4 );[127X[104X
+    [4X[28X<A morphism in Functors from integers into Category with attributes of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xdelta2 := AsAscendingFilteredMorphism( delta2 );[127X[104X
+    [4X[28X<A morphism in Ascending filtered object category of Category with attributes of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XSetIsAdditiveCategory( CategoryOfAscendingFilteredObjects( indirection_category ), true );[127X[104X
+    [4X[25Xgap>[125X [27Xcomplex := ZFunctorObjectFromMorphismList( [ delta2, delta1 ], -2 );[127X[104X
+    [4X[28X<An object in Functors from integers into Ascending filtered object category of Category with attributes of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27Xcomplex := AsComplex( complex );[127X[104X
+    [4X[28X<An object in Complex category of Ascending filtered object category of Category with attributes of Category of left presentations of Q[x,y]>[128X[104X
+    [4X[25Xgap>[125X [27XLessGenFunctor := FunctorLessGeneratorsLeft( R );[127X[104X
+    [4X[28XLess generators for Category of left presentations of Q[x,y][128X[104X
+    [4X[25Xgap>[125X [27XProfileFunctionsInGlobalVariables( true );[127X[104X
+    [4X[25Xgap>[125X [27XProfileOperationsAndMethods( true );[127X[104X
+    [4X[25Xgap>[125X [27XProfileGlobalFunctions( true );[127X[104X
+    [4X[25Xgap>[125X [27X# s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 0, 0, 0 );[127X[104X
+    [4X[25Xgap>[125X [27XProfileFunctionsInGlobalVariables( false );[127X[104X
+    [4X[25Xgap>[125X [27XProfileOperationsAndMethods( false );[127X[104X
+    [4X[25Xgap>[125X [27XProfileGlobalFunctions( false );[127X[104X
+    [4X[25Xgap>[125X [27X# [127X[104X
+    [4X[25X>[125X [27X#DisplayProfile();[127X[104X
+    [4X[25Xgap>[125X [27X# [127X[104X
+    [4X[25X>[125X [27X# [127X[104X
+    [4X[25X>[125X [27X# ProfileFunctionsInGlobalVariables( true );[127X[104X
+    [4X[25Xgap>[125X [27X# ProfileOperationsAndMethods( true );[127X[104X
+    [4X[25Xgap>[125X [27X# ProfileGlobalFunctions( true );[127X[104X
+    [4X[25Xgap>[125X [27X# s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 1, 0, 0 );[127X[104X
+    [4X[25Xgap>[125X [27X# ProfileFunctionsInGlobalVariables( false );[127X[104X
+    [4X[25Xgap>[125X [27X# ProfileOperationsAndMethods( false );[127X[104X
+    [4X[25Xgap>[125X [27X# ProfileGlobalFunctions( false );[127X[104X
+    [4X[25Xgap>[125X [27X# [127X[104X
+    [4X[25X>[125X [27X# DisplayProfile();[127X[104X
+    [4X[25Xgap>[125X [27X# time;[127X[104X
+    [4X[25Xgap>[125X [27X# # <A morphism in Generalized morphism category of Category of left presentations of Q[x,y]>[127X[104X
+    [4X[25X>[125X [27X# # Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );[127X[104X
+    [4X[25Xgap>[125X [27X# # # (an empty 0 x 1 matrix)[127X[104X
+    [4X[25X>[125X [27X# s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 1, 0, 0 );[127X[104X
+    [4X[25Xgap>[125X [27X# time;[127X[104X
+    [4X[25Xgap>[125X [27X# # # <A morphism in Generalized morphism category of Category of left presentations of Q[x,y]>[127X[104X
+    [4X[25X>[125X [27X# # Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );[127X[104X
+    [4X[25Xgap>[125X [27X# # # (an empty 0 x 1 matrix)[127X[104X
+    [4X[25X>[125X [27X# s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 2, 0, 0 );[127X[104X
+    [4X[25Xgap>[125X [27X# time;[127X[104X
+    [4X[25Xgap>[125X [27X# # # <A morphism in Generalized morphism category of Category of left presentations of Q[x,y]>[127X[104X
+    [4X[25X>[125X [27X# # Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );[127X[104X
+    [4X[25Xgap>[125X [27X# # # (an empty 0 x 1 matrix)[127X[104X
+    [4X[25X>[125X [27X# s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 3, 0, 0 );[127X[104X
+    [4X[25Xgap>[125X [27X# time;[127X[104X
+    [4X[25Xgap>[125X [27X# # # <A morphism in Generalized morphism category of Category of left presentations of Q[x,y]>[127X[104X
+    [4X[25X>[125X [27X# # Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );[127X[104X
+    [4X[25Xgap>[125X [27X# # # x*y,[127X[104X
+    [4X[25X>[125X [27X# # # x^2[127X[104X
+    [4X[25X>[125X [27X# s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 4, 0, 0 );[127X[104X
+    [4X[25Xgap>[125X [27X# time;[127X[104X
+    [4X[25Xgap>[125X [27X# # # <A morphism in Generalized morphism category of Category of left presentations of Q[x,y]>[127X[104X
+    [4X[25X>[125X [27X# # Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );[127X[104X
+    [4X[25Xgap>[125X [27X# # # x*y,[127X[104X
+    [4X[25X>[125X [27X# # # x^2,[127X[104X
+    [4X[25X>[125X [27X# # # y^3[127X[104X
+    [4X[25X>[125X [27X# s := SpectralSequenceEntryOfAscendingFilteredComplex( complex, 5, 0, 0 );[127X[104X
+    [4X[25Xgap>[125X [27X# time;[127X[104X
+    [4X[25Xgap>[125X [27X# # # <A morphism in Generalized morphism category of Category of left presentations of Q[x,y]>[127X[104X
+    [4X[25X>[125X [27X# # Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, UnderlyingHonestObject( Source( s ) ) ) ) );[127X[104X
+    [4X[25Xgap>[125X [27X# # # x*y,[127X[104X
+    [4X[25X>[125X [27X# # # x^2,[127X[104X
+    [4X[25X>[125X [27X# # # y^3[127X[104X
+    [4X[25X>[125X [27X# s := SpectralSequenceDifferentialOfAscendingFilteredComplex( complex, 3, 3, -2 );[127X[104X
+    [4X[25Xgap>[125X [27X# time;[127X[104X
+    [4X[25Xgap>[125X [27X# # <A morphism in Category of left presentations of Q[x,y]>[127X[104X
+    [4X[25X>[125X [27X# Display( UnderlyingMatrix( ApplyFunctor( LessGenFunctor, s ) ) );[127X[104X
+    [4X[25Xgap>[125X [27X# # y^3[127X[104X
+    [4X[25X>[125X [27X[127X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDeclareRepresentation( "IsWrappedObjectRep",[127X[104X
+    [4X[25X>[125X [27X                       IsCapCategoryObjectRep,[127X[104X
+    [4X[25X>[125X [27X                       [ ] );;[127X[104X
+    [4X[25Xgap>[125X [27XDeclareRepresentation( "IsWrappedMorphismRep",[127X[104X
+    [4X[25X>[125X [27X                       IsCapCategoryMorphismRep,[127X[104X
+    [4X[25X>[125X [27X                       [ ] );;[127X[104X
+    [4X[25Xgap>[125X [27XDeclareOperation( "WrappedObject",[127X[104X
+    [4X[25X>[125X [27X                  [ IsCapCategoryObject ] );;[127X[104X
+    [4X[25Xgap>[125X [27XDeclareAttribute( "UnderlyingCell",[127X[104X
+    [4X[25X>[125X [27X                  IsWrappedObjectRep );;[127X[104X
+    [4X[25Xgap>[125X [27XDeclareOperation( "WrappedMorphism",[127X[104X
+    [4X[25X>[125X [27X                  [ IsWrappedObjectRep, IsCapCategoryMorphism, IsWrappedObjectRep ] );;[127X[104X
+    [4X[25Xgap>[125X [27XDeclareAttribute( "UnderlyingCell",[127X[104X
+    [4X[25X>[125X [27X                  IsWrappedMorphismRep );;[127X[104X
+    [4X[25Xgap>[125X [27X#################################[127X[104X
+    [4X[25X>[125X [27X##[127X[104X
+    [4X[25X>[125X [27X## Creation of category[127X[104X
+    [4X[25X>[125X [27X##[127X[104X
+    [4X[25X>[125X [27X#################################[127X[104X
+    [4X[25X>[125X [27X[127X[104X
+    [4X[25X>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MatrixCategory( Q );;[127X[104X
+    [4X[25Xgap>[125X [27Xwrapped_cat := CreateCapCategory( "Wrapped Category" );[127X[104X
+    [4X[28XWrapped Category[128X[104X
+    [4X[25Xgap>[125X [27XAddObjectRepresentation( wrapped_cat, IsWrappedObjectRep );[127X[104X
+    [4X[25Xgap>[125X [27XAddMorphismRepresentation( wrapped_cat, IsWrappedMorphismRep );[127X[104X
+    [4X[25Xgap>[125X [27X#################################[127X[104X
+    [4X[25X>[125X [27X##[127X[104X
+    [4X[25X>[125X [27X## Constructors for objects and morphisms[127X[104X
+    [4X[25X>[125X [27X##[127X[104X
+    [4X[25X>[125X [27X#################################[127X[104X
+    [4X[25X>[125X [27X[127X[104X
+    [4X[25X>[125X [27XInstallMethod( WrappedObject,[127X[104X
+    [4X[25X>[125X [27X               [ IsCapCategoryObject ],[127X[104X
+    [4X[25X>[125X [27X               [127X[104X
+    [4X[25X>[125X [27X  function( obj )[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    return ObjectifyObjectForCAPWithAttributes([127X[104X
+    [4X[25X>[125X [27X        rec( ), wrapped_cat,[127X[104X
+    [4X[25X>[125X [27X        UnderlyingCell, obj[127X[104X
+    [4X[25X>[125X [27X    ); end );[127X[104X
+    [4X[25Xgap>[125X [27XInstallMethod( WrappedMorphism,[127X[104X
+    [4X[25X>[125X [27X               [ IsWrappedObjectRep, IsCapCategoryMorphism, IsWrappedObjectRep ],[127X[104X
+    [4X[25X>[125X [27X                  [127X[104X
+    [4X[25X>[125X [27X  function( source, morphism, range )[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes([127X[104X
+    [4X[25X>[125X [27X        rec( ), wrapped_cat,[127X[104X
+    [4X[25X>[125X [27X        Source, source,[127X[104X
+    [4X[25X>[125X [27X        Range, range,[127X[104X
+    [4X[25X>[125X [27X        UnderlyingCell, morphism[127X[104X
+    [4X[25X>[125X [27X    ); end );[127X[104X
+    [4X[25Xgap>[125X [27XAddKernelEmbedding( wrapped_cat,[127X[104X
+    [4X[25X>[125X [27X  function( diagram )[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    # avoid semicolons so AutoDoc does not start a new statement[127X[104X
+    [4X[25X>[125X [27X    return ({ underlying_kernel_embedding } ->[127X[104X
+    [4X[25X>[125X [27X        WrappedMorphism( WrappedObject( Source( underlying_kernel_embedding ) ),[127X[104X
+    [4X[25X>[125X [27X                         underlying_kernel_embedding,[127X[104X
+    [4X[25X>[125X [27X                         Source( diagram ) )[127X[104X
+    [4X[25X>[125X [27X    )(KernelEmbedding( UnderlyingCell( diagram ) )); end );[127X[104X
+    [4X[25Xgap>[125X [27XFinalize( wrapped_cat );;[127X[104X
+    [4X[25Xgap>[125X [27XV := VectorSpaceObject( 3, Q );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := VectorSpaceMorphism( V, HomalgMatrix( [ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ], 3, 3, Q ), V );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27XV_wrapped := WrappedObject( V );[127X[104X
+    [4X[28X<An object in Wrapped Category>[128X[104X
+    [4X[25Xgap>[125X [27Xalpha_wrapped := WrappedMorphism( V_wrapped, alpha, V_wrapped );[127X[104X
+    [4X[28X<A morphism in Wrapped Category>[128X[104X
+  [4X[32X[104X
+  
