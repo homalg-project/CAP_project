@@ -1,21 +1,31 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # AttributeCategoryForCAP: Automatic enhancement with attributes of a CAP category
 #
-LoadPackage( "AutoDoc" );
+# This file is a script which compiles the package manual.
+#
+if fail = LoadPackage( "AutoDoc", "2019.05.20" ) then
+    
+    Error( "AutoDoc version 2019.05.20 or newer is required." );
+    
+fi;
 
-AutoDoc( "AttributeCategoryForCAP" : scaffold := true, autodoc :=
-         rec( files := [ "doc/Intros.autodoc" ],
-         scan_dirs := [ "gap", "examples", "doc" ] ),
-         maketest := rec( folder := ".",
-                          commands :=
-                            [ "LoadPackage( \"CAP\" );",
-                              "LoadPackage( \"IO_ForHomalg\" );",
-                              "HOMALG_IO.show_banners := false;",
-                              "HOMALG_IO.suppress_PID := true;",
-                              "HOMALG_IO.use_common_stream := true;",
-                             ]
-                           )
-);
-
+AutoDoc( rec(
+    autodoc := rec(
+        files := [ "doc/Doc.autodoc" ],
+        scan_dirs := [ "doc", "gap", "examples", "examples/doc" ],
+    ),
+    extract_examples := rec(
+        units := "Single",
+    ),
+    gapdoc := rec(
+        LaTeXOptions := rec(
+            LateExtraPreamble := """
+            """,
+        ),
+    ),
+    scaffold := rec(
+        entities := [ "homalg", "CAP" ],
+    ),
+) );
 
 QUIT;

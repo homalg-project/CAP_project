@@ -1,13 +1,9 @@
-#############################################################################
-##
-##                                AttributeCategoryForCAP package
-##
-##  Copyright 2016, Sebastian Gutsche, University of Siegen
-##                  Sebastian Posur,   University of Siegen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# AttributeCategoryForCAP: Automatic enhancement with attributes of a CAP category
+#
+# Declarations
+#
 #! @Chapter Attribute Category
-##
-#############################################################################
 
 ####################################
 ##

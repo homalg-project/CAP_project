@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # AttributeCategoryForCAP: Automatic enhancement with attributes of a CAP category
 #
 # This file contains package meta data. For additional information on
