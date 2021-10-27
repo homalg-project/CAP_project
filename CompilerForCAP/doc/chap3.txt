@@ -577,15 +577,56 @@
     [4X[28X    return function ( y_2 )[128X[104X
     [4X[28X          local cap_jit_deduplicated_expression_1_2;[128X[104X
     [4X[28X          cap_jit_deduplicated_expression_1_2 := [ y_2, function ( x_3 )[128X[104X
-    [4X[28X                    local cap_jit_deduplicated_expression_2_3;[128X[104X
-    [4X[28X                    cap_jit_deduplicated_expression_2_3 := x_3 + 1;[128X[104X
-    [4X[28X                    return cap_jit_deduplicated_expression_2_3 [128X[104X
-    [4X[28X                      + cap_jit_deduplicated_expression_2_3;[128X[104X
+    [4X[28X                    local cap_jit_deduplicated_expression_1_3;[128X[104X
+    [4X[28X                    cap_jit_deduplicated_expression_1_3 := x_3 + 1;[128X[104X
+    [4X[28X                    return cap_jit_deduplicated_expression_1_3 [128X[104X
+    [4X[28X                      + cap_jit_deduplicated_expression_1_3;[128X[104X
     [4X[28X                end ];[128X[104X
     [4X[28X          return [128X[104X
     [4X[28X           [ cap_jit_deduplicated_expression_1_2, [128X[104X
     [4X[28X              cap_jit_deduplicated_expression_1_2 ];[128X[104X
     [4X[28X      end;[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27X##[127X[104X
+    [4X[25X>[125X [27X# deduplication after hoisting in duplicated code[127X[104X
+    [4X[25X>[125X [27Xfunc := { f, L } ->[127X[104X
+    [4X[25X>[125X [27X    [ f( y -> List( L, l -> y + y ) ), f( y -> List( L, l -> y + y ) ) ];;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitHoistedExpressions( tree );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitDeduplicatedExpressions( tree );;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
+    [4X[28Xfunction ( f_1, L_1 )[128X[104X
+    [4X[28X    local cap_jit_deduplicated_expression_1_1;[128X[104X
+    [4X[28X    cap_jit_deduplicated_expression_1_1 := f_1( function ( y_2 )[128X[104X
+    [4X[28X            local cap_jit_hoisted_expression_1_2;[128X[104X
+    [4X[28X            cap_jit_hoisted_expression_1_2 := y_2 + y_2;[128X[104X
+    [4X[28X            return List( L_1, function ( l_3 )[128X[104X
+    [4X[28X                    return cap_jit_hoisted_expression_1_2;[128X[104X
+    [4X[28X                end );[128X[104X
+    [4X[28X        end );[128X[104X
+    [4X[28X    return [128X[104X
+    [4X[28X     [ cap_jit_deduplicated_expression_1_1, [128X[104X
+    [4X[28X        cap_jit_deduplicated_expression_1_1 ];[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27X##[127X[104X
+    [4X[25X>[125X [27X# make sure that ignoring paths in replaced paths works as expected[127X[104X
+    [4X[25X>[125X [27Xfunc := {} ->[127X[104X
+    [4X[25X>[125X [27X    [ [ [ [ 1 ] ], [ [ 1 ] ] ], [ [ [ 1 ] ], [ [ 1 ] ] ] ];;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitDeduplicatedExpressions( tree );;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
+    [4X[28Xfunction (  )[128X[104X
+    [4X[28X    local cap_jit_deduplicated_expression_1_1, [128X[104X
+    [4X[28X    cap_jit_deduplicated_expression_2_1;[128X[104X
+    [4X[28X    cap_jit_deduplicated_expression_2_1 := [ [ 1 ] ];[128X[104X
+    [4X[28X    cap_jit_deduplicated_expression_1_1 [128X[104X
+    [4X[28X     := [ cap_jit_deduplicated_expression_2_1, [128X[104X
+    [4X[28X        cap_jit_deduplicated_expression_2_1 ];[128X[104X
+    [4X[28X    return [128X[104X
+    [4X[28X     [ cap_jit_deduplicated_expression_1_1, [128X[104X
+    [4X[28X        cap_jit_deduplicated_expression_1_1 ];[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
   
@@ -795,10 +836,10 @@
     [4X[28X    else[128X[104X
     [4X[28X        cap_jit_hoisted_expression_1_1 := x_1 + 1;[128X[104X
     [4X[28X        return function ( y_2 )[128X[104X
-    [4X[28X              local cap_jit_hoisted_expression_2_2;[128X[104X
-    [4X[28X              cap_jit_hoisted_expression_2_2 := y_2 + 1;[128X[104X
+    [4X[28X              local cap_jit_hoisted_expression_1_2;[128X[104X
+    [4X[28X              cap_jit_hoisted_expression_1_2 := y_2 + 1;[128X[104X
     [4X[28X              return [ cap_jit_hoisted_expression_1_1, function ( z_3 )[128X[104X
-    [4X[28X                        return cap_jit_hoisted_expression_2_2;[128X[104X
+    [4X[28X                        return cap_jit_hoisted_expression_1_2;[128X[104X
     [4X[28X                    end ];[128X[104X
     [4X[28X          end;[128X[104X
     [4X[28X    fi;[128X[104X
@@ -815,10 +856,10 @@
     [4X[28X    if x_1 < 0 then[128X[104X
     [4X[28X        cap_jit_hoisted_expression_1_1 := x_1 + 1;[128X[104X
     [4X[28X        return function ( y_2 )[128X[104X
-    [4X[28X              local cap_jit_hoisted_expression_2_2;[128X[104X
-    [4X[28X              cap_jit_hoisted_expression_2_2 := y_2 + 1;[128X[104X
+    [4X[28X              local cap_jit_hoisted_expression_1_2;[128X[104X
+    [4X[28X              cap_jit_hoisted_expression_1_2 := y_2 + 1;[128X[104X
     [4X[28X              return [ cap_jit_hoisted_expression_1_1, function ( z_3 )[128X[104X
-    [4X[28X                        return cap_jit_hoisted_expression_2_2;[128X[104X
+    [4X[28X                        return cap_jit_hoisted_expression_1_2;[128X[104X
     [4X[28X                    end ];[128X[104X
     [4X[28X          end;[128X[104X
     [4X[28X    else[128X[104X
