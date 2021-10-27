@@ -32,21 +32,15 @@
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X78ED1F327D902924">4.2-1 IdentityTwoCell</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X85B4A2607CDFC0D2">4.2-2 AddIdentityTwoCell</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7DD9EB1F80921939">4.2-3 HorizontalPreCompose</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7C759D3A7CB3FA3A">4.2-4 AddHorizontalPreCompose</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X87C942B87C6A161D">4.2-5 HorizontalPostCompose</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X80B2FA2F7C2E2BDA">4.2-6 AddHorizontalPostCompose</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7D89385B7834B086">4.2-7 VerticalPreCompose</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X85F4507081F229DD">4.2-8 AddVerticalPreCompose</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X79D9FBEA851C4F00">4.2-9 VerticalPostCompose</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7AA662D58265F658">4.2-10 AddVerticalPostCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7DD9EB1F80921939">4.2-2 HorizontalPreCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X87C942B87C6A161D">4.2-3 HorizontalPostCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7D89385B7834B086">4.2-4 VerticalPreCompose</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X79D9FBEA851C4F00">4.2-5 VerticalPostCompose</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X84A60F017943A943">4.3 <span class="Heading">Well-Definedness for 2-Cells</span></a>
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8240AF367C87663F">4.3-1 IsWellDefinedForTwoCells</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7EE52A1587E15D94">4.3-2 AddIsWellDefinedForTwoCells</a></span>
 </div></div>
 </div>
 
@@ -87,86 +81,41 @@
 
 <p>The argument is a morphism <span class="Math">\alpha</span>. The output is its identity <span class="Math">2</span>-cell <span class="Math">\mathrm{id}_{\alpha}: \alpha \rightarrow \alpha</span>.</p>
 
-<p><a id="X85B4A2607CDFC0D2" name="X85B4A2607CDFC0D2"></a></p>
-
-<h5>4.2-2 AddIdentityTwoCell</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIdentityTwoCell</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
-
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IdentityTwoCell</code>. <span class="Math">F: \alpha \mapsto \mathrm{id}_{\alpha}</span>.</p>
-
 <p><a id="X7DD9EB1F80921939" name="X7DD9EB1F80921939"></a></p>
 
-<h5>4.2-3 HorizontalPreCompose</h5>
+<h5>4.2-2 HorizontalPreCompose</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HorizontalPreCompose</code>( <var class="Arg">c</var>, <var class="Arg">d</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <span class="Math">2</span>-cell</p>
 
 <p>The arguments are two <span class="Math">2</span>-cells <span class="Math">c: \alpha \rightarrow \beta</span>, <span class="Math">d: \gamma \rightarrow \delta</span> between morphisms <span class="Math">\alpha, \beta: a \rightarrow b</span> and <span class="Math">\gamma, \delta: b \rightarrow c</span>. The output is their horizontal composition <span class="Math">d \ast c: (\gamma \circ \alpha) \rightarrow (\delta \circ \beta)</span>.</p>
 
-<p><a id="X7C759D3A7CB3FA3A" name="X7C759D3A7CB3FA3A"></a></p>
-
-<h5>4.2-4 AddHorizontalPreCompose</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddHorizontalPreCompose</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
-
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">HorizontalPreCompose</code>. <span class="Math">F: (c,d) \mapsto d \ast c</span>.</p>
-
 <p><a id="X87C942B87C6A161D" name="X87C942B87C6A161D"></a></p>
 
-<h5>4.2-5 HorizontalPostCompose</h5>
+<h5>4.2-3 HorizontalPostCompose</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HorizontalPostCompose</code>( <var class="Arg">d</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <span class="Math">2</span>-cell</p>
 
 <p>The arguments are two <span class="Math">2</span>-cells <span class="Math">d: \gamma \rightarrow \delta</span>, <span class="Math">c: \alpha \rightarrow \beta</span> between morphisms <span class="Math">\alpha, \beta: a \rightarrow b</span> and <span class="Math">\gamma, \delta: b \rightarrow c</span>. The output is their horizontal composition <span class="Math">d \ast c: (\gamma \circ \alpha) \rightarrow (\delta \circ \beta)</span>.</p>
 
-<p><a id="X80B2FA2F7C2E2BDA" name="X80B2FA2F7C2E2BDA"></a></p>
-
-<h5>4.2-6 AddHorizontalPostCompose</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddHorizontalPostCompose</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
-
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">HorizontalPostCompose</code>. <span class="Math">F: (d,c) \mapsto d \ast c</span>.</p>
-
 <p><a id="X7D89385B7834B086" name="X7D89385B7834B086"></a></p>
 
-<h5>4.2-7 VerticalPreCompose</h5>
+<h5>4.2-4 VerticalPreCompose</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; VerticalPreCompose</code>( <var class="Arg">c</var>, <var class="Arg">d</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <span class="Math">2</span>-cell</p>
 
 <p>The arguments are two <span class="Math">2</span>-cells <span class="Math">c: \alpha \rightarrow \beta</span>, <span class="Math">d: \beta \rightarrow \gamma</span> between morphisms <span class="Math">\alpha, \beta, \gamma: a \rightarrow b</span>. The output is their vertical composition <span class="Math">d \circ c: \alpha \rightarrow \gamma</span>.</p>
 
-<p><a id="X85F4507081F229DD" name="X85F4507081F229DD"></a></p>
-
-<h5>4.2-8 AddVerticalPreCompose</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddVerticalPreCompose</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
-
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">VerticalPreCompose</code>. <span class="Math">F: (c,d) \mapsto d \circ c</span>.</p>
-
 <p><a id="X79D9FBEA851C4F00" name="X79D9FBEA851C4F00"></a></p>
 
-<h5>4.2-9 VerticalPostCompose</h5>
+<h5>4.2-5 VerticalPostCompose</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; VerticalPostCompose</code>( <var class="Arg">d</var>, <var class="Arg">c</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a <span class="Math">2</span>-cell</p>
 
 <p>The arguments are two <span class="Math">2</span>-cells <span class="Math">d: \beta \rightarrow \gamma</span>, <span class="Math">c: \alpha \rightarrow \beta</span> between morphisms <span class="Math">\alpha, \beta, \gamma: a \rightarrow b</span>. The output is their vertical composition <span class="Math">d \circ c: \alpha \rightarrow \gamma</span>.</p>
-
-<p><a id="X7AA662D58265F658" name="X7AA662D58265F658"></a></p>
-
-<h5>4.2-10 AddVerticalPostCompose</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddVerticalPostCompose</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
-
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">VerticalPostCompose</code>. <span class="Math">F: (d,c) \mapsto d \circ c</span>.</p>
 
 <p><a id="X84A60F017943A943" name="X84A60F017943A943"></a></p>
 
@@ -180,15 +129,6 @@
 <p>Returns: a boolean</p>
 
 <p>The argument is a <span class="Math">2</span>-cell <span class="Math">c</span>. The output is <code class="code">true</code> if <span class="Math">c</span> is well-defined, otherwise the output is <code class="code">false</code>.</p>
-
-<p><a id="X7EE52A1587E15D94" name="X7EE52A1587E15D94"></a></p>
-
-<h5>4.3-2 AddIsWellDefinedForTwoCells</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddIsWellDefinedForTwoCells</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: nothing</p>
-
-<p>The arguments are a category <span class="Math">C</span> and a function <span class="Math">F</span>. This operation adds the given function <span class="Math">F</span> to the category for the basic operation <code class="code">IsWellDefinedForTwoCells</code>. <span class="Math">F: c \mapsto \mathtt{IsWellDefinedForMorphisms}( c )</span>.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5.html">[Next Chapter]</a>&nbsp;  </div>

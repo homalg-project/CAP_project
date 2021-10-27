@@ -2,40 +2,40 @@
   
   [1XIndex[101X
   
-  [2X\*[102X, for IsRingElement, IsCapCategoryMorphism 3.8-10 
+  [2X\*[102X, for IsRingElement, IsCapCategoryMorphism 3.8-6 
   [2XActivateDerivationInfo[102X 8.1-2 
   [2XAdd[102X, for IsCapCategory, IsCapCategoryMorphism 3.6-1 
       for IsCapCategory, IsCapCategoryObject 2.6-1 
       for IsStringMinHeap, IsString, IsInt 8.5-3 
-  [2XAddAdditionForMorphisms[102X, for IsCapCategory, IsFunction 3.8-4 
-  [2XAddAdditiveInverseForMorphisms[102X, for IsCapCategory, IsFunction 3.8-8 
-  [2XAddAstrictionToCoimage[102X, for IsCapCategory, IsFunction 6.14-21 
-  [2XAddAstrictionToCoimageWithGivenCoimage[102X, for IsCapCategory, IsFunction 6.14-22 
-  [2XAddBasisOfExternalHom[102X, for IsCapCategory, IsFunction 3.16-26 
-  [2XAddCanonicalIdentificationFromCoimageToImageObject[102X, for IsCapCategory, IsFunction 6.14-28 
-  [2XAddCanonicalIdentificationFromImageObjectToCoimage[102X, for IsCapCategory, IsFunction 6.14-26 
+  [2XAddAdditionForMorphisms[102X, for IsCapCategory, IsFunction 7.7-1 
+  [2XAddAdditiveInverseForMorphisms[102X, for IsCapCategory, IsFunction 7.7-2 
+  [2XAddAstrictionToCoimage[102X, for IsCapCategory, IsFunction 7.7-3 
+  [2XAddAstrictionToCoimageWithGivenCoimage[102X, for IsCapCategory, IsFunction 7.7-4 
+  [2XAddBasisOfExternalHom[102X, for IsCapCategory, IsFunction 7.7-5 
+  [2XAddCanonicalIdentificationFromCoimageToImageObject[102X, for IsCapCategory, IsFunction 7.7-6 
+  [2XAddCanonicalIdentificationFromImageObjectToCoimage[102X, for IsCapCategory, IsFunction 7.7-7 
   [2XAddCategoricalProperty[102X 1.1-6 
-  [2XAddCoastrictionToImage[102X, for IsCapCategory, IsFunction 6.13-15 
-  [2XAddCoastrictionToImageWithGivenImageObject[102X, for IsCapCategory, IsFunction 6.13-16 
-  [2XAddCoefficientsOfMorphismWithGivenBasisOfExternalHom[102X, for IsCapCategory, IsFunction 3.16-28 
-  [2XAddCoequalizer[102X, for IsCapCategory, IsFunction 6.10-9 
-  [2XAddCoequalizerFunctorialWithGivenCoequalizers[102X, for IsCapCategory, IsFunction 6.10-18 
-  [2XAddCoimage[102X, for IsCapCategory, IsFunction 6.14-18 
-  [2XAddCoimageProjection[102X, for IsCapCategory, IsFunction 6.14-19 
-  [2XAddCoimageProjectionWithGivenCoimage[102X, for IsCapCategory, IsFunction 6.14-20 
-  [2XAddCokernelColift[102X, for IsCapCategory, IsFunction 6.2-13 
-  [2XAddCokernelColiftWithGivenCokernelObject[102X, for IsCapCategory, IsFunction 6.2-14 
-  [2XAddCokernelObject[102X, for IsCapCategory, IsFunction 6.2-8 
-  [2XAddCokernelObjectFunctorialWithGivenCokernelObjects[102X, for IsCapCategory, IsFunction 6.2-19 
-  [2XAddCokernelProjection[102X, for IsCapCategory, IsFunction 6.2-9 
-  [2XAddCokernelProjectionWithGivenCokernelObject[102X, for IsCapCategory, IsFunction 6.2-10 
-  [2XAddColift[102X, for IsCapCategory, IsFunction 3.12-16 
-  [2XAddColiftAlongEpimorphism[102X, for IsCapCategory, IsFunction 3.12-4 
-  [2XAddColiftOrFail[102X, for IsCapCategory, IsFunction 3.12-18 
-  [2XAddComponentOfMorphismFromDirectSum[102X, for IsCapCategory, IsFunction 6.6-23 
-  [2XAddComponentOfMorphismIntoDirectSum[102X, for IsCapCategory, IsFunction 6.6-22 
-  [2XAddCoproduct[102X, for IsCapCategory, IsFunction 6.7-8 
-  [2XAddCoproductFunctorialWithGivenCoproducts[102X, for IsCapCategory, IsFunction 6.7-15 
+  [2XAddCoastrictionToImage[102X, for IsCapCategory, IsFunction 7.7-8 
+  [2XAddCoastrictionToImageWithGivenImageObject[102X, for IsCapCategory, IsFunction 7.7-9 
+  [2XAddCoefficientsOfMorphismWithGivenBasisOfExternalHom[102X, for IsCapCategory, IsFunction 7.7-10 
+  [2XAddCoequalizer[102X, for IsCapCategory, IsFunction 7.7-11 
+  [2XAddCoequalizerFunctorialWithGivenCoequalizers[102X, for IsCapCategory, IsFunction 7.7-12 
+  [2XAddCoimage[102X, for IsCapCategory, IsFunction 7.7-13 
+  [2XAddCoimageProjection[102X, for IsCapCategory, IsFunction 7.7-14 
+  [2XAddCoimageProjectionWithGivenCoimage[102X, for IsCapCategory, IsFunction 7.7-15 
+  [2XAddCokernelColift[102X, for IsCapCategory, IsFunction 7.7-16 
+  [2XAddCokernelColiftWithGivenCokernelObject[102X, for IsCapCategory, IsFunction 7.7-17 
+  [2XAddCokernelObject[102X, for IsCapCategory, IsFunction 7.7-18 
+  [2XAddCokernelObjectFunctorialWithGivenCokernelObjects[102X, for IsCapCategory, IsFunction 7.7-19 
+  [2XAddCokernelProjection[102X, for IsCapCategory, IsFunction 7.7-20 
+  [2XAddCokernelProjectionWithGivenCokernelObject[102X, for IsCapCategory, IsFunction 7.7-21 
+  [2XAddColift[102X, for IsCapCategory, IsFunction 7.7-22 
+  [2XAddColiftAlongEpimorphism[102X, for IsCapCategory, IsFunction 7.7-23 
+  [2XAddColiftOrFail[102X, for IsCapCategory, IsFunction 7.7-24 
+  [2XAddComponentOfMorphismFromDirectSum[102X, for IsCapCategory, IsFunction 7.7-25 
+  [2XAddComponentOfMorphismIntoDirectSum[102X, for IsCapCategory, IsFunction 7.7-26 
+  [2XAddCoproduct[102X, for IsCapCategory, IsFunction 7.7-27 
+  [2XAddCoproductFunctorialWithGivenCoproducts[102X, for IsCapCategory, IsFunction 7.7-28 
   [2XAddDerivation[102X, for IsDerivedMethodGraph, IsDerivedMethod 8.3-4 
       for IsDerivedMethodGraph, IsFunction, IsDenseList 8.3-6 
       for IsDerivedMethodGraph, IsFunction, IsDenseList, IsObject 8.3-5 
@@ -46,242 +46,248 @@
       for IsDerivedMethodGraph, IsFunction, IsFunction, IsFunction, IsFunction 8.3-11 
   [2XAddDerivationPairToCAP[102X 8.3-13 
   [2XAddDerivationToCAP[102X 8.3-12 
-  [2XAddDirectProduct[102X, for IsCapCategory, IsFunction 6.8-7 
-  [2XAddDirectProductFunctorialWithGivenDirectProducts[102X, for IsCapCategory, IsFunction 6.8-14 
-  [2XAddDirectSum[102X, for IsCapCategory, IsFunction 6.6-36 
-  [2XAddDirectSumCodiagonalDifference[102X, for IsCapCategory, IsFunction 6.12-10 
-  [2XAddDirectSumDiagonalDifference[102X, for IsCapCategory, IsFunction 6.11-10 
-  [2XAddDirectSumFunctorialWithGivenDirectSums[102X, for IsCapCategory, IsFunction 6.6-39 
-  [2XAddDirectSumProjectionInPushout[102X, for IsCapCategory, IsFunction 6.12-12 
-  [2XAddDistinguishedObjectOfHomomorphismStructure[102X, for IsCapCategory, IsFunction 3.16-8 
-  [2XAddEmbeddingOfEqualizer[102X, for IsCapCategory, IsFunction 6.9-10 
-  [2XAddEmbeddingOfEqualizerWithGivenEqualizer[102X, for IsCapCategory, IsFunction 6.9-11 
-  [2XAddEpimorphismFromSomeProjectiveObject[102X, for IsCapCategory, IsFunction 2.9-6 
-  [2XAddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[102X, for IsCapCategory, IsFunction 2.9-7 
-  [2XAddEqualizer[102X, for IsCapCategory, IsFunction 6.9-9 
-  [2XAddEqualizerFunctorialWithGivenEqualizers[102X, for IsCapCategory, IsFunction 6.9-18 
-  [2XAddFiberProduct[102X, for IsCapCategory, IsFunction 6.11-22 
-  [2XAddFiberProductEmbeddingInDirectSum[102X, for IsCapCategory, IsFunction 6.11-12 
-  [2XAddFiberProductFunctorialWithGivenFiberProducts[102X, for IsCapCategory, IsFunction 6.11-31 
+  [2XAddDirectProduct[102X, for IsCapCategory, IsFunction 7.7-29 
+  [2XAddDirectProductFunctorialWithGivenDirectProducts[102X, for IsCapCategory, IsFunction 7.7-30 
+  [2XAddDirectSum[102X, for IsCapCategory, IsFunction 7.7-31 
+  [2XAddDirectSumCodiagonalDifference[102X, for IsCapCategory, IsFunction 7.7-32 
+  [2XAddDirectSumDiagonalDifference[102X, for IsCapCategory, IsFunction 7.7-33 
+  [2XAddDirectSumFunctorialWithGivenDirectSums[102X, for IsCapCategory, IsFunction 7.7-34 
+  [2XAddDirectSumProjectionInPushout[102X, for IsCapCategory, IsFunction 7.7-35 
+  [2XAddDistinguishedObjectOfHomomorphismStructure[102X, for IsCapCategory, IsFunction 7.7-36 
+  [2XAddEmbeddingOfEqualizer[102X, for IsCapCategory, IsFunction 7.7-37 
+  [2XAddEmbeddingOfEqualizerWithGivenEqualizer[102X, for IsCapCategory, IsFunction 7.7-38 
+  [2XAddEpimorphismFromSomeProjectiveObject[102X, for IsCapCategory, IsFunction 7.7-39 
+  [2XAddEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[102X, for IsCapCategory, IsFunction 7.7-40 
+  [2XAddEqualizer[102X, for IsCapCategory, IsFunction 7.7-41 
+  [2XAddEqualizerFunctorialWithGivenEqualizers[102X, for IsCapCategory, IsFunction 7.7-42 
+  [2XAddFiberProduct[102X, for IsCapCategory, IsFunction 7.7-43 
+  [2XAddFiberProductEmbeddingInDirectSum[102X, for IsCapCategory, IsFunction 7.7-44 
+  [2XAddFiberProductFunctorialWithGivenFiberProducts[102X, for IsCapCategory, IsFunction 7.7-45 
   [2XAddfunction_name[102X, for IsCapCategory, IsFunction 12.1-1 
-  [2XAddHomologyObject[102X, for IsCapCategory, IsFunction 6.15-6 
-  [2XAddHomologyObjectFunctorialWithGivenHomologyObjects[102X, for IsCapCategory, IsFunction 6.15-7 
-  [2XAddHomomorphismStructureOnMorphisms[102X, for IsCapCategory, IsFunction 3.16-4 
-  [2XAddHomomorphismStructureOnMorphismsWithGivenObjects[102X, for IsCapCategory, IsFunction 3.16-6 
-  [2XAddHomomorphismStructureOnObjects[102X, for IsCapCategory, IsFunction 3.16-2 
-  [2XAddHorizontalPostCompose[102X, for IsCapCategory, IsFunction 4.2-6 
-  [2XAddHorizontalPreCompose[102X, for IsCapCategory, IsFunction 4.2-4 
-  [2XAddIdentityMorphism[102X, for IsCapCategory, IsFunction 3.10-2 
-  [2XAddIdentityTwoCell[102X, for IsCapCategory, IsFunction 4.2-2 
-  [2XAddImageEmbedding[102X, for IsCapCategory, IsFunction 6.13-13 
-  [2XAddImageEmbeddingWithGivenImageObject[102X, for IsCapCategory, IsFunction 6.13-14 
-  [2XAddImageObject[102X, for IsCapCategory, IsFunction 6.13-12 
-  [2XAddInitialObject[102X, for IsCapCategory, IsFunction 6.5-5 
-  [2XAddInitialObjectFunctorial[102X, for IsCapCategory, IsFunction 6.5-9 
-  [2XAddInjectionOfCofactorOfCoproduct[102X, for IsCapCategory, IsFunction 6.7-9 
-  [2XAddInjectionOfCofactorOfCoproductWithGivenCoproduct[102X, for IsCapCategory, IsFunction 6.7-10 
-  [2XAddInjectionOfCofactorOfDirectSum[102X, for IsCapCategory, IsFunction 6.6-26 
-  [2XAddInjectionOfCofactorOfDirectSumWithGivenDirectSum[102X, for IsCapCategory, IsFunction 6.6-27 
-  [2XAddInjectionOfCofactorOfPushout[102X, for IsCapCategory, IsFunction 6.12-23 
-  [2XAddInjectionOfCofactorOfPushoutWithGivenPushout[102X, for IsCapCategory, IsFunction 6.12-24 
-  [2XAddInjectiveColift[102X, for IsCapCategory, IsFunction 2.10-8 
-  [2XAddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure[102X, for IsCapCategory, IsFunction 3.16-10 
-  [2XAddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects[102X, for IsCapCategory, IsFunction 3.16-12 
-  [2XAddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism[102X, for IsCapCategory, IsFunction 3.16-14 
-  [2XAddInverseForMorphisms[102X, for IsCapCategory, IsFunction 3.13-2 
-  [2XAddInverseMorphismFromCoimageToImageWithGivenObjects[102X, for IsCapCategory, IsFunction 6.14-6 
-  [2XAddIsAutomorphism[102X, for IsCapCategory, IsFunction 3.5-8 
-  [2XAddIsCodominating[102X, for IsCapCategory, IsFunction 3.9-8 
-  [2XAddIsColiftable[102X, for IsCapCategory, IsFunction 3.12-20 
-  [2XAddIsColiftableAlongEpimorphism[102X, for IsCapCategory, IsFunction 3.12-8 
-  [2XAddIsCongruentForMorphisms[102X, for IsCapCategory, IsFunction 3.7-2 
-  [2XAddIsDominating[102X, for IsCapCategory, IsFunction 3.9-6 
-  [2XAddIsEndomorphism[102X, for IsCapCategory, IsFunction 3.5-6 
-  [2XAddIsEpimorphism[102X, for IsCapCategory, IsFunction 3.3-4 
-  [2XAddIsEqualAsFactorobjects[102X, for IsCapCategory, IsFunction 3.9-4 
-  [2XAddIsEqualAsSubobjects[102X, for IsCapCategory, IsFunction 3.9-2 
-  [2XAddIsEqualForCacheForMorphisms[102X, for IsCapCategory, IsFunction 3.14-2 
-  [2XAddIsEqualForCacheForObjects[102X, for IsCapCategory, IsFunction 2.5-2 
-  [2XAddIsEqualForMorphisms[102X, for IsCapCategory, IsFunction 3.7-4 
-  [2XAddIsEqualForMorphismsOnMor[102X, for IsCapCategory, IsFunction 3.7-6 
-  [2XAddIsEqualForObjects[102X, for IsCapCategory, IsFunction 2.2-2 
-  [2XAddIsHomSetInhabited[102X, for IsCapCategory, IsFunction 3.15-2 
-  [2XAddIsIdempotent[102X, for IsCapCategory, IsFunction 3.3-14 
-  [2XAddIsIdenticalToIdentityMorphism[102X, for IsCapCategory, IsFunction 3.5-2 
-  [2XAddIsIdenticalToZeroMorphism[102X, for IsCapCategory, IsFunction 3.5-4 
-  [2XAddIsInitial[102X, for IsCapCategory, IsFunction 2.3-8 
-  [2XAddIsInjective[102X, for IsCapCategory, IsFunction 2.3-4 
-  [2XAddIsIsomorphism[102X, for IsCapCategory, IsFunction 3.3-6 
-  [2XAddIsLiftable[102X, for IsCapCategory, IsFunction 3.12-14 
-  [2XAddIsLiftableAlongMonomorphism[102X, for IsCapCategory, IsFunction 3.12-6 
-  [2XAddIsMonomorphism[102X, for IsCapCategory, IsFunction 3.3-2 
-  [2XAddIsomorphismFromCoequalizerOfCoproductDiagramToPushout[102X, for IsCapCategory, IsFunction 6.12-8 
-  [2XAddIsomorphismFromCoimageToCokernelOfKernel[102X, for IsCapCategory, IsFunction 6.14-8 
-  [2XAddIsomorphismFromCokernelOfDiagonalDifferenceToPushout[102X, for IsCapCategory, IsFunction 6.12-4 
-  [2XAddIsomorphismFromCokernelOfKernelToCoimage[102X, for IsCapCategory, IsFunction 6.14-10 
-  [2XAddIsomorphismFromCoproductToDirectSum[102X, for IsCapCategory, IsFunction 6.6-35 
-  [2XAddIsomorphismFromDirectProductToDirectSum[102X, for IsCapCategory, IsFunction 6.6-33 
-  [2XAddIsomorphismFromDirectSumToCoproduct[102X, for IsCapCategory, IsFunction 6.6-34 
-  [2XAddIsomorphismFromDirectSumToDirectProduct[102X, for IsCapCategory, IsFunction 6.6-32 
-  [2XAddIsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct[102X, for IsCapCategory, IsFunction 6.11-8 
-  [2XAddIsomorphismFromFiberProductToEqualizerOfDirectProductDiagram[102X, for IsCapCategory, IsFunction 6.11-6 
-  [2XAddIsomorphismFromFiberProductToKernelOfDiagonalDifference[102X, for IsCapCategory, IsFunction 6.11-2 
-  [2XAddIsomorphismFromImageObjectToKernelOfCokernel[102X, for IsCapCategory, IsFunction 6.13-2 
-  [2XAddIsomorphismFromInitialObjectToZeroObject[102X, for IsCapCategory, IsFunction 6.3-19 
-  [2XAddIsomorphismFromKernelOfCokernelToImageObject[102X, for IsCapCategory, IsFunction 6.13-4 
-  [2XAddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct[102X, for IsCapCategory, IsFunction 6.11-4 
-  [2XAddIsomorphismFromPushoutToCoequalizerOfCoproductDiagram[102X, for IsCapCategory, IsFunction 6.12-6 
-  [2XAddIsomorphismFromPushoutToCokernelOfDiagonalDifference[102X, for IsCapCategory, IsFunction 6.12-2 
-  [2XAddIsomorphismFromTerminalObjectToZeroObject[102X, for IsCapCategory, IsFunction 6.3-21 
-  [2XAddIsomorphismFromZeroObjectToInitialObject[102X, for IsCapCategory, IsFunction 6.3-18 
-  [2XAddIsomorphismFromZeroObjectToTerminalObject[102X, for IsCapCategory, IsFunction 6.3-20 
-  [2XAddIsOne[102X, for IsCapCategory, IsFunction 3.3-12 
-  [2XAddIsProjective[102X, for IsCapCategory, IsFunction 2.3-2 
-  [2XAddIsSplitEpimorphism[102X, for IsCapCategory, IsFunction 3.3-10 
-  [2XAddIsSplitMonomorphism[102X, for IsCapCategory, IsFunction 3.3-8 
-  [2XAddIsTerminal[102X, for IsCapCategory, IsFunction 2.3-6 
-  [2XAddIsWellDefinedForMorphisms[102X, for IsCapCategory, IsFunction 3.11-2 
-  [2XAddIsWellDefinedForObjects[102X, for IsCapCategory, IsFunction 2.8-2 
-  [2XAddIsWellDefinedForTwoCells[102X, for IsCapCategory, IsFunction 4.3-2 
-  [2XAddIsZeroForMorphisms[102X, for IsCapCategory, IsFunction 3.8-2 
-  [2XAddIsZeroForObjects[102X, for IsCapCategory, IsFunction 2.3-11 
-  [2XAdditionForMorphisms[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.8-3 
-  [2XAdditiveInverseForMorphisms[102X, for IsCapCategoryMorphism 3.8-7 
-  [2XAddKernelEmbedding[102X, for IsCapCategory, IsFunction 6.1-9 
-  [2XAddKernelEmbeddingWithGivenKernelObject[102X, for IsCapCategory, IsFunction 6.1-10 
-  [2XAddKernelLift[102X, for IsCapCategory, IsFunction 6.1-13 
-  [2XAddKernelLiftWithGivenKernelObject[102X, for IsCapCategory, IsFunction 6.1-14 
-  [2XAddKernelObject[102X, for IsCapCategory, IsFunction 6.1-8 
-  [2XAddKernelObjectFunctorialWithGivenKernelObjects[102X, for IsCapCategory, IsFunction 6.1-19 
-  [2XAddLift[102X, for IsCapCategory, IsFunction 3.12-10 
-  [2XAddLiftAlongMonomorphism[102X, for IsCapCategory, IsFunction 3.12-2 
-  [2XAddLiftOrFail[102X, for IsCapCategory, IsFunction 3.12-12 
-  [2XAddMonomorphismIntoSomeInjectiveObject[102X, for IsCapCategory, IsFunction 2.10-6 
-  [2XAddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[102X, for IsCapCategory, IsFunction 2.10-7 
+  [2XAddHomologyObject[102X, for IsCapCategory, IsFunction 7.7-46 
+  [2XAddHomologyObjectFunctorialWithGivenHomologyObjects[102X, for IsCapCategory, IsFunction 7.7-47 
+  [2XAddHomomorphismStructureOnMorphisms[102X, for IsCapCategory, IsFunction 7.7-48 
+  [2XAddHomomorphismStructureOnMorphismsWithGivenObjects[102X, for IsCapCategory, IsFunction 7.7-49 
+  [2XAddHomomorphismStructureOnObjects[102X, for IsCapCategory, IsFunction 7.7-50 
+  [2XAddHorizontalPostCompose[102X, for IsCapCategory, IsFunction 7.7-51 
+  [2XAddHorizontalPreCompose[102X, for IsCapCategory, IsFunction 7.7-52 
+  [2XAddIdentityMorphism[102X, for IsCapCategory, IsFunction 7.7-53 
+  [2XAddIdentityTwoCell[102X, for IsCapCategory, IsFunction 7.7-54 
+  [2XAddImageEmbedding[102X, for IsCapCategory, IsFunction 7.7-55 
+  [2XAddImageEmbeddingWithGivenImageObject[102X, for IsCapCategory, IsFunction 7.7-56 
+  [2XAddImageObject[102X, for IsCapCategory, IsFunction 7.7-57 
+  [2XAddInitialObject[102X, for IsCapCategory, IsFunction 7.7-58 
+  [2XAddInitialObjectFunctorial[102X, for IsCapCategory, IsFunction 7.7-59 
+  [2XAddInjectionOfCofactorOfCoproduct[102X, for IsCapCategory, IsFunction 7.7-60 
+  [2XAddInjectionOfCofactorOfCoproductWithGivenCoproduct[102X, for IsCapCategory, IsFunction 7.7-61 
+  [2XAddInjectionOfCofactorOfDirectSum[102X, for IsCapCategory, IsFunction 7.7-62 
+  [2XAddInjectionOfCofactorOfDirectSumWithGivenDirectSum[102X, for IsCapCategory, IsFunction 7.7-63 
+  [2XAddInjectionOfCofactorOfPushout[102X, for IsCapCategory, IsFunction 7.7-64 
+  [2XAddInjectionOfCofactorOfPushoutWithGivenPushout[102X, for IsCapCategory, IsFunction 7.7-65 
+  [2XAddInjectiveColift[102X, for IsCapCategory, IsFunction 7.7-66 
+  [2XAddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure[102X, for IsCapCategory, IsFunction 7.7-67 
+  [2XAddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects[102X, for IsCapCategory, IsFunction 7.7-68 
+  [2XAddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism[102X, for IsCapCategory, IsFunction 7.7-69 
+  [2XAddInverseForMorphisms[102X, for IsCapCategory, IsFunction 7.7-70 
+  [2XAddInverseMorphismFromCoimageToImageWithGivenObjects[102X, for IsCapCategory, IsFunction 7.7-71 
+  [2XAddIsAutomorphism[102X, for IsCapCategory, IsFunction 7.7-72 
+  [2XAddIsCodominating[102X, for IsCapCategory, IsFunction 7.7-73 
+  [2XAddIsColiftable[102X, for IsCapCategory, IsFunction 7.7-74 
+  [2XAddIsColiftableAlongEpimorphism[102X, for IsCapCategory, IsFunction 7.7-75 
+  [2XAddIsCongruentForMorphisms[102X, for IsCapCategory, IsFunction 7.7-76 
+  [2XAddIsDominating[102X, for IsCapCategory, IsFunction 7.7-77 
+  [2XAddIsEndomorphism[102X, for IsCapCategory, IsFunction 7.7-78 
+  [2XAddIsEpimorphism[102X, for IsCapCategory, IsFunction 7.7-79 
+  [2XAddIsEqualAsFactorobjects[102X, for IsCapCategory, IsFunction 7.7-80 
+  [2XAddIsEqualAsSubobjects[102X, for IsCapCategory, IsFunction 7.7-81 
+  [2XAddIsEqualForCacheForMorphisms[102X, for IsCapCategory, IsFunction 7.7-82 
+  [2XAddIsEqualForCacheForObjects[102X, for IsCapCategory, IsFunction 7.7-83 
+  [2XAddIsEqualForMorphisms[102X, for IsCapCategory, IsFunction 7.7-84 
+  [2XAddIsEqualForMorphismsOnMor[102X, for IsCapCategory, IsFunction 7.7-85 
+  [2XAddIsEqualForObjects[102X, for IsCapCategory, IsFunction 7.7-86 
+  [2XAddIsHomSetInhabited[102X, for IsCapCategory, IsFunction 7.7-87 
+  [2XAddIsIdempotent[102X, for IsCapCategory, IsFunction 7.7-88 
+  [2XAddIsIdenticalToIdentityMorphism[102X, for IsCapCategory, IsFunction 7.7-89 
+  [2XAddIsIdenticalToZeroMorphism[102X, for IsCapCategory, IsFunction 7.7-90 
+  [2XAddIsInitial[102X, for IsCapCategory, IsFunction 7.7-91 
+  [2XAddIsInjective[102X, for IsCapCategory, IsFunction 7.7-92 
+  [2XAddIsIsomorphism[102X, for IsCapCategory, IsFunction 7.7-93 
+  [2XAddIsLiftable[102X, for IsCapCategory, IsFunction 7.7-94 
+  [2XAddIsLiftableAlongMonomorphism[102X, for IsCapCategory, IsFunction 7.7-95 
+  [2XAddIsMonomorphism[102X, for IsCapCategory, IsFunction 7.7-96 
+  [2XAddIsomorphismFromCoequalizerOfCoproductDiagramToPushout[102X, for IsCapCategory, IsFunction 7.7-107 
+  [2XAddIsomorphismFromCoimageToCokernelOfKernel[102X, for IsCapCategory, IsFunction 7.7-108 
+  [2XAddIsomorphismFromCokernelOfDiagonalDifferenceToPushout[102X, for IsCapCategory, IsFunction 7.7-109 
+  [2XAddIsomorphismFromCokernelOfKernelToCoimage[102X, for IsCapCategory, IsFunction 7.7-110 
+  [2XAddIsomorphismFromCoproductToDirectSum[102X, for IsCapCategory, IsFunction 7.7-111 
+  [2XAddIsomorphismFromDirectProductToDirectSum[102X, for IsCapCategory, IsFunction 7.7-112 
+  [2XAddIsomorphismFromDirectSumToCoproduct[102X, for IsCapCategory, IsFunction 7.7-113 
+  [2XAddIsomorphismFromDirectSumToDirectProduct[102X, for IsCapCategory, IsFunction 7.7-114 
+  [2XAddIsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct[102X, for IsCapCategory, IsFunction 7.7-115 
+  [2XAddIsomorphismFromFiberProductToEqualizerOfDirectProductDiagram[102X, for IsCapCategory, IsFunction 7.7-116 
+  [2XAddIsomorphismFromFiberProductToKernelOfDiagonalDifference[102X, for IsCapCategory, IsFunction 7.7-117 
+  [2XAddIsomorphismFromHomologyObjectToItsConstructionAsAnImageObject[102X, for IsCapCategory, IsFunction 7.7-118 
+  [2XAddIsomorphismFromImageObjectToKernelOfCokernel[102X, for IsCapCategory, IsFunction 7.7-119 
+  [2XAddIsomorphismFromInitialObjectToZeroObject[102X, for IsCapCategory, IsFunction 7.7-120 
+  [2XAddIsomorphismFromItsConstructionAsAnImageObjectToHomologyObject[102X, for IsCapCategory, IsFunction 7.7-121 
+  [2XAddIsomorphismFromKernelOfCokernelToImageObject[102X, for IsCapCategory, IsFunction 7.7-122 
+  [2XAddIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct[102X, for IsCapCategory, IsFunction 7.7-123 
+  [2XAddIsomorphismFromPushoutToCoequalizerOfCoproductDiagram[102X, for IsCapCategory, IsFunction 7.7-124 
+  [2XAddIsomorphismFromPushoutToCokernelOfDiagonalDifference[102X, for IsCapCategory, IsFunction 7.7-125 
+  [2XAddIsomorphismFromTerminalObjectToZeroObject[102X, for IsCapCategory, IsFunction 7.7-126 
+  [2XAddIsomorphismFromZeroObjectToInitialObject[102X, for IsCapCategory, IsFunction 7.7-127 
+  [2XAddIsomorphismFromZeroObjectToTerminalObject[102X, for IsCapCategory, IsFunction 7.7-128 
+  [2XAddIsOne[102X, for IsCapCategory, IsFunction 7.7-97 
+  [2XAddIsProjective[102X, for IsCapCategory, IsFunction 7.7-98 
+  [2XAddIsSplitEpimorphism[102X, for IsCapCategory, IsFunction 7.7-99 
+  [2XAddIsSplitMonomorphism[102X, for IsCapCategory, IsFunction 7.7-100 
+  [2XAddIsTerminal[102X, for IsCapCategory, IsFunction 7.7-101 
+  [2XAddIsWellDefinedForMorphisms[102X, for IsCapCategory, IsFunction 7.7-102 
+  [2XAddIsWellDefinedForObjects[102X, for IsCapCategory, IsFunction 7.7-103 
+  [2XAddIsWellDefinedForTwoCells[102X, for IsCapCategory, IsFunction 7.7-104 
+  [2XAddIsZeroForMorphisms[102X, for IsCapCategory, IsFunction 7.7-105 
+  [2XAddIsZeroForObjects[102X, for IsCapCategory, IsFunction 7.7-106 
+  [2XAdditionForMorphisms[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.8-2 
+  [2XAdditiveInverseForMorphisms[102X, for IsCapCategoryMorphism 3.8-4 
+  [2XAddKernelEmbedding[102X, for IsCapCategory, IsFunction 7.7-129 
+  [2XAddKernelEmbeddingWithGivenKernelObject[102X, for IsCapCategory, IsFunction 7.7-130 
+  [2XAddKernelLift[102X, for IsCapCategory, IsFunction 7.7-131 
+  [2XAddKernelLiftWithGivenKernelObject[102X, for IsCapCategory, IsFunction 7.7-132 
+  [2XAddKernelObject[102X, for IsCapCategory, IsFunction 7.7-133 
+  [2XAddKernelObjectFunctorialWithGivenKernelObjects[102X, for IsCapCategory, IsFunction 7.7-134 
+  [2XAddLift[102X, for IsCapCategory, IsFunction 7.7-135 
+  [2XAddLiftAlongMonomorphism[102X, for IsCapCategory, IsFunction 7.7-136 
+  [2XAddLiftOrFail[102X, for IsCapCategory, IsFunction 7.7-137 
+  [2XAddMereExistenceOfSolutionOfLinearSystemInAbCategory[102X, for IsCapCategory, IsFunction 7.7-138 
+  [2XAddMonomorphismIntoSomeInjectiveObject[102X, for IsCapCategory, IsFunction 7.7-139 
+  [2XAddMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[102X, for IsCapCategory, IsFunction 7.7-140 
   [2XAddMorphism[102X, for IsCapCategory, IsAttributeStoringRep 3.6-2 
-  [2XAddMorphismBetweenDirectSumsWithGivenDirectSums[102X, for IsCapCategory, IsFunction 6.6-18 
-  [2XAddMorphismConstructor[102X, for IsCapCategory, IsFunction 3.2-2 
-  [2XAddMorphismDatum[102X, for IsCapCategory, IsFunction 3.2-4 
-  [2XAddMorphismFromCoimageToImageWithGivenObjects[102X, for IsCapCategory, IsFunction 6.14-3 
-  [2XAddMorphismFromEqualizerToSink[102X, for IsCapCategory, IsFunction 6.9-12 
-  [2XAddMorphismFromEqualizerToSinkWithGivenEqualizer[102X, for IsCapCategory, IsFunction 6.9-13 
-  [2XAddMorphismFromFiberProductToSink[102X, for IsCapCategory, IsFunction 6.11-25 
-  [2XAddMorphismFromFiberProductToSinkWithGivenFiberProduct[102X, for IsCapCategory, IsFunction 6.11-26 
-  [2XAddMorphismFromKernelObjectToSink[102X, for IsCapCategory, IsFunction 6.1-11 
-  [2XAddMorphismFromKernelObjectToSinkWithGivenKernelObject[102X, for IsCapCategory, IsFunction 6.1-12 
-  [2XAddMorphismFromSourceToCoequalizer[102X, for IsCapCategory, IsFunction 6.10-12 
-  [2XAddMorphismFromSourceToCoequalizerWithGivenCoequalizer[102X, for IsCapCategory, IsFunction 6.10-13 
-  [2XAddMorphismFromSourceToCokernelObject[102X, for IsCapCategory, IsFunction 6.2-11 
-  [2XAddMorphismFromSourceToCokernelObjectWithGivenCokernelObject[102X, for IsCapCategory, IsFunction 6.2-12 
-  [2XAddMorphismFromSourceToPushout[102X, for IsCapCategory, IsFunction 6.12-25 
-  [2XAddMorphismFromSourceToPushoutWithGivenPushout[102X, for IsCapCategory, IsFunction 6.12-26 
+  [2XAddMorphismBetweenDirectSums[102X, for IsCapCategory, IsFunction 7.7-141 
+  [2XAddMorphismBetweenDirectSumsWithGivenDirectSums[102X, for IsCapCategory, IsFunction 7.7-142 
+  [2XAddMorphismConstructor[102X, for IsCapCategory, IsFunction 7.7-143 
+  [2XAddMorphismDatum[102X, for IsCapCategory, IsFunction 7.7-144 
+  [2XAddMorphismFromCoimageToImageWithGivenObjects[102X, for IsCapCategory, IsFunction 7.7-145 
+  [2XAddMorphismFromEqualizerToSink[102X, for IsCapCategory, IsFunction 7.7-146 
+  [2XAddMorphismFromEqualizerToSinkWithGivenEqualizer[102X, for IsCapCategory, IsFunction 7.7-147 
+  [2XAddMorphismFromFiberProductToSink[102X, for IsCapCategory, IsFunction 7.7-148 
+  [2XAddMorphismFromFiberProductToSinkWithGivenFiberProduct[102X, for IsCapCategory, IsFunction 7.7-149 
+  [2XAddMorphismFromKernelObjectToSink[102X, for IsCapCategory, IsFunction 7.7-150 
+  [2XAddMorphismFromKernelObjectToSinkWithGivenKernelObject[102X, for IsCapCategory, IsFunction 7.7-151 
+  [2XAddMorphismFromSourceToCoequalizer[102X, for IsCapCategory, IsFunction 7.7-152 
+  [2XAddMorphismFromSourceToCoequalizerWithGivenCoequalizer[102X, for IsCapCategory, IsFunction 7.7-153 
+  [2XAddMorphismFromSourceToCokernelObject[102X, for IsCapCategory, IsFunction 7.7-154 
+  [2XAddMorphismFromSourceToCokernelObjectWithGivenCokernelObject[102X, for IsCapCategory, IsFunction 7.7-155 
+  [2XAddMorphismFromSourceToPushout[102X, for IsCapCategory, IsFunction 7.7-156 
+  [2XAddMorphismFromSourceToPushoutWithGivenPushout[102X, for IsCapCategory, IsFunction 7.7-157 
   [2XAddMorphismFunction[102X, for IsCapFunctor, IsFunction 5.4-7 
   [2XAddMorphismRepresentation[102X, for IsCapCategory, IsObject 3.6-3 
-  [2XAddMultiplyWithElementOfCommutativeRingForMorphisms[102X, for IsCapCategory, IsFunction 3.8-11 
+  [2XAddMultiplyWithElementOfCommutativeRingForMorphisms[102X, for IsCapCategory, IsFunction 7.7-158 
   [2XAddNaturalTransformationFunction[102X, for IsCapNaturalTransformation, IsFunction 5.5-3 
   [2XAddObject[102X, for IsCapCategory, IsAttributeStoringRep 2.6-2 
-  [2XAddObjectConstructor[102X, for IsCapCategory, IsFunction 2.7-2 
-  [2XAddObjectDatum[102X, for IsCapCategory, IsFunction 2.7-4 
+  [2XAddObjectConstructor[102X, for IsCapCategory, IsFunction 7.7-159 
+  [2XAddObjectDatum[102X, for IsCapCategory, IsFunction 7.7-160 
   [2XAddObjectFunction[102X, for IsCapFunctor, IsFunction 5.4-5 
   [2XAddObjectRepresentation[102X, for IsCapCategory, IsObject 2.6-3 
   [2XAddOperationsToDerivationGraph[102X, for IsDerivedMethodGraph, IsDenseList 8.3-3 
-  [2XAddPostCompose[102X, for IsCapCategory, IsFunction 3.10-9 
-  [2XAddPreCompose[102X, for IsCapCategory, IsFunction 3.10-5 
+  [2XAddPostCompose[102X, for IsCapCategory, IsFunction 7.7-161 
+  [2XAddPreCompose[102X, for IsCapCategory, IsFunction 7.7-162 
   [2XAddPrimitiveOperation[102X, for IsOperationWeightList, IsString, IsInt 8.4-11 
-  [2XAddProjectionInFactorOfDirectProduct[102X, for IsCapCategory, IsFunction 6.8-8 
-  [2XAddProjectionInFactorOfDirectProductWithGivenDirectProduct[102X, for IsCapCategory, IsFunction 6.8-9 
-  [2XAddProjectionInFactorOfDirectSum[102X, for IsCapCategory, IsFunction 6.6-24 
-  [2XAddProjectionInFactorOfDirectSumWithGivenDirectSum[102X, for IsCapCategory, IsFunction 6.6-25 
-  [2XAddProjectionInFactorOfFiberProduct[102X, for IsCapCategory, IsFunction 6.11-23 
-  [2XAddProjectionInFactorOfFiberProductWithGivenFiberProduct[102X, for IsCapCategory, IsFunction 6.11-24 
-  [2XAddProjectionOntoCoequalizer[102X, for IsCapCategory, IsFunction 6.10-10 
-  [2XAddProjectionOntoCoequalizerWithGivenCoequalizer[102X, for IsCapCategory, IsFunction 6.10-11 
-  [2XAddProjectiveLift[102X, for IsCapCategory, IsFunction 2.9-8 
-  [2XAddPushout[102X, for IsCapCategory, IsFunction 6.12-22 
-  [2XAddPushoutFunctorialWithGivenPushouts[102X, for IsCapCategory, IsFunction 6.12-31 
-  [2XAddRandomMorphismByInteger[102X, for IsCapCategory, IsFunction 3.4-14 
-  [2XAddRandomMorphismByList[102X, for IsCapCategory, IsFunction 3.4-16 
-  [2XAddRandomMorphismWithFixedRangeByInteger[102X, for IsCapCategory, IsFunction 3.4-6 
-  [2XAddRandomMorphismWithFixedRangeByList[102X, for IsCapCategory, IsFunction 3.4-8 
-  [2XAddRandomMorphismWithFixedSourceAndRangeByInteger[102X, for IsCapCategory, IsFunction 3.4-10 
-  [2XAddRandomMorphismWithFixedSourceAndRangeByList[102X, for IsCapCategory, IsFunction 3.4-12 
-  [2XAddRandomMorphismWithFixedSourceByInteger[102X, for IsCapCategory, IsFunction 3.4-2 
-  [2XAddRandomMorphismWithFixedSourceByList[102X, for IsCapCategory, IsFunction 3.4-4 
-  [2XAddRandomObjectByInteger[102X, for IsCapCategory, IsFunction 2.4-2 
-  [2XAddRandomObjectByList[102X, for IsCapCategory, IsFunction 2.4-4 
-  [2XAddSimplifyEndo[102X, for IsCapCategory, IsFunction 3.17-26 
-  [2XAddSimplifyEndo_IsoFromInputObject[102X, for IsCapCategory, IsFunction 3.17-30 
-  [2XAddSimplifyEndo_IsoToInputObject[102X, for IsCapCategory, IsFunction 3.17-28 
-  [2XAddSimplifyMorphism[102X, for IsCapCategory, IsFunction 3.17-2 
-  [2XAddSimplifyObject[102X, for IsCapCategory, IsFunction 2.11-3 
-  [2XAddSimplifyObject_IsoFromInputObject[102X, for IsCapCategory, IsFunction 2.11-5 
-  [2XAddSimplifyObject_IsoToInputObject[102X, for IsCapCategory, IsFunction 2.11-7 
-  [2XAddSimplifyRange[102X, for IsCapCategory, IsFunction 3.17-10 
-  [2XAddSimplifyRange_IsoFromInputObject[102X, for IsCapCategory, IsFunction 3.17-14 
-  [2XAddSimplifyRange_IsoToInputObject[102X, for IsCapCategory, IsFunction 3.17-12 
-  [2XAddSimplifySource[102X, for IsCapCategory, IsFunction 3.17-4 
-  [2XAddSimplifySource_IsoFromInputObject[102X, for IsCapCategory, IsFunction 3.17-8 
-  [2XAddSimplifySource_IsoToInputObject[102X, for IsCapCategory, IsFunction 3.17-6 
-  [2XAddSimplifySourceAndRange[102X, for IsCapCategory, IsFunction 3.17-16 
-  [2XAddSimplifySourceAndRange_IsoFromInputRange[102X, for IsCapCategory, IsFunction 3.17-20 
-  [2XAddSimplifySourceAndRange_IsoFromInputSource[102X, for IsCapCategory, IsFunction 3.17-24 
-  [2XAddSimplifySourceAndRange_IsoToInputRange[102X, for IsCapCategory, IsFunction 3.17-18 
-  [2XAddSimplifySourceAndRange_IsoToInputSource[102X, for IsCapCategory, IsFunction 3.17-22 
-  [2XAddSomeInjectiveObject[102X, for IsCapCategory, IsFunction 2.10-5 
-  [2XAddSomeProjectiveObject[102X, for IsCapCategory, IsFunction 2.9-5 
-  [2XAddSomeReductionBySplitEpiSummand[102X, for IsCapCategory, IsFunction 3.18-2 
-  [2XAddSomeReductionBySplitEpiSummand_MorphismFromInputRange[102X, for IsCapCategory, IsFunction 3.18-6 
-  [2XAddSomeReductionBySplitEpiSummand_MorphismToInputRange[102X, for IsCapCategory, IsFunction 3.18-4 
-  [2XAddSubtractionForMorphisms[102X, for IsCapCategory, IsFunction 3.8-6 
-  [2XAddTerminalObject[102X, for IsCapCategory, IsFunction 6.4-5 
-  [2XAddTerminalObjectFunctorial[102X, for IsCapCategory, IsFunction 6.4-9 
-  [2XAddUniversalMorphismFromCoequalizer[102X, for IsCapCategory, IsFunction 6.10-14 
-  [2XAddUniversalMorphismFromCoequalizerWithGivenCoequalizer[102X, for IsCapCategory, IsFunction 6.10-15 
-  [2XAddUniversalMorphismFromCoproduct[102X, for IsCapCategory, IsFunction 6.7-11 
-  [2XAddUniversalMorphismFromCoproductWithGivenCoproduct[102X, for IsCapCategory, IsFunction 6.7-12 
-  [2XAddUniversalMorphismFromDirectSum[102X, for IsCapCategory, IsFunction 6.6-30 
-  [2XAddUniversalMorphismFromDirectSumWithGivenDirectSum[102X, for IsCapCategory, IsFunction 6.6-31 
-  [2XAddUniversalMorphismFromImage[102X, for IsCapCategory, IsFunction 6.13-17 
-  [2XAddUniversalMorphismFromImageWithGivenImageObject[102X, for IsCapCategory, IsFunction 6.13-18 
-  [2XAddUniversalMorphismFromInitialObject[102X, for IsCapCategory, IsFunction 6.5-6 
-  [2XAddUniversalMorphismFromInitialObjectWithGivenInitialObject[102X, for IsCapCategory, IsFunction 6.5-7 
-  [2XAddUniversalMorphismFromPushout[102X, for IsCapCategory, IsFunction 6.12-27 
-  [2XAddUniversalMorphismFromPushoutWithGivenPushout[102X, for IsCapCategory, IsFunction 6.12-28 
-  [2XAddUniversalMorphismFromZeroObject[102X, for IsCapCategory, IsFunction 6.3-16 
-  [2XAddUniversalMorphismFromZeroObjectWithGivenZeroObject[102X, for IsCapCategory, IsFunction 6.3-17 
-  [2XAddUniversalMorphismIntoCoimage[102X, for IsCapCategory, IsFunction 6.14-23 
-  [2XAddUniversalMorphismIntoCoimageWithGivenCoimage[102X, for IsCapCategory, IsFunction 6.14-24 
-  [2XAddUniversalMorphismIntoDirectProduct[102X, for IsCapCategory, IsFunction 6.8-10 
-  [2XAddUniversalMorphismIntoDirectProductWithGivenDirectProduct[102X, for IsCapCategory, IsFunction 6.8-11 
-  [2XAddUniversalMorphismIntoDirectSum[102X, for IsCapCategory, IsFunction 6.6-28 
-  [2XAddUniversalMorphismIntoDirectSumWithGivenDirectSum[102X, for IsCapCategory, IsFunction 6.6-29 
-  [2XAddUniversalMorphismIntoEqualizer[102X, for IsCapCategory, IsFunction 6.9-14 
-  [2XAddUniversalMorphismIntoEqualizerWithGivenEqualizer[102X, for IsCapCategory, IsFunction 6.9-15 
-  [2XAddUniversalMorphismIntoFiberProduct[102X, for IsCapCategory, IsFunction 6.11-27 
-  [2XAddUniversalMorphismIntoFiberProductWithGivenFiberProduct[102X, for IsCapCategory, IsFunction 6.11-28 
-  [2XAddUniversalMorphismIntoTerminalObject[102X, for IsCapCategory, IsFunction 6.4-6 
-  [2XAddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject[102X, for IsCapCategory, IsFunction 6.4-7 
-  [2XAddUniversalMorphismIntoZeroObject[102X, for IsCapCategory, IsFunction 6.3-14 
-  [2XAddUniversalMorphismIntoZeroObjectWithGivenZeroObject[102X, for IsCapCategory, IsFunction 6.3-15 
-  [2XAddVerticalPostCompose[102X, for IsCapCategory, IsFunction 4.2-10 
-  [2XAddVerticalPreCompose[102X, for IsCapCategory, IsFunction 4.2-8 
+  [2XAddProjectionInFactorOfDirectProduct[102X, for IsCapCategory, IsFunction 7.7-163 
+  [2XAddProjectionInFactorOfDirectProductWithGivenDirectProduct[102X, for IsCapCategory, IsFunction 7.7-164 
+  [2XAddProjectionInFactorOfDirectSum[102X, for IsCapCategory, IsFunction 7.7-165 
+  [2XAddProjectionInFactorOfDirectSumWithGivenDirectSum[102X, for IsCapCategory, IsFunction 7.7-166 
+  [2XAddProjectionInFactorOfFiberProduct[102X, for IsCapCategory, IsFunction 7.7-167 
+  [2XAddProjectionInFactorOfFiberProductWithGivenFiberProduct[102X, for IsCapCategory, IsFunction 7.7-168 
+  [2XAddProjectionOntoCoequalizer[102X, for IsCapCategory, IsFunction 7.7-169 
+  [2XAddProjectionOntoCoequalizerWithGivenCoequalizer[102X, for IsCapCategory, IsFunction 7.7-170 
+  [2XAddProjectiveLift[102X, for IsCapCategory, IsFunction 7.7-171 
+  [2XAddPushout[102X, for IsCapCategory, IsFunction 7.7-172 
+  [2XAddPushoutFunctorialWithGivenPushouts[102X, for IsCapCategory, IsFunction 7.7-173 
+  [2XAddRandomMorphismByInteger[102X, for IsCapCategory, IsFunction 7.7-174 
+  [2XAddRandomMorphismByList[102X, for IsCapCategory, IsFunction 7.7-175 
+  [2XAddRandomMorphismWithFixedRangeByInteger[102X, for IsCapCategory, IsFunction 7.7-176 
+  [2XAddRandomMorphismWithFixedRangeByList[102X, for IsCapCategory, IsFunction 7.7-177 
+  [2XAddRandomMorphismWithFixedSourceAndRangeByInteger[102X, for IsCapCategory, IsFunction 7.7-178 
+  [2XAddRandomMorphismWithFixedSourceAndRangeByList[102X, for IsCapCategory, IsFunction 7.7-179 
+  [2XAddRandomMorphismWithFixedSourceByInteger[102X, for IsCapCategory, IsFunction 7.7-180 
+  [2XAddRandomMorphismWithFixedSourceByList[102X, for IsCapCategory, IsFunction 7.7-181 
+  [2XAddRandomObjectByInteger[102X, for IsCapCategory, IsFunction 7.7-182 
+  [2XAddRandomObjectByList[102X, for IsCapCategory, IsFunction 7.7-183 
+  [2XAddSimplifyEndo[102X, for IsCapCategory, IsFunction 7.7-184 
+  [2XAddSimplifyEndo_IsoFromInputObject[102X, for IsCapCategory, IsFunction 7.7-185 
+  [2XAddSimplifyEndo_IsoToInputObject[102X, for IsCapCategory, IsFunction 7.7-186 
+  [2XAddSimplifyMorphism[102X, for IsCapCategory, IsFunction 7.7-187 
+  [2XAddSimplifyObject[102X, for IsCapCategory, IsFunction 7.7-188 
+  [2XAddSimplifyObject_IsoFromInputObject[102X, for IsCapCategory, IsFunction 7.7-189 
+  [2XAddSimplifyObject_IsoToInputObject[102X, for IsCapCategory, IsFunction 7.7-190 
+  [2XAddSimplifyRange[102X, for IsCapCategory, IsFunction 7.7-191 
+  [2XAddSimplifyRange_IsoFromInputObject[102X, for IsCapCategory, IsFunction 7.7-192 
+  [2XAddSimplifyRange_IsoToInputObject[102X, for IsCapCategory, IsFunction 7.7-193 
+  [2XAddSimplifySource[102X, for IsCapCategory, IsFunction 7.7-194 
+  [2XAddSimplifySource_IsoFromInputObject[102X, for IsCapCategory, IsFunction 7.7-200 
+  [2XAddSimplifySource_IsoToInputObject[102X, for IsCapCategory, IsFunction 7.7-201 
+  [2XAddSimplifySourceAndRange[102X, for IsCapCategory, IsFunction 7.7-195 
+  [2XAddSimplifySourceAndRange_IsoFromInputRange[102X, for IsCapCategory, IsFunction 7.7-196 
+  [2XAddSimplifySourceAndRange_IsoFromInputSource[102X, for IsCapCategory, IsFunction 7.7-197 
+  [2XAddSimplifySourceAndRange_IsoToInputRange[102X, for IsCapCategory, IsFunction 7.7-198 
+  [2XAddSimplifySourceAndRange_IsoToInputSource[102X, for IsCapCategory, IsFunction 7.7-199 
+  [2XAddSolveLinearSystemInAbCategory[102X, for IsCapCategory, IsFunction 7.7-202 
+  [2XAddSolveLinearSystemInAbCategoryOrFail[102X, for IsCapCategory, IsFunction 7.7-203 
+  [2XAddSomeInjectiveObject[102X, for IsCapCategory, IsFunction 7.7-204 
+  [2XAddSomeProjectiveObject[102X, for IsCapCategory, IsFunction 7.7-205 
+  [2XAddSomeReductionBySplitEpiSummand[102X, for IsCapCategory, IsFunction 7.7-206 
+  [2XAddSomeReductionBySplitEpiSummand_MorphismFromInputRange[102X, for IsCapCategory, IsFunction 7.7-207 
+  [2XAddSomeReductionBySplitEpiSummand_MorphismToInputRange[102X, for IsCapCategory, IsFunction 7.7-208 
+  [2XAddSubtractionForMorphisms[102X, for IsCapCategory, IsFunction 7.7-209 
+  [2XAddTerminalObject[102X, for IsCapCategory, IsFunction 7.7-210 
+  [2XAddTerminalObjectFunctorial[102X, for IsCapCategory, IsFunction 7.7-211 
+  [2XAddUniversalMorphismFromCoequalizer[102X, for IsCapCategory, IsFunction 7.7-212 
+  [2XAddUniversalMorphismFromCoequalizerWithGivenCoequalizer[102X, for IsCapCategory, IsFunction 7.7-213 
+  [2XAddUniversalMorphismFromCoproduct[102X, for IsCapCategory, IsFunction 7.7-214 
+  [2XAddUniversalMorphismFromCoproductWithGivenCoproduct[102X, for IsCapCategory, IsFunction 7.7-215 
+  [2XAddUniversalMorphismFromDirectSum[102X, for IsCapCategory, IsFunction 7.7-216 
+  [2XAddUniversalMorphismFromDirectSumWithGivenDirectSum[102X, for IsCapCategory, IsFunction 7.7-217 
+  [2XAddUniversalMorphismFromImage[102X, for IsCapCategory, IsFunction 7.7-218 
+  [2XAddUniversalMorphismFromImageWithGivenImageObject[102X, for IsCapCategory, IsFunction 7.7-219 
+  [2XAddUniversalMorphismFromInitialObject[102X, for IsCapCategory, IsFunction 7.7-220 
+  [2XAddUniversalMorphismFromInitialObjectWithGivenInitialObject[102X, for IsCapCategory, IsFunction 7.7-221 
+  [2XAddUniversalMorphismFromPushout[102X, for IsCapCategory, IsFunction 7.7-222 
+  [2XAddUniversalMorphismFromPushoutWithGivenPushout[102X, for IsCapCategory, IsFunction 7.7-223 
+  [2XAddUniversalMorphismFromZeroObject[102X, for IsCapCategory, IsFunction 7.7-224 
+  [2XAddUniversalMorphismFromZeroObjectWithGivenZeroObject[102X, for IsCapCategory, IsFunction 7.7-225 
+  [2XAddUniversalMorphismIntoCoimage[102X, for IsCapCategory, IsFunction 7.7-226 
+  [2XAddUniversalMorphismIntoCoimageWithGivenCoimage[102X, for IsCapCategory, IsFunction 7.7-227 
+  [2XAddUniversalMorphismIntoDirectProduct[102X, for IsCapCategory, IsFunction 7.7-228 
+  [2XAddUniversalMorphismIntoDirectProductWithGivenDirectProduct[102X, for IsCapCategory, IsFunction 7.7-229 
+  [2XAddUniversalMorphismIntoDirectSum[102X, for IsCapCategory, IsFunction 7.7-230 
+  [2XAddUniversalMorphismIntoDirectSumWithGivenDirectSum[102X, for IsCapCategory, IsFunction 7.7-231 
+  [2XAddUniversalMorphismIntoEqualizer[102X, for IsCapCategory, IsFunction 7.7-232 
+  [2XAddUniversalMorphismIntoEqualizerWithGivenEqualizer[102X, for IsCapCategory, IsFunction 7.7-233 
+  [2XAddUniversalMorphismIntoFiberProduct[102X, for IsCapCategory, IsFunction 7.7-234 
+  [2XAddUniversalMorphismIntoFiberProductWithGivenFiberProduct[102X, for IsCapCategory, IsFunction 7.7-235 
+  [2XAddUniversalMorphismIntoTerminalObject[102X, for IsCapCategory, IsFunction 7.7-236 
+  [2XAddUniversalMorphismIntoTerminalObjectWithGivenTerminalObject[102X, for IsCapCategory, IsFunction 7.7-237 
+  [2XAddUniversalMorphismIntoZeroObject[102X, for IsCapCategory, IsFunction 7.7-238 
+  [2XAddUniversalMorphismIntoZeroObjectWithGivenZeroObject[102X, for IsCapCategory, IsFunction 7.7-239 
+  [2XAddVerticalPostCompose[102X, for IsCapCategory, IsFunction 7.7-240 
+  [2XAddVerticalPreCompose[102X, for IsCapCategory, IsFunction 7.7-241 
   [2XAddWithGivenDerivationPairToCAP[102X 8.3-14 
-  [2XAddZeroMorphism[102X, for IsCapCategory, IsFunction 3.8-13 
-  [2XAddZeroObject[102X, for IsCapCategory, IsFunction 6.3-13 
-  [2XAddZeroObjectFunctorial[102X, for IsCapCategory, IsFunction 6.3-23 
+  [2XAddZeroMorphism[102X, for IsCapCategory, IsFunction 7.7-242 
+  [2XAddZeroObject[102X, for IsCapCategory, IsFunction 7.7-243 
+  [2XAddZeroObjectFunctorial[102X, for IsCapCategory, IsFunction 7.7-244 
   [2XApplyFunctor[102X 5.4-9 
   [2XApplyNaturalTransformation[102X 5.5-4 
   [2XAsCapCategory[102X, for IsCapCategoryAsCatObject 5.3-2 
   [2XAsCatObject[102X, for IsCapCategory 5.3-1 
-  [2XAstrictionToCoimage[102X, for IsCapCategoryMorphism 6.14-14 
-  [2XAstrictionToCoimageWithGivenCoimage[102X, for IsCapCategoryMorphism, IsCapCategoryObject 6.14-15 
-  [2XBasisOfExternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 3.16-25 
+  [2XAstrictionToCoimage[102X, for IsCapCategoryMorphism 6.14-10 
+  [2XAstrictionToCoimageWithGivenCoimage[102X, for IsCapCategoryMorphism, IsCapCategoryObject 6.14-11 
+  [2XBasisOfExternalHom[102X, for IsCapCategoryObject, IsCapCategoryObject 3.16-18 
   [2XBrowseCachingStatistic[102X 9.2-18 
   [2XBrowseTimingStatistics[102X 1.10-1 
   [2XCachingStatistic[102X 9.2-17 
   [2XCanCompute[102X, for IsCapCategory, IsString 1.5-1 
-  [2XCanonicalIdentificationFromCoimageToImageObject[102X, for IsCapCategoryMorphism 6.14-27 
-  [2XCanonicalIdentificationFromImageObjectToCoimage[102X, for IsCapCategoryMorphism 6.14-25 
+  [2XCanonicalIdentificationFromCoimageToImageObject[102X, for IsCapCategoryMorphism 6.14-15 
+  [2XCanonicalIdentificationFromImageObjectToCoimage[102X, for IsCapCategoryMorphism 6.14-14 
   [2XCAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY[102X 9.2-10 
   [2XCAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY[102X 9.2-15 
   [2XCAP_INTERNAL_ASSERT_IS_LIST_OF_OBJECTS_OF_CATEGORY[102X 9.2-14 
@@ -323,38 +329,38 @@
   [2XCategoryOfOperationWeightList[102X, for IsOperationWeightList 8.4-4 
   [2XCellFilter[102X, for IsCapCategory 1.3-2 
   [2XCheckConstructivenessOfCategory[102X, for IsCapCategory, IsString 1.5-2 
-  [2XCoastrictionToImage[102X, for IsCapCategoryMorphism 6.13-8 
-  [2XCoastrictionToImageWithGivenImageObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 6.13-9 
-  [2XCoefficientsOfMorphism[102X, for IsCapCategoryMorphism 3.16-29 
-  [2XCoefficientsOfMorphismWithGivenBasisOfExternalHom[102X, for IsCapCategoryMorphism, IsList 3.16-27 
+  [2XCoastrictionToImage[102X, for IsCapCategoryMorphism 6.13-6 
+  [2XCoastrictionToImageWithGivenImageObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 6.13-7 
+  [2XCoefficientsOfMorphism[102X, for IsCapCategoryMorphism 3.16-20 
+  [2XCoefficientsOfMorphismWithGivenBasisOfExternalHom[102X, for IsCapCategoryMorphism, IsList 3.16-19 
   [2XCoequalizer[102X 6.10-1 
-  [2XCoequalizerFunctorial[102X, for IsList, IsCapCategoryMorphism, IsList 6.10-16 
-  [2XCoequalizerFunctorialWithGivenCoequalizers[102X, for IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject 6.10-17 
+  [2XCoequalizerFunctorial[102X, for IsList, IsCapCategoryMorphism, IsList 6.10-9 
+  [2XCoequalizerFunctorialWithGivenCoequalizers[102X, for IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject 6.10-10 
   [2XCoequalizerOp[102X, for IsList 6.10-2 
-  [2XCoimage[102X, for IsCapCategoryMorphism 6.14-11 
-  [2XCoimageProjection[102X, for IsCapCategoryMorphism 6.14-12 
-  [2XCoimageProjectionWithGivenCoimage[102X, for IsCapCategoryMorphism, IsCapCategoryObject 6.14-13 
+  [2XCoimage[102X, for IsCapCategoryMorphism 6.14-7 
+  [2XCoimageProjection[102X, for IsCapCategoryMorphism 6.14-8 
+  [2XCoimageProjectionWithGivenCoimage[102X, for IsCapCategoryMorphism, IsCapCategoryObject 6.14-9 
   [2XCokernelColift[102X, for IsCapCategoryMorphism, IsCapCategoryObject, IsCapCategoryMorphism 6.2-6 
   [2XCokernelColiftWithGivenCokernelObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 6.2-7 
   [2XCokernelObject[102X, for IsCapCategoryMorphism 6.2-1 
-  [2XCokernelObjectFunctorial[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 6.2-16 
-      for IsList 6.2-15 
-  [2XCokernelObjectFunctorialWithGivenCokernelObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 6.2-18 
-      for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,IsCapCategoryMorphism, IsCapCategoryObject 6.2-17 
+  [2XCokernelObjectFunctorial[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 6.2-9 
+      for IsList 6.2-8 
+  [2XCokernelObjectFunctorialWithGivenCokernelObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 6.2-11 
+      for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,IsCapCategoryMorphism, IsCapCategoryObject 6.2-10 
   [2XCokernelProjection[102X, for IsCapCategoryMorphism 6.2-2 
   [2XCokernelProjectionWithGivenCokernelObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 6.2-3 
-  [2XColift[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-15 
-  [2XColiftAlongEpimorphism[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-3 
-  [2XColiftOrFail[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-17 
+  [2XColift[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-8 
+  [2XColiftAlongEpimorphism[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-2 
+  [2XColiftOrFail[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-9 
   [2XCommutativeRingOfLinearCategory[102X, for IsCapCategory 1.3-8 
-  [2XComponentOfMorphismFromDirectSum[102X, for IsCapCategoryMorphism, IsList, IsInt 6.6-21 
-  [2XComponentOfMorphismIntoDirectSum[102X, for IsCapCategoryMorphism, IsList, IsInt 6.6-20 
+  [2XComponentOfMorphismFromDirectSum[102X, for IsCapCategoryMorphism, IsList, IsInt 6.6-20 
+  [2XComponentOfMorphismIntoDirectSum[102X, for IsCapCategoryMorphism, IsList, IsInt 6.6-19 
   [2XContains[102X, for IsStringMinHeap, IsString 8.5-8 
   [2XCoproduct[102X, for IsCapCategoryObject, IsCapCategoryObject 6.7-2 
       for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 6.7-3 
       for IsList 6.7-1 
-  [2XCoproductFunctorial[102X, for IsList 6.7-13 
-  [2XCoproductFunctorialWithGivenCoproducts[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.7-14 
+  [2XCoproductFunctorial[102X, for IsList 6.7-8 
+  [2XCoproductFunctorialWithGivenCoproducts[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.7-9 
   [2XCreateCapCategory[102X 1.2-1 
       for IsString 1.2-2 
   [2XCurrentOperationWeight[102X, for IsOperationWeightList, IsString 8.4-5 
@@ -374,23 +380,23 @@
   [2XDerivationsUsingOperation[102X, for IsDerivedMethodGraph, IsString 8.3-16 
   [2XDerivationWeight[102X, for IsDerivedMethod 8.2-4 
   [2XDirectProduct[102X 6.8-1 
-  [2XDirectProductFunctorial[102X, for IsList 6.8-12 
-  [2XDirectProductFunctorialWithGivenDirectProducts[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.8-13 
+  [2XDirectProductFunctorial[102X, for IsList 6.8-7 
+  [2XDirectProductFunctorialWithGivenDirectProducts[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.8-8 
   [2XDirectProductOp[102X, for IsList 6.8-2 
   [2XDirectSum[102X 6.6-1 
-  [2XDirectSumCodiagonalDifference[102X, for IsList 6.12-9 
-  [2XDirectSumDiagonalDifference[102X, for IsList 6.11-9 
-  [2XDirectSumFunctorial[102X, for IsList 6.6-37 
-  [2XDirectSumFunctorialWithGivenDirectSums[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.6-38 
+  [2XDirectSumCodiagonalDifference[102X, for IsList 6.12-5 
+  [2XDirectSumDiagonalDifference[102X, for IsList 6.11-5 
+  [2XDirectSumFunctorial[102X, for IsList 6.6-21 
+  [2XDirectSumFunctorialWithGivenDirectSums[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.6-22 
   [2XDirectSumOp[102X, for IsList 6.6-2 
-  [2XDirectSumProjectionInPushout[102X, for IsList 6.12-11 
+  [2XDirectSumProjectionInPushout[102X, for IsList 6.12-6 
   [2XDisableAddForCategoricalOperations[102X 1.11-1 
   [2XDisableInputSanityChecks[102X 1.9-1 
   [2XDisableOutputSanityChecks[102X 1.9-1 
   [2XDisableSanityChecks[102X 1.9-1 
   [2XDisableTimingStatistics[102X 1.10-1 
   [2XDisplayTimingStatistics[102X 1.10-1 
-  [2XDistinguishedObjectOfHomomorphismStructure[102X, for IsCapCategory 3.16-7 
+  [2XDistinguishedObjectOfHomomorphismStructure[102X, for IsCapCategory 3.16-4 
   [2XDown[102X, for IsObject 1.7-1 
   [2XDownOnlyMorphismData[102X, for IsCapCategoryMorphism 1.7-2 
   [2XDownToBottom[102X, for IsObject 1.7-3 
@@ -407,15 +413,15 @@
   [2XEpimorphismFromSomeProjectiveObject[102X, for IsCapCategoryObject 2.9-2 
   [2XEpimorphismFromSomeProjectiveObjectWithGivenSomeProjectiveObject[102X, for IsCapCategoryObject, IsCapCategoryObject 2.9-3 
   [2XEqualizer[102X 6.9-1 
-  [2XEqualizerFunctorial[102X, for IsList, IsCapCategoryMorphism, IsList 6.9-16 
-  [2XEqualizerFunctorialWithGivenEqualizers[102X, for IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject 6.9-17 
+  [2XEqualizerFunctorial[102X, for IsList, IsCapCategoryMorphism, IsList 6.9-9 
+  [2XEqualizerFunctorialWithGivenEqualizers[102X, for IsCapCategoryObject, IsList, IsCapCategoryMorphism, IsList, IsCapCategoryObject 6.9-10 
   [2XEqualizerOp[102X, for IsList 6.9-2 
   [2XExtractMin[102X, for IsStringMinHeap 8.5-4 
-  [2XFiberProduct[102X 6.11-13 
-  [2XFiberProductEmbeddingInDirectSum[102X, for IsList 6.11-11 
-  [2XFiberProductFunctorial[102X, for IsList, IsList, IsList 6.11-29 
-  [2XFiberProductFunctorialWithGivenFiberProducts[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.11-30 
-  [2XFiberProductOp[102X, for IsList 6.11-14 
+  [2XFiberProduct[102X 6.11-7 
+  [2XFiberProductEmbeddingInDirectSum[102X, for IsList 6.11-6 
+  [2XFiberProductFunctorial[102X, for IsList, IsList, IsList 6.11-16 
+  [2XFiberProductFunctorialWithGivenFiberProducts[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.11-17 
+  [2XFiberProductOp[102X, for IsList 6.11-8 
   [2XFunctionCalledBeforeInstallation[102X, for IsDerivedMethod 8.2-14 
   [2XFunctorCanonicalizeZeroMorphisms[102X, for IsCapCategory 5.4-15 
   [2XFunctorCanonicalizeZeroObjects[102X, for IsCapCategory 5.4-13 
@@ -426,35 +432,35 @@
   [2XHomologyObject[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 6.15-1 
   [2XHomologyObjectFunctorial[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 6.15-2 
   [2XHomologyObjectFunctorialWithGivenHomologyObjects[102X, for IsCapCategoryObject, IsList, IsCapCategoryObject 6.15-3 
-  [2XHomomorphismStructureOnMorphisms[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.16-3 
-  [2XHomomorphismStructureOnMorphismsWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 3.16-5 
+  [2XHomomorphismStructureOnMorphisms[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.16-2 
+  [2XHomomorphismStructureOnMorphismsWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 3.16-3 
   [2XHomomorphismStructureOnObjects[102X, for IsCapCategoryObject, IsCapCategoryObject 3.16-1 
-  [2XHomStructure[102X, for IsCapCategory 3.16-24 
-      for IsCapCategoryMorphism 3.16-22 
-      for IsCapCategoryMorphism, IsCapCategoryMorphism 3.16-18 
-      for IsCapCategoryMorphism, IsCapCategoryObject 3.16-19 
-      for IsCapCategoryObject, IsCapCategoryMorphism 3.16-20 
-      for IsCapCategoryObject, IsCapCategoryObject 3.16-21 
-      for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 3.16-23 
-  [2XHorizontalPostCompose[102X, for IsCapCategoryTwoCell, IsCapCategoryTwoCell 4.2-5 
-  [2XHorizontalPreCompose[102X, for IsCapCategoryTwoCell, IsCapCategoryTwoCell 4.2-3 
+  [2XHomStructure[102X, for IsCapCategory 3.16-17 
+      for IsCapCategoryMorphism 3.16-15 
+      for IsCapCategoryMorphism, IsCapCategoryMorphism 3.16-11 
+      for IsCapCategoryMorphism, IsCapCategoryObject 3.16-12 
+      for IsCapCategoryObject, IsCapCategoryMorphism 3.16-13 
+      for IsCapCategoryObject, IsCapCategoryObject 3.16-14 
+      for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 3.16-16 
+  [2XHorizontalPostCompose[102X, for IsCapCategoryTwoCell, IsCapCategoryTwoCell 4.2-3 
+  [2XHorizontalPreCompose[102X, for IsCapCategoryTwoCell, IsCapCategoryTwoCell 4.2-2 
   [2XHorizontalPreComposeFunctorWithNaturalTransformation[102X, for IsCapFunctor, IsCapNaturalTransformation 5.5-7 
   [2XHorizontalPreComposeNaturalTransformationWithFunctor[102X, for IsCapNaturalTransformation, IsCapFunctor 5.5-6 
   [2XIdentityFunctor[102X, for IsCapCategory 5.4-12 
   [2XIdentityMorphism[102X, for IsCapCategoryObject 3.10-1 
   [2XIdentityTwoCell[102X, for IsCapCategoryMorphism 4.2-1 
-  [2XImageEmbedding[102X, for IsCapCategoryMorphism 6.13-6 
-  [2XImageEmbeddingWithGivenImageObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 6.13-7 
-  [2XImageObject[102X, for IsCapCategoryMorphism 6.13-5 
+  [2XImageEmbedding[102X, for IsCapCategoryMorphism 6.13-4 
+  [2XImageEmbeddingWithGivenImageObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 6.13-5 
+  [2XImageObject[102X, for IsCapCategoryMorphism 6.13-3 
   [2XInitialObject[102X, for IsCapCategory 6.5-1 
       for IsCapCategoryCell 6.5-2 
-  [2XInitialObjectFunctorial[102X, for IsCapCategory 6.5-8 
+  [2XInitialObjectFunctorial[102X, for IsCapCategory 6.5-5 
   [2XInjectionOfCofactorOfCoproduct[102X, for IsList, IsInt 6.7-4 
   [2XInjectionOfCofactorOfCoproductWithGivenCoproduct[102X, for IsList, IsInt, IsCapCategoryObject 6.7-5 
   [2XInjectionOfCofactorOfDirectSum[102X, for IsList, IsInt 6.6-5 
   [2XInjectionOfCofactorOfDirectSumWithGivenDirectSum[102X, for IsList, IsInt, IsCapCategoryObject 6.6-6 
-  [2XInjectionOfCofactorOfPushout[102X, for IsList, IsInt 6.12-15 
-  [2XInjectionOfCofactorOfPushoutWithGivenPushout[102X, for IsList, IsInt, IsCapCategoryObject 6.12-16 
+  [2XInjectionOfCofactorOfPushout[102X, for IsList, IsInt 6.12-9 
+  [2XInjectionOfCofactorOfPushoutWithGivenPushout[102X, for IsList, IsInt, IsCapCategoryObject 6.12-10 
   [2XInjectiveColift[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 2.10-4 
   [2XInputSignature[102X, for IsCapFunctor 5.4-10 
   [2XInstallDerivationForCategory[102X, for IsDerivedMethod, IsPosInt, IsCapCategory 8.2-12 
@@ -465,14 +471,14 @@
   [2XInstallNaturalTransformation[102X, for IsCapNaturalTransformation, IsString 5.5-5 
   [2XInstallOtherMethodForCompilerForCAP[102X 9.2-20 
   [2XInstallSetWithToDoForIsWellDefined[102X, for IsObject, IsString, IsList 9.2-2 
-  [2XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure[102X, for IsCapCategoryMorphism 3.16-9 
-  [2XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 3.16-11 
-  [2XInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 3.16-13 
+  [2XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure[102X, for IsCapCategoryMorphism 3.16-5 
+  [2XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 3.16-6 
+  [2XInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism 3.16-7 
   [2XInverseForMorphisms[102X, for IsCapCategoryMorphism 3.13-1 
-  [2XInverseMorphismFromCoimageToImage[102X, for IsCapCategoryMorphism 6.14-4 
-  [2XInverseMorphismFromCoimageToImageWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 6.14-5 
+  [2XInverseMorphismFromCoimageToImage[102X, for IsCapCategoryMorphism 6.14-3 
+  [2XInverseMorphismFromCoimageToImageWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 6.14-4 
   [2XIsApplicableToCategory[102X, for IsDerivedMethod, IsCapCategory 8.2-7 
-  [2XIsAutomorphism[102X, for IsCapCategoryMorphism 3.5-7 
+  [2XIsAutomorphism[102X, for IsCapCategoryMorphism 3.5-4 
   [2XIsCapCategory[102X, for IsObject 1.1-1 
   [2XIsCapCategoryAsCatObject[102X, for IsCapCategoryObject 5.2-1 
   [2XIsCapCategoryCell[102X, for IsAttributeStoringRep 1.1-2 
@@ -481,135 +487,135 @@
   [2XIsCapCategoryTwoCell[102X, for IsCapCategoryCell 1.1-5 
   [2XIsCapFunctor[102X, for IsCapCategoryMorphism 5.2-2 
   [2XIsCapNaturalTransformation[102X, for IsCapCategoryTwoCell 5.2-3 
-  [2XIsCodominating[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.9-7 
-  [2XIsColiftable[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-19 
-  [2XIsColiftableAlongEpimorphism[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-7 
+  [2XIsCodominating[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.9-4 
+  [2XIsColiftable[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-10 
+  [2XIsColiftableAlongEpimorphism[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-4 
   [2XIsCongruentForMorphisms[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.7-1 
   [2XIsDerivedMethod[102X, for IsObject 8.2-1 
   [2XIsDerivedMethodGraph[102X, for IsObject 8.3-1 
-  [2XIsDominating[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.9-5 
+  [2XIsDominating[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.9-3 
   [2XIsEmptyHeap[102X, for IsStringMinHeap 8.5-6 
-  [2XIsEndomorphism[102X, for IsCapCategoryMorphism 3.5-5 
-  [2XIsEpimorphism[102X, for IsCapCategoryMorphism 3.3-3 
-  [2XIsEqualAsFactorobjects[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.9-3 
+  [2XIsEndomorphism[102X, for IsCapCategoryMorphism 3.5-3 
+  [2XIsEpimorphism[102X, for IsCapCategoryMorphism 3.3-2 
+  [2XIsEqualAsFactorobjects[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.9-2 
   [2XIsEqualAsSubobjects[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.9-1 
   [2XIsEqualForCacheForMorphisms[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.14-1 
   [2XIsEqualForCacheForObjects[102X, for IsCapCategoryObject, IsCapCategoryObject 2.5-1 
-  [2XIsEqualForMorphisms[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.7-3 
-  [2XIsEqualForMorphismsOnMor[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.7-5 
+  [2XIsEqualForMorphisms[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.7-2 
+  [2XIsEqualForMorphismsOnMor[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.7-3 
   [2XIsEqualForObjects[102X, for IsCapCategoryObject, IsCapCategoryObject 2.2-1 
   [2XIsHomSetInhabited[102X, for IsCapCategoryObject, IsCapCategoryObject 3.15-1 
-  [2XIsIdempotent[102X, for IsCapCategoryMorphism 3.3-13 
+  [2XIsIdempotent[102X, for IsCapCategoryMorphism 3.3-7 
   [2XIsIdenticalToIdentityMorphism[102X, for IsCapCategoryMorphism 3.5-1 
-  [2XIsIdenticalToZeroMorphism[102X, for IsCapCategoryMorphism 3.5-3 
-  [2XIsInitial[102X, for IsCapCategoryObject 2.3-7 
-  [2XIsInjective[102X, for IsCapCategoryObject 2.3-3 
-  [2XIsIsomorphism[102X, for IsCapCategoryMorphism 3.3-5 
-  [2XIsLiftable[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-13 
-  [2XIsLiftableAlongMonomorphism[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-5 
+  [2XIsIdenticalToZeroMorphism[102X, for IsCapCategoryMorphism 3.5-2 
+  [2XIsInitial[102X, for IsCapCategoryObject 2.3-4 
+  [2XIsInjective[102X, for IsCapCategoryObject 2.3-2 
+  [2XIsIsomorphism[102X, for IsCapCategoryMorphism 3.3-3 
+  [2XIsLiftable[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-7 
+  [2XIsLiftableAlongMonomorphism[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-3 
   [2XIsMonomorphism[102X, for IsCapCategoryMorphism 3.3-1 
-  [2XIsomorphismFromCoequalizerOfCoproductDiagramToPushout[102X, for IsList 6.12-7 
-  [2XIsomorphismFromCoimageToCokernelOfKernel[102X, for IsCapCategoryMorphism 6.14-7 
-  [2XIsomorphismFromCokernelOfDiagonalDifferenceToPushout[102X, for IsList 6.12-3 
-  [2XIsomorphismFromCokernelOfKernelToCoimage[102X, for IsCapCategoryMorphism 6.14-9 
+  [2XIsomorphismFromCoequalizerOfCoproductDiagramToPushout[102X, for IsList 6.12-4 
+  [2XIsomorphismFromCoimageToCokernelOfKernel[102X, for IsCapCategoryMorphism 6.14-5 
+  [2XIsomorphismFromCokernelOfDiagonalDifferenceToPushout[102X, for IsList 6.12-2 
+  [2XIsomorphismFromCokernelOfKernelToCoimage[102X, for IsCapCategoryMorphism 6.14-6 
   [2XIsomorphismFromCoproductToDirectSum[102X, for IsList 6.6-14 
   [2XIsomorphismFromDirectProductToDirectSum[102X, for IsList 6.6-12 
   [2XIsomorphismFromDirectSumToCoproduct[102X, for IsList 6.6-13 
   [2XIsomorphismFromDirectSumToDirectProduct[102X, for IsList 6.6-11 
-  [2XIsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct[102X, for IsList 6.11-7 
-  [2XIsomorphismFromFiberProductToEqualizerOfDirectProductDiagram[102X, for IsList 6.11-5 
+  [2XIsomorphismFromEqualizerOfDirectProductDiagramToFiberProduct[102X, for IsList 6.11-4 
+  [2XIsomorphismFromFiberProductToEqualizerOfDirectProductDiagram[102X, for IsList 6.11-3 
   [2XIsomorphismFromFiberProductToKernelOfDiagonalDifference[102X, for IsList 6.11-1 
   [2XIsomorphismFromHomologyObjectToItsConstructionAsAnImageObject[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 6.15-4 
   [2XIsomorphismFromImageObjectToKernelOfCokernel[102X, for IsCapCategoryMorphism 6.13-1 
   [2XIsomorphismFromInitialObjectToZeroObject[102X, for IsCapCategory 6.3-10 
   [2XIsomorphismFromItsConstructionAsAnImageObjectToHomologyObject[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 6.15-5 
-  [2XIsomorphismFromKernelOfCokernelToImageObject[102X, for IsCapCategoryMorphism 6.13-3 
-  [2XIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct[102X, for IsList 6.11-3 
-  [2XIsomorphismFromPushoutToCoequalizerOfCoproductDiagram[102X, for IsList 6.12-5 
+  [2XIsomorphismFromKernelOfCokernelToImageObject[102X, for IsCapCategoryMorphism 6.13-2 
+  [2XIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct[102X, for IsList 6.11-2 
+  [2XIsomorphismFromPushoutToCoequalizerOfCoproductDiagram[102X, for IsList 6.12-3 
   [2XIsomorphismFromPushoutToCokernelOfDiagonalDifference[102X, for IsList 6.12-1 
   [2XIsomorphismFromTerminalObjectToZeroObject[102X, for IsCapCategory 6.3-12 
   [2XIsomorphismFromZeroObjectToInitialObject[102X, for IsCapCategory 6.3-9 
   [2XIsomorphismFromZeroObjectToTerminalObject[102X, for IsCapCategory 6.3-11 
-  [2XIsOne[102X, for IsCapCategoryMorphism 3.3-11 
+  [2XIsOne[102X, for IsCapCategoryMorphism 3.3-6 
   [2XIsOperationWeightList[102X, for IsObject 8.4-1 
   [2XIsProjective[102X, for IsCapCategoryObject 2.3-1 
-  [2XIsSplitEpimorphism[102X, for IsCapCategoryMorphism 3.3-9 
-  [2XIsSplitMonomorphism[102X, for IsCapCategoryMorphism 3.3-7 
+  [2XIsSplitEpimorphism[102X, for IsCapCategoryMorphism 3.3-5 
+  [2XIsSplitMonomorphism[102X, for IsCapCategoryMorphism 3.3-4 
   [2XIsStringMinHeap[102X, for IsObject 8.5-1 
-  [2XIsTerminal[102X, for IsCapCategoryObject 2.3-5 
+  [2XIsTerminal[102X, for IsCapCategoryObject 2.3-3 
   [2XIsWellDefined[102X, for IsCapCategoryCell 1.6-1 
   [2XIsWellDefinedForMorphisms[102X, for IsCapCategoryMorphism 3.11-1 
   [2XIsWellDefinedForObjects[102X, for IsCapCategoryObject 2.8-1 
   [2XIsWellDefinedForTwoCells[102X, for IsCapCategoryTwoCell 4.3-1 
-  [2XIsZero[102X, for IsCapCategoryObject 2.3-10 
+  [2XIsZero[102X, for IsCapCategoryObject 2.3-6 
   [2XIsZeroForMorphisms[102X, for IsCapCategoryMorphism 3.8-1 
-  [2XIsZeroForObjects[102X, for IsCapCategoryObject 2.3-9 
+  [2XIsZeroForObjects[102X, for IsCapCategoryObject 2.3-5 
   [2XKernelEmbedding[102X, for IsCapCategoryMorphism 6.1-2 
   [2XKernelEmbeddingWithGivenKernelObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 6.1-3 
   [2XKernelLift[102X, for IsCapCategoryMorphism, IsCapCategoryObject, IsCapCategoryMorphism 6.1-6 
   [2XKernelLiftWithGivenKernelObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 6.1-7 
   [2XKernelObject[102X, for IsCapCategoryMorphism 6.1-1 
-  [2XKernelObjectFunctorial[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 6.1-16 
-      for IsList 6.1-15 
-  [2XKernelObjectFunctorialWithGivenKernelObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 6.1-18 
-      for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,IsCapCategoryMorphism, IsCapCategoryObject 6.1-17 
+  [2XKernelObjectFunctorial[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 6.1-9 
+      for IsList 6.1-8 
+  [2XKernelObjectFunctorialWithGivenKernelObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 6.1-11 
+      for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism,IsCapCategoryMorphism, IsCapCategoryObject 6.1-10 
   [2XLaTeXOutput[102X, for IsCapCategory 1.13-2 
       for IsCapCategoryCell 1.13-1 
-  [2XLift[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-9 
+  [2XLift[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-5 
   [2XLiftAlongMonomorphism[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-1 
-  [2XLiftOrFail[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-11 
+  [2XLiftOrFail[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.12-6 
   [2XListCAPPrepareFunctions[102X 7.6-3 
   [2XMakeDerivation[102X, for IsString, IsFunction, IsDenseList,IsPosInt, IsDenseList, IsFunction 8.2-2 
   [2XMakeDerivationGraph[102X, for IsDenseList 8.3-2 
   [2XMakeOperationWeightList[102X, for IsCapCategory, IsDerivedMethodGraph 8.4-2 
-  [2XMereExistenceOfSolutionOfLinearSystemInAbCategory[102X, for IsList, IsList, IsList 3.16-17 
+  [2XMereExistenceOfSolutionOfLinearSystemInAbCategory[102X, for IsList, IsList, IsList 3.16-10 
   [2XMonomorphismIntoSomeInjectiveObject[102X, for IsCapCategoryObject 2.10-2 
   [2XMonomorphismIntoSomeInjectiveObjectWithGivenSomeInjectiveObject[102X, for IsCapCategoryObject, IsCapCategoryObject 2.10-3 
   [2XMorphismBetweenDirectSums[102X, for IsList 6.6-16 
-      for IsList, IsInt, IsInt 6.6-19 
+      for IsList, IsInt, IsInt 6.6-18 
       for IsList, IsList, IsList 6.6-15 
   [2XMorphismBetweenDirectSumsWithGivenDirectSums[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.6-17 
   [2XMorphismCache[102X, for IsCapFunctor 9.1-2 
   [2XMorphismConstructor[102X, for IsCapCategoryObject, IsObject, IsCapCategoryObject 3.2-1 
-  [2XMorphismDatum[102X, for IsCapCategoryMorphism 3.2-3 
+  [2XMorphismDatum[102X, for IsCapCategoryMorphism 3.2-2 
   [2XMorphismFilter[102X, for IsCapCategory 1.3-4 
   [2XMorphismFromCoimageToImage[102X, for IsCapCategoryMorphism 6.14-1 
   [2XMorphismFromCoimageToImageWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 6.14-2 
   [2XMorphismFromEqualizerToSink[102X, for IsList 6.9-5 
   [2XMorphismFromEqualizerToSinkWithGivenEqualizer[102X, for IsList, IsCapCategoryObject 6.9-6 
-  [2XMorphismFromFiberProductToSink[102X, for IsList 6.11-17 
-  [2XMorphismFromFiberProductToSinkWithGivenFiberProduct[102X, for IsList, IsCapCategoryObject 6.11-18 
+  [2XMorphismFromFiberProductToSink[102X, for IsList 6.11-11 
+  [2XMorphismFromFiberProductToSinkWithGivenFiberProduct[102X, for IsList, IsCapCategoryObject 6.11-12 
   [2XMorphismFromKernelObjectToSink[102X, for IsCapCategoryMorphism 6.1-4 
   [2XMorphismFromKernelObjectToSinkWithGivenKernelObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 6.1-5 
   [2XMorphismFromSourceToCoequalizer[102X, for IsList 6.10-5 
   [2XMorphismFromSourceToCoequalizerWithGivenCoequalizer[102X, for IsList, IsCapCategoryObject 6.10-6 
   [2XMorphismFromSourceToCokernelObject[102X, for IsCapCategoryMorphism 6.2-4 
   [2XMorphismFromSourceToCokernelObjectWithGivenCokernelObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 6.2-5 
-  [2XMorphismFromSourceToPushout[102X, for IsList 6.12-17 
-  [2XMorphismFromSourceToPushoutWithGivenPushout[102X, for IsList, IsCapCategoryObject 6.12-18 
+  [2XMorphismFromSourceToPushout[102X, for IsList 6.12-11 
+  [2XMorphismFromSourceToPushoutWithGivenPushout[102X, for IsList, IsCapCategoryObject 6.12-12 
   [2XMorphismFromZeroObject[102X, for IsCapCategoryObject 6.3-7 
   [2XMorphismIntoZeroObject[102X, for IsCapCategoryObject 6.3-8 
   [2XMorphismType[102X, for IsCapCategory 1.3-7 
-  [2XMultiplyWithElementOfCommutativeRingForMorphisms[102X, for IsRingElement, IsCapCategoryMorphism 3.8-9 
+  [2XMultiplyWithElementOfCommutativeRingForMorphisms[102X, for IsRingElement, IsCapCategoryMorphism 3.8-5 
   [2XName[102X, for IsCapNaturalTransformation 5.5-1 
   [2XNaturalIsomorphismFromIdentityToCanonicalizeZeroMorphisms[102X, for IsCapCategory 5.4-16 
   [2XNaturalIsomorphismFromIdentityToCanonicalizeZeroObjects[102X, for IsCapCategory 5.4-14 
   [2XNaturalTransformation[102X, for IsCapFunctor, IsCapFunctor 5.5-2 
   [2XObjectCache[102X, for IsCapFunctor 9.1-1 
   [2XObjectConstructor[102X, for IsCapCategory, IsObject 2.7-1 
-  [2XObjectDatum[102X, for IsCapCategoryObject 2.7-3 
+  [2XObjectDatum[102X, for IsCapCategoryObject 2.7-2 
   [2XObjectFilter[102X, for IsCapCategory 1.3-3 
   [2XObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[102X 3.6-4 
   [2XObjectifyObjectForCAPWithAttributes[102X 2.6-4 
   [2XObjectType[102X, for IsCapCategory 1.3-6 
   [2XOperations[102X, for IsDerivedMethodGraph 8.3-15 
   [2XOperationWeightUsingDerivation[102X, for IsOperationWeightList, IsDerivedMethod 8.4-6 
-  [2XPostCompose[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.10-7 
-      for IsList 3.10-8 
-  [2XPostComposeList[102X, for IsCapCategory, IsList 3.10-10 
-  [2XPreCompose[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.10-3 
-      for IsList 3.10-4 
-  [2XPreComposeList[102X, for IsCapCategory, IsList 3.10-6 
+  [2XPostCompose[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.10-5 
+      for IsList 3.10-6 
+  [2XPostComposeList[102X, for IsCapCategory, IsList 3.10-7 
+  [2XPreCompose[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.10-2 
+      for IsList 3.10-3 
+  [2XPreComposeList[102X, for IsCapCategory, IsList 3.10-4 
   [2XPrintDerivationTree[102X, for IsOperationWeightList, IsString 8.4-12 
   [2XPrintTree[102X, for IsObject, IsFunction, IsFunction 8.4-13 
   [2XPrintTreeRec[102X, for IsObject, IsFunction, IsFunction, IsInt 8.4-14 
@@ -617,35 +623,35 @@
   [2XProjectionInFactorOfDirectProductWithGivenDirectProduct[102X, for IsList, IsInt, IsCapCategoryObject 6.8-4 
   [2XProjectionInFactorOfDirectSum[102X, for IsList, IsInt 6.6-3 
   [2XProjectionInFactorOfDirectSumWithGivenDirectSum[102X, for IsList, IsInt, IsCapCategoryObject 6.6-4 
-  [2XProjectionInFactorOfFiberProduct[102X, for IsList, IsInt 6.11-15 
-  [2XProjectionInFactorOfFiberProductWithGivenFiberProduct[102X, for IsList, IsInt, IsCapCategoryObject 6.11-16 
+  [2XProjectionInFactorOfFiberProduct[102X, for IsList, IsInt 6.11-9 
+  [2XProjectionInFactorOfFiberProductWithGivenFiberProduct[102X, for IsList, IsInt, IsCapCategoryObject 6.11-10 
   [2XProjectionOntoCoequalizer[102X, for IsList 6.10-3 
   [2XProjectionOntoCoequalizerWithGivenCoequalizer[102X, for IsList, IsCapCategoryObject 6.10-4 
   [2XProjectiveLift[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 2.9-4 
-  [2XPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 6.12-14 
-      for IsList 6.12-13 
-  [2XPushoutFunctorial[102X, for IsList, IsList, IsList 6.12-29 
-  [2XPushoutFunctorialWithGivenPushouts[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.12-30 
-  [2XRandomMorphism[102X, for IsCapCategory, IsInt 3.4-17 
-      for IsCapCategory, IsList 3.4-17 
-  [2XRandomMorphismByInteger[102X, for IsCapCategory, IsInt 3.4-13 
-  [2XRandomMorphismByList[102X, for IsCapCategory, IsList 3.4-15 
-  [2XRandomMorphismWithFixedRange[102X, for IsCapCategoryObject, IsInt 3.4-17 
-      for IsCapCategoryObject, IsList 3.4-17 
-  [2XRandomMorphismWithFixedRangeByInteger[102X, for IsCapCategoryObject, IsInt 3.4-5 
-  [2XRandomMorphismWithFixedRangeByList[102X, for IsCapCategoryObject, IsList 3.4-7 
-  [2XRandomMorphismWithFixedSource[102X, for IsCapCategoryObject, IsInt 3.4-17 
-      for IsCapCategoryObject, IsList 3.4-17 
-  [2XRandomMorphismWithFixedSourceAndRange[102X, for IsCapCategoryObject, IsCapCategoryObject, IsInt 3.4-17 
-      for IsCapCategoryObject, IsCapCategoryObject, IsList 3.4-17 
-  [2XRandomMorphismWithFixedSourceAndRangeByInteger[102X, for IsCapCategoryObject, IsCapCategoryObject, IsInt 3.4-9 
-  [2XRandomMorphismWithFixedSourceAndRangeByList[102X, for IsCapCategoryObject, IsCapCategoryObject, IsList 3.4-11 
+  [2XPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 6.12-8 
+      for IsList 6.12-7 
+  [2XPushoutFunctorial[102X, for IsList, IsList, IsList 6.12-16 
+  [2XPushoutFunctorialWithGivenPushouts[102X, for IsCapCategoryObject, IsList, IsList, IsList, IsCapCategoryObject 6.12-17 
+  [2XRandomMorphism[102X, for IsCapCategory, IsInt 3.4-9 
+      for IsCapCategory, IsList 3.4-9 
+  [2XRandomMorphismByInteger[102X, for IsCapCategory, IsInt 3.4-7 
+  [2XRandomMorphismByList[102X, for IsCapCategory, IsList 3.4-8 
+  [2XRandomMorphismWithFixedRange[102X, for IsCapCategoryObject, IsInt 3.4-9 
+      for IsCapCategoryObject, IsList 3.4-9 
+  [2XRandomMorphismWithFixedRangeByInteger[102X, for IsCapCategoryObject, IsInt 3.4-3 
+  [2XRandomMorphismWithFixedRangeByList[102X, for IsCapCategoryObject, IsList 3.4-4 
+  [2XRandomMorphismWithFixedSource[102X, for IsCapCategoryObject, IsInt 3.4-9 
+      for IsCapCategoryObject, IsList 3.4-9 
+  [2XRandomMorphismWithFixedSourceAndRange[102X, for IsCapCategoryObject, IsCapCategoryObject, IsInt 3.4-9 
+      for IsCapCategoryObject, IsCapCategoryObject, IsList 3.4-9 
+  [2XRandomMorphismWithFixedSourceAndRangeByInteger[102X, for IsCapCategoryObject, IsCapCategoryObject, IsInt 3.4-5 
+  [2XRandomMorphismWithFixedSourceAndRangeByList[102X, for IsCapCategoryObject, IsCapCategoryObject, IsList 3.4-6 
   [2XRandomMorphismWithFixedSourceByInteger[102X, for IsCapCategoryObject, IsInt 3.4-1 
-  [2XRandomMorphismWithFixedSourceByList[102X, for IsCapCategoryObject, IsList 3.4-3 
-  [2XRandomObject[102X, for IsCapCategory, IsInt 2.4-5 
-      for IsCapCategory, IsList 2.4-5 
+  [2XRandomMorphismWithFixedSourceByList[102X, for IsCapCategoryObject, IsList 3.4-2 
+  [2XRandomObject[102X, for IsCapCategory, IsInt 2.4-3 
+      for IsCapCategory, IsList 2.4-4 
   [2XRandomObjectByInteger[102X, for IsCapCategory, IsInt 2.4-1 
-  [2XRandomObjectByList[102X, for IsCapCategory, IsList 2.4-3 
+  [2XRandomObjectByList[102X, for IsCapCategory, IsList 2.4-2 
   [2XRange[102X, for IsCapCategoryMorphism 3.1-3 
       for IsCapCategoryTwoCell 4.1-2 
   [2XRangeOfFunctor[102X, for IsCapFunctor 5.4-4 
@@ -658,43 +664,43 @@
   [2XSetDefaultCaching[102X 1.8-3 
   [2XSetDefaultCachingCrisp[102X 1.8-3 
   [2XSetDefaultCachingWeak[102X 1.8-3 
-  [2XSimplify[102X, for IsCapCategoryMorphism 3.17-31 
+  [2XSimplify[102X, for IsCapCategoryMorphism 3.17-16 
       for IsCapCategoryObject 2.11-1 
-  [2XSimplifyEndo[102X, for IsCapCategoryMorphism, IsObject 3.17-25 
-  [2XSimplifyEndo_IsoFromInputObject[102X, for IsCapCategoryMorphism, IsObject 3.17-29 
-  [2XSimplifyEndo_IsoToInputObject[102X, for IsCapCategoryMorphism, IsObject 3.17-27 
+  [2XSimplifyEndo[102X, for IsCapCategoryMorphism, IsObject 3.17-13 
+  [2XSimplifyEndo_IsoFromInputObject[102X, for IsCapCategoryMorphism, IsObject 3.17-15 
+  [2XSimplifyEndo_IsoToInputObject[102X, for IsCapCategoryMorphism, IsObject 3.17-14 
   [2XSimplifyMorphism[102X, for IsCapCategoryMorphism, IsObject 3.17-1 
   [2XSimplifyObject[102X, for IsCapCategoryObject, IsObject 2.11-2 
-  [2XSimplifyObject_IsoFromInputObject[102X, for IsCapCategoryObject, IsObject 2.11-4 
-  [2XSimplifyObject_IsoToInputObject[102X, for IsCapCategoryObject, IsObject 2.11-6 
-  [2XSimplifyRange[102X, for IsCapCategoryMorphism, IsObject 3.17-9 
-  [2XSimplifyRange_IsoFromInputObject[102X, for IsCapCategoryMorphism, IsObject 3.17-13 
-  [2XSimplifyRange_IsoToInputObject[102X, for IsCapCategoryMorphism, IsObject 3.17-11 
-  [2XSimplifySource[102X, for IsCapCategoryMorphism, IsObject 3.17-3 
-  [2XSimplifySource_IsoFromInputObject[102X, for IsCapCategoryMorphism, IsObject 3.17-7 
-  [2XSimplifySource_IsoToInputObject[102X, for IsCapCategoryMorphism, IsObject 3.17-5 
-  [2XSimplifySourceAndRange[102X, for IsCapCategoryMorphism, IsObject 3.17-15 
-  [2XSimplifySourceAndRange_IsoFromInputRange[102X, for IsCapCategoryMorphism, IsObject 3.17-19 
-  [2XSimplifySourceAndRange_IsoFromInputSource[102X, for IsCapCategoryMorphism, IsObject 3.17-23 
-  [2XSimplifySourceAndRange_IsoToInputRange[102X, for IsCapCategoryMorphism, IsObject 3.17-17 
-  [2XSimplifySourceAndRange_IsoToInputSource[102X, for IsCapCategoryMorphism, IsObject 3.17-21 
-  [2XSolveLinearSystemInAbCategory[102X, for IsList, IsList, IsList 3.16-15 
-  [2XSolveLinearSystemInAbCategoryOrFail[102X, for IsList, IsList, IsList 3.16-16 
+  [2XSimplifyObject_IsoFromInputObject[102X, for IsCapCategoryObject, IsObject 2.11-3 
+  [2XSimplifyObject_IsoToInputObject[102X, for IsCapCategoryObject, IsObject 2.11-4 
+  [2XSimplifyRange[102X, for IsCapCategoryMorphism, IsObject 3.17-5 
+  [2XSimplifyRange_IsoFromInputObject[102X, for IsCapCategoryMorphism, IsObject 3.17-7 
+  [2XSimplifyRange_IsoToInputObject[102X, for IsCapCategoryMorphism, IsObject 3.17-6 
+  [2XSimplifySource[102X, for IsCapCategoryMorphism, IsObject 3.17-2 
+  [2XSimplifySource_IsoFromInputObject[102X, for IsCapCategoryMorphism, IsObject 3.17-4 
+  [2XSimplifySource_IsoToInputObject[102X, for IsCapCategoryMorphism, IsObject 3.17-3 
+  [2XSimplifySourceAndRange[102X, for IsCapCategoryMorphism, IsObject 3.17-8 
+  [2XSimplifySourceAndRange_IsoFromInputRange[102X, for IsCapCategoryMorphism, IsObject 3.17-10 
+  [2XSimplifySourceAndRange_IsoFromInputSource[102X, for IsCapCategoryMorphism, IsObject 3.17-12 
+  [2XSimplifySourceAndRange_IsoToInputRange[102X, for IsCapCategoryMorphism, IsObject 3.17-9 
+  [2XSimplifySourceAndRange_IsoToInputSource[102X, for IsCapCategoryMorphism, IsObject 3.17-11 
+  [2XSolveLinearSystemInAbCategory[102X, for IsList, IsList, IsList 3.16-8 
+  [2XSolveLinearSystemInAbCategoryOrFail[102X, for IsList, IsList, IsList 3.16-9 
   [2XSomeInjectiveObject[102X, for IsCapCategoryObject 2.10-1 
   [2XSomeProjectiveObject[102X, for IsCapCategoryObject 2.9-1 
   [2XSomeReductionBySplitEpiSummand[102X, for IsCapCategoryMorphism 3.18-1 
-  [2XSomeReductionBySplitEpiSummand_MorphismFromInputRange[102X, for IsCapCategoryMorphism 3.18-5 
-  [2XSomeReductionBySplitEpiSummand_MorphismToInputRange[102X, for IsCapCategoryMorphism 3.18-3 
+  [2XSomeReductionBySplitEpiSummand_MorphismFromInputRange[102X, for IsCapCategoryMorphism 3.18-3 
+  [2XSomeReductionBySplitEpiSummand_MorphismToInputRange[102X, for IsCapCategoryMorphism 3.18-2 
   [2XSource[102X, for IsCapCategoryMorphism 3.1-2 
       for IsCapCategoryTwoCell 4.1-1 
   [2XSourceOfFunctor[102X, for IsCapFunctor 5.4-3 
   [2XStringMinHeap[102X 8.5-2 
-  [2XSubtractionForMorphisms[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.8-5 
+  [2XSubtractionForMorphisms[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 3.8-3 
   [2XSwap[102X, for IsStringMinHeap, IsPosInt, IsPosInt 8.5-9 
   [2XTargetOperation[102X, for IsDerivedMethod 8.2-8 
   [2XTerminalObject[102X, for IsCapCategory 6.4-1 
       for IsCapCategoryCell 6.4-2 
-  [2XTerminalObjectFunctorial[102X, for IsCapCategory 6.4-8 
+  [2XTerminalObjectFunctorial[102X, for IsCapCategory 6.4-5 
   [2XTwoCellFilter[102X, for IsCapCategory 1.3-5 
   [2XUniversalMorphismFromCoequalizer[102X, for IsList, IsCapCategoryObject, IsCapCategoryMorphism 6.10-7 
   [2XUniversalMorphismFromCoequalizerWithGivenCoequalizer[102X, for IsList, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 6.10-8 
@@ -702,26 +708,26 @@
   [2XUniversalMorphismFromCoproductWithGivenCoproduct[102X, for IsList, IsCapCategoryObject, IsList, IsCapCategoryObject 6.7-7 
   [2XUniversalMorphismFromDirectSum[102X, for IsList, IsCapCategoryObject, IsList 6.6-9 
   [2XUniversalMorphismFromDirectSumWithGivenDirectSum[102X, for IsList, IsCapCategoryObject, IsList, IsCapCategoryObject 6.6-10 
-  [2XUniversalMorphismFromImage[102X, for IsCapCategoryMorphism, IsList 6.13-10 
-  [2XUniversalMorphismFromImageWithGivenImageObject[102X, for IsCapCategoryMorphism, IsList, IsCapCategoryObject 6.13-11 
+  [2XUniversalMorphismFromImage[102X, for IsCapCategoryMorphism, IsList 6.13-8 
+  [2XUniversalMorphismFromImageWithGivenImageObject[102X, for IsCapCategoryMorphism, IsList, IsCapCategoryObject 6.13-9 
   [2XUniversalMorphismFromInitialObject[102X, for IsCapCategoryObject 6.5-3 
   [2XUniversalMorphismFromInitialObjectWithGivenInitialObject[102X, for IsCapCategoryObject, IsCapCategoryObject 6.5-4 
-  [2XUniversalMorphismFromPushout[102X 6.12-19 
-  [2XUniversalMorphismFromPushoutOp[102X, for IsList, IsCapCategoryObject, IsList 6.12-20 
-  [2XUniversalMorphismFromPushoutWithGivenPushout[102X, for IsList, IsCapCategoryObject, IsList, IsCapCategoryObject 6.12-21 
+  [2XUniversalMorphismFromPushout[102X 6.12-13 
+  [2XUniversalMorphismFromPushoutOp[102X, for IsList, IsCapCategoryObject, IsList 6.12-14 
+  [2XUniversalMorphismFromPushoutWithGivenPushout[102X, for IsList, IsCapCategoryObject, IsList, IsCapCategoryObject 6.12-15 
   [2XUniversalMorphismFromZeroObject[102X, for IsCapCategoryObject 6.3-3 
   [2XUniversalMorphismFromZeroObjectWithGivenZeroObject[102X, for IsCapCategoryObject, IsCapCategoryObject 6.3-4 
-  [2XUniversalMorphismIntoCoimage[102X, for IsCapCategoryMorphism, IsList 6.14-16 
-  [2XUniversalMorphismIntoCoimageWithGivenCoimage[102X, for IsCapCategoryMorphism, IsList, IsCapCategoryObject 6.14-17 
+  [2XUniversalMorphismIntoCoimage[102X, for IsCapCategoryMorphism, IsList 6.14-12 
+  [2XUniversalMorphismIntoCoimageWithGivenCoimage[102X, for IsCapCategoryMorphism, IsList, IsCapCategoryObject 6.14-13 
   [2XUniversalMorphismIntoDirectProduct[102X, for IsList, IsCapCategoryObject, IsList 6.8-5 
   [2XUniversalMorphismIntoDirectProductWithGivenDirectProduct[102X, for IsList, IsCapCategoryObject, IsList, IsCapCategoryObject 6.8-6 
   [2XUniversalMorphismIntoDirectSum[102X, for IsList, IsCapCategoryObject, IsList 6.6-7 
   [2XUniversalMorphismIntoDirectSumWithGivenDirectSum[102X, for IsList, IsCapCategoryObject, IsList, IsCapCategoryObject 6.6-8 
   [2XUniversalMorphismIntoEqualizer[102X, for IsList, IsCapCategoryObject, IsCapCategoryMorphism 6.9-7 
   [2XUniversalMorphismIntoEqualizerWithGivenEqualizer[102X, for IsList, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 6.9-8 
-  [2XUniversalMorphismIntoFiberProduct[102X 6.11-19 
-  [2XUniversalMorphismIntoFiberProductOp[102X, for IsList, IsCapCategoryObject, IsList 6.11-20 
-  [2XUniversalMorphismIntoFiberProductWithGivenFiberProduct[102X, for IsList, IsCapCategoryObject, IsList, IsCapCategoryObject 6.11-21 
+  [2XUniversalMorphismIntoFiberProduct[102X 6.11-13 
+  [2XUniversalMorphismIntoFiberProductOp[102X, for IsList, IsCapCategoryObject, IsList 6.11-14 
+  [2XUniversalMorphismIntoFiberProductWithGivenFiberProduct[102X, for IsList, IsCapCategoryObject, IsList, IsCapCategoryObject 6.11-15 
   [2XUniversalMorphismIntoTerminalObject[102X, for IsCapCategoryObject 6.4-3 
   [2XUniversalMorphismIntoTerminalObjectWithGivenTerminalObject[102X, for IsCapCategoryObject, IsCapCategoryObject 6.4-4 
   [2XUniversalMorphismIntoZeroObject[102X, for IsCapCategoryObject 6.3-5 
@@ -729,12 +735,12 @@
   [2XUsedOperationMultiples[102X, for IsDerivedMethod 8.2-10 
   [2XUsedOperations[102X, for IsDerivedMethod 8.2-9 
   [2XUsedOperationsWithMultiples[102X, for IsDerivedMethod 8.2-11 
-  [2XVerticalPostCompose[102X, for IsCapCategoryTwoCell, IsCapCategoryTwoCell 4.2-9 
-  [2XVerticalPreCompose[102X, for IsCapCategoryTwoCell, IsCapCategoryTwoCell 4.2-7 
-  [2XZeroMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 3.8-12 
+  [2XVerticalPostCompose[102X, for IsCapCategoryTwoCell, IsCapCategoryTwoCell 4.2-5 
+  [2XVerticalPreCompose[102X, for IsCapCategoryTwoCell, IsCapCategoryTwoCell 4.2-4 
+  [2XZeroMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 3.8-7 
   [2XZeroObject[102X, for IsCapCategory 6.3-1 
       for IsCapCategoryCell 6.3-2 
-  [2XZeroObjectFunctorial[102X, for IsCapCategory 6.3-22 
+  [2XZeroObjectFunctorial[102X, for IsCapCategory 6.3-13 
   
   
   -------------------------------------------------------
