@@ -353,6 +353,14 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         current_rec := CAP_INTERNAL_METHOD_NAME_RECORD.(function_name);
         
+        # operations/derivations returning fail usually do not fulfill the requirements that all branches of an if statement can be executed
+        # even if the corresponding condition does not hold
+        if IsString( current_rec.return_type ) and EndsWith( current_rec.return_type, "fail" ) then
+            
+            continue;
+            
+        fi;
+        
         filter_list := current_rec.filter_list;
         
         if not filter_list[1] = "category" then

@@ -136,7 +136,7 @@ AddWithGivenDerivationPairToCAP( ProjectionInFactorOfDirectSum,
         
     end );
     
-    return UniversalMorphismFromDirectSum( cat, list, morphisms );
+    return UniversalMorphismFromDirectSum( cat, list, list[projection_number], morphisms );
     
   end,
   
@@ -157,7 +157,7 @@ AddWithGivenDerivationPairToCAP( ProjectionInFactorOfDirectSum,
         
     end );
     
-    return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, list, morphisms, direct_sum_object );
+    return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, list, list[projection_number], morphisms, direct_sum_object );
     
 end : Description := "ProjectionInFactorOfDirectSum using UniversalMorphismFromDirectSum" );
 
@@ -181,7 +181,7 @@ AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfDirectSum,
         
     end );
     
-    return UniversalMorphismIntoDirectSum( cat, list, morphisms );
+    return UniversalMorphismIntoDirectSum( cat, list, list[injection_number], morphisms );
     
   end,
   
@@ -202,7 +202,7 @@ AddWithGivenDerivationPairToCAP( InjectionOfCofactorOfDirectSum,
         
     end );
     
-    return UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, list, morphisms, direct_sum_object );
+    return UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, list, list[injection_number], morphisms, direct_sum_object );
     
 end : Description := "InjectionOfCofactorOfDirectSum using UniversalMorphismIntoDirectSum" );
 
@@ -324,15 +324,13 @@ AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
 AddDerivationToCAP( ProjectionInFactorOfFiberProduct,
                       
   function( cat, diagram, projection_number )
-    local embedding_in_direct_sum, direct_sum_diagram, projection;
+    local embedding_in_direct_sum, direct_sum_diagram;
     
     embedding_in_direct_sum := FiberProductEmbeddingInDirectSum( cat, diagram );
     
     direct_sum_diagram := List( diagram, Source );
     
-    projection := ProjectionInFactorOfDirectSum( cat, direct_sum_diagram, projection_number );
-    
-    return PreCompose( cat, embedding_in_direct_sum, projection );
+    return ComponentOfMorphismIntoDirectSum( cat, embedding_in_direct_sum, direct_sum_diagram, projection_number );
     
   end : Description := "ProjectionInFactorOfFiberProduct by composing the direct sum embedding with the direct sum projection" );
 
@@ -390,15 +388,13 @@ AddDerivationToCAP( UniversalMorphismFromPushout,
 AddDerivationToCAP( InjectionOfCofactorOfPushout,
                                          
   function( cat, diagram, injection_number )
-    local projection_from_direct_sum, direct_sum_diagram, injection;
+    local projection_from_direct_sum, direct_sum_diagram;
     
     projection_from_direct_sum := DirectSumProjectionInPushout( cat, diagram );
     
     direct_sum_diagram := List( diagram, Range );
     
-    injection := InjectionOfCofactorOfDirectSum( cat, direct_sum_diagram, injection_number );
-    
-    return PreCompose( cat, injection, projection_from_direct_sum );
+    return ComponentOfMorphismFromDirectSum( cat, projection_from_direct_sum, direct_sum_diagram, injection_number );
     
   end : Description := "InjectionOfCofactorOfPushout by composing the direct sum injection with the direct sum projection to the pushout" );
 
@@ -533,7 +529,7 @@ AddDerivationToCAP( UniversalMorphismIntoFiberProduct,
   function( cat, diagram, test_object, source )
     local test_function, direct_sum_diagonal_difference, kernel_lift;
     
-    test_function := UniversalMorphismIntoDirectSum( cat, test_object, source );
+    test_function := UniversalMorphismIntoDirectSum( cat, List( source, Range ), test_object, source );
     
     direct_sum_diagonal_difference := DirectSumDiagonalDifference( cat, diagram );
     
@@ -552,7 +548,7 @@ AddDerivationToCAP( UniversalMorphismFromPushout,
   function( cat, diagram, test_object, sink )
     local test_function, direct_sum_codiagonal_difference, cokernel_colift;
     
-    test_function := UniversalMorphismFromDirectSum( cat, test_object, sink );
+    test_function := UniversalMorphismFromDirectSum( cat, List( sink, Source ), test_object, sink );
     
     direct_sum_codiagonal_difference := DirectSumCodiagonalDifference( cat, diagram );
     
@@ -1078,7 +1074,7 @@ end : Description := "IsSplitMonomorphism by using IsColiftable" );
 AddDerivationToCAP( IsEqualAsSubobjects,
                     [ [ IsDominating, 2 ] ],
                
-  function( cat, sub1, sub2 );
+  function( cat, sub1, sub2 )
     
     return IsDominating( cat, sub1, sub2 ) and IsDominating( cat, sub2, sub1 );
     
@@ -1458,7 +1454,7 @@ AddDerivationToCAP( IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct,
     sources_of_diagram := List( diagram, Source );
     
     test_source := List( [ 1 .. Length( diagram ) ],
-                         i -> PreCompose( cat, kernel_emb, ProjectionInFactorOfDirectSum( cat, sources_of_diagram, i ) ) );
+                         i -> ComponentOfMorphismIntoDirectSum( cat, kernel_emb, sources_of_diagram, i ) );
     
     return UniversalMorphismIntoFiberProduct( cat, diagram, Source( kernel_emb ), test_source );
     
@@ -1475,7 +1471,7 @@ AddDerivationToCAP( IsomorphismFromPushoutToCokernelOfDiagonalDifference,
     ranges_of_diagram := List( diagram, Range );
     
     test_sink := List( [ 1 .. Length( diagram ) ],
-                       i -> PreCompose( cat, InjectionOfCofactorOfDirectSum( cat, ranges_of_diagram, i ), cokernel_proj ) );
+                       i -> ComponentOfMorphismFromDirectSum( cat, cokernel_proj, ranges_of_diagram, i ) );
     
     return UniversalMorphismFromPushout( cat, diagram, Range( cokernel_proj ), test_sink );
     
@@ -1706,7 +1702,7 @@ AddDerivationToCAP( HomologyObjectFunctorialWithGivenHomologyObjects,
       PreCompose( cat, KernelEmbedding( cat, delta ), CokernelProjection( cat, gamma ) )
     );
     
-    cok_functorial := CokernelFunctorial( alpha, epsilon, gamma );
+    cok_functorial := CokernelFunctorial( cat, alpha, epsilon, gamma );
     
     functorial_mor :=
       LiftAlongMonomorphism( cat,
@@ -1947,7 +1943,7 @@ AddDerivationToCAP( DirectSumDiagonalDifference,
                       [ AdditionForMorphisms, 1 ] ],
                     
   function( cat, diagram )
-    local direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms, mor1, mor2;
+    local direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms, ranges, mor1, mor2;
     
     direct_sum_diagram := List( diagram, Source );
     
@@ -1963,9 +1959,11 @@ AddDerivationToCAP( DirectSumDiagonalDifference,
         
     fi;
     
-    mor1 := UniversalMorphismIntoDirectSum( cat, direct_sum, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
+    ranges := List( diagram, Range );
     
-    mor2 := UniversalMorphismIntoDirectSum( cat, direct_sum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
+    mor1 := UniversalMorphismIntoDirectSum( cat, ranges{[ 1 .. number_of_morphisms - 1 ]}, direct_sum, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
+    
+    mor2 := UniversalMorphismIntoDirectSum( cat, ranges{[ 2 .. number_of_morphisms ]}, direct_sum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
     
     return SubtractionForMorphisms( cat, mor1, mor2 );
     
@@ -1982,7 +1980,7 @@ AddDerivationToCAP( DirectSumDiagonalDifference,
                       [ AdditionForMorphisms, 1 ] ],
                     
   function( cat, diagram )
-    local direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms, mor1, mor2;
+    local direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms, ranges, mor1, mor2;
     
     direct_sum_diagram := List( diagram, Source );
     
@@ -1992,9 +1990,11 @@ AddDerivationToCAP( DirectSumDiagonalDifference,
     
     list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( cat, ProjectionInFactorOfDirectSumWithGivenDirectSum( cat, direct_sum_diagram, i, direct_sum ), diagram[ i ] ) );
     
-    mor1 := UniversalMorphismIntoDirectSum( cat, direct_sum, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
+    ranges := List( diagram, Range );
     
-    mor2 := UniversalMorphismIntoDirectSum( cat, direct_sum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
+    mor1 := UniversalMorphismIntoDirectSum( cat, ranges{[ 1 .. number_of_morphisms - 1 ]}, direct_sum, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
+    
+    mor2 := UniversalMorphismIntoDirectSum( cat, ranges{[ 2 .. number_of_morphisms ]}, direct_sum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
     
     return SubtractionForMorphisms( cat, mor1, mor2 );
     
@@ -2046,7 +2046,7 @@ AddDerivationToCAP( DirectSumCodiagonalDifference,
                       [ AdditionForMorphisms, 1 ] ],
                     
   function( cat, diagram )
-    local cobase, direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms, mor1, mor2;
+    local direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms, sources, mor1, mor2;
     
     direct_sum_diagram := List( diagram, Range );
     
@@ -2062,9 +2062,11 @@ AddDerivationToCAP( DirectSumCodiagonalDifference,
         
     fi;
     
-    mor1 := UniversalMorphismFromDirectSum( cat, direct_sum, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
+    sources := List( diagram, Source );
     
-    mor2 := UniversalMorphismFromDirectSum( cat, direct_sum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
+    mor1 := UniversalMorphismFromDirectSum( cat, sources{[ 1 .. number_of_morphisms - 1 ]}, direct_sum, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
+    
+    mor2 := UniversalMorphismFromDirectSum( cat, sources{[ 2 .. number_of_morphisms ]}, direct_sum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
     
     return SubtractionForMorphisms( cat, mor1, mor2 );
     
@@ -2081,7 +2083,7 @@ AddDerivationToCAP( DirectSumCodiagonalDifference,
                       [ AdditionForMorphisms, 1 ] ],
                     
   function( cat, diagram )
-    local cobase, direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms, mor1, mor2;
+    local direct_sum_diagram, direct_sum, number_of_morphisms, list_of_morphisms, sources, mor1, mor2;
     
     direct_sum_diagram := List( diagram, Range );
     
@@ -2091,9 +2093,11 @@ AddDerivationToCAP( DirectSumCodiagonalDifference,
     
     list_of_morphisms := List( [ 1 .. number_of_morphisms ], i -> PreCompose( cat, diagram[ i ], InjectionOfCofactorOfDirectSumWithGivenDirectSum( cat, direct_sum_diagram, i, direct_sum ) ) );
     
-    mor1 := UniversalMorphismFromDirectSum( cat, direct_sum, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
+    sources := List( diagram, Source );
     
-    mor2 := UniversalMorphismFromDirectSum( cat, direct_sum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
+    mor1 := UniversalMorphismFromDirectSum( cat, sources{[ 1 .. number_of_morphisms - 1 ]}, direct_sum, list_of_morphisms{[ 1 .. number_of_morphisms - 1 ]} );
+    
+    mor2 := UniversalMorphismFromDirectSum( cat, sources{[ 2 .. number_of_morphisms ]}, direct_sum, list_of_morphisms{[ 2 .. number_of_morphisms ]} );
     
     return SubtractionForMorphisms( cat, mor1, mor2 );
     
@@ -2922,7 +2926,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
                       [ HomomorphismStructureOnObjects, 1 ],
                       [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
   function( cat, left_coefficients, right_coefficients, right_side )
-    local range_cat, m, n, nu, H, lift, summands, list;
+    local range_cat, m, n, distinguished_object, interpretations, nu, H_B_C, H_A_D, list, H, lift, summands;
     
     range_cat := RangeCategoryOfHomomorphismStructure( cat );
     
@@ -2932,18 +2936,28 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
     
     ## create lift diagram
     
-    nu :=
-      UniversalMorphismIntoDirectSum( range_cat,
-        List( [ 1 .. m ],
-        i -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, right_side[i] ) )
+    distinguished_object := DistinguishedObjectOfHomomorphismStructure( cat );
+    interpretations := List( [ 1 .. m ], i -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, right_side[i] ) );
+    
+    nu := UniversalMorphismIntoDirectSum( range_cat,
+        List( interpretations, mor -> Range( mor ) ),
+        distinguished_object,
+        interpretations
     );
     
-    list := 
+    # left_coefficients[i][j] : A_i -> B_j
+    # right_coefficients[i][j] : C_j -> D_i
+    
+    H_B_C := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( cat, Range( left_coefficients[1][j] ), Source( right_coefficients[1][j] ) ) );
+    
+    H_A_D := List( [ 1 .. m ], i -> HomomorphismStructureOnObjects( cat, Source( left_coefficients[i][1] ), Range( right_coefficients[i][1] ) ) );
+    
+    list :=
       List( [ 1 .. n ],
-      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( left_coefficients[i][j], right_coefficients[i][j] ) ) 
+      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphismsWithGivenObjects( cat, H_B_C[j], left_coefficients[i][j], right_coefficients[i][j], H_A_D[i] ) ) 
     );
     
-    H := MorphismBetweenDirectSums( list );
+    H := MorphismBetweenDirectSums( range_cat, H_B_C, list, H_A_D );
     
     ## the actual computation of the solution
     lift := Lift( range_cat, nu, H );
@@ -2956,7 +2970,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
         InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
           Range( left_coefficients[1][j] ),
           Source( right_coefficients[1][j] ),
-          PreCompose( range_cat, lift, ProjectionInFactorOfDirectSum( range_cat, summands, j ) )
+          ComponentOfMorphismIntoDirectSum( range_cat, lift, summands, j )
         )
       );
   end :
@@ -2970,7 +2984,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
         
         conditions := [
           "UniversalMorphismIntoDirectSum",
-          "MorphismBetweenDirectSumsWithGivenDirectSums",
+          "MorphismBetweenDirectSums",
           "Lift",
           "PreCompose"
         ];
@@ -2996,7 +3010,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategoryOrFail,
                       [ HomomorphismStructureOnObjects, 1 ],
                       [ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, 1 ] ],
   function( cat, left_coefficients, right_coefficients, right_side )
-    local range_cat, m, n, nu, H, lift, summands, list;
+    local range_cat, m, n, distinguished_object, interpretations, nu, H_B_C, H_A_D, list, H, lift, summands;
     
     range_cat := RangeCategoryOfHomomorphismStructure( cat );
     
@@ -3006,18 +3020,28 @@ AddDerivationToCAP( SolveLinearSystemInAbCategoryOrFail,
     
     ## create lift diagram
     
-    nu :=
-      UniversalMorphismIntoDirectSum( range_cat,
-        List( [ 1 .. m ],
-        i -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, right_side[i] ) )
+    distinguished_object := DistinguishedObjectOfHomomorphismStructure( cat );
+    interpretations := List( [ 1 .. m ], i -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, right_side[i] ) );
+    
+    nu := UniversalMorphismIntoDirectSum( range_cat,
+        List( interpretations, mor -> Range( mor ) ),
+        distinguished_object,
+        interpretations
     );
     
-    list := 
+    # left_coefficients[i][j] : A_i -> B_j
+    # right_coefficients[i][j] : C_j -> D_i
+    
+    H_B_C := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( cat, Range( left_coefficients[1][j] ), Source( right_coefficients[1][j] ) ) );
+    
+    H_A_D := List( [ 1 .. m ], i -> HomomorphismStructureOnObjects( cat, Source( left_coefficients[i][1] ), Range( right_coefficients[i][1] ) ) );
+    
+    list :=
       List( [ 1 .. n ],
-      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( left_coefficients[i][j], right_coefficients[i][j] ) ) 
+      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphismsWithGivenObjects( cat, H_B_C[j], left_coefficients[i][j], right_coefficients[i][j], H_A_D[i] ) ) 
     );
     
-    H := MorphismBetweenDirectSums( list );
+    H := MorphismBetweenDirectSums( range_cat, H_B_C, list, H_A_D );
     
     ## the actual computation of the solution
     lift := LiftOrFail( range_cat, nu, H );
@@ -3036,7 +3060,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategoryOrFail,
         InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
           Range( left_coefficients[1][j] ),
           Source( right_coefficients[1][j] ),
-          PreCompose( range_cat, lift, ProjectionInFactorOfDirectSum( range_cat, summands, j ) )
+          ComponentOfMorphismIntoDirectSum( range_cat, lift, summands, j )
         )
       );
   end :
@@ -3050,7 +3074,7 @@ AddDerivationToCAP( SolveLinearSystemInAbCategoryOrFail,
         
         conditions := [
           "UniversalMorphismIntoDirectSum",
-          "MorphismBetweenDirectSumsWithGivenDirectSums",
+          "MorphismBetweenDirectSums",
           "LiftOrFail",
           "PreCompose"
         ];
@@ -3075,7 +3099,7 @@ AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
                       [ HomomorphismStructureOnMorphismsWithGivenObjects, 1 ]
                     ],
   function( cat, left_coefficients, right_coefficients, right_side )
-    local range_cat, m, n, nu, H, lift, summands, list;
+    local range_cat, m, n, distinguished_object, interpretations, nu, H_B_C, H_A_D, list, H;
     
     range_cat := RangeCategoryOfHomomorphismStructure( cat );
     
@@ -3085,18 +3109,28 @@ AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
     
     ## create lift diagram
     
-    nu :=
-      UniversalMorphismIntoDirectSum( range_cat,
-        List( [ 1 .. m ],
-        i -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, right_side[i] ) )
+    distinguished_object := DistinguishedObjectOfHomomorphismStructure( cat );
+    interpretations := List( [ 1 .. m ], i -> InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat, right_side[i] ) );
+    
+    nu := UniversalMorphismIntoDirectSum( range_cat,
+        List( interpretations, mor -> Range( mor ) ),
+        distinguished_object,
+        interpretations
     );
+    
+    # left_coefficients[i][j] : A_i -> B_j
+    # right_coefficients[i][j] : C_j -> D_i
+    
+    H_B_C := List( [ 1 .. n ], j -> HomomorphismStructureOnObjects( cat, Range( left_coefficients[1][j] ), Source( right_coefficients[1][j] ) ) );
+    
+    H_A_D := List( [ 1 .. m ], i -> HomomorphismStructureOnObjects( cat, Source( left_coefficients[i][1] ), Range( right_coefficients[i][1] ) ) );
     
     list :=
       List( [ 1 .. n ],
-      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphisms( left_coefficients[i][j], right_coefficients[i][j] ) )
+      j -> List( [ 1 .. m ], i -> HomomorphismStructureOnMorphismsWithGivenObjects( cat, H_B_C[j], left_coefficients[i][j], right_coefficients[i][j], H_A_D[i] ) ) 
     );
     
-    H := MorphismBetweenDirectSums( list );
+    H := MorphismBetweenDirectSums( range_cat, H_B_C, list, H_A_D );
     
     ## the actual computation of the solution
     return IsLiftable( range_cat, nu, H );
@@ -3112,7 +3146,7 @@ AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
         
         conditions := [
           "UniversalMorphismIntoDirectSum",
-          "MorphismBetweenDirectSumsWithGivenDirectSums",
+          "MorphismBetweenDirectSums",
           "IsLiftable"
         ];
         
@@ -3403,7 +3437,7 @@ AddDerivationToCAP( MorphismFromCoimageToImageWithGivenObjects,
     
     coimage_projection := CoimageProjection( cat, morphism );
     
-    kernel_lift := KernelLift( cat, cokernel_projection , AstrictionToCoimage( cat, morphism ) );
+    kernel_lift := KernelLift( cat, cokernel_projection, coimage, AstrictionToCoimageWithGivenCoimage( cat, morphism, coimage ) );
     
     return PreCompose( cat, kernel_lift, IsomorphismFromKernelOfCokernelToImageObject( cat, morphism ) );
     

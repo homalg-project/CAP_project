@@ -75,25 +75,6 @@ DeclareOperation( "MorphismConstructor",
                   [ IsCapCategoryObject, IsObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismConstructor</C>.
-#! $F: S, a, T \mapsto \mathtt{MorphismConstructor}( S, a, T )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismConstructor",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismConstructor",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismConstructor",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismConstructor",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The argument is a CAP category morphism <A>mor</A>.
 #! The output is a datum which can be used to construct <A>mor</A>, that is,
 #! `IsEqualForMorphisms( `<A>mor</A>`, MorphismConstructor( Source( `<A>mor</A>` ), MorphismDatum( `<A>mor</A>` ), Range( `<A>mor</A>` ) ) )`.
@@ -103,25 +84,6 @@ DeclareOperation( "AddMorphismConstructor",
 #! @Arguments mor
 DeclareAttribute( "MorphismDatum",
                   IsCapCategoryMorphism );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismDatum</C>.
-#! $F: mor \mapsto \mathtt{MorphismDatum}( mor )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismDatum",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismDatum",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismDatum",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismDatum",
-                  [ IsCapCategory, IsList ] );
 
 ###################################
 ##
@@ -139,29 +101,6 @@ DeclareProperty( "IsMonomorphism",
                  IsCapCategoryMorphism );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsMonomorphism</C>.
-#! $F: \alpha \mapsto \mathtt{IsMonomorphism}(\alpha)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsMonomorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsMonomorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsMonomorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsMonomorphism",
-                  [ IsCapCategory, IsList ] );
-
-
-
-
-
-#! @Description
 #! The argument is a morphism $\alpha$.
 #! The output is <C>true</C> if $\alpha$ is an epimorphism,
 #! otherwise the output is <C>false</C>.
@@ -169,27 +108,6 @@ DeclareOperation( "AddIsMonomorphism",
 #! @Arguments alpha
 DeclareProperty( "IsEpimorphism",
                  IsCapCategoryMorphism );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsEpimorphism</C>.
-#! $F: \alpha \mapsto \mathtt{IsEpimorphism}(\alpha)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsEpimorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsEpimorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsEpimorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsEpimorphism",
-                  [ IsCapCategory, IsList ] );
-
-
 
 #! @Description
 #! The argument is a morphism $\alpha$.
@@ -201,27 +119,6 @@ DeclareProperty( "IsIsomorphism",
                  IsCapCategoryMorphism );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsIsomorphism</C>.
-#! $F: \alpha \mapsto \mathtt{IsIsomorphism}(\alpha)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsIsomorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsIsomorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsIsomorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsIsomorphism",
-                  [ IsCapCategory, IsList ] );
-
-
-
-#! @Description
 #! The argument is a morphism $\alpha$.
 #! The output is <C>true</C> if $\alpha$ is a split monomorphism,
 #! otherwise the output is <C>false</C>.
@@ -229,25 +126,6 @@ DeclareOperation( "AddIsIsomorphism",
 #! @Arguments alpha
 DeclareProperty( "IsSplitMonomorphism",
                  IsCapCategoryMorphism );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsSplitMonomorphism</C>.
-#! $F: \alpha \mapsto \mathtt{IsSplitMonomorphism}(\alpha)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsSplitMonomorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsSplitMonomorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsSplitMonomorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsSplitMonomorphism",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The argument is a morphism $\alpha$.
@@ -259,25 +137,6 @@ DeclareProperty( "IsSplitEpimorphism",
                  IsCapCategoryMorphism );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsSplitEpimorphism</C>.
-#! $F: \alpha \mapsto \mathtt{IsSplitEpimorphism}(\alpha)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsSplitEpimorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsSplitEpimorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsSplitEpimorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsSplitEpimorphism",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The argument is a morphism $\alpha: a \rightarrow a$.
 #! The output is <C>true</C> if $\alpha$ is congruent to the identity of $a$,
 #! otherwise the output is <C>false</C>.
@@ -287,25 +146,6 @@ DeclareProperty( "IsOne",
                  IsCapCategoryMorphism );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsOne</C>.
-#! $F: \alpha \mapsto \mathtt{IsOne}(\alpha)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsOne",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsOne",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsOne",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsOne",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The argument is a morphism $\alpha: a \rightarrow a$.
 #! The output is <C>true</C> if $\alpha^2 \sim_{a,a} \alpha$,
 #! otherwise the output is <C>false</C>.
@@ -313,25 +153,6 @@ DeclareOperation( "AddIsOne",
 #! @Arguments alpha
 DeclareProperty( "IsIdempotent",
                  IsCapCategoryMorphism );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsIdempotent</C>.
-#! $F: \alpha \mapsto \mathtt{IsIdempotent}(\alpha)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsIdempotent",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsIdempotent",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsIdempotent",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsIdempotent",
-                  [ IsCapCategory, IsList ] );
 
 ###################################
 ##
@@ -356,26 +177,6 @@ DeclareOperation( "RandomMorphismWithFixedSourceByInteger",
                   [ IsCapCategoryObject, IsInt ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>RandomMorphismWithFixedSourceByInteger</C>.
-#! The function $F$ maps $(a,n)$ to <C>fail</C> or to a random morphism in
-#! $C$ whose source is $a$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddRandomMorphismWithFixedSourceByInteger",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddRandomMorphismWithFixedSourceByInteger",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddRandomMorphismWithFixedSourceByInteger",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddRandomMorphismWithFixedSourceByInteger",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are an object $a$ in a category $C$ and a list $L$.
 #! The output is a random morphism $\alpha: a \rightarrow b$ for some object
 #! $b$ in $C$ or <C>fail</C>.
@@ -383,27 +184,6 @@ DeclareOperation( "AddRandomMorphismWithFixedSourceByInteger",
 #! @Arguments a, L
 DeclareOperation( "RandomMorphismWithFixedSourceByList",
                   [ IsCapCategoryObject, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>RandomMorphismWithFixedSourceByList</C>.
-#! The function $F$ maps $(a,L)$ to <C>fail</C> or to a random morphism in
-#! $C$ whose source is $a$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddRandomMorphismWithFixedSourceByList",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddRandomMorphismWithFixedSourceByList",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddRandomMorphismWithFixedSourceByList",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddRandomMorphismWithFixedSourceByList",
-                  [ IsCapCategory, IsList ] );
-
 
 #! @Description
 #! The arguments are an object $b$ in a category $C$ and an integer $n$.
@@ -415,26 +195,6 @@ DeclareOperation( "RandomMorphismWithFixedRangeByInteger",
                   [ IsCapCategoryObject, IsInt ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>RandomMorphismWithFixedRangeByInteger</C>.
-#! The function $F$ maps $(b,n)$ to <C>fail</C> or to a random morphism in
-#! $C$ whose range is $b$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddRandomMorphismWithFixedRangeByInteger",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddRandomMorphismWithFixedRangeByInteger",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddRandomMorphismWithFixedRangeByInteger",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddRandomMorphismWithFixedRangeByInteger",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are an object $b$ in a category $C$ and a list $L$.
 #! The output is a random morphism $\alpha: a \rightarrow b$ for some object
 #! $a$ in $C$ or <C>fail</C>.
@@ -442,26 +202,6 @@ DeclareOperation( "AddRandomMorphismWithFixedRangeByInteger",
 #! @Arguments b, L
 DeclareOperation( "RandomMorphismWithFixedRangeByList",
                   [ IsCapCategoryObject, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>RandomMorphismWithFixedRangeByList</C>.
-#! The function $F$ maps $(b,L)$ to <C>fail</C> or to a random morphism in
-#! $C$ whose range is $b$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddRandomMorphismWithFixedRangeByList",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddRandomMorphismWithFixedRangeByList",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddRandomMorphismWithFixedRangeByList",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddRandomMorphismWithFixedRangeByList",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are two objects $a$ and $b$ in a category $C$ and an integer $n$.
@@ -472,26 +212,6 @@ DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByInteger",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsInt ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>RandomMorphismWithFixedSourceAndRangeByInteger</C>.
-#! The function $F$ maps $(a,b,n)$ to <C>fail</C> or to a random morphism in $C$
-#! from $a$ to $b$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddRandomMorphismWithFixedSourceAndRangeByInteger",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddRandomMorphismWithFixedSourceAndRangeByInteger",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddRandomMorphismWithFixedSourceAndRangeByInteger",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddRandomMorphismWithFixedSourceAndRangeByInteger",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! This operation is not a CAP basic operation
 #! The arguments are two objects $a$ and $b$ in a category $C$ and a list $L$.
 #! The output is a random morphism $\alpha: a \rightarrow b$ in $C$ or <C>fail</C>.
@@ -499,26 +219,6 @@ DeclareOperation( "AddRandomMorphismWithFixedSourceAndRangeByInteger",
 #! @Arguments a, b, L
 DeclareOperation( "RandomMorphismWithFixedSourceAndRangeByList",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>RandomMorphismWithFixedSourceAndRangeByList</C>.
-#! The function $F$ maps $(a,b,L)$ to <C>fail</C> or to a random morphism in $C$
-#! from $a$ to $b$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddRandomMorphismWithFixedSourceAndRangeByList",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddRandomMorphismWithFixedSourceAndRangeByList",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddRandomMorphismWithFixedSourceAndRangeByList",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddRandomMorphismWithFixedSourceAndRangeByList",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and an integer $n$.
@@ -534,49 +234,11 @@ DeclareOperation( "RandomMorphismByInteger",
                   [ IsCapCategory, IsInt ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>RandomMorphismByInteger</C>.
-#! The function $F$ maps $(C,n)$ to <C>fail</C> or to a random morphism in $C$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddRandomMorphismByInteger",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddRandomMorphismByInteger",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddRandomMorphismByInteger",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddRandomMorphismByInteger",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are a category $C$ and a list $L$.
 #! The output is a random morphism in $C$ or <C>fail</C>.
 #! @Returns a morphism or <C>fail</C>
 #! @Arguments C, L
 DeclareOperation( "RandomMorphismByList",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>RandomMorphismByList</C>.
-#! The function $F$ maps $(C,L)$ to <C>fail</C> or to a random morphism in $C$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddRandomMorphismByList",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddRandomMorphismByList",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddRandomMorphismByList",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddRandomMorphismByList",
                   [ IsCapCategory, IsList ] );
 
 #! @BeginGroup
@@ -619,25 +281,6 @@ DeclareProperty( "IsIdenticalToIdentityMorphism",
                  IsCapCategoryMorphism );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsIdenticalToIdentityMorphism</C>.
-#! $F: \alpha \mapsto \mathtt{IsIdenticalToIdentityMorphism}(\alpha)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsIdenticalToIdentityMorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsIdenticalToIdentityMorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsIdenticalToIdentityMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsIdenticalToIdentityMorphism",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The argument is a morphism $\alpha: a \rightarrow b$.
 #! The output is <C>true</C> if $\alpha = 0$,
 #! otherwise the output is <C>false</C>.
@@ -645,25 +288,6 @@ DeclareOperation( "AddIsIdenticalToIdentityMorphism",
 #! @Arguments alpha
 DeclareProperty( "IsIdenticalToZeroMorphism",
                  IsCapCategoryMorphism );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsIdenticalToZeroMorphism</C>.
-#! $F: \alpha \mapsto \mathtt{IsIdenticalToZeroMorphism }(\alpha)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsIdenticalToZeroMorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsIdenticalToZeroMorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsIdenticalToZeroMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsIdenticalToZeroMorphism",
-                  [ IsCapCategory, IsList ] );
 
 
 ## This is not a categorical property because non-endomorphisms 
@@ -677,25 +301,6 @@ DeclareOperation( "AddIsIdenticalToZeroMorphism",
 DeclareProperty( "IsEndomorphism",
                  IsCapCategoryMorphism );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsEndomorphism</C>.
-#! $F: \alpha \mapsto \mathtt{IsEndomorphism}(\alpha)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsEndomorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsEndomorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsEndomorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsEndomorphism",
-                  [ IsCapCategory, IsList ] );
-
 ## This is not a categorical property because non-endomorphisms 
 ## can be mapped to endomorphisms under equivalences of categories.
 #! @Description
@@ -706,25 +311,6 @@ DeclareOperation( "AddIsEndomorphism",
 #! @Arguments alpha
 DeclareProperty( "IsAutomorphism",
                  IsCapCategoryMorphism );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsAutomorphism</C>.
-#! $F: \alpha \mapsto \mathtt{IsAutomorphism}(\alpha)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsAutomorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsAutomorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsAutomorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsAutomorphism",
-                  [ IsCapCategory, IsList ] );
 
 
 ###################################
@@ -786,25 +372,6 @@ DeclareGlobalFunction( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes"
 DeclareOperation( "IsCongruentForMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsCongruentForMorphisms</C>.
-#! $F: (\alpha, \beta) \mapsto \mathtt{IsCongruentForMorphisms}(\alpha, \beta)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsCongruentForMorphisms",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsCongruentForMorphisms",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsCongruentForMorphisms",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsCongruentForMorphisms",
-                  [ IsCapCategory, IsList ] );
-
 
 #! @Description
 #! The arguments are two morphisms $\alpha, \beta: a \rightarrow b$.
@@ -815,25 +382,6 @@ DeclareOperation( "AddIsCongruentForMorphisms",
 DeclareOperation( "IsEqualForMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsEqualForMorphisms</C>.
-#! $F: (\alpha, \beta) \mapsto \mathtt{IsEqualForMorphisms}(\alpha, \beta)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsEqualForMorphisms",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsEqualForMorphisms",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsEqualForMorphisms",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsEqualForMorphisms",
-                  [ IsCapCategory, IsList ] );
-
 
 #! @Description
 #! The arguments are two morphisms $\alpha: a \rightarrow b, \beta: c \rightarrow d$.
@@ -843,25 +391,6 @@ DeclareOperation( "AddIsEqualForMorphisms",
 #! @Arguments alpha, beta
 DeclareOperation( "IsEqualForMorphismsOnMor",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsEqualForMorphismsOnMor</C>.
-#! $F: (\alpha, \beta) \mapsto \mathtt{IsEqualForMorphismsOnMor}(\alpha, \beta)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsEqualForMorphismsOnMor",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsEqualForMorphismsOnMor",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsEqualForMorphismsOnMor",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsEqualForMorphismsOnMor",
-                  [ IsCapCategory, IsList ] );
 
 
 ## adds the given string to PROPAGATION_LIST_FOR_EQUAL_MORPHISMS
@@ -883,25 +412,6 @@ DeclareOperation( "AddPropertyToMatchAtIsCongruentForMorphisms",
 DeclareProperty( "IsZeroForMorphisms",
                  IsCapCategoryMorphism );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsZeroForMorphisms</C>.
-#! $F: \alpha \mapsto \mathtt{IsZeroForMorphisms}(\alpha)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsZeroForMorphisms",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsZeroForMorphisms",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsZeroForMorphisms",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsZeroForMorphisms",
-                  [ IsCapCategory, IsList ] );
-
 DeclareProperty( "IsZero", IsCapCategoryMorphism );
 
 DeclareOperation( "\+", [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
@@ -917,50 +427,12 @@ DeclareOperation( "AdditionForMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>AdditionForMorphisms</C>.
-#! $F: (\alpha, \beta) \mapsto \alpha + \beta$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddAdditionForMorphisms",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddAdditionForMorphisms",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddAdditionForMorphisms",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddAdditionForMorphisms",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are two morphisms $\alpha, \beta: a \rightarrow b$.
 #! The output is the addition $\alpha - \beta$.
 #! @Returns a morphism in $\mathrm{Hom}(a,b)$
 #! @Arguments alpha, beta
 DeclareOperation( "SubtractionForMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SubtractionForMorphisms</C>.
-#! $F: (\alpha, \beta) \mapsto \alpha - \beta$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSubtractionForMorphisms",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSubtractionForMorphisms",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSubtractionForMorphisms",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSubtractionForMorphisms",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The argument is a morphism $\alpha: a \rightarrow b$.
@@ -972,25 +444,6 @@ DeclareAttribute( "AdditiveInverseForMorphisms",
 
 DeclareAttribute( "AdditiveInverse",
                   IsCapCategoryMorphism );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>AdditiveInverseForMorphisms</C>.
-#! $F: \alpha \mapsto -\alpha$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddAdditiveInverseForMorphisms",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddAdditiveInverseForMorphisms",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddAdditiveInverseForMorphisms",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddAdditiveInverseForMorphisms",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are an element $r$ of a commutative ring
@@ -1020,25 +473,6 @@ DeclareOperation( "\*",
                   [ IsCapCategoryMorphism, IsRingElement ] );
 
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MultiplyWithElementOfCommutativeRingForMorphisms</C>.
-#! $F: (r, \alpha) \mapsto r \cdot \alpha$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMultiplyWithElementOfCommutativeRingForMorphisms",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMultiplyWithElementOfCommutativeRingForMorphisms",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMultiplyWithElementOfCommutativeRingForMorphisms",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMultiplyWithElementOfCommutativeRingForMorphisms",
-                  [ IsCapCategory, IsList ] );
-
 ###################################
 ##
 ## Zero Morphism
@@ -1052,25 +486,6 @@ DeclareOperation( "AddMultiplyWithElementOfCommutativeRingForMorphisms",
 #! @Arguments a, b
 DeclareOperation( "ZeroMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ZeroMorphism</C>.
-#! $F: (a,b) \mapsto (0: a \rightarrow b)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddZeroMorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddZeroMorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddZeroMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddZeroMorphism",
-                  [ IsCapCategory, IsList ] );
 
 
 ###################################
@@ -1107,25 +522,6 @@ DeclareOperation( "IsEqualAsSubobjects",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsEqualAsSubobjects</C>.
-#! $F: (\alpha, \beta) \mapsto \mathtt{IsEqualAsSubobjects}(\alpha,\beta)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsEqualAsSubobjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsEqualAsSubobjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsEqualAsSubobjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsEqualAsSubobjects",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are two factorobjects $\alpha: c \rightarrow a$, $\beta: c \rightarrow b$.
 #! The output is <C>true</C> if there exists an isomorphism $\iota: b \rightarrow a$
 #! such that $\iota \circ \beta \sim_{c,a} \alpha$,
@@ -1134,25 +530,6 @@ DeclareOperation( "AddIsEqualAsSubobjects",
 #! @Arguments alpha, beta
 DeclareOperation( "IsEqualAsFactorobjects",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsEqualAsFactorobjects</C>.
-#! $F: (\alpha, \beta) \mapsto \mathtt{IsEqualAsFactorobjects}(\alpha,\beta)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsEqualAsFactorobjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsEqualAsFactorobjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsEqualAsFactorobjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsEqualAsFactorobjects",
-                  [ IsCapCategory, IsList ] );
 
 
 #! @Description
@@ -1179,25 +556,6 @@ DeclareOperation( "AddIsEqualAsFactorobjects",
 #! @Arguments alpha, beta
 DeclareOperation( "IsDominating",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsDominating</C>.
-#! $F: (\alpha, \beta) \mapsto \mathtt{IsDominating}(\alpha,\beta)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsDominating",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsDominating",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsDominating",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsDominating",
-                  [ IsCapCategory, IsList ] );
 
 
 #! @Description
@@ -1226,25 +584,6 @@ DeclareOperation( "AddIsDominating",
 DeclareOperation( "IsCodominating",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsCodominating</C>.
-#! $F: (\alpha, \beta) \mapsto \mathtt{IsCodominating}(\alpha,\beta)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsCodominating",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsCodominating",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsCodominating",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsCodominating",
-                  [ IsCapCategory, IsList ] );
-
 
 ###################################
 ##
@@ -1259,25 +598,6 @@ DeclareOperation( "AddIsCodominating",
 #! @Arguments a
 DeclareAttribute( "IdentityMorphism",
                                           IsCapCategoryObject );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IdentityMorphism</C>.
-#! $F: a \mapsto \mathrm{id}_a$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIdentityMorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIdentityMorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIdentityMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIdentityMorphism",
-                  [ IsCapCategory, IsList ] );
 
 
 #! @Description
@@ -1298,25 +618,6 @@ DeclareOperation( "PreCompose",
 #! @Arguments L
 DeclareOperation( "PreCompose",
                   [ IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>PreCompose</C>.
-#! $F: (\alpha, \beta) \mapsto \beta \circ \alpha$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddPreCompose",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddPreCompose",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddPreCompose",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddPreCompose",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! This is a convenience method.
@@ -1350,25 +651,6 @@ DeclareOperation( "PostCompose",
                   [ IsList ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>PostCompose</C>.
-#! $F: (\alpha, \beta) \mapsto \alpha \circ \beta$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddPostCompose",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddPostCompose",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddPostCompose",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddPostCompose",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! This is a convenience method.
 #! The arguments are a category $C$ and a list of morphisms
 #! $L = ( \alpha_n: a_n \rightarrow a_{n+1}, \alpha_{n-1}: a_{n-1} \rightarrow a_n, \dots, \alpha_1: a_1 \rightarrow a_2 )$.
@@ -1394,25 +676,6 @@ DeclareOperation( "PostComposeList",
 #! @Arguments alpha
 DeclareOperation( "IsWellDefinedForMorphisms",
                   [ IsCapCategoryMorphism ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsWellDefinedForMorphisms</C>.
-#! $F: \alpha \mapsto \mathtt{IsWellDefinedForMorphisms}( \alpha )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsWellDefinedForMorphisms",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsWellDefinedForMorphisms",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsWellDefinedForMorphisms",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsWellDefinedForMorphisms",
-                  [ IsCapCategory, IsList ] );
 
 ###################################
 ##
@@ -1472,25 +735,6 @@ DeclareOperation( "LiftAlongMonomorphism",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>LiftAlongMonomorphism</C>.
-#! The function $F$ maps a pair $(\iota, \tau)$ to a lift $u$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddLiftAlongMonomorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddLiftAlongMonomorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddLiftAlongMonomorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddLiftAlongMonomorphism",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are an epimorphism $\epsilon: a \rightarrow c$
 #! and a morphism $\tau: a \rightarrow t$
 #! such that there is a morphism $u: c \rightarrow t$ with
@@ -1500,25 +744,6 @@ DeclareOperation( "AddLiftAlongMonomorphism",
 #! @Arguments epsilon, tau
 DeclareOperation( "ColiftAlongEpimorphism",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ColiftAlongEpimorphism</C>.
-#! The function $F$ maps a pair $(\epsilon, \tau)$ to a lift $u$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddColiftAlongEpimorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddColiftAlongEpimorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddColiftAlongEpimorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddColiftAlongEpimorphism",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a monomorphism $\iota: k \hookrightarrow a$
@@ -1533,25 +758,6 @@ DeclareOperation( "IsLiftableAlongMonomorphism",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsLiftableAlongMonomorphism</C>.
-#! $F: (\iota, \tau) \mapsto \texttt{IsLiftableAlongMonomorphism}( \iota, \tau )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsLiftableAlongMonomorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsLiftableAlongMonomorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsLiftableAlongMonomorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsLiftableAlongMonomorphism",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are an epimorphism $\epsilon: a \rightarrow c$
 #! and a morphism $\tau: a \rightarrow t$.
 #! The output is <C>true</C> if there exists
@@ -1562,25 +768,6 @@ DeclareOperation( "AddIsLiftableAlongMonomorphism",
 #! @Arguments epsilon, tau
 DeclareOperation( "IsColiftableAlongEpimorphism",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsColiftableAlongEpimorphism</C>.
-#! $F: (\epsilon, \tau) \mapsto \texttt{IsColiftableAlongEpimorphism}( \epsilon, \tau )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsColiftableAlongEpimorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsColiftableAlongEpimorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsColiftableAlongEpimorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsColiftableAlongEpimorphism",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$
@@ -1594,25 +781,6 @@ DeclareOperation( "Lift",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>Lift</C>.
-#! The function $F$ maps a pair $(\alpha, \beta)$ to a lift $\alpha / \beta$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddLift",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddLift",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddLift",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddLift",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$.
 #! The output is a lift $\alpha / \beta: a \rightarrow b$ of $\alpha$ along $\beta$
 #! if such a lift exists or $\mathtt{fail}$ if it doesn't.
@@ -1624,26 +792,6 @@ DeclareOperation( "LiftOrFail",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>LiftOrFail</C>.
-#! The function $F$ maps a pair $(\alpha, \beta)$ to a lift $\alpha / \beta$ if it
-#! exists, and to <C>fail</C> otherwise.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddLiftOrFail",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddLiftOrFail",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddLiftOrFail",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddLiftOrFail",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: b \rightarrow c$.
 #! The output is <C>true</C> if there exists
 #!  a lift $\alpha / \beta: a \rightarrow b$ of $\alpha$ along $\beta$, i.e.,
@@ -1653,25 +801,6 @@ DeclareOperation( "AddLiftOrFail",
 #! @Arguments alpha, beta
 DeclareOperation( "IsLiftable",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsLiftable</C>.
-#! $F: ( \alpha, \beta ) \mapsto \mathtt{IsLiftable}( \alpha, \beta )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsLiftable",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsLiftable",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsLiftable",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsLiftable",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: a \rightarrow b$
@@ -1686,25 +815,6 @@ DeclareOperation( "Colift",
 
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>Colift</C>.
-#! The function $F$ maps a pair $(\alpha, \beta)$ to a colift $\alpha \backslash \beta$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddColift",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddColift",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddColift",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddColift",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: a \rightarrow b$.
 #! The output is a colift $\alpha \backslash \beta: c \rightarrow b$ of $\beta$ along $\alpha$
 #! if such a colift exists or $\mathtt{fail}$ if it doesn't.
@@ -1717,26 +827,6 @@ DeclareOperation( "ColiftOrFail",
 
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>ColiftOrFail</C>.
-#! The function $F$ maps a pair $(\alpha, \beta)$ to a colift $\alpha \backslash \beta$ if it
-#! exists, and to <C>fail</C> otherwise.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddColiftOrFail",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddColiftOrFail",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddColiftOrFail",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddColiftOrFail",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are two morphisms $\alpha: a \rightarrow c$, $\beta: a \rightarrow b$.
 #! The output is <C>true</C> if there exists
 #! a colift $\alpha \backslash \beta: c \rightarrow b$ of $\beta$ along $\alpha$., i.e.,
@@ -1746,25 +836,6 @@ DeclareOperation( "AddColiftOrFail",
 #! @Arguments alpha, beta
 DeclareOperation( "IsColiftable",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsColiftable</C>.
-#! $F: ( \alpha, \beta ) \mapsto \mathtt{IsColiftable}( \alpha, \beta )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsColiftable",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsColiftable",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsColiftable",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsColiftable",
-                  [ IsCapCategory, IsList ] );
 
 ####################################
 ##
@@ -1800,25 +871,6 @@ DeclareOperation( "AddIsColiftable",
 DeclareOperation( "InverseForMorphisms",
                   [ IsCapCategoryMorphism ] );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>InverseForMorphisms</C>.
-#! $F: \alpha \mapsto \alpha^{-1}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddInverseForMorphisms",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInverseForMorphisms",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInverseForMorphisms",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInverseForMorphisms",
-                  [ IsCapCategory, IsList ] );
-
 ## convenience methods
 DeclareOperation( "AddInverse",
                   [ IsCapCategory, IsFunction ] );
@@ -1839,34 +891,18 @@ DeclareOperation( "AddInverse",
 ###################################
 
 #! @Description
-#!  Compares two objects in the cache
-#! @Arguments phi, psi
-#! @Returns true or false
-DeclareOperation( "IsEqualForCacheForMorphisms",
-                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-#! @Description
 #!  By default, CAP uses caches to store the values of Categorical operations.
 #!  To get a value out of the cache, one needs to compare the input of a basic operation
 #!  with its previous input. To compare morphisms in the category, IsEqualForCacheForMorphisms is
 #!  used. By default, IsEqualForCacheForMorphisms falls back to IsEqualForCache (see ToolsForHomalg),
 #!  which in turn defaults to recursive comparison for lists and `IsIdenticalObj` in all other cases.
-#!  If you add a function, this function
-#!  used instead. A function $F: a,b \mapsto bool$ is expected here. The output has to be
+#!  If you add a function via `AddIsEqualForCacheForMorphisms`, that function is used instead.
+#!  A function $F: a,b \mapsto bool$ is expected there. The output has to be
 #!  true or false. Fail is not allowed in this context.
-#! @Returns nothing
-#! @Arguments c,F
-DeclareOperation( "AddIsEqualForCacheForMorphisms",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsEqualForCacheForMorphisms",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsEqualForCacheForMorphisms",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsEqualForCacheForMorphisms",
-                  [ IsCapCategory, IsList ] );
+#! @Arguments phi, psi
+#! @Returns true or false
+DeclareOperation( "IsEqualForCacheForMorphisms",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
 
 ###################################
 ##
@@ -1896,25 +932,6 @@ DeclareOperation( "TransportHom",
 DeclareOperation( "IsHomSetInhabited",
         [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-#! @Description
-#!  The arguments are a category $C$ and a function $F$.
-#!  This operation adds the given function $F$
-#!  to the category for the basic operation <C>IsHomSetInhabited</C>.
-#!  $F: A, B \mapsto \mathrm{IsHomSetInhabited}(A, B)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsHomSetInhabited",
-        [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsHomSetInhabited",
-        [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsHomSetInhabited",
-        [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsHomSetInhabited",
-        [ IsCapCategory, IsList ] );
-
 ###################################
 ##
 #! @Section Homomorphism structures
@@ -1937,50 +954,12 @@ DeclareOperation( "HomomorphismStructureOnObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$ 
-#! to the category for the basic operation <C>HomomorphismStructureOnObjects</C>.
-#! $F: (a,b) \mapsto H(a,b)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddHomomorphismStructureOnObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddHomomorphismStructureOnObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddHomomorphismStructureOnObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddHomomorphismStructureOnObjects",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$ in $C$.
 #! The output is the value of the homomorphism structure on morphisms $H(\alpha, \beta )$.
 #! @Returns a morphism in $\mathrm{Hom}_{D}(H(a',b), H(a,b'))$
 #! @Arguments alpha, beta
 DeclareOperation( "HomomorphismStructureOnMorphisms",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>HomomorphismStructureOnMorphisms</C>.
-#! $F: ( \alpha: a \rightarrow a', \beta: b \rightarrow b' ) \mapsto H( \alpha, \beta )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddHomomorphismStructureOnMorphisms",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddHomomorphismStructureOnMorphisms",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddHomomorphismStructureOnMorphisms",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddHomomorphismStructureOnMorphisms",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are an object $s = H(a',b)$ in $D$,
@@ -1993,50 +972,12 @@ DeclareOperation( "HomomorphismStructureOnMorphismsWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$ 
-#! to the category for the basic operation <C>HomomorphismStructureOnMorphismsWithGivenObjects</C>.
-#! $F: ( s, \alpha: a \rightarrow a', \beta: b \rightarrow b', r ) \mapsto H( \alpha, \beta )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddHomomorphismStructureOnMorphismsWithGivenObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddHomomorphismStructureOnMorphismsWithGivenObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddHomomorphismStructureOnMorphismsWithGivenObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddHomomorphismStructureOnMorphismsWithGivenObjects",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The argument is a category $C$.
 #! The output is the distinguished object $1$ in $D$ of the homomorphism structure.
 #! @Returns an object in $D$
 #! @Arguments C
 DeclareAttribute( "DistinguishedObjectOfHomomorphismStructure",
                   IsCapCategory );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$ 
-#! to the category for the basic operation <C>DistinguishedObjectOfHomomorphismStructure</C>.
-#! $F: ( ) \mapsto 1$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddDistinguishedObjectOfHomomorphismStructure",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddDistinguishedObjectOfHomomorphismStructure",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddDistinguishedObjectOfHomomorphismStructure",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddDistinguishedObjectOfHomomorphismStructure",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The argument is a morphism  $\alpha: a \rightarrow a'$ in $C$.
@@ -2048,25 +989,6 @@ DeclareAttribute( "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorph
                   IsCapCategoryMorphism );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$ 
-#! to the category for the basic operation <C>InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure</C>.
-#! $F: (\alpha: a \rightarrow a') \mapsto (\nu(\alpha):1 \rightarrow H(a,a'))$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are the distinguished object $1$, a morphism  $\alpha: a \rightarrow a'$, and the object $r = H(a,a')$.
 #! The output is the corresponding morphism
 #! $\nu( \alpha ): 1 \rightarrow r$ in $D$ of the homomorphism structure.
@@ -2074,25 +996,6 @@ DeclareOperation( "AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomo
 #! @Arguments alpha
 DeclareOperation( "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects</C>.
-#! $F: (1, \alpha: a \rightarrow a', r) \mapsto (\nu(\alpha):1 \rightarrow r)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are
@@ -2104,25 +1007,6 @@ DeclareOperation( "AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomo
 #! @Arguments a,a',iota
 DeclareOperation( "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
                    [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$ 
-#! to the category for the basic operation <C>InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism</C>.
-#! $F: (a,a',\iota: 1 \rightarrow H(a,a')) \mapsto (\nu^{-1}(\iota): a \rightarrow a')$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are three lists $\alpha$, $\beta$, and $\gamma$.
@@ -2142,18 +1026,6 @@ DeclareOperation( "AddInterpretMorphismFromDistinguishedObjectToHomomorphismStru
 DeclareOperation( "SolveLinearSystemInAbCategory",
                    [ IsList, IsList, IsList ] );
 
-DeclareOperation( "AddSolveLinearSystemInAbCategory",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSolveLinearSystemInAbCategory",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSolveLinearSystemInAbCategory",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSolveLinearSystemInAbCategory",
-                  [ IsCapCategory, IsList ] );
-
 #! @Description
 #! Like <C>SolveLinearSystemInAbCategory</C>,
 #! but without the assumption that a solution exists.
@@ -2163,18 +1035,6 @@ DeclareOperation( "AddSolveLinearSystemInAbCategory",
 DeclareOperation( "SolveLinearSystemInAbCategoryOrFail",
                    [ IsList, IsList, IsList ] );
 
-DeclareOperation( "AddSolveLinearSystemInAbCategoryOrFail",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSolveLinearSystemInAbCategoryOrFail",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSolveLinearSystemInAbCategoryOrFail",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSolveLinearSystemInAbCategoryOrFail",
-                  [ IsCapCategory, IsList ] );
-
 #! @Description
 #! Like <C>SolveLinearSystemInAbCategory</C>,
 #! but the output is simply <C>true</C> if a solution exists,
@@ -2183,18 +1043,6 @@ DeclareOperation( "AddSolveLinearSystemInAbCategoryOrFail",
 #! @Arguments alpha, beta, gamma
 DeclareOperation( "MereExistenceOfSolutionOfLinearSystemInAbCategory",
                    [ IsList, IsList, IsList ] );
-
-DeclareOperation( "AddMereExistenceOfSolutionOfLinearSystemInAbCategory",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMereExistenceOfSolutionOfLinearSystemInAbCategory",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMereExistenceOfSolutionOfLinearSystemInAbCategory",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMereExistenceOfSolutionOfLinearSystemInAbCategory",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! This is a convenience method.
@@ -2263,24 +1111,6 @@ DeclareOperation( "BasisOfExternalHom",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>BasisOfExternalHom</C>.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddBasisOfExternalHom",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddBasisOfExternalHom",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddBasisOfExternalHom",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddBasisOfExternalHom",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are a morphism  $\alpha: a \to b$ in a $k$-linear category $C$ and
 #! a list <A>L</A><C>=BasisOfExternalHom</C>($a,b$).
 #! The output is a list of coefficients of $\alpha$ with respect to $L$.
@@ -2288,24 +1118,6 @@ DeclareOperation( "AddBasisOfExternalHom",
 #! @Arguments alpha, L
 DeclareOperation( "CoefficientsOfMorphismWithGivenBasisOfExternalHom",
                   [ IsCapCategoryMorphism, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CoefficientsOfMorphismWithGivenBasisOfExternalHom</C>.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoefficientsOfMorphismWithGivenBasisOfExternalHom",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoefficientsOfMorphismWithGivenBasisOfExternalHom",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoefficientsOfMorphismWithGivenBasisOfExternalHom",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoefficientsOfMorphismWithGivenBasisOfExternalHom",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! This is a convenience method.
@@ -2362,25 +1174,6 @@ DeclareAttribute( "CoefficientsOfMorphism",
 DeclareOperation( "SimplifyMorphism",
                   [ IsCapCategoryMorphism, IsObject ] );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SimplifyMorphism</C>.
-#! The function $F$ maps $(\phi,i \geq 1)$ to $\phi_i$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSimplifyMorphism",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSimplifyMorphism",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSimplifyMorphism",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSimplifyMorphism",
-                  [ IsCapCategory, IsList ] );
-
 #! $\ $
 #!
 #! If we regard $\phi$ as an object in the category $\sum_{A}\mathrm{Hom}( A, B )$,
@@ -2399,25 +1192,6 @@ DeclareOperation( "SimplifySource",
                   [ IsCapCategoryMorphism, IsObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SimplifySource</C>.
-#! The function $F$ maps $(\phi,i \geq 1)$ to $\phi_i$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSimplifySource",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSimplifySource",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSimplifySource",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSimplifySource",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are a morphism $\phi: A \rightarrow B$ and a non-negative integer $i$ or <C>infinity</C>.
 #! The output is the isomorphism $(\sigma_i)^{-1}: A_i \rightarrow A$.
 #! @Returns a morphism in $\mathrm{Hom}(A_i,A)$
@@ -2426,50 +1200,12 @@ DeclareOperation( "SimplifySource_IsoToInputObject",
                   [ IsCapCategoryMorphism, IsObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SimplifySource_IsoToInputObject</C>.
-#! The function $F$ maps $(\phi,i)$ to $(\sigma_i)^{-1}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSimplifySource_IsoToInputObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSimplifySource_IsoToInputObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSimplifySource_IsoToInputObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSimplifySource_IsoToInputObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are a morphism $\phi: A \rightarrow B$ and a non-negative integer $i$ or <C>infinity</C>.
 #! The output is the isomorphism $\sigma_i: A \rightarrow A_i$.
 #! @Returns a morphism in $\mathrm{Hom}(A,A_i)$
 #! @Arguments phi, i
 DeclareOperation( "SimplifySource_IsoFromInputObject",
                   [ IsCapCategoryMorphism, IsObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SimplifySource_IsoFromInputObject</C>.
-#! The function $F$ maps $(\phi,i)$ to $(\sigma_i)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSimplifySource_IsoFromInputObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSimplifySource_IsoFromInputObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSimplifySource_IsoFromInputObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSimplifySource_IsoFromInputObject",
-                  [ IsCapCategory, IsList ] );
 
 ## SimplifyRange
 #! $\ $
@@ -2489,25 +1225,6 @@ DeclareOperation( "SimplifyRange",
                   [ IsCapCategoryMorphism, IsObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SimplifyRange</C>.
-#! The function $F$ maps $(\phi,i \geq 1)$ to $\phi_i$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSimplifyRange",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSimplifyRange",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSimplifyRange",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSimplifyRange",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are a morphism $\phi: A \rightarrow B$ and a non-negative integer $i$ or <C>infinity</C>.
 #! The output is the isomorphism $(\rho_i)^{-1}: B_i \rightarrow B$.
 #! @Returns a morphism in $\mathrm{Hom}(B_i,B)$
@@ -2516,50 +1233,12 @@ DeclareOperation( "SimplifyRange_IsoToInputObject",
                   [ IsCapCategoryMorphism, IsObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SimplifyRange_IsoToInputObject</C>.
-#! The function $F$ maps $(\phi,i)$ to $(\rho_i)^{-1}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSimplifyRange_IsoToInputObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSimplifyRange_IsoToInputObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSimplifyRange_IsoToInputObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSimplifyRange_IsoToInputObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are a morphism $\phi: A \rightarrow B$ and a non-negative integer $i$ or <C>infinity</C>.
 #! The output is the isomorphism $\rho_i: B \rightarrow B_i$.
 #! @Returns a morphism in $\mathrm{Hom}(B,B_i)$
 #! @Arguments phi, i
 DeclareOperation( "SimplifyRange_IsoFromInputObject",
                   [ IsCapCategoryMorphism, IsObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SimplifyRange_IsoFromInputObject</C>.
-#! The function $F$ maps $(\phi,i)$ to $\rho_i$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSimplifyRange_IsoFromInputObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSimplifyRange_IsoFromInputObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSimplifyRange_IsoFromInputObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSimplifyRange_IsoFromInputObject",
-                  [ IsCapCategory, IsList ] );
 
 ## SimplifySourceAndRange*
 #! $\ $
@@ -2580,50 +1259,12 @@ DeclareOperation( "SimplifySourceAndRange",
                   [ IsCapCategoryMorphism, IsObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SimplifySourceAndRange</C>.
-#! The function $F$ maps $(\phi,i \geq 1)$ to $\phi_i$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSimplifySourceAndRange",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSimplifySourceAndRange",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSimplifySourceAndRange",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSimplifySourceAndRange",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are a morphism $\phi: A \rightarrow B$ and a non-negative integer $i$ or <C>infinity</C>.
 #! The output is the isomorphism $(\rho_i)^{-1}: B_i \rightarrow B$.
 #! @Returns a morphism in $\mathrm{Hom}(B_i,B)$
 #! @Arguments phi, i
 DeclareOperation( "SimplifySourceAndRange_IsoToInputRange",
                   [ IsCapCategoryMorphism, IsObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SimplifySourceAndRange_IsoToInputRange</C>.
-#! The function $F$ maps $(\phi,i)$ to $(\rho_i)^{-1}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSimplifySourceAndRange_IsoToInputRange",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSimplifySourceAndRange_IsoToInputRange",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSimplifySourceAndRange_IsoToInputRange",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSimplifySourceAndRange_IsoToInputRange",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a morphism $\phi: A \rightarrow B$ and a non-negative integer $i$ or <C>infinity</C>.
@@ -2634,25 +1275,6 @@ DeclareOperation( "SimplifySourceAndRange_IsoFromInputRange",
                   [ IsCapCategoryMorphism, IsObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SimplifySourceAndRange_IsoFromInputRange</C>.
-#! The function $F$ maps $(\phi,i)$ to $\rho_i$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSimplifySourceAndRange_IsoFromInputRange",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSimplifySourceAndRange_IsoFromInputRange",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSimplifySourceAndRange_IsoFromInputRange",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSimplifySourceAndRange_IsoFromInputRange",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are a morphism $\phi: A \rightarrow B$ and a non-negative integer $i$ or <C>infinity</C>.
 #! The output is the isomorphism $(\sigma_i)^{-1}: A_i \rightarrow A$.
 #! @Returns a morphism in $\mathrm{Hom}(A_i,A)$
@@ -2661,50 +1283,12 @@ DeclareOperation( "SimplifySourceAndRange_IsoToInputSource",
                   [ IsCapCategoryMorphism, IsObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SimplifySourceAndRange_IsoToInputSource</C>.
-#! The function $F$ maps $(\phi,i)$ to $(\sigma_i)^{-1}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSimplifySourceAndRange_IsoToInputSource",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSimplifySourceAndRange_IsoToInputSource",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSimplifySourceAndRange_IsoToInputSource",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSimplifySourceAndRange_IsoToInputSource",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are a morphism $\phi: A \rightarrow B$ and a non-negative integer $i$ or <C>infinity</C>.
 #! The output is the isomorphism $\sigma_i: A \rightarrow A_i$.
 #! @Returns a morphism in $\mathrm{Hom}(A,A_i)$
 #! @Arguments phi, i
 DeclareOperation( "SimplifySourceAndRange_IsoFromInputSource",
                   [ IsCapCategoryMorphism, IsObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SimplifySourceAndRange_IsoFromInputSource</C>.
-#! The function $F$ maps $(\phi,i)$ to $(\sigma_i)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSimplifySourceAndRange_IsoFromInputSource",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSimplifySourceAndRange_IsoFromInputSource",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSimplifySourceAndRange_IsoFromInputSource",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSimplifySourceAndRange_IsoFromInputSource",
-                  [ IsCapCategory, IsList ] );
 
 ## SimplifyEndo*
 #! $\ $
@@ -2725,25 +1309,6 @@ DeclareOperation( "SimplifyEndo",
                   [ IsCapCategoryMorphism, IsObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SimplifyEndo</C>.
-#! The function $F$ maps $(\phi,i \geq 1)$ to $\phi_i$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSimplifyEndo",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSimplifyEndo",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSimplifyEndo",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSimplifyEndo",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are an endomorphism $\phi: A \rightarrow A$ and a non-negative integer $i$ or <C>infinity</C>.
 #! The output is the isomorphism $(\sigma_i)^{-1}: A_i \rightarrow A$.
 #! @Returns a morphism in $\mathrm{Hom}(A_i,A)$
@@ -2752,50 +1317,12 @@ DeclareOperation( "SimplifyEndo_IsoToInputObject",
                   [ IsCapCategoryMorphism, IsObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SimplifyEndo_IsoToInputObject</C>.
-#! The function $F$ maps $(\phi,i)$ to $(\sigma_i)^{-1}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSimplifyEndo_IsoToInputObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSimplifyEndo_IsoToInputObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSimplifyEndo_IsoToInputObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSimplifyEndo_IsoToInputObject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
 #! The arguments are an endomorphism $\phi: A \rightarrow A$ and a non-negative integer $i$ or <C>infinity</C>.
 #! The output is the isomorphism $\sigma_i: A \rightarrow A_i$.
 #! @Returns a morphism in $\mathrm{Hom}(A,A_i)$
 #! @Arguments phi, i
 DeclareOperation( "SimplifyEndo_IsoFromInputObject",
                   [ IsCapCategoryMorphism, IsObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SimplifyEndo_IsoFromInputObject</C>.
-#! The function $F$ maps $(\phi,i)$ to $(\sigma_i)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSimplifyEndo_IsoFromInputObject",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSimplifyEndo_IsoFromInputObject",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSimplifyEndo_IsoFromInputObject",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSimplifyEndo_IsoFromInputObject",
-                  [ IsCapCategory, IsList ] );
 
 
 #! @Description
@@ -2889,26 +1416,6 @@ DeclareAttribute( "SomeReductionBySplitEpiSummand",
                   IsCapCategoryMorphism );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SomeReductionBySplitEpiSummand</C>.
-#! The function $F$ maps $\alpha$ to $\alpha'$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSomeReductionBySplitEpiSummand",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSomeReductionBySplitEpiSummand",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSomeReductionBySplitEpiSummand",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSomeReductionBySplitEpiSummand",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
 #! The output is the morphism $\beta': B' \rightarrow B$
 #! linking $\alpha$ with some reduction by split epi summands.
@@ -2918,26 +1425,6 @@ DeclareAttribute( "SomeReductionBySplitEpiSummand_MorphismToInputRange",
                   IsCapCategoryMorphism );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SomeReductionBySplitEpiSummand_MorphismToInputRange</C>.
-#! The function $F$ maps $\alpha$ to $\beta'$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSomeReductionBySplitEpiSummand_MorphismToInputRange",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSomeReductionBySplitEpiSummand_MorphismToInputRange",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSomeReductionBySplitEpiSummand_MorphismToInputRange",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSomeReductionBySplitEpiSummand_MorphismToInputRange",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
 #! The argument is a morphism $\alpha: A \rightarrow B$.
 #! The output is the morphism $\beta: B \rightarrow B'$
 #! linking $\alpha$ with some reduction by split epi summands.
@@ -2945,22 +1432,3 @@ DeclareOperation( "AddSomeReductionBySplitEpiSummand_MorphismToInputRange",
 #! @Arguments alpha
 DeclareAttribute( "SomeReductionBySplitEpiSummand_MorphismFromInputRange",
                   IsCapCategoryMorphism );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>SomeReductionBySplitEpiSummand_MorphismFromInputRange</C>.
-#! The function $F$ maps $\alpha$ to $\beta$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddSomeReductionBySplitEpiSummand_MorphismFromInputRange",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddSomeReductionBySplitEpiSummand_MorphismFromInputRange",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddSomeReductionBySplitEpiSummand_MorphismFromInputRange",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddSomeReductionBySplitEpiSummand_MorphismFromInputRange",
-                  [ IsCapCategory, IsList ] );

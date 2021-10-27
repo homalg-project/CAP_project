@@ -3,7 +3,9 @@
 #
 # Implementations
 #
-## @Chapter Prepare functions
+#! @Chapter Add Functions
+
+#! @Section Prepare functions
 
 InstallValue( CAP_PREPARE_FUNCTION_RECORD, rec( ) );
 

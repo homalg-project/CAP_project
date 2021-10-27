@@ -247,7 +247,16 @@ InstallMethod( Finalize,
             add_name( category, current_final_derivation.function_list, weight : IsFinalDerivation := true );
 
             for current_additional_func in current_final_derivation.additional_functions do
+                
                 weight := current_final_derivation.weight + Sum( List( current_additional_func[ 3 ], j -> CurrentOperationWeight( weight_list, NameFunction( j[ 1 ] ) ) * j[ 2 ] ) );
+                
+                Info( DerivationInfo, 1, Concatenation( "install(",
+                                              String( weight ),
+                                              ") ",
+                                              NameFunction( current_additional_func[ 1 ] ),
+                                              ": ",
+                                              current_final_derivation.description, "\n" ) );
+                
                 add_name := ValueGlobal( Concatenation( [ "Add", NameFunction( current_additional_func[ 1 ] ) ] ) );
                 add_name( category, current_additional_func[ 2 ], weight : IsFinalDerivation := true );
             od;

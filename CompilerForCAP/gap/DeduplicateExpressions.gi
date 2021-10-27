@@ -4,7 +4,7 @@
 # Implementations
 #
 InstallGlobalFunction( CapJitDeduplicatedExpressions, function ( tree )
-  local expressions_by_level_and_type, pre_func, result_func, additional_arguments_func, DEDUPLICATED_VARIABLE_ID, ignored_paths, path_replacements, bound_levels, expressions_by_type, expressions, info, expr, positions, equal_expressions, length, common_path, pos, func_path, func, new_variable_name, info2, level, key, path_replacement, i;
+  local expressions_by_level_and_type, pre_func, result_func, additional_arguments_func, ignored_paths, path_replacements, bound_levels, expressions_by_type, expressions, info, expr, positions, equal_expressions, length, common_path, pos, func_path, func, id, new_variable_name, info2, level, key, path_replacement, i;
     
     # functions and hoisted variables will be modified inline
     tree := StructuralCopy( tree );
@@ -74,8 +74,6 @@ InstallGlobalFunction( CapJitDeduplicatedExpressions, function ( tree )
     # populate `expressions_by_level_and_type`
     CapJitIterateOverTree( tree, pre_func, result_func, additional_arguments_func, rec( path := [ ] ) );
     
-    DEDUPLICATED_VARIABLE_ID := 1;
-    
     # now actually deduplicate expressions
     ignored_paths := [ ];
     path_replacements := [ ];
@@ -88,9 +86,6 @@ InstallGlobalFunction( CapJitDeduplicatedExpressions, function ( tree )
         for key in SortedList( RecNames( expressions_by_type ) ) do
             
             expressions := expressions_by_type.(key);
-            
-            # drop ignored expressions
-            expressions := Filtered( expressions, info -> not ForAny( ignored_paths, path -> StartsWith( info.path, path ) ) );
             
             # honor path replacements
             for info in expressions do
@@ -106,6 +101,10 @@ InstallGlobalFunction( CapJitDeduplicatedExpressions, function ( tree )
                 od;
                 
             od;
+            
+            # drop ignored expressions
+            # this has to happen after applying the replacements because replaced paths might be ignored
+            expressions := Filtered( expressions, info -> not ForAny( ignored_paths, path -> StartsWith( info.path, path ) ) );
             
             while not IsEmpty( expressions ) do
                 
@@ -143,8 +142,15 @@ InstallGlobalFunction( CapJitDeduplicatedExpressions, function ( tree )
                     
                     Assert( 0, func.type = "EXPR_DECLARATIVE_FUNC" );
                     
-                    new_variable_name := Concatenation( "cap_jit_deduplicated_expression_", String( DEDUPLICATED_VARIABLE_ID ) );
-                    DEDUPLICATED_VARIABLE_ID := DEDUPLICATED_VARIABLE_ID + 1;
+                    # search for an unused id
+                    id := 0;
+                    repeat
+                        
+                        id := id + 1;
+                        
+                        new_variable_name := Concatenation( "cap_jit_deduplicated_expression_", String( id ) );
+                        
+                    until not new_variable_name in func.nams;
                     
                     func.nams := Concatenation( func.nams, [ new_variable_name ] );
                     

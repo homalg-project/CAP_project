@@ -75,15 +75,60 @@ Display( compiled_func );
 #!     return function ( y_2 )
 #!           local cap_jit_deduplicated_expression_1_2;
 #!           cap_jit_deduplicated_expression_1_2 := [ y_2, function ( x_3 )
-#!                     local cap_jit_deduplicated_expression_2_3;
-#!                     cap_jit_deduplicated_expression_2_3 := x_3 + 1;
-#!                     return cap_jit_deduplicated_expression_2_3 
-#!                       + cap_jit_deduplicated_expression_2_3;
+#!                     local cap_jit_deduplicated_expression_1_3;
+#!                     cap_jit_deduplicated_expression_1_3 := x_3 + 1;
+#!                     return cap_jit_deduplicated_expression_1_3 
+#!                       + cap_jit_deduplicated_expression_1_3;
 #!                 end ];
 #!           return 
 #!            [ cap_jit_deduplicated_expression_1_2, 
 #!               cap_jit_deduplicated_expression_1_2 ];
 #!       end;
+#! end
+
+##
+# deduplication after hoisting in duplicated code
+func := { f, L } ->
+    [ f( y -> List( L, l -> y + y ) ), f( y -> List( L, l -> y + y ) ) ];;
+
+tree := ENHANCED_SYNTAX_TREE( func );;
+tree := CapJitHoistedExpressions( tree );;
+tree := CapJitDeduplicatedExpressions( tree );;
+compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
+Display( compiled_func );
+#! function ( f_1, L_1 )
+#!     local cap_jit_deduplicated_expression_1_1;
+#!     cap_jit_deduplicated_expression_1_1 := f_1( function ( y_2 )
+#!             local cap_jit_hoisted_expression_1_2;
+#!             cap_jit_hoisted_expression_1_2 := y_2 + y_2;
+#!             return List( L_1, function ( l_3 )
+#!                     return cap_jit_hoisted_expression_1_2;
+#!                 end );
+#!         end );
+#!     return 
+#!      [ cap_jit_deduplicated_expression_1_1, 
+#!         cap_jit_deduplicated_expression_1_1 ];
+#! end
+
+##
+# make sure that ignoring paths in replaced paths works as expected
+func := {} ->
+    [ [ [ [ 1 ] ], [ [ 1 ] ] ], [ [ [ 1 ] ], [ [ 1 ] ] ] ];;
+
+tree := ENHANCED_SYNTAX_TREE( func );;
+tree := CapJitDeduplicatedExpressions( tree );;
+compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
+Display( compiled_func );
+#! function (  )
+#!     local cap_jit_deduplicated_expression_1_1, 
+#!     cap_jit_deduplicated_expression_2_1;
+#!     cap_jit_deduplicated_expression_2_1 := [ [ 1 ] ];
+#!     cap_jit_deduplicated_expression_1_1 
+#!      := [ cap_jit_deduplicated_expression_2_1, 
+#!         cap_jit_deduplicated_expression_2_1 ];
+#!     return 
+#!      [ cap_jit_deduplicated_expression_1_1, 
+#!         cap_jit_deduplicated_expression_1_1 ];
 #! end
 
 #! @EndExample

@@ -40,9 +40,9 @@ function ( cat_1, s_1, a_1, b_1, r_1 )
     cap_jit_hoisted_expression_2_1 := RankOfObject( a_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, s_1, r_1, UnderlyingMatrix, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. cap_jit_deduplicated_expression_1_1 ], function ( i_2 )
-                      local cap_jit_deduplicated_expression_2_2;
-                      cap_jit_deduplicated_expression_2_2 := (i_2 - 1);
-                      return (REM_INT( cap_jit_deduplicated_expression_2_2, cap_jit_hoisted_expression_1_1 ) * cap_jit_hoisted_expression_2_1 + QUO_INT( cap_jit_deduplicated_expression_2_2, cap_jit_hoisted_expression_1_1 ) + 1);
+                      local cap_jit_deduplicated_expression_1_2;
+                      cap_jit_deduplicated_expression_1_2 := (i_2 - 1);
+                      return (REM_INT( cap_jit_deduplicated_expression_1_2, cap_jit_hoisted_expression_1_1 ) * cap_jit_hoisted_expression_2_1 + QUO_INT( cap_jit_deduplicated_expression_1_2, cap_jit_hoisted_expression_1_1 ) + 1);
                   end ) ) ^ -1, cap_jit_deduplicated_expression_1_1 ), cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_1_1, UnderlyingRing( cat_1 ) ) );
 end
 ########
