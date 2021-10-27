@@ -431,7 +431,10 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
             new_filter_list := CAP_INTERNAL_MERGE_FILTER_LISTS( replaced_filter_list, additional_filters );
             
-            if category!.enable_compilation = true or ( IsList( category!.enable_compilation ) and function_name in category!.enable_compilation ) then
+            # operations/derivations returning fail usually do not fulfill the requirements that all branches of an if statement can be executed
+            # even if the corresponding condition does not hold
+            if (category!.enable_compilation = true or ( IsList( category!.enable_compilation ) and function_name in category!.enable_compilation ))
+               and not (IsString( record.return_type ) and EndsWith( record.return_type, "fail" )) then
                 
                 if not (IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true) then
                     
