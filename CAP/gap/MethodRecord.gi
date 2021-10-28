@@ -4776,9 +4776,13 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
             # Test if output_source_getter_string contains a CAP operation.
             # If not, it can always be computed (independent of the conrete category).
-            current_rec.can_always_compute_output_source_getter := ForAll(
-                Concatenation( recnames, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) ),
-                x -> PositionSublist( current_rec.output_source_getter_string, x ) = fail
+            current_rec.can_always_compute_output_source_getter := IsEmpty(
+                CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION(
+                    current_rec.output_source_getter,
+                    Concatenation( recnames, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) ),
+                    2,
+                    CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS
+                )
             );
             
         fi;
@@ -4795,9 +4799,13 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
             # Test if output_range_getter_string contains a CAP operation.
             # If not, it can always be computed (independent of the conrete category).
-            current_rec.can_always_compute_output_range_getter := ForAll(
-                Concatenation( recnames, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) ),
-                x -> PositionSublist( current_rec.output_range_getter_string, x ) = fail
+            current_rec.can_always_compute_output_range_getter := IsEmpty(
+                CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION(
+                    current_rec.output_range_getter,
+                    Concatenation( recnames, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) ),
+                    2,
+                    CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS
+                )
             );
             
         fi;
