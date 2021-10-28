@@ -30,6 +30,10 @@ ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategoriesDo
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategories.gd" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategories.autogen.gd" );
 
+## Homomorphism Structure from Closed Structure
+ReadPackage( "MonoidalCategories", "gap/HomomorphismStructure.gd" );
+ReadPackage( "MonoidalCategories", "gap/HomomorphismStructure.autogen.gd" );
+
 ## Coclosed Monoidal
 ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesDoc.gd" );
 ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategories.gd" );

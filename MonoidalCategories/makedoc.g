@@ -41,6 +41,8 @@ AutoDoc(
                                 "gap/RigidSymmetricCoclosedMonoidalCategoriesDoc.gd",
                                 "gap/RigidSymmetricCoclosedMonoidalCategories.gd",
                                 "gap/RigidSymmetricCoclosedMonoidalCategories.autogen.gd",
+                                "gap/HomomorphismStructure.gd",
+                                "gap/HomomorphismStructure.autogen.gd",
                                 ],
                             scan_dirs := [ ],
                             ),
