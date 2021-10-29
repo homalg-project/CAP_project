@@ -55,3 +55,9 @@ InstallGlobalFunction( CapJitInlinedBindings, function ( tree )
     return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [ ] );
     
 end );
+
+InstallGlobalFunction( CapJitInlinedBindingsToGlobalVariables, function ( tree )
+    
+    return CapJitInlinedBindings( tree : inline_gvars_only := true );
+    
+end );

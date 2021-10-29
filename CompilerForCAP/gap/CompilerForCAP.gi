@@ -34,7 +34,7 @@ InstallGlobalFunction( CapJitCompiledFunction, function ( func, jit_args )
 end );
 
 InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( func, jit_args )
-  local debug, tree, orig_tree, compiled_func;
+  local debug, debug_idempotence, tree, resolving_phase_functions, orig_tree, compiled_func, tmp, rule_phase_functions, f;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Start compilation." );
@@ -47,6 +47,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     fi;
     
     debug := false;
+    debug_idempotence := false;
     
     if debug then
         # COVERAGE_IGNORE_BLOCK_START
@@ -66,6 +67,14 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     fi;
     
     # resolving phase
+    resolving_phase_functions := [
+        CapJitResolvedOperations,
+        CapJitInlinedArguments,
+        CapJitDroppedUnusedBindings,
+        CapJitInlinedBindingsToGlobalVariables,
+        CapJitResolvedGlobalVariables,
+    ];
+    
     orig_tree := rec( );
     while tree <> orig_tree do
         
@@ -82,59 +91,75 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
             # COVERAGE_IGNORE_BLOCK_END
         fi;
         
-        if debug then
-            # COVERAGE_IGNORE_BLOCK_START
-            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display( compiled_func );
-            Error( "apply CapJitResolvedOperations" );
-            # COVERAGE_IGNORE_BLOCK_END
-        fi;
-        
-        tree := CapJitResolvedOperations( tree, jit_args );
-        
-        if debug then
-            # COVERAGE_IGNORE_BLOCK_START
-            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display( compiled_func );
-            Error( "apply CapJitInlinedArguments" );
-            # COVERAGE_IGNORE_BLOCK_END
-        fi;
-        
-        tree := CapJitInlinedArguments( tree );
-        
-        if debug then
-            # COVERAGE_IGNORE_BLOCK_START
-            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display( compiled_func );
-            Error( "apply CapJitDroppedUnusedBindings" );
-            # COVERAGE_IGNORE_BLOCK_END
-        fi;
-        
-        tree := CapJitDroppedUnusedBindings( tree );
-        
-        if debug then
-            # COVERAGE_IGNORE_BLOCK_START
-            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display( compiled_func );
-            Error( "apply CapJitInlinedBindings (for global variables only)" );
-            # COVERAGE_IGNORE_BLOCK_END
-        fi;
-        
-        tree := CapJitInlinedBindings( tree : inline_gvars_only := true );
-        
-        if debug then
-            # COVERAGE_IGNORE_BLOCK_START
-            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display( compiled_func );
-            Error( "apply CapJitResolvedGlobalVariables" );
-            # COVERAGE_IGNORE_BLOCK_END
-        fi;
-        
-        tree := CapJitResolvedGlobalVariables( tree );
+        for f in resolving_phase_functions do
+            
+            if debug then
+                # COVERAGE_IGNORE_BLOCK_START
+                compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
+                Display( compiled_func );
+                # use Concatenation so one can easily replace "Error" by "Display"
+                Error( Concatenation( "next step: apply ", NameFunction( f ) ) );
+                # COVERAGE_IGNORE_BLOCK_END
+            fi;
+            
+            if NumberArgumentsFunction( f ) = 1 then
+                
+                tree := f( tree );
+                
+            elif NumberArgumentsFunction( f ) = 2 then
+                
+                tree := f( tree, jit_args );
+                
+            else
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Error( "this should never happen" );
+                
+            fi;
+            
+            if debug_idempotence then
+                
+                # COVERAGE_IGNORE_BLOCK_START
+                tmp := StructuralCopy( tree );
+                
+                if NumberArgumentsFunction( f ) = 1 then
+                    
+                    tree := f( tree );
+                    
+                elif NumberArgumentsFunction( f ) = 2 then
+                    
+                    tree := f( tree, jit_args );
+                    
+                else
+                    
+                    Error( "this should never happen" );
+                    
+                fi;
+                
+                if tmp <> tree then
+                    
+                    Error( NameFunction( f ), " is not idempotent" );
+                    
+                fi;
+                # COVERAGE_IGNORE_BLOCK_END
+                
+            fi;
+            
+        od;
         
     od;
     
     # rule phase
+    rule_phase_functions := [
+        CapJitAppliedLogic,
+        CapJitDroppedHandledEdgeCases,
+        CapJitInlinedArguments,
+        CapJitInlinedSimpleFunctionCalls,
+        CapJitInlinedFunctionCalls,
+        CapJitDroppedUnusedBindings,
+        CapJitInlinedBindings,
+    ];
+    
     orig_tree := rec( );
     while tree <> orig_tree do
         
@@ -151,75 +176,61 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
             # COVERAGE_IGNORE_BLOCK_END
         fi;
         
-        if debug then
-            # COVERAGE_IGNORE_BLOCK_START
-            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display( compiled_func );
-            Error( "apply CapJitAppliedLogic" );
-            # COVERAGE_IGNORE_BLOCK_END
-        fi;
-        
-        tree := CapJitAppliedLogic( tree, jit_args );
-        
-        if debug then
-            # COVERAGE_IGNORE_BLOCK_START
-            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display( compiled_func );
-            Error( "apply CapJitDroppedHandledEdgeCases" );
-            # COVERAGE_IGNORE_BLOCK_END
-        fi;
-        
-        tree := CapJitDroppedHandledEdgeCases( tree );
-        
-        if debug then
-            # COVERAGE_IGNORE_BLOCK_START
-            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display( compiled_func );
-            Error( "apply CapJitInlinedArguments" );
-            # COVERAGE_IGNORE_BLOCK_END
-        fi;
-        
-        tree := CapJitInlinedArguments( tree );
-        
-        if debug then
-            # COVERAGE_IGNORE_BLOCK_START
-            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display( compiled_func );
-            Error( "apply CapJitInlinedSimpleFunctionCalls" );
-            # COVERAGE_IGNORE_BLOCK_END
-        fi;
-        
-        tree := CapJitInlinedSimpleFunctionCalls( tree );
-        
-        if debug then
-            # COVERAGE_IGNORE_BLOCK_START
-            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display( compiled_func );
-            Error( "apply CapJitInlinedFunctionCalls" );
-            # COVERAGE_IGNORE_BLOCK_END
-        fi;
-        
-        tree := CapJitInlinedFunctionCalls( tree );
-        
-        if debug then
-            # COVERAGE_IGNORE_BLOCK_START
-            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display( compiled_func );
-            Error( "apply CapJitDroppedUnusedBindings" );
-            # COVERAGE_IGNORE_BLOCK_END
-        fi;
-        
-        tree := CapJitDroppedUnusedBindings( tree );
-        
-        if debug then
-            # COVERAGE_IGNORE_BLOCK_START
-            compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
-            Display( compiled_func );
-            Error( "apply CapJitInlinedBindings" );
-            # COVERAGE_IGNORE_BLOCK_END
-        fi;
-        
-        tree := CapJitInlinedBindings( tree );
+        for f in rule_phase_functions do
+            
+            if debug then
+                # COVERAGE_IGNORE_BLOCK_START
+                compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
+                Display( compiled_func );
+                # use Concatenation so one can easily replace "Error" by "Display"
+                Error( Concatenation( "next step: apply ", NameFunction( f ) ) );
+                # COVERAGE_IGNORE_BLOCK_END
+            fi;
+            
+            if NumberArgumentsFunction( f ) = 1 then
+                
+                tree := f( tree );
+                
+            elif NumberArgumentsFunction( f ) = 2 then
+                
+                tree := f( tree, jit_args );
+                
+            else
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Error( "this should never happen" );
+                
+            fi;
+            
+            if debug_idempotence then
+                
+                # COVERAGE_IGNORE_BLOCK_START
+                tmp := StructuralCopy( tree );
+                
+                if NumberArgumentsFunction( f ) = 1 then
+                    
+                    tree := f( tree );
+                    
+                elif NumberArgumentsFunction( f ) = 2 then
+                    
+                    tree := f( tree, jit_args );
+                    
+                else
+                    
+                    Error( "this should never happen" );
+                    
+                fi;
+                
+                if tmp <> tree then
+                    
+                    Error( NameFunction( f ), " is not idempotent" );
+                    
+                fi;
+                # COVERAGE_IGNORE_BLOCK_END
+                
+            fi;
+            
+        od;
         
     od;
     

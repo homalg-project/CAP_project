@@ -14,3 +14,9 @@
 #! @Returns a record
 #! @Arguments tree
 DeclareGlobalFunction( "CapJitInlinedBindings" );
+
+#! @Description
+#!   Short hand for `CapJitInlinedBindings( `<A>tree</A>` : inline_gvars_only := true )`.
+#! @Returns a record
+#! @Arguments tree
+DeclareGlobalFunction( "CapJitInlinedBindingsToGlobalVariables" );
