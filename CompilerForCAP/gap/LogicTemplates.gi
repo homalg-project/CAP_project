@@ -687,6 +687,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
         match := CapJitGetNodeByPath( tree, path );
         
         new_tree := StructuralCopy( tree );
+        
         parent := CapJitGetNodeByPath( new_tree, path{[ 1 .. Length( path ) - 1 ]} );
         
         variables := matching_info.variables;
@@ -759,7 +760,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
         
         # adjust function IDs and insert variables in dst_template_tree
         pre_func := function ( tree, additional_arguments )
-          local var_number, new_tree, replacement;
+          local var_number, replacement;
             
             if tree.type = "EXPR_DECLARATIVE_FUNC" and IsBound( func_id_replacements[tree.id] ) then
                 
