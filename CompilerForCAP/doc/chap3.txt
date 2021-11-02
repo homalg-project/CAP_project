@@ -686,6 +686,27 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# check that CapJitDroppedUnusedBindings is idempotent[127X[104X
+    [4X[25X>[125X [27Xfunc := function ( )[127X[104X
+    [4X[25X>[125X [27X  local val1, val2; val1 := 1; val2 := val1; return 1; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitDroppedUnusedBindings( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree ) );[127X[104X
+    [4X[28Xfunction (  )[128X[104X
+    [4X[28X    return 1;[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27Xtree2 := CapJitDroppedUnusedBindings( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree2 ) );[127X[104X
+    [4X[28Xfunction (  )[128X[104X
+    [4X[28X    return 1;[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27Xtree = tree2;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27X##[127X[104X
@@ -887,6 +908,69 @@
     [4X[28X    fi;[128X[104X
     [4X[28X    return;[128X[104X
     [4X[28Xend[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# check that CapJitInlinedBindings is idempotent[127X[104X
+    [4X[25X>[125X [27Xfunc := function ( )[127X[104X
+    [4X[25X>[125X [27X  local val1, val2; val1 := 1; val2 := val1; return val2; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitInlinedBindings( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree ) );[127X[104X
+    [4X[28Xfunction (  )[128X[104X
+    [4X[28X    local val1_1, val2_1;[128X[104X
+    [4X[28X    return 1;[128X[104X
+    [4X[28X    val1_1 := 1;[128X[104X
+    [4X[28X    val2_1 := 1;[128X[104X
+    [4X[28X    return;[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27Xtree2 := CapJitInlinedBindings( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree2 ) );[127X[104X
+    [4X[28Xfunction (  )[128X[104X
+    [4X[28X    local val1_1, val2_1;[128X[104X
+    [4X[28X    return 1;[128X[104X
+    [4X[28X    val1_1 := 1;[128X[104X
+    [4X[28X    val2_1 := 1;[128X[104X
+    [4X[28X    return;[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27Xtree = tree2;[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# make tests deteministic[127X[104X
+    [4X[25X>[125X [27Xoriginal_func_id := CAP_JIT_INTERNAL_FUNCTION_ID;;[127X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID := 1;;[127X[104X
+    [4X[25Xgap>[125X [27X# check that CapJitInlinedFunctionCalls is idempotent[127X[104X
+    [4X[25X>[125X [27Xfunc := function ( )[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    return (function ( )[127X[104X
+    [4X[25X>[125X [27X        return (function ( )[127X[104X
+    [4X[25X>[125X [27X            return 1; end)( ); end)( ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitInlinedFunctionCalls( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree ) );[127X[104X
+    [4X[28Xfunction (  )[128X[104X
+    [4X[28X    local inline_2_RETURN_VALUE_1, inline_2_inline_3_RETURN_VALUE_1;[128X[104X
+    [4X[28X    inline_2_inline_3_RETURN_VALUE_1 := 1;[128X[104X
+    [4X[28X    inline_2_RETURN_VALUE_1 := inline_2_inline_3_RETURN_VALUE_1;[128X[104X
+    [4X[28X    return inline_2_RETURN_VALUE_1;[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27Xtree2 := CapJitInlinedFunctionCalls( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree2 ) );[127X[104X
+    [4X[28Xfunction (  )[128X[104X
+    [4X[28X    local inline_2_RETURN_VALUE_1, inline_2_inline_3_RETURN_VALUE_1;[128X[104X
+    [4X[28X    inline_2_inline_3_RETURN_VALUE_1 := 1;[128X[104X
+    [4X[28X    inline_2_RETURN_VALUE_1 := inline_2_inline_3_RETURN_VALUE_1;[128X[104X
+    [4X[28X    return inline_2_RETURN_VALUE_1;[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27Xtree = tree2;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID := original_func_id;;[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
