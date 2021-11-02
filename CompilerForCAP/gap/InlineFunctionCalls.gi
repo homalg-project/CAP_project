@@ -71,13 +71,19 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID, function ( tree,
 end );
 
 InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
-  local pre_func, additional_arguments_func;
+  local result_func, additional_arguments_func;
     
     # nams and bindings will be modified inline
     tree := StructuralCopy( tree );
     
-    pre_func := function ( tree, func_stack )
-      local target_func, inline_func, new_nams, pos_RETURN_VALUE, name;
+    result_func := function ( tree, result, keys, func_stack )
+      local target_func, inline_func, new_nams, pos_RETURN_VALUE, key, name;
+        
+        for key in keys do
+            
+            tree.(key) := result.(key);
+            
+        od;
         
         if tree.type = "EXPR_FUNCCALL" and tree.funcref.type = "EXPR_DECLARATIVE_FUNC" then
             
@@ -145,6 +151,6 @@ InstallGlobalFunction( CapJitInlinedFunctionCalls, function ( tree )
         
     end;
     
-    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [ ] );
+    return CapJitIterateOverTree( tree, ReturnFirst, result_func, additional_arguments_func, [ ] );
     
 end );

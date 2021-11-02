@@ -7,72 +7,88 @@ InstallGlobalFunction( CapJitDroppedUnusedBindings, function ( tree )
   local pre_func;
     
     pre_func := function ( tree, additional_arguments )
-      local name_is_used, func_id, pre_func, name;
+      local used_by_bindings, func, pre_func, unused_names, binding_name;
         
         if tree.type = "EXPR_DECLARATIVE_FUNC" then
             
+            # first drop unused names
+            tree.nams := Filtered( tree.nams, name -> Position( tree.nams, name ) <= tree.narg or name in tree.bindings.names );
+            
             # find unused bindings
-            # we can ignore args because those must never be bound explicitly
             
             # modified inplace
-            name_is_used := rec( );
+            used_by_bindings := rec( );
             
-            for name in tree.nams{[ 1 .. tree.narg ]} do
+            for binding_name in tree.bindings.names do
                 
-                name_is_used.(name) := true;
+                used_by_bindings.(binding_name) := [ ];
                 
             od;
             
-            for name in tree.nams{[ tree.narg + 1 .. Length( tree.nams ) ]} do
+            func := tree;
+            
+            for binding_name in tree.bindings.names do
                 
-                name_is_used.(name) := false;
+                pre_func := function ( tree, additional_arguments )
+                    
+                    # we can ignore arguments because those are never bound
+                    if tree.type = "EXPR_REF_FVAR" and tree.func_id = func.id and tree.name in func.bindings.names then
+                        
+                        Assert( 0, IsBound( used_by_bindings.(tree.name) ) );
+                        
+                        Add( used_by_bindings.(tree.name), binding_name );
+                        
+                    fi;
+                    
+                    return tree;
+                    
+                end;
+                
+                CapJitIterateOverTree( CapJitValueOfBinding( tree.bindings, binding_name ), pre_func, ReturnTrue, ReturnTrue, true );
                 
             od;
-            
-            func_id := tree.id;
-            
-            pre_func := function ( tree, additional_arguments )
-                
-                if tree.type = "EXPR_REF_FVAR" and tree.func_id = func_id then
-                    
-                    Assert( 0, IsBound( name_is_used.(tree.name) ) );
-                    
-                    name_is_used.(tree.name) := true;
-                    
-                fi;
-                
-                return tree;
-                
-            end;
-            
-            CapJitIterateOverTree( tree, pre_func, ReturnTrue, ReturnTrue, true );
             
             # RETURN_VALUE must never be explicitly used but is always implictely used
-            Assert( 0, name_is_used.RETURN_VALUE = false );
-            name_is_used.RETURN_VALUE := true;
+            Assert( 0, IsEmpty( used_by_bindings.RETURN_VALUE ) );
+            used_by_bindings.RETURN_VALUE := [ "RETURN_VALUE" ];
             
-            Info( InfoCapJit, 1, "####" );
-            Info( InfoCapJit, 1, "Dropping the following unused variables:" );
-            Info( InfoCapJit, 1, Filtered( tree.nams, name -> not name_is_used.(name) ) );
+            # drop unused bindings
             
-            tree := ShallowCopy( tree );
-            
-            tree.bindings := ShallowCopy( tree.bindings );
-            
-            # tree.bindings.names is modified by CapJitUnbindBinding -> make a copy
-            for name in ShallowCopy( tree.bindings.names ) do
+            while true do
                 
-                Assert( 0, name in tree.nams );
+                unused_names := Filtered( tree.bindings.names, name -> IsEmpty( used_by_bindings.(name) ) );
                 
-                if not name_is_used.(name) then
+                if IsEmpty( unused_names ) then
                     
-                    CapJitUnbindBinding( tree.bindings, name );
+                    break;
+                    
+                else
+                    
+                    Info( InfoCapJit, 1, "####" );
+                    Info( InfoCapJit, 1, "Dropping the following unused variables:" );
+                    Info( InfoCapJit, 1, unused_names );
+                    
+                    tree := ShallowCopy( tree );
+                    
+                    tree.bindings := ShallowCopy( tree.bindings );
+                    
+                    for binding_name in unused_names do
+                        
+                        CapJitUnbindBinding( tree.bindings, binding_name );
+                        
+                    od;
+                    
+                    tree.nams := Filtered( tree.nams, name -> not name in unused_names );
+                    
+                    for binding_name in tree.bindings.names do
+                        
+                        used_by_bindings.(binding_name) := Difference( used_by_bindings.(binding_name), unused_names );
+                        
+                    od;
                     
                 fi;
                 
             od;
-            
-            tree.nams := Filtered( tree.nams, name -> name_is_used.(name) );
             
         fi;
         
