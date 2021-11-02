@@ -158,6 +158,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         CapJitInlinedFunctionCalls,
         CapJitDroppedUnusedBindings,
         CapJitInlinedBindings,
+        CapJitDroppedUnusedBindings,
     ];
     
     orig_tree := rec( );
