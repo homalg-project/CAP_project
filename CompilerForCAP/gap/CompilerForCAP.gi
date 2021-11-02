@@ -278,7 +278,11 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         
         Display( compiled_func );
         
-        Assert( 0, CallFuncList( compiled_func, jit_args ) = CallFuncList( func, jit_args ) );
+        if NumberArgumentsFunction( func ) = Length( jit_args ) then
+            
+            Assert( 0, CallFuncList( compiled_func, jit_args ) = CallFuncList( func, jit_args ) );
+            
+        fi;
         
         Error( "compilation finished" );
         # COVERAGE_IGNORE_BLOCK_END
