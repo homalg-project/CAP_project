@@ -63,7 +63,6 @@
   [2XAddFiberProduct[102X, for IsCapCategory, IsFunction 7.7-43 
   [2XAddFiberProductEmbeddingInDirectSum[102X, for IsCapCategory, IsFunction 7.7-44 
   [2XAddFiberProductFunctorialWithGivenFiberProducts[102X, for IsCapCategory, IsFunction 7.7-45 
-  [2XAddfunction_name[102X, for IsCapCategory, IsFunction 12.1-1 
   [2XAddHomologyObject[102X, for IsCapCategory, IsFunction 7.7-46 
   [2XAddHomologyObjectFunctorialWithGivenHomologyObjects[102X, for IsCapCategory, IsFunction 7.7-47 
   [2XAddHomomorphismStructureOnMorphisms[102X, for IsCapCategory, IsFunction 7.7-48 
