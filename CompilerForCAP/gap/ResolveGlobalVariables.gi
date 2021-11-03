@@ -18,9 +18,10 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
     Info( InfoCapJit, 1, "Resolving global variables." );
     
     pre_func := function ( tree, additional_arguments )
-      local funccall_does_not_return_fail, value, inline_tree, name, global_variable_name;
+      local funccall_does_not_return_fail, is_attribute_or_component_of_category, value, inline_tree, name, global_variable_name;
         
         funccall_does_not_return_fail := false;
+        is_attribute_or_component_of_category := false;
         
         if not (IsBound( tree.CAP_JIT_NOT_RESOLVABLE ) and tree.CAP_JIT_NOT_RESOLVABLE) then
             
@@ -34,6 +35,12 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
             elif tree.type = "EXPR_ELM_COMOBJ_NAME" and tree.comobj.type = "EXPR_REF_GVAR" and not tree.comobj.gvar in CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES then
                 
                 value := ValueGlobal( tree.comobj.gvar )!.(tree.name);
+                
+                if IsCapCategory( ValueGlobal( tree.comobj.gvar ) ) then
+                    
+                    is_attribute_or_component_of_category := true;
+                    
+                fi;
                 
             elif tree.type = "EXPR_ELM_REC_NAME" and tree.record.type = "EXPR_REF_GVAR" and not tree.record.gvar in CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES then
                 
@@ -67,6 +74,12 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
                     fi;
                 
                 end ) ) );
+                
+                if tree.args.length = 1 and tree.args.1.type = "EXPR_REF_GVAR" and IsCapCategory( ValueGlobal( tree.args.1.gvar ) ) then
+                    
+                    is_attribute_or_component_of_category := true;
+                    
+                fi;
                 
             fi;
             
@@ -137,41 +150,36 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
                     
                 fi;
                 
-                # could not resolve to a another value
-                if tree.type = "EXPR_REF_GVAR" then
-                    
-                    # this was already a gvar and we could not simplify it
-                    tree := ShallowCopy( tree );
-
-                    tree.CAP_JIT_NOT_RESOLVABLE := true;
-
-                    return tree;
-                    
-                else
+                # could not resolve to another value
+                # store attributes or components of categories in a new global variable (because those can be turned back into code using compiler hints)
+                if is_attribute_or_component_of_category then
                     
                     global_variable_name := CapJitGetOrCreateGlobalVariable( value );
                     
-                    tree := rec(
+                    return rec(
                         type := "EXPR_REF_GVAR",
                         gvar := global_variable_name,
                         CAP_JIT_NOT_RESOLVABLE := true,
                     );
                     
-                    Info( InfoCapJit, 1, "####" );
-                    Info( InfoCapJit, 1, "Resolved a global variable." );
-    
+                else
+                    
+                    tree := ShallowCopy( tree );
+                    
+                    tree.CAP_JIT_NOT_RESOLVABLE := true;
+                    
                     return tree;
                     
                 fi;
-
-            fi;
                 
+            fi;
+            
         fi;
         
         return tree;
         
     end;
-
+    
     return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
-  
+    
 end );
