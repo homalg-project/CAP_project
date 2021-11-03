@@ -261,22 +261,47 @@ CapJitAddLogicTemplate(
     )
 );
 
-# MatElm( List( list, func ), index1, index2 ) => func( list[ index1 ] )[ index2 ]
+# MatElm( List( list, func ), index1, index2 ) => List( list, func )[ index1 ][ index2 ]
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "list", "func", "index1", "index2" ],
         src_template := "MatElm( List( list, func ), index1, index2 )",
-        dst_template := "func( list[ index1 ] )[ index2 ]",
+        dst_template := "List( list, func )[ index1 ][ index2 ]",
         returns_value := true,
     )
 );
 
-# List( L, f )[index] => f( L[index] )
+# List( L{poss}, f ) => List( L, f ){poss}
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list", "poss", "func" ],
+        src_template := "List( list{poss}, func )",
+        dst_template := "List( list, func ){poss}",
+        returns_value := true,
+    )
+);
+
+# f( L[index] ) => List( L, f )[index]
+# Note: We always "push down" the function, because:
+# If L is a `Concatenation`, we cannot resolve the index on the left hand side, but we can push the function further down on the right hand side.
+# This causes some minor overhead if the index is fixed (e.g. for ProjectionInFactorOfDirectSum) because f is applied to the whole list
+# instead of only the element given by the index, but such examples are rare.
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "list", "func", "index" ],
-        src_template := "List( list, func )[index]",
-        dst_template := "func( list[index] )",
+        src_template := "func( list[index] )",
+        dst_template := "List( list, func )[index]",
+        returns_value := true,
+    )
+);
+
+# List( list_of_lists[index], func ) => List( list_of_lists, list -> List( list, func ) )[index]
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "list_of_lists", "index", "func" ],
+        src_template := "List( list_of_lists[index], func )",
+        dst_template := "List( list_of_lists, list -> List( list, func ) )[index]",
+        new_funcs := [ [ "list" ] ],
         returns_value := true,
     )
 );

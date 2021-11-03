@@ -255,9 +255,8 @@ end
         
 ########
 function ( cat_1, objects_1, k_1 )
-    local cap_jit_morphism_attribute_1_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1;
-    cap_jit_deduplicated_expression_3_1 := objects_1[k_1];
-    cap_jit_deduplicated_expression_1_1 := Dimension( cap_jit_deduplicated_expression_3_1 );
+    local cap_jit_morphism_attribute_1_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1;
+    cap_jit_deduplicated_expression_1_1 := List( objects_1, Dimension )[k_1];
     cap_jit_deduplicated_expression_2_1 := UnderlyingRing( cat_1 );
     cap_jit_morphism_attribute_1_1 := UnionOfColumns( HomalgZeroMatrix( cap_jit_deduplicated_expression_1_1, Sum( objects_1{[ 1 .. k_1 - 1 ]}, function ( c_2 )
                 return Dimension( c_2 );
@@ -265,7 +264,7 @@ function ( cat_1, objects_1, k_1 )
                 return Dimension( c_2 );
             end ), cap_jit_deduplicated_expression_2_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, cap_jit_deduplicated_expression_3_1, ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat_1, objects_1[k_1], ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
@@ -277,12 +276,11 @@ end
         
 ########
 function ( cat_1, objects_1, k_1, P_1 )
-    local cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1;
-    cap_jit_deduplicated_expression_3_1 := objects_1[k_1];
-    cap_jit_deduplicated_expression_1_1 := Dimension( cap_jit_deduplicated_expression_3_1 );
+    local cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1;
+    cap_jit_deduplicated_expression_1_1 := List( objects_1, Dimension )[k_1];
     cap_jit_deduplicated_expression_2_1 := UnderlyingRing( cat_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, cap_jit_deduplicated_expression_3_1, P_1, UnderlyingMatrix, UnionOfColumns( HomalgZeroMatrix( cap_jit_deduplicated_expression_1_1, Sum( objects_1{[ 1 .. k_1 - 1 ]}, function ( c_2 )
+           ), cat_1, objects_1[k_1], P_1, UnderlyingMatrix, UnionOfColumns( HomalgZeroMatrix( cap_jit_deduplicated_expression_1_1, Sum( objects_1{[ 1 .. k_1 - 1 ]}, function ( c_2 )
                   return Dimension( c_2 );
               end ), cap_jit_deduplicated_expression_2_1 ), HomalgIdentityMatrix( cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1 ), HomalgZeroMatrix( cap_jit_deduplicated_expression_1_1, Sum( objects_1{[ k_1 + 1 .. Length( objects_1 ) ]}, function ( c_2 )
                   return Dimension( c_2 );
@@ -847,9 +845,8 @@ end
         
 ########
 function ( cat_1, objects_1, k_1 )
-    local cap_jit_morphism_attribute_1_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1;
-    cap_jit_deduplicated_expression_3_1 := objects_1[k_1];
-    cap_jit_deduplicated_expression_1_1 := Dimension( cap_jit_deduplicated_expression_3_1 );
+    local cap_jit_morphism_attribute_1_1, cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1;
+    cap_jit_deduplicated_expression_1_1 := List( objects_1, Dimension )[k_1];
     cap_jit_deduplicated_expression_2_1 := UnderlyingRing( cat_1 );
     cap_jit_morphism_attribute_1_1 := UnionOfRows( HomalgZeroMatrix( Sum( objects_1{[ 1 .. k_1 - 1 ]}, function ( c_2 )
                 return Dimension( c_2 );
@@ -858,7 +855,7 @@ function ( cat_1, objects_1, k_1 )
             end ), cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1_1 ) ), cap_jit_deduplicated_expression_3_1, UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
+             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1_1 ) ), objects_1[k_1], UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
 end
 ########
         
@@ -869,12 +866,11 @@ end
         
 ########
 function ( cat_1, objects_1, k_1, P_1 )
-    local cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1;
-    cap_jit_deduplicated_expression_3_1 := objects_1[k_1];
-    cap_jit_deduplicated_expression_1_1 := Dimension( cap_jit_deduplicated_expression_3_1 );
+    local cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1;
+    cap_jit_deduplicated_expression_1_1 := List( objects_1, Dimension )[k_1];
     cap_jit_deduplicated_expression_2_1 := UnderlyingRing( cat_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, P_1, cap_jit_deduplicated_expression_3_1, UnderlyingMatrix, UnionOfRows( HomalgZeroMatrix( Sum( objects_1{[ 1 .. k_1 - 1 ]}, function ( c_2 )
+           ), cat_1, P_1, objects_1[k_1], UnderlyingMatrix, UnionOfRows( HomalgZeroMatrix( Sum( objects_1{[ 1 .. k_1 - 1 ]}, function ( c_2 )
                   return Dimension( c_2 );
               end ), cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1 ), HomalgIdentityMatrix( cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1 ), HomalgZeroMatrix( Sum( objects_1{[ k_1 + 1 .. Length( objects_1 ) ]}, function ( c_2 )
                   return Dimension( c_2 );

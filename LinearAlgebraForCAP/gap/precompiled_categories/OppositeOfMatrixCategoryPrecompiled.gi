@@ -210,22 +210,22 @@ end
         
 ########
 function ( cat_1, objects_1, k_1, P_1 )
-    local cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1, cap_jit_deduplicated_expression_4_1, cap_jit_deduplicated_expression_5_1, cap_jit_deduplicated_expression_6_1;
-    cap_jit_deduplicated_expression_1_1 := List( objects_1, function ( x_2 )
+    local cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1, cap_jit_deduplicated_expression_4_1;
+    cap_jit_deduplicated_expression_1_1 := List( objects_1, function ( logic_new_func_x_2 )
+              return Dimension( Opposite( logic_new_func_x_2 ) );
+          end )[k_1];
+    cap_jit_deduplicated_expression_2_1 := List( objects_1, function ( x_2 )
             return Opposite( x_2 );
         end );
-    cap_jit_deduplicated_expression_6_1 := objects_1[k_1];
-    cap_jit_deduplicated_expression_4_1 := Opposite( cap_jit_deduplicated_expression_6_1 );
-    cap_jit_deduplicated_expression_2_1 := Dimension( cap_jit_deduplicated_expression_4_1 );
-    cap_jit_deduplicated_expression_5_1 := OppositeCategory( cat_1 );
-    cap_jit_deduplicated_expression_3_1 := UnderlyingRing( cap_jit_deduplicated_expression_5_1 );
+    cap_jit_deduplicated_expression_4_1 := OppositeCategory( cat_1 );
+    cap_jit_deduplicated_expression_3_1 := UnderlyingRing( cap_jit_deduplicated_expression_4_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, cap_jit_deduplicated_expression_6_1, P_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), cap_jit_deduplicated_expression_5_1, Opposite( P_1 ), cap_jit_deduplicated_expression_4_1, UnderlyingMatrix, UnionOfRows( HomalgZeroMatrix( Sum( cap_jit_deduplicated_expression_1_1{[ 1 .. k_1 - 1 ]}, function ( c_2 )
+           ), cat_1, objects_1[k_1], P_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), cap_jit_deduplicated_expression_4_1, Opposite( P_1 ), cap_jit_deduplicated_expression_2_1[k_1], UnderlyingMatrix, UnionOfRows( HomalgZeroMatrix( Sum( cap_jit_deduplicated_expression_2_1{[ 1 .. k_1 - 1 ]}, function ( c_2 )
                     return Dimension( c_2 );
-                end ), cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1 ), HomalgIdentityMatrix( cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1 ), HomalgZeroMatrix( Sum( cap_jit_deduplicated_expression_1_1{[ k_1 + 1 .. Length( objects_1 ) ]}, function ( c_2 )
+                end ), cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_3_1 ), HomalgIdentityMatrix( cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_3_1 ), HomalgZeroMatrix( Sum( cap_jit_deduplicated_expression_2_1{[ k_1 + 1 .. Length( objects_1 ) ]}, function ( c_2 )
                     return Dimension( c_2 );
-                end ), cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1 ) ) ) );
+                end ), cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_3_1 ) ) ) );
 end
 ########
         
@@ -507,20 +507,20 @@ end
         
 ########
 function ( cat_1, objects_1, k_1, P_1 )
-    local cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1, cap_jit_deduplicated_expression_4_1, cap_jit_deduplicated_expression_5_1, cap_jit_deduplicated_expression_6_1;
-    cap_jit_deduplicated_expression_1_1 := List( objects_1, function ( x_2 )
+    local cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1, cap_jit_deduplicated_expression_4_1;
+    cap_jit_deduplicated_expression_1_1 := List( objects_1, function ( logic_new_func_x_2 )
+              return Dimension( Opposite( logic_new_func_x_2 ) );
+          end )[k_1];
+    cap_jit_deduplicated_expression_2_1 := List( objects_1, function ( x_2 )
             return Opposite( x_2 );
         end );
-    cap_jit_deduplicated_expression_6_1 := objects_1[k_1];
-    cap_jit_deduplicated_expression_4_1 := Opposite( cap_jit_deduplicated_expression_6_1 );
-    cap_jit_deduplicated_expression_2_1 := Dimension( cap_jit_deduplicated_expression_4_1 );
-    cap_jit_deduplicated_expression_5_1 := OppositeCategory( cat_1 );
-    cap_jit_deduplicated_expression_3_1 := UnderlyingRing( cap_jit_deduplicated_expression_5_1 );
+    cap_jit_deduplicated_expression_4_1 := OppositeCategory( cat_1 );
+    cap_jit_deduplicated_expression_3_1 := UnderlyingRing( cap_jit_deduplicated_expression_4_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, P_1, cap_jit_deduplicated_expression_6_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), cap_jit_deduplicated_expression_5_1, cap_jit_deduplicated_expression_4_1, Opposite( P_1 ), UnderlyingMatrix, UnionOfColumns( HomalgZeroMatrix( cap_jit_deduplicated_expression_2_1, Sum( cap_jit_deduplicated_expression_1_1{[ 1 .. k_1 - 1 ]}, function ( c_2 )
+           ), cat_1, P_1, objects_1[k_1], Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), cap_jit_deduplicated_expression_4_1, cap_jit_deduplicated_expression_2_1[k_1], Opposite( P_1 ), UnderlyingMatrix, UnionOfColumns( HomalgZeroMatrix( cap_jit_deduplicated_expression_1_1, Sum( cap_jit_deduplicated_expression_2_1{[ 1 .. k_1 - 1 ]}, function ( c_2 )
                     return Dimension( c_2 );
-                end ), cap_jit_deduplicated_expression_3_1 ), HomalgIdentityMatrix( cap_jit_deduplicated_expression_2_1, cap_jit_deduplicated_expression_3_1 ), HomalgZeroMatrix( cap_jit_deduplicated_expression_2_1, Sum( cap_jit_deduplicated_expression_1_1{[ k_1 + 1 .. Length( objects_1 ) ]}, function ( c_2 )
+                end ), cap_jit_deduplicated_expression_3_1 ), HomalgIdentityMatrix( cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_3_1 ), HomalgZeroMatrix( cap_jit_deduplicated_expression_1_1, Sum( cap_jit_deduplicated_expression_2_1{[ k_1 + 1 .. Length( objects_1 ) ]}, function ( c_2 )
                     return Dimension( c_2 );
                 end ), cap_jit_deduplicated_expression_3_1 ) ) ) );
 end

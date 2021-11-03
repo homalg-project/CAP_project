@@ -153,12 +153,12 @@ end
 ########
 function ( cat_1, alpha_1, S_1, i_1 )
     local cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1;
-    cap_jit_deduplicated_expression_1_1 := Sum( List( S_1, function ( logic_new_func_x_2 )
-                  return RankOfObject( logic_new_func_x_2 );
-              end ){[ 1 .. i_1 - 1 ]} ) + 1;
-    cap_jit_deduplicated_expression_2_1 := S_1[i_1];
+    cap_jit_deduplicated_expression_2_1 := List( S_1, function ( logic_new_func_x_2 )
+            return RankOfObject( logic_new_func_x_2 );
+        end );
+    cap_jit_deduplicated_expression_1_1 := Sum( cap_jit_deduplicated_expression_2_1{[ 1 .. i_1 - 1 ]} ) + 1;
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, cap_jit_deduplicated_expression_2_1, Range( alpha_1 ), UnderlyingMatrix, CertainColumns( UnderlyingMatrix( alpha_1 ), [ cap_jit_deduplicated_expression_1_1 .. cap_jit_deduplicated_expression_1_1 - 1 + RankOfObject( cap_jit_deduplicated_expression_2_1 ) ] ) );
+           ), cat_1, S_1[i_1], Range( alpha_1 ), UnderlyingMatrix, CertainColumns( UnderlyingMatrix( alpha_1 ), [ cap_jit_deduplicated_expression_1_1 .. cap_jit_deduplicated_expression_1_1 - 1 + cap_jit_deduplicated_expression_2_1[i_1] ] ) );
 end
 ########
         
@@ -170,12 +170,12 @@ end
 ########
 function ( cat_1, alpha_1, S_1, i_1 )
     local cap_jit_deduplicated_expression_1_1, cap_jit_deduplicated_expression_2_1;
-    cap_jit_deduplicated_expression_1_1 := Sum( List( S_1, function ( logic_new_func_x_2 )
-                  return RankOfObject( logic_new_func_x_2 );
-              end ){[ 1 .. i_1 - 1 ]} ) + 1;
-    cap_jit_deduplicated_expression_2_1 := S_1[i_1];
+    cap_jit_deduplicated_expression_2_1 := List( S_1, function ( logic_new_func_x_2 )
+            return RankOfObject( logic_new_func_x_2 );
+        end );
+    cap_jit_deduplicated_expression_1_1 := Sum( cap_jit_deduplicated_expression_2_1{[ 1 .. i_1 - 1 ]} ) + 1;
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Source( alpha_1 ), cap_jit_deduplicated_expression_2_1, UnderlyingMatrix, CertainRows( UnderlyingMatrix( alpha_1 ), [ cap_jit_deduplicated_expression_1_1 .. cap_jit_deduplicated_expression_1_1 - 1 + RankOfObject( cap_jit_deduplicated_expression_2_1 ) ] ) );
+           ), cat_1, Source( alpha_1 ), S_1[i_1], UnderlyingMatrix, CertainRows( UnderlyingMatrix( alpha_1 ), [ cap_jit_deduplicated_expression_1_1 .. cap_jit_deduplicated_expression_1_1 - 1 + cap_jit_deduplicated_expression_2_1[i_1] ] ) );
 end
 ########
         
