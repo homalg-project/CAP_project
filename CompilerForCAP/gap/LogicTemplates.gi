@@ -467,7 +467,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
             fi;
             
             # ignore these keys
-            if key in [ "CAP_JIT_NOT_RESOLVABLE" ] then
+            if key in [ "CAP_JIT_NOT_RESOLVABLE", "CAP_JIT_IGNORE_OPERATION" ] then
                 
                 continue;
                 
