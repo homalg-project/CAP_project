@@ -262,6 +262,8 @@ CapJitAddLogicTemplate(
 );
 
 # MatElm( List( list, func ), index1, index2 ) => List( list, func )[ index1 ][ index2 ]
+# We only apply this if the first argument of `MatElm` is a call to `List` to make sure
+# we actually have a list (this can be changes once we have a proper type system).
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "list", "func", "index1", "index2" ],
@@ -281,16 +283,18 @@ CapJitAddLogicTemplate(
     )
 );
 
-# f( L[index] ) => List( L, f )[index]
+# func1( List( L, func2 )[index] ) => List( List( L, func2 ), func1 )[index]
 # Note: We always "push down" the function, because:
 # If L is a `Concatenation`, we cannot resolve the index on the left hand side, but we can push the function further down on the right hand side.
 # This causes some minor overhead if the index is fixed (e.g. for ProjectionInFactorOfDirectSum) because f is applied to the whole list
 # instead of only the element given by the index, but such examples are rare.
+# We only apply this if the object of which we take the index is given by a call to `List` to make sure
+# we actually have a list (this can be changed once we have a proper type system).
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "list", "func", "index" ],
-        src_template := "func( list[index] )",
-        dst_template := "List( list, func )[index]",
+        variable_names := [ "func1", "list", "func2", "index" ],
+        src_template := "func1( List( list, func2 )[index] )",
+        dst_template := "List( List( list, func2 ), func1 )[index]",
         returns_value := true,
     )
 );
