@@ -7,7 +7,7 @@
 LoadPackage( "CompilerForCAP", false );
 #! true
 
-# make tests deteministic
+# make tests deterministic
 original_func_id := CAP_JIT_INTERNAL_FUNCTION_ID;;
 CAP_JIT_INTERNAL_FUNCTION_ID := 1;;
 
