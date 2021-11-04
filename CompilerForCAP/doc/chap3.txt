@@ -7,7 +7,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27X# make tests deteministic[127X[104X
+    [4X[25Xgap>[125X [27X# make tests deterministic[127X[104X
     [4X[25X>[125X [27Xoriginal_func_id := CAP_JIT_INTERNAL_FUNCTION_ID;;[127X[104X
     [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID := 1;;[127X[104X
     [4X[25Xgap>[125X [27X# we have to work hard to not write semicolons so AutoDoc[127X[104X
@@ -270,7 +270,23 @@
     [4X[25Xgap>[125X [27Xmorphism_matrix := [ [ alpha, beta ], [ beta, alpha ] ];;[127X[104X
     [4X[25Xgap>[125X [27X# compile the primitive installation of[127X[104X
     [4X[25X>[125X [27X# MorphismBetweenDirectSumsWithGivenDirectSums[127X[104X
-    [4X[25X>[125X [27XMorphismBetweenDirectSumsWithGivenDirectSums([127X[104X
+    [4X[25X>[125X [27XDisplay([127X[104X
+    [4X[25X>[125X [27X    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3][1][127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[28Xfunction ( cat, S, diagram_S, morphism_matrix, diagram_T, T )[128X[104X
+    [4X[28X    local underlying_matrix;[128X[104X
+    [4X[28X    underlying_matrix := List( morphism_matrix, function ( row )[128X[104X
+    [4X[28X            return List( row, UnderlyingMatrix );[128X[104X
+    [4X[28X        end );[128X[104X
+    [4X[28X    underlying_matrix := ListN( diagram_S, underlying_matrix, [128X[104X
+    [4X[28X       function ( source, row )[128X[104X
+    [4X[28X            return UnionOfColumns( homalg_field, Dimension( source ), row );[128X[104X
+    [4X[28X        end );[128X[104X
+    [4X[28X    return [128X[104X
+    [4X[28X     VectorSpaceMorphism( cat, S, UnionOfRows( homalg_field, Dimension( T ), [128X[104X
+    [4X[28X         underlying_matrix ), T );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27XMorphismBetweenDirectSumsWithGivenDirectSums([127X[104X
     [4X[25X>[125X [27X    vec,[127X[104X
     [4X[25X>[125X [27X    W,[127X[104X
     [4X[25X>[125X [27X    [ V, V ],[127X[104X
@@ -278,10 +294,9 @@
     [4X[25X>[125X [27X    [ V, V ],[127X[104X
     [4X[25X>[125X [27X    W[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27Xtree1 := SYNTAX_TREE([127X[104X
+    [4X[25Xgap>[125X [27XDisplay([127X[104X
     [4X[25X>[125X [27X    vec!.compiled_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3][127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( SYNTAX_TREE_CODE( tree1 ) );[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
     [4X[28Xfunction ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )[128X[104X
     [4X[28X    local cap_jit_hoisted_expression_1_1, cap_jit_deduplicated_expression_1_1;[128X[104X
     [4X[28X    cap_jit_deduplicated_expression_1_1 := UnderlyingRing( cat_1 );[128X[104X
@@ -298,11 +313,23 @@
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27X# compile the default derivation of[127X[104X
     [4X[25X>[125X [27X# MorphismBetweenDirectSumsWithGivenDirectSums[127X[104X
-    [4X[25X>[125X [27Xtree2 := SYNTAX_TREE( CapJitCompiledFunction([127X[104X
+    [4X[25X>[125X [27XDisplay([127X[104X
+    [4X[25X>[125X [27X    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1][1][127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[28Xfunction ( cat, S, diagram_S, morphism_matrix, diagram_T, T )[128X[104X
+    [4X[28X    local test_diagram_product, test_diagram_coproduct;[128X[104X
+    [4X[28X    test_diagram_coproduct := ListN( diagram_S, morphism_matrix, [128X[104X
+    [4X[28X       function ( source, row )[128X[104X
+    [4X[28X            return UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, [128X[104X
+    [4X[28X               diagram_T, source, row, T );[128X[104X
+    [4X[28X        end );[128X[104X
+    [4X[28X    return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, diagram_S, [128X[104X
+    [4X[28X       T, test_diagram_coproduct, S );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction([127X[104X
     [4X[25X>[125X [27X    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1][1],[127X[104X
     [4X[25X>[125X [27X    [ vec, W, [ V, V ], morphism_matrix, [ V, V ], W  ][127X[104X
     [4X[25X>[125X [27X) );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( SYNTAX_TREE_CODE( tree2 ) );[127X[104X
     [4X[28Xfunction ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )[128X[104X
     [4X[28X    local cap_jit_hoisted_expression_1_1, cap_jit_deduplicated_expression_1_1;[128X[104X
     [4X[28X    cap_jit_deduplicated_expression_1_1 := UnderlyingRing( cat_1 );[128X[104X
@@ -942,7 +969,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27X# make tests deteministic[127X[104X
+    [4X[25Xgap>[125X [27X# make tests deterministic[127X[104X
     [4X[25X>[125X [27Xoriginal_func_id := CAP_JIT_INTERNAL_FUNCTION_ID;;[127X[104X
     [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID := 1;;[127X[104X
     [4X[25Xgap>[125X [27X# check that CapJitInlinedFunctionCalls is idempotent[127X[104X
@@ -976,6 +1003,13 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# make tests deterministic[127X[104X
+    [4X[25X>[125X [27X# we want to apply logic templates, which contain functions with existing IDs,[127X[104X
+    [4X[25X>[125X [27X# so we really have to use new IDs[127X[104X
+    [4X[25X>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID < 10^6;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xoriginal_func_id := CAP_JIT_INTERNAL_FUNCTION_ID;;[127X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID := 10^6;;[127X[104X
     [4X[25Xgap>[125X [27X# test that `CAP_JIT_NOT_RESOLVABLE` does not cause errors when comparing[127X[104X
     [4X[25X>[125X [27X# syntax trees[127X[104X
     [4X[25X>[125X [27XDeclareOperation( "MyNonResolvableOperation", [ ] );[127X[104X
@@ -1002,7 +1036,7 @@
     [4X[25Xgap>[125X [27XCapJitPrettyPrintSyntaxTree( tree );[127X[104X
     [4X[28Xrec([128X[104X
     [4X[28X  0_type := "EXPR_DECLARATIVE_FUNC",[128X[104X
-    [4X[28X  1_id := 473,[128X[104X
+    [4X[28X  1_id := 1000001,[128X[104X
     [4X[28X  2_nams := [ "L1", "RETURN_VALUE" ],[128X[104X
     [4X[28X  3_narg := 1,[128X[104X
     [4X[28X  4_variadic := false,[128X[104X
@@ -1024,11 +1058,11 @@
     [4X[28X                      0_length := 2,[128X[104X
     [4X[28X                      1 := rec([128X[104X
     [4X[28X                          0_type := "EXPR_REF_FVAR",[128X[104X
-    [4X[28X                          1_func_id := 473,[128X[104X
+    [4X[28X                          1_func_id := 1000001,[128X[104X
     [4X[28X                          2_name := "L1" ),[128X[104X
     [4X[28X                      2 := rec([128X[104X
     [4X[28X                          0_type := "EXPR_DECLARATIVE_FUNC",[128X[104X
-    [4X[28X                          1_id := 477,[128X[104X
+    [4X[28X                          1_id := 1000005,[128X[104X
     [4X[28X                          2_nams := [ "logic_new_func_x", "RETURN_VALUE" ],[128X[104X
     [4X[28X                          3_narg := 1,[128X[104X
     [4X[28X                          4_variadic := false,[128X[104X
@@ -1046,7 +1080,7 @@
     [4X[28X                                      0_length := 1,[128X[104X
     [4X[28X                                      1 := rec([128X[104X
     [4X[28X                                          0_type := "EXPR_REF_FVAR",[128X[104X
-    [4X[28X                                          1_func_id := 477,[128X[104X
+    [4X[28X                                          1_func_id := 1000005,[128X[104X
     [4X[28X                                          2_name := "logic_new_func_x" ) ) ) [128X[104X
     [4X[28X                             ) ) ) ),[128X[104X
     [4X[28X              2 := rec([128X[104X
@@ -1059,11 +1093,11 @@
     [4X[28X                      0_length := 2,[128X[104X
     [4X[28X                      1 := rec([128X[104X
     [4X[28X                          0_type := "EXPR_REF_FVAR",[128X[104X
-    [4X[28X                          1_func_id := 473,[128X[104X
+    [4X[28X                          1_func_id := 1000001,[128X[104X
     [4X[28X                          2_name := "L1" ),[128X[104X
     [4X[28X                      2 := rec([128X[104X
     [4X[28X                          0_type := "EXPR_DECLARATIVE_FUNC",[128X[104X
-    [4X[28X                          1_id := 480,[128X[104X
+    [4X[28X                          1_id := 1000008,[128X[104X
     [4X[28X                          2_nams := [ "logic_new_func_x", "RETURN_VALUE" ],[128X[104X
     [4X[28X                          3_narg := 1,[128X[104X
     [4X[28X                          4_variadic := false,[128X[104X
@@ -1080,7 +1114,7 @@
     [4X[28X                                      0_length := 1,[128X[104X
     [4X[28X                                      1 := rec([128X[104X
     [4X[28X                                          0_type := "EXPR_REF_FVAR",[128X[104X
-    [4X[28X                                          1_func_id := 480,[128X[104X
+    [4X[28X                                          1_func_id := 1000008,[128X[104X
     [4X[28X                                          2_name := "logic_new_func_x" ) ) ) [128X[104X
     [4X[28X                             ) ) ) ) ) ) ) )[128X[104X
     [4X[25Xgap>[125X [27XT1 := tree.bindings.BINDING_RETURN_VALUE.list.1;;[127X[104X
@@ -1091,6 +1125,7 @@
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XCapJitIsEqualForEnhancedSyntaxTrees( T2, T1 );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID := original_func_id;;[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X

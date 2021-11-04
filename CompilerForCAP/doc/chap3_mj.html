@@ -43,7 +43,7 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP" );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># make tests deteministic</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># make tests deterministic</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">original_func_id := CAP_JIT_INTERNAL_FUNCTION_ID;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_FUNCTION_ID := 1;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># we have to work hard to not write semicolons so AutoDoc</span>
@@ -307,7 +307,23 @@ rec(
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">morphism_matrix := [ [ alpha, beta ], [ beta, alpha ] ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># compile the primitive installation of</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput"># MorphismBetweenDirectSumsWithGivenDirectSums</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">MorphismBetweenDirectSumsWithGivenDirectSums(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">Display(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3][1]</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+function ( cat, S, diagram_S, morphism_matrix, diagram_T, T )
+    local underlying_matrix;
+    underlying_matrix := List( morphism_matrix, function ( row )
+            return List( row, UnderlyingMatrix );
+        end );
+    underlying_matrix := ListN( diagram_S, underlying_matrix, 
+       function ( source, row )
+            return UnionOfColumns( homalg_field, Dimension( source ), row );
+        end );
+    return 
+     VectorSpaceMorphism( cat, S, UnionOfRows( homalg_field, Dimension( T ), 
+         underlying_matrix ), T );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismBetweenDirectSumsWithGivenDirectSums(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    W,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ V, V ],</span>
@@ -315,10 +331,9 @@ rec(
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ V, V ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    W</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree1 := SYNTAX_TREE(</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.compiled_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( SYNTAX_TREE_CODE( tree1 ) );</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
 function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
     local cap_jit_hoisted_expression_1_1, cap_jit_deduplicated_expression_1_1;
     cap_jit_deduplicated_expression_1_1 := UnderlyingRing( cat_1 );
@@ -335,11 +350,23 @@ function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># compile the default derivation of</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput"># MorphismBetweenDirectSumsWithGivenDirectSums</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">tree2 := SYNTAX_TREE( CapJitCompiledFunction(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">Display(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1][1]</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+function ( cat, S, diagram_S, morphism_matrix, diagram_T, T )
+    local test_diagram_product, test_diagram_coproduct;
+    test_diagram_coproduct := ListN( diagram_S, morphism_matrix, 
+       function ( source, row )
+            return UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, 
+               diagram_T, source, row, T );
+        end );
+    return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, diagram_S, 
+       T, test_diagram_coproduct, S );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1][1],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ vec, W, [ V, V ], morphism_matrix, [ V, V ], W  ]</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( SYNTAX_TREE_CODE( tree2 ) );</span>
 function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
     local cap_jit_hoisted_expression_1_1, cap_jit_deduplicated_expression_1_1;
     cap_jit_deduplicated_expression_1_1 := UnderlyingRing( cat_1 );
@@ -990,7 +1017,7 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># make tests deteministic</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># make tests deterministic</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">original_func_id := CAP_JIT_INTERNAL_FUNCTION_ID;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_FUNCTION_ID := 1;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that CapJitInlinedFunctionCalls is idempotent</span>
@@ -1025,6 +1052,13 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># make tests deterministic</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># we want to apply logic templates, which contain functions with existing IDs,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># so we really have to use new IDs</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_FUNCTION_ID &lt; 10^6;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">original_func_id := CAP_JIT_INTERNAL_FUNCTION_ID;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_FUNCTION_ID := 10^6;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># test that `CAP_JIT_NOT_RESOLVABLE` does not cause errors when comparing</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput"># syntax trees</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">DeclareOperation( "MyNonResolvableOperation", [ ] );</span>
@@ -1051,7 +1085,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrettyPrintSyntaxTree( tree );</span>
 rec(
   0_type := "EXPR_DECLARATIVE_FUNC",
-  1_id := 473,
+  1_id := 1000001,
   2_nams := [ "L1", "RETURN_VALUE" ],
   3_narg := 1,
   4_variadic := false,
@@ -1073,11 +1107,11 @@ rec(
                       0_length := 2,
                       1 := rec(
                           0_type := "EXPR_REF_FVAR",
-                          1_func_id := 473,
+                          1_func_id := 1000001,
                           2_name := "L1" ),
                       2 := rec(
                           0_type := "EXPR_DECLARATIVE_FUNC",
-                          1_id := 477,
+                          1_id := 1000005,
                           2_nams := [ "logic_new_func_x", "RETURN_VALUE" ],
                           3_narg := 1,
                           4_variadic := false,
@@ -1095,7 +1129,7 @@ rec(
                                       0_length := 1,
                                       1 := rec(
                                           0_type := "EXPR_REF_FVAR",
-                                          1_func_id := 477,
+                                          1_func_id := 1000005,
                                           2_name := "logic_new_func_x" ) ) ) 
                              ) ) ) ),
               2 := rec(
@@ -1108,11 +1142,11 @@ rec(
                       0_length := 2,
                       1 := rec(
                           0_type := "EXPR_REF_FVAR",
-                          1_func_id := 473,
+                          1_func_id := 1000001,
                           2_name := "L1" ),
                       2 := rec(
                           0_type := "EXPR_DECLARATIVE_FUNC",
-                          1_id := 480,
+                          1_id := 1000008,
                           2_nams := [ "logic_new_func_x", "RETURN_VALUE" ],
                           3_narg := 1,
                           4_variadic := false,
@@ -1129,7 +1163,7 @@ rec(
                                       0_length := 1,
                                       1 := rec(
                                           0_type := "EXPR_REF_FVAR",
-                                          1_func_id := 480,
+                                          1_func_id := 1000008,
                                           2_name := "logic_new_func_x" ) ) ) 
                              ) ) ) ) ) ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T1 := tree.bindings.BINDING_RETURN_VALUE.list.1;;</span>
@@ -1140,6 +1174,7 @@ true
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitIsEqualForEnhancedSyntaxTrees( T2, T1 );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_FUNCTION_ID := original_func_id;;</span>
 </pre></div>
 
 
