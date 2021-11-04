@@ -84,7 +84,13 @@ InstallGlobalFunction( MATRIX_CATEGORY,
         DirectoriesPackageLibrary( "LinearAlgebraForCAP", "LogicForMatrixCategory" ),
         "PredicateImplicationsForMatrixCategory.tex" )
     );
-     
+    
+    if ValueOption( "no_precompiled_code" ) <> true then
+        
+        ADD_FUNCTIONS_FOR_MatrixCategoryPrecompiled( category );
+        
+    fi;
+    
     Finalize( category );
     
     return category;

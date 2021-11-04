@@ -19,7 +19,7 @@ Display( graph );
 #!   [  -4/3,   7/3,     0,     2,     1,     0 ],
 #!   [   5/3,  -8/3,     0,    -1,     0,     1 ] ]
 #! 
-#! A split monomorphism in Category of matrices over Q
+#! A morphism in Category of matrices over Q
 D := DirectSum( V, V );;
 rotmat := HomalgMatrix( [ [ 0, 0, 0, -1, 0, 0 ],
                              [ 0, 1, 0, 0, 0, 0 ],

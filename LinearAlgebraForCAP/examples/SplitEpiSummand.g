@@ -15,14 +15,14 @@ alpha := VectorSpaceMorphism( a, homalg_matrix, b );;
 Display( SomeReductionBySplitEpiSummand( alpha ) );
 #! (an empty 0 x 1 matrix)
 #! 
-#! A zero, split monomorphism in Category of matrices over Q
+#! A morphism in Category of matrices over Q
 Display( SomeReductionBySplitEpiSummand_MorphismFromInputRange( alpha ) );
 #! [ [     0 ],
 #!   [     1 ],
 #!   [  -1/2 ],
 #!   [     1 ] ]
 #! 
-#! A split epimorphism in Category of matrices over Q
+#! A morphism in Category of matrices over Q
 Display( SomeReductionBySplitEpiSummand_MorphismToInputRange( alpha ) );
 #! [ [  0,  1,  0,  0 ] ]
 #! 

@@ -12,11 +12,13 @@ QQ := HomalgFieldOfRationals( );;
 category_constructor := function( field )
   return Opposite( MATRIX_CATEGORY( field : FinalizeCategory := true ) ); end;;
 
+vec := MATRIX_CATEGORY( QQ : no_precompiled_code := true );;
+
 given_arguments := [ QQ ];;
 compiled_category_name := "OppositeOfMatrixCategoryPrecompiled";;
 package_name := "LinearAlgebraForCAP";;
 operations := Intersection(
-    ListPrimitivelyInstalledOperationsOfCategory( MatrixCategory( QQ ) ),
+    ListPrimitivelyInstalledOperationsOfCategory( vec ),
     CAP_JIT_INTERNAL_SAFE_OPERATIONS
 );;
 # The output for Lift/ColiftOrFail differs between GAP 4.11 and GAP 4.12, see
