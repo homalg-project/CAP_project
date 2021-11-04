@@ -18,6 +18,22 @@ morphism_matrix := [ [ alpha, beta ], [ beta, alpha ] ];;
 
 # compile the primitive installation of
 # MorphismBetweenDirectSumsWithGivenDirectSums
+Display(
+    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3][1]
+);
+#! function ( cat, S, diagram_S, morphism_matrix, diagram_T, T )
+#!     local underlying_matrix;
+#!     underlying_matrix := List( morphism_matrix, function ( row )
+#!             return List( row, UnderlyingMatrix );
+#!         end );
+#!     underlying_matrix := ListN( diagram_S, underlying_matrix, 
+#!        function ( source, row )
+#!             return UnionOfColumns( homalg_field, Dimension( source ), row );
+#!         end );
+#!     return 
+#!      VectorSpaceMorphism( cat, S, UnionOfRows( homalg_field, Dimension( T ), 
+#!          underlying_matrix ), T );
+#! end
 MorphismBetweenDirectSumsWithGivenDirectSums(
     vec,
     W,
@@ -26,10 +42,9 @@ MorphismBetweenDirectSumsWithGivenDirectSums(
     [ V, V ],
     W
 );;
-tree1 := SYNTAX_TREE(
+Display(
     vec!.compiled_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3]
-);;
-Display( SYNTAX_TREE_CODE( tree1 ) );
+);
 #! function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
 #!     local cap_jit_hoisted_expression_1_1, cap_jit_deduplicated_expression_1_1;
 #!     cap_jit_deduplicated_expression_1_1 := UnderlyingRing( cat_1 );
@@ -47,11 +62,23 @@ Display( SYNTAX_TREE_CODE( tree1 ) );
 
 # compile the default derivation of
 # MorphismBetweenDirectSumsWithGivenDirectSums
-tree2 := SYNTAX_TREE( CapJitCompiledFunction(
+Display(
+    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1][1]
+);
+#! function ( cat, S, diagram_S, morphism_matrix, diagram_T, T )
+#!     local test_diagram_product, test_diagram_coproduct;
+#!     test_diagram_coproduct := ListN( diagram_S, morphism_matrix, 
+#!        function ( source, row )
+#!             return UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, 
+#!                diagram_T, source, row, T );
+#!         end );
+#!     return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, diagram_S, 
+#!        T, test_diagram_coproduct, S );
+#! end
+Display( CapJitCompiledFunction(
     vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1][1],
     [ vec, W, [ V, V ], morphism_matrix, [ V, V ], W  ]
 ) );;
-Display( SYNTAX_TREE_CODE( tree2 ) );
 #! function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
 #!     local cap_jit_hoisted_expression_1_1, cap_jit_deduplicated_expression_1_1;
 #!     cap_jit_deduplicated_expression_1_1 := UnderlyingRing( cat_1 );
