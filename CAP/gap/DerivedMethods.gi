@@ -212,7 +212,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoTerminalObject,
   function( cat, test_source )
     local terminal_object;
     
-    terminal_object := TerminalObject( CapCategory( test_source ) );
+    terminal_object := TerminalObject( cat );
     
     return ZeroMorphism( cat, test_source, terminal_object );
     
@@ -231,7 +231,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromInitialObject,
   function( cat, test_sink )
     local initial_object;
     
-    initial_object := InitialObject( CapCategory( test_sink ) );
+    initial_object := InitialObject( cat );
     
     return ZeroMorphism( cat, initial_object, test_sink );
     
@@ -250,7 +250,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismFromZeroObject,
   function( cat, test_sink )
     local zero_object;
     
-    zero_object := ZeroObject( CapCategory( test_sink ) );
+    zero_object := ZeroObject( cat );
     
     return ZeroMorphism( cat, zero_object, test_sink );
     
@@ -269,7 +269,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoZeroObject,
   function( cat, test_source )
     local zero_object;
     
-    zero_object := ZeroObject( CapCategory( test_source ) );
+    zero_object := ZeroObject( cat );
     
     return ZeroMorphism( cat, test_source, zero_object );
     
@@ -3449,7 +3449,7 @@ AddDerivationToCAP( InverseMorphismFromCoimageToImageWithGivenObjects,
                     
   function( cat, coimage, morphism, image )
     
-    return InverseForMorphisms( cat, MorphismFromCoimageToImage( morphism ) );
+    return InverseForMorphisms( cat, MorphismFromCoimageToImageWithGivenObjects( cat, coimage, morphism, image ) );
     
 end : CategoryFilter := IsAbelianCategory,
       Description := "InverseMorphismFromCoimageToImageWithGivenObjects as the inverse of MorphismFromCoimageToImage" );
@@ -3744,7 +3744,7 @@ AddFinalDerivation( BasisOfExternalHom,
     
     hom_a_b := HomomorphismStructureOnObjects( cat, a, b );
     
-    D := DistinguishedObjectOfHomomorphismStructure( CapCategory( a ) );
+    D := DistinguishedObjectOfHomomorphismStructure( cat );
     
     B := ValueGlobal( "BasisOfExternalHom" )( D, hom_a_b );
     
