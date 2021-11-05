@@ -5,6 +5,7 @@
 #
 
 InstallTrueMethod( IsCartesianClosedCategory, IsElementaryTopos );
+InstallTrueMethod( IsCocartesianCategory, IsElementaryTopos );
 
 ##
 InstallMethod( AddSubobjectClassifier,
