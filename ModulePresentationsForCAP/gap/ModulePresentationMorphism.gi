@@ -66,10 +66,15 @@ InstallMethod( PresentationMorphism,
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category,
                              source,
                              range,
-                             UnderlyingHomalgRing, HomalgRing( matrix ),
                              UnderlyingMatrix, matrix );
     
 end );
+
+##
+InstallMethod( UnderlyingHomalgRing,
+               [ IsLeftOrRightPresentationMorphism ],
+               
+  mor -> UnderlyingRing( CapCategory( mor ) ) );
 
 ##
 InstallMethod( AsMorphismBetweenFreeLeftPresentations,

@@ -17,7 +17,7 @@ InstallMethod( LeftPresentations,
     
     AddObjectRepresentation( category, IsLeftPresentation );
     
-    AddMorphismRepresentation( category, IsLeftPresentationMorphism and HasUnderlyingHomalgRing and HasUnderlyingMatrix );
+    AddMorphismRepresentation( category, IsLeftPresentationMorphism and HasUnderlyingMatrix );
     
     category!.ring_for_representation_category := ring;
     
