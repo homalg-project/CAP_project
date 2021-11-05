@@ -150,10 +150,22 @@ InstallMethod( AsFreydCategoryObject,
                [ IsCapCategoryObject ],
                
   function( object )
+    
+    return AsFreydCategoryObject( FreydCategory( CapCategory( object ) ), object );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( AsFreydCategoryObject,
+                                     [ IsFreydCategory, IsCapCategoryObject ],
+                                     
+  function( cat, object )
     local projective_object;
     
-    projective_object := FreydCategoryObject( UniversalMorphismFromZeroObject( object ) );
+    projective_object := FreydCategoryObject( cat, UniversalMorphismFromZeroObject( UnderlyingCategory( cat ), object ) );
     
+    # CompilerForCAP cannot handle side effects
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     SetIsProjective( projective_object, true );
     
     return projective_object;
@@ -164,12 +176,10 @@ end );
 InstallGlobalFunction( FREYD_CATEGORY_OBJECT,
 function( relation_morphism )
     local category;
-    #% CAP_JIT_RESOLVE_FUNCTION
     
     category := FreydCategory( CapCategory( relation_morphism ) );
-
-    return ObjectifyObjectForCAPWithAttributes( rec( ), category,
-                                                RelationMorphism, relation_morphism );
+    
+    return ObjectConstructor( category, relation_morphism );
     
 end );
 
@@ -180,15 +190,35 @@ InstallMethod( FreydCategoryObject,
 );
 
 ##
+InstallOtherMethodForCompilerForCAP( FreydCategoryObject,
+                                     [ IsFreydCategory, IsCapCategoryMorphism ],
+                                     
+  function( cat, relation_morphism )
+    
+    return ObjectConstructor( cat, relation_morphism );
+    
+end );
+
+##
 InstallMethod( AsFreydCategoryMorphism,
                [ IsCapCategoryMorphism ],
                
   function( morphism )
     
-    return FreydCategoryMorphism(
-             AsFreydCategoryObject( Source( morphism ) ),
+    return AsFreydCategoryMorphism( FreydCategory( CapCategory( morphism ) ), morphism );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( AsFreydCategoryMorphism,
+                                     [ IsFreydCategory, IsCapCategoryMorphism ],
+                                     
+  function( cat, morphism )
+    
+    return FreydCategoryMorphism( cat,
+             AsFreydCategoryObject( cat, Source( morphism ) ),
              morphism,
-             AsFreydCategoryObject( Range( morphism ) )
+             AsFreydCategoryObject( cat, Range( morphism ) )
            );
     
 end );
@@ -196,41 +226,11 @@ end );
 ##
 InstallGlobalFunction( FREYD_CATEGORY_MORPHISM,
   function( source, morphism_datum, range )
-    local category;
-    #% CAP_JIT_RESOLVE_FUNCTION
+    local cat;
     
-    if not IsIdenticalObj( CapCategory( morphism_datum ), UnderlyingCategory( CapCategory( source ) ) ) then
-        
-        Error( "The underlying category of the given morphism datum is not identical to the underlying category of the given source" );
-        
-    fi;
+    cat := CapCategory( source );
     
-    if not IsIdenticalObj( CapCategory( morphism_datum ), UnderlyingCategory( CapCategory( range ) ) ) then
-        
-        Error( "The underlying category of the given morphism datum is not identical to the underlying category of the given range" );
-        
-    fi;
-    
-    if not IsEqualForObjects( Source( morphism_datum ), Range( RelationMorphism( source ) ) ) then
-        
-        Error( "The source of the given morphism datum is not equal to the range of the relation morphism of the given source object" );
-        
-    fi;
-    
-    if not IsEqualForObjects( Range( morphism_datum ), Range( RelationMorphism( range ) ) ) then
-        
-        Error( "The range of the given morphism datum is not equal to the range of the relation morphism of the given range object" );
-        
-    fi;
-    
-    category := CapCategory( source );
-
-    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
-                             rec( ), category,
-                             source,
-                             range,
-                             MorphismDatum, morphism_datum
-    );
+    return MorphismConstructor( cat, source, morphism_datum, range );
     
 end );
 
@@ -240,6 +240,16 @@ InstallMethod( FreydCategoryMorphism,
                FREYD_CATEGORY_MORPHISM
 );
 
+##
+# Relax the conditions on source and range: they might not lie in the filter `IsFreydCategoryObject`, e.g. in the case of `LeftPresentationsAsFreydCategoryOfCategoryOfRows`
+InstallOtherMethodForCompilerForCAP( FreydCategoryMorphism,
+                                     [ IsFreydCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ],
+                                     
+  function( cat, source, morphism_datum, range )
+    
+    return MorphismConstructor( cat, source, morphism_datum, range );
+    
+end );
 
 ####################################
 ##
@@ -247,12 +257,13 @@ InstallMethod( FreydCategoryMorphism,
 ##
 ####################################
 
+##
 InstallMethod( MorphismWitness,
                [ IsFreydCategoryMorphism ],
                
   function( morphism )
     
-    return Lift( PreCompose( RelationMorphism( Source( morphism ) ), MorphismDatum( morphism ) ), RelationMorphism( Range( morphism ) ) );
+    return Lift( PreCompose( ObjectDatum( Source( morphism ) ), MorphismDatum( morphism ) ), ObjectDatum( Range( morphism ) ) );
     
 end );
 
@@ -264,7 +275,7 @@ InstallMethod( FREYD_CATEGORIES_SimplifyObjectTupleOp,
     
     counter := 0;
     
-    rel := RelationMorphism( object );
+    rel := ObjectDatum( object );
     
     red_from := IdentityMorphism( Range( rel ) );
     
@@ -306,9 +317,18 @@ InstallMethod( WitnessForBeingCongruentToZero,
                [ IsFreydCategoryMorphism ],
                
   function( morphism )
-    #% CAP_JIT_RESOLVE_FUNCTION
     
-    return Lift( UnderlyingCategory( CapCategory( morphism ) ), MorphismDatum( morphism ), RelationMorphism( Range( morphism ) ) );
+    return WitnessForBeingCongruentToZero( CapCategory( morphism ), morphism );
+    
+end );
+
+# Relax the condition on morphism: it might not lie in the filter `IsFreydCategoryMorphism`, e.g. in the case of `LeftPresentationsAsFreydCategoryOfCategoryOfRows`
+InstallOtherMethodForCompilerForCAP( WitnessForBeingCongruentToZero,
+                                     [ IsFreydCategory, IsCapCategoryMorphism ],
+                                     
+  function( cat, morphism )
+    
+    return Lift( UnderlyingCategory( cat ), MorphismDatum( cat, morphism ), ObjectDatum( cat, Range( morphism ) ) );
     
 end );
 
@@ -316,35 +336,45 @@ InstallMethod( MereExistenceOfWitnessForBeingCongruentToZero,
                [ IsFreydCategoryMorphism ],
                
   function( morphism )
-    #% CAP_JIT_RESOLVE_FUNCTION
     
-    return IsLiftable( UnderlyingCategory( CapCategory( morphism ) ),  MorphismDatum( morphism ), RelationMorphism( Range( morphism ) ) );
+    return MereExistenceOfWitnessForBeingCongruentToZero( CapCategory( morphism ), morphism );
     
 end );
 
+# Relax the condition on morphism: it might not lie in the filter `IsFreydCategoryMorphism`, e.g. in the case of `LeftPresentationsAsFreydCategoryOfCategoryOfRows`
+InstallOtherMethodForCompilerForCAP( MereExistenceOfWitnessForBeingCongruentToZero,
+                                     [ IsFreydCategory, IsCapCategoryMorphism ],
+                                     
+  function( cat, morphism )
+    
+    return IsLiftable( UnderlyingCategory( cat ),  MorphismDatum( cat, morphism ), ObjectDatum( cat, Range( morphism ) ) );
+    
+end );
+
+# Relax the conditions on a and b: they might not lie in the filter `IsFreydCategoryObject`, e.g. in the case of `LeftPresentationsAsFreydCategoryOfCategoryOfRows`
 InstallMethodWithCacheFromObject( INTERNAL_HOM_EMBEDDING,
-                           [ IsFreydCategoryObject, IsFreydCategoryObject ],
-    function( a, b )
+                                  [ IsFreydCategory, IsCapCategoryObject, IsCapCategoryObject ],
+    function( cat, a, b )
       local source, range, mor;
 
       # compute source
-      source := InternalHomOnMorphisms( IdentityMorphism( Range( RelationMorphism( a ) ) ), 
-                                        RelationMorphism( b ) );
-      source:= FreydCategoryObject( source );
+      source := InternalHomOnMorphisms( UnderlyingCategory( cat ), IdentityMorphism( UnderlyingCategory( cat ), Range( ObjectDatum( cat, a ) ) ),
+                                        ObjectDatum( cat, b ) );
+      source := FreydCategoryObject( cat, source );
       
       # compute range
-      range := InternalHomOnMorphisms( IdentityMorphism( Source( RelationMorphism( a ) ) ), 
-                                       RelationMorphism( b ) );
-      range := FreydCategoryObject( range );
+      range := InternalHomOnMorphisms( UnderlyingCategory( cat ), IdentityMorphism( UnderlyingCategory( cat ), Source( ObjectDatum( cat, a ) ) ),
+                                       ObjectDatum( cat, b ) );
+      range := FreydCategoryObject( cat, range );
       
       # compute mapping
-      mor := InternalHomOnMorphisms( RelationMorphism( a ), 
-                                     IdentityMorphism( Range( RelationMorphism( b ) ) ) );
+      mor := InternalHomOnMorphisms( UnderlyingCategory( cat ), ObjectDatum( cat, a ),
+                                     IdentityMorphism( UnderlyingCategory( cat ), Range( ObjectDatum( cat, b ) ) ) );
 
       # construct hom embedding
-      return KernelEmbedding( FreydCategoryMorphism( source, mor, range ) );
+      return KernelEmbedding( cat, FreydCategoryMorphism( cat, source, mor, range ) );
 
-end );
+end : ArgumentNumber := 2 );
 
 ####################################
 ##
@@ -357,7 +387,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
   function( category )
     local underlying_category, diagram_for_homomorphism_structure_as_kernel, 
           diagram_for_homomorphism_structure_as_kernel_on_morphisms,
-          distinguished_object, range_category, homomorphism_structure_derivation_case,
+          distinguished_object, underlying_range_category, range_category, homomorphism_structure_derivation_case,
           homomorphism_structure_on_objects,
           homomorphism_structure_on_morphisms,
           distinguished_object_of_homomorphism_structure,
@@ -395,19 +425,67 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     end;
     
     ##
-    AddIsEqualForCacheForObjects( category,
-      { cat, obj1, obj2 } -> IsIdenticalObj( obj1, obj2 ) );
+    AddObjectConstructor( category,
+      function( cat, relation_morphism )
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( relation_morphism, UnderlyingCategory( cat ), {} -> "the object datum given to the object constructor of <cat>" );
+        
+        return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
+                                                    RelationMorphism, relation_morphism );
+        
+    end );
     
     ##
-    AddIsEqualForCacheForMorphisms( category,
-      { cat, mor1, mor2 } -> IsIdenticalObj( mor1, mor2 ) );
+    AddObjectDatum( category,
+      function( cat, obj )
+        
+        return RelationMorphism( obj );
+        
+    end );
+    
+    ##
+    AddMorphismConstructor( category,
+      function( cat, source, morphism_datum, range )
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( morphism_datum, UnderlyingCategory( cat ), {} -> "the morphism datum given to the morphism constructor of <cat>" );
+        
+        if not IsEqualForObjects( UnderlyingCategory( cat ), Source( morphism_datum ), Range( ObjectDatum( cat, source ) ) ) then
+            
+            Error( "The source of the given morphism datum is not equal to the range of the relation morphism of the given source object" );
+            
+        fi;
+        
+        if not IsEqualForObjects( UnderlyingCategory( cat ), Range( morphism_datum ), Range( ObjectDatum( cat, range ) ) ) then
+            
+            Error( "The range of the given morphism datum is not equal to the range of the relation morphism of the given range object" );
+            
+        fi;
+        
+        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
+                                 rec( ), cat,
+                                 source,
+                                 range,
+                                 MorphismDatum, morphism_datum
+        );
+        
+    end );
+    
+    ##
+    AddMorphismDatum( category,
+      function( cat, mor )
+        
+        return MorphismDatum( mor );
+        
+    end );
     
     ## Well-defined for objects and morphisms
     ##
     AddIsWellDefinedForObjects( category,
       function( cat, object )
         
-        if not IsWellDefinedForMorphisms( underlying_category, RelationMorphism( object ) ) then
+        if not IsWellDefinedForMorphisms( underlying_category, ObjectDatum( cat, object ) ) then
             
             return false;
             
@@ -422,7 +500,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddIsWellDefinedForMorphisms( category,
       function( cat, morphism )
         
-        if not IsLiftable( underlying_category, PreCompose( underlying_category, RelationMorphism( Source( morphism ) ), MorphismDatum( morphism ) ), RelationMorphism( Range( morphism ) ) ) then
+        if not IsWellDefinedForMorphisms( underlying_category, MorphismDatum( cat, morphism ) ) then
+            
+            return false;
+            
+        elif not IsLiftable( underlying_category, PreCompose( underlying_category, ObjectDatum( cat, Source( morphism ) ), MorphismDatum( cat, morphism ) ), ObjectDatum( cat, Range( morphism ) ) ) then
           
           return false;
           
@@ -438,7 +520,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddIsEqualForObjects( category,
       function( cat, object_1, object_2 )
       
-        return IsEqualForMorphismsOnMor( underlying_category, RelationMorphism( object_1 ), RelationMorphism( object_2 ) );
+        return IsEqualForMorphismsOnMor( underlying_category, ObjectDatum( cat, object_1 ), ObjectDatum( cat, object_2 ) );
       
     end );
     
@@ -446,7 +528,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddIsEqualForMorphisms( category,
       function( cat, morphism_1, morphism_2 )
         
-        return IsEqualForMorphisms( underlying_category, MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
+        return IsEqualForMorphisms( underlying_category, MorphismDatum( cat, morphism_1 ), MorphismDatum( cat, morphism_2 ) );
         
     end );
     
@@ -454,7 +536,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddIsCongruentForMorphisms( category,
       function( cat, morphism_1, morphism_2 )
         
-        return MereExistenceOfWitnessForBeingCongruentToZero( SubtractionForMorphisms( cat, morphism_1, morphism_2 ) );
+        return MereExistenceOfWitnessForBeingCongruentToZero( cat, SubtractionForMorphisms( cat, morphism_1, morphism_2 ) );
         
     end );
     
@@ -465,9 +547,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       function( cat, object )
         local identity_morphism, relation_morphism;
         
-        relation_morphism := RelationMorphism( object );
+        relation_morphism := ObjectDatum( cat, object );
         
-        identity_morphism := FreydCategoryMorphism( object, IdentityMorphism( underlying_category, Range( relation_morphism ) ), object );
+        identity_morphism := FreydCategoryMorphism( cat, object, IdentityMorphism( underlying_category, Range( relation_morphism ) ), object );
         
         return identity_morphism;
         
@@ -479,9 +561,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       function( cat, morphism_1, morphism_2 )
         local composition;
         
-        composition := PreCompose( underlying_category, MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
+        composition := PreCompose( underlying_category, MorphismDatum( cat, morphism_1 ), MorphismDatum( cat, morphism_2 ) );
         
-        composition := FreydCategoryMorphism( Source( morphism_1 ), composition, Range( morphism_2 ) );
+        composition := FreydCategoryMorphism( cat, Source( morphism_1 ), composition, Range( morphism_2 ) );
         
         return composition;
         
@@ -495,9 +577,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       function( cat, morphism_1, morphism_2 )
         local addition;
         
-        addition := FreydCategoryMorphism(
+        addition := FreydCategoryMorphism( cat,
                       Source( morphism_1 ),
-                      AdditionForMorphisms( underlying_category, MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) ),
+                      AdditionForMorphisms( underlying_category, MorphismDatum( cat, morphism_1 ), MorphismDatum( cat, morphism_2 ) ),
                       Range( morphism_1 )
                     );
         
@@ -510,9 +592,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       function( cat, morphism )
         local additive_inverse;
         
-        additive_inverse := FreydCategoryMorphism(
+        additive_inverse := FreydCategoryMorphism( cat,
                               Source( morphism ),
-                              AdditiveInverseForMorphisms( underlying_category, MorphismDatum( morphism ) ),
+                              AdditiveInverseForMorphisms( underlying_category, MorphismDatum( cat, morphism ) ),
                               Range( morphism )
                             );
         
@@ -525,9 +607,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       function( cat, source, range )
         local zero_morphism;
         
-        zero_morphism := FreydCategoryMorphism(
+        zero_morphism := FreydCategoryMorphism( cat,
                            source,
-                           ZeroMorphism( underlying_category, Range( RelationMorphism( source ) ), Range( RelationMorphism( range ) ) ),
+                           ZeroMorphism( underlying_category, Range( ObjectDatum( cat, source ) ), Range( ObjectDatum( cat, range ) ) ),
                            range
                          );
         
@@ -539,7 +621,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddZeroObject( category,
       function( cat )
         
-        return FreydCategoryObject( ZeroObjectFunctorial( underlying_category ) );
+        return FreydCategoryObject( cat, ZeroObjectFunctorial( underlying_category ) );
         
     end );
     
@@ -548,9 +630,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       function( cat, sink, zero_object )
         local universal_morphism;
         
-        universal_morphism := FreydCategoryMorphism(
+        universal_morphism := FreydCategoryMorphism( cat,
                                 sink,
-                                UniversalMorphismIntoZeroObject( underlying_category, Range( RelationMorphism( sink ) ) ),
+                                UniversalMorphismIntoZeroObject( underlying_category, Range( ObjectDatum( cat, sink ) ) ),
                                 zero_object
                               );
         
@@ -563,9 +645,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       function( cat, source, zero_object )
         local universal_morphism;
         
-        universal_morphism := FreydCategoryMorphism(
+        universal_morphism := FreydCategoryMorphism( cat,
                                 zero_object,
-                                UniversalMorphismFromZeroObject( underlying_category, Range( RelationMorphism( source ) ) ),
+                                UniversalMorphismFromZeroObject( underlying_category, Range( ObjectDatum( cat, source ) ) ),
                                 source
                               );
         
@@ -577,7 +659,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddIsZeroForMorphisms( category,
       function( cat, mor )
         
-        return MereExistenceOfWitnessForBeingCongruentToZero( mor );
+        return MereExistenceOfWitnessForBeingCongruentToZero( cat, mor );
         
     end );
     
@@ -585,7 +667,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddDirectSum( category,
       function( cat, object_list )
         
-        return FreydCategoryObject( DirectSumFunctorial( underlying_category, List( object_list, RelationMorphism ) ) );
+        return FreydCategoryObject( cat, DirectSumFunctorial( underlying_category, List( object_list, obj -> ObjectDatum( cat, obj ) ) ) );
         
     end );
     
@@ -593,7 +675,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddDirectSumFunctorialWithGivenDirectSums( category,
       function( cat, direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
         
-        return FreydCategoryMorphism( direct_sum_source,
+        return FreydCategoryMorphism( cat, direct_sum_source,
                                       DirectSumFunctorial( underlying_category, List( diagram, MorphismDatum ) ),
                                       direct_sum_range );
         
@@ -603,8 +685,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
       function( cat, object_list, projection_number, direct_sum_object )
         
-        return FreydCategoryMorphism( direct_sum_object,
-                                      ProjectionInFactorOfDirectSum( underlying_category, List( object_list, obj -> Range( RelationMorphism( obj ) ) ), projection_number ),
+        return FreydCategoryMorphism( cat, direct_sum_object,
+                                      ProjectionInFactorOfDirectSum( underlying_category, List( object_list, obj -> Range( ObjectDatum( cat, obj ) ) ), projection_number ),
                                       object_list[projection_number]
                                     );
         
@@ -614,11 +696,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
       function( cat, diagram, test_object, source, direct_sum_object )
         
-        return FreydCategoryMorphism( test_object,
+        return FreydCategoryMorphism( cat, test_object,
                                       UniversalMorphismIntoDirectSum( underlying_category,
-                                                                      List( diagram, obj -> Range( RelationMorphism( obj ) ) ),
-                                                                      Range( RelationMorphism( test_object ) ),
-                                                                      List( source, mor -> MorphismDatum( mor ) ) ),
+                                                                      List( diagram, obj -> Range( ObjectDatum( cat, obj ) ) ),
+                                                                      Range( ObjectDatum( cat, test_object ) ),
+                                                                      List( source, mor -> MorphismDatum( cat, mor ) ) ),
                                       direct_sum_object
                                     );
         
@@ -628,8 +710,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
       function( cat, object_list, injection_number, direct_sum_object )
         
-        return FreydCategoryMorphism( object_list[injection_number],
-                                      InjectionOfCofactorOfDirectSum( underlying_category, List( object_list, obj -> Range( RelationMorphism( obj ) ) ), injection_number ),
+        return FreydCategoryMorphism( cat, object_list[injection_number],
+                                      InjectionOfCofactorOfDirectSum( underlying_category, List( object_list, obj -> Range( ObjectDatum( cat, obj ) ) ), injection_number ),
                                       direct_sum_object
                                     );
         
@@ -639,11 +721,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
       function( cat, diagram, test_object, sink, direct_sum_object )
         
-        return FreydCategoryMorphism( direct_sum_object,
+        return FreydCategoryMorphism( cat, direct_sum_object,
                                       UniversalMorphismFromDirectSum( underlying_category,
-                                                                      List( diagram, obj -> Range( RelationMorphism( obj ) ) ),
-                                                                      Range( RelationMorphism( test_object ) ),
-                                                                      List( sink, mor -> MorphismDatum( mor ) ) ),
+                                                                      List( diagram, obj -> Range( ObjectDatum( cat, obj ) ) ),
+                                                                      Range( ObjectDatum( cat, test_object ) ),
+                                                                      List( sink, mor -> MorphismDatum( cat, mor ) ) ),
                                       test_object
                                     );
         
@@ -657,11 +739,17 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
         range := Range( morphism );
         
-        relation_morphism := RelationMorphism( range );
+        relation_morphism := ObjectDatum( cat, range );
         
-        cokernel_object := FreydCategoryObject( UniversalMorphismFromDirectSum( underlying_category, [ relation_morphism, MorphismDatum( morphism ) ] ) );
+        cokernel_object := FreydCategoryObject( cat,
+            UniversalMorphismFromDirectSum( underlying_category,
+                [ Source( relation_morphism ), Source( MorphismDatum( cat, morphism ) ) ],
+                Range( relation_morphism ),
+                [ relation_morphism, MorphismDatum( cat, morphism ) ]
+            )
+        );
         
-        cokernel_projection := FreydCategoryMorphism( range,
+        cokernel_projection := FreydCategoryMorphism( cat, range,
                                                       IdentityMorphism( underlying_category, Range( relation_morphism ) ),
                                                       cokernel_object );
         
@@ -674,8 +762,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       
       function( cat, morphism, test_object, test_morphism, cokernel_object )
         
-        return FreydCategoryMorphism( cokernel_object,
-                                      MorphismDatum( test_morphism ),
+        return FreydCategoryMorphism( cat, cokernel_object,
+                                      MorphismDatum( cat, test_morphism ),
                                       Range( test_morphism ) );
         
     end );
@@ -684,9 +772,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                                [ "MultiplyWithElementOfCommutativeRingForMorphisms" ] ) then
         
         AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
-          { cat, r, alpha } -> FreydCategoryMorphism(
+          { cat, r, alpha } -> FreydCategoryMorphism( cat,
                               Source( alpha ),
-                              MultiplyWithElementOfCommutativeRingForMorphisms( underlying_category, r, MorphismDatum( alpha ) ),
+                              MultiplyWithElementOfCommutativeRingForMorphisms( underlying_category, r, MorphismDatum( cat, alpha ) ),
                               Range( alpha )
                             )
         );
@@ -702,20 +790,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
           function( cat, morphism )
             local alpha, rho_B, rho_A, projection_1, projection_2, kernel_object;
             
-            alpha := MorphismDatum( morphism );
+            alpha := MorphismDatum( cat, morphism );
             
-            rho_B := RelationMorphism( Range( morphism ) );
+            rho_B := ObjectDatum( cat, Range( morphism ) );
             
-            rho_A := RelationMorphism( Source( morphism ) );
+            rho_A := ObjectDatum( cat, Source( morphism ) );
             
             ## We use the bias in the first projection of weak fiber products
             projection_1 := ProjectionOfBiasedWeakFiberProduct( underlying_category, alpha, rho_B );
             
             projection_2 := ProjectionOfBiasedWeakFiberProduct( underlying_category, projection_1, rho_A );
             
-            kernel_object := FreydCategoryObject( projection_2 );
+            kernel_object := FreydCategoryObject( cat, projection_2 );
             
-            return FreydCategoryMorphism( kernel_object,
+            return FreydCategoryMorphism( cat, kernel_object,
                                           projection_1,
                                           Source( morphism ) );
             
@@ -732,15 +820,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             local sigma, alpha, rho_B, tau, morphism_datum;
             
             ## for notational convenience
-            alpha := MorphismDatum( morphism );
+            alpha := MorphismDatum( cat, morphism );
             
-            rho_B := RelationMorphism( Range( morphism ) );
+            rho_B := ObjectDatum( cat, Range( morphism ) );
             
-            tau := MorphismDatum( test_morphism );
+            tau := MorphismDatum( cat, test_morphism );
             
             morphism_datum := UniversalMorphismIntoBiasedWeakFiberProduct( underlying_category, alpha, rho_B, tau );
             
-            return FreydCategoryMorphism( Source( test_morphism ),
+            return FreydCategoryMorphism( cat, Source( test_morphism ),
                                           morphism_datum,
                                           kernel_object );
             
@@ -757,15 +845,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             function( cat, alpha, test_morphism )
             local sigma, R_B, A, tau_A;
             
-            sigma := WitnessForBeingCongruentToZero( PreCompose( cat, test_morphism, CokernelProjection( cat, alpha ) ) );
+            sigma := WitnessForBeingCongruentToZero( cat, PreCompose( cat, test_morphism, CokernelProjection( cat, alpha ) ) );
             
-            R_B := Source( RelationMorphism( Range( alpha ) ) );
+            R_B := Source( ObjectDatum( cat, Range( alpha ) ) );
             
-            A := Range( RelationMorphism( Source( alpha ) ) );
+            A := Range( ObjectDatum( cat, Source( alpha ) ) );
             
             tau_A := ComponentOfMorphismIntoDirectSum( underlying_category, sigma, [ R_B, A ], 2 );
             
-            return FreydCategoryMorphism( Source( test_morphism ), tau_A, Source( alpha ) );
+            return FreydCategoryMorphism( cat, Source( test_morphism ), tau_A, Source( alpha ) );
         
         end );
         
@@ -775,15 +863,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             function( cat, alpha, test_morphism )
             local witness, R_B, A, sigma_A;
             
-            witness := WitnessForBeingCongruentToZero( CokernelProjection( cat, alpha ) );
+            witness := WitnessForBeingCongruentToZero( cat, CokernelProjection( cat, alpha ) );
             
-            R_B := Source( RelationMorphism( Range( alpha ) ) );
+            R_B := Source( ObjectDatum( cat, Range( alpha ) ) );
             
-            A := Range( RelationMorphism( Source( alpha ) ) );
+            A := Range( ObjectDatum( cat, Source( alpha ) ) );
             
             sigma_A := ComponentOfMorphismIntoDirectSum( underlying_category, witness, [ R_B, A ], 2 );
             
-            return FreydCategoryMorphism( Range( alpha ), PreCompose( underlying_category, sigma_A, MorphismDatum( test_morphism ) ), Range( test_morphism ) );
+            return FreydCategoryMorphism( cat, Range( alpha ), PreCompose( underlying_category, sigma_A, MorphismDatum( cat, test_morphism ) ), Range( test_morphism ) );
         
         end );
         
@@ -798,16 +886,16 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         function( cat, morphism )
             local alpha, rho_B, projection_1, projective_object;
 
-            alpha := MorphismDatum( morphism );
+            alpha := MorphismDatum( cat, morphism );
 
-            rho_B := RelationMorphism( Range( morphism ) );
+            rho_B := ObjectDatum( cat, Range( morphism ) );
 
             ## We use the bias in the first projection of weak fiber products
             projection_1 := ProjectionOfBiasedWeakFiberProduct( underlying_category, alpha, rho_B );
 
-            projective_object := AsFreydCategoryObject( Source( projection_1 ) );
+            projective_object := AsFreydCategoryObject( cat, Source( projection_1 ) );
 
-            return FreydCategoryMorphism( projective_object, projection_1, Source( morphism ) );
+            return FreydCategoryMorphism( cat, projective_object, projection_1, Source( morphism ) );
 
         end );
 
@@ -819,29 +907,29 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       function( cat, object )
         local range;
         
-        range := Range( RelationMorphism( object ) );
+        range := Range( ObjectDatum( cat, object ) );
         
-        return FreydCategoryMorphism(
-                 AsFreydCategoryObject( range ),
+        return FreydCategoryMorphism( cat,
+                 AsFreydCategoryObject( cat, range ),
                  IdentityMorphism( underlying_category, range ),
                  object
                );
         
     end );
     
-    lift_via_linear_system_func := function( alpha_freyd, gamma_freyd )
+    lift_via_linear_system_func := function( cat, alpha_freyd, gamma_freyd )
             local rho_A, rho_B, rho_C, alpha, gamma, A, B, C, R_A, R_B, R_C, left_coefficients, right_coefficients, right_side;
             #% CAP_JIT_RESOLVE_FUNCTION
             
-            rho_A := RelationMorphism( Source( alpha_freyd ) );
+            rho_A := ObjectDatum( cat, Source( alpha_freyd ) );
             
-            rho_B := RelationMorphism( Range( alpha_freyd ) );
+            rho_B := ObjectDatum( cat, Range( alpha_freyd ) );
             
-            rho_C := RelationMorphism( Source( gamma_freyd ) );
+            rho_C := ObjectDatum( cat, Source( gamma_freyd ) );
             
-            alpha := MorphismDatum( alpha_freyd );
+            alpha := MorphismDatum( cat, alpha_freyd );
             
-            gamma := MorphismDatum( gamma_freyd );
+            gamma := MorphismDatum( cat, gamma_freyd );
             
             ##
             
@@ -871,23 +959,23 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             right_side := [ ZeroMorphism( underlying_category, R_A, C ), alpha ];
             
-            return [ underlying_category, left_coefficients, right_coefficients, right_side ];
+            return [ left_coefficients, right_coefficients, right_side ];
             
         end;
     
-    colift_via_linear_system_func := function( alpha_freyd, gamma_freyd )
+    colift_via_linear_system_func := function( cat, alpha_freyd, gamma_freyd )
             local rho_A, rho_B, rho_C, alpha, gamma, A, B, C, R_A, R_B, R_C, left_coefficients, right_coefficients, right_side;
             #% CAP_JIT_RESOLVE_FUNCTION
             
-            rho_A := RelationMorphism( Range( alpha_freyd ) );
+            rho_A := ObjectDatum( cat, Range( alpha_freyd ) );
             
-            rho_B := RelationMorphism( Source( alpha_freyd ) );
+            rho_B := ObjectDatum( cat, Source( alpha_freyd ) );
             
-            rho_C := RelationMorphism( Range( gamma_freyd ) );
+            rho_C := ObjectDatum( cat, Range( gamma_freyd ) );
             
-            alpha := MorphismDatum( alpha_freyd );
+            alpha := MorphismDatum( cat, alpha_freyd );
             
-            gamma := MorphismDatum( gamma_freyd );
+            gamma := MorphismDatum( cat, gamma_freyd );
             
             ##
             
@@ -917,7 +1005,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             right_side := [ ZeroMorphism( underlying_category, R_A, C ), gamma ];
             
-            return [ underlying_category, left_coefficients, right_coefficients, right_side ];
+            return [ left_coefficients, right_coefficients, right_side ];
             
         end;
     
@@ -929,18 +1017,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         AddLift( category,
                  
           function( cat, alpha_freyd, gamma_freyd )
-            local solution;
+            local data, solution;
             
-            solution := 
-              CallFuncList( SolveLinearSystemInAbCategory, lift_via_linear_system_func( alpha_freyd, gamma_freyd ) );
+            data := lift_via_linear_system_func( cat, alpha_freyd, gamma_freyd );
             
-            if solution = fail then
-                
-                return fail;
-                
-            fi;
+            solution := SolveLinearSystemInAbCategory( underlying_category, data[1], data[2], data[3] );
             
-            return FreydCategoryMorphism( Source( alpha_freyd ), solution[1], Source( gamma_freyd ) );
+            return FreydCategoryMorphism( cat, Source( alpha_freyd ), solution[1], Source( gamma_freyd ) );
             
         end, 300 );
         
@@ -948,18 +1031,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         AddColift( category,
                  
           function( cat, alpha_freyd, gamma_freyd )
-            local solution;
+            local data, solution;
             
-            solution := 
-              CallFuncList( SolveLinearSystemInAbCategory, colift_via_linear_system_func( alpha_freyd, gamma_freyd ) );
+            data := colift_via_linear_system_func( cat, alpha_freyd, gamma_freyd );
             
-            if solution = fail then
-                
-                return fail;
-                
-            fi;
+            solution := SolveLinearSystemInAbCategory( underlying_category, data[1], data[2], data[3] );
             
-            return FreydCategoryMorphism( Range( alpha_freyd ), solution[1], Range( gamma_freyd ) );
+            return FreydCategoryMorphism( cat, Range( alpha_freyd ), solution[1], Range( gamma_freyd ) );
             
         end, 300 );
 
@@ -972,10 +1050,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         AddIsLiftable( category,
                  
           function( cat, alpha_freyd, gamma_freyd )
-            local solution;
+            local data;
             
-            return
-              CallFuncList( MereExistenceOfSolutionOfLinearSystemInAbCategory, lift_via_linear_system_func( alpha_freyd, gamma_freyd ) );
+            data := lift_via_linear_system_func( cat, alpha_freyd, gamma_freyd );
+            
+            return MereExistenceOfSolutionOfLinearSystemInAbCategory( underlying_category, data[1], data[2], data[3] );
             
         end, 200 );
         
@@ -983,10 +1062,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         AddIsColiftable( category,
                  
           function( cat, alpha_freyd, gamma_freyd )
-            local solution;
+            local data;
             
-            return
-              CallFuncList( MereExistenceOfSolutionOfLinearSystemInAbCategory, colift_via_linear_system_func( alpha_freyd, gamma_freyd ) );
+            data := colift_via_linear_system_func( cat, alpha_freyd, gamma_freyd );
+            
+            return MereExistenceOfSolutionOfLinearSystemInAbCategory( underlying_category, data[1], data[2], data[3] );
             
         end, 200 );
         
@@ -1000,18 +1080,18 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         
         distinguished_object := DistinguishedObjectOfHomomorphismStructure( underlying_category );
         
-        range_category := CapCategory( distinguished_object );
+        underlying_range_category := CapCategory( distinguished_object );
         
         ## 3 possible cases:
         ## 1) the range category is abelian
         ## 2) one could apply the Freyd category constructor to the range category to make it abelian
         ## 3) else
-        if HasIsAbelianCategory( range_category ) 
-            and IsAbelianCategory( range_category ) 
+        if HasIsAbelianCategory( underlying_range_category )
+            and IsAbelianCategory( underlying_range_category )
             and HasIsProjective( distinguished_object )
             and IsProjective( distinguished_object ) then
             
-            SetRangeCategoryOfHomomorphismStructure( category, range_category );
+            SetRangeCategoryOfHomomorphismStructure( category, underlying_range_category );
             
             homomorphism_structure_derivation_case := "abelian";
             
@@ -1027,35 +1107,38 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             interpret_morphism_from_dinstinguished_object_to_homomorphism_structure_as_homomorphism :=
               InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism;
             
-        elif HasIsAdditiveCategory( range_category )
-                and IsAdditiveCategory( range_category )
+        elif HasIsAdditiveCategory( underlying_range_category )
+                and IsAdditiveCategory( underlying_range_category )
                 and ForAll(
                     [ "ProjectionOfBiasedWeakFiberProduct", "UniversalMorphismIntoBiasedWeakFiberProduct" ],
-                    f -> CanCompute( range_category, f ) )  then
+                    f -> CanCompute( underlying_range_category, f ) )  then
             
-            if IsIdenticalObj( range_category, underlying_category ) then
+            if IsIdenticalObj( underlying_range_category, underlying_category ) then
                 
-                SetRangeCategoryOfHomomorphismStructure( category, category );
+                range_category := category;
+                
                 
             else
                 
-                SetRangeCategoryOfHomomorphismStructure( category, FreydCategory( range_category ) );
+                range_category := FreydCategory( underlying_range_category );
                 
             fi;
+            
+            SetRangeCategoryOfHomomorphismStructure( category, range_category );
             
             homomorphism_structure_derivation_case := "apply_freyd";
             
             homomorphism_structure_on_objects :=
-              function( A,B ) return AsFreydCategoryObject( HomomorphismStructureOnObjects( A, B ) ); end;
+              function( A, B ) return AsFreydCategoryObject( range_category, HomomorphismStructureOnObjects( A, B ) ); end;
             
             homomorphism_structure_on_morphisms := 
-              function( alpha, beta ) return AsFreydCategoryMorphism( HomomorphismStructureOnMorphisms( alpha, beta ) ); end;
+              function( alpha, beta ) return AsFreydCategoryMorphism( range_category, HomomorphismStructureOnMorphisms( alpha, beta ) ); end;
             
             distinguished_object_of_homomorphism_structure := 
-              cat -> AsFreydCategoryObject( DistinguishedObjectOfHomomorphismStructure( cat ) );
+              cat -> AsFreydCategoryObject( range_category, DistinguishedObjectOfHomomorphismStructure( cat ) );
             
             interpret_homomorphism_as_morphism_from_dinstinguished_object_to_homomorphism_structure :=
-              alpha -> AsFreydCategoryMorphism(
+              alpha -> AsFreydCategoryMorphism( range_category,
                         InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( alpha )
                       );
             
@@ -1080,9 +1163,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             function( object_A, object_B )
               local rho_A, rho_B, A, B, R_A, R_B, mor_1, mor_2;
               
-              rho_A := RelationMorphism( object_A );
+              rho_A := ObjectDatum( object_A );
               
-              rho_B := RelationMorphism( object_B );
+              rho_B := ObjectDatum( object_B );
               
               A := Range( rho_A );
               
@@ -1127,13 +1210,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 
                 object_Bp := Range( beta );
                 
-                rho_B := RelationMorphism( object_B );
+                rho_B := ObjectDatum( object_B );
                 
-                rho_Bp := RelationMorphism( object_Bp );
+                rho_Bp := ObjectDatum( object_Bp );
                 
-                A := Range( RelationMorphism( object_A ) );
+                A := Range( ObjectDatum( object_A ) );
                 
-                Ap := Range( RelationMorphism( object_Ap ) );
+                Ap := Range( ObjectDatum( object_Ap ) );
                 
                 mor_1 := homomorphism_structure_on_morphisms( IdentityMorphism( A ), rho_B );
                 
@@ -1180,7 +1263,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
               function( cat, alpha )
                 local phi, interpretation, diagram;
                 
-                phi := MorphismDatum( alpha );
+                phi := MorphismDatum( cat, alpha );
                 
                 interpretation := 
                     interpret_homomorphism_as_morphism_from_dinstinguished_object_to_homomorphism_structure( phi );
@@ -1206,9 +1289,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 
                 interpretation := 
                   interpret_morphism_from_dinstinguished_object_to_homomorphism_structure_as_homomorphism(
-                    Range( RelationMorphism( A ) ), Range( RelationMorphism( B ) ), lift );
+                    Range( ObjectDatum( A ) ), Range( ObjectDatum( B ) ), lift );
                 
-                return FreydCategoryMorphism( A, interpretation, B );
+                return FreydCategoryMorphism( cat, A, interpretation, B );
                 
             end );
         
@@ -1248,23 +1331,23 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 local factor1, factor2, range, diagram, mor1, mor2, sink, uni;
                 
                 # construct the objects needed in the computation of the tensor product
-                factor1 := TensorProductOnObjects( Source( RelationMorphism( object1 ) ), Range( RelationMorphism( object2 ) ) );
-                factor2 := TensorProductOnObjects( Range( RelationMorphism( object1 ) ), Source( RelationMorphism( object2 ) ) );
-                range := TensorProductOnObjects( Range( RelationMorphism( object1 ) ), Range( RelationMorphism( object2 ) ) );
+                factor1 := TensorProductOnObjects( underlying_category, Source( ObjectDatum( cat, object1 ) ), Range( ObjectDatum( cat, object2 ) ) );
+                factor2 := TensorProductOnObjects( underlying_category, Range( ObjectDatum( cat, object1 ) ), Source( ObjectDatum( cat, object2 ) ) );
+                range := TensorProductOnObjects( underlying_category, Range( ObjectDatum( cat, object1 ) ), Range( ObjectDatum( cat, object2 ) ) );
                 
                 # construct the diagram
                 diagram := [ factor1, factor2 ];
                 
                 # construct the sink
-                mor1 := TensorProductOnMorphisms( RelationMorphism( object1 ), IdentityMorphism( Range( RelationMorphism( object2 ) ) ) );
-                mor2 := TensorProductOnMorphisms( IdentityMorphism( Range( RelationMorphism( object1 ) ) ), RelationMorphism( object2 ) );
+                mor1 := TensorProductOnMorphisms( underlying_category, ObjectDatum( cat, object1 ), IdentityMorphism( underlying_category, Range( ObjectDatum( cat, object2 ) ) ) );
+                mor2 := TensorProductOnMorphisms( underlying_category, IdentityMorphism( underlying_category, Range( ObjectDatum( cat, object1 ) ) ), ObjectDatum( cat, object2 ) );
                 sink := [ mor1, mor2 ];
                 
                 # compute the universal morphism
-                uni := UniversalMorphismFromDirectSum( diagram, sink );
+                uni := UniversalMorphismFromDirectSum( underlying_category, diagram, sink );
                 
                 # and return the corresponding object in the Freyd category
-                return FreydCategoryObject( uni );
+                return FreydCategoryObject( cat, uni );
                 
         end );
         
@@ -1288,9 +1371,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             function( cat, source, morphism1, morphism2, range )
                 local mor;
                 
-                mor := TensorProductOnMorphisms( MorphismDatum( morphism1 ), MorphismDatum( morphism2 ) );
+                mor := TensorProductOnMorphisms( underlying_category, MorphismDatum( cat, morphism1 ), MorphismDatum( cat, morphism2 ) );
                 
-                return FreydCategoryMorphism( source, mor, range );
+                return FreydCategoryMorphism( cat, source, mor, range );
                 
         end );
         
@@ -1303,7 +1386,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         AddTensorUnit( category,
             function( cat )
             
-            return FreydCategoryObject( UniversalMorphismFromZeroObject( underlying_category, TensorUnit( underlying_category ) ) );
+            return FreydCategoryObject( cat, UniversalMorphismFromZeroObject( underlying_category, TensorUnit( underlying_category ) ) );
             
         end );
         
@@ -1321,11 +1404,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             function( cat, source, a, b, c, range )
                 local mor;
                 
-                mor := AssociatorLeftToRight( Range( RelationMorphism( a ) ),
-                                              Range( RelationMorphism( b ) ),
-                                              Range( RelationMorphism( c ) ) );
+                mor := AssociatorLeftToRight( Range( ObjectDatum( cat, a ) ),
+                                              Range( ObjectDatum( cat, b ) ),
+                                              Range( ObjectDatum( cat, c ) ) );
                 
-                return FreydCategoryMorphism( source, mor, range );
+                return FreydCategoryMorphism( cat, source, mor, range );
                 
         end );
         
@@ -1343,11 +1426,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             function( cat, source, a, b, c, range )
                 local mor;
                 
-                mor := AssociatorRightToLeft( Range( RelationMorphism( a ) ),
-                                              Range( RelationMorphism( b ) ),
-                                              Range( RelationMorphism( c ) ) );
+                mor := AssociatorRightToLeft( Range( ObjectDatum( cat, a ) ),
+                                              Range( ObjectDatum( cat, b ) ),
+                                              Range( ObjectDatum( cat, c ) ) );
                 
-                return FreydCategoryMorphism( source, mor, range );
+                return FreydCategoryMorphism( cat, source, mor, range );
                 
         end );
         
@@ -1360,7 +1443,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         AddLeftUnitorWithGivenTensorProduct( category,
             function( cat, a, s )
             
-            return FreydCategoryMorphism( s, LeftUnitor( Range( RelationMorphism( a ) ) ), a );
+            return FreydCategoryMorphism( cat, s, LeftUnitor( underlying_category, Range( ObjectDatum( cat, a ) ) ), a );
             
         end );
         
@@ -1373,7 +1456,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         AddLeftUnitorInverseWithGivenTensorProduct( category,
             function( cat, a, r )
             
-            return FreydCategoryMorphism( a, LeftUnitorInverse( Range( RelationMorphism( a ) ) ), r );
+            return FreydCategoryMorphism( cat, a, LeftUnitorInverse( underlying_category, Range( ObjectDatum( cat, a ) ) ), r );
             
         end );
         
@@ -1386,7 +1469,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         AddRightUnitorWithGivenTensorProduct( category,
             function( cat, a, s )
             
-            return FreydCategoryMorphism( s, RightUnitor( Range( RelationMorphism( a ) ) ), a );
+            return FreydCategoryMorphism( cat, s, RightUnitor( underlying_category, Range( ObjectDatum( cat, a ) ) ), a );
             
         end );
         
@@ -1399,7 +1482,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         AddRightUnitorInverseWithGivenTensorProduct( category,
             function( cat, a, r )
             
-            return FreydCategoryMorphism( a, RightUnitorInverse( Range( RelationMorphism( a ) ) ), r );
+            return FreydCategoryMorphism( cat, a, RightUnitorInverse( underlying_category, Range( ObjectDatum( cat, a ) ) ), r );
             
         end );
         
@@ -1422,8 +1505,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         function( cat, s, a, b, r)
             local mor;
             
-            mor := Braiding( Range( RelationMorphism( a ) ), Range( RelationMorphism( b ) ) );
-            return FreydCategoryMorphism( s, mor, r );
+            mor := Braiding( underlying_category, Range( ObjectDatum( cat, a ) ), Range( ObjectDatum( cat, b ) ) );
+            return FreydCategoryMorphism( cat, s, mor, r );
             
         end );
         
@@ -1458,7 +1541,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
         AddInternalHomOnObjects( category,
             function( cat, a, b )
             
-            return Source( INTERNAL_HOM_EMBEDDING( a, b ) );
+            return Source( INTERNAL_HOM_EMBEDDING( cat, a, b ) );
             
         end );
         
@@ -1502,15 +1585,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 local kernel1, kernel2, mor, bridge_mapping;
                 
                 # (1) extract the Hom-embeddings
-                kernel1 := INTERNAL_HOM_EMBEDDING( Range( alpha ), Source( beta ) );
-                kernel2 := INTERNAL_HOM_EMBEDDING( Source( alpha ), Range( beta ) );
+                kernel1 := INTERNAL_HOM_EMBEDDING( cat, Range( alpha ), Source( beta ) );
+                kernel2 := INTERNAL_HOM_EMBEDDING( cat, Source( alpha ), Range( beta ) );
                 
                 # (2) construct the bridge_mapping A^vee \otimes B -> A'^\vee \otimes b'
-                mor := InternalHomOnMorphisms( MorphismDatum( alpha ), MorphismDatum( beta ) );
-                bridge_mapping := FreydCategoryMorphism( Range( kernel1 ), mor, Range( kernel2 ) );
+                mor := InternalHomOnMorphisms( underlying_category, MorphismDatum( cat, alpha ), MorphismDatum( cat, beta ) );
+                bridge_mapping := FreydCategoryMorphism( cat, Range( kernel1 ), mor, Range( kernel2 ) );
                 
                 # (3) finally return the lift of the corresponding diagram
-                return LiftAlongMonomorphism( kernel2, PreCompose( kernel1, bridge_mapping ) );
+                return LiftAlongMonomorphism( cat, kernel2, PreCompose( cat, kernel1, bridge_mapping ) );
                 
         end );
         
@@ -1552,31 +1635,31 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 local a, b, emb_a, emb_b, proj_A, proj_B, id_emb_a, Hom_embedding1, Hom_embedding2, Hom_emb_aB, epi_concat, eval_concat, colift_along_epi;
                 
                 # (0) define quantities
-                a := Range( RelationMorphism( A ) );
-                b := Range( RelationMorphism( B ) );
-                emb_a := AsFreydCategoryObject( a );
-                emb_b := AsFreydCategoryObject( b );
-                proj_A := EpimorphismFromSomeProjectiveObject( A );
-                proj_B := EpimorphismFromSomeProjectiveObject( B );
-                id_emb_a := IdentityMorphism( emb_a );
+                a := Range( ObjectDatum( cat, A ) );
+                b := Range( ObjectDatum( cat, B ) );
+                emb_a := AsFreydCategoryObject( cat, a );
+                emb_b := AsFreydCategoryObject( cat, b );
+                proj_A := EpimorphismFromSomeProjectiveObject( cat, A );
+                proj_B := EpimorphismFromSomeProjectiveObject( cat, B );
+                id_emb_a := IdentityMorphism( cat, emb_a );
                 
                 # (1) the hom-embedding
-                Hom_embedding1 := InternalHomOnMorphisms( proj_A, IdentityMorphism( B ) );
+                Hom_embedding1 := InternalHomOnMorphisms( cat, proj_A, IdentityMorphism( cat, B ) );
                 Hom_emb_aB := Range( Hom_embedding1 );
-                Hom_embedding2 := TensorProductOnMorphisms( Hom_embedding1, IdentityMorphism( A ) );
+                Hom_embedding2 := TensorProductOnMorphisms( cat, Hom_embedding1, IdentityMorphism( cat, A ) );
                 
                 # (2) concatenation of epis
-                epi_concat := TensorProductOnMorphisms( InternalHomOnMorphisms( id_emb_a, proj_B ), id_emb_a );
-                epi_concat := PreCompose( epi_concat, TensorProductOnMorphisms( IdentityMorphism( Hom_emb_aB ), proj_A ) );
+                epi_concat := TensorProductOnMorphisms( cat, InternalHomOnMorphisms( cat, id_emb_a, proj_B ), id_emb_a );
+                epi_concat := PreCompose( cat, epi_concat, TensorProductOnMorphisms( cat, IdentityMorphism( cat, Hom_emb_aB ), proj_A ) );
                 
                 # (3) compute "evaluation" fom Hom( emb_a,b ) \otimes emb_a -> b
-                eval_concat := PreCompose( AsFreydCategoryMorphism( EvaluationMorphism( a, b ) ), proj_B );
+                eval_concat := PreCompose( cat, AsFreydCategoryMorphism( cat, EvaluationMorphism( underlying_category, a, b ) ), proj_B );
                 
                 # (4) colift along epi
-                colift_along_epi := ColiftAlongEpimorphism( epi_concat, eval_concat );
+                colift_along_epi := ColiftAlongEpimorphism( cat, epi_concat, eval_concat );
 
                 # (5) compose to finally construct the evaluation morphism in the Freyd category
-                return PreCompose( Hom_embedding2, colift_along_epi );
+                return PreCompose( cat, Hom_embedding2, colift_along_epi );
                 
         end );
         
@@ -1608,24 +1691,24 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                 local a, b, emb_b, proj_B, A_tensor_B, proj_A_tensor_B, mono, tau, lift;
 
                 # (0) define quantities
-                a := Range( RelationMorphism( A ) );
-                b := Range( RelationMorphism( B ) );
-                emb_b := AsFreydCategoryObject( b );
-                proj_B := EpimorphismFromSomeProjectiveObject( B );
-                A_tensor_B := TensorProductOnObjects( A, B );
-                proj_A_tensor_B := EpimorphismFromSomeProjectiveObject( A_tensor_B );
+                a := Range( ObjectDatum( cat, A ) );
+                b := Range( ObjectDatum( cat, B ) );
+                emb_b := AsFreydCategoryObject( cat, b );
+                proj_B := EpimorphismFromSomeProjectiveObject( cat, B );
+                A_tensor_B := TensorProductOnObjects( cat, A, B );
+                proj_A_tensor_B := EpimorphismFromSomeProjectiveObject( cat, A_tensor_B );
                 
                 # (1) construct monomorphism
-                mono := InternalHomOnMorphisms( proj_B, IdentityMorphism( A_tensor_B ) );
+                mono := InternalHomOnMorphisms( cat, proj_B, IdentityMorphism( cat, A_tensor_B ) );
             
                 # (2) construct morphism from coevaluation in underlying category
-                tau := PreCompose( AsFreydCategoryMorphism( CoevaluationMorphism( a,b ) ), InternalHomOnMorphisms( IdentityMorphism( emb_b ), proj_A_tensor_B ) );
+                tau := PreCompose( cat, AsFreydCategoryMorphism( cat, CoevaluationMorphism( underlying_category, a, b ) ), InternalHomOnMorphisms( cat, IdentityMorphism( cat, emb_b ), proj_A_tensor_B ) );
                 
                 # (3) compute lift along mono
-                lift := LiftAlongMonomorphism( mono, tau );
+                lift := LiftAlongMonomorphism( cat, mono, tau );
                 
                 # (4) construct the coevaluation morphism
-                return FreydCategoryMorphism( A, MorphismDatum( lift ), Source( mono ) );
+                return FreydCategoryMorphism( cat, A, MorphismDatum( cat, lift ), Source( mono ) );
                 
         end );
     
@@ -1640,7 +1723,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       AddSimplifyObject( category,
         function( cat, object, i )
           
-          return FreydCategoryObject( FREYD_CATEGORIES_SimplifyObjectTuple( object, i )[1] );
+          return FreydCategoryObject( cat, FREYD_CATEGORIES_SimplifyObjectTuple( object, i )[1] );
           
       end );
       
@@ -1648,10 +1731,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       AddSimplifyObject_IsoFromInputObject( category,
         function( cat, object, i )
           
-          return FreydCategoryMorphism(
+          return FreydCategoryMorphism( cat,
             object,
             FREYD_CATEGORIES_SimplifyObjectTuple( object, i )[2],
-            FreydCategoryObject( FREYD_CATEGORIES_SimplifyObjectTuple( object, i )[1] )
+            FreydCategoryObject( cat, FREYD_CATEGORIES_SimplifyObjectTuple( object, i )[1] )
           );
           
       end );
@@ -1660,8 +1743,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
       AddSimplifyObject_IsoToInputObject( category,
         function( cat, object, i )
           
-          return FreydCategoryMorphism(
-            FreydCategoryObject( FREYD_CATEGORIES_SimplifyObjectTuple( object, i )[1] ),
+          return FreydCategoryMorphism( cat,
+            FreydCategoryObject( cat, FREYD_CATEGORIES_SimplifyObjectTuple( object, i )[1] ),
             FREYD_CATEGORIES_SimplifyObjectTuple( object, i )[3],
             object
           );
@@ -1687,7 +1770,7 @@ InstallMethod( Display,
     Print( Concatenation( "\n", "--------------------------------\n" ) );
     Print( "Source:\n" );
     Print( "--------------------------------\n\n" );
-    Display( RelationMorphism( Source( freyd_category_morphism ) ) );
+    Display( ObjectDatum( Source( freyd_category_morphism ) ) );
     Print( Concatenation( "\n\n", "--------------------------------", "\n" ) );
     
     Print( "Morphism datum:\n" );
@@ -1697,7 +1780,7 @@ InstallMethod( Display,
     
     Print( "Range:\n" );
     Print( "--------------------------------\n\n" );
-    Display( RelationMorphism( Range( freyd_category_morphism ) ) );
+    Display( ObjectDatum( Range( freyd_category_morphism ) ) );
     Print( Concatenation( "\n\n", "--------------------------------", "\n" ) );
     
     Print( "General description:\n" );
@@ -1716,7 +1799,7 @@ InstallMethod( Display,
     Print( Concatenation( "\n", "--------------------------------\n" ) );
     Print( "Relation morphism:\n" );
     Print( "--------------------------------\n\n" );
-    Display( RelationMorphism( freyd_category_object ) );
+    Display( ObjectDatum( freyd_category_object ) );
     Print( Concatenation( "\n\n", "--------------------------------", "\n" ) );
     
     Print( "General description:\n" );
@@ -1731,7 +1814,7 @@ InstallMethod( LaTeXOutput,
   function( object )
     local rel, corel, r, m, c, rel_dat, corel_dat;
     
-    rel := RelationMorphism( object );
+    rel := ObjectDatum( object );
     
     r := LaTeXOutput( Source( rel ) );
     
@@ -1996,7 +2079,7 @@ InstallMethod( \/,
   function( mor, category )
     local freyd_mor;
     
-    freyd_mor := FreydCategoryObject( mor );
+    freyd_mor := FreydCategoryObject( category, mor );
     
     if not IsIdenticalObj( CapCategory( freyd_mor ), category ) then
         
@@ -2030,7 +2113,7 @@ InstallMethod( \/,
       
     fi;
     
-    return AsFreydCategoryObject( obj );
+    return AsFreydCategoryObject( freyd_category, obj );
     
 end );
 
@@ -2045,7 +2128,7 @@ InstallMethod( Down,
                [ IsFreydCategoryObject ],
   function( obj )
     
-    return RelationMorphism( obj );
+    return ObjectDatum( obj );
     
 end );
 
