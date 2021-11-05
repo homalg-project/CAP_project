@@ -21,6 +21,10 @@ InstallMethod( LeftPresentations,
     
     category!.ring_for_representation_category := ring;
     
+    SetFilterObj( category, IsCategoryOfLeftPresentations );
+    
+    SetUnderlyingRing( category, ring );
+    
     SetIsAbelianCategory( category, true );
 
     SetIsAbelianCategoryWithEnoughProjectives( category, true );
@@ -81,6 +85,10 @@ InstallMethod( RightPresentations,
     AddMorphismRepresentation( category, IsRightPresentationMorphism );
     
     category!.ring_for_representation_category := ring;
+    
+    SetFilterObj( category, IsCategoryOfRightPresentations );
+    
+    SetUnderlyingRing( category, ring );
     
     SetIsAbelianCategory( category, true );
     

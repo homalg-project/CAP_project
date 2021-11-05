@@ -5,6 +5,21 @@
 #
 #! @Chapter Module Presentations
 
+####################################
+##
+#! @Section GAP Categories
+##
+####################################
+
+DeclareCategory( "IsCategoryOfLeftOrRightPresentations",
+                 IsCapCategory );
+
+DeclareCategory( "IsCategoryOfLeftPresentations",
+                 IsCategoryOfLeftOrRightPresentations );
+
+DeclareCategory( "IsCategoryOfRightPresentations",
+                 IsCategoryOfLeftOrRightPresentations );
+
 ##############################################
 ##
 #! @Section Constructors
@@ -28,6 +43,15 @@ DeclareAttribute( "LeftPresentations",
 #! @Arguments R
 DeclareAttribute( "RightPresentations",
                   IsHomalgRing );
+
+####################################
+##
+#! @Section Attributes
+##
+####################################
+
+DeclareAttribute( "UnderlyingRing",
+                  IsCategoryOfLeftOrRightPresentations );
 
 ##############################################
 ##
