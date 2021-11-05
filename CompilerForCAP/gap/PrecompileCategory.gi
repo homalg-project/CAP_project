@@ -523,6 +523,19 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
             
         fi;
         
+        if not IsEmpty(
+                CAP_INTERNAL_FIND_APPEARANCE_OF_SYMBOL_IN_FUNCTION(
+                    compiled_func,
+                    RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ),
+                    2,
+                    CAP_INTERNAL_METHOD_RECORD_REPLACEMENTS
+                )
+            ) then
+            
+            Display( Concatenation( "WARNING: Could not resolve all CAP operations while precompiling ", function_name, "." ) );
+            
+        fi;
+        
         current_string := Concatenation(
             "    \n",
             "    ##\n",
