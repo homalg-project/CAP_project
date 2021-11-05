@@ -1,22 +1,18 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# ModulePresentationsForCAP: Category R-pres for CAP
+#
+# This file contains package meta data. For additional information on
+# the meaning and correct usage of these fields, please consult the
+# manual of the "Example" package as well as the comments in its
+# PackageInfo.g file.
+#
 SetPackageInfo( rec(
 
 PackageName := "ModulePresentationsForCAP",
 Subtitle := "Category R-pres for CAP",
-Version := Maximum( [
-           ##
-           "2017.12-30", # Sebas version
-           ##
-           "2020.04-16", # Sepps version
-           ##
-           "2019.01-16", # Mohamed's version
-           ##
-           "2021.06-01", # Fabian's version
-           ##
-           ] ),
-
+Version := "2021.11-01",
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
-
 
 Persons := [
   rec(
