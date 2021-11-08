@@ -6,8 +6,6 @@
 ##
 ####################################
 
-DeclareGlobalVariable( "CAP_INTERNAL_DISTRIBUTIVE_MONOIDAL_CATEGORIES_BASIC_OPERATIONS" );
-
 DeclareGlobalVariable( "DISTRIBUTIVE_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD" );
 
 #! @Description

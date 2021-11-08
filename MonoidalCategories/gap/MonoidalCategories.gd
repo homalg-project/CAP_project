@@ -6,8 +6,6 @@
 ##
 ####################################
 
-DeclareGlobalVariable( "CAP_INTERNAL_MONOIDAL_CATEGORIES_BASIC_OPERATIONS" );
-
 DeclareGlobalVariable( "MONOIDAL_CATEGORIES_METHOD_NAME_RECORD" );
 
 Perform(
