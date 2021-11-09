@@ -599,11 +599,10 @@ InstallOtherMethod( DirectProductFunctorial,
 end );
 
 ##
-InstallOtherMethod( DirectProductFunctorial,
-                    [ IsCapCategory, IsList ],
+InstallOtherMethodForCompilerForCAP( DirectProductFunctorial,
+                                     [ IsCapCategory, IsList ],
                     
   function( cat, L )
-    #% CAP_JIT_RESOLVE_FUNCTION
     
     return DirectProductFunctorial( cat, List( L, Source ), L, List( L, Range ) );
     
@@ -650,11 +649,10 @@ InstallOtherMethod( CoproductFunctorial,
 end );
 
 ##
-InstallOtherMethod( CoproductFunctorial,
-                    [ IsCapCategory, IsList ],
+InstallOtherMethodForCompilerForCAP( CoproductFunctorial,
+                                     [ IsCapCategory, IsList ],
                     
   function( cat, L )
-    #% CAP_JIT_RESOLVE_FUNCTION
     
     return CoproductFunctorial( cat, List( L, Source ), L, List( L, Range ) );
     
@@ -1285,11 +1283,10 @@ InstallOtherMethod( DirectSumFunctorial,
 end );
 
 ##
-InstallOtherMethod( DirectSumFunctorial,
-                    [ IsCapCategory, IsList ],
+InstallOtherMethodForCompilerForCAP( DirectSumFunctorial,
+                                     [ IsCapCategory, IsList ],
                     
   function( cat, L )
-    #% CAP_JIT_RESOLVE_FUNCTION
     
     return DirectSumFunctorial( cat, List( L, Source ), L, List( L, Range ) );
     
