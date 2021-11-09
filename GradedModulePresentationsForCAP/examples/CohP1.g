@@ -15,7 +15,7 @@ S := GradedRing( Q["x,y"] );
 Sgrmod := GradedLeftPresentations( S );
 #! The category of graded left f.p. modules over Q[x,y] (with weights [ 1, 1 ])
 InfoOfInstalledOperationsOfCategory( Sgrmod );
-#! 40 primitive operations were used to derive 196 operations for this category which
+#! 40 primitive operations were used to derive 232 operations for this category which
 #! * IsAbCategory
 #! * IsMonoidalCategory
 #! * IsAbelianCategoryWithEnoughProjectives
@@ -71,7 +71,7 @@ CohP1 := Sgrmod / C;
 #! The Serre quotient category of The category of graded left f.p. modules
 #! over Q[x,y] (with weights [ 1, 1 ]) by test function with name: is_artinian
 InfoOfInstalledOperationsOfCategory( CohP1 );
-#! 21 primitive operations were used to derive 155 operations for this category which
+#! 21 primitive operations were used to derive 187 operations for this category which
 #! * IsAbCategory
 #! * IsAbelianCategory
 Sh := CanonicalProjection( CohP1 );
