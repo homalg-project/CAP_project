@@ -6,8 +6,6 @@
 ##
 ####################################
 
-DeclareGlobalVariable( "CAP_INTERNAL_RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_BASIC_OPERATIONS" );
-  
 DeclareGlobalVariable( "RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD" );
 
 #! @Description
