@@ -403,6 +403,15 @@
   [33X[0;0YThe   argument   is  a  category  [23XC[123X.  The  output  is  the  unique  morphism
   [23X\mathrm{ZeroObject} \rightarrow \mathrm{ZeroObject}[123X.[133X
   
+  [1X6.3-14 ZeroObjectFunctorialWithGivenZeroObjects[101X
+  
+  [33X[1;0Y[29X[2XZeroObjectFunctorialWithGivenZeroObjects[102X( [3XC[103X, [3Xzero_object1[103X, [3Xzero_object2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(zero_object1, zero_object2)[123X[133X
+  
+  [33X[0;0YThe  argument is a category [23XC[123X and a zero object [23X\mathrm{ZeroObject}(C)[123X twice
+  (for  compatibility  with  other  functorials).  The  output  is  the unique
+  morphism [23Xzero_object1 \rightarrow zero_object2[123X.[133X
+  
   
   [1X6.4 [33X[0;0YTerminal Object[133X[101X
   
@@ -460,6 +469,16 @@
   [33X[0;0YThe   argument   is  a  category  [23XC[123X.  The  output  is  the  unique  morphism
   [23X\mathrm{TerminalObject} \rightarrow \mathrm{TerminalObject}[123X.[133X
   
+  [1X6.4-6 TerminalObjectFunctorialWithGivenTerminalObjects[101X
+  
+  [33X[1;0Y[29X[2XTerminalObjectFunctorialWithGivenTerminalObjects[102X( [3XC[103X, [3Xterminal_object1[103X, [3Xterminal_object2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(terminal_object1, terminal_object2)[123X[133X
+  
+  [33X[0;0YThe    argument    is    a    category    [23XC[123X    and    a    terminal   object
+  [23X\mathrm{TerminalObject}(C)[123X twice (for compatibility with other functorials).
+  The   output   is   the   unique   morphism   [23Xterminal_object1   \rightarrow
+  terminal_object2[123X.[133X
+  
   
   [1X6.5 [33X[0;0YInitial Object[133X[101X
   
@@ -516,6 +535,15 @@
   
   [33X[0;0YThe   argument   is  a  category  [23XC[123X.  The  output  is  the  unique  morphism
   [23X\mathrm{InitialObject} \rightarrow \mathrm{InitialObject}[123X.[133X
+  
+  [1X6.5-6 InitialObjectFunctorialWithGivenInitialObjects[101X
+  
+  [33X[1;0Y[29X[2XInitialObjectFunctorialWithGivenInitialObjects[102X( [3XC[103X, [3Xinitial_object1[103X, [3Xinitial_object2[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(initial_object1, initial_object2)[123X[133X
+  
+  [33X[0;0YThe argument is a category [23XC[123X and an initial object [23X\mathrm{InitialObject}(C)[123X
+  twice  (for  compatibility with other functorials). The output is the unique
+  morphism [23Xinitial_object1 \rightarrow initial_object2[123X.[133X
   
   
   [1X6.6 [33X[0;0YDirect Sum[133X[101X
@@ -785,14 +813,17 @@
   
   [1X6.6-21 DirectSumFunctorial[101X
   
-  [33X[1;0Y[29X[2XDirectSumFunctorial[102X( [3XL[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XDirectSumFunctorial[102X( [3Xsource_diagram[103X, [3XL[103X, [3Xrange_diagram[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    \bigoplus_{i=1}^n    S_i,
             \bigoplus_{i=1}^n S_i' )[123X[133X
   
-  [33X[0;0YThis  is  a  convenience  method.  The argument is a list of morphisms [23XL = (
-  \mu_1:  S_1  \rightarrow  S_1',  \dots,  \mu_n:  S_n \rightarrow S_n' )[123X. The
-  output  is  a  morphism  [23X\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n
-  S_i'[123X given by the functoriality of the direct sum.[133X
+  [33X[0;0YThe  arguments  are  a  list  of  objects  [23X(S_i)_{i  = 1 \dots n}[123X, a list of
+  morphisms  [23XL  = ( \mu_1: S_1 \rightarrow S_1', \dots, \mu_n: S_n \rightarrow
+  S_n'  )[123X,  and  a  list  of  objects [23X(S_i')_{i = 1 \dots n}[123X. For convenience,
+  [3Xsource_diagram[103X  and  [3Xrange_diagram[103X  can  be  omitted  and  are automatically
+  derived  from [3XL[103X in that case. The output is a morphism [23X\bigoplus_{i=1}^n S_i
+  \rightarrow  \bigoplus_{i=1}^n S_i'[123X given by the functoriality of the direct
+  sum.[133X
   
   [1X6.6-22 DirectSumFunctorialWithGivenDirectSums[101X
   
@@ -898,14 +929,16 @@
   
   [1X6.7-8 CoproductFunctorial[101X
   
-  [33X[1;0Y[29X[2XCoproductFunctorial[102X( [3XL[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCoproductFunctorial[102X( [3Xsource_diagram[103X, [3XL[103X, [3Xrange_diagram[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya      morphism     in     [23X\mathrm{Hom}(\bigsqcup_{i=1}^n     I_i,
             \bigsqcup_{i=1}^n I_i')[123X[133X
   
-  [33X[0;0YThis  is  a  convenience  method.  The  argument  is a list [23XL = ( \mu_1: I_1
-  \rightarrow  I_1',  \dots,  \mu_n:  I_n  \rightarrow I_n' )[123X. The output is a
-  morphism  [23X\bigsqcup_{i=1}^n  I_i \rightarrow \bigsqcup_{i=1}^n I_i'[123X given by
-  the functoriality of the coproduct.[133X
+  [33X[0;0YThe  arguments  are  a  list  of objects [23X(I_i)_{i = 1 \dots n}[123X, a list [23XL = (
+  \mu_1:  I_1  \rightarrow  I_1',  \dots, \mu_n: I_n \rightarrow I_n' )[123X, and a
+  list  of objects [23X(I_i')_{i = 1 \dots n}[123X. For convenience, [3Xsource_diagram[103X and
+  [3Xrange_diagram[103X  can  be  omitted and are automatically derived from [3XL[103X in that
+  case.   The   output   is   a  morphism  [23X\bigsqcup_{i=1}^n  I_i  \rightarrow
+  \bigsqcup_{i=1}^n I_i'[123X given by the functoriality of the coproduct.[133X
   
   [1X6.7-9 CoproductFunctorialWithGivenCoproducts[101X
   
@@ -1009,14 +1042,16 @@
   
   [1X6.8-7 DirectProductFunctorial[101X
   
-  [33X[1;0Y[29X[2XDirectProductFunctorial[102X( [3XL[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XDirectProductFunctorial[102X( [3Xsource_diagram[103X, [3XL[103X, [3Xrange_diagram[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism in [23X\mathrm{Hom}( \prod_{i=1}^n P_i, \prod_{i=1}^n P_i'
             )[123X[133X
   
-  [33X[0;0YThis  is  a  convenience  method.  The  argument  is a list of morphisms [23XL =
-  (\mu_i:  P_i  \rightarrow  P'_i)_{i=1\dots  n}[123X.  The  output  is  a morphism
-  [23X\prod_{i=1}^n  P_i \rightarrow \prod_{i=1}^n P_i'[123X given by the functoriality
-  of the direct product.[133X
+  [33X[0;0YThe  arguments  are  a  list  of  objects  [23X(P_i)_{i  = 1 \dots n}[123X, a list of
+  morphisms  [23XL  =  (\mu_i:  P_i  \rightarrow P'_i)_{i=1\dots n}[123X, and a list of
+  objects  [23X(P_i')_{i  =  1  \dots  n}[123X.  For  convenience,  [3Xsource_diagram[103X  and
+  [3Xrange_diagram[103X  can  be  omitted and are automatically derived from [3XL[103X in that
+  case.  The  output is a morphism [23X\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n
+  P_i'[123X given by the functoriality of the direct product.[133X
   
   [1X6.8-8 DirectProductFunctorialWithGivenDirectProducts[101X
   
