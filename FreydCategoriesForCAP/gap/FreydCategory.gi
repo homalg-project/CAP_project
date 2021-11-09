@@ -1390,9 +1390,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             function( cat, source, a, b, c, range )
                 local mor;
                 
-                mor := AssociatorLeftToRight( Range( ObjectDatum( cat, a ) ),
-                                              Range( ObjectDatum( cat, b ) ),
-                                              Range( ObjectDatum( cat, c ) ) );
+                mor := AssociatorLeftToRightWithGivenTensorProducts( underlying_category,
+                    Range( ObjectDatum( cat, source ) ),
+                    Range( ObjectDatum( cat, a ) ),
+                    Range( ObjectDatum( cat, b ) ),
+                    Range( ObjectDatum( cat, c ) ),
+                    Range( ObjectDatum( cat, range ) )
+                );
                 
                 return FreydCategoryMorphism( cat, source, mor, range );
                 
@@ -1412,9 +1416,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             function( cat, source, a, b, c, range )
                 local mor;
                 
-                mor := AssociatorRightToLeft( Range( ObjectDatum( cat, a ) ),
-                                              Range( ObjectDatum( cat, b ) ),
-                                              Range( ObjectDatum( cat, c ) ) );
+                mor := AssociatorRightToLeftWithGivenTensorProducts( underlying_category,
+                    Range( ObjectDatum( cat, source ) ),
+                    Range( ObjectDatum( cat, a ) ),
+                    Range( ObjectDatum( cat, b ) ),
+                    Range( ObjectDatum( cat, c ) ),
+                    Range( ObjectDatum( cat, range ) )
+                );
                 
                 return FreydCategoryMorphism( cat, source, mor, range );
                 
