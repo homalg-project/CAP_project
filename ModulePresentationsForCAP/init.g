@@ -1,3 +1,8 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# ModulePresentationsForCAP: Category R-pres for CAP
+#
+# Reading the declaration part of the package.
+#
 
 ReadPackage( "ModulePresentationsForCAP", "gap/ModulePresentationsForCAP.gd");
 

@@ -1,11 +1,8 @@
-#############################################################################
-##
-##                                       ModulePresentationsForCAP package
-##
-##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# ModulePresentationsForCAP: Category R-pres for CAP
+#
+# Implementations
+#
 
 BindGlobal( "INSTALL_GET_RID_OF_ZERO_GENERATORS_TRANSFORMATION_TRIPLE_METHOD",
             
@@ -47,22 +44,22 @@ BindGlobal( "INSTALL_GET_RID_OF_ZERO_GENERATORS_TRANSFORMATION_TRIPLE",
     
     INSTALL_GET_RID_OF_ZERO_GENERATORS_TRANSFORMATION_TRIPLE_METHOD(
             NonZeroGeneratorsTransformationTripleLeft,
-            NrColumns,			# nr_generators
-            BasisOfRowModule,		# basis_of_module
-            DecideZeroRows,		# decide_zero
-            NonZeroRows,		# nonzero_generators
-            CertainColumns,		# certain_generators
-            CertainRows			# certain_relations
+            NrColumns,           # nr_generators
+            BasisOfRowModule,    # basis_of_module
+            DecideZeroRows,      # decide_zero
+            NonZeroRows,         # nonzero_generators
+            CertainColumns,      # certain_generators
+            CertainRows          # certain_relations
             );
     
     INSTALL_GET_RID_OF_ZERO_GENERATORS_TRANSFORMATION_TRIPLE_METHOD(
             NonZeroGeneratorsTransformationTripleRight,
-            NrRows,			# nr_generators
-            BasisOfColumnModule,	# basis_of_module
-            DecideZeroColumns,		# decide_zero
-            NonZeroColumns,		# nonzero_generators
-            CertainRows,		# certain_generators
-            CertainColumns		# certain_relations
+            NrRows,              # nr_generators
+            BasisOfColumnModule, # basis_of_module
+            DecideZeroColumns,   # decide_zero
+            NonZeroColumns,      # nonzero_generators
+            CertainRows,         # certain_generators
+            CertainColumns       # certain_relations
             );
     
 end );

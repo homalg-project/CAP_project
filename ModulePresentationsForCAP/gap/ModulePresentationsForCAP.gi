@@ -1,11 +1,8 @@
-#############################################################################
-##
-##                                       ModulePresentationsForCAP package
-##
-##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# ModulePresentationsForCAP: Category R-pres for CAP
+#
+# Implementations
+#
 
 ##
 InstallMethod( LeftPresentations,
@@ -16,16 +13,20 @@ InstallMethod( LeftPresentations,
     
     category := CreateCapCategory( Concatenation( "Category of left presentations of ", RingName( ring ) ) );
     
-    DisableAddForCategoricalOperations( category );
+    category!.category_as_first_argument := true;
     
     AddObjectRepresentation( category, IsLeftPresentation );
     
-    AddMorphismRepresentation( category, IsLeftPresentationMorphism and HasUnderlyingHomalgRing and HasUnderlyingMatrix );
+    AddMorphismRepresentation( category, IsLeftPresentationMorphism and HasUnderlyingMatrix );
     
     category!.ring_for_representation_category := ring;
     
+    SetFilterObj( category, IsCategoryOfLeftPresentations );
+    
+    SetUnderlyingRing( category, ring );
+    
     SetIsAbelianCategory( category, true );
-
+    
     SetIsAbelianCategoryWithEnoughProjectives( category, true );
     
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
@@ -41,7 +42,6 @@ InstallMethod( LeftPresentations,
     ADD_FUNCTIONS_FOR_LEFT_PRESENTATION( category );
     
     AddCategoryToFamily( category, "ModuleCategory" );
-    
     
     ## TODO: avoid code duplication (see RightPresentations)
     AddTheoremFileToCategory( category,
@@ -68,27 +68,31 @@ InstallMethod( LeftPresentations,
     
 end );
 
-# LeftPresentations( R: FinalizeCategory := false );
-
 ##
 InstallMethod( RightPresentations,
                [ IsHomalgRing ],
                
   function( ring )
-    local category, to_be_finalized;
+    local category;
     
     category := CreateCapCategory( Concatenation( "Category of right presentations of ", RingName( ring ) ) );
     
+    category!.category_as_first_argument := true;
+    
     AddObjectRepresentation( category, IsRightPresentation );
     
-    AddMorphismRepresentation( category, IsRightPresentationMorphism );
+    AddMorphismRepresentation( category, IsRightPresentationMorphism and HasUnderlyingMatrix );
     
     category!.ring_for_representation_category := ring;
+    
+    SetFilterObj( category, IsCategoryOfRightPresentations );
+    
+    SetUnderlyingRing( category, ring );
     
     SetIsAbelianCategory( category, true );
     
     SetIsAbelianCategoryWithEnoughProjectives( category, true );
-
+    
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
@@ -122,17 +126,7 @@ InstallMethod( RightPresentations,
         "RelationsForGeneralModuleCategories.tex" )
     );
     
-    to_be_finalized := ValueOption( "FinalizeCategory" );
-   
-    if to_be_finalized = false then
-      
-       return category;
-    
-    else
-    
-       Finalize( category );
-      
-    fi;
+    Finalize( category );
     
     return category;
     
@@ -291,7 +285,7 @@ InstallGlobalFunction( ADD_IS_WELL_DEFINED_FOR_OBJECTS,
     
     AddIsWellDefinedForObjects( category,
       
-      function( object )
+      function( cat, object )
         
         return IsHomalgMatrix( UnderlyingMatrix( object ) ) and IsHomalgRing( UnderlyingHomalgRing( object ) );
         
@@ -306,7 +300,7 @@ InstallGlobalFunction( ADD_IS_WELL_DEFINED_FOR_MORPHISM_LEFT,
     
     AddIsWellDefinedForMorphisms( category,
       
-      function( morphism )
+      function( cat, morphism )
         local source_matrix, range_matrix, morphism_matrix;
         
         source_matrix := UnderlyingMatrix( Source( morphism ) );
@@ -322,7 +316,7 @@ InstallGlobalFunction( ADD_IS_WELL_DEFINED_FOR_MORPHISM_LEFT,
           
         fi;
         
-        if RightDivide( source_matrix * morphism_matrix, range_matrix ) = fail then
+        if not IsZero( DecideZeroRows( source_matrix * morphism_matrix, range_matrix ) ) then
           
           return false;
           
@@ -341,7 +335,7 @@ InstallGlobalFunction( ADD_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT,
     
     AddIsWellDefinedForMorphisms( category,
       
-      function( morphism )
+      function( cat, morphism )
         
         local source_matrix, range_matrix, morphism_matrix;
         
@@ -358,7 +352,7 @@ InstallGlobalFunction( ADD_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT,
           
         fi;
         
-        if LeftDivide( range_matrix, morphism_matrix * source_matrix ) = fail then
+        if not IsZero( DecideZeroColumns( morphism_matrix * source_matrix, range_matrix ) ) then
           
           return false;
           
@@ -377,15 +371,11 @@ InstallGlobalFunction( ADD_IS_IDENTICAL_FOR_MORPHISMS,
     
     AddIsEqualForMorphisms( category,
     
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return UnderlyingMatrix( morphism_1 ) = UnderlyingMatrix( morphism_2 );
         
     end );
-    
-    AddIsEqualForCacheForObjects( category, IsIdenticalObj );
-    
-    AddIsEqualForCacheForMorphisms( category, IsIdenticalObj );
     
 end );
 
@@ -396,7 +386,7 @@ InstallGlobalFunction( ADD_EQUAL_FOR_OBJECTS,
     
     AddIsEqualForObjects( category,
                    
-      function( object1, object2 )
+      function( cat, object1, object2 )
         
         return UnderlyingMatrix( object1 ) = UnderlyingMatrix( object2 );
         
@@ -411,7 +401,7 @@ InstallGlobalFunction( ADD_KERNEL_LEFT,
     
     AddKernelEmbedding( category,
       
-      function( morphism )
+      function( cat, morphism )
         local kernel, embedding, source_matrix;
         
         embedding := ReducedSyzygiesOfRows( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
@@ -433,7 +423,7 @@ InstallGlobalFunction( ADD_KERNEL_LEFT,
 #     
 #     AddKernelEmbeddingWithGivenKernelObject( category,
 #       
-#       function( morphism, kernel )
+#       function( cat, morphism, kernel )
 #         local embedding;
 #         
 #         embedding := SyzygiesOfRows( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
@@ -444,14 +434,10 @@ InstallGlobalFunction( ADD_KERNEL_LEFT,
     
     AddLiftAlongMonomorphism( category,
       
-      function( beta, alpha )
+      function( cat, beta, alpha )
         local lift;
         
         lift := RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ), UnderlyingMatrix( Range( beta ) ) );
-        
-        if lift = fail then
-            return fail;
-        fi;
         
         return PresentationMorphism( Source( alpha ), lift, Source( beta ) );
         
@@ -466,7 +452,7 @@ InstallGlobalFunction( ADD_KERNEL_RIGHT,
     
     AddKernelEmbedding( category,
       
-      function( morphism )
+      function( cat, morphism )
         local kernel, embedding, source_matrix;
         
         embedding := ReducedSyzygiesOfColumns( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
@@ -488,7 +474,7 @@ InstallGlobalFunction( ADD_KERNEL_RIGHT,
 #     
 #     AddKernelEmbeddingWithGivenKernelObject( category,
 #       
-#       function( morphism, kernel )
+#       function( cat, morphism, kernel )
 #         local embedding;
 #         
 #         embedding := SyzygiesOfColumns( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
@@ -500,15 +486,11 @@ InstallGlobalFunction( ADD_KERNEL_RIGHT,
     AddLiftAlongMonomorphism( category,
       
         ## TODO: Reference for the conventions for Lift
-       function( alpha, beta )
-#        function( beta, alpha )
+       function( cat, alpha, beta )
+#        function( cat, beta, alpha )
         local lift;
         
         lift := LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ), UnderlyingMatrix( Range( alpha ) ) );
-        
-        if lift = fail then
-            return fail;
-        fi;
         
         return PresentationMorphism( Source( beta ), lift, Source( alpha ) );
         
@@ -527,39 +509,39 @@ InstallGlobalFunction( ADD_PRECOMPOSE_LEFT,
     AddPreCompose( category,
                    
       [ 
-        [ function( left_morphism, right_morphism )
+        [ function( cat, left_morphism, right_morphism )
             
             return PresentationMorphism( Source( left_morphism ), UnderlyingMatrix( left_morphism ) * UnderlyingMatrix( right_morphism ), Range( right_morphism ) );
             
-          end, [ , ] ],
+          end, [ ] ],
         
-        [ function( left_morphism, identity_morphism )
+        [ function( cat, left_morphism, identity_morphism )
             
             return left_morphism;
             
-          end, [ , IsIdenticalToIdentityMorphism ] ],
+          end, [ IsCapCategory, IsCapCategoryMorphism, IsIdenticalToIdentityMorphism ] ],
         
-        [ function( identity_morphism, right_morphism )
+        [ function( cat, identity_morphism, right_morphism )
             
             return right_morphism;
             
-          end, [ IsIdenticalToIdentityMorphism, ] ],
+          end, [ IsCapCategory, IsIdenticalToIdentityMorphism, IsCapCategoryMorphism ] ],
         
-        [ function( left_morphism, zero_morphism )
+        [ function( cat, left_morphism, zero_morphism )
             
             return PresentationMorphism( Source( left_morphism ),
                                          HomalgZeroMatrix( NrRows( UnderlyingMatrix( left_morphism ) ), NrColumns( UnderlyingMatrix( zero_morphism ) ), homalg_ring ),
                                          Range( zero_morphism ) );
           
-          end, [ , IsIdenticalToZeroMorphism ] ],
+          end, [ IsCapCategory, IsCapCategoryMorphism, IsIdenticalToZeroMorphism ] ],
         
-        [ function( zero_morphism, right_morphism )
+        [ function( cat, zero_morphism, right_morphism )
             
             return PresentationMorphism( Source( zero_morphism ),
                                          HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ), NrColumns( UnderlyingMatrix( right_morphism ) ), homalg_ring ),
                                          Range( right_morphism ) );
           
-          end, [ IsIdenticalToZeroMorphism, ] ],
+          end, [ IsCapCategory, IsIdenticalToZeroMorphism, IsCapCategoryMorphism ] ],
       ]
       
     );
@@ -578,40 +560,40 @@ InstallGlobalFunction( ADD_PRECOMPOSE_RIGHT,
       
       [ 
         
-        [ function( left_morphism, right_morphism )
+        [ function( cat, left_morphism, right_morphism )
           
           return PresentationMorphism( Source( left_morphism ), UnderlyingMatrix( right_morphism ) * UnderlyingMatrix( left_morphism ), Range( right_morphism ) );
           
-          end, [ , ] ],
+          end, [ ] ],
         
-        [ function( left_morphism, identity_morphism )
+        [ function( cat, left_morphism, identity_morphism )
             
             return left_morphism;
             
-          end, [ , IsIdenticalToIdentityMorphism ] ],
+          end, [ IsCapCategory, IsCapCategoryMorphism, IsIdenticalToIdentityMorphism ] ],
         
-        [ function( identity_morphism, right_morphism )
+        [ function( cat, identity_morphism, right_morphism )
             
             return right_morphism;
             
-          end, [ IsIdenticalToIdentityMorphism, ] ],
+          end, [ IsCapCategory, IsIdenticalToIdentityMorphism, IsCapCategoryMorphism ] ],
         
         
-        [ function( left_morphism, zero_morphism )
+        [ function( cat, left_morphism, zero_morphism )
             
             return PresentationMorphism( Source( left_morphism ),
                                          HomalgZeroMatrix( NrRows( UnderlyingMatrix( zero_morphism ) ), NrColumns( UnderlyingMatrix( left_morphism ) ), homalg_ring ),
                                          Range( zero_morphism ) );
           
-          end, [ , IsIdenticalToZeroMorphism ] ],
+          end, [ IsCapCategory, IsCapCategoryMorphism, IsIdenticalToZeroMorphism ] ],
         
-        [ function( zero_morphism, right_morphism )
+        [ function( cat, zero_morphism, right_morphism )
             
             return PresentationMorphism( Source( zero_morphism ),
                                          HomalgZeroMatrix( NrRows( UnderlyingMatrix( right_morphism ) ), NrColumns( UnderlyingMatrix( zero_morphism ) ), homalg_ring ),
                                          Range( right_morphism ) );
           
-          end, [ IsIdenticalToZeroMorphism, ] ],
+          end, [ IsCapCategory, IsIdenticalToZeroMorphism, IsCapCategoryMorphism ] ],
       ]
       
     );
@@ -625,7 +607,7 @@ InstallGlobalFunction( ADD_ADDITION_FOR_MORPHISMS,
     
     AddAdditionForMorphisms( category,
                              
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         
         return PresentationMorphism( Source( morphism_1 ), UnderlyingMatrix( morphism_1 ) + UnderlyingMatrix( morphism_2 ), Range( morphism_1 ) );
         
@@ -640,7 +622,7 @@ InstallGlobalFunction( ADD_ADDITIVE_INVERSE_FOR_MORPHISMS,
     
     AddAdditiveInverseForMorphisms( category,
                                     
-      function( morphism_1 )
+      function( cat, morphism_1 )
         
         return PresentationMorphism( Source( morphism_1 ), - UnderlyingMatrix( morphism_1 ), Range( morphism_1 ) );
         
@@ -655,7 +637,7 @@ InstallGlobalFunction( ADD_IS_ZERO_FOR_MORPHISMS,
     ## FIXME: Use DecideZeroRows here (and DecideZeroColumns for the case of right modules)
 #     AddIsZeroForMorphisms( category,
 #                            
-#       function( morphism )
+#       function( cat, morphism )
 #         
 #         return IsZero( UnderlyingMatrix( morphism ) );
 #         
@@ -673,7 +655,7 @@ InstallGlobalFunction( ADD_ZERO_MORPHISM_LEFT,
     
     AddZeroMorphism( category,
                      
-      function( source, range )
+      function( cat, source, range )
         local matrix;
         
         matrix := HomalgZeroMatrix( NrColumns( UnderlyingMatrix( source ) ), NrColumns( UnderlyingMatrix( range ) ), homalg_ring );
@@ -694,7 +676,7 @@ InstallGlobalFunction( ADD_ZERO_MORPHISM_RIGHT,
     
     AddZeroMorphism( category,
                      
-      function( source, range )
+      function( cat, source, range )
         local matrix;
         
         matrix := HomalgZeroMatrix( NrRows( UnderlyingMatrix( range ) ), NrRows( UnderlyingMatrix( source ) ), homalg_ring );
@@ -712,7 +694,7 @@ InstallGlobalFunction( ADD_EQUAL_FOR_MORPHISMS_LEFT,
     
     AddIsCongruentForMorphisms( category,
                             
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         local result_of_divide;
         
         result_of_divide := DecideZeroRows( UnderlyingMatrix( morphism_1 ) - UnderlyingMatrix( morphism_2 ), UnderlyingMatrix( Range( morphism_1 ) ) );
@@ -730,7 +712,7 @@ InstallGlobalFunction( ADD_EQUAL_FOR_MORPHISMS_RIGHT,
     
     AddIsCongruentForMorphisms( category,
                             
-      function( morphism_1, morphism_2 )
+      function( cat, morphism_1, morphism_2 )
         local result_of_divide;
         
         result_of_divide := DecideZeroColumns( UnderlyingMatrix( morphism_1 ) - UnderlyingMatrix( morphism_2 ), UnderlyingMatrix( Range( morphism_1 ) ) );
@@ -751,7 +733,7 @@ InstallGlobalFunction( ADD_COKERNEL_LEFT,
     
     AddCokernelProjection( category,
                      
-      function( morphism )
+      function( cat, morphism )
         local cokernel_object, projection;
         
         cokernel_object := UnionOfRows( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
@@ -766,7 +748,7 @@ InstallGlobalFunction( ADD_COKERNEL_LEFT,
     
     AddCokernelColiftWithGivenCokernelObject( category,
       
-      function( morphism, test_object, test_morphism, cokernel_object )
+      function( cat, morphism, test_object, test_morphism, cokernel_object )
         
         return PresentationMorphism( cokernel_object, UnderlyingMatrix( test_morphism ), Range( test_morphism ) );
         
@@ -784,7 +766,7 @@ InstallGlobalFunction( ADD_COKERNEL_RIGHT,
     
     AddCokernelProjection( category,
                      
-      function( morphism )
+      function( cat, morphism )
         local cokernel_object, projection;
         
         cokernel_object := UnionOfColumns( UnderlyingMatrix( morphism ), UnderlyingMatrix( Range( morphism ) ) );
@@ -799,7 +781,7 @@ InstallGlobalFunction( ADD_COKERNEL_RIGHT,
     
     AddCokernelColiftWithGivenCokernelObject( category,
       
-      function( morphism, test_object, test_morphism, cokernel_object )
+      function( cat, morphism, test_object, test_morphism, cokernel_object )
         
         return PresentationMorphism( cokernel_object, UnderlyingMatrix( test_morphism ), Range( test_morphism ) );
         
@@ -817,7 +799,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
     
     AddDirectSum( category,
                   
-      function( product_object )
+      function( cat, product_object )
         local objects, direct_sum;
         
         objects := product_object;
@@ -832,7 +814,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
     
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
                                                  
-      function( product_object, component_number, direct_sum_object )
+      function( cat, product_object, component_number, direct_sum_object )
         local objects, object_column_dimension, dimension_of_factor, projection, projection_matrix;
         
         objects := product_object;
@@ -854,7 +836,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
     
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
                                                                  
-      function( diagram, test_object, product_morphism, direct_sum )
+      function( cat, diagram, test_object, product_morphism, direct_sum )
         local components, number_of_components, map_into_product;
         
         components := product_morphism;
@@ -869,7 +851,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
     
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
                                               
-      function( product_object, component_number, direct_sum_object )
+      function( cat, product_object, component_number, direct_sum_object )
         local objects, object_column_dimension, dimension_of_cofactor, injection, injection_matrix;
         
         objects := product_object;
@@ -890,7 +872,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_LEFT,
     
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
                                                          
-      function( diagram, test_object, product_morphism, direct_sum )
+      function( cat, diagram, test_object, product_morphism, direct_sum )
         local components, number_of_components, map_into_product;
         
         components := product_morphism;
@@ -915,7 +897,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
     
     AddDirectSum( category,
                   
-      function( product_object )
+      function( cat, product_object )
         local objects, direct_sum;
         
         objects := product_object;
@@ -930,7 +912,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
     
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( category,
                                                  
-      function( product_object, component_number, direct_sum_object )
+      function( cat, product_object, component_number, direct_sum_object )
         local objects, object_column_dimension, dimension_of_factor, projection, projection_matrix;
         
         objects := product_object;
@@ -951,7 +933,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
     
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category,
                                                                  
-      function( diagram, test_object, product_morphism, direct_sum )
+      function( cat, diagram, test_object, product_morphism, direct_sum )
         local components, number_of_components, map_into_product;
         
         components := product_morphism;
@@ -966,7 +948,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
     
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( category,
                                               
-      function( product_object, component_number, direct_sum_object )
+      function( cat, product_object, component_number, direct_sum_object )
         local objects, object_column_dimension, dimension_of_cofactor, injection, injection_matrix;
         
         objects := product_object;
@@ -987,7 +969,7 @@ InstallGlobalFunction( ADD_DIRECT_SUM_RIGHT,
     
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( category,
                                                          
-      function( diagram, test_object, product_morphism, direct_sum )
+      function( cat, diagram, test_object, product_morphism, direct_sum )
         local components, number_of_components, map_into_product;
         
         components := product_morphism;
@@ -1012,7 +994,7 @@ InstallGlobalFunction( ADD_ZERO_OBJECT_LEFT,
     
     AddZeroObject( category,
                    
-      function( )
+      function( cat )
         local matrix;
         
         matrix := HomalgZeroMatrix( 0, 0, homalg_ring );
@@ -1023,7 +1005,7 @@ InstallGlobalFunction( ADD_ZERO_OBJECT_LEFT,
     
     AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
                                                                    
-      function( object, terminal_object )
+      function( cat, object, terminal_object )
         local nr_columns, morphism;
         
         nr_columns := NrColumns( UnderlyingMatrix( object ) );
@@ -1036,7 +1018,7 @@ InstallGlobalFunction( ADD_ZERO_OBJECT_LEFT,
     
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
                                                                  
-      function( object, initial_object )
+      function( cat, object, initial_object )
         local nr_columns, morphism;
         
         nr_columns := NrColumns( UnderlyingMatrix( object ) );
@@ -1059,7 +1041,7 @@ InstallGlobalFunction( ADD_ZERO_OBJECT_RIGHT,
     
     AddZeroObject( category,
                    
-      function( )
+      function( cat )
         local matrix;
         
         matrix := HomalgZeroMatrix( 0, 0, homalg_ring );
@@ -1070,7 +1052,7 @@ InstallGlobalFunction( ADD_ZERO_OBJECT_RIGHT,
     
     AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( category,
                                                                    
-      function( object, terminal_object )
+      function( cat, object, terminal_object )
         local nr_rows, morphism;
         
         nr_rows := NrRows( UnderlyingMatrix( object ) );
@@ -1083,7 +1065,7 @@ InstallGlobalFunction( ADD_ZERO_OBJECT_RIGHT,
     
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( category,
                                                                  
-      function( object, initial_object )
+      function( cat, object, initial_object )
         local nr_rows, morphism;
         
         nr_rows := NrRows( UnderlyingMatrix( object ) );
@@ -1106,7 +1088,7 @@ InstallGlobalFunction( ADD_IDENTITY_LEFT,
     
     AddIdentityMorphism( category,
                          
-      function( object )
+      function( cat, object )
         local matrix;
         
         matrix := HomalgIdentityMatrix( NrColumns( UnderlyingMatrix( object ) ), homalg_ring );
@@ -1127,7 +1109,7 @@ InstallGlobalFunction( ADD_IDENTITY_RIGHT,
     
     AddIdentityMorphism( category,
                          
-      function( object )
+      function( cat, object )
         local matrix;
         
         matrix := HomalgIdentityMatrix( NrRows( UnderlyingMatrix( object ) ), homalg_ring );
@@ -1146,7 +1128,7 @@ InstallGlobalFunction( ADD_ASSOCIATOR_LEFT,
     
     homalg_ring := category!.ring_for_representation_category;
     
-    associator_func := function( source, A, B, C, range )
+    associator_func := function( cat, source, A, B, C, range )
         
         return PresentationMorphism(
                   source,
@@ -1174,7 +1156,7 @@ InstallGlobalFunction( ADD_ASSOCIATOR_RIGHT,
     
     homalg_ring := category!.ring_for_representation_category;
     
-    associator_func := function( source, A, B, C, range )
+    associator_func := function( cat, source, A, B, C, range )
         
         return PresentationMorphism(
                   source,
@@ -1200,7 +1182,7 @@ InstallGlobalFunction( ADD_UNITOR,
   function( category )
     local unitor_func;
     
-    unitor_func := function( A, B )
+    unitor_func := function( cat, A, B )
         return IdentityMorphism( A );
     end;
     
@@ -1220,7 +1202,7 @@ InstallGlobalFunction( ADD_TENSOR_PRODUCT_ON_OBJECTS_LEFT,
     
     AddTensorProductOnObjects( category,
       
-      function( object_1, object_2 )
+      function( cat, object_1, object_2 )
         local identity_1, identity_2, presentation_matrix_1, presentation_matrix_2, presentation_matrix;
         
         presentation_matrix_1 := UnderlyingMatrix( object_1 );
@@ -1254,7 +1236,7 @@ InstallGlobalFunction( ADD_TENSOR_PRODUCT_ON_OBJECTS_RIGHT,
     
     AddTensorProductOnObjects( category,
       
-      function( object_1, object_2 )
+      function( cat, object_1, object_2 )
         local identity_1, identity_2, presentation_matrix_1, presentation_matrix_2, presentation_matrix;
         
         presentation_matrix_1 := UnderlyingMatrix( object_1 );
@@ -1285,7 +1267,7 @@ InstallGlobalFunction( ADD_TENSOR_PRODUCT_ON_MORPHISMS,
     
     AddTensorProductOnMorphismsWithGivenTensorProducts( category,
       
-      function( new_source, morphism_1, morphism_2, new_range )
+      function( cat, new_source, morphism_1, morphism_2, new_range )
         
         return PresentationMorphism( new_source, 
                                      KroneckerMat( UnderlyingMatrix( morphism_1 ), UnderlyingMatrix( morphism_2 ) ),
@@ -1305,7 +1287,7 @@ InstallGlobalFunction( ADD_TENSOR_UNIT_LEFT,
     
     AddTensorUnit( category,
       
-      function( )
+      function( cat )
         
         return AsLeftPresentation( HomalgZeroMatrix( 0, 1, homalg_ring ) );
         
@@ -1323,7 +1305,7 @@ InstallGlobalFunction( ADD_TENSOR_UNIT_RIGHT,
     
     AddTensorUnit( category,
       
-      function( )
+      function( cat )
         
         return AsRightPresentation( HomalgZeroMatrix( 1, 0, homalg_ring ) );
         
@@ -1339,7 +1321,7 @@ InstallGlobalFunction( ADD_INTERNAL_HOM_ON_OBJECTS_LEFT,
     ## WARNING: The given function uses basic operations.
     AddInternalHomOnObjects( category,
       
-      function( object_1, object_2 )
+      function( cat, object_1, object_2 )
         
         return Source( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_LEFT( object_1, object_2 ) );
     
@@ -1355,7 +1337,7 @@ InstallGlobalFunction( ADD_INTERNAL_HOM_ON_OBJECTS_RIGHT,
     ## WARNING: The given function uses basic operations.
     AddInternalHomOnObjects( category,
       
-      function( object_1, object_2 )
+      function( cat, object_1, object_2 )
         
         return Source( INTERNAL_HOM_EMBEDDING_IN_TENSOR_PRODUCT_RIGHT( object_1, object_2 ) );
     
@@ -1371,7 +1353,7 @@ InstallGlobalFunction( ADD_INTERNAL_HOM_ON_MORPHISMS_LEFT,
     ## WARNING: The given function uses basic operations.
     AddInternalHomOnMorphismsWithGivenInternalHoms( category,
       
-      function( new_source, morphism_1, morphism_2, new_range )
+      function( cat, new_source, morphism_1, morphism_2, new_range )
         local internal_hom_embedding_source, internal_hom_embedding_range, morphism_between_tensor_products;
         
         internal_hom_embedding_source := 
@@ -1402,7 +1384,7 @@ InstallGlobalFunction( ADD_INTERNAL_HOM_ON_MORPHISMS_RIGHT,
     ## WARNING: The given function uses basic operations.
     AddInternalHomOnMorphismsWithGivenInternalHoms( category,
       
-      function( new_source, morphism_1, morphism_2, new_range )
+      function( cat, new_source, morphism_1, morphism_2, new_range )
         local internal_hom_embedding_source, internal_hom_embedding_range, morphism_between_tensor_products;
         
         internal_hom_embedding_source := 
@@ -1432,7 +1414,7 @@ InstallGlobalFunction( ADD_BRAIDING_LEFT,
     
     AddBraidingWithGivenTensorProducts( category,
       
-      function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
+      function( cat, object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
         local homalg_ring, permutation_matrix, rank_1, rank_2, rank;
         
         homalg_ring := UnderlyingHomalgRing( object_1 );
@@ -1463,7 +1445,7 @@ InstallGlobalFunction( ADD_BRAIDING_RIGHT,
     
     AddBraidingWithGivenTensorProducts( category,
       
-      function( object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
+      function( cat, object_1_tensored_object_2, object_1, object_2, object_2_tensored_object_1 )
         local homalg_ring, permutation_matrix, rank_1, rank_2, rank;
         
         homalg_ring := UnderlyingHomalgRing( object_1 );
@@ -1497,7 +1479,7 @@ InstallGlobalFunction( ADD_EVALUATION_MORPHISM_LEFT,
     
     AddEvaluationMorphismWithGivenSource( category,
       
-      function( object_1, object_2, internal_hom_tensored_object_1 )
+      function( cat, object_1, object_2, internal_hom_tensored_object_1 )
         local internal_hom_embedding, rank_1, morphism, free_module,
               column, zero_column, i, matrix, rank_2, lifted_evaluation;
         
@@ -1554,7 +1536,7 @@ InstallGlobalFunction( ADD_EVALUATION_MORPHISM_RIGHT,
     
     AddEvaluationMorphismWithGivenSource( category,
       
-      function( object_1, object_2, internal_hom_tensored_object_1 )
+      function( cat, object_1, object_2, internal_hom_tensored_object_1 )
         local internal_hom_embedding, rank_1, morphism, free_module,
               row, zero_row, i, matrix, rank_2, lifted_evaluation;
         
@@ -1611,7 +1593,7 @@ InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_LEFT,
     
     AddCoevaluationMorphismWithGivenRange( category,
       
-      function( object_1, object_2, internal_hom )
+      function( cat, object_1, object_2, internal_hom )
         local object_1_tensored_object_2, internal_hom_embedding, rank_2, free_module, morphism,
               row, zero_row, i, matrix, rank_1, lifted_coevaluation;
         
@@ -1669,7 +1651,7 @@ InstallGlobalFunction( ADD_COEVALUATION_MORPHISM_RIGHT,
     
     AddCoevaluationMorphismWithGivenRange( category,
       
-      function( object_1, object_2, internal_hom )
+      function( cat, object_1, object_2, internal_hom )
         local object_1_tensored_object_2, internal_hom_embedding, rank_2, free_module, morphism,
               column, zero_column, i, matrix, rank_1, lifted_coevaluation;
         
@@ -1721,7 +1703,7 @@ end );
 InstallGlobalFunction( ADD_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT, 
     function( category )
     
-    AddEpimorphismFromSomeProjectiveObject( category, CoverByFreeModule );
+    AddEpimorphismFromSomeProjectiveObject( category, { cat, obj } -> CoverByFreeModule( obj ) );
     
 end );
 
@@ -1810,7 +1792,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
   end;
   
-  AddLift( category, function( morphism_1, morphism_2 )
+  AddLift( category, function( cat, morphism_1, morphism_2 )
     local P, M, v, s, sol, XX;
     
     P := UnderlyingMatrix( Source( morphism_1 ) );
@@ -1833,7 +1815,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
   end );
   
-  AddLiftOrFail( category, function( morphism_1, morphism_2 )
+  AddLiftOrFail( category, function( cat, morphism_1, morphism_2 )
     local P, M, v, s, sol, XX;
     
     P := UnderlyingMatrix( Source( morphism_1 ) );
@@ -1864,7 +1846,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
   end );
   
-  AddIsLiftable( category, function( morphism_1, morphism_2 )
+  AddIsLiftable( category, function( cat, morphism_1, morphism_2 )
     
     return IsZero( CallFuncList( DecideZeroColumns, Reversed( lift_via_compiled_linear_system_func( morphism_1, morphism_2 ) ) ) );
     
@@ -1935,7 +1917,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
   end;
   
-  AddColift( category, function( morphism_1, morphism_2 )
+  AddColift( category, function( cat, morphism_1, morphism_2 )
     local I, M, v, s, sol, XX;
     
     I := UnderlyingMatrix( Range( morphism_2 ) );
@@ -1962,7 +1944,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
   end, 1000 );
   
-  AddColiftOrFail( category, function( morphism_1, morphism_2 )
+  AddColiftOrFail( category, function( cat, morphism_1, morphism_2 )
     local I, M, v, s, sol, XX;
     
     I := UnderlyingMatrix( Range( morphism_2 ) );
@@ -1997,7 +1979,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_LEFT,
     
   end, 1000 );
   
-  AddIsColiftable( category, function( morphism_1, morphism_2 )
+  AddIsColiftable( category, function( cat, morphism_1, morphism_2 )
     
     return IsZero( CallFuncList( DecideZeroColumns, Reversed( colift_via_compiled_linear_system_func( morphism_1, morphism_2 ) ) ) );
     
@@ -2096,7 +2078,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     
   end;
   
-  AddLift( category, function( morphism_1, morphism_2 )
+  AddLift( category, function( cat, morphism_1, morphism_2 )
     local Pt, Mt, v, s, sol, XX;
     
     Pt := TransposedMatrix( UnderlyingMatrix( Source( morphism_1 ) ) );
@@ -2118,7 +2100,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     
   end );
   
-  AddLiftOrFail( category, function( morphism_1, morphism_2 )
+  AddLiftOrFail( category, function( cat, morphism_1, morphism_2 )
     local Pt, Mt, v, s, sol, XX;
     
     Pt := TransposedMatrix( UnderlyingMatrix( Source( morphism_1 ) ) );
@@ -2148,7 +2130,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     
   end );
   
-  AddIsLiftable( category, function( morphism_1, morphism_2 )
+  AddIsLiftable( category, function( cat, morphism_1, morphism_2 )
     
     return IsZero( CallFuncList( DecideZeroColumns, Reversed( lift_via_compiled_linear_system_func( morphism_1, morphism_2 ) ) ) );
     
@@ -2201,7 +2183,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     
   end;
   
-  AddColift( category, function( morphism_1, morphism_2 )
+  AddColift( category, function( cat, morphism_1, morphism_2 )
     local It, Mt, v, s, sol, XX;
     
     It := TransposedMatrix( UnderlyingMatrix( Range( morphism_2 ) ) );
@@ -2228,7 +2210,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     
   end, 1000 );
   
-  AddColiftOrFail( category, function( morphism_1, morphism_2 )
+  AddColiftOrFail( category, function( cat, morphism_1, morphism_2 )
     local It, Mt, v, s, sol, XX;
     
     It := TransposedMatrix( UnderlyingMatrix( Range( morphism_2 ) ) );
@@ -2263,7 +2245,7 @@ InstallGlobalFunction( ADD_LIFT_AND_COLIFT_RIGHT,
     
   end, 1000 );
   
-  AddIsColiftable( category, function( morphism_1, morphism_2 )
+  AddIsColiftable( category, function( cat, morphism_1, morphism_2 )
     
     return IsZero( CallFuncList( DecideZeroColumns, Reversed( colift_via_compiled_linear_system_func( morphism_1, morphism_2 ) ) ) );
     
@@ -2277,7 +2259,7 @@ InstallGlobalFunction( ADD_MULTIPLY_WITH_ELEMENT_OF_COMMUTATIVE_RING_FOR_MORPHIS
   function( category )
     
     AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
-      { r, phi } -> PresentationMorphism(
+      { cat, r, phi } -> PresentationMorphism(
                         Source( phi ),
                         r * UnderlyingMatrix( phi ),
                         Range( phi )

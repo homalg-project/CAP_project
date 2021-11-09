@@ -107,6 +107,46 @@ CapJitAddLogicFunction( function ( tree, jit_args )
     
 end );
 
+# List( [ a_1, ..., a_n ], f ) = [ f( a_1 ), ..., f( a_n ) ]
+CapJitAddLogicFunction( function ( tree, jit_args )
+  local pre_func;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Apply logic for List applied to a literal list." );
+    
+    pre_func := function ( tree, additional_arguments )
+      local args;
+        
+        if CapJitIsCallToGlobalFunction( tree, "List" ) then
+            
+            args := tree.args;
+            
+            if args.length = 2 and args.1.type = "EXPR_LIST" then
+                
+                return rec(
+                    type := "EXPR_LIST",
+                    list := List(
+                        args.1.list,
+                        entry -> rec(
+                            type := "EXPR_FUNCCALL",
+                            funcref := CapJitCopyWithNewFunctionIDs( args.2 ),
+                            args := AsSyntaxTreeList( [ entry ] ),
+                        )
+                    ),
+                );
+                
+            fi;
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    
+end );
+
 # AttributeGetter( ObjectifyObject/MorphismForCAPWithAttributes( ..., Attribute, value, ... ) ) => value
 CapJitAddLogicFunction( function ( tree, jit_args )
   local pre_func;

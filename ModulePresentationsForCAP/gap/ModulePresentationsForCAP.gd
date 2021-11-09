@@ -1,13 +1,24 @@
-#############################################################################
-##
-##                                       ModulePresentationsForCAP package
-##
-##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# ModulePresentationsForCAP: Category R-pres for CAP
+#
+# Declarations
+#
 #! @Chapter Module Presentations
+
+####################################
 ##
-#############################################################################
+#! @Section GAP Categories
+##
+####################################
+
+DeclareCategory( "IsCategoryOfLeftOrRightPresentations",
+                 IsCapCategory );
+
+DeclareCategory( "IsCategoryOfLeftPresentations",
+                 IsCategoryOfLeftOrRightPresentations );
+
+DeclareCategory( "IsCategoryOfRightPresentations",
+                 IsCategoryOfLeftOrRightPresentations );
 
 ##############################################
 ##
@@ -32,6 +43,15 @@ DeclareAttribute( "LeftPresentations",
 #! @Arguments R
 DeclareAttribute( "RightPresentations",
                   IsHomalgRing );
+
+####################################
+##
+#! @Section Attributes
+##
+####################################
+
+DeclareAttribute( "UnderlyingRing",
+                  IsCategoryOfLeftOrRightPresentations );
 
 ##############################################
 ##

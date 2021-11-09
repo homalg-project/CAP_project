@@ -1,11 +1,8 @@
-#############################################################################
-##
-##                                       ModulePresentationsForCAP package
-##
-##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# ModulePresentationsForCAP: Category R-pres for CAP
+#
+# Implementations
+#
 
 #############################
 ##
@@ -69,10 +66,15 @@ InstallMethod( PresentationMorphism,
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category,
                              source,
                              range,
-                             UnderlyingHomalgRing, HomalgRing( matrix ),
                              UnderlyingMatrix, matrix );
     
 end );
+
+##
+InstallMethod( UnderlyingHomalgRing,
+               [ IsLeftOrRightPresentationMorphism ],
+               
+  mor -> UnderlyingRing( CapCategory( mor ) ) );
 
 ##
 InstallMethod( AsMorphismBetweenFreeLeftPresentations,
