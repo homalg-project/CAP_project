@@ -6,7 +6,7 @@
 
 InstallGlobalFunction( "CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS",
   function ( package_name, method_name_record, limits )
-    local output_string, generate_universal_morphism_convenience, generate_functorial_convenience_method, number_of_diagram_arguments, functorial_record, filter_list, input_type, replaced_filter_list, replaced_filter_list_string, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, source_diagram_input_type, range_diagram_input_type, call_arguments_string, limit, output_path;
+    local output_string, generate_universal_morphism_convenience, generate_functorial_convenience_method, number_of_diagram_arguments, functorial_record, filter_list, input_type, replaced_filter_list, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, source_diagram_input_type, range_diagram_input_type, limit, output_path;
     
     output_string :=
 """# SPDX-License-Identifier: GPL-2.0-or-later
@@ -396,101 +396,274 @@ InstallGlobalFunction( "CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS",
         
     end;
     
-    generate_functorial_convenience_method := function( object_name, functorial_name, functorial_with_given_name, filter_list_string, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, call_arguments_string )
-      local current_string;
+    generate_functorial_convenience_method := function( limit, limit_colimit, object_name, functorial_name, functorial_with_given_name )
+      local functorial_with_given_record, filter_list, input_type, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, replaced_filter_list, current_string, input_arguments_names, source_argument_name, range_argument_name, source_diagram_arguments_names, range_diagram_arguments_names, test_string, test_arguments, universal_morphism_with_given_name, call_arguments;
         
-        current_string := Concatenation(
-            "\n",
-            "##\n",
-            "InstallMethod( ", functorial_name, ",\n",
-            "               [ ", filter_list_string, " ],\n",
-            "               \n",
-            "  function( ", arguments_string, " )\n",
-            "    \n",
-            "    return ", functorial_with_given_name, "(\n",
-            "        ", object_name, "( ", source_diagram_arguments_string, " ),\n",
-            "        ", call_arguments_string, ",\n",
-            "        ", object_name, "( ", range_diagram_arguments_string, " )\n",
-            "    );\n",
-            "    \n",
-            "end );\n"
-        );
+        Assert( 0, limit_colimit in [ "limit", "colimit" ] );
         
-        output_string := Concatenation( output_string, current_string );
+        functorial_with_given_record := method_name_record.( limit.limit_functorial_with_given_name );
         
-        current_string := Concatenation(
-            "\n",
-            "##\n",
-            "InstallOtherMethod( ", functorial_name, ",\n",
-            "               [ IsCapCategory, ", filter_list_string, " ],\n",
-            "               \n",
-            "  function( cat, ", arguments_string, " )\n",
-            "    #% CAP_JIT_RESOLVE_FUNCTION\n",
-            "    \n",
-            "    return ", functorial_with_given_name, "(\n",
-            "        cat,\n",
-            "        ", object_name, "( cat, ", source_diagram_arguments_string, " ),\n",
-            "        ", call_arguments_string, ",\n",
-            "        ", object_name, "( cat, ", range_diagram_arguments_string, " )\n",
-            "    );\n",
-            "    \n",
-            "end );\n"
-        );
+        if Length( limit.diagram_filter_list ) > 0 and limit.number_of_unbound_morphisms = 0 and (limit.limit_object_name <> limit.colimit_object_name or limit_colimit = "limit") then
+            
+            # convenience: derive diagrams from arguments
+            filter_list := limit.diagram_morphism_filter_list;
+            input_type := limit.diagram_morphism_input_type;
+            
+            Assert( 0, Length( filter_list ) = 1 );
+            Assert( 0, Length( input_type ) = 1 );
+            
+            arguments_string := JoinStringsWithSeparator( input_type, ", " );
+            
+            if limit.number_of_targets = 1 then
+                source_diagram_arguments_string := Concatenation( "Source( ", arguments_string, " )" );
+                range_diagram_arguments_string := Concatenation( "Range( ", arguments_string, " )" );
+            else
+                source_diagram_arguments_string := Concatenation( "List( ", arguments_string, ", Source )" );
+                range_diagram_arguments_string := Concatenation( "List( ", arguments_string, ", Range )" );
+            fi;
+            
+            replaced_filter_list := List( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list ), NameFunction );
+            
+            current_string := ReplacedStringViaRecord( """
+##
+InstallOtherMethod( functorial_name,
+                    [ filter_list ],
+               
+  function( input_arguments )
+    
+    return functorial_name( source_diagram_arguments, input_arguments, range_diagram_arguments );
+    
+end );
+""",
+                rec(
+                    functorial_name := functorial_name,
+                    filter_list := replaced_filter_list,
+                    input_arguments := input_type,
+                    source_diagram_arguments := source_diagram_arguments_string,
+                    range_diagram_arguments := range_diagram_arguments_string,
+                )
+            );
+            
+            output_string := Concatenation( output_string, current_string );
+            
+            current_string := ReplacedStringViaRecord( """
+##
+InstallOtherMethod( functorial_name,
+                    [ IsCapCategory, filter_list ],
+                    
+  function( cat, input_arguments )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return functorial_name( cat, source_diagram_arguments, input_arguments, range_diagram_arguments );
+    
+end );
+""",
+                rec(
+                    functorial_name := functorial_name,
+                    filter_list := replaced_filter_list,
+                    input_arguments := input_type,
+                    source_diagram_arguments := source_diagram_arguments_string,
+                    range_diagram_arguments := range_diagram_arguments_string,
+                )
+            );
+            
+            output_string := Concatenation( output_string, current_string );
+            
+            current_string := ReplacedStringViaRecord( """
+##
+InstallOtherMethod( functorial_with_given_name,
+               [ IsCapCategoryObject, filter_list, IsCapCategoryObject ],
+               
+  function( source, input_arguments, range )
+    
+    return functorial_with_given_name( source, source_diagram_arguments, input_arguments, range_diagram_arguments, range );
+    
+end );
+""",
+                rec(
+                    functorial_with_given_name := functorial_with_given_name,
+                    filter_list := replaced_filter_list,
+                    input_arguments := input_type,
+                    source_diagram_arguments := source_diagram_arguments_string,
+                    range_diagram_arguments := range_diagram_arguments_string,
+                )
+            );
+            
+            output_string := Concatenation( output_string, current_string );
+            
+            current_string := ReplacedStringViaRecord( """
+##
+InstallOtherMethod( functorial_with_given_name,
+               [ IsCapCategory, IsCapCategoryObject, filter_list, IsCapCategoryObject ],
+               
+  function( cat, source, input_arguments, range )
+    #% CAP_JIT_RESOLVE_FUNCTION
+    
+    return functorial_with_given_name( cat, source, source_diagram_arguments, input_arguments, range_diagram_arguments, range );
+    
+end );
+""",
+                rec(
+                    functorial_with_given_name := functorial_with_given_name,
+                    filter_list := replaced_filter_list,
+                    input_arguments := input_type,
+                    source_diagram_arguments := source_diagram_arguments_string,
+                    range_diagram_arguments := range_diagram_arguments_string,
+                )
+            );
+            
+            output_string := Concatenation( output_string, current_string );
+            
+        fi;
         
-        output_string := Concatenation( output_string, current_string );
+        # derive functorials from the universality of the limit/colimit
+        Assert( 0, Length( limit.diagram_morphism_filter_list ) <= 1 );
+        Assert( 0, Length( limit.diagram_morphism_input_type ) <= 1 );
         
-        if limit.number_of_unbound_morphisms = 0 then
+        input_arguments_names := Concatenation( [ "cat" ], functorial_with_given_record.io_type[1] );
+        
+        source_argument_name := input_arguments_names[2];
+        range_argument_name := Last( input_arguments_names );
+        
+        source_diagram_arguments_names := limit.functorial_source_diagram_arguments_names;
+        range_diagram_arguments_names := limit.functorial_range_diagram_arguments_names;
+        
+        if Length( limit.diagram_filter_list ) > 0 then
             
             if limit.number_of_targets = 1 then
                 
-                Error( "this case is currently not supported" );
+                Assert( 0, limit.diagram_morphism_input_type = [ "mu" ] );
                 
-            elif limit.number_of_targets > 1 then
+                if limit_colimit = "limit" then
+                    
+                    test_string := ReplacedStringViaRecord(
+                        "PreCompose( cat, projection_with_given( cat, source_diagram, source_object ), mu )",
+                        rec(
+                            projection_with_given := limit.limit_projection_with_given_name,
+                            source_diagram := source_diagram_arguments_names,
+                            source_object := source_argument_name,
+                        )
+                    );
+                    
+                elif limit_colimit = "colimit" then
+                    
+                    test_string := ReplacedStringViaRecord(
+                        "PreCompose( cat, mu, injection_with_given( cat, range_diagram, range_object ) )",
+                        rec(
+                            injection_with_given := limit.colimit_injection_with_given_name,
+                            range_diagram := range_diagram_arguments_names,
+                            range_object := range_argument_name,
+                        )
+                    );
+                    
+                else
+                    
+                    Error( "this should never happen" );
+                    
+                fi;
                 
-                # diagram can be derived from morphisms
+            else
                 
-                current_string := Concatenation(
-                    "\n",
-                    "##\n",
-                    "InstallOtherMethod( ", functorial_name, "WithGiven", object_name, "s,\n",
-                    "               [ IsCapCategoryObject, ", filter_list_string, ", IsCapCategoryObject ],\n",
-                    "               \n",
-                    "  function( source, ", arguments_string, ", range )\n",
-                    "    #% CAP_JIT_RESOLVE_FUNCTION\n",
-                    "    \n",
-                    "    return ", functorial_with_given_name, "(\n",
-                    "        source,\n",
-                    "        ", call_arguments_string, ",\n",
-                    "        range\n",
-                    "    );\n",
-                    "    \n",
-                    "end );\n"
-                );
+                Assert( 0, limit.diagram_morphism_input_type = [ "L" ] );
                 
-                output_string := Concatenation( output_string, current_string );
-                
-                current_string := Concatenation(
-                    "\n",
-                    "##\n",
-                    "InstallOtherMethod( ", functorial_name, "WithGiven", object_name, "s,\n",
-                    "               [ IsCapCategory, IsCapCategoryObject, ", filter_list_string, ", IsCapCategoryObject ],\n",
-                    "               \n",
-                    "  function( cat, source, ", arguments_string, ", range )\n",
-                    "    #% CAP_JIT_RESOLVE_FUNCTION\n",
-                    "    \n",
-                    "    return ", functorial_with_given_name, "(\n",
-                    "        cat,\n",
-                    "        source,\n",
-                    "        ", call_arguments_string, ",\n",
-                    "        range\n",
-                    "    );\n",
-                    "    \n",
-                    "end );\n"
-                );
-                
-                output_string := Concatenation( output_string, current_string );
+                if limit_colimit = "limit" then
+                    
+                    test_string := ReplacedStringViaRecord(
+                        "List( [ 1 .. Length( L ) ], i -> PreCompose( cat, projection_with_given( cat, source_diagram, i, source_object ), L[i] ) )",
+                        rec(
+                            projection_with_given := limit.limit_projection_with_given_name,
+                            source_diagram := source_diagram_arguments_names,
+                            source_object := source_argument_name,
+                        )
+                    );
+                    
+                elif limit_colimit = "colimit" then
+                    
+                    test_string := ReplacedStringViaRecord(
+                        "List( [ 1 .. Length( L ) ], i -> PreCompose( cat, L[i], injection_with_given( cat, range_diagram, i, range_object ) ) )",
+                        rec(
+                            injection_with_given := limit.colimit_injection_with_given_name,
+                            range_diagram := range_diagram_arguments_names,
+                            range_object := range_argument_name,
+                        )
+                    );
+                    
+                else
+                    
+                    Error( "this should never happen" );
+                    
+                fi;
                 
             fi;
+            
+            test_arguments := [ test_string ];
+            
+        else
+            
+            Assert( 0, limit.diagram_morphism_input_type = [ ] );
+            
+            test_arguments := [ ];
+            
+        fi;
+        
+        if limit_colimit = "limit" then
+            
+            universal_morphism_with_given_name := limit.limit_universal_morphism_with_given_name;
+            call_arguments := Concatenation( [ "cat" ], range_diagram_arguments_names, [ source_argument_name ], test_arguments, [ range_argument_name ] );
+            
+        elif limit_colimit = "colimit" then
+            
+            universal_morphism_with_given_name := limit.colimit_universal_morphism_with_given_name;
+            call_arguments := Concatenation( [ "cat" ], source_diagram_arguments_names, [ range_argument_name ], test_arguments, [ source_argument_name ] );
+            
+        else
+            
+            Error( "this should never happen" );
+            
+        fi;
+        
+        
+        current_string := ReplacedStringViaRecord( """
+##
+AddDerivationToCAP( functorial_with_given_name,
+                    
+  function( input_arguments )
+    
+    return universal_morphism_with_given( call_arguments );
+    
+end : Description := "functorial_with_given_name using the universality of the limit_colimit" );
+""",
+            rec(
+                functorial_with_given_name := functorial_with_given_name,
+                input_arguments := input_arguments_names,
+                universal_morphism_with_given := universal_morphism_with_given_name,
+                call_arguments := call_arguments,
+                limit_colimit := limit_colimit,
+            )
+        );
+        
+        output_string := Concatenation( output_string, current_string );
+        
+        # derive functorial of empty limits from IdentityMorphism
+        if Length( limit.diagram_filter_list ) = 0 and (limit.limit_object_name <> limit.colimit_object_name or limit_colimit = "limit") then
+            
+            current_string := ReplacedStringViaRecord( """
+##
+AddDerivationToCAP( functorial_name,
+                    
+  function( cat )
+    
+    return IdentityMorphism( cat, object_name( cat ) );
+    
+end : Description := "functorial_name by taking the identity morphism of object_name" );
+""",
+                rec(
+                    functorial_name := functorial_name,
+                    object_name := object_name,
+                )
+            );
+            
+            output_string := Concatenation( output_string, current_string );
             
         fi;
         
@@ -506,59 +679,11 @@ InstallGlobalFunction( "CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS",
             generate_universal_morphism_convenience( limit, limit.limit_universal_morphism_name, limit.limit_object_name, "Range" );
             generate_universal_morphism_convenience( limit, limit.colimit_universal_morphism_name, limit.colimit_object_name, "Source" );
             
-            #### functorial convenience method
-            functorial_record := method_name_record.( limit.limit_functorial_with_given_name );
-            
-            if limit.number_of_unbound_morphisms = 0 then
-                # derive diagrams from arguments
-                filter_list := limit.diagram_morphism_filter_list;
-                input_type := limit.diagram_morphism_input_type;
-
-                Assert( 0, Length( filter_list ) = 1 );
-                Assert( 0, Length( input_type ) = 1 );
-
-                arguments_string := JoinStringsWithSeparator( input_type, ", " );
-
-                if limit.number_of_targets = 1 then
-                    source_diagram_arguments_string := Concatenation( "Source( ", arguments_string, " )" );
-                    range_diagram_arguments_string := Concatenation( "Range( ", arguments_string, " )" );
-                else
-                    source_diagram_arguments_string := Concatenation( "List( ", arguments_string, ", Source )" );
-                    range_diagram_arguments_string := Concatenation( "List( ", arguments_string, ", Range )" );
-                fi;
-                
-                call_arguments_string := JoinStringsWithSeparator( [ source_diagram_arguments_string, arguments_string, range_diagram_arguments_string ], ", " );
-            else
-                filter_list := functorial_record.filter_list;
-                input_type := functorial_record.io_type[1];
-                # the first entry is the category, the second and the last entries are the WithGiven-objects
-                filter_list := filter_list{ [ 3 .. Length( filter_list ) - 1 ] };
-                input_type := input_type{ [ 2 .. Length( input_type ) - 1 ] };
-                
-                arguments_string := JoinStringsWithSeparator( input_type, ", " );
-
-                # diagrams are passed as first and last argument(s)
-                source_diagram_input_type := input_type{ [ 1 .. number_of_diagram_arguments ] };
-                range_diagram_input_type := input_type{ [ (Length( input_type ) - number_of_diagram_arguments + 1) .. Length( input_type ) ] };
-
-                source_diagram_arguments_string := JoinStringsWithSeparator( source_diagram_input_type, ", " );
-                range_diagram_arguments_string := JoinStringsWithSeparator( range_diagram_input_type, ", " );
-
-                call_arguments_string := arguments_string;
-            fi;
-            
-            replaced_filter_list := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( filter_list );
-            replaced_filter_list_string := JoinStringsWithSeparator( List( replaced_filter_list, NameFunction ), ", " );
-            
-            # limit
-            generate_functorial_convenience_method( limit.limit_object_name, limit.limit_functorial_name, limit.limit_functorial_with_given_name, replaced_filter_list_string, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, call_arguments_string );
-            
-            # colimit
-            if limit.limit_object_name <> limit.colimit_object_name then
-                generate_functorial_convenience_method( limit.colimit_object_name, limit.colimit_functorial_name, limit.colimit_functorial_with_given_name, replaced_filter_list_string, arguments_string, source_diagram_arguments_string, range_diagram_arguments_string, call_arguments_string );
-            fi;
-            
         fi;
+        
+        #### functorial convenience method
+        generate_functorial_convenience_method( limit, "limit", limit.limit_object_name, limit.limit_functorial_name, limit.limit_functorial_with_given_name );
+        generate_functorial_convenience_method( limit, "colimit", limit.colimit_object_name, limit.colimit_functorial_name, limit.colimit_functorial_with_given_name );
         
     od;
     

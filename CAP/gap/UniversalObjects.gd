@@ -456,6 +456,14 @@ DeclareAttribute( "IsomorphismFromTerminalObjectToZeroObject",
 DeclareAttribute( "ZeroObjectFunctorial",
                   IsCapCategory );
 
+#! @Description
+#! The argument is a category $C$ and a zero object $\mathrm{ZeroObject}(C)$ twice (for compatibility with other functorials).
+#! The output is the unique morphism $zero_object1 \rightarrow zero_object2$.
+#! @Returns a morphism in $\mathrm{Hom}(zero_object1, zero_object2)$
+#! @Arguments C, zero_object1, zero_object2
+DeclareOperation( "ZeroObjectFunctorialWithGivenZeroObjects",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
 #! @Chapter Universal Objects
 
 ####################################
@@ -521,6 +529,14 @@ DeclareOperation( "UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
 #! @Arguments C
 DeclareAttribute( "TerminalObjectFunctorial",
                   IsCapCategory );
+
+#! @Description
+#! The argument is a category $C$ and a terminal object $\mathrm{TerminalObject}(C)$ twice (for compatibility with other functorials).
+#! The output is the unique morphism $terminal_object1 \rightarrow terminal_object2$.
+#! @Returns a morphism in $\mathrm{Hom}(terminal_object1, terminal_object2)$
+#! @Arguments C, terminal_object1, terminal_object2
+DeclareOperation( "TerminalObjectFunctorialWithGivenTerminalObjects",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Chapter Universal Objects
 
@@ -588,6 +604,14 @@ DeclareOperation( "UniversalMorphismFromInitialObjectWithGivenInitialObject",
 #! @Arguments C
 DeclareAttribute( "InitialObjectFunctorial",
                   IsCapCategory );
+
+#! @Description
+#! The argument is a category $C$ and an initial object $\mathrm{InitialObject}(C)$ twice (for compatibility with other functorials).
+#! The output is the unique morphism $initial_object1 \rightarrow initial_object2$.
+#! @Returns a morphism in $\mathrm{Hom}(initial_object1, initial_object2)$
+#! @Arguments C, initial_object1, initial_object2
+DeclareOperation( "InitialObjectFunctorialWithGivenInitialObjects",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Chapter Universal Objects
 
@@ -901,15 +925,19 @@ DeclareOperation( "ComponentOfMorphismFromDirectSum",
                   [ IsCapCategoryMorphism, IsList, IsInt ] );
 
 #! @Description
-#! This is a convenience method.
-#! The argument is a list of morphisms $L = ( \mu_1: S_1 \rightarrow S_1', \dots, \mu_n: S_n \rightarrow S_n' )$.
+#! The arguments are
+#! a list of objects $(S_i)_{i = 1 \dots n}$,
+#! a list of morphisms $L = ( \mu_1: S_1 \rightarrow S_1', \dots, \mu_n: S_n \rightarrow S_n' )$,
+#! and a list of objects $(S_i')_{i = 1 \dots n}$.
+#! For convenience, <A>source_diagram</A> and <A>range_diagram</A> can be omitted
+#! and are automatically derived from <A>L</A> in that case.
 #! The output is a morphism
 #! $\bigoplus_{i=1}^n S_i \rightarrow \bigoplus_{i=1}^n S_i'$
 #! given by the functoriality of the direct sum.
 #! @Returns a morphism in $\mathrm{Hom}( \bigoplus_{i=1}^n S_i, \bigoplus_{i=1}^n S_i' )$
-#! @Arguments L
+#! @Arguments source_diagram, L, range_diagram
 DeclareOperation( "DirectSumFunctorial",
-                  [ IsList ] );
+                  [ IsList, IsList, IsList ] );
 
 #! @Description
 #! The arguments are an object $d_1 = \bigoplus_{i=1}^n S_i$,
@@ -1055,15 +1083,19 @@ DeclareOperation( "UniversalMorphismFromCoproductWithGivenCoproduct",
                   [ IsList, IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
-#! This is a convenience method.
-#! The argument is a list $L = ( \mu_1: I_1 \rightarrow I_1', \dots, \mu_n: I_n \rightarrow I_n' )$.
+#! The arguments are
+#! a list of objects $(I_i)_{i = 1 \dots n}$,
+#! a list $L = ( \mu_1: I_1 \rightarrow I_1', \dots, \mu_n: I_n \rightarrow I_n' )$,
+#! and a list of objects $(I_i')_{i = 1 \dots n}$.
+#! For convenience, <A>source_diagram</A> and <A>range_diagram</A> can be omitted
+#! and are automatically derived from <A>L</A> in that case.
 #! The output is a morphism
 #! $\bigsqcup_{i=1}^n I_i \rightarrow \bigsqcup_{i=1}^n I_i'$
 #! given by the functoriality of the coproduct.
 #! @Returns a morphism in $\mathrm{Hom}(\bigsqcup_{i=1}^n I_i, \bigsqcup_{i=1}^n I_i')$
-#! @Arguments L
+#! @Arguments source_diagram, L, range_diagram
 DeclareOperation( "CoproductFunctorial",
-                  [ IsList ] );
+                  [ IsList, IsList, IsList ] );
 
 #! @Description
 #! The arguments are an object $s = \bigsqcup_{i=1}^n I_i$, 
@@ -1198,15 +1230,19 @@ DeclareOperation( "UniversalMorphismIntoDirectProductWithGivenDirectProduct",
                   [ IsList, IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
-#! This is a convenience method.
-#! The argument is a list of morphisms $L = (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$.
+#! The arguments are
+#! a list of objects $(P_i)_{i = 1 \dots n}$,
+#! a list of morphisms $L = (\mu_i: P_i \rightarrow P'_i)_{i=1\dots n}$,
+#! and a list of objects $(P_i')_{i = 1 \dots n}$.
+#! For convenience, <A>source_diagram</A> and <A>range_diagram</A> can be omitted
+#! and are automatically derived from <A>L</A> in that case.
 #! The output is a morphism
 #! $\prod_{i=1}^n P_i \rightarrow \prod_{i=1}^n P_i'$
 #! given by the functoriality of the direct product.
 #! @Returns a morphism in $\mathrm{Hom}( \prod_{i=1}^n P_i, \prod_{i=1}^n P_i' )$
-#! @Arguments L
+#! @Arguments source_diagram, L, range_diagram
 DeclareOperation( "DirectProductFunctorial",
-                  [ IsList ] );
+                  [ IsList, IsList, IsList ] );
 
 #! @Description
 #! The arguments are an object $s = \prod_{i=1}^n P_i$,

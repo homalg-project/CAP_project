@@ -362,6 +362,8 @@ InstallMethod( AddDerivationPair,
                
   function( graph, target_op1, target_op2, implementations_with_extra_filters1, implementations_with_extra_filters2 )
     
+    Display( "WARNING: AddDerivationPair is deprecated and will not be supported after 2022.10.26. Please use AddDerivation instead.\n" );
+    
     AddDerivationPair( graph,
                        target_op1,
                        target_op2,
@@ -375,6 +377,8 @@ InstallMethod( AddDerivationPair,
                [ IsDerivedMethodGraph, IsFunction, IsFunction, IsDenseList, IsDenseList ],
                
   function( graph, target_op1, target_op2, implementations_with_extra_filters1, implementations_with_extra_filters2 )
+    
+    Display( "WARNING: AddDerivationPair is deprecated and will not be supported after 2022.10.26. Please use AddDerivation instead.\n" );
     
     AddDerivationPair( graph,
                        target_op1,
@@ -390,6 +394,8 @@ InstallMethod( AddDerivationPair,
                
   function( graph, target_op1, target_op2, used_ops_with_multiples,
             implementations_with_extra_filters1, implementations_with_extra_filters2 )
+    
+    Display( "WARNING: AddDerivationPair is deprecated and will not be supported after 2022.10.26. Please use AddDerivation instead.\n" );
     
     AddDerivationPair( graph,
                        target_op1,
@@ -408,6 +414,8 @@ InstallMethod( AddDerivationPair,
     local weight, category_filter, description, derivation1, derivation2, collected_list,
           operations_in_graph, current_list, current_implementation, loop_multiplier,
           preconditions_complete;
+    
+    Display( "WARNING: AddDerivationPair is deprecated and will not be supported after 2022.10.26. Please use AddDerivation instead.\n" );
     
     weight := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "Weight", 1 );
     category_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "CategoryFilter", IsCapCategory );
@@ -467,18 +475,11 @@ InstallGlobalFunction( AddDerivationPairToCAP,
   
   function( arg )
     
+    Display( "WARNING: AddDerivationPairToCAP is deprecated and will not be supported after 2022.10.26. Please use AddDerivationToCAP instead.\n" );
+    
     CallFuncList( AddDerivationPair, Concatenation( [ CAP_INTERNAL_DERIVATION_GRAPH ], arg ) );
     
 end );
-
-BindGlobal( "CAP_INTERNAL_CREATE_WITH_GIVEN_FUNCTION_BY_REDUCTION",
-  
-  function( func )
-    
-    return function( arg ) return CallFuncList( func, arg{[ 1 .. Length( arg ) - 1 ]} ); end;
-    
-end );
-
 
 InstallGlobalFunction( AddWithGivenDerivationPairToCAP,
   
@@ -508,6 +509,22 @@ InstallGlobalFunction( AddWithGivenDerivationPairToCAP,
         return;
         
     fi;
+    
+    if Length( arg ) = 3 and ForAll( arg, IsFunction ) then
+        
+        AddDerivationToCAP( arg[ 1 ], arg[ 2 ] );
+        AddDerivationToCAP( ValueGlobal( op_with_given ), arg[ 3 ] );
+        
+        return;
+        
+    fi;
+    
+    Print(
+      Concatenation(
+      "WARNING: AddWithGivenDerivationPairToCAP is deprecated and will not be supported after 2022.10.26 except when passing exactly three functions.",
+      "Please use AddDerivationToCAP instead.\n"
+      )
+    );
     
     new_arg := Concatenation( [ CAP_INTERNAL_DERIVATION_GRAPH, arg[ 1 ], ValueGlobal( op_with_given ) ], arg{[ 2 .. Length( arg ) ]} );
     

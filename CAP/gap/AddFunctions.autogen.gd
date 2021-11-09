@@ -221,6 +221,25 @@ DeclareOperation( "AddCoequalizer",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `CoequalizerFunctorial`.
+#! $F: ( morphisms, mu, morphismsp ) \mapsto \mathtt{CoequalizerFunctorial}(morphisms, mu, morphismsp)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoequalizerFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoequalizerFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoequalizerFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoequalizerFunctorial",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `CoequalizerFunctorialWithGivenCoequalizers`.
 #! $F: ( P, morphisms, mu, morphismsp, Pp ) \mapsto \mathtt{CoequalizerFunctorialWithGivenCoequalizers}(P, morphisms, mu, morphismsp, Pp)$.
 #! @Returns nothing
@@ -349,6 +368,25 @@ DeclareOperation( "AddCokernelObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddCokernelObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `CokernelObjectFunctorial`.
+#! $F: ( alpha, mu, alphap ) \mapsto \mathtt{CokernelObjectFunctorial}(alpha, mu, alphap)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCokernelObjectFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCokernelObjectFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCokernelObjectFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCokernelObjectFunctorial",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -525,6 +563,25 @@ DeclareOperation( "AddCoproduct",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `CoproductFunctorial`.
+#! $F: ( objects, L, objectsp ) \mapsto \mathtt{CoproductFunctorial}(objects, L, objectsp)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCoproductFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCoproductFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCoproductFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCoproductFunctorial",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `CoproductFunctorialWithGivenCoproducts`.
 #! $F: ( P, objects, L, objectsp, Pp ) \mapsto \mathtt{CoproductFunctorialWithGivenCoproducts}(P, objects, L, objectsp, Pp)$.
 #! @Returns nothing
@@ -558,6 +615,25 @@ DeclareOperation( "AddDirectProduct",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddDirectProduct",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `DirectProductFunctorial`.
+#! $F: ( objects, L, objectsp ) \mapsto \mathtt{DirectProductFunctorial}(objects, L, objectsp)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddDirectProductFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddDirectProductFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddDirectProductFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddDirectProductFunctorial",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -634,6 +710,25 @@ DeclareOperation( "AddDirectSumDiagonalDifference",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddDirectSumDiagonalDifference",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `DirectSumFunctorial`.
+#! $F: ( objects, L, objectsp ) \mapsto \mathtt{DirectSumFunctorial}(objects, L, objectsp)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddDirectSumFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddDirectSumFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddDirectSumFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddDirectSumFunctorial",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -791,6 +886,25 @@ DeclareOperation( "AddEqualizer",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `EqualizerFunctorial`.
+#! $F: ( morphisms, mu, morphismsp ) \mapsto \mathtt{EqualizerFunctorial}(morphisms, mu, morphismsp)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddEqualizerFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddEqualizerFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddEqualizerFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEqualizerFunctorial",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `EqualizerFunctorialWithGivenEqualizers`.
 #! $F: ( P, morphisms, mu, morphismsp, Pp ) \mapsto \mathtt{EqualizerFunctorialWithGivenEqualizers}(P, morphisms, mu, morphismsp, Pp)$.
 #! @Returns nothing
@@ -843,6 +957,25 @@ DeclareOperation( "AddFiberProductEmbeddingInDirectSum",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddFiberProductEmbeddingInDirectSum",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `FiberProductFunctorial`.
+#! $F: ( morphisms, L, morphismsp ) \mapsto \mathtt{FiberProductFunctorial}(morphisms, L, morphismsp)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddFiberProductFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddFiberProductFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddFiberProductFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddFiberProductFunctorial",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -1128,6 +1261,25 @@ DeclareOperation( "AddInitialObjectFunctorial",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddInitialObjectFunctorial",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `InitialObjectFunctorialWithGivenInitialObjects`.
+#! $F: ( P, Pp ) \mapsto \mathtt{InitialObjectFunctorialWithGivenInitialObjects}(P, Pp)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInitialObjectFunctorialWithGivenInitialObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInitialObjectFunctorialWithGivenInitialObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInitialObjectFunctorialWithGivenInitialObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInitialObjectFunctorialWithGivenInitialObjects",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -2539,6 +2691,25 @@ DeclareOperation( "AddKernelObject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `KernelObjectFunctorial`.
+#! $F: ( alpha, mu, alphap ) \mapsto \mathtt{KernelObjectFunctorial}(alpha, mu, alphap)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddKernelObjectFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddKernelObjectFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddKernelObjectFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddKernelObjectFunctorial",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `KernelObjectFunctorialWithGivenKernelObjects`.
 #! $F: ( P, alpha, mu, alphap, Pp ) \mapsto \mathtt{KernelObjectFunctorialWithGivenKernelObjects}(P, alpha, mu, alphap, Pp)$.
 #! @Returns nothing
@@ -3275,6 +3446,25 @@ DeclareOperation( "AddPushout",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddPushout",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `PushoutFunctorial`.
+#! $F: ( morphisms, L, morphismsp ) \mapsto \mathtt{PushoutFunctorial}(morphisms, L, morphismsp)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPushoutFunctorial",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPushoutFunctorial",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPushoutFunctorial",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPushoutFunctorial",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -4021,6 +4211,25 @@ DeclareOperation( "AddTerminalObjectFunctorial",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `TerminalObjectFunctorialWithGivenTerminalObjects`.
+#! $F: ( P, Pp ) \mapsto \mathtt{TerminalObjectFunctorialWithGivenTerminalObjects}(P, Pp)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTerminalObjectFunctorialWithGivenTerminalObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTerminalObjectFunctorialWithGivenTerminalObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTerminalObjectFunctorialWithGivenTerminalObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTerminalObjectFunctorialWithGivenTerminalObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `UniversalMorphismFromCoequalizer`.
 #! $F: ( morphisms, T, tau ) \mapsto \mathtt{UniversalMorphismFromCoequalizer}(morphisms, T, tau)$.
 #! @Returns nothing
@@ -4643,4 +4852,23 @@ DeclareOperation( "AddZeroObjectFunctorial",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddZeroObjectFunctorial",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `ZeroObjectFunctorialWithGivenZeroObjects`.
+#! $F: ( P, Pp ) \mapsto \mathtt{ZeroObjectFunctorialWithGivenZeroObjects}(P, Pp)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddZeroObjectFunctorialWithGivenZeroObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddZeroObjectFunctorialWithGivenZeroObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddZeroObjectFunctorialWithGivenZeroObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddZeroObjectFunctorialWithGivenZeroObjects",
                   [ IsCapCategory, IsList ] );

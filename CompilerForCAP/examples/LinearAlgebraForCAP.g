@@ -7,9 +7,12 @@ LoadPackage( "LinearAlgebraForCAP" );
 #! @Example
 
 Q := HomalgFieldOfRationals();;
-vec := MatrixCategory( Q : enable_compilation := true );;
+vec := MATRIX_CATEGORY(
+    Q :
+    enable_compilation := true, no_precompiled_code := true
+);;
 
-V := VectorSpaceObject( 2, Q );;
+V := MatrixCategoryObject( vec, 2 );;
 alpha := ZeroMorphism( V, V );;
 beta := IdentityMorphism( V );;
 
