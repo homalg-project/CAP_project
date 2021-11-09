@@ -2930,9 +2930,9 @@ AddDerivationToCAP( SolveLinearSystemInAbCategory,
     
     range_cat := RangeCategoryOfHomomorphismStructure( cat );
     
-    m := Size( left_coefficients );
+    m := Length( left_coefficients );
     
-    n := Size( left_coefficients[1] );
+    n := Length( left_coefficients[1] );
     
     ## create lift diagram
     
@@ -3014,9 +3014,9 @@ AddDerivationToCAP( SolveLinearSystemInAbCategoryOrFail,
     
     range_cat := RangeCategoryOfHomomorphismStructure( cat );
     
-    m := Size( left_coefficients );
+    m := Length( left_coefficients );
     
-    n := Size( left_coefficients[1] );
+    n := Length( left_coefficients[1] );
     
     ## create lift diagram
     
@@ -3103,9 +3103,9 @@ AddDerivationToCAP( MereExistenceOfSolutionOfLinearSystemInAbCategory,
     
     range_cat := RangeCategoryOfHomomorphismStructure( cat );
     
-    m := Size( left_coefficients );
+    m := Length( left_coefficients );
     
-    n := Size( left_coefficients[1] );
+    n := Length( left_coefficients[1] );
     
     ## create lift diagram
     
