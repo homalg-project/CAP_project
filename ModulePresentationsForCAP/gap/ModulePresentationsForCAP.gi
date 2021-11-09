@@ -15,8 +15,6 @@ InstallMethod( LeftPresentations,
     
     category!.category_as_first_argument := true;
     
-    DisableAddForCategoricalOperations( category );
-    
     AddObjectRepresentation( category, IsLeftPresentation );
     
     AddMorphismRepresentation( category, IsLeftPresentationMorphism and HasUnderlyingMatrix );
@@ -28,7 +26,7 @@ InstallMethod( LeftPresentations,
     SetUnderlyingRing( category, ring );
     
     SetIsAbelianCategory( category, true );
-
+    
     SetIsAbelianCategoryWithEnoughProjectives( category, true );
     
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
@@ -44,7 +42,6 @@ InstallMethod( LeftPresentations,
     ADD_FUNCTIONS_FOR_LEFT_PRESENTATION( category );
     
     AddCategoryToFamily( category, "ModuleCategory" );
-    
     
     ## TODO: avoid code duplication (see RightPresentations)
     AddTheoremFileToCategory( category,
@@ -71,14 +68,12 @@ InstallMethod( LeftPresentations,
     
 end );
 
-# LeftPresentations( R: FinalizeCategory := false );
-
 ##
 InstallMethod( RightPresentations,
                [ IsHomalgRing ],
                
   function( ring )
-    local category, to_be_finalized;
+    local category;
     
     category := CreateCapCategory( Concatenation( "Category of right presentations of ", RingName( ring ) ) );
     
@@ -86,7 +81,7 @@ InstallMethod( RightPresentations,
     
     AddObjectRepresentation( category, IsRightPresentation );
     
-    AddMorphismRepresentation( category, IsRightPresentationMorphism );
+    AddMorphismRepresentation( category, IsRightPresentationMorphism and HasUnderlyingMatrix );
     
     category!.ring_for_representation_category := ring;
     
@@ -97,7 +92,7 @@ InstallMethod( RightPresentations,
     SetIsAbelianCategory( category, true );
     
     SetIsAbelianCategoryWithEnoughProjectives( category, true );
-
+    
     if HasIsCommutative( ring ) and IsCommutative( ring ) then
       
       SetIsSymmetricClosedMonoidalCategory( category, true );
@@ -131,17 +126,7 @@ InstallMethod( RightPresentations,
         "RelationsForGeneralModuleCategories.tex" )
     );
     
-    to_be_finalized := ValueOption( "FinalizeCategory" );
-   
-    if to_be_finalized = false then
-      
-       return category;
-    
-    else
-    
-       Finalize( category );
-      
-    fi;
+    Finalize( category );
     
     return category;
     
