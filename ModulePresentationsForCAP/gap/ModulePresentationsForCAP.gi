@@ -316,7 +316,7 @@ InstallGlobalFunction( ADD_IS_WELL_DEFINED_FOR_MORPHISM_LEFT,
           
         fi;
         
-        if RightDivide( source_matrix * morphism_matrix, range_matrix ) = fail then
+        if not IsZero( DecideZeroRows( source_matrix * morphism_matrix, range_matrix ) ) then
           
           return false;
           
@@ -352,7 +352,7 @@ InstallGlobalFunction( ADD_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT,
           
         fi;
         
-        if LeftDivide( range_matrix, morphism_matrix * source_matrix ) = fail then
+        if not IsZero( DecideZeroColumns( morphism_matrix * source_matrix, range_matrix ) ) then
           
           return false;
           
@@ -439,10 +439,6 @@ InstallGlobalFunction( ADD_KERNEL_LEFT,
         
         lift := RightDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ), UnderlyingMatrix( Range( beta ) ) );
         
-        if lift = fail then
-            return fail;
-        fi;
-        
         return PresentationMorphism( Source( alpha ), lift, Source( beta ) );
         
     end );
@@ -495,10 +491,6 @@ InstallGlobalFunction( ADD_KERNEL_RIGHT,
         local lift;
         
         lift := LeftDivide( UnderlyingMatrix( alpha ), UnderlyingMatrix( beta ), UnderlyingMatrix( Range( alpha ) ) );
-        
-        if lift = fail then
-            return fail;
-        fi;
         
         return PresentationMorphism( Source( beta ), lift, Source( alpha ) );
         
