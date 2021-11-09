@@ -1291,6 +1291,23 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xfunc := function ( )[127X[104X
+    [4X[25X>[125X [27X  return List( [ 1, 2 ], x -> x ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitAppliedLogic( tree, [ ] );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree ) );[127X[104X
+    [4X[28Xfunction (  )[128X[104X
+    [4X[28X    return [ function ( x_2 )[128X[104X
+    [4X[28X                return x_2;[128X[104X
+    [4X[28X            end( 1 ), function ( x_2 )[128X[104X
+    [4X[28X                return x_2;[128X[104X
+    [4X[28X            end( 2 ) ];[128X[104X
+    [4X[28Xend[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xapplied_logic_template_to_func :=[127X[104X
     [4X[25X>[125X [27X    { func, template, jit_args } ->[127X[104X
     [4X[25X>[125X [27X        ENHANCED_SYNTAX_TREE_CODE([127X[104X
@@ -1548,6 +1565,8 @@
     [4X[25X>[125X [27X    compiled_category_name :[127X[104X
     [4X[25X>[125X [27X    operations := operations[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
+    [4X[28XWARNING: Could not resolve all CAP operations while precompiling HomomorphismS\[128X[104X
+    [4X[28XtructureOnMorphismsWithGivenObjects.[128X[104X
     [4X[25Xgap>[125X [27XReadPackage([127X[104X
     [4X[25X>[125X [27X    "LinearAlgebraForCAP",[127X[104X
     [4X[25X>[125X [27X    "gap/precompiled_categories/OppositeOfMatrixCategoryPrecompiled.gi"[127X[104X

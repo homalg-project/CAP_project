@@ -1344,6 +1344,24 @@ end
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  return List( [ 1, 2 ], x -&gt; x ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitAppliedLogic( tree, [ ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );</span>
+function (  )
+    return [ function ( x_2 )
+                return x_2;
+            end( 1 ), function ( x_2 )
+                return x_2;
+            end( 2 ) ];
+end
+</pre></div>
+
+
+<div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">applied_logic_template_to_func :=</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    { func, template, jit_args } -&gt;</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        ENHANCED_SYNTAX_TREE_CODE(</span>
@@ -1604,6 +1622,8 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name :</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations := operations</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+WARNING: Could not resolve all CAP operations while precompiling HomomorphismS\
+tructureOnMorphismsWithGivenObjects.
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    "LinearAlgebraForCAP",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    "gap/precompiled_categories/OppositeOfMatrixCategoryPrecompiled.gi"</span>
