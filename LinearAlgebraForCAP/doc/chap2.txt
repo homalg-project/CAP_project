@@ -143,138 +143,6 @@
     [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
-    [4X[25Xgap>[125X [27Xvec := MatrixCategoryPrecompiled( Q );;[127X[104X
-    [4X[25Xgap>[125X [27Xa := MatrixCategoryObject( vec, 3 );[127X[104X
-    [4X[28X<A vector space object over Q of dimension 3>[128X[104X
-    [4X[25Xgap>[125X [27XHasIsProjective( a ) and IsProjective( a );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xap := 3/vec;;[127X[104X
-    [4X[25Xgap>[125X [27XIsEqualForObjects( a, ap );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xb := MatrixCategoryObject( vec, 4 );[127X[104X
-    [4X[28X<A vector space object over Q of dimension 4>[128X[104X
-    [4X[25Xgap>[125X [27Xhomalg_matrix := HomalgMatrix( [ [ 1, 0, 0, 0 ],[127X[104X
-    [4X[25X>[125X [27X                                  [ 0, 1, 0, -1 ],[127X[104X
-    [4X[25X>[125X [27X                                  [ -1, 0, 2, 1 ] ], 3, 4, Q );[127X[104X
-    [4X[28X<A 3 x 4 matrix over an internal ring>[128X[104X
-    [4X[25Xgap>[125X [27Xalpha := VectorSpaceMorphism( a, homalg_matrix, b );[127X[104X
-    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( alpha );[127X[104X
-    [4X[28X[ [   1,   0,   0,   0 ],[128X[104X
-    [4X[28X  [   0,   1,   0,  -1 ],[128X[104X
-    [4X[28X  [  -1,   0,   2,   1 ] ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XA morphism in Category of matrices over Q[128X[104X
-    [4X[25Xgap>[125X [27Xalphap := homalg_matrix/vec;;[127X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( alpha, alphap );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xhomalg_matrix := HomalgMatrix( [ [ 1, 1, 0, 0 ],[127X[104X
-    [4X[25X>[125X [27X                                  [ 0, 1, 0, -1 ],[127X[104X
-    [4X[25X>[125X [27X                                  [ -1, 0, 2, 1 ] ], 3, 4, Q );[127X[104X
-    [4X[28X<A 3 x 4 matrix over an internal ring>[128X[104X
-    [4X[25Xgap>[125X [27Xbeta := VectorSpaceMorphism( a, homalg_matrix, b );[127X[104X
-    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
-    [4X[25Xgap>[125X [27XCokernelObject( alpha );[127X[104X
-    [4X[28X<A vector space object over Q of dimension 1>[128X[104X
-    [4X[25Xgap>[125X [27Xc := CokernelProjection( alpha );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( c );[127X[104X
-    [4X[28X[ [     0 ],[128X[104X
-    [4X[28X  [     1 ],[128X[104X
-    [4X[28X  [  -1/2 ],[128X[104X
-    [4X[28X  [     1 ] ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XA split epimorphism in Category of matrices over Q[128X[104X
-    [4X[25Xgap>[125X [27Xgamma := UniversalMorphismIntoDirectSum( [ c, c ] );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( gamma );[127X[104X
-    [4X[28X[ [     0,     0 ],[128X[104X
-    [4X[28X  [     1,     1 ],[128X[104X
-    [4X[28X  [  -1/2,  -1/2 ],[128X[104X
-    [4X[28X  [     1,     1 ] ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XA morphism in Category of matrices over Q[128X[104X
-    [4X[25Xgap>[125X [27Xcolift := CokernelColift( alpha, gamma );;[127X[104X
-    [4X[25Xgap>[125X [27XIsEqualForMorphisms( PreCompose( c, colift ), gamma );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XFiberProduct( alpha, beta );[127X[104X
-    [4X[28X<A vector space object over Q of dimension 2>[128X[104X
-    [4X[25Xgap>[125X [27XF := FiberProduct( alpha, beta );[127X[104X
-    [4X[28X<A vector space object over Q of dimension 2>[128X[104X
-    [4X[25Xgap>[125X [27Xp1 := ProjectionInFactorOfFiberProduct( [ alpha, beta ], 1 );[127X[104X
-    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( PreCompose( p1, alpha ) );[127X[104X
-    [4X[28X[ [   0,   1,   0,  -1 ],[128X[104X
-    [4X[28X  [  -1,   0,   2,   1 ] ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XA morphism in Category of matrices over Q[128X[104X
-    [4X[25Xgap>[125X [27XPushout( alpha, beta );[127X[104X
-    [4X[28X<A vector space object over Q of dimension 5>[128X[104X
-    [4X[25Xgap>[125X [27Xi1 := InjectionOfCofactorOfPushout( [ alpha, beta ], 1 );[127X[104X
-    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
-    [4X[25Xgap>[125X [27Xi2 := InjectionOfCofactorOfPushout( [ alpha, beta ], 2 );[127X[104X
-    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
-    [4X[25Xgap>[125X [27Xu := UniversalMorphismFromDirectSum( [ b, b ], [ i1, i2 ] );[127X[104X
-    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( u );[127X[104X
-    [4X[28X[ [     0,     1,     1,     0,     0 ],[128X[104X
-    [4X[28X  [     1,     0,     1,     0,    -1 ],[128X[104X
-    [4X[28X  [  -1/2,     0,   1/2,     1,   1/2 ],[128X[104X
-    [4X[28X  [     1,     0,     0,     0,     0 ],[128X[104X
-    [4X[28X  [     0,     1,     0,     0,     0 ],[128X[104X
-    [4X[28X  [     0,     0,     1,     0,     0 ],[128X[104X
-    [4X[28X  [     0,     0,     0,     1,     0 ],[128X[104X
-    [4X[28X  [     0,     0,     0,     0,     1 ] ][128X[104X
-    [4X[28X[128X[104X
-    [4X[28XA morphism in Category of matrices over Q[128X[104X
-    [4X[25Xgap>[125X [27XKernelObjectFunctorial( u, IdentityMorphism( Source( u ) ), u ) = IdentityMorphism( MatrixCategoryObject( vec, 3 ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( CokernelObjectFunctorial( u, IdentityMorphism( Range( u ) ), u ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XDirectProductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XCoproductFunctorial( [ u, u ] ) = DirectSumFunctorial( [ u, u ] );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( FiberProductFunctorial( [ u, u ], [ IdentityMorphism( Source( u ) ), IdentityMorphism( Source( u ) ) ], [ u, u ] ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PushoutFunctorial( [ u, u ], [ IdentityMorphism( Range( u ) ), IdentityMorphism( Range( u ) ) ], [ u, u ] ) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( (1/2) * alpha, alpha * (1/2) );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XDimension( HomomorphismStructureOnObjects( a, b ) ) = Dimension( a ) * Dimension( b );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
-    [4X[25X>[125X [27X    PreCompose( [ u, DualOnMorphisms( i1 ), DualOnMorphisms( alpha ) ] ),[127X[104X
-    [4X[25X>[125X [27X    InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( u ), Source( alpha ),[127X[104X
-    [4X[25X>[125X [27X         PreCompose([127X[104X
-    [4X[25X>[125X [27X             InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( DualOnMorphisms( i1 ) ),[127X[104X
-    [4X[25X>[125X [27X             HomomorphismStructureOnMorphisms( u, DualOnMorphisms( alpha ) )[127X[104X
-    [4X[25X>[125X [27X         )[127X[104X
-    [4X[25X>[125X [27X    )[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xvec := CapCategory( alpha );;[127X[104X
-    [4X[25Xgap>[125X [27Xt := TensorUnit( vec );;[127X[104X
-    [4X[25Xgap>[125X [27Xz := ZeroObject( vec );;[127X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
-    [4X[25X>[125X [27X    ZeroObjectFunctorial( vec ),[127X[104X
-    [4X[25X>[125X [27X    InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( z, z, ZeroMorphism( t, z ) )[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
-    [4X[25X>[125X [27X    ZeroObjectFunctorial( vec ),[127X[104X
-    [4X[25X>[125X [27X    InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism([127X[104X
-    [4X[25X>[125X [27X        z, z,[127X[104X
-    [4X[25X>[125X [27X        InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( ZeroObjectFunctorial( vec ) )[127X[104X
-    [4X[25X>[125X [27X    )[127X[104X
-    [4X[25X>[125X [27X);[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xright_side := PreCompose( [ i1, DualOnMorphisms( u ), u ] );;[127X[104X
-    [4X[25Xgap>[125X [27Xx := SolveLinearSystemInAbCategory( [ [ i1 ] ], [ [ u ] ], [ right_side ] )[1];;[127X[104X
-    [4X[25Xgap>[125X [27XIsCongruentForMorphisms( PreCompose( [ i1, x, u ] ), right_side );[127X[104X
-    [4X[28Xtrue[128X[104X
-  [4X[32X[104X
-  
   
   [1X2.2 [33X[0;0YSplit epi summand[133X[101X
   
@@ -289,14 +157,14 @@
     [4X[25Xgap>[125X [27XDisplay( SomeReductionBySplitEpiSummand( alpha ) );[127X[104X
     [4X[28X(an empty 0 x 1 matrix)[128X[104X
     [4X[28X[128X[104X
-    [4X[28XA zero, split monomorphism in Category of matrices over Q[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
     [4X[25Xgap>[125X [27XDisplay( SomeReductionBySplitEpiSummand_MorphismFromInputRange( alpha ) );[127X[104X
     [4X[28X[ [     0 ],[128X[104X
     [4X[28X  [     1 ],[128X[104X
     [4X[28X  [  -1/2 ],[128X[104X
     [4X[28X  [     1 ] ][128X[104X
     [4X[28X[128X[104X
-    [4X[28XA split epimorphism in Category of matrices over Q[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
     [4X[25Xgap>[125X [27XDisplay( SomeReductionBySplitEpiSummand_MorphismToInputRange( alpha ) );[127X[104X
     [4X[28X[ [  0,  1,  0,  0 ] ][128X[104X
     [4X[28X[128X[104X
