@@ -600,8 +600,9 @@ end );
 InstallMethod( InstallDerivationsUsingOperation,
                [ IsOperationWeightListRep, IsString ],
 function( owl, op_name )
-  local Q, node, weight, d, new_weight, max_weight,
-        target, new_node;
+  local Q, node, weight, d, new_weight,
+        target, current_weight, current_derivation,
+        derivations_of_target, new_pos, current_pos;
   Q := StringMinHeap();
   Add( Q, op_name, 0 );
   while not IsEmptyHeap( Q ) do
@@ -613,8 +614,27 @@ function( owl, op_name )
         continue;
       fi;
       new_weight := OperationWeightUsingDerivation( owl, d );
+      if new_weight = infinity then
+        continue;
+      fi;
       target := TargetOperation( d );
-      if new_weight < CurrentOperationWeight( owl, target ) then
+      
+      current_weight := CurrentOperationWeight( owl, target );
+      current_derivation := DerivationOfOperation( owl, target );
+      
+      if current_derivation <> fail then
+          
+          derivations_of_target := DerivationsOfOperation( DerivationGraph( owl ), target );
+          
+          new_pos := PositionProperty( derivations_of_target, x -> IsIdenticalObj( x, d ) );
+          current_pos := PositionProperty( derivations_of_target, x -> IsIdenticalObj( x, current_derivation ) );
+          
+          Assert( 0, new_pos <> fail );
+          Assert( 0, current_pos <> fail );
+          
+      fi;
+      
+      if new_weight < current_weight or (new_weight = current_weight and current_derivation <> fail and new_pos < current_pos) then
         InstallDerivationForCategory( d, new_weight, CategoryOfOperationWeightList( owl ) );
         if Contains( Q, target ) then
           DecreaseKey( Q, target, new_weight );
