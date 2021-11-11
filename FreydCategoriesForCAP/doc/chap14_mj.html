@@ -65,6 +65,21 @@
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := GradedRing( Q * "x_1, x_2" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetWeightsOfIndeterminates( S, [[1],[1]] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Module := AsFreydCategoryObject( GradedRow( [[[1],1]], S ) );</span>
+&lt;A projective object in Category of f.p. graded left modules over Q[x_1,x_2] (with weights [ 1, 1 ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsFpGradedLeftOrRightModulesObject( Module );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := AsFreydCategoryMorphism( IdentityMorphism( GradedRow( [[[1],1]], S ) ) );</span>
+&lt;A morphism in Category of f.p. graded left modules over Q[x_1,x_2] (with weights [ 1, 1 ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsFpGradedLeftOrRightModulesMorphism( mor );</span>
+true
+</pre></div>
+
+
+<div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationalsInSingular();</span>
 Q
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := GradedRing( Q * "x_1, x_2, x_3, x_4" );</span>
@@ -91,9 +106,13 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj_gamma := FreydCategoryObject( gamma );</span>
 &lt;An object in Category of f.p. graded left modules over 
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsFpGradedLeftOrRightModulesObject( obj_gamma );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">f := FreydCategoryMorphism( obj_gamma, gamma, obj_gamma );</span>
 &lt;A morphism in Category of f.p. graded left modules over 
 Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsFpGradedLeftOrRightModulesMorphism( f );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">witness := MorphismWitness( f );</span>
 &lt;A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
 (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])&gt;
