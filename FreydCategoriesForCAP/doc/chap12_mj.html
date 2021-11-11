@@ -106,6 +106,9 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X7C93B0F6874AB31E">12.27 <span class="Heading">Adelman category theorem</span></a>
 </span>
 </div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12_mj.html#X7A810CDA83F2897F">12.28 <span class="Heading">Tests</span></a>
+</span>
+</div>
 </div>
 
 <h3>12 <span class="Heading">Examples and Tests</span></h3>
@@ -1796,6 +1799,30 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsMonomorphism( c );</span>
 true
 #@fi
+</pre></div>
+
+<p><a id="X7A810CDA83F2897F" name="X7A810CDA83F2897F"></a></p>
+
+<h4>12.28 <span class="Heading">Tests</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FreydCategoriesForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationalsInSingular( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQxy := QQ * "x,y";;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EEE := KoszulDualRing( QQxy );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCES(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ CategoryOfRows( EEE ), "CategoryOfRows of an arbitrary ring" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ CategoryOfRows( QQxy ), "CategoryOfRows of a commutative ring" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ CategoryOfRows( QQ ), "CategoryOfRows of a field" ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "FreydCategoriesForCAP",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "CategoryOfRows.autogen.gd",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "Category of rows",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "Supported CAP operations"</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
 </pre></div>
 
 
