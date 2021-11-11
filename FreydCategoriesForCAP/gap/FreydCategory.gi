@@ -841,7 +841,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             return FreydCategoryMorphism( cat, Source( test_morphism ), tau_A, Source( alpha ) );
         
-        end );
+        end, 200 ); # should be as expensive as ColiftAlongEpimorphism, see below
         
         ##
         AddColiftAlongEpimorphism( category,
@@ -859,7 +859,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
             
             return FreydCategoryMorphism( cat, Range( alpha ), PreCompose( underlying_category, sigma_A, MorphismDatum( cat, test_morphism ) ), Range( test_morphism ) );
         
-        end );
+        end, 200 ); # must be more expensive than CokernelColiftWithGivenCokernelObject but cheaper than Colift
         
     fi;
     
