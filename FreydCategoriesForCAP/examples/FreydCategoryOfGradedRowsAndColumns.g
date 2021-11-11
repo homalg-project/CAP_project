@@ -13,6 +13,20 @@ LoadPackage( "FreydCategoriesForCAP" );;
 #################################################################
 
 #! @Example
+Q := HomalgFieldOfRationalsInSingular();;
+S := GradedRing( Q * "x_1, x_2" );;
+SetWeightsOfIndeterminates( S, [[1],[1]] );;
+Module := AsFreydCategoryObject( GradedRow( [[[1],1]], S ) );
+#! <A projective object in Category of f.p. graded left modules over Q[x_1,x_2] (with weights [ 1, 1 ])>
+IsFpGradedLeftOrRightModulesObject( Module );
+#! true
+mor := AsFreydCategoryMorphism( IdentityMorphism( GradedRow( [[[1],1]], S ) ) );
+#! <A morphism in Category of f.p. graded left modules over Q[x_1,x_2] (with weights [ 1, 1 ])>
+IsFpGradedLeftOrRightModulesMorphism( mor );
+#! true
+#! @EndExample
+
+#! @Example
 Q := HomalgFieldOfRationalsInSingular();
 #! Q
 S := GradedRing( Q * "x_1, x_2, x_3, x_4" );
@@ -39,9 +53,13 @@ IsAbelianCategory( freyd );
 obj_gamma := FreydCategoryObject( gamma );
 #! <An object in Category of f.p. graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsFpGradedLeftOrRightModulesObject( obj_gamma );
+#! true
 f := FreydCategoryMorphism( obj_gamma, gamma, obj_gamma );
 #! <A morphism in Category of f.p. graded left modules over 
 #! Q[x_1,x_2,x_3,x_4] (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
+IsFpGradedLeftOrRightModulesMorphism( f );
+#! true
 witness := MorphismWitness( f );
 #! <A morphism in Category of graded rows over Q[x_1,x_2,x_3,x_4]
 #! (with weights [ [ 1, 0 ], [ 1, 0 ], [ 0, 1 ], [ 0, 1 ] ])>
