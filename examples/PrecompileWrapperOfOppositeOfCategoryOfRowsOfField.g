@@ -109,6 +109,10 @@ CapJitPrecompileCategoryAndCompareResult(
     compiled_category_name :
     operations := operations
 );
+#! WARNING: Could not resolve all CAP operations while precompiling HomomorphismS\
+#! tructureOnMorphismsWithGivenObjects.
+#! WARNING: Could not resolve all CAP operations while precompiling InterpretMorp\
+#! hismFromDistinguishedObjectToHomomorphismStructureAsMorphism.
 
 ReadPackage(
     "WrapperCategories",
