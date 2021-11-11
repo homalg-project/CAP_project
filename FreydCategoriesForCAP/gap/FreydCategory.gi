@@ -127,7 +127,7 @@ InstallGlobalFunction( FREYD_CATEGORY,
     # is a Freyd category always not a strict monoidal category?
     # SetIsStrictMonoidalCategory( freyd_category, false );
     
-    AddObjectRepresentation( freyd_category, IsFreydCategoryObject );
+    AddObjectRepresentation( freyd_category, IsFreydCategoryObject and HasRelationMorphism );
     
     AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism and HasMorphismDatum );
     
@@ -173,21 +173,14 @@ InstallOtherMethodForCompilerForCAP( AsFreydCategoryObject,
 end );
 
 ##
-InstallGlobalFunction( FREYD_CATEGORY_OBJECT,
-function( relation_morphism )
-    local category;
-    
-    category := FreydCategory( CapCategory( relation_morphism ) );
-    
-    return ObjectConstructor( category, relation_morphism );
-    
-end );
-
-##
 InstallMethod( FreydCategoryObject,
                [ IsCapCategoryMorphism ],
-    FREYD_CATEGORY_OBJECT
-);
+               
+  function( relation_morphism )
+    
+    return FreydCategoryObject( FreydCategory( CapCategory( relation_morphism ) ), relation_morphism );
+    
+end );
 
 ##
 InstallOtherMethodForCompilerForCAP( FreydCategoryObject,
@@ -224,21 +217,14 @@ InstallOtherMethodForCompilerForCAP( AsFreydCategoryMorphism,
 end );
 
 ##
-InstallGlobalFunction( FREYD_CATEGORY_MORPHISM,
-  function( source, morphism_datum, range )
-    local cat;
-    
-    cat := CapCategory( source );
-    
-    return MorphismConstructor( cat, source, morphism_datum, range );
-    
-end );
-
-##
 InstallMethod( FreydCategoryMorphism,
                [ IsFreydCategoryObject, IsCapCategoryMorphism, IsFreydCategoryObject ],
-               FREYD_CATEGORY_MORPHISM
-);
+               
+  function( source, morphism_datum, range )
+    
+    return FreydCategoryMorphism( CapCategory( source ), source, morphism_datum, range );
+    
+end );
 
 ##
 # Relax the conditions on source and range: they might not lie in the filter `IsFreydCategoryObject`, e.g. in the case of `LeftPresentationsAsFreydCategoryOfCategoryOfRows`
