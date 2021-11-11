@@ -467,7 +467,7 @@ for package in CAP_project/CAP CAP_project/FreydCategoriesForCAP CAP_project/Mon
     # that is a non-portable extension of POSIX, which works differently in
     # BSD and GNU make.
     for f in ./*/*.htm* ; do
-        sed 's;href="/home/gap/.gap/pkg/$package/doc/;href="https://homalg-project.github.io/$package/doc/;g' "$f" > "$f.bak"
+        sed "s;href=\"/home/gap/.gap/pkg/$package/doc/;href=\"https://homalg-project.github.io/$package/doc/;g" "$f" > "$f.bak"
         mv "$f.bak" "$f"
     done
     
