@@ -146,6 +146,17 @@ AddFinalDerivation( CanonicalIdentificationFromImageObjectToCoimage,
   ] : CategoryFilter := HasIsElementaryTopos and IsElementaryTopos );
 
 ##
+AddDerivationToCAP( CartesianSquareOfSubobjectClassifier,
+  function( cat )
+    local Omega;
+    
+    Omega := SubobjectClassifier( cat );
+    
+    return DirectProduct( [ Omega, Omega ] );
+    
+end );
+
+##
 AddDerivationToCAP( TruthMorphismOfTrueWithGivenObjects,
   function( cat, T, Omega )
     

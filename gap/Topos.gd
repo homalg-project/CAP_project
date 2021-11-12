@@ -36,6 +36,14 @@ DeclareAttribute( "SubobjectClassifier",
                   IsCapCategory );
 
 #! @Description
+#! The argument is a category $C$.
+#! The output is  cartesian square of a subobject classifier object $\Omega$ of $C$.
+#! @Returns an object
+#! @Arguments C
+DeclareAttribute( "CartesianSquareOfSubobjectClassifier",
+                  IsCapCategory );
+
+#! @Description
 #! The arguments are a terminal object of the category and
 #! a subobject classifier.
 #! The output is the truth morphism of true into the subobject classifier <A>Omega</A>

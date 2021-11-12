@@ -11,6 +11,10 @@ SubobjectClassifier := rec(
   filter_list := [ "category" ],
   return_type := "object" ),
 
+CartesianSquareOfSubobjectClassifier := rec(
+  filter_list := [ "category" ],
+  return_type := "object" ),
+
 TruthMorphismOfTrue := rec(
   filter_list := [ "category" ],
   output_source_getter_string := "TerminalObject( cat )",

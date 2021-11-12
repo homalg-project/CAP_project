@@ -12,6 +12,25 @@
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `CartesianSquareOfSubobjectClassifier`.
+#! $F: (  ) \mapsto \mathtt{CartesianSquareOfSubobjectClassifier}()$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddCartesianSquareOfSubobjectClassifier",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddCartesianSquareOfSubobjectClassifier",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddCartesianSquareOfSubobjectClassifier",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddCartesianSquareOfSubobjectClassifier",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `ClassifyingMorphismOfSubobject`.
 #! $F: ( alpha ) \mapsto \mathtt{ClassifyingMorphismOfSubobject}(alpha)$.
 #! @Returns nothing
