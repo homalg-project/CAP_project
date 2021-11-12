@@ -19,7 +19,7 @@ function ( cat_1, a_1, b_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddAdditiveInverseForMorphisms( cat,
@@ -34,7 +34,7 @@ function ( cat_1, a_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddBasisOfExternalHom( cat,
@@ -66,7 +66,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddCokernelObject( cat,
@@ -81,7 +81,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddCokernelProjection( cat,
@@ -102,7 +102,7 @@ function ( cat_1, alpha_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddColift( cat,
@@ -118,7 +118,7 @@ function ( cat_1, alpha_1, beta_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddDirectSum( cat,
@@ -133,7 +133,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddDistinguishedObjectOfHomomorphismStructure( cat,
@@ -145,7 +145,7 @@ function ( cat_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddEpimorphismFromSomeProjectiveObject( cat,
@@ -162,7 +162,7 @@ function ( cat_1, A_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( cat,
@@ -175,7 +175,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddHomomorphismStructureOnObjects( cat,
@@ -187,7 +187,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddIdentityMorphism( cat,
@@ -203,7 +203,7 @@ function ( cat_1, a_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( cat,
@@ -229,7 +229,7 @@ function ( cat_1, objects_1, k_1, P_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat,
@@ -246,7 +246,7 @@ function ( cat_1, alpha_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddIsColiftable( cat,
@@ -257,7 +257,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddIsCongruentForMorphisms( cat,
@@ -268,7 +268,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddIsEpimorphism( cat,
@@ -281,7 +281,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddIsEqualForObjects( cat,
@@ -292,7 +292,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddIsInjective( cat,
@@ -303,7 +303,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddIsIsomorphism( cat,
@@ -317,7 +317,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddIsLiftable( cat,
@@ -328,7 +328,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddIsMonomorphism( cat,
@@ -341,7 +341,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddIsProjective( cat,
@@ -352,7 +352,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddIsWellDefinedForMorphisms( cat,
@@ -375,7 +375,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddIsWellDefinedForObjects( cat,
@@ -393,7 +393,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddIsZeroForMorphisms( cat,
@@ -404,7 +404,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddIsZeroForObjects( cat,
@@ -415,7 +415,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddKernelEmbedding( cat,
@@ -436,7 +436,7 @@ function ( cat_1, alpha_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddKernelObject( cat,
@@ -451,7 +451,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddLift( cat,
@@ -467,7 +467,7 @@ function ( cat_1, alpha_1, beta_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddMonomorphismIntoSomeInjectiveObject( cat,
@@ -484,7 +484,7 @@ function ( cat_1, A_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddPreCompose( cat,
@@ -500,7 +500,7 @@ function ( cat_1, alpha_1, beta_1 )
 end
 ########
         
-    );
+    , 101 );
     
     ##
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( cat,
@@ -526,7 +526,7 @@ function ( cat_1, objects_1, k_1, P_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddSomeInjectiveObject( cat,
@@ -538,7 +538,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddSomeProjectiveObject( cat,
@@ -550,7 +550,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( cat,
@@ -568,7 +568,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( cat,
@@ -584,7 +584,7 @@ function ( cat_1, T_1, P_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( cat,
@@ -602,7 +602,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( cat,
@@ -618,7 +618,7 @@ function ( cat_1, T_1, P_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddZeroMorphism( cat,
@@ -635,7 +635,7 @@ function ( cat_1, a_1, b_1 )
 end
 ########
         
-    );
+    , 100 );
     
     ##
     AddZeroObject( cat,
@@ -648,7 +648,7 @@ function ( cat_1 )
 end
 ########
         
-    );
+    , 100 );
     
 end );
 
