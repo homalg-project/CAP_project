@@ -25,19 +25,3 @@ InstallMethod( AddSubobjectClassifier,
     AddSubobjectClassifier( category, [ [ wrapped_func, [ ] ] ], weight );
     
 end );
-
-####################################
-## Subobject Classifier
-####################################
-
-##
-InstallMethod( TruthMorphismOfTrue,
-               [ IsCapCategory ],
-  function( category )
-      
-      return TruthMorphismOfTrueWithGivenObjects(
-               TerminalObject(category),
-               SubobjectClassifier(category)
-             );
-      
-end );
