@@ -20,23 +20,21 @@ cat := MatrixCategory( QQ );;
 
 Display( CapJitCompiledFunction( func, [ cat ] ) );
 #! function ( cat_1, matrix_1 )
-#!     local cap_jit_morphism_attribute_1_1, cap_jit_morphism_attribute_2_1;
-#!     cap_jit_morphism_attribute_1_1 := matrix_1;
-#!     cap_jit_morphism_attribute_2_1 := matrix_1;
+#!     local morphism_attr_1_1, morphism_attr_2_1;
+#!     morphism_attr_1_1 := matrix_1;
+#!     morphism_attr_2_1 := matrix_1;
 #!     return [ ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
 #!                ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-#!                  ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1_1 
-#!                ) ), ObjectifyObjectForCAPWithAttributes( rec(
-#!                  ), cat_1, Dimension, 
-#!              NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, 
-#!            cap_jit_morphism_attribute_1_1 ), 
+#!                  ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), 
+#!            ObjectifyObjectForCAPWithAttributes( rec(
+#!                  ), cat_1, Dimension, NrColumns( morphism_attr_1_1 ) ), 
+#!            UnderlyingMatrix, morphism_attr_1_1 ), 
 #!         ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
 #!                ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-#!                  ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_2_1 
-#!                ) ), ObjectifyObjectForCAPWithAttributes( rec(
-#!                  ), cat_1, Dimension, 
-#!              NrColumns( cap_jit_morphism_attribute_2_1 ) ), UnderlyingMatrix, 
-#!            cap_jit_morphism_attribute_2_1 ) ];
+#!                  ), cat_1, Dimension, NrRows( morphism_attr_2_1 ) ), 
+#!            ObjectifyObjectForCAPWithAttributes( rec(
+#!                  ), cat_1, Dimension, NrColumns( morphism_attr_2_1 ) ), 
+#!            UnderlyingMatrix, morphism_attr_2_1 ) ];
 #! end
 
 #! @EndExample

@@ -49,17 +49,17 @@ Display(
     vec!.compiled_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3]
 );
 #! function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
-#!     local cap_jit_hoisted_expression_1_1, cap_jit_deduplicated_expression_1_1;
-#!     cap_jit_deduplicated_expression_1_1 := UnderlyingRing( cat_1 );
-#!     cap_jit_hoisted_expression_1_1 := cap_jit_deduplicated_expression_1_1;
+#!     local hoisted_1_1, deduped_2_1;
+#!     deduped_2_1 := UnderlyingRing( cat_1 );
+#!     hoisted_1_1 := deduped_2_1;
 #!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
 #!            ), cat_1, S_1, T_1, UnderlyingMatrix, 
-#!        UnionOfRows( cap_jit_deduplicated_expression_1_1, Dimension( T_1 ), 
+#!        UnionOfRows( deduped_2_1, Dimension( T_1 ), 
 #!          ListN( diagram_S_1, List( morphism_matrix_1, function ( row_2 )
 #!                   return List( row_2, UnderlyingMatrix );
 #!               end ), function ( source_2, row_2 )
-#!                 return UnionOfColumns( cap_jit_hoisted_expression_1_1, 
-#!                    Dimension( source_2 ), row_2 );
+#!                 return UnionOfColumns( hoisted_1_1, Dimension( source_2 ), 
+#!                    row_2 );
 #!             end ) ) );
 #! end
 
@@ -83,17 +83,17 @@ Display( CapJitCompiledFunction(
     [ vec, W, [ V, V ], morphism_matrix, [ V, V ], W  ]
 ) );;
 #! function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
-#!     local cap_jit_hoisted_expression_1_1, cap_jit_deduplicated_expression_1_1;
-#!     cap_jit_deduplicated_expression_1_1 := UnderlyingRing( cat_1 );
-#!     cap_jit_hoisted_expression_1_1 := cap_jit_deduplicated_expression_1_1;
+#!     local hoisted_1_1, deduped_2_1;
+#!     deduped_2_1 := UnderlyingRing( cat_1 );
+#!     hoisted_1_1 := deduped_2_1;
 #!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
 #!            ), cat_1, S_1, T_1, UnderlyingMatrix, 
-#!        UnionOfRows( cap_jit_deduplicated_expression_1_1, Dimension( T_1 ), 
+#!        UnionOfRows( deduped_2_1, Dimension( T_1 ), 
 #!          ListN( diagram_S_1, morphism_matrix_1, 
 #!            function ( logic_new_func_x_2, logic_new_func_y_2 )
-#!                 return UnionOfColumns( cap_jit_hoisted_expression_1_1, 
-#!                    Dimension( logic_new_func_x_2 ), 
-#!                    List( logic_new_func_y_2, function ( s_3 )
+#!                 return 
+#!                  UnionOfColumns( hoisted_1_1, Dimension( logic_new_func_x_2 )
+#!                     , List( logic_new_func_y_2, function ( s_3 )
 #!                           return UnderlyingMatrix( s_3 );
 #!                       end ) );
 #!             end ) ) );
@@ -102,14 +102,12 @@ Display( CapJitCompiledFunction(
 KernelEmbedding( alpha );;
 Display( Last( vec!.compiled_functions.KernelEmbedding ) );
 #! function ( cat_1, morphism_1 )
-#!     local cap_jit_morphism_attribute_1_1;
-#!     cap_jit_morphism_attribute_1_1 
-#!      := SyzygiesOfRows( UnderlyingMatrix( morphism_1 ) );
+#!     local morphism_attr_1_1;
+#!     morphism_attr_1_1 := SyzygiesOfRows( UnderlyingMatrix( morphism_1 ) );
 #!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
 #!            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-#!              ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1_1 ) ), 
-#!        Source( morphism_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 
-#!        );
+#!              ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), 
+#!        Source( morphism_1 ), UnderlyingMatrix, morphism_attr_1_1 );
 #! end
 
 #! @EndExample

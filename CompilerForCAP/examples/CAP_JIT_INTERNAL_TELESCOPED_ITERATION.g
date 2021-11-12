@@ -51,18 +51,17 @@ func := { cat, morphism_list } ->
 
 Display( CapJitCompiledFunction( func, [ cat ] ) );
 #! function ( cat_1, morphism_list_1 )
-#!     local cap_jit_morphism_attribute_1_1;
-#!     cap_jit_morphism_attribute_1_1 
-#!      := Iterated( List( morphism_list_1, UnderlyingMatrix ), 
+#!     local morphism_attr_1_1;
+#!     morphism_attr_1_1 := Iterated( List( morphism_list_1, UnderlyingMatrix ), 
 #!        function ( alpha_2, beta_2 )
 #!             return alpha_2 * beta_2;
 #!         end );
 #!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
 #!            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-#!              ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1_1 ) ), 
+#!              ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), 
 #!        ObjectifyObjectForCAPWithAttributes( rec(
-#!              ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1_1 ) 
-#!          ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
+#!              ), cat_1, Dimension, NrColumns( morphism_attr_1_1 ) ), 
+#!        UnderlyingMatrix, morphism_attr_1_1 );
 #! end
 
 # Iterated with list
