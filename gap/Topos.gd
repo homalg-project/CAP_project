@@ -38,10 +38,10 @@ DeclareAttribute( "SubobjectClassifier",
 #! @Description
 #! The arguments are a terminal object of the category and
 #! a subobject classifier.
-#! The output is the truth morphism of true into the subobject classifier
-#! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject} , \mathrm{SubobjectClassifier} )$
-#! @Arguments T, W
+#! The output is the truth morphism of true into the subobject classifier <A>Omega</A>
+#! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \Omega$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \Omega )$
+#! @Arguments T, Omega
 DeclareOperation( "TruthMorphismOfTrueWithGivenObjects",
                   [ IsCapCategoryObject , IsCapCategoryObject ]);
 
@@ -49,7 +49,7 @@ DeclareOperation( "TruthMorphismOfTrueWithGivenObjects",
 #! The argument is a category $C$.
 #! The output is the truth morphism of true into the subobject classifier
 #! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject} , \mathrm{SubobjectClassifier} )$
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \mathrm{SubobjectClassifier} )$
 #! @Arguments C
 DeclareOperation( "TruthMorphismOfTrue",
                   [ IsCapCategory ] );
