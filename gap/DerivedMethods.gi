@@ -195,3 +195,41 @@ AddDerivationToCAP( TruthMorphismOfAndWithGivenObjects,
                    Omega );
     
 end );
+
+##
+AddDerivationToCAP( TruthMorphismOfOrWithGivenObjects,
+  function( cat, Omega2, Omega )
+    local T, t, id, left, right;
+    
+    T := TerminalObject( cat );
+    
+    ## Ω → 1 → Ω
+    t := PreCompose(
+                 UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, Omega, T ),
+                 TruthMorphismOfTrueWithGivenObjects( cat, T, Omega ) );
+    
+    id := IdentityMorphism( Omega );
+    
+    left := UniversalMorphismIntoDirectProductWithGivenDirectProduct(
+                    cat,
+                    [ Omega, Omega ],
+                    Omega,
+                    [ t, id ],
+                    Omega2 );
+    
+    right := UniversalMorphismIntoDirectProductWithGivenDirectProduct(
+                     cat,
+                     [ Omega, Omega ],
+                     Omega,
+                     [ id, t ],
+                     Omega2 );
+    
+    return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
+                   UniversalMorphismFromCoproduct(
+                           cat,
+                           [ Omega, Omega ],
+                           [ left, right ] ),
+                   Omega );
+    
+end );
+

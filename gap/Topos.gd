@@ -101,6 +101,25 @@ DeclareOperation( "TruthMorphismOfAnd",
                   [ IsCapCategory ] );
 
 #! @Description
+#! The arguments are a cartesian square of a subobject classifier of the category and
+#! a subobject classifier.
+#! The output is the truth morphism of <Q>or</Q> into the subobject classifier <A>Omega</A>
+#! $\mathrm{or}: \Omega^{\times 2} \rightarrow \Omega$.
+#! @Returns a morphism in $\mathrm{Hom}( \Omega^{\times 2}, \Omega )$
+#! @Arguments Omega2, Omega
+DeclareOperation( "TruthMorphismOfOrWithGivenObjects",
+                  [ IsCapCategoryObject , IsCapCategoryObject ]);
+
+#! @Description
+#! The argument is a category $C$.
+#! The output is the truth morphism of <Q>or</Q> into the subobject classifier
+#! $\mathrm{or}: \mathrm{CartesianSquareOfSubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{CartesianSquareOfSubobjectClassifier}, \mathrm{SubobjectClassifier} )$
+#! @Arguments C
+DeclareOperation( "TruthMorphismOfOr",
+                  [ IsCapCategory ] );
+
+#! @Description
 #! The argument is a monomorphism $m : A \rightarrow S$.
 #! The output is its classifying morphism 
 #! $\chi_m : S \rightarrow \mathrm{SubobjectClassifier}$.

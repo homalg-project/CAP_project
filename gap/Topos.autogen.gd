@@ -183,6 +183,44 @@ DeclareOperation( "AddTruthMorphismOfFalseWithGivenObjects",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `TruthMorphismOfOr`.
+#! $F: (  ) \mapsto \mathtt{TruthMorphismOfOr}()$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTruthMorphismOfOr",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTruthMorphismOfOr",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTruthMorphismOfOr",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTruthMorphismOfOr",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `TruthMorphismOfOrWithGivenObjects`.
+#! $F: ( Omega2, Omega ) \mapsto \mathtt{TruthMorphismOfOrWithGivenObjects}(Omega2, Omega)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTruthMorphismOfOrWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTruthMorphismOfOrWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTruthMorphismOfOrWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTruthMorphismOfOrWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `TruthMorphismOfTrue`.
 #! $F: (  ) \mapsto \mathtt{TruthMorphismOfTrue}()$.
 #! @Returns nothing
