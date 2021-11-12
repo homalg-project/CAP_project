@@ -36,17 +36,6 @@ DeclareAttribute( "SubobjectClassifier",
                   IsCapCategory );
 
 #! @Description
-#! This is a convenience method.
-#! The argument is a cell $c$.
-#! The output is a subobject classifier $\Omega$ of the
-#! category $C$ for which $c \in C$.
-#! @Returns an object
-#! @Arguments c
-DeclareAttribute( "SubobjectClassifier",
-                  IsCapCategoryCell );
-
-
-#! @Description
 #! The arguments are a terminal object of the category and
 #! a subobject classifier.
 #! The output is the truth morphism of true into the subobject classifier
@@ -56,7 +45,6 @@ DeclareAttribute( "SubobjectClassifier",
 DeclareOperation( "TruthMorphismOfTrueWithGivenObjects",
                   [ IsCapCategoryObject , IsCapCategoryObject ]);
 
-
 #! @Description
 #! The argument is a category $C$.
 #! The output is the truth morphism of true into the subobject classifier
@@ -65,18 +53,6 @@ DeclareOperation( "TruthMorphismOfTrueWithGivenObjects",
 #! @Arguments C
 DeclareOperation( "TruthMorphismOfTrue",
                   [ IsCapCategory ] );
-
-#! @Description
-#! This is a convenience method.
-#! The argument is a cell $c$.
-#! The output is the truth morphism of true into the subobject classifier
-#! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$
-#! of the category $C$ for which $c \in C$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject} , \mathrm{SubobjectClassifier} )$
-#! @Arguments c
-DeclareOperation( "TruthMorphismOfTrue",
-                  [ IsCapCategoryCell ] );
-
 
 #! @Description
 #! The argument is a monomorphism $m : A \rightarrow S$.
@@ -95,7 +71,6 @@ DeclareOperation( "ClassifyingMorphismOfSubobject",
 #! @Arguments m, omega
 DeclareOperation( "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
                   [ IsCapCategoryMorphism , IsCapCategoryObject ] );
-
 
 #! @Description
 #! The argument is a classifying morphism $\chi : S \rightarrow \Omega$.
