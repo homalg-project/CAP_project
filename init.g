@@ -44,3 +44,4 @@ ReadPackage( "Toposes", "gap/SymmetricCocartesianCoclosedCategoriesDoc.gd" );
 
 ## Topos
 ReadPackage( "Toposes", "gap/Topos.gd");
+ReadPackage( "Toposes", "gap/Topos.autogen.gd");

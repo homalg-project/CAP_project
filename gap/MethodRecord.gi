@@ -8,32 +8,33 @@
 InstallValue( TOPOS_METHOD_NAME_RECORD, rec(
 
 SubobjectClassifier := rec(
-  installation_name := "SubobjectClassifier",
   filter_list := [ "category" ],
-  cache_name := "SubobjectClassifier",
   return_type := "object" ),
 
+TruthMorphismOfTrue := rec(
+  filter_list := [ "category" ],
+  output_source_getter_string := "TerminalObject( cat )",
+  output_range_getter_string := "SubobjectClassifier( cat )",
+  io_type := [ [ ] , [ "I" , "Omega" ] ],
+  return_type := "morphism" ),
+
 TruthMorphismOfTrueWithGivenObjects := rec(
-  installation_name := "TruthMorphismOfTrueWithGivenObjects",
   filter_list := [ "category", "object", "object" ],
-  io_type := [ [ "I", "S" ] , [ "I" , "S" ] ],
+  io_type := [ [ "I", "Omega" ] , [ "I" , "Omega" ] ],
   return_type := "morphism" ),
 
 ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier := rec(
-  installation_name := "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
   filter_list := [ "category", "morphism" , "object" ],
-  io_type := [ [ "alpha", "S" ] , [ "alpha_range" , "S" ] ],
+  io_type := [ [ "alpha", "Omega" ] , [ "alpha_range" , "Omega" ] ],
   return_type := "morphism" ),
 
 ClassifyingMorphismOfSubobject := rec(
-  installation_name := "ClassifyingMorphismOfSubobject",
   filter_list := [ "category", "morphism" ],
-  io_type := [ [ "alpha" ] , [ "alpha_range" , "S" ] ],
+  io_type := [ [ "alpha" ] , [ "alpha_range" , "Omega" ] ],
   with_given_object_position := "Range",
   return_type := "morphism" ),
 
 SubobjectOfClassifyingMorphism := rec(
-  installation_name := "SubobjectOfClassifyingMorphism",
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ] , [ "subobject" , "alpha_source" ] ],
   return_type := "morphism" ),
@@ -41,6 +42,14 @@ SubobjectOfClassifyingMorphism := rec(
  ) );
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( TOPOS_METHOD_NAME_RECORD );
+
+CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
+    TOPOS_METHOD_NAME_RECORD,
+    "Toposes",
+    "Topos.autogen.gd",
+    "Toposes",
+    "Subobject Classifier"
+);
 
 CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE( TOPOS_METHOD_NAME_RECORD, "Toposes" );
 
