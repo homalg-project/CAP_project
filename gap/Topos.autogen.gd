@@ -127,7 +127,7 @@ DeclareOperation( "AddTruthMorphismOfFalse",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `TruthMorphismOfFalseWithGivenObjects`.
-#! $F: ( I, Omega ) \mapsto \mathtt{TruthMorphismOfFalseWithGivenObjects}(I, Omega)$.
+#! $F: ( T, Omega ) \mapsto \mathtt{TruthMorphismOfFalseWithGivenObjects}(T, Omega)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddTruthMorphismOfFalseWithGivenObjects",
@@ -165,7 +165,7 @@ DeclareOperation( "AddTruthMorphismOfTrue",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `TruthMorphismOfTrueWithGivenObjects`.
-#! $F: ( I, Omega ) \mapsto \mathtt{TruthMorphismOfTrueWithGivenObjects}(I, Omega)$.
+#! $F: ( T, Omega ) \mapsto \mathtt{TruthMorphismOfTrueWithGivenObjects}(T, Omega)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddTruthMorphismOfTrueWithGivenObjects",
