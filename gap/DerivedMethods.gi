@@ -233,3 +233,19 @@ AddDerivationToCAP( TruthMorphismOfOrWithGivenObjects,
     
 end );
 
+##
+AddDerivationToCAP( TruthMorphismOfImpliesWithGivenObjects,
+  function( cat, Omega2, Omega )
+    
+    return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
+                   EmbeddingOfEqualizer(
+                           cat,
+                           [ TruthMorphismOfAndWithGivenObjects( cat, Omega2, Omega ),
+                             ProjectionInFactorOfDirectProductWithGivenDirectProduct(
+                                     [ Omega, Omega ],
+                                     1,
+                                     Omega2
+                                     ) ] ),
+                   Omega );
+    
+end );

@@ -183,6 +183,44 @@ DeclareOperation( "AddTruthMorphismOfFalseWithGivenObjects",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `TruthMorphismOfImplies`.
+#! $F: (  ) \mapsto \mathtt{TruthMorphismOfImplies}()$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTruthMorphismOfImplies",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTruthMorphismOfImplies",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTruthMorphismOfImplies",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTruthMorphismOfImplies",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `TruthMorphismOfImpliesWithGivenObjects`.
+#! $F: ( Omega2, Omega ) \mapsto \mathtt{TruthMorphismOfImpliesWithGivenObjects}(Omega2, Omega)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTruthMorphismOfImpliesWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTruthMorphismOfImpliesWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTruthMorphismOfImpliesWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTruthMorphismOfImpliesWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `TruthMorphismOfOr`.
 #! $F: (  ) \mapsto \mathtt{TruthMorphismOfOr}()$.
 #! @Returns nothing
