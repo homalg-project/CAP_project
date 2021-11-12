@@ -13,8 +13,8 @@ SubobjectClassifier := rec(
   cache_name := "SubobjectClassifier",
   return_type := "object" ),
 
-TruthMorphismIntoSubobjectClassifierWithGivenObjects := rec(
-  installation_name := "TruthMorphismIntoSubobjectClassifierWithGivenObjects",
+TruthMorphismOfTrueWithGivenObjects := rec(
+  installation_name := "TruthMorphismOfTrueWithGivenObjects",
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "I", "S" ] , [ "I" , "S" ] ],
   return_type := "morphism" ),

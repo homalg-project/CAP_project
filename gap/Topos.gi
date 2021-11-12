@@ -41,11 +41,11 @@ InstallMethod( SubobjectClassifier,
 end );
 
 ##
-InstallMethod( TruthMorphismIntoSubobjectClassifier,
+InstallMethod( TruthMorphismOfTrue,
                [ IsCapCategory ],
   function( category )
       
-      return TruthMorphismIntoSubobjectClassifierWithGivenObjects(
+      return TruthMorphismOfTrueWithGivenObjects(
                TerminalObject(category),
                SubobjectClassifier(category)
              );
@@ -53,10 +53,10 @@ InstallMethod( TruthMorphismIntoSubobjectClassifier,
 end );
 
 ##
-InstallMethod( TruthMorphismIntoSubobjectClassifier,
+InstallMethod( TruthMorphismOfTrue,
                [ IsCapCategoryCell ],
   function( cell )
     
-    return TruthMorphismIntoSubobjectClassifier( CapCategory( cell ) );
+    return TruthMorphismOfTrue( CapCategory( cell ) );
     
 end );

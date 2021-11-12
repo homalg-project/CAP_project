@@ -49,32 +49,32 @@ DeclareAttribute( "SubobjectClassifier",
 #! @Description
 #! The arguments are a terminal object of the category and
 #! a subobject classifier.
-#! The output is the truth morphism to the subobject classifier
+#! The output is the truth morphism of true into the subobject classifier
 #! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject} , \mathrm{SubobjectClassifier} )$
 #! @Arguments T, W
-DeclareOperation( "TruthMorphismIntoSubobjectClassifierWithGivenObjects",
+DeclareOperation( "TruthMorphismOfTrueWithGivenObjects",
                   [ IsCapCategoryObject , IsCapCategoryObject ]);
 
 
 #! @Description
 #! The argument is a category $C$.
-#! The output is the truth morphism to the subobject classifier 
+#! The output is the truth morphism of true into the subobject classifier
 #! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject} , \mathrm{SubobjectClassifier} )$
 #! @Arguments C
-DeclareOperation( "TruthMorphismIntoSubobjectClassifier",
+DeclareOperation( "TruthMorphismOfTrue",
                   [ IsCapCategory ] );
 
 #! @Description
 #! This is a convenience method.
 #! The argument is a cell $c$.
-#! The output is the truth morphism to the subobject classifier 
+#! The output is the truth morphism of true into the subobject classifier
 #! $\mathrm{true}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$
 #! of the category $C$ for which $c \in C$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject} , \mathrm{SubobjectClassifier} )$
 #! @Arguments c
-DeclareOperation( "TruthMorphismIntoSubobjectClassifier",
+DeclareOperation( "TruthMorphismOfTrue",
                   [ IsCapCategoryCell ] );
 
 
@@ -172,21 +172,21 @@ DeclareOperation( "AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$ to the category
 #! for the basic operation 
-#! <C>TruthMorphismIntoSubobjectClassifierWithGivenObjects</C>.
+#! <C>TruthMorphismOfTrueWithGivenObjects</C>.
 #! $F : (1, \Omega) \mapsto \mathrm{true}$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddTruthMorphismIntoSubobjectClassifierWithGivenObjects",
+DeclareOperation( "AddTruthMorphismOfTrueWithGivenObjects",
                   [ IsCapCategory , IsFunction ] );
 
-DeclareOperation( "AddTruthMorphismIntoSubobjectClassifierWithGivenObjects",
+DeclareOperation( "AddTruthMorphismOfTrueWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
 ## don't document this function
-DeclareOperation( "AddTruthMorphismIntoSubobjectClassifierWithGivenObjects",
+DeclareOperation( "AddTruthMorphismOfTrueWithGivenObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddTruthMorphismIntoSubobjectClassifierWithGivenObjects",
+DeclareOperation( "AddTruthMorphismOfTrueWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 

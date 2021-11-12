@@ -98,7 +98,7 @@ end : Description := "CartesianAssociatorLeftToRightWithGivenDirectProducts usin
 
 ##
 AddDerivationToCAP( SubobjectOfClassifyingMorphism,
-                    [ [ TruthMorphismIntoSubobjectClassifierWithGivenObjects , 1 ],
+                    [ [ TruthMorphismOfTrueWithGivenObjects , 1 ],
                       [ ProjectionInFactorOfFiberProduct , 1 ] ],
   function( cat, mor )
 
@@ -106,7 +106,7 @@ AddDerivationToCAP( SubobjectOfClassifyingMorphism,
 
       category := CapCategory(mor);
 
-      truth := TruthMorphismIntoSubobjectClassifierWithGivenObjects(
+      truth := TruthMorphismOfTrueWithGivenObjects(
                   TerminalObject(category), SubobjectClassifier(category));
 
       return ProjectionInFactorOfFiberProduct([ mor , truth ], 1);
