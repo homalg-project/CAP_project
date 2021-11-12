@@ -55,6 +55,25 @@ DeclareOperation( "TruthMorphismOfTrue",
                   [ IsCapCategory ] );
 
 #! @Description
+#! The arguments are a terminal object of the category and
+#! a subobject classifier.
+#! The output is the truth morphism of false into the subobject classifier <A>Omega</A>
+#! $\mathrm{false}: \mathrm{TerminalObject} \rightarrow \Omega$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \Omega )$
+#! @Arguments T, Omega
+DeclareOperation( "TruthMorphismOfFalseWithGivenObjects",
+                  [ IsCapCategoryObject , IsCapCategoryObject ]);
+
+#! @Description
+#! The argument is a category $C$.
+#! The output is the truth morphism of false into the subobject classifier
+#! $\mathrm{false}: \mathrm{TerminalObject} \rightarrow \mathrm{SubobjectClassifier}$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{TerminalObject}, \mathrm{SubobjectClassifier} )$
+#! @Arguments C
+DeclareOperation( "TruthMorphismOfFalse",
+                  [ IsCapCategory ] );
+
+#! @Description
 #! The argument is a monomorphism $m : A \rightarrow S$.
 #! The output is its classifying morphism 
 #! $\chi_m : S \rightarrow \mathrm{SubobjectClassifier}$.

@@ -24,6 +24,19 @@ TruthMorphismOfTrueWithGivenObjects := rec(
   io_type := [ [ "I", "Omega" ] , [ "I" , "Omega" ] ],
   return_type := "morphism" ),
 
+TruthMorphismOfFalse := rec(
+  filter_list := [ "category" ],
+  output_source_getter_string := "TerminalObject( cat )",
+  output_range_getter_string := "SubobjectClassifier( cat )",
+  with_given_object_position := "both",
+  io_type := [ [ ] , [ "I" , "Omega" ] ],
+  return_type := "morphism" ),
+
+TruthMorphismOfFalseWithGivenObjects := rec(
+  filter_list := [ "category", "object", "object" ],
+  io_type := [ [ "I", "Omega" ] , [ "I" , "Omega" ] ],
+  return_type := "morphism" ),
+
 ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier := rec(
   filter_list := [ "category", "morphism" , "object" ],
   io_type := [ [ "alpha", "Omega" ] , [ "alpha_range" , "Omega" ] ],

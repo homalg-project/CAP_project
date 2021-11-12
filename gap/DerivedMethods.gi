@@ -154,3 +154,13 @@ AddDerivationToCAP( TruthMorphismOfTrueWithGivenObjects,
                    Omega );
     
 end );
+
+##
+AddDerivationToCAP( TruthMorphismOfFalseWithGivenObjects,
+  function( cat, T, Omega )
+    
+    return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
+                   UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, InitialObject( cat ), T ),
+                   Omega );
+    
+end );
