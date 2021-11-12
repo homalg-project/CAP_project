@@ -221,6 +221,44 @@ DeclareOperation( "AddTruthMorphismOfImpliesWithGivenObjects",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `TruthMorphismOfNot`.
+#! $F: (  ) \mapsto \mathtt{TruthMorphismOfNot}()$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTruthMorphismOfNot",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTruthMorphismOfNot",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTruthMorphismOfNot",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTruthMorphismOfNot",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `TruthMorphismOfNotWithGivenObjects`.
+#! $F: ( Omega, Omega1 ) \mapsto \mathtt{TruthMorphismOfNotWithGivenObjects}(Omega, Omega1)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTruthMorphismOfNotWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTruthMorphismOfNotWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTruthMorphismOfNotWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTruthMorphismOfNotWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `TruthMorphismOfOr`.
 #! $F: (  ) \mapsto \mathtt{TruthMorphismOfOr}()$.
 #! @Returns nothing

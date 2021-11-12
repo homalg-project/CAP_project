@@ -177,6 +177,22 @@ AddDerivationToCAP( TruthMorphismOfFalseWithGivenObjects,
 end );
 
 ##
+AddDerivationToCAP( TruthMorphismOfNotWithGivenObjects,
+  function( cat, Omega, Omega1 )
+    local T;
+    
+    T := TerminalObject( cat );
+    
+    return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
+                   PreCompose(
+                           cat,
+                           UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, Omega, T ),
+                           TruthMorphismOfFalseWithGivenObjects( cat, T, Omega ) ),
+                   Omega );
+    
+end );
+
+##
 AddDerivationToCAP( TruthMorphismOfAndWithGivenObjects,
   function( cat, Omega2, Omega )
     local T, t;

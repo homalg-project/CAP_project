@@ -82,6 +82,24 @@ DeclareOperation( "TruthMorphismOfFalse",
                   [ IsCapCategory ] );
 
 #! @Description
+#! The argument is a subobject classifier.
+#! The output is the truth endomorphism of <Q>not</Q> of the subobject classifier <A>Omega</A>
+#! $\mathrm{not}: \Omega \rightarrow \Omega$.
+#! @Returns a morphism in $\mathrm{Hom}( \Omega, \Omega )$
+#! @Arguments Omega, Omega
+DeclareOperation( "TruthMorphismOfNotWithGivenObjects",
+                  [ IsCapCategoryObject, IsCapCategoryObject ]);
+
+#! @Description
+#! The argument is a category $C$.
+#! The output is the truth morphism of <Q>not</Q> of the subobject classifier
+#! $\mathrm{not}: \mathrm{SubobjectClassifier} \rightarrow \mathrm{SubobjectClassifier}$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{SubobjectClassifier}, \mathrm{SubobjectClassifier} )$
+#! @Arguments C
+DeclareOperation( "TruthMorphismOfNot",
+                  [ IsCapCategory ] );
+
+#! @Description
 #! The arguments are a cartesian square of a subobject classifier of the category and
 #! a subobject classifier.
 #! The output is the truth morphism of <Q>and</Q> into the subobject classifier <A>Omega</A>
