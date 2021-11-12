@@ -145,3 +145,12 @@ AddFinalDerivation( CanonicalIdentificationFromImageObjectToCoimage,
     end
   ] : CategoryFilter := HasIsElementaryTopos and IsElementaryTopos );
 
+##
+AddDerivationToCAP( TruthMorphismOfTrueWithGivenObjects,
+  function( cat, T, Omega )
+    
+    return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
+                   IdentityMorphism( cat, T ),
+                   Omega );
+    
+end );
