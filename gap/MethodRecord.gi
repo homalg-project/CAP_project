@@ -41,6 +41,19 @@ TruthMorphismOfFalseWithGivenObjects := rec(
   io_type := [ [ "T", "Omega" ] , [ "T" , "Omega" ] ],
   return_type := "morphism" ),
 
+TruthMorphismOfAnd := rec(
+  filter_list := [ "category" ],
+  output_source_getter_string := "CartesianSquareOfSubobjectClassifier( cat )",
+  output_range_getter_string := "SubobjectClassifier( cat )",
+  with_given_object_position := "both",
+  io_type := [ [ ] , [ "Omega2" , "Omega" ] ],
+  return_type := "morphism" ),
+
+TruthMorphismOfAndWithGivenObjects := rec(
+  filter_list := [ "category", "object", "object" ],
+  io_type := [ [ "Omega2", "Omega" ] , [ "Omega2" , "Omega" ] ],
+  return_type := "morphism" ),
+
 ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier := rec(
   filter_list := [ "category", "morphism" , "object" ],
   io_type := [ [ "alpha", "Omega" ] , [ "alpha_range" , "Omega" ] ],

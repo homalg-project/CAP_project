@@ -107,6 +107,44 @@ DeclareOperation( "AddSubobjectOfClassifyingMorphism",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `TruthMorphismOfAnd`.
+#! $F: (  ) \mapsto \mathtt{TruthMorphismOfAnd}()$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTruthMorphismOfAnd",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTruthMorphismOfAnd",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTruthMorphismOfAnd",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTruthMorphismOfAnd",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `TruthMorphismOfAndWithGivenObjects`.
+#! $F: ( Omega2, Omega ) \mapsto \mathtt{TruthMorphismOfAndWithGivenObjects}(Omega2, Omega)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddTruthMorphismOfAndWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddTruthMorphismOfAndWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddTruthMorphismOfAndWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddTruthMorphismOfAndWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `TruthMorphismOfFalse`.
 #! $F: (  ) \mapsto \mathtt{TruthMorphismOfFalse}()$.
 #! @Returns nothing
