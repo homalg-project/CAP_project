@@ -770,7 +770,7 @@ DeclareAttribute( "IsomorphismFromCoexponentialToObject",
 
 #! @Description
 #! The argument is an object $a$,
-#! and an object $s = \mathrm{Coexponential}(1,a)$.
+#! and an object $s = \mathrm{Coexponential}(a,1)$.
 #! The output is the natural isomorphism $\mathrm{Coexponential}(a,1) \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{Coexponential}(a,1), a)$.
 #! @Arguments a,s
