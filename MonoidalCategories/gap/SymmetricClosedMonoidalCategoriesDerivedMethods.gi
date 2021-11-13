@@ -4,7 +4,7 @@ AddDerivationToCAP( TensorProductToInternalHomAdjunctionMap,
   function( cat, object_1, object_2, morphism )
     
     return PreCompose( cat,
-             CoevaluationMorphism( cat, object_1, object_2 ), 
+             CoevaluationMorphism( cat, object_1, object_2 ),
              InternalHomOnMorphisms( cat, IdentityMorphism( cat, object_2 ), morphism ) );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
@@ -100,14 +100,14 @@ AddDerivationToCAP( DualOnMorphismsWithGivenDuals,
                   
   function( cat, new_source, morphism, new_range )
     
-    return PreComposeList( cat, [ 
+    return PreComposeList( cat, [
              IsomorphismFromDualToInternalHom( cat, Range( morphism ) ),
              
-             InternalHomOnMorphisms( cat, 
+             InternalHomOnMorphisms( cat,
                morphism,
                IdentityMorphism( cat, TensorUnit( cat ) ) ),
                
-             IsomorphismFromInternalHomToDual( cat, Source( morphism ) ) 
+             IsomorphismFromInternalHomToDual( cat, Source( morphism ) )
            ] );
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
@@ -318,7 +318,7 @@ AddDerivationToCAP( MorphismFromTensorProductToInternalHomWithGivenObjects,
     
     unit := TensorUnit( cat );
     
-    return PreComposeList( cat, [ 
+    return PreComposeList( cat, [
              TensorProductOnMorphisms( cat,
                IsomorphismFromDualToInternalHom( cat, object_1 ),
                IsomorphismFromObjectToInternalHom( cat, object_2 ) ),
@@ -377,7 +377,7 @@ AddDerivationToCAP( MonoidalPreComposeMorphismWithGivenObjects,
     
     hom_y_z := InternalHomOnObjects( cat, y, z );
     
-    morphism := PreComposeList( cat, [ 
+    morphism := PreComposeList( cat, [
                   AssociatorLeftToRight( cat, hom_x_y, hom_y_z, x ),
                   
                   TensorProductOnMorphisms( cat,
@@ -392,7 +392,7 @@ AddDerivationToCAP( MonoidalPreComposeMorphismWithGivenObjects,
                   
                   Braiding( cat, y, hom_y_z ),
                   
-                  EvaluationMorphism( cat, y, z ) 
+                  EvaluationMorphism( cat, y, z )
                 ] );
     
     return TensorProductToInternalHomAdjunctionMap( cat,
@@ -413,7 +413,7 @@ AddDerivationToCAP( MonoidalPostComposeMorphismWithGivenObjects,
     
     hom_y_z := InternalHomOnObjects( cat, y, z );
     
-    morphism := PreComposeList( cat, [ 
+    morphism := PreComposeList( cat, [
                   AssociatorLeftToRight( cat, hom_y_z, hom_x_y, x ),
                   
                   TensorProductOnMorphisms( cat,
@@ -520,7 +520,7 @@ AddDerivationToCAP( TensorProductDualityCompatibilityMorphismWithGivenObjects,
                   
                   TensorProductInternalHomCompatibilityMorphism( cat, [ object_1, unit, object_2, unit ] ),
                   
-                  IsomorphismFromInternalHomToDual( cat, tensor_product_on_object_1_and_object_2 ) 
+                  IsomorphismFromInternalHomToDual( cat, tensor_product_on_object_1_and_object_2 )
                 ] );
     
     return morphism;
@@ -538,7 +538,7 @@ AddDerivationToCAP( MonoidalPreComposeMorphismWithGivenObjects,
     
     hom_y_z := InternalHomOnObjects( cat, y, z );
     
-    morphism := PreComposeList( cat, [ 
+    morphism := PreComposeList( cat, [
                   TensorProductOnMorphisms( cat,
                     IdentityMorphism( cat, hom_x_y ),
                     Braiding( cat, hom_y_z, x ) ),
@@ -570,7 +570,7 @@ AddDerivationToCAP( MonoidalPostComposeMorphismWithGivenObjects,
     
     hom_y_z := InternalHomOnObjects( cat, y, z );
     
-    morphism := PreComposeList( cat, [ 
+    morphism := PreComposeList( cat, [
                   TensorProductOnMorphisms( cat,
                     IdentityMorphism( cat, hom_y_z ),
                     EvaluationMorphism( cat, x, y ) ),
