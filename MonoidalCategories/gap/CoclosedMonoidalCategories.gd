@@ -336,7 +336,7 @@ DeclareAttribute( "IsomorphismFromInternalCoHomToObject",
 
 #! @Description
 #! The argument is an object $a$,
-#! and an object $s = \mathrm{\underline{Hom}}(1,a)$.
+#! and an object $s = \mathrm{\underline{coHom}}(a,1)$.
 #! The output is the natural isomorphism $\mathrm{\underline{coHom}}(a,1) \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{\underline{coHom}}(a,1), a)$.
 #! @Arguments a,s
