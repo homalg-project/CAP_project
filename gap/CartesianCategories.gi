@@ -1,3 +1,5 @@
+# THIS FILE WAS AUTOMATICALLY GENERATED FROM MonoidalCategories v2021.11-02
+
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
@@ -5,207 +7,75 @@
 #
 
 ##
-InstallValue( CAP_INTERNAL_CARTESIAN_CATEGORIES_BASIC_OPERATIONS, rec( ) );
+AddDerivationToCAP( CartesianAssociatorRightToLeft,
 
-##
-CAP_INTERNAL_CARTESIAN_CATEGORIES_BASIC_OPERATIONS.DirectProductOnMorphisms := 
-  [ [ "DirectProductOnMorphismsWithGivenDirectProducts", 1 ],
-    [ "DirectProduct", 2 ] ];
-##
-InstallMethod( DirectProductOnMorphisms,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( morphism_1, morphism_2 )
-    
-    return DirectProductOnMorphismsWithGivenDirectProducts( 
-             DirectProduct( Source( morphism_1 ), Source( morphism_2 ) ),
-             morphism_1, morphism_2,
-             DirectProduct( Range( morphism_1 ), Range( morphism_2 ) )
-           );
-    
-end );
-
-##
-CAP_INTERNAL_CARTESIAN_CATEGORIES_BASIC_OPERATIONS.CartesianAssociatorRightToLeft := 
-  [ [ "CartesianAssociatorRightToLeftWithGivenDirectProducts", 1 ],
-    [ "DirectProduct", 4 ] ];
-##
-InstallMethod( CartesianAssociatorRightToLeft,
-               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
-               
-  function( object_1, object_2, object_3 )
-    
-    return CartesianAssociatorRightToLeftWithGivenDirectProducts( 
-             DirectProduct( object_1, DirectProduct( object_2, object_3 ) ),
-             object_1, object_2, object_3,
-             DirectProduct( DirectProduct( object_1, object_2 ), object_3 ) 
-           );
-    
-end );
-
-##
-InstallMethod( CartesianAssociatorRightToLeft,
-               [ IsCapCategoryObject and IsCellOfSkeletalCategory, IsCapCategoryObject, IsCapCategoryObject ],
-               
-  function( object_1, object_2, object_3 )
+  function( cat, object_1, object_2, object_3 )
     local source_and_range;
     
-    source_and_range := DirectProduct( object_1, DirectProduct( object_2, object_3 ) );
+    source_and_range := DirectProduct( cat, object_1, DirectProduct( cat, object_2, object_3 ) );
     
-    return CartesianAssociatorRightToLeftWithGivenDirectProducts( 
+    return CartesianAssociatorRightToLeftWithGivenDirectProducts( cat,
              source_and_range,
              object_1, object_2, object_3,
              source_and_range
            );
     
-end );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-CAP_INTERNAL_CARTESIAN_CATEGORIES_BASIC_OPERATIONS.CartesianAssociatorLeftToRight := 
-  [ [ "CartesianAssociatorLeftToRightWithGivenDirectProducts", 1 ],
-    [ "DirectProduct", 4 ] ];
-##
-InstallMethod( CartesianAssociatorLeftToRight,
-               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
-               
-  function( object_1, object_2, object_3 )
-    
-    return CartesianAssociatorLeftToRightWithGivenDirectProducts( 
-             DirectProduct( DirectProduct( object_1, object_2 ), object_3 ),
-             object_1, object_2, object_3,
-             DirectProduct( object_1, DirectProduct( object_2, object_3 ) ) 
-           );
-    
-end );
+AddDerivationToCAP( CartesianAssociatorLeftToRight,
 
-##
-InstallMethod( CartesianAssociatorLeftToRight,
-               [ IsCapCategoryObject and IsCellOfSkeletalCategory, IsCapCategoryObject, IsCapCategoryObject ],
-               
-  function( object_1, object_2, object_3 )
+  function( cat, object_1, object_2, object_3 )
     local source_and_range;
     
-    source_and_range := DirectProduct( object_1, DirectProduct( object_2, object_3 ) );
+    source_and_range := DirectProduct( cat, object_1, DirectProduct( cat, object_2, object_3 ) );
     
-    return CartesianAssociatorLeftToRightWithGivenDirectProducts( 
+    return CartesianAssociatorLeftToRightWithGivenDirectProducts( cat,
              source_and_range,
              object_1, object_2, object_3,
              source_and_range
            );
     
-end );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-CAP_INTERNAL_CARTESIAN_CATEGORIES_BASIC_OPERATIONS.CartesianLeftUnitor := 
-  [ [ "CartesianLeftUnitorWithGivenDirectProduct", 1 ],
-    [ "DirectProduct", 1 ],
-    [ "TerminalObject", 1 ] ];
-##
-InstallMethod( CartesianLeftUnitor,
-               [ IsCapCategoryObject ],
-               
-  function( object )
-    local category;
+AddDerivationToCAP( CartesianLeftUnitor,
+
+  function( cat, object )
     
-    category := CapCategory( object );
+    return CartesianLeftUnitorWithGivenDirectProduct( cat, object, object );
     
-    return CartesianLeftUnitorWithGivenDirectProduct( object, DirectProduct( TerminalObject( category ), object ) );
-    
-end );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-InstallMethod( CartesianLeftUnitor,
-               [ IsCapCategoryObject and IsCellOfSkeletalCategory ],
-               
-  function( object )
-    
-    return CartesianLeftUnitorWithGivenDirectProduct( object, object );
-    
-end );
+AddDerivationToCAP( CartesianLeftUnitorInverse,
 
-
-##
-CAP_INTERNAL_CARTESIAN_CATEGORIES_BASIC_OPERATIONS.CartesianLeftUnitorInverse := 
-  [ [ "CartesianLeftUnitorInverseWithGivenDirectProduct", 1 ],
-    [ "DirectProduct", 1 ],
-    [ "TerminalObject", 1 ] ];
-##
-InstallMethod( CartesianLeftUnitorInverse,
-               [ IsCapCategoryObject ],
-               
-  function( object )
-    local category;
+  function( cat, object )
     
-    category := CapCategory( object );
+    return CartesianLeftUnitorInverseWithGivenDirectProduct( cat, object, object );
     
-    return CartesianLeftUnitorInverseWithGivenDirectProduct( object, DirectProduct( TerminalObject( category ), object ) );
-    
-end );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-InstallMethod( CartesianLeftUnitorInverse,
-               [ IsCapCategoryObject and IsCellOfSkeletalCategory ],
-               
-  function( object )
+AddDerivationToCAP( CartesianRightUnitor,
+
+  function( cat, object )
     
-    return CartesianLeftUnitorInverseWithGivenDirectProduct( object, object );
+    return CartesianRightUnitorWithGivenDirectProduct( cat, object, object );
     
-end );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-CAP_INTERNAL_CARTESIAN_CATEGORIES_BASIC_OPERATIONS.CartesianRightUnitor := 
-  [ [ "CartesianRightUnitorWithGivenDirectProduct", 1 ],
-    [ "DirectProduct", 1 ],
-    [ "TerminalObject", 1 ] ];
-##
-InstallMethod( CartesianRightUnitor,
-               [ IsCapCategoryObject ],
-               
-  function( object )
-    local category;
-    
-    category := CapCategory( object );
-    
-    return CartesianRightUnitorWithGivenDirectProduct( object, DirectProduct( object, TerminalObject( category ) ) );
-    
-end );
+AddDerivationToCAP( CartesianRightUnitorInverse,
 
-##
-InstallMethod( CartesianRightUnitor,
-               [ IsCapCategoryObject and IsCellOfSkeletalCategory ],
-               
-  function( object )
+  function( cat, object )
     
-    return CartesianRightUnitorWithGivenDirectProduct( object, object );
+    return CartesianRightUnitorInverseWithGivenDirectProduct( cat, object, object );
     
-end );
-
-##
-CAP_INTERNAL_CARTESIAN_CATEGORIES_BASIC_OPERATIONS.CartesianRightUnitorInverse := 
-  [ [ "CartesianRightUnitorInverseWithGivenDirectProduct", 1 ],
-    [ "DirectProduct", 1 ],
-    [ "TerminalObject", 1 ] ];
-##
-InstallMethod( CartesianRightUnitorInverse,
-               [ IsCapCategoryObject ],
-               
-  function( object )
-    local category;
-    
-    category := CapCategory( object );
-    
-    return CartesianRightUnitorInverseWithGivenDirectProduct( object, DirectProduct( object, TerminalObject( category ) ) );
-    
-end );
-
-##
-InstallMethod( CartesianRightUnitorInverse,
-               [ IsCapCategoryObject and IsCellOfSkeletalCategory ],
-               
-  function( object )
-    
-    return CartesianRightUnitorInverseWithGivenDirectProduct( object, object );
-    
-end );
-
-CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD( CAP_INTERNAL_CARTESIAN_CATEGORIES_BASIC_OPERATIONS );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );

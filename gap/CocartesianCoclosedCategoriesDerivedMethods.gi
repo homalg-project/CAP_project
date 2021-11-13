@@ -1,3 +1,5 @@
+# THIS FILE WAS AUTOMATICALLY GENERATED FROM MonoidalCategories v2021.11-02
+
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
@@ -23,14 +25,10 @@ AddFinalDerivation( IsomorphismFromCocartesianDualToCoexponential,
                       CocartesianEvaluationForCocartesianDualWithGivenCoproduct,
                       MorphismFromCoexponentialToCoproductWithGivenObjects
                       ],
-
   function( cat, object )
-    local category;
-
-    category := CapCategory( object );
-
-    return IdentityMorphism( CoexponentialOnObjects( InitialObject( category ), object ) );
-
+    
+    return IdentityMorphism( cat, CoexponentialOnObjects( cat, InitialObject( cat ), object ) );
+    
 end : CategoryFilter := IsCocartesianCoclosedCategory,
       Description := "IsomorphismFromCocartesianDualToCoexponential as the identity of coHom(1,a)" );
 
@@ -50,11 +48,8 @@ AddFinalDerivation( IsomorphismFromCoexponentialToCocartesianDual,
                       ],
 
   function( cat, object )
-    local category;
-
-    category := CapCategory( object );
-
-    return IdentityMorphism( CoexponentialOnObjects( InitialObject( category ), object ) );
-
+    
+    return IdentityMorphism( cat, CoexponentialOnObjects( cat, InitialObject( cat ), object ) );
+    
 end : CategoryFilter := IsCocartesianCoclosedCategory,
       Description := "IsomorphismFromCoexponentialToCocartesianDual as the identity of coHom(1,a)" );

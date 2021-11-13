@@ -4,12 +4,22 @@
 
 @Section Cartesian Closed Categories
 
+@Section Convenience Methods
+
+@Section Add-methods
+
 @Chapter Cocartesian Categories
 
 @Section Cocartesian Categories
 
 @Section Cocartesian Coclosed Categories
 
+@Section Convenience Methods
+
+@Section Add-methods
+
 @Chapter Toposes
 
 @Section Subobject Classifier
+
+@Section Add-methods

@@ -1,3 +1,5 @@
+# THIS FILE WAS AUTOMATICALLY GENERATED FROM MonoidalCategories v2021.11-02
+
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
@@ -5,207 +7,75 @@
 #
 
 ##
-InstallValue( CAP_INTERNAL_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS, rec( ) );
+AddDerivationToCAP( CocartesianAssociatorRightToLeft,
 
-##
-CAP_INTERNAL_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS.CoproductOnMorphisms := 
-  [ [ "CoproductOnMorphismsWithGivenCoproducts", 1 ],
-    [ "Coproduct", 2 ] ];
-##
-InstallMethod( CoproductOnMorphisms,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( morphism_1, morphism_2 )
-    
-    return CoproductOnMorphismsWithGivenCoproducts( 
-             Coproduct( Source( morphism_1 ), Source( morphism_2 ) ),
-             morphism_1, morphism_2,
-             Coproduct( Range( morphism_1 ), Range( morphism_2 ) )
-           );
-    
-end );
-
-##
-CAP_INTERNAL_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS.CocartesianAssociatorRightToLeft := 
-  [ [ "CocartesianAssociatorRightToLeftWithGivenCoproducts", 1 ],
-    [ "Coproduct", 4 ] ];
-##
-InstallMethod( CocartesianAssociatorRightToLeft,
-               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
-               
-  function( object_1, object_2, object_3 )
-    
-    return CocartesianAssociatorRightToLeftWithGivenCoproducts( 
-             Coproduct( object_1, Coproduct( object_2, object_3 ) ),
-             object_1, object_2, object_3,
-             Coproduct( Coproduct( object_1, object_2 ), object_3 ) 
-           );
-    
-end );
-
-##
-InstallMethod( CocartesianAssociatorRightToLeft,
-               [ IsCapCategoryObject and IsCellOfSkeletalCategory, IsCapCategoryObject, IsCapCategoryObject ],
-               
-  function( object_1, object_2, object_3 )
+  function( cat, object_1, object_2, object_3 )
     local source_and_range;
     
-    source_and_range := Coproduct( object_1, Coproduct( object_2, object_3 ) );
+    source_and_range := Coproduct( cat, object_1, Coproduct( cat, object_2, object_3 ) );
     
-    return CocartesianAssociatorRightToLeftWithGivenCoproducts( 
+    return CocartesianAssociatorRightToLeftWithGivenCoproducts( cat,
              source_and_range,
              object_1, object_2, object_3,
              source_and_range
            );
     
-end );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-CAP_INTERNAL_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS.CocartesianAssociatorLeftToRight := 
-  [ [ "CocartesianAssociatorLeftToRightWithGivenCoproducts", 1 ],
-    [ "Coproduct", 4 ] ];
-##
-InstallMethod( CocartesianAssociatorLeftToRight,
-               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
-               
-  function( object_1, object_2, object_3 )
-    
-    return CocartesianAssociatorLeftToRightWithGivenCoproducts( 
-             Coproduct( Coproduct( object_1, object_2 ), object_3 ),
-             object_1, object_2, object_3,
-             Coproduct( object_1, Coproduct( object_2, object_3 ) ) 
-           );
-    
-end );
+AddDerivationToCAP( CocartesianAssociatorLeftToRight,
 
-##
-InstallMethod( CocartesianAssociatorLeftToRight,
-               [ IsCapCategoryObject and IsCellOfSkeletalCategory, IsCapCategoryObject, IsCapCategoryObject ],
-               
-  function( object_1, object_2, object_3 )
+  function( cat, object_1, object_2, object_3 )
     local source_and_range;
     
-    source_and_range := Coproduct( object_1, Coproduct( object_2, object_3 ) );
+    source_and_range := Coproduct( cat, object_1, Coproduct( cat, object_2, object_3 ) );
     
-    return CocartesianAssociatorLeftToRightWithGivenCoproducts( 
+    return CocartesianAssociatorLeftToRightWithGivenCoproducts( cat,
              source_and_range,
              object_1, object_2, object_3,
              source_and_range
            );
     
-end );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-CAP_INTERNAL_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS.CocartesianLeftUnitor := 
-  [ [ "CocartesianLeftUnitorWithGivenCoproduct", 1 ],
-    [ "Coproduct", 1 ],
-    [ "InitialObject", 1 ] ];
-##
-InstallMethod( CocartesianLeftUnitor,
-               [ IsCapCategoryObject ],
-               
-  function( object )
-    local category;
+AddDerivationToCAP( CocartesianLeftUnitor,
+
+  function( cat, object )
     
-    category := CapCategory( object );
+    return CocartesianLeftUnitorWithGivenCoproduct( cat, object, object );
     
-    return CocartesianLeftUnitorWithGivenCoproduct( object, Coproduct( InitialObject( category ), object ) );
-    
-end );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-InstallMethod( CocartesianLeftUnitor,
-               [ IsCapCategoryObject and IsCellOfSkeletalCategory ],
-               
-  function( object )
-    
-    return CocartesianLeftUnitorWithGivenCoproduct( object, object );
-    
-end );
+AddDerivationToCAP( CocartesianLeftUnitorInverse,
 
-
-##
-CAP_INTERNAL_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS.CocartesianLeftUnitorInverse := 
-  [ [ "CocartesianLeftUnitorInverseWithGivenCoproduct", 1 ],
-    [ "Coproduct", 1 ],
-    [ "InitialObject", 1 ] ];
-##
-InstallMethod( CocartesianLeftUnitorInverse,
-               [ IsCapCategoryObject ],
-               
-  function( object )
-    local category;
+  function( cat, object )
     
-    category := CapCategory( object );
+    return CocartesianLeftUnitorInverseWithGivenCoproduct( cat, object, object );
     
-    return CocartesianLeftUnitorInverseWithGivenCoproduct( object, Coproduct( InitialObject( category ), object ) );
-    
-end );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-InstallMethod( CocartesianLeftUnitorInverse,
-               [ IsCapCategoryObject and IsCellOfSkeletalCategory ],
-               
-  function( object )
+AddDerivationToCAP( CocartesianRightUnitor,
+
+  function( cat, object )
     
-    return CocartesianLeftUnitorInverseWithGivenCoproduct( object, object );
+    return CocartesianRightUnitorWithGivenCoproduct( cat, object, object );
     
-end );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-CAP_INTERNAL_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS.CocartesianRightUnitor := 
-  [ [ "CocartesianRightUnitorWithGivenCoproduct", 1 ],
-    [ "Coproduct", 1 ],
-    [ "InitialObject", 1 ] ];
-##
-InstallMethod( CocartesianRightUnitor,
-               [ IsCapCategoryObject ],
-               
-  function( object )
-    local category;
-    
-    category := CapCategory( object );
-    
-    return CocartesianRightUnitorWithGivenCoproduct( object, Coproduct( object, InitialObject( category ) ) );
-    
-end );
+AddDerivationToCAP( CocartesianRightUnitorInverse,
 
-##
-InstallMethod( CocartesianRightUnitor,
-               [ IsCapCategoryObject and IsCellOfSkeletalCategory ],
-               
-  function( object )
+  function( cat, object )
     
-    return CocartesianRightUnitorWithGivenCoproduct( object, object );
+    return CocartesianRightUnitorInverseWithGivenCoproduct( cat, object, object );
     
-end );
-
-##
-CAP_INTERNAL_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS.CocartesianRightUnitorInverse := 
-  [ [ "CocartesianRightUnitorInverseWithGivenCoproduct", 1 ],
-    [ "Coproduct", 1 ],
-    [ "InitialObject", 1 ] ];
-##
-InstallMethod( CocartesianRightUnitorInverse,
-               [ IsCapCategoryObject ],
-               
-  function( object )
-    local category;
-    
-    category := CapCategory( object );
-    
-    return CocartesianRightUnitorInverseWithGivenCoproduct( object, Coproduct( object, InitialObject( category ) ) );
-    
-end );
-
-##
-InstallMethod( CocartesianRightUnitorInverse,
-               [ IsCapCategoryObject and IsCellOfSkeletalCategory ],
-               
-  function( object )
-    
-    return CocartesianRightUnitorInverseWithGivenCoproduct( object, object );
-    
-end );
-
-CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD( CAP_INTERNAL_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );

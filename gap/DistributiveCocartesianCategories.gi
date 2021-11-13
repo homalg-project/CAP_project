@@ -1,149 +1,75 @@
+# THIS FILE WAS AUTOMATICALLY GENERATED FROM MonoidalCategories v2021.11-02
+
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
 # Implementations
 #
 
-InstallValue( CAP_INTERNAL_DISTRIBUTIVE_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS, rec( ) );
+##
+AddDerivationToCAP( LeftCocartesianDistributivityExpanding,
 
-##
-CAP_INTERNAL_DISTRIBUTIVE_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS.LeftCocartesianDistributivityExpanding := 
-  [ [ "Coproduct", 1 + 2 ], ## 1 + Size( summands_list ) would be the correct number
-    [ "DirectProduct", 2 ] ];
-##
-InstallMethod( LeftCocartesianDistributivityExpanding,
-               [ IsCapCategoryObject, IsList ],
-               
-  function( object, summands_list )
-    
-    return LeftCocartesianDistributivityExpandingWithGivenObjects(
-             Coproduct( object, DirectProduct( summands_list ) ),
-             object, summands_list,
-             DirectProduct( List( summands_list, summand -> Coproduct( object, summand ) ) )
-           );
-    
-end );
-
-##
-InstallMethod( LeftCocartesianDistributivityExpanding,
-               [ IsCapCategoryObject and IsCellOfSkeletalCategory, IsList ],
-               
-  function( object, summands_list )
+  function( cat, object, summands_list )
     local source_and_range;
     
-    source_and_range := Coproduct( object, DirectProduct( summands_list ) );
+    source_and_range := Coproduct( cat, object, DirectProduct( cat, summands_list ) );
     
-    return LeftCocartesianDistributivityExpandingWithGivenObjects(
+    return LeftCocartesianDistributivityExpandingWithGivenObjects( cat,
              source_and_range,
              object, summands_list,
              source_and_range
            );
     
-end );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-CAP_INTERNAL_DISTRIBUTIVE_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS.LeftCocartesianDistributivityFactoring := 
-  [ [ "Coproduct", 1 + 2 ], ## 1 + Size( summands_list ) would be the correct number
-    [ "DirectProduct", 2 ] ];
-##
-InstallMethod( LeftCocartesianDistributivityFactoring,
-               [ IsCapCategoryObject, IsList ],
-               
-  function( object, summands_list )
-    
-    return LeftCocartesianDistributivityFactoringWithGivenObjects(
-             DirectProduct( List( summands_list, summand -> Coproduct( object, summand ) ) ),
-             object, summands_list,
-             Coproduct( object, DirectProduct( summands_list ) )
-           );
-    
-end );
+AddDerivationToCAP( LeftCocartesianDistributivityFactoring,
 
-##
-InstallMethod( LeftCocartesianDistributivityFactoring,
-               [ IsCapCategoryObject and IsCellOfSkeletalCategory, IsList ],
-               
-  function( object, summands_list )
+  function( cat, object, summands_list )
     local source_and_range;
     
-    source_and_range := Coproduct( object, DirectProduct( summands_list ) );
+    source_and_range := Coproduct( cat, object, DirectProduct( cat, summands_list ) );
     
-    return LeftCocartesianDistributivityFactoringWithGivenObjects(
+    return LeftCocartesianDistributivityFactoringWithGivenObjects( cat,
              source_and_range,
              object, summands_list,
              source_and_range
            );
     
-end );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-CAP_INTERNAL_DISTRIBUTIVE_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS.RightCocartesianDistributivityExpanding := 
-  [ [ "Coproduct", 1 + 2 ], ## 1 + Size( summands_list ) would be the correct number
-    [ "DirectProduct", 2 ] ];
-##
-InstallMethod( RightCocartesianDistributivityExpanding,
-               [ IsList, IsCapCategoryObject ],
-               
-  function( summands_list, object )
-    
-    return RightCocartesianDistributivityExpandingWithGivenObjects(
-             Coproduct( DirectProduct( summands_list ), object ),
-             summands_list, object,
-             DirectProduct( List( summands_list, summand -> Coproduct( summand, object ) ) )
-           );
-    
-end );
+AddDerivationToCAP( RightCocartesianDistributivityExpanding,
 
-##
-InstallMethod( RightCocartesianDistributivityExpanding,
-               [ IsList, IsCapCategoryObject and IsCellOfSkeletalCategory ],
-               
-  function( summands_list, object )
+  function( cat, summands_list, object )
     local source_and_range;
     
-    source_and_range := Coproduct( DirectProduct( summands_list ), object );
+    source_and_range := Coproduct( cat, DirectProduct( cat, summands_list ), object );
     
-    return RightCocartesianDistributivityExpandingWithGivenObjects(
+    return RightCocartesianDistributivityExpandingWithGivenObjects( cat,
              source_and_range,
              summands_list, object,
              source_and_range
            );
     
-end );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-CAP_INTERNAL_DISTRIBUTIVE_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS.RightCocartesianDistributivityFactoring := 
-  [ [ "Coproduct", 1 + 2 ], ## 1 + Size( summands_list ) would be the correct number
-    [ "DirectProduct", 2 ] ];
-##
-InstallMethod( RightCocartesianDistributivityFactoring,
-               [ IsList, IsCapCategoryObject ],
-               
-  function( summands_list, object )
-    
-    return RightCocartesianDistributivityFactoringWithGivenObjects(
-             DirectProduct( List( summands_list, summand -> Coproduct( summand, object ) ) ),
-             summands_list, object,
-             Coproduct( DirectProduct( summands_list ), object )
-           );
-    
-end );
+AddDerivationToCAP( RightCocartesianDistributivityFactoring,
 
-##
-InstallMethod( RightCocartesianDistributivityFactoring,
-               [ IsList, IsCapCategoryObject and IsCellOfSkeletalCategory ],
-               
-  function( summands_list, object )
+  function( cat, summands_list, object )
     local source_and_range;
     
-    source_and_range := Coproduct( DirectProduct( summands_list ), object );
+    source_and_range := Coproduct( cat, DirectProduct( cat, summands_list ), object );
     
-    return RightCocartesianDistributivityFactoringWithGivenObjects(
+    return RightCocartesianDistributivityFactoringWithGivenObjects( cat,
              source_and_range,
              summands_list, object,
              source_and_range
            );
     
-end );
-
-CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD( CAP_INTERNAL_DISTRIBUTIVE_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );

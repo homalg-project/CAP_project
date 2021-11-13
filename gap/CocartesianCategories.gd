@@ -1,3 +1,5 @@
+# THIS FILE WAS AUTOMATICALLY GENERATED FROM MonoidalCategories v2021.11-02
+
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
@@ -11,8 +13,6 @@
 #! @Section Cocartesian Categories
 ##
 ####################################
-
-DeclareGlobalVariable( "CAP_INTERNAL_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS" );
 
 DeclareGlobalVariable( "COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD" );
 
@@ -57,27 +57,6 @@ DeclareOperation( "CoproductOnMorphismsWithGivenCoproducts",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$ 
-#! to the category for the basic operation <C>CoproductOnMorphismsWithGivenCoproducts</C>.
-#! $F: ( a \sqcup b, \alpha: a \rightarrow a', \beta: b \rightarrow b', a' \sqcup b' ) \mapsto \alpha \sqcup \beta$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoproductOnMorphismsWithGivenCoproducts",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoproductOnMorphismsWithGivenCoproducts",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoproductOnMorphismsWithGivenCoproducts",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoproductOnMorphismsWithGivenCoproducts",
-                  [ IsCapCategory, IsList ] );
-
-
-##
-#! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the associator $\alpha_{a,(b,c)}: a \sqcup (b \sqcup c) \rightarrow (a \sqcup b) \sqcup c$.
 #! @Returns a morphism in $\mathrm{Hom}( a \sqcup (b \sqcup c), (a \sqcup b) \sqcup c )$.
@@ -95,28 +74,6 @@ DeclareOperation( "CocartesianAssociatorRightToLeft",
 DeclareOperation( "CocartesianAssociatorRightToLeftWithGivenCoproducts",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$ 
-#! to the category for the basic operation <C>CocartesianAssociatorRightToLeftWithGivenCoproducts</C>.
-#! $F: ( a \sqcup (b \sqcup c), a, b, c, (a \sqcup b) \sqcup c ) \mapsto \alpha_{a,(b,c)}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCocartesianAssociatorRightToLeftWithGivenCoproducts",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCocartesianAssociatorRightToLeftWithGivenCoproducts",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCocartesianAssociatorRightToLeftWithGivenCoproducts",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCocartesianAssociatorRightToLeftWithGivenCoproducts",
-                  [ IsCapCategory, IsList ] );
-
-
-
-##
 #! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the associator $\alpha_{(a,b),c}: (a \sqcup b) \sqcup c \rightarrow a \sqcup (b \sqcup c)$.
@@ -136,27 +93,6 @@ DeclareOperation( "CocartesianAssociatorLeftToRightWithGivenCoproducts",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$ 
-#! to the category for the basic operation <C>CocartesianAssociatorLeftToRightWithGivenCoproducts</C>.
-#! $F: (( a \sqcup b ) \sqcup c, a, b, c, a \sqcup (b \sqcup c )) \mapsto \alpha_{(a,b),c}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCocartesianAssociatorLeftToRightWithGivenCoproducts",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCocartesianAssociatorLeftToRightWithGivenCoproducts",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCocartesianAssociatorLeftToRightWithGivenCoproducts",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCocartesianAssociatorLeftToRightWithGivenCoproducts",
-                  [ IsCapCategory, IsList ] );
-
-
-##
-#! @Description
 #! The argument is an object $a$.
 #! The output is the left unitor $\lambda_a: 1 \sqcup a \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}(1 \sqcup a, a )$
@@ -172,28 +108,6 @@ DeclareAttribute( "CocartesianLeftUnitor",
 DeclareOperation( "CocartesianLeftUnitorWithGivenCoproduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$ 
-#! to the category for the basic operation <C>CocartesianLeftUnitorWithGivenCoproduct</C>.
-#! $F: (a, 1 \sqcup a) \mapsto \lambda_a$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCocartesianLeftUnitorWithGivenCoproduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCocartesianLeftUnitorWithGivenCoproduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCocartesianLeftUnitorWithGivenCoproduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCocartesianLeftUnitorWithGivenCoproduct",
-                  [ IsCapCategory, IsList ] );
-
-
-
-##
 #! @Description
 #! The argument is an object $a$.
 #! The output is the inverse of the left unitor $\lambda_a^{-1}: a \rightarrow 1 \sqcup a$.
@@ -211,27 +125,6 @@ DeclareOperation( "CocartesianLeftUnitorInverseWithGivenCoproduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$ 
-#! to the category for the basic operation <C>CocartesianLeftUnitorInverseWithGivenCoproduct</C>.
-#! $F: (a, 1 \sqcup a) \mapsto \lambda_a^{-1}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCocartesianLeftUnitorInverseWithGivenCoproduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCocartesianLeftUnitorInverseWithGivenCoproduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCocartesianLeftUnitorInverseWithGivenCoproduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCocartesianLeftUnitorInverseWithGivenCoproduct",
-                  [ IsCapCategory, IsList ] );
-
-
-##
-#! @Description
 #! The argument is an object $a$.
 #! The output is the right unitor $\rho_a: a \sqcup 1 \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}(a \sqcup 1, a )$
@@ -248,27 +141,6 @@ DeclareOperation( "CocartesianRightUnitorWithGivenCoproduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$ 
-#! to the category for the basic operation <C>CocartesianRightUnitorWithGivenCoproduct</C>.
-#! $F: (a, a \sqcup 1) \mapsto \rho_a$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCocartesianRightUnitorWithGivenCoproduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCocartesianRightUnitorWithGivenCoproduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCocartesianRightUnitorWithGivenCoproduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCocartesianRightUnitorWithGivenCoproduct",
-                  [ IsCapCategory, IsList ] );
-
-
-##
-#! @Description
 #! The argument is an object $a$.
 #! The output is the inverse of the right unitor $\rho_a^{-1}: a \rightarrow a \sqcup 1$.
 #! @Returns a morphism in $\mathrm{Hom}( a, a \sqcup 1 )$
@@ -284,22 +156,3 @@ DeclareAttribute( "CocartesianRightUnitorInverse",
 #! @Arguments a, r
 DeclareOperation( "CocartesianRightUnitorInverseWithGivenCoproduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$ 
-#! to the category for the basic operation <C>CocartesianRightUnitorInverseWithGivenCoproduct</C>.
-#! $F: (a, a \sqcup 1) \mapsto \rho_a^{-1}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCocartesianRightUnitorInverseWithGivenCoproduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCocartesianRightUnitorInverseWithGivenCoproduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCocartesianRightUnitorInverseWithGivenCoproduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCocartesianRightUnitorInverseWithGivenCoproduct",
-                  [ IsCapCategory, IsList ] );

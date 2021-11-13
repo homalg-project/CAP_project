@@ -7,7 +7,7 @@
 
 #! @Chapter Toposes
 
-#! @Section Subobject Classifier
+#! @Section Add-methods
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.

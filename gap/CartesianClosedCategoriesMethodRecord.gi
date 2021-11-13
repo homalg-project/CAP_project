@@ -1,3 +1,5 @@
+# THIS FILE WAS AUTOMATICALLY GENERATED FROM MonoidalCategories v2021.11-02
+
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
@@ -7,173 +9,240 @@
 InstallValue( CARTESIAN_CLOSED_CATEGORIES_METHOD_NAME_RECORD, rec(
 
 ExponentialOnObjects := rec(
-  installation_name := "ExponentialOnObjects",
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "i" ] ],
-  cache_name := "ExponentialOnObjects",
-  return_type := "object",
-  dual_operation := "CoexponentialOnObjects",
-  dual_arguments_reversed := true ),
+  return_type := "object" ),
+
+ExponentialOnMorphisms := rec(
+  filter_list := [ "category", "morphism", "morphism" ],
+  io_type := [ [ "alpha", "beta" ], [ "s", "r" ] ],
+  output_source_getter_string := "ExponentialOnObjects( cat, Range( alpha ), Source( beta ) )",
+  output_range_getter_string := "ExponentialOnObjects( cat, Source( alpha ), Range( beta ) )",
+  with_given_object_position := "both",
+  return_type := "morphism" ),
 
 ExponentialOnMorphismsWithGivenExponentials := rec(
-  installation_name := "ExponentialOnMorphismsWithGivenExponentials",
   filter_list := [ "category", "object", "morphism", "morphism", "object" ],
   io_type := [ [ "s", "alpha", "beta", "r" ], [ "s", "r" ] ],
-  cache_name := "ExponentialOnMorphismsWithGivenExponentials",
-  return_type := "morphism",
-  dual_operation := "CoexponentialOnMorphismsWithGivenCoexponentials",
-  dual_arguments_reversed := true ),
+  return_type := "morphism" ),
+
+CartesianEvaluationMorphism := rec(
+  filter_list := [ "category", "object", "object" ],
+  io_type := [ [ "a", "b" ], [ "s", "b" ] ],
+  output_source_getter_string := "DirectProduct( cat, ExponentialOnObjects( cat, a, b ), a )",
+  output_range_getter_string := "b",
+  with_given_object_position := "Source",
+  return_type := "morphism" ),
 
 CartesianEvaluationMorphismWithGivenSource := rec(
-  installation_name := "CartesianEvaluationMorphismWithGivenSource",
   filter_list := [ "category", "object", "object", "object" ],
   io_type := [ [ "a", "b", "s" ], [ "s", "b" ] ],
-  cache_name := "CartesianEvaluationMorphismWithGivenSource",
+  return_type := "morphism" ),
+
+CartesianCoevaluationMorphism := rec(
+  filter_list := [ "category", "object", "object" ],
+  io_type := [ [ "a", "b" ], [ "a", "r" ] ],
+  output_source_getter_string := "a",
+  output_range_getter_string := "ExponentialOnObjects( cat, b, DirectProduct( cat, a, b ) )",
+  with_given_object_position := "Range",
   return_type := "morphism" ),
 
 CartesianCoevaluationMorphismWithGivenRange := rec(
-  installation_name := "CartesianCoevaluationMorphismWithGivenRange",
   filter_list := [ "category", "object", "object", "object" ],
   io_type := [ [ "a", "b", "r" ], [ "a", "r" ] ],
-  cache_name := "CartesianCoevaluationMorphismWithGivenRange",
   return_type := "morphism" ),
 
 DirectProductToExponentialAdjunctionMap := rec(
-  installation_name := "DirectProductToExponentialAdjunctionMap",
   filter_list := [ "category", "object", "object", "morphism" ],
   io_type := [ [ "a", "b", "f" ], [ "a", "i" ] ],
-  cache_name := "DirectProductToExponentialAdjunctionMap",
   return_type := "morphism",
 ),
 
 ExponentialToDirectProductAdjunctionMap := rec(
-  installation_name := "ExponentialToDirectProductAdjunctionMap",
   filter_list := [ "category", "object", "object", "morphism" ],
   io_type := [ [ "b", "c", "g" ], [ "t", "c" ] ],
-  cache_name := "ExponentialToDirectProductAdjunctionMap",
   return_type := "morphism",
 ),
 
+CartesianPreComposeMorphism := rec(
+  filter_list := [ "category", "object", "object", "object" ],
+  io_type := [ [ "a", "b", "c" ], [ "s", "r" ] ],
+  output_source_getter_string := "DirectProduct( cat, ExponentialOnObjects( cat, a, b ), ExponentialOnObjects( cat, b, c ) )",
+  output_range_getter_string := "ExponentialOnObjects( cat, a, c )",
+  with_given_object_position := "both",
+  return_type := "morphism" ),
+
 CartesianPreComposeMorphismWithGivenObjects := rec(
-  installation_name := "CartesianPreComposeMorphismWithGivenObjects",
   filter_list := [ "category", "object", "object", "object", "object", "object" ],
   io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
-  cache_name := "CartesianPreComposeMorphismWithGivenObjects",
+  return_type := "morphism" ),
+
+CartesianPostComposeMorphism := rec(
+  filter_list := [ "category", "object", "object", "object" ],
+  io_type := [ [ "a", "b", "c" ], [ "s", "r" ] ],
+  output_source_getter_string := "DirectProduct( cat, ExponentialOnObjects( cat, b, c ), ExponentialOnObjects( cat, a, b ) )",
+  output_range_getter_string := "ExponentialOnObjects( cat, a, c )",
+  with_given_object_position := "both",
   return_type := "morphism" ),
 
 CartesianPostComposeMorphismWithGivenObjects := rec(
-  installation_name := "CartesianPostComposeMorphismWithGivenObjects",
   filter_list := [ "category", "object", "object", "object", "object", "object" ],
   io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
-  cache_name := "CartesianPostComposeMorphismWithGivenObjects",
   return_type := "morphism" ),
 
 CartesianDualOnObjects := rec(
-  installation_name := "CartesianDualOnObjects",
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "ad" ] ],
-  cache_name := "CartesianDualOnObjects",
   return_type := "object" ),
 
+CartesianDualOnMorphisms := rec(
+  filter_list := [ "category", "morphism" ],
+  io_type := [ [ "alpha" ], [ "s", "r" ] ],
+  output_source_getter_string := "CartesianDualOnObjects( cat, Range( alpha ) )",
+  output_range_getter_string := "CartesianDualOnObjects( cat, Source( alpha ) )",
+  with_given_object_position := "both",
+  return_type := "morphism" ),
+
 CartesianDualOnMorphismsWithGivenCartesianDuals := rec(
-  installation_name := "CartesianDualOnMorphismsWithGivenCartesianDuals",
-  io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
   filter_list := [ "category", "object", "morphism", "object" ],
-  cache_name := "CartesianDualOnMorphismsWithGivenCartesianDuals",
+  io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
+  return_type := "morphism" ),
+
+CartesianEvaluationForCartesianDual := rec(
+  filter_list := [ "category", "object" ],
+  io_type := [ [ "a" ], [ "s", "r" ] ],
+  output_source_getter_string := "DirectProduct( cat, CartesianDualOnObjects( cat, a ), a )",
+  output_range_getter_string := "TerminalObject( cat )",
+  with_given_object_position := "both",
   return_type := "morphism" ),
 
 CartesianEvaluationForCartesianDualWithGivenDirectProduct := rec(
-  installation_name := "CartesianEvaluationForCartesianDualWithGivenDirectProduct",
   filter_list := [ "category", "object", "object", "object" ],
   io_type := [ [ "s", "a", "r" ], [ "s", "r" ] ],
-  cache_name := "CartesianEvaluationForCartesianDualWithGivenDirectProduct",
+  return_type := "morphism" ),
+
+MorphismToCartesianBidual := rec(
+  filter_list := [ "category", "object" ],
+  io_type := [ [ "a" ], [ "a", "r" ] ],
+  output_source_getter_string := "a",
+  output_range_getter_string := "CartesianDualOnObjects( cat, CartesianDualOnObjects( cat, a ) )",
+  with_given_object_position := "Range",
   return_type := "morphism" ),
 
 MorphismToCartesianBidualWithGivenCartesianBidual := rec(
-  installation_name := "MorphismToCartesianBidualWithGivenCartesianBidual",
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "r" ], [ "a", "r" ] ],
-  cache_name := "MorphismToCartesianBidualWithGivenCartesianBidual",
+  return_type := "morphism" ),
+
+DirectProductExponentialCompatibilityMorphism := rec(
+  filter_list := [ "category", "list_of_objects" ],
+  input_arguments_names := [ "cat", "list" ],
+  output_source_getter_string := "DirectProduct( cat, ExponentialOnObjects( cat, list[1], list[2] ), ExponentialOnObjects( cat, list[3], list[4] ) )",
+  output_range_getter_string := "ExponentialOnObjects( cat, DirectProduct( cat, list[1], list[3] ), DirectProduct( cat, list[2], list[4] ) )",
+  with_given_object_position := "both",
   return_type := "morphism" ),
 
 DirectProductExponentialCompatibilityMorphismWithGivenObjects := rec(
-  installation_name := "DirectProductExponentialCompatibilityMorphismWithGivenObjects",
-  filter_list := [ "category", "object", "object", "object", "object", IsList ],
-  cache_name := "DirectProductExponentialCompatibilityMorphismWithGivenObjects",
+  filter_list := [ "category", "object", "list_of_objects", "object" ],
+  input_arguments_names := [ "cat", "source", "list", "range" ],
+  output_source_getter_string := "source",
+  output_range_getter_string := "range",
+  return_type := "morphism" ),
+
+DirectProductCartesianDualityCompatibilityMorphism := rec(
+  filter_list := [ "category", "object", "object" ],
+  io_type := [ [ "a", "b" ], [ "s", "r" ] ],
+  output_source_getter_string := "DirectProduct( cat, CartesianDualOnObjects( cat, a ), CartesianDualOnObjects( cat, b ) )",
+  output_range_getter_string := "CartesianDualOnObjects( cat, DirectProduct( cat, a, b ) )",
+  with_given_object_position := "both",
   return_type := "morphism" ),
 
 DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects := rec(
-  installation_name := "DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects",
   filter_list := [ "category", "object", "object", "object", "object" ],
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
-  cache_name := "DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects",
+  return_type := "morphism" ),
+
+MorphismFromDirectProductToExponential := rec(
+  filter_list := [ "category", "object", "object" ],
+  io_type := [ [ "a", "b" ], [ "s", "r" ] ],
+  output_source_getter_string := "DirectProduct( cat, CartesianDualOnObjects( cat, a ), b )",
+  output_range_getter_string := "ExponentialOnObjects( cat, a, b )",
+  with_given_object_position := "both",
   return_type := "morphism" ),
 
 MorphismFromDirectProductToExponentialWithGivenObjects := rec(
-  installation_name := "MorphismFromDirectProductToExponentialWithGivenObjects",
   filter_list := [ "category", "object", "object", "object", "object" ],
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
-  cache_name := "MorphismFromDirectProductToExponentialWithGivenObjects",
   return_type := "morphism" ),
 
 IsomorphismFromExponentialToCartesianDual := rec(
-  installation_name := "IsomorphismFromExponentialToCartesianDual",
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "i", "d" ] ],
-  cache_name := "IsomorphismFromExponentialToCartesianDual",
   return_type := "morphism",
 ),
 
 IsomorphismFromCartesianDualToExponential := rec(
-  installation_name := "IsomorphismFromCartesianDualToExponential",
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "d", "i" ] ],
-  cache_name := "IsomorphismFromCartesianDualToExponential",
   return_type := "morphism",
 ),
 
 UniversalPropertyOfCartesianDual := rec(
-  installation_name := "UniversalPropertyOfCartesianDual",
   filter_list := [ "category", "object", "object", "morphism" ],
   io_type := [ [ "t", "a", "alpha" ], [ "t", "d" ] ],
-  cache_name := "UniversalPropertyOfCartesianDual",
   return_type := "morphism",
 ),
 
 CartesianLambdaIntroduction := rec(
-  installation_name := "CartesianLambdaIntroduction",
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "u", "i" ] ],
-  cache_name := "CartesianLambdaIntroduction",
   return_type := "morphism",
 ),
 
 CartesianLambdaElimination := rec(
-  installation_name := "CartesianLambdaElimination",
   filter_list := [ "category", "object", "object", "morphism" ],
   io_type := [ [ "a", "b", "alpha" ], [ "a", "b" ] ],
-  cache_name := "CartesianLambdaElimination",
   return_type := "morphism",
 ),
 
+IsomorphismFromObjectToExponential := rec(
+  filter_list := [ "category", "object" ],
+  io_type := [ [ "a" ], [ "a", "r" ] ],
+  output_source_getter_string := "a",
+  output_range_getter_string := "ExponentialOnObjects( cat, TerminalObject( cat ), a )",
+  with_given_object_position := "Range",
+  return_type := "morphism" ),
+
 IsomorphismFromObjectToExponentialWithGivenExponential := rec(
-  installation_name := "IsomorphismFromObjectToExponentialWithGivenExponential",
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "r" ], [ "a", "r" ] ],
-  cache_name := "IsomorphismFromObjectToExponentialWithGivenExponential",
+  return_type := "morphism" ),
+
+IsomorphismFromExponentialToObject := rec(
+  filter_list := [ "category", "object" ],
+  io_type := [ [ "a" ], [ "s", "a" ] ],
+  output_source_getter_string := "ExponentialOnObjects( cat, TerminalObject( cat ), a )",
+  output_range_getter_string := "a",
+  with_given_object_position := "Source",
   return_type := "morphism" ),
 
 IsomorphismFromExponentialToObjectWithGivenExponential := rec(
-  installation_name := "IsomorphismFromExponentialToObjectWithGivenExponential",
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "s" ], [ "s", "a" ] ],
-  cache_name := "IsomorphismFromExponentialToObjectWithGivenExponential",
   return_type := "morphism" ),
 
 ) );
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( CARTESIAN_CLOSED_CATEGORIES_METHOD_NAME_RECORD );
 
-CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE( CARTESIAN_CLOSED_CATEGORIES_METHOD_NAME_RECORD, "Toposes" );
+CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
+    CARTESIAN_CLOSED_CATEGORIES_METHOD_NAME_RECORD,
+    "Toposes",
+    "CartesianClosedCategories.autogen.gd",
+    "Cartesian Categories",
+    "Add-methods"
+);
+
+CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE( CARTESIAN_CLOSED_CATEGORIES_METHOD_NAME_RECORD, "CartesianCategories" );
 
 CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( CARTESIAN_CLOSED_CATEGORIES_METHOD_NAME_RECORD );
