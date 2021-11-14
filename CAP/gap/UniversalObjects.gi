@@ -183,7 +183,11 @@ InstallMethod( DirectProductOp,
   function( category_and_diagram, category )
     local diagram;
     
-    diagram := category_and_diagram[2];
+    if IsBound( category_and_diagram[2] ) and IsList( category_and_diagram[2] ) then
+        diagram := category_and_diagram[2];
+    else
+        diagram := category_and_diagram{[ 2 .. Length( category_and_diagram ) ]};
+    fi;
     
     return DirectProductOp( category, diagram );
     
@@ -222,7 +226,11 @@ InstallMethod( DirectSumOp,
   function( category_and_diagram, category )
     local diagram;
     
-    diagram := category_and_diagram[2];
+    if IsBound( category_and_diagram[2] ) and IsList( category_and_diagram[2] ) then
+        diagram := category_and_diagram[2];
+    else
+        diagram := category_and_diagram{[ 2 .. Length( category_and_diagram ) ]};
+    fi;
     
     if not ( IsBound( category!.supports_empty_limits ) and category!.supports_empty_limits = true ) and diagram = [ ] then
         return ZeroObject( category );
