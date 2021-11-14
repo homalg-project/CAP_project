@@ -1653,7 +1653,7 @@
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(\mathrm{\underline{coHom}}(a,1), a)[123X.[133X
   
   [33X[0;0YThe    argument    is    an    object    [23Xa[123X,    and    an    object    [23Xs    =
-  \mathrm{\underline{Hom}}(1,a)[123X.   The   output  is  the  natural  isomorphism
+  \mathrm{\underline{coHom}}(a,1)[123X.  The  output  is  the  natural  isomorphism
   [23X\mathrm{\underline{coHom}}(a,1) \rightarrow a[123X.[133X
   
   [1X1.6-36 AddCoDualOnMorphisms[101X
