@@ -460,18 +460,17 @@ fi
 # make sure every file is readable
 chmod -R a+r .
 
-# adjust links to other manuals
-# Note that we cannot use sed's `-i` option for in-place editing, as
-# that is a non-portable extension of POSIX, which works differently in
-# BSD and GNU make.
-for f in ./*/*.htm* ; do
-  sed 's;href="/home/gap/.gap/pkg/homalg_project/Modules/doc/;href="https://homalg-project.github.io/homalg_project/Modules/doc/;g' "$f" > "$f.bak"
-  mv "$f.bak" "$f"
-done
-
-for f in ./*/*.htm* ; do
-  sed 's;href="/home/gap/.gap/pkg/homalg_project/homalg/doc/;href="https://homalg-project.github.io/homalg_project/homalg/doc/;g' "$f" > "$f.bak"
-  mv "$f.bak" "$f"
+for package in CAP_project/CAP CAP_project/FreydCategoriesForCAP CAP_project/MonoidalCategories HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra homalg_project/homalg homalg_project/Modules Toposes; do
+    
+    # adjust links to other manuals
+    # Note that we cannot use sed's `-i` option for in-place editing, as
+    # that is a non-portable extension of POSIX, which works differently in
+    # BSD and GNU make.
+    for f in ./*/*.htm* ; do
+        sed "s;href=\"/home/gap/.gap/pkg/$package/doc/;href=\"https://homalg-project.github.io/$package/doc/;g" "$f" > "$f.bak"
+        mv "$f.bak" "$f"
+    done
+    
 done
 
 # basic sanity check
