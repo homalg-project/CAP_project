@@ -1,5 +1,5 @@
-#
-# MonoidalCategories
+# SPDX-License-Identifier: GPL-2.0-or-later
+# MonoidalCategories: Monoidal and monoidal (co)closed categories
 #
 # This file is a script which compiles the package manual.
 #

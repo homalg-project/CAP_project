@@ -1,3 +1,9 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# MonoidalCategories: Monoidal and monoidal (co)closed categories
+#
+# Implementations
+#
+
 InstallValue( RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD, rec(
 
 CoclosedCoevaluationForCoDual := rec(
