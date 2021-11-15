@@ -38,6 +38,14 @@ jobs:
           git clone --depth 1 https://github.com/homalg-project/homalg_project.git
           # set SOURCE_DATE_EPOCH for reproducible PDFs
           export SOURCE_DATE_EPOCH=0
+          # build documentation of packages which we might want to reference, keep this in sync with `release-gap-package`
+          [ -d "CAP_project/CAP" ] && make -C "CAP_project/CAP" doc
+          [ -d "CAP_project/FreydCategoriesForCAP" ] && make -C "CAP_project/FreydCategoriesForCAP" doc
+          [ -d "CAP_project/MonoidalCategories" ] && make -C "CAP_project/MonoidalCategories" doc
+          [ -d "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" ] && make -C "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" doc
+          [ -d "homalg_project/homalg" ] && make -C "homalg_project/homalg" doc
+          [ -d "homalg_project/Modules" ] && make -C "homalg_project/Modules" doc
+          [ -d "Toposes" ] && make -C "Toposes" doc
           TERM=dumb make -C CAP_project -j $(nproc) --output-sync ci-test
           cp ./CAP_project/.codecov.yml ./
           (cd CAP_project && LANG=C.UTF-8 python3 process_coverage_ignored_lines.py)
