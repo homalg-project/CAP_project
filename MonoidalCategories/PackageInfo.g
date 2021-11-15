@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # MonoidalCategories: Monoidal and monoidal (co)closed categories
 #
 # This file contains package meta data. For additional information on
@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "MonoidalCategories",
 Subtitle := "Monoidal and monoidal (co)closed categories",
-Version := "2021.11-01",
-Date := "14/11/2021",
+Version := "2021.11-02",
+Date := "15/11/2021",
 License := "GPL-2.0-or-later",
 
 Persons := [
