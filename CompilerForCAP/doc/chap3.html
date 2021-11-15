@@ -296,8 +296,11 @@ rec(
 
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MatrixCategory( Q : enable_compilation := true );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := VectorSpaceObject( 2, Q );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MATRIX_CATEGORY(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Q :</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    enable_compilation := true, no_precompiled_code := true</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := MatrixCategoryObject( vec, 2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := ZeroMorphism( V, V );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := IdentityMorphism( V );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W := DirectSum( V, V );;</span>
@@ -332,17 +335,17 @@ end
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.compiled_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3]</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
 function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
-    local cap_jit_hoisted_expression_1_1, cap_jit_deduplicated_expression_1_1;
-    cap_jit_deduplicated_expression_1_1 := UnderlyingRing( cat_1 );
-    cap_jit_hoisted_expression_1_1 := cap_jit_deduplicated_expression_1_1;
+    local hoisted_1_1, deduped_2_1;
+    deduped_2_1 := UnderlyingRing( cat_1 );
+    hoisted_1_1 := deduped_2_1;
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, S_1, T_1, UnderlyingMatrix, 
-       UnionOfRows( cap_jit_deduplicated_expression_1_1, Dimension( T_1 ), 
+       UnionOfRows( deduped_2_1, Dimension( T_1 ), 
          ListN( diagram_S_1, List( morphism_matrix_1, function ( row_2 )
                   return List( row_2, UnderlyingMatrix );
               end ), function ( source_2, row_2 )
-                return UnionOfColumns( cap_jit_hoisted_expression_1_1, 
-                   Dimension( source_2 ), row_2 );
+                return UnionOfColumns( hoisted_1_1, Dimension( source_2 ), 
+                   row_2 );
             end ) ) );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># compile the default derivation of</span>
@@ -365,17 +368,17 @@ end
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ vec, W, [ V, V ], morphism_matrix, [ V, V ], W  ]</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">) );;</span>
 function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
-    local cap_jit_hoisted_expression_1_1, cap_jit_deduplicated_expression_1_1;
-    cap_jit_deduplicated_expression_1_1 := UnderlyingRing( cat_1 );
-    cap_jit_hoisted_expression_1_1 := cap_jit_deduplicated_expression_1_1;
+    local hoisted_1_1, deduped_2_1;
+    deduped_2_1 := UnderlyingRing( cat_1 );
+    hoisted_1_1 := deduped_2_1;
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, S_1, T_1, UnderlyingMatrix, 
-       UnionOfRows( cap_jit_deduplicated_expression_1_1, Dimension( T_1 ), 
+       UnionOfRows( deduped_2_1, Dimension( T_1 ), 
          ListN( diagram_S_1, morphism_matrix_1, 
            function ( logic_new_func_x_2, logic_new_func_y_2 )
-                return UnionOfColumns( cap_jit_hoisted_expression_1_1, 
-                   Dimension( logic_new_func_x_2 ), 
-                   List( logic_new_func_y_2, function ( s_3 )
+                return 
+                 UnionOfColumns( hoisted_1_1, Dimension( logic_new_func_x_2 )
+                    , List( logic_new_func_y_2, function ( s_3 )
                           return UnderlyingMatrix( s_3 );
                       end ) );
             end ) ) );
@@ -383,67 +386,41 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KernelEmbedding( alpha );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Last( vec!.compiled_functions.KernelEmbedding ) );</span>
 function ( cat_1, morphism_1 )
-    local cap_jit_morphism_attribute_1_1;
-    cap_jit_morphism_attribute_1_1 
-     := SyzygiesOfRows( UnderlyingMatrix( morphism_1 ) );
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := SyzygiesOfRows( UnderlyingMatrix( morphism_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1_1 ) ), 
-       Source( morphism_1 ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 
-       );
+             ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), 
+       Source( morphism_1 ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 </pre></div>
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage( "LinearAlgebraForCAP", "gap/CompilerLogic.gi" );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># be careful not to use `MatrixCategory` because attributes are not supported</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">category_constructor := field -&gt; MATRIX_CATEGORY( field );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ QQ ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "MatrixCategoryPrecompiled";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "LinearAlgebraForCAP";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Intersection(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ListInstalledOperationsOfCategory( category_constructor( QQ ) ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    CAP_JIT_INTERNAL_SAFE_OPERATIONS</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># exclude some operations which currently do not yield nice results</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">operations := Filtered( operations,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                        o -&gt; PositionSublist( o, "FiberProduct" ) = fail );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Filtered( operations,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                        o -&gt; PositionSublist( o, "Pushout" ) = fail );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Filtered( operations,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                        o -&gt; PositionSublist( o, "Image" ) = fail );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Filtered( operations,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                        o -&gt; PositionSublist( o, "Coimage" ) = fail );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Filtered( operations,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                        o -&gt; PositionSublist( o, "DirectProduct" ) = fail );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Filtered( operations,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                        o -&gt; PositionSublist( o, "Coproduct" ) = fail );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Filtered( operations,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                        o -&gt; PositionSublist( o, "TerminalObject" ) = fail );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Filtered( operations,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                        o -&gt; PositionSublist( o, "InitialObject" ) = fail );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Difference( operations, [ "DirectSumCodiagonalDifference" ] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Difference( operations, [ "DirectSumDiagonalDifference" ] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Difference( operations, [ "HomologyObject" ] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Difference( operations, [ "LiftOrFail", "ColiftOrFail" ] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># IsEqualForMorphismsOnMor causes problems in GAP 4.11 (see GAP issue #4449)</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">operations := Difference( operations, [ "IsEqualForMorphismsOnMor" ] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Difference( operations, [ "IsIdenticalToIdentityMorphism" ] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Difference( operations, [ "IsIdenticalToZeroMorphism" ] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># IsZeroForMorphisms tries to resolve IsZero and IsZero has a new</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># installation in GAP 4.12, so this causes slight differences in the output</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">operations := Difference( operations, [ "IsZeroForMorphisms" ] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Add( operations, "DirectSumFunctorialWithGivenDirectSums" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name :</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations := operations</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MatrixCategoryPrecompiled( QQ );</span>
 Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that the compiled code is loaded automatically</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># for this, we use the name of the argument of `ZeroObject`:</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># for non-compiled code it is "cat", while for compiled code it is "cat_1"</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">cat := MatrixCategory( QQ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1];</span>
+"cat_1"
 </pre></div>
 
 <p><a id="X7A810CDA83F2897F" name="X7A810CDA83F2897F"></a></p>
@@ -503,18 +480,17 @@ end
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, [ cat ] ) );</span>
 function ( cat_1, morphism_list_1 )
-    local cap_jit_morphism_attribute_1_1;
-    cap_jit_morphism_attribute_1_1 
-     := Iterated( List( morphism_list_1, UnderlyingMatrix ), 
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := Iterated( List( morphism_list_1, UnderlyingMatrix ), 
        function ( alpha_2, beta_2 )
             return alpha_2 * beta_2;
         end );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1_1 ) ), 
+             ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), 
        ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1_1 ) 
-         ), UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
+             ), cat_1, Dimension, NrColumns( morphism_attr_1_1 ) ), 
+       UnderlyingMatrix, morphism_attr_1_1 );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># Iterated with list</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">func := { cat, alpha, beta, gamma } -&gt;</span>
@@ -547,15 +523,14 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
 function ( cat_1, mor_1, test_mor_1 )
-    local cap_jit_morphism_attribute_1_1;
-    cap_jit_morphism_attribute_1_1 
-     := RightDivide( UnderlyingMatrix( test_mor_1 ), 
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := RightDivide( UnderlyingMatrix( test_mor_1 ), 
        SyzygiesOfRows( UnderlyingMatrix( mor_1 ) ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Source( test_mor_1 ), 
        ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( cap_jit_morphism_attribute_1_1 ) )
-        , UnderlyingMatrix, cap_jit_morphism_attribute_1_1 );
+             ), cat_1, Dimension, NrColumns( morphism_attr_1_1 ) ), 
+       UnderlyingMatrix, morphism_attr_1_1 );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func1 := function( x )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    #% CAP_JIT_RESOLVE_FUNCTION</span>
@@ -593,10 +568,9 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
 function ( x_1 )
     return List( [ 1 .. 9 ], function ( y_2 )
-            local cap_jit_deduplicated_expression_1_2;
-            cap_jit_deduplicated_expression_1_2 := y_2 + (x_1 + 1);
-            return cap_jit_deduplicated_expression_1_2 
-              + cap_jit_deduplicated_expression_1_2;
+            local deduped_1_2;
+            deduped_1_2 := y_2 + (x_1 + 1);
+            return deduped_1_2 + deduped_1_2;
         end );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
@@ -608,14 +582,10 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
 function ( x_1, y_1 )
-    local cap_jit_deduplicated_expression_1_1, 
-    cap_jit_deduplicated_expression_2_1;
-    cap_jit_deduplicated_expression_2_1 := x_1 + 1;
-    cap_jit_deduplicated_expression_1_1 
-     := y_1 + cap_jit_deduplicated_expression_2_1 
-      + cap_jit_deduplicated_expression_2_1;
-    return cap_jit_deduplicated_expression_1_1 
-      + cap_jit_deduplicated_expression_1_1;
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := x_1 + 1;
+    deduped_1_1 := y_1 + deduped_2_1 + deduped_2_1;
+    return deduped_1_1 + deduped_1_1;
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput"># don't deduplicate code accross functions</span>
@@ -642,16 +612,13 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
 function (  )
     return function ( y_2 )
-          local cap_jit_deduplicated_expression_1_2;
-          cap_jit_deduplicated_expression_1_2 := [ y_2, function ( x_3 )
-                    local cap_jit_deduplicated_expression_1_3;
-                    cap_jit_deduplicated_expression_1_3 := x_3 + 1;
-                    return cap_jit_deduplicated_expression_1_3 
-                      + cap_jit_deduplicated_expression_1_3;
+          local deduped_1_2;
+          deduped_1_2 := [ y_2, function ( x_3 )
+                    local deduped_1_3;
+                    deduped_1_3 := x_3 + 1;
+                    return deduped_1_3 + deduped_1_3;
                 end ];
-          return 
-           [ cap_jit_deduplicated_expression_1_2, 
-              cap_jit_deduplicated_expression_1_2 ];
+          return [ deduped_1_2, deduped_1_2 ];
       end;
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
@@ -664,17 +631,15 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
 function ( f_1, L_1 )
-    local cap_jit_deduplicated_expression_1_1;
-    cap_jit_deduplicated_expression_1_1 := f_1( function ( y_2 )
-            local cap_jit_hoisted_expression_1_2;
-            cap_jit_hoisted_expression_1_2 := y_2 + y_2;
+    local deduped_1_1;
+    deduped_1_1 := f_1( function ( y_2 )
+            local hoisted_1_2;
+            hoisted_1_2 := y_2 + y_2;
             return List( L_1, function ( l_3 )
-                    return cap_jit_hoisted_expression_1_2;
+                    return hoisted_1_2;
                 end );
         end );
-    return 
-     [ cap_jit_deduplicated_expression_1_1, 
-        cap_jit_deduplicated_expression_1_1 ];
+    return [ deduped_1_1, deduped_1_1 ];
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput"># make sure that ignoring paths in replaced paths works as expected</span>
@@ -685,15 +650,10 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
 function (  )
-    local cap_jit_deduplicated_expression_1_1, 
-    cap_jit_deduplicated_expression_2_1;
-    cap_jit_deduplicated_expression_2_1 := [ [ 1 ] ];
-    cap_jit_deduplicated_expression_1_1 
-     := [ cap_jit_deduplicated_expression_2_1, 
-        cap_jit_deduplicated_expression_2_1 ];
-    return 
-     [ cap_jit_deduplicated_expression_1_1, 
-        cap_jit_deduplicated_expression_1_1 ];
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := [ [ 1 ] ];
+    deduped_1_1 := [ deduped_2_1, deduped_2_1 ];
+    return [ deduped_1_1, deduped_1_1 ];
 end
 </pre></div>
 
@@ -788,11 +748,10 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
 function ( x_1 )
-    local cap_jit_hoisted_expression_1_1;
-    cap_jit_hoisted_expression_1_1 := x_1 + 1;
+    local hoisted_1_1;
+    hoisted_1_1 := x_1 + 1;
     return List( [ 1 .. 9 ], function ( y_2 )
-            return y_2 + cap_jit_hoisted_expression_1_1 
-              + (y_2 + cap_jit_hoisted_expression_1_1);
+            return y_2 + hoisted_1_1 + (y_2 + hoisted_1_1);
         end );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
@@ -804,12 +763,12 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
 function ( x_1 )
-    local cap_jit_hoisted_expression_1_1;
-    cap_jit_hoisted_expression_1_1 := List( [ 1 .. 9 ], function ( z_2 )
+    local hoisted_1_1;
+    hoisted_1_1 := List( [ 1 .. 9 ], function ( z_2 )
             return x_1 + z_2;
         end );
     return List( [ 1 .. 9 ], function ( y_2 )
-            return y_2 + cap_jit_hoisted_expression_1_1;
+            return y_2 + hoisted_1_1;
         end );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
@@ -834,10 +793,10 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
 function ( x_1 )
-    local cap_jit_hoisted_expression_1_1;
-    cap_jit_hoisted_expression_1_1 := x_1 + 1;
+    local hoisted_1_1;
+    hoisted_1_1 := x_1 + 1;
     return List( [ 1 .. 9 ], function ( y_2 )
-            return cap_jit_hoisted_expression_1_1;
+            return hoisted_1_1;
         end );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
@@ -850,11 +809,11 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
 function ( x_1 )
-    local cap_jit_hoisted_expression_1_1;
-    cap_jit_hoisted_expression_1_1 := x_1 + 1;
+    local hoisted_1_1;
+    hoisted_1_1 := x_1 + 1;
     return List( [ 1 .. 9 ], function ( y_2 )
             local z_2;
-            z_2 := cap_jit_hoisted_expression_1_1;
+            z_2 := hoisted_1_1;
             return z_2;
         end );
 end
@@ -868,13 +827,13 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
 function ( x_1 )
-    local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1;
-    cap_jit_hoisted_expression_1_1 := 1 + 1;
-    cap_jit_hoisted_expression_2_1 := List( [ 1 .. 9 ], function ( z_2 )
-            return z_2 + cap_jit_hoisted_expression_1_1;
+    local hoisted_1_1, hoisted_2_1;
+    hoisted_1_1 := 1 + 1;
+    hoisted_2_1 := List( [ 1 .. 9 ], function ( z_2 )
+            return z_2 + hoisted_1_1;
         end );
     return List( [ 1 .. 9 ], function ( y_2 )
-            return cap_jit_hoisted_expression_2_1;
+            return hoisted_2_1;
         end );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
@@ -887,13 +846,12 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
 function ( list_1 )
-    local cap_jit_hoisted_expression_1_1;
-    cap_jit_hoisted_expression_1_1 := Sum( list_1, function ( a_2 )
+    local hoisted_1_1;
+    hoisted_1_1 := Sum( list_1, function ( a_2 )
             return a_2;
         end );
     return List( [ 1 .. 9 ], function ( y_2 )
-            return y_2 + cap_jit_hoisted_expression_1_1 
-              + cap_jit_hoisted_expression_1_1;
+            return y_2 + hoisted_1_1 + hoisted_1_1;
         end );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
@@ -905,11 +863,10 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
 function ( x_1, func_1 )
-    local cap_jit_hoisted_expression_1_1;
-    cap_jit_hoisted_expression_1_1 := x_1 + 1;
+    local hoisted_1_1;
+    hoisted_1_1 := x_1 + 1;
     return List( [ 1 .. 9 ], function ( y_2 )
-            return func_1( cap_jit_hoisted_expression_1_1, 
-               cap_jit_hoisted_expression_1_1, y_2 );
+            return func_1( hoisted_1_1, hoisted_1_1, y_2 );
         end );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
@@ -921,16 +878,16 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
 function ( x_1 )
-    local cap_jit_hoisted_expression_1_1;
+    local hoisted_1_1;
     if x_1 &lt; 0 then
         return 0;
     else
-        cap_jit_hoisted_expression_1_1 := x_1 + 1;
+        hoisted_1_1 := x_1 + 1;
         return function ( y_2 )
-              local cap_jit_hoisted_expression_1_2;
-              cap_jit_hoisted_expression_1_2 := y_2 + 1;
-              return [ cap_jit_hoisted_expression_1_1, function ( z_3 )
-                        return cap_jit_hoisted_expression_1_2;
+              local hoisted_1_2;
+              hoisted_1_2 := y_2 + 1;
+              return [ hoisted_1_1, function ( z_3 )
+                        return hoisted_1_2;
                     end ];
           end;
     fi;
@@ -943,14 +900,14 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
 function ( x_1 )
-    local cap_jit_hoisted_expression_1_1;
+    local hoisted_1_1;
     if x_1 &lt; 0 then
-        cap_jit_hoisted_expression_1_1 := x_1 + 1;
+        hoisted_1_1 := x_1 + 1;
         return function ( y_2 )
-              local cap_jit_hoisted_expression_1_2;
-              cap_jit_hoisted_expression_1_2 := y_2 + 1;
-              return [ cap_jit_hoisted_expression_1_1, function ( z_3 )
-                        return cap_jit_hoisted_expression_1_2;
+              local hoisted_1_2;
+              hoisted_1_2 := y_2 + 1;
+              return [ hoisted_1_1, function ( z_3 )
+                        return hoisted_1_2;
                     end ];
           end;
     else
@@ -965,15 +922,15 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
 function ( x_1 )
-    local cap_jit_hoisted_expression_1_1;
-    cap_jit_hoisted_expression_1_1 := x_1 + 1;
+    local hoisted_1_1;
+    hoisted_1_1 := x_1 + 1;
     if x_1 &lt; 0 then
         return function ( y_2 )
-              return [ y_2, cap_jit_hoisted_expression_1_1 ];
+              return [ y_2, hoisted_1_1 ];
           end;
     else
         return function ( y_2 )
-              return [ y_2, cap_jit_hoisted_expression_1_1 ];
+              return [ y_2, hoisted_1_1 ];
           end;
     fi;
     return;
@@ -1188,23 +1145,21 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := MatrixCategory( QQ );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, [ cat ] ) );</span>
 function ( cat_1, matrix_1 )
-    local cap_jit_morphism_attribute_1_1, cap_jit_morphism_attribute_2_1;
-    cap_jit_morphism_attribute_1_1 := matrix_1;
-    cap_jit_morphism_attribute_2_1 := matrix_1;
+    local morphism_attr_1_1, morphism_attr_2_1;
+    morphism_attr_1_1 := matrix_1;
+    morphism_attr_2_1 := matrix_1;
     return [ ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-                 ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_1_1 
-               ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                 ), cat_1, Dimension, 
-             NrColumns( cap_jit_morphism_attribute_1_1 ) ), UnderlyingMatrix, 
-           cap_jit_morphism_attribute_1_1 ), 
+                 ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), 
+           ObjectifyObjectForCAPWithAttributes( rec(
+                 ), cat_1, Dimension, NrColumns( morphism_attr_1_1 ) ), 
+           UnderlyingMatrix, morphism_attr_1_1 ), 
         ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-                 ), cat_1, Dimension, NrRows( cap_jit_morphism_attribute_2_1 
-               ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                 ), cat_1, Dimension, 
-             NrColumns( cap_jit_morphism_attribute_2_1 ) ), UnderlyingMatrix, 
-           cap_jit_morphism_attribute_2_1 ) ];
+                 ), cat_1, Dimension, NrRows( morphism_attr_2_1 ) ), 
+           ObjectifyObjectForCAPWithAttributes( rec(
+                 ), cat_1, Dimension, NrColumns( morphism_attr_2_1 ) ), 
+           UnderlyingMatrix, morphism_attr_2_1 ) ];
 end
 </pre></div>
 
@@ -1602,11 +1557,12 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># be careful not to use `MatrixCategory` because attributes are not supported</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">category_constructor := function( field )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  return Opposite( MATRIX_CATEGORY( field : FinalizeCategory := true ) ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MATRIX_CATEGORY( QQ : no_precompiled_code := true );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ QQ ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "OppositeOfMatrixCategoryPrecompiled";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "LinearAlgebraForCAP";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Intersection(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ListPrimitivelyInstalledOperationsOfCategory( MatrixCategory( QQ ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ListPrimitivelyInstalledOperationsOfCategory( vec ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    CAP_JIT_INTERNAL_SAFE_OPERATIONS</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># The output for Lift/ColiftOrFail differs between GAP 4.11 and GAP 4.12, see</span>
