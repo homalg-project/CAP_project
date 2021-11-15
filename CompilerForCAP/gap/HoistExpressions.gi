@@ -119,14 +119,14 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
                 expr := parent.(key);
                 
                 # search for an unused id
-                id := 0;
-                repeat
+                id := 1;
+                while ForAny( tree.nams, name -> EndsWith( name, Concatenation( "_", String( id ) ) ) ) do
                     
                     id := id + 1;
                     
-                    new_variable_name := Concatenation( "cap_jit_hoisted_expression_", String( id ) );
-                    
-                until not new_variable_name in tree.nams;
+                od;
+                
+                new_variable_name := Concatenation( "hoisted_", String( id ) );
                 
                 tree.nams := Concatenation( tree.nams, [ new_variable_name ] );
                 

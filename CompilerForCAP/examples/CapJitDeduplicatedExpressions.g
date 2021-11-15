@@ -18,10 +18,9 @@ compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
 Display( compiled_func );
 #! function ( x_1 )
 #!     return List( [ 1 .. 9 ], function ( y_2 )
-#!             local cap_jit_deduplicated_expression_1_2;
-#!             cap_jit_deduplicated_expression_1_2 := y_2 + (x_1 + 1);
-#!             return cap_jit_deduplicated_expression_1_2 
-#!               + cap_jit_deduplicated_expression_1_2;
+#!             local deduped_1_2;
+#!             deduped_1_2 := y_2 + (x_1 + 1);
+#!             return deduped_1_2 + deduped_1_2;
 #!         end );
 #! end
 
@@ -35,14 +34,10 @@ tree := CapJitDeduplicatedExpressions( tree );;
 compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
 Display( compiled_func );
 #! function ( x_1, y_1 )
-#!     local cap_jit_deduplicated_expression_1_1, 
-#!     cap_jit_deduplicated_expression_2_1;
-#!     cap_jit_deduplicated_expression_2_1 := x_1 + 1;
-#!     cap_jit_deduplicated_expression_1_1 
-#!      := y_1 + cap_jit_deduplicated_expression_2_1 
-#!       + cap_jit_deduplicated_expression_2_1;
-#!     return cap_jit_deduplicated_expression_1_1 
-#!       + cap_jit_deduplicated_expression_1_1;
+#!     local deduped_1_1, deduped_2_1;
+#!     deduped_2_1 := x_1 + 1;
+#!     deduped_1_1 := y_1 + deduped_2_1 + deduped_2_1;
+#!     return deduped_1_1 + deduped_1_1;
 #! end
 
 ##
@@ -73,16 +68,13 @@ compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
 Display( compiled_func );
 #! function (  )
 #!     return function ( y_2 )
-#!           local cap_jit_deduplicated_expression_1_2;
-#!           cap_jit_deduplicated_expression_1_2 := [ y_2, function ( x_3 )
-#!                     local cap_jit_deduplicated_expression_1_3;
-#!                     cap_jit_deduplicated_expression_1_3 := x_3 + 1;
-#!                     return cap_jit_deduplicated_expression_1_3 
-#!                       + cap_jit_deduplicated_expression_1_3;
+#!           local deduped_1_2;
+#!           deduped_1_2 := [ y_2, function ( x_3 )
+#!                     local deduped_1_3;
+#!                     deduped_1_3 := x_3 + 1;
+#!                     return deduped_1_3 + deduped_1_3;
 #!                 end ];
-#!           return 
-#!            [ cap_jit_deduplicated_expression_1_2, 
-#!               cap_jit_deduplicated_expression_1_2 ];
+#!           return [ deduped_1_2, deduped_1_2 ];
 #!       end;
 #! end
 
@@ -97,17 +89,15 @@ tree := CapJitDeduplicatedExpressions( tree );;
 compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
 Display( compiled_func );
 #! function ( f_1, L_1 )
-#!     local cap_jit_deduplicated_expression_1_1;
-#!     cap_jit_deduplicated_expression_1_1 := f_1( function ( y_2 )
-#!             local cap_jit_hoisted_expression_1_2;
-#!             cap_jit_hoisted_expression_1_2 := y_2 + y_2;
+#!     local deduped_1_1;
+#!     deduped_1_1 := f_1( function ( y_2 )
+#!             local hoisted_1_2;
+#!             hoisted_1_2 := y_2 + y_2;
 #!             return List( L_1, function ( l_3 )
-#!                     return cap_jit_hoisted_expression_1_2;
+#!                     return hoisted_1_2;
 #!                 end );
 #!         end );
-#!     return 
-#!      [ cap_jit_deduplicated_expression_1_1, 
-#!         cap_jit_deduplicated_expression_1_1 ];
+#!     return [ deduped_1_1, deduped_1_1 ];
 #! end
 
 ##
@@ -120,15 +110,10 @@ tree := CapJitDeduplicatedExpressions( tree );;
 compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
 Display( compiled_func );
 #! function (  )
-#!     local cap_jit_deduplicated_expression_1_1, 
-#!     cap_jit_deduplicated_expression_2_1;
-#!     cap_jit_deduplicated_expression_2_1 := [ [ 1 ] ];
-#!     cap_jit_deduplicated_expression_1_1 
-#!      := [ cap_jit_deduplicated_expression_2_1, 
-#!         cap_jit_deduplicated_expression_2_1 ];
-#!     return 
-#!      [ cap_jit_deduplicated_expression_1_1, 
-#!         cap_jit_deduplicated_expression_1_1 ];
+#!     local deduped_1_1, deduped_2_1;
+#!     deduped_2_1 := [ [ 1 ] ];
+#!     deduped_1_1 := [ deduped_2_1, deduped_2_1 ];
+#!     return [ deduped_1_1, deduped_1_1 ];
 #! end
 
 #! @EndExample

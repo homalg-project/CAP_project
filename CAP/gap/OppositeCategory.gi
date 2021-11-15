@@ -149,7 +149,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
           filter_list, input_arguments_names, return_type, func_string,
           dual_preprocessor_func_string, preprocessor_string, dual_arguments,
           dual_postprocessor_func_string, postprocessor_string, output_source_getter_string, output_range_getter_string, return_statement,
-          func, current_add, list_of_attributes, attr, tester, setter, getter;
+          func, weight, current_add, list_of_attributes, attr, tester, setter, getter;
     
     only_primitive_operations := ValueOption( "only_primitive_operations" ) = true;
     
@@ -396,9 +396,13 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
         
         func := EvalString( func_string );
         
+        weight := CurrentOperationWeight( category!.derivations_weight_list, dual_operation_name );
+        
+        Assert( 0, weight < infinity );
+        
         current_add := ValueGlobal( Concatenation( "Add", current_recname ) );
         
-        current_add( opposite_category, func );
+        current_add( opposite_category, func, weight );
         
     od;
     

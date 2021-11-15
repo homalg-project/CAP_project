@@ -60,14 +60,14 @@ InstallGlobalFunction( CapJitReplacedSourceAndRangeAttributes, function ( tree, 
                         morphism_attribute_value := args.(morphism_attribute_position + 1);
                         
                         # search for an unused id
-                        id := 0;
-                        repeat
+                        id := 1;
+                        while ForAny( func.nams, name -> EndsWith( name, Concatenation( "_", String( id ) ) ) ) do
                             
                             id := id + 1;
                             
-                            new_variable_name := Concatenation( "cap_jit_morphism_attribute_", String( id ) );
-                            
-                        until not new_variable_name in func.nams;
+                        od;
+                        
+                        new_variable_name := Concatenation( "morphism_attr_", String( id ) );
                         
                         func.nams := Concatenation( func.nams, [ new_variable_name ] );
                         

@@ -17,11 +17,10 @@ tree := CapJitHoistedExpressions( tree );;
 compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
 Display( compiled_func );
 #! function ( x_1 )
-#!     local cap_jit_hoisted_expression_1_1;
-#!     cap_jit_hoisted_expression_1_1 := x_1 + 1;
+#!     local hoisted_1_1;
+#!     hoisted_1_1 := x_1 + 1;
 #!     return List( [ 1 .. 9 ], function ( y_2 )
-#!             return y_2 + cap_jit_hoisted_expression_1_1 
-#!               + (y_2 + cap_jit_hoisted_expression_1_1);
+#!             return y_2 + hoisted_1_1 + (y_2 + hoisted_1_1);
 #!         end );
 #! end
 
@@ -35,12 +34,12 @@ tree := CapJitHoistedExpressions( tree );;
 compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
 Display( compiled_func );
 #! function ( x_1 )
-#!     local cap_jit_hoisted_expression_1_1;
-#!     cap_jit_hoisted_expression_1_1 := List( [ 1 .. 9 ], function ( z_2 )
+#!     local hoisted_1_1;
+#!     hoisted_1_1 := List( [ 1 .. 9 ], function ( z_2 )
 #!             return x_1 + z_2;
 #!         end );
 #!     return List( [ 1 .. 9 ], function ( y_2 )
-#!             return y_2 + cap_jit_hoisted_expression_1_1;
+#!             return y_2 + hoisted_1_1;
 #!         end );
 #! end
 
@@ -69,10 +68,10 @@ tree := CapJitHoistedExpressions( tree );;
 compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
 Display( compiled_func );
 #! function ( x_1 )
-#!     local cap_jit_hoisted_expression_1_1;
-#!     cap_jit_hoisted_expression_1_1 := x_1 + 1;
+#!     local hoisted_1_1;
+#!     hoisted_1_1 := x_1 + 1;
 #!     return List( [ 1 .. 9 ], function ( y_2 )
-#!             return cap_jit_hoisted_expression_1_1;
+#!             return hoisted_1_1;
 #!         end );
 #! end
 
@@ -87,11 +86,11 @@ tree := CapJitHoistedExpressions( tree );;
 compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
 Display( compiled_func );
 #! function ( x_1 )
-#!     local cap_jit_hoisted_expression_1_1;
-#!     cap_jit_hoisted_expression_1_1 := x_1 + 1;
+#!     local hoisted_1_1;
+#!     hoisted_1_1 := x_1 + 1;
 #!     return List( [ 1 .. 9 ], function ( y_2 )
 #!             local z_2;
-#!             z_2 := cap_jit_hoisted_expression_1_1;
+#!             z_2 := hoisted_1_1;
 #!             return z_2;
 #!         end );
 #! end
@@ -107,13 +106,13 @@ tree := CapJitHoistedExpressions( tree );;
 compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
 Display( compiled_func );
 #! function ( x_1 )
-#!     local cap_jit_hoisted_expression_1_1, cap_jit_hoisted_expression_2_1;
-#!     cap_jit_hoisted_expression_1_1 := 1 + 1;
-#!     cap_jit_hoisted_expression_2_1 := List( [ 1 .. 9 ], function ( z_2 )
-#!             return z_2 + cap_jit_hoisted_expression_1_1;
+#!     local hoisted_1_1, hoisted_2_1;
+#!     hoisted_1_1 := 1 + 1;
+#!     hoisted_2_1 := List( [ 1 .. 9 ], function ( z_2 )
+#!             return z_2 + hoisted_1_1;
 #!         end );
 #!     return List( [ 1 .. 9 ], function ( y_2 )
-#!             return cap_jit_hoisted_expression_2_1;
+#!             return hoisted_2_1;
 #!         end );
 #! end
 
@@ -128,13 +127,12 @@ tree := CapJitHoistedExpressions( tree );;
 compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
 Display( compiled_func );
 #! function ( list_1 )
-#!     local cap_jit_hoisted_expression_1_1;
-#!     cap_jit_hoisted_expression_1_1 := Sum( list_1, function ( a_2 )
+#!     local hoisted_1_1;
+#!     hoisted_1_1 := Sum( list_1, function ( a_2 )
 #!             return a_2;
 #!         end );
 #!     return List( [ 1 .. 9 ], function ( y_2 )
-#!             return y_2 + cap_jit_hoisted_expression_1_1 
-#!               + cap_jit_hoisted_expression_1_1;
+#!             return y_2 + hoisted_1_1 + hoisted_1_1;
 #!         end );
 #! end
 
@@ -148,11 +146,10 @@ tree := CapJitHoistedExpressions( tree );;
 compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
 Display( compiled_func );
 #! function ( x_1, func_1 )
-#!     local cap_jit_hoisted_expression_1_1;
-#!     cap_jit_hoisted_expression_1_1 := x_1 + 1;
+#!     local hoisted_1_1;
+#!     hoisted_1_1 := x_1 + 1;
 #!     return List( [ 1 .. 9 ], function ( y_2 )
-#!             return func_1( cap_jit_hoisted_expression_1_1, 
-#!                cap_jit_hoisted_expression_1_1, y_2 );
+#!             return func_1( hoisted_1_1, hoisted_1_1, y_2 );
 #!         end );
 #! end
 
@@ -166,16 +163,16 @@ tree := CapJitHoistedExpressions( tree );;
 compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
 Display( compiled_func );
 #! function ( x_1 )
-#!     local cap_jit_hoisted_expression_1_1;
+#!     local hoisted_1_1;
 #!     if x_1 < 0 then
 #!         return 0;
 #!     else
-#!         cap_jit_hoisted_expression_1_1 := x_1 + 1;
+#!         hoisted_1_1 := x_1 + 1;
 #!         return function ( y_2 )
-#!               local cap_jit_hoisted_expression_1_2;
-#!               cap_jit_hoisted_expression_1_2 := y_2 + 1;
-#!               return [ cap_jit_hoisted_expression_1_1, function ( z_3 )
-#!                         return cap_jit_hoisted_expression_1_2;
+#!               local hoisted_1_2;
+#!               hoisted_1_2 := y_2 + 1;
+#!               return [ hoisted_1_1, function ( z_3 )
+#!                         return hoisted_1_2;
 #!                     end ];
 #!           end;
 #!     fi;
@@ -190,14 +187,14 @@ tree := CapJitHoistedExpressions( tree );;
 compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
 Display( compiled_func );
 #! function ( x_1 )
-#!     local cap_jit_hoisted_expression_1_1;
+#!     local hoisted_1_1;
 #!     if x_1 < 0 then
-#!         cap_jit_hoisted_expression_1_1 := x_1 + 1;
+#!         hoisted_1_1 := x_1 + 1;
 #!         return function ( y_2 )
-#!               local cap_jit_hoisted_expression_1_2;
-#!               cap_jit_hoisted_expression_1_2 := y_2 + 1;
-#!               return [ cap_jit_hoisted_expression_1_1, function ( z_3 )
-#!                         return cap_jit_hoisted_expression_1_2;
+#!               local hoisted_1_2;
+#!               hoisted_1_2 := y_2 + 1;
+#!               return [ hoisted_1_1, function ( z_3 )
+#!                         return hoisted_1_2;
 #!                     end ];
 #!           end;
 #!     else
@@ -214,15 +211,15 @@ tree := CapJitHoistedExpressions( tree );;
 compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
 Display( compiled_func );
 #! function ( x_1 )
-#!     local cap_jit_hoisted_expression_1_1;
-#!     cap_jit_hoisted_expression_1_1 := x_1 + 1;
+#!     local hoisted_1_1;
+#!     hoisted_1_1 := x_1 + 1;
 #!     if x_1 < 0 then
 #!         return function ( y_2 )
-#!               return [ y_2, cap_jit_hoisted_expression_1_1 ];
+#!               return [ y_2, hoisted_1_1 ];
 #!           end;
 #!     else
 #!         return function ( y_2 )
-#!               return [ y_2, cap_jit_hoisted_expression_1_1 ];
+#!               return [ y_2, hoisted_1_1 ];
 #!           end;
 #!     fi;
 #!     return;
