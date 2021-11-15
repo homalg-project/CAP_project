@@ -7,7 +7,7 @@
 
 #! @Chapter Monoidal Categories
 
-#! @Section Monoidal Categories
+#! @Section Add-methods
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.

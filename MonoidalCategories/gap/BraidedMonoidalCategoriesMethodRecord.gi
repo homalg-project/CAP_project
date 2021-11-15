@@ -41,7 +41,7 @@ CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
     "MonoidalCategories",
     "BraidedMonoidalCategories.autogen.gd",
     "Monoidal Categories",
-    "Braided Monoidal Categories"
+    "Add-methods"
 );
 
 CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE( BRAIDED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD, "MonoidalCategories" );

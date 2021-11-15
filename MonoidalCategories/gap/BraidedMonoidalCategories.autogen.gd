@@ -7,7 +7,7 @@
 
 #! @Chapter Monoidal Categories
 
-#! @Section Braided Monoidal Categories
+#! @Section Add-methods
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
