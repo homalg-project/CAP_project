@@ -30,7 +30,7 @@ CocartesianEvaluationMorphism := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "a", "r" ] ],
   output_source_getter_string := "a",
-  output_range_getter_string := "Coproduct( cat, b, CoexponentialOnObjects( cat, a, b ) )",
+  output_range_getter_string := "Coproduct( b, CoexponentialOnObjects( cat, a, b ) )",
   with_given_object_position := "Range",
   return_type := "morphism" ),
 
@@ -42,7 +42,7 @@ CocartesianEvaluationMorphismWithGivenRange := rec(
 CocartesianCoevaluationMorphism := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "s", "b" ] ],
-  output_source_getter_string := "CoexponentialOnObjects( cat, Coproduct( cat, a, b ), a )",
+  output_source_getter_string := "CoexponentialOnObjects( cat, Coproduct( a, b ), a )",
   output_range_getter_string := "b",
   with_given_object_position := "Source",
   return_type := "morphism" ),
@@ -68,7 +68,7 @@ CocartesianPreCoComposeMorphism := rec(
   filter_list := [ "category", "object", "object", "object" ],
   io_type := [ [ "a", "b", "c" ], [ "s", "r" ] ],
   output_source_getter_string := "CoexponentialOnObjects( cat, a, c )",
-  output_range_getter_string := "Coproduct( cat, CoexponentialOnObjects( cat, a, b ), CoexponentialOnObjects( cat, b, c ) )",
+  output_range_getter_string := "Coproduct( CoexponentialOnObjects( cat, a, b ), CoexponentialOnObjects( cat, b, c ) )",
   with_given_object_position := "both",
   return_type := "morphism" ),
 
@@ -81,7 +81,7 @@ CocartesianPostCoComposeMorphism := rec(
   filter_list := [ "category", "object", "object", "object" ],
   io_type := [ [ "a", "b", "c" ], [ "s", "r" ] ],
   output_source_getter_string := "CoexponentialOnObjects( cat, a, c )",
-  output_range_getter_string := "Coproduct( cat, CoexponentialOnObjects( cat, b, c ), CoexponentialOnObjects( cat, a, b ) )",
+  output_range_getter_string := "Coproduct( CoexponentialOnObjects( cat, b, c ), CoexponentialOnObjects( cat, a, b ) )",
   with_given_object_position := "both",
   return_type := "morphism" ),
 
@@ -112,7 +112,7 @@ CocartesianEvaluationForCocartesianDual := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "s", "r" ] ],
   output_source_getter_string := "InitialObject( cat )",
-  output_range_getter_string := "Coproduct( cat, a, CocartesianDualOnObjects( cat, a ) )",
+  output_range_getter_string := "Coproduct( a, CocartesianDualOnObjects( cat, a ) )",
   with_given_object_position := "both",
   return_type := "morphism" ),
 
@@ -137,8 +137,8 @@ MorphismFromCocartesianBidualWithGivenCocartesianBidual := rec(
 CoexponentialCoproductCompatibilityMorphism := rec(
   filter_list := [ "category", "list_of_objects" ],
   input_arguments_names := [ "cat", "list" ],
-  output_source_getter_string := "CoexponentialOnObjects( cat, Coproduct( cat, list[1], list[2] ), Coproduct( cat, list[3], list[4] ) )",
-  output_range_getter_string := "Coproduct( cat, CoexponentialOnObjects( cat, list[1], list[3] ), CoexponentialOnObjects( cat, list[2], list[4] ) )",
+  output_source_getter_string := "CoexponentialOnObjects( cat, Coproduct( list[1], list[2] ), Coproduct( list[3], list[4] ) )",
+  output_range_getter_string := "Coproduct( CoexponentialOnObjects( cat, list[1], list[3] ), CoexponentialOnObjects( cat, list[2], list[4] ) )",
   with_given_object_position := "both",
   return_type := "morphism" ),
 
@@ -152,8 +152,8 @@ CoexponentialCoproductCompatibilityMorphismWithGivenObjects := rec(
 CocartesianDualityCoproductCompatibilityMorphism := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "s", "r" ] ],
-  output_source_getter_string := "CocartesianDualOnObjects( cat, Coproduct( cat, a, b ) )",
-  output_range_getter_string := "Coproduct( cat, CocartesianDualOnObjects( cat, a ), CocartesianDualOnObjects( cat, b ) )",
+  output_source_getter_string := "CocartesianDualOnObjects( cat, Coproduct( a, b ) )",
+  output_range_getter_string := "Coproduct( CocartesianDualOnObjects( cat, a ), CocartesianDualOnObjects( cat, b ) )",
   with_given_object_position := "both",
   return_type := "morphism" ),
 
@@ -166,7 +166,7 @@ MorphismFromCoexponentialToCoproduct := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "s", "r" ] ],
   output_source_getter_string := "CoexponentialOnObjects( cat, a, b )",
-  output_range_getter_string := "Coproduct( cat, a, CocartesianDualOnObjects( cat, b ) )",
+  output_range_getter_string := "Coproduct( a, CocartesianDualOnObjects( cat, b ) )",
   with_given_object_position := "both",
   return_type := "morphism" ),
 

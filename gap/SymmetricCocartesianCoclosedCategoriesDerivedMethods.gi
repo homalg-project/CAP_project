@@ -180,7 +180,7 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
     b1 := list[3];
     b2 := list[4];
     
-    coproduct_b1_b2 := Coproduct( cat, b1, b2 );
+    coproduct_b1_b2 := Coproduct( b1, b2 );
     
     int_cohom_a1_b1 := CoexponentialOnObjects( cat, a1, b1 );
     
@@ -225,7 +225,7 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
 
     return CoproductToCoexponentialAdjunctionMap( cat,
              coproduct_b1_b2,
-             Coproduct( cat, int_cohom_a1_b1, int_cohom_a2_b2 ),
+             Coproduct( int_cohom_a1_b1, int_cohom_a2_b2 ),
              morphism );
 
 end : CategoryFilter := IsCocartesianCoclosedCategory,
@@ -239,7 +239,7 @@ AddDerivationToCAP( CocartesianDualityCoproductCompatibilityMorphismWithGivenObj
     
     unit := InitialObject( cat );
     
-    coproduct_on_object_1_and_object_2 := Coproduct( cat, object_1, object_2 );
+    coproduct_on_object_1_and_object_2 := Coproduct( object_1, object_2 );
     
     morphism := PreComposeList( cat, [
                   IsomorphismFromCocartesianDualToCoexponential( cat, coproduct_on_object_1_and_object_2 ),
@@ -375,7 +375,7 @@ AddDerivationToCAP( CocartesianCoevaluationMorphismWithGivenSource,
     return CoproductToCoexponentialAdjunctionMap( cat,
              object_1,
              object_2,
-             IdentityMorphism( cat, Coproduct( cat, object_1, object_2 ) )
+             IdentityMorphism( cat, Coproduct( object_1, object_2 ) )
            );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory,
@@ -411,7 +411,7 @@ AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
     
     return CoproductToCoexponentialAdjunctionMap( cat,
              z,
-             Coproduct( cat, cohom_x_y, cohom_y_z ),
+             Coproduct( cohom_x_y, cohom_y_z ),
              morphism );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory,
@@ -440,7 +440,7 @@ AddDerivationToCAP( CocartesianPostCoComposeMorphismWithGivenObjects,
     
     return CoproductToCoexponentialAdjunctionMap( cat,
              z,
-             Coproduct( cat, cohom_y_z, cohom_x_y ),
+             Coproduct( cohom_y_z, cohom_x_y ),
              morphism );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory,
@@ -489,7 +489,7 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
     
     id_int_cohom_a2_b2 := IdentityMorphism( cat, int_cohom_a2_b2 );
     
-    coproduct_b1_b2 := Coproduct( cat, b1, b2 );
+    coproduct_b1_b2 := Coproduct( b1, b2 );
     
     morphism := PreComposeList( cat, [
                   CoproductOnMorphisms( cat,
@@ -511,7 +511,7 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
     
     return CoproductToCoexponentialAdjunctionMap( cat,
              coproduct_b1_b2,
-             Coproduct( cat, int_cohom_a1_b1, int_cohom_a2_b2 ),
+             Coproduct( int_cohom_a1_b1, int_cohom_a2_b2 ),
              morphism );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory and IsStrictCocartesianCategory,
@@ -525,7 +525,7 @@ AddDerivationToCAP( CocartesianDualityCoproductCompatibilityMorphismWithGivenObj
     
     unit := InitialObject( cat );
     
-    coproduct_on_object_1_and_object_2 := Coproduct( cat, object_1, object_2 );
+    coproduct_on_object_1_and_object_2 := Coproduct( object_1, object_2 );
     
     morphism := PreComposeList( cat, [
                   IsomorphismFromCocartesianDualToCoexponential( cat, coproduct_on_object_1_and_object_2 ),
@@ -568,7 +568,7 @@ AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
     
     return CoproductToCoexponentialAdjunctionMap( cat,
              z,
-             Coproduct( cat, cohom_x_y, cohom_y_z ),
+             Coproduct( cohom_x_y, cohom_y_z ),
              morphism );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory and IsStrictCocartesianCategory,
@@ -594,7 +594,7 @@ AddDerivationToCAP( CocartesianPostCoComposeMorphismWithGivenObjects,
     
     return CoproductToCoexponentialAdjunctionMap( cat,
              z,
-             Coproduct( cat, cohom_y_z, cohom_x_y ),
+             Coproduct( cohom_y_z, cohom_x_y ),
              morphism );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory and IsStrictCocartesianCategory,

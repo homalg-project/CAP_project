@@ -11,8 +11,8 @@ InstallValue( BRAIDED_COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD, rec(
 CocartesianBraiding := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "s", "r" ] ],
-  output_source_getter_string := "Coproduct( cat, a, b )",
-  output_range_getter_string := "Coproduct( cat, b, a )",
+  output_source_getter_string := "Coproduct( a, b )",
+  output_range_getter_string := "Coproduct( b, a )",
   with_given_object_position := "both",
   return_type := "morphism" ),
 
@@ -24,8 +24,8 @@ CocartesianBraidingWithGivenCoproducts := rec(
 CocartesianBraidingInverse := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "s", "r" ] ],
-  output_source_getter_string := "Coproduct( cat, b, a )",
-  output_range_getter_string := "Coproduct( cat, a, b )",
+  output_source_getter_string := "Coproduct( b, a )",
+  output_range_getter_string := "Coproduct( a, b )",
   with_given_object_position := "both",
   return_type := "morphism" ),
 

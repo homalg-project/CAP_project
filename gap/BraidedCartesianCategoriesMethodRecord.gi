@@ -11,8 +11,8 @@ InstallValue( BRAIDED_CARTESIAN_CATEGORIES_METHOD_NAME_RECORD, rec(
 CartesianBraiding := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "s", "r" ] ],
-  output_source_getter_string := "DirectProduct( cat, a, b )",
-  output_range_getter_string := "DirectProduct( cat, b, a )",
+  output_source_getter_string := "DirectProduct( a, b )",
+  output_range_getter_string := "DirectProduct( b, a )",
   with_given_object_position := "both",
   return_type := "morphism" ),
 
@@ -24,8 +24,8 @@ CartesianBraidingWithGivenDirectProducts := rec(
 CartesianBraidingInverse := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "s", "r" ] ],
-  output_source_getter_string := "DirectProduct( cat, b, a )",
-  output_range_getter_string := "DirectProduct( cat, a, b )",
+  output_source_getter_string := "DirectProduct( b, a )",
+  output_range_getter_string := "DirectProduct( a, b )",
   with_given_object_position := "both",
   return_type := "morphism" ),
 

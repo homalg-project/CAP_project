@@ -12,7 +12,7 @@ AddDerivationToCAP( CartesianAssociatorRightToLeft,
   function( cat, object_1, object_2, object_3 )
     local source_and_range;
     
-    source_and_range := DirectProduct( cat, object_1, DirectProduct( cat, object_2, object_3 ) );
+    source_and_range := DirectProduct( object_1, DirectProduct( object_2, object_3 ) );
     
     return CartesianAssociatorRightToLeftWithGivenDirectProducts( cat,
              source_and_range,
@@ -29,7 +29,7 @@ AddDerivationToCAP( CartesianAssociatorLeftToRight,
   function( cat, object_1, object_2, object_3 )
     local source_and_range;
     
-    source_and_range := DirectProduct( cat, object_1, DirectProduct( cat, object_2, object_3 ) );
+    source_and_range := DirectProduct( object_1, DirectProduct( object_2, object_3 ) );
     
     return CartesianAssociatorLeftToRightWithGivenDirectProducts( cat,
              source_and_range,
