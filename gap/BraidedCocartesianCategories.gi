@@ -1,63 +1,72 @@
+# THIS FILE WAS AUTOMATICALLY GENERATED FROM MonoidalCategories v2021.11-02
+
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
 # Implementations
 #
 
-InstallValue( CAP_INTERNAL_BRAIDED_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS, rec( ) );
+##
+AddDerivationToCAP( CocartesianBraiding,
 
-##
-CAP_INTERNAL_BRAIDED_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS.CocartesianBraiding := 
-  [ [ "CocartesianBraidingWithGivenCoproducts", 1 ],
-    [ "Coproduct", 2 ] ];
-##
-InstallMethod( CocartesianBraiding,
-               [ IsCapCategoryObject, IsCapCategoryObject ],
-               
-  function( object_1, object_2 )
-    
-    return CocartesianBraidingWithGivenCoproducts( Coproduct( object_1, object_2 ), object_1, object_2, Coproduct( object_2, object_1 ) );
-    
-end );
-
-##
-InstallMethod( CocartesianBraiding,
-               [ IsCapCategoryObject and IsCellOfSkeletalCategory, IsCapCategoryObject ],
-               
-  function( object_1, object_2 )
+  function( cat, object_1, object_2 )
     local source_and_range;
     
-    source_and_range := Coproduct( object_1, object_2 );
+    source_and_range := Coproduct( cat, object_1, object_2 );
     
-    return CocartesianBraidingWithGivenCoproducts( source_and_range, object_1, object_2, source_and_range );
+    return CocartesianBraidingWithGivenCoproducts( cat, source_and_range, object_1, object_2, source_and_range );
     
-end );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-CAP_INTERNAL_BRAIDED_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS.CocartesianBraidingInverse := 
-  [ [ "CocartesianBraidingInverseWithGivenCoproducts", 1 ],
-    [ "Coproduct", 2 ] ];
-##
-InstallMethod( CocartesianBraidingInverse,
-               [ IsCapCategoryObject, IsCapCategoryObject ],
-               
-  function( object_1, object_2 )
-    
-    return CocartesianBraidingInverseWithGivenCoproducts( Coproduct( object_2, object_1 ), object_1, object_2, Coproduct( object_1, object_2 ) );
-    
-end );
+AddDerivationToCAP( CocartesianBraidingInverse,
 
-##
-InstallMethod( CocartesianBraidingInverse,
-               [ IsCapCategoryObject and IsCellOfSkeletalCategory, IsCapCategoryObject ],
-               
-  function( object_1, object_2 )
+  function( cat, object_1, object_2 )
     local source_and_range;
     
-    source_and_range := Coproduct( object_1, object_2 );
+    source_and_range := Coproduct( cat, object_1, object_2 );
     
-    return CocartesianBraidingInverseWithGivenCoproducts( source_and_range, object_1, object_2, source_and_range );
+    return CocartesianBraidingInverseWithGivenCoproducts( cat, source_and_range, object_1, object_2, source_and_range );
+    
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
+
+##
+InstallMethod( CheckCocartesianBraiding,
+               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( A, B, C )
+    local AB, mor1, mor2, BC;
+    
+    AB := Coproduct( A, B );
+    
+    mor1 := PreCompose( [
+                    CocartesianBraiding( AB, C ),
+                    CocartesianAssociatorRightToLeft( C, A, B ),
+                    CoproductOnMorphisms( CocartesianBraiding( C, A ), IdentityMorphism( B ) ) ] );
+    
+    mor2 := PreCompose( [
+                    CocartesianAssociatorLeftToRight( A, B, C ),
+                    CoproductOnMorphisms( IdentityMorphism( A ), CocartesianBraiding( B, C ) ),
+                    CocartesianAssociatorRightToLeft( A, C, B ) ] );
+    
+    if not IsCongruentForMorphisms( mor1, mor2 ) then
+       return false;
+    fi;
+    
+    BC := Coproduct( B, C );
+    
+    mor1 := PreCompose( [
+                    CocartesianBraiding( A, BC ),
+                    CocartesianAssociatorLeftToRight( B, C, A ),
+                    CoproductOnMorphisms( IdentityMorphism( B ), CocartesianBraiding( C, A ) ) ] );
+    
+    mor2 := PreCompose( [
+                    CocartesianAssociatorRightToLeft( A, B, C ),
+                    CoproductOnMorphisms( CocartesianBraiding( A, B ), IdentityMorphism( C ) ),
+                    CocartesianAssociatorLeftToRight( B, A, C ) ] );
+    
+    return IsCongruentForMorphisms( mor1, mor2 );
     
 end );
-
-CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD( CAP_INTERNAL_BRAIDED_COCARTESIAN_CATEGORIES_BASIC_OPERATIONS );

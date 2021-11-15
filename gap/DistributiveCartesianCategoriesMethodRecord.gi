@@ -1,3 +1,5 @@
+# THIS FILE WAS AUTOMATICALLY GENERATED FROM MonoidalCategories v2021.11-02
+
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
@@ -6,38 +8,70 @@
 
 InstallValue( DISTRIBUTIVE_CARTESIAN_CATEGORIES_METHOD_NAME_RECORD, rec(
 
+LeftCartesianDistributivityExpanding := rec(
+  filter_list := [ "category", "object", "list_of_objects" ],
+  io_type := [ [ "a", "L" ], [ "s", "r" ] ],
+  output_source_getter_string := "DirectProduct( cat, a, Coproduct( cat, L ) )",
+  output_range_getter_string := "Coproduct( cat, List( L, summand -> DirectProduct( cat, a, summand ) ) )",
+  with_given_object_position := "both",
+  return_type := "morphism" ),
+
 LeftCartesianDistributivityExpandingWithGivenObjects := rec(
-  installation_name := "LeftCartesianDistributivityExpandingWithGivenObjects",
-  filter_list := [ "category", "object", "object", IsList, "object" ],
+  filter_list := [ "category", "object", "object", "list_of_objects", "object" ],
   io_type := [ [ "s", "a", "L", "r" ], [ "s", "r" ] ],
-  cache_name := "LeftCartesianDistributivityExpandingWithGivenObjects",
+  return_type := "morphism" ),
+
+LeftCartesianDistributivityFactoring := rec(
+  filter_list := [ "category", "object", "list_of_objects" ],
+  io_type := [ [ "a", "L" ], [ "s", "r" ] ],
+  output_source_getter_string := "Coproduct( cat, List( L, summand -> DirectProduct( cat, a, summand ) ) )",
+  output_range_getter_string := "DirectProduct( cat, a, Coproduct( cat, L ) )",
+  with_given_object_position := "both",
   return_type := "morphism" ),
 
 LeftCartesianDistributivityFactoringWithGivenObjects := rec(
-  installation_name := "LeftCartesianDistributivityFactoringWithGivenObjects",
-  filter_list := [ "category", "object", "object", IsList, "object" ],
+  filter_list := [ "category", "object", "object", "list_of_objects", "object" ],
   io_type := [ [ "s", "a", "L", "r" ], [ "s", "r" ] ],
-  cache_name := "LeftCartesianDistributivityFactoringWithGivenObjects",
+  return_type := "morphism" ),
+
+RightCartesianDistributivityExpanding := rec(
+  filter_list := [ "category", "list_of_objects", "object" ],
+  io_type := [ [ "L", "a" ], [ "s", "r" ] ],
+  output_source_getter_string := "DirectProduct( cat, Coproduct( cat, L ), a )",
+  output_range_getter_string := "Coproduct( cat, List( L, summand -> DirectProduct( cat, summand, a ) ) )",
+  with_given_object_position := "both",
   return_type := "morphism" ),
 
 RightCartesianDistributivityExpandingWithGivenObjects := rec(
-  installation_name := "RightCartesianDistributivityExpandingWithGivenObjects",
-  filter_list := [ "category", "object", IsList, "object", "object" ],
+  filter_list := [ "category", "object", "list_of_objects", "object", "object" ],
   io_type := [ [ "s", "L", "a", "r" ], [ "s", "r" ] ],
-  cache_name := "RightCartesianDistributivityExpandingWithGivenObjects",
+  return_type := "morphism" ),
+
+RightCartesianDistributivityFactoring := rec(
+  filter_list := [ "category", "list_of_objects", "object" ],
+  io_type := [ [ "L", "a" ], [ "s", "r" ] ],
+  output_source_getter_string := "Coproduct( cat, List( L, summand -> DirectProduct( cat, summand, a ) ) )",
+  output_range_getter_string := "DirectProduct( cat, Coproduct( cat, L ), a )",
+  with_given_object_position := "both",
   return_type := "morphism" ),
 
 RightCartesianDistributivityFactoringWithGivenObjects := rec(
-  installation_name := "RightCartesianDistributivityFactoringWithGivenObjects",
-  filter_list := [ "category", "object", IsList, "object", "object" ],
+  filter_list := [ "category", "object", "list_of_objects", "object", "object" ],
   io_type := [ [ "s", "L", "a", "r" ], [ "s", "r" ] ],
-  cache_name := "RightCartesianDistributivityFactoringWithGivenObjects",
   return_type := "morphism" ),
 
 ) );
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( DISTRIBUTIVE_CARTESIAN_CATEGORIES_METHOD_NAME_RECORD );
 
-CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE( DISTRIBUTIVE_CARTESIAN_CATEGORIES_METHOD_NAME_RECORD, "Toposes" );
+CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
+    DISTRIBUTIVE_CARTESIAN_CATEGORIES_METHOD_NAME_RECORD,
+    "Toposes",
+    "DistributiveCartesianCategories.autogen.gd",
+    "Cartesian Categories",
+    "Add-methods"
+);
+
+CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE( DISTRIBUTIVE_CARTESIAN_CATEGORIES_METHOD_NAME_RECORD, "CartesianCategories" );
 
 CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( DISTRIBUTIVE_CARTESIAN_CATEGORIES_METHOD_NAME_RECORD );

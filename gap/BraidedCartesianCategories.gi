@@ -1,63 +1,72 @@
+# THIS FILE WAS AUTOMATICALLY GENERATED FROM MonoidalCategories v2021.11-02
+
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
 # Implementations
 #
 
-InstallValue( CAP_INTERNAL_BRAIDED_CARTESIAN_CATEGORIES_BASIC_OPERATIONS, rec( ) );
+##
+AddDerivationToCAP( CartesianBraiding,
 
-##
-CAP_INTERNAL_BRAIDED_CARTESIAN_CATEGORIES_BASIC_OPERATIONS.CartesianBraiding := 
-  [ [ "CartesianBraidingWithGivenDirectProducts", 1 ],
-    [ "DirectProduct", 2 ] ];
-##
-InstallMethod( CartesianBraiding,
-               [ IsCapCategoryObject, IsCapCategoryObject ],
-               
-  function( object_1, object_2 )
-    
-    return CartesianBraidingWithGivenDirectProducts( DirectProduct( object_1, object_2 ), object_1, object_2, DirectProduct( object_2, object_1 ) );
-    
-end );
-
-##
-InstallMethod( CartesianBraiding,
-               [ IsCapCategoryObject and IsCellOfSkeletalCategory, IsCapCategoryObject ],
-               
-  function( object_1, object_2 )
+  function( cat, object_1, object_2 )
     local source_and_range;
     
-    source_and_range := DirectProduct( object_1, object_2 );
+    source_and_range := DirectProduct( cat, object_1, object_2 );
     
-    return CartesianBraidingWithGivenDirectProducts( source_and_range, object_1, object_2, source_and_range );
+    return CartesianBraidingWithGivenDirectProducts( cat, source_and_range, object_1, object_2, source_and_range );
     
-end );
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-CAP_INTERNAL_BRAIDED_CARTESIAN_CATEGORIES_BASIC_OPERATIONS.CartesianBraidingInverse := 
-  [ [ "CartesianBraidingInverseWithGivenDirectProducts", 1 ],
-    [ "DirectProduct", 2 ] ];
-##
-InstallMethod( CartesianBraidingInverse,
-               [ IsCapCategoryObject, IsCapCategoryObject ],
-               
-  function( object_1, object_2 )
-    
-    return CartesianBraidingInverseWithGivenDirectProducts( DirectProduct( object_2, object_1 ), object_1, object_2, DirectProduct( object_1, object_2 ) );
-    
-end );
+AddDerivationToCAP( CartesianBraidingInverse,
 
-##
-InstallMethod( CartesianBraidingInverse,
-               [ IsCapCategoryObject and IsCellOfSkeletalCategory, IsCapCategoryObject ],
-               
-  function( object_1, object_2 )
+  function( cat, object_1, object_2 )
     local source_and_range;
     
-    source_and_range := DirectProduct( object_1, object_2 );
+    source_and_range := DirectProduct( cat, object_1, object_2 );
     
-    return CartesianBraidingInverseWithGivenDirectProducts( source_and_range, object_1, object_2, source_and_range );
+    return CartesianBraidingInverseWithGivenDirectProducts( cat, source_and_range, object_1, object_2, source_and_range );
+    
+end : CategoryFilter := IsSkeletalCategory,
+      Description := "calling the WithGiven operation in a skeletal setting" );
+
+##
+InstallMethod( CheckCartesianBraiding,
+               [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ],
+               
+  function( A, B, C )
+    local AB, mor1, mor2, BC;
+    
+    AB := DirectProduct( A, B );
+    
+    mor1 := PreCompose( [
+                    CartesianBraiding( AB, C ),
+                    CartesianAssociatorRightToLeft( C, A, B ),
+                    DirectProductOnMorphisms( CartesianBraiding( C, A ), IdentityMorphism( B ) ) ] );
+    
+    mor2 := PreCompose( [
+                    CartesianAssociatorLeftToRight( A, B, C ),
+                    DirectProductOnMorphisms( IdentityMorphism( A ), CartesianBraiding( B, C ) ),
+                    CartesianAssociatorRightToLeft( A, C, B ) ] );
+    
+    if not IsCongruentForMorphisms( mor1, mor2 ) then
+       return false;
+    fi;
+    
+    BC := DirectProduct( B, C );
+    
+    mor1 := PreCompose( [
+                    CartesianBraiding( A, BC ),
+                    CartesianAssociatorLeftToRight( B, C, A ),
+                    DirectProductOnMorphisms( IdentityMorphism( B ), CartesianBraiding( C, A ) ) ] );
+    
+    mor2 := PreCompose( [
+                    CartesianAssociatorRightToLeft( A, B, C ),
+                    DirectProductOnMorphisms( CartesianBraiding( A, B ), IdentityMorphism( C ) ),
+                    CartesianAssociatorLeftToRight( B, A, C ) ] );
+    
+    return IsCongruentForMorphisms( mor1, mor2 );
     
 end );
-
-CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD( CAP_INTERNAL_BRAIDED_CARTESIAN_CATEGORIES_BASIC_OPERATIONS );

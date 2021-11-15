@@ -1,3 +1,5 @@
+# THIS FILE WAS AUTOMATICALLY GENERATED FROM MonoidalCategories v2021.11-02
+
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
@@ -9,7 +11,7 @@ AddDerivationToCAP( CartesianBraidingWithGivenDirectProducts,
                   
   function( cat, object_1_x_object_2, object_1, object_2, object_2_x_object_1 )
     
-    return CartesianBraidingInverseWithGivenDirectProducts(
+    return CartesianBraidingInverseWithGivenDirectProducts( cat,
                             object_1_x_object_2,
                             object_2, object_1,
                             object_2_x_object_1 );
@@ -22,7 +24,7 @@ AddDerivationToCAP( CartesianBraidingInverseWithGivenDirectProducts,
                   
   function( cat, object_2_x_object_1, object_1, object_2, object_1_x_object_2 )
     
-    return CartesianBraidingWithGivenDirectProducts(
+    return CartesianBraidingWithGivenDirectProducts( cat,
                      object_2_x_object_1,
                      object_2, object_1,
                      object_1_x_object_2 );

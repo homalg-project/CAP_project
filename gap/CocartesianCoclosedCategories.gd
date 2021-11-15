@@ -1,3 +1,5 @@
+# THIS FILE WAS AUTOMATICALLY GENERATED FROM MonoidalCategories v2021.11-02
+
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
@@ -12,8 +14,6 @@
 ##
 ####################################
 
-DeclareGlobalVariable( "CAP_INTERNAL_COCARTESIAN_COCLOSED_CATEGORIES_BASIC_OPERATIONS" );
-
 DeclareGlobalVariable( "COCARTESIAN_COCLOSED_CATEGORIES_METHOD_NAME_RECORD" );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCoclosedCategory  := Concatenation( [
@@ -23,7 +23,6 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCoclosedCategory  := Co
 "CocartesianCoevaluationMorphismWithGivenSource"
 ], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory );
 
-##
 #! @Description
 #! The arguments are two objects $a,b$.
 #! The output is the internal cohom object $\mathrm{Coexponential}(a,b)$.
@@ -31,25 +30,6 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCoclosedCategory  := Co
 #! @Arguments a, b
 DeclareOperation( "CoexponentialOnObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CoexponentialOnObjects</C>.
-#! $F: (a,b) \mapsto \mathrm{Coexponential}(a,b)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoexponentialOnObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoexponentialOnObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoexponentialOnObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoexponentialOnObjects",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$.
@@ -72,26 +52,6 @@ DeclareOperation( "CoexponentialOnMorphismsWithGivenCoexponentials",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CoexponentialOnMorphismsWithGivenCoexponentials</C>.
-#! $F: (\mathrm{Coexponential}(a,b'), \alpha: a \rightarrow a', \beta: b \rightarrow b', \mathrm{Coexponential}(a',b) ) \mapsto \mathrm{Coexponential}(\alpha,\beta)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoexponentialOnMorphismsWithGivenCoexponentials",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoexponentialOnMorphismsWithGivenCoexponentials",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoexponentialOnMorphismsWithGivenCoexponentials",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoexponentialOnMorphismsWithGivenCoexponentials",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
 #! The arguments are two objects $a, b$.
 #! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a,b}: a \rightarrow b \sqcup \mathrm{Coexponential}(a,b)$, i.e.,
 #! the unit of the cohom tensor adjunction.
@@ -109,26 +69,6 @@ DeclareOperation( "CocartesianEvaluationMorphism",
 #! @Arguments a,b, r
 DeclareOperation( "CocartesianEvaluationMorphismWithGivenRange",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CocartesianEvaluationMorphismWithGivenRange</C>.
-#! $F: (a, b, b \sqcup \mathrm{Coexponential}(a,b)) \mapsto \mathrm{coev}_{a,b}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCocartesianEvaluationMorphismWithGivenRange",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCocartesianEvaluationMorphismWithGivenRange",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCocartesianEvaluationMorphismWithGivenRange",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCocartesianEvaluationMorphismWithGivenRange",
-                  [ IsCapCategory, IsList ] );
-
 
 #! @Description
 #! The arguments are two objects $a,b$.
@@ -150,26 +90,6 @@ DeclareOperation( "CocartesianCoevaluationMorphismWithGivenSource",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CocartesianCoevaluationMorphismWithGivenSource</C>.
-#! $F: (a, b, \mathrm{Coexponential}(a \sqcup b, a)) \mapsto \mathrm{dcoev}_{a,b}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCocartesianCoevaluationMorphismWithGivenSource",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCocartesianCoevaluationMorphismWithGivenSource",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCocartesianCoevaluationMorphismWithGivenSource",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCocartesianCoevaluationMorphismWithGivenSource",
-                  [ IsCapCategory, IsList ] );
-
-
-#! @Description
 #! The arguments are objects $a,b$ and a morphism $f: \mathrm{Coexponential}(a,b) \rightarrow c$.
 #! The output is a morphism $g: a \rightarrow b \sqcup c$ corresponding to $f$ under the
 #! cohom tensor adjunction.
@@ -177,25 +97,6 @@ DeclareOperation( "AddCocartesianCoevaluationMorphismWithGivenSource",
 #! @Arguments a, b, f
 DeclareOperation( "CoexponentialToCoproductAdjunctionMap",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CoexponentialToCoproductAdjunctionMap</C>.
-#! $F: (a, b, f: \mathrm{Coexponential}(a,b) \rightarrow c) \mapsto ( g: a \rightarrow b \sqcup c )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoexponentialToCoproductAdjunctionMap",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoexponentialToCoproductAdjunctionMap",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoexponentialToCoproductAdjunctionMap",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoexponentialToCoproductAdjunctionMap",
-                  [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are objects $b,c$ and a morphism $g: a \rightarrow b \sqcup c$.
@@ -206,27 +107,6 @@ DeclareOperation( "AddCoexponentialToCoproductAdjunctionMap",
 DeclareOperation( "CoproductToCoexponentialAdjunctionMap",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CoproductToCoexponentialAdjunctionMap</C>.
-#! $F: (a, b, g: a \rightarrow b \sqcup c) \mapsto ( f: \mathrm{Coexponential}(a,b) \rightarrow c)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoproductToCoexponentialAdjunctionMap",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoproductToCoexponentialAdjunctionMap",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoproductToCoexponentialAdjunctionMap",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoproductToCoexponentialAdjunctionMap",
-                  [ IsCapCategory, IsList ] );
-
-
-##
 #! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the precocomposition morphism
@@ -249,27 +129,6 @@ DeclareOperation( "CocartesianPreCoComposeMorphismWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CocartesianPreCoComposeMorphismWithGivenObjects</C>.
-#! $F: (\mathrm{Coexponential}(a,c),a,b,c,\mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(b,c)) \mapsto \mathrm{CocartesianPreCoComposeMorphismWithGivenObjects}_{a,b,c}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCocartesianPreCoComposeMorphismWithGivenObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCocartesianPreCoComposeMorphismWithGivenObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCocartesianPreCoComposeMorphismWithGivenObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCocartesianPreCoComposeMorphismWithGivenObjects",
-                  [ IsCapCategory, IsList ] );
-
-
-##
-#! @Description
 #! The arguments are three objects $a,b,c$.
 #! The output is the postcocomposition morphism
 #! $\mathrm{CocartesianPostCoComposeMorphismWithGivenObjects}_{a,b,c}: \mathrm{Coexponential}(a,c) \rightarrow \mathrm{Coexponential}(b,c) \sqcup \mathrm{Coexponential}(a,b)$.
@@ -291,27 +150,6 @@ DeclareOperation( "CocartesianPostCoComposeMorphismWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CocartesianPostCoComposeMorphismWithGivenObjects</C>.
-#! $F: (\mathrm{Coexponential}(a,c),a,b,c,\mathrm{Coexponential}(b,c) \sqcup \mathrm{Coexponential}(a,b)) \mapsto \mathrm{CocartesianPostComposeMorphismWithGivenObjects}_{a,b,c}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCocartesianPostCoComposeMorphismWithGivenObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCocartesianPostCoComposeMorphismWithGivenObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCocartesianPostCoComposeMorphismWithGivenObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCocartesianPostCoComposeMorphismWithGivenObjects",
-                  [ IsCapCategory, IsList ] );
-
-
-##
-#! @Description
 #! The argument is an object $a$.
 #! The output is its codual object $a_{\vee}$.
 #! @Returns an object
@@ -319,26 +157,6 @@ DeclareOperation( "AddCocartesianPostCoComposeMorphismWithGivenObjects",
 DeclareAttribute( "CocartesianDualOnObjects",
                   IsCapCategoryObject );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CocartesianDualOnObjects</C>.
-#! $F: a \mapsto a_{\vee}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCocartesianDualOnObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCocartesianDualOnObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCocartesianDualOnObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCocartesianDualOnObjects",
-                  [ IsCapCategory, IsList ] );
-
-##
 #! @Description
 #! The argument is a morphism $\alpha: a \rightarrow b$.
 #! The output is its codual morphism $\alpha_{\vee}: b_{\vee} \rightarrow a_{\vee}$.
@@ -357,26 +175,6 @@ DeclareAttribute( "CocartesianDualOnMorphisms",
 DeclareOperation( "CocartesianDualOnMorphismsWithGivenCocartesianDuals",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CocartesianDualOnMorphismsWithGivenCocartesianDuals</C>.
-#! $F: (b_{\vee},\alpha,a_{\vee}) \mapsto \alpha_{\vee}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCocartesianDualOnMorphismsWithGivenCocartesianDuals",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCocartesianDualOnMorphismsWithGivenCocartesianDuals",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCocartesianDualOnMorphismsWithGivenCocartesianDuals",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCocartesianDualOnMorphismsWithGivenCocartesianDuals",
-                  [ IsCapCategory, IsList ] );
-
-##
 #! @Description
 #! The argument is an object $a$.
 #! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a}: 1 \rightarrow a \sqcup a_{\vee}$.
@@ -397,27 +195,7 @@ DeclareOperation( "CocartesianEvaluationForCocartesianDualWithGivenCoproduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CocartesianEvaluationForCocartesianDualWithGivenCoproduct</C>.
-#! $F: (1, a, a \sqcup a_{vee}) \mapsto \mathrm{coev}_{a}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCocartesianEvaluationForCocartesianDualWithGivenCoproduct",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCocartesianEvaluationForCocartesianDualWithGivenCoproduct",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCocartesianEvaluationForCocartesianDualWithGivenCoproduct",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCocartesianEvaluationForCocartesianDualWithGivenCoproduct",
-                  [ IsCapCategory, IsList ] );
-
-##
-#! @Description
-#! The argument is a an object $a$.
+#! The argument is an object $a$.
 #! The output is the morphism from the cobidual $(a_{\vee})_{\vee} \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}((a_{\vee})_{\vee}, a)$.
 #! @Arguments a
@@ -433,69 +211,27 @@ DeclareAttribute( "MorphismFromCocartesianBidual",
 DeclareOperation( "MorphismFromCocartesianBidualWithGivenCocartesianBidual",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+## The four objects are given are given as a list because otherwise the WithGiven operation would
+## exceed the maximal number of arguments for an operation (6)
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromCocartesianBidualWithGivenCocartesianBidual</C>.
-#! $F: (a, (a_{\vee})_{\vee}) \mapsto ((a_{\vee})_{\vee} \rightarrow a)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismFromCocartesianBidualWithGivenCocartesianBidual",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismFromCocartesianBidualWithGivenCocartesianBidual",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismFromCocartesianBidualWithGivenCocartesianBidual",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismFromCocartesianBidualWithGivenCocartesianBidual",
-                  [ IsCapCategory, IsList ] );
-
-##
-#! @Description
-#! The arguments are four objects $a, a', b, b'$.
+#! The argument is a list of four objects $[ a, a', b, b' ]$.
 #! The output is the natural morphism
 #! $\mathrm{CoexponentialCoproductCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{Coexponential}(a \sqcup a', b \sqcup b') \rightarrow \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b')$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a \sqcup a', b \sqcup b'), \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b'))$.
-#! @Arguments a,a',b,b'
+#! @Arguments list
 DeclareOperation( "CoexponentialCoproductCompatibilityMorphism",
-                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+                  [ IsList ] );
 
-##
-## The new_source and new_range arguments are the first and second element of the list.
-## This construction is due to the fact that the maximal number of arguments for an operation is 6,
-## but a basic operation with 6 arguments would install a setter having 7 arguments.
 #! @Description
-#! The arguments are four objects $a, a', b, b'$,
-#! and a list $L = [ \mathrm{Coexponential}(a \sqcup a', b \sqcup b'), \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b') ]$.
+#! The arguments are a list of four objects $[ a, a', b, b' ]$,
+#! and two objects $s = \mathrm{Coexponential}(a \sqcup a', b \sqcup b')$ and $r = \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b')$.
 #! The output is the natural morphism
 #! $\mathrm{CoexponentialCoproductCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}: \mathrm{Coexponential}(a \sqcup a', b \sqcup b') \rightarrow \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b')$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a \sqcup a', b \sqcup b'), \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b') )$.
-#! @Arguments a,a',b,b',L
+#! @Arguments s, list, r
 DeclareOperation( "CoexponentialCoproductCompatibilityMorphismWithGivenObjects",
-                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsList ] );
+                  [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CoexponentialCoproductCompatibilityMorphismWithGivenObjects</C>.
-#! $F: ( a,a',b,b', [ \mathrm{Coexponential}(a \sqcup a', b \sqcup b'), \mathrm{Coexponential}(a,b) \sqcup \mathrm{Coexponential}(a',b') ]) \mapsto \mathrm{CoexponentialCoproductCompatibilityMorphismWithGivenObjects}_{a,a',b,b'}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCoexponentialCoproductCompatibilityMorphismWithGivenObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCoexponentialCoproductCompatibilityMorphismWithGivenObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCoexponentialCoproductCompatibilityMorphismWithGivenObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCoexponentialCoproductCompatibilityMorphismWithGivenObjects",
-                  [ IsCapCategory, IsList ] );
-
-##
 #! @Description
 #! The arguments are two objects $a,b$.
 #! The output is the natural morphism
@@ -517,27 +253,6 @@ DeclareOperation( "CocartesianDualityCoproductCompatibilityMorphismWithGivenObje
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects</C>.
-#! $F: ( (a \sqcup b)_{\vee}, a, b, a_{\vee} \sqcup b_{\vee} ) \mapsto \mathrm{CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects}_{a,b}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects",
-                  [ IsCapCategory, IsList ] );
-
-
-##
-#! @Description
 #! The arguments are two objects $a,b$.
 #! The output is the natural morphism $\mathrm{MorphismFromCoexponentialToCoproductWithGivenObjects}_{a,b}: \mathrm{Coexponential}(a,b) \rightarrow a \sqcup b_{\vee}$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a,b), a \sqcup b_{\vee} )$.
@@ -556,26 +271,6 @@ DeclareOperation( "MorphismFromCoexponentialToCoproductWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>MorphismFromCoexponentialToCoproductWithGivenObjects</C>.
-#! $F: ( \mathrm{Coexponential}(a,b), a, b, a \sqcup b_{\vee} ) \mapsto \mathrm{MorphismFromCoexponentialToCoproductWithGivenObjects}_{a,b}$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddMorphismFromCoexponentialToCoproductWithGivenObjects",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddMorphismFromCoexponentialToCoproductWithGivenObjects",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddMorphismFromCoexponentialToCoproductWithGivenObjects",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddMorphismFromCoexponentialToCoproductWithGivenObjects",
-                  [ IsCapCategory, IsList ] );
-
-##
-#! @Description
 #! The argument is an object $a$.
 #! The output is the isomorphism
 #! $\mathrm{IsomorphismFromCocartesianDualToCoexponential}_{a}: a_{\vee} \rightarrow \mathrm{Coexponential}(1,a)$.
@@ -585,26 +280,6 @@ DeclareAttribute( "IsomorphismFromCocartesianDualToCoexponential",
                   IsCapCategoryObject );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromCocartesianDualToCoexponential</C>.
-#! $F: a \mapsto \mathrm{IsomorphismFromCocartesianDualToCoexponential}_{a}$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromCocartesianDualToCoexponential",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromCocartesianDualToCoexponential",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromCocartesianDualToCoexponential",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromCocartesianDualToCoexponential",
-                  [ IsCapCategory, IsList ] );
-
-##
-#! @Description
 #! The argument is an object $a$.
 #! The output is the isomorphism
 #! $\mathrm{IsomorphismFromCoexponentialToCocartesianDual}_{a}: \mathrm{Coexponential}(1,a) \rightarrow a_{\vee}$.
@@ -613,27 +288,6 @@ DeclareOperation( "AddIsomorphismFromCocartesianDualToCoexponential",
 DeclareAttribute( "IsomorphismFromCoexponentialToCocartesianDual",
                   IsCapCategoryObject );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromCoexponentialToCocartesianDual</C>.
-#! $F: a \mapsto \mathrm{IsomorphismFromCoexponentialToCocartesianDual}_{a}$
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromCoexponentialToCocartesianDual",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromCoexponentialToCocartesianDual",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromCoexponentialToCocartesianDual",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromCoexponentialToCocartesianDual",
-                  [ IsCapCategory, IsList ] );
-
-
-##
 #! @Description
 #! The arguments are two objects $a,t$,
 #! and a morphism $\alpha: 1 \rightarrow a \sqcup t$.
@@ -645,26 +299,6 @@ DeclareOperation( "UniversalPropertyOfCocartesianDual",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>UniversalPropertyOfCocartesianDual</C>.
-#! $F: ( a,t,\alpha: 1 \rightarrow a \sqcup t ) \mapsto ( a^{\vee} \rightarrow t )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddUniversalPropertyOfCocartesianDual",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddUniversalPropertyOfCocartesianDual",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddUniversalPropertyOfCocartesianDual",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddUniversalPropertyOfCocartesianDual",
-                  [ IsCapCategory, IsList ] );
-
-##
-#! @Description
 #! The argument is a morphism $\alpha: a \rightarrow b$.
 #! The output is the corresponding morphism $ \mathrm{Coexponential}(a,b) \rightarrow 1$
 #! under the cohom tensor adjunction.
@@ -673,26 +307,6 @@ DeclareOperation( "AddUniversalPropertyOfCocartesianDual",
 DeclareAttribute( "CocartesianLambdaIntroduction",
                   IsCapCategoryMorphism );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CocartesianLambdaIntroduction</C>.
-#! $F: ( \alpha: a \rightarrow b ) \mapsto ( \mathrm{Coexponential}(a,b) \rightarrow 1 )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCocartesianLambdaIntroduction",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCocartesianLambdaIntroduction",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCocartesianLambdaIntroduction",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCocartesianLambdaIntroduction",
-                  [ IsCapCategory, IsList ] );
-
-##
 #! @Description
 #! The arguments are two objects $a,b$,
 #! and a morphism $\alpha: \mathrm{Coexponential}(a,b) \rightarrow 1$.
@@ -703,26 +317,6 @@ DeclareOperation( "AddCocartesianLambdaIntroduction",
 DeclareOperation( "CocartesianLambdaElimination",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>CocartesianLambdaElimination</C>.
-#! $F: ( a,b,\alpha: \mathrm{Coexponential}(a,b) \rightarrow 1 ) \mapsto ( a \rightarrow b )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddCocartesianLambdaElimination",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddCocartesianLambdaElimination",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddCocartesianLambdaElimination",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddCocartesianLambdaElimination",
-                  [ IsCapCategory, IsList ] );
-
-##
 #! @Description
 #! The argument is an object $a$.
 #! The output is the natural isomorphism $a \rightarrow \mathrm{Coexponential}(a,1)$.
@@ -741,26 +335,6 @@ DeclareOperation( "IsomorphismFromObjectToCoexponentialWithGivenCoexponential",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromObjectToCoexponentialWithGivenCoexponential</C>.
-#! $F: ( a, \mathrm{Coexponential}(a,1) ) \mapsto ( a \rightarrow \mathrm{Coexponential}(a,1) )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromObjectToCoexponentialWithGivenCoexponential",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromObjectToCoexponentialWithGivenCoexponential",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromObjectToCoexponentialWithGivenCoexponential",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromObjectToCoexponentialWithGivenCoexponential",
-                  [ IsCapCategory, IsList ] );
-
-##
-#! @Description
 #! The argument is an object $a$.
 #! The output is the natural isomorphism $\mathrm{Coexponential}(a,1) \rightarrow a$.
 #! @Returns a morphism in $\mathrm{Hom}(\mathrm{Coexponential}(a,1), a)$.
@@ -777,21 +351,22 @@ DeclareAttribute( "IsomorphismFromCoexponentialToObject",
 DeclareOperation( "IsomorphismFromCoexponentialToObjectWithGivenCoexponential",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
+####################################
+##
+#! @Section Convenience Methods
+##
+####################################
+
+##
 #! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation <C>IsomorphismFromCoexponentialToObjectWithGivenCoexponential</C>.
-#! $F: ( a, \mathrm{Coexponential}(a,1) ) \mapsto ( \mathrm{Coexponential}(a,1) \rightarrow a )$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddIsomorphismFromCoexponentialToObjectWithGivenCoexponential",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddIsomorphismFromCoexponentialToObjectWithGivenCoexponential",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromCoexponentialToObjectWithGivenCoexponential",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddIsomorphismFromCoexponentialToObjectWithGivenCoexponential",
-                  [ IsCapCategory, IsList ] );
+#! This is a convenience method.
+#! The arguments are two cells $a,b$.
+#! The output is the internal cohom cell.
+#! If $a,b$ are two CAP objects the output is the internal cohom object
+#! $\mathrm{Coexponential}(a,b)$.
+#! If at least one of the arguments is a CAP morphism the output is a CAP morphism,
+#! namely the internal cohom on morphisms, where any object is replaced by its identity morphism.
+#! @Returns a cell
+#! @Arguments a, b
+DeclareOperation( "Coexponential",
+                  [ IsCapCategoryCell, IsCapCategoryCell ] );
