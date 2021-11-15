@@ -13,7 +13,7 @@
 #! The corresponding GAP property is given by
 #! <C>IsSymmetricCoclosedMonoidalCategory</C>.
 
-AddCategoricalProperty( [ "IsSymmetricCoclosedMonoidalCategory" ] );
+AddCategoricalProperty( [ "IsSymmetricCoclosedMonoidalCategory", fail ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricCoclosedMonoidalCategory  := Concatenation( [
 ], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalCategory,

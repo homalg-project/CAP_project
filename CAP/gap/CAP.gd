@@ -113,32 +113,42 @@ DeclareGlobalFunction( "AddCategoricalProperty" );
 InstallGlobalFunction( AddCategoricalProperty,
   function( property_list )
     local i;
-
-    if Length( property_list ) > 2 or Length( property_list ) < 1 then
-        Error( "only length 1 or two allowed " );
+    
+    if not IsList( property_list ) or Length( property_list ) <> 2 or not IsString( property_list[1] ) or not ( IsString( property_list[2] ) or property_list[2] = fail ) then
+        Error(
+            "You must pass a pair (i.e. a list of length 2) of strings to `AddCategoricalProperty`. ",
+            "The second entry is the property of the opposite category. ",
+            "If the opposite property is not implemented, you may pass `fail` instead."
+        );
         return;
     fi;
-
+    
     Add( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST, property_list );
-
+    
     for i in [ 1 .. 2 ] do
+        
         if IsBound( property_list[ i ] ) and IsString( property_list[ i ] ) then
+            
             DeclareProperty( property_list[ i ], IsCapCategory );
+            
         fi;
+        
     od;
+    
 end );
 
 Perform(
 ## This is the CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST
-    [ [ "IsEquippedWithHomomorphismStructure" ],
-      [ "IsEnrichedOverCommutativeRegularSemigroup" ],
-      [ "IsSkeletalCategory" ],
-      [ "IsAbCategory" ],
-      [ "IsLinearCategoryOverCommutativeRing" ],
-      [ "IsAdditiveCategory" ],
-      [ "IsPreAbelianCategory" ],
-      [ "IsAbelianCategory" ],
-      [ "IsAbelianCategoryWithEnoughProjectives", "IsAbelianCategoryWithEnoughInjectives" ]
+    [ [ "IsEquippedWithHomomorphismStructure", "IsEquippedWithHomomorphismStructure" ],
+      [ "IsEnrichedOverCommutativeRegularSemigroup", "IsEnrichedOverCommutativeRegularSemigroup" ],
+      [ "IsSkeletalCategory", "IsSkeletalCategory" ],
+      [ "IsAbCategory", "IsAbCategory" ],
+      [ "IsLinearCategoryOverCommutativeRing", "IsLinearCategoryOverCommutativeRing" ],
+      [ "IsAdditiveCategory", "IsAdditiveCategory" ],
+      [ "IsPreAbelianCategory", "IsPreAbelianCategory" ],
+      [ "IsAbelianCategory", "IsAbelianCategory" ],
+      [ "IsAbelianCategoryWithEnoughProjectives", "IsAbelianCategoryWithEnoughInjectives" ],
+      [ "IsAbelianCategoryWithEnoughInjectives", "IsAbelianCategoryWithEnoughProjectives" ]
     ],
     AddCategoricalProperty );
 

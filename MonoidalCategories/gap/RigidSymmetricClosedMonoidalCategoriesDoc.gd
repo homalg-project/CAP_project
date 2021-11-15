@@ -15,7 +15,7 @@
 #!  is an isomorphism
 #! is called a <Emph>rigid symmetric closed monoidal category</Emph>.
 
-AddCategoricalProperty( [ "IsRigidSymmetricClosedMonoidalCategory" ] );
+AddCategoricalProperty( [ "IsRigidSymmetricClosedMonoidalCategory", fail ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsRigidSymmetricClosedMonoidalCategory  := Concatenation( [ 
 "TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects",

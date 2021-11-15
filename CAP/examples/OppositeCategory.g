@@ -6,6 +6,14 @@ LoadPackage( "LinearAlgebraForCAP" );
 #! @Example
 QQ := HomalgFieldOfRationals();;
 vec := MatrixCategory( QQ );;
+op := Opposite( vec );;
+ListKnownCategoricalProperties( op );
+#! [ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughInjectives"
+#!     , "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory", 
+#!   "IsBraidedMonoidalCategory", "IsEnrichedOverCommutativeRegularSemigroup", 
+#!   "IsLinearCategoryOverCommutativeRing", "IsMonoidalCategory", 
+#!   "IsPreAbelianCategory", "IsSkeletalCategory", "IsStrictMonoidalCategory", 
+#!   "IsSymmetricMonoidalCategory" ]
 V1 := Opposite( TensorUnit( vec ) );;
 V2 := DirectSum( V1, V1 );;
 V3 := DirectSum( V1, V2 );;

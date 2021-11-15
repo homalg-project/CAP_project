@@ -35,69 +35,6 @@ BindGlobal( "TheTypeOfCapCategoryOppositeMorphisms",
 ###################################
 
 
-
-BindGlobal( "CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS",
-  function( )
-    local recnames, current_recname, object_property_list, morphism_property_list, current_entry, current_rec,
-          category_property_list, elem;
-    
-    recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
-    
-    object_property_list := [ ];
-    
-    morphism_property_list := [ ];
-    
-    for current_recname in recnames do
-        
-        current_rec := CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname );
-        
-        if not IsBound( current_rec.property_of ) then
-            continue;
-        fi;
-        
-        if not IsBound( current_rec.dual_operation ) or
-           current_rec.dual_operation = current_recname then
-            current_entry := current_rec.installation_name;
-        else
-            current_entry := [ current_rec.installation_name,
-                               CAP_INTERNAL_METHOD_NAME_RECORD.( current_rec.dual_operation ).installation_name ];
-            current_entry := [ Concatenation( current_entry[ 1 ], " vs ", current_entry[ 2 ] ), current_entry ];
-        fi;
-        
-        if CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ).property_of = "object" then
-            Add( object_property_list, current_entry );
-        elif CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname ).property_of = "morphism" then
-            Add( morphism_property_list, current_entry );
-        fi;
-        
-    od;
-    
-    InstallValue( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_MORPHISMS, morphism_property_list );
-    
-    InstallValue( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_OBJECTS, object_property_list );
-    
-    category_property_list := [ ];
-    
-    for elem in CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST do
-        
-        if not IsBound( elem[1] ) then
-            continue;
-        fi;
-        
-        if not IsBound( elem[2] ) then
-            Add( category_property_list, [ elem[1], elem[1] ] );
-        else
-            Add( category_property_list, elem );
-        fi;
-        
-    od;
-    
-    InstallValue( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_CATEGORY, category_property_list );
-    
-end );
-
-CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS();
-
 ##################################
 ##
 ## Construtor
@@ -586,17 +523,33 @@ end );
 InstallGlobalFunction( INSTALL_TODO_LIST_ENTRIES_FOR_OPPOSITE_CATEGORY,
                        
   function( category )
-    local entry;
+    local opposite_property_pairs, entry, pair;
+    
+    opposite_property_pairs := Filtered( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST, x -> x[2] <> fail );
+    
+    # plausibility check
+    for pair in opposite_property_pairs do
+        
+        if not Reversed( pair ) in opposite_property_pairs then
+            
+            Error( "The pair of categorical properties <pair> was registered using `AddCategoricalProperty`, but the reversed pair was not." );
+            
+        fi;
+        
+    od;
+    
+    # prepare special format for ToDoListEntryToMaintainFollowingAttributes
+    opposite_property_pairs := List( opposite_property_pairs, x -> [ "", x ] );
     
     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ category, "Opposite" ] ],
                                                          [ category, [ Opposite, category ] ],
-                                                         CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_CATEGORY );
+                                                         opposite_property_pairs );
     
     AddToToDoList( entry );
     
     entry := ToDoListEntryToMaintainFollowingAttributes( [ [ category, "Opposite" ] ],
                                                          [ [ Opposite, category ], category ],
-                                                         CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_CATEGORY );
+                                                         opposite_property_pairs );
     
     AddToToDoList( entry );
     

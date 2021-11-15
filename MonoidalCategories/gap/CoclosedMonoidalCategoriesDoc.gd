@@ -14,6 +14,6 @@
 #! The corresponding GAP property is called
 #! <C>IsCoclosedMonoidalCategory</C>.
 
-AddCategoricalProperty( [ "IsCoclosedMonoidalCategory" ] );
+AddCategoricalProperty( [ "IsCoclosedMonoidalCategory", fail ] );
 
 InstallTrueMethod( IsMonoidalCategory, IsCoclosedMonoidalCategory );

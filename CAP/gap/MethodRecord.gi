@@ -4062,6 +4062,61 @@ InstallGlobalFunction( CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD,
     
 end );
 
+InstallValue( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_OBJECTS, [ ] );
+
+InstallValue( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_MORPHISMS, [ ] );
+
+InstallValue( CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS_IN_METHOD_NAME_RECORD,
+  function( method_name_record )
+    local recnames, current_recname, current_entry, current_rec, category_property_list, elem;
+    
+    recnames := RecNames( method_name_record );
+    
+    for current_recname in recnames do
+        
+        current_rec := method_name_record.( current_recname );
+        
+        if not IsBound( current_rec.property_of ) then
+            continue;
+        fi;
+        
+        if not IsBound( current_rec.dual_operation ) or current_rec.dual_operation = current_recname then
+            
+            current_entry := current_rec.installation_name;
+            
+        else
+            
+            current_entry := [ current_rec.installation_name, method_name_record.( current_rec.dual_operation ).installation_name ];
+            current_entry := [ Concatenation( current_entry[ 1 ], " vs ", current_entry[ 2 ] ), current_entry ];
+            
+        fi;
+        
+        if method_name_record.( current_recname ).property_of = "object" then
+            
+            if not current_entry in CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_OBJECTS then
+                
+                Add( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_OBJECTS, current_entry );
+                
+            fi;
+            
+        elif method_name_record.( current_recname ).property_of = "morphism" then
+            
+            if not current_entry in CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_MORPHISMS then
+                
+                Add( CAP_INTERNAL_OPPOSITE_PROPERTY_PAIRS_FOR_MORPHISMS, current_entry );
+                
+            fi;
+            
+        else
+            
+            Error( "this should never happen" );
+            
+        fi;
+        
+    od;
+    
+end );
+
 BindGlobal( "CAP_INTERNAL_PREPARE_INHERITED_PRE_FUNCTION",
   function( func, drop_both )
     
@@ -4983,6 +5038,8 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
         fi;
         
     od;
+    
+    CAP_INTERNAL_FIND_OPPOSITE_PROPERTY_PAIRS_IN_METHOD_NAME_RECORD( record );
     
 end );
 

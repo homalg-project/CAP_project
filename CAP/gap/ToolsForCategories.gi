@@ -765,7 +765,7 @@ InstallGlobalFunction( ListKnownCategoricalProperties,
     
     list := [ ];
     
-    for name in Concatenation( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST ) do
+    for name in Set( Filtered( Concatenation( CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST ), x -> x <> fail ) ) do
       
       if Tester( ValueGlobal( name ) )( category ) and ValueGlobal( name )( category ) then
         
