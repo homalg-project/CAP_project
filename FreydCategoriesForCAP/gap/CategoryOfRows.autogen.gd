@@ -12,320 +12,320 @@
 #! @Subsection CategoryOfRows of an arbitrary ring
 
 #! The following CAP operations are supported:
-#! * <Ref BookName="CAP" Func="AdditionForMorphisms" />
-#! * <Ref BookName="CAP" Func="AdditiveInverseForMorphisms" />
-#! * <Ref BookName="MonoidalCategories" Func="AssociatorLeftToRightWithGivenTensorProducts" />
-#! * <Ref BookName="MonoidalCategories" Func="AssociatorRightToLeftWithGivenTensorProducts" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="BiasedWeakFiberProduct" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="BiasedWeakPushout" />
-#! * <Ref BookName="CAP" Func="Colift" />
-#! * <Ref BookName="CAP" Func="ColiftAlongEpimorphism" />
-#! * <Ref BookName="CAP" Func="ColiftOrFail" />
-#! * <Ref BookName="CAP" Func="ComponentOfMorphismFromDirectSum" />
-#! * <Ref BookName="CAP" Func="ComponentOfMorphismIntoDirectSum" />
-#! * <Ref BookName="CAP" Func="Coproduct" />
-#! * <Ref BookName="CAP" Func="CoproductFunctorial" />
-#! * <Ref BookName="CAP" Func="CoproductFunctorialWithGivenCoproducts" />
+#! * <Ref BookName="CAP" Func="AdditionForMorphisms (for Is)" />
+#! * <Ref BookName="CAP" Func="AdditiveInverseForMorphisms (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="AssociatorLeftToRightWithGivenTensorProducts (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="AssociatorRightToLeftWithGivenTensorProducts (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="BiasedWeakFiberProduct (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="BiasedWeakPushout (for Is)" />
+#! * <Ref BookName="CAP" Func="Colift (for Is)" />
+#! * <Ref BookName="CAP" Func="ColiftAlongEpimorphism (for Is)" />
+#! * <Ref BookName="CAP" Func="ColiftOrFail (for Is)" />
+#! * <Ref BookName="CAP" Func="ComponentOfMorphismFromDirectSum (for Is)" />
+#! * <Ref BookName="CAP" Func="ComponentOfMorphismIntoDirectSum (for Is)" />
+#! * <Ref BookName="CAP" Func="Coproduct (for Is)" />
+#! * <Ref BookName="CAP" Func="CoproductFunctorial (for Is)" />
+#! * <Ref BookName="CAP" Func="CoproductFunctorialWithGivenCoproducts (for Is)" />
 #! * <Ref BookName="CAP" Func="DirectProduct" />
-#! * <Ref BookName="CAP" Func="DirectProductFunctorial" />
-#! * <Ref BookName="CAP" Func="DirectProductFunctorialWithGivenDirectProducts" />
+#! * <Ref BookName="CAP" Func="DirectProductFunctorial (for Is)" />
+#! * <Ref BookName="CAP" Func="DirectProductFunctorialWithGivenDirectProducts (for Is)" />
 #! * <Ref BookName="CAP" Func="DirectSum" />
-#! * <Ref BookName="CAP" Func="DirectSumCodiagonalDifference" />
-#! * <Ref BookName="CAP" Func="DirectSumDiagonalDifference" />
-#! * <Ref BookName="CAP" Func="DirectSumFunctorial" />
-#! * <Ref BookName="CAP" Func="DirectSumFunctorialWithGivenDirectSums" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="DirectSumMorphismToWeakBiPushout" />
-#! * <Ref BookName="CAP" Func="IdentityMorphism" />
-#! * <Ref BookName="CAP" Func="InitialObject" />
-#! * <Ref BookName="CAP" Func="InitialObjectFunctorial" />
-#! * <Ref BookName="CAP" Func="InitialObjectFunctorialWithGivenInitialObjects" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="InjectionOfBiasedWeakPushout" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout" />
-#! * <Ref BookName="CAP" Func="InjectionOfCofactorOfCoproduct" />
-#! * <Ref BookName="CAP" Func="InjectionOfCofactorOfCoproductWithGivenCoproduct" />
-#! * <Ref BookName="CAP" Func="InjectionOfCofactorOfDirectSum" />
-#! * <Ref BookName="CAP" Func="InjectionOfCofactorOfDirectSumWithGivenDirectSum" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="InjectionOfFirstCofactorOfWeakBiPushout" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="InjectionOfSecondCofactorOfWeakBiPushout" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout" />
-#! * <Ref BookName="CAP" Func="InjectiveColift" />
-#! * <Ref BookName="CAP" Func="InverseForMorphisms" />
-#! * <Ref BookName="CAP" Func="IsAutomorphism" />
-#! * <Ref BookName="CAP" Func="IsColiftable" />
-#! * <Ref BookName="CAP" Func="IsColiftableAlongEpimorphism" />
-#! * <Ref BookName="CAP" Func="IsCongruentForMorphisms" />
-#! * <Ref BookName="CAP" Func="IsEndomorphism" />
-#! * <Ref BookName="CAP" Func="IsEpimorphism" />
-#! * <Ref BookName="CAP" Func="IsEqualForMorphisms" />
-#! * <Ref BookName="CAP" Func="IsEqualForMorphismsOnMor" />
-#! * <Ref BookName="CAP" Func="IsEqualForObjects" />
-#! * <Ref BookName="CAP" Func="IsIdempotent" />
-#! * <Ref BookName="CAP" Func="IsIdenticalToIdentityMorphism" />
-#! * <Ref BookName="CAP" Func="IsIdenticalToZeroMorphism" />
-#! * <Ref BookName="CAP" Func="IsInitial" />
-#! * <Ref BookName="CAP" Func="IsIsomorphism" />
-#! * <Ref BookName="CAP" Func="IsLiftable" />
-#! * <Ref BookName="CAP" Func="IsLiftableAlongMonomorphism" />
-#! * <Ref BookName="CAP" Func="IsMonomorphism" />
-#! * <Ref BookName="CAP" Func="IsOne" />
-#! * <Ref BookName="CAP" Func="IsSplitEpimorphism" />
-#! * <Ref BookName="CAP" Func="IsSplitMonomorphism" />
-#! * <Ref BookName="CAP" Func="IsTerminal" />
-#! * <Ref BookName="CAP" Func="IsWellDefinedForMorphisms" />
-#! * <Ref BookName="CAP" Func="IsWellDefinedForObjects" />
-#! * <Ref BookName="CAP" Func="IsZeroForMorphisms" />
-#! * <Ref BookName="CAP" Func="IsZeroForObjects" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromCoproductToDirectSum" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromDirectProductToDirectSum" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromDirectSumToCoproduct" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromDirectSumToDirectProduct" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromInitialObjectToZeroObject" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromTerminalObjectToZeroObject" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromZeroObjectToInitialObject" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromZeroObjectToTerminalObject" />
-#! * <Ref BookName="MonoidalCategories" Func="LeftUnitorInverseWithGivenTensorProduct" />
-#! * <Ref BookName="MonoidalCategories" Func="LeftUnitorWithGivenTensorProduct" />
-#! * <Ref BookName="CAP" Func="Lift" />
-#! * <Ref BookName="CAP" Func="LiftAlongMonomorphism" />
-#! * <Ref BookName="CAP" Func="LiftOrFail" />
-#! * <Ref BookName="CAP" Func="MorphismBetweenDirectSums" />
-#! * <Ref BookName="CAP" Func="MorphismBetweenDirectSumsWithGivenDirectSums" />
-#! * <Ref BookName="CAP" Func="MorphismConstructor" />
-#! * <Ref BookName="CAP" Func="MorphismDatum" />
-#! * <Ref BookName="CAP" Func="ObjectConstructor" />
-#! * <Ref BookName="CAP" Func="ObjectDatum" />
-#! * <Ref BookName="CAP" Func="PostCompose" />
-#! * <Ref BookName="CAP" Func="PreCompose" />
-#! * <Ref BookName="CAP" Func="ProjectionInFactorOfDirectProduct" />
-#! * <Ref BookName="CAP" Func="ProjectionInFactorOfDirectProductWithGivenDirectProduct" />
-#! * <Ref BookName="CAP" Func="ProjectionInFactorOfDirectSum" />
-#! * <Ref BookName="CAP" Func="ProjectionInFactorOfDirectSumWithGivenDirectSum" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="ProjectionInFirstFactorOfWeakBiFiberProduct" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="ProjectionInSecondFactorOfWeakBiFiberProduct" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="ProjectionOfBiasedWeakFiberProduct" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct" />
-#! * <Ref BookName="CAP" Func="ProjectiveLift" />
-#! * <Ref BookName="MonoidalCategories" Func="RightUnitorInverseWithGivenTensorProduct" />
-#! * <Ref BookName="MonoidalCategories" Func="RightUnitorWithGivenTensorProduct" />
-#! * <Ref BookName="CAP" Func="SimplifyRange" />
-#! * <Ref BookName="CAP" Func="SimplifyRange_IsoFromInputObject" />
-#! * <Ref BookName="CAP" Func="SimplifyRange_IsoToInputObject" />
-#! * <Ref BookName="CAP" Func="SimplifySource" />
-#! * <Ref BookName="CAP" Func="SimplifySourceAndRange" />
-#! * <Ref BookName="CAP" Func="SimplifySourceAndRange_IsoFromInputRange" />
-#! * <Ref BookName="CAP" Func="SimplifySourceAndRange_IsoFromInputSource" />
-#! * <Ref BookName="CAP" Func="SimplifySourceAndRange_IsoToInputRange" />
-#! * <Ref BookName="CAP" Func="SimplifySourceAndRange_IsoToInputSource" />
-#! * <Ref BookName="CAP" Func="SimplifySource_IsoFromInputObject" />
-#! * <Ref BookName="CAP" Func="SimplifySource_IsoToInputObject" />
-#! * <Ref BookName="CAP" Func="SomeReductionBySplitEpiSummand" />
-#! * <Ref BookName="CAP" Func="SomeReductionBySplitEpiSummand_MorphismFromInputRange" />
-#! * <Ref BookName="CAP" Func="SomeReductionBySplitEpiSummand_MorphismToInputRange" />
-#! * <Ref BookName="CAP" Func="SubtractionForMorphisms" />
-#! * <Ref BookName="CAP" Func="TerminalObject" />
-#! * <Ref BookName="CAP" Func="TerminalObjectFunctorial" />
-#! * <Ref BookName="CAP" Func="TerminalObjectFunctorialWithGivenTerminalObjects" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="UniversalMorphismFromBiasedWeakPushout" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismFromCoproduct" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismFromCoproductWithGivenCoproduct" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismFromDirectSum" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismFromDirectSumWithGivenDirectSum" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismFromInitialObject" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismFromInitialObjectWithGivenInitialObject" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="UniversalMorphismFromWeakBiPushout" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismFromZeroObject" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismFromZeroObjectWithGivenZeroObject" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="UniversalMorphismIntoBiasedWeakFiberProduct" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismIntoDirectProduct" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismIntoDirectProductWithGivenDirectProduct" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismIntoDirectSum" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismIntoDirectSumWithGivenDirectSum" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismIntoTerminalObject" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismIntoTerminalObjectWithGivenTerminalObject" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="UniversalMorphismIntoWeakBiFiberProduct" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismIntoZeroObject" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismIntoZeroObjectWithGivenZeroObject" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakBiFiberProduct" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakBiFiberProductMorphismToDirectSum" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakBiPushout" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakCokernelColift" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakCokernelColiftWithGivenWeakCokernelObject" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakCokernelObject" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakCokernelProjection" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakCokernelProjectionWithGivenWeakCokernelObject" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakKernelEmbedding" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakKernelEmbeddingWithGivenWeakKernelObject" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakKernelLift" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakKernelLiftWithGivenWeakKernelObject" />
-#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakKernelObject" />
-#! * <Ref BookName="CAP" Func="ZeroMorphism" />
-#! * <Ref BookName="CAP" Func="ZeroObject" />
-#! * <Ref BookName="CAP" Func="ZeroObjectFunctorial" />
-#! * <Ref BookName="CAP" Func="ZeroObjectFunctorialWithGivenZeroObjects" />
+#! * <Ref BookName="CAP" Func="DirectSumCodiagonalDifference (for Is)" />
+#! * <Ref BookName="CAP" Func="DirectSumDiagonalDifference (for Is)" />
+#! * <Ref BookName="CAP" Func="DirectSumFunctorial (for Is)" />
+#! * <Ref BookName="CAP" Func="DirectSumFunctorialWithGivenDirectSums (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="DirectSumMorphismToWeakBiPushout (for Is)" />
+#! * <Ref BookName="CAP" Func="IdentityMorphism (for Is)" />
+#! * <Ref BookName="CAP" Func="InitialObject (for Is)" />
+#! * <Ref BookName="CAP" Func="InitialObjectFunctorial (for Is)" />
+#! * <Ref BookName="CAP" Func="InitialObjectFunctorialWithGivenInitialObjects (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="InjectionOfBiasedWeakPushout (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout (for Is)" />
+#! * <Ref BookName="CAP" Func="InjectionOfCofactorOfCoproduct (for Is)" />
+#! * <Ref BookName="CAP" Func="InjectionOfCofactorOfCoproductWithGivenCoproduct (for Is)" />
+#! * <Ref BookName="CAP" Func="InjectionOfCofactorOfDirectSum (for Is)" />
+#! * <Ref BookName="CAP" Func="InjectionOfCofactorOfDirectSumWithGivenDirectSum (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="InjectionOfFirstCofactorOfWeakBiPushout (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="InjectionOfSecondCofactorOfWeakBiPushout (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout (for Is)" />
+#! * <Ref BookName="CAP" Func="InjectiveColift (for Is)" />
+#! * <Ref BookName="CAP" Func="InverseForMorphisms (for Is)" />
+#! * <Ref BookName="CAP" Func="IsAutomorphism (for Is)" />
+#! * <Ref BookName="CAP" Func="IsColiftable (for Is)" />
+#! * <Ref BookName="CAP" Func="IsColiftableAlongEpimorphism (for Is)" />
+#! * <Ref BookName="CAP" Func="IsCongruentForMorphisms (for Is)" />
+#! * <Ref BookName="CAP" Func="IsEndomorphism (for Is)" />
+#! * <Ref BookName="CAP" Func="IsEpimorphism (for Is)" />
+#! * <Ref BookName="CAP" Func="IsEqualForMorphisms (for Is)" />
+#! * <Ref BookName="CAP" Func="IsEqualForMorphismsOnMor (for Is)" />
+#! * <Ref BookName="CAP" Func="IsEqualForObjects (for Is)" />
+#! * <Ref BookName="CAP" Func="IsIdempotent (for Is)" />
+#! * <Ref BookName="CAP" Func="IsIdenticalToIdentityMorphism (for Is)" />
+#! * <Ref BookName="CAP" Func="IsIdenticalToZeroMorphism (for Is)" />
+#! * <Ref BookName="CAP" Func="IsInitial (for Is)" />
+#! * <Ref BookName="CAP" Func="IsIsomorphism (for Is)" />
+#! * <Ref BookName="CAP" Func="IsLiftable (for Is)" />
+#! * <Ref BookName="CAP" Func="IsLiftableAlongMonomorphism (for Is)" />
+#! * <Ref BookName="CAP" Func="IsMonomorphism (for Is)" />
+#! * <Ref BookName="CAP" Func="IsOne (for Is)" />
+#! * <Ref BookName="CAP" Func="IsSplitEpimorphism (for Is)" />
+#! * <Ref BookName="CAP" Func="IsSplitMonomorphism (for Is)" />
+#! * <Ref BookName="CAP" Func="IsTerminal (for Is)" />
+#! * <Ref BookName="CAP" Func="IsWellDefinedForMorphisms (for Is)" />
+#! * <Ref BookName="CAP" Func="IsWellDefinedForObjects (for Is)" />
+#! * <Ref BookName="CAP" Func="IsZeroForMorphisms (for Is)" />
+#! * <Ref BookName="CAP" Func="IsZeroForObjects (for Is)" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromCoproductToDirectSum (for Is)" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromDirectProductToDirectSum (for Is)" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromDirectSumToCoproduct (for Is)" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromDirectSumToDirectProduct (for Is)" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromInitialObjectToZeroObject (for Is)" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromTerminalObjectToZeroObject (for Is)" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromZeroObjectToInitialObject (for Is)" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromZeroObjectToTerminalObject (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="LeftUnitorInverseWithGivenTensorProduct (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="LeftUnitorWithGivenTensorProduct (for Is)" />
+#! * <Ref BookName="CAP" Func="Lift (for Is)" />
+#! * <Ref BookName="CAP" Func="LiftAlongMonomorphism (for Is)" />
+#! * <Ref BookName="CAP" Func="LiftOrFail (for Is)" />
+#! * <Ref BookName="CAP" Func="MorphismBetweenDirectSums (for Is)" />
+#! * <Ref BookName="CAP" Func="MorphismBetweenDirectSumsWithGivenDirectSums (for Is)" />
+#! * <Ref BookName="CAP" Func="MorphismConstructor (for Is)" />
+#! * <Ref BookName="CAP" Func="MorphismDatum (for Is)" />
+#! * <Ref BookName="CAP" Func="ObjectConstructor (for Is)" />
+#! * <Ref BookName="CAP" Func="ObjectDatum (for Is)" />
+#! * <Ref BookName="CAP" Func="PostCompose (for Is)" />
+#! * <Ref BookName="CAP" Func="PreCompose (for Is)" />
+#! * <Ref BookName="CAP" Func="ProjectionInFactorOfDirectProduct (for Is)" />
+#! * <Ref BookName="CAP" Func="ProjectionInFactorOfDirectProductWithGivenDirectProduct (for Is)" />
+#! * <Ref BookName="CAP" Func="ProjectionInFactorOfDirectSum (for Is)" />
+#! * <Ref BookName="CAP" Func="ProjectionInFactorOfDirectSumWithGivenDirectSum (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="ProjectionInFirstFactorOfWeakBiFiberProduct (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="ProjectionInSecondFactorOfWeakBiFiberProduct (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="ProjectionOfBiasedWeakFiberProduct (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct (for Is)" />
+#! * <Ref BookName="CAP" Func="ProjectiveLift (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="RightUnitorInverseWithGivenTensorProduct (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="RightUnitorWithGivenTensorProduct (for Is)" />
+#! * <Ref BookName="CAP" Func="SimplifyRange (for Is)" />
+#! * <Ref BookName="CAP" Func="SimplifyRange_IsoFromInputObject (for Is)" />
+#! * <Ref BookName="CAP" Func="SimplifyRange_IsoToInputObject (for Is)" />
+#! * <Ref BookName="CAP" Func="SimplifySource (for Is)" />
+#! * <Ref BookName="CAP" Func="SimplifySourceAndRange (for Is)" />
+#! * <Ref BookName="CAP" Func="SimplifySourceAndRange_IsoFromInputRange (for Is)" />
+#! * <Ref BookName="CAP" Func="SimplifySourceAndRange_IsoFromInputSource (for Is)" />
+#! * <Ref BookName="CAP" Func="SimplifySourceAndRange_IsoToInputRange (for Is)" />
+#! * <Ref BookName="CAP" Func="SimplifySourceAndRange_IsoToInputSource (for Is)" />
+#! * <Ref BookName="CAP" Func="SimplifySource_IsoFromInputObject (for Is)" />
+#! * <Ref BookName="CAP" Func="SimplifySource_IsoToInputObject (for Is)" />
+#! * <Ref BookName="CAP" Func="SomeReductionBySplitEpiSummand (for Is)" />
+#! * <Ref BookName="CAP" Func="SomeReductionBySplitEpiSummand_MorphismFromInputRange (for Is)" />
+#! * <Ref BookName="CAP" Func="SomeReductionBySplitEpiSummand_MorphismToInputRange (for Is)" />
+#! * <Ref BookName="CAP" Func="SubtractionForMorphisms (for Is)" />
+#! * <Ref BookName="CAP" Func="TerminalObject (for Is)" />
+#! * <Ref BookName="CAP" Func="TerminalObjectFunctorial (for Is)" />
+#! * <Ref BookName="CAP" Func="TerminalObjectFunctorialWithGivenTerminalObjects (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="UniversalMorphismFromBiasedWeakPushout (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout (for Is)" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismFromCoproduct (for Is)" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismFromCoproductWithGivenCoproduct (for Is)" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismFromDirectSum (for Is)" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismFromDirectSumWithGivenDirectSum (for Is)" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismFromInitialObject (for Is)" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismFromInitialObjectWithGivenInitialObject (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="UniversalMorphismFromWeakBiPushout (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout (for Is)" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismFromZeroObject (for Is)" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismFromZeroObjectWithGivenZeroObject (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="UniversalMorphismIntoBiasedWeakFiberProduct (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct (for Is)" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismIntoDirectProduct (for Is)" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismIntoDirectProductWithGivenDirectProduct (for Is)" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismIntoDirectSum (for Is)" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismIntoDirectSumWithGivenDirectSum (for Is)" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismIntoTerminalObject (for Is)" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismIntoTerminalObjectWithGivenTerminalObject (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="UniversalMorphismIntoWeakBiFiberProduct (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct (for Is)" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismIntoZeroObject (for Is)" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismIntoZeroObjectWithGivenZeroObject (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakBiFiberProduct (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakBiFiberProductMorphismToDirectSum (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakBiPushout (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakCokernelColift (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakCokernelColiftWithGivenWeakCokernelObject (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakCokernelObject (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakCokernelProjection (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakCokernelProjectionWithGivenWeakCokernelObject (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakKernelEmbedding (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakKernelEmbeddingWithGivenWeakKernelObject (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakKernelLift (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakKernelLiftWithGivenWeakKernelObject (for Is)" />
+#! * <Ref BookName="FreydCategoriesForCAP" Func="WeakKernelObject (for Is)" />
+#! * <Ref BookName="CAP" Func="ZeroMorphism (for Is)" />
+#! * <Ref BookName="CAP" Func="ZeroObject (for Is)" />
+#! * <Ref BookName="CAP" Func="ZeroObjectFunctorial (for Is)" />
+#! * <Ref BookName="CAP" Func="ZeroObjectFunctorialWithGivenZeroObjects (for Is)" />
 
 #! @Subsection CategoryOfRows of a commutative ring
 
 #! The following additional CAP operations are supported:
-#! * <Ref BookName="MonoidalCategories" Func="AssociatorLeftToRight" />
-#! * <Ref BookName="MonoidalCategories" Func="AssociatorRightToLeft" />
-#! * <Ref BookName="MonoidalCategories" Func="Braiding" />
-#! * <Ref BookName="MonoidalCategories" Func="BraidingInverse" />
-#! * <Ref BookName="MonoidalCategories" Func="BraidingInverseWithGivenTensorProducts" />
-#! * <Ref BookName="MonoidalCategories" Func="BraidingWithGivenTensorProducts" />
-#! * <Ref BookName="MonoidalCategories" Func="CoevaluationForDual" />
-#! * <Ref BookName="MonoidalCategories" Func="CoevaluationForDualWithGivenTensorProduct" />
-#! * <Ref BookName="MonoidalCategories" Func="CoevaluationMorphism" />
-#! * <Ref BookName="MonoidalCategories" Func="CoevaluationMorphismWithGivenRange" />
-#! * <Ref BookName="CAP" Func="DistinguishedObjectOfHomomorphismStructure" />
-#! * <Ref BookName="MonoidalCategories" Func="DualOnMorphisms" />
-#! * <Ref BookName="MonoidalCategories" Func="DualOnMorphismsWithGivenDuals" />
-#! * <Ref BookName="MonoidalCategories" Func="DualOnObjects" />
-#! * <Ref BookName="MonoidalCategories" Func="EvaluationForDual" />
-#! * <Ref BookName="MonoidalCategories" Func="EvaluationForDualWithGivenTensorProduct" />
-#! * <Ref BookName="MonoidalCategories" Func="EvaluationMorphism" />
-#! * <Ref BookName="MonoidalCategories" Func="EvaluationMorphismWithGivenSource" />
-#! * <Ref BookName="CAP" Func="HomomorphismStructureOnMorphisms" />
-#! * <Ref BookName="CAP" Func="HomomorphismStructureOnMorphismsWithGivenObjects" />
-#! * <Ref BookName="CAP" Func="HomomorphismStructureOnObjects" />
-#! * <Ref BookName="MonoidalCategories" Func="InternalHomOnMorphisms" />
-#! * <Ref BookName="MonoidalCategories" Func="InternalHomOnMorphismsWithGivenInternalHoms" />
-#! * <Ref BookName="MonoidalCategories" Func="InternalHomOnObjects" />
-#! * <Ref BookName="MonoidalCategories" Func="InternalHomToTensorProductAdjunctionMap" />
-#! * <Ref BookName="CAP" Func="InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" />
-#! * <Ref BookName="CAP" Func="InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" />
-#! * <Ref BookName="CAP" Func="InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" />
-#! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromDualToInternalHom" />
-#! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromInternalHomToDual" />
-#! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromInternalHomToObject" />
-#! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromInternalHomToObjectWithGivenInternalHom" />
-#! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromInternalHomToTensorProduct" />
-#! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromObjectToInternalHom" />
-#! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromObjectToInternalHomWithGivenInternalHom" />
-#! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromTensorProductToInternalHom" />
-#! * <Ref BookName="MonoidalCategories" Func="LambdaElimination" />
-#! * <Ref BookName="MonoidalCategories" Func="LambdaIntroduction" />
-#! * <Ref BookName="MonoidalCategories" Func="LeftDistributivityExpanding" />
-#! * <Ref BookName="MonoidalCategories" Func="LeftDistributivityExpandingWithGivenObjects" />
-#! * <Ref BookName="MonoidalCategories" Func="LeftDistributivityFactoring" />
-#! * <Ref BookName="MonoidalCategories" Func="LeftDistributivityFactoringWithGivenObjects" />
-#! * <Ref BookName="MonoidalCategories" Func="LeftUnitor" />
-#! * <Ref BookName="MonoidalCategories" Func="LeftUnitorInverse" />
-#! * <Ref BookName="CAP" Func="MereExistenceOfSolutionOfLinearSystemInAbCategory" />
-#! * <Ref BookName="MonoidalCategories" Func="MonoidalPostComposeMorphism" />
-#! * <Ref BookName="MonoidalCategories" Func="MonoidalPostComposeMorphismWithGivenObjects" />
-#! * <Ref BookName="MonoidalCategories" Func="MonoidalPreComposeMorphism" />
-#! * <Ref BookName="MonoidalCategories" Func="MonoidalPreComposeMorphismWithGivenObjects" />
-#! * <Ref BookName="MonoidalCategories" Func="MorphismFromBidual" />
-#! * <Ref BookName="MonoidalCategories" Func="MorphismFromBidualWithGivenBidual" />
-#! * <Ref BookName="MonoidalCategories" Func="MorphismFromInternalHomToTensorProduct" />
-#! * <Ref BookName="MonoidalCategories" Func="MorphismFromInternalHomToTensorProductWithGivenObjects" />
-#! * <Ref BookName="MonoidalCategories" Func="MorphismFromTensorProductToInternalHom" />
-#! * <Ref BookName="MonoidalCategories" Func="MorphismFromTensorProductToInternalHomWithGivenObjects" />
-#! * <Ref BookName="MonoidalCategories" Func="MorphismToBidual" />
-#! * <Ref BookName="MonoidalCategories" Func="MorphismToBidualWithGivenBidual" />
-#! * <Ref BookName="CAP" Func="MultiplyWithElementOfCommutativeRingForMorphisms" />
-#! * <Ref BookName="MonoidalCategories" Func="RankMorphism" />
-#! * <Ref BookName="MonoidalCategories" Func="RightDistributivityExpanding" />
-#! * <Ref BookName="MonoidalCategories" Func="RightDistributivityExpandingWithGivenObjects" />
-#! * <Ref BookName="MonoidalCategories" Func="RightDistributivityFactoring" />
-#! * <Ref BookName="MonoidalCategories" Func="RightDistributivityFactoringWithGivenObjects" />
-#! * <Ref BookName="MonoidalCategories" Func="RightUnitor" />
-#! * <Ref BookName="MonoidalCategories" Func="RightUnitorInverse" />
-#! * <Ref BookName="CAP" Func="SolveLinearSystemInAbCategory" />
-#! * <Ref BookName="CAP" Func="SolveLinearSystemInAbCategoryOrFail" />
-#! * <Ref BookName="MonoidalCategories" Func="TensorProductDualityCompatibilityMorphism" />
-#! * <Ref BookName="MonoidalCategories" Func="TensorProductDualityCompatibilityMorphismWithGivenObjects" />
-#! * <Ref BookName="MonoidalCategories" Func="TensorProductInternalHomCompatibilityMorphism" />
-#! * <Ref BookName="MonoidalCategories" Func="TensorProductInternalHomCompatibilityMorphismInverse" />
-#! * <Ref BookName="MonoidalCategories" Func="TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects" />
-#! * <Ref BookName="MonoidalCategories" Func="TensorProductInternalHomCompatibilityMorphismWithGivenObjects" />
-#! * <Ref BookName="MonoidalCategories" Func="TensorProductOnMorphisms" />
-#! * <Ref BookName="MonoidalCategories" Func="TensorProductOnMorphismsWithGivenTensorProducts" />
-#! * <Ref BookName="MonoidalCategories" Func="TensorProductOnObjects" />
-#! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomAdjunctionMap" />
-#! * <Ref BookName="MonoidalCategories" Func="TensorUnit" />
-#! * <Ref BookName="MonoidalCategories" Func="TraceMap" />
-#! * <Ref BookName="MonoidalCategories" Func="UniversalPropertyOfDual" />
+#! * <Ref BookName="MonoidalCategories" Func="AssociatorLeftToRight (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="AssociatorRightToLeft (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="Braiding (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="BraidingInverse (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="BraidingInverseWithGivenTensorProducts (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="BraidingWithGivenTensorProducts (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="CoevaluationForDual (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="CoevaluationForDualWithGivenTensorProduct (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="CoevaluationMorphism (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="CoevaluationMorphismWithGivenRange (for Is)" />
+#! * <Ref BookName="CAP" Func="DistinguishedObjectOfHomomorphismStructure (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="DualOnMorphisms (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="DualOnMorphismsWithGivenDuals (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="DualOnObjects (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="EvaluationForDual (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="EvaluationForDualWithGivenTensorProduct (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="EvaluationMorphism (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="EvaluationMorphismWithGivenSource (for Is)" />
+#! * <Ref BookName="CAP" Func="HomomorphismStructureOnMorphisms (for Is)" />
+#! * <Ref BookName="CAP" Func="HomomorphismStructureOnMorphismsWithGivenObjects (for Is)" />
+#! * <Ref BookName="CAP" Func="HomomorphismStructureOnObjects (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="InternalHomOnMorphisms (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="InternalHomOnMorphismsWithGivenInternalHoms (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="InternalHomOnObjects (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="InternalHomToTensorProductAdjunctionMap (for Is)" />
+#! * <Ref BookName="CAP" Func="InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure (for Is)" />
+#! * <Ref BookName="CAP" Func="InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects (for Is)" />
+#! * <Ref BookName="CAP" Func="InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromDualToInternalHom (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromInternalHomToDual (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromInternalHomToObject (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromInternalHomToObjectWithGivenInternalHom (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromInternalHomToTensorProduct (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromObjectToInternalHom (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromObjectToInternalHomWithGivenInternalHom (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromTensorProductToInternalHom (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="LambdaElimination (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="LambdaIntroduction (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="LeftDistributivityExpanding (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="LeftDistributivityExpandingWithGivenObjects (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="LeftDistributivityFactoring (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="LeftDistributivityFactoringWithGivenObjects (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="LeftUnitor (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="LeftUnitorInverse (for Is)" />
+#! * <Ref BookName="CAP" Func="MereExistenceOfSolutionOfLinearSystemInAbCategory (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="MonoidalPostComposeMorphism (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="MonoidalPostComposeMorphismWithGivenObjects (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="MonoidalPreComposeMorphism (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="MonoidalPreComposeMorphismWithGivenObjects (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="MorphismFromBidual (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="MorphismFromBidualWithGivenBidual (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="MorphismFromInternalHomToTensorProduct (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="MorphismFromInternalHomToTensorProductWithGivenObjects (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="MorphismFromTensorProductToInternalHom (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="MorphismFromTensorProductToInternalHomWithGivenObjects (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="MorphismToBidual (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="MorphismToBidualWithGivenBidual (for Is)" />
+#! * <Ref BookName="CAP" Func="MultiplyWithElementOfCommutativeRingForMorphisms (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="RankMorphism (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="RightDistributivityExpanding (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="RightDistributivityExpandingWithGivenObjects (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="RightDistributivityFactoring (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="RightDistributivityFactoringWithGivenObjects (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="RightUnitor (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="RightUnitorInverse (for Is)" />
+#! * <Ref BookName="CAP" Func="SolveLinearSystemInAbCategory (for Is)" />
+#! * <Ref BookName="CAP" Func="SolveLinearSystemInAbCategoryOrFail (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductDualityCompatibilityMorphism (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductDualityCompatibilityMorphismWithGivenObjects (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductInternalHomCompatibilityMorphism (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductInternalHomCompatibilityMorphismInverse (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductInternalHomCompatibilityMorphismWithGivenObjects (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductOnMorphisms (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductOnMorphismsWithGivenTensorProducts (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductOnObjects (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorProductToInternalHomAdjunctionMap (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="TensorUnit (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="TraceMap (for Is)" />
+#! * <Ref BookName="MonoidalCategories" Func="UniversalPropertyOfDual (for Is)" />
 
 #! @Subsection CategoryOfRows of a field
 
 #! The following additional CAP operations are supported:
-#! * <Ref BookName="CAP" Func="AstrictionToCoimage" />
-#! * <Ref BookName="CAP" Func="AstrictionToCoimageWithGivenCoimage" />
-#! * <Ref BookName="CAP" Func="BasisOfExternalHom" />
-#! * <Ref BookName="CAP" Func="CoastrictionToImage" />
-#! * <Ref BookName="CAP" Func="CoastrictionToImageWithGivenImageObject" />
-#! * <Ref BookName="CAP" Func="CoefficientsOfMorphismWithGivenBasisOfExternalHom" />
-#! * <Ref BookName="CAP" Func="Coimage" />
-#! * <Ref BookName="CAP" Func="CoimageProjection" />
-#! * <Ref BookName="CAP" Func="CoimageProjectionWithGivenCoimage" />
-#! * <Ref BookName="CAP" Func="CokernelColift" />
-#! * <Ref BookName="CAP" Func="CokernelColiftWithGivenCokernelObject" />
-#! * <Ref BookName="CAP" Func="CokernelObject" />
-#! * <Ref BookName="CAP" Func="CokernelObjectFunctorial" />
-#! * <Ref BookName="CAP" Func="CokernelObjectFunctorialWithGivenCokernelObjects" />
-#! * <Ref BookName="CAP" Func="CokernelProjection" />
-#! * <Ref BookName="CAP" Func="CokernelProjectionWithGivenCokernelObject" />
-#! * <Ref BookName="CAP" Func="DirectSumProjectionInPushout" />
+#! * <Ref BookName="CAP" Func="AstrictionToCoimage (for Is)" />
+#! * <Ref BookName="CAP" Func="AstrictionToCoimageWithGivenCoimage (for Is)" />
+#! * <Ref BookName="CAP" Func="BasisOfExternalHom (for Is)" />
+#! * <Ref BookName="CAP" Func="CoastrictionToImage (for Is)" />
+#! * <Ref BookName="CAP" Func="CoastrictionToImageWithGivenImageObject (for Is)" />
+#! * <Ref BookName="CAP" Func="CoefficientsOfMorphismWithGivenBasisOfExternalHom (for Is)" />
+#! * <Ref BookName="CAP" Func="Coimage (for Is)" />
+#! * <Ref BookName="CAP" Func="CoimageProjection (for Is)" />
+#! * <Ref BookName="CAP" Func="CoimageProjectionWithGivenCoimage (for Is)" />
+#! * <Ref BookName="CAP" Func="CokernelColift (for Is)" />
+#! * <Ref BookName="CAP" Func="CokernelColiftWithGivenCokernelObject (for Is)" />
+#! * <Ref BookName="CAP" Func="CokernelObject (for Is)" />
+#! * <Ref BookName="CAP" Func="CokernelObjectFunctorial (for Is)" />
+#! * <Ref BookName="CAP" Func="CokernelObjectFunctorialWithGivenCokernelObjects (for Is)" />
+#! * <Ref BookName="CAP" Func="CokernelProjection (for Is)" />
+#! * <Ref BookName="CAP" Func="CokernelProjectionWithGivenCokernelObject (for Is)" />
+#! * <Ref BookName="CAP" Func="DirectSumProjectionInPushout (for Is)" />
 #! * <Ref BookName="CAP" Func="FiberProduct" />
-#! * <Ref BookName="CAP" Func="FiberProductEmbeddingInDirectSum" />
-#! * <Ref BookName="CAP" Func="FiberProductFunctorial" />
-#! * <Ref BookName="CAP" Func="FiberProductFunctorialWithGivenFiberProducts" />
-#! * <Ref BookName="CAP" Func="HomologyObject" />
-#! * <Ref BookName="CAP" Func="HomologyObjectFunctorialWithGivenHomologyObjects" />
-#! * <Ref BookName="CAP" Func="ImageEmbedding" />
-#! * <Ref BookName="CAP" Func="ImageEmbeddingWithGivenImageObject" />
-#! * <Ref BookName="CAP" Func="ImageObject" />
-#! * <Ref BookName="CAP" Func="InjectionOfCofactorOfPushout" />
-#! * <Ref BookName="CAP" Func="InjectionOfCofactorOfPushoutWithGivenPushout" />
-#! * <Ref BookName="CAP" Func="InverseMorphismFromCoimageToImageWithGivenObjects" />
-#! * <Ref BookName="CAP" Func="IsCodominating" />
-#! * <Ref BookName="CAP" Func="IsDominating" />
-#! * <Ref BookName="CAP" Func="IsEqualAsFactorobjects" />
-#! * <Ref BookName="CAP" Func="IsEqualAsSubobjects" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromCoimageToCokernelOfKernel" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromCokernelOfDiagonalDifferenceToPushout" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromCokernelOfKernelToCoimage" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromFiberProductToKernelOfDiagonalDifference" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromImageObjectToKernelOfCokernel" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromKernelOfCokernelToImageObject" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct" />
-#! * <Ref BookName="CAP" Func="IsomorphismFromPushoutToCokernelOfDiagonalDifference" />
-#! * <Ref BookName="CAP" Func="KernelEmbedding" />
-#! * <Ref BookName="CAP" Func="KernelEmbeddingWithGivenKernelObject" />
-#! * <Ref BookName="CAP" Func="KernelLift" />
-#! * <Ref BookName="CAP" Func="KernelLiftWithGivenKernelObject" />
-#! * <Ref BookName="CAP" Func="KernelObject" />
-#! * <Ref BookName="CAP" Func="KernelObjectFunctorial" />
-#! * <Ref BookName="CAP" Func="KernelObjectFunctorialWithGivenKernelObjects" />
-#! * <Ref BookName="CAP" Func="MorphismFromCoimageToImageWithGivenObjects" />
-#! * <Ref BookName="CAP" Func="MorphismFromFiberProductToSink" />
-#! * <Ref BookName="CAP" Func="MorphismFromFiberProductToSinkWithGivenFiberProduct" />
-#! * <Ref BookName="CAP" Func="MorphismFromKernelObjectToSink" />
-#! * <Ref BookName="CAP" Func="MorphismFromKernelObjectToSinkWithGivenKernelObject" />
-#! * <Ref BookName="CAP" Func="MorphismFromSourceToCokernelObject" />
-#! * <Ref BookName="CAP" Func="MorphismFromSourceToCokernelObjectWithGivenCokernelObject" />
-#! * <Ref BookName="CAP" Func="MorphismFromSourceToPushout" />
-#! * <Ref BookName="CAP" Func="MorphismFromSourceToPushoutWithGivenPushout" />
-#! * <Ref BookName="CAP" Func="ProjectionInFactorOfFiberProduct" />
-#! * <Ref BookName="CAP" Func="ProjectionInFactorOfFiberProductWithGivenFiberProduct" />
-#! * <Ref BookName="CAP" Func="Pushout" />
-#! * <Ref BookName="CAP" Func="PushoutFunctorial" />
-#! * <Ref BookName="CAP" Func="PushoutFunctorialWithGivenPushouts" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismFromImage" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismFromImageWithGivenImageObject" />
+#! * <Ref BookName="CAP" Func="FiberProductEmbeddingInDirectSum (for Is)" />
+#! * <Ref BookName="CAP" Func="FiberProductFunctorial (for Is)" />
+#! * <Ref BookName="CAP" Func="FiberProductFunctorialWithGivenFiberProducts (for Is)" />
+#! * <Ref BookName="CAP" Func="HomologyObject (for Is)" />
+#! * <Ref BookName="CAP" Func="HomologyObjectFunctorialWithGivenHomologyObjects (for Is)" />
+#! * <Ref BookName="CAP" Func="ImageEmbedding (for Is)" />
+#! * <Ref BookName="CAP" Func="ImageEmbeddingWithGivenImageObject (for Is)" />
+#! * <Ref BookName="CAP" Func="ImageObject (for Is)" />
+#! * <Ref BookName="CAP" Func="InjectionOfCofactorOfPushout (for Is)" />
+#! * <Ref BookName="CAP" Func="InjectionOfCofactorOfPushoutWithGivenPushout (for Is)" />
+#! * <Ref BookName="CAP" Func="InverseMorphismFromCoimageToImageWithGivenObjects (for Is)" />
+#! * <Ref BookName="CAP" Func="IsCodominating (for Is)" />
+#! * <Ref BookName="CAP" Func="IsDominating (for Is)" />
+#! * <Ref BookName="CAP" Func="IsEqualAsFactorobjects (for Is)" />
+#! * <Ref BookName="CAP" Func="IsEqualAsSubobjects (for Is)" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromCoimageToCokernelOfKernel (for Is)" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromCokernelOfDiagonalDifferenceToPushout (for Is)" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromCokernelOfKernelToCoimage (for Is)" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromFiberProductToKernelOfDiagonalDifference (for Is)" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject (for Is)" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromImageObjectToKernelOfCokernel (for Is)" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject (for Is)" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromKernelOfCokernelToImageObject (for Is)" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct (for Is)" />
+#! * <Ref BookName="CAP" Func="IsomorphismFromPushoutToCokernelOfDiagonalDifference (for Is)" />
+#! * <Ref BookName="CAP" Func="KernelEmbedding (for Is)" />
+#! * <Ref BookName="CAP" Func="KernelEmbeddingWithGivenKernelObject (for Is)" />
+#! * <Ref BookName="CAP" Func="KernelLift (for Is)" />
+#! * <Ref BookName="CAP" Func="KernelLiftWithGivenKernelObject (for Is)" />
+#! * <Ref BookName="CAP" Func="KernelObject (for Is)" />
+#! * <Ref BookName="CAP" Func="KernelObjectFunctorial (for Is)" />
+#! * <Ref BookName="CAP" Func="KernelObjectFunctorialWithGivenKernelObjects (for Is)" />
+#! * <Ref BookName="CAP" Func="MorphismFromCoimageToImageWithGivenObjects (for Is)" />
+#! * <Ref BookName="CAP" Func="MorphismFromFiberProductToSink (for Is)" />
+#! * <Ref BookName="CAP" Func="MorphismFromFiberProductToSinkWithGivenFiberProduct (for Is)" />
+#! * <Ref BookName="CAP" Func="MorphismFromKernelObjectToSink (for Is)" />
+#! * <Ref BookName="CAP" Func="MorphismFromKernelObjectToSinkWithGivenKernelObject (for Is)" />
+#! * <Ref BookName="CAP" Func="MorphismFromSourceToCokernelObject (for Is)" />
+#! * <Ref BookName="CAP" Func="MorphismFromSourceToCokernelObjectWithGivenCokernelObject (for Is)" />
+#! * <Ref BookName="CAP" Func="MorphismFromSourceToPushout (for Is)" />
+#! * <Ref BookName="CAP" Func="MorphismFromSourceToPushoutWithGivenPushout (for Is)" />
+#! * <Ref BookName="CAP" Func="ProjectionInFactorOfFiberProduct (for Is)" />
+#! * <Ref BookName="CAP" Func="ProjectionInFactorOfFiberProductWithGivenFiberProduct (for Is)" />
+#! * <Ref BookName="CAP" Func="Pushout (for Is)" />
+#! * <Ref BookName="CAP" Func="PushoutFunctorial (for Is)" />
+#! * <Ref BookName="CAP" Func="PushoutFunctorialWithGivenPushouts (for Is)" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismFromImage (for Is)" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismFromImageWithGivenImageObject (for Is)" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismFromPushout" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismFromPushoutWithGivenPushout" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismIntoCoimage" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismIntoCoimageWithGivenCoimage" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismFromPushoutWithGivenPushout (for Is)" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismIntoCoimage (for Is)" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismIntoCoimageWithGivenCoimage (for Is)" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismIntoFiberProduct" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismIntoFiberProductWithGivenFiberProduct" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismIntoFiberProductWithGivenFiberProduct (for Is)" />

@@ -5149,7 +5149,7 @@ CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE( CAP_INTERNAL_METHOD_NAME_RE
 ##
 InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCES,
   function ( subsections, package_name, filename, chapter_name, section_name )
-    local output_string, package_info, current_string, collected_dependencies, subsection, category, subsection_title, operations, booknames, bookname, output_path, dep, p, i, name;
+    local output_string, package_info, current_string, collected_dependencies, subsection, category, subsection_title, operations, booknames, bookname, info, label, match, nr, res, test_string, output_path, dep, p, i, name;
     
     output_string := "";
     
@@ -5268,11 +5268,66 @@ InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCE
                 
             fi;
             
+            # simulate GAPDoc's `ResolveExternalRef` to make sure we get a correct reference
+            info := HELP_BOOK_INFO( bookname );
+            
+            if info = fail then
+                
+                Error( "Could not get HELP_BOOK_INFO for book ", bookname );
+                
+            fi;
+            
+            if IsOperation( ValueGlobal( name ) ) then
+                
+                # the "for Is" makes sure we only match operations with a filter and not functions
+                label := Concatenation( name, " (for Is)" );
+                
+            else
+                
+                label := name;
+                
+            fi;
+            
+            match := Concatenation( HELP_GET_MATCHES( info, SIMPLE_STRING( label ), true ) );
+            
+            nr := 1;
+            
+            if Length(match) < nr then
+                
+                Error( "Could not get HELP_GET_MATCHES for book ", bookname, " and label ", SIMPLE_STRING( label ) );
+                
+            fi;
+            
+            res := GetHelpDataRef(info, match[nr][2]);
+            res[1] := SubstitutionSublist(res[1], " (not loaded): ", ": ", "one");
+            
+            if IsOperation( ValueGlobal( name ) ) then
+                
+                test_string := Concatenation( bookname, ": ", name, " for is" );
+                
+                if not StartsWith( res[1], test_string ) then
+                    
+                    Error( res[1], " does not start with ", test_string, ", matching wrong operation?" );
+                    
+                fi;
+                
+            else
+                
+                test_string := Concatenation( bookname, ": ", name );
+                
+                if not res[1] = test_string then
+                    
+                    Error( res[1], " is not equal to ", test_string, ", matching wrong function?" );
+                    
+                fi;
+                
+            fi;
+            
             current_string := ReplacedStringViaRecord(
-                "\n# ! * <Ref BookName=\"bookname\" Func=\"operation_name\" />",
+                "\n# ! * <Ref BookName=\"bookname\" Func=\"label\" />", # GAPDoc does not care if we use `Func` or `Oper` + `Label` for external refs
                 rec(
-                    operation_name := name,
                     bookname := bookname,
+                    label := label,
                 )
             );
             output_string := Concatenation( output_string, current_string );
