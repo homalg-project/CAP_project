@@ -1,3 +1,9 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# MonoidalCategories: Monoidal and monoidal (co)closed categories
+#
+# Implementations
+#
+
 InstallValue( DISTRIBUTIVE_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD, rec(
 
 LeftDistributivityExpanding := rec(
@@ -61,7 +67,7 @@ CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
     "MonoidalCategories",
     "AdditiveMonoidalCategories.autogen.gd",
     "Monoidal Categories",
-    "Additive Monoidal Categories"
+    "Add-methods"
 );
 
 CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE( DISTRIBUTIVE_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD, "MonoidalCategories" );

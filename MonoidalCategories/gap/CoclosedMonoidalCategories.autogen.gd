@@ -7,7 +7,7 @@
 
 #! @Chapter Monoidal Categories
 
-#! @Section Coclosed Monoidal Categories
+#! @Section Add-methods
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
