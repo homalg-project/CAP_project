@@ -23,7 +23,7 @@
 #! The corresponding GAP property is given by
 #! <C>IsBraidedMonoidalCategory</C>.
 
-AddCategoricalProperty( [ "IsBraidedMonoidalCategory" ] );
+AddCategoricalProperty( [ "IsBraidedMonoidalCategory", "IsBraidedMonoidalCategory" ] );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBraidedMonoidalCategory  := Concatenation( [
 "BraidingWithGivenTensorProducts",
