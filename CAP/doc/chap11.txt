@@ -667,6 +667,14 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals();;[127X[104X
     [4X[25Xgap>[125X [27Xvec := MatrixCategory( QQ );;[127X[104X
+    [4X[25Xgap>[125X [27Xop := Opposite( vec );;[127X[104X
+    [4X[25Xgap>[125X [27XListKnownCategoricalProperties( op );[127X[104X
+    [4X[28X[ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughInjectives"[128X[104X
+    [4X[28X    , "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory", [128X[104X
+    [4X[28X  "IsBraidedMonoidalCategory", "IsEnrichedOverCommutativeRegularSemigroup", [128X[104X
+    [4X[28X  "IsLinearCategoryOverCommutativeRing", "IsMonoidalCategory", [128X[104X
+    [4X[28X  "IsPreAbelianCategory", "IsSkeletalCategory", "IsStrictMonoidalCategory", [128X[104X
+    [4X[28X  "IsSymmetricMonoidalCategory" ][128X[104X
     [4X[25Xgap>[125X [27XV1 := Opposite( TensorUnit( vec ) );;[127X[104X
     [4X[25Xgap>[125X [27XV2 := DirectSum( V1, V1 );;[127X[104X
     [4X[25Xgap>[125X [27XV3 := DirectSum( V1, V2 );;[127X[104X

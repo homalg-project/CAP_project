@@ -746,6 +746,14 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MatrixCategory( QQ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">op := Opposite( vec );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ListKnownCategoricalProperties( op );</span>
+[ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughInjectives"
+    , "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory", 
+  "IsBraidedMonoidalCategory", "IsEnrichedOverCommutativeRegularSemigroup", 
+  "IsLinearCategoryOverCommutativeRing", "IsMonoidalCategory", 
+  "IsPreAbelianCategory", "IsSkeletalCategory", "IsStrictMonoidalCategory", 
+  "IsSymmetricMonoidalCategory" ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V1 := Opposite( TensorUnit( vec ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V2 := DirectSum( V1, V1 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V3 := DirectSum( V1, V2 );;</span>
