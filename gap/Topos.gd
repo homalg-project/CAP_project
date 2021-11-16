@@ -17,7 +17,7 @@ DeclareGlobalVariable( "TOPOS_METHOD_NAME_RECORD" );
 #! @Description
 #!  The property of <A>C</A> being an elementary topos.
 #! @Arguments C
-AddCategoricalProperty( [ "IsElementaryTopos" ] );
+AddCategoricalProperty( [ "IsElementaryTopos", fail ] );
 
 #! A subobject classifier object consists of three parts:
 #! * an object $\Omega$,
