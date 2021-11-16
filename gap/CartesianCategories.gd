@@ -19,8 +19,8 @@ DeclareGlobalVariable( "CARTESIAN_CATEGORIES_METHOD_NAME_RECORD" );
 Perform(
 ## This is the CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST
     [
-      [ "IsCartesianCategory" ],
-      [ "IsStrictCartesianCategory" ],
+      [ "IsCartesianCategory", "IsCocartesianCategory" ],
+      [ "IsStrictCartesianCategory", "IsStrictCocartesianCategory" ],
     ],
     AddCategoricalProperty );
 

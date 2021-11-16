@@ -22,6 +22,6 @@
 #! The corresponding GAP property is called
 #! <C>IsCartesianClosedCategory</C>.
 
-AddCategoricalProperty( [ "IsCartesianClosedCategory" ] );
+AddCategoricalProperty( [ "IsCartesianClosedCategory", fail ] );
 
 InstallTrueMethod( IsCartesianCategory, IsCartesianClosedCategory );

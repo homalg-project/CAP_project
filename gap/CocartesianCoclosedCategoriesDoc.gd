@@ -22,6 +22,6 @@
 #! The corresponding GAP property is called
 #! <C>IsCocartesianCoclosedCategory</C>.
 
-AddCategoricalProperty( [ "IsCocartesianCoclosedCategory" ] );
+AddCategoricalProperty( [ "IsCocartesianCoclosedCategory", fail ] );
 
 InstallTrueMethod( IsCocartesianCategory, IsCocartesianCoclosedCategory );
