@@ -54,7 +54,7 @@ DeclareOperation( "InternalHomOnMorphismsWithGivenInternalHoms",
 #! The output is the evaluation morphism $\mathrm{ev}_{a,b}: \mathrm{\underline{Hom}}(a,b) \otimes a \rightarrow b$, i.e.,
 #! the counit of the tensor hom adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b) \otimes a, b )$.
-#! @Arguments a,b
+#! @Arguments a, b
 DeclareOperation( "EvaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
@@ -64,7 +64,7 @@ DeclareOperation( "EvaluationMorphism",
 #! The output is the evaluation morphism $\mathrm{ev}_{a,b}: \mathrm{\underline{Hom}}(a,b) \otimes a \rightarrow b$, i.e.,
 #! the counit of the tensor hom adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b) \otimes a, b )$.
-#! @Arguments a,b, s
+#! @Arguments a, b, s
 DeclareOperation( "EvaluationMorphismWithGivenSource",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
@@ -73,7 +73,7 @@ DeclareOperation( "EvaluationMorphismWithGivenSource",
 #! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}}(b, a \otimes b)$, i.e.,
 #! the unit of the tensor hom adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{\underline{Hom}}(b, a \otimes b) )$.
-#! @Arguments a,b
+#! @Arguments a, b
 DeclareOperation( "CoevaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
@@ -83,7 +83,7 @@ DeclareOperation( "CoevaluationMorphism",
 #! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow \mathrm{\underline{Hom}}(b, a \otimes b)$, i.e.,
 #! the unit of the tensor hom adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{\underline{Hom}}(b, a \otimes b) )$.
-#! @Arguments a,b,r
+#! @Arguments a, b, r
 DeclareOperation( "CoevaluationMorphismWithGivenRange",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
@@ -208,7 +208,7 @@ DeclareAttribute( "MorphismToBidual",
 DeclareOperation( "MorphismToBidualWithGivenBidual",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-## The four objects are given are given as a list because otherwise the WithGiven operation would
+## The four objects are given as a list because otherwise the WithGiven operation would
 ## exceed the maximal number of arguments for an operation (6)
 #! @Description
 #! The argument is a list of four objects $[ a, a', b, b' ]$.
