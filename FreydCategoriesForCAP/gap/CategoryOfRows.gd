@@ -65,6 +65,15 @@ KeyDependentOperation( "StandardRowMorphism",
 DeclareAttribute( "UnderlyingRing",
                   IsCategoryOfRows );
 
+DeclareAttribute( "GeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure",
+                  IsCategoryOfRows );
+
+DeclareAttribute( "ColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure",
+                  IsCategoryOfRows );
+
+DeclareAttribute( "RingInclusionForHomomorphismStructure",
+                  IsCategoryOfRows );
+
 DeclareAttribute( "RankOfObject",
                   IsCategoryOfRowsObject );
 

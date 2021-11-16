@@ -100,7 +100,14 @@ InstallMethodForCompilerForCAP( CategoryOfRowsObjectOp,
                
   function( category, rank )
     
-    return ObjectConstructor( category, rank );
+    if not IsInt( rank ) or rank < 0 then
+        
+        Error( "the object datum must be a non-negative integer" );
+        
+    fi;
+    
+    return ObjectifyObjectForCAPWithAttributes( rec( ), category,
+                                                RankOfObject, rank );
     
 end );
 
@@ -135,7 +142,35 @@ InstallOtherMethodForCompilerForCAP( CategoryOfRowsMorphism,
                                      
   function( cat, source, homalg_matrix, range )
     
-    return MorphismConstructor( cat, source, homalg_matrix, range );
+    if not IsHomalgMatrix( homalg_matrix ) then
+        
+        Error( "the morphism datum must be a homalg matrix" );
+        
+    fi;
+    
+    if not IsIdenticalObj( HomalgRing( homalg_matrix ), UnderlyingRing( cat ) ) then
+        
+        Error( "the matrix is defined over a different ring than the category" );
+        
+    fi;
+    
+    if NrRows( homalg_matrix ) <> RankOfObject( source ) then
+        
+        Error( "the number of rows has to be equal to the rank of the source" );
+        
+    fi;
+    
+    if NrColumns( homalg_matrix ) <> RankOfObject( range ) then
+        
+        Error( "the number of columns has to be equal to the rank of the range" );
+        
+    fi;
+    
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
+                                           source,
+                                           range,
+                                           UnderlyingMatrix, homalg_matrix
+    );
     
 end );
 
@@ -320,13 +355,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         if NrRows( homalg_matrix ) <> ObjectDatum( cat, source ) then
             
-            Error( "the number of rows has to be equal to the dimension of the source" );
+            Error( "the number of rows has to be equal to the rank of the source" );
             
         fi;
         
         if NrColumns( homalg_matrix ) <> ObjectDatum( cat, range ) then
             
-            Error( "the number of columns has to be equal to the dimension of the range" );
+            Error( "the number of columns has to be equal to the rank of the range" );
             
         fi;
         
@@ -542,11 +577,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     ##
     AddDirectSum( category,
       function( cat, object_list )
-      local dimension;
+      local rank;
       
-      dimension := Sum( List( object_list, object -> RankOfObject( object ) ) );
+      rank := Sum( List( object_list, object -> RankOfObject( object ) ) );
       
-      return CategoryOfRowsObject( cat, dimension );
+      return CategoryOfRowsObject( cat, rank );
       
     end );
     
