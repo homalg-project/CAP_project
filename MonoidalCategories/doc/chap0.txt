@@ -6,10 +6,10 @@
                  [1X Monoidal and monoidal (co)closed categories [101X
   
   
-                                   2021.11-02
+                                   2021.11-03
   
   
-                                15 November 2021
+                                16 November 2021
   
   
                                 Mohamed Barakat
