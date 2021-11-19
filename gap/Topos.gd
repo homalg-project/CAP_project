@@ -195,4 +195,36 @@ DeclareOperation( "TruthMorphismOfImplies",
 DeclareOperation( "TruthMorphismOfImpliesWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject ]);
 
+####################################
+##
+#! @Section Heyting Algebra of Subobjects
+##
+####################################
+
 #! @Description
+#!  The argument is a monomorphism $\iota: S \hookrightarrow A$.
+#!  The output is the <Q>pseudo-complement of $S$ in $A$</Q>, i.e.,
+#!  the pseudo-complement object of $\iota$.
+#! @Returns an object
+#! @Arguments iota
+DeclareOperation( "PseudoComplementSubobject",
+                  [ IsCapCategoryMorphism ]);
+
+#! @Description
+#!  The argument is a monomorphism $\iota: S \hookrightarrow A$.
+#!  The output is the embedding <C>PseudoComplementSubobject</C>($\iota$) $\hookrightarrow A$
+#!  of pseudo-complement object of $\iota$.
+#! @Returns an object
+#! @Arguments iota
+DeclareOperation( "EmbeddingOfPseudoComplementSubobject",
+                  [ IsCapCategoryMorphism ]);
+
+#! @Description
+#!  The argument is a monomorphism $\iota: S \hookrightarrow A$ and an object $T$ with
+#!  <C>IsEqualForObjects</C>($T$, <C>PseudoComplementSubobject</C>($\iota$)).
+#!  The output is the embedding of $\iota:T \hookrightarrow A$
+#!  of pseudo-complement object $T$ of $\iota$.
+#! @Returns an object
+#! @Arguments iota
+DeclareOperation( "EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement",
+                  [ IsCapCategoryMorphism, IsCapCategoryObject ]);

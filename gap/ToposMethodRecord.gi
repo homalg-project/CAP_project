@@ -109,6 +109,26 @@ SubobjectOfClassifyingMorphism := rec(
   io_type := [ [ "alpha" ] , [ "subobject" , "alpha_source" ] ],
   return_type := "morphism" ),
 
+PseudoComplementSubobject := rec(
+  filter_list := [ "category", "morphism" ],
+  return_type := "object" ),
+
+EmbeddingOfPseudoComplementSubobject := rec(
+  filter_list := [ "category", "morphism" ],
+  input_arguments_names := [ "cat", "iota" ],
+  output_source_getter_string := "PseudoComplementSubobject( iota )",
+  output_range_getter_string := "Range( iota )",
+  with_given_object_position := "Source",
+  return_type := "morphism" ),
+
+EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement := rec(
+  filter_list := [ "category", "morphism", "object" ],
+  input_arguments_names := [ "cat", "iota", "complement" ],
+  output_source_getter_string := "complement",
+  output_range_getter_string := "Range( iota )",
+  io_type := [ [ "iota", "complement" ] , [ "complement" , "iota_range" ] ],
+  return_type := "morphism" ),
+
  ) );
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( TOPOS_METHOD_NAME_RECORD );

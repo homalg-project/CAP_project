@@ -266,3 +266,25 @@ AddDerivationToCAP( TruthMorphismOfImpliesWithGivenObjects,
                    Omega );
     
 end );
+
+##
+AddDerivationToCAP( PseudoComplementSubobject,
+  function( cat, iota )
+    
+    return Source( EmbeddingOfPseudoComplementSubobject( cat, iota ) );
+    
+end );
+
+##
+AddDerivationToCAP( EmbeddingOfPseudoComplementSubobject,
+  function( cat, iota ) # ι: S → M
+    
+    return SubobjectOfClassifyingMorphism( ## -ι: (S - M) → M
+                   cat,
+                   PreCompose(
+                           cat,
+                           ClassifyingMorphismOfSubobject( cat, iota ), ## χ_ι: Range( ι ) → Ω
+                           TruthMorphismOfNot( cat ) ## ¬: Ω → Ω
+                           ) );
+    
+end );
