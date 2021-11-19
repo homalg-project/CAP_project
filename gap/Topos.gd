@@ -280,3 +280,29 @@ DeclareOperation( "EmbeddingOfUnionSubobject",
 #! @Arguments iota
 DeclareOperation( "EmbeddingOfUnionSubobjectWithGivenUnion",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ]);
+
+#! @Description
+#!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
+#!  The output is the <Q>relative pseudo-complement of $S_1$ relative to $S_2$</Q>.
+#! @Returns an object
+#! @Arguments iota1, iota2
+DeclareOperation( "RelativePseudoComplementSuboject",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
+
+#! @Description
+#!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
+#!  The output is the embedding <C>RelativePseudoComplementSuboject</C>($\iota$) $\hookrightarrow A$
+#!  of their relative pseudo-complement into $A$.
+#! @Returns an object
+#! @Arguments iota
+DeclareOperation( "EmbeddingOfRelativePseudoComplementSuboject",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
+
+#! @Description
+#!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$ and an object $T$ with
+#!  <C>IsEqualForObjects</C>($T$, <C>RelativePseudoComplementSuboject</C>($\iota$)).
+#!  The output is the embedding $T \hookrightarrow A$ of their relative pseudo-complement $T$ into $A$.
+#! @Returns an object
+#! @Arguments iota
+DeclareOperation( "EmbeddingOfRelativePseudoComplementSubojectWithGivenImplication",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ]);

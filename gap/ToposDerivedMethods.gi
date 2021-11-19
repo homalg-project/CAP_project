@@ -365,3 +365,31 @@ AddDerivationToCAP( EmbeddingOfUnionSubobject,
                            [ iota1, iota2 ] ) );  ## [ ι1, ι2 ] : Source( ι1 ) ⊔ Source( ι2 ) → Range( ι1 )
     
 end );
+
+##
+AddDerivationToCAP( RelativePseudoComplementSuboject,
+  function( cat, iota1, iota2 )
+    
+    return Source( EmbeddingOfRelativePseudoComplementSuboject( cat, iota1, iota2 ) );
+    
+end );
+
+##
+AddDerivationToCAP( EmbeddingOfRelativePseudoComplementSuboject,
+  function( cat, iota1, iota2 )
+    local Omega;
+    
+    Omega := SubobjectClassifier( cat );
+    
+    return SubobjectOfClassifyingMorphism( ## -ι
+                   PreCompose(
+                           UniversalMorphismIntoDirectProduct( ## Range( ι1 ) = Range( ι2 ) → Ω × Ω
+                                   cat,
+                                   [ Omega, Omega ],
+                                   Range( iota1 ),
+                                   [ ClassifyingMorphismOfSubobject( cat, iota1 ), ## χ_ι1
+                                     ClassifyingMorphismOfSubobject( cat, iota2 ) ] ), ## χ_ι2
+                           TruthMorphismOfImplies( cat ) ## ⇒: Ω × Ω → Ω
+                           ) );
+    
+end );

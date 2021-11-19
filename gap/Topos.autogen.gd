@@ -69,6 +69,44 @@ DeclareOperation( "AddClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `EmbeddingOfIntersectionSubobject`.
+#! $F: ( iota1, iota2 ) \mapsto \mathtt{EmbeddingOfIntersectionSubobject}(iota1, iota2)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddEmbeddingOfIntersectionSubobject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddEmbeddingOfIntersectionSubobject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddEmbeddingOfIntersectionSubobject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEmbeddingOfIntersectionSubobject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `EmbeddingOfIntersectionSubobjectWithGivenIntersection`.
+#! $F: ( iota1, iota2, intersection ) \mapsto \mathtt{EmbeddingOfIntersectionSubobjectWithGivenIntersection}(iota1, iota2, intersection)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddEmbeddingOfIntersectionSubobjectWithGivenIntersection",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddEmbeddingOfIntersectionSubobjectWithGivenIntersection",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddEmbeddingOfIntersectionSubobjectWithGivenIntersection",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEmbeddingOfIntersectionSubobjectWithGivenIntersection",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `EmbeddingOfPseudoComplementSubobject`.
 #! $F: ( iota ) \mapsto \mathtt{EmbeddingOfPseudoComplementSubobject}(iota)$.
 #! @Returns nothing
@@ -107,58 +145,39 @@ DeclareOperation( "AddEmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplem
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `PseudoComplementSubobject`.
-#! $F: ( arg2 ) \mapsto \mathtt{PseudoComplementSubobject}(arg2)$.
+#! to the category for the basic operation `EmbeddingOfRelativePseudoComplementSuboject`.
+#! $F: ( iota1, iota2 ) \mapsto \mathtt{EmbeddingOfRelativePseudoComplementSuboject}(iota1, iota2)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddPseudoComplementSubobject",
+DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSuboject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddPseudoComplementSubobject",
+DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSuboject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddPseudoComplementSubobject",
+DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSuboject",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddPseudoComplementSubobject",
+DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSuboject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `EmbeddingOfIntersectionSubobject`.
-#! $F: ( iota1, iota2 ) \mapsto \mathtt{EmbeddingOfIntersectionSubobject}(iota1, iota2)$.
+#! to the category for the basic operation `EmbeddingOfRelativePseudoComplementSubojectWithGivenImplication`.
+#! $F: ( iota1, iota2, union ) \mapsto \mathtt{EmbeddingOfRelativePseudoComplementSubojectWithGivenImplication}(iota1, iota2, union)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddEmbeddingOfIntersectionSubobject",
+DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSubojectWithGivenImplication",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddEmbeddingOfIntersectionSubobject",
+DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSubojectWithGivenImplication",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddEmbeddingOfIntersectionSubobject",
+DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSubojectWithGivenImplication",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddEmbeddingOfIntersectionSubobject",
-                  [ IsCapCategory, IsList ] );
-
-#! @Description
-#! The arguments are a category $C$ and a function $F$.
-#! This operation adds the given function $F$
-#! to the category for the basic operation `EmbeddingOfIntersectionSubobjectWithGivenIntersection`.
-#! $F: ( iota1, iota2, intersection ) \mapsto \mathtt{EmbeddingOfIntersectionSubobjectWithGivenIntersection}(iota1, iota2, intersection)$.
-#! @Returns nothing
-#! @Arguments C, F
-DeclareOperation( "AddEmbeddingOfIntersectionSubobjectWithGivenIntersection",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddEmbeddingOfIntersectionSubobjectWithGivenIntersection",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddEmbeddingOfIntersectionSubobjectWithGivenIntersection",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddEmbeddingOfIntersectionSubobjectWithGivenIntersection",
+DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSubojectWithGivenImplication",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -216,6 +235,44 @@ DeclareOperation( "AddIntersectionSubobject",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddIntersectionSubobject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `PseudoComplementSubobject`.
+#! $F: ( arg2 ) \mapsto \mathtt{PseudoComplementSubobject}(arg2)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddPseudoComplementSubobject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddPseudoComplementSubobject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddPseudoComplementSubobject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddPseudoComplementSubobject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `RelativePseudoComplementSuboject`.
+#! $F: ( arg2, arg3 ) \mapsto \mathtt{RelativePseudoComplementSuboject}(arg2, arg3)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddRelativePseudoComplementSuboject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddRelativePseudoComplementSuboject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddRelativePseudoComplementSuboject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddRelativePseudoComplementSuboject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
