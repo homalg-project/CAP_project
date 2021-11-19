@@ -224,7 +224,7 @@ AddDerivationToCAP( TruthMorphismOfOrWithGivenObjects,
                  UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, Omega, T ),
                  TruthMorphismOfTrueWithGivenObjects( cat, T, Omega ) );
     
-    id := IdentityMorphism( Omega );
+    id := IdentityMorphism( cat, Omega );
     
     left := UniversalMorphismIntoDirectProductWithGivenDirectProduct(
                     cat,
@@ -258,6 +258,7 @@ AddDerivationToCAP( TruthMorphismOfImpliesWithGivenObjects,
                            cat,
                            [ TruthMorphismOfAndWithGivenObjects( cat, Omega2, Omega ),
                              ProjectionInFactorOfDirectProductWithGivenDirectProduct(
+                                     cat,
                                      [ Omega, Omega ],
                                      1,
                                      Omega2
