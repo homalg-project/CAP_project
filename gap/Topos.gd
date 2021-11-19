@@ -228,3 +228,29 @@ DeclareOperation( "EmbeddingOfPseudoComplementSubobject",
 #! @Arguments iota
 DeclareOperation( "EmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplement",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ]);
+
+#! @Description
+#!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
+#!  The output is the <Q>intersection of $S_1$ and $S_2$</Q>, which is
+#!  naturally isomorphic to the pullback of $\iota_1$ and $\iota_2$.
+#! @Returns an object
+#! @Arguments iota1, iota2
+DeclareOperation( "IntersectionSubobject",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
+
+#! @Description
+#!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
+#!  The output is the embedding <C>IntersectionSubobject</C>($\iota$) $\hookrightarrow A$ of their intersection subobject.
+#! @Returns an object
+#! @Arguments iota
+DeclareOperation( "EmbeddingOfIntersectionSubobject",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
+
+#! @Description
+#!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$ and an object $T$ with
+#!  <C>IsEqualForObjects</C>($T$, <C>IntersectionSubobject</C>($\iota$)).
+#!  The output the embedding $T \hookrightarrow A$ of their intersection subobject $T$.
+#! @Returns an object
+#! @Arguments iota
+DeclareOperation( "EmbeddingOfIntersectionSubobjectWithGivenIntersection",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ]);

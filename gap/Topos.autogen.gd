@@ -126,6 +126,63 @@ DeclareOperation( "AddPseudoComplementSubobject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `EmbeddingOfIntersectionSubobject`.
+#! $F: ( iota1, iota2 ) \mapsto \mathtt{EmbeddingOfIntersectionSubobject}(iota1, iota2)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddEmbeddingOfIntersectionSubobject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddEmbeddingOfIntersectionSubobject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddEmbeddingOfIntersectionSubobject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEmbeddingOfIntersectionSubobject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `EmbeddingOfIntersectionSubobjectWithGivenIntersection`.
+#! $F: ( iota1, iota2, intersection ) \mapsto \mathtt{EmbeddingOfIntersectionSubobjectWithGivenIntersection}(iota1, iota2, intersection)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddEmbeddingOfIntersectionSubobjectWithGivenIntersection",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddEmbeddingOfIntersectionSubobjectWithGivenIntersection",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddEmbeddingOfIntersectionSubobjectWithGivenIntersection",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEmbeddingOfIntersectionSubobjectWithGivenIntersection",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `IntersectionSubobject`.
+#! $F: ( arg2, arg3 ) \mapsto \mathtt{IntersectionSubobject}(arg2, arg3)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIntersectionSubobject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIntersectionSubobject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIntersectionSubobject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIntersectionSubobject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `SubobjectClassifier`.
 #! $F: (  ) \mapsto \mathtt{SubobjectClassifier}()$.
 #! @Returns nothing
