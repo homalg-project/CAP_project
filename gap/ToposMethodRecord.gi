@@ -149,6 +149,26 @@ EmbeddingOfIntersectionSubobjectWithGivenIntersection := rec(
   io_type := [ [ "iota1", "iota2", "intersection" ] , [ "intersection" , "iota1_range" ] ],
   return_type := "morphism" ),
 
+UnionSubobject := rec(
+  filter_list := [ "category", "morphism", "morphism" ],
+  return_type := "object" ),
+
+EmbeddingOfUnionSubobject := rec(
+  filter_list := [ "category", "morphism", "morphism" ],
+  input_arguments_names := [ "cat", "iota1", "iota2" ],
+  output_source_getter_string := "UnionSubobject( iota1, iota2 )",
+  output_range_getter_string := "Range( iota1 )",
+  with_given_object_position := "Source",
+  return_type := "morphism" ),
+
+EmbeddingOfUnionSubobjectWithGivenUnion := rec(
+  filter_list := [ "category", "morphism", "morphism", "object" ],
+  input_arguments_names := [ "cat", "iota1", "iota2", "union" ],
+  output_source_getter_string := "union",
+  output_range_getter_string := "Range( iota1 )",
+  io_type := [ [ "iota1", "iota2", "union" ] , [ "union" , "iota1_range" ] ],
+  return_type := "morphism" ),
+
  ) );
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( TOPOS_METHOD_NAME_RECORD );

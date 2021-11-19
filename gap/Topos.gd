@@ -254,3 +254,29 @@ DeclareOperation( "EmbeddingOfIntersectionSubobject",
 #! @Arguments iota
 DeclareOperation( "EmbeddingOfIntersectionSubobjectWithGivenIntersection",
                   [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ]);
+
+#! @Description
+#!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
+#!  The output is the <Q>union of $S_1$ and $S_2$</Q>, which is
+#!  naturally isomorphic to the image object of the coproduct morphism of $\iota_1$ and $\iota_2$.
+#! @Returns an object
+#! @Arguments iota1, iota2
+DeclareOperation( "UnionSubobject",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
+
+#! @Description
+#!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$.
+#!  The output is the embedding <C>UnionSubobject</C>($\iota$) $\hookrightarrow A$ of their union subobject.
+#! @Returns an object
+#! @Arguments iota
+DeclareOperation( "EmbeddingOfUnionSubobject",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism ]);
+
+#! @Description
+#!  The arguments are two monomorphisms $\iota_i: S_i \hookrightarrow A$ for $i=1,2$ and an object $T$ with
+#!  <C>IsEqualForObjects</C>($T$, <C>UnionSubobject</C>($\iota$)).
+#!  The output is the embedding $T \hookrightarrow A$ of their union subobject $T$.
+#! @Returns an object
+#! @Arguments iota
+DeclareOperation( "EmbeddingOfUnionSubobjectWithGivenUnion",
+                  [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject ]);

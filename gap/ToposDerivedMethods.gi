@@ -324,3 +324,44 @@ AddDerivationToCAP( EmbeddingOfIntersectionSubobject,
     return MorphismFromFiberProductToSink( cat, [ iota1, iota2 ] );
     
 end );
+
+##
+AddDerivationToCAP( UnionSubobject,
+  function( cat, iota1, iota2 )
+    
+    return Source( EmbeddingOfUnionSubobject( cat, iota1, iota2 ) );
+    
+end );
+
+##
+AddDerivationToCAP( EmbeddingOfUnionSubobject,
+  function( cat, iota1, iota2 )
+    local Omega;
+    
+    Omega := SubobjectClassifier( cat );
+    
+    return SubobjectOfClassifyingMorphism( ## -ι
+                   PreCompose(
+                           UniversalMorphismIntoDirectProduct( ## Range( ι1 ) = Range( ι2 ) → Ω × Ω
+                                   cat,
+                                   [ Omega, Omega ],
+                                   Range( iota1 ),
+                                   [ ClassifyingMorphismOfSubobject( cat, iota1 ), ## χ_ι1
+                                     ClassifyingMorphismOfSubobject( cat, iota2 ) ] ), ## χ_ι2
+                           TruthMorphismOfOr( cat ) ## ∨: Ω × Ω → Ω
+                           ) );
+    
+end );
+
+## This is [Glodblatt 1984: Topoi - The categorical analysis of logic, Theorem 7.1.3]
+AddDerivationToCAP( EmbeddingOfUnionSubobject,
+  function( cat, iota1, iota2 )
+    
+    return ImageEmbedding(
+                   UniversalMorphismFromCoproduct(
+                           cat,
+                           [ Source( iota1 ), Source( iota2 ) ],
+                           Range( iota1 ),
+                           [ iota1, iota2 ] ) );  ## [ ι1, ι2 ] : Source( ι1 ) ⊔ Source( ι2 ) → Range( ι1 )
+    
+end );

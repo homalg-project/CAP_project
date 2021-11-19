@@ -164,6 +164,44 @@ DeclareOperation( "AddEmbeddingOfIntersectionSubobjectWithGivenIntersection",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `EmbeddingOfUnionSubobject`.
+#! $F: ( iota1, iota2 ) \mapsto \mathtt{EmbeddingOfUnionSubobject}(iota1, iota2)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddEmbeddingOfUnionSubobject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddEmbeddingOfUnionSubobject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddEmbeddingOfUnionSubobject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEmbeddingOfUnionSubobject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `EmbeddingOfUnionSubobjectWithGivenUnion`.
+#! $F: ( iota1, iota2, union ) \mapsto \mathtt{EmbeddingOfUnionSubobjectWithGivenUnion}(iota1, iota2, union)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddEmbeddingOfUnionSubobjectWithGivenUnion",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddEmbeddingOfUnionSubobjectWithGivenUnion",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddEmbeddingOfUnionSubobjectWithGivenUnion",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddEmbeddingOfUnionSubobjectWithGivenUnion",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `IntersectionSubobject`.
 #! $F: ( arg2, arg3 ) \mapsto \mathtt{IntersectionSubobject}(arg2, arg3)$.
 #! @Returns nothing
@@ -444,4 +482,23 @@ DeclareOperation( "AddTruthMorphismOfTrueWithGivenObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddTruthMorphismOfTrueWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `UnionSubobject`.
+#! $F: ( arg2, arg3 ) \mapsto \mathtt{UnionSubobject}(arg2, arg3)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddUnionSubobject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddUnionSubobject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddUnionSubobject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddUnionSubobject",
                   [ IsCapCategory, IsList ] );
