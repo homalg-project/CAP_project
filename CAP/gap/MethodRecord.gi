@@ -4326,6 +4326,12 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
+        if current_rec.filter_list[1] <> "category" then
+            
+            Error( "The first entry of `filter_list` must be the string \"category\". Search for `category_as_first_argument` in the documentation for more details." );
+            
+        fi;
+        
         if IsBound( current_rec.io_type ) then
             
             io_type := current_rec.io_type;
@@ -4338,8 +4344,8 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 Error( "the input type of <current_rec> contains non-strings" );
             fi;
             
-            if (current_rec.filter_list[1] = "category" and Length( io_type[1] ) <> Length( current_rec.filter_list ) - 1) or
-               (current_rec.filter_list[1] <> "category" and Length( io_type[1] ) <> Length( current_rec.filter_list )) then
+            # the category is excluded in the io_type
+            if Length( io_type[1] ) <> Length( current_rec.filter_list ) - 1 then
                 
                 Error( "the input type of <current_rec> has the wrong length" );
                 
@@ -4375,15 +4381,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             Error( "the filter list of <current_rec> does not fulfill the requirements" );
         fi;
         
-        if IsBound( current_rec.install_convenience_without_category ) then
-            
-            if current_rec.install_convenience_without_category = true and current_rec.filter_list[1] <> "category" then
-                
-                Error( "install_convenience_without_category = true assumes that the first entry of the filter list is the category" );
-                
-            fi;
-            
-        else
+        if not IsBound( current_rec.install_convenience_without_category ) then
             
             # we cannot use `Flat` for lists of strings :-(
             flattened_filter_list := Concatenation( List( current_rec.filter_list,
@@ -4405,7 +4403,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 
             end ) );
             
-            if current_rec.filter_list[1] = "category" and not IsEmpty( Intersection( [ "object", "morphism", "twocell", "list_of_objects", "list_of_morphisms" ], Filtered( flattened_filter_list, IsString ) ) ) then
+            if not IsEmpty( Intersection( [ "object", "morphism", "twocell", "list_of_objects", "list_of_morphisms" ], Filtered( flattened_filter_list, IsString ) ) ) then
                 
                 current_rec.install_convenience_without_category := true;
                 
@@ -4548,31 +4546,17 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
             if IsBound( current_rec.io_type ) then
                 
-                if current_rec.filter_list[1] = "category" then
-                    
-                    current_rec.input_arguments_names := Concatenation( [ "cat" ], current_rec.io_type[1] );
-                    
-                else
-                    
-                    current_rec.input_arguments_names := current_rec.io_type[1];
-                    
-                fi;
+                current_rec.input_arguments_names := Concatenation( [ "cat" ], current_rec.io_type[1] );
                 
             else
                 
-                current_rec.input_arguments_names := List( [ 1 .. Length( current_rec.filter_list ) ], i -> Concatenation( "arg", String( i ) ) );
-                
-                if current_rec.filter_list[1] = "category" then
-                    
-                    current_rec.input_arguments_names[1] := "cat";
-                    
-                fi;
+                current_rec.input_arguments_names := Concatenation( [ "cat" ], List( [ 2 .. Length( current_rec.filter_list ) ], i -> Concatenation( "arg", String( i ) ) ) );
                 
             fi;
             
         fi;
         
-        if current_rec.filter_list[1] = "category" and current_rec.input_arguments_names[1] <> "cat" then
+        if current_rec.input_arguments_names[1] <> "cat" then
             
             Error( "the category argument must always be called \"cat\", please adjust the method record entry of ", current_recname );
             
@@ -4745,12 +4729,6 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             fi;
             
             # plausibility checks for without_given_rec
-            if without_given_rec.filter_list[1] <> "category" then
-                
-                Error( "This is a WithoutGiven record, but the first argument is not the category. This is not supported." );
-                
-            fi;
-            
             if with_given_object_position in [ "Source", "both" ] then
                 
                 if not IsBound( without_given_rec.output_source_getter_string ) then
@@ -4935,16 +4913,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 
                 if not IsBound( without_given_rec.redirect_function ) then
                     
-                    if record.( without_given_name ).filter_list[1] <> "category" or record.( object_name ).filter_list[1] <> "category" or record.( with_given_name ).filter_list[1] <> "category" then
-                        
-                        Display( Concatenation(
-                            "WARNING: You seem to be relying on automatically installed redirect functions but the first arguments of the functions involved are not the category. ",
-                            "No automatic redirect function will be installed. ",
-                            "To prevent this warning, add the category as the first argument to all functions involved. ",
-                            "Search for `category_as_first_argument` in the documentation for more details."
-                        ) );
-                        
-                    elif Length( record.( without_given_name ).filter_list ) + 1 <> Length( record.( with_given_name ).filter_list ) then
+                    if Length( record.( without_given_name ).filter_list ) + 1 <> Length( record.( with_given_name ).filter_list ) then
                         
                         Display( Concatenation(
                             "WARNING: You seem to be relying on automatically installed redirect functions. ",
@@ -4963,20 +4932,7 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 
                 if not IsBound( without_given_rec.post_function ) then
                     
-                    if without_given_rec.filter_list[1] <> "category" or record.( object_name ).filter_list[1] <> "category" then
-                        
-                        Display( Concatenation(
-                            "WARNING: You seem to be relying on automatically installed post functions but the first arguments of the functions involved are not the category. ",
-                            "No automatic post function will be installed. ",
-                            "To prevent this warning, add the category as the first argument to all functions involved. ",
-                            "Search for `category_as_first_argument` in the documentation for more details."
-                        ) );
-                        
-                    else
-                        
-                        without_given_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( with_given_object_position, object_name, [ 1 .. Length( object_filter_list ) ] );
-                        
-                    fi;
+                    without_given_rec.post_function := CAP_INTERNAL_CREATE_POST_FUNCTION( with_given_object_position, object_name, [ 1 .. Length( object_filter_list ) ] );
                     
                 fi;
                 
@@ -5108,12 +5064,6 @@ InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECO
     for current_recname in recnames do
         
         current_rec := record.(current_recname);
-        
-        if current_rec.filter_list[1] <> "category" then
-            
-            Error( "The first filter is not the category. This is not supported." );
-            
-        fi;
         
         # the space between # and ! prevents AutoDoc from parsing these strings and is removed below
         current_string := ReplacedStringViaRecord(
