@@ -26,7 +26,7 @@ IsZero( a * b * c );
 #! true
 Qmat := MatrixCategory( Q );
 #! Category of matrices over Q
-Wrapper := WrapperCategory( Qmat );
+Wrapper := WrapperCategory( Qmat, rec( ) );
 #! WrapperCategory( Category of matrices over Q )
 a := a / Wrapper;
 #! <A morphism in WrapperCategory( Category of matrices over Q )>

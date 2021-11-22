@@ -8,14 +8,6 @@
 
 ####################################
 #
-#! @Section Info class
-#
-####################################
-
-DeclareInfoClass( "InfoWrapperCategory" );
-
-####################################
-#
 #! @Section GAP categories
 #
 ####################################
@@ -42,40 +34,16 @@ DeclareCategory( "IsWrapperCapCategoryMorphism",
 
 ####################################
 #
-#! @Section Global variables
-#
-####################################
-
-#!
-DeclareGlobalVariable( "RECORD_OF_COMPACT_NAMES_OF_CATEGORICAL_OPERATIONS" );
-
-####################################
-#
 #! @Section Attributes
 #
 ####################################
 
-#!
+#! @Description
+#!  The category underlying the wrapper category <A>category</A>.
+#! @Arguments category
+#! @Returns a category
 DeclareAttribute( "UnderlyingCategory",
         IsWrapperCapCategory );
-
-#!
-DeclareAttribute( "GenesisOfCellOperation",
-        IsWrapperCapCategoryCell );
-#!
-DeclareAttribute( "GenesisOfCellArguments",
-        IsWrapperCapCategoryCell );
-#!
-DeclareAttribute( "ListOfEvaluationNodes",
-        IsWrapperCapCategoryCell );
-
-#!
-DeclareAttribute( "DigraphOfEvaluation",
-        IsWrapperCapCategoryCell );
-
-#!
-DeclareAttribute( "EvaluatedCell",
-        IsWrapperCapCategoryCell );
 
 ####################################
 #
@@ -83,55 +51,45 @@ DeclareAttribute( "EvaluatedCell",
 #
 ####################################
 
+#! @Description
+#!  Wrap an object <A>object</A> (in the category underlying the wrapper category <A>category</A>) to form an object in <A>category</A>.
+#! @Arguments category, object
+#! @Returns an object
 DeclareOperation( "AsObjectInWrapperCategory",
                   [ IsWrapperCapCategory, IsCapCategoryObject ] );
 
-DeclareOperation( "AsObjectInWrapperCategory",
-                  [ IsWrapperCapCategory, IsString, IsList ] );
-
-DeclareOperation( "AsMorphismInWrapperCategory",
-                  [ IsWrapperCapCategory, IsCapCategoryMorphism ] );
-
+#! @Description
+#!  Wrap a morphism <A>morphism</A> (in the category underlying the wrapper category `CapCategory(`<A>source</A>`)`) to form a morphism in `CapCategory(`<A>source</A>`)`
+#!  with given source and range.
+#! @Arguments source, morphism, range
+#! @Returns a morphism
 DeclareOperation( "AsMorphismInWrapperCategory",
                   [ IsWrapperCapCategoryObject, IsCapCategoryMorphism, IsWrapperCapCategoryObject ] );
 
+#! @Description
+#!  Wrap a morphism <A>morphism</A> (in the category underlying the wrapper category <A>category</A>) to form a morphism in <A>category</A>.
+#! @Arguments category, morphism
+#! @Returns a morphism
 DeclareOperation( "AsMorphismInWrapperCategory",
-                  [ IsWrapperCapCategoryObject, IsString, IsList, IsWrapperCapCategoryObject ] );
+                  [ IsWrapperCapCategory, IsCapCategoryMorphism ] );
 
-#!
+#! @Description
+#!  Convenience method for <Ref Oper="AsObjectInWrapperCategory" Label="for IsWrapperCapCategory, IsCapCategoryObject" />
+#!  and <Ref Oper="AsMorphismInWrapperCategory" Label="for IsWrapperCapCategory, IsCapCategoryMorphism" />.
+#! @Arguments cell, category
 DeclareOperation( "\/",
                 [ IsCapCategoryCell, IsWrapperCapCategory ] );
 
+#! @Description
+#!  Wraps a category <A>category</A> to form a new category subject to the options given via <A>options</A>,
+#!  which is a record with the following keys:
+#!  * `name` (optional): the name of the wrapper category
+#!  * `only_primitive_operations` (optional, default `false`): whether to only wrap primitive operations or all operations
+#!  * `wrap_range_of_hom_structure` (optional, default `false`): whether to wrap the range category of the homomorphism structure
 #!
+#!  Additionally, the following options of <Ref BookName="CAP" Oper="CategoryConstructor" Label="for IsRecord" /> are supported:
+#!  `category_filter`, `category_object_filter`, `category_morphism_filter`, `object_constructor`, `object_datum`, `morphism_constructor`, `morphism_datum`.
+#! @Arguments category, options
+#! @Returns a category
 DeclareOperation( "WrapperCategory",
-                  [ IsCapCategory ] );
-
-####################################
-#
-#! @Section Operations
-#
-####################################
-
-#!
-DeclareOperation( "SetLabel",
-                [ IsWrapperCapCategoryCell, IsString ] );
-
-#!
-DeclareOperation( "IsEqualForCells",
-                  [ IsObject, IsObject ] );
-
-#!
-DeclareOperation( "Visualize",
-                  [ IsWrapperCapCategoryCell ] );
-
-####################################
-#
-#! @Section Tools
-#
-####################################
-
-DeclareGlobalFunction( "AreEqualForWrapperCells" );
-
-DeclareGlobalFunction( "PositionsOfChildrenOfAWrapperCell" );
-
-DeclareGlobalFunction( "CAP_INTERNAL_COMPACT_NAME_OF_CATEGORICAL_OPERATION" );
+                  [ IsCapCategory, IsRecord ] );

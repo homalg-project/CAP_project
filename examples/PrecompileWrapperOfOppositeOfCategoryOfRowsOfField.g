@@ -72,15 +72,14 @@ category_constructor := EvalString( ReplacedString( """function( field )
         
     end@
     
-    wrapper := WrapperCategory( op :
+    wrapper := WrapperCategory( op, rec(
         name := "Columns( Q )",
-        primitive_operations := true,
-        wrap_range_of_hom_structure := false,
         object_constructor := object_constructor,
         object_datum := object_datum,
         morphism_constructor := morphism_constructor,
-        morphism_datum := morphism_datum
-    )@
+        morphism_datum := morphism_datum,
+        only_primitive_operations := true,
+    ) )@
     
     SetUnderlyingRing( wrapper, field )@
     

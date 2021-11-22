@@ -5,28 +5,16 @@
 #
 
 ##
-SetInfoLevel( InfoWrapperCategory, 1 );
-
-##
 InstallMethodWithCache( AsObjectInWrapperCategory,
         "for a wrapper CAP category and a CAP object",
         [ IsWrapperCapCategory, IsCapCategoryObject ],
         
   function( D, object )
-    local o;
     
-    if not IsIdenticalObj( CapCategory( object ), UnderlyingCategory( D ) ) then
-        
-        Error( "the given object should belong to the underlying category: ", Name( UnderlyingCategory( D ) ), "\n" );
-        
-    fi;
+    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( object, UnderlyingCategory( D ), {} -> "the object given to AsObjectInWrapperCategory" );
     
-    o := rec( );
-    
-    ObjectifyObjectForCAPWithAttributes( o, D,
+    return ObjectifyObjectForCAPWithAttributes( rec( ), D,
             UnderlyingCell, object );
-    
-    return o;
     
 end );
 
@@ -36,24 +24,24 @@ InstallMethod( AsMorphismInWrapperCategory,
         [ IsWrapperCapCategoryObject, IsCapCategoryMorphism, IsWrapperCapCategoryObject ],
         
   function( source, morphism, range )
-    local D, m;
     
-    D := CapCategory( source );
+    return AsMorphismInWrapperCategory( CapCategory( source ), source, morphism, range );
     
-    if not IsIdenticalObj( CapCategory( morphism ), UnderlyingCategory( D ) ) then
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( AsMorphismInWrapperCategory,
+        "for two CAP objects in a wrapper category and a CAP morphism",
+        [ IsWrapperCapCategory, IsWrapperCapCategoryObject, IsCapCategoryMorphism, IsWrapperCapCategoryObject ],
         
-        Error( "the given morphism should belong to the underlying category: ", Name( UnderlyingCategory( D ) ), "\n" );
-        
-    fi;
+  function( D, source, morphism, range )
     
-    m := rec( );
+    CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( morphism, UnderlyingCategory( D ), {} -> "the morphism given to AsMorphismInWrapperCategory" );
     
-    ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( m, D,
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), D,
             source,
             range,
             UnderlyingCell, morphism );
-    
-    return m;
     
 end );
 
@@ -65,9 +53,9 @@ InstallMethodWithCache( AsMorphismInWrapperCategory,
   function( D, morphism )
     
     return AsMorphismInWrapperCategory(
-                   ObjectConstructor( D, Source( morphism ) ),
+                   AsObjectInWrapperCategory( D, Source( morphism ) ),
                    morphism,
-                   ObjectConstructor( D, Range( morphism ) )
+                   AsObjectInWrapperCategory( D, Range( morphism ) )
                    );
     
 end );
@@ -94,7 +82,7 @@ InstallMethod( \/,
         TryNextMethod( );
     fi;
     
-    return ObjectConstructor( cat, object );
+    return AsObjectInWrapperCategory( cat, object );
     
 end );
 
@@ -115,81 +103,113 @@ end );
 
 ##
 InstallMethod( WrapperCategory,
-        "for a CAP category",
-        [ IsCapCategory ],
+        "for a CAP category and a record of options",
+        [ IsCapCategory, IsRecord ],
         
-  function( C )
-    local name, category_object_filter, category_morphism_filter,
-          object_constructor, object_datum, morphism_constructor, morphism_datum,
-          primitive_operations, list_of_operations_to_install, func,
-          commutative_ring, properties, D,
-          cache, print, list, wrap_range_of_hom_structure, HC, finalize;
+  function( C, options )
+    local known_options_with_filters, filter, category_constructor_options, copy_value_or_default, D, HC, option_name;
     
-    name := ValueOption( "name" );
+    ## check given options
+    known_options_with_filters := rec(
+        name := IsString,
+        category_filter := IsFilter,
+        category_object_filter := IsFilter,
+        category_morphism_filter := IsFilter,
+        object_constructor := IsFunction,
+        object_datum := IsFunction,
+        morphism_constructor := IsFunction,
+        morphism_datum := IsFunction,
+        only_primitive_operations := IsBool,
+        wrap_range_of_hom_structure := IsBool,
+    );
     
-    if not IsString( name ) then
-        if HasName( C ) then
-            name := Concatenation( "WrapperCategory( ", Name( C ), " )" );
+    for option_name in RecNames( options ) do
+        
+        if IsBound( known_options_with_filters.(option_name) ) then
+            
+            filter := known_options_with_filters.(option_name);
+            
+            if not filter( options.(option_name) ) then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Error( "The value of the option `", option_name, "` must lie in the filter ", filter );
+                
+            fi;
+            
         else
-            name := "wrapper category";
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "The following option is not known to `WrapperCategory`: ", option_name );
+            
         fi;
+        
+    od;
+    
+    category_constructor_options := rec(
+        underlying_category_getter_string := "UnderlyingCategory",
+        underlying_object_getter_string := "ObjectDatum",
+        underlying_morphism_getter_string := "MorphismDatum",
+        generic_output_source_getter_string := "ObjectConstructor( cat, Source( underlying_result ) )",
+        generic_output_range_getter_string := "ObjectConstructor( cat, Range( underlying_result ) )",
+        create_func_bool := "default",
+        create_func_object := "default",
+        create_func_object_or_fail := "default",
+        create_func_morphism := "default",
+        create_func_morphism_or_fail := "default",
+    );
+    
+    if IsBound( options.name ) then
+        
+        category_constructor_options.name := options.name;
+        
+    elif HasName( C ) then
+        
+        category_constructor_options.name := Concatenation( "WrapperCategory( ", Name( C ), " )" );
+        
     fi;
     
-    ########################################
-    # CAUTION: options must be reset below
-    # when calling WrapperCategory when
-    # wrapping the range of the homomorphism
-    # structure!
-    ########################################
+    # helper function
+    copy_value_or_default := function ( source_record, target_record, name, default_value )
+        
+        if IsBound( source_record.(name) ) then
+            
+            target_record.(name) := source_record.(name);
+            
+        else
+            
+            target_record.(name) := default_value;
+            
+        fi;
+        
+    end;
     
-    object_constructor := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "object_constructor", AsObjectInWrapperCategory );
-    object_datum := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "object_datum", { D, o } -> UnderlyingCell( o ) );
-    morphism_constructor := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "morphism_constructor", { D, s, m, r } -> AsMorphismInWrapperCategory( s, m, r ) );
-    morphism_datum := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "morphism_datum", { D, m } -> UnderlyingCell( m ) );
-    
-    category_object_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_object_filter", IsWrapperCapCategoryObject ) and IsWrapperCapCategoryObject;
-    category_morphism_filter := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "category_morphism_filter", IsWrapperCapCategoryMorphism ) and IsWrapperCapCategoryMorphism;
-    
-    primitive_operations := not IsIdenticalObj( ValueOption( "primitive_operations" ), false );
-    
-    if primitive_operations then
-        list_of_operations_to_install := ListPrimitivelyInstalledOperationsOfCategory( C );
-    else
-        list_of_operations_to_install := ListInstalledOperationsOfCategory( C );
-    fi;
+    copy_value_or_default( options, category_constructor_options, "category_filter", IsWrapperCapCategory );
+    copy_value_or_default( options, category_constructor_options, "category_object_filter", IsWrapperCapCategoryObject );
+    copy_value_or_default( options, category_constructor_options, "category_morphism_filter", IsWrapperCapCategoryMorphism );
+    copy_value_or_default( options, category_constructor_options, "object_constructor", AsObjectInWrapperCategory );
+    copy_value_or_default( options, category_constructor_options, "object_datum", { D, o } -> UnderlyingCell( o ) );
+    copy_value_or_default( options, category_constructor_options, "morphism_constructor", AsMorphismInWrapperCategory );
+    copy_value_or_default( options, category_constructor_options, "morphism_datum", { D, m } -> UnderlyingCell( m ) );
     
     if HasCommutativeRingOfLinearCategory( C ) then
-        commutative_ring := CommutativeRingOfLinearCategory( C );
-    else
-        commutative_ring := fail;
+        
+        category_constructor_options.commutative_ring_of_linear_category := CommutativeRingOfLinearCategory( C );
+        
     fi;
     
-    properties := ListKnownCategoricalProperties( C );
+    category_constructor_options.properties := ListKnownCategoricalProperties( C );
     
-    properties := List( properties, p -> [ p, ValueGlobal( p )( C ) ] );
+    if IsBound( options.only_primitive_operations ) and options.only_primitive_operations then
+        
+        category_constructor_options.list_of_operations_to_install := ListPrimitivelyInstalledOperationsOfCategory( C );
+        
+    else
+        
+        category_constructor_options.list_of_operations_to_install := ListInstalledOperationsOfCategory( C );
+        
+    fi;
     
-    D := CategoryConstructor( :
-                 name := name,
-                 category_filter := IsWrapperCapCategory,
-                 category_object_filter := category_object_filter,
-                 category_morphism_filter := category_morphism_filter,
-                 object_constructor := object_constructor,
-                 object_datum := object_datum,
-                 morphism_constructor := morphism_constructor,
-                 morphism_datum := morphism_datum,
-                 commutative_ring := commutative_ring,
-                 properties := properties,
-                 is_monoidal := HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ),
-                 list_of_operations_to_install := list_of_operations_to_install,
-                 create_func_bool := "default",
-                 create_func_object := "default",
-                 create_func_morphism := "default",
-                 create_func_morphism_or_fail := "default",
-                 category_as_first_argument := true,
-                 underlying_category_getter_string := "UnderlyingCategory",
-                 underlying_object_getter_string := "ObjectDatum",
-                 underlying_morphism_getter_string := "MorphismDatum"
-                 );
+    D := CategoryConstructor( category_constructor_options );
     
     if IsBound( C!.supports_empty_limits ) then
         
@@ -205,67 +225,36 @@ InstallMethod( WrapperCategory,
     
     SetUnderlyingCategory( D, C );
     
-    cache := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "cache", true );
-    
-    if IsIdenticalObj( cache, false ) then
-        DeactivateCachingOfCategory( C );
-        DeactivateCachingOfCategory( D );
+    if CanCompute( C, "BasisOfExternalHom" ) then
+        
+        AddBasisOfExternalHom( D,
+          function( cat, a, b )
+            
+            return List( BasisOfExternalHom( UnderlyingCategory( cat ), ObjectDatum( cat, a ), ObjectDatum( cat, b ) ),
+                         mor -> MorphismConstructor( cat, a, mor, b ) );
+            
+        end );
+        
     fi;
     
-    print := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "print", false ), true );
+    if CanCompute( C, "CoefficientsOfMorphismWithGivenBasisOfExternalHom" ) then
+        
+        AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( D,
+          function( cat, alpha, L )
+            
+            return CoefficientsOfMorphismWithGivenBasisOfExternalHom( UnderlyingCategory( cat ),
+                           MorphismDatum( cat, alpha ),
+                           List( L, l -> MorphismDatum( cat, l ) ) );
+            
+        end );
+        
+    fi;
     
     if HasRangeCategoryOfHomomorphismStructure( C ) then
         
-        if print then
-            list := [
-                     "BasisOfExternalHom",
-                     "CoefficientsOfMorphismWithGivenBasisOfExternalHom",
-                     "DistinguishedObjectOfHomomorphismStructure",
-                     "HomomorphismStructureOnObjects",
-                     "HomomorphismStructureOnMorphismsWithGivenObjects",
-                     "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
-                     "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
-                     "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
-                     ];
-            
-            for func in list do
-                if CanCompute( C, func ) then
-                    Display( func );
-                fi;
-            od;
-            Display( "" );
-        fi;
-        
-        if CanCompute( C, "BasisOfExternalHom" ) then
-            AddBasisOfExternalHom( D,
-              function( cat, a, b )
-                
-                return List( BasisOfExternalHom( UnderlyingCategory( cat ), ObjectDatum( cat, a ), ObjectDatum( cat, b ) ),
-                             mor -> MorphismConstructor( cat, a, mor, b ) );
-                
-            end );
-        fi;
-        
-        if CanCompute( C, "CoefficientsOfMorphismWithGivenBasisOfExternalHom" ) then
-            AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( D,
-              function( cat, alpha, L )
-                
-                return CoefficientsOfMorphismWithGivenBasisOfExternalHom( UnderlyingCategory( cat ),
-                               MorphismDatum( cat, alpha ),
-                               List( L, l -> MorphismDatum( cat, l ) ) );
-                
-            end );
-        fi;
-        
-        wrap_range_of_hom_structure := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "wrap_range_of_hom_structure", true ), true );
-        
         HC := RangeCategoryOfHomomorphismStructure( C );
         
-        if IsIdenticalObj( cache, false ) then
-            DeactivateCachingOfCategory( HC );
-        fi;
-        
-        if wrap_range_of_hom_structure and not IsWrapperCapCategory( HC ) then
+        if IsBound( options.wrap_range_of_hom_structure ) and options.wrap_range_of_hom_structure and not IsWrapperCapCategory( HC ) then
             
             if IsIdenticalObj( C, HC ) then
                 
@@ -276,16 +265,7 @@ InstallMethod( WrapperCategory,
                 
             else
                 
-                # reset all options which do not apply to the range of the homomorphism structure
-                HC := WrapperCategory( HC :
-                    name := fail,
-                    object_constructor := fail,
-                    object_datum := fail,
-                    morphism_constructor := fail,
-                    morphism_datum := fail,
-                    category_object_filter := fail,
-                    category_morphism_filter := fail
-                );
+                HC := WrapperCategory( HC, rec( ) );
                 
             fi;
             
@@ -385,14 +365,6 @@ InstallMethod( WrapperCategory,
         
         SetRangeCategoryOfHomomorphismStructure( D, HC );
         
-    fi;
-    
-    finalize := ValueOption( "FinalizeCategory" );
-    
-    if finalize = false then
-      
-      return D;
-      
     fi;
     
     Finalize( D );
