@@ -92,6 +92,58 @@ end
     , 100 );
     
     ##
+    AddCoDualOnMorphismsWithGivenCoDuals( cat,
+        
+########
+function ( cat_1, s_1, alpha_1, r_1 )
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, s_1, r_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), OppositeCategory( cat_1 ), Opposite( r_1 ), Opposite( s_1 ), UnderlyingMatrix, TransposedMatrix( UnderlyingMatrix( Opposite( alpha_1 ) ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoDualOnObjects( cat,
+        
+########
+function ( cat_1, a_1 )
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat_1, Opposite, Opposite( a_1 ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoclosedEvaluationForCoDualWithGivenTensorProduct( cat,
+        
+########
+function ( cat_1, s_1, a_1, r_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Opposite( s_1 );
+    deduped_4_1 := Opposite( r_1 );
+    deduped_3_1 := OppositeCategory( cat_1 );
+    deduped_2_1 := UnderlyingRing( deduped_3_1 );
+    deduped_1_1 := Dimension( Opposite( a_1 ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, s_1, r_1, Opposite, function (  )
+              if deduped_1_1 = 0 then
+                  return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                         ), deduped_3_1, deduped_4_1, deduped_5_1, UnderlyingMatrix, HomalgZeroMatrix( Dimension( deduped_4_1 ), Dimension( deduped_5_1 ), deduped_2_1 ) );
+              else
+                  return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                         ), deduped_3_1, deduped_4_1, deduped_5_1, UnderlyingMatrix, ConvertMatrixToColumn( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) ) );
+              fi;
+              return;
+          end(  ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( cat,
         
 ########
@@ -640,6 +692,22 @@ end
 ########
 function ( cat_1, arg2_1 )
     return Opposite( arg2_1 );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddMorphismFromCoBidualWithGivenCoBidual( cat,
+        
+########
+function ( cat_1, a_1, s_1 )
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := Opposite( a_1 );
+    deduped_1_1 := OppositeCategory( cat_1 );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, s_1, a_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), deduped_1_1, deduped_2_1, Opposite( s_1 ), UnderlyingMatrix, HomalgIdentityMatrix( Dimension( deduped_2_1 ), UnderlyingRing( deduped_1_1 ) ) ) );
 end
 ########
         

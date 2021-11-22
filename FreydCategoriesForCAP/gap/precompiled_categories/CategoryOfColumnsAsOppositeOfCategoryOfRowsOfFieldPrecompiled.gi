@@ -91,6 +91,52 @@ end
     , 100 );
     
     ##
+    AddCoDualOnMorphismsWithGivenCoDuals( cat,
+        
+########
+function ( cat_1, s_1, alpha_1, r_1 )
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, s_1, r_1, UnderlyingMatrix, TransposedMatrix( UnderlyingMatrix( alpha_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoDualOnObjects( cat,
+        
+########
+function ( cat_1, a_1 )
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat_1, RankOfObject, RankOfObject( a_1 ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoclosedEvaluationForCoDualWithGivenTensorProduct( cat,
+        
+########
+function ( cat_1, s_1, a_1, r_1 )
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := UnderlyingRing( cat_1 );
+    deduped_1_1 := RankOfObject( a_1 );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, s_1, r_1, UnderlyingMatrix, function (  )
+              if deduped_1_1 = 0 then
+                  return HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), deduped_2_1 );
+              else
+                  return ConvertMatrixToColumn( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) );
+              fi;
+              return;
+          end(  ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( cat,
         
 ########
@@ -542,6 +588,18 @@ function ( cat_1, arg2_1 )
              ), deduped_2_1, ObjectifyObjectForCAPWithAttributes( rec(
                ), deduped_2_1, RankOfObject, NrRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
                ), deduped_2_1, RankOfObject, NrColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddMorphismFromCoBidualWithGivenCoBidual( cat,
+        
+########
+function ( cat_1, a_1, s_1 )
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, s_1, a_1, UnderlyingMatrix, HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) );
 end
 ########
         
