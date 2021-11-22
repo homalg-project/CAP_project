@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2021.11-08
+                                   2021.11-09
   
   
-                                16 November 2021
+                                22 November 2021
   
   
                                Sebastian Gutsche
@@ -871,19 +871,24 @@
     10.3 [33X[0;0YFunctions[133X
       10.3-1 CAP_INTERNAL_GENERATE_CONVENIENCE_METHODS_FOR_LIMITS
       10.3-2 CAP_INTERNAL_VALIDATE_LIMITS_IN_NAME_RECORD
-  11 [33X[0;0YExamples and Tests[133X
-    11.1 [33X[0;0YFunctors[133X
-    11.2 [33X[0;0YHomomorphism structure[133X
-    11.3 [33X[0;0YSpectral Sequences[133X
-    11.4 [33X[0;0YHomology object[133X
-    11.5 [33X[0;0YLiftable[133X
-    11.6 [33X[0;0YMonoidal Categories[133X
-    11.7 [33X[0;0YMorphismFromSourceToPushout and MorphismFromFiberProductToSink[133X
-    11.8 [33X[0;0YOpposite category[133X
-    11.9 [33X[0;0YGeneralized Morphisms Category[133X
-    11.10 [33X[0;0YIsWellDefined[133X
-    11.11 [33X[0;0YKernel[133X
-    11.12 [33X[0;0YFiberProduct[133X
+  11 [33X[0;0YThe Category Constructor[133X
+    11.1 [33X[0;0YInfo class[133X
+      11.1-1 InfoCategoryConstructor
+    11.2 [33X[0;0YConstructors[133X
+      11.2-1 CategoryConstructor
+  12 [33X[0;0YExamples and Tests[133X
+    12.1 [33X[0;0YFunctors[133X
+    12.2 [33X[0;0YHomomorphism structure[133X
+    12.3 [33X[0;0YSpectral Sequences[133X
+    12.4 [33X[0;0YHomology object[133X
+    12.5 [33X[0;0YLiftable[133X
+    12.6 [33X[0;0YMonoidal Categories[133X
+    12.7 [33X[0;0YMorphismFromSourceToPushout and MorphismFromFiberProductToSink[133X
+    12.8 [33X[0;0YOpposite category[133X
+    12.9 [33X[0;0YGeneralized Morphisms Category[133X
+    12.10 [33X[0;0YIsWellDefined[133X
+    12.11 [33X[0;0YKernel[133X
+    12.12 [33X[0;0YFiberProduct[133X
   
   
   [32X

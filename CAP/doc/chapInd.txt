@@ -335,6 +335,7 @@
   [2XCapInternalInstallAdd[102X 7.3-1 
   [2XCapJitAddKnownMethod[102X 9.2-21 
   [2XCAPOperationPrepareFunction[102X 7.6-1 
+  [2XCategoryConstructor[102X, for IsRecord 11.2-1 
   [2XCategoryFilter[102X, for IsCapCategory 1.3-1 
       for IsDerivedMethod 8.2-6 
   [2XCategoryOfOperationWeightList[102X, for IsOperationWeightList 8.4-4 
@@ -463,6 +464,7 @@
   [2XImageEmbedding[102X, for IsCapCategoryMorphism 6.13-4 
   [2XImageEmbeddingWithGivenImageObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 6.13-5 
   [2XImageObject[102X, for IsCapCategoryMorphism 6.13-3 
+  [2XInfoCategoryConstructor[102X 11.1-1 
   [2XInitialObject[102X, for IsCapCategory 6.5-1 
       for IsCapCategoryCell 6.5-2 
   [2XInitialObjectFunctorial[102X, for IsCapCategory 6.5-5 

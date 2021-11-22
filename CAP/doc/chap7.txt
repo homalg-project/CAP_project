@@ -179,10 +179,10 @@
         list  with  two  entries. In this case, the first entry must be one of
         the  strings listed below and the second entry must be a filter. After
         the  first  entry  is replaced by the appropriate filter, both entries
-        are  joined  via  [10Xand[110X  to  form a single filter. If the first entry of
-        [10Xfilter_list[110X  is  the  string [10Xcategory[110X and the category can be inferred
-        from  the  remaining  arguments,  a  convenience  method  without  the
-        category   as   the   first   argument   is  installed  automatically.
+        are  joined  via  [10Xand[110X  to  form  a  single  filter. The first entry of
+        [10Xfilter_list[110X  must  be  the  string  [10Xcategory[110X.  If  the category can be
+        inferred  from  the  remaining arguments, a convenience method without
+        the  category  as  the  first  argument  is  installed  automatically.
         Additionally,   the  category  is  not  passed  to  primitively  added
         functions,  except  if  [10Xcategory!.category_as_first_argument[110X is set to
         [10Xtrue[110X (this will probably change to be the default in the future).[133X
