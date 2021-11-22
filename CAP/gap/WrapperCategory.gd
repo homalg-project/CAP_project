@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# WrapperCategories: Construct an equivalent wrapper category out of a CAP category
+# CAP: Categories, Algorithms, Programming
 #
 # Declarations
 #
@@ -45,6 +45,13 @@ DeclareCategory( "IsWrapperCapCategoryMorphism",
 DeclareAttribute( "UnderlyingCategory",
         IsWrapperCapCategory );
 
+#! @Description
+#!  The cell underlying the wrapper category cell <A>cell</A>.
+#! @Arguments cell
+#! @Returns a category cell
+DeclareAttribute( "UnderlyingCell",
+        IsWrapperCapCategoryCell );
+
 ####################################
 #
 #! @Section Constructors
@@ -87,7 +94,7 @@ DeclareOperation( "\/",
 #!  * `only_primitive_operations` (optional, default `false`): whether to only wrap primitive operations or all operations
 #!  * `wrap_range_of_hom_structure` (optional, default `false`): whether to wrap the range category of the homomorphism structure
 #!
-#!  Additionally, the following options of <Ref BookName="CAP" Oper="CategoryConstructor" Label="for IsRecord" /> are supported:
+#!  Additionally, the following options of <Ref Oper="CategoryConstructor" Label="for IsRecord" /> are supported:
 #!  `category_filter`, `category_object_filter`, `category_morphism_filter`, `object_constructor`, `object_datum`, `morphism_constructor`, `morphism_datum`.
 #! @Arguments category, options
 #! @Returns a category

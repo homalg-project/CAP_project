@@ -1,12 +1,13 @@
-#! @Chunk SnakeInMatrixCategory
+#! @Chapter Examples and Tests
 
-LoadPackage( "WrapperCategories" );
+#! @Section WrapperCategory
 
 #! @Example
 LoadPackage( "LinearAlgebraForCAP" );
 #! true
 LoadPackage( "GeneralizedMorphismsForCAP" );
 #! true
+old_generalized_morphism_standard := CAP_INTERNAL!.generalized_morphism_standard;;
 SwitchGeneralizedMorphismStandard( "cospan" );
 Q := HomalgFieldOfRationals( );
 #! Q
@@ -74,4 +75,5 @@ HK := HomologyObject( j, s );
 #! <An object in WrapperCategory( Category of matrices over Q )>
 HC := HomologyObject( s, k );
 #! <An object in WrapperCategory( Category of matrices over Q )>
+SwitchGeneralizedMorphismStandard( old_generalized_morphism_standard );
 #! @EndExample

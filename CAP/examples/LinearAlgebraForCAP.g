@@ -1,9 +1,9 @@
-#! @Chunk LinearAlgebraForCAP
+#! @Chapter Examples and Tests
+
+#! @Section WrapperCategory
 
 #! @Example
 
-LoadPackage( "WrapperCategories", false );
-#! true
 LoadPackage( "LinearAlgebraForCAP", false );
 #! true
 Q := HomalgFieldOfRationals( );

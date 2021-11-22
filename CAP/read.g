@@ -54,4 +54,6 @@ ReadPackage( "CAP", "gap/PreFunctions.gi" );
 
 ReadPackage( "CAP", "gap/CategoryConstructor.gi" );
 
+ReadPackage( "CAP", "gap/WrapperCategory.gi" );
+
 ReadPackage( "CAP", "gap/ToolsForCategories_AfterLoading.gi" );

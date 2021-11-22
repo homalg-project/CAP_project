@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# WrapperCategories: Construct an equivalent wrapper category out of a CAP category
+# FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
 #
 # Implementations
 #

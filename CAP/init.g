@@ -51,3 +51,5 @@ ReadPackage( "CAP", "gap/PrintingFunctions.gd" );
 ReadPackage( "CAP", "gap/PrepareFunctions.gd" );
 
 ReadPackage( "CAP", "gap/CategoryConstructor.gd" );
+
+ReadPackage( "CAP", "gap/WrapperCategory.gd" );

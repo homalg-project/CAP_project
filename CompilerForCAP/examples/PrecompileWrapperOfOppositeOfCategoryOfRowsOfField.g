@@ -1,9 +1,9 @@
-#! @Chunk WrapperOfOppositeOfCategoryOfRowsOfFieldPrecompiled
+#! @Chapter Examples and tests
+
+#! @Section Tests
 
 #! @Example
 
-LoadPackage( "WrapperCategories", false );
-#! true
 LoadPackage( "FreydCategoriesForCAP", false );
 #! true
 
@@ -98,7 +98,7 @@ end""", "@", ";" ) );;
 
 given_arguments := [ QQ ];;
 compiled_category_name := "WrapperOfOppositeOfCategoryOfRowsOfFieldPrecompiled";;
-package_name := "WrapperCategories";;
+package_name := "FreydCategoriesForCAP";;
 operations := "primitive";;
 
 CapJitPrecompileCategoryAndCompareResult(
@@ -114,7 +114,7 @@ CapJitPrecompileCategoryAndCompareResult(
 #! hismFromDistinguishedObjectToHomomorphismStructureAsMorphism.
 
 ReadPackage(
-    "WrapperCategories",
+    "FreydCategoriesForCAP",
     "gap/precompiled_categories/WrapperOfOppositeOfCategoryOfRowsOfFieldPrecompiled.gi"
 );;
 WrapperOfOppositeOfCategoryOfRowsOfFieldPrecompiled( QQ );
