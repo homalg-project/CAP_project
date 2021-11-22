@@ -130,18 +130,6 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
             continue;
         fi;
         
-        if current_entry.filter_list[1] <> "category" then
-            
-            Display( Concatenation(
-                "WARNING: The opposite category cannot deal with operations which do not get the category as the first argument. ",
-                "The installation of ", current_recname, " will be skipped. ",
-                "To get rid of this warning, add \"category\" as the first entry of `filter_list` in the corresponding method record entry. ",
-                "For more information about the implications of doing so, search for `filter_list` in the documentation of CAP."
-            ) );
-            continue;
-            
-        fi;
-        
         filter_list := current_entry.filter_list;
         input_arguments_names := current_entry.input_arguments_names;
         return_type := current_entry.return_type;
