@@ -54,4 +54,4 @@ test-spacing:
 	rm spacing_diff
 	rm spacing_diff_no_blanks
 
-ci-test: test-basic-spacing test-spacing test-with-coverage
+ci-test: test-basic-spacing test-spacing test-doc test-with-coverage
