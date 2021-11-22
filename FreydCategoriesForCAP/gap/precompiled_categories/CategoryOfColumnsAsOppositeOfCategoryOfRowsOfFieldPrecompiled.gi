@@ -42,12 +42,8 @@ function ( cat_1, arg2_1, arg3_1 )
     hoisted_2_1 := deduped_5_1;
     hoisted_3_1 := deduped_6_1;
     return List( [ 1 .. deduped_4_1 ], function ( logic_new_func_x_2 )
-            local morphism_attr_1_2;
-            morphism_attr_1_2 := ConvertRowToMatrix( CertainRows( hoisted_1_1, [ logic_new_func_x_2 ] ), hoisted_2_1, hoisted_3_1 );
             return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-                   ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-                     ), cat_1, RankOfObject, NrColumns( morphism_attr_1_2 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-                     ), cat_1, RankOfObject, NrRows( morphism_attr_1_2 ) ), UnderlyingMatrix, morphism_attr_1_2 );
+                   ), cat_1, arg2_1, arg3_1, UnderlyingMatrix, ConvertRowToMatrix( CertainRows( hoisted_1_1, [ logic_new_func_x_2 ] ), hoisted_2_1, hoisted_3_1 ) );
         end );
 end
 ########
@@ -499,7 +495,7 @@ end
 ########
 function ( cat_1, arg2_1, arg3_1, arg4_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, arg2_1, arg4_1, UnderlyingMatrix, UnderlyingMatrix( arg3_1 ) );
+           ), cat_1, arg2_1, arg4_1, UnderlyingMatrix, UnderlyingMatrix( Opposite( arg3_1 ) ) );
 end
 ########
         
@@ -510,13 +506,19 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := Opposite( cat_1 );
+    local morphism_attr_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := UnderlyingCategory( cat_1 );
+    deduped_2_1 := OppositeCategory( deduped_3_1 );
     morphism_attr_1_1 := UnderlyingMatrix( arg2_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), deduped_2_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), deduped_2_1, RankOfObject, NrRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), deduped_2_1, RankOfObject, NrColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+           ), deduped_3_1, ObjectifyObjectForCAPWithAttributes( rec(
+             ), deduped_3_1, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
+               ), deduped_2_1, RankOfObject, RankOfObject( Source( arg2_1 ) ) ) ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), deduped_3_1, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
+               ), deduped_2_1, RankOfObject, RankOfObject( Range( arg2_1 ) ) ) ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), deduped_2_1, ObjectifyObjectForCAPWithAttributes( rec(
+               ), deduped_2_1, RankOfObject, NrRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+               ), deduped_2_1, RankOfObject, NrColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) );
 end
 ########
         
@@ -552,7 +554,7 @@ end
 ########
 function ( cat_1, arg2_1 )
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, RankOfObject, RankOfObject( arg2_1 ) );
+           ), cat_1, RankOfObject, RankOfObject( Opposite( arg2_1 ) ) );
 end
 ########
         
@@ -563,8 +565,11 @@ end
         
 ########
 function ( cat_1, arg2_1 )
+    local deduped_1_1;
+    deduped_1_1 := UnderlyingCategory( cat_1 );
     return ObjectifyObjectForCAPWithAttributes( rec(
-           ), Opposite( cat_1 ), RankOfObject, RankOfObject( arg2_1 ) );
+           ), deduped_1_1, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
+             ), OppositeCategory( deduped_1_1 ), RankOfObject, RankOfObject( arg2_1 ) ) );
 end
 ########
         

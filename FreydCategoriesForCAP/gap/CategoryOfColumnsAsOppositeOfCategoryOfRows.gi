@@ -15,108 +15,107 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
                [ IsHomalgRing ],
                
   function( homalg_ring )
-    local category_of_rows, op;
+    local rows, op, object_constructor, object_datum, morphism_constructor, morphism_datum, category_object_filter, wrapper;
     
-    category_of_rows := CategoryOfRows( homalg_ring : FinalizeCategory := true );
+    rows := CategoryOfRows( homalg_ring : FinalizeCategory := true );
     
-    op := Opposite( category_of_rows, Concatenation( "Columns( ", RingName( homalg_ring )," )" ) : only_primitive_operations := true, FinalizeCategory := false );
+    op := Opposite( rows : only_primitive_operations := true, FinalizeCategory := true );
     
     ##
-    AddObjectConstructor( op, function( cat, underlying_object )
+    object_constructor := function( cat, underlying_object )
         
         return ObjectifyObjectForCAPWithAttributes( rec( ), cat,
-                                                    RankOfObject, RankOfObject( underlying_object ) );
+                                                    RankOfObject, RankOfObject( Opposite( underlying_object ) ) );
         
-    end );
+    end;
     
     ##
-    AddObjectDatum( op, function( cat, obj )
-      local category_of_rows;
+    object_datum := function( cat, obj )
+      local op, rows;
         
-        category_of_rows := Opposite( cat );
+        op := UnderlyingCategory( cat );
         
-        return CategoryOfRowsObject( category_of_rows, RankOfObject( obj ) );
+        rows := Opposite( op );
         
-    end );
+        return ObjectConstructor( op, CategoryOfRowsObject( rows, RankOfObject( obj ) ) );
+        
+    end;
     
     ##
-    AddMorphismConstructor( op, function( cat, source, underlying_morphism, range )
+    morphism_constructor := function( cat, source, underlying_morphism, range )
         
         return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
                 source,
                 range,
-                UnderlyingMatrix, UnderlyingMatrix( underlying_morphism ) );
+                UnderlyingMatrix, UnderlyingMatrix( Opposite( underlying_morphism ) ) );
         
-    end );
+    end;
     
     ##
-    AddMorphismDatum( op, function( cat, mor )
-      local category_of_rows, matrix_morphism;
+    morphism_datum := function( cat, mor )
+      local op, rows, rows_morphism;
         
-        category_of_rows := Opposite( cat );
+        op := UnderlyingCategory( cat );
         
-        return CategoryOfRowsMorphism( category_of_rows,
-            CategoryOfRowsObject( category_of_rows, RankOfObject( Range( mor ) ) ),
+        rows := Opposite( op );
+        
+        rows_morphism := CategoryOfRowsMorphism(
+            rows,
+            CategoryOfRowsObject( rows, RankOfObject( Range( mor ) ) ),
             UnderlyingMatrix( mor ),
-            CategoryOfRowsObject( category_of_rows, RankOfObject( Source( mor ) ) )
+            CategoryOfRowsObject( rows, RankOfObject( Source( mor ) ) )
         );
         
-    end );
-    
-    op!.compiler_hints := rec(
-        category_attribute_names := [
-            "UnderlyingRing",
-            "Opposite",
-        ],
-        source_and_range_attributes_from_morphism_attribute := rec(
-            object_attribute_name := "RankOfObject",
-            morphism_attribute_name := "UnderlyingMatrix",
-            source_attribute_getter_name := "NrColumns",
-            range_attribute_getter_name := "NrRows",
-        ),
-    );
-    
-    SetFilterObj( op, IsCategoryOfColumns );
-    
-    if HasHasInvariantBasisProperty( homalg_ring ) and HasInvariantBasisProperty( homalg_ring ) then
-        SetIsSkeletalCategory( op, true );
-    fi;
-    
-    SetIsAdditiveCategory( op, true );
-    
-    SetIsRigidSymmetricClosedMonoidalCategory( op, true );
-    
-    SetIsStrictMonoidalCategory( op, true );
-    
-    SetUnderlyingRing( op, homalg_ring );
-    
-    if HasIsCommutative( homalg_ring ) and IsCommutative( homalg_ring ) then
-      
-      SetIsLinearCategoryOverCommutativeRing( op, true );
-      
-      SetCommutativeRingOfLinearCategory( op, homalg_ring );
-      
-    fi;
+        return MorphismConstructor(
+            op,
+            ObjectConstructor( op, Range( rows_morphism ) ),
+            rows_morphism,
+            ObjectConstructor( op, Source( rows_morphism ) )
+        );
+        
+    end;
     
     if HasIsFieldForHomalg( homalg_ring ) and IsFieldForHomalg( homalg_ring ) then
         
-        AddObjectRepresentation( op, IsCategoryOfColumnsObject and HasIsProjective and IsProjective );
-        
-        SetIsAbelianCategory( op, true );
+        category_object_filter := IsCategoryOfColumnsObject and HasIsProjective and IsProjective;
         
     else
         
-        AddObjectRepresentation( op, IsCategoryOfColumnsObject );
+        category_object_filter := IsCategoryOfColumnsObject;
         
     fi;
     
-    AddMorphismRepresentation( op, IsCategoryOfColumnsMorphism and HasUnderlyingMatrix );
+    wrapper := WrapperCategory( op, rec(
+        name := Concatenation( "Columns( ", RingName( homalg_ring )," )" ),
+        category_filter := IsCategoryOfColumns,
+        category_object_filter := category_object_filter,
+        category_morphism_filter := IsCategoryOfColumnsMorphism and HasUnderlyingMatrix,
+        object_constructor := object_constructor,
+        object_datum := object_datum,
+        morphism_constructor := morphism_constructor,
+        morphism_datum := morphism_datum,
+        only_primitive_operations := true,
+    ) : FinalizeCategory := false );
     
-    INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_CATEGORY_OF_ROWS( op );
+    SetUnderlyingRing( wrapper, homalg_ring );
     
-    Finalize( op );
+    Add( wrapper!.compiler_hints.category_attribute_names, "UnderlyingRing" );
     
-    return op;
+    wrapper!.compiler_hints.source_and_range_attributes_from_morphism_attribute := rec(
+        object_attribute_name := "RankOfObject",
+        morphism_attribute_name := "UnderlyingMatrix",
+        source_attribute_getter_name := "NrColumns",
+        range_attribute_getter_name := "NrRows",
+    );
+    
+    # needed until Opposite can properly deal with the closed structure
+    SetIsRigidSymmetricClosedMonoidalCategory( wrapper, true );
+    
+    INSTALL_FUNCTIONS_FOR_CATEGORY_OF_COLUMNS_AS_OPPOSITE_OF_CATEGORY_OF_ROWS( wrapper );
+    
+    Finalize( wrapper );
+    
+    return wrapper;
     
 end );
 
