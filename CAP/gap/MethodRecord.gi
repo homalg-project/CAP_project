@@ -4459,36 +4459,6 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             
         fi;
         
-        # check if current_rec.dual_preprocessor_func uses Opposite
-        if IsBound( current_rec.dual_preprocessor_func ) then
-            
-            func_string := PrintString( current_rec.dual_preprocessor_func );
-            
-            func_string := ReplacedString( func_string, "OppositeCategory", "" );
-            
-            if PositionSublist( func_string, "Opposite" ) <> fail then
-                
-                Error( "<current_rec.dual_preprocessor_func> seems to use the attribute `Opposite`. Please use `OppositeCategory` (for categories),  `ObjectDatum` (for objects), or `MorphismDatum` (for morphisms) instead." );
-                
-            fi;
-            
-        fi;
-        
-        # check if current_rec.dual_postprocessor_func uses Opposite
-        if IsBound( current_rec.dual_postprocessor_func ) then
-            
-            func_string := PrintString( current_rec.dual_postprocessor_func );
-            
-            func_string := ReplacedString( func_string, "OppositeCategory", "" );
-            
-            if PositionSublist( func_string, "Opposite" ) <> fail then
-                
-                Error( "<current_rec.dual_postprocessor_func> seems to use the attribute `Opposite`. Please use `OppositeCategory` (for categories),  `ObjectDatum` (for objects), or `MorphismDatum` (for morphisms) instead." );
-                
-            fi;
-            
-        fi;
-        
         if IsOperation( ValueGlobal( current_recname ) ) then
             
             installation_name := current_recname;
