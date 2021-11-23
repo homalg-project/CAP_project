@@ -53,6 +53,15 @@ DeclareAttribute( "UnderlyingRingElement",
 DeclareAttribute( "UnderlyingRing",
                   IsRingAsCategory );
 
+DeclareAttribute( "GeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure",
+                  IsRingAsCategory );
+
+DeclareAttribute( "ColumnVectorOfGeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure",
+                  IsRingAsCategory );
+
+DeclareAttribute( "RingInclusionForHomomorphismStructure",
+                  IsRingAsCategory );
+
 ####################################
 ##
 #! @Section Operations
