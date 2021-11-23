@@ -9,7 +9,7 @@ LoadPackage( "FreydCategoriesForCAP", false );
 
 QQ := HomalgFieldOfRationalsInSingular( );;
 QQxy := QQ * "x,y";;
-EEE := KoszulDualRing( QQxy );;
+EEE := KoszulDualRing( QQxy * "a,b" );;
 
 precompile_CategoryOfColumns := function( homalg_ring, name )
     

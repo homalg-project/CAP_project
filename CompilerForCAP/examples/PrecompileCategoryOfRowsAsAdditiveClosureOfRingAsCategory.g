@@ -106,4 +106,9 @@ CapJitPrecompileCategoryAndCompareResult(
     operations := operations
 );
 
+# check that the compiled code is loaded automatically
+cat := CategoryOfRows( EEE );;
+CanCompute( cat, "HomomorphismStructureOnMorphismsWithGivenObjects" );
+#! true
+
 #! @EndExample
