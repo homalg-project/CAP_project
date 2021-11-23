@@ -261,18 +261,6 @@ CapJitAddLogicTemplate(
     )
 );
 
-# MatElm( List( list, func ), index1, index2 ) => List( list, func )[ index1 ][ index2 ]
-# We only apply this if the first argument of `MatElm` is a call to `List` to make sure
-# we actually have a list (this can be changes once we have a proper type system).
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "list", "func", "index1", "index2" ],
-        src_template := "MatElm( List( list, func ), index1, index2 )",
-        dst_template := "List( list, func )[ index1 ][ index2 ]",
-        returns_value := true,
-    )
-);
-
 # List( L{poss}, f ) => List( L, f ){poss}
 CapJitAddLogicTemplate(
     rec(
