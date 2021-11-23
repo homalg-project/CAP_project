@@ -219,18 +219,6 @@ InstallGlobalFunction( CapJitReplacedGlobalVariablesByCategoryAttributes, functi
         
         # add some attributes by default
         
-        if HasObjectType( category ) then
-            
-            Add( attribute_names, "ObjectType" );
-            
-        fi;
-        
-        if HasMorphismType( category ) then
-            
-            Add( attribute_names, "MorphismType" );
-            
-        fi;
-        
         if HasRangeCategoryOfHomomorphismStructure( category ) then
             
             Add( attribute_names, "RangeCategoryOfHomomorphismStructure" );
