@@ -1811,7 +1811,7 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationalsInSingular( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQxy := QQ * "x,y";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EEE := KoszulDualRing( QQxy );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EEE := KoszulDualRing( QQxy * "a,b" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCES(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    [</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ CategoryOfRows( EEE ), "CategoryOfRows of an arbitrary ring" ],</span>

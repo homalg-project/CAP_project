@@ -35,14 +35,13 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X83CEE62E7F65193B">2.2-1 AdditiveClosure</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79F5D5987C402AA8">2.2-2 AdditiveClosureObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BFEDC957BDFD922">2.2-3 AsAdditiveClosureObject</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7C449C727B5F9087">2.2-4 AdditiveClosureMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X846ACC0D82E01767">2.2-5 AdditiveClosureMorphismListList</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E68504F7906F9BA">2.2-6 AsAdditiveClosureMorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X83052556783E9F72">2.2-7 InclusionFunctorInAdditiveClosure</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CB9D74B81E8657F">2.2-8 ExtendFunctorToAdditiveClosures</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X800F55F17A280DE5">2.2-9 ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X80D324A184629A28">2.2-10 ExtendFunctorToAdditiveClosureOfSource</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X82EE592782202D2E">2.2-11 ExtendNaturalTransformationToAdditiveClosureOfSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X825AFED37B96E8E3">2.2-4 AdditiveClosureMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E68504F7906F9BA">2.2-5 AsAdditiveClosureMorphism</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X83052556783E9F72">2.2-6 InclusionFunctorInAdditiveClosure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CB9D74B81E8657F">2.2-7 ExtendFunctorToAdditiveClosures</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X800F55F17A280DE5">2.2-8 ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X80D324A184629A28">2.2-9 ExtendFunctorToAdditiveClosureOfSource</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X82EE592782202D2E">2.2-10 ExtendNaturalTransformationToAdditiveClosureOfSource</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7C701DBF7BAE649A">2.3 <span class="Heading">Attributes</span></a>
 </span>
@@ -109,8 +108,6 @@
 
 <p>The argument is an Ab-category <span class="Math">C</span>. The output is its additive closure <span class="Math">C^\oplus</span>.</p>
 
-<p>If <var class="Arg">C</var> is a <strong class="pkg">homalg</strong> ring considered as a category via <code class="code">RingAsCategory</code>, <strong class="pkg">homalg</strong> matrices are used as the underlying data structure for morphisms. In all other cases, lists of lists are used as the underlying data structure for morphisms. This can be changed via the two options <code class="code">matrix_element_as_morphism</code> and <code class="code">list_list_as_matrix</code>, see <code class="func">AdditiveClosureMorphism</code> (<a href="chap2.html#X7C449C727B5F9087"><span class="RefLink">2.2-4</span></a>) for details.</p>
-
 <p><a id="X79F5D5987C402AA8" name="X79F5D5987C402AA8"></a></p>
 
 <h5>2.2-2 AdditiveClosureObject</h5>
@@ -129,31 +126,18 @@
 
 <p>The argument is an object <span class="Math">A</span> in an Ab-category <span class="Math">C</span>. The output is the image of <span class="Math">A</span> under the inclusion functor <span class="Math">\iota:C\to C^\oplus</span>.</p>
 
-<p><a id="X7C449C727B5F9087" name="X7C449C727B5F9087"></a></p>
+<p><a id="X825AFED37B96E8E3" name="X825AFED37B96E8E3"></a></p>
 
 <h5>2.2-4 AdditiveClosureMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditiveClosureMorphism</code>( <var class="Arg">A</var>, <var class="Arg">M</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}_{C^\oplus}(A,B)</span></p>
 
-<p>The arguments are formal direct sums <span class="Math">A=A_1\oplus\dots\oplus A_m</span>, <span class="Math">B=B_1\oplus\dots\oplus B_n</span> in some additive category <span class="Math">C^\oplus</span> and an <span class="Math">m\times n</span> matrix (see below) <span class="Math">M :=(\alpha_{ij}:A_i\to B_j)_{ij}</span> for <span class="Math">i=1,\dots,m,j=1,\dots,n</span>. The output is the formal morphism between <span class="Math">A</span> and <span class="Math">B</span> that is defined by <span class="Math">M</span>.</p>
-
-<p>If <span class="Math">m \neq 0 \neq n</span>, <var class="Arg">M</var> has to provide access to its elements via the operation <code class="code">[,]</code>. In case that the elements of <var class="Arg">M</var> first have to be wrapped to actually obtain morphisms in <span class="Math">C</span>, you can provide the function <code class="code">matrix_element_as_morphism</code> (fallback: <code class="code">IdFunc</code>) as an option to <code class="func">AdditiveClosure</code> (<a href="chap2.html#X83CEE62E7F65193B"><span class="RefLink">2.2-1</span></a>) which will internally be automatically applied to the elements of <var class="Arg">M</var>. In this case you also have to provide the function <code class="code">list_list_as_matrix</code> (fallback: <code class="code">ReturnFirst</code>) as an option to <code class="func">AdditiveClosure</code> (<a href="chap2.html#X83CEE62E7F65193B"><span class="RefLink">2.2-1</span></a>): It gets passed a list of list of morphisms <span class="Math">\alpha_{ij}</span> as well as <span class="Math">m</span> and <span class="Math">n</span> as above and has to return the corresponding matrix <var class="Arg">M</var>. If <code class="code">IsMatrixObj( <var class="Arg">M</var> )</code>, then <code class="code">NrRows( M )</code> resp. <code class="code">NrCols( M )</code> must be <span class="Math">m</span> resp. <span class="Math">n</span>.</p>
-
-<p>The fallback values of <code class="code">matrix_element_as_morphism</code> and <code class="code">list_list_as_matrix</code> allow to use lists of lists as the data structure of <var class="Arg">M</var>. See <code class="func">AdditiveClosure</code> (<a href="chap2.html#X83CEE62E7F65193B"><span class="RefLink">2.2-1</span></a>) for the default data structures.</p>
-
-<p><a id="X846ACC0D82E01767" name="X846ACC0D82E01767"></a></p>
-
-<h5>2.2-5 AdditiveClosureMorphismListList</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditiveClosureMorphismListList</code>( <var class="Arg">A</var>, <var class="Arg">L</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: a morphism in <span class="Math">\mathrm{Hom}_{C^\oplus}(A,B)</span></p>
-
-<p>Input and return value are the same as for <code class="code">AdditiveClosureMorphism</code> except that the matrix <code class="code">M</code> can be given as a list (of lists) <var class="Arg">L</var> to which <code class="code">list_list_as_matrix</code> will be applied automatically.</p>
+<p>The arguments are formal direct sums <span class="Math">A=A_1\oplus\dots\oplus A_m</span>, <span class="Math">B=B_1\oplus\dots\oplus B_n</span> in some additive category <span class="Math">C^\oplus</span> and an <span class="Math">m\times n</span> matrix <span class="Math">M :=(\alpha_{ij}:A_i\to B_j)_{ij}</span> for <span class="Math">i=1,\dots,m,j=1,\dots,n</span>. The output is the formal morphism between <span class="Math">A</span> and <span class="Math">B</span> that is defined by <span class="Math">M</span>.</p>
 
 <p><a id="X7E68504F7906F9BA" name="X7E68504F7906F9BA"></a></p>
 
-<h5>2.2-6 AsAdditiveClosureMorphism</h5>
+<h5>2.2-5 AsAdditiveClosureMorphism</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsAdditiveClosureMorphism</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">C^\oplus</span></p>
@@ -162,7 +146,7 @@
 
 <p><a id="X83052556783E9F72" name="X83052556783E9F72"></a></p>
 
-<h5>2.2-7 InclusionFunctorInAdditiveClosure</h5>
+<h5>2.2-6 InclusionFunctorInAdditiveClosure</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; InclusionFunctorInAdditiveClosure</code>( <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a functor <span class="Math">C\to C^\oplus</span></p>
@@ -171,7 +155,7 @@
 
 <p><a id="X7CB9D74B81E8657F" name="X7CB9D74B81E8657F"></a></p>
 
-<h5>2.2-8 ExtendFunctorToAdditiveClosures</h5>
+<h5>2.2-7 ExtendFunctorToAdditiveClosures</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendFunctorToAdditiveClosures</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a functor <span class="Math">C^\oplus \to D^\oplus</span></p>
@@ -180,7 +164,7 @@
 
 <p><a id="X800F55F17A280DE5" name="X800F55F17A280DE5"></a></p>
 
-<h5>2.2-9 ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource</h5>
+<h5>2.2-8 ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a functor <span class="Math">C^\oplus \to D</span></p>
@@ -189,7 +173,7 @@
 
 <p><a id="X80D324A184629A28" name="X80D324A184629A28"></a></p>
 
-<h5>2.2-10 ExtendFunctorToAdditiveClosureOfSource</h5>
+<h5>2.2-9 ExtendFunctorToAdditiveClosureOfSource</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendFunctorToAdditiveClosureOfSource</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a functor <span class="Math">C^\oplus \to D^\oplus</span> or <span class="Math">C^\oplus \to D</span></p>
@@ -198,7 +182,7 @@
 
 <p><a id="X82EE592782202D2E" name="X82EE592782202D2E"></a></p>
 
-<h5>2.2-11 ExtendNaturalTransformationToAdditiveClosureOfSource</h5>
+<h5>2.2-10 ExtendNaturalTransformationToAdditiveClosureOfSource</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExtendNaturalTransformationToAdditiveClosureOfSource</code>( <var class="Arg">eta</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a natural transformation from <span class="Math">F^\oplus</span> to <span class="Math">G^\oplus</span></p>

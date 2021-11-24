@@ -36,13 +36,6 @@
   [33X[0;0YThe  argument  is  an  Ab-category  [23XC[123X.  The  output  is its additive closure
   [23XC^\oplus[123X.[133X
   
-  [33X[0;0YIf  [3XC[103X  is  a [5Xhomalg[105X ring considered as a category via [10XRingAsCategory[110X, [5Xhomalg[105X
-  matrices  are  used  as  the underlying data structure for morphisms. In all
-  other  cases,  lists  of lists are used as the underlying data structure for
-  morphisms.     This     can    be    changed    via    the    two    options
-  [10Xmatrix_element_as_morphism[110X        and        [10Xlist_list_as_matrix[110X,        see
-  [2XAdditiveClosureMorphism[102X ([14X2.2-4[114X) for details.[133X
-  
   [1X2.2-2 AdditiveClosureObject[101X
   
   [33X[1;0Y[29X[2XAdditiveClosureObject[102X( [3XL[103X, [3XC^\oplus[103X ) [32X operation[133X
@@ -67,35 +60,10 @@
   
   [33X[0;0YThe   arguments   are   formal   direct   sums  [23XA=A_1\oplus\dots\oplus  A_m[123X,
   [23XB=B_1\oplus\dots\oplus B_n[123X in some additive category [23XC^\oplus[123X and an [23Xm\times
-  n[123X    matrix    (see    below)    [23XM   :=(\alpha_{ij}:A_i\to   B_j)_{ij}[123X   for
-  [23Xi=1,\dots,m,j=1,\dots,n[123X.  The  output is the formal morphism between [23XA[123X and [23XB[123X
-  that is defined by [23XM[123X.[133X
+  n[123X  matrix [23XM :=(\alpha_{ij}:A_i\to B_j)_{ij}[123X for [23Xi=1,\dots,m,j=1,\dots,n[123X. The
+  output is the formal morphism between [23XA[123X and [23XB[123X that is defined by [23XM[123X.[133X
   
-  [33X[0;0YIf  [23Xm  \neq  0  \neq  n[123X,  [3XM[103X  has  to  provide access to its elements via the
-  operation  [10X[,][110X.  In  case that the elements of [3XM[103X first have to be wrapped to
-  actually   obtain   morphisms   in   [23XC[123X,   you   can   provide  the  function
-  [10Xmatrix_element_as_morphism[110X    (fallback:    [10XIdFunc[110X)    as   an   option   to
-  [2XAdditiveClosure[102X  ([14X2.2-1[114X)  which  will internally be automatically applied to
-  the  elements  of  [3XM[103X.  In  this  case  you also have to provide the function
-  [10Xlist_list_as_matrix[110X  (fallback: [10XReturnFirst[110X) as an option to [2XAdditiveClosure[102X
-  ([14X2.2-1[114X): It gets passed a list of list of morphisms [23X\alpha_{ij}[123X as well as [23Xm[123X
-  and [23Xn[123X as above and has to return the corresponding matrix [3XM[103X. If [10XIsMatrixObj(
-  [3XM[103X[10X )[110X, then [10XNrRows( M )[110X resp. [10XNrCols( M )[110X must be [23Xm[123X resp. [23Xn[123X.[133X
-  
-  [33X[0;0YThe  fallback  values  of [10Xmatrix_element_as_morphism[110X and [10Xlist_list_as_matrix[110X
-  allow  to use lists of lists as the data structure of [3XM[103X. See [2XAdditiveClosure[102X
-  ([14X2.2-1[114X) for the default data structures.[133X
-  
-  [1X2.2-5 AdditiveClosureMorphismListList[101X
-  
-  [33X[1;0Y[29X[2XAdditiveClosureMorphismListList[102X( [3XA[103X, [3XL[103X, [3XB[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}_{C^\oplus}(A,B)[123X[133X
-  
-  [33X[0;0YInput  and  return  value are the same as for [10XAdditiveClosureMorphism[110X except
-  that  the  matrix  [10XM[110X  can  be  given  as  a  list  (of  lists)  [3XL[103X  to  which
-  [10Xlist_list_as_matrix[110X will be applied automatically.[133X
-  
-  [1X2.2-6 AsAdditiveClosureMorphism[101X
+  [1X2.2-5 AsAdditiveClosureMorphism[101X
   
   [33X[1;0Y[29X[2XAsAdditiveClosureMorphism[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23XC^\oplus[123X[133X
@@ -103,7 +71,7 @@
   [33X[0;0YThe  argument  is  a  morphism [23X\alpha[123X in an Ab-category [23XC[123X. The output is the
   image of [23X\alpha[123X under the inclusion functor [23X\iota:C\to C^\oplus[123X.[133X
   
-  [1X2.2-7 InclusionFunctorInAdditiveClosure[101X
+  [1X2.2-6 InclusionFunctorInAdditiveClosure[101X
   
   [33X[1;0Y[29X[2XInclusionFunctorInAdditiveClosure[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor [23XC\to C^\oplus[123X[133X
@@ -111,7 +79,7 @@
   [33X[0;0YThe  argument  is  an  Ab-category  [23XC[123X.  The  output is the inclusion functor
   [23X\iota:C\to C^\oplus[123X.[133X
   
-  [1X2.2-8 ExtendFunctorToAdditiveClosures[101X
+  [1X2.2-7 ExtendFunctorToAdditiveClosures[101X
   
   [33X[1;0Y[29X[2XExtendFunctorToAdditiveClosures[102X( [3XF[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor [23XC^\oplus \to D^\oplus[123X[133X
@@ -119,7 +87,7 @@
   [33X[0;0YThe  argument is a functor [23XF:C\to D[123X, and the output is the extension functor
   [23XF^\oplus:C^\oplus \to D^\oplus[123X.[133X
   
-  [1X2.2-9 ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource[101X
+  [1X2.2-8 ExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource[101X
   
   [33X[1;0Y[29X[2XExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource[102X( [3XF[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor [23XC^\oplus \to D[123X[133X
@@ -127,7 +95,7 @@
   [33X[0;0YThe  argument  is  a  functor [23XF:C\to D[123X, where [23XD[123X is an additive category. The
   output is the extension functor [23XF^\oplus:C^\oplus \to D[123X.[133X
   
-  [1X2.2-10 ExtendFunctorToAdditiveClosureOfSource[101X
+  [1X2.2-9 ExtendFunctorToAdditiveClosureOfSource[101X
   
   [33X[1;0Y[29X[2XExtendFunctorToAdditiveClosureOfSource[102X( [3XF[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya functor [23XC^\oplus \to D^\oplus[123X or [23XC^\oplus \to D[123X[133X
@@ -136,7 +104,7 @@
   category,  then  return [10XExtendFunctorToAdditiveClosures[110X([3XF[103X), otherwise return
   [10XExtendFunctorWithAdditiveRangeToFunctorFromAdditiveClosureOfSource[110X([3XF[103X).[133X
   
-  [1X2.2-11 ExtendNaturalTransformationToAdditiveClosureOfSource[101X
+  [1X2.2-10 ExtendNaturalTransformationToAdditiveClosureOfSource[101X
   
   [33X[1;0Y[29X[2XExtendNaturalTransformationToAdditiveClosureOfSource[102X( [3Xeta[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya natural transformation from [23XF^\oplus[123X to [23XG^\oplus[123X[133X
