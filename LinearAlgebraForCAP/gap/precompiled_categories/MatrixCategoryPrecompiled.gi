@@ -2104,7 +2104,7 @@ end
 function ( cat_1, arg2_1 )
     local deduped_1_1;
     deduped_1_1 := UnderlyingMatrix( arg2_1 );
-    if not true then
+    if not IS_IDENTICAL_OBJ( cat_1, cat_1 ) then
         return false;
     elif NumberRows( deduped_1_1 ) <> Dimension( Source( arg2_1 ) ) then
         return false;
@@ -2124,7 +2124,7 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    if not true then
+    if not IS_IDENTICAL_OBJ( cat_1, cat_1 ) then
         return false;
     elif Dimension( arg2_1 ) < 0 then
         return false;

@@ -359,14 +359,15 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := Opposite( arg2_1 );
-    deduped_1_1 := UnderlyingMatrix( deduped_2_1 );
-    if not true then
+    local deduped_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := Opposite( arg2_1 );
+    deduped_1_1 := UnderlyingMatrix( deduped_3_1 );
+    deduped_2_1 := OppositeCategory( cat_1 );
+    if not IS_IDENTICAL_OBJ( deduped_2_1, deduped_2_1 ) then
         return false;
-    elif NumberRows( deduped_1_1 ) <> Dimension( Source( deduped_2_1 ) ) then
+    elif NumberRows( deduped_1_1 ) <> Dimension( Source( deduped_3_1 ) ) then
         return false;
-    elif NumberColumns( deduped_1_1 ) <> Dimension( Range( deduped_2_1 ) ) then
+    elif NumberColumns( deduped_1_1 ) <> Dimension( Range( deduped_3_1 ) ) then
         return false;
     else
         return true;
@@ -382,7 +383,9 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    if not true then
+    local deduped_1_1;
+    deduped_1_1 := OppositeCategory( cat_1 );
+    if not IS_IDENTICAL_OBJ( deduped_1_1, deduped_1_1 ) then
         return false;
     elif Dimension( Opposite( arg2_1 ) ) < 0 then
         return false;

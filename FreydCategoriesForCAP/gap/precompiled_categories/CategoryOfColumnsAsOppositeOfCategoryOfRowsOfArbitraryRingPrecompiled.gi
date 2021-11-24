@@ -179,15 +179,16 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := UnderlyingMatrix( arg2_1 );
-    deduped_1_1 := NumberRows( deduped_3_1 );
-    deduped_2_1 := NumberColumns( deduped_3_1 );
-    if not true then
-        return false;
-    elif deduped_1_1 <> deduped_1_1 then
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
+    deduped_1_1 := OppositeCategory( UnderlyingCategory( cat_1 ) );
+    deduped_4_1 := UnderlyingMatrix( arg2_1 );
+    deduped_2_1 := NumberRows( deduped_4_1 );
+    deduped_3_1 := NumberColumns( deduped_4_1 );
+    if not IS_IDENTICAL_OBJ( deduped_1_1, deduped_1_1 ) then
         return false;
     elif deduped_2_1 <> deduped_2_1 then
+        return false;
+    elif deduped_3_1 <> deduped_3_1 then
         return false;
     else
         return true;
@@ -203,7 +204,9 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    if not true then
+    local deduped_1_1;
+    deduped_1_1 := OppositeCategory( UnderlyingCategory( cat_1 ) );
+    if not IS_IDENTICAL_OBJ( deduped_1_1, deduped_1_1 ) then
         return false;
     elif RankOfObject( arg2_1 ) < 0 then
         return false;
