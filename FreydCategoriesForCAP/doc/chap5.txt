@@ -9,544 +9,525 @@
   
   [33X[0;0YThe following CAP operations are supported:[133X
   
-  [30X    [33X[0;6Y[2XAdditionForMorphisms   (for   Is)[102X   ([14XCAP:   AdditionForMorphisms   for
+  [30X    [33X[0;6Y[2XAdditionForMorphisms[102X        ([14XCAP:       AdditionForMorphisms       for
         iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XAdditiveInverseForMorphisms (for Is)[102X ([14XCAP: AdditiveInverseForMorphisms
-        for iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XAssociatorLeftToRightWithGivenTensorProducts          (for         Is)[102X
-        ([14XMonoidalCategories:  AssociatorLeftToRightWithGivenTensorProducts for
-        iscapcategoryobject,     iscapcategoryobject,     iscapcategoryobject,
-        iscapcategoryobject, iscapcategoryobject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XAssociatorRightToLeftWithGivenTensorProducts          (for         Is)[102X
-        ([14XMonoidalCategories:  AssociatorRightToLeftWithGivenTensorProducts for
-        iscapcategoryobject,     iscapcategoryobject,     iscapcategoryobject,
-        iscapcategoryobject, iscapcategoryobject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XBiasedWeakFiberProduct      (for      Is)[102X      ([14XFreydCategoriesForCAP:
-        BiasedWeakFiberProduct            for           iscapcategorymorphism,
+  [30X    [33X[0;6Y[2XAdditiveInverseForMorphisms[102X   ([14XCAP:   AdditiveInverseForMorphisms  for
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XBiasedWeakPushout  (for  Is)[102X ([14XFreydCategoriesForCAP: BiasedWeakPushout
+  [30X    [33X[0;6Y[2XAssociatorLeftToRightWithGivenTensorProducts[102X      ([14XMonoidalCategories:
+        AssociatorLeftToRightWithGivenTensorProducts  for iscapcategoryobject,
+        iscapcategoryobject,     iscapcategoryobject,     iscapcategoryobject,
+        iscapcategoryobject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XAssociatorRightToLeftWithGivenTensorProducts[102X      ([14XMonoidalCategories:
+        AssociatorRightToLeftWithGivenTensorProducts  for iscapcategoryobject,
+        iscapcategoryobject,     iscapcategoryobject,     iscapcategoryobject,
+        iscapcategoryobject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XBiasedWeakFiberProduct[102X  ([14XFreydCategoriesForCAP: BiasedWeakFiberProduct
         for iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XColift    (for    Is)[102X    ([14XCAP:   Colift   for   iscapcategorymorphism,
-        iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XColiftAlongEpimorphism   (for  Is)[102X  ([14XCAP:  ColiftAlongEpimorphism  for
+  [30X    [33X[0;6Y[2XBiasedWeakPushout[102X    ([14XFreydCategoriesForCAP:   BiasedWeakPushout   for
         iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XColiftOrFail  (for  Is)[102X  ([14XCAP: ColiftOrFail for iscapcategorymorphism,
+  [30X    [33X[0;6Y[2XColift[102X ([14XCAP: Colift for iscapcategorymorphism, iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XColiftAlongEpimorphism[102X      ([14XCAP:      ColiftAlongEpimorphism      for
+        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XColiftOrFail[102X    ([14XCAP:    ColiftOrFail    for    iscapcategorymorphism,
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XComponentOfMorphismFromDirectSum         (for         Is)[102X        ([14XCAP:
+  [30X    [33X[0;6Y[2XComponentOfMorphismFromDirectSum[102X                                 ([14XCAP:
         ComponentOfMorphismFromDirectSum  for  iscapcategorymorphism,  islist,
         isint[114X)[133X
   
-  [30X    [33X[0;6Y[2XComponentOfMorphismIntoDirectSum         (for         Is)[102X        ([14XCAP:
+  [30X    [33X[0;6Y[2XComponentOfMorphismIntoDirectSum[102X                                 ([14XCAP:
         ComponentOfMorphismIntoDirectSum  for  iscapcategorymorphism,  islist,
         isint[114X)[133X
   
-  [30X    [33X[0;6Y[2XCoproduct (for Is)[102X ([14XCAP: Coproduct for islist[114X)[133X
+  [30X    [33X[0;6Y[2XCoproduct[102X ([14XCAP: Coproduct for islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XCoproductFunctorial  (for  Is)[102X  ([14XCAP:  CoproductFunctorial for islist,
-        islist, islist[114X)[133X
+  [30X    [33X[0;6Y[2XCoproductFunctorial[102X  ([14XCAP:  CoproductFunctorial  for  islist,  islist,
+        islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XCoproductFunctorialWithGivenCoproducts       (for       Is)[102X      ([14XCAP:
+  [30X    [33X[0;6Y[2XCoproductFunctorialWithGivenCoproducts[102X                           ([14XCAP:
         CoproductFunctorialWithGivenCoproducts     for    iscapcategoryobject,
         islist, islist, islist, iscapcategoryobject[114X)[133X
   
   [30X    [33X[0;6Y[2XDirectProduct[102X ([14XCAP: DirectProduct[114X)[133X
   
-  [30X    [33X[0;6Y[2XDirectProductFunctorial  (for  Is)[102X  ([14XCAP:  DirectProductFunctorial for
-        islist, islist, islist[114X)[133X
+  [30X    [33X[0;6Y[2XDirectProductFunctorial[102X   ([14XCAP:  DirectProductFunctorial  for  islist,
+        islist, islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XDirectProductFunctorialWithGivenDirectProducts    (for    Is)[102X    ([14XCAP:
+  [30X    [33X[0;6Y[2XDirectProductFunctorialWithGivenDirectProducts[102X                   ([14XCAP:
         DirectProductFunctorialWithGivenDirectProducts                     for
         iscapcategoryobject, islist, islist, islist, iscapcategoryobject[114X)[133X
   
   [30X    [33X[0;6Y[2XDirectSum[102X ([14XCAP: DirectSum[114X)[133X
   
-  [30X    [33X[0;6Y[2XDirectSumCodiagonalDifference          (for          Is)[102X         ([14XCAP:
-        DirectSumCodiagonalDifference for islist[114X)[133X
+  [30X    [33X[0;6Y[2XDirectSumCodiagonalDifference[102X  ([14XCAP: DirectSumCodiagonalDifference for
+        islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XDirectSumDiagonalDifference (for Is)[102X ([14XCAP: DirectSumDiagonalDifference
-        for islist[114X)[133X
+  [30X    [33X[0;6Y[2XDirectSumDiagonalDifference[102X   ([14XCAP:   DirectSumDiagonalDifference  for
+        islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XDirectSumFunctorial  (for  Is)[102X  ([14XCAP:  DirectSumFunctorial for islist,
-        islist, islist[114X)[133X
+  [30X    [33X[0;6Y[2XDirectSumFunctorial[102X  ([14XCAP:  DirectSumFunctorial  for  islist,  islist,
+        islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XDirectSumFunctorialWithGivenDirectSums       (for       Is)[102X      ([14XCAP:
+  [30X    [33X[0;6Y[2XDirectSumFunctorialWithGivenDirectSums[102X                           ([14XCAP:
         DirectSumFunctorialWithGivenDirectSums     for    iscapcategoryobject,
         islist, islist, islist, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XDirectSumMorphismToWeakBiPushout   (for   Is)[102X  ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XDirectSumMorphismToWeakBiPushout[102X               ([14XFreydCategoriesForCAP:
         DirectSumMorphismToWeakBiPushout       for      iscapcategorymorphism,
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XIdentityMorphism     (for     Is)[102X     ([14XCAP:    IdentityMorphism    for
-        iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XIdentityMorphism[102X ([14XCAP: IdentityMorphism for iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XInitialObject (for Is)[102X ([14XCAP: InitialObject for iscapcategory[114X)[133X
+  [30X    [33X[0;6Y[2XInitialObject[102X ([14XCAP: InitialObject for iscapcategory[114X)[133X
   
-  [30X    [33X[0;6Y[2XInitialObjectFunctorial  (for  Is)[102X  ([14XCAP:  InitialObjectFunctorial for
+  [30X    [33X[0;6Y[2XInitialObjectFunctorial[102X      ([14XCAP:     InitialObjectFunctorial     for
         iscapcategory[114X)[133X
   
-  [30X    [33X[0;6Y[2XInitialObjectFunctorialWithGivenInitialObjects    (for    Is)[102X    ([14XCAP:
+  [30X    [33X[0;6Y[2XInitialObjectFunctorialWithGivenInitialObjects[102X                   ([14XCAP:
         InitialObjectFunctorialWithGivenInitialObjects                     for
         iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XInjectionOfBiasedWeakPushout    (for    Is)[102X    ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XInjectionOfBiasedWeakPushout[102X                   ([14XFreydCategoriesForCAP:
         InjectionOfBiasedWeakPushout         for        iscapcategorymorphism,
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout     (for    Is)[102X
+  [30X    [33X[0;6Y[2XInjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout[102X
         ([14XFreydCategoriesForCAP:
         InjectionOfBiasedWeakPushoutWithGivenBiasedWeakPushout             for
         iscapcategorymorphism, iscapcategorymorphism, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XInjectionOfCofactorOfCoproduct          (for         Is)[102X         ([14XCAP:
-        InjectionOfCofactorOfCoproduct for islist, isint[114X)[133X
+  [30X    [33X[0;6Y[2XInjectionOfCofactorOfCoproduct[102X   ([14XCAP:  InjectionOfCofactorOfCoproduct
+        for islist, isint[114X)[133X
   
-  [30X    [33X[0;6Y[2XInjectionOfCofactorOfCoproductWithGivenCoproduct    (for   Is)[102X   ([14XCAP:
+  [30X    [33X[0;6Y[2XInjectionOfCofactorOfCoproductWithGivenCoproduct[102X                 ([14XCAP:
         InjectionOfCofactorOfCoproductWithGivenCoproduct  for  islist,  isint,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XInjectionOfCofactorOfDirectSum          (for         Is)[102X         ([14XCAP:
-        InjectionOfCofactorOfDirectSum for islist, isint[114X)[133X
+  [30X    [33X[0;6Y[2XInjectionOfCofactorOfDirectSum[102X   ([14XCAP:  InjectionOfCofactorOfDirectSum
+        for islist, isint[114X)[133X
   
-  [30X    [33X[0;6Y[2XInjectionOfCofactorOfDirectSumWithGivenDirectSum    (for   Is)[102X   ([14XCAP:
+  [30X    [33X[0;6Y[2XInjectionOfCofactorOfDirectSumWithGivenDirectSum[102X                 ([14XCAP:
         InjectionOfCofactorOfDirectSumWithGivenDirectSum  for  islist,  isint,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XInjectionOfFirstCofactorOfWeakBiPushout            (for            Is)[102X
-        ([14XFreydCategoriesForCAP:   InjectionOfFirstCofactorOfWeakBiPushout  for
-        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XInjectionOfFirstCofactorOfWeakBiPushout[102X        ([14XFreydCategoriesForCAP:
+        InjectionOfFirstCofactorOfWeakBiPushout   for   iscapcategorymorphism,
+        iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XInjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout (for Is)[102X
+  [30X    [33X[0;6Y[2XInjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout[102X
         ([14XFreydCategoriesForCAP:
         InjectionOfFirstCofactorOfWeakBiPushoutWithGivenWeakBiPushout      for
         iscapcategorymorphism, iscapcategorymorphism, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XInjectionOfSecondCofactorOfWeakBiPushout            (for           Is)[102X
-        ([14XFreydCategoriesForCAP:  InjectionOfSecondCofactorOfWeakBiPushout  for
-        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XInjectionOfSecondCofactorOfWeakBiPushout[102X       ([14XFreydCategoriesForCAP:
+        InjectionOfSecondCofactorOfWeakBiPushout   for  iscapcategorymorphism,
+        iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XInjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout    (for
-        Is)[102X                                            ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XInjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout[102X
+        ([14XFreydCategoriesForCAP:
         InjectionOfSecondCofactorOfWeakBiPushoutWithGivenWeakBiPushout     for
         iscapcategorymorphism, iscapcategorymorphism, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XInjectiveColift     (for     Is)[102X     ([14XCAP:     InjectiveColift     for
+  [30X    [33X[0;6Y[2XInjectiveColift[102X   ([14XCAP:   InjectiveColift  for  iscapcategorymorphism,
+        iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XInverseForMorphisms[102X        ([14XCAP:        InverseForMorphisms        for
+        iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsAutomorphism[102X ([14XCAP: IsAutomorphism for iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsColiftable[102X    ([14XCAP:    IsColiftable    for    iscapcategorymorphism,
+        iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsColiftableAlongEpimorphism[102X  ([14XCAP:  IsColiftableAlongEpimorphism  for
         iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XInverseForMorphisms    (for    Is)[102X   ([14XCAP:   InverseForMorphisms   for
-        iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsAutomorphism      (for      Is)[102X     ([14XCAP:     IsAutomorphism     for
-        iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsColiftable  (for  Is)[102X  ([14XCAP: IsColiftable for iscapcategorymorphism,
-        iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsColiftableAlongEpimorphism          (for          Is)[102X          ([14XCAP:
-        IsColiftableAlongEpimorphism         for        iscapcategorymorphism,
-        iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsCongruentForMorphisms  (for  Is)[102X  ([14XCAP:  IsCongruentForMorphisms for
+  [30X    [33X[0;6Y[2XIsCongruentForMorphisms[102X      ([14XCAP:     IsCongruentForMorphisms     for
         iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsEndomorphism      (for      Is)[102X     ([14XCAP:     IsEndomorphism     for
-        iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XIsEndomorphism[102X ([14XCAP: IsEndomorphism for iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsEpimorphism (for Is)[102X ([14XCAP: IsEpimorphism for iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XIsEpimorphism[102X ([14XCAP: IsEpimorphism for iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsEqualForMorphisms    (for    Is)[102X   ([14XCAP:   IsEqualForMorphisms   for
+  [30X    [33X[0;6Y[2XIsEqualForMorphisms[102X        ([14XCAP:        IsEqualForMorphisms        for
         iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsEqualForMorphismsOnMor  (for  Is)[102X ([14XCAP: IsEqualForMorphismsOnMor for
+  [30X    [33X[0;6Y[2XIsEqualForMorphismsOnMor[102X     ([14XCAP:     IsEqualForMorphismsOnMor    for
         iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsEqualForObjects     (for    Is)[102X    ([14XCAP:    IsEqualForObjects    for
-        iscapcategoryobject, iscapcategoryobject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsIdempotent (for Is)[102X ([14XCAP: IsIdempotent for iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsIdenticalToIdentityMorphism          (for          Is)[102X         ([14XCAP:
-        IsIdenticalToIdentityMorphism for iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsIdenticalToZeroMorphism (for Is)[102X ([14XCAP: IsIdenticalToZeroMorphism for
-        iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsInitial (for Is)[102X ([14XCAP: IsInitial for iscapcategoryobject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsIsomorphism (for Is)[102X ([14XCAP: IsIsomorphism for iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsLiftable   (for  Is)[102X  ([14XCAP:  IsLiftable  for  iscapcategorymorphism,
-        iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsLiftableAlongMonomorphism (for Is)[102X ([14XCAP: IsLiftableAlongMonomorphism
-        for iscapcategorymorphism, iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsMonomorphism      (for      Is)[102X     ([14XCAP:     IsMonomorphism     for
-        iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsOne (for Is)[102X ([14XCAP: IsOne for iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsSplitEpimorphism    (for    Is)[102X    ([14XCAP:    IsSplitEpimorphism   for
-        iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsSplitMonomorphism    (for    Is)[102X   ([14XCAP:   IsSplitMonomorphism   for
-        iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsTerminal (for Is)[102X ([14XCAP: IsTerminal for iscapcategoryobject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsWellDefinedForMorphisms (for Is)[102X ([14XCAP: IsWellDefinedForMorphisms for
-        iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsWellDefinedForObjects  (for  Is)[102X  ([14XCAP:  IsWellDefinedForObjects for
+  [30X    [33X[0;6Y[2XIsEqualForObjects[102X  ([14XCAP:  IsEqualForObjects  for  iscapcategoryobject,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsZeroForMorphisms    (for    Is)[102X    ([14XCAP:    IsZeroForMorphisms   for
+  [30X    [33X[0;6Y[2XIsIdempotent[102X ([14XCAP: IsIdempotent for iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsIdenticalToIdentityMorphism[102X  ([14XCAP: IsIdenticalToIdentityMorphism for
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsZeroForObjects     (for     Is)[102X     ([14XCAP:    IsZeroForObjects    for
+  [30X    [33X[0;6Y[2XIsIdenticalToZeroMorphism[102X    ([14XCAP:    IsIdenticalToZeroMorphism    for
+        iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsInitial[102X ([14XCAP: IsInitial for iscapcategoryobject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsIsomorphism[102X ([14XCAP: IsIsomorphism for iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsLiftable[102X     ([14XCAP:     IsLiftable     for     iscapcategorymorphism,
+        iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsLiftableAlongMonomorphism[102X   ([14XCAP:   IsLiftableAlongMonomorphism  for
+        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsMonomorphism[102X ([14XCAP: IsMonomorphism for iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsOne[102X ([14XCAP: IsOne for iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsSplitEpimorphism[102X ([14XCAP: IsSplitEpimorphism for iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsSplitMonomorphism[102X        ([14XCAP:        IsSplitMonomorphism        for
+        iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsTerminal[102X ([14XCAP: IsTerminal for iscapcategoryobject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsWellDefinedForMorphisms[102X    ([14XCAP:    IsWellDefinedForMorphisms    for
+        iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsWellDefinedForObjects[102X      ([14XCAP:     IsWellDefinedForObjects     for
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromCoproductToDirectSum        (for        Is)[102X       ([14XCAP:
+  [30X    [33X[0;6Y[2XIsZeroForMorphisms[102X ([14XCAP: IsZeroForMorphisms for iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsZeroForObjects[102X ([14XCAP: IsZeroForObjects for iscapcategoryobject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsomorphismFromCoproductToDirectSum[102X                              ([14XCAP:
         IsomorphismFromCoproductToDirectSum for islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromDirectProductToDirectSum       (for      Is)[102X      ([14XCAP:
+  [30X    [33X[0;6Y[2XIsomorphismFromDirectProductToDirectSum[102X                          ([14XCAP:
         IsomorphismFromDirectProductToDirectSum for islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromDirectSumToCoproduct        (for        Is)[102X       ([14XCAP:
+  [30X    [33X[0;6Y[2XIsomorphismFromDirectSumToCoproduct[102X                              ([14XCAP:
         IsomorphismFromDirectSumToCoproduct for islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromDirectSumToDirectProduct       (for      Is)[102X      ([14XCAP:
+  [30X    [33X[0;6Y[2XIsomorphismFromDirectSumToDirectProduct[102X                          ([14XCAP:
         IsomorphismFromDirectSumToDirectProduct for islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromInitialObjectToZeroObject      (for      Is)[102X      ([14XCAP:
+  [30X    [33X[0;6Y[2XIsomorphismFromInitialObjectToZeroObject[102X                         ([14XCAP:
         IsomorphismFromInitialObjectToZeroObject for iscapcategory[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromTerminalObjectToZeroObject      (for      Is)[102X     ([14XCAP:
+  [30X    [33X[0;6Y[2XIsomorphismFromTerminalObjectToZeroObject[102X                        ([14XCAP:
         IsomorphismFromTerminalObjectToZeroObject for iscapcategory[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromZeroObjectToInitialObject      (for      Is)[102X      ([14XCAP:
+  [30X    [33X[0;6Y[2XIsomorphismFromZeroObjectToInitialObject[102X                         ([14XCAP:
         IsomorphismFromZeroObjectToInitialObject for iscapcategory[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromZeroObjectToTerminalObject      (for      Is)[102X     ([14XCAP:
+  [30X    [33X[0;6Y[2XIsomorphismFromZeroObjectToTerminalObject[102X                        ([14XCAP:
         IsomorphismFromZeroObjectToTerminalObject for iscapcategory[114X)[133X
   
-  [30X    [33X[0;6Y[2XLeftUnitorInverseWithGivenTensorProduct  (for Is)[102X ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XLeftUnitorInverseWithGivenTensorProduct[102X           ([14XMonoidalCategories:
         LeftUnitorInverseWithGivenTensorProduct    for    iscapcategoryobject,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XLeftUnitorWithGivenTensorProduct    (for    Is)[102X   ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XLeftUnitorWithGivenTensorProduct[102X                  ([14XMonoidalCategories:
         LeftUnitorWithGivenTensorProduct        for       iscapcategoryobject,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XLift     (for    Is)[102X    ([14XCAP:    Lift    for    iscapcategorymorphism,
-        iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XLift[102X ([14XCAP: Lift for iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XLiftAlongMonomorphism   (for   Is)[102X   ([14XCAP:  LiftAlongMonomorphism  for
+  [30X    [33X[0;6Y[2XLiftAlongMonomorphism[102X       ([14XCAP:       LiftAlongMonomorphism      for
         iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XLiftOrFail   (for  Is)[102X  ([14XCAP:  LiftOrFail  for  iscapcategorymorphism,
+  [30X    [33X[0;6Y[2XLiftOrFail[102X     ([14XCAP:     LiftOrFail     for     iscapcategorymorphism,
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismBetweenDirectSums (for Is)[102X ([14XCAP: MorphismBetweenDirectSums for
-        islist, islist, islist[114X)[133X
+  [30X    [33X[0;6Y[2XMorphismBetweenDirectSums[102X  ([14XCAP: MorphismBetweenDirectSums for islist,
+        islist, islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismBetweenDirectSumsWithGivenDirectSums     (for     Is)[102X    ([14XCAP:
+  [30X    [33X[0;6Y[2XMorphismBetweenDirectSumsWithGivenDirectSums[102X                     ([14XCAP:
         MorphismBetweenDirectSumsWithGivenDirectSums  for iscapcategoryobject,
         islist, islist, islist, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismConstructor    (for    Is)[102X   ([14XCAP:   MorphismConstructor   for
-        iscapcategoryobject, isobject, iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XMorphismConstructor[102X ([14XCAP: MorphismConstructor for iscapcategoryobject,
+        isobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismDatum (for Is)[102X ([14XCAP: MorphismDatum for iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XMorphismDatum[102X ([14XCAP: MorphismDatum for iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XObjectConstructor  (for Is)[102X ([14XCAP: ObjectConstructor for iscapcategory,
-        isobject[114X)[133X
+  [30X    [33X[0;6Y[2XObjectConstructor[102X ([14XCAP: ObjectConstructor for iscapcategory, isobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XObjectDatum (for Is)[102X ([14XCAP: ObjectDatum for iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XObjectDatum[102X ([14XCAP: ObjectDatum for iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XPostCompose  (for  Is)[102X  ([14XCAP:  PostCompose  for iscapcategorymorphism,
+  [30X    [33X[0;6Y[2XPostCompose[102X     ([14XCAP:     PostCompose    for    iscapcategorymorphism,
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XPreCompose   (for  Is)[102X  ([14XCAP:  PreCompose  for  iscapcategorymorphism,
+  [30X    [33X[0;6Y[2XPreCompose[102X     ([14XCAP:     PreCompose     for     iscapcategorymorphism,
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XProjectionInFactorOfDirectProduct         (for        Is)[102X        ([14XCAP:
+  [30X    [33X[0;6Y[2XProjectionInFactorOfDirectProduct[102X                                ([14XCAP:
         ProjectionInFactorOfDirectProduct for islist, isint[114X)[133X
   
-  [30X    [33X[0;6Y[2XProjectionInFactorOfDirectProductWithGivenDirectProduct (for Is)[102X ([14XCAP:
+  [30X    [33X[0;6Y[2XProjectionInFactorOfDirectProductWithGivenDirectProduct[102X          ([14XCAP:
         ProjectionInFactorOfDirectProductWithGivenDirectProduct   for  islist,
         isint, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XProjectionInFactorOfDirectSum          (for          Is)[102X         ([14XCAP:
-        ProjectionInFactorOfDirectSum for islist, isint[114X)[133X
+  [30X    [33X[0;6Y[2XProjectionInFactorOfDirectSum[102X  ([14XCAP: ProjectionInFactorOfDirectSum for
+        islist, isint[114X)[133X
   
-  [30X    [33X[0;6Y[2XProjectionInFactorOfDirectSumWithGivenDirectSum    (for    Is)[102X   ([14XCAP:
+  [30X    [33X[0;6Y[2XProjectionInFactorOfDirectSumWithGivenDirectSum[102X                  ([14XCAP:
         ProjectionInFactorOfDirectSumWithGivenDirectSum   for  islist,  isint,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XProjectionInFirstFactorOfWeakBiFiberProduct          (for          Is)[102X
-        ([14XFreydCategoriesForCAP:    ProjectionInFirstFactorOfWeakBiFiberProduct
-        for iscapcategorymorphism, iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XProjectionInFirstFactorOfWeakBiFiberProduct[102X    ([14XFreydCategoriesForCAP:
+        ProjectionInFirstFactorOfWeakBiFiberProduct for iscapcategorymorphism,
+        iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
-        (for                    Is)[102X                    ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct[102X
+        ([14XFreydCategoriesForCAP:
         ProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
         for iscapcategorymorphism, iscapcategorymorphism, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XProjectionInSecondFactorOfWeakBiFiberProduct          (for         Is)[102X
-        ([14XFreydCategoriesForCAP:   ProjectionInSecondFactorOfWeakBiFiberProduct
-        for iscapcategorymorphism, iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XProjectionInSecondFactorOfWeakBiFiberProduct[102X   ([14XFreydCategoriesForCAP:
+        ProjectionInSecondFactorOfWeakBiFiberProduct                       for
+        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
-        (for                    Is)[102X                    ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct[102X
+        ([14XFreydCategoriesForCAP:
         ProjectionInSecondFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct
         for iscapcategorymorphism, iscapcategorymorphism, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XProjectionOfBiasedWeakFiberProduct  (for  Is)[102X  ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XProjectionOfBiasedWeakFiberProduct[102X             ([14XFreydCategoriesForCAP:
         ProjectionOfBiasedWeakFiberProduct      for     iscapcategorymorphism,
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct (for
-        Is)[102X                                            ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct[102X
+        ([14XFreydCategoriesForCAP:
         ProjectionOfBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct  for
         iscapcategorymorphism, iscapcategorymorphism, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XProjectiveLift      (for      Is)[102X     ([14XCAP:     ProjectiveLift     for
-        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XProjectiveLift[102X   ([14XCAP:   ProjectiveLift   for   iscapcategorymorphism,
+        iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XRightUnitorInverseWithGivenTensorProduct (for Is)[102X ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XRightUnitorInverseWithGivenTensorProduct[102X          ([14XMonoidalCategories:
         RightUnitorInverseWithGivenTensorProduct    for   iscapcategoryobject,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XRightUnitorWithGivenTensorProduct    (for   Is)[102X   ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XRightUnitorWithGivenTensorProduct[102X                 ([14XMonoidalCategories:
         RightUnitorWithGivenTensorProduct       for       iscapcategoryobject,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XSimplifyRange  (for Is)[102X ([14XCAP: SimplifyRange for iscapcategorymorphism,
-        isobject[114X)[133X
+  [30X    [33X[0;6Y[2XSimplifyRange[102X ([14XCAP: SimplifyRange for iscapcategorymorphism, isobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XSimplifyRange_IsoFromInputObject         (for         Is)[102X        ([14XCAP:
+  [30X    [33X[0;6Y[2XSimplifyRange_IsoFromInputObject[102X                                 ([14XCAP:
         SimplifyRange_IsoFromInputObject for iscapcategorymorphism, isobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XSimplifyRange_IsoToInputObject          (for         Is)[102X         ([14XCAP:
-        SimplifyRange_IsoToInputObject for iscapcategorymorphism, isobject[114X)[133X
+  [30X    [33X[0;6Y[2XSimplifyRange_IsoToInputObject[102X   ([14XCAP:  SimplifyRange_IsoToInputObject
+        for iscapcategorymorphism, isobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XSimplifySource      (for      Is)[102X     ([14XCAP:     SimplifySource     for
+  [30X    [33X[0;6Y[2XSimplifySource[102X   ([14XCAP:   SimplifySource   for   iscapcategorymorphism,
+        isobject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XSimplifySourceAndRange[102X      ([14XCAP:      SimplifySourceAndRange      for
         iscapcategorymorphism, isobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XSimplifySourceAndRange   (for  Is)[102X  ([14XCAP:  SimplifySourceAndRange  for
-        iscapcategorymorphism, isobject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XSimplifySourceAndRange_IsoFromInputRange      (for      Is)[102X      ([14XCAP:
+  [30X    [33X[0;6Y[2XSimplifySourceAndRange_IsoFromInputRange[102X                         ([14XCAP:
         SimplifySourceAndRange_IsoFromInputRange   for  iscapcategorymorphism,
         isobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XSimplifySourceAndRange_IsoFromInputSource      (for      Is)[102X     ([14XCAP:
+  [30X    [33X[0;6Y[2XSimplifySourceAndRange_IsoFromInputSource[102X                        ([14XCAP:
         SimplifySourceAndRange_IsoFromInputSource  for  iscapcategorymorphism,
         isobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XSimplifySourceAndRange_IsoToInputRange       (for       Is)[102X      ([14XCAP:
+  [30X    [33X[0;6Y[2XSimplifySourceAndRange_IsoToInputRange[102X                           ([14XCAP:
         SimplifySourceAndRange_IsoToInputRange    for   iscapcategorymorphism,
         isobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XSimplifySourceAndRange_IsoToInputSource       (for      Is)[102X      ([14XCAP:
+  [30X    [33X[0;6Y[2XSimplifySourceAndRange_IsoToInputSource[102X                          ([14XCAP:
         SimplifySourceAndRange_IsoToInputSource   for   iscapcategorymorphism,
         isobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XSimplifySource_IsoFromInputObject         (for        Is)[102X        ([14XCAP:
+  [30X    [33X[0;6Y[2XSimplifySource_IsoFromInputObject[102X                                ([14XCAP:
         SimplifySource_IsoFromInputObject for iscapcategorymorphism, isobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XSimplifySource_IsoToInputObject         (for         Is)[102X         ([14XCAP:
-        SimplifySource_IsoToInputObject for iscapcategorymorphism, isobject[114X)[133X
+  [30X    [33X[0;6Y[2XSimplifySource_IsoToInputObject[102X  ([14XCAP: SimplifySource_IsoToInputObject
+        for iscapcategorymorphism, isobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XSomeReductionBySplitEpiSummand          (for         Is)[102X         ([14XCAP:
-        SomeReductionBySplitEpiSummand for iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XSomeReductionBySplitEpiSummand[102X   ([14XCAP:  SomeReductionBySplitEpiSummand
+        for iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XSomeReductionBySplitEpiSummand_MorphismFromInputRange  (for  Is)[102X ([14XCAP:
+  [30X    [33X[0;6Y[2XSomeReductionBySplitEpiSummand_MorphismFromInputRange[102X            ([14XCAP:
         SomeReductionBySplitEpiSummand_MorphismFromInputRange              for
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XSomeReductionBySplitEpiSummand_MorphismToInputRange   (for  Is)[102X  ([14XCAP:
+  [30X    [33X[0;6Y[2XSomeReductionBySplitEpiSummand_MorphismToInputRange[102X              ([14XCAP:
         SomeReductionBySplitEpiSummand_MorphismToInputRange                for
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XSubtractionForMorphisms  (for  Is)[102X  ([14XCAP:  SubtractionForMorphisms for
+  [30X    [33X[0;6Y[2XSubtractionForMorphisms[102X      ([14XCAP:     SubtractionForMorphisms     for
         iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XTerminalObject (for Is)[102X ([14XCAP: TerminalObject for iscapcategory[114X)[133X
+  [30X    [33X[0;6Y[2XTerminalObject[102X ([14XCAP: TerminalObject for iscapcategory[114X)[133X
   
-  [30X    [33X[0;6Y[2XTerminalObjectFunctorial  (for  Is)[102X ([14XCAP: TerminalObjectFunctorial for
+  [30X    [33X[0;6Y[2XTerminalObjectFunctorial[102X     ([14XCAP:     TerminalObjectFunctorial    for
         iscapcategory[114X)[133X
   
-  [30X    [33X[0;6Y[2XTerminalObjectFunctorialWithGivenTerminalObjects    (for   Is)[102X   ([14XCAP:
+  [30X    [33X[0;6Y[2XTerminalObjectFunctorialWithGivenTerminalObjects[102X                 ([14XCAP:
         TerminalObjectFunctorialWithGivenTerminalObjects                   for
         iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismFromBiasedWeakPushout             (for            Is)[102X
-        ([14XFreydCategoriesForCAP:   UniversalMorphismFromBiasedWeakPushout   for
-        iscapcategorymorphism, iscapcategorymorphism, iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XUniversalMorphismFromBiasedWeakPushout[102X         ([14XFreydCategoriesForCAP:
+        UniversalMorphismFromBiasedWeakPushout    for   iscapcategorymorphism,
+        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout  (for
-        Is)[102X                                            ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout[102X
+        ([14XFreydCategoriesForCAP:
         UniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout   for
         iscapcategorymorphism,  iscapcategorymorphism,  iscapcategorymorphism,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismFromCoproduct          (for         Is)[102X         ([14XCAP:
-        UniversalMorphismFromCoproduct    for   islist,   iscapcategoryobject,
-        islist[114X)[133X
+  [30X    [33X[0;6Y[2XUniversalMorphismFromCoproduct[102X   ([14XCAP:  UniversalMorphismFromCoproduct
+        for islist, iscapcategoryobject, islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismFromCoproductWithGivenCoproduct    (for   Is)[102X   ([14XCAP:
+  [30X    [33X[0;6Y[2XUniversalMorphismFromCoproductWithGivenCoproduct[102X                 ([14XCAP:
         UniversalMorphismFromCoproductWithGivenCoproduct      for      islist,
         iscapcategoryobject, islist, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismFromDirectSum          (for         Is)[102X         ([14XCAP:
-        UniversalMorphismFromDirectSum    for   islist,   iscapcategoryobject,
-        islist[114X)[133X
+  [30X    [33X[0;6Y[2XUniversalMorphismFromDirectSum[102X   ([14XCAP:  UniversalMorphismFromDirectSum
+        for islist, iscapcategoryobject, islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismFromDirectSumWithGivenDirectSum    (for   Is)[102X   ([14XCAP:
+  [30X    [33X[0;6Y[2XUniversalMorphismFromDirectSumWithGivenDirectSum[102X                 ([14XCAP:
         UniversalMorphismFromDirectSumWithGivenDirectSum      for      islist,
         iscapcategoryobject, islist, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismFromInitialObject        (for        Is)[102X        ([14XCAP:
+  [30X    [33X[0;6Y[2XUniversalMorphismFromInitialObject[102X                               ([14XCAP:
         UniversalMorphismFromInitialObject for iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismFromInitialObjectWithGivenInitialObject    (for   Is)[102X
-        ([14XCAP:   UniversalMorphismFromInitialObjectWithGivenInitialObject   for
+  [30X    [33X[0;6Y[2XUniversalMorphismFromInitialObjectWithGivenInitialObject[102X         ([14XCAP:
+        UniversalMorphismFromInitialObjectWithGivenInitialObject           for
         iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismFromWeakBiPushout  (for  Is)[102X  ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XUniversalMorphismFromWeakBiPushout[102X             ([14XFreydCategoriesForCAP:
         UniversalMorphismFromWeakBiPushout      for     iscapcategorymorphism,
         iscapcategorymorphism, iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout    (for   Is)[102X
+  [30X    [33X[0;6Y[2XUniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout[102X
         ([14XFreydCategoriesForCAP:
         UniversalMorphismFromWeakBiPushoutWithGivenWeakBiPushout           for
         iscapcategorymorphism,  iscapcategorymorphism,  iscapcategorymorphism,
         iscapcategorymorphism, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismFromZeroObject         (for         Is)[102X         ([14XCAP:
-        UniversalMorphismFromZeroObject for iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XUniversalMorphismFromZeroObject[102X  ([14XCAP: UniversalMorphismFromZeroObject
+        for iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismFromZeroObjectWithGivenZeroObject   (for   Is)[102X  ([14XCAP:
+  [30X    [33X[0;6Y[2XUniversalMorphismFromZeroObjectWithGivenZeroObject[102X               ([14XCAP:
         UniversalMorphismFromZeroObjectWithGivenZeroObject                 for
         iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismIntoBiasedWeakFiberProduct          (for          Is)[102X
-        ([14XFreydCategoriesForCAP:    UniversalMorphismIntoBiasedWeakFiberProduct
-        for            iscapcategorymorphism,           iscapcategorymorphism,
-        iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoBiasedWeakFiberProduct[102X    ([14XFreydCategoriesForCAP:
+        UniversalMorphismIntoBiasedWeakFiberProduct for iscapcategorymorphism,
+        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
-        (for                    Is)[102X                    ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct[102X
+        ([14XFreydCategoriesForCAP:
         UniversalMorphismIntoBiasedWeakFiberProductWithGivenBiasedWeakFiberProduct
         for            iscapcategorymorphism,           iscapcategorymorphism,
         iscapcategorymorphism, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismIntoDirectProduct        (for        Is)[102X        ([14XCAP:
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoDirectProduct[102X                               ([14XCAP:
         UniversalMorphismIntoDirectProduct  for  islist,  iscapcategoryobject,
         islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismIntoDirectProductWithGivenDirectProduct    (for   Is)[102X
-        ([14XCAP:   UniversalMorphismIntoDirectProductWithGivenDirectProduct   for
-        islist, iscapcategoryobject, islist, iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoDirectProductWithGivenDirectProduct[102X         ([14XCAP:
+        UniversalMorphismIntoDirectProductWithGivenDirectProduct  for  islist,
+        iscapcategoryobject, islist, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismIntoDirectSum          (for         Is)[102X         ([14XCAP:
-        UniversalMorphismIntoDirectSum    for   islist,   iscapcategoryobject,
-        islist[114X)[133X
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoDirectSum[102X   ([14XCAP:  UniversalMorphismIntoDirectSum
+        for islist, iscapcategoryobject, islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismIntoDirectSumWithGivenDirectSum    (for   Is)[102X   ([14XCAP:
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoDirectSumWithGivenDirectSum[102X                 ([14XCAP:
         UniversalMorphismIntoDirectSumWithGivenDirectSum      for      islist,
         iscapcategoryobject, islist, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismIntoTerminalObject        (for        Is)[102X       ([14XCAP:
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoTerminalObject[102X                              ([14XCAP:
         UniversalMorphismIntoTerminalObject for iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismIntoTerminalObjectWithGivenTerminalObject   (for  Is)[102X
-        ([14XCAP:  UniversalMorphismIntoTerminalObjectWithGivenTerminalObject  for
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoTerminalObjectWithGivenTerminalObject[102X       ([14XCAP:
+        UniversalMorphismIntoTerminalObjectWithGivenTerminalObject         for
         iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismIntoWeakBiFiberProduct            (for            Is)[102X
-        ([14XFreydCategoriesForCAP:   UniversalMorphismIntoWeakBiFiberProduct  for
-        iscapcategorymorphism,  iscapcategorymorphism,  iscapcategorymorphism,
-        iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoWeakBiFiberProduct[102X        ([14XFreydCategoriesForCAP:
+        UniversalMorphismIntoWeakBiFiberProduct   for   iscapcategorymorphism,
+        iscapcategorymorphism, iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct
-        (for                    Is)[102X                    ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct[102X
+        ([14XFreydCategoriesForCAP:
         UniversalMorphismIntoWeakBiFiberProductWithGivenWeakBiFiberProduct for
         iscapcategorymorphism,  iscapcategorymorphism,  iscapcategorymorphism,
         iscapcategorymorphism, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismIntoZeroObject         (for         Is)[102X         ([14XCAP:
-        UniversalMorphismIntoZeroObject for iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoZeroObject[102X  ([14XCAP: UniversalMorphismIntoZeroObject
+        for iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismIntoZeroObjectWithGivenZeroObject   (for   Is)[102X  ([14XCAP:
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoZeroObjectWithGivenZeroObject[102X               ([14XCAP:
         UniversalMorphismIntoZeroObjectWithGivenZeroObject                 for
         iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XWeakBiFiberProduct (for Is)[102X ([14XFreydCategoriesForCAP: WeakBiFiberProduct
-        for iscapcategorymorphism, iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XWeakBiFiberProduct[102X   ([14XFreydCategoriesForCAP:   WeakBiFiberProduct  for
+        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XWeakBiFiberProductMorphismToDirectSum (for Is)[102X ([14XFreydCategoriesForCAP:
+  [30X    [33X[0;6Y[2XWeakBiFiberProductMorphismToDirectSum[102X          ([14XFreydCategoriesForCAP:
         WeakBiFiberProductMorphismToDirectSum    for    iscapcategorymorphism,
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XWeakBiPushout   (for  Is)[102X  ([14XFreydCategoriesForCAP:  WeakBiPushout  for
+  [30X    [33X[0;6Y[2XWeakBiPushout[102X      ([14XFreydCategoriesForCAP:      WeakBiPushout      for
         iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XWeakCokernelColift (for Is)[102X ([14XFreydCategoriesForCAP: WeakCokernelColift
-        for iscapcategorymorphism, iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XWeakCokernelColift[102X   ([14XFreydCategoriesForCAP:   WeakCokernelColift  for
+        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XWeakCokernelColiftWithGivenWeakCokernelObject         (for         Is)[102X
-        ([14XFreydCategoriesForCAP:  WeakCokernelColiftWithGivenWeakCokernelObject
-        for iscapcategorymorphism, iscapcategorymorphism, iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XWeakCokernelColiftWithGivenWeakCokernelObject[102X  ([14XFreydCategoriesForCAP:
+        WeakCokernelColiftWithGivenWeakCokernelObject                      for
+        iscapcategorymorphism, iscapcategorymorphism, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XWeakCokernelObject (for Is)[102X ([14XFreydCategoriesForCAP: WeakCokernelObject
+  [30X    [33X[0;6Y[2XWeakCokernelObject[102X   ([14XFreydCategoriesForCAP:   WeakCokernelObject  for
+        iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XWeakCokernelProjection[102X  ([14XFreydCategoriesForCAP: WeakCokernelProjection
         for iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XWeakCokernelProjection      (for      Is)[102X      ([14XFreydCategoriesForCAP:
-        WeakCokernelProjection for iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XWeakCokernelProjectionWithGivenWeakCokernelObject       (for       Is)[102X
+  [30X    [33X[0;6Y[2XWeakCokernelProjectionWithGivenWeakCokernelObject[102X
         ([14XFreydCategoriesForCAP:
         WeakCokernelProjectionWithGivenWeakCokernelObject                  for
         iscapcategorymorphism, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XWeakKernelEmbedding       (for       Is)[102X       ([14XFreydCategoriesForCAP:
-        WeakKernelEmbedding for iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XWeakKernelEmbeddingWithGivenWeakKernelObject          (for         Is)[102X
-        ([14XFreydCategoriesForCAP:   WeakKernelEmbeddingWithGivenWeakKernelObject
-        for iscapcategorymorphism, iscapcategoryobject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XWeakKernelLift  (for  Is)[102X  ([14XFreydCategoriesForCAP:  WeakKernelLift for
-        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XWeakKernelLiftWithGivenWeakKernelObject            (for            Is)[102X
-        ([14XFreydCategoriesForCAP:   WeakKernelLiftWithGivenWeakKernelObject  for
-        iscapcategorymorphism, iscapcategorymorphism, iscapcategoryobject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XWeakKernelObject (for Is)[102X ([14XFreydCategoriesForCAP: WeakKernelObject for
+  [30X    [33X[0;6Y[2XWeakKernelEmbedding[102X  ([14XFreydCategoriesForCAP:  WeakKernelEmbedding  for
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XZeroMorphism  (for  Is)[102X  ([14XCAP:  ZeroMorphism  for iscapcategoryobject,
+  [30X    [33X[0;6Y[2XWeakKernelEmbeddingWithGivenWeakKernelObject[102X   ([14XFreydCategoriesForCAP:
+        WeakKernelEmbeddingWithGivenWeakKernelObject                       for
+        iscapcategorymorphism, iscapcategoryobject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XWeakKernelLift[102X      ([14XFreydCategoriesForCAP:     WeakKernelLift     for
+        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XWeakKernelLiftWithGivenWeakKernelObject[102X        ([14XFreydCategoriesForCAP:
+        WeakKernelLiftWithGivenWeakKernelObject   for   iscapcategorymorphism,
+        iscapcategorymorphism, iscapcategoryobject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XWeakKernelObject[102X    ([14XFreydCategoriesForCAP:    WeakKernelObject    for
+        iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XZeroMorphism[102X     ([14XCAP:     ZeroMorphism    for    iscapcategoryobject,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XZeroObject (for Is)[102X ([14XCAP: ZeroObject for iscapcategory[114X)[133X
+  [30X    [33X[0;6Y[2XZeroObject[102X ([14XCAP: ZeroObject for iscapcategory[114X)[133X
   
-  [30X    [33X[0;6Y[2XZeroObjectFunctorial   (for   Is)[102X   ([14XCAP:   ZeroObjectFunctorial   for
-        iscapcategory[114X)[133X
+  [30X    [33X[0;6Y[2XZeroObjectFunctorial[102X ([14XCAP: ZeroObjectFunctorial for iscapcategory[114X)[133X
   
-  [30X    [33X[0;6Y[2XZeroObjectFunctorialWithGivenZeroObjects      (for      Is)[102X      ([14XCAP:
+  [30X    [33X[0;6Y[2XZeroObjectFunctorialWithGivenZeroObjects[102X                         ([14XCAP:
         ZeroObjectFunctorialWithGivenZeroObjects    for   iscapcategoryobject,
         iscapcategoryobject[114X)[133X
   
@@ -555,555 +536,536 @@
   
   [33X[0;0YThe following additional CAP operations are supported:[133X
   
-  [30X    [33X[0;6Y[2XAssociatorLeftToRight        (for       Is)[102X       ([14XMonoidalCategories:
-        AssociatorLeftToRight  for  iscapcategoryobject,  iscapcategoryobject,
+  [30X    [33X[0;6Y[2XAssociatorLeftToRight[102X  ([14XMonoidalCategories:  AssociatorLeftToRight for
+        iscapcategoryobject, iscapcategoryobject, iscapcategoryobject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XAssociatorRightToLeft[102X  ([14XMonoidalCategories:  AssociatorRightToLeft for
+        iscapcategoryobject, iscapcategoryobject, iscapcategoryobject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XBraiding[102X   ([14XMonoidalCategories:   Braiding   for  iscapcategoryobject,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XAssociatorRightToLeft        (for       Is)[102X       ([14XMonoidalCategories:
-        AssociatorRightToLeft  for  iscapcategoryobject,  iscapcategoryobject,
-        iscapcategoryobject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XBraiding     (for     Is)[102X     ([14XMonoidalCategories:     Braiding    for
+  [30X    [33X[0;6Y[2XBraidingInverse[102X      ([14XMonoidalCategories:      BraidingInverse     for
         iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XBraidingInverse  (for  Is)[102X  ([14XMonoidalCategories:  BraidingInverse  for
-        iscapcategoryobject, iscapcategoryobject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XBraidingInverseWithGivenTensorProducts  (for  Is)[102X ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XBraidingInverseWithGivenTensorProducts[102X            ([14XMonoidalCategories:
         BraidingInverseWithGivenTensorProducts     for    iscapcategoryobject,
         iscapcategoryobject, iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XBraidingWithGivenTensorProducts    (for    Is)[102X    ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XBraidingWithGivenTensorProducts[102X                   ([14XMonoidalCategories:
         BraidingWithGivenTensorProducts        for        iscapcategoryobject,
         iscapcategoryobject, iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XCoevaluationForDual  (for Is)[102X ([14XMonoidalCategories: CoevaluationForDual
-        for iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XCoevaluationForDual[102X   ([14XMonoidalCategories:   CoevaluationForDual   for
+        iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XCoevaluationForDualWithGivenTensorProduct           (for           Is)[102X
-        ([14XMonoidalCategories:   CoevaluationForDualWithGivenTensorProduct   for
-        iscapcategoryobject, iscapcategoryobject, iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XCoevaluationForDualWithGivenTensorProduct[102X         ([14XMonoidalCategories:
+        CoevaluationForDualWithGivenTensorProduct   for   iscapcategoryobject,
+        iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XCoevaluationMorphism        (for        Is)[102X       ([14XMonoidalCategories:
-        CoevaluationMorphism for iscapcategoryobject, iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XCoevaluationMorphism[102X   ([14XMonoidalCategories:  CoevaluationMorphism  for
+        iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XCoevaluationMorphismWithGivenRange   (for   Is)[102X   ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XCoevaluationMorphismWithGivenRange[102X                ([14XMonoidalCategories:
         CoevaluationMorphismWithGivenRange       for      iscapcategoryobject,
         iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XDistinguishedObjectOfHomomorphismStructure      (for     Is)[102X     ([14XCAP:
+  [30X    [33X[0;6Y[2XDistinguishedObjectOfHomomorphismStructure[102X                       ([14XCAP:
         DistinguishedObjectOfHomomorphismStructure for iscapcategory[114X)[133X
   
-  [30X    [33X[0;6Y[2XDualOnMorphisms  (for  Is)[102X  ([14XMonoidalCategories:  DualOnMorphisms  for
+  [30X    [33X[0;6Y[2XDualOnMorphisms[102X      ([14XMonoidalCategories:      DualOnMorphisms     for
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XDualOnMorphismsWithGivenDuals     (for     Is)[102X    ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XDualOnMorphismsWithGivenDuals[102X                     ([14XMonoidalCategories:
         DualOnMorphismsWithGivenDuals         for         iscapcategoryobject,
         iscapcategorymorphism, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XDualOnObjects   (for   Is)[102X   ([14XMonoidalCategories:   DualOnObjects  for
+  [30X    [33X[0;6Y[2XDualOnObjects[102X       ([14XMonoidalCategories:       DualOnObjects       for
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XEvaluationForDual  (for Is)[102X ([14XMonoidalCategories: EvaluationForDual for
+  [30X    [33X[0;6Y[2XEvaluationForDual[102X     ([14XMonoidalCategories:    EvaluationForDual    for
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XEvaluationForDualWithGivenTensorProduct  (for Is)[102X ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XEvaluationForDualWithGivenTensorProduct[102X           ([14XMonoidalCategories:
         EvaluationForDualWithGivenTensorProduct    for    iscapcategoryobject,
         iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XEvaluationMorphism  (for  Is)[102X  ([14XMonoidalCategories: EvaluationMorphism
-        for iscapcategoryobject, iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XEvaluationMorphism[102X    ([14XMonoidalCategories:    EvaluationMorphism   for
+        iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XEvaluationMorphismWithGivenSource    (for   Is)[102X   ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XEvaluationMorphismWithGivenSource[102X                 ([14XMonoidalCategories:
         EvaluationMorphismWithGivenSource       for       iscapcategoryobject,
         iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XHomomorphismStructureOnMorphisms         (for         Is)[102X        ([14XCAP:
+  [30X    [33X[0;6Y[2XHomomorphismStructureOnMorphisms[102X                                 ([14XCAP:
         HomomorphismStructureOnMorphisms       for      iscapcategorymorphism,
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XHomomorphismStructureOnMorphismsWithGivenObjects    (for   Is)[102X   ([14XCAP:
+  [30X    [33X[0;6Y[2XHomomorphismStructureOnMorphismsWithGivenObjects[102X                 ([14XCAP:
         HomomorphismStructureOnMorphismsWithGivenObjects                   for
         iscapcategoryobject,   iscapcategorymorphism,   iscapcategorymorphism,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XHomomorphismStructureOnObjects          (for         Is)[102X         ([14XCAP:
-        HomomorphismStructureOnObjects         for        iscapcategoryobject,
-        iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XHomomorphismStructureOnObjects[102X   ([14XCAP:  HomomorphismStructureOnObjects
+        for iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XInternalHomOnMorphisms       (for       Is)[102X       ([14XMonoidalCategories:
-        InternalHomOnMorphisms            for           iscapcategorymorphism,
-        iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XInternalHomOnMorphisms[102X ([14XMonoidalCategories: InternalHomOnMorphisms for
+        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XInternalHomOnMorphismsWithGivenInternalHoms          (for          Is)[102X
-        ([14XMonoidalCategories:  InternalHomOnMorphismsWithGivenInternalHoms  for
-        iscapcategoryobject,   iscapcategorymorphism,   iscapcategorymorphism,
-        iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XInternalHomOnMorphismsWithGivenInternalHoms[102X       ([14XMonoidalCategories:
+        InternalHomOnMorphismsWithGivenInternalHoms  for  iscapcategoryobject,
+        iscapcategorymorphism, iscapcategorymorphism, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XInternalHomOnObjects        (for        Is)[102X       ([14XMonoidalCategories:
-        InternalHomOnObjects for iscapcategoryobject, iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XInternalHomOnObjects[102X   ([14XMonoidalCategories:  InternalHomOnObjects  for
+        iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XInternalHomToTensorProductAdjunctionMap  (for Is)[102X ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XInternalHomToTensorProductAdjunctionMap[102X           ([14XMonoidalCategories:
         InternalHomToTensorProductAdjunctionMap    for    iscapcategoryobject,
         iscapcategoryobject, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure
-        (for                             Is)[102X                             ([14XCAP:
+  [30X    [33X[0;6Y[2XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure[102X
+        ([14XCAP:
         InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure
         for iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects
-        (for                             Is)[102X                             ([14XCAP:
+  [30X    [33X[0;6Y[2XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects[102X
+        ([14XCAP:
         InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects
         for iscapcategoryobject, iscapcategorymorphism, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
-        (for                             Is)[102X                             ([14XCAP:
+  [30X    [33X[0;6Y[2XInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism[102X
+        ([14XCAP:
         InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism
         for iscapcategoryobject, iscapcategoryobject, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromDualToInternalHom    (for    Is)[102X   ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XIsomorphismFromDualToInternalHom[102X                  ([14XMonoidalCategories:
         IsomorphismFromDualToInternalHom for iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromInternalHomToDual    (for    Is)[102X   ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XIsomorphismFromInternalHomToDual[102X                  ([14XMonoidalCategories:
         IsomorphismFromInternalHomToDual for iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromInternalHomToObject   (for   Is)[102X   ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XIsomorphismFromInternalHomToObject[102X                ([14XMonoidalCategories:
         IsomorphismFromInternalHomToObject for iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromInternalHomToObjectWithGivenInternalHom     (for    Is)[102X
+  [30X    [33X[0;6Y[2XIsomorphismFromInternalHomToObjectWithGivenInternalHom[102X
         ([14XMonoidalCategories:
         IsomorphismFromInternalHomToObjectWithGivenInternalHom             for
         iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromInternalHomToTensorProduct           (for           Is)[102X
-        ([14XMonoidalCategories:   IsomorphismFromInternalHomToTensorProduct   for
-        iscapcategoryobject, iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XIsomorphismFromInternalHomToTensorProduct[102X         ([14XMonoidalCategories:
+        IsomorphismFromInternalHomToTensorProduct   for   iscapcategoryobject,
+        iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromObjectToInternalHom   (for   Is)[102X   ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XIsomorphismFromObjectToInternalHom[102X                ([14XMonoidalCategories:
         IsomorphismFromObjectToInternalHom for iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromObjectToInternalHomWithGivenInternalHom     (for    Is)[102X
+  [30X    [33X[0;6Y[2XIsomorphismFromObjectToInternalHomWithGivenInternalHom[102X
         ([14XMonoidalCategories:
         IsomorphismFromObjectToInternalHomWithGivenInternalHom             for
         iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromTensorProductToInternalHom           (for           Is)[102X
-        ([14XMonoidalCategories:   IsomorphismFromTensorProductToInternalHom   for
-        iscapcategoryobject, iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XIsomorphismFromTensorProductToInternalHom[102X         ([14XMonoidalCategories:
+        IsomorphismFromTensorProductToInternalHom   for   iscapcategoryobject,
+        iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XLambdaElimination  (for Is)[102X ([14XMonoidalCategories: LambdaElimination for
+  [30X    [33X[0;6Y[2XLambdaElimination[102X     ([14XMonoidalCategories:    LambdaElimination    for
         iscapcategoryobject, iscapcategoryobject, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XLambdaIntroduction  (for  Is)[102X  ([14XMonoidalCategories: LambdaIntroduction
-        for iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XLambdaIntroduction[102X    ([14XMonoidalCategories:    LambdaIntroduction   for
+        iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XLeftDistributivityExpanding      (for     Is)[102X     ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XLeftDistributivityExpanding[102X                       ([14XMonoidalCategories:
         LeftDistributivityExpanding for iscapcategoryobject, islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XLeftDistributivityExpandingWithGivenObjects          (for          Is)[102X
-        ([14XMonoidalCategories:  LeftDistributivityExpandingWithGivenObjects  for
-        iscapcategoryobject, iscapcategoryobject, islist, iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XLeftDistributivityExpandingWithGivenObjects[102X       ([14XMonoidalCategories:
+        LeftDistributivityExpandingWithGivenObjects  for  iscapcategoryobject,
+        iscapcategoryobject, islist, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XLeftDistributivityFactoring      (for     Is)[102X     ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XLeftDistributivityFactoring[102X                       ([14XMonoidalCategories:
         LeftDistributivityFactoring for iscapcategoryobject, islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XLeftDistributivityFactoringWithGivenObjects          (for          Is)[102X
-        ([14XMonoidalCategories:  LeftDistributivityFactoringWithGivenObjects  for
-        iscapcategoryobject, iscapcategoryobject, islist, iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XLeftDistributivityFactoringWithGivenObjects[102X       ([14XMonoidalCategories:
+        LeftDistributivityFactoringWithGivenObjects  for  iscapcategoryobject,
+        iscapcategoryobject, islist, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XLeftUnitor    (for    Is)[102X    ([14XMonoidalCategories:    LeftUnitor    for
+  [30X    [33X[0;6Y[2XLeftUnitor[102X ([14XMonoidalCategories: LeftUnitor for iscapcategoryobject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XLeftUnitorInverse[102X     ([14XMonoidalCategories:    LeftUnitorInverse    for
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XLeftUnitorInverse  (for Is)[102X ([14XMonoidalCategories: LeftUnitorInverse for
-        iscapcategoryobject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XMereExistenceOfSolutionOfLinearSystemInAbCategory   (for   Is)[102X   ([14XCAP:
+  [30X    [33X[0;6Y[2XMereExistenceOfSolutionOfLinearSystemInAbCategory[102X                ([14XCAP:
         MereExistenceOfSolutionOfLinearSystemInAbCategory  for islist, islist,
         islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XMonoidalPostComposeMorphism      (for     Is)[102X     ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XMonoidalPostComposeMorphism[102X                       ([14XMonoidalCategories:
         MonoidalPostComposeMorphism          for          iscapcategoryobject,
         iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMonoidalPostComposeMorphismWithGivenObjects          (for          Is)[102X
-        ([14XMonoidalCategories:  MonoidalPostComposeMorphismWithGivenObjects  for
+  [30X    [33X[0;6Y[2XMonoidalPostComposeMorphismWithGivenObjects[102X       ([14XMonoidalCategories:
+        MonoidalPostComposeMorphismWithGivenObjects  for  iscapcategoryobject,
         iscapcategoryobject,     iscapcategoryobject,     iscapcategoryobject,
-        iscapcategoryobject, iscapcategoryobject[114X)[133X
+        iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMonoidalPreComposeMorphism      (for      Is)[102X     ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XMonoidalPreComposeMorphism[102X                        ([14XMonoidalCategories:
         MonoidalPreComposeMorphism           for          iscapcategoryobject,
         iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMonoidalPreComposeMorphismWithGivenObjects           (for          Is)[102X
-        ([14XMonoidalCategories:   MonoidalPreComposeMorphismWithGivenObjects  for
+  [30X    [33X[0;6Y[2XMonoidalPreComposeMorphismWithGivenObjects[102X        ([14XMonoidalCategories:
+        MonoidalPreComposeMorphismWithGivenObjects   for  iscapcategoryobject,
         iscapcategoryobject,     iscapcategoryobject,     iscapcategoryobject,
-        iscapcategoryobject, iscapcategoryobject[114X)[133X
+        iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromBidual  (for  Is)[102X  ([14XMonoidalCategories: MorphismFromBidual
-        for iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XMorphismFromBidual[102X    ([14XMonoidalCategories:    MorphismFromBidual   for
+        iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromBidualWithGivenBidual    (for   Is)[102X   ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XMorphismFromBidualWithGivenBidual[102X                 ([14XMonoidalCategories:
         MorphismFromBidualWithGivenBidual       for       iscapcategoryobject,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromInternalHomToTensorProduct  (for  Is)[102X ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XMorphismFromInternalHomToTensorProduct[102X            ([14XMonoidalCategories:
         MorphismFromInternalHomToTensorProduct     for    iscapcategoryobject,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromInternalHomToTensorProductWithGivenObjects     (for    Is)[102X
+  [30X    [33X[0;6Y[2XMorphismFromInternalHomToTensorProductWithGivenObjects[102X
         ([14XMonoidalCategories:
         MorphismFromInternalHomToTensorProductWithGivenObjects             for
         iscapcategoryobject,     iscapcategoryobject,     iscapcategoryobject,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromTensorProductToInternalHom  (for  Is)[102X ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XMorphismFromTensorProductToInternalHom[102X            ([14XMonoidalCategories:
         MorphismFromTensorProductToInternalHom     for    iscapcategoryobject,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromTensorProductToInternalHomWithGivenObjects     (for    Is)[102X
+  [30X    [33X[0;6Y[2XMorphismFromTensorProductToInternalHomWithGivenObjects[102X
         ([14XMonoidalCategories:
         MorphismFromTensorProductToInternalHomWithGivenObjects             for
         iscapcategoryobject,     iscapcategoryobject,     iscapcategoryobject,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismToBidual  (for  Is)[102X  ([14XMonoidalCategories: MorphismToBidual for
+  [30X    [33X[0;6Y[2XMorphismToBidual[102X     ([14XMonoidalCategories:     MorphismToBidual     for
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismToBidualWithGivenBidual    (for    Is)[102X    ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XMorphismToBidualWithGivenBidual[102X                   ([14XMonoidalCategories:
         MorphismToBidualWithGivenBidual        for        iscapcategoryobject,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMultiplyWithElementOfCommutativeRingForMorphisms    (for   Is)[102X   ([14XCAP:
+  [30X    [33X[0;6Y[2XMultiplyWithElementOfCommutativeRingForMorphisms[102X                 ([14XCAP:
         MultiplyWithElementOfCommutativeRingForMorphisms   for  isringelement,
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XRankMorphism    (for   Is)[102X   ([14XMonoidalCategories:   RankMorphism   for
+  [30X    [33X[0;6Y[2XRankMorphism[102X        ([14XMonoidalCategories:        RankMorphism       for
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XRightDistributivityExpanding     (for     Is)[102X     ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XRightDistributivityExpanding[102X                      ([14XMonoidalCategories:
         RightDistributivityExpanding for islist, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XRightDistributivityExpandingWithGivenObjects          (for         Is)[102X
-        ([14XMonoidalCategories:  RightDistributivityExpandingWithGivenObjects for
-        iscapcategoryobject, islist, iscapcategoryobject, iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XRightDistributivityExpandingWithGivenObjects[102X      ([14XMonoidalCategories:
+        RightDistributivityExpandingWithGivenObjects  for iscapcategoryobject,
+        islist, iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XRightDistributivityFactoring     (for     Is)[102X     ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XRightDistributivityFactoring[102X                      ([14XMonoidalCategories:
         RightDistributivityFactoring for islist, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XRightDistributivityFactoringWithGivenObjects          (for         Is)[102X
-        ([14XMonoidalCategories:  RightDistributivityFactoringWithGivenObjects for
-        iscapcategoryobject, islist, iscapcategoryobject, iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XRightDistributivityFactoringWithGivenObjects[102X      ([14XMonoidalCategories:
+        RightDistributivityFactoringWithGivenObjects  for iscapcategoryobject,
+        islist, iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XRightUnitor    (for    Is)[102X    ([14XMonoidalCategories:   RightUnitor   for
+  [30X    [33X[0;6Y[2XRightUnitor[102X ([14XMonoidalCategories: RightUnitor for iscapcategoryobject[114X)[133X
+  
+  [30X    [33X[0;6Y[2XRightUnitorInverse[102X    ([14XMonoidalCategories:    RightUnitorInverse   for
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XRightUnitorInverse  (for  Is)[102X  ([14XMonoidalCategories: RightUnitorInverse
-        for iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XSolveLinearSystemInAbCategory[102X  ([14XCAP: SolveLinearSystemInAbCategory for
+        islist, islist, islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XSolveLinearSystemInAbCategory          (for          Is)[102X         ([14XCAP:
-        SolveLinearSystemInAbCategory for islist, islist, islist[114X)[133X
-  
-  [30X    [33X[0;6Y[2XSolveLinearSystemInAbCategoryOrFail        (for        Is)[102X       ([14XCAP:
+  [30X    [33X[0;6Y[2XSolveLinearSystemInAbCategoryOrFail[102X                              ([14XCAP:
         SolveLinearSystemInAbCategoryOrFail for islist, islist, islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductDualityCompatibilityMorphism           (for           Is)[102X
-        ([14XMonoidalCategories:   TensorProductDualityCompatibilityMorphism   for
-        iscapcategoryobject, iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XTensorProductDualityCompatibilityMorphism[102X         ([14XMonoidalCategories:
+        TensorProductDualityCompatibilityMorphism   for   iscapcategoryobject,
+        iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductDualityCompatibilityMorphismWithGivenObjects   (for   Is)[102X
+  [30X    [33X[0;6Y[2XTensorProductDualityCompatibilityMorphismWithGivenObjects[102X
         ([14XMonoidalCategories:
         TensorProductDualityCompatibilityMorphismWithGivenObjects          for
         iscapcategoryobject,     iscapcategoryobject,     iscapcategoryobject,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductInternalHomCompatibilityMorphism         (for         Is)[102X
-        ([14XMonoidalCategories: TensorProductInternalHomCompatibilityMorphism for
-        islist[114X)[133X
+  [30X    [33X[0;6Y[2XTensorProductInternalHomCompatibilityMorphism[102X     ([14XMonoidalCategories:
+        TensorProductInternalHomCompatibilityMorphism for islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductInternalHomCompatibilityMorphismInverse      (for     Is)[102X
+  [30X    [33X[0;6Y[2XTensorProductInternalHomCompatibilityMorphismInverse[102X
         ([14XMonoidalCategories:
         TensorProductInternalHomCompatibilityMorphismInverse for islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects
-        (for                      Is)[102X                     ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects[102X
+        ([14XMonoidalCategories:
         TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects
         for iscapcategoryobject, islist, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductInternalHomCompatibilityMorphismWithGivenObjects (for Is)[102X
+  [30X    [33X[0;6Y[2XTensorProductInternalHomCompatibilityMorphismWithGivenObjects[102X
         ([14XMonoidalCategories:
         TensorProductInternalHomCompatibilityMorphismWithGivenObjects      for
         iscapcategoryobject, islist, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductOnMorphisms       (for      Is)[102X      ([14XMonoidalCategories:
-        TensorProductOnMorphisms           for          iscapcategorymorphism,
-        iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XTensorProductOnMorphisms[102X ([14XMonoidalCategories: TensorProductOnMorphisms
+        for iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductOnMorphismsWithGivenTensorProducts        (for        Is)[102X
-        ([14XMonoidalCategories:   TensorProductOnMorphismsWithGivenTensorProducts
-        for iscapcategoryobject, iscapcategorymorphism, iscapcategorymorphism,
+  [30X    [33X[0;6Y[2XTensorProductOnMorphismsWithGivenTensorProducts[102X   ([14XMonoidalCategories:
+        TensorProductOnMorphismsWithGivenTensorProducts                    for
+        iscapcategoryobject,   iscapcategorymorphism,   iscapcategorymorphism,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductOnObjects       (for       Is)[102X       ([14XMonoidalCategories:
-        TensorProductOnObjects for iscapcategoryobject, iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XTensorProductOnObjects[102X ([14XMonoidalCategories: TensorProductOnObjects for
+        iscapcategoryobject, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorProductToInternalHomAdjunctionMap  (for Is)[102X ([14XMonoidalCategories:
+  [30X    [33X[0;6Y[2XTensorProductToInternalHomAdjunctionMap[102X           ([14XMonoidalCategories:
         TensorProductToInternalHomAdjunctionMap    for    iscapcategoryobject,
         iscapcategoryobject, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XTensorUnit (for Is)[102X ([14XMonoidalCategories: TensorUnit for iscapcategory[114X)[133X
+  [30X    [33X[0;6Y[2XTensorUnit[102X ([14XMonoidalCategories: TensorUnit for iscapcategory[114X)[133X
   
-  [30X    [33X[0;6Y[2XTraceMap     (for     Is)[102X     ([14XMonoidalCategories:     TraceMap    for
-        iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XTraceMap[102X ([14XMonoidalCategories: TraceMap for iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalPropertyOfDual       (for       Is)[102X      ([14XMonoidalCategories:
-        UniversalPropertyOfDual  for iscapcategoryobject, iscapcategoryobject,
-        iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XUniversalPropertyOfDual[102X  ([14XMonoidalCategories:  UniversalPropertyOfDual
+        for iscapcategoryobject, iscapcategoryobject, iscapcategorymorphism[114X)[133X
   
   
   [1X5.1-3 [33X[0;0YCategoryOfRows of a field[133X[101X
   
   [33X[0;0YThe following additional CAP operations are supported:[133X
   
-  [30X    [33X[0;6Y[2XAstrictionToCoimage    (for    Is)[102X   ([14XCAP:   AstrictionToCoimage   for
+  [30X    [33X[0;6Y[2XAstrictionToCoimage[102X        ([14XCAP:        AstrictionToCoimage        for
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XAstrictionToCoimageWithGivenCoimage        (for        Is)[102X       ([14XCAP:
+  [30X    [33X[0;6Y[2XAstrictionToCoimageWithGivenCoimage[102X                              ([14XCAP:
         AstrictionToCoimageWithGivenCoimage     for     iscapcategorymorphism,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XBasisOfExternalHom    (for    Is)[102X    ([14XCAP:    BasisOfExternalHom   for
-        iscapcategoryobject, iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XBasisOfExternalHom[102X  ([14XCAP:  BasisOfExternalHom for iscapcategoryobject,
+        iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XCoastrictionToImage    (for    Is)[102X   ([14XCAP:   CoastrictionToImage   for
+  [30X    [33X[0;6Y[2XCoastrictionToImage[102X        ([14XCAP:        CoastrictionToImage        for
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XCoastrictionToImageWithGivenImageObject       (for      Is)[102X      ([14XCAP:
+  [30X    [33X[0;6Y[2XCoastrictionToImageWithGivenImageObject[102X                          ([14XCAP:
         CoastrictionToImageWithGivenImageObject   for   iscapcategorymorphism,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XCoefficientsOfMorphismWithGivenBasisOfExternalHom   (for   Is)[102X   ([14XCAP:
+  [30X    [33X[0;6Y[2XCoefficientsOfMorphismWithGivenBasisOfExternalHom[102X                ([14XCAP:
         CoefficientsOfMorphismWithGivenBasisOfExternalHom                  for
         iscapcategorymorphism, islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XCoimage (for Is)[102X ([14XCAP: Coimage for iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XCoimage[102X ([14XCAP: Coimage for iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XCoimageProjection     (for    Is)[102X    ([14XCAP:    CoimageProjection    for
-        iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XCoimageProjection[102X ([14XCAP: CoimageProjection for iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XCoimageProjectionWithGivenCoimage         (for        Is)[102X        ([14XCAP:
+  [30X    [33X[0;6Y[2XCoimageProjectionWithGivenCoimage[102X                                ([14XCAP:
         CoimageProjectionWithGivenCoimage      for      iscapcategorymorphism,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XCokernelColift      (for      Is)[102X     ([14XCAP:     CokernelColift     for
-        iscapcategorymorphism, iscapcategoryobject, iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XCokernelColift[102X   ([14XCAP:   CokernelColift   for   iscapcategorymorphism,
+        iscapcategoryobject, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XCokernelColiftWithGivenCokernelObject       (for       Is)[102X       ([14XCAP:
+  [30X    [33X[0;6Y[2XCokernelColiftWithGivenCokernelObject[102X                            ([14XCAP:
         CokernelColiftWithGivenCokernelObject    for    iscapcategorymorphism,
         iscapcategoryobject, iscapcategorymorphism, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XCokernelObject      (for      Is)[102X     ([14XCAP:     CokernelObject     for
-        iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XCokernelObject[102X ([14XCAP: CokernelObject for iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XCokernelObjectFunctorial  (for  Is)[102X ([14XCAP: CokernelObjectFunctorial for
-        islist[114X)[133X
+  [30X    [33X[0;6Y[2XCokernelObjectFunctorial[102X ([14XCAP: CokernelObjectFunctorial for islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XCokernelObjectFunctorialWithGivenCokernelObjects    (for   Is)[102X   ([14XCAP:
+  [30X    [33X[0;6Y[2XCokernelObjectFunctorialWithGivenCokernelObjects[102X                 ([14XCAP:
         CokernelObjectFunctorialWithGivenCokernelObjects                   for
         iscapcategoryobject,                            iscapcategorymorphism,
         iscapcategorymorphism,iscapcategorymorphism, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XCokernelProjection    (for    Is)[102X    ([14XCAP:    CokernelProjection   for
-        iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XCokernelProjection[102X ([14XCAP: CokernelProjection for iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XCokernelProjectionWithGivenCokernelObject      (for      Is)[102X     ([14XCAP:
+  [30X    [33X[0;6Y[2XCokernelProjectionWithGivenCokernelObject[102X                        ([14XCAP:
         CokernelProjectionWithGivenCokernelObject  for  iscapcategorymorphism,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XDirectSumProjectionInPushout          (for          Is)[102X          ([14XCAP:
-        DirectSumProjectionInPushout for islist[114X)[133X
+  [30X    [33X[0;6Y[2XDirectSumProjectionInPushout[102X  ([14XCAP:  DirectSumProjectionInPushout  for
+        islist[114X)[133X
   
   [30X    [33X[0;6Y[2XFiberProduct[102X ([14XCAP: FiberProduct[114X)[133X
   
-  [30X    [33X[0;6Y[2XFiberProductEmbeddingInDirectSum         (for         Is)[102X        ([14XCAP:
+  [30X    [33X[0;6Y[2XFiberProductEmbeddingInDirectSum[102X                                 ([14XCAP:
         FiberProductEmbeddingInDirectSum for islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XFiberProductFunctorial   (for  Is)[102X  ([14XCAP:  FiberProductFunctorial  for
-        islist, islist, islist[114X)[133X
+  [30X    [33X[0;6Y[2XFiberProductFunctorial[102X   ([14XCAP:   FiberProductFunctorial   for  islist,
+        islist, islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XFiberProductFunctorialWithGivenFiberProducts     (for     Is)[102X    ([14XCAP:
+  [30X    [33X[0;6Y[2XFiberProductFunctorialWithGivenFiberProducts[102X                     ([14XCAP:
         FiberProductFunctorialWithGivenFiberProducts  for iscapcategoryobject,
         islist, islist, islist, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XHomologyObject      (for      Is)[102X     ([14XCAP:     HomologyObject     for
-        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XHomologyObject[102X   ([14XCAP:   HomologyObject   for   iscapcategorymorphism,
+        iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XHomologyObjectFunctorialWithGivenHomologyObjects    (for   Is)[102X   ([14XCAP:
+  [30X    [33X[0;6Y[2XHomologyObjectFunctorialWithGivenHomologyObjects[102X                 ([14XCAP:
         HomologyObjectFunctorialWithGivenHomologyObjects                   for
         iscapcategoryobject, islist, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XImageEmbedding      (for      Is)[102X     ([14XCAP:     ImageEmbedding     for
-        iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XImageEmbedding[102X ([14XCAP: ImageEmbedding for iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XImageEmbeddingWithGivenImageObject        (for        Is)[102X        ([14XCAP:
+  [30X    [33X[0;6Y[2XImageEmbeddingWithGivenImageObject[102X                               ([14XCAP:
         ImageEmbeddingWithGivenImageObject      for     iscapcategorymorphism,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XImageObject (for Is)[102X ([14XCAP: ImageObject for iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XImageObject[102X ([14XCAP: ImageObject for iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XInjectionOfCofactorOfPushout          (for          Is)[102X          ([14XCAP:
-        InjectionOfCofactorOfPushout for islist, isint[114X)[133X
+  [30X    [33X[0;6Y[2XInjectionOfCofactorOfPushout[102X  ([14XCAP:  InjectionOfCofactorOfPushout  for
+        islist, isint[114X)[133X
   
-  [30X    [33X[0;6Y[2XInjectionOfCofactorOfPushoutWithGivenPushout     (for     Is)[102X    ([14XCAP:
+  [30X    [33X[0;6Y[2XInjectionOfCofactorOfPushoutWithGivenPushout[102X                     ([14XCAP:
         InjectionOfCofactorOfPushoutWithGivenPushout    for   islist,   isint,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XInverseMorphismFromCoimageToImageWithGivenObjects   (for   Is)[102X   ([14XCAP:
+  [30X    [33X[0;6Y[2XInverseMorphismFromCoimageToImageWithGivenObjects[102X                ([14XCAP:
         InverseMorphismFromCoimageToImageWithGivenObjects                  for
         iscapcategoryobject, iscapcategorymorphism, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsCodominating      (for      Is)[102X     ([14XCAP:     IsCodominating     for
-        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsDominating  (for  Is)[102X  ([14XCAP: IsDominating for iscapcategorymorphism,
+  [30X    [33X[0;6Y[2XIsCodominating[102X   ([14XCAP:   IsCodominating   for   iscapcategorymorphism,
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsEqualAsFactorobjects   (for  Is)[102X  ([14XCAP:  IsEqualAsFactorobjects  for
+  [30X    [33X[0;6Y[2XIsDominating[102X    ([14XCAP:    IsDominating    for    iscapcategorymorphism,
+        iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsEqualAsFactorobjects[102X      ([14XCAP:      IsEqualAsFactorobjects      for
         iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsEqualAsSubobjects    (for    Is)[102X   ([14XCAP:   IsEqualAsSubobjects   for
+  [30X    [33X[0;6Y[2XIsEqualAsSubobjects[102X        ([14XCAP:        IsEqualAsSubobjects        for
         iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromCoimageToCokernelOfKernel      (for      Is)[102X      ([14XCAP:
+  [30X    [33X[0;6Y[2XIsomorphismFromCoimageToCokernelOfKernel[102X                         ([14XCAP:
         IsomorphismFromCoimageToCokernelOfKernel for iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromCokernelOfDiagonalDifferenceToPushout  (for  Is)[102X  ([14XCAP:
+  [30X    [33X[0;6Y[2XIsomorphismFromCokernelOfDiagonalDifferenceToPushout[102X             ([14XCAP:
         IsomorphismFromCokernelOfDiagonalDifferenceToPushout for islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromCokernelOfKernelToCoimage      (for      Is)[102X      ([14XCAP:
+  [30X    [33X[0;6Y[2XIsomorphismFromCokernelOfKernelToCoimage[102X                         ([14XCAP:
         IsomorphismFromCokernelOfKernelToCoimage for iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromFiberProductToKernelOfDiagonalDifference (for Is)[102X ([14XCAP:
+  [30X    [33X[0;6Y[2XIsomorphismFromFiberProductToKernelOfDiagonalDifference[102X          ([14XCAP:
         IsomorphismFromFiberProductToKernelOfDiagonalDifference for islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromHomologyObjectToItsConstructionAsAnImageObject (for Is)[102X
-        ([14XCAP:    IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject
-        for iscapcategorymorphism, iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XIsomorphismFromHomologyObjectToItsConstructionAsAnImageObject[102X    ([14XCAP:
+        IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject      for
+        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromImageObjectToKernelOfCokernel     (for     Is)[102X    ([14XCAP:
+  [30X    [33X[0;6Y[2XIsomorphismFromImageObjectToKernelOfCokernel[102X                     ([14XCAP:
         IsomorphismFromImageObjectToKernelOfCokernel                       for
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromItsConstructionAsAnImageObjectToHomologyObject (for Is)[102X
-        ([14XCAP:    IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject
-        for iscapcategorymorphism, iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XIsomorphismFromItsConstructionAsAnImageObjectToHomologyObject[102X    ([14XCAP:
+        IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject      for
+        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromKernelOfCokernelToImageObject     (for     Is)[102X    ([14XCAP:
+  [30X    [33X[0;6Y[2XIsomorphismFromKernelOfCokernelToImageObject[102X                     ([14XCAP:
         IsomorphismFromKernelOfCokernelToImageObject                       for
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct (for Is)[102X ([14XCAP:
+  [30X    [33X[0;6Y[2XIsomorphismFromKernelOfDiagonalDifferenceToFiberProduct[102X          ([14XCAP:
         IsomorphismFromKernelOfDiagonalDifferenceToFiberProduct for islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XIsomorphismFromPushoutToCokernelOfDiagonalDifference  (for  Is)[102X  ([14XCAP:
+  [30X    [33X[0;6Y[2XIsomorphismFromPushoutToCokernelOfDiagonalDifference[102X             ([14XCAP:
         IsomorphismFromPushoutToCokernelOfDiagonalDifference for islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XKernelEmbedding     (for     Is)[102X     ([14XCAP:     KernelEmbedding     for
-        iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XKernelEmbedding[102X ([14XCAP: KernelEmbedding for iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XKernelEmbeddingWithGivenKernelObject        (for       Is)[102X       ([14XCAP:
+  [30X    [33X[0;6Y[2XKernelEmbeddingWithGivenKernelObject[102X                             ([14XCAP:
         KernelEmbeddingWithGivenKernelObject     for    iscapcategorymorphism,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XKernelLift   (for  Is)[102X  ([14XCAP:  KernelLift  for  iscapcategorymorphism,
+  [30X    [33X[0;6Y[2XKernelLift[102X     ([14XCAP:     KernelLift     for     iscapcategorymorphism,
         iscapcategoryobject, iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XKernelLiftWithGivenKernelObject         (for         Is)[102X         ([14XCAP:
-        KernelLiftWithGivenKernelObject       for       iscapcategorymorphism,
-        iscapcategoryobject, iscapcategorymorphism, iscapcategoryobject[114X)[133X
+  [30X    [33X[0;6Y[2XKernelLiftWithGivenKernelObject[102X  ([14XCAP: KernelLiftWithGivenKernelObject
+        for iscapcategorymorphism, iscapcategoryobject, iscapcategorymorphism,
+        iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XKernelObject (for Is)[102X ([14XCAP: KernelObject for iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XKernelObject[102X ([14XCAP: KernelObject for iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XKernelObjectFunctorial   (for  Is)[102X  ([14XCAP:  KernelObjectFunctorial  for
-        islist[114X)[133X
+  [30X    [33X[0;6Y[2XKernelObjectFunctorial[102X ([14XCAP: KernelObjectFunctorial for islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XKernelObjectFunctorialWithGivenKernelObjects     (for     Is)[102X    ([14XCAP:
+  [30X    [33X[0;6Y[2XKernelObjectFunctorialWithGivenKernelObjects[102X                     ([14XCAP:
         KernelObjectFunctorialWithGivenKernelObjects  for iscapcategoryobject,
         iscapcategorymorphism,    iscapcategorymorphism,iscapcategorymorphism,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromCoimageToImageWithGivenObjects      (for     Is)[102X     ([14XCAP:
+  [30X    [33X[0;6Y[2XMorphismFromCoimageToImageWithGivenObjects[102X                       ([14XCAP:
         MorphismFromCoimageToImageWithGivenObjects   for  iscapcategoryobject,
         iscapcategorymorphism, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromFiberProductToSink          (for         Is)[102X         ([14XCAP:
-        MorphismFromFiberProductToSink for islist[114X)[133X
+  [30X    [33X[0;6Y[2XMorphismFromFiberProductToSink[102X   ([14XCAP:  MorphismFromFiberProductToSink
+        for islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromFiberProductToSinkWithGivenFiberProduct   (for  Is)[102X  ([14XCAP:
+  [30X    [33X[0;6Y[2XMorphismFromFiberProductToSinkWithGivenFiberProduct[102X              ([14XCAP:
         MorphismFromFiberProductToSinkWithGivenFiberProduct     for    islist,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromKernelObjectToSink          (for         Is)[102X         ([14XCAP:
-        MorphismFromKernelObjectToSink for iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XMorphismFromKernelObjectToSink[102X   ([14XCAP:  MorphismFromKernelObjectToSink
+        for iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromKernelObjectToSinkWithGivenKernelObject   (for  Is)[102X  ([14XCAP:
+  [30X    [33X[0;6Y[2XMorphismFromKernelObjectToSinkWithGivenKernelObject[102X              ([14XCAP:
         MorphismFromKernelObjectToSinkWithGivenKernelObject                for
         iscapcategorymorphism, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromSourceToCokernelObject        (for        Is)[102X        ([14XCAP:
+  [30X    [33X[0;6Y[2XMorphismFromSourceToCokernelObject[102X                               ([14XCAP:
         MorphismFromSourceToCokernelObject for iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromSourceToCokernelObjectWithGivenCokernelObject   (for   Is)[102X
-        ([14XCAP:   MorphismFromSourceToCokernelObjectWithGivenCokernelObject  for
+  [30X    [33X[0;6Y[2XMorphismFromSourceToCokernelObjectWithGivenCokernelObject[102X        ([14XCAP:
+        MorphismFromSourceToCokernelObjectWithGivenCokernelObject          for
         iscapcategorymorphism, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromSourceToPushout (for Is)[102X ([14XCAP: MorphismFromSourceToPushout
-        for islist[114X)[133X
+  [30X    [33X[0;6Y[2XMorphismFromSourceToPushout[102X   ([14XCAP:   MorphismFromSourceToPushout  for
+        islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XMorphismFromSourceToPushoutWithGivenPushout     (for     Is)[102X     ([14XCAP:
+  [30X    [33X[0;6Y[2XMorphismFromSourceToPushoutWithGivenPushout[102X                      ([14XCAP:
         MorphismFromSourceToPushoutWithGivenPushout         for        islist,
         iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XProjectionInFactorOfFiberProduct         (for         Is)[102X        ([14XCAP:
+  [30X    [33X[0;6Y[2XProjectionInFactorOfFiberProduct[102X                                 ([14XCAP:
         ProjectionInFactorOfFiberProduct for islist, isint[114X)[133X
   
-  [30X    [33X[0;6Y[2XProjectionInFactorOfFiberProductWithGivenFiberProduct  (for  Is)[102X ([14XCAP:
+  [30X    [33X[0;6Y[2XProjectionInFactorOfFiberProductWithGivenFiberProduct[102X            ([14XCAP:
         ProjectionInFactorOfFiberProductWithGivenFiberProduct    for   islist,
         isint, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XPushout (for Is)[102X ([14XCAP: Pushout for islist[114X)[133X
+  [30X    [33X[0;6Y[2XPushout[102X ([14XCAP: Pushout for islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XPushoutFunctorial (for Is)[102X ([14XCAP: PushoutFunctorial for islist, islist,
-        islist[114X)[133X
+  [30X    [33X[0;6Y[2XPushoutFunctorial[102X ([14XCAP: PushoutFunctorial for islist, islist, islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XPushoutFunctorialWithGivenPushouts        (for        Is)[102X        ([14XCAP:
+  [30X    [33X[0;6Y[2XPushoutFunctorialWithGivenPushouts[102X                               ([14XCAP:
         PushoutFunctorialWithGivenPushouts  for  iscapcategoryobject,  islist,
         islist, islist, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismFromImage  (for  Is)[102X ([14XCAP: UniversalMorphismFromImage
-        for iscapcategorymorphism, islist[114X)[133X
+  [30X    [33X[0;6Y[2XUniversalMorphismFromImage[102X    ([14XCAP:   UniversalMorphismFromImage   for
+        iscapcategorymorphism, islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismFromImageWithGivenImageObject    (for    Is)[102X    ([14XCAP:
+  [30X    [33X[0;6Y[2XUniversalMorphismFromImageWithGivenImageObject[102X                   ([14XCAP:
         UniversalMorphismFromImageWithGivenImageObject                     for
         iscapcategorymorphism, islist, iscapcategoryobject[114X)[133X
   
   [30X    [33X[0;6Y[2XUniversalMorphismFromPushout[102X ([14XCAP: UniversalMorphismFromPushout[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismFromPushoutWithGivenPushout     (for     Is)[102X    ([14XCAP:
+  [30X    [33X[0;6Y[2XUniversalMorphismFromPushoutWithGivenPushout[102X                     ([14XCAP:
         UniversalMorphismFromPushoutWithGivenPushout        for        islist,
         iscapcategoryobject, islist, iscapcategoryobject[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismIntoCoimage          (for          Is)[102X          ([14XCAP:
-        UniversalMorphismIntoCoimage for iscapcategorymorphism, islist[114X)[133X
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoCoimage[102X  ([14XCAP:  UniversalMorphismIntoCoimage  for
+        iscapcategorymorphism, islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismIntoCoimageWithGivenCoimage     (for     Is)[102X    ([14XCAP:
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoCoimageWithGivenCoimage[102X                     ([14XCAP:
         UniversalMorphismIntoCoimageWithGivenCoimage                       for
         iscapcategorymorphism, islist, iscapcategoryobject[114X)[133X
   
   [30X    [33X[0;6Y[2XUniversalMorphismIntoFiberProduct[102X                                ([14XCAP:
         UniversalMorphismIntoFiberProduct[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismIntoFiberProductWithGivenFiberProduct  (for Is)[102X ([14XCAP:
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoFiberProductWithGivenFiberProduct[102X           ([14XCAP:
         UniversalMorphismIntoFiberProductWithGivenFiberProduct   for   islist,
         iscapcategoryobject, islist, iscapcategoryobject[114X)[133X
   
