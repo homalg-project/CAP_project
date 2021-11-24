@@ -5257,15 +5257,15 @@ InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCE
             if IsOperation( ValueGlobal( name ) ) then
                 
                 # the "for Is" makes sure we only match operations with a filter and not functions
-                label := Concatenation( name, " (for Is)" );
+                label := "for Is";
                 
             else
                 
-                label := name;
+                label := "";
                 
             fi;
             
-            match := Concatenation( HELP_GET_MATCHES( info, SIMPLE_STRING( label ), true ) );
+            match := Concatenation( HELP_GET_MATCHES( info, SIMPLE_STRING( Concatenation( name, " (", label, ")" ) ), true ) );
             
             nr := 1;
             
@@ -5301,9 +5301,10 @@ InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCE
             fi;
             
             current_string := ReplacedStringViaRecord(
-                "\n# ! * <Ref BookName=\"bookname\" Func=\"label\" />", # GAPDoc does not care if we use `Func` or `Oper` + `Label` for external refs
+                "\n# ! * <Ref BookName=\"bookname\" Func=\"operation_name\" Label=\"label\" />", # GAPDoc does not care if we use `Func` or `Oper` for external refs
                 rec(
                     bookname := bookname,
+                    operation_name := name,
                     label := label,
                 )
             );
