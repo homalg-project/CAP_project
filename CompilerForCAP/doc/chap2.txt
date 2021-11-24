@@ -610,15 +610,12 @@
   [33X[0;0YResolves    global   variables   (except   those   which   are   listed   in
   [10XCAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES[110X):[133X
   
-  [30X    [33X[0;6YReplaces  a  global  variable  referencing  an integer, a string, or a
-        boolean by EXPR_INT, EXPR_STRING, EXPR_TRUE or EXPR_FALSE.[133X
-  
   [30X    [33X[0;6YReplaces  a global variable referencing a plain function by the syntax
         tree  of  this  function  in  case  the function is annotated with the
         pragma [10XCAP_JIT_RESOLVE_FUNCTION[110X.[133X
   
-  [30X    [33X[0;6YReplaces  a  record  access  of a global function by the value of this
-        record access.[133X
+  [30X    [33X[0;6YComputes  attributes  of  categories  stored  in  global variables and
+        places the results into global variables again.[133X
   
   [1X2.5-16 CapJitResolvedOperations[101X
   

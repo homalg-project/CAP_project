@@ -649,13 +649,10 @@
 
 
 <ul>
-<li><p>Replaces a global variable referencing an integer, a string, or a boolean by EXPR_INT, EXPR_STRING, EXPR_TRUE or EXPR_FALSE.</p>
-
-</li>
 <li><p>Replaces a global variable referencing a plain function by the syntax tree of this function in case the function is annotated with the pragma <code class="code">CAP_JIT_RESOLVE_FUNCTION</code>.</p>
 
 </li>
-<li><p>Replaces a record access of a global function by the value of this record access.</p>
+<li><p>Computes attributes of categories stored in global variables and places the results into global variables again.</p>
 
 </li>
 </ul>
