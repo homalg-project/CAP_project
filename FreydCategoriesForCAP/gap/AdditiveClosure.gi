@@ -154,9 +154,12 @@ InstallMethodForCompilerForCAP( AdditiveClosureMorphism,
     local category;
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0, Length( listlist ) = Length( ObjectList( source ) ) );
-    #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0, ForAll( listlist, row -> Length( row ) = Length( ObjectList( range ) ) ) );
+    if Length( ObjectList( source ) ) > 0 and Length( ObjectList( range ) ) > 0 then
+        
+        Assert( 0, Length( listlist ) = Length( ObjectList( source ) ) );
+        Assert( 0, ForAll( listlist, row -> Length( row ) = Length( ObjectList( range ) ) ) );
+        
+    fi;
     
     category := CapCategory( source );
 
