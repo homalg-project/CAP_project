@@ -24,6 +24,9 @@ InstallMethod( RingAsCategory,
     category!.compiler_hints := rec(
         category_attribute_names := [
             "UnderlyingRing",
+            "GeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure",
+            "ColumnVectorOfGeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure",
+            "RingInclusionForHomomorphismStructure",
         ],
     );
     
@@ -58,20 +61,20 @@ InstallMethod( RingAsCategoryUniqueObject,
 end );
 
 ##
-InstallMethod( RingAsCategoryMorphismOp,
-               [ IsRingAsCategory, IsObject ],
-               
+InstallMethodForCompilerForCAP( RingAsCategoryMorphismOp,
+                                [ IsRingAsCategory, IsObject ],
+                                
   function( category, element )
     local unique_object;
     
     unique_object := RingAsCategoryUniqueObject( category );
     
-    ## this is a "compiled" version of ObjectifyMorphismForCAPWithAttributes
-    return ObjectifyWithAttributes( rec(), category!.morphism_type,
-                                    Source, unique_object,
-                                    Range, unique_object,
-                                    UnderlyingRingElement, element,
-                                    CapCategory, category
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes(
+        rec(),
+        category,
+        unique_object,
+        unique_object,
+        UnderlyingRingElement, element
     );
     
 end );
@@ -243,9 +246,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
     range_category := fail;
     
     ## Homomorphism structure for homalg exterior rings over fields
-    if IsHomalgRing( ring ) and HasIsExteriorRing( ring ) and IsExteriorRing( ring ) and IsField( CoefficientsRing( ring ) ) then
+    if IsHomalgRing( ring ) and HasIsExteriorRing( ring ) and IsExteriorRing( ring ) and IsField( BaseRing( ring ) ) then
         
-        field := CoefficientsRing( ring );
+        field := BaseRing( ring );
         
         range_category := CategoryOfRows( field );
         
@@ -263,10 +266,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         
         generating_system_as_column := HomalgMatrix( generating_system, Length( generating_system ), 1, ring );
         
-        ring_as_module := CategoryOfRowsObjectOp( range_category, Length( generating_system ) );
+        ring_as_module := function ( )
+            #% CAP_JIT_RESOLVE_FUNCTION
+            
+            return CategoryOfRowsObject( range_category, Length( generating_system ) );
+            
+        end;
         
         # field^{1 x 1}
-        distinguished_object := CategoryOfRowsObjectOp( range_category, 1 );
+        distinguished_object := function( )
+            #% CAP_JIT_RESOLVE_FUNCTION
+            
+            return CategoryOfRowsObject( range_category, 1 );
+            
+        end;
         
         interpret_element_as_row_vector := function( r )
             #% CAP_JIT_RESOLVE_FUNCTION
@@ -290,10 +303,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         
         generating_system_as_column := HomalgMatrix( generating_system, Length( generating_system ), 1, ring );
         
-        ring_as_module := CategoryOfRowsObjectOp( range_category, Length( generating_system ) );
+        ring_as_module := function ( )
+            #% CAP_JIT_RESOLVE_FUNCTION
+            
+            return CategoryOfRowsObject( range_category, Length( generating_system ) );
+            
+        end;
         
         # ring^{1 x 1}
-        distinguished_object := CategoryOfRowsObjectOp( range_category, 1 );
+        distinguished_object := function( )
+            #% CAP_JIT_RESOLVE_FUNCTION
+            
+            return CategoryOfRowsObject( range_category, 1 );
+            
+        end;
         
         interpret_element_as_row_vector := function( r )
             #% CAP_JIT_RESOLVE_FUNCTION
@@ -311,14 +334,22 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
     
     if range_category <> fail then
         
+        # set attributes
+        MakeImmutable( generating_system );
+        SetGeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure( category, generating_system );
+        
+        SetColumnVectorOfGeneratingSystemAsModuleInRangeCategoryOfHomomorphismStructure( category, generating_system_as_column );
+        
+        SetRingInclusionForHomomorphismStructure( category, ring_inclusion );
+        
         ##
         SetRangeCategoryOfHomomorphismStructure( category, range_category );
         
         ##
-        AddDistinguishedObjectOfHomomorphismStructure( category, {cat} -> distinguished_object );
+        AddDistinguishedObjectOfHomomorphismStructure( category, { cat } -> distinguished_object( ) );
         
         ##
-        AddHomomorphismStructureOnObjects( category, {cat, a, b} -> ring_as_module );
+        AddHomomorphismStructureOnObjects( category, { cat, a, b } -> ring_as_module( ) );
         
         ##
         AddHomomorphismStructureOnMorphisms( category,
@@ -339,7 +370,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
                 
             end );
             
-            return morphism_constructor( range_category, ring_as_module, UnionOfRows( UnderlyingRing( range_category ), Length( generating_system ), rows ), ring_as_module );
+            return morphism_constructor( range_category, ring_as_module( ), UnionOfRows( UnderlyingRing( range_category ), Length( generating_system ), rows ), ring_as_module( ) );
             
         end );
         
@@ -350,7 +381,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
             
             decomposition := interpret_element_as_row_vector( UnderlyingRingElement( alpha ) );
             
-            return morphism_constructor( range_category, distinguished_object, decomposition, ring_as_module );
+            return morphism_constructor( range_category, distinguished_object( ), decomposition, ring_as_module( ) );
             
         end );
         

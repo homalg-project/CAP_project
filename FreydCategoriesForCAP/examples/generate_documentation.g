@@ -9,7 +9,7 @@ LoadPackage( "FreydCategoriesForCAP", false );
 
 QQ := HomalgFieldOfRationalsInSingular( );;
 QQxy := QQ * "x,y";;
-EEE := KoszulDualRing( QQxy );;
+EEE := KoszulDualRing( QQxy * "a,b" );;
 
 CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCES(
     [

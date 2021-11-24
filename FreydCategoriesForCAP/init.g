@@ -7,6 +7,7 @@
 ReadPackage( "FreydCategoriesForCAP", "gap/FreydCategoriesForCAP.gd" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfRows.gd" );
+ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfRowsAsAdditiveClosureOfRingAsCategory.gd" );
 
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfColumns.gd" );
 ReadPackage( "FreydCategoriesForCAP", "gap/CategoryOfColumnsAsOppositeOfCategoryOfRows.gd" );

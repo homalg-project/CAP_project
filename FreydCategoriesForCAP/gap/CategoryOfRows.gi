@@ -4,6 +4,9 @@
 # Implementations
 #
 
+# read precompiled categories
+ReadPackage( "FreydCategoriesForCAP", "gap/precompiled_categories/CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfHomalgExteriorRingOverFieldPrecompiled.gi" );
+
 ####################################
 ##
 ## Constructors
@@ -15,11 +18,13 @@ InstallMethod( CategoryOfRows,
                [ IsHomalgRing ],
                
   function( homalg_ring )
-    local overhead_option, category;
+    local category, wrapper;
     
-    overhead_option := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "overhead", true );
+    # We cannot simply return `CategoryOfRowsAsAdditiveClosureOfRingAsCategory( homalg_ring )` but have to construct the category manually
+    # because `RingAsCategory` uses `CategoryOfRows` as the range category of the homomorphism structure, so this would lead
+    # to an infinite recursion.
     
-    category := CreateCapCategory( Concatenation( "Rows( ", RingName( homalg_ring )," )" ) : overhead := overhead_option );
+    category := CreateCapCategory( Concatenation( "Rows( ", RingName( homalg_ring )," )" ) );
     
     category!.category_as_first_argument := true;
     
@@ -76,6 +81,32 @@ InstallMethod( CategoryOfRows,
     
     AddMorphismRepresentation( category, IsCategoryOfRowsMorphism and HasUnderlyingMatrix );
     
+    if ValueOption( "no_precompiled_code" ) <> true then
+        
+        # add precompiled homomorphism structure for exterior rings over fields
+        if HasIsExteriorRing( homalg_ring ) and IsExteriorRing( homalg_ring ) and IsField( BaseRing( homalg_ring ) ) then
+            
+            # This does not lead to an infinite recursion because in this case the range category of the homomorphism structure
+            # of the ring as category is `CategoryOfRows( BaseRing( homalg_ring ) )`.
+            # However, we must not use `wrapper` directly because we overwrite object and morphism constructors below.
+            wrapper := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( homalg_ring );
+            
+            # set the required attributes
+            SetRangeCategoryOfHomomorphismStructure( category, RangeCategoryOfHomomorphismStructure( wrapper ) );
+            SetGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( category, GeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( wrapper ) );
+            SetColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( category, ColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( wrapper ) );
+            SetRingInclusionForHomomorphismStructure( category, RingInclusionForHomomorphismStructure( wrapper ) );
+            
+            Add( category!.compiler_hints.category_attribute_names, "GeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure" );
+            Add( category!.compiler_hints.category_attribute_names, "ColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure" );
+            Add( category!.compiler_hints.category_attribute_names, "RingInclusionForHomomorphismStructure" );
+            
+            ADD_FUNCTIONS_FOR_CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfHomalgExteriorRingOverFieldPrecompiled( category );
+            
+        fi;
+        
+    fi;
+    
     INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS( category );
     
     Finalize( category );
@@ -100,7 +131,14 @@ InstallMethodForCompilerForCAP( CategoryOfRowsObjectOp,
                
   function( category, rank )
     
-    return ObjectConstructor( category, rank );
+    if not IsInt( rank ) or rank < 0 then
+        
+        Error( "the object datum must be a non-negative integer" );
+        
+    fi;
+    
+    return ObjectifyObjectForCAPWithAttributes( rec( ), category,
+                                                RankOfObject, rank );
     
 end );
 
@@ -135,7 +173,35 @@ InstallOtherMethodForCompilerForCAP( CategoryOfRowsMorphism,
                                      
   function( cat, source, homalg_matrix, range )
     
-    return MorphismConstructor( cat, source, homalg_matrix, range );
+    if not IsHomalgMatrix( homalg_matrix ) then
+        
+        Error( "the morphism datum must be a homalg matrix" );
+        
+    fi;
+    
+    if not IsIdenticalObj( HomalgRing( homalg_matrix ), UnderlyingRing( cat ) ) then
+        
+        Error( "the matrix is defined over a different ring than the category" );
+        
+    fi;
+    
+    if NrRows( homalg_matrix ) <> RankOfObject( source ) then
+        
+        Error( "the number of rows has to be equal to the rank of the source" );
+        
+    fi;
+    
+    if NrColumns( homalg_matrix ) <> RankOfObject( range ) then
+        
+        Error( "the number of columns has to be equal to the rank of the range" );
+        
+    fi;
+    
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
+                                           source,
+                                           range,
+                                           UnderlyingMatrix, homalg_matrix
+    );
     
 end );
 
@@ -320,13 +386,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         if NrRows( homalg_matrix ) <> ObjectDatum( cat, source ) then
             
-            Error( "the number of rows has to be equal to the dimension of the source" );
+            Error( "the number of rows has to be equal to the rank of the source" );
             
         fi;
         
         if NrColumns( homalg_matrix ) <> ObjectDatum( cat, range ) then
             
-            Error( "the number of columns has to be equal to the dimension of the range" );
+            Error( "the number of columns has to be equal to the rank of the range" );
             
         fi;
         
@@ -542,11 +608,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
     ##
     AddDirectSum( category,
       function( cat, object_list )
-      local dimension;
+      local rank;
       
-      dimension := Sum( List( object_list, object -> RankOfObject( object ) ) );
+      rank := Sum( List( object_list, object -> RankOfObject( object ) ) );
       
-      return CategoryOfRowsObject( cat, dimension );
+      return CategoryOfRowsObject( cat, rank );
       
     end );
     
