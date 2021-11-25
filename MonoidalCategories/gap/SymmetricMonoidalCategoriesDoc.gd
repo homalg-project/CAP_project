@@ -17,8 +17,6 @@
 #! The corresponding GAP property is given by
 #! <C>IsSymmetricMonoidalCategory</C>.
 
-AddCategoricalProperty( [ "IsSymmetricMonoidalCategory", "IsSymmetricMonoidalCategory" ] );
-
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalCategory  := Concatenation( [
 ], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsBraidedMonoidalCategory );
 

@@ -14,14 +14,6 @@
 
 DeclareGlobalVariable( "MONOIDAL_CATEGORIES_METHOD_NAME_RECORD" );
 
-Perform(
-## This is the CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST
-    [
-      [ "IsMonoidalCategory", "IsMonoidalCategory" ],
-      [ "IsStrictMonoidalCategory", "IsStrictMonoidalCategory" ],
-    ],
-    AddCategoricalProperty );
-
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsMonoidalCategory  := Concatenation( [
 "TensorProductOnObjects",
 "TensorProductOnMorphismsWithGivenTensorProducts",

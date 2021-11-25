@@ -19,8 +19,6 @@
 #! The corresponding GAP property is given by
 #! <C>IsSymmetricClosedMonoidalCategory</C>.
 
-AddCategoricalProperty( [ "IsSymmetricClosedMonoidalCategory", fail ] );
-
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricClosedMonoidalCategory  := Concatenation( [
 ], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsSymmetricMonoidalCategory,
    CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsClosedMonoidalCategory );

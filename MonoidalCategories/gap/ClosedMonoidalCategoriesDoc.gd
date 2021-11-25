@@ -20,6 +20,4 @@
 #! The corresponding GAP property is called
 #! <C>IsClosedMonoidalCategory</C>.
 
-AddCategoricalProperty( [ "IsClosedMonoidalCategory", fail ] );
-
 InstallTrueMethod( IsMonoidalCategory, IsClosedMonoidalCategory );
