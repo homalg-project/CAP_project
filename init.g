@@ -9,6 +9,7 @@ ReadPackage( "Toposes", "gap/Tools.gd");
 fi;
 
 ## Cartesian
+ReadPackage( "Toposes", "gap/CartesianCategoriesProperties.gd" );
 ReadPackage( "Toposes", "gap/CartesianCategoriesDoc.gd" );
 ReadPackage( "Toposes", "gap/CartesianCategories.gd" );
 ReadPackage( "Toposes", "gap/CartesianCategories.autogen.gd" );
@@ -20,16 +21,14 @@ ReadPackage( "Toposes", "gap/BraidedCartesianCategoriesDoc.gd" );
 ReadPackage( "Toposes", "gap/BraidedCartesianCategories.gd" );
 ReadPackage( "Toposes", "gap/BraidedCartesianCategories.autogen.gd" );
 
-ReadPackage( "Toposes", "gap/SymmetricCartesianCategoriesDoc.gd" );
-
 ## Cartesian Closed
+ReadPackage( "Toposes", "gap/CartesianClosedCategoriesProperties.gd" );
 ReadPackage( "Toposes", "gap/CartesianClosedCategoriesDoc.gd" );
 ReadPackage( "Toposes", "gap/CartesianClosedCategories.gd" );
 ReadPackage( "Toposes", "gap/CartesianClosedCategories.autogen.gd" );
 
-ReadPackage( "Toposes", "gap/SymmetricCartesianClosedCategoriesDoc.gd" );
-
 ## Cocartesian
+ReadPackage( "Toposes", "gap/CocartesianCategoriesProperties.gd" );
 ReadPackage( "Toposes", "gap/CocartesianCategoriesDoc.gd" );
 ReadPackage( "Toposes", "gap/CocartesianCategories.gd" );
 ReadPackage( "Toposes", "gap/CocartesianCategories.autogen.gd" );
@@ -44,6 +43,7 @@ ReadPackage( "Toposes", "gap/BraidedCocartesianCategories.autogen.gd" );
 ReadPackage( "Toposes", "gap/SymmetricCocartesianCategoriesDoc.gd" );
 
 ## Cocartesian Coclosed
+ReadPackage( "Toposes", "gap/CocartesianCoclosedCategoriesProperties.gd" );
 ReadPackage( "Toposes", "gap/CocartesianCoclosedCategoriesDoc.gd" );
 ReadPackage( "Toposes", "gap/CocartesianCoclosedCategories.gd" );
 ReadPackage( "Toposes", "gap/CocartesianCoclosedCategories.autogen.gd" );

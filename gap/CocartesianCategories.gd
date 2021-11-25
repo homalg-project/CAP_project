@@ -1,4 +1,4 @@
-# THIS FILE WAS AUTOMATICALLY GENERATED FROM MonoidalCategories v2021.11-02
+# THIS FILE WAS AUTOMATICALLY GENERATED FROM MonoidalCategories v2021.11-04
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
@@ -15,14 +15,6 @@
 ####################################
 
 DeclareGlobalVariable( "COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD" );
-
-Perform(
-## This is the CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST
-    [
-      [ "IsCocartesianCategory", "IsCartesianCategory" ],
-      [ "IsStrictCocartesianCategory", "IsStrictCartesianCategory" ],
-    ],
-    AddCategoricalProperty );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory  := Concatenation( [
 "Coproduct",
