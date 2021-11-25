@@ -21,8 +21,6 @@
 #!  is an isomorphism
 #! is called a <Emph>rigid symmetric coclosed monoidal category</Emph>.
 
-AddCategoricalProperty( [ "IsRigidSymmetricCoclosedMonoidalCategory", fail ] );
-
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsRigidSymmetricCoclosedMonoidalCategory  := Concatenation( [ 
 "InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
 "MorphismToCoBidualWithGivenCoBidual"
