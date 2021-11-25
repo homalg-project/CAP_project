@@ -1,6 +1,15 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # MonoidalCategories: Monoidal and monoidal (co)closed categories
 #
+# Pre processor functions for dual operations
+#
+
+BindGlobal( "DualPreProcessorFuncBraidingWithGivenTensorProducts",
+              { cat, s, a, b, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ] );
+
+BindGlobal( "DualPreProcessorFuncBraidingInverseWithGivenTensorProducts",
+              { cat, s, a, b, r } -> [ Opposite( cat ), Opposite( s ), Opposite( a ), Opposite( b ), Opposite( r ) ] );
+
 # Implementations
 #
 
@@ -12,12 +21,19 @@ Braiding := rec(
   output_source_getter_string := "TensorProductOnObjects( cat, a, b )",
   output_range_getter_string := "TensorProductOnObjects( cat, b, a )",
   with_given_object_position := "both",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "BraidingInverse",
+  dual_arguments_reversed := false,
+),
 
 BraidingWithGivenTensorProducts := rec(
   filter_list := [ "category", "object", "object", "object", "object" ],
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "BraidingInverseWithGivenTensorProducts",
+  dual_preprocessor_func := DualPreProcessorFuncBraidingWithGivenTensorProducts,
+  dual_arguments_reversed := false,
+),
 
 BraidingInverse := rec(
   filter_list := [ "category", "object", "object" ],
@@ -25,12 +41,19 @@ BraidingInverse := rec(
   output_source_getter_string := "TensorProductOnObjects( cat, b, a )",
   output_range_getter_string := "TensorProductOnObjects( cat, a, b )",
   with_given_object_position := "both",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "Braiding",
+  dual_arguments_reversed := false,
+),
 
 BraidingInverseWithGivenTensorProducts := rec(
   filter_list := [ "category", "object", "object", "object", "object" ],
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "BraidingWithGivenTensorProducts",
+  dual_preprocessor_func := DualPreProcessorFuncBraidingInverseWithGivenTensorProducts,
+  dual_arguments_reversed := false,
+),
 
 ) );
 

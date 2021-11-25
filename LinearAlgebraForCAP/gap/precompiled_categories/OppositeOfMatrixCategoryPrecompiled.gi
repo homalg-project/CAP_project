@@ -69,6 +69,29 @@ end
     , 100 );
     
     ##
+    AddBraidingInverseWithGivenTensorProducts( cat,
+        
+########
+function ( cat_1, s_1, a_1, b_1, r_1 )
+    local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Opposite( s_1 );
+    deduped_4_1 := OppositeCategory( cat_1 );
+    deduped_3_1 := Dimension( deduped_5_1 );
+    hoisted_2_1 := Dimension( Opposite( a_1 ) );
+    hoisted_1_1 := Dimension( Opposite( b_1 ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, s_1, r_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), deduped_4_1, deduped_5_1, Opposite( r_1 ), UnderlyingMatrix, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_3_1 ], function ( i_2 )
+                      local deduped_1_2;
+                      deduped_1_2 := i_2 - 1;
+                      return REM_INT( deduped_1_2, hoisted_1_1 ) * hoisted_2_1 + QUO_INT( deduped_1_2, hoisted_1_1 ) + 1;
+                  end ) ), deduped_3_1 ), deduped_3_1, deduped_3_1, UnderlyingRing( deduped_4_1 ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( cat,
         
 ########
