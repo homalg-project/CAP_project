@@ -727,6 +727,45 @@ end
     , 100 );
     
     ##
+    AddTensorProductOnMorphismsWithGivenTensorProducts( cat,
+        
+########
+function ( cat_1, s_1, alpha_1, beta_1, r_1 )
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, s_1, r_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), OppositeCategory( cat_1 ), Opposite( s_1 ), Opposite( r_1 ), UnderlyingMatrix, KroneckerMat( UnderlyingMatrix( Opposite( alpha_1 ) ), UnderlyingMatrix( Opposite( beta_1 ) ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddTensorProductOnObjects( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat_1, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
+             ), OppositeCategory( cat_1 ), Dimension, Dimension( Opposite( arg2_1 ) ) * Dimension( Opposite( arg3_1 ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddTensorUnit( cat,
+        
+########
+function ( cat_1 )
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat_1, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
+             ), OppositeCategory( cat_1 ), Dimension, 1 ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( cat,
         
 ########
