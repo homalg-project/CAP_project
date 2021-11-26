@@ -117,6 +117,33 @@ end
     , 100 );
     
     ##
+    AddCoclosedCoevaluationForCoDualWithGivenTensorProduct( cat,
+        
+########
+function ( cat_1, s_1, a_1, r_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Opposite( s_1 );
+    deduped_4_1 := Opposite( r_1 );
+    deduped_3_1 := OppositeCategory( cat_1 );
+    deduped_2_1 := UnderlyingRing( deduped_3_1 );
+    deduped_1_1 := Dimension( Opposite( a_1 ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, s_1, r_1, Opposite, function (  )
+              if deduped_1_1 = 0 then
+                  return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                         ), deduped_3_1, deduped_4_1, deduped_5_1, UnderlyingMatrix, HomalgZeroMatrix( Dimension( deduped_4_1 ), Dimension( deduped_5_1 ), deduped_2_1 ) );
+              else
+                  return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                         ), deduped_3_1, deduped_4_1, deduped_5_1, UnderlyingMatrix, ConvertMatrixToRow( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) ) );
+              fi;
+              return;
+          end(  ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddCoclosedEvaluationForCoDualWithGivenTensorProduct( cat,
         
 ########

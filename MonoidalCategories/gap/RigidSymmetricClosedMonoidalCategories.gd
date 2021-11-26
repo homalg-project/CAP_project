@@ -24,13 +24,21 @@ DeclareOperation( "IsomorphismFromTensorProductToInternalHom",
 
 #! @Description
 #! The arguments are two objects $a,b$.
+#! The output is the inverse of $\mathrm{IsomorphismFromTensorProductToInternalHom}$, namely
+#! $\mathrm{IsomorphismFromInternalHomToTensorProduct}_{a,b}: \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b), a^{\vee} \otimes b )$.
+#! @Arguments a,b
+DeclareOperation( "IsomorphismFromInternalHomToTensorProduct",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
+#! The arguments are two objects $a,b$.
 #! The output is the inverse of $\mathrm{MorphismFromTensorProductToInternalHomWithGivenObjects}$, namely
 #! $\mathrm{MorphismFromInternalHomToTensorProductWithGivenObjects}_{a,b}: \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b), a^{\vee} \otimes b )$.
 #! @Arguments a,b
 DeclareOperation( "MorphismFromInternalHomToTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
-
 
 #! @Description
 #! The arguments are an object $s = \mathrm{\underline{Hom}}(a,b)$,
@@ -43,22 +51,13 @@ DeclareOperation( "MorphismFromInternalHomToTensorProduct",
 DeclareOperation( "MorphismFromInternalHomToTensorProductWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
-#! @Description
-#! The arguments are two objects $a,b$.
-#! The output is the inverse of $\mathrm{IsomorphismFromTensorProductToInternalHom}$, namely
-#! $\mathrm{IsomorphismFromInternalHomToTensorProduct}_{a,b}: \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a,b), a^{\vee} \otimes b )$.
-#! @Arguments a,b
-DeclareOperation( "IsomorphismFromInternalHomToTensorProduct",
-                  [ IsCapCategoryObject, IsCapCategoryObject ] );
-
-## The four objects are given are given as a list because otherwise the WithGiven operation would
+## The four objects are given as a list because otherwise the WithGiven operation would
 ## exceed the maximal number of arguments for an operation (6)
 #! @Description
 #! The argument is a list of four objects $[ a, a', b, b' ]$.
 #! The output is the natural morphism
 #! $\mathrm{TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') \rightarrow \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b')$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b'), \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'))$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b'), \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b') )$.
 #! @Arguments list
 DeclareOperation( "TensorProductInternalHomCompatibilityMorphismInverse",
                   [ IsList ] );
@@ -68,7 +67,7 @@ DeclareOperation( "TensorProductInternalHomCompatibilityMorphismInverse",
 #! and two objects $s = \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b')$ and $r = \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b')$.
 #! The output is the natural morphism
 #! $\mathrm{TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}: \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b') \rightarrow \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b')$.
-#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b'), \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b'))$.
+#! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{Hom}}(a \otimes b,a' \otimes b'), \mathrm{\underline{Hom}}(a,a') \otimes \mathrm{\underline{Hom}}(b,b') )$.
 #! @Arguments s, list, r
 DeclareOperation( "TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects",
                   [ IsCapCategoryObject, IsList, IsCapCategoryObject ] );
@@ -92,7 +91,7 @@ DeclareOperation( "CoevaluationForDualWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
-#! The argument is an endomorphism $\alpha: A \rightarrow A$.
+#! The argument is an endomorphism $\alpha: a \rightarrow a$.
 #! The output is the trace morphism $\mathrm{trace}_{\alpha}: 1 \rightarrow 1$.
 #! @Returns a morphism in $\mathrm{Hom}(1,1)$.
 #! @Arguments alpha

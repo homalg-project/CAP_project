@@ -94,6 +94,28 @@ end
     , 100 );
     
     ##
+    AddCoclosedCoevaluationForCoDualWithGivenTensorProduct( cat,
+        
+########
+function ( cat_1, s_1, a_1, r_1 )
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := UnderlyingRing( cat_1 );
+    deduped_1_1 := RankOfObject( a_1 );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, s_1, r_1, UnderlyingMatrix, function (  )
+              if deduped_1_1 = 0 then
+                  return HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), deduped_2_1 );
+              else
+                  return ConvertMatrixToRow( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) );
+              fi;
+              return;
+          end(  ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddCoclosedEvaluationForCoDualWithGivenTensorProduct( cat,
         
 ########

@@ -14,7 +14,7 @@
 
 #! A symmetric coclosed monoidal category $\mathbf{C}$ satisfying
 #! * the natural morphism
-#!  $\mathrm{\underline{coHom}}(a_1 \otimes a_2, b_1 \otimes b_2) \rightarrow \mathrm{\underline{coHom}}(a_1, b_1) \otimes \mathrm{\underline{coHom}}(a_2, b_2)$
+#!  $\mathrm{\underline{coHom}}(a \otimes a', b \otimes b') \rightarrow \mathrm{\underline{coHom}}(a, b) \otimes \mathrm{\underline{coHom}}(a', b')$
 #!  is an isomorphism,
 #! * the natural morphism
 #!  $\mathrm{\underline{coHom}}(1, \mathrm{\underline{coHom}}(1, a)) \rightarrow a$
