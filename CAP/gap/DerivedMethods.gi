@@ -1092,6 +1092,14 @@ end : Description := "IsEqualAsFactorobjects(factor1, factor2) if factor1 domina
 
 ##
 AddDerivationToCAP( IsDominating,
+  function( cat, sub1, sub2 )
+    
+    return IsLiftableAlongMonomorphism( cat, sub2, sub1 );
+    
+end : Description := "IsDominating using IsLiftableAlongMonomorphism" );
+
+##
+AddDerivationToCAP( IsDominating,
                     [ [ CokernelProjection, 2 ],
                       [ IsCodominating, 1 ] ],
                                   
@@ -1122,6 +1130,14 @@ AddDerivationToCAP( IsDominating,
     return IsZeroForMorphisms( cat, composition );
     
 end : Description := "IsDominating(sub1, sub2) by deciding if sub1 composed with CokernelProjection(cat, sub2) is zero" );
+
+##
+AddDerivationToCAP( IsCodominating,
+  function( cat, factor1, factor2 )
+    
+    return IsColiftableAlongEpimorphism( cat, factor2, factor1 );
+    
+end : Description := "IsCodominating using IsColiftableAlongEpimorphism" );
 
 ##
 AddDerivationToCAP( IsCodominating,
