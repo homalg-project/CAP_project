@@ -364,36 +364,36 @@ end
         
 ########
 function ( cat_1, a_1, b_1, r_1 )
-    local morphism_attr_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1, deduped_11_1, deduped_12_1;
-    deduped_12_1 := UnderlyingRing( cat_1 );
-    deduped_11_1 := Dimension( a_1 );
-    deduped_10_1 := Dimension( b_1 );
-    deduped_9_1 := deduped_10_1 * deduped_11_1;
-    deduped_8_1 := deduped_10_1 * deduped_10_1;
-    deduped_7_1 := HomalgIdentityMatrix( deduped_11_1, deduped_12_1 );
-    deduped_6_1 := HomalgIdentityMatrix( deduped_10_1, deduped_12_1 );
-    hoisted_5_1 := deduped_11_1;
-    hoisted_4_1 := deduped_10_1;
-    morphism_attr_3_1 := KroneckerMat( function (  )
-                  if (deduped_10_1 = 0) then
-                      return HomalgZeroMatrix( 1, deduped_8_1, deduped_12_1 );
+    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
+    deduped_10_1 := UnderlyingRing( cat_1 );
+    deduped_9_1 := Dimension( a_1 );
+    deduped_8_1 := Dimension( b_1 );
+    deduped_7_1 := deduped_8_1 * deduped_9_1;
+    deduped_6_1 := deduped_8_1 * deduped_8_1;
+    deduped_5_1 := HomalgIdentityMatrix( deduped_9_1, deduped_10_1 );
+    deduped_4_1 := HomalgIdentityMatrix( deduped_8_1, deduped_10_1 );
+    hoisted_3_1 := deduped_9_1;
+    hoisted_2_1 := deduped_8_1;
+    morphism_attr_1_1 := KroneckerMat( function (  )
+                  if (deduped_8_1 = 0) then
+                      return HomalgZeroMatrix( 1, deduped_6_1, deduped_10_1 );
                   else
-                      return ConvertMatrixToRow( deduped_6_1 );
+                      return ConvertMatrixToRow( deduped_4_1 );
                   fi;
                   return;
-              end(  ), deduped_7_1 ) * KroneckerMat( HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_8_1 ], function ( i_2 )
+              end(  ), deduped_5_1 ) * KroneckerMat( HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_6_1 ], function ( i_2 )
                         local deduped_1_2;
                         deduped_1_2 := (i_2 - 1);
-                        return (REM_INT( deduped_1_2, hoisted_4_1 ) * hoisted_4_1 + QUO_INT( deduped_1_2, hoisted_4_1 ) + 1);
-                    end ) ), deduped_8_1 ), deduped_8_1, deduped_8_1, deduped_12_1 ), deduped_7_1 ) * KroneckerMat( deduped_6_1, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_9_1 ], function ( i_2 )
+                        return (REM_INT( deduped_1_2, hoisted_2_1 ) * hoisted_2_1 + QUO_INT( deduped_1_2, hoisted_2_1 ) + 1);
+                    end ) ), deduped_6_1 ), deduped_6_1, deduped_6_1, deduped_10_1 ), deduped_5_1 ) * KroneckerMat( deduped_4_1, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_7_1 ], function ( i_2 )
                       local deduped_1_2;
                       deduped_1_2 := (i_2 - 1);
-                      return (REM_INT( deduped_1_2, hoisted_5_1 ) * hoisted_4_1 + QUO_INT( deduped_1_2, hoisted_5_1 ) + 1);
-                  end ) ), deduped_9_1 ), deduped_9_1, deduped_9_1, deduped_12_1 ) );
+                      return (REM_INT( deduped_1_2, hoisted_3_1 ) * hoisted_2_1 + QUO_INT( deduped_1_2, hoisted_3_1 ) + 1);
+                  end ) ), deduped_7_1 ), deduped_7_1, deduped_7_1, deduped_10_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( morphism_attr_3_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( morphism_attr_3_1 ) ), UnderlyingMatrix, morphism_attr_3_1 );
+             ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, Dimension, NrColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -1050,30 +1050,30 @@ end
         
 ########
 function ( cat_1, a_1, b_1, s_1 )
-    local morphism_attr_3_1, hoisted_4_1, hoisted_5_1, deduped_6_1, deduped_7_1, deduped_8_1, deduped_9_1, deduped_10_1;
-    deduped_10_1 := UnderlyingRing( cat_1 );
-    deduped_9_1 := Dimension( a_1 );
-    deduped_8_1 := Dimension( b_1 );
-    deduped_7_1 := deduped_9_1 * deduped_8_1;
-    deduped_6_1 := HomalgIdentityMatrix( deduped_9_1, deduped_10_1 );
-    hoisted_5_1 := deduped_9_1;
-    hoisted_4_1 := deduped_8_1;
-    morphism_attr_3_1 := KroneckerMat( HomalgIdentityMatrix( deduped_7_1, deduped_10_1 ), deduped_6_1 ) * KroneckerMat( HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_7_1 ], function ( i_2 )
+    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, deduped_4_1, deduped_5_1, deduped_6_1, deduped_7_1, deduped_8_1;
+    deduped_8_1 := UnderlyingRing( cat_1 );
+    deduped_7_1 := Dimension( a_1 );
+    deduped_6_1 := Dimension( b_1 );
+    deduped_5_1 := deduped_7_1 * deduped_6_1;
+    deduped_4_1 := HomalgIdentityMatrix( deduped_7_1, deduped_8_1 );
+    hoisted_3_1 := deduped_7_1;
+    hoisted_2_1 := deduped_6_1;
+    morphism_attr_1_1 := KroneckerMat( HomalgIdentityMatrix( deduped_5_1, deduped_8_1 ), deduped_4_1 ) * KroneckerMat( HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_5_1 ], function ( i_2 )
                         local deduped_1_2;
                         deduped_1_2 := (i_2 - 1);
-                        return (REM_INT( deduped_1_2, hoisted_4_1 ) * hoisted_5_1 + QUO_INT( deduped_1_2, hoisted_4_1 ) + 1);
-                    end ) ), deduped_7_1 ), deduped_7_1, deduped_7_1, deduped_10_1 ), deduped_6_1 ) * KroneckerMat( HomalgIdentityMatrix( deduped_8_1, deduped_10_1 ), function (  )
-                if (deduped_9_1 = 0) then
-                    return HomalgZeroMatrix( (deduped_9_1 * deduped_9_1), 1, deduped_10_1 );
+                        return (REM_INT( deduped_1_2, hoisted_2_1 ) * hoisted_3_1 + QUO_INT( deduped_1_2, hoisted_2_1 ) + 1);
+                    end ) ), deduped_5_1 ), deduped_5_1, deduped_5_1, deduped_8_1 ), deduped_4_1 ) * KroneckerMat( HomalgIdentityMatrix( deduped_6_1, deduped_8_1 ), function (  )
+                if (deduped_7_1 = 0) then
+                    return HomalgZeroMatrix( (deduped_7_1 * deduped_7_1), 1, deduped_8_1 );
                 else
-                    return ConvertMatrixToColumn( deduped_6_1 );
+                    return ConvertMatrixToColumn( deduped_4_1 );
                 fi;
                 return;
             end(  ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( morphism_attr_3_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( morphism_attr_3_1 ) ), UnderlyingMatrix, morphism_attr_3_1 );
+             ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, Dimension, NrColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -1621,12 +1621,12 @@ end
         
 ########
 function ( cat_1, s_1, alpha_1, beta_1, r_1 )
-    local morphism_attr_3_1;
-    morphism_attr_3_1 := KroneckerMat( TransposedMatrix( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( beta_1 ) );
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := KroneckerMat( TransposedMatrix( UnderlyingMatrix( alpha_1 ) ), UnderlyingMatrix( beta_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( morphism_attr_3_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( morphism_attr_3_1 ) ), UnderlyingMatrix, morphism_attr_3_1 );
+             ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, Dimension, NrColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -2478,12 +2478,12 @@ end
         
 ########
 function ( cat_1, a_1, b_1 )
-    local morphism_attr_3_1;
-    morphism_attr_3_1 := HomalgIdentityMatrix( Dimension( a_1 ) * Dimension( b_1 ), UnderlyingRing( cat_1 ) );
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := HomalgIdentityMatrix( Dimension( a_1 ) * Dimension( b_1 ), UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( morphism_attr_3_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( morphism_attr_3_1 ) ), UnderlyingMatrix, morphism_attr_3_1 );
+             ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, Dimension, NrColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -2677,12 +2677,12 @@ end
         
 ########
 function ( cat_1, a_1, b_1 )
-    local morphism_attr_3_1;
-    morphism_attr_3_1 := HomalgIdentityMatrix( Dimension( a_1 ) * Dimension( b_1 ), UnderlyingRing( cat_1 ) );
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := HomalgIdentityMatrix( Dimension( a_1 ) * Dimension( b_1 ), UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( morphism_attr_3_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( morphism_attr_3_1 ) ), UnderlyingMatrix, morphism_attr_3_1 );
+             ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, Dimension, NrColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -3664,12 +3664,12 @@ end
         
 ########
 function ( cat_1, s_1, a_1, b_1, r_1 )
-    local morphism_attr_3_1;
-    morphism_attr_3_1 := HomalgIdentityMatrix( Dimension( a_1 ) * Dimension( b_1 ), UnderlyingRing( cat_1 ) );
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := HomalgIdentityMatrix( Dimension( a_1 ) * Dimension( b_1 ), UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( morphism_attr_3_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( morphism_attr_3_1 ) ), UnderlyingMatrix, morphism_attr_3_1 );
+             ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, Dimension, NrColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -3836,12 +3836,12 @@ end
         
 ########
 function ( cat_1, s_1, a_1, b_1, r_1 )
-    local morphism_attr_3_1;
-    morphism_attr_3_1 := HomalgIdentityMatrix( Dimension( a_1 ) * Dimension( b_1 ), UnderlyingRing( cat_1 ) );
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := HomalgIdentityMatrix( Dimension( a_1 ) * Dimension( b_1 ), UnderlyingRing( cat_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( morphism_attr_3_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( morphism_attr_3_1 ) ), UnderlyingMatrix, morphism_attr_3_1 );
+             ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, Dimension, NrColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
