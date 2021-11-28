@@ -43,3 +43,6 @@ ReadPackage( "Toposes", "gap/CocartesianCoclosedCategories.autogen.gd" );
 ## Topos
 ReadPackage( "Toposes", "gap/Topos.gd");
 ReadPackage( "Toposes", "gap/Topos.autogen.gd");
+
+## Category of relations
+ReadPackage( "Toposes", "gap/CategoryOfRelations.gd");
