@@ -183,10 +183,10 @@ EmbeddingOfRelativePseudoComplementSuboject := rec(
 
 EmbeddingOfRelativePseudoComplementSubojectWithGivenImplication := rec(
   filter_list := [ "category", "morphism", "morphism", "object" ],
-  input_arguments_names := [ "cat", "iota1", "iota2", "union" ],
-  output_source_getter_string := "union",
+  input_arguments_names := [ "cat", "iota1", "iota2", "implication" ],
+  output_source_getter_string := "implication",
   output_range_getter_string := "Range( iota1 )",
-  io_type := [ [ "iota1", "iota2", "union" ] , [ "union" , "iota1_range" ] ],
+  io_type := [ [ "iota1", "iota2", "implication" ] , [ "implication" , "iota1_range" ] ],
   return_type := "morphism" ),
 
  ) );

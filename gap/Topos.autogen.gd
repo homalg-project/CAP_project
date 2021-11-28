@@ -165,7 +165,7 @@ DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSuboject",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `EmbeddingOfRelativePseudoComplementSubojectWithGivenImplication`.
-#! $F: ( iota1, iota2, union ) \mapsto \mathtt{EmbeddingOfRelativePseudoComplementSubojectWithGivenImplication}(iota1, iota2, union)$.
+#! $F: ( iota1, iota2, implication ) \mapsto \mathtt{EmbeddingOfRelativePseudoComplementSubojectWithGivenImplication}(iota1, iota2, implication)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSubojectWithGivenImplication",
