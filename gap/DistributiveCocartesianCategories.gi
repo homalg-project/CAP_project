@@ -1,4 +1,6 @@
-# THIS FILE WAS AUTOMATICALLY GENERATED FROM MonoidalCategories v2021.11-04
+# THIS FILE WAS AUTOMATICALLY GENERATED
+# FROM MonoidalCategories v2021.11-04
+# USING CategoryConstructor v2021.11-07
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
