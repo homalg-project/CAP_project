@@ -69,6 +69,17 @@ end
     , 100 );
     
     ##
+    AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    return EntriesOfHomalgMatrix( UnderlyingMatrix( Opposite( arg2_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddCokernelObject( cat,
         
 ########
@@ -121,6 +132,48 @@ end
     , 100 );
     
     ##
+    AddComponentOfMorphismFromDirectSum( cat,
+        
+########
+function ( cat_1, alpha_1, S_1, i_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := Opposite( alpha_1 );
+    deduped_2_1 := List( S_1, function ( logic_new_func_x_2 )
+            return Dimension( Opposite( logic_new_func_x_2 ) );
+        end );
+    deduped_1_1 := Sum( deduped_2_1{[ 1 .. i_1 - 1 ]} ) + 1;
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, S_1[i_1], Range( alpha_1 ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), OppositeCategory( cat_1 ), Source( deduped_3_1 ), List( S_1, function ( x_2 )
+                  return Opposite( x_2 );
+              end )[i_1], UnderlyingMatrix, CertainColumns( UnderlyingMatrix( deduped_3_1 ), [ deduped_1_1 .. deduped_1_1 - 1 + deduped_2_1[i_1] ] ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddComponentOfMorphismIntoDirectSum( cat,
+        
+########
+function ( cat_1, alpha_1, S_1, i_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1;
+    deduped_3_1 := Opposite( alpha_1 );
+    deduped_2_1 := List( S_1, function ( logic_new_func_x_2 )
+            return Dimension( Opposite( logic_new_func_x_2 ) );
+        end );
+    deduped_1_1 := Sum( deduped_2_1{[ 1 .. i_1 - 1 ]} ) + 1;
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, Source( alpha_1 ), S_1[i_1], Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), OppositeCategory( cat_1 ), List( S_1, function ( x_2 )
+                  return Opposite( x_2 );
+              end )[i_1], Range( deduped_3_1 ), UnderlyingMatrix, CertainRows( UnderlyingMatrix( deduped_3_1 ), [ deduped_1_1 .. deduped_1_1 - 1 + deduped_2_1[i_1] ] ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddDirectSum( cat,
         
 ########
@@ -129,6 +182,23 @@ function ( cat_1, arg2_1 )
            ), cat_1, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
              ), OppositeCategory( cat_1 ), Dimension, Sum( List( arg2_1, function ( logic_new_func_x_2 )
                   return Dimension( Opposite( logic_new_func_x_2 ) );
+              end ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddDirectSumFunctorialWithGivenDirectSums( cat,
+        
+########
+function ( cat_1, P_1, objects_1, L_1, objectsp_1, Pp_1 )
+    local deduped_1_1;
+    deduped_1_1 := OppositeCategory( cat_1 );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, P_1, Pp_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), deduped_1_1, Opposite( Pp_1 ), Opposite( P_1 ), UnderlyingMatrix, DiagMat( UnderlyingRing( deduped_1_1 ), List( L_1, function ( logic_new_func_x_2 )
+                  return UnderlyingMatrix( Opposite( logic_new_func_x_2 ) );
               end ) ) ) );
 end
 ########
@@ -242,6 +312,24 @@ function ( cat_1, alpha_1 )
            ), deduped_2_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), deduped_2_1, Dimension, 1 ), ObjectifyObjectForCAPWithAttributes( rec(
              ), deduped_2_1, Dimension, NrColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1, arg4_1 )
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := Opposite( arg3_1 );
+    deduped_1_1 := Opposite( arg2_1 );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, Opposite, deduped_1_1 ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, Opposite, deduped_2_1 ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), OppositeCategory( cat_1 ), deduped_2_1, deduped_1_1, UnderlyingMatrix, ConvertRowToMatrix( UnderlyingMatrix( arg4_1 ), Dimension( deduped_2_1 ), Dimension( deduped_1_1 ) ) ) );
 end
 ########
         
@@ -489,10 +577,94 @@ end
     , 100 );
     
     ##
-    AddPreCompose( cat,
+    AddMorphismBetweenDirectSumsWithGivenDirectSums( cat,
         
 ########
-function ( cat_1, alpha_1, beta_1 )
+function ( cat_1, S_1, source_diagram_1, mat_1, range_diagram_1, T_1 )
+    local hoisted_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := OppositeCategory( cat_1 );
+    deduped_4_1 := UnderlyingRing( deduped_5_1 );
+    deduped_3_1 := CAP_INTERNAL_OPPOSITE_RECURSIVE( [ cat_1, S_1, source_diagram_1, mat_1, range_diagram_1, T_1 ] );
+    deduped_2_1 := deduped_3_1[2];
+    hoisted_1_1 := deduped_4_1;
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, S_1, T_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), deduped_5_1, deduped_3_1[6], deduped_2_1, UnderlyingMatrix, UnionOfRows( deduped_4_1, Dimension( deduped_2_1 ), ListN( deduped_3_1[5], List( TransposedMatImmutable( deduped_3_1[4] ), function ( row_2 )
+                    return List( row_2, UnderlyingMatrix );
+                end ), function ( source_2, row_2 )
+                  return UnionOfColumns( hoisted_1_1, Dimension( source_2 ), row_2 );
+              end ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddMorphismConstructor( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1, arg4_1 )
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, arg2_1, arg4_1, Opposite, arg3_1 );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddMorphismDatum( cat,
+        
+########
+function ( cat_1, arg2_1 )
+    return Opposite( arg2_1 );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddMultiplyWithElementOfCommutativeRingForMorphisms( cat,
+        
+########
+function ( cat_1, r_1, a_1 )
+    local deduped_1_1;
+    deduped_1_1 := Opposite( a_1 );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, Source( a_1 ), Range( a_1 ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), OppositeCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_1_1 ), UnderlyingMatrix, r_1 * UnderlyingMatrix( deduped_1_1 ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddObjectConstructor( cat,
+        
+########
+function ( cat_1, arg2_1 )
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat_1, Opposite, arg2_1 );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddObjectDatum( cat,
+        
+########
+function ( cat_1, arg2_1 )
+    return Opposite( arg2_1 );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddPostCompose( cat,
+        
+########
+function ( cat_1, beta_1, alpha_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := Opposite( alpha_1 );
     deduped_1_1 := Opposite( beta_1 );
@@ -502,7 +674,7 @@ function ( cat_1, alpha_1, beta_1 )
 end
 ########
         
-    , 101 );
+    , 100 );
     
     ##
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( cat,
@@ -661,7 +833,8 @@ BindGlobal( "OppositeOfMatrixCategoryPrecompiled", function ( field )
         
         
         function ( field )
-    return Opposite( MATRIX_CATEGORY( field : FinalizeCategory := true ) );
+    return Opposite( MATRIX_CATEGORY( field : no_precompiled_code := true,
+          FinalizeCategory := true ) : only_primitive_operations := true );
 end;
         
         
