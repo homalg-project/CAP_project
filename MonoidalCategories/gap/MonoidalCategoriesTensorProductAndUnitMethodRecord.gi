@@ -8,11 +8,16 @@ InstallValue( MONOIDAL_CATEGORIES_BASIC_METHOD_NAME_RECORD, rec(
 
 TensorProductOnObjects := rec(
   filter_list := [ "category", "object", "object" ],
-  return_type := "object" ),
+  return_type := "object",
+  dual_operation := "TensorProductOnObjects",
+  dual_arguments_reversed := false,
+),
 
 TensorUnit := rec(
   filter_list := [ "category" ],
-  return_type := "object" ),
+  return_type := "object",
+  dual_operation := "TensorUnit",
+),
 
 ) );
 

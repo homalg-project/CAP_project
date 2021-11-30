@@ -1,6 +1,17 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # MonoidalCategories: Monoidal and monoidal (co)closed categories
 #
+# Preprocessor functions for dual operations
+#
+
+BindGlobal( "DualPreProcessorFuncAssociatorRightToLeftWithGivenTensorProducts",
+              { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ]
+);
+
+BindGlobal( "DualPreProcessorFuncAssociatorLeftToRightWithGivenTensorProducts",
+              { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ]
+);
+
 # Implementations
 #
 
@@ -14,12 +25,18 @@ TensorProductOnMorphisms := rec(
   output_source_getter_string := "TensorProductOnObjects( cat, Source( alpha ), Source( beta ) )",
   output_range_getter_string := "TensorProductOnObjects( cat, Range( alpha ), Range( beta ) )",
   with_given_object_position := "both",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "TensorProductOnMorphisms",
+  dual_arguments_reversed := false,
+),
 
 TensorProductOnMorphismsWithGivenTensorProducts := rec(
   filter_list := [ "category", "object", "morphism", "morphism", "object" ],
   io_type := [ [ "s", "alpha", "beta", "r" ], [ "s", "r" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "TensorProductOnMorphismsWithGivenTensorProducts",
+  dual_arguments_reversed := false,
+),
 
 AssociatorRightToLeft := rec(
   filter_list := [ "category", "object", "object", "object" ],
@@ -27,12 +44,19 @@ AssociatorRightToLeft := rec(
   output_source_getter_string := "TensorProductOnObjects( cat, a, TensorProductOnObjects( cat, b, c ) )",
   output_range_getter_string := "TensorProductOnObjects( cat, TensorProductOnObjects( cat, a, b ), c )",
   with_given_object_position := "both",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "AssociatorLeftToRight",
+  dual_arguments_reversed := false,
+),
 
 AssociatorRightToLeftWithGivenTensorProducts := rec(
   filter_list := [ "category", "object", "object", "object", "object", "object" ],
   io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "AssociatorLeftToRightWithGivenTensorProducts",
+  dual_preprocessor_func := DualPreProcessorFuncAssociatorRightToLeftWithGivenTensorProducts,
+  dual_arguments_reversed := false,
+),
 
 AssociatorLeftToRight := rec(
   filter_list := [ "category", "object", "object", "object" ],
@@ -40,12 +64,19 @@ AssociatorLeftToRight := rec(
   output_source_getter_string := "TensorProductOnObjects( cat, TensorProductOnObjects( cat, a, b ), c )",
   output_range_getter_string := "TensorProductOnObjects( cat, a, TensorProductOnObjects( cat, b, c ) )",
   with_given_object_position := "both",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "AssociatorRightToLeft",
+  dual_arguments_reversed := false,
+),
 
 AssociatorLeftToRightWithGivenTensorProducts := rec(
   filter_list := [ "category", "object", "object", "object", "object", "object" ],
   io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "AssociatorRightToLeftWithGivenTensorProducts",
+  dual_preprocessor_func := DualPreProcessorFuncAssociatorLeftToRightWithGivenTensorProducts,
+  dual_arguments_reversed := false,
+),
 
 LeftUnitor := rec(
   filter_list := [ "category", "object" ],
@@ -53,12 +84,17 @@ LeftUnitor := rec(
   output_source_getter_string := "TensorProductOnObjects( cat, TensorUnit( cat ), a )",
   output_range_getter_string := "a",
   with_given_object_position := "Source",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "LeftUnitorInverse",
+),
 
 LeftUnitorWithGivenTensorProduct := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "s" ], [ "s", "a" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "LeftUnitorInverseWithGivenTensorProduct",
+  dual_arguments_reversed := false,
+),
 
 LeftUnitorInverse := rec(
   filter_list := [ "category", "object" ],
@@ -66,12 +102,17 @@ LeftUnitorInverse := rec(
   output_source_getter_string := "a",
   output_range_getter_string := "TensorProductOnObjects( cat, TensorUnit( cat ), a )",
   with_given_object_position := "Range",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "LeftUnitor",
+),
 
 LeftUnitorInverseWithGivenTensorProduct := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "r" ], [ "a", "r" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "LeftUnitorWithGivenTensorProduct",
+  dual_arguments_reversed := false,
+),
 
 RightUnitor := rec(
   filter_list := [ "category", "object" ],
@@ -79,12 +120,17 @@ RightUnitor := rec(
   output_source_getter_string := "TensorProductOnObjects( cat, a, TensorUnit( cat ) )",
   output_range_getter_string := "a",
   with_given_object_position := "Source",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "RightUnitorInverse",
+),
 
 RightUnitorWithGivenTensorProduct := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "s" ], [ "s", "a" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "RightUnitorInverseWithGivenTensorProduct",
+  dual_arguments_reversed := false,
+),
 
 RightUnitorInverse := rec(
   filter_list := [ "category", "object" ],
@@ -92,12 +138,17 @@ RightUnitorInverse := rec(
   output_source_getter_string := "a",
   output_range_getter_string := "TensorProductOnObjects( cat, a, TensorUnit( cat ) )",
   with_given_object_position := "Range",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "RightUnitor",
+),
 
 RightUnitorInverseWithGivenTensorProduct := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "r" ], [ "a", "r" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "RightUnitorWithGivenTensorProduct",
+  dual_arguments_reversed := false,
+),
 
 ) );
 

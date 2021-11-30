@@ -7,9 +7,11 @@
 ##
 AddDerivationToCAP( InternalHomOnObjects,
                   
-  function( cat, object_1, object_2 )
+  function( cat, a, b )
     
-    return Source( IsomorphismFromInternalHomToTensorProduct( cat, object_1, object_2 ) );
+    # Source( Hom(a,b) -> a^v x b )
+
+    return Source( IsomorphismFromInternalHomToTensorProduct( cat, a, b ) );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "InternalHomOnObjects as the source of IsomorphismFromInternalHomToTensorProduct" );
@@ -17,9 +19,11 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
 ##
 AddDerivationToCAP( InternalHomOnObjects,
                   
-  function( cat, object_1, object_2 )
+  function( cat, a, b )
+
+    # Range( a^v x b -> Hom(a,b) )
     
-    return Range( IsomorphismFromTensorProductToInternalHom( cat, object_1, object_2 ) );
+    return Range( IsomorphismFromTensorProductToInternalHom( cat, a, b ) );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "InternalHomOnObjects as the range of IsomorphismFromTensorProductToInternalHom" );
@@ -27,15 +31,32 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
 ##
 AddDerivationToCAP( InternalHomOnMorphismsWithGivenInternalHoms,
                   
-  function( cat, internal_hom_source, morphism_1, morphism_2, internal_hom_range )
-    local dual_morphism;
+  function( cat, internal_hom_source, alpha, beta, internal_hom_range )
+    local dual_alpha;
+
+    # alpha: a -> a'
+    # beta: b -> b'
+    #
+    # Hom(a',b)
+    #     |
+    #     |
+    #     v
+    # a'^v x b
+    #     |
+    #     | Dual(alpha) x beta
+    #     v
+    # a^v x b'
+    #     |
+    #     |
+    #     v
+    # Hom(a,b')
     
-    dual_morphism := DualOnMorphisms( cat, morphism_1 );
+    dual_alpha := DualOnMorphisms( cat, alpha );
     
     return PreComposeList( cat, [
-             IsomorphismFromInternalHomToTensorProduct( cat, Range( morphism_1 ), Source( morphism_2 ) ),
-             TensorProductOnMorphisms( cat, dual_morphism, morphism_2 ),
-             IsomorphismFromTensorProductToInternalHom( cat, Source( morphism_1 ), Range( morphism_2 ) )
+             IsomorphismFromInternalHomToTensorProduct( cat, Range( alpha ), Source( beta ) ),
+             TensorProductOnMorphisms( cat, dual_alpha, beta ),
+             IsomorphismFromTensorProductToInternalHom( cat, Source( alpha ), Range( beta ) )
            ] );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
@@ -44,9 +65,11 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
 ##
 AddDerivationToCAP( MorphismFromBidualWithGivenBidual,
                   
-  function( cat, object, bidual )
+  function( cat, a, bidual )
+
+    # Inverse( a -> (a^v)^v )
     
-    return InverseForMorphisms( cat, MorphismToBidualWithGivenBidual( cat, object, bidual ) );
+    return InverseForMorphisms( cat, MorphismToBidualWithGivenBidual( cat, a, bidual ) );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "MorphismFromBidualWithGivenBidual as the inverse of MorphismToBidualWithGivenBidual" );
@@ -54,9 +77,11 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
 ##
 AddDerivationToCAP( MorphismToBidualWithGivenBidual,
                   
-  function( cat, object, bidual )
+  function( cat, a, bidual )
+
+    # Inverse( (a^v)^v -> a )
     
-    return InverseForMorphisms( cat, MorphismFromBidualWithGivenBidual( cat, object, bidual ) );
+    return InverseForMorphisms( cat, MorphismFromBidualWithGivenBidual( cat, a, bidual ) );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "MorphismToBidualWithGivenBidual as the inverse of MorphismFromBidualWithGivenBidual" );
@@ -64,25 +89,47 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
 ##
 AddDerivationToCAP( EvaluationMorphismWithGivenSource,
                   
-  function( cat, object_1, object_2, internal_hom_tensored_object_1 )
+  function( cat, a, b, internal_hom_tensored_a )
     local morphism;
+
+    # Hom(a,b) x a
+    #      |
+    #      | Isomorphism x id_a
+    #      v
+    # (a^v x b) x a
+    #      |
+    #      | B_( Dual(a), b ) x id_a
+    #      v
+    # (b x a^v) x a
+    #      |
+    #      | α_( ( b, a^v ), a )
+    #      v
+    # b x (a^v x a)
+    #      |
+    #      | id_b x ev_a
+    #      v
+    #    b x 1
+    #      |
+    #      | ρ_b
+    #      v
+    #      b
     
     morphism := PreComposeList( cat, [
                   TensorProductOnMorphisms( cat, 
-                    IsomorphismFromInternalHomToTensorProduct( cat, object_1, object_2 ),
-                    IdentityMorphism( cat, object_1 ) ),
+                    IsomorphismFromInternalHomToTensorProduct( cat, a, b ),
+                    IdentityMorphism( cat, a ) ),
                     
                   TensorProductOnMorphisms( cat,
-                    Braiding( cat, DualOnObjects( cat, object_1 ), object_2 ),
-                    IdentityMorphism( cat, object_1 ) ),
+                    Braiding( cat, DualOnObjects( cat, a ), b ),
+                    IdentityMorphism( cat, a ) ),
                     
-                  AssociatorLeftToRight( cat, object_2, DualOnObjects( cat, object_1 ), object_1 ),
+                  AssociatorLeftToRight( cat, b, DualOnObjects( cat, a ), a ),
                   
                   TensorProductOnMorphisms( cat,
-                    IdentityMorphism( cat, object_2 ),
-                    EvaluationForDual( cat, object_1 ) ),
+                    IdentityMorphism( cat, b ),
+                    EvaluationForDual( cat, a ) ),
                     
-                  RightUnitor( cat, object_2 )
+                  RightUnitor( cat, b )
                 ] );
       
     return morphism;
@@ -93,21 +140,35 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
 ##
 AddDerivationToCAP( EvaluationMorphismWithGivenSource,
                     
-  function( cat, object_1, object_2, internal_hom_tensored_object_1 )
+  function( cat, a, b, internal_hom_tensored_a )
     local morphism;
+
+    # Hom(a,b) x a
+    #      |
+    #      | Isomorphism x id_a
+    #      v
+    # a^v x b x a
+    #      |
+    #      | B_( Dual(a), b ) x id_a
+    #      v
+    # b x a^v x a
+    #      |
+    #      | id_b x ev_a
+    #      v
+    #    b x 1
     
     morphism := PreComposeList( cat, [
                   TensorProductOnMorphisms( cat, 
-                    IsomorphismFromInternalHomToTensorProduct( cat, object_1, object_2 ),
-                    IdentityMorphism( cat, object_1 ) ),
+                    IsomorphismFromInternalHomToTensorProduct( cat, a, b ),
+                    IdentityMorphism( cat, a ) ),
                     
                   TensorProductOnMorphisms( cat,
-                    Braiding( cat, DualOnObjects( cat, object_1 ), object_2 ),
-                    IdentityMorphism( cat, object_1 ) ),
+                    Braiding( cat, DualOnObjects( cat, a ), b ),
+                    IdentityMorphism( cat, a ) ),
                     
                   TensorProductOnMorphisms( cat,
-                    IdentityMorphism( cat, object_2 ),
-                    EvaluationForDual( cat, object_1 ) )
+                    IdentityMorphism( cat, b ),
+                    EvaluationForDual( cat, a ) )
                 ] );
                     
     return morphism;
@@ -118,33 +179,59 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory and IsStrictMonoi
 ##
 AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
                     
-  function( cat, object_1, object_2, internal_hom )
-    local morphism, dual_2, id_1;
+  function( cat, a, b, internal_hom )
+    local morphism, dual_b, id_a;
+
+    #      a
+    #      |
+    #      | (λ_a)^-1
+    #      v
+    #    1 x a
+    #      |
+    #      | coev_b x id_a
+    #      v
+    # (b x b^v) x a
+    #      |
+    #      | B_( b, b^v ) x id_a
+    #      v
+    # (b^v x b) x a
+    #      |
+    #      | α_( ( b^v, b ), a )
+    #      v
+    # b^v x (b x a)
+    #      |
+    #      | id_(b^v) x B_( b, a )
+    #      v
+    # b^v x (a x b)
+    #      |
+    #      | Isomorphism
+    #      v
+    # Hom(b, a x b)
     
-    dual_2 := DualOnObjects( cat, object_2 );
+    dual_b := DualOnObjects( cat, b );
     
-    id_1 := IdentityMorphism( cat, object_1 );
+    id_a := IdentityMorphism( cat, a );
     
     morphism := PreComposeList( cat, [
-                  LeftUnitorInverse( cat, object_1 ),
+                  LeftUnitorInverse( cat, a ),
                     
                   TensorProductOnMorphisms( cat,
-                    CoevaluationForDual( cat, object_2 ),
-                    id_1 ),
+                    CoevaluationForDual( cat, b ),
+                    id_a ),
                     
                   TensorProductOnMorphisms( cat,
-                    Braiding( cat, object_2, dual_2 ),
-                    id_1 ),
+                    Braiding( cat, b, dual_b ),
+                    id_a ),
                     
-                  AssociatorLeftToRight( cat, dual_2, object_2, object_1 ),
+                  AssociatorLeftToRight( cat, dual_b, b, a ),
                     
                   TensorProductOnMorphisms( cat,
-                    IdentityMorphism( cat, dual_2 ),
-                    Braiding( cat, object_2, object_1 ) ),
+                    IdentityMorphism( cat, dual_b ),
+                    Braiding( cat, b, a ) ),
                     
                   IsomorphismFromTensorProductToInternalHom( cat,
-                    object_2,
-                    TensorProductOnObjects( cat, object_1, object_2 ) )
+                    b,
+                    TensorProductOnObjects( cat, a, b ) )
                 ] );
                     
     return morphism;
@@ -155,29 +242,47 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
 ##
 AddDerivationToCAP( CoevaluationMorphismWithGivenRange,
                     
-  function( cat, object_1, object_2, internal_hom )
-    local morphism, dual_2, id_1;
+  function( cat, a, b, internal_hom )
+    local morphism, dual_b, id_a;
+
+    # 1 x a
+    #   |
+    #   | coev_b x id_a
+    #   v
+    # b x b^v x a
+    #   |
+    #   | B_( b, b^v ) x id_a
+    #   v
+    # b^v x b x a
+    #   |
+    #   | id_(b^v) x B_( b, a )
+    #   v
+    # b^v x a x b
+    #   |
+    #   | Isomorphism
+    #   v
+    # Hom(b, a x b)
     
-    dual_2 := DualOnObjects( cat, object_2 );
+    dual_b := DualOnObjects( cat, b );
     
-    id_1 := IdentityMorphism( cat, object_1 );
+    id_a := IdentityMorphism( cat, a );
     
     morphism := PreComposeList( cat, [
                   TensorProductOnMorphisms( cat,
-                    CoevaluationForDual( cat, object_2 ),
-                    id_1 ),
+                    CoevaluationForDual( cat, b ),
+                    id_a ),
                     
                   TensorProductOnMorphisms( cat,
-                    Braiding( cat, object_2, dual_2 ),
-                    id_1 ),
+                    Braiding( cat, b, dual_b ),
+                    id_a ),
                     
                   TensorProductOnMorphisms( cat,
-                    IdentityMorphism( cat, dual_2 ),
-                    Braiding( cat, object_2, object_1 ) ),
+                    IdentityMorphism( cat, dual_b ),
+                    Braiding( cat, b, a ) ),
                     
                   IsomorphismFromTensorProductToInternalHom( cat,
-                    object_2,
-                    TensorProductOnObjects( cat, object_1, object_2 ) )
+                    b,
+                    TensorProductOnObjects( cat, a, b ) )
                 ] );
     
     return morphism;
@@ -188,9 +293,9 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory and IsStrictMonoi
 ##
 AddDerivationToCAP( MorphismFromTensorProductToInternalHomWithGivenObjects,
                   
-  function( cat, tensor_object, object_1, object_2, internal_hom )
+  function( cat, tensor_object, a, b, internal_hom )
     
-    return IsomorphismFromTensorProductToInternalHom( cat, object_1, object_2 );
+    return IsomorphismFromTensorProductToInternalHom( cat, a, b );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "MorphismFromTensorProductToInternalHomWithGivenObjects using IsomorphismFromTensorProductToInternalHom" );
@@ -198,9 +303,9 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
 ##
 AddDerivationToCAP( MorphismFromInternalHomToTensorProductWithGivenObjects,
                   
-  function( cat, tensor_object, object_1, object_2, internal_hom )
+  function( cat, tensor_object, a, b, internal_hom )
     
-    return IsomorphismFromInternalHomToTensorProduct( cat, object_1, object_2 );
+    return IsomorphismFromInternalHomToTensorProduct( cat, a, b );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "MorphismFromInternalHomToTensorProductWithGivenObjects using IsomorphismFromInternalHomToTensorProduct" );
@@ -208,9 +313,9 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
 ##
 AddDerivationToCAP( IsomorphismFromInternalHomToTensorProduct,
                     
-  function( cat, object_1, object_2 )
+  function( cat, a, b )
     
-    return MorphismFromInternalHomToTensorProduct( cat, object_1, object_2 );
+    return MorphismFromInternalHomToTensorProduct( cat, a, b );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "IsomorphismFromInternalHomToTensorProduct using MorphismFromInternalHomToTensorProduct" );
@@ -218,9 +323,9 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
 ##
 AddDerivationToCAP( IsomorphismFromTensorProductToInternalHom,
                     
-  function( cat, object_1, object_2 )
+  function( cat, a, b )
     
-    return MorphismFromTensorProductToInternalHom( cat, object_1, object_2 );
+    return MorphismFromTensorProductToInternalHom( cat, a, b );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "IsomorphismFromTensorProductToInternalHom using MorphismFromTensorProductToInternalHom" );
@@ -228,15 +333,29 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
 ##
 AddDerivationToCAP( CoevaluationForDualWithGivenTensorProduct,
                     
-  function( cat, unit, object, tensor_object )
+  function( cat, unit, a, tensor_object )
     local morphism;
+
+    #    1
+    #    |
+    #    | LambdaIntro( id_a )
+    #    v
+    # Hom(a,a)
+    #    |
+    #    | Isomorphism
+    #    v
+    # a^v x a
+    #    |
+    #    | B_( a^v, a )
+    #    v
+    # a x a^v
     
-    morphism := IdentityMorphism( cat, object );
+    morphism := IdentityMorphism( cat, a );
     
     morphism := PreComposeList( cat, [
                   LambdaIntroduction( cat, morphism ),
-                  IsomorphismFromInternalHomToTensorProduct( cat, object, object ),
-                  Braiding( cat, DualOnObjects( cat, object ), object )
+                  IsomorphismFromInternalHomToTensorProduct( cat, a, a ),
+                  Braiding( cat, DualOnObjects( cat, a ), a )
                 ] );
                             
     return morphism;
@@ -247,15 +366,31 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
 ##
 AddDerivationToCAP( TraceMap,
                     
-  function( cat, morphism )
-    local result_morphism, object;
+  function( cat, alpha )
+    local result_morphism, a;
+
+    # alpha: a -> a
+    #
+    #    1
+    #    |
+    #    | LambdaIntro( alpha )
+    #    v
+    # Hom(a,a)
+    #    |
+    #    | Isomorphism
+    #    v
+    # a^v x a
+    #    |
+    #    | ev_a
+    #    v
+    #    1
     
-    object := Source( morphism );
+    a := Source( alpha );
     
     result_morphism := PreComposeList( cat, [
-                         LambdaIntroduction( cat, morphism ),
-                         IsomorphismFromInternalHomToTensorProduct( cat, object, object ),
-                         EvaluationForDual( cat, object )
+                         LambdaIntroduction( cat, alpha ),
+                         IsomorphismFromInternalHomToTensorProduct( cat, a, a ),
+                         EvaluationForDual( cat, a )
                        ] );
     
     return result_morphism;
@@ -266,9 +401,9 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
 ##
 AddDerivationToCAP( RankMorphism,
                     
-  function( cat, object )
+  function( cat, a )
     
-    return TraceMap( cat, IdentityMorphism( cat, object ) );
+    return TraceMap( cat, IdentityMorphism( cat, a ) );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "Rank of an object as the trace of its identity" );
@@ -277,6 +412,8 @@ end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
 AddDerivationToCAP( TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects,
                     
   function( cat, source, list, range )
+
+    # Inverse( Hom(a,a') x Hom(b,b') -> Hom(a x b, a' x b') )
     
     return InverseForMorphisms( cat, TensorProductInternalHomCompatibilityMorphismWithGivenObjects( cat, source, list, range ) );
     
@@ -309,9 +446,9 @@ AddFinalDerivation( IsomorphismFromTensorProductToInternalHom,
                       IsomorphismFromTensorProductToInternalHom,
                       IsomorphismFromInternalHomToTensorProduct ],
                     
-  function( cat, object_1, object_2 )
+  function( cat, a, b )
     
-    return IdentityMorphism( cat, TensorProductOnObjects( cat, DualOnObjects( cat, object_1 ), object_2 ) );
+    return IdentityMorphism( cat, TensorProductOnObjects( cat, DualOnObjects( cat, a ), b ) );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "IsomorphismFromTensorProductToInternalHom as the identity of (Dual(a) tensored b)" );
@@ -336,9 +473,9 @@ AddFinalDerivation( IsomorphismFromInternalHomToTensorProduct,
                       IsomorphismFromTensorProductToInternalHom,
                       IsomorphismFromInternalHomToTensorProduct ],
                     
-  function( cat, object_1, object_2 )
+  function( cat, a, b )
     
-    return IdentityMorphism( cat, TensorProductOnObjects( cat, DualOnObjects( cat, object_1 ), object_2 ) );
+    return IdentityMorphism( cat, TensorProductOnObjects( cat, DualOnObjects( cat, a ), b ) );
     
 end : CategoryFilter := IsRigidSymmetricClosedMonoidalCategory,
       Description := "IsomorphismFromInternalHomToTensorProduct as the identity of (Dual(a) tensored b)" );

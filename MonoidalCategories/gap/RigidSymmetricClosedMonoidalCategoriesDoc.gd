@@ -14,7 +14,7 @@
 
 #! A symmetric closed monoidal category $\mathbf{C}$ satisfying
 #! * the natural morphism
-#!  $\mathrm{\underline{Hom}}(a_1,b_1) \otimes \mathrm{\underline{Hom}}(a_2,b_2) \rightarrow \mathrm{\underline{Hom}}(a_1 \otimes a_2,b_1 \otimes b_2)$
+#!  $\mathrm{\underline{Hom}}(a, a') \otimes \mathrm{\underline{Hom}}(b, b') \rightarrow \mathrm{\underline{Hom}}(a \otimes b, a' \otimes b')$
 #!  is an isomorphism,
 #! * the natural morphism
 #!  $a \rightarrow \mathrm{\underline{Hom}}(\mathrm{\underline{Hom}}(a, 1), 1)$

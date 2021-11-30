@@ -69,6 +69,108 @@ end
     , 100 );
     
     ##
+    AddBraidingInverseWithGivenTensorProducts( cat,
+        
+########
+function ( cat_1, s_1, a_1, b_1, r_1 )
+    local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Opposite( s_1 );
+    deduped_4_1 := OppositeCategory( cat_1 );
+    deduped_3_1 := Dimension( deduped_5_1 );
+    hoisted_2_1 := Dimension( Opposite( a_1 ) );
+    hoisted_1_1 := Dimension( Opposite( b_1 ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, s_1, r_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), deduped_4_1, deduped_5_1, Opposite( r_1 ), UnderlyingMatrix, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_3_1 ], function ( i_2 )
+                      local deduped_1_2;
+                      deduped_1_2 := i_2 - 1;
+                      return REM_INT( deduped_1_2, hoisted_1_1 ) * hoisted_2_1 + QUO_INT( deduped_1_2, hoisted_1_1 ) + 1;
+                  end ) ), deduped_3_1 ), deduped_3_1, deduped_3_1, UnderlyingRing( deduped_4_1 ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoDualOnMorphismsWithGivenCoDuals( cat,
+        
+########
+function ( cat_1, s_1, alpha_1, r_1 )
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, s_1, r_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), OppositeCategory( cat_1 ), Opposite( r_1 ), Opposite( s_1 ), UnderlyingMatrix, TransposedMatrix( UnderlyingMatrix( Opposite( alpha_1 ) ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoDualOnObjects( cat,
+        
+########
+function ( cat_1, a_1 )
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat_1, Opposite, Opposite( a_1 ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoclosedCoevaluationForCoDualWithGivenTensorProduct( cat,
+        
+########
+function ( cat_1, s_1, a_1, r_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Opposite( s_1 );
+    deduped_4_1 := Opposite( r_1 );
+    deduped_3_1 := OppositeCategory( cat_1 );
+    deduped_2_1 := UnderlyingRing( deduped_3_1 );
+    deduped_1_1 := Dimension( Opposite( a_1 ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, s_1, r_1, Opposite, function (  )
+              if deduped_1_1 = 0 then
+                  return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                         ), deduped_3_1, deduped_4_1, deduped_5_1, UnderlyingMatrix, HomalgZeroMatrix( Dimension( deduped_4_1 ), Dimension( deduped_5_1 ), deduped_2_1 ) );
+              else
+                  return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                         ), deduped_3_1, deduped_4_1, deduped_5_1, UnderlyingMatrix, ConvertMatrixToRow( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) ) );
+              fi;
+              return;
+          end(  ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddCoclosedEvaluationForCoDualWithGivenTensorProduct( cat,
+        
+########
+function ( cat_1, s_1, a_1, r_1 )
+    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := Opposite( s_1 );
+    deduped_4_1 := Opposite( r_1 );
+    deduped_3_1 := OppositeCategory( cat_1 );
+    deduped_2_1 := UnderlyingRing( deduped_3_1 );
+    deduped_1_1 := Dimension( Opposite( a_1 ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, s_1, r_1, Opposite, function (  )
+              if deduped_1_1 = 0 then
+                  return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                         ), deduped_3_1, deduped_4_1, deduped_5_1, UnderlyingMatrix, HomalgZeroMatrix( Dimension( deduped_4_1 ), Dimension( deduped_5_1 ), deduped_2_1 ) );
+              else
+                  return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+                         ), deduped_3_1, deduped_4_1, deduped_5_1, UnderlyingMatrix, ConvertMatrixToColumn( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) ) );
+              fi;
+              return;
+          end(  ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( cat,
         
 ########
@@ -623,6 +725,22 @@ end
     , 100 );
     
     ##
+    AddMorphismFromCoBidualWithGivenCoBidual( cat,
+        
+########
+function ( cat_1, a_1, s_1 )
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := Opposite( a_1 );
+    deduped_1_1 := OppositeCategory( cat_1 );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, s_1, a_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), deduped_1_1, deduped_2_1, Opposite( s_1 ), UnderlyingMatrix, HomalgIdentityMatrix( Dimension( deduped_2_1 ), UnderlyingRing( deduped_1_1 ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
     AddMultiplyWithElementOfCommutativeRingForMorphisms( cat,
         
 ########
@@ -721,6 +839,45 @@ end
 function ( cat_1, arg2_1 )
     return ObjectifyObjectForCAPWithAttributes( rec(
            ), cat_1, Opposite, Opposite( arg2_1 ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddTensorProductOnMorphismsWithGivenTensorProducts( cat,
+        
+########
+function ( cat_1, s_1, alpha_1, beta_1, r_1 )
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, s_1, r_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+             ), OppositeCategory( cat_1 ), Opposite( s_1 ), Opposite( r_1 ), UnderlyingMatrix, KroneckerMat( UnderlyingMatrix( Opposite( alpha_1 ) ), UnderlyingMatrix( Opposite( beta_1 ) ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddTensorProductOnObjects( cat,
+        
+########
+function ( cat_1, arg2_1, arg3_1 )
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat_1, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
+             ), OppositeCategory( cat_1 ), Dimension, Dimension( Opposite( arg2_1 ) ) * Dimension( Opposite( arg3_1 ) ) ) );
+end
+########
+        
+    , 100 );
+    
+    ##
+    AddTensorUnit( cat,
+        
+########
+function ( cat_1 )
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat_1, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
+             ), OppositeCategory( cat_1 ), Dimension, 1 ) );
 end
 ########
         
