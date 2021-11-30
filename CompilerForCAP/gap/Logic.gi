@@ -40,6 +40,30 @@ InstallGlobalFunction( CapJitAppliedLogic, function ( tree, jit_args )
     
 end );
 
+# [ a_1, a_2, ... ][i] => a_i
+CapJitAddLogicFunction( function ( tree, jit_args )
+  local pre_func;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Apply logic for accessing elements of lists." );
+    
+    pre_func := function ( tree, additional_arguments )
+      local args;
+        
+        if tree.type = "EXPR_ELM_LIST" and tree.list.type = "EXPR_LIST" and tree.pos.type = "EXPR_INT" then
+            
+            return tree.list.list.(tree.pos.value);
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    
+end );
+
 # Concatenation( [ a, b, ... ], [ c, d, ... ], ... ) => [ a, b, ..., c, d, ... ]
 CapJitAddLogicFunction( function ( tree, jit_args )
   local pre_func;

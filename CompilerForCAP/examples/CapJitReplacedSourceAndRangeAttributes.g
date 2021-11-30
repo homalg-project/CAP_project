@@ -21,8 +21,8 @@ cat := MatrixCategory( QQ );;
 Display( CapJitCompiledFunction( func, [ cat ] ) );
 #! function ( cat_1, matrix_1 )
 #!     local morphism_attr_1_1, morphism_attr_2_1;
-#!     morphism_attr_1_1 := matrix_1;
 #!     morphism_attr_2_1 := matrix_1;
+#!     morphism_attr_1_1 := matrix_1;
 #!     return [ ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
 #!                ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
 #!                  ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), 

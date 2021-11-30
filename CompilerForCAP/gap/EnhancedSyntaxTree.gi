@@ -804,14 +804,18 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 name_of_immediate_child := function ( parents, children )
                     
-                    # take last child because this better reflects what the user would expect
+                    # Usually, we would take the last child because that would more faithfully reflect the original input.
+                    # However, in the context of deduplication and hosting, the names at the end of the list are dependencies
+                    # of the names at the front of the list, so the first name is already an immediate child. Taking this child
+                    # gives a much nicer output, because the variable names are simply counting down.
                     # the sublist removes "BINDING_" from path[1]
-                    return Last( Filtered( children, child -> ForAll( used_by_paths.(child), path -> path[1]{[ 9 .. Length( path[1] ) ]} in parents ) ) );
+                    return First( children, child -> ForAll( used_by_paths.(child), path -> path[1]{[ 9 .. Length( path[1] ) ]} in parents ) );
                     
                 end;
                 
                 # is modified below
-                binding_names := ShallowCopy( func.bindings.names );
+                # do not take func.bindings.names directly because we want to preserve the order of func.nams (e.g. deduped_9 < deduped_10)
+                binding_names := Filtered( func.nams, x -> x in func.bindings.names );
                 
                 ordered_binding_names := [ ];
                 
@@ -826,7 +830,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                         
                     fi;
                     
-                    RemoveSet( binding_names, name );
+                    Remove( binding_names, Position( binding_names, name ) );
                     
                     Add( ordered_binding_names, name );
                     

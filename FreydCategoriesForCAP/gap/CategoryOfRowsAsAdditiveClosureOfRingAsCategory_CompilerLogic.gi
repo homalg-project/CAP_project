@@ -115,17 +115,6 @@ CapJitAddLogicFunction( function( tree, jit_args )
     
 end );
 
-# typed version of an official template
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "func", "list", "index" ],
-        variable_filters := [ IsFunction, IsList, IsPosInt ],
-        src_template := "func( list[index] )",
-        dst_template := "List( list, func )[index]",
-        returns_value := true,
-    )
-);
-
 # Length( ListWithIdenticalEntries( number, obj ) ) => number
 CapJitAddLogicTemplate(
     rec(
