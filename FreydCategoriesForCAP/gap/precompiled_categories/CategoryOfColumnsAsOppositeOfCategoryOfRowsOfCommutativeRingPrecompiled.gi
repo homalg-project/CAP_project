@@ -36,8 +36,8 @@ end
 function ( cat_1, s_1, a_1, b_1, r_1 )
     local hoisted_3_1, hoisted_4_1, deduped_5_1;
     deduped_5_1 := RankOfObject( s_1 );
-    hoisted_3_1 := RankOfObject( b_1 );
     hoisted_4_1 := RankOfObject( a_1 );
+    hoisted_3_1 := RankOfObject( b_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, s_1, r_1, UnderlyingMatrix, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_5_1 ], function ( i_2 )
                       local deduped_1_2;
@@ -55,8 +55,8 @@ end
 ########
 function ( cat_1, s_1, a_1, r_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_1_1 := RankOfObject( a_1 );
     deduped_2_1 := UnderlyingRing( cat_1 );
+    deduped_1_1 := RankOfObject( a_1 );
     if deduped_1_1 = 0 then
         return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                ), cat_1, s_1, r_1, UnderlyingMatrix, HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), deduped_2_1 ) );
@@ -185,8 +185,8 @@ end
 ########
 function ( cat_1, s_1, a_1, r_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_1_1 := RankOfObject( a_1 );
     deduped_2_1 := UnderlyingRing( cat_1 );
+    deduped_1_1 := RankOfObject( a_1 );
     if deduped_1_1 = 0 then
         return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                ), cat_1, s_1, r_1, UnderlyingMatrix, HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), deduped_2_1 ) );
@@ -329,10 +329,10 @@ end
 ########
 function ( cat_1, arg2_1 )
     local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
-    deduped_1_1 := OppositeCategory( UnderlyingCategory( cat_1 ) );
     deduped_4_1 := UnderlyingMatrix( arg2_1 );
-    deduped_2_1 := NumberRows( deduped_4_1 );
     deduped_3_1 := NumberColumns( deduped_4_1 );
+    deduped_2_1 := NumberRows( deduped_4_1 );
+    deduped_1_1 := OppositeCategory( UnderlyingCategory( cat_1 ) );
     if not IS_IDENTICAL_OBJ( deduped_1_1, deduped_1_1 ) then
         return false;
     elif deduped_2_1 <> deduped_2_1 then

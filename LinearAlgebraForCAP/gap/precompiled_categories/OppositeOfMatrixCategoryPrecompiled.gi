@@ -11,8 +11,8 @@ BindGlobal( "ADD_FUNCTIONS_FOR_OppositeOfMatrixCategoryPrecompiled", function ( 
 ########
 function ( cat_1, a_1, b_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_1_1 := Opposite( a_1 );
     deduped_2_1 := Opposite( b_1 );
+    deduped_1_1 := Opposite( a_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Source( a_1 ), Range( a_1 ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
              ), OppositeCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, UnderlyingMatrix( deduped_1_1 ) + UnderlyingMatrix( deduped_2_1 ) ) );
@@ -42,22 +42,22 @@ end
 ########
 function ( cat_1, arg2_1, arg3_1 )
     local hoisted_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, hoisted_5_1, hoisted_6_1, hoisted_7_1, hoisted_8_1, deduped_9_1, deduped_10_1, deduped_11_1, deduped_12_1, deduped_13_1, deduped_14_1;
-    deduped_12_1 := Opposite( arg3_1 );
-    deduped_10_1 := Dimension( deduped_12_1 );
-    deduped_13_1 := Opposite( arg2_1 );
-    deduped_11_1 := Dimension( deduped_13_1 );
     deduped_14_1 := OppositeCategory( cat_1 );
+    deduped_13_1 := Opposite( arg2_1 );
+    deduped_12_1 := Opposite( arg3_1 );
+    deduped_11_1 := Dimension( deduped_13_1 );
+    deduped_10_1 := Dimension( deduped_12_1 );
     deduped_9_1 := deduped_10_1 * deduped_11_1;
-    hoisted_1_1 := HomalgIdentityMatrix( deduped_9_1, UnderlyingRing( deduped_14_1 ) );
-    hoisted_2_1 := deduped_10_1;
-    hoisted_3_1 := deduped_11_1;
-    hoisted_4_1 := deduped_14_1;
-    hoisted_5_1 := deduped_12_1;
-    hoisted_6_1 := deduped_13_1;
-    hoisted_7_1 := ObjectifyObjectForCAPWithAttributes( rec(
-           ), cat_1, Opposite, deduped_13_1 );
     hoisted_8_1 := ObjectifyObjectForCAPWithAttributes( rec(
            ), cat_1, Opposite, deduped_12_1 );
+    hoisted_7_1 := ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat_1, Opposite, deduped_13_1 );
+    hoisted_6_1 := deduped_13_1;
+    hoisted_5_1 := deduped_12_1;
+    hoisted_4_1 := deduped_14_1;
+    hoisted_3_1 := deduped_11_1;
+    hoisted_2_1 := deduped_10_1;
+    hoisted_1_1 := HomalgIdentityMatrix( deduped_9_1, UnderlyingRing( deduped_14_1 ) );
     return List( [ 1 .. deduped_9_1 ], function ( logic_new_func_x_2 )
             return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                    ), cat_1, hoisted_7_1, hoisted_8_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
@@ -90,8 +90,8 @@ end
 function ( cat_1, alpha_1 )
     local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
     deduped_4_1 := Opposite( alpha_1 );
-    deduped_2_1 := SyzygiesOfRows( UnderlyingMatrix( deduped_4_1 ) );
     deduped_3_1 := OppositeCategory( cat_1 );
+    deduped_2_1 := SyzygiesOfRows( UnderlyingMatrix( deduped_4_1 ) );
     morphism_attr_1_1 := deduped_2_1;
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Range( alpha_1 ), ObjectifyObjectForCAPWithAttributes( rec(
@@ -110,8 +110,8 @@ end
 ########
 function ( cat_1, alpha_1, beta_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_1_1 := Opposite( beta_1 );
     deduped_2_1 := Opposite( alpha_1 );
+    deduped_1_1 := Opposite( beta_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Range( alpha_1 ), Range( beta_1 ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
              ), OppositeCategory( cat_1 ), Source( deduped_1_1 ), Source( deduped_2_1 ), UnderlyingMatrix, RightDivide( UnderlyingMatrix( deduped_1_1 ), UnderlyingMatrix( deduped_2_1 ) ) ) );
@@ -153,8 +153,8 @@ end
 ########
 function ( cat_1, A_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_1_1 := Opposite( A_1 );
     deduped_2_1 := OppositeCategory( cat_1 );
+    deduped_1_1 := Opposite( A_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Opposite, deduped_1_1 ), A_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
@@ -195,8 +195,8 @@ end
 ########
 function ( cat_1, a_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_1_1 := OppositeCategory( cat_1 );
     deduped_2_1 := Opposite( a_1 );
+    deduped_1_1 := OppositeCategory( cat_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, a_1, a_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
              ), deduped_1_1, deduped_2_1, deduped_2_1, UnderlyingMatrix, HomalgIdentityMatrix( Dimension( deduped_2_1 ), UnderlyingRing( deduped_1_1 ) ) ) );
@@ -211,14 +211,14 @@ end
 ########
 function ( cat_1, objects_1, k_1, P_1 )
     local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
-    deduped_1_1 := List( objects_1, function ( logic_new_func_x_2 )
-              return Dimension( Opposite( logic_new_func_x_2 ) );
-          end )[k_1];
+    deduped_4_1 := OppositeCategory( cat_1 );
+    deduped_3_1 := UnderlyingRing( deduped_4_1 );
     deduped_2_1 := List( objects_1, function ( x_2 )
             return Opposite( x_2 );
         end );
-    deduped_4_1 := OppositeCategory( cat_1 );
-    deduped_3_1 := UnderlyingRing( deduped_4_1 );
+    deduped_1_1 := List( objects_1, function ( logic_new_func_x_2 )
+              return Dimension( Opposite( logic_new_func_x_2 ) );
+          end )[k_1];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, objects_1[k_1], P_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
              ), deduped_4_1, Opposite( P_1 ), deduped_2_1[k_1], UnderlyingMatrix, UnionOfRows( HomalgZeroMatrix( Sum( deduped_2_1{[ 1 .. k_1 - 1 ]}, function ( c_2 )
@@ -361,8 +361,8 @@ end
 function ( cat_1, arg2_1 )
     local deduped_1_1, deduped_2_1, deduped_3_1;
     deduped_3_1 := Opposite( arg2_1 );
-    deduped_1_1 := UnderlyingMatrix( deduped_3_1 );
     deduped_2_1 := OppositeCategory( cat_1 );
+    deduped_1_1 := UnderlyingMatrix( deduped_3_1 );
     if not IS_IDENTICAL_OBJ( deduped_2_1, deduped_2_1 ) then
         return false;
     elif NumberRows( deduped_1_1 ) <> Dimension( Source( deduped_3_1 ) ) then
@@ -427,8 +427,8 @@ end
 function ( cat_1, alpha_1 )
     local morphism_attr_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
     deduped_4_1 := Opposite( alpha_1 );
-    deduped_2_1 := SyzygiesOfColumns( UnderlyingMatrix( deduped_4_1 ) );
     deduped_3_1 := OppositeCategory( cat_1 );
+    deduped_2_1 := SyzygiesOfColumns( UnderlyingMatrix( deduped_4_1 ) );
     morphism_attr_1_1 := deduped_2_1;
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
@@ -462,8 +462,8 @@ end
 ########
 function ( cat_1, alpha_1, beta_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_1_1 := Opposite( beta_1 );
     deduped_2_1 := Opposite( alpha_1 );
+    deduped_1_1 := Opposite( beta_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Source( alpha_1 ), Source( beta_1 ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
              ), OppositeCategory( cat_1 ), Range( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, LeftDivide( UnderlyingMatrix( deduped_1_1 ), UnderlyingMatrix( deduped_2_1 ) ) ) );
@@ -478,8 +478,8 @@ end
 ########
 function ( cat_1, A_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_1_1 := Opposite( A_1 );
     deduped_2_1 := OppositeCategory( cat_1 );
+    deduped_1_1 := Opposite( A_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, A_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Opposite, deduped_1_1 ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
@@ -495,8 +495,8 @@ end
 ########
 function ( cat_1, alpha_1, beta_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_1_1 := Opposite( beta_1 );
     deduped_2_1 := Opposite( alpha_1 );
+    deduped_1_1 := Opposite( beta_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Source( alpha_1 ), Range( beta_1 ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
              ), OppositeCategory( cat_1 ), Source( deduped_1_1 ), Range( deduped_2_1 ), UnderlyingMatrix, UnderlyingMatrix( deduped_1_1 ) * UnderlyingMatrix( deduped_2_1 ) ) );
@@ -511,14 +511,14 @@ end
 ########
 function ( cat_1, objects_1, k_1, P_1 )
     local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
-    deduped_1_1 := List( objects_1, function ( logic_new_func_x_2 )
-              return Dimension( Opposite( logic_new_func_x_2 ) );
-          end )[k_1];
+    deduped_4_1 := OppositeCategory( cat_1 );
+    deduped_3_1 := UnderlyingRing( deduped_4_1 );
     deduped_2_1 := List( objects_1, function ( x_2 )
             return Opposite( x_2 );
         end );
-    deduped_4_1 := OppositeCategory( cat_1 );
-    deduped_3_1 := UnderlyingRing( deduped_4_1 );
+    deduped_1_1 := List( objects_1, function ( logic_new_func_x_2 )
+              return Dimension( Opposite( logic_new_func_x_2 ) );
+          end )[k_1];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, P_1, objects_1[k_1], Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
              ), deduped_4_1, deduped_2_1[k_1], Opposite( P_1 ), UnderlyingMatrix, UnionOfColumns( HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ 1 .. k_1 - 1 ]}, function ( c_2 )
@@ -561,8 +561,8 @@ end
 ########
 function ( cat_1, objects_1, T_1, tau_1, P_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_1_1 := OppositeCategory( cat_1 );
     deduped_2_1 := Opposite( T_1 );
+    deduped_1_1 := OppositeCategory( cat_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, P_1, T_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
              ), deduped_1_1, deduped_2_1, Opposite( P_1 ), UnderlyingMatrix, UnionOfColumns( UnderlyingRing( deduped_1_1 ), Dimension( deduped_2_1 ), List( tau_1, function ( logic_new_func_x_2 )
@@ -579,8 +579,8 @@ end
 ########
 function ( cat_1, T_1, P_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_1_1 := OppositeCategory( cat_1 );
     deduped_2_1 := Opposite( T_1 );
+    deduped_1_1 := OppositeCategory( cat_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, P_1, T_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
              ), deduped_1_1, deduped_2_1, Opposite( P_1 ), UnderlyingMatrix, HomalgZeroMatrix( Dimension( deduped_2_1 ), 0, UnderlyingRing( deduped_1_1 ) ) ) );
@@ -595,8 +595,8 @@ end
 ########
 function ( cat_1, objects_1, T_1, tau_1, P_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_1_1 := OppositeCategory( cat_1 );
     deduped_2_1 := Opposite( T_1 );
+    deduped_1_1 := OppositeCategory( cat_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, T_1, P_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
              ), deduped_1_1, Opposite( P_1 ), deduped_2_1, UnderlyingMatrix, UnionOfRows( UnderlyingRing( deduped_1_1 ), Dimension( deduped_2_1 ), List( tau_1, function ( logic_new_func_x_2 )
@@ -613,8 +613,8 @@ end
 ########
 function ( cat_1, T_1, P_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_1_1 := OppositeCategory( cat_1 );
     deduped_2_1 := Opposite( T_1 );
+    deduped_1_1 := OppositeCategory( cat_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, T_1, P_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
              ), deduped_1_1, Opposite( P_1 ), deduped_2_1, UnderlyingMatrix, HomalgZeroMatrix( 0, Dimension( deduped_2_1 ), UnderlyingRing( deduped_1_1 ) ) ) );
@@ -629,9 +629,9 @@ end
 ########
 function ( cat_1, a_1, b_1 )
     local deduped_1_1, deduped_2_1, deduped_3_1;
-    deduped_1_1 := OppositeCategory( cat_1 );
-    deduped_2_1 := Opposite( b_1 );
     deduped_3_1 := Opposite( a_1 );
+    deduped_2_1 := Opposite( b_1 );
+    deduped_1_1 := OppositeCategory( cat_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, a_1, b_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
              ), deduped_1_1, deduped_2_1, deduped_3_1, UnderlyingMatrix, HomalgZeroMatrix( Dimension( deduped_2_1 ), Dimension( deduped_3_1 ), UnderlyingRing( deduped_1_1 ) ) ) );

@@ -18,8 +18,8 @@ Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
 #! function (  )
 #!     local val1_1, val2_1;
 #!     return 1;
-#!     val1_1 := 1;
 #!     val2_1 := 1;
+#!     val1_1 := 1;
 #!     return;
 #! end
 
@@ -28,8 +28,8 @@ Display( ENHANCED_SYNTAX_TREE_CODE( tree2 ) );
 #! function (  )
 #!     local val1_1, val2_1;
 #!     return 1;
-#!     val1_1 := 1;
 #!     val2_1 := 1;
+#!     val1_1 := 1;
 #!     return;
 #! end
 
