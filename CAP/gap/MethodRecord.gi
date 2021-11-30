@@ -3013,7 +3013,7 @@ HomomorphismStructureOnMorphisms := rec(
   return_type := "other_morphism",
   dual_operation := "HomomorphismStructureOnMorphisms",
   dual_preprocessor_func := function( cat, alpha, beta )
-    return [ OppositeCategory( cat ), MorphismDatum( cat, beta ), MorphismDatum( cat, alpha ) ];
+    return [ OppositeCategory( cat ), Opposite( beta ), Opposite( alpha ) ];
   end,
   dual_postprocessor_func := IdFunc,
 ),
@@ -3026,7 +3026,7 @@ HomomorphismStructureOnMorphismsWithGivenObjects := rec(
   return_type := "other_morphism",
   dual_operation := "HomomorphismStructureOnMorphismsWithGivenObjects",
   dual_preprocessor_func := function( cat, source, alpha, beta, range )
-    return [ OppositeCategory( cat ), source, MorphismDatum( cat, beta ), MorphismDatum( cat, alpha ), range ];
+    return [ OppositeCategory( cat ), source, Opposite( beta ), Opposite( alpha ), range ];
   end,
   dual_postprocessor_func := IdFunc,
 ),
@@ -3056,7 +3056,7 @@ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGiv
   return_type := "other_morphism",
   dual_operation := "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
   dual_preprocessor_func := function( cat, distinguished_object, alpha, hom_source_range )
-    return [ OppositeCategory( cat ), distinguished_object, MorphismDatum( cat, alpha ), hom_source_range ];
+    return [ OppositeCategory( cat ), distinguished_object, Opposite( alpha ), hom_source_range ];
   end,
   dual_postprocessor_func := IdFunc
 ),
@@ -3066,7 +3066,7 @@ InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism := rec
   return_type := "morphism",
   dual_operation := "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
   dual_preprocessor_func := function( cat, A, B, morphism )
-    return [ OppositeCategory( cat ), ObjectDatum( cat, B ), ObjectDatum( cat, A ), morphism ];
+    return [ OppositeCategory( cat ), Opposite( B ), Opposite( A ), morphism ];
   end
 ),
 

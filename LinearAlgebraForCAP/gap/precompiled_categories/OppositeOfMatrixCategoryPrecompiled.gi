@@ -140,8 +140,8 @@ end
         
 ########
 function ( cat_1 )
-    return ID_FUNC( ObjectifyObjectForCAPWithAttributes( rec(
-             ), OppositeCategory( cat_1 ), Dimension, 1 ) );
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), OppositeCategory( cat_1 ), Dimension, 1 );
 end
 ########
         
@@ -169,9 +169,8 @@ end
         
 ########
 function ( cat_1, source_1, alpha_1, beta_1, range_1 )
-    local deduped_1_1;
-    deduped_1_1 := [ OppositeCategory( cat_1 ), source_1, MorphismDatum( cat_1, beta_1 ), MorphismDatum( cat_1, alpha_1 ), range_1 ];
-    return ID_FUNC( HomomorphismStructureOnMorphismsWithGivenObjects( deduped_1_1[1], deduped_1_1[2], deduped_1_1[3], deduped_1_1[4], deduped_1_1[5] ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), OppositeCategory( cat_1 ), source_1, range_1, UnderlyingMatrix, KroneckerMat( TransposedMatrix( UnderlyingMatrix( Opposite( beta_1 ) ) ), UnderlyingMatrix( Opposite( alpha_1 ) ) ) );
 end
 ########
         
@@ -182,8 +181,8 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    return ID_FUNC( ObjectifyObjectForCAPWithAttributes( rec(
-             ), OppositeCategory( cat_1 ), Dimension, Dimension( Opposite( arg3_1 ) ) * Dimension( Opposite( arg2_1 ) ) ) );
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), OppositeCategory( cat_1 ), Dimension, Dimension( Opposite( arg3_1 ) ) * Dimension( Opposite( arg2_1 ) ) );
 end
 ########
         
@@ -239,10 +238,10 @@ function ( cat_1, alpha_1 )
     local morphism_attr_1_1, deduped_2_1;
     deduped_2_1 := OppositeCategory( cat_1 );
     morphism_attr_1_1 := ConvertMatrixToRow( UnderlyingMatrix( Opposite( alpha_1 ) ) );
-    return ID_FUNC( ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), deduped_2_1, ObjectifyObjectForCAPWithAttributes( rec(
-               ), deduped_2_1, Dimension, 1 ), ObjectifyObjectForCAPWithAttributes( rec(
-               ), deduped_2_1, Dimension, NrColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) );
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), deduped_2_1, ObjectifyObjectForCAPWithAttributes( rec(
+             ), deduped_2_1, Dimension, 1 ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), deduped_2_1, Dimension, NrColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         

@@ -75,7 +75,7 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    return ID_FUNC( EntriesOfHomalgMatrix( UnderlyingMatrix( arg2_1 ) ) );
+    return EntriesOfHomalgMatrix( UnderlyingMatrix( arg2_1 ) );
 end
 ########
         

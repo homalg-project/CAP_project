@@ -166,6 +166,8 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                 """
                 dual_preprocessor_func := dual_preprocessor_func_string;
                 prep_arg := dual_preprocessor_func( input_arguments );
+                #% CAP_JIT_DROP_NEXT_STATEMENT
+                Assert( 0, IsIdenticalObj( prep_arg[1], OppositeCategory( cat ) ) );
                 """,
                 rec(
                     dual_preprocessor_func_string := dual_preprocessor_func_string,
@@ -173,13 +175,17 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                 )
             );
             
-            dual_arguments := List( [ 1 .. Length( filter_list ) ], i -> Concatenation( "prep_arg[", String( i ), "]" ) );
+            Assert( 0, filter_list[1] = "category" );
+            
+            dual_arguments := List( [ 2 .. Length( filter_list ) ], i -> Concatenation( "prep_arg[", String( i ), "]" ) );
             
         else
             
             preprocessor_string := "";
             
-            dual_arguments := List( [ 1 .. Length( filter_list ) ], function( i )
+            Assert( 0, filter_list[1] = "category" );
+            
+            dual_arguments := List( [ 2 .. Length( filter_list ) ], function( i )
               local filter, argument_name;
                 
                 filter := filter_list[i];
@@ -192,11 +198,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                     
                 fi;
                 
-                if filter = "category" then
-                    
-                    return Concatenation( "OppositeCategory( ", argument_name, " )" );
-                    
-                elif filter = "object" then
+                if filter = "object" then
                     
                     return Concatenation( "ObjectDatum( cat, ", argument_name, " )" );
                     
@@ -226,12 +228,13 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
             
             if current_entry.dual_arguments_reversed then
                 
-                # only reverse the arguments following the category
-                dual_arguments := Concatenation( [ dual_arguments[1] ], Reversed( dual_arguments{ [ 2 .. Length( dual_arguments ) ] } ) );
+                dual_arguments := Reversed( dual_arguments );
                 
             fi;
             
         fi;
+        
+        dual_arguments := Concatenation( [ "OppositeCategory( cat )" ], dual_arguments );
         
         if IsBound( current_entry.dual_postprocessor_func ) then
             
