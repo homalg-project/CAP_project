@@ -6,10 +6,10 @@
                  [1X Monoidal and monoidal (co)closed categories [101X
   
   
-                                   2021.11-04
+                                   2021.11-05
   
   
-                                25 November 2021
+                                30 November 2021
   
   
                                 Mohamed Barakat
@@ -145,8 +145,8 @@
       1.6-5 CoclosedEvaluationMorphismWithGivenRange
       1.6-6 CoclosedCoevaluationMorphism
       1.6-7 CoclosedCoevaluationMorphismWithGivenSource
-      1.6-8 InternalCoHomToTensorProductAdjunctionMap
-      1.6-9 TensorProductToInternalCoHomAdjunctionMap
+      1.6-8 TensorProductToInternalCoHomAdjunctionMap
+      1.6-9 InternalCoHomToTensorProductAdjunctionMap
       1.6-10 MonoidalPreCoComposeMorphism
       1.6-11 MonoidalPreCoComposeMorphismWithGivenObjects
       1.6-12 MonoidalPostCoComposeMorphism
@@ -177,9 +177,9 @@
     1.8 [33X[0;0YSymmetric Coclosed Monoidal Categories[133X
     1.9 [33X[0;0YRigid Symmetric Closed Monoidal Categories[133X
       1.9-1 IsomorphismFromTensorProductToInternalHom
-      1.9-2 MorphismFromInternalHomToTensorProduct
-      1.9-3 MorphismFromInternalHomToTensorProductWithGivenObjects
-      1.9-4 IsomorphismFromInternalHomToTensorProduct
+      1.9-2 IsomorphismFromInternalHomToTensorProduct
+      1.9-3 MorphismFromInternalHomToTensorProduct
+      1.9-4 MorphismFromInternalHomToTensorProductWithGivenObjects
       1.9-5 TensorProductInternalHomCompatibilityMorphismInverse
       1.9-6 TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects
       1.9-7 CoevaluationForDual
@@ -190,9 +190,9 @@
       1.9-12 MorphismFromBidualWithGivenBidual
     1.10 [33X[0;0YRigid Symmetric Coclosed Monoidal Categories[133X
       1.10-1 IsomorphismFromInternalCoHomToTensorProduct
-      1.10-2 MorphismFromTensorProductToInternalCoHom
-      1.10-3 MorphismFromTensorProductToInternalCoHomWithGivenObjects
-      1.10-4 IsomorphismFromTensorProductToInternalCoHom
+      1.10-2 IsomorphismFromTensorProductToInternalCoHom
+      1.10-3 MorphismFromTensorProductToInternalCoHom
+      1.10-4 MorphismFromTensorProductToInternalCoHomWithGivenObjects
       1.10-5 InternalCoHomTensorProductCompatibilityMorphismInverse
       1.10-6 InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects
       1.10-7 CoclosedCoevaluationForCoDual

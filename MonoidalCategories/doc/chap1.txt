@@ -314,8 +314,8 @@
   [33X[1;0Y[29X[2XBraidingInverse[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b \otimes a, a \otimes b )[123X.[133X
   
-  [33X[0;0YThe arguments are two objects [23Xa,b[123X. The output is the inverse of the braiding
-  [23X B_{a,b}^{-1}: b \otimes a \rightarrow a \otimes b[123X.[133X
+  [33X[0;0YThe  arguments  are  two  objects  [23Xa,b[123X.  The output is the inverse braiding [23X
+  B_{a,b}^{-1}: b \otimes a \rightarrow a \otimes b[123X.[133X
   
   [1X1.3-4 BraidingInverseWithGivenTensorProducts[101X
   
@@ -323,8 +323,8 @@
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b \otimes a, a \otimes b )[123X.[133X
   
   [33X[0;0YThe  arguments are an object [23Xs = b \otimes a[123X, two objects [23Xa,b[123X, and an object
-  [23Xr  =  a  \otimes  b[123X.  The  output is the braiding [23X B_{a,b}^{-1}: b \otimes a
-  \rightarrow a \otimes b[123X.[133X
+  [23Xr = a \otimes b[123X. The output is the inverse braiding [23X B_{a,b}^{-1}: b \otimes
+  a \rightarrow a \otimes b[123X.[133X
   
   
   [1X1.4 [33X[0;0YSymmetric Monoidal Categories[133X[101X
@@ -691,7 +691,7 @@
   
   [1X1.6 [33X[0;0YCoclosed Monoidal Categories[133X[101X
   
-  [33X[0;0YA  monoidal  category  [23X\mathbf{C}[123X  which  has  for each functor [23Xb \otimes -:
+  [33X[0;0YA  monoidal  category  [23X\mathbf{C}[123X  which  has  for each functor [23X- \otimes b:
   \mathbf{C}    \rightarrow    \mathbf{C}[123X   a   left   adjoint   (denoted   by
   [23X\mathrm{\underline{coHom}}(-,b)[123X) is called a [13Xcoclosed monoidal category[113X. The
   corresponding GAP property is called [10XIsCoclosedMonoidalCategory[110X.[133X
@@ -731,117 +731,117 @@
   [1X1.6-4 CoclosedEvaluationMorphism[101X
   
   [33X[1;0Y[29X[2XCoclosedEvaluationMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya      morphism      in     [23X\mathrm{Hom}(     a,     b     \otimes
-            \mathrm{\underline{coHom}}(a,b) )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  a, \mathrm{\underline{coHom}}(a,b)
+            \otimes b )[123X.[133X
   
   [33X[0;0YThe  arguments  are  two objects [23Xa, b[123X. The output is the coclosed evaluation
-  morphism      [23X\mathrm{coclev}_{a,b}:     a     \rightarrow     b     \otimes
-  \mathrm{\underline{coHom}}(a,b)[123X,   i.e.,   the  unit  of  the  cohom  tensor
-  adjunction.[133X
+  morphism            [23X\mathrm{coclev}_{a,b}:           a           \rightarrow
+  \mathrm{\underline{coHom}}(a,b)  \otimes  b[123X,  i.e.,  the  unit  of the cohom
+  tensor adjunction.[133X
   
   [1X1.6-5 CoclosedEvaluationMorphismWithGivenRange[101X
   
   [33X[1;0Y[29X[2XCoclosedEvaluationMorphismWithGivenRange[102X( [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya      morphism      in     [23X\mathrm{Hom}(     a,     b     \otimes
-            \mathrm{\underline{coHom}}(a,b) )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  a, \mathrm{\underline{coHom}}(a,b)
+            \otimes b )[123X.[133X
   
-  [33X[0;0YThe   arguments   are   two  objects  [23Xa,b[123X  and  an  object  [23Xr  =  b  \otimes
-  \mathrm{\underline{coHom}}(a,b)[123X.  The  output  is  the  coclosed  evaluation
-  morphism      [23X\mathrm{coclev}_{a,b}:     a     \rightarrow     b     \otimes
-  \mathrm{\underline{coHom}}(a,b)[123X,   i.e.,   the  unit  of  the  cohom  tensor
-  adjunction.[133X
+  [33X[0;0YThe    arguments    are    two    objects    [23Xa,b[123X   and   an   object   [23Xr   =
+  \mathrm{\underline{coHom}}(a,b)  \otimes  b[123X.  The  output  is  the  coclosed
+  evaluation      morphism      [23X\mathrm{coclev}_{a,b}:      a      \rightarrow
+  \mathrm{\underline{coHom}}(a,b)  \otimes  b[123X,  i.e.,  the  unit  of the cohom
+  tensor adjunction.[133X
   
   [1X1.6-6 CoclosedCoevaluationMorphism[101X
   
   [33X[1;0Y[29X[2XCoclosedCoevaluationMorphism[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in [23X\mathrm{Hom}( \mathrm{\underline{coHom}}(a \otimes
-            b, a), b )[123X.[133X
+            b, b), a )[123X.[133X
   
   [33X[0;0YThe  arguments  are two objects [23Xa,b[123X. The output is the coclosed coevaluation
-  morphism [23X\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(a \otimes b, a)
-  \rightarrow b[123X, i.e., the counit of the cohom tensor adjunction.[133X
+  morphism [23X\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(a \otimes b, b)
+  \rightarrow a[123X, i.e., the counit of the cohom tensor adjunction.[133X
   
   [1X1.6-7 CoclosedCoevaluationMorphismWithGivenSource[101X
   
   [33X[1;0Y[29X[2XCoclosedCoevaluationMorphismWithGivenSource[102X( [3Xa[103X, [3Xb[103X, [3Xs[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in [23X\mathrm{Hom}( \mathrm{\underline{coHom}}(a \otimes
-            b, a), b )[123X.[133X
+            b, b), b )[123X.[133X
   
   [33X[0;0YThe    arguments    are    two    objects    [23Xa,b[123X   and   an   object   [23Xs   =
-  \mathrm{\underline{coHom}(a  \otimes  b,  a)}[123X.  The  output  is the coclosed
+  \mathrm{\underline{coHom}(a  \otimes  b,  b)}[123X.  The  output  is the coclosed
   coevaluation  morphism [23X\mathrm{coclcoev}_{a,b}: \mathrm{\underline{coHom}}(a
-  \otimes b, a) \rightarrow b[123X, i.e., the unit of the cohom tensor adjunction.[133X
+  \otimes b, b) \rightarrow a[123X, i.e., the unit of the cohom tensor adjunction.[133X
   
-  [1X1.6-8 InternalCoHomToTensorProductAdjunctionMap[101X
-  
-  [33X[1;0Y[29X[2XInternalCoHomToTensorProductAdjunctionMap[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, b \otimes c)[123X.[133X
-  
-  [33X[0;0YThe     arguments     are     objects     [23Xa,b[123X     and    a    morphism    [23Xf:
-  \mathrm{\underline{coHom}}(a,b) \rightarrow c[123X. The output is a morphism [23Xg: a
-  \rightarrow   b  \otimes  c[123X  corresponding  to  [23Xf[123X  under  the  cohom  tensor
-  adjunction.[133X
-  
-  [1X1.6-9 TensorProductToInternalCoHomAdjunctionMap[101X
+  [1X1.6-8 TensorProductToInternalCoHomAdjunctionMap[101X
   
   [33X[1;0Y[29X[2XTensorProductToInternalCoHomAdjunctionMap[102X( [3Xb[103X, [3Xc[103X, [3Xg[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( \mathrm{\underline{coHom}}(a,b), c )[123X.[133X
   
-  [33X[0;0YThe  arguments  are objects [23Xb,c[123X and a morphism [23Xg: a \rightarrow b \otimes c[123X.
+  [33X[0;0YThe  arguments  are objects [23Xc,b[123X and a morphism [23Xg: a \rightarrow c \otimes b[123X.
   The  output  is  a morphism [23Xf: \mathrm{\underline{coHom}}(a,b) \rightarrow c[123X
   corresponding to [23Xg[123X under the cohom tensor adjunction.[133X
+  
+  [1X1.6-9 InternalCoHomToTensorProductAdjunctionMap[101X
+  
+  [33X[1;0Y[29X[2XInternalCoHomToTensorProductAdjunctionMap[102X( [3Xa[103X, [3Xb[103X, [3Xf[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a, c \otimes b)[123X.[133X
+  
+  [33X[0;0YThe     arguments     are     objects     [23Xa,b[123X     and    a    morphism    [23Xf:
+  \mathrm{\underline{coHom}}(a,b) \rightarrow c[123X. The output is a morphism [23Xg: a
+  \rightarrow   c  \otimes  b[123X  corresponding  to  [23Xf[123X  under  the  cohom  tensor
+  adjunction.[133X
   
   [1X1.6-10 MonoidalPreCoComposeMorphism[101X
   
   [33X[1;0Y[29X[2XMonoidalPreCoComposeMorphism[102X( [3Xa[103X, [3Xb[103X, [3Xc[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya   morphism   in  [23X\mathrm{Hom}(  \mathrm{\underline{coHom}}(a,c),
-            \mathrm{\underline{coHom}}(a,b)                            \otimes
-            \mathrm{\underline{coHom}}(b,c) )[123X.[133X
+            \mathrm{\underline{coHom}}(b,c)                            \otimes
+            \mathrm{\underline{coHom}}(a,b) )[123X.[133X
   
   [33X[0;0YThe  arguments  are  three objects [23Xa,b,c[123X. The output is the precocomposition
   morphism      [23X\mathrm{MonoidalPreCoComposeMorphismWithGivenObjects}_{a,b,c}:
-  \mathrm{\underline{coHom}}(a,c)  \rightarrow \mathrm{\underline{coHom}}(a,b)
-  \otimes \mathrm{\underline{coHom}}(b,c)[123X.[133X
+  \mathrm{\underline{coHom}}(a,c)  \rightarrow \mathrm{\underline{coHom}}(b,c)
+  \otimes \mathrm{\underline{coHom}}(a,b)[123X.[133X
   
   [1X1.6-11 MonoidalPreCoComposeMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XMonoidalPreCoComposeMorphismWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya   morphism   in  [23X\mathrm{Hom}(  \mathrm{\underline{coHom}}(a,c),
-            \mathrm{\underline{coHom}}(a,b)                            \otimes
-            \mathrm{\underline{coHom}}(b,c) )[123X.[133X
+            \mathrm{\underline{coHom}}(b,c)                            \otimes
+            \mathrm{\underline{coHom}}(a,b) )[123X.[133X
   
   [33X[0;0YThe  arguments  are  an  object  [23Xs  = \mathrm{\underline{coHom}}(a,c)[123X, three
   objects  [23Xa,b,c[123X,  and  an  object [23Xr = \mathrm{\underline{coHom}}(a,b) \otimes
   \mathrm{\underline{coHom}}(b,c)[123X. The output is the precocomposition morphism
   [23X\mathrm{MonoidalPreCoComposeMorphismWithGivenObjects}_{a,b,c}:
-  \mathrm{\underline{coHom}}(a,c)  \rightarrow \mathrm{\underline{coHom}}(a,b)
-  \otimes \mathrm{\underline{coHom}}(b,c)[123X.[133X
+  \mathrm{\underline{coHom}}(a,c)  \rightarrow \mathrm{\underline{coHom}}(b,c)
+  \otimes \mathrm{\underline{coHom}}(a,b)[123X.[133X
   
   [1X1.6-12 MonoidalPostCoComposeMorphism[101X
   
   [33X[1;0Y[29X[2XMonoidalPostCoComposeMorphism[102X( [3Xa[103X, [3Xb[103X, [3Xc[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya   morphism   in  [23X\mathrm{Hom}(  \mathrm{\underline{coHom}}(a,c),
-            \mathrm{\underline{coHom}}(b,c)                            \otimes
-            \mathrm{\underline{coHom}}(a,b) )[123X.[133X
+            \mathrm{\underline{coHom}}(a,b)                            \otimes
+            \mathrm{\underline{coHom}}(b,c) )[123X.[133X
   
   [33X[0;0YThe  arguments  are three objects [23Xa,b,c[123X. The output is the postcocomposition
   morphism     [23X\mathrm{MonoidalPostCoComposeMorphismWithGivenObjects}_{a,b,c}:
-  \mathrm{\underline{coHom}}(a,c)  \rightarrow \mathrm{\underline{coHom}}(b,c)
-  \otimes \mathrm{\underline{coHom}}(a,b)[123X.[133X
+  \mathrm{\underline{coHom}}(a,c)  \rightarrow \mathrm{\underline{coHom}}(a,b)
+  \otimes \mathrm{\underline{coHom}}(b,c)[123X.[133X
   
   [1X1.6-13 MonoidalPostCoComposeMorphismWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XMonoidalPostCoComposeMorphismWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xc[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya   morphism   in  [23X\mathrm{Hom}(  \mathrm{\underline{coHom}}(a,c),
-            \mathrm{\underline{coHom}}(b,c)                            \otimes
-            \mathrm{\underline{coHom}}(a,b) )[123X.[133X
+            \mathrm{\underline{coHom}}(a,b)                            \otimes
+            \mathrm{\underline{coHom}}(b,c) )[123X.[133X
   
   [33X[0;0YThe  arguments  are  an  object  [23Xs  = \mathrm{\underline{coHom}}(a,c)[123X, three
   objects  [23Xa,b,c[123X,  and  an  object [23Xr = \mathrm{\underline{coHom}}(b,c) \otimes
   \mathrm{\underline{coHom}}(a,b)[123X.   The   output   is  the  postcocomposition
   morphism     [23X\mathrm{MonoidalPostCoComposeMorphismWithGivenObjects}_{a,b,c}:
-  \mathrm{\underline{coHom}}(a,c)  \rightarrow \mathrm{\underline{coHom}}(b,c)
-  \otimes \mathrm{\underline{coHom}}(a,b)[123X.[133X
+  \mathrm{\underline{coHom}}(a,c)  \rightarrow \mathrm{\underline{coHom}}(a,b)
+  \otimes \mathrm{\underline{coHom}}(b,c)[123X.[133X
   
   [1X1.6-14 CoDualOnObjects[101X
   
@@ -870,19 +870,19 @@
   [1X1.6-17 CoclosedEvaluationForCoDual[101X
   
   [33X[1;0Y[29X[2XCoclosedEvaluationForCoDual[102X( [3Xa[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( 1, a \otimes a_{\vee} )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( 1, a_{\vee} \otimes a )[123X.[133X
   
   [33X[0;0YThe  argument is an object [23Xa[123X. The output is the coclosed evaluation morphism
-  [23X\mathrm{coclev}_{a}: 1 \rightarrow a \otimes a_{\vee}[123X.[133X
+  [23X\mathrm{coclev}_{a}: 1 \rightarrow a_{\vee} \otimes a[123X.[133X
   
   [1X1.6-18 CoclosedEvaluationForCoDualWithGivenTensorProduct[101X
   
   [33X[1;0Y[29X[2XCoclosedEvaluationForCoDualWithGivenTensorProduct[102X( [3Xs[103X, [3Xa[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( 1, a \otimes a_{\vee} )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( 1, a_{\vee} \otimes a )[123X.[133X
   
-  [33X[0;0YThe  arguments are an object [23Xs = 1[123X, an object [23Xa[123X, and an object [23Xr = a \otimes
-  a_{\vee}[123X.    The    output    is    the    coclosed    evaluation   morphism
-  [23X\mathrm{cocloev}_{a}: 1 \rightarrow a \otimes a_{\vee}[123X.[133X
+  [33X[0;0YThe  arguments  are an object [23Xs = 1[123X, an object [23Xa[123X, and an object [23Xr = a_{\vee}
+  \otimes    a[123X.    The    output   is   the   coclosed   evaluation   morphism
+  [23X\mathrm{coclev}_{a}: 1 \rightarrow a_{\vee} \otimes a[123X.[133X
   
   [1X1.6-19 MorphismFromCoBidual[101X
   
@@ -952,12 +952,12 @@
   [1X1.6-25 MorphismFromInternalCoHomToTensorProduct[101X
   
   [33X[1;0Y[29X[2XMorphismFromInternalCoHomToTensorProduct[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  \mathrm{\underline{coHom}}(a,b), a
-            \otimes b_{\vee} )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya   morphism   in  [23X\mathrm{Hom}(  \mathrm{\underline{coHom}}(a,b),
+            b_{\vee} \otimes a )[123X.[133X
   
   [33X[0;0YThe  arguments  are  two  objects  [23Xa,b[123X.  The  output is the natural morphism
   [23X\mathrm{MorphismFromInternalCoHomToTensorProductWithGivenObjects}_{a,b}:
-  \mathrm{\underline{coHom}}(a,b) \rightarrow a \otimes b_{\vee}[123X.[133X
+  \mathrm{\underline{coHom}}(a,b) \rightarrow b_{\vee} \otimes a[123X.[133X
   
   [1X1.6-26 MorphismFromInternalCoHomToTensorProductWithGivenObjects[101X
   
@@ -966,7 +966,7 @@
             \otimes b_{\vee} )[123X.[133X
   
   [33X[0;0YThe arguments are an object [23Xs = \mathrm{\underline{coHom}}(a,b)[123X, two objects
-  [23Xa,b[123X,  and  an  object  [23Xr  =  a  \otimes  b_{\vee}[123X. The output is the natural
+  [23Xa,b[123X,  and  an  object  [23Xr  =  b_{\vee}  \otimes  a[123X. The output is the natural
   morphism
   [23X\mathrm{MorphismFromInternalCoHomToTensorProductWithGivenObjects}_{a,b}:
   \mathrm{\underline{coHom}}(a,b) \rightarrow a \otimes b_{\vee}[123X.[133X
@@ -993,11 +993,11 @@
   
   [1X1.6-29 UniversalPropertyOfCoDual[101X
   
-  [33X[1;0Y[29X[2XUniversalPropertyOfCoDual[102X( [3Xa[103X, [3Xt[103X, [3Xalpha[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XUniversalPropertyOfCoDual[102X( [3Xt[103X, [3Xa[103X, [3Xalpha[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a_{\vee}, t)[123X.[133X
   
-  [33X[0;0YThe  arguments  are  two objects [23Xa,t[123X, and a morphism [23X\alpha: 1 \rightarrow a
-  \otimes  t[123X.  The  output is the morphism [23Xa_{\vee} \rightarrow t[123X given by the
+  [33X[0;0YThe  arguments  are  two objects [23Xt,a[123X, and a morphism [23X\alpha: 1 \rightarrow t
+  \otimes  a[123X.  The  output is the morphism [23Xa_{\vee} \rightarrow t[123X given by the
   universal property of [23Xa_{\vee}[123X.[133X
   
   [1X1.6-30 CoLambdaIntroduction[101X
@@ -1071,10 +1071,9 @@
   
   [33X[0;0YA symmetric closed monoidal category [23X\mathbf{C}[123X satisfying[133X
   
-  [30X    [33X[0;6Ythe   natural   morphism   [23X\mathrm{\underline{Hom}}(a_1,b_1)   \otimes
-        \mathrm{\underline{Hom}}(a_2,b_2)                          \rightarrow
-        \mathrm{\underline{Hom}}(a_1   \otimes  a_2,b_1  \otimes  b_2)[123X  is  an
-        isomorphism,[133X
+  [30X    [33X[0;6Ythe   natural   morphism   [23X\mathrm{\underline{Hom}}(a,   a')   \otimes
+        \mathrm{\underline{Hom}}(b, b') \rightarrow \mathrm{\underline{Hom}}(a
+        \otimes b, a' \otimes b')[123X is an isomorphism,[133X
   
   [30X    [33X[0;6Ythe          natural          morphism          [23Xa          \rightarrow
         \mathrm{\underline{Hom}}(\mathrm{\underline{Hom}}(a,   1),  1)[123X  is  an
@@ -1092,7 +1091,18 @@
   [23X\mathrm{IsomorphismFromTensorProductToInternalHom}_{a,b}: a^{\vee} \otimes b
   \rightarrow \mathrm{\underline{Hom}}(a,b)[123X.[133X
   
-  [1X1.9-2 MorphismFromInternalHomToTensorProduct[101X
+  [1X1.9-2 IsomorphismFromInternalHomToTensorProduct[101X
+  
+  [33X[1;0Y[29X[2XIsomorphismFromInternalHomToTensorProduct[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya   morphism   in   [23X\mathrm{Hom}(   \mathrm{\underline{Hom}}(a,b),
+            a^{\vee} \otimes b )[123X.[133X
+  
+  [33X[0;0YThe   arguments   are  two  objects  [23Xa,b[123X.  The  output  is  the  inverse  of
+  [23X\mathrm{IsomorphismFromTensorProductToInternalHom}[123X,                   namely
+  [23X\mathrm{IsomorphismFromInternalHomToTensorProduct}_{a,b}:
+  \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b[123X.[133X
+  
+  [1X1.9-3 MorphismFromInternalHomToTensorProduct[101X
   
   [33X[1;0Y[29X[2XMorphismFromInternalHomToTensorProduct[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya   morphism   in   [23X\mathrm{Hom}(   \mathrm{\underline{Hom}}(a,b),
@@ -1103,7 +1113,7 @@
   [23X\mathrm{MorphismFromInternalHomToTensorProductWithGivenObjects}_{a,b}:
   \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b[123X.[133X
   
-  [1X1.9-3 MorphismFromInternalHomToTensorProductWithGivenObjects[101X
+  [1X1.9-4 MorphismFromInternalHomToTensorProductWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XMorphismFromInternalHomToTensorProductWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya   morphism   in   [23X\mathrm{Hom}(   \mathrm{\underline{Hom}}(a,b),
@@ -1115,23 +1125,12 @@
   [23X\mathrm{MorphismFromInternalHomToTensorProductWithGivenObjects}_{a,b}:
   \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b[123X.[133X
   
-  [1X1.9-4 IsomorphismFromInternalHomToTensorProduct[101X
-  
-  [33X[1;0Y[29X[2XIsomorphismFromInternalHomToTensorProduct[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya   morphism   in   [23X\mathrm{Hom}(   \mathrm{\underline{Hom}}(a,b),
-            a^{\vee} \otimes b )[123X.[133X
-  
-  [33X[0;0YThe   arguments   are  two  objects  [23Xa,b[123X.  The  output  is  the  inverse  of
-  [23X\mathrm{IsomorphismFromTensorProductToInternalHom}[123X,                   namely
-  [23X\mathrm{IsomorphismFromInternalHomToTensorProduct}_{a,b}:
-  \mathrm{\underline{Hom}}(a,b) \rightarrow a^{\vee} \otimes b[123X.[133X
-  
   [1X1.9-5 TensorProductInternalHomCompatibilityMorphismInverse[101X
   
   [33X[1;0Y[29X[2XTensorProductInternalHomCompatibilityMorphismInverse[102X( [3Xlist[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  \mathrm{\underline{Hom}}(a \otimes
             b,a'    \otimes    b'),   \mathrm{\underline{Hom}}(a,a')   \otimes
-            \mathrm{\underline{Hom}}(b,b'))[123X.[133X
+            \mathrm{\underline{Hom}}(b,b') )[123X.[133X
   
   [33X[0;0YThe  argument  is a list of four objects [23X[ a, a', b, b' ][123X. The output is the
   natural                                                             morphism
@@ -1144,7 +1143,7 @@
   [33X[1;0Y[29X[2XTensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects[102X( [3Xs[103X, [3Xlist[103X, [3Xr[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  \mathrm{\underline{Hom}}(a \otimes
             b,a'    \otimes    b'),   \mathrm{\underline{Hom}}(a,a')   \otimes
-            \mathrm{\underline{Hom}}(b,b'))[123X.[133X
+            \mathrm{\underline{Hom}}(b,b') )[123X.[133X
   
   [33X[0;0YThe arguments are a list of four objects [23X[ a, a', b, b' ][123X, and two objects [23Xs
   =   \mathrm{\underline{Hom}}(a   \otimes   b,a'   \otimes   b')[123X   and   [23Xr  =
@@ -1176,7 +1175,7 @@
   [33X[1;0Y[29X[2XTraceMap[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1,1)[123X.[133X
   
-  [33X[0;0YThe  argument  is an endomorphism [23X\alpha: A \rightarrow A[123X. The output is the
+  [33X[0;0YThe  argument  is an endomorphism [23X\alpha: a \rightarrow a[123X. The output is the
   trace morphism [23X\mathrm{trace}_{\alpha}: 1 \rightarrow 1[123X.[133X
   
   [1X1.9-10 RankMorphism[101X
@@ -1209,9 +1208,9 @@
   
   [33X[0;0YA symmetric coclosed monoidal category [23X\mathbf{C}[123X satisfying[133X
   
-  [30X    [33X[0;6Ythe  natural  morphism [23X\mathrm{\underline{coHom}}(a_1 \otimes a_2, b_1
-        \otimes  b_2) \rightarrow \mathrm{\underline{coHom}}(a_1, b_1) \otimes
-        \mathrm{\underline{coHom}}(a_2, b_2)[123X is an isomorphism,[133X
+  [30X    [33X[0;6Ythe   natural  morphism  [23X\mathrm{\underline{coHom}}(a  \otimes  a',  b
+        \otimes   b')  \rightarrow  \mathrm{\underline{coHom}}(a,  b)  \otimes
+        \mathrm{\underline{coHom}}(a', b')[123X is an isomorphism,[133X
   
   [30X    [33X[0;6Ythe        natural        morphism       [23X\mathrm{\underline{coHom}}(1,
         \mathrm{\underline{coHom}}(1, a)) \rightarrow a[123X is an isomorphism[133X
@@ -1221,100 +1220,98 @@
   [1X1.10-1 IsomorphismFromInternalCoHomToTensorProduct[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromInternalCoHomToTensorProduct[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya  morphism  in  [23X\mathrm{Hom}(  \mathrm{\underline{coHom}}(a,b), a
-            \otimes b_{\vee} )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya   morphism   in  [23X\mathrm{Hom}(  \mathrm{\underline{coHom}}(a,b),
+            b_{\vee} \otimes a )[123X.[133X
   
   [33X[0;0YThe  arguments  are  two  objects  [23Xa,b[123X.  The  output is the natural morphism
   [23X\mathrm{IsomorphismFromInternalCoHomToTensorProductWithGivenObjects}_{a,b}:
-  \mathrm{\underline{coHom}}(a,b) \rightarrow a \otimes b_{\vee}[123X.[133X
+  \mathrm{\underline{coHom}}(a,b) \rightarrow b_{\vee} \otimes a[123X.[133X
   
-  [1X1.10-2 MorphismFromTensorProductToInternalCoHom[101X
-  
-  [33X[1;0Y[29X[2XMorphismFromTensorProductToInternalCoHom[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    a    \otimes    b_{\vee},
-            \mathrm{\underline{coHom}}(a,b) )[123X.[133X
-  
-  [33X[0;0YThe   arguments   are  two  objects  [23Xa,b[123X.  The  output  is  the  inverse  of
-  [23X\mathrm{MorphismFromInternalCoHomToTensorProductWithGivenObjects}[123X,    namely
-  [23X\mathrm{MorphismFromTensorProductToInternalCoHomWithGivenObjects}_{a,b}:   a
-  \otimes b_{\vee} \rightarrow \mathrm{\underline{coHom}}(a,b)[123X.[133X
-  
-  [1X1.10-3 MorphismFromTensorProductToInternalCoHomWithGivenObjects[101X
-  
-  [33X[1;0Y[29X[2XMorphismFromTensorProductToInternalCoHomWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    a    \otimes    b_{\vee},
-            \mathrm{\underline{coHom}}(a,b)[123X.[133X
-  
-  [33X[0;0YThe  arguments are an object [23Xs = a \otimes b_{\vee}[123X, two objects [23Xa,b[123X, and an
-  object  [23Xr  =  \mathrm{\underline{coHom}}(a,b)[123X.  The output is the inverse of
-  [23X\mathrm{MorphismFromInternalCoHomToTensorProductWithGivenObjects}[123X,    namely
-  [23X\mathrm{MorphismFromTensorProductToInternalCoHomWithGivenObjects}_{a,b}:   a
-  \otimes b_{\vee} \rightarrow \mathrm{\underline{coHom}}(a,b)[123X.[133X
-  
-  [1X1.10-4 IsomorphismFromTensorProductToInternalCoHom[101X
+  [1X1.10-2 IsomorphismFromTensorProductToInternalCoHom[101X
   
   [33X[1;0Y[29X[2XIsomorphismFromTensorProductToInternalCoHom[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    a    \otimes    b_{\vee},
-            \mathrm{\underline{coHom}}(a,b)[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    a_{\vee}    \otimes    b,
+            \mathrm{\underline{coHom}}(b,a)[123X.[133X
   
   [33X[0;0YThe   arguments   are  two  objects  [23Xa,b[123X.  The  output  is  the  inverse  of
   [23X\mathrm{IsomorphismFromInternalCoHomToTensorProduct}[123X,                 namely
-  [23X\mathrm{IsomorphismFromTensorProductToInternalCoHom}_{a,b}:     a    \otimes
-  b_{\vee} \rightarrow \mathrm{\underline{coHom}}(a,b)[123X.[133X
+  [23X\mathrm{IsomorphismFromTensorProductToInternalCoHom}_{a,b}: a_{\vee} \otimes
+  b \rightarrow \mathrm{\underline{coHom}}(b,a)[123X.[133X
+  
+  [1X1.10-3 MorphismFromTensorProductToInternalCoHom[101X
+  
+  [33X[1;0Y[29X[2XMorphismFromTensorProductToInternalCoHom[102X( [3Xa[103X, [3Xb[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    a_{\vee}    \otimes    b,
+            \mathrm{\underline{coHom}}(b,a) )[123X.[133X
+  
+  [33X[0;0YThe   arguments   are  two  objects  [23Xa,b[123X.  The  output  is  the  inverse  of
+  [23X\mathrm{MorphismFromInternalCoHomToTensorProductWithGivenObjects}[123X,    namely
+  [23X\mathrm{MorphismFromTensorProductToInternalCoHomWithGivenObjects}_{a,b}:
+  a_{\vee} \otimes b \rightarrow \mathrm{\underline{coHom}}(b,a)[123X.[133X
+  
+  [1X1.10-4 MorphismFromTensorProductToInternalCoHomWithGivenObjects[101X
+  
+  [33X[1;0Y[29X[2XMorphismFromTensorProductToInternalCoHomWithGivenObjects[102X( [3Xs[103X, [3Xa[103X, [3Xb[103X, [3Xr[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya     morphism    in    [23X\mathrm{Hom}(    a_{\vee}    \otimes    b,
+            \mathrm{\underline{coHom}}(b,a)[123X.[133X
+  
+  [33X[0;0YThe  arguments are an object [23Xs_{\vee} = a \otimes b[123X, two objects [23Xa,b[123X, and an
+  object  [23Xr  =  \mathrm{\underline{coHom}}(b,a)[123X.  The output is the inverse of
+  [23X\mathrm{MorphismFromInternalCoHomToTensorProductWithGivenObjects}[123X,    namely
+  [23X\mathrm{MorphismFromTensorProductToInternalCoHomWithGivenObjects}_{a,b}:
+  a_{\vee} \otimes b \rightarrow \mathrm{\underline{coHom}}(b,a)[123X.[133X
   
   [1X1.10-5 InternalCoHomTensorProductCompatibilityMorphismInverse[101X
   
   [33X[1;0Y[29X[2XInternalCoHomTensorProductCompatibilityMorphismInverse[102X( [3Xlist[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya  morphism  in [23X\mathrm{Hom}( \mathrm{\underline{coHom}}(a_1, a_2)
-            \otimes            \mathrm{\underline{coHom}}(b_1,           b_2),
-            \mathrm{\underline{coHom}}(a_1 \otimes b_1, a_2 \otimes b_2)[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya   morphism   in   [23X\mathrm{Hom}(  \mathrm{\underline{coHom}}(a,b)
+            \otimes                         \mathrm{\underline{coHom}}(a',b'),
+            \mathrm{\underline{coHom}}(a \otimes a', b \otimes b' )[123X.[133X
   
   [33X[0;0YThe  argument  is a list of four objects [23X[ a, a', b, b' ][123X. The output is the
   natural                                                             morphism
   [23X\mathrm{InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}:
-  \mathrm{\underline{coHom}}(a_1, a_2) \otimes \mathrm{\underline{coHom}}(b_1,
-  b_2)  \rightarrow  \mathrm{\underline{coHom}}(a_1  \otimes  b_1, a_2 \otimes
-  b_2)[123X.[133X
+  \mathrm{\underline{coHom}}(a,b)   \otimes  \mathrm{\underline{coHom}}(a',b')
+  \rightarrow \mathrm{\underline{coHom}}(a \otimes a', b \otimes b')[123X.[133X
   
   [1X1.10-6 InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects[101X
   
   [33X[1;0Y[29X[2XInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects[102X( [3Xs[103X, [3Xlist[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya  morphism  in [23X\mathrm{Hom}( \mathrm{\underline{coHom}}(a_1, a_2)
-            \otimes            \mathrm{\underline{coHom}}(b_1,           b_2),
-            \mathrm{\underline{coHom}}(a_1 \otimes b_1, a_2 \otimes b_2) )[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya   morphism   in   [23X\mathrm{Hom}(  \mathrm{\underline{coHom}}(a,b)
+            \otimes                         \mathrm{\underline{coHom}}(a',b'),
+            \mathrm{\underline{coHom}}(a \otimes a', b \otimes b' )[123X.[133X
   
   [33X[0;0YThe arguments are a list of four objects [23X[ a, a', b, b' ][123X, and two objects [23Xs
-  =           \mathrm{\underline{coHom}}(a_1,           a_2)           \otimes
-  \mathrm{\underline{coHom}}(b_1,  b_2)[123X and [23Xr = \mathrm{\underline{coHom}}(a_1
-  \otimes   b_1,  a_2  \otimes  b_2)[123X.  The  output  is  the  natural  morphism
+  =  \mathrm{\underline{coHom}}(a,b) \otimes \mathrm{\underline{coHom}}(a',b')[123X
+  and  [23Xr  = \mathrm{\underline{coHom}}(a \otimes a', b \otimes b')[123X. The output
+  is                   the                   natural                  morphism
   [23X\mathrm{InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects}_{a,a',b,b'}:
-  \mathrm{\underline{coHom}}(a_1, a_2) \otimes \mathrm{\underline{coHom}}(b_1,
-  b_2)  \rightarrow  \mathrm{\underline{coHom}}(a_1  \otimes  b_1, a_2 \otimes
-  b_2)[123X.[133X
+  \mathrm{\underline{coHom}}(a,b)   \otimes  \mathrm{\underline{coHom}}(a',b')
+  \rightarrow \mathrm{\underline{coHom}}(a \otimes a', b \otimes b')[123X.[133X
   
   [1X1.10-7 CoclosedCoevaluationForCoDual[101X
   
   [33X[1;0Y[29X[2XCoclosedCoevaluationForCoDual[102X( [3Xa[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a_{\vee} \otimes a, 1)[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \otimes a_{\vee}, 1)[123X.[133X
   
   [33X[0;0YThe  argument  is  an  object  [23Xa[123X.  The  output  is the coclosed coevaluation
-  morphism [23X\mathrm{coclcoev}_{a}: a_{\vee} \otimes a \rightarrow 1[123X.[133X
+  morphism [23X\mathrm{coclcoev}_{a}: a \otimes a_{\vee} \rightarrow 1[123X.[133X
   
   [1X1.10-8 CoclosedCoevaluationForCoDualWithGivenTensorProduct[101X
   
   [33X[1;0Y[29X[2XCoclosedCoevaluationForCoDualWithGivenTensorProduct[102X( [3Xs[103X, [3Xa[103X, [3Xr[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a_{\vee} \otimes a, 1)[123X.[133X
+  [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(a \otimes a_{\vee}, 1)[123X.[133X
   
-  [33X[0;0YThe  arguments  are  an  object  [23Xs = a_{\vee} \otimes a[123X, an object [23Xa[123X, and an
+  [33X[0;0YThe  arguments  are  an  object  [23Xs = a \otimes a_{\vee}[123X, an object [23Xa[123X, and an
   object   [23Xr   =   1[123X.   The  output  is  the  coclosed  coevaluation  morphism
-  [23X\mathrm{coclcoev}_{a}: a_{\vee} \otimes a \rightarrow 1[123X.[133X
+  [23X\mathrm{coclcoev}_{a}: a \otimes a_{\vee} \rightarrow 1[123X.[133X
   
   [1X1.10-9 CoTraceMap[101X
   
   [33X[1;0Y[29X[2XCoTraceMap[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(1,1)[123X.[133X
   
-  [33X[0;0YThe  argument  is an endomorphism [23X\alpha: A \rightarrow A[123X. The output is the
+  [33X[0;0YThe  argument  is an endomorphism [23X\alpha: a \rightarrow a[123X. The output is the
   cotrace morphism [23X\mathrm{cotrace}_{\alpha}: 1 \rightarrow 1[123X.[133X
   
   [1X1.10-10 CoRankMorphism[101X
