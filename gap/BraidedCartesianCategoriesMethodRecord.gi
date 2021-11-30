@@ -1,10 +1,19 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
-# FROM MonoidalCategories v2021.11-04
-# USING CategoryConstructor v2021.11-07
+# FROM MonoidalCategories v2021.11-05
+# USING CategoryConstructor v2021.11-08
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
+# Pre processor functions for dual operations
+#
+
+BindGlobal( "DualPreProcessorFuncCartesianBraidingWithGivenDirectProducts",
+              { cat, s, a, b, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ] );
+
+BindGlobal( "DualPreProcessorFuncCartesianBraidingInverseWithGivenDirectProducts",
+              { cat, s, a, b, r } -> [ Opposite( cat ), Opposite( s ), Opposite( a ), Opposite( b ), Opposite( r ) ] );
+
 # Implementations
 #
 
@@ -16,12 +25,19 @@ CartesianBraiding := rec(
   output_source_getter_string := "DirectProduct( a, b )",
   output_range_getter_string := "DirectProduct( b, a )",
   with_given_object_position := "both",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "CartesianBraidingInverse",
+  dual_arguments_reversed := false,
+),
 
 CartesianBraidingWithGivenDirectProducts := rec(
   filter_list := [ "category", "object", "object", "object", "object" ],
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "CartesianBraidingInverseWithGivenDirectProducts",
+  dual_preprocessor_func := DualPreProcessorFuncCartesianBraidingWithGivenDirectProducts,
+  dual_arguments_reversed := false,
+),
 
 CartesianBraidingInverse := rec(
   filter_list := [ "category", "object", "object" ],
@@ -29,12 +45,19 @@ CartesianBraidingInverse := rec(
   output_source_getter_string := "DirectProduct( b, a )",
   output_range_getter_string := "DirectProduct( a, b )",
   with_given_object_position := "both",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "CartesianBraiding",
+  dual_arguments_reversed := false,
+),
 
 CartesianBraidingInverseWithGivenDirectProducts := rec(
   filter_list := [ "category", "object", "object", "object", "object" ],
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "CartesianBraidingWithGivenDirectProducts",
+  dual_preprocessor_func := DualPreProcessorFuncCartesianBraidingInverseWithGivenDirectProducts,
+  dual_arguments_reversed := false,
+),
 
 ) );
 
