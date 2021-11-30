@@ -950,8 +950,8 @@ true
 function (  )
     local val1_1, val2_1;
     return 1;
-    val1_1 := 1;
     val2_1 := 1;
+    val1_1 := 1;
     return;
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree2 := CapJitInlinedBindings( tree );;</span>
@@ -959,8 +959,8 @@ end
 function (  )
     local val1_1, val2_1;
     return 1;
-    val1_1 := 1;
     val2_1 := 1;
+    val1_1 := 1;
     return;
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree = tree2;</span>
@@ -1146,8 +1146,8 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, [ cat ] ) );</span>
 function ( cat_1, matrix_1 )
     local morphism_attr_1_1, morphism_attr_2_1;
-    morphism_attr_1_1 := matrix_1;
     morphism_attr_2_1 := matrix_1;
+    morphism_attr_1_1 := matrix_1;
     return [ ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
                  ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), 
@@ -1654,27 +1654,23 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># be careful not to use `MatrixCategory` because attributes are not supported</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">category_constructor := function( field )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  return Opposite( MATRIX_CATEGORY( field : FinalizeCategory := true ) ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MATRIX_CATEGORY( QQ : no_precompiled_code := true );;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return Opposite(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        MATRIX_CATEGORY(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            field :</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            no_precompiled_code := true, FinalizeCategory := true</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ) :</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        only_primitive_operations := true</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ QQ ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := "OppositeOfMatrixCategoryPrecompiled";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "LinearAlgebraForCAP";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := Intersection(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ListPrimitivelyInstalledOperationsOfCategory( vec ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    CAP_JIT_INTERNAL_SAFE_OPERATIONS</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># The output for Lift/ColiftOrFail differs between GAP 4.11 and GAP 4.12, see</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># https://github.com/gap-system/gap/issues/4523</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">operations := Difference( operations, [ "LiftOrFail", "ColiftOrFail" ] );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name :</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations := operations</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    operations := "primitive"</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-WARNING: Could not resolve all CAP operations while precompiling HomomorphismS\
-tructureOnMorphismsWithGivenObjects.
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReadPackage(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    "LinearAlgebraForCAP",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    "gap/precompiled_categories/OppositeOfMatrixCategoryPrecompiled.gi"</span>

@@ -906,8 +906,8 @@
     [4X[28Xfunction (  )[128X[104X
     [4X[28X    local val1_1, val2_1;[128X[104X
     [4X[28X    return 1;[128X[104X
-    [4X[28X    val1_1 := 1;[128X[104X
     [4X[28X    val2_1 := 1;[128X[104X
+    [4X[28X    val1_1 := 1;[128X[104X
     [4X[28X    return;[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27Xtree2 := CapJitInlinedBindings( tree );;[127X[104X
@@ -915,8 +915,8 @@
     [4X[28Xfunction (  )[128X[104X
     [4X[28X    local val1_1, val2_1;[128X[104X
     [4X[28X    return 1;[128X[104X
-    [4X[28X    val1_1 := 1;[128X[104X
     [4X[28X    val2_1 := 1;[128X[104X
+    [4X[28X    val1_1 := 1;[128X[104X
     [4X[28X    return;[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27Xtree = tree2;[127X[104X
@@ -1099,8 +1099,8 @@
     [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, [ cat ] ) );[127X[104X
     [4X[28Xfunction ( cat_1, matrix_1 )[128X[104X
     [4X[28X    local morphism_attr_1_1, morphism_attr_2_1;[128X[104X
-    [4X[28X    morphism_attr_1_1 := matrix_1;[128X[104X
     [4X[28X    morphism_attr_2_1 := matrix_1;[128X[104X
+    [4X[28X    morphism_attr_1_1 := matrix_1;[128X[104X
     [4X[28X    return [ ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
     [4X[28X               ), cat_1, ObjectifyObjectForCAPWithAttributes( rec([128X[104X
     [4X[28X                 ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), [128X[104X
@@ -1599,27 +1599,23 @@
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
     [4X[25Xgap>[125X [27X# be careful not to use `MatrixCategory` because attributes are not supported[127X[104X
     [4X[25X>[125X [27Xcategory_constructor := function( field )[127X[104X
-    [4X[25X>[125X [27X  return Opposite( MATRIX_CATEGORY( field : FinalizeCategory := true ) ); end;;[127X[104X
-    [4X[25Xgap>[125X [27Xvec := MATRIX_CATEGORY( QQ : no_precompiled_code := true );;[127X[104X
+    [4X[25X>[125X [27X    return Opposite([127X[104X
+    [4X[25X>[125X [27X        MATRIX_CATEGORY([127X[104X
+    [4X[25X>[125X [27X            field :[127X[104X
+    [4X[25X>[125X [27X            no_precompiled_code := true, FinalizeCategory := true[127X[104X
+    [4X[25X>[125X [27X        ) :[127X[104X
+    [4X[25X>[125X [27X        only_primitive_operations := true[127X[104X
+    [4X[25X>[125X [27X    ); end;;[127X[104X
     [4X[25Xgap>[125X [27Xgiven_arguments := [ QQ ];;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_category_name := "OppositeOfMatrixCategoryPrecompiled";;[127X[104X
     [4X[25Xgap>[125X [27Xpackage_name := "LinearAlgebraForCAP";;[127X[104X
-    [4X[25Xgap>[125X [27Xoperations := Intersection([127X[104X
-    [4X[25X>[125X [27X    ListPrimitivelyInstalledOperationsOfCategory( vec ),[127X[104X
-    [4X[25X>[125X [27X    CAP_JIT_INTERNAL_SAFE_OPERATIONS[127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27X# The output for Lift/ColiftOrFail differs between GAP 4.11 and GAP 4.12, see[127X[104X
-    [4X[25X>[125X [27X# https://github.com/gap-system/gap/issues/4523[127X[104X
-    [4X[25X>[125X [27Xoperations := Difference( operations, [ "LiftOrFail", "ColiftOrFail" ] );;[127X[104X
     [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
     [4X[25X>[125X [27X    category_constructor,[127X[104X
     [4X[25X>[125X [27X    given_arguments,[127X[104X
     [4X[25X>[125X [27X    package_name,[127X[104X
     [4X[25X>[125X [27X    compiled_category_name :[127X[104X
-    [4X[25X>[125X [27X    operations := operations[127X[104X
+    [4X[25X>[125X [27X    operations := "primitive"[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
-    [4X[28XWARNING: Could not resolve all CAP operations while precompiling HomomorphismS\[128X[104X
-    [4X[28XtructureOnMorphismsWithGivenObjects.[128X[104X
     [4X[25Xgap>[125X [27XReadPackage([127X[104X
     [4X[25X>[125X [27X    "LinearAlgebraForCAP",[127X[104X
     [4X[25X>[125X [27X    "gap/precompiled_categories/OppositeOfMatrixCategoryPrecompiled.gi"[127X[104X
