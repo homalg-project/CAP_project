@@ -12,15 +12,6 @@
 ##
 ####################################
 
-#! A symmetric coclosed monoidal category $\mathbf{C}$ satisfying
-#! * the natural morphism
-#!  $\mathrm{\underline{coHom}}(a \otimes a', b \otimes b') \rightarrow \mathrm{\underline{coHom}}(a, b) \otimes \mathrm{\underline{coHom}}(a', b')$
-#!  is an isomorphism,
-#! * the natural morphism
-#!  $\mathrm{\underline{coHom}}(1, \mathrm{\underline{coHom}}(1, a)) \rightarrow a$
-#!  is an isomorphism
-#! is called a <Emph>rigid symmetric coclosed monoidal category</Emph>.
-
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsRigidSymmetricCoclosedMonoidalCategory  := Concatenation( [ 
 "InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
 "MorphismToCoBidualWithGivenCoBidual"
