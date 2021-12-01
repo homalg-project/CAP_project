@@ -1,13 +1,14 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
 # FROM MonoidalCategories v2021.12-01
-# USING CategoryConstructor v2021.11-08
+# USING CategoryConstructor v2021.12-01
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
-# Preprocessor functions for dual operations
+# Implementations
 #
 
+# Preprocessor functions for dual operations
 BindGlobal( "PreProcessorFuncCartesianAssociatorRightToLeftWithGivenDirectProducts",
               { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ]
 );
@@ -15,9 +16,6 @@ BindGlobal( "PreProcessorFuncCartesianAssociatorRightToLeftWithGivenDirectProduc
 BindGlobal( "PreProcessorFuncCartesianAssociatorLeftToRightWithGivenDirectProducts",
               { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ]
 );
-
-# Implementations
-#
 
 InstallValue( CARTESIAN_CATEGORIES_METHOD_NAME_RECORD, rec(
 

@@ -1,21 +1,19 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
 # FROM MonoidalCategories v2021.12-01
-# USING CategoryConstructor v2021.11-08
+# USING CategoryConstructor v2021.12-01
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
-# Pre processor functions for dual operations
+# Implementations
 #
 
+# Pre processor functions for dual operations
 BindGlobal( "PreProcessorFuncCocartesianBraidingWithGivenCoproducts",
               { cat, s, a, b, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ] );
 
 BindGlobal( "PreProcessorFuncCocartesianBraidingInverseWithGivenCoproducts",
               { cat, s, a, b, r } -> [ Opposite( cat ), Opposite( s ), Opposite( a ), Opposite( b ), Opposite( r ) ] );
-
-# Implementations
-#
 
 InstallValue( BRAIDED_COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD, rec(
 
