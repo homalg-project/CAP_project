@@ -1,5 +1,5 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
-# FROM MonoidalCategories v2021.12-01
+# FROM MonoidalCategories v2021.11-05
 # USING CategoryConstructor v2021.11-08
 
 # SPDX-License-Identifier: GPL-2.0-or-later
@@ -8,23 +8,23 @@
 # Preprocessor functions for dual operations
 #
 
-BindGlobal( "PreProcessorFuncCocartesianEvaluationMorphismWithGivenRange", { cat, a, b, r } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( r ) ] );
+BindGlobal( "DualPreProcessorFuncCocartesianEvaluationMorphismWithGivenRange", { cat, a, b, r } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( r ) ] );
 
-BindGlobal( "PreProcessorFuncCoexponentialToCoproductAdjunctionMap", { cat, a, b, f } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( f ) ] );
+BindGlobal( "DualPreProcessorFuncCoexponentialToCoproductAdjunctionMap", { cat, a, b, f } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( f ) ] );
 
-BindGlobal( "PreProcessorFuncCoexponentialCoproductCompatibilityMorphism",
+BindGlobal( "DualPreProcessorFuncCoexponentialCoproductCompatibilityMorphism",
               { cat, list } -> [ Opposite( cat ), [ Opposite( list[2] ), Opposite( list[4] ), Opposite( list[1] ), Opposite( list[3] ) ] ]
 );
 
-BindGlobal( "PreProcessorFuncCoexponentialCoproductCompatibilityMorphismWithGivenObjects",
+BindGlobal( "DualPreProcessorFuncCoexponentialCoproductCompatibilityMorphismWithGivenObjects",
               { cat, s, list, r } -> [ Opposite( cat ), Opposite( r ), [ Opposite( list[2] ), Opposite( list[4] ), Opposite( list[1] ), Opposite( list[3] ) ], Opposite( s ) ]
 );
 
-BindGlobal( "PreProcessorFuncCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects",
+BindGlobal( "DualPreProcessorFuncCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects",
               { cat, s, a, b, r} -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ]
 );
 
-BindGlobal( "PreProcessorFuncCocartesianLambdaElimination", { cat, a, b, alpha } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( alpha ) ] );
+BindGlobal( "DualPreProcessorFuncCocartesianLambdaElimination", { cat, a, b, alpha } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( alpha ) ] );
 
 # Implementations
 #
@@ -74,7 +74,7 @@ CocartesianEvaluationMorphismWithGivenRange := rec(
   io_type := [ [ "a", "b", "r" ], [ "a", "r" ] ],
   return_type := "morphism",
   dual_operation := "EvaluationMorphismWithGivenSource",
-  dual_preprocessor_func := PreProcessorFuncCocartesianEvaluationMorphismWithGivenRange,
+  dual_preprocessor_func := DualPreProcessorFuncCocartesianEvaluationMorphismWithGivenRange,
   dual_arguments_reversed := false,
 ),
 
@@ -110,7 +110,7 @@ CoexponentialToCoproductAdjunctionMap := rec(
   io_type := [ [ "a", "b", "f" ], [ "a", "t" ] ],
   return_type := "morphism",
   dual_operation := "InternalHomToCoproductAdjunctionMap",
-  dual_preprocessor_func := PreProcessorFuncCoexponentialToCoproductAdjunctionMap,
+  dual_preprocessor_func := DualPreProcessorFuncCoexponentialToCoproductAdjunctionMap,
   dual_arguments_reversed := false,
 ),
 
@@ -221,7 +221,7 @@ CoexponentialCoproductCompatibilityMorphism := rec(
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "CoproductInternalHomCompatibilityMorphism",
-  dual_preprocessor_func := PreProcessorFuncCoexponentialCoproductCompatibilityMorphism,
+  dual_preprocessor_func := DualPreProcessorFuncCoexponentialCoproductCompatibilityMorphism,
   dual_arguments_reversed := false,
 ),
 
@@ -232,7 +232,7 @@ CoexponentialCoproductCompatibilityMorphismWithGivenObjects := rec(
   output_range_getter_string := "range",
   return_type := "morphism",
   dual_operation := "CoproductInternalHomCompatibilityMorphismWithGivenObjects",
-  dual_preprocessor_func := PreProcessorFuncCoexponentialCoproductCompatibilityMorphismWithGivenObjects,
+  dual_preprocessor_func := DualPreProcessorFuncCoexponentialCoproductCompatibilityMorphismWithGivenObjects,
   dual_arguments_reversed := false,
 ),
 
@@ -252,7 +252,7 @@ CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects := rec(
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "CoproductDualityCompatibilityMorphismWithGivenObjects",
-  dual_preprocessor_func := PreProcessorFuncCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects,
+  dual_preprocessor_func := DualPreProcessorFuncCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects,
   dual_arguments_reversed := false,
 ),
 
@@ -309,7 +309,7 @@ CocartesianLambdaElimination := rec(
   io_type := [ [ "a", "b", "alpha" ], [ "a", "b" ] ],
   return_type := "morphism",
   dual_operation := "LambdaElimination",
-  dual_preprocessor_func := PreProcessorFuncCocartesianLambdaElimination,
+  dual_preprocessor_func := DualPreProcessorFuncCocartesianLambdaElimination,
   dual_arguments_reversed := false,
 ),
 

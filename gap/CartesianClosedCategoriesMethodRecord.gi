@@ -1,5 +1,5 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
-# FROM MonoidalCategories v2021.12-01
+# FROM MonoidalCategories v2021.11-05
 # USING CategoryConstructor v2021.11-08
 
 # SPDX-License-Identifier: GPL-2.0-or-later
@@ -8,23 +8,23 @@
 # Pre processor functions for dual operations
 #
 
-BindGlobal( "PreProcessorFuncCartesianEvaluationMorphismWithGivenSource", { cat, a, b, s } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( s ) ] );
+BindGlobal( "CartesianDualPreProcessorFuncCartesianEvaluationMorphismWithGivenSource", { cat, a, b, s } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( s ) ] );
 
-BindGlobal( "PreProcessorFuncExponentialToDirectProductAdjunctionMap", { cat, a, b, g } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ) ] );
+BindGlobal( "CartesianDualPreProcessorFuncExponentialToDirectProductAdjunctionMap", { cat, a, b, g } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ) ] );
 
-BindGlobal( "PreProcessorFuncDirectProductExponentialCompatibilityMorphism",
+BindGlobal( "CartesianDualPreProcessorFuncDirectProductExponentialCompatibilityMorphism",
               { cat, list } -> [ Opposite( cat ), [ Opposite( list[3] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[2] ) ] ]
 );
 
-BindGlobal( "PreProcessorFuncDirectProductExponentialCompatibilityMorphismWithGivenObjects",
+BindGlobal( "CartesianDualPreProcessorFuncDirectProductExponentialCompatibilityMorphismWithGivenObjects",
               { cat, s, list, r } -> [ Opposite( cat ), Opposite( r ), [ Opposite( list[3] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[2] ) ], Opposite( s ) ]
 );
 
-BindGlobal( "PreProcessorFuncDirectProductCartesianDualityCompatibilityMorphismWithGivenObjects",
+BindGlobal( "CartesianDualPreProcessorFuncDirectProductCartesianDualityCompatibilityMorphismWithGivenObjects",
               { cat, s, a, b, r} -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ]
 );
 
-BindGlobal( "PreProcessorFuncCartesianLambdaElimination", { cat, a, b, alpha } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( alpha ) ] );
+BindGlobal( "CartesianDualPreProcessorFuncCartesianLambdaElimination", { cat, a, b, alpha } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( alpha ) ] );
 
 # Implementations
 #
@@ -74,7 +74,7 @@ CartesianEvaluationMorphismWithGivenSource := rec(
   io_type := [ [ "a", "b", "s" ], [ "s", "b" ] ],
   return_type := "morphism",
   dual_operation := "CoclosedCartesianEvaluationMorphismWithGivenRange",
-  dual_preprocessor_func := PreProcessorFuncCartesianEvaluationMorphismWithGivenSource,
+  dual_preprocessor_func := CartesianDualPreProcessorFuncCartesianEvaluationMorphismWithGivenSource,
   dual_arguments_reversed := false,
 ),
 
@@ -110,7 +110,7 @@ ExponentialToDirectProductAdjunctionMap := rec(
   io_type := [ [ "b", "c", "g" ], [ "t", "c" ] ],
   return_type := "morphism",
   dual_operation := "InternalCoHomToDirectProductAdjunctionMap",
-  dual_preprocessor_func := PreProcessorFuncExponentialToDirectProductAdjunctionMap,
+  dual_preprocessor_func := CartesianDualPreProcessorFuncExponentialToDirectProductAdjunctionMap,
   dual_arguments_reversed := false,
 ),
 
@@ -221,7 +221,7 @@ DirectProductExponentialCompatibilityMorphism := rec(
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "InternalCoHomDirectProductCompatibilityMorphism",
-  dual_preprocessor_func := PreProcessorFuncDirectProductExponentialCompatibilityMorphism,
+  dual_preprocessor_func := CartesianDualPreProcessorFuncDirectProductExponentialCompatibilityMorphism,
   dual_arguments_reversed := false,
 ),
 
@@ -232,7 +232,7 @@ DirectProductExponentialCompatibilityMorphismWithGivenObjects := rec(
   output_range_getter_string := "range",
   return_type := "morphism",
   dual_operation := "InternalCoHomDirectProductCompatibilityMorphismWithGivenObjects",
-  dual_preprocessor_func := PreProcessorFuncDirectProductExponentialCompatibilityMorphismWithGivenObjects,
+  dual_preprocessor_func := CartesianDualPreProcessorFuncDirectProductExponentialCompatibilityMorphismWithGivenObjects,
   dual_arguments_reversed := false,
 ),
 
@@ -252,7 +252,7 @@ DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects := rec(
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "CoCartesianDualityDirectProductCompatibilityMorphismWithGivenObjects",
-  dual_preprocessor_func := PreProcessorFuncDirectProductCartesianDualityCompatibilityMorphismWithGivenObjects,
+  dual_preprocessor_func := CartesianDualPreProcessorFuncDirectProductCartesianDualityCompatibilityMorphismWithGivenObjects,
   dual_arguments_reversed := false,
 ),
 
@@ -309,7 +309,7 @@ CartesianLambdaElimination := rec(
   io_type := [ [ "a", "b", "alpha" ], [ "a", "b" ] ],
   return_type := "morphism",
   dual_operation := "CoCartesianLambdaElimination",
-  dual_preprocessor_func := PreProcessorFuncCartesianLambdaElimination,
+  dual_preprocessor_func := CartesianDualPreProcessorFuncCartesianLambdaElimination,
   dual_arguments_reversed := false,
 ),
 

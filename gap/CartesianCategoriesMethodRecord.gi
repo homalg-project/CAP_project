@@ -1,5 +1,5 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
-# FROM MonoidalCategories v2021.12-01
+# FROM MonoidalCategories v2021.11-05
 # USING CategoryConstructor v2021.11-08
 
 # SPDX-License-Identifier: GPL-2.0-or-later
@@ -8,11 +8,11 @@
 # Preprocessor functions for dual operations
 #
 
-BindGlobal( "PreProcessorFuncCartesianAssociatorRightToLeftWithGivenDirectProducts",
+BindGlobal( "DualPreProcessorFuncCartesianAssociatorRightToLeftWithGivenDirectProducts",
               { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ]
 );
 
-BindGlobal( "PreProcessorFuncCartesianAssociatorLeftToRightWithGivenDirectProducts",
+BindGlobal( "DualPreProcessorFuncCartesianAssociatorLeftToRightWithGivenDirectProducts",
               { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ]
 );
 
@@ -58,7 +58,7 @@ CartesianAssociatorRightToLeftWithGivenDirectProducts := rec(
   io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "CartesianAssociatorLeftToRightWithGivenDirectProducts",
-  dual_preprocessor_func := PreProcessorFuncCartesianAssociatorRightToLeftWithGivenDirectProducts,
+  dual_preprocessor_func := DualPreProcessorFuncCartesianAssociatorRightToLeftWithGivenDirectProducts,
   dual_arguments_reversed := false,
 ),
 
@@ -78,7 +78,7 @@ CartesianAssociatorLeftToRightWithGivenDirectProducts := rec(
   io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "CartesianAssociatorRightToLeftWithGivenDirectProducts",
-  dual_preprocessor_func := PreProcessorFuncCartesianAssociatorLeftToRightWithGivenDirectProducts,
+  dual_preprocessor_func := DualPreProcessorFuncCartesianAssociatorLeftToRightWithGivenDirectProducts,
   dual_arguments_reversed := false,
 ),
 
