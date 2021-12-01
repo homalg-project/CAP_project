@@ -1,5 +1,5 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
-# FROM MonoidalCategories v2021.11-05
+# FROM MonoidalCategories v2021.12-01
 # USING CategoryConstructor v2021.11-08
 
 # SPDX-License-Identifier: GPL-2.0-or-later
@@ -8,10 +8,10 @@
 # Pre processor functions for dual operations
 #
 
-BindGlobal( "DualPreProcessorFuncCartesianBraidingWithGivenDirectProducts",
+BindGlobal( "PreProcessorFuncCartesianBraidingWithGivenDirectProducts",
               { cat, s, a, b, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ] );
 
-BindGlobal( "DualPreProcessorFuncCartesianBraidingInverseWithGivenDirectProducts",
+BindGlobal( "PreProcessorFuncCartesianBraidingInverseWithGivenDirectProducts",
               { cat, s, a, b, r } -> [ Opposite( cat ), Opposite( s ), Opposite( a ), Opposite( b ), Opposite( r ) ] );
 
 # Implementations
@@ -35,7 +35,7 @@ CartesianBraidingWithGivenDirectProducts := rec(
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "CartesianBraidingInverseWithGivenDirectProducts",
-  dual_preprocessor_func := DualPreProcessorFuncCartesianBraidingWithGivenDirectProducts,
+  dual_preprocessor_func := PreProcessorFuncCartesianBraidingWithGivenDirectProducts,
   dual_arguments_reversed := false,
 ),
 
@@ -55,7 +55,7 @@ CartesianBraidingInverseWithGivenDirectProducts := rec(
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "CartesianBraidingWithGivenDirectProducts",
-  dual_preprocessor_func := DualPreProcessorFuncCartesianBraidingInverseWithGivenDirectProducts,
+  dual_preprocessor_func := PreProcessorFuncCartesianBraidingInverseWithGivenDirectProducts,
   dual_arguments_reversed := false,
 ),
 
