@@ -1,6 +1,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
-# FROM MonoidalCategories v2021.11-05
-# USING CategoryConstructor v2021.11-08
+# FROM MonoidalCategories v2021.11-04
+# USING CategoryConstructor v2021.11-07
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
@@ -17,7 +17,7 @@
 ####################################
 
 #! A cocartesian category $\mathbf{C}$
-#! which has for each functor $- \sqcup b: \mathbf{C} \rightarrow \mathbf{C}$
+#! which has for each functor $b \sqcup -: \mathbf{C} \rightarrow \mathbf{C}$
 #! a left adjoint (denoted by $\mathrm{Coexponential}(-,b)$)
 #! is called a <Emph>coclosed cocartesian category</Emph>.
 
