@@ -5,11 +5,11 @@
 #
 
 # Preprocessor functions for dual operations
-BindGlobal( "DualPreProcessorFuncAssociatorRightToLeftWithGivenTensorProducts",
+BindGlobal( "PreProcessorFuncAssociatorRightToLeftWithGivenTensorProducts",
               { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ]
 );
 
-BindGlobal( "DualPreProcessorFuncAssociatorLeftToRightWithGivenTensorProducts",
+BindGlobal( "PreProcessorFuncAssociatorLeftToRightWithGivenTensorProducts",
               { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ]
 );
 
@@ -52,7 +52,7 @@ AssociatorRightToLeftWithGivenTensorProducts := rec(
   io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "AssociatorLeftToRightWithGivenTensorProducts",
-  dual_preprocessor_func := DualPreProcessorFuncAssociatorRightToLeftWithGivenTensorProducts,
+  dual_preprocessor_func := PreProcessorFuncAssociatorRightToLeftWithGivenTensorProducts,
   dual_arguments_reversed := false,
 ),
 
@@ -72,7 +72,7 @@ AssociatorLeftToRightWithGivenTensorProducts := rec(
   io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "AssociatorRightToLeftWithGivenTensorProducts",
-  dual_preprocessor_func := DualPreProcessorFuncAssociatorLeftToRightWithGivenTensorProducts,
+  dual_preprocessor_func := PreProcessorFuncAssociatorLeftToRightWithGivenTensorProducts,
   dual_arguments_reversed := false,
 ),
 

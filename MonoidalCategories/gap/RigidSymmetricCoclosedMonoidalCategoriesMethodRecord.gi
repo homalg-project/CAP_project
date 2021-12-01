@@ -5,15 +5,15 @@
 #
 
 # Pre processor functions for dual operations
-BindGlobal( "DualPreProcessorFuncInternalCoHomTensorProductCompatibilityMorphismInverse",
+BindGlobal( "PreProcessorFuncInternalCoHomTensorProductCompatibilityMorphismInverse",
               { cat, list } -> [ Opposite( cat ), [ Opposite( list[2] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[3] ) ] ]
 );
 
-BindGlobal( "DualPreProcessorFuncInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
+BindGlobal( "PreProcessorFuncInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
               { cat, s, list, r } -> [ Opposite( cat ), Opposite( r ), [ Opposite( list[2] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[3] ) ], Opposite( s ) ]
 );
 
-BindGlobal( "DualPreProcessorFuncMorphismFromTensorProductToInternalCoHomWithGivenObjects",
+BindGlobal( "PreProcessorFuncMorphismFromTensorProductToInternalCoHomWithGivenObjects",
               { cat, s, a, b, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ]
 );
 
@@ -63,7 +63,7 @@ InternalCoHomTensorProductCompatibilityMorphismInverse := rec(
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "TensorProductInternalHomCompatibilityMorphismInverse",
-  dual_preprocessor_func := DualPreProcessorFuncInternalCoHomTensorProductCompatibilityMorphismInverse,
+  dual_preprocessor_func := PreProcessorFuncInternalCoHomTensorProductCompatibilityMorphismInverse,
   dual_arguments_reversed := false,
 ),
 
@@ -74,7 +74,7 @@ InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects := rec(
   output_range_getter_string := "range",
   return_type := "morphism",
   dual_operation := "TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects",
-  dual_preprocessor_func := DualPreProcessorFuncInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects,
+  dual_preprocessor_func := PreProcessorFuncInternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects,
   dual_arguments_reversed := false,
 ),
 
@@ -94,7 +94,7 @@ MorphismFromTensorProductToInternalCoHomWithGivenObjects := rec(
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "MorphismFromInternalHomToTensorProductWithGivenObjects",
-  dual_preprocessor_func := DualPreProcessorFuncMorphismFromTensorProductToInternalCoHomWithGivenObjects,
+  dual_preprocessor_func := PreProcessorFuncMorphismFromTensorProductToInternalCoHomWithGivenObjects,
   dual_arguments_reversed := false,
 ),
 
