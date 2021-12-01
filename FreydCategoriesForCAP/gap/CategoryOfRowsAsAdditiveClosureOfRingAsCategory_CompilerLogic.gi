@@ -1,3 +1,9 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# FreydCategoriesForCAP: Freyd categories - Formal (co)kernels for additive categories
+#
+# Implementations
+#
+
 CapJitAddLogicFunction( function( tree, jit_args )
   local pre_func, additional_arguments_func;
     

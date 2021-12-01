@@ -1,17 +1,15 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # MonoidalCategories: Monoidal and monoidal (co)closed categories
 #
-# Pre processor functions for dual operations
+# Implementations
 #
 
+# Pre processor functions for dual operations
 BindGlobal( "DualPreProcessorFuncBraidingWithGivenTensorProducts",
               { cat, s, a, b, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ] );
 
 BindGlobal( "DualPreProcessorFuncBraidingInverseWithGivenTensorProducts",
               { cat, s, a, b, r } -> [ Opposite( cat ), Opposite( s ), Opposite( a ), Opposite( b ), Opposite( r ) ] );
-
-# Implementations
-#
 
 InstallValue( BRAIDED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD, rec(
 

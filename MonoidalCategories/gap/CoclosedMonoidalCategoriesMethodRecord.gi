@@ -1,9 +1,10 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # MonoidalCategories: Monoidal and monoidal (co)closed categories
 #
-# Preprocessor functions for dual operations
+# Implementations
 #
 
+# Preprocessor functions for dual operations
 BindGlobal( "DualPreProcessorFuncCoclosedEvaluationMorphismWithGivenRange", { cat, a, b, r } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( r ) ] );
 
 BindGlobal( "DualPreProcessorFuncInternalCoHomToTensorProductAdjunctionMap", { cat, a, b, f } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( f ) ] );
@@ -21,9 +22,6 @@ BindGlobal( "DualPreProcessorFuncCoDualityTensorProductCompatibilityMorphismWith
 );
 
 BindGlobal( "DualPreProcessorFuncCoLambdaElimination", { cat, a, b, alpha } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( alpha ) ] );
-
-# Implementations
-#
 
 InstallValue( COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD, rec(
 

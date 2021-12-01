@@ -7,14 +7,14 @@ on:
       - "*-ci"
   pull_request:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 4 * * *" # after gap-docker(-master) is rebuilt
   workflow_dispatch:
 
 jobs:
   test:
     strategy:
       matrix:
-        image: [gapsystem/gap-docker, gapsystem/gap-docker-master]
+        image: ["ghcr.io/homalg-project/gap-docker:latest", "ghcr.io/homalg-project/gap-docker-master:latest"]
       fail-fast: false
     runs-on: ubuntu-latest
     container:
@@ -29,10 +29,6 @@ jobs:
       - run: |
           export HOME="/home/gap"
           cd /home/gap/.gap/pkg/
-          # work around https://github.com/gap-system/gap-docker-base/issues/30
-          sudo apt -o Acquire::https::Verify-Peer="false" update
-          sudo apt -o Acquire::https::Verify-Peer="false" dist-upgrade -y
-          sudo apt -o Acquire::https::Verify-Peer="false" install -y texlive-latex-extra texlive-science
           cp ./CAP_project/ci_gaprc /home/gap/.gap/gaprc
           git clone --depth 1 https://github.com/gap-packages/AutoDoc.git
           git clone --depth 1 https://github.com/homalg-project/homalg_project.git
@@ -49,12 +45,12 @@ jobs:
           TERM=dumb make -C CAP_project -j $(nproc) --output-sync ci-test
           cp ./CAP_project/.codecov.yml ./
           (cd CAP_project && LANG=C.UTF-8 python3 process_coverage_ignored_lines.py)
-          [ "${{ matrix.image }}" = "gapsystem/gap-docker-master" ] && ./CAP_project/upload_codecov.sh
+          [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./CAP_project/upload_codecov.sh
           git config --global user.name "Bot"
           git config --global user.email "empty"
           cd CAP_project
           CUR_SHA=$(git rev-parse --verify HEAD)
-          if [ "${{ matrix.image }}" = "gapsystem/gap-docker" ] && [ "$CUR_SHA" = "$(git rev-parse origin/master)" ] && [ $(dirname "$GITHUB_REPOSITORY") = "homalg-project" ]; then \
+          if [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker:latest" ] && [ "$CUR_SHA" = "$(git rev-parse origin/master)" ] && [ $(dirname "$GITHUB_REPOSITORY") = "homalg-project" ]; then \
             git worktree add gh-pages/ gh-pages || (echo "There was an error. Make sure there is a branch named 'gh-pages'. See https://github.com/homalg-project/PackageJanitor#error-there-was-an-error-make-sure-there-is-a-branch-named-gh-pages"; exit 1); \
             git checkout master; \
             LANG=C.UTF-8 ./make_dist.sh --token "${{ secrets.GITHUB_TOKEN }}"; \
