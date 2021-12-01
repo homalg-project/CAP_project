@@ -5,23 +5,23 @@
 #
 
 # Pre processor functions for dual operations
-BindGlobal( "DualPreProcessorFuncEvaluationMorphismWithGivenSource", { cat, a, b, s } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( s ) ] );
+BindGlobal( "PreProcessorFuncEvaluationMorphismWithGivenSource", { cat, a, b, s } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( s ) ] );
 
-BindGlobal( "DualPreProcessorFuncInternalHomToTensorProductAdjunctionMap", { cat, a, b, g } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ) ] );
+BindGlobal( "PreProcessorFuncInternalHomToTensorProductAdjunctionMap", { cat, a, b, g } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ) ] );
 
-BindGlobal( "DualPreProcessorFuncTensorProductInternalHomCompatibilityMorphism",
+BindGlobal( "PreProcessorFuncTensorProductInternalHomCompatibilityMorphism",
               { cat, list } -> [ Opposite( cat ), [ Opposite( list[3] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[2] ) ] ]
 );
 
-BindGlobal( "DualPreProcessorFuncTensorProductInternalHomCompatibilityMorphismWithGivenObjects",
+BindGlobal( "PreProcessorFuncTensorProductInternalHomCompatibilityMorphismWithGivenObjects",
               { cat, s, list, r } -> [ Opposite( cat ), Opposite( r ), [ Opposite( list[3] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[2] ) ], Opposite( s ) ]
 );
 
-BindGlobal( "DualPreProcessorFuncTensorProductDualityCompatibilityMorphismWithGivenObjects",
+BindGlobal( "PreProcessorFuncTensorProductDualityCompatibilityMorphismWithGivenObjects",
               { cat, s, a, b, r} -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ]
 );
 
-BindGlobal( "DualPreProcessorFuncLambdaElimination", { cat, a, b, alpha } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( alpha ) ] );
+BindGlobal( "PreProcessorFuncLambdaElimination", { cat, a, b, alpha } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( alpha ) ] );
 
 InstallValue( CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD, rec(
 
@@ -68,7 +68,7 @@ EvaluationMorphismWithGivenSource := rec(
   io_type := [ [ "a", "b", "s" ], [ "s", "b" ] ],
   return_type := "morphism",
   dual_operation := "CoclosedEvaluationMorphismWithGivenRange",
-  dual_preprocessor_func := DualPreProcessorFuncEvaluationMorphismWithGivenSource,
+  dual_preprocessor_func := PreProcessorFuncEvaluationMorphismWithGivenSource,
   dual_arguments_reversed := false,
 ),
 
@@ -104,7 +104,7 @@ InternalHomToTensorProductAdjunctionMap := rec(
   io_type := [ [ "b", "c", "g" ], [ "t", "c" ] ],
   return_type := "morphism",
   dual_operation := "InternalCoHomToTensorProductAdjunctionMap",
-  dual_preprocessor_func := DualPreProcessorFuncInternalHomToTensorProductAdjunctionMap,
+  dual_preprocessor_func := PreProcessorFuncInternalHomToTensorProductAdjunctionMap,
   dual_arguments_reversed := false,
 ),
 
@@ -215,7 +215,7 @@ TensorProductInternalHomCompatibilityMorphism := rec(
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "InternalCoHomTensorProductCompatibilityMorphism",
-  dual_preprocessor_func := DualPreProcessorFuncTensorProductInternalHomCompatibilityMorphism,
+  dual_preprocessor_func := PreProcessorFuncTensorProductInternalHomCompatibilityMorphism,
   dual_arguments_reversed := false,
 ),
 
@@ -226,7 +226,7 @@ TensorProductInternalHomCompatibilityMorphismWithGivenObjects := rec(
   output_range_getter_string := "range",
   return_type := "morphism",
   dual_operation := "InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects",
-  dual_preprocessor_func := DualPreProcessorFuncTensorProductInternalHomCompatibilityMorphismWithGivenObjects,
+  dual_preprocessor_func := PreProcessorFuncTensorProductInternalHomCompatibilityMorphismWithGivenObjects,
   dual_arguments_reversed := false,
 ),
 
@@ -246,7 +246,7 @@ TensorProductDualityCompatibilityMorphismWithGivenObjects := rec(
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "CoDualityTensorProductCompatibilityMorphismWithGivenObjects",
-  dual_preprocessor_func := DualPreProcessorFuncTensorProductDualityCompatibilityMorphismWithGivenObjects,
+  dual_preprocessor_func := PreProcessorFuncTensorProductDualityCompatibilityMorphismWithGivenObjects,
   dual_arguments_reversed := false,
 ),
 
@@ -303,7 +303,7 @@ LambdaElimination := rec(
   io_type := [ [ "a", "b", "alpha" ], [ "a", "b" ] ],
   return_type := "morphism",
   dual_operation := "CoLambdaElimination",
-  dual_preprocessor_func := DualPreProcessorFuncLambdaElimination,
+  dual_preprocessor_func := PreProcessorFuncLambdaElimination,
   dual_arguments_reversed := false,
 ),
 
