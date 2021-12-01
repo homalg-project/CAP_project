@@ -1,14 +1,13 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
 # FROM MonoidalCategories v2021.12-01
-# USING CategoryConstructor v2021.12-01
+# USING CategoryConstructor v2021.11-08
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
-# Implementations
+# Preprocessor functions for dual operations
 #
 
-# Preprocessor functions for dual operations
 BindGlobal( "PreProcessorFuncCocartesianEvaluationMorphismWithGivenRange", { cat, a, b, r } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( r ) ] );
 
 BindGlobal( "PreProcessorFuncCoexponentialToCoproductAdjunctionMap", { cat, a, b, f } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( f ) ] );
@@ -26,6 +25,9 @@ BindGlobal( "PreProcessorFuncCocartesianDualityCoproductCompatibilityMorphismWit
 );
 
 BindGlobal( "PreProcessorFuncCocartesianLambdaElimination", { cat, a, b, alpha } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( alpha ) ] );
+
+# Implementations
+#
 
 InstallValue( COCARTESIAN_COCLOSED_CATEGORIES_METHOD_NAME_RECORD, rec(
 
@@ -154,7 +156,7 @@ CocartesianDualOnObjects := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "acd" ] ],
   return_type := "object",
-  dual_operation := "CartesianDualOnObjects",
+  dual_operation := "DualOnObjects",
 ),
 
 CocartesianDualOnMorphisms := rec(
@@ -164,14 +166,14 @@ CocartesianDualOnMorphisms := rec(
   output_range_getter_string := "CocartesianDualOnObjects( cat, Source( alpha ) )",
   with_given_object_position := "both",
   return_type := "morphism",
-  dual_operation := "CartesianDualOnMorphisms",
+  dual_operation := "DualOnMorphisms",
 ),
 
 CocartesianDualOnMorphismsWithGivenCocartesianDuals := rec(
   filter_list := [ "category", "object", "morphism", "object" ],
   io_type := [ [ "s", "alpha", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
-  dual_operation := "CartesianDualOnMorphismsWithGivenCartesianDuals",
+  dual_operation := "DualOnMorphismsWithGivenDuals",
   dual_arguments_reversed := true,
 ),
 
@@ -182,14 +184,14 @@ CocartesianEvaluationForCocartesianDual := rec(
   output_range_getter_string := "Coproduct( a, CocartesianDualOnObjects( cat, a ) )",
   with_given_object_position := "both",
   return_type := "morphism",
-  dual_operation := "EvaluationForCartesianDual",
+  dual_operation := "EvaluationForDual",
 ),
 
 CocartesianEvaluationForCocartesianDualWithGivenCoproduct := rec(
   filter_list := [ "category", "object", "object", "object" ],
   io_type := [ [ "s", "a", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
-  dual_operation := "EvaluationForCartesianDualWithGivenCoproduct",
+  dual_operation := "EvaluationForDualWithGivenCoproduct",
   dual_arguments_reversed := true,
 ),
 
@@ -200,14 +202,14 @@ MorphismFromCocartesianBidual := rec(
   output_range_getter_string := "a",
   with_given_object_position := "Source",
   return_type := "morphism",
-  dual_operation := "MorphismToCartesianBidual",
+  dual_operation := "MorphismToBidual",
 ),
 
 MorphismFromCocartesianBidualWithGivenCocartesianBidual := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "s" ], [ "s", "a" ] ],
   return_type := "morphism",
-  dual_operation := "MorphismToCartesianBidualWithGivenCartesianBidual",
+  dual_operation := "MorphismToBidualWithGivenBidual",
   dual_arguments_reversed := false,
 ),
 
@@ -241,7 +243,7 @@ CocartesianDualityCoproductCompatibilityMorphism := rec(
   output_range_getter_string := "Coproduct( CocartesianDualOnObjects( cat, a ), CocartesianDualOnObjects( cat, b ) )",
   with_given_object_position := "both",
   return_type := "morphism",
-  dual_operation := "CoproductCartesianDualityCompatibilityMorphism",
+  dual_operation := "CoproductDualityCompatibilityMorphism",
   dual_arguments_reversed := false,
 ),
 
@@ -249,7 +251,7 @@ CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects := rec(
   filter_list := [ "category", "object", "object", "object", "object" ],
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
-  dual_operation := "CoproductCartesianDualityCompatibilityMorphismWithGivenObjects",
+  dual_operation := "CoproductDualityCompatibilityMorphismWithGivenObjects",
   dual_preprocessor_func := PreProcessorFuncCocartesianDualityCoproductCompatibilityMorphismWithGivenObjects,
   dual_arguments_reversed := false,
 ),
@@ -277,21 +279,21 @@ IsomorphismFromCocartesianDualToCoexponential := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "i", "d" ] ],
   return_type := "morphism",
-  dual_operation := "IsomorphismFromInternalHomToCartesianDual",
+  dual_operation := "IsomorphismFromInternalHomToDual",
 ),
 
 IsomorphismFromCoexponentialToCocartesianDual := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "d", "i" ] ],
   return_type := "morphism",
-  dual_operation := "IsomorphismFromCartesianDualToInternalHom",
+  dual_operation := "IsomorphismFromDualToInternalHom",
 ),
 
 UniversalPropertyOfCocartesianDual := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   io_type := [ [ "a", "t", "alpha" ], [ "d", "t" ] ],
   return_type := "morphism",
-  dual_operation := "UniversalPropertyOfCartesianDual",
+  dual_operation := "UniversalPropertyOfDual",
   dual_arguments_reversed := false,
 ),
 
@@ -299,14 +301,14 @@ CocartesianLambdaIntroduction := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "u", "i" ] ],
   return_type := "morphism",
-  dual_operation := "CartesianLambdaIntroduction",
+  dual_operation := "LambdaIntroduction",
 ),
 
 CocartesianLambdaElimination := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   io_type := [ [ "a", "b", "alpha" ], [ "a", "b" ] ],
   return_type := "morphism",
-  dual_operation := "CartesianLambdaElimination",
+  dual_operation := "LambdaElimination",
   dual_preprocessor_func := PreProcessorFuncCocartesianLambdaElimination,
   dual_arguments_reversed := false,
 ),

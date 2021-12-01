@@ -1,14 +1,13 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
 # FROM MonoidalCategories v2021.12-01
-# USING CategoryConstructor v2021.12-01
+# USING CategoryConstructor v2021.11-08
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
-# Implementations
+# Preprocessor functions for dual operations
 #
 
-# Preprocessor functions for dual operations
 BindGlobal( "PreProcessorFuncCocartesianAssociatorRightToLeftWithGivenCoproducts",
               { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ]
 );
@@ -16,6 +15,9 @@ BindGlobal( "PreProcessorFuncCocartesianAssociatorRightToLeftWithGivenCoproducts
 BindGlobal( "PreProcessorFuncCocartesianAssociatorLeftToRightWithGivenCoproducts",
               { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ]
 );
+
+# Implementations
+#
 
 InstallValue( COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD, rec(
 
