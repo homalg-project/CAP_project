@@ -121,4 +121,7 @@ ci-test_LinearAlgebraForCAP:
 ci-test_ModulePresentationsForCAP:
 	$(MAKE) -C ModulePresentationsForCAP ci-test
 
-ci-test: homalg_compatibility doc ci-test_ActionsForCAP ci-test_AttributeCategoryForCAP ci-test_CAP ci-test_CompilerForCAP ci-test_FreydCategoriesForCAP ci-test_GeneralizedMorphismsForCAP ci-test_GradedModulePresentationsForCAP ci-test_GroupRepresentationsForCAP ci-test_InternalExteriorAlgebraForCAP ci-test_LinearAlgebraForCAP ci-test_ModulePresentationsForCAP
+ci-test_MonoidalCategories:
+	$(MAKE) -C MonoidalCategories ci-test
+
+ci-test: homalg_compatibility doc ci-test_ActionsForCAP ci-test_AttributeCategoryForCAP ci-test_CAP ci-test_CompilerForCAP ci-test_FreydCategoriesForCAP ci-test_GeneralizedMorphismsForCAP ci-test_GradedModulePresentationsForCAP ci-test_GroupRepresentationsForCAP ci-test_InternalExteriorAlgebraForCAP ci-test_LinearAlgebraForCAP ci-test_ModulePresentationsForCAP ci-test_MonoidalCategories
