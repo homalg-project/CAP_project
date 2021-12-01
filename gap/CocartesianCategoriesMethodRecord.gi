@@ -1,23 +1,21 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
-# FROM MonoidalCategories v2021.11-05
-# USING CategoryConstructor v2021.11-08
+# FROM MonoidalCategories v2021.12-01
+# USING CategoryConstructor v2021.12-01
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
-# Preprocessor functions for dual operations
-#
-
-BindGlobal( "DualPreProcessorFuncCocartesianAssociatorRightToLeftWithGivenCoproducts",
-              { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ]
-);
-
-BindGlobal( "DualPreProcessorFuncCocartesianAssociatorLeftToRightWithGivenCoproducts",
-              { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ]
-);
-
 # Implementations
 #
+
+# Preprocessor functions for dual operations
+BindGlobal( "PreProcessorFuncCocartesianAssociatorRightToLeftWithGivenCoproducts",
+              { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ]
+);
+
+BindGlobal( "PreProcessorFuncCocartesianAssociatorLeftToRightWithGivenCoproducts",
+              { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ]
+);
 
 InstallValue( COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD, rec(
 
@@ -58,7 +56,7 @@ CocartesianAssociatorRightToLeftWithGivenCoproducts := rec(
   io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "CocartesianAssociatorLeftToRightWithGivenCoproducts",
-  dual_preprocessor_func := DualPreProcessorFuncCocartesianAssociatorRightToLeftWithGivenCoproducts,
+  dual_preprocessor_func := PreProcessorFuncCocartesianAssociatorRightToLeftWithGivenCoproducts,
   dual_arguments_reversed := false,
 ),
 
@@ -78,7 +76,7 @@ CocartesianAssociatorLeftToRightWithGivenCoproducts := rec(
   io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "CocartesianAssociatorRightToLeftWithGivenCoproducts",
-  dual_preprocessor_func := DualPreProcessorFuncCocartesianAssociatorLeftToRightWithGivenCoproducts,
+  dual_preprocessor_func := PreProcessorFuncCocartesianAssociatorLeftToRightWithGivenCoproducts,
   dual_arguments_reversed := false,
 ),
 
