@@ -1,6 +1,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
-# FROM MonoidalCategories v2021.11-04
-# USING CategoryConstructor v2021.11-07
+# FROM MonoidalCategories v2021.12-01
+# USING CategoryConstructor v2021.12-02
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
@@ -58,7 +58,7 @@ DeclareOperation( "ExponentialOnMorphismsWithGivenExponentials",
 #! The output is the evaluation morphism $\mathrm{ev}_{a,b}: \mathrm{Exponential}(a,b) \times a \rightarrow b$, i.e.,
 #! the counit of the direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Exponential}(a,b) \times a, b )$.
-#! @Arguments a,b
+#! @Arguments a, b
 DeclareOperation( "CartesianEvaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
@@ -68,7 +68,7 @@ DeclareOperation( "CartesianEvaluationMorphism",
 #! The output is the evaluation morphism $\mathrm{ev}_{a,b}: \mathrm{Exponential}(a,b) \times a \rightarrow b$, i.e.,
 #! the counit of the direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Exponential}(a,b) \times a, b )$.
-#! @Arguments a,b, s
+#! @Arguments a, b, s
 DeclareOperation( "CartesianEvaluationMorphismWithGivenSource",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
@@ -77,7 +77,7 @@ DeclareOperation( "CartesianEvaluationMorphismWithGivenSource",
 #! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow \mathrm{Exponential}(b, a \times b)$, i.e.,
 #! the unit of the direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{Exponential}(b, a \times b) )$.
-#! @Arguments a,b
+#! @Arguments a, b
 DeclareOperation( "CartesianCoevaluationMorphism",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
@@ -87,7 +87,7 @@ DeclareOperation( "CartesianCoevaluationMorphism",
 #! The output is the coevaluation morphism $\mathrm{coev}_{a,b}: a \rightarrow \mathrm{Exponential}(b, a \times b)$, i.e.,
 #! the unit of the direct product-exponential adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{Exponential}(b, a \times b) )$.
-#! @Arguments a,b,r
+#! @Arguments a, b, r
 DeclareOperation( "CartesianCoevaluationMorphismWithGivenRange",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
 
@@ -212,7 +212,7 @@ DeclareAttribute( "MorphismToCartesianBidual",
 DeclareOperation( "MorphismToCartesianBidualWithGivenCartesianBidual",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-## The four objects are given are given as a list because otherwise the WithGiven operation would
+## The four objects are given as a list because otherwise the WithGiven operation would
 ## exceed the maximal number of arguments for an operation (6)
 #! @Description
 #! The argument is a list of four objects $[ a, a', b, b' ]$.
