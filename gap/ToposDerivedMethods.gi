@@ -101,49 +101,17 @@ AddDerivationToCAP( SubobjectOfClassifyingMorphism,
                     [ [ TruthMorphismOfTrueWithGivenObjects , 1 ],
                       [ ProjectionInFactorOfFiberProduct , 1 ] ],
   function( cat, mor )
-
       local category, truth;
-
+      
       category := CapCategory(mor);
-
+      
       truth := TruthMorphismOfTrueWithGivenObjects(
-                  TerminalObject(category), SubobjectClassifier(category));
-
-      return ProjectionInFactorOfFiberProduct([ mor , truth ], 1);
-
+                       TerminalObject( category ),
+                       SubobjectClassifier( category ) );
+      
+      return ProjectionInFactorOfFiberProduct( [ mor , truth ], 1 );
+      
 end : Description := "SubobjectOfClassifyingMorphism using the fiber product along the true morphism" );
-
-## Final derivations
-
-##
-AddFinalDerivation( CanonicalIdentificationFromImageObjectToCoimage,
-                    [ [ ImageObject, 1 ],
-                      [ IdentityMorphism, 1 ] ],
-                    [ CanonicalIdentificationFromCoimageToImageObject,
-                      CanonicalIdentificationFromImageObjectToCoimage,
-                      Coimage,
-                      CoimageProjection,
-                      CoimageProjectionWithGivenCoimage,
-                      AstrictionToCoimage,
-                      AstrictionToCoimageWithGivenCoimage,
-                      UniversalMorphismIntoCoimage,
-                      UniversalMorphismIntoCoimageWithGivenCoimage,
-                      IsomorphismFromCoimageToCokernelOfKernel,
-                      IsomorphismFromCokernelOfKernelToCoimage ],
-                    
-  function( cat, mor )
-    
-    return IdentityMorphism( ImageObject( mor ) );
-    
-  end,
-  [
-    CanonicalIdentificationFromCoimageToImageObject,
-    function( cat, mor )
-    
-      return IdentityMorphism( ImageObject( mor ) );
-    
-    end
-  ] : CategoryFilter := HasIsElementaryTopos and IsElementaryTopos );
 
 ##
 AddDerivationToCAP( CartesianSquareOfSubobjectClassifier,
@@ -393,3 +361,35 @@ AddDerivationToCAP( EmbeddingOfRelativePseudoComplementSuboject,
                            ) );
     
 end );
+
+## Final derivations
+
+##
+AddFinalDerivation( CanonicalIdentificationFromImageObjectToCoimage,
+                    [ [ ImageObject, 1 ],
+                      [ IdentityMorphism, 1 ] ],
+                    [ CanonicalIdentificationFromCoimageToImageObject,
+                      CanonicalIdentificationFromImageObjectToCoimage,
+                      Coimage,
+                      CoimageProjection,
+                      CoimageProjectionWithGivenCoimage,
+                      AstrictionToCoimage,
+                      AstrictionToCoimageWithGivenCoimage,
+                      UniversalMorphismIntoCoimage,
+                      UniversalMorphismIntoCoimageWithGivenCoimage,
+                      IsomorphismFromCoimageToCokernelOfKernel,
+                      IsomorphismFromCokernelOfKernelToCoimage ],
+                    
+  function( cat, mor )
+    
+    return IdentityMorphism( ImageObject( mor ) );
+    
+  end,
+  [
+    CanonicalIdentificationFromCoimageToImageObject,
+    function( cat, mor )
+    
+      return IdentityMorphism( ImageObject( mor ) );
+    
+    end
+  ] : CategoryFilter := HasIsElementaryTopos and IsElementaryTopos );
