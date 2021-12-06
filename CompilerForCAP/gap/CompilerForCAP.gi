@@ -71,7 +71,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         CapJitResolvedOperations,
         CapJitInlinedArguments,
         CapJitDroppedUnusedBindings,
-        CapJitInlinedBindingsToGlobalVariables,
+        CapJitInlinedBindingsToVariableReferences,
         CapJitResolvedGlobalVariables,
     ];
     

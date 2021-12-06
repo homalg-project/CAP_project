@@ -36,4 +36,35 @@ Display( ENHANCED_SYNTAX_TREE_CODE( tree2 ) );
 tree = tree2;
 #! true
 
+
+
+# check that CapJitInlinedBindingsToVariableReferences is idempotent
+func := function ( )
+  local f1, f2; f1 := IdFunc; f2 := f1; return f2; end;;
+
+tree := ENHANCED_SYNTAX_TREE( func );;
+
+tree := CapJitInlinedBindingsToVariableReferences( tree );;
+Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
+#! function (  )
+#!     local f1_1, f2_1;
+#!     return IdFunc;
+#!     f2_1 := IdFunc;
+#!     f1_1 := IdFunc;
+#!     return;
+#! end
+
+tree2 := CapJitInlinedBindingsToVariableReferences( tree );;
+Display( ENHANCED_SYNTAX_TREE_CODE( tree2 ) );
+#! function (  )
+#!     local f1_1, f2_1;
+#!     return IdFunc;
+#!     f2_1 := IdFunc;
+#!     f1_1 := IdFunc;
+#!     return;
+#! end
+
+tree = tree2;
+#! true
+
 #! @EndExample
