@@ -60,7 +60,35 @@ InstallOtherMethodForCompilerForCAP( VectorSpaceMorphism,
                                      
   function( cat, source, homalg_matrix, range )
     
-    return MorphismConstructor( cat, source, homalg_matrix, range );
+    if not IsHomalgMatrix( homalg_matrix ) then
+        
+        Error( "the morphism datum must be a homalg matrix" );
+        
+    fi;
+    
+    if not IsIdenticalObj( HomalgRing( homalg_matrix ), UnderlyingRing( cat ) ) then
+        
+        Error( "the matrix is defined over a different ring than the category" );
+        
+    fi;
+    
+    if NrRows( homalg_matrix ) <> Dimension( source ) then
+        
+        Error( "the number of rows has to be equal to the dimension of the source" );
+        
+    fi;
+    
+    if NrColumns( homalg_matrix ) <> Dimension( range ) then
+        
+        Error( "the number of columns has to be equal to the dimension of the range" );
+        
+    fi;
+    
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat,
+                                           source,
+                                           range,
+                                           UnderlyingMatrix, homalg_matrix
+    );
     
 end );
 

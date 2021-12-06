@@ -88,12 +88,14 @@ Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "ToolsForHomalg", ">=2015.09.18" ],
-                           [ "MatricesForHomalg", ">= 2021.04-04" ],
+                           [ "MatricesForHomalg", ">= 2021.12-01" ],
                            [ "GaussForHomalg", ">= 2021.04-02" ],
                            [ "CAP", ">= 2021.11-02" ],
                            [ "MonoidalCategories", ">= 2021.03-01" ],
                            ],
-  SuggestedOtherPackages := [ ],
+  SuggestedOtherPackages := [
+    [ "FreydCategoriesForCAP", ">= 2021.12-01" ],
+  ],
   ExternalConditions := [ ],
 ),
 
