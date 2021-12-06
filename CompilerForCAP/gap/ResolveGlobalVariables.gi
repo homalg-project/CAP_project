@@ -22,6 +22,20 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
         
         if not (IsBound( tree.CAP_JIT_NOT_RESOLVABLE ) and tree.CAP_JIT_NOT_RESOLVABLE) then
             
+            # resolve category attributes
+            if CapJitIsCallToGlobalFunction( tree, gvar -> not NameFunction( ValueGlobal( gvar ) ) in Concatenation( CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ), RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) ) ) and tree.args.length = 1 and tree.args.1.type = "EXPR_REF_GVAR" and IsCapCategory( ValueGlobal( tree.args.1.gvar ) ) then
+                
+                value := ValueGlobal( tree.funcref.gvar )( ValueGlobal( tree.args.1.gvar ) );
+                
+                global_variable_name := CapJitGetOrCreateGlobalVariable( value );
+                
+                tree := rec(
+                    type := "EXPR_REF_GVAR",
+                    gvar := global_variable_name,
+                );
+                
+            fi;
+            
             # try to resolve global functions
             if tree.type = "EXPR_REF_GVAR" and not tree.gvar in CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES then
                 
@@ -69,18 +83,6 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
                 tree.CAP_JIT_NOT_RESOLVABLE := true;
                 
                 return tree;
-                
-            # resolve category attributes
-            elif CapJitIsCallToGlobalFunction( tree, gvar -> not NameFunction( ValueGlobal( gvar ) ) in Concatenation( CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES, RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ), RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) ) ) and tree.args.length = 1 and tree.args.1.type = "EXPR_REF_GVAR" and IsCapCategory( ValueGlobal( tree.args.1.gvar ) ) then
-                
-                value := ValueGlobal( tree.funcref.gvar )( ValueGlobal( tree.args.1.gvar ) );
-                
-                global_variable_name := CapJitGetOrCreateGlobalVariable( value );
-                
-                return rec(
-                    type := "EXPR_REF_GVAR",
-                    gvar := global_variable_name,
-                );
                 
             fi;
             
