@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # LinearAlgebraForCAP: Category of Matrices over a Field for CAP
 #
 # Reading the implementation part of the package.

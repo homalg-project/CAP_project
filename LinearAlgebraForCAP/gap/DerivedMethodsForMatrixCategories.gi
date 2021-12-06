@@ -1,3 +1,8 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# LinearAlgebraForCAP: Category of Matrices over a Field for CAP
+#
+# Implementations
+#
 
 BindGlobal( "CATEGORY_FILTER_CHECKER",
   function( cat )
