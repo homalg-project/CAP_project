@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "LinearAlgebraForCAP",
 Subtitle := "Category of Matrices over a Field for CAP",
-Version := "2021.11-01",
+Version := "2021.12-01",
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
@@ -94,7 +94,7 @@ Dependencies := rec(
                            [ "MonoidalCategories", ">= 2021.03-01" ],
                            ],
   SuggestedOtherPackages := [
-    [ "FreydCategoriesForCAP", ">= 2021.12-01" ],
+    [ "FreydCategoriesForCAP", ">= 2021.12-02" ],
   ],
   ExternalConditions := [ ],
 ),
