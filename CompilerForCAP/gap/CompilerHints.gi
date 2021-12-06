@@ -197,6 +197,9 @@ InstallGlobalFunction( CapJitReplacedGlobalVariablesByCategoryAttributes, functi
         )
     ];
     
+    # unbind the variable so we do not accidentally use it below
+    Unbind( category );
+    
     category_attribute_values := [ ];
     category_attribute_values_getters := [ ];
     
@@ -219,7 +222,7 @@ InstallGlobalFunction( CapJitReplacedGlobalVariablesByCategoryAttributes, functi
         
         # add some attributes by default
         
-        if HasRangeCategoryOfHomomorphismStructure( category ) then
+        if HasRangeCategoryOfHomomorphismStructure( cat ) then
             
             Add( attribute_names, "RangeCategoryOfHomomorphismStructure" );
             
