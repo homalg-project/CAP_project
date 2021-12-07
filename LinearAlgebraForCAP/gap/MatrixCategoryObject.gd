@@ -1,13 +1,10 @@
-#############################################################################
-##
-##                                LinearAlgebraForCAP package
-##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# LinearAlgebraForCAP: Category of Matrices over a Field for CAP
+#
+# Declarations
+#
+
 #! @Chapter Category of Matrices
-##
-#############################################################################
 
 ####################################
 ##

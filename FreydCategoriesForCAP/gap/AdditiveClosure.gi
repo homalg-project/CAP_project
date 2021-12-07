@@ -6,6 +6,64 @@
 
 ####################################
 ##
+## Helper functions
+##
+####################################
+
+InstallGlobalFunction( NullMatImmutable, function ( arg... )
+  local null, m, n, zero, row, i, k, f;
+    # taken from NullMat
+    
+    if Length( arg ) = 2 then
+        
+        m := arg[1];
+        n := arg[2];
+        f := Rationals;
+        
+    elif Length( arg ) = 3 and IsRing( arg[3] ) then
+        
+        m := arg[1];
+        n := arg[2];
+        f := arg[3];
+        
+    elif Length( arg ) = 3 then
+        
+        m := arg[1];
+        n := arg[2];
+        f := Ring( One( arg[3] ), arg[3] );
+        
+    else
+        
+        Error( "usage: NullMatImmutable( <m>, <n> [, <R>] )" );
+        
+    fi;
+    
+    zero := Zero( f );
+    
+    row := ListWithIdenticalEntries( n, zero );
+    
+    null := ListWithIdenticalEntries( m, row );
+    
+    MakeImmutable( null );
+    
+    return null;
+    
+end );
+
+InstallGlobalFunction( UnionOfRowsListList, function ( nr_cols, matrices )
+    
+    return Concatenation( matrices );
+    
+end );
+
+InstallGlobalFunction( UnionOfColumnsListList, function ( nr_rows, matrices )
+    
+    return List( [ 1 .. nr_rows ], i -> Concatenation( List( matrices, mat -> mat[i] ) ) );
+    
+end );
+
+####################################
+##
 ## Constructors
 ##
 ####################################
@@ -26,6 +84,8 @@ InstallMethod( AdditiveClosure,
     category := CreateCapCategory( Concatenation( "Additive closure( ", Name( underlying_category )," )"  ) );
     
     category!.category_as_first_argument := true;
+    
+    category!.supports_empty_limits := true;
     
     category!.compiler_hints := rec(
         category_attribute_names := [
@@ -733,7 +793,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
         
         listlist := List( [ 1 .. nr_rows_1 ], i ->
                         List( [ 1 .. nr_cols_2 ], j ->
-                            Sum( List( [ 1 .. nr_cols_1 ], k -> PreCompose( UnderlyingCategory( cat ), morphism_1[i, k], morphism_2[k, j] ) ) )
+                            Iterated(
+                                List( [ 1 .. nr_cols_1 ], k -> PreCompose( UnderlyingCategory( cat ), morphism_1[i, k], morphism_2[k, j] ) ),
+                                { alpha, beta } -> AdditionForMorphisms( UnderlyingCategory( cat ), alpha, beta )
+                            )
                         )
                     );
         
@@ -801,16 +864,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
       function( cat, diagram, test_object, morphisms, direct_sum )
         local listlist;
         
-        # UnionOfColumns
-        listlist := List( [ 1 .. NrRows( morphisms[1] ) ], i ->
-                        Concatenation(
-                            List( morphisms, tau ->
-                                List( [ 1 .. NrCols( tau ) ],
-                                   j -> tau[i, j]
-                                )
-                            )
-                        )
-                    );
+        listlist := UnionOfColumnsListList( Length( ObjectList( test_object ) ), List( morphisms, tau -> MorphismMatrix( tau ) ) );
         
         return AdditiveClosureMorphism( test_object,
                                         listlist,
@@ -823,20 +877,45 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADDITIVE_CLOSURE,
       function( cat, diagram, test_object, morphisms, direct_sum )
         local listlist;
         
-        # UnionOfRows
-        listlist := Concatenation(
-                        List( morphisms, tau ->
-                            List( [ 1 .. NrRows( tau ) ], i ->
-                               List( [ 1 .. NrCols( tau ) ],
-                                   j -> tau[i, j]
-                                )
-                            )
-                        )
-                    );
+        listlist := UnionOfRowsListList( Length( ObjectList( test_object ) ), List( morphisms, tau -> MorphismMatrix( tau ) ) );
         
         return AdditiveClosureMorphism( direct_sum,
                                         listlist,
                                         test_object );
+        
+    end );
+    
+    ##
+    AddComponentOfMorphismIntoDirectSum( category,
+      function( cat, morphism, summands, nr )
+        local lengths, start, stop;
+        
+        lengths := List( summands, s -> Length( ObjectList( s ) ) );
+        
+        start := Sum( lengths{[ 1 .. nr-1 ]} ) + 1;
+        
+        stop := (start - 1) + lengths[nr];
+        
+        return AdditiveClosureMorphism( Source( morphism ),
+                                        List( MorphismMatrix( morphism ), row -> row{[ start .. stop ]} ), # CertainColumns
+                                        summands[nr] );
+        
+    end );
+    
+    ##
+    AddComponentOfMorphismFromDirectSum( category,
+      function( cat, morphism, summands, nr )
+        local lengths, start, stop;
+        
+        lengths := List( summands, s -> Length( ObjectList( s ) ) );
+        
+        start := Sum( lengths{[ 1 .. nr-1 ]} ) + 1;
+        
+        stop := (start - 1) + lengths[nr];
+        
+        return AdditiveClosureMorphism( summands[nr],
+                                        MorphismMatrix( morphism ){[ start .. stop ]}, # CertainRows
+                                        Range( morphism ) );
         
     end );
     

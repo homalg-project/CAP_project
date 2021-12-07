@@ -202,3 +202,25 @@ DeclareOperation( "\/",
 #! <C>AsAdditiveClosureObject</C> and <C>AsAdditiveClosureMorphism</C>.
 DeclareOperation( "\/",
                   [ IsCapCategoryCell, IsAdditiveClosureCategory ] );
+
+####################################
+##
+#! @Section Global functions
+##
+####################################
+
+#! @Description
+#!   A (faster) version of `NullMat` returning an immutable matrix.
+DeclareGlobalFunction( "NullMatImmutable" );
+
+#! @Description
+#!   Stacks the matrices (lists of lists) in the list <A>L</A>. The matrices must have `nr_cols` columns.
+#! @Arguments nr_cols, L
+#! @Returns a list of lists
+DeclareGlobalFunction( "UnionOfRowsListList" );
+
+#! @Description
+#!   Augments the matrices (lists of lists) in the list <A>L</A>. The matrices must have `nr_rows` rows.
+#! @Arguments nr_rows, L
+#! @Returns a list of lists
+DeclareGlobalFunction( "UnionOfColumnsListList" );
