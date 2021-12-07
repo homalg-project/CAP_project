@@ -15,7 +15,7 @@ function ( cat_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddHomomorphismStructureOnObjects( cat,
@@ -27,7 +27,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( cat,
@@ -54,7 +54,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( cat,
@@ -79,7 +79,7 @@ function ( cat_1, source_1, alpha_1, range_1 )
 end
 ########
         
-    , 101 );
+    , 101 : IsPrecompiledFunction := true );
     
     ##
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
@@ -117,7 +117,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
 end );
 

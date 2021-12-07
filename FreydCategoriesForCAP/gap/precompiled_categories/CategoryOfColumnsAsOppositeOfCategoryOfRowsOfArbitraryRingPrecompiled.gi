@@ -15,7 +15,7 @@ function ( cat_1, a_1, b_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddAdditiveInverseForMorphisms( cat,
@@ -27,7 +27,7 @@ function ( cat_1, a_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddColift( cat,
@@ -39,7 +39,7 @@ function ( cat_1, alpha_1, beta_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddComponentOfMorphismFromDirectSum( cat,
@@ -56,7 +56,7 @@ function ( cat_1, alpha_1, S_1, i_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddComponentOfMorphismIntoDirectSum( cat,
@@ -73,7 +73,7 @@ function ( cat_1, alpha_1, S_1, i_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddDirectSum( cat,
@@ -87,7 +87,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddDirectSumFunctorialWithGivenDirectSums( cat,
@@ -101,7 +101,7 @@ function ( cat_1, P_1, objects_1, L_1, objectsp_1, Pp_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIdentityMorphism( cat,
@@ -113,7 +113,7 @@ function ( cat_1, a_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddInjectionOfBiasedWeakPushout( cat,
@@ -128,7 +128,7 @@ function ( cat_1, a_1, b_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsColiftable( cat,
@@ -139,7 +139,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsCongruentForMorphisms( cat,
@@ -150,7 +150,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsEqualForObjects( cat,
@@ -161,7 +161,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsLiftable( cat,
@@ -172,7 +172,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsWellDefinedForMorphisms( cat,
@@ -197,7 +197,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsWellDefinedForObjects( cat,
@@ -217,7 +217,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsZeroForMorphisms( cat,
@@ -228,7 +228,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddIsZeroForObjects( cat,
@@ -239,7 +239,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddLift( cat,
@@ -251,7 +251,7 @@ function ( cat_1, alpha_1, beta_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddMorphismConstructor( cat,
@@ -263,7 +263,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddMorphismDatum( cat,
@@ -286,7 +286,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddObjectConstructor( cat,
@@ -298,7 +298,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddObjectDatum( cat,
@@ -313,7 +313,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddPostCompose( cat,
@@ -325,7 +325,7 @@ function ( cat_1, beta_1, alpha_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddProjectionOfBiasedWeakFiberProduct( cat,
@@ -340,7 +340,7 @@ function ( cat_1, a_1, b_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddSimplifyRange( cat,
@@ -355,7 +355,7 @@ function ( cat_1, mor_1, n_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddSimplifyRange_IsoFromInputObject( cat,
@@ -370,7 +370,7 @@ function ( cat_1, mor_1, n_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddSimplifyRange_IsoToInputObject( cat,
@@ -385,7 +385,7 @@ function ( cat_1, mor_1, n_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddSimplifySource( cat,
@@ -400,7 +400,7 @@ function ( cat_1, mor_1, n_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddSimplifySourceAndRange( cat,
@@ -416,7 +416,7 @@ function ( cat_1, mor_1, n_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddSimplifySourceAndRange_IsoFromInputRange( cat,
@@ -431,7 +431,7 @@ function ( cat_1, mor_1, n_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddSimplifySourceAndRange_IsoFromInputSource( cat,
@@ -446,7 +446,7 @@ function ( cat_1, mor_1, n_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddSimplifySourceAndRange_IsoToInputRange( cat,
@@ -461,7 +461,7 @@ function ( cat_1, mor_1, n_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddSimplifySourceAndRange_IsoToInputSource( cat,
@@ -476,7 +476,7 @@ function ( cat_1, mor_1, n_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddSimplifySource_IsoFromInputObject( cat,
@@ -491,7 +491,7 @@ function ( cat_1, mor_1, n_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddSimplifySource_IsoToInputObject( cat,
@@ -506,7 +506,7 @@ function ( cat_1, mor_1, n_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddSomeReductionBySplitEpiSummand( cat,
@@ -517,7 +517,7 @@ function ( cat_1, alpha_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddSomeReductionBySplitEpiSummand_MorphismFromInputRange( cat,
@@ -528,7 +528,7 @@ function ( cat_1, alpha_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddSomeReductionBySplitEpiSummand_MorphismToInputRange( cat,
@@ -539,7 +539,7 @@ function ( cat_1, alpha_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( cat,
@@ -553,7 +553,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( cat,
@@ -565,7 +565,7 @@ function ( cat_1, T_1, P_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( cat,
@@ -579,7 +579,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( cat,
@@ -591,7 +591,7 @@ function ( cat_1, T_1, P_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddWeakCokernelProjection( cat,
@@ -606,7 +606,7 @@ function ( cat_1, alpha_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddWeakKernelEmbedding( cat,
@@ -621,7 +621,7 @@ function ( cat_1, alpha_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddZeroMorphism( cat,
@@ -633,7 +633,7 @@ function ( cat_1, a_1, b_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddZeroObject( cat,
@@ -645,7 +645,7 @@ function ( cat_1 )
 end
 ########
         
-    , 100 );
+    , 100 : IsPrecompiledFunction := true );
     
 end );
 

@@ -551,7 +551,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
             function_string, "\n",
             "########\n",
             "        \n",
-            "    , ", String( weight ), " );\n"
+            "    , ", String( weight ), " : IsPrecompiledFunction := true );\n"
         );
         output_string := Concatenation( output_string, current_string );
         
