@@ -986,7 +986,7 @@ end );
 BindGlobal( "OppositeOfMatrixCategoryPrecompiled", function ( field )
   local category_constructor, cat;
     
-    category_constructor := 
+    category_constructor :=
         
         
         function ( field )

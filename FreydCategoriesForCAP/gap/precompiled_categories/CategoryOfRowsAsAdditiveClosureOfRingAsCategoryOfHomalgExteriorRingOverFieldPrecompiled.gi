@@ -124,7 +124,7 @@ end );
 BindGlobal( "CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfHomalgExteriorRingOverFieldPrecompiled", function ( homalg_ring )
   local category_constructor, cat;
     
-    category_constructor := 
+    category_constructor :=
         
         
         function ( homalg_ring )
