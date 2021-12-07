@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # LinearAlgebraForCAP: Category of Matrices over a Field for CAP
 #
 # This file contains package meta data. For additional information on
@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "LinearAlgebraForCAP",
 Subtitle := "Category of Matrices over a Field for CAP",
-Version := "2021.11-01",
-Date := "09/11/2021",
+Version := "2021.12-01",
+Date := "07/12/2021",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -88,12 +88,14 @@ Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "ToolsForHomalg", ">=2015.09.18" ],
-                           [ "MatricesForHomalg", ">= 2021.04-04" ],
+                           [ "MatricesForHomalg", ">= 2021.12-01" ],
                            [ "GaussForHomalg", ">= 2021.04-02" ],
                            [ "CAP", ">= 2021.11-02" ],
                            [ "MonoidalCategories", ">= 2021.03-01" ],
                            ],
-  SuggestedOtherPackages := [ ],
+  SuggestedOtherPackages := [
+    [ "FreydCategoriesForCAP", ">= 2021.12-02" ],
+  ],
   ExternalConditions := [ ],
 ),
 

@@ -6,10 +6,10 @@
                   [1X Category of Matrices over a Field for CAP [101X
   
   
-                                   2021.11-01
+                                   2021.12-01
   
   
-                                9 November 2021
+                                7 December 2021
   
   
                                Sebastian Gutsche
@@ -60,7 +60,8 @@
       1.3-2 IsVectorSpaceObject
   2 [33X[0;0YExamples and Tests[133X
     2.1 [33X[0;0YBasic Commands[133X
-    2.2 [33X[0;0YSplit epi summand[133X
+    2.2 [33X[0;0YMatrixCategoryAsAdditiveClosureOfRingAsCategory[133X
+    2.3 [33X[0;0YSplit epi summand[133X
   
   
   [32X
