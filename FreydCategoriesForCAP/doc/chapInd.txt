@@ -132,6 +132,7 @@
   [2XMorphismMatrix[102X, for IsAdditiveClosureMorphism 2.3-3 
   [2XNrCols[102X, for IsAdditiveClosureMorphism 2.3-5 
   [2XNrRows[102X, for IsAdditiveClosureMorphism 2.3-4 
+  [2XNullMatImmutable[102X 2.5-1 
   [2XObjectList[102X, for IsAdditiveClosureObject 2.3-2 
   [2XProjectionInFirstFactorOfWeakBiFiberProduct[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.3-2 
   [2XProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.3-3 
@@ -149,6 +150,8 @@
   [2XUnderlyingHomalgGradedRing[102X, for IsGradedRowOrColumn 9.2-1 
       for IsGradedRowOrColumnMorphism 9.2-4 
   [2XUnderlyingHomalgMatrix[102X, for IsGradedRowOrColumnMorphism 9.2-5 
+  [2XUnionOfColumnsListList[102X 2.5-3 
+  [2XUnionOfRowsListList[102X 2.5-2 
   [2XUniversalMorphismFromBiasedWeakPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 1.6-4 
   [2XUniversalMorphismFromBiasedWeakPushoutWithGivenBiasedWeakPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.6-5 
   [2XUniversalMorphismFromWeakBiPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 1.5-6 

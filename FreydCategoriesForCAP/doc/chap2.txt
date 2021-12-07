@@ -191,3 +191,28 @@
   [33X[0;0YThis    is    a   convenience   method   for   [10XAsAdditiveClosureObject[110X   and
   [10XAsAdditiveClosureMorphism[110X.[133X
   
+  
+  [1X2.5 [33X[0;0YGlobal functions[133X[101X
+  
+  [1X2.5-1 NullMatImmutable[101X
+  
+  [33X[1;0Y[29X[2XNullMatImmutable[102X( [3Xarg[103X ) [32X function[133X
+  
+  [33X[0;0YA (faster) version of [10XNullMat[110X returning an immutable matrix.[133X
+  
+  [1X2.5-2 UnionOfRowsListList[101X
+  
+  [33X[1;0Y[29X[2XUnionOfRowsListList[102X( [3Xnr_cols[103X, [3XL[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists[133X
+  
+  [33X[0;0YStacks  the  matrices (lists of lists) in the list [3XL[103X. The matrices must have
+  [10Xnr_cols[110X columns.[133X
+  
+  [1X2.5-3 UnionOfColumnsListList[101X
+  
+  [33X[1;0Y[29X[2XUnionOfColumnsListList[102X( [3Xnr_rows[103X, [3XL[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya list of lists[133X
+  
+  [33X[0;0YAugments the matrices (lists of lists) in the list [3XL[103X. The matrices must have
+  [10Xnr_rows[110X rows.[133X
+  

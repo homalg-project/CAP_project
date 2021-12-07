@@ -60,6 +60,13 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D3C3DCE87667A7C"><code>2.4-3 \/</code></a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X790ACC3182D77147"><code>2.4-4 \/</code></a></span>
 </div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8126317783DFCEFE">2.5 <span class="Heading">Global functions</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79AE0EC6800C806D">2.5-1 NullMatImmutable</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7ADECA9C79646A06">2.5-2 UnionOfRowsListList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X84727BA37E3A813C">2.5-3 UnionOfColumnsListList</a></span>
+</div></div>
 </div>
 
 <h3>2 <span class="Heading">Additive closure</span></h3>
@@ -273,6 +280,35 @@
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \/</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>This is a convenience method for <code class="code">AsAdditiveClosureObject</code> and <code class="code">AsAdditiveClosureMorphism</code>.</p>
+
+<p><a id="X8126317783DFCEFE" name="X8126317783DFCEFE"></a></p>
+
+<h4>2.5 <span class="Heading">Global functions</span></h4>
+
+<p><a id="X79AE0EC6800C806D" name="X79AE0EC6800C806D"></a></p>
+
+<h5>2.5-1 NullMatImmutable</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NullMatImmutable</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>A (faster) version of <code class="code">NullMat</code> returning an immutable matrix.</p>
+
+<p><a id="X7ADECA9C79646A06" name="X7ADECA9C79646A06"></a></p>
+
+<h5>2.5-2 UnionOfRowsListList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnionOfRowsListList</code>( <var class="Arg">nr_cols</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list of lists</p>
+
+<p>Stacks the matrices (lists of lists) in the list <var class="Arg">L</var>. The matrices must have <code class="code">nr_cols</code> columns.</p>
+
+<p><a id="X84727BA37E3A813C" name="X84727BA37E3A813C"></a></p>
+
+<h5>2.5-3 UnionOfColumnsListList</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnionOfColumnsListList</code>( <var class="Arg">nr_rows</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a list of lists</p>
+
+<p>Augments the matrices (lists of lists) in the list <var class="Arg">L</var>. The matrices must have <code class="code">nr_rows</code> rows.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap3.html">[Next Chapter]</a>&nbsp;  </div>
