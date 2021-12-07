@@ -415,6 +415,25 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    given_arguments,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    package_name,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    compiled_category_name</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    # hack until we can compile Toposes</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    : operations := Intersection(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ListInstalledOperationsOfCategory( MatrixCategory( QQ ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        Union(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            RecNames( CAP_INTERNAL_CORE_METHOD_NAME_RECORD ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            RecNames( MONOIDAL_CATEGORIES_BASIC_METHOD_NAME_RECORD ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            RecNames( MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            RecNames( DISTRIBUTIVE_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            RecNames( CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            RecNames( COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            RecNames( BRAIDED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            RecNames(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                RIGID_SYMMETRIC_CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            RecNames(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">            )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MatrixCategoryPrecompiled( QQ );</span>
 Category of matrices over Q
@@ -964,6 +983,30 @@ function (  )
     return 1;
     val2_1 := 1;
     val1_1 := 1;
+    return;
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree = tree2;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that CapJitInlinedBindingsToVariableReferences is idempotent</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">func := function ( )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  local f1, f2; f1 := IdFunc; f2 := f1; return f2; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitInlinedBindingsToVariableReferences( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );</span>
+function (  )
+    local f1_1, f2_1;
+    return IdFunc;
+    f2_1 := IdFunc;
+    f1_1 := IdFunc;
+    return;
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree2 := CapJitInlinedBindingsToVariableReferences( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree2 ) );</span>
+function (  )
+    local f1_1, f2_1;
+    return IdFunc;
+    f2_1 := IdFunc;
+    f1_1 := IdFunc;
     return;
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree = tree2;</span>

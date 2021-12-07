@@ -76,7 +76,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X82763C7D7CAD3B16">2.5-7 CapJitHoistedExpressions</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7DF03AC082073C4C">2.5-8 CapJitInlinedArguments</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X83E0BBEA80AD5CDE">2.5-9 CapJitInlinedBindings</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7E07C8647B2BB9A1">2.5-10 CapJitInlinedBindingsToGlobalVariables</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X82F8D6B5851674EB">2.5-10 CapJitInlinedBindingsToVariableReferences</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7933165D803DEDB2">2.5-11 CapJitInlinedFunctionCalls</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7C3064C27FBB1A0D">2.5-12 CapJitInlinedSimpleFunctionCalls</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X837576207D282C04">2.5-13 CapJitAppliedLogic</a></span>
@@ -580,16 +580,16 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitInlinedBindings</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
 
-<p>Example: transforms <code class="code">function() local x; x := 1; return x^2; end</code> into <code class="code">function() return 1^2; end()</code>. Details: Replaces references to local variables of a function by the value of the corresponding binding of the function. If the option <code class="code">inline_gvars_only</code> is set to <code class="code">true</code>, this is only done if the value is a reference to a global variable.</p>
+<p>Example: transforms <code class="code">function() local x; x := 1; return x^2; end</code> into <code class="code">function() return 1^2; end()</code>. Details: Replaces references to local variables of a function by the value of the corresponding binding of the function. If the option <code class="code">inline_var_refs_only</code> is set to <code class="code">true</code>, this is only done if the value is a reference to a (local or global) variable.</p>
 
-<p><a id="X7E07C8647B2BB9A1" name="X7E07C8647B2BB9A1"></a></p>
+<p><a id="X82F8D6B5851674EB" name="X82F8D6B5851674EB"></a></p>
 
-<h5>2.5-10 CapJitInlinedBindingsToGlobalVariables</h5>
+<h5>2.5-10 CapJitInlinedBindingsToVariableReferences</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitInlinedBindingsToGlobalVariables</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitInlinedBindingsToVariableReferences</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
 
-<p>Short hand for <code class="code">CapJitInlinedBindings( </code><var class="Arg">tree</var><code class="code"> : inline_gvars_only := true )</code>.</p>
+<p>Short hand for <code class="code">CapJitInlinedBindings( </code><var class="Arg">tree</var><code class="code"> : inline_var_refs_only := true )</code>.</p>
 
 <p><a id="X7933165D803DEDB2" name="X7933165D803DEDB2"></a></p>
 

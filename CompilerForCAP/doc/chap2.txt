@@ -545,15 +545,15 @@
   [33X[0;0YExample:  transforms  [10Xfunction()  local  x;  x  :=  1;  return x^2; end[110X into
   [10Xfunction()   return  1^2;  end()[110X.  Details:  Replaces  references  to  local
   variables  of  a  function  by the value of the corresponding binding of the
-  function.  If the option [10Xinline_gvars_only[110X is set to [10Xtrue[110X, this is only done
-  if the value is a reference to a global variable.[133X
+  function.  If  the  option [10Xinline_var_refs_only[110X is set to [10Xtrue[110X, this is only
+  done if the value is a reference to a (local or global) variable.[133X
   
-  [1X2.5-10 CapJitInlinedBindingsToGlobalVariables[101X
+  [1X2.5-10 CapJitInlinedBindingsToVariableReferences[101X
   
-  [33X[1;0Y[29X[2XCapJitInlinedBindingsToGlobalVariables[102X( [3Xtree[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XCapJitInlinedBindingsToVariableReferences[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
-  [33X[0;0YShort hand for [10XCapJitInlinedBindings( [110X[3Xtree[103X[10X : inline_gvars_only := true )[110X.[133X
+  [33X[0;0YShort hand for [10XCapJitInlinedBindings( [110X[3Xtree[103X[10X : inline_var_refs_only := true )[110X.[133X
   
   [1X2.5-11 CapJitInlinedFunctionCalls[101X
   

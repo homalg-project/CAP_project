@@ -1,7 +1,7 @@
 name: CompilerForCAP
-version: "2021.11-09"
+version: "2021.12-01"
 license: "GPL-2.0-or-later"
-date: 2021-12-06
+date: 2021-12-07
 description: |
     Speed up computations in CAP categories
 
@@ -17,7 +17,7 @@ GAP: ">= 4.11"
 
 needed-pkgs:
     - name: "CAP"
-      version: ">= 2021.10-02"
+      version: ">= 2021.12-01"
       url: "https://homalg-project.github.io/pkg/CAP"
 
 www: https://homalg-project.github.io/pkg/CompilerForCAP
@@ -26,11 +26,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/CompilerForCAP/Package
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2021.11-09/CompilerForCAP-2021.11-09.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2021.12-01/CompilerForCAP-2021.12-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2021.11-09/CompilerForCAP-2021.11-09.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2021.12-01/CompilerForCAP-2021.12-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2021.11-09/CompilerForCAP-2021.11-09.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2021.12-01/CompilerForCAP-2021.12-01.pdf
 
 abstract: |
 
@@ -41,7 +41,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>Zic21</span>]   <b class='BibAuthor'>Zickgraf, F.</b>,
      <i class='BibTitle'>CompilerForCAP, Speed up computations in CAP categories,
-             Version 2021.11-09</i>
+             Version 2021.12-01</i>
      (<span class='BibYear'>2021</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CompilerForCAP">https://homalg-project.github.io/pkg/CompilerForCAP</a></span>.
@@ -49,10 +49,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ CompilerForCAP2021.11-09,
+    @misc{ CompilerForCAP2021.12-01,
       author =           {Zickgraf, F.},
       title =            {{CompilerForCAP},   Speed   up   computations  in  CAP
-                          categories, {V}ersion 2021.11-09},
+                          categories, {V}ersion 2021.12-01},
       month =            {Dec},
       year =             {2021},
       note =             {GAP package},

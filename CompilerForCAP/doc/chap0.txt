@@ -6,10 +6,10 @@
                    [1X Speed up computations in CAP categories [101X
   
   
-                                   2021.11-09
+                                   2021.12-01
   
   
-                                6 December 2021
+                                7 December 2021
   
   
                                 Fabian Zickgraf
@@ -86,7 +86,7 @@
       2.5-7 CapJitHoistedExpressions
       2.5-8 CapJitInlinedArguments
       2.5-9 CapJitInlinedBindings
-      2.5-10 CapJitInlinedBindingsToGlobalVariables
+      2.5-10 CapJitInlinedBindingsToVariableReferences
       2.5-11 CapJitInlinedFunctionCalls
       2.5-12 CapJitInlinedSimpleFunctionCalls
       2.5-13 CapJitAppliedLogic

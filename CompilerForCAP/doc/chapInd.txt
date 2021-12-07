@@ -24,7 +24,7 @@
   [2XCapJitHoistedExpressions[102X 2.5-7 
   [2XCapJitInlinedArguments[102X 2.5-8 
   [2XCapJitInlinedBindings[102X 2.5-9 
-  [2XCapJitInlinedBindingsToGlobalVariables[102X 2.5-10 
+  [2XCapJitInlinedBindingsToVariableReferences[102X 2.5-10 
   [2XCapJitInlinedFunctionCalls[102X 2.5-11 
   [2XCapJitInlinedSimpleFunctionCalls[102X 2.5-12 
   [2XCapJitIsCallToGlobalFunction[102X 2.4-4 
