@@ -69,7 +69,7 @@ DeclareAttribute( "UnderlyingCategory",
 DeclareAttribute( "RelationMorphism",
                   IsFreydCategoryObject );
 
-DeclareAttribute( "MorphismDatum",
+DeclareAttribute( "UnderlyingMorphism",
                   IsFreydCategoryMorphism );
 
 DeclareAttribute( "MorphismWitness",
