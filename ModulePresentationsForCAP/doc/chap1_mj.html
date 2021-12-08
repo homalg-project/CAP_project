@@ -63,8 +63,10 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X86F926B27C579E66">1.3-9 UnderlyingMatrix</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7D8E30E486A08439">1.3-10 UnderlyingHomalgRing</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7B5539AB8541F618">1.3-11 Annihilator</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87946F997AD1005A">1.3-12 LeftPresentations</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7BDF988F7FFEAB8C">1.3-13 RightPresentations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F774C0C79A838C2">1.3-12 LeftPresentationsAsFreydCategoryOfCategoryOfRows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8147CE4979AE5346">1.3-13 RightPresentationsAsFreydCategoryOfCategoryOfColumns</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X87946F997AD1005A">1.3-14 LeftPresentations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7BDF988F7FFEAB8C">1.3-15 RightPresentations</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7C701DBF7BAE649A">1.4 <span class="Heading">Attributes</span></a>
 </span>
@@ -349,9 +351,27 @@
 
 <p>The argument is an object <span class="SimpleMath">\(A\)</span> in the category of left or right presentations. The output is the embedding of the annihilator <span class="SimpleMath">\(I\)</span> of <span class="SimpleMath">\(A\)</span> into the free module <span class="SimpleMath">\(F\)</span> of rank <span class="SimpleMath">\(1\)</span>. In particular, the annihilator itself is seen as a left or right presentation.</p>
 
+<p><a id="X7F774C0C79A838C2" name="X7F774C0C79A838C2"></a></p>
+
+<h5>1.3-12 LeftPresentationsAsFreydCategoryOfCategoryOfRows</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftPresentationsAsFreydCategoryOfCategoryOfRows</code>( <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>The argument is a homalg ring <span class="SimpleMath">\(R\)</span>. The output is the category of left presentations over <span class="SimpleMath">\(R\)</span>, constructed internally as the <code class="code">FreydCategory</code> of the <code class="code">CategoryOfRows</code> of <var class="Arg">R</var>. Only available if the package <code class="code">FreydCategoriesForCAP</code> is available.</p>
+
+<p><a id="X8147CE4979AE5346" name="X8147CE4979AE5346"></a></p>
+
+<h5>1.3-13 RightPresentationsAsFreydCategoryOfCategoryOfColumns</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightPresentationsAsFreydCategoryOfCategoryOfColumns</code>( <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a category</p>
+
+<p>The argument is a homalg ring <span class="SimpleMath">\(R\)</span>. The output is the category of right presentations over <span class="SimpleMath">\(R\)</span>, constructed internally as the <code class="code">FreydCategory</code> of the <code class="code">CategoryOfColumns</code> of <var class="Arg">R</var>. Only available if the package <code class="code">FreydCategoriesForCAP</code> is available.</p>
+
 <p><a id="X87946F997AD1005A" name="X87946F997AD1005A"></a></p>
 
-<h5>1.3-12 LeftPresentations</h5>
+<h5>1.3-14 LeftPresentations</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LeftPresentations</code>( <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a category</p>
@@ -360,7 +380,7 @@
 
 <p><a id="X7BDF988F7FFEAB8C" name="X7BDF988F7FFEAB8C"></a></p>
 
-<h5>1.3-13 RightPresentations</h5>
+<h5>1.3-15 RightPresentations</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RightPresentations</code>( <var class="Arg">R</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a category</p>

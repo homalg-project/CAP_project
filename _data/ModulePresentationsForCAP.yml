@@ -1,7 +1,7 @@
 name: ModulePresentationsForCAP
-version: "2021.11-02"
+version: "2021.12-01"
 license: "GPL-2.0-or-later"
-date: 2021-11-09
+date: 2021-12-08
 description: |
     Category R-pres for CAP
 
@@ -36,17 +36,22 @@ needed-pkgs:
       version: ">=0"
       url: "https://homalg-project.github.io/pkg/GeneralizedMorphismsForCAP"
 
+suggested-pkgs:
+    - name: "FreydCategoriesForCAP"
+      version: ">= 2021.12-04"
+      url: "https://homalg-project.github.io/pkg/FreydCategoriesForCAP"
+
 www: https://homalg-project.github.io/pkg/ModulePresentationsForCAP
 readme: README.md
 packageinfo: https://homalg-project.github.io/CAP_project/ModulePresentationsForCAP/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2021.11-02/ModulePresentationsForCAP-2021.11-02.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2021.12-01/ModulePresentationsForCAP-2021.12-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2021.11-02/ModulePresentationsForCAP-2021.11-02.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2021.12-01/ModulePresentationsForCAP-2021.12-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2021.11-02/ModulePresentationsForCAP-2021.11-02.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/ModulePresentationsForCAP-2021.12-01/ModulePresentationsForCAP-2021.12-01.pdf
 
 abstract: |
     <span class="pkgname">ModulePresentationsForCAP</span> provides the category of finitely presented modules over a computable ring.
@@ -58,7 +63,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>GP21</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
      <i class='BibTitle'>ModulePresentationsForCAP, Category R-pres for CAP,
-             Version 2021.11-02</i>
+             Version 2021.12-01</i>
      (<span class='BibYear'>2021</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/ModulePresentationsForCAP">https://homalg-project.github.io/pkg/ModulePresentationsForCAP</a></span>.
@@ -66,11 +71,11 @@ citeas: |
     
 
 bibtex: |
-    @misc{ ModulePresentationsForCAP2021.11-02,
+    @misc{ ModulePresentationsForCAP2021.12-01,
       author =           {Gutsche, S. and Posur, S.},
       title =            {{ModulePresentationsForCAP},  Category R-pres for CAP,
-                          {V}ersion 2021.11-02},
-      month =            {Nov},
+                          {V}ersion 2021.12-01},
+      month =            {Dec},
       year =             {2021},
       note =             {GAP package},
       howpublished =     {\href

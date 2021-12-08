@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "ModulePresentationsForCAP",
 Subtitle := "Category R-pres for CAP",
-Version := "2021.11-02",
-Date := "09/11/2021",
+Version := "2021.12-01",
+Date := "08/12/2021",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -92,7 +92,9 @@ Dependencies := rec(
                            [ "MonoidalCategories", ">= 2019.01.16" ],
                            [ "GeneralizedMorphismsForCAP", ">=0" ],
   ],
-  SuggestedOtherPackages := [ ],
+  SuggestedOtherPackages := [
+    [ "FreydCategoriesForCAP", ">= 2021.12-04" ],
+  ],
   ExternalConditions := [ ],
 ),
 
