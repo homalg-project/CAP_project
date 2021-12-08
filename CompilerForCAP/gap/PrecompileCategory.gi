@@ -551,7 +551,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
             function_string, "\n",
             "########\n",
             "        \n",
-            "    , ", String( weight ), " );\n"
+            "    , ", String( weight ), " : IsPrecompiledFunction := true );\n"
         );
         output_string := Concatenation( output_string, current_string );
         
@@ -564,7 +564,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         "BindGlobal( \"", compiled_category_name, "\", function ( ", parameters_string, " )\n",
         "  local category_constructor, cat;\n",
         "    \n",
-        "    category_constructor := \n",
+        "    category_constructor :=\n",
         "        \n",
         "        \n",
         "        ", CapJitPrettyPrintFunction( category_constructor ), ";\n",

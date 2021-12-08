@@ -54,6 +54,10 @@ Display( gamma );
 #!   [  -1,   0,   2,   1,  -1,   0,   2,   1 ] ]
 #! 
 #! A morphism in Category of matrices over Q
+IsEqualForMorphisms( ComponentOfMorphismIntoDirectSum( gamma, [ b, b ], 1 ), alpha );
+#! true
+IsEqualForMorphisms( ComponentOfMorphismIntoDirectSum( gamma, [ b, b ], 2 ), alpha );
+#! true
 
 gamma := UniversalMorphismFromDirectSum( [ beta, beta ] );;
 Display( gamma );
@@ -65,6 +69,9 @@ Display( gamma );
 #!   [  -1,   0,   2,   1 ] ]
 #! 
 #! A morphism in Category of matrices over Q
-
+IsEqualForMorphisms( ComponentOfMorphismFromDirectSum( gamma, [ a, a ], 1 ), beta );
+#! true
+IsEqualForMorphisms( ComponentOfMorphismFromDirectSum( gamma, [ a, a ], 2 ), beta );
+#! true
 
 #! @EndExample

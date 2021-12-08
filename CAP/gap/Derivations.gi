@@ -968,7 +968,11 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
         Print( Name( category ), " can already compute ", string, " with weight " , String( current_weight ), ".\n" );
         
         if current_derivation = fail then
-            Print( "It was given as a primitive operation.\n\n" );
+            if IsBound( category!.primitive_operations.( string ) ) and category!.primitive_operations.( string ) = true then
+                Print( "It was given as a primitive operation.\n\n" );
+            else
+                Print( "It was installed as a final derivation or as a precompiled function.\n\n" );
+            fi;
         else
             Print( "It was derived by ", DerivationName( current_derivation ), " using \n" );
             used_ops_with_multiples := UsedOperationsWithMultiples( current_derivation );
