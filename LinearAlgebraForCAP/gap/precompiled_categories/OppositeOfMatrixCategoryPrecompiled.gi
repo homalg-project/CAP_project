@@ -19,7 +19,7 @@ function ( cat_1, a_1, b_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddAdditiveInverseForMorphisms( cat,
@@ -34,7 +34,7 @@ function ( cat_1, a_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddBasisOfExternalHom( cat,
@@ -66,7 +66,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddBraidingInverseWithGivenTensorProducts( cat,
@@ -89,7 +89,7 @@ function ( cat_1, s_1, a_1, b_1, r_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddCoDualOnMorphismsWithGivenCoDuals( cat,
@@ -102,7 +102,7 @@ function ( cat_1, s_1, alpha_1, r_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddCoDualOnObjects( cat,
@@ -114,7 +114,7 @@ function ( cat_1, a_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddCoclosedCoevaluationForCoDualWithGivenTensorProduct( cat,
@@ -141,7 +141,7 @@ function ( cat_1, s_1, a_1, r_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddCoclosedEvaluationForCoDualWithGivenTensorProduct( cat,
@@ -168,7 +168,7 @@ function ( cat_1, s_1, a_1, r_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( cat,
@@ -179,7 +179,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddCokernelObject( cat,
@@ -194,7 +194,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddCokernelProjection( cat,
@@ -215,7 +215,7 @@ function ( cat_1, alpha_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddColift( cat,
@@ -231,7 +231,7 @@ function ( cat_1, alpha_1, beta_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddComponentOfMorphismFromDirectSum( cat,
@@ -252,7 +252,7 @@ function ( cat_1, alpha_1, S_1, i_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddComponentOfMorphismIntoDirectSum( cat,
@@ -273,7 +273,7 @@ function ( cat_1, alpha_1, S_1, i_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddDirectSum( cat,
@@ -288,7 +288,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddDirectSumFunctorialWithGivenDirectSums( cat,
@@ -305,7 +305,7 @@ function ( cat_1, P_1, objects_1, L_1, objectsp_1, Pp_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddDistinguishedObjectOfHomomorphismStructure( cat,
@@ -317,7 +317,7 @@ function ( cat_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddEpimorphismFromSomeProjectiveObject( cat,
@@ -334,7 +334,7 @@ function ( cat_1, A_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddHomomorphismStructureOnMorphismsWithGivenObjects( cat,
@@ -346,7 +346,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddHomomorphismStructureOnObjects( cat,
@@ -358,7 +358,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIdentityMorphism( cat,
@@ -374,7 +374,7 @@ function ( cat_1, a_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddInjectionOfCofactorOfDirectSumWithGivenDirectSum( cat,
@@ -400,7 +400,7 @@ function ( cat_1, objects_1, k_1, P_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( cat,
@@ -417,7 +417,7 @@ function ( cat_1, alpha_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
@@ -435,7 +435,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIsColiftable( cat,
@@ -446,7 +446,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIsCongruentForMorphisms( cat,
@@ -457,7 +457,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIsEpimorphism( cat,
@@ -470,7 +470,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIsEqualForObjects( cat,
@@ -481,7 +481,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIsInjective( cat,
@@ -492,7 +492,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIsIsomorphism( cat,
@@ -506,7 +506,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIsLiftable( cat,
@@ -517,7 +517,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIsMonomorphism( cat,
@@ -530,7 +530,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIsProjective( cat,
@@ -541,7 +541,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIsWellDefinedForMorphisms( cat,
@@ -565,7 +565,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIsWellDefinedForObjects( cat,
@@ -585,7 +585,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIsZeroForMorphisms( cat,
@@ -596,7 +596,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddIsZeroForObjects( cat,
@@ -607,7 +607,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddKernelEmbedding( cat,
@@ -628,7 +628,7 @@ function ( cat_1, alpha_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddKernelObject( cat,
@@ -643,7 +643,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddLift( cat,
@@ -659,7 +659,7 @@ function ( cat_1, alpha_1, beta_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddMonomorphismIntoSomeInjectiveObject( cat,
@@ -676,7 +676,7 @@ function ( cat_1, A_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddMorphismBetweenDirectSumsWithGivenDirectSums( cat,
@@ -699,7 +699,7 @@ function ( cat_1, S_1, source_diagram_1, mat_1, range_diagram_1, T_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddMorphismConstructor( cat,
@@ -711,7 +711,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddMorphismDatum( cat,
@@ -722,7 +722,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddMorphismFromCoBidualWithGivenCoBidual( cat,
@@ -738,7 +738,7 @@ function ( cat_1, a_1, s_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddMultiplyWithElementOfCommutativeRingForMorphisms( cat,
@@ -753,7 +753,7 @@ function ( cat_1, r_1, a_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddObjectConstructor( cat,
@@ -765,7 +765,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddObjectDatum( cat,
@@ -776,7 +776,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddPostCompose( cat,
@@ -792,7 +792,7 @@ function ( cat_1, beta_1, alpha_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddProjectionInFactorOfDirectSumWithGivenDirectSum( cat,
@@ -818,7 +818,7 @@ function ( cat_1, objects_1, k_1, P_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddSomeInjectiveObject( cat,
@@ -830,7 +830,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddSomeProjectiveObject( cat,
@@ -842,7 +842,7 @@ function ( cat_1, arg2_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddTensorProductOnMorphismsWithGivenTensorProducts( cat,
@@ -855,7 +855,7 @@ function ( cat_1, s_1, alpha_1, beta_1, r_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddTensorProductOnObjects( cat,
@@ -868,7 +868,7 @@ function ( cat_1, arg2_1, arg3_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddTensorUnit( cat,
@@ -881,7 +881,7 @@ function ( cat_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddUniversalMorphismFromDirectSumWithGivenDirectSum( cat,
@@ -899,7 +899,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddUniversalMorphismFromZeroObjectWithGivenZeroObject( cat,
@@ -915,7 +915,7 @@ function ( cat_1, T_1, P_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddUniversalMorphismIntoDirectSumWithGivenDirectSum( cat,
@@ -933,7 +933,7 @@ function ( cat_1, objects_1, T_1, tau_1, P_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddUniversalMorphismIntoZeroObjectWithGivenZeroObject( cat,
@@ -949,7 +949,7 @@ function ( cat_1, T_1, P_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddZeroMorphism( cat,
@@ -966,7 +966,7 @@ function ( cat_1, a_1, b_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
     ##
     AddZeroObject( cat,
@@ -979,7 +979,7 @@ function ( cat_1 )
 end
 ########
         
-    , 100 : IsPrecompiledFunction := true );
+    , 100 );
     
 end );
 

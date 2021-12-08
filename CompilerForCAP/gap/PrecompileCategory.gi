@@ -246,7 +246,7 @@ BindGlobal( "CAP_JIT_INTERNAL_SAFE_OPERATIONS", [
 ] );
 
 InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_constructor, given_arguments, package_name, compiled_category_name )
-  local cat1, cat2, cat, obj, mor, operations, diff, output_string, package_info, parameters_string, current_string, object_name, example_input, without_given_name, without_given_rec, with_given_object_position, source, range, index, function_to_compile, compiled_tree, compiled_func, function_string, weight, filter_list, function_name, current_rec;
+  local cat1, cat2, cat, obj, mor, operations, diff, output_string, package_info, parameters_string, current_string, object_name, example_input, without_given_name, without_given_rec, with_given_object_position, source, range, index, function_to_compile, compiled_tree, compiled_func, function_string, weight, IsPrecompiledDerivation_string, filter_list, function_name, current_rec;
     
     if IsOperation( category_constructor ) or IsKernelFunction( category_constructor ) then
         
@@ -542,6 +542,16 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         Assert( 0, weight < infinity );
         
+        if IsBound( cat!.primitive_operations.(function_name) ) and cat!.primitive_operations.(function_name) = true then
+            
+            IsPrecompiledDerivation_string := "";
+            
+        else
+            
+            IsPrecompiledDerivation_string := " : IsPrecompiledDerivation := true";
+            
+        fi;
+        
         current_string := Concatenation(
             "    \n",
             "    ##\n",
@@ -551,7 +561,7 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
             function_string, "\n",
             "########\n",
             "        \n",
-            "    , ", String( weight ), " : IsPrecompiledFunction := true );\n"
+            "    , ", String( weight ), IsPrecompiledDerivation_string, " );\n"
         );
         output_string := Concatenation( output_string, current_string );
         

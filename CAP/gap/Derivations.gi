@@ -971,7 +971,7 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
             if IsBound( category!.primitive_operations.( string ) ) and category!.primitive_operations.( string ) = true then
                 Print( "It was given as a primitive operation.\n\n" );
             else
-                Print( "It was installed as a final derivation or as a precompiled function.\n\n" );
+                Print( "It was installed as a final or precompiled derivation.\n\n" );
             fi;
         else
             Print( "It was derived by ", DerivationName( current_derivation ), " using \n" );
