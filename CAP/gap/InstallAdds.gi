@@ -599,7 +599,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
         if set_primitive then
             AddPrimitiveOperation( category!.derivations_weight_list, function_name, weight );
             
-            if not ValueOption( "IsFinalDerivation" ) = true and not ValueOption( "IsPrecompiledFunction" ) = true then
+            if not ValueOption( "IsFinalDerivation" ) = true and not ValueOption( "IsPrecompiledDerivation" ) = true then
                 category!.primitive_operations.( function_name ) := true;
             fi;
             

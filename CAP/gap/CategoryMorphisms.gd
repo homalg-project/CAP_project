@@ -993,7 +993,7 @@ DeclareAttribute( "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorph
 #! The output is the corresponding morphism
 #! $\nu( \alpha ): 1 \rightarrow r$ in $D$ of the homomorphism structure.
 #! @Returns a morphism in $\mathrm{Hom}_{D}(1, r)$
-#! @Arguments alpha
+#! @Arguments distinguished_object, alpha, r
 DeclareOperation( "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject ] );
 

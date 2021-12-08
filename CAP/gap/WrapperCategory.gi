@@ -107,7 +107,7 @@ InstallMethod( WrapperCategory,
         [ IsCapCategory, IsRecord ],
         
   function( C, options )
-    local known_options_with_filters, filter, category_constructor_options, copy_value_or_default, D, HC, option_name;
+    local known_options_with_filters, filter, category_constructor_options, copy_value_or_default, list_of_operations_to_install, D, HC, option_name;
     
     ## check given options
     known_options_with_filters := rec(
@@ -201,13 +201,15 @@ InstallMethod( WrapperCategory,
     
     if IsBound( options.only_primitive_operations ) and options.only_primitive_operations then
         
-        category_constructor_options.list_of_operations_to_install := ListPrimitivelyInstalledOperationsOfCategory( C );
+        list_of_operations_to_install := ListPrimitivelyInstalledOperationsOfCategory( C );
         
     else
         
-        category_constructor_options.list_of_operations_to_install := ListInstalledOperationsOfCategory( C );
+        list_of_operations_to_install := ListInstalledOperationsOfCategory( C );
         
     fi;
+    
+    category_constructor_options.list_of_operations_to_install := list_of_operations_to_install;
     
     D := CategoryConstructor( category_constructor_options );
     
@@ -225,7 +227,7 @@ InstallMethod( WrapperCategory,
     
     SetUnderlyingCategory( D, C );
     
-    if CanCompute( C, "BasisOfExternalHom" ) then
+    if "BasisOfExternalHom" in list_of_operations_to_install then
         
         AddBasisOfExternalHom( D,
           function( cat, a, b )
@@ -237,7 +239,7 @@ InstallMethod( WrapperCategory,
         
     fi;
     
-    if CanCompute( C, "CoefficientsOfMorphismWithGivenBasisOfExternalHom" ) then
+    if "CoefficientsOfMorphismWithGivenBasisOfExternalHom" in list_of_operations_to_install then
         
         AddCoefficientsOfMorphismWithGivenBasisOfExternalHom( D,
           function( cat, alpha, L )
@@ -269,7 +271,7 @@ InstallMethod( WrapperCategory,
                 
             fi;
             
-            if CanCompute( C, "DistinguishedObjectOfHomomorphismStructure" ) then
+            if "DistinguishedObjectOfHomomorphismStructure" in list_of_operations_to_install then
                 AddDistinguishedObjectOfHomomorphismStructure( D,
                   function( cat )
                     
@@ -278,7 +280,7 @@ InstallMethod( WrapperCategory,
                 end );
             fi;
             
-            if CanCompute( C, "HomomorphismStructureOnObjects" ) then
+            if "HomomorphismStructureOnObjects" in list_of_operations_to_install then
                 AddHomomorphismStructureOnObjects( D,
                   function( cat, a, b )
                     
@@ -287,7 +289,7 @@ InstallMethod( WrapperCategory,
                 end );
             fi;
             
-            if CanCompute( C, "HomomorphismStructureOnMorphismsWithGivenObjects" ) then
+            if "HomomorphismStructureOnMorphismsWithGivenObjects" in list_of_operations_to_install then
                 AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
                   function( cat, s, alpha, beta, r )
                     
@@ -296,7 +298,7 @@ InstallMethod( WrapperCategory,
                 end );
             fi;
             
-            if CanCompute( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" ) then
+            if "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" in list_of_operations_to_install then
                 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( D,
                   function( cat, s, alpha, r )
                     
@@ -305,7 +307,7 @@ InstallMethod( WrapperCategory,
                 end );
             fi;
             
-            if CanCompute( C, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ) then
+            if "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" in list_of_operations_to_install then
                 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
                   function( cat, a, b, iota )
                     
@@ -316,7 +318,7 @@ InstallMethod( WrapperCategory,
             
         else
             
-            if CanCompute( C, "DistinguishedObjectOfHomomorphismStructure" ) then
+            if "DistinguishedObjectOfHomomorphismStructure" in list_of_operations_to_install then
                 AddDistinguishedObjectOfHomomorphismStructure( D,
                   function( cat )
                     
@@ -325,7 +327,7 @@ InstallMethod( WrapperCategory,
                 end );
             fi;
             
-            if CanCompute( C, "HomomorphismStructureOnObjects" ) then
+            if "HomomorphismStructureOnObjects" in list_of_operations_to_install then
                 AddHomomorphismStructureOnObjects( D,
                   function( cat, a, b )
                     
@@ -334,7 +336,7 @@ InstallMethod( WrapperCategory,
                 end );
             fi;
             
-            if CanCompute( C, "HomomorphismStructureOnMorphismsWithGivenObjects" ) then
+            if "HomomorphismStructureOnMorphismsWithGivenObjects" in list_of_operations_to_install then
                 AddHomomorphismStructureOnMorphismsWithGivenObjects( D,
                   function( cat, s, alpha, beta, r )
                     
@@ -343,7 +345,7 @@ InstallMethod( WrapperCategory,
                 end );
             fi;
             
-            if CanCompute( C, "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" ) then
+            if "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure" in list_of_operations_to_install then
                 AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( D,
                   function( cat, alpha )
                     
@@ -352,7 +354,16 @@ InstallMethod( WrapperCategory,
                 end );
             fi;
             
-            if CanCompute( C, "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ) then
+            if "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects" in list_of_operations_to_install then
+                AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( D,
+                  function( cat, s, alpha, r )
+                    
+                    return InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( UnderlyingCategory( cat ), s, MorphismDatum( cat, alpha ), r );
+                    
+                end );
+            fi;
+            
+            if "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" in list_of_operations_to_install then
                 AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( D,
                   function( cat, a, b, iota )
                     
