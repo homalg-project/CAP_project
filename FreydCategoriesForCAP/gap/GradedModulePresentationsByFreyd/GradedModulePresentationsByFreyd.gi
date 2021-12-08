@@ -39,7 +39,7 @@ InstallMethod( FreydCategory,
       
       AddObjectRepresentation( category, IsFreydCategoryObject and HasRelationMorphism and IsFpGradedLeftModulesObject );
       
-      AddMorphismRepresentation( category, IsFreydCategoryMorphism and HasMorphismDatum and IsFpGradedLeftModulesMorphism );
+      AddMorphismRepresentation( category, IsFreydCategoryMorphism and HasUnderlyingMorphism and IsFpGradedLeftModulesMorphism );
       
       return category;
       
@@ -69,7 +69,7 @@ InstallMethod( FreydCategory,
       
       AddObjectRepresentation( category, IsFreydCategoryObject and HasRelationMorphism and IsFpGradedRightModulesObject );
       
-      AddMorphismRepresentation( category, IsFreydCategoryMorphism and HasMorphismDatum and IsFpGradedRightModulesMorphism );
+      AddMorphismRepresentation( category, IsFreydCategoryMorphism and HasUnderlyingMorphism and IsFpGradedRightModulesMorphism );
       
       return category;
       

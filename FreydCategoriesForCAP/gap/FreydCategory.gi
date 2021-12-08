@@ -129,7 +129,7 @@ InstallGlobalFunction( FREYD_CATEGORY,
     
     AddObjectRepresentation( freyd_category, IsFreydCategoryObject and HasRelationMorphism );
     
-    AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism and HasMorphismDatum );
+    AddMorphismRepresentation( freyd_category, IsFreydCategoryMorphism and HasUnderlyingMorphism );
     
     INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY( freyd_category );
     
@@ -453,7 +453,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
                                  rec( ), cat,
                                  source,
                                  range,
-                                 MorphismDatum, morphism_datum
+                                 UnderlyingMorphism, morphism_datum
         );
         
     end );
@@ -462,7 +462,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_FREYD_CATEGORY,
     AddMorphismDatum( category,
       function( cat, mor )
         
-        return MorphismDatum( mor );
+        return UnderlyingMorphism( mor );
         
     end );
     

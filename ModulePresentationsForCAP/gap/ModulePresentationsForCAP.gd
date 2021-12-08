@@ -65,18 +65,6 @@ DeclareGlobalFunction( "ADD_KERNEL_LEFT" );
 
 DeclareGlobalFunction( "ADD_PRECOMPOSE_LEFT" );
 
-DeclareGlobalFunction( "ADD_ZERO_MORPHISM_LEFT" );
-
-DeclareGlobalFunction( "ADD_EQUAL_FOR_MORPHISMS_LEFT" );
-
-DeclareGlobalFunction( "ADD_COKERNEL_LEFT" );
-
-DeclareGlobalFunction( "ADD_DIRECT_SUM_LEFT" );
-
-DeclareGlobalFunction( "ADD_ZERO_OBJECT_LEFT" );
-
-DeclareGlobalFunction( "ADD_IDENTITY_LEFT" );
-
 DeclareGlobalFunction( "ADD_IS_WELL_DEFINED_FOR_MORPHISM_LEFT" );
 
 DeclareGlobalFunction( "ADD_TENSOR_PRODUCT_ON_OBJECTS_LEFT" );
@@ -101,18 +89,6 @@ DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_RIGHT_PRESENTATION" );
 DeclareGlobalFunction( "ADD_KERNEL_RIGHT" );
 
 DeclareGlobalFunction( "ADD_PRECOMPOSE_RIGHT" );
-
-DeclareGlobalFunction( "ADD_ZERO_MORPHISM_RIGHT" );
-
-DeclareGlobalFunction( "ADD_EQUAL_FOR_MORPHISMS_RIGHT" );
-
-DeclareGlobalFunction( "ADD_COKERNEL_RIGHT" );
-
-DeclareGlobalFunction( "ADD_DIRECT_SUM_RIGHT" );
-
-DeclareGlobalFunction( "ADD_ZERO_OBJECT_RIGHT" );
-
-DeclareGlobalFunction( "ADD_IDENTITY_RIGHT" );
 
 DeclareGlobalFunction( "ADD_IS_WELL_DEFINED_FOR_MORPHISM_RIGHT" );
 
@@ -139,20 +115,8 @@ DeclareGlobalFunction( "ADD_IS_WELL_DEFINED_FOR_OBJECTS" );
 
 DeclareGlobalFunction( "ADD_EQUAL_FOR_OBJECTS" );
 
-DeclareGlobalFunction( "ADD_IS_ZERO_FOR_MORPHISMS" );
-
-DeclareGlobalFunction( "ADD_ADDITION_FOR_MORPHISMS" );
-
-DeclareGlobalFunction( "ADD_ADDITIVE_INVERSE_FOR_MORPHISMS" );
-
-DeclareGlobalFunction( "ADD_IS_IDENTICAL_FOR_MORPHISMS" );
-
 DeclareGlobalFunction( "ADD_TENSOR_PRODUCT_ON_MORPHISMS" );
-
-DeclareGlobalFunction( "ADD_EPIMORPHISM_FROM_SOME_PROJECTIVE_OBJECT" );
 
 DeclareGlobalFunction( "ADD_LIFT_AND_COLIFT_LEFT" );
 
 DeclareGlobalFunction( "ADD_LIFT_AND_COLIFT_RIGHT" );
-
-DeclareGlobalFunction( "ADD_MULTIPLY_WITH_ELEMENT_OF_COMMUTATIVE_RING_FOR_MORPHISMS_LEFT_AND_RIGHT" );

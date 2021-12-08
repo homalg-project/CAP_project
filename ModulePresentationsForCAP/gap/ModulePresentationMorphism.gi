@@ -22,9 +22,9 @@ InstallMethod( PresentationMorphism,
     left := IsLeftPresentation( source );
     
     if not IsCapCategory( source ) = IsCapCategory( range ) then
-      
-      Error( "source and range must lie in the same category" );
-      
+        
+        Error( "source and range must lie in the same category" );
+        
     fi;
     
     if not IsIdenticalObj( UnderlyingHomalgRing( source ), HomalgRing( matrix ) ) then
@@ -34,33 +34,57 @@ InstallMethod( PresentationMorphism,
     fi;
     
     if left then
-      
-      if NrRows( matrix ) <> source!.nr_generators then
-          
-          Error( "the number of rows of the given matrix is incorrect" );
-          
-      fi;
-      
-      if NrColumns( matrix ) <> range!.nr_generators then
         
-        Error( "the number of columns of the given matrix is incorrect" );
+        if IsBound( source!.nr_generators ) and NrRows( matrix ) <> source!.nr_generators then
+            
+            Error( "the number of rows of the given matrix is incorrect" );
+            
+        fi;
         
-      fi;
-      
+        if HasUnderlyingMatrix( source ) and NrRows( matrix ) <> NrColumns( UnderlyingMatrix( source ) ) then
+            
+            Error( "the number of rows of the given matrix is incorrect" );
+            
+        fi;
+        
+        if IsBound( range!.nr_generators ) and NrColumns( matrix ) <> range!.nr_generators then
+            
+            Error( "the number of columns of the given matrix is incorrect" );
+            
+        fi;
+        
+        if HasUnderlyingMatrix( range ) and NrColumns( matrix ) <> NrColumns( UnderlyingMatrix( range ) ) then
+            
+            Error( "the number of columns of the given matrix is incorrect" );
+            
+        fi;
+        
     else
-      
-      if NrColumns( matrix ) <> source!.nr_generators then
         
-        Error( "the number of columns of the given matrix is incorrect" );
+        if IsBound( source!.nr_generators ) and NrColumns( matrix ) <> source!.nr_generators then
+            
+            Error( "the number of columns of the given matrix is incorrect" );
+            
+        fi;
         
-      fi;
-      
-      if NrRows( matrix ) <> range!.nr_generators then
+        if HasUnderlyingMatrix( source ) and NrColumns( matrix ) <> NrRows( UnderlyingMatrix( source ) ) then
+            
+            Error( "the number of columns of the given matrix is incorrect" );
+            
+        fi;
         
-        Error( "the number of rows of the given matrix is incorrect" );
+        if IsBound( range!.nr_generators ) and NrRows( matrix ) <> range!.nr_generators then
+            
+            Error( "the number of rows of the given matrix is incorrect" );
+            
+        fi;
         
-      fi;
-      
+        if HasUnderlyingMatrix( range ) and NrRows( matrix ) <> NrRows( UnderlyingMatrix( range ) ) then
+            
+            Error( "the number of rows of the given matrix is incorrect" );
+            
+        fi;
+        
     fi;
     
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), category,
