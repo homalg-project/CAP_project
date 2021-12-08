@@ -607,20 +607,24 @@ WrapperCategory( Category of matrices over Q )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">2 * mor;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">BasisOfExternalHom( Source( mor ), Range( mor ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoefficientsOfMorphism( mor );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DistinguishedObjectOfHomomorphismStructure( Wrapper );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomomorphismStructureOnObjects( Source( mor ), Source( mor ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">distinguished_object := DistinguishedObjectOfHomomorphismStructure( Wrapper );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">object := HomomorphismStructureOnObjects( Source( mor ), Source( mor ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomomorphismStructureOnMorphisms( mor, mor );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomomorphismStructureOnMorphismsWithGivenObjects( object, mor, mor, object );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( mor );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( distinguished_object, mor, object );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Range( mor ), iota );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( mor, beta );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Wrapper2 := WrapperCategory( Qmat, rec( wrap_range_of_hom_structure := true ) );</span>
 WrapperCategory( Category of matrices over Q )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">mor := ZeroMorphism( ZeroObject( Wrapper2 ), ZeroObject( Wrapper2 ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DistinguishedObjectOfHomomorphismStructure( Wrapper2 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomomorphismStructureOnObjects( Source( mor ), Source( mor ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">distinguished_object := DistinguishedObjectOfHomomorphismStructure( Wrapper2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">object := HomomorphismStructureOnObjects( Source( mor ), Source( mor ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomomorphismStructureOnMorphisms( mor, mor );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomomorphismStructureOnMorphismsWithGivenObjects( object, mor, mor, object );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">iota := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( mor );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( distinguished_object, mor, object );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( Source( mor ), Range( mor ), iota );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( mor, beta );</span>
 true
