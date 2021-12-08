@@ -296,11 +296,11 @@ CapJitAddLogicTemplate(
 # ConvertMatrixToRow( M )
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "ring", "matrix" ],
-        variable_filters := [ "IsHomalgRing", "IsHomalgMatrix" ],
+        variable_names := [ "ring", "nr_rows", "matrix" ],
+        variable_filters := [ "IsHomalgRing", "IsInt", "IsHomalgMatrix" ],
         src_template := """
-            UnionOfColumns( ring, 1, List( [ 1 .. NrRows( matrix ) ], i ->
-                UnionOfColumns( ring, 1, List( [ 1 .. NrColumns( matrix ) ], j ->
+            UnionOfColumns( ring, nr_rows, List( [ 1 .. NrRows( matrix ) ], i ->
+                UnionOfColumns( ring, nr_rows, List( [ 1 .. NrColumns( matrix ) ], j ->
                     HomalgMatrix( [ matrix[i, j] ], 1, 1, ring )
                 ) )
             ) )

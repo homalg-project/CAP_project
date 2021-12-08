@@ -61,25 +61,22 @@ end
         
 ########
 function ( cat_1, source_1, alpha_1, range_1 )
-    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, deduped_4_1, deduped_5_1, deduped_6_1;
-    deduped_6_1 := UnderlyingMatrix( alpha_1 );
-    deduped_5_1 := UnderlyingRing( cat_1 );
-    deduped_4_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
-    hoisted_2_1 := ColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( cat_1 );
-    hoisted_3_1 := DiagMat( deduped_5_1, List( [ 1 .. NumberColumns( deduped_6_1 ) ], function ( logic_new_func_x_2 )
-              return hoisted_2_1;
+    local hoisted_1_1, hoisted_2_1, deduped_3_1, deduped_4_1, deduped_5_1;
+    deduped_5_1 := UnderlyingMatrix( alpha_1 );
+    deduped_4_1 := UnderlyingRing( cat_1 );
+    deduped_3_1 := RangeCategoryOfHomomorphismStructure( cat_1 );
+    hoisted_1_1 := ColumnVectorOfGeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( cat_1 );
+    hoisted_2_1 := DiagMat( deduped_4_1, List( [ 1 .. NumberColumns( deduped_5_1 ) ], function ( logic_new_func_x_2 )
+              return hoisted_1_1;
           end ) );
-    morphism_attr_1_1 := CoercedMatrix( deduped_5_1, UnderlyingRing( deduped_4_1 ), CoefficientsWithGivenMonomials( ConvertMatrixToRow( deduped_6_1 ), DiagMat( deduped_5_1, List( [ 1 .. NumberRows( deduped_6_1 ) ], function ( logic_new_func_x_2 )
-                  return hoisted_3_1;
-              end ) ) ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), deduped_4_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), deduped_4_1, RankOfObject, 1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), deduped_4_1, RankOfObject, NrColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+           ), deduped_3_1, source_1, range_1, UnderlyingMatrix, CoercedMatrix( deduped_4_1, UnderlyingRing( deduped_3_1 ), CoefficientsWithGivenMonomials( ConvertMatrixToRow( deduped_5_1 ), DiagMat( deduped_4_1, List( [ 1 .. NumberRows( deduped_5_1 ) ], function ( logic_new_func_x_2 )
+                    return hoisted_2_1;
+                end ) ) ) ) );
 end
 ########
         
-    , 101 : IsPrecompiledFunction := true );
+    , 100 : IsPrecompiledFunction := true );
     
     ##
     AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
