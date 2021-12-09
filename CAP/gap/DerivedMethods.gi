@@ -1121,7 +1121,7 @@ AddDerivationToCAP( IsDominating,
     
     return IsZeroForMorphisms( cat, composition );
     
-end : Description := "IsDominating(sub1, sub2) by deciding if sub1 composed with CokernelProjection( cat,sub2) is zero" );
+end : Description := "IsDominating(sub1, sub2) by deciding if sub1 composed with CokernelProjection(cat, sub2) is zero" );
 
 ##
 AddDerivationToCAP( IsCodominating,
@@ -1154,7 +1154,7 @@ AddDerivationToCAP( IsCodominating,
     
     return IsZeroForMorphisms( cat, composition );
     
-end : Description := "IsCodominating(factor1, factor2) by deciding if KernelEmbedding( cat,factor2) composed with factor1 is zero" );
+end : Description := "IsCodominating(factor1, factor2) by deciding if KernelEmbedding(cat, factor2) composed with factor1 is zero" );
 
 ##
 AddDerivationToCAP( IsLiftableAlongMonomorphism,
