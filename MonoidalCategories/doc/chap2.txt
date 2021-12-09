@@ -1,0 +1,56 @@
+  
+  [1X2 [33X[0;0YExamples and Tests[133X[101X
+  
+  
+  [1X2.1 [33X[0;0YBasics[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "MonoidalCategories" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xvecspaces := CreateCapCategory( "VectorSpaces" );[127X[104X
+    [4X[28XVectorSpaces[128X[104X
+    [4X[25Xgap>[125X [27XReadPackage( "MonoidalCategories",[127X[104X
+    [4X[25X>[125X [27X        "examples/VectorSpacesMonoidalCategory.gi" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xz := ZeroObject( vecspaces );[127X[104X
+    [4X[28X<A rational vector space of dimension 0>[128X[104X
+    [4X[25Xgap>[125X [27Xa := QVectorSpace( 1 );[127X[104X
+    [4X[28X<A rational vector space of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27Xb := QVectorSpace( 2 );[127X[104X
+    [4X[28X<A rational vector space of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27Xc := QVectorSpace( 3 );[127X[104X
+    [4X[28X<A rational vector space of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := VectorSpaceMorphism( a, [ [ 1, 0 ] ], b );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix:[128X[104X
+    [4X[28X[ [  1,  0 ] ][128X[104X
+    [4X[25Xgap>[125X [27Xbeta := VectorSpaceMorphism( b,[127X[104X
+    [4X[25X>[125X [27X                [ [ 1, 0, 0 ], [ 0, 1, 0 ] ], c );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix:[128X[104X
+    [4X[28X[ [  1,  0,  0 ],[128X[104X
+    [4X[28X  [  0,  1,  0 ] ][128X[104X
+    [4X[25Xgap>[125X [27Xgamma := VectorSpaceMorphism( c,[127X[104X
+    [4X[25X>[125X [27X                 [ [ 0, 1, 1 ], [ 1, 0, 1 ], [ 1, 1, 0 ] ], c );[127X[104X
+    [4X[28XA rational vector space homomorphism with matrix:[128X[104X
+    [4X[28X[ [  0,  1,  1 ],[128X[104X
+    [4X[28X  [  1,  0,  1 ],[128X[104X
+    [4X[28X  [  1,  1,  0 ] ][128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
+    [4X[25X>[125X [27X        TensorProductOnMorphisms( alpha, beta ),[127X[104X
+    [4X[25X>[125X [27X        TensorProductOnMorphisms( beta, alpha ) );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( AssociatorRightToLeft( a, b, c ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
+    [4X[25X>[125X [27X        gamma, LambdaElimination( c, c, LambdaIntroduction( gamma ) ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsZero( TraceMap( gamma ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsCongruentForMorphisms([127X[104X
+    [4X[25X>[125X [27X        RankMorphism( DirectSum( a, b ) ), RankMorphism( c ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( Braiding( b, c ) );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( PreCompose( Braiding( b, c ), Braiding( c, b ) ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
