@@ -82,6 +82,7 @@ BindGlobal( "CAP_JIT_INTERNAL_ITERATION_KEYS", rec(
     EXPR_AND := [ "left", "right" ],
     EXPR_OR := [ "left", "right" ],
     EXPR_IN := [ "left", "right" ],
+    EXPR_MOD := [ "left", "right" ],
     EXPR_NOT := [ "op" ],
     EXPR_REC := [ "keyvalue" ],
     STAT_ASSERT_2ARGS := [ "level", "condition" ],
