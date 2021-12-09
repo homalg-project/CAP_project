@@ -1639,6 +1639,137 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "ModulePresentationsForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationalsInSingular( );;[127X[104X
+    [4X[25Xgap>[125X [27XQQxy := QQ * "x,y";;[127X[104X
+    [4X[25Xgap>[125X [27XEEE := KoszulDualRing( QQxy * "a,b" );;[127X[104X
+    [4X[25Xgap>[125X [27X# CAUTION: when adding new operations make sure that they are compatible[127X[104X
+    [4X[25X>[125X [27X# with the ones added manually in `ADD_FUNCTIONS_FOR_LEFT/RIGHT_PRESENTATION`.[127X[104X
+    [4X[25X>[125X [27Xoperations_for_arbitrary_ring := [[127X[104X
+    [4X[25X>[125X [27X    "AdditionForMorphisms",[127X[104X
+    [4X[25X>[125X [27X    "AdditiveInverseForMorphisms",[127X[104X
+    [4X[25X>[125X [27X    #"AssociatorLeftToRightWithGivenTensorProducts",[127X[104X
+    [4X[25X>[125X [27X    #"AssociatorRightToLeftWithGivenTensorProducts",[127X[104X
+    [4X[25X>[125X [27X    #"BraidingWithGivenTensorProducts",[127X[104X
+    [4X[25X>[125X [27X    #"CoevaluationMorphismWithGivenRange",[127X[104X
+    [4X[25X>[125X [27X    "CokernelColiftWithGivenCokernelObject",[127X[104X
+    [4X[25X>[125X [27X    "CokernelProjection",[127X[104X
+    [4X[25X>[125X [27X    #"Colift",[127X[104X
+    [4X[25X>[125X [27X    #"ColiftOrFail",[127X[104X
+    [4X[25X>[125X [27X    "DirectSum",[127X[104X
+    [4X[25X>[125X [27X    "EpimorphismFromSomeProjectiveObject",[127X[104X
+    [4X[25X>[125X [27X    #"EvaluationMorphismWithGivenSource",[127X[104X
+    [4X[25X>[125X [27X    "IdentityMorphism",[127X[104X
+    [4X[25X>[125X [27X    "InjectionOfCofactorOfDirectSumWithGivenDirectSum",[127X[104X
+    [4X[25X>[125X [27X    #"InternalHomOnMorphismsWithGivenInternalHoms",[127X[104X
+    [4X[25X>[125X [27X    #"InternalHomOnObjects",[127X[104X
+    [4X[25X>[125X [27X    #"IsColiftable",[127X[104X
+    [4X[25X>[125X [27X    "IsCongruentForMorphisms",[127X[104X
+    [4X[25X>[125X [27X    "IsEqualForMorphisms",[127X[104X
+    [4X[25X>[125X [27X    #"IsEqualForObjects",[127X[104X
+    [4X[25X>[125X [27X    #"IsLiftable",[127X[104X
+    [4X[25X>[125X [27X    #"IsWellDefinedForMorphisms",[127X[104X
+    [4X[25X>[125X [27X    #"IsWellDefinedForObjects",[127X[104X
+    [4X[25X>[125X [27X    "IsZeroForMorphisms",[127X[104X
+    [4X[25X>[125X [27X    #"KernelEmbedding",[127X[104X
+    [4X[25X>[125X [27X    #"LeftUnitorWithGivenTensorProduct",[127X[104X
+    [4X[25X>[125X [27X    #"Lift",[127X[104X
+    [4X[25X>[125X [27X    #"LiftAlongMonomorphism",[127X[104X
+    [4X[25X>[125X [27X    #"LiftOrFail",[127X[104X
+    [4X[25X>[125X [27X    #"MultiplyWithElementOfCommutativeRingForMorphisms",[127X[104X
+    [4X[25X>[125X [27X    #"PreCompose",[127X[104X
+    [4X[25X>[125X [27X    "ProjectionInFactorOfDirectSumWithGivenDirectSum",[127X[104X
+    [4X[25X>[125X [27X    #"RightUnitorWithGivenTensorProduct",[127X[104X
+    [4X[25X>[125X [27X    #"TensorProductOnMorphismsWithGivenTensorProducts",[127X[104X
+    [4X[25X>[125X [27X    #"TensorProductOnObjects",[127X[104X
+    [4X[25X>[125X [27X    #"TensorUnit",[127X[104X
+    [4X[25X>[125X [27X    "UniversalMorphismFromDirectSumWithGivenDirectSum",[127X[104X
+    [4X[25X>[125X [27X    "UniversalMorphismFromZeroObjectWithGivenZeroObject",[127X[104X
+    [4X[25X>[125X [27X    "UniversalMorphismIntoDirectSumWithGivenDirectSum",[127X[104X
+    [4X[25X>[125X [27X    "UniversalMorphismIntoZeroObjectWithGivenZeroObject",[127X[104X
+    [4X[25X>[125X [27X    "ZeroMorphism",[127X[104X
+    [4X[25X>[125X [27X    "ZeroObject" [127X[104X
+    [4X[25X>[125X [27X];;[127X[104X
+    [4X[25Xgap>[125X [27Xoperations_for_commutative_ring := Concatenation([127X[104X
+    [4X[25X>[125X [27X    operations_for_arbitrary_ring,[127X[104X
+    [4X[25X>[125X [27X    [ "MultiplyWithElementOfCommutativeRingForMorphisms" ][127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_LeftPresentations := function( ring, name, operations )[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    CapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X        ring -> LeftPresentationsAsFreydCategoryOfCategoryOfRows( ring ),[127X[104X
+    [4X[25X>[125X [27X        [ ring ],[127X[104X
+    [4X[25X>[125X [27X        "ModulePresentationsForCAP",[127X[104X
+    [4X[25X>[125X [27X        Concatenation([127X[104X
+    [4X[25X>[125X [27X            "LeftPresentationsAsFreydCategoryOfCategoryOfRowsOf",[127X[104X
+    [4X[25X>[125X [27X            name,[127X[104X
+    [4X[25X>[125X [27X            "Precompiled"[127X[104X
+    [4X[25X>[125X [27X        ) :[127X[104X
+    [4X[25X>[125X [27X        operations := operations[127X[104X
+    [4X[25X>[125X [27X    ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_LeftPresentations([127X[104X
+    [4X[25X>[125X [27X    QQ, "Field", operations_for_commutative_ring[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_LeftPresentations([127X[104X
+    [4X[25X>[125X [27X    QQxy, "CommutativeRing", operations_for_commutative_ring[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_LeftPresentations([127X[104X
+    [4X[25X>[125X [27X    EEE, "ArbitraryRing", operations_for_arbitrary_ring[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_RightPresentations := function( ring, name, operations )[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    CapJitPrecompileCategoryAndCompareResult([127X[104X
+    [4X[25X>[125X [27X        ring -> RightPresentationsAsFreydCategoryOfCategoryOfColumns( ring ),[127X[104X
+    [4X[25X>[125X [27X        [ ring ],[127X[104X
+    [4X[25X>[125X [27X        "ModulePresentationsForCAP",[127X[104X
+    [4X[25X>[125X [27X        Concatenation([127X[104X
+    [4X[25X>[125X [27X            "RightPresentationsAsFreydCategoryOfCategoryOfColumnsOf",[127X[104X
+    [4X[25X>[125X [27X            name,[127X[104X
+    [4X[25X>[125X [27X            "Precompiled"[127X[104X
+    [4X[25X>[125X [27X        ) :[127X[104X
+    [4X[25X>[125X [27X        operations := operations[127X[104X
+    [4X[25X>[125X [27X    ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_RightPresentations([127X[104X
+    [4X[25X>[125X [27X    QQ, "Field", operations_for_commutative_ring[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_RightPresentations([127X[104X
+    [4X[25X>[125X [27X    QQxy, "CommutativeRing", operations_for_commutative_ring[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27Xprecompile_RightPresentations([127X[104X
+    [4X[25X>[125X [27X    EEE, "ArbitraryRing", operations_for_arbitrary_ring[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27X# check that the compiled code is loaded automatically[127X[104X
+    [4X[25X>[125X [27X# for this, we use the name of the argument of `ZeroObject`:[127X[104X
+    [4X[25X>[125X [27X# for non-compiled code it is "cat", while for compiled code it is "cat_1"[127X[104X
+    [4X[25X>[125X [27X[127X[104X
+    [4X[25X>[125X [27Xcat := LeftPresentations( QQ );;[127X[104X
+    [4X[25Xgap>[125X [27XNamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1][127X[104X
+    [4X[25X>[125X [27X    = "cat_1";[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcat := LeftPresentations( QQxy );;[127X[104X
+    [4X[25Xgap>[125X [27XNamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1][127X[104X
+    [4X[25X>[125X [27X    = "cat_1";[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcat := LeftPresentations( EEE );;[127X[104X
+    [4X[25Xgap>[125X [27XNamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1][127X[104X
+    [4X[25X>[125X [27X    = "cat_1";[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcat := RightPresentations( QQ );;[127X[104X
+    [4X[25Xgap>[125X [27XNamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1][127X[104X
+    [4X[25X>[125X [27X    = "cat_1";[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcat := RightPresentations( QQxy );;[127X[104X
+    [4X[25Xgap>[125X [27XNamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1][127X[104X
+    [4X[25X>[125X [27X    = "cat_1";[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcat := RightPresentations( EEE );;[127X[104X
+    [4X[25Xgap>[125X [27XNamesLocalVariablesFunction( Last( cat!.added_functions.ZeroObject )[1] )[1][127X[104X
+    [4X[25X>[125X [27X    = "cat_1";[127X[104X
+    [4X[28Xtrue[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
     [4X[25Xgap>[125X [27X# be careful not to use `MatrixCategory` because attributes are not supported[127X[104X
     [4X[25X>[125X [27Xcategory_constructor := function( field )[127X[104X
