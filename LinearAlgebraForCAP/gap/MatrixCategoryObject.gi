@@ -97,7 +97,7 @@ InstallMethod( Display,
                
   function( vector_space_object )
     
-    Print( String( vector_space_object ) );
+    Print( String( vector_space_object ), "\n" );
     
 end );
 
