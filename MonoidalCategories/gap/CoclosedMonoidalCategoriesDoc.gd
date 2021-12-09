@@ -12,12 +12,4 @@
 ##
 ####################################
 
-#! A monoidal category $\mathbf{C}$
-#! which has for each functor $- \otimes b: \mathbf{C} \rightarrow \mathbf{C}$
-#! a left adjoint (denoted by $\mathrm{\underline{coHom}}(-,b)$)
-#! is called a <Emph>coclosed monoidal category</Emph>.
-
-#! The corresponding GAP property is called
-#! <C>IsCoclosedMonoidalCategory</C>.
-
 InstallTrueMethod( IsMonoidalCategory, IsCoclosedMonoidalCategory );
