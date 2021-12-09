@@ -4,25 +4,6 @@
 # Implementations
 #
 
-# Pre processor functions for dual operations
-BindGlobal( "PreProcessorFuncEvaluationMorphismWithGivenSource", { cat, a, b, s } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( s ) ] );
-
-BindGlobal( "PreProcessorFuncInternalHomToTensorProductAdjunctionMap", { cat, a, b, g } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ) ] );
-
-BindGlobal( "PreProcessorFuncTensorProductInternalHomCompatibilityMorphism",
-              { cat, list } -> [ Opposite( cat ), [ Opposite( list[3] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[2] ) ] ]
-);
-
-BindGlobal( "PreProcessorFuncTensorProductInternalHomCompatibilityMorphismWithGivenObjects",
-              { cat, s, list, r } -> [ Opposite( cat ), Opposite( r ), [ Opposite( list[3] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[2] ) ], Opposite( s ) ]
-);
-
-BindGlobal( "PreProcessorFuncTensorProductDualityCompatibilityMorphismWithGivenObjects",
-              { cat, s, a, b, r} -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ]
-);
-
-BindGlobal( "PreProcessorFuncLambdaElimination", { cat, a, b, alpha } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( alpha ) ] );
-
 InstallValue( CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD, rec(
 
 InternalHomOnObjects := rec(
@@ -68,7 +49,7 @@ EvaluationMorphismWithGivenSource := rec(
   io_type := [ [ "a", "b", "s" ], [ "s", "b" ] ],
   return_type := "morphism",
   dual_operation := "CoclosedEvaluationMorphismWithGivenRange",
-  dual_preprocessor_func := PreProcessorFuncEvaluationMorphismWithGivenSource,
+  dual_preprocessor_func := { cat, a, b, s } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( s ) ],
   dual_arguments_reversed := false,
 ),
 
@@ -104,7 +85,7 @@ InternalHomToTensorProductAdjunctionMap := rec(
   io_type := [ [ "b", "c", "g" ], [ "t", "c" ] ],
   return_type := "morphism",
   dual_operation := "InternalCoHomToTensorProductAdjunctionMap",
-  dual_preprocessor_func := PreProcessorFuncInternalHomToTensorProductAdjunctionMap,
+  dual_preprocessor_func := { cat, a, b, g } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( g ) ],
   dual_arguments_reversed := false,
 ),
 
@@ -215,7 +196,7 @@ TensorProductInternalHomCompatibilityMorphism := rec(
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "InternalCoHomTensorProductCompatibilityMorphism",
-  dual_preprocessor_func := PreProcessorFuncTensorProductInternalHomCompatibilityMorphism,
+  dual_preprocessor_func := { cat, list } -> [ Opposite( cat ), [ Opposite( list[3] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[2] ) ] ],
   dual_arguments_reversed := false,
 ),
 
@@ -226,7 +207,8 @@ TensorProductInternalHomCompatibilityMorphismWithGivenObjects := rec(
   output_range_getter_string := "range",
   return_type := "morphism",
   dual_operation := "InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects",
-  dual_preprocessor_func := PreProcessorFuncTensorProductInternalHomCompatibilityMorphismWithGivenObjects,
+  dual_preprocessor_func :=
+    { cat, s, list, r } -> [ Opposite( cat ), Opposite( r ), [ Opposite( list[3] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[2] ) ], Opposite( s ) ],
   dual_arguments_reversed := false,
 ),
 
@@ -246,7 +228,7 @@ TensorProductDualityCompatibilityMorphismWithGivenObjects := rec(
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "CoDualityTensorProductCompatibilityMorphismWithGivenObjects",
-  dual_preprocessor_func := PreProcessorFuncTensorProductDualityCompatibilityMorphismWithGivenObjects,
+  dual_preprocessor_func := { cat, s, a, b, r} -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ],
   dual_arguments_reversed := false,
 ),
 
@@ -303,7 +285,7 @@ LambdaElimination := rec(
   io_type := [ [ "a", "b", "alpha" ], [ "a", "b" ] ],
   return_type := "morphism",
   dual_operation := "CoLambdaElimination",
-  dual_preprocessor_func := PreProcessorFuncLambdaElimination,
+  dual_preprocessor_func := { cat, a, b, alpha } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( alpha ) ],
   dual_arguments_reversed := false,
 ),
 
