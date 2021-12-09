@@ -4,13 +4,6 @@
 # Implementations
 #
 
-# Pre processor functions for dual operations
-BindGlobal( "PreProcessorFuncBraidingWithGivenTensorProducts",
-              { cat, s, a, b, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ] );
-
-BindGlobal( "PreProcessorFuncBraidingInverseWithGivenTensorProducts",
-              { cat, s, a, b, r } -> [ Opposite( cat ), Opposite( s ), Opposite( a ), Opposite( b ), Opposite( r ) ] );
-
 InstallValue( BRAIDED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD, rec(
 
 Braiding := rec(
@@ -29,7 +22,7 @@ BraidingWithGivenTensorProducts := rec(
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "BraidingInverseWithGivenTensorProducts",
-  dual_preprocessor_func := PreProcessorFuncBraidingWithGivenTensorProducts,
+  dual_preprocessor_func := { cat, s, a, b, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ],
   dual_arguments_reversed := false,
 ),
 
@@ -49,7 +42,7 @@ BraidingInverseWithGivenTensorProducts := rec(
   io_type := [ [ "s", "a", "b", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "BraidingWithGivenTensorProducts",
-  dual_preprocessor_func := PreProcessorFuncBraidingInverseWithGivenTensorProducts,
+  dual_preprocessor_func := { cat, s, a, b, r } -> [ Opposite( cat ), Opposite( s ), Opposite( a ), Opposite( b ), Opposite( r ) ],
   dual_arguments_reversed := false,
 ),
 

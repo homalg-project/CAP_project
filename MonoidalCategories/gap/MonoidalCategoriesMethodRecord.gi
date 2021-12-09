@@ -4,15 +4,6 @@
 # Implementations
 #
 
-# Preprocessor functions for dual operations
-BindGlobal( "PreProcessorFuncAssociatorRightToLeftWithGivenTensorProducts",
-              { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ]
-);
-
-BindGlobal( "PreProcessorFuncAssociatorLeftToRightWithGivenTensorProducts",
-              { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ]
-);
-
 InstallValue( MONOIDAL_CATEGORIES_METHOD_NAME_RECORD, rec(
 
 ## Basic Operations for Monoidal Categories
@@ -52,7 +43,8 @@ AssociatorRightToLeftWithGivenTensorProducts := rec(
   io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "AssociatorLeftToRightWithGivenTensorProducts",
-  dual_preprocessor_func := PreProcessorFuncAssociatorRightToLeftWithGivenTensorProducts,
+  dual_preprocessor_func :=
+    { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ],
   dual_arguments_reversed := false,
 ),
 
@@ -72,7 +64,7 @@ AssociatorLeftToRightWithGivenTensorProducts := rec(
   io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
   dual_operation := "AssociatorRightToLeftWithGivenTensorProducts",
-  dual_preprocessor_func := PreProcessorFuncAssociatorLeftToRightWithGivenTensorProducts,
+  dual_preprocessor_func := { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ],
   dual_arguments_reversed := false,
 ),
 
