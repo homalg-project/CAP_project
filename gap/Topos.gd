@@ -25,6 +25,17 @@ DeclareGlobalVariable( "TOPOS_METHOD_NAME_RECORD" );
 #! @Arguments C
 AddCategoricalProperty( [ "IsElementaryTopos", fail ] );
 
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsElementaryTopos :=
+  SortedList(
+          Concatenation( [
+                  "SubobjectClassifier",
+                  "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
+                  "TruthMorphismOfTrueWithGivenObjects", ## can be derived from SubobjectClassifier and ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier
+                  "SubobjectOfClassifyingMorphism", ## can be derived from SubobjectClassifier and TruthMorphismOfTrueWithGivenObjects
+                  ],
+                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory,
+                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory ) );
+
 #! A subobject classifier object consists of three parts:
 #! * an object $\Omega$,
 #! * a function $\mathrm{true}$ providing a morphism $\mathrm{true}: 1 \rightarrow \Omega$,
