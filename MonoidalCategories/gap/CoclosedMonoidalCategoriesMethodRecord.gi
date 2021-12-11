@@ -207,7 +207,7 @@ InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects := rec(
   output_range_getter_string := "range",
   return_type := "morphism",
   dual_operation := "TensorProductInternalHomCompatibilityMorphismWithGivenObjects",
-  dual_preprocessor_func := 
+  dual_preprocessor_func :=
     { cat, s, list, r } -> [ Opposite( cat ), Opposite( r ), [ Opposite( list[2] ), Opposite( list[4] ), Opposite( list[1] ), Opposite( list[3] ) ], Opposite( s ) ],
   dual_arguments_reversed := false,
 ),
