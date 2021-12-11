@@ -18,24 +18,43 @@ ReadPackage( "MonoidalCategories", "gap/AdditiveMonoidalCategories.gi" );
 
 ## Braided Monoidal
 
+ReadPackage( "MonoidalCategories", "gap/BraidedMonoidalCategoriesProperties.gi" );
 ReadPackage( "MonoidalCategories", "gap/BraidedMonoidalCategoriesMethodRecord.gi" );
 ReadPackage( "MonoidalCategories", "gap/BraidedMonoidalCategories.gi" );
 
+## Symmetric Monoidal
+
+ReadPackage( "MonoidalCategories", "gap/SymmetricMonoidalCategoriesProperties.gi" );
+
 ## Closed Monoidal
+
+ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesProperties.gi" );
 ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesMethodRecord.gi" );
 ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategories.gi" );
 
+## Symmetric Closed Monoidal
+
+ReadPackage( "MonoidalCategories", "gap/SymmetricClosedMonoidalCategoriesProperties.gi" );
+
 ## Rigid Symmetric Closed Monoidal
 
+ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategoriesProperties.gi" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategoriesMethodRecord.gi" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategories.gi" );
 
 ## Coclosed Monoidal
+
+ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesProperties.gi" );
 ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesMethodRecord.gi" );
 ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategories.gi" );
 
+## Symmetric Coclosed Monoidal
+
+ReadPackage( "MonoidalCategories", "gap/SymmetricCoclosedMonoidalCategoriesProperties.gi" );
+
 ## Rigid Symmetric Coclosed Monoidal
 
+ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategoriesProperties.gi" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategoriesMethodRecord.gi" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategories.gi" );
 
