@@ -18,6 +18,9 @@ ReadPackage( "Toposes", "gap/DistributiveCartesianCategories.gi" );
 ReadPackage( "Toposes", "gap/BraidedCartesianCategoriesMethodRecord.gi" );
 ReadPackage( "Toposes", "gap/BraidedCartesianCategories.gi" );
 
+## Cartesian Closed
+
+ReadPackage( "Toposes", "gap/CartesianClosedCategoriesProperties.gi" );
 ReadPackage( "Toposes", "gap/CartesianClosedCategoriesMethodRecord.gi" );
 ReadPackage( "Toposes", "gap/CartesianClosedCategories.gi" );
 
@@ -31,6 +34,9 @@ ReadPackage( "Toposes", "gap/DistributiveCocartesianCategories.gi" );
 ReadPackage( "Toposes", "gap/BraidedCocartesianCategoriesMethodRecord.gi" );
 ReadPackage( "Toposes", "gap/BraidedCocartesianCategories.gi" );
 
+## Cocartesian Coclosed
+
+ReadPackage( "Toposes", "gap/CocartesianCoclosedCategoriesProperties.gi" );
 ReadPackage( "Toposes", "gap/CocartesianCoclosedCategoriesMethodRecord.gi" );
 ReadPackage( "Toposes", "gap/CocartesianCoclosedCategories.gi" );
 

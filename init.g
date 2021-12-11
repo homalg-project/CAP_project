@@ -10,45 +10,35 @@ fi;
 
 ## Cartesian
 ReadPackage( "Toposes", "gap/CartesianCategoriesProperties.gd" );
-ReadPackage( "Toposes", "gap/CartesianCategoriesDoc.gd" );
 ReadPackage( "Toposes", "gap/CartesianCategories.gd" );
 ReadPackage( "Toposes", "gap/CartesianCategories.autogen.gd" );
 
 ReadPackage( "Toposes", "gap/DistributiveCartesianCategories.gd" );
 ReadPackage( "Toposes", "gap/DistributiveCartesianCategories.autogen.gd" );
 
-ReadPackage( "Toposes", "gap/BraidedCartesianCategoriesDoc.gd" );
 ReadPackage( "Toposes", "gap/BraidedCartesianCategories.gd" );
 ReadPackage( "Toposes", "gap/BraidedCartesianCategories.autogen.gd" );
 
 ## Cartesian Closed
 ReadPackage( "Toposes", "gap/CartesianClosedCategoriesProperties.gd" );
-ReadPackage( "Toposes", "gap/CartesianClosedCategoriesDoc.gd" );
 ReadPackage( "Toposes", "gap/CartesianClosedCategories.gd" );
 ReadPackage( "Toposes", "gap/CartesianClosedCategories.autogen.gd" );
 
 ## Cocartesian
 ReadPackage( "Toposes", "gap/CocartesianCategoriesProperties.gd" );
-ReadPackage( "Toposes", "gap/CocartesianCategoriesDoc.gd" );
 ReadPackage( "Toposes", "gap/CocartesianCategories.gd" );
 ReadPackage( "Toposes", "gap/CocartesianCategories.autogen.gd" );
 
 ReadPackage( "Toposes", "gap/DistributiveCocartesianCategories.gd" );
 ReadPackage( "Toposes", "gap/DistributiveCocartesianCategories.autogen.gd" );
 
-ReadPackage( "Toposes", "gap/BraidedCocartesianCategoriesDoc.gd" );
 ReadPackage( "Toposes", "gap/BraidedCocartesianCategories.gd" );
 ReadPackage( "Toposes", "gap/BraidedCocartesianCategories.autogen.gd" );
 
-ReadPackage( "Toposes", "gap/SymmetricCocartesianCategoriesDoc.gd" );
-
 ## Cocartesian Coclosed
 ReadPackage( "Toposes", "gap/CocartesianCoclosedCategoriesProperties.gd" );
-ReadPackage( "Toposes", "gap/CocartesianCoclosedCategoriesDoc.gd" );
 ReadPackage( "Toposes", "gap/CocartesianCoclosedCategories.gd" );
 ReadPackage( "Toposes", "gap/CocartesianCoclosedCategories.autogen.gd" );
-
-ReadPackage( "Toposes", "gap/SymmetricCocartesianCoclosedCategoriesDoc.gd" );
 
 ## Topos
 ReadPackage( "Toposes", "gap/Topos.gd");

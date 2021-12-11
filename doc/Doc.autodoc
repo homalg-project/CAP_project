@@ -2,7 +2,30 @@
 
 @Section Cartesian Categories
 
+A $6$-tuple $( \mathbf{C}, \times, 1, \alpha, \lambda, \rho )$
+ consisting of
+* a category $\mathbf{C}$,
+* a functor $\times: \mathbf{C} \times \mathbf{C} \rightarrow \mathbf{C}$,
+* an object $1 \in \mathbf{C}$,
+* a natural isomorphism $\alpha_{a,b,c}: a \times (b \times c) \cong (a \times b) \times c$,
+* a natural isomorphism $\lambda_{a}: 1 \times a \cong a$,
+* a natural isomorphism $\rho_{a}: a \times 1 \cong a$,
+is called a <Emph>cartesian category</Emph>, if
+* for all objects $a,b,c,d$, the pentagon identity holds:
+ $(\alpha_{a,b,c} \times \mathrm{id}_d) \circ \alpha_{a,b \times c, d} \circ ( \mathrm{id}_a \times \alpha_{b,c,d} ) = \alpha_{a \times b, c, d} \circ \alpha_{a,b,c \times d}$,
+* for all objects $a,c$, the triangle identity holds:
+ $( \rho_a \times \mathrm{id}_c ) \circ \alpha_{a,1,c} = \mathrm{id}_a \times \lambda_c$.
+
+The corresponding GAP property is given by <C>IsCartesianCategory</C>.
+
 @Section Cartesian Closed Categories
+
+A cartesian category $\mathbf{C}$
+which has for each functor $- \times b: \mathbf{C} \rightarrow \mathbf{C}$
+a right adjoint (denoted by $\mathrm{Exponential}(b,-)$)
+is called a <Emph>closed cartesian category</Emph>.
+
+The corresponding GAP property is called <C>IsCartesianClosedCategory</C>.
 
 @Section Convenience Methods
 
@@ -12,7 +35,30 @@
 
 @Section Cocartesian Categories
 
+A $6$-tuple $( \mathbf{C}, \sqcup, 1, \alpha, \lambda, \rho )$
+ consisting of
+* a category $\mathbf{C}$,
+* a functor $\sqcup: \mathbf{C} \times \mathbf{C} \rightarrow \mathbf{C}$,
+* an object $1 \in \mathbf{C}$,
+* a natural isomorphism $\alpha_{a,b,c}: a \sqcup (b \sqcup c) \cong (a \sqcup b) \sqcup c$,
+* a natural isomorphism $\lambda_{a}: 1 \sqcup a \cong a$,
+* a natural isomorphism $\rho_{a}: a \sqcup 1 \cong a$,
+is called a <Emph>cocartesian category</Emph>, if
+* for all objects $a,b,c,d$, the pentagon identity holds:
+ $(\alpha_{a,b,c} \sqcup \mathrm{id}_d) \circ \alpha_{a,b \sqcup c, d} \circ ( \mathrm{id}_a \sqcup \alpha_{b,c,d} ) = \alpha_{a \sqcup b, c, d} \circ \alpha_{a,b,c \sqcup d}$,
+* for all objects $a,c$, the triangle identity holds:
+ $( \rho_a \sqcup \mathrm{id}_c ) \circ \alpha_{a,1,c} = \mathrm{id}_a \sqcup \lambda_c$.
+
+The corresponding GAP property is given by <C>IsCocartesianCategory</C>.
+
 @Section Cocartesian Coclosed Categories
+
+A cocartesian category $\mathbf{C}$
+which has for each functor $- \sqcup b: \mathbf{C} \rightarrow \mathbf{C}$
+a left adjoint (denoted by $\mathrm{Coexponential}(-,b)$)
+is called a <Emph>coclosed cocartesian category</Emph>.
+
+The corresponding GAP property is called <C>IsCocartesianCoclosedCategory</C>.
 
 @Section Convenience Methods
 
