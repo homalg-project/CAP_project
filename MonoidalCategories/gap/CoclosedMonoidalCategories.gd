@@ -90,7 +90,7 @@ DeclareOperation( "CoclosedCoevaluationMorphismWithGivenSource",
 #! The output is a morphism $f: \mathrm{\underline{coHom}}(a,b) \rightarrow c$
 #! corresponding to $g$ under the cohom tensor adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{\underline{coHom}}(a,b), c )$.
-#! @Arguments b, c, g
+#! @Arguments c, b, g
 DeclareOperation( "TensorProductToInternalCoHomAdjunctionMap",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryMorphism ] );
 
