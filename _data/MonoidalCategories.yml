@@ -1,5 +1,5 @@
 name: MonoidalCategories
-version: "2021.12-04"
+version: "2021.12-05"
 license: "GPL-2.0-or-later"
 date: 2021-12-12
 description: |
@@ -44,11 +44,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/MonoidalCategories/Pac
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2021.12-04/MonoidalCategories-2021.12-04.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2021.12-05/MonoidalCategories-2021.12-05.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2021.12-04/MonoidalCategories-2021.12-04.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2021.12-05/MonoidalCategories-2021.12-05.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2021.12-04/MonoidalCategories-2021.12-04.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2021.12-05/MonoidalCategories-2021.12-05.pdf
 
 abstract: |
 
@@ -61,7 +61,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BGPK21</span>]   <b class='BibAuthor'>Barakat, M., Gutsche, S., Posur, S. and Kuhmichel, T.</b>,
      <i class='BibTitle'>MonoidalCategories, Monoidal and monoidal (co)closed categories,
-             Version 2021.12-04</i>
+             Version 2021.12-05</i>
      (<span class='BibYear'>2021</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/MonoidalCategories">https://homalg-project.github.io/pkg/MonoidalCategories</a></span>.
@@ -69,11 +69,11 @@ citeas: |
     
 
 bibtex: |
-    @misc{ MonoidalCategories2021.12-04,
+    @misc{ MonoidalCategories2021.12-05,
       author =           {Barakat,   M.  and  Gutsche,  S.  and  Posur,  S.  and
                           Kuhmichel, T.},
       title =            {{MonoidalCategories}, Monoidal and monoidal (co)closed
-                          categories, {V}ersion 2021.12-04},
+                          categories, {V}ersion 2021.12-05},
       month =            {Dec},
       year =             {2021},
       note =             {GAP package},
