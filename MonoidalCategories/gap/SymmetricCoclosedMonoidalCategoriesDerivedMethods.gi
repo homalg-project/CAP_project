@@ -866,7 +866,7 @@ AddDerivationToCAP( MonoidalPreCoComposeMorphismWithGivenObjects,
     
     cohom_b_c := InternalCoHomOnObjects( cat, b, c );
     
-    morphism := PreComposeList( [
+    morphism := PreComposeList( cat, [
                   CoclosedEvaluationMorphism( cat, a, b ),
                   
                   Braiding( cat, cohom_a_b, b),
