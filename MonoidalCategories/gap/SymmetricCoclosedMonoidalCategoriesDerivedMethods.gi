@@ -874,8 +874,8 @@ AddDerivationToCAP( MonoidalPreCoComposeMorphismWithGivenObjects,
                 ] );
     
     return TensorProductToInternalCoHomAdjunctionMap( cat,
+             TensorProductOnObjects( cat, cohom_b_c, cohom_a_b ),
              c,
-             TensorProductOnObjects( cat, cohom_a_b, cohom_b_c ),
              morphism );
     
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory and IsStrictMonoidalCategory,
