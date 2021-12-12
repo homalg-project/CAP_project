@@ -57,7 +57,7 @@ AddDerivationToCAP( UniversalPropertyOfCoDual,
 
   function( cat, t, a, alpha )
 
-    # alpha: 1 -----> t x a
+    # alpha: 1 -> t x a
     #
     # a_v -> ( Cohom(1,a) -> t ) = Adjoint( alpha )
     
@@ -219,9 +219,6 @@ AddDerivationToCAP( CoLambdaIntroduction,
   function( cat, alpha )
     local result_morphism, range;
 
-    #            alpha    (λ_b)^-1
-    # Adjoint( a -----> b --------> 1 x b ) = ( Cohom(a,b) -> 1 )
-
     #   a
     #   |
     #   | alpha
@@ -232,7 +229,7 @@ AddDerivationToCAP( CoLambdaIntroduction,
     #   v
     # 1 x b
     #
-    # Adjoint( a -> 1 x b) = ( Cohom(a,b) -> 1 )
+    # Adjoint( a -> 1 x b ) = ( Cohom(a,b) -> 1 )
 
     range := Range( alpha );
 
@@ -252,12 +249,8 @@ AddDerivationToCAP( CoLambdaElimination,
   function( cat, a, b, alpha )
     local result_morphism;
 
-    #                     alpha                       λ_b
-    # Adjoint( Cohom(a,b) -----> 1 ) = ( a -> 1 x b ) ---> b
-
-
     # alpha: Cohom(a,b) -> 1
-    # Adjoint( alpha ) = ( a -> 1 x b)
+    # Adjoint( alpha ) = ( a -> 1 x b )
     #
     #   a
     #   |
