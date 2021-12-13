@@ -230,6 +230,10 @@ A morphism in Category of matrices over Q
   [  -1,   0,   2,   1,  -1,   0,   2,   1 ] ]
 
 A morphism in Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( ComponentOfMorphismIntoDirectSum( gamma, [ b, b ], 1 ), alpha );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( ComponentOfMorphismIntoDirectSum( gamma, [ b, b ], 2 ), alpha );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gamma := UniversalMorphismFromDirectSum( [ beta, beta ] );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( gamma );</span>
 [ [   1,   1,   0,   0 ],
@@ -240,6 +244,10 @@ A morphism in Category of matrices over Q
   [  -1,   0,   2,   1 ] ]
 
 A morphism in Category of matrices over Q
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( ComponentOfMorphismFromDirectSum( gamma, [ a, a ], 1 ), beta );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( ComponentOfMorphismFromDirectSum( gamma, [ a, a ], 2 ), beta );</span>
+true
 </pre></div>
 
 <p><a id="X87F5609A7B33C58C" name="X87F5609A7B33C58C"></a></p>
