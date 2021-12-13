@@ -10,6 +10,8 @@ if not IsCapCategory( vecspaces ) then
   
 fi;
 
+DeactivateCachingOfCategory( vecspaces );
+
 SetIsAbelianCategory( vecspaces, true );
 
 AddIsCongruentForMorphisms( vecspaces,
