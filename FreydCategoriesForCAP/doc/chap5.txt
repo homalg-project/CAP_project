@@ -144,6 +144,9 @@
   
   [30X    [33X[0;6Y[2XIsAutomorphism[102X ([14XCAP: IsAutomorphism for iscapcategorymorphism[114X)[133X
   
+  [30X    [33X[0;6Y[2XIsCodominating[102X   ([14XCAP:   IsCodominating   for   iscapcategorymorphism,
+        iscapcategorymorphism[114X)[133X
+  
   [30X    [33X[0;6Y[2XIsColiftable[102X    ([14XCAP:    IsColiftable    for    iscapcategorymorphism,
         iscapcategorymorphism[114X)[133X
   
@@ -153,9 +156,18 @@
   [30X    [33X[0;6Y[2XIsCongruentForMorphisms[102X      ([14XCAP:     IsCongruentForMorphisms     for
         iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
+  [30X    [33X[0;6Y[2XIsDominating[102X    ([14XCAP:    IsDominating    for    iscapcategorymorphism,
+        iscapcategorymorphism[114X)[133X
+  
   [30X    [33X[0;6Y[2XIsEndomorphism[102X ([14XCAP: IsEndomorphism for iscapcategorymorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XIsEpimorphism[102X ([14XCAP: IsEpimorphism for iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsEqualAsFactorobjects[102X      ([14XCAP:      IsEqualAsFactorobjects      for
+        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
+  
+  [30X    [33X[0;6Y[2XIsEqualAsSubobjects[102X        ([14XCAP:        IsEqualAsSubobjects        for
+        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XIsEqualForMorphisms[102X        ([14XCAP:        IsEqualForMorphisms        for
         iscapcategorymorphism, iscapcategorymorphism[114X)[133X
@@ -926,18 +938,6 @@
   [30X    [33X[0;6Y[2XInverseMorphismFromCoimageToImageWithGivenObjects[102X                ([14XCAP:
         InverseMorphismFromCoimageToImageWithGivenObjects                  for
         iscapcategoryobject, iscapcategorymorphism, iscapcategoryobject[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsCodominating[102X   ([14XCAP:   IsCodominating   for   iscapcategorymorphism,
-        iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsDominating[102X    ([14XCAP:    IsDominating    for    iscapcategorymorphism,
-        iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsEqualAsFactorobjects[102X      ([14XCAP:      IsEqualAsFactorobjects      for
-        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
-  
-  [30X    [33X[0;6Y[2XIsEqualAsSubobjects[102X        ([14XCAP:        IsEqualAsSubobjects        for
-        iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XIsomorphismFromCoimageToCokernelOfKernel[102X                         ([14XCAP:
         IsomorphismFromCoimageToCokernelOfKernel for iscapcategorymorphism[114X)[133X
