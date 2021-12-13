@@ -30,15 +30,8 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
             
             operation_name := NameFunction( operation );
             
-            # check if this is a CAP operation which is not a convenience method
-            if operation_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) and tree.args.length = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list ) then
-                
-                if CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list[1] <> "category" then
-                    
-                    # COVERAGE_IGNORE_NEXT_LINE
-                    Error( "cannot resolve CAP operations which do not get the category as the first argument" );
-                    
-                fi;
+            # check if this is a CAP operation which is not a convenience method or if we know methods for this operation
+            if (operation_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) and tree.args.length = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list )) or operation_name in RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) then
                 
                 # we can resolve CAP operations if and only if the category is known, i.e., stored in a global variable
                 if tree.args.1.type = "EXPR_REF_GVAR" then
@@ -62,13 +55,6 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
                     return false;
                     
                 fi;
-                
-            fi;
-            
-            # check if we know methods for this operation
-            if operation_name in RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) then
-                
-                return true;
                 
             fi;
             
@@ -223,59 +209,70 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
         
         Info( InfoCapJit, 1, "Methods are known for this operation." );
         
-        known_methods := CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name);
+        Assert( 0, funccall_args.1.type = "EXPR_REF_GVAR" );
         
-        pos := PositionProperty( known_methods, m -> Length( m[1] ) = funccall_args.length );
+        category := ValueGlobal( funccall_args.1.gvar );
         
-        if pos = fail then
+        Assert( 0, IsCapCategory( category ) );
+        Assert( 0, not (IsBound( category!.stop_compilation ) and category!.stop_compilation = true) );
+        
+        known_methods := Filtered( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name),
+            m -> Length( m.filters ) = funccall_args.length and m.filters[1]( category )
+        );
+        
+        if not IsEmpty( known_methods ) then
             
-            # COVERAGE_IGNORE_NEXT_LINE
-            Error( "Could not find known method for ", operation_name, " with correct length" );
+            if Length( known_methods ) > 1 then
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Error( "Found more than one known method for ", operation_name, " with correct length and category filter" );
+                
+            fi;
             
-        fi;
-        
-        func_to_resolve := known_methods[pos][2];
-        
-        if IsOperation( func_to_resolve ) or IsKernelFunction( func_to_resolve ) then
+            func_to_resolve := known_methods[1].method;
             
-            # cannot resolve recursive calls
-            if not IsIdenticalObj( func_to_resolve, operation ) then
+            if IsOperation( func_to_resolve ) or IsKernelFunction( func_to_resolve ) then
                 
-                # will be handled in the next iteration
-                global_variable_name := CapJitGetOrCreateGlobalVariable( func_to_resolve );
-                
-                new_tree := rec(
-                    type := "EXPR_FUNCCALL",
-                    funcref := rec(
-                        type := "EXPR_REF_GVAR",
-                        gvar := global_variable_name,
-                    ),
-                    args := funccall_args,
-                );
-                
-                if funccall_does_not_return_fail then
+                # cannot resolve recursive calls
+                if not IsIdenticalObj( func_to_resolve, operation ) then
                     
-                    new_tree.funcref.does_not_return_fail := true;
+                    # will be handled in the next iteration
+                    global_variable_name := CapJitGetOrCreateGlobalVariable( func_to_resolve );
+                    
+                    new_tree := rec(
+                        type := "EXPR_FUNCCALL",
+                        funcref := rec(
+                            type := "EXPR_REF_GVAR",
+                            gvar := global_variable_name,
+                        ),
+                        args := funccall_args,
+                    );
+                    
+                    if funccall_does_not_return_fail then
+                        
+                        new_tree.funcref.does_not_return_fail := true;
+                        
+                    fi;
                     
                 fi;
                 
-            fi;
-            
-        else
-            
-            resolved_tree := ENHANCED_SYNTAX_TREE( func_to_resolve : globalize_hvars := true );
-            
-            if funccall_does_not_return_fail then
+            else
                 
-                resolved_tree := CapJitRemovedReturnFail( resolved_tree );
+                resolved_tree := ENHANCED_SYNTAX_TREE( func_to_resolve : globalize_hvars := true );
+                
+                if funccall_does_not_return_fail then
+                    
+                    resolved_tree := CapJitRemovedReturnFail( resolved_tree );
+                    
+                fi;
+                
+                new_tree := rec(
+                    type := "EXPR_FUNCCALL",
+                    funcref := resolved_tree,
+                    args := funccall_args,
+                );
                 
             fi;
-            
-            new_tree := rec(
-                type := "EXPR_FUNCCALL",
-                funcref := resolved_tree,
-                args := funccall_args,
-            );
             
         fi;
         

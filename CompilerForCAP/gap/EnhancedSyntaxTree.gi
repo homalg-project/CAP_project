@@ -444,7 +444,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 if not (
                     (operation_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) and Length( tree.args ) = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list ))
                     or
-                    (operation_name in RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) and ForAny( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name), x -> Length( tree.args ) = Length( x[1] ) ))
+                    (operation_name in RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) and ForAny( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name), x -> Length( tree.args ) = Length( x.filters ) ))
                     ) then
                     
                     # using LocationFunc causes a segfault (https://github.com/gap-system/gap/issues/4507)
