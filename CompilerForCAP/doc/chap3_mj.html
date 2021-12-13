@@ -580,6 +580,39 @@ end
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DeclareFilter( "IsMyCat1", IsCapCategory );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DeclareFilter( "IsMyCat2", IsCapCategory );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DeclareOperation( "MyOperation", [ IsMyCat1 ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DeclareOperation( "MyOperation", [ IsMyCat2 ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InstallMethodForCompilerForCAP( MyOperation, [ IsMyCat1 ], cat -&gt; 1 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InstallMethodForCompilerForCAP( MyOperation, [ IsMyCat2 ], cat -&gt; 2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InstallOtherMethodForCompilerForCAP(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    MyOperation,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ IsMyCat2, IsInt ],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    { cat, int } -&gt; 3</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat1 := CreateCapCategory( "cat1" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat2 := CreateCapCategory( "cat2" );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetFilterObj( cat1, IsMyCat1 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetFilterObj( cat2, IsMyCat2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( cat -&gt; MyOperation( cat ), [ cat1 ] ) );</span>
+function ( cat_1 )
+    return 1;
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( cat -&gt; MyOperation( cat ), [ cat2 ] ) );</span>
+function ( cat_1 )
+    return 2;
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( cat -&gt; MyOperation( cat, 1 ), [ cat2 ] ) );</span>
+function ( cat_1 )
+    return 3;
+end
+</pre></div>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">##</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput"># duplicate code inside a function</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">func := function( x )</span>

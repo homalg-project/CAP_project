@@ -537,6 +537,38 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDeclareFilter( "IsMyCat1", IsCapCategory );;[127X[104X
+    [4X[25Xgap>[125X [27XDeclareFilter( "IsMyCat2", IsCapCategory );;[127X[104X
+    [4X[25Xgap>[125X [27XDeclareOperation( "MyOperation", [ IsMyCat1 ] );;[127X[104X
+    [4X[25Xgap>[125X [27XDeclareOperation( "MyOperation", [ IsMyCat2 ] );;[127X[104X
+    [4X[25Xgap>[125X [27XInstallMethodForCompilerForCAP( MyOperation, [ IsMyCat1 ], cat -> 1 );[127X[104X
+    [4X[25Xgap>[125X [27XInstallMethodForCompilerForCAP( MyOperation, [ IsMyCat2 ], cat -> 2 );[127X[104X
+    [4X[25Xgap>[125X [27XInstallOtherMethodForCompilerForCAP([127X[104X
+    [4X[25X>[125X [27X    MyOperation,[127X[104X
+    [4X[25X>[125X [27X    [ IsMyCat2, IsInt ],[127X[104X
+    [4X[25X>[125X [27X    { cat, int } -> 3[127X[104X
+    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27Xcat1 := CreateCapCategory( "cat1" );;[127X[104X
+    [4X[25Xgap>[125X [27Xcat2 := CreateCapCategory( "cat2" );;[127X[104X
+    [4X[25Xgap>[125X [27XSetFilterObj( cat1, IsMyCat1 );[127X[104X
+    [4X[25Xgap>[125X [27XSetFilterObj( cat2, IsMyCat2 );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( cat -> MyOperation( cat ), [ cat1 ] ) );[127X[104X
+    [4X[28Xfunction ( cat_1 )[128X[104X
+    [4X[28X    return 1;[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( cat -> MyOperation( cat ), [ cat2 ] ) );[127X[104X
+    [4X[28Xfunction ( cat_1 )[128X[104X
+    [4X[28X    return 2;[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( cat -> MyOperation( cat, 1 ), [ cat2 ] ) );[127X[104X
+    [4X[28Xfunction ( cat_1 )[128X[104X
+    [4X[28X    return 3;[128X[104X
+    [4X[28Xend[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27X##[127X[104X
     [4X[25X>[125X [27X# duplicate code inside a function[127X[104X
     [4X[25X>[125X [27Xfunc := function( x )[127X[104X
