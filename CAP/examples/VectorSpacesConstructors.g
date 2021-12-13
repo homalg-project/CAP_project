@@ -3,6 +3,8 @@ LoadPackage( "CAP" );
 
 LoadPackage( "MatricesForHomalg" );
 
+LoadPackage( "GaussForHomalg" );
+
 ###################################
 ##
 ## Technical stuff
