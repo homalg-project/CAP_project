@@ -52,11 +52,15 @@
 #! * <Ref BookName="CAP" Func="InjectiveColift" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InverseForMorphisms" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsAutomorphism" Label="for Is" />
+#! * <Ref BookName="CAP" Func="IsCodominating" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsColiftable" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsColiftableAlongEpimorphism" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsCongruentForMorphisms" Label="for Is" />
+#! * <Ref BookName="CAP" Func="IsDominating" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsEndomorphism" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsEpimorphism" Label="for Is" />
+#! * <Ref BookName="CAP" Func="IsEqualAsFactorobjects" Label="for Is" />
+#! * <Ref BookName="CAP" Func="IsEqualAsSubobjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsEqualForMorphisms" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsEqualForMorphismsOnMor" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsEqualForObjects" Label="for Is" />
@@ -286,10 +290,6 @@
 #! * <Ref BookName="CAP" Func="InjectionOfCofactorOfPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InjectionOfCofactorOfPushoutWithGivenPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="InverseMorphismFromCoimageToImageWithGivenObjects" Label="for Is" />
-#! * <Ref BookName="CAP" Func="IsCodominating" Label="for Is" />
-#! * <Ref BookName="CAP" Func="IsDominating" Label="for Is" />
-#! * <Ref BookName="CAP" Func="IsEqualAsFactorobjects" Label="for Is" />
-#! * <Ref BookName="CAP" Func="IsEqualAsSubobjects" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromCoimageToCokernelOfKernel" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromCokernelOfDiagonalDifferenceToPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="IsomorphismFromCokernelOfKernelToCoimage" Label="for Is" />

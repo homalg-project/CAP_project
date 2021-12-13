@@ -1773,11 +1773,11 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    return IsZero( SyzygiesOfRows( UnderlyingMatrix( arg3_1 ) ) * UnderlyingMatrix( arg2_1 ) );
+    return IsZero( DecideZeroColumns( UnderlyingMatrix( arg2_1 ), UnderlyingMatrix( arg3_1 ) ) );
 end
 ########
         
-    , 301 : IsPrecompiledDerivation := true );
+    , 102 : IsPrecompiledDerivation := true );
     
     ##
     AddIsColiftable( cat,
@@ -1817,11 +1817,11 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    return IsZero( UnderlyingMatrix( arg2_1 ) * SyzygiesOfColumns( UnderlyingMatrix( arg3_1 ) ) );
+    return IsZero( DecideZeroRows( UnderlyingMatrix( arg2_1 ), UnderlyingMatrix( arg3_1 ) ) );
 end
 ########
         
-    , 301 : IsPrecompiledDerivation := true );
+    , 102 : IsPrecompiledDerivation := true );
     
     ##
     AddIsEndomorphism( cat,
@@ -1851,13 +1851,13 @@ end
 ########
 function ( cat_1, arg2_1, arg3_1 )
     local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingMatrix( arg2_1 );
-    deduped_1_1 := UnderlyingMatrix( arg3_1 );
-    return IsZero( SyzygiesOfRows( deduped_1_1 ) * deduped_2_1 ) and IsZero( SyzygiesOfRows( deduped_2_1 ) * deduped_1_1 );
+    deduped_2_1 := UnderlyingMatrix( arg3_1 );
+    deduped_1_1 := UnderlyingMatrix( arg2_1 );
+    return IsZero( DecideZeroColumns( deduped_1_1, deduped_2_1 ) ) and IsZero( DecideZeroColumns( deduped_2_1, deduped_1_1 ) );
 end
 ########
         
-    , 603 : IsPrecompiledDerivation := true );
+    , 205 : IsPrecompiledDerivation := true );
     
     ##
     AddIsEqualAsSubobjects( cat,
@@ -1867,11 +1867,11 @@ function ( cat_1, arg2_1, arg3_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingMatrix( arg3_1 );
     deduped_1_1 := UnderlyingMatrix( arg2_1 );
-    return IsZero( deduped_1_1 * SyzygiesOfColumns( deduped_2_1 ) ) and IsZero( deduped_2_1 * SyzygiesOfColumns( deduped_1_1 ) );
+    return IsZero( DecideZeroRows( deduped_1_1, deduped_2_1 ) ) and IsZero( DecideZeroRows( deduped_2_1, deduped_1_1 ) );
 end
 ########
         
-    , 603 : IsPrecompiledDerivation := true );
+    , 205 : IsPrecompiledDerivation := true );
     
     ##
     AddIsEqualForMorphisms( cat,
