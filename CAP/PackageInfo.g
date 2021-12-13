@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "CAP",
 Subtitle := "Categories, Algorithms, Programming",
-Version := "2021.12-04",
+Version := "2021.12-05",
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
@@ -102,7 +102,7 @@ Dependencies := rec(
                            [ "io", ">=0" ],
   ],
   SuggestedOtherPackages := [ [ "Browse", ">=0" ],
-                              [ "CompilerForCAP", ">= 2020.06.17" ],
+                              [ "CompilerForCAP", ">= 2021.12-05" ],
   ],
   ExternalConditions := []
 

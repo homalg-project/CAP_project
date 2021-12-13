@@ -919,6 +919,18 @@ InstallGlobalFunction( CapJitAddKnownMethod,
         
     fi;
     
+    if IsEmpty( filters ) then
+        
+        Error( "there must be at least one filter" );
+        
+    fi;
+    
+    if not IS_SUBSET_FLAGS( WITH_IMPS_FLAGS( FLAGS_FILTER( filters[1] ) ), WITH_IMPS_FLAGS( FLAGS_FILTER( IsCapCategory ) ) ) then
+        
+        Error( "the first filter must imply IsCapCategory" );
+        
+    fi;
+    
     operation_name := NameFunction( operation );
     
     # check if we deal with a KeyDependentOperation
@@ -942,13 +954,17 @@ InstallGlobalFunction( CapJitAddKnownMethod,
     
     known_methods := CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name);
     
-    if ForAny( known_methods, m -> Length( m[1] ) = Length( filters ) ) then
+    if ForAny( known_methods, m -> Length( m.filters ) = Length( filters ) and
+        (
+            IS_SUBSET_FLAGS( WITH_IMPS_FLAGS( FLAGS_FILTER( m.filters[1] ) ), WITH_IMPS_FLAGS( FLAGS_FILTER( filters[1] ) ) ) or
+            IS_SUBSET_FLAGS( WITH_IMPS_FLAGS( FLAGS_FILTER( filters[1] ) ), WITH_IMPS_FLAGS( FLAGS_FILTER( m.filters[1] ) ) )
+        ) ) then
         
-        Error( "there is already a method known for ", operation_name, " with ", Length( filters ), " arguments" );
+        Error( "there is already a method known for ", operation_name, " with a category filter which implies the current category filter or is impled by it" );
         
     fi;
     
-    Add( known_methods, [ filters, method ] );
+    Add( known_methods, rec( filters := filters, method := method ) );
     
 end );
 

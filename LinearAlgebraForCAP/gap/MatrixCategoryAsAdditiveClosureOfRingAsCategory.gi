@@ -35,7 +35,7 @@ InstallMethod( MatrixCategoryAsAdditiveClosureOfRingAsCategory,
         
         unique_object := RingAsCategoryUniqueObject( ring_as_category );
         
-        return AdditiveClosureObject( ListWithIdenticalEntries( Dimension( object ), unique_object ), add );
+        return AdditiveClosureObject( add, ListWithIdenticalEntries( Dimension( object ), unique_object ) );
         
     end;
     
@@ -70,8 +70,8 @@ InstallMethod( MatrixCategoryAsAdditiveClosureOfRingAsCategory,
         #% CAP_JIT_DROP_NEXT_STATEMENT
         Assert( 0, Dimension( Range( morphism ) ) = nr_cols );
         
-        source := AdditiveClosureObject( ListWithIdenticalEntries( nr_rows, unique_object ), add );
-        range := AdditiveClosureObject( ListWithIdenticalEntries( nr_cols, unique_object ), add );
+        source := AdditiveClosureObject( add, ListWithIdenticalEntries( nr_rows, unique_object ) );
+        range := AdditiveClosureObject( add, ListWithIdenticalEntries( nr_cols, unique_object ) );
         
         matrix_entries := EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( morphism ) );
         
@@ -91,7 +91,7 @@ InstallMethod( MatrixCategoryAsAdditiveClosureOfRingAsCategory,
         #% CAP_JIT_DROP_NEXT_STATEMENT
         Assert( 0, ForAll( listlist, row -> Length( row ) = Length( ObjectList( range ) ) ) );
         
-        return AdditiveClosureMorphism( source, listlist, range );
+        return AdditiveClosureMorphism( add, source, listlist, range );
         
     end;
     
