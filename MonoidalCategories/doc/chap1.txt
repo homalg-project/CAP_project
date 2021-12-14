@@ -2188,8 +2188,8 @@
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XTensorProductToInternalCoHomAdjunctionMap[110X.   [23XF:   (   b,   c,  g  )  \mapsto
-  \mathtt{TensorProductToInternalCoHomAdjunctionMap}(b, c, g)[123X.[133X
+  [10XTensorProductToInternalCoHomAdjunctionMap[110X.   [23XF:   (   c,   b,  g  )  \mapsto
+  \mathtt{TensorProductToInternalCoHomAdjunctionMap}(c, b, g)[123X.[133X
   
   [1X1.12-82 AddUniversalPropertyOfCoDual[101X
   
