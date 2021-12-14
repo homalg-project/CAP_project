@@ -737,12 +737,24 @@ end );
 InstallGlobalFunction( "EnableTimingStatistics",
   function( category )
     
+    if category!.overhead <> true then
+        
+        Display( "WARNING: <category> was created with `overhead := false` and thus cannot collect timing statistics." );
+        
+    fi;
+    
     category!.timing_statistics_enabled := true;
     
 end );
 
 InstallGlobalFunction( "DisableTimingStatistics",
   function( category )
+    
+    if category!.overhead <> true then
+        
+        Display( "WARNING: <category> was created with `overhead := false` and thus cannot collect timing statistics." );
+        
+    fi;
     
     category!.timing_statistics_enabled := false;
     
@@ -751,6 +763,12 @@ end );
 InstallGlobalFunction( "ResetTimingStatistics",
   function( category )
     local recname;
+    
+    if category!.overhead <> true then
+        
+        Display( "WARNING: <category> was created with `overhead := false` and thus cannot collect timing statistics." );
+        
+    fi;
     
     for recname in RecNames( category!.timing_statistics ) do
         
@@ -763,6 +781,12 @@ end );
 BindGlobal( "CAP_INTERNAL_PREPARE_TIMING_STATISTICS_FOR_DISPLAY",
   function( category )
     local header, warning, operations, total_time_global, times, execs, total_time, time_per_exec, recname;
+    
+    if category!.overhead <> true then
+        
+        Display( "WARNING: <category> was created with `overhead := false` and thus cannot collect timing statistics." );
+        
+    fi;
     
     header := Concatenation( "Timing statistics for the primitive operations of the category ", Name( category ), ":" );
     
@@ -821,6 +845,8 @@ InstallGlobalFunction( "DisplayTimingStatistics",
     local info, operation;
     
     info := CAP_INTERNAL_PREPARE_TIMING_STATISTICS_FOR_DISPLAY( category );
+    
+    Display( "####" );
     
     if IsEmpty( info.operations ) then
         
