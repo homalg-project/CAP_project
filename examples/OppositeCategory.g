@@ -6,11 +6,12 @@
 
 LoadPackage( "Toposes", false );
 #! true
-LoadPackage( "FinSetsForCAP", false );
+LoadPackage( "FinSetsForCAP", ">= 2021.12-09", false );
 #! true
 
 op := Opposite( SkeletalFinSets );;
 ListKnownCategoricalProperties( op );
-#! [ "IsCartesianCategory", "IsCocartesianCategory", "IsSkeletalCategory" ]
+#! [ "IsCartesianCategory", "IsCocartesianCategory",
+#!   "IsEquippedWithHomomorphismStructure", "IsSkeletalCategory" ]
 
 #! @EndExample

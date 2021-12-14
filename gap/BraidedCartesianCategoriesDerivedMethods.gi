@@ -1,5 +1,5 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
-# FROM MonoidalCategories v2021.12-07
+# FROM MonoidalCategories v2021.12-08
 # USING CategoryConstructor v2021.12-05
 
 # SPDX-License-Identifier: GPL-2.0-or-later
