@@ -259,14 +259,14 @@ IsomorphismFromCocartesianDualToCoexponential := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "i", "d" ] ],
   return_type := "morphism",
-  dual_operation := "IsomorphismFromCartesianDualToExponential",
+  dual_operation := "IsomorphismFromExponentialToCartesianDual",
 ),
 
 IsomorphismFromCoexponentialToCocartesianDual := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "d", "i" ] ],
   return_type := "morphism",
-  dual_operation := "IsomorphismFromExponentialToCartesianDual",
+  dual_operation := "IsomorphismFromCartesianDualToExponential",
 ),
 
 UniversalPropertyOfCocartesianDual := rec(
@@ -300,14 +300,14 @@ IsomorphismFromObjectToCoexponential := rec(
   output_range_getter_string := "CoexponentialOnObjects( cat, a, InitialObject( cat ) )",
   with_given_object_position := "Range",
   return_type := "morphism",
-  dual_operation := "IsomorphismFromObjectToExponential",
+  dual_operation := "IsomorphismFromExponentialToObject",
 ),
 
 IsomorphismFromObjectToCoexponentialWithGivenCoexponential := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "r" ], [ "a", "r" ] ],
   return_type := "morphism",
-  dual_operation := "IsomorphismFromObjectToExponentialWithGivenExponential",
+  dual_operation := "IsomorphismFromExponentialToObjectWithGivenExponential",
   dual_arguments_reversed := false,
 ),
 
@@ -318,14 +318,14 @@ IsomorphismFromCoexponentialToObject := rec(
   output_range_getter_string := "a",
   with_given_object_position := "Source",
   return_type := "morphism",
-  dual_operation := "IsomorphismFromExponentialToObject",
+  dual_operation := "IsomorphismFromObjectToExponential",
 ),
 
 IsomorphismFromCoexponentialToObjectWithGivenCoexponential := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "s" ], [ "s", "a" ] ],
   return_type := "morphism",
-  dual_operation := "IsomorphismFromExponentialToObjectWithGivenExponential",
+  dual_operation := "IsomorphismFromObjectToExponentialWithGivenExponential",
   dual_arguments_reversed := false,
 ),
 
