@@ -4452,7 +4452,31 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             fi;
             
         fi;
-          
+        
+        if IsBound( current_rec.dual_operation ) then
+            
+            # check that dual of the dual is the original operation
+            
+            if not IsBound( record.( current_rec.dual_operation ) ) then
+                
+                Error( "the dual operation must be added in the same call to `CAP_INTERNAL_ENHANCE_NAME_RECORD`" );
+                
+            fi;
+            
+            if not IsBound( record.( current_rec.dual_operation ).dual_operation ) then
+                
+                Error( "the dual operation of ", current_recname, ", i.e. ", current_rec.dual_operation, ", has no dual operation"  );
+                
+            fi;
+            
+            if record.( current_rec.dual_operation ).dual_operation <> current_recname then
+                
+                Error( "the dual operation of ", current_recname, ", i.e. ", current_rec.dual_operation, ", has the unexpected dual operation ", record.( current_rec.dual_operation ).dual_operation  );
+                
+            fi;
+            
+        fi;
+        
         if not IsBound( current_rec.dual_arguments_reversed ) then
             
             current_rec.dual_arguments_reversed := false;

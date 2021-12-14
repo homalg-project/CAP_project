@@ -116,25 +116,6 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
         
         dual_operation_name := current_entry.dual_operation;
         
-        if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.( dual_operation_name ) ) then
-            
-            Error( "the dual operation must be a CAP operation" );
-            
-        fi;
-        
-        # check that dual of the dual is the original operation
-        if not IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.( dual_operation_name ).dual_operation ) then
-            
-            Error( "the dual operation of ", current_recname, ", i.e. ", dual_operation_name, ", has no dual operation"  );
-            
-        fi;
-        
-        if CAP_INTERNAL_METHOD_NAME_RECORD.( dual_operation_name ).dual_operation <> current_recname then
-            
-            Error( "the dual operation of ", current_recname, ", i.e. ", dual_operation_name, ", has the unexpected dual operation ", CAP_INTERNAL_METHOD_NAME_RECORD.( dual_operation_name ).dual_operation  );
-            
-        fi;
-        
         if not CanCompute( category, dual_operation_name ) then
             continue;
         fi;
