@@ -392,22 +392,22 @@ WriteFileForCoclosedMonoidalStructure(
                                  "dual_operation := \"ExponentialToDirectProductAdjunctionMap\"" ],
                                ## IsomorphismFromInternalCoHomToCoDual
                                [ "dual_operation := \"IsomorphismFromDualToInternalHom\"",
-                                 "dual_operation := \"IsomorphismFromExponentialToCartesianDual\"" ],
+                                 "dual_operation := \"IsomorphismFromCartesianDualToExponential\"" ],
                                ## IsomorphismFromCoDualToInternalCoHom
                                [ "dual_operation := \"IsomorphismFromInternalHomToDual\"",
-                                 "dual_operation := \"IsomorphismFromCartesianDualToExponential\"" ],
+                                 "dual_operation := \"IsomorphismFromExponentialToCartesianDual\"" ],
                                ## IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom
                                [ "dual_operation := \"IsomorphismFromInternalHomToObjectWithGivenInternalHom\"",
-                                 "dual_operation := \"IsomorphismFromObjectToExponentialWithGivenExponential\"" ],
+                                 "dual_operation := \"IsomorphismFromExponentialToObjectWithGivenExponential\"" ],
                                ## IsomorphismFromObjectToInternalCoHom
                                [ "dual_operation := \"IsomorphismFromInternalHomToObject\"",
-                                 "dual_operation := \"IsomorphismFromObjectToExponential\"" ],
+                                 "dual_operation := \"IsomorphismFromExponentialToObject\"" ],
                                ## IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom
                                [ "dual_operation := \"IsomorphismFromObjectToInternalHomWithGivenInternalHom\"",
-                                 "dual_operation := \"IsomorphismFromExponentialToObjectWithGivenExponential\"" ],
+                                 "dual_operation := \"IsomorphismFromObjectToExponentialWithGivenExponential\"" ],
                                ## IsomorphismFromInternalCoHomToObject
                                [ "dual_operation := \"IsomorphismFromObjectToInternalHom\"",
-                                 "dual_operation := \"IsomorphismFromExponentialToObject\"" ],
+                                 "dual_operation := \"IsomorphismFromObjectToExponential\"" ],
                                ## CoLambdaElimination
                                [ "dual_operation := \"LambdaElimination\"",
                                  "dual_operation := \"CartesianLambdaElimination\"" ],
