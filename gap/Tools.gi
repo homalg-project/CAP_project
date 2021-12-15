@@ -465,7 +465,7 @@ WriteFileForCoclosedMonoidalStructure(
                                [ "CoclosedMonoidalCategories.autogen.gd",
                                  "CocartesianCoclosedCategories.autogen.gd" ],
                                [ "\"ClosedMonoidalCategories.autogen.gd\", \"Monoidal Categories\"",
-                                 "\"CartesianClosedCategories.autogen.gd\", \"Cartesin Categories\"" ],
+                                 "\"CartesianClosedCategories.autogen.gd\", \"Cartesian Categories\"" ],
                                ],
              ),
         "Toposes",
