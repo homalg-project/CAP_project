@@ -351,7 +351,7 @@ CAP_INTERNAL_ENHANCE_NAME_RECORD( CARTESIAN_CLOSED_AND_COCARTESIAN_COCLOSED_CATE
 CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
     CARTESIAN_CLOSED_CATEGORIES_METHOD_NAME_RECORD,
     "Toposes",
-    "CartesianClosedCategories.autogen.gd", "Cartesin Categories",
+    "CartesianClosedCategories.autogen.gd", "Cartesian Categories",
     "Add-methods"
 );
 
