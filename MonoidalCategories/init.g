@@ -25,33 +25,29 @@ ReadPackage( "MonoidalCategories", "gap/BraidedMonoidalCategories.autogen.gd" );
 
 ReadPackage( "MonoidalCategories", "gap/SymmetricMonoidalCategoriesProperties.gd" );
 
-## Closed Monoidal
+## (Co)Closed Monoidal
+
 ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesProperties.gd" );
-ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategories.gd" );
-ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategories.autogen.gd" );
-
-## Symmetric Closed Monoidal
-
-ReadPackage( "MonoidalCategories", "gap/SymmetricClosedMonoidalCategoriesProperties.gd" );
-
-## Rigid Symmetric Closed Monoidal
-
-ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategoriesProperties.gd" );
-ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategories.gd" );
-ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategories.autogen.gd" );
-
-## Coclosed Monoidal
-
 ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesProperties.gd" );
+
+ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategories.gd" );
 ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategories.gd" );
+
+ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategories.autogen.gd" );
 ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategories.autogen.gd" );
 
-## Symmetric Coclosed Monoidal
+## Symmetric (Co)Closed Monoidal
 
+ReadPackage( "MonoidalCategories", "gap/SymmetricClosedMonoidalCategoriesProperties.gd" );
 ReadPackage( "MonoidalCategories", "gap/SymmetricCoclosedMonoidalCategoriesProperties.gd" );
 
-## Rigid Symmetric Coclosed Monoidal
+## Rigid Symmetric (Co)Closed Monoidal
 
+ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategoriesProperties.gd" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategoriesProperties.gd" );
+
+ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategories.gd" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategories.gd" );
+
+ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategories.autogen.gd" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategories.autogen.gd" );
