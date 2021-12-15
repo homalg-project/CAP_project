@@ -12,6 +12,7 @@ LoadPackage( "FinSetsForCAP", ">= 2021.12-09", false );
 op := Opposite( SkeletalFinSets );;
 ListKnownCategoricalProperties( op );
 #! [ "IsCartesianCategory", "IsCocartesianCategory",
-#!   "IsEquippedWithHomomorphismStructure", "IsSkeletalCategory" ]
+#!   "IsCocartesianCoclosedCategory", "IsEquippedWithHomomorphismStructure",
+#!   "IsSkeletalCategory" ]
 
 #! @EndExample

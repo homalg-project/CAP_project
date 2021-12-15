@@ -4,4 +4,4 @@
 # Declarations
 #
 
-AddCategoricalProperty( [ "IsCartesianClosedCategory", fail ] );
+AddCategoricalProperty( [ "IsCartesianClosedCategory", "IsCocartesianCoclosedCategory" ] );
