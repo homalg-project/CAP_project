@@ -4,15 +4,15 @@
 
 gap> LoadPackage( "FinSetsForCAP", false );
 true
-gap> Length( ListInstalledOperationsOfCategory( FinSets ) );
-215
-gap> BooleanAlgebras := Opposite( FinSets );
-Opposite of FinSets
+gap> Length( ListInstalledOperationsOfCategory( SkeletalFinSets ) );
+224
+gap> BooleanAlgebras := Opposite( SkeletalFinSets );
+Opposite of SkeletalFinSets
 gap> Length( ListInstalledOperationsOfCategory( BooleanAlgebras ) );
-192
+201
 gap> Opposite( BooleanAlgebras );
-FinSets
+SkeletalFinSets
 gap> FS := Opposite( WrapperCategory( BooleanAlgebras, rec( ) ) );
-Opposite of WrapperCategory( Opposite of FinSets )
+Opposite of WrapperCategory( Opposite of SkeletalFinSets )
 gap> Length( ListInstalledOperationsOfCategory( FS ) );
-192
+201
