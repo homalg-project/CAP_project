@@ -4,4 +4,4 @@
 # Declarations
 #
 
-AddCategoricalProperty( [ "IsSymmetricCoclosedMonoidalCategory", fail ] );
+AddCategoricalProperty( [ "IsSymmetricCoclosedMonoidalCategory", "IsSymmetricClosedMonoidalCategory" ] );
