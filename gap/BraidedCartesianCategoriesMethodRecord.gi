@@ -1,6 +1,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
-# FROM MonoidalCategories v2021.12-08
-# USING CategoryConstructor v2021.12-05
+# FROM MonoidalCategories v2021.12-09
+# USING CategoryConstructor v2021.12-06
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
@@ -13,8 +13,8 @@ InstallValue( BRAIDED_CARTESIAN_CATEGORIES_METHOD_NAME_RECORD, rec(
 CartesianBraiding := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "s", "r" ] ],
-  output_source_getter_string := "DirectProduct( a, b )",
-  output_range_getter_string := "DirectProduct( b, a )",
+  output_source_getter_string := "DirectProductOp( cat, a, b )",
+  output_range_getter_string := "DirectProductOp( cat, b, a )",
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "CartesianBraidingInverse",
@@ -33,8 +33,8 @@ CartesianBraidingWithGivenDirectProducts := rec(
 CartesianBraidingInverse := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "s", "r" ] ],
-  output_source_getter_string := "DirectProduct( b, a )",
-  output_range_getter_string := "DirectProduct( a, b )",
+  output_source_getter_string := "DirectProductOp( cat, b, a )",
+  output_range_getter_string := "DirectProductOp( cat, a, b )",
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "CartesianBraiding",

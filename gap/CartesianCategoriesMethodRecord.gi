@@ -1,6 +1,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
-# FROM MonoidalCategories v2021.12-08
-# USING CategoryConstructor v2021.12-05
+# FROM MonoidalCategories v2021.12-09
+# USING CategoryConstructor v2021.12-06
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
@@ -15,8 +15,8 @@ InstallValue( CARTESIAN_CATEGORIES_METHOD_NAME_RECORD, rec(
 DirectProductOnMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "s", "r" ] ],
-  output_source_getter_string := "DirectProduct( Source( alpha ), Source( beta ) )",
-  output_range_getter_string := "DirectProduct( Range( alpha ), Range( beta ) )",
+  output_source_getter_string := "DirectProductOp( cat, Source( alpha ), Source( beta ) )",
+  output_range_getter_string := "DirectProductOp( cat, Range( alpha ), Range( beta ) )",
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "DirectProductOnMorphisms",
@@ -34,8 +34,8 @@ DirectProductOnMorphismsWithGivenDirectProducts := rec(
 CartesianAssociatorRightToLeft := rec(
   filter_list := [ "category", "object", "object", "object" ],
   io_type := [ [ "a", "b", "c" ], [ "s", "r" ] ],
-  output_source_getter_string := "DirectProduct( a, DirectProduct( b, c ) )",
-  output_range_getter_string := "DirectProduct( DirectProduct( a, b ), c )",
+  output_source_getter_string := "DirectProductOp( cat, a, DirectProductOp( cat, b, c ) )",
+  output_range_getter_string := "DirectProductOp( cat, DirectProductOp( cat, a, b ), c )",
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "CartesianAssociatorLeftToRight",
@@ -55,8 +55,8 @@ CartesianAssociatorRightToLeftWithGivenDirectProducts := rec(
 CartesianAssociatorLeftToRight := rec(
   filter_list := [ "category", "object", "object", "object" ],
   io_type := [ [ "a", "b", "c" ], [ "s", "r" ] ],
-  output_source_getter_string := "DirectProduct( DirectProduct( a, b ), c )",
-  output_range_getter_string := "DirectProduct( a, DirectProduct( b, c ) )",
+  output_source_getter_string := "DirectProductOp( cat, DirectProductOp( cat, a, b ), c )",
+  output_range_getter_string := "DirectProductOp( cat, a, DirectProductOp( cat, b, c ) )",
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "CartesianAssociatorRightToLeft",
@@ -75,7 +75,7 @@ CartesianAssociatorLeftToRightWithGivenDirectProducts := rec(
 CartesianLeftUnitor := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "s", "a" ] ],
-  output_source_getter_string := "DirectProduct( TerminalObject( cat ), a )",
+  output_source_getter_string := "DirectProductOp( cat, TerminalObject( cat ), a )",
   output_range_getter_string := "a",
   with_given_object_position := "Source",
   return_type := "morphism",
@@ -94,7 +94,7 @@ CartesianLeftUnitorInverse := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "a", "r" ] ],
   output_source_getter_string := "a",
-  output_range_getter_string := "DirectProduct( TerminalObject( cat ), a )",
+  output_range_getter_string := "DirectProductOp( cat, TerminalObject( cat ), a )",
   with_given_object_position := "Range",
   return_type := "morphism",
   dual_operation := "CartesianLeftUnitor",
@@ -111,7 +111,7 @@ CartesianLeftUnitorInverseWithGivenDirectProduct := rec(
 CartesianRightUnitor := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "s", "a" ] ],
-  output_source_getter_string := "DirectProduct( a, TerminalObject( cat ) )",
+  output_source_getter_string := "DirectProductOp( cat, a, TerminalObject( cat ) )",
   output_range_getter_string := "a",
   with_given_object_position := "Source",
   return_type := "morphism",
@@ -130,7 +130,7 @@ CartesianRightUnitorInverse := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "a", "r" ] ],
   output_source_getter_string := "a",
-  output_range_getter_string := "DirectProduct( a, TerminalObject( cat ) )",
+  output_range_getter_string := "DirectProductOp( cat, a, TerminalObject( cat ) )",
   with_given_object_position := "Range",
   return_type := "morphism",
   dual_operation := "CartesianRightUnitor",

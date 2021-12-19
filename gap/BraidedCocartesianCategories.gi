@@ -1,6 +1,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
-# FROM MonoidalCategories v2021.12-08
-# USING CategoryConstructor v2021.12-05
+# FROM MonoidalCategories v2021.12-09
+# USING CategoryConstructor v2021.12-06
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
@@ -14,7 +14,7 @@ AddDerivationToCAP( CocartesianBraiding,
   function( cat, object_1, object_2 )
     local source_and_range;
     
-    source_and_range := Coproduct( object_1, object_2 );
+    source_and_range := Coproduct( cat, object_1, object_2 );
     
     return CocartesianBraidingWithGivenCoproducts( cat, source_and_range, object_1, object_2, source_and_range );
     
@@ -27,7 +27,7 @@ AddDerivationToCAP( CocartesianBraidingInverse,
   function( cat, object_1, object_2 )
     local source_and_range;
     
-    source_and_range := Coproduct( object_1, object_2 );
+    source_and_range := Coproduct( cat, object_1, object_2 );
     
     return CocartesianBraidingInverseWithGivenCoproducts( cat, source_and_range, object_1, object_2, source_and_range );
     

@@ -1,6 +1,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
-# FROM MonoidalCategories v2021.12-08
-# USING CategoryConstructor v2021.12-05
+# FROM MonoidalCategories v2021.12-09
+# USING CategoryConstructor v2021.12-06
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
@@ -13,8 +13,8 @@ InstallValue( DISTRIBUTIVE_CARTESIAN_CATEGORIES_METHOD_NAME_RECORD, rec(
 LeftCartesianDistributivityExpanding := rec(
   filter_list := [ "category", "object", "list_of_objects" ],
   io_type := [ [ "a", "L" ], [ "s", "r" ] ],
-  output_source_getter_string := "DirectProduct( a, Coproduct( cat, L ) )",
-  output_range_getter_string := "Coproduct( cat, List( L, summand -> DirectProduct( a, summand ) ) )",
+  output_source_getter_string := "DirectProductOp( cat, a, Coproduct( cat, L ) )",
+  output_range_getter_string := "Coproduct( cat, List( L, summand -> DirectProductOp( cat, a, summand ) ) )",
   with_given_object_position := "both",
   return_type := "morphism" ),
 
@@ -26,8 +26,8 @@ LeftCartesianDistributivityExpandingWithGivenObjects := rec(
 LeftCartesianDistributivityFactoring := rec(
   filter_list := [ "category", "object", "list_of_objects" ],
   io_type := [ [ "a", "L" ], [ "s", "r" ] ],
-  output_source_getter_string := "Coproduct( cat, List( L, summand -> DirectProduct( a, summand ) ) )",
-  output_range_getter_string := "DirectProduct( a, Coproduct( cat, L ) )",
+  output_source_getter_string := "Coproduct( cat, List( L, summand -> DirectProductOp( cat, a, summand ) ) )",
+  output_range_getter_string := "DirectProductOp( cat, a, Coproduct( cat, L ) )",
   with_given_object_position := "both",
   return_type := "morphism" ),
 
@@ -39,8 +39,8 @@ LeftCartesianDistributivityFactoringWithGivenObjects := rec(
 RightCartesianDistributivityExpanding := rec(
   filter_list := [ "category", "list_of_objects", "object" ],
   io_type := [ [ "L", "a" ], [ "s", "r" ] ],
-  output_source_getter_string := "DirectProduct( Coproduct( cat, L ), a )",
-  output_range_getter_string := "Coproduct( cat, List( L, summand -> DirectProduct( summand, a ) ) )",
+  output_source_getter_string := "DirectProductOp( cat, Coproduct( cat, L ), a )",
+  output_range_getter_string := "Coproduct( cat, List( L, summand -> DirectProductOp( cat, summand, a ) ) )",
   with_given_object_position := "both",
   return_type := "morphism" ),
 
@@ -52,8 +52,8 @@ RightCartesianDistributivityExpandingWithGivenObjects := rec(
 RightCartesianDistributivityFactoring := rec(
   filter_list := [ "category", "list_of_objects", "object" ],
   io_type := [ [ "L", "a" ], [ "s", "r" ] ],
-  output_source_getter_string := "Coproduct( cat, List( L, summand -> DirectProduct( summand, a ) ) )",
-  output_range_getter_string := "DirectProduct( Coproduct( cat, L ), a )",
+  output_source_getter_string := "Coproduct( cat, List( L, summand -> DirectProductOp( cat, summand, a ) ) )",
+  output_range_getter_string := "DirectProductOp( cat, Coproduct( cat, L ), a )",
   with_given_object_position := "both",
   return_type := "morphism" ),
 
