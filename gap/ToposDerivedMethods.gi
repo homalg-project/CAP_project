@@ -41,7 +41,7 @@ AddDerivationToCAP( CartesianAssociatorRightToLeftWithGivenDirectProducts,
     
     Db_c := [ b, c ];
     
-    bc := DirectProductOp( cat, Db_c );
+    bc := DirectProduct( cat, Db_c );
     
     pi_b := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, Db_c, 1, bc );
     pi_c := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, Db_c, 2, bc );
@@ -53,7 +53,7 @@ AddDerivationToCAP( CartesianAssociatorRightToLeftWithGivenDirectProducts,
     
     Da_b := [ a, b ];
     
-    ab := DirectProductOp( cat, Da_b );
+    ab := DirectProduct( cat, Da_b );
     
     pi_ab := UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, Da_b, s, [ pi_a, PreCompose( cat, pi_bc, pi_b ) ], ab );
     
@@ -68,7 +68,7 @@ AddDerivationToCAP( CartesianAssociatorLeftToRightWithGivenDirectProducts,
     
     Da_b := [ a, b ];
     
-    ab := DirectProductOp( cat, Da_b );
+    ab := DirectProduct( cat, Da_b );
     
     pi_a := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, Da_b, 1, ab );
     pi_b := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, Da_b, 2, ab );
@@ -80,7 +80,7 @@ AddDerivationToCAP( CartesianAssociatorLeftToRightWithGivenDirectProducts,
     
     Db_c := [ b, c ];
     
-    bc := DirectProductOp( cat, Db_c );
+    bc := DirectProduct( cat, Db_c );
     
     pi_bc := UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, Db_c, s, [ PreCompose( cat, pi_ab, pi_b ), pi_c ], bc );
     
@@ -111,7 +111,7 @@ AddDerivationToCAP( CartesianSquareOfSubobjectClassifier,
     
     Omega := SubobjectClassifier( cat );
     
-    return DirectProductOp( cat, [ Omega, Omega ] );
+    return DirectProduct( cat, [ Omega, Omega ] );
     
 end );
 

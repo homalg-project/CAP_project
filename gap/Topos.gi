@@ -8,17 +8,17 @@ InstallTrueMethod( IsCartesianClosedCategory, IsElementaryTopos );
 InstallTrueMethod( IsCocartesianCategory, IsElementaryTopos );
 
 ##
-InstallOtherMethod( DirectProductOp,
+InstallMethodForCompilerForCAP( DirectProductOp,
         [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
         
   function( cat, object_1, object_2 )
     
-    return DirectProductOp( cat, [ object_1, object_2 ] );
+    return DirectProduct( cat, [ object_1, object_2 ] );
     
 end );
 
 ##
-InstallMethod( CoproductOp,
+InstallMethodForCompilerForCAP( CoproductOp,
         [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
         
   function( cat, object_1, object_2 )

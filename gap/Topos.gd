@@ -10,6 +10,9 @@
 ##
 ####################################
 
+DeclareOperation( "DirectProductOp",
+        [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );
+
 ## For internal use only:
 ## we need an operation name different from `Coproduct`, since CompilerForCAP
 ## seems to be unable to compile the CAP operation `Coproduct`
