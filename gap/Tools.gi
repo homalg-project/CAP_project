@@ -272,7 +272,7 @@ WriteFileForMonoidalStructure(
              tensorSproduct := "coproduct",
              AdditiveS := "",
              BraidedS := "",
-             TensorProductOnObjectsBCcat := "Coproduct( cat,",
+             TensorProductOnObjectsBCcat := "CoproductOp( cat,",
              CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE := "METHOD_NAME_RECORD, \"Toposes\"",
              ),
         "Toposes",
@@ -337,7 +337,7 @@ WriteFileForCoclosedMonoidalStructure(
              coHom_tensor := "coexponential-coproduct",
              coHom := "Coexponential",
              CoclosedSMonoidal := "Cocartesian Coclosed",
-             TensorProductOnObjectsBCcat := "Coproduct( cat,",
+             TensorProductOnObjectsBCcat := "CoproductOp( cat,",
              CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE := "METHOD_NAME_RECORD, \"Toposes\"",
              safe_replace := [ ## BraidingWithGivenTensorProducts
                                [ "dual_operation := \"BraidingInverseWithGivenTensorProducts\"",

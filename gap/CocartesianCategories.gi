@@ -14,7 +14,7 @@ AddDerivationToCAP( CocartesianAssociatorRightToLeft,
   function( cat, object_1, object_2, object_3 )
     local source_and_range;
     
-    source_and_range := Coproduct( cat, object_1, Coproduct( cat, object_2, object_3 ) );
+    source_and_range := CoproductOp( cat, object_1, CoproductOp( cat, object_2, object_3 ) );
     
     return CocartesianAssociatorRightToLeftWithGivenCoproducts( cat,
              source_and_range,
@@ -31,7 +31,7 @@ AddDerivationToCAP( CocartesianAssociatorLeftToRight,
   function( cat, object_1, object_2, object_3 )
     local source_and_range;
     
-    source_and_range := Coproduct( cat, object_1, Coproduct( cat, object_2, object_3 ) );
+    source_and_range := CoproductOp( cat, object_1, CoproductOp( cat, object_2, object_3 ) );
     
     return CocartesianAssociatorLeftToRightWithGivenCoproducts( cat,
              source_and_range,
