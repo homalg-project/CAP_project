@@ -1,6 +1,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
-# FROM MonoidalCategories v2021.12-08
-# USING CategoryConstructor v2021.12-05
+# FROM MonoidalCategories v2021.12-09
+# USING CategoryConstructor v2021.12-06
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
@@ -14,7 +14,7 @@ AddDerivationToCAP( LeftCartesianDistributivityExpanding,
   function( cat, object, summands_list )
     local source_and_range;
     
-    source_and_range := DirectProduct( object, Coproduct( cat, summands_list ) );
+    source_and_range := DirectProductOp( cat, object, Coproduct( cat, summands_list ) );
     
     return LeftCartesianDistributivityExpandingWithGivenObjects( cat,
              source_and_range,
@@ -31,7 +31,7 @@ AddDerivationToCAP( LeftCartesianDistributivityFactoring,
   function( cat, object, summands_list )
     local source_and_range;
     
-    source_and_range := DirectProduct( object, Coproduct( cat, summands_list ) );
+    source_and_range := DirectProductOp( cat, object, Coproduct( cat, summands_list ) );
     
     return LeftCartesianDistributivityFactoringWithGivenObjects( cat,
              source_and_range,
@@ -48,7 +48,7 @@ AddDerivationToCAP( RightCartesianDistributivityExpanding,
   function( cat, summands_list, object )
     local source_and_range;
     
-    source_and_range := DirectProduct( Coproduct( cat, summands_list ), object );
+    source_and_range := DirectProductOp( cat, Coproduct( cat, summands_list ), object );
     
     return RightCartesianDistributivityExpandingWithGivenObjects( cat,
              source_and_range,
@@ -65,7 +65,7 @@ AddDerivationToCAP( RightCartesianDistributivityFactoring,
   function( cat, summands_list, object )
     local source_and_range;
     
-    source_and_range := DirectProduct( Coproduct( cat, summands_list ), object );
+    source_and_range := DirectProductOp( cat, Coproduct( cat, summands_list ), object );
     
     return RightCartesianDistributivityFactoringWithGivenObjects( cat,
              source_and_range,

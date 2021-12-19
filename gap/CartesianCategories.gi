@@ -1,6 +1,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
-# FROM MonoidalCategories v2021.12-08
-# USING CategoryConstructor v2021.12-05
+# FROM MonoidalCategories v2021.12-09
+# USING CategoryConstructor v2021.12-06
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
@@ -14,7 +14,7 @@ AddDerivationToCAP( CartesianAssociatorRightToLeft,
   function( cat, object_1, object_2, object_3 )
     local source_and_range;
     
-    source_and_range := DirectProduct( object_1, DirectProduct( object_2, object_3 ) );
+    source_and_range := DirectProductOp( cat, object_1, DirectProductOp( cat, object_2, object_3 ) );
     
     return CartesianAssociatorRightToLeftWithGivenDirectProducts( cat,
              source_and_range,
@@ -31,7 +31,7 @@ AddDerivationToCAP( CartesianAssociatorLeftToRight,
   function( cat, object_1, object_2, object_3 )
     local source_and_range;
     
-    source_and_range := DirectProduct( object_1, DirectProduct( object_2, object_3 ) );
+    source_and_range := DirectProductOp( cat, object_1, DirectProductOp( cat, object_2, object_3 ) );
     
     return CartesianAssociatorLeftToRightWithGivenDirectProducts( cat,
              source_and_range,

@@ -1,6 +1,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
-# FROM MonoidalCategories v2021.12-08
-# USING CategoryConstructor v2021.12-05
+# FROM MonoidalCategories v2021.12-09
+# USING CategoryConstructor v2021.12-06
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
@@ -40,7 +40,7 @@ ExponentialOnMorphismsWithGivenExponentials := rec(
 CartesianEvaluationMorphism := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "s", "b" ] ],
-  output_source_getter_string := "DirectProduct( ExponentialOnObjects( cat, a, b ), a )",
+  output_source_getter_string := "DirectProductOp( cat, ExponentialOnObjects( cat, a, b ), a )",
   output_range_getter_string := "b",
   with_given_object_position := "Source",
   return_type := "morphism",
@@ -61,7 +61,7 @@ CartesianCoevaluationMorphism := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "a", "r" ] ],
   output_source_getter_string := "a",
-  output_range_getter_string := "ExponentialOnObjects( cat, b, DirectProduct( a, b ) )",
+  output_range_getter_string := "ExponentialOnObjects( cat, b, DirectProductOp( cat, a, b ) )",
   with_given_object_position := "Range",
   return_type := "morphism",
   dual_operation := "CocartesianCoevaluationMorphism",
@@ -96,7 +96,7 @@ ExponentialToDirectProductAdjunctionMap := rec(
 CartesianPreComposeMorphism := rec(
   filter_list := [ "category", "object", "object", "object" ],
   io_type := [ [ "a", "b", "c" ], [ "s", "r" ] ],
-  output_source_getter_string := "DirectProduct( ExponentialOnObjects( cat, a, b ), ExponentialOnObjects( cat, b, c ) )",
+  output_source_getter_string := "DirectProductOp( cat, ExponentialOnObjects( cat, a, b ), ExponentialOnObjects( cat, b, c ) )",
   output_range_getter_string := "ExponentialOnObjects( cat, a, c )",
   with_given_object_position := "both",
   return_type := "morphism",
@@ -115,7 +115,7 @@ CartesianPreComposeMorphismWithGivenObjects := rec(
 CartesianPostComposeMorphism := rec(
   filter_list := [ "category", "object", "object", "object" ],
   io_type := [ [ "a", "b", "c" ], [ "s", "r" ] ],
-  output_source_getter_string := "DirectProduct( ExponentialOnObjects( cat, b, c ), ExponentialOnObjects( cat, a, b ) )",
+  output_source_getter_string := "DirectProductOp( cat, ExponentialOnObjects( cat, b, c ), ExponentialOnObjects( cat, a, b ) )",
   output_range_getter_string := "ExponentialOnObjects( cat, a, c )",
   with_given_object_position := "both",
   return_type := "morphism",
@@ -159,7 +159,7 @@ CartesianDualOnMorphismsWithGivenCartesianDuals := rec(
 CartesianEvaluationForCartesianDual := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "s", "r" ] ],
-  output_source_getter_string := "DirectProduct( CartesianDualOnObjects( cat, a ), a )",
+  output_source_getter_string := "DirectProductOp( cat, CartesianDualOnObjects( cat, a ), a )",
   output_range_getter_string := "TerminalObject( cat )",
   with_given_object_position := "both",
   return_type := "morphism",
@@ -195,8 +195,8 @@ MorphismToCartesianBidualWithGivenCartesianBidual := rec(
 DirectProductExponentialCompatibilityMorphism := rec(
   filter_list := [ "category", "list_of_objects" ],
   input_arguments_names := [ "cat", "list" ],
-  output_source_getter_string := "DirectProduct( ExponentialOnObjects( cat, list[1], list[2] ), ExponentialOnObjects( cat, list[3], list[4] ) )",
-  output_range_getter_string := "ExponentialOnObjects( cat, DirectProduct( list[1], list[3] ), DirectProduct( list[2], list[4] ) )",
+  output_source_getter_string := "DirectProductOp( cat, ExponentialOnObjects( cat, list[1], list[2] ), ExponentialOnObjects( cat, list[3], list[4] ) )",
+  output_range_getter_string := "ExponentialOnObjects( cat, DirectProductOp( cat, list[1], list[3] ), DirectProductOp( cat, list[2], list[4] ) )",
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "CoexponentialCoproductCompatibilityMorphism",
@@ -219,8 +219,8 @@ DirectProductExponentialCompatibilityMorphismWithGivenObjects := rec(
 DirectProductCartesianDualityCompatibilityMorphism := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "s", "r" ] ],
-  output_source_getter_string := "DirectProduct( CartesianDualOnObjects( cat, a ), CartesianDualOnObjects( cat, b ) )",
-  output_range_getter_string := "CartesianDualOnObjects( cat, DirectProduct( a, b ) )",
+  output_source_getter_string := "DirectProductOp( cat, CartesianDualOnObjects( cat, a ), CartesianDualOnObjects( cat, b ) )",
+  output_range_getter_string := "CartesianDualOnObjects( cat, DirectProductOp( cat, a, b ) )",
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "CocartesianDualityCoproductCompatibilityMorphism",
@@ -239,7 +239,7 @@ DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects := rec(
 MorphismFromDirectProductToExponential := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "b" ], [ "s", "r" ] ],
-  output_source_getter_string := "DirectProduct( CartesianDualOnObjects( cat, a ), b )",
+  output_source_getter_string := "DirectProductOp( cat, CartesianDualOnObjects( cat, a ), b )",
   output_range_getter_string := "ExponentialOnObjects( cat, a, b )",
   with_given_object_position := "both",
   return_type := "morphism",

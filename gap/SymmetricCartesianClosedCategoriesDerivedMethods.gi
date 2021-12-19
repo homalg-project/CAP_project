@@ -1,6 +1,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
-# FROM MonoidalCategories v2021.12-08
-# USING CategoryConstructor v2021.12-05
+# FROM MonoidalCategories v2021.12-09
+# USING CategoryConstructor v2021.12-06
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
@@ -314,7 +314,7 @@ AddDerivationToCAP( DirectProductExponentialCompatibilityMorphismWithGivenObject
     id_a2 := IdentityMorphism( cat, a2 );
     
     direct_product_on_objects_int_hom_a1_b1_int_hom_a2_b2 := 
-      DirectProduct( int_hom_a1_b1, int_hom_a2_b2 );
+      DirectProductOp( cat, int_hom_a1_b1, int_hom_a2_b2 );
 
     morphism := PreComposeList( cat, [
                   CartesianAssociatorRightToLeft( cat,
@@ -350,7 +350,7 @@ AddDerivationToCAP( DirectProductExponentialCompatibilityMorphismWithGivenObject
     
     return DirectProductToExponentialAdjunctionMap( cat,
              direct_product_on_objects_int_hom_a1_b1_int_hom_a2_b2,
-             DirectProduct( a1, a2 ),
+             DirectProductOp( cat, a1, a2 ),
              morphism );
     
 end : CategoryFilter := IsCartesianClosedCategory,
@@ -381,7 +381,7 @@ AddDerivationToCAP( DirectProductCartesianDualityCompatibilityMorphismWithGivenO
     
     unit := TerminalObject( cat );
     
-    direct_product_on_a_and_b := DirectProduct( a, b );
+    direct_product_on_a_and_b := DirectProductOp( cat, a, b );
     
     morphism := PreComposeList( cat, [
                   DirectProductOnMorphisms( cat,
@@ -559,7 +559,7 @@ AddDerivationToCAP( CartesianCoevaluationMorphismWithGivenRange,
 
     return DirectProductToExponentialAdjunctionMap( cat,
              a, b,
-             IdentityMorphism( cat, DirectProduct( a, b ) ) );
+             IdentityMorphism( cat, DirectProductOp( cat, a, b ) ) );
     
 end : CategoryFilter := IsCartesianClosedCategory,
       Description := "CartesianCoevaluationMorphismWithGivenRange using the direct product-exponential adjunction on the identity" );
@@ -622,7 +622,7 @@ AddDerivationToCAP( CartesianPreComposeMorphismWithGivenObjects,
                 ] );
     
     return DirectProductToExponentialAdjunctionMap( cat,
-             DirectProduct( hom_a_b, hom_b_c ),
+             DirectProductOp( cat, hom_a_b, hom_b_c ),
              a,
              morphism );
     
@@ -667,7 +667,7 @@ AddDerivationToCAP( CartesianPostComposeMorphismWithGivenObjects,
                 ] );
     
     return DirectProductToExponentialAdjunctionMap( cat,
-             DirectProduct( hom_b_c, hom_a_b ),
+             DirectProductOp( cat, hom_b_c, hom_a_b ),
              a,
              morphism );
     
@@ -755,7 +755,7 @@ AddDerivationToCAP( DirectProductExponentialCompatibilityMorphismWithGivenObject
     id_a2 := IdentityMorphism( cat, a2 );
     
     direct_product_on_objects_int_hom_a1_b1_int_hom_a2_b2 := 
-      DirectProduct( int_hom_a1_b1, int_hom_a2_b2 );
+      DirectProductOp( cat, int_hom_a1_b1, int_hom_a2_b2 );
     
     morphism := PreComposeList( cat, [
                   DirectProductOnMorphisms( cat,
@@ -777,7 +777,7 @@ AddDerivationToCAP( DirectProductExponentialCompatibilityMorphismWithGivenObject
     
     return DirectProductToExponentialAdjunctionMap( cat,
              direct_product_on_objects_int_hom_a1_b1_int_hom_a2_b2,
-             DirectProduct( a1, a2 ),
+             DirectProductOp( cat, a1, a2 ),
              morphism );
     
 end : CategoryFilter := IsCartesianClosedCategory and IsStrictCartesianCategory,
@@ -803,7 +803,7 @@ AddDerivationToCAP( DirectProductCartesianDualityCompatibilityMorphismWithGivenO
     
     unit := TerminalObject( cat );
     
-    direct_product_on_a_and_b := DirectProduct( a, b );
+    direct_product_on_a_and_b := DirectProductOp( cat, a, b );
     
     morphism := PreComposeList( cat, [
                   DirectProductOnMorphisms( cat,
@@ -866,7 +866,7 @@ AddDerivationToCAP( CartesianPreComposeMorphismWithGivenObjects,
                 ] );
     
     return DirectProductToExponentialAdjunctionMap( cat,
-             DirectProduct( hom_a_b, hom_b_c ),
+             DirectProductOp( cat, hom_a_b, hom_b_c ),
              a,
              morphism );
     
@@ -905,7 +905,7 @@ AddDerivationToCAP( CartesianPostComposeMorphismWithGivenObjects,
                 ] );
     
     return DirectProductToExponentialAdjunctionMap( cat,
-             DirectProduct( hom_b_c, hom_a_b ),
+             DirectProductOp( cat, hom_b_c, hom_a_b ),
              a,
              morphism );
     

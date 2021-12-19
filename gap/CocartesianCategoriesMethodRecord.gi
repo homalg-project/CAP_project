@@ -1,6 +1,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED
-# FROM MonoidalCategories v2021.12-08
-# USING CategoryConstructor v2021.12-05
+# FROM MonoidalCategories v2021.12-09
+# USING CategoryConstructor v2021.12-06
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
@@ -15,8 +15,8 @@ InstallValue( COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD, rec(
 CoproductOnMorphisms := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   io_type := [ [ "alpha", "beta" ], [ "s", "r" ] ],
-  output_source_getter_string := "Coproduct( Source( alpha ), Source( beta ) )",
-  output_range_getter_string := "Coproduct( Range( alpha ), Range( beta ) )",
+  output_source_getter_string := "Coproduct( cat, Source( alpha ), Source( beta ) )",
+  output_range_getter_string := "Coproduct( cat, Range( alpha ), Range( beta ) )",
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "CoproductOnMorphisms",
@@ -34,8 +34,8 @@ CoproductOnMorphismsWithGivenCoproducts := rec(
 CocartesianAssociatorRightToLeft := rec(
   filter_list := [ "category", "object", "object", "object" ],
   io_type := [ [ "a", "b", "c" ], [ "s", "r" ] ],
-  output_source_getter_string := "Coproduct( a, Coproduct( b, c ) )",
-  output_range_getter_string := "Coproduct( Coproduct( a, b ), c )",
+  output_source_getter_string := "Coproduct( cat, a, Coproduct( cat, b, c ) )",
+  output_range_getter_string := "Coproduct( cat, Coproduct( cat, a, b ), c )",
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "CocartesianAssociatorLeftToRight",
@@ -55,8 +55,8 @@ CocartesianAssociatorRightToLeftWithGivenCoproducts := rec(
 CocartesianAssociatorLeftToRight := rec(
   filter_list := [ "category", "object", "object", "object" ],
   io_type := [ [ "a", "b", "c" ], [ "s", "r" ] ],
-  output_source_getter_string := "Coproduct( Coproduct( a, b ), c )",
-  output_range_getter_string := "Coproduct( a, Coproduct( b, c ) )",
+  output_source_getter_string := "Coproduct( cat, Coproduct( cat, a, b ), c )",
+  output_range_getter_string := "Coproduct( cat, a, Coproduct( cat, b, c ) )",
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "CocartesianAssociatorRightToLeft",
@@ -75,7 +75,7 @@ CocartesianAssociatorLeftToRightWithGivenCoproducts := rec(
 CocartesianLeftUnitor := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "s", "a" ] ],
-  output_source_getter_string := "Coproduct( InitialObject( cat ), a )",
+  output_source_getter_string := "Coproduct( cat, InitialObject( cat ), a )",
   output_range_getter_string := "a",
   with_given_object_position := "Source",
   return_type := "morphism",
@@ -94,7 +94,7 @@ CocartesianLeftUnitorInverse := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "a", "r" ] ],
   output_source_getter_string := "a",
-  output_range_getter_string := "Coproduct( InitialObject( cat ), a )",
+  output_range_getter_string := "Coproduct( cat, InitialObject( cat ), a )",
   with_given_object_position := "Range",
   return_type := "morphism",
   dual_operation := "CocartesianLeftUnitor",
@@ -111,7 +111,7 @@ CocartesianLeftUnitorInverseWithGivenCoproduct := rec(
 CocartesianRightUnitor := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "s", "a" ] ],
-  output_source_getter_string := "Coproduct( a, InitialObject( cat ) )",
+  output_source_getter_string := "Coproduct( cat, a, InitialObject( cat ) )",
   output_range_getter_string := "a",
   with_given_object_position := "Source",
   return_type := "morphism",
@@ -130,7 +130,7 @@ CocartesianRightUnitorInverse := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "a", "r" ] ],
   output_source_getter_string := "a",
-  output_range_getter_string := "Coproduct( a, InitialObject( cat ) )",
+  output_range_getter_string := "Coproduct( cat, a, InitialObject( cat ) )",
   with_given_object_position := "Range",
   return_type := "morphism",
   dual_operation := "CocartesianRightUnitor",
