@@ -18,7 +18,7 @@ InstallOtherMethod( DirectProductOp,
 end );
 
 ##
-InstallOtherMethod( Coproduct,
+InstallMethod( CoproductOp,
         [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ],
         
   function( cat, object_1, object_2 )
