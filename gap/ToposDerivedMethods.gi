@@ -8,8 +8,14 @@
 AddDerivationToCAP( DirectProductOnMorphismsWithGivenDirectProducts,
   function( cat, s, alpha, beta, r )
     
-    return DirectProductFunctorialWithGivenDirectProducts( s, [ alpha, beta ], r );
-
+    return DirectProductFunctorialWithGivenDirectProducts(
+                   cat,
+                   s,
+                   [ Source( alpha ), Source( beta ) ],
+                   [ alpha, beta ],
+                   [ Range( alpha ), Range( beta ) ],
+                   r );
+    
 end : Description := "TensorProductOnMorphisms is DirectProductFunctorial",
       CategoryFilter := IsCartesianCategory );
 
@@ -17,82 +23,68 @@ end : Description := "TensorProductOnMorphisms is DirectProductFunctorial",
 AddDerivationToCAP( CoproductOnMorphismsWithGivenCoproducts,
   function( cat, s, alpha, beta, r )
     
-    return CoproductFunctorialWithGivenCoproducts( s, [ alpha, beta ], r );
-
+    return CoproductFunctorialWithGivenCoproducts(
+                   cat,
+                   s,
+                   [ Source( alpha ), Source( beta ) ],
+                   [ alpha, beta ],
+                   [ Range( alpha ), Range( beta ) ],
+                   r );
+    
 end : Description := "CoproductOnMorphisms is CoproductFunctorial",
       CategoryFilter := IsCocartesianCategory );
 
 ##
 AddDerivationToCAP( CartesianAssociatorRightToLeftWithGivenDirectProducts,
-                    [ [ PreCompose, 2 ],
-                      [ DirectProduct, 2 ],
-                      [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 4 ],
-                      [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 2 ] ],
-                 
   function( cat, s, a, b, c, r )
-    local D, bc, pi_b, pi_c, pi_a, pi_bc, ab, pi_ab;
+    local Db_c, bc, pi_b, pi_c, Da_bc, pi_a, pi_bc, Da_b, ab, pi_ab;
     
-    D := [ b, c ];
+    Db_c := [ b, c ];
     
-    bc := DirectProduct( D );
+    bc := DirectProductOp( cat, Db_c );
     
-    pi_b := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 1, bc );
-    pi_c := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 2, bc );
+    pi_b := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, Db_c, 1, bc );
+    pi_c := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, Db_c, 2, bc );
     
-    D := [ a, bc ];
+    Da_bc := [ a, bc ];
     
-    pi_a := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 1, s );
-    pi_bc := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 2, s );
+    pi_a := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, Da_bc, 1, s );
+    pi_bc := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, Da_bc, 2, s );
     
-    pi_b := PreCompose( pi_bc, pi_b );
-    pi_c := PreCompose( pi_bc, pi_c );
+    Da_b := [ a, b ];
     
-    D := [ a, b ];
+    ab := DirectProductOp( cat, Da_b );
     
-    ab := DirectProduct( D );
+    pi_ab := UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, Da_b, s, [ pi_a, PreCompose( cat, pi_bc, pi_b ) ], ab );
     
-    pi_ab := UniversalMorphismIntoDirectProductWithGivenDirectProduct( D, [ pi_a, pi_b ], ab );
-    
-    D := [ ab, c ];
-    
-    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( D, [ pi_ab, pi_c ], r );
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, [ ab, c ], s, [ pi_ab, PreCompose( cat, pi_bc, pi_c ) ], r );
     
 end : Description := "CartesianAssociatorRightToLeftOfDirectProductsWithGivenDirectProducts using the universal morphism into direct product");
 
 ##
 AddDerivationToCAP( CartesianAssociatorLeftToRightWithGivenDirectProducts,
-                    [ [ PreCompose, 2 ],
-                      [ DirectProduct, 2 ],
-                      [ ProjectionInFactorOfDirectProductWithGivenDirectProduct, 4 ],
-                      [ UniversalMorphismIntoDirectProductWithGivenDirectProduct, 2 ] ],
-                 
   function( cat, s, a, b, c, r )
-    local D, ab, pi_a, pi_b, pi_ab, pi_c, bc, pi_bc;
+    local Da_b, ab, pi_a, pi_b, Dab_c, pi_ab, pi_c, Db_c, bc, pi_bc;
     
-    D := [ a, b ];
+    Da_b := [ a, b ];
     
-    ab := DirectProduct( D );
+    ab := DirectProductOp( cat, Da_b );
     
-    pi_a := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 1, ab );
-    pi_b := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 2, ab );
+    pi_a := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, Da_b, 1, ab );
+    pi_b := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, Da_b, 2, ab );
     
-    D := [ ab, c ];
+    Dab_c := [ ab, c ];
     
-    pi_ab := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 1, s );
-    pi_c := ProjectionInFactorOfDirectProductWithGivenDirectProduct( D, 2, s );
+    pi_ab := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, Dab_c, 1, s );
+    pi_c := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, Dab_c, 2, s );
     
-    pi_a := PreCompose( pi_ab, pi_a );
-    pi_b := PreCompose( pi_ab, pi_b );
+    Db_c := [ b, c ];
     
-    D := [ b, c ];
+    bc := DirectProductOp( cat, Db_c );
     
-    bc := DirectProduct( D );
+    pi_bc := UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, Db_c, s, [ PreCompose( cat, pi_ab, pi_b ), pi_c ], bc );
     
-    pi_bc := UniversalMorphismIntoDirectProductWithGivenDirectProduct( D, [ pi_b, pi_c ], bc );
-    
-    D := [ a, bc ];
-    
-    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( D, [ pi_a, pi_bc ], r );
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, [ a, bc ], s, [ PreCompose( cat, pi_ab, pi_a ), pi_bc ], r );
     
 end : Description := "CartesianAssociatorLeftToRightWithGivenDirectProducts using the universal morphism into direct product");
 
@@ -101,16 +93,15 @@ AddDerivationToCAP( SubobjectOfClassifyingMorphism,
                     [ [ TruthMorphismOfTrueWithGivenObjects , 1 ],
                       [ ProjectionInFactorOfFiberProduct , 1 ] ],
   function( cat, mor )
-      local category, truth;
-      
-      category := CapCategory(mor);
-      
-      truth := TruthMorphismOfTrueWithGivenObjects(
-                       TerminalObject( category ),
-                       SubobjectClassifier( category ) );
-      
-      return ProjectionInFactorOfFiberProduct( [ mor , truth ], 1 );
-      
+    local truth;
+    
+    truth := TruthMorphismOfTrueWithGivenObjects(
+                     cat,
+                     TerminalObject( cat ),
+                     SubobjectClassifier( cat ) );
+    
+    return ProjectionInFactorOfFiberProduct( cat, [ mor, truth ], 1 );
+    
 end : Description := "SubobjectOfClassifyingMorphism using the fiber product along the true morphism" );
 
 ##
@@ -120,7 +111,7 @@ AddDerivationToCAP( CartesianSquareOfSubobjectClassifier,
     
     Omega := SubobjectClassifier( cat );
     
-    return DirectProduct( [ Omega, Omega ] );
+    return DirectProductOp( cat, [ Omega, Omega ] );
     
 end );
 
@@ -129,6 +120,7 @@ AddDerivationToCAP( TruthMorphismOfTrueWithGivenObjects,
   function( cat, T, Omega )
     
     return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
+                   cat,
                    IdentityMorphism( cat, T ),
                    Omega );
     
@@ -139,6 +131,7 @@ AddDerivationToCAP( TruthMorphismOfFalseWithGivenObjects,
   function( cat, T, Omega )
     
     return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
+                   cat,
                    UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, InitialObject( cat ), T ),
                    Omega );
     
@@ -152,6 +145,7 @@ AddDerivationToCAP( TruthMorphismOfNotWithGivenObjects,
     T := TerminalObject( cat );
     
     return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
+                   cat,
                    PreCompose(
                            cat,
                            UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, Omega, T ),
@@ -170,6 +164,7 @@ AddDerivationToCAP( TruthMorphismOfAndWithGivenObjects,
     t := TruthMorphismOfTrueWithGivenObjects( cat, T, Omega );
     
     return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
+                   cat,
                    UniversalMorphismIntoDirectProductWithGivenDirectProduct(
                            cat,
                            [ Omega, Omega ],
@@ -189,6 +184,7 @@ AddDerivationToCAP( TruthMorphismOfOrWithGivenObjects,
     
     ## Ω → 1 → Ω
     t := PreCompose(
+                 cat,
                  UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, Omega, T ),
                  TruthMorphismOfTrueWithGivenObjects( cat, T, Omega ) );
     
@@ -222,6 +218,7 @@ AddDerivationToCAP( TruthMorphismOfImpliesWithGivenObjects,
   function( cat, Omega2, Omega )
     
     return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
+                   cat,
                    EmbeddingOfEqualizer(
                            cat,
                            [ TruthMorphismOfAndWithGivenObjects( cat, Omega2, Omega ),
@@ -273,6 +270,7 @@ AddDerivationToCAP( EmbeddingOfIntersectionSubobject,
     Omega := SubobjectClassifier( cat );
     
     return SubobjectOfClassifyingMorphism( ## -ι
+                   cat,
                    PreCompose(
                            UniversalMorphismIntoDirectProduct( ## Range( ι1 ) = Range( ι2 ) → Ω × Ω
                                    cat,
@@ -309,6 +307,7 @@ AddDerivationToCAP( EmbeddingOfUnionSubobject,
     Omega := SubobjectClassifier( cat );
     
     return SubobjectOfClassifyingMorphism( ## -ι
+                   cat,
                    PreCompose(
                            UniversalMorphismIntoDirectProduct( ## Range( ι1 ) = Range( ι2 ) → Ω × Ω
                                    cat,
@@ -326,6 +325,7 @@ AddDerivationToCAP( EmbeddingOfUnionSubobject,
   function( cat, iota1, iota2 )
     
     return ImageEmbedding(
+                   cat,
                    UniversalMorphismFromCoproduct(
                            cat,
                            [ Source( iota1 ), Source( iota2 ) ],
@@ -350,7 +350,9 @@ AddDerivationToCAP( EmbeddingOfRelativePseudoComplementSuboject,
     Omega := SubobjectClassifier( cat );
     
     return SubobjectOfClassifyingMorphism( ## -ι
+                   cat,
                    PreCompose(
+                           cat,
                            UniversalMorphismIntoDirectProduct( ## Range( ι1 ) = Range( ι2 ) → Ω × Ω
                                    cat,
                                    [ Omega, Omega ],
@@ -382,14 +384,14 @@ AddFinalDerivation( CanonicalIdentificationFromImageObjectToCoimage,
                     
   function( cat, mor )
     
-    return IdentityMorphism( ImageObject( mor ) );
+    return IdentityMorphism( cat, ImageObject( cat, mor ) );
     
   end,
   [
     CanonicalIdentificationFromCoimageToImageObject,
     function( cat, mor )
     
-      return IdentityMorphism( ImageObject( mor ) );
+      return IdentityMorphism( cat, ImageObject( cat, mor ) );
     
     end
   ] : CategoryFilter := HasIsElementaryTopos and IsElementaryTopos );
