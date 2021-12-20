@@ -134,7 +134,7 @@
 <h5>8.2-1 IsDerivedMethod</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDerivedMethod</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>A derivation object describes a derived method. It contains information about which operation the derived method implements, and which other operations it relies on.</p>
 
@@ -240,7 +240,7 @@
 <h5>8.3-1 IsDerivedMethodGraph</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsDerivedMethodGraph</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>A derivation graph consists of a set of operations and a set of derivations specifying how some operations can be implemented in terms of other operations.</p>
 
@@ -345,7 +345,7 @@
 <h5>8.4-1 IsOperationWeightList</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsOperationWeightList</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>An operation weight list manages the use of derivations in a single category <span class="Math">C</span>. For every operation, it keeps a weight value which indicates how costly it is to perform that operation in the category <span class="Math">C</span>. Whenever a new operation is implemented in <span class="Math">C</span>, the operation weight list should be notified about this and given a weight to assign to this operation. It will then automatically install all possible derived methods for <span class="Math">C</span> in such a way that every operation has the smallest possible weight (the weight of a derived method is computed by using the weights of the operations it uses; see <code class="code">DerivationResultWeight</code>).</p>
 
@@ -449,7 +449,7 @@
 <h5>8.5-1 IsStringMinHeap</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsStringMinHeap</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;filter&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>A string min heap is a min heap where every node contains a string label and an integer key.</p>
 

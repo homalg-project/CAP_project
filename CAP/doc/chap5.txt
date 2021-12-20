@@ -27,21 +27,21 @@
   [1X5.2-1 IsCapCategoryAsCatObject[101X
   
   [33X[1;0Y[29X[2XIsCapCategoryAsCatObject[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of CAP categories seen as object in Cat.[133X
   
   [1X5.2-2 IsCapFunctor[101X
   
   [33X[1;0Y[29X[2XIsCapFunctor[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of functors.[133X
   
   [1X5.2-3 IsCapNaturalTransformation[101X
   
   [33X[1;0Y[29X[2XIsCapNaturalTransformation[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of natural transformations.[133X
   

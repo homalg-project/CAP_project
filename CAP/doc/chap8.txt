@@ -24,7 +24,7 @@
   [1X8.2-1 IsDerivedMethod[101X
   
   [33X[1;0Y[29X[2XIsDerivedMethod[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YA  derivation  object  describes  a  derived method. It contains information
   about  which  operation  the  derived  method  implements,  and  which other
@@ -151,7 +151,7 @@
   [1X8.3-1 IsDerivedMethodGraph[101X
   
   [33X[1;0Y[29X[2XIsDerivedMethodGraph[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YA  derivation graph consists of a set of operations and a set of derivations
   specifying  how  some  operations  can  be  implemented  in  terms  of other
@@ -249,7 +249,7 @@
   [1X8.4-1 IsOperationWeightList[101X
   
   [33X[1;0Y[29X[2XIsOperationWeightList[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YAn operation weight list manages the use of derivations in a single category
   [23XC[123X.  For  every operation, it keeps a weight value which indicates how costly
@@ -366,7 +366,7 @@
   [1X8.5-1 IsStringMinHeap[101X
   
   [33X[1;0Y[29X[2XIsStringMinHeap[102X( [3Xarg[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YA string min heap is a min heap where every node contains a string label and
   an integer key.[133X
