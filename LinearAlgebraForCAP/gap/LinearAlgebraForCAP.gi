@@ -313,7 +313,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         return VectorSpaceMorphism( cat, Source( morphism_1 ),
                                     UnderlyingMatrix( morphism_1 ) + UnderlyingMatrix( morphism_2 ),
-                                    Range( morphism_2 ) );
+                                    Range( morphism_1 ) );
         
     end );
     
