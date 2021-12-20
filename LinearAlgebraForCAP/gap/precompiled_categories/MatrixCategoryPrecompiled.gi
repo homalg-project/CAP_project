@@ -2657,23 +2657,11 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
-    deduped_4_1 := Dimension( Range( arg2_1 ) );
-    deduped_3_1 := Dimension( Source( arg2_1 ) );
-    deduped_2_1 := deduped_4_1 = deduped_4_1;
-    deduped_1_1 := deduped_3_1 = deduped_3_1;
-    if deduped_1_1 = fail or deduped_2_1 = fail then
-        return fail;
-    elif deduped_1_1 = false or deduped_2_1 = false then
-        return false;
-    else
-        return UnderlyingMatrix( arg2_1 ) = HomalgZeroMatrix( deduped_3_1, deduped_4_1, UnderlyingRing( cat_1 ) );
-    fi;
-    return;
+    return UnderlyingMatrix( arg2_1 ) = HomalgZeroMatrix( Dimension( Source( arg2_1 ) ), Dimension( Range( arg2_1 ) ), UnderlyingRing( cat_1 ) );
 end
 ########
         
-    , 403 : IsPrecompiledDerivation := true );
+    , 202 : IsPrecompiledDerivation := true );
     
     ##
     AddIsInitial( cat,
