@@ -940,8 +940,8 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
   
   function( category, name )
     local string, weight_list, current_weight, current_derivation,
-          possible_derivations, category_filter, used_ops_with_multiples, i,
-          currently_installed_funcs;
+          currently_installed_funcs, to_delete, used_ops_with_multiples,
+          possible_derivations, category_filter, i;
     
     if IsFunction( name ) then
         string := NameFunction( name );
@@ -968,47 +968,75 @@ InstallGlobalFunction( DerivationsOfMethodByCategory,
         Print( Name( category ), " can already compute ", string, " with weight " , String( current_weight ), ".\n" );
         
         if current_derivation = fail then
+            
             if IsBound( category!.primitive_operations.( string ) ) and category!.primitive_operations.( string ) = true then
-                Print( "It was given as a primitive operation.\n\n" );
+                
+                Print( "It was given as a primitive operation.\n" );
+                
             else
-                Print( "It was installed as a final or precompiled derivation.\n\n" );
+                
+                Print( "It was installed as a final or precompiled derivation.\n" );
+                
             fi;
+            
+            currently_installed_funcs := category!.added_functions.( string );
+            
+            # delete overwritten funcs
+            to_delete := [ ];
+            
+            for i in [ 1 .. Length( currently_installed_funcs ) ] do
+                
+                if ForAny( [ (i+1) .. Length( currently_installed_funcs ) ], j -> currently_installed_funcs[i][2] = currently_installed_funcs[j][2] ) then
+                    
+                    Add( to_delete, i );
+                    
+                fi;
+                
+            od;
+            
+            currently_installed_funcs := currently_installed_funcs{Difference( [ 1 .. Length( currently_installed_funcs ) ], to_delete )};
+            
         else
+            
             Print( "It was derived by ", DerivationName( current_derivation ), " using \n" );
+            
             used_ops_with_multiples := UsedOperationsWithMultiples( current_derivation );
+            
             for i in used_ops_with_multiples do
                 
                 Print( "* ", i[ 1 ], " (", i[ 2 ], "x)" );
                 Print( " installed with weight ", String( CurrentOperationWeight( weight_list, i[ 1 ] ) ) );
                 Print( "\n" );
-              
+                
             od;
             
             currently_installed_funcs := DerivationFunctionsWithExtraFilters( current_derivation );
             
-            Print( "\nThe following function" );
-            
-            if Length( currently_installed_funcs ) > 1 then
-                Print( "s were" );
-            else
-                Print( " was" );
-            fi;
-            
-            Print( " installed for this operation:\n\n" );
-            
-            for i in currently_installed_funcs do
-                
-                Print( "Filters: " );
-                Print( String( i[ 2 ] ) );
-                Print( "\n\n" );
-                Display( i[ 1 ] );
-                Print( "\n" );
-                
-            od;
-            
-            Print( "#######\n\n" );
-            
         fi;
+        
+        Print( "\nThe following function" );
+        
+        if Length( currently_installed_funcs ) > 1 then
+            Print( "s were" );
+        else
+            Print( " was" );
+        fi;
+        
+        Print( " installed for this operation:\n\n" );
+        
+        for i in currently_installed_funcs do
+            
+            Print( "Filters: " );
+            Print( String( i[ 2 ] ) );
+            Print( "\n\n" );
+            Display( i[ 1 ] );
+            Print( "\n" );
+            Print( "Source: ", FilenameFunc( i[ 1 ] ), ":", StartlineFunc( i[ 1 ] ), "\n" );
+            Print( "\n" );
+            
+        od;
+        
+        Print( "#######\n\n" );
         
     else
         

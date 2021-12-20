@@ -78,17 +78,27 @@ CapJitAddLogicFunction( function ( tree, jit_args )
             
             args := tree.args;
             
-            if ForAll( args, a -> a.type = "EXPR_LIST" ) then
+            # Concatenation with a single argument has different semantics
+            if args.length = 1 and args.1.type = "EXPR_LIST" and ForAll( args.1.list, a -> a.type = "EXPR_LIST" ) then
                 
                 return rec(
                     type := "EXPR_LIST",
-                    list := ConcatenationForSyntaxTreeLists( List( args, a -> a.list ) ),
+                    list := ConcatenationForSyntaxTreeLists( AsListMut( List( args.1.list, a -> a.list ) ) ),
                 );
                 
             fi;
-
-        fi;
             
+            if args.length > 1 and ForAll( args, a -> a.type = "EXPR_LIST" ) then
+                
+                return rec(
+                    type := "EXPR_LIST",
+                    list := ConcatenationForSyntaxTreeLists( AsListMut( List( args, a -> a.list ) ) ),
+                );
+                
+            fi;
+            
+        fi;
+        
         return tree;
         
     end;
@@ -291,7 +301,7 @@ CapJitAddLogicFunction( function ( tree, jit_args )
                     condition := branch.condition,
                     value := rec(
                         type := "EXPR_FUNCCALL",
-                        funcref := tree.funcref,
+                        funcref := CapJitCopyWithNewFunctionIDs( tree.funcref ),
                         args := AsSyntaxTreeList( [
                             branch.value
                         ] ),

@@ -91,7 +91,9 @@ coded_func2();
 # we have to work hard to not write semicolons so AutoDoc
 # does not begin a new statement
 func3 := EvalString( ReplacedString( """function( x )
-  local inner_func@
+  local my_func, inner_func@
+    
+    my_func := MY_ID_FUNC( x -> x )@
     
     inner_func := function( )
       local y@
@@ -103,17 +105,21 @@ func3 := EvalString( ReplacedString( """function( x )
         fi@
     end@
     
-    return MY_ID_FUNC( inner_func( ) )@
+    return my_func( inner_func( ) )@
     
 end""", "@", ";" ) );;
 
-compiled_func3 := CapJitCompiledFunction( func3, [ true ] );;
+compiled_func3 := CapJitCompiledFunction( func3, [ ] );;
 Display( compiled_func3 );
 #! function ( x_1 )
+#!     local deduped_1_1;
+#!     deduped_1_1 := MY_ID_FUNC( function ( x_2 )
+#!             return x_2;
+#!         end );
 #!     if x_1 then
-#!         return MY_ID_FUNC( 1 );
+#!         return deduped_1_1( 1 );
 #!     else
-#!         return MY_ID_FUNC( 2 );
+#!         return deduped_1_1( 2 );
 #!     fi;
 #!     return;
 #! end
