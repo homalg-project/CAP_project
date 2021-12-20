@@ -291,7 +291,7 @@ CapJitAddLogicFunction( function ( tree, jit_args )
                     condition := branch.condition,
                     value := rec(
                         type := "EXPR_FUNCCALL",
-                        funcref := tree.funcref,
+                        funcref := CapJitCopyWithNewFunctionIDs( tree.funcref ),
                         args := AsSyntaxTreeList( [
                             branch.value
                         ] ),
