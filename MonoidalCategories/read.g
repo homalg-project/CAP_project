@@ -68,3 +68,7 @@ ReadPackage( "MonoidalCategories", "gap/SymmetricCoclosedMonoidalCategoriesDeriv
 
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricClosedMonoidalCategoriesDerivedMethods.gi" );
 ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategoriesDerivedMethods.gi" );
+
+## Homomorphism Structure from Closed Monoidal Structure
+
+ReadPackage( "MonoidalCategories", "gap/HomomorphismStructureDerivedMethods.gi" );
