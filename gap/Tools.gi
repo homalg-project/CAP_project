@@ -239,6 +239,7 @@ WriteFileForClosedMonoidalStructure(
              ClosedMonoidalCategoriesDerivedMethods_gi := "CartesianClosedCategoriesDerivedMethods.gi",
              SymmetricClosedMonoidalCategoriesDerivedMethods_gi := "SymmetricCartesianClosedCategoriesDerivedMethods.gi",
              RigidSymmetricClosedMonoidalCategoriesDerivedMethods_gi := fail,
+             HomomorphismStructureDerivedMethods_gi := "HomomorphismStructureDerivedMethods.gi",
              )
         );
 
