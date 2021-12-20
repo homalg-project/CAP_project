@@ -48,7 +48,7 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
             )
         );
         
-        homalg_matrix := HomalgMatrix( matrix_entries, RankOfObject( source ), RankOfObject( range ), UnderlyingRing( cat ) );
+        homalg_matrix := HomalgMatrixListList( matrix_entries, RankOfObject( source ), RankOfObject( range ), UnderlyingRing( cat ) );
         
         return CategoryOfRowsMorphism( cat, source, homalg_matrix, range );
         
@@ -154,6 +154,27 @@ InstallMethod( CategoryOfRowsAsAdditiveClosureOfRingAsCategory,
         SetIsAbelianCategory( wrapper, true );
         
     fi;
+
+    # some manually precompiled functions
+    
+    ##
+    AddZeroMorphism( wrapper,
+      function( cat, source, range )
+        
+        return CategoryOfRowsMorphism( cat, source, HomalgMatrixListList( NullMatImmutable( RankOfObject( source ), RankOfObject( range ) ), RankOfObject( source ), RankOfObject( range ), homalg_ring ), range );
+        
+    end );
+    
+    ##
+    AddDirectSum( wrapper,
+      function( cat, object_list )
+        local rank;
+        
+        rank := Sum( List( object_list, object -> RankOfObject( object ) ) );
+        
+        return CategoryOfRowsObject( cat, rank );
+        
+    end );
     
     Finalize( wrapper );
     

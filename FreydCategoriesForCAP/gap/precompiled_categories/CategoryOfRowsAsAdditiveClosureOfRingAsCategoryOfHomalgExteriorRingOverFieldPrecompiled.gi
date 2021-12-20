@@ -104,7 +104,7 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
                 end );
         end );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, arg2_1, arg3_1, UnderlyingMatrix, HomalgMatrix( List( deduped_8_1, function ( logic_new_func_x_2 )
+           ), cat_1, arg2_1, arg3_1, UnderlyingMatrix, HomalgMatrixListList( List( deduped_8_1, function ( logic_new_func_x_2 )
                 local hoisted_1_2;
                 hoisted_1_2 := hoisted_5_1[logic_new_func_x_2];
                 return List( hoisted_4_1, function ( logic_new_func_x_3 )
