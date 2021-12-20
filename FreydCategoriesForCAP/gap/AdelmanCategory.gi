@@ -811,6 +811,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         if homomorphism_structure_derivation_case <> "none" then
             
             ##
+            # this is expensive, so we assume a weight of 400 which will be used below
             InstallMethodWithCacheFromObject( HomomorphismStructureOnObjectsForAdelmanCategoryGeneralizedEmbedding, 
                                               [ IsAdelmanCategoryObject and ObjectFilter( category ), IsAdelmanCategoryObject and ObjectFilter( category ) ],
                 function( object_A, object_B )
@@ -872,7 +873,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
                 
                 return UnderlyingHonestObject( Source( HomomorphismStructureOnObjectsForAdelmanCategoryGeneralizedEmbedding( object_A, object_B ) ) );
                 
-            end );
+            end, 100 + 400 );
             
             ##
             AddHomomorphismStructureOnMorphisms( category,
@@ -894,7 +895,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
                 
                 return HonestRepresentative( composition );
                 
-            end );
+            end, 100 + 2 * 400 );
             
              ##
             AddDistinguishedObjectOfHomomorphismStructure( category,
@@ -929,7 +930,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
                 
                 return PreCompose( LiftAlongMonomorphism( arrow, interpret ), reversed );
                 
-            end );
+            end, 100 + 400 );
             
             ##
             AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
@@ -952,7 +953,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
                 
                 return AdelmanCategoryMorphism( object_A, interpret, object_B );
                 
-            end );
+            end, 100 + 400 );
             
         fi;
         
