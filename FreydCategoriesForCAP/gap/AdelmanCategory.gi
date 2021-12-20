@@ -249,12 +249,12 @@ InstallOtherMethodForCompilerForCAP( MereExistenceOfWitnessPairForBeingCongruent
     datum := MorphismDatum( morphism );
     
     left_coeffs :=
-        [ [ IdentityMorphism( Source( datum ) ), CorelationMorphism( Source( morphism ) ) ] ];
+        [ [ IdentityMorphism( UnderlyingCategory( cat ), Source( datum ) ), CorelationMorphism( Source( morphism ) ) ] ];
     
     right_coeffs :=
-        [ [ RelationMorphism( Range( morphism ) ), IdentityMorphism( Range( datum ) ) ] ];
+        [ [ RelationMorphism( Range( morphism ) ), IdentityMorphism( UnderlyingCategory( cat ), Range( datum ) ) ] ];
     
-    return MereExistenceOfSolutionOfLinearSystemInAbCategory( left_coeffs, right_coeffs, [ datum ] );
+    return MereExistenceOfSolutionOfLinearSystemInAbCategory( UnderlyingCategory( cat ), left_coeffs, right_coeffs, [ datum ] );
     
 end );
 
@@ -390,7 +390,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
       function( cat, morphism_1, morphism_2 )
         local composition;
         
-        composition := PreCompose( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
+        composition := PreCompose( UnderlyingCategory( cat ), MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
         
         return AdelmanCategoryMorphism( cat, Source( morphism_1 ), composition, Range( morphism_2 ) );
         
@@ -403,7 +403,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         
         subtraction := AdelmanCategoryMorphism( cat,
                             Source( morphism_1 ),
-                            SubtractionForMorphisms( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) ),
+                            SubtractionForMorphisms( UnderlyingCategory( cat ), MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) ),
                             Range( morphism_1 )
                         );
         
@@ -585,13 +585,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         
         cokernel_object :=
             AdelmanCategoryObject( cat,
-                MorphismBetweenDirectSums( [ [ b, ZeroMorphism( Bp, App ) ], [ alpha, ap ] ] ),
-                DirectSumFunctorial( [ bp, IdentityMorphism( App ) ] )
+                MorphismBetweenDirectSums( UnderlyingCategory( cat ), [ Bp, Source( ap ) ], [ [ b, ZeroMorphism( UnderlyingCategory( cat ), Bp, App ) ], [ alpha, ap ] ], [ B, App ] ),
+                DirectSumFunctorial( UnderlyingCategory( cat ), [ bp, IdentityMorphism( UnderlyingCategory( cat ), App ) ] )
             );
         
         return AdelmanCategoryMorphism( cat,
             Range( morphism ),
-            InjectionOfCofactorOfDirectSum( [ B, App ], 1 ),
+            InjectionOfCofactorOfDirectSum( UnderlyingCategory( cat ), [ B, App ], 1 ),
             cokernel_object
         );
         
