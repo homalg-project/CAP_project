@@ -10,14 +10,14 @@
 ##
 ####################################
 
-DeclareOperation( "DirectProductOp",
+DeclareOperation( "BinaryDirectProduct",
         [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );
 
 ## For internal use only:
 ## we need an operation name different from `Coproduct`, since CompilerForCAP
 ## seems to be unable to compile the CAP operation `Coproduct`
 ## if declared in a way different from that in the method record
-DeclareOperation( "CoproductOp",
+DeclareOperation( "BinaryCoproduct",
         [ IsCapCategory, IsCapCategoryObject, IsCapCategoryObject ] );
 
 ####################################

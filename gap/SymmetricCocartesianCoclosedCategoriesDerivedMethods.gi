@@ -322,7 +322,7 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
     id_b2 := IdentityMorphism( cat, b2 );
     
     coproduct_on_objects_int_cohom_a1_b1_int_cohom_a2_b2 :=
-      CoproductOp( cat, int_cohom_a1_b1, int_cohom_a2_b2 );
+      BinaryCoproduct( cat, int_cohom_a1_b1, int_cohom_a2_b2 );
     
     morphism := PreComposeList( cat, [
                   CoproductOnMorphisms( cat,
@@ -358,7 +358,7 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
 
     return CoproductToCoexponentialAdjunctionMap( cat,
              coproduct_on_objects_int_cohom_a1_b1_int_cohom_a2_b2,
-             CoproductOp( cat, b1, b2 ),
+             BinaryCoproduct( cat, b1, b2 ),
              morphism );
 
 end : CategoryFilter := IsCocartesianCoclosedCategory,
@@ -388,7 +388,7 @@ AddDerivationToCAP( CocartesianDualityCoproductCompatibilityMorphismWithGivenObj
     
     unit := InitialObject( cat );
     
-    coproduct_on_a_and_b := CoproductOp( cat, a, b );
+    coproduct_on_a_and_b := BinaryCoproduct( cat, a, b );
     
     morphism := PreComposeList( cat, [
                   IsomorphismFromCocartesianDualToCoexponential( cat, coproduct_on_a_and_b ),
@@ -567,7 +567,7 @@ AddDerivationToCAP( CocartesianCoevaluationMorphismWithGivenSource,
     
     return CoproductToCoexponentialAdjunctionMap( cat,
              a, b,
-             IdentityMorphism( cat, CoproductOp( cat, a, b ) )
+             IdentityMorphism( cat, BinaryCoproduct( cat, a, b ) )
            );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory,
@@ -631,7 +631,7 @@ AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
                 ] );
     
     return CoproductToCoexponentialAdjunctionMap( cat,
-             CoproductOp( cat, cohom_b_c, cohom_a_b ),
+             BinaryCoproduct( cat, cohom_b_c, cohom_a_b ),
              c,
              morphism );
     
@@ -677,7 +677,7 @@ AddDerivationToCAP( CocartesianPostCoComposeMorphismWithGivenObjects,
                 ] );
     
     return CoproductToCoexponentialAdjunctionMap( cat,
-             CoproductOp( cat, cohom_a_b, cohom_b_c ),
+             BinaryCoproduct( cat, cohom_a_b, cohom_b_c ),
              c,
              morphism );
     
@@ -765,7 +765,7 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
     id_b2 := IdentityMorphism( cat, b2 );
     
     coproduct_on_objects_int_cohom_a1_b1_int_cohom_a2_b2 :=
-      CoproductOp( cat, int_cohom_a1_b1, int_cohom_a2_b2 );
+      BinaryCoproduct( cat, int_cohom_a1_b1, int_cohom_a2_b2 );
     
     morphism := PreComposeList( cat, [
                   CoproductOnMorphisms( cat,
@@ -787,7 +787,7 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
 
     return CoproductToCoexponentialAdjunctionMap( cat,
              coproduct_on_objects_int_cohom_a1_b1_int_cohom_a2_b2,
-             CoproductOp( cat, b1, b2 ),
+             BinaryCoproduct( cat, b1, b2 ),
              morphism );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory and IsStrictCocartesianCategory,
@@ -813,7 +813,7 @@ AddDerivationToCAP( CocartesianDualityCoproductCompatibilityMorphismWithGivenObj
     
     unit := InitialObject( cat );
     
-    coproduct_on_a_and_b := CoproductOp( cat, a, b );
+    coproduct_on_a_and_b := BinaryCoproduct( cat, a, b );
     
     morphism := PreComposeList( cat, [
                   IsomorphismFromCocartesianDualToCoexponential( cat, coproduct_on_a_and_b ),
@@ -876,7 +876,7 @@ AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
                 ] );
     
     return CoproductToCoexponentialAdjunctionMap( cat,
-             CoproductOp( cat, cohom_b_c, cohom_a_b ),
+             BinaryCoproduct( cat, cohom_b_c, cohom_a_b ),
              c,
              morphism );
     
@@ -915,7 +915,7 @@ AddDerivationToCAP( CocartesianPostCoComposeMorphismWithGivenObjects,
                 ] );
     
     return CoproductToCoexponentialAdjunctionMap( cat,
-             CoproductOp( cat, cohom_a_b, cohom_b_c ),
+             BinaryCoproduct( cat, cohom_a_b, cohom_b_c ),
              c,
              morphism );
     

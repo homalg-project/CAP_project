@@ -12,7 +12,7 @@ AddDerivationToCAP( CocartesianBraiding,
   function( cat, object_1, object_2 )
     local source_and_range;
     
-    source_and_range := CoproductOp( cat, object_1, object_2 );
+    source_and_range := BinaryCoproduct( cat, object_1, object_2 );
     
     return CocartesianBraidingWithGivenCoproducts( cat, source_and_range, object_1, object_2, source_and_range );
     
@@ -25,7 +25,7 @@ AddDerivationToCAP( CocartesianBraidingInverse,
   function( cat, object_1, object_2 )
     local source_and_range;
     
-    source_and_range := CoproductOp( cat, object_1, object_2 );
+    source_and_range := BinaryCoproduct( cat, object_1, object_2 );
     
     return CocartesianBraidingInverseWithGivenCoproducts( cat, source_and_range, object_1, object_2, source_and_range );
     
