@@ -27,14 +27,14 @@
   [1X17.2-1 IsFpGradedLeftOrRightModulesObject[101X
   
   [33X[1;0Y[29X[2XIsFpGradedLeftOrRightModulesObject[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of graded left and right module presentations.[133X
   
   [1X17.2-2 IsFpGradedLeftModulesObject[101X
   
   [33X[1;0Y[29X[2XIsFpGradedLeftModulesObject[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  GAP  category of objects in the presentation category over the category
   of projective graded left modules.[133X
@@ -42,7 +42,7 @@
   [1X17.2-3 IsFpGradedRightModulesObject[101X
   
   [33X[1;0Y[29X[2XIsFpGradedRightModulesObject[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  GAP  category of objects in the presentation category over the category
   of projective graded right modules.[133X
@@ -53,14 +53,14 @@
   [1X17.3-1 IsFpGradedLeftOrRightModulesMorphism[101X
   
   [33X[1;0Y[29X[2XIsFpGradedLeftOrRightModulesMorphism[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of left or right module presentation morphisms[133X
   
   [1X17.3-2 IsFpGradedLeftModulesMorphism[101X
   
   [33X[1;0Y[29X[2XIsFpGradedLeftModulesMorphism[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of morphisms in the presentation category over the category
   of projective graded left modules.[133X
@@ -68,7 +68,7 @@
   [1X17.3-3 IsFpGradedRightModulesMorphism[101X
   
   [33X[1;0Y[29X[2XIsFpGradedRightModulesMorphism[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of morphisms in the presentation category over the category
   of projective graded right modules.[133X

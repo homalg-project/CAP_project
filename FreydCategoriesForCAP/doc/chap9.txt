@@ -140,28 +140,28 @@
   [1X9.3-1 IsGradedRowOrColumn[101X
   
   [33X[1;0Y[29X[2XIsGradedRowOrColumn[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of graded rows and columns over a graded ring [23XR[123X.[133X
   
   [1X9.3-2 IsGradedRow[101X
   
   [33X[1;0Y[29X[2XIsGradedRow[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of graded rows over a graded ring [23XR[123X.[133X
   
   [1X9.3-3 IsGradedColumn[101X
   
   [33X[1;0Y[29X[2XIsGradedColumn[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of graded columns over a graded ring [23XR[123X.[133X
   
   [1X9.3-4 IsGradedRowOrColumnMorphism[101X
   
   [33X[1;0Y[29X[2XIsGradedRowOrColumnMorphism[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  GAP category of morphisms of graded rows and columns over a graded ring
   [23XR[123X.[133X
@@ -169,14 +169,14 @@
   [1X9.3-5 IsGradedRowMorphism[101X
   
   [33X[1;0Y[29X[2XIsGradedRowMorphism[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of morphisms of graded rows over a graded ring [23XR[123X.[133X
   
   [1X9.3-6 IsGradedColumnMorphism[101X
   
   [33X[1;0Y[29X[2XIsGradedColumnMorphism[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of morphisms of graded columns over a graded ring [23XR[123X.[133X
   
