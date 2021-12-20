@@ -12,7 +12,7 @@ AddDerivationToCAP( CartesianBraiding,
   function( cat, object_1, object_2 )
     local source_and_range;
     
-    source_and_range := DirectProductOp( cat, object_1, object_2 );
+    source_and_range := BinaryDirectProduct( cat, object_1, object_2 );
     
     return CartesianBraidingWithGivenDirectProducts( cat, source_and_range, object_1, object_2, source_and_range );
     
@@ -25,7 +25,7 @@ AddDerivationToCAP( CartesianBraidingInverse,
   function( cat, object_1, object_2 )
     local source_and_range;
     
-    source_and_range := DirectProductOp( cat, object_1, object_2 );
+    source_and_range := BinaryDirectProduct( cat, object_1, object_2 );
     
     return CartesianBraidingInverseWithGivenDirectProducts( cat, source_and_range, object_1, object_2, source_and_range );
     

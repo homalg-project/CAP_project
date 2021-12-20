@@ -12,7 +12,7 @@ AddDerivationToCAP( LeftCartesianDistributivityExpanding,
   function( cat, object, summands_list )
     local source_and_range;
     
-    source_and_range := DirectProductOp( cat, object, Coproduct( cat, summands_list ) );
+    source_and_range := BinaryDirectProduct( cat, object, Coproduct( cat, summands_list ) );
     
     return LeftCartesianDistributivityExpandingWithGivenObjects( cat,
              source_and_range,
@@ -29,7 +29,7 @@ AddDerivationToCAP( LeftCartesianDistributivityFactoring,
   function( cat, object, summands_list )
     local source_and_range;
     
-    source_and_range := DirectProductOp( cat, object, Coproduct( cat, summands_list ) );
+    source_and_range := BinaryDirectProduct( cat, object, Coproduct( cat, summands_list ) );
     
     return LeftCartesianDistributivityFactoringWithGivenObjects( cat,
              source_and_range,
@@ -46,7 +46,7 @@ AddDerivationToCAP( RightCartesianDistributivityExpanding,
   function( cat, summands_list, object )
     local source_and_range;
     
-    source_and_range := DirectProductOp( cat, Coproduct( cat, summands_list ), object );
+    source_and_range := BinaryDirectProduct( cat, Coproduct( cat, summands_list ), object );
     
     return RightCartesianDistributivityExpandingWithGivenObjects( cat,
              source_and_range,
@@ -63,7 +63,7 @@ AddDerivationToCAP( RightCartesianDistributivityFactoring,
   function( cat, summands_list, object )
     local source_and_range;
     
-    source_and_range := DirectProductOp( cat, Coproduct( cat, summands_list ), object );
+    source_and_range := BinaryDirectProduct( cat, Coproduct( cat, summands_list ), object );
     
     return RightCartesianDistributivityFactoringWithGivenObjects( cat,
              source_and_range,
