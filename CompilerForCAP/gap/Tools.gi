@@ -546,11 +546,14 @@ end );
 InstallGlobalFunction( ConcatenationForSyntaxTreeLists, function ( arg... )
   local tree, index, i, j;
     
-    if Length( arg ) = 1 and IsList( arg[1] ) then
+    if Length( arg ) = 1 then
         
         arg := arg[1];
         
     fi;
+    
+    Assert( 0, IsList( arg ) );
+    Assert( 0, ForAll( arg, a -> a.type = "SYNTAX_TREE_LIST" ) );
     
     tree := rec(
         type := "SYNTAX_TREE_LIST",
