@@ -205,9 +205,11 @@ AddDerivationToCAP( TruthMorphismOfOrWithGivenObjects,
                      Omega2 );
     
     return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
+                   cat,
                    UniversalMorphismFromCoproduct(
                            cat,
                            [ Omega, Omega ],
+                           Omega2,
                            [ left, right ] ),
                    Omega );
     
