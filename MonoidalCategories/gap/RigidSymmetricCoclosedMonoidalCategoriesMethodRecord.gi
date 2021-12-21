@@ -50,7 +50,8 @@ InternalCoHomTensorProductCompatibilityMorphismInverse := rec(
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "TensorProductInternalHomCompatibilityMorphismInverse",
-  dual_preprocessor_func := { cat, list } -> [ Opposite( cat ), [ Opposite( list[2] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[3] ) ] ],
+  dual_preprocessor_func :=
+    { cat, list } -> [ Opposite( cat ), [ Opposite( list[3] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[2] ) ] ],
   dual_arguments_reversed := false,
 ),
 
@@ -62,7 +63,7 @@ InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects := rec(
   return_type := "morphism",
   dual_operation := "TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects",
   dual_preprocessor_func :=
-    { cat, s, list, r } -> [ Opposite( cat ), Opposite( r ), [ Opposite( list[2] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[3] ) ], Opposite( s ) ],
+    { cat, s, list, r } -> [ Opposite( cat ), Opposite( r ), [ Opposite( list[3] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[2] ) ], Opposite( s ) ],
   dual_arguments_reversed := false,
 ),
 
@@ -122,15 +123,15 @@ IsomorphismFromTensorProductToInternalCoHom := rec(
 BindGlobal( "RIGID_SYMMETRIC_CLOSED_AND_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD", rec( ) );
 
 Perform( RecNames( RIGID_SYMMETRIC_CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ), function ( name )
-    
+
     RIGID_SYMMETRIC_CLOSED_AND_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD.(name) := RIGID_SYMMETRIC_CLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD.(name);
-    
+
 end );
 
 Perform( RecNames( RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD ), function ( name )
-    
+
     RIGID_SYMMETRIC_CLOSED_AND_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD.(name) := RIGID_SYMMETRIC_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD.(name);
-    
+
 end );
 
 CAP_INTERNAL_ENHANCE_NAME_RECORD( RIGID_SYMMETRIC_CLOSED_AND_COCLOSED_MONOIDAL_CATEGORIES_METHOD_NAME_RECORD );
