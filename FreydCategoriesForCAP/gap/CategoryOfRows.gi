@@ -53,13 +53,15 @@ InstallMethod( CategoryOfRows,
     
     SetIsAdditiveCategory( category, true );
     
-    SetIsRigidSymmetricClosedMonoidalCategory( category, true );
-    
-    SetIsStrictMonoidalCategory( category, true );
-    
     SetUnderlyingRing( category, homalg_ring );
     
     if HasIsCommutative( homalg_ring ) and IsCommutative( homalg_ring ) then
+
+      SetIsStrictMonoidalCategory( category, true );
+
+      SetIsRigidSymmetricClosedMonoidalCategory( category, true );
+
+      SetIsRigidSymmetricCoclosedMonoidalCategory( category, true );
       
       SetIsLinearCategoryOverCommutativeRing( category, true );
       
@@ -989,6 +991,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
                                        );
           
         end );
+
+        ## Operations related to the tensor-hom adjunction
         
         ##
         AddDualOnObjects( category, { cat, obj } -> obj );
@@ -1026,7 +1030,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
         ##
         AddCoevaluationForDualWithGivenTensorProduct( category,
-          
           function( cat, unit, object, tensor_object )
             local rank, id;
             
@@ -1048,6 +1051,66 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
        
         ##
         AddMorphismToBidualWithGivenBidual( category, { cat, obj, dual } -> IdentityMorphism( cat, obj ) );
+
+        ## Operations related to the cohom-tensor adjunction
+
+        ##
+        AddCoDualOnObjects( category, { cat, obj } -> obj );
+
+        ##
+        AddCoDualOnMorphismsWithGivenCoDuals( category,
+          function( cat, codual_source, morphism, codual_range )
+            
+            return CategoryOfRowsMorphism( cat, codual_source,
+                                           TransposedMatrix( UnderlyingMatrix( morphism ) ),
+                                           codual_range );
+            
+        end );
+        
+        ##
+        AddCoclosedEvaluationForCoDualWithGivenTensorProduct( category,
+          function( cat, unit, object, tensor_object )
+            local rank, id;
+            
+            rank := RankOfObject( object );
+            
+            if rank = 0 then
+                
+                return ZeroMorphism( cat, unit, tensor_object );
+                
+            fi;
+            
+            id := HomalgIdentityMatrix( rank, ring );
+            
+            return CategoryOfRowsMorphism( cat, unit,
+                                           ConvertMatrixToRow( id ),
+                                           tensor_object);
+            
+        end );
+        
+        ##
+        AddCoclosedCoevaluationForCoDualWithGivenTensorProduct( category,
+          function( cat, tensor_object, object, unit )
+            local rank, id;
+            
+            rank := RankOfObject( object );
+            
+            if rank = 0 then
+                
+                return ZeroMorphism( cat, tensor_object, unit );
+                
+            fi;
+            
+            id := HomalgIdentityMatrix( rank, ring );
+            
+            return CategoryOfRowsMorphism( cat, tensor_object,
+                                           ConvertMatrixToColumn( id ),
+                                           unit );
+            
+        end );
+       
+        ##
+        AddMorphismFromCoBidualWithGivenCoBidual( category, { cat, obj, codual } -> IdentityMorphism( cat, obj ) );
         
     fi; ## commutative case
     
