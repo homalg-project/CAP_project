@@ -149,9 +149,17 @@ InstallGlobalFunction( CapJitIterateOverTree, function ( tree, pre_func, result_
         
         keys := List( [ 1 .. tree.length ], i -> String( i ) );
         
+        # check that tree.length and the record entries are in sync
+        # keys are sorted as integers but not lexicographically
+        Assert( 0, SortedList( Filtered( RecNames( tree ), name -> IsDigitChar( First( name ) ) ) ) = SortedList( keys ) );
+        
     elif type = "FVAR_BINDING_SEQ" then
         
         keys := List( tree.names, name -> Concatenation( "BINDING_", name ) );
+        
+        # check that tree.names and the record entries are in sync
+        Assert( 0, IsSortedList( tree.names ) );
+        Assert( 0, SortedList( Filtered( RecNames( tree ), name -> StartsWith( name, "BINDING_" ) ) ) = keys );
         
     elif IsBound( CAP_JIT_INTERNAL_ITERATION_KEYS.(type) ) then
         
