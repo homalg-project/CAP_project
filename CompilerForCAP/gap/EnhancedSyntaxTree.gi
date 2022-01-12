@@ -24,7 +24,7 @@ BindGlobal( "CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS", rec(
 ) );
 
 InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
-  local ErrorWithFuncLocation, globalize_hvars, only_if_CAP_JIT_RESOLVE_FUNCTION, given_arguments, tree, orig_tree, pre_func, result_func, additional_arguments_func;
+  local ErrorWithFuncLocation, globalize_hvars, only_if_CAP_JIT_RESOLVE_FUNCTION, given_arguments, remove_depth_numbering, tree, orig_tree, pre_func, result_func, additional_arguments_func;
     
     ErrorWithFuncLocation := function ( args... )
         
@@ -52,6 +52,17 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
         
         # COVERAGE_IGNORE_NEXT_LINE
         Error( "the option \"given_arguments\" must be a list" );
+        
+    fi;
+    
+    if not IsEmpty( NamesLocalVariablesFunction( func ) ) and ForAll( NamesLocalVariablesFunction( func ), name -> EndsWith( name, "_1" ) ) then
+        
+        # we assume that the function was created via ENHANCED_SYNTAX_TREE_CODE and thus has the function stack depth appended to all variable names
+        remove_depth_numbering := true;
+        
+    else
+        
+        remove_depth_numbering := false;
         
     fi;
     
@@ -218,6 +229,27 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                     
                     # COVERAGE_IGNORE_NEXT_LINE
                     ErrorWithFuncLocation( "Function has argument or local variable with name RETURN_VALUE. This is not supported." );
+                    
+                fi;
+                
+                if remove_depth_numbering then
+                    
+                    # remove position of function in stack from nams (the function is not yet on the stack at this point, so we have to add 1)
+                    tree.nams := List( tree.nams, function ( name )
+                      local suffix;
+                        
+                        suffix := Concatenation( "_", String( Length( func_stack ) + 1 ) );
+                        
+                        if not EndsWith( name, suffix ) then
+                            
+                            # COVERAGE_IGNORE_NEXT_LINE
+                            Error( "variable name ", name, " does not have expected suffix ", suffix );
+                            
+                        fi;
+                        
+                        return name{[ 1 .. Length( name ) - Length( suffix ) ]};
+                        
+                    end );
                     
                 fi;
                 

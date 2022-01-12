@@ -265,4 +265,15 @@ CapJitPrettyPrintSyntaxTree( tree );
 
 CAP_JIT_INTERNAL_FUNCTION_ID := original_func_id;;
 
+# check that function stack depth is removed
+func := x -> y -> 1;;
+tree := ENHANCED_SYNTAX_TREE( func );;
+func2 := ENHANCED_SYNTAX_TREE_CODE( tree );;
+tree2 := ENHANCED_SYNTAX_TREE( func2 );;
+tree.nams = tree2.nams;
+#! true
+tree.bindings.BINDING_RETURN_VALUE.nams =
+    tree2.bindings.BINDING_RETURN_VALUE.nams;
+#! true
+
 #! @EndExample
