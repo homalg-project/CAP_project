@@ -198,7 +198,7 @@ CoexponentialCoproductCompatibilityMorphism := rec(
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "DirectProductExponentialCompatibilityMorphism",
-  dual_preprocessor_func := { cat, list } -> [ Opposite( cat ), [ Opposite( list[2] ), Opposite( list[4] ), Opposite( list[1] ), Opposite( list[3] ) ] ],
+  dual_preprocessor_func := { cat, list } -> [ Opposite( cat ), [ Opposite( list[3] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[2] ) ] ],
   dual_arguments_reversed := false,
 ),
 
@@ -210,7 +210,7 @@ CoexponentialCoproductCompatibilityMorphismWithGivenObjects := rec(
   return_type := "morphism",
   dual_operation := "DirectProductExponentialCompatibilityMorphismWithGivenObjects",
   dual_preprocessor_func :=
-    { cat, s, list, r } -> [ Opposite( cat ), Opposite( r ), [ Opposite( list[2] ), Opposite( list[4] ), Opposite( list[1] ), Opposite( list[3] ) ], Opposite( s ) ],
+    { cat, s, list, r } -> [ Opposite( cat ), Opposite( r ), [ Opposite( list[3] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[2] ) ], Opposite( s ) ],
   dual_arguments_reversed := false,
 ),
 
@@ -269,7 +269,7 @@ IsomorphismFromCoexponentialToCocartesianDual := rec(
 
 UniversalPropertyOfCocartesianDual := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
-  io_type := [ [ "a", "t", "alpha" ], [ "d", "t" ] ],
+  io_type := [ [ "t", "a", "alpha" ], [ "d", "t" ] ],
   return_type := "morphism",
   dual_operation := "UniversalPropertyOfCartesianDual",
   dual_arguments_reversed := false,
