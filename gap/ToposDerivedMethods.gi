@@ -35,6 +35,28 @@ end : Description := "CoproductOnMorphisms is CoproductFunctorial",
       CategoryFilter := IsCocartesianCategory );
 
 ##
+AddDerivationToCAP( CartesianLeftUnitorWithGivenDirectProduct,
+  function( cat, a, s )
+    
+    return ProjectionInFactorOfDirectProductWithGivenDirectProduct(
+                   [ TerminalObject( cat ), a ],
+                   2,
+                   s );
+    
+end : Description := "CartesianLeftUnitorWithGivenDirectProduct using the projection onto the second factor of the direct product");
+
+##
+AddDerivationToCAP( CartesianRightUnitorWithGivenDirectProduct,
+  function( cat, a, s )
+    
+    return ProjectionInFactorOfDirectProductWithGivenDirectProduct(
+                   [ a, TerminalObject( cat ) ],
+                   1,
+                   s );
+    
+end : Description := "CartesianRightUnitorWithGivenDirectProduct using the projection onto the first factor of the direct product");
+
+##
 AddDerivationToCAP( CartesianAssociatorRightToLeftWithGivenDirectProducts,
   function( cat, s, a, b, c, r )
     local Db_c, bc, pi_b, pi_c, Da_bc, pi_a, pi_bc, Da_b, ab, pi_ab;
@@ -87,6 +109,28 @@ AddDerivationToCAP( CartesianAssociatorLeftToRightWithGivenDirectProducts,
     return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, [ a, bc ], s, [ PreCompose( cat, pi_ab, pi_a ), pi_bc ], r );
     
 end : Description := "CartesianAssociatorLeftToRightWithGivenDirectProducts using the universal morphism into direct product");
+
+##
+AddDerivationToCAP( CocartesianLeftUnitorInverseWithGivenCoproduct,
+  function( cat, a, r )
+    
+    return InjectionOfCofactorOfCoproductWithGivenCoproduct(
+                   [ InitialObject( cat ), a ],
+                   2,
+                   r );
+    
+end : Description := "CocartesianLeftUnitorInverseWithGivenCoproduct using the injection into the second factor of the coproduct");
+
+##
+AddDerivationToCAP( CocartesianRightUnitorInverseWithGivenCoproduct,
+  function( cat, a, r )
+    
+    return InjectionOfCofactorOfCoproductWithGivenCoproduct(
+                   [ a, InitialObject( cat ) ],
+                   1,
+                   r );
+    
+end : Description := "CocartesianRightUnitorInverseWithGivenCoproduct using the injection into the first factor of the coproduct");
 
 ##
 AddDerivationToCAP( SubobjectOfClassifyingMorphism,
