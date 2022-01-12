@@ -1,5 +1,3 @@
-# THIS FILE WAS AUTOMATICALLY GENERATED
-
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
@@ -17,7 +15,7 @@ DirectProductOnMorphisms := rec(
   output_range_getter_string := "BinaryDirectProduct( cat, Range( alpha ), Range( beta ) )",
   with_given_object_position := "both",
   return_type := "morphism",
-  dual_operation := "DirectProductOnMorphisms",
+  dual_operation := "CoproductOnMorphisms",
   dual_arguments_reversed := false,
 ),
 
@@ -25,7 +23,7 @@ DirectProductOnMorphismsWithGivenDirectProducts := rec(
   filter_list := [ "category", "object", "morphism", "morphism", "object" ],
   io_type := [ [ "s", "alpha", "beta", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
-  dual_operation := "DirectProductOnMorphismsWithGivenDirectProducts",
+  dual_operation := "CoproductOnMorphismsWithGivenCoproducts",
   dual_arguments_reversed := false,
 ),
 
@@ -36,7 +34,7 @@ CartesianAssociatorRightToLeft := rec(
   output_range_getter_string := "BinaryDirectProduct( cat, BinaryDirectProduct( cat, a, b ), c )",
   with_given_object_position := "both",
   return_type := "morphism",
-  dual_operation := "CartesianAssociatorLeftToRight",
+  dual_operation := "CocartesianAssociatorLeftToRight",
   dual_arguments_reversed := false,
 ),
 
@@ -44,7 +42,7 @@ CartesianAssociatorRightToLeftWithGivenDirectProducts := rec(
   filter_list := [ "category", "object", "object", "object", "object", "object" ],
   io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
-  dual_operation := "CartesianAssociatorLeftToRightWithGivenDirectProducts",
+  dual_operation := "CocartesianAssociatorLeftToRightWithGivenCoproducts",
   dual_preprocessor_func :=
     { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ],
   dual_arguments_reversed := false,
@@ -57,7 +55,7 @@ CartesianAssociatorLeftToRight := rec(
   output_range_getter_string := "BinaryDirectProduct( cat, a, BinaryDirectProduct( cat, b, c ) )",
   with_given_object_position := "both",
   return_type := "morphism",
-  dual_operation := "CartesianAssociatorRightToLeft",
+  dual_operation := "CocartesianAssociatorRightToLeft",
   dual_arguments_reversed := false,
 ),
 
@@ -65,7 +63,7 @@ CartesianAssociatorLeftToRightWithGivenDirectProducts := rec(
   filter_list := [ "category", "object", "object", "object", "object", "object" ],
   io_type := [ [ "s", "a", "b", "c", "r" ], [ "s", "r" ] ],
   return_type := "morphism",
-  dual_operation := "CartesianAssociatorRightToLeftWithGivenDirectProducts",
+  dual_operation := "CocartesianAssociatorRightToLeftWithGivenCoproducts",
   dual_preprocessor_func := { cat, s, a, b, c, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( c ), Opposite( s ) ],
   dual_arguments_reversed := false,
 ),
@@ -77,14 +75,14 @@ CartesianLeftUnitor := rec(
   output_range_getter_string := "a",
   with_given_object_position := "Source",
   return_type := "morphism",
-  dual_operation := "CartesianLeftUnitorInverse",
+  dual_operation := "CocartesianLeftUnitorInverse",
 ),
 
 CartesianLeftUnitorWithGivenDirectProduct := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "s" ], [ "s", "a" ] ],
   return_type := "morphism",
-  dual_operation := "CartesianLeftUnitorInverseWithGivenDirectProduct",
+  dual_operation := "CocartesianLeftUnitorInverseWithGivenCoproduct",
   dual_arguments_reversed := false,
 ),
 
@@ -95,14 +93,14 @@ CartesianLeftUnitorInverse := rec(
   output_range_getter_string := "BinaryDirectProduct( cat, TerminalObject( cat ), a )",
   with_given_object_position := "Range",
   return_type := "morphism",
-  dual_operation := "CartesianLeftUnitor",
+  dual_operation := "CocartesianLeftUnitor",
 ),
 
 CartesianLeftUnitorInverseWithGivenDirectProduct := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "r" ], [ "a", "r" ] ],
   return_type := "morphism",
-  dual_operation := "CartesianLeftUnitorWithGivenDirectProduct",
+  dual_operation := "CocartesianLeftUnitorWithGivenCoproduct",
   dual_arguments_reversed := false,
 ),
 
@@ -113,14 +111,14 @@ CartesianRightUnitor := rec(
   output_range_getter_string := "a",
   with_given_object_position := "Source",
   return_type := "morphism",
-  dual_operation := "CartesianRightUnitorInverse",
+  dual_operation := "CocartesianRightUnitorInverse",
 ),
 
 CartesianRightUnitorWithGivenDirectProduct := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "s" ], [ "s", "a" ] ],
   return_type := "morphism",
-  dual_operation := "CartesianRightUnitorInverseWithGivenDirectProduct",
+  dual_operation := "CocartesianRightUnitorInverseWithGivenCoproduct",
   dual_arguments_reversed := false,
 ),
 
@@ -131,29 +129,15 @@ CartesianRightUnitorInverse := rec(
   output_range_getter_string := "BinaryDirectProduct( cat, a, TerminalObject( cat ) )",
   with_given_object_position := "Range",
   return_type := "morphism",
-  dual_operation := "CartesianRightUnitor",
+  dual_operation := "CocartesianRightUnitor",
 ),
 
 CartesianRightUnitorInverseWithGivenDirectProduct := rec(
   filter_list := [ "category", "object", "object" ],
   io_type := [ [ "a", "r" ], [ "a", "r" ] ],
   return_type := "morphism",
-  dual_operation := "CartesianRightUnitorWithGivenDirectProduct",
+  dual_operation := "CocartesianRightUnitorWithGivenCoproduct",
   dual_arguments_reversed := false,
 ),
 
 ) );
-
-CAP_INTERNAL_ENHANCE_NAME_RECORD( CARTESIAN_CATEGORIES_METHOD_NAME_RECORD );
-
-CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
-    CARTESIAN_CATEGORIES_METHOD_NAME_RECORD,
-    "Toposes",
-    "CartesianCategories.autogen.gd",
-    "Cartesian Categories",
-    "Add-methods"
-);
-
-CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE( CARTESIAN_CATEGORIES_METHOD_NAME_RECORD, "Toposes" );
-
-CAP_INTERNAL_INSTALL_ADDS_FROM_RECORD( CARTESIAN_CATEGORIES_METHOD_NAME_RECORD );
