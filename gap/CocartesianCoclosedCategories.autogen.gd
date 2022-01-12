@@ -659,7 +659,7 @@ DeclareOperation( "AddMorphismFromCoexponentialToCoproductWithGivenObjects",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `UniversalPropertyOfCocartesianDual`.
-#! $F: ( a, t, alpha ) \mapsto \mathtt{UniversalPropertyOfCocartesianDual}(a, t, alpha)$.
+#! $F: ( t, a, alpha ) \mapsto \mathtt{UniversalPropertyOfCocartesianDual}(t, a, alpha)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddUniversalPropertyOfCocartesianDual",
