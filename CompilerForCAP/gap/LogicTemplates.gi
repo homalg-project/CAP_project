@@ -681,6 +681,13 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
         
         while true do
             
+            # bail out early if type mismatches
+            if tree.type <> template.src_template_tree.type then
+                
+                return tree;
+                
+            fi;
+            
             matching_info := CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree, template.src_template_tree, template.variable_filters : debug := IsBound( template.debug_path ) and template.debug_path = path );
             
             if matching_info = fail then
