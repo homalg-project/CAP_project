@@ -2198,8 +2198,8 @@
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XUniversalPropertyOfCoDual[110X.     [23XF:     (    a,    t,    alpha    )    \mapsto
-  \mathtt{UniversalPropertyOfCoDual}(a, t, alpha)[123X.[133X
+  [10XUniversalPropertyOfCoDual[110X.     [23XF:     (    t,    a,    alpha    )    \mapsto
+  \mathtt{UniversalPropertyOfCoDual}(t, a, alpha)[123X.[133X
   
   [1X1.12-83 AddAssociatorLeftToRight[101X
   
