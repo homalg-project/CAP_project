@@ -39,15 +39,15 @@ InstallGlobalFunction( CapJitResultFuncCombineChildren, function ( tree, result,
     elif IsRecord( result ) then
         
         tree := ShallowCopy( tree );
-
+        
         for key in keys do
             
             tree.(key) := result.(key);
-
+            
         od;
         
         return tree;
-
+        
     else
         
         # COVERAGE_IGNORE_NEXT_LINE
