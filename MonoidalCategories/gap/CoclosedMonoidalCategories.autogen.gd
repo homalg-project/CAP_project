@@ -659,7 +659,7 @@ DeclareOperation( "AddTensorProductToInternalCoHomAdjunctionMap",
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
 #! to the category for the basic operation `UniversalPropertyOfCoDual`.
-#! $F: ( a, t, alpha ) \mapsto \mathtt{UniversalPropertyOfCoDual}(a, t, alpha)$.
+#! $F: ( t, a, alpha ) \mapsto \mathtt{UniversalPropertyOfCoDual}(t, a, alpha)$.
 #! @Returns nothing
 #! @Arguments C, F
 DeclareOperation( "AddUniversalPropertyOfCoDual",

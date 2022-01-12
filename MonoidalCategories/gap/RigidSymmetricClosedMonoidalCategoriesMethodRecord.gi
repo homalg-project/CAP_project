@@ -51,7 +51,7 @@ TensorProductInternalHomCompatibilityMorphismInverse := rec(
   return_type := "morphism",
   dual_operation := "InternalCoHomTensorProductCompatibilityMorphismInverse",
   dual_preprocessor_func :=
-    { cat, list } -> [ Opposite( cat ), [ Opposite( list[3] ), Opposite( list[4] ), Opposite( list[1] ), Opposite( list[2] ) ] ],
+    { cat, list } -> [ Opposite( cat ), [ Opposite( list[2] ), Opposite( list[4] ), Opposite( list[1] ), Opposite( list[3] ) ] ],
   dual_arguments_reversed := false,
 ),
 
@@ -63,7 +63,7 @@ TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects := rec(
   return_type := "morphism",
   dual_operation := "InternalCoHomTensorProductCompatibilityMorphismInverseWithGivenObjects",
   dual_preprocessor_func :=
-    { cat, s, list, r } -> [ Opposite( cat ), Opposite( r ), [ Opposite( list[3] ), Opposite( list[4] ), Opposite( list[1] ), Opposite( list[2] ) ], Opposite( s ) ],
+    { cat, s, list, r } -> [ Opposite( cat ), Opposite( r ), [ Opposite( list[2] ), Opposite( list[4] ), Opposite( list[1] ), Opposite( list[3] ) ], Opposite( s ) ],
   dual_arguments_reversed := false,
 ),
 
