@@ -995,6 +995,30 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         ## Operations related to the tensor-hom adjunction
         
         ##
+        AddBraidingInverseWithGivenTensorProducts( category,
+          function( cat, object_2_tensored_object_1, object_1, object_2, object_1_tensored_object_2 )
+          local permutation_matrix, rank, rank_1, rank_2;
+          
+          rank_1 := RankOfObject( object_1 );
+          
+          rank_2 := RankOfObject( object_2 );
+          
+          rank := RankOfObject( object_1_tensored_object_2 );
+          
+          ## Mind the inversion of the permutation
+          permutation_matrix := PermutationMat(
+                                  PermList( List( [ 1 .. rank ], i -> ( RemInt( i - 1, rank_2 ) * rank_1 + QuoInt( i - 1, rank_2 ) + 1 ) ) )^(-1),
+                                  rank
+                                );
+          
+          return CategoryOfRowsMorphism( cat, object_2_tensored_object_1,
+                                            HomalgMatrix( permutation_matrix, rank, rank, ring ),
+                                            object_1_tensored_object_2
+                                          );
+          
+        end );
+        
+        ##
         AddDualOnObjects( category, { cat, obj } -> obj );
         
         ##
