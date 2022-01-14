@@ -12,6 +12,8 @@ ReadPackage( "CompilerForCAP", "gap/Tools.gd" );
 
 ReadPackage( "CompilerForCAP", "gap/EnhancedSyntaxTree.gd" );
 
+ReadPackage( "CompilerForCAP", "gap/CompileCAPOperation.gd" );
+
 ReadPackage( "CompilerForCAP", "gap/PrettyPrintSyntaxTree.gd" );
 
 ReadPackage( "CompilerForCAP", "gap/GetValuesFromJitArgs.gd" );
