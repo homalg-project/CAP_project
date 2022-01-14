@@ -10,7 +10,7 @@ BindGlobal( "CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES", [
 ] );
 
 InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
-  local condition_func, path, record, operation, funccall_args, funccall_does_not_return_fail, operation_name, new_tree, category, index, func_to_resolve, result, example_input, global_variable_name, resolved_tree, known_methods, pos, arguments, applicable_methods, parent, method;
+  local condition_func, path, record, operation, funccall_args, funccall_does_not_return_fail, operation_name, new_tree, category, resolved_tree, known_methods, func_to_resolve, global_variable_name, result, arguments, applicable_methods, parent, method;
     
     tree := StructuralCopy( tree );
   
@@ -98,7 +98,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
     # check if this is a CAP operation which is not a convenience method
     if operation_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) and funccall_args.length = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list ) then
         
-        Info( InfoCapJit, 1, "This is a CAP operation, try to determine category and take the added function." );
+        Info( InfoCapJit, 1, "This is a CAP operation, try to determine category and compile the added function." );
         
         Assert( 0, funccall_args.1.type = "EXPR_REF_GVAR" );
         
@@ -108,101 +108,19 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
         Assert( 0, CanCompute( category, operation_name ) );
         Assert( 0, not (IsBound( category!.stop_compilation ) and category!.stop_compilation = true) );
         
-        if not (IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true) then
+        resolved_tree := CapJitCompiledCAPOperationAsEnhancedSyntaxTree( category, operation_name );
+        
+        if funccall_does_not_return_fail then
             
-            # COVERAGE_IGNORE_NEXT_LINE
-            Error( "only operations of categories with `category!.category_as_first_argument = true` can be resolved" );
+            resolved_tree := CapJitRemovedReturnFail( resolved_tree );
             
         fi;
         
-        # find the last added function with no additional filters
-        index := Last( PositionsProperty( category!.added_functions.(operation_name), f -> Length( f[2] ) = 0 ) );
-        
-        if index = fail then
-            
-            # COVERAGE_IGNORE_NEXT_LINE
-            Error( "All added functions for <operation> in <category> have additional filters. Cannot continue with compilation." );
-            
-        fi;
-        
-        func_to_resolve := category!.added_functions.(operation_name)[index][1];
-        
-        if IsOperation( func_to_resolve ) or IsKernelFunction( func_to_resolve ) then
-            
-            # cannot resolve recursive calls
-            if not IsIdenticalObj( func_to_resolve, operation ) then
-                
-                # will be handled in the next iteration
-                global_variable_name := CapJitGetOrCreateGlobalVariable( func_to_resolve );
-                
-                new_tree := rec(
-                    type := "EXPR_FUNCCALL",
-                    funcref := rec(
-                        type := "EXPR_REF_GVAR",
-                        gvar := global_variable_name,
-                    ),
-                    args := funccall_args,
-                );
-                
-                if funccall_does_not_return_fail then
-                    
-                    new_tree.funcref.does_not_return_fail := true;
-                    
-                fi;
-                
-            fi;
-            
-        else
-            
-            if IsBound( category!.compiled_functions_trees.(operation_name)[index] ) then
-                
-                Info( InfoCapJit, 1, Concatenation( "Taking compiled function with index ", String( index ), "." ) );
-                
-                resolved_tree := CapJitCopyWithNewFunctionIDs( category!.compiled_functions_trees.(operation_name)[index] );
-                
-            else
-                
-                Info( InfoCapJit, 1, Concatenation( "Taking added function with index ", String( index ), "." ) );
-                
-                if not tree.variadic and Length( jit_args ) = tree.narg then
-                    
-                    result := CapJitGetFunctionCallArgumentsFromJitArgs( tree, path, jit_args );
-                    
-                else
-                    
-                    result := [ false ];
-                    
-                fi;
-                
-                if result[1] = false then
-                    
-                    example_input := [ category ];
-                    
-                else
-                    
-                    example_input := result[2];
-                    
-                fi;
-                
-                resolved_tree := CapJitCompiledFunctionAsEnhancedSyntaxTree( func_to_resolve, example_input );
-                
-                category!.compiled_functions_trees.(operation_name)[index] := resolved_tree;
-                
-            fi;
-            
-            if funccall_does_not_return_fail then
-                
-                resolved_tree := CapJitRemovedReturnFail( resolved_tree );
-                
-            fi;
-            
-            new_tree := rec(
-                type := "EXPR_FUNCCALL",
-                funcref := resolved_tree,
-                args := funccall_args,
-            );
-            
-        fi;
+        new_tree := rec(
+            type := "EXPR_FUNCCALL",
+            funcref := resolved_tree,
+            args := funccall_args,
+        );
         
     # check if we know methods for this operation
     elif operation_name in RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) then
