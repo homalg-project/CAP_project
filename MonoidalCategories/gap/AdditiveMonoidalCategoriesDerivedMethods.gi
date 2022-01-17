@@ -10,7 +10,7 @@ AddDerivationToCAP( LeftDistributivityExpandingWithGivenObjects,
   function( cat, factored_object, object, summands, expanded_object )
     local nr_summands, projection_list, id, diagram;
     
-    nr_summands := Size( summands );
+    nr_summands := Length( summands );
     
     id := IdentityMorphism( cat, object );
     
@@ -31,7 +31,7 @@ AddDerivationToCAP( LeftDistributivityFactoringWithGivenObjects,
   function( cat, expanded_object, object, summands, factored_object )
     local nr_summands, injection_list, id, diagram;
     
-    nr_summands := Size( summands );
+    nr_summands := Length( summands );
     
     id := IdentityMorphism( cat, object );
     
@@ -52,7 +52,7 @@ AddDerivationToCAP( RightDistributivityExpandingWithGivenObjects,
   function( cat, factored_object, summands, object, expanded_object )
     local nr_summands, projection_list, id, diagram;
     
-    nr_summands := Size( summands );
+    nr_summands := Length( summands );
     
     id := IdentityMorphism( cat, object );
     
@@ -73,7 +73,7 @@ AddDerivationToCAP( RightDistributivityFactoringWithGivenObjects,
   function( cat, expanded_object, summands, object, factored_object )
     local nr_summands, injection_list, id, diagram;
     
-    nr_summands := Size( summands );
+    nr_summands := Length( summands );
     
     id := IdentityMorphism( cat, object );
     

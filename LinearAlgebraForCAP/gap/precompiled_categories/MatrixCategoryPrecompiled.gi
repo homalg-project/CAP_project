@@ -2918,15 +2918,16 @@ end
         
 ########
 function ( cat_1, a_1, L_1 )
-    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1;
-    deduped_6_1 := Dimension( a_1 );
+    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
+    deduped_7_1 := Dimension( a_1 );
+    deduped_6_1 := Length( L_1 );
     deduped_5_1 := UnderlyingRing( cat_1 );
-    hoisted_4_1 := HomalgIdentityMatrix( deduped_6_1, deduped_5_1 );
-    hoisted_3_1 := Length( L_1 );
+    hoisted_4_1 := HomalgIdentityMatrix( deduped_7_1, deduped_5_1 );
+    hoisted_3_1 := deduped_6_1;
     hoisted_2_1 := deduped_5_1;
-    morphism_attr_1_1 := UnionOfColumns( deduped_5_1, deduped_6_1 * Sum( List( L_1, function ( object_2 )
+    morphism_attr_1_1 := UnionOfColumns( deduped_5_1, deduped_7_1 * Sum( List( L_1, function ( object_2 )
                   return Dimension( object_2 );
-              end ) ), List( [ 1 .. Size( L_1 ) ], function ( logic_new_func_x_2 )
+              end ) ), List( [ 1 .. deduped_6_1 ], function ( logic_new_func_x_2 )
               local deduped_1_2;
               deduped_1_2 := Dimension( L_1[logic_new_func_x_2] );
               return KroneckerMat( hoisted_4_1, UnionOfRows( HomalgZeroMatrix( Sum( L_1{[ 1 .. logic_new_func_x_2 - 1 ]}, function ( c_3 )
@@ -2949,12 +2950,13 @@ end
         
 ########
 function ( cat_1, s_1, a_1, L_1, r_1 )
-    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
+    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1;
+    deduped_6_1 := Length( L_1 );
     deduped_5_1 := UnderlyingRing( cat_1 );
     hoisted_4_1 := HomalgIdentityMatrix( Dimension( a_1 ), deduped_5_1 );
-    hoisted_3_1 := Length( L_1 );
+    hoisted_3_1 := deduped_6_1;
     hoisted_2_1 := deduped_5_1;
-    morphism_attr_1_1 := UnionOfColumns( deduped_5_1, Dimension( s_1 ), List( [ 1 .. Size( L_1 ) ], function ( logic_new_func_x_2 )
+    morphism_attr_1_1 := UnionOfColumns( deduped_5_1, Dimension( s_1 ), List( [ 1 .. deduped_6_1 ], function ( logic_new_func_x_2 )
               local deduped_1_2;
               deduped_1_2 := Dimension( L_1[logic_new_func_x_2] );
               return KroneckerMat( hoisted_4_1, UnionOfRows( HomalgZeroMatrix( Sum( L_1{[ 1 .. logic_new_func_x_2 - 1 ]}, function ( c_3 )
@@ -2976,15 +2978,16 @@ end
         
 ########
 function ( cat_1, a_1, L_1 )
-    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1;
-    deduped_6_1 := Dimension( a_1 );
+    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
+    deduped_7_1 := Dimension( a_1 );
+    deduped_6_1 := Length( L_1 );
     deduped_5_1 := UnderlyingRing( cat_1 );
-    hoisted_4_1 := HomalgIdentityMatrix( deduped_6_1, deduped_5_1 );
-    hoisted_3_1 := Length( L_1 );
+    hoisted_4_1 := HomalgIdentityMatrix( deduped_7_1, deduped_5_1 );
+    hoisted_3_1 := deduped_6_1;
     hoisted_2_1 := deduped_5_1;
-    morphism_attr_1_1 := UnionOfRows( deduped_5_1, deduped_6_1 * Sum( List( L_1, function ( object_2 )
+    morphism_attr_1_1 := UnionOfRows( deduped_5_1, deduped_7_1 * Sum( List( L_1, function ( object_2 )
                   return Dimension( object_2 );
-              end ) ), List( [ 1 .. Size( L_1 ) ], function ( logic_new_func_x_2 )
+              end ) ), List( [ 1 .. deduped_6_1 ], function ( logic_new_func_x_2 )
               local deduped_1_2;
               deduped_1_2 := Dimension( L_1[logic_new_func_x_2] );
               return KroneckerMat( hoisted_4_1, UnionOfColumns( HomalgZeroMatrix( deduped_1_2, Sum( L_1{[ 1 .. logic_new_func_x_2 - 1 ]}, function ( c_3 )
@@ -3007,12 +3010,13 @@ end
         
 ########
 function ( cat_1, s_1, a_1, L_1, r_1 )
-    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
+    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1;
+    deduped_6_1 := Length( L_1 );
     deduped_5_1 := UnderlyingRing( cat_1 );
     hoisted_4_1 := HomalgIdentityMatrix( Dimension( a_1 ), deduped_5_1 );
-    hoisted_3_1 := Length( L_1 );
+    hoisted_3_1 := deduped_6_1;
     hoisted_2_1 := deduped_5_1;
-    morphism_attr_1_1 := UnionOfRows( deduped_5_1, Dimension( r_1 ), List( [ 1 .. Size( L_1 ) ], function ( logic_new_func_x_2 )
+    morphism_attr_1_1 := UnionOfRows( deduped_5_1, Dimension( r_1 ), List( [ 1 .. deduped_6_1 ], function ( logic_new_func_x_2 )
               local deduped_1_2;
               deduped_1_2 := Dimension( L_1[logic_new_func_x_2] );
               return KroneckerMat( hoisted_4_1, UnionOfColumns( HomalgZeroMatrix( deduped_1_2, Sum( L_1{[ 1 .. logic_new_func_x_2 - 1 ]}, function ( c_3 )
@@ -4297,15 +4301,16 @@ end
         
 ########
 function ( cat_1, L_1, a_1 )
-    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1;
-    deduped_6_1 := Dimension( a_1 );
+    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
+    deduped_7_1 := Dimension( a_1 );
+    deduped_6_1 := Length( L_1 );
     deduped_5_1 := UnderlyingRing( cat_1 );
-    hoisted_4_1 := HomalgIdentityMatrix( deduped_6_1, deduped_5_1 );
-    hoisted_3_1 := Length( L_1 );
+    hoisted_4_1 := HomalgIdentityMatrix( deduped_7_1, deduped_5_1 );
+    hoisted_3_1 := deduped_6_1;
     hoisted_2_1 := deduped_5_1;
     morphism_attr_1_1 := UnionOfColumns( deduped_5_1, Sum( List( L_1, function ( object_2 )
                   return Dimension( object_2 );
-              end ) ) * deduped_6_1, List( [ 1 .. Size( L_1 ) ], function ( logic_new_func_x_2 )
+              end ) ) * deduped_7_1, List( [ 1 .. deduped_6_1 ], function ( logic_new_func_x_2 )
               local deduped_1_2;
               deduped_1_2 := Dimension( L_1[logic_new_func_x_2] );
               return KroneckerMat( UnionOfRows( HomalgZeroMatrix( Sum( L_1{[ 1 .. logic_new_func_x_2 - 1 ]}, function ( c_3 )
@@ -4328,12 +4333,13 @@ end
         
 ########
 function ( cat_1, s_1, L_1, a_1, r_1 )
-    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
+    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1;
+    deduped_6_1 := Length( L_1 );
     deduped_5_1 := UnderlyingRing( cat_1 );
     hoisted_4_1 := HomalgIdentityMatrix( Dimension( a_1 ), deduped_5_1 );
-    hoisted_3_1 := Length( L_1 );
+    hoisted_3_1 := deduped_6_1;
     hoisted_2_1 := deduped_5_1;
-    morphism_attr_1_1 := UnionOfColumns( deduped_5_1, Dimension( s_1 ), List( [ 1 .. Size( L_1 ) ], function ( logic_new_func_x_2 )
+    morphism_attr_1_1 := UnionOfColumns( deduped_5_1, Dimension( s_1 ), List( [ 1 .. deduped_6_1 ], function ( logic_new_func_x_2 )
               local deduped_1_2;
               deduped_1_2 := Dimension( L_1[logic_new_func_x_2] );
               return KroneckerMat( UnionOfRows( HomalgZeroMatrix( Sum( L_1{[ 1 .. logic_new_func_x_2 - 1 ]}, function ( c_3 )
@@ -4355,15 +4361,16 @@ end
         
 ########
 function ( cat_1, L_1, a_1 )
-    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1;
-    deduped_6_1 := Dimension( a_1 );
+    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1, deduped_7_1;
+    deduped_7_1 := Dimension( a_1 );
+    deduped_6_1 := Length( L_1 );
     deduped_5_1 := UnderlyingRing( cat_1 );
-    hoisted_4_1 := HomalgIdentityMatrix( deduped_6_1, deduped_5_1 );
-    hoisted_3_1 := Length( L_1 );
+    hoisted_4_1 := HomalgIdentityMatrix( deduped_7_1, deduped_5_1 );
+    hoisted_3_1 := deduped_6_1;
     hoisted_2_1 := deduped_5_1;
     morphism_attr_1_1 := UnionOfRows( deduped_5_1, Sum( List( L_1, function ( object_2 )
                   return Dimension( object_2 );
-              end ) ) * deduped_6_1, List( [ 1 .. Size( L_1 ) ], function ( logic_new_func_x_2 )
+              end ) ) * deduped_7_1, List( [ 1 .. deduped_6_1 ], function ( logic_new_func_x_2 )
               local deduped_1_2;
               deduped_1_2 := Dimension( L_1[logic_new_func_x_2] );
               return KroneckerMat( UnionOfColumns( HomalgZeroMatrix( deduped_1_2, Sum( L_1{[ 1 .. logic_new_func_x_2 - 1 ]}, function ( c_3 )
@@ -4386,12 +4393,13 @@ end
         
 ########
 function ( cat_1, s_1, L_1, a_1, r_1 )
-    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1;
+    local morphism_attr_1_1, hoisted_2_1, hoisted_3_1, hoisted_4_1, deduped_5_1, deduped_6_1;
+    deduped_6_1 := Length( L_1 );
     deduped_5_1 := UnderlyingRing( cat_1 );
     hoisted_4_1 := HomalgIdentityMatrix( Dimension( a_1 ), deduped_5_1 );
-    hoisted_3_1 := Length( L_1 );
+    hoisted_3_1 := deduped_6_1;
     hoisted_2_1 := deduped_5_1;
-    morphism_attr_1_1 := UnionOfRows( deduped_5_1, Dimension( r_1 ), List( [ 1 .. Size( L_1 ) ], function ( logic_new_func_x_2 )
+    morphism_attr_1_1 := UnionOfRows( deduped_5_1, Dimension( r_1 ), List( [ 1 .. deduped_6_1 ], function ( logic_new_func_x_2 )
               local deduped_1_2;
               deduped_1_2 := Dimension( L_1[logic_new_func_x_2] );
               return KroneckerMat( UnionOfColumns( HomalgZeroMatrix( deduped_1_2, Sum( L_1{[ 1 .. logic_new_func_x_2 - 1 ]}, function ( c_3 )
