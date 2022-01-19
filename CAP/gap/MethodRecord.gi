@@ -1141,19 +1141,19 @@ UniversalMorphismFromCoproductWithGivenCoproduct := rec(
   return_type := "morphism" ),
 
 IsEqualAsSubobjects := rec(
-  filter_list := [ "category", [ "morphism", IsSubobject ], [ "morphism", IsSubobject ] ],
+  filter_list := [ "category", "morphism", "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsEqualAsFactorobjects" ),
 
 IsEqualAsFactorobjects := rec(
-  filter_list := [ "category", [ "morphism", IsFactorobject ], [ "morphism", IsFactorobject ] ],
+  filter_list := [ "category", "morphism", "morphism" ],
   well_defined_todo := false,
   return_type := "bool",
   dual_operation := "IsEqualAsSubobjects" ),
 
 IsDominating := rec(
-  filter_list := [ "category", [ "morphism", IsSubobject ], [ "morphism", IsSubobject ] ],
+  filter_list := [ "category", "morphism", "morphism" ],
   well_defined_todo := false,
   dual_operation := "IsCodominating",
   
@@ -1177,7 +1177,7 @@ IsDominating := rec(
   return_type := "bool" ),
 
 IsCodominating := rec(
-  filter_list := [ "category", [ "morphism", IsFactorobject ], [ "morphism", IsFactorobject ] ],
+  filter_list := [ "category", "morphism", "morphism" ],
   well_defined_todo := false,
   dual_operation := "IsDominating",
   
