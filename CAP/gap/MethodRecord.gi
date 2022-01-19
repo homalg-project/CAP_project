@@ -4296,7 +4296,7 @@ end );
 
 InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
   function( record )
-    local recnames, current_recname, current_rec, io_type, number_of_arguments, flattened_filter_list, functorial, func_string,
+    local recnames, current_recname, current_rec, io_type, number_of_arguments, functorial, func_string,
           installation_name, output_list, input_list, argument_names, return_list, current_output, input_position, list_position,
           without_given_name, with_given_names, with_given_name, without_given_rec, with_given_object_position, object_name,
           object_filter_list, with_given_object_filter, given_source_argument_name, given_range_argument_name, with_given_rec, i;
@@ -4377,33 +4377,13 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             Error( "the dual preprocessor function of <current_rec> has the wrong number of arguments" );
         fi;
         
-        if not ForAll( current_rec.filter_list, x -> IsFilter( x ) or IsString( x ) or (IsList( x ) and Length( x ) = 2 and IsString( x[1] ) and IsFilter( x[2] )) ) then
+        if not ForAll( current_rec.filter_list, x -> IsString( x ) or IsFilter( x ) ) then
             Error( "the filter list of <current_rec> does not fulfill the requirements" );
         fi;
         
         if not IsBound( current_rec.install_convenience_without_category ) then
             
-            # we cannot use `Flat` for lists of strings :-(
-            flattened_filter_list := Concatenation( List( current_rec.filter_list,
-              function( x )
-                
-                if IsString( x ) or IsFilter( x ) then
-                    
-                    return [ x ];
-                    
-                elif IsList( x ) then
-                    
-                    return x;
-                    
-                else
-                    
-                    Error( "entries of filter_list must be strings, filters or lists" );
-                    
-                fi;
-                
-            end ) );
-            
-            if not IsEmpty( Intersection( [ "object", "morphism", "twocell", "list_of_objects", "list_of_morphisms" ], Filtered( flattened_filter_list, IsString ) ) ) then
+            if ForAny( [ "object", "morphism", "twocell", "list_of_objects", "list_of_morphisms" ], filter -> filter in current_rec.filter_list ) then
                 
                 current_rec.install_convenience_without_category := true;
                 

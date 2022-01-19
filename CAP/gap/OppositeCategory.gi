@@ -185,13 +185,6 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                 filter := filter_list[i];
                 argument_name := input_arguments_names[i];
                 
-                # we only take the first filter in a filter list into account
-                if not IsString( filter ) and IsList( filter ) then
-                    
-                    filter := filter[1];
-                    
-                fi;
-                
                 if filter = "object" then
                     
                     return Concatenation( "ObjectDatum( cat, ", argument_name, " )" );

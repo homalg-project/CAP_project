@@ -106,7 +106,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
         DeclareOperation( install_name, replaced_filter_list );
         
-        if filter_list[2] in [ "object", "morphism", "twocell" ] or ( IsList( filter_list[2] ) and filter_list[2][1] in [ "object", "morphism", "twocell" ] ) then
+        if filter_list[2] in [ "object", "morphism", "twocell" ] then
             
             get_convenience_function := oper -> { arg } -> CallFuncList( oper, Concatenation( [ CapCategory( arg[1] ) ], arg ) );
             
@@ -283,13 +283,9 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
         input_sanity_check_functions := [];
         for i in [ 1 .. Length( record.filter_list ) ] do
+            
             filter := record.filter_list[ i ];
 
-            # in the special case of multiple filters, we currently only test for the first one
-            if not IsString( filter ) and IsList( filter ) then
-                filter := filter[1];
-            fi;
-            
             if IsFilter( filter ) then
                 # the only check would be that the input lies in the filter, which is already checked by the method selection
                 input_sanity_check_functions[i] := ReturnTrue;

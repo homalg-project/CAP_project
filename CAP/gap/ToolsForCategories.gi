@@ -442,13 +442,10 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
                   Error( "filter type is not recognized, see the documentation for allowed values" );
               fi;
               
-          elif IsList( current_entry ) then
-              current_entry := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( current_entry, category );
-              current_filter := current_entry[ 1 ];
-              for j in current_entry{[ 2 .. Length( current_entry ) ]} do
-                  current_filter := current_filter and j;
-              od;
-              list[ i ] := current_filter;
+          else
+              
+              Error( "the entries of filter lists must be strings or filters" );
+              
           fi;
           
       od;
