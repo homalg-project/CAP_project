@@ -271,6 +271,8 @@ InstallMethod( WrapperCategory,
                 
             fi;
             
+            SetRangeCategoryOfHomomorphismStructure( D, HC );
+            
             if "DistinguishedObjectOfHomomorphismStructure" in list_of_operations_to_install then
                 AddDistinguishedObjectOfHomomorphismStructure( D,
                   function( cat )
@@ -317,6 +319,8 @@ InstallMethod( WrapperCategory,
             fi;
             
         else
+            
+            SetRangeCategoryOfHomomorphismStructure( D, HC );
             
             if "DistinguishedObjectOfHomomorphismStructure" in list_of_operations_to_install then
                 AddDistinguishedObjectOfHomomorphismStructure( D,
@@ -373,8 +377,6 @@ InstallMethod( WrapperCategory,
             fi;
             
         fi;
-        
-        SetRangeCategoryOfHomomorphismStructure( D, HC );
         
     fi;
     

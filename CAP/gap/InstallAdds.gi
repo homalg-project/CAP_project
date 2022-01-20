@@ -308,6 +308,14 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 input_sanity_check_functions[i] := function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
+            elif filter = "object_in_range_category_of_homomorphism_structure" then
+                input_sanity_check_functions[i] := function( arg, i )
+                    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg, RangeCategoryOfHomomorphismStructure( category ), function( ) return input_human_readable_identifier_getter( i ); end );
+                end;
+            elif filter = "morphism_in_range_category_of_homomorphism_structure" then
+                input_sanity_check_functions[i] := function( arg, i )
+                    CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg, RangeCategoryOfHomomorphismStructure( category ), function( ) return input_human_readable_identifier_getter( i ); end );
+                end;
             elif filter = "other_cell" then
                 input_sanity_check_functions[i] := function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_CELL_OF_CATEGORY( arg, false, function( ) return input_human_readable_identifier_getter( i ); end );
@@ -376,6 +384,14 @@ InstallGlobalFunction( CapInternalInstallAdd,
         elif record.return_type = "twocell" then
             output_sanity_check_function := function( result )
                 CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
+            end;
+        elif record.return_type = "object_in_range_category_of_homomorphism_structure" then
+            output_sanity_check_function := function( result )
+                CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( result, RangeCategoryOfHomomorphismStructure( category ), output_human_readable_identifier_getter );
+            end;
+        elif record.return_type = "morphism_in_range_category_of_homomorphism_structure" then
+            output_sanity_check_function := function( result )
+                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, RangeCategoryOfHomomorphismStructure( category ), output_human_readable_identifier_getter );
             end;
         elif record.return_type = "bool" then
             output_sanity_check_function := function( result )

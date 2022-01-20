@@ -422,6 +422,32 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
                   else
                       list[ i ] := IsCapCategoryTwoCell;
                   fi;
+              elif current_entry = "object_in_range_category_of_homomorphism_structure" then
+                  
+                  if category <> false and not HasRangeCategoryOfHomomorphismStructure( category ) then
+                      
+                      Display( Concatenation( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of a homomorphism structure but the category has no RangeCategoryOfHomomorphismStructure (yet)" ) );
+                      
+                  fi;
+                  
+                  if category <> false and HasRangeCategoryOfHomomorphismStructure( category ) then
+                      list[ i ] := ObjectFilter( RangeCategoryOfHomomorphismStructure( category ) ) and IsCapCategoryObject;
+                  else
+                      list[ i ] := IsCapCategoryObject;
+                  fi;
+              elif current_entry = "morphism_in_range_category_of_homomorphism_structure" then
+                  
+                  if category <> false and not HasRangeCategoryOfHomomorphismStructure( category ) then
+                      
+                      Display( Concatenation( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of a homomorphism structure but the category has no RangeCategoryOfHomomorphismStructure (yet)" ) );
+                      
+                  fi;
+                  
+                  if category <> false and HasRangeCategoryOfHomomorphismStructure( category ) then
+                      list[ i ] := MorphismFilter( RangeCategoryOfHomomorphismStructure( category ) ) and IsCapCategoryMorphism;
+                  else
+                      list[ i ] := IsCapCategoryMorphism;
+                  fi;
               elif current_entry = "other_category" then
                   list[ i ] := IsCapCategory;
               elif current_entry = "other_cell" then

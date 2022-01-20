@@ -90,6 +90,26 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
     
     only_primitive_operations := ValueOption( "only_primitive_operations" ) = true;
     
+    ## Take care of attributes
+    ## TODO: if there are more instances, set markers in the MethodRecord
+    list_of_attributes := [ "RangeCategoryOfHomomorphismStructure", "CommutativeRingOfLinearCategory" ];
+    
+    for attr in list_of_attributes do
+        
+        tester := ValueGlobal( Concatenation( "Has", attr ) );
+        
+        if not tester( opposite_category ) and tester( category ) then
+            
+            setter := ValueGlobal( Concatenation( "Set", attr ) );
+            
+            getter := ValueGlobal( attr );
+            
+            setter( opposite_category, getter( category ) );
+            
+        fi;
+        
+    od;
+    
     recnames := RecNames( CAP_INTERNAL_METHOD_NAME_RECORD );
     
     for current_recname in recnames do
@@ -318,26 +338,6 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
         current_add := ValueGlobal( Concatenation( "Add", current_recname ) );
         
         current_add( opposite_category, func, weight );
-        
-    od;
-    
-    ## Take care of attributes
-    ## TODO: if there are more instances, set markers in the MethodRecord
-    list_of_attributes := [ "RangeCategoryOfHomomorphismStructure", "CommutativeRingOfLinearCategory" ];
-    
-    for attr in list_of_attributes do
-        
-        tester := ValueGlobal( Concatenation( "Has", attr ) );
-        
-        if not tester( opposite_category ) and tester( category ) then
-            
-            setter := ValueGlobal( Concatenation( "Set", attr ) );
-            
-            getter := ValueGlobal( attr );
-            
-            setter( opposite_category, getter( category ) );
-            
-        fi;
         
     od;
     

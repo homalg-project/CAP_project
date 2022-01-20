@@ -11,6 +11,8 @@ InstallValue( CAP_INTERNAL_VALID_RETURN_TYPES,
         "morphism",
         "morphism_or_fail",
         "twocell",
+        "object_in_range_category_of_homomorphism_structure",
+        "morphism_in_range_category_of_homomorphism_structure",
         "bool",
         "other_object",
         "other_morphism",
@@ -2998,7 +3000,7 @@ IsHomSetInhabited := rec(
 
 HomomorphismStructureOnObjects := rec(
   filter_list := [ "category", "object", "object" ],
-  return_type := "other_object",
+  return_type := "object_in_range_category_of_homomorphism_structure",
   dual_operation := "HomomorphismStructureOnObjects",
   dual_arguments_reversed := true,
   dual_postprocessor_func := IdFunc
@@ -3010,7 +3012,7 @@ HomomorphismStructureOnMorphisms := rec(
   output_source_getter_string := "HomomorphismStructureOnObjects( cat, Range( alpha ), Source( beta ) )",
   output_range_getter_string := "HomomorphismStructureOnObjects( cat, Source( alpha ), Range( beta ) )",
   with_given_object_position := "both",
-  return_type := "other_morphism",
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
   dual_operation := "HomomorphismStructureOnMorphisms",
   dual_preprocessor_func := function( cat, alpha, beta )
     return [ OppositeCategory( cat ), Opposite( beta ), Opposite( alpha ) ];
@@ -3019,11 +3021,11 @@ HomomorphismStructureOnMorphisms := rec(
 ),
 
 HomomorphismStructureOnMorphismsWithGivenObjects := rec(
-  filter_list := [ "category", "other_object", "morphism", "morphism", "other_object" ],
+  filter_list := [ "category", "object_in_range_category_of_homomorphism_structure", "morphism", "morphism", "object_in_range_category_of_homomorphism_structure" ],
   input_arguments_names := [ "cat", "source", "alpha", "beta", "range" ],
   output_source_getter_string := "source",
   output_range_getter_string := "range",
-  return_type := "other_morphism",
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
   dual_operation := "HomomorphismStructureOnMorphismsWithGivenObjects",
   dual_preprocessor_func := function( cat, source, alpha, beta, range )
     return [ OppositeCategory( cat ), source, Opposite( beta ), Opposite( alpha ), range ];
@@ -3033,7 +3035,7 @@ HomomorphismStructureOnMorphismsWithGivenObjects := rec(
 
 DistinguishedObjectOfHomomorphismStructure := rec(
   filter_list := [ "category" ],
-  return_type := "other_object",
+  return_type := "object_in_range_category_of_homomorphism_structure",
   dual_operation := "DistinguishedObjectOfHomomorphismStructure",
   dual_postprocessor_func := IdFunc ),
 
@@ -3043,17 +3045,17 @@ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure := rec
   output_source_getter_string := "DistinguishedObjectOfHomomorphismStructure( cat )",
   output_range_getter_string := "HomomorphismStructureOnObjects( cat, Source( alpha ), Range( alpha ) )",
   with_given_object_position := "both",
-  return_type := "other_morphism",
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
   dual_operation := "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
   dual_postprocessor_func := IdFunc
 ),
 
 InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects := rec(
-  filter_list := [ "category", "other_object", "morphism", "other_object" ],
+  filter_list := [ "category", "object_in_range_category_of_homomorphism_structure", "morphism", "object_in_range_category_of_homomorphism_structure" ],
   input_arguments_names := [ "cat", "source", "alpha", "range" ],
   output_source_getter_string := "source",
   output_range_getter_string := "range",
-  return_type := "other_morphism",
+  return_type := "morphism_in_range_category_of_homomorphism_structure",
   dual_operation := "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects",
   dual_preprocessor_func := function( cat, distinguished_object, alpha, hom_source_range )
     return [ OppositeCategory( cat ), distinguished_object, Opposite( alpha ), hom_source_range ];
@@ -3062,7 +3064,7 @@ InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGiv
 ),
 
 InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism := rec(
-  filter_list := [ "category", "object", "object", "other_morphism" ],
+  filter_list := [ "category", "object", "object", "morphism_in_range_category_of_homomorphism_structure" ],
   return_type := "morphism",
   dual_operation := "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism",
   dual_preprocessor_func := function( cat, A, B, morphism )
@@ -4723,9 +4725,9 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
                 
             fi;
             
-            if not without_given_rec.return_type in [ "morphism", "other_morphism" ] then
+            if not without_given_rec.return_type in [ "morphism", "morphism_in_range_category_of_homomorphism_structure", "other_morphism" ] then
                 
-                Error( "This is a WithoutGiven record, but return_type is neither \"morphism\" nor \"other_morphism\". This is not supported." );
+                Error( "This is a WithoutGiven record, but return_type is neither \"morphism\" nor \"morphism_in_range_category_of_homomorphism_structure\" nor \"other_morphism\". This is not supported." );
                 
             fi;
             
@@ -4733,6 +4735,10 @@ InstallGlobalFunction( CAP_INTERNAL_ENHANCE_NAME_RECORD,
             if without_given_rec.return_type = "morphism" then
                 
                 with_given_object_filter := "object";
+                
+            elif without_given_rec.return_type = "morphism_in_range_category_of_homomorphism_structure" then
+                
+                with_given_object_filter := "object_in_range_category_of_homomorphism_structure";
                 
             elif without_given_rec.return_type = "other_morphism" then
                 
