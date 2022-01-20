@@ -64,6 +64,16 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
                     # normalize to the "official" name
                     name := NameFunction( value );
                     
+                    # in GAP 4.11, "MatElm" points to "[,]", in GAP 4.12 it's the other way round
+                    if name = "[,]" then
+                        
+                        # this code is only executed with GAP 4.11, but coverage information is only uploaded for GAP master
+                        Assert( 0, IsIdenticalObj( \[\,\], MatElm ) );
+                        
+                        name := "MatElm";
+                        
+                    fi;
+                    
                     if name <> tree.gvar and IsBoundGlobal( name ) and IsIdenticalObj( value, ValueGlobal( name ) ) then
                         
                         tree := ShallowCopy( tree );

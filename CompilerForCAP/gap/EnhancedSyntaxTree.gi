@@ -3,6 +3,26 @@
 #
 # Implementations
 #
+BindGlobal( "CAP_JIT_INTERNAL_SYNTAX_TREE_TO_OPERATION_TRANSLATIONS", rec(
+    EXPR_ELM_LIST := tree -> rec( operation_name := "[]", args := [ tree.list, tree.pos ] ),
+    EXPR_ELMS_LIST := tree -> rec( operation_name := "{}", args := [ tree.list, tree.poss ] ),
+    EXPR_ELM_MAT := tree -> rec( operation_name := "MatElm", args := [ tree.list, tree.row, tree.col ] ),
+    EXPR_SUM := tree -> rec( operation_name := "+", args := [ tree.left, tree.right ] ),
+    EXPR_DIFF := tree -> rec( operation_name := "-", args := [ tree.left, tree.right ] ),
+    EXPR_PROD := tree -> rec( operation_name := "*", args := [ tree.left, tree.right ] ),
+    EXPR_QUO := tree -> rec( operation_name := "/", args := [ tree.left, tree.right ] ),
+) );
+
+BindGlobal( "CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS", rec(
+    \[\] := tree -> rec( type := "EXPR_ELM_LIST", list := tree.args.1, pos := tree.args.2 ),
+    \{\} := tree -> rec( type := "EXPR_ELMS_LIST", list := tree.args.1, poss := tree.args.2 ),
+    MatELm := tree -> rec( type := "EXPR_ELM_MAT", list := tree.args.1, row := tree.args.2, col := tree.args.3 ),
+    \+ := tree -> rec( type := "EXPR_SUM", left := tree.args.1, right := tree.args.2 ),
+    \- := tree -> rec( type := "EXPR_DIFF", left := tree.args.1, right := tree.args.2 ),
+    \* := tree -> rec( type := "EXPR_PROD", left := tree.args.1, right := tree.args.2 ),
+    \/ := tree -> rec( type := "EXPR_QUO", left := tree.args.1, right := tree.args.2 ),
+) );
+
 InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
   local ErrorWithFuncLocation, globalize_hvars, only_if_CAP_JIT_RESOLVE_FUNCTION, given_arguments, tree, orig_tree, pre_func, result_func, additional_arguments_func;
     
@@ -64,7 +84,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
     fi;
     
     pre_func := function ( tree, additional_arguments )
-      local path, func_stack, new_tree, statements, i, statement, level, pos, lvars, value, to_delete, next_statement, funccall, operation_name, branch, keyvalue;
+      local path, func_stack, new_tree, statements, i, statement, level, pos, lvars, value, to_delete, next_statement, funccall, translation, operation_name, branch, keyvalue;
         
         path := additional_arguments[1];
         func_stack := additional_arguments[2];
@@ -418,21 +438,20 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 
             fi;
             
-            # replace EXPR_ELM_MAT by call to MatElm
-            if tree.type = "EXPR_ELM_MAT" then
+            # replace by operation if possible
+            if IsBound( CAP_JIT_INTERNAL_SYNTAX_TREE_TO_OPERATION_TRANSLATIONS.(tree.type) ) then
+                
+                translation := CAP_JIT_INTERNAL_SYNTAX_TREE_TO_OPERATION_TRANSLATIONS.(tree.type)( tree );
                 
                 tree := rec(
                     type := "EXPR_FUNCCALL",
                     funcref := rec(
                         type := "EXPR_REF_GVAR",
-                        gvar := "MatElm",
+                        gvar := translation.operation_name,
                     ),
-                    args := [
-                        tree.list,
-                        tree.row,
-                        tree.col,
-                    ],
+                    args := translation.args,
                 );
+                
                 
             fi;
             
@@ -742,6 +761,13 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
             tree := List( [ 1 .. tree.length ], i -> tree.(i) );
             
         else
+            
+            # replace by native syntax if possible
+            if CapJitIsCallToGlobalFunction( tree, gvar -> gvar in RecNames( CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS ) ) then
+                
+                tree := CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS.(tree.funcref.gvar)( tree );
+                
+            fi;
             
             # check that function IDs are unique (except dummy ID -1)
             if tree.type = "EXPR_DECLARATIVE_FUNC" and tree.id <> -1 then
@@ -1193,19 +1219,6 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                             ] ),
                         ),
                     ),
-                );
-                
-            fi;
-            
-            # normalize "[,]" (GAP 4.11) to "MatElm" (GAP 4.12)
-            if tree.type = "EXPR_REF_GVAR" and tree.gvar = "[,]" then
-                
-                # this code is only executed with GAP 4.11, but coverage information is only uploaded for GAP master
-                Assert( 0, IsIdenticalObj( \[\,\], MatElm ) );
-                
-                tree := rec(
-                    type := "EXPR_REF_GVAR",
-                    gvar := "MatElm",
                 );
                 
             fi;
