@@ -513,7 +513,7 @@ AddDerivationToCAP( MorphismFromInternalCoHomToTensorProductWithGivenObjects,
 
     #       Cohom(a,b)
     #            |
-    #            | Cohom( (λ_a)^-1, (ρ_b)^-1)
+    #            | Cohom(λ_a, (ρ_b)^-1)
     #            v
     # Cohom(1 x a, b x 1)
     #            |
@@ -528,7 +528,7 @@ AddDerivationToCAP( MorphismFromInternalCoHomToTensorProductWithGivenObjects,
     
     return PreComposeList( cat, [
              InternalCoHomOnMorphisms( cat,
-               LeftUnitorInverse( cat, a ),
+               LeftUnitor( cat, a ),
                RightUnitorInverse( cat, b ) ),
               
              InternalCoHomTensorProductCompatibilityMorphism( cat,

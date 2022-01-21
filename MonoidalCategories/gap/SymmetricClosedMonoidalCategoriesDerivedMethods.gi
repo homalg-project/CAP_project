@@ -510,7 +510,7 @@ AddDerivationToCAP( MorphismFromTensorProductToInternalHomWithGivenObjects,
     #          v
     # Hom(a x 1, 1 x b)
     #          |
-    #          | Hom(ρ_a, λ_b)
+    #          | Hom((ρ_a)^-1, λ_b)
     #          v
     #       Hom(a,b)
 
@@ -525,7 +525,7 @@ AddDerivationToCAP( MorphismFromTensorProductToInternalHomWithGivenObjects,
                [ a, unit, unit, b ] ),
                 
              InternalHomOnMorphisms( cat,
-               RightUnitor( cat, a ),
+               RightUnitorInverse( cat, a ),
                LeftUnitor( cat, b ) ),
            ] );
     
