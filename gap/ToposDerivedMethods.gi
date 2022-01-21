@@ -133,6 +133,60 @@ AddDerivationToCAP( CocartesianRightUnitorInverseWithGivenCoproduct,
 end : Description := "CocartesianRightUnitorInverseWithGivenCoproduct using the injection into the first factor of the coproduct");
 
 ##
+AddDerivationToCAP( CocartesianAssociatorLeftToRightWithGivenCoproducts,
+  function( cat, s, a, b, c, r )
+    local Db_c, bc, iota_b, iota_c, Da_bc, iota_a, iota_bc, Da_b, ab, iota_ab;
+    
+    Db_c := [ b, c ];
+    
+    bc := Coproduct( cat, Db_c );
+    
+    iota_b := InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, Db_c, 1, bc );
+    iota_c := InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, Db_c, 2, bc );
+    
+    Da_bc := [ a, bc ];
+    
+    iota_a := InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, Da_bc, 1, r );
+    iota_bc := InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, Da_bc, 2, r );
+    
+    Da_b := [ a, b ];
+    
+    ab := Coproduct( cat, Da_b );
+    
+    iota_ab := UniversalMorphismFromCoproductWithGivenCoproduct( cat, Da_b, r, [ iota_a, PreCompose( cat, iota_b, iota_bc ) ], ab );
+    
+    return UniversalMorphismFromCoproductWithGivenCoproduct( cat, [ ab, c ], r, [ iota_ab, PreCompose( cat, iota_c, iota_bc ) ], s );
+    
+end : Description := "CocartesianAssociatorLeftToRightWithGivenCoproducts using the universal morphism from coproduct");
+
+##
+AddDerivationToCAP( CocartesianAssociatorRightToLeftWithGivenCoproducts,
+  function( cat, s, a, b, c, r )
+    local Da_b, ab, iota_a, iota_b, Dab_c, iota_ab, iota_c, Db_c, bc, iota_bc;
+    
+    Da_b := [ a, b ];
+    
+    ab := Coproduct( cat, Da_b );
+    
+    iota_a := InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, Da_b, 1, ab );
+    iota_b := InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, Da_b, 2, ab );
+    
+    Dab_c := [ ab, c ];
+    
+    iota_ab := InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, Dab_c, 1, r );
+    iota_c := InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, Dab_c, 2, r );
+    
+    Db_c := [ b, c ];
+    
+    bc := Coproduct( cat, Db_c );
+    
+    iota_bc := UniversalMorphismFromCoproductWithGivenCoproduct( cat, Db_c, r, [ PreCompose( cat, iota_b, iota_ab ), iota_c ], bc );
+    
+    return UniversalMorphismFromCoproductWithGivenCoproduct( cat, [ a, bc ], r, [ PreCompose( cat, iota_a, iota_ab ), iota_bc ], s );
+    
+end : Description := "CocartesianAssociatorRightToLeftWithGivenCoproducts using the universal morphism from coproduct");
+
+##
 AddDerivationToCAP( SubobjectOfClassifyingMorphism,
                     [ [ TruthMorphismOfTrueWithGivenObjects , 1 ],
                       [ ProjectionInFactorOfFiberProduct , 1 ] ],

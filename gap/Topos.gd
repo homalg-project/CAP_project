@@ -40,8 +40,8 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsElementaryTopos :=
           Concatenation( [
                   "SubobjectClassifier",
                   "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
-                  "TruthMorphismOfTrueWithGivenObjects", ## can be derived from SubobjectClassifier and ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier
-                  "SubobjectOfClassifyingMorphism", ## can be derived from SubobjectClassifier and TruthMorphismOfTrueWithGivenObjects
+                  #"TruthMorphismOfTrueWithGivenObjects", ## can be derived from SubobjectClassifier and ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier
+                  #"SubobjectOfClassifyingMorphism", ## can be derived from SubobjectClassifier and TruthMorphismOfTrueWithGivenObjects
                   ],
                   CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory,
                   CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory ) );
