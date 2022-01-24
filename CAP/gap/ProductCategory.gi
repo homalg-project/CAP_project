@@ -138,6 +138,14 @@ BindGlobal( "CAP_INTERNAL_INSTALL_PRODUCT_ADDS_FROM_CATEGORY",
         
         current_entry := CAP_INTERNAL_METHOD_NAME_RECORD.( current_recname );
         
+        if not ForAll( current_entry.filter_list, filter -> filter in [ "category", "cell", "object", "morphism", "twocell", IsInt, "list_of_objects", "list_of_morphisms", "list_of_twocells" ] ) then
+            continue;
+        fi;
+        
+        if not current_entry.return_type in [ "object", "morphism", "twocell", "bool" ] then
+            continue;
+        fi;
+        
         if IsBound( current_entry.no_install ) and current_entry.no_install = true then
             continue;
         fi;

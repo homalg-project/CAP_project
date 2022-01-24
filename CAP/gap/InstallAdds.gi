@@ -106,7 +106,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
         DeclareOperation( install_name, replaced_filter_list );
         
-        if filter_list[2] in [ "object", "morphism", "twocell" ] or ( IsList( filter_list[2] ) and filter_list[2][1] in [ "object", "morphism", "twocell" ] ) then
+        if filter_list[2] in [ "object", "morphism", "twocell" ] then
             
             get_convenience_function := oper -> { arg } -> CallFuncList( oper, Concatenation( [ CapCategory( arg[1] ) ], arg ) );
             
@@ -283,13 +283,9 @@ InstallGlobalFunction( CapInternalInstallAdd,
         
         input_sanity_check_functions := [];
         for i in [ 1 .. Length( record.filter_list ) ] do
+            
             filter := record.filter_list[ i ];
 
-            # in the special case of multiple filters, we currently only test for the first one
-            if not IsString( filter ) and IsList( filter ) then
-                filter := filter[1];
-            fi;
-            
             if IsFilter( filter ) then
                 # the only check would be that the input lies in the filter, which is already checked by the method selection
                 input_sanity_check_functions[i] := ReturnTrue;
@@ -311,6 +307,14 @@ InstallGlobalFunction( CapInternalInstallAdd,
             elif filter = "twocell" then
                 input_sanity_check_functions[i] := function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
+                end;
+            elif filter = "object_in_range_category_of_homomorphism_structure" then
+                input_sanity_check_functions[i] := function( arg, i )
+                    CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( arg, RangeCategoryOfHomomorphismStructure( category ), function( ) return input_human_readable_identifier_getter( i ); end );
+                end;
+            elif filter = "morphism_in_range_category_of_homomorphism_structure" then
+                input_sanity_check_functions[i] := function( arg, i )
+                    CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( arg, RangeCategoryOfHomomorphismStructure( category ), function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
             elif filter = "other_cell" then
                 input_sanity_check_functions[i] := function( arg, i )
@@ -380,6 +384,14 @@ InstallGlobalFunction( CapInternalInstallAdd,
         elif record.return_type = "twocell" then
             output_sanity_check_function := function( result )
                 CAP_INTERNAL_ASSERT_IS_TWO_CELL_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
+            end;
+        elif record.return_type = "object_in_range_category_of_homomorphism_structure" then
+            output_sanity_check_function := function( result )
+                CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( result, RangeCategoryOfHomomorphismStructure( category ), output_human_readable_identifier_getter );
+            end;
+        elif record.return_type = "morphism_in_range_category_of_homomorphism_structure" then
+            output_sanity_check_function := function( result )
+                CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( result, RangeCategoryOfHomomorphismStructure( category ), output_human_readable_identifier_getter );
             end;
         elif record.return_type = "bool" then
             output_sanity_check_function := function( result )

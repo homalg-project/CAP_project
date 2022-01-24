@@ -12,13 +12,22 @@ BindGlobal( "CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES", [
 ] );
 
 InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
-  local pre_func;
+  local result_func;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Resolving global variables." );
     
-    pre_func := function ( tree, additional_arguments )
-      local value, resolved_tree, name, attr, cat, global_variable_name;
+    # we have to use result_func instead of pre_func to correctly resolve `Attribute( UnderlyingCategory( cat ) )`
+    result_func := function ( tree, result, keys, additional_arguments )
+      local key, value, resolved_tree, name, attr, cat, global_variable_name;
+        
+        tree := ShallowCopy( tree );
+        
+        for key in keys do
+            
+            tree.(key) := result.(key);
+            
+        od;
         
         if not (IsBound( tree.CAP_JIT_NOT_RESOLVABLE ) and tree.CAP_JIT_NOT_RESOLVABLE) then
             
@@ -55,7 +64,7 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
                                 
                             fi;
                             
-                            return resolved_tree;
+                            return CapJitResolvedGlobalVariables( resolved_tree );
                             
                         fi;
                         
@@ -63,6 +72,16 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
                     
                     # normalize to the "official" name
                     name := NameFunction( value );
+                    
+                    # in GAP 4.11, "MatElm" points to "[,]", in GAP 4.12 it's the other way round
+                    if name = "[,]" then
+                        
+                        # this code is only executed with GAP 4.11, but coverage information is only uploaded for GAP master
+                        Assert( 0, IsIdenticalObj( \[\,\], MatElm ) );
+                        
+                        name := "MatElm";
+                        
+                    fi;
                     
                     if name <> tree.gvar and IsBoundGlobal( name ) and IsIdenticalObj( value, ValueGlobal( name ) ) then
                         
@@ -92,6 +111,6 @@ InstallGlobalFunction( "CapJitResolvedGlobalVariables", function ( tree )
         
     end;
     
-    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    return CapJitIterateOverTree( tree, ReturnFirst, result_func, ReturnTrue, true );
     
 end );

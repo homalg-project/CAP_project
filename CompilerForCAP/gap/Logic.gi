@@ -50,9 +50,9 @@ CapJitAddLogicFunction( function ( tree, jit_args )
     pre_func := function ( tree, additional_arguments )
       local args;
         
-        if tree.type = "EXPR_ELM_LIST" and tree.list.type = "EXPR_LIST" and tree.pos.type = "EXPR_INT" then
+        if CapJitIsCallToGlobalFunction( tree, "[]" ) and tree.args.1.type = "EXPR_LIST" and tree.args.2.type = "EXPR_INT" then
             
-            return tree.list.list.(tree.pos.value);
+            return tree.args.1.list.(tree.args.2.value);
             
         fi;
         

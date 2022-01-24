@@ -17,18 +17,18 @@ CapJitAddLogicFunction( function( tree, jit_args )
         if CapJitIsCallToGlobalFunction( tree, "HomalgMatrix" ) then
             
             args := tree.args;
-
+            
             # check if ... = [ [ ... ], ... ]
             if args.1.type = "EXPR_LIST" then
                 
                 list := args.1.list;
                 
-                func_id := Last( func_stack).id;
+                func_id := Last( func_stack ).id;
                 
                 # check if all elements of the matrix are multiplied by the same ring element from the left
-                if list.length > 0 and ForAll( list, l -> l.type = "EXPR_PROD" and l.left = list.1.left ) then
+                if list.length > 0 and ForAll( list, l -> CapJitIsCallToGlobalFunction( l, "*" ) and l.args.1 = list.1.args.1 ) then
                     
-                    ring_element := list.1.left;
+                    ring_element := list.1.args.1;
                     
                     # check if ring_element is independent of local variables
                     condition_func := function( tree, path )
@@ -46,13 +46,19 @@ CapJitAddLogicFunction( function( tree, jit_args )
                     if CapJitFindNodeDeep( ring_element, condition_func ) = fail then
                         
                         tree := rec(
-                            type := "EXPR_PROD",
-                            left := ring_element,
-                            right := StructuralCopy( tree ),
+                            type := "EXPR_FUNCCALL",
+                            funcref := rec(
+                                type := "EXPR_REF_GVAR",
+                                gvar := "*",
+                            ),
+                            args := AsSyntaxTreeList( [
+                                ring_element,
+                                StructuralCopy( tree ),
+                            ] ),
                         );
                         
-                        tree.right.args.1.list := List( list, l -> l.right );
-
+                        tree.args.2.args.1.list := List( list, l -> l.args.2 );
+                        
                         return tree;
                         
                     fi;
@@ -60,9 +66,9 @@ CapJitAddLogicFunction( function( tree, jit_args )
                 fi;
                 
                 # check if all elements of the matrix are multiplied by the same ring element from the right
-                if list.length > 0 and ForAll( list, l -> l.type = "EXPR_PROD" and l.right = list.1.right ) then
+                if list.length > 0 and ForAll( list, l -> CapJitIsCallToGlobalFunction( l, "*" ) and l.args.2 = list.1.args.2 ) then
                     
-                    ring_element := list.1.right;
+                    ring_element := list.1.args.2;
                     
                     # check if ring_element is independent of local variables
                     condition_func := function( tree, path )
@@ -80,13 +86,19 @@ CapJitAddLogicFunction( function( tree, jit_args )
                     if CapJitFindNodeDeep( ring_element, condition_func ) = fail then
                         
                         tree := rec(
-                            type := "EXPR_PROD",
-                            left := StructuralCopy( tree ),
-                            right := ring_element,
+                            type := "EXPR_FUNCCALL",
+                            funcref := rec(
+                                type := "EXPR_REF_GVAR",
+                                gvar := "*",
+                            ),
+                            args := AsSyntaxTreeList( [
+                                StructuralCopy( tree ),
+                                ring_element,
+                            ] ),
                         );
                         
-                        tree.left.args.1.list := List( list, l -> l.left );
-
+                        tree.args.1.args.1.list := List( list, l -> l.args.1 );
+                        
                         return tree;
                         
                     fi;
@@ -94,9 +106,9 @@ CapJitAddLogicFunction( function( tree, jit_args )
                 fi;
                 
             fi;
-
-        fi;
             
+        fi;
+        
         return tree;
         
     end;

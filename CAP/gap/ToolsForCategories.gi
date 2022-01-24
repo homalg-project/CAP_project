@@ -422,6 +422,32 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
                   else
                       list[ i ] := IsCapCategoryTwoCell;
                   fi;
+              elif current_entry = "object_in_range_category_of_homomorphism_structure" then
+                  
+                  if category <> false and not HasRangeCategoryOfHomomorphismStructure( category ) then
+                      
+                      Display( Concatenation( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of a homomorphism structure but the category has no RangeCategoryOfHomomorphismStructure (yet)" ) );
+                      
+                  fi;
+                  
+                  if category <> false and HasRangeCategoryOfHomomorphismStructure( category ) then
+                      list[ i ] := ObjectFilter( RangeCategoryOfHomomorphismStructure( category ) ) and IsCapCategoryObject;
+                  else
+                      list[ i ] := IsCapCategoryObject;
+                  fi;
+              elif current_entry = "morphism_in_range_category_of_homomorphism_structure" then
+                  
+                  if category <> false and not HasRangeCategoryOfHomomorphismStructure( category ) then
+                      
+                      Display( Concatenation( "WARNING: You are calling an Add function for a CAP operation for \"", Name( category ), "\" which is part of a homomorphism structure but the category has no RangeCategoryOfHomomorphismStructure (yet)" ) );
+                      
+                  fi;
+                  
+                  if category <> false and HasRangeCategoryOfHomomorphismStructure( category ) then
+                      list[ i ] := MorphismFilter( RangeCategoryOfHomomorphismStructure( category ) ) and IsCapCategoryMorphism;
+                  else
+                      list[ i ] := IsCapCategoryMorphism;
+                  fi;
               elif current_entry = "other_category" then
                   list[ i ] := IsCapCategory;
               elif current_entry = "other_cell" then
@@ -442,13 +468,10 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
                   Error( "filter type is not recognized, see the documentation for allowed values" );
               fi;
               
-          elif IsList( current_entry ) then
-              current_entry := CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS( current_entry, category );
-              current_filter := current_entry[ 1 ];
-              for j in current_entry{[ 2 .. Length( current_entry ) ]} do
-                  current_filter := current_filter and j;
-              od;
-              list[ i ] := current_filter;
+          else
+              
+              Error( "the entries of filter lists must be strings or filters" );
+              
           fi;
           
       od;

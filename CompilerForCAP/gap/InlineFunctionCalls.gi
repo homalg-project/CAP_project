@@ -35,6 +35,11 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID, function ( tree,
             # copy new_nams so the pointer does not leak
             tree.nams := StructuralCopy( new_nams );
             
+            # check that tree.bindings.names and the record entries are in sync
+            # otherwise we might "lose" bindings unexpectedly
+            Assert( 0, IsSortedList( tree.bindings.names ) );
+            Assert( 0, SortedList( Filtered( RecNames( tree.bindings ), name -> StartsWith( name, "BINDING_" ) ) ) = List( tree.bindings.names, name -> Concatenation( "BINDING_", name ) ) );
+            
             new_bindings := rec(
                 type := "FVAR_BINDING_SEQ",
                 names := [ ],
