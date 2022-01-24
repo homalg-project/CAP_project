@@ -957,18 +957,12 @@
     [4X[28Xfunction (  )[128X[104X
     [4X[28X    local val1_1, val2_1;[128X[104X
     [4X[28X    return 1;[128X[104X
-    [4X[28X    val2_1 := 1;[128X[104X
-    [4X[28X    val1_1 := 1;[128X[104X
-    [4X[28X    return;[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27Xtree2 := CapJitInlinedBindings( tree );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree2 ) );[127X[104X
     [4X[28Xfunction (  )[128X[104X
     [4X[28X    local val1_1, val2_1;[128X[104X
     [4X[28X    return 1;[128X[104X
-    [4X[28X    val2_1 := 1;[128X[104X
-    [4X[28X    val1_1 := 1;[128X[104X
-    [4X[28X    return;[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27Xtree = tree2;[127X[104X
     [4X[28Xtrue[128X[104X
@@ -981,18 +975,12 @@
     [4X[28Xfunction (  )[128X[104X
     [4X[28X    local f1_1, f2_1;[128X[104X
     [4X[28X    return IdFunc;[128X[104X
-    [4X[28X    f2_1 := IdFunc;[128X[104X
-    [4X[28X    f1_1 := IdFunc;[128X[104X
-    [4X[28X    return;[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27Xtree2 := CapJitInlinedBindingsToVariableReferences( tree );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree2 ) );[127X[104X
     [4X[28Xfunction (  )[128X[104X
     [4X[28X    local f1_1, f2_1;[128X[104X
     [4X[28X    return IdFunc;[128X[104X
-    [4X[28X    f2_1 := IdFunc;[128X[104X
-    [4X[28X    f1_1 := IdFunc;[128X[104X
-    [4X[28X    return;[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27Xtree = tree2;[127X[104X
     [4X[28Xtrue[128X[104X
@@ -1189,6 +1177,57 @@
     [4X[28X                 ), cat_1, Dimension, NrColumns( morphism_attr_2_1 ) ), [128X[104X
     [4X[28X           UnderlyingMatrix, morphism_attr_2_1 ) ];[128X[104X
     [4X[28Xend[128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# check that CapJitResolvedGlobalVariables is idempotent[127X[104X
+    [4X[25X>[125X [27X[127X[104X
+    [4X[25X>[125X [27XMY_GLOBAL_FUNCTION_1 := function ( x )[127X[104X
+    [4X[25X>[125X [27X    #% CAP_JIT_RESOLVE_FUNCTION[127X[104X
+    [4X[25X>[125X [27X    return x; end;;[127X[104X
+    [4X[25Xgap>[125X [27XMY_GLOBAL_FUNCTION_2 := function ( x )[127X[104X
+    [4X[25X>[125X [27X    #% CAP_JIT_RESOLVE_FUNCTION[127X[104X
+    [4X[25X>[125X [27X    return MY_GLOBAL_FUNCTION_1( x ); end;;[127X[104X
+    [4X[25Xgap>[125X [27XMY_CAP_CATEGORY_1 := CreateCapCategory( );;[127X[104X
+    [4X[25Xgap>[125X [27XMY_CAP_CATEGORY_2 := CreateCapCategory( );;[127X[104X
+    [4X[25Xgap>[125X [27XSetUnderlyingCategory( MY_CAP_CATEGORY_1, MY_CAP_CATEGORY_2 );[127X[104X
+    [4X[25Xgap>[125X [27XDeclareAttribute( "MyAttribute", IsCapCategory );[127X[104X
+    [4X[25Xgap>[125X [27XSetMyAttribute( MY_CAP_CATEGORY_2, MY_GLOBAL_FUNCTION_2 );[127X[104X
+    [4X[25Xgap>[125X [27Xfunc := function ( )[127X[104X
+    [4X[25X>[125X [27X  return MY_GLOBAL_FUNCTION_2( MyAttribute([127X[104X
+    [4X[25X>[125X [27X        UnderlyingCategory( MY_CAP_CATEGORY_1 )[127X[104X
+    [4X[25X>[125X [27X    ) ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitResolvedGlobalVariables( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree ) );[127X[104X
+    [4X[28Xfunction (  )[128X[104X
+    [4X[28X    return function ( x_2 )[128X[104X
+    [4X[28X            return function ( x_3 )[128X[104X
+    [4X[28X                    return x_3;[128X[104X
+    [4X[28X                end( x_2 );[128X[104X
+    [4X[28X        end( function ( x_2 )[128X[104X
+    [4X[28X            return function ( x_3 )[128X[104X
+    [4X[28X                    return x_3;[128X[104X
+    [4X[28X                end( x_2 );[128X[104X
+    [4X[28X        end );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27Xtree2 := CapJitResolvedGlobalVariables( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree2 ) );[127X[104X
+    [4X[28Xfunction (  )[128X[104X
+    [4X[28X    return function ( x_2 )[128X[104X
+    [4X[28X            return function ( x_3 )[128X[104X
+    [4X[28X                    return x_3;[128X[104X
+    [4X[28X                end( x_2 );[128X[104X
+    [4X[28X        end( function ( x_2 )[128X[104X
+    [4X[28X            return function ( x_3 )[128X[104X
+    [4X[28X                    return x_3;[128X[104X
+    [4X[28X                end( x_2 );[128X[104X
+    [4X[28X        end );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27Xtree = tree2;[127X[104X
+    [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X

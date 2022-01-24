@@ -577,7 +577,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitInlinedBindings</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
 
-<p>Example: transforms <code class="code">function() local x; x := 1; return x^2; end</code> into <code class="code">function() return 1^2; end()</code>. Details: Replaces references to local variables of a function by the value of the corresponding binding of the function. If the option <code class="code">inline_var_refs_only</code> is set to <code class="code">true</code>, this is only done if the value is a reference to a (local or global) variable.</p>
+<p>Example: transforms <code class="code">function() local x; x := 1; return x^2; end</code> into <code class="code">function() return 1^2; end()</code>. Details: Replaces references to local variables of a function by the value of the corresponding binding of the function. If the option <code class="code">inline_var_refs_only</code> is set to <code class="code">true</code>, this is only done if the value is a reference to a (local or global) variable. Also drops the inlined bindings.</p>
 
 <p><a id="X82F8D6B5851674EB" name="X82F8D6B5851674EB"></a></p>
 

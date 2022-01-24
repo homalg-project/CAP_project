@@ -1,7 +1,7 @@
 name: CompilerForCAP
-version: "2021.12-06"
+version: "2022.01-01"
 license: "GPL-2.0-or-later"
-date: 2021-12-20
+date: 2022-01-24
 description: |
     Speed up computations in CAP categories
 
@@ -26,11 +26,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/CompilerForCAP/Package
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2021.12-06/CompilerForCAP-2021.12-06.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2022.01-01/CompilerForCAP-2022.01-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2021.12-06/CompilerForCAP-2021.12-06.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2022.01-01/CompilerForCAP-2022.01-01.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2021.12-06/CompilerForCAP-2021.12-06.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/CompilerForCAP-2022.01-01/CompilerForCAP-2022.01-01.pdf
 
 abstract: |
 
@@ -39,28 +39,28 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Zic21</span>]   <b class='BibAuthor'>Zickgraf, F.</b>,
+    [<span class='BibKey'>Zic22</span>]   <b class='BibAuthor'>Zickgraf, F.</b>,
      <i class='BibTitle'>CompilerForCAP, Speed up computations in CAP categories,
-             Version 2021.12-06</i>
-     (<span class='BibYear'>2021</span>)<br />
+             Version 2022.01-01</i>
+     (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/CompilerForCAP">https://homalg-project.github.io/pkg/CompilerForCAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ CompilerForCAP2021.12-06,
+    @misc{ CompilerForCAP2022.01-01,
       author =           {Zickgraf, F.},
       title =            {{CompilerForCAP},   Speed   up   computations  in  CAP
-                          categories, {V}ersion 2021.12-06},
-      month =            {Dec},
-      year =             {2021},
+                          categories, {V}ersion 2022.01-01},
+      month =            {Jan},
+      year =             {2022},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/CompilerForCAP}
                           {\texttt{https://homalg-project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{CompilerForCAP}}},
-      printedkey =       {Zic21}
+      printedkey =       {Zic22}
     }
 
