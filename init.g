@@ -9,11 +9,11 @@ ReadPackage( "Toposes", "gap/Tools.gd");
 fi;
 
 ## Cartesian and Cocartesian
-ReadPackage( "Toposes", "gap/CartesianCategoriesProperties.gd" );
-ReadPackage( "Toposes", "gap/CocartesianCategoriesProperties.gd" );
-
 ReadPackage( "Toposes", "gap/CartesianCategories.gd" );
 ReadPackage( "Toposes", "gap/CocartesianCategories.gd" );
+
+ReadPackage( "Toposes", "gap/CartesianCategoriesProperties.gd" );
+ReadPackage( "Toposes", "gap/CocartesianCategoriesProperties.gd" );
 
 ReadPackage( "Toposes", "gap/CartesianCategories.autogen.gd" );
 ReadPackage( "Toposes", "gap/CocartesianCategories.autogen.gd" );
