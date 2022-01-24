@@ -21,7 +21,7 @@ DeclareGlobalVariable( "CAP_INTERNAL_TERMINAL_CATEGORY" );
 ##
 #########################################
 
-DeclareFilter( "IsTerminalCategory" );
+AddCategoricalProperty( [ "IsTerminalCategory", "IsTerminalCategory" ] );
 
 #########################################
 ##
