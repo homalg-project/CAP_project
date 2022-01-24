@@ -498,7 +498,7 @@ DeclareOperation( "CapInternalInstallAdd",
 </ul>
 
 <ul>
-<li><p>filter_list: A list containing the basic filters for the methods installed by the add methods. Possible entries are filters, or the strings listed below, which will be replaced by appropriate filters at the time the add method is called. Additionally, an entry can be a list with two entries. In this case, the first entry must be one of the strings listed below and the second entry must be a filter. After the first entry is replaced by the appropriate filter, both entries are joined via <code class="code">and</code> to form a single filter. The first entry of <code class="code">filter_list</code> must be the string <code class="code">category</code>. If the category can be inferred from the remaining arguments, a convenience method without the category as the first argument is installed automatically. Additionally, the category is not passed to primitively added functions, except if <code class="code">category!.category_as_first_argument</code> is set to <code class="code">true</code> (this will probably change to be the default in the future).</p>
+<li><p>filter_list: A list containing the basic filters for the methods installed by the add methods. Possible entries are filters, or the strings listed below, which will be replaced by appropriate filters at the time the add method is called. The first entry of <code class="code">filter_list</code> must be the string <code class="code">category</code>. If the category can be inferred from the remaining arguments, a convenience method without the category as the first argument is installed automatically. Additionally, the category is not passed to primitively added functions, except if <code class="code">category!.category_as_first_argument</code> is set to <code class="code">true</code> (this will probably change to be the default in the future).</p>
 
 
 <ul>
@@ -515,6 +515,12 @@ DeclareOperation( "CapInternalInstallAdd",
 
 </li>
 <li><p><code class="code">twocell</code>,</p>
+
+</li>
+<li><p><code class="code">object_in_range_category_of_homomorphism_structure</code>,</p>
+
+</li>
+<li><p><code class="code">morphism_in_range_category_of_homomorphism_structure</code>,</p>
 
 </li>
 <li><p><code class="code">other_category</code>,</p>
@@ -564,6 +570,8 @@ DeclareOperation( "CapInternalInstallAdd",
         "morphism",
         "morphism_or_fail",
         "twocell",
+        "object_in_range_category_of_homomorphism_structure",
+        "morphism_in_range_category_of_homomorphism_structure",
         "bool",
         "other_object",
         "other_morphism",

@@ -175,17 +175,13 @@
   [30X    [33X[0;6Yfilter_list:  A  list  containing  the  basic  filters for the methods
         installed  by  the  add  methods. Possible entries are filters, or the
         strings listed below, which will be replaced by appropriate filters at
-        the  time  the  add  method is called. Additionally, an entry can be a
-        list  with  two  entries. In this case, the first entry must be one of
-        the  strings listed below and the second entry must be a filter. After
-        the  first  entry  is replaced by the appropriate filter, both entries
-        are  joined  via  [10Xand[110X  to  form  a  single  filter. The first entry of
-        [10Xfilter_list[110X  must  be  the  string  [10Xcategory[110X.  If  the category can be
-        inferred  from  the  remaining arguments, a convenience method without
-        the  category  as  the  first  argument  is  installed  automatically.
-        Additionally,   the  category  is  not  passed  to  primitively  added
-        functions,  except  if  [10Xcategory!.category_as_first_argument[110X is set to
-        [10Xtrue[110X (this will probably change to be the default in the future).[133X
+        the time the add method is called. The first entry of [10Xfilter_list[110X must
+        be  the  string  [10Xcategory[110X.  If  the  category can be inferred from the
+        remaining  arguments, a convenience method without the category as the
+        first  argument is installed automatically. Additionally, the category
+        is   not   passed   to   primitively   added   functions,   except  if
+        [10Xcategory!.category_as_first_argument[110X   is   set  to  [10Xtrue[110X  (this  will
+        probably change to be the default in the future).[133X
   
         [30X    [33X[0;12Y[10Xcategory[110X,[133X
   
@@ -196,6 +192,10 @@
         [30X    [33X[0;12Y[10Xmorphism[110X,[133X
   
         [30X    [33X[0;12Y[10Xtwocell[110X,[133X
+  
+        [30X    [33X[0;12Y[10Xobject_in_range_category_of_homomorphism_structure[110X,[133X
+  
+        [30X    [33X[0;12Y[10Xmorphism_in_range_category_of_homomorphism_structure[110X,[133X
   
         [30X    [33X[0;12Y[10Xother_category[110X,[133X
   
@@ -231,6 +231,8 @@
     [4X        "morphism",[104X
     [4X        "morphism_or_fail",[104X
     [4X        "twocell",[104X
+    [4X        "object_in_range_category_of_homomorphism_structure",[104X
+    [4X        "morphism_in_range_category_of_homomorphism_structure",[104X
     [4X        "bool",[104X
     [4X        "other_object",[104X
     [4X        "other_morphism",[104X
