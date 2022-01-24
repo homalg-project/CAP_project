@@ -11,3 +11,6 @@ Perform(
       [ "IsStrictCocartesianCategory", "IsStrictCartesianCategory" ],
     ],
     AddCategoricalProperty );
+
+Append( CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory,
+        [ "UniversalMorphismFromCoproductWithGivenCoproduct" ] );
