@@ -30,7 +30,7 @@ InstallMethod( TensorProductOp,
   function( list, object )
     local size, i;
     
-    size := Size( list );
+    size := Length( list );
     
     if size = 1 then
         
@@ -57,7 +57,7 @@ InstallMethod( TensorProductOp,
   function( list, morphism )
     local size, i;
     
-    size := Size( list );
+    size := Length( list );
     
     if size = 1 then
         
