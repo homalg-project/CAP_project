@@ -73,7 +73,7 @@ DeclareOperation( "AssociatorLeftToRightWithGivenTensorProducts",
 #! @Description
 #! The argument is an object $a$.
 #! The output is the left unitor $\lambda_a: 1 \otimes a \rightarrow a$.
-#! @Returns a morphism in $\mathrm{Hom}(1 \otimes a, a )$
+#! @Returns a morphism in $\mathrm{Hom}(1 \otimes a, a)$
 #! @Arguments a
 DeclareAttribute( "LeftUnitor",
                   IsCapCategoryObject );
@@ -81,7 +81,7 @@ DeclareAttribute( "LeftUnitor",
 #! @Description
 #! The arguments are an object $a$ and an object $s = 1 \otimes a$.
 #! The output is the left unitor $\lambda_a: 1 \otimes a \rightarrow a$.
-#! @Returns a morphism in $\mathrm{Hom}(1 \otimes a, a )$
+#! @Returns a morphism in $\mathrm{Hom}(1 \otimes a, a)$
 #! @Arguments a, s
 DeclareOperation( "LeftUnitorWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
@@ -105,7 +105,7 @@ DeclareOperation( "LeftUnitorInverseWithGivenTensorProduct",
 #! @Description
 #! The argument is an object $a$.
 #! The output is the right unitor $\rho_a: a \otimes 1 \rightarrow a$.
-#! @Returns a morphism in $\mathrm{Hom}(a \otimes 1, a )$
+#! @Returns a morphism in $\mathrm{Hom}(a \otimes 1, a)$
 #! @Arguments a
 DeclareAttribute( "RightUnitor",
                   IsCapCategoryObject );
@@ -113,7 +113,7 @@ DeclareAttribute( "RightUnitor",
 #! @Description
 #! The arguments are an object $a$ and an object $s = a \otimes 1$.
 #! The output is the right unitor $\rho_a: a \otimes 1 \rightarrow a$.
-#! @Returns a morphism in $\mathrm{Hom}(a \otimes 1, a )$
+#! @Returns a morphism in $\mathrm{Hom}(a \otimes 1, a)$
 #! @Arguments a, s
 DeclareOperation( "RightUnitorWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
@@ -121,7 +121,7 @@ DeclareOperation( "RightUnitorWithGivenTensorProduct",
 #! @Description
 #! The argument is an object $a$.
 #! The output is the inverse of the right unitor $\rho_a^{-1}: a \rightarrow a \otimes 1$.
-#! @Returns a morphism in $\mathrm{Hom}( a, a \otimes 1 )$
+#! @Returns a morphism in $\mathrm{Hom}(a, a \otimes 1)$
 #! @Arguments a
 DeclareAttribute( "RightUnitorInverse",
                   IsCapCategoryObject );
@@ -130,7 +130,7 @@ DeclareAttribute( "RightUnitorInverse",
 #! @Description
 #! The arguments are an object $a$ and an object $r = a \otimes 1$.
 #! The output is the inverse of the right unitor $\rho_a^{-1}: a \rightarrow a \otimes 1$.
-#! @Returns a morphism in $\mathrm{Hom}( a, a \otimes 1 )$
+#! @Returns a morphism in $\mathrm{Hom}(a, a \otimes 1)$
 #! @Arguments a, r
 DeclareOperation( "RightUnitorInverseWithGivenTensorProduct",
                   [ IsCapCategoryObject, IsCapCategoryObject ] );
