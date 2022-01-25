@@ -294,6 +294,16 @@ rec(
           0_type := "EXPR_INT",
           1_value := 2 ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_FUNCTION_ID := original_func_id;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that function stack depth is removed</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">func := x -&gt; y -&gt; 1;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func2 := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree2 := ENHANCED_SYNTAX_TREE( func2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree.nams = tree2.nams;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree.bindings.BINDING_RETURN_VALUE.nams =</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    tree2.bindings.BINDING_RETURN_VALUE.nams;</span>
+true
 </pre></div>
 
 

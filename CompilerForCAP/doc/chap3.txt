@@ -258,6 +258,16 @@
     [4X[28X          0_type := "EXPR_INT",[128X[104X
     [4X[28X          1_value := 2 ) ) )[128X[104X
     [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID := original_func_id;;[127X[104X
+    [4X[25Xgap>[125X [27X# check that function stack depth is removed[127X[104X
+    [4X[25X>[125X [27Xfunc := x -> y -> 1;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xfunc2 := ENHANCED_SYNTAX_TREE_CODE( tree );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree2 := ENHANCED_SYNTAX_TREE( func2 );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree.nams = tree2.nams;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xtree.bindings.BINDING_RETURN_VALUE.nams =[127X[104X
+    [4X[25X>[125X [27X    tree2.bindings.BINDING_RETURN_VALUE.nams;[127X[104X
+    [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
