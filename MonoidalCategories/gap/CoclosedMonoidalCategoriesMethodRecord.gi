@@ -288,6 +288,8 @@ IsomorphismFromCoDualObjectToInternalCoHomFromTensorUnit := rec(
 IsomorphismFromInternalCoHomFromTensorUnitToCoDualObject := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "i", "d" ] ],
+  output_source_getter_string := "InternalCoHomOnObjects( cat, TensorUnit( cat ), a )",
+  output_range_getter_string := "CoDualOnObjects( cat, a )",
   return_type := "morphism",
   dual_operation := "IsomorphismFromDualObjectToInternalHomIntoTensorUnit",
   # Test in CoclosedMonoidalCategoriesTest
