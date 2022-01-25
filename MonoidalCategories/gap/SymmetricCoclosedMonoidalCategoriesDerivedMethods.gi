@@ -919,3 +919,15 @@ AddDerivationToCAP( MonoidalPostCoComposeMorphismWithGivenObjects,
     
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory and IsStrictMonoidalCategory,
       Description := "MonoidalPostCoComposeMorphismWithGivenObjects using coclosed evaluation, and cohom tensor adjunction" );
+
+##
+AddDerivationToCAP( IsomorphismFromInternalCoHomToCoDual,
+        
+  function( cat, a )
+    
+    return PreCompose( cat,
+                   MorphismFromInternalCoHomToTensorProduct( cat, TensorUnit( cat ), a ),
+                   RightUnitorWithGivenTensorProduct( cat, a ) );
+    
+end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
+      Description := "IsomorphismFromInternalCoHomToCoDual using MorphismFromInternalCoHomToTensorProduct" );

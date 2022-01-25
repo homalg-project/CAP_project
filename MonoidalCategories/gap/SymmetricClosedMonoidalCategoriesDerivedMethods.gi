@@ -907,3 +907,15 @@ AddDerivationToCAP( MonoidalPostComposeMorphismWithGivenObjects,
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory and IsStrictMonoidalCategory,
       Description := "MonoidalPostComposeMorphismWithGivenObjects using evaluation, and tensor hom adjunction" );
+
+##
+AddDerivationToCAP( IsomorphismFromDualToInternalHom,
+        
+  function( cat, a )
+    
+    return PreCompose( cat,
+                   RightUnitorInverseWithGivenTensorProduct( cat, a ),
+                   MorphismFromTensorProductToInternalHom( cat, a, TensorUnit( cat ) ) );
+    
+end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
+      Description := "IsomorphismFromDualToInternalHom using MorphismFromTensorProductToInternalHom" );
