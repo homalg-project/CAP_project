@@ -3326,6 +3326,18 @@ end
     , 201 : IsPrecompiledDerivation := true );
     
     ##
+    AddIsomorphismFromDualToInternalHomWithGivenObjects( cat,
+        
+########
+function ( cat_1, s_1, a_1, r_1 )
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, a_1, a_1, UnderlyingMatrix, HomalgIdentityMatrix( Dimension( a_1 ), UnderlyingRing( cat_1 ) ) );
+end
+########
+        
+    , 202 : IsPrecompiledDerivation := true );
+    
+    ##
     AddIsomorphismFromFiberProductToKernelOfDiagonalDifference( cat,
         
 ########

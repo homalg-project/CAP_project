@@ -228,6 +228,7 @@
 #! * <Ref BookName="CAP" Func="InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromCoDualToInternalCoHom" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromDualToInternalHom" Label="for Is" />
+#! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromDualToInternalHomWithGivenObjects" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromInternalCoHomToCoDual" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromInternalCoHomToObject" Label="for Is" />
 #! * <Ref BookName="MonoidalCategories" Func="IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom" Label="for Is" />

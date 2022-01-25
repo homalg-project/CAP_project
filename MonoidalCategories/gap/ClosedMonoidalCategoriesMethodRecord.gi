@@ -268,6 +268,14 @@ IsomorphismFromDualToInternalHom := rec(
   dual_operation := "IsomorphismFromInternalCoHomToCoDual",
 ),
 
+IsomorphismFromDualToInternalHomWithGivenObjects := rec(
+  filter_list := [ "category", "object", "object", "object" ],
+  io_type := [ [ "s", "a", "r" ], [ "s", "r" ] ],
+  return_type := "morphism",
+  dual_operation := "IsomorphismFromInternalCoHomToCoDualWithGivenObjects",
+  dual_arguments_reversed := true,
+),
+
 UniversalPropertyOfDual := rec(
   filter_list := [ "category", "object", "object", "morphism" ],
   io_type := [ [ "t", "a", "alpha" ], [ "t", "d" ] ],

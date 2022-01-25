@@ -278,6 +278,25 @@ DeclareOperation( "AddIsomorphismFromDualToInternalHom",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `IsomorphismFromDualToInternalHomWithGivenObjects`.
+#! $F: ( s, a, r ) \mapsto \mathtt{IsomorphismFromDualToInternalHomWithGivenObjects}(s, a, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsomorphismFromDualToInternalHomWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromDualToInternalHomWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromDualToInternalHomWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromDualToInternalHomWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `IsomorphismFromInternalHomToDual`.
 #! $F: ( a ) \mapsto \mathtt{IsomorphismFromInternalHomToDual}(a)$.
 #! @Returns nothing

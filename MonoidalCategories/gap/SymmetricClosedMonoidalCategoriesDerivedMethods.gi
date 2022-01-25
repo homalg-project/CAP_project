@@ -919,3 +919,15 @@ AddDerivationToCAP( IsomorphismFromDualToInternalHom,
     
 end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
       Description := "IsomorphismFromDualToInternalHom using MorphismFromTensorProductToInternalHom" );
+
+##
+AddDerivationToCAP( IsomorphismFromDualToInternalHomWithGivenObjects,
+        
+  function( cat, source, a, range )
+    
+    return PreCompose( cat,
+                   RightUnitorInverseWithGivenTensorProduct( cat, a, source ),
+                   MorphismFromTensorProductToInternalHomWithGivenObjects( cat, source, a, TensorUnit( cat ), range ) );
+    
+end : CategoryFilter := IsSymmetricClosedMonoidalCategory,
+      Description := "IsomorphismFromDualToInternalHomWithGivenObjects using MorphismFromTensorProductToInternalHomWithGivenObjects" );

@@ -278,6 +278,18 @@ DeclareAttribute( "IsomorphismFromDualToInternalHom",
                   IsCapCategoryObject );
 
 #! @Description
+#! The arguments are an object $s = a^{\vee}$,
+#! an object $a$,
+#! and an object $r = \mathrm{\underline{Hom}}(a,1)$.
+#! The argument is an object $a$.
+#! The output is the isomorphism
+#! $\mathrm{IsomorphismFromDualToInternalHom}_{a}: a^{\vee} \rightarrow \mathrm{\underline{Hom}}(a,1)$.
+#! @Returns a morphism in $\mathrm{Hom}(a^{\vee}, \mathrm{\underline{Hom}}(a,1))$.
+#! @Arguments s,a,r
+DeclareOperation( "IsomorphismFromDualToInternalHomWithGivenObjects",
+                  [ IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject ] );
+
+#! @Description
 #! The argument is an object $a$.
 #! The output is the isomorphism
 #! $\mathrm{IsomorphismFromInternalHomToDual}_{a}: \mathrm{\underline{Hom}}(a,1) \rightarrow a^{\vee}$.

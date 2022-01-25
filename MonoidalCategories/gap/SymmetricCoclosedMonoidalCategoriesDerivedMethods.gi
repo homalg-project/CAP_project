@@ -931,3 +931,15 @@ AddDerivationToCAP( IsomorphismFromInternalCoHomToCoDual,
     
 end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
       Description := "IsomorphismFromInternalCoHomToCoDual using MorphismFromInternalCoHomToTensorProduct" );
+
+##
+AddDerivationToCAP( IsomorphismFromInternalCoHomToCoDualWithGivenObjects,
+        
+  function( cat, source, a, range )
+    
+    return PreCompose( cat,
+                   MorphismFromInternalCoHomToTensorProductWithGivenObjects( cat, source, TensorUnit( cat ), a, range ),
+                   RightUnitorWithGivenTensorProduct( cat, a, range ) );
+    
+end : CategoryFilter := IsSymmetricCoclosedMonoidalCategory,
+      Description := "IsomorphismFromInternalCoHomToCoDualWithGivenObjects using MorphismFromInternalCoHomToTensorProductWithGivenObjects" );

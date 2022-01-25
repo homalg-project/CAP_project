@@ -411,6 +411,25 @@ DeclareOperation( "AddIsomorphismFromInternalCoHomToCoDual",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `IsomorphismFromInternalCoHomToCoDualWithGivenObjects`.
+#! $F: ( s, a, r ) \mapsto \mathtt{IsomorphismFromInternalCoHomToCoDualWithGivenObjects}(s, a, r)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsomorphismFromInternalCoHomToCoDualWithGivenObjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsomorphismFromInternalCoHomToCoDualWithGivenObjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromInternalCoHomToCoDualWithGivenObjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsomorphismFromInternalCoHomToCoDualWithGivenObjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `IsomorphismFromInternalCoHomToObject`.
 #! $F: ( a ) \mapsto \mathtt{IsomorphismFromInternalCoHomToObject}(a)$.
 #! @Returns nothing
