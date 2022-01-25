@@ -261,6 +261,9 @@ IsomorphismFromCoDualToInternalCoHom := rec(
 IsomorphismFromInternalCoHomToCoDual := rec(
   filter_list := [ "category", "object" ],
   io_type := [ [ "a" ], [ "i", "d" ] ],
+  output_source_getter_string := "InternalCoHomOnObjects( cat, TensorUnit( cat ), a )",
+  output_range_getter_string := "CoDualOnObjects( cat, a )",
+  with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "IsomorphismFromDualToInternalHom",
 ),
