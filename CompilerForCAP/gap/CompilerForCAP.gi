@@ -33,8 +33,8 @@ InstallGlobalFunction( CapJitCompiledFunction, function ( func, jit_args )
     
 end );
 
-InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( func, jit_args )
-  local debug, debug_idempotence, tree, resolving_phase_functions, orig_tree, compiled_func, tmp, rule_phase_functions, f;
+InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( func, jit_args, args... )
+  local debug, debug_idempotence, type_signature, tree, resolving_phase_functions, orig_tree, compiled_func, tmp, rule_phase_functions, f;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Start compilation." );
@@ -56,13 +56,28 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         # COVERAGE_IGNORE_BLOCK_END
     fi;
     
-    if Length( jit_args ) > 0 and IsCapCategory( jit_args[1] ) then
+    if Length( args ) = 0 then
         
-        tree := ENHANCED_SYNTAX_TREE( func : globalize_hvars := true, given_arguments := [ jit_args[1] ] );
+        type_signature := fail;
+        
+    elif Length( args ) = 1 then
+        
+        type_signature := args[1];
         
     else
         
-        tree := ENHANCED_SYNTAX_TREE( func : globalize_hvars := true );
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "CapJitCompiledFunctionAsEnhancedSyntaxTree must be called with at most three arguments" );
+        
+    fi;
+    
+    if Length( jit_args ) > 0 and IsCapCategory( jit_args[1] ) then
+        
+        tree := ENHANCED_SYNTAX_TREE( func : globalize_hvars := true, given_arguments := [ jit_args[1] ], type_signature := type_signature );
+        
+    else
+        
+        tree := ENHANCED_SYNTAX_TREE( func : globalize_hvars := true, type_signature := type_signature );
         
     fi;
     
@@ -158,6 +173,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         CapJitInlinedFunctionCalls,
         CapJitDroppedUnusedBindings,
         CapJitInlinedBindings,
+        CapJitInferredDataTypes,
     ];
     
     orig_tree := rec( );

@@ -869,6 +869,20 @@ InstallGlobalFunction( CachingStatistic,
 end );
 
 ##
+InstallGlobalFunction( "IsSpecializationOfFilter", function ( filter1, filter2 )
+    
+    return IS_SUBSET_FLAGS( WITH_IMPS_FLAGS( FLAGS_FILTER( filter2 ) ), WITH_IMPS_FLAGS( FLAGS_FILTER( filter1 ) ) );
+    
+end );
+
+##
+InstallGlobalFunction( "IsSpecializationOfFilterList", function ( filter_list1, filter_list2 )
+    
+    return Length( filter_list1 ) = Length( filter_list2 ) and ForAll( [ 1 .. Length( filter_list1 ) ], i -> IsSpecializationOfFilter( filter_list1[i], filter_list2[i] ) );
+    
+end );
+
+##
 InstallGlobalFunction( InstallMethodForCompilerForCAP,
   
   function( args... )
@@ -948,7 +962,7 @@ InstallGlobalFunction( CapJitAddKnownMethod,
         
     fi;
     
-    if not IS_SUBSET_FLAGS( WITH_IMPS_FLAGS( FLAGS_FILTER( filters[1] ) ), WITH_IMPS_FLAGS( FLAGS_FILTER( IsCapCategory ) ) ) then
+    if not IsSpecializationOfFilter( IsCapCategory, filters[1] ) then
         
         Error( "the first filter must imply IsCapCategory" );
         
@@ -977,11 +991,7 @@ InstallGlobalFunction( CapJitAddKnownMethod,
     
     known_methods := CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name);
     
-    if ForAny( known_methods, m -> Length( m.filters ) = Length( filters ) and
-        (
-            IS_SUBSET_FLAGS( WITH_IMPS_FLAGS( FLAGS_FILTER( m.filters[1] ) ), WITH_IMPS_FLAGS( FLAGS_FILTER( filters[1] ) ) ) or
-            IS_SUBSET_FLAGS( WITH_IMPS_FLAGS( FLAGS_FILTER( filters[1] ) ), WITH_IMPS_FLAGS( FLAGS_FILTER( m.filters[1] ) ) )
-        ) ) then
+    if ForAny( known_methods, m -> Length( m.filters ) = Length( filters ) and ( IsSpecializationOfFilter( m.filters[1], filters[1] ) or IsSpecializationOfFilter( filters[1], m.filters[1] ) ) ) then
         
         Error( "there is already a method known for ", operation_name, " with a category filter which implies the current category filter or is impled by it" );
         

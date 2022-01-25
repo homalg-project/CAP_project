@@ -31,6 +31,7 @@ InstallGlobalFunction( CapJitPrettyPrintSyntaxTree, function ( tree )
         recnames := Set( RecNames( tree ) );
         
         RemoveSet( recnames, "type" );
+        RemoveSet( recnames, "data_type" );
         
         recnames := Difference( recnames, keys );
         
@@ -39,6 +40,13 @@ InstallGlobalFunction( CapJitPrettyPrintSyntaxTree, function ( tree )
         );
         
         index := 1;
+        
+        if StartsWith( tree.type, "EXPR_" ) and IsBound( tree.data_type ) then
+            
+            record.1_data_type := tree.data_type;
+            index := 2;
+            
+        fi;
         
         for recname in recnames do
             

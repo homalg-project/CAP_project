@@ -478,7 +478,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
             fi;
             
             # ignore these keys
-            if key in [ "CAP_JIT_NOT_RESOLVABLE", "CAP_JIT_IGNORE_OPERATION" ] then
+            if key in [ "CAP_JIT_NOT_RESOLVABLE", "CAP_JIT_IGNORE_OPERATION", "data_type" ] then
                 
                 continue;
                 
@@ -748,34 +748,50 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
                 
             fi;
             
-            if Length( jit_args ) <> tree.narg or tree.variadic then
-                
-                Info( InfoCapJit, 1, "####" );
-                Info( InfoCapJit, 1, "Logic template has variable filters but we are executing without jit args (or function is variadic)." );
-                
-                match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
-                
-                break;
-                
-            fi;
+            value := CapJitGetNodeByPath( tree, variable_path );
             
-            result := CapJitGetExpressionValueFromJitArgs( tree, variable_path, jit_args );
-            
-            if result[1] = false then
+            if IsBound( value.data_type ) then
                 
-                match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
+                if not IsSpecializationOfFilter( filter, value.data_type.filter ) then
+                    
+                    match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
+                    
+                    break;
+                    
+                fi;
                 
-                break;
+            else
                 
-            fi;
-            
-            value := result[2];
-            
-            if not filter( value ) then
+                if Length( jit_args ) <> tree.narg or tree.variadic then
+                    
+                    Info( InfoCapJit, 1, "####" );
+                    Info( InfoCapJit, 1, "Logic template has variable filters but we are executing without jit args (or function is variadic)." );
+                    
+                    match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
+                    
+                    break;
+                    
+                fi;
                 
-                match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
+                result := CapJitGetExpressionValueFromJitArgs( tree, variable_path, jit_args );
                 
-                break;
+                if result[1] = false then
+                    
+                    match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
+                    
+                    break;
+                    
+                fi;
+                
+                value := result[2];
+                
+                if not filter( value ) then
+                    
+                    match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
+                    
+                    break;
+                    
+                fi;
                 
             fi;
             

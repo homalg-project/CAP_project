@@ -253,6 +253,12 @@ InstallMethod( AddMorphismRepresentation,
                
   function( category, representation )
     
+    if not IsSpecializationOfFilter( IsCapCategoryMorphism, representation ) then
+        
+        Error( "the morphism representation must imply IsCapCategoryMorphism" );
+        
+    fi;
+    
     category!.morphism_representation := representation;
     category!.morphism_type := NewType( TheFamilyOfCapCategoryMorphisms, representation and MorphismFilter( category ) and IsCapCategoryMorphismRep and HasSource and HasRange and HasCapCategory );
     SetMorphismType( category, category!.morphism_type );

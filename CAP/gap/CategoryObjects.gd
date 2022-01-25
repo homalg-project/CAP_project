@@ -205,7 +205,7 @@ DeclareOperation( "AddObject",
 #! @Description
 #!  The argument <A>filter</A> is used to create an object type for the
 #!  category <A>category</A>, which is then used in <C>ObjectifyObjectForCAPWithAttributes</C>
-#!  to objectify objects for this category.
+#!  to objectify objects for this category. <A>filter</A> must imply `IsCapCategoryObject`.
 DeclareOperation( "AddObjectRepresentation",
                   [ IsCapCategory, IsObject ] );
 

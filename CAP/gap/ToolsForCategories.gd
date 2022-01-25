@@ -161,6 +161,18 @@ DeclareGlobalFunction( "CachingStatistic" );
 DeclareGlobalFunction( "BrowseCachingStatistic" );
 
 #! @Description
+#!   Checks if <A>filter2</A> is more special than <A>filter1</A>,
+#!   i.e. if <A>filter2</A> implies <A>filter1</A>.
+#! @Arguments filter1, filter2
+DeclareGlobalFunction( "IsSpecializationOfFilter" );
+
+#! @Description
+#!   Checks if <A>filter_list2</A> is more special than <A>filter_list1</A>,
+#!   i.e. if both lists have the same length and any element of <A>filter_list2</A> implies the corresponding element of <A>filter_list1</A>.
+#! @Arguments filter_list1, filter_list2
+DeclareGlobalFunction( "IsSpecializationOfFilterList" );
+
+#! @Description
 #!   Installs a method via `InstallMethod` and adds it to the list of methods known to the compiler.
 #!   Different methods for the same operation must have different numbers of arguments
 #!   so that the method selection can be done ahead of time.
