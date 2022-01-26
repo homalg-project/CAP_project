@@ -69,3 +69,4 @@ DeclareAttribute( "UnderlyingFieldForHomalg",
 #! @Arguments alpha
 DeclareAttribute( "UnderlyingMatrix",
                   IsVectorSpaceMorphism );
+CapJitAddTypeSignature( "UnderlyingMatrix", [ IsVectorSpaceMorphism ], IsHomalgMatrix );

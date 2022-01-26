@@ -43,8 +43,20 @@ DeclareGlobalFunction( "CAP_INTERNAL_OPPOSITE_RECURSIVE" );
 DeclareAttribute( "Opposite",
                   IsCapCategory );
 
+CapJitAddTypeSignature( "Opposite", [ IsCapCategory ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := rec( filter := IsCapCategory, category := Opposite( args.1.data_type.category ) ) );
+    
+end );
+
 DeclareAttribute( "OppositeCategory",
-                  IsCapCategory );
+                  WasCreatedAsOppositeCategory );
+# TODO: make the filter more specific once categories know their filters
+CapJitAddTypeSignature( "OppositeCategory", [ IsCapCategory ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := rec( filter := IsCapCategory, category := Opposite( args.1.data_type.category ) ) );
+    
+end );
 
 DeclareOperation( "Opposite",
                   [ IsCapCategory, IsString ] );
@@ -53,8 +65,17 @@ DeclareOperation( "Opposite",
 DeclareAttribute( "Opposite",
                   IsCapCategoryObject );
 
+CapJitAddTypeSignature( "Opposite", [ IsCapCategoryObject ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := rec( filter := Opposite( args.1.data_type.category )!.object_representation, category := Opposite( args.1.data_type.category ) ) );
+    
+end );
+
 DeclareAttribute( "Opposite",
                   IsCapCategoryMorphism );
 
-
-
+CapJitAddTypeSignature( "Opposite", [ IsCapCategoryMorphism ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := rec( filter := Opposite( args.1.data_type.category )!.morphism_representation, category := Opposite( args.1.data_type.category ) ) );
+    
+end );

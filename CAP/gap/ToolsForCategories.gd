@@ -194,6 +194,24 @@ DeclareGlobalFunction( "InstallOtherMethodForCompilerForCAP" );
 DeclareGlobalFunction( "CapJitAddKnownMethod" );
 
 #! @Description
+#!   (experimental) Adds a type signature for the global function or operation given by <A>name</A> to the compiler.
+#!   <A>input_filters</A> must be a list of filters.
+#!   <A>output_data_type</A> must be a filter, a data type, or a function accepting
+#!   the arguments of a function call of <A>name</A> (as syntax trees) and the function stack and
+#!   returning a record with components `args` (the possibly modified arguments) and `output_type`
+#!   (the data type of the output).
+#!   See <Ref BookName="CompilerForCAP" Func="CapJitInferredDataTypes" /> for more details on data types.
+#! @Arguments name, input_filters, output_data_type
+DeclareGlobalFunction( "CapJitAddTypeSignature" );
+
+#! @Description
+#!   (experimental) Same as <Ref Func="CapJitAddTypeSignature" />, but the filters and the output data type must be given as strings
+#!   which will be evaluated once <A>package_name</A> is loaded.
+#!   This should be used with care because errors will only be detected at runtime.
+#! @Arguments package_name, name, input_filters, output_data_type
+DeclareGlobalFunction( "CapJitAddTypeSignatureDeferred" );
+
+#! @Description
 #!   Computes a fixpoint of <A>func</A> with regard to equality given by <A>predicate</A>, starting with <A>initial_value</A>.
 #!   If no such fixpoint exists, the execution does not terminate.
 #! @Arguments predicate, func, initial_value
