@@ -222,6 +222,12 @@ InstallMethod( AddObjectRepresentation,
                
   function( category, representation )
     
+    if not IsSpecializationOfFilter( IsCapCategoryObject, representation ) then
+        
+        Error( "the object representation must imply IsCapCategoryObject" );
+        
+    fi;
+    
     category!.object_representation := representation;
     category!.object_type := NewType( TheFamilyOfCapCategoryObjects, representation and ObjectFilter( category ) and IsCapCategoryObjectRep and HasCapCategory );
     SetObjectType( category, category!.object_type );

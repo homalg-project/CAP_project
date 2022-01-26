@@ -125,12 +125,7 @@ BindGlobal( "CategoryOfRowsAsAdditiveClosureOfRingAsCategoryOfHomalgExteriorRing
         
         
         function ( homalg_ring )
-    local rows;
-    rows := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( homalg_ring );
-    if IsBoundGlobal( "CATEGORY_OF_ROWS_HACKY_EXTENDER" ) then
-        ValueGlobal( "CATEGORY_OF_ROWS_HACKY_EXTENDER" )( rows );
-    fi;
-    return rows;
+    return CategoryOfRowsAsAdditiveClosureOfRingAsCategory( homalg_ring );
 end;
         
         

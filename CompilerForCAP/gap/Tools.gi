@@ -624,6 +624,23 @@ InstallMethod( FilteredOp,
     
 end );
 
+InstallMethod( PositionsProperty,
+               "for syntax tree nodes of type SYNTAX_TREE_LIST",
+               [ IsRecord, IsFunction ],
+               
+  function ( tree, func )
+    
+    if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        TryNextMethod();
+        
+    fi;
+    
+    return PositionsProperty( AsListMut( tree ), func );
+    
+end );
+
 InstallMethod( FirstOp,
                "for syntax tree nodes of type SYNTAX_TREE_LIST",
                [ IsRecord, IsFunction ],
@@ -689,6 +706,23 @@ InstallMethod( ForAllOp,
     fi;
     
     return ForAll( [ 1 .. tree.length ], i -> func( tree.(i) ) );
+    
+end );
+
+InstallMethod( ForAnyOp,
+               "for syntax tree nodes of type SYNTAX_TREE_LIST",
+               [ IsRecord, IsFunction ],
+               
+  function ( tree, func )
+    
+    if not IsBound( tree.type ) or tree.type <> "SYNTAX_TREE_LIST" then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        TryNextMethod();
+        
+    fi;
+    
+    return ForAny( [ 1 .. tree.length ], i -> func( tree.(i) ) );
     
 end );
 

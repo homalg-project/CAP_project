@@ -19,6 +19,10 @@ compiled_func := CapJitCompiledFunction(
     MyKernelLift,
     [ rows, ZeroMorphism( V, V ), IdentityMorphism( V ) ]
 );;
+#! WARNING: Compiling CAP operation LiftOrFail with return_type morphism_or_fail.\
+#!  Operations returning fail usually do not fulfill the requirements that all br\
+#! anches of an if statement can be executed even if the corresponding condition \
+#! does not hold. This might cause errors.
 Display( compiled_func );
 #! function ( cat_1, mor_1, test_mor_1 )
 #!     local morphism_attr_1_1;

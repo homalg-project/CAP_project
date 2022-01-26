@@ -4,6 +4,227 @@
 # Implementations
 #
 
+Add( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS, IsHomalgRing );
+Add( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS, IsHomalgRingElement );
+Add( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS, IsHomalgMatrix );
+Add( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS, IsHomalgRingMap );
+Add( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS, IsRingAsCategoryObject );
+
+# Objectify*ForCAPWithAttributes
+CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCapCategory, IsFunction, IsObject ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := rec( filter := args.2.data_type.category!.object_representation, category := args.2.data_type.category ) );
+    
+end );
+
+CapJitAddTypeSignature( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes", [ IsRecord, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsFunction, IsObject ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := rec( filter := args.2.data_type.category!.morphism_representation, category := args.2.data_type.category ) );
+    
+end );
+
+# object and morphism attributes
+CapJitAddTypeSignature( "Source", [ IsCapCategoryMorphism ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := rec( filter := args.1.data_type.category!.object_representation, category := args.1.data_type.category ) );
+    
+end );
+
+CapJitAddTypeSignature( "Range", [ IsCapCategoryMorphism ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := rec( filter := args.1.data_type.category!.object_representation, category := args.1.data_type.category ) );
+    
+end );
+
+CapJitAddTypeSignature( "RankOfObject", [ IsCategoryOfRowsObject ], IsInt );
+CapJitAddTypeSignature( "UnderlyingMatrix", [ IsCategoryOfRowsMorphism ], IsHomalgMatrix );
+
+CapJitAddTypeSignature( "UnderlyingRingElement", [ IsRingAsCategoryMorphism ], IsHomalgRingElement );
+
+CapJitAddTypeSignature( "ObjectList", [ IsAdditiveClosureObject ], function ( args, func_stack )
+    
+    Assert( 0, IsAdditiveClosureCategory( args.1.data_type.category ) );
+    
+    return rec( args := args, output_type := rec( filter := IsList, element_type := rec( filter := UnderlyingCategory( args.1.data_type.category )!.object_representation, category := UnderlyingCategory( args.1.data_type.category ) ) ) );
+    
+end );
+
+CapJitAddTypeSignature( "MorphismMatrix", [ IsAdditiveClosureMorphism ], function ( args, func_stack )
+    
+    Assert( 0, IsAdditiveClosureCategory( args.1.data_type.category ) );
+    
+    return rec( args := args, output_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := UnderlyingCategory( args.1.data_type.category )!.morphism_representation, category := UnderlyingCategory( args.1.data_type.category ) ) ) ) );
+    
+end );
+
+CapJitAddTypeSignature( "MatElm", [ IsAdditiveClosureMorphism, IsInt, IsInt ], function ( args, func_stack )
+    
+    Assert( 0, IsAdditiveClosureCategory( args.1.data_type.category ) );
+    
+    return rec( args := args, output_type := rec( filter := UnderlyingCategory( args.1.data_type.category )!.morphism_representation, category := UnderlyingCategory( args.1.data_type.category ) ) );
+    
+end );
+
+# GAP operations
+CapJitAddTypeSignature( "Length", [ IsList ], IsInt );
+CapJitAddTypeSignature( "+", [ IsInt, IsInt ], IsInt );
+CapJitAddTypeSignature( "-", [ IsInt, IsInt ], IsInt );
+CapJitAddTypeSignature( "*", [ IsInt, IsInt ], IsInt );
+
+CapJitAddTypeSignature( "ListWithIdenticalEntries", [ IsInt, IsObject ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := rec( filter := IsList, element_type := args.2.data_type ) );
+    
+end );
+
+CapJitAddTypeSignature( "Concatenation", [ IsList ], function ( args, func_stack )
+    
+    Assert( 0, args.1.data_type.element_type.filter = IsList );
+    
+    return rec( args := args, output_type := rec( filter := IsList, element_type := args.1.data_type.element_type.element_type ) );
+    
+end );
+
+CapJitAddTypeSignature( "Sum", [ IsList ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := args.1.data_type.element_type );
+    
+end );
+
+CapJitAddTypeSignature( "[]", [ IsList, IsInt ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := args.1.data_type.element_type );
+    
+end );
+
+CapJitAddTypeSignature( "{}", [ IsList, IsList ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := args.1.data_type );
+    
+end );
+
+CapJitAddTypeSignature( "MatElm", [ IsList, IsInt, IsInt ], function ( args, func_stack )
+    
+    Assert( 0, args.1.data_type.element_type.filter = IsList );
+    
+    return rec( args := args, output_type := args.1.data_type.element_type.element_type );
+    
+end );
+
+CapJitAddTypeSignature( "List", [ IsList, IsFunction ], function ( args, func_stack )
+    
+    args := ShallowCopy( args );
+    
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.1.data_type.element_type ], func_stack );
+    
+    if args.2 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    return rec( args := args, output_type := rec( filter := IsList, element_type := args.2.data_type.signature[2] ) );
+    
+end );
+
+CapJitAddTypeSignature( "ListN", [ IsList, IsList, IsFunction ], function ( args, func_stack )
+    
+    args := ShallowCopy( args );
+    
+    args.3 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.3, [ args.1.data_type.element_type, args.2.data_type.element_type ], func_stack );
+    
+    if args.3 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    return rec( args := args, output_type := rec( filter := IsList, element_type := args.3.data_type.signature[2] ) );
+    
+end );
+
+CapJitAddTypeSignature( "Sum", [ IsList, IsFunction ], function ( args, func_stack )
+    
+    args := ShallowCopy( args );
+    
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.1.data_type.element_type ], func_stack );
+    
+    if args.2 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    return rec( args := args, output_type := args.2.data_type.signature[2] );
+    
+end );
+
+CapJitAddTypeSignature( "Iterated", [ IsList, IsFunction ], function ( args, func_stack )
+    args := ShallowCopy( args );
+    
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.1.data_type.element_type, args.1.data_type.element_type ], func_stack );
+    
+    if args.2 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    return rec( args := args, output_type := args.2.data_type.signature[2] );
+    
+end );
+
+# homalg operations
+CapJitAddTypeSignature( "HomalgMatrix", [ IsList, IsInt, IsInt, IsHomalgRing ], IsHomalgMatrix );
+CapJitAddTypeSignature( "HomalgMatrixListList", [ IsList, IsInt, IsInt, IsHomalgRing ], IsHomalgMatrix );
+CapJitAddTypeSignature( "HomalgIdentityMatrix", [ IsInt, IsHomalgRing ], IsHomalgMatrix );
+CapJitAddTypeSignature( "HomalgZeroMatrix", [ IsInt, IsInt, IsHomalgRing ], IsHomalgMatrix );
+CapJitAddTypeSignature( "ConvertRowToMatrix", [ IsHomalgMatrix, IsInt, IsInt ], IsHomalgMatrix );
+CapJitAddTypeSignature( "ConvertColumnToMatrix", [ IsHomalgMatrix, IsInt, IsInt ], IsHomalgMatrix );
+CapJitAddTypeSignature( "ConvertMatrixToRow", [ IsHomalgMatrix ], IsHomalgMatrix );
+CapJitAddTypeSignature( "ConvertMatrixToColumn", [ IsHomalgMatrix ], IsHomalgMatrix );
+CapJitAddTypeSignature( "CertainRows", [ IsHomalgMatrix, IsList ], IsHomalgMatrix );
+CapJitAddTypeSignature( "CertainColumns", [ IsHomalgMatrix, IsList ], IsHomalgMatrix );
+CapJitAddTypeSignature( "KroneckerMat", [ IsHomalgMatrix, IsHomalgMatrix ], IsHomalgMatrix );
+CapJitAddTypeSignature( "DualKroneckerMat", [ IsHomalgMatrix, IsHomalgMatrix ], IsHomalgMatrix );
+CapJitAddTypeSignature( "LeftDivide", [ IsHomalgMatrix, IsHomalgMatrix ], IsHomalgMatrix );
+CapJitAddTypeSignature( "RightDivide", [ IsHomalgMatrix, IsHomalgMatrix ], IsHomalgMatrix );
+CapJitAddTypeSignature( "SyzygiesOfRows", [ IsHomalgMatrix ], IsHomalgMatrix );
+CapJitAddTypeSignature( "SyzygiesOfColumns", [ IsHomalgMatrix ], IsHomalgMatrix );
+CapJitAddTypeSignature( "NumberRows", [ IsHomalgMatrix ], IsInt );
+CapJitAddTypeSignature( "NumberColumns", [ IsHomalgMatrix ], IsInt );
+CapJitAddTypeSignature( "RowRankOfMatrix", [ IsHomalgMatrix ], IsInt );
+CapJitAddTypeSignature( "ColumnRankOfMatrix", [ IsHomalgMatrix ], IsInt );
+CapJitAddTypeSignature( "UnionOfRows", [ IsHomalgRing, IsInt, IsList ], IsHomalgMatrix );
+CapJitAddTypeSignature( "UnionOfColumns", [ IsHomalgRing, IsInt, IsList ], IsHomalgMatrix );
+CapJitAddTypeSignature( "UnionOfRows", [ IsHomalgMatrix, IsHomalgMatrix, IsHomalgMatrix ], IsHomalgMatrix );
+CapJitAddTypeSignature( "UnionOfColumns", [ IsHomalgMatrix, IsHomalgMatrix, IsHomalgMatrix ], IsHomalgMatrix );
+CapJitAddTypeSignature( "DiagMat", [ IsHomalgRing, IsList ], IsHomalgMatrix );
+CapJitAddTypeSignature( "TransposedMatrix", [ IsHomalgMatrix ], IsHomalgMatrix );
+CapJitAddTypeSignature( "CoefficientsWithGivenMonomials", [ IsHomalgMatrix, IsHomalgMatrix ], IsHomalgMatrix );
+CapJitAddTypeSignature( "CoefficientsWithGivenMonomials", [ IsHomalgRingElement, IsHomalgMatrix ], IsHomalgMatrix );
+CapJitAddTypeSignature( "CoercedMatrix", [ IsHomalgRing, IsHomalgRing, IsHomalgMatrix ], IsHomalgMatrix );
+CapJitAddTypeSignature( "CoercedMatrix", [ IsHomalgRing, IsHomalgMatrix ], IsHomalgMatrix );
+CapJitAddTypeSignature( "Pullback", [ IsHomalgRingMap, IsHomalgMatrix ], IsHomalgMatrix );
+CapJitAddTypeSignature( "EntriesOfHomalgMatrix", [ IsHomalgMatrix ], rec( filter := IsList, element_type := rec( filter := IsHomalgRingElement ) ) );
+CapJitAddTypeSignature( "EntriesOfHomalgMatrixAsListList", [ IsHomalgMatrix ], rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsHomalgRingElement ) ) ) );
+
+CapJitAddTypeSignature( "*", [ IsHomalgRingElement, IsHomalgRingElement ], IsHomalgRingElement );
+CapJitAddTypeSignature( "*", [ IsHomalgRingElement, IsHomalgMatrix ], IsHomalgMatrix );
+CapJitAddTypeSignature( "*", [ IsHomalgMatrix, IsHomalgRingElement ], IsHomalgMatrix );
+CapJitAddTypeSignature( "*", [ IsHomalgMatrix, IsHomalgMatrix ], IsHomalgMatrix );
+
+CapJitAddTypeSignature( "MatElm", [ IsHomalgMatrix, IsInt, IsInt ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := rec( filter := IsHomalgRingElement ) );
+    
+end );
+
+# logic
 CapJitAddLogicFunction( function( tree, jit_args )
   local pre_func, additional_arguments_func;
     
@@ -133,6 +354,17 @@ CapJitAddLogicFunction( function( tree, jit_args )
     
 end );
 
+# additive_closure_morphism[i, j] => MorphismMatrix( additive_closure_morphism )[i, j]
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "additive_closure_morphism", "row", "column" ],
+        variable_filters := [ IsAdditiveClosureMorphism, IsInt, IsInt ],
+        src_template := "additive_closure_morphism[row, column]",
+        dst_template := "MorphismMatrix( additive_closure_morphism )[row][column]",
+        returns_value := true,
+    )
+);
+
 # Length( ListWithIdenticalEntries( number, obj ) ) => number
 CapJitAddLogicTemplate(
     rec(
@@ -202,7 +434,7 @@ CapJitAddLogicTemplate(
         variable_names := [ "ring", "nr_cols", "list", "matrix", "monomials" ],
         variable_filters := [ IsObject, IsObject, IsObject, "IsHomalgMatrix", "IsHomalgMatrix" ],
         src_template := "UnionOfRows( ring, nr_cols, List( list, l -> CoefficientsWithGivenMonomials( matrix, monomials ) ) )",
-        dst_template := "CoefficientsWithGivenMonomials( UnionOfRows( ring, NrCols( monomials ), List( list, l -> matrix ) ), monomials )",
+        dst_template := "CoefficientsWithGivenMonomials( UnionOfRows( ring, NumberColumns( monomials ), List( list, l -> matrix ) ), monomials )",
         returns_value := true,
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
