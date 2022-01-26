@@ -7,14 +7,14 @@ on:
       - "*-ci"
   pull_request:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 4 * * *" # after gap-docker(-master) is rebuilt
   workflow_dispatch:
 
 jobs:
   test:
     strategy:
       matrix:
-        image: [gapsystem/gap-docker, gapsystem/gap-docker-master]
+        image: ["ghcr.io/homalg-project/gap-docker:latest", "ghcr.io/homalg-project/gap-docker-master:latest"]
       fail-fast: false
     runs-on: ubuntu-latest
     container:
@@ -29,10 +29,6 @@ jobs:
       - run: |
           export HOME="/home/gap"
           cd /home/gap/.gap/pkg/
-          # work around https://github.com/gap-system/gap-docker-base/issues/30
-          sudo apt -o Acquire::https::Verify-Peer="false" update
-          sudo apt -o Acquire::https::Verify-Peer="false" dist-upgrade -y
-          sudo apt -o Acquire::https::Verify-Peer="false" install -y texlive-latex-extra texlive-fonts-extra
           cp ./Toposes/ci_gaprc /home/gap/.gap/gaprc
           git clone --depth 1 https://github.com/gap-packages/AutoDoc.git
           git clone --depth 1 https://github.com/homalg-project/homalg_project.git
@@ -47,18 +43,26 @@ jobs:
           git clone --depth 1 https://github.com/homalg-project/QPA2.git
           # set SOURCE_DATE_EPOCH for reproducible PDFs
           export SOURCE_DATE_EPOCH=0
+          # build documentation of packages which we might want to reference, keep this in sync with `release-gap-package`
+          [ -d "CAP_project/CAP" ] && make -C "CAP_project/CAP" doc
+          [ -d "CAP_project/FreydCategoriesForCAP" ] && make -C "CAP_project/FreydCategoriesForCAP" doc
+          [ -d "CAP_project/MonoidalCategories" ] && make -C "CAP_project/MonoidalCategories" doc
+          [ -d "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" ] && make -C "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" doc
+          [ -d "homalg_project/homalg" ] && make -C "homalg_project/homalg" doc
+          [ -d "homalg_project/Modules" ] && make -C "homalg_project/Modules" doc
+          [ -d "Toposes" ] && make -C "Toposes" doc
           TERM=dumb make -C Toposes -j $(nproc) --output-sync ci-test
           TERM=dumb make -C FinSetsForCAP -j $(nproc) --output-sync ci-test
           TERM=dumb make -C Locales -j $(nproc) --output-sync ci-test
           TERM=dumb make -C ZariskiFrames -j $(nproc) --output-sync ci-test
           cp ./Toposes/.codecov.yml ./
           (cd Toposes && LANG=C.UTF-8 python3 process_coverage_ignored_lines.py)
-          [ "${{ matrix.image }}" = "gapsystem/gap-docker-master" ] && ./Toposes/upload_codecov.sh
+          [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./Toposes/upload_codecov.sh
           git config --global user.name "Bot"
           git config --global user.email "empty"
           cd Toposes
           CUR_SHA=$(git rev-parse --verify HEAD)
-          if [ "${{ matrix.image }}" = "gapsystem/gap-docker" ] && [ "$CUR_SHA" = "$(git rev-parse origin/master)" ] && [ $(dirname "$GITHUB_REPOSITORY") = "homalg-project" ]; then \
+          if [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker:latest" ] && [ "$CUR_SHA" = "$(git rev-parse origin/master)" ] && [ $(dirname "$GITHUB_REPOSITORY") = "homalg-project" ]; then \
             git worktree add gh-pages/ gh-pages || (echo "There was an error. Make sure there is a branch named 'gh-pages'. See https://github.com/homalg-project/PackageJanitor#error-there-was-an-error-make-sure-there-is-a-branch-named-gh-pages"; exit 1); \
             git checkout master; \
             LANG=C.UTF-8 ./make_dist.sh --token "${{ secrets.GITHUB_TOKEN }}"; \
