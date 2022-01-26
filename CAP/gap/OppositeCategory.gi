@@ -7,29 +7,6 @@
 
 ###################################
 ##
-#! @Section Filter
-##
-###################################
-
-DeclareRepresentation( "IsCapCategoryOppositeObjectRep",
-                       IsAttributeStoringRep and IsCapCategoryObjectRep,
-                       [ ] );
-
-DeclareRepresentation( "IsCapCategoryOppositeMorphismRep",
-                       IsAttributeStoringRep and IsCapCategoryMorphismRep,
-                       [ ] );
-
-BindGlobal( "TheTypeOfCapCategoryOppositeObjects",
-        NewType( TheFamilyOfCapCategoryObjects,
-                IsCapCategoryOppositeObjectRep ) );
-
-BindGlobal( "TheTypeOfCapCategoryOppositeMorphisms",
-        NewType( TheFamilyOfCapCategoryMorphisms,
-                IsCapCategoryOppositeMorphismRep ) );
-
-
-###################################
-##
 #! @Section Functor is an involution
 ##
 ###################################
@@ -371,8 +348,8 @@ InstallMethod( Opposite,
         ],
     );
     
-    AddObjectRepresentation( opposite_category, IsCapCategoryOppositeObjectRep );
-    AddMorphismRepresentation( opposite_category, IsCapCategoryOppositeMorphismRep );
+    AddObjectRepresentation( opposite_category, IsCapCategoryOppositeObject );
+    AddMorphismRepresentation( opposite_category, IsCapCategoryOppositeMorphism );
     
     SetWasCreatedAsOppositeCategory( opposite_category, true );
     SetOppositeCategory( opposite_category, category );
@@ -573,7 +550,7 @@ end );
 
 ##
 InstallMethod( Display,
-        [ IsCapCategoryOppositeObjectRep ],
+        [ IsCapCategoryOppositeObject ],
         
   function( object )
 
@@ -585,7 +562,7 @@ end );
 
 ##
 InstallMethod( Display,
-        [ IsCapCategoryOppositeMorphismRep ],
+        [ IsCapCategoryOppositeMorphism ],
         
   function( morphism )
 

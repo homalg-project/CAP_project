@@ -7,6 +7,18 @@
 
 ###################################
 ##
+#! @Section GAP Categories
+##
+###################################
+
+DeclareCategory( "IsCapCategoryOppositeObject",
+                 IsCapCategoryObject );
+
+DeclareCategory( "IsCapCategoryOppositeMorphism",
+                 IsCapCategoryMorphism );
+
+###################################
+##
 #! @Section Technical attributes
 ##
 ###################################
