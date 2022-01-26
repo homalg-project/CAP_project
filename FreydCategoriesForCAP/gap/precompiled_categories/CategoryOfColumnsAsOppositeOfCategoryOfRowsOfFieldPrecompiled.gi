@@ -75,16 +75,16 @@ end
         
 ########
 function ( cat_1, s_1, a_1, b_1, r_1 )
-    local hoisted_3_1, hoisted_4_1, deduped_5_1;
-    deduped_5_1 := RankOfObject( s_1 );
-    hoisted_4_1 := RankOfObject( a_1 );
-    hoisted_3_1 := RankOfObject( b_1 );
+    local hoisted_1_1, hoisted_2_1, deduped_3_1;
+    deduped_3_1 := RankOfObject( s_1 );
+    hoisted_2_1 := RankOfObject( a_1 );
+    hoisted_1_1 := RankOfObject( b_1 );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, s_1, r_1, UnderlyingMatrix, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_5_1 ], function ( i_2 )
+           ), cat_1, s_1, r_1, UnderlyingMatrix, HomalgMatrix( PermutationMat( PermList( List( [ 1 .. deduped_3_1 ], function ( i_2 )
                       local deduped_1_2;
                       deduped_1_2 := (i_2 - 1);
-                      return (REM_INT( deduped_1_2, hoisted_3_1 ) * hoisted_4_1 + QUO_INT( deduped_1_2, hoisted_3_1 ) + 1);
-                  end ) ) ^ -1, deduped_5_1 ), deduped_5_1, deduped_5_1, UnderlyingRing( cat_1 ) ) );
+                      return (REM_INT( deduped_1_2, hoisted_1_1 ) * hoisted_2_1 + QUO_INT( deduped_1_2, hoisted_1_1 ) + 1);
+                  end ) ) ^ -1, deduped_3_1 ), deduped_3_1, deduped_3_1, UnderlyingRing( cat_1 ) ) );
 end
 ########
         
@@ -177,14 +177,15 @@ function ( cat_1, s_1, a_1, r_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingRing( cat_1 );
     deduped_1_1 := RankOfObject( a_1 );
-    if deduped_1_1 = 0 then
-        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-               ), cat_1, s_1, r_1, UnderlyingMatrix, HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), deduped_2_1 ) );
-    else
-        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-               ), cat_1, s_1, r_1, UnderlyingMatrix, ConvertMatrixToColumn( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) ) );
-    fi;
-    return;
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, s_1, r_1, UnderlyingMatrix, function (  )
+              if deduped_1_1 = 0 then
+                  return HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), deduped_2_1 );
+              else
+                  return ConvertMatrixToColumn( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) );
+              fi;
+              return;
+          end(  ) );
 end
 ########
         
@@ -322,7 +323,8 @@ end
         
 ########
 function ( cat_1, a_1 )
-    return a_1;
+    return ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat_1, RankOfObject, RankOfObject( a_1 ) );
 end
 ########
         
@@ -336,14 +338,15 @@ function ( cat_1, s_1, a_1, r_1 )
     local deduped_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingRing( cat_1 );
     deduped_1_1 := RankOfObject( a_1 );
-    if deduped_1_1 = 0 then
-        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-               ), cat_1, s_1, r_1, UnderlyingMatrix, HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), deduped_2_1 ) );
-    else
-        return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-               ), cat_1, s_1, r_1, UnderlyingMatrix, ConvertMatrixToRow( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) ) );
-    fi;
-    return;
+    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
+           ), cat_1, s_1, r_1, UnderlyingMatrix, function (  )
+              if deduped_1_1 = 0 then
+                  return HomalgZeroMatrix( RankOfObject( r_1 ), RankOfObject( s_1 ), deduped_2_1 );
+              else
+                  return ConvertMatrixToRow( HomalgIdentityMatrix( deduped_1_1, deduped_2_1 ) );
+              fi;
+              return;
+          end(  ) );
 end
 ########
         
@@ -633,7 +636,7 @@ end
 ########
 function ( cat_1, a_1, r_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, a_1, a_1, UnderlyingMatrix, HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) );
+           ), cat_1, a_1, r_1, UnderlyingMatrix, HomalgIdentityMatrix( RankOfObject( a_1 ), UnderlyingRing( cat_1 ) ) );
 end
 ########
         
