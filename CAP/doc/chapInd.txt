@@ -329,7 +329,7 @@
   [2XCapCategorySwitchLogicPropagationForObjectsOn[102X 1.4-1 
   [2XCapCategorySwitchLogicPropagationOff[102X 1.4-6 
   [2XCapCategorySwitchLogicPropagationOn[102X 1.4-5 
-  [2XCapFixpoint[102X 9.2-22 
+  [2XCapFixpoint[102X 9.2-24 
   [2XCapFunctor[102X, for IsString, IsCapCategory, IsCapCategory 5.4-1 
       for IsString, IsCapCategory, IsCapCategoryAsCatObject 5.4-1 
       for IsString, IsCapCategoryAsCatObject, IsCapCategory 5.4-1 
@@ -337,7 +337,7 @@
       for IsString, IsList, IsCapCategory 5.4-2 
       for IsString, IsList, IsCapCategoryAsCatObject 5.4-2 
   [2XCapInternalInstallAdd[102X 7.3-1 
-  [2XCapJitAddKnownMethod[102X 9.2-21 
+  [2XCapJitAddKnownMethod[102X 9.2-23 
   [2XCAPOperationPrepareFunction[102X 7.6-1 
   [2XCategoryConstructor[102X, for IsRecord 11.2-1 
   [2XCategoryFilter[102X, for IsCapCategory 1.3-1 
@@ -484,10 +484,10 @@
   [2XInstallDerivationForCategory[102X, for IsDerivedMethod, IsPosInt, IsCapCategory 8.2-12 
   [2XInstallDerivationsUsingOperation[102X, for IsOperationWeightList, IsString 8.4-8 
   [2XInstallFunctor[102X, for IsCapFunctor, IsString 5.4-11 
-  [2XInstallMethodForCompilerForCAP[102X 9.2-19 
+  [2XInstallMethodForCompilerForCAP[102X 9.2-21 
   [2XInstallMethodWithToDoForIsWellDefined[102X 9.2-1 
   [2XInstallNaturalTransformation[102X, for IsCapNaturalTransformation, IsString 5.5-5 
-  [2XInstallOtherMethodForCompilerForCAP[102X 9.2-20 
+  [2XInstallOtherMethodForCompilerForCAP[102X 9.2-22 
   [2XInstallSetWithToDoForIsWellDefined[102X, for IsObject, IsString, IsList 9.2-2 
   [2XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure[102X, for IsCapCategoryMorphism 3.16-5 
   [2XInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryMorphism, IsCapCategoryObject 3.16-6 
@@ -557,6 +557,8 @@
   [2XIsOne[102X, for IsCapCategoryMorphism 3.3-6 
   [2XIsOperationWeightList[102X, for IsObject 8.4-1 
   [2XIsProjective[102X, for IsCapCategoryObject 2.3-1 
+  [2XIsSpecializationOfFilter[102X 9.2-19 
+  [2XIsSpecializationOfFilterList[102X 9.2-20 
   [2XIsSplitEpimorphism[102X, for IsCapCategoryMorphism 3.3-5 
   [2XIsSplitMonomorphism[102X, for IsCapCategoryMorphism 3.3-4 
   [2XIsStringMinHeap[102X, for IsObject 8.5-1 

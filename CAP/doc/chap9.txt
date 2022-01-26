@@ -205,7 +205,22 @@
   cache  accesses,  and "stored" the number of objects currently stored in the
   cache.[133X
   
-  [1X9.2-19 InstallMethodForCompilerForCAP[101X
+  [1X9.2-19 IsSpecializationOfFilter[101X
+  
+  [33X[1;0Y[29X[2XIsSpecializationOfFilter[102X( [3Xfilter1[103X, [3Xfilter2[103X ) [32X function[133X
+  
+  [33X[0;0YChecks  if  [3Xfilter2[103X  is  more  special than [3Xfilter1[103X, i.e. if [3Xfilter2[103X implies
+  [3Xfilter1[103X.[133X
+  
+  [1X9.2-20 IsSpecializationOfFilterList[101X
+  
+  [33X[1;0Y[29X[2XIsSpecializationOfFilterList[102X( [3Xfilter_list1[103X, [3Xfilter_list2[103X ) [32X function[133X
+  
+  [33X[0;0YChecks if [3Xfilter_list2[103X is more special than [3Xfilter_list1[103X, i.e. if both lists
+  have   the   same  length  and  any  element  of  [3Xfilter_list2[103X  implies  the
+  corresponding element of [3Xfilter_list1[103X.[133X
+  
+  [1X9.2-21 InstallMethodForCompilerForCAP[101X
   
   [33X[1;0Y[29X[2XInstallMethodForCompilerForCAP[102X( [3Xsame[103X, [3Xas[103X, [3Xfor[103X, [3XInstallMethod[103X ) [32X function[133X
   
@@ -214,7 +229,7 @@
   different  numbers  of  arguments  so  that the method selection can be done
   ahead of time.[133X
   
-  [1X9.2-20 InstallOtherMethodForCompilerForCAP[101X
+  [1X9.2-22 InstallOtherMethodForCompilerForCAP[101X
   
   [33X[1;0Y[29X[2XInstallOtherMethodForCompilerForCAP[102X( [3Xsame[103X, [3Xas[103X, [3Xfor[103X, [3XInstallOtherMethod[103X ) [32X function[133X
   
@@ -223,7 +238,7 @@
   different  numbers  of  arguments  so  that the method selection can be done
   ahead of time.[133X
   
-  [1X9.2-21 CapJitAddKnownMethod[101X
+  [1X9.2-23 CapJitAddKnownMethod[101X
   
   [33X[1;0Y[29X[2XCapJitAddKnownMethod[102X( [3Xoperation[103X, [3Xfilters[103X, [3Xmethod[103X ) [32X function[133X
   
@@ -231,7 +246,7 @@
   methods  for  the same operation must have different numbers of arguments so
   that the method selection can be done ahead of time.[133X
   
-  [1X9.2-22 CapFixpoint[101X
+  [1X9.2-24 CapFixpoint[101X
   
   [33X[1;0Y[29X[2XCapFixpoint[102X( [3Xpredicate[103X, [3Xfunc[103X, [3Xinitial_value[103X ) [32X function[133X
   

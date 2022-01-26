@@ -167,7 +167,7 @@
   
   [33X[0;0YThe  argument  [3Xfilter[103X  is  used  to  create  an object type for the category
   [3Xcategory[103X,  which  is  then  used  in  [10XObjectifyObjectForCAPWithAttributes[110X to
-  objectify objects for this category.[133X
+  objectify objects for this category. [3Xfilter[103X must imply [10XIsCapCategoryObject[110X.[133X
   
   [1X2.6-4 ObjectifyObjectForCAPWithAttributes[101X
   

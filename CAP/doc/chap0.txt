@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2022.01-03
+                                   2022.01-04
   
   
-                                24 January 2022
+                                26 January 2022
   
   
                                Sebastian Gutsche
@@ -861,10 +861,12 @@
       9.2-16 CAP_INTERNAL_ASSERT_IS_LIST_OF_TWO_CELLS_OF_CATEGORY
       9.2-17 CachingStatistic
       9.2-18 BrowseCachingStatistic
-      9.2-19 InstallMethodForCompilerForCAP
-      9.2-20 InstallOtherMethodForCompilerForCAP
-      9.2-21 CapJitAddKnownMethod
-      9.2-22 CapFixpoint
+      9.2-19 IsSpecializationOfFilter
+      9.2-20 IsSpecializationOfFilterList
+      9.2-21 InstallMethodForCompilerForCAP
+      9.2-22 InstallOtherMethodForCompilerForCAP
+      9.2-23 CapJitAddKnownMethod
+      9.2-24 CapFixpoint
   10 [33X[0;0YLimits and Colimits[133X
     10.1 [33X[0;0YSpecification of Limits and Colimits[133X
     10.2 [33X[0;0YEnhancing Limit Specifications[133X

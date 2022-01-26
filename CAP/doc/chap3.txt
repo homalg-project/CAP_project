@@ -280,7 +280,7 @@
   [33X[0;0YThe  argument  [3Xfilter[103X  is  used  to  create a morphism type for the category
   [3Xcategory[103X,          which          is          then          used          in
   [10XObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[110X     to     objectify
-  morphisms for this category.[133X
+  morphisms for this category. [3Xfilter[103X must imply [10XIsCapCategoryMorphism[110X.[133X
   
   [1X3.6-4 ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes[101X
   
