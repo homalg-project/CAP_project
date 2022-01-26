@@ -141,6 +141,114 @@
     [4X[25Xgap>[125X [27Xx := SolveLinearSystemInAbCategory( [ [ i1 ] ], [ [ u ] ], [ right_side ] )[1];;[127X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( PreCompose( [ i1, x, u ] ), right_side );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xa_otimes_b := TensorProductOnObjects( a, b );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 12>[128X[104X
+    [4X[25Xgap>[125X [27Xhom_ab := InternalHomOnObjects( a, b );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 12>[128X[104X
+    [4X[25Xgap>[125X [27Xcohom_ab := InternalCoHomOnObjects( a, b );[127X[104X
+    [4X[28X<A vector space object over Q of dimension 12>[128X[104X
+    [4X[25Xgap>[125X [27Xhom_ab = cohom_ab;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X1_ab := VectorSpaceMorphism([127X[104X
+    [4X[25X>[125X [27X          a_otimes_b,[127X[104X
+    [4X[25X>[125X [27X          HomalgIdentityMatrix( Dimension( a_otimes_b ), Q ),[127X[104X
+    [4X[25X>[125X [27X          a_otimes_b[127X[104X
+    [4X[25X>[125X [27X          );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27X1_hom_ab := VectorSpaceMorphism([127X[104X
+    [4X[25X>[125X [27X              hom_ab,[127X[104X
+    [4X[25X>[125X [27X              HomalgIdentityMatrix( Dimension( hom_ab ), Q ),[127X[104X
+    [4X[25X>[125X [27X              hom_ab[127X[104X
+    [4X[25X>[125X [27X            );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27X1_cohom_ab := VectorSpaceMorphism([127X[104X
+    [4X[25X>[125X [27X                cohom_ab,[127X[104X
+    [4X[25X>[125X [27X                HomalgIdentityMatrix( Dimension( cohom_ab ), Q ),[127X[104X
+    [4X[25X>[125X [27X                cohom_ab[127X[104X
+    [4X[25X>[125X [27X              );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xev_ab := EvaluationMorphism( a, b );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xcoev_ab := CoevaluationMorphism( a, b );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xcocl_ev_ab := CoclosedEvaluationMorphism( a, b );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xcocl_ev_ba := CoclosedEvaluationMorphism( b, a );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xcocl_coev_ab := CoclosedCoevaluationMorphism( a, b );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27XUnderlyingMatrix( ev_ab ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_ba ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XUnderlyingMatrix( coev_ab ) = TransposedMatrix( UnderlyingMatrix( cocl_coev_ab ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xtensor_hom_adj_1_hom_ab := InternalHomToTensorProductAdjunctionMap( a, b, 1_hom_ab );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xcohom_tensor_adj_1_cohom_ab := InternalCoHomToTensorProductAdjunctionMap( a, b, 1_cohom_ab );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xtensor_hom_adj_1_ab := TensorProductToInternalHomAdjunctionMap( a, b, 1_ab );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xcohom_tensor_adj_1_ab := TensorProductToInternalCoHomAdjunctionMap( a, b, 1_ab );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xev_ab = tensor_hom_adj_1_hom_ab;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcocl_ev_ab = cohom_tensor_adj_1_cohom_ab;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcoev_ab = tensor_hom_adj_1_ab;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcocl_coev_ab = cohom_tensor_adj_1_ab;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xc := VectorSpaceObject(2,Q);[127X[104X
+    [4X[28X<A vector space object over Q of dimension 2>[128X[104X
+    [4X[25Xgap>[125X [27Xd := VectorSpaceObject(1,Q);[127X[104X
+    [4X[28X<A vector space object over Q of dimension 1>[128X[104X
+    [4X[25Xgap>[125X [27Xpre_compose := MonoidalPreComposeMorphism( a, b, c );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xpost_compose := MonoidalPostComposeMorphism( a, b, c );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xpre_cocompose := MonoidalPreCoComposeMorphism( c, b, a );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xpost_cocompose := MonoidalPostCoComposeMorphism( c, b, a );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27XUnderlyingMatrix( pre_compose ) = TransposedMatrix( UnderlyingMatrix( pre_cocompose ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XUnderlyingMatrix( post_compose ) = TransposedMatrix( UnderlyingMatrix( post_cocompose ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xtp_hom_comp := TensorProductInternalHomCompatibilityMorphism( [ a, b, c, d ] );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xcohom_tp_comp := InternalCoHomTensorProductCompatibilityMorphism( [ b, d, a, c ] );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27XUnderlyingMatrix( tp_hom_comp ) = TransposedMatrix( UnderlyingMatrix( cohom_tp_comp ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xlambda := LambdaIntroduction( alpha );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xlambda_elim := LambdaElimination( a, b, lambda );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xalpha = lambda_elim;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xalpha_op := VectorSpaceMorphism( b, TransposedMatrix( UnderlyingMatrix( alpha ) ), a );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xcolambda := CoLambdaIntroduction( alpha_op );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xcolambda_elim := CoLambdaElimination( b, a, colambda );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27Xalpha_op = colambda_elim;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XUnderlyingMatrix( lambda ) = TransposedMatrix( UnderlyingMatrix( colambda ) );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xdelta := PreCompose( colambda, lambda);[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( TraceMap( delta ) );[127X[104X
+    [4X[28X[ [  9 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( CoTraceMap( delta ) );[127X[104X
+    [4X[28X[ [  9 ] ][128X[104X
+    [4X[28X[128X[104X
+    [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27XTraceMap( delta ) = CoTraceMap( delta );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XRankMorphism( a ) = CoRankMorphism( a );[127X[104X
+    [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
   
