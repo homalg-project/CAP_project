@@ -1,5 +1,5 @@
 name: FreydCategoriesForCAP
-version: "2022.01-02"
+version: "2022.01-03"
 license: "GPL-2.0-or-later"
 date: 2022-01-26
 description: |
@@ -24,7 +24,7 @@ needed-pkgs:
       version: ">= 1.5"
       url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
     - name: "CAP"
-      version: ">= 2021.12-03"
+      version: ">= 2022.01-04"
       url: "https://homalg-project.github.io/pkg/CAP"
     - name: "MatricesForHomalg"
       version: ">= 2021.07-01"
@@ -55,11 +55,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/FreydCategoriesForCAP/
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2022.01-02/FreydCategoriesForCAP-2022.01-02.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2022.01-03/FreydCategoriesForCAP-2022.01-03.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2022.01-02/FreydCategoriesForCAP-2022.01-02.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2022.01-03/FreydCategoriesForCAP-2022.01-03.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2022.01-02/FreydCategoriesForCAP-2022.01-02.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/FreydCategoriesForCAP-2022.01-03/FreydCategoriesForCAP-2022.01-03.pdf
 
 abstract: |
 
@@ -70,7 +70,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>PB22</span>]   <b class='BibAuthor'>Posur, S. and Bies, M.</b>,
      <i class='BibTitle'>FreydCategoriesForCAP, Freyd categories - Formal (co)kernels for additive categories,
-             Version 2022.01-02</i>
+             Version 2022.01-03</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FreydCategoriesForCAP">https://homalg-project.github.io/pkg/FreydCategoriesForCAP</a></span>.
@@ -78,11 +78,11 @@ citeas: |
     
 
 bibtex: |
-    @misc{ FreydCategoriesForCAP2022.01-02,
+    @misc{ FreydCategoriesForCAP2022.01-03,
       author =           {Posur, S. and Bies, M.},
       title =            {{FreydCategoriesForCAP},  Freyd  categories  -  Formal
                           (co)kernels   for   additive   categories,   {V}ersion
-                          2022.01-02},
+                          2022.01-03},
       month =            {Jan},
       year =             {2022},
       note =             {GAP package},
