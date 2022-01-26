@@ -64,6 +64,8 @@ InstallGlobalFunction( MATRIX_CATEGORY,
     
     SetIsRigidSymmetricClosedMonoidalCategory( category, true );
     
+    SetIsRigidSymmetricCoclosedMonoidalCategory( category, true );
+    
     SetIsStrictMonoidalCategory( category, true );
     
     SetIsLinearCategoryOverCommutativeRing( category, true );
@@ -705,7 +707,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddTensorProductOnMorphismsWithGivenTensorProducts( category,
-      
       function( cat, new_source, morphism_1, morphism_2, new_range )
         
         return VectorSpaceMorphism( cat, new_source,
@@ -716,7 +717,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddTensorUnit( category,
-      
       function( cat )
         
         return MatrixCategoryObject( cat, 1 );
@@ -745,6 +745,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
                                   );
         
     end );
+
+    ## Operations related to the tensor-hom adjunction
     
     ##
     AddDualOnObjects( category, { cat, space } -> space );
@@ -782,7 +784,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
     
     ##
     AddCoevaluationForDualWithGivenTensorProduct( category,
-      
       function( cat, unit, object, tensor_object )
         local dimension, id;
         
@@ -810,6 +811,73 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
                                     HomalgIdentityMatrix( Dimension( object ), homalg_field ),
                                     bidual_of_object
                                   );
+        
+    end );
+
+    ## Operations related to the cohom-tensor adjunction
+
+    ##
+    AddCoDualOnObjects( category, { cat, obj } -> obj );
+
+    ##
+    AddCoDualOnMorphismsWithGivenCoDuals( category,
+      function( cat, codual_source, morphism, codual_range )
+        
+        return VectorSpaceMorphism( cat, codual_source,
+                                        TransposedMatrix( UnderlyingMatrix( morphism ) ),
+                                        codual_range );
+        
+    end );
+    
+    ##
+    AddCoclosedEvaluationForCoDualWithGivenTensorProduct( category,
+      function( cat, unit, object, tensor_object )
+        local rank, id;
+        
+        rank := Dimension( object );
+        
+        if rank = 0 then
+            
+            return ZeroMorphism( cat, unit, tensor_object );
+            
+        fi;
+        
+        id := HomalgIdentityMatrix( rank, homalg_field );
+        
+        return VectorSpaceMorphism( cat, unit,
+                                    ConvertMatrixToRow( id ),
+                                    tensor_object );
+        
+    end );
+    
+    ##
+    AddCoclosedCoevaluationForCoDualWithGivenTensorProduct( category,
+      function( cat, tensor_object, object, unit )
+        local rank, id;
+        
+        rank := Dimension( object );
+        
+        if rank = 0 then
+            
+            return ZeroMorphism( cat, tensor_object, unit );
+            
+        fi;
+        
+        id := HomalgIdentityMatrix( rank, homalg_field );
+        
+        return VectorSpaceMorphism( cat, tensor_object,
+                                    ConvertMatrixToColumn( id ),
+                                    unit );
+        
+    end );
+    
+    ##
+    AddMorphismFromCoBidualWithGivenCoBidual( category,
+      function( cat, object, cobidual_of_object )
+        
+        return VectorSpaceMorphism( cat, cobidual_of_object,
+                                    HomalgIdentityMatrix( Dimension( object ), homalg_field ),
+                                    object );
         
     end );
     

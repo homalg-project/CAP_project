@@ -10,11 +10,12 @@ op := Opposite( vec );;
 ListKnownCategoricalProperties( op );
 #! [ "IsAbCategory", "IsAbelianCategory", "IsAbelianCategoryWithEnoughInjectives",
 #!   "IsAbelianCategoryWithEnoughProjectives", "IsAdditiveCategory",
-#!   "IsBraidedMonoidalCategory", "IsCoclosedMonoidalCategory",
-#!   "IsEnrichedOverCommutativeRegularSemigroup",
+#!   "IsBraidedMonoidalCategory", "IsClosedMonoidalCategory",
+#!   "IsCoclosedMonoidalCategory", "IsEnrichedOverCommutativeRegularSemigroup",
 #!   "IsLinearCategoryOverCommutativeRing", "IsMonoidalCategory",
-#!   "IsPreAbelianCategory", "IsRigidSymmetricCoclosedMonoidalCategory",
-#!   "IsSkeletalCategory", "IsStrictMonoidalCategory",
+#!   "IsPreAbelianCategory", "IsRigidSymmetricClosedMonoidalCategory",
+#!   "IsRigidSymmetricCoclosedMonoidalCategory", "IsSkeletalCategory",
+#!   "IsStrictMonoidalCategory", "IsSymmetricClosedMonoidalCategory",
 #!   "IsSymmetricCoclosedMonoidalCategory", "IsSymmetricMonoidalCategory" ]
 V1 := Opposite( TensorUnit( vec ) );;
 V2 := DirectSum( V1, V1 );;

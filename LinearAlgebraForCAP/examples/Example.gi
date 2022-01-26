@@ -26,7 +26,7 @@ Display( alpha );
 #! [ [   1,   0,   0,   0 ],
 #!   [   0,   1,   0,  -1 ],
 #!   [  -1,   0,   2,   1 ] ]
-#! 
+#!
 #! A morphism in Category of matrices over Q
 alphap := homalg_matrix/vec;;
 IsCongruentForMorphisms( alpha, alphap );
@@ -53,7 +53,7 @@ Display( gamma );
 #!   [     1,     1 ],
 #!   [  -1/2,  -1/2 ],
 #!   [     1,     1 ] ]
-#! 
+#!
 #! A morphism in Category of matrices over Q
 colift := CokernelColift( alpha, gamma );;
 IsEqualForMorphisms( PreCompose( c, colift ), gamma );
@@ -67,7 +67,7 @@ p1 := ProjectionInFactorOfFiberProduct( [ alpha, beta ], 1 );
 Display( PreCompose( p1, alpha ) );
 #! [ [   0,   1,   0,  -1 ],
 #!   [  -1,   0,   2,   1 ] ]
-#! 
+#!
 #! A morphism in Category of matrices over Q
 Pushout( alpha, beta );
 #! <A vector space object over Q of dimension 5>
@@ -86,7 +86,7 @@ Display( u );
 #!   [     0,     0,     1,     0,     0 ],
 #!   [     0,     0,     0,     1,     0 ],
 #!   [     0,     0,     0,     0,     1 ] ]
-#! 
+#!
 #! A morphism in Category of matrices over Q
 KernelObjectFunctorial( u, IdentityMorphism( Source( u ) ), u ) = IdentityMorphism( VectorSpaceObject( 3, Q ) );
 #! true
@@ -140,5 +140,113 @@ IsCongruentForMorphisms(
 right_side := PreCompose( [ i1, DualOnMorphisms( u ), u ] );;
 x := SolveLinearSystemInAbCategory( [ [ i1 ] ], [ [ u ] ], [ right_side ] )[1];;
 IsCongruentForMorphisms( PreCompose( [ i1, x, u ] ), right_side );
+#! true
+a_otimes_b := TensorProductOnObjects( a, b );
+#! <A vector space object over Q of dimension 12>
+hom_ab := InternalHomOnObjects( a, b );
+#! <A vector space object over Q of dimension 12>
+cohom_ab := InternalCoHomOnObjects( a, b );
+#! <A vector space object over Q of dimension 12>
+hom_ab = cohom_ab;
+#! true
+1_ab := VectorSpaceMorphism(
+          a_otimes_b,
+          HomalgIdentityMatrix( Dimension( a_otimes_b ), Q ),
+          a_otimes_b
+          );
+#! <A morphism in Category of matrices over Q>
+1_hom_ab := VectorSpaceMorphism(
+              hom_ab,
+              HomalgIdentityMatrix( Dimension( hom_ab ), Q ),
+              hom_ab
+            );
+#! <A morphism in Category of matrices over Q>
+1_cohom_ab := VectorSpaceMorphism(
+                cohom_ab,
+                HomalgIdentityMatrix( Dimension( cohom_ab ), Q ),
+                cohom_ab
+              );
+#! <A morphism in Category of matrices over Q>
+ev_ab := EvaluationMorphism( a, b );
+#! <A morphism in Category of matrices over Q>
+coev_ab := CoevaluationMorphism( a, b );
+#! <A morphism in Category of matrices over Q>
+cocl_ev_ab := CoclosedEvaluationMorphism( a, b );
+#! <A morphism in Category of matrices over Q>
+cocl_ev_ba := CoclosedEvaluationMorphism( b, a );
+#! <A morphism in Category of matrices over Q>
+cocl_coev_ab := CoclosedCoevaluationMorphism( a, b );
+#! <A morphism in Category of matrices over Q>
+UnderlyingMatrix( ev_ab ) = TransposedMatrix( UnderlyingMatrix( cocl_ev_ba ) );
+#! true
+UnderlyingMatrix( coev_ab ) = TransposedMatrix( UnderlyingMatrix( cocl_coev_ab ) );
+#! true
+tensor_hom_adj_1_hom_ab := InternalHomToTensorProductAdjunctionMap( a, b, 1_hom_ab );
+#! <A morphism in Category of matrices over Q>
+cohom_tensor_adj_1_cohom_ab := InternalCoHomToTensorProductAdjunctionMap( a, b, 1_cohom_ab );
+#! <A morphism in Category of matrices over Q>
+tensor_hom_adj_1_ab := TensorProductToInternalHomAdjunctionMap( a, b, 1_ab );
+#! <A morphism in Category of matrices over Q>
+cohom_tensor_adj_1_ab := TensorProductToInternalCoHomAdjunctionMap( a, b, 1_ab );
+#! <A morphism in Category of matrices over Q>
+ev_ab = tensor_hom_adj_1_hom_ab;
+#! true
+cocl_ev_ab = cohom_tensor_adj_1_cohom_ab;
+#! true
+coev_ab = tensor_hom_adj_1_ab;
+#! true
+cocl_coev_ab = cohom_tensor_adj_1_ab;
+#! true
+c := VectorSpaceObject(2,Q);
+#! <A vector space object over Q of dimension 2>
+d := VectorSpaceObject(1,Q);
+#! <A vector space object over Q of dimension 1>
+pre_compose := MonoidalPreComposeMorphism( a, b, c );
+#! <A morphism in Category of matrices over Q>
+post_compose := MonoidalPostComposeMorphism( a, b, c );
+#! <A morphism in Category of matrices over Q>
+pre_cocompose := MonoidalPreCoComposeMorphism( c, b, a );
+#! <A morphism in Category of matrices over Q>
+post_cocompose := MonoidalPostCoComposeMorphism( c, b, a );
+#! <A morphism in Category of matrices over Q>
+UnderlyingMatrix( pre_compose ) = TransposedMatrix( UnderlyingMatrix( pre_cocompose ) );
+#! true
+UnderlyingMatrix( post_compose ) = TransposedMatrix( UnderlyingMatrix( post_cocompose ) );
+#! true
+tp_hom_comp := TensorProductInternalHomCompatibilityMorphism( [ a, b, c, d ] );
+#! <A morphism in Category of matrices over Q>
+cohom_tp_comp := InternalCoHomTensorProductCompatibilityMorphism( [ b, d, a, c ] );
+#! <A morphism in Category of matrices over Q>
+UnderlyingMatrix( tp_hom_comp ) = TransposedMatrix( UnderlyingMatrix( cohom_tp_comp ) );
+#! true
+lambda := LambdaIntroduction( alpha );
+#! <A morphism in Category of matrices over Q>
+lambda_elim := LambdaElimination( a, b, lambda );
+#! <A morphism in Category of matrices over Q>
+alpha = lambda_elim;
+#! true
+alpha_op := VectorSpaceMorphism( b, TransposedMatrix( UnderlyingMatrix( alpha ) ), a );
+#! <A morphism in Category of matrices over Q>
+colambda := CoLambdaIntroduction( alpha_op );
+#! <A morphism in Category of matrices over Q>
+colambda_elim := CoLambdaElimination( b, a, colambda );
+#! <A morphism in Category of matrices over Q>
+alpha_op = colambda_elim;
+#! true
+UnderlyingMatrix( lambda ) = TransposedMatrix( UnderlyingMatrix( colambda ) );
+#! true
+delta := PreCompose( colambda, lambda);
+#! <A morphism in Category of matrices over Q>
+Display( TraceMap( delta ) );
+#! [ [  9 ] ]
+#!
+#! A morphism in Category of matrices over Q
+Display( CoTraceMap( delta ) );
+#! [ [  9 ] ]
+#!
+#! A morphism in Category of matrices over Q
+TraceMap( delta ) = CoTraceMap( delta );
+#! true
+RankMorphism( a ) = CoRankMorphism( a );
 #! true
 #! @EndExample
