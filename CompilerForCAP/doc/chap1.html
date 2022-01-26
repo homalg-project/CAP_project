@@ -57,8 +57,9 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X78F1B59B7DBEF671">1.9 <span class="Heading">Compiling a function manually</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X86F1D06C81670DC8">1.9-1 CapJitCompiledFunction</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7B1445EE85D8CA0A">1.9-2 CapJitCompiledFunctionAsEnhancedSyntaxTree</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87BAEADB78CC3FF0">1.9-1 CapJitCompiledCAPOperationAsEnhancedSyntaxTree</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X86F1D06C81670DC8">1.9-2 CapJitCompiledFunction</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7B1445EE85D8CA0A">1.9-3 CapJitCompiledFunctionAsEnhancedSyntaxTree</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X780099B481AB3AB7">1.10 <span class="Heading">FAQ</span></a>
 </span>
@@ -142,7 +143,7 @@
 
 </li>
 </ul>
-<p>For details see <code class="func">CapJitResolvedOperations</code> (<a href="chap2.html#X7D12C378812745DA"><span class="RefLink">2.5-16</span></a>) and <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-15</span></a>). If no operation or global variable can be resolved anymore, we continue with the rule phase.</p>
+<p>For details see <code class="func">CapJitResolvedOperations</code> (<a href="chap2.html#X7D12C378812745DA"><span class="RefLink">2.5-18</span></a>) and <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-17</span></a>). If no operation or global variable can be resolved anymore, we continue with the rule phase.</p>
 
 <p>In the rule phase, the tree is optimized using several rules and techniques. Function arguments, functions, and assignments to local variables are inlined. Unused variables are dropped. Handled edge cases are dropped, that is, if the same edge case is caught multiple times via <code class="code">if condition then return ...; fi;</code> statements, only the first such statement is kept. Finally, "logic" is applied to the tree. For example, calls of <code class="code">CallFuncList</code> are replaced by calls to the actual function. The logic can be extended by the user, see chapter <a href="chap2.html#X7D62EFD07F991E56"><span class="RefLink">2</span></a>.</p>
 
@@ -303,11 +304,18 @@
 
 <h4>1.9 <span class="Heading">Compiling a function manually</span></h4>
 
-<p>Use <code class="func">CapJitCompiledFunction</code> (<a href="chap1.html#X86F1D06C81670DC8"><span class="RefLink">1.9-1</span></a>) to compile a function <code class="code">func</code> with JIT arguments <code class="code">jit_args</code>. <code class="code">jit_args</code> should represent a "generic" call, i.e., they should not run into edge cases which do not happen with a "generic" call. Still, the execution using <code class="code">jit_args</code> should be fast to improve compilation times. If <code class="code">func</code> gets a CAP category as the first argument and you want to compile <code class="code">func</code> ahead of time, you can use the CAP category as the first and only entry of <code class="code">jit_args</code>. In this case, the CAP category is used to get the type information required to resolve CAP operations.</p>
+<p>Use <code class="func">CapJitCompiledFunction</code> (<a href="chap1.html#X86F1D06C81670DC8"><span class="RefLink">1.9-2</span></a>) to compile a function <code class="code">func</code> with JIT arguments <code class="code">jit_args</code>. <code class="code">jit_args</code> should represent a "generic" call, i.e., they should not run into edge cases which do not happen with a "generic" call. Still, the execution using <code class="code">jit_args</code> should be fast to improve compilation times. If <code class="code">func</code> gets a CAP category as the first argument and you want to compile <code class="code">func</code> ahead of time, you can use the CAP category as the first and only entry of <code class="code">jit_args</code>. In this case, the CAP category is used to get the type information required to resolve CAP operations.</p>
+
+<p><a id="X87BAEADB78CC3FF0" name="X87BAEADB78CC3FF0"></a></p>
+
+<h5>1.9-1 CapJitCompiledCAPOperationAsEnhancedSyntaxTree</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitCompiledCAPOperationAsEnhancedSyntaxTree</code>( <var class="Arg">cat</var>, <var class="Arg">operation_name</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>A special version of <code class="func">CapJitCompiledFunctionAsEnhancedSyntaxTree</code> (<a href="chap1.html#X7B1445EE85D8CA0A"><span class="RefLink">1.9-3</span></a>) compiling the operation given by <var class="Arg">operation_name</var> in <var class="Arg">cat</var>. <code class="code">jit_args</code> are constructed by taking <code class="code">ZeroObject</code> and <code class="code">ZeroMorphism</code> if possible.</p>
 
 <p><a id="X86F1D06C81670DC8" name="X86F1D06C81670DC8"></a></p>
 
-<h5>1.9-1 CapJitCompiledFunction</h5>
+<h5>1.9-2 CapJitCompiledFunction</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitCompiledFunction</code>( <var class="Arg">func</var>, <var class="Arg">jit_args</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a function</p>
@@ -316,12 +324,12 @@
 
 <p><a id="X7B1445EE85D8CA0A" name="X7B1445EE85D8CA0A"></a></p>
 
-<h5>1.9-2 CapJitCompiledFunctionAsEnhancedSyntaxTree</h5>
+<h5>1.9-3 CapJitCompiledFunctionAsEnhancedSyntaxTree</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitCompiledFunctionAsEnhancedSyntaxTree</code>( <var class="Arg">func</var>, <var class="Arg">jit_args</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
 
-<p>Like <code class="func">CapJitCompiledFunction</code> (<a href="chap1.html#X86F1D06C81670DC8"><span class="RefLink">1.9-1</span></a>), but returns an enhanced syntax tree of the compiled function. <var class="Arg">func</var> must not be an operation or a kernel function because those cannot properly be represented as a syntax tree.</p>
+<p>Like <code class="func">CapJitCompiledFunction</code> (<a href="chap1.html#X86F1D06C81670DC8"><span class="RefLink">1.9-2</span></a>), but returns an enhanced syntax tree of the compiled function. <var class="Arg">func</var> must not be an operation or a kernel function because those cannot properly be represented as a syntax tree.</p>
 
 <p><a id="X780099B481AB3AB7" name="X780099B481AB3AB7"></a></p>
 
@@ -333,7 +341,7 @@
 
 </li>
 </ul>
-<p>A: The function might be listed in <code class="code">CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES</code> or it might be missing an annotation with the pragma <code class="code">CAP_JIT_RESOLVE_FUNCTION</code>. Additionally, a function can only be resolved if it appears as a global variable in the tree during the resolving phase of the compilation. That is, it must be referenced from a global variable from the beginning on, or after global variables are resolved by <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-15</span></a>). Possibly you have adapt <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-15</span></a>) to your setting.</p>
+<p>A: The function might be listed in <code class="code">CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES</code> or it might be missing an annotation with the pragma <code class="code">CAP_JIT_RESOLVE_FUNCTION</code>. Additionally, a function can only be resolved if it appears as a global variable in the tree during the resolving phase of the compilation. That is, it must be referenced from a global variable from the beginning on, or after global variables are resolved by <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-17</span></a>). Possibly you have adapt <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-17</span></a>) to your setting.</p>
 
 
 <ul>
@@ -341,7 +349,7 @@
 
 </li>
 </ul>
-<p>A: The operation might be listed in <code class="code">CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES</code>. If the operation is not a CAP operation and if there are no methods installed for the operation via <code class="code">InstallMethodForCompilerForCAP</code> or <code class="code">InstallOtherMethodForCompilerForCAP</code>, the compiler must be able to get the arguments of the call of the operation from the JIT arguments. Then the rules in the description of <code class="func">CapJitResolvedOperations</code> (<a href="chap2.html#X7D12C378812745DA"><span class="RefLink">2.5-16</span></a>) apply.</p>
+<p>A: The operation might be listed in <code class="code">CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES</code>. If the operation is not a CAP operation and if there are no methods installed for the operation via <code class="code">InstallMethodForCompilerForCAP</code> or <code class="code">InstallOtherMethodForCompilerForCAP</code>, the compiler must be able to get the arguments of the call of the operation from the JIT arguments. Then the rules in the description of <code class="func">CapJitResolvedOperations</code> (<a href="chap2.html#X7D12C378812745DA"><span class="RefLink">2.5-18</span></a>) apply.</p>
 
 
 <ul>

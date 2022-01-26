@@ -12,7 +12,7 @@
   [30X    [33X[0;6Yuse [2XCapJitPrettyPrintSyntaxTree[102X ([14X2.4-3[114X),[133X
   
   [30X    [33X[0;6Yset       [10Xdebug[110X       to       [10Xtrue[110X      in      the      code      of
-        [2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X  ([14X1.9-2[114X) (Note: this causes
+        [2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X  ([14X1.9-3[114X) (Note: this causes
         informational break loops which are not actual errors),[133X
   
   [30X    [33X[0;6Yuse  the  [10Xdebug[110X  and [10Xdebug_path[110X record entries of logic templates (see
@@ -66,7 +66,7 @@
   [33X[0;0YSemantics:  [10Xsrc_template[110X  is  a  piece  of  code which should be replaced by
   [10Xdst_template[110X:[133X
   
-  [30X    [33X[0;6YThe   function  [2XCapJitAppliedLogicTemplates[102X  ([14X2.5-14[114X)  tries  to  find
+  [30X    [33X[0;6YThe   function  [2XCapJitAppliedLogicTemplates[102X  ([14X2.5-16[114X)  tries  to  find
         occurences  of [10Xsrc_template[110X in a tree and potentially replaces them by
         [10Xdst_template[110X.[133X
   
@@ -76,12 +76,12 @@
         occurs  multiple  times,  the  corresponding parts of the tree must be
         equal.[133X
   
-  [30X    [33X[0;6Y[2XCapJitAppliedLogicTemplates[102X   ([14X2.5-14[114X)  uses  [3Xjit_args[103X  to  compute  a
+  [30X    [33X[0;6Y[2XCapJitAppliedLogicTemplates[102X   ([14X2.5-16[114X)  uses  [3Xjit_args[103X  to  compute  a
         concrete  value  of each variable. The template is only applied if all
         values match the corresponding filters in [10Xvariable_filters[110X.[133X
   
   [30X    [33X[0;6YFor   each   function   in  [10Xdst_template[110X,  [2XCapJitAppliedLogicTemplates[102X
-        ([14X2.5-14[114X)  tries  to find a corresponding function in [10Xsrc_template[110X. The
+        ([14X2.5-16[114X)  tries  to find a corresponding function in [10Xsrc_template[110X. The
         functions  are  matched  by  comparing  the  lists  of  names of local
         variables. If for a function in [10Xdst_template[110X no corresponding function
         in  [10Xsrc_template[110X  exists,  you  have to add the list of names of local
@@ -96,7 +96,7 @@
         [10Xneeded_packages[110X are loaded in the correct versions.[133X
   
   [30X    [33X[0;6Y[10Xdebug[110X   can   be   set   to  [10Xtrue[110X  to  print  more  information  while
-        [2XCapJitAppliedLogicTemplates[102X  ([14X2.5-14[114X)  tries  to  apply  the template.
+        [2XCapJitAppliedLogicTemplates[102X  ([14X2.5-16[114X)  tries  to  apply  the template.
         (Note:  this  causes  informational  break  loops which are not actual
         errors).[133X
   
@@ -126,7 +126,7 @@
         [10Xvariable_names[110X  is still required to have a readable representation of
         the   template   and   to   make   sure   that  the  global  variables
         [10XCAP_INTERNAL_JIT_TEMPLATE_VAR_n[110X         are         declared        by
-        [2XCapJitAppliedLogicTemplates[102X   ([14X2.5-14[114X).   If  [10Xdst_template[110X  cannot  be
+        [2XCapJitAppliedLogicTemplates[102X   ([14X2.5-16[114X).   If  [10Xdst_template[110X  cannot  be
         expressed as valid GAP code, it can be in an analogous manner.[133X
   
   
@@ -526,7 +526,39 @@
   [33X[0;0YHoists  expressions  which  are part of but indepedent of inner functions to
   outer functions.[133X
   
-  [1X2.5-8 CapJitInlinedArguments[101X
+  [1X2.5-8 CapJitAddTypeSignature[101X
+  
+  [33X[1;0Y[29X[2XCapJitAddTypeSignature[102X( [3Xname[103X, [3Xinput_filters[103X, [3Xoutput_data_type[103X ) [32X function[133X
+  
+  [33X[0;0YAdds  a  type  signature for the global function or operation given by [3Xname[103X.
+  [3Xinput_filters[103X  must be a list of filters. [3Xoutput_data_type[103X must be a filter,
+  a  data  type,  or  a function accepting the arguments of a function call of
+  [3Xname[103X  (as  syntax  trees) and the function stack and returning a record with
+  components  [10Xargs[110X (the possibly modified arguments) and [10Xoutput_type[110X (the data
+  type  of  the output). See [2XCapJitIterateOverTree[102X ([14X2.3-1[114X) for more details on
+  data types.[133X
+  
+  [1X2.5-9 CapJitInferredDataTypes[101X
+  
+  [33X[1;0Y[29X[2XCapJitInferredDataTypes[102X( [3Xtree[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya record[133X
+  
+  [33X[0;0YTries  to  infer  the  data  types of expressions in [3Xtree[103X and attaches it as
+  component  [10Xdata_type[110X.  A  data type is a record with component [10Xfilter[110X (a GAP
+  filter) and, depending on the filter, additional components:[133X
+  
+  [30X    [33X[0;6Y[10XIsFunction[110X  with  additional  component  [10Xsignature[110X: The signature is a
+        list  with two entries. The first entry is a list of data types of the
+        inputs, the second entry is the data type of the output.[133X
+  
+  [30X    [33X[0;6Y[10XIsList[110X  with  additional  component  [10Xelement_type[110X:  The  type  of  the
+        elements of the list. Only homogeneous lists are supported.[133X
+  
+  [30X    [33X[0;6Yfilters     implying     [10XIsCapCategory[110X,     [10XIsCapCategoryObject[110X     or
+        [10XIsCapCategoryMorphism[110X with additional component [10Xcategory[110X: The category
+        instance (to which the object or morphism belongs).[133X
+  
+  [1X2.5-10 CapJitInlinedArguments[101X
   
   [33X[1;0Y[29X[2XCapJitInlinedArguments[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -537,7 +569,7 @@
   of  the  function, and drops the arguments (i.e., makes the function a 0-ary
   function).[133X
   
-  [1X2.5-9 CapJitInlinedBindings[101X
+  [1X2.5-11 CapJitInlinedBindings[101X
   
   [33X[1;0Y[29X[2XCapJitInlinedBindings[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -549,14 +581,14 @@
   done if the value is a reference to a (local or global) variable. Also drops
   the inlined bindings.[133X
   
-  [1X2.5-10 CapJitInlinedBindingsToVariableReferences[101X
+  [1X2.5-12 CapJitInlinedBindingsToVariableReferences[101X
   
   [33X[1;0Y[29X[2XCapJitInlinedBindingsToVariableReferences[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YShort hand for [10XCapJitInlinedBindings( [110X[3Xtree[103X[10X : inline_var_refs_only := true )[110X.[133X
   
-  [1X2.5-11 CapJitInlinedFunctionCalls[101X
+  [1X2.5-13 CapJitInlinedFunctionCalls[101X
   
   [33X[1;0Y[29X[2XCapJitInlinedFunctionCalls[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -567,7 +599,7 @@
   hand  side  of a variable assignment or a return statement. Inserts the body
   of  the  function right before the variable assignment / return statement to
   avoid  the  function  call.  Assumes  that  arguments  of function calls are
-  inlined  (i.e., you should use [2XCapJitInlinedArguments[102X ([14X2.5-8[114X) first). Due to
+  inlined (i.e., you should use [2XCapJitInlinedArguments[102X ([14X2.5-10[114X) first). Due to
   the  nature  of a [10Xreturn[110X statement breaking the execution and having no [10Xgoto[110X
   keyword in GAP, only functions[133X
   
@@ -578,24 +610,24 @@
   
   [33X[0;0Yand not containing other [10Xreturn[110X statements can be inlined.[133X
   
-  [1X2.5-12 CapJitInlinedSimpleFunctionCalls[101X
+  [1X2.5-14 CapJitInlinedSimpleFunctionCalls[101X
   
   [33X[1;0Y[29X[2XCapJitInlinedSimpleFunctionCalls[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YReplaces  function  calls  of  the  form [10X(function() return value; end)()[110X by
   [10Xvalue[110X.  Assumes  that  arguments  of  function  calls are inlined (i.e., you
-  should use [2XCapJitInlinedArguments[102X ([14X2.5-8[114X) first).[133X
+  should use [2XCapJitInlinedArguments[102X ([14X2.5-10[114X) first).[133X
   
-  [1X2.5-13 CapJitAppliedLogic[101X
+  [1X2.5-15 CapJitAppliedLogic[101X
   
   [33X[1;0Y[29X[2XCapJitAppliedLogic[102X( [3Xtree[103X, [3Xjit_args[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YApplies  all  logic functions (see [2XCapJitAddLogicFunction[102X ([14X2.1-1[114X)) and logic
-  templates (see [2XCapJitAppliedLogicTemplates[102X ([14X2.5-14[114X)) to [3Xtree[103X.[133X
+  templates (see [2XCapJitAppliedLogicTemplates[102X ([14X2.5-16[114X)) to [3Xtree[103X.[133X
   
-  [1X2.5-14 CapJitAppliedLogicTemplates[101X
+  [1X2.5-16 CapJitAppliedLogicTemplates[101X
   
   [33X[1;0Y[29X[2XCapJitAppliedLogicTemplates[102X( [3Xtree[103X, [3Xjit_args[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -603,7 +635,7 @@
   [33X[0;0YApplies  all  logic  templates (see [2XCapJitAddLogicTemplate[102X ([14X2.1-2[114X)) to [3Xtree[103X.
   The arguments [3Xjit_args[103X are used to infer the types of variables.[133X
   
-  [1X2.5-15 CapJitResolvedGlobalVariables[101X
+  [1X2.5-17 CapJitResolvedGlobalVariables[101X
   
   [33X[1;0Y[29X[2XCapJitResolvedGlobalVariables[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -618,7 +650,7 @@
   [30X    [33X[0;6YComputes  attributes  of  categories  stored  in  global variables and
         places the results into global variables again.[133X
   
-  [1X2.5-16 CapJitResolvedOperations[101X
+  [1X2.5-18 CapJitResolvedOperations[101X
   
   [33X[1;0Y[29X[2XCapJitResolvedOperations[102X( [3Xtree[103X, [3Xjit_args[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X

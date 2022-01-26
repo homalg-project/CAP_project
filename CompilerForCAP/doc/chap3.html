@@ -550,6 +550,10 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    MyKernelLift,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ rows, ZeroMorphism( V, V ), IdentityMorphism( V ) ]</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+WARNING: Compiling CAP operation LiftOrFail with return_type morphism_or_fail.\
+ Operations returning fail usually do not fulfill the requirements that all br\
+anches of an if statement can be executed even if the corresponding condition \
+does not hold. This might cause errors.
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
 function ( cat_1, mor_1, test_mor_1 )
     local morphism_attr_1_1;
@@ -1720,65 +1724,10 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationalsInSingular( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQxy := QQ * "x,y";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EEE := KoszulDualRing( QQxy );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># We need special JIT arguments, so we have to compile manually and</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># hack the result into the category_constructor.</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"></span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">rows := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( EEE );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">dist_object := DistinguishedObjectOfHomomorphismStructure( rows );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">o := CategoryOfRowsObject( rows, 1 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">id_o := IdentityMorphism( o );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H_o_o := HomomorphismStructureOnObjects( o, o );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">nu_id_o :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    id_o</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">function_name1 := "HomomorphismStructureOnMorphismsWithGivenObjects";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( rows!.added_functions.(function_name1) );</span>
-1
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_tree1 := CapJitCompiledFunctionAsEnhancedSyntaxTree(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    rows!.added_functions.(function_name1)[1][1],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ rows, H_o_o, id_o, id_o, H_o_o ]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">function_name2 := Concatenation(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "InterpretMorphismAsMorphismFromDistinguishedObject",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "ToHomomorphismStructureWithGivenObjects"</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( rows!.added_functions.(function_name2) );</span>
-1
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_tree2 := CapJitCompiledFunctionAsEnhancedSyntaxTree(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    rows!.added_functions.(function_name2)[1][1],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ rows, dist_object, id_o, H_o_o ]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">function_name3 :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism";;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( rows!.added_functions.(function_name3) );</span>
-1
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_tree3 := CapJitCompiledFunctionAsEnhancedSyntaxTree(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    rows!.added_functions.(function_name3)[1][1],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ rows, o, o, nu_id_o ]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">function_names := [ function_name1, function_name2, function_name3 ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_trees := [ compiled_tree1, compiled_tree2, compiled_tree3 ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CATEGORY_OF_ROWS_HACKY_EXTENDER := function ( rows )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Perform( [ 1 .. Length( function_names ) ], function( i )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        rows!.compiled_functions_trees.(function_names[i])[1] :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">            compiled_trees[i]; end ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># we have to work hard to not write semicolons so AutoDoc</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># does not begin a new statement</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">category_constructor := EvalString( ReplacedString( """function( homalg_ring )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  local rows@</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    rows := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( homalg_ring )@</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    if IsBoundGlobal( "CATEGORY_OF_ROWS_HACKY_EXTENDER" ) then</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        ValueGlobal( "CATEGORY_OF_ROWS_HACKY_EXTENDER" )( rows )@</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    fi@</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return rows@</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">end""", "@", ";" ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">category_constructor :=</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    homalg_ring -&gt; CategoryOfRowsAsAdditiveClosureOfRingAsCategory(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        homalg_ring</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">given_arguments := [ EEE ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">package_name := "FreydCategoriesForCAP";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_category_name := Concatenation(</span>
@@ -1788,9 +1737,15 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">operations := [</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    "DistinguishedObjectOfHomomorphismStructure",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    "HomomorphismStructureOnObjects",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    function_name1,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    function_name2,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    function_name3,</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    "HomomorphismStructureOnMorphismsWithGivenObjects",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Concatenation(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "InterpretMorphismAsMorphismFromDistinguishedObject",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "ToHomomorphismStructureWithGivenObjects"</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Concatenation(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "InterpretMorphismFromDistinguishedObject",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        "ToHomomorphismStructureAsMorphism"</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrecompileCategoryAndCompareResult(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    category_constructor,</span>

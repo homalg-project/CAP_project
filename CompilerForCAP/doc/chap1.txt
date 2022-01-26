@@ -96,8 +96,8 @@
   [30X    [33X[0;6YIf a KeyDependentOperation is detected, the corresponding [10XOp[110X method is
         resolved.[133X
   
-  [33X[0;0YFor      details      see      [2XCapJitResolvedOperations[102X     ([14X2.5-16[114X)     and
-  [2XCapJitResolvedGlobalVariables[102X  ([14X2.5-15[114X).  If no operation or global variable
+  [33X[0;0YFor      details      see      [2XCapJitResolvedOperations[102X     ([14X2.5-18[114X)     and
+  [2XCapJitResolvedGlobalVariables[102X  ([14X2.5-17[114X).  If no operation or global variable
   can be resolved anymore, we continue with the rule phase.[133X
   
   [33X[0;0YIn the rule phase, the tree is optimized using several rules and techniques.
@@ -298,7 +298,7 @@
   
   [1X1.9 [33X[0;0YCompiling a function manually[133X[101X
   
-  [33X[0;0YUse  [2XCapJitCompiledFunction[102X  ([14X1.9-1[114X)  to  compile  a  function [10Xfunc[110X with JIT
+  [33X[0;0YUse  [2XCapJitCompiledFunction[102X  ([14X1.9-2[114X)  to  compile  a  function [10Xfunc[110X with JIT
   arguments  [10Xjit_args[110X.  [10Xjit_args[110X should represent a "generic" call, i.e., they
   should  not  run  into edge cases which do not happen with a "generic" call.
   Still,  the  execution  using [10Xjit_args[110X should be fast to improve compilation
@@ -307,7 +307,15 @@
   only  entry  of  [10Xjit_args[110X. In this case, the CAP category is used to get the
   type information required to resolve CAP operations.[133X
   
-  [1X1.9-1 CapJitCompiledFunction[101X
+  [1X1.9-1 CapJitCompiledCAPOperationAsEnhancedSyntaxTree[101X
+  
+  [33X[1;0Y[29X[2XCapJitCompiledCAPOperationAsEnhancedSyntaxTree[102X( [3Xcat[103X, [3Xoperation_name[103X ) [32X function[133X
+  
+  [33X[0;0YA  special  version  of  [2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X  ([14X1.9-3[114X)
+  compiling  the  operation  given  by  [3Xoperation_name[103X  in  [3Xcat[103X.  [10Xjit_args[110X are
+  constructed by taking [10XZeroObject[110X and [10XZeroMorphism[110X if possible.[133X
+  
+  [1X1.9-2 CapJitCompiledFunction[101X
   
   [33X[1;0Y[29X[2XCapJitCompiledFunction[102X( [3Xfunc[103X, [3Xjit_args[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya function[133X
@@ -320,12 +328,12 @@
   a  CAP  category, this category is used to get the type information required
   to resolve CAP operations.[133X
   
-  [1X1.9-2 CapJitCompiledFunctionAsEnhancedSyntaxTree[101X
+  [1X1.9-3 CapJitCompiledFunctionAsEnhancedSyntaxTree[101X
   
   [33X[1;0Y[29X[2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X( [3Xfunc[103X, [3Xjit_args[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
-  [33X[0;0YLike  [2XCapJitCompiledFunction[102X ([14X1.9-1[114X), but returns an enhanced syntax tree of
+  [33X[0;0YLike  [2XCapJitCompiledFunction[102X ([14X1.9-2[114X), but returns an enhanced syntax tree of
   the  compiled  function.  [3Xfunc[103X must not be an operation or a kernel function
   because those cannot properly be represented as a syntax tree.[133X
   
@@ -340,8 +348,8 @@
   function can only be resolved if it appears as a global variable in the tree
   during  the  resolving  phase  of  the  compilation.  That  is,  it  must be
   referenced  from  a  global  variable from the beginning on, or after global
-  variables  are  resolved by [2XCapJitResolvedGlobalVariables[102X ([14X2.5-15[114X). Possibly
-  you have adapt [2XCapJitResolvedGlobalVariables[102X ([14X2.5-15[114X) to your setting.[133X
+  variables  are  resolved by [2XCapJitResolvedGlobalVariables[102X ([14X2.5-17[114X). Possibly
+  you have adapt [2XCapJitResolvedGlobalVariables[102X ([14X2.5-17[114X) to your setting.[133X
   
   [30X    [33X[0;6YQ: Why is my operation not resolved?[133X
   
@@ -350,7 +358,7 @@
   installed   for   the   operation   via   [10XInstallMethodForCompilerForCAP[110X  or
   [10XInstallOtherMethodForCompilerForCAP[110X,  the  compiler  must be able to get the
   arguments  of  the  call  of  the operation from the JIT arguments. Then the
-  rules in the description of [2XCapJitResolvedOperations[102X ([14X2.5-16[114X) apply.[133X
+  rules in the description of [2XCapJitResolvedOperations[102X ([14X2.5-18[114X) apply.[133X
   
   [30X    [33X[0;6YQ: Why do I get the error "cannot find iteration key"?[133X
   

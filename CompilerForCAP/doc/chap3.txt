@@ -511,6 +511,10 @@
     [4X[25X>[125X [27X    MyKernelLift,[127X[104X
     [4X[25X>[125X [27X    [ rows, ZeroMorphism( V, V ), IdentityMorphism( V ) ][127X[104X
     [4X[25X>[125X [27X);;[127X[104X
+    [4X[28XWARNING: Compiling CAP operation LiftOrFail with return_type morphism_or_fail.\[128X[104X
+    [4X[28X Operations returning fail usually do not fulfill the requirements that all br\[128X[104X
+    [4X[28Xanches of an if statement can be executed even if the corresponding condition \[128X[104X
+    [4X[28Xdoes not hold. This might cause errors.[128X[104X
     [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
     [4X[28Xfunction ( cat_1, mor_1, test_mor_1 )[128X[104X
     [4X[28X    local morphism_attr_1_1;[128X[104X
@@ -1664,65 +1668,10 @@
     [4X[25X>[125X [27XQQ := HomalgFieldOfRationalsInSingular( );;[127X[104X
     [4X[25Xgap>[125X [27XQQxy := QQ * "x,y";;[127X[104X
     [4X[25Xgap>[125X [27XEEE := KoszulDualRing( QQxy );;[127X[104X
-    [4X[25Xgap>[125X [27X# We need special JIT arguments, so we have to compile manually and[127X[104X
-    [4X[25X>[125X [27X# hack the result into the category_constructor.[127X[104X
-    [4X[25X>[125X [27X[127X[104X
-    [4X[25X>[125X [27Xrows := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( EEE );;[127X[104X
-    [4X[25Xgap>[125X [27Xdist_object := DistinguishedObjectOfHomomorphismStructure( rows );;[127X[104X
-    [4X[25Xgap>[125X [27Xo := CategoryOfRowsObject( rows, 1 );;[127X[104X
-    [4X[25Xgap>[125X [27Xid_o := IdentityMorphism( o );;[127X[104X
-    [4X[25Xgap>[125X [27XH_o_o := HomomorphismStructureOnObjects( o, o );;[127X[104X
-    [4X[25Xgap>[125X [27Xnu_id_o :=[127X[104X
-    [4X[25X>[125X [27X  InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure([127X[104X
-    [4X[25X>[125X [27X    id_o[127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27Xfunction_name1 := "HomomorphismStructureOnMorphismsWithGivenObjects";;[127X[104X
-    [4X[25Xgap>[125X [27XLength( rows!.added_functions.(function_name1) );[127X[104X
-    [4X[28X1[128X[104X
-    [4X[25Xgap>[125X [27Xcompiled_tree1 := CapJitCompiledFunctionAsEnhancedSyntaxTree([127X[104X
-    [4X[25X>[125X [27X    rows!.added_functions.(function_name1)[1][1],[127X[104X
-    [4X[25X>[125X [27X    [ rows, H_o_o, id_o, id_o, H_o_o ][127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27Xfunction_name2 := Concatenation([127X[104X
-    [4X[25X>[125X [27X    "InterpretMorphismAsMorphismFromDistinguishedObject",[127X[104X
-    [4X[25X>[125X [27X    "ToHomomorphismStructureWithGivenObjects"[127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27XLength( rows!.added_functions.(function_name2) );[127X[104X
-    [4X[28X1[128X[104X
-    [4X[25Xgap>[125X [27Xcompiled_tree2 := CapJitCompiledFunctionAsEnhancedSyntaxTree([127X[104X
-    [4X[25X>[125X [27X    rows!.added_functions.(function_name2)[1][1],[127X[104X
-    [4X[25X>[125X [27X    [ rows, dist_object, id_o, H_o_o ][127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27Xfunction_name3 :=[127X[104X
-    [4X[25X>[125X [27X  "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism";;[127X[104X
-    [4X[25Xgap>[125X [27XLength( rows!.added_functions.(function_name3) );[127X[104X
-    [4X[28X1[128X[104X
-    [4X[25Xgap>[125X [27Xcompiled_tree3 := CapJitCompiledFunctionAsEnhancedSyntaxTree([127X[104X
-    [4X[25X>[125X [27X    rows!.added_functions.(function_name3)[1][1],[127X[104X
-    [4X[25X>[125X [27X    [ rows, o, o, nu_id_o ][127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27Xfunction_names := [ function_name1, function_name2, function_name3 ];;[127X[104X
-    [4X[25Xgap>[125X [27Xcompiled_trees := [ compiled_tree1, compiled_tree2, compiled_tree3 ];;[127X[104X
-    [4X[25Xgap>[125X [27XCATEGORY_OF_ROWS_HACKY_EXTENDER := function ( rows )[127X[104X
-    [4X[25X>[125X [27X    Perform( [ 1 .. Length( function_names ) ], function( i )[127X[104X
-    [4X[25X>[125X [27X        rows!.compiled_functions_trees.(function_names[i])[1] :=[127X[104X
-    [4X[25X>[125X [27X            compiled_trees[i]; end ); end;;[127X[104X
-    [4X[25Xgap>[125X [27X# we have to work hard to not write semicolons so AutoDoc[127X[104X
-    [4X[25X>[125X [27X# does not begin a new statement[127X[104X
-    [4X[25X>[125X [27Xcategory_constructor := EvalString( ReplacedString( """function( homalg_ring )[127X[104X
-    [4X[25X>[125X [27X  local rows@[127X[104X
-    [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27X    rows := CategoryOfRowsAsAdditiveClosureOfRingAsCategory( homalg_ring )@[127X[104X
-    [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27X    if IsBoundGlobal( "CATEGORY_OF_ROWS_HACKY_EXTENDER" ) then[127X[104X
-    [4X[25X>[125X [27X        [127X[104X
-    [4X[25X>[125X [27X        ValueGlobal( "CATEGORY_OF_ROWS_HACKY_EXTENDER" )( rows )@[127X[104X
-    [4X[25X>[125X [27X        [127X[104X
-    [4X[25X>[125X [27X    fi@[127X[104X
-    [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27X    return rows@[127X[104X
-    [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27Xend""", "@", ";" ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xcategory_constructor :=[127X[104X
+    [4X[25X>[125X [27X    homalg_ring -> CategoryOfRowsAsAdditiveClosureOfRingAsCategory([127X[104X
+    [4X[25X>[125X [27X        homalg_ring[127X[104X
+    [4X[25X>[125X [27X    );;[127X[104X
     [4X[25Xgap>[125X [27Xgiven_arguments := [ EEE ];;[127X[104X
     [4X[25Xgap>[125X [27Xpackage_name := "FreydCategoriesForCAP";;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_category_name := Concatenation([127X[104X
@@ -1732,9 +1681,15 @@
     [4X[25Xgap>[125X [27Xoperations := [[127X[104X
     [4X[25X>[125X [27X    "DistinguishedObjectOfHomomorphismStructure",[127X[104X
     [4X[25X>[125X [27X    "HomomorphismStructureOnObjects",[127X[104X
-    [4X[25X>[125X [27X    function_name1,[127X[104X
-    [4X[25X>[125X [27X    function_name2,[127X[104X
-    [4X[25X>[125X [27X    function_name3,[127X[104X
+    [4X[25X>[125X [27X    "HomomorphismStructureOnMorphismsWithGivenObjects",[127X[104X
+    [4X[25X>[125X [27X    Concatenation([127X[104X
+    [4X[25X>[125X [27X        "InterpretMorphismAsMorphismFromDistinguishedObject",[127X[104X
+    [4X[25X>[125X [27X        "ToHomomorphismStructureWithGivenObjects"[127X[104X
+    [4X[25X>[125X [27X    ),[127X[104X
+    [4X[25X>[125X [27X    Concatenation([127X[104X
+    [4X[25X>[125X [27X        "InterpretMorphismFromDistinguishedObject",[127X[104X
+    [4X[25X>[125X [27X        "ToHomomorphismStructureAsMorphism"[127X[104X
+    [4X[25X>[125X [27X    ),[127X[104X
     [4X[25X>[125X [27X];;[127X[104X
     [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
     [4X[25X>[125X [27X    category_constructor,[127X[104X

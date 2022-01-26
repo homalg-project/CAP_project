@@ -6,10 +6,10 @@
                    [1X Speed up computations in CAP categories [101X
   
   
-                                   2022.01-02
+                                   2022.01-03
   
   
-                                25 January 2022
+                                26 January 2022
   
   
                                 Fabian Zickgraf
@@ -45,8 +45,9 @@
     1.8 [33X[0;0YGetting information about the compilation process[133X
       1.8-1 InfoCapJit
     1.9 [33X[0;0YCompiling a function manually[133X
-      1.9-1 CapJitCompiledFunction
-      1.9-2 CapJitCompiledFunctionAsEnhancedSyntaxTree
+      1.9-1 CapJitCompiledCAPOperationAsEnhancedSyntaxTree
+      1.9-2 CapJitCompiledFunction
+      1.9-3 CapJitCompiledFunctionAsEnhancedSyntaxTree
     1.10 [33X[0;0YFAQ[133X
   2 [33X[0;0YImproving and extending the compiler[133X
     2.1 [33X[0;0YLogic[133X
@@ -84,15 +85,17 @@
       2.5-5 CapJitDroppedHandledEdgeCases
       2.5-6 CapJitDroppedUnusedBindings
       2.5-7 CapJitHoistedExpressions
-      2.5-8 CapJitInlinedArguments
-      2.5-9 CapJitInlinedBindings
-      2.5-10 CapJitInlinedBindingsToVariableReferences
-      2.5-11 CapJitInlinedFunctionCalls
-      2.5-12 CapJitInlinedSimpleFunctionCalls
-      2.5-13 CapJitAppliedLogic
-      2.5-14 CapJitAppliedLogicTemplates
-      2.5-15 CapJitResolvedGlobalVariables
-      2.5-16 CapJitResolvedOperations
+      2.5-8 CapJitAddTypeSignature
+      2.5-9 CapJitInferredDataTypes
+      2.5-10 CapJitInlinedArguments
+      2.5-11 CapJitInlinedBindings
+      2.5-12 CapJitInlinedBindingsToVariableReferences
+      2.5-13 CapJitInlinedFunctionCalls
+      2.5-14 CapJitInlinedSimpleFunctionCalls
+      2.5-15 CapJitAppliedLogic
+      2.5-16 CapJitAppliedLogicTemplates
+      2.5-17 CapJitResolvedGlobalVariables
+      2.5-18 CapJitResolvedOperations
   3 [33X[0;0YExamples and tests[133X
     3.1 [33X[0;0YExamples[133X
     3.2 [33X[0;0YTests[133X
