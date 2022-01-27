@@ -49,14 +49,14 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78941FF180271D5D">2.3-1 UnderlyingCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X806F515A8225F3D5">2.3-2 ObjectList</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X801FFB8B7A9200B7">2.3-3 MorphismMatrix</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A84391E80904DF8">2.3-4 NrRows</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79E258B7803D0B05">2.3-5 NrCols</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7FC1128578287E61">2.3-4 NumberRows</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7B92D388873C4F45">2.3-5 NumberColumns</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7AD6F77E7D95C996">2.4 <span class="Heading">Operators</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D349F847E6043A8"><code>2.4-1 \[\]</code></a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X85700E97870211FE">2.4-2 [</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D349F847E6043A8">2.4-1 []</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X79DD31B67986A60B">2.4-2 MatElm</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D3C3DCE87667A7C"><code>2.4-3 \/</code></a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X790ACC3182D77147"><code>2.4-4 \/</code></a></span>
 </div></div>
@@ -227,20 +227,20 @@
 
 <p>The argument is a morphism <span class="Math">\alpha:A\to B</span> between formal direct sums in some additive closure category <span class="Math">C^\oplus</span>. The output is the defining matrix of <span class="Math">\alpha</span>.</p>
 
-<p><a id="X7A84391E80904DF8" name="X7A84391E80904DF8"></a></p>
+<p><a id="X7FC1128578287E61" name="X7FC1128578287E61"></a></p>
 
-<h5>2.3-4 NrRows</h5>
+<h5>2.3-4 NumberRows</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NrRows</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NumberRows</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a non-negative integer</p>
 
 <p>The argument is a morphism <span class="Math">\alpha:A\to B</span> between formal direct sums. The output is the number of summands of the the source.</p>
 
-<p><a id="X79E258B7803D0B05" name="X79E258B7803D0B05"></a></p>
+<p><a id="X7B92D388873C4F45" name="X7B92D388873C4F45"></a></p>
 
-<h5>2.3-5 NrCols</h5>
+<h5>2.3-5 NumberColumns</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NrCols</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NumberColumns</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a non-negative integer</p>
 
 <p>The argument is a morphism <span class="Math">\alpha:A\to B</span> between formal direct sums. The output is the number of summands of the the range.</p>
@@ -251,18 +251,18 @@
 
 <p><a id="X7D349F847E6043A8" name="X7D349F847E6043A8"></a></p>
 
-<h5><code>2.4-1 \[\]</code></h5>
+<h5>2.4-1 []</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \[\]</code>( <var class="Arg">A</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; []</code>( <var class="Arg">A</var>, <var class="Arg">i</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an object in <span class="Math">C</span></p>
 
 <p>The arguments are a formal direct sum <span class="Math">A</span> in some additive category <span class="Math">C^\oplus</span> and an integers <span class="Math">i</span>. The output is the <span class="Math">i</span>'th entry in <code class="code">ObjectList</code>(<span class="Math">A</span>).</p>
 
-<p><a id="X85700E97870211FE" name="X85700E97870211FE"></a></p>
+<p><a id="X79DD31B67986A60B" name="X79DD31B67986A60B"></a></p>
 
-<h5>2.4-2 [</h5>
+<h5>2.4-2 MatElm</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; [</code>( <var class="Arg">alpha</var>, <var class="Arg">i</var>, <var class="Arg">j</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MatElm</code>( <var class="Arg">alpha</var>, <var class="Arg">i</var>, <var class="Arg">j</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism <span class="Math">C</span></p>
 
 <p>The arguments are a morphism <span class="Math">\alpha:A\to B</span> between formal direct sums in some additive category <span class="Math">C^\oplus</span> and two integers <span class="Math">i,j</span>. The output is the <span class="Math">(i,j)</span>'th entry in <code class="code">MorphismMatrix</code>(<span class="Math">\alpha</span>).</p>

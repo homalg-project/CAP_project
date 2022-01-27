@@ -141,17 +141,17 @@
   additive  closure  category  [23XC^\oplus[123X.  The output is the defining matrix of
   [23X\alpha[123X.[133X
   
-  [1X2.3-4 NrRows[101X
+  [1X2.3-4 NumberRows[101X
   
-  [33X[1;0Y[29X[2XNrRows[102X( [3Xalpha[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XNumberRows[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya non-negative integer[133X
   
   [33X[0;0YThe  argument  is  a  morphism [23X\alpha:A\to B[123X between formal direct sums. The
   output is the number of summands of the the source.[133X
   
-  [1X2.3-5 NrCols[101X
+  [1X2.3-5 NumberColumns[101X
   
-  [33X[1;0Y[29X[2XNrCols[102X( [3Xalpha[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XNumberColumns[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya non-negative integer[133X
   
   [33X[0;0YThe  argument  is  a  morphism [23X\alpha:A\to B[123X between formal direct sums. The
@@ -160,17 +160,17 @@
   
   [1X2.4 [33X[0;0YOperators[133X[101X
   
-  [1X2.4-1 \[\][101X
+  [1X2.4-1 [][101X
   
-  [33X[1;0Y[29X[2X\[\][102X( [3XA[103X, [3Xi[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2X[][102X( [3XA[103X, [3Xi[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Yan object in [23XC[123X[133X
   
   [33X[0;0YThe  arguments  are a formal direct sum [23XA[123X in some additive category [23XC^\oplus[123X
   and an integers [23Xi[123X. The output is the [23Xi[123X'th entry in [10XObjectList[110X([23XA[123X).[133X
   
-  [1X2.4-2 [[101X
+  [1X2.4-2 MatElm[101X
   
-  [33X[1;0Y[29X[2X[[102X( [3Xalpha[103X, [3Xi[103X, [3Xj[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XMatElm[102X( [3Xalpha[103X, [3Xi[103X, [3Xj[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism [23XC[123X[133X
   
   [33X[0;0YThe  arguments  are  a  morphism [23X\alpha:A\to B[123X between formal direct sums in

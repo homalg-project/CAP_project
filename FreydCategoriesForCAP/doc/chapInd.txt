@@ -2,14 +2,13 @@
   
   [1XIndex[101X
   
-  [2X[[102X, for IsAdditiveClosureMorphism, IsInt, IsInt 2.4-2 
+  [2X[][102X, for IsAdditiveClosureObject, IsInt 2.4-1 
   [2X\*[102X, for IsFreydCategoryMorphism, IsFreydCategoryMorphism 11.2-3 
       for IsFreydCategoryObject, IsFreydCategoryObject 11.2-1 
   [2X\/[102X, for IsCapCategoryCell, IsAdditiveClosureCategory 2.4-4 
       for IsCapCategoryMorphism, IsAdelmanCategory 4.2-7 
       for IsCapCategoryObject, IsAdelmanCategory 4.2-6 
       for IsList, IsAdditiveClosureCategory 2.4-3 
-  [2X\[\][102X, for IsAdditiveClosureObject, IsInt 2.4-1 
   [2X\^[102X, for IsFreydCategoryMorphism, IsInt 11.2-4 
       for IsFreydCategoryObject, IsInt 11.2-2 
   [2XAddBiasedWeakFiberProduct[102X, for IsCapCategory, IsFunction 1.4-6 
@@ -125,14 +124,15 @@
   [2XIsGradedRowOrColumn[102X, for IsCapCategoryObject 9.3-1 
   [2XIsGradedRowOrColumnMorphism[102X, for IsCapCategoryMorphism 9.3-4 
   [2XIsSequenceAsAdelmanCategoryObject[102X, for IsAdelmanCategoryObject 4.3-9 
+  [2XMatElm[102X, for IsAdditiveClosureMorphism, IsInt, IsInt 2.4-2 
   [2XMereExistenceOfWitnessPairForBeingCongruentToZero[102X, for IsAdelmanCategoryMorphism 4.3-8 
   [2XMonomorphismToSomeInjectiveObjectForCokernelObject[102X, for IsCapCategoryMorphism 1.7-5 
   [2XMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 1.7-6 
   [2XMorphismDatum[102X, for IsAdelmanCategoryMorphism 4.3-4 
   [2XMorphismMatrix[102X, for IsAdditiveClosureMorphism 2.3-3 
-  [2XNrCols[102X, for IsAdditiveClosureMorphism 2.3-5 
-  [2XNrRows[102X, for IsAdditiveClosureMorphism 2.3-4 
   [2XNullMatImmutable[102X 2.5-1 
+  [2XNumberColumns[102X, for IsAdditiveClosureMorphism 2.3-5 
+  [2XNumberRows[102X, for IsAdditiveClosureMorphism 2.3-4 
   [2XObjectList[102X, for IsAdditiveClosureObject 2.3-2 
   [2XProjectionInFirstFactorOfWeakBiFiberProduct[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism 1.3-2 
   [2XProjectionInFirstFactorOfWeakBiFiberProductWithGivenWeakBiFiberProduct[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryObject 1.3-3 
