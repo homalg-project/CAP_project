@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2022.01-04
+                                   2022.01-05
   
   
-                                26 January 2022
+                                27 January 2022
   
   
                                Sebastian Gutsche
@@ -866,7 +866,9 @@
       9.2-21 InstallMethodForCompilerForCAP
       9.2-22 InstallOtherMethodForCompilerForCAP
       9.2-23 CapJitAddKnownMethod
-      9.2-24 CapFixpoint
+      9.2-24 CapJitAddTypeSignature
+      9.2-25 CapJitAddTypeSignatureDeferred
+      9.2-26 CapFixpoint
   10 [33X[0;0YLimits and Colimits[133X
     10.1 [33X[0;0YSpecification of Limits and Colimits[133X
     10.2 [33X[0;0YEnhancing Limit Specifications[133X

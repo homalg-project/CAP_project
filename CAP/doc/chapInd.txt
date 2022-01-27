@@ -329,7 +329,7 @@
   [2XCapCategorySwitchLogicPropagationForObjectsOn[102X 1.4-1 
   [2XCapCategorySwitchLogicPropagationOff[102X 1.4-6 
   [2XCapCategorySwitchLogicPropagationOn[102X 1.4-5 
-  [2XCapFixpoint[102X 9.2-24 
+  [2XCapFixpoint[102X 9.2-26 
   [2XCapFunctor[102X, for IsString, IsCapCategory, IsCapCategory 5.4-1 
       for IsString, IsCapCategory, IsCapCategoryAsCatObject 5.4-1 
       for IsString, IsCapCategoryAsCatObject, IsCapCategory 5.4-1 
@@ -338,6 +338,8 @@
       for IsString, IsList, IsCapCategoryAsCatObject 5.4-2 
   [2XCapInternalInstallAdd[102X 7.3-1 
   [2XCapJitAddKnownMethod[102X 9.2-23 
+  [2XCapJitAddTypeSignature[102X 9.2-24 
+  [2XCapJitAddTypeSignatureDeferred[102X 9.2-25 
   [2XCAPOperationPrepareFunction[102X 7.6-1 
   [2XCategoryConstructor[102X, for IsRecord 11.2-1 
   [2XCategoryFilter[102X, for IsCapCategory 1.3-1 

@@ -57,7 +57,9 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7F953A7086264653">9.2-21 InstallMethodForCompilerForCAP</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7FC9241882AB3F5A">9.2-22 InstallOtherMethodForCompilerForCAP</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X7AF9D3AC85CB0F3D">9.2-23 CapJitAddKnownMethod</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X824449507B8AC925">9.2-24 CapFixpoint</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X816D0A767BD73071">9.2-24 CapJitAddTypeSignature</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X8345518F79EBB586">9.2-25 CapJitAddTypeSignatureDeferred</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap9_mj.html#X824449507B8AC925">9.2-26 CapFixpoint</a></span>
 </div></div>
 </div>
 
@@ -258,9 +260,23 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitAddKnownMethod</code>( <var class="Arg">operation</var>, <var class="Arg">filters</var>, <var class="Arg">method</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Adds a method to the list of methods known to the compiler. Different methods for the same operation must have different numbers of arguments so that the method selection can be done ahead of time.</p>
 
+<p><a id="X816D0A767BD73071" name="X816D0A767BD73071"></a></p>
+
+<h5>9.2-24 CapJitAddTypeSignature</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitAddTypeSignature</code>( <var class="Arg">name</var>, <var class="Arg">input_filters</var>, <var class="Arg">output_data_type</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>(experimental) Adds a type signature for the global function or operation given by <var class="Arg">name</var> to the compiler. <var class="Arg">input_filters</var> must be a list of filters. <var class="Arg">output_data_type</var> must be a filter, a data type, or a function accepting the arguments of a function call of <var class="Arg">name</var> (as syntax trees) and the function stack and returning a record with components <code class="code">args</code> (the possibly modified arguments) and <code class="code">output_type</code> (the data type of the output). See <code class="func">CapJitInferredDataTypes</code> (<a href="https://homalg-project.github.io/CAP_project/CompilerForCAP/doc/chap2_mj.html#X821BE2CE7C30674E"><span class="RefLink">CompilerForCAP: CapJitInferredDataTypes</span></a>) for more details on data types.</p>
+
+<p><a id="X8345518F79EBB586" name="X8345518F79EBB586"></a></p>
+
+<h5>9.2-25 CapJitAddTypeSignatureDeferred</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitAddTypeSignatureDeferred</code>( <var class="Arg">package_name</var>, <var class="Arg">name</var>, <var class="Arg">input_filters</var>, <var class="Arg">output_data_type</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>(experimental) Same as <code class="func">CapJitAddTypeSignature</code> (<a href="chap9_mj.html#X816D0A767BD73071"><span class="RefLink">9.2-24</span></a>), but the filters and the output data type must be given as strings which will be evaluated once <var class="Arg">package_name</var> is loaded. This should be used with care because errors will only be detected at runtime.</p>
+
 <p><a id="X824449507B8AC925" name="X824449507B8AC925"></a></p>
 
-<h5>9.2-24 CapFixpoint</h5>
+<h5>9.2-26 CapFixpoint</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapFixpoint</code>( <var class="Arg">predicate</var>, <var class="Arg">func</var>, <var class="Arg">initial_value</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Computes a fixpoint of <var class="Arg">func</var> with regard to equality given by <var class="Arg">predicate</var>, starting with <var class="Arg">initial_value</var>. If no such fixpoint exists, the execution does not terminate.</p>
