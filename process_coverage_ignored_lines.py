@@ -15,8 +15,9 @@ from pathlib import Path
 regex_block_start = re.compile("^\s*# COVERAGE_IGNORE_BLOCK_START$")
 regex_block_end = re.compile("^\s*# COVERAGE_IGNORE_BLOCK_END$")
 regex_next_line = re.compile("^\s*# COVERAGE_IGNORE_NEXT_LINE$")
+regex_return_void = re.compile("^\s*return;$")
 
-for coverage_filename in Path(".").glob("**/coverage.json"):
+for coverage_filename in Path(".").glob("**/coverage*.json"):
     print("processing coverage file " + str(coverage_filename))
     with open(coverage_filename) as json_file:
         data = json.load(json_file)
@@ -52,6 +53,14 @@ for coverage_filename in Path(".").glob("**/coverage.json"):
                                 print("Error in line " + str(line_number) + ": ignoring next line while already ignoring block")
                                 exit(1)
                             ignored_lines.append(line_number + 1)
+                        
+                        # ignore empty return statements in precompiled code
+                        # those are inserted automatically by GAP and are never executed
+                        if "precompiled_categories" in filename and regex_return_void.match(line) is not None:
+                            if ignoring:
+                                print("Error in line " + str(line_number) + ": ignoring empty return statement while already ignoring block")
+                                exit(1)
+                            ignored_lines.append(line_number)
                         
                         if ignoring:
                             ignored_lines.append(line_number)

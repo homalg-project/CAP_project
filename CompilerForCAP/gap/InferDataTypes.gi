@@ -613,6 +613,12 @@ CapJitAddTypeSignature( "Sum", [ IsList ], function ( args, func_stack )
     
 end );
 
+CapJitAddTypeSignature( "Product", [ IsList ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := args.1.data_type.element_type );
+    
+end );
+
 CapJitAddTypeSignature( "[]", [ IsList, IsInt ], function ( args, func_stack )
     
     return rec( args := args, output_type := args.1.data_type.element_type );
@@ -622,6 +628,35 @@ end );
 CapJitAddTypeSignature( "{}", [ IsList, IsList ], function ( args, func_stack )
     
     return rec( args := args, output_type := args.1.data_type );
+    
+end );
+
+CapJitAddTypeSignature( "SSortedList", [ IsList ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := args.1.data_type );
+    
+end );
+
+CapJitAddTypeSignature( "Position", [ IsList, IsObject ], function ( args, func_stack )
+    
+    Assert( 0, args.1.data_type.element_type = args.2.data_type );
+    
+    #Error( "cannot express IsIntOrFail yet" );
+    return fail;
+    
+end );
+
+CapJitAddTypeSignature( "Positions", [ IsList, IsObject ], function ( args, func_stack )
+    
+    Assert( 0, args.1.data_type.element_type = args.2.data_type );
+    
+    return rec( args := args, output_type := rec( filter := IsList, element_type := rec( filter := IsInt ) ) );
+    
+end );
+
+CapJitAddTypeSignature( "Tuples", [ IsList, IsInt ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := rec( filter := IsList, element_type := args.1.data_type ) );
     
 end );
 
@@ -688,6 +723,25 @@ CapJitAddTypeSignature( "ForAny", [ IsList, IsFunction ], function ( args, func_
     
 end );
 
+CapJitAddTypeSignature( "Filtered", [ IsList, IsFunction ], function ( args, func_stack )
+    
+    args := ShallowCopy( args );
+    
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.1.data_type.element_type ], func_stack );
+    
+    if args.2 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    Assert( 0, args.2.data_type.signature[2].filter = IsBool );
+    
+    return rec( args := args, output_type := args.1.data_type );
+    
+end );
+
 CapJitAddTypeSignature( "ListN", [ IsList, IsList, IsFunction ], function ( args, func_stack )
     
     args := ShallowCopy( args );
@@ -706,6 +760,23 @@ CapJitAddTypeSignature( "ListN", [ IsList, IsList, IsFunction ], function ( args
 end );
 
 CapJitAddTypeSignature( "Sum", [ IsList, IsFunction ], function ( args, func_stack )
+    
+    args := ShallowCopy( args );
+    
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.1.data_type.element_type ], func_stack );
+    
+    if args.2 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    return rec( args := args, output_type := args.2.data_type.signature[2] );
+    
+end );
+
+CapJitAddTypeSignature( "Product", [ IsList, IsFunction ], function ( args, func_stack )
     
     args := ShallowCopy( args );
     
