@@ -637,6 +637,13 @@ CapJitAddTypeSignature( "SSortedList", [ IsList ], function ( args, func_stack )
     
 end );
 
+CapJitAddTypeSignature( "First", [ IsList, IsObject ], function ( args, func_stack )
+    
+    #Error( "cannot express Is...OrFail yet" );
+    return fail;
+    
+end );
+
 CapJitAddTypeSignature( "Position", [ IsList, IsObject ], function ( args, func_stack )
     
     Assert( 0, args.1.data_type.element_type = args.2.data_type );
