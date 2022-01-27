@@ -96,8 +96,8 @@
   [30X    [33X[0;6YIf a KeyDependentOperation is detected, the corresponding [10XOp[110X method is
         resolved.[133X
   
-  [33X[0;0YFor      details      see      [2XCapJitResolvedOperations[102X     ([14X2.5-18[114X)     and
-  [2XCapJitResolvedGlobalVariables[102X  ([14X2.5-17[114X).  If no operation or global variable
+  [33X[0;0YFor      details      see      [2XCapJitResolvedOperations[102X     ([14X2.5-17[114X)     and
+  [2XCapJitResolvedGlobalVariables[102X  ([14X2.5-16[114X).  If no operation or global variable
   can be resolved anymore, we continue with the rule phase.[133X
   
   [33X[0;0YIn the rule phase, the tree is optimized using several rules and techniques.
@@ -348,8 +348,8 @@
   function can only be resolved if it appears as a global variable in the tree
   during  the  resolving  phase  of  the  compilation.  That  is,  it  must be
   referenced  from  a  global  variable from the beginning on, or after global
-  variables  are  resolved by [2XCapJitResolvedGlobalVariables[102X ([14X2.5-17[114X). Possibly
-  you have adapt [2XCapJitResolvedGlobalVariables[102X ([14X2.5-17[114X) to your setting.[133X
+  variables  are  resolved by [2XCapJitResolvedGlobalVariables[102X ([14X2.5-16[114X). Possibly
+  you have adapt [2XCapJitResolvedGlobalVariables[102X ([14X2.5-16[114X) to your setting.[133X
   
   [30X    [33X[0;6YQ: Why is my operation not resolved?[133X
   
@@ -358,7 +358,7 @@
   installed   for   the   operation   via   [10XInstallMethodForCompilerForCAP[110X  or
   [10XInstallOtherMethodForCompilerForCAP[110X,  the  compiler  must be able to get the
   arguments  of  the  call  of  the operation from the JIT arguments. Then the
-  rules in the description of [2XCapJitResolvedOperations[102X ([14X2.5-18[114X) apply.[133X
+  rules in the description of [2XCapJitResolvedOperations[102X ([14X2.5-17[114X) apply.[133X
   
   [30X    [33X[0;6YQ: Why do I get the error "cannot find iteration key"?[133X
   
