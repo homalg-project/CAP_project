@@ -68,3 +68,4 @@ DeclareAttribute( "UnderlyingFieldForHomalg",
 #! @Arguments A
 DeclareAttribute( "Dimension",
                   IsVectorSpaceObject );
+CapJitAddTypeSignature( "Dimension", [ IsVectorSpaceObject ], IsInt );

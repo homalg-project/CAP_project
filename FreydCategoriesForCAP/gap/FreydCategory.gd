@@ -69,8 +69,24 @@ DeclareAttribute( "UnderlyingCategory",
 DeclareAttribute( "RelationMorphism",
                   IsFreydCategoryObject );
 
+CapJitAddTypeSignature( "RelationMorphism", [ IsFreydCategoryObject ], function ( args, func_stack )
+    
+    Assert( 0, IsFreydCategory( args.1.data_type.category ) );
+    
+    return rec( args := args, output_type := rec( filter := UnderlyingCategory( args.1.data_type.category )!.morphism_representation, category := UnderlyingCategory( args.1.data_type.category ) ) );
+    
+end );
+
 DeclareAttribute( "UnderlyingMorphism",
                   IsFreydCategoryMorphism );
+
+CapJitAddTypeSignature( "UnderlyingMorphism", [ IsFreydCategoryMorphism ], function ( args, func_stack )
+    
+    Assert( 0, IsFreydCategory( args.1.data_type.category ) );
+    
+    return rec( args := args, output_type := rec( filter := UnderlyingCategory( args.1.data_type.category )!.morphism_representation, category := UnderlyingCategory( args.1.data_type.category ) ) );
+    
+end );
 
 DeclareAttribute( "MorphismWitness",
                   IsFreydCategoryMorphism );

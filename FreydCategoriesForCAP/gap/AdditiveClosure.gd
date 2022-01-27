@@ -146,6 +146,14 @@ DeclareAttribute( "UnderlyingCategory",
 DeclareAttribute( "ObjectList",
                   IsAdditiveClosureObject );
 
+CapJitAddTypeSignature( "ObjectList", [ IsAdditiveClosureObject ], function ( args, func_stack )
+    
+    Assert( 0, IsAdditiveClosureCategory( args.1.data_type.category ) );
+    
+    return rec( args := args, output_type := rec( filter := IsList, element_type := rec( filter := UnderlyingCategory( args.1.data_type.category )!.object_representation, category := UnderlyingCategory( args.1.data_type.category ) ) ) );
+    
+end );
+
 #! @Description
 #! The argument is a morphism $\alpha:A\to B$ between formal direct sums in some additive closure category $C^\oplus$.
 #! The output is the defining matrix of $\alpha$.
@@ -154,19 +162,29 @@ DeclareAttribute( "ObjectList",
 DeclareAttribute( "MorphismMatrix",
                   IsAdditiveClosureMorphism );
 
+CapJitAddTypeSignature( "MorphismMatrix", [ IsAdditiveClosureMorphism ], function ( args, func_stack )
+    
+    Assert( 0, IsAdditiveClosureCategory( args.1.data_type.category ) );
+    
+    return rec( args := args, output_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := UnderlyingCategory( args.1.data_type.category )!.morphism_representation, category := UnderlyingCategory( args.1.data_type.category ) ) ) ) );
+    
+end );
+
 #! @Description
 #! The argument is a morphism $\alpha:A\to B$ between formal direct sums. The output is the number of summands of the the source.
 #! @Arguments alpha
 #! @Returns a non-negative integer
-DeclareAttribute( "NrRows",
+DeclareAttribute( "NumberRows",
                   IsAdditiveClosureMorphism );
+CapJitAddTypeSignature( "NumberRows", [ IsAdditiveClosureMorphism ], IsInt );
 
 #! @Description
 #! The argument is a morphism $\alpha:A\to B$ between formal direct sums. The output is the number of summands of the the range.
 #! @Arguments alpha
 #! @Returns a non-negative integer
-DeclareAttribute( "NrCols",
+DeclareAttribute( "NumberColumns",
                   IsAdditiveClosureMorphism );
+CapJitAddTypeSignature( "NumberColumns", [ IsAdditiveClosureMorphism ], IsInt );
 
 ####################################
 ##
@@ -179,17 +197,32 @@ DeclareAttribute( "NrCols",
 #! The output is the $i$'th entry in <C>ObjectList</C>($A$).
 #! @Arguments A, i
 #! @Returns an object in $C$
-DeclareOperation( "\[\]",
+DeclareOperation( "[]",
                   [ IsAdditiveClosureObject, IsInt ] );
 
+CapJitAddTypeSignature( "[]", [ IsAdditiveClosureObject, IsInt ], function ( args, func_stack )
+    
+    Assert( 0, IsAdditiveClosureCategory( args.1.data_type.category ) );
+    
+    return rec( args := args, output_type := rec( filter := UnderlyingCategory( args.1.data_type.category )!.object_representation, category := UnderlyingCategory( args.1.data_type.category ) ) );
+    
+end );
 
 #! @Description
 #! The arguments are a morphism $\alpha:A\to B$ between formal direct sums in some additive category $C^\oplus$ and two integers $i,j$.
 #! The output is the $(i,j)$'th entry in <C>MorphismMatrix</C>($\alpha$).
 #! @Arguments alpha, i, j
 #! @Returns a morphism $C$
-DeclareOperation( "[,]",
+DeclareOperation( "MatElm",
                   [ IsAdditiveClosureMorphism, IsInt, IsInt ] );
+
+CapJitAddTypeSignature( "MatElm", [ IsAdditiveClosureMorphism, IsInt, IsInt ], function ( args, func_stack )
+    
+    Assert( 0, IsAdditiveClosureCategory( args.1.data_type.category ) );
+    
+    return rec( args := args, output_type := rec( filter := UnderlyingCategory( args.1.data_type.category )!.morphism_representation, category := UnderlyingCategory( args.1.data_type.category ) ) );
+    
+end );
 
 #! @Description
 #! The input is either a list of objects or list of lists of morphisms. The method delegates to
@@ -212,6 +245,7 @@ DeclareOperation( "\/",
 #! @Description
 #!   A (faster) version of `NullMat` returning an immutable matrix.
 DeclareGlobalFunction( "NullMatImmutable" );
+CapJitAddTypeSignature( "NullMatImmutable", [ IsInt, IsInt ], rec( filter := IsList, element_type := rec( filter := IsList, element_type := IsInt ) ) );
 
 #! @Description
 #!   Stacks the matrices (lists of lists) in the list <A>L</A>. The matrices must have `nr_cols` columns.
@@ -219,8 +253,26 @@ DeclareGlobalFunction( "NullMatImmutable" );
 #! @Returns a list of lists
 DeclareGlobalFunction( "UnionOfRowsListList" );
 
+CapJitAddTypeSignature( "UnionOfRowsListList", [ IsInt, IsList ], function ( args, func_stack )
+    
+    Assert( 0, args.2.data_type.element_type.filter = IsList );
+    Assert( 0, args.2.data_type.element_type.element_type.filter = IsList );
+    
+    return rec( args := args, output_type := args.2.data_type.element_type );
+    
+end );
+
 #! @Description
 #!   Augments the matrices (lists of lists) in the list <A>L</A>. The matrices must have `nr_rows` rows.
 #! @Arguments nr_rows, L
 #! @Returns a list of lists
 DeclareGlobalFunction( "UnionOfColumnsListList" );
+
+CapJitAddTypeSignature( "UnionOfColumnsListList", [ IsInt, IsList ], function ( args, func_stack )
+    
+    Assert( 0, args.2.data_type.element_type.filter = IsList );
+    Assert( 0, args.2.data_type.element_type.element_type.filter = IsList );
+    
+    return rec( args := args, output_type := args.2.data_type.element_type );
+    
+end );

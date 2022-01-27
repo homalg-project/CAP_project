@@ -113,6 +113,7 @@ DeclareProperty( "IsFree",
 #! @Arguments A
 DeclareAttribute( "UnderlyingMatrix",
                   IsLeftOrRightPresentation );
+CapJitAddTypeSignature( "UnderlyingMatrix", [ IsLeftOrRightPresentation ], IsHomalgMatrix );
 
 #! @Description
 #! The argument is an object $A$ in the category of left or right presentations

@@ -1002,6 +1002,97 @@ InstallGlobalFunction( CapJitAddKnownMethod,
 end );
 
 ##
+BindGlobal( "CAP_JIT_INTERNAL_TYPE_SIGNATURES", rec( ) );
+
+InstallGlobalFunction( "CapJitAddTypeSignature", function ( name, input_filters, output_data_type )
+    
+    if IsCategory( ValueGlobal( name ) ) and Length( input_filters ) = 1 then
+        
+        Error( "adding type signatures for GAP categories applied to a single argument is not supported" );
+        
+    fi;
+    
+    if not IsList( input_filters ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "<input_filters> must be a list" );
+        
+    fi;
+    
+    if not ForAll( input_filters, filter -> IsFilter( filter ) ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "<input_filters> must be a list of filters" );
+        
+    fi;
+    
+    if not IsBound( CAP_JIT_INTERNAL_TYPE_SIGNATURES.(name) ) then
+        
+        CAP_JIT_INTERNAL_TYPE_SIGNATURES.(name) := [ ];
+        
+    fi;
+    
+    if ForAny( CAP_JIT_INTERNAL_TYPE_SIGNATURES.(name), signature -> IsSpecializationOfFilterList( signature[1], input_filters ) or IsSpecializationOfFilterList( input_filters, signature[1] ) ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "there already exists a signature for ", name, " with filters implying the current filters or being implied by them" );
+        
+    fi;
+    
+    if not ForAny( [ IsFilter, IsRecord, IsFunction ], f -> f( output_data_type ) ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "<output_data_type> must be a filter, a record, or a function" );
+        
+    fi;
+    
+    if IsFilter( output_data_type ) then
+        
+        output_data_type := rec( filter := output_data_type );
+        
+    fi;
+    
+    Add( CAP_JIT_INTERNAL_TYPE_SIGNATURES.(name), [ input_filters, output_data_type ] );
+    
+end );
+
+##
+BindGlobal( "CAP_JIT_INTERNAL_TYPE_SIGNATURES_DEFERRED", rec( ) );
+
+InstallGlobalFunction( "CapJitAddTypeSignatureDeferred", function ( package_name, name, input_filters, output_data_type )
+    
+    if not IsList( input_filters ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "<input_filters> must be a list" );
+        
+    fi;
+    
+    if not ForAll( input_filters, filter -> IsString( filter ) ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "<input_filters> must be a list of strings" );
+        
+    fi;
+    
+    if not IsString( output_data_type ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "<output_data_type> must be a string" );
+        
+    fi;
+    
+    if not IsBound( CAP_JIT_INTERNAL_TYPE_SIGNATURES_DEFERRED.(package_name) ) then
+        
+        CAP_JIT_INTERNAL_TYPE_SIGNATURES_DEFERRED.(package_name) := [ ];
+        
+    fi;
+    
+    Add( CAP_JIT_INTERNAL_TYPE_SIGNATURES_DEFERRED.(package_name), [ name, input_filters, output_data_type ] );
+    
+end );
+
+##
 InstallGlobalFunction( CapFixpoint, function ( predicate, func, initial_value )
   local x, y;
     

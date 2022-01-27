@@ -49,6 +49,7 @@ KeyDependentOperation( "RingAsCategoryMorphism", IsRingAsCategory, IsObject, Ret
 
 DeclareAttribute( "UnderlyingRingElement",
                   IsRingAsCategoryMorphism );
+CapJitAddTypeSignature( "UnderlyingRingElement", [ IsRingAsCategoryMorphism ], IsHomalgRingElement );
 
 DeclareAttribute( "UnderlyingRing",
                   IsRingAsCategory );

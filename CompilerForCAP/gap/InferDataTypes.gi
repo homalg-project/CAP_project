@@ -4,62 +4,54 @@
 # Implementations
 #
 
-BindGlobal( "CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS", [ ] );
+BindGlobal( "CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS", [
+    "IsHomalgRing",
+    "IsHomalgRingElement",
+    "IsHomalgMatrix",
+    "IsHomalgRingMap",
+    "IsRingAsCategoryObject",
+] );
 
-BindGlobal( "CAP_JIT_INTERNAL_TYPE_SIGNATURES", rec( ) );
-
-InstallGlobalFunction( "CapJitAddTypeSignature", function ( name, input_filters, output_data_type )
+InstallGlobalFunction( "CAP_JIT_INTERNAL_LOAD_DEFERRED_TYPE_SIGNATURES", function ( )
+  local package_name, signature;
     
-    if not IsList( input_filters ) then
+    for package_name in RecNames( CAP_JIT_INTERNAL_TYPE_SIGNATURES_DEFERRED ) do
         
-        # COVERAGE_IGNORE_NEXT_LINE
-        Error( "<input_filters> must be a list" );
+        if IsPackageMarkedForLoading( package_name, "" ) then
+            
+            for signature in CAP_JIT_INTERNAL_TYPE_SIGNATURES_DEFERRED.(package_name) do
+                
+                CapJitAddTypeSignature( signature[1], List( signature[2], x -> EvalString( x ) ), EvalString( signature[3] ) );
+                
+            od;
+            
+            Unbind( CAP_JIT_INTERNAL_TYPE_SIGNATURES_DEFERRED.(package_name) );
+            
+        fi;
         
-    fi;
-    
-    if not ForAll( input_filters, filter -> IsFilter( filter ) ) then
-        
-        # COVERAGE_IGNORE_NEXT_LINE
-        Error( "<input_filters> must be a list of filters" );
-        
-    fi;
-    
-    if not IsBound( CAP_JIT_INTERNAL_TYPE_SIGNATURES.(name) ) then
-        
-        CAP_JIT_INTERNAL_TYPE_SIGNATURES.(name) := [ ];
-        
-    fi;
-    
-    if ForAny( CAP_JIT_INTERNAL_TYPE_SIGNATURES.(name), signature -> IsSpecializationOfFilterList( signature[1], input_filters ) or IsSpecializationOfFilterList( input_filters, signature[1] ) ) then
-        
-        # COVERAGE_IGNORE_NEXT_LINE
-        Error( "there already exists a signature for ", name, " with filters implying the current filters or being implied by them" );
-        
-    fi;
-    
-    if not ForAny( [ IsFilter, IsRecord, IsFunction ], f -> f( output_data_type ) ) then
-        
-        # COVERAGE_IGNORE_NEXT_LINE
-        Error( "<output_data_type> must be a filter, a record, or a function" );
-        
-    fi;
-    
-    if IsFilter( output_data_type ) then
-        
-        output_data_type := rec( filter := output_data_type );
-        
-    fi;
-    
-    Add( CAP_JIT_INTERNAL_TYPE_SIGNATURES.(name), [ input_filters, output_data_type ] );
+    od;
     
 end );
 
 InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_FILTERS", function ( gvar, input_filters )
-  local type_signatures;
+  local type_signatures, package_name, signature;
+    
+    if IsCategory( ValueGlobal( gvar ) ) and Length( input_filters ) = 1 then
+        
+        return rec( filter := IsBool );
+        
+    fi;
     
     if not IsBound( CAP_JIT_INTERNAL_TYPE_SIGNATURES.(gvar) ) then
         
-        #Error( "Could not find declaration of ", gvar, " (current input: ", input_filters, ")" );
+        # try to load deferred type signatures
+        CAP_JIT_INTERNAL_LOAD_DEFERRED_TYPE_SIGNATURES( );
+        
+    fi;
+    
+    if not IsBound( CAP_JIT_INTERNAL_TYPE_SIGNATURES.(gvar) ) then
+        
+        Display( Concatenation( "WARNING: Could not find declaration of ", gvar, " (current input: ", String( input_filters ), ")" ) );
         return fail;
         
     fi;
@@ -68,7 +60,16 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_I
     
     if Length( type_signatures ) = 0 then
         
-        #Error( "Could not find matching declaration of ", gvar, " for input ", input_filters );
+        # try to load deferred type signatures
+        CAP_JIT_INTERNAL_LOAD_DEFERRED_TYPE_SIGNATURES( );
+        
+        type_signatures := Filtered( CAP_JIT_INTERNAL_TYPE_SIGNATURES.(gvar), s -> IsSpecializationOfFilterList( s[1], input_filters ) );
+        
+    fi;
+    
+    if Length( type_signatures ) = 0 then
+        
+        Display( Concatenation( "WARNING: Could not find matching declaration of ", gvar, " for input ", String( input_filters ) ) );
         return fail;
         
     elif Length( type_signatures ) > 1 then
@@ -198,7 +199,7 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_S
     end;
     
     result_func := function ( tree, result, keys, func_stack )
-      local data_type, filter, func, pos, key;
+      local data_type, filter, func, pos, key, i;
         
         tree := ShallowCopy( tree );
         
@@ -300,6 +301,12 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_S
             
         elif tree.type = "EXPR_CASE" then
             
+            if not ForAll( tree.branches, branch -> branch.condition.filter = IsBool ) then
+                
+                Error( "a condition of the case expression is not a boolean" );
+                
+            fi;
+            
             if not ForAll( tree.branches, branch -> branch.value.data_type = tree.branches.1.value.data_type ) then
                 
                 #Error( "the branches of the case expression are of different types, this is not supported" );
@@ -339,7 +346,17 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_S
             
         elif tree.type = "EXPR_REF_GVAR" then
             
-            filter := First( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS, filter -> filter( ValueGlobal( tree.gvar ) ) );
+            for i in [ 1 .. Length( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS ) ] do
+                
+                if IsString( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS[i] ) and IsBoundGlobal( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS[i] ) then
+                    
+                    CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS[i] := ValueGlobal( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS[i] );
+                    
+                fi;
+                
+            od;
+            
+            filter := First( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS, filter -> IsFilter( filter ) and filter( ValueGlobal( tree.gvar ) ) );
             
             if IsCapCategory( ValueGlobal( tree.gvar ) ) then
                 
@@ -347,7 +364,7 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_S
                 
             elif IsList( ValueGlobal( tree.gvar ) ) and Length( ValueGlobal( tree.gvar ) ) > 0 then
                 
-                filter := First( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS, filter -> filter( ValueGlobal( tree.gvar )[1] ) );
+                filter := First( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS, filter -> IsFilter( filter ) and filter( ValueGlobal( tree.gvar )[1] ) );
                 
                 if filter <> fail then
                     
@@ -492,3 +509,296 @@ InstallGlobalFunction( CapJitInferredDataTypes, function ( tree )
     return CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_STACK( tree, [ ] );
     
 end );
+
+# type signatures
+
+CapJitAddTypeSignature( "CapFixpoint", [ IsFunction, IsFunction, IsObject ], function ( args, func_stack )
+    
+    args := ShallowCopy( args );
+    
+    args.1 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.1, [ args.3.data_type, args.3.data_type ], func_stack );
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.3.data_type ], func_stack );
+    
+    if args.1 = fail or args.2 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    Assert( 0, args.1.data_type.signature[2].filter = IsBool );
+    Assert( 0, args.2.data_type.signature[2] = args.3.data_type );
+    
+    return rec( args := args, output_type := args.3.data_type );
+    
+end );
+
+# Objectify*ForCAPWithAttributes
+CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCapCategory, IsFunction, IsObject ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := rec( filter := args.2.data_type.category!.object_representation, category := args.2.data_type.category ) );
+    
+end );
+
+CapJitAddTypeSignature( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes", [ IsRecord, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsFunction, IsObject ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := rec( filter := args.2.data_type.category!.morphism_representation, category := args.2.data_type.category ) );
+    
+end );
+
+# object and morphism attributes
+CapJitAddTypeSignature( "CapCategory", [ IsCapCategoryCell ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := rec( filter := IsCapCategory, category := args.1.data_type.category ) );
+    
+end );
+
+CapJitAddTypeSignature( "Source", [ IsCapCategoryMorphism ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := rec( filter := args.1.data_type.category!.object_representation, category := args.1.data_type.category ) );
+    
+end );
+
+CapJitAddTypeSignature( "Range", [ IsCapCategoryMorphism ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := rec( filter := args.1.data_type.category!.object_representation, category := args.1.data_type.category ) );
+    
+end );
+
+# GAP operations
+CapJitAddTypeSignature( "Length", [ IsList ], IsInt );
+CapJitAddTypeSignature( "+", [ IsInt, IsInt ], IsInt );
+CapJitAddTypeSignature( "-", [ IsInt, IsInt ], IsInt );
+CapJitAddTypeSignature( "*", [ IsInt, IsInt ], IsInt );
+CapJitAddTypeSignature( "REM_INT", [ IsInt, IsInt ], IsInt );
+CapJitAddTypeSignature( "QUO_INT", [ IsInt, IsInt ], IsInt );
+CapJitAddTypeSignature( "IsZero", [ IsInt ], IsBool );
+CapJitAddTypeSignature( "IS_IDENTICAL_OBJ", [ IsObject, IsObject ], IsBool );
+CapJitAddTypeSignature( "PermList", [ IsList ], IsPerm );
+CapJitAddTypeSignature( "PermutationMat", [ IsPerm, IsInt ], rec( filter := IsList, element_type := rec( filter := IsList, element_type := IsInt ) ) );
+
+CapJitAddTypeSignature( "NumberRows", [ IsList ], function ( args, func_stack )
+    
+    Assert( 0, args.1.data_type.element_type.filter = IsList );
+    
+    return rec( args := args, output_type := rec( filter := IsInt ) );
+    
+end );
+
+CapJitAddTypeSignature( "NumberColumns", [ IsList ], function ( args, func_stack )
+    
+    Assert( 0, args.1.data_type.element_type.filter = IsList );
+    
+    return rec( args := args, output_type := rec( filter := IsInt ) );
+    
+end );
+
+CapJitAddTypeSignature( "ListWithIdenticalEntries", [ IsInt, IsObject ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := rec( filter := IsList, element_type := args.2.data_type ) );
+    
+end );
+
+CapJitAddTypeSignature( "Concatenation", [ IsList ], function ( args, func_stack )
+    
+    Assert( 0, args.1.data_type.element_type.filter = IsList );
+    
+    return rec( args := args, output_type := rec( filter := IsList, element_type := args.1.data_type.element_type.element_type ) );
+    
+end );
+
+CapJitAddTypeSignature( "Sum", [ IsList ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := args.1.data_type.element_type );
+    
+end );
+
+CapJitAddTypeSignature( "[]", [ IsList, IsInt ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := args.1.data_type.element_type );
+    
+end );
+
+CapJitAddTypeSignature( "{}", [ IsList, IsList ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := args.1.data_type );
+    
+end );
+
+CapJitAddTypeSignature( "MatElm", [ IsList, IsInt, IsInt ], function ( args, func_stack )
+    
+    Assert( 0, args.1.data_type.element_type.filter = IsList );
+    
+    return rec( args := args, output_type := args.1.data_type.element_type.element_type );
+    
+end );
+
+CapJitAddTypeSignature( "List", [ IsList, IsFunction ], function ( args, func_stack )
+    
+    args := ShallowCopy( args );
+    
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.1.data_type.element_type ], func_stack );
+    
+    if args.2 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    return rec( args := args, output_type := rec( filter := IsList, element_type := args.2.data_type.signature[2] ) );
+    
+end );
+
+CapJitAddTypeSignature( "ForAll", [ IsList, IsFunction ], function ( args, func_stack )
+    
+    args := ShallowCopy( args );
+    
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.1.data_type.element_type ], func_stack );
+    
+    if args.2 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    Assert( 0, args.2.data_type.signature[2].filter = IsBool );
+    
+    return rec( args := args, output_type := rec( filter := IsBool ) );
+    
+end );
+
+CapJitAddTypeSignature( "ForAny", [ IsList, IsFunction ], function ( args, func_stack )
+    
+    args := ShallowCopy( args );
+    
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.1.data_type.element_type ], func_stack );
+    
+    if args.2 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    Assert( 0, args.2.data_type.signature[2].filter = IsBool );
+    
+    return rec( args := args, output_type := rec( filter := IsBool ) );
+    
+end );
+
+CapJitAddTypeSignature( "ListN", [ IsList, IsList, IsFunction ], function ( args, func_stack )
+    
+    args := ShallowCopy( args );
+    
+    args.3 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.3, [ args.1.data_type.element_type, args.2.data_type.element_type ], func_stack );
+    
+    if args.3 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    return rec( args := args, output_type := rec( filter := IsList, element_type := args.3.data_type.signature[2] ) );
+    
+end );
+
+CapJitAddTypeSignature( "Sum", [ IsList, IsFunction ], function ( args, func_stack )
+    
+    args := ShallowCopy( args );
+    
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.1.data_type.element_type ], func_stack );
+    
+    if args.2 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    return rec( args := args, output_type := args.2.data_type.signature[2] );
+    
+end );
+
+CapJitAddTypeSignature( "Iterated", [ IsList, IsFunction ], function ( args, func_stack )
+    
+    args := ShallowCopy( args );
+    
+    args.2 := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS_TYPES( args.2, [ args.1.data_type.element_type, args.1.data_type.element_type ], func_stack );
+    
+    if args.2 = fail then
+        
+        #Error( "could not determine output type" );
+        return fail;
+        
+    fi;
+    
+    return rec( args := args, output_type := args.2.data_type.signature[2] );
+    
+end );
+
+# homalg operations
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrix", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgMatrixListList", [ "IsList", "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgIdentityMatrix", [ "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "HomalgZeroMatrix", [ "IsInt", "IsInt", "IsHomalgRing" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "IsZero", [ "IsHomalgMatrix" ], "IsBool" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "MatElm", [ "IsHomalgMatrix", "IsInt", "IsInt" ], "IsHomalgRingElement" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "ConvertRowToMatrix", [ "IsHomalgMatrix", "IsInt", "IsInt" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "ConvertColumnToMatrix", [ "IsHomalgMatrix", "IsInt", "IsInt" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "ConvertMatrixToRow", [ "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "ConvertMatrixToColumn", [ "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "CertainRows", [ "IsHomalgMatrix", "IsList" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "CertainColumns", [ "IsHomalgMatrix", "IsList" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "KroneckerMat", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "DualKroneckerMat", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "LeftDivide", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "RightDivide", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "SyzygiesOfRows", [ "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "SyzygiesOfColumns", [ "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "SyzygiesOfRows", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "SyzygiesOfColumns", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "ReducedSyzygiesOfRows", [ "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "ReducedSyzygiesOfColumns", [ "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "ReducedSyzygiesOfRows", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "ReducedSyzygiesOfColumns", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "NumberRows", [ "IsHomalgMatrix" ], "IsInt" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "NumberColumns", [ "IsHomalgMatrix" ], "IsInt" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "RowRankOfMatrix", [ "IsHomalgMatrix" ], "IsInt" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "ColumnRankOfMatrix", [ "IsHomalgMatrix" ], "IsInt" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "UnionOfRows", [ "IsHomalgRing", "IsInt", "IsList" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "UnionOfColumns", [ "IsHomalgRing", "IsInt", "IsList" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "UnionOfRows", [ "IsHomalgMatrix", "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "UnionOfColumns", [ "IsHomalgMatrix", "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "DiagMat", [ "IsHomalgRing", "IsList" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "TransposedMatrix", [ "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "CoefficientsWithGivenMonomials", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "CoefficientsWithGivenMonomials", [ "IsHomalgRingElement", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "CoercedMatrix", [ "IsHomalgRing", "IsHomalgRing", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "CoercedMatrix", [ "IsHomalgRing", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "Pullback", [ "IsHomalgRingMap", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "EntriesOfHomalgMatrix", [ "IsHomalgMatrix" ], "rec( filter := IsList, element_type := rec( filter := IsHomalgRingElement ) )" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "EntriesOfHomalgMatrixAsListList", [ "IsHomalgMatrix" ], "rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsHomalgRingElement ) ) )" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "DecideZeroRows", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "DecideZeroColumns", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "+", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsHomalgRingElement", "IsHomalgRingElement" ], "IsHomalgRingElement" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsInt", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsHomalgMatrix", "IsInt" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsHomalgRingElement", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsHomalgMatrix", "IsHomalgRingElement" ], "IsHomalgMatrix" );
+CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsHomalgMatrix", "IsHomalgMatrix" ], "IsHomalgMatrix" );
+
+# QPA operations
+CapJitAddTypeSignatureDeferred( "QPA", "VertexIndex", [ "IsQuiverVertex" ], "IsInt" );
+CapJitAddTypeSignatureDeferred( "QPA", "Representative", [ "IsQuotientOfPathAlgebraElement" ], "IsPathAlgebraElement" );
+CapJitAddTypeSignatureDeferred( "QPA", "IsZero", [ "IsPathAlgebraElement" ], "IsBool" );
+CapJitAddTypeSignatureDeferred( "QPA", "IsZero", [ "IsQuotientOfPathAlgebraElement" ], "IsBool" );
+CapJitAddTypeSignatureDeferred( "QPA", "+", [ "IsPathAlgebraElement", "IsPathAlgebraElement" ], "IsPathAlgebraElement" );
+CapJitAddTypeSignatureDeferred( "QPA", "+", [ "IsQuotientOfPathAlgebraElement", "IsQuotientOfPathAlgebraElement" ], "IsQuotientOfPathAlgebraElement" );
+CapJitAddTypeSignatureDeferred( "QPA", "*", [ "IsPathAlgebraElement", "IsPathAlgebraElement" ], "IsPathAlgebraElement" );
+CapJitAddTypeSignatureDeferred( "QPA", "*", [ "IsQuotientOfPathAlgebraElement", "IsQuotientOfPathAlgebraElement" ], "IsQuotientOfPathAlgebraElement" );

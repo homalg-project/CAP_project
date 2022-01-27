@@ -193,6 +193,8 @@ InstallMethod( CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple,
     
 end );
 
+CapJitAddTypeSignature( "CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple", [ IsCategoryOfColumnsMorphism ], rec( filter := IsList, element_type := rec( filter := IsHomalgMatrix ) ) );
+
 ####################################
 ##
 ## View

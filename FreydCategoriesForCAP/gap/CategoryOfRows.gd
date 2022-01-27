@@ -76,9 +76,11 @@ DeclareAttribute( "RingInclusionForHomomorphismStructure",
 
 DeclareAttribute( "RankOfObject",
                   IsCategoryOfRowsObject );
+CapJitAddTypeSignature( "RankOfObject", [ IsCategoryOfRowsObject ], IsInt );
 
 DeclareAttribute( "UnderlyingMatrix",
                   IsCategoryOfRowsMorphism );
+CapJitAddTypeSignature( "UnderlyingMatrix", [ IsCategoryOfRowsMorphism ], IsHomalgMatrix );
 
 DeclareAttribute( "UnderlyingMatrix",
                   IsCategoryOfRowsMorphism );

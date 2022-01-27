@@ -99,6 +99,7 @@ DeclareAttribute( "UnderlyingHomalgRing",
 #! @Arguments alpha
 DeclareAttribute( "UnderlyingMatrix",
                   IsLeftOrRightPresentationMorphism );
+CapJitAddTypeSignature( "UnderlyingMatrix", [ IsLeftOrRightPresentationMorphism ], IsHomalgMatrix );
 
 ##############################################
 ##

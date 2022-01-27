@@ -43,6 +43,14 @@ KeyDependentOperation( "CategoryOfColumnsObject",
 
 DeclareOperation( "AsCategoryOfColumnsMorphism",
                   [ IsHomalgMatrix, IsCategoryOfColumns ] );
+# TODO: make the second filter more specific once categories know their filter
+CapJitAddTypeSignature( "AsCategoryOfColumnsMorphism", [ IsHomalgMatrix, IsCapCategory ], function ( args, func_stack )
+    
+    Assert( 0, IsCategoryOfColumns( args.2.data_type.category ) );
+    
+    return rec( args := args, output_type := rec( filter := args.2.data_type.category!.morphism_representation, category := args.2.data_type.category ) );
+    
+end );
 
 DeclareOperation( "CategoryOfColumnsMorphism",
                   [ IsCategoryOfColumnsObject, IsHomalgMatrix, IsCategoryOfColumnsObject ] );
@@ -65,9 +73,11 @@ DeclareAttribute( "UnderlyingRing",
 
 DeclareAttribute( "RankOfObject",
                   IsCategoryOfColumnsObject );
+CapJitAddTypeSignature( "RankOfObject", [ IsCategoryOfColumnsObject ], IsInt );
 
 DeclareAttribute( "UnderlyingMatrix",
                   IsCategoryOfColumnsMorphism );
+CapJitAddTypeSignature( "UnderlyingMatrix", [ IsCategoryOfColumnsMorphism ], IsHomalgMatrix );
 
 DeclareAttribute( "CATEGORY_OF_COLUMNS_ReductionBySplitEpiSummandTuple",
                   IsCategoryOfColumnsMorphism );
