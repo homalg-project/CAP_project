@@ -1500,39 +1500,39 @@ false
 # Tensor product and internal (co)hom compatibility
 #############################################################
 
-gap> tensor_to_hom_compatibility_abcd_rows := TensorProductInternalHomCompatibilityMorphism( [ a_rows, b_rows, c_rows, d_rows ] );; # Hom( a, b ) x Hom( c, d ) -> Hom( a x c, b x d )
-gap> tensor_to_hom_compatibility_cadb_rows := TensorProductInternalHomCompatibilityMorphism( [ c_rows, a_rows, d_rows, b_rows ] );; # Hom( c, a ) x Hom( d, b ) -> Hom( c x d, a x b )
+# gap> tensor_to_hom_compatibility_abcd_rows := TensorProductInternalHomCompatibilityMorphism( [ a_rows, b_rows, c_rows, d_rows ] );; # Hom( a, b ) x Hom( c, d ) -> Hom( a x c, b x d )
+# gap> tensor_to_hom_compatibility_cadb_rows := TensorProductInternalHomCompatibilityMorphism( [ c_rows, a_rows, d_rows, b_rows ] );; # Hom( c, a ) x Hom( d, b ) -> Hom( c x d, a x b )
 
-gap> cohom_to_tensor_compatibility_abcd_rows := InternalCoHomTensorProductCompatibilityMorphism( [ a_rows, b_rows, c_rows, d_rows ] );; # Cohom( a x b, c x d ) -> Cohom( a, c ) x Cohom( b, d )
-gap> cohom_to_tensor_compatibility_bdac_rows := InternalCoHomTensorProductCompatibilityMorphism( [ b_rows, d_rows, a_rows, c_rows ] );; # Cohom( b x d, a x c ) -> Cohom( b, a ) x Cohom( d, c )
+# gap> cohom_to_tensor_compatibility_abcd_rows := InternalCoHomTensorProductCompatibilityMorphism( [ a_rows, b_rows, c_rows, d_rows ] );; # Cohom( a x b, c x d ) -> Cohom( a, c ) x Cohom( b, d )
+# gap> cohom_to_tensor_compatibility_bdac_rows := InternalCoHomTensorProductCompatibilityMorphism( [ b_rows, d_rows, a_rows, c_rows ] );; # Cohom( b x d, a x c ) -> Cohom( b, a ) x Cohom( d, c )
 
-gap> tensor_to_hom_compatibility_abcd_cols := TensorProductInternalHomCompatibilityMorphism( [ a_cols, b_cols, c_cols, d_cols ] );; # Hom( a, b ) x Hom( c, d ) -> Hom( a x c, b x d )
-gap> tensor_to_hom_compatibility_cadb_cols := TensorProductInternalHomCompatibilityMorphism( [ c_cols, a_cols, d_cols, b_cols ] );; # Hom( c, a ) x Hom( d, b ) -> Hom( c x d, a x b )
+# gap> tensor_to_hom_compatibility_abcd_cols := TensorProductInternalHomCompatibilityMorphism( [ a_cols, b_cols, c_cols, d_cols ] );; # Hom( a, b ) x Hom( c, d ) -> Hom( a x c, b x d )
+# gap> tensor_to_hom_compatibility_cadb_cols := TensorProductInternalHomCompatibilityMorphism( [ c_cols, a_cols, d_cols, b_cols ] );; # Hom( c, a ) x Hom( d, b ) -> Hom( c x d, a x b )
 
-gap> cohom_to_tensor_compatibility_abcd_cols := InternalCoHomTensorProductCompatibilityMorphism( [ a_cols, b_cols, c_cols, d_cols ] );; # Cohom( a x b, c x d ) -> Cohom( a, c ) x Cohom( b, d )
-gap> cohom_to_tensor_compatibility_bdac_cols := InternalCoHomTensorProductCompatibilityMorphism( [ b_cols, d_cols, a_cols, c_cols ] );; # Cohom( b x d, a x c ) -> Cohom( b, a ) x Cohom( d, c )
+# gap> cohom_to_tensor_compatibility_abcd_cols := InternalCoHomTensorProductCompatibilityMorphism( [ a_cols, b_cols, c_cols, d_cols ] );; # Cohom( a x b, c x d ) -> Cohom( a, c ) x Cohom( b, d )
+# gap> cohom_to_tensor_compatibility_bdac_cols := InternalCoHomTensorProductCompatibilityMorphism( [ b_cols, d_cols, a_cols, c_cols ] );; # Cohom( b x d, a x c ) -> Cohom( b, a ) x Cohom( d, c )
 
-# Opposite correspondence
+# # Opposite correspondence
 
-gap> tensor_to_hom_compatibility_abcd_cols = Opposite( cohom_to_tensor_compatibility_bdac_rows ); # Hom( a, b ) x Hom( c, d ) -> Hom( a x c, b x d )  ==  op( Cohom( b x d, a x c ) -> Cohom( b, a ) x Cohom( d, c ) )
-true
-gap> tensor_to_hom_compatibility_cadb_cols = Opposite( cohom_to_tensor_compatibility_abcd_rows ); # Hom( c, a ) x Hom( d, b ) -> Hom( c x d, a x b )  ==  op( Cohom( a x b, c x d ) -> Cohom( a, c ) x Cohom( b, d ) )
-true
+# gap> tensor_to_hom_compatibility_abcd_cols = Opposite( cohom_to_tensor_compatibility_bdac_rows ); # Hom( a, b ) x Hom( c, d ) -> Hom( a x c, b x d )  ==  op( Cohom( b x d, a x c ) -> Cohom( b, a ) x Cohom( d, c ) )
+# true
+# gap> tensor_to_hom_compatibility_cadb_cols = Opposite( cohom_to_tensor_compatibility_abcd_rows ); # Hom( c, a ) x Hom( d, b ) -> Hom( c x d, a x b )  ==  op( Cohom( a x b, c x d ) -> Cohom( a, c ) x Cohom( b, d ) )
+# true
 
-gap> cohom_to_tensor_compatibility_abcd_cols = Opposite( tensor_to_hom_compatibility_cadb_rows ); # Cohom( a x b, c x d ) -> Cohom( a, c ) x Cohom( b, d )  ==  op( Hom( c, a ) x Hom( d, b ) -> Hom( c x d, a x b ) )
-true
-gap> cohom_to_tensor_compatibility_bdac_cols = Opposite( tensor_to_hom_compatibility_abcd_rows ); # Cohom( b x d, a x c ) -> Cohom( b, a ) x Cohom( d, c )  ==  op( Hom( a, b ) x Hom( c, d ) -> Hom( a x c, b x d ) )
-true
+# gap> cohom_to_tensor_compatibility_abcd_cols = Opposite( tensor_to_hom_compatibility_cadb_rows ); # Cohom( a x b, c x d ) -> Cohom( a, c ) x Cohom( b, d )  ==  op( Hom( c, a ) x Hom( d, b ) -> Hom( c x d, a x b ) )
+# true
+# gap> cohom_to_tensor_compatibility_bdac_cols = Opposite( tensor_to_hom_compatibility_abcd_rows ); # Cohom( b x d, a x c ) -> Cohom( b, a ) x Cohom( d, c )  ==  op( Hom( a, b ) x Hom( c, d ) -> Hom( a x c, b x d ) )
+# true
 
-gap> tensor_to_hom_compatibility_abcd_cols = Opposite( cohom_to_tensor_compatibility_abcd_rows ); # Hom( a, b ) x Hom( c, d ) -> Hom( a x c, b x d )  =/=  op( Cohom( a x b, c x d ) -> Cohom( a, c ) x Cohom( b, d ) )
-false
-gap> tensor_to_hom_compatibility_cadb_cols = Opposite( cohom_to_tensor_compatibility_bdac_rows ); # Hom( c, a ) x Hom( d, b ) -> Hom( c x d, a x b )  =/=  op( Cohom( b x d, a x c ) -> Cohom( b, a ) x Cohom( d, c ) )
-false
+# gap> tensor_to_hom_compatibility_abcd_cols = Opposite( cohom_to_tensor_compatibility_abcd_rows ); # Hom( a, b ) x Hom( c, d ) -> Hom( a x c, b x d )  =/=  op( Cohom( a x b, c x d ) -> Cohom( a, c ) x Cohom( b, d ) )
+# false
+# gap> tensor_to_hom_compatibility_cadb_cols = Opposite( cohom_to_tensor_compatibility_bdac_rows ); # Hom( c, a ) x Hom( d, b ) -> Hom( c x d, a x b )  =/=  op( Cohom( b x d, a x c ) -> Cohom( b, a ) x Cohom( d, c ) )
+# false
 
-gap> cohom_to_tensor_compatibility_abcd_cols = Opposite( tensor_to_hom_compatibility_abcd_rows ); # Cohom( a x b, c x d ) -> Cohom( a, c ) x Cohom( b, d )  =/=  op( Hom( a, b ) x Hom( c, d ) -> Hom( a x c, b x d ) )
-false
-gap> cohom_to_tensor_compatibility_bdac_cols = Opposite( tensor_to_hom_compatibility_cadb_rows ); # Cohom( b x d, a x c ) -> Cohom( b, a ) x Cohom( d, c )  =/=  op( Hom( c, a ) x Hom( d, b ) -> Hom( c x d, a x b ) )
-false
+# gap> cohom_to_tensor_compatibility_abcd_cols = Opposite( tensor_to_hom_compatibility_abcd_rows ); # Cohom( a x b, c x d ) -> Cohom( a, c ) x Cohom( b, d )  =/=  op( Hom( a, b ) x Hom( c, d ) -> Hom( a x c, b x d ) )
+# false
+# gap> cohom_to_tensor_compatibility_bdac_cols = Opposite( tensor_to_hom_compatibility_cadb_rows ); # Cohom( b x d, a x c ) -> Cohom( b, a ) x Cohom( d, c )  =/=  op( Hom( c, a ) x Hom( d, b ) -> Hom( c x d, a x b ) )
+# false
 
 #########################################################
 # Tensor product duality compatibility
@@ -2359,39 +2359,39 @@ false
 # Inverse tensor product and internal (co)hom compatibility
 ######################################################################
 
-gap> tensor_to_hom_compatibility_inverse_abcd_rows := TensorProductInternalHomCompatibilityMorphismInverse( [ a_rows, b_rows, c_rows, d_rows ] );; # Hom( a x c, b x d ) -> Hom( a, b ) x Hom( c, d )
-gap> tensor_to_hom_compatibility_inverse_cadb_rows := TensorProductInternalHomCompatibilityMorphismInverse( [ c_rows, a_rows, d_rows, b_rows ] );; # Hom( c x d, a x b ) -> Hom( c, a ) x Hom( d, b )
+# gap> tensor_to_hom_compatibility_inverse_abcd_rows := TensorProductInternalHomCompatibilityMorphismInverse( [ a_rows, b_rows, c_rows, d_rows ] );; # Hom( a x c, b x d ) -> Hom( a, b ) x Hom( c, d )
+# gap> tensor_to_hom_compatibility_inverse_cadb_rows := TensorProductInternalHomCompatibilityMorphismInverse( [ c_rows, a_rows, d_rows, b_rows ] );; # Hom( c x d, a x b ) -> Hom( c, a ) x Hom( d, b )
 
-gap> cohom_to_tensor_compatibility_inverse_abcd_rows := InternalCoHomTensorProductCompatibilityMorphismInverse( [ a_rows, b_rows, c_rows, d_rows ] );; # Cohom( a, c ) x Cohom( b, d ) -> Cohom( a x b, c x d )
-gap> cohom_to_tensor_compatibility_inverse_bdac_rows := InternalCoHomTensorProductCompatibilityMorphismInverse( [ b_rows, d_rows, a_rows, c_rows ] );; # Cohom( b, a ) x Cohom( d, c ) -> Cohom( b x d, a x c )
+# gap> cohom_to_tensor_compatibility_inverse_abcd_rows := InternalCoHomTensorProductCompatibilityMorphismInverse( [ a_rows, b_rows, c_rows, d_rows ] );; # Cohom( a, c ) x Cohom( b, d ) -> Cohom( a x b, c x d )
+# gap> cohom_to_tensor_compatibility_inverse_bdac_rows := InternalCoHomTensorProductCompatibilityMorphismInverse( [ b_rows, d_rows, a_rows, c_rows ] );; # Cohom( b, a ) x Cohom( d, c ) -> Cohom( b x d, a x c )
 
-gap> tensor_to_hom_compatibility_inverse_abcd_cols := TensorProductInternalHomCompatibilityMorphismInverse( [ a_cols, b_cols, c_cols, d_cols ] );; # Hom( a x c, b x d ) -> Hom( a, b ) x Hom( c, d )
-gap> tensor_to_hom_compatibility_inverse_cadb_cols := TensorProductInternalHomCompatibilityMorphismInverse( [ c_cols, a_cols, d_cols, b_cols ] );; # Hom( c x d, a x b ) -> Hom( c, a ) x Hom( d, b )
+# gap> tensor_to_hom_compatibility_inverse_abcd_cols := TensorProductInternalHomCompatibilityMorphismInverse( [ a_cols, b_cols, c_cols, d_cols ] );; # Hom( a x c, b x d ) -> Hom( a, b ) x Hom( c, d )
+# gap> tensor_to_hom_compatibility_inverse_cadb_cols := TensorProductInternalHomCompatibilityMorphismInverse( [ c_cols, a_cols, d_cols, b_cols ] );; # Hom( c x d, a x b ) -> Hom( c, a ) x Hom( d, b )
 
-gap> cohom_to_tensor_compatibility_inverse_abcd_cols := InternalCoHomTensorProductCompatibilityMorphismInverse( [ a_cols, b_cols, c_cols, d_cols ] );; # Cohom( a, c ) x Cohom( b, d ) -> Cohom( a x b, c x d )
-gap> cohom_to_tensor_compatibility_inverse_bdac_cols := InternalCoHomTensorProductCompatibilityMorphismInverse( [ b_cols, d_cols, a_cols, c_cols ] );; # Cohom( b, a ) x Cohom( d, c ) -> Cohom( b x d, a x c )
+# gap> cohom_to_tensor_compatibility_inverse_abcd_cols := InternalCoHomTensorProductCompatibilityMorphismInverse( [ a_cols, b_cols, c_cols, d_cols ] );; # Cohom( a, c ) x Cohom( b, d ) -> Cohom( a x b, c x d )
+# gap> cohom_to_tensor_compatibility_inverse_bdac_cols := InternalCoHomTensorProductCompatibilityMorphismInverse( [ b_cols, d_cols, a_cols, c_cols ] );; # Cohom( b, a ) x Cohom( d, c ) -> Cohom( b x d, a x c )
 
-# Opposite correspondence
+# # Opposite correspondence
 
-gap> tensor_to_hom_compatibility_inverse_abcd_cols = Opposite( cohom_to_tensor_compatibility_inverse_bdac_rows ); # Hom( a x c, b x d ) -> Hom( a, b ) x Hom( c, d )  ==  op( Cohom( b, a ) x Cohom( d, c ) -> Cohom( b x d, a x c ) )
-true
-gap> tensor_to_hom_compatibility_inverse_cadb_cols = Opposite( cohom_to_tensor_compatibility_inverse_abcd_rows ); # Hom( c x d, a x b ) -> Hom( c, a ) x Hom( d, b )  ==  op( Cohom( a, c ) x Cohom( b, d ) -> Cohom( a x b, c x d ) )
-true
+# gap> tensor_to_hom_compatibility_inverse_abcd_cols = Opposite( cohom_to_tensor_compatibility_inverse_bdac_rows ); # Hom( a x c, b x d ) -> Hom( a, b ) x Hom( c, d )  ==  op( Cohom( b, a ) x Cohom( d, c ) -> Cohom( b x d, a x c ) )
+# true
+# gap> tensor_to_hom_compatibility_inverse_cadb_cols = Opposite( cohom_to_tensor_compatibility_inverse_abcd_rows ); # Hom( c x d, a x b ) -> Hom( c, a ) x Hom( d, b )  ==  op( Cohom( a, c ) x Cohom( b, d ) -> Cohom( a x b, c x d ) )
+# true
 
-gap> cohom_to_tensor_compatibility_inverse_abcd_cols = Opposite( tensor_to_hom_compatibility_inverse_cadb_rows ); # Cohom( a, c ) x Cohom( b, d ) -> Cohom( a x b, c x d )  ==  op( Hom( c x d, a x b ) -> Hom( c, a ) x Hom( d, b ) )
-true
-gap> cohom_to_tensor_compatibility_inverse_bdac_cols = Opposite( tensor_to_hom_compatibility_inverse_abcd_rows ); # Cohom( b, a ) x Cohom( d, c ) -> Cohom( b x d, a x c )  ==  op( Hom( a x c, b x d ) -> Hom( a, b ) x Hom( c, d ) )
-true
+# gap> cohom_to_tensor_compatibility_inverse_abcd_cols = Opposite( tensor_to_hom_compatibility_inverse_cadb_rows ); # Cohom( a, c ) x Cohom( b, d ) -> Cohom( a x b, c x d )  ==  op( Hom( c x d, a x b ) -> Hom( c, a ) x Hom( d, b ) )
+# true
+# gap> cohom_to_tensor_compatibility_inverse_bdac_cols = Opposite( tensor_to_hom_compatibility_inverse_abcd_rows ); # Cohom( b, a ) x Cohom( d, c ) -> Cohom( b x d, a x c )  ==  op( Hom( a x c, b x d ) -> Hom( a, b ) x Hom( c, d ) )
+# true
 
-gap> tensor_to_hom_compatibility_inverse_abcd_cols = Opposite( cohom_to_tensor_compatibility_inverse_abcd_rows ); # Hom( a x c, b x d ) -> Hom( a, b ) x Hom( c, d )  =/=  op( Cohom( a, c ) x Cohom( b, d ) -> Cohom( a x b, c x d ) )
-false
-gap> tensor_to_hom_compatibility_inverse_cadb_cols = Opposite( cohom_to_tensor_compatibility_inverse_bdac_rows ); # Hom( c x d, a x b ) -> Hom( c, a ) x Hom( d, b )  =/=  op( Cohom( b, a ) x Cohom( d, c ) -> Cohom( b x d, a x c ) )
-false
+# gap> tensor_to_hom_compatibility_inverse_abcd_cols = Opposite( cohom_to_tensor_compatibility_inverse_abcd_rows ); # Hom( a x c, b x d ) -> Hom( a, b ) x Hom( c, d )  =/=  op( Cohom( a, c ) x Cohom( b, d ) -> Cohom( a x b, c x d ) )
+# false
+# gap> tensor_to_hom_compatibility_inverse_cadb_cols = Opposite( cohom_to_tensor_compatibility_inverse_bdac_rows ); # Hom( c x d, a x b ) -> Hom( c, a ) x Hom( d, b )  =/=  op( Cohom( b, a ) x Cohom( d, c ) -> Cohom( b x d, a x c ) )
+# false
 
-gap> cohom_to_tensor_compatibility_inverse_abcd_cols = Opposite( tensor_to_hom_compatibility_inverse_abcd_rows ); # Cohom( a, c ) x Cohom( b, d ) -> Cohom( a x b, c x d )  =/=  op( Hom( a x c, b x d ) -> Hom( a, b ) x Hom( c, d ) )
-false
-gap> cohom_to_tensor_compatibility_inverse_bdac_cols = Opposite( tensor_to_hom_compatibility_inverse_cadb_rows ); # Cohom( b, a ) x Cohom( d, c ) -> Cohom( b x d, a x c )  =/=  op( Hom( c x d, a x b ) -> Hom( c, a ) x Hom( d, b ) )
-false
+# gap> cohom_to_tensor_compatibility_inverse_abcd_cols = Opposite( tensor_to_hom_compatibility_inverse_abcd_rows ); # Cohom( a, c ) x Cohom( b, d ) -> Cohom( a x b, c x d )  =/=  op( Hom( a x c, b x d ) -> Hom( a, b ) x Hom( c, d ) )
+# false
+# gap> cohom_to_tensor_compatibility_inverse_bdac_cols = Opposite( tensor_to_hom_compatibility_inverse_cadb_rows ); # Cohom( b, a ) x Cohom( d, c ) -> Cohom( b x d, a x c )  =/=  op( Hom( c x d, a x b ) -> Hom( c, a ) x Hom( d, b ) )
+# false
 
 #######################################################################
 # Coevaluation for (co)dual
