@@ -94,7 +94,7 @@
   [1X1.2-1 IsLeftOrRightPresentationMorphism[101X
   
   [33X[1;0Y[29X[2XIsLeftOrRightPresentationMorphism[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe   GAP   category   of  morphisms  in  the  category  of  left  or  right
   presentations.[133X
@@ -102,21 +102,21 @@
   [1X1.2-2 IsLeftPresentationMorphism[101X
   
   [33X[1;0Y[29X[2XIsLeftPresentationMorphism[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of morphisms in the category of left presentations.[133X
   
   [1X1.2-3 IsRightPresentationMorphism[101X
   
   [33X[1;0Y[29X[2XIsRightPresentationMorphism[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of morphisms in the category of right presentations.[133X
   
   [1X1.2-4 IsLeftOrRightPresentation[101X
   
   [33X[1;0Y[29X[2XIsLeftOrRightPresentation[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  GAP  category of objects in the category of left presentations or right
   presentations.[133X
@@ -124,14 +124,14 @@
   [1X1.2-5 IsLeftPresentation[101X
   
   [33X[1;0Y[29X[2XIsLeftPresentation[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of objects in the category of left presentations.[133X
   
   [1X1.2-6 IsRightPresentation[101X
   
   [33X[1;0Y[29X[2XIsRightPresentation[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe GAP category of objects in the category of right presentations.[133X
   
