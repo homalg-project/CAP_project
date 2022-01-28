@@ -337,7 +337,7 @@ CapJitAddLogicTemplate(
     )
 );
 
-InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( tree, template_tree )
+InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( tree, template_tree, variable_filters )
   local debug, variables, func_id_replacements, pre_func, result_func, additional_arguments_func, result;
     
     debug := ValueOption( "debug" ) = true;
@@ -386,7 +386,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
     end;
     
     result_func := function ( template_tree, result, keys, additional_arguments )
-      local tree, tree_path, var_number, r, key;
+      local tree, tree_path, var_number, filter, key;
         
         tree := additional_arguments[1];
         tree_path := additional_arguments[2];
@@ -416,19 +416,35 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
             
             if not IsBound( variables[var_number] ) then
                 
-                variables[var_number] := rec(
-                    path := tree_path,
-                    tree := tree,
-                );
+                filter := variable_filters[var_number];
                 
-                if debug then
-                    # COVERAGE_IGNORE_BLOCK_START
-                    Display( "matched via variable1" );
-                    Display( true );
-                    # COVERAGE_IGNORE_BLOCK_END
+                if IsIdenticalObj( filter, IsObject ) or (IsBound( tree.data_type ) and IsSpecializationOfFilter( filter, tree.data_type.filter )) then
+                    
+                    variables[var_number] := rec(
+                        path := tree_path,
+                        tree := tree,
+                    );
+                    
+                    if debug then
+                        # COVERAGE_IGNORE_BLOCK_START
+                        Display( "matched via variable1" );
+                        Display( true );
+                        # COVERAGE_IGNORE_BLOCK_END
+                    fi;
+                    
+                    return true;
+                    
+                else
+                    
+                    if debug then
+                        # COVERAGE_IGNORE_BLOCK_START
+                        Display( "type could not be inferred or did not match" );
+                        # COVERAGE_IGNORE_BLOCK_END
+                    fi;
+                    
+                    return false;
+                    
                 fi;
-                
-                return true;
                 
             else
                 
@@ -629,7 +645,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree )
 end );
 
 InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree, template )
-  local matching_info, condition_func, path, match, new_tree, parent, variables, func_id_replacements, variable_tree, filter, pre_func, dst_tree, i;
+  local matching_info, condition_func, path, match, new_tree, parent, variables, func_id_replacements, pre_func, dst_tree, i;
     
     tree := StructuralCopy( tree );
     
@@ -680,7 +696,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
                 
             fi;
             
-            matching_info := CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree, template.src_template_tree : debug := IsBound( template.debug_path ) and template.debug_path = path );
+            matching_info := CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree, template.src_template_tree, template.variable_filters : debug := IsBound( template.debug_path ) and template.debug_path = path );
             
             if matching_info = fail then
                 
@@ -735,40 +751,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
             Error( "matched wrong number of variables" );
             
         fi;
-        
-        # type check
-        for i in [ 1 .. Length( template.variable_names ) ] do
-            
-            filter := template.variable_filters[i];
-            
-            if IsIdenticalObj( filter, IsObject ) then
-                
-                continue;
-                
-            fi;
-            
-            variable_tree := variables[i].tree;
-            
-            if not IsBound( variable_tree.data_type ) then
-                
-                Info( InfoCapJit, 1, "####" );
-                Info( InfoCapJit, 1, "Could not determine data_type of variable." );
-                
-                match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
-                
-                break;
-                
-            fi;
-            
-            if not IsSpecializationOfFilter( filter, variable_tree.data_type.filter ) then
-                
-                match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
-                
-                break;
-                
-            fi;
-            
-        od;
         
         if IsBound( match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE ) and match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE then
             
