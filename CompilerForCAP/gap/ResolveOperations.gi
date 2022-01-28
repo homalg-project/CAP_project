@@ -10,7 +10,7 @@ BindGlobal( "CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES", [
 ] );
 
 InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
-  local condition_func, path, record, operation, funccall_args, funccall_does_not_return_fail, operation_name, new_tree, category, resolved_tree, known_methods, func_to_resolve, global_variable_name, result, arguments, applicable_methods, parent, method;
+  local condition_func, path, record, operation, funccall_args, operation_name, new_tree, category, resolved_tree, known_methods, func_to_resolve, global_variable_name, result, arguments, applicable_methods, parent, method;
     
     tree := StructuralCopy( tree );
   
@@ -86,14 +86,12 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
     
     funccall_args := record.args;
     
-    funccall_does_not_return_fail := IsBound( record.funcref.does_not_return_fail ) and record.funcref.does_not_return_fail = true;
-    
     operation_name := NameFunction( operation );
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, Concatenation( "Try to resolve ", operation_name, "." ) );
     
-    new_tree := fail;
+    resolved_tree := fail;
     
     # check if this is a CAP operation which is not a convenience method
     if operation_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) and funccall_args.length = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list ) then
@@ -109,18 +107,6 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
         Assert( 0, not (IsBound( category!.stop_compilation ) and category!.stop_compilation = true) );
         
         resolved_tree := CapJitCompiledCAPOperationAsEnhancedSyntaxTree( category, operation_name );
-        
-        if funccall_does_not_return_fail then
-            
-            resolved_tree := CapJitRemovedReturnFail( resolved_tree );
-            
-        fi;
-        
-        new_tree := rec(
-            type := "EXPR_FUNCCALL",
-            funcref := resolved_tree,
-            args := funccall_args,
-        );
         
     # check if we know methods for this operation
     elif operation_name in RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) then
@@ -157,38 +143,16 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
                     # will be handled in the next iteration
                     global_variable_name := CapJitGetOrCreateGlobalVariable( func_to_resolve );
                     
-                    new_tree := rec(
-                        type := "EXPR_FUNCCALL",
-                        funcref := rec(
-                            type := "EXPR_REF_GVAR",
-                            gvar := global_variable_name,
-                        ),
-                        args := funccall_args,
+                    resolved_tree := rec(
+                        type := "EXPR_REF_GVAR",
+                        gvar := global_variable_name,
                     );
-                    
-                    if funccall_does_not_return_fail then
-                        
-                        new_tree.funcref.does_not_return_fail := true;
-                        
-                    fi;
                     
                 fi;
                 
             else
                 
                 resolved_tree := ENHANCED_SYNTAX_TREE( func_to_resolve : globalize_hvars := true );
-                
-                if funccall_does_not_return_fail then
-                    
-                    resolved_tree := CapJitRemovedReturnFail( resolved_tree );
-                    
-                fi;
-                
-                new_tree := rec(
-                    type := "EXPR_FUNCCALL",
-                    funcref := resolved_tree,
-                    args := funccall_args,
-                );
                 
             fi;
             
@@ -200,11 +164,34 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
         
     fi;
     
-    if new_tree <> fail then
+    if resolved_tree <> fail then
+        
+        if IsBound( record.funcref.does_not_return_fail ) and record.funcref.does_not_return_fail = true then
+            
+            if resolved_tree.type = "EXPR_DECLARATIVE_FUNC" then
+                
+                resolved_tree := CapJitRemovedReturnFail( resolved_tree );
+                
+            elif resolved_tree.type = "EXPR_REF_GVAR" then
+                
+                resolved_tree.does_not_return_fail := true;
+                
+            else
+                
+                # COVERAGE_IGNORE_NEXT_LINE
+                Error( "this should never happen" );
+                
+            fi;
+            
+        fi;
         
         parent := CapJitGetNodeByPath( tree, path{[ 1 .. Length( path ) - 1 ]} );
         
-        parent.(Last( path )) := new_tree;
+        parent.(Last( path )) := rec(
+            type := "EXPR_FUNCCALL",
+            funcref := resolved_tree,
+            args := funccall_args,
+        );
         
         Info( InfoCapJit, 1, "Successfully resolved operation." );
         
