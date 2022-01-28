@@ -57,7 +57,7 @@ InstallGlobalFunction( CapJitResultFuncCombineChildren, function ( tree, result,
     
 end );
 
-InstallGlobalFunction( CapJitContainsRefToFVAROutsideOfFuncStack, function ( tree )
+InstallGlobalFunction( CapJitContainsRefToFVAROutsideOfFuncStack, function ( tree, initial_func_id_stack )
   local result_func, additional_arguments_func;
     
     result_func := function ( tree, result, keys, func_id_stack )
@@ -93,7 +93,7 @@ InstallGlobalFunction( CapJitContainsRefToFVAROutsideOfFuncStack, function ( tre
         
     end;
     
-    return CapJitIterateOverTree( tree, ReturnFirst, result_func, additional_arguments_func, [ ] );
+    return CapJitIterateOverTree( tree, ReturnFirst, result_func, additional_arguments_func, initial_func_id_stack );
     
 end );
 
@@ -127,25 +127,38 @@ InstallGlobalFunction( CapJitGetOrCreateGlobalVariable, function ( value )
 end );
 
 InstallGlobalFunction( CapJitFindNodeDeep, function ( tree, condition_func )
-  local result_func, additional_arguments_func;
+  local match, pre_func, result_func, additional_arguments_func;
+    
+    match := fail;
+    
+    pre_func := function ( tree, additional_arguments )
+        
+        if match = fail then
+            
+            return tree;
+            
+        else
+            
+            return fail;
+            
+        fi;
+        
+    end;
     
     result_func := function ( tree, result, keys, path )
       local key;
         
-        for key in keys do
+        if match <> fail then
             
-            if result.(key) <> fail then
-                
-                return result.(key);
-                
-            fi;
+            return fail;
             
-        od;
+        fi;
         
         # none of the descendants fulfills condition, otherwise we would already have returned above
         if condition_func( tree, path ) then
             
-            return path;
+            match := path;
+            return true;
             
         fi;
         
@@ -160,7 +173,9 @@ InstallGlobalFunction( CapJitFindNodeDeep, function ( tree, condition_func )
         
     end;
     
-    return CapJitIterateOverTree( tree, ReturnFirst, result_func, additional_arguments_func, [ ] );
+    CapJitIterateOverTree( tree, pre_func, result_func, additional_arguments_func, [ ] );
+    
+    return match;
     
 end );
 
@@ -308,7 +323,14 @@ end );
 
 InstallGlobalFunction( CapJitIsEqualForEnhancedSyntaxTrees, function ( tree1, tree2 )
     
-    return CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree1, tree2 ) <> fail;
+    # early bailout
+    if tree1.type <> tree2.type then
+        
+        return false;
+        
+    fi;
+    
+    return CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree1, tree2, [ ] ) <> fail;
     
 end );
 

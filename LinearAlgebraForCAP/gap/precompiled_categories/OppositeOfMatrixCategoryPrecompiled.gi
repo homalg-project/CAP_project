@@ -238,7 +238,7 @@ function ( cat_1, alpha_1 )
              ), cat_1, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
                ), deduped_3_1, Dimension, NumberRows( deduped_2_1 ) ) ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
              ), deduped_3_1, ObjectifyObjectForCAPWithAttributes( rec(
-               ), deduped_3_1, Dimension, NrRows( morphism_attr_1_1 ) ), Source( deduped_4_1 ), UnderlyingMatrix, morphism_attr_1_1 ) );
+               ), deduped_3_1, Dimension, NumberRows( morphism_attr_1_1 ) ), Source( deduped_4_1 ), UnderlyingMatrix, morphism_attr_1_1 ) );
 end
 ########
         
@@ -492,7 +492,7 @@ function ( cat_1, alpha_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), deduped_2_1, ObjectifyObjectForCAPWithAttributes( rec(
              ), deduped_2_1, Dimension, 1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), deduped_2_1, Dimension, NrColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+             ), deduped_2_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -703,7 +703,7 @@ function ( cat_1, alpha_1 )
              ), cat_1, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
                ), deduped_3_1, Dimension, NumberColumns( deduped_2_1 ) ) ), Source( alpha_1 ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
              ), deduped_3_1, Range( deduped_4_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-               ), deduped_3_1, Dimension, NrColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) );
+               ), deduped_3_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) );
 end
 ########
         

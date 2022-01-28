@@ -67,9 +67,8 @@ DeclareGlobalFunction( "CapJitAddLogicTemplate" );
 
 #! @Description
 #!   Applies all logic templates (see <Ref Func="CapJitAddLogicTemplate" />) to <A>tree</A>.
-#!   The arguments <A>jit_args</A> are used to infer the types of variables.
 #! @Returns a record
-#! @Arguments tree, jit_args
+#! @Arguments tree
 DeclareGlobalFunction( "CapJitAppliedLogicTemplates" );
 
 # enhances a single logic template and applies it if all needed packages are loaded, else does nothing

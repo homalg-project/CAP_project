@@ -11,6 +11,8 @@ BindGlobal( "CAP_JIT_INTERNAL_SYNTAX_TREE_TO_OPERATION_TRANSLATIONS", rec(
     EXPR_DIFF := tree -> rec( operation_name := "-", args := [ tree.left, tree.right ] ),
     EXPR_PROD := tree -> rec( operation_name := "*", args := [ tree.left, tree.right ] ),
     EXPR_QUO := tree -> rec( operation_name := "/", args := [ tree.left, tree.right ] ),
+    EXPR_POW := tree -> rec( operation_name := "^", args := [ tree.left, tree.right ] ),
+    EXPR_MOD := tree -> rec( operation_name := "mod", args := [ tree.left, tree.right ] ),
 ) );
 
 BindGlobal( "CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS", rec(
@@ -21,7 +23,11 @@ BindGlobal( "CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS", rec(
     \- := tree -> rec( type := "EXPR_DIFF", left := tree.args.1, right := tree.args.2 ),
     \* := tree -> rec( type := "EXPR_PROD", left := tree.args.1, right := tree.args.2 ),
     \/ := tree -> rec( type := "EXPR_QUO", left := tree.args.1, right := tree.args.2 ),
+    \^ := tree -> rec( type := "EXPR_POW", left := tree.args.1, right := tree.args.2 ),
+    \mod := tree -> rec( type := "EXPR_MOD", left := tree.args.1, right := tree.args.2 ),
 ) );
+
+Assert( 0, Length( RecNames( CAP_JIT_INTERNAL_SYNTAX_TREE_TO_OPERATION_TRANSLATIONS ) ) = Length( RecNames( CAP_JIT_INTERNAL_OPERATION_TO_SYNTAX_TREE_TRANSLATIONS ) ) );
 
 InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
   local ErrorWithFuncLocation, globalize_hvars, only_if_CAP_JIT_RESOLVE_FUNCTION, given_arguments, type_signature, remove_depth_numbering, tree, orig_tree, pre_func, result_func, additional_arguments_func;

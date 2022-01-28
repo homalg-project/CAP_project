@@ -104,8 +104,8 @@ InstallMethod( CategoryOfColumnsAsOppositeOfCategoryOfRows,
     wrapper!.compiler_hints.source_and_range_attributes_from_morphism_attribute := rec(
         object_attribute_name := "RankOfObject",
         morphism_attribute_name := "UnderlyingMatrix",
-        source_attribute_getter_name := "NrColumns",
-        range_attribute_getter_name := "NrRows",
+        source_attribute_getter_name := "NumberColumns",
+        range_attribute_getter_name := "NumberRows",
     );
     
     # needed until Opposite can properly deal with the closed structure

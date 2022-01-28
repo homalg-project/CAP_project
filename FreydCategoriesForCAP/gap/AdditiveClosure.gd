@@ -245,7 +245,7 @@ DeclareOperation( "\/",
 #! @Description
 #!   A (faster) version of `NullMat` returning an immutable matrix.
 DeclareGlobalFunction( "NullMatImmutable" );
-CapJitAddTypeSignature( "NullMatImmutable", [ IsInt, IsInt ], rec( filter := IsList, element_type := rec( filter := IsList, element_type := IsInt ) ) );
+CapJitAddTypeSignature( "NullMatImmutable", [ IsInt, IsInt ], rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsInt ) ) ) );
 
 #! @Description
 #!   Stacks the matrices (lists of lists) in the list <A>L</A>. The matrices must have `nr_cols` columns.

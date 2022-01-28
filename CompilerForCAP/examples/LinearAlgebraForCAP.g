@@ -106,7 +106,7 @@ Display( Last( vec!.compiled_functions.KernelEmbedding ) );
 #!     morphism_attr_1_1 := SyzygiesOfRows( UnderlyingMatrix( morphism_1 ) );
 #!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
 #!            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-#!              ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), 
+#!              ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), 
 #!        Source( morphism_1 ), UnderlyingMatrix, morphism_attr_1_1 );
 #! end
 

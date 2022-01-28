@@ -36,8 +36,8 @@ InstallGlobalFunction( MATRIX_CATEGORY,
         source_and_range_attributes_from_morphism_attribute := rec(
             object_attribute_name := "Dimension",
             morphism_attribute_name := "UnderlyingMatrix",
-            source_attribute_getter_name := "NrRows",
-            range_attribute_getter_name := "NrColumns",
+            source_attribute_getter_name := "NumberRows",
+            range_attribute_getter_name := "NumberColumns",
         ),
     );
     
