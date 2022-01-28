@@ -3,26 +3,11 @@
 #
 # Implementations
 #
-BindGlobal( "CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES", [
-    "DecideZeroColumns",
-    "DecideZeroRows",
-    "IsZero",
-] );
-
 InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
-  local condition_func, path, record, operation, funccall_args, operation_name, new_tree, category, resolved_tree, known_methods, func_to_resolve, global_variable_name, result, arguments, applicable_methods, parent, method;
+  local pre_func;
     
-    tree := StructuralCopy( tree );
-  
-    # find resolvable operation
-    condition_func := function ( tree, path )
-      local operation, operation_name, category;
-        
-        if IsBound( tree.CAP_JIT_IGNORE_OPERATION ) and tree.CAP_JIT_IGNORE_OPERATION then
-            
-            return false;
-            
-        fi;
+    pre_func := function ( tree, additional_arguments )
+      local operation, operation_name, category, resolved_tree, known_methods;
         
         if tree.type = "EXPR_FUNCCALL" and tree.funcref.type = "EXPR_REF_GVAR" then
             
@@ -33,7 +18,7 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
             # check if this is a CAP operation which is not a convenience method or if we know methods for this operation
             if (operation_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) and tree.args.length = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list )) or operation_name in RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) then
                 
-                # we can resolve CAP operations if and only if the category is known, i.e., stored in a global variable
+                # we can resolve operations if and only if the category is known, i.e., stored in a global variable
                 if tree.args.1.type = "EXPR_REF_GVAR" then
                     
                     category := ValueGlobal( tree.args.1.gvar );
@@ -42,168 +27,71 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
                     
                     if IsBound( category!.stop_compilation ) and category!.stop_compilation = true then
                         
-                        return false;
-                        
-                    else
-                        
-                        return true;
+                        return tree;
                         
                     fi;
                     
-                else
+                    Info( InfoCapJit, 1, "####" );
+                    Info( InfoCapJit, 1, Concatenation( "Resolve ", operation_name, "." ) );
                     
-                    return false;
+                    # check if this is a CAP operation which is not a convenience method
+                    if operation_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) and tree.args.length = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list ) then
+                        
+                        Assert( 0, CanCompute( category, operation_name ) );
+                        
+                        Info( InfoCapJit, 1, "This is a CAP operation, recurse compilation." );
+                        
+                        resolved_tree := CapJitCompiledCAPOperationAsEnhancedSyntaxTree( category, operation_name );
+                        
+                    # check if we know methods for this operation
+                    elif operation_name in RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) then
+                        
+                        Info( InfoCapJit, 1, "Methods are known for this operation." );
+                        
+                        known_methods := Filtered( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name),
+                            m -> Length( m.filters ) = tree.args.length and m.filters[1]( category )
+                        );
+                        
+                        if IsEmpty( known_methods ) then
+                            
+                            return tree;
+                            
+                        fi;
+                        
+                        if Length( known_methods ) > 1 then
+                            
+                            # COVERAGE_IGNORE_NEXT_LINE
+                            Error( "Found more than one known method for ", operation_name, " with correct length and category filter" );
+                            
+                        fi;
+                        
+                        resolved_tree := ENHANCED_SYNTAX_TREE( known_methods[1].method : globalize_hvars := true );
+                        
+                    else
+                        
+                        Error( "this should never happen" );
+                        
+                    fi;
+                    
+                    if IsBound( tree.funcref.does_not_return_fail ) and tree.funcref.does_not_return_fail = true then
+                        
+                        resolved_tree := CapJitRemovedReturnFail( resolved_tree );
+                        
+                    fi;
+                    
+                    tree := ShallowCopy( tree );
+                    tree.funcref := resolved_tree;
                     
                 fi;
                 
             fi;
             
-            if IsOperation( operation ) and not operation_name in CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES then
-                
-                return true;
-                
-            fi;
-            
         fi;
-        
-        return false;
-        
-    end;
-    
-    path := CapJitFindNodeDeep( tree, condition_func );
-    
-    if path = fail then
-        
-        Info( InfoCapJit, 1, "Could not find operation to resolve" );
         
         return tree;
         
-    fi;
+    end;
     
-    record := CapJitGetNodeByPath( tree, path );
-    
-    operation := ValueGlobal( record.funcref.gvar );
-    
-    funccall_args := record.args;
-    
-    operation_name := NameFunction( operation );
-    
-    Info( InfoCapJit, 1, "####" );
-    Info( InfoCapJit, 1, Concatenation( "Try to resolve ", operation_name, "." ) );
-    
-    resolved_tree := fail;
-    
-    # check if this is a CAP operation which is not a convenience method
-    if operation_name in RecNames( CAP_INTERNAL_METHOD_NAME_RECORD ) and funccall_args.length = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list ) then
-        
-        Info( InfoCapJit, 1, "This is a CAP operation, try to determine category and compile the added function." );
-        
-        Assert( 0, funccall_args.1.type = "EXPR_REF_GVAR" );
-        
-        category := ValueGlobal( funccall_args.1.gvar );
-        
-        Assert( 0, IsCapCategory( category ) );
-        Assert( 0, CanCompute( category, operation_name ) );
-        Assert( 0, not (IsBound( category!.stop_compilation ) and category!.stop_compilation = true) );
-        
-        resolved_tree := CapJitCompiledCAPOperationAsEnhancedSyntaxTree( category, operation_name );
-        
-    # check if we know methods for this operation
-    elif operation_name in RecNames( CAP_JIT_INTERNAL_KNOWN_METHODS ) then
-        
-        Info( InfoCapJit, 1, "Methods are known for this operation." );
-        
-        Assert( 0, funccall_args.1.type = "EXPR_REF_GVAR" );
-        
-        category := ValueGlobal( funccall_args.1.gvar );
-        
-        Assert( 0, IsCapCategory( category ) );
-        Assert( 0, not (IsBound( category!.stop_compilation ) and category!.stop_compilation = true) );
-        
-        known_methods := Filtered( CAP_JIT_INTERNAL_KNOWN_METHODS.(operation_name),
-            m -> Length( m.filters ) = funccall_args.length and m.filters[1]( category )
-        );
-        
-        if not IsEmpty( known_methods ) then
-            
-            if Length( known_methods ) > 1 then
-                
-                # COVERAGE_IGNORE_NEXT_LINE
-                Error( "Found more than one known method for ", operation_name, " with correct length and category filter" );
-                
-            fi;
-            
-            func_to_resolve := known_methods[1].method;
-            
-            if IsOperation( func_to_resolve ) or IsKernelFunction( func_to_resolve ) then
-                
-                # cannot resolve recursive calls
-                if not IsIdenticalObj( func_to_resolve, operation ) then
-                    
-                    # will be handled in the next iteration
-                    global_variable_name := CapJitGetOrCreateGlobalVariable( func_to_resolve );
-                    
-                    resolved_tree := rec(
-                        type := "EXPR_REF_GVAR",
-                        gvar := global_variable_name,
-                    );
-                    
-                fi;
-                
-            else
-                
-                resolved_tree := ENHANCED_SYNTAX_TREE( func_to_resolve : globalize_hvars := true );
-                
-            fi;
-            
-        fi;
-        
-    else
-        
-        Info( InfoCapJit, 1, "Neither a CAP operation nor a known method." );
-        
-    fi;
-    
-    if resolved_tree <> fail then
-        
-        if IsBound( record.funcref.does_not_return_fail ) and record.funcref.does_not_return_fail = true then
-            
-            if resolved_tree.type = "EXPR_DECLARATIVE_FUNC" then
-                
-                resolved_tree := CapJitRemovedReturnFail( resolved_tree );
-                
-            elif resolved_tree.type = "EXPR_REF_GVAR" then
-                
-                resolved_tree.does_not_return_fail := true;
-                
-            else
-                
-                # COVERAGE_IGNORE_NEXT_LINE
-                Error( "this should never happen" );
-                
-            fi;
-            
-        fi;
-        
-        parent := CapJitGetNodeByPath( tree, path{[ 1 .. Length( path ) - 1 ]} );
-        
-        parent.(Last( path )) := rec(
-            type := "EXPR_FUNCCALL",
-            funcref := resolved_tree,
-            args := funccall_args,
-        );
-        
-        Info( InfoCapJit, 1, "Successfully resolved operation." );
-        
-    else
-        
-        Info( InfoCapJit, 1, "Could not find suitable function. Skip resolving..." );
-        
-        record.CAP_JIT_IGNORE_OPERATION := true;
-        
-    fi;
-    
-    # resolve next operation
-    return CapJitResolvedOperations( tree, jit_args );
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
     
 end );
