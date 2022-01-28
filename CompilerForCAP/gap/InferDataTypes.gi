@@ -5,12 +5,150 @@
 #
 
 BindGlobal( "CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS", [
+    IsInt,
+] );
+
+BindGlobal( "CAP_JIT_INTERNAL_DEFERRED_GLOBAL_VARIABLE_FILTERS", [
+    # homalg
     "IsHomalgRing",
     "IsHomalgRingElement",
     "IsHomalgMatrix",
     "IsHomalgRingMap",
-    "IsRingAsCategoryObject",
+    # QPA
+    "IsPath",
+    "IsPathAlgebra",
+    "IsQuotientOfPathAlgebra",
 ] );
+
+InstallGlobalFunction( "CAP_JIT_INTERNAL_LOAD_DEFERRED_GLOBAL_VARIABLE_FILTERS", function ( )
+    
+    MakeReadWriteGlobal( "CAP_JIT_INTERNAL_DEFERRED_GLOBAL_VARIABLE_FILTERS" );
+    
+    CAP_JIT_INTERNAL_DEFERRED_GLOBAL_VARIABLE_FILTERS := Filtered( CAP_JIT_INTERNAL_DEFERRED_GLOBAL_VARIABLE_FILTERS, function ( name )
+        
+        if IsBoundGlobal( name ) then
+            
+            Add( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS, ValueGlobal( name ) );
+            
+            return false;
+            
+        else
+            
+            return true;
+            
+        fi;
+        
+    end );
+    
+    MakeReadOnlyGlobal( "CAP_JIT_INTERNAL_DEFERRED_GLOBAL_VARIABLE_FILTERS" );
+    
+end );
+
+InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_DATA_TYPE_OF_VALUE", function ( value )
+  local element_types, element_type, filters, i;
+    
+    if value = fail then
+        
+        # we do not want to give fail a type yet
+        return fail;
+        
+    fi;
+    
+    if IsList( value ) then
+        
+        if Length( value ) = 0 then
+            
+            return "list_with_unknown_element_type";
+            
+        fi;
+        
+        element_types := List( value, v -> CAP_JIT_INTERNAL_GET_DATA_TYPE_OF_VALUE( v ) );
+        
+        if ForAll( element_types, type -> type = "list_with_unknown_element_type" ) then
+            
+            return "list_with_unknown_element_type";
+            
+        fi;
+        
+        element_type := First( element_types, type -> type <> fail and type <> "list_with_unknown_element_type" );
+        
+        if element_type = fail then
+            
+            return fail;
+            
+        fi;
+        
+        if element_type.filter = IsList then
+            
+            # if some elements are list with unknown element types, use the element_type determined above
+            for i in [ 1 .. Length( value ) ] do
+                
+                if IsList( value[i] ) and element_types[i] = "list_with_unknown_element_type" then
+                    
+                    element_types[i] := element_type;
+                    
+                fi;
+                
+            od;
+            
+        fi;
+        
+        if not ForAll( element_types, type -> type = element_type ) then
+            
+            #Error( "the list is not homogeneous, this is not supported" );
+            return fail;
+            
+        fi;
+        
+        return rec( filter := IsList, element_type := element_type );
+        
+    fi;
+    
+    if IsCapCategory( value ) then
+        
+        return rec( filter := IsCapCategory, category := value );
+        
+    elif IsCapCategoryObject( value ) then
+        
+        return rec( filter := CapCategory( value )!.object_representation, category := CapCategory( value ) );
+        
+    elif IsCapCategoryMorphism( value ) then
+        
+        return rec( filter := CapCategory( value )!.morphism_representation, category := CapCategory( value ) );
+        
+    fi;
+    
+    filters := Filtered( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS, filter -> filter( value ) );
+    
+    if IsEmpty( filters ) then
+        
+        # try to load deferred filters
+        CAP_JIT_INTERNAL_LOAD_DEFERRED_GLOBAL_VARIABLE_FILTERS( );
+        
+    fi;
+    
+    filters := Filtered( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS, filter -> filter( value ) );
+    
+    if Length( filters ) > 1 then
+        
+        Error( "<value> matches more than one filter in CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS: ", filters );
+        
+    elif Length( filters ) = 1 then
+        
+        return rec( filter := filters[1] );
+        
+    elif IsFunction( value ) then
+        
+        # signature has to be set from somewhere else
+        return rec( filter := IsFunction );
+        
+    else
+        
+        return fail;
+        
+    fi;
+    
+end );
 
 InstallGlobalFunction( "CAP_JIT_INTERNAL_LOAD_DEFERRED_TYPE_SIGNATURES", function ( )
   local package_name, signature;
@@ -287,6 +425,10 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_S
             
             data_type := rec( filter := IsString );
             
+        elif tree.type = "EXPR_CHAR" then
+            
+            data_type := rec( filter := IsChar );
+            
         elif tree.type = "EXPR_TRUE" then
             
             data_type := rec( filter := IsBool );
@@ -295,13 +437,65 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_S
             
             data_type := rec( filter := IsBool );
             
+        elif tree.type = "EXPR_EQ" then
+            
+            data_type := rec( filter := IsBool );
+            
+        elif tree.type = "EXPR_NE" then
+            
+            data_type := rec( filter := IsBool );
+            
+        elif tree.type = "EXPR_LE" then
+            
+            data_type := rec( filter := IsBool );
+            
+        elif tree.type = "EXPR_GE" then
+            
+            data_type := rec( filter := IsBool );
+            
+        elif tree.type = "EXPR_LT" then
+            
+            data_type := rec( filter := IsBool );
+            
+        elif tree.type = "EXPR_GT" then
+            
+            data_type := rec( filter := IsBool );
+            
+        elif tree.type = "EXPR_NOT" then
+            
+            Assert( 0, tree.op.data_type.filter = IsBool );
+            
+            data_type := rec( filter := IsBool );
+            
+        elif tree.type = "EXPR_AND" then
+            
+            Assert( 0, tree.left.data_type.filter = IsBool );
+            Assert( 0, tree.right.data_type.filter = IsBool );
+            
+            data_type := rec( filter := IsBool );
+            
+        elif tree.type = "EXPR_OR" then
+            
+            Assert( 0, tree.left.data_type.filter = IsBool );
+            Assert( 0, tree.right.data_type.filter = IsBool );
+            
+            data_type := rec( filter := IsBool );
+            
+        elif tree.type = "EXPR_IN" then
+            
+            data_type := rec( filter := IsBool );
+            
         elif tree.type = "EXPR_REC" then
             
             data_type := rec( filter := IsRecord );
             
+        elif tree.type = "EXPR_AINV" then
+            
+            data_type := tree.op.data_type;
+            
         elif tree.type = "EXPR_CASE" then
             
-            if not ForAll( tree.branches, branch -> branch.condition.filter = IsBool ) then
+            if not ForAll( tree.branches, branch -> branch.condition.data_type.filter = IsBool ) then
                 
                 Error( "a condition of the case expression is not a boolean" );
                 
@@ -346,60 +540,17 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_S
             
         elif tree.type = "EXPR_REF_GVAR" then
             
-            for i in [ 1 .. Length( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS ) ] do
+            data_type := CAP_JIT_INTERNAL_GET_DATA_TYPE_OF_VALUE( ValueGlobal( tree.gvar ) );
+            
+            if data_type = fail or data_type = "list_with_unknown_element_type" then
                 
-                if IsString( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS[i] ) and IsBoundGlobal( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS[i] ) then
+                # "fail" explicitly has no type yet
+                if ValueGlobal( tree.gvar ) <> fail then
                     
-                    CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS[i] := ValueGlobal( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS[i] );
+                    Display( Concatenation( "could not get type of gvar ", tree.gvar ) );
                     
                 fi;
                 
-            od;
-            
-            filter := First( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS, filter -> IsFilter( filter ) and filter( ValueGlobal( tree.gvar ) ) );
-            
-            if IsCapCategory( ValueGlobal( tree.gvar ) ) then
-                
-                data_type := rec( filter := IsCapCategory, category := ValueGlobal( tree.gvar ) );
-                
-            elif IsList( ValueGlobal( tree.gvar ) ) and Length( ValueGlobal( tree.gvar ) ) > 0 then
-                
-                filter := First( CAP_JIT_INTERNAL_GLOBAL_VARIABLE_FILTERS, filter -> IsFilter( filter ) and filter( ValueGlobal( tree.gvar )[1] ) );
-                
-                if filter <> fail then
-                    
-                    if not ForAll( ValueGlobal( tree.gvar ), x -> filter( x ) ) then
-                        
-                        #Error( "the list is not homogeneous, this is not supported" );
-                        # there might already be a data type set, but we want to avoid partial typings -> unbind
-                        Unbind( tree.data_type );
-                        return tree;
-                        
-                    fi;
-                    
-                    data_type := rec( filter := IsList, element_type := rec( filter := filter ) );
-                    
-                else
-                    
-                    #Error( "could not find type of gvar ", tree.gvar );
-                    # there might already be a data type set, but we want to avoid partial typings -> unbind
-                    Unbind( tree.data_type );
-                    return tree;
-                    
-                fi;
-                
-            elif filter <> fail then
-                
-                data_type := rec( filter := filter );
-                
-            elif IsFunction( ValueGlobal( tree.gvar ) ) then
-                
-                # signature has to be set from somewhere else
-                data_type := rec( filter := IsFunction );
-                
-            else
-                
-                #Error( "could not find type of gvar ", tree.gvar );
                 # there might already be a data type set, but we want to avoid partial typings -> unbind
                 Unbind( tree.data_type );
                 return tree;
@@ -471,7 +622,7 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_S
             
         else
             
-            #Error( "Cannot compute data type for syntax tree type ", tree.type, " yet." );
+            Display( Concatenation( "Cannot compute data type for syntax tree type ", tree.type, " yet." ) );
             # there might already be a data type set, but we want to avoid partial typings -> unbind
             Unbind( tree.data_type );
             return tree;
@@ -570,12 +721,14 @@ CapJitAddTypeSignature( "Length", [ IsList ], IsInt );
 CapJitAddTypeSignature( "+", [ IsInt, IsInt ], IsInt );
 CapJitAddTypeSignature( "-", [ IsInt, IsInt ], IsInt );
 CapJitAddTypeSignature( "*", [ IsInt, IsInt ], IsInt );
+CapJitAddTypeSignature( "^", [ IsInt, IsInt ], IsInt );
 CapJitAddTypeSignature( "REM_INT", [ IsInt, IsInt ], IsInt );
 CapJitAddTypeSignature( "QUO_INT", [ IsInt, IsInt ], IsInt );
 CapJitAddTypeSignature( "IsZero", [ IsInt ], IsBool );
 CapJitAddTypeSignature( "IS_IDENTICAL_OBJ", [ IsObject, IsObject ], IsBool );
+CapJitAddTypeSignature( "^", [ IsPerm, IsInt ], IsPerm );
 CapJitAddTypeSignature( "PermList", [ IsList ], IsPerm );
-CapJitAddTypeSignature( "PermutationMat", [ IsPerm, IsInt ], rec( filter := IsList, element_type := rec( filter := IsList, element_type := IsInt ) ) );
+CapJitAddTypeSignature( "PermutationMat", [ IsPerm, IsInt ], rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsInt ) ) ) );
 
 CapJitAddTypeSignature( "NumberRows", [ IsList ], function ( args, func_stack )
     
@@ -664,6 +817,47 @@ end );
 CapJitAddTypeSignature( "Tuples", [ IsList, IsInt ], function ( args, func_stack )
     
     return rec( args := args, output_type := rec( filter := IsList, element_type := args.1.data_type ) );
+    
+end );
+
+CapJitAddTypeSignature( "*", [ IsInt, IsList ], function ( args, func_stack )
+  local element_type;
+    
+    if args.2.data_type.element_type.filter = IsList then
+        
+        # matrix case
+        element_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_FILTERS( "*", [ IsInt, args.2.data_type.element_type.element_type.filter ] );
+        
+    else
+        
+        # list case
+        element_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_FILTERS( "*", [ IsInt, args.2.data_type.element_type.filter ] );
+        
+    fi;
+    
+    if element_type = fail then
+        
+        #Error( "could not determine element_type" );
+        return fail;
+        
+    fi;
+    
+    if IsFunction( element_type ) then
+        
+        #Error( "cannot infer parametric output type by arguments types only" );
+        return fail;
+        
+    fi;
+    
+    if args.2.data_type.element_type.filter = IsList then
+        
+        return rec( args := args, output_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := element_type ) ) );
+        
+    else
+        
+        return rec( args := args, output_type := rec( filter := IsList, element_type := element_type ) );
+        
+    fi;
     
 end );
 
@@ -874,6 +1068,12 @@ CapJitAddTypeSignatureDeferred( "MatricesForHomalg", "*", [ "IsHomalgMatrix", "I
 # QPA operations
 CapJitAddTypeSignatureDeferred( "QPA", "VertexIndex", [ "IsQuiverVertex" ], "IsInt" );
 CapJitAddTypeSignatureDeferred( "QPA", "Representative", [ "IsQuotientOfPathAlgebraElement" ], "IsPathAlgebraElement" );
+CapJitAddTypeSignatureDeferred( "QPA", "ZeroImmutable", [ "IsPathAlgebra" ], "IsPathAlgebraElement" );
+CapJitAddTypeSignatureDeferred( "QPA", "ZeroImmutable", [ "IsQuotientOfPathAlgebra" ], "IsQuotientOfPathAlgebraElement" );
+CapJitAddTypeSignatureDeferred( "QPA", "PathAsAlgebraElement", [ "IsPathAlgebra", "IsQuiverVertex" ], "IsPathAlgebraElement" );
+CapJitAddTypeSignatureDeferred( "QPA", "PathAsAlgebraElement", [ "IsQuotientOfPathAlgebra", "IsQuiverVertex" ], "IsQuotientOfPathAlgebraElement" );
+CapJitAddTypeSignatureDeferred( "QPA", "QuiverAlgebraElement", [ "IsPathAlgebra", "IsList", "IsList" ], "IsPathAlgebraElement" );
+CapJitAddTypeSignatureDeferred( "QPA", "QuiverAlgebraElement", [ "IsQuotientOfPathAlgebra", "IsList", "IsList" ], "IsQuotientOfPathAlgebraElement" );
 CapJitAddTypeSignatureDeferred( "QPA", "IsZero", [ "IsPathAlgebraElement" ], "IsBool" );
 CapJitAddTypeSignatureDeferred( "QPA", "IsZero", [ "IsQuotientOfPathAlgebraElement" ], "IsBool" );
 CapJitAddTypeSignatureDeferred( "QPA", "+", [ "IsPathAlgebraElement", "IsPathAlgebraElement" ], "IsPathAlgebraElement" );
