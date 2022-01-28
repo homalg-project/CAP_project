@@ -718,7 +718,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
             
             # adjust function IDs and insert variables in dst_template_tree
             pre_func := function ( tree, func_id_stack )
-              local var_number, replacement;
+              local replacement;
                 
                 if not well_defined then
                     
@@ -732,6 +732,19 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
                     replacement := func_id_replacements[tree.id];
                     
                     return CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( tree, replacement.func_id, replacement.nams );
+                    
+                fi;
+                
+                return tree;
+                
+            end;
+            
+            result_func := function ( tree, result, keys, func_id_stack )
+              local var_number, key;
+                
+                if not well_defined then
+                    
+                    return fail;
                     
                 fi;
                 
@@ -753,19 +766,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
                     
                     # new function IDs will be set below
                     return StructuralCopy( variables[var_number].tree );
-                    
-                fi;
-                
-                return tree;
-                
-            end;
-            
-            result_func := function ( tree, result, keys, func_id_stack )
-              local key;
-                
-                if not well_defined then
-                    
-                    return fail;
                     
                 fi;
                 
