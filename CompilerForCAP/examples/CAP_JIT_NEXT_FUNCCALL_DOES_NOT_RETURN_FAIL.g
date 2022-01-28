@@ -31,7 +31,7 @@ Display( compiled_func );
 #!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
 #!            ), cat_1, Source( test_mor_1 ), 
 #!        ObjectifyObjectForCAPWithAttributes( rec(
-#!              ), cat_1, Dimension, NrColumns( morphism_attr_1_1 ) ), 
+#!              ), cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), 
 #!        UnderlyingMatrix, morphism_attr_1_1 );
 #! end
 

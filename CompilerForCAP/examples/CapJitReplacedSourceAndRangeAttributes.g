@@ -8,9 +8,9 @@ LoadPackage( "LinearAlgebraForCAP" );
 #! true
 
 func := { cat, matrix } -> [
-    VectorSpaceMorphism( cat, ObjectConstructor( cat, NrRows( matrix ) ),
+    VectorSpaceMorphism( cat, ObjectConstructor( cat, NumberRows( matrix ) ),
         matrix, ObjectConstructor( cat, NrCols( matrix ) ) ),
-    VectorSpaceMorphism( cat, ObjectConstructor( cat, NrRows( matrix ) ),
+    VectorSpaceMorphism( cat, ObjectConstructor( cat, NumberRows( matrix ) ),
         matrix, ObjectConstructor( cat, NrCols( matrix ) ) ),
 ];;
 
@@ -25,15 +25,15 @@ Display( CapJitCompiledFunction( func, [ cat ] ) );
 #!     morphism_attr_1_1 := matrix_1;
 #!     return [ ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
 #!                ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-#!                  ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), 
+#!                  ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), 
 #!            ObjectifyObjectForCAPWithAttributes( rec(
-#!                  ), cat_1, Dimension, NrColumns( morphism_attr_1_1 ) ), 
+#!                  ), cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), 
 #!            UnderlyingMatrix, morphism_attr_1_1 ), 
 #!         ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
 #!                ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-#!                  ), cat_1, Dimension, NrRows( morphism_attr_2_1 ) ), 
+#!                  ), cat_1, Dimension, NumberRows( morphism_attr_2_1 ) ), 
 #!            ObjectifyObjectForCAPWithAttributes( rec(
-#!                  ), cat_1, Dimension, NrColumns( morphism_attr_2_1 ) ), 
+#!                  ), cat_1, Dimension, NumberColumns( morphism_attr_2_1 ) ), 
 #!            UnderlyingMatrix, morphism_attr_2_1 ) ];
 #! end
 

@@ -4,7 +4,7 @@
 # Implementations
 #
 InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_constructor, given_arguments, package_name, compiled_category_name )
-  local cat1, cat2, cat, operations, diff, output_string, package_info, parameters_string, current_string, compiled_tree, compiled_func, function_string, weight, IsPrecompiledDerivation_string, function_name, current_rec;
+  local cat1, cat2, cat, operations, diff, source_attribute_getter_name, range_attribute_getter_name, output_string, package_info, parameters_string, current_string, compiled_tree, compiled_func, function_string, weight, IsPrecompiledDerivation_string, function_name, current_rec;
     
     if IsOperation( category_constructor ) or IsKernelFunction( category_constructor ) then
         
@@ -69,6 +69,26 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
         
         # COVERAGE_IGNORE_NEXT_LINE
         Error( "The following operations you want to have compiled are not computable in the given category: ", diff );
+        
+    fi;
+    
+    if IsBound( cat!.compiler_hints ) and IsBound( cat!.compiler_hints.source_and_range_attributes_from_morphism_attribute ) then
+        
+        source_attribute_getter_name := cat!.compiler_hints.source_and_range_attributes_from_morphism_attribute.source_attribute_getter_name;
+        
+        if source_attribute_getter_name <> NameFunction( ValueGlobal( source_attribute_getter_name ) ) then
+            
+            Display( Concatenation( "WARNING: the source_attribute_getter_name ", source_attribute_getter_name, " is not equal to its canonical name ", NameFunction( ValueGlobal( source_attribute_getter_name ) ), ". This might cause errors." ) );
+            
+        fi;
+        
+        range_attribute_getter_name := cat!.compiler_hints.source_and_range_attributes_from_morphism_attribute.range_attribute_getter_name;
+        
+        if range_attribute_getter_name <> NameFunction( ValueGlobal( range_attribute_getter_name ) ) then
+            
+            Display( Concatenation( "WARNING: the range_attribute_getter_name ", range_attribute_getter_name, " is not equal to its canonical name ", NameFunction( ValueGlobal( range_attribute_getter_name ) ), ". This might cause errors." ) );
+            
+        fi;
         
     fi;
     

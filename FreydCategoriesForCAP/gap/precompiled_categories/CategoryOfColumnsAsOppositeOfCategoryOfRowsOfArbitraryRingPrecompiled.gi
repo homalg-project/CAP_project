@@ -124,7 +124,7 @@ function ( cat_1, a_1, b_1 )
     morphism_attr_1_1 := ReducedSyzygiesOfRows( UnderlyingMatrix( a_1 ), UnderlyingMatrix( b_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Range( a_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, RankOfObject, NrRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+             ), cat_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -281,8 +281,8 @@ function ( cat_1, arg2_1 )
              ), deduped_3_1, Opposite, ObjectifyObjectForCAPWithAttributes( rec(
                ), deduped_2_1, RankOfObject, RankOfObject( Range( arg2_1 ) ) ) ), Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
              ), deduped_2_1, ObjectifyObjectForCAPWithAttributes( rec(
-               ), deduped_2_1, RankOfObject, NrRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-               ), deduped_2_1, RankOfObject, NrColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) );
+               ), deduped_2_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+               ), deduped_2_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 ) );
 end
 ########
         
@@ -336,7 +336,7 @@ function ( cat_1, a_1, b_1 )
     morphism_attr_1_1 := ReducedSyzygiesOfColumns( UnderlyingMatrix( a_1 ), UnderlyingMatrix( b_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, RankOfObject, NrColumns( morphism_attr_1_1 ) ), Source( a_1 ), UnderlyingMatrix, morphism_attr_1_1 );
+             ), cat_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), Source( a_1 ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -351,7 +351,7 @@ function ( cat_1, mor_1, n_1 )
     morphism_attr_1_1 := SimplifyHomalgMatrixByLeftMultiplicationWithInvertibleMatrix( UnderlyingMatrix( mor_1 ) )[1];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Source( mor_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, RankOfObject, NrRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+             ), cat_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -366,7 +366,7 @@ function ( cat_1, mor_1, n_1 )
     morphism_attr_1_1 := SimplifyHomalgMatrixByLeftMultiplicationWithInvertibleMatrix( UnderlyingMatrix( mor_1 ) )[2];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Range( mor_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, RankOfObject, NrRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+             ), cat_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -381,7 +381,7 @@ function ( cat_1, mor_1, n_1 )
     morphism_attr_1_1 := SimplifyHomalgMatrixByLeftMultiplicationWithInvertibleMatrix( UnderlyingMatrix( mor_1 ) )[3];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, RankOfObject, NrColumns( morphism_attr_1_1 ) ), Range( mor_1 ), UnderlyingMatrix, morphism_attr_1_1 );
+             ), cat_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), Range( mor_1 ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -396,7 +396,7 @@ function ( cat_1, mor_1, n_1 )
     morphism_attr_1_1 := SimplifyHomalgMatrixByRightMultiplicationWithInvertibleMatrix( UnderlyingMatrix( mor_1 ) )[1];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, RankOfObject, NrColumns( morphism_attr_1_1 ) ), Range( mor_1 ), UnderlyingMatrix, morphism_attr_1_1 );
+             ), cat_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), Range( mor_1 ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -411,8 +411,8 @@ function ( cat_1, mor_1, n_1 )
     morphism_attr_1_1 := SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices( UnderlyingMatrix( mor_1 ) )[1];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, RankOfObject, NrColumns( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, RankOfObject, NrRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+             ), cat_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), ObjectifyObjectForCAPWithAttributes( rec(
+             ), cat_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -427,7 +427,7 @@ function ( cat_1, mor_1, n_1 )
     morphism_attr_1_1 := SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices( UnderlyingMatrix( mor_1 ) )[2];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Range( mor_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, RankOfObject, NrRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+             ), cat_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -442,7 +442,7 @@ function ( cat_1, mor_1, n_1 )
     morphism_attr_1_1 := SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices( UnderlyingMatrix( mor_1 ) )[5];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Source( mor_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, RankOfObject, NrRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+             ), cat_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -457,7 +457,7 @@ function ( cat_1, mor_1, n_1 )
     morphism_attr_1_1 := SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices( UnderlyingMatrix( mor_1 ) )[4];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, RankOfObject, NrColumns( morphism_attr_1_1 ) ), Range( mor_1 ), UnderlyingMatrix, morphism_attr_1_1 );
+             ), cat_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), Range( mor_1 ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -472,7 +472,7 @@ function ( cat_1, mor_1, n_1 )
     morphism_attr_1_1 := SimplifyHomalgMatrixByLeftAndRightMultiplicationWithInvertibleMatrices( UnderlyingMatrix( mor_1 ) )[3];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, RankOfObject, NrColumns( morphism_attr_1_1 ) ), Source( mor_1 ), UnderlyingMatrix, morphism_attr_1_1 );
+             ), cat_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), Source( mor_1 ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -487,7 +487,7 @@ function ( cat_1, mor_1, n_1 )
     morphism_attr_1_1 := SimplifyHomalgMatrixByRightMultiplicationWithInvertibleMatrix( UnderlyingMatrix( mor_1 ) )[3];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Source( mor_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, RankOfObject, NrRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+             ), cat_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -502,7 +502,7 @@ function ( cat_1, mor_1, n_1 )
     morphism_attr_1_1 := SimplifyHomalgMatrixByRightMultiplicationWithInvertibleMatrix( UnderlyingMatrix( mor_1 ) )[2];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, RankOfObject, NrColumns( morphism_attr_1_1 ) ), Source( mor_1 ), UnderlyingMatrix, morphism_attr_1_1 );
+             ), cat_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), Source( mor_1 ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -602,7 +602,7 @@ function ( cat_1, alpha_1 )
     morphism_attr_1_1 := ReducedSyzygiesOfRows( UnderlyingMatrix( alpha_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Range( alpha_1 ), ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, RankOfObject, NrRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
+             ), cat_1, RankOfObject, NumberRows( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -617,7 +617,7 @@ function ( cat_1, alpha_1 )
     morphism_attr_1_1 := ReducedSyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, RankOfObject, NrColumns( morphism_attr_1_1 ) ), Source( alpha_1 ), UnderlyingMatrix, morphism_attr_1_1 );
+             ), cat_1, RankOfObject, NumberColumns( morphism_attr_1_1 ) ), Source( alpha_1 ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
