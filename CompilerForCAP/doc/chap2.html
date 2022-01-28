@@ -372,10 +372,10 @@
 
 <h5>2.4-6 CapJitContainsRefToFVAROutsideOfFuncStack</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitContainsRefToFVAROutsideOfFuncStack</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitContainsRefToFVAROutsideOfFuncStack</code>( <var class="Arg">tree</var>, <var class="Arg">initial_func_id_stack</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
 
-<p>Checks if <var class="Arg">tree</var> contains an FVAR which references a function outside of its function stack. Such a tree is not well-defined.</p>
+<p>Checks if <var class="Arg">tree</var> (with function ID stack <var class="Arg">initial_func_id_stack</var>) contains an FVAR which references a function outside of its function stack. Such a tree is not well-defined.</p>
 
 <p><a id="X8195576380113ACF" name="X8195576380113ACF"></a></p>
 
@@ -652,10 +652,10 @@
 
 <h5>2.5-15 CapJitAppliedLogicTemplates</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitAppliedLogicTemplates</code>( <var class="Arg">tree</var>, <var class="Arg">jit_args</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitAppliedLogicTemplates</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
 
-<p>Applies all logic templates (see <code class="func">CapJitAddLogicTemplate</code> (<a href="chap2.html#X8592DC367A493530"><span class="RefLink">2.1-2</span></a>)) to <var class="Arg">tree</var>. The arguments <var class="Arg">jit_args</var> are used to infer the types of variables.</p>
+<p>Applies all logic templates (see <code class="func">CapJitAddLogicTemplate</code> (<a href="chap2.html#X8592DC367A493530"><span class="RefLink">2.1-2</span></a>)) to <var class="Arg">tree</var>.</p>
 
 <p><a id="X7FD883BA85F7EBE5" name="X7FD883BA85F7EBE5"></a></p>
 

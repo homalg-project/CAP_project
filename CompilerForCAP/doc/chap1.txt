@@ -114,8 +114,7 @@
   
   [1X1.3 [33X[0;0YRequirements[133X[101X
   
-  [33X[0;0YThere  are  three  main  requirements  for  the  steps described above to be
-  correct:[133X
+  [33X[0;0YThere are two main requirements for the steps described above to be correct:[133X
   
   [30X    [33X[0;6YThe  code must not depend on side effects (otherwise dropping "unused"
         variables or inlining variables could change results).[133X
@@ -127,10 +126,6 @@
         [10XCAP_JIT_RESOLVE_FUNCTION[110X. In particular, the CAP categories of objects
         and  morphisms  appearing  during the execution must be independent of
         the JIT arguments.[133X
-  
-  [30X    [33X[0;6YAll  results  of  applications  of  filters in logic templates must be
-        independent  of  the  JIT  arguments. Thus, be careful when adding new
-        logic templates.[133X
   
   [33X[0;0YThere are also additional strong requirements:[133X
   

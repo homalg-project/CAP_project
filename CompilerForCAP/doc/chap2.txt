@@ -349,11 +349,12 @@
   
   [1X2.4-6 CapJitContainsRefToFVAROutsideOfFuncStack[101X
   
-  [33X[1;0Y[29X[2XCapJitContainsRefToFVAROutsideOfFuncStack[102X( [3Xtree[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XCapJitContainsRefToFVAROutsideOfFuncStack[102X( [3Xtree[103X, [3Xinitial_func_id_stack[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
-  [33X[0;0YChecks  if  [3Xtree[103X contains an FVAR which references a function outside of its
-  function stack. Such a tree is not well-defined.[133X
+  [33X[0;0YChecks  if  [3Xtree[103X  (with function ID stack [3Xinitial_func_id_stack[103X) contains an
+  FVAR  which references a function outside of its function stack. Such a tree
+  is not well-defined.[133X
   
   [1X2.4-7 CapJitGetOrCreateGlobalVariable[101X
   
@@ -617,11 +618,10 @@
   
   [1X2.5-15 CapJitAppliedLogicTemplates[101X
   
-  [33X[1;0Y[29X[2XCapJitAppliedLogicTemplates[102X( [3Xtree[103X, [3Xjit_args[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XCapJitAppliedLogicTemplates[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
-  [33X[0;0YApplies  all  logic  templates (see [2XCapJitAddLogicTemplate[102X ([14X2.1-2[114X)) to [3Xtree[103X.
-  The arguments [3Xjit_args[103X are used to infer the types of variables.[133X
+  [33X[0;0YApplies all logic templates (see [2XCapJitAddLogicTemplate[102X ([14X2.1-2[114X)) to [3Xtree[103X.[133X
   
   [1X2.5-16 CapJitResolvedGlobalVariables[101X
   

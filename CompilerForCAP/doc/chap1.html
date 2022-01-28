@@ -153,7 +153,7 @@
 
 <h4>1.3 <span class="Heading">Requirements</span></h4>
 
-<p>There are three main requirements for the steps described above to be correct:</p>
+<p>There are two main requirements for the steps described above to be correct:</p>
 
 
 <ul>
@@ -161,9 +161,6 @@
 
 </li>
 <li><p>The methods selected for the operations during the resolving phase must be independent of the JIT arguments, that is, they must yield correct results for all allowed arguments of the function to be compiled. Thus, be careful which methods you annotate with <code class="code">CAP_JIT_RESOLVE_FUNCTION</code>. In particular, the CAP categories of objects and morphisms appearing during the execution must be independent of the JIT arguments.</p>
-
-</li>
-<li><p>All results of applications of filters in logic templates must be independent of the JIT arguments. Thus, be careful when adding new logic templates.</p>
 
 </li>
 </ul>

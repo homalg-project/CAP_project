@@ -403,7 +403,7 @@ function ( cat_1, morphism_1 )
     morphism_attr_1_1 := SyzygiesOfRows( UnderlyingMatrix( morphism_1 ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), 
+             ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), 
        Source( morphism_1 ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 </pre></div>
@@ -519,9 +519,9 @@ function ( cat_1, morphism_list_1 )
         end );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), 
+             ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), 
        ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( morphism_attr_1_1 ) ), 
+             ), cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), 
        UnderlyingMatrix, morphism_attr_1_1 );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># Iterated with list</span>
@@ -565,7 +565,7 @@ function ( cat_1, mor_1, test_mor_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Source( test_mor_1 ), 
        ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NrColumns( morphism_attr_1_1 ) ), 
+             ), cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), 
        UnderlyingMatrix, morphism_attr_1_1 );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func1 := function( x )</span>
@@ -1217,9 +1217,9 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := { cat, matrix } -&gt; [</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    VectorSpaceMorphism( cat, ObjectConstructor( cat, NrRows( matrix ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    VectorSpaceMorphism( cat, ObjectConstructor( cat, NumberRows( matrix ) ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        matrix, ObjectConstructor( cat, NrCols( matrix ) ) ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    VectorSpaceMorphism( cat, ObjectConstructor( cat, NrRows( matrix ) ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    VectorSpaceMorphism( cat, ObjectConstructor( cat, NumberRows( matrix ) ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        matrix, ObjectConstructor( cat, NrCols( matrix ) ) ),</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
@@ -1231,15 +1231,15 @@ function ( cat_1, matrix_1 )
     morphism_attr_1_1 := matrix_1;
     return [ ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-                 ), cat_1, Dimension, NrRows( morphism_attr_1_1 ) ), 
+                 ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), 
            ObjectifyObjectForCAPWithAttributes( rec(
-                 ), cat_1, Dimension, NrColumns( morphism_attr_1_1 ) ), 
+                 ), cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), 
            UnderlyingMatrix, morphism_attr_1_1 ), 
         ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
                ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-                 ), cat_1, Dimension, NrRows( morphism_attr_2_1 ) ), 
+                 ), cat_1, Dimension, NumberRows( morphism_attr_2_1 ) ), 
            ObjectifyObjectForCAPWithAttributes( rec(
-                 ), cat_1, Dimension, NrColumns( morphism_attr_2_1 ) ), 
+                 ), cat_1, Dimension, NumberColumns( morphism_attr_2_1 ) ), 
            UnderlyingMatrix, morphism_attr_2_1 ) ];
 end
 </pre></div>
@@ -1477,13 +1477,16 @@ end
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">applied_logic_template_to_func :=</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    { func, template, jit_args } -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    { func, template } -&gt;</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        ENHANCED_SYNTAX_TREE_CODE(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                ENHANCED_SYNTAX_TREE( func ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                template,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                jit_args</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                CapJitInferredDataTypes(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                    ENHANCED_SYNTAX_TREE( func )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                ),</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">                template</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">            )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># some general example</span>
@@ -1495,7 +1498,7 @@ end
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( a )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return b -&gt; b + ( 2 * b + a ) + b - b; end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template, [ ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template ) );</span>
 function ( a_1 )
     return function ( b_2 )
           return b_2 + (2 * b_2 + a_1) + 0;
@@ -1510,7 +1513,7 @@ end
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    dst_template := "return x -&gt; x + variable + 0@",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    returns_value := false,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">)""", "@", ";" ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template, [ ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template ) );</span>
 function ( a_1 )
     return function ( b_2 )
           return b_2 + (2 * b_2 + a_1) + 0;
@@ -1525,45 +1528,37 @@ end
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    returns_value := true,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    needed_packages := [ [ "NON_EXISTING_PACKAGE", "&gt;= 9999" ] ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( x -&gt; x, template, [ ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( x -&gt; x, template ) );</span>
 function ( x_1 )
     return x_1;
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that functions in variables can match</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># and test jit_args (strings and filters)</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># and test variable_filters (strings and filters)</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">template := rec(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    variable_names := [ "L1", "L2", "func" ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    variable_filters := [ "IsList", IsList, IsFunction ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    src_template := "Concatenation( List( L1, func ), List( L2, func ) )",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    dst_template := "List( Concatenation( L1, L2 ), func )",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    src_template := "Concatenation( [ List( L1, func ), List( L2, func ) ] )",</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    dst_template := "List( Concatenation( [ L1, L2 ] ), func )",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    returns_value := true,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( L1, L2 )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return Concatenation( List( L1, x -&gt; x ), List( L2, x -&gt; x ) ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template, [ [ ], [ ] ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := { L1, L2 } -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Concatenation( [ List( [ 1 ], x -&gt; x ), List( [ 1 ], x -&gt; x ) ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template ) );</span>
 function ( L1_1, L2_1 )
-    return List( Concatenation( L1_1, L2_1 ), function ( x_2 )
+    return List( Concatenation( [ [ 1 ], [ 1 ] ] ), function ( x_2 )
             return x_2;
         end );
 end
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that template is not executed if variable filters but not enough</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># jit_args are given</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">template := rec(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    variable_names := [ "L1", "L2", "func" ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    variable_filters := [ "IsList", IsList, IsFunction ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    src_template := "Concatenation( List( L1, func ), List( L2, func ) )",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    dst_template := "List( Concatenation( L1, L2 ), func )",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    returns_value := true,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( L1, L2 )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return Concatenation( List( L1, x -&gt; x ), List( L2, x -&gt; x ) ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template, [ ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that template is not executed if data types cannot be determined</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">func := { L1, L2 } -&gt;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Concatenation( [ List( L1, x -&gt; x ), List( L2, x -&gt; x ) ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template ) );</span>
 function ( L1_1, L2_1 )
-    return Concatenation( List( L1_1, function ( x_2 )
+    return Concatenation( [ List( L1_1, function ( x_2 )
               return x_2;
           end ), List( L2_1, function ( x_2 )
               return x_2;
-          end ) );
+          end ) ] );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that template is only applied if filters match</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">template := rec(</span>
@@ -1573,33 +1568,15 @@ end
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    dst_template := "value",</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    returns_value := true,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := { x } -&gt; Sum( [ x ] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template, [ 1/2 ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := { x } -&gt; Sum( [ "a" ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template ) );</span>
 function ( x_1 )
-    return Sum( [ x_1 ] );
+    return Sum( [ "a" ] );
 end
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template, [ 1 ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := { x } -&gt; Sum( [ 1 ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template ) );</span>
 function ( x_1 )
-    return x_1;
-end
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that template is skipped if values cannot be determined from jit_args</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">template := EvalString( ReplacedString( """rec(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    variable_names := [ "value1", "value2" ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    variable_filters := [ IsInt, IsObject ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    src_template := "if 1 &lt;&gt; 1 then return value1@ else return value2@ fi@",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    dst_template := "return value2@",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    returns_value := false,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">)""", "@", ";" ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    if 1 &lt;&gt; 1 then return 1; else return 1; fi; end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template, [ ] ) );</span>
-function (  )
-    if 1 &lt;&gt; 1 then
-        return 1;
-    else
-        return 1;
-    fi;
-    return;
+    return 1;
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that functions can be used multiple times in dst_template</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput"># add a nonsense template</span>
@@ -1611,7 +1588,7 @@ end
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( list )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return List( list, x -&gt; x ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template, [ ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template ) );</span>
 function ( list_1 )
     return Sum( list_1, function ( x_2 )
               return x_2;
@@ -1621,7 +1598,7 @@ function ( list_1 )
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( list )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return List( list, x -&gt; (y -&gt; y) ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template, [ ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template ) );</span>
 function ( list_1 )
     return Sum( list_1, function ( x_2 )
               return function ( y_3 )
@@ -1644,7 +1621,7 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( x )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return List( [ 1 ], function ( y )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        local r; r := x; return r; end ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template, [ ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template ) );</span>
 function ( x_1 )
     return List( [ 1 ], function ( y_2 )
             local r_2;
@@ -1661,14 +1638,14 @@ end
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    returns_value := true,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := L -&gt; List( L, l -&gt; l * l );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template, [ ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template ) );</span>
 function ( L_1 )
     return List( L_1, function ( l_2 )
             return l_2 * l_2;
         end );
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := L -&gt; List( L, l -&gt; 2 * l );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template, [ ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( applied_logic_template_to_func( func, template ) );</span>
 function ( L_1 )
     return 2 * List( L_1, function ( l_2 )
               return l_2;
