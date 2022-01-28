@@ -24,10 +24,11 @@ DeclareGlobalFunction( "CapJitIsCallToGlobalFunction" );
 DeclareGlobalFunction( "CapJitResultFuncCombineChildren" );
 
 #! @Description
-#!  Checks if <A>tree</A> contains an FVAR which references a function outside of its function stack.
+#!  Checks if <A>tree</A> (with function ID stack <A>initial_func_id_stack</A>) contains
+#!  an FVAR which references a function outside of its function stack.
 #!  Such a tree is not well-defined.
 #! @Returns a boolean
-#! @Arguments tree
+#! @Arguments tree, initial_func_id_stack
 DeclareGlobalFunction( "CapJitContainsRefToFVAROutsideOfFuncStack" );
 
 #! @Description

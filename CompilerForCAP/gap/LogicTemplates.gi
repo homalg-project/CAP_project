@@ -645,9 +645,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree )
 end );
 
 InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree, template )
-  local matching_info, condition_func, path, match, new_tree, parent, variables, func_id_replacements, pre_func, dst_tree, i;
-    
-    tree := StructuralCopy( tree );
+  local pre_func, additional_arguments_func;
     
     if IsBound( template.needed_packages ) then
         
@@ -666,187 +664,132 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
         
     fi;
     
-    while true do
+    if IsBound( template.debug ) and template.debug then
         
-        if IsBound( template.debug ) and template.debug then
-            
-            # COVERAGE_IGNORE_BLOCK_START
-            Display( "try to match template:" );
-            Display( template.src_template );
-            # COVERAGE_IGNORE_BLOCK_END
-            
-        fi;
+        # COVERAGE_IGNORE_BLOCK_START
+        Display( "try to match template:" );
+        Display( template.src_template );
+        # COVERAGE_IGNORE_BLOCK_END
         
-        # will be modified inplace
-        matching_info := fail;
+    fi;
+    
+    pre_func := function ( tree, additional_arguments )
+      local path, func_id_stack, matching_info, debug, variables, func_id_replacements, pre_func, dst_tree;
         
-        condition_func := function ( tree, path )
-            
-            # check if we know that the template does not match
-            if IsBound( tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE ) and tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE then
-                
-                return false;
-                
-            fi;
-            
-            # check if we already have a match
-            if matching_info <> fail then
-                
-                return false;
-                
-            fi;
+        path := additional_arguments[1];
+        func_id_stack := additional_arguments[2];
+        
+        while true do
             
             matching_info := CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree, template.src_template_tree, template.variable_filters : debug := IsBound( template.debug_path ) and template.debug_path = path );
             
             if matching_info = fail then
                 
-                tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
+                return tree;
                 
             fi;
-            
-            return matching_info <> fail;
-            
-        end;
-        
-        path := CapJitFindNodeDeep( tree, condition_func );
-        
-        if path = fail then
-            
-            Assert( 0, matching_info = fail );
             
             if IsBound( template.debug ) and template.debug then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Display( "could not find a match" );
+                Error( "found match" );
                 
             fi;
             
-            # no further occurrences -> done
-            break;
+            variables := matching_info.variables;
+            func_id_replacements := matching_info.func_id_replacements;
             
-        fi;
-        
-        if IsBound( template.debug ) and template.debug then
-            
-            # COVERAGE_IGNORE_NEXT_LINE
-            Error( "found match" );
-            
-        fi;
-        
-        # not handled yet
-        Assert( 0, Length( path ) >= 1 );
-        
-        match := CapJitGetNodeByPath( tree, path );
-        
-        new_tree := StructuralCopy( tree );
-        
-        parent := CapJitGetNodeByPath( new_tree, path{[ 1 .. Length( path ) - 1 ]} );
-        
-        variables := matching_info.variables;
-        func_id_replacements := matching_info.func_id_replacements;
-        
-        if not IsDenseList( variables ) or Length( variables ) <> Length( template.variable_names ) then
-            
-            # COVERAGE_IGNORE_NEXT_LINE
-            Error( "matched wrong number of variables" );
-            
-        fi;
-        
-        if IsBound( match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE ) and match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE then
-            
-            if IsBound( template.debug ) and template.debug then
+            if not IsDenseList( variables ) or Length( variables ) <> Length( template.variable_names ) then
                 
                 # COVERAGE_IGNORE_NEXT_LINE
-                Error( "type check did not succeed" );
+                Error( "matched wrong number of variables" );
                 
             fi;
             
-            continue;
-            
-        fi;
-        
-        # adjust function IDs and insert variables in dst_template_tree
-        pre_func := function ( tree, additional_arguments )
-          local var_number, replacement;
-            
-            if tree.type = "EXPR_DECLARATIVE_FUNC" and IsBound( func_id_replacements[tree.id] ) then
+            # adjust function IDs and insert variables in dst_template_tree
+            pre_func := function ( tree, additional_arguments )
+              local var_number, replacement;
                 
-                replacement := func_id_replacements[tree.id];
+                if tree.type = "EXPR_DECLARATIVE_FUNC" and IsBound( func_id_replacements[tree.id] ) then
+                    
+                    replacement := func_id_replacements[tree.id];
+                    
+                    return CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( tree, replacement.func_id, replacement.nams );
+                    
+                fi;
                 
-                return CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( tree, replacement.func_id, replacement.nams );
+                if tree.type = "EXPR_REF_GVAR" and StartsWith( tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_" ) then
+                    
+                    var_number := Int( ReplacedString( tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_", "" ) );
+                    
+                    Assert( 0, var_number <> fail );
+                    
+                    # new function IDs will be set below
+                    return StructuralCopy( variables[var_number].tree );
+                    
+                fi;
                 
-            fi;
+                return tree;
+                
+            end;
             
-            if tree.type = "EXPR_REF_GVAR" and StartsWith( tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_" ) then
-                
-                var_number := Int( ReplacedString( tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_", "" ) );
-                
-                Assert( 0, var_number <> fail );
-                
-                # new function IDs will be set below
-                return StructuralCopy( variables[var_number].tree );
-                
-            fi;
+            dst_tree := CapJitIterateOverTree( template.dst_template_tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
             
-            return tree;
+            # make sure we have new function IDs
+            dst_tree := CapJitCopyWithNewFunctionIDs( dst_tree );
             
-        end;
-        
-        dst_tree := CapJitIterateOverTree( template.dst_template_tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
-        
-        # make sure we have new function IDs
-        dst_tree := CapJitCopyWithNewFunctionIDs( dst_tree );
-        
-        parent.(Last( path )) := dst_tree;
-        
-        # if new_tree is well-defined, take it
-        if not CapJitContainsRefToFVAROutsideOfFuncStack( new_tree ) then
-            
-            if IsBound( template.debug ) and template.debug then
+            # if new_tree is well-defined, take it
+            if not CapJitContainsRefToFVAROutsideOfFuncStack( dst_tree, func_id_stack ) then
                 
-                # COVERAGE_IGNORE_NEXT_LINE
-                Error( "success, new_tree is well-defined" );
+                if IsBound( template.debug ) and template.debug then
+                    
+                    # COVERAGE_IGNORE_NEXT_LINE
+                    Error( "success, dst_tree is well-defined" );
+                    
+                fi;
                 
-            fi;
-            
-            tree := new_tree;
-            
-            Info( InfoCapJit, 1, "####" );
-            Info( InfoCapJit, 1, "Applied the following template:" );
-            Info( InfoCapJit, 1, template.src_template );
-            Info( InfoCapJit, 1, template.dst_template );
-            
-        else
-            
-            if IsBound( template.debug ) and template.debug then
+                tree := dst_tree;
                 
-                # COVERAGE_IGNORE_NEXT_LINE
-                Error( "new_tree is not well-defined" );
+                Info( InfoCapJit, 1, "####" );
+                Info( InfoCapJit, 1, "Applied the following template:" );
+                Info( InfoCapJit, 1, template.src_template );
+                Info( InfoCapJit, 1, template.dst_template );
+                
+            else
+                
+                if IsBound( template.debug ) and template.debug then
+                    
+                    # COVERAGE_IGNORE_NEXT_LINE
+                    Error( "dst_tree is not well-defined" );
+                    
+                fi;
+                
+                return tree;
                 
             fi;
             
-            match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
-            
-        fi;
-        
-    od;
-    
-    # reset CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE
-    pre_func := function ( tree, additional_arguments )
-      local level, pos;
-        
-        if IsBound( tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE ) then
-            
-            Unbind( tree.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE );
-            
-        fi;
-        
-        return tree;
+        od;
         
     end;
     
-    CapJitIterateOverTree( tree, pre_func, ReturnTrue, ReturnTrue, true );
+    additional_arguments_func := function ( tree, key, additional_arguments )
+      local path, func_id_stack;
+        
+        path := additional_arguments[1];
+        func_id_stack := additional_arguments[2];
+        
+        path := Concatenation( path, [ key ] );
+        
+        if tree.type = "EXPR_DECLARATIVE_FUNC" then
+            
+            func_id_stack := Concatenation( func_id_stack, [ tree.id ] );
+            
+        fi;
+        
+        return [ path, func_id_stack ];
+        
+    end;
     
-    return tree;
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [ [ ], [ ] ] );
     
 end );

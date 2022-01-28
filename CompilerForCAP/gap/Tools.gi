@@ -57,7 +57,7 @@ InstallGlobalFunction( CapJitResultFuncCombineChildren, function ( tree, result,
     
 end );
 
-InstallGlobalFunction( CapJitContainsRefToFVAROutsideOfFuncStack, function ( tree )
+InstallGlobalFunction( CapJitContainsRefToFVAROutsideOfFuncStack, function ( tree, initial_func_id_stack )
   local result_func, additional_arguments_func;
     
     result_func := function ( tree, result, keys, func_id_stack )
@@ -93,7 +93,7 @@ InstallGlobalFunction( CapJitContainsRefToFVAROutsideOfFuncStack, function ( tre
         
     end;
     
-    return CapJitIterateOverTree( tree, ReturnFirst, result_func, additional_arguments_func, [ ] );
+    return CapJitIterateOverTree( tree, ReturnFirst, result_func, additional_arguments_func, initial_func_id_stack );
     
 end );
 
