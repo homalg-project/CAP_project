@@ -34,7 +34,7 @@ InstallGlobalFunction( CapJitAppliedLogic, function ( tree, jit_args )
         
     od;
     
-    tree := CapJitAppliedLogicTemplates( tree, jit_args );
+    tree := CapJitAppliedLogicTemplates( tree );
     
     return tree;
     

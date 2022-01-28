@@ -621,7 +621,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
     
 end );
 
-InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args )
+InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree )
   local template;
     
     Info( InfoCapJit, 1, "####" );
@@ -629,7 +629,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args )
     
     for template in CAP_JIT_LOGIC_TEMPLATES do
         
-        tree := CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE( tree, template, jit_args );
+        tree := CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE( tree, template );
         
     od;
     
@@ -637,8 +637,8 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree, jit_args )
     
 end );
 
-InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree, template, jit_args )
-  local matching_info, condition_func, path, match, new_tree, parent, variables, func_id_replacements, variable_path, filter, result, value, pre_func, dst_tree, i;
+InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree, template )
+  local matching_info, condition_func, path, match, new_tree, parent, variables, func_id_replacements, variable_tree, filter, pre_func, dst_tree, i;
     
     tree := StructuralCopy( tree );
     
@@ -748,7 +748,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
         # type check
         for i in [ 1 .. Length( template.variable_names ) ] do
             
-            variable_path := Concatenation( path, variables[i].path );
             filter := template.variable_filters[i];
             
             if IsIdenticalObj( filter, IsObject ) then
@@ -757,50 +756,24 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
                 
             fi;
             
-            value := CapJitGetNodeByPath( tree, variable_path );
+            variable_tree := variables[i].tree;
             
-            if IsBound( value.data_type ) then
+            if not IsBound( variable_tree.data_type ) then
                 
-                if not IsSpecializationOfFilter( filter, value.data_type.filter ) then
-                    
-                    match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
-                    
-                    break;
-                    
-                fi;
+                Info( InfoCapJit, 1, "####" );
+                Info( InfoCapJit, 1, "Could not determine data_type of variable." );
                 
-            else
+                match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
                 
-                if Length( jit_args ) <> tree.narg or tree.variadic then
-                    
-                    Info( InfoCapJit, 1, "####" );
-                    Info( InfoCapJit, 1, "Logic template has variable filters but we are executing without jit args (or function is variadic)." );
-                    
-                    match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
-                    
-                    break;
-                    
-                fi;
+                break;
                 
-                result := CapJitGetExpressionValueFromJitArgs( tree, variable_path, jit_args );
+            fi;
+            
+            if not IsSpecializationOfFilter( filter, variable_tree.data_type.filter ) then
                 
-                if result[1] = false then
-                    
-                    match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
-                    
-                    break;
-                    
-                fi;
+                match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
                 
-                value := result[2];
-                
-                if not filter( value ) then
-                    
-                    match.CAP_INTERNAL_JIT_DOES_NOT_MATCH_TEMPLATE := true;
-                    
-                    break;
-                    
-                fi;
+                break;
                 
             fi;
             

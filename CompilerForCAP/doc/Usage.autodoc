@@ -60,14 +60,12 @@ For all details, see the list of compilations steps in <Ref Sect="Section_Compil
 
 @Section Requirements
 
-There are three main requirements for the steps described above to be correct:
+There are two main requirements for the steps described above to be correct:
 * The code must not depend on side effects (otherwise dropping "unused" variables or inlining variables could change results).
 * The methods selected for the operations during the resolving phase must be independent of the JIT arguments, that is,
   they must yield correct results for all allowed arguments of the function to be compiled. Thus, be careful which methods
   you annotate with `CAP_JIT_RESOLVE_FUNCTION`. In particular, the CAP categories of objects and morphisms appearing during the
   execution must be independent of the JIT arguments.
-* All results of applications of filters in logic templates must be independent of the JIT arguments.
-  Thus, be careful when adding new logic templates.
 
 There are also additional strong requirements:
 * Only assignments to local variables, if/elif/else statements, and return statements are allowed as statements in functions.
