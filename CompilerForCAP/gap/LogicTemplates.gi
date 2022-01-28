@@ -674,7 +674,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
     fi;
     
     pre_func := function ( tree, additional_arguments )
-      local path, func_id_stack, matching_info, debug, variables, func_id_replacements, pre_func, dst_tree;
+      local path, func_id_stack, matching_info, debug, variables, func_id_replacements, well_defined, pre_func, result_func, additional_arguments_func, dst_tree;
         
         path := additional_arguments[1];
         func_id_stack := additional_arguments[2];
@@ -713,9 +713,19 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
                 
             fi;
             
+            # will be modified inplace
+            well_defined := true;
+            
             # adjust function IDs and insert variables in dst_template_tree
-            pre_func := function ( tree, additional_arguments )
+            pre_func := function ( tree, func_id_stack )
               local var_number, replacement;
+                
+                if not well_defined then
+                    
+                    # abort iteration
+                    return fail;
+                    
+                fi;
                 
                 if tree.type = "EXPR_DECLARATIVE_FUNC" and IsBound( func_id_replacements[tree.id] ) then
                     
@@ -731,6 +741,16 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
                     
                     Assert( 0, var_number <> fail );
                     
+                    # check if the resulting tree would be well-defined
+                    if CapJitContainsRefToFVAROutsideOfFuncStack( variables[var_number].tree, func_id_stack ) then
+                        
+                        well_defined := false;
+                        
+                        # abort iteration
+                        return fail;
+                        
+                    fi;
+                    
                     # new function IDs will be set below
                     return StructuralCopy( variables[var_number].tree );
                     
@@ -740,13 +760,43 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
                 
             end;
             
-            dst_tree := CapJitIterateOverTree( template.dst_template_tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+            result_func := function ( tree, result, keys, func_id_stack )
+              local key;
+                
+                if not well_defined then
+                    
+                    return fail;
+                    
+                fi;
+                
+                tree := ShallowCopy( tree );
+                
+                for key in keys do
+                    
+                    tree.(key) := result.(key);
+                    
+                od;
+                
+                return tree;
+                
+            end;
             
-            # make sure we have new function IDs
-            dst_tree := CapJitCopyWithNewFunctionIDs( dst_tree );
+            additional_arguments_func := function ( tree, key, func_id_stack )
+                
+                if tree.type = "EXPR_DECLARATIVE_FUNC" then
+                    
+                    func_id_stack := Concatenation( func_id_stack, [ tree.id ] );
+                    
+                fi;
+                
+                return func_id_stack;
+                
+            end;
+            
+            dst_tree := CapJitIterateOverTree( template.dst_template_tree, pre_func, result_func, additional_arguments_func, func_id_stack );
             
             # if new_tree is well-defined, take it
-            if not CapJitContainsRefToFVAROutsideOfFuncStack( dst_tree, func_id_stack ) then
+            if well_defined then
                 
                 if IsBound( template.debug ) and template.debug then
                     
@@ -755,7 +805,8 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
                     
                 fi;
                 
-                tree := dst_tree;
+                # make sure we have new function IDs
+                tree := CapJitCopyWithNewFunctionIDs( dst_tree );
                 
                 Info( InfoCapJit, 1, "####" );
                 Info( InfoCapJit, 1, "Applied the following template:" );
