@@ -117,39 +117,14 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                 # COVERAGE_IGNORE_BLOCK_END
             fi;
             
-            if NumberArgumentsFunction( f ) = 1 then
-                
-                tree := f( tree );
-                
-            elif NumberArgumentsFunction( f ) = 2 then
-                
-                tree := f( tree, jit_args );
-                
-            else
-                
-                # COVERAGE_IGNORE_NEXT_LINE
-                Error( "this should never happen" );
-                
-            fi;
+            tree := f( tree );
             
             if debug_idempotence then
                 
                 # COVERAGE_IGNORE_BLOCK_START
                 tmp := StructuralCopy( tree );
                 
-                if NumberArgumentsFunction( f ) = 1 then
-                    
-                    tree := f( tree );
-                    
-                elif NumberArgumentsFunction( f ) = 2 then
-                    
-                    tree := f( tree, jit_args );
-                    
-                else
-                    
-                    Error( "this should never happen" );
-                    
-                fi;
+                tree := f( tree );
                 
                 if tmp <> tree then
                     
@@ -203,39 +178,14 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                 # COVERAGE_IGNORE_BLOCK_END
             fi;
             
-            if NumberArgumentsFunction( f ) = 1 then
-                
-                tree := f( tree );
-                
-            elif NumberArgumentsFunction( f ) = 2 then
-                
-                tree := f( tree, jit_args );
-                
-            else
-                
-                # COVERAGE_IGNORE_NEXT_LINE
-                Error( "this should never happen" );
-                
-            fi;
+            tree := f( tree );
             
             if debug_idempotence then
                 
                 # COVERAGE_IGNORE_BLOCK_START
                 tmp := StructuralCopy( tree );
                 
-                if NumberArgumentsFunction( f ) = 1 then
-                    
-                    tree := f( tree );
-                    
-                elif NumberArgumentsFunction( f ) = 2 then
-                    
-                    tree := f( tree, jit_args );
-                    
-                else
-                    
-                    Error( "this should never happen" );
-                    
-                fi;
+                tree := f( tree );
                 
                 if tmp <> tree then
                     
@@ -292,12 +242,6 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
         
         Display( compiled_func );
-        
-        if NumberArgumentsFunction( func ) = Length( jit_args ) then
-            
-            Assert( 0, CallFuncList( compiled_func, jit_args ) = CallFuncList( func, jit_args ) );
-            
-        fi;
         
         Error( "compilation finished" );
         # COVERAGE_IGNORE_BLOCK_END

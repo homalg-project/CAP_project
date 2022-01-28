@@ -3,7 +3,7 @@
 #
 # Implementations
 #
-CapJitAddLogicFunction( function( tree, jit_args )
+CapJitAddLogicFunction( function( tree )
   local pre_func, additional_arguments_func;
     
     Info( InfoCapJit, 1, "####" );

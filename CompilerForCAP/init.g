@@ -18,8 +18,6 @@ ReadPackage( "CompilerForCAP", "gap/InferDataTypes.gd" );
 
 ReadPackage( "CompilerForCAP", "gap/PrettyPrintSyntaxTree.gd" );
 
-ReadPackage( "CompilerForCAP", "gap/GetValuesFromJitArgs.gd" );
-
 ReadPackage( "CompilerForCAP", "gap/ResolveOperations.gd" );
 
 ReadPackage( "CompilerForCAP", "gap/InlineArguments.gd" );

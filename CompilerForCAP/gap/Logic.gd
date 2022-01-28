@@ -23,7 +23,7 @@ DeclareGlobalFunction( "CapJitAddLogicFunction" );
 #!   Applies all logic functions (see <Ref Func="CapJitAddLogicFunction" />) and logic templates
 #!   (see <Ref Func="CapJitAppliedLogicTemplates" />) to <A>tree</A>.
 #! @Returns a record
-#! @Arguments tree, jit_args
+#! @Arguments tree
 DeclareGlobalFunction( "CapJitAppliedLogic" );
 
 DeclareGlobalFunction( "CAP_JIT_INTERNAL_TELESCOPED_ITERATION" );

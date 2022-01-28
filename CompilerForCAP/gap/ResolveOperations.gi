@@ -3,7 +3,7 @@
 #
 # Implementations
 #
-InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
+InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
   local pre_func;
     
     pre_func := function ( tree, additional_arguments )
