@@ -295,22 +295,13 @@ CapJitAddLogicTemplate(
 # If L is a `Concatenation`, we cannot resolve the index on the left hand side, but we can push the function further down on the right hand side.
 # This causes some minor overhead if the index is fixed (e.g. for ProjectionInFactorOfDirectSum) because f is applied to the whole list
 # instead of only the element given by the index, but such examples are rare.
-# We only apply this if the object of which we take the index is given by a call to `List` or `List( List )` to make sure
-# we actually have a list (this can be changed once we have a proper type system).
 # Additionally, this should only trigger for homogeneous lists, i.e. `func` must be applicable to all elements of `L`.
 CapJitAddLogicTemplate(
     rec(
-        variable_names := [ "func1", "list", "func2", "index" ],
-        src_template := "func1( List( list, func2 )[index] )",
-        dst_template := "List( List( list, func2 ), func1 )[index]",
-        returns_value := true,
-    )
-);
-CapJitAddLogicTemplate(
-    rec(
-        variable_names := [ "listlist", "func1", "func2", "row", "index1", "index2" ],
-        src_template := "func1( List( listlist, x -> List( row, func2 ) )[index1][index2] )",
-        dst_template := "List( listlist, x -> List( List( row, func2 ), func1 ) )[index1][index2]",
+        variable_names := [ "list", "func", "index" ],
+        variable_filters := [ IsList, IsFunction, IsInt ],
+        src_template := "func( list[index] )",
+        dst_template := "List( list, func )[index]",
         returns_value := true,
     )
 );

@@ -93,9 +93,9 @@ function ( cat_1, arg2_1, arg3_1, arg4_1 )
     hoisted_3_1 := UnderlyingMatrix( arg4_1 );
     hoisted_2_1 := Concatenation( ListWithIdenticalEntries( deduped_9_1, ListWithIdenticalEntries( deduped_10_1, Length( GeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( cat_1 ) ) ) ) );
     hoisted_1_1 := deduped_10_1;
-    hoisted_5_1 := List( deduped_8_1, function ( i_2 )
+    hoisted_5_1 := List( deduped_8_1, function ( logic_new_func_x_2 )
             local hoisted_1_2;
-            hoisted_1_2 := hoisted_1_1 * (i_2 - 1);
+            hoisted_1_2 := hoisted_1_1 * (logic_new_func_x_2 - 1);
             return List( hoisted_4_1, function ( logic_new_func_x_3 )
                     local deduped_1_3, deduped_2_3;
                     deduped_2_3 := hoisted_1_2 + logic_new_func_x_3;
