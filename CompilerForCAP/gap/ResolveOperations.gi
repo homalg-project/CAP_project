@@ -194,90 +194,9 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree, jit_args )
             
         fi;
         
-    elif Length( jit_args ) = tree.narg and not tree.variadic then
-        
-        result := CapJitGetFunctionCallArgumentsFromJitArgs( tree, path, jit_args );
-        
-        if result[1] = false then
-            
-            Info( InfoCapJit, 1, "Could not get arguments. Skip resolving..." );
-            
-            record.CAP_JIT_IGNORE_OPERATION := true;
-            
-        else
-            
-            arguments := result[2];
-            
-            # special case: CapCategory
-            if IsIdenticalObj( operation, CapCategory ) then
-                
-                Info( InfoCapJit, 1, "Determine category." );
-                
-                Assert( 0, Length( arguments ) = 1 and HasCapCategory( arguments[1] ) );
-                
-                category := CapCategory( arguments[1] );
-                
-                global_variable_name := CapJitGetOrCreateGlobalVariable( category );
-                
-                new_tree := rec(
-                    type := "EXPR_REF_GVAR",
-                    gvar := global_variable_name,
-                );
-                
-            elif IsOperation( operation ) then
-                
-                Info( InfoCapJit, 1, "Try applicable methods." );
-                
-                # check if we deal with a KeyDependentOperation
-                if operation in WRAPPER_OPERATIONS then
-                    
-                    operation_name := Concatenation( operation_name, "Op" );
-                    
-                    Assert( 0, IsBoundGlobal( operation_name ) );
-                    
-                    operation := ValueGlobal( operation_name );
-                    
-                fi;
-                
-                applicable_methods := ApplicableMethod( operation, arguments, 0, "all" );
-                
-                for method in applicable_methods do
-                    
-                    if not IsKernelFunction( method ) then
-                        
-                        resolved_tree := ENHANCED_SYNTAX_TREE( method : globalize_hvars := true, only_if_CAP_JIT_RESOLVE_FUNCTION );
-                        
-                        if resolved_tree <> fail then
-                            
-                            Info( InfoCapJit, 1, "Found suitable applicable method." );
-                            
-                            if funccall_does_not_return_fail then
-                                
-                                resolved_tree := CapJitRemovedReturnFail( resolved_tree );
-                                
-                            fi;
-                            
-                            new_tree := rec(
-                                type := "EXPR_FUNCCALL",
-                                funcref := resolved_tree,
-                                args := funccall_args,
-                            );
-                            
-                            break;
-                            
-                        fi;
-                        
-                    fi;
-                    
-                od;
-                
-            fi;
-
-        fi;
-        
     else
         
-        Info( InfoCapJit, 1, "Not enough JIT arguments for getting the function via `ApplicableMethod`." );
+        Info( InfoCapJit, 1, "Neither a CAP operation nor a known method." );
         
     fi;
     
