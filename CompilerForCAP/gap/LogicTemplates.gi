@@ -14,7 +14,7 @@ InstallGlobalFunction( CapJitAddLogicTemplate, function ( template )
 end );
 
 InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( template )
-  local template_var_name, tmp_tree, pre_func, additional_arguments_func, i;
+  local diff, template_var_name, tmp_tree, pre_func, additional_arguments_func, i;
     
     # Caution: this function must only be called once the needed packages of the template are loaded!
     
@@ -30,6 +30,15 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
         
         # COVERAGE_IGNORE_NEXT_LINE
         Error( "a logic template must have the following required record entries: variable_names, src_template, dst_template, returns_value" );
+        
+    fi;
+    
+    diff := Difference( RecNames( template ), [ "variable_names", "variable_filters", "src_template", "dst_template", "new_funcs", "returns_value", "needed_packages", "debug", "debug_path" ] );
+    
+    if not IsEmpty( diff ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "a logic template has unknown components: ", diff );
         
     fi;
     
