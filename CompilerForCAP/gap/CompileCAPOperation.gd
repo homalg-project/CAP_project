@@ -9,7 +9,6 @@
 
 #! @Description
 #!   A special version of <Ref Func="CapJitCompiledFunctionAsEnhancedSyntaxTree" /> compiling the operation
-#!   given by <A>operation_name</A> in <A>cat</A>. `jit_args` are constructed by taking `ZeroObject` and
-#!   `ZeroMorphism` if possible.
+#!   given by <A>operation_name</A> in <A>cat</A>.
 #! @Arguments cat, operation_name
 DeclareGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree" );

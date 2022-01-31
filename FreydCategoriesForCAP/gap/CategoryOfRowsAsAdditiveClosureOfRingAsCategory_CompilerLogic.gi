@@ -3,7 +3,7 @@
 #
 # Implementations
 #
-CapJitAddLogicFunction( function( tree, jit_args )
+CapJitAddLogicFunction( function( tree )
   local pre_func, additional_arguments_func;
     
     Info( InfoCapJit, 1, "####" );
@@ -132,6 +132,17 @@ CapJitAddLogicFunction( function( tree, jit_args )
     
 end );
 
+# additive_closure_object[i] => ObjectList( additive_closure_object )[i]
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "additive_closure_object", "index" ],
+        variable_filters := [ IsAdditiveClosureObject, IsInt ],
+        src_template := "additive_closure_object[index]",
+        dst_template := "ObjectList( additive_closure_object )[index]",
+        returns_value := true,
+    )
+);
+
 # additive_closure_morphism[i, j] => MorphismMatrix( additive_closure_morphism )[i, j]
 CapJitAddLogicTemplate(
     rec(
@@ -139,6 +150,28 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsAdditiveClosureMorphism, IsInt, IsInt ],
         src_template := "additive_closure_morphism[row, column]",
         dst_template := "MorphismMatrix( additive_closure_morphism )[row][column]",
+        returns_value := true,
+    )
+);
+
+# NumberRows( additive_closure_morphism ) => Length( ObjectList( Source( additive_closure_morphism ) ) )
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "additive_closure_morphism" ],
+        variable_filters := [ IsAdditiveClosureMorphism ],
+        src_template := "NumberRows( additive_closure_morphism )",
+        dst_template := "Length( ObjectList( Source( additive_closure_morphism ) ) )",
+        returns_value := true,
+    )
+);
+
+# NumberColumns( additive_closure_morphism ) => Length( ObjectList( Range( additive_closure_morphism ) ) )
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "additive_closure_morphism" ],
+        variable_filters := [ IsAdditiveClosureMorphism ],
+        src_template := "NumberColumns( additive_closure_morphism )",
+        dst_template := "Length( ObjectList( Range( additive_closure_morphism ) ) )",
         returns_value := true,
     )
 );

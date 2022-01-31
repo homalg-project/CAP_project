@@ -9,7 +9,7 @@ LoadPackage( "CompilerForCAP" );
 func := function ( )
   local x; x := { args... } -> 1; return x( ); end;;
 
-Display( CapJitCompiledFunction( func, [ ] ) );
+Display( CapJitCompiledFunction( func ) );
 #! function ( )
 #!     return 1;
 #! end

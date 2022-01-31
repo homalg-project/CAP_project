@@ -20,7 +20,7 @@ InstallGlobalFunction( ContinueCompilationAtCategory, function ( category )
     
 end );
 
-InstallGlobalFunction( CapJitCompiledFunction, function ( func, jit_args )
+InstallGlobalFunction( CapJitCompiledFunction, function ( func, args... )
     
     if IsOperation( func ) or IsKernelFunction( func ) then
         
@@ -29,12 +29,12 @@ InstallGlobalFunction( CapJitCompiledFunction, function ( func, jit_args )
         
     fi;
     
-    return ENHANCED_SYNTAX_TREE_CODE( CapJitCompiledFunctionAsEnhancedSyntaxTree( func, jit_args ) );
+    return ENHANCED_SYNTAX_TREE_CODE( CallFuncList( CapJitCompiledFunctionAsEnhancedSyntaxTree, Concatenation( [ func ], args ) ) );
     
 end );
 
-InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( func, jit_args, args... )
-  local debug, debug_idempotence, type_signature, tree, resolving_phase_functions, orig_tree, compiled_func, tmp, rule_phase_functions, f;
+InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( func, args... )
+  local debug, debug_idempotence, category_as_first_argument, category, type_signature, tree, resolving_phase_functions, orig_tree, compiled_func, tmp, rule_phase_functions, f;
     
     Info( InfoCapJit, 1, "####" );
     Info( InfoCapJit, 1, "Start compilation." );
@@ -56,24 +56,50 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         # COVERAGE_IGNORE_BLOCK_END
     fi;
     
+    category_as_first_argument := false;
+    category := fail;
+    
     if Length( args ) = 0 then
         
         type_signature := fail;
         
     elif Length( args ) = 1 then
         
-        type_signature := args[1];
+        if IsCapCategory( args[1] ) then
+            
+            type_signature := fail;
+            
+            category_as_first_argument := true;
+            category := args[1];
+            
+        elif IsList( args[1] ) and Length( args[1] ) = 2 and IsList( args[1][1] ) and Length( args[1][1] ) = NumberArgumentsFunction( func ) then
+            
+            type_signature := args[1];
+            
+            if NumberArgumentsFunction( func ) > 0 and type_signature[1][1].filter = IsCapCategory then
+                
+                category_as_first_argument := true;
+                category := type_signature[1][1].category;
+                
+            fi;
+            
+        else
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "the second argument of CapJitCompiledFunction(AsEnhancedSyntaxTree) must be a CAP category or a valid type signature" );
+            
+        fi;
         
     else
         
         # COVERAGE_IGNORE_NEXT_LINE
-        Error( "CapJitCompiledFunctionAsEnhancedSyntaxTree must be called with at most three arguments" );
+        Error( "CapJitCompiledFunction(AsEnhancedSyntaxTree) must be called with at most two arguments" );
         
     fi;
     
-    if Length( jit_args ) > 0 and IsCapCategory( jit_args[1] ) then
+    if category_as_first_argument then
         
-        tree := ENHANCED_SYNTAX_TREE( func : globalize_hvars := true, given_arguments := [ jit_args[1] ], type_signature := type_signature );
+        tree := ENHANCED_SYNTAX_TREE( func : globalize_hvars := true, given_arguments := [ category ], type_signature := type_signature );
         
     else
         
@@ -117,39 +143,14 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                 # COVERAGE_IGNORE_BLOCK_END
             fi;
             
-            if NumberArgumentsFunction( f ) = 1 then
-                
-                tree := f( tree );
-                
-            elif NumberArgumentsFunction( f ) = 2 then
-                
-                tree := f( tree, jit_args );
-                
-            else
-                
-                # COVERAGE_IGNORE_NEXT_LINE
-                Error( "this should never happen" );
-                
-            fi;
+            tree := f( tree );
             
             if debug_idempotence then
                 
                 # COVERAGE_IGNORE_BLOCK_START
                 tmp := StructuralCopy( tree );
                 
-                if NumberArgumentsFunction( f ) = 1 then
-                    
-                    tree := f( tree );
-                    
-                elif NumberArgumentsFunction( f ) = 2 then
-                    
-                    tree := f( tree, jit_args );
-                    
-                else
-                    
-                    Error( "this should never happen" );
-                    
-                fi;
+                tree := f( tree );
                 
                 if tmp <> tree then
                     
@@ -203,39 +204,14 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
                 # COVERAGE_IGNORE_BLOCK_END
             fi;
             
-            if NumberArgumentsFunction( f ) = 1 then
-                
-                tree := f( tree );
-                
-            elif NumberArgumentsFunction( f ) = 2 then
-                
-                tree := f( tree, jit_args );
-                
-            else
-                
-                # COVERAGE_IGNORE_NEXT_LINE
-                Error( "this should never happen" );
-                
-            fi;
+            tree := f( tree );
             
             if debug_idempotence then
                 
                 # COVERAGE_IGNORE_BLOCK_START
                 tmp := StructuralCopy( tree );
                 
-                if NumberArgumentsFunction( f ) = 1 then
-                    
-                    tree := f( tree );
-                    
-                elif NumberArgumentsFunction( f ) = 2 then
-                    
-                    tree := f( tree, jit_args );
-                    
-                else
-                    
-                    Error( "this should never happen" );
-                    
-                fi;
+                tree := f( tree );
                 
                 if tmp <> tree then
                     
@@ -252,7 +228,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     
     # post-processing
     
-    if Length( jit_args ) > 0 and IsCapCategory( jit_args[1] ) then
+    if category_as_first_argument then
         
         if debug then
             # COVERAGE_IGNORE_BLOCK_START
@@ -262,7 +238,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
             # COVERAGE_IGNORE_BLOCK_END
         fi;
         
-        tree := CapJitAppliedCompilerHints( tree, jit_args[1] );
+        tree := CapJitAppliedCompilerHints( tree, category );
         
     fi;
     
@@ -292,12 +268,6 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
         
         Display( compiled_func );
-        
-        if NumberArgumentsFunction( func ) = Length( jit_args ) then
-            
-            Assert( 0, CallFuncList( compiled_func, jit_args ) = CallFuncList( func, jit_args ) );
-            
-        fi;
         
         Error( "compilation finished" );
         # COVERAGE_IGNORE_BLOCK_END

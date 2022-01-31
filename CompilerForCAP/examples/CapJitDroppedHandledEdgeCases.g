@@ -46,7 +46,7 @@ func := EvalString( ReplacedString( """function( x )
     
 end""", "@", ";" ) );;
 
-compiled_func := CapJitCompiledFunction( func, [ ] );;
+compiled_func := CapJitCompiledFunction( func );;
 Display( compiled_func );
 #! function ( x_1 )
 #!     if x_1 < 1 or x_1 > 10 then

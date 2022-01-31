@@ -570,22 +570,12 @@ InstallMethod( CreateCapCategory,
                [ IsString ],
                
   function( name )
-    local overhead, is_computable, enable_compilation, category;
+    local overhead, is_computable, category;
     
     overhead := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "overhead", true );
     
     is_computable := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "is_computable", true );
 
-    enable_compilation := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "enable_compilation", false );
-
-    if enable_compilation <> false and not IsPackageMarkedForLoading( "CompilerForCAP", ">= 2020.06.17" ) then
-        
-        Display( "WARNING: Package CompilerForCAP is not loaded, so compilation will not be enabled." );
-        
-        enable_compilation := false;
-        
-    fi;
-    
     category := rec( );
     
     category := CREATE_CAP_CATEGORY_OBJECT( category, [ [ "Name", name ] ] );
@@ -594,11 +584,6 @@ InstallMethod( CreateCapCategory,
     
     category!.is_computable := is_computable;
 
-    category!.enable_compilation := enable_compilation;
-
-    category!.compiled_functions := rec( );
-    category!.compiled_functions_trees := rec( );
-    
     CREATE_CAP_CATEGORY_FILTERS( category );
     
     if overhead then

@@ -15,10 +15,7 @@ MyKernelLift := function( cat, mor, test_mor )
     return LiftOrFail( cat, test_mor, KernelEmbedding( cat, mor ) ); end;;
 
 V := VectorSpaceObject( 2, Q );;
-compiled_func := CapJitCompiledFunction(
-    MyKernelLift,
-    [ rows, ZeroMorphism( V, V ), IdentityMorphism( V ) ]
-);;
+compiled_func := CapJitCompiledFunction( MyKernelLift, rows );;
 #! WARNING: Compiling CAP operation LiftOrFail with return_type morphism_or_fail.\
 #!  Operations returning fail usually do not fulfill the requirements that all br\
 #! anches of an if statement can be executed even if the corresponding condition \
@@ -51,11 +48,11 @@ call_func2 := function( x )
     #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL
     return func2( x ); end;;
 
-Display( CapJitCompiledFunction( call_func1, [ 2 ] ) );
+Display( CapJitCompiledFunction( call_func1 ) );
 #! function ( x_1 )
 #!     return 1;
 #! end
-Display( CapJitCompiledFunction( call_func2, [ 2 ] ) );
+Display( CapJitCompiledFunction( call_func2 ) );
 #! function ( x_1 )
 #!     return 1;
 #! end

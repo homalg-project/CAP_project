@@ -34,7 +34,8 @@ To simplify the handling of syntax trees, the CAP compiler enhances syntax trees
   function variables (FVARs) reference local variables in functions via the function id (`func_id`) and
   their name (`name`), which is determined from the list of arguments/local variables of the function.
 * All statements after `if ... then return ...; fi;` are moved into an `else` branch.
-* `EXPR_ELM_MAT` is replaced by a call to `MatElm` such that it does not require special handling.
+* The syntax tree types in `CAP_JIT_INTERNAL_SYNTAX_TREE_TO_OPERATION_TRANSLATIONS` (e.g. `EXPR_ELM_MAT`)
+  are replaced by calls to corresponding operations (so that they do not require special handling).
 * if/elif/else statements must all end with the assignment to the same local variable and must have an else clause.
   They are coded using a new type `EXPR_CASE`:
   Trees of type `EXPR_CASE` have a key `branches` which holds a list of trees of type `CASE_BRANCH`.

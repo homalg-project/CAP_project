@@ -18,8 +18,6 @@ ReadPackage( "CompilerForCAP", "gap/InferDataTypes.gi" );
 
 ReadPackage( "CompilerForCAP", "gap/PrettyPrintSyntaxTree.gi" );
 
-ReadPackage( "CompilerForCAP", "gap/GetValuesFromJitArgs.gi" );
-
 ReadPackage( "CompilerForCAP", "gap/ResolveOperations.gi" );
 
 ReadPackage( "CompilerForCAP", "gap/InlineArguments.gi" );

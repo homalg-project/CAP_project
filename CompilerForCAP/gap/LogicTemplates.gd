@@ -30,7 +30,6 @@ DeclareGlobalFunction( "CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE" );
 #!     * When trying to find an occurence of `src_template` in a tree, all strings occuring in the list `variable_names`
 #!       are considered as variables, i.e., they match any value in the tree. If a variable occurs
 #!       multiple times, the corresponding parts of the tree must be equal.
-#!     * <Ref Func="CapJitAppliedLogicTemplates" /> uses <A>jit_args</A> to compute a concrete value of each variable.
 #!       The template is only applied if all values match the corresponding filters in `variable_filters`.
 #!     * For each function in `dst_template`, <Ref Func="CapJitAppliedLogicTemplates" /> tries to find a corresponding function in
 #!       `src_template`. The functions are matched by comparing the lists of names of local variables. If for a function in

@@ -14,10 +14,10 @@ InstallGlobalFunction( CapJitAddLogicFunction, function ( func )
         
     fi;
     
-    if not NumberArgumentsFunction( func ) in [ -2, -1, 2 ] then
+    if NumberArgumentsFunction( func ) <> 1 then
         
         # COVERAGE_IGNORE_NEXT_LINE
-        Error( "a logic function must be callable with two arguments" );
+        Error( "a logic function must have exactly one argument" );
         
     fi;
     
@@ -25,12 +25,12 @@ InstallGlobalFunction( CapJitAddLogicFunction, function ( func )
     
 end );
 
-InstallGlobalFunction( CapJitAppliedLogic, function ( tree, jit_args )
+InstallGlobalFunction( CapJitAppliedLogic, function ( tree )
   local logic_function;
     
     for logic_function in CAP_JIT_LOGIC_FUNCTIONS do
         
-        tree := logic_function( tree, jit_args );
+        tree := logic_function( tree );
         
     od;
     
@@ -41,7 +41,7 @@ InstallGlobalFunction( CapJitAppliedLogic, function ( tree, jit_args )
 end );
 
 # [ a_1, a_2, ... ][i] => a_i
-CapJitAddLogicFunction( function ( tree, jit_args )
+CapJitAddLogicFunction( function ( tree )
   local pre_func;
     
     Info( InfoCapJit, 1, "####" );
@@ -65,7 +65,7 @@ CapJitAddLogicFunction( function ( tree, jit_args )
 end );
 
 # Concatenation( [ a, b, ... ], [ c, d, ... ], ... ) => [ a, b, ..., c, d, ... ]
-CapJitAddLogicFunction( function ( tree, jit_args )
+CapJitAddLogicFunction( function ( tree )
   local pre_func;
     
     Info( InfoCapJit, 1, "####" );
@@ -108,7 +108,7 @@ CapJitAddLogicFunction( function ( tree, jit_args )
 end );
 
 # CallFuncList( func, [ a, b, ... ] ) => func( a, b, ... )
-CapJitAddLogicFunction( function ( tree, jit_args )
+CapJitAddLogicFunction( function ( tree )
   local pre_func;
     
     Info( InfoCapJit, 1, "####" );
@@ -142,7 +142,7 @@ CapJitAddLogicFunction( function ( tree, jit_args )
 end );
 
 # List( [ a_1, ..., a_n ], f ) = [ f( a_1 ), ..., f( a_n ) ]
-CapJitAddLogicFunction( function ( tree, jit_args )
+CapJitAddLogicFunction( function ( tree )
   local pre_func;
     
     Info( InfoCapJit, 1, "####" );
@@ -182,7 +182,7 @@ CapJitAddLogicFunction( function ( tree, jit_args )
 end );
 
 # AttributeGetter( ObjectifyObject/MorphismForCAPWithAttributes( ..., Attribute, value, ... ) ) => value
-CapJitAddLogicFunction( function ( tree, jit_args )
+CapJitAddLogicFunction( function ( tree )
   local pre_func;
     
     Info( InfoCapJit, 1, "####" );
@@ -261,7 +261,7 @@ CapJitAddLogicFunction( function ( tree, jit_args )
 end );
 
 # EXPR_CASE with all branches having the same value
-CapJitAddLogicFunction( function ( tree, jit_args )
+CapJitAddLogicFunction( function ( tree )
   local pre_func;
     
     Info( InfoCapJit, 1, "####" );
@@ -284,7 +284,7 @@ CapJitAddLogicFunction( function ( tree, jit_args )
 end );
 
 # func( EXPR_CASE )
-CapJitAddLogicFunction( function ( tree, jit_args )
+CapJitAddLogicFunction( function ( tree )
   local pre_func;
     
     Info( InfoCapJit, 1, "####" );
@@ -621,7 +621,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
 end );
 
 # CapFixpoint
-CapJitAddLogicFunction( function ( tree, jit_args )
+CapJitAddLogicFunction( function ( tree )
   local orig_tree, pre_func;
     
     Info( InfoCapJit, 1, "####" );
@@ -653,7 +653,7 @@ CapJitAddLogicFunction( function ( tree, jit_args )
 end );
 
 # Iterated
-CapJitAddLogicFunction( function ( tree, jit_args )
+CapJitAddLogicFunction( function ( tree )
   local orig_tree, pre_func;
     
     Info( InfoCapJit, 1, "####" );

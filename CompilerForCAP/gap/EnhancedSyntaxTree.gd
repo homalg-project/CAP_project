@@ -13,6 +13,8 @@
 #!   and referenced via these global variables in the tree. Otherwise, an error is thrown if such higher variables exist.
 #!   If a list is given as the option `given_arguments`, references to the `i`-th argument of the function are replaced by references
 #!   to a global variable with the value of `given_arguments[i]` (only in case this position is bound).
+#!   If a type signature (see <Ref Func="CapJitInferredDataTypes" />) of <A>func</A> is given as the option `type_signature`,
+#!   it is attached to the resulting tree.
 #! @Returns a record
 #! @Arguments func
 DeclareGlobalFunction( "ENHANCED_SYNTAX_TREE" );

@@ -11,6 +11,6 @@ func := function( )
 
 # we are not interested in the output, but only that this does not throw
 # an error due to some function id being used multiple times
-CapJitCompiledFunction( func, [ ] );;
+CapJitCompiledFunction( func );;
 
 #! @EndExample

@@ -7,10 +7,7 @@ LoadPackage( "LinearAlgebraForCAP" );
 #! @Example
 
 Q := HomalgFieldOfRationals();;
-vec := MATRIX_CATEGORY(
-    Q :
-    enable_compilation := true, no_precompiled_code := true
-);;
+vec := MATRIX_CATEGORY( Q : no_precompiled_code := true );;
 
 V := MatrixCategoryObject( vec, 2 );;
 alpha := ZeroMorphism( V, V );;
@@ -37,17 +34,11 @@ Display(
 #!      VectorSpaceMorphism( cat, S, UnionOfRows( homalg_field, Dimension( T ), 
 #!          underlying_matrix ), T );
 #! end
-MorphismBetweenDirectSumsWithGivenDirectSums(
-    vec,
-    W,
-    [ V, V ],
-    morphism_matrix,
-    [ V, V ],
-    W
+compiled_func1 := CapJitCompiledFunction(
+    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3][1],
+    vec
 );;
-Display(
-    vec!.compiled_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3]
-);
+Display( compiled_func1 );
 #! function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
 #!     local hoisted_1_1, deduped_2_1;
 #!     deduped_2_1 := UnderlyingRing( cat_1 );
@@ -78,10 +69,11 @@ Display(
 #!     return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, diagram_S, 
 #!        T, test_diagram_coproduct, S );
 #! end
-Display( CapJitCompiledFunction(
+compiled_func2 := CapJitCompiledFunction(
     vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1][1],
-    [ vec, W, [ V, V ], morphism_matrix, [ V, V ], W  ]
-) );;
+    vec
+);;
+Display( compiled_func2 );
 #! function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
 #!     local hoisted_1_1, deduped_2_1;
 #!     deduped_2_1 := UnderlyingRing( cat_1 );
@@ -99,8 +91,9 @@ Display( CapJitCompiledFunction(
 #!             end ) ) );
 #! end
 
-KernelEmbedding( alpha );;
-Display( Last( vec!.compiled_functions.KernelEmbedding ) );
+Display( ENHANCED_SYNTAX_TREE_CODE(
+    CapJitCompiledCAPOperationAsEnhancedSyntaxTree( vec, "KernelEmbedding" )
+) );
 #! function ( cat_1, morphism_1 )
 #!     local morphism_attr_1_1;
 #!     morphism_attr_1_1 := SyzygiesOfRows( UnderlyingMatrix( morphism_1 ) );
