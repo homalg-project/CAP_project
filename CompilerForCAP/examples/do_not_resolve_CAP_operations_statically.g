@@ -7,14 +7,14 @@ LoadPackage( "LinearAlgebraForCAP" );
 #! @Example
 
 Q := HomalgFieldOfRationals();;
-vec := MATRIX_CATEGORY( Q : enable_compilation := true );;
+vec := MATRIX_CATEGORY( Q );;
 
 func := function ( cat, x )
     #% CAP_JIT_RESOLVE_FUNCTION
     return ZeroObject( cat ); end;;
 
 # make sure that ZeroObject( cat ) is not resolved to a global variable
-Display( CapJitCompiledFunction( { cat, x } -> func( cat, x ), [ vec ] ) );
+Display( CapJitCompiledFunction( { cat, x } -> func( cat, x ), vec ) );
 #! function ( cat_1, x_1 )
 #!     return ObjectifyObjectForCAPWithAttributes( rec(
 #!            ), cat_1, Dimension, 0 );

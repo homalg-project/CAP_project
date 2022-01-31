@@ -18,7 +18,7 @@ QQ := HomalgFieldOfRationals( );;
 
 cat := MatrixCategory( QQ );;
 
-Display( CapJitCompiledFunction( func, [ cat ] ) );
+Display( CapJitCompiledFunction( func, cat ) );
 #! function ( cat_1, matrix_1 )
 #!     local morphism_attr_1_1, morphism_attr_2_1;
 #!     morphism_attr_2_1 := matrix_1;

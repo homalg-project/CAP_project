@@ -109,7 +109,7 @@ func3 := EvalString( ReplacedString( """function( x )
     
 end""", "@", ";" ) );;
 
-compiled_func3 := CapJitCompiledFunction( func3, [ ] );;
+compiled_func3 := CapJitCompiledFunction( func3 );;
 Display( compiled_func3 );
 #! function ( x_1 )
 #!     local deduped_1_1;
@@ -129,7 +129,7 @@ Display( compiled_func3 );
 func4 := function( x )
   local y; if x then return 1; else return 1; fi; end;;
 
-compiled_func4 := CapJitCompiledFunction( func4, [ true ] );;
+compiled_func4 := CapJitCompiledFunction( func4 );;
 Display( compiled_func4 );
 #! function ( x_1 )
 #!     return 1;

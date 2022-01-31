@@ -27,17 +27,17 @@ cat2 := CreateCapCategory( "cat2" );;
 SetFilterObj( cat1, IsMyCat1 );
 SetFilterObj( cat2, IsMyCat2 );
 
-Display( CapJitCompiledFunction( cat -> MyOperation( cat ), [ cat1 ] ) );
+Display( CapJitCompiledFunction( cat -> MyOperation( cat ), cat1 ) );
 #! function ( cat_1 )
 #!     return 1;
 #! end
 
-Display( CapJitCompiledFunction( cat -> MyOperation( cat ), [ cat2 ] ) );
+Display( CapJitCompiledFunction( cat -> MyOperation( cat ), cat2 ) );
 #! function ( cat_1 )
 #!     return 2;
 #! end
 
-Display( CapJitCompiledFunction( cat -> MyOperation( cat, 1 ), [ cat2 ] ) );
+Display( CapJitCompiledFunction( cat -> MyOperation( cat, 1 ), cat2 ) );
 #! function ( cat_1 )
 #!     return 3;
 #! end

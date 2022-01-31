@@ -13,7 +13,7 @@ func1 := function( x, y )
 func2 := function( )
   local var; var := 1; var := func1( 2, var ); return var; end;;
 
-compiled_func := CapJitCompiledFunction( func2, [] );;
+compiled_func := CapJitCompiledFunction( func2 );;
 compiled_func();
 #! 2
 

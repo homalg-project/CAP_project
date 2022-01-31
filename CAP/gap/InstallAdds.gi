@@ -166,7 +166,7 @@ InstallGlobalFunction( CapInternalInstallAdd,
         local install_func, replaced_filter_list, needs_wrapping, i, set_primitive, is_derivation, is_final_derivation, without_given_name, with_given_name,
               without_given_weight, with_given_weight, number_of_proposed_arguments, current_function_number,
               current_function_argument_number, current_additional_filter_list_length, filter, input_human_readable_identifier_getter, input_sanity_check_functions,
-              output_human_readable_identifier_getter, output_sanity_check_function, cap_jit_compiled_function;
+              output_human_readable_identifier_getter, output_sanity_check_function;
         
         if IsFinalized( category ) then
             Error( "cannot add methods anymore, category is finalized" );
@@ -421,20 +421,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
             Display( Concatenation( "Warning: You should add an output sanity check for the following return_type: ", String( record.return_type ) ) );
             output_sanity_check_function := ReturnTrue;
         fi;
-
-        if IsPackageMarkedForLoading( "CompilerForCAP", ">= 2020.06.17" ) then
-            
-            cap_jit_compiled_function := ValueGlobal( "CapJitCompiledFunction" );
-            
-        else
-            
-            cap_jit_compiled_function := function( args... )
-                
-                Error( "package CompilerForCAP is not loaded, so please disable compilation" );
-                
-            end;
-            
-        fi;
         
         install_func := function( func_to_install, additional_filters )
           local new_filter_list, index;
@@ -443,36 +429,8 @@ InstallGlobalFunction( CapInternalInstallAdd,
             
             new_filter_list := CAP_INTERNAL_MERGE_FILTER_LISTS( replaced_filter_list, additional_filters );
             
-            # operations/derivations returning fail usually do not fulfill the requirements that all branches of an if statement can be executed
-            # even if the corresponding condition does not hold
-            if (category!.enable_compilation = true or ( IsList( category!.enable_compilation ) and function_name in category!.enable_compilation ))
-               and not (IsString( record.return_type ) and EndsWith( record.return_type, "fail" )) then
+            if category!.overhead then
                 
-                if not (IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true) then
-                    
-                    Error( "only categories with `category!.category_as_first_argument = true` can be compiled" );
-                    
-                fi;
-                
-                index := Length( category!.added_functions.( function_name ) );
-                
-                InstallMethod( ValueGlobal( install_name ),
-                            new_filter_list,
-                    
-                    function( arg )
-                        
-                        if not IsBound( category!.compiled_functions.( function_name )[ index ] ) then
-                            
-                            category!.compiled_functions.( function_name )[ index ] := cap_jit_compiled_function( func_to_install, arg );
-                            
-                        fi;
-                        
-                        return CallFuncList( category!.compiled_functions.( function_name )[ index ], arg );
-                        
-                end );
-                
-            elif category!.overhead then
-            
                 InstallMethodWithCache( ValueGlobal( install_name ),
                                 new_filter_list,
                                 
@@ -589,13 +547,6 @@ InstallGlobalFunction( CapInternalInstallAdd,
         if not IsBound( category!.timing_statistics.( function_name ) ) then
             
             category!.timing_statistics.( function_name ) := [ ];
-            
-        fi;
-        
-        if not IsBound( category!.compiled_functions.( function_name ) ) then
-            
-            category!.compiled_functions.( function_name ) := [ ];
-            category!.compiled_functions_trees.( function_name ) := [ ];
             
         fi;
         

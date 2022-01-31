@@ -31,7 +31,7 @@ end""", "@", ";" ) );;
 func( cat );
 #! <A vector space object over Q of dimension 2>
 
-Display( CapJitCompiledFunction( func, [ cat ] ) );
+Display( CapJitCompiledFunction( func, cat ) );
 #! function ( cat_1 )
 #!     return ObjectifyObjectForCAPWithAttributes( rec(
 #!            ), cat_1, Dimension, CapFixpoint( function ( x_2, y_2 )
@@ -49,7 +49,7 @@ func := { cat, morphism_list } ->
         { alpha, beta } -> PreCompose( cat, alpha, beta )
     );;
 
-Display( CapJitCompiledFunction( func, [ cat ] ) );
+Display( CapJitCompiledFunction( func, cat ) );
 #! function ( cat_1, morphism_list_1 )
 #!     local morphism_attr_1_1;
 #!     morphism_attr_1_1 := Iterated( List( morphism_list_1, UnderlyingMatrix ), 
@@ -71,7 +71,7 @@ func := { cat, alpha, beta, gamma } ->
         { alpha, beta } -> PreCompose( cat, alpha, beta )
     );;
 
-Display( CapJitCompiledFunction( func, [ cat ] ) );
+Display( CapJitCompiledFunction( func, cat ) );
 #! function ( cat_1, alpha_1, beta_1, gamma_1 )
 #!     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
 #!            ), cat_1, Source( alpha_1 ), Range( gamma_1 ), UnderlyingMatrix, 
