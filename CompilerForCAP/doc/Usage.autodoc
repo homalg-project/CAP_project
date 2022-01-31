@@ -2,9 +2,10 @@
 
 @Section Terminology
 
-The compiler is a just-in-time compiler, that is, it needs some arguments to infer types of variables. These arguments
-are refered to as __JIT arguments__. For a given CAP operation, these are usually the arguments of the first
-call of the operation.
+The compiler was started as a just-in-time compiler, that is, it needed some arguments to infer types of variables.
+Although the compiler now supports precompilation and type signatures can be explicitly given, it still is a just-in-time compiler in the following sense:
+Only methods for operations getting a CAP category as the first argument can be found by the compiler,
+and an instance of a CAP category is needed for method selection.
 
 The compiler uses GAP's syntax trees for optimizing functions. The term __tree__ always refers to the syntax tree of
 the function to be compiled. Note that a node of the tree always knows its children, so technically it is also a tree.
@@ -30,15 +31,12 @@ We call this __inlining__ the function arguments, functions, or variable assignm
 
 The compilation process has two phases: the resolving phase and the rule phase.
 
-During the resolving phase, operations and global variables are resolved:
-* An operation is resolved by executing the function to be compiled with the JIT arguments to determine the arguments of the operation.
-  These arguments are used to call `ApplicableMethod`, and methods annotated with the pragma `CAP_JIT_RESOLVE_FUNCTION` are resolved.
-  This step is skipped if the operation is listed in `CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES`.
-* CAP operations are handled separately: instead of using `ApplicableMethod`, the functions added to the category via `Add` functions
-  are considered, and those do not have to be annotated with `CAP_JIT_RESOLVE_FUNCTION`. In particular, caching, pre functions, etc.
-  are bypassed.
-* You can also use `InstallMethodForCompilerForCAP` or `InstallOtherMethodForCompilerForCAP` (see the documentation of CAP) to make methods known
-  to the compiler. These methods are resolved via the number of arguments and do not have to be annotated with `CAP_JIT_RESOLVE_FUNCTION`.
+During the resolving phase, operations and global variables are resolved.
+* CAP operations can only be resolved if an instance of a CAP category to which the operation is applied is known.
+  Then, the functions added to the category via `Add` functions are considered.
+  Note that caching, pre functions, etc. are bypassed.
+* You can also use `InstallMethodForCompilerForCAP` or `InstallOtherMethodForCompilerForCAP` (see the documentation of CAP) to make methods
+  which accept a CAP category as the first argument known to the compiler. The same restrictions as for CAP operations apply.
 * References to global functions are resolved if the function name is not listed in `CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES` and
   if the function is annotated with the pragma `CAP_JIT_RESOLVE_FUNCTION`.
 * If a call of a global function or operation (occuring as the right hand side of a variable assignment or as the return value of a function)
@@ -46,7 +44,6 @@ During the resolving phase, operations and global variables are resolved:
   and thus simply removes any code of the form `if condition then return fail; fi;` (or similar) from the resolved function.
   The pragma has to be placed right before the variable assignment or the return statement.
 * If the pragma `CAP_JIT_DROP_NEXT_STATEMENT` occurs in the resolved function, the statement following the pragma is removed.
-* If a KeyDependentOperation is detected, the corresponding `Op` method is resolved.
 For details see <Ref Func="CapJitResolvedOperations" /> and <Ref Func="CapJitResolvedGlobalVariables" />.
 If no operation or global variable can be resolved anymore, we continue with the rule phase.
 
@@ -60,14 +57,10 @@ For all details, see the list of compilations steps in <Ref Sect="Section_Compil
 
 @Section Requirements
 
-There are two main requirements for the steps described above to be correct:
+There are some requirements for the steps described above to be correct:
 * The code must not depend on side effects (otherwise dropping "unused" variables or inlining variables could change results).
-* The methods selected for the operations during the resolving phase must be independent of the JIT arguments, that is,
-  they must yield correct results for all allowed arguments of the function to be compiled. Thus, be careful which methods
-  you annotate with `CAP_JIT_RESOLVE_FUNCTION`. In particular, the CAP categories of objects and morphisms appearing during the
-  execution must be independent of the JIT arguments.
-
-There are also additional strong requirements:
+* Technically, the result is only valid for the concrete CAP category which was used to resolve CAP operations and get typing information.
+  That is, for parametric categories you must check manually for which parameters the result is valid.
 * Only assignments to local variables, if/elif/else statements, and return statements are allowed as statements in functions.
 * All branches of any given if/elif/else statement must end with a return statement or the assignment to the same local variable.
 * If statements must always have an else statement, except if all branches end with a return statement. In the latter case, the
@@ -81,18 +74,15 @@ There are also additional strong requirements:
 * For performance optimizations, the compiler might move expressions out of if/else statements, e.g. if they occur inside a (potentially
   expensive) `List` call. Thus, code inside if/else statements must execute without error even if moved outside of the if/else statement.
 
-There is an additional weak requirement when passing JIT arguments: The compiler mainly optimizes the code paths covered when executing the function with the
-JIT arguments. Thus, the JIT arguments should represent a "generic" call, i.e., they should not run into edge cases which do not happen
-with a "generic" call. Still, the execution using JIT arguments should be fast to improve compilation times.
-
 Additionally, there is no detection for recursive function calls, so resolving such a function call leads to an infinite loop.
 
-@Section Activating the compiler
+@Section Precompiling categories
 
-You can activate the compiler by passing the option `enable_compilation` to any category constructor.
-If `enable_compilation` is set to `true`, any basic operation will be compiled when called for the first time.
-If `enable_compilation` is a list of strings, compilation will only happen if the function name
-of the basic operation appears in this list.
+The main mode of application of the compiler is precompiling categories and storing the result in a file for later use via <Ref Func="CapJitPrecompileCategory" />.
+
+@Section Compiling a function manually
+
+One can also compile a function `func` manually via <Ref Func="CapJitCompiledFunction" />.
 
 @Section Giving hints to the compiler
 @SectionLabel CompilerHints
@@ -117,21 +107,9 @@ Note: The compiler can only discover the hints if the category is the first argu
 You can use `StopCompilationAtCategory` to prevent the compiler from inlining and optimizing code of a given category.
 You can revert this decision using `ContinueCompilationAtCategory`.
 
-@Section Precompiling categories
-
-You can compile categories and store the result in a file for later use.
-
 @Section Getting information about the compilation process
 
 You can increase the info level of `InfoCapJit` to get information about the compilation process.
-
-@Section Compiling a function manually
-
-Use <Ref Func="CapJitCompiledFunction" /> to compile a function `func` with JIT arguments `jit_args`.
-`jit_args` should represent a "generic" call, i.e., they should not run into edge cases which do not happen with a "generic" call.
-Still, the execution using `jit_args` should be fast to improve compilation times. If `func` gets a CAP category as the first
-argument and you want to compile `func` ahead of time, you can use the CAP category as the first and only entry of `jit_args`.
-In this case, the CAP category is used to get the type information required to resolve CAP operations.
 
 @Section FAQ
 
@@ -141,13 +119,6 @@ with the pragma `CAP_JIT_RESOLVE_FUNCTION`. Additionally, a function can only be
 if it appears as a global variable in the tree during the resolving phase of the compilation. That is, it must be referenced from
 a global variable from the beginning on, or after global variables are resolved by <Ref Func="CapJitResolvedGlobalVariables" />.
 Possibly you have adapt <Ref Func="CapJitResolvedGlobalVariables" /> to your setting.
-
-* Q: Why is my operation not resolved?
-A: The operation might be listed in `CAP_JIT_NON_RESOLVABLE_OPERATION_NAMES`.
-If the operation is not a CAP operation and if there are no methods installed for the operation via
-`InstallMethodForCompilerForCAP` or `InstallOtherMethodForCompilerForCAP`,
-the compiler must be able to get the arguments of the call of the operation from the JIT arguments.
-Then the rules in the description of <Ref Func="CapJitResolvedOperations" /> apply.
 
 * Q: Why do I get the error "cannot find iteration key"?
 A: For each syntax tree node type, the tree iterator has to know which record names it should use for continuing the iteration.
