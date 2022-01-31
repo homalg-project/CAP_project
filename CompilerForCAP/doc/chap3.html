@@ -306,10 +306,7 @@ true
 
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MATRIX_CATEGORY(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    Q :</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    enable_compilation := true, no_precompiled_code := true</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MATRIX_CATEGORY( Q : no_precompiled_code := true );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := MatrixCategoryObject( vec, 2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := ZeroMorphism( V, V );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := IdentityMorphism( V );;</span>
@@ -333,17 +330,11 @@ function ( cat, S, diagram_S, morphism_matrix, diagram_T, T )
      VectorSpaceMorphism( cat, S, UnionOfRows( homalg_field, Dimension( T ), 
          underlying_matrix ), T );
 end
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MorphismBetweenDirectSumsWithGivenDirectSums(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    W,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ V, V ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    morphism_matrix,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ V, V ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    W</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func1 := CapJitCompiledFunction(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3][1],</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.compiled_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func1 );</span>
 function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
     local hoisted_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingRing( cat_1 );
@@ -373,10 +364,11 @@ function ( cat, S, diagram_S, morphism_matrix, diagram_T, T )
     return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, diagram_S, 
        T, test_diagram_coproduct, S );
 end
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction(</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func2 := CapJitCompiledFunction(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1][1],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ vec, W, [ V, V ], morphism_matrix, [ V, V ], W  ]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">) );;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    vec</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func2 );</span>
 function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
     local hoisted_1_1, deduped_2_1;
     deduped_2_1 := UnderlyingRing( cat_1 );
@@ -393,8 +385,9 @@ function ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )
                       end ) );
             end ) ) );
 end
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KernelEmbedding( alpha );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Last( vec!.compiled_functions.KernelEmbedding ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    CapJitCompiledCAPOperationAsEnhancedSyntaxTree( vec, "KernelEmbedding" )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">) );</span>
 function ( cat_1, morphism_1 )
     local morphism_attr_1_1;
     morphism_attr_1_1 := SyzygiesOfRows( UnderlyingMatrix( morphism_1 ) );
@@ -461,7 +454,7 @@ Category of matrices over Q
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    #% CAP_JIT_DROP_NEXT_STATEMENT</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    Display( 1 ); return 1; end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, [ ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func ) );</span>
 function ( )
     return 1;
 end
@@ -491,7 +484,7 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">end""", "@", ";" ) );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func( cat );</span>
 &lt;A vector space object over Q of dimension 2&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, [ cat ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, cat ) );</span>
 function ( cat_1 )
     return ObjectifyObjectForCAPWithAttributes( rec(
            ), cat_1, Dimension, CapFixpoint( function ( x_2, y_2 )
@@ -507,7 +500,7 @@ end
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        morphism_list,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        { alpha, beta } -&gt; PreCompose( cat, alpha, beta )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, [ cat ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, cat ) );</span>
 function ( cat_1, morphism_list_1 )
     local morphism_attr_1_1;
     morphism_attr_1_1 := Iterated( List( morphism_list_1, UnderlyingMatrix ), 
@@ -527,7 +520,7 @@ end
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ alpha, beta, gamma ],</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        { alpha, beta } -&gt; PreCompose( cat, alpha, beta )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, [ cat ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, cat ) );</span>
 function ( cat_1, alpha_1, beta_1, gamma_1 )
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, Source( alpha_1 ), Range( gamma_1 ), UnderlyingMatrix, 
@@ -546,10 +539,7 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return LiftOrFail( cat, test_mor, KernelEmbedding( cat, mor ) ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">V := VectorSpaceObject( 2, Q );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := CapJitCompiledFunction(</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    MyKernelLift,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ rows, ZeroMorphism( V, V ), IdentityMorphism( V ) ]</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := CapJitCompiledFunction( MyKernelLift, rows );;</span>
 WARNING: Compiling CAP operation LiftOrFail with return_type morphism_or_fail.\
  Operations returning fail usually do not fulfill the requirements that all br\
 anches of an if statement can be executed even if the corresponding condition \
@@ -577,11 +567,11 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">call_func2 := function( x )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return func2( x ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( call_func1, [ 2 ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( call_func1 ) );</span>
 function ( x_1 )
     return 1;
 end
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( call_func2, [ 2 ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( call_func2 ) );</span>
 function ( x_1 )
     return 1;
 end
@@ -606,15 +596,15 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat2 := CreateCapCategory( "cat2" );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetFilterObj( cat1, IsMyCat1 );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetFilterObj( cat2, IsMyCat2 );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( cat -&gt; MyOperation( cat ), [ cat1 ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( cat -&gt; MyOperation( cat ), cat1 ) );</span>
 function ( cat_1 )
     return 1;
 end
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( cat -&gt; MyOperation( cat ), [ cat2 ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( cat -&gt; MyOperation( cat ), cat2 ) );</span>
 function ( cat_1 )
     return 2;
 end
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( cat -&gt; MyOperation( cat, 1 ), [ cat2 ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( cat -&gt; MyOperation( cat, 1 ), cat2 ) );</span>
 function ( cat_1 )
     return 3;
 end
@@ -765,7 +755,7 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    fi@</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">end""", "@", ";" ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := CapJitCompiledFunction( func, [ ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := CapJitCompiledFunction( func );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
 function ( x_1 )
     if x_1 &lt; 1 or x_1 &gt; 10 then
@@ -1084,13 +1074,6 @@ true
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># make tests deterministic</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># we want to apply logic templates, which contain functions with existing IDs,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># so we really have to use new IDs</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_FUNCTION_ID &lt; 10^6;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">original_func_id := CAP_JIT_INTERNAL_FUNCTION_ID;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_FUNCTION_ID := 10^6;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># test that `CAP_JIT_NOT_RESOLVABLE` does not cause errors when comparing</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput"># syntax trees</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">DeclareOperation( "MyNonResolvableOperation", [ ] );</span>
@@ -1100,113 +1083,6 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree2.bindings.BINDING_RETURN_VALUE.funcref.CAP_JIT_NOT_RESOLVABLE := true;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitIsEqualForEnhancedSyntaxTrees( tree, tree2 );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># test that `CAP_JIT_IGNORE_OPERATION` does not cause errors when comparing</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput"># syntax trees</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">func := function ( L1 )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return [</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        List( List( L1, x -&gt; x ), x -&gt; Size( x ) ),</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        List( List( L1, x -&gt; x ), Size )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    ]; end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitResolvedOperations( tree, [ ] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitAppliedLogic( tree, [ ] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitInlinedArguments( tree );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitInlinedFunctionCalls( tree );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitInlinedBindings( tree );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitDroppedUnusedBindings( tree );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitPrettyPrintSyntaxTree( tree );</span>
-rec(
-  0_type := "EXPR_DECLARATIVE_FUNC",
-  1_id := 1000001,
-  2_nams := [ "L1", "RETURN_VALUE" ],
-  3_narg := 1,
-  4_variadic := false,
-  5_bindings := rec(
-      0_type := "FVAR_BINDING_SEQ",
-      1_names := [ "RETURN_VALUE" ],
-      2_BINDING_RETURN_VALUE := rec(
-          0_type := "EXPR_LIST",
-          1_list := rec(
-              0__type := "SYNTAX_TREE_LIST",
-              0_length := 2,
-              1 := rec(
-                  0_type := "EXPR_FUNCCALL",
-                  1_funcref := rec(
-                      0_type := "EXPR_REF_GVAR",
-                      1_gvar := "List" ),
-                  2_args := rec(
-                      0__type := "SYNTAX_TREE_LIST",
-                      0_length := 2,
-                      1 := rec(
-                          0_type := "EXPR_REF_FVAR",
-                          1_func_id := 1000001,
-                          2_name := "L1" ),
-                      2 := rec(
-                          0_type := "EXPR_DECLARATIVE_FUNC",
-                          1_id := 1000005,
-                          2_nams := [ "logic_new_func_x", "RETURN_VALUE" ],
-                          3_narg := 1,
-                          4_variadic := false,
-                          5_bindings := rec(
-                              0_type := "FVAR_BINDING_SEQ",
-                              1_names := [ "RETURN_VALUE" ],
-                              2_BINDING_RETURN_VALUE := rec(
-                                  0_type := "EXPR_FUNCCALL",
-                                  1_CAP_JIT_IGNORE_OPERATION := true,
-                                  2_funcref := rec(
-                                      0_type := "EXPR_REF_GVAR",
-                                      1_gvar := "Size" ),
-                                  3_args := rec(
-                                      0__type := "SYNTAX_TREE_LIST",
-                                      0_length := 1,
-                                      1 := rec(
-                                          0_type := "EXPR_REF_FVAR",
-                                          1_func_id := 1000005,
-                                          2_name := "logic_new_func_x" ) ) ) 
-                             ) ) ) ),
-              2 := rec(
-                  0_type := "EXPR_FUNCCALL",
-                  1_funcref := rec(
-                      0_type := "EXPR_REF_GVAR",
-                      1_gvar := "List" ),
-                  2_args := rec(
-                      0__type := "SYNTAX_TREE_LIST",
-                      0_length := 2,
-                      1 := rec(
-                          0_type := "EXPR_REF_FVAR",
-                          1_func_id := 1000001,
-                          2_name := "L1" ),
-                      2 := rec(
-                          0_type := "EXPR_DECLARATIVE_FUNC",
-                          1_id := 1000008,
-                          2_nams := [ "logic_new_func_x", "RETURN_VALUE" ],
-                          3_narg := 1,
-                          4_variadic := false,
-                          5_bindings := rec(
-                              0_type := "FVAR_BINDING_SEQ",
-                              1_names := [ "RETURN_VALUE" ],
-                              2_BINDING_RETURN_VALUE := rec(
-                                  0_type := "EXPR_FUNCCALL",
-                                  1_funcref := rec(
-                                      0_type := "EXPR_REF_GVAR",
-                                      1_gvar := "Size" ),
-                                  2_args := rec(
-                                      0__type := "SYNTAX_TREE_LIST",
-                                      0_length := 1,
-                                      1 := rec(
-                                          0_type := "EXPR_REF_FVAR",
-                                          1_func_id := 1000008,
-                                          2_name := "logic_new_func_x" ) ) ) 
-                             ) ) ) ) ) ) ) )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T1 := tree.bindings.BINDING_RETURN_VALUE.list.1;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T2 := tree.bindings.BINDING_RETURN_VALUE.list.2;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsBound( T1.args.2.bindings.BINDING_RETURN_VALUE.CAP_JIT_IGNORE_OPERATION );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsBound( T2.args.2.bindings.BINDING_RETURN_VALUE.CAP_JIT_IGNORE_OPERATION );</span>
-false
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CapJitIsEqualForEnhancedSyntaxTrees( T2, T1 );</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CAP_JIT_INTERNAL_FUNCTION_ID := original_func_id;;</span>
 </pre></div>
 
 
@@ -1221,7 +1097,7 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cat := MatrixCategory( QQ );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, [ cat ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, cat ) );</span>
 function ( cat_1, matrix_1 )
     local morphism_attr_1_1, morphism_attr_2_1;
     morphism_attr_2_1 := matrix_1;
@@ -1387,7 +1263,7 @@ end
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return my_func( inner_func( ) )@</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">end""", "@", ";" ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func3 := CapJitCompiledFunction( func3, [ ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func3 := CapJitCompiledFunction( func3 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func3 );</span>
 function ( x_1 )
     local deduped_1_1;
@@ -1403,30 +1279,10 @@ function ( x_1 )
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func4 := function( x )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  local y; if x then return 1; else return 1; fi; end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func4 := CapJitCompiledFunction( func4, [ true ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func4 := CapJitCompiledFunction( func4 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func4 );</span>
 function ( x_1 )
     return 1;
-end
-</pre></div>
-
-
-<div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">KeyDependentOperation( "MyKeyDependentOperation",</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">                       IsGroup, IsInt, ReturnTrue );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InstallMethod( MyKeyDependentOperationOp,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    [ IsGroup, IsInt ],</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    function( G, int )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        #% CAP_JIT_RESOLVE_FUNCTION</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        return int; end );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup(3);;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MyKeyDependentOperation( G, 2 ) = 2;</span>
-true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MyFunction := G -&gt; MyKeyDependentOperation( G, 2 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := CapJitCompiledFunction( MyFunction, [ G ] );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
-function ( G_1 )
-    return 2;
 end
 </pre></div>
 
@@ -1437,7 +1293,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  return List( [ 1, 2 ], x -&gt; x ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitAppliedLogic( tree, [ ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitAppliedLogic( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );</span>
 function (  )
     return [ function ( x_2 )
@@ -1449,7 +1305,7 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  return Concatenation( [ 1, 2 ], [ 3, 4 ] ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitAppliedLogic( tree, [ ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitAppliedLogic( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );</span>
 function (  )
     return [ 1, 2, 3, 4 ];
@@ -1457,7 +1313,7 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  return Concatenation( [ [ 1, 2 ], [ 3, 4 ] ] ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitAppliedLogic( tree, [ ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitAppliedLogic( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );</span>
 function (  )
     return [ 1, 2, 3, 4 ];
@@ -1465,7 +1321,7 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( my_func )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  return CallFuncList( my_func, [ 1, 2 ] ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitAppliedLogic( tree, [ ] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitAppliedLogic( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );</span>
 function ( my_func_1 )
     return my_func_1( 1, 2 );
@@ -1902,12 +1758,12 @@ Opposite of Category of matrices over Q
 
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Q := HomalgFieldOfRationals();;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MATRIX_CATEGORY( Q : enable_compilation := true );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MATRIX_CATEGORY( Q );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( cat, x )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    #% CAP_JIT_RESOLVE_FUNCTION</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return ZeroObject( cat ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># make sure that ZeroObject( cat ) is not resolved to a global variable</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( { cat, x } -&gt; func( cat, x ), [ vec ] ) );</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( { cat, x } -&gt; func( cat, x ), vec ) );</span>
 function ( cat_1, x_1 )
     return ObjectifyObjectForCAPWithAttributes( rec(
            ), cat_1, Dimension, 0 );
@@ -1918,7 +1774,7 @@ end
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  local x; x := { args... } -&gt; 1; return x( ); end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func, [ ] ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( CapJitCompiledFunction( func ) );</span>
 function ( )
     return 1;
 end
@@ -1931,7 +1787,7 @@ end
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    return x; end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func2 := function( )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  local var; var := 1; var := func1( 2, var ); return var; end;;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := CapJitCompiledFunction( func2, [] );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := CapJitCompiledFunction( func2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func();</span>
 2
 </pre></div>
@@ -1942,7 +1798,7 @@ end
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  local id; id := y -&gt; y; return [ id, id ]; end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># we are not interested in the output, but only that this does not throw</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput"># an error due to some function id being used multiple times</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitCompiledFunction( func, [ ] );;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">CapJitCompiledFunction( func );;</span>
 </pre></div>
 
 

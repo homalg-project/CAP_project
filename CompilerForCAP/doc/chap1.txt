@@ -4,10 +4,12 @@
   
   [1X1.1 [33X[0;0YTerminology[133X[101X
   
-  [33X[0;0YThe compiler is a just-in-time compiler, that is, it needs some arguments to
-  infer  types  of variables. These arguments are refered to as [13XJIT arguments[113X.
-  For a given CAP operation, these are usually the arguments of the first call
-  of the operation.[133X
+  [33X[0;0YThe compiler was started as a just-in-time compiler, that is, it needed some
+  arguments  to  infer  types of variables. Although the compiler now supports
+  precompilation  and  type  signatures can be explicitly given, it still is a
+  just-in-time  compiler  in  the following sense: Only methods for operations
+  getting  a  CAP category as the first argument can be found by the compiler,
+  and an instance of a CAP category is needed for method selection.[133X
   
   [33X[0;0YThe compiler uses GAP's syntax trees for optimizing functions. The term [13Xtree[113X
   always refers to the syntax tree of the function to be compiled. Note that a
@@ -56,26 +58,17 @@
   [33X[0;0YThe  compilation  process  has  two phases: the resolving phase and the rule
   phase.[133X
   
-  [33X[0;0YDuring the resolving phase, operations and global variables are resolved:[133X
+  [33X[0;0YDuring the resolving phase, operations and global variables are resolved.[133X
   
-  [30X    [33X[0;6YAn operation is resolved by executing the function to be compiled with
-        the  JIT  arguments to determine the arguments of the operation. These
-        arguments  are  used  to  call [10XApplicableMethod[110X, and methods annotated
-        with  the  pragma  [10XCAP_JIT_RESOLVE_FUNCTION[110X are resolved. This step is
-        skipped       if       the       operation      is      listed      in
-        [10XCAP_JIT_NON_RESOLVABLE_OPERATION_NAMES[110X.[133X
-  
-  [30X    [33X[0;6YCAP    operations   are   handled   separately:   instead   of   using
-        [10XApplicableMethod[110X,   the  functions  added  to  the  category  via  [10XAdd[110X
-        functions  are  considered, and those do not have to be annotated with
-        [10XCAP_JIT_RESOLVE_FUNCTION[110X.  In particular, caching, pre functions, etc.
-        are bypassed.[133X
+  [30X    [33X[0;6YCAP  operations  can only be resolved if an instance of a CAP category
+        to  which the operation is applied is known. Then, the functions added
+        to  the  category via [10XAdd[110X functions are considered. Note that caching,
+        pre functions, etc. are bypassed.[133X
   
   [30X    [33X[0;6YYou     can     also     use     [10XInstallMethodForCompilerForCAP[110X     or
         [10XInstallOtherMethodForCompilerForCAP[110X  (see the documentation of CAP) to
-        make methods known to the compiler. These methods are resolved via the
-        number   of   arguments   and   do  not  have  to  be  annotated  with
-        [10XCAP_JIT_RESOLVE_FUNCTION[110X.[133X
+        make  methods  which accept a CAP category as the first argument known
+        to the compiler. The same restrictions as for CAP operations apply.[133X
   
   [30X    [33X[0;6YReferences  to  global  functions are resolved if the function name is
         not  listed in [10XCAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES[110X and if the
@@ -92,9 +85,6 @@
   
   [30X    [33X[0;6YIf  the  pragma  [10XCAP_JIT_DROP_NEXT_STATEMENT[110X  occurs  in  the resolved
         function, the statement following the pragma is removed.[133X
-  
-  [30X    [33X[0;6YIf a KeyDependentOperation is detected, the corresponding [10XOp[110X method is
-        resolved.[133X
   
   [33X[0;0YFor      details      see      [2XCapJitResolvedOperations[102X     ([14X2.5-17[114X)     and
   [2XCapJitResolvedGlobalVariables[102X  ([14X2.5-16[114X).  If no operation or global variable
@@ -114,20 +104,15 @@
   
   [1X1.3 [33X[0;0YRequirements[133X[101X
   
-  [33X[0;0YThere are two main requirements for the steps described above to be correct:[133X
+  [33X[0;0YThere are some requirements for the steps described above to be correct:[133X
   
   [30X    [33X[0;6YThe  code must not depend on side effects (otherwise dropping "unused"
         variables or inlining variables could change results).[133X
   
-  [30X    [33X[0;6YThe  methods  selected  for  the operations during the resolving phase
-        must  be  independent  of  the JIT arguments, that is, they must yield
-        correct  results  for  all  allowed  arguments  of  the function to be
-        compiled.   Thus,   be   careful   which  methods  you  annotate  with
-        [10XCAP_JIT_RESOLVE_FUNCTION[110X. In particular, the CAP categories of objects
-        and  morphisms  appearing  during the execution must be independent of
-        the JIT arguments.[133X
-  
-  [33X[0;0YThere are also additional strong requirements:[133X
+  [30X    [33X[0;6YTechnically,  the  result  is only valid for the concrete CAP category
+        which  was  used to resolve CAP operations and get typing information.
+        That  is,  for parametric categories you must check manually for which
+        parameters the result is valid.[133X
   
   [30X    [33X[0;6YOnly  assignments  to  local  variables,  if/elif/else statements, and
         return statements are allowed as statements in functions.[133X
@@ -159,27 +144,89 @@
         expensive)  [10XList[110X  call.  Thus,  code  inside  if/else  statements must
         execute without error even if moved outside of the if/else statement.[133X
   
-  [33X[0;0YThere  is  an  additional  weak  requirement when passing JIT arguments: The
-  compiler mainly optimizes the code paths covered when executing the function
-  with the JIT arguments. Thus, the JIT arguments should represent a "generic"
-  call,  i.e.,  they should not run into edge cases which do not happen with a
-  "generic"  call.  Still, the execution using JIT arguments should be fast to
-  improve compilation times.[133X
-  
   [33X[0;0YAdditionally,  there  is  no  detection  for  recursive  function  calls, so
   resolving such a function call leads to an infinite loop.[133X
   
   
-  [1X1.4 [33X[0;0YActivating the compiler[133X[101X
+  [1X1.4 [33X[0;0YPrecompiling categories[133X[101X
   
-  [33X[0;0YYou  can  activate  the compiler by passing the option [10Xenable_compilation[110X to
-  any  category  constructor.  If [10Xenable_compilation[110X is set to [10Xtrue[110X, any basic
-  operation   will   be   compiled   when   called  for  the  first  time.  If
-  [10Xenable_compilation[110X is a list of strings, compilation will only happen if the
-  function name of the basic operation appears in this list.[133X
+  [33X[0;0YThe  main mode of application of the compiler is precompiling categories and
+  storing  the  result  in  a  file for later use via [2XCapJitPrecompileCategory[102X
+  ([14X1.4-1[114X).[133X
+  
+  [1X1.4-1 CapJitPrecompileCategory[101X
+  
+  [33X[1;0Y[29X[2XCapJitPrecompileCategory[102X( [3Xcategory_constructor[103X, [3Xgiven_arguments[103X, [3Xpackage_name[103X, [3Xcompiled_category_name[103X ) [32X function[133X
+  
+  [33X[0;0YCompiles   operations   of   the  CAP  category  returned  by  the  function
+  [3Xcategory_constructor[103X applied to [3Xgiven_arguments[103X. The result is available via
+  a global function called [3Xcompiled_category_name[103X which is written to the file
+  [3Xpackage_name[103X[10X/precompiled_categories/[110X[3Xcompiled_category_name[103X[10X.gi[110X.   The  global
+  function  takes  the  same arguments as [3Xcategory_constructor[103X and returns the
+  category with the compiled functions installed as primitive operations. If a
+  list  of  operations  is given via the option [10Xoperations[110X, only operations in
+  this list are precompiled. Else all installed operations of the category are
+  precompiled. Technical requirements:[133X
+  
+  [30X    [33X[0;6Y[3Xcategory_constructor[103X must be a regular function, i.e. not an operation
+        or a kernel function.[133X
+  
+  [30X    [33X[0;6Y[3Xcategory_constructor[103X   must   support   the  option  [10XFinalizeCategory[110X.
+        WARNING:  When  using attributes you might run into errors because the
+        options  are  only  respected  the  first  time you call the attribute
+        getter.  To catch such a situation, [3Xcategory_constructor[103X is applied to
+        [3Xgiven_arguments[103X    twice    and   if   the   results   are   identical
+        ([10XIsIdenticalObj[110X) an error is raised.[133X
+  
+  [30X    [33X[0;6YCAP  operations  returning  [10Xfail[110X  are  excluded  from  the compilation
+        because they usually do not fulfill all requirements of the compiler.[133X
+  
+  [1X1.4-2 CapJitPrecompileCategoryAndCompareResult[101X
+  
+  [33X[1;0Y[29X[2XCapJitPrecompileCategoryAndCompareResult[102X( [3Xcategory_constructor[103X, [3Xgiven_arguments[103X, [3Xpackage_name[103X, [3Xcompiled_category_name[103X ) [32X function[133X
+  
+  [33X[0;0YCalls [2XCapJitPrecompileCategory[102X ([14X1.4-1[114X) with the given arguments and displays
+  a      warning      if      this      changes      the      contents      of
+  [3Xpackage_name[103X[10X/precompiled_categories/[110X[3Xcompiled_category_name[103X[10X.gi[110X.[133X
   
   
-  [1X1.5 [33X[0;0YGiving hints to the compiler[133X[101X
+  [1X1.5 [33X[0;0YCompiling a function manually[133X[101X
+  
+  [33X[0;0YOne  can  also  compile  a function [10Xfunc[110X manually via [2XCapJitCompiledFunction[102X
+  ([14X1.5-2[114X).[133X
+  
+  [1X1.5-1 CapJitCompiledCAPOperationAsEnhancedSyntaxTree[101X
+  
+  [33X[1;0Y[29X[2XCapJitCompiledCAPOperationAsEnhancedSyntaxTree[102X( [3Xcat[103X, [3Xoperation_name[103X ) [32X function[133X
+  
+  [33X[0;0YA  special  version  of  [2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X  ([14X1.5-3[114X)
+  compiling the operation given by [3Xoperation_name[103X in [3Xcat[103X.[133X
+  
+  [1X1.5-2 CapJitCompiledFunction[101X
+  
+  [33X[1;0Y[29X[2XCapJitCompiledFunction[102X( [3Xfunc[103X[, [3Xtype_signature[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya function[133X
+  
+  [33X[0;0YReturns   a   compiled   version   of   the  function  [3Xfunc[103X  with  signature
+  [3Xtype_signature[103X   (see   [2XCapJitInferredDataTypes[102X  ([14X2.5-8[114X)).  If  [3Xfunc[103X  is  an
+  operation  or a kernel function, it is returned unchanged. If [3Xtype_signature[103X
+  is not given, all steps which require knowledge about the types of variables
+  are  skipped.  If  a  full  type  signature  is  not available but the first
+  argument  of  [3Xfunc[103X  is  a CAP category, an instance of a CAP category can be
+  given  as the second argument. In this case, the category is used to get the
+  type information required to resolve CAP operations.[133X
+  
+  [1X1.5-3 CapJitCompiledFunctionAsEnhancedSyntaxTree[101X
+  
+  [33X[1;0Y[29X[2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X( [3Xfunc[103X[, [3Xtype_signature[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ya record[133X
+  
+  [33X[0;0YLike  [2XCapJitCompiledFunction[102X ([14X1.5-2[114X), but returns an enhanced syntax tree of
+  the  compiled  function.  [3Xfunc[103X must not be an operation or a kernel function
+  because those cannot properly be represented as a syntax tree.[133X
+  
+  
+  [1X1.6 [33X[0;0YGiving hints to the compiler[133X[101X
   
   [33X[0;0YYou can give hints to the compiler to improve the result of the compilation.
   Compiler    hints    are    attached    to    the    category    by   making
@@ -209,74 +256,24 @@
   argument of the function.[133X
   
   
-  [1X1.6 [33X[0;0YStopping the compiler at a certain level[133X[101X
+  [1X1.7 [33X[0;0YStopping the compiler at a certain level[133X[101X
   
   [33X[0;0YYou  can use [10XStopCompilationAtCategory[110X to prevent the compiler from inlining
   and  optimizing code of a given category. You can revert this decision using
   [10XContinueCompilationAtCategory[110X.[133X
   
-  [1X1.6-1 StopCompilationAtCategory[101X
+  [1X1.7-1 StopCompilationAtCategory[101X
   
   [33X[1;0Y[29X[2XStopCompilationAtCategory[102X( [3Xcategory[103X ) [32X function[133X
   
   [33X[0;0YStops the compiler from inlining and optimizing code of [3Xcategory[103X.[133X
   
-  [1X1.6-2 ContinueCompilationAtCategory[101X
+  [1X1.7-2 ContinueCompilationAtCategory[101X
   
   [33X[1;0Y[29X[2XContinueCompilationAtCategory[102X( [3Xcategory[103X ) [32X function[133X
   
   [33X[0;0YAllows  the  compiler  to  inline and optimize code of [3Xcategory[103X (this is the
   default).[133X
-  
-  
-  [1X1.7 [33X[0;0YPrecompiling categories[133X[101X
-  
-  [33X[0;0YYou can compile categories and store the result in a file for later use.[133X
-  
-  [1X1.7-1 CapJitPrecompileCategory[101X
-  
-  [33X[1;0Y[29X[2XCapJitPrecompileCategory[102X( [3Xcategory_constructor[103X, [3Xgiven_arguments[103X, [3Xpackage_name[103X, [3Xcompiled_category_name[103X ) [32X function[133X
-  
-  [33X[0;0YCompiles   operations   of   the  CAP  category  returned  by  the  function
-  [3Xcategory_constructor[103X applied to [3Xgiven_arguments[103X. The result is available via
-  a global function called [3Xcompiled_category_name[103X which is written to the file
-  [3Xpackage_name[103X[10X/precompiled_categories/[110X[3Xcompiled_category_name[103X[10X.gi[110X.   The  global
-  function  takes  the  same arguments as [3Xcategory_constructor[103X and returns the
-  category with the compiled functions installed as primitive operations. If a
-  list  of  operations  is given via the option [10Xoperations[110X, only operations in
-  this list are precompiled. Else all installed operations of the category are
-  precompiled. Technical requirements:[133X
-  
-  [30X    [33X[0;6Y[3Xcategory_constructor[103X must be a regular function, i.e. not an operation
-        or a kernel function.[133X
-  
-  [30X    [33X[0;6Y[3Xcategory_constructor[103X   must   support   the  option  [10XFinalizeCategory[110X.
-        WARNING:  When  using attributes you might run into errors because the
-        options  are  only  respected  the  first  time you call the attribute
-        getter.  To catch such a situation, [3Xcategory_constructor[103X is applied to
-        [3Xgiven_arguments[103X    twice    and   if   the   results   are   identical
-        ([10XIsIdenticalObj[110X) an error is raised.[133X
-  
-  [30X    [33X[0;6YThe  compiler  has  to  create  a valid input for the operations which
-        should   be   compiled.   Currently,   this  leads  to  the  following
-        restrictions (detailed errors are thrown if any of the restrictions is
-        not met):[133X
-  
-        [30X    [33X[0;12YOnly  categories  with  a  zero object and zero morphisms can be
-              compiled.[133X
-  
-        [30X    [33X[0;12YNot all CAP operations are available for compilation.[133X
-  
-        [30X    [33X[0;12Y[10XWithGiven[110X   operations  can  only  be  compiled  if  the  object
-              operation is computable.[133X
-  
-  [1X1.7-2 CapJitPrecompileCategoryAndCompareResult[101X
-  
-  [33X[1;0Y[29X[2XCapJitPrecompileCategoryAndCompareResult[102X( [3Xcategory_constructor[103X, [3Xgiven_arguments[103X, [3Xpackage_name[103X, [3Xcompiled_category_name[103X ) [32X function[133X
-  
-  [33X[0;0YCalls [2XCapJitPrecompileCategory[102X ([14X1.7-1[114X) with the given arguments and displays
-  a      warning      if      this      changes      the      contents      of
-  [3Xpackage_name[103X[10X/precompiled_categories/[110X[3Xcompiled_category_name[103X[10X.gi[110X.[133X
   
   
   [1X1.8 [33X[0;0YGetting information about the compilation process[133X[101X
@@ -291,49 +288,7 @@
   [33X[0;0YInfo class used for info messsages of the CAP compiler.[133X
   
   
-  [1X1.9 [33X[0;0YCompiling a function manually[133X[101X
-  
-  [33X[0;0YUse  [2XCapJitCompiledFunction[102X  ([14X1.9-2[114X)  to  compile  a  function [10Xfunc[110X with JIT
-  arguments  [10Xjit_args[110X.  [10Xjit_args[110X should represent a "generic" call, i.e., they
-  should  not  run  into edge cases which do not happen with a "generic" call.
-  Still,  the  execution  using [10Xjit_args[110X should be fast to improve compilation
-  times.  If  [10Xfunc[110X  gets  a CAP category as the first argument and you want to
-  compile  [10Xfunc[110X  ahead  of time, you can use the CAP category as the first and
-  only  entry  of  [10Xjit_args[110X. In this case, the CAP category is used to get the
-  type information required to resolve CAP operations.[133X
-  
-  [1X1.9-1 CapJitCompiledCAPOperationAsEnhancedSyntaxTree[101X
-  
-  [33X[1;0Y[29X[2XCapJitCompiledCAPOperationAsEnhancedSyntaxTree[102X( [3Xcat[103X, [3Xoperation_name[103X ) [32X function[133X
-  
-  [33X[0;0YA  special  version  of  [2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X  ([14X1.9-3[114X)
-  compiling  the  operation  given  by  [3Xoperation_name[103X  in  [3Xcat[103X.  [10Xjit_args[110X are
-  constructed by taking [10XZeroObject[110X and [10XZeroMorphism[110X if possible.[133X
-  
-  [1X1.9-2 CapJitCompiledFunction[101X
-  
-  [33X[1;0Y[29X[2XCapJitCompiledFunction[102X( [3Xfunc[103X, [3Xjit_args[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya function[133X
-  
-  [33X[0;0YReturns  a compiled version of the function [3Xfunc[103X (if [3Xfunc[103X is an operation or
-  a kernel function, it is returned unchanged). The list of arguments [3Xjit_args[103X
-  is  used  to  infer  the types of variables. If [3Xjit_args[103X is shorter than the
-  number  of  arguments  accepted  by  [3Xfunc[103X, all steps which require knowledge
-  about  the types of variables are skipped. If the first entry of [3Xjit_args[103X is
-  a  CAP  category, this category is used to get the type information required
-  to resolve CAP operations.[133X
-  
-  [1X1.9-3 CapJitCompiledFunctionAsEnhancedSyntaxTree[101X
-  
-  [33X[1;0Y[29X[2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X( [3Xfunc[103X, [3Xjit_args[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya record[133X
-  
-  [33X[0;0YLike  [2XCapJitCompiledFunction[102X ([14X1.9-2[114X), but returns an enhanced syntax tree of
-  the  compiled  function.  [3Xfunc[103X must not be an operation or a kernel function
-  because those cannot properly be represented as a syntax tree.[133X
-  
-  
-  [1X1.10 [33X[0;0YFAQ[133X[101X
+  [1X1.9 [33X[0;0YFAQ[133X[101X
   
   [30X    [33X[0;6YQ: Why is my function not resolved?[133X
   
@@ -346,15 +301,6 @@
   variables  are  resolved by [2XCapJitResolvedGlobalVariables[102X ([14X2.5-16[114X). Possibly
   you have adapt [2XCapJitResolvedGlobalVariables[102X ([14X2.5-16[114X) to your setting.[133X
   
-  [30X    [33X[0;6YQ: Why is my operation not resolved?[133X
-  
-  [33X[0;0YA:  The operation might be listed in [10XCAP_JIT_NON_RESOLVABLE_OPERATION_NAMES[110X.
-  If  the  operation  is  not  a  CAP  operation  and  if there are no methods
-  installed   for   the   operation   via   [10XInstallMethodForCompilerForCAP[110X  or
-  [10XInstallOtherMethodForCompilerForCAP[110X,  the  compiler  must be able to get the
-  arguments  of  the  call  of  the operation from the JIT arguments. Then the
-  rules in the description of [2XCapJitResolvedOperations[102X ([14X2.5-17[114X) apply.[133X
-  
   [30X    [33X[0;6YQ: Why do I get the error "cannot find iteration key"?[133X
   
   [33X[0;0YA:  For  each  syntax  tree  node  type, the tree iterator has to know which
@@ -362,11 +308,11 @@
   missing keys to [10XCAP_INTERNAL_JIT_ITERATION_KEYS[110X.[133X
   
   [30X    [33X[0;6YQ:  Why  do  I  get  the  error  "tree  has no kown type" when calling
-        [2XCapJitPrettyPrintSyntaxTree[102X ([14X2.4-3[114X)?[133X
+        [2XCapJitPrettyPrintSyntaxTree[102X ([14X2.4-1[114X)?[133X
   
-  [33X[0;0YA:  [2XCapJitPrettyPrintSyntaxTree[102X  ([14X2.4-3[114X)  needs  to handle every syntax tree
+  [33X[0;0YA:  [2XCapJitPrettyPrintSyntaxTree[102X  ([14X2.4-1[114X)  needs  to handle every syntax tree
   node    type    separately.    Please    add    the    missing    type    to
-  [2XCapJitPrettyPrintSyntaxTree[102X ([14X2.4-3[114X).[133X
+  [2XCapJitPrettyPrintSyntaxTree[102X ([14X2.4-1[114X).[133X
   
   [30X    [33X[0;6YQ:  Why  is  do  I get the error "a local variable with name <name> is
         assigned  more than once (not as a part of a rapid reassignment), this

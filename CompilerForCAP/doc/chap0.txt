@@ -6,10 +6,10 @@
                    [1X Speed up computations in CAP categories [101X
   
   
-                                   2022.01-07
+                                   2022.01-08
   
   
-                                28 January 2022
+                                31 January 2022
   
   
                                 Fabian Zickgraf
@@ -34,21 +34,20 @@
     1.1 [33X[0;0YTerminology[133X
     1.2 [33X[0;0YCapabilities of the compiler[133X
     1.3 [33X[0;0YRequirements[133X
-    1.4 [33X[0;0YActivating the compiler[133X
-    1.5 [33X[0;0YGiving hints to the compiler[133X
-    1.6 [33X[0;0YStopping the compiler at a certain level[133X
-      1.6-1 StopCompilationAtCategory
-      1.6-2 ContinueCompilationAtCategory
-    1.7 [33X[0;0YPrecompiling categories[133X
-      1.7-1 CapJitPrecompileCategory
-      1.7-2 CapJitPrecompileCategoryAndCompareResult
+    1.4 [33X[0;0YPrecompiling categories[133X
+      1.4-1 CapJitPrecompileCategory
+      1.4-2 CapJitPrecompileCategoryAndCompareResult
+    1.5 [33X[0;0YCompiling a function manually[133X
+      1.5-1 CapJitCompiledCAPOperationAsEnhancedSyntaxTree
+      1.5-2 CapJitCompiledFunction
+      1.5-3 CapJitCompiledFunctionAsEnhancedSyntaxTree
+    1.6 [33X[0;0YGiving hints to the compiler[133X
+    1.7 [33X[0;0YStopping the compiler at a certain level[133X
+      1.7-1 StopCompilationAtCategory
+      1.7-2 ContinueCompilationAtCategory
     1.8 [33X[0;0YGetting information about the compilation process[133X
       1.8-1 InfoCapJit
-    1.9 [33X[0;0YCompiling a function manually[133X
-      1.9-1 CapJitCompiledCAPOperationAsEnhancedSyntaxTree
-      1.9-2 CapJitCompiledFunction
-      1.9-3 CapJitCompiledFunctionAsEnhancedSyntaxTree
-    1.10 [33X[0;0YFAQ[133X
+    1.9 [33X[0;0YFAQ[133X
   2 [33X[0;0YImproving and extending the compiler[133X
     2.1 [33X[0;0YLogic[133X
       2.1-1 CapJitAddLogicFunction
@@ -59,24 +58,22 @@
     2.3 [33X[0;0YIterating over a syntax tree[133X
       2.3-1 CapJitIterateOverTree
     2.4 [33X[0;0YTools[133X
-      2.4-1 CapJitGetFunctionCallArgumentsFromJitArgs
-      2.4-2 CapJitGetExpressionValueFromJitArgs
-      2.4-3 CapJitPrettyPrintSyntaxTree
-      2.4-4 CapJitIsCallToGlobalFunction
-      2.4-5 CapJitResultFuncCombineChildren
-      2.4-6 CapJitContainsRefToFVAROutsideOfFuncStack
-      2.4-7 CapJitGetOrCreateGlobalVariable
-      2.4-8 CapJitFindNodeDeep
-      2.4-9 CapJitFindNodes
-      2.4-10 CapJitGetNodeByPath
-      2.4-11 CapJitRemovedReturnFail
-      2.4-12 CapJitPrettyPrintFunction
-      2.4-13 CapJitCopyWithNewFunctionIDs
-      2.4-14 CapJitIsEqualForEnhancedSyntaxTrees
-      2.4-15 CapJitAddBinding
-      2.4-16 CapJitValueOfBinding
-      2.4-17 CapJitUnbindBinding
-      2.4-18 CapJitReplacedEXPR_REF_FVARByValue
+      2.4-1 CapJitPrettyPrintSyntaxTree
+      2.4-2 CapJitIsCallToGlobalFunction
+      2.4-3 CapJitResultFuncCombineChildren
+      2.4-4 CapJitContainsRefToFVAROutsideOfFuncStack
+      2.4-5 CapJitGetOrCreateGlobalVariable
+      2.4-6 CapJitFindNodeDeep
+      2.4-7 CapJitFindNodes
+      2.4-8 CapJitGetNodeByPath
+      2.4-9 CapJitRemovedReturnFail
+      2.4-10 CapJitPrettyPrintFunction
+      2.4-11 CapJitCopyWithNewFunctionIDs
+      2.4-12 CapJitIsEqualForEnhancedSyntaxTrees
+      2.4-13 CapJitAddBinding
+      2.4-14 CapJitValueOfBinding
+      2.4-15 CapJitUnbindBinding
+      2.4-16 CapJitReplacedEXPR_REF_FVARByValue
     2.5 [33X[0;0YCompilation steps[133X
       2.5-1 CapJitAppliedCompilerHints
       2.5-2 CapJitReplacedGlobalVariablesByCategoryAttributes

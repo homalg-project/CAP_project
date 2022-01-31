@@ -9,10 +9,10 @@
   
   [33X[0;0YFor debugging you can:[133X
   
-  [30X    [33X[0;6Yuse [2XCapJitPrettyPrintSyntaxTree[102X ([14X2.4-3[114X),[133X
+  [30X    [33X[0;6Yuse [2XCapJitPrettyPrintSyntaxTree[102X ([14X2.4-1[114X),[133X
   
   [30X    [33X[0;6Yset       [10Xdebug[110X       to       [10Xtrue[110X      in      the      code      of
-        [2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X  ([14X1.9-3[114X) (Note: this causes
+        [2XCapJitCompiledFunctionAsEnhancedSyntaxTree[102X  ([14X1.5-3[114X) (Note: this causes
         informational break loops which are not actual errors),[133X
   
   [30X    [33X[0;6Yuse  the  [10Xdebug[110X  and [10Xdebug_path[110X record entries of logic templates (see
@@ -28,11 +28,11 @@
   [33X[0;0YAdds  the  function  [3Xfunc[103X  to  the  list  of  logic functions. For a list of
   pre-installed  logic  functions,  which can be used as guiding examples, see
   [10XCompilerForCAP/gap/Logic.gi[110X.  Technically,  [3Xfunc[103X should accept an (enhanced)
-  syntax  tree  and  some  JIT arguments and return an (enhanced) syntax tree.
-  Semantically,  [3Xfunc[103X  should  use some kind of "logic" to transform the tree.
-  For  example,  [3Xfunc[103X could look for calls of [10XCallFuncList[110X and replace them by
-  calls  to  the  actual  function.  Note:  Often  it is easier to use a logic
-  template (see [2XCapJitAddLogicTemplate[102X ([14X2.1-2[114X)) than a logic function.[133X
+  syntax  tree and return an (enhanced) syntax tree. Semantically, [3Xfunc[103X should
+  use some kind of "logic" to transform the tree. For example, [3Xfunc[103X could look
+  for  calls of [10XCallFuncList[110X and replace them by calls to the actual function.
+  Note: Often it is easier to use a logic template (see [2XCapJitAddLogicTemplate[102X
+  ([14X2.1-2[114X)) than a logic function.[133X
   
   [1X2.1-2 CapJitAddLogicTemplate[101X
   
@@ -74,11 +74,8 @@
         strings   occuring  in  the  list  [10Xvariable_names[110X  are  considered  as
         variables,  i.e.,  they  match  any  value  in the tree. If a variable
         occurs  multiple  times,  the  corresponding parts of the tree must be
-        equal.[133X
-  
-  [30X    [33X[0;6Y[2XCapJitAppliedLogicTemplates[102X   ([14X2.5-15[114X)  uses  [3Xjit_args[103X  to  compute  a
-        concrete  value  of each variable. The template is only applied if all
-        values match the corresponding filters in [10Xvariable_filters[110X.[133X
+        equal.   The  template  is  only  applied  if  all  values  match  the
+        corresponding filters in [10Xvariable_filters[110X.[133X
   
   [30X    [33X[0;6YFor   each   function   in  [10Xdst_template[110X,  [2XCapJitAppliedLogicTemplates[102X
         ([14X2.5-15[114X)  tries  to find a corresponding function in [10Xsrc_template[110X. The
@@ -175,8 +172,10 @@
   [30X    [33X[0;6YAll  statements  after  [10Xif  ... then return ...; fi;[110X are moved into an
         [10Xelse[110X branch.[133X
   
-  [30X    [33X[0;6Y[10XEXPR_ELM_MAT[110X  is  replaced  by  a call to [10XMatElm[110X such that it does not
-        require special handling.[133X
+  [30X    [33X[0;6YThe             syntax             tree            types            in
+        [10XCAP_JIT_INTERNAL_SYNTAX_TREE_TO_OPERATION_TRANSLATIONS[110X           (e.g.
+        [10XEXPR_ELM_MAT[110X)  are  replaced  by calls to corresponding operations (so
+        that they do not require special handling).[133X
   
   [30X    [33X[0;6Yif/elif/else  statements  must all end with the assignment to the same
         local  variable  and  must have an else clause. They are coded using a
@@ -220,7 +219,9 @@
   thrown  if  such  higher  variables  exist. If a list is given as the option
   [10Xgiven_arguments[110X,  references  to  the  [10Xi[110X-th  argument  of  the  function are
   replaced   by   references   to   a   global  variable  with  the  value  of
-  [10Xgiven_arguments[i][110X (only in case this position is bound).[133X
+  [10Xgiven_arguments[i][110X  (only  in  case  this  position  is  bound).  If  a type
+  signature  (see  [2XCapJitInferredDataTypes[102X  ([14X2.5-8[114X))  of  [3Xfunc[103X is given as the
+  option [10Xtype_signature[110X, it is attached to the resulting tree.[133X
   
   [1X2.2-2 ENHANCED_SYNTAX_TREE_CODE[101X
   
@@ -284,7 +285,7 @@
         [10Xresult[110X,   [10Xkeys[110X   (a   list   containing   the  children's  keys),  and
         [3Xadditional_arguments[103X.  The  return  value  should be the result of the
         current  tree  formed by combining the results of the children. For an
-        example see [2XCapJitResultFuncCombineChildren[102X ([14X2.4-5[114X).[133X
+        example see [2XCapJitResultFuncCombineChildren[102X ([14X2.4-3[114X).[133X
   
   [30X    [33X[0;6YFinally, the return value of [3Xresult_func[103X is returned.[133X
   
@@ -292,42 +293,20 @@
   make  modifications in [3Xpre_func[103X, [3Xresult_func[103X, and [3Xadditional_arguments_func[103X.
   If  you  do  not want to make these modifcations in-place, you can replace a
   (sub-)tree  by  a  modified  version  in  [3Xpre_func[103X  and combine the modified
-  (sub-)trees   again   using   [2XCapJitResultFuncCombineChildren[102X   ([14X2.4-5[114X)   as
+  (sub-)trees   again   using   [2XCapJitResultFuncCombineChildren[102X   ([14X2.4-3[114X)   as
   [3Xresult_func[103X.[133X
   
   
   [1X2.4 [33X[0;0YTools[133X[101X
   
-  [1X2.4-1 CapJitGetFunctionCallArgumentsFromJitArgs[101X
-  
-  [33X[1;0Y[29X[2XCapJitGetFunctionCallArgumentsFromJitArgs[102X( [3Xtree[103X, [3Xpath[103X, [3Xjit_args[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
-  
-  [33X[0;0YComputes  the  arguments of the function call at the given [3Xpath[103X in [3Xtree[103X when
-  executing  the  function  defined  by  [3Xtree[103X  with arguments [3Xjit_args[103X. If the
-  arguments  cannot  be determined, a list with first entry [10Xfalse[110X is returned.
-  Otherwise, a list with [10Xtrue[110X as the first value and the computed arguments as
-  the second value is returned.[133X
-  
-  [1X2.4-2 CapJitGetExpressionValueFromJitArgs[101X
-  
-  [33X[1;0Y[29X[2XCapJitGetExpressionValueFromJitArgs[102X( [3Xtree[103X, [3Xpath[103X, [3Xjit_args[103X ) [32X function[133X
-  [6XReturns:[106X  [33X[0;10Ya list[133X
-  
-  [33X[0;0YComputes  the  value  of  the  expression  at  the  given  [3Xpath[103X in [3Xtree[103X when
-  executing the function defined by [3Xtree[103X with arguments [3Xjit_args[103X. If the value
-  cannot  be determined, a list with first entry [10Xfalse[110X is returned. Otherwise,
-  a  list  with  [10Xtrue[110X  as the first value and the computed value as the second
-  value is returned.[133X
-  
-  [1X2.4-3 CapJitPrettyPrintSyntaxTree[101X
+  [1X2.4-1 CapJitPrettyPrintSyntaxTree[101X
   
   [33X[1;0Y[29X[2XCapJitPrettyPrintSyntaxTree[102X( [3Xtree[103X ) [32X function[133X
   
   [33X[0;0YDisplays  an  enhanced syntax tree in a more useful way. For example, prints
   the type of a node on top.[133X
   
-  [1X2.4-4 CapJitIsCallToGlobalFunction[101X
+  [1X2.4-2 CapJitIsCallToGlobalFunction[101X
   
   [33X[1;0Y[29X[2XCapJitIsCallToGlobalFunction[102X( [3Xtree[103X, [3Xcondition[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -337,7 +316,7 @@
   string.  Othwerwise,  [3Xcondition[103X  must be a function returning a boolean when
   applied to [10Xgvar[110X.[133X
   
-  [1X2.4-5 CapJitResultFuncCombineChildren[101X
+  [1X2.4-3 CapJitResultFuncCombineChildren[101X
   
   [33X[1;0Y[29X[2XCapJitResultFuncCombineChildren[102X( [3Xtree[103X, [3Xresult[103X, [3Xadditional_arguments[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list or a record[133X
@@ -347,7 +326,7 @@
   keys  of  children of [3Xtree[103X and returns the result. See [2XCapJitIterateOverTree[102X
   ([14X2.3-1[114X) for more details.[133X
   
-  [1X2.4-6 CapJitContainsRefToFVAROutsideOfFuncStack[101X
+  [1X2.4-4 CapJitContainsRefToFVAROutsideOfFuncStack[101X
   
   [33X[1;0Y[29X[2XCapJitContainsRefToFVAROutsideOfFuncStack[102X( [3Xtree[103X, [3Xinitial_func_id_stack[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -356,7 +335,7 @@
   FVAR  which references a function outside of its function stack. Such a tree
   is not well-defined.[133X
   
-  [1X2.4-7 CapJitGetOrCreateGlobalVariable[101X
+  [1X2.4-5 CapJitGetOrCreateGlobalVariable[101X
   
   [33X[1;0Y[29X[2XCapJitGetOrCreateGlobalVariable[102X( [3Xvalue[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya string[133X
@@ -365,7 +344,7 @@
   variable.  If  [3Xvalue[103X  has already been assigned to a global variable by this
   function before, simply returns the name of that global variable.[133X
   
-  [1X2.4-8 CapJitFindNodeDeep[101X
+  [1X2.4-6 CapJitFindNodeDeep[101X
   
   [33X[1;0Y[29X[2XCapJitFindNodeDeep[102X( [3Xtree[103X, [3Xcondition_func[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record or fail[133X
@@ -376,7 +355,7 @@
   over  their  parents  (i.e.  a  "deep"  node is returned). If no node can be
   found, [10Xfail[110X is returned.[133X
   
-  [1X2.4-9 CapJitFindNodes[101X
+  [1X2.4-7 CapJitFindNodes[101X
   
   [33X[1;0Y[29X[2XCapJitFindNodes[102X( [3Xtree[103X, [3Xcondition_func[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -386,7 +365,7 @@
   and  must  return  a  boolean.  Returns  a list of nodes for which this call
   yields true.[133X
   
-  [1X2.4-10 CapJitGetNodeByPath[101X
+  [1X2.4-8 CapJitGetNodeByPath[101X
   
   [33X[1;0Y[29X[2XCapJitGetNodeByPath[102X( [3Xtree[103X, [3Xpath[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -394,7 +373,7 @@
   [33X[0;0YGets  the  node  of  [3Xtree[103X  with  path  [3Xpath[103X. Throws an error if no such node
   exists.[133X
   
-  [1X2.4-11 CapJitRemovedReturnFail[101X
+  [1X2.4-9 CapJitRemovedReturnFail[101X
   
   [33X[1;0Y[29X[2XCapJitRemovedReturnFail[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -403,7 +382,7 @@
   (or  similar)  from  the  statements  of a [3Xtree[103X of type [10XEXPR_FUNC[110X. Throws an
   error if it cannot find such a statement.[133X
   
-  [1X2.4-12 CapJitPrettyPrintFunction[101X
+  [1X2.4-10 CapJitPrettyPrintFunction[101X
   
   [33X[1;0Y[29X[2XCapJitPrettyPrintFunction[102X( [3Xfunc[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya string[133X
@@ -411,7 +390,7 @@
   [33X[0;0YPretty  prints  the  function  [3Xfunc[103X  and  returns the result. [3Xfunc[103X must be a
   regular function, i.e. not an operation or a kernel function.[133X
   
-  [1X2.4-13 CapJitCopyWithNewFunctionIDs[101X
+  [1X2.4-11 CapJitCopyWithNewFunctionIDs[101X
   
   [33X[1;0Y[29X[2XCapJitCopyWithNewFunctionIDs[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -419,7 +398,7 @@
   [33X[0;0YReturns  a  structural  copy of the enhanced syntax [3Xtree[103X which is 1:1 except
   that all functions have new, unused IDs.[133X
   
-  [1X2.4-14 CapJitIsEqualForEnhancedSyntaxTrees[101X
+  [1X2.4-12 CapJitIsEqualForEnhancedSyntaxTrees[101X
   
   [33X[1;0Y[29X[2XCapJitIsEqualForEnhancedSyntaxTrees[102X( [3Xtree1[103X, [3Xtree2[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -433,7 +412,7 @@
   [30X    [33X[0;6Ychanging  the  names  of  global variables while still referencing the
         identical value.[133X
   
-  [1X2.4-15 CapJitAddBinding[101X
+  [1X2.4-13 CapJitAddBinding[101X
   
   [33X[1;0Y[29X[2XCapJitAddBinding[102X( [3Xbindings[103X, [3Xname[103X, [3Xvalue[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -441,7 +420,7 @@
   [33X[0;0YAdds  a  binding for [3Xname[103X with value [3Xvalue[103X to a syntax tree [3Xbindings[103X of type
   [10XFVAR_BINDING_SEQ[110X.[133X
   
-  [1X2.4-16 CapJitValueOfBinding[101X
+  [1X2.4-14 CapJitValueOfBinding[101X
   
   [33X[1;0Y[29X[2XCapJitValueOfBinding[102X( [3Xbindings[103X, [3Xname[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -449,14 +428,14 @@
   [33X[0;0YGets the value of the binding named [3Xname[103X from a syntax tree [3Xbindings[103X of type
   [10XFVAR_BINDING_SEQ[110X.[133X
   
-  [1X2.4-17 CapJitUnbindBinding[101X
+  [1X2.4-15 CapJitUnbindBinding[101X
   
   [33X[1;0Y[29X[2XCapJitUnbindBinding[102X( [3Xbindings[103X, [3Xname[103X ) [32X function[133X
   
   [33X[0;0YUnbinds  the  the  binding  named  [3Xname[103X  from a syntax tree [3Xbindings[103X of type
   [10XFVAR_BINDING_SEQ[110X.[133X
   
-  [1X2.4-18 CapJitReplacedEXPR_REF_FVARByValue[101X
+  [1X2.4-16 CapJitReplacedEXPR_REF_FVARByValue[101X
   
   [33X[1;0Y[29X[2XCapJitReplacedEXPR_REF_FVARByValue[102X( [3Xtree[103X, [3Xfunc_id[103X, [3Xname[103X, [3Xvalue[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
@@ -472,14 +451,14 @@
   [33X[1;0Y[29X[2XCapJitAppliedCompilerHints[102X( [3Xtree[103X, [3Xcategory[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
-  [33X[0;0YApplies all compiler hints (see [14X1.5[114X) to [3Xtree[103X.[133X
+  [33X[0;0YApplies all compiler hints (see [14X1.6[114X) to [3Xtree[103X.[133X
   
   [1X2.5-2 CapJitReplacedGlobalVariablesByCategoryAttributes[101X
   
   [33X[1;0Y[29X[2XCapJitReplacedGlobalVariablesByCategoryAttributes[102X( [3Xtree[103X, [3Xcategory[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
-  [33X[0;0YApplies  the  compiler  hint  [10Xcategory_attribute_names[110X  (see  [14X1.5[114X)  to [3Xtree[103X.
+  [33X[0;0YApplies  the  compiler  hint  [10Xcategory_attribute_names[110X  (see  [14X1.6[114X)  to [3Xtree[103X.
   Assumes that [3Xcategory[103X is the first argument of the function defined by [3Xtree[103X.[133X
   
   [1X2.5-3 CapJitReplacedSourceAndRangeAttributes[101X
@@ -488,7 +467,7 @@
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YApplies                  the                  compiler                  hint
-  [10Xsource_and_range_attributes_from_morphism_attribute[110X (see [14X1.5[114X) to [3Xtree[103X.[133X
+  [10Xsource_and_range_attributes_from_morphism_attribute[110X (see [14X1.6[114X) to [3Xtree[103X.[133X
   
   [1X2.5-4 CapJitDeduplicatedExpressions[101X
   
@@ -610,7 +589,7 @@
   
   [1X2.5-14 CapJitAppliedLogic[101X
   
-  [33X[1;0Y[29X[2XCapJitAppliedLogic[102X( [3Xtree[103X, [3Xjit_args[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XCapJitAppliedLogic[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YApplies  all  logic functions (see [2XCapJitAddLogicFunction[102X ([14X2.1-1[114X)) and logic
@@ -640,13 +619,10 @@
   
   [1X2.5-17 CapJitResolvedOperations[101X
   
-  [33X[1;0Y[29X[2XCapJitResolvedOperations[102X( [3Xtree[103X, [3Xjit_args[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XCapJitResolvedOperations[102X( [3Xtree[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ya record[133X
   
   [33X[0;0YTries to resolve operations in [3Xtree[103X:[133X
-  
-  [30X    [33X[0;6YThe  attribute [10XCapCategory[110X is resolved by computing the category using
-        [3Xjit_args[103X and storing it in a global variable.[133X
   
   [30X    [33X[0;6YOperations  of  CAP  categories  are  resolved  by  taking  one of the
         functions added to the category via an [10XAdd[110X function.[133X
@@ -655,13 +631,4 @@
         [10XInstallMethodForCompilerForCAP[110X  or [10XInstallOtherMethodForCompilerForCAP[110X
         (see  the  documentation  of  CAP)  are  resolved  via  the  number of
         arguments.[133X
-  
-  [30X    [33X[0;6YOther operations are resolved by considering applicable methods of the
-        operation  with  regard  to arguments infered from [3Xjit_args[103X, except if
-        the  operation  is  listed  in [10XCAP_JIT_NON_RESOLVABLE_OPERATION_NAMES[110X.
-        Only  methods  annotated  with the pragma [10XCAP_JIT_RESOLVE_FUNCTION[110X are
-        resolved.[133X
-  
-  [33X[0;0YIf  the  arguments  of  the  operation  cannot be infered from [3Xjit_args[103X, the
-  operation is not resolved.[133X
   

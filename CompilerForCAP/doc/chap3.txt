@@ -272,10 +272,7 @@
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
-    [4X[25Xgap>[125X [27Xvec := MATRIX_CATEGORY([127X[104X
-    [4X[25X>[125X [27X    Q :[127X[104X
-    [4X[25X>[125X [27X    enable_compilation := true, no_precompiled_code := true[127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MATRIX_CATEGORY( Q : no_precompiled_code := true );;[127X[104X
     [4X[25Xgap>[125X [27XV := MatrixCategoryObject( vec, 2 );;[127X[104X
     [4X[25Xgap>[125X [27Xalpha := ZeroMorphism( V, V );;[127X[104X
     [4X[25Xgap>[125X [27Xbeta := IdentityMorphism( V );;[127X[104X
@@ -299,17 +296,11 @@
     [4X[28X     VectorSpaceMorphism( cat, S, UnionOfRows( homalg_field, Dimension( T ), [128X[104X
     [4X[28X         underlying_matrix ), T );[128X[104X
     [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27XMorphismBetweenDirectSumsWithGivenDirectSums([127X[104X
-    [4X[25X>[125X [27X    vec,[127X[104X
-    [4X[25X>[125X [27X    W,[127X[104X
-    [4X[25X>[125X [27X    [ V, V ],[127X[104X
-    [4X[25X>[125X [27X    morphism_matrix,[127X[104X
-    [4X[25X>[125X [27X    [ V, V ],[127X[104X
-    [4X[25X>[125X [27X    W[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func1 := CapJitCompiledFunction([127X[104X
+    [4X[25X>[125X [27X    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3][1],[127X[104X
+    [4X[25X>[125X [27X    vec[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay([127X[104X
-    [4X[25X>[125X [27X    vec!.compiled_functions.MorphismBetweenDirectSumsWithGivenDirectSums[3][127X[104X
-    [4X[25X>[125X [27X);[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func1 );[127X[104X
     [4X[28Xfunction ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )[128X[104X
     [4X[28X    local hoisted_1_1, deduped_2_1;[128X[104X
     [4X[28X    deduped_2_1 := UnderlyingRing( cat_1 );[128X[104X
@@ -339,10 +330,11 @@
     [4X[28X    return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, diagram_S, [128X[104X
     [4X[28X       T, test_diagram_coproduct, S );[128X[104X
     [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction([127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func2 := CapJitCompiledFunction([127X[104X
     [4X[25X>[125X [27X    vec!.added_functions.MorphismBetweenDirectSumsWithGivenDirectSums[1][1],[127X[104X
-    [4X[25X>[125X [27X    [ vec, W, [ V, V ], morphism_matrix, [ V, V ], W  ][127X[104X
-    [4X[25X>[125X [27X) );;[127X[104X
+    [4X[25X>[125X [27X    vec[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func2 );[127X[104X
     [4X[28Xfunction ( cat_1, S_1, diagram_S_1, morphism_matrix_1, diagram_T_1, T_1 )[128X[104X
     [4X[28X    local hoisted_1_1, deduped_2_1;[128X[104X
     [4X[28X    deduped_2_1 := UnderlyingRing( cat_1 );[128X[104X
@@ -359,8 +351,9 @@
     [4X[28X                      end ) );[128X[104X
     [4X[28X            end ) ) );[128X[104X
     [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27XKernelEmbedding( alpha );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( Last( vec!.compiled_functions.KernelEmbedding ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE([127X[104X
+    [4X[25X>[125X [27X    CapJitCompiledCAPOperationAsEnhancedSyntaxTree( vec, "KernelEmbedding" )[127X[104X
+    [4X[25X>[125X [27X) );[127X[104X
     [4X[28Xfunction ( cat_1, morphism_1 )[128X[104X
     [4X[28X    local morphism_attr_1_1;[128X[104X
     [4X[28X    morphism_attr_1_1 := SyzygiesOfRows( UnderlyingMatrix( morphism_1 ) );[128X[104X
@@ -424,7 +417,7 @@
     [4X[25Xgap>[125X [27Xfunc := function ( )[127X[104X
     [4X[25X>[125X [27X    #% CAP_JIT_DROP_NEXT_STATEMENT[127X[104X
     [4X[25X>[125X [27X    Display( 1 ); return 1; end;;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, [ ] ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func ) );[127X[104X
     [4X[28Xfunction ( )[128X[104X
     [4X[28X    return 1;[128X[104X
     [4X[28Xend[128X[104X
@@ -453,7 +446,7 @@
     [4X[25X>[125X [27Xend""", "@", ";" ) );;[127X[104X
     [4X[25Xgap>[125X [27Xfunc( cat );[127X[104X
     [4X[28X<A vector space object over Q of dimension 2>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, [ cat ] ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, cat ) );[127X[104X
     [4X[28Xfunction ( cat_1 )[128X[104X
     [4X[28X    return ObjectifyObjectForCAPWithAttributes( rec([128X[104X
     [4X[28X           ), cat_1, Dimension, CapFixpoint( function ( x_2, y_2 )[128X[104X
@@ -469,7 +462,7 @@
     [4X[25X>[125X [27X        morphism_list,[127X[104X
     [4X[25X>[125X [27X        { alpha, beta } -> PreCompose( cat, alpha, beta )[127X[104X
     [4X[25X>[125X [27X    );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, [ cat ] ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, cat ) );[127X[104X
     [4X[28Xfunction ( cat_1, morphism_list_1 )[128X[104X
     [4X[28X    local morphism_attr_1_1;[128X[104X
     [4X[28X    morphism_attr_1_1 := Iterated( List( morphism_list_1, UnderlyingMatrix ), [128X[104X
@@ -489,7 +482,7 @@
     [4X[25X>[125X [27X        [ alpha, beta, gamma ],[127X[104X
     [4X[25X>[125X [27X        { alpha, beta } -> PreCompose( cat, alpha, beta )[127X[104X
     [4X[25X>[125X [27X    );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, [ cat ] ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, cat ) );[127X[104X
     [4X[28Xfunction ( cat_1, alpha_1, beta_1, gamma_1 )[128X[104X
     [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
     [4X[28X           ), cat_1, Source( alpha_1 ), Range( gamma_1 ), UnderlyingMatrix, [128X[104X
@@ -507,10 +500,7 @@
     [4X[25X>[125X [27X    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL[127X[104X
     [4X[25X>[125X [27X    return LiftOrFail( cat, test_mor, KernelEmbedding( cat, mor ) ); end;;[127X[104X
     [4X[25Xgap>[125X [27XV := VectorSpaceObject( 2, Q );;[127X[104X
-    [4X[25Xgap>[125X [27Xcompiled_func := CapJitCompiledFunction([127X[104X
-    [4X[25X>[125X [27X    MyKernelLift,[127X[104X
-    [4X[25X>[125X [27X    [ rows, ZeroMorphism( V, V ), IdentityMorphism( V ) ][127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func := CapJitCompiledFunction( MyKernelLift, rows );;[127X[104X
     [4X[28XWARNING: Compiling CAP operation LiftOrFail with return_type morphism_or_fail.\[128X[104X
     [4X[28X Operations returning fail usually do not fulfill the requirements that all br\[128X[104X
     [4X[28Xanches of an if statement can be executed even if the corresponding condition \[128X[104X
@@ -538,11 +528,11 @@
     [4X[25Xgap>[125X [27Xcall_func2 := function( x )[127X[104X
     [4X[25X>[125X [27X    #% CAP_JIT_NEXT_FUNCCALL_DOES_NOT_RETURN_FAIL[127X[104X
     [4X[25X>[125X [27X    return func2( x ); end;;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( call_func1, [ 2 ] ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( call_func1 ) );[127X[104X
     [4X[28Xfunction ( x_1 )[128X[104X
     [4X[28X    return 1;[128X[104X
     [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( call_func2, [ 2 ] ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( call_func2 ) );[127X[104X
     [4X[28Xfunction ( x_1 )[128X[104X
     [4X[28X    return 1;[128X[104X
     [4X[28Xend[128X[104X
@@ -566,15 +556,15 @@
     [4X[25Xgap>[125X [27Xcat2 := CreateCapCategory( "cat2" );;[127X[104X
     [4X[25Xgap>[125X [27XSetFilterObj( cat1, IsMyCat1 );[127X[104X
     [4X[25Xgap>[125X [27XSetFilterObj( cat2, IsMyCat2 );[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( cat -> MyOperation( cat ), [ cat1 ] ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( cat -> MyOperation( cat ), cat1 ) );[127X[104X
     [4X[28Xfunction ( cat_1 )[128X[104X
     [4X[28X    return 1;[128X[104X
     [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( cat -> MyOperation( cat ), [ cat2 ] ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( cat -> MyOperation( cat ), cat2 ) );[127X[104X
     [4X[28Xfunction ( cat_1 )[128X[104X
     [4X[28X    return 2;[128X[104X
     [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( cat -> MyOperation( cat, 1 ), [ cat2 ] ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( cat -> MyOperation( cat, 1 ), cat2 ) );[127X[104X
     [4X[28Xfunction ( cat_1 )[128X[104X
     [4X[28X    return 3;[128X[104X
     [4X[28Xend[128X[104X
@@ -723,7 +713,7 @@
     [4X[25X>[125X [27X    fi@[127X[104X
     [4X[25X>[125X [27X    [127X[104X
     [4X[25X>[125X [27Xend""", "@", ";" ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xcompiled_func := CapJitCompiledFunction( func, [ ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func := CapJitCompiledFunction( func );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
     [4X[28Xfunction ( x_1 )[128X[104X
     [4X[28X    if x_1 < 1 or x_1 > 10 then[128X[104X
@@ -1037,13 +1027,6 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27X# make tests deterministic[127X[104X
-    [4X[25X>[125X [27X# we want to apply logic templates, which contain functions with existing IDs,[127X[104X
-    [4X[25X>[125X [27X# so we really have to use new IDs[127X[104X
-    [4X[25X>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID < 10^6;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xoriginal_func_id := CAP_JIT_INTERNAL_FUNCTION_ID;;[127X[104X
-    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID := 10^6;;[127X[104X
     [4X[25Xgap>[125X [27X# test that `CAP_JIT_NOT_RESOLVABLE` does not cause errors when comparing[127X[104X
     [4X[25X>[125X [27X# syntax trees[127X[104X
     [4X[25X>[125X [27XDeclareOperation( "MyNonResolvableOperation", [ ] );[127X[104X
@@ -1053,113 +1036,6 @@
     [4X[25Xgap>[125X [27Xtree2.bindings.BINDING_RETURN_VALUE.funcref.CAP_JIT_NOT_RESOLVABLE := true;;[127X[104X
     [4X[25Xgap>[125X [27XCapJitIsEqualForEnhancedSyntaxTrees( tree, tree2 );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27X# test that `CAP_JIT_IGNORE_OPERATION` does not cause errors when comparing[127X[104X
-    [4X[25X>[125X [27X# syntax trees[127X[104X
-    [4X[25X>[125X [27Xfunc := function ( L1 )[127X[104X
-    [4X[25X>[125X [27X    return [[127X[104X
-    [4X[25X>[125X [27X        List( List( L1, x -> x ), x -> Size( x ) ),[127X[104X
-    [4X[25X>[125X [27X        List( List( L1, x -> x ), Size )[127X[104X
-    [4X[25X>[125X [27X    ]; end;;[127X[104X
-    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
-    [4X[25Xgap>[125X [27Xtree := CapJitResolvedOperations( tree, [ ] );;[127X[104X
-    [4X[25Xgap>[125X [27Xtree := CapJitAppliedLogic( tree, [ ] );;[127X[104X
-    [4X[25Xgap>[125X [27Xtree := CapJitInlinedArguments( tree );;[127X[104X
-    [4X[25Xgap>[125X [27Xtree := CapJitInlinedFunctionCalls( tree );;[127X[104X
-    [4X[25Xgap>[125X [27Xtree := CapJitInlinedBindings( tree );;[127X[104X
-    [4X[25Xgap>[125X [27Xtree := CapJitDroppedUnusedBindings( tree );;[127X[104X
-    [4X[25Xgap>[125X [27XCapJitPrettyPrintSyntaxTree( tree );[127X[104X
-    [4X[28Xrec([128X[104X
-    [4X[28X  0_type := "EXPR_DECLARATIVE_FUNC",[128X[104X
-    [4X[28X  1_id := 1000001,[128X[104X
-    [4X[28X  2_nams := [ "L1", "RETURN_VALUE" ],[128X[104X
-    [4X[28X  3_narg := 1,[128X[104X
-    [4X[28X  4_variadic := false,[128X[104X
-    [4X[28X  5_bindings := rec([128X[104X
-    [4X[28X      0_type := "FVAR_BINDING_SEQ",[128X[104X
-    [4X[28X      1_names := [ "RETURN_VALUE" ],[128X[104X
-    [4X[28X      2_BINDING_RETURN_VALUE := rec([128X[104X
-    [4X[28X          0_type := "EXPR_LIST",[128X[104X
-    [4X[28X          1_list := rec([128X[104X
-    [4X[28X              0__type := "SYNTAX_TREE_LIST",[128X[104X
-    [4X[28X              0_length := 2,[128X[104X
-    [4X[28X              1 := rec([128X[104X
-    [4X[28X                  0_type := "EXPR_FUNCCALL",[128X[104X
-    [4X[28X                  1_funcref := rec([128X[104X
-    [4X[28X                      0_type := "EXPR_REF_GVAR",[128X[104X
-    [4X[28X                      1_gvar := "List" ),[128X[104X
-    [4X[28X                  2_args := rec([128X[104X
-    [4X[28X                      0__type := "SYNTAX_TREE_LIST",[128X[104X
-    [4X[28X                      0_length := 2,[128X[104X
-    [4X[28X                      1 := rec([128X[104X
-    [4X[28X                          0_type := "EXPR_REF_FVAR",[128X[104X
-    [4X[28X                          1_func_id := 1000001,[128X[104X
-    [4X[28X                          2_name := "L1" ),[128X[104X
-    [4X[28X                      2 := rec([128X[104X
-    [4X[28X                          0_type := "EXPR_DECLARATIVE_FUNC",[128X[104X
-    [4X[28X                          1_id := 1000005,[128X[104X
-    [4X[28X                          2_nams := [ "logic_new_func_x", "RETURN_VALUE" ],[128X[104X
-    [4X[28X                          3_narg := 1,[128X[104X
-    [4X[28X                          4_variadic := false,[128X[104X
-    [4X[28X                          5_bindings := rec([128X[104X
-    [4X[28X                              0_type := "FVAR_BINDING_SEQ",[128X[104X
-    [4X[28X                              1_names := [ "RETURN_VALUE" ],[128X[104X
-    [4X[28X                              2_BINDING_RETURN_VALUE := rec([128X[104X
-    [4X[28X                                  0_type := "EXPR_FUNCCALL",[128X[104X
-    [4X[28X                                  1_CAP_JIT_IGNORE_OPERATION := true,[128X[104X
-    [4X[28X                                  2_funcref := rec([128X[104X
-    [4X[28X                                      0_type := "EXPR_REF_GVAR",[128X[104X
-    [4X[28X                                      1_gvar := "Size" ),[128X[104X
-    [4X[28X                                  3_args := rec([128X[104X
-    [4X[28X                                      0__type := "SYNTAX_TREE_LIST",[128X[104X
-    [4X[28X                                      0_length := 1,[128X[104X
-    [4X[28X                                      1 := rec([128X[104X
-    [4X[28X                                          0_type := "EXPR_REF_FVAR",[128X[104X
-    [4X[28X                                          1_func_id := 1000005,[128X[104X
-    [4X[28X                                          2_name := "logic_new_func_x" ) ) ) [128X[104X
-    [4X[28X                             ) ) ) ),[128X[104X
-    [4X[28X              2 := rec([128X[104X
-    [4X[28X                  0_type := "EXPR_FUNCCALL",[128X[104X
-    [4X[28X                  1_funcref := rec([128X[104X
-    [4X[28X                      0_type := "EXPR_REF_GVAR",[128X[104X
-    [4X[28X                      1_gvar := "List" ),[128X[104X
-    [4X[28X                  2_args := rec([128X[104X
-    [4X[28X                      0__type := "SYNTAX_TREE_LIST",[128X[104X
-    [4X[28X                      0_length := 2,[128X[104X
-    [4X[28X                      1 := rec([128X[104X
-    [4X[28X                          0_type := "EXPR_REF_FVAR",[128X[104X
-    [4X[28X                          1_func_id := 1000001,[128X[104X
-    [4X[28X                          2_name := "L1" ),[128X[104X
-    [4X[28X                      2 := rec([128X[104X
-    [4X[28X                          0_type := "EXPR_DECLARATIVE_FUNC",[128X[104X
-    [4X[28X                          1_id := 1000008,[128X[104X
-    [4X[28X                          2_nams := [ "logic_new_func_x", "RETURN_VALUE" ],[128X[104X
-    [4X[28X                          3_narg := 1,[128X[104X
-    [4X[28X                          4_variadic := false,[128X[104X
-    [4X[28X                          5_bindings := rec([128X[104X
-    [4X[28X                              0_type := "FVAR_BINDING_SEQ",[128X[104X
-    [4X[28X                              1_names := [ "RETURN_VALUE" ],[128X[104X
-    [4X[28X                              2_BINDING_RETURN_VALUE := rec([128X[104X
-    [4X[28X                                  0_type := "EXPR_FUNCCALL",[128X[104X
-    [4X[28X                                  1_funcref := rec([128X[104X
-    [4X[28X                                      0_type := "EXPR_REF_GVAR",[128X[104X
-    [4X[28X                                      1_gvar := "Size" ),[128X[104X
-    [4X[28X                                  2_args := rec([128X[104X
-    [4X[28X                                      0__type := "SYNTAX_TREE_LIST",[128X[104X
-    [4X[28X                                      0_length := 1,[128X[104X
-    [4X[28X                                      1 := rec([128X[104X
-    [4X[28X                                          0_type := "EXPR_REF_FVAR",[128X[104X
-    [4X[28X                                          1_func_id := 1000008,[128X[104X
-    [4X[28X                                          2_name := "logic_new_func_x" ) ) ) [128X[104X
-    [4X[28X                             ) ) ) ) ) ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XT1 := tree.bindings.BINDING_RETURN_VALUE.list.1;;[127X[104X
-    [4X[25Xgap>[125X [27XT2 := tree.bindings.BINDING_RETURN_VALUE.list.2;;[127X[104X
-    [4X[25Xgap>[125X [27XIsBound( T1.args.2.bindings.BINDING_RETURN_VALUE.CAP_JIT_IGNORE_OPERATION );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsBound( T2.args.2.bindings.BINDING_RETURN_VALUE.CAP_JIT_IGNORE_OPERATION );[127X[104X
-    [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27XCapJitIsEqualForEnhancedSyntaxTrees( T2, T1 );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_FUNCTION_ID := original_func_id;;[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -1173,7 +1049,7 @@
     [4X[25X>[125X [27X];;[127X[104X
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
     [4X[25Xgap>[125X [27Xcat := MatrixCategory( QQ );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, [ cat ] ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, cat ) );[127X[104X
     [4X[28Xfunction ( cat_1, matrix_1 )[128X[104X
     [4X[28X    local morphism_attr_1_1, morphism_attr_2_1;[128X[104X
     [4X[28X    morphism_attr_2_1 := matrix_1;[128X[104X
@@ -1337,7 +1213,7 @@
     [4X[25X>[125X [27X    return my_func( inner_func( ) )@[127X[104X
     [4X[25X>[125X [27X    [127X[104X
     [4X[25X>[125X [27Xend""", "@", ";" ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xcompiled_func3 := CapJitCompiledFunction( func3, [ ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func3 := CapJitCompiledFunction( func3 );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( compiled_func3 );[127X[104X
     [4X[28Xfunction ( x_1 )[128X[104X
     [4X[28X    local deduped_1_1;[128X[104X
@@ -1353,29 +1229,10 @@
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27Xfunc4 := function( x )[127X[104X
     [4X[25X>[125X [27X  local y; if x then return 1; else return 1; fi; end;;[127X[104X
-    [4X[25Xgap>[125X [27Xcompiled_func4 := CapJitCompiledFunction( func4, [ true ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func4 := CapJitCompiledFunction( func4 );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( compiled_func4 );[127X[104X
     [4X[28Xfunction ( x_1 )[128X[104X
     [4X[28X    return 1;[128X[104X
-    [4X[28Xend[128X[104X
-  [4X[32X[104X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XKeyDependentOperation( "MyKeyDependentOperation",[127X[104X
-    [4X[25X>[125X [27X                       IsGroup, IsInt, ReturnTrue );;[127X[104X
-    [4X[25Xgap>[125X [27XInstallMethod( MyKeyDependentOperationOp,[127X[104X
-    [4X[25X>[125X [27X    [ IsGroup, IsInt ],[127X[104X
-    [4X[25X>[125X [27X    function( G, int )[127X[104X
-    [4X[25X>[125X [27X        #% CAP_JIT_RESOLVE_FUNCTION[127X[104X
-    [4X[25X>[125X [27X        return int; end );;[127X[104X
-    [4X[25Xgap>[125X [27XG := SymmetricGroup(3);;[127X[104X
-    [4X[25Xgap>[125X [27XMyKeyDependentOperation( G, 2 ) = 2;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XMyFunction := G -> MyKeyDependentOperation( G, 2 );;[127X[104X
-    [4X[25Xgap>[125X [27Xcompiled_func := CapJitCompiledFunction( MyFunction, [ G ] );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
-    [4X[28Xfunction ( G_1 )[128X[104X
-    [4X[28X    return 2;[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
   
@@ -1385,7 +1242,7 @@
     [4X[25Xgap>[125X [27Xfunc := function ( )[127X[104X
     [4X[25X>[125X [27X  return List( [ 1, 2 ], x -> x ); end;;[127X[104X
     [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
-    [4X[25Xgap>[125X [27Xtree := CapJitAppliedLogic( tree, [ ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitAppliedLogic( tree );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree ) );[127X[104X
     [4X[28Xfunction (  )[128X[104X
     [4X[28X    return [ function ( x_2 )[128X[104X
@@ -1397,7 +1254,7 @@
     [4X[25Xgap>[125X [27Xfunc := function ( )[127X[104X
     [4X[25X>[125X [27X  return Concatenation( [ 1, 2 ], [ 3, 4 ] ); end;;[127X[104X
     [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
-    [4X[25Xgap>[125X [27Xtree := CapJitAppliedLogic( tree, [ ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitAppliedLogic( tree );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree ) );[127X[104X
     [4X[28Xfunction (  )[128X[104X
     [4X[28X    return [ 1, 2, 3, 4 ];[128X[104X
@@ -1405,7 +1262,7 @@
     [4X[25Xgap>[125X [27Xfunc := function ( )[127X[104X
     [4X[25X>[125X [27X  return Concatenation( [ [ 1, 2 ], [ 3, 4 ] ] ); end;;[127X[104X
     [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
-    [4X[25Xgap>[125X [27Xtree := CapJitAppliedLogic( tree, [ ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitAppliedLogic( tree );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree ) );[127X[104X
     [4X[28Xfunction (  )[128X[104X
     [4X[28X    return [ 1, 2, 3, 4 ];[128X[104X
@@ -1413,7 +1270,7 @@
     [4X[25Xgap>[125X [27Xfunc := function ( my_func )[127X[104X
     [4X[25X>[125X [27X  return CallFuncList( my_func, [ 1, 2 ] ); end;;[127X[104X
     [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
-    [4X[25Xgap>[125X [27Xtree := CapJitAppliedLogic( tree, [ ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitAppliedLogic( tree );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree ) );[127X[104X
     [4X[28Xfunction ( my_func_1 )[128X[104X
     [4X[28X    return my_func_1( 1, 2 );[128X[104X
@@ -1843,12 +1700,12 @@
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals();;[127X[104X
-    [4X[25Xgap>[125X [27Xvec := MATRIX_CATEGORY( Q : enable_compilation := true );;[127X[104X
+    [4X[25Xgap>[125X [27Xvec := MATRIX_CATEGORY( Q );;[127X[104X
     [4X[25Xgap>[125X [27Xfunc := function ( cat, x )[127X[104X
     [4X[25X>[125X [27X    #% CAP_JIT_RESOLVE_FUNCTION[127X[104X
     [4X[25X>[125X [27X    return ZeroObject( cat ); end;;[127X[104X
     [4X[25Xgap>[125X [27X# make sure that ZeroObject( cat ) is not resolved to a global variable[127X[104X
-    [4X[25X>[125X [27XDisplay( CapJitCompiledFunction( { cat, x } -> func( cat, x ), [ vec ] ) );[127X[104X
+    [4X[25X>[125X [27XDisplay( CapJitCompiledFunction( { cat, x } -> func( cat, x ), vec ) );[127X[104X
     [4X[28Xfunction ( cat_1, x_1 )[128X[104X
     [4X[28X    return ObjectifyObjectForCAPWithAttributes( rec([128X[104X
     [4X[28X           ), cat_1, Dimension, 0 );[128X[104X
@@ -1858,7 +1715,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xfunc := function ( )[127X[104X
     [4X[25X>[125X [27X  local x; x := { args... } -> 1; return x( ); end;;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, [ ] ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func ) );[127X[104X
     [4X[28Xfunction ( )[128X[104X
     [4X[28X    return 1;[128X[104X
     [4X[28Xend[128X[104X
@@ -1870,7 +1727,7 @@
     [4X[25X>[125X [27X    return x; end;;[127X[104X
     [4X[25Xgap>[125X [27Xfunc2 := function( )[127X[104X
     [4X[25X>[125X [27X  local var; var := 1; var := func1( 2, var ); return var; end;;[127X[104X
-    [4X[25Xgap>[125X [27Xcompiled_func := CapJitCompiledFunction( func2, [] );;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func := CapJitCompiledFunction( func2 );;[127X[104X
     [4X[25Xgap>[125X [27Xcompiled_func();[127X[104X
     [4X[28X2[128X[104X
   [4X[32X[104X
@@ -1880,6 +1737,6 @@
     [4X[25X>[125X [27X  local id; id := y -> y; return [ id, id ]; end;;[127X[104X
     [4X[25Xgap>[125X [27X# we are not interested in the output, but only that this does not throw[127X[104X
     [4X[25X>[125X [27X# an error due to some function id being used multiple times[127X[104X
-    [4X[25X>[125X [27XCapJitCompiledFunction( func, [ ] );;[127X[104X
+    [4X[25X>[125X [27XCapJitCompiledFunction( func );;[127X[104X
   [4X[32X[104X
   
