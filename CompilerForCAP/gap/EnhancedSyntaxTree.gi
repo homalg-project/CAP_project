@@ -488,7 +488,6 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                     args := translation.args,
                 );
                 
-                
             fi;
             
             # check if operations can be resolved
@@ -506,6 +505,17 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                     Print( "WARNING: operation ", tree.funcref.gvar, ", located in function at ", FilenameFunc( func ), ":", StartlineFunc( func ), " can probably not be resolved.\n" );
                     
                 fi;
+                
+            fi;
+            
+            if tree.type = "EXPR_REF_GVAR" and StartsWith( tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_" ) then
+                
+                tree := rec(
+                    type := "SYNTAX_TREE_VARIABLE",
+                    id := Int( ReplacedString( tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_", "" ) ),
+                );
+                
+                Assert( 0, tree.id <> fail );
                 
             fi;
             
@@ -810,6 +820,13 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
         else
             
             tree.touched := true;
+            
+        fi;
+        
+        if tree.type = "SYNTAX_TREE_VARIABLE" then
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Error( "you should never codify an enhanced syntax tree with variables" );
             
         fi;
         

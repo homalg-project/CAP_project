@@ -407,12 +407,10 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
             
         fi;
         
-        # handle CAP_INTERNAL_JIT_TEMPLATE_VAR_i
-        if template_tree.type = "EXPR_REF_GVAR" and StartsWith( template_tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_" ) then
+        # handle syntax tree variables (CAP_INTERNAL_JIT_TEMPLATE_VAR_i)
+        if template_tree.type = "SYNTAX_TREE_VARIABLE" then
             
-            var_number := Int( ReplacedString( template_tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_", "" ) );
-            
-            Assert( 0, var_number <> fail );
+            var_number := template_tree.id;
             
             if not IsBound( variables[var_number] ) then
                 
@@ -584,7 +582,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
     end;
     
     additional_arguments_func := function ( template_tree, key, additional_arguments )
-      local tree, tree_path, func_id_replacement, pos_name;
+      local tree, tree_path, pos_name;
         
         tree := additional_arguments[1];
         tree_path := Concatenation( additional_arguments[2], [ key ] );
@@ -738,7 +736,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
             end;
             
             result_func := function ( tree, result, keys, func_id_stack )
-              local var_number, key;
+              local key;
                 
                 if not well_defined then
                     
@@ -746,14 +744,10 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
                     
                 fi;
                 
-                if tree.type = "EXPR_REF_GVAR" and StartsWith( tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_" ) then
-                    
-                    var_number := Int( ReplacedString( tree.gvar, "CAP_INTERNAL_JIT_TEMPLATE_VAR_", "" ) );
-                    
-                    Assert( 0, var_number <> fail );
+                if tree.type = "SYNTAX_TREE_VARIABLE" then
                     
                     # check if the resulting tree would be well-defined
-                    if CapJitContainsRefToFVAROutsideOfFuncStack( variables[var_number].tree, func_id_stack ) then
+                    if CapJitContainsRefToFVAROutsideOfFuncStack( variables[tree.id].tree, func_id_stack ) then
                         
                         well_defined := false;
                         
@@ -763,7 +757,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
                     fi;
                     
                     # new function IDs will be set below
-                    return StructuralCopy( variables[var_number].tree );
+                    return StructuralCopy( variables[tree.id].tree );
                     
                 fi;
                 
