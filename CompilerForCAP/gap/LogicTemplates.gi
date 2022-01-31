@@ -337,10 +337,8 @@ CapJitAddLogicTemplate(
     )
 );
 
-InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( tree, template_tree, variable_filters )
-  local debug, variables, func_id_replacements, pre_func, result_func, additional_arguments_func, result;
-    
-    debug := ValueOption( "debug" ) = true;
+InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( tree, template_tree, variable_filters, debug )
+  local variables, func_id_replacements, pre_func, result_func, additional_arguments_func, result;
     
     variables := [ ];
     func_id_replacements := [ ];
@@ -684,7 +682,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
                 
             fi;
             
-            matching_info := CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree, template.src_template_tree, template.variable_filters : debug := IsBound( template.debug_path ) and template.debug_path = path );
+            matching_info := CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree, template.src_template_tree, template.variable_filters, IsBound( template.debug_path ) and template.debug_path = path );
             
             if matching_info = fail then
                 

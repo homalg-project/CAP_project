@@ -330,7 +330,7 @@ InstallGlobalFunction( CapJitIsEqualForEnhancedSyntaxTrees, function ( tree1, tr
         
     fi;
     
-    return CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree1, tree2, [ ] ) <> fail;
+    return CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree1, tree2, [ ], false ) <> fail;
     
 end );
 
