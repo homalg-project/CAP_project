@@ -352,6 +352,18 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
             
         fi;
         
+        if template_tree.type <> "SYNTAX_TREE_VARIABLE" and tree.type <> template_tree.type then
+            
+            return fail;
+            
+        fi;
+        
+        if template_tree.type = "SYNTAX_TREE_LIST" and template_tree.length <> tree.length then
+            
+            return fail;
+            
+        fi;
+        
         if template_tree.type = "EXPR_DECLARATIVE_FUNC" and tree.type = "EXPR_DECLARATIVE_FUNC" then
             
             # we are only interested in two cases:
@@ -446,28 +458,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
                 return CapJitIsEqualForEnhancedSyntaxTrees( variables[var_number], tree );
                 
             fi;
-            
-        fi;
-        
-        if template_tree.type <> tree.type then
-            
-            if debug then
-                # COVERAGE_IGNORE_NEXT_LINE
-                Display( "type mismatch" );
-            fi;
-            
-            return false;
-            
-        fi;
-        
-        if template_tree.type = "SYNTAX_TREE_LIST" and template_tree.length <> tree.length then
-            
-            if debug then
-                # COVERAGE_IGNORE_NEXT_LINE
-                Display( "list length mismatch" );
-            fi;
-            
-            return false;
             
         fi;
         
@@ -575,15 +565,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
         
         if tree = fail then
             
-            return fail;
-            
-        elif template_tree.type <> tree.type then
-            
-            return fail;
-            
-        elif template_tree.type = "SYNTAX_TREE_LIST" and not IsBound( tree.(key) ) then
-            
-            # tree.(key) might not be bound for SYNTAX_TREE_LIST
             return fail;
             
         else
