@@ -602,8 +602,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
                 
             else
                 
-                Assert( 0, IsBound( tree.(key) ) );
-                
                 tree := tree.(key);
                 
             fi;

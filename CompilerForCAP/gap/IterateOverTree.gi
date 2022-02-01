@@ -124,21 +124,7 @@ InstallGlobalFunction( CapJitIterateOverTree, function ( tree, pre_func, result_
 
     fi;
     
-    Assert( 0, IsRecord( tree ) );
-    
-    if IsBound( tree.type ) then
-        
-        type := tree.type;
-    
-    else
-        
-        # COVERAGE_IGNORE_BLOCK_START
-        Display( tree );
-        
-        Error( "cannot determine type of tree" );
-        # COVERAGE_IGNORE_BLOCK_END
-        
-    fi;
+    type := tree.type;
     
     if type = "SYNTAX_TREE_LIST" then
         
@@ -155,33 +141,15 @@ InstallGlobalFunction( CapJitIterateOverTree, function ( tree, pre_func, result_
         # check that tree.names and the record entries are in sync
         Assert( 3, IsSortedList( tree.names ) and SortedList( Filtered( RecNames( tree ), name -> StartsWith( name, "BINDING_" ) ) ) = keys );
         
-    elif IsBound( CAP_JIT_INTERNAL_ITERATION_KEYS.(type) ) then
-        
-        keys := CAP_JIT_INTERNAL_ITERATION_KEYS.(type);
-        
     else
         
-        # COVERAGE_IGNORE_BLOCK_START
-        Display( tree );
-        
-        Error( "cannot find iteration key" );
-        # COVERAGE_IGNORE_BLOCK_END
+        keys := CAP_JIT_INTERNAL_ITERATION_KEYS.(type);
         
     fi;
     
     result := rec( );
     
     for key in keys do
-        
-        if not IsBound( tree.(key) ) then
-            
-            # COVERAGE_IGNORE_BLOCK_START
-            Display( tree );
-            
-            Error( "invalid iteration key" );
-            # COVERAGE_IGNORE_BLOCK_END
-            
-        fi;
         
         result.(key) := CapJitIterateOverTree( tree.(key), pre_func, result_func, additional_arguments_func, additional_arguments_func( tree, key, additional_arguments ) );
         
