@@ -343,10 +343,8 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
     variables := [ ];
     func_id_replacements := [ ];
     
-    pre_func := function ( template_tree, additional_arguments )
-      local tree, new_template_tree;
-        
-        tree := additional_arguments[1];
+    pre_func := function ( template_tree, tree )
+      local new_template_tree;
         
         if tree = fail then
             
@@ -383,11 +381,8 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
         
     end;
     
-    result_func := function ( template_tree, result, keys, additional_arguments )
-      local tree, tree_path, var_number, filter, key;
-        
-        tree := additional_arguments[1];
-        tree_path := additional_arguments[2];
+    result_func := function ( template_tree, result, keys, tree )
+      local var_number, filter, key;
         
         if debug then
             # COVERAGE_IGNORE_BLOCK_START
@@ -416,10 +411,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
                 
                 if IsIdenticalObj( filter, IsObject ) or (IsBound( tree.data_type ) and IsSpecializationOfFilter( filter, tree.data_type.filter )) then
                     
-                    variables[var_number] := rec(
-                        path := tree_path,
-                        tree := tree,
-                    );
+                    variables[var_number] := tree;
                     
                     if debug then
                         # COVERAGE_IGNORE_BLOCK_START
@@ -447,11 +439,11 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
                 if debug then
                     # COVERAGE_IGNORE_BLOCK_START
                     Display( "matched via variable2" );
-                    Display( CapJitIsEqualForEnhancedSyntaxTrees( variables[var_number].tree, tree ) );
+                    Display( CapJitIsEqualForEnhancedSyntaxTrees( variables[var_number], tree ) );
                     # COVERAGE_IGNORE_BLOCK_END
                 fi;
                 
-                return CapJitIsEqualForEnhancedSyntaxTrees( variables[var_number].tree, tree );
+                return CapJitIsEqualForEnhancedSyntaxTrees( variables[var_number], tree );
                 
             fi;
             
@@ -579,36 +571,30 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
         
     end;
     
-    additional_arguments_func := function ( template_tree, key, additional_arguments )
-      local tree, tree_path, pos_name;
+    additional_arguments_func := function ( template_tree, key, tree )
         
-        tree := additional_arguments[1];
-        tree_path := Concatenation( additional_arguments[2], [ key ] );
-        
-        if tree <> fail then
+        if tree = fail then
             
-            if template_tree.type <> tree.type then
-                
-                tree := fail;
-                
-            elif template_tree.type = "SYNTAX_TREE_LIST" and not IsBound( tree.(key) ) then
-                
-                # tree.(key) might not be bound for SYNTAX_TREE_LIST
-                tree := fail;
-                
-            else
-                
-                tree := tree.(key);
-                
-            fi;
+            return fail;
+            
+        elif template_tree.type <> tree.type then
+            
+            return fail;
+            
+        elif template_tree.type = "SYNTAX_TREE_LIST" and not IsBound( tree.(key) ) then
+            
+            # tree.(key) might not be bound for SYNTAX_TREE_LIST
+            return fail;
+            
+        else
+            
+            return tree.(key);
             
         fi;
         
-        return [ tree, tree_path ];
-        
     end;
     
-    result := CapJitIterateOverTree( template_tree, pre_func, result_func, additional_arguments_func, [ tree, [ ] ] );
+    result := CapJitIterateOverTree( template_tree, pre_func, result_func, additional_arguments_func, tree );
     
     if result then
         
@@ -745,7 +731,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
                 if tree.type = "SYNTAX_TREE_VARIABLE" then
                     
                     # check if the resulting tree would be well-defined
-                    if CapJitContainsRefToFVAROutsideOfFuncStack( variables[tree.id].tree, func_id_stack ) then
+                    if CapJitContainsRefToFVAROutsideOfFuncStack( variables[tree.id], func_id_stack ) then
                         
                         well_defined := false;
                         
@@ -755,7 +741,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
                     fi;
                     
                     # new function IDs will be set below
-                    return StructuralCopy( variables[tree.id].tree );
+                    return StructuralCopy( variables[tree.id] );
                     
                 fi;
                 
