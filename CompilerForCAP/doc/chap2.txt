@@ -117,14 +117,11 @@
   [30X    [33X[0;6YIf  [10Xsrc_template[110X  cannot be expressed as valid GAP code, the component
         [10Xsrc_template_tree[110X can be set. In that case, [10Xsrc_template[110X is not parsed
         and  [10Xsrc_template_tree[110X  is used when trying to find a match. Variables
-        in  the  sense  of  [10Xvariable_names[110X  have  to be given as references to
-        global  variables  called  [10XCAP_INTERNAL_JIT_TEMPLATE_VAR_n[110X  where [10Xn[110X is
-        consecutively  incremented  starting  from 1. Setting [10Xsrc_template[110X and
+        in  the  sense  of  [10Xvariable_names[110X have to be given as syntax trees of
+        type  [10XSYNTAX_TREE_VARIABLE[110X  with a unique [10Xid[110X. Setting [10Xsrc_template[110X and
         [10Xvariable_names[110X  is still required to have a readable representation of
-        the   template   and   to   make   sure   that  the  global  variables
-        [10XCAP_INTERNAL_JIT_TEMPLATE_VAR_n[110X         are         declared        by
-        [2XCapJitAppliedLogicTemplates[102X   ([14X2.5-15[114X).   If  [10Xdst_template[110X  cannot  be
-        expressed as valid GAP code, it can be in an analogous manner.[133X
+        the  template.  If [10Xdst_template[110X cannot be expressed as valid GAP code,
+        it can be in an analogous manner.[133X
   
   
   [1X2.2 [33X[0;0YEnhanced syntax trees[133X[101X

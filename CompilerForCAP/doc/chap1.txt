@@ -301,19 +301,6 @@
   variables  are  resolved by [2XCapJitResolvedGlobalVariables[102X ([14X2.5-16[114X). Possibly
   you have adapt [2XCapJitResolvedGlobalVariables[102X ([14X2.5-16[114X) to your setting.[133X
   
-  [30X    [33X[0;6YQ: Why do I get the error "cannot find iteration key"?[133X
-  
-  [33X[0;0YA:  For  each  syntax  tree  node  type, the tree iterator has to know which
-  record  names  it  should  use  for continuing the iteration. Please add the
-  missing keys to [10XCAP_INTERNAL_JIT_ITERATION_KEYS[110X.[133X
-  
-  [30X    [33X[0;6YQ:  Why  do  I  get  the  error  "tree  has no kown type" when calling
-        [2XCapJitPrettyPrintSyntaxTree[102X ([14X2.4-1[114X)?[133X
-  
-  [33X[0;0YA:  [2XCapJitPrettyPrintSyntaxTree[102X  ([14X2.4-1[114X)  needs  to handle every syntax tree
-  node    type    separately.    Please    add    the    missing    type    to
-  [2XCapJitPrettyPrintSyntaxTree[102X ([14X2.4-1[114X).[133X
-  
   [30X    [33X[0;6YQ:  Why  is  do  I get the error "a local variable with name <name> is
         assigned  more than once (not as a part of a rapid reassignment), this
         is not supported"?[133X

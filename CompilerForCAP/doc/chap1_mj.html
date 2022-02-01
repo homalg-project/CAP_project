@@ -311,22 +311,6 @@
 
 
 <ul>
-<li><p>Q: Why do I get the error "cannot find iteration key"?</p>
-
-</li>
-</ul>
-<p>A: For each syntax tree node type, the tree iterator has to know which record names it should use for continuing the iteration. Please add the missing keys to <code class="code">CAP_INTERNAL_JIT_ITERATION_KEYS</code>.</p>
-
-
-<ul>
-<li><p>Q: Why do I get the error "tree has no kown type" when calling <code class="func">CapJitPrettyPrintSyntaxTree</code> (<a href="chap2_mj.html#X868F5CD681DAFA69"><span class="RefLink">2.4-1</span></a>)?</p>
-
-</li>
-</ul>
-<p>A: <code class="func">CapJitPrettyPrintSyntaxTree</code> (<a href="chap2_mj.html#X868F5CD681DAFA69"><span class="RefLink">2.4-1</span></a>) needs to handle every syntax tree node type separately. Please add the missing type to <code class="func">CapJitPrettyPrintSyntaxTree</code> (<a href="chap2_mj.html#X868F5CD681DAFA69"><span class="RefLink">2.4-1</span></a>).</p>
-
-
-<ul>
 <li><p>Q: Why is do I get the error "a local variable with name &lt;name&gt; is assigned more than once (not as a part of a rapid reassignment), this is not supported"?</p>
 
 </li>
