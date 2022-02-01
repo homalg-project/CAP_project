@@ -92,7 +92,10 @@ BindGlobal( "CAP_JIT_INTERNAL_ITERATION_KEYS", rec(
     REC_KEY_VALUE_PAIR := [ "value" ],
     EXPR_CASE := [ "branches" ],
     CASE_BRANCH := [ "condition", "value" ],
+    SYNTAX_TREE_VARIABLE := [ ],
 ) );
+
+BindGlobal( "SYNTAX_TREE_LIST_KEYS", [ ] );
 
 InstallGlobalFunction( CapJitIterateOverTree, function ( tree, pre_func, result_func, additional_arguments_func, additional_arguments )
   local pre_func_result, result, type, keys, key;
@@ -124,70 +127,46 @@ InstallGlobalFunction( CapJitIterateOverTree, function ( tree, pre_func, result_
 
     fi;
     
-    Assert( 0, IsRecord( tree ) );
-    
-    if IsBound( tree.type ) then
-        
-        type := tree.type;
-    
-    # needed for dealing with non-enhanced syntax trees
-    elif SortedList( RecNames( tree ) ) = [ "body", "condition" ] then
-        
-        type := "BRANCH_IF";
-        
-    else
-        
-        # COVERAGE_IGNORE_BLOCK_START
-        Display( tree );
-        
-        Error( "cannot determine type of tree" );
-        # COVERAGE_IGNORE_BLOCK_END
-        
-    fi;
+    type := tree.type;
     
     if type = "SYNTAX_TREE_LIST" then
         
-        keys := List( [ 1 .. tree.length ], i -> String( i ) );
+        if tree.length = 0 then
+            
+            keys := [ ];
+            
+        else
+            
+            if not IsBound( SYNTAX_TREE_LIST_KEYS[tree.length] ) then
+                
+                SYNTAX_TREE_LIST_KEYS[tree.length] := List( [ 1 .. tree.length ], i -> String( i ) );
+                
+            fi;
+            
+            keys := SYNTAX_TREE_LIST_KEYS[tree.length];
+            
+        fi;
         
         # check that tree.length and the record entries are in sync
         # keys are sorted as integers but not lexicographically
-        Assert( 0, SortedList( Filtered( RecNames( tree ), name -> IsDigitChar( First( name ) ) ) ) = SortedList( keys ) );
+        Assert( 3, SortedList( Filtered( RecNames( tree ), name -> IsDigitChar( First( name ) ) ) ) = SortedList( keys ) );
         
     elif type = "FVAR_BINDING_SEQ" then
         
         keys := List( tree.names, name -> Concatenation( "BINDING_", name ) );
         
         # check that tree.names and the record entries are in sync
-        Assert( 0, IsSortedList( tree.names ) );
-        Assert( 0, SortedList( Filtered( RecNames( tree ), name -> StartsWith( name, "BINDING_" ) ) ) = keys );
-        
-    elif IsBound( CAP_JIT_INTERNAL_ITERATION_KEYS.(type) ) then
-        
-        keys := CAP_JIT_INTERNAL_ITERATION_KEYS.(type);
+        Assert( 3, IsSortedList( tree.names ) and SortedList( Filtered( RecNames( tree ), name -> StartsWith( name, "BINDING_" ) ) ) = keys );
         
     else
         
-        # COVERAGE_IGNORE_BLOCK_START
-        Display( tree );
-        
-        Error( "cannot find iteration key" );
-        # COVERAGE_IGNORE_BLOCK_END
+        keys := CAP_JIT_INTERNAL_ITERATION_KEYS.(type);
         
     fi;
     
     result := rec( );
     
     for key in keys do
-        
-        if not IsBound( tree.(key) ) then
-            
-            # COVERAGE_IGNORE_BLOCK_START
-            Display( tree );
-            
-            Error( "invalid iteration key" );
-            # COVERAGE_IGNORE_BLOCK_END
-            
-        fi;
         
         result.(key) := CapJitIterateOverTree( tree.(key), pre_func, result_func, additional_arguments_func, additional_arguments_func( tree, key, additional_arguments ) );
         

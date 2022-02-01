@@ -120,14 +120,6 @@ if it appears as a global variable in the tree during the resolving phase of the
 a global variable from the beginning on, or after global variables are resolved by <Ref Func="CapJitResolvedGlobalVariables" />.
 Possibly you have adapt <Ref Func="CapJitResolvedGlobalVariables" /> to your setting.
 
-* Q: Why do I get the error "cannot find iteration key"?
-A: For each syntax tree node type, the tree iterator has to know which record names it should use for continuing the iteration.
-Please add the missing keys to `CAP_INTERNAL_JIT_ITERATION_KEYS`.
-
-* Q: Why do I get the error "tree has no kown type" when calling <Ref Func="CapJitPrettyPrintSyntaxTree" />?
-A: <Ref Func="CapJitPrettyPrintSyntaxTree" /> needs to handle every syntax tree node type separately.
-Please add the missing type to <Ref Func="CapJitPrettyPrintSyntaxTree" />.
-
 * Q: Why is do I get the error "a local variable with name &lt;name&gt; is assigned more than once (not as a part of a rapid reassignment),
   this is not supported"?
 A: For reasons of correctness, variables cannot be inlined if a variable is assigned more than once in the body of a function

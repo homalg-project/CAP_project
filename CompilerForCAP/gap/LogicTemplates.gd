@@ -54,10 +54,8 @@ DeclareGlobalFunction( "CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE" );
 #!       so the template is not applied anyway.
 #!     * If `src_template` cannot be expressed as valid GAP code, the component `src_template_tree` can be set.
 #!       In that case, `src_template` is not parsed and `src_template_tree` is used when trying to find a match.
-#!       Variables in the sense of `variable_names` have to be given as references to global variables called
-#!       `CAP_INTERNAL_JIT_TEMPLATE_VAR_n` where `n` is consecutively incremented starting from 1.
-#!       Setting `src_template` and `variable_names` is still required to have a readable representation of the template and to make sure
-#!       that the global variables `CAP_INTERNAL_JIT_TEMPLATE_VAR_n` are declared by <Ref Func="CapJitAppliedLogicTemplates" />.
+#!       Variables in the sense of `variable_names` have to be given as syntax trees of type `SYNTAX_TREE_VARIABLE` with a unique `id`.
+#!       Setting `src_template` and `variable_names` is still required to have a readable representation of the template.
 #!       If `dst_template` cannot be expressed as valid GAP code, it can be in an analogous manner.
 #! @Arguments template
 DeclareGlobalFunction( "CapJitAddLogicTemplate" );
