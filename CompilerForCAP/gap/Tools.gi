@@ -323,13 +323,6 @@ end );
 
 InstallGlobalFunction( CapJitIsEqualForEnhancedSyntaxTrees, function ( tree1, tree2 )
     
-    # early bailout
-    if tree1.type <> tree2.type then
-        
-        return false;
-        
-    fi;
-    
     return CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree1, tree2, [ ], false ) <> fail;
     
 end );

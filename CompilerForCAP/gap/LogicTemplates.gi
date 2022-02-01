@@ -338,7 +338,53 @@ CapJitAddLogicTemplate(
 );
 
 InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( tree, template_tree, variable_filters, debug )
-  local variables, func_id_replacements, pre_func, result_func, additional_arguments_func, result;
+  local i, variables, func_id_replacements, pre_func, result_func, additional_arguments_func, result;
+    
+    # bail out early if type mismatches
+    if template_tree.type <> "SYNTAX_TREE_VARIABLE" and tree.type <> template_tree.type then
+        
+        return fail;
+        
+    fi;
+    
+    # after inlining, most syntax tree nodes are of type EXPR_FUNCCALL -> we can bail out early for some frequent conditions (i.e. check the type of funcref and args)
+    if template_tree.type = "EXPR_FUNCCALL" then
+        
+        # by the check above, tree.type = template_tree.type = "EXPR_FUNCCALL"
+        
+        if template_tree.funcref.type <> "SYNTAX_TREE_VARIABLE" then
+            
+            if tree.funcref.type <> template_tree.funcref.type then
+                
+                return fail;
+                
+            fi;
+            
+            if template_tree.funcref.type = "EXPR_REF_GVAR" and not IsIdenticalObj( ValueGlobal( tree.funcref.gvar ), ValueGlobal( template_tree.funcref.gvar ) ) then
+                
+                return fail;
+                
+            fi;
+            
+        fi;
+        
+        if tree.args.length <> template_tree.args.length then
+            
+            return fail;
+            
+        fi;
+        
+        for i in [ 1 .. template_tree.args.length ] do
+            
+            if template_tree.args.(i).type <> "SYNTAX_TREE_VARIABLE" and tree.args.(i).type <> template_tree.args.(i).type then
+                
+                return fail;
+                
+            fi;
+            
+        od;
+        
+    fi;
     
     variables := [ ];
     func_id_replacements := [ ];
@@ -627,13 +673,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
         func_id_stack := additional_arguments[2];
         
         while true do
-            
-            # bail out early if type mismatches
-            if tree.type <> template.src_template_tree.type then
-                
-                return tree;
-                
-            fi;
             
             matching_info := CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree, template.src_template_tree, template.variable_filters, IsBound( template.debug_path ) and template.debug_path = path );
             
