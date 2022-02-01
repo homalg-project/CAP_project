@@ -346,12 +346,6 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
     pre_func := function ( template_tree, tree )
       local new_template_tree;
         
-        if tree = fail then
-            
-            return fail;
-            
-        fi;
-        
         if template_tree.type <> "SYNTAX_TREE_VARIABLE" and tree.type <> template_tree.type then
             
             return fail;
@@ -563,15 +557,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
     
     additional_arguments_func := function ( template_tree, key, tree )
         
-        if tree = fail then
-            
-            return fail;
-            
-        else
-            
-            return tree.(key);
-            
-        fi;
+        return tree.(key);
         
     end;
     
