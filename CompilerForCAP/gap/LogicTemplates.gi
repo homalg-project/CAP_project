@@ -638,7 +638,7 @@ InstallGlobalFunction( CapJitAppliedLogicTemplates, function ( tree )
 end );
 
 InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree, template )
-  local pre_func, additional_arguments_func;
+  local path_debugging_enabled, pre_func, additional_arguments_func;
     
     if IsBound( template.needed_packages ) then
         
@@ -666,15 +666,17 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
         
     fi;
     
+    path_debugging_enabled := IsBound( template.debug_path );
+    
     pre_func := function ( tree, additional_arguments )
-      local path, func_id_stack, matching_info, debug, variables, func_id_replacements, well_defined, pre_func, result_func, additional_arguments_func, dst_tree;
+      local func_id_stack, matching_info, debug, variables, func_id_replacements, well_defined, pre_func, result_func, additional_arguments_func, dst_tree;
         
-        path := additional_arguments[1];
-        func_id_stack := additional_arguments[2];
+        func_id_stack := additional_arguments[1];
+        # path = additional_arguments[2] is only needed for debugging and only available if path debugging is enabled
         
         while true do
             
-            matching_info := CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree, template.src_template_tree, template.variable_filters, IsBound( template.debug_path ) and template.debug_path = path );
+            matching_info := CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree, template.src_template_tree, template.variable_filters, path_debugging_enabled and template.debug_path = additional_arguments[2] );
             
             if matching_info = fail then
                 
@@ -812,23 +814,46 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE, function ( tree,
         
     end;
     
-    additional_arguments_func := function ( tree, key, additional_arguments )
-      local path, func_id_stack;
+    if path_debugging_enabled then
         
-        path := additional_arguments[1];
-        func_id_stack := additional_arguments[2];
-        
-        path := Concatenation( path, [ key ] );
-        
-        if tree.type = "EXPR_DECLARATIVE_FUNC" then
+        # COVERAGE_IGNORE_BLOCK_START
+        # path is only needed when path debugging is enabled
+        additional_arguments_func := function ( tree, key, additional_arguments )
+          local path, func_id_stack;
             
-            func_id_stack := Concatenation( func_id_stack, [ tree.id ] );
+            func_id_stack := additional_arguments[1];
+            path := additional_arguments[2];
             
-        fi;
+            if tree.type = "EXPR_DECLARATIVE_FUNC" then
+                
+                func_id_stack := Concatenation( func_id_stack, [ tree.id ] );
+                
+            fi;
+            
+            path := Concatenation( path, [ key ] );
+            
+            return [ func_id_stack, path ];
+            
+        end;
+        # COVERAGE_IGNORE_BLOCK_END
         
-        return [ path, func_id_stack ];
+    else
         
-    end;
+        additional_arguments_func := function ( tree, key, additional_arguments )
+            
+            if tree.type = "EXPR_DECLARATIVE_FUNC" then
+                
+                return [ Concatenation( additional_arguments[1], [ tree.id ] ) ];
+                
+            else
+                
+                return additional_arguments;
+                
+            fi;
+            
+        end;
+        
+    fi;
     
     return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [ [ ], [ ] ] );
     
