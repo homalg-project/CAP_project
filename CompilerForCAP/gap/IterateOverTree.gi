@@ -94,6 +94,8 @@ BindGlobal( "CAP_JIT_INTERNAL_ITERATION_KEYS", rec(
     CASE_BRANCH := [ "condition", "value" ],
 ) );
 
+BindGlobal( "SYNTAX_TREE_LIST_KEYS", [ ] );
+
 InstallGlobalFunction( CapJitIterateOverTree, function ( tree, pre_func, result_func, additional_arguments_func, additional_arguments )
   local pre_func_result, result, type, keys, key;
     
@@ -128,7 +130,21 @@ InstallGlobalFunction( CapJitIterateOverTree, function ( tree, pre_func, result_
     
     if type = "SYNTAX_TREE_LIST" then
         
-        keys := List( [ 1 .. tree.length ], i -> String( i ) );
+        if tree.length = 0 then
+            
+            keys := [ ];
+            
+        else
+            
+            if not IsBound( SYNTAX_TREE_LIST_KEYS[tree.length] ) then
+                
+                SYNTAX_TREE_LIST_KEYS[tree.length] := List( [ 1 .. tree.length ], i -> String( i ) );
+                
+            fi;
+            
+            keys := SYNTAX_TREE_LIST_KEYS[tree.length];
+            
+        fi;
         
         # check that tree.length and the record entries are in sync
         # keys are sorted as integers but not lexicographically
