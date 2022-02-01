@@ -158,8 +158,7 @@ InstallGlobalFunction( CapJitIterateOverTree, function ( tree, pre_func, result_
         keys := List( tree.names, name -> Concatenation( "BINDING_", name ) );
         
         # check that tree.names and the record entries are in sync
-        Assert( 3, IsSortedList( tree.names ) );
-        Assert( 3, SortedList( Filtered( RecNames( tree ), name -> StartsWith( name, "BINDING_" ) ) ) = keys );
+        Assert( 3, IsSortedList( tree.names ) and SortedList( Filtered( RecNames( tree ), name -> StartsWith( name, "BINDING_" ) ) ) = keys );
         
     elif IsBound( CAP_JIT_INTERNAL_ITERATION_KEYS.(type) ) then
         
