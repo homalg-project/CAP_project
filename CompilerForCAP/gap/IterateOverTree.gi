@@ -130,11 +130,6 @@ InstallGlobalFunction( CapJitIterateOverTree, function ( tree, pre_func, result_
         
         type := tree.type;
     
-    # needed for dealing with non-enhanced syntax trees
-    elif SortedList( RecNames( tree ) ) = [ "body", "condition" ] then
-        
-        type := "BRANCH_IF";
-        
     else
         
         # COVERAGE_IGNORE_BLOCK_START
