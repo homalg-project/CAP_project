@@ -223,6 +223,14 @@ DeclareAttribute( "UnderlyingCategory",
 DeclareAttribute( "RelationMorphism",
                   IsAdelmanCategoryObject );
 
+CapJitAddTypeSignature( "RelationMorphism", [ IsAdelmanCategoryObject ], function ( input_types )
+    
+    Assert( 0, IsAdelmanCategory( input_types[1].category ) );
+    
+    return rec( filter := UnderlyingCategory( input_types[1].category )!.morphism_representation, category := UnderlyingCategory( input_types[1].category ) );
+    
+end );
+
 #! @Description
 #! The argument is an object $x$ in an Adelman category.
 #! The output is its corelation morphism $\gamma: b \rightarrow c$.
@@ -231,6 +239,14 @@ DeclareAttribute( "RelationMorphism",
 DeclareAttribute( "CorelationMorphism",
                   IsAdelmanCategoryObject );
 
+CapJitAddTypeSignature( "CorelationMorphism", [ IsAdelmanCategoryObject ], function ( input_types )
+    
+    Assert( 0, IsAdelmanCategory( input_types[1].category ) );
+    
+    return rec( filter := UnderlyingCategory( input_types[1].category )!.morphism_representation, category := UnderlyingCategory( input_types[1].category ) );
+    
+end );
+
 #! @Description
 #! The argument is a morphism $\alpha$ in an Adelman category.
 #! The output is its morphism datum $\beta: b \rightarrow b'$.
@@ -238,6 +254,14 @@ DeclareAttribute( "CorelationMorphism",
 #! @Arguments alpha
 DeclareAttribute( "MorphismDatum",
                   IsAdelmanCategoryMorphism );
+
+CapJitAddTypeSignature( "MorphismDatum", [ IsAdelmanCategoryMorphism ], function ( input_types )
+    
+    Assert( 0, IsAdelmanCategory( input_types[1].category ) );
+    
+    return rec( filter := UnderlyingCategory( input_types[1].category )!.morphism_representation, category := UnderlyingCategory( input_types[1].category ) );
+    
+end );
 
 #! @Description
 #! The argument is a morphism $\alpha$ in an Adelman category.
