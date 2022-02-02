@@ -12,6 +12,7 @@ InternalCoHomOnObjects := rec(
   return_type := "object",
   dual_operation := "InternalHomOnObjects",
   dual_arguments_reversed := true,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 InternalCoHomOnMorphisms := rec(
@@ -23,6 +24,7 @@ InternalCoHomOnMorphisms := rec(
   return_type := "morphism",
   dual_operation := "InternalHomOnMorphisms",
   dual_arguments_reversed := true,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 InternalCoHomOnMorphismsWithGivenInternalCoHoms := rec(
@@ -31,6 +33,7 @@ InternalCoHomOnMorphismsWithGivenInternalCoHoms := rec(
   return_type := "morphism",
   dual_operation := "InternalHomOnMorphismsWithGivenInternalHoms",
   dual_arguments_reversed := true,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 CoclosedEvaluationMorphism := rec(
@@ -42,6 +45,7 @@ CoclosedEvaluationMorphism := rec(
   return_type := "morphism",
   dual_operation := "EvaluationMorphism",
   dual_arguments_reversed := true,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 CoclosedEvaluationMorphismWithGivenRange := rec(
@@ -51,6 +55,7 @@ CoclosedEvaluationMorphismWithGivenRange := rec(
   dual_operation := "EvaluationMorphismWithGivenSource",
   dual_preprocessor_func := { cat, a, b, r } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( r ) ],
   dual_arguments_reversed := false,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 CoclosedCoevaluationMorphism := rec(
@@ -62,6 +67,7 @@ CoclosedCoevaluationMorphism := rec(
   return_type := "morphism",
   dual_operation := "CoevaluationMorphism",
   dual_arguments_reversed := false,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 CoclosedCoevaluationMorphismWithGivenSource := rec(
@@ -70,6 +76,7 @@ CoclosedCoevaluationMorphismWithGivenSource := rec(
   return_type := "morphism",
   dual_operation := "CoevaluationMorphismWithGivenRange",
   dual_arguments_reversed := false,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 TensorProductToInternalCoHomAdjunctionMap := rec(
@@ -78,6 +85,7 @@ TensorProductToInternalCoHomAdjunctionMap := rec(
   return_type := "morphism",
   dual_operation := "TensorProductToInternalHomAdjunctionMap",
   dual_arguments_reversed := false,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 InternalCoHomToTensorProductAdjunctionMap := rec(
@@ -87,6 +95,7 @@ InternalCoHomToTensorProductAdjunctionMap := rec(
   dual_operation := "InternalHomToTensorProductAdjunctionMap",
   dual_preprocessor_func := { cat, a, b, f } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( f ) ],
   dual_arguments_reversed := false,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 MonoidalPreCoComposeMorphism := rec(
@@ -98,6 +107,7 @@ MonoidalPreCoComposeMorphism := rec(
   return_type := "morphism",
   dual_operation := "MonoidalPreComposeMorphism",
   dual_arguments_reversed := true,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 MonoidalPreCoComposeMorphismWithGivenObjects := rec(
@@ -106,6 +116,7 @@ MonoidalPreCoComposeMorphismWithGivenObjects := rec(
   return_type := "morphism",
   dual_operation := "MonoidalPreComposeMorphismWithGivenObjects",
   dual_arguments_reversed := true,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 MonoidalPostCoComposeMorphism := rec(
@@ -117,6 +128,7 @@ MonoidalPostCoComposeMorphism := rec(
   return_type := "morphism",
   dual_operation := "MonoidalPostComposeMorphism",
   dual_arguments_reversed := true,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 MonoidalPostCoComposeMorphismWithGivenObjects := rec(
@@ -125,6 +137,7 @@ MonoidalPostCoComposeMorphismWithGivenObjects := rec(
   return_type := "morphism",
   dual_operation := "MonoidalPostComposeMorphismWithGivenObjects",
   dual_arguments_reversed := true,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 CoDualOnObjects := rec(
@@ -132,6 +145,7 @@ CoDualOnObjects := rec(
   io_type := [ [ "a" ], [ "acd" ] ],
   return_type := "object",
   dual_operation := "DualOnObjects",
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 CoDualOnMorphisms := rec(
@@ -142,6 +156,7 @@ CoDualOnMorphisms := rec(
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "DualOnMorphisms",
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 CoDualOnMorphismsWithGivenCoDuals := rec(
@@ -150,6 +165,7 @@ CoDualOnMorphismsWithGivenCoDuals := rec(
   return_type := "morphism",
   dual_operation := "DualOnMorphismsWithGivenDuals",
   dual_arguments_reversed := true,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 CoclosedEvaluationForCoDual := rec(
@@ -160,6 +176,7 @@ CoclosedEvaluationForCoDual := rec(
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "EvaluationForDual",
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 CoclosedEvaluationForCoDualWithGivenTensorProduct := rec(
@@ -168,6 +185,7 @@ CoclosedEvaluationForCoDualWithGivenTensorProduct := rec(
   return_type := "morphism",
   dual_operation := "EvaluationForDualWithGivenTensorProduct",
   dual_arguments_reversed := true,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 MorphismFromCoBidual := rec(
@@ -178,6 +196,7 @@ MorphismFromCoBidual := rec(
   with_given_object_position := "Source",
   return_type := "morphism",
   dual_operation := "MorphismToBidual",
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 MorphismFromCoBidualWithGivenCoBidual := rec(
@@ -186,6 +205,7 @@ MorphismFromCoBidualWithGivenCoBidual := rec(
   return_type := "morphism",
   dual_operation := "MorphismToBidualWithGivenBidual",
   dual_arguments_reversed := false,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 InternalCoHomTensorProductCompatibilityMorphism := rec(
@@ -198,6 +218,7 @@ InternalCoHomTensorProductCompatibilityMorphism := rec(
   dual_operation := "TensorProductInternalHomCompatibilityMorphism",
   dual_preprocessor_func := { cat, list } -> [ Opposite( cat ), [ Opposite( list[3] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[2] ) ] ],
   dual_arguments_reversed := false,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects := rec(
@@ -210,6 +231,7 @@ InternalCoHomTensorProductCompatibilityMorphismWithGivenObjects := rec(
   dual_preprocessor_func :=
     { cat, s, list, r } -> [ Opposite( cat ), Opposite( r ), [ Opposite( list[3] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[2] ) ], Opposite( s ) ],
   dual_arguments_reversed := false,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 CoDualityTensorProductCompatibilityMorphism := rec(
@@ -221,6 +243,7 @@ CoDualityTensorProductCompatibilityMorphism := rec(
   return_type := "morphism",
   dual_operation := "TensorProductDualityCompatibilityMorphism",
   dual_arguments_reversed := false,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 CoDualityTensorProductCompatibilityMorphismWithGivenObjects := rec(
@@ -230,6 +253,7 @@ CoDualityTensorProductCompatibilityMorphismWithGivenObjects := rec(
   dual_operation := "TensorProductDualityCompatibilityMorphismWithGivenObjects",
   dual_preprocessor_func := { cat, s, a, b, r} -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ],
   dual_arguments_reversed := false,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 MorphismFromInternalCoHomToTensorProduct := rec(
@@ -241,6 +265,7 @@ MorphismFromInternalCoHomToTensorProduct := rec(
   return_type := "morphism",
   dual_operation := "MorphismFromTensorProductToInternalHom",
   dual_arguments_reversed := true,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 MorphismFromInternalCoHomToTensorProductWithGivenObjects := rec(
@@ -249,6 +274,7 @@ MorphismFromInternalCoHomToTensorProductWithGivenObjects := rec(
   return_type := "morphism",
   dual_operation := "MorphismFromTensorProductToInternalHomWithGivenObjects",
   dual_arguments_reversed := true,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 IsomorphismFromCoDualToInternalCoHom := rec(
@@ -256,6 +282,7 @@ IsomorphismFromCoDualToInternalCoHom := rec(
   io_type := [ [ "a" ], [ "d", "i" ] ],
   return_type := "morphism",
   dual_operation := "IsomorphismFromInternalHomToDual",
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 IsomorphismFromInternalCoHomToCoDual := rec(
@@ -263,6 +290,7 @@ IsomorphismFromInternalCoHomToCoDual := rec(
   io_type := [ [ "a" ], [ "i", "d" ] ],
   return_type := "morphism",
   dual_operation := "IsomorphismFromDualToInternalHom",
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 UniversalPropertyOfCoDual := rec(
@@ -271,6 +299,7 @@ UniversalPropertyOfCoDual := rec(
   return_type := "morphism",
   dual_operation := "UniversalPropertyOfDual",
   dual_arguments_reversed := false,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 CoLambdaIntroduction := rec(
@@ -278,6 +307,7 @@ CoLambdaIntroduction := rec(
   io_type := [ [ "alpha" ], [ "u", "i" ] ],
   return_type := "morphism",
   dual_operation := "LambdaIntroduction",
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 CoLambdaElimination := rec(
@@ -287,6 +317,7 @@ CoLambdaElimination := rec(
   dual_operation := "LambdaElimination",
   dual_preprocessor_func := { cat, a, b, alpha } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( alpha ) ],
   dual_arguments_reversed := false,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 IsomorphismFromObjectToInternalCoHom := rec(
@@ -297,6 +328,7 @@ IsomorphismFromObjectToInternalCoHom := rec(
   with_given_object_position := "Range",
   return_type := "morphism",
   dual_operation := "IsomorphismFromInternalHomToObject",
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom := rec(
@@ -305,6 +337,7 @@ IsomorphismFromObjectToInternalCoHomWithGivenInternalCoHom := rec(
   return_type := "morphism",
   dual_operation := "IsomorphismFromInternalHomToObjectWithGivenInternalHom",
   dual_arguments_reversed := false,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 IsomorphismFromInternalCoHomToObject := rec(
@@ -315,6 +348,7 @@ IsomorphismFromInternalCoHomToObject := rec(
   with_given_object_position := "Source",
   return_type := "morphism",
   dual_operation := "IsomorphismFromObjectToInternalHom",
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom := rec(
@@ -323,6 +357,7 @@ IsomorphismFromInternalCoHomToObjectWithGivenInternalCoHom := rec(
   return_type := "morphism",
   dual_operation := "IsomorphismFromObjectToInternalHomWithGivenInternalHom",
   dual_arguments_reversed := false,
+  # Test in CoclosedMonoidalCategoriesTest
 ),
 
 ) );

@@ -14,6 +14,7 @@ CoevaluationForDual := rec(
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "CoclosedCoevaluationForCoDual",
+  # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),
 
 CoevaluationForDualWithGivenTensorProduct := rec(
@@ -22,6 +23,7 @@ CoevaluationForDualWithGivenTensorProduct := rec(
   return_type := "morphism",
   dual_operation := "CoclosedCoevaluationForCoDualWithGivenTensorProduct",
   dual_arguments_reversed := true,
+  # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),
 
 MorphismFromBidual := rec(
@@ -32,6 +34,7 @@ MorphismFromBidual := rec(
   with_given_object_position := "Source",
   return_type := "morphism",
   dual_operation := "MorphismToCoBidual",
+  # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),
 
 MorphismFromBidualWithGivenBidual := rec(
@@ -40,6 +43,7 @@ MorphismFromBidualWithGivenBidual := rec(
   return_type := "morphism",
   dual_operation := "MorphismToCoBidualWithGivenCoBidual",
   dual_arguments_reversed := false,
+  # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),
 
 TensorProductInternalHomCompatibilityMorphismInverse := rec(
@@ -53,6 +57,7 @@ TensorProductInternalHomCompatibilityMorphismInverse := rec(
   dual_preprocessor_func :=
     { cat, list } -> [ Opposite( cat ), [ Opposite( list[2] ), Opposite( list[4] ), Opposite( list[1] ), Opposite( list[3] ) ] ],
   dual_arguments_reversed := false,
+  # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),
 
 TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects := rec(
@@ -65,6 +70,7 @@ TensorProductInternalHomCompatibilityMorphismInverseWithGivenObjects := rec(
   dual_preprocessor_func :=
     { cat, s, list, r } -> [ Opposite( cat ), Opposite( r ), [ Opposite( list[2] ), Opposite( list[4] ), Opposite( list[1] ), Opposite( list[3] ) ], Opposite( s ) ],
   dual_arguments_reversed := false,
+  # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),
 
 MorphismFromInternalHomToTensorProduct := rec(
@@ -76,6 +82,7 @@ MorphismFromInternalHomToTensorProduct := rec(
   return_type := "morphism",
   dual_operation := "MorphismFromTensorProductToInternalCoHom",
   dual_arguments_reversed := false,
+  # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),
 
 MorphismFromInternalHomToTensorProductWithGivenObjects := rec(
@@ -85,6 +92,7 @@ MorphismFromInternalHomToTensorProductWithGivenObjects := rec(
   dual_operation := "MorphismFromTensorProductToInternalCoHomWithGivenObjects",
   dual_preprocessor_func := { cat, s, a, b, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ],
   dual_arguments_reversed := false,
+  # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),
 
 TraceMap := rec(
@@ -92,6 +100,7 @@ TraceMap := rec(
   io_type := [ [ "alpha" ], [ "u", "u" ] ],
   return_type := "morphism",
   dual_operation := "CoTraceMap",
+  # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),
 
 RankMorphism := rec(
@@ -99,6 +108,7 @@ RankMorphism := rec(
   io_type := [ [ "a" ], [ "u", "u" ] ],
   return_type := "morphism",
   dual_operation := "CoRankMorphism",
+  # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),
 
 IsomorphismFromTensorProductToInternalHom := rec(
@@ -107,6 +117,7 @@ IsomorphismFromTensorProductToInternalHom := rec(
   return_type := "morphism",
   dual_operation := "IsomorphismFromInternalCoHomToTensorProduct",
   dual_arguments_reversed := true,
+  # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),
 
 IsomorphismFromInternalHomToTensorProduct := rec(
@@ -115,6 +126,7 @@ IsomorphismFromInternalHomToTensorProduct := rec(
   return_type := "morphism",
   dual_operation := "IsomorphismFromTensorProductToInternalCoHom",
   dual_arguments_reversed := false,
+  # Test in RigidSymmetricClosedMonoidalCategoriesTest
 ),
 
 ) );
