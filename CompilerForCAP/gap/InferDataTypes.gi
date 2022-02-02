@@ -171,8 +171,10 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_LOAD_DEFERRED_TYPE_SIGNATURES", functio
     
 end );
 
-InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_FILTERS", function ( gvar, input_filters )
-  local type_signatures, package_name, signature;
+InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES", function ( gvar, input_types )
+  local input_filters, type_signatures, output_type;
+    
+    input_filters := List( input_types, type -> type.filter );
     
     if IsCategory( ValueGlobal( gvar ) ) and Length( input_filters ) = 1 then
         
@@ -217,7 +219,24 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_I
         
     fi;
     
-    return type_signatures[1][2];
+    output_type := type_signatures[1][2];
+    
+    if IsFunction( output_type ) and NumberArgumentsFunction( output_type ) = 1 then
+        
+        output_type := output_type( input_types );
+        
+        if output_type = fail then
+            
+            #Error( "could not get output_type" );
+            return fail;
+            
+        fi;
+        
+        Assert( 0, IsBound( output_type.filter ) );
+        
+    fi;
+    
+    return output_type;
     
 end );
 
@@ -226,7 +245,7 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGU
     
     if funcref.type = "EXPR_REF_GVAR" then
         
-        output_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_FILTERS( funcref.gvar, List( AsListMut( args ), a -> a.data_type.filter ) );
+        output_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES( funcref.gvar, List( AsListMut( args ), a -> a.data_type ) );
         
         if output_type = fail then
             
@@ -272,7 +291,7 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGU
     
     if funcref.type = "EXPR_REF_GVAR" then
         
-        output_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_FILTERS( funcref.gvar, List( arguments_types, type -> type.filter ) );
+        output_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES( funcref.gvar, arguments_types );
         
         if output_type = fail then
             
@@ -685,40 +704,40 @@ CapJitAddTypeSignature( "CapFixpoint", [ IsFunction, IsFunction, IsObject ], fun
 end );
 
 # Objectify*ForCAPWithAttributes
-CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCapCategory, IsFunction, IsObject ], function ( args, func_stack )
+CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCapCategory, IsFunction, IsObject ], function ( input_type )
     
-    return rec( args := args, output_type := rec( filter := args.2.data_type.category!.object_representation, category := args.2.data_type.category ) );
-    
-end );
-
-CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCapCategory, IsFunction, IsObject, IsFunction, IsObject ], function ( args, func_stack )
-    
-    return rec( args := args, output_type := rec( filter := args.2.data_type.category!.object_representation, category := args.2.data_type.category ) );
+    return rec( filter := input_type[2].category!.object_representation, category := input_type[2].category );
     
 end );
 
-CapJitAddTypeSignature( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes", [ IsRecord, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsFunction, IsObject ], function ( args, func_stack )
+CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCapCategory, IsFunction, IsObject, IsFunction, IsObject ], function ( input_type )
     
-    return rec( args := args, output_type := rec( filter := args.2.data_type.category!.morphism_representation, category := args.2.data_type.category ) );
+    return rec( filter := input_type[2].category!.object_representation, category := input_type[2].category );
+    
+end );
+
+CapJitAddTypeSignature( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes", [ IsRecord, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsFunction, IsObject ], function ( input_type )
+    
+    return rec( filter := input_type[2].category!.morphism_representation, category := input_type[2].category );
     
 end );
 
 # object and morphism attributes
-CapJitAddTypeSignature( "CapCategory", [ IsCapCategoryCell ], function ( args, func_stack )
+CapJitAddTypeSignature( "CapCategory", [ IsCapCategoryCell ], function ( input_types )
     
-    return rec( args := args, output_type := rec( filter := IsCapCategory, category := args.1.data_type.category ) );
-    
-end );
-
-CapJitAddTypeSignature( "Source", [ IsCapCategoryMorphism ], function ( args, func_stack )
-    
-    return rec( args := args, output_type := rec( filter := args.1.data_type.category!.object_representation, category := args.1.data_type.category ) );
+    return rec( filter := IsCapCategory, category := input_types[1].category );
     
 end );
 
-CapJitAddTypeSignature( "Range", [ IsCapCategoryMorphism ], function ( args, func_stack )
+CapJitAddTypeSignature( "Source", [ IsCapCategoryMorphism ], function ( input_types )
     
-    return rec( args := args, output_type := rec( filter := args.1.data_type.category!.object_representation, category := args.1.data_type.category ) );
+    return rec( filter := input_types[1].category!.object_representation, category := input_types[1].category );
+    
+end );
+
+CapJitAddTypeSignature( "Range", [ IsCapCategoryMorphism ], function ( input_types )
+    
+    return rec( filter := input_types[1].category!.object_representation, category := input_types[1].category );
     
 end );
 
@@ -736,108 +755,108 @@ CapJitAddTypeSignature( "^", [ IsPerm, IsInt ], IsPerm );
 CapJitAddTypeSignature( "PermList", [ IsList ], IsPerm );
 CapJitAddTypeSignature( "PermutationMat", [ IsPerm, IsInt ], rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsInt ) ) ) );
 
-CapJitAddTypeSignature( "NumberRows", [ IsList ], function ( args, func_stack )
+CapJitAddTypeSignature( "NumberRows", [ IsList ], function ( input_types )
     
-    Assert( 0, args.1.data_type.element_type.filter = IsList );
+    Assert( 0, input_types[1].element_type.filter = IsList );
     
-    return rec( args := args, output_type := rec( filter := IsInt ) );
-    
-end );
-
-CapJitAddTypeSignature( "NumberColumns", [ IsList ], function ( args, func_stack )
-    
-    Assert( 0, args.1.data_type.element_type.filter = IsList );
-    
-    return rec( args := args, output_type := rec( filter := IsInt ) );
+    return rec( filter := IsInt );
     
 end );
 
-CapJitAddTypeSignature( "ListWithIdenticalEntries", [ IsInt, IsObject ], function ( args, func_stack )
+CapJitAddTypeSignature( "NumberColumns", [ IsList ], function ( input_types )
     
-    return rec( args := args, output_type := rec( filter := IsList, element_type := args.2.data_type ) );
+    Assert( 0, input_types[1].element_type.filter = IsList );
     
-end );
-
-CapJitAddTypeSignature( "Concatenation", [ IsList ], function ( args, func_stack )
-    
-    Assert( 0, args.1.data_type.element_type.filter = IsList );
-    
-    return rec( args := args, output_type := rec( filter := IsList, element_type := args.1.data_type.element_type.element_type ) );
+    return rec( filter := IsInt );
     
 end );
 
-CapJitAddTypeSignature( "Sum", [ IsList ], function ( args, func_stack )
+CapJitAddTypeSignature( "ListWithIdenticalEntries", [ IsInt, IsObject ], function ( input_types )
     
-    return rec( args := args, output_type := args.1.data_type.element_type );
-    
-end );
-
-CapJitAddTypeSignature( "Product", [ IsList ], function ( args, func_stack )
-    
-    return rec( args := args, output_type := args.1.data_type.element_type );
+    return rec( filter := IsList, element_type := input_types[2] );
     
 end );
 
-CapJitAddTypeSignature( "[]", [ IsList, IsInt ], function ( args, func_stack )
+CapJitAddTypeSignature( "Concatenation", [ IsList ], function ( input_types )
     
-    return rec( args := args, output_type := args.1.data_type.element_type );
+    Assert( 0, input_types[1].element_type.filter = IsList );
     
-end );
-
-CapJitAddTypeSignature( "{}", [ IsList, IsList ], function ( args, func_stack )
-    
-    return rec( args := args, output_type := args.1.data_type );
+    return rec( filter := IsList, element_type := input_types[1].element_type.element_type );
     
 end );
 
-CapJitAddTypeSignature( "SSortedList", [ IsList ], function ( args, func_stack )
+CapJitAddTypeSignature( "Sum", [ IsList ], function ( input_types )
     
-    return rec( args := args, output_type := args.1.data_type );
+    return input_types[1].element_type;
     
 end );
 
-CapJitAddTypeSignature( "First", [ IsList, IsObject ], function ( args, func_stack )
+CapJitAddTypeSignature( "Product", [ IsList ], function ( input_types )
+    
+    return input_types[1].element_type;
+    
+end );
+
+CapJitAddTypeSignature( "[]", [ IsList, IsInt ], function ( input_types )
+    
+    return input_types[1].element_type;
+    
+end );
+
+CapJitAddTypeSignature( "{}", [ IsList, IsList ], function ( input_types )
+    
+    return input_types[1];
+    
+end );
+
+CapJitAddTypeSignature( "SSortedList", [ IsList ], function ( input_types )
+    
+    return input_types[1];
+    
+end );
+
+CapJitAddTypeSignature( "First", [ IsList, IsObject ], function ( input_types )
     
     #Error( "cannot express Is...OrFail yet" );
     return fail;
     
 end );
 
-CapJitAddTypeSignature( "Position", [ IsList, IsObject ], function ( args, func_stack )
+CapJitAddTypeSignature( "Position", [ IsList, IsObject ], function ( input_types )
     
-    Assert( 0, args.1.data_type.element_type = args.2.data_type );
+    Assert( 0, input_types[1].element_type = input_types[2] );
     
     #Error( "cannot express IsIntOrFail yet" );
     return fail;
     
 end );
 
-CapJitAddTypeSignature( "Positions", [ IsList, IsObject ], function ( args, func_stack )
+CapJitAddTypeSignature( "Positions", [ IsList, IsObject ], function ( input_types )
     
-    Assert( 0, args.1.data_type.element_type = args.2.data_type );
+    Assert( 0, input_types[1].element_type = input_types[2] );
     
-    return rec( args := args, output_type := rec( filter := IsList, element_type := rec( filter := IsInt ) ) );
-    
-end );
-
-CapJitAddTypeSignature( "Tuples", [ IsList, IsInt ], function ( args, func_stack )
-    
-    return rec( args := args, output_type := rec( filter := IsList, element_type := args.1.data_type ) );
+    return rec( filter := IsList, element_type := rec( filter := IsInt ) );
     
 end );
 
-CapJitAddTypeSignature( "*", [ IsInt, IsList ], function ( args, func_stack )
+CapJitAddTypeSignature( "Tuples", [ IsList, IsInt ], function ( input_types )
+    
+    return rec( filter := IsList, element_type := input_types[1] );
+    
+end );
+
+CapJitAddTypeSignature( "*", [ IsInt, IsList ], function ( input_types )
   local element_type;
     
-    if args.2.data_type.element_type.filter = IsList then
+    if input_types[2].element_type.filter = IsList then
         
         # matrix case
-        element_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_FILTERS( "*", [ IsInt, args.2.data_type.element_type.element_type.filter ] );
+        element_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES( "*", [ IsInt, input_types[2].element_type.element_type ] );
         
     else
         
         # list case
-        element_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_FILTERS( "*", [ IsInt, args.2.data_type.element_type.filter ] );
+        element_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES( "*", [ IsInt, input_types[2].element_type ] );
         
     fi;
     
@@ -855,23 +874,23 @@ CapJitAddTypeSignature( "*", [ IsInt, IsList ], function ( args, func_stack )
         
     fi;
     
-    if args.2.data_type.element_type.filter = IsList then
+    if input_types[2].element_type.filter = IsList then
         
-        return rec( args := args, output_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := element_type ) ) );
+        return rec( filter := IsList, element_type := rec( filter := IsList, element_type := element_type ) );
         
     else
         
-        return rec( args := args, output_type := rec( filter := IsList, element_type := element_type ) );
+        return rec( filter := IsList, element_type := element_type );
         
     fi;
     
 end );
 
-CapJitAddTypeSignature( "MatElm", [ IsList, IsInt, IsInt ], function ( args, func_stack )
+CapJitAddTypeSignature( "MatElm", [ IsList, IsInt, IsInt ], function ( input_types )
     
-    Assert( 0, args.1.data_type.element_type.filter = IsList );
+    Assert( 0, input_types[1].element_type.filter = IsList );
     
-    return rec( args := args, output_type := args.1.data_type.element_type.element_type );
+    return input_types[1].element_type.element_type;
     
 end );
 

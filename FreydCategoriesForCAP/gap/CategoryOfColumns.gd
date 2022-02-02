@@ -44,11 +44,11 @@ KeyDependentOperation( "CategoryOfColumnsObject",
 DeclareOperation( "AsCategoryOfColumnsMorphism",
                   [ IsHomalgMatrix, IsCategoryOfColumns ] );
 # TODO: make the second filter more specific once categories know their filter
-CapJitAddTypeSignature( "AsCategoryOfColumnsMorphism", [ IsHomalgMatrix, IsCapCategory ], function ( args, func_stack )
+CapJitAddTypeSignature( "AsCategoryOfColumnsMorphism", [ IsHomalgMatrix, IsCapCategory ], function ( input_types )
     
-    Assert( 0, IsCategoryOfColumns( args.2.data_type.category ) );
+    Assert( 0, IsCategoryOfColumns( input_types[2].category ) );
     
-    return rec( args := args, output_type := rec( filter := args.2.data_type.category!.morphism_representation, category := args.2.data_type.category ) );
+    return rec( filter := input_types[2].category!.morphism_representation, category := input_types[2].category );
     
 end );
 

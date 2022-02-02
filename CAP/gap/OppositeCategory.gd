@@ -43,18 +43,18 @@ DeclareGlobalFunction( "CAP_INTERNAL_OPPOSITE_RECURSIVE" );
 DeclareAttribute( "Opposite",
                   IsCapCategory );
 
-CapJitAddTypeSignature( "Opposite", [ IsCapCategory ], function ( args, func_stack )
+CapJitAddTypeSignature( "Opposite", [ IsCapCategory ], function ( input_types )
     
-    return rec( args := args, output_type := rec( filter := IsCapCategory, category := Opposite( args.1.data_type.category ) ) );
+    return rec( filter := IsCapCategory, category := Opposite( input_types[1].category ) );
     
 end );
 
 DeclareAttribute( "OppositeCategory",
                   WasCreatedAsOppositeCategory );
 # TODO: make the filter more specific once categories know their filters
-CapJitAddTypeSignature( "OppositeCategory", [ IsCapCategory ], function ( args, func_stack )
+CapJitAddTypeSignature( "OppositeCategory", [ IsCapCategory ], function ( input_types )
     
-    return rec( args := args, output_type := rec( filter := IsCapCategory, category := Opposite( args.1.data_type.category ) ) );
+    return rec( filter := IsCapCategory, category := Opposite( input_types[1].category ) );
     
 end );
 
@@ -65,17 +65,17 @@ DeclareOperation( "Opposite",
 DeclareAttribute( "Opposite",
                   IsCapCategoryObject );
 
-CapJitAddTypeSignature( "Opposite", [ IsCapCategoryObject ], function ( args, func_stack )
+CapJitAddTypeSignature( "Opposite", [ IsCapCategoryObject ], function ( input_types )
     
-    return rec( args := args, output_type := rec( filter := Opposite( args.1.data_type.category )!.object_representation, category := Opposite( args.1.data_type.category ) ) );
+    return rec( filter := Opposite( input_types[1].category )!.object_representation, category := Opposite( input_types[1].category ) );
     
 end );
 
 DeclareAttribute( "Opposite",
                   IsCapCategoryMorphism );
 
-CapJitAddTypeSignature( "Opposite", [ IsCapCategoryMorphism ], function ( args, func_stack )
+CapJitAddTypeSignature( "Opposite", [ IsCapCategoryMorphism ], function ( input_types )
     
-    return rec( args := args, output_type := rec( filter := Opposite( args.1.data_type.category )!.morphism_representation, category := Opposite( args.1.data_type.category ) ) );
+    return rec( filter := Opposite( input_types[1].category )!.morphism_representation, category := Opposite( input_types[1].category ) );
     
 end );

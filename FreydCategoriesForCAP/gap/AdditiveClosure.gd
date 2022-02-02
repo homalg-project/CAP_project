@@ -146,11 +146,11 @@ DeclareAttribute( "UnderlyingCategory",
 DeclareAttribute( "ObjectList",
                   IsAdditiveClosureObject );
 
-CapJitAddTypeSignature( "ObjectList", [ IsAdditiveClosureObject ], function ( args, func_stack )
+CapJitAddTypeSignature( "ObjectList", [ IsAdditiveClosureObject ], function ( input_types )
     
-    Assert( 0, IsAdditiveClosureCategory( args.1.data_type.category ) );
+    Assert( 0, IsAdditiveClosureCategory( input_types[1].category ) );
     
-    return rec( args := args, output_type := rec( filter := IsList, element_type := rec( filter := UnderlyingCategory( args.1.data_type.category )!.object_representation, category := UnderlyingCategory( args.1.data_type.category ) ) ) );
+    return rec( filter := IsList, element_type := rec( filter := UnderlyingCategory( input_types[1].category )!.object_representation, category := UnderlyingCategory( input_types[1].category ) ) );
     
 end );
 
@@ -162,11 +162,11 @@ end );
 DeclareAttribute( "MorphismMatrix",
                   IsAdditiveClosureMorphism );
 
-CapJitAddTypeSignature( "MorphismMatrix", [ IsAdditiveClosureMorphism ], function ( args, func_stack )
+CapJitAddTypeSignature( "MorphismMatrix", [ IsAdditiveClosureMorphism ], function ( input_types )
     
-    Assert( 0, IsAdditiveClosureCategory( args.1.data_type.category ) );
+    Assert( 0, IsAdditiveClosureCategory( input_types[1].category ) );
     
-    return rec( args := args, output_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := UnderlyingCategory( args.1.data_type.category )!.morphism_representation, category := UnderlyingCategory( args.1.data_type.category ) ) ) ) );
+    return rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := UnderlyingCategory( input_types[1].category )!.morphism_representation, category := UnderlyingCategory( input_types[1].category ) ) ) );
     
 end );
 
@@ -200,11 +200,11 @@ CapJitAddTypeSignature( "NumberColumns", [ IsAdditiveClosureMorphism ], IsInt );
 DeclareOperation( "[]",
                   [ IsAdditiveClosureObject, IsInt ] );
 
-CapJitAddTypeSignature( "[]", [ IsAdditiveClosureObject, IsInt ], function ( args, func_stack )
+CapJitAddTypeSignature( "[]", [ IsAdditiveClosureObject, IsInt ], function ( input_types )
     
-    Assert( 0, IsAdditiveClosureCategory( args.1.data_type.category ) );
+    Assert( 0, IsAdditiveClosureCategory( input_types[1].category ) );
     
-    return rec( args := args, output_type := rec( filter := UnderlyingCategory( args.1.data_type.category )!.object_representation, category := UnderlyingCategory( args.1.data_type.category ) ) );
+    return rec( filter := UnderlyingCategory( input_types[1].category )!.object_representation, category := UnderlyingCategory( input_types[1].category ) );
     
 end );
 
@@ -216,11 +216,11 @@ end );
 DeclareOperation( "MatElm",
                   [ IsAdditiveClosureMorphism, IsInt, IsInt ] );
 
-CapJitAddTypeSignature( "MatElm", [ IsAdditiveClosureMorphism, IsInt, IsInt ], function ( args, func_stack )
+CapJitAddTypeSignature( "MatElm", [ IsAdditiveClosureMorphism, IsInt, IsInt ], function ( input_types )
     
-    Assert( 0, IsAdditiveClosureCategory( args.1.data_type.category ) );
+    Assert( 0, IsAdditiveClosureCategory( input_types[1].category ) );
     
-    return rec( args := args, output_type := rec( filter := UnderlyingCategory( args.1.data_type.category )!.morphism_representation, category := UnderlyingCategory( args.1.data_type.category ) ) );
+    return rec( filter := UnderlyingCategory( input_types[1].category )!.morphism_representation, category := UnderlyingCategory( input_types[1].category ) );
     
 end );
 
@@ -253,12 +253,12 @@ CapJitAddTypeSignature( "NullMatImmutable", [ IsInt, IsInt ], rec( filter := IsL
 #! @Returns a list of lists
 DeclareGlobalFunction( "UnionOfRowsListList" );
 
-CapJitAddTypeSignature( "UnionOfRowsListList", [ IsInt, IsList ], function ( args, func_stack )
+CapJitAddTypeSignature( "UnionOfRowsListList", [ IsInt, IsList ], function ( input_types )
     
-    Assert( 0, args.2.data_type.element_type.filter = IsList );
-    Assert( 0, args.2.data_type.element_type.element_type.filter = IsList );
+    Assert( 0, input_types[2].element_type.filter = IsList );
+    Assert( 0, input_types[2].element_type.element_type.filter = IsList );
     
-    return rec( args := args, output_type := args.2.data_type.element_type );
+    return input_types[2].element_type;
     
 end );
 
@@ -268,11 +268,11 @@ end );
 #! @Returns a list of lists
 DeclareGlobalFunction( "UnionOfColumnsListList" );
 
-CapJitAddTypeSignature( "UnionOfColumnsListList", [ IsInt, IsList ], function ( args, func_stack )
+CapJitAddTypeSignature( "UnionOfColumnsListList", [ IsInt, IsList ], function ( input_types )
     
-    Assert( 0, args.2.data_type.element_type.filter = IsList );
-    Assert( 0, args.2.data_type.element_type.element_type.filter = IsList );
+    Assert( 0, input_types[2].element_type.filter = IsList );
+    Assert( 0, input_types[2].element_type.element_type.filter = IsList );
     
-    return rec( args := args, output_type := args.2.data_type.element_type );
+    return input_types[2].element_type;
     
 end );
