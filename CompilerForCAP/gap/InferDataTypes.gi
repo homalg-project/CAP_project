@@ -691,6 +691,12 @@ CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCap
     
 end );
 
+CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCapCategory, IsFunction, IsObject, IsFunction, IsObject ], function ( args, func_stack )
+    
+    return rec( args := args, output_type := rec( filter := args.2.data_type.category!.object_representation, category := args.2.data_type.category ) );
+    
+end );
+
 CapJitAddTypeSignature( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes", [ IsRecord, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsFunction, IsObject ], function ( args, func_stack )
     
     return rec( args := args, output_type := rec( filter := args.2.data_type.category!.morphism_representation, category := args.2.data_type.category ) );
