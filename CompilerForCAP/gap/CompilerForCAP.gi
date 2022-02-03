@@ -167,6 +167,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     
     # rule phase
     rule_phase_functions := [
+        CapJitInferredDataTypes,
         CapJitAppliedLogic,
         CapJitDroppedHandledEdgeCases,
         CapJitInlinedArguments,
@@ -174,7 +175,6 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         CapJitInlinedFunctionCalls,
         CapJitDroppedUnusedBindings,
         CapJitInlinedBindings,
-        CapJitInferredDataTypes,
     ];
     
     orig_tree := rec( );
