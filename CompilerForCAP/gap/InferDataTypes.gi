@@ -241,11 +241,13 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_I
 end );
 
 InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS", function ( funcref, args, func_stack )
-  local output_type, result;
+  local arguments_types, output_type, result, func;
+    
+    arguments_types := List( AsListMut( args ), a -> a.data_type );
     
     if funcref.type = "EXPR_REF_GVAR" then
         
-        output_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES( funcref.gvar, List( AsListMut( args ), a -> a.data_type ) );
+        output_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES( funcref.gvar, arguments_types );
         
         if output_type = fail then
             
@@ -277,9 +279,25 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGU
         
         return rec( funcref := funcref, args := args, output_type := output_type );
         
+    elif funcref.type = "EXPR_DECLARATIVE_FUNC" then
+        
+        func := ShallowCopy( funcref );
+        func.data_type := rec( filter := IsFunction, signature := [ arguments_types, fail ] );
+        
+        func := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_STACK( func, func_stack );
+        
+        if not IsBound( func.data_type ) or func.data_type.signature[2] = fail then
+            
+            #Error( "could not determine data type of return value of function" );
+            return fail;
+            
+        fi;
+        
+        return rec( funcref := func, args := args, output_type := func.data_type.signature[2] );
+        
     else
         
-        #Error( "can only handle EXPR_REF_GVAR" );
+        #Error( "can only handle EXPR_DECLARATIVE_FUNC and EXPR_REF_GVAR" );
         return fail;
         
     fi;
