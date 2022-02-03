@@ -6,10 +6,16 @@
 InstallGlobalFunction( CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION, function ( cond1, cond2 )
     
     # check if cond1 implies cond2, i.e. if ( cond1 = true => cond2 = true )
-    if cond1 = cond2 then
+    if cond2.type = "EXPR_TRUE" then
         
+        # anything implies true
         return true;
-
+        
+    elif cond1.type = "EXPR_FALSE" then
+        
+        # false implies everything
+        return true;
+        
     elif cond1.type = "EXPR_OR" then
         
         if CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION( cond1.left, cond2 ) = true and CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION( cond1.right, cond2 ) = true then
@@ -32,6 +38,10 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION, function ( 
             
         fi;
         
+    elif CapJitIsEqualForEnhancedSyntaxTrees( cond1, cond2 ) then
+        
+        return true;
+        
     fi;
     
     return fail;
@@ -49,17 +59,20 @@ InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function ( tree )
     handled_edge_cases := [ ];
     
     pre_func := function ( tree, additional_arguments )
-      local branches, handled_conditions, new_branches, pre_func, i;
+      local branches, handled_conditions, new_branches, current_outer_condition, pre_func, i;
         
         if tree.type = "EXPR_CASE" then
             
             branches := tree.branches;
             
-            handled_conditions := [ branches.1.condition ];
+            # there must always be an "else" case
+            Assert( 0, Last( branches ).condition.type = "EXPR_TRUE" );
             
-            new_branches := [ branches.1 ];
+            handled_conditions := [ ];
             
-            for i in [ 2 .. branches.length ] do
+            new_branches := [ ];
+            
+            for i in [ 1 .. branches.length ] do
                 
                 # check if the whole branch is already handled, if yes: skip
                 if ForAny( handled_conditions, handled_condition -> CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION( branches.(i).condition, handled_condition ) = true ) then
@@ -68,6 +81,8 @@ InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function ( tree )
                     
                 fi;
                 
+                current_outer_condition := branches.(i).condition;
+                
                 # for every EXPR_CASE in the value of this branch, drop handled conditions
                 pre_func := function ( tree, additional_arguments )
                     
@@ -75,19 +90,32 @@ InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function ( tree )
                         
                         tree := ShallowCopy( tree );
                         
+                        tree.branches := List( tree.branches, function ( branch )
+                            
+                            if CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION( current_outer_condition, branch.condition ) = true then
+                                
+                                return rec(
+                                    type := "CASE_BRANCH",
+                                    condition := rec(
+                                        type := "EXPR_TRUE",
+                                    ),
+                                    value := branch.value,
+                                );
+                                
+                            else
+                                
+                                return branch;
+                                
+                            fi;
+                            
+                        end );
+                        
                         tree.branches := Filtered( tree.branches, branch -> not ForAny( handled_conditions, handled_condition -> CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION( branch.condition, handled_condition ) = true ) );
                         
                         if tree.branches.length = 0 then
                             
                             # COVERAGE_IGNORE_NEXT_LINE
                             Error( "No branches remain, this should never happen." );
-                            
-                        fi;
-                        
-                        # normalize
-                        if tree.branches.length = 1 and tree.branches.1.condition.type = "EXPR_TRUE" then
-                            
-                            tree := tree.branches.1.value;
                             
                         fi;
                         
@@ -110,7 +138,12 @@ InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function ( tree )
             tree.branches := AsSyntaxTreeList( new_branches );
             
             # normalize
-            if tree.branches.length = 1 and tree.branches.1.condition.type = "EXPR_TRUE" then
+            if tree.branches.length = 1 then
+                
+                # There is always an else clause,
+                # so if only one branch remains it must be implied by `true`
+                # and the only condition with this property is `true`.
+                Assert( 0, tree.branches.1.condition.type = "EXPR_TRUE" );
                 
                 tree := tree.branches.1.value;
                 
