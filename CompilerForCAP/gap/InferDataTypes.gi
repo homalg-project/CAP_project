@@ -284,7 +284,7 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGU
         func := ShallowCopy( funcref );
         func.data_type := rec( filter := IsFunction, signature := [ arguments_types, fail ] );
         
-        func := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_STACK( func, func_stack );
+        func := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES( func, func_stack );
         
         if not IsBound( func.data_type ) or func.data_type.signature[2] = fail then
             
@@ -337,7 +337,7 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGU
         func := ShallowCopy( funcref );
         func.data_type := rec( filter := IsFunction, signature := [ arguments_types, fail ] );
         
-        func := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_STACK( func, func_stack );
+        func := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES( func, func_stack );
         
         if not IsBound( func.data_type ) or func.data_type.signature[2] = fail then
             
@@ -357,12 +357,12 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGU
     
 end );
 
-InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_STACK", function ( tree, initial_func_stack )
-  local pre_func, result_func, additional_arguments_func;
+InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES", function ( tree, func_stack )
+  local pre_func, result_func;
     
-    pre_func := function ( tree, func_stack )
+    pre_func := function ( tree, additional_arguments )
         
-        if tree.type = "EXPR_FUNCCALL" then
+        if tree.type = "EXPR_FUNCCALL" or tree.type = "EXPR_DECLARATIVE_FUNC" then
             
             # manual iteration in result_func
             return fail;
@@ -373,8 +373,8 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_S
         
     end;
     
-    result_func := function ( tree, result, keys, func_stack )
-      local data_type, filter, func, pos, key, i;
+    result_func := function ( tree, result, keys, additional_arguments )
+      local name, rec_name, data_type, filter, func_pos, func, pos, value, key, i;
         
         tree := ShallowCopy( tree );
         
@@ -394,7 +394,7 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_S
                     
                 else
                     
-                    return CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_STACK( a, func_stack );
+                    return CAP_JIT_INTERNAL_INFERRED_DATA_TYPES( a, func_stack );
                     
                 fi;
                 
@@ -427,6 +427,67 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_S
             tree.data_type := result.output_type;
             
             return tree;
+            
+        elif tree.type = "EXPR_DECLARATIVE_FUNC" then
+            
+            if IsBound( tree.data_type ) then
+                
+                Assert( 0, tree.data_type.filter = IsFunction );
+                
+                tree.bindings := ShallowCopy( tree.bindings );
+                
+                # reset data types of bindings
+                for name in tree.bindings.names do
+                    
+                    rec_name := Concatenation( "BINDING_", name );
+                    
+                    tree.bindings.(rec_name) := ShallowCopy( tree.bindings.(rec_name) );
+                    
+                    Unbind( tree.bindings.(rec_name).data_type );
+                    
+                od;
+                
+                # try to determine data type of return value
+                # this also populates the data types of other bindings (see EXPR_REF_FVAR below)
+                tree.bindings.BINDING_RETURN_VALUE := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES( tree.bindings.BINDING_RETURN_VALUE, Concatenation( func_stack, [ tree ] ) );
+                
+                if IsBound( tree.bindings.BINDING_RETURN_VALUE.data_type ) then
+                    
+                    if ForAny( tree.bindings.names, name -> not IsBound( CapJitValueOfBinding( tree.bindings, name ).data_type ) ) then
+                        
+                        Error( "there are unused bindings, please drop unused bindings first" );
+                        
+                    fi;
+                    
+                    if tree.data_type.signature[2] = fail then
+                        
+                        tree.data_type := rec( filter := IsFunction, signature := [ tree.data_type.signature[1], tree.bindings.BINDING_RETURN_VALUE.data_type ] );
+                        
+                    else
+                        
+                        Assert( 0, tree.bindings.BINDING_RETURN_VALUE.data_type = tree.data_type.signature[2] );
+                        
+                    fi;
+                    
+                    return tree;
+                    
+                else
+                    
+                    #Error( "could not determine data type of return value" );
+                    # there might already be a data type set, but we want to avoid partial typings -> unbind
+                    Unbind( tree.data_type );
+                    return tree;
+                    
+                fi;
+                
+            else
+                
+                #Error( "EXPR_DECLARATIVE_FUNC cannot be handled without input types" );
+                # there might already be a data type set, but we want to avoid partial typings -> unbind
+                Unbind( tree.data_type );
+                return tree;
+                
+            fi;
             
         fi;
         
@@ -596,23 +657,14 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_S
             
         elif tree.type = "EXPR_REF_FVAR" then
             
-            func := First( func_stack, func -> func.id = tree.func_id );
-            Assert( 0, func <> fail );
+            func_pos := PositionProperty( func_stack, func -> func.id = tree.func_id );
+            Assert( 0, func_pos <> fail );
+            
+            func := func_stack[func_pos];
             
             if func.variadic then
                 
                 #Error( "cannot handle variadic functions yet" );
-                # there might already be a data type set, but we want to avoid partial typings -> unbind
-                Unbind( tree.data_type );
-                return tree;
-                
-            fi;
-            
-            pos := Position( func.nams, tree.name );
-            
-            if pos > func.narg then
-                
-                #Error( "getting the type of a binding is not supported yet" );
                 # there might already be a data type set, but we want to avoid partial typings -> unbind
                 Unbind( tree.data_type );
                 return tree;
@@ -628,32 +680,44 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_S
                 
             fi;
             
-            data_type := func.data_type.signature[1][pos];
+            pos := Position( func.nams, tree.name );
             
-        elif tree.type = "EXPR_DECLARATIVE_FUNC" then
-            
-            if IsBound( tree.data_type ) then
+            if pos <= func.narg then
                 
-                Assert( 0, tree.data_type.filter = IsFunction );
-                
-                if tree.data_type.signature[2] = fail then
-                    
-                    data_type := rec( filter := IsFunction, signature := [ tree.data_type.signature[1], tree.bindings.BINDING_RETURN_VALUE.data_type ] );
-                    
-                else
-                    
-                    Assert( 0, tree.bindings.BINDING_RETURN_VALUE.data_type = tree.data_type.signature[2] );
-                    
-                    data_type := tree.data_type;
-                    
-                fi;
+                data_type := func.data_type.signature[1][pos];
                 
             else
                 
-                #Error( "EXPR_DECLARATIVE_FUNC cannot be handled without input types" );
-                # there might already be a data type set, but we want to avoid partial typings -> unbind
-                Unbind( tree.data_type );
-                return tree;
+                value := CapJitValueOfBinding( func.bindings, tree.name );
+                
+                if IsBound( value.data_type ) then
+                    
+                    data_type := value.data_type;
+                    
+                else
+                    
+                    # compute data type of binding
+                    value := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES( value, func_stack{[ 1 .. func_pos ]} );
+                    
+                    if IsBound( value.data_type ) then
+                        
+                        rec_name := Concatenation( "BINDING_", tree.name );
+                        
+                        # inplace hack to avoid computing the data types of bindings multiple times
+                        func.bindings.(rec_name) := value;
+                        
+                        data_type := value.data_type;
+                        
+                    else
+                        
+                        #Error( "could not compute data type of binding" );
+                        # there might already be a data type set, but we want to avoid partial typings -> unbind
+                        Unbind( tree.data_type );
+                        return tree;
+                        
+                    fi;
+                    
+                fi;
                 
             fi;
             
@@ -674,27 +738,13 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_S
         
     end;
     
-    additional_arguments_func := function ( tree, key, func_stack )
-        
-        if tree.type = "EXPR_DECLARATIVE_FUNC" then
-            
-            return Concatenation( func_stack, [ tree ] );
-            
-        else
-            
-            return func_stack;
-            
-        fi;
-        
-    end;
-    
-    return CapJitIterateOverTree( tree, pre_func, result_func, additional_arguments_func, initial_func_stack );
+    return CapJitIterateOverTree( tree, pre_func, result_func, ReturnTrue, true );
     
 end );
 
 InstallGlobalFunction( CapJitInferredDataTypes, function ( tree )
     
-    return CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_STACK( tree, [ ] );
+    return CAP_JIT_INTERNAL_INFERRED_DATA_TYPES( tree, [ ] );
     
 end );
 

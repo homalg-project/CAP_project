@@ -8,11 +8,14 @@ LoadPackage( "CompilerForCAP", false );
 #! true
 
 applied_logic_template_to_func :=
-    { func, template } ->
+    { func, template, type_signature } ->
         ENHANCED_SYNTAX_TREE_CODE(
             CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE(
                 CapJitInferredDataTypes(
-                    ENHANCED_SYNTAX_TREE( func )
+                    ENHANCED_SYNTAX_TREE(
+                        func :
+                        type_signature := type_signature
+                    )
                 ),
                 template
             )
@@ -29,7 +32,7 @@ template := rec(
 func := function ( a )
     return b -> b + ( 2 * b + a ) + b - b; end;;
 
-Display( applied_logic_template_to_func( func, template ) );
+Display( applied_logic_template_to_func( func, template, fail ) );
 #! function ( a_1 )
 #!     return function ( b_2 )
 #!           return b_2 + (2 * b_2 + a_1) + 0;
@@ -46,7 +49,7 @@ template := EvalString( ReplacedString( """rec(
     returns_value := false,
 )""", "@", ";" ) );;
 
-Display( applied_logic_template_to_func( func, template ) );
+Display( applied_logic_template_to_func( func, template, fail ) );
 #! function ( a_1 )
 #!     return function ( b_2 )
 #!           return b_2 + (2 * b_2 + a_1) + 0;
@@ -63,7 +66,7 @@ template := rec(
     needed_packages := [ [ "NON_EXISTING_PACKAGE", ">= 9999" ] ],
 );;
 
-Display( applied_logic_template_to_func( x -> x, template ) );
+Display( applied_logic_template_to_func( x -> x, template, fail ) );
 #! function ( x_1 )
 #!     return x_1;
 #! end
@@ -79,20 +82,27 @@ template := rec(
 );;
 
 func := { L1, L2 } ->
-    Concatenation( [ List( [ 1 ], x -> x ), List( [ 1 ], x -> x ) ] );;
+    Concatenation( [ List( L1, x -> x ), List( L2, x -> x ) ] );;
 
-Display( applied_logic_template_to_func( func, template ) );
+Display( applied_logic_template_to_func(
+    func,
+    template,
+    [
+        [
+            rec( filter := IsList, element_type := rec( filter := IsInt ) ),
+            rec( filter := IsList, element_type := rec( filter := IsInt ) ),
+        ],
+        fail,
+    ]
+) );
 #! function ( L1_1, L2_1 )
-#!     return List( Concatenation( [ [ 1 ], [ 1 ] ] ), function ( x_2 )
+#!     return List( Concatenation( [ L1_1, L2_1 ] ), function ( x_2 )
 #!             return x_2;
 #!         end );
 #! end
 
 # check that template is not executed if data types cannot be determined
-func := { L1, L2 } ->
-    Concatenation( [ List( L1, x -> x ), List( L2, x -> x ) ] );;
-
-Display( applied_logic_template_to_func( func, template ) );
+Display( applied_logic_template_to_func( func, template, fail ) );
 #! function ( L1_1, L2_1 )
 #!     return Concatenation( [ List( L1_1, function ( x_2 )
 #!               return x_2;
@@ -110,18 +120,34 @@ template := rec(
     returns_value := true,
 );;
 
-func := { x } -> Sum( [ "a" ] );;
+func := { x } -> Sum( [ x ] );;
 
-Display( applied_logic_template_to_func( func, template ) );
+Display( applied_logic_template_to_func(
+    func,
+    template,
+    [
+        [
+            rec( filter := IsInt ),
+        ],
+        fail,
+    ]
+) );
 #! function ( x_1 )
-#!     return Sum( [ "a" ] );
+#!     return x_1;
 #! end
 
-func := { x } -> Sum( [ 1 ] );;
-
-Display( applied_logic_template_to_func( func, template ) );
+Display( applied_logic_template_to_func(
+    func,
+    template,
+    [
+        [
+            rec( filter := IsFloat ),
+        ],
+        fail,
+    ]
+) );
 #! function ( x_1 )
-#!     return 1;
+#!     return Sum( [ x_1 ] );
 #! end
 
 # check that functions can be used multiple times in dst_template
@@ -136,7 +162,7 @@ template := rec(
 func := function ( list )
     return List( list, x -> x ); end;;
 
-Display( applied_logic_template_to_func( func, template ) );
+Display( applied_logic_template_to_func( func, template, fail ) );
 #! function ( list_1 )
 #!     return Sum( list_1, function ( x_2 )
 #!               return x_2;
@@ -148,7 +174,7 @@ Display( applied_logic_template_to_func( func, template ) );
 func := function ( list )
     return List( list, x -> (y -> y) ); end;;
 
-Display( applied_logic_template_to_func( func, template ) );
+Display( applied_logic_template_to_func( func, template, fail ) );
 #! function ( list_1 )
 #!     return Sum( list_1, function ( x_2 )
 #!               return function ( y_3 )
@@ -174,7 +200,7 @@ func := function ( x )
     return List( [ 1 ], function ( y )
         local r; r := x; return r; end ); end;;
 
-Display( applied_logic_template_to_func( func, template ) );
+Display( applied_logic_template_to_func( func, template, fail ) );
 #! function ( x_1 )
 #!     return List( [ 1 ], function ( y_2 )
 #!             local r_2;
@@ -193,7 +219,7 @@ template := rec(
 );;
 
 func := L -> List( L, l -> l * l );;
-Display( applied_logic_template_to_func( func, template ) );
+Display( applied_logic_template_to_func( func, template, fail ) );
 #! function ( L_1 )
 #!     return List( L_1, function ( l_2 )
 #!             return l_2 * l_2;
@@ -201,7 +227,7 @@ Display( applied_logic_template_to_func( func, template ) );
 #! end
 
 func := L -> List( L, l -> 2 * l );;
-Display( applied_logic_template_to_func( func, template ) );
+Display( applied_logic_template_to_func( func, template, fail ) );
 #! function ( L_1 )
 #!     return 2 * List( L_1, function ( l_2 )
 #!               return l_2;
