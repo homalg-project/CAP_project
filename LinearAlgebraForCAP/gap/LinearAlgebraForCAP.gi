@@ -768,12 +768,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         dimension := Dimension( object );
         
-        if dimension = 0 then
-            
-            return ZeroMorphism( cat, tensor_object, unit );
-            
-        fi;
-        
         id := HomalgIdentityMatrix( dimension, homalg_field );
         
         return VectorSpaceMorphism( cat, tensor_object,
@@ -788,12 +782,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         local dimension, id;
         
         dimension := Dimension( object );
-        
-        if dimension = 0 then
-            
-            return ZeroMorphism( cat, unit, tensor_object );
-            
-        fi;
         
         id := HomalgIdentityMatrix( dimension, homalg_field );
         
@@ -836,12 +824,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         rank := Dimension( object );
         
-        if rank = 0 then
-            
-            return ZeroMorphism( cat, unit, tensor_object );
-            
-        fi;
-        
         id := HomalgIdentityMatrix( rank, homalg_field );
         
         return VectorSpaceMorphism( cat, unit,
@@ -856,12 +838,6 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         local rank, id;
         
         rank := Dimension( object );
-        
-        if rank = 0 then
-            
-            return ZeroMorphism( cat, tensor_object, unit );
-            
-        fi;
         
         id := HomalgIdentityMatrix( rank, homalg_field );
         
