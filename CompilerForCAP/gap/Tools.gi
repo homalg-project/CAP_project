@@ -414,9 +414,24 @@ InstallGlobalFunction( CapJitUnbindBinding, function ( bindings, name )
 end );
 
 InstallGlobalFunction( CapJitReplacedEXPR_REF_FVARByValue, function ( tree, func_id, name, value )
-  local pre_func;
+  local result_func;
     
-    pre_func := function ( tree, additional_arguments )
+    # Use result_func instead of pre_func: this way we do not iterate over `value` which
+    # a) gives better performance and
+    # b) prevents an infinite recursion in the following case:
+    # val1 := 1;
+    # val2 := 2;
+    # val1 := val1;
+    result_func := function ( tree, result, keys, additional_arguments )
+      local key;
+        
+        tree := ShallowCopy( tree );
+        
+        for key in keys do
+            
+            tree.(key) := result.(key);
+            
+        od;
         
         if tree.type = "EXPR_REF_FVAR" and tree.func_id = func_id and tree.name = name then
             
@@ -428,7 +443,7 @@ InstallGlobalFunction( CapJitReplacedEXPR_REF_FVARByValue, function ( tree, func
         
     end;
     
-    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    return CapJitIterateOverTree( tree, ReturnFirst, result_func, ReturnTrue, true );
     
 end );
 
