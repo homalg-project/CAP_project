@@ -45,6 +45,7 @@ jobs:
           export SOURCE_DATE_EPOCH=0
           # build documentation of packages which we might want to reference, keep this in sync with `release-gap-package`
           [ -d "CAP_project/CAP" ] && make -C "CAP_project/CAP" doc
+          [ -d "CAP_project/CompilerForCAP" ] && make -C "CAP_project/CompilerForCAP" doc
           [ -d "CAP_project/FreydCategoriesForCAP" ] && make -C "CAP_project/FreydCategoriesForCAP" doc
           [ -d "CAP_project/MonoidalCategories" ] && make -C "CAP_project/MonoidalCategories" doc
           [ -d "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" ] && make -C "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" doc
