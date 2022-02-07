@@ -851,12 +851,12 @@ CapJitAddTypeSignature( "*", [ IsInt, IsList ], function ( input_types )
     if input_types[2].element_type.filter = IsList then
         
         # matrix case
-        element_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES( "*", [ IsInt, input_types[2].element_type.element_type ] );
+        element_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES( "*", [ rec( filter := IsInt ), input_types[2].element_type.element_type ] );
         
     else
         
         # list case
-        element_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES( "*", [ IsInt, input_types[2].element_type ] );
+        element_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES( "*", [ rec( filter := IsInt ), input_types[2].element_type ] );
         
     fi;
     
