@@ -15,6 +15,7 @@ Braiding := rec(
   return_type := "morphism",
   dual_operation := "BraidingInverse",
   dual_arguments_reversed := false,
+  # Test in BraidedMonoidalCategoriesTest
 ),
 
 BraidingWithGivenTensorProducts := rec(
@@ -24,6 +25,7 @@ BraidingWithGivenTensorProducts := rec(
   dual_operation := "BraidingInverseWithGivenTensorProducts",
   dual_preprocessor_func := { cat, s, a, b, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ],
   dual_arguments_reversed := false,
+  # Test in BraidedMonoidalCategoriesTest
 ),
 
 BraidingInverse := rec(
@@ -35,6 +37,7 @@ BraidingInverse := rec(
   return_type := "morphism",
   dual_operation := "Braiding",
   dual_arguments_reversed := false,
+  # Test in BraidedMonoidalCategoriesTest
 ),
 
 BraidingInverseWithGivenTensorProducts := rec(
@@ -44,6 +47,7 @@ BraidingInverseWithGivenTensorProducts := rec(
   dual_operation := "BraidingWithGivenTensorProducts",
   dual_preprocessor_func := { cat, s, a, b, r } -> [ Opposite( cat ), Opposite( s ), Opposite( a ), Opposite( b ), Opposite( r ) ],
   dual_arguments_reversed := false,
+  # Test in BraidedMonoidalCategoriesTest
 ),
 
 ) );
