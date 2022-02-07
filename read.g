@@ -57,6 +57,16 @@ ReadPackage( "Toposes", "gap/CocartesianCoclosedCategoriesDerivedMethods.gi" );
 ReadPackage( "Toposes", "gap/SymmetricCartesianClosedCategoriesDerivedMethods.gi" );
 ReadPackage( "Toposes", "gap/SymmetricCocartesianCoclosedCategoriesDerivedMethods.gi" );
 
+## Test methods
+ReadPackage( "Toposes", "gap/CartesianCategoriesTest.gi" );
+ReadPackage( "Toposes", "gap/CocartesianCategoriesTest.gi" );
+
+ReadPackage( "Toposes", "gap/BraidedCartesianCategoriesTest.gi" );
+ReadPackage( "Toposes", "gap/BraidedCocartesianCategoriesTest.gi" );
+
+ReadPackage( "Toposes", "gap/CartesianClosedCategoriesTest.gi" );
+ReadPackage( "Toposes", "gap/CocartesianCoclosedCategoriesTest.gi" );
+
 ## Homomorphism structure
 ReadPackage( "Toposes", "gap/HomomorphismStructureDerivedMethods.gi");
 

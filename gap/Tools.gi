@@ -41,21 +41,58 @@ WriteFileForMonoidalStructure(
              BraidedS := "",
              TensorProductOnObjectsBCcat := "BinaryDirectProduct( cat,",
              CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE := "METHOD_NAME_RECORD, \"Toposes\"",
+             safe_replace := [ ##############################
+                               ## Safe replacements for Tests
+                               ##############################
+                               ## TensorProductOnMorphisms
+                               [ "TensorProductOnMorphisms( opposite",
+                                 "CoproductOnMorphisms( opposite" ],
+                               ## Braiding
+                               [ "Braiding( opposite",
+                                 "CocartesianBraiding( opposite" ],
+                               ## BraidingInverse
+                               [ "BraidingInverse( opposite",
+                                 "CocartesianBraidingInverse( opposite" ],
+                               ## LeftUnitor
+                               [ "LeftUnitor( opposite",
+                                 "CocartesianLeftUnitor( opposite" ],
+                               ## LeftUnitorInverse
+                               [ "LeftUnitorInverse( opposite",
+                                 "CocartesianLeftUnitorInverse( opposite" ],
+                               ## RightUnitor
+                               [ "RightUnitor( opposite",
+                                 "CocartesianRightUnitor( opposite" ],
+                               ## RightUnitorInverse
+                               [ "RightUnitorInverse( opposite",
+                                 "CocartesianRightUnitorInverse( opposite" ],
+                               ## AssociatorLeftToRight
+                               [ "AssociatorLeftToRight( opposite",
+                                 "CocartesianAssociatorLeftToRight( opposite" ],
+                               ## AssociatorRightToLeft
+                               [ "AssociatorRightToLeft( opposite",
+                                 "CocartesianAssociatorRightToLeft( opposite" ],
+                               ],
              ),
         "Toposes",
         rec( MonoidalCategoriesTensorProductAndUnit_gd := fail,
+             MonoidalCategoriesTensorProductAndUnitTest_gd := fail,
              MonoidalCategories_gd := "CartesianCategories.gd",
+             MonoidalCategoriesTest_gd := "CartesianCategoriesTest.gd",
              AdditiveMonoidalCategories_gd := "DistributiveCartesianCategories.gd",
              BraidedMonoidalCategories_gd := "BraidedCartesianCategories.gd",
+             BraidedMonoidalCategoriesTest_gd := "BraidedCartesianCategoriesTest.gd",
              MonoidalCategoriesTensorProductAndUnitMethodRecord_gi := fail,
              MonoidalCategoriesTensorProductAndUnit_gi := fail,
+             MonoidalCategoriesTensorProductAndUnitTest_gi := fail,
              MonoidalCategoriesMethodRecord_gi := fail,
              MonoidalCategories_gi := "CartesianCategories.gi",
+             MonoidalCategoriesTest_gi := "CartesianCategoriesTest.gi",
              AdditiveMonoidalCategoriesMethodRecord_gi := "DistributiveCartesianCategoriesMethodRecord.gi",
              AdditiveMonoidalCategories_gi := "DistributiveCartesianCategories.gi",
              BraidedMonoidalCategoriesProperties_gi := fail,
              BraidedMonoidalCategoriesMethodRecord_gi := fail,
              BraidedMonoidalCategories_gi := "BraidedCartesianCategories.gi",
+             BraidedMonoidalCategoriesTest_gi := "BraidedCartesianCategoriesTest.gi",
              SymmetricMonoidalCategoriesProperties_gi := fail,
              MonoidalCategoriesDerivedMethods_gi := "CartesianCategoriesDerivedMethods.gi",
              AdditiveMonoidalCategoriesDerivedMethods_gi := fail,
@@ -107,7 +144,31 @@ WriteFileForClosedMonoidalStructure(
              ClosedSMonoidal := "Cartesian Closed",
              TensorProductOnObjectsBCcat := "BinaryDirectProduct( cat,",
              CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE := "METHOD_NAME_RECORD, \"Toposes\"",
-             safe_replace := [ ## BraidingWithGivenTensorProducts
+             replace := [ [ "coHom(",
+                            "Coexp(" ],
+                          [ "Cohom(",
+                            "Coexp(" ],
+                          [ "internal cohom",
+                            "coexponential" ],
+                          [ "int_cohom",
+                            "coexp" ],
+                          [ "cohom_",
+                            "coexp_" ],
+                          [ "Hom(",
+                            "Exp(" ],
+                          [ "internal hom",
+                            "exponential" ],
+                          [ "int_hom",
+                            "exp" ],
+                          [ "hom_",
+                            "exp_" ],
+                          [ "cocl_",
+                            "coca_" ],
+                          ],
+             safe_replace := [ ######################################
+                               ## Safe replacements for MethodRecords
+                               ######################################
+                               ## BraidingWithGivenTensorProducts
                                [ "dual_operation := \"BraidingInverseWithGivenTensorProducts\"",
                                  "dual_operation := \"CocartesianBraidingInverseWithGivenCoproducts\"" ],
                                ## Braiding
@@ -224,18 +285,81 @@ WriteFileForClosedMonoidalStructure(
                                ## UniversalPropertyOfDual
                                [ "dual_operation := \"UniversalPropertyOfCoDual\"",
                                  "dual_operation := \"UniversalPropertyOfCocartesianDual\"" ],
-                               ],
-                             ),
+                               ##############################
+                               ## Safe replacements for Tests
+                               ##############################
+                               ## Evalutions
+                               [ "CoclosedEvaluationMorphism",
+                                 "CocartesianEvaluationMorphism" ],
+                               [ "CoclosedCoevaluationMorphism",
+                                 "CocartesianCoevaluationMorphism" ],
+                               ## AdjunctionMaps
+                               [ "TensorProductToInternalCoHomAdjunctionMap",
+                                 "CoproductToCoexponentialAdjunctionMap" ],
+                               [ "InternalCoHomToTensorProductAdjunctionMap",
+                                 "CoexponentialToCoproductAdjunctionMap" ],
+                               ## MonoidalComposeMorphisms
+                               [ "MonoidalPreCoComposeMorphism",
+                                 "CocartesianPreCoComposeMorphism" ],
+                               [ "MonoidalPostCoComposeMorphism",
+                                 "CocartesianPostCoComposeMorphism" ],
+                               # Codual
+                               [ "CoDualOnObjects",
+                                 "CocartesianDualOnObjects" ],
+                               [ "CoDualOnMorphisms",
+                                 "CocartesianDualOnMorphisms" ],
+                               [ "UniversalPropertyOfCoDual",
+                                 "UniversalPropertyOfCocartesianDual" ],
+                               # CoclosedEvaluationForCoDual
+                               [ "CoclosedEvaluationForCoDual",
+                                 "CocartesianEvaluationForCocartesianDual" ],
+                               # Cobidual
+                               [ "MorphismFromCoBidual",
+                                 "MorphismFromCocartesianBidual" ],
+                               # CompatibilityMorphisms
+                               [ "InternalCoHomTensorProductCompatibilityMorphism",
+                                 "CoexponentialCoproductCompatibilityMorphism" ],
+                               [ "CoDualityTensorProductCompatibilityMorphism",
+                                 "CocartesianDualityCoproductCompatibilityMorphism" ],
+                               ## MorphismFromInternalCoHomToDirectProduct
+                               [ "MorphismFromInternalCoHomToTensorProduct",
+                                 "MorphismFromCoexponentialToCoproduct" ],
+                               ## Isomorphisms
+                               [ "IsomorphismFromInternalCoHomToCoDual",
+                                 "IsomorphismFromCoexponentialToCocartesianDual" ],
+                               [ "IsomorphismFromCoDualToInternalCoHom",
+                                 "IsomorphismFromCocartesianDualToCoexponential" ],
+                               ## Lambdas
+                               [ "CoLambdaIntroduction",
+                                 "CocartesianLambdaIntroduction" ],
+                               [ "CoLambdaElimination",
+                                 "CocartesianLambdaElimination" ],
+                               ## InternalCoHom
+                               [ "InternalCoHom",
+                                 "Coexponential" ],
+                               ## TensorProduct
+                               [ "TensorProductOnObjects( opposite",
+                                 "Coproduct( opposite" ],
+                               [ "TensorProductOnMorphisms( opposite",
+                                 "CoproductOnMorphisms( opposite" ],
+                               [ "TensorProduct( opposite",
+                                 "Coproduct( opposite" ],
+                               ]
+             ),
         "Toposes",
         rec( ClosedMonoidalCategories_gd := "CartesianClosedCategories.gd",
+             ClosedMonoidalCategoriesTest_gd := "CartesianClosedCategoriesTest.gd",
              RigidSymmetricClosedMonoidalCategories_gd := fail,
+             RigidSymmetricClosedMonoidalCategoriesTest_gd := fail,
              ClosedMonoidalCategoriesProperties_gi := "CartesianClosedCategoriesProperties.gi",
              ClosedMonoidalCategoriesMethodRecord_gi := "CartesianClosedCategoriesMethodRecord.gi",
              ClosedMonoidalCategories_gi := "CartesianClosedCategories.gi",
+             ClosedMonoidalCategoriesTest_gi := "CartesianClosedCategoriesTest.gi",
              SymmetricClosedMonoidalCategoriesProperties_gi := fail,
              RigidSymmetricClosedMonoidalCategoriesProperties_gi := fail,
              RigidSymmetricClosedMonoidalCategoriesMethodRecord_gi := fail,
              RigidSymmetricClosedMonoidalCategories_gi := fail,
+             RigidSymmetricClosedMonoidalCategoriesTest_gi := fail,
              ClosedMonoidalCategoriesDerivedMethods_gi := "CartesianClosedCategoriesDerivedMethods.gi",
              SymmetricClosedMonoidalCategoriesDerivedMethods_gi := "SymmetricCartesianClosedCategoriesDerivedMethods.gi",
              RigidSymmetricClosedMonoidalCategoriesDerivedMethods_gi := fail,
@@ -276,21 +400,58 @@ WriteFileForMonoidalStructure(
              BraidedS := "",
              TensorProductOnObjectsBCcat := "BinaryCoproduct( cat,",
              CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE := "METHOD_NAME_RECORD, \"Toposes\"",
+             safe_replace := [ ##############################
+                               ## Safe replacements for Tests
+                               ##############################
+                               ## TensorProductOnMorphisms
+                               [ "TensorProductOnMorphisms( opposite",
+                                 "DirectProductOnMorphisms( opposite" ],
+                               ## Braiding
+                               [ "Braiding( opposite",
+                                 "CartesianBraiding( opposite" ],
+                               ## BraidingInverse
+                               [ "BraidingInverse( opposite",
+                                 "CartesianBraidingInverse( opposite" ],
+                               ## LeftUnitor
+                               [ "LeftUnitor( opposite",
+                                 "CartesianLeftUnitor( opposite" ],
+                               ## LeftUnitorInverse
+                               [ "LeftUnitorInverse( opposite",
+                                 "CartesianLeftUnitorInverse( opposite" ],
+                               ## RightUnitor
+                               [ "RightUnitor( opposite",
+                                 "CartesianRightUnitor( opposite" ],
+                               ## RightUnitorInverse
+                               [ "RightUnitorInverse( opposite",
+                                 "CartesianRightUnitorInverse( opposite" ],
+                               ## AssociatorLeftToRight
+                               [ "AssociatorLeftToRight( opposite",
+                                 "CartesianAssociatorLeftToRight( opposite" ],
+                               ## AssociatorRightToLeft
+                               [ "AssociatorRightToLeft( opposite",
+                                 "CartesianAssociatorRightToLeft( opposite" ],
+                               ],
              ),
         "Toposes",
         rec( MonoidalCategoriesTensorProductAndUnit_gd := fail,
+             MonoidalCategoriesTensorProductAndUnitTest_gd := fail,
              MonoidalCategories_gd := "CocartesianCategories.gd",
+             MonoidalCategoriesTest_gd := "CocartesianCategoriesTest.gd",
              AdditiveMonoidalCategories_gd := "DistributiveCocartesianCategories.gd",
              BraidedMonoidalCategories_gd := "BraidedCocartesianCategories.gd",
+             BraidedMonoidalCategoriesTest_gd := "BraidedCocartesianCategoriesTest.gd",
              MonoidalCategoriesTensorProductAndUnitMethodRecord_gi := fail,
              MonoidalCategoriesTensorProductAndUnit_gi := fail,
+             MonoidalCategoriesTensorProductAndUnitTest_gi := fail,
              MonoidalCategoriesMethodRecord_gi := fail,
              MonoidalCategories_gi := "CocartesianCategories.gi",
+             MonoidalCategoriesTest_gi := "CocartesianCategoriesTest.gi",
              AdditiveMonoidalCategoriesMethodRecord_gi := "DistributiveCocartesianCategoriesMethodRecord.gi",
              AdditiveMonoidalCategories_gi := "DistributiveCocartesianCategories.gi",
              BraidedMonoidalCategoriesProperties_gi := fail,
              BraidedMonoidalCategoriesMethodRecord_gi := fail,
              BraidedMonoidalCategories_gi := "BraidedCocartesianCategories.gi",
+             BraidedMonoidalCategoriesTest_gi := "BraidedCocartesianCategoriesTest.gi",
              SymmetricMonoidalCategoriesProperties_gi := fail,
              MonoidalCategoriesDerivedMethods_gi := "CocartesianCategoriesDerivedMethods.gi",
              AdditiveMonoidalCategoriesDerivedMethods_gi := fail,
@@ -336,12 +497,44 @@ WriteFileForCoclosedMonoidalStructure(
              oplus := "times",
              tensor_product := "coproduct",
              tensorSproduct := "coproduct",
-             coHom_tensor := "coexponential-coproduct",
+             cohom_tensor := "coexponential-coproduct",
              coHom := "Coexponential",
              CoclosedSMonoidal := "Cocartesian Coclosed",
              TensorProductOnObjectsBCcat := "BinaryCoproduct( cat,",
              CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE := "METHOD_NAME_RECORD, \"Toposes\"",
-             safe_replace := [ ## BraidingWithGivenTensorProducts
+             replace := [ [ "coHom(",
+                            "Coexp(" ],
+                          [ "Cohom(",
+                            "Coexp(" ],
+                          [ "internal cohom",
+                            "coexponential" ],
+                          [ "int_cohom",
+                            "coexp" ],
+                          [ "cohom_",
+                            "coexp_" ],
+                          [ "Hom(",
+                            "Exp(" ],
+                          [ "internal hom",
+                            "exponential" ],
+                          [ "int_hom",
+                            "exp" ],
+                          [ "hom_",
+                            "exp_" ],
+                          [ "cocl_",
+                            "coca_" ],
+                          [ "coclev",
+                            "cocaev" ],
+                          [ "coclcoev",
+                            "cocacoev" ],
+                          [ "coclosed evaluation",
+                            "cocartesian evaluation" ],
+                          [ "coclosed coevaluation",
+                            "cocartesian coevaluation" ],
+                          ],
+             safe_replace := [ ######################################
+                               ## Safe replacements for MethodRecords
+                               ######################################
+                               ## BraidingWithGivenTensorProducts
                                [ "dual_operation := \"BraidingInverseWithGivenTensorProducts\"",
                                  "dual_operation := \"CartesianBraidingInverseWithGivenDirectProducts\"" ],
                                ## Braiding
@@ -468,18 +661,81 @@ WriteFileForCoclosedMonoidalStructure(
                                  "CocartesianCoclosedCategories.autogen.gd" ],
                                [ "\"ClosedMonoidalCategories.autogen.gd\", \"Monoidal Categories\"",
                                  "\"CartesianClosedCategories.autogen.gd\", \"Cartesian Categories\"" ],
-                               ],
+                               ##############################
+                               ## Safe replacements for Tests
+                               ##############################
+                               ## Evalutions
+                               [ " EvaluationMorphism",
+                                 " CartesianEvaluationMorphism" ],
+                               [ " CoevaluationMorphism",
+                                 " CartesianCoevaluationMorphism" ],
+                               ## AdjunctionMaps
+                               [ "TensorProductToInternalHomAdjunctionMap",
+                                 "DirectProductToExponentialAdjunctionMap" ],
+                               [ "InternalHomToTensorProductAdjunctionMap",
+                                 "ExponentialToDirectProductAdjunctionMap" ],
+                               ## MonoidalComposeMorphisms
+                               [ "MonoidalPreComposeMorphism",
+                                 "CartesianPreComposeMorphism" ],
+                               [ "MonoidalPostComposeMorphism",
+                                 "CartesianPostComposeMorphism" ],
+                               # Dual
+                               [ " DualOnObjects",
+                                 " CartesianDualOnObjects" ],
+                               [ " DualOnMorphisms",
+                                 " CartesianDualOnMorphisms" ],
+                               [ "UniversalPropertyOfDual",
+                                 "UniversalPropertyOfCartesianDual" ],
+                               # EvaluationForDual
+                               [ " EvaluationForDual",
+                                 " CartesianEvaluationForCartesianDual" ],
+                               # Bidual
+                               [ "MorphismToBidual",
+                                 "MorphismToCartesianBidual" ],
+                               # CompatibilityMorphisms
+                               [ "TensorProductInternalHomCompatibilityMorphism",
+                                 "DirectProductExponentialCompatibilityMorphism" ],
+                               [ "TensorProductDualityCompatibilityMorphism",
+                                 "DirectProductCartesianDualityCompatibilityMorphism" ],
+                               ## MorphismFromTensorProductToInternalHom
+                               [ "MorphismFromTensorProductToInternalHom",
+                                 "MorphismFromDirectProductToExponential" ],
+                               ## Isomorphisms
+                               [ "IsomorphismFromInternalHomToDual",
+                                 "IsomorphismFromExponentialToCartesianDual" ],
+                               [ "IsomorphismFromDualToInternalHom",
+                                 "IsomorphismFromCartesianDualToExponential" ],
+                               ## Lambdas
+                               [ " LambdaIntroduction",
+                                 " CartesianLambdaIntroduction" ],
+                               [ " LambdaElimination",
+                                 " CartesianLambdaElimination" ],
+                               ## InternalHom
+                               [ "InternalHom",
+                                 "Exponential" ],
+                               ## TensorProduct
+                               [ "TensorProductOnObjects( opposite",
+                                 "DirectProduct( opposite" ],
+                               [ "TensorProductOnMorphisms( opposite",
+                                 "DirectProductOnMorphisms( opposite" ],
+                               [ "TensorProduct( opposite",
+                                 "DirectProduct( opposite" ],
+                               ]
              ),
         "Toposes",
         rec( CoclosedMonoidalCategories_gd := "CocartesianCoclosedCategories.gd",
+             CoclosedMonoidalCategoriesTest_gd := "CocartesianCoclosedCategoriesTest.gd",
              RigidSymmetricCoclosedMonoidalCategories_gd := fail,
+             RigidSymmetricCoclosedMonoidalCategoriesTest_gd := fail,
              CoclosedMonoidalCategoriesProperties_gi := "CocartesianCoclosedCategoriesProperties.gi",
              CoclosedMonoidalCategoriesMethodRecord_gi := "CocartesianCoclosedCategoriesMethodRecord.gi",
              CoclosedMonoidalCategories_gi := "CocartesianCoclosedCategories.gi",
+             CoclosedMonoidalCategoriesTest_gi := "CocartesianCoclosedCategoriesTest.gi",
              SymmetricCoclosedMonoidalCategoriesProperties_gi := fail,
              RigidSymmetricCoclosedMonoidalCategoriesProperties_gi := fail,
              RigidSymmetricCoclosedMonoidalCategoriesMethodRecord_gi := fail,
              RigidSymmetricCoclosedMonoidalCategories_gi := fail,
+             RigidSymmetricCoclosedMonoidalCategoriesTest_gi := fail,
              CoclosedMonoidalCategoriesDerivedMethods_gi := "CocartesianCoclosedCategoriesDerivedMethods.gi",
              SymmetricCoclosedMonoidalCategoriesDerivedMethods_gi := "SymmetricCocartesianCoclosedCategoriesDerivedMethods.gi",
              RigidSymmetricCoclosedMonoidalCategoriesDerivedMethods_gi := fail,
