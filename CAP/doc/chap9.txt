@@ -225,26 +225,24 @@
   [33X[1;0Y[29X[2XInstallMethodForCompilerForCAP[102X( [3Xsame[103X, [3Xas[103X, [3Xfor[103X, [3XInstallMethod[103X ) [32X function[133X
   
   [33X[0;0YInstalls a method via [10XInstallMethod[110X and adds it to the list of methods known
-  to  the  compiler.  Different  methods  for  the  same  operation  must have
-  different  numbers  of  arguments  so  that the method selection can be done
-  ahead of time.[133X
+  to the compiler. See [2XCapJitAddKnownMethod[102X ([14X9.2-23[114X) for requirements.[133X
   
   [1X9.2-22 InstallOtherMethodForCompilerForCAP[101X
   
   [33X[1;0Y[29X[2XInstallOtherMethodForCompilerForCAP[102X( [3Xsame[103X, [3Xas[103X, [3Xfor[103X, [3XInstallOtherMethod[103X ) [32X function[133X
   
   [33X[0;0YInstalls  a method via [10XInstallOtherMethod[110X and adds it to the list of methods
-  known  to  the  compiler. Different methods for the same operation must have
-  different  numbers  of  arguments  so  that the method selection can be done
-  ahead of time.[133X
+  known to the compiler. See [2XCapJitAddKnownMethod[102X ([14X9.2-23[114X) for requirements.[133X
   
   [1X9.2-23 CapJitAddKnownMethod[101X
   
   [33X[1;0Y[29X[2XCapJitAddKnownMethod[102X( [3Xoperation[103X, [3Xfilters[103X, [3Xmethod[103X ) [32X function[133X
   
-  [33X[0;0YAdds  a  method  to  the  list  of  methods known to the compiler. Different
-  methods  for  the same operation must have different numbers of arguments so
-  that the method selection can be done ahead of time.[133X
+  [33X[0;0YAdds  a  method  to  the  list  of  methods known to the compiler. The first
+  argument  of the method must be a CAP category. Method selection happens via
+  the  number  of arguments and the category filter. In particular, installing
+  two  methods  with  the  same  number  of  arguments and one category filter
+  implying the other is not supported.[133X
   
   [1X9.2-24 CapJitAddTypeSignature[101X
   
@@ -252,12 +250,14 @@
   
   [33X[0;0Y(experimental)  Adds  a  type signature for the global function or operation
   given  by  [3Xname[103X  to  the  compiler. [3Xinput_filters[103X must be a list of filters.
-  [3Xoutput_data_type[103X  must be a filter, a data type, or a function accepting the
-  arguments  of  a  function  call  of [3Xname[103X (as syntax trees) and the function
-  stack  and  returning  a  record with components [10Xargs[110X (the possibly modified
-  arguments)   and   [10Xoutput_type[110X   (the   data   type   of  the  output).  See
-  [2XCapJitInferredDataTypes[102X  ([14XCompilerForCAP:  CapJitInferredDataTypes[114X) for more
-  details on data types.[133X
+  [3Xoutput_data_type[103X  must  be  a filter, a data type, or a function. If it is a
+  function  with one argument, it must accept a list of input types and return
+  the  corresponding  data  type  of  the output. If it is a function with two
+  arguments,  it  must  accept  the  arguments  of a function call of [3Xname[103X (as
+  syntax  trees)  and  the  function stack and return a record with components
+  [10Xargs[110X (the possibly modified arguments) and [10Xoutput_type[110X (the data type of the
+  output).         See         [2XCapJitInferredDataTypes[102X        ([14XCompilerForCAP:
+  CapJitInferredDataTypes[114X) for more details on data types.[133X
   
   [1X9.2-25 CapJitAddTypeSignatureDeferred[101X
   
