@@ -26,5 +26,5 @@
 #! compared to the equivalent computation in
 #! the opposite category of $cat$.
 #! Pass the option 'verbose := true' to output more information.
-#! @Arguments cat, assertlevel, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta
+#! @Arguments cat, a, b, c, d, alpha, beta, gamma, delta, epsilon, zeta
 DeclareGlobalFunction( "ClosedMonoidalCategoriesTest" );

@@ -21,5 +21,5 @@
 #! compared to the equivalent computation in
 #! the opposite category of $cat$.
 #! Pass the option 'verbose := true' to output more information.
-#! @Arguments cat, assertlevel, a, b, c, d, alpha
+#! @Arguments cat, a, b, c, d, alpha
 DeclareGlobalFunction( "RigidSymmetricCoclosedMonoidalCategoriesTest" );
