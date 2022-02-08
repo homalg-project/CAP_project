@@ -382,7 +382,9 @@
     [4X[25X>[125X [27X    compiled_category_name[127X[104X
     [4X[25X>[125X [27X    # hack until we can compile Toposes[127X[104X
     [4X[25X>[125X [27X    : operations := Intersection([127X[104X
-    [4X[25X>[125X [27X        ListInstalledOperationsOfCategory( MatrixCategory( QQ ) ),[127X[104X
+    [4X[25X>[125X [27X        ListInstalledOperationsOfCategory([127X[104X
+    [4X[25X>[125X [27X            MATRIX_CATEGORY( QQ : no_precompiled_code )[127X[104X
+    [4X[25X>[125X [27X        ),[127X[104X
     [4X[25X>[125X [27X        Union([127X[104X
     [4X[25X>[125X [27X            RecNames( CAP_INTERNAL_CORE_METHOD_NAME_RECORD ),[127X[104X
     [4X[25X>[125X [27X            RecNames( MONOIDAL_CATEGORIES_BASIC_METHOD_NAME_RECORD ),[127X[104X
@@ -678,21 +680,43 @@
     [4X[25Xgap>[125X [27X# we have to work hard to not write semicolons so AutoDoc[127X[104X
     [4X[25X>[125X [27X# does not begin a new statement[127X[104X
     [4X[25X>[125X [27Xfunc := EvalString( ReplacedString( """function( x )[127X[104X
-    [4X[25X>[125X [27X  local inner_func@[127X[104X
+    [4X[25X>[125X [27X  local inner_func1, inner_func2@[127X[104X
     [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27X    inner_func := function( y )[127X[104X
+    [4X[25X>[125X [27X    inner_func1 := function( y )[127X[104X
     [4X[25X>[125X [27X        [127X[104X
-    [4X[25X>[125X [27X        if y < 1 then[127X[104X
+    [4X[25X>[125X [27X        if y < 1 or y > 10 then[127X[104X
     [4X[25X>[125X [27X            [127X[104X
-    [4X[25X>[125X [27X            return 2@[127X[104X
+    [4X[25X>[125X [27X            return 1@[127X[104X
     [4X[25X>[125X [27X            [127X[104X
     [4X[25X>[125X [27X        elif y > 10 then[127X[104X
     [4X[25X>[125X [27X            [127X[104X
-    [4X[25X>[125X [27X            return 3@[127X[104X
+    [4X[25X>[125X [27X            return 2@[127X[104X
     [4X[25X>[125X [27X            [127X[104X
     [4X[25X>[125X [27X        else[127X[104X
     [4X[25X>[125X [27X            [127X[104X
-    [4X[25X>[125X [27X            return 4@[127X[104X
+    [4X[25X>[125X [27X            return 3@[127X[104X
+    [4X[25X>[125X [27X            [127X[104X
+    [4X[25X>[125X [27X        fi@[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X    end@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    inner_func2 := function( y )[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X        if y < 1 then[127X[104X
+    [4X[25X>[125X [27X            [127X[104X
+    [4X[25X>[125X [27X            return 5@[127X[104X
+    [4X[25X>[125X [27X            [127X[104X
+    [4X[25X>[125X [27X        elif y > 10 then[127X[104X
+    [4X[25X>[125X [27X            [127X[104X
+    [4X[25X>[125X [27X            return 6@[127X[104X
+    [4X[25X>[125X [27X            [127X[104X
+    [4X[25X>[125X [27X        elif y < 1 or y > 10 then[127X[104X
+    [4X[25X>[125X [27X            [127X[104X
+    [4X[25X>[125X [27X            return 7@[127X[104X
+    [4X[25X>[125X [27X            [127X[104X
+    [4X[25X>[125X [27X        else[127X[104X
+    [4X[25X>[125X [27X            [127X[104X
+    [4X[25X>[125X [27X            return 8@[127X[104X
     [4X[25X>[125X [27X            [127X[104X
     [4X[25X>[125X [27X        fi@[127X[104X
     [4X[25X>[125X [27X        [127X[104X
@@ -700,15 +724,15 @@
     [4X[25X>[125X [27X    [127X[104X
     [4X[25X>[125X [27X    if x < 1 or x > 10 then[127X[104X
     [4X[25X>[125X [27X        [127X[104X
-    [4X[25X>[125X [27X        return 0@[127X[104X
+    [4X[25X>[125X [27X        return inner_func1( x )@[127X[104X
     [4X[25X>[125X [27X        [127X[104X
-    [4X[25X>[125X [27X    elif x = 3 then[127X[104X
+    [4X[25X>[125X [27X    elif IdFunc( false ) then[127X[104X
     [4X[25X>[125X [27X        [127X[104X
-    [4X[25X>[125X [27X        return 1@[127X[104X
+    [4X[25X>[125X [27X        return 4@[127X[104X
     [4X[25X>[125X [27X        [127X[104X
     [4X[25X>[125X [27X    else[127X[104X
     [4X[25X>[125X [27X        [127X[104X
-    [4X[25X>[125X [27X        return inner_func( x )@[127X[104X
+    [4X[25X>[125X [27X        return inner_func2( x )@[127X[104X
     [4X[25X>[125X [27X        [127X[104X
     [4X[25X>[125X [27X    fi@[127X[104X
     [4X[25X>[125X [27X    [127X[104X
@@ -717,11 +741,9 @@
     [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
     [4X[28Xfunction ( x_1 )[128X[104X
     [4X[28X    if x_1 < 1 or x_1 > 10 then[128X[104X
-    [4X[28X        return 0;[128X[104X
-    [4X[28X    elif x_1 = 3 then[128X[104X
     [4X[28X        return 1;[128X[104X
     [4X[28X    else[128X[104X
-    [4X[28X        return 4;[128X[104X
+    [4X[28X        return 8;[128X[104X
     [4X[28X    fi;[128X[104X
     [4X[28X    return;[128X[104X
     [4X[28Xend[128X[104X
@@ -1281,11 +1303,14 @@
     [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xapplied_logic_template_to_func :=[127X[104X
-    [4X[25X>[125X [27X    { func, template } ->[127X[104X
+    [4X[25X>[125X [27X    { func, template, type_signature } ->[127X[104X
     [4X[25X>[125X [27X        ENHANCED_SYNTAX_TREE_CODE([127X[104X
     [4X[25X>[125X [27X            CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE([127X[104X
     [4X[25X>[125X [27X                CapJitInferredDataTypes([127X[104X
-    [4X[25X>[125X [27X                    ENHANCED_SYNTAX_TREE( func )[127X[104X
+    [4X[25X>[125X [27X                    ENHANCED_SYNTAX_TREE([127X[104X
+    [4X[25X>[125X [27X                        func :[127X[104X
+    [4X[25X>[125X [27X                        type_signature := type_signature[127X[104X
+    [4X[25X>[125X [27X                    )[127X[104X
     [4X[25X>[125X [27X                ),[127X[104X
     [4X[25X>[125X [27X                template[127X[104X
     [4X[25X>[125X [27X            )[127X[104X
@@ -1299,7 +1324,7 @@
     [4X[25X>[125X [27X);;[127X[104X
     [4X[25Xgap>[125X [27Xfunc := function ( a )[127X[104X
     [4X[25X>[125X [27X    return b -> b + ( 2 * b + a ) + b - b; end;;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template, fail ) );[127X[104X
     [4X[28Xfunction ( a_1 )[128X[104X
     [4X[28X    return function ( b_2 )[128X[104X
     [4X[28X          return b_2 + (2 * b_2 + a_1) + 0;[128X[104X
@@ -1314,7 +1339,7 @@
     [4X[25X>[125X [27X    dst_template := "return x -> x + variable + 0@",[127X[104X
     [4X[25X>[125X [27X    returns_value := false,[127X[104X
     [4X[25X>[125X [27X)""", "@", ";" ) );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template, fail ) );[127X[104X
     [4X[28Xfunction ( a_1 )[128X[104X
     [4X[28X    return function ( b_2 )[128X[104X
     [4X[28X          return b_2 + (2 * b_2 + a_1) + 0;[128X[104X
@@ -1329,7 +1354,7 @@
     [4X[25X>[125X [27X    returns_value := true,[127X[104X
     [4X[25X>[125X [27X    needed_packages := [ [ "NON_EXISTING_PACKAGE", ">= 9999" ] ],[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( x -> x, template ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( x -> x, template, fail ) );[127X[104X
     [4X[28Xfunction ( x_1 )[128X[104X
     [4X[28X    return x_1;[128X[104X
     [4X[28Xend[128X[104X
@@ -1343,17 +1368,25 @@
     [4X[25X>[125X [27X    returns_value := true,[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
     [4X[25Xgap>[125X [27Xfunc := { L1, L2 } ->[127X[104X
-    [4X[25X>[125X [27X    Concatenation( [ List( [ 1 ], x -> x ), List( [ 1 ], x -> x ) ] );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template ) );[127X[104X
+    [4X[25X>[125X [27X    Concatenation( [ List( L1, x -> x ), List( L2, x -> x ) ] );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func([127X[104X
+    [4X[25X>[125X [27X    func,[127X[104X
+    [4X[25X>[125X [27X    template,[127X[104X
+    [4X[25X>[125X [27X    [[127X[104X
+    [4X[25X>[125X [27X        [[127X[104X
+    [4X[25X>[125X [27X            rec( filter := IsList, element_type := rec( filter := IsInt ) ),[127X[104X
+    [4X[25X>[125X [27X            rec( filter := IsList, element_type := rec( filter := IsInt ) ),[127X[104X
+    [4X[25X>[125X [27X        ],[127X[104X
+    [4X[25X>[125X [27X        fail,[127X[104X
+    [4X[25X>[125X [27X    ][127X[104X
+    [4X[25X>[125X [27X) );[127X[104X
     [4X[28Xfunction ( L1_1, L2_1 )[128X[104X
-    [4X[28X    return List( Concatenation( [ [ 1 ], [ 1 ] ] ), function ( x_2 )[128X[104X
+    [4X[28X    return List( Concatenation( [ L1_1, L2_1 ] ), function ( x_2 )[128X[104X
     [4X[28X            return x_2;[128X[104X
     [4X[28X        end );[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27X# check that template is not executed if data types cannot be determined[127X[104X
-    [4X[25X>[125X [27Xfunc := { L1, L2 } ->[127X[104X
-    [4X[25X>[125X [27X    Concatenation( [ List( L1, x -> x ), List( L2, x -> x ) ] );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template ) );[127X[104X
+    [4X[25X>[125X [27XDisplay( applied_logic_template_to_func( func, template, fail ) );[127X[104X
     [4X[28Xfunction ( L1_1, L2_1 )[128X[104X
     [4X[28X    return Concatenation( [ List( L1_1, function ( x_2 )[128X[104X
     [4X[28X              return x_2;[128X[104X
@@ -1369,15 +1402,32 @@
     [4X[25X>[125X [27X    dst_template := "value",[127X[104X
     [4X[25X>[125X [27X    returns_value := true,[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27Xfunc := { x } -> Sum( [ "a" ] );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template ) );[127X[104X
+    [4X[25Xgap>[125X [27Xfunc := { x } -> Sum( [ x ] );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func([127X[104X
+    [4X[25X>[125X [27X    func,[127X[104X
+    [4X[25X>[125X [27X    template,[127X[104X
+    [4X[25X>[125X [27X    [[127X[104X
+    [4X[25X>[125X [27X        [[127X[104X
+    [4X[25X>[125X [27X            rec( filter := IsInt ),[127X[104X
+    [4X[25X>[125X [27X        ],[127X[104X
+    [4X[25X>[125X [27X        fail,[127X[104X
+    [4X[25X>[125X [27X    ][127X[104X
+    [4X[25X>[125X [27X) );[127X[104X
     [4X[28Xfunction ( x_1 )[128X[104X
-    [4X[28X    return Sum( [ "a" ] );[128X[104X
+    [4X[28X    return x_1;[128X[104X
     [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27Xfunc := { x } -> Sum( [ 1 ] );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func([127X[104X
+    [4X[25X>[125X [27X    func,[127X[104X
+    [4X[25X>[125X [27X    template,[127X[104X
+    [4X[25X>[125X [27X    [[127X[104X
+    [4X[25X>[125X [27X        [[127X[104X
+    [4X[25X>[125X [27X            rec( filter := IsFloat ),[127X[104X
+    [4X[25X>[125X [27X        ],[127X[104X
+    [4X[25X>[125X [27X        fail,[127X[104X
+    [4X[25X>[125X [27X    ][127X[104X
+    [4X[25X>[125X [27X) );[127X[104X
     [4X[28Xfunction ( x_1 )[128X[104X
-    [4X[28X    return 1;[128X[104X
+    [4X[28X    return Sum( [ x_1 ] );[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27X# check that functions can be used multiple times in dst_template[127X[104X
     [4X[25X>[125X [27X# add a nonsense template[127X[104X
@@ -1389,7 +1439,7 @@
     [4X[25X>[125X [27X);;[127X[104X
     [4X[25Xgap>[125X [27Xfunc := function ( list )[127X[104X
     [4X[25X>[125X [27X    return List( list, x -> x ); end;;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template, fail ) );[127X[104X
     [4X[28Xfunction ( list_1 )[128X[104X
     [4X[28X    return Sum( list_1, function ( x_2 )[128X[104X
     [4X[28X              return x_2;[128X[104X
@@ -1399,7 +1449,7 @@
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27Xfunc := function ( list )[127X[104X
     [4X[25X>[125X [27X    return List( list, x -> (y -> y) ); end;;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template, fail ) );[127X[104X
     [4X[28Xfunction ( list_1 )[128X[104X
     [4X[28X    return Sum( list_1, function ( x_2 )[128X[104X
     [4X[28X              return function ( y_3 )[128X[104X
@@ -1422,7 +1472,7 @@
     [4X[25Xgap>[125X [27Xfunc := function ( x )[127X[104X
     [4X[25X>[125X [27X    return List( [ 1 ], function ( y )[127X[104X
     [4X[25X>[125X [27X        local r; r := x; return r; end ); end;;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template, fail ) );[127X[104X
     [4X[28Xfunction ( x_1 )[128X[104X
     [4X[28X    return List( [ 1 ], function ( y_2 )[128X[104X
     [4X[28X            local r_2;[128X[104X
@@ -1439,14 +1489,14 @@
     [4X[25X>[125X [27X    returns_value := true,[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
     [4X[25Xgap>[125X [27Xfunc := L -> List( L, l -> l * l );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template, fail ) );[127X[104X
     [4X[28Xfunction ( L_1 )[128X[104X
     [4X[28X    return List( L_1, function ( l_2 )[128X[104X
     [4X[28X            return l_2 * l_2;[128X[104X
     [4X[28X        end );[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27Xfunc := L -> List( L, l -> 2 * l );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template ) );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template, fail ) );[127X[104X
     [4X[28Xfunction ( L_1 )[128X[104X
     [4X[28X    return 2 * List( L_1, function ( l_2 )[128X[104X
     [4X[28X              return l_2;[128X[104X
