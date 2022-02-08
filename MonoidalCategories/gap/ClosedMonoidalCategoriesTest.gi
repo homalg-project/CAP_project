@@ -217,8 +217,8 @@ InstallGlobalFunction( "ClosedMonoidalCategoriesTest",
             
             alpha_tensor_beta := TensorProductOnMorphisms( alpha, beta );
             beta_tensor_alpha := TensorProductOnMorphisms( beta, alpha );
-            alpha_tensor_beta_op := TensorProductOnMorphisms( alpha_op, beta_op );
-            beta_tensor_alpha_op := TensorProductOnMorphisms( beta_op, alpha_op );
+            alpha_tensor_beta_op := TensorProductOnMorphisms( opposite, alpha_op, beta_op );
+            beta_tensor_alpha_op := TensorProductOnMorphisms( opposite, beta_op, alpha_op );
             
             # Adjoint( a x c -> b x d )  ==  a -> Hom( c, b x d )
             tensor_to_hom_adjunction_on_alpha_tensor_beta := TensorProductToInternalHomAdjunctionMap( a, c, alpha_tensor_beta );
