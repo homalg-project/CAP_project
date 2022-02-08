@@ -749,7 +749,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
 end );
 
 InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
-  local orig_tree, seen_function_ids, stat, pre_func, additional_arguments_func, func;
+  local orig_tree, is_dummy_function, seen_function_ids, stat, pre_func, additional_arguments_func, func;
     
     # to simplify debugging in break loops, we keep a reference to the original input
     orig_tree := tree;
@@ -761,7 +761,11 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
         
     fi;
     
-    if tree.type <> "EXPR_DECLARATIVE_FUNC" then
+    if tree.type = "EXPR_DECLARATIVE_FUNC" then
+        
+        is_dummy_function := false;
+        
+    else
         
         # COVERAGE_IGNORE_BLOCK_START
         Error( "The syntax tree is not of type EXPR_FUNC. However, if you type 'return;', it will be wrapped in a dummy function." );
@@ -793,6 +797,9 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 ] ),
             ),
         );
+        
+        is_dummy_function := true;
+        
         # COVERAGE_IGNORE_BLOCK_END
         
     fi;
@@ -1217,7 +1224,13 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 if func_pos = fail then
                     
                     # COVERAGE_IGNORE_BLOCK_START
-                    Error( "An FVAR references a variable outside of the function stack. However, if you type 'return;', it will be replaced by a dummy variable." );
+                    
+                    # for dummy functions this case is expected
+                    if not is_dummy_function then
+                        
+                        Error( "An FVAR references a variable outside of the function stack. However, if you type 'return;', it will be replaced by a dummy variable." );
+                        
+                    fi;
                     
                     tree.type := ReplacedString( tree.type, "FVAR", "GVAR" );
                     tree.gvar := Concatenation( "FVAR_outside_of_function_stack_", tree.name );

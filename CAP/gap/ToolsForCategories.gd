@@ -174,31 +174,31 @@ DeclareGlobalFunction( "IsSpecializationOfFilterList" );
 
 #! @Description
 #!   Installs a method via `InstallMethod` and adds it to the list of methods known to the compiler.
-#!   Different methods for the same operation must have different numbers of arguments
-#!   so that the method selection can be done ahead of time.
+#!   See <Ref Func="CapJitAddKnownMethod" /> for requirements.
 #! @Arguments same as for InstallMethod
 DeclareGlobalFunction( "InstallMethodForCompilerForCAP" );
 
 #! @Description
 #!   Installs a method via `InstallOtherMethod` and adds it to the list of methods known to the compiler.
-#!   Different methods for the same operation must have different numbers of arguments
-#!   so that the method selection can be done ahead of time.
+#!   See <Ref Func="CapJitAddKnownMethod" /> for requirements.
 #! @Arguments same as for InstallOtherMethod
 DeclareGlobalFunction( "InstallOtherMethodForCompilerForCAP" );
 
 #! @Description
 #!   Adds a method to the list of methods known to the compiler.
-#!   Different methods for the same operation must have different numbers of arguments
-#!   so that the method selection can be done ahead of time.
+#!   The first argument of the method must be a CAP category.
+#!   Method selection happens via the number of arguments and the category filter.
+#!   In particular, installing two methods with the same number of arguments and one category filter implying the other is not supported.
 #! @Arguments operation, filters, method
 DeclareGlobalFunction( "CapJitAddKnownMethod" );
 
 #! @Description
 #!   (experimental) Adds a type signature for the global function or operation given by <A>name</A> to the compiler.
 #!   <A>input_filters</A> must be a list of filters.
-#!   <A>output_data_type</A> must be a filter, a data type, or a function accepting
-#!   the arguments of a function call of <A>name</A> (as syntax trees) and the function stack and
-#!   returning a record with components `args` (the possibly modified arguments) and `output_type`
+#!   <A>output_data_type</A> must be a filter, a data type, or a function.
+#!   If it is a function with one argument, it must accept a list of input types and return the corresponding data type of the output.
+#!   If it is a function with two arguments, it must accept the arguments of a function call of <A>name</A> (as syntax trees)
+#!   and the function stack and return a record with components `args` (the possibly modified arguments) and `output_type`
 #!   (the data type of the output).
 #!   See <Ref BookName="CompilerForCAP" Func="CapJitInferredDataTypes" /> for more details on data types.
 #! @Arguments name, input_filters, output_data_type

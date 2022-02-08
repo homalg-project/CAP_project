@@ -171,8 +171,10 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_LOAD_DEFERRED_TYPE_SIGNATURES", functio
     
 end );
 
-InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_FILTERS", function ( gvar, input_filters )
-  local type_signatures, package_name, signature;
+InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES", function ( gvar, input_types )
+  local input_filters, type_signatures, output_type;
+    
+    input_filters := List( input_types, type -> type.filter );
     
     if IsCategory( ValueGlobal( gvar ) ) and Length( input_filters ) = 1 then
         
@@ -217,16 +219,35 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_I
         
     fi;
     
-    return type_signatures[1][2];
+    output_type := type_signatures[1][2];
+    
+    if IsFunction( output_type ) and NumberArgumentsFunction( output_type ) = 1 then
+        
+        output_type := output_type( input_types );
+        
+        if output_type = fail then
+            
+            #Error( "could not get output_type" );
+            return fail;
+            
+        fi;
+        
+        Assert( 0, IsBound( output_type.filter ) );
+        
+    fi;
+    
+    return output_type;
     
 end );
 
 InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGUMENTS", function ( funcref, args, func_stack )
-  local output_type, result;
+  local arguments_types, output_type, result, func;
+    
+    arguments_types := List( AsListMut( args ), a -> a.data_type );
     
     if funcref.type = "EXPR_REF_GVAR" then
         
-        output_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_FILTERS( funcref.gvar, List( AsListMut( args ), a -> a.data_type.filter ) );
+        output_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES( funcref.gvar, arguments_types );
         
         if output_type = fail then
             
@@ -258,9 +279,25 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGU
         
         return rec( funcref := funcref, args := args, output_type := output_type );
         
+    elif funcref.type = "EXPR_DECLARATIVE_FUNC" then
+        
+        func := ShallowCopy( funcref );
+        func.data_type := rec( filter := IsFunction, signature := [ arguments_types, fail ] );
+        
+        func := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES( func, func_stack );
+        
+        if not IsBound( func.data_type ) or func.data_type.signature[2] = fail then
+            
+            #Error( "could not determine data type of return value of function" );
+            return fail;
+            
+        fi;
+        
+        return rec( funcref := func, args := args, output_type := func.data_type.signature[2] );
+        
     else
         
-        #Error( "can only handle EXPR_REF_GVAR" );
+        #Error( "can only handle EXPR_DECLARATIVE_FUNC and EXPR_REF_GVAR" );
         return fail;
         
     fi;
@@ -272,7 +309,7 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGU
     
     if funcref.type = "EXPR_REF_GVAR" then
         
-        output_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_FILTERS( funcref.gvar, List( arguments_types, type -> type.filter ) );
+        output_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES( funcref.gvar, arguments_types );
         
         if output_type = fail then
             
@@ -300,7 +337,7 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGU
         func := ShallowCopy( funcref );
         func.data_type := rec( filter := IsFunction, signature := [ arguments_types, fail ] );
         
-        func := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_STACK( func, func_stack );
+        func := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES( func, func_stack );
         
         if not IsBound( func.data_type ) or func.data_type.signature[2] = fail then
             
@@ -320,12 +357,12 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_OF_FUNCTION_BY_ARGU
     
 end );
 
-InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_STACK", function ( tree, initial_func_stack )
-  local pre_func, result_func, additional_arguments_func;
+InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES", function ( tree, func_stack )
+  local pre_func, result_func;
     
-    pre_func := function ( tree, func_stack )
+    pre_func := function ( tree, additional_arguments )
         
-        if tree.type = "EXPR_FUNCCALL" then
+        if tree.type = "EXPR_FUNCCALL" or tree.type = "EXPR_DECLARATIVE_FUNC" then
             
             # manual iteration in result_func
             return fail;
@@ -336,8 +373,8 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_S
         
     end;
     
-    result_func := function ( tree, result, keys, func_stack )
-      local data_type, filter, func, pos, key, i;
+    result_func := function ( tree, result, keys, additional_arguments )
+      local name, rec_name, data_type, filter, func_pos, func, pos, value, key, i;
         
         tree := ShallowCopy( tree );
         
@@ -357,7 +394,7 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_S
                     
                 else
                     
-                    return CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_STACK( a, func_stack );
+                    return CAP_JIT_INTERNAL_INFERRED_DATA_TYPES( a, func_stack );
                     
                 fi;
                 
@@ -390,6 +427,67 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_S
             tree.data_type := result.output_type;
             
             return tree;
+            
+        elif tree.type = "EXPR_DECLARATIVE_FUNC" then
+            
+            if IsBound( tree.data_type ) then
+                
+                Assert( 0, tree.data_type.filter = IsFunction );
+                
+                tree.bindings := ShallowCopy( tree.bindings );
+                
+                # reset data types of bindings
+                for name in tree.bindings.names do
+                    
+                    rec_name := Concatenation( "BINDING_", name );
+                    
+                    tree.bindings.(rec_name) := ShallowCopy( tree.bindings.(rec_name) );
+                    
+                    Unbind( tree.bindings.(rec_name).data_type );
+                    
+                od;
+                
+                # try to determine data type of return value
+                # this also populates the data types of other bindings (see EXPR_REF_FVAR below)
+                tree.bindings.BINDING_RETURN_VALUE := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES( tree.bindings.BINDING_RETURN_VALUE, Concatenation( func_stack, [ tree ] ) );
+                
+                if IsBound( tree.bindings.BINDING_RETURN_VALUE.data_type ) then
+                    
+                    if ForAny( tree.bindings.names, name -> not IsBound( CapJitValueOfBinding( tree.bindings, name ).data_type ) ) then
+                        
+                        Error( "there are unused bindings, please drop unused bindings first" );
+                        
+                    fi;
+                    
+                    if tree.data_type.signature[2] = fail then
+                        
+                        tree.data_type := rec( filter := IsFunction, signature := [ tree.data_type.signature[1], tree.bindings.BINDING_RETURN_VALUE.data_type ] );
+                        
+                    else
+                        
+                        Assert( 0, tree.bindings.BINDING_RETURN_VALUE.data_type = tree.data_type.signature[2] );
+                        
+                    fi;
+                    
+                    return tree;
+                    
+                else
+                    
+                    #Error( "could not determine data type of return value" );
+                    # there might already be a data type set, but we want to avoid partial typings -> unbind
+                    Unbind( tree.data_type );
+                    return tree;
+                    
+                fi;
+                
+            else
+                
+                #Error( "EXPR_DECLARATIVE_FUNC cannot be handled without input types" );
+                # there might already be a data type set, but we want to avoid partial typings -> unbind
+                Unbind( tree.data_type );
+                return tree;
+                
+            fi;
             
         fi;
         
@@ -559,23 +657,14 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_S
             
         elif tree.type = "EXPR_REF_FVAR" then
             
-            func := First( func_stack, func -> func.id = tree.func_id );
-            Assert( 0, func <> fail );
+            func_pos := PositionProperty( func_stack, func -> func.id = tree.func_id );
+            Assert( 0, func_pos <> fail );
+            
+            func := func_stack[func_pos];
             
             if func.variadic then
                 
                 #Error( "cannot handle variadic functions yet" );
-                # there might already be a data type set, but we want to avoid partial typings -> unbind
-                Unbind( tree.data_type );
-                return tree;
-                
-            fi;
-            
-            pos := Position( func.nams, tree.name );
-            
-            if pos > func.narg then
-                
-                #Error( "getting the type of a binding is not supported yet" );
                 # there might already be a data type set, but we want to avoid partial typings -> unbind
                 Unbind( tree.data_type );
                 return tree;
@@ -591,32 +680,44 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_S
                 
             fi;
             
-            data_type := func.data_type.signature[1][pos];
+            pos := Position( func.nams, tree.name );
             
-        elif tree.type = "EXPR_DECLARATIVE_FUNC" then
-            
-            if IsBound( tree.data_type ) then
+            if pos <= func.narg then
                 
-                Assert( 0, tree.data_type.filter = IsFunction );
-                
-                if tree.data_type.signature[2] = fail then
-                    
-                    data_type := rec( filter := IsFunction, signature := [ tree.data_type.signature[1], tree.bindings.BINDING_RETURN_VALUE.data_type ] );
-                    
-                else
-                    
-                    Assert( 0, tree.bindings.BINDING_RETURN_VALUE.data_type = tree.data_type.signature[2] );
-                    
-                    data_type := tree.data_type;
-                    
-                fi;
+                data_type := func.data_type.signature[1][pos];
                 
             else
                 
-                #Error( "EXPR_DECLARATIVE_FUNC cannot be handled without input types" );
-                # there might already be a data type set, but we want to avoid partial typings -> unbind
-                Unbind( tree.data_type );
-                return tree;
+                value := CapJitValueOfBinding( func.bindings, tree.name );
+                
+                if IsBound( value.data_type ) then
+                    
+                    data_type := value.data_type;
+                    
+                else
+                    
+                    # compute data type of binding
+                    value := CAP_JIT_INTERNAL_INFERRED_DATA_TYPES( value, func_stack{[ 1 .. func_pos ]} );
+                    
+                    if IsBound( value.data_type ) then
+                        
+                        rec_name := Concatenation( "BINDING_", tree.name );
+                        
+                        # inplace hack to avoid computing the data types of bindings multiple times
+                        func.bindings.(rec_name) := value;
+                        
+                        data_type := value.data_type;
+                        
+                    else
+                        
+                        #Error( "could not compute data type of binding" );
+                        # there might already be a data type set, but we want to avoid partial typings -> unbind
+                        Unbind( tree.data_type );
+                        return tree;
+                        
+                    fi;
+                    
+                fi;
                 
             fi;
             
@@ -637,27 +738,13 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_S
         
     end;
     
-    additional_arguments_func := function ( tree, key, func_stack )
-        
-        if tree.type = "EXPR_DECLARATIVE_FUNC" then
-            
-            return Concatenation( func_stack, [ tree ] );
-            
-        else
-            
-            return func_stack;
-            
-        fi;
-        
-    end;
-    
-    return CapJitIterateOverTree( tree, pre_func, result_func, additional_arguments_func, initial_func_stack );
+    return CapJitIterateOverTree( tree, pre_func, result_func, ReturnTrue, true );
     
 end );
 
 InstallGlobalFunction( CapJitInferredDataTypes, function ( tree )
     
-    return CAP_JIT_INTERNAL_INFERRED_DATA_TYPES_WITH_INITIAL_FUNC_STACK( tree, [ ] );
+    return CAP_JIT_INTERNAL_INFERRED_DATA_TYPES( tree, [ ] );
     
 end );
 
@@ -685,34 +772,40 @@ CapJitAddTypeSignature( "CapFixpoint", [ IsFunction, IsFunction, IsObject ], fun
 end );
 
 # Objectify*ForCAPWithAttributes
-CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCapCategory, IsFunction, IsObject ], function ( args, func_stack )
+CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCapCategory, IsFunction, IsObject ], function ( input_type )
     
-    return rec( args := args, output_type := rec( filter := args.2.data_type.category!.object_representation, category := args.2.data_type.category ) );
+    return rec( filter := input_type[2].category!.object_representation, category := input_type[2].category );
     
 end );
 
-CapJitAddTypeSignature( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes", [ IsRecord, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsFunction, IsObject ], function ( args, func_stack )
+CapJitAddTypeSignature( "ObjectifyObjectForCAPWithAttributes", [ IsRecord, IsCapCategory, IsFunction, IsObject, IsFunction, IsObject ], function ( input_type )
     
-    return rec( args := args, output_type := rec( filter := args.2.data_type.category!.morphism_representation, category := args.2.data_type.category ) );
+    return rec( filter := input_type[2].category!.object_representation, category := input_type[2].category );
+    
+end );
+
+CapJitAddTypeSignature( "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes", [ IsRecord, IsCapCategory, IsCapCategoryObject, IsCapCategoryObject, IsFunction, IsObject ], function ( input_type )
+    
+    return rec( filter := input_type[2].category!.morphism_representation, category := input_type[2].category );
     
 end );
 
 # object and morphism attributes
-CapJitAddTypeSignature( "CapCategory", [ IsCapCategoryCell ], function ( args, func_stack )
+CapJitAddTypeSignature( "CapCategory", [ IsCapCategoryCell ], function ( input_types )
     
-    return rec( args := args, output_type := rec( filter := IsCapCategory, category := args.1.data_type.category ) );
-    
-end );
-
-CapJitAddTypeSignature( "Source", [ IsCapCategoryMorphism ], function ( args, func_stack )
-    
-    return rec( args := args, output_type := rec( filter := args.1.data_type.category!.object_representation, category := args.1.data_type.category ) );
+    return rec( filter := IsCapCategory, category := input_types[1].category );
     
 end );
 
-CapJitAddTypeSignature( "Range", [ IsCapCategoryMorphism ], function ( args, func_stack )
+CapJitAddTypeSignature( "Source", [ IsCapCategoryMorphism ], function ( input_types )
     
-    return rec( args := args, output_type := rec( filter := args.1.data_type.category!.object_representation, category := args.1.data_type.category ) );
+    return rec( filter := input_types[1].category!.object_representation, category := input_types[1].category );
+    
+end );
+
+CapJitAddTypeSignature( "Range", [ IsCapCategoryMorphism ], function ( input_types )
+    
+    return rec( filter := input_types[1].category!.object_representation, category := input_types[1].category );
     
 end );
 
@@ -730,108 +823,114 @@ CapJitAddTypeSignature( "^", [ IsPerm, IsInt ], IsPerm );
 CapJitAddTypeSignature( "PermList", [ IsList ], IsPerm );
 CapJitAddTypeSignature( "PermutationMat", [ IsPerm, IsInt ], rec( filter := IsList, element_type := rec( filter := IsList, element_type := rec( filter := IsInt ) ) ) );
 
-CapJitAddTypeSignature( "NumberRows", [ IsList ], function ( args, func_stack )
+CapJitAddTypeSignature( "ID_FUNC", [ IsObject ], function ( input_types )
     
-    Assert( 0, args.1.data_type.element_type.filter = IsList );
-    
-    return rec( args := args, output_type := rec( filter := IsInt ) );
+    return input_types[1];
     
 end );
 
-CapJitAddTypeSignature( "NumberColumns", [ IsList ], function ( args, func_stack )
+CapJitAddTypeSignature( "NumberRows", [ IsList ], function ( input_types )
     
-    Assert( 0, args.1.data_type.element_type.filter = IsList );
+    Assert( 0, input_types[1].element_type.filter = IsList );
     
-    return rec( args := args, output_type := rec( filter := IsInt ) );
-    
-end );
-
-CapJitAddTypeSignature( "ListWithIdenticalEntries", [ IsInt, IsObject ], function ( args, func_stack )
-    
-    return rec( args := args, output_type := rec( filter := IsList, element_type := args.2.data_type ) );
+    return rec( filter := IsInt );
     
 end );
 
-CapJitAddTypeSignature( "Concatenation", [ IsList ], function ( args, func_stack )
+CapJitAddTypeSignature( "NumberColumns", [ IsList ], function ( input_types )
     
-    Assert( 0, args.1.data_type.element_type.filter = IsList );
+    Assert( 0, input_types[1].element_type.filter = IsList );
     
-    return rec( args := args, output_type := rec( filter := IsList, element_type := args.1.data_type.element_type.element_type ) );
-    
-end );
-
-CapJitAddTypeSignature( "Sum", [ IsList ], function ( args, func_stack )
-    
-    return rec( args := args, output_type := args.1.data_type.element_type );
+    return rec( filter := IsInt );
     
 end );
 
-CapJitAddTypeSignature( "Product", [ IsList ], function ( args, func_stack )
+CapJitAddTypeSignature( "ListWithIdenticalEntries", [ IsInt, IsObject ], function ( input_types )
     
-    return rec( args := args, output_type := args.1.data_type.element_type );
-    
-end );
-
-CapJitAddTypeSignature( "[]", [ IsList, IsInt ], function ( args, func_stack )
-    
-    return rec( args := args, output_type := args.1.data_type.element_type );
+    return rec( filter := IsList, element_type := input_types[2] );
     
 end );
 
-CapJitAddTypeSignature( "{}", [ IsList, IsList ], function ( args, func_stack )
+CapJitAddTypeSignature( "Concatenation", [ IsList ], function ( input_types )
     
-    return rec( args := args, output_type := args.1.data_type );
+    Assert( 0, input_types[1].element_type.filter = IsList );
     
-end );
-
-CapJitAddTypeSignature( "SSortedList", [ IsList ], function ( args, func_stack )
-    
-    return rec( args := args, output_type := args.1.data_type );
+    return rec( filter := IsList, element_type := input_types[1].element_type.element_type );
     
 end );
 
-CapJitAddTypeSignature( "First", [ IsList, IsObject ], function ( args, func_stack )
+CapJitAddTypeSignature( "Sum", [ IsList ], function ( input_types )
+    
+    return input_types[1].element_type;
+    
+end );
+
+CapJitAddTypeSignature( "Product", [ IsList ], function ( input_types )
+    
+    return input_types[1].element_type;
+    
+end );
+
+CapJitAddTypeSignature( "[]", [ IsList, IsInt ], function ( input_types )
+    
+    return input_types[1].element_type;
+    
+end );
+
+CapJitAddTypeSignature( "{}", [ IsList, IsList ], function ( input_types )
+    
+    return input_types[1];
+    
+end );
+
+CapJitAddTypeSignature( "SSortedList", [ IsList ], function ( input_types )
+    
+    return input_types[1];
+    
+end );
+
+CapJitAddTypeSignature( "First", [ IsList, IsObject ], function ( input_types )
     
     #Error( "cannot express Is...OrFail yet" );
     return fail;
     
 end );
 
-CapJitAddTypeSignature( "Position", [ IsList, IsObject ], function ( args, func_stack )
+CapJitAddTypeSignature( "Position", [ IsList, IsObject ], function ( input_types )
     
-    Assert( 0, args.1.data_type.element_type = args.2.data_type );
+    Assert( 0, input_types[1].element_type = input_types[2] );
     
     #Error( "cannot express IsIntOrFail yet" );
     return fail;
     
 end );
 
-CapJitAddTypeSignature( "Positions", [ IsList, IsObject ], function ( args, func_stack )
+CapJitAddTypeSignature( "Positions", [ IsList, IsObject ], function ( input_types )
     
-    Assert( 0, args.1.data_type.element_type = args.2.data_type );
+    Assert( 0, input_types[1].element_type = input_types[2] );
     
-    return rec( args := args, output_type := rec( filter := IsList, element_type := rec( filter := IsInt ) ) );
-    
-end );
-
-CapJitAddTypeSignature( "Tuples", [ IsList, IsInt ], function ( args, func_stack )
-    
-    return rec( args := args, output_type := rec( filter := IsList, element_type := args.1.data_type ) );
+    return rec( filter := IsList, element_type := rec( filter := IsInt ) );
     
 end );
 
-CapJitAddTypeSignature( "*", [ IsInt, IsList ], function ( args, func_stack )
+CapJitAddTypeSignature( "Tuples", [ IsList, IsInt ], function ( input_types )
+    
+    return rec( filter := IsList, element_type := input_types[1] );
+    
+end );
+
+CapJitAddTypeSignature( "*", [ IsInt, IsList ], function ( input_types )
   local element_type;
     
-    if args.2.data_type.element_type.filter = IsList then
+    if input_types[2].element_type.filter = IsList then
         
         # matrix case
-        element_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_FILTERS( "*", [ IsInt, args.2.data_type.element_type.element_type.filter ] );
+        element_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES( "*", [ rec( filter := IsInt ), input_types[2].element_type.element_type ] );
         
     else
         
         # list case
-        element_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_FILTERS( "*", [ IsInt, args.2.data_type.element_type.filter ] );
+        element_type := CAP_JIT_INTERNAL_GET_OUTPUT_TYPE_OF_GLOBAL_FUNCTION_BY_INPUT_TYPES( "*", [ rec( filter := IsInt ), input_types[2].element_type ] );
         
     fi;
     
@@ -849,23 +948,23 @@ CapJitAddTypeSignature( "*", [ IsInt, IsList ], function ( args, func_stack )
         
     fi;
     
-    if args.2.data_type.element_type.filter = IsList then
+    if input_types[2].element_type.filter = IsList then
         
-        return rec( args := args, output_type := rec( filter := IsList, element_type := rec( filter := IsList, element_type := element_type ) ) );
+        return rec( filter := IsList, element_type := rec( filter := IsList, element_type := element_type ) );
         
     else
         
-        return rec( args := args, output_type := rec( filter := IsList, element_type := element_type ) );
+        return rec( filter := IsList, element_type := element_type );
         
     fi;
     
 end );
 
-CapJitAddTypeSignature( "MatElm", [ IsList, IsInt, IsInt ], function ( args, func_stack )
+CapJitAddTypeSignature( "MatElm", [ IsList, IsInt, IsInt ], function ( input_types )
     
-    Assert( 0, args.1.data_type.element_type.filter = IsList );
+    Assert( 0, input_types[1].element_type.filter = IsList );
     
-    return rec( args := args, output_type := args.1.data_type.element_type.element_type );
+    return input_types[1].element_type.element_type;
     
 end );
 

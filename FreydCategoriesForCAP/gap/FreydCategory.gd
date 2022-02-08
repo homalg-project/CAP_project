@@ -69,22 +69,22 @@ DeclareAttribute( "UnderlyingCategory",
 DeclareAttribute( "RelationMorphism",
                   IsFreydCategoryObject );
 
-CapJitAddTypeSignature( "RelationMorphism", [ IsFreydCategoryObject ], function ( args, func_stack )
+CapJitAddTypeSignature( "RelationMorphism", [ IsFreydCategoryObject ], function ( input_types )
     
-    Assert( 0, IsFreydCategory( args.1.data_type.category ) );
+    Assert( 0, IsFreydCategory( input_types[1].category ) );
     
-    return rec( args := args, output_type := rec( filter := UnderlyingCategory( args.1.data_type.category )!.morphism_representation, category := UnderlyingCategory( args.1.data_type.category ) ) );
+    return rec( filter := UnderlyingCategory( input_types[1].category )!.morphism_representation, category := UnderlyingCategory( input_types[1].category ) );
     
 end );
 
 DeclareAttribute( "UnderlyingMorphism",
                   IsFreydCategoryMorphism );
 
-CapJitAddTypeSignature( "UnderlyingMorphism", [ IsFreydCategoryMorphism ], function ( args, func_stack )
+CapJitAddTypeSignature( "UnderlyingMorphism", [ IsFreydCategoryMorphism ], function ( input_types )
     
-    Assert( 0, IsFreydCategory( args.1.data_type.category ) );
+    Assert( 0, IsFreydCategory( input_types[1].category ) );
     
-    return rec( args := args, output_type := rec( filter := UnderlyingCategory( args.1.data_type.category )!.morphism_representation, category := UnderlyingCategory( args.1.data_type.category ) ) );
+    return rec( filter := UnderlyingCategory( input_types[1].category )!.morphism_representation, category := UnderlyingCategory( input_types[1].category ) );
     
 end );
 

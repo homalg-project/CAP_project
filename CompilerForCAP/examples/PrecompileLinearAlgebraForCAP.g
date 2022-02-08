@@ -25,7 +25,9 @@ CapJitPrecompileCategoryAndCompareResult(
     compiled_category_name
     # hack until we can compile Toposes
     : operations := Intersection(
-        ListInstalledOperationsOfCategory( MatrixCategory( QQ ) ),
+        ListInstalledOperationsOfCategory(
+            MATRIX_CATEGORY( QQ : no_precompiled_code )
+        ),
         Union(
             RecNames( CAP_INTERNAL_CORE_METHOD_NAME_RECORD ),
             RecNames( MONOIDAL_CATEGORIES_BASIC_METHOD_NAME_RECORD ),
