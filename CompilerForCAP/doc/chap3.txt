@@ -1331,17 +1331,33 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# example testing needed_packages[127X[104X
+    [4X[25X>[125X [27Xtemplate := rec([127X[104X
+    [4X[25X>[125X [27X    variable_names := [ "name" ],[127X[104X
+    [4X[25X>[125X [27X    variable_filters := [ "THIS_SHOULD_NOT_BE_PARSED" ],[127X[104X
+    [4X[25X>[125X [27X    src_template := "THIS_SHOULD_NOT_BE_PARSED_TOO",[127X[104X
+    [4X[25X>[125X [27X    dst_template := "THIS_SHOULD_NOT_BE_PARSED_EITHER",[127X[104X
+    [4X[25X>[125X [27X    returns_value := true,[127X[104X
+    [4X[25X>[125X [27X    needed_packages := [ [ "NON_EXISTING_PACKAGE", ">= 9999" ] ],[127X[104X
+    [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XAdd( CAP_JIT_LOGIC_TEMPLATES, template );[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( x -> x ) );[127X[104X
+    [4X[28Xfunction ( x_1 )[128X[104X
+    [4X[28X    return x_1;[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( Remove( CAP_JIT_LOGIC_TEMPLATES ), template );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xapplied_logic_template_to_func :=[127X[104X
     [4X[25X>[125X [27X    { func, template, type_signature } ->[127X[104X
     [4X[25X>[125X [27X        ENHANCED_SYNTAX_TREE_CODE([127X[104X
-    [4X[25X>[125X [27X            CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE([127X[104X
+    [4X[25X>[125X [27X            CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATES([127X[104X
     [4X[25X>[125X [27X                CapJitInferredDataTypes([127X[104X
     [4X[25X>[125X [27X                    ENHANCED_SYNTAX_TREE([127X[104X
     [4X[25X>[125X [27X                        func :[127X[104X
     [4X[25X>[125X [27X                        type_signature := type_signature[127X[104X
     [4X[25X>[125X [27X                    )[127X[104X
     [4X[25X>[125X [27X                ),[127X[104X
-    [4X[25X>[125X [27X                template[127X[104X
+    [4X[25X>[125X [27X                [ template ][127X[104X
     [4X[25X>[125X [27X            )[127X[104X
     [4X[25X>[125X [27X        );;[127X[104X
     [4X[25Xgap>[125X [27X# some general example[127X[104X
@@ -1351,6 +1367,7 @@
     [4X[25X>[125X [27X    dst_template := "x -> x + variable + 0",[127X[104X
     [4X[25X>[125X [27X    returns_value := true,[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );[127X[104X
     [4X[25Xgap>[125X [27Xfunc := function ( a )[127X[104X
     [4X[25X>[125X [27X    return b -> b + ( 2 * b + a ) + b - b; end;;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template, fail ) );[127X[104X
@@ -1368,24 +1385,12 @@
     [4X[25X>[125X [27X    dst_template := "return x -> x + variable + 0@",[127X[104X
     [4X[25X>[125X [27X    returns_value := false,[127X[104X
     [4X[25X>[125X [27X)""", "@", ";" ) );;[127X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );[127X[104X
     [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template, fail ) );[127X[104X
     [4X[28Xfunction ( a_1 )[128X[104X
     [4X[28X    return function ( b_2 )[128X[104X
     [4X[28X          return b_2 + (2 * b_2 + a_1) + 0;[128X[104X
     [4X[28X      end;[128X[104X
-    [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27X# example testing needed_packages[127X[104X
-    [4X[25X>[125X [27Xtemplate := rec([127X[104X
-    [4X[25X>[125X [27X    variable_names := [ "name" ],[127X[104X
-    [4X[25X>[125X [27X    variable_filters := [ "THIS_SHOULD_NOT_BE_PARSED" ],[127X[104X
-    [4X[25X>[125X [27X    src_template := "THIS_SHOULD_NOT_BE_PARSED_TOO",[127X[104X
-    [4X[25X>[125X [27X    dst_template := "THIS_SHOULD_NOT_BE_PARSED_EITHER",[127X[104X
-    [4X[25X>[125X [27X    returns_value := true,[127X[104X
-    [4X[25X>[125X [27X    needed_packages := [ [ "NON_EXISTING_PACKAGE", ">= 9999" ] ],[127X[104X
-    [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( x -> x, template, fail ) );[127X[104X
-    [4X[28Xfunction ( x_1 )[128X[104X
-    [4X[28X    return x_1;[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27X# check that functions in variables can match[127X[104X
     [4X[25X>[125X [27X# and test variable_filters (strings and filters)[127X[104X
@@ -1396,6 +1401,7 @@
     [4X[25X>[125X [27X    dst_template := "List( Concatenation( [ L1, L2 ] ), func )",[127X[104X
     [4X[25X>[125X [27X    returns_value := true,[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );[127X[104X
     [4X[25Xgap>[125X [27Xfunc := { L1, L2 } ->[127X[104X
     [4X[25X>[125X [27X    Concatenation( [ List( L1, x -> x ), List( L2, x -> x ) ] );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func([127X[104X
@@ -1431,6 +1437,7 @@
     [4X[25X>[125X [27X    dst_template := "value",[127X[104X
     [4X[25X>[125X [27X    returns_value := true,[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );[127X[104X
     [4X[25Xgap>[125X [27Xfunc := { x } -> Sum( [ x ] );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func([127X[104X
     [4X[25X>[125X [27X    func,[127X[104X
@@ -1466,6 +1473,7 @@
     [4X[25X>[125X [27X    dst_template := "Sum( list, l -> value ) + Sum( list, l -> value )",[127X[104X
     [4X[25X>[125X [27X    returns_value := true,[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );[127X[104X
     [4X[25Xgap>[125X [27Xfunc := function ( list )[127X[104X
     [4X[25X>[125X [27X    return List( list, x -> x ); end;;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template, fail ) );[127X[104X
@@ -1498,6 +1506,7 @@
     [4X[25X>[125X [27X    dst_template := "(l -> value)(1)",[127X[104X
     [4X[25X>[125X [27X    returns_value := true,[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );[127X[104X
     [4X[25Xgap>[125X [27Xfunc := function ( x )[127X[104X
     [4X[25X>[125X [27X    return List( [ 1 ], function ( y )[127X[104X
     [4X[25X>[125X [27X        local r; r := x; return r; end ); end;;[127X[104X
@@ -1517,6 +1526,7 @@
     [4X[25X>[125X [27X    dst_template := "value * List( list, l -> l )",[127X[104X
     [4X[25X>[125X [27X    returns_value := true,[127X[104X
     [4X[25X>[125X [27X);;[127X[104X
+    [4X[25Xgap>[125X [27XCAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );[127X[104X
     [4X[25Xgap>[125X [27Xfunc := L -> List( L, l -> l * l );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( applied_logic_template_to_func( func, template, fail ) );[127X[104X
     [4X[28Xfunction ( L_1 )[128X[104X
