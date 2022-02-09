@@ -59,11 +59,6 @@ InstallGlobalFunction( "MonoidalCategoriesTest",
             Assert( 0, IsCongruentForMorphisms( alpha_tensor_beta_op, Opposite( alpha_tensor_beta ) ) );
             Assert( 0, IsCongruentForMorphisms( beta_tensor_alpha_op, Opposite( beta_tensor_alpha ) ) );
             
-            # Convenience methods in the opposite category
-            
-            Assert( 0, IsCongruentForMorphisms( alpha_tensor_beta_op, TensorProduct( opposite, alpha_op, beta_op ) ) );
-            Assert( 0, IsCongruentForMorphisms( beta_tensor_alpha_op, TensorProduct( opposite, beta_op, alpha_op ) ) );
-            
             # Opposite must be self-inverse
             
             Assert( 0, IsCongruentForMorphisms( alpha_tensor_beta, Opposite( alpha_tensor_beta_op ) ) );
