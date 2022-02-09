@@ -181,6 +181,9 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := AsAdelmanCategoryMorphism( gamma );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( m );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># backwards compatibility</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">IsIdenticalObj( MorphismDatum( m ), beta );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( PreCompose( m, n ), PreCompose( n, m ) );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( SubtractionForMorphisms( m, m ), ZeroMorphism( obj2_a, obj2_a ) );</span>

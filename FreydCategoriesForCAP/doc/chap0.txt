@@ -6,10 +6,10 @@
         [1X Freyd categories - Formal (co)kernels for additive categories [101X
   
   
-                                   2022.02-01
+                                   2022.02-02
   
   
-                                8 February 2022
+                                9 February 2022
   
   
                                 Sebastian Posur
@@ -187,7 +187,7 @@
       4.3-1 UnderlyingCategory
       4.3-2 RelationMorphism
       4.3-3 CorelationMorphism
-      4.3-4 MorphismDatum
+      4.3-4 UnderlyingMorphism
       4.3-5 RelationWitness
       4.3-6 CorelationWitness
       4.3-7 WitnessPairForBeingCongruentToZero

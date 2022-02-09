@@ -128,7 +128,6 @@
   [2XMereExistenceOfWitnessPairForBeingCongruentToZero[102X, for IsAdelmanCategoryMorphism 4.3-8 
   [2XMonomorphismToSomeInjectiveObjectForCokernelObject[102X, for IsCapCategoryMorphism 1.7-5 
   [2XMonomorphismToSomeInjectiveObjectForCokernelObjectWithGivenSomeInjectiveObjectForCokernelObject[102X, for IsCapCategoryMorphism, IsCapCategoryObject 1.7-6 
-  [2XMorphismDatum[102X, for IsAdelmanCategoryMorphism 4.3-4 
   [2XMorphismMatrix[102X, for IsAdditiveClosureMorphism 2.3-3 
   [2XNullMatImmutable[102X 2.5-1 
   [2XNumberColumns[102X, for IsAdditiveClosureMorphism 2.3-5 
@@ -150,6 +149,7 @@
   [2XUnderlyingHomalgGradedRing[102X, for IsGradedRowOrColumn 9.2-1 
       for IsGradedRowOrColumnMorphism 9.2-4 
   [2XUnderlyingHomalgMatrix[102X, for IsGradedRowOrColumnMorphism 9.2-5 
+  [2XUnderlyingMorphism[102X, for IsAdelmanCategoryMorphism 4.3-4 
   [2XUnionOfColumnsListList[102X 2.5-3 
   [2XUnionOfRowsListList[102X 2.5-2 
   [2XUniversalMorphismFromBiasedWeakPushout[102X, for IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism 1.6-4 

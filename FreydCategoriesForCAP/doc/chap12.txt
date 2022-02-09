@@ -68,6 +68,9 @@
     [4X[25Xgap>[125X [27Xn := AsAdelmanCategoryMorphism( gamma );;[127X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( m );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# backwards compatibility[127X[104X
+    [4X[25X>[125X [27XIsIdenticalObj( MorphismDatum( m ), beta );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( PreCompose( m, n ), PreCompose( n, m ) );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsCongruentForMorphisms( SubtractionForMorphisms( m, m ), ZeroMorphism( obj2_a, obj2_a ) );[127X[104X

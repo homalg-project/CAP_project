@@ -146,9 +146,9 @@
   [33X[0;0YThe  argument  is  an  object  [23Xx[123X  in  an Adelman category. The output is its
   corelation morphism [23X\gamma: b \rightarrow c[123X.[133X
   
-  [1X4.3-4 MorphismDatum[101X
+  [1X4.3-4 UnderlyingMorphism[101X
   
-  [33X[1;0Y[29X[2XMorphismDatum[102X( [3Xalpha[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XUnderlyingMorphism[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b, b' )[123X[133X
   
   [33X[0;0YThe  argument is a morphism [23X\alpha[123X in an Adelman category. The output is its
