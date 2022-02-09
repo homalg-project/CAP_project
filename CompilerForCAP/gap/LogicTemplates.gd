@@ -68,6 +68,4 @@ DeclareGlobalFunction( "CapJitAddLogicTemplate" );
 #! @Arguments tree
 DeclareGlobalFunction( "CapJitAppliedLogicTemplates" );
 
-# enhances a single logic template and applies it if all needed packages are loaded, else does nothing
-# we do not make this an officially documented function because it changes the logic template in-place
-DeclareGlobalFunction( "CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE" );
+DeclareGlobalFunction( "CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATES" );

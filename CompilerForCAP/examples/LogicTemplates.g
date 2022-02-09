@@ -7,17 +7,37 @@
 LoadPackage( "CompilerForCAP", false );
 #! true
 
+# example testing needed_packages
+template := rec(
+    variable_names := [ "name" ],
+    variable_filters := [ "THIS_SHOULD_NOT_BE_PARSED" ],
+    src_template := "THIS_SHOULD_NOT_BE_PARSED_TOO",
+    dst_template := "THIS_SHOULD_NOT_BE_PARSED_EITHER",
+    returns_value := true,
+    needed_packages := [ [ "NON_EXISTING_PACKAGE", ">= 9999" ] ],
+);;
+
+Add( CAP_JIT_LOGIC_TEMPLATES, template );
+
+Display( CapJitCompiledFunction( x -> x ) );
+#! function ( x_1 )
+#!     return x_1;
+#! end
+
+IsIdenticalObj( Remove( CAP_JIT_LOGIC_TEMPLATES ), template );
+#! true
+
 applied_logic_template_to_func :=
     { func, template, type_signature } ->
         ENHANCED_SYNTAX_TREE_CODE(
-            CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATE(
+            CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATES(
                 CapJitInferredDataTypes(
                     ENHANCED_SYNTAX_TREE(
                         func :
                         type_signature := type_signature
                     )
                 ),
-                template
+                [ template ]
             )
         );;
 
@@ -28,6 +48,7 @@ template := rec(
     dst_template := "x -> x + variable + 0",
     returns_value := true,
 );;
+CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );
 
 func := function ( a )
     return b -> b + ( 2 * b + a ) + b - b; end;;
@@ -48,27 +69,13 @@ template := EvalString( ReplacedString( """rec(
     dst_template := "return x -> x + variable + 0@",
     returns_value := false,
 )""", "@", ";" ) );;
+CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );
 
 Display( applied_logic_template_to_func( func, template, fail ) );
 #! function ( a_1 )
 #!     return function ( b_2 )
 #!           return b_2 + (2 * b_2 + a_1) + 0;
 #!       end;
-#! end
-
-# example testing needed_packages
-template := rec(
-    variable_names := [ "name" ],
-    variable_filters := [ "THIS_SHOULD_NOT_BE_PARSED" ],
-    src_template := "THIS_SHOULD_NOT_BE_PARSED_TOO",
-    dst_template := "THIS_SHOULD_NOT_BE_PARSED_EITHER",
-    returns_value := true,
-    needed_packages := [ [ "NON_EXISTING_PACKAGE", ">= 9999" ] ],
-);;
-
-Display( applied_logic_template_to_func( x -> x, template, fail ) );
-#! function ( x_1 )
-#!     return x_1;
 #! end
 
 # check that functions in variables can match
@@ -80,6 +87,7 @@ template := rec(
     dst_template := "List( Concatenation( [ L1, L2 ] ), func )",
     returns_value := true,
 );;
+CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );
 
 func := { L1, L2 } ->
     Concatenation( [ List( L1, x -> x ), List( L2, x -> x ) ] );;
@@ -119,6 +127,7 @@ template := rec(
     dst_template := "value",
     returns_value := true,
 );;
+CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );
 
 func := { x } -> Sum( [ x ] );;
 
@@ -158,6 +167,7 @@ template := rec(
     dst_template := "Sum( list, l -> value ) + Sum( list, l -> value )",
     returns_value := true,
 );;
+CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );
 
 func := function ( list )
     return List( list, x -> x ); end;;
@@ -195,6 +205,7 @@ template := rec(
     dst_template := "(l -> value)(1)",
     returns_value := true,
 );;
+CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );
 
 func := function ( x )
     return List( [ 1 ], function ( y )
@@ -217,6 +228,7 @@ template := rec(
     dst_template := "value * List( list, l -> l )",
     returns_value := true,
 );;
+CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );
 
 func := L -> List( L, l -> l * l );;
 Display( applied_logic_template_to_func( func, template, fail ) );
