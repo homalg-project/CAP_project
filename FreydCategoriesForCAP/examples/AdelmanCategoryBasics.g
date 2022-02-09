@@ -21,6 +21,9 @@ m := AsAdelmanCategoryMorphism( beta );;
 n := AsAdelmanCategoryMorphism( gamma );;
 IsWellDefined( m );
 #! true
+# backwards compatibility
+IsIdenticalObj( MorphismDatum( m ), beta );
+#! true
 IsCongruentForMorphisms( PreCompose( m, n ), PreCompose( n, m ) );
 #! false
 IsCongruentForMorphisms( SubtractionForMorphisms( m, m ), ZeroMorphism( obj2_a, obj2_a ) );

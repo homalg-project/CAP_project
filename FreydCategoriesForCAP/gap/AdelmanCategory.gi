@@ -70,7 +70,7 @@ InstallMethod( AdelmanCategory,
     
     AddObjectRepresentation( adelman_category, IsAdelmanCategoryObject );
     
-    AddMorphismRepresentation( adelman_category, IsAdelmanCategoryMorphism and HasMorphismDatum );
+    AddMorphismRepresentation( adelman_category, IsAdelmanCategoryMorphism and HasUnderlyingMorphism );
     
     INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY( adelman_category );
     
@@ -163,7 +163,7 @@ InstallOtherMethodForCompilerForCAP( AdelmanCategoryMorphism,
                              rec( ), category,
                              source,
                              range,
-                             MorphismDatum, morphism_datum
+                             UnderlyingMorphism, morphism_datum
     );
     
     return adelman_category_morphism;
@@ -184,6 +184,18 @@ InstallMethod( AsAdelmanCategoryMorphism,
     
 end );
 
+##
+# backwards compatibility
+InstallOtherMethod( MorphismDatum,
+                    [ IsAdelmanCategoryMorphism ],
+                    
+  function( morphism )
+    
+    return UnderlyingMorphism( morphism );
+    
+end );
+
+
 ####################################
 ##
 ## Attributes
@@ -196,7 +208,7 @@ InstallMethod( RelationWitness,
                
   function( morphism )
     
-    return Lift( PreCompose( RelationMorphism( Source( morphism ) ), MorphismDatum( morphism ) ), RelationMorphism( Range( morphism ) ) );
+    return Lift( PreCompose( RelationMorphism( Source( morphism ) ), UnderlyingMorphism( morphism ) ), RelationMorphism( Range( morphism ) ) );
     
 end );
 
@@ -206,7 +218,7 @@ InstallMethod( CorelationWitness,
                
   function( morphism )
     
-    return Colift( CorelationMorphism( Source( morphism ) ), PreCompose( MorphismDatum( morphism ), CorelationMorphism( Range( morphism ) ) ) );
+    return Colift( CorelationMorphism( Source( morphism ) ), PreCompose( UnderlyingMorphism( morphism ), CorelationMorphism( Range( morphism ) ) ) );
     
 end );
 
@@ -217,7 +229,7 @@ InstallMethod( WitnessPairForBeingCongruentToZero,
   function( morphism )
     local datum, left_coeffs, right_coeffs;
     
-    datum := MorphismDatum( morphism );
+    datum := UnderlyingMorphism( morphism );
     
     left_coeffs :=
         [ [ IdentityMorphism( Source( datum ) ), CorelationMorphism( Source( morphism ) ) ] ];
@@ -246,15 +258,15 @@ InstallOtherMethodForCompilerForCAP( MereExistenceOfWitnessPairForBeingCongruent
   function( cat, morphism )
     local datum, left_coeffs, right_coeffs;
     
-    datum := MorphismDatum( morphism );
+    datum := UnderlyingMorphism( morphism );
     
     left_coeffs :=
-        [ [ IdentityMorphism( Source( datum ) ), CorelationMorphism( Source( morphism ) ) ] ];
+        [ [ IdentityMorphism( UnderlyingCategory( cat ), Source( datum ) ), CorelationMorphism( Source( morphism ) ) ] ];
     
     right_coeffs :=
-        [ [ RelationMorphism( Range( morphism ) ), IdentityMorphism( Range( datum ) ) ] ];
+        [ [ RelationMorphism( Range( morphism ) ), IdentityMorphism( UnderlyingCategory( cat ), Range( datum ) ) ] ];
     
-    return MereExistenceOfSolutionOfLinearSystemInAbCategory( left_coeffs, right_coeffs, [ datum ] );
+    return MereExistenceOfSolutionOfLinearSystemInAbCategory( UnderlyingCategory( cat ), left_coeffs, right_coeffs, [ datum ] );
     
 end );
 
@@ -323,13 +335,13 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     AddIsWellDefinedForMorphisms( category,
       function( cat, morphism )
         
-        if not IsLiftable( PreCompose( RelationMorphism( Source( morphism ) ), MorphismDatum( morphism ) ), RelationMorphism( Range( morphism ) ) ) then
+        if not IsLiftable( PreCompose( RelationMorphism( Source( morphism ) ), UnderlyingMorphism( morphism ) ), RelationMorphism( Range( morphism ) ) ) then
             
             return false;
             
         fi;
         
-        if not IsColiftable( CorelationMorphism( Source( morphism ) ), PreCompose( MorphismDatum( morphism ), CorelationMorphism( Range( morphism ) ) ) ) then
+        if not IsColiftable( CorelationMorphism( Source( morphism ) ), PreCompose( UnderlyingMorphism( morphism ), CorelationMorphism( Range( morphism ) ) ) ) then
             
             return false;
             
@@ -354,7 +366,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
     AddIsEqualForMorphisms( category,
       function( cat, morphism_1, morphism_2 )
         
-        return IsEqualForMorphisms( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
+        return IsEqualForMorphisms( UnderlyingMorphism( morphism_1 ), UnderlyingMorphism( morphism_2 ) );
         
     end );
     
@@ -390,7 +402,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
       function( cat, morphism_1, morphism_2 )
         local composition;
         
-        composition := PreCompose( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) );
+        composition := PreCompose( UnderlyingCategory( cat ), UnderlyingMorphism( morphism_1 ), UnderlyingMorphism( morphism_2 ) );
         
         return AdelmanCategoryMorphism( cat, Source( morphism_1 ), composition, Range( morphism_2 ) );
         
@@ -403,7 +415,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         
         subtraction := AdelmanCategoryMorphism( cat,
                             Source( morphism_1 ),
-                            SubtractionForMorphisms( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) ),
+                            SubtractionForMorphisms( UnderlyingCategory( cat ), UnderlyingMorphism( morphism_1 ), UnderlyingMorphism( morphism_2 ) ),
                             Range( morphism_1 )
                         );
         
@@ -418,7 +430,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         
         addition := AdelmanCategoryMorphism( cat,
                             Source( morphism_1 ),
-                            AdditionForMorphisms( MorphismDatum( morphism_1 ), MorphismDatum( morphism_2 ) ),
+                            AdditionForMorphisms( UnderlyingMorphism( morphism_1 ), UnderlyingMorphism( morphism_2 ) ),
                             Range( morphism_1 )
                         );
         
@@ -433,7 +445,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         
         additive_inverse := AdelmanCategoryMorphism( cat,
                               Source( morphism ),
-                              AdditiveInverseForMorphisms( MorphismDatum( morphism ) ),
+                              AdditiveInverseForMorphisms( UnderlyingMorphism( morphism ) ),
                               Range( morphism )
                             );
         
@@ -508,7 +520,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
       function( cat, direct_sum_source, source_diagram, diagram, range_diagram, direct_sum_range )
         
         return AdelmanCategoryMorphism( cat, direct_sum_source,
-                                        DirectSumFunctorial( List( diagram, MorphismDatum ) ),
+                                        DirectSumFunctorial( List( diagram, UnderlyingMorphism ) ),
                                         direct_sum_range );
         
     end );
@@ -530,7 +542,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         
         return AdelmanCategoryMorphism( cat, Source( source[1] ),
                                         UniversalMorphismIntoDirectSum( List( diagram, obj -> Range( RelationMorphism( obj ) ) ),
-                                                                        List( source, mor -> MorphismDatum( mor ) ) ),
+                                                                        List( source, mor -> UnderlyingMorphism( mor ) ) ),
                                         direct_sum_object
                                       );
         
@@ -553,7 +565,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         
         return AdelmanCategoryMorphism( cat, direct_sum_object,
                                         UniversalMorphismFromDirectSum( List( diagram, obj -> Range( RelationMorphism( obj ) ) ),
-                                                                        List( sink, mor -> MorphismDatum( mor ) ) ),
+                                                                        List( sink, mor -> UnderlyingMorphism( mor ) ) ),
                                         Range( sink[1] )
                                       );
         
@@ -581,17 +593,17 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         
         App := Range( ap );
         
-        alpha := MorphismDatum( morphism );
+        alpha := UnderlyingMorphism( morphism );
         
         cokernel_object :=
             AdelmanCategoryObject( cat,
-                MorphismBetweenDirectSums( [ [ b, ZeroMorphism( Bp, App ) ], [ alpha, ap ] ] ),
-                DirectSumFunctorial( [ bp, IdentityMorphism( App ) ] )
+                MorphismBetweenDirectSums( UnderlyingCategory( cat ), [ Bp, Source( ap ) ], [ [ b, ZeroMorphism( UnderlyingCategory( cat ), Bp, App ) ], [ alpha, ap ] ], [ B, App ] ),
+                DirectSumFunctorial( UnderlyingCategory( cat ), [ bp, IdentityMorphism( UnderlyingCategory( cat ), App ) ] )
             );
         
         return AdelmanCategoryMorphism( cat,
             Range( morphism ),
-            InjectionOfCofactorOfDirectSum( [ B, App ], 1 ),
+            InjectionOfCofactorOfDirectSum( UnderlyingCategory( cat ), [ B, App ], 1 ),
             cokernel_object
         );
         
@@ -607,7 +619,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         
         datum :=
             UniversalMorphismFromDirectSum(
-                [ MorphismDatum( test_morphism ), -witness_pair[2] ]
+                [ UnderlyingMorphism( test_morphism ), -witness_pair[2] ]
             );
         
         return AdelmanCategoryMorphism( cat, cokernel_object,
@@ -636,7 +648,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         
         b2 := CorelationMorphism( range_alpha );
         
-        datum_tau := MorphismDatum( tau );
+        datum_tau := UnderlyingMorphism( tau );
         
         A := Source( datum_tau );
         
@@ -676,7 +688,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         
         ap := CorelationMorphism( source );
         
-        alpha := MorphismDatum( morphism );
+        alpha := UnderlyingMorphism( morphism );
         
         b := RelationMorphism( range );
         
@@ -710,7 +722,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         
         datum :=
             UniversalMorphismIntoDirectSum(
-                [ MorphismDatum( test_morphism ), -witness_pair[1] ]
+                [ UnderlyingMorphism( test_morphism ), -witness_pair[1] ]
             );
         
         return AdelmanCategoryMorphism( cat, Source( test_morphism ),
@@ -763,7 +775,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
         AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
           { cat, r, alpha } -> AdelmanCategoryMorphism( cat,
                               Source( alpha ),
-                              MultiplyWithElementOfCommutativeRingForMorphisms( r, MorphismDatum( alpha ) ),
+                              MultiplyWithElementOfCommutativeRingForMorphisms( r, UnderlyingMorphism( alpha ) ),
                               Range( alpha )
                             )
         );
@@ -836,7 +848,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
             
             interpret_morphism_from_distinguished_object_to_homomorphism_structure_as_homomorphism := 
               function( a, b, morphism )
-                return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( a, b, MorphismDatum( morphism ) );
+                return InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( a, b, UnderlyingMorphism( morphism ) );
             end;
             
         else 
@@ -917,9 +929,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
               function( cat, mor_alpha, mor_beta )
                 local alpha, beta, H_alpha_beta, composition;
                 
-                alpha := MorphismDatum( mor_alpha );
+                alpha := UnderlyingMorphism( mor_alpha );
                 
-                beta := MorphismDatum( mor_beta );
+                beta := UnderlyingMorphism( mor_beta );
                 
                 H_alpha_beta := homomorphism_structure_on_morphisms( alpha, beta );
                 
@@ -961,7 +973,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
                 
                 reversed := ReversedArrow( gen );
                 
-                alpha := MorphismDatum( mor_alpha );
+                alpha := UnderlyingMorphism( mor_alpha );
                 
                 interpret := interpret_homomorphism_as_morphism_from_distinguished_object_to_homomorphism_structure( alpha );
                 
@@ -1057,7 +1069,7 @@ InstallMethod( AdelmanCategoryFunctorInducedByUniversalProperty,
         
         delta := ApplyFunctor( functor, CorelationMorphism( Range( mor ) ) );
         
-        epsilon := ApplyFunctor( functor, MorphismDatum( mor ) );
+        epsilon := ApplyFunctor( functor, UnderlyingMorphism( mor ) );
         
         return HomologyObjectFunctorialWithGivenHomologyObjects(
             new_source,
@@ -1103,7 +1115,7 @@ InstallMethod( EmbeddingFunctorOfFreydCategoryIntoAdelmanCategory,
         
         return AdelmanCategoryMorphism(
             new_source,
-            MorphismDatum( mor ),
+            UnderlyingMorphism( mor ),
             new_range
         );
         
@@ -1312,7 +1324,7 @@ InstallMethod( Display,
     
     Print( "Morphism datum:\n" );
     
-    Display( MorphismDatum( morphism ) );
+    Display( UnderlyingMorphism( morphism ) );
     
 end );
 
@@ -1379,7 +1391,7 @@ InstallMethod( LaTeXOutput,
   function( mor )
     local datum;
     
-    datum := LaTeXOutput( MorphismDatum( mor ) : OnlyDatum := true );
+    datum := LaTeXOutput( UnderlyingMorphism( mor ) : OnlyDatum := true );
     
     return Concatenation(
       LaTeXOutput( Source( mor ) ),
@@ -1471,6 +1483,6 @@ InstallMethod( DownOnlyMorphismData,
                [ IsAdelmanCategoryMorphism ],
   function( mor )
     
-    return MorphismDatum( mor );
+    return UnderlyingMorphism( mor );
     
 end );

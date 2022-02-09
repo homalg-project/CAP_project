@@ -252,10 +252,10 @@ end );
 #! The output is its morphism datum $\beta: b \rightarrow b'$.
 #! @Returns a morphism in $\mathrm{Hom}( b, b' )$
 #! @Arguments alpha
-DeclareAttribute( "MorphismDatum",
+DeclareAttribute( "UnderlyingMorphism",
                   IsAdelmanCategoryMorphism );
 
-CapJitAddTypeSignature( "MorphismDatum", [ IsAdelmanCategoryMorphism ], function ( input_types )
+CapJitAddTypeSignature( "UnderlyingMorphism", [ IsAdelmanCategoryMorphism ], function ( input_types )
     
     Assert( 0, IsAdelmanCategory( input_types[1].category ) );
     
