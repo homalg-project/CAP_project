@@ -1019,6 +1019,8 @@ end
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that CapJitInlinedBindings is idempotent</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">func := function ( )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  local val1, val2; val1 := 1; val2 := val1; return val2; end;;</span>
@@ -1026,13 +1028,11 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitInlinedBindings( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );</span>
 function (  )
-    local val1_1, val2_1;
     return 1;
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree2 := CapJitInlinedBindings( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree2 ) );</span>
 function (  )
-    local val1_1, val2_1;
     return 1;
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree = tree2;</span>
@@ -1044,17 +1044,46 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitInlinedBindingsToVariableReferences( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );</span>
 function (  )
-    local f1_1, f2_1;
     return IdFunc;
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree2 := CapJitInlinedBindingsToVariableReferences( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree2 ) );</span>
 function (  )
-    local f1_1, f2_1;
     return IdFunc;
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree = tree2;</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># test (nested) cancellation in CapJitInlinedBindings</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals( );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">vec := MatrixCategory( QQ );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">op := Opposite( vec );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># we have to work hard to not write semicolons so AutoDoc</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># does not begin a new statement</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">func := EvalString( ReplacedString( """function( )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  local obj_tmp, dimension_tmp, obj, obj_op, obj_op_unwrapped, dimension@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    obj_tmp := ObjectifyObjectForCAPWithAttributes( rec( ), vec, Dimension, 1 )@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    dimension_tmp := Dimension( obj_tmp )@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    obj := ObjectifyObjectForCAPWithAttributes(</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        rec( ), vec, Dimension, dimension_tmp )@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    obj_op := ObjectifyObjectForCAPWithAttributes( rec( ), op, Opposite, obj )@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    obj_op_unwrapped := Opposite( obj_op )@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    dimension := Dimension( obj_op_unwrapped )@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return dimension@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">end""", "@", ";" ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitInlinedBindings( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );</span>
+function (  )
+    return 1;
+end
 </pre></div>
 
 
