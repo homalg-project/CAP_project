@@ -30,7 +30,7 @@ AddFinalDerivation( IsomorphismFromCocartesianDualToCoexponential,
     return IdentityMorphism( cat, CoexponentialOnObjects( cat, InitialObject( cat ), object ) );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "IsomorphismFromCocartesianDualToCoexponential as the identity of coHom(1,a)" );
+      Description := "IsomorphismFromCocartesianDualToCoexponential as the identity of Coexp(1,a)" );
 
 AddFinalDerivation( IsomorphismFromCoexponentialToCocartesianDual,
                     [ [ IdentityMorphism, 1 ],
@@ -52,4 +52,4 @@ AddFinalDerivation( IsomorphismFromCoexponentialToCocartesianDual,
     return IdentityMorphism( cat, CoexponentialOnObjects( cat, InitialObject( cat ), object ) );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "IsomorphismFromCoexponentialToCocartesianDual as the identity of coHom(1,a)" );
+      Description := "IsomorphismFromCoexponentialToCocartesianDual as the identity of Coexp(1,a)" );

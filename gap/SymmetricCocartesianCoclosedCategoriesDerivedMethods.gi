@@ -13,13 +13,13 @@ AddDerivationToCAP( CoproductToCoexponentialAdjunctionMap,
     
     # g: a -> c x b
     #
-    #    Cohom(a,b)
+    #    Coexp(a,b)
     #        |
-    #        | Cohom(g, id_b)
+    #        | Coexp(g, id_b)
     #        v
-    # Cohom(c x b, b)
+    # Coexp(c x b, b)
     #        |
-    #        | coclcoev_cb
+    #        | cocacoev_cb
     #        v
     #        c
 
@@ -35,13 +35,13 @@ AddDerivationToCAP( CoexponentialToCoproductAdjunctionMap,
 
   function( cat, a, b, f )
 
-    # f: Cohom(a,b) -> c
+    # f: Coexp(a,b) -> c
     #
     #        a
     #        |
-    #        | coclev_ab
+    #        | cocaev_ab
     #        v
-    # Cohom(a,b) x b
+    # Coexp(a,b) x b
     #        |
     #        | f x id_b
     #        v
@@ -61,14 +61,14 @@ AddDerivationToCAP( UniversalPropertyOfCocartesianDual,
 
     # alpha: 1 -> t x a
     #
-    # a_v -> ( Cohom(1,a) -> t ) = Adjoint( alpha )
+    # a_v -> ( Coexp(1,a) -> t ) = Adjoint( alpha )
     
     return PreCompose( cat,
              IsomorphismFromCocartesianDualToCoexponential( cat, a ),
              CoproductToCoexponentialAdjunctionMap( cat, t, a, alpha ) );
              
 end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "UniversalPropertyOfCocartesianDual using the cohom tensor adjunction" );
+      Description := "UniversalPropertyOfCocartesianDual using the coexponential-coproduct adjunction" );
 
 ##
 AddDerivationToCAP( MorphismFromCocartesianBidualWithGivenCocartesianBidual,
@@ -78,7 +78,7 @@ AddDerivationToCAP( MorphismFromCocartesianBidualWithGivenCocartesianBidual,
 
     #    1
     #    |
-    #    | coclev_a
+    #    | cocaev_a
     #    v
     # a_v x a
     #    |
@@ -104,17 +104,17 @@ AddDerivationToCAP( MorphismFromCocartesianBidualWithGivenCocartesianBidual,
   function( cat, a, avv )
     local morphism, av, tensor_unit;
 
-    #     Cohom(1, a_v)
+    #     Coexp(1, a_v)
     #          |
-    #          | Cohom( coclev_(1,a), id_(a_v) )
+    #          | Coexp( cocaev_(1,a), id_(a_v) )
     #          v
-    # Cohom(a_v x a, a_v)
+    # Coexp(a_v x a, a_v)
     #          |
-    #          | Cohom( B_( a_v, a), id_(a_v) )
+    #          | Coexp( B_( a_v, a), id_(a_v) )
     #          v
-    # Cohom(a x a_v, a_v)
+    # Coexp(a x a_v, a_v)
     #          |
-    #          | coclcoev_(a, a_v)
+    #          | cocacoev_(a, a_v)
     #          v
     #          a
     
@@ -144,7 +144,7 @@ AddDerivationToCAP( CocartesianDualOnObjects,
 
   function( cat, a )
 
-    # Source( a_v -> Cohom(1,a) )
+    # Source( a_v -> Coexp(1,a) )
     
     return Source( IsomorphismFromCocartesianDualToCoexponential( cat, a ) );
 
@@ -156,7 +156,7 @@ AddDerivationToCAP( CocartesianDualOnObjects,
 
   function( cat, a )
 
-    # Range( Cohom(1,a) -> a_v )
+    # Range( Coexp(1,a) -> a_v )
     
     return Range( IsomorphismFromCoexponentialToCocartesianDual( cat, a ) );
 
@@ -174,11 +174,11 @@ AddDerivationToCAP( CocartesianDualOnMorphismsWithGivenCocartesianDuals,
     #    b_v
     #     |
     #     v
-    # Cohom(1,b)
+    # Coexp(1,b)
     #     |
-    #     | Cohom(id_1, alpha)
+    #     | Coexp(id_1, alpha)
     #     v
-    # Cohom(1,a)
+    # Coexp(1,a)
     #     |
     #     v
     #    a_v
@@ -205,7 +205,7 @@ AddDerivationToCAP( CocartesianEvaluationForCocartesianDualWithGivenCoproduct,
 
     # s := 1
 
-    # Adjoint( Cohom(1,a) -> a_v ) = ( 1 -> a_v x a )
+    # Adjoint( Coexp(1,a) -> a_v ) = ( 1 -> a_v x a )
 
     return CoexponentialToCoproductAdjunctionMap( cat,
             s,
@@ -213,7 +213,7 @@ AddDerivationToCAP( CocartesianEvaluationForCocartesianDualWithGivenCoproduct,
             IsomorphismFromCoexponentialToCocartesianDual( cat, a ) );
 
 end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "CocartesianEvaluationForCocartesianDualWithGivenCoproduct using the cohom tensor adjunction and IsomorphismFromCoexponentialToCocartesianDual" );
+      Description := "CocartesianEvaluationForCocartesianDualWithGivenCoproduct using the coexponential-coproduct adjunction and IsomorphismFromCoexponentialToCocartesianDual" );
 
 ##
 AddDerivationToCAP( CocartesianLambdaIntroduction,
@@ -231,7 +231,7 @@ AddDerivationToCAP( CocartesianLambdaIntroduction,
     #   v
     # 1 x b
     #
-    # Adjoint( a -> 1 x b ) = ( Cohom(a,b) -> 1 )
+    # Adjoint( a -> 1 x b ) = ( Coexp(a,b) -> 1 )
 
     range := Range( alpha );
 
@@ -243,7 +243,7 @@ AddDerivationToCAP( CocartesianLambdaIntroduction,
              result_morphism );
 
 end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "CocartesianLambdaIntroduction using the cohom tensor adjunction and the left unitor inverse" );
+      Description := "CocartesianLambdaIntroduction using the coexponential-coproduct adjunction and the left unitor inverse" );
 
 ##
 AddDerivationToCAP( CocartesianLambdaElimination,
@@ -251,7 +251,7 @@ AddDerivationToCAP( CocartesianLambdaElimination,
   function( cat, a, b, alpha )
     local result_morphism;
 
-    # alpha: Cohom(a,b) -> 1
+    # alpha: Coexp(a,b) -> 1
     # Adjoint( alpha ) = ( a -> 1 x b )
     #
     #   a
@@ -269,100 +269,100 @@ AddDerivationToCAP( CocartesianLambdaElimination,
     return PreCompose( cat, result_morphism, CocartesianLeftUnitor( cat, b ) );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "CocartesianLambdaElimination using the cohom tensor adjunction and the left unitor" );
+      Description := "CocartesianLambdaElimination using the coexponential-coproduct adjunction and the left unitor" );
 
 ##
 AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
 
   function( cat, source, list, range )
-    local a1, a2, b1, b2, morphism, int_cohom_a1_b1, int_cohom_a2_b2, id_b2, coproduct_on_objects_int_cohom_a1_b1_int_cohom_a2_b2;
+    local a1, a2, b1, b2, morphism, coexp_a1_b1, coexp_a2_b2, id_b2, coproduct_on_objects_coexp_a1_b1_coexp_a2_b2;
 
     #                   a1 x a2
     #                      |
-    #                      | id_a1 x coclev_(a2,b2)
+    #                      | id_a1 x cocaev_(a2,b2)
     #                      v
-    #          a1 x (Cohom(a2,b2) x b2)
+    #          a1 x (Coexp(a2,b2) x b2)
     #                      |
-    #                      | α_( a1, (Cohom(a2,b2), b2) )
+    #                      | α_( a1, (Coexp(a2,b2), b2) )
     #                      v
-    #          (a1 x Cohom(a2,b2)) x b2
+    #          (a1 x Coexp(a2,b2)) x b2
     #                      |
-    #                      | ( coclev_(a1,b1) x id_Cohom(a2,b2) ) x id_b2
+    #                      | ( cocaev_(a1,b1) x id_Coexp(a2,b2) ) x id_b2
     #                      v
-    # ((Cohom(a1,b1) x b1) x Cohom(a2,b2)) x b2
+    # ((Coexp(a1,b1) x b1) x Coexp(a2,b2)) x b2
     #                      |
-    #                      | α_( (Cohom(a1,b1), a1), Cohom(a2,b2) ) ) x id_b2
+    #                      | α_( (Coexp(a1,b1), a1), Coexp(a2,b2) ) ) x id_b2
     #                      v
-    #  (Cohom(a1,b1) x (b1 x Cohom(a2,b2))) x b2
+    #  (Coexp(a1,b1) x (b1 x Coexp(a2,b2))) x b2
     #                      |
-    #                      | ( id_Cohom(a1,b1) x B_( b1, Cohom(a2,b2) ) ) x id_b2
+    #                      | ( id_Coexp(a1,b1) x B_( b1, Coexp(a2,b2) ) ) x id_b2
     #                      v
-    #  (Cohom(a1,b1) x (Cohom(a2,b2) x b1)) x b2
+    #  (Coexp(a1,b1) x (Coexp(a2,b2) x b1)) x b2
     #                      |
-    #                      | α_( Cohom(a1,b1), (Cohom(a2,b2), b1) ) x id_b2
+    #                      | α_( Coexp(a1,b1), (Coexp(a2,b2), b1) ) x id_b2
     #                      v
-    #  ((Cohom(a1,b1) x Cohom(a2,b2)) x b1) x b2
+    #  ((Coexp(a1,b1) x Coexp(a2,b2)) x b1) x b2
     #                      |
-    #                      | α_( (Cohom(a1,b1) x Cohom(a2,b2), b1), b2 )
+    #                      | α_( (Coexp(a1,b1) x Coexp(a2,b2), b1), b2 )
     #                      v
-    #  (Cohom(a1,b1) x Cohom(a2,b2)) x (b1 x b2)
+    #  (Coexp(a1,b1) x Coexp(a2,b2)) x (b1 x b2)
     #
     #
-    # Adjoint[ a1 x a2 -> (Cohom(a1,b1) x Cohom(a2,b2)) x (b1 x b2) ] = [ Cohom(a1 x a2, b1 x b2) -> Cohom(a1,b1) x Cohom(a2,b2) ]
+    # Adjoint[ a1 x a2 -> (Coexp(a1,b1) x Coexp(a2,b2)) x (b1 x b2) ] = [ Coexp(a1 x a2, b1 x b2) -> Coexp(a1,b1) x Coexp(a2,b2) ]
     
     a1 := list[1];
     a2 := list[2];
     b1 := list[3];
     b2 := list[4];
     
-    int_cohom_a1_b1 := CoexponentialOnObjects( cat, a1, b1 );
+    coexp_a1_b1 := CoexponentialOnObjects( cat, a1, b1 );
     
-    int_cohom_a2_b2 := CoexponentialOnObjects( cat, a2, b2 );
+    coexp_a2_b2 := CoexponentialOnObjects( cat, a2, b2 );
 
     id_b2 := IdentityMorphism( cat, b2 );
     
-    coproduct_on_objects_int_cohom_a1_b1_int_cohom_a2_b2 :=
-      BinaryCoproduct( cat, int_cohom_a1_b1, int_cohom_a2_b2 );
+    coproduct_on_objects_coexp_a1_b1_coexp_a2_b2 :=
+      BinaryCoproduct( cat, coexp_a1_b1, coexp_a2_b2 );
     
     morphism := PreComposeList( cat, [
                   CoproductOnMorphisms( cat,
                     IdentityMorphism( cat, a1 ),
                     CocartesianEvaluationMorphism( cat, a2, b2 ) ),
                   
-                  CocartesianAssociatorRightToLeft( cat, a1, int_cohom_a2_b2, b2),
+                  CocartesianAssociatorRightToLeft( cat, a1, coexp_a2_b2, b2),
                   
                   CoproductOnMorphisms( cat,
                     CoproductOnMorphisms( cat,
                       CocartesianEvaluationMorphism( cat, a1, b1 ),
-                      IdentityMorphism( cat, int_cohom_a2_b2)),
+                      IdentityMorphism( cat, coexp_a2_b2)),
                     id_b2 ),
                   
                   CoproductOnMorphisms( cat,
-                    CocartesianAssociatorLeftToRight( cat, int_cohom_a1_b1, a1, int_cohom_a2_b2 ),
+                    CocartesianAssociatorLeftToRight( cat, coexp_a1_b1, a1, coexp_a2_b2 ),
                     id_b2 ),
                   
                   CoproductOnMorphisms( cat,
                     CoproductOnMorphisms( cat,
-                      IdentityMorphism( cat, int_cohom_a1_b1),
-                      CocartesianBraiding( cat, b1, int_cohom_a2_b2 ) ),
+                      IdentityMorphism( cat, coexp_a1_b1),
+                      CocartesianBraiding( cat, b1, coexp_a2_b2 ) ),
                     id_b2 ),
                   
                   CoproductOnMorphisms( cat,
-                    CocartesianAssociatorRightToLeft( cat, int_cohom_a1_b1, int_cohom_a2_b2, b1 ),
+                    CocartesianAssociatorRightToLeft( cat, coexp_a1_b1, coexp_a2_b2, b1 ),
                     id_b2 ),
                   
                   CocartesianAssociatorLeftToRight( cat,
-                    coproduct_on_objects_int_cohom_a1_b1_int_cohom_a2_b2,
+                    coproduct_on_objects_coexp_a1_b1_coexp_a2_b2,
                     b1, b2 )
                 ] );
 
     return CoproductToCoexponentialAdjunctionMap( cat,
-             coproduct_on_objects_int_cohom_a1_b1_int_cohom_a2_b2,
+             coproduct_on_objects_coexp_a1_b1_coexp_a2_b2,
              BinaryCoproduct( cat, b1, b2 ),
              morphism );
 
 end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "CoexponentialCoproductCompatibilityMorphismWithGivenObjects using associator, braiding and the coclosed evaluation morphism" );
+      Description := "CoexponentialCoproductCompatibilityMorphismWithGivenObjects using associator, braiding and the cocartesian evaluation morphism" );
 
 ##
 AddDerivationToCAP( CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects,
@@ -373,15 +373,15 @@ AddDerivationToCAP( CocartesianDualityCoproductCompatibilityMorphismWithGivenObj
     #         (a x b)_v
     #            |
     #            V
-    #      Cohom(1, a x b)
+    #      Coexp(1, a x b)
     #            |
-    #            | Cohom((λ_1)^-1, id_(a x b))
+    #            | Coexp((λ_1)^-1, id_(a x b))
     #            V
-    #  Cohom(1 x 1, a x b)
+    #  Coexp(1 x 1, a x b)
     #            |
     #            | CompatMorphism(1,1,a,b)
     #            V
-    # Cohom(1,a) x Cohom(1,b)
+    # Coexp(1,a) x Coexp(1,b)
     #            |
     #            v
     #        a_v x b_v
@@ -407,7 +407,7 @@ AddDerivationToCAP( CocartesianDualityCoproductCompatibilityMorphismWithGivenObj
     return morphism;
 
 end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects using left unitor, and compatibility of internal cohom and coproduct" );
+      Description := "CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects using left unitor, and compatibility of coexponential and coproduct" );
 
 ##
 AddDerivationToCAP( IsomorphismFromCoexponentialToObjectWithGivenCoexponential,
@@ -415,13 +415,13 @@ AddDerivationToCAP( IsomorphismFromCoexponentialToObjectWithGivenCoexponential,
   function( cat, a, internal_cohom )
     local unit;
 
-    #     Cohom(a, 1)
+    #     Coexp(a, 1)
     #         |
-    #         | Cohom((ρ_a)^-1, id_1)
+    #         | Coexp((ρ_a)^-1, id_1)
     #         v
-    # Cohom(a x 1, 1)
+    # Coexp(a x 1, 1)
     #         |
-    #         | coclcoev_(a,1)
+    #         | cocacoev_(a,1)
     #         v
     #         a
     
@@ -435,7 +435,7 @@ AddDerivationToCAP( IsomorphismFromCoexponentialToObjectWithGivenCoexponential,
              CocartesianCoevaluationMorphism( cat, a, unit ));
     
 end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "IsomorphismFromCoexponentialToObjectWithGivenCoexponential using the coclosed coevaluation morphism" );
+      Description := "IsomorphismFromCoexponentialToObjectWithGivenCoexponential using the cocartesian coevaluation morphism" );
 
 ##
 AddDerivationToCAP( IsomorphismFromCoexponentialToObjectWithGivenCoexponential,
@@ -445,7 +445,7 @@ AddDerivationToCAP( IsomorphismFromCoexponentialToObjectWithGivenCoexponential,
 
     # (ρ_a)^-1: a -> a x 1
     #
-    # Adjoint( (ρ_a)^-1 ) = ( Cohom(a,1) -> a )
+    # Adjoint( (ρ_a)^-1 ) = ( Coexp(a,1) -> a )
     
     unit := InitialObject( cat );
     
@@ -463,7 +463,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 #                     
 #   function( cat, a, internal_cohom )
 #
-#     # Inverse( a -> Cohom(a,1) )
+#     # Inverse( a -> Coexp(a,1) )
 #     
 #     return InverseForMorphisms( cat, IsomorphismFromObjectToCoexponential( cat, a ) );
 #     
@@ -478,13 +478,13 @@ AddDerivationToCAP( IsomorphismFromObjectToCoexponentialWithGivenCoexponential,
 
     #       a
     #       |
-    #       | coclev_(a,1)
+    #       | cocaev_(a,1)
     #       v
-    # Cohom(a,1) x 1
+    # Coexp(a,1) x 1
     #       |
-    #       | ρ_Cohom(a,1)
+    #       | ρ_Coexp(a,1)
     #       v
-    #   Cohom(a,1)
+    #   Coexp(a,1)
     
     unit := InitialObject( cat );
     
@@ -492,7 +492,7 @@ AddDerivationToCAP( IsomorphismFromObjectToCoexponentialWithGivenCoexponential,
                        CocartesianRightUnitor( cat, internal_cohom ) );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "IsomorphismFromObjectToCoexponentialWithGivenCoexponential using the coclosed evaluation morphism" );
+      Description := "IsomorphismFromObjectToCoexponentialWithGivenCoexponential using the cocartesian evaluation morphism" );
 
 ## TODO: enable
 # ##
@@ -500,7 +500,7 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 #                     
 #   function( cat, a, internal_cohom )
 #
-#     # Inverse( Cohom(a,1) -> a)
+#     # Inverse( Coexp(a,1) -> a)
 #     
 #     return InverseForMorphisms( cat, IsomorphismFromCoexponentialToObject( cat, a ) );
 #     
@@ -513,15 +513,15 @@ AddDerivationToCAP( MorphismFromCoexponentialToCoproductWithGivenObjects,
   function( cat, internal_cohom, a, b, coproduct_object )
     local unit;
 
-    #       Cohom(a,b)
+    #       Coexp(a,b)
     #            |
-    #            | Cohom(λ_a, (ρ_b)^-1)
+    #            | Coexp(λ_a, (ρ_b)^-1)
     #            v
-    # Cohom(1 x a, b x 1)
+    # Coexp(1 x a, b x 1)
     #            |
     #            | CompatMorphism
     #            v
-    # Cohom(1,b) x Cohom(a,1)
+    # Coexp(1,b) x Coexp(a,1)
     #            |
     #            v
     #        b_v x a
@@ -549,7 +549,7 @@ AddDerivationToCAP( CocartesianEvaluationMorphismWithGivenRange,
                   
   function( cat, a, b, coproduct_object )
 
-    # Adjoint( id_Cohom(a,b): Cohom(a,b) -> Cohom(a,b) ) = ( a -> Cohom(a,b) x b )
+    # Adjoint( id_Coexp(a,b): Coexp(a,b) -> Coexp(a,b) ) = ( a -> Coexp(a,b) x b )
     
     return CoexponentialToCoproductAdjunctionMap( cat,
              a, b,
@@ -557,11 +557,11 @@ AddDerivationToCAP( CocartesianEvaluationMorphismWithGivenRange,
            );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "CocartesianEvaluationMorphismWithGivenRange using the cohom tensor adjunction on the identity" );
+      Description := "CocartesianEvaluationMorphismWithGivenRange using the coexponential-coproduct adjunction on the identity" );
 
 AddDerivationToCAP( CocartesianCoevaluationMorphismWithGivenSource,
 
-  # Adjoint( id_(a x b): a x b -> a x b ) = ( Cohom(a x b, b) -> a )
+  # Adjoint( id_(a x b): a x b -> a x b ) = ( Coexp(a x b, b) -> a )
                   
   function( cat, a, b, internal_cohom )
     
@@ -571,118 +571,118 @@ AddDerivationToCAP( CocartesianCoevaluationMorphismWithGivenSource,
            );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "CocartesianCoevaluationMorphismWithGivenSource using the cohom tensor adjunction on the identity" );
+      Description := "CocartesianCoevaluationMorphismWithGivenSource using the coexponential-coproduct adjunction on the identity" );
 
 ##
 AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
                   
   function( cat, source, a, b, c, range )
-    local cohom_a_b, cohom_b_c, morphism;
+    local coexp_a_b, coexp_b_c, morphism;
 
     #           a
     #           |
-    #           | coclev_ab
+    #           | cocaev_ab
     #           v
-    #    Cohom(a,b) x b
+    #    Coexp(a,b) x b
     #           |
-    #           | B_( Cohom(a,b), b )
+    #           | B_( Coexp(a,b), b )
     #           v
-    #      b x Cohom(a,b)
+    #      b x Coexp(a,b)
     #           |
-    #           | coclev_bc x id_Cohom(a,b)
+    #           | cocaev_bc x id_Coexp(a,b)
     #           v
-    # (Cohom(b,c) x c) x Cohom(a,b)
+    # (Coexp(b,c) x c) x Coexp(a,b)
     #           |
-    #           | α_( ( Cohom(b,c), c ), Cohom(a,b) )
+    #           | α_( ( Coexp(b,c), c ), Coexp(a,b) )
     #           v
-    # Cohom(b,c) x (c x Cohom(a,b))
+    # Coexp(b,c) x (c x Coexp(a,b))
     #           |
-    #           | id_Cohom(b,c) x B_( c, Cohom(a,b) )
+    #           | id_Coexp(b,c) x B_( c, Coexp(a,b) )
     #           v
-    # Cohom(b,c) x (Cohom(a,b) x c)
+    # Coexp(b,c) x (Coexp(a,b) x c)
     #           |
-    #           | α_( Cohom(b,c), ( Cohom(a,b), c ) )
+    #           | α_( Coexp(b,c), ( Coexp(a,b), c ) )
     #           v
-    # (Cohom(b,c) x Cohom(a,b)) x c
+    # (Coexp(b,c) x Coexp(a,b)) x c
     #
     #
-    # Adjoint( a -> (Cohom(b,c) x Cohom(a,b)) x c ) = ( Cohom(a,c) -> Cohom(b,c) x Cohom(a,b) )
+    # Adjoint( a -> (Coexp(b,c) x Coexp(a,b)) x c ) = ( Coexp(a,c) -> Coexp(b,c) x Coexp(a,b) )
     
-    cohom_a_b := CoexponentialOnObjects( cat, a, b );
+    coexp_a_b := CoexponentialOnObjects( cat, a, b );
     
-    cohom_b_c := CoexponentialOnObjects( cat, b, c );
+    coexp_b_c := CoexponentialOnObjects( cat, b, c );
     
     morphism := PreComposeList( cat, [
                   CocartesianEvaluationMorphism( cat, a, b ),
                   
-                  CocartesianBraiding( cat, cohom_a_b, b ),
+                  CocartesianBraiding( cat, coexp_a_b, b ),
                   
                   CoproductOnMorphisms( cat,
                     CocartesianEvaluationMorphism( cat, b, c ),
-                    IdentityMorphism( cat, cohom_a_b ) ),
+                    IdentityMorphism( cat, coexp_a_b ) ),
                   
-                  CocartesianAssociatorLeftToRight( cat, cohom_b_c, c, cohom_a_b ),
+                  CocartesianAssociatorLeftToRight( cat, coexp_b_c, c, coexp_a_b ),
                   
                   CoproductOnMorphisms( cat,
-                    IdentityMorphism( cat, cohom_b_c ),
-                    CocartesianBraiding( cat, c, cohom_a_b ) ),
+                    IdentityMorphism( cat, coexp_b_c ),
+                    CocartesianBraiding( cat, c, coexp_a_b ) ),
                   
-                  CocartesianAssociatorRightToLeft( cat, cohom_b_c, cohom_a_b, c ),
+                  CocartesianAssociatorRightToLeft( cat, coexp_b_c, coexp_a_b, c ),
                 ] );
     
     return CoproductToCoexponentialAdjunctionMap( cat,
-             BinaryCoproduct( cat, cohom_b_c, cohom_a_b ),
+             BinaryCoproduct( cat, coexp_b_c, coexp_a_b ),
              c,
              morphism );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "CocartesianPreCoComposeMorphismWithGivenObjects using associator, braiding, coclosed evaluation, and cohom tensor adjunction" );
+      Description := "CocartesianPreCoComposeMorphismWithGivenObjects using associator, braiding, cocartesian evaluation, and coexponential-coproduct adjunction" );
 
 ##
 AddDerivationToCAP( CocartesianPostCoComposeMorphismWithGivenObjects,
                     
   function( cat, source, a, b, c, range )
-    local cohom_a_b, cohom_b_c, morphism;
+    local coexp_a_b, coexp_b_c, morphism;
 
     #             a
     #             |
-    #             | coclev_ab
+    #             | cocaev_ab
     #             v
-    #      Cohom(a,b) x b
+    #      Coexp(a,b) x b
     #             |
-    #             | id_Cohom(a,b) x coclev_bc
+    #             | id_Coexp(a,b) x cocaev_bc
     #             v
-    #  Cohom(a,b) x (Cohom(b,c) x c)
+    #  Coexp(a,b) x (Coexp(b,c) x c)
     #             |
-    #             | α_( Cohom(a,b), ( Cohom(b,c), c ) )
+    #             | α_( Coexp(a,b), ( Coexp(b,c), c ) )
     #             v
-    # (Cohom(a,b) x Cohom(b,c)) x c
+    # (Coexp(a,b) x Coexp(b,c)) x c
     #
     #
-    # Adjoint( a -> (Cohom(a,b) x Cohom(b,c)) x c ) = ( Cohom(a,c) -> Cohom(a,b) x Cohom(b,c) )
+    # Adjoint( a -> (Coexp(a,b) x Coexp(b,c)) x c ) = ( Coexp(a,c) -> Coexp(a,b) x Coexp(b,c) )
     
-    cohom_a_b := CoexponentialOnObjects( cat, a, b );
+    coexp_a_b := CoexponentialOnObjects( cat, a, b );
     
-    cohom_b_c := CoexponentialOnObjects( cat, b, c );
+    coexp_b_c := CoexponentialOnObjects( cat, b, c );
     
     morphism := PreComposeList( cat, [
                   CocartesianEvaluationMorphism( cat, a, b ),
                   
                   CoproductOnMorphisms( cat,
                     CocartesianEvaluationMorphism( cat, b, c ),
-                    IdentityMorphism( cat, cohom_a_b )
+                    IdentityMorphism( cat, coexp_a_b )
                   ),
                   
-                  CocartesianAssociatorRightToLeft( cat, cohom_a_b, cohom_b_c, c )
+                  CocartesianAssociatorRightToLeft( cat, coexp_a_b, coexp_b_c, c )
                 ] );
     
     return CoproductToCoexponentialAdjunctionMap( cat,
-             BinaryCoproduct( cat, cohom_a_b, cohom_b_c ),
+             BinaryCoproduct( cat, coexp_a_b, coexp_b_c ),
              c,
              morphism );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory,
-      Description := "CocartesianPostCoComposeMorphismWithGivenObjects using associator, coclosed evaluation, and cohom tensor adjunction" );
+      Description := "CocartesianPostCoComposeMorphismWithGivenObjects using associator, cocartesian evaluation, and coexponential-coproduct adjunction" );
 
 ##
 AddDerivationToCAP( CocartesianPostCoComposeMorphismWithGivenObjects,
@@ -690,15 +690,15 @@ AddDerivationToCAP( CocartesianPostCoComposeMorphismWithGivenObjects,
   function( cat, source, a, b, c, range )
     local braiding;
 
-    #       Cohom(a,c)
+    #       Coexp(a,c)
     #            |
     #            | PreCoCompose
     #            v
-    # Cohom(b,c) x Cohom(a,b)
+    # Coexp(b,c) x Coexp(a,b)
     #            |
-    #            | B_( Cohom(b,c), Cohom(a,b) )
+    #            | B_( Coexp(b,c), Coexp(a,b) )
     #            v
-    # Cohom(a,b) x Cohom(b,c)
+    # Coexp(a,b) x Coexp(b,c)
     
     braiding := CocartesianBraiding( cat, CoexponentialOnObjects( cat, b, c ), CoexponentialOnObjects( cat, a, b ) );
     
@@ -713,15 +713,15 @@ AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
   function( cat, source, a, b, c, range )
     local braiding;
     
-    #       Cohom(a,c)
+    #       Coexp(a,c)
     #            |
     #            | PostCoCompose
     #            v
-    # Cohom(a,b) x Cohom(b,c)
+    # Coexp(a,b) x Coexp(b,c)
     #            |
-    #            | B_( Cohom(a,b), Cohom(b,c) )
+    #            | B_( Coexp(a,b), Coexp(b,c) )
     #            v
-    # Cohom(b,c) x Cohom(a,b)
+    # Coexp(b,c) x Coexp(a,b)
 
     braiding := CocartesianBraiding( cat, CoexponentialOnObjects( cat, a, b ), CoexponentialOnObjects( cat, b, c ) );
     
@@ -734,38 +734,38 @@ end : CategoryFilter := IsCocartesianCoclosedCategory,
 AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
                     
   function( cat, source, list, range )
-    local a1, a2, b1, b2, morphism, int_cohom_a1_b1, int_cohom_a2_b2, id_b2, coproduct_on_objects_int_cohom_a1_b1_int_cohom_a2_b2;
+    local a1, a2, b1, b2, morphism, coexp_a1_b1, coexp_a2_b2, id_b2, coproduct_on_objects_coexp_a1_b1_coexp_a2_b2;
 
     #           a1 x a2
     #              |
-    #              | id_a1 x coclev_(a2,b2)
+    #              | id_a1 x cocaev_(a2,b2)
     #              v
-    #    a1 x Cohom(a2,b2) x b2
+    #    a1 x Coexp(a2,b2) x b2
     #              |
-    #              | coclev_(a1,b1) x id_Cohom(a2,b2) x id_b2
+    #              | cocaev_(a1,b1) x id_Coexp(a2,b2) x id_b2
     #              v
-    # Cohom(a1,b1) x b1 x Cohom(a2,b2) x b2
+    # Coexp(a1,b1) x b1 x Coexp(a2,b2) x b2
     #              |
-    #              | id_Cohom(a1,b1) x B_( b1, Cohom(a2,b2) )  x id_b2
+    #              | id_Coexp(a1,b1) x B_( b1, Coexp(a2,b2) )  x id_b2
     #              v
-    # Cohom(a1,b1) x Cohom(a2,b2) x b1 x b2
+    # Coexp(a1,b1) x Coexp(a2,b2) x b1 x b2
     #
     #
-    # Adjoint[ a1 x a2 -> Cohom(a1,b1) x Cohom(a2,b2) x b1 x b2 ] = [ Cohom(a1 x a2, b1 x b2) -> Cohom(a1,b1) x Cohom(a2,b2) ]
+    # Adjoint[ a1 x a2 -> Coexp(a1,b1) x Coexp(a2,b2) x b1 x b2 ] = [ Coexp(a1 x a2, b1 x b2) -> Coexp(a1,b1) x Coexp(a2,b2) ]
     
     a1 := list[1];
     a2 := list[2];
     b1 := list[3];
     b2 := list[4];
     
-    int_cohom_a1_b1 := CoexponentialOnObjects( cat, a1, b1 );
+    coexp_a1_b1 := CoexponentialOnObjects( cat, a1, b1 );
     
-    int_cohom_a2_b2 := CoexponentialOnObjects( cat, a2, b2 );
+    coexp_a2_b2 := CoexponentialOnObjects( cat, a2, b2 );
 
     id_b2 := IdentityMorphism( cat, b2 );
     
-    coproduct_on_objects_int_cohom_a1_b1_int_cohom_a2_b2 :=
-      BinaryCoproduct( cat, int_cohom_a1_b1, int_cohom_a2_b2 );
+    coproduct_on_objects_coexp_a1_b1_coexp_a2_b2 :=
+      BinaryCoproduct( cat, coexp_a1_b1, coexp_a2_b2 );
     
     morphism := PreComposeList( cat, [
                   CoproductOnMorphisms( cat,
@@ -775,23 +775,23 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
                   CoproductOnMorphisms( cat,
                     CoproductOnMorphisms( cat,
                       CocartesianEvaluationMorphism( cat, a1, b1 ),
-                      IdentityMorphism( cat, int_cohom_a2_b2)),
+                      IdentityMorphism( cat, coexp_a2_b2)),
                     id_b2 ),
                   
                   CoproductOnMorphisms( cat,
                     CoproductOnMorphisms( cat,
-                      IdentityMorphism( cat, int_cohom_a1_b1),
-                      CocartesianBraiding( cat, b1, int_cohom_a2_b2 ) ),
+                      IdentityMorphism( cat, coexp_a1_b1),
+                      CocartesianBraiding( cat, b1, coexp_a2_b2 ) ),
                     id_b2 ),
                 ] );
 
     return CoproductToCoexponentialAdjunctionMap( cat,
-             coproduct_on_objects_int_cohom_a1_b1_int_cohom_a2_b2,
+             coproduct_on_objects_coexp_a1_b1_coexp_a2_b2,
              BinaryCoproduct( cat, b1, b2 ),
              morphism );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory and IsStrictCocartesianCategory,
-      Description := "CoexponentialCoproductCompatibilityMorphismWithGivenObjects using braiding and the coclosed evaluation morphism" );
+      Description := "CoexponentialCoproductCompatibilityMorphismWithGivenObjects using braiding and the cocartesian evaluation morphism" );
 
 ##
 AddDerivationToCAP( CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects,
@@ -802,11 +802,11 @@ AddDerivationToCAP( CocartesianDualityCoproductCompatibilityMorphismWithGivenObj
     #         (a x b)_v
     #            |
     #            V
-    #      Cohom(1, a x b)
+    #      Coexp(1, a x b)
     #            |
     #            | CompatMorphism(1,1,a,b)
     #            V
-    # Cohom(1,a) x Cohom(1,b)
+    # Coexp(1,a) x Coexp(1,b)
     #            |
     #            v
     #        a_v x b_v
@@ -828,96 +828,96 @@ AddDerivationToCAP( CocartesianDualityCoproductCompatibilityMorphismWithGivenObj
     return morphism;
     
 end : CategoryFilter := IsCocartesianCoclosedCategory and IsStrictCocartesianCategory,
-      Description := "CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects using compatibility of internal cohom and coproduct" );
+      Description := "CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects using compatibility of coexponential and coproduct" );
 
 ##
 AddDerivationToCAP( CocartesianPreCoComposeMorphismWithGivenObjects,
                   
   function( cat, source, a, b, c, range )
-    local cohom_a_b, cohom_b_c, morphism;
+    local coexp_a_b, coexp_b_c, morphism;
 
     #            a
     #            |
-    #            | coclev_ab
+    #            | cocaev_ab
     #            v
-    #      Cohom(a,b) x b
+    #      Coexp(a,b) x b
     #            |
-    #            | B_( Cohom(a,b), b )
+    #            | B_( Coexp(a,b), b )
     #            v
-    #      b x Cohom(a,b)
+    #      b x Coexp(a,b)
     #            |
-    #            | coclev_bc x id_Cohom(a,b)
+    #            | cocaev_bc x id_Coexp(a,b)
     #            v
-    # Cohom(b,c) x c x Cohom(a,b)
+    # Coexp(b,c) x c x Coexp(a,b)
     #            |
-    #            | id_Cohom(b,c) x B_( c, Cohom(a,b) )
+    #            | id_Coexp(b,c) x B_( c, Coexp(a,b) )
     #            v
-    # Cohom(b,c) x Cohom(a,b) x c
+    # Coexp(b,c) x Coexp(a,b) x c
     #
     #
-    # Adjoint( a -> (Cohom(b,c) x Cohom(a,b)) x c ) = ( Cohom(a,c) -> Cohom(b,c) x Cohom(a,b) )
+    # Adjoint( a -> (Coexp(b,c) x Coexp(a,b)) x c ) = ( Coexp(a,c) -> Coexp(b,c) x Coexp(a,b) )
     
-    cohom_a_b := CoexponentialOnObjects( cat, a, b );
+    coexp_a_b := CoexponentialOnObjects( cat, a, b );
     
-    cohom_b_c := CoexponentialOnObjects( cat, b, c );
+    coexp_b_c := CoexponentialOnObjects( cat, b, c );
     
     morphism := PreComposeList( cat, [
                   CocartesianEvaluationMorphism( cat, a, b ),
                   
-                  CocartesianBraiding( cat, cohom_a_b, b),
+                  CocartesianBraiding( cat, coexp_a_b, b),
                   
                   CoproductOnMorphisms( cat,
                     CocartesianEvaluationMorphism( cat, b, c ),
-                    IdentityMorphism( cat, cohom_a_b ) ),
+                    IdentityMorphism( cat, coexp_a_b ) ),
                   
                   CoproductOnMorphisms( cat,
-                    IdentityMorphism( cat, cohom_b_c ),
-                    CocartesianBraiding( cat, c, cohom_a_b ) )
+                    IdentityMorphism( cat, coexp_b_c ),
+                    CocartesianBraiding( cat, c, coexp_a_b ) )
                 ] );
     
     return CoproductToCoexponentialAdjunctionMap( cat,
-             BinaryCoproduct( cat, cohom_b_c, cohom_a_b ),
+             BinaryCoproduct( cat, coexp_b_c, coexp_a_b ),
              c,
              morphism );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory and IsStrictCocartesianCategory,
-      Description := "CocartesianPreCoComposeMorphismWithGivenObjects using braiding, coclosed evaluation, and cohom tensor adjunction" );
+      Description := "CocartesianPreCoComposeMorphismWithGivenObjects using braiding, cocartesian evaluation, and coexponential-coproduct adjunction" );
 
 ##
 AddDerivationToCAP( CocartesianPostCoComposeMorphismWithGivenObjects,
                     
   function( cat, source, a, b, c, range )
-    local cohom_a_b, cohom_b_c, morphism;
+    local coexp_a_b, coexp_b_c, morphism;
 
     #             a
     #             |
-    #             | coclev_ab
+    #             | cocaev_ab
     #             v
-    #      Cohom(a,b) x b
+    #      Coexp(a,b) x b
     #             |
-    #             | id_Cohom(a,b) x coclev_bc
+    #             | id_Coexp(a,b) x cocaev_bc
     #             v
-    #  Cohom(a,b) x (Cohom(b,c) x c)
+    #  Coexp(a,b) x (Coexp(b,c) x c)
     #
     #
-    # Adjoint( a -> (Cohom(a,b) x Cohom(b,c)) x c ) = ( Cohom(a,c) -> Cohom(a,b) x Cohom(b,c) )
+    # Adjoint( a -> (Coexp(a,b) x Coexp(b,c)) x c ) = ( Coexp(a,c) -> Coexp(a,b) x Coexp(b,c) )
     
-    cohom_a_b := CoexponentialOnObjects( cat, a, b );
+    coexp_a_b := CoexponentialOnObjects( cat, a, b );
     
-    cohom_b_c := CoexponentialOnObjects( cat, b, c );
+    coexp_b_c := CoexponentialOnObjects( cat, b, c );
     
     morphism := PreComposeList( cat, [
                   CocartesianEvaluationMorphism( cat, a, b ),
                   
                   CoproductOnMorphisms( cat,
-                    IdentityMorphism( cat, cohom_a_b ),
+                    IdentityMorphism( cat, coexp_a_b ),
                     CocartesianEvaluationMorphism( cat, b, c ) )
                 ] );
     
     return CoproductToCoexponentialAdjunctionMap( cat,
-             BinaryCoproduct( cat, cohom_a_b, cohom_b_c ),
+             BinaryCoproduct( cat, coexp_a_b, coexp_b_c ),
              c,
              morphism );
     
 end : CategoryFilter := IsCocartesianCoclosedCategory and IsStrictCocartesianCategory,
-      Description := "CocartesianPostCoComposeMorphismWithGivenObjects using coclosed evaluation, and cohom tensor adjunction" );
+      Description := "CocartesianPostCoComposeMorphismWithGivenObjects using cocartesian evaluation, and coexponential-coproduct adjunction" );

@@ -25,7 +25,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCoclosedCategory  := Co
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the internal cohom object $\mathrm{Coexponential}(a,b)$.
+#! The output is the coexponential object $\mathrm{Coexponential}(a,b)$.
 #! @Returns an object
 #! @Arguments a, b
 DeclareOperation( "CoexponentialOnObjects",
@@ -33,7 +33,7 @@ DeclareOperation( "CoexponentialOnObjects",
 
 #! @Description
 #! The arguments are two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$.
-#! The output is the internal cohom morphism
+#! The output is the coexponential morphism
 #! $\mathrm{Coexponential}(\alpha,\beta): \mathrm{Coexponential}(a,b') \rightarrow \mathrm{Coexponential}(a',b)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a,b'), \mathrm{Coexponential}(a',b) )$
 #! @Arguments alpha, beta
@@ -44,7 +44,7 @@ DeclareOperation( "CoexponentialOnMorphisms",
 #! The arguments are an object $s = \mathrm{Coexponential}(a,b')$,
 #! two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$,
 #! and an object $r = \mathrm{Coexponential}(a',b)$.
-#! The output is the internal cohom morphism
+#! The output is the coexponential morphism
 #! $\mathrm{Coexponential}(\alpha,\beta): \mathrm{Coexponential}(a,b') \rightarrow \mathrm{Coexponential}(a',b)$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a,b'), \mathrm{Coexponential}(a',b) )$
 #! @Arguments s, alpha, beta, r
@@ -53,8 +53,8 @@ DeclareOperation( "CoexponentialOnMorphismsWithGivenCoexponentials",
 
 #! @Description
 #! The arguments are two objects $a, b$.
-#! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a,b}: a \rightarrow \mathrm{Coexponential}(a,b) \sqcup b$, i.e.,
-#! the unit of the cohom tensor adjunction.
+#! The output is the cocartesian evaluation morphism $\mathrm{cocaev}_{a,b}: a \rightarrow \mathrm{Coexponential}(a,b) \sqcup b$, i.e.,
+#! the unit of the coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{Coexponential}(a,b) \sqcup b )$.
 #! @Arguments a, b
 DeclareOperation( "CocartesianEvaluationMorphism",
@@ -62,8 +62,8 @@ DeclareOperation( "CocartesianEvaluationMorphism",
 
 #! @Description
 #! The arguments are two objects $a,b$ and an object $r = \mathrm{Coexponential}(a,b) \sqcup b$.
-#! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a,b}: a \rightarrow \mathrm{Coexponential}(a,b) \sqcup b$, i.e.,
-#! the unit of the cohom tensor adjunction.
+#! The output is the cocartesian evaluation morphism $\mathrm{cocaev}_{a,b}: a \rightarrow \mathrm{Coexponential}(a,b) \sqcup b$, i.e.,
+#! the unit of the coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( a, \mathrm{Coexponential}(a,b) \sqcup b )$.
 #! @Arguments a, b, r
 DeclareOperation( "CocartesianEvaluationMorphismWithGivenRange",
@@ -71,8 +71,8 @@ DeclareOperation( "CocartesianEvaluationMorphismWithGivenRange",
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the coclosed coevaluation morphism $\mathrm{coclcoev}_{a,b}: \mathrm{Coexponential}(a \sqcup b, b) \rightarrow a$, i.e.,
-#! the counit of the cohom tensor adjunction.
+#! The output is the cocartesian coevaluation morphism $\mathrm{cocacoev}_{a,b}: \mathrm{Coexponential}(a \sqcup b, b) \rightarrow a$, i.e.,
+#! the counit of the coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a \sqcup b, b), a )$.
 #! @Arguments a, b
 DeclareOperation( "CocartesianCoevaluationMorphism",
@@ -80,8 +80,8 @@ DeclareOperation( "CocartesianCoevaluationMorphism",
 
 #! @Description
 #! The arguments are two objects $a,b$ and an object $s = \mathrm{Coexponential(a \sqcup b, b)}$.
-#! The output is the coclosed coevaluation morphism $\mathrm{coclcoev}_{a,b}: \mathrm{Coexponential}(a \sqcup b, b) \rightarrow a$, i.e.,
-#! the unit of the cohom tensor adjunction.
+#! The output is the cocartesian coevaluation morphism $\mathrm{cocacoev}_{a,b}: \mathrm{Coexponential}(a \sqcup b, b) \rightarrow a$, i.e.,
+#! the unit of the coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a \sqcup b, b), b )$.
 #! @Arguments a, b, s
 DeclareOperation( "CocartesianCoevaluationMorphismWithGivenSource",
@@ -90,7 +90,7 @@ DeclareOperation( "CocartesianCoevaluationMorphismWithGivenSource",
 #! @Description
 #! The arguments are objects $c,b$ and a morphism $g: a \rightarrow c \sqcup b$.
 #! The output is a morphism $f: \mathrm{Coexponential}(a,b) \rightarrow c$
-#! corresponding to $g$ under the cohom tensor adjunction.
+#! corresponding to $g$ under the coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a,b), c )$.
 #! @Arguments c, b, g
 DeclareOperation( "CoproductToCoexponentialAdjunctionMap",
@@ -99,7 +99,7 @@ DeclareOperation( "CoproductToCoexponentialAdjunctionMap",
 #! @Description
 #! The arguments are objects $a,b$ and a morphism $f: \mathrm{Coexponential}(a,b) \rightarrow c$.
 #! The output is a morphism $g: a \rightarrow c \sqcup b$ corresponding to $f$ under the
-#! cohom tensor adjunction.
+#! coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}(a, c \sqcup b)$.
 #! @Arguments a, b, f
 DeclareOperation( "CoexponentialToCoproductAdjunctionMap",
@@ -175,7 +175,7 @@ DeclareOperation( "CocartesianDualOnMorphismsWithGivenCocartesianDuals",
 
 #! @Description
 #! The argument is an object $a$.
-#! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a}: 1 \rightarrow a_{\vee} \sqcup a$.
+#! The output is the cocartesian evaluation morphism $\mathrm{cocaev}_{a}: 1 \rightarrow a_{\vee} \sqcup a$.
 #! @Returns a morphism in $\mathrm{Hom}( 1, a_{\vee} \sqcup a )$.
 #! @Arguments a
 DeclareAttribute( "CocartesianEvaluationForCocartesianDual",
@@ -185,7 +185,7 @@ DeclareAttribute( "CocartesianEvaluationForCocartesianDual",
 #! The arguments are an object $s = 1$,
 #! an object $a$,
 #! and an object $r = a_{\vee} \sqcup a$.
-#! The output is the coclosed evaluation morphism $\mathrm{coclev}_{a}: 1 \rightarrow a_{\vee} \sqcup a$.
+#! The output is the cocartesian evaluation morphism $\mathrm{cocaev}_{a}: 1 \rightarrow a_{\vee} \sqcup a$.
 #! @Returns a morphism in $\mathrm{Hom}( 1, a_{\vee} \sqcup a )$.
 #! @Arguments s,a,r
 DeclareOperation( "CocartesianEvaluationForCocartesianDualWithGivenCoproduct",
@@ -298,7 +298,7 @@ DeclareOperation( "UniversalPropertyOfCocartesianDual",
 #! @Description
 #! The argument is a morphism $\alpha: a \rightarrow b$.
 #! The output is the corresponding morphism $ \mathrm{Coexponential}(a,b) \rightarrow 1$
-#! under the cohom tensor adjunction.
+#! under the coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Coexponential}(a,b), 1 )$.
 #! @Arguments alpha
 DeclareAttribute( "CocartesianLambdaIntroduction",
@@ -308,7 +308,7 @@ DeclareAttribute( "CocartesianLambdaIntroduction",
 #! The arguments are two objects $a,b$,
 #! and a morphism $\alpha: \mathrm{Coexponential}(a,b) \rightarrow 1$.
 #! The output is a morphism $a \rightarrow b$ corresponding to $\alpha$
-#! under the cohom tensor adjunction.
+#! under the coexponential-coproduct adjunction.
 #! @Returns a morphism in $\mathrm{Hom}(a,b)$.
 #! @Arguments a,b,alpha
 DeclareOperation( "CocartesianLambdaElimination",
@@ -358,11 +358,11 @@ DeclareOperation( "IsomorphismFromCoexponentialToObjectWithGivenCoexponential",
 #! @Description
 #! This is a convenience method.
 #! The arguments are two cells $a,b$.
-#! The output is the internal cohom cell.
-#! If $a,b$ are two CAP objects the output is the internal cohom object
+#! The output is the coexponential cell.
+#! If $a,b$ are two CAP objects the output is the coexponential object
 #! $\mathrm{Coexponential}(a,b)$.
 #! If at least one of the arguments is a CAP morphism the output is a CAP morphism,
-#! namely the internal cohom on morphisms, where any object is replaced by its identity morphism.
+#! namely the coexponential on morphisms, where any object is replaced by its identity morphism.
 #! @Returns a cell
 #! @Arguments a, b
 DeclareOperation( "Coexponential",
