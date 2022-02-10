@@ -321,7 +321,7 @@ end );
 
 # helper
 InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, result_func_index, additional_funcs_indices, initial_value_index, initial_value_is_list )
-  local result_func, initial_value, additional_funcs, return_obj, cat, attribute_name, new_func, new_additional_funcs, variable_references_paths, parent, new_initial_value, args, new_args, new_tree, func, path, i;
+  local result_func, initial_value, additional_funcs, return_obj, cat, attribute_name, case, new_func, new_additional_funcs, variable_references_paths, parent, new_initial_value, args, new_args, new_tree, initial_value_morphism, func, path, i;
     
     Assert( 0, tree.type = "EXPR_FUNCCALL" );
     Assert( 0, tree.funcref.type = "EXPR_REF_GVAR" );
@@ -351,7 +351,24 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                 
             elif return_obj.funcref.gvar = "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" and return_obj.args.length = 6 and return_obj.args.5.type = "EXPR_REF_GVAR" then
                 
-                if IsBound( cat!.compiler_hints ) and IsBound( cat!.compiler_hints.source_and_range_attributes_from_morphism_attribute ) then
+                case := fail;
+                
+                if
+                    # Source can be recovered from initial_value
+                    CapJitIsCallToGlobalFunction( return_obj.args.3, "Source" ) and return_obj.args.3.args.length = 1 and return_obj.args.3.args.1.type = "EXPR_REF_FVAR" and return_obj.args.3.args.1.func_id = result_func.id and return_obj.args.3.args.1.name = result_func.nams[1] and
+                    # Range can be recovered from initial_value
+                    CapJitIsCallToGlobalFunction( return_obj.args.4, "Range" ) and return_obj.args.4.args.length = 1 and return_obj.args.4.args.1.type = "EXPR_REF_FVAR" and return_obj.args.4.args.1.func_id = result_func.id and return_obj.args.4.args.1.name = result_func.nams[1]
+                then
+                    
+                    case := "from_initial_value";
+                    attribute_name := return_obj.args.5.gvar;
+                    
+                elif
+                    # Source and Range can be recovered from compiler hints
+                    IsBound( cat!.compiler_hints ) and IsBound( cat!.compiler_hints.source_and_range_attributes_from_morphism_attribute )
+                then
+                    
+                    case := "from_compiler_hints";
                     
                     attribute_name := return_obj.args.5.gvar;
                     
@@ -480,131 +497,210 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                     
                 elif return_obj.funcref.gvar = "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" then
                     
-                    # call to anonymous function because we want to reuse the morphism attribute for creating the objects
-                    new_tree := rec(
-                        type := "EXPR_FUNCCALL",
-                        funcref := rec(
-                            type := "EXPR_DECLARATIVE_FUNC",
-                            id := CAP_JIT_INTERNAL_FUNCTION_ID,
-                            nams := [
-                                "cap_jit_morphism_attribute",
-                                "RETURN_VALUE",
-                            ],
-                            narg := 0,
-                            variadic := false,
-                            bindings := rec(
-                                type := "FVAR_BINDING_SEQ",
-                                names := Set( [ "cap_jit_morphism_attribute", "RETURN_VALUE" ] ),
-                                BINDING_cap_jit_morphism_attribute := rec(
+                    if case = "from_initial_value" then
+                        
+                        if initial_value_is_list then
+                            
+                            initial_value_morphism := rec(
+                                type := "EXPR_FUNCCALL",
+                                funcref := rec(
+                                    type := "EXPR_REF_GVAR",
+                                    gvar := "[]",
+                                ),
+                                args := AsSyntaxTreeList( [
+                                    initial_value,
+                                    rec(
+                                        type := "EXPR_INT",
+                                        value := 1,
+                                    ),
+                                ] ),
+                            );
+                            
+                        else
+                            
+                            initial_value_morphism := initial_value;
+                            
+                        fi;
+                        
+                        # func call to ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes
+                        new_tree := rec(
+                            type := "EXPR_FUNCCALL",
+                            funcref := rec(
+                                type := "EXPR_REF_GVAR",
+                                gvar := "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes"
+                            ),
+                            args := AsSyntaxTreeList( [
+                                # the record
+                                return_obj.args.1,
+                                # the category
+                                return_obj.args.2,
+                                # the source
+                                rec(
+                                    type := "EXPR_FUNCCALL",
+                                    funcref := rec(
+                                        type := "EXPR_REF_GVAR",
+                                        gvar := "Source",
+                                    ),
+                                    args := AsSyntaxTreeList( [
+                                        CapJitCopyWithNewFunctionIDs( initial_value_morphism )
+                                    ] ),
+                                ),
+                                # the range
+                                rec(
+                                    type := "EXPR_FUNCCALL",
+                                    funcref := rec(
+                                        type := "EXPR_REF_GVAR",
+                                        gvar := "Range",
+                                    ),
+                                    args := AsSyntaxTreeList( [
+                                        CapJitCopyWithNewFunctionIDs( initial_value_morphism )
+                                    ] ),
+                                ),
+                                # the attribute
+                                return_obj.args.5,
+                                # the func call with new args
+                                rec(
                                     type := "EXPR_FUNCCALL",
                                     funcref := tree.funcref,
                                     args := new_args,
                                 ),
-                                BINDING_RETURN_VALUE := rec(
-                                    type := "EXPR_FUNCCALL",
-                                    funcref := rec(
-                                        gvar := "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes",
-                                        type := "EXPR_REF_GVAR",
+                            ] ),
+                        );
+                        
+                    elif case = "from_compiler_hints" then
+                        
+                        # call to anonymous function because we want to reuse the morphism attribute for creating the objects
+                        new_tree := rec(
+                            type := "EXPR_FUNCCALL",
+                            funcref := rec(
+                                type := "EXPR_DECLARATIVE_FUNC",
+                                id := CAP_JIT_INTERNAL_FUNCTION_ID,
+                                nams := [
+                                    "cap_jit_morphism_attribute",
+                                    "RETURN_VALUE",
+                                ],
+                                narg := 0,
+                                variadic := false,
+                                bindings := rec(
+                                    type := "FVAR_BINDING_SEQ",
+                                    names := Set( [ "cap_jit_morphism_attribute", "RETURN_VALUE" ] ),
+                                    BINDING_cap_jit_morphism_attribute := rec(
+                                        type := "EXPR_FUNCCALL",
+                                        funcref := tree.funcref,
+                                        args := new_args,
                                     ),
-                                    args := AsSyntaxTreeList( [
-                                        # the record
-                                        return_obj.args.1,
-                                        # the category
-                                        return_obj.args.2,
-                                        # the source
-                                        rec(
-                                            type := "EXPR_FUNCCALL",
-                                            funcref := rec(
-                                                type := "EXPR_REF_GVAR",
-                                                gvar := "ObjectifyObjectForCAPWithAttributes",
-                                            ),
-                                            args := AsSyntaxTreeList( [
-                                                # emtpy rec( )
-                                                rec(
-                                                    type := "EXPR_REC",
-                                                    keyvalue := AsSyntaxTreeList( [ ] ),
-                                                ),
-                                                # the category
-                                                return_obj.args.2,
-                                                # the object attribute
-                                                rec(
+                                    BINDING_RETURN_VALUE := rec(
+                                        type := "EXPR_FUNCCALL",
+                                        funcref := rec(
+                                            gvar := "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes",
+                                            type := "EXPR_REF_GVAR",
+                                        ),
+                                        args := AsSyntaxTreeList( [
+                                            # the record
+                                            return_obj.args.1,
+                                            # the category
+                                            return_obj.args.2,
+                                            # the source
+                                            rec(
+                                                type := "EXPR_FUNCCALL",
+                                                funcref := rec(
                                                     type := "EXPR_REF_GVAR",
-                                                    gvar := cat!.compiler_hints.source_and_range_attributes_from_morphism_attribute.object_attribute_name,
+                                                    gvar := "ObjectifyObjectForCAPWithAttributes",
                                                 ),
-                                                # the attribute value
-                                                rec(
-                                                    type := "EXPR_FUNCCALL",
-                                                    funcref := rec(
-                                                        type := "EXPR_REF_GVAR",
-                                                        gvar := cat!.compiler_hints.source_and_range_attributes_from_morphism_attribute.source_attribute_getter_name,
+                                                args := AsSyntaxTreeList( [
+                                                    # emtpy rec( )
+                                                    rec(
+                                                        type := "EXPR_REC",
+                                                        keyvalue := AsSyntaxTreeList( [ ] ),
                                                     ),
-                                                    args := AsSyntaxTreeList( [
-                                                        rec(
-                                                            type := "EXPR_REF_FVAR",
-                                                            func_id := CAP_JIT_INTERNAL_FUNCTION_ID,
-                                                            name := "cap_jit_morphism_attribute",
+                                                    # the category
+                                                    return_obj.args.2,
+                                                    # the object attribute
+                                                    rec(
+                                                        type := "EXPR_REF_GVAR",
+                                                        gvar := cat!.compiler_hints.source_and_range_attributes_from_morphism_attribute.object_attribute_name,
+                                                    ),
+                                                    # the attribute value
+                                                    rec(
+                                                        type := "EXPR_FUNCCALL",
+                                                        funcref := rec(
+                                                            type := "EXPR_REF_GVAR",
+                                                            gvar := cat!.compiler_hints.source_and_range_attributes_from_morphism_attribute.source_attribute_getter_name,
                                                         ),
-                                                    ] ),
-                                                ),
-                                            ] ),
-                                        ),
-                                        # the range
-                                        rec(
-                                            type := "EXPR_FUNCCALL",
-                                            funcref := rec(
-                                                type := "EXPR_REF_GVAR",
-                                                gvar := "ObjectifyObjectForCAPWithAttributes",
+                                                        args := AsSyntaxTreeList( [
+                                                            rec(
+                                                                type := "EXPR_REF_FVAR",
+                                                                func_id := CAP_JIT_INTERNAL_FUNCTION_ID,
+                                                                name := "cap_jit_morphism_attribute",
+                                                            ),
+                                                        ] ),
+                                                    ),
+                                                ] ),
                                             ),
-                                            args := AsSyntaxTreeList( [
-                                                # emtpy rec( )
-                                                rec(
-                                                    type := "EXPR_REC",
-                                                    keyvalue := AsSyntaxTreeList( [ ] ),
-                                                ),
-                                                # the category
-                                                return_obj.args.2,
-                                                # the object attribute
-                                                rec(
+                                            # the range
+                                            rec(
+                                                type := "EXPR_FUNCCALL",
+                                                funcref := rec(
                                                     type := "EXPR_REF_GVAR",
-                                                    gvar := cat!.compiler_hints.source_and_range_attributes_from_morphism_attribute.object_attribute_name,
+                                                    gvar := "ObjectifyObjectForCAPWithAttributes",
                                                 ),
-                                                # the attribute value
-                                                rec(
-                                                    type := "EXPR_FUNCCALL",
-                                                    funcref := rec(
-                                                        type := "EXPR_REF_GVAR",
-                                                        gvar := cat!.compiler_hints.source_and_range_attributes_from_morphism_attribute.range_attribute_getter_name,
+                                                args := AsSyntaxTreeList( [
+                                                    # emtpy rec( )
+                                                    rec(
+                                                        type := "EXPR_REC",
+                                                        keyvalue := AsSyntaxTreeList( [ ] ),
                                                     ),
-                                                    args := AsSyntaxTreeList( [
-                                                        rec(
-                                                            type := "EXPR_REF_FVAR",
-                                                            func_id := CAP_JIT_INTERNAL_FUNCTION_ID,
-                                                            name := "cap_jit_morphism_attribute",
+                                                    # the category
+                                                    return_obj.args.2,
+                                                    # the object attribute
+                                                    rec(
+                                                        type := "EXPR_REF_GVAR",
+                                                        gvar := cat!.compiler_hints.source_and_range_attributes_from_morphism_attribute.object_attribute_name,
+                                                    ),
+                                                    # the attribute value
+                                                    rec(
+                                                        type := "EXPR_FUNCCALL",
+                                                        funcref := rec(
+                                                            type := "EXPR_REF_GVAR",
+                                                            gvar := cat!.compiler_hints.source_and_range_attributes_from_morphism_attribute.range_attribute_getter_name,
                                                         ),
-                                                    ] ),
-                                                ),
-                                            ] ),
-                                        ),
-                                        # the attribute
-                                        return_obj.args.5,
-                                        # cap_jit_morphism_attribute
-                                        rec(
-                                            type := "EXPR_REF_FVAR",
-                                            func_id := CAP_JIT_INTERNAL_FUNCTION_ID,
-                                            name := "cap_jit_morphism_attribute",
-                                        ),
-                                    ] ),
+                                                        args := AsSyntaxTreeList( [
+                                                            rec(
+                                                                type := "EXPR_REF_FVAR",
+                                                                func_id := CAP_JIT_INTERNAL_FUNCTION_ID,
+                                                                name := "cap_jit_morphism_attribute",
+                                                            ),
+                                                        ] ),
+                                                    ),
+                                                ] ),
+                                            ),
+                                            # the attribute
+                                            return_obj.args.5,
+                                            # cap_jit_morphism_attribute
+                                            rec(
+                                                type := "EXPR_REF_FVAR",
+                                                func_id := CAP_JIT_INTERNAL_FUNCTION_ID,
+                                                name := "cap_jit_morphism_attribute",
+                                            ),
+                                        ] ),
+                                    ),
                                 ),
                             ),
-                        ),
-                        args := AsSyntaxTreeList( [ ] ),
-                    );
-                    CAP_JIT_INTERNAL_FUNCTION_ID := CAP_JIT_INTERNAL_FUNCTION_ID + 1;
+                            args := AsSyntaxTreeList( [ ] ),
+                        );
+                        CAP_JIT_INTERNAL_FUNCTION_ID := CAP_JIT_INTERNAL_FUNCTION_ID + 1;
+                        
+                    else
+                        
+                        # COVERAGE_IGNORE_NEXT_LINE
+                        Error( "this should never happen" );
+                        
+                    fi;
                     
                 else
                     
                     # COVERAGE_IGNORE_NEXT_LINE
-                    Error( "This should never happen" );
+                    Error( "this should never happen" );
                     
                 fi;
                 
