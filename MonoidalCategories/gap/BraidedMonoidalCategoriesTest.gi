@@ -32,8 +32,8 @@ InstallGlobalFunction( "BraidedMonoidalCategoriesTest",
             braiding_a_b := Braiding( a, b );
             braiding_b_a := Braiding( b, a );
             
-            braiding_inverse_a_b_op := BraidingInverse( a_op, b_op );
-            braiding_inverse_b_a_op := BraidingInverse( b_op, a_op );
+            braiding_inverse_a_b_op := BraidingInverse( opposite, a_op, b_op );
+            braiding_inverse_b_a_op := BraidingInverse( opposite, b_op, a_op );
             
             Assert( 0, IsCongruentForMorphisms( braiding_inverse_a_b_op, Opposite( braiding_a_b ) ) );
             Assert( 0, IsCongruentForMorphisms( braiding_inverse_b_a_op, Opposite( braiding_b_a ) ) );
@@ -52,8 +52,8 @@ InstallGlobalFunction( "BraidedMonoidalCategoriesTest",
             braiding_inverse_a_b := BraidingInverse( a, b );
             braiding_inverse_b_a := BraidingInverse( b, a );
             
-            braiding_a_b_op := Braiding( a_op, b_op );
-            braiding_b_a_op := Braiding( b_op, a_op );
+            braiding_a_b_op := Braiding( opposite, a_op, b_op );
+            braiding_b_a_op := Braiding( opposite, b_op, a_op );
             
             Assert( 0, IsCongruentForMorphisms( braiding_a_b_op, Opposite( braiding_inverse_a_b ) ) );
             Assert( 0, IsCongruentForMorphisms( braiding_b_a_op, Opposite( braiding_inverse_b_a ) ) );

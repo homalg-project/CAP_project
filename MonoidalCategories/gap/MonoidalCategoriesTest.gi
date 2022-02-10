@@ -53,16 +53,11 @@ InstallGlobalFunction( "MonoidalCategoriesTest",
             alpha_tensor_beta := TensorProductOnMorphisms( alpha, beta );
             beta_tensor_alpha := TensorProductOnMorphisms( beta, alpha );
             
-            alpha_tensor_beta_op := TensorProductOnMorphisms( alpha_op, beta_op );
-            beta_tensor_alpha_op := TensorProductOnMorphisms( beta_op, alpha_op );
+            alpha_tensor_beta_op := TensorProductOnMorphisms( opposite, alpha_op, beta_op );
+            beta_tensor_alpha_op := TensorProductOnMorphisms( opposite, beta_op, alpha_op );
             
             Assert( 0, IsCongruentForMorphisms( alpha_tensor_beta_op, Opposite( alpha_tensor_beta ) ) );
             Assert( 0, IsCongruentForMorphisms( beta_tensor_alpha_op, Opposite( beta_tensor_alpha ) ) );
-            
-            # Convenience methods in the opposite category
-            
-            Assert( 0, IsCongruentForMorphisms( alpha_tensor_beta_op, TensorProduct( alpha_op, beta_op ) ) );
-            Assert( 0, IsCongruentForMorphisms( beta_tensor_alpha_op, TensorProduct( beta_op, alpha_op ) ) );
             
             # Opposite must be self-inverse
             
@@ -83,8 +78,8 @@ InstallGlobalFunction( "MonoidalCategoriesTest",
             left_unitor_a := LeftUnitor( a );
             left_unitor_b := LeftUnitor( b );
             
-            left_unitor_inverse_a_op := LeftUnitorInverse( a_op );
-            left_unitor_inverse_b_op := LeftUnitorInverse( b_op );
+            left_unitor_inverse_a_op := LeftUnitorInverse( opposite, a_op );
+            left_unitor_inverse_b_op := LeftUnitorInverse( opposite, b_op );
             
             Assert( 0, IsCongruentForMorphisms( left_unitor_inverse_a_op, Opposite( left_unitor_a ) ) );
             Assert( 0, IsCongruentForMorphisms( left_unitor_inverse_b_op, Opposite( left_unitor_b ) ) );
@@ -103,8 +98,8 @@ InstallGlobalFunction( "MonoidalCategoriesTest",
             right_unitor_a := RightUnitor( a );
             right_unitor_b := RightUnitor( b );
             
-            right_unitor_inverse_a_op := RightUnitorInverse( a_op );
-            right_unitor_inverse_b_op := RightUnitorInverse( b_op );
+            right_unitor_inverse_a_op := RightUnitorInverse( opposite, a_op );
+            right_unitor_inverse_b_op := RightUnitorInverse( opposite, b_op );
             
             Assert( 0, IsCongruentForMorphisms( right_unitor_inverse_a_op, Opposite( right_unitor_a ) ) );
             Assert( 0, IsCongruentForMorphisms( right_unitor_inverse_b_op, Opposite( right_unitor_b ) ) );
@@ -123,8 +118,8 @@ InstallGlobalFunction( "MonoidalCategoriesTest",
             left_unitor_inverse_a := LeftUnitorInverse( a );
             left_unitor_inverse_b := LeftUnitorInverse( b );
             
-            left_unitor_a_op := LeftUnitor( a_op );
-            left_unitor_b_op := LeftUnitor( b_op );
+            left_unitor_a_op := LeftUnitor( opposite, a_op );
+            left_unitor_b_op := LeftUnitor( opposite, b_op );
             
             Assert( 0, IsCongruentForMorphisms( left_unitor_a_op, Opposite( left_unitor_inverse_a ) ) );
             Assert( 0, IsCongruentForMorphisms( left_unitor_b_op, Opposite( left_unitor_inverse_b ) ) );
@@ -143,8 +138,8 @@ InstallGlobalFunction( "MonoidalCategoriesTest",
             right_unitor_inverse_a := RightUnitorInverse( a );
             right_unitor_inverse_b := RightUnitorInverse( b );
             
-            right_unitor_a_op := RightUnitor( a_op );
-            right_unitor_b_op := RightUnitor( b_op );
+            right_unitor_a_op := RightUnitor( opposite, a_op );
+            right_unitor_b_op := RightUnitor( opposite, b_op );
             
             Assert( 0, IsCongruentForMorphisms( right_unitor_a_op, Opposite( right_unitor_inverse_a ) ) );
             Assert( 0, IsCongruentForMorphisms( right_unitor_b_op, Opposite( right_unitor_inverse_b ) ) );
@@ -163,8 +158,8 @@ InstallGlobalFunction( "MonoidalCategoriesTest",
             associator_left_to_right_abc := AssociatorLeftToRight( a, b, c );
             associator_left_to_right_cba := AssociatorLeftToRight( c, b, a );
             
-            associator_right_to_left_abc_op := AssociatorRightToLeft( a_op, b_op, c_op );
-            associator_right_to_left_cba_op := AssociatorRightToLeft( c_op, b_op, a_op );
+            associator_right_to_left_abc_op := AssociatorRightToLeft( opposite, a_op, b_op, c_op );
+            associator_right_to_left_cba_op := AssociatorRightToLeft( opposite, c_op, b_op, a_op );
             
             Assert( 0, IsCongruentForMorphisms( associator_right_to_left_abc_op, Opposite( associator_left_to_right_abc ) ) );
             Assert( 0, IsCongruentForMorphisms( associator_right_to_left_cba_op, Opposite( associator_left_to_right_cba ) ) );
@@ -183,8 +178,8 @@ InstallGlobalFunction( "MonoidalCategoriesTest",
             associator_right_to_left_abc := AssociatorRightToLeft( a, b, c );
             associator_right_to_left_cba := AssociatorRightToLeft( c, b, a );
             
-            associator_left_to_right_abc_op := AssociatorLeftToRight( a_op, b_op, c_op );
-            associator_left_to_right_cba_op := AssociatorLeftToRight( c_op, b_op, a_op );
+            associator_left_to_right_abc_op := AssociatorLeftToRight( opposite, a_op, b_op, c_op );
+            associator_left_to_right_cba_op := AssociatorLeftToRight( opposite, c_op, b_op, a_op );
             
             Assert( 0, IsCongruentForMorphisms( associator_left_to_right_abc_op, Opposite( associator_right_to_left_abc ) ) );
             Assert( 0, IsCongruentForMorphisms( associator_left_to_right_cba_op, Opposite( associator_right_to_left_cba ) ) );

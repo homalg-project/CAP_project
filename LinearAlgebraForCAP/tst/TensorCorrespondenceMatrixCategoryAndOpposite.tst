@@ -92,8 +92,6 @@ gap> c_tensor_d := TensorProduct( c, d );;
 
 gap> hom_ab := InternalHom( a, b );;
 gap> hom_cd := InternalHom( c, d );;
-gap> cohom_ab := InternalCoHom( a, b );;
-gap> cohom_cd := InternalCoHom( c, d );;
 
 gap> alpha := VectorSpaceMorphism( a, HomalgMatrix( [ 2 .. 7 ], Dimension( a ), Dimension( b ), Q ), b );;
 gap> beta := VectorSpaceMorphism( c, HomalgMatrix( [ 8 .. 31 ], Dimension( c ), Dimension( d ), Q ), d );;
@@ -112,8 +110,6 @@ gap> c_tensor_d := TensorProduct( c, d );;
 
 gap> hom_ab := InternalHom( a, b );;
 gap> hom_cd := InternalHom( c, d );;
-gap> cohom_ab := InternalCoHom( a, b );;
-gap> cohom_cd := InternalCoHom( c, d );;
 
 gap> alpha := ZeroMorphism( a, b );;
 gap> beta := ZeroMorphism( c, d );;
@@ -138,8 +134,6 @@ gap> d := 4 / mc;;
 gap> a_tensor_b := TensorProduct( a, b );;
 gap> c_tensor_d := TensorProduct( c, d );;
 
-gap> hom_ab := InternalHom( a, b );;
-gap> hom_cd := InternalHom( c, d );;
 gap> cohom_ab := InternalCoHom( a, b );;
 gap> cohom_cd := InternalCoHom( c, d );;
 
@@ -158,8 +152,6 @@ gap> d = 0 / mc;;
 gap> a_tensor_b := TensorProduct( a, b );;
 gap> c_tensor_d := TensorProduct( c, d );;
 
-gap> hom_ab := InternalHom( a, b );;
-gap> hom_cd := InternalHom( c, d );;
 gap> cohom_ab := InternalCoHom( a, b );;
 gap> cohom_cd := InternalCoHom( c, d );;
 
