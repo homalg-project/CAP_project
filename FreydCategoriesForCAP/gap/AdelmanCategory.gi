@@ -828,7 +828,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_ADELMAN_CATEGORY,
                       ],
                    f -> CanCompute( range_category, f ) )  then
             
-            SetRangeCategoryOfHomomorphismStructure( category, FreydCategory( range_category ) );
+            SetRangeCategoryOfHomomorphismStructure( category, FreydCategory( range_category : FinalizeCategory := true ) );
             
             homomorphism_structure_derivation_case := "apply_freyd";
             
