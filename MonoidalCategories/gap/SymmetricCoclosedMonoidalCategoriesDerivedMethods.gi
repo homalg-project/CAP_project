@@ -289,7 +289,7 @@ AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismWithGivenObje
     #                      v
     # ((Cohom(a1,b1) x b1) x Cohom(a2,b2)) x b2
     #                      |
-    #                      | α_( (Cohom(a1,b1), a1), Cohom(a2,b2) ) ) x id_b2
+    #                      | α_( (Cohom(a1,b1), b1), Cohom(a2,b2) ) ) x id_b2
     #                      v
     #  (Cohom(a1,b1) x (b1 x Cohom(a2,b2))) x b2
     #                      |
@@ -336,7 +336,7 @@ AddDerivationToCAP( InternalCoHomTensorProductCompatibilityMorphismWithGivenObje
                     id_b2 ),
                   
                   TensorProductOnMorphisms( cat,
-                    AssociatorLeftToRight( cat, int_cohom_a1_b1, a1, int_cohom_a2_b2 ),
+                    AssociatorLeftToRight( cat, int_cohom_a1_b1, b1, int_cohom_a2_b2 ),
                     id_b2 ),
                   
                   TensorProductOnMorphisms( cat,
