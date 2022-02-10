@@ -432,7 +432,8 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
     [4X[25Xgap>[125X [27Xcat := MatrixCategory( QQ );;[127X[104X
-    [4X[25Xgap>[125X [27X# we have to work hard to not write semicolons so AutoDoc[127X[104X
+    [4X[25Xgap>[125X [27X# CapFixpoint with object[127X[104X
+    [4X[25X>[125X [27X# we have to work hard to not write semicolons so AutoDoc[127X[104X
     [4X[25X>[125X [27X# does not begin a new statement[127X[104X
     [4X[25X>[125X [27Xfunc := EvalString( ReplacedString( """function( cat )[127X[104X
     [4X[25X>[125X [27X  local predicate, func, initial_value@[127X[104X
@@ -457,7 +458,71 @@
     [4X[28X              return x_2 - 1;[128X[104X
     [4X[28X          end, 10 ) );[128X[104X
     [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27X# Iterated (for morphisms)[127X[104X
+    [4X[25Xgap>[125X [27X# CapFixpoint with morphism[127X[104X
+    [4X[25X>[125X [27X# we have to work hard to not write semicolons so AutoDoc[127X[104X
+    [4X[25X>[125X [27X# does not begin a new statement[127X[104X
+    [4X[25X>[125X [27Xfunc := EvalString( ReplacedString( """function( cat )[127X[104X
+    [4X[25X>[125X [27X  local obj, predicate, func, initial_value@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    obj := MatrixCategoryObject( cat, 1 )@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    predicate := { x, y } -> IsZeroForMorphisms( cat, y )@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    func := x -> SubtractionForMorphisms( cat, x, x )@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    initial_value := IdentityMorphism( cat, obj )@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    return CapFixpoint( predicate, func, initial_value )@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27Xend""", "@", ";" ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xfunc( cat );[127X[104X
+    [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, cat ) );[127X[104X
+    [4X[28Xfunction ( cat_1 )[128X[104X
+    [4X[28X    local morphism_attr_1_1, deduped_2_1;[128X[104X
+    [4X[28X    deduped_2_1 := ObjectifyObjectForCAPWithAttributes( rec([128X[104X
+    [4X[28X           ), cat_1, Dimension, 1 );[128X[104X
+    [4X[28X    morphism_attr_1_1 := CapFixpoint( function ( x_2, y_2 )[128X[104X
+    [4X[28X            return IsZero( y_2 );[128X[104X
+    [4X[28X        end, function ( x_2 )[128X[104X
+    [4X[28X            return x_2 + -1 * x_2;[128X[104X
+    [4X[28X        end, HomalgIdentityMatrix( 1, UnderlyingRing( cat_1 ) ) );[128X[104X
+    [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
+    [4X[28X           ), cat_1, deduped_2_1, deduped_2_1, UnderlyingMatrix, [128X[104X
+    [4X[28X       morphism_attr_1_1 );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27X# Iterated with list[127X[104X
+    [4X[25X>[125X [27Xfunc := { cat, alpha, beta, gamma } ->[127X[104X
+    [4X[25X>[125X [27X    Iterated([127X[104X
+    [4X[25X>[125X [27X        [ alpha, beta, gamma ],[127X[104X
+    [4X[25X>[125X [27X        { alpha, beta } -> PreCompose( cat, alpha, beta )[127X[104X
+    [4X[25X>[125X [27X    );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, cat ) );[127X[104X
+    [4X[28Xfunction ( cat_1, alpha_1, beta_1, gamma_1 )[128X[104X
+    [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
+    [4X[28X           ), cat_1, Source( alpha_1 ), Range( gamma_1 ), UnderlyingMatrix, [128X[104X
+    [4X[28X       UnderlyingMatrix( alpha_1 ) * UnderlyingMatrix( beta_1 ) [128X[104X
+    [4X[28X        * UnderlyingMatrix( gamma_1 ) );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27X# Iterated (case: from_initial_value)[127X[104X
+    [4X[25X>[125X [27X# PreComposeList[127X[104X
+    [4X[25X>[125X [27Xfunc := { cat, morphism_list } ->[127X[104X
+    [4X[25X>[125X [27X    Iterated([127X[104X
+    [4X[25X>[125X [27X        morphism_list,[127X[104X
+    [4X[25X>[125X [27X        { alpha, beta } -> AdditionForMorphisms( cat, alpha, beta )[127X[104X
+    [4X[25X>[125X [27X    );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, cat ) );[127X[104X
+    [4X[28Xfunction ( cat_1, morphism_list_1 )[128X[104X
+    [4X[28X    local deduped_1_1;[128X[104X
+    [4X[28X    deduped_1_1 := morphism_list_1[1];[128X[104X
+    [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
+    [4X[28X           ), cat_1, Source( deduped_1_1 ), Range( deduped_1_1 ), [128X[104X
+    [4X[28X       UnderlyingMatrix, Iterated( List( morphism_list_1, UnderlyingMatrix )[128X[104X
+    [4X[28X          , function ( alpha_2, beta_2 )[128X[104X
+    [4X[28X              return alpha_2 + beta_2;[128X[104X
+    [4X[28X          end ) );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27X# Iterated (case: from_compiler_hints)[127X[104X
     [4X[25X>[125X [27X# PreComposeList[127X[104X
     [4X[25X>[125X [27Xfunc := { cat, morphism_list } ->[127X[104X
     [4X[25X>[125X [27X    Iterated([127X[104X
@@ -477,19 +542,6 @@
     [4X[28X       ObjectifyObjectForCAPWithAttributes( rec([128X[104X
     [4X[28X             ), cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), [128X[104X
     [4X[28X       UnderlyingMatrix, morphism_attr_1_1 );[128X[104X
-    [4X[28Xend[128X[104X
-    [4X[25Xgap>[125X [27X# Iterated with list[127X[104X
-    [4X[25X>[125X [27Xfunc := { cat, alpha, beta, gamma } ->[127X[104X
-    [4X[25X>[125X [27X    Iterated([127X[104X
-    [4X[25X>[125X [27X        [ alpha, beta, gamma ],[127X[104X
-    [4X[25X>[125X [27X        { alpha, beta } -> PreCompose( cat, alpha, beta )[127X[104X
-    [4X[25X>[125X [27X    );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( CapJitCompiledFunction( func, cat ) );[127X[104X
-    [4X[28Xfunction ( cat_1, alpha_1, beta_1, gamma_1 )[128X[104X
-    [4X[28X    return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec([128X[104X
-    [4X[28X           ), cat_1, Source( alpha_1 ), Range( gamma_1 ), UnderlyingMatrix, [128X[104X
-    [4X[28X       UnderlyingMatrix( alpha_1 ) * UnderlyingMatrix( beta_1 ) [128X[104X
-    [4X[28X        * UnderlyingMatrix( gamma_1 ) );[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
   
