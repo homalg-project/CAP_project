@@ -14,6 +14,7 @@ CoexponentialOnObjects := rec(
   return_type := "object",
   dual_operation := "ExponentialOnObjects",
   dual_arguments_reversed := true,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CoexponentialOnMorphisms := rec(
@@ -25,6 +26,7 @@ CoexponentialOnMorphisms := rec(
   return_type := "morphism",
   dual_operation := "ExponentialOnMorphisms",
   dual_arguments_reversed := true,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CoexponentialOnMorphismsWithGivenCoexponentials := rec(
@@ -33,6 +35,7 @@ CoexponentialOnMorphismsWithGivenCoexponentials := rec(
   return_type := "morphism",
   dual_operation := "ExponentialOnMorphismsWithGivenExponentials",
   dual_arguments_reversed := true,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CocartesianEvaluationMorphism := rec(
@@ -44,6 +47,7 @@ CocartesianEvaluationMorphism := rec(
   return_type := "morphism",
   dual_operation := "CartesianEvaluationMorphism",
   dual_arguments_reversed := true,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CocartesianEvaluationMorphismWithGivenRange := rec(
@@ -53,6 +57,7 @@ CocartesianEvaluationMorphismWithGivenRange := rec(
   dual_operation := "CartesianEvaluationMorphismWithGivenSource",
   dual_preprocessor_func := { cat, a, b, r } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( r ) ],
   dual_arguments_reversed := false,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CocartesianCoevaluationMorphism := rec(
@@ -64,6 +69,7 @@ CocartesianCoevaluationMorphism := rec(
   return_type := "morphism",
   dual_operation := "CartesianCoevaluationMorphism",
   dual_arguments_reversed := false,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CocartesianCoevaluationMorphismWithGivenSource := rec(
@@ -72,6 +78,7 @@ CocartesianCoevaluationMorphismWithGivenSource := rec(
   return_type := "morphism",
   dual_operation := "CartesianCoevaluationMorphismWithGivenRange",
   dual_arguments_reversed := false,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CoproductToCoexponentialAdjunctionMap := rec(
@@ -80,6 +87,7 @@ CoproductToCoexponentialAdjunctionMap := rec(
   return_type := "morphism",
   dual_operation := "DirectProductToExponentialAdjunctionMap",
   dual_arguments_reversed := false,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CoexponentialToCoproductAdjunctionMap := rec(
@@ -89,6 +97,7 @@ CoexponentialToCoproductAdjunctionMap := rec(
   dual_operation := "ExponentialToDirectProductAdjunctionMap",
   dual_preprocessor_func := { cat, a, b, f } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( f ) ],
   dual_arguments_reversed := false,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CocartesianPreCoComposeMorphism := rec(
@@ -100,6 +109,7 @@ CocartesianPreCoComposeMorphism := rec(
   return_type := "morphism",
   dual_operation := "CartesianPreComposeMorphism",
   dual_arguments_reversed := true,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CocartesianPreCoComposeMorphismWithGivenObjects := rec(
@@ -108,6 +118,7 @@ CocartesianPreCoComposeMorphismWithGivenObjects := rec(
   return_type := "morphism",
   dual_operation := "CartesianPreComposeMorphismWithGivenObjects",
   dual_arguments_reversed := true,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CocartesianPostCoComposeMorphism := rec(
@@ -119,6 +130,7 @@ CocartesianPostCoComposeMorphism := rec(
   return_type := "morphism",
   dual_operation := "CartesianPostComposeMorphism",
   dual_arguments_reversed := true,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CocartesianPostCoComposeMorphismWithGivenObjects := rec(
@@ -127,6 +139,7 @@ CocartesianPostCoComposeMorphismWithGivenObjects := rec(
   return_type := "morphism",
   dual_operation := "CartesianPostComposeMorphismWithGivenObjects",
   dual_arguments_reversed := true,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CocartesianDualOnObjects := rec(
@@ -134,6 +147,7 @@ CocartesianDualOnObjects := rec(
   io_type := [ [ "a" ], [ "acd" ] ],
   return_type := "object",
   dual_operation := "CartesianDualOnObjects",
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CocartesianDualOnMorphisms := rec(
@@ -144,6 +158,7 @@ CocartesianDualOnMorphisms := rec(
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "CartesianDualOnMorphisms",
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CocartesianDualOnMorphismsWithGivenCocartesianDuals := rec(
@@ -152,6 +167,7 @@ CocartesianDualOnMorphismsWithGivenCocartesianDuals := rec(
   return_type := "morphism",
   dual_operation := "CartesianDualOnMorphismsWithGivenCartesianDuals",
   dual_arguments_reversed := true,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CocartesianEvaluationForCocartesianDual := rec(
@@ -162,6 +178,7 @@ CocartesianEvaluationForCocartesianDual := rec(
   with_given_object_position := "both",
   return_type := "morphism",
   dual_operation := "CartesianEvaluationForCartesianDual",
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CocartesianEvaluationForCocartesianDualWithGivenCoproduct := rec(
@@ -170,6 +187,7 @@ CocartesianEvaluationForCocartesianDualWithGivenCoproduct := rec(
   return_type := "morphism",
   dual_operation := "CartesianEvaluationForCartesianDualWithGivenDirectProduct",
   dual_arguments_reversed := true,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 MorphismFromCocartesianBidual := rec(
@@ -180,6 +198,7 @@ MorphismFromCocartesianBidual := rec(
   with_given_object_position := "Source",
   return_type := "morphism",
   dual_operation := "MorphismToCartesianBidual",
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 MorphismFromCocartesianBidualWithGivenCocartesianBidual := rec(
@@ -188,6 +207,7 @@ MorphismFromCocartesianBidualWithGivenCocartesianBidual := rec(
   return_type := "morphism",
   dual_operation := "MorphismToCartesianBidualWithGivenCartesianBidual",
   dual_arguments_reversed := false,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CoexponentialCoproductCompatibilityMorphism := rec(
@@ -200,6 +220,7 @@ CoexponentialCoproductCompatibilityMorphism := rec(
   dual_operation := "DirectProductExponentialCompatibilityMorphism",
   dual_preprocessor_func := { cat, list } -> [ Opposite( cat ), [ Opposite( list[3] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[2] ) ] ],
   dual_arguments_reversed := false,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CoexponentialCoproductCompatibilityMorphismWithGivenObjects := rec(
@@ -212,6 +233,7 @@ CoexponentialCoproductCompatibilityMorphismWithGivenObjects := rec(
   dual_preprocessor_func :=
     { cat, s, list, r } -> [ Opposite( cat ), Opposite( r ), [ Opposite( list[3] ), Opposite( list[1] ), Opposite( list[4] ), Opposite( list[2] ) ], Opposite( s ) ],
   dual_arguments_reversed := false,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CocartesianDualityCoproductCompatibilityMorphism := rec(
@@ -223,6 +245,7 @@ CocartesianDualityCoproductCompatibilityMorphism := rec(
   return_type := "morphism",
   dual_operation := "DirectProductCartesianDualityCompatibilityMorphism",
   dual_arguments_reversed := false,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects := rec(
@@ -232,6 +255,7 @@ CocartesianDualityCoproductCompatibilityMorphismWithGivenObjects := rec(
   dual_operation := "DirectProductCartesianDualityCompatibilityMorphismWithGivenObjects",
   dual_preprocessor_func := { cat, s, a, b, r} -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( b ), Opposite( s ) ],
   dual_arguments_reversed := false,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 MorphismFromCoexponentialToCoproduct := rec(
@@ -243,6 +267,7 @@ MorphismFromCoexponentialToCoproduct := rec(
   return_type := "morphism",
   dual_operation := "MorphismFromDirectProductToExponential",
   dual_arguments_reversed := true,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 MorphismFromCoexponentialToCoproductWithGivenObjects := rec(
@@ -251,6 +276,7 @@ MorphismFromCoexponentialToCoproductWithGivenObjects := rec(
   return_type := "morphism",
   dual_operation := "MorphismFromDirectProductToExponentialWithGivenObjects",
   dual_arguments_reversed := true,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 IsomorphismFromCocartesianDualToCoexponential := rec(
@@ -258,6 +284,7 @@ IsomorphismFromCocartesianDualToCoexponential := rec(
   io_type := [ [ "a" ], [ "d", "i" ] ],
   return_type := "morphism",
   dual_operation := "IsomorphismFromExponentialToCartesianDual",
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 IsomorphismFromCoexponentialToCocartesianDual := rec(
@@ -265,6 +292,7 @@ IsomorphismFromCoexponentialToCocartesianDual := rec(
   io_type := [ [ "a" ], [ "i", "d" ] ],
   return_type := "morphism",
   dual_operation := "IsomorphismFromCartesianDualToExponential",
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 UniversalPropertyOfCocartesianDual := rec(
@@ -273,6 +301,7 @@ UniversalPropertyOfCocartesianDual := rec(
   return_type := "morphism",
   dual_operation := "UniversalPropertyOfCartesianDual",
   dual_arguments_reversed := false,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CocartesianLambdaIntroduction := rec(
@@ -280,6 +309,7 @@ CocartesianLambdaIntroduction := rec(
   io_type := [ [ "alpha" ], [ "u", "i" ] ],
   return_type := "morphism",
   dual_operation := "CartesianLambdaIntroduction",
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 CocartesianLambdaElimination := rec(
@@ -289,6 +319,7 @@ CocartesianLambdaElimination := rec(
   dual_operation := "CartesianLambdaElimination",
   dual_preprocessor_func := { cat, a, b, alpha } -> [ Opposite( cat ), Opposite( b ), Opposite( a ), Opposite( alpha ) ],
   dual_arguments_reversed := false,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 IsomorphismFromObjectToCoexponential := rec(
@@ -299,6 +330,7 @@ IsomorphismFromObjectToCoexponential := rec(
   with_given_object_position := "Range",
   return_type := "morphism",
   dual_operation := "IsomorphismFromExponentialToObject",
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 IsomorphismFromObjectToCoexponentialWithGivenCoexponential := rec(
@@ -307,6 +339,7 @@ IsomorphismFromObjectToCoexponentialWithGivenCoexponential := rec(
   return_type := "morphism",
   dual_operation := "IsomorphismFromExponentialToObjectWithGivenExponential",
   dual_arguments_reversed := false,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 IsomorphismFromCoexponentialToObject := rec(
@@ -317,6 +350,7 @@ IsomorphismFromCoexponentialToObject := rec(
   with_given_object_position := "Source",
   return_type := "morphism",
   dual_operation := "IsomorphismFromObjectToExponential",
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 IsomorphismFromCoexponentialToObjectWithGivenCoexponential := rec(
@@ -325,6 +359,7 @@ IsomorphismFromCoexponentialToObjectWithGivenCoexponential := rec(
   return_type := "morphism",
   dual_operation := "IsomorphismFromObjectToExponentialWithGivenExponential",
   dual_arguments_reversed := false,
+  # Test in CocartesianCoclosedCategoriesTest
 ),
 
 ) );

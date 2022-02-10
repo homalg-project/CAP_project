@@ -30,7 +30,7 @@ AddFinalDerivation( IsomorphismFromCartesianDualToExponential,
     return IdentityMorphism( cat, ExponentialOnObjects( cat, object, TerminalObject( cat ) ) );
     
 end : CategoryFilter := IsCartesianClosedCategory,
-      Description := "IsomorphismFromCartesianDualToExponential as the identity of Hom(a,1)" );
+      Description := "IsomorphismFromCartesianDualToExponential as the identity of Exp(a,1)" );
 
 AddFinalDerivation( IsomorphismFromExponentialToCartesianDual,
                     [ [ IdentityMorphism, 1 ],
@@ -51,4 +51,4 @@ AddFinalDerivation( IsomorphismFromExponentialToCartesianDual,
     return IdentityMorphism( cat, ExponentialOnObjects( cat, object, TerminalObject( cat ) ) );
     
 end : CategoryFilter := IsCartesianClosedCategory,
-      Description := "IsomorphismFromExponentialToCartesianDual as the identity of Hom(a,1)" );
+      Description := "IsomorphismFromExponentialToCartesianDual as the identity of Exp(a,1)" );

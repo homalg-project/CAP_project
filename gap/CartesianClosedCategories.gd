@@ -25,7 +25,7 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory  := Concat
 
 #! @Description
 #! The arguments are two objects $a,b$.
-#! The output is the internal hom object $\mathrm{Exponential}(a,b)$.
+#! The output is the exponential object $\mathrm{Exponential}(a,b)$.
 #! @Returns an object
 #! @Arguments a, b
 DeclareOperation( "ExponentialOnObjects",
@@ -33,7 +33,7 @@ DeclareOperation( "ExponentialOnObjects",
 
 #! @Description
 #! The arguments are two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$.
-#! The output is the internal hom morphism
+#! The output is the exponential morphism
 #! $\mathrm{Exponential}(\alpha,\beta): \mathrm{Exponential}(a',b) \rightarrow \mathrm{Exponential}(a,b')$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Exponential}(a',b), \mathrm{Exponential}(a,b') )$
 #! @Arguments alpha, beta
@@ -44,7 +44,7 @@ DeclareOperation( "ExponentialOnMorphisms",
 #! The arguments are an object $s = \mathrm{Exponential}(a',b)$,
 #! two morphisms $\alpha: a \rightarrow a', \beta: b \rightarrow b'$,
 #! and an object $r = \mathrm{Exponential}(a,b')$.
-#! The output is the internal hom morphism
+#! The output is the exponential morphism
 #! $\mathrm{Exponential}(\alpha,\beta): \mathrm{Exponential}(a',b) \rightarrow \mathrm{Exponential}(a,b')$.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Exponential}(a',b), \mathrm{Exponential}(a,b') )$
 #! @Arguments s, alpha, beta, r
@@ -361,11 +361,11 @@ DeclareOperation( "IsomorphismFromExponentialToObjectWithGivenExponential",
 #! @Description
 #! This is a convenience method.
 #! The arguments are two cells $a,b$.
-#! The output is the internal hom cell.
+#! The output is the exponential cell.
 #! If $a,b$ are two CAP objects the output is the internal Hom object
 #! $\mathrm{Exponential}(a,b)$.
 #! If at least one of the arguments is a CAP morphism the output is a CAP morphism,
-#! namely the internal hom on morphisms, where any object is replaced by its identity morphism.
+#! namely the exponential on morphisms, where any object is replaced by its identity morphism.
 #! @Returns a cell
 #! @Arguments a, b
 DeclareOperation( "Exponential",

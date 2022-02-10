@@ -40,6 +40,16 @@ ReadPackage( "Toposes", "gap/CocartesianCoclosedCategories.gd" );
 ReadPackage( "Toposes", "gap/CartesianClosedCategories.autogen.gd" );
 ReadPackage( "Toposes", "gap/CocartesianCoclosedCategories.autogen.gd" );
 
+## Test methods
+ReadPackage( "Toposes", "gap/CartesianCategoriesTest.gd" );
+ReadPackage( "Toposes", "gap/CocartesianCategoriesTest.gd" );
+
+ReadPackage( "Toposes", "gap/BraidedCartesianCategoriesTest.gd" );
+ReadPackage( "Toposes", "gap/BraidedCocartesianCategoriesTest.gd" );
+
+ReadPackage( "Toposes", "gap/CartesianClosedCategoriesTest.gd" );
+ReadPackage( "Toposes", "gap/CocartesianCoclosedCategoriesTest.gd" );
+
 ## Topos
 ReadPackage( "Toposes", "gap/Topos.gd");
 ReadPackage( "Toposes", "gap/Topos.autogen.gd");
