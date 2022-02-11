@@ -816,7 +816,11 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    end@</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    if x &lt; 1 or x &gt; 10 then</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    if IdFunc( false ) then</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        return 0@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    elif x &lt; 1 or x &gt; 10 then</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        return inner_func1( x )@</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
@@ -1428,6 +1432,21 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );</span>
 function ( my_func_1 )
     return my_func_1( 1, 2 );
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( x )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  if 1 = 2 then return 1; elif x = x then return 2; else return 3; fi; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitAppliedLogic( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );</span>
+function ( x_1 )
+    if false then
+        return 1;
+    elif true then
+        return 2;
+    else
+        return 3;
+    fi;
+    return;
 end
 </pre></div>
 

@@ -774,7 +774,11 @@
     [4X[25X>[125X [27X        [127X[104X
     [4X[25X>[125X [27X    end@[127X[104X
     [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27X    if x < 1 or x > 10 then[127X[104X
+    [4X[25X>[125X [27X    if IdFunc( false ) then[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X        return 0@[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X    elif x < 1 or x > 10 then[127X[104X
     [4X[25X>[125X [27X        [127X[104X
     [4X[25X>[125X [27X        return inner_func1( x )@[127X[104X
     [4X[25X>[125X [27X        [127X[104X
@@ -1377,6 +1381,21 @@
     [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree ) );[127X[104X
     [4X[28Xfunction ( my_func_1 )[128X[104X
     [4X[28X    return my_func_1( 1, 2 );[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27Xfunc := function ( x )[127X[104X
+    [4X[25X>[125X [27X  if 1 = 2 then return 1; elif x = x then return 2; else return 3; fi; end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitAppliedLogic( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree ) );[127X[104X
+    [4X[28Xfunction ( x_1 )[128X[104X
+    [4X[28X    if false then[128X[104X
+    [4X[28X        return 1;[128X[104X
+    [4X[28X    elif true then[128X[104X
+    [4X[28X        return 2;[128X[104X
+    [4X[28X    else[128X[104X
+    [4X[28X        return 3;[128X[104X
+    [4X[28X    fi;[128X[104X
+    [4X[28X    return;[128X[104X
     [4X[28Xend[128X[104X
   [4X[32X[104X
   
