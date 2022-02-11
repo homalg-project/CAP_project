@@ -1459,6 +1459,14 @@ end
 function ( x_1 )
     return 3;
 end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( x )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  return [ 1 .. 3 ]; end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitAppliedLogic( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );</span>
+function ( x_1 )
+    return [ 1, 2, 3 ];
+end
 </pre></div>
 
 
