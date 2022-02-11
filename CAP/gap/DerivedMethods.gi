@@ -855,9 +855,9 @@ AddDerivationToCAP( IsIdenticalToZeroMorphism,
                     
   function( cat, morphism )
     
-    return IsEqualForMorphismsOnMor( cat, morphism, ZeroMorphism( cat, Source( morphism ), Range( morphism ) ) );
+    return IsEqualForMorphisms( cat, morphism, ZeroMorphism( cat, Source( morphism ), Range( morphism ) ) );
     
-end : Description := "IsIdenticalToZeroMorphism using IsEqualForMorphismsOnMor and ZeroMorphism" );
+end : Description := "IsIdenticalToZeroMorphism using IsEqualForMorphisms and ZeroMorphism" );
 
 ##
 AddDerivationToCAP( IsZeroForObjects,

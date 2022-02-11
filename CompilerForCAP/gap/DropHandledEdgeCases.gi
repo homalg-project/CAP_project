@@ -59,7 +59,7 @@ InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function ( tree )
     handled_edge_cases := [ ];
     
     pre_func := function ( tree, additional_arguments )
-      local branches, handled_conditions, new_branches, current_outer_condition, pre_func, i;
+      local branches, handled_condition, new_branches, current_outer_condition, pre_func, i;
         
         if tree.type = "EXPR_CASE" then
             
@@ -68,14 +68,16 @@ InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function ( tree )
             # there must always be an "else" case
             Assert( 0, Last( branches ).condition.type = "EXPR_TRUE" );
             
-            handled_conditions := [ ];
+            # the union (= or) of all conditions already handled by the preceding case branches
+            # empty "or" = false
+            handled_condition := rec( type := "EXPR_FALSE" );
             
             new_branches := [ ];
             
             for i in [ 1 .. branches.length ] do
                 
                 # check if the whole branch is already handled, if yes: skip
-                if ForAny( handled_conditions, handled_condition -> CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION( branches.(i).condition, handled_condition ) = true ) then
+                if CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION( branches.(i).condition, handled_condition ) = true then
                     
                     continue;
                     
@@ -110,7 +112,7 @@ InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function ( tree )
                             
                         end );
                         
-                        tree.branches := Filtered( tree.branches, branch -> not ForAny( handled_conditions, handled_condition -> CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION( branch.condition, handled_condition ) = true ) );
+                        tree.branches := Filtered( tree.branches, branch -> not (CAP_JIT_INTERNAL_CONDITION_IMPLIES_CONDITION( branch.condition, handled_condition ) = true) );
                         
                         if tree.branches.length = 0 then
                             
@@ -131,7 +133,11 @@ InstallGlobalFunction( CapJitDroppedHandledEdgeCases, function ( tree )
                     value := CapJitIterateOverTree( branches.(i).value, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true ),
                 ) );
                 
-                Add( handled_conditions, branches.(i).condition );
+                handled_condition := rec(
+                    type := "EXPR_OR",
+                    left := handled_condition,
+                    right := branches.(i).condition,
+                );
                 
             od;
             
