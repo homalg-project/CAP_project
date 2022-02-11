@@ -40,6 +40,38 @@ InstallGlobalFunction( CapJitAppliedLogic, function ( tree )
     
 end );
 
+# [ int1 .. int2 ] = [ int1, ..., int2 ]
+CapJitAddLogicFunction( function ( tree )
+  local pre_func;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Apply logic for ranges with known boundaries." );
+    
+    pre_func := function ( tree, additional_arguments )
+        
+        if tree.type = "EXPR_RANGE" and tree.first.type = "EXPR_INT" and tree.last.type = "EXPR_INT" then
+            
+            return rec(
+                type := "EXPR_LIST",
+                list := AsSyntaxTreeList( List(
+                    [ tree.first.value .. tree.last.value ],
+                    int -> rec(
+                        type := "EXPR_INT",
+                        value := int,
+                    )
+                ) ),
+            );
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    
+end );
+
 # [ a_1, a_2, ... ][i] => a_i
 CapJitAddLogicFunction( function ( tree )
   local pre_func;

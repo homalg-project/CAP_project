@@ -78,4 +78,14 @@ Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
 #!     return 3;
 #! end
 
+func := function ( x )
+  return [ 1 .. 3 ]; end;;
+
+tree := ENHANCED_SYNTAX_TREE( func );;
+tree := CapJitAppliedLogic( tree );;
+Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
+#! function ( x_1 )
+#!     return [ 1, 2, 3 ];
+#! end
+
 #! @EndExample
