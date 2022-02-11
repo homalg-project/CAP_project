@@ -64,6 +64,39 @@ CapJitAddLogicFunction( function ( tree )
     
 end );
 
+# a = b?
+CapJitAddLogicFunction( function ( tree )
+  local pre_func;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Apply logic for equality." );
+    
+    pre_func := function ( tree, additional_arguments )
+      local args;
+        
+        if tree.type = "EXPR_EQ" and tree.left.type = tree.right.type then
+            
+            if CapJitIsEqualForEnhancedSyntaxTrees( tree.left, tree.right ) then
+                
+                return rec( type := "EXPR_TRUE" );
+                
+            # for integers, strings, and chars we can also decide inequality
+            elif tree.left.type = "EXPR_INT" or tree.left.type = "EXPR_STRING" or tree.left.type = "EXPR_CHAR" then
+                
+                return rec( type := "EXPR_FALSE" );
+                
+            fi;
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    
+end );
+
 # Concatenation( [ a, b, ... ], [ c, d, ... ], ... ) => [ a, b, ..., c, d, ... ]
 CapJitAddLogicFunction( function ( tree )
   local pre_func;

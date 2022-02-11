@@ -2635,16 +2635,15 @@ end
         
 ########
 function ( cat_1, arg2_1 )
-    local deduped_1_1, deduped_2_1, deduped_3_1;
-    deduped_3_1 := Dimension( Source( arg2_1 ) );
-    deduped_2_1 := Dimension( Range( arg2_1 ) ) = deduped_3_1;
-    deduped_1_1 := deduped_3_1 = deduped_3_1;
-    if deduped_1_1 = fail or deduped_2_1 = fail then
+    local deduped_1_1, deduped_2_1;
+    deduped_2_1 := Dimension( Source( arg2_1 ) );
+    deduped_1_1 := Dimension( Range( arg2_1 ) ) = deduped_2_1;
+    if true = fail or deduped_1_1 = fail then
         return fail;
-    elif deduped_1_1 = false or deduped_2_1 = false then
+    elif true = false or deduped_1_1 = false then
         return false;
     else
-        return UnderlyingMatrix( arg2_1 ) = HomalgIdentityMatrix( deduped_3_1, UnderlyingRing( cat_1 ) );
+        return UnderlyingMatrix( arg2_1 ) = HomalgIdentityMatrix( deduped_2_1, UnderlyingRing( cat_1 ) );
     fi;
     return;
 end

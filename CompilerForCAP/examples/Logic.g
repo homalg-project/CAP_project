@@ -51,4 +51,21 @@ Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
 #!     return my_func_1( 1, 2 );
 #! end
 
+func := function ( x )
+  if 1 = 2 then return 1; elif x = x then return 2; else return 3; fi; end;;
+
+tree := ENHANCED_SYNTAX_TREE( func );;
+tree := CapJitAppliedLogic( tree );;
+Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
+#! function ( x_1 )
+#!     if false then
+#!         return 1;
+#!     elif true then
+#!         return 2;
+#!     else
+#!         return 3;
+#!     fi;
+#!     return;
+#! end
+
 #! @EndExample
