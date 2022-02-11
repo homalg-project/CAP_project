@@ -160,6 +160,14 @@ InstallGlobalFunction( "CapJitPrecompileCategory", function ( category_construct
             
         fi;
         
+        # if this is a property, `Objectify*ForCAPWithAttributes` should not occur anymore
+        if current_rec.return_type = "bool" and (PositionSublist( function_string, "ObjectifyObjectForCAPWithAttributes" ) <> fail or PositionSublist( function_string, "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" ) <> fail) then
+            
+            # COVERAGE_IGNORE_NEXT_LINE
+            Display( Concatenation( "WARNING: Could not eliminate `Objectify*ForCAPWithAttributes` while precompiling ", function_name, "." ) );
+            
+        fi;
+        
         # Taking the original weight is not optimal because the compilation might have simplified things drastically.
         # However, this is still better than just setting everything to the default weight.
         weight := CurrentOperationWeight( cat!.derivations_weight_list, function_name );
