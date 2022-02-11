@@ -1,7 +1,7 @@
 name: MonoidalCategories
-version: "2022.02-08"
+version: "2022.02-09"
 license: "GPL-2.0-or-later"
-date: 2022-02-10
+date: 2022-02-11
 description: |
     Monoidal and monoidal (co)closed categories
 
@@ -44,11 +44,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/MonoidalCategories/Pac
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2022.02-08/MonoidalCategories-2022.02-08.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2022.02-09/MonoidalCategories-2022.02-09.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2022.02-08/MonoidalCategories-2022.02-08.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2022.02-09/MonoidalCategories-2022.02-09.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2022.02-08/MonoidalCategories-2022.02-08.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/MonoidalCategories-2022.02-09/MonoidalCategories-2022.02-09.pdf
 
 abstract: |
 
@@ -61,7 +61,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BGPK22</span>]   <b class='BibAuthor'>Barakat, M., Gutsche, S., Posur, S. and Kuhmichel, T.</b>,
      <i class='BibTitle'>MonoidalCategories, Monoidal and monoidal (co)closed categories,
-             Version 2022.02-08</i>
+             Version 2022.02-09</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/MonoidalCategories">https://homalg-project.github.io/pkg/MonoidalCategories</a></span>.
@@ -69,11 +69,11 @@ citeas: |
     
 
 bibtex: |
-    @misc{ MonoidalCategories2022.02-08,
+    @misc{ MonoidalCategories2022.02-09,
       author =           {Barakat,   M.  and  Gutsche,  S.  and  Posur,  S.  and
                           Kuhmichel, T.},
       title =            {{MonoidalCategories}, Monoidal and monoidal (co)closed
-                          categories, {V}ersion 2022.02-08},
+                          categories, {V}ersion 2022.02-09},
       month =            {Feb},
       year =             {2022},
       note =             {GAP package},
