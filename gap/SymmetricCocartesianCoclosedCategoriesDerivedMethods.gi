@@ -291,7 +291,7 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
     #                      v
     # ((Coexp(a1,b1) x b1) x Coexp(a2,b2)) x b2
     #                      |
-    #                      | α_( (Coexp(a1,b1), a1), Coexp(a2,b2) ) ) x id_b2
+    #                      | α_( (Coexp(a1,b1), b1), Coexp(a2,b2) ) ) x id_b2
     #                      v
     #  (Coexp(a1,b1) x (b1 x Coexp(a2,b2))) x b2
     #                      |
@@ -338,7 +338,7 @@ AddDerivationToCAP( CoexponentialCoproductCompatibilityMorphismWithGivenObjects,
                     id_b2 ),
                   
                   CoproductOnMorphisms( cat,
-                    CocartesianAssociatorLeftToRight( cat, coexp_a1_b1, a1, coexp_a2_b2 ),
+                    CocartesianAssociatorLeftToRight( cat, coexp_a1_b1, b1, coexp_a2_b2 ),
                     id_b2 ),
                   
                   CoproductOnMorphisms( cat,
