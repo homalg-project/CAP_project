@@ -52,7 +52,11 @@ func := EvalString( ReplacedString( """function( x )
         
     end@
     
-    if x < 1 or x > 10 then
+    if IdFunc( false ) then
+        
+        return 0@
+        
+    elif x < 1 or x > 10 then
         
         return inner_func1( x )@
         
