@@ -97,6 +97,33 @@ CapJitAddLogicFunction( function ( tree )
     
 end );
 
+# Length( [ a_1, ..., a_n ] ) => n
+CapJitAddLogicFunction( function ( tree )
+  local pre_func;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Apply logic for Length of literal lists." );
+    
+    pre_func := function ( tree, additional_arguments )
+      local args;
+        
+        if CapJitIsCallToGlobalFunction( tree, "Length" ) and tree.args.length = 1 and tree.args.1.type = "EXPR_LIST" then
+            
+            return rec(
+                type := "EXPR_INT",
+                value := tree.args.1.list.length,
+            );
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    
+end );
+
 # Concatenation( [ a, b, ... ], [ c, d, ... ], ... ) => [ a, b, ..., c, d, ... ]
 CapJitAddLogicFunction( function ( tree )
   local pre_func;
