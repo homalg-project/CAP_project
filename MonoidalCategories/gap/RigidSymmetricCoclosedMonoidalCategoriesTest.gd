@@ -12,7 +12,7 @@
 #! The arguments are
 #! * a CAP category $cat$
 #! * objects $a, b, c, d$
-#! * a morphism $\alpha: a \rightarrow b$
+#! * an endomorphism $\alpha: a \rightarrow a$
 #! This function checks for every object and morphism
 #! declared in RigidSymmetricCoclosedMonoidalCategories.gd
 #! if it is computable in the CAP category $cat$.
