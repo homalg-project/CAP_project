@@ -5141,7 +5141,7 @@ CAP_INTERNAL_REGISTER_METHOD_NAME_RECORD_OF_PACKAGE( CAP_INTERNAL_METHOD_NAME_RE
 ##
 InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCES,
   function ( subsections, package_name, filename, chapter_name, section_name )
-    local output_string, package_info, current_string, collected_dependencies, subsection, category, subsection_title, operations, booknames, bookname, info, label, match, nr, res, test_string, output_path, dep, p, i, name;
+    local output_string, package_info, current_string, collected_dependencies, subsection, category, subsection_title, operations, booknames, bookname, info, label, match, nr, res, test_string, test_string_legacy, output_path, dep, p, i, name;
     
     output_string := "";
     
@@ -5295,9 +5295,11 @@ InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCE
             
             if IsOperation( ValueGlobal( name ) ) then
                 
-                test_string := Concatenation( bookname, ": ", name, " for is" );
+                test_string := Concatenation( bookname, ": ", name, " for Is" );
+                # needed for GAPDoc < 1.6.5
+                test_string_legacy := Concatenation( bookname, ": ", name, " for is" );
                 
-                if not StartsWith( res[1], test_string ) then
+                if not (StartsWith( res[1], test_string ) or StartsWith( res[1], test_string_legacy )) then
                     
                     Error( res[1], " does not start with ", test_string, ", matching wrong operation?" );
                     
