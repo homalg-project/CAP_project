@@ -21,6 +21,14 @@ InstallMethod( GroupAsCategory,
     
     category := CreateCapCategory( Concatenation( "Group as category( ", String( group )," )" ) : overhead := false );
     
+    category!.category_as_first_argument := true;
+    
+    category!.compiler_hints := rec(
+        category_attribute_names := [
+            "UnderlyingGroup",
+        ],
+    );
+    
     SetFilterObj( category, IsGroupAsCategory );
     
     SetUnderlyingGroup( category, group );
@@ -173,9 +181,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
     group := UnderlyingGroup( category );
     
     ##
-    AddIsEqualForObjects( category, ReturnTrue );
+    AddIsEqualForObjects( category, {cat, a, b} -> true );
     
-    equality_func := {alpha, beta} -> UnderlyingGroupElement( alpha ) = UnderlyingGroupElement( beta );
+    equality_func := {cat, alpha, beta} -> UnderlyingGroupElement( alpha ) = UnderlyingGroupElement( beta );
     
     ##
     AddIsEqualForMorphisms( category, equality_func );
@@ -184,11 +192,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
     AddIsCongruentForMorphisms( category, equality_func );
     
     ##
-    AddIsWellDefinedForObjects( category, x -> IsIdenticalObj( category, CapCategory( x ) ) );
+    AddIsWellDefinedForObjects( category, {cat, x} -> IsIdenticalObj( category, CapCategory( x ) ) );
     
     ##
-    AddIsWellDefinedForMorphisms( category, 
-      function( alpha ) 
+    AddIsWellDefinedForMorphisms( category,
+      function( cat, alpha )
         
         return UnderlyingGroupElement( alpha ) in UnderlyingGroup( category );
         
@@ -196,9 +204,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
     
     ##
     AddPreCompose( category,
-      function( alpha, beta )
+      function( cat, alpha, beta )
         
-        return GroupAsCategoryMorphism( 
+        return GroupAsCategoryMorphism(
             category,
             UnderlyingGroupElement( alpha ) * UnderlyingGroupElement( beta )
         );
@@ -207,7 +215,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
     
     ##
     AddIdentityMorphism( category,
-      function( unique_object )
+      function( cat, unique_object )
         
         return GroupAsCategoryMorphism(
             category,
@@ -218,7 +226,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
     
     ##
     AddInverseForMorphisms( category,
-      function( alpha )
+      function( cat, alpha )
         
         return  GroupAsCategoryMorphism(
             category,
@@ -228,23 +236,23 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
     end );
     
     ##
-    AddIsIsomorphism( category, ReturnTrue );
+    AddIsIsomorphism( category, {cat, mor} -> true );
     
     ##
-    AddIsEpimorphism( category, ReturnTrue );
+    AddIsEpimorphism( category, {cat, mor} -> true );
     
     ##
-    AddIsMonomorphism( category, ReturnTrue );
+    AddIsMonomorphism( category, {cat, mor} -> true );
     
     ##
-    AddIsLiftable( category, ReturnTrue );
+    AddIsLiftable( category, {cat, mor1, mor2} -> true );
     
     ##
-    AddIsColiftable( category, ReturnTrue );
+    AddIsColiftable( category, {cat, mor1, mor2} -> true );
     
     ##
-    AddLift( category, 
-        function( alpha, beta )
+    AddLift( category,
+        function( cat, alpha, beta )
             return  GroupAsCategoryMorphism(
             category,
             UnderlyingGroupElement( alpha ) * Inverse( UnderlyingGroupElement( beta ) )
@@ -252,8 +260,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
     end );
     
     ##
-    AddColift( category, 
-        function( alpha, beta )
+    AddColift( category,
+        function( cat, alpha, beta )
             return  GroupAsCategoryMorphism(
             category,
             Inverse( UnderlyingGroupElement( alpha ) ) * UnderlyingGroupElement( beta )
@@ -276,7 +284,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
         
         ## Homomorphism structure
         AddHomomorphismStructureOnObjects( category,
-          function( a, b )
+          function( cat, a, b )
             
             return RG;
             
@@ -299,9 +307,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
             ## Should this function have a cache?
             ##
             AddHomomorphismStructureOnMorphisms( category,
-            function( alpha, beta )
+            function( cat, alpha, beta )
                 
                 return MapOfFinSets(
+                        FREYD_CATEGORIES_SkeletalFinSets,
                         RG,
                         HOM_PERMUTATION_ARRAY[ PositionWithinElements( alpha ) ][ PositionWithinElements( beta ) ],
                         RG
@@ -314,9 +323,10 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
             ## Should this function have a cache?
             ##
             AddHomomorphismStructureOnMorphisms( category,
-            function( alpha, beta )
+            function( cat, alpha, beta )
                 
                 return MapOfFinSets(
+                        FREYD_CATEGORIES_SkeletalFinSets,
                         RG,
                         List( elements, x -> Position( elements, elements[PositionWithinElements( alpha )] * x * elements[PositionWithinElements( beta )] ) ),
                         RG
@@ -330,7 +340,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
         
         ##
         AddDistinguishedObjectOfHomomorphismStructure( category,
-          function()
+          function( cat )
             
             return t_obj;
             
@@ -338,8 +348,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
         
         ##
         AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
-          function( alpha )
+          function( cat, alpha )
             return MapOfFinSets(
+                FREYD_CATEGORIES_SkeletalFinSets,
                 t_obj,
                 [ PositionWithinElements( alpha ) ],
                 RG
@@ -348,7 +359,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_GROUP_AS_CATEGORY,
         
         ##
         AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
-          function( a, b, mor )
+          function( cat, a, b, mor )
             return GroupAsCategoryMorphism(
                 category,
                 elements[ AsList( mor )[1] ]
