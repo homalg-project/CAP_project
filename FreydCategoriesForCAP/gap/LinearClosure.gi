@@ -55,6 +55,14 @@ InstallGlobalFunction( LINEAR_CLOSURE_CONSTRUCTOR,
         
     fi;
     
+    category!.category_as_first_argument := true;
+    
+    category!.compiler_hints := rec(
+        category_attribute_names := [
+            "UnderlyingCategory",
+        ],
+    );
+    
     category!.with_nf := with_nf;
     
     if IsBound( sorting_function ) then
@@ -193,7 +201,7 @@ end );
 InstallMethod( LinearClosureMorphism,
                [ IsLinearClosureObject, IsList, IsList, IsLinearClosureObject ],
   function( source, coefficients, support_morphisms, range )
-    local category, sorting_function, coefficients_copy, support_morphisms_copy, 
+    local category, sorting_function, coefficients_copy, support_morphisms_copy,
           coefficients_NF, support_morphisms_NF, m, c, i, m_compare;
     
     category := CapCategory( source );
@@ -380,7 +388,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     minus_one := MinusOne( ring );
     
     ##
-    AddIsEqualForObjects( category, {a, b} -> IsEqualForObjects( UnderlyingOriginalObject( a ), UnderlyingOriginalObject( b ) ) );
+    AddIsEqualForObjects( category, {cat, a, b} -> IsEqualForObjects( UnderlyingOriginalObject( a ), UnderlyingOriginalObject( b ) ) );
     
     equality_func := function( alpha, beta, equal_or_cong )
         local coeffs_a, coeffs_b, supp_a, supp_b, size;
@@ -391,29 +399,29 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         
         size := Length( coeffs_a );
         
-        if size <> Length( coeffs_b ) then 
-            return false; 
+        if size <> Length( coeffs_b ) then
+            return false;
         fi;
         
-        return ForAll( [ 1 .. size ], i -> equal_or_cong( SupportMorphisms( alpha )[i], SupportMorphisms( beta )[i] ) ) 
-                and 
+        return ForAll( [ 1 .. size ], i -> equal_or_cong( SupportMorphisms( alpha )[i], SupportMorphisms( beta )[i] ) )
+                and
                 coeffs_a = coeffs_b;
         
     end;
     
     ##
-    AddIsEqualForMorphisms( category, {alpha, beta} -> equality_func( alpha, beta, IsEqualForMorphisms ) );
+    AddIsEqualForMorphisms( category, {cat, alpha, beta} -> equality_func( alpha, beta, IsEqualForMorphisms ) );
     
     if with_nf then
         
         ##
-        AddIsCongruentForMorphisms( category, {alpha, beta} -> equality_func( alpha, beta, IsCongruentForMorphisms ) );
+        AddIsCongruentForMorphisms( category, {cat, alpha, beta} -> equality_func( alpha, beta, IsCongruentForMorphisms ) );
         
     else
         
         ##
-        AddIsCongruentForMorphisms( category, 
-            function( alpha, beta )
+        AddIsCongruentForMorphisms( category,
+            function( cat, alpha, beta )
                 
                 return IsZeroForMorphisms( SubtractionForMorphisms( alpha, beta ) );
                 
@@ -422,11 +430,11 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     fi;
     
     ##
-    AddIsWellDefinedForObjects( category, x -> IsIdenticalObj( underlying_category, CapCategory( UnderlyingOriginalObject( x ) ) ) );
+    AddIsWellDefinedForObjects( category, {cat, x} -> IsIdenticalObj( underlying_category, CapCategory( UnderlyingOriginalObject( x ) ) ) );
 
     ##
-    AddIsWellDefinedForMorphisms( category, 
-    function( alpha ) 
+    AddIsWellDefinedForMorphisms( category,
+    function( cat, alpha )
         local coeffs, supp, size, s, i;
         
         coeffs := CoefficientsList( alpha );
@@ -443,8 +451,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         
         size := Size( coeffs );
         
-        if size <> Size( supp ) then 
-            return false; 
+        if size <> Size( supp ) then
+            return false;
         fi;
         
         if not ForAll( coeffs, c -> c in ring ) then
@@ -486,7 +494,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         
         ##
         AddPreCompose( category,
-        function( alpha, beta )
+        function( cat, alpha, beta )
             local coeffs, supp;
             
             coeffs := ListX( CoefficientsList( alpha ), CoefficientsList( beta ), mul_coeffs );
@@ -503,7 +511,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         
         ##
         AddPreCompose( category,
-        function( alpha, beta )
+        function( cat, alpha, beta )
             local coeffs_alpha, coeffs_beta, supp_alpha, supp_beta, coeffs, supp, a, b, gamma, coeff;
             
             coeffs_alpha := CoefficientsList( alpha );
@@ -542,7 +550,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     
     ##
     AddIdentityMorphism( category,
-      function( object )
+      function( cat, object )
         
         return LinearClosureMorphismNC( object, [ one ], [ IdentityMorphism( UnderlyingOriginalObject( object ) ) ], object );
         
@@ -550,7 +558,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     
     ##
     AddZeroMorphism( category,
-      function( a, b )
+      function( cat, a, b )
         
         return LinearClosureMorphismNC( a, [ ], [ ], b );
         
@@ -561,7 +569,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         
         ##
         AddIsZeroForMorphisms( category,
-        function( alpha )
+        function( cat, alpha )
             
             return IsEmpty( CoefficientsList( alpha ) );
             
@@ -571,7 +579,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         
         ##
         AddIsZeroForMorphisms( category,
-        function( alpha )
+        function( cat, alpha )
             
             return LINEAR_CLOSURE_MORPHISM_SIMPLIFY( alpha, true );
             
@@ -581,8 +589,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     
     ##
     AddAdditionForMorphisms( category,
-      function( alpha, beta )
-        return LinearClosureMorphism( 
+      function( cat, alpha, beta )
+        return LinearClosureMorphism(
             Source( alpha ),
             Concatenation( CoefficientsList( alpha ), CoefficientsList( beta ) ),
             Concatenation( SupportMorphisms( alpha ), SupportMorphisms( beta ) ),
@@ -592,8 +600,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     
     ##
     AddAdditiveInverseForMorphisms( category,
-      function( alpha )
-        return LinearClosureMorphism( 
+      function( cat, alpha )
+        return LinearClosureMorphism(
             Source( alpha ),
             List( CoefficientsList( alpha ), c -> minus_one * c ),
             SupportMorphisms( alpha ),
@@ -603,8 +611,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     
     ##
     AddSubtractionForMorphisms( category,
-      function( alpha, beta )
-        return LinearClosureMorphism( 
+      function( cat, alpha, beta )
+        return LinearClosureMorphism(
             Source( alpha ),
             Concatenation( CoefficientsList( alpha ), List( CoefficientsList( beta ), c -> minus_one * c ) ),
             Concatenation( SupportMorphisms( alpha ), SupportMorphisms( beta ) ),
@@ -614,8 +622,8 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     
     ##
     AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
-        function( r, alpha ) 
-            return LinearClosureMorphism( 
+        function( cat, r, alpha )
+            return LinearClosureMorphism(
                 Source( alpha ),
                 List( CoefficientsList( alpha ), c -> r * c ),
                 SupportMorphisms( alpha ),
@@ -627,7 +635,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         
         ##
         AddSimplifyMorphism( category,
-            function( alpha, i )
+            function( cat, alpha, i )
                 
                 return LINEAR_CLOSURE_MORPHISM_SIMPLIFY( alpha );
                 
@@ -637,16 +645,16 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
     
     ## Homomorphism structure
     
-    if ForAll( 
-        [ "DistinguishedObjectOfHomomorphismStructure", 
+    if ForAll(
+        [ "DistinguishedObjectOfHomomorphismStructure",
          "HomomorphismStructureOnObjects",
          "HomomorphismStructureOnMorphismsWithGivenObjects",
          "InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure",
          "InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism" ],
          f -> CanCompute( underlying_category, f ) )
-         and 
+         and
          IsCategoryOfSkeletalFinSets( RangeCategoryOfHomomorphismStructure( underlying_category ) )
-         and 
+         and
          with_nf
          then
             
@@ -656,22 +664,24 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             
         SetRangeCategoryOfHomomorphismStructure( category, rows );
         
-        t_obj := TensorUnit( rows );
+        t_obj := CategoryOfRowsObject( rows, 1 );
         
         t_finsets := TerminalObject( finsets );
         
         FunctorObj := function( set )
+            #% CAP_JIT_RESOLVE_FUNCTION
             return CategoryOfRowsObject( rows, Length( set ) );
         end;
         
         FunctorMor := function( mor )
             local range, id;
+            #% CAP_JIT_RESOLVE_FUNCTION
             
             range := Range( mor );
             
             id := HomalgIdentityMatrix( Length( range ), ring );
             
-            return CategoryOfRowsMorphism(
+            return CategoryOfRowsMorphism( rows,
                 FunctorObj( Source( mor ) ),
                 CertainRows( id, AsList( mor ) ),
                 FunctorObj( range )
@@ -681,7 +691,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         
         ##
         AddDistinguishedObjectOfHomomorphismStructure( category,
-        function()
+        function( cat )
             
             return t_obj;
             
@@ -689,15 +699,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
         
         ##
         AddHomomorphismStructureOnObjects( category,
-          function( a, b )
+          function( cat, a, b )
             
-            return FunctorObj( HomomorphismStructureOnObjects( UnderlyingOriginalObject( a ), UnderlyingOriginalObject( b ) ) );
+            return FunctorObj( HomomorphismStructureOnObjects( UnderlyingCategory( cat ), UnderlyingOriginalObject( a ), UnderlyingOriginalObject( b ) ) );
             
         end );
         
         ##
         AddHomomorphismStructureOnMorphismsWithGivenObjects( category,
-          function( source, alpha, beta, range )
+          function( cat, source, alpha, beta, range )
             local coeffs_a, size_a, coeffs_b, size_b, supp_a, supp_b;
             
             coeffs_a := CoefficientsList( alpha );
@@ -710,7 +720,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             
             if size_a = 0 or size_b = 0 then
                 
-                return ZeroMorphism( source, range );
+                return ZeroMorphism( rows, source, range );
                 
             fi;
             
@@ -719,15 +729,25 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
             supp_b := SupportMorphisms( beta );
             
             return
-                Sum( List( [ 1 .. size_a ], 
-                    i -> Sum( List( [ 1 .. size_b ], 
-                        j -> coeffs_a[i] * coeffs_b[j] * FunctorMor( HomomorphismStructureOnMorphisms( supp_a[i], supp_b[j] ) ) ) ) ) );
+                Iterated(
+                    List(
+                        [ 1 .. size_a ],
+                        i -> Iterated(
+                            List(
+                                [ 1 .. size_b ],
+                                j ->  MultiplyWithElementOfCommutativeRingForMorphisms( rows, coeffs_a[i] * coeffs_b[j], FunctorMor( HomomorphismStructureOnMorphisms( UnderlyingCategory( cat ),  supp_a[i], supp_b[j] ) ) )
+                            ),
+                            { mor1, mor2 } -> AdditionForMorphisms( rows, mor1, mor2 )
+                        )
+                    ),
+                    { mor1, mor2 } -> AdditionForMorphisms( rows, mor1, mor2 )
+                );
             
         end );
         
         ##
         AddInterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( category,
-            function( alpha )
+            function( cat, alpha )
                 local coeffs, supp;
                 
                 coeffs := CoefficientsList( alpha );
@@ -741,15 +761,15 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
                 supp := SupportMorphisms( alpha );
                 
                 return
-                    Sum( List( [ 1 .. Size( coeffs ) ], 
-                    i -> 
+                    Sum( List( [ 1 .. Size( coeffs ) ],
+                    i ->
                     coeffs[i] * FunctorMor( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( supp[i] ) ) ) );
                 
         end );
         
         ##
         AddInterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( category,
-          function( a, b, mor )
+          function( cat, a, b, mor )
             local size, a_und, b_und, range_finset;
             
             size := RankOfObject( Range( mor ) );
@@ -764,7 +784,7 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_LINEAR_CLOSURE,
                 LinearClosureMorphism(
                     a,
                     EntriesOfHomalgMatrix( UnderlyingMatrix( mor ) ),
-                    List( [ 1 .. size ], i -> 
+                    List( [ 1 .. size ], i ->
                         InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism(
                             a_und, b_und, MapOfFinSets( t_finsets, [ i ], range_finset )
                         )
@@ -929,7 +949,7 @@ InstallMethod( \=,
 InstallMethod( \/,
                [ IsCapCategoryMorphism, IsLinearClosure ],
                
-    function( mor, cat ) 
+    function( mor, cat )
         
         return LinearClosureMorphismNC(
             LinearClosureObject( Source( mor ), cat ),
