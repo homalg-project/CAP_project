@@ -26,6 +26,8 @@ jobs:
       - run: mkdir -p /home/gap/.gap/pkg/
       - run: sudo cp -a $GITHUB_WORKSPACE /home/gap/.gap/pkg/
       - run: sudo chown -R gap:gap /home/gap/.gap/pkg/
+      # https://github.com/homalg-project/CAP_project/issues/836
+      - run: '[ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && cd /home/gap/inst/gap-master && git fetch --unshallow && git revert --no-commit 6208432d336e6806ef733e2b6539ae1a416690df || true'
       - run: |
           export HOME="/home/gap"
           cd /home/gap/.gap/pkg/
