@@ -6,6 +6,13 @@
 InstallGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree", function ( cat, operation_name )
   local index, function_to_compile, info, filter_list, return_type, arguments_data_types, return_data_type;
     
+    if not (IsBound( cat!.category_as_first_argument ) and cat!.category_as_first_argument = true) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( "only CAP operations of categories with `cat!.category_as_first_argument = true` can be compiled" );
+        
+    fi;
+    
     # find the last added function with no additional filters
     index := Last( PositionsProperty( cat!.added_functions.(operation_name), f -> Length( f[2] ) = 0 ) );
     
@@ -29,13 +36,6 @@ InstallGlobalFunction( "CapJitCompiledCAPOperationAsEnhancedSyntaxTree", functio
     fi;
     
     if not IsBound( cat!.compiled_functions_trees.(operation_name)[index] ) then
-        
-        if not (IsBound( cat!.category_as_first_argument ) and cat!.category_as_first_argument = true) then
-            
-            # COVERAGE_IGNORE_NEXT_LINE
-            Error( "only CAP operations of categories with `cat!.category_as_first_argument = true` can be compiled" );
-            
-        fi;
         
         function_to_compile := cat!.added_functions.(operation_name)[index][1];
         

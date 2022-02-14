@@ -240,7 +240,20 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_RING_AS_CATEGORY,
         );
         
     end );
-
+    
+    if HasIsCommutative( ring ) and IsCommutative( ring ) then
+        
+        SetCommutativeRingOfLinearCategory( category, ring );
+        
+        AddMultiplyWithElementOfCommutativeRingForMorphisms( category,
+          function( cat, r, alpha )
+            
+            return RingAsCategoryMorphism( category, r * UnderlyingRingElement( alpha ) );
+            
+        end );
+        
+    fi;
+    
     ## Homomorphism structure
     
     range_category := fail;
