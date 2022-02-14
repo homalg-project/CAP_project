@@ -30,5 +30,7 @@ delta := ZeroMorphism( u, u );
 #! <0>
 IsZero( delta );
 #! true
+2 * beta;
+#! <1>
 
 #! @EndExample

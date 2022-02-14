@@ -210,7 +210,11 @@ function( q, mor )
     
     ring := CommutativeRingOfLinearCategory( cat );
     
-    if not IsIdenticalObj( ring, Rationals ) then
+    if IsIdenticalObj( ring, Integers ) or IsIdenticalObj( ring, Rationals ) then
+        
+        r := q;
+        
+    else
         
         if IsBound( ring!.interpret_rationals_func ) then
             
