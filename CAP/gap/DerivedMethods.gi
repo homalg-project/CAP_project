@@ -776,6 +776,14 @@ AddDerivationToCAP( MorphismFromSourceToCoequalizer,
 ###########################
 
 ##
+AddDerivationToCAP( IsBijectiveObject,
+  function( cat, object )
+    
+    return IsProjective( cat, object ) and IsInjective( cat, object );
+    
+end : Description := "IsBijectiveObject by checking if the object is both projective and injective" );
+
+##
 AddDerivationToCAP( IsProjective,
   function( cat, object )
     

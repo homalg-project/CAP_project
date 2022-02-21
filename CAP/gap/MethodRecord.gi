@@ -2279,6 +2279,13 @@ IsIdempotent := rec(
   dual_operation := "IsIdempotent",
   property_of := "morphism" ),
 
+IsBijectiveObject := rec(
+  filter_list := [ "category", "object" ],
+  well_defined_todo := false,
+  return_type := "bool",
+  dual_operation := "IsBijectiveObject",
+  property_of := "object" ),
+
 IsProjective := rec(
   filter_list := [ "category", "object" ],
   well_defined_todo := false,
