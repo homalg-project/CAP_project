@@ -667,8 +667,8 @@ AddDerivationToCAP( MonoidalPostCoComposeMorphismWithGivenObjects,
                   CoclosedEvaluationMorphism( cat, a, b ),
                   
                   TensorProductOnMorphisms( cat,
-                    CoclosedEvaluationMorphism( cat, b, c ),
-                    IdentityMorphism( cat, cohom_a_b )
+                    IdentityMorphism( cat, cohom_a_b ),
+                    CoclosedEvaluationMorphism( cat, b, c )
                   ),
                   
                   AssociatorRightToLeft( cat, cohom_a_b, cohom_b_c, c )
