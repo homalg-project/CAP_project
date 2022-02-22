@@ -2470,6 +2470,17 @@ end
     , 202 : IsPrecompiledDerivation := true );
     
     ##
+    AddIsBijectiveObject( cat,
+        
+########
+function ( cat_1, arg2_1 )
+    return true and true;
+end
+########
+        
+    , 201 : IsPrecompiledDerivation := true );
+    
+    ##
     AddIsCodominating( cat,
         
 ########

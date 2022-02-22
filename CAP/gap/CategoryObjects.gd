@@ -69,6 +69,15 @@ DeclareOperation( "AddPropertyToMatchAtIsEqualForObjects",
 
 #! @Description
 #! The argument is an object $a$.
+#! The output is <C>true</C> if $a$ is a bijective object,
+#! otherwise the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments a
+DeclareProperty( "IsBijectiveObject",
+                 IsCapCategoryObject );
+
+#! @Description
+#! The argument is an object $a$.
 #! The output is <C>true</C> if $a$ is a projective object,
 #! otherwise the output is <C>false</C>.
 #! @Returns a boolean

@@ -1532,6 +1532,25 @@ DeclareOperation( "AddIsAutomorphism",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `IsBijectiveObject`.
+#! $F: ( arg2 ) \mapsto \mathtt{IsBijectiveObject}(arg2)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddIsBijectiveObject",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddIsBijectiveObject",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddIsBijectiveObject",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddIsBijectiveObject",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `IsCodominating`.
 #! $F: ( arg2, arg3 ) \mapsto \mathtt{IsCodominating}(arg2, arg3)$.
 #! @Returns nothing
