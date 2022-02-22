@@ -855,6 +855,7 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "CompilerForCAP", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that CapJitDroppedUnusedBindings is idempotent</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># (one function level)</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">func := function ( )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  local val1, val2; val1 := 1; val2 := val1; return 1; end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
@@ -867,6 +868,42 @@ end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree2 ) );</span>
 function (  )
     return 1;
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree = tree2;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># check that CapJitDroppedUnusedBindings is idempotent</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># (multiple function levels)</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># we have to work hard to not write semicolons so AutoDoc</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># does not begin a new statement</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">func := EvalString( ReplacedString( """function( x )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  local val1@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    val1 := 1@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return function ( )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      local val2@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        val2 := val1@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        return 1@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    end@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">end""", "@", ";" ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitDroppedUnusedBindings( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );</span>
+function ( x_1 )
+    return function (  )
+          return 1;
+      end;
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree2 := CapJitDroppedUnusedBindings( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree2 ) );</span>
+function ( x_1 )
+    return function (  )
+          return 1;
+      end;
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree = tree2;</span>
 true

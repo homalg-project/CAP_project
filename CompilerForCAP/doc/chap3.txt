@@ -809,6 +809,7 @@
     [4X[25Xgap>[125X [27XLoadPackage( "CompilerForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27X# check that CapJitDroppedUnusedBindings is idempotent[127X[104X
+    [4X[25X>[125X [27X# (one function level)[127X[104X
     [4X[25X>[125X [27Xfunc := function ( )[127X[104X
     [4X[25X>[125X [27X  local val1, val2; val1 := 1; val2 := val1; return 1; end;;[127X[104X
     [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
@@ -821,6 +822,42 @@
     [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree2 ) );[127X[104X
     [4X[28Xfunction (  )[128X[104X
     [4X[28X    return 1;[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27Xtree = tree2;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# check that CapJitDroppedUnusedBindings is idempotent[127X[104X
+    [4X[25X>[125X [27X# (multiple function levels)[127X[104X
+    [4X[25X>[125X [27X# we have to work hard to not write semicolons so AutoDoc[127X[104X
+    [4X[25X>[125X [27X# does not begin a new statement[127X[104X
+    [4X[25X>[125X [27Xfunc := EvalString( ReplacedString( """function( x )[127X[104X
+    [4X[25X>[125X [27X  local val1@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    val1 := 1@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    return function ( )[127X[104X
+    [4X[25X>[125X [27X      local val2@[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X        val2 := val1@[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X        return 1@[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X    end@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27Xend""", "@", ";" ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitDroppedUnusedBindings( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree ) );[127X[104X
+    [4X[28Xfunction ( x_1 )[128X[104X
+    [4X[28X    return function (  )[128X[104X
+    [4X[28X          return 1;[128X[104X
+    [4X[28X      end;[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27Xtree2 := CapJitDroppedUnusedBindings( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree2 ) );[127X[104X
+    [4X[28Xfunction ( x_1 )[128X[104X
+    [4X[28X    return function (  )[128X[104X
+    [4X[28X          return 1;[128X[104X
+    [4X[28X      end;[128X[104X
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27Xtree = tree2;[127X[104X
     [4X[28Xtrue[128X[104X
