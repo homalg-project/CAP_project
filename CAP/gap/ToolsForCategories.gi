@@ -904,6 +904,7 @@ InstallGlobalFunction( InstallMethodForCompilerForCAP,
         
     else
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "this should never happen" );
         
     fi;
@@ -934,6 +935,7 @@ InstallGlobalFunction( InstallOtherMethodForCompilerForCAP,
         
     else
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "this should never happen" );
         
     fi;
@@ -952,23 +954,33 @@ InstallGlobalFunction( CapJitAddKnownMethod,
     
     if not IsOperation( operation ) or not IsList( filters ) or not IsFunction( method ) then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "usage: CapJitAddKnownMethod( <operation>, <list of filters>, <method> )" );
         
     fi;
     
     if IsEmpty( filters ) then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "there must be at least one filter" );
         
     fi;
     
     if not IsSpecializationOfFilter( IsCapCategory, filters[1] ) then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "the first filter must imply IsCapCategory" );
         
     fi;
     
     operation_name := NameFunction( operation );
+    
+    if IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name) ) and Length( filters ) = Length( CAP_INTERNAL_METHOD_NAME_RECORD.(operation_name).filter_list ) then
+        
+        # COVERAGE_IGNORE_NEXT_LINE
+        Error( operation_name, " is already installed as a CAP operation with the same number of arguments" );
+        
+    fi;
     
     # check if we deal with a KeyDependentOperation
     if EndsWith( operation_name, "Op" ) then
@@ -993,6 +1005,7 @@ InstallGlobalFunction( CapJitAddKnownMethod,
     
     if ForAny( known_methods, m -> Length( m.filters ) = Length( filters ) and ( IsSpecializationOfFilter( m.filters[1], filters[1] ) or IsSpecializationOfFilter( filters[1], m.filters[1] ) ) ) then
         
+        # COVERAGE_IGNORE_NEXT_LINE
         Error( "there is already a method known for ", operation_name, " with a category filter which implies the current category filter or is impled by it" );
         
     fi;
