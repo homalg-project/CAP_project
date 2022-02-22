@@ -23,6 +23,14 @@
 #! with the parameters given above and
 #! compared to the equivalent computation in
 #! the opposite category of $cat$.
-#! Pass the option 'verbose := true' to output more information.
+#! Pass the options
+#! * `verbose := true` to output more information.
+#! * `only_primitive_operations := true`,
+#!    which is passed on to Opposite(),
+#!    to only primitively install
+#!    dual operations for primitively
+#!    installed operations in $cat$.
+#!    The advantage is, that more derivations might be tested.
+#!    On the downside, this might test fewer dual_pre/postprocessor_funcs.
 #! @Arguments cat, a, b, c, alpha, beta
 DeclareGlobalFunction( "CocartesianCategoriesTest" );
