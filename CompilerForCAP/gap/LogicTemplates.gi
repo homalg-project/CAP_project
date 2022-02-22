@@ -802,6 +802,8 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATES, function ( tree
                 Info( InfoCapJit, 1, template.dst_template );
                 
                 # make sure we have new function IDs
+                # Functions from src_template_tree can appear multiple times in dst_template_tree, so in dst_template_tree the same function ID can occur multiple times.
+                # Since we require function IDs to be unique in a tree except in this special case, we now have to create a copy with new IDs.
                 tree := CapJitCopyWithNewFunctionIDs( dst_tree );
                 
             else
