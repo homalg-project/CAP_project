@@ -515,7 +515,7 @@ AddDerivationToCAP( MorphismFromCoexponentialToCoproductWithGivenObjects,
 
     #       Coexp(a,b)
     #            |
-    #            | Coexp(λ_a, (ρ_b)^-1)
+    #            | Coexp((λ_a)^-1, ρ_b)
     #            v
     # Coexp(1 x a, b x 1)
     #            |
@@ -530,8 +530,8 @@ AddDerivationToCAP( MorphismFromCoexponentialToCoproductWithGivenObjects,
     
     return PreComposeList( cat, [
              CoexponentialOnMorphisms( cat,
-               CocartesianLeftUnitor( cat, a ),
-               CocartesianRightUnitorInverse( cat, b ) ),
+               CocartesianLeftUnitorInverse( cat, a ),
+               CocartesianRightUnitor( cat, b ) ),
               
              CoexponentialCoproductCompatibilityMorphism( cat,
                [ unit, a, b, unit ] ),
@@ -669,8 +669,8 @@ AddDerivationToCAP( CocartesianPostCoComposeMorphismWithGivenObjects,
                   CocartesianEvaluationMorphism( cat, a, b ),
                   
                   CoproductOnMorphisms( cat,
-                    CocartesianEvaluationMorphism( cat, b, c ),
-                    IdentityMorphism( cat, coexp_a_b )
+                    IdentityMorphism( cat, coexp_a_b ),
+                    CocartesianEvaluationMorphism( cat, b, c )
                   ),
                   
                   CocartesianAssociatorRightToLeft( cat, coexp_a_b, coexp_b_c, c )
