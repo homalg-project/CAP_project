@@ -891,6 +891,12 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                         
                         Assert( 0, tree.name in func.nams );
                         
+                        if Position( func.nams, tree.name ) > func.narg then
+                            
+                            Assert( 0, tree.name in func.bindings.names );
+                            
+                        fi;
+                        
                         Add( used_by_paths.(tree.name), path );
                         
                     fi;
