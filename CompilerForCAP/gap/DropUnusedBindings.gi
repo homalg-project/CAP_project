@@ -4,10 +4,19 @@
 # Implementations
 #
 InstallGlobalFunction( CapJitDroppedUnusedBindings, function ( tree )
-  local pre_func;
+  local result_func;
     
-    pre_func := function ( tree, additional_arguments )
-      local used_by_bindings, func, pre_func, unused_names, binding_name;
+    # we have to use result_func instead of pre_func to drop bindings which are used by unused bindings further down the function stack
+    result_func := function ( tree, result, keys, additional_arguments )
+      local used_by_bindings, func, pre_func, unused_names, binding_name, key;
+        
+        tree := ShallowCopy( tree );
+        
+        for key in keys do
+            
+            tree.(key) := result.(key);
+            
+        od;
         
         if tree.type = "EXPR_DECLARATIVE_FUNC" then
             
@@ -96,6 +105,6 @@ InstallGlobalFunction( CapJitDroppedUnusedBindings, function ( tree )
         
     end;
     
-    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    return CapJitIterateOverTree( tree, ReturnFirst, result_func, ReturnTrue, true );
     
 end );
