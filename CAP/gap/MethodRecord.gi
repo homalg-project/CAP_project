@@ -5272,7 +5272,7 @@ InstallGlobalFunction( CAP_INTERNAL_GENERATE_DOCUMENTATION_FOR_CATEGORY_INSTANCE
             
             if info = fail then
                 
-                Error( "Could not get HELP_BOOK_INFO for book ", bookname );
+                Error( "Could not get HELP_BOOK_INFO for book ", bookname, ". You probably have to execute `make doc` for the corresponding package." );
                 
             fi;
             
