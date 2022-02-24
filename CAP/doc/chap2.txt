@@ -33,7 +33,15 @@
   
   [1X2.3 [33X[0;0YCategorical Properties of Objects[133X[101X
   
-  [1X2.3-1 IsProjective[101X
+  [1X2.3-1 IsBijectiveObject[101X
+  
+  [33X[1;0Y[29X[2XIsBijectiveObject[102X( [3Xa[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument is an object [23Xa[123X. The output is [10Xtrue[110X if [23Xa[123X is a bijective object,
+  otherwise the output is [10Xfalse[110X.[133X
+  
+  [1X2.3-2 IsProjective[101X
   
   [33X[1;0Y[29X[2XIsProjective[102X( [3Xa[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -41,7 +49,7 @@
   [33X[0;0YThe argument is an object [23Xa[123X. The output is [10Xtrue[110X if [23Xa[123X is a projective object,
   otherwise the output is [10Xfalse[110X.[133X
   
-  [1X2.3-2 IsInjective[101X
+  [1X2.3-3 IsInjective[101X
   
   [33X[1;0Y[29X[2XIsInjective[102X( [3Xa[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -49,7 +57,7 @@
   [33X[0;0YThe argument is an object [23Xa[123X. The output is [10Xtrue[110X if [23Xa[123X is an injective object,
   otherwise the output is [10Xfalse[110X.[133X
   
-  [1X2.3-3 IsTerminal[101X
+  [1X2.3-4 IsTerminal[101X
   
   [33X[1;0Y[29X[2XIsTerminal[102X( [3Xa[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -58,7 +66,7 @@
   [23Xa[123X  is  isomorphic to the terminal object of [23X\mathbf{C}[123X, otherwise the output
   is [10Xfalse[110X.[133X
   
-  [1X2.3-4 IsInitial[101X
+  [1X2.3-5 IsInitial[101X
   
   [33X[1;0Y[29X[2XIsInitial[102X( [3Xa[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -67,7 +75,7 @@
   [23Xa[123X is isomorphic to the initial object of [23X\mathbf{C}[123X, otherwise the output is
   [10Xfalse[110X.[133X
   
-  [1X2.3-5 IsZeroForObjects[101X
+  [1X2.3-6 IsZeroForObjects[101X
   
   [33X[1;0Y[29X[2XIsZeroForObjects[102X( [3Xa[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -76,7 +84,7 @@
   [23Xa[123X  is  isomorphic  to the zero object of [23X\mathbf{C}[123X, otherwise the output is
   [10Xfalse[110X.[133X
   
-  [1X2.3-6 IsZero[101X
+  [1X2.3-7 IsZero[101X
   
   [33X[1;0Y[29X[2XIsZero[102X( [3Xa[103X ) [32X property[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X

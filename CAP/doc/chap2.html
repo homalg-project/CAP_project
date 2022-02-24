@@ -35,12 +35,13 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X86CCD70884952468">2.3 <span class="Heading">Categorical Properties of Objects</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X849A94147D3446BE">2.3-1 IsProjective</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8788D5A27EC1F994">2.3-2 IsInjective</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D3542EE7A8448A7">2.3-3 IsTerminal</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X83F6095A80DCCDC3">2.3-4 IsInitial</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X856FA5E084753312">2.3-5 IsZeroForObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X824765AD78E027CC">2.3-6 IsZero</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X854468CF79122D57">2.3-1 IsBijectiveObject</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X849A94147D3446BE">2.3-2 IsProjective</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8788D5A27EC1F994">2.3-3 IsInjective</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D3542EE7A8448A7">2.3-4 IsTerminal</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X83F6095A80DCCDC3">2.3-5 IsInitial</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X856FA5E084753312">2.3-6 IsZeroForObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X824765AD78E027CC">2.3-7 IsZero</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X8332653E7EA2EB72">2.4 <span class="Heading">Random Objects</span></a>
 </span>
@@ -134,9 +135,18 @@
 
 <h4>2.3 <span class="Heading">Categorical Properties of Objects</span></h4>
 
+<p><a id="X854468CF79122D57" name="X854468CF79122D57"></a></p>
+
+<h5>2.3-1 IsBijectiveObject</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsBijectiveObject</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is an object <span class="Math">a</span>. The output is <code class="code">true</code> if <span class="Math">a</span> is a bijective object, otherwise the output is <code class="code">false</code>.</p>
+
 <p><a id="X849A94147D3446BE" name="X849A94147D3446BE"></a></p>
 
-<h5>2.3-1 IsProjective</h5>
+<h5>2.3-2 IsProjective</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsProjective</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
@@ -145,7 +155,7 @@
 
 <p><a id="X8788D5A27EC1F994" name="X8788D5A27EC1F994"></a></p>
 
-<h5>2.3-2 IsInjective</h5>
+<h5>2.3-3 IsInjective</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsInjective</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
@@ -154,7 +164,7 @@
 
 <p><a id="X7D3542EE7A8448A7" name="X7D3542EE7A8448A7"></a></p>
 
-<h5>2.3-3 IsTerminal</h5>
+<h5>2.3-4 IsTerminal</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsTerminal</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
@@ -163,7 +173,7 @@
 
 <p><a id="X83F6095A80DCCDC3" name="X83F6095A80DCCDC3"></a></p>
 
-<h5>2.3-4 IsInitial</h5>
+<h5>2.3-5 IsInitial</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsInitial</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
@@ -172,7 +182,7 @@
 
 <p><a id="X856FA5E084753312" name="X856FA5E084753312"></a></p>
 
-<h5>2.3-5 IsZeroForObjects</h5>
+<h5>2.3-6 IsZeroForObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsZeroForObjects</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
@@ -181,7 +191,7 @@
 
 <p><a id="X824765AD78E027CC" name="X824765AD78E027CC"></a></p>
 
-<h5>2.3-6 IsZero</h5>
+<h5>2.3-7 IsZero</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsZero</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
