@@ -9,7 +9,3 @@ Features:
 * support compilation of operations
 * For categories with finitely many objects (or morphisms): detect parts of the code which can be precomputed, e.g. hom_structure_on_basis_paths in Algebroids.
 * unify deduplication and hoisting: hoisting in duplicate code can lead to different variable names, so the deduplication does not match anymore (partially fixed)
-
-Bugs:
-
-* operations/derivations returning fail probably do not fulfill the requirements that all branches of an if statement can be executed in any case (partially fixed)
