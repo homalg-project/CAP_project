@@ -266,3 +266,17 @@ InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_LIST_OF_TWO_CELLS_OF_CATEGORY,
     od;
     
 end );
+
+##
+InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_NON_NEGATIVE_INTEGER_OR_INFINITY,
+  
+  function( nnintorinf, human_readable_identifier_getter )
+    local generic_help_string;
+    
+    generic_help_string := " You can access the object and category via the local variable 'nnintorinf' in a break loop.";
+    
+    if not ( IsInfinity( nnintorinf ) or ( IsInt( nnintorinf ) and nnintorinf >= 0 ) ) then
+        Error( Concatenation( human_readable_identifier_getter(), " is not a non negative integer or infinity.", generic_help_string ) );
+    fi;
+    
+end );

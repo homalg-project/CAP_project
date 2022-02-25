@@ -344,6 +344,10 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 input_sanity_check_functions[i] := function( arg, i )
                     CAP_INTERNAL_ASSERT_IS_LIST_OF_TWO_CELLS_OF_CATEGORY( arg, category, function( ) return input_human_readable_identifier_getter( i ); end );
                 end;
+            elif filter = "non_neg_integer_or_infinity" then
+                input_sanity_check_functions[i] := function( arg, i )
+                    CAP_INTERNAL_ASSERT_IS_NON_NEGATIVE_INTEGER_OR_INFINITY( arg, function( ) return input_human_readable_identifier_getter( i ); end );
+                end;
             else
                 Display( Concatenation( "Warning: You should add an input sanity check for the following filter: ", String( filter ) ) );
                 input_sanity_check_functions[i] := ReturnTrue;
@@ -416,6 +420,10 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 if result <> fail then
                     CAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
                 fi;
+            end;
+        elif record.return_type = "non_neg_integer_or_infinity" then
+            output_sanity_check_function := function( result )
+                CAP_INTERNAL_ASSERT_IS_NON_NEGATIVE_INTEGER_OR_INFINITY( result, output_human_readable_identifier_getter );
             end;
         else
             Display( Concatenation( "Warning: You should add an output sanity check for the following return_type: ", String( record.return_type ) ) );

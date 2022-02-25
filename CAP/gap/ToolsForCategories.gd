@@ -138,6 +138,12 @@ DeclareGlobalFunction( "CAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY" );
 #!  <A>human_readable_identifier_getter</A> is a 0-ary function returning a string which is used to refer to <A>list_of_twocells</A> in the error message.
 DeclareGlobalFunction( "CAP_INTERNAL_ASSERT_IS_LIST_OF_TWO_CELLS_OF_CATEGORY" );
 
+#! @Arguments nnintorinf, human_readable_identifier_getter
+#! @Description
+#!  The function throws an error if <A>nnintorinf</A> is not a non negative integer or infinity.
+#!  <A>human_readable_identifier_getter</A> is a 0-ary function returning a string which is used to refer to <A>nnintorinf</A> in the error message.
+DeclareGlobalFunction( "CAP_INTERNAL_ASSERT_IS_NON_NEGATIVE_INTEGER_OR_INFINITY" );
+
 DeclareGlobalFunction( "ListKnownCategoricalProperties" );
 
 DeclareGlobalFunction( "CAP_MergeRecords" );

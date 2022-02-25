@@ -464,6 +464,8 @@ InstallGlobalFunction( CAP_INTERNAL_REPLACE_STRINGS_WITH_FILTERS,
                   list[ i ] := IsList;
               elif current_entry = "list_of_twocells" then
                   list[ i ] := IsList;
+              elif current_entry = "non_neg_integer_or_infinity" then
+                  list[ i ] := IsCyclotomic;
               else
                   Error( "filter type is not recognized, see the documentation for allowed values" );
               fi;
