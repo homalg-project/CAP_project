@@ -139,7 +139,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsAdditiveClosureObject, IsInt ],
         src_template := "additive_closure_object[index]",
         dst_template := "ObjectList( additive_closure_object )[index]",
-        returns_value := true,
     )
 );
 
@@ -150,7 +149,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsAdditiveClosureMorphism, IsInt, IsInt ],
         src_template := "additive_closure_morphism[row, column]",
         dst_template := "MorphismMatrix( additive_closure_morphism )[row][column]",
-        returns_value := true,
     )
 );
 
@@ -161,7 +159,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsAdditiveClosureMorphism ],
         src_template := "NumberRows( additive_closure_morphism )",
         dst_template := "Length( ObjectList( Source( additive_closure_morphism ) ) )",
-        returns_value := true,
     )
 );
 
@@ -172,7 +169,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsAdditiveClosureMorphism ],
         src_template := "NumberColumns( additive_closure_morphism )",
         dst_template := "Length( ObjectList( Range( additive_closure_morphism ) ) )",
-        returns_value := true,
     )
 );
 
@@ -182,7 +178,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "number", "obj" ],
         src_template := "Length( ListWithIdenticalEntries( number, obj ) )",
         dst_template := "number",
-        returns_value := true,
     )
 );
 
@@ -192,7 +187,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "number", "obj", "func" ],
         src_template := "List( ListWithIdenticalEntries( number, obj ), func )",
         dst_template := "ListWithIdenticalEntries( number, func( obj ) )",
-        returns_value := true,
     )
 );
 
@@ -202,7 +196,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "list" ],
         src_template := "List( list, x -> x )",
         dst_template := "list",
-        returns_value := true,
     )
 );
 
@@ -212,7 +205,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "matrix", "row", "col" ],
         src_template := "EntriesOfHomalgMatrixAsListList( matrix )[row][col]",
         dst_template := "matrix[row, col]",
-        returns_value := true,
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
@@ -223,7 +215,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "ring2", "nr_cols", "list", "ring1", "matrix" ],
         src_template := "UnionOfRows( ring2, nr_cols, List( list, l -> CoercedMatrix( ring1, ring2, matrix ) ) )",
         dst_template := "CoercedMatrix( ring1, ring2, UnionOfRows( ring1, nr_cols, List( list, l -> matrix ) ) )",
-        returns_value := true,
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
@@ -234,7 +225,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "ring2", "nr_rows", "list", "ring1", "matrix" ],
         src_template := "UnionOfColumns( ring2, nr_rows, List( list, l -> CoercedMatrix( ring1, ring2, matrix ) ) )",
         dst_template := "CoercedMatrix( ring1, ring2, UnionOfColumns( ring1, nr_rows, List( list, l -> matrix ) ) )",
-        returns_value := true,
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
@@ -246,7 +236,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsObject, IsObject, IsObject, "IsHomalgMatrix", "IsHomalgMatrix" ],
         src_template := "UnionOfRows( ring, nr_cols, List( list, l -> CoefficientsWithGivenMonomials( matrix, monomials ) ) )",
         dst_template := "CoefficientsWithGivenMonomials( UnionOfRows( ring, NumberColumns( monomials ), List( list, l -> matrix ) ), monomials )",
-        returns_value := true,
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
@@ -259,7 +248,6 @@ CapJitAddLogicTemplate(
         src_template := "UnionOfColumns( ring, nr_rows, List( list, l -> CoefficientsWithGivenMonomials( matrix, monomials ) ) )",
         dst_template := "CoefficientsWithGivenMonomials( UnionOfColumns( ring, nr_rows, List( list, l -> matrix ) ), DiagMat( ring, List( list, x -> monomials ) ) )",
         new_funcs := [ [ "x" ] ],
-        returns_value := true,
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
@@ -271,7 +259,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsObject, IsObject, IsObject, "IsHomalgRingElement", "IsHomalgMatrix" ],
         src_template := "UnionOfRows( homalg_ring, nr_cols, List( list, l -> ring_element * matrix ) )",
         dst_template := "ring_element * UnionOfRows( homalg_ring, nr_cols, List( list, l -> matrix ) )",
-        returns_value := true,
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
@@ -283,7 +270,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsObject, IsObject, IsObject, "IsHomalgMatrix", "IsHomalgRingElement" ],
         src_template := "UnionOfRows( homalg_ring, nr_cols, List( list, l -> matrix * ring_element ) )",
         dst_template := "UnionOfRows( homalg_ring, nr_cols, List( list, l -> matrix ) ) * ring_element",
-        returns_value := true,
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
@@ -295,7 +281,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsObject, IsObject, IsObject, "IsHomalgRingElement", "IsHomalgMatrix" ],
         src_template := "UnionOfColumns( homalg_ring, nr_rows, List( list, l -> ring_element * matrix ) )",
         dst_template := "ring_element * UnionOfColumns( homalg_ring, nr_rows, List( list, l -> matrix ) )",
-        returns_value := true,
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
@@ -307,7 +292,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsObject, IsObject, IsObject, "IsHomalgMatrix", "IsHomalgRingElement" ],
         src_template := "UnionOfColumns( homalg_ring, nr_rows, List( list, l -> matrix * ring_element ) )",
         dst_template := "UnionOfColumns( homalg_ring, nr_rows, List( list, l -> matrix ) ) * ring_element",
-        returns_value := true,
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
@@ -325,7 +309,6 @@ CapJitAddLogicTemplate(
             ) )
         """,
         dst_template := "DualKroneckerMat( matrix1, matrix2 )",
-        returns_value := true,
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
     )
 );
@@ -343,7 +326,6 @@ CapJitAddLogicTemplate(
             ) )
         """,
         dst_template := "KroneckerMat( TransposedMatrix( matrix1 ), matrix2 )",
-        returns_value := true,
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
     )
 );
@@ -361,7 +343,6 @@ CapJitAddLogicTemplate(
             ) )
         """,
         dst_template := "ConvertMatrixToRow( matrix )",
-        returns_value := true,
         needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
     )
 );

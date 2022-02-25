@@ -15,10 +15,9 @@ DeclareGlobalFunction( "CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE" );
 #!   Adds the logic template <A>template</A> to the list of logic templates.
 #!   For a list of pre-installed logic templates, which can be used as guiding examples, see `CompilerForCAP/gap/LogicTemplates.gi`.
 #!   Logic templates are records with the following entries:
-#!     * `src_template` and `dst_template` (required): strings containing valid GAP code
+#!     * `src_template` and `dst_template` (required): strings containing valid GAP code defining expressions
 #!     * `variable_names` (required): a list of strings
 #!     * `variable_filters` (optional): a list of filters with the same length as `variable_names`, defaults to a list of `IsObject`
-#!     * `returns_value` (required): a boolean
 #!     * `new_funcs` (optional): a list of lists of strings, defaults to the empty list
 #!     * `needed_packages` (optional): a list of pairs (i.e. lists with two entries) of strings, defaults to the empty list
 #!     * `debug` (optional): a boolean
@@ -35,8 +34,6 @@ DeclareGlobalFunction( "CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE" );
 #!       `src_template`. The functions are matched by comparing the lists of names of local variables. If for a function in
 #!       `dst_template` no corresponding function in `src_template` exists, you have to add the list of names of local variables
 #!       of this function to `new_funcs`.
-#!     * `returns_value` must be `true` if `src_template` defines an expression, `false` if it defines a statement
-#!       ultimately returning a value (including trailing semicolon!).
 #!     * `needed_packages` has the same format as `NeededOtherPackages` in `PackageInfo.g`. The template is only evaluated if
 #!       the packages in `needed_packages` are loaded in the correct versions.
 #!     * `debug` can be set to `true` to print more information while <Ref Func="CapJitAppliedLogicTemplates" /> tries to apply the template.
