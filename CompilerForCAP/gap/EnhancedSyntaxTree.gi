@@ -3,6 +3,13 @@
 #
 # Implementations
 #
+InstallGlobalFunction( CAP_JIT_INTERNAL_EXPR_CASE, function ( args... )
+    
+    # COVERAGE_IGNORE_NEXT_LINE
+    Error( "CAP_JIT_INTERNAL_EXPR_CASE is a helper for CompilerForCAP and should never actually be called" );
+    
+end );
+
 BindGlobal( "CAP_JIT_INTERNAL_SYNTAX_TREE_TO_OPERATION_TRANSLATIONS", rec(
     EXPR_ELM_LIST := tree -> rec( operation_name := "[]", args := [ tree.list, tree.pos ] ),
     EXPR_ELMS_LIST := tree -> rec( operation_name := "{}", args := [ tree.list, tree.poss ] ),
@@ -99,7 +106,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
     fi;
     
     pre_func := function ( tree, additional_arguments )
-      local path, func_stack, new_tree, statements, i, statement, level, pos, lvars, value, to_delete, next_statement, funccall, translation, operation_name, branch, keyvalue;
+      local path, func_stack, new_tree, statements, i, statement, level, pos, lvars, value, to_delete, next_statement, funccall, translation, operation_name, branch, keyvalue, case_expression;
         
         path := additional_arguments[1];
         func_stack := additional_arguments[2];
@@ -516,6 +523,31 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE, function ( func )
                 );
                 
                 Assert( 0, tree.id <> fail );
+                
+            fi;
+            
+            if CapJitIsCallToGlobalFunction( tree, "CAP_JIT_INTERNAL_EXPR_CASE" ) then
+                
+                Assert( 0, IsEvenInt( Length( tree.args ) ) );
+                Assert( 0, not IsEmpty( tree.args ) );
+                Assert( 0, tree.args[Length( tree.args ) - 1].type = "EXPR_TRUE" );
+                
+                case_expression := rec(
+                    type := "EXPR_CASE",
+                    branches := [ ],
+                );
+                
+                for i in [ 1, 3 .. Length( tree.args ) - 1 ] do
+                    
+                    Add( case_expression.branches, rec(
+                        type := "CASE_BRANCH",
+                        condition := tree.args[i],
+                        value := tree.args[i + 1],
+                    ) );
+                    
+                od;
+                
+                tree := case_expression;
                 
             fi;
             

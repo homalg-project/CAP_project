@@ -60,22 +60,21 @@ Display( applied_logic_template_to_func( func, template, fail ) );
 #!       end;
 #! end
 
-# general example not returning a value
-# we have to work hard to not write semicolons so AutoDoc
-# does not begin a new statement
-template := EvalString( ReplacedString( """rec(
-    variable_names := [ "variable" ],
-    src_template := "return x -> x + variable + x - x@",
-    dst_template := "return x -> x + variable + 0@",
-    returns_value := false,
-)""", "@", ";" ) );;
+# example using EXPR_CASE
+template := rec(
+    variable_names := [ "val1", "val2" ],
+    src_template := "CAP_JIT_INTERNAL_EXPR_CASE( 1 <> 1, val1, true, val2 )",
+    dst_template := "val2",
+    returns_value := true,
+);;
 CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );
 
+func := function ( )
+    if 1 <> 1 then return 1; else return 2; fi; end;;
+
 Display( applied_logic_template_to_func( func, template, fail ) );
-#! function ( a_1 )
-#!     return function ( b_2 )
-#!           return b_2 + (2 * b_2 + a_1) + 0;
-#!       end;
+#! function ( )
+#!     return 2;
 #! end
 
 # check that functions in variables can match

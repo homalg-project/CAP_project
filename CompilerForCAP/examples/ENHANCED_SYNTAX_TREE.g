@@ -276,4 +276,52 @@ tree.bindings.BINDING_RETURN_VALUE.nams =
     tree2.bindings.BINDING_RETURN_VALUE.nams;
 #! true
 
+# test CAP_JIT_INTERNAL_EXPR_CASE
+func := { } -> CAP_JIT_INTERNAL_EXPR_CASE( 1 <> 1, 1, true, 2 );;
+tree := ENHANCED_SYNTAX_TREE( func );;
+CapJitPrettyPrintSyntaxTree( tree );
+#! rec(
+#!   0_type := "EXPR_DECLARATIVE_FUNC",
+#!   1_id := 5,
+#!   2_nams := [ "RETURN_VALUE" ],
+#!   3_narg := 0,
+#!   4_variadic := false,
+#!   5_bindings := rec(
+#!       0_type := "FVAR_BINDING_SEQ",
+#!       1_names := [ "RETURN_VALUE" ],
+#!       2_BINDING_RETURN_VALUE := rec(
+#!           0_type := "EXPR_CASE",
+#!           1_branches := rec(
+#!               0__type := "SYNTAX_TREE_LIST",
+#!               0_length := 2,
+#!               1 := rec(
+#!                   0_type := "CASE_BRANCH",
+#!                   1_condition := rec(
+#!                       0_type := "EXPR_NE",
+#!                       1_left := rec(
+#!                           0_type := "EXPR_INT",
+#!                           1_value := 1 ),
+#!                       2_right := rec(
+#!                           0_type := "EXPR_INT",
+#!                           1_value := 1 ) ),
+#!                   2_value := rec(
+#!                       0_type := "EXPR_INT",
+#!                       1_value := 1 ) ),
+#!               2 := rec(
+#!                   0_type := "CASE_BRANCH",
+#!                   1_condition := rec(
+#!                       0_type := "EXPR_TRUE" ),
+#!                   2_value := rec(
+#!                       0_type := "EXPR_INT",
+#!                       1_value := 2 ) ) ) ) ) )
+Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
+#! function (  )
+#!     if 1 <> 1 then
+#!         return 1;
+#!     else
+#!         return 2;
+#!     fi;
+#!     return;
+#! end
+
 #! @EndExample
