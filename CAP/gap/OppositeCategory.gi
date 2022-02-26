@@ -202,7 +202,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                     
                     return Concatenation( "List( ", argument_name, ", x -> MorphismDatum( cat, x ) )" );
                     
-                elif filter = "non_neg_integer_or_infinity" then
+                elif filter = "nonneg_integer_or_infinity" then
                     
                     return argument_name;
                     
@@ -293,7 +293,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                 
                 return_statement := "return result";
                 
-            elif return_type = "non_neg_integer_or_infinity" then
+            elif return_type = "nonneg_integer_or_infinity" then
                 
                 return_statement := "return result";
 

@@ -276,7 +276,7 @@ InstallGlobalFunction( CAP_INTERNAL_ASSERT_IS_NON_NEGATIVE_INTEGER_OR_INFINITY,
     generic_help_string := " You can access the object and category via the local variable 'nnintorinf' in a break loop.";
     
     if not ( IsInfinity( nnintorinf ) or ( IsInt( nnintorinf ) and nnintorinf >= 0 ) ) then
-        Error( Concatenation( human_readable_identifier_getter(), " is not a non negative integer or infinity.", generic_help_string ) );
+        Error( Concatenation( human_readable_identifier_getter(), " is not a nonnegative integer or infinity.", generic_help_string ) );
     fi;
     
 end );

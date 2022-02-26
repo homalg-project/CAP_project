@@ -416,3 +416,25 @@ DeclareOperation( "SimplifyObject_IsoFromInputObject",
 #! @Arguments A, i
 DeclareOperation( "SimplifyObject_IsoToInputObject",
                   [ IsCapCategoryObject, IsObject ] );
+
+###################################
+##
+#! @Section Dimensions
+##
+###################################
+
+#! @Description
+#! The argument is an object $A$.
+#! The output is a the projective dimension of $A$.
+#! @Returns a nonnegative integer or infinity
+#! @Arguments A
+DeclareAttribute( "ProjectiveDimension",
+                  IsCapCategoryObject );
+
+#! @Description
+#! The argument is an object $A$.
+#! The output is a the injective dimension of $A$.
+#! @Returns a nonnegative integer or infinity
+#! @Arguments A
+DeclareAttribute( "InjectiveDimension",
+                  IsCapCategoryObject );

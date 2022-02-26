@@ -1418,6 +1418,25 @@ DeclareOperation( "AddInjectiveColift",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `InjectiveDimension`.
+#! $F: ( arg2 ) \mapsto \mathtt{InjectiveDimension}(arg2)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddInjectiveDimension",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddInjectiveDimension",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddInjectiveDimension",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddInjectiveDimension",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure`.
 #! $F: ( alpha ) \mapsto \mathtt{InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure}(alpha)$.
 #! @Returns nothing
@@ -3427,6 +3446,25 @@ DeclareOperation( "AddProjectionOntoCoequalizerWithGivenCoequalizer",
                   [ IsCapCategory, IsList, IsInt ] );
 
 DeclareOperation( "AddProjectionOntoCoequalizerWithGivenCoequalizer",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
+#! to the category for the basic operation `ProjectiveDimension`.
+#! $F: ( arg2 ) \mapsto \mathtt{ProjectiveDimension}(arg2)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddProjectiveDimension",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddProjectiveDimension",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddProjectiveDimension",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddProjectiveDimension",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

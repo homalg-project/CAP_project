@@ -244,7 +244,7 @@ InstallMethod( CategoryConstructor,
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
         # check if filters and return_type are known
-        unknown_filters := Filtered( info.filter_list, filter -> not filter in [ "category", "object", "morphism", IsInt, IsRingElement, IsCyclotomic, "list_of_objects", "list_of_morphisms" ] );
+        unknown_filters := Filtered( info.filter_list, filter -> not filter in [ "category", "object", "morphism", IsInt, IsRingElement, "nonneg_integer_or_infinity", "list_of_objects", "list_of_morphisms" ] );
         
         if not IsEmpty( unknown_filters ) then
             
@@ -326,7 +326,7 @@ InstallMethod( CategoryConstructor,
                     
                     return Concatenation( options.underlying_morphism_getter_string, "( cat, ", argument_name, " )" );
                     
-                elif filter = IsInt or filter = IsRingElement or filter = IsCyclotomic then
+                elif filter = IsInt or filter = IsRingElement or filter = "nonneg_integer_or_infinity" then
                     
                     return argument_name;
                     
