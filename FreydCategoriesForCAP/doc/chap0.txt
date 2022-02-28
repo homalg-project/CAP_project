@@ -6,10 +6,10 @@
         [1X Freyd categories - Formal (co)kernels for additive categories [101X
   
   
-                                   2022.02-04
+                                   2022.02-05
   
   
-                                14 February 2022
+                                28 February 2022
   
   
                                 Sebastian Posur
@@ -273,16 +273,17 @@
     12.16 [33X[0;0YLinear closure of categories[133X
     12.17 [33X[0;0YMatrices over ZP K[133X
     12.18 [33X[0;0YMatrices over ZG[133X
-    12.19 [33X[0;0YProsets[133X
-    12.20 [33X[0;0YQuiver rows bascis[133X
-    12.21 [33X[0;0YQuiver rows over the integers[133X
-    12.22 [33X[0;0YCategory of relations[133X
-    12.23 [33X[0;0YRings as Ab-categories[133X
-    12.24 [33X[0;0YSnake lemma first proof[133X
-    12.25 [33X[0;0YSnake lemma second proof[133X
-    12.26 [33X[0;0YSubobject lattice[133X
-    12.27 [33X[0;0YAdelman category theorem[133X
-    12.28 [33X[0;0YTests[133X
+    12.19 [33X[0;0YTesting if an object is projective, injective, bijective[133X
+    12.20 [33X[0;0YProsets[133X
+    12.21 [33X[0;0YQuiver rows bascis[133X
+    12.22 [33X[0;0YQuiver rows over the integers[133X
+    12.23 [33X[0;0YCategory of relations[133X
+    12.24 [33X[0;0YRings as Ab-categories[133X
+    12.25 [33X[0;0YSnake lemma first proof[133X
+    12.26 [33X[0;0YSnake lemma second proof[133X
+    12.27 [33X[0;0YSubobject lattice[133X
+    12.28 [33X[0;0YAdelman category theorem[133X
+    12.29 [33X[0;0YTests[133X
   13 [33X[0;0YLinear closure of a category[133X
     13.1 [33X[0;0YFunctors[133X
       13.1-1 ExtendFunctorToLinearClosureOfSource

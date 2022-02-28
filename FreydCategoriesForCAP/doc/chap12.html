@@ -76,34 +76,37 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7F1E3F5A7EC538B6">12.18 <span class="Heading">Matrices over ZG</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7AFC8F247C00D608">12.19 <span class="Heading">Prosets</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X857E54A97C1B4340">12.19 <span class="Heading">Testing if an object is projective, injective, bijective</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X816C8E7A811E9438">12.20 <span class="Heading">Quiver rows bascis</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7AFC8F247C00D608">12.20 <span class="Heading">Prosets</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7A3B76387B5880D4">12.21 <span class="Heading">Quiver rows over the integers</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X816C8E7A811E9438">12.21 <span class="Heading">Quiver rows bascis</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X789E61CF843CF960">12.22 <span class="Heading">Category of relations</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7A3B76387B5880D4">12.22 <span class="Heading">Quiver rows over the integers</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X8001962586A4466B">12.23 <span class="Heading">Rings as Ab-categories</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X789E61CF843CF960">12.23 <span class="Heading">Category of relations</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X8438072885E4F598">12.24 <span class="Heading">Snake lemma first proof</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X8001962586A4466B">12.24 <span class="Heading">Rings as Ab-categories</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X80ABE43A7CC9CA81">12.25 <span class="Heading">Snake lemma second proof</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X8438072885E4F598">12.25 <span class="Heading">Snake lemma first proof</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7CA9460078765CA9">12.26 <span class="Heading">Subobject lattice</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X80ABE43A7CC9CA81">12.26 <span class="Heading">Snake lemma second proof</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7C93B0F6874AB31E">12.27 <span class="Heading">Adelman category theorem</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7CA9460078765CA9">12.27 <span class="Heading">Subobject lattice</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7A810CDA83F2897F">12.28 <span class="Heading">Tests</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7C93B0F6874AB31E">12.28 <span class="Heading">Adelman category theorem</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7A810CDA83F2897F">12.29 <span class="Heading">Tests</span></a>
 </span>
 </div>
 </div>
@@ -1313,9 +1316,38 @@ true
 #@fi
 </pre></div>
 
+<p><a id="X857E54A97C1B4340" name="X857E54A97C1B4340"></a></p>
+
+<h4>12.19 <span class="Heading">Testing if an object is projective, injective, bijective</span></h4>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := HomalgRingOfIntegers();;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows := CategoryOfRows( R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">adelman := AdelmanCategory( rows );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj1 := CategoryOfRowsObject( 1, rows );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := ProjectionInFactorOfDirectSum( [ obj1, obj1 ], 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := AsAdelmanCategoryMorphism( alpha );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj := CokernelObject( alpha );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsBijectiveObject( obj );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := 2 * IdentityMorphism( obj1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := AsAdelmanCategoryMorphism( beta );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj1 := CokernelObject( beta );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj2 := KernelObject( beta );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsBijectiveObject( obj1 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInjective( obj1 );</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsBijectiveObject( obj2 );</span>
+false
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsProjective( obj2 );</span>
+true
+</pre></div>
+
 <p><a id="X7AFC8F247C00D608" name="X7AFC8F247C00D608"></a></p>
 
-<h4>12.19 <span class="Heading">Prosets</span></h4>
+<h4>12.20 <span class="Heading">Prosets</span></h4>
 
 
 <div class="example"><pre>
@@ -1358,7 +1390,7 @@ true
 
 <p><a id="X816C8E7A811E9438" name="X816C8E7A811E9438"></a></p>
 
-<h4>12.20 <span class="Heading">Quiver rows bascis</span></h4>
+<h4>12.21 <span class="Heading">Quiver rows bascis</span></h4>
 
 
 <div class="example"><pre>
@@ -1456,7 +1488,7 @@ true
 
 <p><a id="X7A3B76387B5880D4" name="X7A3B76387B5880D4"></a></p>
 
-<h4>12.21 <span class="Heading">Quiver rows over the integers</span></h4>
+<h4>12.22 <span class="Heading">Quiver rows over the integers</span></h4>
 
 <p>Well-defined morphisms</p>
 
@@ -1553,7 +1585,7 @@ false
 
 <p><a id="X789E61CF843CF960" name="X789E61CF843CF960"></a></p>
 
-<h4>12.22 <span class="Heading">Category of relations</span></h4>
+<h4>12.23 <span class="Heading">Category of relations</span></h4>
 
 
 <div class="example"><pre>
@@ -1593,7 +1625,7 @@ true
 
 <p><a id="X8001962586A4466B" name="X8001962586A4466B"></a></p>
 
-<h4>12.23 <span class="Heading">Rings as Ab-categories</span></h4>
+<h4>12.24 <span class="Heading">Rings as Ab-categories</span></h4>
 
 
 <div class="example"><pre>
@@ -1628,7 +1660,7 @@ true
 
 <p><a id="X8438072885E4F598" name="X8438072885E4F598"></a></p>
 
-<h4>12.24 <span class="Heading">Snake lemma first proof</span></h4>
+<h4>12.25 <span class="Heading">Snake lemma first proof</span></h4>
 
 
 <div class="example"><pre>
@@ -1701,7 +1733,7 @@ true
 
 <p><a id="X80ABE43A7CC9CA81" name="X80ABE43A7CC9CA81"></a></p>
 
-<h4>12.25 <span class="Heading">Snake lemma second proof</span></h4>
+<h4>12.26 <span class="Heading">Snake lemma second proof</span></h4>
 
 
 <div class="example"><pre>
@@ -1751,7 +1783,7 @@ true
 
 <p><a id="X7CA9460078765CA9" name="X7CA9460078765CA9"></a></p>
 
-<h4>12.26 <span class="Heading">Subobject lattice</span></h4>
+<h4>12.27 <span class="Heading">Subobject lattice</span></h4>
 
 <p>We compute the number of the generic subobject lattice generated by 2 independent subobjects y,z and one subobject x of y.</p>
 
@@ -1778,7 +1810,7 @@ true
 
 <p><a id="X7C93B0F6874AB31E" name="X7C93B0F6874AB31E"></a></p>
 
-<h4>12.27 <span class="Heading">Adelman category theorem</span></h4>
+<h4>12.28 <span class="Heading">Adelman category theorem</span></h4>
 
 
 <div class="example"><pre>
@@ -1805,7 +1837,7 @@ true
 
 <p><a id="X7A810CDA83F2897F" name="X7A810CDA83F2897F"></a></p>
 
-<h4>12.28 <span class="Heading">Tests</span></h4>
+<h4>12.29 <span class="Heading">Tests</span></h4>
 
 
 <div class="example"><pre>
