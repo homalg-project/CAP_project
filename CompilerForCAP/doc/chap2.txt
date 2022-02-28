@@ -44,14 +44,12 @@
   following entries:[133X
   
   [30X    [33X[0;6Y[10Xsrc_template[110X and [10Xdst_template[110X (required): strings containing valid GAP
-        code[133X
+        code defining expressions[133X
   
   [30X    [33X[0;6Y[10Xvariable_names[110X (required): a list of strings[133X
   
   [30X    [33X[0;6Y[10Xvariable_filters[110X (optional): a list of filters with the same length as
         [10Xvariable_names[110X, defaults to a list of [10XIsObject[110X[133X
-  
-  [30X    [33X[0;6Y[10Xreturns_value[110X (required): a boolean[133X
   
   [30X    [33X[0;6Y[10Xnew_funcs[110X  (optional):  a  list  of  lists of strings, defaults to the
         empty list[133X
@@ -83,10 +81,6 @@
         variables. If for a function in [10Xdst_template[110X no corresponding function
         in  [10Xsrc_template[110X  exists,  you  have to add the list of names of local
         variables of this function to [10Xnew_funcs[110X.[133X
-  
-  [30X    [33X[0;6Y[10Xreturns_value[110X  must  be  [10Xtrue[110X  if  [10Xsrc_template[110X defines an expression,
-        [10Xfalse[110X   if  it  defines  a  statement  ultimately  returning  a  value
-        (including trailing semicolon!).[133X
   
   [30X    [33X[0;6Y[10Xneeded_packages[110X   has   the  same  format  as  [10XNeededOtherPackages[110X  in
         [10XPackageInfo.g[110X.  The  template  is  only  evaluated  if the packages in

@@ -120,16 +120,13 @@
 
 
 <ul>
-<li><p><code class="code">src_template</code> and <code class="code">dst_template</code> (required): strings containing valid GAP code</p>
+<li><p><code class="code">src_template</code> and <code class="code">dst_template</code> (required): strings containing valid GAP code defining expressions</p>
 
 </li>
 <li><p><code class="code">variable_names</code> (required): a list of strings</p>
 
 </li>
 <li><p><code class="code">variable_filters</code> (optional): a list of filters with the same length as <code class="code">variable_names</code>, defaults to a list of <code class="code">IsObject</code></p>
-
-</li>
-<li><p><code class="code">returns_value</code> (required): a boolean</p>
 
 </li>
 <li><p><code class="code">new_funcs</code> (optional): a list of lists of strings, defaults to the empty list</p>
@@ -156,9 +153,6 @@
 
 </li>
 <li><p>For each function in <code class="code">dst_template</code>, <code class="func">CapJitAppliedLogicTemplates</code> (<a href="chap2.html#X7AE756B8878FD449"><span class="RefLink">2.5-15</span></a>) tries to find a corresponding function in <code class="code">src_template</code>. The functions are matched by comparing the lists of names of local variables. If for a function in <code class="code">dst_template</code> no corresponding function in <code class="code">src_template</code> exists, you have to add the list of names of local variables of this function to <code class="code">new_funcs</code>.</p>
-
-</li>
-<li><p><code class="code">returns_value</code> must be <code class="code">true</code> if <code class="code">src_template</code> defines an expression, <code class="code">false</code> if it defines a statement ultimately returning a value (including trailing semicolon!).</p>
 
 </li>
 <li><p><code class="code">needed_packages</code> has the same format as <code class="code">NeededOtherPackages</code> in <code class="code">PackageInfo.g</code>. The template is only evaluated if the packages in <code class="code">needed_packages</code> are loaded in the correct versions.</p>
