@@ -33,14 +33,14 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
         
     fi;
     
-    if not IsSubset( RecNames( template ), [ "variable_names", "src_template", "dst_template", "returns_value" ] ) then
+    if not IsSubset( RecNames( template ), [ "variable_names", "src_template", "dst_template" ] ) then
         
         # COVERAGE_IGNORE_NEXT_LINE
-        Error( "a logic template must have the following required record entries: variable_names, src_template, dst_template, returns_value" );
+        Error( "a logic template must have the following required record entries: variable_names, src_template, dst_template" );
         
     fi;
     
-    diff := Difference( RecNames( template ), [ "variable_names", "variable_filters", "src_template", "src_template_tree", "dst_template", "dst_template_tree", "new_funcs", "returns_value", "needed_packages", "debug", "debug_path" ] );
+    diff := Difference( RecNames( template ), [ "variable_names", "variable_filters", "src_template", "src_template_tree", "dst_template", "dst_template_tree", "new_funcs", "needed_packages", "debug", "debug_path" ] );
     
     if not IsEmpty( diff ) then
         
@@ -114,15 +114,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
     if not IsBound( template.src_template_tree ) then
         
         # to get a syntax tree we have to wrap the template in a function
-        if template.returns_value then
-            
-            tmp_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "x -> ", template.src_template ) ) );
-            
-        else
-            
-            tmp_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "function () ", template.src_template, " end;" ) ) );
-            
-        fi;
+        tmp_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "x -> ", template.src_template ) ) );
         
         Assert( 0, tmp_tree.bindings.names = [ "RETURN_VALUE" ] );
         
@@ -134,15 +126,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE, function ( templ
     if not IsBound( template.dst_template_tree ) then
         
         # to get a syntax tree we have to wrap the template in a function
-        if template.returns_value then
-            
-            tmp_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "x -> ", template.dst_template ) ) );
-            
-        else
-            
-            tmp_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "function () ", template.dst_template, " end;" ) ) );
-            
-        fi;
+        tmp_tree := ENHANCED_SYNTAX_TREE( EvalString( Concatenation( "x -> ", template.dst_template ) ) );
         
         Assert( 0, tmp_tree.bindings.names = [ "RETURN_VALUE" ] );
         
@@ -239,7 +223,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "value" ],
         src_template := "ID_FUNC( value )",
         dst_template := "value",
-        returns_value := true,
     )
 );
 
@@ -250,7 +233,6 @@ CapJitAddLogicTemplate(
         src_template := "List( List( list, inner_func ), outer_func )",
         dst_template := "List( list, x -> outer_func( inner_func( x ) ) )",
         new_funcs := [ [ "x" ] ],
-        returns_value := true,
     )
 );
 
@@ -261,7 +243,6 @@ CapJitAddLogicTemplate(
         src_template := "List( ListN( list1, list2, inner_func ), outer_func )",
         dst_template := "ListN( list1, list2, { x, y } -> outer_func( inner_func( x, y ) ) )",
         new_funcs := [ [ "x", "y" ] ],
-        returns_value := true,
     )
 );
 
@@ -272,7 +253,6 @@ CapJitAddLogicTemplate(
         src_template := "ListN( List( list, inner_func1 ), List( list, inner_func2 ), outer_func )",
         dst_template := "List( list, x -> outer_func( inner_func1( x ), inner_func2( x ) ) )",
         new_funcs := [ [ "x" ] ],
-        returns_value := true,
     )
 );
 
@@ -283,7 +263,6 @@ CapJitAddLogicTemplate(
         src_template := "List( Concatenation( list ), func )",
         dst_template := "Concatenation( List( list, x -> List( x, func ) ) )",
         new_funcs := [ [ "x" ] ],
-        returns_value := true,
     )
 );
 
@@ -293,7 +272,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "list", "poss", "func" ],
         src_template := "List( list{poss}, func )",
         dst_template := "List( list, func ){poss}",
-        returns_value := true,
     )
 );
 
@@ -309,7 +287,6 @@ CapJitAddLogicTemplate(
         variable_filters := [ IsList, IsFunction, IsInt ],
         src_template := "func( list[index] )",
         dst_template := "List( list, func )[index]",
-        returns_value := true,
     )
 );
 
@@ -320,7 +297,6 @@ CapJitAddLogicTemplate(
         src_template := "List( list_of_lists[index], func )",
         dst_template := "List( list_of_lists, list -> List( list, func ) )[index]",
         new_funcs := [ [ "list" ] ],
-        returns_value := true,
     )
 );
 
@@ -330,7 +306,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "list", "func" ],
         src_template := "Length( List( list, func ) )",
         dst_template := "Length( list )",
-        returns_value := true,
     )
 );
 
@@ -340,7 +315,6 @@ CapJitAddLogicTemplate(
         variable_names := [ "end", "index" ],
         src_template := "[ 1 .. end ][index]",
         dst_template := "index",
-        returns_value := true,
     )
 );
 

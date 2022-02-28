@@ -13,7 +13,6 @@ template := rec(
     variable_filters := [ "THIS_SHOULD_NOT_BE_PARSED" ],
     src_template := "THIS_SHOULD_NOT_BE_PARSED_TOO",
     dst_template := "THIS_SHOULD_NOT_BE_PARSED_EITHER",
-    returns_value := true,
     needed_packages := [ [ "NON_EXISTING_PACKAGE", ">= 9999" ] ],
 );;
 
@@ -46,7 +45,6 @@ template := rec(
     variable_names := [ "variable" ],
     src_template := "x -> x + variable + x - x",
     dst_template := "x -> x + variable + 0",
-    returns_value := true,
 );;
 CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );
 
@@ -60,22 +58,20 @@ Display( applied_logic_template_to_func( func, template, fail ) );
 #!       end;
 #! end
 
-# general example not returning a value
-# we have to work hard to not write semicolons so AutoDoc
-# does not begin a new statement
-template := EvalString( ReplacedString( """rec(
-    variable_names := [ "variable" ],
-    src_template := "return x -> x + variable + x - x@",
-    dst_template := "return x -> x + variable + 0@",
-    returns_value := false,
-)""", "@", ";" ) );;
+# example using EXPR_CASE
+template := rec(
+    variable_names := [ "val1", "val2" ],
+    src_template := "CAP_JIT_INTERNAL_EXPR_CASE( 1 <> 1, val1, true, val2 )",
+    dst_template := "val2",
+);;
 CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );
 
+func := function ( )
+    if 1 <> 1 then return 1; else return 2; fi; end;;
+
 Display( applied_logic_template_to_func( func, template, fail ) );
-#! function ( a_1 )
-#!     return function ( b_2 )
-#!           return b_2 + (2 * b_2 + a_1) + 0;
-#!       end;
+#! function ( )
+#!     return 2;
 #! end
 
 # check that functions in variables can match
@@ -85,7 +81,6 @@ template := rec(
     variable_filters := [ "IsList", IsList, IsFunction ],
     src_template := "Concatenation( [ List( L1, func ), List( L2, func ) ] )",
     dst_template := "List( Concatenation( [ L1, L2 ] ), func )",
-    returns_value := true,
 );;
 CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );
 
@@ -125,7 +120,6 @@ template := rec(
     variable_filters := [ IsInt ],
     src_template := "Sum( [ value ] )",
     dst_template := "value",
-    returns_value := true,
 );;
 CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );
 
@@ -165,7 +159,6 @@ template := rec(
     variable_names := [ "list", "value" ],
     src_template := "List( list, l -> value )",
     dst_template := "Sum( list, l -> value ) + Sum( list, l -> value )",
-    returns_value := true,
 );;
 CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );
 
@@ -203,7 +196,6 @@ template := rec(
     variable_names := [ "value" ],
     src_template := "List( [ 1 ], l -> value )",
     dst_template := "(l -> value)(1)",
-    returns_value := true,
 );;
 CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );
 
@@ -226,7 +218,6 @@ template := rec(
     variable_names := [ "list", "value" ],
     src_template := "List( list, l -> value * l )",
     dst_template := "value * List( list, l -> l )",
-    returns_value := true,
 );;
 CAP_JIT_INTERNAL_ENHANCE_LOGIC_TEMPLATE( template );
 

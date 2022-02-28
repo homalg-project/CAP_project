@@ -7,6 +7,9 @@
 
 #! @Section Enhanced syntax trees
 
+# syntax helper (should never be actually called)
+DeclareGlobalFunction( "CAP_JIT_INTERNAL_EXPR_CASE" );
+
 #! @Description
 #!   Returns an enhanced syntax tree of the plain function <A>func</A> (see above). If the option `globalize_hvars` is set to `true`,
 #!   higher variables pointing to variables in the environment of <A>func</A> are assigned to global variables
