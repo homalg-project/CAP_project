@@ -148,7 +148,9 @@ Perform(
       [ "IsPreAbelianCategory", "IsPreAbelianCategory" ],
       [ "IsAbelianCategory", "IsAbelianCategory" ],
       [ "IsAbelianCategoryWithEnoughProjectives", "IsAbelianCategoryWithEnoughInjectives" ],
-      [ "IsAbelianCategoryWithEnoughInjectives", "IsAbelianCategoryWithEnoughProjectives" ]
+      [ "IsAbelianCategoryWithEnoughInjectives", "IsAbelianCategoryWithEnoughProjectives" ],
+      [ "IsLocallyOfFiniteProjectiveDimension", "IsLocallyOfFiniteInjectiveDimension" ],
+      [ "IsLocallyOfFiniteInjectiveDimension", "IsLocallyOfFiniteProjectiveDimension" ]
     ],
     AddCategoricalProperty );
 

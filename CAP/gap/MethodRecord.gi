@@ -18,6 +18,7 @@ InstallValue( CAP_INTERNAL_VALID_RETURN_TYPES,
         "other_morphism",
         "list_of_morphisms",
         "list_of_morphisms_or_fail",
+        "nonneg_integer_or_infinity",
     ]
 #! @EndCode
 );
@@ -3296,7 +3297,7 @@ IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject := rec(
   
 ## SimplifyObject*
 SimplifyObject := rec(
-  filter_list := [ "category", "object", IsCyclotomic ],
+  filter_list := [ "category", "object", "nonneg_integer_or_infinity" ],
   io_type := [ [ "A", "n" ], [ "B" ] ],
   return_type := "object",
   dual_operation := "SimplifyObject",
@@ -3321,7 +3322,7 @@ SimplifyObject := rec(
   ),
 
 SimplifyObject_IsoFromInputObject := rec(
-  filter_list := [ "category", "object", IsCyclotomic ],
+  filter_list := [ "category", "object", "nonneg_integer_or_infinity" ],
   io_type := [ [ "A", "n" ], [ "A", "B" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyObject_IsoToInputObject",
@@ -3338,7 +3339,7 @@ SimplifyObject_IsoFromInputObject := rec(
   ),
 
 SimplifyObject_IsoToInputObject := rec(
-  filter_list := [ "category", "object", IsCyclotomic ],
+  filter_list := [ "category", "object", "nonneg_integer_or_infinity" ],
   io_type := [ [ "A", "n" ], [ "B", "A" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyObject_IsoFromInputObject",
@@ -3348,7 +3349,7 @@ SimplifyObject_IsoToInputObject := rec(
 
 ## SimplifyMorphism
 SimplifyMorphism := rec(
-  filter_list := [ "category", "morphism", IsCyclotomic ],
+  filter_list := [ "category", "morphism", "nonneg_integer_or_infinity" ],
   io_type := [ [ "mor", "n" ], [ "mor_source", "mor_range" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyMorphism",
@@ -3358,7 +3359,7 @@ SimplifyMorphism := rec(
 
 ## SimplifySource*
 SimplifySource := rec(
-  filter_list := [ "category", "morphism", IsCyclotomic ],
+  filter_list := [ "category", "morphism", "nonneg_integer_or_infinity" ],
   io_type := [ [ "mor", "n" ], [ "Ap", "mor_range" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyRange",
@@ -3367,7 +3368,7 @@ SimplifySource := rec(
   ),
 
 SimplifySource_IsoToInputObject := rec(
-  filter_list := [ "category", "morphism", IsCyclotomic ],
+  filter_list := [ "category", "morphism", "nonneg_integer_or_infinity" ],
   io_type := [ [ "mor", "n" ], [ "Ap", "mor_source" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyRange_IsoFromInputObject",
@@ -3384,7 +3385,7 @@ SimplifySource_IsoToInputObject := rec(
   ),
   
 SimplifySource_IsoFromInputObject := rec(
-  filter_list := [ "category", "morphism", IsCyclotomic ],
+  filter_list := [ "category", "morphism", "nonneg_integer_or_infinity" ],
   io_type := [ [ "mor", "n" ], [ "mor_source", "Ap" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyRange_IsoToInputObject",
@@ -3394,7 +3395,7 @@ SimplifySource_IsoFromInputObject := rec(
 
 ## SimplifyRange*
 SimplifyRange := rec(
-  filter_list := [ "category", "morphism", IsCyclotomic ],
+  filter_list := [ "category", "morphism", "nonneg_integer_or_infinity" ],
   io_type := [ [ "mor", "n" ], [ "mor_source", "Bp" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySource",
@@ -3403,7 +3404,7 @@ SimplifyRange := rec(
   ),
 
 SimplifyRange_IsoToInputObject := rec(
-  filter_list := [ "category", "morphism", IsCyclotomic ],
+  filter_list := [ "category", "morphism", "nonneg_integer_or_infinity" ],
   io_type := [ [ "mor", "n" ], [ "Bp", "mor_range" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySource_IsoFromInputObject",
@@ -3420,7 +3421,7 @@ SimplifyRange_IsoToInputObject := rec(
   ),
   
 SimplifyRange_IsoFromInputObject := rec(
-  filter_list := [ "category", "morphism", IsCyclotomic ],
+  filter_list := [ "category", "morphism", "nonneg_integer_or_infinity" ],
   io_type := [ [ "mor", "n" ], [ "mor_range", "Bp" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySource_IsoToInputObject",
@@ -3430,7 +3431,7 @@ SimplifyRange_IsoFromInputObject := rec(
 
 ## SimplifySourceAndRange*
 SimplifySourceAndRange := rec(
-  filter_list := [ "category", "morphism", IsCyclotomic ],
+  filter_list := [ "category", "morphism", "nonneg_integer_or_infinity" ],
   io_type := [ [ "mor", "n" ], [ "Ap", "Bp" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySourceAndRange",
@@ -3439,7 +3440,7 @@ SimplifySourceAndRange := rec(
   ),
 
 SimplifySourceAndRange_IsoToInputSource := rec(
-  filter_list := [ "category", "morphism", IsCyclotomic ],
+  filter_list := [ "category", "morphism", "nonneg_integer_or_infinity" ],
   io_type := [ [ "mor", "n" ], [ "Ap", "mor_source" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySourceAndRange_IsoFromInputRange",
@@ -3448,7 +3449,7 @@ SimplifySourceAndRange_IsoToInputSource := rec(
   ),
   
 SimplifySourceAndRange_IsoFromInputSource := rec(
-  filter_list := [ "category", "morphism", IsCyclotomic ],
+  filter_list := [ "category", "morphism", "nonneg_integer_or_infinity" ],
   io_type := [ [ "mor", "n" ], [ "mor_source", "Ap" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySourceAndRange_IsoToInputRange",
@@ -3457,7 +3458,7 @@ SimplifySourceAndRange_IsoFromInputSource := rec(
   ),
 
 SimplifySourceAndRange_IsoToInputRange := rec(
-  filter_list := [ "category", "morphism", IsCyclotomic ],
+  filter_list := [ "category", "morphism", "nonneg_integer_or_infinity" ],
   io_type := [ [ "mor", "n" ], [ "Bp", "mor_range" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySourceAndRange_IsoFromInputSource",
@@ -3466,7 +3467,7 @@ SimplifySourceAndRange_IsoToInputRange := rec(
   ),
   
 SimplifySourceAndRange_IsoFromInputRange := rec(
-  filter_list := [ "category", "morphism", IsCyclotomic ],
+  filter_list := [ "category", "morphism", "nonneg_integer_or_infinity" ],
   io_type := [ [ "mor", "n" ], [ "mor_range", "Bp" ] ],
   return_type := "morphism",
   dual_operation := "SimplifySourceAndRange_IsoToInputSource",
@@ -3476,7 +3477,7 @@ SimplifySourceAndRange_IsoFromInputRange := rec(
 
 ## SimplifyEndo*
 SimplifyEndo := rec(
-  filter_list := [ "category", "morphism", IsCyclotomic ],
+  filter_list := [ "category", "morphism", "nonneg_integer_or_infinity" ],
   io_type := [ [ "mor", "n" ], [ "Ap", "Ap" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyEndo",
@@ -3497,7 +3498,7 @@ SimplifyEndo := rec(
   ),
 
 SimplifyEndo_IsoFromInputObject := rec(
-  filter_list := [ "category", "morphism", IsCyclotomic ],
+  filter_list := [ "category", "morphism", "nonneg_integer_or_infinity" ],
   io_type := [ [ "mor", "n" ], [ "mor_source", "Ap" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyEndo_IsoToInputObject",
@@ -3506,7 +3507,7 @@ SimplifyEndo_IsoFromInputObject := rec(
   ),
 
 SimplifyEndo_IsoToInputObject := rec(
-  filter_list := [ "category", "morphism", IsCyclotomic ],
+  filter_list := [ "category", "morphism", "nonneg_integer_or_infinity" ],
   io_type := [ [ "mor", "n" ], [ "Ap", "mor_range" ] ],
   return_type := "morphism",
   dual_operation := "SimplifyEndo_IsoFromInputObject",
@@ -3530,7 +3531,19 @@ SomeReductionBySplitEpiSummand_MorphismFromInputRange := rec(
   filter_list := [ "category", "morphism" ],
   io_type := [ [ "alpha" ], [ "B", "Bp" ] ],
   return_type := "morphism",
-  )
+  ),
+
+ProjectiveDimension := rec(
+  filter_list := [ "category", "object" ],
+  return_type := "nonneg_integer_or_infinity",
+  dual_operation := "InjectiveDimension",
+  ),
+
+InjectiveDimension := rec(
+  filter_list := [ "category", "object" ],
+  return_type := "nonneg_integer_or_infinity",
+  dual_operation := "ProjectiveDimension",
+  ),
 
 ) );
 

@@ -54,6 +54,9 @@ InstallMethod( AdelmanCategory,
     ## this is the purpose of the Adelman category
     SetIsAbelianCategory( adelman_category, true );
     
+    SetIsLocallyOfFiniteProjectiveDimension( adelman_category, true );
+    SetIsLocallyOfFiniteInjectiveDimension( adelman_category, true );
+    
     SetUnderlyingCategory( adelman_category, underlying_category );
     
     if HasIsLinearCategoryOverCommutativeRing( underlying_category )

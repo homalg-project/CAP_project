@@ -2367,6 +2367,52 @@ AddDerivationToCAP( IsomorphismFromItsConstructionAsAnImageObjectToHomologyObjec
     
 end : Description := "IsomorphismFromItsConstructionAsAnImageObjectToHomologyObject as the inverse of IsomorphismFromHomologyObjectToItsConstructionAsAnImageObject" );
 
+###########################
+##
+## Methods returning a nonnegative integer or infinity
+##
+###########################
+
+##
+AddDerivationToCAP( ProjectiveDimension,
+                    
+  function( cat, obj )
+    local dim, syzygy_obj;
+
+    dim := 0;
+    
+    syzygy_obj := obj;
+
+    while not IsProjective( cat, syzygy_obj ) do
+      syzygy_obj := KernelObject( cat, EpimorphismFromSomeProjectiveObject( cat, syzygy_obj ) );
+      dim := dim + 1;
+    od;
+    
+    return dim;
+
+end : CategoryFilter := IsLocallyOfFiniteProjectiveDimension and IsAbelianCategory,
+Description := "ProjectiveDimension by iteratively testing whether the syzygy object is projective" );
+
+##
+AddDerivationToCAP( InjectiveDimension,
+                    
+  function( cat, obj )
+    local dim, cosyzygy_obj;
+
+    dim := 0;
+    
+    cosyzygy_obj := obj;
+
+    while not IsInjective( cat, cosyzygy_obj ) do
+      cosyzygy_obj := CokernelObject( cat, MonomorphismIntoSomeInjectiveObject( cat, cosyzygy_obj ) );
+      dim := dim + 1;
+    od;
+    
+    return dim;
+
+end : CategoryFilter := IsLocallyOfFiniteInjectiveDimension and IsAbelianCategory,
+Description := "InjectiveDimension by iteratively testing whether the cosyzygy object is injective" );
+
 
 ###########################
 ##
