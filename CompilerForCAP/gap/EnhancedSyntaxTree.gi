@@ -800,7 +800,7 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
     else
         
         # COVERAGE_IGNORE_BLOCK_START
-        Error( "The syntax tree is not of type EXPR_FUNC. However, if you type 'return;', it will be wrapped in a dummy function." );
+        Display( "The syntax tree is not of type EXPR_FUNC. It will be wrapped in a dummy function for debugging purposes." );
         
         if StartsWith( tree.type, "EXPR" ) then
             
@@ -864,8 +864,14 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
         
         if tree.type = "SYNTAX_TREE_VARIABLE" then
             
-            # COVERAGE_IGNORE_NEXT_LINE
-            Error( "you should never codify an enhanced syntax tree with variables" );
+            # COVERAGE_IGNORE_BLOCK_START
+            Display( "WARNING: you should only codify an enhanced syntax tree with variables for debugging purposes" );
+            
+            tree := rec(
+                type := "EXPR_REF_GVAR",
+                gvar := Concatenation( "CAP_INTERNAL_JIT_TEMPLATE_VAR_", String( tree.id ) ),
+            );
+            # COVERAGE_IGNORE_BLOCK_END
             
         fi;
         
