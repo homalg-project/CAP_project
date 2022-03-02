@@ -1,6 +1,9 @@
 Speed:
 
 * reduce number of calls to `StructuralCopy`
+* turn logic functions into peephole optimizations
+* avoid CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID where possible
+* inline bindings inplace (similar to getting the data type inplace)
 
 Features:
 
@@ -9,3 +12,35 @@ Features:
 * support compilation of operations
 * For categories with finitely many objects (or morphisms): detect parts of the code which can be precomputed, e.g. hom_structure_on_basis_paths in Algebroids.
 * unify deduplication and hoisting: hoisting in duplicate code can lead to different variable names, so the deduplication does not match anymore (partially fixed)
+* hoisting in the following situation:
+  (List)(
+      outer_list,
+      function ( y )
+          return (
+              (Concatenation)(
+                  (List)(
+                      inner_list,
+                      x -> VERY_EXPENSIVE_MATRIX( x )[y]
+                  )
+              )
+          );
+      end
+  );
+  
+  hoisted := (List)(
+      inner_list,
+      x -> VERY_EXPENSIVE_MATRIX( x );
+  );
+  (List)(
+      outer_list,
+      function ( y )
+          return (
+              (Concatenation)(
+                  (List)(
+                      hoisted,
+                      mat -> mat[y]
+                  )
+              )
+          );
+      end
+  );
