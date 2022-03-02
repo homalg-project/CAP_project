@@ -13,6 +13,8 @@
 
 DeclareGlobalFunction( "INSTALL_LOGICAL_IMPLICATIONS_HELPER_EVAL_RULES" );
 
+DeclareAttribute( "INSTALL_LOGICAL_IMPLICATIONS",
+                  IsCapCategory );
 
 ## Theorems
 

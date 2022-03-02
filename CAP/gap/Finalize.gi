@@ -163,7 +163,7 @@ InstallMethod( Finalize,
                [ IsCapCategory ],
   
   function( category )
-    local current_final_derivation, derivation_list, i, n, weight_list, weight, add_name, current_installs, current_tester_func, current_additional_func;
+    local derivation_list, weight_list, current_installs, current_final_derivation, current_tester_func, weight, add_name, properties_with_logic, property, i, current_additional_func, property_name;
     
     if IsFinalized( category ) then
         
@@ -176,6 +176,8 @@ InstallMethod( Finalize,
         return false;
         
     fi;
+    
+    SuspendMethodReordering( );
     
     derivation_list := ShallowCopy( CAP_INTERNAL_FINAL_DERIVATION_LIST.final_derivation_list );
     
@@ -269,6 +271,26 @@ InstallMethod( Finalize,
     od;
     
     SetIsFinalized( category, true );
+    
+    if category!.overhead then
+        
+        properties_with_logic := RecNames( category!.logical_implication_files.Propositions );
+        
+        for property_name in properties_with_logic do
+            
+            property := ValueGlobal( property_name );
+            
+            if Tester( property )( category ) and property( category ) then
+                
+                INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, property_name );
+                
+            fi;
+            
+        od;
+        
+    fi;
+    
+    ResumeMethodReordering( );
     
     return true;
     
