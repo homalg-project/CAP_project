@@ -2,15 +2,9 @@ SetPackageInfo( rec(
 
 PackageName := "DeductiveSystemForCAP",
 Subtitle := "Deductive system for CAP",
-Version := Maximum( [
-  "2016.01-17", ## Sebas' version
-  ## this line prevents merge conflicts
-  "2015.04-15", ## Sepp's version
-  ## this line prevents merge conflicts
-  "2021.05-01", ## Fabian's version
-] ),
+Version := "2022.03-01",
 
-Date := "15/05/2021",
+Date := "03/03/2022",
 License := "GPL-2.0-or-later",
 
 
@@ -86,7 +80,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.6",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
-                           [ "CAP", ">= 2021.05-01" ] ],
+                           [ "CAP", ">= 2022.03-01" ] ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
 ),
