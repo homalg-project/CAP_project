@@ -8,7 +8,7 @@ InstallValue( CATEGORIES_LOGIC_FILES,
   rec(
       
       Propositions := rec(
-          General := [
+          IsCapCategory := [
                        Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PropositionsForGeneralCategories.tex" )
                      ],
           IsEnrichedOverCommutativeRegularSemigroup := [
@@ -27,7 +27,7 @@ InstallValue( CATEGORIES_LOGIC_FILES,
                                   Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PropositionsForAbelianCategories.tex" )
                                ] ),
       Predicates := rec(
-          General := [
+          IsCapCategory := [
                        Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PredicateImplicationsForGeneralCategories.tex" )
                      ],
           IsEnrichedOverCommutativeRegularSemigroup := [
@@ -46,7 +46,7 @@ InstallValue( CATEGORIES_LOGIC_FILES,
                                  Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "PredicateImplicationsForAbelianCategories.tex" )
                                ] ),
       EvalRules := rec(
-          General := [
+          IsCapCategory := [
                       Filename( DirectoriesPackageLibrary( "CAP", "LogicForCategories" ), "RelationsForGeneralCategories.tex" )
                      ],
           IsEnrichedOverCommutativeRegularSemigroup := [
@@ -92,8 +92,6 @@ InstallGlobalFunction( AddTheoremFileToCategory,
                        
   function( category, filename )
     local theorem_list, i;
-    
-    Add( category!.logical_implication_files.Propositions.General, filename );
     
     theorem_list := READ_THEOREM_FILE( filename );
     
@@ -343,8 +341,6 @@ InstallGlobalFunction( AddPredicateImplicationFileToCategory,
   function( category, filename )
     local theorem_list, i;
     
-    Add( category!.logical_implication_files.Predicates.General, filename );
-    
     theorem_list := READ_PREDICATE_IMPLICATION_FILE( filename );
     
     for i in theorem_list do
@@ -408,7 +404,7 @@ InstallGlobalFunction( AddEvalRuleFileToCategory,
   function( category, filename )
     local theorem_list, i;
     
-    Add( category!.logical_implication_files.EvalRules.General, filename );
+    Add( category!.logical_implication_files.EvalRules.IsCapCategory, filename );
     
     if IsBound( category!.logical_implication_files.EvalRules.general_rules_already_read ) and
        category!.logical_implication_files.EvalRules.general_rules_already_read = true then
@@ -466,8 +462,6 @@ InstallGlobalFunction( INSTALL_LOGICAL_IMPLICATIONS_HELPER,
   function( category, current_filter )
     local i, theorem_list, current_theorem;
 
-    SuspendMethodReordering();
-
     for i in category!.logical_implication_files.Propositions.( current_filter ) do
         
         theorem_list := READ_THEOREM_FILE( i );
@@ -491,98 +485,5 @@ InstallGlobalFunction( INSTALL_LOGICAL_IMPLICATIONS_HELPER,
         od;
         
     od;
-
-    ResumeMethodReordering();
     
 end );
-
-InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
-                        IsCapCategory and IsEnrichedOverCommutativeRegularSemigroup,
-                        0,
-                        
-  function( category )
-    
-    if category!.overhead then
-        
-        INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "IsEnrichedOverCommutativeRegularSemigroup" );
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    return false;
-    
-end );
-
-InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
-                        IsCapCategory and IsAdditiveCategory,
-                        0,
-                        
-  function( category )
-    
-    if category!.overhead then
-        
-        INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "IsAdditiveCategory" );
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    return false;
-    
-end );
-
-InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
-                        IsCapCategory and IsPreAbelianCategory,
-                        0,
-                        
-  function( category )
-    
-    if category!.overhead then
-        
-        INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "IsPreAbelianCategory" );
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    return false;
-    
-end );
-
-InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
-                        IsCapCategory and IsAbelianCategory,
-                        0,
-                        
-  function( category )
-    
-    if category!.overhead then
-        
-        INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "IsAbelianCategory" );
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    return false;
-    
-end );
-
-InstallImmediateMethod( INSTALL_LOGICAL_IMPLICATIONS,
-                        IsCapCategory and IsAbCategory,
-                        0,
-                        
-  function( category )
-    
-    if category!.overhead then
-        
-        INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "IsAbCategory" );
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    return false;
-    
-end );
-

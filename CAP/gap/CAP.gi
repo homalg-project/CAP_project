@@ -590,8 +590,6 @@ InstallMethod( CreateCapCategory,
     
       AddCategoryToFamily( category, "general" );
       
-      INSTALL_LOGICAL_IMPLICATIONS_HELPER( category, "General" );
-      
     else
       
       category!.predicate_logic := false;

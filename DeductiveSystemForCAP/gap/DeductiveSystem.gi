@@ -628,7 +628,7 @@ InstallMethod( DeductiveSystem,
     
     ADDS_FOR_DEDUCTIVE_SYSTEM( deductive_system, category );
     
-    INSTALL_LOGICAL_IMPLICATIONS_HELPER_EVAL_RULES( category, deductive_system, "General" );
+    INSTALL_LOGICAL_IMPLICATIONS_HELPER_EVAL_RULES( category, deductive_system, "IsCapCategory" );
     
     return deductive_system;
     
