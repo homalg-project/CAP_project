@@ -491,13 +491,13 @@ end );
             
             output_string := Concatenation( output_string, current_string );
             
+            # it is safe to use InstallOtherMethodForCompilerForCAP because there is no other four-argument convenience method for with given functorials
             current_string := ReplacedStringViaRecord( """
 ##
-InstallOtherMethod( functorial_with_given_name,
-               [ IsCapCategory, IsCapCategoryObject, filter_list, IsCapCategoryObject ],
+InstallOtherMethodForCompilerForCAP( functorial_with_given_name,
+                                     [ IsCapCategory, IsCapCategoryObject, filter_list, IsCapCategoryObject ],
                
   function( cat, source, input_arguments, range )
-    #% CAP_JIT_RESOLVE_FUNCTION
     
     return functorial_with_given_name( cat, source, source_diagram_arguments, input_arguments, range_diagram_arguments, range );
     
