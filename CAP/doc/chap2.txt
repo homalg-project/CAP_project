@@ -357,3 +357,20 @@
   \rightarrow    A[123X    which    is    the    inverse    of    the   output   of
   [10XSimplifyObject_IsoFromInputObject[110X.[133X
   
+  
+  [1X2.12 [33X[0;0YDimensions[133X[101X
+  
+  [1X2.12-1 ProjectiveDimension[101X
+  
+  [33X[1;0Y[29X[2XProjectiveDimension[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya nonnegative integer or infinity[133X
+  
+  [33X[0;0YThe argument is an object [23XA[123X. The output is a the projective dimension of [23XA[123X.[133X
+  
+  [1X2.12-2 InjectiveDimension[101X
+  
+  [33X[1;0Y[29X[2XInjectiveDimension[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya nonnegative integer or infinity[133X
+  
+  [33X[0;0YThe argument is an object [23XA[123X. The output is a the injective dimension of [23XA[123X.[133X
+  

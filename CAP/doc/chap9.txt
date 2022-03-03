@@ -188,14 +188,22 @@
   [3Xhuman_readable_identifier_getter[103X  is  a  0-ary  function  returning a string
   which is used to refer to [3Xlist_of_twocells[103X in the error message.[133X
   
-  [1X9.2-17 CachingStatistic[101X
+  [1X9.2-17 CAP_INTERNAL_ASSERT_IS_NON_NEGATIVE_INTEGER_OR_INFINITY[101X
+  
+  [33X[1;0Y[29X[2XCAP_INTERNAL_ASSERT_IS_NON_NEGATIVE_INTEGER_OR_INFINITY[102X( [3Xnnintorinf[103X, [3Xhuman_readable_identifier_getter[103X ) [32X function[133X
+  
+  [33X[0;0YThe  function  throws an error if [3Xnnintorinf[103X is not a nonnegative integer or
+  infinity.  [3Xhuman_readable_identifier_getter[103X  is a 0-ary function returning a
+  string which is used to refer to [3Xnnintorinf[103X in the error message.[133X
+  
+  [1X9.2-18 CachingStatistic[101X
   
   [33X[1;0Y[29X[2XCachingStatistic[102X( [3Xcategory[103X[, [3Xoperation[103X] ) [32X function[133X
   
   [33X[0;0YPrints  statistics  for  all caches in [3Xcategory[103X. If [3Xoperation[103X is given (as a
   string), only statistics for the given operation cache is stored.[133X
   
-  [1X9.2-18 BrowseCachingStatistic[101X
+  [1X9.2-19 BrowseCachingStatistic[101X
   
   [33X[1;0Y[29X[2XBrowseCachingStatistic[102X( [3Xcategory[103X ) [32X function[133X
   
@@ -205,14 +213,14 @@
   cache  accesses,  and "stored" the number of objects currently stored in the
   cache.[133X
   
-  [1X9.2-19 IsSpecializationOfFilter[101X
+  [1X9.2-20 IsSpecializationOfFilter[101X
   
   [33X[1;0Y[29X[2XIsSpecializationOfFilter[102X( [3Xfilter1[103X, [3Xfilter2[103X ) [32X function[133X
   
   [33X[0;0YChecks  if  [3Xfilter2[103X  is  more  special than [3Xfilter1[103X, i.e. if [3Xfilter2[103X implies
   [3Xfilter1[103X.[133X
   
-  [1X9.2-20 IsSpecializationOfFilterList[101X
+  [1X9.2-21 IsSpecializationOfFilterList[101X
   
   [33X[1;0Y[29X[2XIsSpecializationOfFilterList[102X( [3Xfilter_list1[103X, [3Xfilter_list2[103X ) [32X function[133X
   
@@ -220,21 +228,21 @@
   have   the   same  length  and  any  element  of  [3Xfilter_list2[103X  implies  the
   corresponding element of [3Xfilter_list1[103X.[133X
   
-  [1X9.2-21 InstallMethodForCompilerForCAP[101X
+  [1X9.2-22 InstallMethodForCompilerForCAP[101X
   
   [33X[1;0Y[29X[2XInstallMethodForCompilerForCAP[102X( [3Xsame[103X, [3Xas[103X, [3Xfor[103X, [3XInstallMethod[103X ) [32X function[133X
   
   [33X[0;0YInstalls a method via [10XInstallMethod[110X and adds it to the list of methods known
-  to the compiler. See [2XCapJitAddKnownMethod[102X ([14X9.2-23[114X) for requirements.[133X
+  to the compiler. See [2XCapJitAddKnownMethod[102X ([14X9.2-24[114X) for requirements.[133X
   
-  [1X9.2-22 InstallOtherMethodForCompilerForCAP[101X
+  [1X9.2-23 InstallOtherMethodForCompilerForCAP[101X
   
   [33X[1;0Y[29X[2XInstallOtherMethodForCompilerForCAP[102X( [3Xsame[103X, [3Xas[103X, [3Xfor[103X, [3XInstallOtherMethod[103X ) [32X function[133X
   
   [33X[0;0YInstalls  a method via [10XInstallOtherMethod[110X and adds it to the list of methods
-  known to the compiler. See [2XCapJitAddKnownMethod[102X ([14X9.2-23[114X) for requirements.[133X
+  known to the compiler. See [2XCapJitAddKnownMethod[102X ([14X9.2-24[114X) for requirements.[133X
   
-  [1X9.2-23 CapJitAddKnownMethod[101X
+  [1X9.2-24 CapJitAddKnownMethod[101X
   
   [33X[1;0Y[29X[2XCapJitAddKnownMethod[102X( [3Xoperation[103X, [3Xfilters[103X, [3Xmethod[103X ) [32X function[133X
   
@@ -244,7 +252,7 @@
   methods  (or  a convenience method for a CAP operation) with the same number
   of arguments and one category filter implying the other is not supported.[133X
   
-  [1X9.2-24 CapJitAddTypeSignature[101X
+  [1X9.2-25 CapJitAddTypeSignature[101X
   
   [33X[1;0Y[29X[2XCapJitAddTypeSignature[102X( [3Xname[103X, [3Xinput_filters[103X, [3Xoutput_data_type[103X ) [32X function[133X
   
@@ -259,16 +267,16 @@
   output).         See         [2XCapJitInferredDataTypes[102X        ([14XCompilerForCAP:
   CapJitInferredDataTypes[114X) for more details on data types.[133X
   
-  [1X9.2-25 CapJitAddTypeSignatureDeferred[101X
+  [1X9.2-26 CapJitAddTypeSignatureDeferred[101X
   
   [33X[1;0Y[29X[2XCapJitAddTypeSignatureDeferred[102X( [3Xpackage_name[103X, [3Xname[103X, [3Xinput_filters[103X, [3Xoutput_data_type[103X ) [32X function[133X
   
-  [33X[0;0Y(experimental)  Same as [2XCapJitAddTypeSignature[102X ([14X9.2-24[114X), but the filters and
+  [33X[0;0Y(experimental)  Same as [2XCapJitAddTypeSignature[102X ([14X9.2-25[114X), but the filters and
   the  output  data type must be given as strings which will be evaluated once
   [3Xpackage_name[103X  is  loaded.  This should be used with care because errors will
   only be detected at runtime.[133X
   
-  [1X9.2-26 CapFixpoint[101X
+  [1X9.2-27 CapFixpoint[101X
   
   [33X[1;0Y[29X[2XCapFixpoint[102X( [3Xpredicate[103X, [3Xfunc[103X, [3Xinitial_value[103X ) [32X function[133X
   
