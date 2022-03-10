@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # ModulesOverLocalRingsForCAP: Category of modules over a local ring modeled by Serre quotients for CAP
 #
 # This file contains package meta data. For additional information on
@@ -10,12 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "ModulesOverLocalRingsForCAP",
 Subtitle := "Category of modules over a local ring modeled by Serre quotients for CAP",
-Version := Maximum( [
-  "2017.04-10", # Sepps version
-  ## this line prevents merge conflicts
-  "2020.10-01", ## Fabian's version
-] ),
-Date := "19/10/2020",
+Version := "2022.03-01",
+Date := "10/03/2022",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -43,7 +39,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/ModulesOverLocalRingsForCAP",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/ModulesOverLocalRingsForCAP",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/ModulesOverLocalRingsForCAP/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/ModulesOverLocalRingsForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ModulesOverLocalRingsForCAP-", ~.Version, "/ModulesOverLocalRingsForCAP-", ~.Version ),
@@ -73,7 +69,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.8",
+  GAP := ">= 4.11.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "ModulePresentationsForCAP", "2017.03.27" ],
                            [ "GeneralizedMorphismsForCAP", "2016.10.05" ],
