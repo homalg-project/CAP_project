@@ -1,5 +1,5 @@
 name: ToricSheaves
-version: "2022.03-01"
+version: "2022.03-02"
 license: "GPL-2.0-or-later"
 date: 2022-03-10
 description: |
@@ -43,11 +43,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/ToricSheaves/PackageIn
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/ToricSheaves-2022.03-01/ToricSheaves-2022.03-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/ToricSheaves-2022.03-02/ToricSheaves-2022.03-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/ToricSheaves-2022.03-01/ToricSheaves-2022.03-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/ToricSheaves-2022.03-02/ToricSheaves-2022.03-02.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/ToricSheaves-2022.03-01/ToricSheaves-2022.03-01.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/ToricSheaves-2022.03-02/ToricSheaves-2022.03-02.pdf
 
 abstract: |
 
@@ -58,7 +58,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>Gut22</span>]   <b class='BibAuthor'>Gutsche, S.</b>,
      <i class='BibTitle'>ToricSheaves, Toric sheaves as Serre quotients,
-             Version 2022.03-01</i>
+             Version 2022.03-02</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/ToricSheaves">https://homalg-project.github.io/pkg/ToricSheaves</a></span>.
@@ -66,10 +66,10 @@ citeas: |
     
 
 bibtex: |
-    @misc{ ToricSheaves2022.03-01,
+    @misc{ ToricSheaves2022.03-02,
       author =           {Gutsche, S.},
       title =            {{ToricSheaves},  Toric  sheaves  as  Serre  quotients,
-                          {V}ersion 2022.03-01},
+                          {V}ersion 2022.03-02},
       month =            {Mar},
       year =             {2022},
       note =             {GAP package},
