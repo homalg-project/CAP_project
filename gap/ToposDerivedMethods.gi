@@ -114,7 +114,7 @@ end : Description := "CartesianAssociatorLeftToRightWithGivenDirectProducts usin
 AddDerivationToCAP( CocartesianLeftUnitorInverseWithGivenCoproduct,
   function( cat, a, r )
     
-    return InjectionOfCofactorOfCoproductWithGivenCoproduct(
+    return InjectionOfCofactorOfCoproductWithGivenCoproduct( cat,
                    [ InitialObject( cat ), a ],
                    2,
                    r );
@@ -125,7 +125,7 @@ end : Description := "CocartesianLeftUnitorInverseWithGivenCoproduct using the i
 AddDerivationToCAP( CocartesianRightUnitorInverseWithGivenCoproduct,
   function( cat, a, r )
     
-    return InjectionOfCofactorOfCoproductWithGivenCoproduct(
+    return InjectionOfCofactorOfCoproductWithGivenCoproduct( cat,
                    [ a, InitialObject( cat ) ],
                    1,
                    r );
