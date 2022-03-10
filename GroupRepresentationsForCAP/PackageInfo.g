@@ -10,17 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "GroupRepresentationsForCAP",
 Subtitle := "Skeletal category of group representations for CAP",
-Version := Maximum( [
-  "2017.01-11", ## Sepp's version
-  ## this line prevents merge conflicts
-  "2019.09-02", ## Mohamed's version
-  ## this line prevents merge conflicts
-  "2021.05-01", ## Fabian's version
-] ),
-
-Date := "15/05/2021",
+Version := "2022.03-02",
+Date := "10/03/2022",
 License := "GPL-2.0-or-later",
-
 
 Persons := [
   rec(
@@ -78,7 +70,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.8",
+  GAP := ">= 4.11.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "ToolsForHomalg", ">= 2020.09.01" ],
                            [ "CAP", ">= 2021.05-01" ],
@@ -92,6 +84,8 @@ Dependencies := rec(
 AvailabilityTest := function()
         return true;
     end,
+
+TestFile := "tst/testall.g",
 
 #Keywords := [ "TODO" ],
 

@@ -1,7 +1,7 @@
 name: GroupRepresentationsForCAP
-version: "2021.05-01"
+version: "2022.03-02"
 license: "GPL-2.0-or-later"
-date: 2021-05-15
+date: 2022-03-10
 description: |
     Skeletal category of group representations for CAP
 
@@ -13,7 +13,7 @@ maintainers:
     - name: Sebastian Posur
       url: https://sebastianpos.github.io
 
-GAP: ">= 4.8"
+GAP: ">= 4.11.1"
 
 needed-pkgs:
     - name: "GAPDoc"
@@ -41,11 +41,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/GroupRepresentationsFo
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-2021.05-01/GroupRepresentationsForCAP-2021.05-01.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-2022.03-02/GroupRepresentationsForCAP-2022.03-02.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-2021.05-01/GroupRepresentationsForCAP-2021.05-01.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-2022.03-02/GroupRepresentationsForCAP-2022.03-02.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-2021.05-01/GroupRepresentationsForCAP-2021.05-01.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/GroupRepresentationsForCAP-2022.03-02/GroupRepresentationsForCAP-2022.03-02.pdf
 
 abstract: |
 
@@ -54,28 +54,28 @@ doc-html: doc/chap0.html
 doc-pdf: doc/manual.pdf
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Pos21</span>]   <b class='BibAuthor'>Posur, S.</b>,
+    [<span class='BibKey'>Pos22</span>]   <b class='BibAuthor'>Posur, S.</b>,
      <i class='BibTitle'>GroupRepresentationsForCAP, Skeletal category of group representations for CAP,
-             Version 2021.05-01</i>
-     (<span class='BibYear'>2021</span>)<br />
+             Version 2022.03-02</i>
+     (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/GroupRepresentationsForCAP">https://homalg-project.github.io/pkg/GroupRepresentationsForCAP</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ GroupRepresentationsForCAP2021.05-01,
+    @misc{ GroupRepresentationsForCAP2022.03-02,
       author =           {Posur, S.},
       title =            {{GroupRepresentationsForCAP},   Skeletal  category  of
-                          group representations for CAP, {V}ersion 2021.05-01},
-      month =            {May},
-      year =             {2021},
+                          group representations for CAP, {V}ersion 2022.03-02},
+      month =            {Mar},
+      year =             {2022},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/GroupRepresentationsForCAP}
                           {\texttt{https://homalg-project.github.io/}\discretionary
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{GroupRepresentationsForCAP}}},
-      printedkey =       {Pos21}
+      printedkey =       {Pos22}
     }
 
