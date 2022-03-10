@@ -1,11 +1,8 @@
-#############################################################################
-##
-##                  GeneralizedMorphismsForCAP package
-##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# GeneralizedMorphismsForCAP: Implementations of generalized morphisms for the CAP project
+#
+# Implementations
+#
 
 ## GAP-Hack in order to avoid the pre-installed GAP-method Domain
 BindGlobal( "CAP_INTERNAL_DOMAIN_SAVE", Domain );

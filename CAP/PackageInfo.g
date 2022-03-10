@@ -96,7 +96,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.9.1",
+  GAP := ">= 4.11.1",
   NeededOtherPackages := [ [ "AutoDoc", ">= 2016.02.16" ],
                            [ "ToolsForHomalg", ">= 2021.08-01" ],
                            [ "io", ">=0" ],
@@ -111,5 +111,7 @@ Dependencies := rec(
 AvailabilityTest := function()
         return true;
     end,
+
+TestFile := "tst/testall.g",
 
 ));

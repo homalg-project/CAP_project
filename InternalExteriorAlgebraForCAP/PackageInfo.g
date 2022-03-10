@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # InternalExteriorAlgebraForCAP: Constructions for Modules over the Internal Exterior Algebra for CAP
 #
 # This file contains package meta data. For additional information on
@@ -10,15 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "InternalExteriorAlgebraForCAP",
 Subtitle := "Constructions for Modules over the Internal Exterior Algebra for CAP",
-Version := Maximum( [
-  "2017.01-11", ## Sepp's version
-  ## this line prevents merge conflicts
-  "2020.10-01", ## Fabian's version
-] ),
-
+Version := "2020.10-01",
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
-
 
 Persons := [
   rec(
@@ -75,7 +69,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.8",
+  GAP := ">= 4.11.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "ActionsForCAP", ">=2017.01.11" ],
                            [ "GroupRepresentationsForCAP", ">=2017.01.11" ],
@@ -88,6 +82,8 @@ Dependencies := rec(
 AvailabilityTest := function()
         return true;
     end,
+
+TestFile := "tst/testall.g",
 
 #Keywords := [ "TODO" ],
 

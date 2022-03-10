@@ -1,13 +1,10 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# ComplexesAndFilteredObjectsForCAP: Implementation of complexes, cocomplexes and filtered objects for CAP
+#
+# Declarations
+#
+
 #! @Chapter Cocomplexes
-##
-#############################################################################
 
 DeclareGlobalFunction( "INSTALL_OPERATIONS_FOR_COCOMPLEX_CATEGORY" );
 

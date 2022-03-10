@@ -1,11 +1,8 @@
-#############################################################################
-##
-##                                       ModulePresentationsForCAP package
-##
-##  Copyright 2016, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# GradedModulePresentationsForCAP: Presentations for graded modules
+#
+# Implementations
+#
 
 ##
 InstallMethod( GradedLeftPresentations,

@@ -1,11 +1,8 @@
-#############################################################################
-##
-##                                       ModulePresentationsForCAP package
-##
-##  Copyright 2016, Sebastian Gutsche, Uni Siegen
-##                  Sebastian Posur,   Uni Siegen
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# GradedModulePresentationsForCAP: Presentations for graded modules
+#
+# Declarations
+#
 
 DeclareAttribute( "LiftNaturalTransformationToGradedModuleFunctorLeft",
                   IsCapNaturalTransformation );

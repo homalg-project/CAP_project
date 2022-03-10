@@ -1,14 +1,11 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# GeneralizedMorphismsForCAP: Implementations of generalized morphisms for the CAP project
+#
+# Declarations
+#
+
 #! @Chapter Serre Quotients
 #! @Section Serre Quotients by Spans
-##
-#############################################################################
 
 DeclareCategory( "IsSerreQuotientCategoryBySpansObject",
                  IsSerreQuotientCategoryObject );

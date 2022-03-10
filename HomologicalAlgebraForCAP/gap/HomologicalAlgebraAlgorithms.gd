@@ -1,13 +1,10 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# HomologicalAlgebraForCAP: Homological algebra algorithms for CAP
+#
+# Declarations
+#
+
 #! @Chapter Homological algebra algorithms
-##
-#############################################################################
 
 DeclareOperation( "EpiMonoFactorization",
                   [ IsCapCategoryMorphism ] );

@@ -1,12 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# ComplexesAndFilteredObjectsForCAP: Implementation of complexes, cocomplexes and filtered objects for CAP
+#
+# Implementations
+#
 
 DeclareRepresentation( "IsAscendingFilteredObjectRep",
                        IsCapCategoryObjectRep and IsAscendingFilteredObject,
@@ -366,7 +362,7 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
                        UniversalMorphismIntoDirectProduct(
                          List( diagram, obj -> UnderlyingZFunctorCell( obj ) ),
                          List( source, mor -> UnderlyingZFunctorCell( mor ) ),
-                         UnderlyingZFunctorCell( direct_product ) 
+                         UnderlyingZFunctorCell( direct_product )
                        ),
                        direct_product );
                        
@@ -497,51 +493,51 @@ BindGlobal( "INSTALL_ALL_ADDS_FILTERED",
         
         install_entries := [
         
-            [ [ "PreCompose" ], ValueGlobal( Concatenation(  "ADD_PRECOMPOSE_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "PreCompose" ], ValueGlobal( Concatenation( "ADD_PRECOMPOSE_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "IdentityMorphism" ], ValueGlobal( Concatenation(  "ADD_IDENTITY_MORPHISM_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "IdentityMorphism" ], ValueGlobal( Concatenation( "ADD_IDENTITY_MORPHISM_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "ZeroObject" ], ValueGlobal( Concatenation(  "ADD_ZERO_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "ZeroObject" ], ValueGlobal( Concatenation( "ADD_ZERO_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "KernelObject" ], ValueGlobal( Concatenation(  "ADD_KERNEL_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "KernelObject" ], ValueGlobal( Concatenation( "ADD_KERNEL_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "KernelEmbedding" ], ValueGlobal( Concatenation(  "ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "KernelEmbedding" ], ValueGlobal( Concatenation( "ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "KernelLift" ], ValueGlobal( Concatenation(  "ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "KernelLift" ], ValueGlobal( Concatenation( "ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "TerminalObject" ], ValueGlobal( Concatenation(  "ADD_TERMINAL_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "TerminalObject" ], ValueGlobal( Concatenation( "ADD_TERMINAL_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "UniversalMorphismIntoTerminalObject" ], ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_WITH_GIVEN_TERMINAL_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "UniversalMorphismIntoTerminalObject" ], ValueGlobal( Concatenation( "ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_WITH_GIVEN_TERMINAL_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "InitialObject" ], ValueGlobal( Concatenation(  "ADD_INITIAL_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "InitialObject" ], ValueGlobal( Concatenation( "ADD_INITIAL_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "UniversalMorphismFromInitialObject" ], ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_WITH_GIVEN_INITIAL_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "UniversalMorphismFromInitialObject" ], ValueGlobal( Concatenation( "ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_WITH_GIVEN_INITIAL_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "DirectProduct" ], ValueGlobal( Concatenation(  "ADD_DIRECT_PRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "DirectProduct" ], ValueGlobal( Concatenation( "ADD_DIRECT_PRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
             
             [ [ "ProjectionInFactorOfDirectProduct" ],
-              ValueGlobal( Concatenation(  "ADD_PROJECTION_IN_FACTOR_OF_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
+              ValueGlobal( Concatenation( "ADD_PROJECTION_IN_FACTOR_OF_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
             
             [ [ "UniversalMorphismIntoDirectProduct" ],
-              ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
+              ValueGlobal( Concatenation( "ADD_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "FiberProduct" ], ValueGlobal( Concatenation(  "ADD_FIBER_PRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "FiberProduct" ], ValueGlobal( Concatenation( "ADD_FIBER_PRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
             
             [ [ "ProjectionInFactorOfFiberProduct" ],
-              ValueGlobal( Concatenation(  "ADD_PROJECTION_IN_FACTOR_OF_PULLBACK_WITH_GIVEN_PULLBACK_IN_", name_part, "_CATEGORY" ) ) ],
+              ValueGlobal( Concatenation( "ADD_PROJECTION_IN_FACTOR_OF_PULLBACK_WITH_GIVEN_PULLBACK_IN_", name_part, "_CATEGORY" ) ) ],
             
             [ [ "UniversalMorphismIntoFiberProduct" ],
-              ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_", name_part, "_CATEGORY" ) ) ],
+              ValueGlobal( Concatenation( "ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "InverseForMorphisms" ], ValueGlobal( Concatenation(  "ADD_INVERSE_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "InverseForMorphisms" ], ValueGlobal( Concatenation( "ADD_INVERSE_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "LiftAlongMonomorphism" ], ValueGlobal( Concatenation(  "ADD_MONO_AS_KERNEL_LIFT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "LiftAlongMonomorphism" ], ValueGlobal( Concatenation( "ADD_MONO_AS_KERNEL_LIFT_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "AdditionForMorphisms" ], ValueGlobal( Concatenation(  "ADD_ADDITION_FOR_MORPHISMS_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "AdditionForMorphisms" ], ValueGlobal( Concatenation( "ADD_ADDITION_FOR_MORPHISMS_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "AdditiveInverseForMorphisms" ], ValueGlobal( Concatenation(  "ADD_ADDITIVE_INVERSE_FOR_MORPHISMS_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "AdditiveInverseForMorphisms" ], ValueGlobal( Concatenation( "ADD_ADDITIVE_INVERSE_FOR_MORPHISMS_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "ZeroMorphism" ], ValueGlobal( Concatenation(  "ADD_ZERO_MORPHISM_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "ZeroMorphism" ], ValueGlobal( Concatenation( "ADD_ZERO_MORPHISM_IN_", name_part, "_CATEGORY" ) ) ],
             
         ];
         
@@ -802,7 +798,7 @@ InstallMethodWithCache( DescendingToAscendingFilteredObjectFunctor,
     
     ascending_filtered_object_category := CategoryOfAscendingFilteredObjects( category );
     
-    functor := CapFunctor( Concatenation( "Descending to ascending filtered objects functor of ", Name( category ) ), 
+    functor := CapFunctor( Concatenation( "Descending to ascending filtered objects functor of ", Name( category ) ),
                            descending_filtered_object_category,
                            ascending_filtered_object_category );
     
@@ -859,7 +855,7 @@ InstallMethodWithCache( AscendingToDescendingFilteredObjectFunctor,
     
     descending_filtered_object_category := CategoryOfDescendingFilteredObjects( category );
     
-    functor := CapFunctor( Concatenation( "Ascending to descending filtered object functor of ", Name( category ) ), 
+    functor := CapFunctor( Concatenation( "Ascending to descending filtered object functor of ", Name( category ) ),
                            ascending_filtered_object_category,
                            descending_filtered_object_category );
     

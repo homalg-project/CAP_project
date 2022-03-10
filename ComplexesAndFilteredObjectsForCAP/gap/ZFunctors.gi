@@ -1,11 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# ComplexesAndFilteredObjectsForCAP: Implementation of complexes, cocomplexes and filtered objects for CAP
+#
+# Implementations
+#
 
 DeclareRepresentation( "IsZFunctorObjectRep",
                        IsCapCategoryObjectRep and IsZFunctorObject,
@@ -769,12 +766,12 @@ BindGlobal( "ADD_FIBER_PRODUCT_IN_Z_FUNCTORS",
             
             object_func := function( index ) return FiberProduct( List( morphism_list, mor -> mor[ index ] ) ); end;
             
-            differential_func := function( index ) 
+            differential_func := function( index )
               local cohomological_index;
               
               cohomological_index := index + 1;
               
-              return FiberProductFunctorial( List( morphism_list, mor -> [ mor[ index ], Differential( Source( mor ), index ), mor[ cohomological_index ] ] ) ); 
+              return FiberProductFunctorial( List( morphism_list, mor -> [ mor[ index ], Differential( Source( mor ), index ), mor[ cohomological_index ] ] ) );
               
             end;
             
@@ -849,12 +846,12 @@ BindGlobal( "ADD_PUSHOUT_IN_Z_FUNCTORS",
             
             object_func := function( index ) return Pushout( List( morphism_list, mor -> mor[ index ] ) ); end;
             
-            differential_func := function( index ) 
+            differential_func := function( index )
               local cohomological_index;
               
               cohomological_index := index + 1;
               
-              return PushoutFunctorial( List( morphism_list, mor -> [ mor[ index ], Differential( Range( mor ), index ), mor[ cohomological_index ] ] ) ); 
+              return PushoutFunctorial( List( morphism_list, mor -> [ mor[ index ], Differential( Range( mor ), index ), mor[ cohomological_index ] ] ) );
               
             end;
             
@@ -1124,7 +1121,7 @@ InstallMethod( ZFunctorObjectExtendedByInitialAndIdentity,
     
     new_object_func := function( i )
         
-        if i < lower_bound  then
+        if i < lower_bound then
             
             return InitialObject( category );
             

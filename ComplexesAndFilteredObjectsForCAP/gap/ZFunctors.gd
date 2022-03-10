@@ -1,10 +1,10 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# ComplexesAndFilteredObjectsForCAP: Implementation of complexes, cocomplexes and filtered objects for CAP
+#
+# Declarations
+#
+
 #############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
 #! @Chapter Functors from integers category
 #! Convention: A morphism in $\mathbb{Z}$ from an integer $a$ to an integer $b$
 #! exists if and only if $a \leq b$.

@@ -1,3 +1,8 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# GeneralizedMorphismsForCAP: Implementations of generalized morphisms for the CAP project
+#
+# Reading the declaration part of the package.
+#
 
 ReadPackage( "GeneralizedMorphismsForCAP", "gap/GeneralizedMorphismCategory.gd");
 

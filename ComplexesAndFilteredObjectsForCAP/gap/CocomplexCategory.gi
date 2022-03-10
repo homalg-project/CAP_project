@@ -1,12 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# ComplexesAndFilteredObjectsForCAP: Implementation of complexes, cocomplexes and filtered objects for CAP
+#
+# Implementations
+#
 
 DeclareRepresentation( "IsCapCocomplexRep",
                        IsCapCategoryObjectRep and IsCapCocomplex,
@@ -398,7 +394,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
           
           function( object, initial_object )
             
-            return morphism_constructor( initial_object, 
+            return morphism_constructor( initial_object,
                      UniversalMorphismFromInitialObjectWithGivenInitialObject(
                        UnderlyingZFunctorCell( object ), UnderlyingZFunctorCell( initial_object ) ), object );
         
@@ -455,7 +451,7 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
                        UniversalMorphismIntoDirectProductWithGivenDirectProduct(
                          List( diagram, obj -> UnderlyingZFunctorCell( obj ) ),
                          List( source, mor -> UnderlyingZFunctorCell( mor ) ),
-                         UnderlyingZFunctorCell( direct_product ) 
+                         UnderlyingZFunctorCell( direct_product )
                        ),
                        direct_product );
                        
@@ -721,77 +717,77 @@ BindGlobal( "INSTALL_ALL_ADDS_COMPLEX_COCOMPLEX",
         
         install_entries := [
         
-            [ [ "PreCompose" ], ValueGlobal( Concatenation(  "ADD_PRECOMPOSE_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "PreCompose" ], ValueGlobal( Concatenation( "ADD_PRECOMPOSE_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "IdentityMorphism" ], ValueGlobal( Concatenation(  "ADD_IDENTITY_MORPHISM_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "IdentityMorphism" ], ValueGlobal( Concatenation( "ADD_IDENTITY_MORPHISM_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "ZeroObject" ], ValueGlobal( Concatenation(  "ADD_ZERO_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "ZeroObject" ], ValueGlobal( Concatenation( "ADD_ZERO_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "KernelObject" ], ValueGlobal( Concatenation(  "ADD_KERNEL_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "KernelObject" ], ValueGlobal( Concatenation( "ADD_KERNEL_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "KernelEmbedding" ], ValueGlobal( Concatenation(  "ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "KernelEmbedding" ], ValueGlobal( Concatenation( "ADD_KERNEL_EMB_WITH_GIVEN_KERNEL_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "KernelLift" ], ValueGlobal( Concatenation(  "ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "KernelLift" ], ValueGlobal( Concatenation( "ADD_KERNEL_LIFT_WITH_GIVEN_KERNEL_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "CokernelObject" ], ValueGlobal( Concatenation(  "ADD_COKERNEL_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "CokernelObject" ], ValueGlobal( Concatenation( "ADD_COKERNEL_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "CokernelProjection" ], ValueGlobal( Concatenation(  "ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "CokernelProjection" ], ValueGlobal( Concatenation( "ADD_COKERNEL_PROJ_WITH_GIVEN_COKERNEL_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "CokernelColift" ], ValueGlobal( Concatenation(  "ADD_COKERNEL_COLIFT_WITH_GIVEN_COKERNEL_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "CokernelColift" ], ValueGlobal( Concatenation( "ADD_COKERNEL_COLIFT_WITH_GIVEN_COKERNEL_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "TerminalObject" ], ValueGlobal( Concatenation(  "ADD_TERMINAL_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "TerminalObject" ], ValueGlobal( Concatenation( "ADD_TERMINAL_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "UniversalMorphismIntoTerminalObject" ], ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_WITH_GIVEN_TERMINAL_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "UniversalMorphismIntoTerminalObject" ], ValueGlobal( Concatenation( "ADD_UNIVERSAL_MORPHISM_INTO_TERMINAL_OBJECT_WITH_GIVEN_TERMINAL_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "InitialObject" ], ValueGlobal( Concatenation(  "ADD_INITIAL_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "InitialObject" ], ValueGlobal( Concatenation( "ADD_INITIAL_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "UniversalMorphismFromInitialObject" ], ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_WITH_GIVEN_INITIAL_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "UniversalMorphismFromInitialObject" ], ValueGlobal( Concatenation( "ADD_UNIVERSAL_MORPHISM_FROM_INITIAL_OBJECT_WITH_GIVEN_INITIAL_OBJECT_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "DirectProduct" ], ValueGlobal( Concatenation(  "ADD_DIRECT_PRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "DirectProduct" ], ValueGlobal( Concatenation( "ADD_DIRECT_PRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
             
             [ [ "ProjectionInFactorOfDirectProduct" ],
-              ValueGlobal( Concatenation(  "ADD_PROJECTION_IN_FACTOR_OF_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
+              ValueGlobal( Concatenation( "ADD_PROJECTION_IN_FACTOR_OF_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
             
             [ [ "UniversalMorphismIntoDirectProduct" ],
-              ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
+              ValueGlobal( Concatenation( "ADD_UNIVERSAL_MORPHISM_INTO_DIRECT_PRODUCT_WITH_GIVEN_DIRECT_PRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "Coproduct" ], ValueGlobal( Concatenation(  "ADD_COPRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "Coproduct" ], ValueGlobal( Concatenation( "ADD_COPRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
             
             [ [ "InjectionOfCofactorOfCoproduct" ],
-              ValueGlobal( Concatenation(  "ADD_INJECTION_OF_COFACTOR_OF_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
+              ValueGlobal( Concatenation( "ADD_INJECTION_OF_COFACTOR_OF_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
             
             [ [ "UniversalMorphismFromCoproduct" ],
-              ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_FROM_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
+              ValueGlobal( Concatenation( "ADD_UNIVERSAL_MORPHISM_FROM_COPRODUCT_WITH_GIVEN_COPRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "DirectSum" ], ValueGlobal( Concatenation(  "ADD_DIRECT_SUM_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "DirectSum" ], ValueGlobal( Concatenation( "ADD_DIRECT_SUM_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "FiberProduct" ], ValueGlobal( Concatenation(  "ADD_FIBER_PRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "FiberProduct" ], ValueGlobal( Concatenation( "ADD_FIBER_PRODUCT_IN_", name_part, "_CATEGORY" ) ) ],
             
             [ [ "ProjectionInFactorOfFiberProduct" ],
-              ValueGlobal( Concatenation(  "ADD_PROJECTION_IN_FACTOR_OF_PULLBACK_WITH_GIVEN_PULLBACK_IN_", name_part, "_CATEGORY" ) ) ],
+              ValueGlobal( Concatenation( "ADD_PROJECTION_IN_FACTOR_OF_PULLBACK_WITH_GIVEN_PULLBACK_IN_", name_part, "_CATEGORY" ) ) ],
             
             [ [ "UniversalMorphismIntoFiberProduct" ],
-              ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_", name_part, "_CATEGORY" ) ) ],
+              ValueGlobal( Concatenation( "ADD_UNIVERSAL_MORPHISM_INTO_PULLBACK_WITH_GIVEN_PULLBACK_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "Pushout" ], ValueGlobal( Concatenation(  "ADD_PUSHOUT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "Pushout" ], ValueGlobal( Concatenation( "ADD_PUSHOUT_IN_", name_part, "_CATEGORY" ) ) ],
             
             [ [ "InjectionOfCofactorOfPushout" ],
-              ValueGlobal( Concatenation(  "ADD_INJECTION_OF_COFACTOR_OF_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_", name_part, "_CATEGORY" ) ) ],
+              ValueGlobal( Concatenation( "ADD_INJECTION_OF_COFACTOR_OF_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_", name_part, "_CATEGORY" ) ) ],
             
             [ [ "UniversalMorphismFromPushout" ],
-              ValueGlobal( Concatenation(  "ADD_UNIVERSAL_MORPHISM_FROM_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_", name_part, "_CATEGORY" ) ) ],
+              ValueGlobal( Concatenation( "ADD_UNIVERSAL_MORPHISM_FROM_PUSHOUT_WITH_GIVEN_PUSHOUT_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "InverseForMorphisms" ], ValueGlobal( Concatenation(  "ADD_INVERSE_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "InverseForMorphisms" ], ValueGlobal( Concatenation( "ADD_INVERSE_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "LiftAlongMonomorphism" ], ValueGlobal( Concatenation(  "ADD_MONO_AS_KERNEL_LIFT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "LiftAlongMonomorphism" ], ValueGlobal( Concatenation( "ADD_MONO_AS_KERNEL_LIFT_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "ColiftAlongEpimorphism" ], ValueGlobal( Concatenation(  "ADD_EPI_AS_COKERNEL_COLIFT_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "ColiftAlongEpimorphism" ], ValueGlobal( Concatenation( "ADD_EPI_AS_COKERNEL_COLIFT_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "AdditionForMorphisms" ], ValueGlobal( Concatenation(  "ADD_ADDITION_FOR_MORPHISMS_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "AdditionForMorphisms" ], ValueGlobal( Concatenation( "ADD_ADDITION_FOR_MORPHISMS_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "AdditiveInverseForMorphisms" ], ValueGlobal( Concatenation(  "ADD_ADDITIVE_INVERSE_FOR_MORPHISMS_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "AdditiveInverseForMorphisms" ], ValueGlobal( Concatenation( "ADD_ADDITIVE_INVERSE_FOR_MORPHISMS_IN_", name_part, "_CATEGORY" ) ) ],
             
-            [ [ "ZeroMorphism" ], ValueGlobal( Concatenation(  "ADD_ZERO_MORPHISM_IN_", name_part, "_CATEGORY" ) ) ],
+            [ [ "ZeroMorphism" ], ValueGlobal( Concatenation( "ADD_ZERO_MORPHISM_IN_", name_part, "_CATEGORY" ) ) ],
             
         ];
         
@@ -1053,7 +1049,7 @@ InstallMethod( CochainMap,
   function( source, morphism_list, start_position, range )
     local z_functor_morphism;
     
-    z_functor_morphism := ZFunctorMorphism( 
+    z_functor_morphism := ZFunctorMorphism(
                             UnderlyingZFunctorCell( source ),
                             morphism_list,
                             start_position,
@@ -1112,7 +1108,7 @@ InstallMethod( ChainMap,
   function( source, morphism_list, start_position, range )
     local z_functor_morphism;
     
-    z_functor_morphism := ZFunctorMorphism( 
+    z_functor_morphism := ZFunctorMorphism(
                             UnderlyingZFunctorCell( source ),
                             morphism_list,
                             -start_position,
@@ -1190,7 +1186,7 @@ InstallMethodWithCache( ComplexToCocomplexFunctor,
     
     cocomplex_category := CocomplexCategory( category );
     
-    functor := CapFunctor( Concatenation( "Complex to cocomplex functor of ", Name( category ) ), 
+    functor := CapFunctor( Concatenation( "Complex to cocomplex functor of ", Name( category ) ),
                            complex_category,
                            cocomplex_category );
     
@@ -1247,7 +1243,7 @@ InstallMethodWithCache( CocomplexToComplexFunctor,
     
     complex_category := ComplexCategory( category );
     
-    functor := CapFunctor( Concatenation( "Cocomplex to complex functor of ", Name( category ) ), 
+    functor := CapFunctor( Concatenation( "Cocomplex to complex functor of ", Name( category ) ),
                            cocomplex_category,
                            complex_category );
     
@@ -1306,7 +1302,7 @@ InstallMethod( HomologyFunctorOp,
       
       complex_category := ComplexCategory( category );
       
-      functor := CapFunctor( Concatenation( String( index ), "-th homology functor of ", Name( category ) ), 
+      functor := CapFunctor( Concatenation( String( index ), "-th homology functor of ", Name( category ) ),
                              complex_category,
                              category );
       
@@ -1375,7 +1371,7 @@ InstallMethod( CohomologyFunctorOp,
       
       cocomplex_category := CocomplexCategory( category );
       
-      functor := CapFunctor( Concatenation( String( index ), "-th cohomology functor of ", Name( category ) ), 
+      functor := CapFunctor( Concatenation( String( index ), "-th cohomology functor of ", Name( category ) ),
                              cocomplex_category,
                              category );
       

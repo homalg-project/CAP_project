@@ -10,12 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "ActionsForCAP",
 Subtitle := "Actions and Coactions for CAP",
-
 Version := "2021.10-01",
-
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
-
 
 Persons := [
   rec(
@@ -81,7 +78,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.6",
+  GAP := ">= 4.11.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "CAP", ">= 2019.09.16" ],
                            [ "MonoidalCategories", ">= 2019.01.16" ],

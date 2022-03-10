@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # ToricSheaves: Toric sheaves as Serre quotients
 #
 # This file contains package meta data. For additional information on
@@ -64,7 +64,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.6",
+  GAP := ">= 4.11.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "GradedModulePresentationsForCAP", ">=0" ],
                            [ "GeneralizedMorphismsForCAP", ">=0" ],

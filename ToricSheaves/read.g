@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # ToricSheaves: Toric sheaves as Serre quotients
 #
 # Reading the implementation part of the package.

@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # GradedModulePresentationsForCAP: Presentations for graded modules
 #
 # Reading the declaration part of the package.
