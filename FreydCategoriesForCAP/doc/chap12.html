@@ -76,7 +76,7 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7F1E3F5A7EC538B6">12.18 <span class="Heading">Matrices over ZG</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X857E54A97C1B4340">12.19 <span class="Heading">Testing if an object is projective, injective, bijective</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X820CD9B28165BF9F">12.19 <span class="Heading">Testing if an object is projective, injective, bijective, and computing projective/injective dimensions</span></a>
 </span>
 </div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap12.html#X7AFC8F247C00D608">12.20 <span class="Heading">Prosets</span></a>
@@ -1316,33 +1316,47 @@ true
 #@fi
 </pre></div>
 
-<p><a id="X857E54A97C1B4340" name="X857E54A97C1B4340"></a></p>
+<p><a id="X820CD9B28165BF9F" name="X820CD9B28165BF9F"></a></p>
 
-<h4>12.19 <span class="Heading">Testing if an object is projective, injective, bijective</span></h4>
+<h4>12.19 <span class="Heading">Testing if an object is projective, injective, bijective, and computing projective/injective dimensions</span></h4>
 
 
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := HomalgRingOfIntegers();;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rows := CategoryOfRows( R );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">adelman := AdelmanCategory( rows );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj1 := CategoryOfRowsObject( 1, rows );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := ProjectionInFactorOfDirectSum( [ obj1, obj1 ], 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rowobj := CategoryOfRowsObject( 1, rows );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := ProjectionInFactorOfDirectSum( [ rowobj, rowobj ], 1 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alpha := AsAdelmanCategoryMorphism( alpha );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj := CokernelObject( alpha );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsBijectiveObject( obj );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := 2 * IdentityMorphism( obj1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := 2 * IdentityMorphism( rowobj );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">beta := AsAdelmanCategoryMorphism( beta );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj1 := CokernelObject( beta );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj2 := KernelObject( beta );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj3 := ImageObject( beta );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">obj4 := HomologyObject( beta, beta );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsBijectiveObject( obj1 );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsInjective( obj1 );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ProjectiveDimension( obj1 );</span>
+2
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsBijectiveObject( obj2 );</span>
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsProjective( obj2 );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InjectiveDimension( obj2 );</span>
+2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ProjectiveDimension( obj3 );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InjectiveDimension( obj3 );</span>
+1
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ProjectiveDimension( obj4 );</span>
+2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">InjectiveDimension( obj4 );</span>
+2
 </pre></div>
 
 <p><a id="X7AFC8F247C00D608" name="X7AFC8F247C00D608"></a></p>

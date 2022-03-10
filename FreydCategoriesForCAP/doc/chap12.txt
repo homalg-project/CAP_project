@@ -1165,30 +1165,45 @@
   [4X[32X[104X
   
   
-  [1X12.19 [33X[0;0YTesting if an object is projective, injective, bijective[133X[101X
+  [1X12.19  [33X[0;0YTesting  if  an  object  is  projective,  injective,  bijective,  and[101X
+  [1Xcomputing projective/injective dimensions[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XR := HomalgRingOfIntegers();;[127X[104X
     [4X[25Xgap>[125X [27Xrows := CategoryOfRows( R );;[127X[104X
     [4X[25Xgap>[125X [27Xadelman := AdelmanCategory( rows );;[127X[104X
-    [4X[25Xgap>[125X [27Xobj1 := CategoryOfRowsObject( 1, rows );;[127X[104X
-    [4X[25Xgap>[125X [27Xalpha := ProjectionInFactorOfDirectSum( [ obj1, obj1 ], 1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xrowobj := CategoryOfRowsObject( 1, rows );;[127X[104X
+    [4X[25Xgap>[125X [27Xalpha := ProjectionInFactorOfDirectSum( [ rowobj, rowobj ], 1 );;[127X[104X
     [4X[25Xgap>[125X [27Xalpha := AsAdelmanCategoryMorphism( alpha );;[127X[104X
     [4X[25Xgap>[125X [27Xobj := CokernelObject( alpha );;[127X[104X
     [4X[25Xgap>[125X [27XIsBijectiveObject( obj );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xbeta := 2 * IdentityMorphism( obj1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xbeta := 2 * IdentityMorphism( rowobj );;[127X[104X
     [4X[25Xgap>[125X [27Xbeta := AsAdelmanCategoryMorphism( beta );;[127X[104X
     [4X[25Xgap>[125X [27Xobj1 := CokernelObject( beta );;[127X[104X
     [4X[25Xgap>[125X [27Xobj2 := KernelObject( beta );;[127X[104X
+    [4X[25Xgap>[125X [27Xobj3 := ImageObject( beta );;[127X[104X
+    [4X[25Xgap>[125X [27Xobj4 := HomologyObject( beta, beta );;[127X[104X
     [4X[25Xgap>[125X [27XIsBijectiveObject( obj1 );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsInjective( obj1 );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XProjectiveDimension( obj1 );[127X[104X
+    [4X[28X2[128X[104X
     [4X[25Xgap>[125X [27XIsBijectiveObject( obj2 );[127X[104X
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XIsProjective( obj2 );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XInjectiveDimension( obj2 );[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27XProjectiveDimension( obj3 );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27XInjectiveDimension( obj3 );[127X[104X
+    [4X[28X1[128X[104X
+    [4X[25Xgap>[125X [27XProjectiveDimension( obj4 );[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27XInjectiveDimension( obj4 );[127X[104X
+    [4X[28X2[128X[104X
   [4X[32X[104X
   
   
