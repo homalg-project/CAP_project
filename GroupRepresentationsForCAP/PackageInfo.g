@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "GroupRepresentationsForCAP",
 Subtitle := "Skeletal category of group representations for CAP",
-Version := "2022.03-02",
+Version := "2022.03-03",
 Date := "10/03/2022",
 License := "GPL-2.0-or-later",
 
