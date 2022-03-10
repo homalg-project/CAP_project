@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # ToricSheaves: Toric sheaves as Serre quotients
 #
 # This file contains package meta data. For additional information on
@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "ToricSheaves",
 Subtitle := "Toric sheaves as Serre quotients",
-Version := "2020.10-01",
-Date := "19/10/2020",
+Version := "2022.03-01",
+Date := "10/03/2022",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -34,7 +34,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/ToricSheaves",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/ToricSheaves",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/ToricSheaves/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/ToricSheaves/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/ToricSheaves-", ~.Version, "/ToricSheaves-", ~.Version ),
@@ -64,7 +64,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.6",
+  GAP := ">= 4.11.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "GradedModulePresentationsForCAP", ">=0" ],
                            [ "GeneralizedMorphismsForCAP", ">=0" ],
