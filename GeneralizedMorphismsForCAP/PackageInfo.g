@@ -1,13 +1,18 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# GeneralizedMorphismsForCAP: Implementations of generalized morphisms for the CAP project
+#
+# This file contains package meta data. For additional information on
+# the meaning and correct usage of these fields, please consult the
+# manual of the "Example" package as well as the comments in its
+# PackageInfo.g file.
+#
 SetPackageInfo( rec(
 
 PackageName := "GeneralizedMorphismsForCAP",
 Subtitle := "Implementations of generalized morphisms for the CAP project",
-
-Version := "2021.10-01",
-
-Date := "26/10/2021",
+Version := "2022.03-02",
+Date := "10/03/2022",
 License := "GPL-2.0-or-later",
-
 
 Persons := [
   rec(
@@ -80,7 +85,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.6",
+  GAP := ">= 4.11.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "CAP", ">= 2021.05-01" ],
                            [ "MonoidalCategories", ">= 2019.01.16" ],
@@ -93,6 +98,7 @@ AvailabilityTest := function()
         return true;
     end,
 
+TestFile := "tst/testall.g",
 
 #Keywords := [ "TODO" ],
 

@@ -7,7 +7,7 @@
   [1X4.1-1 IsGeneralizedMorphismCategoryByThreeArrowsObject[101X
   
   [33X[1;0Y[29X[2XIsGeneralizedMorphismCategoryByThreeArrowsObject[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  GAP  category  of objects in the generalized morphism category by three
   arrows.[133X
@@ -15,7 +15,7 @@
   [1X4.1-2 IsGeneralizedMorphismByThreeArrows[101X
   
   [33X[1;0Y[29X[2XIsGeneralizedMorphismByThreeArrows[102X( [3Xobject[103X ) [32X filter[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe  GAP category of morphisms in the generalized morphism category by three
   arrows.[133X
@@ -26,7 +26,7 @@
   [1X4.2-1 HasIdentitiesAsReversedArrows[101X
   
   [33X[1;0Y[29X[2XHasIdentitiesAsReversedArrows[102X( [3Xalpha[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe argument is a generalized morphism [23X\alpha[123X by three arrows [23Xa \leftarrow b
   \rightarrow  c  \leftarrow  d[123X.  The  output  is [10Xtrue[110X if [23Xa \leftarrow b[123X and [23Xc
@@ -35,7 +35,7 @@
   [1X4.2-2 HasIdentityAsSourceAid[101X
   
   [33X[1;0Y[29X[2XHasIdentityAsSourceAid[102X( [3Xalpha[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe argument is a generalized morphism [23X\alpha[123X by three arrows [23Xa \leftarrow b
   \rightarrow  c  \leftarrow  d[123X.  The  output  is  [10Xtrue[110X  if  [23Xa \leftarrow b[123X is
@@ -44,7 +44,7 @@
   [1X4.2-3 HasIdentityAsRangeAid[101X
   
   [33X[1;0Y[29X[2XHasIdentityAsRangeAid[102X( [3Xalpha[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Y[10Xtrue[110X or [10Xfalse[110X[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe argument is a generalized morphism [23X\alpha[123X by three arrows [23Xa \leftarrow b
   \rightarrow  c  \leftarrow  d[123X.  The  output  is  [10Xtrue[110X  if  [23Xc \leftarrow d[123X is
