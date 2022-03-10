@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # GradedModulePresentationsForCAP: Presentations for graded modules
 #
 # This file contains package meta data. For additional information on
@@ -10,9 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "GradedModulePresentationsForCAP",
 Subtitle := "Presentations for graded modules",
-Version := "2021.10-01",
-
-Date := "27/10/2021",
+Version := "2022.03-01",
+Date := "10/03/2022",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -70,7 +69,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.6",
+  GAP := ">= 4.11.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "CAP", ">= 2021.10-06" ],
                            [ "ModulePresentationsForCAP", ">=2019.08.07" ],
