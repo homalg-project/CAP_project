@@ -4,3 +4,55 @@ fixes:
   - "/home/gap/.gap/pkg/CAP_project/::"
 ignore:
   - "home/"
+flags:
+  CAP:
+    paths:
+      - "CAP/"
+  ActionsForCAP:
+    paths:
+      - "ActionsForCAP/"
+  AttributeCategoryForCAP:
+    paths:
+      - "AttributeCategoryForCAP/"
+  CompilerForCAP:
+    paths:
+      - "CompilerForCAP/"
+  ComplexesAndFilteredObjectsForCAP:
+    paths:
+      - "ComplexesAndFilteredObjectsForCAP/"
+  DeductiveSystemForCAP:
+    paths:
+      - "DeductiveSystemForCAP/"
+  FreydCategoriesForCAP:
+    paths:
+      - "FreydCategoriesForCAP/"
+  GeneralizedMorphismsForCAP:
+    paths:
+      - "GeneralizedMorphismsForCAP/"
+  GradedModulePresentationsForCAP:
+    paths:
+      - "GradedModulePresentationsForCAP/"
+  GroupRepresentationsForCAP:
+    paths:
+      - "GroupRepresentationsForCAP/"
+  HomologicalAlgebraForCAP:
+    paths:
+      - "HomologicalAlgebraForCAP/"
+  InternalExteriorAlgebraForCAP:
+    paths:
+      - "InternalExteriorAlgebraForCAP/"
+  LinearAlgebraForCAP:
+    paths:
+      - "LinearAlgebraForCAP/"
+  ModulePresentationsForCAP:
+    paths:
+      - "ModulePresentationsForCAP/"
+  ModulesOverLocalRingsForCAP:
+    paths:
+      - "ModulesOverLocalRingsForCAP/"
+  MonoidalCategories:
+    paths:
+      - "MonoidalCategories/"
+  ToricSheaves:
+    paths:
+      - "ToricSheaves/"

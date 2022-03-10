@@ -23,4 +23,20 @@ shasum -a 256 -c codecov.SHA256SUM
 
 # execute
 chmod +x codecov
-./codecov -Z -f "coverage*.json"
+./codecov -Z -f "coverage*.json" -F CAP
+./codecov -Z -f "coverage*.json" -F ActionsForCAP
+./codecov -Z -f "coverage*.json" -F AttributeCategoryForCAP
+./codecov -Z -f "coverage*.json" -F CompilerForCAP
+./codecov -Z -f "coverage*.json" -F ComplexesAndFilteredObjectsForCAP
+./codecov -Z -f "coverage*.json" -F DeductiveSystemForCAP
+./codecov -Z -f "coverage*.json" -F FreydCategoriesForCAP
+./codecov -Z -f "coverage*.json" -F GeneralizedMorphismsForCAP
+./codecov -Z -f "coverage*.json" -F GradedModulePresentationsForCAP
+./codecov -Z -f "coverage*.json" -F GroupRepresentationsForCAP
+./codecov -Z -f "coverage*.json" -F HomologicalAlgebraForCAP
+./codecov -Z -f "coverage*.json" -F InternalExteriorAlgebraForCAP
+./codecov -Z -f "coverage*.json" -F LinearAlgebraForCAP
+./codecov -Z -f "coverage*.json" -F ModulePresentationsForCAP
+./codecov -Z -f "coverage*.json" -F ModulesOverLocalRingsForCAP
+./codecov -Z -f "coverage*.json" -F MonoidalCategories
+./codecov -Z -f "coverage*.json" -F ToricSheaves

@@ -3,7 +3,7 @@
 
 ### Skeletal category of group representations for CAP
 
-| Documentation | Latest Release | Build Status of [CAP_project](/../../) | Code Coverage of [CAP_project](/../../) |
+| Documentation | Latest Release | Build Status of [CAP_project](/../../) | Code Coverage |
 | ------------- | -------------- | ------------ | ------------- |
 | [![HTML stable documentation][html-img]][html-url] [![PDF stable documentation][pdf-img]][pdf-url] | [![version][version-img]][version-url] [![date][date-img]][date-url] | [![Build Status][tests-img]][tests-url] | [![Code Coverage][codecov-img]][codecov-url] |
 
@@ -25,8 +25,8 @@
 [tests-img]: https://github.com/homalg-project/CAP_project/workflows/Tests/badge.svg?branch=master
 [tests-url]: https://github.com/homalg-project/CAP_project/actions?query=workflow%3ATests+branch%3Amaster
 
-[codecov-img]: https://codecov.io/gh/homalg-project/CAP_project/branch/master/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/homalg-project/CAP_project
+[codecov-img]: https://codecov.io/gh/homalg-project/CAP_project/branch/master/graph/badge.svg?flag=GroupRepresentationsForCAP
+[codecov-url]: https://codecov.io/gh/homalg-project/CAP_project/tree/master/GroupRepresentationsForCAP
 
 [code-img]: https://img.shields.io/badge/-View%20code-blue?logo=github
 [code-url]: https://github.com/homalg-project/CAP_project/tree/master/GroupRepresentationsForCAP#top
