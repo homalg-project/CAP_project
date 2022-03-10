@@ -1,11 +1,8 @@
-#############################################################################
-##
-##                                               ToricSheaves package
-##
-##  Copyright 2016, Sebastian Gutsche, Universität Siegen
-##                  Sebastian Posur,   Universität Siegen
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# ToricSheaves: Toric sheaves as Serre quotients
+#
+# Implementations
+#
 
 InstallMethod( CategoryOfToricSheaves,
                [ IsToricVariety ],

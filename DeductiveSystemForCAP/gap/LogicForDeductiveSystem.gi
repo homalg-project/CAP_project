@@ -1,11 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# DeductiveSystemForCAP: Deductive system for CAP
+#
+# Implementations
+#
 
 ## RETHINK THIS WHOLE STRUCTURE
 

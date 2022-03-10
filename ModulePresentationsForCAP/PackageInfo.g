@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "ModulePresentationsForCAP",
 Subtitle := "Category R-pres for CAP",
-Version := "2022.01-01",
+Version := "2022.03-01",
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
@@ -85,7 +85,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.6",
+  GAP := ">= 4.11.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "MatricesForHomalg", ">=2019.02.01" ],
                            [ "CAP", ">= 2022.01-05" ],
@@ -102,6 +102,7 @@ AvailabilityTest := function()
         return true;
     end,
 
+TestFile := "tst/testall.g",
 
 #Keywords := [ "TODO" ],
 

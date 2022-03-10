@@ -1,11 +1,8 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2014, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
-#############################################################################
+# SPDX-License-Identifier: GPL-2.0-or-later
+# GeneralizedMorphismsForCAP: Implementations of generalized morphisms for the CAP project
+#
+# Implementations
+#
 
 #############################################
 ##
@@ -199,7 +196,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_COSPANS",
     
     AddUniversalMorphismIntoDirectSum( category,
       
-      function( diagram, morphism_list )
+      function( diagram, test_object, morphism_list )
         local generalized_list, arrow_list, reversedarrow_list, new_arrow, new_reversed_arrow, object_list;
         
         generalized_list := List( morphism_list, UnderlyingGeneralizedMorphism );
@@ -219,7 +216,7 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPERATIONS_FOR_SERRE_QUOTIENT_BY_COSPANS",
     ## Needs work
     AddUniversalMorphismFromDirectSum( category,
       
-      function( diagram, morphism_list )
+      function( diagram, test_object, morphism_list )
         local generalized_list, arrow_list, reversedarrow_list, new_arrow, new_reversed_arrow, object_list;
         
         generalized_list := List( morphism_list, UnderlyingGeneralizedMorphism );

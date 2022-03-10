@@ -1,12 +1,10 @@
-#############################################################################
-##
-##                                       ModulesOverLocalRingsForCAP package
-##
-##  Copyright 2017, Sebastian Posur,  University of Siegen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# ModulesOverLocalRingsForCAP: Category of modules over a local ring modeled by Serre quotients for CAP
+#
+# Declarations
+#
+
 #! @Chapter Cap category
-##
-#############################################################################
 
 ####################################
 ##

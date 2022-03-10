@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # ModulesOverLocalRingsForCAP: Category of modules over a local ring modeled by Serre quotients for CAP
 #
 # This file contains package meta data. For additional information on
@@ -10,11 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "ModulesOverLocalRingsForCAP",
 Subtitle := "Category of modules over a local ring modeled by Serre quotients for CAP",
-Version := Maximum( [
-  "2017.04-10", # Sepps version
-  ## this line prevents merge conflicts
-  "2020.10-01", ## Fabian's version
-] ),
+Version := "2022.03-01",
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
@@ -73,7 +69,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.8",
+  GAP := ">= 4.11.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "ModulePresentationsForCAP", "2017.03.27" ],
                            [ "GeneralizedMorphismsForCAP", "2016.10.05" ],

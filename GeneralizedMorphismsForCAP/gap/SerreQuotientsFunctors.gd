@@ -1,13 +1,10 @@
-#############################################################################
-##
-##                                               CAP package
-##
-##  Copyright 2015, Sebastian Gutsche, TU Kaiserslautern
-##                  Sebastian Posur,   RWTH Aachen
-##
+# SPDX-License-Identifier: GPL-2.0-or-later
+# GeneralizedMorphismsForCAP: Implementations of generalized morphisms for the CAP project
+#
+# Declarations
+#
+
 #! @Chapter Serre Quotients Functors
-##
-#############################################################################
 
 #! The operations in this chapter construct conversion functors between two
 #! Serre quotients of different standards.

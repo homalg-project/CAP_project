@@ -1,45 +1,57 @@
+# make sure gap --quitonbreak fails even if it is part of a pipe
+SHELL=/bin/bash -o pipefail
+
 all: doc test
 
 doc: doc/manual.six
 
 doc/manual.six: makedoc.g \
 		PackageInfo.g \
-		doc/Intros.autodoc \
-		gap/*.gd gap/*.gi examples/*.g* 
-	        gap makedoc.g
+		$(wildcard doc/*.autodoc gap/*.gd gap/*.gi examples/*.g examples/*/*.g)
+			gap makedoc.g
 
 clean:
 	(cd doc ; ./clean)
 
-test:	doc
-	gap maketest.g
+test: doc
+	gap tst/testall.g
 
-test-with-coverage:	doc
-	OUTPUT=$$(gap --banner --quitonbreak --cover stats maketest.g 2>&1); \
-	echo "$$OUTPUT"; \
-	! echo "$$OUTPUT" | sed "s/\r//" | grep -v "Running list" | grep -v "^#I  " | grep "" > /dev/null
-	echo 'LoadPackage("profiling"); OutputJsonCoverage("stats", "coverage.json");' | gap
+test-basic-spacing:
+	grep -RPl "\t" examples/ gap/ && echo "Tabs found" && exit 1 || exit 0
+	grep -RPl "\r" examples/ gap/ && echo "Windows line-endings found" && exit 1 || exit 0
+	# the second grep is a hack to fix the exit code with -L for grep <= 3.1
+	grep -RPzL "\n\z" examples/ gap/ | grep "" && echo "File with no newline at end of file found" && exit 1 || exit 0
 
-ci-test:	test-with-coverage
+test-doc: doc
+	cp -aT doc/ doc_tmp/
+	cd doc_tmp && ./clean
+	gap --quitonbreak makedoc_with_overfull_hbox_warnings.g | perl -pe 'END { exit $$status } $$status=1 if /#W/;'
 
-archive: test
-	(mkdir -p ../tar; cd ..; tar czvf tar/CAP.tar.gz --exclude ".DS_Store" --exclude "*~" CAP/doc/*.* CAP/doc/clean CAP/gap/*.{gi,gd} CAP/{PackageInfo.g,README,COPYING,VERSION,init.g,read.g,makedoc.g,makefile,maketest.g} CAP/examples/*.g CAP/examples/doc/*.g)
+test-with-coverage: doc
+	gap --quitonbreak --cover stats tst/testall.g
+	echo 'LoadPackage("profiling"); OutputJsonCoverage("stats", "coverage.json");' | gap --quitonbreak
 
-#WEBPOS=public_html
-#WEBPOS_FINAL=~/Sites/homalg-project/CAP
+test-spacing:
+	grep -R "[^ [\"]  " gap/*.gi && echo "Duplicate spaces found" && exit 1 || exit 0
+	grep -RE '[^ ] +$$' gap/* && echo "Trailing whitespace found" && exit 1 || exit 0
+	for filename in gap/*; do \
+		echo $$filename; \
+		echo "LoadPackage(\"InternalExteriorAlgebraForCAP\"); SizeScreen([4096]); func := ReadAsFunction(\"$$filename\"); FileString(\"gap_spacing\", DisplayString(func));" | gap --quitonbreak --banner; \
+		echo -e "\033[0m"; \
+		# In a perfect world, the DisplayString of a function would exactly match our code. However, our line breaks and indentation might differ from the GAP ones, \
+		# so we remove all indentation, line breaks, and empty lines, and afterwards insert line breaks at semicolons again for better readability. \
+		cat "gap_spacing" | tail -n +2 | head -n -2 | sed 's/\[  \]/[ ]/g' | sed 's/(  )/( )/g' | sed 's/(  :/( :/g' | sed 's/ *$$//' | sed 's/^ *//' | grep -v "^$$" | tr "\n" " " | sed 's/;/;\n/g' > modified_gap_spacing; \
+		cat "$$filename" | grep -v "^ *[#]" | sed 's/^ *//' | grep -v "^$$" | tr "\n" " " | sed "s/;/;\n/g" > modified_custom_spacing; \
+		# Our code might still differ from the GAP code, for example because of additional brackets. \
+		# Thus, we diff the code once as expected and once ignoring all space. Diffing the two diffs then shows lines which only differ by spacing. \
+		diff modified_gap_spacing modified_custom_spacing > spacing_diff; \
+		diff modified_gap_spacing modified_custom_spacing --ignore-all-space --ignore-space-change --ignore-trailing-space --ignore-blank-lines > spacing_diff_no_blanks; \
+		diff spacing_diff_no_blanks spacing_diff || exit; \
+	done
+	rm gap_spacing
+	rm modified_gap_spacing
+	rm modified_custom_spacing
+	rm spacing_diff
+	rm spacing_diff_no_blanks
 
-towww: archive
-	echo '<?xml version="1.0" encoding="UTF-8"?>' >${WEBPOS}.version
-	echo '<mixer>' >>${WEBPOS}.version
-	cat VERSION >>${WEBPOS}.version
-	echo '</mixer>' >>${WEBPOS}.version
-	cp PackageInfo.g ${WEBPOS}
-	cp README ${WEBPOS}/README.CAP
-	cp doc/manual.pdf ${WEBPOS}/CAP.pdf
-	cp doc/*.{css,html} ${WEBPOS}
-	rm -f ${WEBPOS}/*.tar.gz
-	mv ../tar/CAP.tar.gz ${WEBPOS}/CAP-`cat VERSION`.tar.gz
-	rm -f ${WEBPOS_FINAL}/*.tar.gz
-	cp ${WEBPOS}/* ${WEBPOS_FINAL}
-	ln -s CAP-`cat VERSION`.tar.gz ${WEBPOS_FINAL}/CAP.tar.gz
-
+ci-test: test-basic-spacing test-with-coverage

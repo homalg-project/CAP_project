@@ -1,20 +1,18 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# ComplexesAndFilteredObjectsForCAP: Implementation of complexes, cocomplexes and filtered objects for CAP
+#
+# This file contains package meta data. For additional information on
+# the meaning and correct usage of these fields, please consult the
+# manual of the "Example" package as well as the comments in its
+# PackageInfo.g file.
+#
 SetPackageInfo( rec(
 
 PackageName := "ComplexesAndFilteredObjectsForCAP",
 Subtitle := "Implementation of complexes, cocomplexes and filtered objects for CAP",
-
-Version := Maximum( [
-  "2018.08-02", ## Sebas' version
-## this line prevents merge conflicts
-  "2015.04-15", ## Sepp's version
-## this line prevents merge conflicts
-  "2021.05-01", ## Fabian's version
-   ] ),
-
+Version := "2022.03-02",
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
-
-
 
 Persons := [
   rec(
@@ -86,7 +84,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.6",
+  GAP := ">= 4.11.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "CAP", ">= 2021.05-01" ] ],
   SuggestedOtherPackages := [ ],
