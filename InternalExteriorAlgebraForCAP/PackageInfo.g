@@ -1,4 +1,4 @@
-#
+# SPDX-License-Identifier: GPL-2.0-or-later
 # InternalExteriorAlgebraForCAP: Constructions for Modules over the Internal Exterior Algebra for CAP
 #
 # This file contains package meta data. For additional information on
@@ -10,15 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "InternalExteriorAlgebraForCAP",
 Subtitle := "Constructions for Modules over the Internal Exterior Algebra for CAP",
-Version := Maximum( [
-  "2017.01-11", ## Sepp's version
-  ## this line prevents merge conflicts
-  "2020.10-01", ## Fabian's version
-] ),
-
-Date := "19/10/2020",
+Version := "2022.03-01",
+Date := "10/03/2022",
 License := "GPL-2.0-or-later",
-
 
 Persons := [
   rec(
@@ -45,7 +39,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CAP_project",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/CAP_project/InternalExteriorAlgebraForCAP",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/InternalExteriorAlgebraForCAP",
 PackageInfoURL  := "https://homalg-project.github.io/CAP_project/InternalExteriorAlgebraForCAP/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/CAP_project/InternalExteriorAlgebraForCAP/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/CAP_project/releases/download/InternalExteriorAlgebraForCAP-", ~.Version, "/InternalExteriorAlgebraForCAP-", ~.Version ),
@@ -75,7 +69,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.8",
+  GAP := ">= 4.11.1",
   NeededOtherPackages := [ [ "GAPDoc", ">= 1.5" ],
                            [ "ActionsForCAP", ">=2017.01.11" ],
                            [ "GroupRepresentationsForCAP", ">=2017.01.11" ],
@@ -88,6 +82,8 @@ Dependencies := rec(
 AvailabilityTest := function()
         return true;
     end,
+
+TestFile := "tst/testall.g",
 
 #Keywords := [ "TODO" ],
 
