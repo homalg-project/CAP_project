@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "ModulesOverLocalRingsForCAP",
 Subtitle := "Category of modules over a local ring modeled by Serre quotients for CAP",
-Version := "2022.03-01",
+Version := "2022.03-02",
 Date := "10/03/2022",
 License := "GPL-2.0-or-later",
 

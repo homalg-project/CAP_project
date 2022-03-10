@@ -102,45 +102,46 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">i2 := HomalgMatrix( "[ y^6*v^2*w-y^3*v*w^20+1, x*y^4*z^4*w-z^5*w^5+x^3*y*z^2-1 ]", 2, 1, R );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M1 := AsLeftPresentation( i1 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M2 := AsLeftPresentation( i2 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">OI0 := CokernelObject( Annihilator( DirectSum( M1, M2 ) ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">j1 := HomalgMatrix( "[ x*z, x*w, y*z, y*w, v^2 ]", 5, 1, R );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">j2 := HomalgMatrix( "[ y^6*v^2*w-y^3*v*w^2+1, x*y^4*z^4*w-z^5*w^5+x^3*y*z^2-1, x^7 ]", 3, 1, R );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M1 := AsLeftPresentation( j1 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M2 := AsLeftPresentation( j2 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">OJ0 := CokernelObject( Annihilator( DirectSum( M1, M2 ) ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M := AsSerreQuotientCategoryObject( category, OI0 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N := AsSerreQuotientCategoryObject( category, OJ0 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Min := FunctorMinimalModel( category );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">M_min := ApplyFunctor( Min, M );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">N_min := ApplyFunctor( Min, N );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := TorComplex( M_min, N_min );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H0 := HomologyFunctor( category, 0 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H1 := HomologyFunctor( category, 1 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H2 := HomologyFunctor( category, 2 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h0 := ApplyFunctor( H0, T );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( h0 );</span>
-1
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h0 := Source( FiltrationByPrimeIdealEmbedding( h0 ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( h0 );</span>
-3
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h0 := Source( FiltrationByPrimeIdealEmbedding( h0 ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( h0 );</span>
-2
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h0 := Source( FiltrationByPrimeIdealEmbedding( h0 ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( h0 );</span>
-0
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h1 := ApplyFunctor( H1, T );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( h1 );</span>
-1
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h1 := Source( FiltrationByPrimeIdealEmbedding( h1 ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( h1 );</span>
-1
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h1 := Source( FiltrationByPrimeIdealEmbedding( h1 ) );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( h1 );</span>
-0
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">h2 := ApplyFunctor( H2, T );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalNumberOfGenerators( h2 );</span>
-0
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># the next line does not terminate in time, see https://github.com/homalg-project/CAP_project/issues/857</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">#OI0 := CokernelObject( Annihilator( DirectSum( M1, M2 ) ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#j1 := HomalgMatrix( "[ x*z, x*w, y*z, y*w, v^2 ]", 5, 1, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#j2 := HomalgMatrix( "[ y^6*v^2*w-y^3*v*w^2+1, x*y^4*z^4*w-z^5*w^5+x^3*y*z^2-1, x^7 ]", 3, 1, R );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#M1 := AsLeftPresentation( j1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#M2 := AsLeftPresentation( j2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#OJ0 := CokernelObject( Annihilator( DirectSum( M1, M2 ) ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#M := AsSerreQuotientCategoryObject( category, OI0 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#N := AsSerreQuotientCategoryObject( category, OJ0 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#Min := FunctorMinimalModel( category );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#M_min := ApplyFunctor( Min, M );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#N_min := ApplyFunctor( Min, N );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#T := TorComplex( M_min, N_min );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#H0 := HomologyFunctor( category, 0 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#H1 := HomologyFunctor( category, 1 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#H2 := HomologyFunctor( category, 2 );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#h0 := ApplyFunctor( H0, T );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#MinimalNumberOfGenerators( h0 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## 1</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">#h0 := Source( FiltrationByPrimeIdealEmbedding( h0 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#MinimalNumberOfGenerators( h0 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## 3</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">#h0 := Source( FiltrationByPrimeIdealEmbedding( h0 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#MinimalNumberOfGenerators( h0 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## 2</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">#h0 := Source( FiltrationByPrimeIdealEmbedding( h0 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#MinimalNumberOfGenerators( h0 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## 0</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">#h1 := ApplyFunctor( H1, T );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#MinimalNumberOfGenerators( h1 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## 1</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">#h1 := Source( FiltrationByPrimeIdealEmbedding( h1 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#MinimalNumberOfGenerators( h1 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## 1</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">#h1 := Source( FiltrationByPrimeIdealEmbedding( h1 ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#MinimalNumberOfGenerators( h1 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## 0</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">#h2 := ApplyFunctor( H2, T );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">#MinimalNumberOfGenerators( h2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">## 0</span>
 </pre></div>
 
 

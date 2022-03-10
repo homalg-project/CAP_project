@@ -64,45 +64,46 @@
     [4X[25Xgap>[125X [27Xi2 := HomalgMatrix( "[ y^6*v^2*w-y^3*v*w^20+1, x*y^4*z^4*w-z^5*w^5+x^3*y*z^2-1 ]", 2, 1, R );;[127X[104X
     [4X[25Xgap>[125X [27XM1 := AsLeftPresentation( i1 );;[127X[104X
     [4X[25Xgap>[125X [27XM2 := AsLeftPresentation( i2 );;[127X[104X
-    [4X[25Xgap>[125X [27XOI0 := CokernelObject( Annihilator( DirectSum( M1, M2 ) ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xj1 := HomalgMatrix( "[ x*z, x*w, y*z, y*w, v^2 ]", 5, 1, R );;[127X[104X
-    [4X[25Xgap>[125X [27Xj2 := HomalgMatrix( "[ y^6*v^2*w-y^3*v*w^2+1, x*y^4*z^4*w-z^5*w^5+x^3*y*z^2-1, x^7 ]", 3, 1, R );;[127X[104X
-    [4X[25Xgap>[125X [27XM1 := AsLeftPresentation( j1 );;[127X[104X
-    [4X[25Xgap>[125X [27XM2 := AsLeftPresentation( j2 );;[127X[104X
-    [4X[25Xgap>[125X [27XOJ0 := CokernelObject( Annihilator( DirectSum( M1, M2 ) ) );;[127X[104X
-    [4X[25Xgap>[125X [27XM := AsSerreQuotientCategoryObject( category, OI0 );;[127X[104X
-    [4X[25Xgap>[125X [27XN := AsSerreQuotientCategoryObject( category, OJ0 );;[127X[104X
-    [4X[25Xgap>[125X [27XMin := FunctorMinimalModel( category );;[127X[104X
-    [4X[25Xgap>[125X [27XM_min := ApplyFunctor( Min, M );;[127X[104X
-    [4X[25Xgap>[125X [27XN_min := ApplyFunctor( Min, N );;[127X[104X
-    [4X[25Xgap>[125X [27XT := TorComplex( M_min, N_min );;[127X[104X
-    [4X[25Xgap>[125X [27XH0 := HomologyFunctor( category, 0 );;[127X[104X
-    [4X[25Xgap>[125X [27XH1 := HomologyFunctor( category, 1 );;[127X[104X
-    [4X[25Xgap>[125X [27XH2 := HomologyFunctor( category, 2 );;[127X[104X
-    [4X[25Xgap>[125X [27Xh0 := ApplyFunctor( H0, T );;[127X[104X
-    [4X[25Xgap>[125X [27XMinimalNumberOfGenerators( h0 );[127X[104X
-    [4X[28X1[128X[104X
-    [4X[25Xgap>[125X [27Xh0 := Source( FiltrationByPrimeIdealEmbedding( h0 ) );;[127X[104X
-    [4X[25Xgap>[125X [27XMinimalNumberOfGenerators( h0 );[127X[104X
-    [4X[28X3[128X[104X
-    [4X[25Xgap>[125X [27Xh0 := Source( FiltrationByPrimeIdealEmbedding( h0 ) );;[127X[104X
-    [4X[25Xgap>[125X [27XMinimalNumberOfGenerators( h0 );[127X[104X
-    [4X[28X2[128X[104X
-    [4X[25Xgap>[125X [27Xh0 := Source( FiltrationByPrimeIdealEmbedding( h0 ) );;[127X[104X
-    [4X[25Xgap>[125X [27XMinimalNumberOfGenerators( h0 );[127X[104X
-    [4X[28X0[128X[104X
-    [4X[25Xgap>[125X [27Xh1 := ApplyFunctor( H1, T );;[127X[104X
-    [4X[25Xgap>[125X [27XMinimalNumberOfGenerators( h1 );[127X[104X
-    [4X[28X1[128X[104X
-    [4X[25Xgap>[125X [27Xh1 := Source( FiltrationByPrimeIdealEmbedding( h1 ) );;[127X[104X
-    [4X[25Xgap>[125X [27XMinimalNumberOfGenerators( h1 );[127X[104X
-    [4X[28X1[128X[104X
-    [4X[25Xgap>[125X [27Xh1 := Source( FiltrationByPrimeIdealEmbedding( h1 ) );;[127X[104X
-    [4X[25Xgap>[125X [27XMinimalNumberOfGenerators( h1 );[127X[104X
-    [4X[28X0[128X[104X
-    [4X[25Xgap>[125X [27Xh2 := ApplyFunctor( H2, T );;[127X[104X
-    [4X[25Xgap>[125X [27XMinimalNumberOfGenerators( h2 );[127X[104X
-    [4X[28X0[128X[104X
+    [4X[25Xgap>[125X [27X# the next line does not terminate in time, see https://github.com/homalg-project/CAP_project/issues/857[127X[104X
+    [4X[25X>[125X [27X#OI0 := CokernelObject( Annihilator( DirectSum( M1, M2 ) ) );;[127X[104X
+    [4X[25Xgap>[125X [27X#j1 := HomalgMatrix( "[ x*z, x*w, y*z, y*w, v^2 ]", 5, 1, R );;[127X[104X
+    [4X[25Xgap>[125X [27X#j2 := HomalgMatrix( "[ y^6*v^2*w-y^3*v*w^2+1, x*y^4*z^4*w-z^5*w^5+x^3*y*z^2-1, x^7 ]", 3, 1, R );;[127X[104X
+    [4X[25Xgap>[125X [27X#M1 := AsLeftPresentation( j1 );;[127X[104X
+    [4X[25Xgap>[125X [27X#M2 := AsLeftPresentation( j2 );;[127X[104X
+    [4X[25Xgap>[125X [27X#OJ0 := CokernelObject( Annihilator( DirectSum( M1, M2 ) ) );;[127X[104X
+    [4X[25Xgap>[125X [27X#M := AsSerreQuotientCategoryObject( category, OI0 );;[127X[104X
+    [4X[25Xgap>[125X [27X#N := AsSerreQuotientCategoryObject( category, OJ0 );;[127X[104X
+    [4X[25Xgap>[125X [27X#Min := FunctorMinimalModel( category );;[127X[104X
+    [4X[25Xgap>[125X [27X#M_min := ApplyFunctor( Min, M );;[127X[104X
+    [4X[25Xgap>[125X [27X#N_min := ApplyFunctor( Min, N );;[127X[104X
+    [4X[25Xgap>[125X [27X#T := TorComplex( M_min, N_min );;[127X[104X
+    [4X[25Xgap>[125X [27X#H0 := HomologyFunctor( category, 0 );;[127X[104X
+    [4X[25Xgap>[125X [27X#H1 := HomologyFunctor( category, 1 );;[127X[104X
+    [4X[25Xgap>[125X [27X#H2 := HomologyFunctor( category, 2 );;[127X[104X
+    [4X[25Xgap>[125X [27X#h0 := ApplyFunctor( H0, T );;[127X[104X
+    [4X[25Xgap>[125X [27X#MinimalNumberOfGenerators( h0 );[127X[104X
+    [4X[25Xgap>[125X [27X## 1[127X[104X
+    [4X[25X>[125X [27X#h0 := Source( FiltrationByPrimeIdealEmbedding( h0 ) );;[127X[104X
+    [4X[25Xgap>[125X [27X#MinimalNumberOfGenerators( h0 );[127X[104X
+    [4X[25Xgap>[125X [27X## 3[127X[104X
+    [4X[25X>[125X [27X#h0 := Source( FiltrationByPrimeIdealEmbedding( h0 ) );;[127X[104X
+    [4X[25Xgap>[125X [27X#MinimalNumberOfGenerators( h0 );[127X[104X
+    [4X[25Xgap>[125X [27X## 2[127X[104X
+    [4X[25X>[125X [27X#h0 := Source( FiltrationByPrimeIdealEmbedding( h0 ) );;[127X[104X
+    [4X[25Xgap>[125X [27X#MinimalNumberOfGenerators( h0 );[127X[104X
+    [4X[25Xgap>[125X [27X## 0[127X[104X
+    [4X[25X>[125X [27X#h1 := ApplyFunctor( H1, T );;[127X[104X
+    [4X[25Xgap>[125X [27X#MinimalNumberOfGenerators( h1 );[127X[104X
+    [4X[25Xgap>[125X [27X## 1[127X[104X
+    [4X[25X>[125X [27X#h1 := Source( FiltrationByPrimeIdealEmbedding( h1 ) );;[127X[104X
+    [4X[25Xgap>[125X [27X#MinimalNumberOfGenerators( h1 );[127X[104X
+    [4X[25Xgap>[125X [27X## 1[127X[104X
+    [4X[25X>[125X [27X#h1 := Source( FiltrationByPrimeIdealEmbedding( h1 ) );;[127X[104X
+    [4X[25Xgap>[125X [27X#MinimalNumberOfGenerators( h1 );[127X[104X
+    [4X[25Xgap>[125X [27X## 0[127X[104X
+    [4X[25X>[125X [27X#h2 := ApplyFunctor( H2, T );;[127X[104X
+    [4X[25Xgap>[125X [27X#MinimalNumberOfGenerators( h2 );[127X[104X
+    [4X[25Xgap>[125X [27X## 0[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
