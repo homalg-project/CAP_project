@@ -1,5 +1,5 @@
 name: GeneralizedMorphismsForCAP
-version: "2022.03-02"
+version: "2022.03-03"
 license: "GPL-2.0-or-later"
 date: 2022-03-10
 description: |
@@ -36,11 +36,11 @@ packageinfo: https://homalg-project.github.io/CAP_project/GeneralizedMorphismsFo
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2022.03-02/GeneralizedMorphismsForCAP-2022.03-02.tar.gz
+      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2022.03-03/GeneralizedMorphismsForCAP-2022.03-03.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2022.03-02/GeneralizedMorphismsForCAP-2022.03-02.zip
+      url: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2022.03-03/GeneralizedMorphismsForCAP-2022.03-03.zip
 
-pdf: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2022.03-02/GeneralizedMorphismsForCAP-2022.03-02.pdf
+pdf: https://github.com/homalg-project/CAP_project/releases/download/GeneralizedMorphismsForCAP-2022.03-03/GeneralizedMorphismsForCAP-2022.03-03.pdf
 
 abstract: |
     <span class="pkgname">GeneralizedMorphismsForCAP</span> provides the category of generalized morphisms associated to an abelian category.
@@ -52,7 +52,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>GP22</span>]   <b class='BibAuthor'>Gutsche, S. and Posur, S.</b>,
      <i class='BibTitle'>GeneralizedMorphismsForCAP, Implementations of generalized morphisms for the CAP project,
-             Version 2022.03-02</i>
+             Version 2022.03-03</i>
      (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/GeneralizedMorphismsForCAP">https://homalg-project.github.io/pkg/GeneralizedMorphismsForCAP</a></span>.
@@ -60,11 +60,11 @@ citeas: |
     
 
 bibtex: |
-    @misc{ GeneralizedMorphismsForCAP2022.03-02,
+    @misc{ GeneralizedMorphismsForCAP2022.03-03,
       author =           {Gutsche, S. and Posur, S.},
       title =            {{GeneralizedMorphismsForCAP},    Implementations    of
                           generalized  morphisms  for the CAP project, {V}ersion
-                          2022.03-02},
+                          2022.03-03},
       month =            {Mar},
       year =             {2022},
       note =             {GAP package},
