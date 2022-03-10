@@ -108,8 +108,7 @@ test_ModulePresentationsForCAP:
 	$(MAKE) -C ModulePresentationsForCAP test
 
 test_ModulesOverLocalRingsForCAP:
-# does not terminate, see https://github.com/homalg-project/CAP_project/issues/857
-#	$(MAKE) -C ModulesOverLocalRingsForCAP test
+	$(MAKE) -C ModulesOverLocalRingsForCAP test
 
 test_MonoidalCategories:
 	$(MAKE) -C MonoidalCategories test
@@ -163,8 +162,7 @@ ci-test_ModulePresentationsForCAP:
 	$(MAKE) -C ModulePresentationsForCAP ci-test
 
 ci-test_ModulesOverLocalRingsForCAP:
-# does not terminate, see https://github.com/homalg-project/CAP_project/issues/857
-#	$(MAKE) -C ModulesOverLocalRingsForCAP ci-test
+	$(MAKE) -C ModulesOverLocalRingsForCAP ci-test
 
 ci-test_MonoidalCategories:
 	$(MAKE) -C MonoidalCategories ci-test

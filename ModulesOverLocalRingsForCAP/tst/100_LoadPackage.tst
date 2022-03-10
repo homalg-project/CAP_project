@@ -7,8 +7,12 @@ gap> package_loading_info_level := InfoLevel( InfoPackageLoading );;
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_ERROR );;
 gap> LoadPackage( "ModulesOverLocalRingsForCAP", false );
 true
+gap> LoadPackage( "IO_ForHomalg", false );
+true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
 gap> LoadPackage( "ModulesOverLocalRingsForCAP" );
+true
+gap> LoadPackage( "IO_ForHomalg" );
 true
 gap> SetInfoLevel( InfoPackageLoading, package_loading_info_level );;
 gap> HOMALG_IO.show_banners := false;;
