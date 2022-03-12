@@ -11,7 +11,7 @@
 #! $(\rho: a \rightarrow b, \gamma: b \rightarrow c)$
 #! in $A$.
 #! We call $\rho$ the <Emph>relation morphism</Emph>,
-#! and $\gamma$ the <Emph>corelation morphism</Emph> of $x$.
+#! and $\gamma$ the <Emph>co-relation morphism</Emph> of $x$.
 #!
 #! Given two objects
 #! $x = (\rho: a \rightarrow b, \gamma: b \rightarrow c)$
@@ -45,7 +45,7 @@
 #! @EndLatexOnly
 
 #! Any such morphism $\omega$ is called a <Emph>relation witness</Emph>,
-#! any such morphism $\psi$ is called a <Emph>corelation witness</Emph>.
+#! any such morphism $\psi$ is called a <Emph>co-relation witness</Emph>.
 
 #! Two morphisms between $x$ and $y$ with morphism data $\beta$ and $\beta'$
 #! are congruent iff there exists
@@ -103,7 +103,7 @@ DeclareAttribute( "AdelmanCategory",
 #! The arguments are two morphisms $\alpha: a \rightarrow b$, $\beta: b \rightarrow c$
 #! of the same additive category $A$.
 #! The output is an object in the Adelman category of $A$
-#! whose relation morphism is $\alpha$ and whose corelation morphism is $\beta$.
+#! whose relation morphism is $\alpha$ and whose co-relation morphism is $\beta$.
 #! @Returns an object
 #! @Arguments alpha, beta
 DeclareOperation( "AdelmanCategoryObject",
@@ -126,7 +126,7 @@ DeclareOperation( "AdelmanCategoryMorphism",
 #! The argument is an object $a$ of an additive category $A$.
 #! The output is an object in the Adelman category of $A$
 #! whose relation morphism is $0 \rightarrow a$
-#! and whose corelation morphism is $a \rightarrow 0$.
+#! and whose co-relation morphism is $a \rightarrow 0$.
 #! @Returns an object
 #! @Arguments a
 DeclareAttribute( "AsAdelmanCategoryObject",
@@ -155,7 +155,7 @@ DeclareAttribute( "AsAdelmanCategoryMorphism",
 #! this method returns <C>AsAdelmanCategoryObject( a )</C>.
 #! If $a$ lies in $F$,
 #! this method return an object in $C$ whose relation morphism is the same as the relation
-#! morphism of $a$, and whose corelation morphism is $0$.
+#! morphism of $a$, and whose co-relation morphism is $0$.
 #! @Returns an object
 #! @Arguments a, C
 DeclareOperation( "\/",
@@ -233,7 +233,7 @@ end );
 
 #! @Description
 #! The argument is an object $x$ in an Adelman category.
-#! The output is its corelation morphism $\gamma: b \rightarrow c$.
+#! The output is its co-relation morphism $\gamma: b \rightarrow c$.
 #! @Returns a morphism in $\mathrm{Hom}( b, c )$
 #! @Arguments x
 DeclareAttribute( "CorelationMorphism",
@@ -273,7 +273,7 @@ DeclareAttribute( "RelationWitness",
 
 #! @Description
 #! The argument is a morphism $\alpha$ in an Adelman category.
-#! The output is its corelation witness $\psi: c \rightarrow c'$.
+#! The output is its co-relation witness $\psi: c \rightarrow c'$.
 #! @Returns a morphism in $\mathrm{Hom}( c, c' )$
 #! @Arguments alpha
 DeclareAttribute( "CorelationWitness",
@@ -300,7 +300,7 @@ DeclareOperation( "HomomorphismStructureOnObjectsForAdelmanCategoryGeneralizedEm
 
 #! @Description
 #! The argument is an object $x$ in an Adelman category.
-#! The output is <C>true</C> if the composition of its relation morphism and its corelation morphism yields zero.
+#! The output is <C>true</C> if the composition of its relation morphism and its co-relation morphism yields zero.
 #! Otherwise, the output is <C>false</C>.
 #! @Returns a boolean
 #! @Arguments x

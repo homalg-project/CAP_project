@@ -102,7 +102,7 @@ InstallOtherMethodForCompilerForCAP( AdelmanCategoryObject,
     
     if not IsEqualForObjects( Range( relation_morphism ), Source( corelation_morphism ) ) then
     
-        Error ( "the range of the relation morphism has to be equal to the source of the corelation morphism" );
+        Error ( "the range of the relation morphism has to be equal to the source of the co-relation morphism" );
     
     fi;
     
@@ -152,13 +152,13 @@ InstallOtherMethodForCompilerForCAP( AdelmanCategoryMorphism,
     
     if not IsEqualForObjects( Source( morphism_datum ), Source( CorelationMorphism( source ) ) ) then
         
-        Error( "The source of the given morphism datum is not equal to the source of the corelation morphism of the given source object" );
+        Error( "The source of the given morphism datum is not equal to the source of the co-relation morphism of the given source object" );
         
     fi;
     
     if not IsEqualForObjects( Range( morphism_datum ), Source( CorelationMorphism( range ) ) ) then
         
-        Error( "The range of the given morphism datum is not equal to the source of the corelation morphism of the given range object" );
+        Error( "The range of the given morphism datum is not equal to the source of the co-relation morphism of the given range object" );
         
     fi;
     
