@@ -306,3 +306,70 @@ DeclareOperation( "HomomorphismStructureOnObjectsForAdelmanCategoryGeneralizedEm
 #! @Arguments x
 DeclareProperty( "IsSequenceAsAdelmanCategoryObject",
                   IsAdelmanCategoryObject );
+
+####################################
+##
+#! @Section Exactness properties: objects as functors
+##
+####################################
+
+#! The Adelman category of $A$ can also be interpreted as the category $A-\mathrm{mod}-\mathrm{mod}$, i.e., the category of finitely
+#! presented functors whose domain is given by $A-\mathrm{mod}$, and whose codomain is the category of abelian groups.
+#! The category $A-\mathrm{mod}-\mathrm{mod}$ embeds into $A-\mathrm{Mod}-\mathrm{mod}$ via extension by filtered colimits.
+#! Thus, any object in the Adelman category of $A$ can be interpreted as a functor from $A-\mathrm{Mod}$ (an abelian category)
+#! into the category of abelian groups (also an abelian category). Via this interpretation, it makes sense to ask for exactness properties
+#! of an object in the Adelman category.
+
+#! @Description
+#! The argument is an object $x$ in an Adelman category.
+#! The output is <C>true</C> if $x$ corresponds to an exact functor.
+#! Otherwise, the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments x
+DeclareProperty( "IsExact",
+                  IsAdelmanCategoryObject );
+
+#! @Description
+#! The argument is an object $x$ in an Adelman category.
+#! The output is <C>true</C> if $x$ corresponds to a left exact functor.
+#! Otherwise, the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments x
+DeclareProperty( "IsLeftExact",
+                  IsAdelmanCategoryObject );
+
+#! @Description
+#! The argument is an object $x$ in an Adelman category.
+#! The output is <C>true</C> if $x$ corresponds to a right exact functor.
+#! Otherwise, the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments x
+DeclareProperty( "IsRightExact",
+                  IsAdelmanCategoryObject );
+
+#! @Description
+#! The argument is an object $x$ in an Adelman category.
+#! The output is <C>true</C> if $x$ corresponds to a mono preserving functor.
+#! Otherwise, the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments x
+DeclareProperty( "IsMonoPreserving",
+                  IsAdelmanCategoryObject );
+
+#! @Description
+#! The argument is an object $x$ in an Adelman category.
+#! The output is <C>true</C> if $x$ corresponds to an epi preserving functor.
+#! Otherwise, the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments x
+DeclareProperty( "IsEpiPreserving",
+                  IsAdelmanCategoryObject );
+
+#! @Description
+#! The argument is an object $x$ in an Adelman category.
+#! The output is <C>true</C> if $x$ corresponds to an image preserving functor.
+#! Otherwise, the output is <C>false</C>.
+#! @Returns a boolean
+#! @Arguments x
+DeclareProperty( "IsImagePreserving",
+                  IsAdelmanCategoryObject );

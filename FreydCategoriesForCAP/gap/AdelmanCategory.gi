@@ -1315,6 +1315,74 @@ end );
 
 ####################################
 ##
+## Exactness properties: objects as functors
+##
+####################################
+
+##
+InstallMethod( IsExact,
+               [ IsAdelmanCategoryObject ],
+               
+  function( object )
+    
+    return IsLeftExact( object ) and IsRightExact( object );
+    
+end );
+
+##
+InstallMethod( IsLeftExact,
+               [ IsAdelmanCategoryObject ],
+               
+  function( object )
+    
+    return IsProjective( object );
+    
+end );
+
+##
+InstallMethod( IsRightExact,
+               [ IsAdelmanCategoryObject ],
+               
+  function( object )
+    
+    return IsInjective( object );
+    
+end );
+
+##
+InstallMethod( IsImagePreserving,
+               [ IsAdelmanCategoryObject ],
+               
+  function( object )
+    
+    return IsMonoPreserving( object ) and IsEpiPreserving( object );
+    
+end );
+
+##
+InstallMethod( IsMonoPreserving,
+               [ IsAdelmanCategoryObject ],
+               
+  function( object )
+    
+    return ProjectiveDimension( object ) <= 1;
+    
+end );
+
+##
+InstallMethod( IsEpiPreserving,
+               [ IsAdelmanCategoryObject ],
+               
+  function( object )
+    
+    return InjectiveDimension( object ) <= 1;
+    
+end );
+
+
+
+####################################
+##
 ## View
 ##
 ####################################
