@@ -17,10 +17,6 @@ gap> LoadPackage( "LinearAlgebraForCAP", false );
 true
 gap> LoadPackage( "RingsForHomalg", false );
 true
-gap> LoadPackage( "HomologicalAlgebraForCAP", false );
-true
-gap> LoadPackage( "DeductiveSystemForCAP", false );
-true
 gap> SetInfoLevel( InfoPackageLoading, PACKAGE_INFO );;
 gap> LoadPackage( "CAP" );
 true
@@ -33,10 +29,6 @@ true
 gap> LoadPackage( "LinearAlgebraForCAP" );
 true
 gap> LoadPackage( "RingsForHomalg" );
-true
-gap> LoadPackage( "HomologicalAlgebraForCAP" );
-true
-gap> LoadPackage( "DeductiveSystemForCAP" );
 true
 gap> SetInfoLevel( InfoPackageLoading, package_loading_info_level );;
 gap> HOMALG_IO.show_banners := false;;
