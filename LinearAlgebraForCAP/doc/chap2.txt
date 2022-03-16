@@ -255,6 +255,7 @@
   [1X2.2 [33X[0;0YMatrixCategoryAsAdditiveClosureOfRingAsCategory[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[28X#@if IsPackageMarkedForLoading( "FreydCategoriesForCAP", ">= 2021.12-02" )[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "LinearAlgebraForCAP", false );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XQQ := HomalgFieldOfRationals();;[127X[104X
@@ -315,6 +316,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsEqualForMorphisms( ComponentOfMorphismFromDirectSum( gamma, [ a, a ], 2 ), beta );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[28X#@fi[128X[104X
   [4X[32X[104X
   
   

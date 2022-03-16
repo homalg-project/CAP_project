@@ -293,6 +293,7 @@ true
 
 
 <div class="example"><pre>
+#@if IsPackageMarkedForLoading( "FreydCategoriesForCAP", "&gt;= 2021.12-02" )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "LinearAlgebraForCAP", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">QQ := HomalgFieldOfRationals();;</span>
@@ -353,6 +354,7 @@ A morphism in Category of matrices over Q
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsEqualForMorphisms( ComponentOfMorphismFromDirectSum( gamma, [ a, a ], 2 ), beta );</span>
 true
+#@fi
 </pre></div>
 
 <p><a id="X87F5609A7B33C58C" name="X87F5609A7B33C58C"></a></p>
