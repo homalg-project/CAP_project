@@ -4,6 +4,8 @@
 
 #! @Example
 
+#! #@if IsPackageMarkedForLoading( "FreydCategoriesForCAP", ">= 2021.12-02" )
+
 LoadPackage( "LinearAlgebraForCAP", false );
 #! true
 
@@ -73,5 +75,7 @@ IsEqualForMorphisms( ComponentOfMorphismFromDirectSum( gamma, [ a, a ], 1 ), bet
 #! true
 IsEqualForMorphisms( ComponentOfMorphismFromDirectSum( gamma, [ a, a ], 2 ), beta );
 #! true
+
+#! #@fi
 
 #! @EndExample
