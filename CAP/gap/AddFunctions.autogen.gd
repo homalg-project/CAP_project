@@ -31,6 +31,25 @@ DeclareOperation( "AddAdditionForMorphisms",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `AdditiveGenerators`.
+#! $F: (  ) \mapsto \mathtt{AdditiveGenerators}()$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddAdditiveGenerators",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddAdditiveGenerators",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddAdditiveGenerators",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddAdditiveGenerators",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `AdditiveInverseForMorphisms`.
 #! $F: ( a ) \mapsto \mathtt{AdditiveInverseForMorphisms}(a)$.
 #! @Returns nothing

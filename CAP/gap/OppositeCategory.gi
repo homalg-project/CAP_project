@@ -289,6 +289,10 @@ BindGlobal( "CAP_INTERNAL_INSTALL_OPPOSITE_ADDS_FROM_CATEGORY",
                 
                 return_statement := "return List( result, mor -> MorphismConstructor( cat, ObjectConstructor( cat, Range( mor ) ), mor, ObjectConstructor( cat, Source( mor ) ) ) )";
                 
+            elif return_type = "list_of_objects" then
+                
+                return_statement := "return List( result, obj -> ObjectConstructor( cat, obj ) )";
+                
             elif return_type = "bool" then
                 
                 return_statement := "return result";

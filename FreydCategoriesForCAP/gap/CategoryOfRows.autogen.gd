@@ -13,6 +13,7 @@
 
 #! The following CAP operations are supported:
 #! * <Ref BookName="CAP" Func="AdditionForMorphisms" Label="for Is" />
+#! * <Ref BookName="CAP" Func="AdditiveGenerators" Label="for Is" />
 #! * <Ref BookName="CAP" Func="AdditiveInverseForMorphisms" Label="for Is" />
 #! * <Ref BookName="FreydCategoriesForCAP" Func="BiasedWeakFiberProduct" Label="for Is" />
 #! * <Ref BookName="FreydCategoriesForCAP" Func="BiasedWeakPushout" Label="for Is" />

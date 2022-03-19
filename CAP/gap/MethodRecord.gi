@@ -19,6 +19,7 @@ InstallValue( CAP_INTERNAL_VALID_RETURN_TYPES,
         "list_of_morphisms",
         "list_of_morphisms_or_fail",
         "nonneg_integer_or_infinity",
+        "list_of_objects"
     ]
 #! @EndCode
 );
@@ -3544,6 +3545,12 @@ InjectiveDimension := rec(
   return_type := "nonneg_integer_or_infinity",
   dual_operation := "ProjectiveDimension",
   ),
+
+AdditiveGenerators := rec(
+  filter_list := [ "category" ],
+  return_type := "list_of_objects",
+  dual_operation := "AdditiveGenerators",
+),
 
 ) );
 

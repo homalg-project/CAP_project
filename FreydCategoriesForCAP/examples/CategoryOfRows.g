@@ -54,6 +54,8 @@ Display( UnderlyingMatrix( mor ) );
 ########################################################################
 
 #! @Example
+Size( AdditiveGenerators( rows ) );
+#! 1
 ZeroObject( rows );
 #! <A row module over Z of rank 0>
 obj5 := CategoryOfRowsObject( 2, rows );
