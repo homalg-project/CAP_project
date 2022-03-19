@@ -111,6 +111,8 @@
   [2XIsAdelmanCategoryObject[102X, for IsCapCategoryObject 4.1-1 
   [2XIsCategoryOfColumnsObject[102X, for IsCapCategoryObject 7.1-1 
   [2XIsCategoryOfRowsObject[102X, for IsCapCategoryObject 5.2-1 
+  [2XIsEpiPreserving[102X, for IsAdelmanCategoryObject 4.4-5 
+  [2XIsExact[102X, for IsAdelmanCategoryObject 4.4-1 
   [2XIsFpGradedLeftModulesMorphism[102X, for IsFpGradedLeftOrRightModulesMorphism 17.3-2 
   [2XIsFpGradedLeftModulesObject[102X, for IsFpGradedLeftOrRightModulesObject 17.2-2 
   [2XIsFpGradedLeftOrRightModulesMorphism[102X, for IsFreydCategoryMorphism 17.3-1 
@@ -123,6 +125,10 @@
   [2XIsGradedRowMorphism[102X, for IsGradedRowOrColumnMorphism 9.3-5 
   [2XIsGradedRowOrColumn[102X, for IsCapCategoryObject 9.3-1 
   [2XIsGradedRowOrColumnMorphism[102X, for IsCapCategoryMorphism 9.3-4 
+  [2XIsImagePreserving[102X, for IsAdelmanCategoryObject 4.4-6 
+  [2XIsLeftExact[102X, for IsAdelmanCategoryObject 4.4-2 
+  [2XIsMonoPreserving[102X, for IsAdelmanCategoryObject 4.4-4 
+  [2XIsRightExact[102X, for IsAdelmanCategoryObject 4.4-3 
   [2XIsSequenceAsAdelmanCategoryObject[102X, for IsAdelmanCategoryObject 4.3-9 
   [2XMatElm[102X, for IsAdditiveClosureMorphism, IsInt, IsInt 2.4-2 
   [2XMereExistenceOfWitnessPairForBeingCongruentToZero[102X, for IsAdelmanCategoryMorphism 4.3-8 

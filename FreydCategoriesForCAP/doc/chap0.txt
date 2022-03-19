@@ -6,10 +6,10 @@
         [1X Freyd categories - Formal (co)kernels for additive categories [101X
   
   
-                                   2022.03-02
+                                   2022.03-03
   
   
-                                 10 March 2022
+                                 19 March 2022
   
   
                                 Sebastian Posur
@@ -193,6 +193,13 @@
       4.3-7 WitnessPairForBeingCongruentToZero
       4.3-8 MereExistenceOfWitnessPairForBeingCongruentToZero
       4.3-9 IsSequenceAsAdelmanCategoryObject
+    4.4 [33X[0;0YExactness properties: objects as functors[133X
+      4.4-1 IsExact
+      4.4-2 IsLeftExact
+      4.4-3 IsRightExact
+      4.4-4 IsMonoPreserving
+      4.4-5 IsEpiPreserving
+      4.4-6 IsImagePreserving
   5 [33X[0;0YCategory of rows[133X
     5.1 [33X[0;0YSupported CAP operations[133X
       5.1-1 [33X[0;0YCategoryOfRows of an arbitrary ring[133X
@@ -266,25 +273,26 @@
     12.9 [33X[0;0YBasics based on category of columns[133X
     12.10 [33X[0;0YCokernel image closure in category of rows[133X
     12.11 [33X[0;0YCokernel image closure in category of columns[133X
-    12.12 [33X[0;0YGrade filtration[133X
-    12.13 [33X[0;0YGroups as categories[133X
-    12.14 [33X[0;0YHomomorphisms between f.p. functors based on category of rows[133X
-    12.15 [33X[0;0YHomomorphisms between f.p. functors based on category of columns[133X
-    12.16 [33X[0;0YLinear closure of categories[133X
-    12.17 [33X[0;0YMatrices over ZP K[133X
-    12.18 [33X[0;0YMatrices over ZG[133X
-    12.19 [33X[0;0YTesting if an object is projective, injective, bijective, and
+    12.12 [33X[0;0YExactness conditions[133X
+    12.13 [33X[0;0YGrade filtration[133X
+    12.14 [33X[0;0YGroups as categories[133X
+    12.15 [33X[0;0YHomomorphisms between f.p. functors based on category of rows[133X
+    12.16 [33X[0;0YHomomorphisms between f.p. functors based on category of columns[133X
+    12.17 [33X[0;0YLinear closure of categories[133X
+    12.18 [33X[0;0YMatrices over ZP K[133X
+    12.19 [33X[0;0YMatrices over ZG[133X
+    12.20 [33X[0;0YTesting if an object is projective, injective, bijective, and
     computing projective/injective dimensions[133X
-    12.20 [33X[0;0YProsets[133X
-    12.21 [33X[0;0YQuiver rows bascis[133X
-    12.22 [33X[0;0YQuiver rows over the integers[133X
-    12.23 [33X[0;0YCategory of relations[133X
-    12.24 [33X[0;0YRings as Ab-categories[133X
-    12.25 [33X[0;0YSnake lemma first proof[133X
-    12.26 [33X[0;0YSnake lemma second proof[133X
-    12.27 [33X[0;0YSubobject lattice[133X
-    12.28 [33X[0;0YAdelman category theorem[133X
-    12.29 [33X[0;0YTests[133X
+    12.21 [33X[0;0YProsets[133X
+    12.22 [33X[0;0YQuiver rows bascis[133X
+    12.23 [33X[0;0YQuiver rows over the integers[133X
+    12.24 [33X[0;0YCategory of relations[133X
+    12.25 [33X[0;0YRings as Ab-categories[133X
+    12.26 [33X[0;0YSnake lemma first proof[133X
+    12.27 [33X[0;0YSnake lemma second proof[133X
+    12.28 [33X[0;0YSubobject lattice[133X
+    12.29 [33X[0;0YAdelman category theorem[133X
+    12.30 [33X[0;0YTests[133X
   13 [33X[0;0YLinear closure of a category[133X
     13.1 [33X[0;0YFunctors[133X
       13.1-1 ExtendFunctorToLinearClosureOfSource

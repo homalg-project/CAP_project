@@ -53,13 +53,23 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X80EB82578187AFB0">4.3-8 MereExistenceOfWitnessPairForBeingCongruentToZero</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X79FD71CD805A1AB4">4.3-9 IsSequenceAsAdelmanCategoryObject</a></span>
 </div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X83FFC6D08103F9F6">4.4 <span class="Heading">Exactness properties: objects as functors</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X84D14C1D844D1FE7">4.4-1 IsExact</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7C3B1BCA808EA694">4.4-2 IsLeftExact</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X812F2EC77F42BD44">4.4-3 IsRightExact</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7842808882D0450A">4.4-4 IsMonoPreserving</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8428A85D81D8DBDE">4.4-5 IsEpiPreserving</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7EFE25B379625B7E">4.4-6 IsImagePreserving</a></span>
+</div></div>
 </div>
 
 <h3>4 <span class="Heading">Adelman category</span></h3>
 
-<p>Let <span class="Math">A</span> be an additive category. The Adelman category of <span class="Math">A</span> is the free abelian category induced by <span class="Math">A</span>. An object <span class="Math">x</span> of the Adelman category of <span class="Math">A</span> consists of a composable pair <span class="Math">(\rho: a \rightarrow b, \gamma: b \rightarrow c)</span> in <span class="Math">A</span>. We call <span class="Math">\rho</span> the <em>relation morphism</em>, and <span class="Math">\gamma</span> the <em>corelation morphism</em> of <span class="Math">x</span>.</p>
+<p>Let <span class="Math">A</span> be an additive category. The Adelman category of <span class="Math">A</span> is the free abelian category induced by <span class="Math">A</span>. An object <span class="Math">x</span> of the Adelman category of <span class="Math">A</span> consists of a composable pair <span class="Math">(\rho: a \rightarrow b, \gamma: b \rightarrow c)</span> in <span class="Math">A</span>. We call <span class="Math">\rho</span> the <em>relation morphism</em>, and <span class="Math">\gamma</span> the <em>co-relation morphism</em> of <span class="Math">x</span>.</p>
 
-<p>Given two objects <span class="Math">x = (\rho: a \rightarrow b, \gamma: b \rightarrow c)</span> and <span class="Math">y = (\rho': a' \rightarrow b', \gamma': b' \rightarrow c')</span>, a morphism <span class="Math">\alpha</span> from <span class="Math">x</span> to <span class="Math">y</span> in the Adelman category of <span class="Math">A</span> consists of a morphism <span class="Math">\beta: b \rightarrow b'</span>, called the <em>morphism datum</em>, that has to fit into some commutative diagram of the form Any such morphism <span class="Math">\omega</span> is called a <em>relation witness</em>, any such morphism <span class="Math">\psi</span> is called a <em>corelation witness</em>. Two morphisms between <span class="Math">x</span> and <span class="Math">y</span> with morphism data <span class="Math">\beta</span> and <span class="Math">\beta'</span> are congruent iff there exists <span class="Math">\sigma_1: b \rightarrow a'</span> and <span class="Math">\sigma_2: c \rightarrow b'</span> such that <span class="Math">\beta - \beta' = \sigma_1 \cdot \rho' + \gamma \cdot \sigma_2</span>. We call any such pair <span class="Math">(\sigma_1, \sigma_2)</span> a <em>witness pair</em> for <span class="Math">\beta, \beta'</span> being congruent.</p>
+<p>Given two objects <span class="Math">x = (\rho: a \rightarrow b, \gamma: b \rightarrow c)</span> and <span class="Math">y = (\rho': a' \rightarrow b', \gamma': b' \rightarrow c')</span>, a morphism <span class="Math">\alpha</span> from <span class="Math">x</span> to <span class="Math">y</span> in the Adelman category of <span class="Math">A</span> consists of a morphism <span class="Math">\beta: b \rightarrow b'</span>, called the <em>morphism datum</em>, that has to fit into some commutative diagram of the form Any such morphism <span class="Math">\omega</span> is called a <em>relation witness</em>, any such morphism <span class="Math">\psi</span> is called a <em>co-relation witness</em>. Two morphisms between <span class="Math">x</span> and <span class="Math">y</span> with morphism data <span class="Math">\beta</span> and <span class="Math">\beta'</span> are congruent iff there exists <span class="Math">\sigma_1: b \rightarrow a'</span> and <span class="Math">\sigma_2: c \rightarrow b'</span> such that <span class="Math">\beta - \beta' = \sigma_1 \cdot \rho' + \gamma \cdot \sigma_2</span>. We call any such pair <span class="Math">(\sigma_1, \sigma_2)</span> a <em>witness pair</em> for <span class="Math">\beta, \beta'</span> being congruent.</p>
 
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
@@ -112,7 +122,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdelmanCategoryObject</code>( <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an object</p>
 
-<p>The arguments are two morphisms <span class="Math">\alpha: a \rightarrow b</span>, <span class="Math">\beta: b \rightarrow c</span> of the same additive category <span class="Math">A</span>. The output is an object in the Adelman category of <span class="Math">A</span> whose relation morphism is <span class="Math">\alpha</span> and whose corelation morphism is <span class="Math">\beta</span>.</p>
+<p>The arguments are two morphisms <span class="Math">\alpha: a \rightarrow b</span>, <span class="Math">\beta: b \rightarrow c</span> of the same additive category <span class="Math">A</span>. The output is an object in the Adelman category of <span class="Math">A</span> whose relation morphism is <span class="Math">\alpha</span> and whose co-relation morphism is <span class="Math">\beta</span>.</p>
 
 <p><a id="X81F049E878DD16BE" name="X81F049E878DD16BE"></a></p>
 
@@ -130,7 +140,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AsAdelmanCategoryObject</code>( <var class="Arg">a</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: an object</p>
 
-<p>The argument is an object <span class="Math">a</span> of an additive category <span class="Math">A</span>. The output is an object in the Adelman category of <span class="Math">A</span> whose relation morphism is <span class="Math">0 \rightarrow a</span> and whose corelation morphism is <span class="Math">a \rightarrow 0</span>.</p>
+<p>The argument is an object <span class="Math">a</span> of an additive category <span class="Math">A</span>. The output is an object in the Adelman category of <span class="Math">A</span> whose relation morphism is <span class="Math">0 \rightarrow a</span> and whose co-relation morphism is <span class="Math">a \rightarrow 0</span>.</p>
 
 <p><a id="X7D1A3B698707A95C" name="X7D1A3B698707A95C"></a></p>
 
@@ -148,7 +158,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \/</code>( <var class="Arg">a</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an object</p>
 
-<p>This is a convenience method. The first argument is an object <span class="Math">a</span> which either lies in an additive category <span class="Math">A</span> (which was not created as a Freyd category) or in a Freyd category <span class="Math">F</span> of an underlying additive category <span class="Math">A</span>. The second argument is an Adelman category <span class="Math">C</span> of <span class="Math">A</span>. If <span class="Math">a</span> lies in <span class="Math">A</span> this method returns <code class="code">AsAdelmanCategoryObject( a )</code>. If <span class="Math">a</span> lies in <span class="Math">F</span>, this method return an object in <span class="Math">C</span> whose relation morphism is the same as the relation morphism of <span class="Math">a</span>, and whose corelation morphism is <span class="Math">0</span>.</p>
+<p>This is a convenience method. The first argument is an object <span class="Math">a</span> which either lies in an additive category <span class="Math">A</span> (which was not created as a Freyd category) or in a Freyd category <span class="Math">F</span> of an underlying additive category <span class="Math">A</span>. The second argument is an Adelman category <span class="Math">C</span> of <span class="Math">A</span>. If <span class="Math">a</span> lies in <span class="Math">A</span> this method returns <code class="code">AsAdelmanCategoryObject( a )</code>. If <span class="Math">a</span> lies in <span class="Math">F</span>, this method return an object in <span class="Math">C</span> whose relation morphism is the same as the relation morphism of <span class="Math">a</span>, and whose co-relation morphism is <span class="Math">0</span>.</p>
 
 <p><a id="X7D33626787DF2809" name="X7D33626787DF2809"></a></p>
 
@@ -188,7 +198,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CorelationMorphism</code>( <var class="Arg">x</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( b, c )</span></p>
 
-<p>The argument is an object <span class="Math">x</span> in an Adelman category. The output is its corelation morphism <span class="Math">\gamma: b \rightarrow c</span>.</p>
+<p>The argument is an object <span class="Math">x</span> in an Adelman category. The output is its co-relation morphism <span class="Math">\gamma: b \rightarrow c</span>.</p>
 
 <p><a id="X7F8C0A1C859D8C5B" name="X7F8C0A1C859D8C5B"></a></p>
 
@@ -215,7 +225,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CorelationWitness</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}( c, c' )</span></p>
 
-<p>The argument is a morphism <span class="Math">\alpha</span> in an Adelman category. The output is its corelation witness <span class="Math">\psi: c \rightarrow c'</span>.</p>
+<p>The argument is a morphism <span class="Math">\alpha</span> in an Adelman category. The output is its co-relation witness <span class="Math">\psi: c \rightarrow c'</span>.</p>
 
 <p><a id="X7B36741282949979" name="X7B36741282949979"></a></p>
 
@@ -242,7 +252,67 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSequenceAsAdelmanCategoryObject</code>( <var class="Arg">x</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
 <p>Returns: a boolean</p>
 
-<p>The argument is an object <span class="Math">x</span> in an Adelman category. The output is <code class="code">true</code> if the composition of its relation morphism and its corelation morphism yields zero. Otherwise, the output is <code class="code">false</code>.</p>
+<p>The argument is an object <span class="Math">x</span> in an Adelman category. The output is <code class="code">true</code> if the composition of its relation morphism and its co-relation morphism yields zero. Otherwise, the output is <code class="code">false</code>.</p>
+
+<p><a id="X83FFC6D08103F9F6" name="X83FFC6D08103F9F6"></a></p>
+
+<h4>4.4 <span class="Heading">Exactness properties: objects as functors</span></h4>
+
+<p>The Adelman category of <span class="Math">A</span> can also be interpreted as the category <span class="Math">A-\mathrm{mod}-\mathrm{mod}</span>, i.e., the category of finitely presented functors whose domain is given by <span class="Math">A-\mathrm{mod}</span>, and whose codomain is the category of abelian groups. The category <span class="Math">A-\mathrm{mod}-\mathrm{mod}</span> embeds into <span class="Math">A-\mathrm{Mod}-\mathrm{mod}</span> via extension by filtered colimits. Thus, any object in the Adelman category of <span class="Math">A</span> can be interpreted as a functor from <span class="Math">A-\mathrm{Mod}</span> (an abelian category) into the category of abelian groups (also an abelian category). Via this interpretation, it makes sense to ask for exactness properties of an object in the Adelman category.</p>
+
+<p><a id="X84D14C1D844D1FE7" name="X84D14C1D844D1FE7"></a></p>
+
+<h5>4.4-1 IsExact</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsExact</code>( <var class="Arg">x</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is an object <span class="Math">x</span> in an Adelman category. The output is <code class="code">true</code> if <span class="Math">x</span> corresponds to an exact functor. Otherwise, the output is <code class="code">false</code>.</p>
+
+<p><a id="X7C3B1BCA808EA694" name="X7C3B1BCA808EA694"></a></p>
+
+<h5>4.4-2 IsLeftExact</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsLeftExact</code>( <var class="Arg">x</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is an object <span class="Math">x</span> in an Adelman category. The output is <code class="code">true</code> if <span class="Math">x</span> corresponds to a left exact functor. Otherwise, the output is <code class="code">false</code>.</p>
+
+<p><a id="X812F2EC77F42BD44" name="X812F2EC77F42BD44"></a></p>
+
+<h5>4.4-3 IsRightExact</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsRightExact</code>( <var class="Arg">x</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is an object <span class="Math">x</span> in an Adelman category. The output is <code class="code">true</code> if <span class="Math">x</span> corresponds to a right exact functor. Otherwise, the output is <code class="code">false</code>.</p>
+
+<p><a id="X7842808882D0450A" name="X7842808882D0450A"></a></p>
+
+<h5>4.4-4 IsMonoPreserving</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMonoPreserving</code>( <var class="Arg">x</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is an object <span class="Math">x</span> in an Adelman category. The output is <code class="code">true</code> if <span class="Math">x</span> corresponds to a mono preserving functor. Otherwise, the output is <code class="code">false</code>.</p>
+
+<p><a id="X8428A85D81D8DBDE" name="X8428A85D81D8DBDE"></a></p>
+
+<h5>4.4-5 IsEpiPreserving</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsEpiPreserving</code>( <var class="Arg">x</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is an object <span class="Math">x</span> in an Adelman category. The output is <code class="code">true</code> if <span class="Math">x</span> corresponds to an epi preserving functor. Otherwise, the output is <code class="code">false</code>.</p>
+
+<p><a id="X7EFE25B379625B7E" name="X7EFE25B379625B7E"></a></p>
+
+<h5>4.4-6 IsImagePreserving</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsImagePreserving</code>( <var class="Arg">x</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
+<p>Returns: a boolean</p>
+
+<p>The argument is an object <span class="Math">x</span> in an Adelman category. The output is <code class="code">true</code> if <span class="Math">x</span> corresponds to an image preserving functor. Otherwise, the output is <code class="code">false</code>.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap5.html">[Next Chapter]</a>&nbsp;  </div>

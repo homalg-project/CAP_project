@@ -4,19 +4,19 @@
   [33X[0;0YLet [23XA[123X be an additive category. The Adelman category of [23XA[123X is the free abelian
   category  induced by [23XA[123X. An object [23Xx[123X of the Adelman category of [23XA[123X consists of
   a  composable pair [23X(\rho: a \rightarrow b, \gamma: b \rightarrow c)[123X in [23XA[123X. We
-  call [23X\rho[123X the [13Xrelation morphism[113X, and [23X\gamma[123X the [13Xcorelation morphism[113X of [23Xx[123X.[133X
+  call [23X\rho[123X the [13Xrelation morphism[113X, and [23X\gamma[123X the [13Xco-relation morphism[113X of [23Xx[123X.[133X
   
   [33X[0;0YGiven two objects [23Xx = (\rho: a \rightarrow b, \gamma: b \rightarrow c)[123X and [23Xy
   =  (\rho': a' \rightarrow b', \gamma': b' \rightarrow c')[123X, a morphism [23X\alpha[123X
   from  [23Xx[123X  to  [23Xy[123X  in the Adelman category of [23XA[123X consists of a morphism [23X\beta: b
   \rightarrow  b'[123X,  called  the  [13Xmorphism  datum[113X,  that  has  to fit into some
   commutative  diagram  of  the  form  Any  such  morphism  [23X\omega[123X is called a
-  [13Xrelation witness[113X, any such morphism [23X\psi[123X is called a [13Xcorelation witness[113X. Two
-  morphisms  between [23Xx[123X and [23Xy[123X with morphism data [23X\beta[123X and [23X\beta'[123X are congruent
-  iff  there  exists [23X\sigma_1: b \rightarrow a'[123X and [23X\sigma_2: c \rightarrow b'[123X
-  such  that [23X\beta - \beta' = \sigma_1 \cdot \rho' + \gamma \cdot \sigma_2[123X. We
-  call  any  such  pair  [23X(\sigma_1, \sigma_2)[123X a [13Xwitness pair[113X for [23X\beta, \beta'[123X
-  being congruent.[133X
+  [13Xrelation  witness[113X,  any  such morphism [23X\psi[123X is called a [13Xco-relation witness[113X.
+  Two  morphisms  between  [23Xx[123X  and  [23Xy[123X  with  morphism data [23X\beta[123X and [23X\beta'[123X are
+  congruent  iff  there  exists  [23X\sigma_1:  b  \rightarrow  a'[123X and [23X\sigma_2: c
+  \rightarrow  b'[123X  such  that  [23X\beta  - \beta' = \sigma_1 \cdot \rho' + \gamma
+  \cdot  \sigma_2[123X.  We  call any such pair [23X(\sigma_1, \sigma_2)[123X a [13Xwitness pair[113X
+  for [23X\beta, \beta'[123X being congruent.[133X
   
   
   [1X4.1 [33X[0;0YGAP Categories[133X[101X
@@ -64,7 +64,7 @@
   [33X[0;0YThe   arguments  are  two  morphisms  [23X\alpha:  a  \rightarrow  b[123X,  [23X\beta:  b
   \rightarrow  c[123X  of  the same additive category [23XA[123X. The output is an object in
   the  Adelman  category  of  [23XA[123X  whose  relation  morphism is [23X\alpha[123X and whose
-  corelation morphism is [23X\beta[123X.[133X
+  co-relation morphism is [23X\beta[123X.[133X
   
   [1X4.2-3 AdelmanCategoryMorphism[101X
   
@@ -83,7 +83,7 @@
   
   [33X[0;0YThe  argument  is  an  object  [23Xa[123X of an additive category [23XA[123X. The output is an
   object in the Adelman category of [23XA[123X whose relation morphism is [23X0 \rightarrow
-  a[123X and whose corelation morphism is [23Xa \rightarrow 0[123X.[133X
+  a[123X and whose co-relation morphism is [23Xa \rightarrow 0[123X.[133X
   
   [1X4.2-5 AsAdelmanCategoryMorphism[101X
   
@@ -106,7 +106,7 @@
   argument  is  an Adelman category [23XC[123X of [23XA[123X. If [23Xa[123X lies in [23XA[123X this method returns
   [10XAsAdelmanCategoryObject(  a  )[110X. If [23Xa[123X lies in [23XF[123X, this method return an object
   in  [23XC[123X whose relation morphism is the same as the relation morphism of [23Xa[123X, and
-  whose corelation morphism is [23X0[123X.[133X
+  whose co-relation morphism is [23X0[123X.[133X
   
   [1X4.2-7 \/[101X
   
@@ -144,7 +144,7 @@
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( b, c )[123X[133X
   
   [33X[0;0YThe  argument  is  an  object  [23Xx[123X  in  an Adelman category. The output is its
-  corelation morphism [23X\gamma: b \rightarrow c[123X.[133X
+  co-relation morphism [23X\gamma: b \rightarrow c[123X.[133X
   
   [1X4.3-4 UnderlyingMorphism[101X
   
@@ -168,7 +168,7 @@
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}( c, c' )[123X[133X
   
   [33X[0;0YThe  argument is a morphism [23X\alpha[123X in an Adelman category. The output is its
-  corelation witness [23X\psi: c \rightarrow c'[123X.[133X
+  co-relation witness [23X\psi: c \rightarrow c'[123X.[133X
   
   [1X4.3-7 WitnessPairForBeingCongruentToZero[101X
   
@@ -192,6 +192,67 @@
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
   
   [33X[0;0YThe  argument  is  an object [23Xx[123X in an Adelman category. The output is [10Xtrue[110X if
-  the  composition of its relation morphism and its corelation morphism yields
+  the composition of its relation morphism and its co-relation morphism yields
   zero. Otherwise, the output is [10Xfalse[110X.[133X
+  
+  
+  [1X4.4 [33X[0;0YExactness properties: objects as functors[133X[101X
+  
+  [33X[0;0YThe  Adelman  category  of  [23XA[123X  can  also  be  interpreted  as  the  category
+  [23XA-\mathrm{mod}-\mathrm{mod}[123X,   i.e.,  the  category  of  finitely  presented
+  functors  whose domain is given by [23XA-\mathrm{mod}[123X, and whose codomain is the
+  category  of abelian groups. The category [23XA-\mathrm{mod}-\mathrm{mod}[123X embeds
+  into  [23XA-\mathrm{Mod}-\mathrm{mod}[123X  via extension by filtered colimits. Thus,
+  any object in the Adelman category of [23XA[123X can be interpreted as a functor from
+  [23XA-\mathrm{Mod}[123X  (an  abelian  category)  into the category of abelian groups
+  (also  an  abelian category). Via this interpretation, it makes sense to ask
+  for exactness properties of an object in the Adelman category.[133X
+  
+  [1X4.4-1 IsExact[101X
+  
+  [33X[1;0Y[29X[2XIsExact[102X( [3Xx[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument is an object [23Xx[123X in an Adelman category. The output is [10Xtrue[110X if [23Xx[123X
+  corresponds to an exact functor. Otherwise, the output is [10Xfalse[110X.[133X
+  
+  [1X4.4-2 IsLeftExact[101X
+  
+  [33X[1;0Y[29X[2XIsLeftExact[102X( [3Xx[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument is an object [23Xx[123X in an Adelman category. The output is [10Xtrue[110X if [23Xx[123X
+  corresponds to a left exact functor. Otherwise, the output is [10Xfalse[110X.[133X
+  
+  [1X4.4-3 IsRightExact[101X
+  
+  [33X[1;0Y[29X[2XIsRightExact[102X( [3Xx[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument is an object [23Xx[123X in an Adelman category. The output is [10Xtrue[110X if [23Xx[123X
+  corresponds to a right exact functor. Otherwise, the output is [10Xfalse[110X.[133X
+  
+  [1X4.4-4 IsMonoPreserving[101X
+  
+  [33X[1;0Y[29X[2XIsMonoPreserving[102X( [3Xx[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument is an object [23Xx[123X in an Adelman category. The output is [10Xtrue[110X if [23Xx[123X
+  corresponds to a mono preserving functor. Otherwise, the output is [10Xfalse[110X.[133X
+  
+  [1X4.4-5 IsEpiPreserving[101X
+  
+  [33X[1;0Y[29X[2XIsEpiPreserving[102X( [3Xx[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument is an object [23Xx[123X in an Adelman category. The output is [10Xtrue[110X if [23Xx[123X
+  corresponds to an epi preserving functor. Otherwise, the output is [10Xfalse[110X.[133X
+  
+  [1X4.4-6 IsImagePreserving[101X
+  
+  [33X[1;0Y[29X[2XIsImagePreserving[102X( [3Xx[103X ) [32X property[133X
+  [6XReturns:[106X  [33X[0;10Ya boolean[133X
+  
+  [33X[0;0YThe  argument is an object [23Xx[123X in an Adelman category. The output is [10Xtrue[110X if [23Xx[123X
+  corresponds to an image preserving functor. Otherwise, the output is [10Xfalse[110X.[133X
   
