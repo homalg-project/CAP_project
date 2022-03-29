@@ -870,6 +870,31 @@ InstallGlobalFunction( CachingStatistic,
     
 end );
 
+InstallGlobalFunction( InstallDeprecatedAlias,
+  
+  function( alias_name, function_name, deprecation_date )
+    
+    BindGlobal( alias_name, function ( args... )
+      local result;
+        
+        Print(
+          Concatenation(
+          "WARNING: ", alias_name, " is deprecated and will not be supported after ", deprecation_date, ". Please use ", function_name, " instead.\n"
+          )
+        );
+        
+        result := CallFuncListWrap( ValueGlobal( function_name ), args );
+        
+        if not IsEmpty( result ) then
+            
+            return result[1];
+            
+        fi;
+        
+    end );
+    
+end );
+
 ##
 InstallGlobalFunction( "IsSpecializationOfFilter", function ( filter1, filter2 )
     
