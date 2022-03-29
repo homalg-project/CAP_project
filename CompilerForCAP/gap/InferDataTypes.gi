@@ -374,7 +374,7 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES", function ( tree, 
     end;
     
     result_func := function ( tree, result, keys, additional_arguments )
-      local name, rec_name, data_type, filter, func_pos, func, pos, value, key, i;
+      local positions, name, rec_name, data_type, filter, func_pos, func, pos, value, key, i;
         
         tree := ShallowCopy( tree );
         
@@ -421,6 +421,25 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_INFERRED_DATA_TYPES", function ( tree, 
             fi;
             
             Assert( 0, IsRecord( result.output_type ) );
+            
+            # check if the signatures of all functions could be determined
+            positions := PositionsProperty( result.args, a -> a.type = "EXPR_DECLARATIVE_FUNC" and not IsBound( a.data_type.signature ) );
+            
+            if not IsEmpty( positions ) then
+                
+                for pos in positions do
+                    
+                    # do not keep partial type
+                    Unbind( result.args.(pos).data_type );
+                    
+                od;
+                
+                #Error( "could not determine signature of a function argument" );
+                # there might already be a data type set, but we want to avoid partial typings -> unbind
+                Unbind( tree.data_type );
+                return tree;
+                
+            fi;
             
             tree.funcref := result.funcref;
             tree.args := result.args;
