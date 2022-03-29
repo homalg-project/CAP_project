@@ -157,7 +157,6 @@ DeclareGlobalFunction( "HelpForCAP" );
 #! for the given operation cache is stored.
 DeclareGlobalFunction( "CachingStatistic" );
 
-
 #! @Arguments category
 #! @Description
 #! Displays statistics for all caches in <A>category</A>.
@@ -165,6 +164,12 @@ DeclareGlobalFunction( "CachingStatistic" );
 #! "hits" is the number of successful cache accesses, "misses" the number of unsuccessful cache
 #! accesses, and "stored" the number of objects currently stored in the cache.
 DeclareGlobalFunction( "BrowseCachingStatistic" );
+
+#! @Arguments alias_name, function_name, deprecation_date
+#! @Description
+#!   Makes the function given by <A>function_name</A> available under the alias <A>alias_name</A>
+#!   with a deprecation warning including the date <A>deprecation_date</A>.
+DeclareGlobalFunction( "InstallDeprecatedAlias" );
 
 #! @Description
 #!   Checks if <A>filter2</A> is more special than <A>filter1</A>,

@@ -628,13 +628,23 @@ end );
 ## Convenience methods
 ####################################
 
+# deprecated legacy aliases
+InstallDeprecatedAlias( "Coimage", "CoimageObject", "2023.03.29" );
+InstallDeprecatedAlias( "CoimageProjectionWithGivenCoimage", "CoimageProjectionWithGivenCoimageObject", "2023.03.29" );
+InstallDeprecatedAlias( "AstrictionToCoimageWithGivenCoimage", "AstrictionToCoimageWithGivenCoimageObject", "2023.03.29" );
+InstallDeprecatedAlias( "UniversalMorphismIntoCoimageWithGivenCoimage", "UniversalMorphismIntoCoimageWithGivenCoimageObject", "2023.03.29" );
+InstallDeprecatedAlias( "AddCoimage", "AddCoimageObject", "2023.03.29" );
+InstallDeprecatedAlias( "AddCoimageProjectionWithGivenCoimage", "AddCoimageProjectionWithGivenCoimageObject", "2023.03.29" );
+InstallDeprecatedAlias( "AddAstrictionToCoimageWithGivenCoimage", "AddAstrictionToCoimageWithGivenCoimageObject", "2023.03.29" );
+InstallDeprecatedAlias( "AddUniversalMorphismIntoCoimageWithGivenCoimage", "AddUniversalMorphismIntoCoimageWithGivenCoimageObject", "2023.03.29" );
+
 ##
 InstallMethod( MorphismFromCoimageToImage,
                [ IsCapCategoryMorphism ],
                
   function( morphism )
     
-    return MorphismFromCoimageToImageWithGivenObjects( Coimage( morphism ), morphism, ImageObject( morphism ) );
+    return MorphismFromCoimageToImageWithGivenObjects( CoimageObject( morphism ), morphism, ImageObject( morphism ) );
     
 end );
 
@@ -644,7 +654,7 @@ InstallMethod( InverseMorphismFromCoimageToImage,
                
   function( morphism )
     
-    return InverseMorphismFromCoimageToImageWithGivenObjects( Coimage( morphism ), morphism, ImageObject( morphism ) );
+    return InverseMorphismFromCoimageToImageWithGivenObjects( CoimageObject( morphism ), morphism, ImageObject( morphism ) );
     
 end );
 
@@ -652,11 +662,11 @@ CAP_INTERNAL_ADD_REPLACEMENTS_FOR_METHOD_RECORD(
   rec(
     MorphismFromCoimageToImage :=
       [ [ "MorphismFromCoimageToImageWithGivenObjects", 1 ],
-        [ "Coimage", 1 ],
+        [ "CoimageObject", 1 ],
         [ "ImageObject", 1 ] ],
     InverseMorphismFromCoimageToImage :=
       [ [ "InverseMorphismFromCoimageToImageWithGivenObjects", 1 ],
-        [ "Coimage", 1 ],
+        [ "CoimageObject", 1 ],
         [ "ImageObject", 1 ] ],
   )
  );

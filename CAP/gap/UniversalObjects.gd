@@ -2338,7 +2338,7 @@ DeclareAttribute( "IsomorphismFromCokernelOfKernelToCoimage",
 #! The output is the coimage $\mathrm{coim}( \alpha )$.
 #! @Returns an object
 #! @Arguments alpha
-DeclareAttribute( "Coimage",
+DeclareAttribute( "CoimageObject",
                   IsCapCategoryMorphism );
 
 #! @Description
@@ -2357,7 +2357,7 @@ DeclareAttribute( "CoimageProjection",
 #! $\pi: A \twoheadrightarrow C$.
 #! @Returns a morphism in $\mathrm{Hom}(A, C)$
 #! @Arguments alpha, C
-DeclareOperation( "CoimageProjectionWithGivenCoimage",
+DeclareOperation( "CoimageProjectionWithGivenCoimageObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
@@ -2376,7 +2376,7 @@ DeclareAttribute( "AstrictionToCoimage",
 #! $a: C \rightarrow B$.
 #! @Returns a morphism in $\mathrm{Hom}(C,B)$
 #! @Arguments alpha, C
-DeclareOperation( "AstrictionToCoimageWithGivenCoimage",
+DeclareOperation( "AstrictionToCoimageWithGivenCoimageObject",
                   [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 
 #! @Description
@@ -2405,7 +2405,7 @@ DeclareOperation( "UniversalMorphismIntoCoimage",
 #! given by the universal property of the coimage.
 #! @Returns a morphism in $\mathrm{Hom}(T, C)$
 #! @Arguments alpha, tau, C
-DeclareOperation( "UniversalMorphismIntoCoimageWithGivenCoimage",
+DeclareOperation( "UniversalMorphismIntoCoimageWithGivenCoimageObject",
                   [ IsCapCategoryMorphism, IsList, IsCapCategoryObject ] );
 
 #! Whenever the <C>CoastrictionToImage</C> is an epi,

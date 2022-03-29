@@ -636,7 +636,7 @@ AddWithGivenDerivationPairToCAP( AstrictionToCoimage,
   function( cat, morphism, coimage )
     local coimage_projection;
     
-    coimage_projection := CoimageProjectionWithGivenCoimage( cat, morphism, coimage );
+    coimage_projection := CoimageProjectionWithGivenCoimageObject( cat, morphism, coimage );
     
     return ColiftAlongEpimorphism( cat, coimage_projection, morphism );
     
@@ -699,7 +699,7 @@ AddWithGivenDerivationPairToCAP( UniversalMorphismIntoCoimage,
   function( cat, morphism, test_factorization, coimage )
     local coimage_projection;
     
-    coimage_projection := CoimageProjectionWithGivenCoimage( cat, morphism, coimage );
+    coimage_projection := CoimageProjectionWithGivenCoimageObject( cat, morphism, coimage );
     
     return ColiftAlongEpimorphism( cat, test_factorization[1], coimage_projection );
     
@@ -2570,49 +2570,49 @@ AddDerivationToCAP( ImageObject,
 end : Description := "ImageObject as the range of IsomorphismFromKernelOfCokernelToImageObject" );
 
 ##
-AddDerivationToCAP( Coimage,
+AddDerivationToCAP( CoimageObject,
         
   function( cat, morphism )
     
     return Range( CoimageProjection( cat, morphism ) );
     
-end : Description := "Coimage as the range of CoimageProjection" );
+end : Description := "CoimageObject as the range of CoimageProjection" );
 
 ##
-AddDerivationToCAP( Coimage,
+AddDerivationToCAP( CoimageObject,
         
   function( cat, morphism )
     
     return Range( IsomorphismFromCokernelOfKernelToCoimage( cat, morphism ) );
     
-end : Description := "Coimage as the range of IsomorphismFromCokernelOfKernelToCoimage" );
+end : Description := "CoimageObject as the range of IsomorphismFromCokernelOfKernelToCoimage" );
 
 ##
-AddDerivationToCAP( Coimage,
+AddDerivationToCAP( CoimageObject,
         
   function( cat, morphism )
     
     return Source( IsomorphismFromCoimageToCokernelOfKernel( cat, morphism ) );
     
-end : Description := "Coimage as the source of IsomorphismFromCoimageToCokernelOfKernel" );
+end : Description := "CoimageObject as the source of IsomorphismFromCoimageToCokernelOfKernel" );
 
 ##
-AddDerivationToCAP( Coimage,
+AddDerivationToCAP( CoimageObject,
         
   function( cat, morphism )
     
     return Range( CanonicalIdentificationFromImageObjectToCoimage( cat, morphism ) );
     
-end : Description := "Coimage as the range of CanonicalIdentificationFromImageObjectToCoimage" );
+end : Description := "CoimageObject as the range of CanonicalIdentificationFromImageObjectToCoimage" );
 
 ##
-AddDerivationToCAP( Coimage,
+AddDerivationToCAP( CoimageObject,
         
   function( cat, morphism )
     
     return Source( CanonicalIdentificationFromCoimageToImageObject( cat, morphism ) );
     
-end : Description := "Coimage as the source of CanonicalIdentificationFromCoimageToImageObject" );
+end : Description := "CoimageObject as the source of CanonicalIdentificationFromCoimageToImageObject" );
 
 ##
 AddDerivationToCAP( FiberProduct,
@@ -3253,7 +3253,7 @@ AddDerivationToCAP( MorphismFromCoimageToImageWithGivenObjects,
     
     coimage_projection := CoimageProjection( cat, morphism );
     
-    kernel_lift := KernelLift( cat, cokernel_projection, coimage, AstrictionToCoimageWithGivenCoimage( cat, morphism, coimage ) );
+    kernel_lift := KernelLift( cat, cokernel_projection, coimage, AstrictionToCoimageWithGivenCoimageObject( cat, morphism, coimage ) );
     
     return PreCompose( cat, kernel_lift, IsomorphismFromKernelOfCokernelToImageObject( cat, morphism ) );
     
@@ -3286,13 +3286,13 @@ AddFinalDerivation( IsomorphismFromCoimageToCokernelOfKernel,
                     [ [ CokernelObject, 1 ],
                       [ KernelEmbedding, 1 ],
                       [ IdentityMorphism, 1 ] ],
-                    [ Coimage,
+                    [ CoimageObject,
                       CoimageProjection,
-                      CoimageProjectionWithGivenCoimage,
+                      CoimageProjectionWithGivenCoimageObject,
                       AstrictionToCoimage,
-                      AstrictionToCoimageWithGivenCoimage,
+                      AstrictionToCoimageWithGivenCoimageObject,
                       UniversalMorphismIntoCoimage,
-                      UniversalMorphismIntoCoimageWithGivenCoimage,
+                      UniversalMorphismIntoCoimageWithGivenCoimageObject,
                       IsomorphismFromCoimageToCokernelOfKernel,
                       IsomorphismFromCokernelOfKernelToCoimage ],
                     
@@ -3310,13 +3310,13 @@ AddFinalDerivation( IsomorphismFromCokernelOfKernelToCoimage,
                     [ [ CokernelObject, 1 ],
                       [ KernelEmbedding, 1 ],
                       [ IdentityMorphism, 1 ] ],
-                    [ Coimage,
+                    [ CoimageObject,
                       CoimageProjection,
-                      CoimageProjectionWithGivenCoimage,
+                      CoimageProjectionWithGivenCoimageObject,
                       AstrictionToCoimage,
-                      AstrictionToCoimageWithGivenCoimage,
+                      AstrictionToCoimageWithGivenCoimageObject,
                       UniversalMorphismIntoCoimage,
-                      UniversalMorphismIntoCoimageWithGivenCoimage,
+                      UniversalMorphismIntoCoimageWithGivenCoimageObject,
                       IsomorphismFromCoimageToCokernelOfKernel,
                       IsomorphismFromCokernelOfKernelToCoimage ],
                     
