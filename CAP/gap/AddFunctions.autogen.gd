@@ -69,20 +69,20 @@ DeclareOperation( "AddAstrictionToCoimage",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `AstrictionToCoimageWithGivenCoimage`.
-#! $F: ( alpha, C ) \mapsto \mathtt{AstrictionToCoimageWithGivenCoimage}(alpha, C)$.
+#! to the category for the basic operation `AstrictionToCoimageWithGivenCoimageObject`.
+#! $F: ( alpha, C ) \mapsto \mathtt{AstrictionToCoimageWithGivenCoimageObject}(alpha, C)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddAstrictionToCoimageWithGivenCoimage",
+DeclareOperation( "AddAstrictionToCoimageWithGivenCoimageObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddAstrictionToCoimageWithGivenCoimage",
+DeclareOperation( "AddAstrictionToCoimageWithGivenCoimageObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddAstrictionToCoimageWithGivenCoimage",
+DeclareOperation( "AddAstrictionToCoimageWithGivenCoimageObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddAstrictionToCoimageWithGivenCoimage",
+DeclareOperation( "AddAstrictionToCoimageWithGivenCoimageObject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -259,20 +259,20 @@ DeclareOperation( "AddCoequalizerFunctorialWithGivenCoequalizers",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `Coimage`.
-#! $F: ( arg2 ) \mapsto \mathtt{Coimage}(arg2)$.
+#! to the category for the basic operation `CoimageObject`.
+#! $F: ( arg2 ) \mapsto \mathtt{CoimageObject}(arg2)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddCoimage",
+DeclareOperation( "AddCoimageObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCoimage",
+DeclareOperation( "AddCoimageObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddCoimage",
+DeclareOperation( "AddCoimageObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCoimage",
+DeclareOperation( "AddCoimageObject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -297,20 +297,20 @@ DeclareOperation( "AddCoimageProjection",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `CoimageProjectionWithGivenCoimage`.
-#! $F: ( alpha, C ) \mapsto \mathtt{CoimageProjectionWithGivenCoimage}(alpha, C)$.
+#! to the category for the basic operation `CoimageProjectionWithGivenCoimageObject`.
+#! $F: ( alpha, C ) \mapsto \mathtt{CoimageProjectionWithGivenCoimageObject}(alpha, C)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddCoimageProjectionWithGivenCoimage",
+DeclareOperation( "AddCoimageProjectionWithGivenCoimageObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddCoimageProjectionWithGivenCoimage",
+DeclareOperation( "AddCoimageProjectionWithGivenCoimageObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddCoimageProjectionWithGivenCoimage",
+DeclareOperation( "AddCoimageProjectionWithGivenCoimageObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddCoimageProjectionWithGivenCoimage",
+DeclareOperation( "AddCoimageProjectionWithGivenCoimageObject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -4572,20 +4572,20 @@ DeclareOperation( "AddUniversalMorphismIntoCoimage",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `UniversalMorphismIntoCoimageWithGivenCoimage`.
-#! $F: ( alpha, tau, C ) \mapsto \mathtt{UniversalMorphismIntoCoimageWithGivenCoimage}(alpha, tau, C)$.
+#! to the category for the basic operation `UniversalMorphismIntoCoimageWithGivenCoimageObject`.
+#! $F: ( alpha, tau, C ) \mapsto \mathtt{UniversalMorphismIntoCoimageWithGivenCoimageObject}(alpha, tau, C)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
+DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimageObject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
+DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimageObject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
+DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimageObject",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimage",
+DeclareOperation( "AddUniversalMorphismIntoCoimageWithGivenCoimageObject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

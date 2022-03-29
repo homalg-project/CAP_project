@@ -309,14 +309,14 @@
 
 #! The following additional CAP operations are supported:
 #! * <Ref BookName="CAP" Func="AstrictionToCoimage" Label="for Is" />
-#! * <Ref BookName="CAP" Func="AstrictionToCoimageWithGivenCoimage" Label="for Is" />
+#! * <Ref BookName="CAP" Func="AstrictionToCoimageWithGivenCoimageObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="BasisOfExternalHom" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoastrictionToImage" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoastrictionToImageWithGivenImageObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoefficientsOfMorphismWithGivenBasisOfExternalHom" Label="for Is" />
-#! * <Ref BookName="CAP" Func="Coimage" Label="for Is" />
+#! * <Ref BookName="CAP" Func="CoimageObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CoimageProjection" Label="for Is" />
-#! * <Ref BookName="CAP" Func="CoimageProjectionWithGivenCoimage" Label="for Is" />
+#! * <Ref BookName="CAP" Func="CoimageProjectionWithGivenCoimageObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CokernelColift" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CokernelColiftWithGivenCokernelObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="CokernelObject" Label="for Is" />
@@ -373,6 +373,6 @@
 #! * <Ref BookName="CAP" Func="UniversalMorphismFromPushout" Label="" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismFromPushoutWithGivenPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismIntoCoimage" Label="for Is" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismIntoCoimageWithGivenCoimage" Label="for Is" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismIntoCoimageWithGivenCoimageObject" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismIntoFiberProduct" Label="" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismIntoFiberProductWithGivenFiberProduct" Label="for Is" />

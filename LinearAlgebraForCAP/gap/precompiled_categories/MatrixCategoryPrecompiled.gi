@@ -102,7 +102,7 @@ end
     , 704 : IsPrecompiledDerivation := true );
     
     ##
-    AddAstrictionToCoimageWithGivenCoimage( cat,
+    AddAstrictionToCoimageWithGivenCoimageObject( cat,
         
 ########
 function ( cat_1, alpha_1, C_1 )
@@ -808,7 +808,7 @@ end
     , 2408 : IsPrecompiledDerivation := true );
     
     ##
-    AddCoimage( cat,
+    AddCoimageObject( cat,
         
 ########
 function ( cat_1, arg2_1 )
@@ -837,7 +837,7 @@ end
     , 602 : IsPrecompiledDerivation := true );
     
     ##
-    AddCoimageProjectionWithGivenCoimage( cat,
+    AddCoimageProjectionWithGivenCoimageObject( cat,
         
 ########
 function ( cat_1, alpha_1, C_1 )
@@ -6455,7 +6455,7 @@ end
     , 704 : IsPrecompiledDerivation := true );
     
     ##
-    AddUniversalMorphismIntoCoimageWithGivenCoimage( cat,
+    AddUniversalMorphismIntoCoimageWithGivenCoimageObject( cat,
         
 ########
 function ( cat_1, alpha_1, tau_1, C_1 )
