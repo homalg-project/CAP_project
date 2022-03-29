@@ -1990,9 +1990,9 @@
   canonical morphism [23X\mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha
   ) ) \rightarrow \mathrm{coim}( \alpha )[123X.[133X
   
-  [1X6.14-7 Coimage[101X
+  [1X6.14-7 CoimageObject[101X
   
-  [33X[1;0Y[29X[2XCoimage[102X( [3Xalpha[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XCoimageObject[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan object[133X
   
   [33X[0;0YThe  argument is a morphism [23X\alpha[123X. The output is the coimage [23X\mathrm{coim}(
@@ -2006,9 +2006,9 @@
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  A  \rightarrow B[123X. The output is the
   coimage projection [23X\pi: A \twoheadrightarrow \mathrm{coim}( \alpha )[123X.[133X
   
-  [1X6.14-9 CoimageProjectionWithGivenCoimage[101X
+  [1X6.14-9 CoimageProjectionWithGivenCoimageObject[101X
   
-  [33X[1;0Y[29X[2XCoimageProjectionWithGivenCoimage[102X( [3Xalpha[103X, [3XC[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCoimageProjectionWithGivenCoimageObject[102X( [3Xalpha[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(A, C)[123X[133X
   
   [33X[0;0YThe  arguments  are  a  morphism  [23X\alpha:  A \rightarrow B[123X and an object [23XC =
@@ -2023,9 +2023,9 @@
   [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  A  \rightarrow B[123X. The output is the
   astriction to coimage [23Xa: \mathrm{coim}( \alpha ) \rightarrow B[123X.[133X
   
-  [1X6.14-11 AstrictionToCoimageWithGivenCoimage[101X
+  [1X6.14-11 AstrictionToCoimageWithGivenCoimageObject[101X
   
-  [33X[1;0Y[29X[2XAstrictionToCoimageWithGivenCoimage[102X( [3Xalpha[103X, [3XC[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAstrictionToCoimageWithGivenCoimageObject[102X( [3Xalpha[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(C,B)[123X[133X
   
   [33X[0;0YThe  argument  are  a  morphism  [23X\alpha:  A  \rightarrow B[123X and an object [23XC =
@@ -2043,9 +2043,9 @@
   The  output  is  the morphism [23Xu(\tau): T \rightarrow \mathrm{coim}( \alpha )[123X
   given by the universal property of the coimage.[133X
   
-  [1X6.14-13 UniversalMorphismIntoCoimageWithGivenCoimage[101X
+  [1X6.14-13 UniversalMorphismIntoCoimageWithGivenCoimageObject[101X
   
-  [33X[1;0Y[29X[2XUniversalMorphismIntoCoimageWithGivenCoimage[102X( [3Xalpha[103X, [3Xtau[103X, [3XC[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XUniversalMorphismIntoCoimageWithGivenCoimageObject[102X( [3Xalpha[103X, [3Xtau[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in [23X\mathrm{Hom}(T, C)[123X[133X
   
   [33X[0;0YThe  arguments  are  a morphism [23X\alpha: A \rightarrow B[123X, a pair of morphisms

@@ -55,7 +55,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X811BB502781CFBB9">7.7-1 AddAdditionForMorphisms</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7AB78A707BF08401">7.7-2 AddAdditiveInverseForMorphisms</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X786682798320D413">7.7-3 AddAstrictionToCoimage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X820E0A8786AA718F">7.7-4 AddAstrictionToCoimageWithGivenCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7A3941A6808F122B">7.7-4 AddAstrictionToCoimageWithGivenCoimageObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7E995205864340BD">7.7-5 AddBasisOfExternalHom</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7FCB65A17DB481CA">7.7-6 AddCanonicalIdentificationFromCoimageToImageObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X87BCB4F28116D43C">7.7-7 AddCanonicalIdentificationFromImageObjectToCoimage</a></span>
@@ -65,9 +65,9 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X854D668E7F7AE192">7.7-11 AddCoequalizer</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X85D135A186E19749">7.7-12 AddCoequalizerFunctorial</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X784EE97C7CBD86AE">7.7-13 AddCoequalizerFunctorialWithGivenCoequalizers</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7A0027687B377BC2">7.7-14 AddCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X87747A0B87DA7CF9">7.7-14 AddCoimageObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X85B54DD47C3E9682">7.7-15 AddCoimageProjection</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X800CCC74801CFF29">7.7-16 AddCoimageProjectionWithGivenCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X819E76B4798EA44C">7.7-16 AddCoimageProjectionWithGivenCoimageObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7988858A83DAFF4B">7.7-17 AddCokernelColift</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7991C43079F444CC">7.7-18 AddCokernelColiftWithGivenCokernelObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7827637D7B8E7E60">7.7-19 AddCokernelObject</a></span>
@@ -292,7 +292,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X873263B37942E963">7.7-238 AddUniversalMorphismFromZeroObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X8396EFB87AABCD66">7.7-239 AddUniversalMorphismFromZeroObjectWithGivenZeroObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X85DB30B982F6C564">7.7-240 AddUniversalMorphismIntoCoimage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X8617139A8651C194">7.7-241 AddUniversalMorphismIntoCoimageWithGivenCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7D83EDB07844C0FA">7.7-241 AddUniversalMorphismIntoCoimageWithGivenCoimageObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7E4C217083150A21">7.7-242 AddUniversalMorphismIntoDirectProduct</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X84C986C67D703457">7.7-243 AddUniversalMorphismIntoDirectProductWithGivenDirectProduct</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7_mj.html#X7AA30E857A11AA2A">7.7-244 AddUniversalMorphismIntoDirectSum</a></span>
@@ -746,14 +746,14 @@ DeclareOperation( "CapInternalInstallAdd",
 
 <p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">AstrictionToCoimage</code>. <span class="SimpleMath">\(F: ( alpha ) \mapsto \mathtt{AstrictionToCoimage}(alpha)\)</span>.</p>
 
-<p><a id="X820E0A8786AA718F" name="X820E0A8786AA718F"></a></p>
+<p><a id="X7A3941A6808F122B" name="X7A3941A6808F122B"></a></p>
 
-<h5>7.7-4 AddAstrictionToCoimageWithGivenCoimage</h5>
+<h5>7.7-4 AddAstrictionToCoimageWithGivenCoimageObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddAstrictionToCoimageWithGivenCoimage</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddAstrictionToCoimageWithGivenCoimageObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">AstrictionToCoimageWithGivenCoimage</code>. <span class="SimpleMath">\(F: ( alpha, C ) \mapsto \mathtt{AstrictionToCoimageWithGivenCoimage}(alpha, C)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">AstrictionToCoimageWithGivenCoimageObject</code>. <span class="SimpleMath">\(F: ( alpha, C ) \mapsto \mathtt{AstrictionToCoimageWithGivenCoimageObject}(alpha, C)\)</span>.</p>
 
 <p><a id="X7E995205864340BD" name="X7E995205864340BD"></a></p>
 
@@ -836,14 +836,14 @@ DeclareOperation( "CapInternalInstallAdd",
 
 <p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CoequalizerFunctorialWithGivenCoequalizers</code>. <span class="SimpleMath">\(F: ( P, morphisms, mu, morphismsp, Pp ) \mapsto \mathtt{CoequalizerFunctorialWithGivenCoequalizers}(P, morphisms, mu, morphismsp, Pp)\)</span>.</p>
 
-<p><a id="X7A0027687B377BC2" name="X7A0027687B377BC2"></a></p>
+<p><a id="X87747A0B87DA7CF9" name="X87747A0B87DA7CF9"></a></p>
 
-<h5>7.7-14 AddCoimage</h5>
+<h5>7.7-14 AddCoimageObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoimage</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoimageObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">Coimage</code>. <span class="SimpleMath">\(F: ( arg2 ) \mapsto \mathtt{Coimage}(arg2)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CoimageObject</code>. <span class="SimpleMath">\(F: ( arg2 ) \mapsto \mathtt{CoimageObject}(arg2)\)</span>.</p>
 
 <p><a id="X85B54DD47C3E9682" name="X85B54DD47C3E9682"></a></p>
 
@@ -854,14 +854,14 @@ DeclareOperation( "CapInternalInstallAdd",
 
 <p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CoimageProjection</code>. <span class="SimpleMath">\(F: ( alpha ) \mapsto \mathtt{CoimageProjection}(alpha)\)</span>.</p>
 
-<p><a id="X800CCC74801CFF29" name="X800CCC74801CFF29"></a></p>
+<p><a id="X819E76B4798EA44C" name="X819E76B4798EA44C"></a></p>
 
-<h5>7.7-16 AddCoimageProjectionWithGivenCoimage</h5>
+<h5>7.7-16 AddCoimageProjectionWithGivenCoimageObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoimageProjectionWithGivenCoimage</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddCoimageProjectionWithGivenCoimageObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CoimageProjectionWithGivenCoimage</code>. <span class="SimpleMath">\(F: ( alpha, C ) \mapsto \mathtt{CoimageProjectionWithGivenCoimage}(alpha, C)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">CoimageProjectionWithGivenCoimageObject</code>. <span class="SimpleMath">\(F: ( alpha, C ) \mapsto \mathtt{CoimageProjectionWithGivenCoimageObject}(alpha, C)\)</span>.</p>
 
 <p><a id="X7988858A83DAFF4B" name="X7988858A83DAFF4B"></a></p>
 
@@ -2879,14 +2879,14 @@ DeclareOperation( "CapInternalInstallAdd",
 
 <p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UniversalMorphismIntoCoimage</code>. <span class="SimpleMath">\(F: ( alpha, tau ) \mapsto \mathtt{UniversalMorphismIntoCoimage}(alpha, tau)\)</span>.</p>
 
-<p><a id="X8617139A8651C194" name="X8617139A8651C194"></a></p>
+<p><a id="X7D83EDB07844C0FA" name="X7D83EDB07844C0FA"></a></p>
 
-<h5>7.7-241 AddUniversalMorphismIntoCoimageWithGivenCoimage</h5>
+<h5>7.7-241 AddUniversalMorphismIntoCoimageWithGivenCoimageObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoCoimageWithGivenCoimage</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddUniversalMorphismIntoCoimageWithGivenCoimageObject</code>( <var class="Arg">C</var>, <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: nothing</p>
 
-<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UniversalMorphismIntoCoimageWithGivenCoimage</code>. <span class="SimpleMath">\(F: ( alpha, tau, C ) \mapsto \mathtt{UniversalMorphismIntoCoimageWithGivenCoimage}(alpha, tau, C)\)</span>.</p>
+<p>The arguments are a category <span class="SimpleMath">\(C\)</span> and a function <span class="SimpleMath">\(F\)</span>. This operation adds the given function <span class="SimpleMath">\(F\)</span> to the category for the basic operation <code class="code">UniversalMorphismIntoCoimageWithGivenCoimageObject</code>. <span class="SimpleMath">\(F: ( alpha, tau, C ) \mapsto \mathtt{UniversalMorphismIntoCoimageWithGivenCoimageObject}(alpha, tau, C)\)</span>.</p>
 
 <p><a id="X7E4C217083150A21" name="X7E4C217083150A21"></a></p>
 

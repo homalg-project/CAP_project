@@ -6,10 +6,10 @@
                      [1X Categories, Algorithms, Programming [101X
   
   
-                                   2022.03-05
+                                   2022.03-06
   
   
-                                 15 March 2022
+                                 29 March 2022
   
   
                                Sebastian Gutsche
@@ -495,13 +495,13 @@
       6.14-4 InverseMorphismFromCoimageToImageWithGivenObjects
       6.14-5 IsomorphismFromCoimageToCokernelOfKernel
       6.14-6 IsomorphismFromCokernelOfKernelToCoimage
-      6.14-7 Coimage
+      6.14-7 CoimageObject
       6.14-8 CoimageProjection
-      6.14-9 CoimageProjectionWithGivenCoimage
+      6.14-9 CoimageProjectionWithGivenCoimageObject
       6.14-10 AstrictionToCoimage
-      6.14-11 AstrictionToCoimageWithGivenCoimage
+      6.14-11 AstrictionToCoimageWithGivenCoimageObject
       6.14-12 UniversalMorphismIntoCoimage
-      6.14-13 UniversalMorphismIntoCoimageWithGivenCoimage
+      6.14-13 UniversalMorphismIntoCoimageWithGivenCoimageObject
       6.14-14 CanonicalIdentificationFromImageObjectToCoimage
       6.14-15 CanonicalIdentificationFromCoimageToImageObject
     6.15 [33X[0;0YHomology objects[133X
@@ -525,7 +525,7 @@
       7.7-1 AddAdditionForMorphisms
       7.7-2 AddAdditiveInverseForMorphisms
       7.7-3 AddAstrictionToCoimage
-      7.7-4 AddAstrictionToCoimageWithGivenCoimage
+      7.7-4 AddAstrictionToCoimageWithGivenCoimageObject
       7.7-5 AddBasisOfExternalHom
       7.7-6 AddCanonicalIdentificationFromCoimageToImageObject
       7.7-7 AddCanonicalIdentificationFromImageObjectToCoimage
@@ -535,9 +535,9 @@
       7.7-11 AddCoequalizer
       7.7-12 AddCoequalizerFunctorial
       7.7-13 AddCoequalizerFunctorialWithGivenCoequalizers
-      7.7-14 AddCoimage
+      7.7-14 AddCoimageObject
       7.7-15 AddCoimageProjection
-      7.7-16 AddCoimageProjectionWithGivenCoimage
+      7.7-16 AddCoimageProjectionWithGivenCoimageObject
       7.7-17 AddCokernelColift
       7.7-18 AddCokernelColiftWithGivenCokernelObject
       7.7-19 AddCokernelObject
@@ -762,7 +762,7 @@
       7.7-238 AddUniversalMorphismFromZeroObject
       7.7-239 AddUniversalMorphismFromZeroObjectWithGivenZeroObject
       7.7-240 AddUniversalMorphismIntoCoimage
-      7.7-241 AddUniversalMorphismIntoCoimageWithGivenCoimage
+      7.7-241 AddUniversalMorphismIntoCoimageWithGivenCoimageObject
       7.7-242 AddUniversalMorphismIntoDirectProduct
       7.7-243 AddUniversalMorphismIntoDirectProductWithGivenDirectProduct
       7.7-244 AddUniversalMorphismIntoDirectSum
@@ -869,14 +869,15 @@
       9.2-17 CAP_INTERNAL_ASSERT_IS_NON_NEGATIVE_INTEGER_OR_INFINITY
       9.2-18 CachingStatistic
       9.2-19 BrowseCachingStatistic
-      9.2-20 IsSpecializationOfFilter
-      9.2-21 IsSpecializationOfFilterList
-      9.2-22 InstallMethodForCompilerForCAP
-      9.2-23 InstallOtherMethodForCompilerForCAP
-      9.2-24 CapJitAddKnownMethod
-      9.2-25 CapJitAddTypeSignature
-      9.2-26 CapJitAddTypeSignatureDeferred
-      9.2-27 CapFixpoint
+      9.2-20 InstallDeprecatedAlias
+      9.2-21 IsSpecializationOfFilter
+      9.2-22 IsSpecializationOfFilterList
+      9.2-23 InstallMethodForCompilerForCAP
+      9.2-24 InstallOtherMethodForCompilerForCAP
+      9.2-25 CapJitAddKnownMethod
+      9.2-26 CapJitAddTypeSignature
+      9.2-27 CapJitAddTypeSignatureDeferred
+      9.2-28 CapFixpoint
   10 [33X[0;0YLimits and Colimits[133X
     10.1 [33X[0;0YSpecification of Limits and Colimits[133X
     10.2 [33X[0;0YEnhancing Limit Specifications[133X

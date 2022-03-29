@@ -403,15 +403,15 @@
   [10XAstrictionToCoimage[110X.        [23XF:        (        alpha        )        \mapsto
   \mathtt{AstrictionToCoimage}(alpha)[123X.[133X
   
-  [1X7.7-4 AddAstrictionToCoimageWithGivenCoimage[101X
+  [1X7.7-4 AddAstrictionToCoimageWithGivenCoimageObject[101X
   
-  [33X[1;0Y[29X[2XAddAstrictionToCoimageWithGivenCoimage[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddAstrictionToCoimageWithGivenCoimageObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XAstrictionToCoimageWithGivenCoimage[110X.    [23XF:    (    alpha,    C   )   \mapsto
-  \mathtt{AstrictionToCoimageWithGivenCoimage}(alpha, C)[123X.[133X
+  [10XAstrictionToCoimageWithGivenCoimageObject[110X.   [23XF:   (   alpha,   C  )  \mapsto
+  \mathtt{AstrictionToCoimageWithGivenCoimageObject}(alpha, C)[123X.[133X
   
   [1X7.7-5 AddBasisOfExternalHom[101X
   
@@ -503,14 +503,14 @@
   \mathtt{CoequalizerFunctorialWithGivenCoequalizers}(P,     morphisms,    mu,
   morphismsp, Pp)[123X.[133X
   
-  [1X7.7-14 AddCoimage[101X
+  [1X7.7-14 AddCoimageObject[101X
   
-  [33X[1;0Y[29X[2XAddCoimage[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoimageObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
-  given  function [23XF[123X to the category for the basic operation [10XCoimage[110X. [23XF: ( arg2
-  ) \mapsto \mathtt{Coimage}(arg2)[123X.[133X
+  given function [23XF[123X to the category for the basic operation [10XCoimageObject[110X. [23XF: (
+  arg2 ) \mapsto \mathtt{CoimageObject}(arg2)[123X.[133X
   
   [1X7.7-15 AddCoimageProjection[101X
   
@@ -521,15 +521,15 @@
   given  function [23XF[123X to the category for the basic operation [10XCoimageProjection[110X.
   [23XF: ( alpha ) \mapsto \mathtt{CoimageProjection}(alpha)[123X.[133X
   
-  [1X7.7-16 AddCoimageProjectionWithGivenCoimage[101X
+  [1X7.7-16 AddCoimageProjectionWithGivenCoimageObject[101X
   
-  [33X[1;0Y[29X[2XAddCoimageProjectionWithGivenCoimage[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddCoimageProjectionWithGivenCoimageObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XCoimageProjectionWithGivenCoimage[110X.    [23XF:    (    alpha,    C    )    \mapsto
-  \mathtt{CoimageProjectionWithGivenCoimage}(alpha, C)[123X.[133X
+  [10XCoimageProjectionWithGivenCoimageObject[110X.   [23XF:   (   alpha,   C   )   \mapsto
+  \mathtt{CoimageProjectionWithGivenCoimageObject}(alpha, C)[123X.[133X
   
   [1X7.7-17 AddCokernelColift[101X
   
@@ -2756,15 +2756,16 @@
   [10XUniversalMorphismIntoCoimage[110X.     [23XF:     (     alpha,    tau    )    \mapsto
   \mathtt{UniversalMorphismIntoCoimage}(alpha, tau)[123X.[133X
   
-  [1X7.7-241 AddUniversalMorphismIntoCoimageWithGivenCoimage[101X
+  [1X7.7-241 AddUniversalMorphismIntoCoimageWithGivenCoimageObject[101X
   
-  [33X[1;0Y[29X[2XAddUniversalMorphismIntoCoimageWithGivenCoimage[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XAddUniversalMorphismIntoCoimageWithGivenCoimageObject[102X( [3XC[103X, [3XF[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ynothing[133X
   
   [33X[0;0YThe  arguments  are  a  category [23XC[123X and a function [23XF[123X. This operation adds the
   given    function    [23XF[123X   to   the   category   for   the   basic   operation
-  [10XUniversalMorphismIntoCoimageWithGivenCoimage[110X.  [23XF:  ( alpha, tau, C ) \mapsto
-  \mathtt{UniversalMorphismIntoCoimageWithGivenCoimage}(alpha, tau, C)[123X.[133X
+  [10XUniversalMorphismIntoCoimageWithGivenCoimageObject[110X.  [23XF:  (  alpha,  tau, C )
+  \mapsto   \mathtt{UniversalMorphismIntoCoimageWithGivenCoimageObject}(alpha,
+  tau, C)[123X.[133X
   
   [1X7.7-242 AddUniversalMorphismIntoDirectProduct[101X
   

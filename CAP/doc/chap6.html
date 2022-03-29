@@ -233,13 +233,13 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X83C4E6FF7D1F1A9C">6.14-4 InverseMorphismFromCoimageToImageWithGivenObjects</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7C594E227D8DB0ED">6.14-5 IsomorphismFromCoimageToCokernelOfKernel</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7CF7E7E47A460E56">6.14-6 IsomorphismFromCokernelOfKernelToCoimage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X866FB09E857D1846">6.14-7 Coimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82318F9B876ACB1A">6.14-7 CoimageObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X788E717C7CCC6645">6.14-8 CoimageProjection</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X845344847E9C3AD9">6.14-9 CoimageProjectionWithGivenCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X836301DF80A22C5C">6.14-9 CoimageProjectionWithGivenCoimageObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X805108BF8047357E">6.14-10 AstrictionToCoimage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7BEDEDCC7818490B">6.14-11 AstrictionToCoimageWithGivenCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X78AC1C7384A60A5E">6.14-11 AstrictionToCoimageWithGivenCoimageObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D051DDF7A68BFFB">6.14-12 UniversalMorphismIntoCoimage</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D9C6F3C7B929E5F">6.14-13 UniversalMorphismIntoCoimageWithGivenCoimage</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X87AACC0083B6D49F">6.14-13 UniversalMorphismIntoCoimageWithGivenCoimageObject</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D1114D97D8179BD">6.14-14 CanonicalIdentificationFromImageObjectToCoimage</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8471140B7DF55646">6.14-15 CanonicalIdentificationFromCoimageToImageObject</a></span>
 </div></div>
@@ -2060,11 +2060,11 @@
 
 <p>The argument is a morphism <span class="Math">\alpha: A \rightarrow B</span>. The output is the canonical morphism <span class="Math">\mathrm{CokernelObject}( \mathrm{KernelEmbedding}( \alpha ) ) \rightarrow \mathrm{coim}( \alpha )</span>.</p>
 
-<p><a id="X866FB09E857D1846" name="X866FB09E857D1846"></a></p>
+<p><a id="X82318F9B876ACB1A" name="X82318F9B876ACB1A"></a></p>
 
-<h5>6.14-7 Coimage</h5>
+<h5>6.14-7 CoimageObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Coimage</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoimageObject</code>( <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: an object</p>
 
 <p>The argument is a morphism <span class="Math">\alpha</span>. The output is the coimage <span class="Math">\mathrm{coim}( \alpha )</span>.</p>
@@ -2078,11 +2078,11 @@
 
 <p>The argument is a morphism <span class="Math">\alpha: A \rightarrow B</span>. The output is the coimage projection <span class="Math">\pi: A \twoheadrightarrow \mathrm{coim}( \alpha )</span>.</p>
 
-<p><a id="X845344847E9C3AD9" name="X845344847E9C3AD9"></a></p>
+<p><a id="X836301DF80A22C5C" name="X836301DF80A22C5C"></a></p>
 
-<h5>6.14-9 CoimageProjectionWithGivenCoimage</h5>
+<h5>6.14-9 CoimageProjectionWithGivenCoimageObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoimageProjectionWithGivenCoimage</code>( <var class="Arg">alpha</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoimageProjectionWithGivenCoimageObject</code>( <var class="Arg">alpha</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(A, C)</span></p>
 
 <p>The arguments are a morphism <span class="Math">\alpha: A \rightarrow B</span> and an object <span class="Math">C = \mathrm{coim}(\alpha)</span>. The output is the coimage projection <span class="Math">\pi: A \twoheadrightarrow C</span>.</p>
@@ -2096,11 +2096,11 @@
 
 <p>The argument is a morphism <span class="Math">\alpha: A \rightarrow B</span>. The output is the astriction to coimage <span class="Math">a: \mathrm{coim}( \alpha ) \rightarrow B</span>.</p>
 
-<p><a id="X7BEDEDCC7818490B" name="X7BEDEDCC7818490B"></a></p>
+<p><a id="X78AC1C7384A60A5E" name="X78AC1C7384A60A5E"></a></p>
 
-<h5>6.14-11 AstrictionToCoimageWithGivenCoimage</h5>
+<h5>6.14-11 AstrictionToCoimageWithGivenCoimageObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AstrictionToCoimageWithGivenCoimage</code>( <var class="Arg">alpha</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AstrictionToCoimageWithGivenCoimageObject</code>( <var class="Arg">alpha</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(C,B)</span></p>
 
 <p>The argument are a morphism <span class="Math">\alpha: A \rightarrow B</span> and an object <span class="Math">C = \mathrm{coim}( \alpha )</span>. The output is the astriction to coimage <span class="Math">a: C \rightarrow B</span>.</p>
@@ -2114,11 +2114,11 @@
 
 <p>The arguments are a morphism <span class="Math">\alpha: A \rightarrow B</span> and a pair of morphisms <span class="Math">\tau = ( \tau_1: A \twoheadrightarrow T, \tau_2: T \rightarrow B )</span> where <span class="Math">\tau_1</span> is an epimorphism such that <span class="Math">\tau_2 \circ \tau_1 \sim_{A,B} \alpha</span>. The output is the morphism <span class="Math">u(\tau): T \rightarrow \mathrm{coim}( \alpha )</span> given by the universal property of the coimage.</p>
 
-<p><a id="X7D9C6F3C7B929E5F" name="X7D9C6F3C7B929E5F"></a></p>
+<p><a id="X87AACC0083B6D49F" name="X87AACC0083B6D49F"></a></p>
 
-<h5>6.14-13 UniversalMorphismIntoCoimageWithGivenCoimage</h5>
+<h5>6.14-13 UniversalMorphismIntoCoimageWithGivenCoimageObject</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismIntoCoimageWithGivenCoimage</code>( <var class="Arg">alpha</var>, <var class="Arg">tau</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UniversalMorphismIntoCoimageWithGivenCoimageObject</code>( <var class="Arg">alpha</var>, <var class="Arg">tau</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in <span class="Math">\mathrm{Hom}(T, C)</span></p>
 
 <p>The arguments are a morphism <span class="Math">\alpha: A \rightarrow B</span>, a pair of morphisms <span class="Math">\tau = ( \tau_1: A \twoheadrightarrow T, \tau_2: T \rightarrow B )</span> where <span class="Math">\tau_1</span> is an epimorphism such that <span class="Math">\tau_2 \circ \tau_1 \sim_{A,B} \alpha</span>, and an object <span class="Math">C = \mathrm{coim}( \alpha )</span>. The output is the morphism <span class="Math">u(\tau): T \rightarrow C</span> given by the universal property of the coimage.</p>
