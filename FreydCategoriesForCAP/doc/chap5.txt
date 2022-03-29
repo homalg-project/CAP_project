@@ -1034,8 +1034,8 @@
   [30X    [33X[0;6Y[2XAstrictionToCoimage[102X        ([14XCAP:        AstrictionToCoimage        for
         iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XAstrictionToCoimageWithGivenCoimage[102X                              ([14XCAP:
-        AstrictionToCoimageWithGivenCoimage     for     iscapcategorymorphism,
+  [30X    [33X[0;6Y[2XAstrictionToCoimageWithGivenCoimageObject[102X                        ([14XCAP:
+        AstrictionToCoimageWithGivenCoimageObject  for  iscapcategorymorphism,
         iscapcategoryobject[114X)[133X
   
   [30X    [33X[0;6Y[2XBasisOfExternalHom[102X  ([14XCAP:  BasisOfExternalHom for iscapcategoryobject,
@@ -1052,12 +1052,12 @@
         CoefficientsOfMorphismWithGivenBasisOfExternalHom                  for
         iscapcategorymorphism, islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XCoimage[102X ([14XCAP: Coimage for iscapcategorymorphism[114X)[133X
+  [30X    [33X[0;6Y[2XCoimageObject[102X ([14XCAP: CoimageObject for iscapcategorymorphism[114X)[133X
   
   [30X    [33X[0;6Y[2XCoimageProjection[102X ([14XCAP: CoimageProjection for iscapcategorymorphism[114X)[133X
   
-  [30X    [33X[0;6Y[2XCoimageProjectionWithGivenCoimage[102X                                ([14XCAP:
-        CoimageProjectionWithGivenCoimage      for      iscapcategorymorphism,
+  [30X    [33X[0;6Y[2XCoimageProjectionWithGivenCoimageObject[102X                          ([14XCAP:
+        CoimageProjectionWithGivenCoimageObject   for   iscapcategorymorphism,
         iscapcategoryobject[114X)[133X
   
   [30X    [33X[0;6Y[2XCokernelColift[102X   ([14XCAP:   CokernelColift   for   iscapcategorymorphism,
@@ -1242,8 +1242,8 @@
   [30X    [33X[0;6Y[2XUniversalMorphismIntoCoimage[102X  ([14XCAP:  UniversalMorphismIntoCoimage  for
         iscapcategorymorphism, islist[114X)[133X
   
-  [30X    [33X[0;6Y[2XUniversalMorphismIntoCoimageWithGivenCoimage[102X                     ([14XCAP:
-        UniversalMorphismIntoCoimageWithGivenCoimage                       for
+  [30X    [33X[0;6Y[2XUniversalMorphismIntoCoimageWithGivenCoimageObject[102X               ([14XCAP:
+        UniversalMorphismIntoCoimageWithGivenCoimageObject                 for
         iscapcategorymorphism, islist, iscapcategoryobject[114X)[133X
   
   [30X    [33X[0;6Y[2XUniversalMorphismIntoFiberProduct[102X                                ([14XCAP:
