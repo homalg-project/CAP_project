@@ -21,8 +21,22 @@ Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
 #!             end( 2 ) ];
 #! end
 
+func := function ( L1, L2 )
+  return List( Concatenation( L1, L2 ), x -> x ); end;;
+
+tree := ENHANCED_SYNTAX_TREE( func );;
+tree := CapJitAppliedLogic( tree );;
+Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
+#! function ( L1_1, L2_1 )
+#!     return Concatenation( List( L1_1, function ( x_2 )
+#!               return x_2;
+#!           end ), List( L2_1, function ( x_2 )
+#!               return x_2;
+#!           end ) );
+#! end
+
 func := function ( )
-  return Concatenation( [ 1, 2 ], [ 3, 4 ] ); end;;
+  return Concatenation( [ [ 1, 2, 3, 4 ] ] ); end;;
 
 tree := ENHANCED_SYNTAX_TREE( func );;
 tree := CapJitAppliedLogic( tree );;
@@ -33,6 +47,16 @@ Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
 
 func := function ( )
   return Concatenation( [ [ 1, 2 ], [ 3, 4 ] ] ); end;;
+
+tree := ENHANCED_SYNTAX_TREE( func );;
+tree := CapJitAppliedLogic( tree );;
+Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );
+#! function (  )
+#!     return [ 1, 2, 3, 4 ];
+#! end
+
+func := function ( )
+  return Concatenation( [ 1, 2 ], [ 3, 4 ] ); end;;
 
 tree := ENHANCED_SYNTAX_TREE( func );;
 tree := CapJitAppliedLogic( tree );;
