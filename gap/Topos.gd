@@ -101,7 +101,7 @@ DeclareOperation( "SubobjectOfClassifyingMorphism",
 #! The argument is an object <A>A</A>.
 #! The output is a list of all subobjects of <A>A</A>.
 #! @Returns a list of monomorphism
-#! @Arguments chi
+#! @Arguments A
 DeclareOperation( "ListOfSubobjects",
                   [ IsCapCategoryObject ] );
 
