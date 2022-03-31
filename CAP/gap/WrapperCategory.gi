@@ -5,12 +5,13 @@
 #
 
 ##
-InstallMethodWithCache( AsObjectInWrapperCategory,
+InstallMethodForCompilerForCAP( AsObjectInWrapperCategory,
         "for a wrapper CAP category and a CAP object",
         [ IsWrapperCapCategory, IsCapCategoryObject ],
         
   function( D, object )
     
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     CAP_INTERNAL_ASSERT_IS_OBJECT_OF_CATEGORY( object, UnderlyingCategory( D ), {} -> "the object given to AsObjectInWrapperCategory" );
     
     return ObjectifyObjectForCAPWithAttributes( rec( ), D,
@@ -36,6 +37,7 @@ InstallOtherMethodForCompilerForCAP( AsMorphismInWrapperCategory,
         
   function( D, source, morphism, range )
     
+    #% CAP_JIT_DROP_NEXT_STATEMENT
     CAP_INTERNAL_ASSERT_IS_MORPHISM_OF_CATEGORY( morphism, UnderlyingCategory( D ), {} -> "the morphism given to AsMorphismInWrapperCategory" );
     
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), D,
