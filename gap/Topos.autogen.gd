@@ -259,6 +259,25 @@ DeclareOperation( "AddListOfSubobjects",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `MorphismsOfExternalHom`.
+#! $F: ( arg2, arg3 ) \mapsto \mathtt{MorphismsOfExternalHom}(arg2, arg3)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddMorphismsOfExternalHom",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddMorphismsOfExternalHom",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddMorphismsOfExternalHom",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddMorphismsOfExternalHom",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `PseudoComplementSubobject`.
 #! $F: ( arg2 ) \mapsto \mathtt{PseudoComplementSubobject}(arg2)$.
 #! @Returns nothing
