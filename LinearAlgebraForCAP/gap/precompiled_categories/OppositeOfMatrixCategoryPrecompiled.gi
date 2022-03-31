@@ -414,19 +414,15 @@ function ( cat_1, objects_1, k_1, P_1 )
     local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
     deduped_4_1 := OppositeCategory( cat_1 );
     deduped_3_1 := UnderlyingRing( deduped_4_1 );
-    deduped_2_1 := List( objects_1, function ( x_2 )
-            return Opposite( x_2 );
+    deduped_2_1 := List( objects_1, function ( logic_new_func_x_2 )
+            return Dimension( Opposite( logic_new_func_x_2 ) );
         end );
-    deduped_1_1 := List( objects_1, function ( logic_new_func_x_2 )
-              return Dimension( Opposite( logic_new_func_x_2 ) );
-          end )[k_1];
+    deduped_1_1 := deduped_2_1[k_1];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, objects_1[k_1], P_1, Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), deduped_4_1, Opposite( P_1 ), deduped_2_1[k_1], UnderlyingMatrix, UnionOfRows( HomalgZeroMatrix( Sum( deduped_2_1{[ 1 .. k_1 - 1 ]}, function ( c_2 )
-                    return Dimension( c_2 );
-                end ), deduped_1_1, deduped_3_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_3_1 ), HomalgZeroMatrix( Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]}, function ( c_2 )
-                    return Dimension( c_2 );
-                end ), deduped_1_1, deduped_3_1 ) ) ) );
+             ), deduped_4_1, Opposite( P_1 ), List( objects_1, function ( x_2 )
+                  return Opposite( x_2 );
+              end )[k_1], UnderlyingMatrix, UnionOfRows( HomalgZeroMatrix( Sum( deduped_2_1{[ 1 .. k_1 - 1 ]} ), deduped_1_1, deduped_3_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_3_1 ), HomalgZeroMatrix( Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]} ), deduped_1_1, deduped_3_1 ) ) ) );
 end
 ########
         
@@ -854,19 +850,15 @@ function ( cat_1, objects_1, k_1, P_1 )
     local deduped_1_1, deduped_2_1, deduped_3_1, deduped_4_1;
     deduped_4_1 := OppositeCategory( cat_1 );
     deduped_3_1 := UnderlyingRing( deduped_4_1 );
-    deduped_2_1 := List( objects_1, function ( x_2 )
-            return Opposite( x_2 );
+    deduped_2_1 := List( objects_1, function ( logic_new_func_x_2 )
+            return Dimension( Opposite( logic_new_func_x_2 ) );
         end );
-    deduped_1_1 := List( objects_1, function ( logic_new_func_x_2 )
-              return Dimension( Opposite( logic_new_func_x_2 ) );
-          end )[k_1];
+    deduped_1_1 := deduped_2_1[k_1];
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, P_1, objects_1[k_1], Opposite, ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-             ), deduped_4_1, deduped_2_1[k_1], Opposite( P_1 ), UnderlyingMatrix, UnionOfColumns( HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ 1 .. k_1 - 1 ]}, function ( c_2 )
-                    return Dimension( c_2 );
-                end ), deduped_3_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_3_1 ), HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]}, function ( c_2 )
-                    return Dimension( c_2 );
-                end ), deduped_3_1 ) ) ) );
+             ), deduped_4_1, List( objects_1, function ( x_2 )
+                  return Opposite( x_2 );
+              end )[k_1], Opposite( P_1 ), UnderlyingMatrix, UnionOfColumns( HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ 1 .. k_1 - 1 ]} ), deduped_3_1 ), HomalgIdentityMatrix( deduped_1_1, deduped_3_1 ), HomalgZeroMatrix( deduped_1_1, Sum( deduped_2_1{[ k_1 + 1 .. Length( objects_1 ) ]} ), deduped_3_1 ) ) ) );
 end
 ########
         

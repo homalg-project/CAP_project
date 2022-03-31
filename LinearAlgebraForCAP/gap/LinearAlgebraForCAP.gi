@@ -395,9 +395,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         number_of_objects := Length( object_list );
         
-        dim_pre := Sum( object_list{ [ 1 .. projection_number - 1 ] }, c -> Dimension( c ) );
+        dim_pre := Sum( List( object_list{ [ 1 .. projection_number - 1 ] }, c -> Dimension( c ) ) );
         
-        dim_post := Sum( object_list{ [ projection_number + 1 .. number_of_objects ] }, c -> Dimension( c ) );
+        dim_post := Sum( List( object_list{ [ projection_number + 1 .. number_of_objects ] }, c -> Dimension( c ) ) );
         
         dim_factor := Dimension( object_list[ projection_number ] );
         
@@ -428,9 +428,9 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_MATRIX_CATEGORY,
         
         number_of_objects := Length( object_list );
         
-        dim_pre := Sum( object_list{ [ 1 .. injection_number - 1 ] }, c -> Dimension( c ) );
+        dim_pre := Sum( List( object_list{ [ 1 .. injection_number - 1 ] }, c -> Dimension( c ) ) );
         
-        dim_post := Sum( object_list{ [ injection_number + 1 .. number_of_objects ] }, c -> Dimension( c ) );
+        dim_post := Sum( List( object_list{ [ injection_number + 1 .. number_of_objects ] }, c -> Dimension( c ) ) );
         
         dim_cofactor := Dimension( object_list[ injection_number ] );
         
