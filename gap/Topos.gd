@@ -97,6 +97,14 @@ DeclareOperation( "ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier",
 DeclareOperation( "SubobjectOfClassifyingMorphism",
                   [ IsCapCategoryMorphism ] );
 
+#! @Description
+#! The argument is an object <A>A</A>.
+#! The output is a list of all subobjects of <A>A</A>.
+#! @Returns a list of monomorphism
+#! @Arguments chi
+DeclareOperation( "ListOfSubobjects",
+                  [ IsCapCategoryObject ] );
+
 ####################################
 ##
 #! @Section Truth Morphisms

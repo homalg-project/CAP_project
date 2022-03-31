@@ -464,6 +464,28 @@ AddDerivationToCAP( EmbeddingOfRelativePseudoComplementSuboject,
     
 end );
 
+##
+AddDerivationToCAP( ListOfSubobjects,
+  function( cat, A )
+    local Omega, hom_in_Omega, D, chis;
+    
+    Omega := SubobjectClassifier( cat );
+    
+    hom_in_Omega := HomStructure( A, Omega );
+    
+    D := DistinguishedObjectOfHomomorphismStructure( cat );
+    
+    chis := List( hom_in_Omega,
+                  i -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+                          A,
+                          Omega,
+                          ValueGlobal( "MapOfFinSets" )( D, [ i ], hom_in_Omega ) ) );
+    
+    return List( chis,
+                 chi -> SubobjectOfClassifyingMorphism( cat, chi ) );
+    
+end );
+
 ## Final derivations
 
 ##
