@@ -240,6 +240,25 @@ DeclareOperation( "AddIntersectionSubobject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
+#! to the category for the basic operation `ListOfSubobjects`.
+#! $F: ( arg2 ) \mapsto \mathtt{ListOfSubobjects}(arg2)$.
+#! @Returns nothing
+#! @Arguments C, F
+DeclareOperation( "AddListOfSubobjects",
+                  [ IsCapCategory, IsFunction ] );
+
+DeclareOperation( "AddListOfSubobjects",
+                  [ IsCapCategory, IsFunction, IsInt ] );
+
+DeclareOperation( "AddListOfSubobjects",
+                  [ IsCapCategory, IsList, IsInt ] );
+
+DeclareOperation( "AddListOfSubobjects",
+                  [ IsCapCategory, IsList ] );
+
+#! @Description
+#! The arguments are a category $C$ and a function $F$.
+#! This operation adds the given function $F$
 #! to the category for the basic operation `PseudoComplementSubobject`.
 #! $F: ( arg2 ) \mapsto \mathtt{PseudoComplementSubobject}(arg2)$.
 #! @Returns nothing
