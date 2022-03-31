@@ -7,6 +7,10 @@
 ##
 InstallValue( TOPOS_METHOD_NAME_RECORD, rec(
 
+MorphismsOfExternalHom := rec(
+  filter_list := [ "category", "object", "object" ],
+  return_type := "list_of_morphisms" ),
+
 SubobjectClassifier := rec(
   filter_list := [ "category" ],
   return_type := "object" ),

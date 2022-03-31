@@ -22,6 +22,20 @@ DeclareOperation( "BinaryCoproduct",
 
 ####################################
 ##
+#! @Section Morphisms of external Hom
+##
+####################################
+
+#! @Description
+#! The argument are two objects <A>A</A>, <A>B</A>.
+#! The output is a list of all morphisms from <A>A</A> to <A>B</A>.
+#! @Returns a list of morphism
+#! @Arguments A, B
+DeclareOperation( "MorphismsOfExternalHom",
+                  [ IsCapCategoryObject, IsCapCategoryObject ] );
+
+####################################
+##
 #! @Section Subobject Classifier
 ##
 ####################################

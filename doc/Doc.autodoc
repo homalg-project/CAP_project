@@ -66,6 +66,8 @@ The corresponding GAP property is called <C>IsCocartesianCoclosedCategory</C>.
 
 @Chapter Toposes
 
+@Section Morphisms of external Hom
+
 @Section Subobject Classifier
 
 @Section Truth Morphisms

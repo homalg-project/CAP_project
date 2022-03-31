@@ -187,6 +187,23 @@ AddDerivationToCAP( CocartesianAssociatorRightToLeftWithGivenCoproducts,
 end : Description := "CocartesianAssociatorRightToLeftWithGivenCoproducts using the universal morphism from coproduct");
 
 ##
+AddDerivationToCAP( MorphismsOfExternalHom,
+  function( cat, A, B )
+    local hom_A_B, D;
+    
+    hom_A_B := HomomorphismStructureOnObjects( cat, A, B );
+    
+    D := DistinguishedObjectOfHomomorphismStructure( cat );
+    
+    return List( hom_A_B,
+                 i -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
+                         A,
+                         B,
+                         ValueGlobal( "MapOfFinSets" )( D, [ i ], hom_A_B ) ) );
+    
+end );
+
+##
 AddDerivationToCAP( SubobjectOfClassifyingMorphism,
                     [ [ TruthMorphismOfTrueWithGivenObjects , 1 ],
                       [ ProjectionInFactorOfFiberProduct , 1 ] ],
@@ -467,19 +484,11 @@ end );
 ##
 AddDerivationToCAP( ListOfSubobjects,
   function( cat, A )
-    local Omega, hom_in_Omega, D, chis;
+    local Omega, chis;
     
     Omega := SubobjectClassifier( cat );
     
-    hom_in_Omega := HomStructure( A, Omega );
-    
-    D := DistinguishedObjectOfHomomorphismStructure( cat );
-    
-    chis := List( hom_in_Omega,
-                  i -> InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( cat,
-                          A,
-                          Omega,
-                          ValueGlobal( "MapOfFinSets" )( D, [ i ], hom_in_Omega ) ) );
+    chis := MorphismsOfExternalHom( cat, A, Omega );
     
     return List( chis,
                  chi -> SubobjectOfClassifyingMorphism( cat, chi ) );
