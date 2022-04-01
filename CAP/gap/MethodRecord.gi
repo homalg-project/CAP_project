@@ -2061,7 +2061,7 @@ AstrictionToCoimageWithGivenCoimageObject := rec(
   dual_operation := "CoastrictionToImageWithGivenImageObject" ),
 
 UniversalMorphismIntoCoimage := rec(
-  filter_list := [ "category", "morphism", IsList ],
+  filter_list := [ "category", "morphism", "list_of_morphisms" ],
   io_type := [ [ "alpha", "tau" ], [ "tau_1_range", "C" ] ],
   with_given_object_position := "Range",
   dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
@@ -2095,7 +2095,7 @@ UniversalMorphismIntoCoimage := rec(
   dual_operation := "UniversalMorphismFromImage" ),
 
 UniversalMorphismIntoCoimageWithGivenCoimageObject := rec(
-  filter_list := [ "category", "morphism", IsList, "object" ],
+  filter_list := [ "category", "morphism", "list_of_morphisms", "object" ],
   io_type := [ [ "alpha", "tau", "C" ], [ "tau_1_range", "C" ] ],
   dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,
   pre_function := function( cat, morphism, test_factorization, image )
@@ -2343,7 +2343,7 @@ CoastrictionToImageWithGivenImageObject := rec(
   dual_operation := "AstrictionToCoimageWithGivenCoimageObject" ),
 
 UniversalMorphismFromImage := rec(
-  filter_list := [ "category", "morphism", IsList ],
+  filter_list := [ "category", "morphism", "list_of_morphisms" ],
   io_type := [ [ "alpha", "tau" ], [ "I", "tau_1_range" ] ],
   with_given_object_position := "Source",
   dual_operation := "UniversalMorphismIntoCoimage",
@@ -2377,7 +2377,7 @@ UniversalMorphismFromImage := rec(
   return_type := "morphism" ),
 
 UniversalMorphismFromImageWithGivenImageObject := rec(
-  filter_list := [ "category", "morphism", IsList, "object" ],
+  filter_list := [ "category", "morphism", "list_of_morphisms", "object" ],
   io_type := [ [ "alpha", "tau", "I" ], [ "I", "tau_1_range" ] ],
   dual_operation := "UniversalMorphismIntoCoimageWithGivenCoimageObject",
   dual_preprocessor_func := CAP_INTERNAL_REVERSE_LISTS_IN_ARGUMENTS_FOR_OPPOSITE,

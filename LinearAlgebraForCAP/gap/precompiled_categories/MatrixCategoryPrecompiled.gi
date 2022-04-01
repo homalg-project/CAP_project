@@ -6123,12 +6123,11 @@ end
         
 ########
 function ( cat_1, alpha_1, tau_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := tau_1[2];
-    morphism_attr_1_1 := RightDivide( SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingMatrix( deduped_2_1 ) );
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := RightDivide( SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ), List( tau_1, UnderlyingMatrix )[2] );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), Source( deduped_2_1 ), UnderlyingMatrix, morphism_attr_1_1 );
+             ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), List( tau_1, Source )[2], UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -6139,12 +6138,11 @@ end
         
 ########
 function ( cat_1, alpha_1, tau_1, I_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := tau_1[2];
-    morphism_attr_1_1 := RightDivide( SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ), UnderlyingMatrix( deduped_2_1 ) );
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := RightDivide( SyzygiesOfRows( SyzygiesOfColumns( UnderlyingMatrix( alpha_1 ) ) ), List( tau_1, UnderlyingMatrix )[2] );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), cat_1, ObjectifyObjectForCAPWithAttributes( rec(
-             ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), Source( deduped_2_1 ), UnderlyingMatrix, morphism_attr_1_1 );
+             ), cat_1, Dimension, NumberRows( morphism_attr_1_1 ) ), List( tau_1, Source )[2], UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
         
@@ -6273,11 +6271,10 @@ end
         
 ########
 function ( cat_1, alpha_1, tau_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := tau_1[1];
-    morphism_attr_1_1 := LeftDivide( UnderlyingMatrix( deduped_2_1 ), SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) );
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := LeftDivide( List( tau_1, UnderlyingMatrix )[1], SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Range( deduped_2_1 ), ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat_1, List( tau_1, Range )[1], ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
@@ -6289,11 +6286,10 @@ end
         
 ########
 function ( cat_1, alpha_1, tau_1, C_1 )
-    local morphism_attr_1_1, deduped_2_1;
-    deduped_2_1 := tau_1[1];
-    morphism_attr_1_1 := LeftDivide( UnderlyingMatrix( deduped_2_1 ), SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) );
+    local morphism_attr_1_1;
+    morphism_attr_1_1 := LeftDivide( List( tau_1, UnderlyingMatrix )[1], SyzygiesOfColumns( SyzygiesOfRows( UnderlyingMatrix( alpha_1 ) ) ) );
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
-           ), cat_1, Range( deduped_2_1 ), ObjectifyObjectForCAPWithAttributes( rec(
+           ), cat_1, List( tau_1, Range )[1], ObjectifyObjectForCAPWithAttributes( rec(
              ), cat_1, Dimension, NumberColumns( morphism_attr_1_1 ) ), UnderlyingMatrix, morphism_attr_1_1 );
 end
 ########
