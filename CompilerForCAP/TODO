@@ -3,7 +3,7 @@ Speed:
 * reduce number of calls to `StructuralCopy`
 * turn logic functions into peephole optimizations
 * avoid CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID where possible
-* inline bindings inplace (similar to getting the data type inplace)
+* hoist bindings before inlining
 
 Features:
 
