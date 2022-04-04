@@ -564,7 +564,15 @@ InstallGlobalFunction( CapInternalInstallAdd,
                 Display( "WARNING: IsIdenticalObj is used for deciding the equality of objects but the caching is not set to crisp. Thus, probably the specification that equal input gives equal output is not fulfilled. You can suppress this warning by passing the option \"SuppressCacheWarning := true\" to AddIsEqualForObjects." );
             fi;
             
+            # set name for debugging purposes
+            if NameFunction( i[ 1 ] ) in [ "unknown", "_EVALSTRINGTMP" ] then
+                
+                SetNameFunction( i[ 1 ], Concatenation( "Function added to ", Name( category ), " for ", function_name ) );
+                
+            fi;
+            
             install_func( i[ 1 ], i[ 2 ] );
+            
         od;
         
         if set_primitive then
