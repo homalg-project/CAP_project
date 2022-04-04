@@ -225,4 +225,57 @@ Display( compiled_func );
 #!     return;
 #! end
 
+# CapJitHoistedBindings
+
+# we have to work hard to not write semicolons so AutoDoc
+# does not begin a new statement
+func := EvalString( ReplacedString( """function (  )
+  local var1, func1, func2@
+    
+    var1 := 1@
+    
+    func1 := function ( )
+      local var2, var3@
+        
+        var2 := var1 + 1@
+        
+        var3 := var2 + 2@
+        
+        return var3@
+        
+    end@
+    
+    func2 := function ( )
+      local var4, var5@
+        
+        var4 := var1 + 1@
+        
+        var5 := var4 + 2@
+        
+        return var5@
+        
+    end@
+    
+    return [ func1, func2 ]@
+    
+end""", "@", ";" ) );;
+
+tree := ENHANCED_SYNTAX_TREE( func );;
+tree := CapJitHoistedBindings( tree );;
+compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;
+Display( compiled_func );
+#! function (  )
+#!     local var1_1, func1_1, func2_1, hoisted_3_1, hoisted_4_1;
+#!     var1_1 := 1;
+#!     hoisted_3_1 := var1_1 + 1;
+#!     hoisted_4_1 := hoisted_3_1 + 2;
+#!     func2_1 := function (  )
+#!           return hoisted_4_1;
+#!       end;
+#!     func1_1 := function (  )
+#!           return hoisted_4_1;
+#!       end;
+#!     return [ func1_1, func2_1 ];
+#! end
+
 #! @EndExample

@@ -3,13 +3,27 @@
 #
 # Implementations
 #
+
 InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
-  local expressions_to_hoist, pre_func, result_func, additional_arguments_func;
+    
+    return CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS( tree, false );
+    
+end );
+
+InstallGlobalFunction( CapJitHoistedBindings, function ( tree )
+    
+    return CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS( tree, true );
+    
+end );
+
+InstallGlobalFunction( CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS, function ( tree, only_hoist_bindings )
+  local expressions_to_hoist, references_to_function_variables, pre_func, result_func, additional_arguments_func;
     
     # functions and hoisted variables will be modified inline
     tree := StructuralCopy( tree );
     
     expressions_to_hoist := rec( );
+    references_to_function_variables := rec( );
     
     pre_func := function ( tree, additional_arguments )
         
@@ -24,25 +38,46 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
         
     end;
     
-    result_func := function ( tree, result, keys, func_id_stack )
-      local levels, level, pos, func_id, name;
+    result_func := function ( tree, result, keys, func_stack )
+      local levels, level, type_matches, pos, func_id, name;
         
         levels := Union( List( keys, name -> result.(name) ) );
         
         if tree.type = "EXPR_REF_FVAR" then
             
+            # if EXPR_REF_FVAR references a function argument, `result` will be a record
+            if only_hoist_bindings and IsList( result ) then
+                
+                if not IsBound( references_to_function_variables.(tree.func_id) ) then
+                    
+                    references_to_function_variables.(tree.func_id) := rec( );
+                    
+                fi;
+                
+                if not IsBound( references_to_function_variables.(tree.func_id).(tree.name) ) then
+                    
+                    references_to_function_variables.(tree.func_id).(tree.name) := [ ];
+                    
+                fi;
+                
+                Add( references_to_function_variables.(tree.func_id).(tree.name), tree );
+                
+                return result;
+                
+            fi;
+            
             # references to variables always restrict the scope to the corresponding function
-            Add( levels, Position( func_id_stack, tree.func_id ) );
+            Add( levels, PositionProperty( func_stack, f -> f.id = tree.func_id ) );
             
         elif tree.type = "FVAR_BINDING_SEQ" then
             
             # bindings restrict the scope to the current function
-            Add( levels, Length( func_id_stack ) );
+            Add( levels, Length( func_stack ) );
             
         elif tree.type = "EXPR_DECLARATIVE_FUNC" then
             
             # a function binds its variables, so the level of the function variables can be ignored (at this point, the function stack does not yet include the current func)
-            levels := Difference( levels, [ Length( func_id_stack ) + 1 ] );
+            levels := Difference( levels, [ Length( func_stack ) + 1 ] );
             
         fi;
         
@@ -60,13 +95,30 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
                 
             fi;
             
+            # Hoisting the return value would require special care below, so we skip it because
+            # the return value is not a user-visible binding and
+            # hoisting the return value is not relevant for our use case (outlining wrapped arguments to the highest level possible).
+            if only_hoist_bindings and name = "BINDING_RETURN_VALUE" then
+                continue;
+            fi;
+            
+            if only_hoist_bindings then
+                
+                type_matches := tree.type = "FVAR_BINDING_SEQ";
+                
+            else
+                
+                type_matches := StartsWith( tree.(name).type, "EXPR_" ) and not tree.(name).type in [ "EXPR_REF_FVAR", "EXPR_REF_GVAR", "EXPR_DECLARATIVE_FUNC", "EXPR_INT", "EXPR_STRING", "EXPR_TRUE", "EXPR_FALSE" ];
+                
+            fi;
+            
             # Check if child expressions have a lower level than the current level.
             # If yes, this child expression will be hoisted, except if they already are "static", e.g. variable references or function expressions.
-            if MaximumList( result.(name), 1 ) < level and StartsWith( tree.(name).type, "EXPR_" ) and not tree.(name).type in [ "EXPR_REF_FVAR", "EXPR_REF_GVAR", "EXPR_DECLARATIVE_FUNC", "EXPR_INT", "EXPR_STRING", "EXPR_TRUE", "EXPR_FALSE" ] then
+            if type_matches and MaximumList( result.(name), 1 ) < level then
                 
                 pos := MaximumList( result.(name), 1 );
                 
-                func_id := func_id_stack[pos];
+                func_id := func_stack[pos].id;
                 
                 if not IsBound( expressions_to_hoist.(func_id) ) then
                     
@@ -77,6 +129,7 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
                 Add( expressions_to_hoist.(func_id), rec(
                     parent := tree,
                     key := name,
+                    old_func := Last( func_stack ),
                 ) );
                 
             fi;
@@ -87,26 +140,26 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
         
     end;
     
-    additional_arguments_func := function ( tree, key, func_id_stack )
+    additional_arguments_func := function ( tree, key, func_stack )
         
         if tree.type = "EXPR_DECLARATIVE_FUNC" then
             
             Assert( 0, IsBound( tree.id ) );
             
-            return Concatenation( func_id_stack, [ tree.id ] );
+            return Concatenation( func_stack, [ tree ] );
             
         fi;
         
-        return func_id_stack;
+        return func_stack;
         
     end;
     
     # populate `expressions_to_hoist`
-    CapJitIterateOverTree( tree, pre_func, result_func, additional_arguments_func, [ ] );
+    CapJitIterateOverTreeWithCachedBindingResults( tree, pre_func, result_func, additional_arguments_func, [ ] );
     
     # now actually hoist the expressions
     pre_func := function ( tree, additional_arguments )
-      local info, parent, key, expr, id, new_variable_name, to_delete, info2, i;
+      local id, info, parent, key, expr, new_variable_name, to_delete, info2, old_variable_name, old_func, i, ref;
         
         if tree.type = "EXPR_DECLARATIVE_FUNC" and IsBound( expressions_to_hoist.(tree.id) ) then
             
@@ -135,11 +188,41 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
                     
                     if CapJitIsEqualForEnhancedSyntaxTrees( expr, info2.parent.(info2.key) ) then
                         
-                        info2.parent.(info2.key) := rec(
-                            type := "EXPR_REF_FVAR",
-                            func_id := tree.id,
-                            name := new_variable_name,
-                        );
+                        if only_hoist_bindings then
+                            
+                            Assert( 0, info2.parent.type = "FVAR_BINDING_SEQ" );
+                            Assert( 0, StartsWith( info2.key, "BINDING_" ) );
+                            
+                            old_variable_name := info2.key{[ 9 .. Length( info2.key ) ]};
+                            
+                            old_func := info2.old_func;
+                            
+                            if IsBound( references_to_function_variables.(info2.old_func.id) ) and IsBound( references_to_function_variables.(info2.old_func.id).(old_variable_name) ) then
+                                
+                                for ref in references_to_function_variables.(info2.old_func.id).(old_variable_name) do
+                                    
+                                    Assert( 0, ref.type = "EXPR_REF_FVAR" );
+                                    
+                                    ref.func_id := tree.id;
+                                    ref.name := new_variable_name;
+                                    
+                                od;
+                                
+                            fi;
+                            
+                            # drop old binding
+                            Remove( info2.old_func.nams, Position( info2.old_func.nams, old_variable_name ) );
+                            CapJitUnbindBinding( info2.old_func.bindings, old_variable_name );
+                            
+                        else
+                            
+                            info2.parent.(info2.key) := rec(
+                                type := "EXPR_REF_FVAR",
+                                func_id := tree.id,
+                                name := new_variable_name,
+                            );
+                            
+                        fi;
                         
                         Add( to_delete, i );
                         
