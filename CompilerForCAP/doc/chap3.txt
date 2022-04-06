@@ -1442,8 +1442,20 @@
     [4X[28X                return x_2;[128X[104X
     [4X[28X            end( 2 ) ];[128X[104X
     [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27Xfunc := function ( L1, L2 )[127X[104X
+    [4X[25X>[125X [27X  return List( Concatenation( L1, L2 ), x -> x ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitAppliedLogic( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree ) );[127X[104X
+    [4X[28Xfunction ( L1_1, L2_1 )[128X[104X
+    [4X[28X    return Concatenation( List( L1_1, function ( x_2 )[128X[104X
+    [4X[28X              return x_2;[128X[104X
+    [4X[28X          end ), List( L2_1, function ( x_2 )[128X[104X
+    [4X[28X              return x_2;[128X[104X
+    [4X[28X          end ) );[128X[104X
+    [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27Xfunc := function ( )[127X[104X
-    [4X[25X>[125X [27X  return Concatenation( [ 1, 2 ], [ 3, 4 ] ); end;;[127X[104X
+    [4X[25X>[125X [27X  return Concatenation( [ [ 1, 2, 3, 4 ] ] ); end;;[127X[104X
     [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
     [4X[25Xgap>[125X [27Xtree := CapJitAppliedLogic( tree );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree ) );[127X[104X
@@ -1452,6 +1464,14 @@
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27Xfunc := function ( )[127X[104X
     [4X[25X>[125X [27X  return Concatenation( [ [ 1, 2 ], [ 3, 4 ] ] ); end;;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitAppliedLogic( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree ) );[127X[104X
+    [4X[28Xfunction (  )[128X[104X
+    [4X[28X    return [ 1, 2, 3, 4 ];[128X[104X
+    [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27Xfunc := function ( )[127X[104X
+    [4X[25X>[125X [27X  return Concatenation( [ 1, 2 ], [ 3, 4 ] ); end;;[127X[104X
     [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
     [4X[25Xgap>[125X [27Xtree := CapJitAppliedLogic( tree );;[127X[104X
     [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree ) );[127X[104X

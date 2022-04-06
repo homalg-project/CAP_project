@@ -1496,8 +1496,20 @@ function (  )
                 return x_2;
             end( 2 ) ];
 end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( L1, L2 )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  return List( Concatenation( L1, L2 ), x -&gt; x ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitAppliedLogic( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );</span>
+function ( L1_1, L2_1 )
+    return Concatenation( List( L1_1, function ( x_2 )
+              return x_2;
+          end ), List( L2_1, function ( x_2 )
+              return x_2;
+          end ) );
+end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( )</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">  return Concatenation( [ 1, 2 ], [ 3, 4 ] ); end;;</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  return Concatenation( [ [ 1, 2, 3, 4 ] ] ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitAppliedLogic( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );</span>
@@ -1506,6 +1518,14 @@ function (  )
 end
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  return Concatenation( [ [ 1, 2 ], [ 3, 4 ] ] ); end;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitAppliedLogic( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );</span>
+function (  )
+    return [ 1, 2, 3, 4 ];
+end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">func := function ( )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  return Concatenation( [ 1, 2 ], [ 3, 4 ] ); end;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitAppliedLogic( tree );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( ENHANCED_SYNTAX_TREE_CODE( tree ) );</span>
