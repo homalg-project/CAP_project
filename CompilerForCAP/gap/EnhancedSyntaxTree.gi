@@ -908,6 +908,13 @@ InstallGlobalFunction( ENHANCED_SYNTAX_TREE_CODE, function ( tree )
                 
                 Assert( 0, IsSubset( func.nams, func.bindings.names ) );
                 
+                if not IsEmpty( Intersection( func.nams{[ 1 .. func.narg ]}, func.bindings.names ) ) then
+                    
+                    # COVERAGE_IGNORE_NEXT_LINE
+                    Error( "bindings to function parameters are not supported" );
+                    
+                fi;
+                
                 statements := [ ];
                 
                 # Order bindings by the relation "is used by" and store the result in <ordered_binding_names>.

@@ -282,7 +282,7 @@ tree := ENHANCED_SYNTAX_TREE( func );;
 CapJitPrettyPrintSyntaxTree( tree );
 #! rec(
 #!   0_type := "EXPR_DECLARATIVE_FUNC",
-#!   1_id := 5,
+#!   1_id := 1000000004,
 #!   2_nams := [ "RETURN_VALUE" ],
 #!   3_narg := 0,
 #!   4_variadic := false,

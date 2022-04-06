@@ -368,7 +368,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
     fi;
     
     variables := [ ];
-    func_id_replacements := [ ];
+    func_id_replacements := rec( );
     
     pre_func := function ( template_tree, tree )
       local new_template_tree;
@@ -392,10 +392,10 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE, function ( t
             # b) there are no local variables (i.e. only a single return statement), but the argument names might differ
             if template_tree.narg = tree.narg and template_tree.variadic = tree.variadic and ((template_tree.nams = tree.nams and template_tree.bindings.names = tree.bindings.names) or (Length( template_tree.nams ) = template_tree.narg + 1 and Length( tree.nams ) = tree.narg + 1 )) then
                 
-                Assert( 0, not IsBound( func_id_replacements[template_tree.id] ) );
+                Assert( 0, not IsBound( func_id_replacements.(template_tree.id) ) );
                 
                 # map from template function to actual function
-                func_id_replacements[template_tree.id] := rec(
+                func_id_replacements.(template_tree.id) := rec(
                     func_id := tree.id,
                     nams := tree.nams,
                 );
@@ -696,9 +696,9 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATES, function ( tree
                     
                 fi;
                 
-                if tree.type = "EXPR_DECLARATIVE_FUNC" and IsBound( func_id_replacements[tree.id] ) then
+                if tree.type = "EXPR_DECLARATIVE_FUNC" and IsBound( func_id_replacements.(tree.id) ) then
                     
-                    replacement := func_id_replacements[tree.id];
+                    replacement := func_id_replacements.(tree.id);
                     
                     return CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( tree, replacement.func_id, replacement.nams );
                     

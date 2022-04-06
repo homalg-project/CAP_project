@@ -9,7 +9,7 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
     # functions and hoisted variables will be modified inline
     tree := StructuralCopy( tree );
     
-    expressions_to_hoist := [ ];
+    expressions_to_hoist := rec( );
     
     pre_func := function ( tree, additional_arguments )
         
@@ -31,7 +31,7 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
         
         if tree.type = "EXPR_REF_FVAR" then
             
-            # references to variables always restrict the scope to the corresponding
+            # references to variables always restrict the scope to the corresponding function
             Add( levels, Position( func_id_stack, tree.func_id ) );
             
         elif tree.type = "FVAR_BINDING_SEQ" then
@@ -68,13 +68,13 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
                 
                 func_id := func_id_stack[pos];
                 
-                if not IsBound( expressions_to_hoist[func_id] ) then
+                if not IsBound( expressions_to_hoist.(func_id) ) then
                     
-                    expressions_to_hoist[func_id] := [ ];
+                    expressions_to_hoist.(func_id) := [ ];
                     
                 fi;
                 
-                Add( expressions_to_hoist[func_id], rec(
+                Add( expressions_to_hoist.(func_id), rec(
                     parent := tree,
                     key := name,
                 ) );
@@ -108,11 +108,11 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
     pre_func := function ( tree, additional_arguments )
       local info, parent, key, expr, id, new_variable_name, to_delete, info2, i;
         
-        if tree.type = "EXPR_DECLARATIVE_FUNC" and IsBound( expressions_to_hoist[tree.id] ) then
+        if tree.type = "EXPR_DECLARATIVE_FUNC" and IsBound( expressions_to_hoist.(tree.id) ) then
             
-            while Length( expressions_to_hoist[tree.id] ) > 0 do
+            while Length( expressions_to_hoist.(tree.id) ) > 0 do
                 
-                info := expressions_to_hoist[tree.id][1];
+                info := expressions_to_hoist.(tree.id)[1];
                 
                 parent := info.parent;
                 key := info.key;
@@ -134,9 +134,9 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
                 
                 # search for all occurences of parent.(key) (always matching for i=1)
                 to_delete := [ ];
-                for i in [ 1 .. Length( expressions_to_hoist[tree.id] ) ] do
+                for i in [ 1 .. Length( expressions_to_hoist.(tree.id) ) ] do
                     
-                    info2 := expressions_to_hoist[tree.id][i];
+                    info2 := expressions_to_hoist.(tree.id)[i];
                     
                     if CapJitIsEqualForEnhancedSyntaxTrees( expr, info2.parent.(info2.key) ) then
                         
@@ -154,7 +154,7 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
                 
                 Assert( 0, 1 in to_delete );
                 
-                expressions_to_hoist[tree.id] := expressions_to_hoist[tree.id]{Difference( [ 1 .. Length( expressions_to_hoist[tree.id] ) ], to_delete )};
+                expressions_to_hoist.(tree.id) := expressions_to_hoist.(tree.id){Difference( [ 1 .. Length( expressions_to_hoist.(tree.id) ) ], to_delete )};
                 
             od;
             
