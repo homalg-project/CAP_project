@@ -648,150 +648,159 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_APPLIED_LOGIC_TEMPLATES, function ( tree
         
         for template in templates do
             
-            if IsBound( template.debug ) and template.debug then
+            # Try to apply the same logic template multiple times.
+            # If it does not match multiple times, this does not increase the runtime noticeably
+            # but if it does, the runtime improves noticeably.
+            while true do
                 
-                # COVERAGE_IGNORE_BLOCK_START
-                Display( "try to match template:" );
-                Display( template.src_template );
-                # COVERAGE_IGNORE_BLOCK_END
-                
-            fi;
-            
-            matching_info := CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree, template.src_template_tree, template.variable_filters, IsBound( template.debug_path ) and template.debug_path = additional_arguments[2] );
-            
-            if matching_info = fail then
-                
-                continue;
-                
-            fi;
-            
-            if IsBound( template.debug ) and template.debug then
-                
-                # COVERAGE_IGNORE_NEXT_LINE
-                Error( "found match" );
-                
-            fi;
-            
-            variables := matching_info.variables;
-            func_id_replacements := matching_info.func_id_replacements;
-            
-            if not IsDenseList( variables ) or Length( variables ) <> Length( template.variable_names ) then
-                
-                # COVERAGE_IGNORE_NEXT_LINE
-                Error( "matched wrong number of variables" );
-                
-            fi;
-            
-            # will be modified inplace
-            well_defined := true;
-            
-            # adjust function IDs and insert variables in dst_template_tree
-            pre_func := function ( tree, func_id_stack )
-              local replacement;
-                
-                if not well_defined then
+                if IsBound( template.debug ) and template.debug then
                     
-                    # abort iteration
-                    return fail;
+                    # COVERAGE_IGNORE_BLOCK_START
+                    Display( "try to match template:" );
+                    Display( template.src_template );
+                    # COVERAGE_IGNORE_BLOCK_END
                     
                 fi;
                 
-                if tree.type = "EXPR_DECLARATIVE_FUNC" and IsBound( func_id_replacements.(tree.id) ) then
+                matching_info := CAP_JIT_INTERNAL_TREE_MATCHES_TEMPLATE_TREE( tree, template.src_template_tree, template.variable_filters, IsBound( template.debug_path ) and template.debug_path = additional_arguments[2] );
+                
+                if matching_info = fail then
                     
-                    replacement := func_id_replacements.(tree.id);
-                    
-                    return CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( tree, replacement.func_id, replacement.nams );
+                    break;
                     
                 fi;
                 
-                return tree;
-                
-            end;
-            
-            result_func := function ( tree, result, keys, func_id_stack )
-              local key;
-                
-                if not well_defined then
+                if IsBound( template.debug ) and template.debug then
                     
-                    return fail;
+                    # COVERAGE_IGNORE_NEXT_LINE
+                    Error( "found match" );
                     
                 fi;
                 
-                if tree.type = "SYNTAX_TREE_VARIABLE" then
+                variables := matching_info.variables;
+                func_id_replacements := matching_info.func_id_replacements;
+                
+                if not IsDenseList( variables ) or Length( variables ) <> Length( template.variable_names ) then
                     
-                    # check if the resulting tree would be well-defined
-                    if CapJitContainsRefToFVAROutsideOfFuncStack( variables[tree.id], func_id_stack ) then
-                        
-                        well_defined := false;
+                    # COVERAGE_IGNORE_NEXT_LINE
+                    Error( "matched wrong number of variables" );
+                    
+                fi;
+                
+                # will be modified inplace
+                well_defined := true;
+                
+                # adjust function IDs and insert variables in dst_template_tree
+                pre_func := function ( tree, func_id_stack )
+                  local replacement;
+                    
+                    if not well_defined then
                         
                         # abort iteration
                         return fail;
                         
                     fi;
                     
-                    # new function IDs will be set below
-                    return StructuralCopy( variables[tree.id] );
+                    if tree.type = "EXPR_DECLARATIVE_FUNC" and IsBound( func_id_replacements.(tree.id) ) then
+                        
+                        replacement := func_id_replacements.(tree.id);
+                        
+                        return CAP_JIT_INTERNAL_REPLACED_FVARS_FUNC_ID( tree, replacement.func_id, replacement.nams );
+                        
+                    fi;
+                    
+                    return tree;
+                    
+                end;
+                
+                result_func := function ( tree, result, keys, func_id_stack )
+                  local key;
+                    
+                    if not well_defined then
+                        
+                        return fail;
+                        
+                    fi;
+                    
+                    if tree.type = "SYNTAX_TREE_VARIABLE" then
+                        
+                        # check if the resulting tree would be well-defined
+                        if CapJitContainsRefToFVAROutsideOfFuncStack( variables[tree.id], func_id_stack ) then
+                            
+                            well_defined := false;
+                            
+                            # abort iteration
+                            return fail;
+                            
+                        fi;
+                        
+                        # new function IDs will be set below
+                        return StructuralCopy( variables[tree.id] );
+                        
+                    fi;
+                    
+                    tree := ShallowCopy( tree );
+                    
+                    for key in keys do
+                        
+                        tree.(key) := result.(key);
+                        
+                    od;
+                    
+                    return tree;
+                    
+                end;
+                
+                additional_arguments_func := function ( tree, key, func_id_stack )
+                    
+                    if tree.type = "EXPR_DECLARATIVE_FUNC" then
+                        
+                        func_id_stack := Concatenation( func_id_stack, [ tree.id ] );
+                        
+                    fi;
+                    
+                    return func_id_stack;
+                    
+                end;
+                
+                dst_tree := CapJitIterateOverTree( template.dst_template_tree, pre_func, result_func, additional_arguments_func, func_id_stack );
+                
+                # if new_tree is well-defined, take it
+                if well_defined then
+                    
+                    if IsBound( template.debug ) and template.debug then
+                        
+                        # COVERAGE_IGNORE_NEXT_LINE
+                        Error( "success, dst_tree is well-defined" );
+                        
+                    fi;
+                    
+                    Info( InfoCapJit, 1, "####" );
+                    Info( InfoCapJit, 1, "Applied the following template:" );
+                    Info( InfoCapJit, 1, template.src_template );
+                    Info( InfoCapJit, 1, template.dst_template );
+                    
+                    # make sure we have new function IDs
+                    # Functions from src_template_tree can appear multiple times in dst_template_tree, so in dst_template_tree the same function ID can occur multiple times.
+                    # Since we require function IDs to be unique in a tree except in this special case, we now have to create a copy with new IDs.
+                    tree := CapJitCopyWithNewFunctionIDs( dst_tree );
+                    
+                    continue;
+                    
+                else
+                    
+                    if IsBound( template.debug ) and template.debug then
+                        
+                        # COVERAGE_IGNORE_NEXT_LINE
+                        Error( "dst_tree is not well-defined" );
+                        
+                    fi;
+                    
+                    break;
                     
                 fi;
                 
-                tree := ShallowCopy( tree );
-                
-                for key in keys do
-                    
-                    tree.(key) := result.(key);
-                    
-                od;
-                
-                return tree;
-                
-            end;
-            
-            additional_arguments_func := function ( tree, key, func_id_stack )
-                
-                if tree.type = "EXPR_DECLARATIVE_FUNC" then
-                    
-                    func_id_stack := Concatenation( func_id_stack, [ tree.id ] );
-                    
-                fi;
-                
-                return func_id_stack;
-                
-            end;
-            
-            dst_tree := CapJitIterateOverTree( template.dst_template_tree, pre_func, result_func, additional_arguments_func, func_id_stack );
-            
-            # if new_tree is well-defined, take it
-            if well_defined then
-                
-                if IsBound( template.debug ) and template.debug then
-                    
-                    # COVERAGE_IGNORE_NEXT_LINE
-                    Error( "success, dst_tree is well-defined" );
-                    
-                fi;
-                
-                Info( InfoCapJit, 1, "####" );
-                Info( InfoCapJit, 1, "Applied the following template:" );
-                Info( InfoCapJit, 1, template.src_template );
-                Info( InfoCapJit, 1, template.dst_template );
-                
-                # make sure we have new function IDs
-                # Functions from src_template_tree can appear multiple times in dst_template_tree, so in dst_template_tree the same function ID can occur multiple times.
-                # Since we require function IDs to be unique in a tree except in this special case, we now have to create a copy with new IDs.
-                tree := CapJitCopyWithNewFunctionIDs( dst_tree );
-                
-            else
-                
-                if IsBound( template.debug ) and template.debug then
-                    
-                    # COVERAGE_IGNORE_NEXT_LINE
-                    Error( "dst_tree is not well-defined" );
-                    
-                fi;
-                
-                continue;
-                
-            fi;
+            od;
             
         od;
         
