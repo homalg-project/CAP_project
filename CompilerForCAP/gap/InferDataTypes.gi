@@ -878,6 +878,14 @@ CapJitAddTypeSignature( "Concatenation", [ IsList ], function ( input_types )
     
 end );
 
+CapJitAddTypeSignature( "Concatenation", [ IsList, IsList ], function ( input_types )
+    
+    Assert( 0, input_types[1] = input_types[2] );
+    
+    return input_types[1];
+    
+end );
+
 CapJitAddTypeSignature( "Sum", [ IsList ], function ( input_types )
     
     return input_types[1].element_type;

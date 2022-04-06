@@ -156,29 +156,42 @@ CapJitAddLogicFunction( function ( tree )
     
 end );
 
+# Concatenation( [ ... ] ) => Concatenation( ... )
 # Concatenation( [ a, b, ... ], [ c, d, ... ], ... ) => [ a, b, ..., c, d, ... ]
 CapJitAddLogicFunction( function ( tree )
   local pre_func;
     
     Info( InfoCapJit, 1, "####" );
-    Info( InfoCapJit, 1, "Apply logic for concatenation of lists." );
+    Info( InfoCapJit, 1, "Apply logic for concatenation of literal lists." );
     
     pre_func := function ( tree, additional_arguments )
       local args;
         
-        if CapJitIsCallToGlobalFunction( tree, "Concatenation" ) then
+        # Concatenation with a single argument has different semantics
+        # -> convert to version with multiple arguments
+        if CapJitIsCallToGlobalFunction( tree, "Concatenation" ) and tree.args.length = 1 and tree.args.1.type = "EXPR_LIST" then
             
             args := tree.args;
             
-            # Concatenation with a single argument has different semantics
-            if args.length = 1 and args.1.type = "EXPR_LIST" and ForAll( args.1.list, a -> a.type = "EXPR_LIST" ) then
+            if args.1.list.length = 1 then
                 
-                return rec(
-                    type := "EXPR_LIST",
-                    list := ConcatenationForSyntaxTreeLists( AsListMut( List( args.1.list, a -> a.list ) ) ),
+                tree := args.1.list.1;
+                
+            else
+                
+                tree := rec(
+                    type := "EXPR_FUNCCALL",
+                    funcref := tree.funcref, # Concatenation
+                    args := args.1.list,
                 );
                 
             fi;
+            
+        fi;
+        
+        if CapJitIsCallToGlobalFunction( tree, "Concatenation" ) then
+            
+            args := tree.args;
             
             if args.length > 1 and ForAll( args, a -> a.type = "EXPR_LIST" ) then
                 
@@ -257,6 +270,47 @@ CapJitAddLogicFunction( function ( tree )
                             type := "EXPR_FUNCCALL",
                             funcref := CapJitCopyWithNewFunctionIDs( args.2 ),
                             args := AsSyntaxTreeList( [ entry ] ),
+                        )
+                    ),
+                );
+                
+            fi;
+            
+        fi;
+        
+        return tree;
+        
+    end;
+    
+    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, ReturnTrue, true );
+    
+end );
+
+# List( Concatenation( L_1, ..., L_n ), f ) = Concatenation( List( L_1, f ), ..., List( L_n, f ) )
+CapJitAddLogicFunction( function ( tree )
+  local pre_func;
+    
+    Info( InfoCapJit, 1, "####" );
+    Info( InfoCapJit, 1, "Apply logic for List applied to a Concatenation with multiple arguments." ); # the case of a single argument is handled by a logic template
+    
+    pre_func := function ( tree, additional_arguments )
+        
+        if CapJitIsCallToGlobalFunction( tree, "List" ) then
+            
+            if tree.args.length = 2 and CapJitIsCallToGlobalFunction( tree.args.1, "Concatenation" ) and tree.args.1.args.length > 1 then
+                
+                return rec(
+                    type := "EXPR_FUNCCALL",
+                    funcref := tree.args.1.funcref, # Concatenation
+                    args := List(
+                        tree.args.1.args,
+                        a -> rec(
+                            type := "EXPR_FUNCCALL",
+                            funcref := tree.funcref, # List
+                            args := AsSyntaxTreeList( [
+                                a,
+                                CapJitCopyWithNewFunctionIDs( tree.args.2 )
+                            ] ),
                         )
                     ),
                 );
