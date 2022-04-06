@@ -65,7 +65,27 @@ InstallGlobalFunction( CapJitResolvedOperations, function ( tree )
                             
                         fi;
                         
-                        resolved_tree := ENHANCED_SYNTAX_TREE( known_methods[1].method : globalize_hvars := true );
+                        # precompile known methods and cache the result
+                        
+                        if not IsBound( category!.compiled_known_methods_trees ) then
+                            
+                            category!.compiled_known_methods_trees := rec( );
+                            
+                        fi;
+                        
+                        if not IsBound( category!.compiled_known_methods_trees.(operation_name) ) then
+                            
+                            category!.compiled_known_methods_trees.(operation_name) := [ ];
+                            
+                        fi;
+                        
+                        if not IsBound( category!.compiled_known_methods_trees.(operation_name)[tree.args.length] ) then
+                            
+                            category!.compiled_known_methods_trees.(operation_name)[tree.args.length] := CapJitCompiledFunctionAsEnhancedSyntaxTree( known_methods[1].method, category );
+                            
+                        fi;
+                        
+                        resolved_tree := CapJitCopyWithNewFunctionIDs( category!.compiled_known_methods_trees.(operation_name)[tree.args.length] );
                         
                     else
                         
