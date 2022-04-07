@@ -2495,10 +2495,10 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingMatrix( arg3_1 );
-    deduped_1_1 := UnderlyingMatrix( arg2_1 );
-    return IsZero( DecideZeroColumns( deduped_1_1, deduped_2_1 ) ) and IsZero( DecideZeroColumns( deduped_2_1, deduped_1_1 ) );
+    local deduped_3_1, deduped_4_1;
+    deduped_4_1 := UnderlyingMatrix( arg3_1 );
+    deduped_3_1 := UnderlyingMatrix( arg2_1 );
+    return IsZero( DecideZeroColumns( deduped_3_1, deduped_4_1 ) ) and IsZero( DecideZeroColumns( deduped_4_1, deduped_3_1 ) );
 end
 ########
         
@@ -2509,10 +2509,10 @@ end
         
 ########
 function ( cat_1, arg2_1, arg3_1 )
-    local deduped_1_1, deduped_2_1;
-    deduped_2_1 := UnderlyingMatrix( arg3_1 );
-    deduped_1_1 := UnderlyingMatrix( arg2_1 );
-    return IsZero( DecideZeroRows( deduped_1_1, deduped_2_1 ) ) and IsZero( DecideZeroRows( deduped_2_1, deduped_1_1 ) );
+    local deduped_3_1, deduped_4_1;
+    deduped_4_1 := UnderlyingMatrix( arg3_1 );
+    deduped_3_1 := UnderlyingMatrix( arg2_1 );
+    return IsZero( DecideZeroRows( deduped_3_1, deduped_4_1 ) ) and IsZero( DecideZeroRows( deduped_4_1, deduped_3_1 ) );
 end
 ########
         

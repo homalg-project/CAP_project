@@ -142,13 +142,7 @@ InstallGlobalFunction( CapJitDeduplicatedExpressions, function ( tree )
                     
                     Assert( 0, func.type = "EXPR_DECLARATIVE_FUNC" );
                     
-                    # search for an unused id
-                    id := 1;
-                    while ForAny( func.nams, name -> EndsWith( name, Concatenation( "_", String( id ) ) ) ) do
-                        
-                        id := id + 1;
-                        
-                    od;
+                    id := CapJitGetNextUnusedVariableID( func );
                     
                     new_variable_name := Concatenation( "deduped_", String( id ) );
                     

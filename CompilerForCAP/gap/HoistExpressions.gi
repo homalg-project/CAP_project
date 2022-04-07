@@ -110,6 +110,8 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
         
         if tree.type = "EXPR_DECLARATIVE_FUNC" and IsBound( expressions_to_hoist.(tree.id) ) then
             
+            id := CapJitGetNextUnusedVariableID( tree );
+            
             while Length( expressions_to_hoist.(tree.id) ) > 0 do
                 
                 info := expressions_to_hoist.(tree.id)[1];
@@ -118,15 +120,8 @@ InstallGlobalFunction( CapJitHoistedExpressions, function ( tree )
                 key := info.key;
                 expr := parent.(key);
                 
-                # search for an unused id
-                id := 1;
-                while ForAny( tree.nams, name -> EndsWith( name, Concatenation( "_", String( id ) ) ) ) do
-                    
-                    id := id + 1;
-                    
-                od;
-                
                 new_variable_name := Concatenation( "hoisted_", String( id ) );
+                id := id + 1;
                 
                 tree.nams := Concatenation( tree.nams, [ new_variable_name ] );
                 
