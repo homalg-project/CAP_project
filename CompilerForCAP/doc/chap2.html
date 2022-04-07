@@ -58,6 +58,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7F9980828043C895">2.4-14 CapJitValueOfBinding</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X823022237A2584E6">2.4-15 CapJitUnbindBinding</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A17377380E409D0">2.4-16 CapJitReplacedEXPR_REF_FVARByValue</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7E53C09D7DD16BE3">2.4-17 CapJitGetNextUnusedVariableID</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X80608A9A78CF95E0">2.5 <span class="Heading">Compilation steps</span></a>
 </span>
@@ -465,6 +466,15 @@
 <p>Returns: a record</p>
 
 <p>Replaces all subtrees of the enhanced syntax tree <var class="Arg">tree</var> which are of type EXPR_REF_FVAR with given <var class="Arg">func_id</var> and <var class="Arg">name</var> by <var class="Arg">value</var>.</p>
+
+<p><a id="X7E53C09D7DD16BE3" name="X7E53C09D7DD16BE3"></a></p>
+
+<h5>2.4-17 CapJitGetNextUnusedVariableID</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitGetNextUnusedVariableID</code>( <var class="Arg">func</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: an integer</p>
+
+<p>Returns the minimal positive integer <span class="Math">n</span> such that no name of a local variable of the function <var class="Arg">func</var> (given as an enhanced syntax tree) ends with <code class="code">String( </code><span class="Math">m</span><code class="code"> )</code> for any <span class="Math">m \geq n</span>.</p>
 
 <p><a id="X80608A9A78CF95E0" name="X80608A9A78CF95E0"></a></p>
 

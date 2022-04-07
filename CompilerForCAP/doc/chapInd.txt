@@ -18,6 +18,7 @@
   [2XCapJitDroppedUnusedBindings[102X 2.5-6 
   [2XCapJitFindNodeDeep[102X 2.4-6 
   [2XCapJitFindNodes[102X 2.4-7 
+  [2XCapJitGetNextUnusedVariableID[102X 2.4-17 
   [2XCapJitGetNodeByPath[102X 2.4-8 
   [2XCapJitGetOrCreateGlobalVariable[102X 2.4-5 
   [2XCapJitHoistedExpressions[102X 2.5-7 

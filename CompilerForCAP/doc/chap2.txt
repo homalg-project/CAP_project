@@ -434,6 +434,15 @@
   [33X[0;0YReplaces  all  subtrees  of  the enhanced syntax tree [3Xtree[103X which are of type
   EXPR_REF_FVAR with given [3Xfunc_id[103X and [3Xname[103X by [3Xvalue[103X.[133X
   
+  [1X2.4-17 CapJitGetNextUnusedVariableID[101X
+  
+  [33X[1;0Y[29X[2XCapJitGetNextUnusedVariableID[102X( [3Xfunc[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Yan integer[133X
+  
+  [33X[0;0YReturns the minimal positive integer [23Xn[123X such that no name of a local variable
+  of  the function [3Xfunc[103X (given as an enhanced syntax tree) ends with [10XString( [110X[23Xm[123X[10X
+  )[110X for any [23Xm \geq n[123X.[133X
+  
   
   [1X2.5 [33X[0;0YCompilation steps[133X[101X
   
