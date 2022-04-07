@@ -467,7 +467,7 @@ end );
 
 # helper
 InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, result_func_index, additional_funcs_indices, initial_value_index, initial_value_is_list )
-  local result_func, initial_value, additional_funcs, return_obj, cat, attribute_name, case, new_func, new_additional_funcs, variable_references_paths, parent, new_initial_value, args, new_args, new_tree, initial_value_morphism, func, path, i;
+  local result_func, initial_value, additional_funcs, return_obj, cat, attribute_name, case, new_func, new_additional_funcs, arguments_references_paths, parent, new_initial_value, args, new_args, new_tree, initial_value_morphism, func, path, i;
     
     Assert( 0, tree.type = "EXPR_FUNCCALL" );
     Assert( 0, tree.funcref.type = "EXPR_REF_GVAR" );
@@ -500,6 +500,7 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                 case := fail;
                 
                 if
+                    # WARNING: this needs a hack when outlining wrapped arguments
                     # Source can be recovered from initial_value
                     CapJitIsCallToGlobalFunction( return_obj.args.3, "Source" ) and return_obj.args.3.args.length = 1 and return_obj.args.3.args.1.type = "EXPR_REF_FVAR" and return_obj.args.3.args.1.func_id = result_func.id and return_obj.args.3.args.1.name = result_func.nams[1] and
                     # Range can be recovered from initial_value
@@ -532,15 +533,18 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                 new_func := StructuralCopy( result_func );
                 new_func.bindings.BINDING_RETURN_VALUE := Last( new_func.bindings.BINDING_RETURN_VALUE.args );
                 
+                # possibly drop outlined source and range
+                new_func := CapJitDroppedUnusedBindings( new_func );
+                
                 # new_additional_funcs will be modified inplace
                 new_additional_funcs := StructuralCopy( additional_funcs );
                 
-                # check if variables are only accessed via the attribute
+                # check if arguments are only accessed via the attribute
                 for func in ConcatenationForSyntaxTreeLists( AsSyntaxTreeList( [ new_func ] ), new_additional_funcs ) do
                     
-                    variable_references_paths := CapJitFindNodes( func, { tree, path } -> tree.type = "EXPR_REF_FVAR" and tree.func_id = func.id );
+                    arguments_references_paths := CapJitFindNodes( func, { tree, path } -> tree.type = "EXPR_REF_FVAR" and tree.func_id = func.id and Position( func.nams, tree.name ) <= func.narg );
                     
-                    for path in variable_references_paths do
+                    for path in arguments_references_paths do
                         
                         # check if <path> points to the first (and only) argument of a function call calling the attribute getter
                         
@@ -872,7 +876,7 @@ CapJitAddLogicFunction( function ( tree )
     orig_tree := tree;
     
     pre_func := function ( tree, additional_arguments )
-      local args, predicate, func, initial_value, return_obj, cat, attribute_name, variable_references_paths, new_func, parent, new_predicate, new_initial_value, new_tree, path;
+      local args;
         
         if CapJitIsCallToGlobalFunction( tree, "CapFixpoint" ) then
             
@@ -904,7 +908,7 @@ CapJitAddLogicFunction( function ( tree )
     orig_tree := tree;
     
     pre_func := function ( tree, additional_arguments )
-      local args, list, func, return_obj, cat, attribute_name, variable_references_paths, new_func, parent, new_list, new_tree, path, i;
+      local args, list, func, new_tree, i;
         
         if CapJitIsCallToGlobalFunction( tree, "Iterated" ) then
             

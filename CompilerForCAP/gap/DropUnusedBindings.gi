@@ -40,6 +40,8 @@ InstallGlobalFunction( CapJitDroppedUnusedBindings, function ( tree )
                 
                 pre_func := function ( tree, additional_arguments )
                     
+                    # WARNING for refactoring: the logic for Iterated/CapFixpoint applies CapJitDroppedUnusedBindings to subtrees
+                    
                     # we can ignore arguments because those are never bound
                     if tree.type = "EXPR_REF_FVAR" and tree.func_id = func.id and tree.name in func.bindings.names then
                         

@@ -47,7 +47,7 @@ function ( cat_1, source_1, alpha_1, beta_1, range_1 )
     hoisted_1_1 := deduped_5_1;
     return ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec(
            ), deduped_4_1, source_1, range_1, UnderlyingMatrix, CoercedMatrix( deduped_5_1, UnderlyingRing( deduped_4_1 ), CoefficientsWithGivenMonomials( KroneckerMat( TransposedMatrix( deduped_6_1 ), DualKroneckerMat( UnionOfRows( deduped_5_1, NumberColumns( deduped_7_1 ), List( GeneratingSystemOfRingAsModuleInRangeCategoryOfHomomorphismStructure( cat_1 ), function ( generator_2 )
-                        return HomalgMatrix( [ generator_2 ], 1, 1, hoisted_1_1 );
+                        return COMPILATION_HELPER_HomalgMatrixFromRingElement( generator_2, hoisted_1_1 );
                     end ) ), deduped_8_1 ) ), DiagMat( deduped_5_1, List( [ 1 .. NumberRows( deduped_6_1 ) ], function ( logic_new_func_x_2 )
                     return hoisted_3_1;
                 end ) ) ) ) );

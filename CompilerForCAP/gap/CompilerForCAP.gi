@@ -169,11 +169,12 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     rule_phase_functions := [
         CapJitInferredDataTypes,
         CapJitAppliedLogic,
+        CapJitDroppedUnusedBindings,
         CapJitDroppedHandledEdgeCases,
         CapJitInlinedArguments,
         CapJitInlinedSimpleFunctionCalls,
         CapJitInlinedFunctionCalls,
-        CapJitDroppedUnusedBindings,
+        CapJitOutlinedWrappedArguments,
         CapJitInlinedBindings,
     ];
     
@@ -227,6 +228,16 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
     od;
     
     # post-processing
+    
+    if debug then
+        # COVERAGE_IGNORE_BLOCK_START
+        compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );
+        Display( compiled_func );
+        Error( "apply CapJitInlinedBindingsFully" );
+        # COVERAGE_IGNORE_BLOCK_END
+    fi;
+    
+    tree := CapJitInlinedBindingsFully( tree );
     
     if category_as_first_argument then
         

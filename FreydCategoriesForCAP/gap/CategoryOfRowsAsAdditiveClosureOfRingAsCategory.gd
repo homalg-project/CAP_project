@@ -13,3 +13,7 @@
 
 DeclareOperation( "CategoryOfRowsAsAdditiveClosureOfRingAsCategory",
                   [ IsHomalgRing ] );
+
+# helper for compilation
+DeclareGlobalFunction( "COMPILATION_HELPER_HomalgMatrixFromRingElement" );
+CapJitAddTypeSignature( "COMPILATION_HELPER_HomalgMatrixFromRingElement", [ IsHomalgRingElement, IsHomalgRing ], IsHomalgMatrix );
