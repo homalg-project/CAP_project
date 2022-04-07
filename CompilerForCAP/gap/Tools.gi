@@ -447,6 +447,33 @@ InstallGlobalFunction( CapJitReplacedEXPR_REF_FVARByValue, function ( tree, func
     
 end );
 
+InstallGlobalFunction( CapJitGetNextUnusedVariableID, function ( func )
+  local used_ids, pos, name;
+    
+    used_ids := [ ];
+    
+    for name in func.nams do
+        
+        pos := Length( name );
+        
+        while pos > 0 and IsDigitChar( name[pos] ) do
+            
+            pos := pos - 1;
+            
+        od;
+        
+        if pos < Length( name ) then
+            
+            Add( used_ids, Int( name{[ pos + 1 .. Length( name ) ]} ) );
+            
+        fi;
+        
+    od;
+    
+    return MaximumList( used_ids, 0 ) + 1;
+    
+end );
+
 ## allow to handle SYNTAX_TREE_LISTs like lists
 InstallMethod( AsSyntaxTreeList,
                [ IsList ],

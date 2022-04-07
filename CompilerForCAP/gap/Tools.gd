@@ -115,6 +115,13 @@ DeclareGlobalFunction( "CapJitUnbindBinding" );
 #! @Arguments tree, func_id, name, value
 DeclareGlobalFunction( "CapJitReplacedEXPR_REF_FVARByValue" );
 
+#! @Description
+#!   Returns the minimal positive integer $n$ such that no name of a local variable of the function <A>func</A>
+#!   (given as an enhanced syntax tree) ends with `String( `$m$` )` for any $m \geq n$.
+#! @Returns an integer
+#! @Arguments func
+DeclareGlobalFunction( "CapJitGetNextUnusedVariableID" );
+
 ## allow to handle SYNTAX_TREE_LISTs like lists
 # Declare attributes as mutable because we want to modify them (after taking StructuralCopy, which preserves mutability).
 DeclareAttribute( "AsSyntaxTreeList", IsList, "mutable" );
