@@ -1,10 +1,11 @@
-# THIS FILE WAS AUTOMATICALLY GENERATED
-
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Toposes: Elementary toposes
 #
 # Declarations
 #
+# THIS FILE WAS AUTOMATICALLY GENERATED
+
+
 
 ####################################
 ##
