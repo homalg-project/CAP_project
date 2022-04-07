@@ -145,39 +145,39 @@ DeclareOperation( "AddEmbeddingOfPseudoComplementSubobjectWithGivenPseudoComplem
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `EmbeddingOfRelativePseudoComplementSuboject`.
-#! $F: ( iota1, iota2 ) \mapsto \mathtt{EmbeddingOfRelativePseudoComplementSuboject}(iota1, iota2)$.
+#! to the category for the basic operation `EmbeddingOfRelativePseudoComplementSubobject`.
+#! $F: ( iota1, iota2 ) \mapsto \mathtt{EmbeddingOfRelativePseudoComplementSubobject}(iota1, iota2)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSuboject",
+DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSubobject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSuboject",
+DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSubobject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSuboject",
+DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSubobject",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSuboject",
+DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSubobject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `EmbeddingOfRelativePseudoComplementSubojectWithGivenImplication`.
-#! $F: ( iota1, iota2, implication ) \mapsto \mathtt{EmbeddingOfRelativePseudoComplementSubojectWithGivenImplication}(iota1, iota2, implication)$.
+#! to the category for the basic operation `EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication`.
+#! $F: ( iota1, iota2, implication ) \mapsto \mathtt{EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication}(iota1, iota2, implication)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSubojectWithGivenImplication",
+DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSubojectWithGivenImplication",
+DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSubojectWithGivenImplication",
+DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSubojectWithGivenImplication",
+DeclareOperation( "AddEmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
@@ -297,20 +297,20 @@ DeclareOperation( "AddPseudoComplementSubobject",
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `RelativePseudoComplementSuboject`.
-#! $F: ( arg2, arg3 ) \mapsto \mathtt{RelativePseudoComplementSuboject}(arg2, arg3)$.
+#! to the category for the basic operation `RelativePseudoComplementSubobject`.
+#! $F: ( arg2, arg3 ) \mapsto \mathtt{RelativePseudoComplementSubobject}(arg2, arg3)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddRelativePseudoComplementSuboject",
+DeclareOperation( "AddRelativePseudoComplementSubobject",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddRelativePseudoComplementSuboject",
+DeclareOperation( "AddRelativePseudoComplementSubobject",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddRelativePseudoComplementSuboject",
+DeclareOperation( "AddRelativePseudoComplementSubobject",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddRelativePseudoComplementSuboject",
+DeclareOperation( "AddRelativePseudoComplementSubobject",
                   [ IsCapCategory, IsList ] );
 
 #! @Description

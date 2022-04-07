@@ -452,15 +452,15 @@ AddDerivationToCAP( EmbeddingOfUnionSubobject,
 end );
 
 ##
-AddDerivationToCAP( RelativePseudoComplementSuboject,
+AddDerivationToCAP( RelativePseudoComplementSubobject,
   function( cat, iota1, iota2 )
     
-    return Source( EmbeddingOfRelativePseudoComplementSuboject( cat, iota1, iota2 ) );
+    return Source( EmbeddingOfRelativePseudoComplementSubobject( cat, iota1, iota2 ) );
     
 end );
 
 ##
-AddDerivationToCAP( EmbeddingOfRelativePseudoComplementSuboject,
+AddDerivationToCAP( EmbeddingOfRelativePseudoComplementSubobject,
   function( cat, iota1, iota2 )
     local Omega;
     
