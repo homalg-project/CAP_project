@@ -177,19 +177,19 @@ EmbeddingOfUnionSubobjectWithGivenUnion := rec(
   io_type := [ [ "iota1", "iota2", "union" ] , [ "union" , "iota1_range" ] ],
   return_type := "morphism" ),
 
-RelativePseudoComplementSuboject := rec(
+RelativePseudoComplementSubobject := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   return_type := "object" ),
 
-EmbeddingOfRelativePseudoComplementSuboject := rec(
+EmbeddingOfRelativePseudoComplementSubobject := rec(
   filter_list := [ "category", "morphism", "morphism" ],
   input_arguments_names := [ "cat", "iota1", "iota2" ],
-  output_source_getter_string := "RelativePseudoComplementSuboject( iota1, iota2 )",
+  output_source_getter_string := "RelativePseudoComplementSubobject( iota1, iota2 )",
   output_range_getter_string := "Range( iota1 )",
   with_given_object_position := "Source",
   return_type := "morphism" ),
 
-EmbeddingOfRelativePseudoComplementSubojectWithGivenImplication := rec(
+EmbeddingOfRelativePseudoComplementSubobjectWithGivenImplication := rec(
   filter_list := [ "category", "morphism", "morphism", "object" ],
   input_arguments_names := [ "cat", "iota1", "iota2", "implication" ],
   output_source_getter_string := "implication",
