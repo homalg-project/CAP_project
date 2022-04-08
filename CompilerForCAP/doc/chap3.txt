@@ -1148,37 +1148,6 @@
     [4X[28Xend[128X[104X
     [4X[25Xgap>[125X [27Xtree = tree2;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27X# test (nested) cancellation in CapJitInlinedBindings[127X[104X
-    [4X[25X>[125X [27XQQ := HomalgFieldOfRationals( );;[127X[104X
-    [4X[25Xgap>[125X [27Xvec := MatrixCategory( QQ );;[127X[104X
-    [4X[25Xgap>[125X [27Xop := Opposite( vec );;[127X[104X
-    [4X[25Xgap>[125X [27X# we have to work hard to not write semicolons so AutoDoc[127X[104X
-    [4X[25X>[125X [27X# does not begin a new statement[127X[104X
-    [4X[25X>[125X [27Xfunc := EvalString( ReplacedString( """function( )[127X[104X
-    [4X[25X>[125X [27X  local obj_tmp, dimension_tmp, obj, obj_op, obj_op_unwrapped, dimension@[127X[104X
-    [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27X    obj_tmp := ObjectifyObjectForCAPWithAttributes( rec( ), vec, Dimension, 1 )@[127X[104X
-    [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27X    dimension_tmp := Dimension( obj_tmp )@[127X[104X
-    [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27X    obj := ObjectifyObjectForCAPWithAttributes([127X[104X
-    [4X[25X>[125X [27X        rec( ), vec, Dimension, dimension_tmp )@[127X[104X
-    [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27X    obj_op := ObjectifyObjectForCAPWithAttributes( rec( ), op, Opposite, obj )@[127X[104X
-    [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27X    obj_op_unwrapped := Opposite( obj_op )@[127X[104X
-    [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27X    dimension := Dimension( obj_op_unwrapped )@[127X[104X
-    [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27X    return dimension@[127X[104X
-    [4X[25X>[125X [27X    [127X[104X
-    [4X[25X>[125X [27Xend""", "@", ";" ) );;[127X[104X
-    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
-    [4X[25Xgap>[125X [27Xtree := CapJitInlinedBindings( tree );;[127X[104X
-    [4X[25Xgap>[125X [27XDisplay( ENHANCED_SYNTAX_TREE_CODE( tree ) );[127X[104X
-    [4X[28Xfunction (  )[128X[104X
-    [4X[28X    return 1;[128X[104X
-    [4X[28Xend[128X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X

@@ -77,12 +77,14 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7DF03AC082073C4C">2.5-9 CapJitInlinedArguments</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X83E0BBEA80AD5CDE">2.5-10 CapJitInlinedBindings</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X82F8D6B5851674EB">2.5-11 CapJitInlinedBindingsToVariableReferences</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7933165D803DEDB2">2.5-12 CapJitInlinedFunctionCalls</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7C3064C27FBB1A0D">2.5-13 CapJitInlinedSimpleFunctionCalls</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X837576207D282C04">2.5-14 CapJitAppliedLogic</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7AE756B8878FD449">2.5-15 CapJitAppliedLogicTemplates</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7FD883BA85F7EBE5">2.5-16 CapJitResolvedGlobalVariables</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7D12C378812745DA">2.5-17 CapJitResolvedOperations</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X794E5E1F7D86BFAA">2.5-12 CapJitInlinedBindingsFully</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7933165D803DEDB2">2.5-13 CapJitInlinedFunctionCalls</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7C3064C27FBB1A0D">2.5-14 CapJitInlinedSimpleFunctionCalls</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X837576207D282C04">2.5-15 CapJitAppliedLogic</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7AE756B8878FD449">2.5-16 CapJitAppliedLogicTemplates</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X79FD7D407C591072">2.5-17 CapJitOutlinedWrappedArguments</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7FD883BA85F7EBE5">2.5-18 CapJitResolvedGlobalVariables</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7D12C378812745DA">2.5-19 CapJitResolvedOperations</a></span>
 </div></div>
 </div>
 
@@ -107,6 +109,8 @@
 <p><a id="X86EC986580F17F44" name="X86EC986580F17F44"></a></p>
 
 <h4>2.1 <span class="Heading">Logic</span></h4>
+
+<p>Warning: When writing logic functions and templates keep in mind that wrapped arguments are outlined, see <code class="func">CapJitOutlinedWrappedArguments</code> (<a href="chap2_mj.html#X79FD7D407C591072"><span class="RefLink">2.5-17</span></a>). This means that for example a logic template of the form <code class="code">ObjectifyObjectForCAPWithAttributes( rec( ), cat, attr, MyFunction( x ) )</code> will never match because <code class="code">MyFunction( x )</code> is outlined to a local variable.</p>
 
 <p><a id="X804E3CAD82BE47BB" name="X804E3CAD82BE47BB"></a></p>
 
@@ -150,19 +154,19 @@
 
 
 <ul>
-<li><p>The function <code class="func">CapJitAppliedLogicTemplates</code> (<a href="chap2_mj.html#X7AE756B8878FD449"><span class="RefLink">2.5-15</span></a>) tries to find occurences of <code class="code">src_template</code> in a tree and potentially replaces them by <code class="code">dst_template</code>.</p>
+<li><p>The function <code class="func">CapJitAppliedLogicTemplates</code> (<a href="chap2_mj.html#X7AE756B8878FD449"><span class="RefLink">2.5-16</span></a>) tries to find occurences of <code class="code">src_template</code> in a tree and potentially replaces them by <code class="code">dst_template</code>.</p>
 
 </li>
 <li><p>When trying to find an occurence of <code class="code">src_template</code> in a tree, all strings occuring in the list <code class="code">variable_names</code> are considered as variables, i.e., they match any value in the tree. If a variable occurs multiple times, the corresponding parts of the tree must be equal. The template is only applied if all values match the corresponding filters in <code class="code">variable_filters</code>.</p>
 
 </li>
-<li><p>For each function in <code class="code">dst_template</code>, <code class="func">CapJitAppliedLogicTemplates</code> (<a href="chap2_mj.html#X7AE756B8878FD449"><span class="RefLink">2.5-15</span></a>) tries to find a corresponding function in <code class="code">src_template</code>. The functions are matched by comparing the lists of names of local variables. If for a function in <code class="code">dst_template</code> no corresponding function in <code class="code">src_template</code> exists, you have to add the list of names of local variables of this function to <code class="code">new_funcs</code>.</p>
+<li><p>For each function in <code class="code">dst_template</code>, <code class="func">CapJitAppliedLogicTemplates</code> (<a href="chap2_mj.html#X7AE756B8878FD449"><span class="RefLink">2.5-16</span></a>) tries to find a corresponding function in <code class="code">src_template</code>. The functions are matched by comparing the lists of names of local variables. If for a function in <code class="code">dst_template</code> no corresponding function in <code class="code">src_template</code> exists, you have to add the list of names of local variables of this function to <code class="code">new_funcs</code>.</p>
 
 </li>
 <li><p><code class="code">needed_packages</code> has the same format as <code class="code">NeededOtherPackages</code> in <code class="code">PackageInfo.g</code>. The template is only evaluated if the packages in <code class="code">needed_packages</code> are loaded in the correct versions.</p>
 
 </li>
-<li><p><code class="code">debug</code> can be set to <code class="code">true</code> to print more information while <code class="func">CapJitAppliedLogicTemplates</code> (<a href="chap2_mj.html#X7AE756B8878FD449"><span class="RefLink">2.5-15</span></a>) tries to apply the template. (Note: this causes informational break loops which are not actual errors).</p>
+<li><p><code class="code">debug</code> can be set to <code class="code">true</code> to print more information while <code class="func">CapJitAppliedLogicTemplates</code> (<a href="chap2_mj.html#X7AE756B8878FD449"><span class="RefLink">2.5-16</span></a>) tries to apply the template. (Note: this causes informational break loops which are not actual errors).</p>
 
 </li>
 <li><p><code class="code">debug_path</code> can be set to a specific path to get exact information why the subtree at this path does or does not match <code class="code">src_template</code>.</p>
@@ -583,7 +587,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitInlinedBindings</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
 
-<p>Example: transforms <code class="code">function() local x; x := 1; return x^2; end</code> into <code class="code">function() return 1^2; end()</code>. Details: Replaces references to local variables of a function by the value of the corresponding binding of the function. If the option <code class="code">inline_var_refs_only</code> is set to <code class="code">true</code>, this is only done if the value is a reference to a (local or global) variable. Also drops the inlined bindings.</p>
+<p>Example: transforms <code class="code">function() local x; x := 1; return x^2; end</code> into <code class="code">function() return 1^2; end()</code>. Details: Replaces references to local variables of a function by the value of the corresponding binding of the function. If the option <code class="code">inline_var_refs_only</code> is set to <code class="code">true</code>, this is only done if the value is a reference to a (local or global) variable. If the option <code class="code">inline_fully</code> is NOT set to <code class="code">true</code>, wrapped arguments are not inlined (see <code class="func">CapJitOutlinedWrappedArguments</code> (<a href="chap2_mj.html#X79FD7D407C591072"><span class="RefLink">2.5-17</span></a>)). Also drops the inlined bindings.</p>
 
 <p><a id="X82F8D6B5851674EB" name="X82F8D6B5851674EB"></a></p>
 
@@ -594,9 +598,18 @@
 
 <p>Short hand for <code class="code">CapJitInlinedBindings( </code><var class="Arg">tree</var><code class="code"> : inline_var_refs_only := true )</code>.</p>
 
+<p><a id="X794E5E1F7D86BFAA" name="X794E5E1F7D86BFAA"></a></p>
+
+<h5>2.5-12 CapJitInlinedBindingsFully</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitInlinedBindingsFully</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record</p>
+
+<p>Short hand for <code class="code">CapJitInlinedBindings( </code><var class="Arg">tree</var><code class="code"> : inline_fully := true )</code>.</p>
+
 <p><a id="X7933165D803DEDB2" name="X7933165D803DEDB2"></a></p>
 
-<h5>2.5-12 CapJitInlinedFunctionCalls</h5>
+<h5>2.5-13 CapJitInlinedFunctionCalls</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitInlinedFunctionCalls</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
@@ -616,7 +629,7 @@
 
 <p><a id="X7C3064C27FBB1A0D" name="X7C3064C27FBB1A0D"></a></p>
 
-<h5>2.5-13 CapJitInlinedSimpleFunctionCalls</h5>
+<h5>2.5-14 CapJitInlinedSimpleFunctionCalls</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitInlinedSimpleFunctionCalls</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
@@ -625,25 +638,46 @@
 
 <p><a id="X837576207D282C04" name="X837576207D282C04"></a></p>
 
-<h5>2.5-14 CapJitAppliedLogic</h5>
+<h5>2.5-15 CapJitAppliedLogic</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitAppliedLogic</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
 
-<p>Applies all logic functions (see <code class="func">CapJitAddLogicFunction</code> (<a href="chap2_mj.html#X804E3CAD82BE47BB"><span class="RefLink">2.1-1</span></a>)) and logic templates (see <code class="func">CapJitAppliedLogicTemplates</code> (<a href="chap2_mj.html#X7AE756B8878FD449"><span class="RefLink">2.5-15</span></a>)) to <var class="Arg">tree</var>.</p>
+<p>Applies all logic functions (see <code class="func">CapJitAddLogicFunction</code> (<a href="chap2_mj.html#X804E3CAD82BE47BB"><span class="RefLink">2.1-1</span></a>)) and logic templates (see <code class="func">CapJitAppliedLogicTemplates</code> (<a href="chap2_mj.html#X7AE756B8878FD449"><span class="RefLink">2.5-16</span></a>)) to <var class="Arg">tree</var>.</p>
 
 <p><a id="X7AE756B8878FD449" name="X7AE756B8878FD449"></a></p>
 
-<h5>2.5-15 CapJitAppliedLogicTemplates</h5>
+<h5>2.5-16 CapJitAppliedLogicTemplates</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitAppliedLogicTemplates</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
 
 <p>Applies all logic templates (see <code class="func">CapJitAddLogicTemplate</code> (<a href="chap2_mj.html#X8592DC367A493530"><span class="RefLink">2.1-2</span></a>)) to <var class="Arg">tree</var>.</p>
 
+<p><a id="X79FD7D407C591072" name="X79FD7D407C591072"></a></p>
+
+<h5>2.5-17 CapJitOutlinedWrappedArguments</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitOutlinedWrappedArguments</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: a record</p>
+
+<p>Outlines wrapped arguments to local variables. This includes:</p>
+
+
+<ul>
+<li><p>the attribute values in <code class="code">ObjectifyObjectForCAPWithAttributes</code></p>
+
+</li>
+<li><p>the attribute values (including the arguments <code class="code">source</code> and <code class="code">range</code>) in <code class="code">ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes</code></p>
+
+</li>
+<li><p>the entries of literal lists</p>
+
+</li>
+</ul>
 <p><a id="X7FD883BA85F7EBE5" name="X7FD883BA85F7EBE5"></a></p>
 
-<h5>2.5-16 CapJitResolvedGlobalVariables</h5>
+<h5>2.5-18 CapJitResolvedGlobalVariables</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitResolvedGlobalVariables</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>
@@ -661,7 +695,7 @@
 </ul>
 <p><a id="X7D12C378812745DA" name="X7D12C378812745DA"></a></p>
 
-<h5>2.5-17 CapJitResolvedOperations</h5>
+<h5>2.5-19 CapJitResolvedOperations</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitResolvedOperations</code>( <var class="Arg">tree</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a record</p>

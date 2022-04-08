@@ -137,7 +137,7 @@
 
 </li>
 </ul>
-<p>For details see <code class="func">CapJitResolvedOperations</code> (<a href="chap2_mj.html#X7D12C378812745DA"><span class="RefLink">2.5-17</span></a>) and <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2_mj.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-16</span></a>). If no operation or global variable can be resolved anymore, we continue with the rule phase.</p>
+<p>For details see <code class="func">CapJitResolvedOperations</code> (<a href="chap2_mj.html#X7D12C378812745DA"><span class="RefLink">2.5-19</span></a>) and <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2_mj.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-18</span></a>). If no operation or global variable can be resolved anymore, we continue with the rule phase.</p>
 
 <p>In the rule phase, the tree is optimized using several rules and techniques. Function arguments, functions, and assignments to local variables are inlined. Unused variables are dropped. Handled edge cases are dropped, that is, if the same edge case is caught multiple times via <code class="code">if condition then return ...; fi;</code> statements, only the first such statement is kept. Finally, "logic" is applied to the tree. For example, calls of <code class="code">CallFuncList</code> are replaced by calls to the actual function. The logic can be extended by the user, see chapter <a href="chap2_mj.html#X7D62EFD07F991E56"><span class="RefLink">2</span></a>.</p>
 
@@ -307,7 +307,7 @@
 
 </li>
 </ul>
-<p>A: The function might be listed in <code class="code">CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES</code> or it might be missing an annotation with the pragma <code class="code">CAP_JIT_RESOLVE_FUNCTION</code>. Additionally, a function can only be resolved if it appears as a global variable in the tree during the resolving phase of the compilation. That is, it must be referenced from a global variable from the beginning on, or after global variables are resolved by <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2_mj.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-16</span></a>). Possibly you have adapt <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2_mj.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-16</span></a>) to your setting.</p>
+<p>A: The function might be listed in <code class="code">CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES</code> or it might be missing an annotation with the pragma <code class="code">CAP_JIT_RESOLVE_FUNCTION</code>. Additionally, a function can only be resolved if it appears as a global variable in the tree during the resolving phase of the compilation. That is, it must be referenced from a global variable from the beginning on, or after global variables are resolved by <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2_mj.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-18</span></a>). Possibly you have adapt <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2_mj.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-18</span></a>) to your setting.</p>
 
 
 <ul>
