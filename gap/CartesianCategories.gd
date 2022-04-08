@@ -19,14 +19,10 @@ DeclareGlobalVariable( "CARTESIAN_CATEGORIES_METHOD_NAME_RECORD" );
 
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory  := Concatenation( [
 "DirectProduct",
-"DirectProductOnMorphismsWithGivenDirectProducts",
+"ProjectionInFactorOfDirectProductWithGivenDirectProduct",
+"UniversalMorphismIntoDirectProductWithGivenDirectProduct",
 "TerminalObject",
-"CartesianAssociatorLeftToRightWithGivenDirectProducts",
-"CartesianAssociatorRightToLeftWithGivenDirectProducts",
-"CartesianLeftUnitorWithGivenDirectProduct",
-"CartesianLeftUnitorInverseWithGivenDirectProduct",
-"CartesianRightUnitorWithGivenDirectProduct",
-"CartesianRightUnitorInverseWithGivenDirectProduct"
+"UniversalMorphismIntoTerminalObjectWithGivenTerminalObject",
 ], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory );
 
 ## DirectProductOnMorphismsWithGivenDirectProducts
