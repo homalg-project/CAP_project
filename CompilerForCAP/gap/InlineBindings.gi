@@ -4,34 +4,6 @@
 # Implementations
 #
 
-# helper
-InstallGlobalFunction( "CAP_JIT_INTERNAL_RESOLVE_EXPR_REF_FVAR_RECURSIVELY", function ( tree, func_stack )
-  local func, pos;
-    
-    while tree.type = "EXPR_REF_FVAR" do
-        
-        func := First( func_stack, func -> func.id = tree.func_id );
-        Assert( 0, func <> fail );
-        
-        pos := Position( func.nams, tree.name );
-        
-        Assert( 0, pos <> fail );
-        
-        # the fvar might be an argument, which has no binding
-        if pos <= func.narg then
-            
-            break;
-            
-        fi;
-        
-        tree := CapJitValueOfBinding( func.bindings, tree.name );
-        
-    od;
-    
-    return tree;
-    
-end );
-
 InstallGlobalFunction( CapJitInlinedBindings, function ( tree )
     
     return CAP_JIT_INTERNAL_INLINED_BINDINGS( tree, [ ], ValueOption( "inline_var_refs_only" ) = true, ValueOption( "inline_fully" ) = true );

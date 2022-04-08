@@ -467,7 +467,7 @@ end );
 
 # helper
 InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, result_func_index, additional_funcs_indices, initial_value_index, initial_value_is_list )
-  local result_func, initial_value, additional_funcs, return_obj, cat, attribute_name, case, new_func, new_additional_funcs, arguments_references_paths, parent, new_initial_value, args, new_args, new_tree, initial_value_morphism, func, path, i;
+  local result_func, initial_value, additional_funcs, return_obj, cat, attribute_name, case, source, range, new_func, new_additional_funcs, arguments_references_paths, parent, new_initial_value, args, new_args, new_tree, initial_value_morphism, func, path, i;
     
     Assert( 0, tree.type = "EXPR_FUNCCALL" );
     Assert( 0, tree.funcref.type = "EXPR_REF_GVAR" );
@@ -499,12 +499,30 @@ InstallGlobalFunction( CAP_JIT_INTERNAL_TELESCOPED_ITERATION, function ( tree, r
                 
                 case := fail;
                 
+                source := return_obj.args.3;
+                
+                # source might have been outlined
+                if source.type = "EXPR_REF_FVAR" and source.func_id = result_func.id then
+                    
+                    source := CapJitValueOfBinding( result_func.bindings, source.name );
+                    
+                fi;
+                
+                range := return_obj.args.4;
+                
+                # range might have been outlined
+                if range.type = "EXPR_REF_FVAR" and range.func_id = result_func.id then
+                    
+                    range := CapJitValueOfBinding( result_func.bindings, range.name );
+                    
+                fi;
+                
                 if
                     # WARNING: this needs a hack when outlining wrapped arguments
                     # Source can be recovered from initial_value
-                    CapJitIsCallToGlobalFunction( return_obj.args.3, "Source" ) and return_obj.args.3.args.length = 1 and return_obj.args.3.args.1.type = "EXPR_REF_FVAR" and return_obj.args.3.args.1.func_id = result_func.id and return_obj.args.3.args.1.name = result_func.nams[1] and
+                    CapJitIsCallToGlobalFunction( source, "Source" ) and source.args.length = 1 and source.args.1.type = "EXPR_REF_FVAR" and source.args.1.func_id = result_func.id and source.args.1.name = result_func.nams[1] and
                     # Range can be recovered from initial_value
-                    CapJitIsCallToGlobalFunction( return_obj.args.4, "Range" ) and return_obj.args.4.args.length = 1 and return_obj.args.4.args.1.type = "EXPR_REF_FVAR" and return_obj.args.4.args.1.func_id = result_func.id and return_obj.args.4.args.1.name = result_func.nams[1]
+                    CapJitIsCallToGlobalFunction( range, "Range" ) and range.args.length = 1 and range.args.1.type = "EXPR_REF_FVAR" and range.args.1.func_id = result_func.id and range.args.1.name = result_func.nams[1]
                 then
                     
                     case := "from_initial_value";

@@ -27,45 +27,6 @@ BindGlobal( "CAP_JIT_INTERNAL_GET_KEY_AND_POSITIONS_TO_OUTLINE", function ( tree
         # ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes( rec( ), cat, source, range, attr1, val1, attr2, val2, ... );
         positions_to_outline := Concatenation( [ 3, 4 ], [ 6, 8 .. tree.args.length ] );
         
-        # HACK: The logic for Iterated/CapFixpoint checks if source and range are of the form
-        # `Source( first_argument_of_function )` and `Range( first_argument_of_function )`.
-        # Thus, we must not outline source and range in this case.
-        # Better solution: introduce `Iterated/CapFixpointForMorphismWithGivenSourceAndRange`
-        
-        source := CAP_JIT_INTERNAL_RESOLVE_EXPR_REF_FVAR_RECURSIVELY( tree.args.3, func_stack );
-        
-        if CapJitIsCallToGlobalFunction( source, "Source" ) and source.args.length = 1 and source.args.1.type = "EXPR_REF_FVAR" then
-            
-            fvar := source.args.1;
-            
-            func := First( func_stack, func -> func.id = fvar.func_id );
-            Assert( 0, func <> fail );
-            
-            if fvar.name = func.nams[1] and func.narg > 0 then
-                
-                RemoveSet( positions_to_outline, 3 );
-                
-            fi;
-            
-        fi;
-        
-        range := CAP_JIT_INTERNAL_RESOLVE_EXPR_REF_FVAR_RECURSIVELY( tree.args.4, func_stack );
-        
-        if CapJitIsCallToGlobalFunction( range, "Range" ) and range.args.length = 1 and range.args.1.type = "EXPR_REF_FVAR" then
-            
-            fvar := range.args.1;
-            
-            func := First( func_stack, func -> func.id = fvar.func_id );
-            Assert( 0, func <> fail );
-            
-            if fvar.name = func.nams[1] and func.narg > 0 then
-                
-                RemoveSet( positions_to_outline, 4 );
-                
-            fi;
-            
-        fi;
-        
     else
         
         return fail;
