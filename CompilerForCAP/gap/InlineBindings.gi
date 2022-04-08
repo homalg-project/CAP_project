@@ -33,12 +33,29 @@ InstallGlobalFunction( "CAP_JIT_INTERNAL_RESOLVE_EXPR_REF_FVAR_RECURSIVELY", fun
 end );
 
 InstallGlobalFunction( CapJitInlinedBindings, function ( tree )
-  local inline_var_refs_only, pre_func, result_func, additional_arguments_func;
     
-    inline_var_refs_only := ValueOption( "inline_var_refs_only" ) = true;
+    return CAP_JIT_INTERNAL_INLINED_BINDINGS( tree, [ ], ValueOption( "inline_var_refs_only" ) = true, ValueOption( "inline_fully" ) = true );
+    
+end );
+
+InstallGlobalFunction( CAP_JIT_INTERNAL_INLINED_BINDINGS, function ( tree, initial_func_stack, inline_var_refs_only, inline_fully )
+  local pre_func, new_bindings, result_func, additional_arguments_func;
     
     pre_func := function ( tree, func_stack )
-      local new_bindings, value, orig_tree, funccall_stack, funccall, pos, name;
+      local new_bindings, value, func, info, name, i;
+        
+        if IsBound( tree.CAP_JIT_DO_NOT_INLINE ) and tree.CAP_JIT_DO_NOT_INLINE = true then
+            
+            return fail;
+            
+        fi;
+        
+        # `new_bindings` will be attached to functions
+        if tree.type = "EXPR_DECLARATIVE_FUNC" then
+            
+            tree := ShallowCopy( tree );
+            
+        fi;
         
         # drop bindings which will be inlined anyway
         # func_stack still references the original functions with unmodified bindings
@@ -56,12 +73,12 @@ InstallGlobalFunction( CapJitInlinedBindings, function ( tree )
             
             for name in tree.names do
                 
-                value := CAP_JIT_INTERNAL_RESOLVE_EXPR_REF_FVAR_RECURSIVELY( CapJitValueOfBinding( tree, name ), func_stack );
+                value := CapJitValueOfBinding( tree, name );
                 
                 # RETURN_VALUE and those not inlined below should be kept
                 if name = "RETURN_VALUE" or not (not inline_var_refs_only or value.type = "EXPR_REF_GVAR" or value.type = "EXPR_REF_FVAR") then
                     
-                    CapJitAddBinding( new_bindings, name, CapJitValueOfBinding( tree, name ) );
+                    CapJitAddBinding( new_bindings, name, value );
                     
                 fi;
                 
@@ -71,117 +88,75 @@ InstallGlobalFunction( CapJitInlinedBindings, function ( tree )
             
         fi;
         
-        orig_tree := tree;
-        
-        tree := CAP_JIT_INTERNAL_RESOLVE_EXPR_REF_FVAR_RECURSIVELY( tree, func_stack );
-        
-        # do not try any cancellation (see below) if we should only inline references to variables
-        if inline_var_refs_only then
+        # iterate in case the inlined value is an EXPR_REF_FVAR again
+        while true do
             
-            if not IsIdenticalObj( orig_tree, tree ) and (tree.type = "EXPR_REF_GVAR" or tree.type = "EXPR_REF_FVAR") then
+            if tree.type = "EXPR_REF_FVAR" then
                 
-                Assert( 0, orig_tree.type = "EXPR_REF_FVAR" );
+                func := First( func_stack, func -> func.id = tree.func_id );
+                Assert( 0, func <> fail );
                 
-                Info( InfoCapJit, 1, "####" );
-                Info( InfoCapJit, 1, "Inline reference to binding with name ", orig_tree.name, "." );
+                # the fvar might be an argument, which has no binding
+                if Position( func.nams, tree.name ) > func.narg then
+                    
+                    value := CapJitValueOfBinding( func.bindings, tree.name );
+                    
+                    if not inline_var_refs_only or value.type = "EXPR_REF_GVAR" or value.type = "EXPR_REF_FVAR" then
+                        
+                        Info( InfoCapJit, 1, "####" );
+                        Info( InfoCapJit, 1, "Inline binding with name ", tree.name, "." );
+                        
+                        tree := CapJitCopyWithNewFunctionIDs( value );
+                        
+                        continue;
+                        
+                    fi;
+                    
+                fi;
                 
-                return CapJitCopyWithNewFunctionIDs( tree );
+            fi;
+            
+            break;
+            
+        od;
+        
+        if not inline_fully and not inline_var_refs_only then
+            
+            info := CAP_JIT_INTERNAL_GET_KEY_AND_POSITIONS_TO_OUTLINE( tree, func_stack );
+            
+            if info <> fail then
                 
-            else
+                tree := ShallowCopy( tree );
+                tree.(info.key) := ShallowCopy( tree.(info.key) );
                 
-                return orig_tree;
+                for i in info.positions_to_outline do
+                    
+                    tree.(info.key).(i) := ShallowCopy( tree.(info.key).(i) );
+                    
+                    tree.(info.key).(i).CAP_JIT_DO_NOT_INLINE := true;
+                    
+                od;
                 
             fi;
             
         fi;
         
-        # Try to cancel Attribute( Objectify( ... ) ) immediately for performance.
-        # Doing this would be easy in result_func but that would defeat the purpose of cancellation BEFORE inlining.
-        while true do
-            
-            funccall_stack := [ ];
-            
-            value := tree;
-            
-            while CapJitIsCallToGlobalFunction( value, gvar -> IsAttribute( ValueGlobal( gvar ) ) ) and value.args.length = 1 do
-                
-                Add( funccall_stack, value );
-                
-                value := CAP_JIT_INTERNAL_RESOLVE_EXPR_REF_FVAR_RECURSIVELY( value.args.1, func_stack );
-                
-            od;
-            
-            while Length( funccall_stack ) > 0 and CapJitIsCallToGlobalFunction( value, gvar -> gvar = "ObjectifyObjectForCAPWithAttributes" or gvar = "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" ) do
-                
-                funccall := Remove( funccall_stack );
-                
-                if funccall.funcref.gvar = "CapCategory" then
-                    
-                    pos := 2;
-                    
-                elif funccall.funcref.gvar = "Source" then
-                    
-                    Assert( 0, value.funcref.gvar = "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" );
-                    
-                    pos := 3;
-                    
-                elif funccall.funcref.gvar = "Range" then
-                    
-                    Assert( 0, value.funcref.gvar = "ObjectifyMorphismWithSourceAndRangeForCAPWithAttributes" );
-                    
-                    pos := 4;
-                    
-                else
-                    
-                    pos := PositionProperty( value.args, a -> a.type = "EXPR_REF_GVAR" and IsIdenticalObj( ValueGlobal( a.gvar ), ValueGlobal( funccall.funcref.gvar ) ) );
-                    
-                    if pos = fail then
-                        
-                        # COVERAGE_IGNORE_NEXT_LINE
-                        Error( "Could not find attribute" );
-                        
-                    fi;
-                    
-                    pos := pos + 1;
-                    
-                fi;
-                
-                Assert( 0, pos <= value.args.length );
-                
-                Info( InfoCapJit, 1, "####" );
-                Info( InfoCapJit, 1, "Cancel ", value.funcref.gvar, " during inlining." );
-                
-                value := CAP_JIT_INTERNAL_RESOLVE_EXPR_REF_FVAR_RECURSIVELY( value.args.(pos), func_stack );
-                
-            od;
-            
-            if Length( funccall_stack ) = 0 and not IsIdenticalObj( tree, value ) then
-                
-                tree := value;
-                
-                # value might again be a function call of an attribute -> iterate from the beginning
-                continue;
-                
-            else
-                
-                if IsIdenticalObj( orig_tree, tree ) then
-                    
-                    return orig_tree;
-                    
-                else
-                    
-                    return CapJitCopyWithNewFunctionIDs( tree );
-                    
-                fi;
-                
-            fi;
-            
-        od;
+        return tree;
         
     end;
     
     result_func := function ( tree, result, keys, func_stack )
-      local new_nams, name, value, key, i;
+      local info, key, fvar, func, pos, value, new_nams, name, i;
+        
+        if result = fail then
+            
+            Assert( 0, IsBound( tree.CAP_JIT_DO_NOT_INLINE ) and tree.CAP_JIT_DO_NOT_INLINE = true );
+            
+            Unbind( tree.CAP_JIT_DO_NOT_INLINE );
+            
+            return tree;
+            
+        fi;
         
         tree := ShallowCopy( tree );
         
@@ -191,7 +166,62 @@ InstallGlobalFunction( CapJitInlinedBindings, function ( tree )
             
         od;
         
+        if not inline_fully and not inline_var_refs_only then
+            
+            info := CAP_JIT_INTERNAL_GET_KEY_AND_POSITIONS_TO_OUTLINE( tree, func_stack );
+            
+            if info <> fail then
+                
+                key := info.key;
+                
+                for i in info.positions_to_outline do
+                    
+                    if tree.(key).(i).type in [ "EXPR_INT", "EXPR_STRING", "EXPR_CHAR", "EXPR_TRUE", "EXPR_FALSE", "EXPR_REF_GVAR" ] then
+                        continue;
+                    fi;
+                    
+                    Assert( 0, tree.(key).(i).type = "EXPR_REF_FVAR" );
+                    
+                    fvar := tree.(key).(i);
+                    
+                    func := First( func_stack, func -> func.id = fvar.func_id );
+                    Assert( 0, func <> fail );
+                    
+                    pos := Position( func.nams, fvar.name );
+                    
+                    Assert( 0, pos <> fail );
+                    
+                    # the fvar might be an argument, which has no binding
+                    if pos <= func.narg then
+                        continue;
+                    fi;
+                    
+                    value := CapJitValueOfBinding( func.bindings, fvar.name );
+                    
+                    if not IsBound( func.new_bindings ) then
+                        
+                        func.new_bindings := rec( );
+                        
+                    fi;
+                    
+                    if IsBound( func.new_bindings.(fvar.name) ) then
+                        
+                        continue;
+                        
+                    fi;
+                    
+                    func.new_bindings.(fvar.name) := CAP_JIT_INTERNAL_INLINED_BINDINGS( value, func_stack, inline_var_refs_only, inline_fully );
+                    
+                od;
+                
+                return tree;
+                
+            fi;
+            
+        fi;
+        
         # drop names of bindings which have been inlined
+        # and add new bindings
         if tree.type = "EXPR_DECLARATIVE_FUNC" then
             
             new_nams := [ ];
@@ -211,6 +241,20 @@ InstallGlobalFunction( CapJitInlinedBindings, function ( tree )
             Assert( 0, "RETURN_VALUE" in new_nams );
             
             tree.nams := new_nams;
+            
+            if IsBound( tree.new_bindings ) then
+                
+                for name in RecNames( tree.new_bindings ) do
+                    
+                    Add( tree.nams, name );
+                    
+                    CapJitAddBinding( tree.bindings, name, tree.new_bindings.(name) );
+                    
+                od;
+                
+                Unbind( tree.new_bindings );
+                
+            fi;
             
         fi;
         
@@ -232,12 +276,18 @@ InstallGlobalFunction( CapJitInlinedBindings, function ( tree )
         
     end;
     
-    return CapJitIterateOverTree( tree, pre_func, result_func, additional_arguments_func, [ ] );
+    return CapJitIterateOverTree( tree, pre_func, result_func, additional_arguments_func, initial_func_stack );
     
 end );
 
 InstallGlobalFunction( CapJitInlinedBindingsToVariableReferences, function ( tree )
     
     return CapJitInlinedBindings( tree : inline_var_refs_only := true );
+    
+end );
+
+InstallGlobalFunction( CapJitInlinedBindingsFully, function ( tree )
+    
+    return CapJitInlinedBindings( tree : inline_fully := true );
     
 end );

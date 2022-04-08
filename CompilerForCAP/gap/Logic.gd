@@ -7,6 +7,10 @@
 
 #! @Section Logic
 
+#! Warning: When writing logic functions and templates keep in mind that wrapped arguments are outlined, see <Ref Func="CapJitOutlinedWrappedArguments" />.
+#! This means that for example a logic template of the form `ObjectifyObjectForCAPWithAttributes( rec( ), cat, attr, MyFunction( x ) )` will
+#! never match because `MyFunction( x )` is outlined to a local variable.
+
 #! @Description
 #!   Adds the function <A>func</A> to the list of logic functions.
 #!   For a list of pre-installed logic functions, which can be used as guiding examples, see `CompilerForCAP/gap/Logic.gi`.

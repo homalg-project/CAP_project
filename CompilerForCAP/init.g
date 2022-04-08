@@ -24,6 +24,8 @@ ReadPackage( "CompilerForCAP", "gap/InlineArguments.gd" );
 
 ReadPackage( "CompilerForCAP", "gap/DropUnusedBindings.gd" );
 
+ReadPackage( "CompilerForCAP", "gap/OutlineWrappedArguments.gd" );
+
 ReadPackage( "CompilerForCAP", "gap/InlineBindings.gd" );
 
 ReadPackage( "CompilerForCAP", "gap/ResolveGlobalVariables.gd" );

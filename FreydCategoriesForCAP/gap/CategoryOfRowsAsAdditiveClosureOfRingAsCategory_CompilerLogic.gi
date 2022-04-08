@@ -3,134 +3,6 @@
 #
 # Implementations
 #
-CapJitAddLogicFunction( function( tree )
-  local pre_func, additional_arguments_func;
-    
-    Info( InfoCapJit, 1, "####" );
-    Info( InfoCapJit, 1, "Apply logic for HomalgMatrix." );
-    
-    pre_func := function( tree, func_stack )
-      local args, list, func_id, ring_element, condition_func, right;
-        
-        # find HomalgMatrix( ... )
-        if CapJitIsCallToGlobalFunction( tree, "HomalgMatrix" ) then
-            
-            args := tree.args;
-            
-            # check if ... = [ [ ... ], ... ]
-            if args.1.type = "EXPR_LIST" then
-                
-                list := args.1.list;
-                
-                func_id := Last( func_stack ).id;
-                
-                # check if all elements of the matrix are multiplied by the same ring element from the left
-                if list.length > 0 and ForAll( list, l -> CapJitIsCallToGlobalFunction( l, "*" ) and l.args.1 = list.1.args.1 ) then
-                    
-                    ring_element := list.1.args.1;
-                    
-                    # check if ring_element is independent of local variables
-                    condition_func := function( tree, path )
-                        
-                        if PositionSublist( tree.type, "FVAR" ) <> fail and tree.func_id = func_id then
-                            
-                            return true;
-                            
-                        fi;
-                        
-                        return false;
-                        
-                    end;
-                    
-                    if CapJitFindNodeDeep( ring_element, condition_func ) = fail then
-                        
-                        tree := rec(
-                            type := "EXPR_FUNCCALL",
-                            funcref := rec(
-                                type := "EXPR_REF_GVAR",
-                                gvar := "*",
-                            ),
-                            args := AsSyntaxTreeList( [
-                                ring_element,
-                                StructuralCopy( tree ),
-                            ] ),
-                        );
-                        
-                        tree.args.2.args.1.list := List( list, l -> l.args.2 );
-                        
-                        return tree;
-                        
-                    fi;
-                    
-                fi;
-                
-                # check if all elements of the matrix are multiplied by the same ring element from the right
-                if list.length > 0 and ForAll( list, l -> CapJitIsCallToGlobalFunction( l, "*" ) and l.args.2 = list.1.args.2 ) then
-                    
-                    ring_element := list.1.args.2;
-                    
-                    # check if ring_element is independent of local variables
-                    condition_func := function( tree, path )
-                        
-                        if PositionSublist( tree.type, "FVAR" ) <> fail and tree.func_id = func_id then
-                            
-                            return true;
-                            
-                        fi;
-                        
-                        return false;
-                        
-                    end;
-                    
-                    if CapJitFindNodeDeep( ring_element, condition_func ) = fail then
-                        
-                        tree := rec(
-                            type := "EXPR_FUNCCALL",
-                            funcref := rec(
-                                type := "EXPR_REF_GVAR",
-                                gvar := "*",
-                            ),
-                            args := AsSyntaxTreeList( [
-                                StructuralCopy( tree ),
-                                ring_element,
-                            ] ),
-                        );
-                        
-                        tree.args.1.args.1.list := List( list, l -> l.args.1 );
-                        
-                        return tree;
-                        
-                    fi;
-                    
-                fi;
-                
-            fi;
-            
-        fi;
-        
-        return tree;
-        
-    end;
-    
-    additional_arguments_func := function( tree, key, func_stack )
-        
-        if tree.type = "EXPR_DECLARATIVE_FUNC" then
-            
-            Assert( 0, IsBound( tree.id ) );
-            
-            return Concatenation( func_stack, [ tree ] );
-            
-        else
-            
-            return func_stack;
-            
-        fi;
-        
-    end;
-    
-    return CapJitIterateOverTree( tree, pre_func, CapJitResultFuncCombineChildren, additional_arguments_func, [] );
-    
-end );
 
 # additive_closure_object[i] => ObjectList( additive_closure_object )[i]
 CapJitAddLogicTemplate(
@@ -252,6 +124,39 @@ CapJitAddLogicTemplate(
     )
 );
 
+# COMPILATION_HELPER_HomalgMatrixFromRingElement
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "ring_element", "ring" ],
+        variable_filters := [ "IsHomalgRingElement", "IsHomalgRing" ],
+        src_template := "HomalgMatrix( [ ring_element ], 1, 1, ring )",
+        dst_template := "COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element, ring )",
+        needed_packages := [ [ "MatricesForHomalg", ">= 2020.06.27" ] ],
+    )
+);
+
+# COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element_to_pull_out * ring_element2 )
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "homalg_ring", "nr_cols", "list", "ring_element1", "ring_element2" ],
+        variable_filters := [ IsObject, IsObject, IsObject, "IsHomalgRingElement", "IsHomalgRingElement" ],
+        src_template := "UnionOfRows( homalg_ring, nr_cols, List( list, l -> COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element1 * ring_element2, homalg_ring ) ) )",
+        dst_template := "ring_element1 * UnionOfRows( homalg_ring, nr_cols, List( list, l -> COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element2, homalg_ring ) ) )",
+        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
+    )
+);
+
+# COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element1 * ring_element_to_pull_out )
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ "homalg_ring", "nr_cols", "list", "ring_element1", "ring_element2" ],
+        variable_filters := [ IsObject, IsObject, IsObject, "IsHomalgRingElement", "IsHomalgRingElement" ],
+        src_template := "UnionOfRows( homalg_ring, nr_cols, List( list, l -> COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element1 * ring_element2, homalg_ring ) ) )",
+        dst_template := "UnionOfRows( homalg_ring, nr_cols, List( list, l -> COMPILATION_HELPER_HomalgMatrixFromRingElement( ring_element1, homalg_ring ) ) ) * ring_element2",
+        needed_packages := [ [ "MatricesForHomalg", ">= 2020.05.19" ] ],
+    )
+);
+
 # UnionOfRows( a * B ) => a * UnionOfRows( B )
 CapJitAddLogicTemplate(
     rec(
@@ -338,7 +243,7 @@ CapJitAddLogicTemplate(
         src_template := """
             UnionOfColumns( ring, nr_rows, List( [ 1 .. NrRows( matrix ) ], i ->
                 UnionOfColumns( ring, nr_rows, List( [ 1 .. NrColumns( matrix ) ], j ->
-                    HomalgMatrix( [ matrix[i, j] ], 1, 1, ring )
+                    COMPILATION_HELPER_HomalgMatrixFromRingElement( matrix[i, j], ring )
                 ) )
             ) )
         """,
