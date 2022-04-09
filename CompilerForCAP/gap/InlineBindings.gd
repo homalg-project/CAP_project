@@ -7,8 +7,7 @@
 
 #! @Section Compilation steps
 
-# helpers
-DeclareGlobalFunction( "CAP_JIT_INTERNAL_RESOLVE_EXPR_REF_FVAR_RECURSIVELY" );
+# helper
 DeclareGlobalFunction( "CAP_JIT_INTERNAL_INLINED_BINDINGS" );
 
 #! @Description
