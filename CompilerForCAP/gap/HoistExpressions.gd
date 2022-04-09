@@ -7,8 +7,17 @@
 
 #! @Section Compilation steps
 
+# helper
+DeclareGlobalFunction( "CAP_JIT_INTERNAL_HOISTED_EXPRESSIONS_OR_BINDINGS" );
+
 #! @Description
 #!   Hoists expressions which are part of but indepedent of inner functions to outer functions.
 #! @Returns a record
 #! @Arguments tree
 DeclareGlobalFunction( "CapJitHoistedExpressions" );
+
+#! @Description
+#!   Hoists bindings which are part of but indepedent of inner functions to outer functions.
+#! @Returns a record
+#! @Arguments tree
+DeclareGlobalFunction( "CapJitHoistedBindings" );

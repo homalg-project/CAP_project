@@ -174,6 +174,7 @@ InstallGlobalFunction( CapJitCompiledFunctionAsEnhancedSyntaxTree, function ( fu
         CapJitInlinedArguments,
         CapJitInlinedSimpleFunctionCalls,
         CapJitInlinedFunctionCalls,
+        CapJitHoistedBindings,
         CapJitOutlinedWrappedArguments,
         CapJitInlinedBindings,
     ];
