@@ -293,6 +293,28 @@
   (sub-)trees   again   using   [2XCapJitResultFuncCombineChildren[102X   ([14X2.4-3[114X)   as
   [3Xresult_func[103X.[133X
   
+  [1X2.3-2 CapJitIterateOverTreeWithCachedBindingResults[101X
+  
+  [33X[1;0Y[29X[2XCapJitIterateOverTreeWithCachedBindingResults[102X( [3Xtree[103X, [3Xpre_func[103X, [3Xresult_func[103X, [3Xadditional_arguments_func[103X, [3Xadditional_arguments[103X ) [32X function[133X
+  
+  [33X[0;0YSame  input  and output as [2XCapJitIterateOverTree[102X ([14X2.3-1[114X), but the results of
+  bindings are cached and[133X
+  
+  [30X    [33X[0;6Yif  we  reach an [10XEXPR_REF_FVAR[110X the result of the corresponding binding
+        is given as [10Xresult[110X for [3Xresult_func[103X,[133X
+  
+  [30X    [33X[0;6Y[10Xpre_func[110X will not be called for [10XFVAR_BINDING_SEQ[110Xs,[133X
+  
+  [30X    [33X[0;6Ythe [10Xresult[110X for [10XFVAR_BINDING_SEQ[110Xs will only contain used bindings, and[133X
+  
+  [30X    [33X[0;6Ythe  [10Xkeys[110X  for  [10XFVAR_BINDING_SEQ[110Xs  will only contain the names of used
+        bindings  and  will  be ordered compatible with the "uses" relation on
+        bindings,  i.e.  if  a binding contains references to another binding,
+        the name of the other binding will come first in [10Xkeys[110X.[133X
+  
+  [33X[0;0YWARNING:  Calls to [10XCapJitIterateOverTreeWithCachedBindingResults[110X must not be
+  nested if this results in a function being visited twice.[133X
+  
   
   [1X2.4 [33X[0;0YTools[133X[101X
   

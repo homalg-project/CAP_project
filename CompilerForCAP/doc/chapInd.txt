@@ -32,6 +32,7 @@
   [2XCapJitIsCallToGlobalFunction[102X 2.4-2 
   [2XCapJitIsEqualForEnhancedSyntaxTrees[102X 2.4-12 
   [2XCapJitIterateOverTree[102X 2.3-1 
+  [2XCapJitIterateOverTreeWithCachedBindingResults[102X 2.3-2 
   [2XCapJitOutlinedWrappedArguments[102X 2.5-17 
   [2XCapJitPrecompileCategory[102X 1.4-1 
   [2XCapJitPrecompileCategoryAndCompareResult[102X 1.4-2 

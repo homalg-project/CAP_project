@@ -6,7 +6,7 @@
                    [1X Speed up computations in CAP categories [101X
   
   
-                                   2022.04-07
+                                   2022.04-08
   
   
                                   9 April 2022
@@ -57,6 +57,7 @@
       2.2-2 ENHANCED_SYNTAX_TREE_CODE
     2.3 [33X[0;0YIterating over a syntax tree[133X
       2.3-1 CapJitIterateOverTree
+      2.3-2 CapJitIterateOverTreeWithCachedBindingResults
     2.4 [33X[0;0YTools[133X
       2.4-1 CapJitPrettyPrintSyntaxTree
       2.4-2 CapJitIsCallToGlobalFunction

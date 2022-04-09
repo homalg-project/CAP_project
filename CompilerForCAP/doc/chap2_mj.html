@@ -41,6 +41,7 @@
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7C227788859AA50E">2.3-1 CapJitIterateOverTree</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X82D5E91180359D94">2.3-2 CapJitIterateOverTreeWithCachedBindingResults</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X8508AEF8845565A1">2.4 <span class="Heading">Tools</span></a>
 </span>
@@ -317,6 +318,30 @@
 </li>
 </ul>
 <p>Note: This function on its own does not modify the tree. However, you can make modifications in <var class="Arg">pre_func</var>, <var class="Arg">result_func</var>, and <var class="Arg">additional_arguments_func</var>. If you do not want to make these modifcations in-place, you can replace a (sub-)tree by a modified version in <var class="Arg">pre_func</var> and combine the modified (sub-)trees again using <code class="func">CapJitResultFuncCombineChildren</code> (<a href="chap2_mj.html#X7869C74E78CAAB21"><span class="RefLink">2.4-3</span></a>) as <var class="Arg">result_func</var>.</p>
+
+<p><a id="X82D5E91180359D94" name="X82D5E91180359D94"></a></p>
+
+<h5>2.3-2 CapJitIterateOverTreeWithCachedBindingResults</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitIterateOverTreeWithCachedBindingResults</code>( <var class="Arg">tree</var>, <var class="Arg">pre_func</var>, <var class="Arg">result_func</var>, <var class="Arg">additional_arguments_func</var>, <var class="Arg">additional_arguments</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Same input and output as <code class="func">CapJitIterateOverTree</code> (<a href="chap2_mj.html#X7C227788859AA50E"><span class="RefLink">2.3-1</span></a>), but the results of bindings are cached and</p>
+
+
+<ul>
+<li><p>if we reach an <code class="code">EXPR_REF_FVAR</code> the result of the corresponding binding is given as <code class="code">result</code> for <var class="Arg">result_func</var>,</p>
+
+</li>
+<li><p><code class="code">pre_func</code> will not be called for <code class="code">FVAR_BINDING_SEQ</code>s,</p>
+
+</li>
+<li><p>the <code class="code">result</code> for <code class="code">FVAR_BINDING_SEQ</code>s will only contain used bindings, and</p>
+
+</li>
+<li><p>the <code class="code">keys</code> for <code class="code">FVAR_BINDING_SEQ</code>s will only contain the names of used bindings and will be ordered compatible with the "uses" relation on bindings, i.e. if a binding contains references to another binding, the name of the other binding will come first in <code class="code">keys</code>.</p>
+
+</li>
+</ul>
+<p>WARNING: Calls to <code class="code">CapJitIterateOverTreeWithCachedBindingResults</code> must not be nested if this results in a function being visited twice.</p>
 
 <p><a id="X8508AEF8845565A1" name="X8508AEF8845565A1"></a></p>
 
