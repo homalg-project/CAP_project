@@ -1109,6 +1109,57 @@
     [4X[28X    fi;[128X[104X
     [4X[28X    return;[128X[104X
     [4X[28Xend[128X[104X
+    [4X[25Xgap>[125X [27X# CapJitHoistedBindings[127X[104X
+    [4X[25X>[125X [27X[127X[104X
+    [4X[25X>[125X [27X# we have to work hard to not write semicolons so AutoDoc[127X[104X
+    [4X[25X>[125X [27X# does not begin a new statement[127X[104X
+    [4X[25X>[125X [27Xfunc := EvalString( ReplacedString( """function (  )[127X[104X
+    [4X[25X>[125X [27X  local var1, func1, func2@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    var1 := 1@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    func1 := function ( )[127X[104X
+    [4X[25X>[125X [27X      local var2, var3@[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X        var2 := var1 + 1@[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X        var3 := var2 + 2@[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X        return var3@[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X    end@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    func2 := function ( )[127X[104X
+    [4X[25X>[125X [27X      local var4, var5@[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X        var4 := var1 + 1@[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X        var5 := var4 + 2@[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X        return var5@[127X[104X
+    [4X[25X>[125X [27X        [127X[104X
+    [4X[25X>[125X [27X    end@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27X    return [ func1, func2 ]@[127X[104X
+    [4X[25X>[125X [27X    [127X[104X
+    [4X[25X>[125X [27Xend""", "@", ";" ) );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := ENHANCED_SYNTAX_TREE( func );;[127X[104X
+    [4X[25Xgap>[125X [27Xtree := CapJitHoistedBindings( tree );;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplay( compiled_func );[127X[104X
+    [4X[28Xfunction (  )[128X[104X
+    [4X[28X    local var1_1, func1_1, func2_1, hoisted_3_1, hoisted_4_1;[128X[104X
+    [4X[28X    var1_1 := 1;[128X[104X
+    [4X[28X    hoisted_3_1 := var1_1 + 1;[128X[104X
+    [4X[28X    hoisted_4_1 := hoisted_3_1 + 2;[128X[104X
+    [4X[28X    func2_1 := function (  )[128X[104X
+    [4X[28X          return hoisted_4_1;[128X[104X
+    [4X[28X      end;[128X[104X
+    [4X[28X    func1_1 := function (  )[128X[104X
+    [4X[28X          return hoisted_4_1;[128X[104X
+    [4X[28X      end;[128X[104X
+    [4X[28X    return [ func1_1, func2_1 ];[128X[104X
+    [4X[28Xend[128X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X

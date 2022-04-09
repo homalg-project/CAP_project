@@ -134,7 +134,7 @@
 
 </li>
 </ul>
-<p>For details see <code class="func">CapJitResolvedOperations</code> (<a href="chap2.html#X7D12C378812745DA"><span class="RefLink">2.5-19</span></a>) and <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-18</span></a>). If no operation or global variable can be resolved anymore, we continue with the rule phase.</p>
+<p>For details see <code class="func">CapJitResolvedOperations</code> (<a href="chap2.html#X7D12C378812745DA"><span class="RefLink">2.5-20</span></a>) and <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-19</span></a>). If no operation or global variable can be resolved anymore, we continue with the rule phase.</p>
 
 <p>In the rule phase, the tree is optimized using several rules and techniques. Function arguments, functions, and assignments to local variables are inlined. Unused variables are dropped. Handled edge cases are dropped, that is, if the same edge case is caught multiple times via <code class="code">if condition then return ...; fi;</code> statements, only the first such statement is kept. Finally, "logic" is applied to the tree. For example, calls of <code class="code">CallFuncList</code> are replaced by calls to the actual function. The logic can be extended by the user, see chapter <a href="chap2.html#X7D62EFD07F991E56"><span class="RefLink">2</span></a>.</p>
 
@@ -233,7 +233,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CapJitCompiledFunction</code>( <var class="Arg">func</var>[, <var class="Arg">type_signature</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: a function</p>
 
-<p>Returns a compiled version of the function <var class="Arg">func</var> with signature <var class="Arg">type_signature</var> (see <code class="func">CapJitInferredDataTypes</code> (<a href="chap2.html#X821BE2CE7C30674E"><span class="RefLink">2.5-8</span></a>)). If <var class="Arg">func</var> is an operation or a kernel function, it is returned unchanged. If <var class="Arg">type_signature</var> is not given, all steps which require knowledge about the types of variables are skipped. If a full type signature is not available but the first argument of <var class="Arg">func</var> is a CAP category, an instance of a CAP category can be given as the second argument. In this case, the category is used to get the type information required to resolve CAP operations.</p>
+<p>Returns a compiled version of the function <var class="Arg">func</var> with signature <var class="Arg">type_signature</var> (see <code class="func">CapJitInferredDataTypes</code> (<a href="chap2.html#X821BE2CE7C30674E"><span class="RefLink">2.5-9</span></a>)). If <var class="Arg">func</var> is an operation or a kernel function, it is returned unchanged. If <var class="Arg">type_signature</var> is not given, all steps which require knowledge about the types of variables are skipped. If a full type signature is not available but the first argument of <var class="Arg">func</var> is a CAP category, an instance of a CAP category can be given as the second argument. In this case, the category is used to get the type information required to resolve CAP operations.</p>
 
 <p><a id="X7B1445EE85D8CA0A" name="X7B1445EE85D8CA0A"></a></p>
 
@@ -304,7 +304,7 @@
 
 </li>
 </ul>
-<p>A: The function might be listed in <code class="code">CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES</code> or it might be missing an annotation with the pragma <code class="code">CAP_JIT_RESOLVE_FUNCTION</code>. Additionally, a function can only be resolved if it appears as a global variable in the tree during the resolving phase of the compilation. That is, it must be referenced from a global variable from the beginning on, or after global variables are resolved by <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-18</span></a>). Possibly you have adapt <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-18</span></a>) to your setting.</p>
+<p>A: The function might be listed in <code class="code">CAP_JIT_NON_RESOLVABLE_GLOBAL_VARIABLE_NAMES</code> or it might be missing an annotation with the pragma <code class="code">CAP_JIT_RESOLVE_FUNCTION</code>. Additionally, a function can only be resolved if it appears as a global variable in the tree during the resolving phase of the compilation. That is, it must be referenced from a global variable from the beginning on, or after global variables are resolved by <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-19</span></a>). Possibly you have adapt <code class="func">CapJitResolvedGlobalVariables</code> (<a href="chap2.html#X7FD883BA85F7EBE5"><span class="RefLink">2.5-19</span></a>) to your setting.</p>
 
 
 <ul>

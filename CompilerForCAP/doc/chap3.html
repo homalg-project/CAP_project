@@ -1153,6 +1153,57 @@ function ( x_1 )
     fi;
     return;
 end
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># CapJitHoistedBindings</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"></span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># we have to work hard to not write semicolons so AutoDoc</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput"># does not begin a new statement</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">func := EvalString( ReplacedString( """function (  )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">  local var1, func1, func2@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    var1 := 1@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    func1 := function ( )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      local var2, var3@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        var2 := var1 + 1@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        var3 := var2 + 2@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        return var3@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    end@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    func2 := function ( )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      local var4, var5@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        var4 := var1 + 1@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        var5 := var4 + 2@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        return var5@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    end@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    return [ func1, func2 ]@</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">end""", "@", ";" ) );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := ENHANCED_SYNTAX_TREE( func );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">tree := CapJitHoistedBindings( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">compiled_func := ENHANCED_SYNTAX_TREE_CODE( tree );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( compiled_func );</span>
+function (  )
+    local var1_1, func1_1, func2_1, hoisted_3_1, hoisted_4_1;
+    var1_1 := 1;
+    hoisted_3_1 := var1_1 + 1;
+    hoisted_4_1 := hoisted_3_1 + 2;
+    func2_1 := function (  )
+          return hoisted_4_1;
+      end;
+    func1_1 := function (  )
+          return hoisted_4_1;
+      end;
+    return [ func1_1, func2_1 ];
+end
 </pre></div>
 
 
