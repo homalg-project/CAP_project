@@ -51,3 +51,17 @@
 #! @Returns see description
 #! @Arguments tree, pre_func, result_func, additional_arguments_func, additional_arguments
 DeclareGlobalFunction( "CapJitIterateOverTree" );
+
+#! @Description
+#!   Same input and output as <Ref Func="CapJitIterateOverTree" />, but the results of bindings are cached and
+#!   * if we reach an `EXPR_REF_FVAR` the result of the corresponding binding is given as `result` for <A>result_func</A>,
+#!   * `pre_func` will not be called for `FVAR_BINDING_SEQ`s,
+#!   * the `result` for `FVAR_BINDING_SEQ`s will only contain used bindings, and
+#!   * the `keys` for `FVAR_BINDING_SEQ`s will only contain the names of used bindings and will be ordered compatible with the "uses" relation on bindings,
+#!     i.e. if a binding contains references to another binding, the name of the other binding will come first in `keys`.
+#!
+#!   WARNING: Calls to `CapJitIterateOverTreeWithCachedBindingResults` must not be nested if this results in a function being visited twice.
+#! @Arguments tree, pre_func, result_func, additional_arguments_func, additional_arguments
+DeclareGlobalFunction( "CapJitIterateOverTreeWithCachedBindingResults" );
+
+DeclareGlobalFunction( "CAP_JIT_INTERNAL_ITERATE_OVER_TREE" );
