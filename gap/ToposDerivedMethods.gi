@@ -187,6 +187,30 @@ AddDerivationToCAP( CocartesianAssociatorRightToLeftWithGivenCoproducts,
 end : Description := "CocartesianAssociatorRightToLeftWithGivenCoproducts using the universal morphism from coproduct");
 
 ##
+AddDerivationToCAP( CartesianBraidingWithGivenDirectProducts,
+  function( cat, axb, a, b, bxa )
+    local p1, p2;
+    
+    p1 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, [ a, b ], 1, axb );
+    p2 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( cat, [ a, b ], 2, axb );
+    
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, [ b, a ], axb, [ p2, p1 ], bxa );
+    
+end );
+
+##
+AddDerivationToCAP( CocartesianBraidingWithGivenCoproducts,
+  function( cat, aub, a, b, bua )
+    local i1, i2;
+    
+    i1 := InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, [ b, a ], 1, bua );
+    i2 := InjectionOfCofactorOfCoproductWithGivenCoproduct( cat, [ b, a ], 2, bua );
+    
+    return UniversalMorphismFromCoproductWithGivenCoproduct( cat, [ a, b ], bua, [ i2, i1 ], aub );
+    
+end );
+
+##
 AddDerivationToCAP( MorphismsOfExternalHom,
   function( cat, A, B )
     local hom_A_B, D;
