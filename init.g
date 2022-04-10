@@ -21,6 +21,9 @@ ReadPackage( "Toposes", "gap/CocartesianCategories.autogen.gd" );
 ReadPackage( "Toposes", "gap/DistributiveCartesianCategories.gd" );
 ReadPackage( "Toposes", "gap/CodistributiveCocartesianCategories.gd" );
 
+ReadPackage( "Toposes", "gap/DistributiveCartesianCategoriesProperties.gd" );
+ReadPackage( "Toposes", "gap/CodistributiveCocartesianCategoriesProperties.gd" );
+
 ReadPackage( "Toposes", "gap/DistributiveCartesianCategories.autogen.gd" );
 ReadPackage( "Toposes", "gap/CodistributiveCocartesianCategories.autogen.gd" );
 
