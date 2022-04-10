@@ -196,7 +196,7 @@ AddDerivationToCAP( CartesianBraidingWithGivenDirectProducts,
     
     return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, [ b, a ], axb, [ p2, p1 ], bxa );
     
-end );
+end : Description := "CartesianBraidingWithGivenDirectProducts using the direct product projections and the universal morphism in the direct product" );
 
 ##
 AddDerivationToCAP( CocartesianBraidingWithGivenCoproducts,
@@ -208,7 +208,7 @@ AddDerivationToCAP( CocartesianBraidingWithGivenCoproducts,
     
     return UniversalMorphismFromCoproductWithGivenCoproduct( cat, [ a, b ], bua, [ i2, i1 ], aub );
     
-end );
+end : Description := "CocartesianBraidingWithGivenCoproducts using the coproduct injections and the universal morphism into the coproduct" );
 
 ##
 AddDerivationToCAP( MorphismsOfExternalHom,
