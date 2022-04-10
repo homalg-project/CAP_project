@@ -421,6 +421,10 @@ InstallGlobalFunction( CapInternalInstallAdd,
                     CAP_INTERNAL_ASSERT_IS_LIST_OF_MORPHISMS_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
                 fi;
             end;
+        elif record.return_type = "list_of_objects" then
+            output_sanity_check_function := function( result )
+                CAP_INTERNAL_ASSERT_IS_LIST_OF_OBJECTS_OF_CATEGORY( result, category, output_human_readable_identifier_getter );
+            end;
         elif record.return_type = "nonneg_integer_or_infinity" then
             output_sanity_check_function := function( result )
                 CAP_INTERNAL_ASSERT_IS_NON_NEGATIVE_INTEGER_OR_INFINITY( result, output_human_readable_identifier_getter );

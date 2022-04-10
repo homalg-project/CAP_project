@@ -288,6 +288,14 @@ DeclareAttribute( "RangeCategoryOfHomomorphismStructure",
 # make this mutable so we can overwrite it even if
 # some category constructor has already set it
 
+#! @Description
+#! The argument is an additive category $C$.
+#! The output is a list $L$ of objects in $C$ such that every object in $C$ is a finite direct sum of objects in $L$.
+#! @Arguments C
+#! @Returns a list of objects
+DeclareAttribute( "AdditiveGenerators",
+                  IsCapCategory );
+
 #############################################
 ##
 #! @Section Logic switcher

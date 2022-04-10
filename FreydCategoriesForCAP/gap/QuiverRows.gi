@@ -800,6 +800,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_QUIVER_ROWS,
         
     end );
     
+    ##
+    AddAdditiveGenerators( category,
+      function( cat )
+        
+        return List( Vertices( UnderlyingQuiver( cat ) ), v -> AsQuiverRowsObject( v, cat ) );
+        
+    end );
+    
     ## Basic Operations for a Category
     
     ##

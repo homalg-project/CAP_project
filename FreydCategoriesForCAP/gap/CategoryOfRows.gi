@@ -482,6 +482,14 @@ InstallGlobalFunction( INSTALL_FUNCTIONS_FOR_CATEGORY_OF_ROWS,
         
     end );
     
+    ##
+    AddAdditiveGenerators( category,
+      function( cat )
+        
+        return [ CategoryOfRowsObject( cat, 1 ) ];
+        
+    end );
+    
     ## Basic Operations for a Category
     ##
     AddIdentityMorphism( category,
