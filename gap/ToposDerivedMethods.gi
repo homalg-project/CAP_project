@@ -211,6 +211,82 @@ AddDerivationToCAP( CocartesianBraidingWithGivenCoproducts,
 end : Description := "CocartesianBraidingWithGivenCoproducts using the coproduct injections and the universal morphism into the coproduct" );
 
 ##
+AddDerivationToCAP( LeftCartesianDistributivityFactoringWithGivenObjects,
+  function( cat, Uk_axLk, a, L, ax_UkLk )
+    local l, iotaL, axiotaL;
+    
+    l := Length( L );
+    
+    iotaL := List( [ 1 .. l ], k -> InjectionOfCofactorOfCoproduct( cat, L, k ) );
+    
+    axiotaL := List( L, iota_b -> DirectProductOnMorphisms( cat, IdentityMorphism( a ), iota_b ) );
+    
+    return UniversalMorphismFromCoproductWithGivenCoproduct( cat,
+                   List( axiotaL, Source ),
+                   ax_UkLk,
+                   axiotaL,
+                   Uk_axLk );
+    
+end : Description := "LeftCartesianDistributivityFactoringWithGivenObjects using the coproduct injections, the functoriality of the direct product, and the universal morphism of coproducts");
+
+##
+AddDerivationToCAP( RightCartesianDistributivityFactoringWithGivenObjects,
+  function( cat, Uk_Lkxa, a, L, UkLk_xa )
+    local l, iotaL, iotaLxa;
+    
+    l := Length( L );
+    
+    iotaL := List( [ 1 .. l ], k -> InjectionOfCofactorOfCoproduct( cat, L, k ) );
+    
+    iotaLxa := List( L, iota_b -> DirectProductOnMorphisms( cat, iota_b, IdentityMorphism( a ) ) );
+    
+    return UniversalMorphismFromCoproductWithGivenCoproduct( cat,
+                   List( iotaLxa, Source ),
+                   UkLk_xa,
+                   iotaLxa,
+                   Uk_Lkxa );
+    
+end : Description := "RightCartesianDistributivityFactoringWithGivenObjects using the coproduct injections, the functoriality of the direct product, and the universal morphism of coproducts");
+
+##
+AddDerivationToCAP( LeftCocartesianCodistributivityExpandingWithGivenObjects,
+  function( cat, au_XkLk, a, L, Xk_auLk )
+    local l, piL, aupiL;
+    
+    l := Length( L );
+    
+    piL := List( [ 1 .. l ], k -> ProjectionInFactorOfDirectProduct( cat, L, k ) );
+    
+    aupiL := List( L, pi_b -> CoproductOnMorphisms( cat, IdentityMorphism( a ), pi_b ) );
+    
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
+                   List( aupiL, Range ),
+                   au_XkLk,
+                   aupiL,
+                   Xk_auLk );
+    
+end : Description := "LeftCocartesianCodistributivityExpandingWithGivenObjects using the direct product projections, the functoriality of the coproduct, and the universal morphism of direct products");
+
+##
+AddDerivationToCAP( RightCocartesianCodistributivityExpandingWithGivenObjects,
+  function( cat, XkLk_ua, a, L, Xk_Lkua )
+    local l, piL, piLua;
+    
+    l := Length( L );
+    
+    piL := List( [ 1 .. l ], k -> ProjectionInFactorOfDirectProduct( cat, L, k ) );
+    
+    piLua := List( L, pi_b -> CoproductOnMorphisms( cat, pi_b, IdentityMorphism( a ) ) );
+    
+    return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
+                   List( piLua, Range ),
+                   XkLk_ua,
+                   piLua,
+                   Xk_Lkua );
+    
+end : Description := "RightCocartesianCodistributivityExpandingWithGivenObjects using the direct product projections, the functoriality of the coproduct, and the universal morphism of direct product");
+
+##
 AddDerivationToCAP( MorphismsOfExternalHom,
   function( cat, A, B )
     local hom_A_B, D;
