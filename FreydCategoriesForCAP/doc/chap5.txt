@@ -12,6 +12,8 @@
   [30X    [33X[0;6Y[2XAdditionForMorphisms[102X        ([14XCAP:       AdditionForMorphisms       for
         iscapcategorymorphism, iscapcategorymorphism[114X)[133X
   
+  [30X    [33X[0;6Y[2XAdditiveGenerators[102X ([14XCAP: AdditiveGenerators for iscapcategory[114X)[133X
+  
   [30X    [33X[0;6Y[2XAdditiveInverseForMorphisms[102X   ([14XCAP:   AdditiveInverseForMorphisms  for
         iscapcategorymorphism[114X)[133X
   

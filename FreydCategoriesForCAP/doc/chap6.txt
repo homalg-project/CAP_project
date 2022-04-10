@@ -44,6 +44,8 @@
   [1X6.3 [33X[0;0YA few categorical constructions for category of rows[133X[101X
   
   [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XSize( AdditiveGenerators( rows ) );[127X[104X
+    [4X[28X1[128X[104X
     [4X[25Xgap>[125X [27XZeroObject( rows );[127X[104X
     [4X[28X<A row module over Z of rank 0>[128X[104X
     [4X[25Xgap>[125X [27Xobj5 := CategoryOfRowsObject( 2, rows );[127X[104X
