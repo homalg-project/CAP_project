@@ -16,10 +16,10 @@ ReadPackage( "Toposes", "gap/CartesianCategories.gi" );
 ReadPackage( "Toposes", "gap/CocartesianCategories.gi" );
 
 ReadPackage( "Toposes", "gap/DistributiveCartesianCategoriesMethodRecord.gi" );
-ReadPackage( "Toposes", "gap/DistributiveCocartesianCategoriesMethodRecord.gi" );
+ReadPackage( "Toposes", "gap/CodistributiveCocartesianCategoriesMethodRecord.gi" );
 
 ReadPackage( "Toposes", "gap/DistributiveCartesianCategories.gi" );
-ReadPackage( "Toposes", "gap/DistributiveCocartesianCategories.gi" );
+ReadPackage( "Toposes", "gap/CodistributiveCocartesianCategories.gi" );
 
 ReadPackage( "Toposes", "gap/BraidedCartesianCategoriesMethodRecord.gi" );
 ReadPackage( "Toposes", "gap/BraidedCocartesianCategoriesMethodRecord.gi" );
@@ -43,7 +43,7 @@ ReadPackage( "Toposes", "gap/CartesianCategoriesDerivedMethods.gi" );
 ReadPackage( "Toposes", "gap/CocartesianCategoriesDerivedMethods.gi" );
 
 ReadPackage( "Toposes", "gap/DistributiveCartesianCategoriesDerivedMethods.gi" );
-ReadPackage( "Toposes", "gap/DistributiveCocartesianCategoriesDerivedMethods.gi" );
+ReadPackage( "Toposes", "gap/CodistributiveCocartesianCategoriesDerivedMethods.gi" );
 
 ReadPackage( "Toposes", "gap/BraidedCartesianCategoriesDerivedMethods.gi" );
 ReadPackage( "Toposes", "gap/BraidedCocartesianCategoriesDerivedMethods.gi" );

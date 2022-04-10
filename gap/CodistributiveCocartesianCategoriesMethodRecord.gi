@@ -68,7 +68,7 @@ CAP_INTERNAL_ENHANCE_NAME_RECORD( DISTRIBUTIVE_COCARTESIAN_CATEGORIES_METHOD_NAM
 CAP_INTERNAL_GENERATE_DOCUMENTATION_FROM_METHOD_NAME_RECORD(
     DISTRIBUTIVE_COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD,
     "Toposes",
-    "DistributiveCocartesianCategories.autogen.gd",
+    "CodistributiveCocartesianCategories.autogen.gd",
     "Cocartesian Categories",
     "Add-methods"
 );

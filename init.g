@@ -19,10 +19,10 @@ ReadPackage( "Toposes", "gap/CartesianCategories.autogen.gd" );
 ReadPackage( "Toposes", "gap/CocartesianCategories.autogen.gd" );
 
 ReadPackage( "Toposes", "gap/DistributiveCartesianCategories.gd" );
-ReadPackage( "Toposes", "gap/DistributiveCocartesianCategories.gd" );
+ReadPackage( "Toposes", "gap/CodistributiveCocartesianCategories.gd" );
 
 ReadPackage( "Toposes", "gap/DistributiveCartesianCategories.autogen.gd" );
-ReadPackage( "Toposes", "gap/DistributiveCocartesianCategories.autogen.gd" );
+ReadPackage( "Toposes", "gap/CodistributiveCocartesianCategories.autogen.gd" );
 
 ReadPackage( "Toposes", "gap/BraidedCartesianCategories.gd" );
 ReadPackage( "Toposes", "gap/BraidedCocartesianCategories.gd" );
