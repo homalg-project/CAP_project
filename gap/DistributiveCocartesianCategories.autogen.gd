@@ -12,151 +12,151 @@
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `LeftCocartesianDistributivityExpanding`.
-#! $F: ( a, L ) \mapsto \mathtt{LeftCocartesianDistributivityExpanding}(a, L)$.
+#! to the category for the basic operation `LeftCocartesianCodistributivityExpanding`.
+#! $F: ( a, L ) \mapsto \mathtt{LeftCocartesianCodistributivityExpanding}(a, L)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddLeftCocartesianDistributivityExpanding",
+DeclareOperation( "AddLeftCocartesianCodistributivityExpanding",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddLeftCocartesianDistributivityExpanding",
+DeclareOperation( "AddLeftCocartesianCodistributivityExpanding",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddLeftCocartesianDistributivityExpanding",
+DeclareOperation( "AddLeftCocartesianCodistributivityExpanding",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftCocartesianDistributivityExpanding",
+DeclareOperation( "AddLeftCocartesianCodistributivityExpanding",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `LeftCocartesianDistributivityExpandingWithGivenObjects`.
-#! $F: ( s, a, L, r ) \mapsto \mathtt{LeftCocartesianDistributivityExpandingWithGivenObjects}(s, a, L, r)$.
+#! to the category for the basic operation `LeftCocartesianCodistributivityExpandingWithGivenObjects`.
+#! $F: ( s, a, L, r ) \mapsto \mathtt{LeftCocartesianCodistributivityExpandingWithGivenObjects}(s, a, L, r)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddLeftCocartesianDistributivityExpandingWithGivenObjects",
+DeclareOperation( "AddLeftCocartesianCodistributivityExpandingWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddLeftCocartesianDistributivityExpandingWithGivenObjects",
+DeclareOperation( "AddLeftCocartesianCodistributivityExpandingWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddLeftCocartesianDistributivityExpandingWithGivenObjects",
+DeclareOperation( "AddLeftCocartesianCodistributivityExpandingWithGivenObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftCocartesianDistributivityExpandingWithGivenObjects",
+DeclareOperation( "AddLeftCocartesianCodistributivityExpandingWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `LeftCocartesianDistributivityFactoring`.
-#! $F: ( a, L ) \mapsto \mathtt{LeftCocartesianDistributivityFactoring}(a, L)$.
+#! to the category for the basic operation `LeftCocartesianCodistributivityFactoring`.
+#! $F: ( a, L ) \mapsto \mathtt{LeftCocartesianCodistributivityFactoring}(a, L)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddLeftCocartesianDistributivityFactoring",
+DeclareOperation( "AddLeftCocartesianCodistributivityFactoring",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddLeftCocartesianDistributivityFactoring",
+DeclareOperation( "AddLeftCocartesianCodistributivityFactoring",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddLeftCocartesianDistributivityFactoring",
+DeclareOperation( "AddLeftCocartesianCodistributivityFactoring",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftCocartesianDistributivityFactoring",
+DeclareOperation( "AddLeftCocartesianCodistributivityFactoring",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `LeftCocartesianDistributivityFactoringWithGivenObjects`.
-#! $F: ( s, a, L, r ) \mapsto \mathtt{LeftCocartesianDistributivityFactoringWithGivenObjects}(s, a, L, r)$.
+#! to the category for the basic operation `LeftCocartesianCodistributivityFactoringWithGivenObjects`.
+#! $F: ( s, a, L, r ) \mapsto \mathtt{LeftCocartesianCodistributivityFactoringWithGivenObjects}(s, a, L, r)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddLeftCocartesianDistributivityFactoringWithGivenObjects",
+DeclareOperation( "AddLeftCocartesianCodistributivityFactoringWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddLeftCocartesianDistributivityFactoringWithGivenObjects",
+DeclareOperation( "AddLeftCocartesianCodistributivityFactoringWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddLeftCocartesianDistributivityFactoringWithGivenObjects",
+DeclareOperation( "AddLeftCocartesianCodistributivityFactoringWithGivenObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddLeftCocartesianDistributivityFactoringWithGivenObjects",
+DeclareOperation( "AddLeftCocartesianCodistributivityFactoringWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `RightCocartesianDistributivityExpanding`.
-#! $F: ( L, a ) \mapsto \mathtt{RightCocartesianDistributivityExpanding}(L, a)$.
+#! to the category for the basic operation `RightCocartesianCodistributivityExpanding`.
+#! $F: ( L, a ) \mapsto \mathtt{RightCocartesianCodistributivityExpanding}(L, a)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddRightCocartesianDistributivityExpanding",
+DeclareOperation( "AddRightCocartesianCodistributivityExpanding",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddRightCocartesianDistributivityExpanding",
+DeclareOperation( "AddRightCocartesianCodistributivityExpanding",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddRightCocartesianDistributivityExpanding",
+DeclareOperation( "AddRightCocartesianCodistributivityExpanding",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddRightCocartesianDistributivityExpanding",
+DeclareOperation( "AddRightCocartesianCodistributivityExpanding",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `RightCocartesianDistributivityExpandingWithGivenObjects`.
-#! $F: ( s, L, a, r ) \mapsto \mathtt{RightCocartesianDistributivityExpandingWithGivenObjects}(s, L, a, r)$.
+#! to the category for the basic operation `RightCocartesianCodistributivityExpandingWithGivenObjects`.
+#! $F: ( s, L, a, r ) \mapsto \mathtt{RightCocartesianCodistributivityExpandingWithGivenObjects}(s, L, a, r)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddRightCocartesianDistributivityExpandingWithGivenObjects",
+DeclareOperation( "AddRightCocartesianCodistributivityExpandingWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddRightCocartesianDistributivityExpandingWithGivenObjects",
+DeclareOperation( "AddRightCocartesianCodistributivityExpandingWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddRightCocartesianDistributivityExpandingWithGivenObjects",
+DeclareOperation( "AddRightCocartesianCodistributivityExpandingWithGivenObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddRightCocartesianDistributivityExpandingWithGivenObjects",
+DeclareOperation( "AddRightCocartesianCodistributivityExpandingWithGivenObjects",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `RightCocartesianDistributivityFactoring`.
-#! $F: ( L, a ) \mapsto \mathtt{RightCocartesianDistributivityFactoring}(L, a)$.
+#! to the category for the basic operation `RightCocartesianCodistributivityFactoring`.
+#! $F: ( L, a ) \mapsto \mathtt{RightCocartesianCodistributivityFactoring}(L, a)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddRightCocartesianDistributivityFactoring",
+DeclareOperation( "AddRightCocartesianCodistributivityFactoring",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddRightCocartesianDistributivityFactoring",
+DeclareOperation( "AddRightCocartesianCodistributivityFactoring",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddRightCocartesianDistributivityFactoring",
+DeclareOperation( "AddRightCocartesianCodistributivityFactoring",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddRightCocartesianDistributivityFactoring",
+DeclareOperation( "AddRightCocartesianCodistributivityFactoring",
                   [ IsCapCategory, IsList ] );
 
 #! @Description
 #! The arguments are a category $C$ and a function $F$.
 #! This operation adds the given function $F$
-#! to the category for the basic operation `RightCocartesianDistributivityFactoringWithGivenObjects`.
-#! $F: ( s, L, a, r ) \mapsto \mathtt{RightCocartesianDistributivityFactoringWithGivenObjects}(s, L, a, r)$.
+#! to the category for the basic operation `RightCocartesianCodistributivityFactoringWithGivenObjects`.
+#! $F: ( s, L, a, r ) \mapsto \mathtt{RightCocartesianCodistributivityFactoringWithGivenObjects}(s, L, a, r)$.
 #! @Returns nothing
 #! @Arguments C, F
-DeclareOperation( "AddRightCocartesianDistributivityFactoringWithGivenObjects",
+DeclareOperation( "AddRightCocartesianCodistributivityFactoringWithGivenObjects",
                   [ IsCapCategory, IsFunction ] );
 
-DeclareOperation( "AddRightCocartesianDistributivityFactoringWithGivenObjects",
+DeclareOperation( "AddRightCocartesianCodistributivityFactoringWithGivenObjects",
                   [ IsCapCategory, IsFunction, IsInt ] );
 
-DeclareOperation( "AddRightCocartesianDistributivityFactoringWithGivenObjects",
+DeclareOperation( "AddRightCocartesianCodistributivityFactoringWithGivenObjects",
                   [ IsCapCategory, IsList, IsInt ] );
 
-DeclareOperation( "AddRightCocartesianDistributivityFactoringWithGivenObjects",
+DeclareOperation( "AddRightCocartesianCodistributivityFactoringWithGivenObjects",
                   [ IsCapCategory, IsList ] );

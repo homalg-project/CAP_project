@@ -8,14 +8,14 @@
 
 
 ##
-AddDerivationToCAP( LeftCocartesianDistributivityExpanding,
+AddDerivationToCAP( LeftCocartesianCodistributivityExpanding,
 
   function( cat, object, summands_list )
     local source_and_range;
     
     source_and_range := BinaryCoproduct( cat, object, DirectProduct( cat, summands_list ) );
     
-    return LeftCocartesianDistributivityExpandingWithGivenObjects( cat,
+    return LeftCocartesianCodistributivityExpandingWithGivenObjects( cat,
              source_and_range,
              object, summands_list,
              source_and_range
@@ -25,14 +25,14 @@ end : CategoryFilter := IsSkeletalCategory,
       Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-AddDerivationToCAP( LeftCocartesianDistributivityFactoring,
+AddDerivationToCAP( LeftCocartesianCodistributivityFactoring,
 
   function( cat, object, summands_list )
     local source_and_range;
     
     source_and_range := BinaryCoproduct( cat, object, DirectProduct( cat, summands_list ) );
     
-    return LeftCocartesianDistributivityFactoringWithGivenObjects( cat,
+    return LeftCocartesianCodistributivityFactoringWithGivenObjects( cat,
              source_and_range,
              object, summands_list,
              source_and_range
@@ -42,14 +42,14 @@ end : CategoryFilter := IsSkeletalCategory,
       Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-AddDerivationToCAP( RightCocartesianDistributivityExpanding,
+AddDerivationToCAP( RightCocartesianCodistributivityExpanding,
 
   function( cat, summands_list, object )
     local source_and_range;
     
     source_and_range := BinaryCoproduct( cat, DirectProduct( cat, summands_list ), object );
     
-    return RightCocartesianDistributivityExpandingWithGivenObjects( cat,
+    return RightCocartesianCodistributivityExpandingWithGivenObjects( cat,
              source_and_range,
              summands_list, object,
              source_and_range
@@ -59,14 +59,14 @@ end : CategoryFilter := IsSkeletalCategory,
       Description := "calling the WithGiven operation in a skeletal setting" );
 
 ##
-AddDerivationToCAP( RightCocartesianDistributivityFactoring,
+AddDerivationToCAP( RightCocartesianCodistributivityFactoring,
 
   function( cat, summands_list, object )
     local source_and_range;
     
     source_and_range := BinaryCoproduct( cat, DirectProduct( cat, summands_list ), object );
     
-    return RightCocartesianDistributivityFactoringWithGivenObjects( cat,
+    return RightCocartesianCodistributivityFactoringWithGivenObjects( cat,
              source_and_range,
              summands_list, object,
              source_and_range

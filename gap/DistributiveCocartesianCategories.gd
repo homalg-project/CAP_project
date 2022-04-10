@@ -24,7 +24,7 @@ DeclareGlobalVariable( "DISTRIBUTIVE_COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD" 
 #! $a \sqcup (b_1 \times \dots \times b_n) \rightarrow (a \sqcup b_1) \times \dots \times (a \sqcup b_n)$.
 #! @Returns a morphism in $\mathrm{Hom}( a \sqcup (b_1 \times \dots \times b_n), (a \sqcup b_1) \times \dots \times (a \sqcup b_n) )$
 #! @Arguments a, L
-DeclareOperation( "LeftCocartesianDistributivityExpanding",
+DeclareOperation( "LeftCocartesianCodistributivityExpanding",
                   [ IsCapCategoryObject, IsList ] );
 
 #! @Description
@@ -36,7 +36,7 @@ DeclareOperation( "LeftCocartesianDistributivityExpanding",
 #! $s \rightarrow r$.
 #! @Returns a morphism in $\mathrm{Hom}( s, r )$
 #! @Arguments s, a, L, r
-DeclareOperation( "LeftCocartesianDistributivityExpandingWithGivenObjects",
+DeclareOperation( "LeftCocartesianCodistributivityExpandingWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
@@ -46,7 +46,7 @@ DeclareOperation( "LeftCocartesianDistributivityExpandingWithGivenObjects",
 #! $(a \sqcup b_1) \times \dots \times (a \sqcup b_n) \rightarrow a \sqcup (b_1 \times \dots \times b_n)$.
 #! @Returns a morphism in $\mathrm{Hom}( (a \sqcup b_1) \times \dots \times (a \sqcup b_n), a \sqcup (b_1 \times \dots \times b_n) )$
 #! @Arguments a, L
-DeclareOperation( "LeftCocartesianDistributivityFactoring",
+DeclareOperation( "LeftCocartesianCodistributivityFactoring",
                   [ IsCapCategoryObject, IsList ] );
 
 #! @Description
@@ -58,7 +58,7 @@ DeclareOperation( "LeftCocartesianDistributivityFactoring",
 #! $s \rightarrow r$.
 #! @Returns a morphism in $\mathrm{Hom}( s, r )$
 #! @Arguments s, a, L, r
-DeclareOperation( "LeftCocartesianDistributivityFactoringWithGivenObjects",
+DeclareOperation( "LeftCocartesianCodistributivityFactoringWithGivenObjects",
                   [ IsCapCategoryObject, IsCapCategoryObject, IsList, IsCapCategoryObject ] );
 
 #! @Description
@@ -68,7 +68,7 @@ DeclareOperation( "LeftCocartesianDistributivityFactoringWithGivenObjects",
 #! $(b_1 \times \dots \times b_n) \sqcup a \rightarrow (b_1 \sqcup a) \times \dots \times (b_n \sqcup a)$.
 #! @Returns a morphism in $\mathrm{Hom}( (b_1 \times \dots \times b_n) \sqcup a, (b_1 \sqcup a) \times \dots \times (b_n \sqcup a) )$
 #! @Arguments L, a
-DeclareOperation( "RightCocartesianDistributivityExpanding",
+DeclareOperation( "RightCocartesianCodistributivityExpanding",
                   [ IsList, IsCapCategoryObject ] );
 
 #! @Description
@@ -80,7 +80,7 @@ DeclareOperation( "RightCocartesianDistributivityExpanding",
 #! $s \rightarrow r$.
 #! @Returns a morphism in $\mathrm{Hom}( s, r )$
 #! @Arguments s, L, a, r
-DeclareOperation( "RightCocartesianDistributivityExpandingWithGivenObjects",
+DeclareOperation( "RightCocartesianCodistributivityExpandingWithGivenObjects",
                   [ IsCapCategoryObject, IsList, IsCapCategoryObject, IsCapCategoryObject ] );
 
 #! @Description
@@ -90,7 +90,7 @@ DeclareOperation( "RightCocartesianDistributivityExpandingWithGivenObjects",
 #! $(b_1 \sqcup a) \times \dots \times (b_n \sqcup a) \rightarrow (b_1 \times \dots \times b_n) \sqcup a $.
 #! @Returns a morphism in $\mathrm{Hom}( (b_1 \sqcup a) \times \dots \times (b_n \sqcup a), (b_1 \times \dots \times b_n) \sqcup a)$
 #! @Arguments L, a
-DeclareOperation( "RightCocartesianDistributivityFactoring",
+DeclareOperation( "RightCocartesianCodistributivityFactoring",
                   [ IsList, IsCapCategoryObject ] );
 
 #! @Description
@@ -102,5 +102,5 @@ DeclareOperation( "RightCocartesianDistributivityFactoring",
 #! $s \rightarrow r$.
 #! @Returns a morphism in $\mathrm{Hom}( s, r )$
 #! @Arguments s, L, a, r
-DeclareOperation( "RightCocartesianDistributivityFactoringWithGivenObjects",
+DeclareOperation( "RightCocartesianCodistributivityFactoringWithGivenObjects",
                   [ IsCapCategoryObject, IsList, IsCapCategoryObject, IsCapCategoryObject ] );
