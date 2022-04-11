@@ -219,7 +219,7 @@ AddDerivationToCAP( LeftCartesianDistributivityFactoringWithGivenObjects,
     
     iotaL := List( [ 1 .. l ], k -> InjectionOfCofactorOfCoproduct( cat, L, k ) );
     
-    axiotaL := List( L, iota_b -> DirectProductOnMorphisms( cat, IdentityMorphism( a ), iota_b ) );
+    axiotaL := List( iotaL, iota_b -> DirectProductOnMorphisms( cat, IdentityMorphism( cat, a ), iota_b ) );
     
     return UniversalMorphismFromCoproductWithGivenCoproduct( cat,
                    List( axiotaL, Source ),
@@ -231,14 +231,14 @@ end : Description := "LeftCartesianDistributivityFactoringWithGivenObjects using
 
 ##
 AddDerivationToCAP( RightCartesianDistributivityFactoringWithGivenObjects,
-  function( cat, Uk_Lkxa, a, L, UkLk_xa )
+  function( cat, Uk_Lkxa, L, a, UkLk_xa )
     local l, iotaL, iotaLxa;
     
     l := Length( L );
     
     iotaL := List( [ 1 .. l ], k -> InjectionOfCofactorOfCoproduct( cat, L, k ) );
     
-    iotaLxa := List( L, iota_b -> DirectProductOnMorphisms( cat, iota_b, IdentityMorphism( a ) ) );
+    iotaLxa := List( iotaL, iota_b -> DirectProductOnMorphisms( cat, iota_b, IdentityMorphism( cat, a ) ) );
     
     return UniversalMorphismFromCoproductWithGivenCoproduct( cat,
                    List( iotaLxa, Source ),
@@ -257,7 +257,7 @@ AddDerivationToCAP( LeftCocartesianCodistributivityExpandingWithGivenObjects,
     
     piL := List( [ 1 .. l ], k -> ProjectionInFactorOfDirectProduct( cat, L, k ) );
     
-    aupiL := List( L, pi_b -> CoproductOnMorphisms( cat, IdentityMorphism( a ), pi_b ) );
+    aupiL := List( piL, pi_b -> CoproductOnMorphisms( cat, IdentityMorphism( cat, a ), pi_b ) );
     
     return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
                    List( aupiL, Range ),
@@ -269,14 +269,14 @@ end : Description := "LeftCocartesianCodistributivityExpandingWithGivenObjects u
 
 ##
 AddDerivationToCAP( RightCocartesianCodistributivityExpandingWithGivenObjects,
-  function( cat, XkLk_ua, a, L, Xk_Lkua )
+  function( cat, XkLk_ua, L, a, Xk_Lkua )
     local l, piL, piLua;
     
     l := Length( L );
     
     piL := List( [ 1 .. l ], k -> ProjectionInFactorOfDirectProduct( cat, L, k ) );
     
-    piLua := List( L, pi_b -> CoproductOnMorphisms( cat, pi_b, IdentityMorphism( a ) ) );
+    piLua := List( piL, pi_b -> CoproductOnMorphisms( cat, pi_b, IdentityMorphism( cat, a ) ) );
     
     return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat,
                    List( piLua, Range ),
