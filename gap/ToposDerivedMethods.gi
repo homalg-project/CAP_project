@@ -288,8 +288,8 @@ end : Description := "RightCocartesianCodistributivityExpandingWithGivenObjects 
 
 ##
 AddDerivationToCAP( LeftCartesianDistributivityExpandingWithGivenObjects,
-  function( cat, Uk_axLk, a, L, ax_UkLk )
-
+  function( cat, ax_UkLk, a, L, Uk_axLk )
+    
     return PreInverse( cat, LeftCartesianDistributivityFactoringWithGivenObjects( cat, Uk_axLk, a, L, ax_UkLk ) );
     
 end : CategoryFilter := IsElementaryTopos,
@@ -297,9 +297,9 @@ end : CategoryFilter := IsElementaryTopos,
 
 ##
 AddDerivationToCAP( RightCartesianDistributivityExpandingWithGivenObjects,
-  function( cat, Uk_axLk, L, a, ax_UkLk )
-
-    return PreInverse( cat, RightCartesianDistributivityFactoringWithGivenObjects( cat, Uk_axLk, L, a, ax_UkLk ) );
+  function( cat, UkLk_xa, L, a, Uk_Lkxa )
+    
+    return PreInverse( cat, RightCartesianDistributivityFactoringWithGivenObjects( cat, Uk_Lkxa, L, a, UkLk_xa ) );
     
 end : CategoryFilter := IsElementaryTopos,
   Description := "RightCartesianDistributivityExpandingWithGivenObjects using RightCartesianDistributivityFactoringWithGivenObjects" );
