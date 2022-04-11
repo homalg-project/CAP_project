@@ -58,7 +58,7 @@ jobs:
           TERM=dumb make -C ZariskiFrames -j $(nproc) --output-sync ci-test
           cp ./Toposes/.codecov.yml ./
           (cd Toposes && LANG=C.UTF-8 python3 process_coverage_ignored_lines.py)
-          [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./Toposes/upload_codecov.sh
+          [ "$GITHUB_EVENT_NAME" != "schedule" ] && [ "${{ matrix.image }}" = "ghcr.io/homalg-project/gap-docker-master:latest" ] && ./Toposes/upload_codecov.sh
           git config --global user.name "Bot"
           git config --global user.email "empty"
           cd Toposes
