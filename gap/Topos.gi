@@ -6,6 +6,7 @@
 
 InstallTrueMethod( IsCartesianClosedCategory, IsElementaryTopos );
 InstallTrueMethod( IsCocartesianCategory, IsElementaryTopos );
+InstallTrueMethod( IsDistributiveCartesianCategory, IsElementaryTopos );
 
 ##
 InstallMethodForCompilerForCAP( BinaryDirectProduct,
