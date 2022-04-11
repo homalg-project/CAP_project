@@ -43,7 +43,7 @@ AddDerivationToCAP( CartesianLeftUnitorWithGivenDirectProduct,
                    2,
                    s );
     
-end : Description := "CartesianLeftUnitorWithGivenDirectProduct using the projection onto the second factor of the direct product");
+end : Description := "CartesianLeftUnitorWithGivenDirectProduct using the projection onto the second factor of the direct product" );
 
 ##
 AddDerivationToCAP( CartesianRightUnitorWithGivenDirectProduct,
@@ -54,7 +54,7 @@ AddDerivationToCAP( CartesianRightUnitorWithGivenDirectProduct,
                    1,
                    s );
     
-end : Description := "CartesianRightUnitorWithGivenDirectProduct using the projection onto the first factor of the direct product");
+end : Description := "CartesianRightUnitorWithGivenDirectProduct using the projection onto the first factor of the direct product" );
 
 ##
 AddDerivationToCAP( CartesianAssociatorRightToLeftWithGivenDirectProducts,
@@ -81,7 +81,7 @@ AddDerivationToCAP( CartesianAssociatorRightToLeftWithGivenDirectProducts,
     
     return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, [ ab, c ], s, [ pi_ab, PreCompose( cat, pi_bc, pi_c ) ], r );
     
-end : Description := "CartesianAssociatorRightToLeftOfDirectProductsWithGivenDirectProducts using the universal morphism into direct product");
+end : Description := "CartesianAssociatorRightToLeftOfDirectProductsWithGivenDirectProducts using the universal morphism into direct product" );
 
 ##
 AddDerivationToCAP( CartesianAssociatorLeftToRightWithGivenDirectProducts,
@@ -108,7 +108,7 @@ AddDerivationToCAP( CartesianAssociatorLeftToRightWithGivenDirectProducts,
     
     return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, [ a, bc ], s, [ PreCompose( cat, pi_ab, pi_a ), pi_bc ], r );
     
-end : Description := "CartesianAssociatorLeftToRightWithGivenDirectProducts using the universal morphism into direct product");
+end : Description := "CartesianAssociatorLeftToRightWithGivenDirectProducts using the universal morphism into direct product" );
 
 ##
 AddDerivationToCAP( CocartesianLeftUnitorInverseWithGivenCoproduct,
@@ -119,7 +119,7 @@ AddDerivationToCAP( CocartesianLeftUnitorInverseWithGivenCoproduct,
                    2,
                    r );
     
-end : Description := "CocartesianLeftUnitorInverseWithGivenCoproduct using the injection into the second factor of the coproduct");
+end : Description := "CocartesianLeftUnitorInverseWithGivenCoproduct using the injection into the second factor of the coproduct" );
 
 ##
 AddDerivationToCAP( CocartesianRightUnitorInverseWithGivenCoproduct,
@@ -130,7 +130,7 @@ AddDerivationToCAP( CocartesianRightUnitorInverseWithGivenCoproduct,
                    1,
                    r );
     
-end : Description := "CocartesianRightUnitorInverseWithGivenCoproduct using the injection into the first factor of the coproduct");
+end : Description := "CocartesianRightUnitorInverseWithGivenCoproduct using the injection into the first factor of the coproduct" );
 
 ##
 AddDerivationToCAP( CocartesianAssociatorLeftToRightWithGivenCoproducts,
@@ -157,7 +157,7 @@ AddDerivationToCAP( CocartesianAssociatorLeftToRightWithGivenCoproducts,
     
     return UniversalMorphismFromCoproductWithGivenCoproduct( cat, [ ab, c ], r, [ iota_ab, PreCompose( cat, iota_c, iota_bc ) ], s );
     
-end : Description := "CocartesianAssociatorLeftToRightWithGivenCoproducts using the universal morphism from coproduct");
+end : Description := "CocartesianAssociatorLeftToRightWithGivenCoproducts using the universal morphism from coproduct" );
 
 ##
 AddDerivationToCAP( CocartesianAssociatorRightToLeftWithGivenCoproducts,
@@ -184,7 +184,7 @@ AddDerivationToCAP( CocartesianAssociatorRightToLeftWithGivenCoproducts,
     
     return UniversalMorphismFromCoproductWithGivenCoproduct( cat, [ a, bc ], r, [ PreCompose( cat, iota_a, iota_ab ), iota_bc ], s );
     
-end : Description := "CocartesianAssociatorRightToLeftWithGivenCoproducts using the universal morphism from coproduct");
+end : Description := "CocartesianAssociatorRightToLeftWithGivenCoproducts using the universal morphism from coproduct" );
 
 ##
 AddDerivationToCAP( CartesianBraidingWithGivenDirectProducts,
@@ -227,7 +227,7 @@ AddDerivationToCAP( LeftCartesianDistributivityFactoringWithGivenObjects,
                    axiotaL,
                    Uk_axLk );
     
-end : Description := "LeftCartesianDistributivityFactoringWithGivenObjects using the coproduct injections, the functoriality of the direct product, and the universal morphism of coproducts");
+end : Description := "LeftCartesianDistributivityFactoringWithGivenObjects using the coproduct injections, the functoriality of the direct product, and the universal morphism of coproducts" );
 
 ##
 AddDerivationToCAP( RightCartesianDistributivityFactoringWithGivenObjects,
@@ -246,7 +246,7 @@ AddDerivationToCAP( RightCartesianDistributivityFactoringWithGivenObjects,
                    iotaLxa,
                    Uk_Lkxa );
     
-end : Description := "RightCartesianDistributivityFactoringWithGivenObjects using the coproduct injections, the functoriality of the direct product, and the universal morphism of coproducts");
+end : Description := "RightCartesianDistributivityFactoringWithGivenObjects using the coproduct injections, the functoriality of the direct product, and the universal morphism of coproducts" );
 
 ##
 AddDerivationToCAP( LeftCocartesianCodistributivityExpandingWithGivenObjects,
@@ -265,7 +265,7 @@ AddDerivationToCAP( LeftCocartesianCodistributivityExpandingWithGivenObjects,
                    aupiL,
                    Xk_auLk );
     
-end : Description := "LeftCocartesianCodistributivityExpandingWithGivenObjects using the direct product projections, the functoriality of the coproduct, and the universal morphism of direct products");
+end : Description := "LeftCocartesianCodistributivityExpandingWithGivenObjects using the direct product projections, the functoriality of the coproduct, and the universal morphism of direct products" );
 
 ##
 AddDerivationToCAP( RightCocartesianCodistributivityExpandingWithGivenObjects,
@@ -284,7 +284,25 @@ AddDerivationToCAP( RightCocartesianCodistributivityExpandingWithGivenObjects,
                    piLua,
                    Xk_Lkua );
     
-end : Description := "RightCocartesianCodistributivityExpandingWithGivenObjects using the direct product projections, the functoriality of the coproduct, and the universal morphism of direct product");
+end : Description := "RightCocartesianCodistributivityExpandingWithGivenObjects using the direct product projections, the functoriality of the coproduct, and the universal morphism of direct product" );
+
+##
+AddDerivationToCAP( LeftCartesianDistributivityExpandingWithGivenObjects,
+  function( cat, Uk_axLk, a, L, ax_UkLk )
+
+    return PreInverse( cat, LeftCartesianDistributivityFactoringWithGivenObjects( cat, Uk_axLk, a, L, ax_UkLk ) );
+    
+end : CategoryFilter := IsElementaryTopos,
+  Description := "LeftCartesianDistributivityExpandingWithGivenObjects using LeftCartesianDistributivityFactoringWithGivenObjects" );
+
+##
+AddDerivationToCAP( RightCartesianDistributivityExpandingWithGivenObjects,
+  function( cat, Uk_axLk, L, a, ax_UkLk )
+
+    return PreInverse( cat, RightCartesianDistributivityFactoringWithGivenObjects( cat, Uk_axLk, L, a, ax_UkLk ) );
+    
+end : CategoryFilter := IsElementaryTopos,
+  Description := "RightCartesianDistributivityExpandingWithGivenObjects using RightCartesianDistributivityFactoringWithGivenObjects" );
 
 ##
 AddDerivationToCAP( MorphismsOfExternalHom,
