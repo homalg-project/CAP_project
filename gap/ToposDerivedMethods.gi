@@ -287,6 +287,24 @@ AddDerivationToCAP( RightCocartesianCodistributivityExpandingWithGivenObjects,
 end : Description := "RightCocartesianCodistributivityExpandingWithGivenObjects using the direct product projections, the functoriality of the coproduct, and the universal morphism of direct product" );
 
 ##
+AddDerivationToCAP( LeftCartesianDistributivityExpandingWithGivenObjects,
+  function( cat, Uk_axLk, a, L, ax_UkLk )
+
+    return PreInverse( cat, LeftCartesianDistributivityFactoringWithGivenObjects( cat, Uk_axLk, a, L, ax_UkLk ) );
+    
+end : CategoryFilter := IsElementaryTopos,
+  Description := "LeftCartesianDistributivityExpandingWithGivenObjects using LeftCartesianDistributivityFactoringWithGivenObjects" );
+
+##
+AddDerivationToCAP( RightCartesianDistributivityExpandingWithGivenObjects,
+  function( cat, Uk_axLk, L, a, ax_UkLk )
+
+    return PreInverse( cat, RightCartesianDistributivityFactoringWithGivenObjects( cat, Uk_axLk, L, a, ax_UkLk ) );
+    
+end : CategoryFilter := IsElementaryTopos,
+  Description := "RightCartesianDistributivityExpandingWithGivenObjects using RightCartesianDistributivityFactoringWithGivenObjects" );
+
+##
 AddDerivationToCAP( MorphismsOfExternalHom,
   function( cat, A, B )
     local hom_A_B, D;
