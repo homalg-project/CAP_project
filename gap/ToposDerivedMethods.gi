@@ -292,7 +292,7 @@ AddDerivationToCAP( LeftCartesianDistributivityExpandingWithGivenObjects,
     
     return PreInverse( cat, LeftCartesianDistributivityFactoringWithGivenObjects( cat, Uk_axLk, a, L, ax_UkLk ) );
     
-end : CategoryFilter := IsElementaryTopos,
+end : CategoryFilter := IsDistributiveCartesianCategory,
   Description := "LeftCartesianDistributivityExpandingWithGivenObjects using LeftCartesianDistributivityFactoringWithGivenObjects" );
 
 ##
@@ -301,7 +301,7 @@ AddDerivationToCAP( RightCartesianDistributivityExpandingWithGivenObjects,
     
     return PreInverse( cat, RightCartesianDistributivityFactoringWithGivenObjects( cat, Uk_Lkxa, L, a, UkLk_xa ) );
     
-end : CategoryFilter := IsElementaryTopos,
+end : CategoryFilter := IsDistributiveCartesianCategory,
   Description := "RightCartesianDistributivityExpandingWithGivenObjects using RightCartesianDistributivityFactoringWithGivenObjects" );
 
 ##
