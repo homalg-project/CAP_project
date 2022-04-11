@@ -290,7 +290,7 @@ end : Description := "RightCocartesianCodistributivityExpandingWithGivenObjects 
 AddDerivationToCAP( LeftCartesianDistributivityExpandingWithGivenObjects,
   function( cat, ax_UkLk, a, L, Uk_axLk )
     
-    return PreInverse( cat, LeftCartesianDistributivityFactoringWithGivenObjects( cat, Uk_axLk, a, L, ax_UkLk ) );
+    return InverseForMorphisms( cat, LeftCartesianDistributivityFactoringWithGivenObjects( cat, Uk_axLk, a, L, ax_UkLk ) );
     
 end : CategoryFilter := IsDistributiveCartesianCategory,
   Description := "LeftCartesianDistributivityExpandingWithGivenObjects using LeftCartesianDistributivityFactoringWithGivenObjects" );
@@ -299,7 +299,7 @@ end : CategoryFilter := IsDistributiveCartesianCategory,
 AddDerivationToCAP( RightCartesianDistributivityExpandingWithGivenObjects,
   function( cat, UkLk_xa, L, a, Uk_Lkxa )
     
-    return PreInverse( cat, RightCartesianDistributivityFactoringWithGivenObjects( cat, Uk_Lkxa, L, a, UkLk_xa ) );
+    return InverseForMorphisms( cat, RightCartesianDistributivityFactoringWithGivenObjects( cat, Uk_Lkxa, L, a, UkLk_xa ) );
     
 end : CategoryFilter := IsDistributiveCartesianCategory,
   Description := "RightCartesianDistributivityExpandingWithGivenObjects using RightCartesianDistributivityFactoringWithGivenObjects" );
@@ -308,7 +308,7 @@ end : CategoryFilter := IsDistributiveCartesianCategory,
 AddDerivationToCAP( LeftCocartesianCodistributivityFactoringWithGivenObjects,
   function( cat, Xk_auLk, a, L, au_XkLk )
     
-    return PreInverse( cat, LeftCocartesianCodistributivityExpandingWithGivenObjects( cat, au_XkLk, a, L, Xk_auLk ) );
+    return InverseForMorphisms( cat, LeftCocartesianCodistributivityExpandingWithGivenObjects( cat, au_XkLk, a, L, Xk_auLk ) );
     
 end : CategoryFilter := IsCodistributiveCocartesianCategory,
   Description := "LeftCocartesianCodistributivityFactoringWithGivenObjects using LeftCocartesianCodistributivityExpandingWithGivenObjects" );
@@ -317,7 +317,7 @@ end : CategoryFilter := IsCodistributiveCocartesianCategory,
 AddDerivationToCAP( RightCocartesianCodistributivityFactoringWithGivenObjects,
   function( cat, Xk_Lkua, L, a, XkLk_ua )
     
-    return PreInverse( cat, RightCocartesianCodistributivityExpandingWithGivenObjects( cat, XkLk_ua, L, a, Xk_Lkua ) );
+    return InverseForMorphisms( cat, RightCocartesianCodistributivityExpandingWithGivenObjects( cat, XkLk_ua, L, a, Xk_Lkua ) );
     
 end : CategoryFilter := IsCodistributiveCocartesianCategory,
   Description := "RightCocartesianCodistributivityFactoringWithGivenObjects using RightCocartesianCodistributivityExpandingWithGivenObjects" );
