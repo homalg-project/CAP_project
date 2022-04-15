@@ -12,12 +12,21 @@ LeftDistributivityExpanding := rec(
   output_source_getter_string := "TensorProductOnObjects( cat, a, DirectSum( cat, L ) )",
   output_range_getter_string := "DirectSum( cat, List( L, summand -> TensorProductOnObjects( cat, a, summand ) ) )",
   with_given_object_position := "both",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "LeftDistributivityFactoring",
+  dual_arguments_reversed := false,
+  # Test in AdditiveMonoidalCategoriesTest
+),
 
 LeftDistributivityExpandingWithGivenObjects := rec(
   filter_list := [ "category", "object", "object", "list_of_objects", "object" ],
   io_type := [ [ "s", "a", "L", "r" ], [ "s", "r" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "LeftDistributivityFactoringWithGivenObjects",
+  dual_preprocessor_func := { cat, s, a, L, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( L ), Opposite( s ) ],
+  dual_arguments_reversed := false,
+  # Test in AdditiveMonoidalCategoriesTest
+),
 
 LeftDistributivityFactoring := rec(
   filter_list := [ "category", "object", "list_of_objects" ],
@@ -25,12 +34,21 @@ LeftDistributivityFactoring := rec(
   output_source_getter_string := "DirectSum( cat, List( L, summand -> TensorProductOnObjects( cat, a, summand ) ) )",
   output_range_getter_string := "TensorProductOnObjects( cat, a, DirectSum( cat, L ) )",
   with_given_object_position := "both",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "LeftDistributivityExpanding",
+  dual_arguments_reversed := false,
+  # Test in AdditiveMonoidalCategoriesTest
+),
 
 LeftDistributivityFactoringWithGivenObjects := rec(
   filter_list := [ "category", "object", "object", "list_of_objects", "object" ],
   io_type := [ [ "s", "a", "L", "r" ], [ "s", "r" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "LeftDistributivityExpandingWithGivenObjects",
+  dual_preprocessor_func := { cat, s, a, L, r } -> [ Opposite( cat ), Opposite( r ), Opposite( a ), Opposite( L ), Opposite( s ) ],
+  dual_arguments_reversed := false,
+  # Test in AdditiveMonoidalCategoriesTest
+),
 
 RightDistributivityExpanding := rec(
   filter_list := [ "category", "list_of_objects", "object" ],
@@ -38,12 +56,21 @@ RightDistributivityExpanding := rec(
   output_source_getter_string := "TensorProductOnObjects( cat, DirectSum( cat, L ), a )",
   output_range_getter_string := "DirectSum( cat, List( L, summand -> TensorProductOnObjects( cat, summand, a ) ) )",
   with_given_object_position := "both",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "RightDistributivityFactoring",
+  dual_arguments_reversed := false,
+  # Test in AdditiveMonoidalCategoriesTest
+),
 
 RightDistributivityExpandingWithGivenObjects := rec(
   filter_list := [ "category", "object", "list_of_objects", "object", "object" ],
   io_type := [ [ "s", "L", "a", "r" ], [ "s", "r" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "RightDistributivityFactoringWithGivenObjects",
+  dual_preprocessor_func := { cat, s, L, a, r } -> [ Opposite( cat ), Opposite( r ), Opposite( L ), Opposite( a ), Opposite( s ) ],
+  dual_arguments_reversed := false,
+  # Test in AdditiveMonoidalCategoriesTest
+),
 
 RightDistributivityFactoring := rec(
   filter_list := [ "category", "list_of_objects", "object" ],
@@ -51,12 +78,21 @@ RightDistributivityFactoring := rec(
   output_source_getter_string := "DirectSum( cat, List( L, summand -> TensorProductOnObjects( cat, summand, a ) ) )",
   output_range_getter_string := "TensorProductOnObjects( cat, DirectSum( cat, L ), a )",
   with_given_object_position := "both",
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "RightDistributivityExpanding",
+  dual_arguments_reversed := false,
+  # Test in AdditiveMonoidalCategoriesTest
+),
 
 RightDistributivityFactoringWithGivenObjects := rec(
   filter_list := [ "category", "object", "list_of_objects", "object", "object" ],
   io_type := [ [ "s", "L", "a", "r" ], [ "s", "r" ] ],
-  return_type := "morphism" ),
+  return_type := "morphism",
+  dual_operation := "RightDistributivityExpandingWithGivenObjects",
+  dual_preprocessor_func := { cat, s, L, a, r } -> [ Opposite( cat ), Opposite( r ), Opposite( L ), Opposite( a ), Opposite( s ) ],
+  dual_arguments_reversed := false,
+  # Test in AdditiveMonoidalCategoriesTest
+),
 
 ) );
 
