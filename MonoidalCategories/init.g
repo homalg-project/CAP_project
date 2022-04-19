@@ -56,6 +56,7 @@ ReadPackage( "MonoidalCategories", "gap/RigidSymmetricCoclosedMonoidalCategories
 
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductAndUnitTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTest.gd" );
+ReadPackage( "MonoidalCategories", "gap/AdditiveMonoidalCategoriesTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/BraidedMonoidalCategoriesTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesTest.gd" );
 ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesTest.gd" );
