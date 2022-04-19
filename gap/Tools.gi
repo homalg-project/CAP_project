@@ -31,6 +31,7 @@ WriteFileForMonoidalStructure(
              MONOIDAL := "CARTESIAN",
              Monoidal := "Cartesian",
              monoidal := "cartesian",
+             DISTRIBUTIVE := "DISTRIBUTIVE",
              tensor_object := "direct_product_object",
              tensored := "x",
              otimes := "times",
@@ -71,6 +72,18 @@ WriteFileForMonoidalStructure(
                                ## AssociatorRightToLeft
                                [ "AssociatorRightToLeft( opposite",
                                  "CocartesianAssociatorRightToLeft( opposite" ],
+                               ## LeftDistributivityExpanding
+                               [ "LeftDistributivityExpanding( opposite",
+                                 "LeftCocartesianCodistributivityExpanding( opposite" ],
+                               ## LeftDistributivityFactoring
+                               [ "LeftDistributivityFactoring( opposite",
+                                 "LeftCocartesianCodistributivityFactoring( opposite" ],
+                               ## RightDistributivityExpanding
+                               [ "RightDistributivityExpanding( opposite",
+                                 "RightCocartesianCodistributivityExpanding( opposite" ],
+                               ## RightDistributivityFactoring
+                               [ "RightDistributivityFactoring( opposite",
+                                 "RightCocartesianCodistributivityFactoring( opposite" ],
                                ],
              ),
         "Toposes",
@@ -79,6 +92,7 @@ WriteFileForMonoidalStructure(
              MonoidalCategories_gd := "CartesianCategories.gd",
              MonoidalCategoriesTest_gd := "CartesianCategoriesTest.gd",
              AdditiveMonoidalCategories_gd := "DistributiveCartesianCategories.gd",
+             AdditiveMonoidalCategoriesTest_gd := "DistributiveCartesianCategoriesTest.gd",
              BraidedMonoidalCategories_gd := "BraidedCartesianCategories.gd",
              BraidedMonoidalCategoriesTest_gd := "BraidedCartesianCategoriesTest.gd",
              MonoidalCategoriesTensorProductAndUnitMethodRecord_gi := fail,
@@ -87,8 +101,9 @@ WriteFileForMonoidalStructure(
              MonoidalCategoriesMethodRecord_gi := fail,
              MonoidalCategories_gi := "CartesianCategories.gi",
              MonoidalCategoriesTest_gi := "CartesianCategoriesTest.gi",
-             AdditiveMonoidalCategoriesMethodRecord_gi := "DistributiveCartesianCategoriesMethodRecord.gi",
+             AdditiveMonoidalCategoriesMethodRecord_gi := fail, 
              AdditiveMonoidalCategories_gi := "DistributiveCartesianCategories.gi",
+             AdditiveMonoidalCategoriesTest_gi := "DistributiveCartesianCategoriesTest.gi",
              BraidedMonoidalCategoriesProperties_gi := fail,
              BraidedMonoidalCategoriesMethodRecord_gi := fail,
              BraidedMonoidalCategories_gi := "BraidedCartesianCategories.gi",
@@ -344,7 +359,7 @@ WriteFileForClosedMonoidalStructure(
                                  "CoproductOnMorphisms( opposite" ],
                                [ "TensorProduct( opposite",
                                  "Coproduct( opposite" ],
-                               ]
+                               ],
              ),
         "Toposes",
         rec( ClosedMonoidalCategories_gd := "CartesianClosedCategories.gd",
@@ -390,6 +405,7 @@ WriteFileForMonoidalStructure(
              MONOIDAL := "COCARTESIAN",
              Monoidal := "Cocartesian",
              monoidal := "cocartesian",
+             DISTRIBUTIVE := "CODISTRIBUTIVE",
              tensor_object := "coproduct_object",
              tensored := "u",
              otimes := "sqcup",
@@ -430,6 +446,18 @@ WriteFileForMonoidalStructure(
                                ## AssociatorRightToLeft
                                [ "AssociatorRightToLeft( opposite",
                                  "CartesianAssociatorRightToLeft( opposite" ],
+                               ## LeftDistributivityExpanding
+                               [ "LeftDistributivityExpanding( opposite",
+                                 "LeftCartesianDistributivityExpanding( opposite" ],
+                               ## LeftDistributivityFactoring
+                               [ "LeftDistributivityFactoring( opposite",
+                                 "LeftCartesianDistributivityFactoring( opposite" ],
+                               ## RightDistributivityExpanding
+                               [ "RightDistributivityExpanding( opposite",
+                                 "RightCartesianDistributivityExpanding( opposite" ],
+                               ## RightDistributivityFactoring
+                               [ "RightDistributivityFactoring( opposite",
+                                 "RightCartesianDistributivityFactoring( opposite" ],
                                ],
              ),
         "Toposes",
@@ -438,6 +466,7 @@ WriteFileForMonoidalStructure(
              MonoidalCategories_gd := "CocartesianCategories.gd",
              MonoidalCategoriesTest_gd := "CocartesianCategoriesTest.gd",
              AdditiveMonoidalCategories_gd := "CodistributiveCocartesianCategories.gd",
+             AdditiveMonoidalCategoriesTest_gd := "CodistributiveCocartesianCategoriesTest.gd",
              BraidedMonoidalCategories_gd := "BraidedCocartesianCategories.gd",
              BraidedMonoidalCategoriesTest_gd := "BraidedCocartesianCategoriesTest.gd",
              MonoidalCategoriesTensorProductAndUnitMethodRecord_gi := fail,
@@ -446,8 +475,9 @@ WriteFileForMonoidalStructure(
              MonoidalCategoriesMethodRecord_gi := fail,
              MonoidalCategories_gi := "CocartesianCategories.gi",
              MonoidalCategoriesTest_gi := "CocartesianCategoriesTest.gi",
-             AdditiveMonoidalCategoriesMethodRecord_gi := "CodistributiveCocartesianCategoriesMethodRecord.gi",
+             AdditiveMonoidalCategoriesMethodRecord_gi := fail,
              AdditiveMonoidalCategories_gi := "CodistributiveCocartesianCategories.gi",
+             AdditiveMonoidalCategoriesTest_gi := "CodistributiveCocartesianCategoriesTest.gi",
              BraidedMonoidalCategoriesProperties_gi := fail,
              BraidedMonoidalCategoriesMethodRecord_gi := fail,
              BraidedMonoidalCategories_gi := "BraidedCocartesianCategories.gi",
