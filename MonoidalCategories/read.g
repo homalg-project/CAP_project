@@ -77,6 +77,7 @@ ReadPackage( "MonoidalCategories", "gap/HomomorphismStructureDerivedMethods.gi" 
 
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTensorProductAndUnitTest.gi" );
 ReadPackage( "MonoidalCategories", "gap/MonoidalCategoriesTest.gi" );
+ReadPackage( "MonoidalCategories", "gap/AdditiveMonoidalCategoriesTest.gi" );
 ReadPackage( "MonoidalCategories", "gap/BraidedMonoidalCategoriesTest.gi" );
 ReadPackage( "MonoidalCategories", "gap/ClosedMonoidalCategoriesTest.gi" );
 ReadPackage( "MonoidalCategories", "gap/CoclosedMonoidalCategoriesTest.gi" );
