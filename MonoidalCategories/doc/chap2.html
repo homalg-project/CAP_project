@@ -25,13 +25,14 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7862428B781B1F3D">2.1 <span class="Heading">Test functions</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D87D6737E0B485F">2.1-1 BraidedMonoidalCategoriesTest</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CDDEF3E87731A54">2.1-2 ClosedMonoidalCategoriesTest</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X83E919E984B367B1">2.1-3 CoclosedMonoidalCategoriesTest</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X86C037637DDEB70A">2.1-4 MonoidalCategoriesTensorProductAndUnitTest</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BCAF88A806E562D">2.1-5 MonoidalCategoriesTest</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78CAAAE77DC5CF4F">2.1-6 RigidSymmetricClosedMonoidalCategoriesTest</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8154BEE7850EFEEA">2.1-7 RigidSymmetricCoclosedMonoidalCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8131040685BBC24E">2.1-1 AdditiveMonoidalCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D87D6737E0B485F">2.1-2 BraidedMonoidalCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7CDDEF3E87731A54">2.1-3 ClosedMonoidalCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X83E919E984B367B1">2.1-4 CoclosedMonoidalCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X86C037637DDEB70A">2.1-5 MonoidalCategoriesTensorProductAndUnitTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7BCAF88A806E562D">2.1-6 MonoidalCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X78CAAAE77DC5CF4F">2.1-7 RigidSymmetricClosedMonoidalCategoriesTest</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8154BEE7850EFEEA">2.1-8 RigidSymmetricCoclosedMonoidalCategoriesTest</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X868F7BAB7AC2EEBC">2.2 <span class="Heading">Basics</span></a>
 </span>
@@ -44,9 +45,39 @@
 
 <h4>2.1 <span class="Heading">Test functions</span></h4>
 
+<p><a id="X8131040685BBC24E" name="X8131040685BBC24E"></a></p>
+
+<h5>2.1-1 AdditiveMonoidalCategoriesTest</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditiveMonoidalCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">L</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>The arguments are</p>
+
+
+<ul>
+<li><p>a CAP category <span class="Math">cat</span></p>
+
+</li>
+<li><p>an object <span class="Math">a</span></p>
+
+</li>
+<li><p>a list <span class="Math">L</span> of objects</p>
+
+</li>
+</ul>
+<p>This function checks for every operation declared in AdditiveMonoidalCategories.gd if it is computable in the CAP category <span class="Math">cat</span>. If yes, then the operation is executed with the parameters given above and compared to the equivalent computation in the opposite category of <span class="Math">cat</span>. Pass the options</p>
+
+
+<ul>
+<li><p><code class="code">verbose := true</code> to output more information.</p>
+
+</li>
+<li><p><code class="code">only_primitive_operations := true</code>, which is passed on to Opposite(), to only primitively install dual operations for primitively installed operations in <span class="Math">cat</span>. The advantage is, that more derivations might be tested. On the downside, this might test fewer dual_pre/postprocessor_funcs.</p>
+
+</li>
+</ul>
 <p><a id="X7D87D6737E0B485F" name="X7D87D6737E0B485F"></a></p>
 
-<h5>2.1-1 BraidedMonoidalCategoriesTest</h5>
+<h5>2.1-2 BraidedMonoidalCategoriesTest</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; BraidedMonoidalCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>The arguments are</p>
@@ -73,7 +104,7 @@
 </ul>
 <p><a id="X7CDDEF3E87731A54" name="X7CDDEF3E87731A54"></a></p>
 
-<h5>2.1-2 ClosedMonoidalCategoriesTest</h5>
+<h5>2.1-3 ClosedMonoidalCategoriesTest</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ClosedMonoidalCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">d</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">gamma</var>, <var class="Arg">delta</var>, <var class="Arg">epsilon</var>, <var class="Arg">zeta</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>The arguments are</p>
@@ -118,7 +149,7 @@
 </ul>
 <p><a id="X83E919E984B367B1" name="X83E919E984B367B1"></a></p>
 
-<h5>2.1-3 CoclosedMonoidalCategoriesTest</h5>
+<h5>2.1-4 CoclosedMonoidalCategoriesTest</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CoclosedMonoidalCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">d</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var>, <var class="Arg">gamma</var>, <var class="Arg">delta</var>, <var class="Arg">epsilon</var>, <var class="Arg">zeta</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>The arguments are a CAP category <span class="Math">cat</span> objects <span class="Math">a, b, c, d</span></p>
@@ -157,7 +188,7 @@
 </ul>
 <p><a id="X86C037637DDEB70A" name="X86C037637DDEB70A"></a></p>
 
-<h5>2.1-4 MonoidalCategoriesTensorProductAndUnitTest</h5>
+<h5>2.1-5 MonoidalCategoriesTensorProductAndUnitTest</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonoidalCategoriesTensorProductAndUnitTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>The arguments are</p>
@@ -184,7 +215,7 @@
 </ul>
 <p><a id="X7BCAF88A806E562D" name="X7BCAF88A806E562D"></a></p>
 
-<h5>2.1-5 MonoidalCategoriesTest</h5>
+<h5>2.1-6 MonoidalCategoriesTest</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; MonoidalCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">alpha</var>, <var class="Arg">beta</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>The arguments are</p>
@@ -217,7 +248,7 @@
 </ul>
 <p><a id="X78CAAAE77DC5CF4F" name="X78CAAAE77DC5CF4F"></a></p>
 
-<h5>2.1-6 RigidSymmetricClosedMonoidalCategoriesTest</h5>
+<h5>2.1-7 RigidSymmetricClosedMonoidalCategoriesTest</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RigidSymmetricClosedMonoidalCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">d</var>, <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>The arguments are</p>
@@ -247,7 +278,7 @@
 </ul>
 <p><a id="X8154BEE7850EFEEA" name="X8154BEE7850EFEEA"></a></p>
 
-<h5>2.1-7 RigidSymmetricCoclosedMonoidalCategoriesTest</h5>
+<h5>2.1-8 RigidSymmetricCoclosedMonoidalCategoriesTest</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RigidSymmetricCoclosedMonoidalCategoriesTest</code>( <var class="Arg">cat</var>, <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">c</var>, <var class="Arg">d</var>, <var class="Arg">alpha</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>The arguments are</p>

@@ -6,10 +6,10 @@
                  [1X Monoidal and monoidal (co)closed categories [101X
   
   
-                                   2022.03-02
+                                   2022.04-01
   
   
-                                 10 March 2022
+                                 19 April 2022
   
   
                                 Mohamed Barakat
@@ -327,13 +327,14 @@
       1.12-120 AddMorphismToCoBidualWithGivenCoBidual
   2 [33X[0;0YExamples and Tests[133X
     2.1 [33X[0;0YTest functions[133X
-      2.1-1 BraidedMonoidalCategoriesTest
-      2.1-2 ClosedMonoidalCategoriesTest
-      2.1-3 CoclosedMonoidalCategoriesTest
-      2.1-4 MonoidalCategoriesTensorProductAndUnitTest
-      2.1-5 MonoidalCategoriesTest
-      2.1-6 RigidSymmetricClosedMonoidalCategoriesTest
-      2.1-7 RigidSymmetricCoclosedMonoidalCategoriesTest
+      2.1-1 AdditiveMonoidalCategoriesTest
+      2.1-2 BraidedMonoidalCategoriesTest
+      2.1-3 ClosedMonoidalCategoriesTest
+      2.1-4 CoclosedMonoidalCategoriesTest
+      2.1-5 MonoidalCategoriesTensorProductAndUnitTest
+      2.1-6 MonoidalCategoriesTest
+      2.1-7 RigidSymmetricClosedMonoidalCategoriesTest
+      2.1-8 RigidSymmetricCoclosedMonoidalCategoriesTest
     2.2 [33X[0;0YBasics[133X
   
   

@@ -66,6 +66,7 @@
   [2XAddIsomorphismFromObjectToInternalHomWithGivenInternalHom[102X, for IsCapCategory, IsFunction 1.12-31 
   [2XAddIsomorphismFromTensorProductToInternalCoHom[102X, for IsCapCategory, IsFunction 1.12-116 
   [2XAddIsomorphismFromTensorProductToInternalHom[102X, for IsCapCategory, IsFunction 1.12-100 
+  [2XAdditiveMonoidalCategoriesTest[102X 2.1-1 
   [2XAddLambdaElimination[102X, for IsCapCategory, IsFunction 1.12-32 
   [2XAddLambdaIntroduction[102X, for IsCapCategory, IsFunction 1.12-33 
   [2XAddLeftDistributivityExpanding[102X, for IsCapCategory, IsFunction 1.12-1 
@@ -128,12 +129,12 @@
   [2XAssociatorLeftToRightWithGivenTensorProducts[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.1-6 
   [2XAssociatorRightToLeft[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.1-3 
   [2XAssociatorRightToLeftWithGivenTensorProducts[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.1-4 
-  [2XBraidedMonoidalCategoriesTest[102X 2.1-1 
+  [2XBraidedMonoidalCategoriesTest[102X 2.1-2 
   [2XBraiding[102X, for IsCapCategoryObject, IsCapCategoryObject 1.3-1 
   [2XBraidingInverse[102X, for IsCapCategoryObject, IsCapCategoryObject 1.3-3 
   [2XBraidingInverseWithGivenTensorProducts[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.3-4 
   [2XBraidingWithGivenTensorProducts[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.3-2 
-  [2XClosedMonoidalCategoriesTest[102X 2.1-2 
+  [2XClosedMonoidalCategoriesTest[102X 2.1-3 
   [2XCoclosedCoevaluationForCoDual[102X, for IsCapCategoryObject 1.10-7 
   [2XCoclosedCoevaluationForCoDualWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.10-8 
   [2XCoclosedCoevaluationMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-6 
@@ -142,7 +143,7 @@
   [2XCoclosedEvaluationForCoDualWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-18 
   [2XCoclosedEvaluationMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-4 
   [2XCoclosedEvaluationMorphismWithGivenRange[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-5 
-  [2XCoclosedMonoidalCategoriesTest[102X 2.1-3 
+  [2XCoclosedMonoidalCategoriesTest[102X 2.1-4 
   [2XCoDualityTensorProductCompatibilityMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.6-23 
   [2XCoDualityTensorProductCompatibilityMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-24 
   [2XCoDualOnMorphisms[102X, for IsCapCategoryMorphism 1.6-15 
@@ -203,8 +204,8 @@
   [2XLeftUnitorInverse[102X, for IsCapCategoryObject 1.1-9 
   [2XLeftUnitorInverseWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.1-10 
   [2XLeftUnitorWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.1-8 
-  [2XMonoidalCategoriesTensorProductAndUnitTest[102X 2.1-4 
-  [2XMonoidalCategoriesTest[102X 2.1-5 
+  [2XMonoidalCategoriesTensorProductAndUnitTest[102X 2.1-5 
+  [2XMonoidalCategoriesTest[102X 2.1-6 
   [2XMonoidalPostCoComposeMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-12 
   [2XMonoidalPostCoComposeMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.6-13 
   [2XMonoidalPostComposeMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-12 
@@ -238,8 +239,8 @@
   [2XRightUnitorInverse[102X, for IsCapCategoryObject 1.1-13 
   [2XRightUnitorInverseWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.1-14 
   [2XRightUnitorWithGivenTensorProduct[102X, for IsCapCategoryObject, IsCapCategoryObject 1.1-12 
-  [2XRigidSymmetricClosedMonoidalCategoriesTest[102X 2.1-6 
-  [2XRigidSymmetricCoclosedMonoidalCategoriesTest[102X 2.1-7 
+  [2XRigidSymmetricClosedMonoidalCategoriesTest[102X 2.1-7 
+  [2XRigidSymmetricCoclosedMonoidalCategoriesTest[102X 2.1-8 
   [2XTensorProductDualityCompatibilityMorphism[102X, for IsCapCategoryObject, IsCapCategoryObject 1.5-23 
   [2XTensorProductDualityCompatibilityMorphismWithGivenObjects[102X, for IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject, IsCapCategoryObject 1.5-24 
   [2XTensorProductInternalHomCompatibilityMorphism[102X, for IsList 1.5-21 
