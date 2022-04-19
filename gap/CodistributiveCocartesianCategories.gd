@@ -15,7 +15,7 @@
 ##
 ####################################
 
-DeclareGlobalVariable( "DISTRIBUTIVE_COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD" );
+DeclareGlobalVariable( "CODISTRIBUTIVE_COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD" );
 
 #! @Description
 #! The arguments are an object $a$
