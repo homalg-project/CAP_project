@@ -61,6 +61,9 @@ ReadPackage( "Toposes", "gap/SymmetricCocartesianCoclosedCategoriesDerivedMethod
 ReadPackage( "Toposes", "gap/CartesianCategoriesTest.gi" );
 ReadPackage( "Toposes", "gap/CocartesianCategoriesTest.gi" );
 
+ReadPackage( "Toposes", "gap/DistributiveCartesianCategoriesTest.gi" );
+ReadPackage( "Toposes", "gap/CodistributiveCocartesianCategoriesTest.gi" );
+
 ReadPackage( "Toposes", "gap/BraidedCartesianCategoriesTest.gi" );
 ReadPackage( "Toposes", "gap/BraidedCocartesianCategoriesTest.gi" );
 

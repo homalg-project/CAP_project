@@ -47,6 +47,9 @@ ReadPackage( "Toposes", "gap/CocartesianCoclosedCategories.autogen.gd" );
 ReadPackage( "Toposes", "gap/CartesianCategoriesTest.gd" );
 ReadPackage( "Toposes", "gap/CocartesianCategoriesTest.gd" );
 
+ReadPackage( "Toposes", "gap/DistributiveCartesianCategoriesTest.gd" );
+ReadPackage( "Toposes", "gap/CodistributiveCocartesianCategoriesTest.gd" );
+
 ReadPackage( "Toposes", "gap/BraidedCartesianCategoriesTest.gd" );
 ReadPackage( "Toposes", "gap/BraidedCocartesianCategoriesTest.gd" );
 
