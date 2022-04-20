@@ -17,14 +17,6 @@
 
 DeclareGlobalVariable( "COCARTESIAN_CATEGORIES_METHOD_NAME_RECORD" );
 
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory  := Concatenation( [
-"Coproduct",
-"InjectionOfCofactorOfCoproductWithGivenCoproduct",
-"UniversalMorphismFromCoproductWithGivenCoproduct",
-"InitialObject",
-"UniversalMorphismFromInitialObjectWithGivenInitialObject",
-], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory );
-
 ## CoproductOnMorphismsWithGivenCoproducts
 
 #! @Description
