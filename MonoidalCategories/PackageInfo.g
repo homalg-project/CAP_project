@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "MonoidalCategories",
 Subtitle := "Monoidal and monoidal (co)closed categories",
-Version := "2022.04-01",
-Date := "19/04/2022",
+Version := "2022.04-02",
+Date := "20/04/2022",
 License := "GPL-2.0-or-later",
 
 Persons := [
