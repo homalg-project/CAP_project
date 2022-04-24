@@ -4,12 +4,14 @@
 # Implementations
 #
 
-InstallTrueMethod( IsCartesianClosedCategory, IsElementaryTopos );
-InstallTrueMethod( IsCocartesianCategory, IsElementaryTopos );
-InstallTrueMethod( IsDistributiveCartesianCategory, IsElementaryTopos );
+InstallTrueMethod( IsCartesianCategory, IsFiniteCompleteCategory );
+InstallTrueMethod( IsCocartesianCategory, IsFiniteCocompleteCategory );
 
-InstallTrueMethod( IsCartesianCategory, IsAbelianCategory );
-InstallTrueMethod( IsCocartesianCategory, IsAbelianCategory );
+InstallTrueMethod( IsFiniteCompleteCategory, IsElementaryTopos );
+InstallTrueMethod( IsFiniteCocompleteCategory, IsElementaryTopos );
+
+InstallTrueMethod( IsCartesianClosedCategory, IsElementaryTopos );
+InstallTrueMethod( IsDistributiveCartesianCategory, IsElementaryTopos );
 
 ##
 InstallMethodForCompilerForCAP( BinaryDirectProduct,
