@@ -6,6 +6,8 @@
 
 AddCategoricalProperty( [ "IsCodistributiveCocartesianCategory", "IsDistributiveCartesianCategory" ] );
 
+InstallTrueMethod( IsCartesianCategory, IsCodistributiveCocartesianCategory );
+
 CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCodistributiveCocartesianCategory  := Concatenation( [
 "LeftCocartesianCodistributivityFactoringWithGivenObjects",
 "RightCocartesianCodistributivityFactoringWithGivenObjects",
