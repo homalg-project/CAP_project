@@ -492,13 +492,13 @@ end );
 
 ##
 AddDerivationToCAP( EmbeddingOfPseudoComplementSubobject,
-  function( cat, iota ) # ι: S → M
+  function( cat, iota ) # ι: S ↪ M
     
-    return SubobjectOfClassifyingMorphism( ## -ι: (S - M) → M
+    return SubobjectOfClassifyingMorphism( ## -ι: (S - M) ↪ M
                    cat,
                    PreCompose(
                            cat,
-                           ClassifyingMorphismOfSubobject( cat, iota ), ## χ_ι: Range( ι ) → Ω
+                           ClassifyingMorphismOfSubobject( cat, iota ), ## χ_ι: M → Ω
                            TruthMorphismOfNot( cat ) ## ¬: Ω → Ω
                            ) );
     
