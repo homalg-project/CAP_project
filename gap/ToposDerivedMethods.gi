@@ -397,10 +397,7 @@ AddDerivationToCAP( TruthMorphismOfNotWithGivenObjects,
     
     return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
                    cat,
-                   PreCompose(
-                           cat,
-                           UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, Omega, T ),
-                           TruthMorphismOfFalseWithGivenObjects( cat, T, Omega ) ),
+                   TruthMorphismOfFalseWithGivenObjects( cat, T, Omega ),
                    Omega );
     
 end );
