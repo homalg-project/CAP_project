@@ -4,14 +4,6 @@
 # Declarations
 #
 
-CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory  := Concatenation( [
-"Coproduct",
-"InjectionOfCofactorOfCoproductWithGivenCoproduct",
-"UniversalMorphismFromCoproductWithGivenCoproduct",
-"InitialObject",
-"UniversalMorphismFromInitialObjectWithGivenInitialObject",
-], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory );
-
 Perform(
 ## This is the CAP_INTERNAL_CATEGORICAL_PROPERTIES_LIST
     [
@@ -21,3 +13,11 @@ Perform(
     AddCategoricalProperty );
 
 InstallTrueMethod( IsCocartesianCategory, IsAbelianCategory );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory  := Concatenation( [
+"Coproduct",
+"InjectionOfCofactorOfCoproductWithGivenCoproduct",
+"UniversalMorphismFromCoproductWithGivenCoproduct",
+"InitialObject",
+"UniversalMorphismFromInitialObjectWithGivenInitialObject",
+], CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.EveryCategory );
