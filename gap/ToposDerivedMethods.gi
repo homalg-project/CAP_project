@@ -366,7 +366,8 @@ AddDerivationToCAP( CartesianSquareOfSubobjectClassifier,
     
 end );
 
-##
+## [Goldblatt 1984: Topoi - The categorical analysis of logic, Exercise 4.2.1]
+## ⊤: 𝟙 ↪ Ω classfies id_𝟙: 𝟙 ↪ 𝟙
 AddDerivationToCAP( TruthMorphismOfTrueWithGivenObjects,
   function( cat, T, Omega )
     
@@ -377,7 +378,8 @@ AddDerivationToCAP( TruthMorphismOfTrueWithGivenObjects,
     
 end );
 
-##
+## [Goldblatt 1984: Topoi - The categorical analysis of logic, Section 5.4 (False)]
+## ⊥: 𝟙 ↪ Ω classifies ∅ ↪ 𝟙
 AddDerivationToCAP( TruthMorphismOfFalseWithGivenObjects,
   function( cat, T, Omega )
     
@@ -388,7 +390,8 @@ AddDerivationToCAP( TruthMorphismOfFalseWithGivenObjects,
     
 end );
 
-##
+## [Goldblatt 1984: Topoi - The categorical analysis of logic, Section 6.6 (Truth-arrows in a topos)]
+## ¬: Ω → Ω classifies ⊥: 𝟙 ↪ Ω
 AddDerivationToCAP( TruthMorphismOfNotWithGivenObjects,
   function( cat, Omega, Omega1 )
     local T;
@@ -397,15 +400,13 @@ AddDerivationToCAP( TruthMorphismOfNotWithGivenObjects,
     
     return ClassifyingMorphismOfSubobjectWithGivenSubobjectClassifier(
                    cat,
-                   PreCompose(
-                           cat,
-                           UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, Omega, T ),
-                           TruthMorphismOfFalseWithGivenObjects( cat, T, Omega ) ),
+                   TruthMorphismOfFalseWithGivenObjects( cat, T, Omega ),
                    Omega );
     
 end );
 
-##
+## [Goldblatt 1984: Topoi - The categorical analysis of logic, Section 6.6 (Truth-arrows in a topos)]
+## ∧: Ω × Ω → Ω classifies the product morphism ⟨⊤,⊤⟩: 𝟙 ↪ Ω × Ω of twice the morphism ⊤: 𝟙 ↪ Ω
 AddDerivationToCAP( TruthMorphismOfAndWithGivenObjects,
   function( cat, Omega2, Omega )
     local T, t;
@@ -426,14 +427,16 @@ AddDerivationToCAP( TruthMorphismOfAndWithGivenObjects,
     
 end );
 
-##
+## [Goldblatt 1984: Topoi - The categorical analysis of logic, Section 6.6 (Truth-arrows in a topos)]
+## ∨: Ω × Ω → Ω classifies [ ⟨⊤_Ω,id_Ω⟩, ⟨id_Ω,⊤_Ω⟩ ]: Ω ⊔ Ω ↪ Ω × Ω
 AddDerivationToCAP( TruthMorphismOfOrWithGivenObjects,
   function( cat, Omega2, Omega )
     local T, t, id, left, right;
     
     T := TerminalObject( cat );
     
-    ## Ω → 1 → Ω
+    ## ⊤_Ω: Ω → 𝟙 → Ω is the morphism classifying the full subobject of Ω, i.e.,
+    ## ⊤_Ω = ClassifyingMorphismOfSubobject( IdentityMorphism( Omega ) )
     t := PreCompose(
                  cat,
                  UniversalMorphismIntoTerminalObjectWithGivenTerminalObject( cat, Omega, T ),
@@ -466,7 +469,7 @@ AddDerivationToCAP( TruthMorphismOfOrWithGivenObjects,
     
 end );
 
-##
+## ⇒: Ω × Ω → Ω classifies the equalizer embedding E ↪ Ω × Ω of (∧: Ω × Ω → Ω, π_1: Ω × Ω → Ω)
 AddDerivationToCAP( TruthMorphismOfImpliesWithGivenObjects,
   function( cat, Omega2, Omega )
     
@@ -493,15 +496,20 @@ AddDerivationToCAP( PseudoComplementSubobject,
     
 end );
 
-##
+## Note that |Sub(Ω)| = |End(Ω)|
+## * but id_Ω ≜ ⊤_Ω ∈ Sub(Ω) does not correspond to id_Ω ∈ End(Ω) but to ⊤_Ω: Ω → 𝟙 → Ω ∈ End(Ω), which is generally not an iso
+## * and id_Ω ∈ End(Ω) corresponds to ⊤: 𝟙 → Ω
+
+## -ι is an operation Sub(Ω) → Sub(Ω) induced by ¬: Ω → Ω
+## Theorem: -ι = ( ι ⇒ ⊥_Sub(Ω) )
 AddDerivationToCAP( EmbeddingOfPseudoComplementSubobject,
-  function( cat, iota ) # ι: S → M
+  function( cat, iota ) # ι: S ↪ M
     
-    return SubobjectOfClassifyingMorphism( ## -ι: (S - M) → M
+    return SubobjectOfClassifyingMorphism( ## -ι: (S - M) ↪ M
                    cat,
                    PreCompose(
                            cat,
-                           ClassifyingMorphismOfSubobject( cat, iota ), ## χ_ι: Range( ι ) → Ω
+                           ClassifyingMorphismOfSubobject( cat, iota ), ## χ_ι: M → Ω
                            TruthMorphismOfNot( cat ) ## ¬: Ω → Ω
                            ) );
     
@@ -515,7 +523,8 @@ AddDerivationToCAP( IntersectionSubobject,
     
 end );
 
-##
+## ι1 ∧ ι2 is an operation Sub(Ω) × Sub(Ω) → Sub(Ω) induced by ∧: Ω × Ω → Ω,
+## however, we instead use the finite completeness and finite cocompletenss of the topos (see next method)
 AddDerivationToCAP( EmbeddingOfIntersectionSubobject,
   function( cat, iota1, iota2 )
     local Omega;
@@ -536,7 +545,7 @@ AddDerivationToCAP( EmbeddingOfIntersectionSubobject,
     
 end );
 
-## This is [Glodblatt 1984: Topoi - The categorical analysis of logic, Theorem 7.1.2]
+## [Goldblatt 1984: Topoi - The categorical analysis of logic, Theorem 7.1.2]
 AddDerivationToCAP( EmbeddingOfIntersectionSubobject,
   function( cat, iota1, iota2 )
     
@@ -552,7 +561,8 @@ AddDerivationToCAP( UnionSubobject,
     
 end );
 
-##
+## ι1 ∨ ι2 is an operation Sub(Ω) × Sub(Ω) → Sub(Ω) induced by ∨: Ω × Ω → Ω
+## however, we instead use the finite completeness and finite cocompletenss of the topos (see next method)
 AddDerivationToCAP( EmbeddingOfUnionSubobject,
   function( cat, iota1, iota2 )
     local Omega;
@@ -573,7 +583,7 @@ AddDerivationToCAP( EmbeddingOfUnionSubobject,
     
 end );
 
-## This is [Glodblatt 1984: Topoi - The categorical analysis of logic, Theorem 7.1.3]
+## [Goldblatt 1984: Topoi - The categorical analysis of logic, Theorem 7.1.3]
 AddDerivationToCAP( EmbeddingOfUnionSubobject,
   function( cat, iota1, iota2 )
     
@@ -595,7 +605,7 @@ AddDerivationToCAP( RelativePseudoComplementSubobject,
     
 end );
 
-##
+## ι1 ⇒ ι2 is an operation Sub(Ω) × Sub(Ω) → Sub(Ω) induced by ⇒: Ω × Ω → Ω
 AddDerivationToCAP( EmbeddingOfRelativePseudoComplementSubobject,
   function( cat, iota1, iota2 )
     local Omega;
