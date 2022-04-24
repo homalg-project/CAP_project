@@ -19,3 +19,5 @@ Perform(
       [ "IsStrictCocartesianCategory", "IsStrictCartesianCategory" ],
     ],
     AddCategoricalProperty );
+
+InstallTrueMethod( IsCocartesianCategory, IsAbelianCategory );
