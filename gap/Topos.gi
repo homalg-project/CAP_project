@@ -4,8 +4,13 @@
 # Implementations
 #
 
+InstallTrueMethod( IsCartesianCategory, IsFiniteCompleteCategory );
+InstallTrueMethod( IsCocartesianCategory, IsFiniteCocompleteCategory );
+
+InstallTrueMethod( IsFiniteCompleteCategory, IsElementaryTopos );
+InstallTrueMethod( IsFiniteCocompleteCategory, IsElementaryTopos );
+
 InstallTrueMethod( IsCartesianClosedCategory, IsElementaryTopos );
-InstallTrueMethod( IsCocartesianCategory, IsElementaryTopos );
 InstallTrueMethod( IsDistributiveCartesianCategory, IsElementaryTopos );
 
 ##

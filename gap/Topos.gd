@@ -45,6 +45,34 @@ DeclareGlobalVariable( "TOPOS_METHOD_NAME_RECORD" );
 #! @Section Subobject Classifier
 
 #! @Description
+#!  The property of the category <A>C</A> being finite complete.
+#! @Arguments C
+AddCategoricalProperty( [ "IsFiniteCompleteCategory", "IsFiniteCocompleteCategory" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCompleteCategory :=
+  SortedList(
+          Concatenation( [
+                  "Equalizer",
+                  "EmbeddingOfEqualizerWithGivenEqualizer",
+                  "UniversalMorphismIntoEqualizerWithGivenEqualizer",
+                  ],
+                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianCategory ) );
+
+#! @Description
+#!  The property of the category <A>C</A> being finite cocomplete.
+#! @Arguments C
+AddCategoricalProperty( [ "IsFiniteCocompleteCategory", "IsFiniteCompleteCategory" ] );
+
+CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCocompleteCategory :=
+  SortedList(
+          Concatenation( [
+                  "Coequalizer",
+                  "ProjectionOntoCoequalizerWithGivenCoequalizer",
+                  "UniversalMorphismFromCoequalizerWithGivenCoequalizer",
+                  ],
+                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory ) );
+
+#! @Description
 #!  The property of <A>C</A> being an elementary topos.
 #! @Arguments C
 AddCategoricalProperty( [ "IsElementaryTopos", fail ] );
@@ -58,8 +86,9 @@ CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsElementaryTopos :=
                   #"SubobjectOfClassifyingMorphism", ## can be derived from SubobjectClassifier and TruthMorphismOfTrueWithGivenObjects
                   ],
                   CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCartesianClosedCategory,
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCartesianCategory,
-                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsCocartesianCategory ) );
+                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCompleteCategory,
+                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsFiniteCocompleteCategory,
+                  CAP_INTERNAL_CONSTRUCTIVE_CATEGORIES_RECORD.IsDistributiveCartesianCategory ) );
 
 #! A subobject classifier object consists of three parts:
 #! * an object $\Omega$,
