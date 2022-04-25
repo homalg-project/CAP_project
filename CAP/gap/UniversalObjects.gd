@@ -1774,23 +1774,6 @@ DeclareOperation( "MorphismFromFiberProductToSinkWithGivenFiberProduct",
                   [ IsList, IsCapCategoryObject ] );
 
 #! @Description
-#! This is a convenience method.
-#! There are two different ways to use this method:
-#! * The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
-#!  and a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )$
-#!  such that $\beta_i \circ \tau_i  \sim_{T, B} \beta_j \circ \tau_j$ for all pairs $i,j$.
-#!  The output is the morphism
-#!  $u( \tau ): T \rightarrow \mathrm{FiberProduct}(D)$
-#!  given by the universal property of the fiber product.
-#! * The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$
-#!  and morphisms $\tau_1: T \rightarrow P_1, \dots, \tau_n: T \rightarrow P_n$
-#!  such that $\beta_i \circ \tau_i  \sim_{T, B} \beta_j \circ \tau_j$ for all pairs $i,j$.
-#!  The output is the morphism
-#!  $u( \tau ): T \rightarrow \mathrm{FiberProduct}(D)$
-#!  given by the universal property of the fiber product.
-DeclareGlobalFunction( "UniversalMorphismIntoFiberProduct" );
-
-#! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: P_i \rightarrow B )_{i = 1 \dots n}$, a test object $T$,
 #! and a list of morphisms $\tau = ( \tau_i: T \rightarrow P_i )$
 #! such that $\beta_i \circ \tau_i  \sim_{T, B} \beta_j \circ \tau_j$ for all pairs $i,j$.
@@ -1800,7 +1783,7 @@ DeclareGlobalFunction( "UniversalMorphismIntoFiberProduct" );
 #! given by the universal property of the fiber product.
 #! @Returns a morphism in $\mathrm{Hom}( T, \mathrm{FiberProduct}(D) )$
 #! @Arguments D, T, tau
-DeclareOperation( "UniversalMorphismIntoFiberProductOp",
+DeclareOperation( "UniversalMorphismIntoFiberProduct",
                   [ IsList, IsCapCategoryObject, IsList ] );
 
 #! @Description
@@ -2020,23 +2003,6 @@ DeclareOperation( "MorphismFromSourceToPushoutWithGivenPushout",
                   [ IsList, IsCapCategoryObject ] );
 
 #! @Description
-#! This is a convenience method.
-#! There are two different ways to use this method:
-#! * The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
-#!  and a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ such that
-#!  $\tau_i \circ \beta_i \sim_{B,T} \tau_j \circ \beta_j$.
-#!  The output is the morphism
-#!  $u( \tau ): \mathrm{Pushout}(D) \rightarrow T$
-#!  given by the universal property of the pushout.
-#! * The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$
-#!  and morphisms $\tau_1: I_1 \rightarrow T, \dots, \tau_n: I_n \rightarrow T$ such that
-#!  $\tau_i \circ \beta_i \sim_{B,T} \tau_j \circ \beta_j$.
-#!  The output is the morphism
-#!  $u( \tau ): \mathrm{Pushout}(D) \rightarrow T$
-#!  given by the universal property of the pushout.
-DeclareGlobalFunction( "UniversalMorphismFromPushout" );
-
-#! @Description
 #! The arguments are a list of morphisms $D = ( \beta_i: B \rightarrow I_i )_{i = 1 \dots n}$, a test object $T$,
 #! and a list of morphisms $\tau = ( \tau_i: I_i \rightarrow T )_{i = 1 \dots n}$ such that
 #! $\tau_i \circ \beta_i \sim_{B,T} \tau_j \circ \beta_j$.
@@ -2046,7 +2012,7 @@ DeclareGlobalFunction( "UniversalMorphismFromPushout" );
 #! given by the universal property of the pushout.
 #! @Returns a morphism in $\mathrm{Hom}( \mathrm{Pushout}(D), T )$
 #! @Arguments D, T, tau
-DeclareOperation( "UniversalMorphismFromPushoutOp",
+DeclareOperation( "UniversalMorphismFromPushout",
                   [ IsList, IsCapCategoryObject, IsList ] );
 
 #! @Description

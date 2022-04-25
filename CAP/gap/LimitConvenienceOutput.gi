@@ -48,108 +48,6 @@ InstallOtherMethod( UniversalMorphismIntoDirectProduct,
     
 end );
 
-##
-InstallOtherMethod( UniversalMorphismIntoDirectProduct,
-               [ IsCapCategoryMorphism ],
-               
-  function( mor1 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismIntoDirectProduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismIntoDirectProduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismIntoDirectProduct( [ mor1 ] );
-    
-end );
-
-##
-InstallOtherMethod( UniversalMorphismIntoDirectProduct,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( mor1, mor2 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismIntoDirectProduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismIntoDirectProduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismIntoDirectProduct( [ mor1, mor2 ] );
-    
-end );
-
-##
-InstallOtherMethod( UniversalMorphismIntoDirectProduct,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( mor1, mor2, mor3 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismIntoDirectProduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismIntoDirectProduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismIntoDirectProduct( [ mor1, mor2, mor3 ] );
-    
-end );
-
-##
-InstallOtherMethod( UniversalMorphismIntoDirectProduct,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( mor1, mor2, mor3, mor4 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismIntoDirectProduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismIntoDirectProduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismIntoDirectProduct( [ mor1, mor2, mor3, mor4 ] );
-    
-end );
-
-##
-InstallOtherMethod( UniversalMorphismIntoDirectProduct,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( mor1, mor2, mor3, mor4, mor5 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismIntoDirectProduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismIntoDirectProduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismIntoDirectProduct( [ mor1, mor2, mor3, mor4, mor5 ] );
-    
-end );
-
-##
-InstallOtherMethod( UniversalMorphismIntoDirectProduct,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( mor1, mor2, mor3, mor4, mor5, mor6 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismIntoDirectProduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismIntoDirectProduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismIntoDirectProduct( [ mor1, mor2, mor3, mor4, mor5, mor6 ] );
-    
-end );
-
 InstallOtherMethod( UniversalMorphismIntoDirectProduct,
                     [ IsList, IsList ],
                     
@@ -188,112 +86,6 @@ InstallOtherMethod( UniversalMorphismIntoDirectProductWithGivenDirectProduct,
         
         return UniversalMorphismIntoDirectProductWithGivenDirectProduct( cat, diagram, Source( tau[1] ), tau, P );
         
-end );
-
-##
-InstallMethod( AddUniversalMorphismIntoDirectProduct,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    local nr_arguments, wrapper;
-    
-    nr_arguments := NumberArgumentsFunction( func );
-    
-    wrapper := fail;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        if nr_arguments = 3 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismIntoDirectProduct with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 4 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { cat, diagram, T, tau } -> func( cat, diagram, tau );
-            
-        fi;
-        
-    else
-        
-        if nr_arguments = 2 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismIntoDirectProduct with a function with 2 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 3 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { diagram, T, tau } -> func( diagram, tau );
-            
-        fi;
-        
-    fi;
-    
-    if wrapper = fail then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    AddUniversalMorphismIntoDirectProduct( category, wrapper );
-    
-end );
-
-##
-InstallMethod( AddUniversalMorphismIntoDirectProductWithGivenDirectProduct,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    local nr_arguments, wrapper;
-    
-    nr_arguments := NumberArgumentsFunction( func );
-    
-    wrapper := fail;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        if nr_arguments = 4 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismIntoDirectProductWithGivenDirectProduct with a function with 4 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 5 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { cat, diagram, T, tau, P } -> func( cat, diagram, tau, P );
-            
-        fi;
-        
-    else
-        
-        if nr_arguments = 3 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismIntoDirectProductWithGivenDirectProduct with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 4 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { diagram, T, tau, P } -> func( diagram, tau, P );
-            
-        fi;
-        
-    fi;
-    
-    if wrapper = fail then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    AddUniversalMorphismIntoDirectProductWithGivenDirectProduct( category, wrapper );
-    
 end );
 
 ##
@@ -340,108 +132,6 @@ InstallOtherMethod( UniversalMorphismFromCoproduct,
     
 end );
 
-##
-InstallOtherMethod( UniversalMorphismFromCoproduct,
-               [ IsCapCategoryMorphism ],
-               
-  function( mor1 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismFromCoproduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismFromCoproduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismFromCoproduct( [ mor1 ] );
-    
-end );
-
-##
-InstallOtherMethod( UniversalMorphismFromCoproduct,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( mor1, mor2 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismFromCoproduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismFromCoproduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismFromCoproduct( [ mor1, mor2 ] );
-    
-end );
-
-##
-InstallOtherMethod( UniversalMorphismFromCoproduct,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( mor1, mor2, mor3 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismFromCoproduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismFromCoproduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismFromCoproduct( [ mor1, mor2, mor3 ] );
-    
-end );
-
-##
-InstallOtherMethod( UniversalMorphismFromCoproduct,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( mor1, mor2, mor3, mor4 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismFromCoproduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismFromCoproduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismFromCoproduct( [ mor1, mor2, mor3, mor4 ] );
-    
-end );
-
-##
-InstallOtherMethod( UniversalMorphismFromCoproduct,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( mor1, mor2, mor3, mor4, mor5 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismFromCoproduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismFromCoproduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismFromCoproduct( [ mor1, mor2, mor3, mor4, mor5 ] );
-    
-end );
-
-##
-InstallOtherMethod( UniversalMorphismFromCoproduct,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( mor1, mor2, mor3, mor4, mor5, mor6 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismFromCoproduct( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismFromCoproduct( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismFromCoproduct( [ mor1, mor2, mor3, mor4, mor5, mor6 ] );
-    
-end );
-
 InstallOtherMethod( UniversalMorphismFromCoproduct,
                     [ IsList, IsList ],
                     
@@ -480,112 +170,6 @@ InstallOtherMethod( UniversalMorphismFromCoproductWithGivenCoproduct,
         
         return UniversalMorphismFromCoproductWithGivenCoproduct( cat, diagram, Range( tau[1] ), tau, P );
         
-end );
-
-##
-InstallMethod( AddUniversalMorphismFromCoproduct,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    local nr_arguments, wrapper;
-    
-    nr_arguments := NumberArgumentsFunction( func );
-    
-    wrapper := fail;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        if nr_arguments = 3 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismFromCoproduct with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 4 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { cat, diagram, T, tau } -> func( cat, diagram, tau );
-            
-        fi;
-        
-    else
-        
-        if nr_arguments = 2 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismFromCoproduct with a function with 2 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 3 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { diagram, T, tau } -> func( diagram, tau );
-            
-        fi;
-        
-    fi;
-    
-    if wrapper = fail then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    AddUniversalMorphismFromCoproduct( category, wrapper );
-    
-end );
-
-##
-InstallMethod( AddUniversalMorphismFromCoproductWithGivenCoproduct,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    local nr_arguments, wrapper;
-    
-    nr_arguments := NumberArgumentsFunction( func );
-    
-    wrapper := fail;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        if nr_arguments = 4 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismFromCoproductWithGivenCoproduct with a function with 4 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 5 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { cat, diagram, T, tau, P } -> func( cat, diagram, tau, P );
-            
-        fi;
-        
-    else
-        
-        if nr_arguments = 3 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismFromCoproductWithGivenCoproduct with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 4 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { diagram, T, tau, P } -> func( diagram, tau, P );
-            
-        fi;
-        
-    fi;
-    
-    if wrapper = fail then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    AddUniversalMorphismFromCoproductWithGivenCoproduct( category, wrapper );
-    
 end );
 
 ##
@@ -730,108 +314,6 @@ InstallOtherMethod( UniversalMorphismIntoDirectSum,
     
 end );
 
-##
-InstallOtherMethod( UniversalMorphismIntoDirectSum,
-               [ IsCapCategoryMorphism ],
-               
-  function( mor1 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismIntoDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismIntoDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismIntoDirectSum( [ mor1 ] );
-    
-end );
-
-##
-InstallOtherMethod( UniversalMorphismIntoDirectSum,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( mor1, mor2 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismIntoDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismIntoDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismIntoDirectSum( [ mor1, mor2 ] );
-    
-end );
-
-##
-InstallOtherMethod( UniversalMorphismIntoDirectSum,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( mor1, mor2, mor3 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismIntoDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismIntoDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismIntoDirectSum( [ mor1, mor2, mor3 ] );
-    
-end );
-
-##
-InstallOtherMethod( UniversalMorphismIntoDirectSum,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( mor1, mor2, mor3, mor4 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismIntoDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismIntoDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismIntoDirectSum( [ mor1, mor2, mor3, mor4 ] );
-    
-end );
-
-##
-InstallOtherMethod( UniversalMorphismIntoDirectSum,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( mor1, mor2, mor3, mor4, mor5 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismIntoDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismIntoDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismIntoDirectSum( [ mor1, mor2, mor3, mor4, mor5 ] );
-    
-end );
-
-##
-InstallOtherMethod( UniversalMorphismIntoDirectSum,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( mor1, mor2, mor3, mor4, mor5, mor6 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismIntoDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismIntoDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismIntoDirectSum( [ mor1, mor2, mor3, mor4, mor5, mor6 ] );
-    
-end );
-
 InstallOtherMethod( UniversalMorphismIntoDirectSum,
                     [ IsList, IsList ],
                     
@@ -870,112 +352,6 @@ InstallOtherMethod( UniversalMorphismIntoDirectSumWithGivenDirectSum,
         
         return UniversalMorphismIntoDirectSumWithGivenDirectSum( cat, diagram, Source( tau[1] ), tau, P );
         
-end );
-
-##
-InstallMethod( AddUniversalMorphismIntoDirectSum,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    local nr_arguments, wrapper;
-    
-    nr_arguments := NumberArgumentsFunction( func );
-    
-    wrapper := fail;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        if nr_arguments = 3 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismIntoDirectSum with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 4 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { cat, diagram, T, tau } -> func( cat, diagram, tau );
-            
-        fi;
-        
-    else
-        
-        if nr_arguments = 2 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismIntoDirectSum with a function with 2 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 3 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { diagram, T, tau } -> func( diagram, tau );
-            
-        fi;
-        
-    fi;
-    
-    if wrapper = fail then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    AddUniversalMorphismIntoDirectSum( category, wrapper );
-    
-end );
-
-##
-InstallMethod( AddUniversalMorphismIntoDirectSumWithGivenDirectSum,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    local nr_arguments, wrapper;
-    
-    nr_arguments := NumberArgumentsFunction( func );
-    
-    wrapper := fail;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        if nr_arguments = 4 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismIntoDirectSumWithGivenDirectSum with a function with 4 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 5 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { cat, diagram, T, tau, P } -> func( cat, diagram, tau, P );
-            
-        fi;
-        
-    else
-        
-        if nr_arguments = 3 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismIntoDirectSumWithGivenDirectSum with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 4 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { diagram, T, tau, P } -> func( diagram, tau, P );
-            
-        fi;
-        
-    fi;
-    
-    if wrapper = fail then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    AddUniversalMorphismIntoDirectSumWithGivenDirectSum( category, wrapper );
-    
 end );
 
 ##
@@ -1022,108 +398,6 @@ InstallOtherMethod( UniversalMorphismFromDirectSum,
     
 end );
 
-##
-InstallOtherMethod( UniversalMorphismFromDirectSum,
-               [ IsCapCategoryMorphism ],
-               
-  function( mor1 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismFromDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismFromDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismFromDirectSum( [ mor1 ] );
-    
-end );
-
-##
-InstallOtherMethod( UniversalMorphismFromDirectSum,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( mor1, mor2 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismFromDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismFromDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismFromDirectSum( [ mor1, mor2 ] );
-    
-end );
-
-##
-InstallOtherMethod( UniversalMorphismFromDirectSum,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( mor1, mor2, mor3 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismFromDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismFromDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismFromDirectSum( [ mor1, mor2, mor3 ] );
-    
-end );
-
-##
-InstallOtherMethod( UniversalMorphismFromDirectSum,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( mor1, mor2, mor3, mor4 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismFromDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismFromDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismFromDirectSum( [ mor1, mor2, mor3, mor4 ] );
-    
-end );
-
-##
-InstallOtherMethod( UniversalMorphismFromDirectSum,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( mor1, mor2, mor3, mor4, mor5 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismFromDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismFromDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismFromDirectSum( [ mor1, mor2, mor3, mor4, mor5 ] );
-    
-end );
-
-##
-InstallOtherMethod( UniversalMorphismFromDirectSum,
-               [ IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism, IsCapCategoryMorphism ],
-               
-  function( mor1, mor2, mor3, mor4, mor5, mor6 )
-    
-    Print(
-      Concatenation(
-      "WARNING: UniversalMorphismFromDirectSum( IsCapCategoryMorphism, ... ) is deprecated and will not be supported after 2022.04.15. ",
-      "Please use UniversalMorphismFromDirectSum( [ IsCapCategoryMorphism, ... ] ) instead.\n"
-      )
-    );
-    
-    return UniversalMorphismFromDirectSum( [ mor1, mor2, mor3, mor4, mor5, mor6 ] );
-    
-end );
-
 InstallOtherMethod( UniversalMorphismFromDirectSum,
                     [ IsList, IsList ],
                     
@@ -1162,112 +436,6 @@ InstallOtherMethod( UniversalMorphismFromDirectSumWithGivenDirectSum,
         
         return UniversalMorphismFromDirectSumWithGivenDirectSum( cat, diagram, Range( tau[1] ), tau, P );
         
-end );
-
-##
-InstallMethod( AddUniversalMorphismFromDirectSum,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    local nr_arguments, wrapper;
-    
-    nr_arguments := NumberArgumentsFunction( func );
-    
-    wrapper := fail;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        if nr_arguments = 3 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismFromDirectSum with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 4 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { cat, diagram, T, tau } -> func( cat, diagram, tau );
-            
-        fi;
-        
-    else
-        
-        if nr_arguments = 2 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismFromDirectSum with a function with 2 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 3 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { diagram, T, tau } -> func( diagram, tau );
-            
-        fi;
-        
-    fi;
-    
-    if wrapper = fail then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    AddUniversalMorphismFromDirectSum( category, wrapper );
-    
-end );
-
-##
-InstallMethod( AddUniversalMorphismFromDirectSumWithGivenDirectSum,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    local nr_arguments, wrapper;
-    
-    nr_arguments := NumberArgumentsFunction( func );
-    
-    wrapper := fail;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        if nr_arguments = 4 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismFromDirectSumWithGivenDirectSum with a function with 4 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 5 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { cat, diagram, T, tau, P } -> func( cat, diagram, tau, P );
-            
-        fi;
-        
-    else
-        
-        if nr_arguments = 3 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismFromDirectSumWithGivenDirectSum with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 4 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { diagram, T, tau, P } -> func( diagram, tau, P );
-            
-        fi;
-        
-    fi;
-    
-    if wrapper = fail then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    AddUniversalMorphismFromDirectSumWithGivenDirectSum( category, wrapper );
-    
 end );
 
 ##
@@ -1328,216 +496,84 @@ AddDerivationToCAP( DirectSumFunctorialWithGivenDirectSums,
     
 end : Description := "DirectSumFunctorialWithGivenDirectSums using the universality of the colimit" );
 
-##
-InstallMethod( AddUniversalMorphismIntoFiberProduct,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    local nr_arguments, wrapper;
-    
-    nr_arguments := NumberArgumentsFunction( func );
-    
-    wrapper := fail;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+InstallOtherMethod( UniversalMorphismIntoFiberProduct,
+                    [ IsList, IsList ],
+                    
+    function( diagram, tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
         
-        if nr_arguments = 3 then
+        return UniversalMorphismIntoFiberProduct( diagram, Source( tau[1] ), tau );
         
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismIntoFiberProduct with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 4 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { cat, diagram, T, tau } -> func( cat, diagram, tau );
-            
-        fi;
-        
-    else
-        
-        if nr_arguments = 2 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismIntoFiberProduct with a function with 2 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 3 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { diagram, T, tau } -> func( diagram, tau );
-            
-        fi;
-        
-    fi;
-    
-    if wrapper = fail then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    AddUniversalMorphismIntoFiberProduct( category, wrapper );
-    
 end );
 
-##
-InstallMethod( AddUniversalMorphismIntoFiberProductWithGivenFiberProduct,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    local nr_arguments, wrapper;
-    
-    nr_arguments := NumberArgumentsFunction( func );
-    
-    wrapper := fail;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+InstallOtherMethod( UniversalMorphismIntoFiberProduct,
+                    [ IsCapCategory, IsList, IsList ],
+                    
+    function( cat, diagram, tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
         
-        if nr_arguments = 4 then
+        return UniversalMorphismIntoFiberProduct( cat, diagram, Source( tau[1] ), tau );
         
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismIntoFiberProductWithGivenFiberProduct with a function with 4 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 5 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { cat, diagram, T, tau, P } -> func( cat, diagram, tau, P );
-            
-        fi;
-        
-    else
-        
-        if nr_arguments = 3 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismIntoFiberProductWithGivenFiberProduct with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 4 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { diagram, T, tau, P } -> func( diagram, tau, P );
-            
-        fi;
-        
-    fi;
-    
-    if wrapper = fail then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    AddUniversalMorphismIntoFiberProductWithGivenFiberProduct( category, wrapper );
-    
 end );
 
-##
-InstallMethod( AddUniversalMorphismFromPushout,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    local nr_arguments, wrapper;
-    
-    nr_arguments := NumberArgumentsFunction( func );
-    
-    wrapper := fail;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+InstallOtherMethod( UniversalMorphismIntoFiberProductWithGivenFiberProduct,
+                    [ IsList, IsList, IsCapCategoryObject ],
+                    
+    function( diagram, tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
         
-        if nr_arguments = 3 then
+        return UniversalMorphismIntoFiberProductWithGivenFiberProduct( diagram, Source( tau[1] ), tau, P );
         
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismFromPushout with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 4 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { cat, diagram, T, tau } -> func( cat, diagram, tau );
-            
-        fi;
-        
-    else
-        
-        if nr_arguments = 2 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismFromPushout with a function with 2 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 3 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { diagram, T, tau } -> func( diagram, tau );
-            
-        fi;
-        
-    fi;
-    
-    if wrapper = fail then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    AddUniversalMorphismFromPushout( category, wrapper );
-    
 end );
 
-##
-InstallMethod( AddUniversalMorphismFromPushoutWithGivenPushout,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    local nr_arguments, wrapper;
-    
-    nr_arguments := NumberArgumentsFunction( func );
-    
-    wrapper := fail;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
+InstallOtherMethod( UniversalMorphismIntoFiberProductWithGivenFiberProduct,
+                    [ IsCapCategory, IsList, IsList, IsCapCategoryObject ],
+                    
+    function( cat, diagram, tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
         
-        if nr_arguments = 4 then
+        return UniversalMorphismIntoFiberProductWithGivenFiberProduct( cat, diagram, Source( tau[1] ), tau, P );
         
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismFromPushoutWithGivenPushout with a function with 4 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 5 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { cat, diagram, T, tau, P } -> func( cat, diagram, tau, P );
-            
-        fi;
+end );
+
+InstallOtherMethod( UniversalMorphismFromPushout,
+                    [ IsList, IsList ],
+                    
+    function( diagram, tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
         
-    else
+        return UniversalMorphismFromPushout( diagram, Range( tau[1] ), tau );
         
-        if nr_arguments = 3 then
+end );
+
+InstallOtherMethod( UniversalMorphismFromPushout,
+                    [ IsCapCategory, IsList, IsList ],
+                    
+    function( cat, diagram, tau )
+        #% CAP_JIT_RESOLVE_FUNCTION
         
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismFromPushoutWithGivenPushout with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 4 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { diagram, T, tau, P } -> func( diagram, tau, P );
-            
-        fi;
+        return UniversalMorphismFromPushout( cat, diagram, Range( tau[1] ), tau );
         
-    fi;
-    
-    if wrapper = fail then
+end );
+
+InstallOtherMethod( UniversalMorphismFromPushoutWithGivenPushout,
+                    [ IsList, IsList, IsCapCategoryObject ],
+                    
+    function( diagram, tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
         
-        TryNextMethod( );
+        return UniversalMorphismFromPushoutWithGivenPushout( diagram, Range( tau[1] ), tau, P );
         
-    fi;
-    
-    AddUniversalMorphismFromPushoutWithGivenPushout( category, wrapper );
-    
+end );
+
+InstallOtherMethod( UniversalMorphismFromPushoutWithGivenPushout,
+                    [ IsCapCategory, IsList, IsList, IsCapCategoryObject ],
+                    
+    function( cat, diagram, tau, P )
+        #% CAP_JIT_RESOLVE_FUNCTION
+        
+        return UniversalMorphismFromPushoutWithGivenPushout( cat, diagram, Range( tau[1] ), tau, P );
+        
 end );
 
 ##
@@ -1598,112 +634,6 @@ InstallOtherMethod( UniversalMorphismIntoEqualizerWithGivenEqualizer,
         
 end );
 
-##
-InstallMethod( AddUniversalMorphismIntoEqualizer,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    local nr_arguments, wrapper;
-    
-    nr_arguments := NumberArgumentsFunction( func );
-    
-    wrapper := fail;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        if nr_arguments = 3 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismIntoEqualizer with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 4 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { cat, diagram, T, tau } -> func( cat, diagram, tau );
-            
-        fi;
-        
-    else
-        
-        if nr_arguments = 2 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismIntoEqualizer with a function with 2 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 3 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { diagram, T, tau } -> func( diagram, tau );
-            
-        fi;
-        
-    fi;
-    
-    if wrapper = fail then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    AddUniversalMorphismIntoEqualizer( category, wrapper );
-    
-end );
-
-##
-InstallMethod( AddUniversalMorphismIntoEqualizerWithGivenEqualizer,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    local nr_arguments, wrapper;
-    
-    nr_arguments := NumberArgumentsFunction( func );
-    
-    wrapper := fail;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        if nr_arguments = 4 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismIntoEqualizerWithGivenEqualizer with a function with 4 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 5 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { cat, diagram, T, tau, P } -> func( cat, diagram, tau, P );
-            
-        fi;
-        
-    else
-        
-        if nr_arguments = 3 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismIntoEqualizerWithGivenEqualizer with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 4 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { diagram, T, tau, P } -> func( diagram, tau, P );
-            
-        fi;
-        
-    fi;
-    
-    if wrapper = fail then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    AddUniversalMorphismIntoEqualizerWithGivenEqualizer( category, wrapper );
-    
-end );
-
 InstallOtherMethod( UniversalMorphismFromCoequalizer,
                     [ IsList, IsCapCategoryMorphism ],
                     
@@ -1742,112 +672,6 @@ InstallOtherMethod( UniversalMorphismFromCoequalizerWithGivenCoequalizer,
         
         return UniversalMorphismFromCoequalizerWithGivenCoequalizer( cat, diagram, Range( tau ), tau, P );
         
-end );
-
-##
-InstallMethod( AddUniversalMorphismFromCoequalizer,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    local nr_arguments, wrapper;
-    
-    nr_arguments := NumberArgumentsFunction( func );
-    
-    wrapper := fail;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        if nr_arguments = 3 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismFromCoequalizer with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 4 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { cat, diagram, T, tau } -> func( cat, diagram, tau );
-            
-        fi;
-        
-    else
-        
-        if nr_arguments = 2 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismFromCoequalizer with a function with 2 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 3 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { diagram, T, tau } -> func( diagram, tau );
-            
-        fi;
-        
-    fi;
-    
-    if wrapper = fail then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    AddUniversalMorphismFromCoequalizer( category, wrapper );
-    
-end );
-
-##
-InstallMethod( AddUniversalMorphismFromCoequalizerWithGivenCoequalizer,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    local nr_arguments, wrapper;
-    
-    nr_arguments := NumberArgumentsFunction( func );
-    
-    wrapper := fail;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        if nr_arguments = 4 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismFromCoequalizerWithGivenCoequalizer with a function with 4 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 5 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { cat, diagram, T, tau, P } -> func( cat, diagram, tau, P );
-            
-        fi;
-        
-    else
-        
-        if nr_arguments = 3 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddUniversalMorphismFromCoequalizerWithGivenCoequalizer with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 4 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { diagram, T, tau, P } -> func( diagram, tau, P );
-            
-        fi;
-        
-    fi;
-    
-    if wrapper = fail then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    AddUniversalMorphismFromCoequalizerWithGivenCoequalizer( category, wrapper );
-    
 end );
 
 ##
@@ -1908,112 +732,6 @@ InstallOtherMethod( KernelLiftWithGivenKernelObject,
         
 end );
 
-##
-InstallMethod( AddKernelLift,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    local nr_arguments, wrapper;
-    
-    nr_arguments := NumberArgumentsFunction( func );
-    
-    wrapper := fail;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        if nr_arguments = 3 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddKernelLift with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 4 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { cat, diagram, T, tau } -> func( cat, diagram, tau );
-            
-        fi;
-        
-    else
-        
-        if nr_arguments = 2 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddKernelLift with a function with 2 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 3 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { diagram, T, tau } -> func( diagram, tau );
-            
-        fi;
-        
-    fi;
-    
-    if wrapper = fail then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    AddKernelLift( category, wrapper );
-    
-end );
-
-##
-InstallMethod( AddKernelLiftWithGivenKernelObject,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    local nr_arguments, wrapper;
-    
-    nr_arguments := NumberArgumentsFunction( func );
-    
-    wrapper := fail;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        if nr_arguments = 4 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddKernelLiftWithGivenKernelObject with a function with 4 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 5 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { cat, diagram, T, tau, P } -> func( cat, diagram, tau, P );
-            
-        fi;
-        
-    else
-        
-        if nr_arguments = 3 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddKernelLiftWithGivenKernelObject with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 4 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { diagram, T, tau, P } -> func( diagram, tau, P );
-            
-        fi;
-        
-    fi;
-    
-    if wrapper = fail then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    AddKernelLiftWithGivenKernelObject( category, wrapper );
-    
-end );
-
 InstallOtherMethod( CokernelColift,
                     [ IsCapCategoryMorphism, IsCapCategoryMorphism ],
                     
@@ -2052,112 +770,6 @@ InstallOtherMethod( CokernelColiftWithGivenCokernelObject,
         
         return CokernelColiftWithGivenCokernelObject( cat, diagram, Range( tau ), tau, P );
         
-end );
-
-##
-InstallMethod( AddCokernelColift,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    local nr_arguments, wrapper;
-    
-    nr_arguments := NumberArgumentsFunction( func );
-    
-    wrapper := fail;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        if nr_arguments = 3 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddCokernelColift with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 4 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { cat, diagram, T, tau } -> func( cat, diagram, tau );
-            
-        fi;
-        
-    else
-        
-        if nr_arguments = 2 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddCokernelColift with a function with 2 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 3 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { diagram, T, tau } -> func( diagram, tau );
-            
-        fi;
-        
-    fi;
-    
-    if wrapper = fail then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    AddCokernelColift( category, wrapper );
-    
-end );
-
-##
-InstallMethod( AddCokernelColiftWithGivenCokernelObject,
-               [ IsCapCategory, IsFunction ],
-               
-  function( category, func )
-    local nr_arguments, wrapper;
-    
-    nr_arguments := NumberArgumentsFunction( func );
-    
-    wrapper := fail;
-    
-    if IsBound( category!.category_as_first_argument ) and category!.category_as_first_argument = true then
-        
-        if nr_arguments = 4 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddCokernelColiftWithGivenCokernelObject with a function with 4 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 5 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { cat, diagram, T, tau, P } -> func( cat, diagram, tau, P );
-            
-        fi;
-        
-    else
-        
-        if nr_arguments = 3 then
-        
-            Print(
-              Concatenation(
-              "WARNING: AddCokernelColiftWithGivenCokernelObject with a function with 3 arguments is deprecated and will not be supported after 2022.04.18. ",
-              "Please give a function with 4 arguments instead.\n"
-              )
-            );
-                
-            wrapper := { diagram, T, tau, P } -> func( diagram, tau, P );
-            
-        fi;
-        
-    fi;
-    
-    if wrapper = fail then
-        
-        TryNextMethod( );
-        
-    fi;
-    
-    AddCokernelColiftWithGivenCokernelObject( category, wrapper );
-    
 end );
 
 ##

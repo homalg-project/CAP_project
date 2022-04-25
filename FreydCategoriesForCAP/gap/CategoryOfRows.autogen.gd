@@ -370,9 +370,9 @@
 #! * <Ref BookName="CAP" Func="PushoutFunctorialWithGivenPushouts" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismFromImage" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismFromImageWithGivenImageObject" Label="for Is" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismFromPushout" Label="" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismFromPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismFromPushoutWithGivenPushout" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismIntoCoimage" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismIntoCoimageWithGivenCoimageObject" Label="for Is" />
-#! * <Ref BookName="CAP" Func="UniversalMorphismIntoFiberProduct" Label="" />
+#! * <Ref BookName="CAP" Func="UniversalMorphismIntoFiberProduct" Label="for Is" />
 #! * <Ref BookName="CAP" Func="UniversalMorphismIntoFiberProductWithGivenFiberProduct" Label="for Is" />
