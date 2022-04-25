@@ -871,19 +871,6 @@ DeclareOperation( "IsColiftable",
 DeclareOperation( "InverseForMorphisms",
                   [ IsCapCategoryMorphism ] );
 
-## convenience methods
-DeclareOperation( "AddInverse",
-                  [ IsCapCategory, IsFunction ] );
-
-DeclareOperation( "AddInverse",
-                  [ IsCapCategory, IsFunction, IsInt ] );
-
-DeclareOperation( "AddInverse",
-                  [ IsCapCategory, IsList, IsInt ] );
-
-DeclareOperation( "AddInverse",
-                  [ IsCapCategory, IsList ] );
-
 ###################################
 ##
 #! @Section Tool functions for caches
